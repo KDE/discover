@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-10 02:41+0000\n"
+"POT-Creation-Date: 2023-06-19 02:52+0000\n"
 "PO-Revision-Date: 2023-03-12 19:51+0100\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -2236,21 +2236,21 @@ msgstr "Aktualisierung auf %1 %2"
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>Eine neue Hauptversion wurde veröffentlicht.</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:533
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Es gibt noch ausstehende Aktualisierungen für die aktuelle Version. Es wird "
 "trotzdem fortgefahren."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:539
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Bitte führen Sie eine Aktualisierung auf die letzte Version durch, bevor Sie "
 "auf eine neue Hauptversion wechseln"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:547
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:544
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""

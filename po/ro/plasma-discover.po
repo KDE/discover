@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Sergiu Bivol <sergiu@cip.md>, 2012, 2013, 2014, 2020, 2021, 2022.
+# Sergiu Bivol <sergiu@cip.md>, 2012, 2013, 2014, 2020, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-30 03:25+0000\n"
-"PO-Revision-Date: 2022-12-28 20:33+0000\n"
+"PO-Revision-Date: 2023-06-18 18:07+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -75,7 +75,7 @@ msgstr "Nu s-a putut găsi categoria „%1”"
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "Se încearcă deschiderea fișierului inexistent „%1”"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -311,7 +311,7 @@ msgstr "Autor necunoscut"
 #: discover/qml/ApplicationPage.qml:220
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "Capturile de ecran nu pot fi accesate"
 
 #: discover/qml/ApplicationPage.qml:279
 #, kde-format
@@ -357,23 +357,20 @@ msgstr[1] "Vezi mai multe…"
 msgstr[2] "Vezi mai multe…"
 
 #: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:907
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating"
-msgstr "Introduceți o evaluare"
+msgstr "Evaluarea conținutului"
 
 #: discover/qml/ApplicationPage.qml:445
 #, kde-format
 msgid "Age: %1+"
-msgstr ""
+msgstr "Vârstă: %1+"
 
 #: discover/qml/ApplicationPage.qml:469
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr "Vezi mai multe…"
+msgstr "Vezi detalii…"
 
 #: discover/qml/ApplicationPage.qml:586
 #, kde-format
@@ -409,19 +406,18 @@ msgstr "Instalează sau elimină funcționalitate suplimentară"
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "Partajează"
 
 #: discover/qml/ApplicationPage.qml:641
-#, fuzzy, kde-format
-#| msgid "Unable to load applications"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "Nu se pot încărca aplicațiile"
+msgstr "Trimite o legătură pentru această aplicație"
 
 #: discover/qml/ApplicationPage.qml:657
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "Încercați aplicația %1!"
 
 #: discover/qml/ApplicationPage.qml:677
 #, kde-format
@@ -559,13 +555,12 @@ msgstr ""
 "<nl/><nl/>Puteți afla mai multe la <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1 - %2 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Căutare: %1 - %2 elemente"
-msgstr[1] "Căutare: %1 - %2 elemente"
-msgstr[2] "Căutare: %1 - %2 elemente"
+msgstr[0] "Căutare: %2 - %3 element"
+msgstr[1] "Căutare: %2 - %3 elemente"
+msgstr[2] "Căutare: %2 - %3 de elemente"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -573,22 +568,20 @@ msgid "Search: %1"
 msgstr "Căutare: %1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, fuzzy, kde-format
-#| msgid "%1 - %2 items"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 - %2 elemente"
-msgstr[1] "%1 - %2 elemente"
-msgstr[2] "%1 - %2 elemente"
+msgstr[0] "%2 - %1 element"
+msgstr[1] "%2 - %1 elemente"
+msgstr[2] "%2 - %1 de elemente"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, fuzzy, kde-format
-#| msgid "Search - %1 items"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Căutare - %1 elemente"
+msgstr[0] "Căutare - %1 element"
 msgstr[1] "Căutare - %1 elemente"
-msgstr[2] "Căutare - %1 elemente"
+msgstr[2] "Căutare - %1 de elemente"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:225
@@ -625,12 +618,10 @@ msgstr "Nu s-a găsit nimic"
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
-msgstr ""
+msgstr "Caută în toate categoriile"
 
 #: discover/qml/ApplicationsListPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "Search the web for \"%1\""
+#, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Caută „%1” pe internet"
@@ -644,30 +635,21 @@ msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:204
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr "„%1” nu a fost găsit în sursele disponibile"
+msgstr "„%1” nu a fost găsit în categoria „%2”"
 
 #: discover/qml/ApplicationsListPage.qml:206
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "„%1” nu a fost găsit în sursele disponibile"
 
 #: discover/qml/ApplicationsListPage.qml:207
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder%1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
@@ -689,37 +671,34 @@ msgid "Unable to load applications"
 msgstr "Nu se pot încărca aplicațiile"
 
 #: discover/qml/BrowsingPage.qml:101
-#, fuzzy, kde-format
-#| msgid "Popularity"
+#, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr "Popularitate"
+msgstr "Cele mai populare"
 
 #: discover/qml/BrowsingPage.qml:119
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "Alegerea redacției"
 
 #: discover/qml/BrowsingPage.qml:133
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "Jocurile cele mai apreciate"
 
 #: discover/qml/BrowsingPage.qml:152 discover/qml/BrowsingPage.qml:181
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "Vezi mai multe…"
+msgstr "Vezi mai multe"
 
 #: discover/qml/BrowsingPage.qml:162
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "Cele mai apreciate unelte pentru dezvoltatori"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -789,23 +768,21 @@ msgid "Report this issue"
 msgstr "Raportează această problemă"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "Voturi: %1 din %2"
+msgstr "Eroarea %1 din %2"
 
 #: discover/qml/DiscoverWindow.qml:370
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "Arată precedenta"
 
 #: discover/qml/DiscoverWindow.qml:383
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "Arată conținutul"
+msgstr "Arată următoarea"
 
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format
@@ -1026,7 +1003,7 @@ msgstr "Prea lung!"
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr ""
+msgstr "Introduceți un nume"
 
 #: discover/qml/ReviewsPage.qml:42
 #, kde-format
@@ -1162,7 +1139,7 @@ msgstr "Actualizează tot"
 #: discover/qml/UpdatesPage.qml:175
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "Ignoră"
 
 #: discover/qml/UpdatesPage.qml:221
 #, kde-format

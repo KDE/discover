@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-10 02:41+0000\n"
+"POT-Creation-Date: 2023-06-19 02:52+0000\n"
 "PO-Revision-Date: 2023-03-26 12:38+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -2194,17 +2194,17 @@ msgstr "%1 %2 தனை நிறுவு"
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>ஓர் புதிய பெரும்பதிப்பு வெளியிடப்பட்டுள்ளது!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:533
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "தற்போதைய பதிப்பிற்கே புதுப்பிப்புகள் மீதம் உள்ளன. இருந்தாலும் தொடர்கிறது."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:539
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:547
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:544
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""

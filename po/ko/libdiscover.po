@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-10 02:41+0000\n"
+"POT-Creation-Date: 2023-06-19 02:52+0000\n"
 "PO-Revision-Date: 2023-04-21 23:32+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2179,17 +2179,17 @@ msgstr "%1 %2(으)로 업그레이드"
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>새 버전이 출시되었습니다!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:533
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "현재 버전의 업데이트가 대기 중입니다. 그래도 계속 진행합니다."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:539
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "새 버전으로 전환하기 전 최신 버전으로 업데이트하십시오"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:547
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:544
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "rebase 작업에 원격 참조가 없습니다. 버그를 보고해 주십시오."
