@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-10 02:09+0000\n"
+"POT-Creation-Date: 2023-06-20 02:58+0000\n"
 "PO-Revision-Date: 2023-06-02 20:18+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -2240,19 +2240,19 @@ msgstr ""
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>Nova grava versio estis publikigita!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:533
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Vi havas pritraktatajn ĝisdatigojn por la nuna versio. Procedante ĉiuokaze."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:539
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Bonvolu ĝisdatigi al la plej nova versio antaŭ ol rebazi al grava versio"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:547
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:544
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "Mankas fora ref por rebaza operacio. Bonvolu registri cimon."
