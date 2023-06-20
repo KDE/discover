@@ -1090,7 +1090,7 @@ msgstr ""
 #: discover/qml/SourcesPage.qml:243
 #, kde-format
 msgid "Show contents"
-msgstr "Mostrar o contido"
+msgstr "Amosar o contido"
 
 #: discover/qml/SourcesPage.qml:283
 #, kde-format

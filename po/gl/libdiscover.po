@@ -1510,7 +1510,7 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
-"«%1» actualizouse por motivos de seguranza, recoméndase un reinicio da "
+"«%1» actualizouse por motivos de seguridade, recoméndase un reinicio da "
 "sesión."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
@@ -1519,7 +1519,7 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the system is "
 "recommended."
 msgstr ""
-"«%1» actualizouse por motivos de seguranza, recoméndase un reinicio do "
+"«%1» actualizouse por motivos de seguridade, recoméndase un reinicio do "
 "sistema."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
