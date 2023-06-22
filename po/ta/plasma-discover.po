@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-06 02:08+0000\n"
+"POT-Creation-Date: 2023-06-22 02:07+0000\n"
 "PO-Revision-Date: 2023-05-07 15:11+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -262,7 +262,7 @@ msgstr "சேர்"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:47
-#: discover/qml/ProgressView.qml:107 discover/qml/SourcesPage.qml:190
+#: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -854,7 +854,7 @@ msgstr "நிறுவு"
 msgid "Remove"
 msgstr "நீக்கு"
 
-#: discover/qml/InstalledPage.qml:16
+#: discover/qml/InstalledPage.qml:15
 #, kde-format
 msgid "Installed"
 msgstr "நிறுவியுள்ளவை"
@@ -864,29 +864,29 @@ msgstr "நிறுவியுள்ளவை"
 msgid "Resources for '%1'"
 msgstr "'%1' -இற்கானவை"
 
-#: discover/qml/ProgressView.qml:17
+#: discover/qml/ProgressView.qml:16
 #, kde-format
 msgid "Tasks (%1%)"
 msgstr "பணிகள் (%1%)"
 
-#: discover/qml/ProgressView.qml:17 discover/qml/ProgressView.qml:42
+#: discover/qml/ProgressView.qml:16 discover/qml/ProgressView.qml:41
 #, kde-format
 msgid "Tasks"
 msgstr "பணிகள்"
 
-#: discover/qml/ProgressView.qml:100
+#: discover/qml/ProgressView.qml:99
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3, இன்னும் %4"
 
-#: discover/qml/ProgressView.qml:101
+#: discover/qml/ProgressView.qml:100
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:102
+#: discover/qml/ProgressView.qml:101
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"

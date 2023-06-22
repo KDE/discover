@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-06 02:08+0000\n"
+"POT-Creation-Date: 2023-06-22 02:07+0000\n"
 "PO-Revision-Date: 2023-03-06 18:47+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -271,7 +271,7 @@ msgstr "Pridať"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:47
-#: discover/qml/ProgressView.qml:107 discover/qml/SourcesPage.qml:190
+#: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -879,7 +879,7 @@ msgstr "Nainštalovať"
 msgid "Remove"
 msgstr "Odstrániť"
 
-#: discover/qml/InstalledPage.qml:16
+#: discover/qml/InstalledPage.qml:15
 #, kde-format
 msgid "Installed"
 msgstr "Nainštalované"
@@ -889,29 +889,29 @@ msgstr "Nainštalované"
 msgid "Resources for '%1'"
 msgstr "Prostriedky pre \"%1\""
 
-#: discover/qml/ProgressView.qml:17
+#: discover/qml/ProgressView.qml:16
 #, kde-format
 msgid "Tasks (%1%)"
 msgstr "Úlohy (%1%)"
 
-#: discover/qml/ProgressView.qml:17 discover/qml/ProgressView.qml:42
+#: discover/qml/ProgressView.qml:16 discover/qml/ProgressView.qml:41
 #, kde-format
 msgid "Tasks"
 msgstr "Úlohy"
 
-#: discover/qml/ProgressView.qml:100
+#: discover/qml/ProgressView.qml:99
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3, %4 zostáva"
 
-#: discover/qml/ProgressView.qml:101
+#: discover/qml/ProgressView.qml:100
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:102
+#: discover/qml/ProgressView.qml:101
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
