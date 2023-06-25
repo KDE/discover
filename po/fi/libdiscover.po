@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-20 02:58+0000\n"
-"PO-Revision-Date: 2023-04-02 16:08+0300\n"
+"PO-Revision-Date: 2023-05-29 21:04+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-POT-Import-Date: 2013-01-13 20:43:19+0000\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -968,10 +968,9 @@ msgid "Delete settings and user data"
 msgstr "Poista asetukset ja käyttäjätiedot"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Poista asetukset ja käyttäjätiedot"
+msgstr "Poistetaan asetuksia ja käyttäjätietoa…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
@@ -2086,11 +2085,9 @@ msgstr ""
 "paketoijille."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "No Change"
+#, kde-format
 msgid "Confirm Changes"
-msgstr "Ei muutosta"
+msgstr "Vahvista muutokset"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2325,11 +2322,12 @@ msgid "ostree remotes"
 msgstr "ostree-etäyhteydet"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
-msgstr "rpm-ostree: Käynnistettyä tilaa ei löytynyt. Ilmoita ohjelmavirheestä."
+msgstr ""
+"rpm-ostree-taustajärjestelmä: Virhe: DBus-liitäntää ei ole annettu. Ilmoita "
+"ohjelmavirheestä."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
@@ -2337,21 +2335,25 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-taustajärjestelmä: Toimenpidettä ei voi aloittaa resurssille, "
+"jonka muoto on virheellinen. Ilmoita ohjelmavirheestä."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
-msgstr "rpm-ostree: Käynnistettyä tilaa ei löytynyt. Ilmoita ohjelmavirheestä."
+msgstr ""
+"rpm-ostree-taustajärjestelmä: Virhe: pohjaa ei voi vaihtaa tyhjään "
+"viitteeseen. Ilmoita ohjelmavirheestä."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
-msgstr "rpm-ostree: Käynnistettyä tilaa ei löytynyt. Ilmoita ohjelmavirheestä."
+msgstr ""
+"rpm-ostree-taustajärjestelmä: Virhe: pyydettiin tuntematonta tapahtumaa. "
+"Ilmoita ohjelmavirheestä."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
@@ -2363,10 +2365,11 @@ msgid ""
 msgstr "rpm-ostree-toimenpide epäonnistui, virhe:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
-msgstr "rpm-ostree: Käynnistettyä tilaa ei löytynyt. Ilmoita ohjelmavirheestä."
+msgstr ""
+"rpm-ostree-taustajärjestelmä: Virhe: tuntematon resurssimuoto. Ilmoita "
+"ohjelmavirheestä."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
