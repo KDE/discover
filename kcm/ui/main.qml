@@ -92,7 +92,7 @@ SimpleKCM {
                 }
                 return index
             }
-            onActivated: {
+            onActivated: index => {
                 kcm.updatesSettings.requiredNotificationInterval = options[index]
             }
             SettingStateProxy {
