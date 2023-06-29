@@ -12,10 +12,12 @@
 #include <QRegularExpression>
 #include <QSharedPointer>
 #include <QTextStream>
+#include <qqmlintegration.h>
 
 class ReadFile : public QObject, public QQmlParserStatus
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_INTERFACES(QQmlParserStatus)
     Q_PROPERTY(QString contents READ contents NOTIFY contentsChanged)
     Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged)

@@ -11,6 +11,7 @@
 #include <QSortFilterProxyModel>
 #include <QString>
 #include <QStringList>
+#include <qqmlintegration.h>
 
 #include <Category/Category.h>
 
@@ -23,6 +24,7 @@ class AggregatedResultsStream;
 class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, public QQmlParserStatus
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_INTERFACES(QQmlParserStatus)
     Q_PROPERTY(Roles sortRole READ sortRole WRITE setSortRole NOTIFY sortRoleChanged)
     Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder NOTIFY sortOrderChanged)

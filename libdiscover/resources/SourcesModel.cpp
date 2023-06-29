@@ -11,8 +11,6 @@
 #include <QtGlobal>
 #include <utils.h>
 
-Q_GLOBAL_STATIC(SourcesModel, s_sources)
-
 const auto DisplayName = "DisplayName";
 const auto SourcesBackendId = "SourcesBackend";
 
@@ -25,7 +23,8 @@ SourcesModel::~SourcesModel() = default;
 
 SourcesModel *SourcesModel::global()
 {
-    return s_sources;
+    static SourcesModel model;
+    return &model;
 }
 
 QHash<int, QByteArray> SourcesModel::roleNames() const

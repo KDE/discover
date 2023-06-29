@@ -7,11 +7,6 @@
 #include "DiscoverObject.h"
 #include "CachedNetworkAccessManager.h"
 #include "DiscoverBackendsFactory.h"
-#include "DiscoverDeclarativePlugin.h"
-#include "FeaturedModel.h"
-#include "OdrsAppsModel.h"
-#include "PaginateModel.h"
-#include "UnityLauncher.h"
 #include <Transaction/TransactionModel.h>
 
 // Qt includes
@@ -61,32 +56,11 @@
 #include <unistd.h>
 #include <utils.h>
 
-#ifdef WITH_FEEDBACK
-#include "plasmauserfeedback.h"
-#endif
-#include "PowerManagementInterface.h"
-#include "discoversettings.h"
-
 class CachedNetworkAccessManagerFactory : public QQmlNetworkAccessManagerFactory
 {
     virtual QNetworkAccessManager *create(QObject *parent) override
     {
         return new CachedNetworkAccessManager(QStringLiteral("images"), parent);
-    }
-};
-
-class OurSortFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
-{
-    Q_OBJECT
-    Q_INTERFACES(QQmlParserStatus)
-public:
-    void classBegin() override
-    {
-    }
-    void componentComplete() override
-    {
-        if (dynamicSortFilter())
-            sort(0);
     }
 };
 
@@ -103,44 +77,12 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
     delete factory;
     m_engine->setNetworkAccessManagerFactory(m_networkAccessManagerFactory.data());
 
-    qmlRegisterType<UnityLauncher>("org.kde.discover.app", 1, 0, "UnityLauncher");
-    qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
-    qmlRegisterType<FeaturedModel>("org.kde.discover.app", 1, 0, "FeaturedModel");
-    qmlRegisterType<OdrsAppsModel>("org.kde.discover.app", 1, 0, "OdrsAppsModel");
-    qmlRegisterType<PowerManagementInterface>("org.kde.discover.app", 1, 0, "PowerManagementInterface");
-    qmlRegisterType<OurSortFilterProxyModel>("org.kde.discover.app", 1, 0, "QSortFilterProxyModel");
-#ifdef WITH_FEEDBACK
-    qmlRegisterSingletonType<PlasmaUserFeedback>("org.kde.discover.app", 1, 0, "UserFeedbackSettings", [](QQmlEngine *, QJSEngine *) -> QObject * {
-        return new PlasmaUserFeedback(KSharedConfig::openConfig(QStringLiteral("PlasmaUserFeedback"), KConfig::NoGlobals));
-    });
-#endif
-    qmlRegisterSingletonType<DiscoverSettings>("org.kde.discover.app", 1, 0, "DiscoverSettings", [](QQmlEngine *engine, QJSEngine *) -> QObject * {
-        auto r = new DiscoverSettings;
-        r->setParent(engine);
-        connect(r, &DiscoverSettings::installedPageSortingChanged, r, &DiscoverSettings::save);
-        connect(r, &DiscoverSettings::appsListPageSortingChanged, r, &DiscoverSettings::save);
-        return r;
-    });
-    qmlRegisterAnonymousType<QQuickView>("org.kde.discover.app", 1);
-
-    qmlRegisterAnonymousType<KAboutData>("org.kde.discover.app", 1);
-    qmlRegisterAnonymousType<KAboutLicense>("org.kde.discover.app", 1);
-    qmlRegisterAnonymousType<KAboutPerson>("org.kde.discover.app", 1);
-
-    qmlRegisterUncreatableType<DiscoverObject>("org.kde.discover.app", 1, 0, "DiscoverMainWindow", QStringLiteral("don't do that"));
-
-    auto uri = "org.kde.discover";
-    DiscoverDeclarativePlugin *plugin = new DiscoverDeclarativePlugin;
-    plugin->setParent(this);
-    plugin->initializeEngine(m_engine, uri);
-    plugin->registerTypes(uri);
-
     m_engine->setInitialProperties(initialProperties);
     m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
     m_engine->rootContext()->setContextProperty(QStringLiteral("discoverAboutData"), QVariant::fromValue(KAboutData::applicationData()));
 
     connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &DiscoverObject::integrateObject);
-    m_engine->load(QUrl(QStringLiteral("qrc:/qml/DiscoverWindow.qml")));
+    m_engine->load(QUrl(QStringLiteral("qrc:/qt/qml/org/kde/discover/app/qml/DiscoverWindow.qml")));
 
     connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, [this]() {
         const auto objs = m_engine->rootObjects();
@@ -253,7 +195,7 @@ void DiscoverObject::showLoadingPage()
         return;
     }
 
-    obj->setProperty("currentTopLevel", QStringLiteral("qrc:/qml/LoadingPage.qml"));
+    obj->setProperty("currentTopLevel", QStringLiteral("qrc:/qt/qml/org/kde/discover/app/qml/LoadingPage.qml"));
 }
 
 void DiscoverObject::openCategory(const QString &category)

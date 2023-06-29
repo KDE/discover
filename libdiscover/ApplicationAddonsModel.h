@@ -8,6 +8,7 @@
 
 #include "Transaction/AddonList.h"
 #include <QAbstractListModel>
+#include <qqmlintegration.h>
 #include <resources/PackageState.h>
 
 #include "discovercommon_export.h"
@@ -18,6 +19,7 @@ class AbstractResource;
 class DISCOVERCOMMON_EXPORT ApplicationAddonsModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(AbstractResource *application READ application WRITE setApplication NOTIFY applicationChanged)
     Q_PROPERTY(bool hasChanges READ hasChanges NOTIFY stateChanged)
     Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY applicationChanged)

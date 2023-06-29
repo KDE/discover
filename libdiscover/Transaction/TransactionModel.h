@@ -9,12 +9,17 @@
 #include <QAbstractListModel>
 
 #include "Transaction.h"
+#include "resources/AbstractResource.h"
 
 #include "discovercommon_export.h"
+
+#include <QQmlEngine>
 
 class DISCOVERCOMMON_EXPORT TransactionModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
     Q_PROPERTY(int progress READ progress NOTIFY progressChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
     Q_PROPERTY(QString mainTransactionText READ mainTransactionText NOTIFY mainTransactionTextChanged)
@@ -29,7 +34,6 @@ public:
         TransactionRole,
     };
 
-    explicit TransactionModel(QObject *parent = nullptr);
     static TransactionModel *global();
 
     // Reimplemented from QAbstractListModel
@@ -56,7 +60,15 @@ public:
 
     QString mainTransactionText() const;
 
+    static TransactionModel *create(QQmlEngine *, QJSEngine *)
+    {
+        TransactionModel *result = global();
+        QQmlEngine::setObjectOwnership(result, QQmlEngine::CppOwnership);
+        return result;
+    }
+
 private:
+    explicit TransactionModel(QObject *parent = nullptr);
     QVector<Transaction *> m_transactions;
 
 Q_SIGNALS:

@@ -170,7 +170,7 @@ int main(int argc, char **argv)
             options.removeAll(QStringLiteral("test"));
             QVariantMap initialProperties;
             if (!options.isEmpty() || !parser->positionalArguments().isEmpty())
-                initialProperties = {{QStringLiteral("currentTopLevel"), QStringLiteral("qrc:/qml/LoadingPage.qml")}};
+                initialProperties = {{QStringLiteral("currentTopLevel"), QStringLiteral("qrc:/qt/qml/org/kde/discover/app/qml/LoadingPage.qml")}};
             if (feedback) {
                 initialProperties.insert(QStringLiteral("visible"), false);
             }

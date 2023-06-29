@@ -23,6 +23,20 @@ if (NOT Flatpak_VERSION VERSION_LESS 1.1.2)
     target_compile_definitions(flatpak-backend PRIVATE -DFLATPAK_VERBOSE_PROGRESS -DFLATPAK_LIST_UNUSED_REFS)
 endif()
 
+qt_add_qml_module(flatpak-backend-qml URI org.kde.discover.flatpak
+    NO_PLUGIN
+    QML_FILES
+    qml/FlatpakAttention.qml
+    qml/FlatpakEolReason.qml
+    qml/FlatpakOldBeta.qml
+    qml/FlatpakRemoveData.qml
+    qml/PermissionsList.qml
+)
+
+target_link_libraries(flatpak-backend flatpak-backend-qml)
+
+install(TARGETS flatpak-backend-qml DESTINATION ${KDE_INSTALL_LIBDIR})
+
 install(TARGETS flatpak-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 install(FILES flatpak-backend-categories.xml DESTINATION ${KDE_INSTALL_DATADIR}/libdiscover/categories)
 

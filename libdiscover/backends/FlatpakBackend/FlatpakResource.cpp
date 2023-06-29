@@ -51,10 +51,10 @@ static QString iconCachePath(const AppStream::Icon &icon)
 }
 
 const QStringList FlatpakResource::s_objects({
-    QStringLiteral("qrc:/qml/FlatpakAttention.qml"),
-    QStringLiteral("qrc:/qml/FlatpakRemoveData.qml"),
-    QStringLiteral("qrc:/qml/FlatpakOldBeta.qml"),
-    QStringLiteral("qrc:/qml/FlatpakEolReason.qml"),
+    QStringLiteral("qrc:/qt/qml/org/kde/discover/flatpak/qml/FlatpakAttention.qml"),
+    QStringLiteral("qrc:/qt/qml/org/kde/discover/flatpak/qml/FlatpakRemoveData.qml"),
+    QStringLiteral("qrc:/qt/qml/org/kde/discover/flatpak/qml/FlatpakOldBeta.qml"),
+    QStringLiteral("qrc:/qt/qml/org/kde/discover/flatpak/qml/FlatpakEolReason.qml"),
 });
 const QStringList FlatpakResource::s_bottomObjects({QStringLiteral("qrc:/qml/PermissionsList.qml")});
 Q_GLOBAL_STATIC(QNetworkAccessManager, manager)

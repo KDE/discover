@@ -15,7 +15,6 @@ endif()
 add_executable(plasma-discover ${plasma_discover_SRCS}
     main.cpp
     DiscoverObject.cpp
-    DiscoverDeclarativePlugin.cpp
 
     AbstractAppsModel.cpp
     OdrsAppsModel.cpp
@@ -24,17 +23,14 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
     UnityLauncher.cpp
     ReadFile.cpp
     PowerManagementInterface.cpp
+    settingswrapper.cpp
 
     DiscoverObject.h
-    DiscoverDeclarativePlugin.h
 
     FeaturedModel.h
     PaginateModel.h
     UnityLauncher.h
     ReadFile.h
-
-
-    resources.qrc
 )
 add_executable(Plasma::Discover ALIAS plasma-discover)
 set_target_properties(plasma-discover PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
@@ -64,6 +60,45 @@ if (TARGET KUserFeedbackCoreQt6)
     target_link_libraries(plasma-discover PRIVATE KUserFeedbackCoreQt6)
     target_compile_definitions(plasma-discover PRIVATE WITH_FEEDBACK=1)
 endif()
+
+qt_add_qml_module(plasma-discover URI org.kde.discover.app VERSION 1.0
+    QML_FILES
+    qml/DiscoverWindow.qml
+    qml/DiscoverDrawer.qml
+    qml/TopLevelPageData.qml
+    qml/ApplicationsListPage.qml
+    qml/ApplicationPage.qml
+    qml/ApplicationResourceButton.qml
+    qml/ReviewsPage.qml
+    qml/AddonsView.qml
+    qml/ApplicationDelegate.qml
+    qml/GridApplicationDelegate.qml
+    qml/InstallApplicationButton.qml
+    qml/Rating.qml
+    qml/UpdatesPage.qml
+    qml/ReviewDialog.qml
+    qml/ProgressView.qml
+    qml/BrowsingPage.qml
+    qml/InstalledPage.qml
+    qml/SearchPage.qml
+    qml/SourcesPage.qml
+    qml/ReviewDelegate.qml
+    qml/AddSourceDialog.qml
+    qml/ConditionalLoader.qml
+    qml/ConditionalObject.qml
+    qml/ApplicationScreenshots.qml
+    qml/LabelBackground.qml
+    qml/DiscoverInlineMessage.qml
+    qml/DiscoverPage.qml
+    qml/ActionListItem.qml
+    qml/LoadingPage.qml
+    qml/SearchField.qml
+    qml/AboutPage.qml
+    qml/Feedback.qml
+    qml/ConvertDiscoverAction.qml
+    qml/WebflowDialog.qml
+    qml/navigation.js
+)
 
 install(TARGETS plasma-discover ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 

@@ -8,10 +8,12 @@
 #pragma once
 
 #include <QObject>
+#include <qqmlintegration.h>
 
 class UnityLauncher : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(QString launcherId READ launcherId WRITE setLauncherId)
     Q_PROPERTY(bool progressVisible READ progressVisible WRITE setProgressVisible)
     Q_PROPERTY(int progress READ progress WRITE setProgress)

@@ -8,9 +8,12 @@
 
 #include "AbstractAppsModel.h"
 
+#include <qqmlintegration.h>
+
 class OdrsAppsModel : public AbstractAppsModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     OdrsAppsModel();
 

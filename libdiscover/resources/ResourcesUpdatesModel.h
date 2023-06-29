@@ -11,6 +11,7 @@
 #include <QDateTime>
 #include <QPointer>
 #include <QStandardItemModel>
+#include <qqmlintegration.h>
 
 class AbstractResource;
 class UpdateTransaction;
@@ -19,6 +20,7 @@ class Transaction;
 class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
     Q_PROPERTY(QDateTime lastUpdate READ lastUpdate NOTIFY progressingChanged)
     Q_PROPERTY(qint64 secsToLastUpdate READ secsToLastUpdate NOTIFY progressingChanged)

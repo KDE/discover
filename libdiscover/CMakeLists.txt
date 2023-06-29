@@ -68,5 +68,9 @@ generate_export_header(DiscoverCommon)
 
 target_include_directories(DiscoverCommon PRIVATE ${PHONON_INCLUDES} PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 
+qt_add_qml_module(DiscoverCommon URI org.kde.discover VERSION 2.0 NO_PLUGIN)
+
+target_include_directories(DiscoverCommon PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/resources ${CMAKE_CURRENT_SOURCE_DIR}/ReviewsBackend ${CMAKE_CURRENT_SOURCE_DIR}/Transaction ${CMAKE_CURRENT_SOURCE_DIR}/Category ${CMAKE_CURRENT_SOURCE_DIR}/UpdateModel)
+
 install(TARGETS DiscoverCommon DESTINATION ${KDE_INSTALL_LIBDIR}/plasma-discover)
 install(FILES resources/discoverabstractnotifier.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFYRCDIR})

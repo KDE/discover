@@ -12,9 +12,14 @@
 #include <QConcatenateTablesProxyModel>
 #include <QSet>
 
+#include <QQmlEngine>
+
 class DISCOVERCOMMON_EXPORT SourcesModel : public QConcatenateTablesProxyModel
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
+
     Q_PROPERTY(QVector<AbstractSourcesBackend *> sources READ sources NOTIFY sourcesChanged)
 public:
     enum Roles {
@@ -25,7 +30,6 @@ public:
     };
     Q_ENUM(Roles)
 
-    explicit SourcesModel(QObject *parent = nullptr);
     ~SourcesModel() override;
 
     static SourcesModel *global();
@@ -36,10 +40,20 @@ public:
 
     Q_SCRIPTABLE AbstractSourcesBackend *sourcesBackendByName(const QString &name) const;
     QVector<AbstractSourcesBackend *> sources() const;
+
+    static SourcesModel *create(QQmlEngine *, QJSEngine *)
+    {
+        SourcesModel *result = global();
+
+        QQmlEngine::setObjectOwnership(result, QQmlEngine::CppOwnership);
+        return result;
+    }
+
 Q_SIGNALS:
     void sourcesChanged();
     void showingNow();
 
 private:
+    explicit SourcesModel(QObject *parent = nullptr);
     const QAbstractItemModel *modelAt(const QModelIndex &idx) const;
 };

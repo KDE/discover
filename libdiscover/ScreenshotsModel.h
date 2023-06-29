@@ -13,9 +13,12 @@
 
 class AbstractResource;
 
+#include <QQmlEngine>
+
 class DISCOVERCOMMON_EXPORT ScreenshotsModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(AbstractResource *application READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(int count READ count NOTIFY countChanged)
 public:

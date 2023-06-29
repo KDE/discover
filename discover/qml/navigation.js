@@ -19,7 +19,7 @@ function openApplicationMime(mime) {
 }
 
 function openApplicationList(props) {
-    var page = window.stack.push("qrc:/qml/ApplicationsListPage.qml", props)
+    var page = window.stack.push("qrc:/qt/qml/org/kde/discover/app/qml/ApplicationsListPage.qml", props)
     if (props.search === "") {
         page.clearSearch();
     }
@@ -32,15 +32,15 @@ function openCategory(category, search) {
 
 function openApplication(application) {
     console.assert(application)
-    window.stack.push("qrc:/qml/ApplicationPage.qml", { application })
+    window.stack.push("qrc:/qt/qml/org/kde/discover/app/qml/ApplicationPage.qml", { application })
 }
 
 function openReviews(model) {
-    window.stack.push("qrc:/qml/ReviewsPage.qml", { model })
+    window.stack.push("qrc:/qt/qml/org/kde/discover/app/qml/ReviewsPage.qml", { model })
 }
 
 function openExtends(extending, appname) {
-    window.stack.push("qrc:/qml/ApplicationsListPage.qml", { extending, title: i18n("Addons for %1", appname) })
+    window.stack.push("qrc:/qt/qml/org/kde/discover/app/qml/ApplicationsListPage.qml", { extending, title: i18n("Addons for %1", appname) })
 }
 
 function openHome() {

@@ -15,11 +15,10 @@
 #include "libdiscover_debug.h"
 #include "resources/AbstractResource.h"
 
-Q_GLOBAL_STATIC(TransactionModel, globalTransactionModel)
-
 TransactionModel *TransactionModel::global()
 {
-    return globalTransactionModel;
+    static TransactionModel model;
+    return &model;
 }
 
 TransactionModel::TransactionModel(QObject *parent)

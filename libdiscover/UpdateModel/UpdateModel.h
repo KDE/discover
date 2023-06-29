@@ -9,6 +9,7 @@
 #include "discovercommon_export.h"
 #include "resources/AbstractBackendUpdater.h"
 #include <QAbstractListModel>
+#include <qqmlintegration.h>
 
 class QTimer;
 class ResourcesUpdatesModel;
@@ -18,6 +19,7 @@ class UpdateItem;
 class DISCOVERCOMMON_EXPORT UpdateModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(ResourcesUpdatesModel *backend READ backend WRITE setBackend)
     Q_PROPERTY(bool hasUpdates READ hasUpdates NOTIFY hasUpdatesChanged)
     Q_PROPERTY(int toUpdateCount READ toUpdateCount NOTIFY toUpdateChanged)

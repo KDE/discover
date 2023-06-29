@@ -6,7 +6,9 @@
 
 #pragma once
 
+#include <QDBusPendingCallWatcher>
 #include <QObject>
+#include <qqmlintegration.h>
 
 #include <memory>
 
@@ -16,6 +18,8 @@ class PowerManagementInterfacePrivate;
 class PowerManagementInterface : public QObject
 {
     Q_OBJECT
+
+    QML_ELEMENT
 
     Q_PROPERTY(QString reason READ reason WRITE setReason)
 

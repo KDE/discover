@@ -13,6 +13,8 @@
 #include "AbstractResourcesBackend.h"
 #include "discovercommon_export.h"
 
+#include <QQmlEngine>
+
 class DiscoverAction;
 
 class DISCOVERCOMMON_EXPORT AggregatedResultsStream : public ResultsStream
@@ -70,6 +72,8 @@ public:
 class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     Q_PROPERTY(bool hasSecurityUpdates READ hasSecurityUpdates NOTIFY updatesCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
@@ -126,6 +130,13 @@ public:
     InlineMessage *inlineMessage() const
     {
         return m_inlineMessage.data();
+    }
+
+    static ResourcesModel *create(QQmlEngine *, QJSEngine *)
+    {
+        ResourcesModel *result = global();
+        QQmlEngine::setObjectOwnership(result, QQmlEngine::CppOwnership);
+        return result;
     }
 
 public Q_SLOTS:

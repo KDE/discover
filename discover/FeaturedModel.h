@@ -8,6 +8,7 @@
 
 #include "AbstractAppsModel.h"
 #include <QPointer>
+#include <qqmlintegration.h>
 
 namespace KIO
 {
@@ -17,6 +18,7 @@ class StoredTransferJob;
 class FeaturedModel : public AbstractAppsModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     FeaturedModel();
     ~FeaturedModel() override

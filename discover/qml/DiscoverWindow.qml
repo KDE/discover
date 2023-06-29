@@ -13,12 +13,12 @@ Kirigami.ApplicationWindow {
 
     property string currentTopLevel
 
-    readonly property string topBrowsingComp: ("qrc:/qml/BrowsingPage.qml")
-    readonly property string topInstalledComp: ("qrc:/qml/InstalledPage.qml")
-    readonly property string topSearchComp: ("qrc:/qml/SearchPage.qml")
-    readonly property string topUpdateComp: ("qrc:/qml/UpdatesPage.qml")
-    readonly property string topSourcesComp: ("qrc:/qml/SourcesPage.qml")
-    readonly property string topAboutComp: ("qrc:/qml/AboutPage.qml")
+    readonly property string topBrowsingComp: ("qrc:/qt/qml/org/kde/discover/app/qml/BrowsingPage.qml")
+    readonly property string topInstalledComp: ("qrc:/qt/qml/org/kde/discover/app/qml/InstalledPage.qml")
+    readonly property string topSearchComp: ("qrc:/qt/qml/org/kde/discover/app/qml/SearchPage.qml")
+    readonly property string topUpdateComp: ("qrc:/qt/qml/org/kde/discover/app/qml/UpdatesPage.qml")
+    readonly property string topSourcesComp: ("qrc:/qt/qml/org/kde/discover/app/qml/SourcesPage.qml")
+    readonly property string topAboutComp: ("qrc:/qt/qml/org/kde/discover/app/qml/AboutPage.qml")
     readonly property QtObject stack: window.pageStack
 
     objectName: "DiscoverMainWindow"

@@ -18,6 +18,25 @@ class QQmlApplicationEngine;
 class CachedNetworkAccessManagerFactory;
 class TransactionsJob;
 
+#include <QSortFilterProxyModel>
+
+class OurSortFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
+{
+    Q_OBJECT
+    QML_ELEMENT
+    QML_NAMED_ELEMENT(QSortFilterProxyModel)
+    Q_INTERFACES(QQmlParserStatus)
+public:
+    void classBegin() override
+    {
+    }
+    void componentComplete() override
+    {
+        if (dynamicSortFilter())
+            sort(0);
+    }
+};
+
 class DiscoverObject : public QObject
 {
     Q_OBJECT

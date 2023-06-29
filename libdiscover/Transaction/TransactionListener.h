@@ -8,6 +8,7 @@
 #pragma once
 
 #include <QObject>
+#include <qqmlintegration.h>
 
 #include "Transaction.h"
 #include "discovercommon_export.h"
@@ -17,6 +18,7 @@ class AbstractResource;
 class DISCOVERCOMMON_EXPORT TransactionListener : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(AbstractResource *resource READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(Transaction *transaction READ transaction WRITE setTransaction NOTIFY transactionChanged)
     Q_PROPERTY(bool isCancellable READ isCancellable NOTIFY cancellableChanged)

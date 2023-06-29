@@ -9,6 +9,7 @@
 #include "discovercommon_export.h"
 #include <QModelIndex>
 #include <QSharedPointer>
+#include <qqmlintegration.h>
 
 class Review;
 typedef QSharedPointer<Review> ReviewPtr;
@@ -18,6 +19,7 @@ class AbstractReviewsBackend;
 class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(AbstractReviewsBackend *backend READ backend NOTIFY resourceChanged)
     Q_PROPERTY(AbstractResource *resource READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY rowsChanged)

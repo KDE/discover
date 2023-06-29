@@ -9,7 +9,7 @@ import QtQuick.Layouts 1.1
 import org.kde.kirigami 2.10 as Kirigami
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import "navigation.js" as Navigation
+import "qrc:/qt/qml/org/kde/discover/app/qml/navigation.js" as Navigation
 
 Kirigami.InlineMessage {
     id: oldBetaItem

@@ -17,6 +17,7 @@
 #include <QStringList>
 #include <QUrl>
 #include <QVector>
+#include <qqmlintegration.h>
 
 #include "PackageState.h"
 #include "discovercommon_export.h"
@@ -56,6 +57,8 @@ using Screenshots = QVector<Screenshot>;
 class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("should come from the ResourcesModel")
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString packageName READ packageName CONSTANT)
     Q_PROPERTY(QString comment READ comment CONSTANT)
