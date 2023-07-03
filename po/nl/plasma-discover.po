@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-22 02:07+0000\n"
+"POT-Creation-Date: 2023-07-03 02:30+0000\n"
 "PO-Revision-Date: 2023-05-06 12:32+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -109,7 +109,7 @@ msgstr ""
 "Rapporteer dit probleem aan de makers van pakketten van uw distributie."
 
 #: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
-#: discover/main.cpp:117 discover/qml/BrowsingPage.qml:20
+#: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
 msgstr "Ontdekken"
@@ -182,59 +182,59 @@ msgstr ""
 msgid "Supports appstream: url scheme"
 msgstr "Ondersteunt appstream: url schema"
 
-#: discover/main.cpp:119
+#: discover/main.cpp:123
 #, kde-format
 msgid "An application explorer"
 msgstr "Een zoekprogramma naar toepassingen"
 
-#: discover/main.cpp:121
+#: discover/main.cpp:125
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010-2022 Ontwikkelteam van Plasma"
 
-#: discover/main.cpp:122
+#: discover/main.cpp:126
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:127
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:128
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Kwaliteitscontrole, ontwerp en bruikbaarheid"
 
-#: discover/main.cpp:128
+#: discover/main.cpp:132
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:133
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:136
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Freek de Kruijf"
 
-#: discover/main.cpp:136
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "freekdekruijf@kde.nl"
 
-#: discover/main.cpp:149
+#: discover/main.cpp:153
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Beschikbare backends:\n"
 
-#: discover/main.cpp:205
+#: discover/main.cpp:209
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Beschikbare modi:\n"
