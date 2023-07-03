@@ -14,8 +14,9 @@
 #include <resources/ResourcesProxyModel.h>
 #include <resources/SourcesModel.h>
 
+#include <QSignalSpy>
+#include <QStandardPaths>
 #include <QTest>
-#include <QtTest>
 
 class FlatpakTest : public QObject
 {

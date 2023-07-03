@@ -19,7 +19,7 @@
 #include <resources/ResourcesProxyModel.h>
 #include <resources/ResourcesUpdatesModel.h>
 
-#include <QtTest>
+#include <QTest>
 
 QTEST_MAIN(DummyTest)
 

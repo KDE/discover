@@ -17,7 +17,6 @@
 #include <resources/ResourcesUpdatesModel.h>
 
 #include <QTest>
-#include <QtTest>
 
 class UpdateDummyTest : public QObject
 {

@@ -7,7 +7,7 @@
 #include <Category/CategoriesReader.h>
 #include <Category/Category.h>
 #include <QList>
-#include <QtTest>
+#include <QTest>
 
 class CategoriesTest : public QObject
 {

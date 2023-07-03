@@ -6,8 +6,9 @@
 
 #include "../PaginateModel.h"
 #include <QAbstractItemModelTester>
+#include <QSignalSpy>
 #include <QStringListModel>
-#include <QtTest>
+#include <QTest>
 
 void insertRow(QStringListModel *model, int row, const QString &appendString)
 {
