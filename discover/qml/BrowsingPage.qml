@@ -119,10 +119,11 @@ DiscoverPage {
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
             text: i18nc("@title:group", "Editor's Choice")
-            visible: !featuredModel.isFetching
+            visible: featuredRep.count > 0 && !featuredModel.isFetching
         }
 
         Repeater {
+            id: featuredRep
             model: FeaturedModel {
                 id: featuredModel
             }
