@@ -87,9 +87,11 @@ DiscoverPage {
         Kirigami.Action {
             visible: !appsModel.sortByRelevancy
             text: i18n("Sort: %1", sortGroup.checkedAction.text)
+            icon.name: "view-sort"
             Action {
                 ActionGroup.group: sortGroup
                 text: i18n("Name")
+                icon.name: "sort-name"
                 onTriggered: {
                     DiscoverSettings[page.sortProperty] = ResourcesProxyModel.NameRole
                 }
@@ -99,6 +101,7 @@ DiscoverPage {
             Action {
                 ActionGroup.group: sortGroup
                 text: i18n("Rating")
+                icon.name: "rating"
                 onTriggered: {
                     DiscoverSettings[page.sortProperty] = ResourcesProxyModel.SortableRatingRole
                 }
@@ -108,6 +111,7 @@ DiscoverPage {
             Action {
                 ActionGroup.group: sortGroup
                 text: i18n("Size")
+                icon.name: "download"
                 onTriggered: {
                     DiscoverSettings[page.sortProperty] = ResourcesProxyModel.SizeRole
                 }
@@ -117,6 +121,7 @@ DiscoverPage {
             Action {
                 ActionGroup.group: sortGroup
                 text: i18n("Release Date")
+                icon.name: "change-date-symbolic"
                 onTriggered: {
                     DiscoverSettings[page.sortProperty] = ResourcesProxyModel.ReleaseDateRole
                 }
