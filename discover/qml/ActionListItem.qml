@@ -19,8 +19,12 @@ Kirigami.BasicListItem {
     Keys.onReturnPressed: trigger()
 
     function trigger() {
-        drawer.resetMenu()
-        action.trigger()
+        if (enabled) {
+            if (typeof drawer !== "undefined") {
+                drawer.resetMenu()
+            }
+            action.trigger()
+        }
     }
 
     Kirigami.MnemonicData.enabled: item.enabled && item.visible
@@ -34,7 +38,7 @@ Kirigami.BasicListItem {
 
     readonly property var p0: Shortcut {
         sequence: item.Kirigami.MnemonicData.sequence
-        onActivated: item.clicked()
+        onActivated: item.trigger()
     }
 
     // Using the generic onPressed so individual instances can override
