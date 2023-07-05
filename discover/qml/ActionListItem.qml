@@ -39,7 +39,7 @@ Kirigami.BasicListItem {
 
     // Using the generic onPressed so individual instances can override
     // behaviour using Keys.on{Up,Down}Pressed
-    Keys.onPressed: {
+    Keys.onPressed: event => {
         if (event.accepted) {
             return
         }
