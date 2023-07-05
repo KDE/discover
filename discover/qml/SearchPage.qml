@@ -8,7 +8,6 @@ import QtQuick 2.5
 import QtQuick.Controls 2.15 as Controls
 import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.14 as Kirigami
-import QtGraphicalEffects 1.12
 
 ApplicationsListPage {
     id: searchPage
