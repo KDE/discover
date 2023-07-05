@@ -4,14 +4,14 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.5
-import QtQuick.Controls 2.3
-import QtQuick.Layouts 1.1
-import QtQuick.Window 2.2
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
+import QtQuick.Window
 import "navigation.js" as Navigation
-import org.kde.discover.app 1.0
-import org.kde.discover 2.0
-import org.kde.kirigami 2.14 as Kirigami
+import org.kde.discover.app
+import org.kde.discover
+import org.kde.kirigami 2 as Kirigami
 
 DiscoverPage {
     id: page
@@ -78,7 +78,7 @@ DiscoverPage {
         refreshing = false
     }
 
-    ActionGroup {
+    QQC2.ActionGroup {
         id: sortGroup
         exclusive: true
     }
@@ -88,8 +88,8 @@ DiscoverPage {
             visible: !appsModel.sortByRelevancy
             text: i18n("Sort: %1", sortGroup.checkedAction.text)
             icon.name: "view-sort"
-            Action {
-                ActionGroup.group: sortGroup
+            Kirigami.Action {
+                QQC2.ActionGroup.group: sortGroup
                 text: i18n("Name")
                 icon.name: "sort-name"
                 onTriggered: {
@@ -98,8 +98,8 @@ DiscoverPage {
                 checkable: true
                 checked: appsModel.sortRole === ResourcesProxyModel.NameRole
             }
-            Action {
-                ActionGroup.group: sortGroup
+            Kirigami.Action {
+                QQC2.ActionGroup.group: sortGroup
                 text: i18n("Rating")
                 icon.name: "rating"
                 onTriggered: {
@@ -108,8 +108,8 @@ DiscoverPage {
                 checkable: true
                 checked: appsModel.sortRole === ResourcesProxyModel.SortableRatingRole
             }
-            Action {
-                ActionGroup.group: sortGroup
+            Kirigami.Action {
+                QQC2.ActionGroup.group: sortGroup
                 text: i18n("Size")
                 icon.name: "download"
                 onTriggered: {
@@ -118,8 +118,8 @@ DiscoverPage {
                 checkable: true
                 checked: appsModel.sortRole === ResourcesProxyModel.SizeRole
             }
-            Action {
-                ActionGroup.group: sortGroup
+            Kirigami.Action {
+                QQC2.ActionGroup.group: sortGroup
                 text: i18n("Release Date")
                 icon.name: "change-date-symbolic"
                 onTriggered: {
@@ -139,7 +139,7 @@ DiscoverPage {
             currentIndex = 0;
         }
 
-        section.delegate: Label {
+        section.delegate: QQC2.Label {
             text: section
             anchors {
                 right: parent.right
@@ -184,7 +184,8 @@ DiscoverPage {
             Kirigami.PlaceholderMessage {
                 id: searchedForThingNotFound
 
-                property var searchAllCategoriesAction: Kirigami.Action {
+                Kirigami.Action {
+                    id: searchAllCategoriesAction
                     text: i18nc("@action:button", "Search in All Categories")
                     icon.name: "search"
                     onTriggered: {
@@ -193,7 +194,8 @@ DiscoverPage {
                         Navigation.openApplicationList({ search: page.search });
                     }
                 }
-                property var searchTheWebAction: Kirigami.Action {
+                Kirigami.Action {
+                    id: searchTheWebAction
                     text: i18nc("@action:button %1 is the name of an application", "Search the Web for \"%1\"", appsModel.search)
                     icon.name: "internet-web-browser"
                     onTriggered: {
@@ -212,7 +214,7 @@ DiscoverPage {
                                             "\"%1\" was not found in the \"%2\" category", appsModel.search, page.category.name)
                                     : i18nc("@info:placeholder %1 is the name of an application",
                                             "\"%1\" was not found in the available sources", appsModel.search)
-                explanation: page.category ? "" : i18nc("@info:placeholder%1 is the name of an application", "\"%1\" may be available on the web. Software acquired from the web has not been reviewed by your distributor for functionality or stability. Use with caution.", appsModel.search)
+                explanation: page.category ? "" : i18nc("@info:placeholder %1 is the name of an application", "\"%1\" may be available on the web. Software acquired from the web has not been reviewed by your distributor for functionality or stability. Use with caution.", appsModel.search)
 
                 // If we're in a category, first direct the user to search globally,
                 // because they might not have realized they were in a category and
@@ -247,7 +249,7 @@ DiscoverPage {
                 Layout.alignment: Qt.AlignCenter
                 text: i18n("Still looking…")
             }
-            BusyIndicator {
+            QQC2.BusyIndicator {
                 running: parent.visible
                 Layout.alignment: Qt.AlignCenter
                 Layout.preferredWidth: Kirigami.Units.gridUnit * 4

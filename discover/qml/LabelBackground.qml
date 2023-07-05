@@ -4,13 +4,11 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.1
-import QtQuick.Controls 2.1
-import QtQuick.Layouts 1.1
-import org.kde.discover.app 1.0
-import org.kde.kirigami 2.14 as Kirigami
+import QtQuick
+import QtQuick.Controls as QQC2
+import org.kde.kirigami 2 as Kirigami
 
-Control {
+QQC2.Control {
     id: root
 
     property alias text: theLabel.text
@@ -43,7 +41,7 @@ Control {
         }
     }
 
-    contentItem: Label {
+    contentItem: QQC2.Label {
         id: theLabel
         horizontalAlignment: Text.AlignHCenter
         color: root.inProgress ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
