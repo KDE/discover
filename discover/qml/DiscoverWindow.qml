@@ -175,7 +175,7 @@ Kirigami.ApplicationWindow {
     footer: Loader {
         active: !window.wideScreen
         visible: active // ensure that no height is used when not loaded
-        height: item ? item.implicitHeight : 0
+        height: item?.implicitHeight ?? 0
         sourceComponent: Kirigami.NavigationTabBar {
             actions: [
                 featuredAction,
