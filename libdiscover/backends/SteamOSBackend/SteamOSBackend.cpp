@@ -40,7 +40,7 @@ QString SteamOSBackend::service()
 
 QString SteamOSBackend::path()
 {
-    return QStringLiteral("com.steampowered.Atomupd1");
+    return QStringLiteral("/com/steampowered/Atomupd1");
 }
 
 SteamOSBackend::SteamOSBackend(QObject *parent)
