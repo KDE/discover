@@ -8,6 +8,8 @@
 
 #include <AppStreamQt/utils.h>
 #include <AppStreamQt/version.h>
+#include <KConfigGroup>
+#include <KSharedConfig>
 #include <QDebug>
 
 AppStreamIntegration *AppStreamIntegration::global()
@@ -31,13 +33,16 @@ std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStre
         return std::nullopt;
     }
 
+    KConfigGroup settings(KSharedConfig::openConfig(QStringLiteral("discoverrc")), "DistroUpgrade");
+    bool allowPreRelease = settings.readEntry<bool>("AllowPreRelease", false);
+
     QString currentVersion = osRelease()->versionId();
     std::optional<AppStream::Release> nextRelease;
     for (const AppStream::Component &dc : distroComponents) {
         const auto releases = dc.releases();
         for (const auto &r : releases) {
-            // Only look at stable releases
-            if (r.kind() != AppStream::Release::KindStable) {
+            // Only look at stable releases unless requested
+            if (!allowPreRelease && r.kind() != AppStream::Release::KindStable) {
                 continue;
             }
 

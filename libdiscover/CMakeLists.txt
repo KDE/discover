@@ -10,7 +10,7 @@ if (TARGET AppStreamQt)
     add_library(DiscoverAppStreamIntegration STATIC
         appstream/AppStreamIntegration.cpp
     )
-    target_link_libraries(DiscoverAppStreamIntegration KF6::CoreAddons AppStreamQt)
+    target_link_libraries(DiscoverAppStreamIntegration KF6::CoreAddons KF6::ConfigCore AppStreamQt)
     set_property(TARGET DiscoverAppStreamIntegration PROPERTY POSITION_INDEPENDENT_CODE ON)
 endif()
 
