@@ -6,6 +6,10 @@
 
 #include "AppStreamIntegration.h"
 
+#include <AppStreamQt/utils.h>
+#include <AppStreamQt/version.h>
+#include <QDebug>
+
 AppStreamIntegration *AppStreamIntegration::global()
 {
     static AppStreamIntegration *var = nullptr;
@@ -14,4 +18,45 @@ AppStreamIntegration *AppStreamIntegration::global()
     }
 
     return var;
+}
+
+std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStream::Pool *pool)
+{
+    QString distroId = AppStream::Utils::currentDistroComponentId();
+
+    // Look at releases to see if we have a new major version available.
+    const QList<AppStream::Component> distroComponents = pool->componentsById(distroId);
+    if (distroComponents.isEmpty()) {
+        qWarning() << "No component found for" << distroId;
+        return std::nullopt;
+    }
+
+    QString currentVersion = osRelease()->versionId();
+    std::optional<AppStream::Release> nextRelease;
+    for (const AppStream::Component &dc : distroComponents) {
+        const auto releases = dc.releases();
+        for (const auto &r : releases) {
+            // Only look at stable releases
+            if (r.kind() != AppStream::Release::KindStable) {
+                continue;
+            }
+
+            // Let's look at this potentially new verson
+            const QString newVersion = r.version();
+            if (AppStream::Utils::vercmpSimple(newVersion, currentVersion) > 0) {
+                if (!nextRelease) {
+                    // No other newer version found yet so let's pick this one
+                    nextRelease = r;
+                    qInfo() << "Found new major release:" << newVersion;
+                } else if (AppStream::Utils::vercmpSimple(nextRelease->version(), newVersion) > 0) {
+                    // We only offer updating to the very next major release so
+                    // we pick the smallest of all the newest versions
+                    nextRelease = r;
+                    qInfo() << "Found a closer new major release:" << newVersion;
+                }
+            }
+        }
+    }
+
+    return nextRelease;
 }

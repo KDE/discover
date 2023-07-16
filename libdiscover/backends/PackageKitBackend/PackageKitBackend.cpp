@@ -908,50 +908,10 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
     } else
         Q_EMIT updatesCountChanged();
 
-    if (!m_updater->isDistroUpgrade() && !PackageKit::Daemon::global()->offline()->upgradeTriggered())
-        lookForNextMajorVersion();
-}
-
-void PackageKitBackend::lookForNextMajorVersion()
-{
-    QString distroId = AppStream::Utils::currentDistroComponentId();
-
-    // Look at releases to see if we have a new major version available.
-    const QList<AppStream::Component> distroComponents = m_appdata->componentsById(distroId);
-    if (distroComponents.isEmpty()) {
-        qWarning() << "No component found for" << distroId;
-        return;
-    }
-
-    QString currentVersion = AppStreamIntegration::global()->osRelease()->versionId();
-    std::optional<AppStream::Release> nextRelease;
-    for (const AppStream::Component &dc : distroComponents) {
-        const auto releases = dc.releases();
-        for (const auto &r : releases) {
-            // Only look at stable releases
-            if (r.kind() != AppStream::Release::KindStable) {
-                continue;
-            }
-
-            // Let's look at this potentially new verson
-            const QString newVersion = r.version();
-            if (AppStream::Utils::vercmpSimple(newVersion, currentVersion) > 0) {
-                if (!nextRelease) {
-                    // No other newer version found yet so let's pick this one
-                    nextRelease = r;
-                    qInfo() << "Found new major release:" << newVersion;
-                } else if (AppStream::Utils::vercmpSimple(nextRelease->version(), newVersion) > 0) {
-                    // We only offer updating to the very next major release so
-                    // we pick the smallest of all the newest versions
-                    nextRelease = r;
-                    qInfo() << "Found a closer new major release:" << newVersion;
-                }
-            }
-        }
-    }
-
-    if (nextRelease) {
-        foundNewMajorVersion(nextRelease.value());
+    if (!m_updater->isDistroUpgrade() && !PackageKit::Daemon::global()->offline()->upgradeTriggered()) {
+        auto nextRelease = AppStreamIntegration::global()->getDistroUpgrade(m_appdata.get());
+        if (nextRelease)
+            foundNewMajorVersion(*nextRelease);
     }
 }
 

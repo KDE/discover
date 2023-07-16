@@ -23,6 +23,10 @@
 #include <QTextStream>
 #include <QTimer>
 
+#include <AppStreamQt/pool.h>
+#include <AppStreamQt/release.h>
+#include <appstream/AppStreamIntegration.h>
+
 #include "libdiscover_backend_debug.h"
 #include "pk-offline-private.h"
 
@@ -32,6 +36,8 @@ PackageKitNotifier::PackageKitNotifier(QObject *parent)
     : BackendNotifierModule(parent)
     , m_securityUpdates(0)
     , m_normalUpdates(0)
+    , m_hasDistUpgrade(false)
+    , m_appdata(new AppStream::Pool)
 {
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::transactionListChanged, this, &PackageKitNotifier::transactionListChanged);
@@ -40,6 +46,8 @@ PackageKitNotifier::PackageKitNotifier(QObject *parent)
         if (auto offline = PackageKit::Daemon::global()->offline(); offline->updateTriggered() || offline->upgradeTriggered())
             nowNeedsReboot();
     });
+
+    m_appdata->load();
 
     // Check if there's packages after 5'
     QTimer::singleShot(5min, this, &PackageKitNotifier::refreshDatabase);
@@ -249,7 +257,7 @@ void PackageKitNotifier::finished(PackageKit::Transaction::Exit /*exit*/, uint)
 
 bool PackageKitNotifier::hasUpdates()
 {
-    return m_normalUpdates > 0;
+    return m_normalUpdates > 0 || m_hasDistUpgrade;
 }
 
 bool PackageKitNotifier::hasSecurityUpdates()
@@ -259,11 +267,26 @@ bool PackageKitNotifier::hasSecurityUpdates()
 
 void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade /*type*/, const QString &name, const QString &description)
 {
+    m_hasDistUpgrade = true;
     auto a = new UpgradeAction(name, description, this);
     connect(a, &UpgradeAction::triggered, this, [](const QString &name) {
         PackageKit::Daemon::upgradeSystem(name, PackageKit::Transaction::UpgradeKindDefault);
     });
     Q_EMIT foundUpgradeAction(a);
+}
+
+void PackageKitNotifier::fallbackCheckDistroUpgrade()
+{
+    auto nextRelease = AppStreamIntegration::global()->getDistroUpgrade(m_appdata.get());
+    if (nextRelease) {
+        m_hasDistUpgrade = true;
+        const QString &fullName = QStringLiteral("%1 %2").arg(AppStreamIntegration::global()->osRelease()->name(), nextRelease->version());
+        auto a = new UpgradeAction(nextRelease->version(), fullName, this);
+        connect(a, &UpgradeAction::triggered, this, [a](const QString &) {
+            Q_EMIT a->showDiscoverUpdates();
+        });
+        Q_EMIT foundUpgradeAction(a);
+    }
 }
 
 void PackageKitNotifier::refreshDatabase()
@@ -288,6 +311,7 @@ void PackageKitNotifier::refreshDatabase()
     if (!m_distUpgrades && (PackageKit::Daemon::roles() & PackageKit::Transaction::RoleUpgradeSystem)) {
         m_distUpgrades = PackageKit::Daemon::getDistroUpgrades();
         connect(m_distUpgrades, &PackageKit::Transaction::distroUpgrade, this, &PackageKitNotifier::onDistroUpgrade);
+        connect(m_distUpgrades, &PackageKit::Transaction::errorCode, this, &PackageKitNotifier::fallbackCheckDistroUpgrade);
     }
 }
 

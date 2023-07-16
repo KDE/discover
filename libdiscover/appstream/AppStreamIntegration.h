@@ -7,8 +7,13 @@
 #pragma once
 
 #include "discovercommon_export.h"
+
+#include <AppStreamQt/pool.h>
+#include <AppStreamQt/release.h>
 #include <KOSRelease>
 #include <QObject>
+
+#include <optional>
 
 class DISCOVERCOMMON_EXPORT AppStreamIntegration : public QObject
 {
@@ -16,6 +21,7 @@ class DISCOVERCOMMON_EXPORT AppStreamIntegration : public QObject
 public:
     static AppStreamIntegration *global();
 
+    std::optional<AppStream::Release> getDistroUpgrade(AppStream::Pool *pool);
     KOSRelease *osRelease()
     {
         return &m_osrelease;

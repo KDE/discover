@@ -5,6 +5,7 @@
  */
 #pragma once
 
+#include <AppStreamQt/pool.h>
 #include <BackendNotifierModule.h>
 #include <PackageKit/Transaction>
 #include <QPointer>
@@ -31,6 +32,7 @@ public:
     {
         return m_needsReboot;
     }
+    void fallbackCheckDistroUpgrade();
 
 private Q_SLOTS:
     void package(PackageKit::Transaction::Info info, const QString &packageID, const QString &summary);
@@ -49,9 +51,11 @@ private:
     bool m_needsReboot = false;
     uint m_securityUpdates;
     uint m_normalUpdates;
+    bool m_hasDistUpgrade;
     QPointer<PackageKit::Transaction> m_refresher;
     QPointer<PackageKit::Transaction> m_distUpgrades;
     QTimer *m_recheckTimer;
 
     QHash<QString, PackageKit::Transaction *> m_transactions;
+    std::unique_ptr<AppStream::Pool> m_appdata;
 };

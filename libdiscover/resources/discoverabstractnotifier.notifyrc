@@ -605,3 +605,8 @@ Name[zh_CN]=需要重启
 Name[zh_TW]=需要重新啟動電腦
 Urgency=High
 Action=Popup
+
+[Event/DistUpgrade]
+Name=Upgrade available
+Urgency=High
+Action=Popup

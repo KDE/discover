@@ -33,7 +33,7 @@ ecm_qt_declare_logging_category(DiscoverPackageKitNotifier_SRCS HEADER libdiscov
 
 add_library(DiscoverPackageKitNotifier MODULE ${DiscoverPackageKitNotifier_SRCS})
 
-target_link_libraries(DiscoverPackageKitNotifier PRIVATE PK::packagekitqt6 Discover::Notifiers KF6::I18n KF6::Notifications KF6::ConfigCore)
+target_link_libraries(DiscoverPackageKitNotifier PRIVATE PK::packagekitqt6 Discover::Notifiers KF6::I18n KF6::Notifications KF6::ConfigCore DiscoverAppStreamIntegration)
 set_target_properties(DiscoverPackageKitNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 install(TARGETS DiscoverPackageKitNotifier DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover-notifier)

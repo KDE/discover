@@ -306,12 +306,22 @@ void DiscoverNotifier::reboot()
 
 void DiscoverNotifier::foundUpgradeAction(UpgradeAction *action)
 {
-    KNotification *notification = new KNotification(QStringLiteral("distupgrade-notification"), KNotification::Persistent | KNotification::DefaultEvent);
+    updateStatusNotifier();
+
+    if (!notifyAboutUpdates()) {
+        return;
+    }
+
+    KNotification *notification = new KNotification(QStringLiteral("DistUpgrade"), KNotification::Persistent);
     notification->setIconName(QStringLiteral("system-software-update"));
     notification->setActions(QStringList{i18nc("@action:button", "Upgrade")});
     notification->setTitle(i18n("Upgrade available"));
-    notification->setText(i18n("New version: %1", action->description()));
+    notification->setText(i18n("%1 is now available.", action->description()));
+    notification->setComponentName(QStringLiteral("discoverabstractnotifier"));
 
+    connect(action, &UpgradeAction::showDiscoverUpdates, this, [this, notification]() {
+        showDiscoverUpdates(notification->xdgActivationToken());
+    });
     connect(notification, &KNotification::action1Activated, this, [action]() {
         action->trigger();
     });

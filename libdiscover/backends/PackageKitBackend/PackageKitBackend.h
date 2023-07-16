@@ -162,7 +162,6 @@ private:
     void performDetailsFetch(const QSet<QString> &pkgids);
     AppPackageKitResource *addComponent(const AppStream::Component &component) const;
     void updateProxy();
-    void lookForNextMajorVersion();
     void foundNewMajorVersion(const AppStream::Release &release);
 
     QScopedPointer<AppStream::Pool> m_appdata;

@@ -39,6 +39,7 @@ public:
 
 Q_SIGNALS:
     void triggered(const QString &name);
+    void showDiscoverUpdates();
 
 private:
     const QString m_name;
