@@ -91,8 +91,8 @@ DiscoverPage {
     Kirigami.CardsLayout {
         id: apps
         maximumColumns: 4
-        rowSpacing: Kirigami.Units.largeSpacing
-        columnSpacing: Kirigami.Units.largeSpacing
+        rowSpacing: Kirigami.Units.gridUnit
+        columnSpacing: Kirigami.Units.gridUnit
 
         maximumColumnWidth: Kirigami.Units.gridUnit * 6
         Layout.preferredWidth: Math.max(maximumColumnWidth, Math.min((width / columns) - columnSpacing))
