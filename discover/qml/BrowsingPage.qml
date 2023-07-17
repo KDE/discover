@@ -23,7 +23,7 @@ DiscoverPage {
     actions: window.wideScreen ? [ searchAction ] : []
 
     header: Item {
-        height: message.height + message.anchors.margins
+        height: !message.active ? 0 : message.height + message.anchors.margins
 
         DiscoverInlineMessage {
             id: message
