@@ -13,7 +13,6 @@ import "navigation.js" as Navigation
 import org.kde.kirigami 2.6 as Kirigami
 
 Kirigami.AbstractCard {
-    id: delegateArea
     showClickFeedback: true
 
     topPadding: 0
@@ -40,7 +39,7 @@ Kirigami.AbstractCard {
 
                 Kirigami.Heading {
                     id: head
-                    level: delegateArea.compact ? 3 : 2
+                    level: 2
                     type: Kirigami.Heading.Type.Primary
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignBottom

@@ -77,8 +77,6 @@ DiscoverPage {
 
     signal clearSearch()
 
-    readonly property bool compact: page.width < 550 || !applicationWindow().wideScreen
-
     footer: ColumnLayout {
         spacing: 0
 
