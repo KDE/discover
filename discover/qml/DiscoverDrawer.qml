@@ -102,6 +102,7 @@ Kirigami.GlobalDrawer {
 
         Kirigami.Separator {
             Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.smallSpacing
         }
 
         ProgressView {
@@ -119,14 +120,6 @@ Kirigami.GlobalDrawer {
             visible: drawer.wideScreen
         }
         ActionListItem {
-            action: sourcesAction
-        }
-
-        ActionListItem {
-            action: aboutAction
-        }
-
-        ActionListItem {
             objectName: "updateButton"
             action: updateAction
             visible: drawer.wideScreen
@@ -142,6 +135,13 @@ Kirigami.GlobalDrawer {
             // actual list.
             Keys.onDownPressed: event.accepted = true
         }
+        ActionListItem {
+            action: sourcesAction
+        }
+        ActionListItem {
+            action: aboutAction
+        }
+
 
         states: [
             State {

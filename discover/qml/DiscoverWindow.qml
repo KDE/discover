@@ -83,9 +83,7 @@ Kirigami.ApplicationWindow {
             ? "update-none"
             : (ResourcesModel.hasSecurityUpdates ? "update-high" : "update-low")
 
-        text: ResourcesModel.updatesCount <= 0
-            ? (ResourcesModel.isFetching ? i18n("Fetching &updates…") : i18n("&Up to date"))
-            : i18nc("Update section name", "&Update (%1)", ResourcesModel.updatesCount)
+        text: ResourcesModel.isFetching ? i18n("Fetching &updates…") : i18np("&Update (%1)", "&Updates (%1)", ResourcesModel.updatesCount)
 
         component: topUpdateComp
         objectName: "update"
