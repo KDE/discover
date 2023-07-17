@@ -96,6 +96,8 @@ DiscoverPage {
         Layout.preferredWidth: Math.max(maximumColumnWidth, Math.min((width / columns) - columnSpacing))
 
         Kirigami.Heading {
+            // Need to undo some the row spacing of the parent layout which looks bad here
+            Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
             text: i18nc("@title:group", "Most Popular")
             visible: popRep.count > 0 && !featuredModel.isFetching
@@ -113,7 +115,9 @@ DiscoverPage {
         }
 
         Kirigami.Heading {
-            Layout.topMargin: Kirigami.Units.largeSpacing * 5
+            Layout.topMargin: Kirigami.Units.gridUnit
+            // Need to undo some the row spacing of the parent layout which looks bad here
+            Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
             text: i18nc("@title:group", "Editor's Choice")
             visible: !featuredModel.isFetching
@@ -127,7 +131,9 @@ DiscoverPage {
         }
 
         Kirigami.Heading {
-            Layout.topMargin: Kirigami.Units.largeSpacing * 5
+            Layout.topMargin: Kirigami.Units.gridUnit
+            // Need to undo some the row spacing of the parent layout which looks bad here
+            Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
             text: i18nc("@title:group", "Highest-Rated Games")
             visible: gamesRep.count > 0 && !featuredModel.isFetching
@@ -156,7 +162,7 @@ DiscoverPage {
         }
 
         Kirigami.Heading {
-            Layout.topMargin: Kirigami.Units.largeSpacing * 5
+            Layout.topMargin: Kirigami.Units.gridUnit
             Layout.columnSpan: apps.columns
             text: i18nc("@title:group", "Highest-Rated Developer Tools")
             visible: devRep.count > 0 && !featuredModel.isFetching
