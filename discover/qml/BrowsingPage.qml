@@ -17,7 +17,7 @@ import org.kde.kirigami 2.19 as Kirigami
 DiscoverPage {
     id: page
 
-    title: i18n("Discover")
+    title: i18nc("@title:window the name of a top-level 'home' page", "Home")
     objectName: "featured"
 
     actions: window.wideScreen ? [ searchAction ] : []
