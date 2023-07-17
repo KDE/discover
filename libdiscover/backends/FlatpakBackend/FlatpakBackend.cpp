@@ -13,7 +13,6 @@
 
 #include <ReviewsBackend/Rating.h>
 #include <Transaction/Transaction.h>
-#include <appstream/AppStreamIntegration.h>
 #include <appstream/AppStreamUtils.h>
 #include <appstream/OdrsReviewsBackend.h>
 #include <resources/SourcesModel.h>
@@ -288,7 +287,7 @@ static std::optional<AppStream::Metadata> metadataFromBytes(GBytes *appstreamGz,
 FlatpakBackend::FlatpakBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
-    , m_reviews(AppStreamIntegration::global()->reviews())
+    , m_reviews(OdrsReviewsBackend::global())
     , m_cancellable(g_cancellable_new())
     , m_checkForUpdatesTimer(new QTimer(this))
 {

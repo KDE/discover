@@ -6,6 +6,14 @@ add_subdirectory(backends)
 add_subdirectory(notifiers)
 add_subdirectory(tests)
 
+if (TARGET AppStreamQt)
+    add_library(DiscoverAppStreamIntegration STATIC
+        appstream/AppStreamIntegration.cpp
+    )
+    target_link_libraries(DiscoverAppStreamIntegration KF6::CoreAddons AppStreamQt)
+    set_property(TARGET DiscoverAppStreamIntegration PROPERTY POSITION_INDEPENDENT_CODE ON)
+endif()
+
 set(discovercommon_SRCS
     Category/Category.cpp
     Category/CategoryModel.cpp

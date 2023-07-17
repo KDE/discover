@@ -22,6 +22,7 @@ class DISCOVERCOMMON_EXPORT OdrsReviewsBackend : public AbstractReviewsBackend
 {
     Q_OBJECT
 public:
+    static QSharedPointer<OdrsReviewsBackend> global();
     explicit OdrsReviewsBackend();
     ~OdrsReviewsBackend() override;
 

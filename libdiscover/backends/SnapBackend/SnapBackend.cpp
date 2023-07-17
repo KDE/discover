@@ -7,10 +7,10 @@
 #include "SnapBackend.h"
 #include "SnapResource.h"
 #include "SnapTransaction.h"
-#include "appstream/AppStreamIntegration.h"
 #include <Category/Category.h>
 #include <Transaction/Transaction.h>
 #include <appstream/AppStreamUtils.h>
+#include <appstream/OdrsReviewsBackend.h>
 #include <resources/SourcesModel.h>
 #include <resources/StandardBackendUpdater.h>
 #include <resources/StoredResultsStream.h>
@@ -82,7 +82,7 @@ private:
 SnapBackend::SnapBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
-    , m_reviews(AppStreamIntegration::global()->reviews())
+    , m_reviews(OdrsReviewsBackend::global())
 {
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
         m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource *>>(m_resources.values(), [](AbstractResource *r) {

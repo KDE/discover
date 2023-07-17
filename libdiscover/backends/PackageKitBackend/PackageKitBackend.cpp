@@ -122,7 +122,7 @@ PackageKitBackend::PackageKitBackend(QObject *parent)
     , m_updater(new PackageKitUpdater(this))
     , m_refresher(nullptr)
     , m_isFetching(0)
-    , m_reviews(AppStreamIntegration::global()->reviews())
+    , m_reviews(OdrsReviewsBackend::global())
 {
     QTimer *t = new QTimer(this);
     connect(t, &QTimer::timeout, this, &PackageKitBackend::checkForUpdates);

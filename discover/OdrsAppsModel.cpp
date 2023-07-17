@@ -5,15 +5,15 @@
  */
 
 #include "OdrsAppsModel.h"
-#include "appstream/AppStreamIntegration.h"
 #include <ReviewsBackend/Rating.h>
+#include <appstream/OdrsReviewsBackend.h>
 #include <utils.h>
 
 using namespace Qt::StringLiterals;
 
 OdrsAppsModel::OdrsAppsModel()
 {
-    auto x = AppStreamIntegration::global()->reviews();
+    auto x = OdrsReviewsBackend::global();
     connect(x.get(), &OdrsReviewsBackend::ratingsReady, this, &OdrsAppsModel::refresh);
     if (!x->top().isEmpty()) {
         refresh();
@@ -22,7 +22,7 @@ OdrsAppsModel::OdrsAppsModel()
 
 void OdrsAppsModel::refresh()
 {
-    const auto top = AppStreamIntegration::global()->reviews()->top();
+    const auto top = OdrsReviewsBackend::global()->top();
     setUris(kTransform<QVector<QUrl>>(top, [](auto r) {
         return QUrl("appstream://"_L1 + r->packageName());
     }));

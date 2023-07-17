@@ -36,6 +36,16 @@
 // #define APIURL "http://127.0.0.1:5000/1.0/reviews/api"
 #define APIURL "https://odrs.gnome.org/1.0/reviews/api"
 
+QSharedPointer<OdrsReviewsBackend> OdrsReviewsBackend::global()
+{
+    static QSharedPointer<OdrsReviewsBackend> var = nullptr;
+    if (!var) {
+        var = QSharedPointer<OdrsReviewsBackend>(new OdrsReviewsBackend());
+    }
+
+    return var;
+}
+
 OdrsReviewsBackend::OdrsReviewsBackend()
     : AbstractReviewsBackend(nullptr)
 {
