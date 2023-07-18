@@ -109,29 +109,17 @@ Kirigami.GlobalDrawer {
         }
     }
 
-    ColumnLayout {
-        spacing: 0
-        Layout.fillWidth: true
-
-        Kirigami.Separator {
-            Layout.fillWidth: true
-            Layout.margins: Kirigami.Units.smallSpacing
-        }
-
-        ProgressView {
-            separatorVisible: false
-        }
-
+    topContent: [
         ActionListItem {
             action: featuredAction
-        }
+        },
         ActionListItem {
             action: searchAction
-        }
+        },
         ActionListItem {
             action: installedAction
             visible: drawer.wideScreen
-        }
+        },
         ActionListItem {
             objectName: "updateButton"
             action: updateAction
@@ -147,14 +135,35 @@ Kirigami.GlobalDrawer {
             // Disable down navigation on the last item so we don't escape the
             // actual list.
             Keys.onDownPressed: event.accepted = true
-        }
+        },
         ActionListItem {
             action: sourcesAction
-        }
+        },
         ActionListItem {
             action: aboutAction
+        },
+        Kirigami.Separator {
+            Layout.fillWidth: true
+            Layout.topMargin: Kirigami.Units.smallSpacing
+            Layout.leftMargin: Kirigami.Units.largeSpacing
+            Layout.rightMargin: Kirigami.Units.largeSpacing
+        }
+    ]
+
+    ColumnLayout {
+        spacing: 0
+        Layout.fillWidth: true
+
+        Kirigami.Separator {
+            visible: progressView.visible
+            Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.smallSpacing
         }
 
+        ProgressView {
+            id: progressView
+            separatorVisible: false
+        }
 
         states: [
             State {
