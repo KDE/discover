@@ -427,10 +427,8 @@ DiscoverPage {
                 text: appInfo.application.comment
                 wrapMode: Text.Wrap
 
-                // Match `level: 2` in Kirigami.Heading
-                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.2
-                // Match `type: Kirigami.Heading.Type.Primary` in Kirigami.Heading
-                font.weight: Font.DemiBold
+                // Match `level: 1` in Kirigami.Heading
+                font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.35
 
                 Accessible.role: Accessible.Heading
             }
