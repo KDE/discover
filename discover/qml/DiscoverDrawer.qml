@@ -15,30 +15,9 @@ import "navigation.js" as Navigation
 Kirigami.GlobalDrawer {
     id: drawer
 
-    leftPadding: 0
-    rightPadding: 0
-    topPadding: 0
-    bottomPadding: 0
-
-    // FIXME: Dirty workaround for 385992
-    width: Kirigami.Units.gridUnit * 14
-
     property bool wideScreen: false
-    readonly property real minimumHeight: header.implicitHeight + content.height + footer.implicitHeight
-
-    resetMenuOnTriggered: false
-
     property string currentSearchText
-
-    onCurrentSubMenuChanged: {
-        if (currentSubMenu) {
-            currentSubMenu.trigger()
-        } else if (currentSearchText.length > 0) {
-            window.leftPage.category = null
-        } else {
-            Navigation.openHome()
-        }
-    }
+    readonly property real minimumHeight: header.implicitHeight + content.height + footer.implicitHeight
 
     function suggestSearchText(text) {
         if (searchField.visible) {
@@ -50,6 +29,40 @@ Kirigami.GlobalDrawer {
     function forceSearchFieldFocus() {
         if (searchField.visible && wideScreen) {
             searchField.forceActiveFocus();
+        }
+    }
+
+    function createCategoryActions(categories) {
+        var ret = []
+        for (var x in categories) {
+            var y = categoryActionComponent.createObject(drawer, {
+                category: categories[x]
+            })
+            y.children = createCategoryActions(categories[x].subcategories)
+            ret.push(y)
+        }
+        return ret;
+    }
+    actions: createCategoryActions(CategoryModel.rootCategories)
+
+    leftPadding: 0
+    rightPadding: 0
+    topPadding: 0
+    bottomPadding: 0
+
+    // FIXME: Dirty workaround for 385992
+    width: Kirigami.Units.gridUnit * 14
+
+    resetMenuOnTriggered: false
+    modal: !drawer.wideScreen
+
+    onCurrentSubMenuChanged: {
+        if (currentSubMenu) {
+            currentSubMenu.trigger()
+        } else if (currentSearchText.length > 0) {
+            window.leftPage.category = null
+        } else {
+            Navigation.openHome()
         }
     }
 
@@ -188,20 +201,4 @@ Kirigami.GlobalDrawer {
             }
         }
     }
-
-    function createCategoryActions(categories) {
-        var ret = []
-        for (var x in categories) {
-            var y = categoryActionComponent.createObject(drawer, {
-                category: categories[x]
-            })
-            y.children = createCategoryActions(categories[x].subcategories)
-            ret.push(y)
-        }
-        return ret;
-    }
-
-    actions: createCategoryActions(CategoryModel.rootCategories)
-
-    modal: !drawer.wideScreen
 }
