@@ -602,13 +602,6 @@ DiscoverPage {
                 }
             }
 
-            Kirigami.LoadingPlaceholder {
-                Layout.alignment: Qt.AlignHCenter
-                Layout.maximumWidth: Kirigami.Units.gridUnit * 15
-                Layout.bottomMargin: appInfo.internalSpacings * 2
-                visible: reviewsModel.fetching && !reviewsError.visible
-                text: i18n("Loading reviews for %1", appInfo.application.name)
-            }
 
             Kirigami.Heading {
                 Layout.fillWidth: true
@@ -617,6 +610,14 @@ DiscoverPage {
                 level: 2
                 type: Kirigami.Heading.Type.Primary
                 wrapMode: Text.Wrap
+            }
+
+            Kirigami.LoadingPlaceholder {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.maximumWidth: Kirigami.Units.gridUnit * 15
+                Layout.bottomMargin: appInfo.internalSpacings * 2
+                visible: reviewsModel.fetching && !reviewsError.visible
+                text: i18n("Loading reviews for %1", appInfo.application.name)
             }
 
             Kirigami.PlaceholderMessage {
