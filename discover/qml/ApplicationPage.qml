@@ -605,7 +605,7 @@ DiscoverPage {
 
             Kirigami.Heading {
                 Layout.fillWidth: true
-                visible: rep.count > 0 && !reviewsError.visible
+                visible: rep.count > 0 && !reviewsLoadingPlaceholder.visible && !reviewsError.visible
                 text: i18n("Reviews")
                 level: 2
                 type: Kirigami.Heading.Type.Primary
@@ -613,17 +613,18 @@ DiscoverPage {
             }
 
             Kirigami.LoadingPlaceholder {
+                id: reviewsLoadingPlaceholder
                 Layout.alignment: Qt.AlignHCenter
                 Layout.maximumWidth: Kirigami.Units.gridUnit * 15
                 Layout.bottomMargin: appInfo.internalSpacings * 2
-                visible: reviewsModel.fetching && !reviewsError.visible
+                visible: reviewsModel.fetching
                 text: i18n("Loading reviews for %1", appInfo.application.name)
             }
 
             Kirigami.PlaceholderMessage {
                 id: reviewsError
                 Layout.fillWidth: true
-                visible: reviewsModel.backend && text.length > 0 && rep.count === 0
+                visible: reviewsModel.backend && text.length > 0 && rep.count === 0 && !reviewsLoadingPlaceholder.visible
                 icon.name: "text-unflow"
                 text: i18nc("@info placeholder message", "Reviews for %1 are temporarily unavailable", appInfo.application.name)
                 explanation: reviewsModel.backend ? reviewsModel.backend.errorMessage : ""
