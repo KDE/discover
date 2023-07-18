@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-03 02:30+0000\n"
+"POT-Creation-Date: 2023-07-18 02:09+0000\n"
 "PO-Revision-Date: 2023-05-09 13:33+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -127,7 +127,7 @@ msgstr ""
 "distribution."
 
 #: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
-#: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
+#: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -289,7 +289,7 @@ msgstr "Ajouter un nouveau dépôt %1"
 msgid "Add"
 msgstr "Ajouter"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:270
 #: discover/qml/InstallApplicationButton.qml:47
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -687,6 +687,13 @@ msgstr ""
 msgid "Still looking…"
 msgstr "Recherche toujours en cours…"
 
+#: discover/qml/BrowsingPage.qml:20
+#, fuzzy, kde-format
+#| msgid "&Home"
+msgctxt "@title:window the name of a top-level 'home' page"
+msgid "Home"
+msgstr "&Accueil"
+
 #: discover/qml/BrowsingPage.qml:63
 #, kde-format
 msgid "Unable to load applications"
@@ -698,25 +705,25 @@ msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Les plus populaires"
 
-#: discover/qml/BrowsingPage.qml:120
+#: discover/qml/BrowsingPage.qml:122
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Sélection de l'éditeur"
 
-#: discover/qml/BrowsingPage.qml:134
+#: discover/qml/BrowsingPage.qml:138
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Jeux les mieux cotés"
 
-#: discover/qml/BrowsingPage.qml:153 discover/qml/BrowsingPage.qml:182
+#: discover/qml/BrowsingPage.qml:157 discover/qml/BrowsingPage.qml:186
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Voir plus d'informations"
 
-#: discover/qml/BrowsingPage.qml:163
+#: discover/qml/BrowsingPage.qml:167
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
@@ -744,71 +751,69 @@ msgstr "&Rechercher"
 msgid "&Installed"
 msgstr "&Installé(s)"
 
-#: discover/qml/DiscoverWindow.qml:87
+#: discover/qml/DiscoverWindow.qml:86
 #, kde-format
 msgid "Fetching &updates…"
 msgstr "Recherche en co&urs de mises à jour…"
 
-#: discover/qml/DiscoverWindow.qml:87
-#, kde-format
-msgid "&Up to date"
-msgstr "À jo&ur"
-
-#: discover/qml/DiscoverWindow.qml:88
-#, kde-format
-msgctxt "Update section name"
+#: discover/qml/DiscoverWindow.qml:86
+#, fuzzy, kde-format
+#| msgctxt "Update section name"
+#| msgid "&Update (%1)"
 msgid "&Update (%1)"
-msgstr "Mettre à jo&ur (%1)"
+msgid_plural "&Updates (%1)"
+msgstr[0] "Mettre à jo&ur (%1)"
+msgstr[1] "Mettre à jo&ur (%1)"
 
-#: discover/qml/DiscoverWindow.qml:96
+#: discover/qml/DiscoverWindow.qml:94
 #, kde-format
 msgid "&About"
 msgstr "&À propos"
 
-#: discover/qml/DiscoverWindow.qml:104
+#: discover/qml/DiscoverWindow.qml:102
 #, kde-format
 msgid "S&ettings"
 msgstr "C&onfiguration"
 
-#: discover/qml/DiscoverWindow.qml:157 discover/qml/DiscoverWindow.qml:341
-#: discover/qml/DiscoverWindow.qml:448
+#: discover/qml/DiscoverWindow.qml:155 discover/qml/DiscoverWindow.qml:339
+#: discover/qml/DiscoverWindow.qml:446
 #, kde-format
 msgid "Error"
 msgstr "Erreur"
 
-#: discover/qml/DiscoverWindow.qml:161
+#: discover/qml/DiscoverWindow.qml:159
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "Impossible de trouver la ressource : %1"
 
-#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:257 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Continuer"
 
-#: discover/qml/DiscoverWindow.qml:317
+#: discover/qml/DiscoverWindow.qml:315
 #, kde-format
 msgid "Report this issue"
 msgstr "Signaler un problème"
 
-#: discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:339
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Erreur %1 parmi %2"
 
-#: discover/qml/DiscoverWindow.qml:386
+#: discover/qml/DiscoverWindow.qml:384
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Afficher le précédent"
 
-#: discover/qml/DiscoverWindow.qml:399
+#: discover/qml/DiscoverWindow.qml:397
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Afficher le suivant"
 
-#: discover/qml/DiscoverWindow.qml:415
+#: discover/qml/DiscoverWindow.qml:413
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Copier dans le presse-papier"
@@ -1281,6 +1286,9 @@ msgstr "Vous devriez vérifier les mises à jour"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Date inconnue de la dernière mise à jour"
+
+#~ msgid "&Up to date"
+#~ msgstr "À jo&ur"
 
 #~ msgid ""
 #~ "If you would like to report the update issue to your distribution's "

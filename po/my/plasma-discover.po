@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-03 02:30+0000\n"
+"POT-Creation-Date: 2023-07-18 02:09+0000\n"
 "PO-Revision-Date: 2021-09-19 20:01+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -101,7 +101,7 @@ msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 
 #: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
-#: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
+#: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "ဒစ်(စ)ကာဗာ"
@@ -257,7 +257,7 @@ msgstr "%1 အဝေးရီပိုစစ်တိုရီအသစ်ကိ
 msgid "Add"
 msgstr "ထည့်သွင်းမည်"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:270
 #: discover/qml/InstallApplicationButton.qml:47
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -636,6 +636,13 @@ msgstr ""
 msgid "Still looking…"
 msgstr "ရှာနေဆဲ…"
 
+#: discover/qml/BrowsingPage.qml:20
+#, fuzzy, kde-format
+#| msgid "&Home"
+msgctxt "@title:window the name of a top-level 'home' page"
+msgid "Home"
+msgstr "&Hအိမ်"
+
 #: discover/qml/BrowsingPage.qml:63
 #, kde-format
 msgid "Unable to load applications"
@@ -647,26 +654,26 @@ msgctxt "@title:group"
 msgid "Most Popular"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:120
+#: discover/qml/BrowsingPage.qml:122
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:134
+#: discover/qml/BrowsingPage.qml:138
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:153 discover/qml/BrowsingPage.qml:182
+#: discover/qml/BrowsingPage.qml:157 discover/qml/BrowsingPage.qml:186
 #, fuzzy, kde-format
 #| msgid "More…"
 msgctxt "@action:button"
 msgid "See More"
 msgstr "နောက်ထပ်…"
 
-#: discover/qml/BrowsingPage.qml:163
+#: discover/qml/BrowsingPage.qml:167
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
@@ -692,73 +699,70 @@ msgstr "&Sရှာဖွေမည်"
 msgid "&Installed"
 msgstr "&Iတပ်ဆင်ပြီး"
 
-#: discover/qml/DiscoverWindow.qml:87
+#: discover/qml/DiscoverWindow.qml:86
 #, kde-format
 msgid "Fetching &updates…"
 msgstr "&uအပ်ဒိတ်များရယူနေသည်…"
 
-#: discover/qml/DiscoverWindow.qml:87
-#, kde-format
-msgid "&Up to date"
-msgstr "&Uနောက်ဆုံးပေါ်"
-
-#: discover/qml/DiscoverWindow.qml:88
-#, kde-format
-msgctxt "Update section name"
+#: discover/qml/DiscoverWindow.qml:86
+#, fuzzy, kde-format
+#| msgctxt "Update section name"
+#| msgid "&Update (%1)"
 msgid "&Update (%1)"
-msgstr "&Uအပ်ဒိတ် (%1)"
+msgid_plural "&Updates (%1)"
+msgstr[0] "&Uအပ်ဒိတ် (%1)"
 
-#: discover/qml/DiscoverWindow.qml:96
+#: discover/qml/DiscoverWindow.qml:94
 #, kde-format
 msgid "&About"
 msgstr "&Aအကြောင်း"
 
-#: discover/qml/DiscoverWindow.qml:104
+#: discover/qml/DiscoverWindow.qml:102
 #, kde-format
 msgid "S&ettings"
 msgstr "&eဆက်တင်များ"
 
-#: discover/qml/DiscoverWindow.qml:157 discover/qml/DiscoverWindow.qml:341
-#: discover/qml/DiscoverWindow.qml:448
+#: discover/qml/DiscoverWindow.qml:155 discover/qml/DiscoverWindow.qml:339
+#: discover/qml/DiscoverWindow.qml:446
 #, kde-format
 msgid "Error"
 msgstr "အမှား"
 
-#: discover/qml/DiscoverWindow.qml:161
+#: discover/qml/DiscoverWindow.qml:159
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "ရင်းမြစ်ကိုမရှာနိုင်ခဲ့ပါ - %1"
 
-#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:257 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "ဆက်လုပ်မည်"
 
-#: discover/qml/DiscoverWindow.qml:317
+#: discover/qml/DiscoverWindow.qml:315
 #, kde-format
 msgid "Report this issue"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:339
 #, fuzzy, kde-format
 #| msgid "Votes: %1 out of %2"
 msgid "Error %1 of %2"
 msgstr "မဲများ- %2 ထဲက %1"
 
-#: discover/qml/DiscoverWindow.qml:386
+#: discover/qml/DiscoverWindow.qml:384
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:399
+#: discover/qml/DiscoverWindow.qml:397
 #, fuzzy, kde-format
 #| msgid "Show contents"
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "ပါဝင်အကြောင်းအရာများ ပြမည်"
 
-#: discover/qml/DiscoverWindow.qml:415
+#: discover/qml/DiscoverWindow.qml:413
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr ""
@@ -1228,6 +1232,9 @@ msgstr "အပ်ဒိတ်ရှိ၊မရှိ စစ်ဆေးသင�
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "နောက်ဆုံးအကြိမ်အပ်ဒိတ်တင်ခဲ့သောအချိန်မသိ"
+
+#~ msgid "&Up to date"
+#~ msgstr "&Uနောက်ဆုံးပေါ်"
 
 #~ msgid "Sources"
 #~ msgstr "ပရိုဂရမ်ဇစ်မြစ်များ"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-03 02:30+0000\n"
+"POT-Creation-Date: 2023-07-18 02:09+0000\n"
 "PO-Revision-Date: 2023-04-21 23:32+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -107,7 +107,7 @@ msgid "Please report this issue to the packagers of your distribution."
 msgstr "이 문제를 배포판 패키지 관리자에게 보고해 주십시오."
 
 #: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
-#: discover/main.cpp:121 discover/qml/BrowsingPage.qml:20
+#: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -261,7 +261,7 @@ msgstr "새 %1 저장소 추가"
 msgid "Add"
 msgstr "추가"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:270
 #: discover/qml/InstallApplicationButton.qml:47
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -642,6 +642,13 @@ msgstr ""
 msgid "Still looking…"
 msgstr "계속 찾는 중…"
 
+#: discover/qml/BrowsingPage.qml:20
+#, fuzzy, kde-format
+#| msgid "&Home"
+msgctxt "@title:window the name of a top-level 'home' page"
+msgid "Home"
+msgstr "홈(&H)"
+
 #: discover/qml/BrowsingPage.qml:63
 #, kde-format
 msgid "Unable to load applications"
@@ -653,25 +660,25 @@ msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "인기 항목"
 
-#: discover/qml/BrowsingPage.qml:120
+#: discover/qml/BrowsingPage.qml:122
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "편집자의 선택"
 
-#: discover/qml/BrowsingPage.qml:134
+#: discover/qml/BrowsingPage.qml:138
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "별점이 높은 게임"
 
-#: discover/qml/BrowsingPage.qml:153 discover/qml/BrowsingPage.qml:182
+#: discover/qml/BrowsingPage.qml:157 discover/qml/BrowsingPage.qml:186
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "더 보기"
 
-#: discover/qml/BrowsingPage.qml:163
+#: discover/qml/BrowsingPage.qml:167
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
@@ -698,71 +705,68 @@ msgstr "찾기(&S)"
 msgid "&Installed"
 msgstr "설치됨(&I)"
 
-#: discover/qml/DiscoverWindow.qml:87
+#: discover/qml/DiscoverWindow.qml:86
 #, kde-format
 msgid "Fetching &updates…"
 msgstr "업데이트 가져오는 중(&U)…"
 
-#: discover/qml/DiscoverWindow.qml:87
-#, kde-format
-msgid "&Up to date"
-msgstr "최신 상태(&U)"
-
-#: discover/qml/DiscoverWindow.qml:88
-#, kde-format
-msgctxt "Update section name"
+#: discover/qml/DiscoverWindow.qml:86
+#, fuzzy, kde-format
+#| msgctxt "Update section name"
+#| msgid "&Update (%1)"
 msgid "&Update (%1)"
-msgstr "업데이트(%1)(&U)"
+msgid_plural "&Updates (%1)"
+msgstr[0] "업데이트(%1)(&U)"
 
-#: discover/qml/DiscoverWindow.qml:96
+#: discover/qml/DiscoverWindow.qml:94
 #, kde-format
 msgid "&About"
 msgstr "정보(&A)"
 
-#: discover/qml/DiscoverWindow.qml:104
+#: discover/qml/DiscoverWindow.qml:102
 #, kde-format
 msgid "S&ettings"
 msgstr "설정(&E)"
 
-#: discover/qml/DiscoverWindow.qml:157 discover/qml/DiscoverWindow.qml:341
-#: discover/qml/DiscoverWindow.qml:448
+#: discover/qml/DiscoverWindow.qml:155 discover/qml/DiscoverWindow.qml:339
+#: discover/qml/DiscoverWindow.qml:446
 #, kde-format
 msgid "Error"
 msgstr "오류"
 
-#: discover/qml/DiscoverWindow.qml:161
+#: discover/qml/DiscoverWindow.qml:159
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "자원을 찾을 수 없음: %1"
 
-#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:257 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "진행"
 
-#: discover/qml/DiscoverWindow.qml:317
+#: discover/qml/DiscoverWindow.qml:315
 #, kde-format
 msgid "Report this issue"
 msgstr "이 문제 보고"
 
-#: discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:339
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "오류: %1/%2"
 
-#: discover/qml/DiscoverWindow.qml:386
+#: discover/qml/DiscoverWindow.qml:384
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "이전 보기"
 
-#: discover/qml/DiscoverWindow.qml:399
+#: discover/qml/DiscoverWindow.qml:397
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "다음 보기"
 
-#: discover/qml/DiscoverWindow.qml:415
+#: discover/qml/DiscoverWindow.qml:413
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "클립보드에 복사"
@@ -1227,6 +1231,9 @@ msgstr "업데이트 확인 여부"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "마지막 업데이트 시간 알 수 없음"
+
+#~ msgid "&Up to date"
+#~ msgstr "최신 상태(&U)"
 
 #~ msgid ""
 #~ "If you would like to report the update issue to your distribution's "
