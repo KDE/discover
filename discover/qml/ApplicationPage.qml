@@ -360,12 +360,14 @@ DiscoverPage {
         }
 
         // Screenshots
-        Kirigami.InlineMessage {
-            type: Kirigami.MessageType.Warning
+        Kirigami.PlaceholderMessage {
             Layout.fillWidth: true
-            Layout.margins: Kirigami.Units.smallSpacing
+            Layout.leftMargin: appInfo.pageContentMargins
+            Layout.rightMargin: appInfo.pageContentMargins
+
             visible: screenshots.hasFailed
-            text: i18n("Could not access the screenshots")
+            icon.name: "image-missing"
+            text: i18nc("@info placeholder message", "Screenshots not available for %1", appInfo.application.name)
         }
 
         ScrollView {
@@ -610,19 +612,20 @@ DiscoverPage {
 
             Kirigami.Heading {
                 Layout.fillWidth: true
-                visible: rep.count > 0 || reviewsError.visible
+                visible: rep.count > 0 && !reviewsError.visible
                 text: i18n("Reviews")
                 level: 2
                 type: Kirigami.Heading.Type.Primary
                 wrapMode: Text.Wrap
             }
 
-            Kirigami.InlineMessage {
+            Kirigami.PlaceholderMessage {
                 id: reviewsError
-                type: Kirigami.MessageType.Warning
                 Layout.fillWidth: true
                 visible: reviewsModel.backend && text.length > 0
-                text: reviewsModel.backend ? reviewsModel.backend.errorMessage : ""
+                icon.name: "text-unflow"
+                text: i18nc("@info placeholder message", "Reviews for %1 are temporarily unavailable", appInfo.application.name)
+                explanation: reviewsModel.backend ? reviewsModel.backend.errorMessage : ""
             }
 
             // Top three reviews

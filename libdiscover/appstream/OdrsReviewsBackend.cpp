@@ -158,7 +158,7 @@ void OdrsReviewsBackend::reviewsFetched()
     const auto networkError = reply->error();
     if (networkError != QNetworkReply::NoError) {
         qCWarning(LIBDISCOVER_LOG) << "error fetching reviews:" << reply->errorString() << data;
-        m_errorMessage = i18n("Error while fetching reviews: %1", reply->errorString());
+        m_errorMessage = i18n("Technical error message: %1", reply->errorString());
         Q_EMIT errorMessageChanged();
         setFetching(false);
         return;

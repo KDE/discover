@@ -62,10 +62,10 @@ ListView {
                 anchors.centerIn: parent
             }
             Kirigami.Icon {
-                anchors.fill: parent
-                anchors.margins: Kirigami.Units.gridUnit
+                implicitWidth: Kirigami.Units.iconSizes.large
+                implicitHeight: Kirigami.Units.iconSizes.large
                 visible: thumbnail.status === Image.Error
-                source: "emblem-error"
+                source: "image-missing"
             }
             ConditionalLoader {
                 id: thumbnail
@@ -115,9 +115,10 @@ ListView {
         }
 
         Kirigami.Icon {
-            anchors.fill: parent
+            implicitWidth: Kirigami.Units.iconSizes.large
+            implicitHeight: Kirigami.Units.iconSizes.large
             visible: overlayImage.status === Image.Error
-            source: "emblem-error"
+            source: "image-missing"
         }
 
         ConditionalLoader {
