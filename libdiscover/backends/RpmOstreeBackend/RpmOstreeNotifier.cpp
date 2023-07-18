@@ -66,7 +66,7 @@ RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
     });
 
     // Process command result
-    connect(m_process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), [this](int exitCode, QProcess::ExitStatus exitStatus) {
+    connect(m_process, &QProcess::finished, [this](int exitCode, QProcess::ExitStatus exitStatus) {
         m_process->deleteLater();
         m_process = nullptr;
         if (exitStatus != QProcess::NormalExit) {
@@ -174,7 +174,7 @@ void RpmOstreeNotifier::checkSystemUpdateClassic()
     });
 
     // Process command result
-    connect(m_process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), [this](int exitCode, QProcess::ExitStatus exitStatus) {
+    connect(m_process, &QProcess::finished, [this](int exitCode, QProcess::ExitStatus exitStatus) {
         m_process->deleteLater();
         m_process = nullptr;
         if (exitStatus != QProcess::NormalExit) {
@@ -248,7 +248,7 @@ void RpmOstreeNotifier::checkSystemUpdateOCI()
     });
 
     // Process command result
-    connect(m_process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), [this](int exitCode, QProcess::ExitStatus exitStatus) {
+    connect(m_process, &QProcess::finished, [this](int exitCode, QProcess::ExitStatus exitStatus) {
         m_process->deleteLater();
         m_process = nullptr;
         if (exitStatus != QProcess::NormalExit) {
@@ -316,7 +316,7 @@ void RpmOstreeNotifier::checkForPendingDeployment()
     });
 
     // Process command result
-    connect(m_process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), [this](int exitCode, QProcess::ExitStatus exitStatus) {
+    connect(m_process, &QProcess::finished, [this](int exitCode, QProcess::ExitStatus exitStatus) {
         m_process->deleteLater();
         m_process = nullptr;
         if (exitStatus != QProcess::NormalExit) {

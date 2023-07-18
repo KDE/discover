@@ -269,7 +269,7 @@ void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade 
 void PackageKitNotifier::refreshDatabase()
 {
     if (auto offline = PackageKit::Daemon::global()->offline();
-            offline->updatePrepared() || offline->upgradePrepared() || offline->updateTriggered() || offline->upgradeTriggered()) {
+        offline->updatePrepared() || offline->upgradePrepared() || offline->updateTriggered() || offline->upgradeTriggered()) {
         return;
     }
 
@@ -295,7 +295,7 @@ QProcess *PackageKitNotifier::checkAptVariable(const QString &aptconfig, const Q
 {
     QProcess *process = new QProcess;
     process->start(aptconfig, {QStringLiteral("dump")});
-    connect(process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, [func, process, varname](int code) {
+    connect(process, &QProcess::finished, this, [func, process, varname](int code) {
         if (code != 0)
             return;
 
@@ -311,7 +311,7 @@ QProcess *PackageKitNotifier::checkAptVariable(const QString &aptconfig, const Q
         }
         func({});
     });
-    connect(process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), process, &QObject::deleteLater);
+    connect(process, &QProcess::finished, process, &QObject::deleteLater);
     return process;
 }
 

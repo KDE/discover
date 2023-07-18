@@ -117,7 +117,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
     });
 
     // Process the result of the transaction once rpm-ostree is done
-    connect(m_process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &RpmOstreeTransaction::processCommand);
+    connect(m_process, &QProcess::finished, this, &RpmOstreeTransaction::processCommand);
 
     // Wait for the start command to effectively start the transaction so that
     // the caller has the time to setup signal/slots connections.
