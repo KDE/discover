@@ -12,10 +12,6 @@
 #include <QStandardPaths>
 #include <QTimer>
 
-// Attica includes
-#include <Attica/Content>
-#include <Attica/ProviderManager>
-
 // KDE includes
 #include <KConfig>
 #include <KConfigGroup>
