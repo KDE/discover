@@ -622,7 +622,7 @@ DiscoverPage {
             Kirigami.PlaceholderMessage {
                 id: reviewsError
                 Layout.fillWidth: true
-                visible: reviewsModel.backend && text.length > 0
+                visible: reviewsModel.backend && text.length > 0 && rep.count === 0
                 icon.name: "text-unflow"
                 text: i18nc("@info placeholder message", "Reviews for %1 are temporarily unavailable", appInfo.application.name)
                 explanation: reviewsModel.backend ? reviewsModel.backend.errorMessage : ""
