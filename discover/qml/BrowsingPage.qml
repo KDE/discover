@@ -88,12 +88,11 @@ DiscoverPage {
 
     Kirigami.CardsLayout {
         id: apps
+
         maximumColumns: 4
         rowSpacing: Kirigami.Units.gridUnit
         columnSpacing: Kirigami.Units.gridUnit
-
         maximumColumnWidth: Kirigami.Units.gridUnit * 6
-        Layout.preferredWidth: Math.max(maximumColumnWidth, Math.min((width / columns) - columnSpacing))
 
         Kirigami.Heading {
             // Need to undo some the row spacing of the parent layout which looks bad here
