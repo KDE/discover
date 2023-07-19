@@ -73,9 +73,12 @@ ConditionalLoader {
         ToolButton {
             Layout.fillHeight: true
             action: root.cancelAction
-            text: ""
+
+            display: AbstractButton.IconOnly
+
+            ToolTip.text: text
             ToolTip.visible: hovered
-            ToolTip.text: root.cancelAction.text
+            ToolTip.delay: Kirigami.Units.toolTipDelay
         }
 
         LabelBackground {
@@ -88,9 +91,16 @@ ConditionalLoader {
     componentFalse: Button {
         visible: !application.isInstalled || application.isRemovable
         enabled: application.state !== AbstractResource.Broken
-        text: root.action.text
-
         activeFocusOnTab: false
+
+        text: root.action.text
+        icon.name: "download"
+        display: AbstractButton.IconOnly
+
+        ToolTip.text: text
+        ToolTip.visible: hovered
+        ToolTip.delay: Kirigami.Units.toolTipDelay
+
         onClicked: root.click()
     }
 }
