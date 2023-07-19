@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-20 02:58+0000\n"
+"POT-Creation-Date: 2023-07-19 03:24+0000\n"
 "PO-Revision-Date: 2023-06-02 21:05+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -88,9 +88,10 @@ msgid "Intense Content"
 msgstr "Eduki bizia"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:161
-#, kde-format
-msgid "Error while fetching reviews: %1"
-msgstr "Errorea iritziak ekartzean: %1"
+#, fuzzy, kde-format
+#| msgid "Internal error: %1"
+msgid "Technical error message: %1"
+msgstr "Barneko errorea: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:213
 #, kde-format
@@ -1008,7 +1009,7 @@ msgstr "Berrikusi EULA"
 msgid "Could not enable remote %1: %2"
 msgstr "Ezin izan du urruneko %1 gaitu: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:60
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -1017,32 +1018,32 @@ msgstr ""
 "Euskarririk gabeko galdera:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:125
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:121
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "%1 bizkarraldekoa hasieratzeak luzeegi hartu du"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:187
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:183
 #, kde-format
 msgid "Applications"
 msgstr "Aplikazioak"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasmaren gehigarriak"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
 #, kde-format
 msgid "Application Addons"
 msgstr "Aplikazioen gehigarriak"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:434
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:430
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Sareko errorea %1 bizkarraldekoan: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:441
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:437
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1051,15 +1052,15 @@ msgstr ""
 "Eskaera gehiegi bidali dira zerbitzarira %1 bizkarraldekoarentzat. Saiatu "
 "berriz minutu batzuk igaro ondoren."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:444
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:450
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:440
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:446
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr ""
 "Baliogabeko %1 bizkarraldekoa, jarri zure banatzailearekin harremanean."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:474
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:470
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1072,24 +1073,24 @@ msgstr ""
 "estuagoa ematen baitu. Jakinarazi den errorea:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:484
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:480
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Ezin izan da ekarri %1 sarreraren pantaila-argazkia %2 bizkarraldekoan"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:484
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Kudeatu gabeko errorea %1 bizkarraldekoan. Jarri zure banatzailearekin "
 "harremanean."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:636
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:632
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Okerreko KNewStuff URI: %1"
@@ -2610,6 +2611,9 @@ msgstr "Sistemaren softwarea"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Gehigarriak"
+
+#~ msgid "Error while fetching reviews: %1"
+#~ msgstr "Errorea iritziak ekartzean: %1"
 
 #~ msgid "Packages to remove"
 #~ msgstr "Kendu beharreko paketeak"

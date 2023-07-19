@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-20 02:58+0000\n"
+"POT-Creation-Date: 2023-07-19 03:24+0000\n"
 "PO-Revision-Date: 2023-03-15 19:07+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -89,9 +89,10 @@ msgid "Intense Content"
 msgstr "Vysoko nevhodný obsah"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:161
-#, kde-format
-msgid "Error while fetching reviews: %1"
-msgstr "Chyba počas získavania recenzií: %1"
+#, fuzzy, kde-format
+#| msgid "Internal error: %1"
+msgid "Technical error message: %1"
+msgstr "Interná chyba: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:213
 #, kde-format
@@ -1009,7 +1010,7 @@ msgstr "Skontrolovať EULA"
 msgid "Could not enable remote %1: %2"
 msgstr "Nepodarilo sa povoliť vzdialené %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:60
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -1018,32 +1019,32 @@ msgstr ""
 "Nepodporovaná otázka:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:125
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:121
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Podpornému programu %1 trvala inicializácia príliš dlho"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:187
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:183
 #, kde-format
 msgid "Applications"
 msgstr "Aplikácie"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Doplnky Plasmy"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
 #, kde-format
 msgid "Application Addons"
 msgstr "Doplnky aplikácií"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:434
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:430
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Sieťová chyba v podpornom programe %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:441
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:437
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1052,14 +1053,14 @@ msgstr ""
 "Bolo odoslaných príliš veľa požiadaviek serveru podporného programu %1. "
 "Prosím, skúste to znovu o pár minút."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:444
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:450
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:440
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:446
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Neplatný podporný program %1. Kontaktujte svojho distribútora."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:474
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:470
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1072,25 +1073,25 @@ msgstr ""
 "kontrolu. Nahlásená chyba bola:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:484
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:480
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "Nepodarilo sa získať snímku obrazovky pre položku %1 v podpornom programe %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:484
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Nespracovateľná chyba v podpornom programe %1. Kontaktujte svojho "
 "distribútora."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:636
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:632
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Nesprávna URI KNewStuff: %1"
@@ -2617,6 +2618,9 @@ msgstr "Systémový softvér"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Doplnky"
+
+#~ msgid "Error while fetching reviews: %1"
+#~ msgstr "Chyba počas získavania recenzií: %1"
 
 #~ msgid "Packages to remove"
 #~ msgstr "Balíky na odstránenie"

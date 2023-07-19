@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-18 02:09+0000\n"
-"PO-Revision-Date: 2023-05-06 21:54+0200\n"
+"POT-Creation-Date: 2023-07-19 03:24+0000\n"
+"PO-Revision-Date: 2023-07-18 10:46+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -364,74 +364,81 @@ msgctxt "@action"
 msgid "See details…"
 msgstr "Poglejte podrobnosti…"
 
-#: discover/qml/ApplicationPage.qml:368
+#: discover/qml/ApplicationPage.qml:370
 #, kde-format
-msgid "Could not access the screenshots"
-msgstr "Ni bil mogoč dostop do posnetkov zaslona"
+msgctxt "@info placeholder message"
+msgid "Screenshots not available for %1"
+msgstr ""
 
-#: discover/qml/ApplicationPage.qml:487
+#: discover/qml/ApplicationPage.qml:486
 #, kde-format
 msgid "Documentation"
 msgstr "Dokumentacija"
 
-#: discover/qml/ApplicationPage.qml:488
+#: discover/qml/ApplicationPage.qml:487
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Preberi uradno dokumentacijo projekta"
 
-#: discover/qml/ApplicationPage.qml:504
+#: discover/qml/ApplicationPage.qml:503
 #, kde-format
 msgid "Website"
 msgstr "Spletišče"
 
-#: discover/qml/ApplicationPage.qml:505
+#: discover/qml/ApplicationPage.qml:504
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Obišči spletno stran projekta"
 
-#: discover/qml/ApplicationPage.qml:521
+#: discover/qml/ApplicationPage.qml:520
 #, kde-format
 msgid "Addons"
 msgstr "Dodatki"
 
-#: discover/qml/ApplicationPage.qml:522
+#: discover/qml/ApplicationPage.qml:521
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Namesti ali odstrani dodatne funkcionalnosti"
 
-#: discover/qml/ApplicationPage.qml:541
+#: discover/qml/ApplicationPage.qml:540
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Deli"
 
-#: discover/qml/ApplicationPage.qml:542
+#: discover/qml/ApplicationPage.qml:541
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Pošlji povezavo za to aplikacijo"
 
-#: discover/qml/ApplicationPage.qml:558
+#: discover/qml/ApplicationPage.qml:557
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Preveri %1 app!"
 
-#: discover/qml/ApplicationPage.qml:578
+#: discover/qml/ApplicationPage.qml:577
 #, kde-format
 msgid "What's New"
 msgstr "Kaj je novega"
 
-#: discover/qml/ApplicationPage.qml:609
-#, kde-format
-msgid "Loading reviews for %1"
-msgstr "Nalaganje ocen za %1"
-
-#: discover/qml/ApplicationPage.qml:615
+#: discover/qml/ApplicationPage.qml:607
 #, kde-format
 msgid "Reviews"
 msgstr "Mnenja"
 
-#: discover/qml/ApplicationPage.qml:653
+#: discover/qml/ApplicationPage.qml:619
+#, kde-format
+msgid "Loading reviews for %1"
+msgstr "Nalaganje ocen za %1"
+
+#: discover/qml/ApplicationPage.qml:627
+#, kde-format
+msgctxt "@info placeholder message"
+msgid "Reviews for %1 are temporarily unavailable"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:655
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
@@ -440,68 +447,68 @@ msgstr[1] "Pokaži obe %1 mnenji"
 msgstr[2] "Pokaži vsa %1 mnenja"
 msgstr[3] "Pokaži vsa %1 mnenja"
 
-#: discover/qml/ApplicationPage.qml:665
+#: discover/qml/ApplicationPage.qml:667
 #, kde-format
 msgid "Write a Review"
 msgstr "Napiši mnenje"
 
-#: discover/qml/ApplicationPage.qml:665
+#: discover/qml/ApplicationPage.qml:667
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Namestite ta program, zato da napišete mnenje"
 
-#: discover/qml/ApplicationPage.qml:677
+#: discover/qml/ApplicationPage.qml:679
 #, kde-format
 msgid "Get Involved"
 msgstr "Bodite vpleteni"
 
-#: discover/qml/ApplicationPage.qml:719
+#: discover/qml/ApplicationPage.qml:721
 #, kde-format
 msgid "Donate"
 msgstr "Donirajte"
 
-#: discover/qml/ApplicationPage.qml:720
+#: discover/qml/ApplicationPage.qml:722
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "Podprite in zahvalite se razvijalcem z donacijo za projekt"
 
-#: discover/qml/ApplicationPage.qml:736
+#: discover/qml/ApplicationPage.qml:738
 #, kde-format
 msgid "Report Bug"
 msgstr "Poročajte o napaki"
 
-#: discover/qml/ApplicationPage.qml:737
+#: discover/qml/ApplicationPage.qml:739
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Zabeleži opažanje, ki ste ga ugotovili, da bi ga pomagali popraviti"
 
-#: discover/qml/ApplicationPage.qml:753
+#: discover/qml/ApplicationPage.qml:755
 #, kde-format
 msgid "Contribute"
 msgstr "Prispevaj"
 
-#: discover/qml/ApplicationPage.qml:754
+#: discover/qml/ApplicationPage.qml:756
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Pomagajte razvijalcem s kodiranjem, oblikovanjem, testiranjem ali prevajanjem"
 
-#: discover/qml/ApplicationPage.qml:779
+#: discover/qml/ApplicationPage.qml:781
 #, kde-format
 msgid "All Licenses"
 msgstr "Vse licence"
 
-#: discover/qml/ApplicationPage.qml:812
+#: discover/qml/ApplicationPage.qml:814
 #, kde-format
 msgid "Content Rating"
 msgstr "Ocena vsebine"
 
-#: discover/qml/ApplicationPage.qml:828
+#: discover/qml/ApplicationPage.qml:830
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Tveganja lastniškega programja"
 
-#: discover/qml/ApplicationPage.qml:834
+#: discover/qml/ApplicationPage.qml:836
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -527,7 +534,7 @@ msgstr ""
 "(<link url='%1'>%2</link>).<nl/><nl/>Več o tem se lahko poučite na <link "
 "url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:835
+#: discover/qml/ApplicationPage.qml:837
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -672,11 +679,10 @@ msgid "Still looking…"
 msgstr "Iskanje poteka…"
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "Domov"
+msgstr "Dom"
 
 #: discover/qml/BrowsingPage.qml:63
 #, kde-format
@@ -739,15 +745,13 @@ msgid "Fetching &updates…"
 msgstr "Pridobivanje posodobitev…"
 
 #: discover/qml/DiscoverWindow.qml:86
-#, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "&Update (%1)"
+#, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
-msgstr[0] "Posodobi (%1)"
-msgstr[1] "Posodobi (%1)"
-msgstr[2] "Posodobi (%1)"
-msgstr[3] "Posodobi (%1)"
+msgstr[0] "Posodobitev (%1)"
+msgstr[1] "Posodobitvi (%1)"
+msgstr[2] "Posodobitve (%1)"
+msgstr[3] "Posodobitev (%1)"
 
 #: discover/qml/DiscoverWindow.qml:94
 #, kde-format
@@ -1264,6 +1268,9 @@ msgstr "Preveriti bi morali za posodobitvami"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Čas zadnje posodobitve je neznan"
+
+#~ msgid "Could not access the screenshots"
+#~ msgstr "Ni bil mogoč dostop do posnetkov zaslona"
 
 #~ msgid "&Up to date"
 #~ msgstr "Posodobljeno"

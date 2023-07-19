@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-20 02:58+0000\n"
+"POT-Creation-Date: 2023-07-19 03:24+0000\n"
 "PO-Revision-Date: 2022-08-16 17:03+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -90,9 +90,10 @@ msgid "Intense Content"
 msgstr "İnternet"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:161
-#, kde-format
-msgid "Error while fetching reviews: %1"
-msgstr "Rəylərin alınmasında xəta: %1"
+#, fuzzy, kde-format
+#| msgid "Internal error: %1"
+msgid "Technical error message: %1"
+msgstr "Daxili xəta: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:213
 #, kde-format
@@ -1009,39 +1010,39 @@ msgstr "EULA İcmalı"
 msgid "Could not enable remote %1: %2"
 msgstr "Uzaqdakı %1 yaddaşını aktiv etmək mümkün olmadı: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:60
 #, kde-format
 msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:125
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:121
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "%1 mexanizminin işlənməsi çox vaxt aparır"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:187
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:183
 #, kde-format
 msgid "Applications"
 msgstr "Tətbiqlər"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma Əlavələri"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:233
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
 #, kde-format
 msgid "Application Addons"
 msgstr "Tətbiq Əlavələri"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:434
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:430
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "%1 alt sistemində şəbəkə xətası: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:441
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:437
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1050,15 +1051,15 @@ msgstr ""
 "%1 server sisteminə həddindən çox sorğu göndərildi. Lütfən bir neşə "
 "dəqiqədən sonra yenidən cəhd edin."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:444
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:450
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:455
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:440
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:446
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr ""
 "Xətalı dəstək modulu %1, distribütorunuzun tərtibatçısı ilə əlaqə yaradın."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:474
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:470
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1071,24 +1072,24 @@ msgstr ""
 "etməyə cəhd edə və həyata keçirə bilərsiniz. Xəta bildirişi:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:484
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:480
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "%2 modulundakı %1 girişi üçün ekran şəklini əldə etmək mümkün olmadı"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:484
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "%1 dəstək mexanizmi modulunda xəta. Distribütorunuzun tərtibatçısı ilə əlaqə "
 "yaradın."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:496
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:636
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:632
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Səhv KNewStuff ünvanı: %1"
@@ -2588,6 +2589,9 @@ msgstr "Sistem Proqram Təminatı"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Əlavələr"
+
+#~ msgid "Error while fetching reviews: %1"
+#~ msgstr "Rəylərin alınmasında xəta: %1"
 
 #~ msgid "Packages to remove"
 #~ msgstr "Paketlərin silinməsi"

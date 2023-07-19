@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-18 02:09+0000\n"
+"POT-Creation-Date: 2023-07-19 03:24+0000\n"
 "PO-Revision-Date: 2023-02-05 19:25+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -380,74 +380,86 @@ msgctxt "@action"
 msgid "See details…"
 msgstr "Показать подробности…"
 
-#: discover/qml/ApplicationPage.qml:368
-#, kde-format
-msgid "Could not access the screenshots"
-msgstr "Не удалось получить доступ к снимкам экрана"
+#: discover/qml/ApplicationPage.qml:370
+#, fuzzy, kde-format
+#| msgid ""
+#| "\n"
+#| "Also available in %1"
+msgctxt "@info placeholder message"
+msgid "Screenshots not available for %1"
+msgstr ""
+"\n"
+"Также доступно в %1"
 
-#: discover/qml/ApplicationPage.qml:487
+#: discover/qml/ApplicationPage.qml:486
 #, kde-format
 msgid "Documentation"
 msgstr "Документация"
 
-#: discover/qml/ApplicationPage.qml:488
+#: discover/qml/ApplicationPage.qml:487
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Ознакомиться с официальной документацией проекта"
 
-#: discover/qml/ApplicationPage.qml:504
+#: discover/qml/ApplicationPage.qml:503
 #, kde-format
 msgid "Website"
 msgstr "Веб-сайт"
 
-#: discover/qml/ApplicationPage.qml:505
+#: discover/qml/ApplicationPage.qml:504
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Посетить веб-сайт проекта"
 
-#: discover/qml/ApplicationPage.qml:521
+#: discover/qml/ApplicationPage.qml:520
 #, kde-format
 msgid "Addons"
 msgstr "Дополнения"
 
-#: discover/qml/ApplicationPage.qml:522
+#: discover/qml/ApplicationPage.qml:521
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Установить или удалить дополнения"
 
-#: discover/qml/ApplicationPage.qml:541
+#: discover/qml/ApplicationPage.qml:540
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Опубликовать"
 
-#: discover/qml/ApplicationPage.qml:542
+#: discover/qml/ApplicationPage.qml:541
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Отправить ссылку на приложение"
 
-#: discover/qml/ApplicationPage.qml:558
+#: discover/qml/ApplicationPage.qml:557
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Познакомьтесь с %1!"
 
-#: discover/qml/ApplicationPage.qml:578
+#: discover/qml/ApplicationPage.qml:577
 #, kde-format
 msgid "What's New"
 msgstr "Нововведения"
 
-#: discover/qml/ApplicationPage.qml:609
-#, kde-format
-msgid "Loading reviews for %1"
-msgstr "Выполняется загрузка отзывов о %1"
-
-#: discover/qml/ApplicationPage.qml:615
+#: discover/qml/ApplicationPage.qml:607
 #, kde-format
 msgid "Reviews"
 msgstr "Отзывы"
 
-#: discover/qml/ApplicationPage.qml:653
+#: discover/qml/ApplicationPage.qml:619
+#, kde-format
+msgid "Loading reviews for %1"
+msgstr "Выполняется загрузка отзывов о %1"
+
+#: discover/qml/ApplicationPage.qml:627
+#, kde-format
+msgctxt "@info placeholder message"
+msgid "Reviews for %1 are temporarily unavailable"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:655
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
@@ -456,70 +468,70 @@ msgstr[1] "Показать %1 отзыва"
 msgstr[2] "Показать %1 отзывов"
 msgstr[3] "Показать %1 отзыв"
 
-#: discover/qml/ApplicationPage.qml:665
+#: discover/qml/ApplicationPage.qml:667
 #, kde-format
 msgid "Write a Review"
 msgstr "Оставить отзыв"
 
-#: discover/qml/ApplicationPage.qml:665
+#: discover/qml/ApplicationPage.qml:667
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Установите, чтобы оставить отзыв"
 
-#: discover/qml/ApplicationPage.qml:677
+#: discover/qml/ApplicationPage.qml:679
 #, kde-format
 msgid "Get Involved"
 msgstr "Принять участие"
 
-#: discover/qml/ApplicationPage.qml:719
+#: discover/qml/ApplicationPage.qml:721
 #, kde-format
 msgid "Donate"
 msgstr "Поддержать"
 
-#: discover/qml/ApplicationPage.qml:720
+#: discover/qml/ApplicationPage.qml:722
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "Поддержать и отблагодарить разработчиков"
 
-#: discover/qml/ApplicationPage.qml:736
+#: discover/qml/ApplicationPage.qml:738
 #, kde-format
 msgid "Report Bug"
 msgstr "Сообщить об ошибке"
 
-#: discover/qml/ApplicationPage.qml:737
+#: discover/qml/ApplicationPage.qml:739
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr ""
 "Опишите проблему, с которой вы столкнулись, чтобы помочь в её исправлении"
 
-#: discover/qml/ApplicationPage.qml:753
+#: discover/qml/ApplicationPage.qml:755
 #, kde-format
 msgid "Contribute"
 msgstr "Участие"
 
-#: discover/qml/ApplicationPage.qml:754
+#: discover/qml/ApplicationPage.qml:756
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Помочь разработчикам, приняв участие в написании кода, разработке дизайна, "
 "тестировании или переводе"
 
-#: discover/qml/ApplicationPage.qml:779
+#: discover/qml/ApplicationPage.qml:781
 #, kde-format
 msgid "All Licenses"
 msgstr "Все лицензии"
 
-#: discover/qml/ApplicationPage.qml:812
+#: discover/qml/ApplicationPage.qml:814
 #, kde-format
 msgid "Content Rating"
 msgstr "Оценка содержимого"
 
-#: discover/qml/ApplicationPage.qml:828
+#: discover/qml/ApplicationPage.qml:830
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Риск использования проприетарного ПО"
 
-#: discover/qml/ApplicationPage.qml:834
+#: discover/qml/ApplicationPage.qml:836
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -546,7 +558,7 @@ msgstr ""
 "авторам (<link url='%1'>%2</link>).<nl/><nl/>Дополнительная информация "
 "представлена на странице <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:835
+#: discover/qml/ApplicationPage.qml:837
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1294,6 +1306,9 @@ msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Время последнего обновления неизвестно"
 
+#~ msgid "Could not access the screenshots"
+#~ msgstr "Не удалось получить доступ к снимкам экрана"
+
 #~ msgid "&Up to date"
 #~ msgstr "О&бновления отсутствуют"
 
@@ -1574,13 +1589,6 @@ msgstr "Время последнего обновления неизвестн�
 #~ msgctxt "TransactioName TransactionStatus"
 #~ msgid "%1 %2"
 #~ msgstr "%1 %2"
-
-#~ msgid ""
-#~ "\n"
-#~ "Also available in %1"
-#~ msgstr ""
-#~ "\n"
-#~ "Также доступно в %1"
 
 #~ msgid "Summary:"
 #~ msgstr "Заголовок:"
