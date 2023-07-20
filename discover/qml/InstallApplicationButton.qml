@@ -94,7 +94,7 @@ ConditionalLoader {
         activeFocusOnTab: false
 
         text: root.action.text
-        icon.name: "download"
+        icon.name: root.action.icon.name
         display: AbstractButton.IconOnly
 
         ToolTip.text: text
