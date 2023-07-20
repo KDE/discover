@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-19 03:24+0000\n"
+"POT-Creation-Date: 2023-07-20 02:12+0000\n"
 "PO-Revision-Date: 2023-05-28 16:56+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -651,31 +651,31 @@ msgstr "首頁 (&H)："
 msgid "Unable to load applications"
 msgstr "無法載入應用程式"
 
-#: discover/qml/BrowsingPage.qml:102
+#: discover/qml/BrowsingPage.qml:101
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "最受歡迎"
 
-#: discover/qml/BrowsingPage.qml:122
+#: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "編輯精選"
 
-#: discover/qml/BrowsingPage.qml:138
+#: discover/qml/BrowsingPage.qml:137
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "評價最高的遊戲"
 
-#: discover/qml/BrowsingPage.qml:157 discover/qml/BrowsingPage.qml:186
+#: discover/qml/BrowsingPage.qml:156 discover/qml/BrowsingPage.qml:185
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "檢視更多"
 
-#: discover/qml/BrowsingPage.qml:167
+#: discover/qml/BrowsingPage.qml:166
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

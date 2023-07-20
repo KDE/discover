@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-19 03:24+0000\n"
+"POT-Creation-Date: 2023-07-20 02:12+0000\n"
 "PO-Revision-Date: 2023-03-06 18:47+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -694,31 +694,31 @@ msgstr "Domov"
 msgid "Unable to load applications"
 msgstr "Nepodarilo sa načítať aplikcie"
 
-#: discover/qml/BrowsingPage.qml:102
+#: discover/qml/BrowsingPage.qml:101
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Najpopulárnejšie"
 
-#: discover/qml/BrowsingPage.qml:122
+#: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Výber vydavateľa"
 
-#: discover/qml/BrowsingPage.qml:138
+#: discover/qml/BrowsingPage.qml:137
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Najvyššie hodnotené hry"
 
-#: discover/qml/BrowsingPage.qml:157 discover/qml/BrowsingPage.qml:186
+#: discover/qml/BrowsingPage.qml:156 discover/qml/BrowsingPage.qml:185
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Zobraziť viac"
 
-#: discover/qml/BrowsingPage.qml:167
+#: discover/qml/BrowsingPage.qml:166
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-19 03:24+0000\n"
-"PO-Revision-Date: 2023-07-18 09:03+0300\n"
+"POT-Creation-Date: 2023-07-20 02:12+0000\n"
+"PO-Revision-Date: 2023-07-19 08:10+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -370,15 +370,10 @@ msgid "See details…"
 msgstr "Переглянути подробиці…"
 
 #: discover/qml/ApplicationPage.qml:370
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "Also available in %1"
+#, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
-"\n"
-"Також доступний у %1"
+msgstr "Знімки вікон для %1 недоступні"
 
 #: discover/qml/ApplicationPage.qml:486
 #, kde-format
@@ -446,7 +441,7 @@ msgstr "Завантажуємо рецензії щодо %1"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "Рецензії щодо %1 тимчасово недоступні"
 
 #: discover/qml/ApplicationPage.qml:655
 #, kde-format
@@ -702,31 +697,31 @@ msgstr "Домівка"
 msgid "Unable to load applications"
 msgstr "Не вдалося завантажити програми"
 
-#: discover/qml/BrowsingPage.qml:102
+#: discover/qml/BrowsingPage.qml:101
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Найпопулярніші"
 
-#: discover/qml/BrowsingPage.qml:122
+#: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Відібране редактором"
 
-#: discover/qml/BrowsingPage.qml:138
+#: discover/qml/BrowsingPage.qml:137
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Ігри з найвищою оцінкою"
 
-#: discover/qml/BrowsingPage.qml:157 discover/qml/BrowsingPage.qml:186
+#: discover/qml/BrowsingPage.qml:156 discover/qml/BrowsingPage.qml:185
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Переглянути ще"
 
-#: discover/qml/BrowsingPage.qml:167
+#: discover/qml/BrowsingPage.qml:166
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-19 03:24+0000\n"
+"POT-Creation-Date: 2023-07-20 02:12+0000\n"
 "PO-Revision-Date: 2023-05-06 15:42+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -676,31 +676,31 @@ msgstr "&Home"
 msgid "Unable to load applications"
 msgstr "Unable to load applications"
 
-#: discover/qml/BrowsingPage.qml:102
+#: discover/qml/BrowsingPage.qml:101
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Most Popular"
 
-#: discover/qml/BrowsingPage.qml:122
+#: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Editor's Choice"
 
-#: discover/qml/BrowsingPage.qml:138
+#: discover/qml/BrowsingPage.qml:137
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Highest-Rated Games"
 
-#: discover/qml/BrowsingPage.qml:157 discover/qml/BrowsingPage.qml:186
+#: discover/qml/BrowsingPage.qml:156 discover/qml/BrowsingPage.qml:185
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "See More"
 
-#: discover/qml/BrowsingPage.qml:167
+#: discover/qml/BrowsingPage.qml:166
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

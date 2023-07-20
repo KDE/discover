@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-19 03:24+0000\n"
-"PO-Revision-Date: 2023-05-16 19:38+0200\n"
+"POT-Creation-Date: 2023-07-20 02:12+0000\n"
+"PO-Revision-Date: 2023-07-19 18:06+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.0\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -360,15 +360,10 @@ msgid "See details…"
 msgstr "Ikusi xehetasunak…"
 
 #: discover/qml/ApplicationPage.qml:370
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "Also available in %1"
+#, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
-"\n"
-"Erabilgarri dago ere hemen: %1"
+msgstr "Ez dago %1(e)rako pantaila-argazki erabilgarririk"
 
 #: discover/qml/ApplicationPage.qml:486
 #, kde-format
@@ -425,18 +420,18 @@ msgstr "Zer berri"
 #: discover/qml/ApplicationPage.qml:607
 #, kde-format
 msgid "Reviews"
-msgstr "Iritziak"
+msgstr "Aipamenak"
 
 #: discover/qml/ApplicationPage.qml:619
 #, kde-format
 msgid "Loading reviews for %1"
-msgstr "«%1»ren gaineko iritziak zamatzen"
+msgstr "«%1»ren gaineko aipamenak zamatzen"
 
 #: discover/qml/ApplicationPage.qml:627
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "%1(e)n gaineko aipamenak aldi baterako ezin dira erabili"
 
 #: discover/qml/ApplicationPage.qml:655
 #, kde-format
@@ -448,12 +443,12 @@ msgstr[1] "Erakutsi denak, %1 aipamen"
 #: discover/qml/ApplicationPage.qml:667
 #, kde-format
 msgid "Write a Review"
-msgstr "Idatzi iritzi bat"
+msgstr "Idatzi aipamen bat"
 
 #: discover/qml/ApplicationPage.qml:667
 #, kde-format
 msgid "Install to Write a Review"
-msgstr "Instalatu iritzi bat idazteko"
+msgstr "Instalatu aipamen bat idazteko"
 
 #: discover/qml/ApplicationPage.qml:679
 #, kde-format
@@ -676,42 +671,41 @@ msgid "Still looking…"
 msgstr "Oraindik bilatzen..."
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "&Hasiera"
+msgstr "Hasiera"
 
 #: discover/qml/BrowsingPage.qml:63
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Ezin ditu aplikazioak zamatu"
 
-#: discover/qml/BrowsingPage.qml:102
+#: discover/qml/BrowsingPage.qml:101
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Ezagunena"
 
-#: discover/qml/BrowsingPage.qml:122
+#: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Argitaratzaileak aukeratua"
 
-#: discover/qml/BrowsingPage.qml:138
+#: discover/qml/BrowsingPage.qml:137
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Hobekien sailkatutako jokoak"
 
-#: discover/qml/BrowsingPage.qml:157 discover/qml/BrowsingPage.qml:186
+#: discover/qml/BrowsingPage.qml:156 discover/qml/BrowsingPage.qml:185
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Ikusi gehiago"
 
-#: discover/qml/BrowsingPage.qml:167
+#: discover/qml/BrowsingPage.qml:166
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
@@ -744,13 +738,11 @@ msgid "Fetching &updates…"
 msgstr "Eg&uneratzeak ekartzen..."
 
 #: discover/qml/DiscoverWindow.qml:86
-#, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "&Update (%1)"
+#, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
-msgstr[0] "Eg&uneratu (%1)"
-msgstr[1] "Eg&uneratu (%1)"
+msgstr[0] "Eg&uneratzea (%1)"
+msgstr[1] "Eg&uneratzeak (%1)"
 
 #: discover/qml/DiscoverWindow.qml:94
 #, kde-format
@@ -928,7 +920,7 @@ msgstr "%1 - %2"
 #: discover/qml/ReviewDelegate.qml:64
 #, kde-format
 msgid "unknown reviewer"
-msgstr "Iritzi emaile ezezaguna"
+msgstr "Aipamen emaile ezezaguna"
 
 #: discover/qml/ReviewDelegate.qml:65
 #, kde-format
@@ -958,7 +950,7 @@ msgstr "Bozkak: %1 / %2"
 #: discover/qml/ReviewDelegate.qml:105
 #, kde-format
 msgid "Was this review useful?"
-msgstr "Iritzi hau baliagarria izan da?"
+msgstr "Aipamen hau baliagarria izan da?"
 
 #: discover/qml/ReviewDelegate.qml:117
 #, kde-format
@@ -975,12 +967,12 @@ msgstr "Ez"
 #: discover/qml/ReviewDialog.qml:19
 #, kde-format
 msgid "Reviewing %1"
-msgstr "%«%1»ren gaineko iritzi ematea"
+msgstr "%«%1»ren gaineko aipamena egiten"
 
 #: discover/qml/ReviewDialog.qml:25
 #, kde-format
 msgid "Submit review"
-msgstr "Bidali iritzia"
+msgstr "Bidali aipamena"
 
 #: discover/qml/ReviewDialog.qml:38
 #, kde-format
@@ -1010,7 +1002,7 @@ msgstr "Idatzi izenburua"
 #: discover/qml/ReviewDialog.qml:75
 #, kde-format
 msgid "Write the review"
-msgstr "Idatzi iritzia"
+msgstr "Idatzi aipamena"
 
 #: discover/qml/ReviewDialog.qml:78
 #, kde-format
@@ -1031,17 +1023,17 @@ msgstr "Sartu izen bat"
 #: discover/qml/ReviewsPage.qml:44
 #, kde-format
 msgid "Reviews for %1"
-msgstr "«%1»ren gaineko iritziak"
+msgstr "%1(e)ren gaineko aipamenak"
 
 #: discover/qml/ReviewsPage.qml:55
 #, kde-format
 msgid "Write a Review…"
-msgstr "Idatzi iritzi bat..."
+msgstr "Idatzi aipamen bat..."
 
 #: discover/qml/ReviewsPage.qml:60
 #, kde-format
 msgid "Install this app to write a review"
-msgstr "Instalatu aplikazio hau, iritzi bat idazteko"
+msgstr "Instalatu aplikazio hori, aipamen bat idazteko"
 
 #: discover/qml/SearchField.qml:24
 #, kde-format

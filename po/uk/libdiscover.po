@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-19 03:24+0000\n"
-"PO-Revision-Date: 2023-06-02 20:05+0300\n"
+"PO-Revision-Date: 2023-07-19 08:08+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -88,10 +88,9 @@ msgid "Intense Content"
 msgstr "Ексцентричний вміст"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:161
-#, fuzzy, kde-format
-#| msgid "Internal error: %1"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "Внутрішня помилка: %1"
+msgstr "Технічне повідомлення про помилку: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:213
 #, kde-format

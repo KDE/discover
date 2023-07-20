@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-19 03:24+0000\n"
-"PO-Revision-Date: 2023-07-18 05:29+0300\n"
+"POT-Creation-Date: 2023-07-20 02:12+0000\n"
+"PO-Revision-Date: 2023-07-19 14:06+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -362,7 +362,7 @@ msgstr "Ayrıntıları gör…"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
+msgstr "%1 için ekran görüntüleri kullanılamıyor"
 
 #: discover/qml/ApplicationPage.qml:486
 #, kde-format
@@ -430,7 +430,7 @@ msgstr "%1 incelemeleri yükleniyor"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "%1 incelemeleri geçici olarak kullanılamıyor"
 
 #: discover/qml/ApplicationPage.qml:655
 #, kde-format
@@ -679,31 +679,31 @@ msgstr "Başlangıç"
 msgid "Unable to load applications"
 msgstr "Uygulamalar yüklenemiyor"
 
-#: discover/qml/BrowsingPage.qml:102
+#: discover/qml/BrowsingPage.qml:101
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "En Popüler"
 
-#: discover/qml/BrowsingPage.qml:122
+#: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Editörün Seçimi"
 
-#: discover/qml/BrowsingPage.qml:138
+#: discover/qml/BrowsingPage.qml:137
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "En Çok Beğenilen Oyunlar"
 
-#: discover/qml/BrowsingPage.qml:157 discover/qml/BrowsingPage.qml:186
+#: discover/qml/BrowsingPage.qml:156 discover/qml/BrowsingPage.qml:185
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Daha Fazlasını Gör"
 
-#: discover/qml/BrowsingPage.qml:167
+#: discover/qml/BrowsingPage.qml:166
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

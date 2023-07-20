@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-19 03:24+0000\n"
-"PO-Revision-Date: 2023-07-18 15:18+0300\n"
+"POT-Creation-Date: 2023-07-20 02:12+0000\n"
+"PO-Revision-Date: 2023-07-19 20:06+0300\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -367,7 +367,7 @@ msgstr "Veure els detalls…"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
+msgstr "Bo hi ha captures de pantalla disponibles per a %1"
 
 #: discover/qml/ApplicationPage.qml:486
 #, kde-format
@@ -436,7 +436,7 @@ msgstr "Es carreguen les ressenyes de %1"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "Els comentaris per a %1 no són disponibles temporalment"
 
 #: discover/qml/ApplicationPage.qml:655
 #, kde-format
@@ -682,31 +682,31 @@ msgstr "Inici"
 msgid "Unable to load applications"
 msgstr "No es poden carregar les aplicacions"
 
-#: discover/qml/BrowsingPage.qml:102
+#: discover/qml/BrowsingPage.qml:101
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Més popular"
 
-#: discover/qml/BrowsingPage.qml:122
+#: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Selecció de l'editor"
 
-#: discover/qml/BrowsingPage.qml:138
+#: discover/qml/BrowsingPage.qml:137
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Jocs amb la puntuació més alta"
 
-#: discover/qml/BrowsingPage.qml:157 discover/qml/BrowsingPage.qml:186
+#: discover/qml/BrowsingPage.qml:156 discover/qml/BrowsingPage.qml:185
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Vegeu-ne més"
 
-#: discover/qml/BrowsingPage.qml:167
+#: discover/qml/BrowsingPage.qml:166
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
@@ -1259,6 +1259,3 @@ msgstr "Cal comprovar si hi ha actualitzacions"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Es desconeix l'hora de l'última actualització"
-
-#~ msgid "Could not access the screenshots"
-#~ msgstr "No s'ha pogut accedir a les captures de pantalla"

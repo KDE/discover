@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-19 03:24+0000\n"
-"PO-Revision-Date: 2023-06-02 12:24+0300\n"
+"PO-Revision-Date: 2023-07-19 14:05+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -88,10 +88,9 @@ msgid "Intense Content"
 msgstr "Ağır Düzeyli İçerik"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:161
-#, fuzzy, kde-format
-#| msgid "Internal error: %1"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "İç hata: %1"
+msgstr "Teknik hata iletisi: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:213
 #, kde-format
