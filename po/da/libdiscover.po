@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-19 03:24+0000\n"
+"POT-Creation-Date: 2023-07-21 02:20+0000\n"
 "PO-Revision-Date: 2020-10-04 16:58+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -92,18 +92,18 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "Internet"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:161
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
 #, fuzzy, kde-format
 #| msgid "Internal error"
 msgid "Technical error message: %1"
 msgstr "Intern fejl"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:213
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "Fejl under indsendelse af brugbarhed: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:270
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:280
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Fejl under indsendelse af anmeldelse: %1"
@@ -535,25 +535,25 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "Systemindstillinger"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:125
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:124
 #, fuzzy, kde-format
 #| msgid "%1 (%2)"
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:709
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:708
 #, kde-format
 msgid "Local bundle"
 msgstr "Lokalt bundt"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1676
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Defekt appstream-URL \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1780
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1779
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -566,13 +566,13 @@ msgstr ""
 "Kunne ikke opdatere %1 pakke\n"
 "%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1901
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1900
 #, fuzzy, kde-format
 #| msgid "There are %1 updated packages!"
 msgid "There are no Flatpak sources."
 msgstr "Der er %1 opdaterede pakker!"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1905
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -1146,7 +1146,7 @@ msgstr ""
 msgid "Cannot remove '%1'"
 msgstr "Kan ikke fjerne systempakke"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:965
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:925
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1154,14 +1154,14 @@ msgid ""
 "updates and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:974
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:934
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, fuzzy, kde-format
 #| msgid "Upgrade"
 msgid "Upgrade to %1 %2"
 msgstr "Opgradér"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
 #, kde-format
 msgid "A new major version has been released"
 msgstr ""
@@ -1966,13 +1966,13 @@ msgstr "Anmodet"
 msgid "Unavailable"
 msgstr "Tilgængelige"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:115
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:123
 #, fuzzy, kde-format
 #| msgid "Offline Updates"
 msgid "Failed Offline Update"
 msgstr "Offline opdateringer"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
 #, kde-format
 msgid ""
 "Failed to update %1 package\n"
@@ -1987,48 +1987,48 @@ msgstr[1] ""
 "Kunne ikke opdatere %1 pakker\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:172
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:180
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Åbn Discover"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "Reparér system"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
 #, fuzzy, kde-format
 #| msgid "Offline Updates"
 msgid "Repairing failed offline update"
 msgstr "Offline opdateringer"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
 #, kde-format
 msgid "Repair Failed"
 msgstr "Reparation mislykkedes"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
 #, fuzzy, kde-kuit-format
 #| msgid "Please report to your distribution: %1"
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr "Rapportér venligst dette til din distribution: %1"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
 #, kde-format
 msgid "Repaired Successfully"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:170
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
 #, kde-format
 msgid "Offline Updates"
 msgstr "Offline opdateringer"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:171
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:179
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"

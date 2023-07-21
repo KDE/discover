@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-19 03:24+0000\n"
+"POT-Creation-Date: 2023-07-21 02:20+0000\n"
 "PO-Revision-Date: 2023-02-25 15:02-0800\n"
 "Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -85,18 +85,18 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "注意が必要 (重大)"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:161
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
 #, fuzzy, kde-format
 #| msgid "Internal error: %1"
 msgid "Technical error message: %1"
 msgstr "内部エラー: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:213
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "有用性の投稿中にエラーが発生しました: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:270
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:280
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "レビュー投稿中にエラーが発生しました: %1"
@@ -527,34 +527,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "システム設定"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:125
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:124
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (ユーザ)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:709
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:708
 #, kde-format
 msgid "Local bundle"
 msgstr "ローカルパッケージ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1676
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正な AppStream の URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1780
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1779
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "ソースの追加に失敗しました '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1901
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1900
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Flatpak のソースがありません"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1905
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "ソース \"%1\" を読み込めませんでした"
@@ -1098,7 +1098,7 @@ msgstr ""
 msgid "Cannot remove '%1'"
 msgstr "'%1'を削除できません。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:965
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:925
 #, fuzzy, kde-format
 #| msgid ""
 #| "<b>A new major version of %1 has been released!</b>\n"
@@ -1113,13 +1113,13 @@ msgstr ""
 "新しいメジャーバージョンに更新する前に、すべての更新待ちパッケージを更新して"
 "システムを再起動する必要があります。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:974
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:934
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "%1 %2 に更新"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
 #, fuzzy, kde-format
 #| msgid "<b>A new major version has been released!</b>"
 msgid "A new major version has been released"
@@ -1864,12 +1864,12 @@ msgstr "信頼されています"
 msgid "Unavailable"
 msgstr "利用できません"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:115
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:123
 #, kde-format
 msgid "Failed Offline Update"
 msgstr "失敗したオフライン更新"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
 #, kde-format
 msgid ""
 "Failed to update %1 package\n"
@@ -1881,46 +1881,46 @@ msgstr[0] ""
 "%1 個のパッケージの更新に失敗しました。\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:172
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:180
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Discover を開く"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "システムの修復"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "失敗したオフライン更新を修復中"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
 #, kde-format
 msgid "Repair Failed"
 msgstr "修復に失敗しました"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr "%1<nl/>このエラーをディストリビューションの配布元に報告してください。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "修復に成功しました"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:170
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
 #, kde-format
 msgid "Offline Updates"
 msgstr "オフライン更新"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:171
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:179
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"

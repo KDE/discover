@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-19 03:24+0000\n"
+"POT-Creation-Date: 2023-07-21 02:20+0000\n"
 "PO-Revision-Date: 2023-04-21 23:32+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -84,18 +84,18 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "강력한 콘텐츠"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:161
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
 #, fuzzy, kde-format
 #| msgid "Internal error: %1"
 msgid "Technical error message: %1"
 msgstr "내부 오류: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:213
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "유용성 정보를 제출하는 중 오류 발생: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:270
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:280
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "리뷰를 제출하는 중 오류 발생: %1"
@@ -526,34 +526,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "시스템 설정"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:125
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:124
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1(사용자)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:709
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:708
 #, kde-format
 msgid "Local bundle"
 msgstr "로컬 번들"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1676
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "잘못된 AppStream URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1780
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1779
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' 원본을 추가할 수 없음: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1901
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1900
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Flatpak 원본이 없습니다."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1905
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" 원본을 불러올 수 없음"
@@ -1121,7 +1121,7 @@ msgstr ""
 msgid "Cannot remove '%1'"
 msgstr "'%1'을(를) 삭제할 수 없음"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:965
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:925
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1132,13 +1132,13 @@ msgstr ""
 "새로운 버전으로 업데이트하려면 모든 대기 중인 업데이트를 적용한 다음 시스템"
 "을 다시 시작하십시오."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:974
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:934
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "%1 %2(으)로 업그레이드"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
 #, kde-format
 msgid "A new major version has been released"
 msgstr "새 주 버전이 출시되었습니다"
@@ -1881,12 +1881,12 @@ msgstr "신뢰함"
 msgid "Unavailable"
 msgstr "사용할 수 없음"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:115
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:123
 #, kde-format
 msgid "Failed Offline Update"
 msgstr "오프라인 업데이트 실패"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
 #, kde-format
 msgid ""
 "Failed to update %1 package\n"
@@ -1898,46 +1898,46 @@ msgstr[0] ""
 "패키지 %1개를 업데이트할 수 없음\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:172
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:180
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Discover 열기"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "시스템 복구"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "실패한 오프라인 업데이트 복구 중"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
 #, kde-format
 msgid "Repair Failed"
 msgstr "복구 실패"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr "%1<nl/>이 오류를 배포판에 보고해 주십시오."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "복구에 성공함"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:170
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
 #, kde-format
 msgid "Offline Updates"
 msgstr "오프라인 업데이트"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:171
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:179
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"

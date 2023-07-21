@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-19 03:24+0000\n"
+"POT-Creation-Date: 2023-07-21 02:20+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -94,18 +94,18 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "Internet|/|$[svojstva lok 'Internetu']"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:161
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
 #, fuzzy, kde-format
 #| msgid "Internal error"
 msgid "Technical error message: %1"
 msgstr "Unutrašnja greška"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:213
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr ""
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:270
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:280
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr ""
@@ -546,7 +546,7 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "Sistem i postavke|/|$[svojstva lok 'Sistemu i postavkama']"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:125
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:124
 #, fuzzy, kde-format
 #| msgctxt "description (url)"
 #| msgid "%1 (%2)"
@@ -554,30 +554,30 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:709
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:708
 #, kde-format
 msgid "Local bundle"
 msgstr "Lokalna sveza"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1676
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Loš apstrim URL ‘%1’"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1780
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1779
 #, fuzzy, kde-format
 #| msgid "Could not add the source %1"
 msgid "Failed to add source '%1': %2"
 msgstr "Ne mogu da dodam izvor %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1901
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1900
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
 # >! Plurals.
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1905
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 packages\n"
@@ -1150,7 +1150,7 @@ msgstr ""
 msgid "Cannot remove '%1'"
 msgstr "Ne mogu da uklonim sistemski paket"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:965
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:925
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1158,13 +1158,13 @@ msgid ""
 "updates and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:974
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:934
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
 #, kde-format
 msgid "A new major version has been released"
 msgstr ""
@@ -1971,14 +1971,14 @@ msgstr ""
 msgid "Unavailable"
 msgstr "dostupno"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:115
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:123
 #, fuzzy, kde-format
 #| msgid "Offline Updates"
 msgid "Failed Offline Update"
 msgstr "Dopune van veze"
 
 # >! Plurals.
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 packages\n"
@@ -2006,14 +2006,14 @@ msgstr[3] ""
 "%2|/|Ne mogu da ažuriram %1 $[množ ^1 paket paketa paketa].\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:172
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:180
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
 #| msgid "Failed"
@@ -2021,35 +2021,35 @@ msgctxt "@action:button"
 msgid "Repair System"
 msgstr "Propalo."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
 #| msgid "Failed"
 msgid "Repair Failed"
 msgstr "Propalo."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
 #, kde-format
 msgid "Repaired Successfully"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:170
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
 #, kde-format
 msgid "Offline Updates"
 msgstr "Dopune van veze"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:171
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:179
 #, fuzzy, kde-format
 #| msgid "Successfully updated %1 packages"
 msgid "Successfully updated %1 package"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-06 02:08+0000\n"
+"POT-Creation-Date: 2023-07-21 02:20+0000\n"
 "PO-Revision-Date: 2015-11-14 16:11+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -69,21 +69,21 @@ msgctxt "@action:button"
 msgid "Restart"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:311
+#: notifier/DiscoverNotifier.cpp:317
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:318
 #, fuzzy, kde-format
 #| msgid "Updates available"
 msgid "Upgrade available"
 msgstr "Dostupne su dopune"
 
-#: notifier/DiscoverNotifier.cpp:313
+#: notifier/DiscoverNotifier.cpp:319
 #, kde-format
-msgid "New version: %1"
+msgid "%1 is now available."
 msgstr ""
 
 #: notifier/main.cpp:36

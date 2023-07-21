@@ -1261,9 +1261,3 @@ msgstr "Skal sjå etter oppdateringar"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for siste oppdatering er ukjend"
-
-#~ msgid "Could not access the screenshots"
-#~ msgstr "Fekk ikkje tilgang til skjermbiletet"
-
-#~ msgid "&Up to date"
-#~ msgstr "À &jour"

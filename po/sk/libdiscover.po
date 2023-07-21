@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-19 03:24+0000\n"
+"POT-Creation-Date: 2023-07-21 02:20+0000\n"
 "PO-Revision-Date: 2023-03-15 19:07+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -88,18 +88,18 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "Vysoko nevhodný obsah"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:161
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
 #, fuzzy, kde-format
 #| msgid "Internal error: %1"
 msgid "Technical error message: %1"
 msgstr "Interná chyba: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:213
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "Chyba počas odosielania užitočnosti: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:270
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:280
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Chyba počas odosielania recenzie: %1"
@@ -530,34 +530,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "Systémové nastavenia"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:125
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:124
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (používateľ)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:709
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:708
 #, kde-format
 msgid "Local bundle"
 msgstr "Miestny balík"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1676
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Neplatné appstream url '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1780
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1779
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Nepodarilo sa pridať zdroj '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1901
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1900
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Neexistujú žiadne zdroje Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1905
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Nepodarilo sa načítať zdroj '%1'"
@@ -1149,7 +1149,7 @@ msgstr ""
 msgid "Cannot remove '%1'"
 msgstr "Nedá sa odstrániť '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:965
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:925
 #, fuzzy, kde-format
 #| msgid ""
 #| "<b>A new major version of %1 has been released!</b>\n"
@@ -1164,13 +1164,13 @@ msgstr ""
 "Ak chcete aktualizovať na túto novú verziu, uistite sa, že ste vykonali "
 "všetky čakajúce aktualizácie a reštartovali systém."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:974
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:934
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Zvýšiť verziu na %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
 #, fuzzy, kde-format
 #| msgid "<b>A new major version has been released!</b>"
 msgid "A new major version has been released"
@@ -1916,12 +1916,12 @@ msgstr "Dôveryhodné"
 msgid "Unavailable"
 msgstr "Nedostupné"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:115
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:123
 #, kde-format
 msgid "Failed Offline Update"
 msgstr "Offline aktualizácia zlyhala"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
 #, kde-format
 msgid ""
 "Failed to update %1 package\n"
@@ -1939,46 +1939,46 @@ msgstr[2] ""
 "Zlyhala aktualizácia %1 balíkov\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:172
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:180
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Otvoriť aplikáciu Discover"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "Opraviť systém"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "Oprava neúspešnej offline aktualizácie"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
 #, kde-format
 msgid "Repair Failed"
 msgstr "Oprava zlyhala"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr "%1<nl/>Prosím, nahláste túto chybu vašej distribúcii."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Úspešne opravené"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:170
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
 #, kde-format
 msgid "Offline Updates"
 msgstr "Aktualizácie bez pripojenia"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:171
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:179
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"

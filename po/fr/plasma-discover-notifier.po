@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-06 02:08+0000\n"
+"POT-Creation-Date: 2023-07-21 02:20+0000\n"
 "PO-Revision-Date: 2022-01-06 08:43+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -76,21 +76,21 @@ msgctxt "@action:button"
 msgid "Restart"
 msgstr "Redémarrer"
 
-#: notifier/DiscoverNotifier.cpp:311
+#: notifier/DiscoverNotifier.cpp:317
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Mise à niveau"
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:318
 #, kde-format
 msgid "Upgrade available"
 msgstr "Mise à niveau disponible"
 
-#: notifier/DiscoverNotifier.cpp:313
+#: notifier/DiscoverNotifier.cpp:319
 #, kde-format
-msgid "New version: %1"
-msgstr "Nouvelle version : %1"
+msgid "%1 is now available."
+msgstr ""
 
 #: notifier/main.cpp:36
 #, kde-format
@@ -163,6 +163,9 @@ msgstr "Ré-démarrer pour appliquer les mises à jour installées"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Cliquez pour re-démarrer le périphérique"
+
+#~ msgid "New version: %1"
+#~ msgstr "Nouvelle version : %1"
 
 #~ msgid "Restart..."
 #~ msgstr "Redémarrer..."

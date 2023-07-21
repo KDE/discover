@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-06 02:08+0000\n"
+"POT-Creation-Date: 2023-07-21 02:20+0000\n"
 "PO-Revision-Date: 2022-06-22 01:02+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <kde-i18n-doc@kde.org>\n"
@@ -72,21 +72,21 @@ msgctxt "@action:button"
 msgid "Restart"
 msgstr "重新啟動"
 
-#: notifier/DiscoverNotifier.cpp:311
+#: notifier/DiscoverNotifier.cpp:317
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "升級"
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:318
 #, kde-format
 msgid "Upgrade available"
 msgstr "有可用的更新"
 
-#: notifier/DiscoverNotifier.cpp:313
+#: notifier/DiscoverNotifier.cpp:319
 #, kde-format
-msgid "New version: %1"
-msgstr "新版本：%1"
+msgid "%1 is now available."
+msgstr ""
 
 #: notifier/main.cpp:36
 #, kde-format
@@ -159,6 +159,9 @@ msgstr "重新啟動電腦以套用已安裝的更新"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "按我以重新啟動電腦"
+
+#~ msgid "New version: %1"
+#~ msgstr "新版本：%1"
 
 #~ msgid "Restart..."
 #~ msgstr "重新啟動…"

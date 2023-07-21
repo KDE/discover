@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-06 02:08+0000\n"
+"POT-Creation-Date: 2023-07-21 02:20+0000\n"
 "PO-Revision-Date: 2022-07-08 15:50+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -72,21 +72,21 @@ msgctxt "@action:button"
 msgid "Restart"
 msgstr "Reinicia"
 
-#: notifier/DiscoverNotifier.cpp:311
+#: notifier/DiscoverNotifier.cpp:317
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Actualitza"
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:318
 #, kde-format
 msgid "Upgrade available"
 msgstr "Hi ha una actualització disponible"
 
-#: notifier/DiscoverNotifier.cpp:313
+#: notifier/DiscoverNotifier.cpp:319
 #, kde-format
-msgid "New version: %1"
-msgstr "Versió nova: %1"
+msgid "%1 is now available."
+msgstr ""
 
 #: notifier/main.cpp:36
 #, kde-format
@@ -159,3 +159,6 @@ msgstr "Reinicieu per a aplicar les actualitzacions instal·lades"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Feu clic per a reiniciar el dispositiu"
+
+#~ msgid "New version: %1"
+#~ msgstr "Versió nova: %1"

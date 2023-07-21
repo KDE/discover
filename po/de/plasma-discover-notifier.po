@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-06 02:08+0000\n"
+"POT-Creation-Date: 2023-07-21 02:20+0000\n"
 "PO-Revision-Date: 2022-04-14 18:46+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-doc@kde.org>\n"
@@ -70,21 +70,21 @@ msgid "Restart"
 msgstr "Neu starten"
 
 # Hier gibt es drei verschiedene englische Vokabeln, die wir alle mit Aktualisieren/-ung übersetzen. Irgendwie bin ich nicht so glücklich damit.
-#: notifier/DiscoverNotifier.cpp:311
+#: notifier/DiscoverNotifier.cpp:317
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Aktualisieren"
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:318
 #, kde-format
 msgid "Upgrade available"
 msgstr "Paketaktualisierung verfügbar"
 
-#: notifier/DiscoverNotifier.cpp:313
+#: notifier/DiscoverNotifier.cpp:319
 #, kde-format
-msgid "New version: %1"
-msgstr "Neue Version: %1"
+msgid "%1 is now available."
+msgstr ""
 
 #: notifier/main.cpp:36
 #, kde-format
@@ -157,6 +157,9 @@ msgstr "Neustart um die installierten Aktualisierungen zu verwenden"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Klicken Sie, um den Rechner neu zu starten"
+
+#~ msgid "New version: %1"
+#~ msgstr "Neue Version: %1"
 
 #~ msgid "Restart..."
 #~ msgstr "Neu starten ..."

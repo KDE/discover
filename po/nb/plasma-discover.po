@@ -1248,9 +1248,3 @@ msgstr "Se etter oppdateringer"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for sist oppdatering er ukjent"
-
-#~ msgid "Could not access the screenshots"
-#~ msgstr "Fikk ikke tilgang til skjermbildet"
-
-#~ msgid "&Up to date"
-#~ msgstr "&Oppdatert"
