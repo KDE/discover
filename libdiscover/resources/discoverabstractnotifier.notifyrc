@@ -608,5 +608,13 @@ Action=Popup
 
 [Event/DistUpgrade]
 Name=Upgrade available
+Name[ca]=Hi ha una actualització disponible
+Name[eo]=Ĝisdatigoj disponeblaj
+Name[eu]=Bertsio-berritzea erabilgarri dago
+Name[ia]=Actualisation disponibile
+Name[nl]=Opwaardering beschikbaar
+Name[sl]=Nadgradnja je na voljo
+Name[uk]=Доступне оновлення дистрибутива
+Name[x-test]=xxUpgrade availablexx
 Urgency=High
 Action=Popup
