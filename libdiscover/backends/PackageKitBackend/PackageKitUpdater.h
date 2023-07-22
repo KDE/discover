@@ -47,6 +47,7 @@ public:
     void proceed() override;
     void setOfflineUpdates(bool use) override;
     void setDistroUpgrade(const AppStream::Release &release);
+    void clearDistroUpgrade();
     bool isDistroUpgrade() const;
 
 public Q_SLOTS:

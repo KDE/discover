@@ -284,6 +284,12 @@ public:
         m_distroUpgrade = release;
     }
 
+    void clearDistroUpgrade()
+    {
+        m_distroUpgrade = std::nullopt;
+        Q_EMIT m_backend->inlineMessageChanged({});
+    }
+
     bool isDistroUpgrade() const
     {
         return m_distroUpgrade.has_value();
@@ -484,6 +490,11 @@ void PackageKitUpdater::setOfflineUpdates(bool use)
 void PackageKitUpdater::setDistroUpgrade(const AppStream::Release &release)
 {
     m_upgrade->setDistroUpgrade(release);
+}
+
+void PackageKitUpdater::clearDistroUpgrade()
+{
+    m_upgrade->clearDistroUpgrade();
 }
 
 bool PackageKitUpdater::isDistroUpgrade() const

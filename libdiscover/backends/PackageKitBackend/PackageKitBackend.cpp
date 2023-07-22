@@ -526,6 +526,7 @@ void PackageKitBackend::checkForUpdates()
 
     if (!m_refresher) {
         acquireFetching(true);
+        m_updater->clearDistroUpgrade();
         m_refresher = PackageKit::Daemon::refreshCache(false);
 
         connect(m_refresher.data(), &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
