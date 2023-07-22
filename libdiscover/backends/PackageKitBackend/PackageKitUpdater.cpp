@@ -5,17 +5,17 @@
  */
 #include "PackageKitUpdater.h"
 #include "PackageKitMessages.h"
-#include <appstream/AppStreamIntegration.h>
 #include <AppStreamQt/release.h>
+#include <appstream/AppStreamIntegration.h>
 
 #include <PackageKit/Daemon>
 #include <PackageKit/Offline>
 #include <QCryptographicHash>
-#include <QDebug>
-#include <QSet>
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusReply>
+#include <QDebug>
+#include <QSet>
 
 #include <KConfigGroup>
 #include <KFormat>
@@ -289,7 +289,7 @@ public:
         return m_distroUpgrade.has_value();
     }
 
-    const AppStream::Release& getDistroUpgrade()
+    const AppStream::Release &getDistroUpgrade()
     {
         return m_distroUpgrade.value();
     }
@@ -353,8 +353,8 @@ void PackageKitUpdater::prepare()
 void PackageKitUpdater::checkFreeSpace()
 {
     auto j = KIO::fileSystemFreeSpace(QUrl::fromLocalFile(QStringLiteral("/usr")));
-    connect(j, &KIO::FileSystemFreeSpaceJob::result, this, [this](KIO::Job * /*job*/, KIO::filesize_t /*size*/, KIO::filesize_t available) {
-        if (available < updateSize()) {
+    connect(j, &KJob::result, this, [this, job]() {
+        if (job->availableSize() < updateSize()) {
             setErrorMessage(i18nc("@info:status %1 is a formatted disk space string e.g. '240 MiB'",
                                   "Not enough space to perform the update; only %1 of space are available.",
                                   KFormat().formatByteSize(available)));
@@ -366,7 +366,7 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
 {
     m_packagesModified.clear();
     if (m_toUpgrade.contains(m_upgrade) && m_upgrade->isDistroUpgrade()) {
-        const QString& upgradeVersion = m_upgrade->getDistroUpgrade().version();
+        const QString &upgradeVersion = m_upgrade->getDistroUpgrade().version();
         m_transaction = PackageKit::Daemon::upgradeSystem(upgradeVersion, PackageKit::Transaction::UpgradeKind::UpgradeKindComplete, flags);
     } else {
         auto pkgs = involvedPackages(m_toUpgrade).values();
