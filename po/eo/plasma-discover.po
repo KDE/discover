@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-20 02:12+0000\n"
-"PO-Revision-Date: 2023-05-10 07:15+0100\n"
+"PO-Revision-Date: 2023-07-21 18:55+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -361,7 +361,7 @@ msgstr "Vidi detalojn…"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
+msgstr "Ekrankopioj ne haveblas por %1"
 
 #: discover/qml/ApplicationPage.qml:486
 #, kde-format
@@ -429,7 +429,7 @@ msgstr "Ŝargante recenzojn por %1"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "Recenzoj por %1 dumtempe ne haveblas"
 
 #: discover/qml/ApplicationPage.qml:655
 #, kde-format
@@ -663,11 +663,10 @@ msgid "Still looking…"
 msgstr "Ankoraŭ serĉas…"
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "&Hejmo"
+msgstr "Hejmo"
 
 #: discover/qml/BrowsingPage.qml:63
 #, kde-format
@@ -727,16 +726,14 @@ msgstr "&Instalita"
 #: discover/qml/DiscoverWindow.qml:86
 #, kde-format
 msgid "Fetching &updates…"
-msgstr "Akirante &ĝisdatigojn..."
+msgstr "Akirante ĝisdatig&ojn…"
 
 #: discover/qml/DiscoverWindow.qml:86
-#, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "&Update (%1)"
+#, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
-msgstr[0] "&Ĝisdatigi (%1)"
-msgstr[1] "&Ĝisdatigi (%1)"
+msgstr[0] "Ĝisdatig&o (%1)"
+msgstr[1] "Ĝisdatig&oj (%1)"
 
 #: discover/qml/DiscoverWindow.qml:94
 #, kde-format
@@ -746,7 +743,7 @@ msgstr "&Pri"
 #: discover/qml/DiscoverWindow.qml:102
 #, kde-format
 msgid "S&ettings"
-msgstr "S&agordoj"
+msgstr "&Agordoj"
 
 #: discover/qml/DiscoverWindow.qml:155 discover/qml/DiscoverWindow.qml:339
 #: discover/qml/DiscoverWindow.qml:446
@@ -809,7 +806,7 @@ msgstr ""
 #: discover/qml/Feedback.qml:18
 #, kde-format
 msgid "Submitting usage information…"
-msgstr "Sendante informojn pri uzado..."
+msgstr "Sendante informojn pri uzado…"
 
 #: discover/qml/Feedback.qml:18
 #, kde-format
@@ -819,12 +816,12 @@ msgstr "Agordi"
 #: discover/qml/Feedback.qml:22
 #, kde-format
 msgid "Configure feedback…"
-msgstr "Agordi komentojn..."
+msgstr "Agordi komentojn…"
 
 #: discover/qml/Feedback.qml:29 discover/qml/SourcesPage.qml:21
 #, kde-format
 msgid "Configure Updates…"
-msgstr "Agordi Ĝisdatigojn..."
+msgstr "Agordi Ĝisdatigojn…"
 
 #: discover/qml/Feedback.qml:57
 #, kde-format
@@ -1001,7 +998,7 @@ msgstr "Skribi la recenzon"
 #: discover/qml/ReviewDialog.qml:78
 #, kde-format
 msgid "Keep writing…"
-msgstr "Daŭre skribu..."
+msgstr "Daŭre skribu…"
 
 #: discover/qml/ReviewDialog.qml:81
 #, kde-format
@@ -1252,9 +1249,3 @@ msgstr "Devus kontroli ĝisdatigojn"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tempo de lasta ĝisdatigo nekonata"
-
-#~ msgid "Could not access the screenshots"
-#~ msgstr "Ne eblis aliri la ekrankopiojn"
-
-#~ msgid "&Up to date"
-#~ msgstr "Ĝisdata"
