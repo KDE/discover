@@ -353,11 +353,11 @@ void PackageKitUpdater::prepare()
 void PackageKitUpdater::checkFreeSpace()
 {
     auto j = KIO::fileSystemFreeSpace(QUrl::fromLocalFile(QStringLiteral("/usr")));
-    connect(j, &KJob::result, this, [this, job]() {
-        if (job->availableSize() < updateSize()) {
+    connect(j, &KJob::result, this, [this, j]() {
+        if (j->availableSize() < updateSize()) {
             setErrorMessage(i18nc("@info:status %1 is a formatted disk space string e.g. '240 MiB'",
                                   "Not enough space to perform the update; only %1 of space are available.",
-                                  KFormat().formatByteSize(available)));
+                                  KFormat().formatByteSize(j->availableSize())));
         }
     });
 }
