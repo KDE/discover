@@ -316,7 +316,7 @@ void DiscoverNotifier::foundUpgradeAction(UpgradeAction *action)
     notification->setIconName(QStringLiteral("system-software-update"));
     notification->setActions(QStringList{i18nc("@action:button", "Upgrade")});
     notification->setTitle(i18n("Upgrade available"));
-    notification->setText(i18n("%1 is now available.", action->description()));
+    notification->setText(i18nc("A new distro release (name and version) is available for upgrade", "%1 is now available.", action->description()));
     notification->setComponentName(QStringLiteral("discoverabstractnotifier"));
 
     connect(action, &UpgradeAction::showDiscoverUpdates, this, [this, notification]() {
