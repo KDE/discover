@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-21 02:20+0000\n"
-"PO-Revision-Date: 2023-04-21 23:32+0200\n"
+"PO-Revision-Date: 2023-07-22 22:59+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -85,10 +85,9 @@ msgid "Intense Content"
 msgstr "강력한 콘텐츠"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:171
-#, fuzzy, kde-format
-#| msgid "Internal error: %1"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "내부 오류: %1"
+msgstr "기술적 오류 메시지: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
@@ -160,7 +159,7 @@ msgstr "더미 4"
 #, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "모든 프로그램"
+msgstr "모든 앱"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -566,9 +565,9 @@ msgid ""
 "software in this repository will also be made be available in Discover when "
 "the application is installed.</para>"
 msgstr ""
-"<para>이 프로그램은 \"%1\"(<link>%2</link>에서 호스트됨)에서 설치되었습니다. "
-"이 프로그램을 설치하면 해당 저장소에 있는 다른 소프트웨어도 Discover에 등록됩"
-"니다.</para>"
+"<para>이 앱은 \"%1\"(<link>%2</link>에서 호스트됨)에서 설치되었습니다. 이 앱"
+"을 설치하면 해당 저장소에 있는 다른 소프트웨어도 Discover에 등록됩니다.</"
+"para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:442
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:450
@@ -832,8 +831,8 @@ msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
-"다음 통신 프로토콜을 사용하여 같은 데스크톱 세션에서 실행 중인 다른 프로그램"
-"이나 프로세스와 통신할 수 있음: %1"
+"다음 통신 프로토콜을 사용하여 같은 데스크톱 세션에서 실행 중인 다른 앱이나 프"
+"로세스와 통신할 수 있음: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:956
 #, kde-format
@@ -841,8 +840,7 @@ msgid ""
 "Can communicate with all applications and system services using the "
 "following communication protocols: %1"
 msgstr ""
-"다음 통신 프로토콜을 사용하여 모든 프로그램이나 시스템 서비스와 통신할 수 있"
-"음: %1"
+"다음 통신 프로토콜을 사용하여 모든 앱이나 시스템 서비스와 통신할 수 있음: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
 #, kde-format
@@ -867,7 +865,7 @@ msgstr ""
 msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
-msgstr "https://flathub.org에 설치된 프로그램을 쉽게 설치할 수 있도록 도움"
+msgstr "https://flathub.org에 설치된 앱을 쉽게 설치할 수 있도록 도움"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:165
 #, kde-format
@@ -884,8 +882,7 @@ msgstr "'%1' 삭제 중"
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
 "<ul><li>%1</li></ul>"
-msgstr ""
-"이 저장소를 삭제하려면 다음 프로그램을 삭제해야 합니다: <ul><li>%1</li></ul>"
+msgstr "이 저장소를 삭제하려면 다음 앱을 삭제해야 합니다: <ul><li>%1</li></ul>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:299
 #, kde-format
@@ -1001,7 +998,7 @@ msgstr "%1 백엔드 초기화에 시간이 너무 오래 걸림"
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:183
 #, kde-format
 msgid "Applications"
-msgstr "프로그램"
+msgstr "앱"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
 #, kde-format
@@ -1011,7 +1008,7 @@ msgstr "Plasma 부가 기능"
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
 #, kde-format
 msgid "Application Addons"
-msgstr "프로그램 부가 기능"
+msgstr "앱 부가 기능"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:430
 #, kde-format
@@ -1526,7 +1523,7 @@ msgstr "'%1'의 변경 사항으로 인하여 시스템을 다시 시작하는 �
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
 msgid "The application will have to be restarted."
-msgstr "프로그램을 다시 시작해야 합니다."
+msgstr "앱을 다시 시작해야 합니다."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:190
 #, kde-format
@@ -2056,11 +2053,9 @@ msgstr ""
 "된 것 같으면 배포판 패키지 관리자에게 버그를 보그하십시오."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "No Change"
+#, kde-format
 msgid "Confirm Changes"
-msgstr "변경 없음"
+msgstr "변경 사항 확인"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
 #, kde-format
@@ -2286,11 +2281,12 @@ msgid "ostree remotes"
 msgstr "ostree 원격"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
-msgstr "rpm-ostree: 부트된 환경을 찾을 수 없습니다. 버그를 보고해 주십시오."
+msgstr ""
+"rpm-ostree-backend: 오류: D-Bus 인터페이스가 제공되지 않았습니다. 버그를 보고"
+"해 주십시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
@@ -2298,36 +2294,42 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: 오류: 형식이 잘못된 리소스에서 트랜잭션을 시작할 수 없습"
+"니다. 버그를 보고해 주십시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
-msgstr "rpm-ostree: 부트된 환경을 찾을 수 없습니다. 버그를 보고해 주십시오."
+msgstr ""
+"rpm-ostree-backend: 오류: 비어 있는 ref로 rebase를 실행할 수 없습니다. 버그"
+"를 보고해 주십시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
-msgstr "rpm-ostree: 부트된 환경을 찾을 수 없습니다. 버그를 보고해 주십시오."
+msgstr ""
+"rpm-ostree-backend: 오류: 알 수 없는 작업을 요청했습니다. 버그를 보고해 주십"
+"시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
-#, fuzzy, kde-format
-#| msgid "rpm-ostree transaction failed with:"
+#, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
-msgstr "rpm-ostree 트랜잭션 실패, 반환된 오류 메시지:"
+msgstr ""
+"rpm-ostree 트랜잭션 실패, 반환된 오류 메시지:\n"
+"%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
-msgstr "rpm-ostree: 부트된 환경을 찾을 수 없습니다. 버그를 보고해 주십시오."
+msgstr ""
+"rpm-ostree-backend: 오류: 알 수 없는 리소스 형식입니다. 버그를 보고해 주십시"
+"오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
@@ -2402,8 +2404,8 @@ msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this computer. Install it anyway?"
 msgstr ""
-"Snap 프로그램이 보안 샌드박스와 호환되지 않으며 컴퓨터의 모든 자원에 접근할 "
-"수 있습니다. 그래도 설치하시겠습니까?"
+"Snap 앱이 보안 샌드박스와 호환되지 않으며 컴퓨터의 모든 자원에 접근할 수 있습"
+"니다. 그래도 설치하시겠습니까?"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
 #, kde-format
@@ -2534,7 +2536,7 @@ msgstr "취소됨"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
-msgstr "프로그램"
+msgstr "앱"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:131
 #, kde-format

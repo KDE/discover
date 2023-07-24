@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-20 02:12+0000\n"
-"PO-Revision-Date: 2023-07-18 11:08\n"
+"PO-Revision-Date: 2023-07-23 12:26\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -347,7 +347,7 @@ msgstr "查看详情…"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
+msgstr "%1 的屏幕截图不可用"
 
 #: discover/qml/ApplicationPage.qml:486
 #, kde-format
@@ -415,7 +415,7 @@ msgstr "正在加载 %1 的评论"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "%1 的评论暂时不可用"
 
 #: discover/qml/ApplicationPage.qml:655
 #, kde-format
@@ -637,11 +637,10 @@ msgid "Still looking…"
 msgstr "正在查找…"
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "主页(&H)"
+msgstr "主页"
 
 #: discover/qml/BrowsingPage.qml:63
 #, kde-format
@@ -704,9 +703,7 @@ msgid "Fetching &updates…"
 msgstr "正在获取更新(&U)…"
 
 #: discover/qml/DiscoverWindow.qml:86
-#, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "&Update (%1)"
+#, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
 msgstr[0] "更新(&U) (%1)"
@@ -1222,9 +1219,3 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
-
-#~ msgid "Could not access the screenshots"
-#~ msgstr "无法访问屏幕截图"
-
-#~ msgid "&Up to date"
-#~ msgstr "系统已更新到最新状态(&U)"

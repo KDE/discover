@@ -1,16 +1,16 @@
 # Translation of plasma-discover-notifier.po to Catalan (Valencian)
-# Copyright (C) 2015-2022 This_file_is_part_of_KDE
+# Copyright (C) 2015-2023 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2015, 2018, 2019, 2020, 2022.
+# Josep M. Ferrer <txemaq@gmail.com>, 2015, 2018, 2019, 2020, 2022, 2023.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2018, 2019, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 02:20+0000\n"
-"PO-Revision-Date: 2022-07-08 15:50+0200\n"
+"POT-Creation-Date: 2023-07-24 09:33+0000\n"
+"PO-Revision-Date: 2023-07-21 08:12+0300\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: notifier/DiscoverNotifier.cpp:148
 #, kde-format
@@ -84,9 +84,11 @@ msgid "Upgrade available"
 msgstr "Hi ha una actualització disponible"
 
 #: notifier/DiscoverNotifier.cpp:319
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1 is now available."
+msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr ""
+msgstr "Ara %1 està disponible."
 
 #: notifier/main.cpp:36
 #, kde-format
@@ -159,6 +161,3 @@ msgstr "Reinicieu per a aplicar les actualitzacions instal·lades"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Feu clic per a reiniciar el dispositiu"
-
-#~ msgid "New version: %1"
-#~ msgstr "Versió nova: %1"

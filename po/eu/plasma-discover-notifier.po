@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 02:20+0000\n"
+"POT-Creation-Date: 2023-07-24 09:33+0000\n"
 "PO-Revision-Date: 2023-07-21 10:15+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -83,7 +83,9 @@ msgid "Upgrade available"
 msgstr "Bertsio-berritzea erabilgarri"
 
 #: notifier/DiscoverNotifier.cpp:319
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1 is now available."
+msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1, orain erabilgarri dago."
 

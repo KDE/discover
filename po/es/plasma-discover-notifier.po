@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Automatically generated, 2015.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2015, 2018, 2019, 2020, 2021, 2022.
+# Eloy Cuadra <ecuadra@eloihr.net>, 2015, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 02:20+0000\n"
-"PO-Revision-Date: 2022-01-05 19:47+0100\n"
+"POT-Creation-Date: 2023-07-24 09:33+0000\n"
+"PO-Revision-Date: 2023-07-22 04:42+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.0\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #: notifier/DiscoverNotifier.cpp:148
 #, kde-format
@@ -83,9 +83,11 @@ msgid "Upgrade available"
 msgstr "Actualización disponible"
 
 #: notifier/DiscoverNotifier.cpp:319
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1 is now available."
+msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr ""
+msgstr "%1 ya está disponible."
 
 #: notifier/main.cpp:36
 #, kde-format

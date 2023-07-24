@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Shinjo Park <kde@peremen.name>, 2015, 2018, 2019, 2020, 2021, 2022.
+# Shinjo Park <kde@peremen.name>, 2015, 2018, 2019, 2020, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 02:20+0000\n"
-"PO-Revision-Date: 2022-02-20 21:49+0100\n"
+"POT-Creation-Date: 2023-07-24 09:33+0000\n"
+"PO-Revision-Date: 2023-07-22 22:59+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.08.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: notifier/DiscoverNotifier.cpp:148
 #, kde-format
@@ -80,9 +80,11 @@ msgid "Upgrade available"
 msgstr "업그레이드 사용 가능"
 
 #: notifier/DiscoverNotifier.cpp:319
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1 is now available."
+msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr ""
+msgstr "%1을(를) 사용할 수 있습니다."
 
 #: notifier/main.cpp:36
 #, kde-format

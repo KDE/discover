@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 02:20+0000\n"
-"PO-Revision-Date: 2023-07-18 11:08\n"
+"POT-Creation-Date: 2023-07-24 09:33+0000\n"
+"PO-Revision-Date: 2023-07-23 12:26\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -80,9 +80,11 @@ msgid "Upgrade available"
 msgstr "有可用升级"
 
 #: notifier/DiscoverNotifier.cpp:319
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "%1 is now available."
+msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr ""
+msgstr "%1 现在可用。"
 
 #: notifier/main.cpp:36
 #, kde-format
@@ -157,6 +159,3 @@ msgstr "重新启动以使已安装的更新生效"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "点击重新启动设备"
-
-#~ msgid "New version: %1"
-#~ msgstr "新版本：%1"
