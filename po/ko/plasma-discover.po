@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-30 03:25+0000\n"
-"PO-Revision-Date: 2023-03-01 00:50+0100\n"
+"PO-Revision-Date: 2023-07-22 23:00+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -54,10 +54,10 @@ msgid ""
 "managing software because the PackageKit backend is not well-integrated on "
 "Arch Linux."
 msgstr ""
-"<command>pacman</command> 명령을 사용하여 프로그램 백엔드를 활성화하는 데 필"
-"요한 추가 의존성을 설치할 수 있습니다.<nl/><nl/>Arch 리눅스 개발자들은 "
-"PackageKit 백엔드가 Arch 리눅스에 잘 통합되지 않았기 때문에 <command>pacman</"
-"command> 명령을 사용하는 것을 추천했습니다."
+"<command>pacman</command> 명령을 사용하여 앱 백엔드를 활성화하는 데 필요한 추"
+"가 의존성을 설치할 수 있습니다.<nl/><nl/>Arch 리눅스 개발자들은 PackageKit 백"
+"엔드가 Arch 리눅스에 잘 통합되지 않았기 때문에 <command>pacman</command> 명령"
+"을 사용하는 것을 추천했습니다."
 
 #: discover/DiscoverObject.cpp:181
 #, kde-format
@@ -123,7 +123,7 @@ msgstr ""
 #: discover/main.cpp:42
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
-msgstr "지정한 프로그램을 appstream:// URI로 바로 엽니다."
+msgstr "지정한 앱을 appstream:// URI로 바로 엽니다."
 
 #: discover/main.cpp:43
 #, kde-format
@@ -178,7 +178,7 @@ msgstr "appstream: URL 형식 지원"
 #: discover/main.cpp:122
 #, kde-format
 msgid "An application explorer"
-msgstr "프로그램 탐색기"
+msgstr "앱 탐색기"
 
 #: discover/main.cpp:124
 #, kde-format
@@ -397,7 +397,7 @@ msgstr "공유"
 #: discover/qml/ApplicationPage.qml:641
 #, kde-format
 msgid "Send a link for this application"
-msgstr "이 프로그램 링크 보내기"
+msgstr "이 앱 링크 보내기"
 
 #: discover/qml/ApplicationPage.qml:657
 #, kde-format
@@ -496,15 +496,15 @@ msgid ""
 "you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
-"프로그램의 소스 코드 중 일부 또는 전부가 외부에서 조사하고 개선할 수 있도록 "
-"공개되어 있지 않습니다. 제3자나 사용자가 해당 프로그램의 작동, 보안, 신뢰성"
-"을 검증할 수 없으며 작성자의 명시적인 허가 없이 수정하거나 재배포할 수 없음"
-"을 의미합니다.<nl/><nl/>프로그램을 사용하는 데에는 문제가 없을 수도 있으나, "
-"개인 정보를 무단으로 수집하거나, 위치를 추적하거나, 파일의 내용을 다른 누군가"
-"에게 전송하는 식으로 사용자에게 해를 끼치는 행동을 할 수도 있습니다. 이를 쉽"
-"게 검증하는 방법은 없기 때문에 프로그램 작성자(<link url='%1'>%2</link>)를 완"
-"전히 신뢰할 수 있는 경우에만 설치하십시오.<nl/><nl/>더 많은 정보를 확인하려"
-"면 <link url='%3'>%3</link> 페이지를 방문하십시오."
+"앱의 소스 코드 중 일부 또는 전부가 외부에서 조사하고 개선할 수 있도록 공개되"
+"어 있지 않습니다. 제3자나 사용자가 해당 앱의 작동, 보안, 신뢰성을 검증할 수 "
+"없으며 작성자의 명시적인 허가 없이 수정하거나 재배포할 수 없음을 의미합니다."
+"<nl/><nl/>앱을 사용하는 데에는 문제가 없을 수도 있으나, 개인 정보를 무단으로 "
+"수집하거나, 위치를 추적하거나, 파일의 내용을 다른 누군가에게 전송하는 식으로 "
+"사용자에게 해를 끼치는 행동을 할 수도 있습니다. 이를 쉽게 검증하는 방법은 없"
+"기 때문에 앱 작성자(<link url='%1'>%2</link>)를 완전히 신뢰할 수 있는 경우에"
+"만 설치하십시오.<nl/><nl/>더 많은 정보를 확인하려면 <link url='%3'>%3</link> "
+"페이지를 방문하십시오."
 
 #: discover/qml/ApplicationPage.qml:930
 #, kde-kuit-format
@@ -521,15 +521,15 @@ msgid ""
 "you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
-"프로그램의 소스 코드 중 일부 또는 전부가 외부에서 조사하고 개선할 수 있도록 "
-"공개되어 있지 않습니다. 제3자나 사용자가 해당 프로그램의 작동, 보안, 신뢰성"
-"을 검증할 수 없으며 작성자의 명시적인 허가 없이 수정하거나 재배포할 수 없음"
-"을 의미합니다.<nl/><nl/>프로그램을 사용하는 데에는 문제가 없을 수도 있으나, "
-"개인 정보를 무단으로 수집하거나, 위치를 추적하거나, 파일의 내용을 다른 누군가"
-"에게 전송하는 식으로 사용자에게 해를 끼치는 행동을 할 수도 있습니다. 이를 쉽"
-"게 검증하는 방법은 없기 때문에 프로그램 작성자(%1)를 완전히 신뢰할 수 있는 경"
-"우에만 설치하십시오.<nl/><nl/>더 많은 정보를 확인하려면 <link url='%2'>%2</"
-"link> 페이지를 방문하십시오."
+"앱의 소스 코드 중 일부 또는 전부가 외부에서 조사하고 개선할 수 있도록 공개되"
+"어 있지 않습니다. 제3자나 사용자가 해당 앱의 작동, 보안, 신뢰성을 검증할 수 "
+"없으며 작성자의 명시적인 허가 없이 수정하거나 재배포할 수 없음을 의미합니다."
+"<nl/><nl/>앱을 사용하는 데에는 문제가 없을 수도 있으나, 개인 정보를 무단으로 "
+"수집하거나, 위치를 추적하거나, 파일의 내용을 다른 누군가에게 전송하는 식으로 "
+"사용자에게 해를 끼치는 행동을 할 수도 있습니다. 이를 쉽게 검증하는 방법은 없"
+"기 때문에 앱 작성자(%1)를 완전히 신뢰할 수 있는 경우에만 설치하십시오.<nl/"
+"><nl/>더 많은 정보를 확인하려면 <link url='%2'>%2</link> 페이지를 방문하십시"
+"오."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -639,7 +639,7 @@ msgstr "계속 찾는 중…"
 #: discover/qml/BrowsingPage.qml:62
 #, kde-format
 msgid "Unable to load applications"
-msgstr "프로그램을 불러올 수 없음"
+msgstr "앱을 불러올 수 없음"
 
 #: discover/qml/BrowsingPage.qml:101
 #, kde-format
@@ -801,8 +801,8 @@ msgid ""
 "You can help us improving this application by sharing statistics and "
 "participate in surveys."
 msgstr ""
-"통계를 공유하고 설문 조사에 참여하여 이 프로그램을 개선하는 데 도움을 줄 수 "
-"있습니다."
+"통계를 공유하고 설문 조사에 참여하여 이 앱을 개선하는 데 도움을 줄 수 있습니"
+"다."
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
