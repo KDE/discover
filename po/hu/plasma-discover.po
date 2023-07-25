@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 02:12+0000\n"
+"POT-Creation-Date: 2023-07-25 02:00+0000\n"
 "PO-Revision-Date: 2022-02-07 10:40+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -587,7 +587,7 @@ msgstr[0] "Keresés - %1 elem"
 msgstr[1] "Keresés - %1 elem"
 
 #: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:228
+#: discover/qml/ApplicationsListPage.qml:235
 #, kde-format
 msgid "Search"
 msgstr "Keresés"
@@ -597,38 +597,38 @@ msgstr "Keresés"
 msgid "Sort: %1"
 msgstr "Rendezés: %1"
 
-#: discover/qml/ApplicationsListPage.qml:92
+#: discover/qml/ApplicationsListPage.qml:93
 #, kde-format
 msgid "Name"
 msgstr "Név"
 
-#: discover/qml/ApplicationsListPage.qml:101
+#: discover/qml/ApplicationsListPage.qml:103
 #, kde-format
 msgid "Rating"
 msgstr "Értékelés"
 
-#: discover/qml/ApplicationsListPage.qml:110
+#: discover/qml/ApplicationsListPage.qml:113
 #, kde-format
 msgid "Size"
 msgstr "Méret"
 
-#: discover/qml/ApplicationsListPage.qml:119
+#: discover/qml/ApplicationsListPage.qml:123
 #, kde-format
 msgid "Release Date"
 msgstr "Kiadás ideje"
 
-#: discover/qml/ApplicationsListPage.qml:176
+#: discover/qml/ApplicationsListPage.qml:181
 #, kde-format
 msgid "Nothing found"
 msgstr "Nincs találat"
 
-#: discover/qml/ApplicationsListPage.qml:183
+#: discover/qml/ApplicationsListPage.qml:189
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:192
+#: discover/qml/ApplicationsListPage.qml:199
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid "Search the web for \"%1\""
@@ -636,7 +636,7 @@ msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "„%1” keresése az interneten"
 
-#: discover/qml/ApplicationsListPage.qml:196
+#: discover/qml/ApplicationsListPage.qml:203
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -644,7 +644,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:207
+#: discover/qml/ApplicationsListPage.qml:214
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid "\"%1\" was not found in the available sources"
@@ -654,7 +654,7 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "A(z) „%1” nem található az elérhető forrásokban"
 
-#: discover/qml/ApplicationsListPage.qml:209
+#: discover/qml/ApplicationsListPage.qml:216
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid "\"%1\" was not found in the available sources"
@@ -662,14 +662,14 @@ msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "A(z) „%1” nem található az elérhető forrásokban"
 
-#: discover/qml/ApplicationsListPage.qml:210
+#: discover/qml/ApplicationsListPage.qml:217
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid ""
 #| "\"%1\" may be available on the web. Software acquired from the web has "
 #| "not been reviewed by your distributor for functionality or stability. Use "
 #| "with caution."
-msgctxt "@info:placeholder%1 is the name of an application"
+msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
 "been reviewed by your distributor for functionality or stability. Use with "
@@ -679,7 +679,7 @@ msgstr ""
 "ellenőrizte a disztribúciója stabilitás vagy funkcionalitás szempontjából, "
 "ezért használja azokat fokozott óvatossággal."
 
-#: discover/qml/ApplicationsListPage.qml:243
+#: discover/qml/ApplicationsListPage.qml:250
 #, kde-format
 msgid "Still looking…"
 msgstr "Még keressük…"
@@ -709,13 +709,13 @@ msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:137
+#: discover/qml/BrowsingPage.qml:138
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:156 discover/qml/BrowsingPage.qml:185
+#: discover/qml/BrowsingPage.qml:157 discover/qml/BrowsingPage.qml:186
 #, fuzzy, kde-format
 #| msgid "See more…"
 #| msgid_plural "See more…"
@@ -723,7 +723,7 @@ msgctxt "@action:button"
 msgid "See More"
 msgstr "Több…"
 
-#: discover/qml/BrowsingPage.qml:166
+#: discover/qml/BrowsingPage.qml:167
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-24 09:33+0000\n"
-"PO-Revision-Date: 2023-07-22 12:15+0300\n"
+"PO-Revision-Date: 2023-07-24 13:06+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -82,8 +82,7 @@ msgid "Upgrade available"
 msgstr "Yükseltme var"
 
 #: notifier/DiscoverNotifier.cpp:319
-#, fuzzy, kde-format
-#| msgid "%1 is now available."
+#, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 artık kullanılabilir."

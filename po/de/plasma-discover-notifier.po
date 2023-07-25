@@ -1,12 +1,12 @@
 # Burkhard Lück <lueck@hube-lueck.de>, 2015, 2018, 2019, 2020, 2021.
-# Frederik Schwarzer <schwarzer@kde.org>, 2015, 2022.
+# Frederik Schwarzer <schwarzer@kde.org>, 2015, 2022, 2023.
 # Frank Steinmetzger <dev@felsenfleischer.de>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-24 09:33+0000\n"
-"PO-Revision-Date: 2022-04-14 18:46+0200\n"
+"PO-Revision-Date: 2023-07-24 21:32+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-doc@kde.org>\n"
 "Language: de\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #: notifier/DiscoverNotifier.cpp:148
 #, kde-format
@@ -85,7 +85,7 @@ msgstr "Paketaktualisierung verfügbar"
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr ""
+msgstr "%1 ist jetzt verfügbar."
 
 #: notifier/main.cpp:36
 #, kde-format
