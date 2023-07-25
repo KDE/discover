@@ -610,6 +610,7 @@ Action=Popup
 Name=Upgrade available
 Name[ca]=Hi ha una actualització disponible
 Name[ca@valencia]=Hi ha una actualització disponible
+Name[de]=Paketaktualisierung verfügbar
 Name[eo]=Ĝisdatigoj disponeblaj
 Name[es]=Actualización disponible
 Name[eu]=Bertsio-berritzea erabilgarri dago
