@@ -41,5 +41,3 @@ private:
     int m_ratingPoints = 0;
     double m_sortableRating = 0;
 };
-
-Q_DECLARE_METATYPE(Rating)
