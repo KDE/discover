@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-19 02:52+0000\n"
+"POT-Creation-Date: 2023-07-26 02:31+0000\n"
 "PO-Revision-Date: 2023-02-28 21:04+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -2227,17 +2227,17 @@ msgstr "رقِّ إلى %1 %2"
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>صدر إصدار رئيسي جديد!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:533
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:545
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "لديك تحديثات معلقة للإصدارة الحالية. سيتابع على أية حالة."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "الرجاء التحديث إلى أخر إصدارة قبل إعادة تأسيس النظام إلى إصدارة رئيسة"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:544
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:556
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "ينقص إحالة بعيدة إلى عملية إعادة تأسيس النظام. الرجاء أبلغ عنها."

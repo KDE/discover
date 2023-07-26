@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-19 02:52+0000\n"
+"POT-Creation-Date: 2023-07-26 02:31+0000\n"
 "PO-Revision-Date: 2023-03-06 16:39+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2230,20 +2230,20 @@ msgstr "Actualitza a %1 %2"
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>S'ha publicat una versió major nova!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:533
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:545
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Hi ha actualitzacions pendents per a la versió actual. Procedeixo igualment."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Actualitzeu a la versió més recent abans de moure de base («rebasing») a una "
 "versió major"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:544
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:556
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
