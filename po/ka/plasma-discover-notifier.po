@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-24 09:33+0000\n"
-"PO-Revision-Date: 2023-07-22 06:11+0200\n"
+"PO-Revision-Date: 2023-07-25 04:13+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -81,11 +81,10 @@ msgid "Upgrade available"
 msgstr "განახლება ხელმისაწვდომია"
 
 #: notifier/DiscoverNotifier.cpp:319
-#, fuzzy, kde-format
-#| msgid "%1 is now available."
+#, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr "%1 ახლა ხელმისაწვდომია"
+msgstr "%1 ახლა ხელმისაწვდომია."
 
 #: notifier/main.cpp:36
 #, kde-format

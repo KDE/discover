@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 02:20+0000\n"
+"POT-Creation-Date: 2023-07-26 02:01+0000\n"
 "PO-Revision-Date: 2023-05-08 23:47+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -540,7 +540,7 @@ msgid "Local bundle"
 msgstr "Lokales Paket"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:734
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Ungültige Appstream Adresse „%1“"
@@ -1143,12 +1143,12 @@ msgstr ""
 "Die Unterstützung durch Ihr Betriebssystem endete am %1. Bitte erwägen Sie "
 "die Aktualisierung auf eine unterstützte Version."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:845
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:846
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "„%1“ kann nicht entfernt werden"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:925
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:926
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1159,13 +1159,13 @@ msgstr ""
 "Wenden Sie alle ausstehenden Aktualisierungen an und starten Sie dann das "
 "System neu, um auf diese neue Version aktualisieren zu können."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:934
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Aktualisierung auf %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:955
 #, kde-format
 msgid "A new major version has been released"
 msgstr "Eine neue Hauptversion wurde veröffentlicht."
@@ -2081,7 +2081,7 @@ msgstr "Vorhanden"
 msgid "Future"
 msgstr "Zukunft"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:359
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
@@ -2089,7 +2089,7 @@ msgstr ""
 "Nicht genügend Speicher, um die Aktualisierung durchzuführen; nur %1 "
 "Speicher verfügbar."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:561
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:572
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2102,12 +2102,12 @@ msgstr ""
 "><ul><li>%1</li></ul><nl/>Wenden Sie sich an Ihre Distribution, wenn Sie der "
 "Meinung sind, dass es sich dabei um einen Fehler handelt."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:579
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Änderungen bestätigen"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2117,13 +2117,13 @@ msgstr ""
 "li></ul><br/>um diese Paket zu installieren:\n"
 "<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:684
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:695
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:692
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:703
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2133,13 +2133,13 @@ msgstr ""
 "Ein Medienwechsel vom Typ „%1“ ist erforderlich.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:725
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:736
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "EULA (Endbenutzer-Lizenzvereinbarung) akzeptieren"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:726
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:737
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2150,13 +2150,13 @@ msgstr ""
 "akzeptieren:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:843
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:854
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Fehlende Signatur für %1 in %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:844
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:855
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
@@ -2265,21 +2265,21 @@ msgstr ""
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>Eine neue Hauptversion wurde veröffentlicht.</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:533
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:545
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Es gibt noch ausstehende Aktualisierungen für die aktuelle Version. Es wird "
 "trotzdem fortgefahren."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Bitte führen Sie eine Aktualisierung auf die letzte Version durch, bevor Sie "
 "auf eine neue Hauptversion wechseln"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:544
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:556
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""

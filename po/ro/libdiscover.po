@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 02:20+0000\n"
+"POT-Creation-Date: 2023-07-26 02:01+0000\n"
 "PO-Revision-Date: 2022-12-28 20:25+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -546,7 +546,7 @@ msgid "Local bundle"
 msgstr "Pachet local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:734
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL appstream eronat „%1”"
@@ -1140,12 +1140,12 @@ msgstr ""
 "Sistemul acesta de operare a rămas fără suport pe %1. Luați în calcul "
 "înnoirea la o versiune susținută."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:845
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:846
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nu se poate elimina „%1”"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:925
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:926
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1153,7 +1153,7 @@ msgid ""
 "updates and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:934
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
@@ -1161,7 +1161,7 @@ msgstr ""
 msgid "Upgrade to %1 %2"
 msgstr "Actualizează"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:955
 #, kde-format
 msgid "A new major version has been released"
 msgstr ""
@@ -2076,13 +2076,13 @@ msgstr "Prezent"
 msgid "Future"
 msgstr "Viitor"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:359
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:561
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:572
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2095,14 +2095,14 @@ msgstr ""
 ">Dacă credeți că aceasta e o greșeală, raportați-o ca defect "
 "împachetatorilor distribuției dumneavoastră."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:579
 #, fuzzy, kde-format
 #| msgctxt "@info:status Package state"
 #| msgid "No Change"
 msgid "Confirm Changes"
 msgstr "Nicio modificare"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2111,13 +2111,13 @@ msgstr ""
 "Următoarele pachete vor fi eliminate de către actualizare:<ul><li>%1</li></"
 "ul><br/>pentru a instala:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:684
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:695
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:692
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:703
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2127,13 +2127,13 @@ msgstr ""
 "Este cerută schimbarea mediului de tip „%1”.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:725
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:736
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Acceptă acordul"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:726
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:737
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2143,13 +2143,13 @@ msgstr ""
 "Pachetul %1 și vânzătorul acestuia %2 vă cer să le acceptați licența:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:843
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:854
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Lipsește semnătura pentru %1 în %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:844
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:855
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
@@ -2256,17 +2256,17 @@ msgstr ""
 msgid "<b>A new major version has been released!</b>"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:533
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:545
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:544
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:556
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""

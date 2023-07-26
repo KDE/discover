@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 02:20+0000\n"
+"POT-Creation-Date: 2023-07-26 02:01+0000\n"
 "PO-Revision-Date: 2023-07-19 06:36+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -540,7 +540,7 @@ msgid "Local bundle"
 msgstr "Krajevna zbirka"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:734
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Napačno oblikovan URL appstream '%1'"
@@ -1137,12 +1137,12 @@ msgstr ""
 "Vaš operacijski sistem nima več podpore na %1. Razmislite o nadgradnji na "
 "podprto različico."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:845
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:846
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Ni mogoče odstraniti '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:925
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:926
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1153,13 +1153,13 @@ msgstr ""
 "Če želite posodobiti programje na to novo različico sistema, zagotovite "
 "uveljavitve vseh čakajočih posodobitev in ponovno zaženite sistem."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:934
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Posodobi na %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:955
 #, kde-format
 msgid "A new major version has been released"
 msgstr "Izšla je pomembnejša novejša različica"
@@ -2077,14 +2077,14 @@ msgstr "Sedaj"
 msgid "Future"
 msgstr "V prihodnje"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:359
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 "Ni dovolj prostora za izvedbo posodobitve; samo %1 prostora je na voljo."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:561
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:572
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2097,12 +2097,12 @@ msgstr ""
 "%1</li></ul><nl/>Če menite, da je to napaka, jo prijavite kot napako pri "
 "pakiranju vaše distribucije."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:579
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Potrdi spremembe"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2111,13 +2111,13 @@ msgstr ""
 "Posodobitev bo odstranila naslednje pakete:<ul><li>%1</li></ul><br/>zato da "
 "bi namestila:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:684
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:695
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:692
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:703
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2127,13 +2127,13 @@ msgstr ""
 "Zahtevana je sprememba nosilca vrste '%1'.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:725
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:736
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Sprejmi EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:726
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:737
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2143,13 +2143,13 @@ msgstr ""
 "Paket %1 in njegov proizvajalec %2 zahtevata, da sprejmete njihovo licenco:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:843
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:854
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Manjka podpis za %1 in %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:844
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:855
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
@@ -2261,17 +2261,17 @@ msgstr ""
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>Izšla je novejša večja različica!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:533
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:545
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "Za trenutno različico imate čakajoče posodobitve. Vseeno nadaljujem."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "Posodobite na zadnjo različico pred spremembo osnovne različice"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:544
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:556
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""

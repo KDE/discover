@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 02:00+0000\n"
-"PO-Revision-Date: 2023-07-19 06:38+0200\n"
+"PO-Revision-Date: 2023-07-25 05:13+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.3.2\n"
 
@@ -662,12 +662,7 @@ msgid "\"%1\" was not found in the available sources"
 msgstr "\"%1\" ni bil najden v razpoložljivih virih"
 
 #: discover/qml/ApplicationsListPage.qml:217
-#, fuzzy, kde-format
-#| msgctxt "@info:placeholder%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
@@ -675,8 +670,8 @@ msgid ""
 "caution."
 msgstr ""
 "\"%1\" je morda na voljo na spletu. Programje pridobljeno na spletu ni bilo "
-"pregledano s stani distributerja glede funkcionalnosti ali stabilnosti. "
-"Uporabljajte ga pazljivo."
+"pregledano s stani vašega distributerja glede funkcionalnosti ali "
+"stabilnosti. Uporabljajte ga pazljivo."
 
 #: discover/qml/ApplicationsListPage.qml:250
 #, kde-format

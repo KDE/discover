@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-21 02:20+0000\n"
+"POT-Creation-Date: 2023-07-26 02:01+0000\n"
 "PO-Revision-Date: 2023-07-19 17:50+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -540,7 +540,7 @@ msgid "Local bundle"
 msgstr "Bertako sorta"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:733
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:734
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Gaizki eratutako 'appstream' url '%1'"
@@ -1143,12 +1143,12 @@ msgstr ""
 "Zure sistema eragileak %1(a)ren gaineko euskarria bukatu du. Kontuan izan "
 "euskarria duen bertsio batera bertsio-berritzeko aukera."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:845
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:846
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Ezin da kendu «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:925
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:926
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1159,13 +1159,13 @@ msgstr ""
 "Bertsio berri horretara bertsio-berritu ahal izateko, ezar itzazu eguneratze "
 "erabilgarri guztiak eta ondoren sistema berrabiarazi."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:934
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Bertsio-berritu %1 %2(e)ra"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:955
 #, kde-format
 msgid "A new major version has been released"
 msgstr "Bertsio nagusi berri bat kaleratu da"
@@ -2075,14 +2075,14 @@ msgstr "Oraina"
 msgid "Future"
 msgstr "Geroa"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:359
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 "Ez dago eguneratzea burutzeko behar adina leku; %1 bakarrik dago erabilgarri."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:561
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:572
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2095,12 +2095,12 @@ msgstr ""
 "dela uste baduzu, mesedez, eman iezaiezu horren berri, akats gisa, zure "
 "banaketako paketatzaileei."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:568
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:579
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Berretsi aldaketak"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:569
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2109,13 +2109,13 @@ msgstr ""
 "Eguneratzean ondoko paketeak kenduko dira:<ul><li>%1</li></ul><br/>beste "
 "hauek instalatu ahal izateko:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:684
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:695
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:692
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:703
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2125,13 +2125,13 @@ msgstr ""
 "'%1' motako euskarri aldaketa bat eskatzen da.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:725
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:736
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Onartu AELK (Azken Erabiltzailearen Lizentzia-Kontratua)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:726
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:737
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2142,13 +2142,13 @@ msgstr ""
 "onartzea:\n"
 "%3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:843
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:854
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Sinadura falta da %1-rentzako %2-n"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:844
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:855
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
@@ -2257,19 +2257,19 @@ msgstr ""
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>Bertsio nagusi berri bat argitaratu da!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:533
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:545
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "Uneko bertsioan egin beharreko eguneratzeak dituzu. Aurrera hala ere."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:536
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Mesedez, eguneratu azken bertsiora, oinarria bertsio nagusi berriago batera "
 "aldatu aurretik"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:544
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:556
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
