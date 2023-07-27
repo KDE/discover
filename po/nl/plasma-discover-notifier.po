@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-24 09:33+0000\n"
-"PO-Revision-Date: 2023-07-21 23:11+0200\n"
+"PO-Revision-Date: 2023-07-26 17:57+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -82,8 +82,7 @@ msgid "Upgrade available"
 msgstr "Opwaardering beschikbaar"
 
 #: notifier/DiscoverNotifier.cpp:319
-#, fuzzy, kde-format
-#| msgid "%1 is now available."
+#, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 is nu beschikbaar."

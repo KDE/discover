@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-24 09:33+0000\n"
-"PO-Revision-Date: 2023-07-21 08:12+0300\n"
+"PO-Revision-Date: 2023-07-24 20:46+0300\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -84,11 +84,10 @@ msgid "Upgrade available"
 msgstr "Hi ha una actualització disponible"
 
 #: notifier/DiscoverNotifier.cpp:319
-#, fuzzy, kde-format
-#| msgid "%1 is now available."
+#, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr "Ara %1 està disponible."
+msgstr "Ara està disponible %1."
 
 #: notifier/main.cpp:36
 #, kde-format
