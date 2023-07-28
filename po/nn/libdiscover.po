@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-26 02:01+0000\n"
-"PO-Revision-Date: 2023-05-27 14:52+0200\n"
+"PO-Revision-Date: 2023-07-27 21:19+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.04.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -88,10 +88,9 @@ msgid "Intense Content"
 msgstr "Intenst innhald"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:171
-#, fuzzy, kde-format
-#| msgid "Internal error: %1"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "Intern feil: %1"
+msgstr "Teknisk feilmelding: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
@@ -2319,10 +2318,12 @@ msgid "ostree remotes"
 msgstr "OSTree-fjernkjelder"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
-msgstr "rpm-ostree: Fann ingen starta deployment. Meld dette inn som ein feil."
+msgstr ""
+"rpm-ostree-backend: Feil: DBus-grensesnitt ikkje oppgjeve. Meld frå om dette "
+"som ein feil."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
@@ -2330,33 +2331,42 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Feil: Klarte ikkje starta transaksjon for ressurs med "
+"ugyldig format. Meld frå om dette som ein feil."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
-msgstr "rpm-ostree: Fann ingen starta deployment. Meld dette inn som ein feil."
+msgstr ""
+"rpm-ostree-backend: Feil: Kan ikkje rebasera til ein tom ref. Meld frå om "
+"dette som ein feil."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
-msgstr "rpm-ostree: Fann ingen starta deployment. Meld dette inn som ein feil."
+msgstr ""
+"rpm-ostree-backend: Feil: Bedt om ukjend operasjon. Meld frå om dette som "
+"ein feil."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
-#, fuzzy, kde-format
-#| msgid "rpm-ostree transaction failed with:"
+#, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
-msgstr "Feil ved rpm-ostree-transaksjon:"
+msgstr ""
+"rpm-ostree transaction gav feil:\n"
+"%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
-#, fuzzy, kde-format
+#, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
-msgstr "rpm-ostree: Fann ingen starta deployment. Meld dette inn som ein feil."
+msgstr ""
+"rpm-ostree-backend: Feil: Ukjent ressursformat. Meld frå om dette som ein "
+"feil."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format

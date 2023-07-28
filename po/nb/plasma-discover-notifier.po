@@ -159,6 +159,3 @@ msgstr "Start på nytt for å ta i bruk oppdateringene"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Trykk for å starte enheten på nytt"
-
-#~ msgid "New version: %1"
-#~ msgstr "Ny versjon: %1"
