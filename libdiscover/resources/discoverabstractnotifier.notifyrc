@@ -608,6 +608,7 @@ Action=Popup
 
 [Event/DistUpgrade]
 Name=Upgrade available
+Name[bg]=Налични актуализации
 Name[ca]=Hi ha una actualització disponible
 Name[ca@valencia]=Hi ha una actualització disponible
 Name[de]=Paketaktualisierung verfügbar
@@ -619,6 +620,7 @@ Name[it]=Aggiornamento disponibile
 Name[ka]=ხელმისაწვდომია ახალი ვერსია
 Name[ko]=업그레이드 사용 가능
 Name[nl]=Opwaardering beschikbaar
+Name[nn]=Oppgradering tilgjengeleg
 Name[sl]=Nadgradnja je na voljo
 Name[tr]=Yükseltme kullanılabilir
 Name[uk]=Доступне оновлення дистрибутива
