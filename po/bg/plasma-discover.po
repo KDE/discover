@@ -1259,19 +1259,3 @@ msgstr "Трябва да проверите за актуализации"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Неизвестно време от последното актуализиране"
-
-#~ msgid "Could not access the screenshots"
-#~ msgstr "Не можа да се получи достъп до снимките на екрана"
-
-#~ msgid "&Up to date"
-#~ msgstr "Актуалн&о"
-
-#~ msgid ""
-#~ "If you would like to report the update issue to your distribution's "
-#~ "packagers, include this information:"
-#~ msgstr ""
-#~ "Ако искате да докладвате на разработчиците на вашата дистрибуцията за "
-#~ "проблема с актуализацията, включете тази информация:"
-
-#~ msgid "Error message copied to clipboard"
-#~ msgstr "Съобщението за грешка е копирано в клипборда"

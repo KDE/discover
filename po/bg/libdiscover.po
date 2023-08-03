@@ -2601,9 +2601,3 @@ msgstr "Системен софтуер"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Добавки"
-
-#~ msgid "Error while fetching reviews: %1"
-#~ msgstr "Грешка при извличане на отзиви: %1"
-
-#~ msgid "Packages to remove"
-#~ msgstr "Пакети за премахване"
