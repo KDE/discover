@@ -11,7 +11,6 @@ ConditionalLoader {
     property alias application: listener.resource
 
     readonly property alias isActive: listener.isActive
-    readonly property alias progress: listener.progress
     readonly property bool isStateAvailable: application.state !== AbstractResource.Broken
     readonly property alias listener: listener
     property bool availableFromOnlySingleSource: false
