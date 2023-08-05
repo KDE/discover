@@ -38,7 +38,7 @@ ListView {
     delegate: AbstractButton {
         readonly property bool animated: isAnimated
         readonly property url imageSource: large_image_url
-        readonly property real proportion: (thumbnail.status === Image.Ready && thumbnail.sourceSize.width > 1)
+        readonly property real proportion: (thumbnail.imageStatus === Image.Ready && thumbnail.sourceSize.width > 1)
             ? (thumbnail.sourceSize.height / thumbnail.sourceSize.width) : 1
 
         implicitWidth: root.delegateHeight / proportion
@@ -58,19 +58,19 @@ ListView {
         background: Item {
             BusyIndicator {
                 visible: running
-                running: thumbnail.status === Image.Loading
+                running: thumbnail.imageStatus === Image.Loading
                 anchors.centerIn: parent
             }
             Kirigami.Icon {
                 implicitWidth: Kirigami.Units.iconSizes.large
                 implicitHeight: Kirigami.Units.iconSizes.large
-                visible: thumbnail.status === Image.Error
+                visible: thumbnail.imageStatus === Image.Error
                 source: "image-missing"
             }
             ConditionalLoader {
                 id: thumbnail
                 anchors.fill: parent
-                readonly property var status: item.status
+                readonly property int imageStatus: item.status
                 readonly property var sourceSize: item.sourceSize
                 condition: isAnimated
 
@@ -85,8 +85,8 @@ ListView {
                     }
                 }
 
-                onStatusChanged: {
-                    if (status === Image.Error) {
+                onImageStatusChanged: {
+                    if (imageStatus === Image.Error) {
                         root.failedCount += 1;
                     }
                 }
@@ -104,27 +104,27 @@ ListView {
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
         readonly property real proportion: (overlayImage.sourceSize.width > 1) ? (overlayImage.sourceSize.height / overlayImage.sourceSize.width) : 1
-        height: overlayImage.status >= Image.Loading ? Kirigami.Units.gridUnit * 5 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
+        height: overlayImage.imageStatus >= Image.Loading ? Kirigami.Units.gridUnit * 5 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
         width: (height - 2 * padding) / proportion
 
         BusyIndicator {
             id: indicator
             visible: running
-            running: overlayImage.status === Image.Loading
+            running: overlayImage.imageStatus === Image.Loading
             anchors.centerIn: parent
         }
 
         Kirigami.Icon {
             implicitWidth: Kirigami.Units.iconSizes.large
             implicitHeight: Kirigami.Units.iconSizes.large
-            visible: overlayImage.status === Image.Error
+            visible: overlayImage.imageStatus === Image.Error
             source: "image-missing"
         }
 
         ConditionalLoader {
             id: overlayImage
             anchors.fill: parent
-            readonly property var status: item.status
+            readonly property var imageStatus: item.status
             readonly property var sourceSize: item.sourceSize
             condition: root.currentItem.animated
 
@@ -143,8 +143,8 @@ ListView {
                 }
             }
 
-            onStatusChanged: {
-                if (status === Image.Error) {
+            onImageStatusChanged: {
+                if (imageStatus === Image.Error) {
                     root.failedCount += 1;
                 }
             }
