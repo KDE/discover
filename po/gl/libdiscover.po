@@ -469,7 +469,7 @@ msgstr "Internet"
 #, kde-format
 msgctxt "Category"
 msgid "Chat"
-msgstr "Conversa"
+msgstr "Charla"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
