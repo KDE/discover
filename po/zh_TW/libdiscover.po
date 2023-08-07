@@ -2173,7 +2173,7 @@ msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:399
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "<b>A new major version of %1 has been released!</b>\n"
 "To be able to update to this new version, make sure to apply all pending "
