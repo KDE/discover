@@ -628,5 +628,6 @@ Name[tr]=Yükseltme kullanılabilir
 Name[uk]=Доступне оновлення дистрибутива
 Name[x-test]=xxUpgrade availablexx
 Name[zh_CN]=系统有可以安装的升级
+Name[zh_TW]=有可用的升級
 Urgency=High
 Action=Popup
