@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-25 02:00+0000\n"
+"POT-Creation-Date: 2023-08-08 02:04+0000\n"
 "PO-Revision-Date: 2023-08-06 19:37+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -79,8 +79,8 @@ msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr ""
-"flatpak 백엔드 %1이(가) 설치되어 있지 않으면 flatpak 자원에 접근할 수 없습니"
-"다. 먼저 설치하십시오."
+"flatpak 백엔드 %1이(가) 설치되어 있지 않으면 flatpak 리소스에 접근할 수 없습"
+"니다. 먼저 설치하십시오."
 
 #: discover/DiscoverObject.cpp:310
 #, kde-format
@@ -262,7 +262,7 @@ msgid "Add"
 msgstr "추가"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:270
-#: discover/qml/InstallApplicationButton.qml:47
+#: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
@@ -741,7 +741,7 @@ msgstr "오류"
 #: discover/qml/DiscoverWindow.qml:159
 #, kde-format
 msgid "Unable to find resource: %1"
-msgstr "자원을 찾을 수 없음: %1"
+msgstr "리소스를 찾을 수 없음: %1"
 
 #: discover/qml/DiscoverWindow.qml:257 discover/qml/SourcesPage.qml:180
 #, kde-format
@@ -833,25 +833,25 @@ msgstr "귀하의 피드백을 기다립니다!"
 msgid "Participate…"
 msgstr "참여하기…"
 
-#: discover/qml/InstallApplicationButton.qml:26
+#: discover/qml/InstallApplicationButton.qml:25
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
 msgstr "불러오는 중…"
 
-#: discover/qml/InstallApplicationButton.qml:30
+#: discover/qml/InstallApplicationButton.qml:29
 #, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "%1에서 설치"
 
-#: discover/qml/InstallApplicationButton.qml:32
+#: discover/qml/InstallApplicationButton.qml:31
 #, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "설치"
 
-#: discover/qml/InstallApplicationButton.qml:34
+#: discover/qml/InstallApplicationButton.qml:33
 #, kde-format
 msgid "Remove"
 msgstr "삭제"
@@ -864,7 +864,7 @@ msgstr "설치됨"
 #: discover/qml/navigation.js:18
 #, kde-format
 msgid "Resources for '%1'"
-msgstr "'%1'의 자원"
+msgstr "'%1'의 리소스"
 
 #: discover/qml/ProgressView.qml:16
 #, kde-format

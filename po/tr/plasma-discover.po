@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-25 02:00+0000\n"
+"POT-Creation-Date: 2023-08-08 02:04+0000\n"
 "PO-Revision-Date: 2023-07-25 12:15+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -268,7 +268,7 @@ msgid "Add"
 msgstr "Ekle"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:270
-#: discover/qml/InstallApplicationButton.qml:47
+#: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
@@ -853,25 +853,25 @@ msgstr "Geri bildiriminizi bekliyoruz!"
 msgid "Participate…"
 msgstr "Katıl…"
 
-#: discover/qml/InstallApplicationButton.qml:26
+#: discover/qml/InstallApplicationButton.qml:25
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
 msgstr "Yükleniyor…"
 
-#: discover/qml/InstallApplicationButton.qml:30
+#: discover/qml/InstallApplicationButton.qml:29
 #, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "%1 Konumundan Kur"
 
-#: discover/qml/InstallApplicationButton.qml:32
+#: discover/qml/InstallApplicationButton.qml:31
 #, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Kur"
 
-#: discover/qml/InstallApplicationButton.qml:34
+#: discover/qml/InstallApplicationButton.qml:33
 #, kde-format
 msgid "Remove"
 msgstr "Kaldır"

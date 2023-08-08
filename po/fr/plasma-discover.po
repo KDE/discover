@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-25 02:00+0000\n"
+"POT-Creation-Date: 2023-08-08 02:04+0000\n"
 "PO-Revision-Date: 2023-05-09 13:33+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -290,7 +290,7 @@ msgid "Add"
 msgstr "Ajouter"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:270
-#: discover/qml/InstallApplicationButton.qml:47
+#: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
@@ -894,25 +894,25 @@ msgstr "Nous attendons vos retours d'expérience avec impatience !"
 msgid "Participate…"
 msgstr "Participer…"
 
-#: discover/qml/InstallApplicationButton.qml:26
+#: discover/qml/InstallApplicationButton.qml:25
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
 msgstr "Chargement en cours…"
 
-#: discover/qml/InstallApplicationButton.qml:30
+#: discover/qml/InstallApplicationButton.qml:29
 #, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "Installer à partir de %1"
 
-#: discover/qml/InstallApplicationButton.qml:32
+#: discover/qml/InstallApplicationButton.qml:31
 #, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Installer"
 
-#: discover/qml/InstallApplicationButton.qml:34
+#: discover/qml/InstallApplicationButton.qml:33
 #, kde-format
 msgid "Remove"
 msgstr "Supprimer"

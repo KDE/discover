@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-25 02:00+0000\n"
+"POT-Creation-Date: 2023-08-08 02:04+0000\n"
 "PO-Revision-Date: 2018-01-06 09:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -259,7 +259,7 @@ msgid "Add"
 msgstr "Dodaci"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:270
-#: discover/qml/InstallApplicationButton.qml:47
+#: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
@@ -862,28 +862,28 @@ msgstr ""
 msgid "Participate…"
 msgstr ""
 
-#: discover/qml/InstallApplicationButton.qml:26
+#: discover/qml/InstallApplicationButton.qml:25
 #, fuzzy, kde-format
 #| msgid "Loading..."
 msgctxt "State being fetched"
 msgid "Loading…"
 msgstr "Učitavam..."
 
-#: discover/qml/InstallApplicationButton.qml:30
+#: discover/qml/InstallApplicationButton.qml:29
 #, fuzzy, kde-format
 #| msgid "Install"
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "Instaliraj"
 
-#: discover/qml/InstallApplicationButton.qml:32
+#: discover/qml/InstallApplicationButton.qml:31
 #, fuzzy, kde-format
 #| msgid "Install"
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Instaliraj"
 
-#: discover/qml/InstallApplicationButton.qml:34
+#: discover/qml/InstallApplicationButton.qml:33
 #, kde-format
 msgid "Remove"
 msgstr "Ukloni"
