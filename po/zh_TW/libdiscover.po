@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-26 02:01+0000\n"
-"PO-Revision-Date: 2023-08-07 22:41+0900\n"
+"PO-Revision-Date: 2023-08-08 16:07+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
@@ -2172,13 +2172,13 @@ msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:399
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "<b>A new major version of %1 has been released!</b>\n"
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
-"<b>有新的大版本更新！</b>\n"
+"<b>%1 有新的大版本更新！</b>\n"
 "要能更新到這個新版本，請先確保現有的待處理更新皆已套用並重新啟動過。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:409
