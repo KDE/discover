@@ -193,8 +193,11 @@ void FlatpakTransactionThread::run()
 #if defined(FLATPAK_LIST_UNUSED_REFS)
     } else {
         const auto installation = flatpak_transaction_get_installation(m_transaction);
-        g_autoptr(GPtrArray) refs = flatpak_installation_list_unused_refs(installation, nullptr, m_cancellable, nullptr);
-        if (refs->len > 0) {
+        g_autoptr(GError) refsError = nullptr;
+        g_autoptr(GPtrArray) refs = flatpak_installation_list_unused_refs(installation, nullptr, m_cancellable, &refsError);
+        if (!refs) {
+            qWarning() << "could not fetch unused refs" << refsError->message;
+        } else if (refs->len > 0) {
             g_autoptr(GError) localError = nullptr;
             qDebug() << "found unused refs:" << refs->len;
             auto transaction = flatpak_transaction_new_for_installation(installation, m_cancellable, &localError);
