@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-26 02:01+0000\n"
+"POT-Creation-Date: 2023-08-12 02:01+0000\n"
 "PO-Revision-Date: 2022-08-29 11:34+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1000,39 +1000,39 @@ msgstr "EULA áttekintése"
 msgid "Could not enable remote %1: %2"
 msgstr "Nem sikerült hozzáadni a forrást: %1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:60
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:61
 #, kde-format
 msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:121
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:153
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "A(z) %1 backend inicializálása túl sokáig tartott"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:183
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:212
 #, kde-format
 msgid "Applications"
 msgstr "Alkalmazások"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma bővítmények"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
 #, kde-format
 msgid "Application Addons"
 msgstr "Alkalmazás-bővítmények"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:430
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:346
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Hálózati hiba a(z) %1 backendben: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:437
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:353
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1041,15 +1041,15 @@ msgstr ""
 "A(z) %1 backend túl sok kérést küldött a szerver felé. Próbálja újra néhány "
 "perc múlva."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:440
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:446
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr ""
 "A(z) %1 backend érvénytelen, lépjen kapcsolatba a disztribúció készítőivel."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:470
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:386
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1062,29 +1062,29 @@ msgstr ""
 "felügyeletet biztosít. A jelzett hiba:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:480
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:396
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "Nem sikerült letölteni a képernyőképet a(z) %1 bejegyzéshez a(z) %2 "
 "backendben"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:484
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "Nem kezelt hiba a(z) %1 backendben. Lépjen kapcsolatba a terjesztővel."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:632
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:518
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Hibás KNewStuff URI: %1"
 
-#: libdiscover/backends/KNSBackend/KNSResource.cpp:168
+#: libdiscover/backends/KNSBackend/KNSResource.cpp:169
 #, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-26 02:01+0000\n"
+"POT-Creation-Date: 2023-08-12 02:01+0000\n"
 "PO-Revision-Date: 2023-05-26 07:30+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -1006,7 +1006,7 @@ msgstr "Tinjauan EULA"
 msgid "Could not enable remote %1: %2"
 msgstr "Tidak bisa memfungsikan %1 jarak jauh: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:60
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:61
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -1015,32 +1015,32 @@ msgstr ""
 "Pertanyaan tak didukung:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:121
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:153
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Backend %1 terlalu lama untuk diinisialisasi"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:183
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:212
 #, kde-format
 msgid "Applications"
 msgstr "Aplikasi"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Pernik Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
 #, kde-format
 msgid "Application Addons"
 msgstr "Pernik Aplikasi"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:430
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:346
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Galat jaringan di dalam backend %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:437
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:353
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1049,14 +1049,14 @@ msgstr ""
 "Terlalu banyak permintaan yang dikirim ke server untuk backend %1. Silakan "
 "coba lagi dalam beberapa menit."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:440
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:446
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Backend %1 tidak absah, hubungi distibutormu."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:470
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:386
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1069,27 +1069,27 @@ msgstr ""
 "yang dilaporkan adalah:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:480
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:396
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Tidak dapat mengambil skrinsut untuk entri %1 dalam backend %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:484
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "Galat yang tak tertangani dalam backend %1. Kontak distibutormu."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:632
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:518
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "URI KNewStuff yang salah: %1"
 
-#: libdiscover/backends/KNSBackend/KNSResource.cpp:168
+#: libdiscover/backends/KNSBackend/KNSResource.cpp:169
 #, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"

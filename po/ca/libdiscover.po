@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-26 02:01+0000\n"
+"POT-Creation-Date: 2023-08-12 02:01+0000\n"
 "PO-Revision-Date: 2023-07-31 13:00+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1009,7 +1009,7 @@ msgstr "Revisió de l'EULA"
 msgid "Could not enable remote %1: %2"
 msgstr "No s'ha pogut activar el remot %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:60
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:61
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -1018,32 +1018,32 @@ msgstr ""
 "Qüestió no implementada:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:121
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:153
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "El dorsal %1 ha trigat massa temps a inicialitzar-se"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:183
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:212
 #, kde-format
 msgid "Applications"
 msgstr "Aplicacions"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Complements del Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:229
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
 #, kde-format
 msgid "Application Addons"
 msgstr "Complements d'aplicacions"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:430
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:346
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Error de xarxa al dorsal %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:437
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:353
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1052,14 +1052,14 @@ msgstr ""
 "Hi ha massa peticions enviades al servidor pel dorsal %1. Torneu-ho a provar "
 "en uns quants minuts."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:440
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:446
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Dorsal %1 no vàlid, contacteu amb el vostre distribuïdor."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:470
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:386
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1072,29 +1072,29 @@ msgstr ""
 "control més estricte. L'error informat ha estat:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:480
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:396
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "No s'ha pogut recuperar la captura de pantalla per a l'entrada %1 al dorsal "
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:484
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "Error no gestionat al dorsal %1. Contacteu amb el vostre distribuïdor."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:492
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:632
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:518
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "URI incorrecte del KNewStuff: %1"
 
-#: libdiscover/backends/KNSBackend/KNSResource.cpp:168
+#: libdiscover/backends/KNSBackend/KNSResource.cpp:169
 #, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"
