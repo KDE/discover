@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-08 02:04+0000\n"
-"PO-Revision-Date: 2023-05-30 18:47+0200\n"
+"PO-Revision-Date: 2023-08-13 16:22+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -665,12 +665,7 @@ msgid "\"%1\" was not found in the available sources"
 msgstr "„%1“ kann in den verfügbaren Paketquellen nicht gefunden werden"
 
 #: discover/qml/ApplicationsListPage.qml:217
-#, fuzzy, kde-format
-#| msgctxt "@info:placeholder%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
@@ -687,11 +682,10 @@ msgid "Still looking…"
 msgstr "Suchen ..."
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "&Startseite"
+msgstr "Startseite"
 
 #: discover/qml/BrowsingPage.qml:63
 #, kde-format
