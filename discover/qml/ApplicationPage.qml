@@ -383,9 +383,9 @@ DiscoverPage {
             displayMarginBeginning: appInfo.internalSpacings
             displayMarginEnd: appInfo.internalSpacings
 
-            visible: count > 0 && !hasFailed
+            visible: carouselModel.count > 0 && !hasFailed
 
-            screenshotsModel: ScreenshotsModel {
+            carouselModel: ScreenshotsModel {
                 application: appInfo.application
             }
         }

@@ -13,222 +13,125 @@ import QtQuick.Templates as T
 import org.kde.discover
 import org.kde.kirigami 2 as Kirigami
 
-ListView {
+QQC2.Control {
     id: root
 
-    required property ScreenshotsModel screenshotsModel
+    required property ScreenshotsModel carouselModel
 
-    property bool showNavigationArrows: true
+    property alias displayMarginBeginning: view.displayMarginBeginning
+    property alias displayMarginEnd: view.displayMarginEnd
+    property alias view: view
+
+    // TODO: Re-add tracking of failed images, store per-screenshot data in model
     property int failedCount: 0
-    readonly property bool hasFailed: count !== 0 && failedCount === count
+    readonly property bool hasFailed: failedCount !== 0 && failedCount === view.count
 
-    spacing: Kirigami.Units.largeSpacing
-    focus: overlay.visible
-    orientation: Qt.Horizontal
-    cacheBuffer: 10 // keep some screenshots in memory
+    padding: 0
+    topPadding: undefined
+    leftPadding: undefined
+    rightPadding: undefined
+    bottomPadding: undefined
+    verticalPadding: undefined
+    horizontalPadding: undefined
 
-    Keys.onLeftPressed:  if (leftAction.visible)  leftAction.trigger()
-    Keys.onRightPressed: if (rightAction.visible) rightAction.trigger()
+    focusPolicy: Qt.StrongFocus
+    Keys.forwardTo: view
 
-    property real delegateHeight: height - topMargin - bottomMargin
+    contentItem: ColumnLayout {
+        spacing: Kirigami.Units.largeSpacing * 3
 
-    model: screenshotsModel
+        LayoutMirroring.enabled: root.mirrored
 
-    delegate: QQC2.AbstractButton {
-        readonly property bool animated: isAnimated
-        readonly property url imageSource: large_image_url
-        readonly property real proportion: (thumbnail.imageStatus === Image.Ready && thumbnail.sourceSize.width > 1)
-            ? (thumbnail.sourceSize.height / thumbnail.sourceSize.width) : 1
+        ListView {
+            id: view
 
-        implicitWidth: root.delegateHeight / proportion
-        implicitHeight: root.delegateHeight
-        opacity: hovered ? 0.7 : 1
+            Layout.fillWidth: true
+            Layout.fillHeight: true
 
-        hoverEnabled: true
-        onClicked: {
-            root.currentIndex = model.row
-            overlay.open()
+            keyNavigationEnabled: true
+            interactive: true
+
+            clip: true
+            pixelAligned: true
+            orientation: ListView.Horizontal
+            snapMode: ListView.SnapToItem
+            highlightRangeMode: ListView.StrictlyEnforceRange
+
+            preferredHighlightBegin: currentItem ? Math.round((width - currentItem.width) / 2) : 0
+            preferredHighlightEnd: currentItem ? preferredHighlightBegin + currentItem.width : 0
+
+            highlightMoveDuration: Kirigami.Units.longDuration
+            highlightResizeDuration: Kirigami.Units.longDuration
+
+            spacing: Kirigami.Units.gridUnit
+            cacheBuffer: 10000
+
+            onCurrentIndexChanged: {
+                pageIndicator.currentIndex = currentIndex;
+            }
+
+            model: root.carouselModel
+
+            delegate: CarouselDelegate {
+                onActivated: {
+                    if (ListView.view.currentIndex === index) {
+                        maximizedHost.open(index);
+                    } else {
+                        ListView.view.currentIndex = index;
+                    }
+                }
+            }
+
+            CarouselNavigationButton {
+                LayoutMirroring.enabled: root.mirrored
+                anchors.left: parent.left
+                height: parent.height
+                view: view
+                role: Qt.AlignLeading
+                extraEdgePadding: root.displayMarginBeginning
+
+                onClicked: {
+                    view.decrementCurrentIndex();
+                }
+            }
+
+            CarouselNavigationButton {
+                LayoutMirroring.enabled: root.mirrored
+                anchors.right: parent.right
+                height: parent.height
+                view: view
+                role: Qt.AlignTrailing
+                extraEdgePadding: root.displayMarginEnd
+
+                onClicked: {
+                    view.incrementCurrentIndex();
+                }
+            }
         }
 
-        HoverHandler {
-            cursorShape: Qt.PointingHandCursor
-        }
+        CarouselPageIndicator {
+            id: pageIndicator
 
-        background: Item {
-            QQC2.BusyIndicator {
-                visible: running
-                running: thumbnail.imageStatus === Image.Loading
-                anchors.centerIn: parent
+            Layout.fillWidth: true
+
+            focusPolicy: Qt.NoFocus
+
+            interactive: true
+            count: view.count
+
+            onCurrentIndexChanged: {
+                view.currentIndex = currentIndex
             }
-            Kirigami.Icon {
-                implicitWidth: Kirigami.Units.iconSizes.large
-                implicitHeight: Kirigami.Units.iconSizes.large
-                visible: thumbnail.imageStatus === Image.Error
-                source: "image-missing"
-            }
-            ConditionalLoader {
-                id: thumbnail
-                anchors.fill: parent
-                readonly property int imageStatus: item.status
-                readonly property var sourceSize: item.sourceSize
-                condition: isAnimated
-
-                componentFalse: Component {
-                    Image {
-                        source: small_image_url
-                    }
-                }
-                componentTrue: Component {
-                    AnimatedImage {
-                        source: small_image_url
-                    }
-                }
-
-                onImageStatusChanged: {
-                    if (imageStatus === Image.Error) {
-                        root.failedCount += 1;
-                    }
-                }
+            Component.onCompleted: {
+                currentIndex = view.currentIndex;
             }
         }
     }
 
-    QQC2.Popup {
-        id: overlay
-        parent: applicationWindow().overlay
-        z: applicationWindow().globalDrawer.z + 10
-        modal: true
-        clip: false
+    CarouselMaximizedHostOverlay {
+        id: maximizedHost
 
-        x: (parent.width - width) / 2
-        y: (parent.height - height) / 2
-        readonly property real proportion: (overlayImage.sourceSize.width > 1) ? (overlayImage.sourceSize.height / overlayImage.sourceSize.width) : 1
-        height: overlayImage.imageStatus >= Image.Loading ? Kirigami.Units.gridUnit * 5 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
-        width: (height - 2 * padding) / proportion
-
-        QQC2.BusyIndicator {
-            id: indicator
-            visible: running
-            running: overlayImage.imageStatus === Image.Loading
-            anchors.centerIn: parent
-        }
-
-        Kirigami.Icon {
-            implicitWidth: Kirigami.Units.iconSizes.large
-            implicitHeight: Kirigami.Units.iconSizes.large
-            visible: overlayImage.imageStatus === Image.Error
-            source: "image-missing"
-        }
-
-        ConditionalLoader {
-            id: overlayImage
-            anchors.fill: parent
-            readonly property var imageStatus: item.status
-            readonly property var sourceSize: item.sourceSize
-            condition: root.currentItem.animated
-
-            componentFalse: Component {
-                Image {
-                    source: root.currentItem ? root.currentItem.imageSource : ""
-                    fillMode: Image.PreserveAspectFit
-                    smooth: true
-                }
-            }
-            componentTrue: Component {
-                AnimatedImage {
-                    source: root.currentItem ? root.currentItem.imageSource : ""
-                    fillMode: Image.PreserveAspectFit
-                    smooth: true
-                }
-            }
-
-            onImageStatusChanged: {
-                if (imageStatus === Image.Error) {
-                    root.failedCount += 1;
-                }
-            }
-        }
-
-        QQC2.Button {
-            anchors {
-                left: parent.right
-                bottom: parent.top
-            }
-            icon.name: "window-close"
-            onClicked: overlay.close()
-        }
-
-
-        QQC2.RoundButton {
-            anchors {
-                right: parent.left
-                verticalCenter: parent.verticalCenter
-            }
-            visible: leftAction.visible
-            icon.name: leftAction.icon.name
-            onClicked: leftAction.triggered(null)
-        }
-
-        QQC2.RoundButton {
-            anchors {
-                left: parent.right
-                verticalCenter: parent.verticalCenter
-            }
-            visible: rightAction.visible
-            icon.name: rightAction.icon.name
-            onClicked: rightAction.triggered(null)
-        }
-
-        Kirigami.Action {
-            id: leftAction
-            icon.name: root.LayoutMirroring.enabled ? "arrow-right" : "arrow-left"
-            enabled: overlay.visible && visible
-            visible: root.currentIndex >= 1 && !indicator.running
-            onTriggered: root.currentIndex = (root.currentIndex - 1) % root.count
-        }
-
-        Kirigami.Action {
-            id: rightAction
-            icon.name: root.LayoutMirroring.enabled ? "arrow-left" : "arrow-right"
-            enabled: overlay.visible && visible
-            visible: root.currentIndex < (root.count - 1) && !indicator.running
-            onTriggered: root.currentIndex = (root.currentIndex + 1) % root.count
-        }
-    }
-
-    clip: true
-
-    QQC2.RoundButton {
-        anchors {
-            left: parent.left
-            leftMargin: Kirigami.Units.largeSpacing
-            verticalCenter: parent.verticalCenter
-        }
-        width: Kirigami.Units.gridUnit * 2
-        height: width
-        icon.name: root.LayoutMirroring.enabled ? "arrow-right" : "arrow-left"
-        visible: !Kirigami.Settings.isMobile
-                 && root.count > 1
-                 && root.currentIndex > 0
-                 && root.showNavigationArrows
-        Keys.forwardTo: [root]
-        onClicked: root.currentIndex -= 1
-    }
-
-    QQC2.RoundButton {
-        anchors {
-            right: parent.right
-            rightMargin: Kirigami.Units.largeSpacing
-            verticalCenter: parent.verticalCenter
-        }
-        width: Kirigami.Units.gridUnit * 2
-        height: width
-        icon.name: root.LayoutMirroring.enabled ? "arrow-left" : "arrow-right"
-        visible: !Kirigami.Settings.isMobile
-                 && root.count > 1
-                 && root.currentIndex < root.count - 1
-                 && root.showNavigationArrows
-        Keys.forwardTo: [root]
-        onClicked: root.currentIndex += 1
+        carouselModel: root.carouselModel
+        currentIndex: view.currentIndex
     }
 }
