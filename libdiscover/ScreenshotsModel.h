@@ -24,6 +24,7 @@ public:
         ScreenshotUrl,
         IsAnimatedRole,
     };
+    Q_ENUM(Roles)
 
     explicit ScreenshotsModel(QObject *parent = nullptr);
     QHash<int, QByteArray> roleNames() const override;
@@ -33,7 +34,6 @@ public:
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    Q_SCRIPTABLE QUrl screenshotAt(int row) const;
     int count() const;
 
     Q_INVOKABLE void remove(const QUrl &url);
