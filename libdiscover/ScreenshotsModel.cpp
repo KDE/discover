@@ -27,8 +27,9 @@ QHash<int, QByteArray> ScreenshotsModel::roleNames() const
 
 void ScreenshotsModel::setResource(AbstractResource *res)
 {
-    if (res == m_resource)
+    if (res == m_resource) {
         return;
+    }
 
     if (m_resource) {
         disconnect(m_resource, &AbstractResource::screenshotsFetched, this, &ScreenshotsModel::screenshotsFetched);
@@ -43,8 +44,9 @@ void ScreenshotsModel::setResource(AbstractResource *res)
     if (res) {
         connect(m_resource, &AbstractResource::screenshotsFetched, this, &ScreenshotsModel::screenshotsFetched);
         res->fetchScreenshots();
-    } else
+    } else {
         qCWarning(LIBDISCOVER_LOG) << "empty resource!";
+    }
 }
 
 AbstractResource *ScreenshotsModel::resource() const
@@ -54,8 +56,9 @@ AbstractResource *ScreenshotsModel::resource() const
 
 void ScreenshotsModel::screenshotsFetched(const Screenshots &screenshots)
 {
-    if (screenshots.isEmpty())
+    if (screenshots.isEmpty()) {
         return;
+    }
 
     beginInsertRows(QModelIndex(), m_screenshots.size(), m_screenshots.size() + screenshots.size() - 1);
     m_screenshots += screenshots;
@@ -65,8 +68,9 @@ void ScreenshotsModel::screenshotsFetched(const Screenshots &screenshots)
 
 QVariant ScreenshotsModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid() || index.parent().isValid())
+    if (!index.isValid() || index.parent().isValid()) {
         return QVariant();
+    }
 
     switch (role) {
     case ThumbnailUrl:
