@@ -14,6 +14,7 @@ Kirigami.BasicListItem {
 
     separatorVisible: false
     visible: action.enabled
+    highlighted: action.checked
 
     Keys.onEnterPressed: trigger()
     Keys.onReturnPressed: trigger()
