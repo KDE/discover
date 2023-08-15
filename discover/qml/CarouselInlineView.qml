@@ -1,23 +1,24 @@
 /*
  *   SPDX-FileCopyrightText: 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *   SPDX-FileCopyrightText: 2020 Carl Schwan <carl@carlschwan.eu>
+ *   SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
  *
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15
-import org.kde.discover 2.0
-import org.kde.kirigami 2.19 as Kirigami
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls as QQC2
+import QtQuick.Templates as T
+import org.kde.discover
+import org.kde.kirigami 2 as Kirigami
 
 ListView {
     id: root
 
-    readonly property alias count: screenshotsModel.count
+    required property ScreenshotsModel screenshotsModel
+
     property bool showNavigationArrows: true
-    property alias resource: screenshotsModel.application
     property int failedCount: 0
     readonly property bool hasFailed: count !== 0 && failedCount === count
 
@@ -29,13 +30,11 @@ ListView {
     Keys.onLeftPressed:  if (leftAction.visible)  leftAction.trigger()
     Keys.onRightPressed: if (rightAction.visible) rightAction.trigger()
 
-    model: ScreenshotsModel {
-        id: screenshotsModel
-    }
+    property real delegateHeight: height - topMargin - bottomMargin
 
-    property real delegateHeight: Kirigami.Units.gridUnit * 4
+    model: screenshotsModel
 
-    delegate: AbstractButton {
+    delegate: QQC2.AbstractButton {
         readonly property bool animated: isAnimated
         readonly property url imageSource: large_image_url
         readonly property real proportion: (thumbnail.imageStatus === Image.Ready && thumbnail.sourceSize.width > 1)
@@ -56,7 +55,7 @@ ListView {
         }
 
         background: Item {
-            BusyIndicator {
+            QQC2.BusyIndicator {
                 visible: running
                 running: thumbnail.imageStatus === Image.Loading
                 anchors.centerIn: parent
@@ -94,7 +93,7 @@ ListView {
         }
     }
 
-    Popup {
+    QQC2.Popup {
         id: overlay
         parent: applicationWindow().overlay
         z: applicationWindow().globalDrawer.z + 10
@@ -107,7 +106,7 @@ ListView {
         height: overlayImage.imageStatus >= Image.Loading ? Kirigami.Units.gridUnit * 5 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
         width: (height - 2 * padding) / proportion
 
-        BusyIndicator {
+        QQC2.BusyIndicator {
             id: indicator
             visible: running
             running: overlayImage.imageStatus === Image.Loading
@@ -150,7 +149,7 @@ ListView {
             }
         }
 
-        Button {
+        QQC2.Button {
             anchors {
                 left: parent.right
                 bottom: parent.top
@@ -160,7 +159,7 @@ ListView {
         }
 
 
-        RoundButton {
+        QQC2.RoundButton {
             anchors {
                 right: parent.left
                 verticalCenter: parent.verticalCenter
@@ -170,7 +169,7 @@ ListView {
             onClicked: leftAction.triggered(null)
         }
 
-        RoundButton {
+        QQC2.RoundButton {
             anchors {
                 left: parent.right
                 verticalCenter: parent.verticalCenter
@@ -185,7 +184,7 @@ ListView {
             icon.name: root.LayoutMirroring.enabled ? "arrow-right" : "arrow-left"
             enabled: overlay.visible && visible
             visible: root.currentIndex >= 1 && !indicator.running
-            onTriggered: root.currentIndex = (root.currentIndex - 1) % screenshotsModel.count
+            onTriggered: root.currentIndex = (root.currentIndex - 1) % root.count
         }
 
         Kirigami.Action {
@@ -193,13 +192,13 @@ ListView {
             icon.name: root.LayoutMirroring.enabled ? "arrow-left" : "arrow-right"
             enabled: overlay.visible && visible
             visible: root.currentIndex < (root.count - 1) && !indicator.running
-            onTriggered: root.currentIndex = (root.currentIndex + 1) % screenshotsModel.count
+            onTriggered: root.currentIndex = (root.currentIndex + 1) % root.count
         }
     }
 
     clip: true
 
-    RoundButton {
+    QQC2.RoundButton {
         anchors {
             left: parent.left
             leftMargin: Kirigami.Units.largeSpacing
@@ -216,7 +215,7 @@ ListView {
         onClicked: root.currentIndex -= 1
     }
 
-    RoundButton {
+    QQC2.RoundButton {
         anchors {
             right: parent.right
             rightMargin: Kirigami.Units.largeSpacing

@@ -365,26 +365,27 @@ DiscoverPage {
             Layout.leftMargin: appInfo.pageContentMargins
             Layout.rightMargin: appInfo.pageContentMargins
 
-            visible: screenshots.hasFailed
+            visible: carousel.hasFailed
             icon.name: "image-missing"
             text: i18nc("@info placeholder message", "Screenshots not available for %1", appInfo.application.name)
         }
 
-        ScrollView {
-            id: screenshotsScroll
-            visible: screenshots.count > 0 && !screenshots.hasFailed
-            Layout.maximumWidth: headerLayout.width
+        CarouselInlineView {
+            id: carousel
+
+            Layout.fillWidth: true
+            Layout.preferredHeight: Math.round(Math.min(Kirigami.Units.gridUnit * 25, appInfo.height * 0.3))
             Layout.topMargin: appInfo.internalSpacings
-            Layout.alignment: Qt.AlignHCenter
-            Layout.preferredHeight: Math.min(Kirigami.Units.gridUnit * 20, Window.height * 0.25)
+            Layout.leftMargin: appInfo.internalSpacings
+            Layout.rightMargin: appInfo.internalSpacings
 
-            ScrollBar.vertical.policy: ScrollBar.AlwaysOff
+            displayMarginBeginning: appInfo.internalSpacings
+            displayMarginEnd: appInfo.internalSpacings
 
-            ApplicationScreenshots {
-                id: screenshots
-                resource: appInfo.application
-                delegateHeight: parent.Layout.preferredHeight * 0.8
-                showNavigationArrows: screenshotsScroll.width === headerLayout.width
+            visible: count > 0 && !hasFailed
+
+            screenshotsModel: ScreenshotsModel {
+                application: appInfo.application
             }
         }
 
