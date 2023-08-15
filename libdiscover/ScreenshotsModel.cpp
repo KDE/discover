@@ -85,11 +85,6 @@ int ScreenshotsModel::rowCount(const QModelIndex &parent) const
     return !parent.isValid() ? m_screenshots.count() : 0;
 }
 
-QUrl ScreenshotsModel::screenshotAt(int row) const
-{
-    return m_screenshots[row].screenshot;
-}
-
 int ScreenshotsModel::count() const
 {
     return m_screenshots.count();
