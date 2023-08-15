@@ -374,11 +374,12 @@ DiscoverPage {
             id: carousel
 
             Layout.fillWidth: true
-            Layout.preferredHeight: Math.round(Math.min(Kirigami.Units.gridUnit * 25, appInfo.height * 0.3))
-            Layout.topMargin: appInfo.internalSpacings
-            Layout.leftMargin: appInfo.internalSpacings
-            Layout.rightMargin: appInfo.internalSpacings
 
+            // TODO: Adaptive height causes polish loops for ColumnLayout
+            // Layout.preferredHeight: Math.min(540, Math.max(290, Math.round(width / 2) + 50))
+            Layout.preferredHeight: 400
+
+            Layout.topMargin: appInfo.internalSpacings
             displayMarginBeginning: appInfo.internalSpacings
             displayMarginEnd: appInfo.internalSpacings
 
