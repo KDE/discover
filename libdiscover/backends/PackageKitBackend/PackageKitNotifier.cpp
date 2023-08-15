@@ -134,7 +134,6 @@ void PackageKitNotifier::checkOfflineUpdates()
             KNotification::event(QStringLiteral("OfflineUpdateRepairStarted"),
                                  i18n("Repairing failed offline update"),
                                  {},
-                                 {},
                                  KNotification::CloseOnTimeout,
                                  QStringLiteral("discoverabstractnotifier"));
 
@@ -142,7 +141,6 @@ void PackageKitNotifier::checkOfflineUpdates()
                 KNotification::event(QStringLiteral("OfflineUpdateRepairFailed"),
                                      i18n("Repair Failed"),
                                      xi18nc("@info", "%1<nl/>Please report this error to your distribution.", details),
-                                     {},
                                      KNotification::Persistent,
                                      QStringLiteral("discoverabstractnotifier"));
             });
@@ -153,7 +151,6 @@ void PackageKitNotifier::checkOfflineUpdates()
 
                     KNotification::event(QStringLiteral("OfflineUpdateRepairSuccessful"),
                                          i18n("Repaired Successfully"),
-                                         {},
                                          {},
                                          KNotification::CloseOnTimeout,
                                          QStringLiteral("discoverabstractnotifier"));

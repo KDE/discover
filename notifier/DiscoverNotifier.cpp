@@ -137,13 +137,8 @@ void DiscoverNotifier::showUpdatesNotification()
         return;
     }
 
-    m_updatesAvailableNotification = KNotification::event(QStringLiteral("Update"),
-                                                          message(),
-                                                          {},
-                                                          iconName(),
-                                                          nullptr,
-                                                          KNotification::CloseOnTimeout,
-                                                          QStringLiteral("discoverabstractnotifier"));
+    m_updatesAvailableNotification =
+        KNotification::event(QStringLiteral("Update"), message(), {}, iconName(), KNotification::CloseOnTimeout, QStringLiteral("discoverabstractnotifier"));
     m_updatesAvailableNotification->setHint(QStringLiteral("resident"), true);
     const QString name = i18n("View Updates");
     m_updatesAvailableNotification->setDefaultAction(name);
@@ -284,7 +279,6 @@ void DiscoverNotifier::showRebootNotification()
                                                        i18n("Restart is required"),
                                                        i18n("The system needs to be restarted for the updates to take effect."),
                                                        QStringLiteral("system-software-update"),
-                                                       nullptr,
                                                        KNotification::Persistent | KNotification::DefaultEvent,
                                                        QStringLiteral("discoverabstractnotifier"));
 
