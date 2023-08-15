@@ -55,11 +55,13 @@ Screenshots AppStreamUtils::fetchScreenshots(const AppStream::Component &appdata
     for (const AppStream::Screenshot &s : appdataScreenshots) {
         const auto images = s.images();
         const QUrl thumbnail = AppStreamUtils::imageOfKind(images, AppStream::Image::KindThumbnail);
-        const QUrl plain = AppStreamUtils::imageOfKind(images, AppStream::Image::KindSource);
-        if (plain.isEmpty())
+        const QUrl full = AppStreamUtils::imageOfKind(images, AppStream::Image::KindSource);
+        if (full.isEmpty()) {
             qWarning() << "AppStreamUtils: Invalid screenshot for" << appdata.name();
+        }
+        const bool isAnimated = s.mediaKind() == AppStream::Screenshot::MediaKindVideo;
 
-        ret.append(Screenshot{plain, thumbnail.isEmpty() ? plain : thumbnail, s.mediaKind() == AppStream::Screenshot::MediaKindVideo});
+        ret.append(Screenshot{thumbnail.isEmpty() ? full : thumbnail, full, isAnimated});
     }
     return ret;
 }
