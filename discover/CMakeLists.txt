@@ -48,6 +48,7 @@ target_link_libraries(plasma-discover PUBLIC
                                      KF6::WindowSystem
                                      KF6::Notifications
                                      KF6::JobWidgets
+                                     KF6::StatusNotifierItem
                                      Qt::Widgets
                                      Qt::Quick
                                      Discover::Common

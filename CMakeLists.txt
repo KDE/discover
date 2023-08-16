@@ -27,7 +27,7 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG OPTIONAL_COMPONENTS WebView)
 
 find_package(PkgConfig REQUIRED)
 
-find_package(KF6 ${KF6_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui KIO Declarative KCMUtils IdleTime Notifications Purpose Auth)
+find_package(KF6 ${KF6_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui KIO Declarative KCMUtils IdleTime Notifications Purpose Auth StatusNotifierItem)
 find_package(KF6Kirigami2 2.7.0)
 
 find_package(packagekitqt6 1.0.1 CONFIG)

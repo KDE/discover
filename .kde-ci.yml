@@ -26,6 +26,7 @@ Dependencies:
     'frameworks/kwindowsystem': '@latest-kf6'
     'frameworks/kxmlgui': '@latest-kf6'
     'frameworks/purpose': '@latest-kf6'
+    'frameworks/kstatusnotifieritem': '@latest-kf6'
     'libraries/kuserfeedback': '@latest-kf6'
     'third-party/packagekit-qt': '@latest'
     'third-party/appstream': '@latest'
