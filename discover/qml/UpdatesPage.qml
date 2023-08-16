@@ -416,7 +416,7 @@ DiscoverPage {
                         text: changelog
                         textFormat: Text.StyledText
                         wrapMode: Text.WordWrap
-                        onLinkActivated: Qt.openUrlExternally(link)
+                        onLinkActivated: link => Qt.openUrlExternally(link)
 
                     }
 

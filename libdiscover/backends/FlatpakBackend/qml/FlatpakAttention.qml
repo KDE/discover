@@ -14,5 +14,5 @@ Kirigami.InlineMessage {
     Layout.fillWidth: true
     text: resource.attentionText
     visible: resource && text.length > 0
-    onLinkActivated: Qt.openUrlExternally(link)
+    onLinkActivated: link => Qt.openUrlExternally(link)
 }

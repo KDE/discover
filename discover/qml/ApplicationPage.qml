@@ -440,7 +440,7 @@ DiscoverPage {
                 wrapMode: Text.WordWrap
                 text: appInfo.application.longDescription
                 textFormat: TextEdit.RichText
-                onLinkActivated: Qt.openUrlExternally(link);
+                onLinkActivated: link => Qt.openUrlExternally(link);
             }
 
             // External resources
