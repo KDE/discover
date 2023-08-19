@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-12 02:01+0000\n"
+"POT-Creation-Date: 2023-08-19 01:57+0000\n"
 "PO-Revision-Date: 2023-07-22 22:59+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1896,7 +1896,7 @@ msgstr[0] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:180
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
@@ -1913,28 +1913,28 @@ msgstr "시스템 복구"
 msgid "Repairing failed offline update"
 msgstr "실패한 오프라인 업데이트 복구 중"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:142
 #, kde-format
 msgid "Repair Failed"
 msgstr "복구 실패"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr "%1<nl/>이 오류를 배포판에 보고해 주십시오."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:153
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "복구에 성공함"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:175
 #, kde-format
 msgid "Offline Updates"
 msgstr "오프라인 업데이트"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:179
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:176
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"

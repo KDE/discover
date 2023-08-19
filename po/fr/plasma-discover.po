@@ -8,7 +8,7 @@
 # Johan Claude-Breuninger <johan.claudebreuninger@gmail.com>, 2017.
 # Yoann Laissus <yoann.laissus@gmail.com>, 2017, 2018.
 # Simon Depiets <sdepiets@gmail.com>, 2018, 2019, 2020.
-# Xavier Besnard <xavier.besnard@neuf.fr>, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@neuf.fr>
 # Xavier BESNARD <xavier.besnard@neuf.fr>, 2023.
 #
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-08 02:04+0000\n"
-"PO-Revision-Date: 2023-05-09 13:33+0200\n"
+"PO-Revision-Date: 2023-08-17 16:59+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.07.90\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -381,15 +381,10 @@ msgid "See details…"
 msgstr "Voir plus d'informations..."
 
 #: discover/qml/ApplicationPage.qml:370
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "Also available in %1"
+#, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
-"\n"
-"Également disponible dans %1"
+msgstr "Copies d'écran non disponibles pour %1"
 
 #: discover/qml/ApplicationPage.qml:486
 #, kde-format
@@ -457,7 +452,7 @@ msgstr "Chargement des commentaires pour %1"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "Les revues pour %1 sont temporairement indisponibles."
 
 #: discover/qml/ApplicationPage.qml:655
 #, kde-format
@@ -683,12 +678,7 @@ msgid "\"%1\" was not found in the available sources"
 msgstr "Il est impossible de trouver « %1 » dans les ressources disponibles."
 
 #: discover/qml/ApplicationsListPage.qml:217
-#, fuzzy, kde-format
-#| msgctxt "@info:placeholder%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
@@ -696,8 +686,9 @@ msgid ""
 "caution."
 msgstr ""
 "Il est possible que « %1 » soit disponible sur Internet. Un logiciel trouvé "
-"sur Internet n'a pas été revu par votre distributeur concernant ses "
-"fonctionnalités et sa stabilité. Veuillez l'utiliser avec précaution."
+"sur Internet n'a pas été revu par les personnes en charge de votre "
+"distribution concernant ses fonctionnalités et sa stabilité. Veuillez "
+"l'utiliser avec précaution."
 
 #: discover/qml/ApplicationsListPage.qml:250
 #, kde-format
@@ -705,11 +696,10 @@ msgid "Still looking…"
 msgstr "Recherche toujours en cours…"
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "&Accueil"
+msgstr "Page d'accueil"
 
 #: discover/qml/BrowsingPage.qml:63
 #, kde-format
@@ -774,13 +764,11 @@ msgid "Fetching &updates…"
 msgstr "Recherche en co&urs de mises à jour…"
 
 #: discover/qml/DiscoverWindow.qml:86
-#, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "&Update (%1)"
+#, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
-msgstr[0] "Mettre à jo&ur (%1)"
-msgstr[1] "Mettre à jo&ur (%1)"
+msgstr[0] "Mise à jo&ur (%1)"
+msgstr[1] "Mises à jo&ur (%1)"
 
 #: discover/qml/DiscoverWindow.qml:94
 #, kde-format

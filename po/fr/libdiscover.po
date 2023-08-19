@@ -8,15 +8,15 @@
 # Johan Claude-Breuninger <johan.claudebreuninger@gmail.com>, 2017.
 # Simon Depiets <sdepiets@gmail.com>, 2018, 2019, 2020.
 # William Oprandi <william.oprandi@gmail.com>, 2019.
-# Xavier Besnard <xavier.besnard@neuf.fr>, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@neuf.fr>
 # Xavier BESNARD <xavier.besnard@neuf.fr>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-12 02:01+0000\n"
-"PO-Revision-Date: 2023-06-03 17:51+0200\n"
+"POT-Creation-Date: 2023-08-19 01:57+0000\n"
+"PO-Revision-Date: 2023-08-17 16:50+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.07.90\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -97,10 +97,9 @@ msgid "Intense Content"
 msgstr "Contenu intensif"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:171
-#, fuzzy, kde-format
-#| msgid "Internal error: %1"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "Erreur interne : %1"
+msgstr "Message d'erreur interne : %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
@@ -1953,7 +1952,7 @@ msgstr[1] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:180
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
@@ -1970,28 +1969,28 @@ msgstr "Réparer le système"
 msgid "Repairing failed offline update"
 msgstr "Réparation suite à l'échec de la mise à jour hors ligne"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:142
 #, kde-format
 msgid "Repair Failed"
 msgstr "Réparation impossible"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr "%1<nl/> Veuillez signaler cette erreur à votre distribution."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:153
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Réparé avec succès."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:175
 #, kde-format
 msgid "Offline Updates"
 msgstr "Mise-à-jour hors ligne"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:179
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:176
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"

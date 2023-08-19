@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-12 02:01+0000\n"
+"POT-Creation-Date: 2023-08-19 01:57+0000\n"
 "PO-Revision-Date: 2017-09-08 16:13+0200\n"
 "Last-Translator: Dimitris Kardarakos <dimkard@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2023,7 +2023,7 @@ msgstr[1] ""
 "\n"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:180
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Open File"
@@ -2048,32 +2048,32 @@ msgstr "Βασικό σύστημα"
 msgid "Repairing failed offline update"
 msgstr "Ενημερώσεις εφαρμογών"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:142
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
 #| msgid "Failed"
 msgid "Repair Failed"
 msgstr "Αποτυχία"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:153
 #, kde-format
 msgid "Repaired Successfully"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:175
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox"
 #| msgid "Application Updates"
 msgid "Offline Updates"
 msgstr "Ενημερώσεις εφαρμογών"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:179
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:176
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""

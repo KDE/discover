@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-12 02:01+0000\n"
+"POT-Creation-Date: 2023-08-19 01:57+0000\n"
 "PO-Revision-Date: 2020-10-21 13:36+0300\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -1940,7 +1940,7 @@ msgstr[1] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:180
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
@@ -1958,29 +1958,29 @@ msgstr "תיקון המערכת"
 msgid "Repairing failed offline update"
 msgstr "עדכונים לא מקוונים"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:142
 #, kde-format
 msgid "Repair Failed"
 msgstr "התיקון נכשל"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
 #, fuzzy, kde-kuit-format
 #| msgid "Please report to your distribution: %1"
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr "נא לדווח על כך להפצה שלך: %1"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:153
 #, kde-format
 msgid "Repaired Successfully"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:175
 #, kde-format
 msgid "Offline Updates"
 msgstr "עדכונים לא מקוונים"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:179
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:176
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"

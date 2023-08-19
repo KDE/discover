@@ -4,94 +4,94 @@
 # Simon Depiets <sdepiets@gmail.com>, 2018, 2019, 2020.
 # William Oprandi <william.oprandi@gmail.com>, 2019.
 # Nathan Murat <nathanmurat28@outlook.com>, 2019.
-# Xavier Besnard <xavier.besnard@neuf.fr>, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@neuf.fr>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 09:33+0000\n"
-"PO-Revision-Date: 2022-01-06 08:43+0100\n"
-"Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
-"Language-Team: French <kde-francophone@kde.org>\n"
+"POT-Creation-Date: 2023-08-19 01:57+0000\n"
+"PO-Revision-Date: 2023-08-17 16:50+0200\n"
+"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
+"Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 21.12.0\n"
+"X-Generator: Lokalize 23.07.90\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: notifier/DiscoverNotifier.cpp:148
+#: notifier/DiscoverNotifier.cpp:143
 #, kde-format
 msgid "View Updates"
 msgstr "Afficher les mises à jour"
 
-#: notifier/DiscoverNotifier.cpp:250
+#: notifier/DiscoverNotifier.cpp:245
 #, kde-format
 msgid "Security updates available"
 msgstr "Mises à jour de sécurité disponibles"
 
-#: notifier/DiscoverNotifier.cpp:252
+#: notifier/DiscoverNotifier.cpp:247
 #, kde-format
 msgid "Updates available"
 msgstr "Mises à jour disponibles"
 
-#: notifier/DiscoverNotifier.cpp:254
+#: notifier/DiscoverNotifier.cpp:249
 #, kde-format
 msgid "System up to date"
 msgstr "Système à jour"
 
-#: notifier/DiscoverNotifier.cpp:256
+#: notifier/DiscoverNotifier.cpp:251
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "L'ordinateur doit redémarrer"
 
-#: notifier/DiscoverNotifier.cpp:258
+#: notifier/DiscoverNotifier.cpp:253
 #, kde-format
 msgid "Offline"
 msgstr "Hors-ligne"
 
-#: notifier/DiscoverNotifier.cpp:260
+#: notifier/DiscoverNotifier.cpp:255
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Applications des mises à jour non prévues..."
 
-#: notifier/DiscoverNotifier.cpp:284
+#: notifier/DiscoverNotifier.cpp:279
 #, kde-format
 msgid "Restart is required"
 msgstr "Un redémarrage est nécessaire"
 
-#: notifier/DiscoverNotifier.cpp:285
+#: notifier/DiscoverNotifier.cpp:280
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr ""
 "Le service a besoin d'être redémarré pour que les mises à jour soient prises "
 "en compte."
 
-#: notifier/DiscoverNotifier.cpp:291
+#: notifier/DiscoverNotifier.cpp:285
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Redémarrer"
 
-#: notifier/DiscoverNotifier.cpp:317
+#: notifier/DiscoverNotifier.cpp:311
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Mise à niveau"
 
-#: notifier/DiscoverNotifier.cpp:318
+#: notifier/DiscoverNotifier.cpp:312
 #, kde-format
 msgid "Upgrade available"
 msgstr "Mise à niveau disponible"
 
-#: notifier/DiscoverNotifier.cpp:319
+#: notifier/DiscoverNotifier.cpp:313
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr ""
+msgstr "%1 est maintenant disponible."
 
 #: notifier/main.cpp:36
 #, kde-format

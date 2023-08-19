@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-12 02:01+0000\n"
+"POT-Creation-Date: 2023-08-19 01:57+0000\n"
 "PO-Revision-Date: 2023-03-15 19:07+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -1940,7 +1940,7 @@ msgstr[2] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:180
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
@@ -1957,28 +1957,28 @@ msgstr "Opraviť systém"
 msgid "Repairing failed offline update"
 msgstr "Oprava neúspešnej offline aktualizácie"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:142
 #, kde-format
 msgid "Repair Failed"
 msgstr "Oprava zlyhala"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr "%1<nl/>Prosím, nahláste túto chybu vašej distribúcii."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:153
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Úspešne opravené"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:175
 #, kde-format
 msgid "Offline Updates"
 msgstr "Aktualizácie bez pripojenia"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:179
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:176
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"

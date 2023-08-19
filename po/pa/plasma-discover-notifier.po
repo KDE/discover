@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 09:33+0000\n"
+"POT-Creation-Date: 2023-08-19 01:57+0000\n"
 "PO-Revision-Date: 2022-01-01 09:30-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -17,69 +17,69 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 21.04.3\n"
 
-#: notifier/DiscoverNotifier.cpp:148
+#: notifier/DiscoverNotifier.cpp:143
 #, kde-format
 msgid "View Updates"
 msgstr "ਅੱਪਡੇਟ ਵੇਖੋ"
 
-#: notifier/DiscoverNotifier.cpp:250
+#: notifier/DiscoverNotifier.cpp:245
 #, kde-format
 msgid "Security updates available"
 msgstr "ਸੁਰੱਖਿਆ ਅੱਪਡੇਟ ਮੌਜੂਦ ਹਨ"
 
-#: notifier/DiscoverNotifier.cpp:252
+#: notifier/DiscoverNotifier.cpp:247
 #, kde-format
 msgid "Updates available"
 msgstr "ਅੱਪਡੇਟ ਮੌਜੂਦ ਹਨ"
 
-#: notifier/DiscoverNotifier.cpp:254
+#: notifier/DiscoverNotifier.cpp:249
 #, kde-format
 msgid "System up to date"
 msgstr "ਸਿਸਟਮ ਅੱਪ ਟੂ ਡੇਟ ਹੈ"
 
-#: notifier/DiscoverNotifier.cpp:256
+#: notifier/DiscoverNotifier.cpp:251
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "ਕੰਪਿਊਟਰ ਨੂੰ ਮੁੜ-ਚਾਲੂ ਕਰਨ ਦੀ ਲੋੜ ਹੈ"
 
-#: notifier/DiscoverNotifier.cpp:258
+#: notifier/DiscoverNotifier.cpp:253
 #, kde-format
 msgid "Offline"
 msgstr "ਆਫਲਾਈਨ"
 
-#: notifier/DiscoverNotifier.cpp:260
+#: notifier/DiscoverNotifier.cpp:255
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "…ਬਿਨ-ਨਿਗਰਾਨੀ ਅੱਪਡੇਟ ਲਾਗੂ ਕੀਤੇ ਜਾ ਰਹੇ ਹਨ"
 
-#: notifier/DiscoverNotifier.cpp:284
+#: notifier/DiscoverNotifier.cpp:279
 #, kde-format
 msgid "Restart is required"
 msgstr "ਮੁੜ-ਚਾਲੂ ਕਰਨ ਦੀ ਲੋੜ ਹੈ"
 
-#: notifier/DiscoverNotifier.cpp:285
+#: notifier/DiscoverNotifier.cpp:280
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "ਅੱਪਡੇਟ ਲਾਗੂ ਕਰਨ ਲਈ ਸਿਸਟਮ ਨੂੰ ਮੁੜ-ਚਾਲੂ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ।"
 
-#: notifier/DiscoverNotifier.cpp:291
+#: notifier/DiscoverNotifier.cpp:285
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "ਮੁੜ-ਚਾਲੂ ਕਰੋ"
 
-#: notifier/DiscoverNotifier.cpp:317
+#: notifier/DiscoverNotifier.cpp:311
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "ਅੱਪਗਰੇਡ"
 
-#: notifier/DiscoverNotifier.cpp:318
+#: notifier/DiscoverNotifier.cpp:312
 #, kde-format
 msgid "Upgrade available"
 msgstr "ਅੱਪਗਰੇਡ ਮੌਜੂਦ ਹੈ"
 
-#: notifier/DiscoverNotifier.cpp:319
+#: notifier/DiscoverNotifier.cpp:313
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."

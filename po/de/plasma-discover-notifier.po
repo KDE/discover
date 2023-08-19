@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 09:33+0000\n"
+"POT-Creation-Date: 2023-08-19 01:57+0000\n"
 "PO-Revision-Date: 2023-07-24 21:32+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-doc@kde.org>\n"
@@ -16,72 +16,72 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 23.11.70\n"
 
-#: notifier/DiscoverNotifier.cpp:148
+#: notifier/DiscoverNotifier.cpp:143
 #, kde-format
 msgid "View Updates"
 msgstr "Aktualisierungen ansehen"
 
-#: notifier/DiscoverNotifier.cpp:250
+#: notifier/DiscoverNotifier.cpp:245
 #, kde-format
 msgid "Security updates available"
 msgstr "Sicherheitskritische Aktualisierungen sind verfügbar"
 
-#: notifier/DiscoverNotifier.cpp:252
+#: notifier/DiscoverNotifier.cpp:247
 #, kde-format
 msgid "Updates available"
 msgstr "Verfügbare Aktualisierungen"
 
-#: notifier/DiscoverNotifier.cpp:254
+#: notifier/DiscoverNotifier.cpp:249
 #, kde-format
 msgid "System up to date"
 msgstr "Das System ist auf dem neuesten Stand"
 
-#: notifier/DiscoverNotifier.cpp:256
+#: notifier/DiscoverNotifier.cpp:251
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Der Rechner muss neu gestartet werden"
 
-#: notifier/DiscoverNotifier.cpp:258
+#: notifier/DiscoverNotifier.cpp:253
 #, kde-format
 msgid "Offline"
 msgstr "Offline"
 
-#: notifier/DiscoverNotifier.cpp:260
+#: notifier/DiscoverNotifier.cpp:255
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Unbeaufsichtigte Aktualisierungen werden angewendet ..."
 
-#: notifier/DiscoverNotifier.cpp:284
+#: notifier/DiscoverNotifier.cpp:279
 #, kde-format
 msgid "Restart is required"
 msgstr "Ein Neustart ist erforderlich"
 
-#: notifier/DiscoverNotifier.cpp:285
+#: notifier/DiscoverNotifier.cpp:280
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr ""
 "Das System muss neu gestartet werden, damit die Aktualisierungen wirksam "
 "werden."
 
-#: notifier/DiscoverNotifier.cpp:291
+#: notifier/DiscoverNotifier.cpp:285
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Neu starten"
 
 # Hier gibt es drei verschiedene englische Vokabeln, die wir alle mit Aktualisieren/-ung übersetzen. Irgendwie bin ich nicht so glücklich damit.
-#: notifier/DiscoverNotifier.cpp:317
+#: notifier/DiscoverNotifier.cpp:311
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Aktualisieren"
 
-#: notifier/DiscoverNotifier.cpp:318
+#: notifier/DiscoverNotifier.cpp:312
 #, kde-format
 msgid "Upgrade available"
 msgstr "Paketaktualisierung verfügbar"
 
-#: notifier/DiscoverNotifier.cpp:319
+#: notifier/DiscoverNotifier.cpp:313
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
