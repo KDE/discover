@@ -14,6 +14,7 @@ add_executable(DiscoverNotifier
 
 target_link_libraries(DiscoverNotifier
     KF6::Notifications
+    KF6::JobWidgets
     KF6::StatusNotifierItem
     KF6::I18n
     KF6::KIOGui
