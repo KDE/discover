@@ -62,7 +62,9 @@ void FlatpakTransactionThread::new_operation_cb(FlatpakTransaction * /*object*/,
 void operation_error_cb(FlatpakTransaction * /*object*/, FlatpakTransactionOperation * /*operation*/, GError *error, gint /*details*/, gpointer user_data)
 {
     FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
-    obj->addErrorMessage(QString::fromUtf8(error->message));
+    if (error) {
+        obj->addErrorMessage(QString::fromUtf8(error->message));
+    }
 }
 
 gboolean
