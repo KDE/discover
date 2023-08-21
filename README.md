@@ -8,7 +8,7 @@ Discover helps you find and install applications, games, and tools. You can sear
 
 * Install and download software.
 * Manage software sources, e.g. Flatpak repositories.
-* Manage operating system software through PackageKit.
+* Upgrade operating system software through PackageKit.
 * Find and install add-ons for Plasma.
 
 ## Support
