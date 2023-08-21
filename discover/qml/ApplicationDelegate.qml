@@ -14,7 +14,7 @@ import org.kde.discover 2.0
 import org.kde.kirigami 2.14 as Kirigami
 
 Kirigami.AbstractCard {
-    id: delegateArea
+    id: root
 
     property alias application: installButton.application
     property bool compact: false
@@ -36,19 +36,19 @@ Kirigami.AbstractCard {
     onClicked: trigger()
 
     contentItem: Item {
-        implicitHeight: delegateArea.compact ? Kirigami.Units.gridUnit * 2 : Math.round(Kirigami.Units.gridUnit * 3.5)
+        implicitHeight: root.compact ? Kirigami.Units.gridUnit * 2 : Math.round(Kirigami.Units.gridUnit * 3.5)
 
         // App icon
         Kirigami.Icon {
             id: resourceIcon
-            readonly property real contHeight: delegateArea.compact ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.huge
+            readonly property real contHeight: root.compact ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.huge
             source: application.icon
             height: contHeight
             width: contHeight
             anchors {
                 verticalCenter: parent.verticalCenter
                 left: parent.left
-                leftMargin: delegateArea.compact ? Kirigami.Units.largeSpacing : Kirigami.Units.largeSpacing * 2
+                leftMargin: root.compact ? Kirigami.Units.largeSpacing : Kirigami.Units.largeSpacing * 2
             }
         }
 
@@ -69,9 +69,9 @@ Kirigami.AbstractCard {
                 Kirigami.Heading {
                     id: head
                     Layout.fillWidth: true
-                    level: delegateArea.compact ? 2 : 1
+                    level: root.compact ? 2 : 1
                     type: Kirigami.Heading.Type.Primary
-                    text: delegateArea.application.name
+                    text: root.application.name
                     elide: Text.ElideRight
                     maximumLineCount: 1
                 }
@@ -80,7 +80,7 @@ Kirigami.AbstractCard {
                 // we're not using the compact view, where there's no space for it)
                 RowLayout {
                     Layout.alignment: Qt.AlignRight
-                    visible: delegateArea.appIsFromNonDefaultBackend && !delegateArea.compact
+                    visible: root.appIsFromNonDefaultBackend && !root.compact
                     spacing: 0
 
                     Kirigami.Icon {
@@ -99,7 +99,7 @@ Kirigami.AbstractCard {
             Label {
                 id: description
                 Layout.fillWidth: true
-                text: delegateArea.application.comment
+                text: root.application.comment
                 elide: Text.ElideRight
                 maximumLineCount: 1
                 textFormat: Text.PlainText
@@ -108,7 +108,7 @@ Kirigami.AbstractCard {
             // Container for rating, size, and install button
             RowLayout {
                 Layout.fillWidth: true
-                Layout.topMargin: delegateArea.compact ? Kirigami.Units.smallSpacing : Kirigami.Units.largeSpacing
+                Layout.topMargin: root.compact ? Kirigami.Units.smallSpacing : Kirigami.Units.largeSpacing
 
                 // Container for rating and size labels
                 ColumnLayout {
@@ -119,7 +119,7 @@ Kirigami.AbstractCard {
                     // at a different position based on whether or not the
                     // sizeInfo text is visible, because the base layout is
                     // vertically centered rather than filling a distinct space.
-                    Layout.preferredHeight: delegateArea.compact ? -1 : rating.implicitHeight + sizeInfo.implicitHeight
+                    Layout.preferredHeight: root.compact ? -1 : rating.implicitHeight + sizeInfo.implicitHeight
                     spacing: 0
 
                     // Rating stars + label
@@ -132,13 +132,13 @@ Kirigami.AbstractCard {
                         spacing: Kirigami.Units.largeSpacing
 
                         Rating {
-                            rating: delegateArea.application.rating ? delegateArea.application.rating.sortableRating : 0
-                            starSize: delegateArea.compact ? description.font.pointSize : head.font.pointSize
+                            rating: root.application.rating ? root.application.rating.sortableRating : 0
+                            starSize: root.compact ? description.font.pointSize : head.font.pointSize
                         }
                         Label {
                             Layout.fillWidth: true
-                            visible: delegateArea.application.rating || (delegateArea.application.backend.reviewsBackend && delegateArea.application.backend.reviewsBackend.isResourceSupported(delegateArea.application))
-                            text: delegateArea.application.rating ? i18np("%1 rating", "%1 ratings", delegateArea.application.rating.ratingCount) : i18n("No ratings yet")
+                            visible: root.application.rating || (root.application.backend.reviewsBackend && root.application.backend.reviewsBackend.isResourceSupported(root.application))
+                            text: root.application.rating ? i18np("%1 rating", "%1 ratings", root.application.rating.ratingCount) : i18n("No ratings yet")
                             font: Kirigami.Theme.smallFont
                             elide: Text.ElideRight
                         }
@@ -148,8 +148,8 @@ Kirigami.AbstractCard {
                     Label {
                         id: sizeInfo
                         Layout.fillWidth: true
-                        visible: !delegateArea.compact && showSize
-                        text: visible ? delegateArea.application.sizeDescription : ""
+                        visible: !root.compact && showSize
+                        text: visible ? root.application.sizeDescription : ""
                         horizontalAlignment: Text.AlignRight
                         opacity: 0.6;
                         font: Kirigami.Theme.smallFont
@@ -162,7 +162,7 @@ Kirigami.AbstractCard {
                 InstallApplicationButton {
                     id: installButton
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                    visible: !delegateArea.compact
+                    visible: !root.compact
                 }
             }
         }
