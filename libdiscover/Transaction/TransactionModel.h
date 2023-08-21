@@ -38,11 +38,11 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
     Q_SCRIPTABLE Transaction *transactionFromResource(AbstractResource *resource) const;
-    QModelIndex indexOf(Transaction *trans) const;
-    QModelIndex indexOf(AbstractResource *res) const;
+    QModelIndex indexOf(Transaction *transaction) const;
+    QModelIndex indexOf(AbstractResource *resource) const;
 
-    void addTransaction(Transaction *trans);
-    void removeTransaction(Transaction *trans);
+    void addTransaction(Transaction *transaction);
+    void removeTransaction(Transaction *transaction);
 
     bool contains(Transaction *transaction) const
     {
@@ -62,13 +62,13 @@ private:
 Q_SIGNALS:
     void startingFirstTransaction();
     void lastTransactionFinished();
-    void transactionAdded(Transaction *trans);
-    void transactionRemoved(Transaction *trans);
+    void transactionAdded(Transaction *transaction);
+    void transactionRemoved(Transaction *transaction);
     void countChanged();
     void progressChanged();
     void proceedRequest(Transaction *transaction, const QString &title, const QString &description);
     void mainTransactionTextChanged();
 
-private Q_SLOTS:
-    void transactionChanged(int role);
+private:
+    void transactionChanged(Transaction *transaction, int role);
 };
