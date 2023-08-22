@@ -262,17 +262,7 @@ bool PackageKitNotifier::hasSecurityUpdates()
     return m_securityUpdates > 0;
 }
 
-void PackageKitNotifier::onDistroUpgrade(PackageKit::Transaction::DistroUpgrade /*type*/, const QString &name, const QString &description)
-{
-    m_hasDistUpgrade = true;
-    auto a = new UpgradeAction(name, description, this);
-    connect(a, &UpgradeAction::triggered, this, [](const QString &name) {
-        PackageKit::Daemon::upgradeSystem(name, PackageKit::Transaction::UpgradeKindDefault);
-    });
-    Q_EMIT foundUpgradeAction(a);
-}
-
-void PackageKitNotifier::fallbackCheckDistroUpgrade()
+void PackageKitNotifier::checkDistroUpgrade()
 {
     auto nextRelease = AppStreamIntegration::global()->getDistroUpgrade(m_appdata.get());
     if (nextRelease) {
@@ -305,10 +295,8 @@ void PackageKitNotifier::refreshDatabase()
         connect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     }
 
-    if (!m_distUpgrades && (PackageKit::Daemon::roles() & PackageKit::Transaction::RoleUpgradeSystem)) {
-        m_distUpgrades = PackageKit::Daemon::getDistroUpgrades();
-        connect(m_distUpgrades, &PackageKit::Transaction::distroUpgrade, this, &PackageKitNotifier::onDistroUpgrade);
-        connect(m_distUpgrades, &PackageKit::Transaction::errorCode, this, &PackageKitNotifier::fallbackCheckDistroUpgrade);
+    if (PackageKit::Daemon::roles() & PackageKit::Transaction::RoleUpgradeSystem) {
+        checkDistroUpgrade();
     }
 }
 

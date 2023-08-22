@@ -32,14 +32,13 @@ public:
     {
         return m_needsReboot;
     }
-    void fallbackCheckDistroUpgrade();
+    void checkDistroUpgrade();
 
 private Q_SLOTS:
     void package(PackageKit::Transaction::Info info, const QString &packageID, const QString &summary);
     void finished(PackageKit::Transaction::Exit exit, uint);
     void onRequireRestart(PackageKit::Transaction::Restart type, const QString &packageID);
     void transactionListChanged(const QStringList &tids);
-    void onDistroUpgrade(PackageKit::Transaction::DistroUpgrade type, const QString &name, const QString &description);
 
 private:
     void nowNeedsReboot();
@@ -53,7 +52,6 @@ private:
     uint m_normalUpdates;
     bool m_hasDistUpgrade;
     QPointer<PackageKit::Transaction> m_refresher;
-    QPointer<PackageKit::Transaction> m_distUpgrades;
     QTimer *m_recheckTimer;
 
     QHash<QString, PackageKit::Transaction *> m_transactions;
