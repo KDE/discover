@@ -122,13 +122,15 @@ void PackageKitNotifier::checkOfflineUpdates()
         notification->setIconName(QStringLiteral("dialog-error"));
         notification->setTitle(i18n("Failed Offline Update"));
         notification->setText(i18np("Failed to update %1 package\n%2", "Failed to update %1 packages\n%2", packages.count(), errorDetails));
-        notification->setActions(QStringList{i18nc("@action:button", "Open Discover"), i18nc("@action:button", "Repair System")});
         notification->setComponentName(QStringLiteral("discoverabstractnotifier"));
 
-        connect(notification, &KNotification::action1Activated, this, []() {
+        auto openDiscoverAction = notification->addAction(i18nc("@action:button", "Open Discover"));
+        connect(openDiscoverAction, &KNotificationAction::activated, this, [] {
             QProcess::startDetached(QStringLiteral("plasma-discover"), QStringList());
         });
-        connect(notification, &KNotification::action2Activated, this, [this]() {
+
+        auto repairAction = notification->addAction(i18nc("@action:button", "Repair System"));
+        connect(repairAction, &KNotificationAction::activated, this, [this] {
             qInfo() << "Repairing system";
             auto trans = PackageKit::Daemon::global()->repairSystem();
             KNotification::event(QStringLiteral("OfflineUpdateRepairStarted"),
@@ -174,10 +176,10 @@ void PackageKitNotifier::checkOfflineUpdates()
             notification->setIconName(QStringLiteral("system-software-update"));
             notification->setTitle(i18n("Offline Updates"));
             notification->setText(i18np("Successfully updated %1 package", "Successfully updated %1 packages", packages.count()));
-            notification->setActions(QStringList{i18nc("@action:button", "Open Discover")});
             notification->setComponentName(QStringLiteral("discoverabstractnotifier"));
 
-            connect(notification, &KNotification::action1Activated, this, []() {
+            auto openDiscoverAction = notification->addAction(i18nc("@action:button", "Open Discover"));
+            connect(openDiscoverAction, &KNotificationAction::activated, this, []() {
                 QProcess::startDetached(QStringLiteral("plasma-discover"), QStringList());
             });
 

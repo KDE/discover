@@ -136,11 +136,16 @@ void DiscoverNotifier::showUpdatesNotification()
         KNotification::event(QStringLiteral("Update"), message(), {}, iconName(), KNotification::CloseOnTimeout, QStringLiteral("discoverabstractnotifier"));
     m_updatesAvailableNotification->setHint(QStringLiteral("resident"), true);
     const QString name = i18n("View Updates");
-    m_updatesAvailableNotification->setDefaultAction(name);
-    m_updatesAvailableNotification->setActions({name});
-    connect(m_updatesAvailableNotification, QOverload<unsigned int>::of(&KNotification::activated), this, [this] {
+
+    auto showUpdates = [this] {
         showDiscoverUpdates(m_updatesAvailableNotification->xdgActivationToken());
-    });
+    };
+
+    auto defaultAction = m_updatesAvailableNotification->addDefaultAction(name);
+    connect(defaultAction, &KNotificationAction::activated, this, showUpdates);
+
+    auto showUpdatesAction = m_updatesAvailableNotification->addAction(name);
+    connect(showUpdatesAction, &KNotificationAction::activated, this, showUpdates);
 }
 
 void DiscoverNotifier::updateStatusNotifier()
@@ -277,9 +282,8 @@ void DiscoverNotifier::showRebootNotification()
                                                        KNotification::Persistent | KNotification::DefaultEvent,
                                                        QStringLiteral("discoverabstractnotifier"));
 
-    notification->setActions(QStringList{i18nc("@action:button", "Restart")});
-    notification->setDefaultAction(notification->actions().constFirst());
-    connect(notification, &KNotification::action1Activated, this, &DiscoverNotifier::reboot);
+    auto restartAction = notification->addAction(i18nc("@action:button", "Restart"));
+    connect(restartAction, &KNotificationAction::activated, this, &DiscoverNotifier::reboot);
 
     notification->sendEvent();
 }
@@ -303,16 +307,17 @@ void DiscoverNotifier::foundUpgradeAction(UpgradeAction *action)
 
     KNotification *notification = new KNotification(QStringLiteral("DistUpgrade"), KNotification::Persistent);
     notification->setIconName(QStringLiteral("system-software-update"));
-    notification->setActions(QStringList{i18nc("@action:button", "Upgrade")});
     notification->setTitle(i18n("Upgrade available"));
     notification->setText(i18nc("A new distro release (name and version) is available for upgrade", "%1 is now available.", action->description()));
     notification->setComponentName(QStringLiteral("discoverabstractnotifier"));
 
+    auto upgradeAction = notification->addAction(i18nc("@action:button", "Upgrade"));
+    connect(upgradeAction, &KNotificationAction::activated, this, [action] {
+        action->trigger();
+    });
+
     connect(action, &UpgradeAction::showDiscoverUpdates, this, [this, notification]() {
         showDiscoverUpdates(notification->xdgActivationToken());
-    });
-    connect(notification, &KNotification::action1Activated, this, [action]() {
-        action->trigger();
     });
 
     notification->sendEvent();
