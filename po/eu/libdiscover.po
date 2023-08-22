@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-19 01:57+0000\n"
+"POT-Creation-Date: 2023-08-22 01:59+0000\n"
 "PO-Revision-Date: 2023-07-19 17:50+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -933,7 +933,7 @@ msgstr "Sartu Flatpak gordetegi baten URI (*.flatpakrepo)"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Urruneko '%1' gehitzen %2(e)an %3(e)tik"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:191
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""

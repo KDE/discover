@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-19 01:57+0000\n"
+"POT-Creation-Date: 2023-08-22 01:59+0000\n"
 "PO-Revision-Date: 2023-03-15 19:07+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -934,7 +934,7 @@ msgstr "Zadať URI Flatpak úložiska (* .flatpakrepo):"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Pridáva sa vzdialený zdroj \"%1\" do %2 z %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:191
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""

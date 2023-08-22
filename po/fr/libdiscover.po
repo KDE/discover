@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-19 01:57+0000\n"
+"POT-Creation-Date: 2023-08-22 01:59+0000\n"
 "PO-Revision-Date: 2023-08-17 16:50+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -945,7 +945,7 @@ msgstr "Saisissez une URI de dépôt Flatpak (*.flatpakrepo) :"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Ajoute le distant « %1 » dans %2 depuis %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:191
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""

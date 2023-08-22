@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-19 01:57+0000\n"
+"POT-Creation-Date: 2023-08-22 01:59+0000\n"
 "PO-Revision-Date: 2023-06-27 18:05+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -931,7 +931,7 @@ msgstr "Anna Flatpak-pakettilähteen URI (*.flatpakrepo):"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Lisätään pakettilähde ”%1” osoitteesta %2, jota %3 ehdotti"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:191
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "”%2”: ”%1” vaikuttaa puuttuvan – varmista, että se on käytettävissä."
