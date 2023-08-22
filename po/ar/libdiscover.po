@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-26 02:31+0000\n"
+"POT-Creation-Date: 2023-08-22 02:27+0000\n"
 "PO-Revision-Date: 2023-02-28 21:04+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -925,7 +925,7 @@ msgstr "أدخل عنوان مستودع فلاتباك (*.flatpakrepo)"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "يضيف '%1' البعيد في %2 من %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:191
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "تعثر العثور على '%1' في '%2'، الرجاء تأكد من توفره."

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-26 02:31+0000\n"
+"POT-Creation-Date: 2023-08-22 02:27+0000\n"
 "PO-Revision-Date: 2023-04-15 13:46+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -950,7 +950,7 @@ msgstr "Введите адрес репозитория Flatpak (*.flatpakrepo)
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Добавление «%1» (%2) из %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:191
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "Не удалось найти «%1» в «%2»: проверьте, что файл доступен."
