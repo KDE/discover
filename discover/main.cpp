@@ -27,13 +27,13 @@
 #include <QProcessEnvironment>
 
 typedef QHash<QString, DiscoverObject::CompactMode> StringCompactMode;
-Q_GLOBAL_STATIC_WITH_ARGS(StringCompactMode,
+Q_GLOBAL_STATIC(StringCompactMode,
                           s_decodeCompactMode,
-                          (StringCompactMode{
+                          StringCompactMode{
                               {QLatin1String("auto"), DiscoverObject::Auto},
                               {QLatin1String("compact"), DiscoverObject::Compact},
                               {QLatin1String("full"), DiscoverObject::Full},
-                          }))
+                          })
 
 QCommandLineParser *createParser()
 {
