@@ -22,6 +22,7 @@ Kirigami.PromptDialog {
 
     customFooterActions: [
         Kirigami.Action {
+            id: submitAction
             text: i18n("Submit review")
             icon.name: "document-send"
             enabled: !instructionalLabel.visible
@@ -59,6 +60,7 @@ Kirigami.PromptDialog {
             readonly property bool acceptableInput: length > 15 && length < 3000
             Layout.fillWidth: true
             Layout.minimumHeight: Kirigami.Units.gridUnit * 8
+            KeyNavigation.priority: KeyNavigation.BeforeItem
         }
 
         QQC2.Label {
@@ -88,6 +90,18 @@ Kirigami.PromptDialog {
             wrapMode: Text.WordWrap
             opacity: 0.6
             visible: text.length > 0
+        }
+    }
+
+    onOpened: {
+        ratingInput.forceActiveFocus(Qt.PopupFocusReason);
+    }
+
+    Component.onCompleted: {
+        const submitButton = customFooterButton(submitAction);
+        if (submitButton) {
+            reviewInput.KeyNavigation.tab = submitButton;
+            submitButton.KeyNavigation.tab = ratingInput;
         }
     }
 }
