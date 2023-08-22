@@ -12,7 +12,7 @@
 class AbstractAppsModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(int count READ count NOTIFY isFetchingChanged)
+    Q_PROPERTY(int count READ count NOTIFY appsCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY isFetchingChanged)
     Q_PROPERTY(AbstractResourcesBackend *currentApplicationBackend READ currentApplicationBackend NOTIFY currentApplicationBackendChanged)
 public:
