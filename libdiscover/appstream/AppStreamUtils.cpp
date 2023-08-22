@@ -57,7 +57,7 @@ Screenshots AppStreamUtils::fetchScreenshots(const AppStream::Component &appdata
         const QUrl thumbnail = AppStreamUtils::imageOfKind(images, AppStream::Image::KindThumbnail);
         const QUrl plain = AppStreamUtils::imageOfKind(images, AppStream::Image::KindSource);
         if (plain.isEmpty())
-            qWarning() << "invalid screenshot for" << appdata.name();
+            qWarning() << "AppStreamUtils: Invalid screenshot for" << appdata.name();
 
         ret.append(Screenshot{plain, thumbnail.isEmpty() ? plain : thumbnail, s.mediaKind() == AppStream::Screenshot::MediaKindVideo});
     }
@@ -121,7 +121,7 @@ QStringList AppStreamUtils::appstreamIds(const QUrl &appstreamUrl)
         ret << query.queryItemValue(QStringLiteral("alt")).split(QLatin1Char(','), Qt::SkipEmptyParts);
     }
     if (ret.removeDuplicates() != 0) {
-        qDebug() << "received malformed url" << appstreamUrl;
+        qDebug() << "AppStreamUtils: Received malformed url" << appstreamUrl;
     }
     return ret;
 }

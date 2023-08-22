@@ -168,7 +168,7 @@ PackageKitBackend::PackageKitBackend(QObject *parent)
                     }
                 });
         connect(t, &PackageKit::Transaction::errorCode, this, [this, pkgids](PackageKit::Transaction::Error err, const QString &error) {
-            qWarning() << "error fetching updates:" << err << error;
+            qWarning() << "PackageKitBackend: Error fetching updates:" << err << error;
             for (const QString &pkgid : pkgids) {
                 const QSet<AbstractResource *> resources = resourcesByPackageName(PackageKit::Daemon::packageName(pkgid));
                 for (auto r : resources) {
@@ -263,7 +263,7 @@ static bool loadAppStream(AppStream::Pool *appdata)
 {
     bool correct = appdata->load();
     if (!correct) {
-        qWarning() << "Could not open the AppStream metadata pool" << appdata->lastError();
+        qWarning() << "PackageKitBackend: Could not open the AppStream metadata pool" << appdata->lastError();
     }
     return correct;
 }
@@ -303,7 +303,7 @@ void PackageKitBackend::reloadPackageList()
 
         const QList<AppStream::Component> distroComponents = m_appdata->componentsById(AppStream::Utils::currentDistroComponentId());
         if (distroComponents.isEmpty()) {
-            qWarning() << "no component found for" << AppStream::Utils::currentDistroComponentId();
+            qWarning() << "PackageKitBackend: No distro component found for" << AppStream::Utils::currentDistroComponentId();
         }
         for (const AppStream::Component &dc : distroComponents) {
             const auto releases = dc.releases();
@@ -448,7 +448,7 @@ void PackageKitBackend::includePackagesToAdd()
 
 void PackageKitBackend::transactionError(PackageKit::Transaction::Error, const QString &message)
 {
-    qWarning() << "Transaction error: " << message << sender();
+    qWarning() << "Transaction error:" << message << sender();
     Q_EMIT passiveMessage(message);
 }
 
@@ -456,7 +456,7 @@ void PackageKitBackend::packageDetails(const PackageKit::Details &details)
 {
     const QSet<AbstractResource *> resources = resourcesByPackageName(PackageKit::Daemon::packageName(details.packageId()));
     if (resources.isEmpty())
-        qWarning() << "couldn't find package for" << details.packageId();
+        qWarning() << "PackageKitBackend: Couldn't find package for" << details.packageId();
 
     for (AbstractResource *res : resources) {
         qobject_cast<PackageKitResource *>(res)->setDetails(details);
@@ -536,7 +536,7 @@ void PackageKitBackend::checkForUpdates()
             acquireFetching(false);
         });
     } else {
-        qWarning() << "already resetting";
+        qWarning() << "PackageKitBackend: Already resetting";
     }
 }
 
@@ -861,7 +861,7 @@ QSet<AbstractResource *> PackageKitBackend::upgradeablePackages() const
         const QString pkgname = PackageKit::Daemon::packageName(pkgid);
         const auto pkgs = resourcesByPackageName(pkgname);
         if (pkgs.isEmpty()) {
-            qWarning() << "couldn't find resource for" << pkgid;
+            qWarning() << "PackageKitBackend: Couldn't find resource for" << pkgid;
         }
         ret.unite(pkgs);
     }

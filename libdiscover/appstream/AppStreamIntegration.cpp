@@ -29,7 +29,7 @@ std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStre
     // Look at releases to see if we have a new major version available.
     const QList<AppStream::Component> distroComponents = pool->componentsById(distroId);
     if (distroComponents.isEmpty()) {
-        qWarning() << "No component found for" << distroId;
+        qWarning() << "AppStreamIntegration: No distro component found for" << distroId;
         return std::nullopt;
     }
 
