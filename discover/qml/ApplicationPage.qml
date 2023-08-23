@@ -210,8 +210,9 @@ DiscoverPage {
                             visible: !appInfo.isOfflineUpgrade
 
                             Rating {
-                                rating: appInfo.application.rating ? appInfo.application.rating.sortableRating : 0
+                                value: appInfo.application.rating ? appInfo.application.rating.sortableRating : 0
                                 starSize: author.font.pointSize
+                                precision: Rating.Precision.HalfStar
                             }
 
                             Label {

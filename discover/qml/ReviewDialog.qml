@@ -9,7 +9,7 @@ Kirigami.PromptDialog {
     property QtObject application
     property QtObject backend
 
-    readonly property alias rating: ratingInput.rating
+    readonly property alias rating: ratingInput.value
     readonly property alias name: nameInput.text
     readonly property alias summary: titleInput.text
     readonly property alias review: reviewInput.text
@@ -36,7 +36,7 @@ Kirigami.PromptDialog {
             Rating {
                 id: ratingInput
                 Kirigami.FormData.label: i18n("Rating:")
-                editable: true
+                readOnly: false
             }
             QQC2.TextField {
                 id: nameInput

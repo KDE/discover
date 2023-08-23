@@ -152,8 +152,9 @@ BasicAbstractCard {
                         spacing: Kirigami.Units.largeSpacing
 
                         Rating {
-                            rating: root.application.rating ? root.application.rating.sortableRating : 0
+                            value: root.application.rating ? root.application.rating.sortableRating : 0
                             starSize: root.compact ? description.font.pointSize : head.font.pointSize
+                            precision: Rating.Precision.HalfStar
                         }
                         Label {
                             Layout.fillWidth: true

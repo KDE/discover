@@ -42,7 +42,7 @@ Kirigami.AbstractCard {
                     id: rating
                     Layout.fillWidth: true
                     Layout.bottomMargin: Kirigami.Units.largeSpacing
-                    rating: model.rating
+                    value: model.rating
                     starSize: Kirigami.Units.gridUnit
                 }
                 Label {
