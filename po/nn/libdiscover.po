@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-26 02:31+0000\n"
+"POT-Creation-Date: 2023-08-22 02:27+0000\n"
 "PO-Revision-Date: 2023-03-08 19:57+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -932,7 +932,7 @@ msgstr "Skriv in adresse til Flatpak-pakkebrønn (*.flatpakrepo):"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Legg til fjernkjelde «%1» i %2 frå %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:189
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:191
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "Fann ikkje «%1» i «%2». Sjå til at det er tilgjengeleg."
