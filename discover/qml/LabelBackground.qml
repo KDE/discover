@@ -1,5 +1,6 @@
 /*
  *   SPDX-FileCopyrightText: 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+ *   SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
  *
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
@@ -30,14 +31,15 @@ QQC2.Control {
 
         Rectangle {
             anchors {
-                fill: parent
-                leftMargin: 1
-                rightMargin: 1 + ((1 - root.progress) * parent.width)
-                topMargin: 1
-                bottomMargin: 1
+                top: parent.top
+                left: parent.left
+                bottom: parent.bottom
+                margins: 1
             }
             color: Kirigami.Theme.highlightColor
             radius: root.padding - 2
+            width: Math.round((parent.width - anchors.margins * 2) * Math.max(0, Math.min(1, root.progress)))
+            visible: width >= radius * 2
         }
     }
 
