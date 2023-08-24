@@ -120,7 +120,11 @@ DiscoverPage {
     ColumnLayout {
         id: pageLayout
 
-        anchors.fill: parent
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
         spacing: appInfo.internalSpacings
 
         // Colored header with app icon, name, and metadata
