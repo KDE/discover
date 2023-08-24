@@ -7,7 +7,6 @@ import org.kde.kirigami 2.14 as Kirigami
 ConditionalLoader {
     id: root
 
-    property Component additionalItem: null
     property alias application: listener.resource
 
     readonly property alias isActive: listener.isActive
