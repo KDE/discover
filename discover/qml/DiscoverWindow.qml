@@ -4,7 +4,6 @@ import QtQuick.Controls 2.14
 import QtQml.Models 2.15
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kquickcontrolsaddons 2.0
 import org.kde.kirigami 2.19 as Kirigami
 import "navigation.js" as Navigation
 

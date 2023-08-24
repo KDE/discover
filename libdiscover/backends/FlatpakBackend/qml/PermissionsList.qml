@@ -9,7 +9,7 @@ import QtQuick.Controls 2.15 as QQC2
 import QtQuick.Layouts 1.12
 import QtQml.Models 2.15
 import org.kde.kirigami 2.14 as Kirigami
-import org.kde.kquickcontrolsaddons 2.1 as KQuickControlsAddons
+import org.kde.kcmutils as KCMUtils
 
 ColumnLayout {
     visible: list.model.rowCount() > 0
@@ -42,7 +42,7 @@ ColumnLayout {
             onClicked: {
                 if (resource.isInstalled) {
                     // TODO: Not only open KCM on the app's page, but also focus on relevant permission row
-                    KQuickControlsAddons.KCMShell.openSystemSettings("kcm_flatpak", [resource.ref]);
+                    KCMUtils.KCMLauncher.openSystemSettings("kcm_flatpak", [resource.ref]);
                 }
             }
         }
@@ -56,7 +56,7 @@ ColumnLayout {
         text: i18nd("libdiscover", "Configure permissions…")
         icon.name: "configure"
         onClicked: {
-            KQuickControlsAddons.KCMShell.openSystemSettings("kcm_flatpak", [resource.ref]);
+            KCMUtils.KCMLauncher.openSystemSettings("kcm_flatpak", [resource.ref]);
         }
     }
 }
