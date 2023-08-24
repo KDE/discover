@@ -12,6 +12,9 @@ import org.kde.kirigami 2 as Kirigami
 QQC2.Control {
     id: root
 
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+    Kirigami.Theme.inherit: false
+
     property alias text: theLabel.text
     property real progress: 1.0
 
@@ -22,9 +25,9 @@ QQC2.Control {
     background: Item {
         visible: root.inProgress
         Rectangle {
-            color: Kirigami.Theme.disabledTextColor
+            color: Qt.alpha(Kirigami.Theme.textColor, 0.1)
+            border.color: Qt.alpha(Kirigami.Theme.textColor, 0.2)
             border.width: 1
-            border.color: Qt.darker(Kirigami.Theme.disabledTextColor)
             anchors.fill: parent
             radius: root.padding
         }
@@ -34,11 +37,12 @@ QQC2.Control {
                 top: parent.top
                 left: parent.left
                 bottom: parent.bottom
-                margins: 1
             }
-            color: Kirigami.Theme.highlightColor
-            radius: root.padding - 2
-            width: Math.round((parent.width - anchors.margins * 2) * Math.max(0, Math.min(1, root.progress)))
+            color: Qt.alpha(Kirigami.Theme.highlightColor, 0.5)
+            border.color: Kirigami.Theme.highlightColor
+            border.width: 1
+            radius: root.padding
+            width: Math.round(parent.width * Math.max(0, Math.min(1, root.progress)))
             visible: width >= radius * 2
         }
     }
