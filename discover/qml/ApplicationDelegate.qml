@@ -1,6 +1,7 @@
 /*
  *   SPDX-FileCopyrightText: 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *   SPDX-FileCopyrightText: 2018-2021 Nate Graham <nate@kde.org>
+ *   SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
  *
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
@@ -13,7 +14,7 @@ import "navigation.js" as Navigation
 import org.kde.discover 2.0
 import org.kde.kirigami 2.14 as Kirigami
 
-Kirigami.AbstractCard {
+BasicAbstractCard {
     id: root
 
     property alias application: installButton.application
@@ -35,14 +36,15 @@ Kirigami.AbstractCard {
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
 
-    contentItem: Item {
-        implicitHeight: root.compact ? Kirigami.Units.gridUnit * 2 : Math.round(Kirigami.Units.gridUnit * 3.5)
+    content: Item {
+        implicitHeight: Math.max(columnLayout.implicitHeight, resourceIcon.height)
 
         // App icon
         Kirigami.Icon {
             id: resourceIcon
             readonly property real contHeight: root.compact ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.huge
             source: application.icon
+            animated: false
             height: contHeight
             width: contHeight
             anchors {
@@ -54,6 +56,8 @@ Kirigami.AbstractCard {
 
         // Container for everything but the app icon
         ColumnLayout {
+            id: columnLayout
+
             anchors {
                 verticalCenter: parent.verticalCenter
                 right: parent.right
@@ -64,6 +68,7 @@ Kirigami.AbstractCard {
 
             // Container for app name and backend name labels
             RowLayout {
+                spacing: Kirigami.Units.largeSpacing
 
                 // App name label
                 Kirigami.Heading {
@@ -81,7 +86,7 @@ Kirigami.AbstractCard {
                 RowLayout {
                     Layout.alignment: Qt.AlignRight
                     visible: root.appIsFromNonDefaultBackend && !root.compact
-                    spacing: 0
+                    spacing: Kirigami.Units.smallSpacing
 
                     Kirigami.Icon {
                         source: application.sourceIcon
@@ -99,16 +104,28 @@ Kirigami.AbstractCard {
             Label {
                 id: description
                 Layout.fillWidth: true
+                Layout.preferredHeight: descriptionMetrics.height
                 text: root.application.comment
                 elide: Text.ElideRight
                 maximumLineCount: 1
                 textFormat: Text.PlainText
+
+                // reserve space for description even if none is available
+                TextMetrics {
+                    id: descriptionMetrics
+                    font: description.font
+                    text: "Sample text"
+                }
             }
 
             // Container for rating, size, and install button
             RowLayout {
                 Layout.fillWidth: true
                 Layout.topMargin: root.compact ? Kirigami.Units.smallSpacing : Kirigami.Units.largeSpacing
+                spacing: Kirigami.Units.largeSpacing
+
+                // Combined condition of both children items
+                visible: root.showRating || (!root.compact && root.showSize) || !root.compact
 
                 // Container for rating and size labels
                 ColumnLayout {
@@ -122,12 +139,15 @@ Kirigami.AbstractCard {
                     Layout.preferredHeight: root.compact ? -1 : rating.implicitHeight + sizeInfo.implicitHeight
                     spacing: 0
 
+                    // Combined condition of both children items
+                    visible: root.showRating || (!root.compact && root.showSize)
+
                     // Rating stars + label
                     RowLayout {
                         id: rating
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignTop
-                        visible: showRating
+                        visible: root.showRating
                         opacity: 0.6
                         spacing: Kirigami.Units.largeSpacing
 
@@ -148,7 +168,7 @@ Kirigami.AbstractCard {
                     Label {
                         id: sizeInfo
                         Layout.fillWidth: true
-                        visible: !root.compact && showSize
+                        visible: !root.compact && root.showSize
                         text: visible ? root.application.sizeDescription : ""
                         horizontalAlignment: Text.AlignRight
                         opacity: 0.6;
