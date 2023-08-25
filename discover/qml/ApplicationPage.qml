@@ -1,6 +1,7 @@
 /*
  *   SPDX-FileCopyrightText: 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *   SPDX-FileCopyrightText: 2022 Nate Graham <nate@kde.org>
+ *   SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
  *
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
@@ -389,18 +390,73 @@ DiscoverPage {
             }
         }
 
-        Repeater {
-            Layout.bottomMargin: appInfo.internalSpacings * 2
+        ColumnLayout {
+            id: topObjectsLayout
 
-            model: application.topObjects
-            delegate: Loader {
-                property QtObject resource: appInfo.application
+            // InlineMessage components are supposed to manage their spacing
+            // internally. However, at least for now they require some
+            // assistance from outside to stack them one after another.
+            spacing: 0
 
-                Layout.fillWidth: item.Layout.fillWidth
-                Layout.leftMargin: appInfo.pageContentMargins
-                Layout.rightMargin: appInfo.pageContentMargins
+            Layout.fillWidth: true
 
-                source: modelData
+            // Cancel out parent layout's spacing, making this component effectively zero-sized when empty.
+            // When non-empty, the very first top margin is provided by this layout, but bottom margins
+            // are implemented by Loaders that have visible loaded items.
+            Layout.topMargin: hasVisibleObjects ? 0 : -pageLayout.spacing
+            Layout.bottomMargin: -pageLayout.spacing
+
+            property bool hasVisibleObjects: false
+
+            function bindVisibility() {
+                hasVisibleObjects = Qt.binding(() => {
+                    for (let i = 0; i < topObjectsRepeater.count; i++) {
+                        const loader = topObjectsRepeater.itemAt(i);
+                        const item = loader.item;
+                        if (item?.visible) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+            }
+
+            Timer {
+                id: bindVisibilityTimer
+
+                running: false
+                repeat: false
+                interval: 0
+
+                onTriggered: topObjectsLayout.bindVisibility()
+            }
+
+            Repeater {
+                id: topObjectsRepeater
+
+                model: application.topObjects
+
+                delegate: Loader {
+                    required property int index
+                    required property string modelData
+
+                    property QtObject resource: appInfo.application
+
+                    Layout.fillWidth: item?.Layout.fillWidth ?? false
+                    Layout.topMargin: 0
+                    Layout.leftMargin: appInfo.pageContentMargins
+                    Layout.rightMargin: appInfo.pageContentMargins
+                    Layout.bottomMargin: item?.visible ? appInfo.internalSpacings : 0
+                    Layout.preferredHeight: item?.visible ? item.implicitHeight : 0
+
+                    source: modelData
+                }
+                onItemAdded: (index, item) => {
+                    bindVisibilityTimer.start();
+                }
+                onItemRemoved: (index, item) => {
+                    bindVisibilityTimer.start();
+                }
             }
         }
 
