@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-08 02:04+0000\n"
+"POT-Creation-Date: 2023-08-25 01:59+0000\n"
 "PO-Revision-Date: 2022-12-28 20:33+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -269,7 +269,7 @@ msgstr "Adaugă depozit %1 nou"
 msgid "Add"
 msgstr "Adaugă"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:270
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -745,32 +745,32 @@ msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:44
+#: discover/qml/DiscoverWindow.qml:43
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "Rularea ca <em>root</em> e descurajată și inutilă."
 
-#: discover/qml/DiscoverWindow.qml:57
+#: discover/qml/DiscoverWindow.qml:56
 #, kde-format
 msgid "&Home"
 msgstr "&Acasă"
 
-#: discover/qml/DiscoverWindow.qml:67
+#: discover/qml/DiscoverWindow.qml:66
 #, kde-format
 msgid "&Search"
 msgstr "&Caută"
 
-#: discover/qml/DiscoverWindow.qml:75
+#: discover/qml/DiscoverWindow.qml:74
 #, kde-format
 msgid "&Installed"
 msgstr "&Instalat"
 
-#: discover/qml/DiscoverWindow.qml:86
+#: discover/qml/DiscoverWindow.qml:85
 #, kde-format
 msgid "Fetching &updates…"
 msgstr "Se preiau act&ualizări…"
 
-#: discover/qml/DiscoverWindow.qml:86
+#: discover/qml/DiscoverWindow.qml:85
 #, fuzzy, kde-format
 #| msgctxt "Update section name"
 #| msgid "&Update (%1)"
@@ -780,57 +780,57 @@ msgstr[0] "Act&ualizare (%1)"
 msgstr[1] "Act&ualizare (%1)"
 msgstr[2] "Act&ualizare (%1)"
 
-#: discover/qml/DiscoverWindow.qml:94
+#: discover/qml/DiscoverWindow.qml:93
 #, kde-format
 msgid "&About"
 msgstr "&Despre"
 
-#: discover/qml/DiscoverWindow.qml:102
+#: discover/qml/DiscoverWindow.qml:101
 #, kde-format
 msgid "S&ettings"
 msgstr "&Configurări"
 
-#: discover/qml/DiscoverWindow.qml:155 discover/qml/DiscoverWindow.qml:339
-#: discover/qml/DiscoverWindow.qml:446
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:445
 #, kde-format
 msgid "Error"
 msgstr "Eroare"
 
-#: discover/qml/DiscoverWindow.qml:159
+#: discover/qml/DiscoverWindow.qml:158
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "Nu s-a putut găsi resursa: %1"
 
-#: discover/qml/DiscoverWindow.qml:257 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Continuă"
 
-#: discover/qml/DiscoverWindow.qml:315
+#: discover/qml/DiscoverWindow.qml:314
 #, kde-format
 msgid "Report this issue"
 msgstr "Raportează această problemă"
 
-#: discover/qml/DiscoverWindow.qml:339
+#: discover/qml/DiscoverWindow.qml:338
 #, fuzzy, kde-format
 #| msgid "Votes: %1 out of %2"
 msgid "Error %1 of %2"
 msgstr "Voturi: %1 din %2"
 
-#: discover/qml/DiscoverWindow.qml:384
+#: discover/qml/DiscoverWindow.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:397
+#: discover/qml/DiscoverWindow.qml:396
 #, fuzzy, kde-format
 #| msgid "Show contents"
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Arată conținutul"
 
-#: discover/qml/DiscoverWindow.qml:413
+#: discover/qml/DiscoverWindow.qml:412
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Copiază în clipboard"

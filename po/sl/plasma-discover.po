@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-08 02:04+0000\n"
+"POT-Creation-Date: 2023-08-25 01:59+0000\n"
 "PO-Revision-Date: 2023-07-25 05:13+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -267,7 +267,7 @@ msgstr "Dodaj novo %1 skladišče"
 msgid "Add"
 msgstr "Dodaj"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:270
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -719,32 +719,32 @@ msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "Najbolje ocenjena razvojna orodja"
 
-#: discover/qml/DiscoverWindow.qml:44
+#: discover/qml/DiscoverWindow.qml:43
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "Zaganjanje kot <em>skrbnik</em> je odsvetovano in nepotrebno."
 
-#: discover/qml/DiscoverWindow.qml:57
+#: discover/qml/DiscoverWindow.qml:56
 #, kde-format
 msgid "&Home"
 msgstr "Domov"
 
-#: discover/qml/DiscoverWindow.qml:67
+#: discover/qml/DiscoverWindow.qml:66
 #, kde-format
 msgid "&Search"
 msgstr "Iskanje"
 
-#: discover/qml/DiscoverWindow.qml:75
+#: discover/qml/DiscoverWindow.qml:74
 #, kde-format
 msgid "&Installed"
 msgstr "Nameščeno"
 
-#: discover/qml/DiscoverWindow.qml:86
+#: discover/qml/DiscoverWindow.qml:85
 #, kde-format
 msgid "Fetching &updates…"
 msgstr "Pridobivanje posodobitev…"
 
-#: discover/qml/DiscoverWindow.qml:86
+#: discover/qml/DiscoverWindow.qml:85
 #, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
@@ -753,55 +753,55 @@ msgstr[1] "Posodobitvi (%1)"
 msgstr[2] "Posodobitve (%1)"
 msgstr[3] "Posodobitev (%1)"
 
-#: discover/qml/DiscoverWindow.qml:94
+#: discover/qml/DiscoverWindow.qml:93
 #, kde-format
 msgid "&About"
 msgstr "O progr&amu"
 
-#: discover/qml/DiscoverWindow.qml:102
+#: discover/qml/DiscoverWindow.qml:101
 #, kde-format
 msgid "S&ettings"
 msgstr "Na&stavitve"
 
-#: discover/qml/DiscoverWindow.qml:155 discover/qml/DiscoverWindow.qml:339
-#: discover/qml/DiscoverWindow.qml:446
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:445
 #, kde-format
 msgid "Error"
 msgstr "Napaka"
 
-#: discover/qml/DiscoverWindow.qml:159
+#: discover/qml/DiscoverWindow.qml:158
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "Ni mogoče najti vira: %1"
 
-#: discover/qml/DiscoverWindow.qml:257 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Nadaljuj"
 
-#: discover/qml/DiscoverWindow.qml:315
+#: discover/qml/DiscoverWindow.qml:314
 #, kde-format
 msgid "Report this issue"
 msgstr "Poročajte o tem"
 
-#: discover/qml/DiscoverWindow.qml:339
+#: discover/qml/DiscoverWindow.qml:338
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Napaka %1 od %2"
 
-#: discover/qml/DiscoverWindow.qml:384
+#: discover/qml/DiscoverWindow.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Prikaži prejšnjo"
 
-#: discover/qml/DiscoverWindow.qml:397
+#: discover/qml/DiscoverWindow.qml:396
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Prikaži naslednjo"
 
-#: discover/qml/DiscoverWindow.qml:413
+#: discover/qml/DiscoverWindow.qml:412
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Kopiraj na odložišče"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-08 02:04+0000\n"
+"POT-Creation-Date: 2023-08-25 01:59+0000\n"
 "PO-Revision-Date: 2023-06-23 11:27+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -247,7 +247,7 @@ msgstr "Přidat nový repozitář %1"
 msgid "Add"
 msgstr "Přidat"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:270
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -670,32 +670,32 @@ msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "Nejlépe hodnocené Vývojové nástroje"
 
-#: discover/qml/DiscoverWindow.qml:44
+#: discover/qml/DiscoverWindow.qml:43
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:57
+#: discover/qml/DiscoverWindow.qml:56
 #, kde-format
 msgid "&Home"
 msgstr "&Domů"
 
-#: discover/qml/DiscoverWindow.qml:67
+#: discover/qml/DiscoverWindow.qml:66
 #, kde-format
 msgid "&Search"
 msgstr "&Hledat"
 
-#: discover/qml/DiscoverWindow.qml:75
+#: discover/qml/DiscoverWindow.qml:74
 #, kde-format
 msgid "&Installed"
 msgstr "Na&instalováno"
 
-#: discover/qml/DiscoverWindow.qml:86
+#: discover/qml/DiscoverWindow.qml:85
 #, kde-format
 msgid "Fetching &updates…"
 msgstr "Získávají se akt&ualizace…"
 
-#: discover/qml/DiscoverWindow.qml:86
+#: discover/qml/DiscoverWindow.qml:85
 #, fuzzy, kde-format
 #| msgctxt "Update section name"
 #| msgid "&Update (%1)"
@@ -705,55 +705,55 @@ msgstr[0] "Akt&ualizovat (%1)"
 msgstr[1] "Akt&ualizovat (%1)"
 msgstr[2] "Akt&ualizovat (%1)"
 
-#: discover/qml/DiscoverWindow.qml:94
+#: discover/qml/DiscoverWindow.qml:93
 #, kde-format
 msgid "&About"
 msgstr "Informace o &aplikaci"
 
-#: discover/qml/DiscoverWindow.qml:102
+#: discover/qml/DiscoverWindow.qml:101
 #, kde-format
 msgid "S&ettings"
 msgstr "Nastav&ení"
 
-#: discover/qml/DiscoverWindow.qml:155 discover/qml/DiscoverWindow.qml:339
-#: discover/qml/DiscoverWindow.qml:446
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:445
 #, kde-format
 msgid "Error"
 msgstr "Chyba"
 
-#: discover/qml/DiscoverWindow.qml:159
+#: discover/qml/DiscoverWindow.qml:158
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "Nelze najít zdroj: %1"
 
-#: discover/qml/DiscoverWindow.qml:257 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Pokračovat"
 
-#: discover/qml/DiscoverWindow.qml:315
+#: discover/qml/DiscoverWindow.qml:314
 #, kde-format
 msgid "Report this issue"
 msgstr "Nahlásit tuto chybu"
 
-#: discover/qml/DiscoverWindow.qml:339
+#: discover/qml/DiscoverWindow.qml:338
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Chyba %1 z %2"
 
-#: discover/qml/DiscoverWindow.qml:384
+#: discover/qml/DiscoverWindow.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Zobrazit předchozí"
 
-#: discover/qml/DiscoverWindow.qml:397
+#: discover/qml/DiscoverWindow.qml:396
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Zobrazit následující"
 
-#: discover/qml/DiscoverWindow.qml:413
+#: discover/qml/DiscoverWindow.qml:412
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Zkopírovat do schránky"

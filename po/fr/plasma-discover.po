@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-08 02:04+0000\n"
+"POT-Creation-Date: 2023-08-25 01:59+0000\n"
 "PO-Revision-Date: 2023-08-17 16:59+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -289,7 +289,7 @@ msgstr "Ajouter un nouveau dépôt %1"
 msgid "Add"
 msgstr "Ajouter"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:270
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -736,89 +736,89 @@ msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "Outils de développement les mieux cotés"
 
-#: discover/qml/DiscoverWindow.qml:44
+#: discover/qml/DiscoverWindow.qml:43
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr ""
 "L'exécution en tant que <em>superutilisateur</em> est inutile et "
 "déconseillée."
 
-#: discover/qml/DiscoverWindow.qml:57
+#: discover/qml/DiscoverWindow.qml:56
 #, kde-format
 msgid "&Home"
 msgstr "&Accueil"
 
-#: discover/qml/DiscoverWindow.qml:67
+#: discover/qml/DiscoverWindow.qml:66
 #, kde-format
 msgid "&Search"
 msgstr "&Rechercher"
 
-#: discover/qml/DiscoverWindow.qml:75
+#: discover/qml/DiscoverWindow.qml:74
 #, kde-format
 msgid "&Installed"
 msgstr "&Installé(s)"
 
-#: discover/qml/DiscoverWindow.qml:86
+#: discover/qml/DiscoverWindow.qml:85
 #, kde-format
 msgid "Fetching &updates…"
 msgstr "Recherche en co&urs de mises à jour…"
 
-#: discover/qml/DiscoverWindow.qml:86
+#: discover/qml/DiscoverWindow.qml:85
 #, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
 msgstr[0] "Mise à jo&ur (%1)"
 msgstr[1] "Mises à jo&ur (%1)"
 
-#: discover/qml/DiscoverWindow.qml:94
+#: discover/qml/DiscoverWindow.qml:93
 #, kde-format
 msgid "&About"
 msgstr "&À propos"
 
-#: discover/qml/DiscoverWindow.qml:102
+#: discover/qml/DiscoverWindow.qml:101
 #, kde-format
 msgid "S&ettings"
 msgstr "C&onfiguration"
 
-#: discover/qml/DiscoverWindow.qml:155 discover/qml/DiscoverWindow.qml:339
-#: discover/qml/DiscoverWindow.qml:446
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:445
 #, kde-format
 msgid "Error"
 msgstr "Erreur"
 
-#: discover/qml/DiscoverWindow.qml:159
+#: discover/qml/DiscoverWindow.qml:158
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "Impossible de trouver la ressource : %1"
 
-#: discover/qml/DiscoverWindow.qml:257 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Continuer"
 
-#: discover/qml/DiscoverWindow.qml:315
+#: discover/qml/DiscoverWindow.qml:314
 #, kde-format
 msgid "Report this issue"
 msgstr "Signaler un problème"
 
-#: discover/qml/DiscoverWindow.qml:339
+#: discover/qml/DiscoverWindow.qml:338
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Erreur %1 parmi %2"
 
-#: discover/qml/DiscoverWindow.qml:384
+#: discover/qml/DiscoverWindow.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Afficher le précédent"
 
-#: discover/qml/DiscoverWindow.qml:397
+#: discover/qml/DiscoverWindow.qml:396
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Afficher le suivant"
 
-#: discover/qml/DiscoverWindow.qml:413
+#: discover/qml/DiscoverWindow.qml:412
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Copier dans le presse-papier"

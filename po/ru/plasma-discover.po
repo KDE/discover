@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-08 02:04+0000\n"
+"POT-Creation-Date: 2023-08-25 01:59+0000\n"
 "PO-Revision-Date: 2023-02-05 19:25+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -279,7 +279,7 @@ msgstr "Добавление репозитория %1"
 msgid "Add"
 msgstr "Добавить"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:270
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -751,35 +751,35 @@ msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "Лучшие инструменты для разработки"
 
-#: discover/qml/DiscoverWindow.qml:44
+#: discover/qml/DiscoverWindow.qml:43
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr ""
 "Запуск от имени администратора (<em>root</em>) не рекомендуется и не "
 "требуется."
 
-#: discover/qml/DiscoverWindow.qml:57
+#: discover/qml/DiscoverWindow.qml:56
 #, kde-format
 msgid "&Home"
 msgstr "&Весь каталог"
 
-#: discover/qml/DiscoverWindow.qml:67
+#: discover/qml/DiscoverWindow.qml:66
 #, kde-format
 msgid "&Search"
 msgstr "&Поиск"
 
-#: discover/qml/DiscoverWindow.qml:75
+#: discover/qml/DiscoverWindow.qml:74
 #, kde-format
 msgid "&Installed"
 msgstr "&Установленные"
 
-#: discover/qml/DiscoverWindow.qml:86
+#: discover/qml/DiscoverWindow.qml:85
 #, kde-format
 msgid "Fetching &updates…"
 msgstr "&Загрузка обновлений..."
 
 # BUGME: should be "%1 updates" with plurals --aspotashev
-#: discover/qml/DiscoverWindow.qml:86
+#: discover/qml/DiscoverWindow.qml:85
 #, fuzzy, kde-format
 #| msgctxt "Update section name"
 #| msgid "&Update (%1)"
@@ -790,55 +790,55 @@ msgstr[1] "&Обновления (%1)"
 msgstr[2] "&Обновления (%1)"
 msgstr[3] "&Обновления (%1)"
 
-#: discover/qml/DiscoverWindow.qml:94
+#: discover/qml/DiscoverWindow.qml:93
 #, kde-format
 msgid "&About"
 msgstr "О &программе"
 
-#: discover/qml/DiscoverWindow.qml:102
+#: discover/qml/DiscoverWindow.qml:101
 #, kde-format
 msgid "S&ettings"
 msgstr "&Настройка"
 
-#: discover/qml/DiscoverWindow.qml:155 discover/qml/DiscoverWindow.qml:339
-#: discover/qml/DiscoverWindow.qml:446
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:445
 #, kde-format
 msgid "Error"
 msgstr "Ошибка"
 
-#: discover/qml/DiscoverWindow.qml:159
+#: discover/qml/DiscoverWindow.qml:158
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "Не удалось найти ресурс: «%1»"
 
-#: discover/qml/DiscoverWindow.qml:257 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Продолжить"
 
-#: discover/qml/DiscoverWindow.qml:315
+#: discover/qml/DiscoverWindow.qml:314
 #, kde-format
 msgid "Report this issue"
 msgstr "Сообщить об ошибке"
 
-#: discover/qml/DiscoverWindow.qml:339
+#: discover/qml/DiscoverWindow.qml:338
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Ошибка %1 из %2"
 
-#: discover/qml/DiscoverWindow.qml:384
+#: discover/qml/DiscoverWindow.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Предыдущее"
 
-#: discover/qml/DiscoverWindow.qml:397
+#: discover/qml/DiscoverWindow.qml:396
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Следующее"
 
-#: discover/qml/DiscoverWindow.qml:413
+#: discover/qml/DiscoverWindow.qml:412
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Копировать в буфер обмена"
