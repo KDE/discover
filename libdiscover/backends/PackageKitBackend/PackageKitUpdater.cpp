@@ -587,11 +587,15 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
         return;
     }
 
-    // Fetching updates now would clear the prepared-upgrade
     if (!m_toUpgrade.contains(m_upgrade) || !m_upgrade->isDistroUpgrade()) {
+        // If the distro-upgrade was prepared successfully, fetching updates now would invalidate it.
+        // If the distro-upgrade failed, fetching updates now would find nothing and we would propose to reboot.
         setProgressing(false);
         m_backend->fetchUpdates();
         fetchLastUpdateTime();
+    } else if (exit != PackageKit::Transaction::ExitSuccess) {
+        Q_EMIT resourceProgressed(m_upgrade, 0, None);
+        setProgressing(false);
     }
 
     if (useOfflineUpdates() && exit == PackageKit::Transaction::ExitSuccess) {
