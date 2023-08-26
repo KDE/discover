@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 01:59+0000\n"
+"POT-Creation-Date: 2023-08-26 02:00+0000\n"
 "PO-Revision-Date: 2022-11-11 15:41+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -39,17 +39,17 @@ msgstr ""
 "yur.arh@gmail.com,aspotashev@gmail.com,exclusion@gmail.com,kekcuha@gmail.com,"
 "translation-team@basealt.ru,translation-team@basealt.ru"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:91
+#: libdiscover/appstream/AppStreamUtils.cpp:93
 #, kde-format
 msgid "Proprietary"
 msgstr "С закрытым кодом"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:93
+#: libdiscover/appstream/AppStreamUtils.cpp:95
 #, kde-format
 msgid "Public Domain"
 msgstr "Общественное достояние"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:99
+#: libdiscover/appstream/AppStreamUtils.cpp:101
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
@@ -60,7 +60,7 @@ msgstr "Общественное достояние"
 msgid "Unknown"
 msgstr "неизвестная"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:175
+#: libdiscover/appstream/AppStreamUtils.cpp:177
 #, fuzzy, kde-format
 #| msgid "All Audiences"
 msgctxt ""
@@ -69,7 +69,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "Все аудитории"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:178
+#: libdiscover/appstream/AppStreamUtils.cpp:180
 #, fuzzy, kde-format
 #| msgctxt "As specified in OARS, intensity of contents"
 #| msgid "Mild Content"
@@ -80,7 +80,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr "С некоторыми ограничениями"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:181
+#: libdiscover/appstream/AppStreamUtils.cpp:183
 #, fuzzy, kde-format
 #| msgctxt "As specified in OARS, intensity of contents"
 #| msgid "Moderate Content"
@@ -91,7 +91,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "Со значительными ограничениями"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:184
+#: libdiscover/appstream/AppStreamUtils.cpp:186
 #, fuzzy, kde-format
 #| msgctxt "As specified in OARS, intensity of contents"
 #| msgid "Intense Content"

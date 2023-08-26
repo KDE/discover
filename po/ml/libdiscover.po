@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 01:59+0000\n"
+"POT-Creation-Date: 2023-08-26 02:00+0000\n"
 "PO-Revision-Date: 2021-09-09 13:59+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Malayalam <https://kde.smc.org.in/projects/discover/"
@@ -29,19 +29,19 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vivekkj2004@gmail.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:91
+#: libdiscover/appstream/AppStreamUtils.cpp:93
 #, kde-format
 msgid "Proprietary"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:93
+#: libdiscover/appstream/AppStreamUtils.cpp:95
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Publishing"
 msgid "Public Domain"
 msgstr "പ്രസിദ്ധീകരണം"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:99
+#: libdiscover/appstream/AppStreamUtils.cpp:101
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
@@ -52,7 +52,7 @@ msgstr "പ്രസിദ്ധീകരണം"
 msgid "Unknown"
 msgstr "അജ്ഞാതം"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:175
+#: libdiscover/appstream/AppStreamUtils.cpp:177
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -60,7 +60,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:178
+#: libdiscover/appstream/AppStreamUtils.cpp:180
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -69,7 +69,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:181
+#: libdiscover/appstream/AppStreamUtils.cpp:183
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Internet"
@@ -80,7 +80,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "ഇന്റർനെറ്റ്"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:184
+#: libdiscover/appstream/AppStreamUtils.cpp:186
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Internet"

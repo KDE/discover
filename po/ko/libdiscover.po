@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 01:59+0000\n"
+"POT-Creation-Date: 2023-08-26 02:00+0000\n"
 "PO-Revision-Date: 2023-07-22 22:59+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -27,17 +27,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:91
+#: libdiscover/appstream/AppStreamUtils.cpp:93
 #, kde-format
 msgid "Proprietary"
 msgstr "독점"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:93
+#: libdiscover/appstream/AppStreamUtils.cpp:95
 #, kde-format
 msgid "Public Domain"
 msgstr "공개 도메인"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:99
+#: libdiscover/appstream/AppStreamUtils.cpp:101
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
@@ -48,7 +48,7 @@ msgstr "공개 도메인"
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:175
+#: libdiscover/appstream/AppStreamUtils.cpp:177
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -56,7 +56,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "모두를 대상으로 함"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:178
+#: libdiscover/appstream/AppStreamUtils.cpp:180
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -65,7 +65,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr "부드러운 콘텐츠"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:181
+#: libdiscover/appstream/AppStreamUtils.cpp:183
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -74,7 +74,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "보통 콘텐츠"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:184
+#: libdiscover/appstream/AppStreamUtils.cpp:186
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 01:59+0000\n"
+"POT-Creation-Date: 2023-08-26 02:00+0000\n"
 "PO-Revision-Date: 2022-08-29 11:34+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -30,19 +30,19 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ulysses@fsf.hu"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:91
+#: libdiscover/appstream/AppStreamUtils.cpp:93
 #, kde-format
 msgid "Proprietary"
 msgstr "Zárt"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:93
+#: libdiscover/appstream/AppStreamUtils.cpp:95
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Publishing"
 msgid "Public Domain"
 msgstr "Kiadványszerkesztés"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:99
+#: libdiscover/appstream/AppStreamUtils.cpp:101
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
@@ -53,7 +53,7 @@ msgstr "Kiadványszerkesztés"
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:175
+#: libdiscover/appstream/AppStreamUtils.cpp:177
 #, fuzzy, kde-format
 #| msgctxt "@title:tab"
 #| msgid "Installed Files"
@@ -63,7 +63,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "Telepített fájlok"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:178
+#: libdiscover/appstream/AppStreamUtils.cpp:180
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -72,7 +72,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:181
+#: libdiscover/appstream/AppStreamUtils.cpp:183
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Internet"
@@ -83,7 +83,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "Internet"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:184
+#: libdiscover/appstream/AppStreamUtils.cpp:186
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Internet"

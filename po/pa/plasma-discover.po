@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 01:59+0000\n"
+"POT-Creation-Date: 2023-08-26 02:00+0000\n"
 "PO-Revision-Date: 2022-01-01 09:32-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -254,7 +254,7 @@ msgid "Add"
 msgstr "ਜੋੜੋ"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
-#: discover/qml/InstallApplicationButton.qml:46
+#: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
@@ -262,7 +262,7 @@ msgid "Cancel"
 msgstr "ਰੱਦ ਕਰੋ"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:213
+#: discover/qml/ApplicationPage.qml:214
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -270,12 +270,12 @@ msgstr[0] "%1 ਰੇਟਿੰਗ"
 msgstr[1] "%1 ਰੇਟਿੰਗਾਂ"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:213
+#: discover/qml/ApplicationPage.qml:214
 #, kde-format
 msgid "No ratings yet"
 msgstr "ਹਾਲੇ ਕੋਈ ਰੇਟਿੰਗ ਨਹੀਂ ਹੈ"
 
-#: discover/qml/ApplicationPage.qml:69
+#: discover/qml/ApplicationPage.qml:70
 #, kde-format
 msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
@@ -283,28 +283,28 @@ msgctxt ""
 msgid "From %1"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:80
+#: discover/qml/ApplicationPage.qml:81
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ApplicationPage.qml:193
+#: discover/qml/ApplicationPage.qml:194
 #, kde-format
 msgid "Unknown author"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:237
+#: discover/qml/ApplicationPage.qml:238
 #, fuzzy, kde-format
 #| msgid "Version:"
 msgid "Version:"
 msgstr "ਵਰਜ਼ਨ:"
 
-#: discover/qml/ApplicationPage.qml:249
+#: discover/qml/ApplicationPage.qml:250
 #, kde-format
 msgid "Size:"
 msgstr "ਆਕਾਰ:"
 
-#: discover/qml/ApplicationPage.qml:261
+#: discover/qml/ApplicationPage.qml:262
 #, fuzzy, kde-format
 #| msgid "License:"
 msgid "License:"
@@ -312,19 +312,19 @@ msgid_plural "Licenses:"
 msgstr[0] "ਲਸੰਸ:"
 msgstr[1] "ਲਸੰਸ:"
 
-#: discover/qml/ApplicationPage.qml:269
+#: discover/qml/ApplicationPage.qml:270
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:299
+#: discover/qml/ApplicationPage.qml:300
 #, fuzzy, kde-format
 #| msgid "What's New"
 msgid "What does this mean?"
 msgstr "ਨਵਾਂ ਕੀ ਹੈ"
 
-#: discover/qml/ApplicationPage.qml:308
+#: discover/qml/ApplicationPage.qml:309
 #, fuzzy, kde-format
 #| msgid "More…"
 msgid "See more…"
@@ -332,103 +332,103 @@ msgid_plural "See more…"
 msgstr[0] "…ਹੋਰ"
 msgstr[1] "…ਹੋਰ"
 
-#: discover/qml/ApplicationPage.qml:319
+#: discover/qml/ApplicationPage.qml:320
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating:"
 msgstr "ਰੇਟਿੰਗ ਦਿਓ"
 
-#: discover/qml/ApplicationPage.qml:328
+#: discover/qml/ApplicationPage.qml:329
 #, kde-format
 msgid "Age: %1+"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:348
+#: discover/qml/ApplicationPage.qml:349
 #, fuzzy, kde-format
 #| msgid "More…"
 msgctxt "@action"
 msgid "See details…"
 msgstr "…ਹੋਰ"
 
-#: discover/qml/ApplicationPage.qml:370
+#: discover/qml/ApplicationPage.qml:371
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:486
+#: discover/qml/ApplicationPage.qml:543
 #, fuzzy, kde-format
 #| msgid "Documentation:"
 msgid "Documentation"
 msgstr "ਦਸਤਾਵੇਜ਼:"
 
-#: discover/qml/ApplicationPage.qml:487
+#: discover/qml/ApplicationPage.qml:544
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:503
+#: discover/qml/ApplicationPage.qml:560
 #, kde-format
 msgid "Website"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:504
+#: discover/qml/ApplicationPage.qml:561
 #, fuzzy, kde-format
 #| msgid "Visit the app's website"
 msgid "Visit the project's website"
 msgstr "ਐਪ ਦੀ ਵੈੱਬਸਾਈਟ ਖੋਲ੍ਹੋ"
 
-#: discover/qml/ApplicationPage.qml:520
+#: discover/qml/ApplicationPage.qml:577
 #, kde-format
 msgid "Addons"
 msgstr "ਐਡ-ਆਨ"
 
-#: discover/qml/ApplicationPage.qml:521
+#: discover/qml/ApplicationPage.qml:578
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:540
+#: discover/qml/ApplicationPage.qml:597
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:541
+#: discover/qml/ApplicationPage.qml:598
 #, fuzzy, kde-format
 #| msgid "Unable to load applications"
 msgid "Send a link for this application"
 msgstr "ਐਪਲੀਕੇਸ਼ਨਾਂ ਲੋਡ ਕਰਨ ਲਈ ਅਸਮਰੱਥ ਹੈ"
 
-#: discover/qml/ApplicationPage.qml:557
+#: discover/qml/ApplicationPage.qml:614
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:577
+#: discover/qml/ApplicationPage.qml:634
 #, kde-format
 msgid "What's New"
 msgstr "ਨਵਾਂ ਕੀ ਹੈ"
 
-#: discover/qml/ApplicationPage.qml:607
+#: discover/qml/ApplicationPage.qml:664
 #, kde-format
 msgid "Reviews"
 msgstr "ਪੜਤਾਲ"
 
-#: discover/qml/ApplicationPage.qml:619
+#: discover/qml/ApplicationPage.qml:676
 #, fuzzy, kde-format
 #| msgid "Reviews for %1"
 msgid "Loading reviews for %1"
 msgstr "%1 ਲਈ ਪੜਤਾਲ"
 
-#: discover/qml/ApplicationPage.qml:627
+#: discover/qml/ApplicationPage.qml:684
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:655
+#: discover/qml/ApplicationPage.qml:712
 #, fuzzy, kde-format
 #| msgid "Show %1 Review…"
 #| msgid_plural "Show All %1 Reviews…"
@@ -437,71 +437,71 @@ msgid_plural "Show all %1 Reviews"
 msgstr[0] "…%1 ਰੀਵਿਊ ਵੇਖੋ"
 msgstr[1] "…ਸਾਰੇ %1 ਰੀਵਿਊ ਵੇਖੋ"
 
-#: discover/qml/ApplicationPage.qml:667
+#: discover/qml/ApplicationPage.qml:724
 #, kde-format
 msgid "Write a Review"
 msgstr "ਪੜਤਾਲ ਲਿਖੋ"
 
-#: discover/qml/ApplicationPage.qml:667
+#: discover/qml/ApplicationPage.qml:724
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "ਪੜਤਾਲ ਲਿਖਣ ਲਈ ਇੰਸਟਾਲ ਕਰੋ"
 
-#: discover/qml/ApplicationPage.qml:679
+#: discover/qml/ApplicationPage.qml:736
 #, fuzzy, kde-format
 #| msgid "Get involved:"
 msgid "Get Involved"
 msgstr "ਹਿੱਸਾ ਬਣੋ:"
 
-#: discover/qml/ApplicationPage.qml:721
+#: discover/qml/ApplicationPage.qml:778
 #, kde-format
 msgid "Donate"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:722
+#: discover/qml/ApplicationPage.qml:779
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:738
+#: discover/qml/ApplicationPage.qml:795
 #, kde-format
 msgid "Report Bug"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:739
+#: discover/qml/ApplicationPage.qml:796
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:755
+#: discover/qml/ApplicationPage.qml:812
 #, fuzzy, kde-format
 #| msgid "Contribute…"
 msgid "Contribute"
 msgstr "…ਯੋਗਦਾਨ"
 
-#: discover/qml/ApplicationPage.qml:756
+#: discover/qml/ApplicationPage.qml:813
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:781
+#: discover/qml/ApplicationPage.qml:838
 #, fuzzy, kde-format
 #| msgid "License:"
 msgid "All Licenses"
 msgstr "ਲਸੰਸ:"
 
-#: discover/qml/ApplicationPage.qml:814
+#: discover/qml/ApplicationPage.qml:871
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating"
 msgstr "ਰੇਟਿੰਗ ਦਿਓ"
 
-#: discover/qml/ApplicationPage.qml:830
+#: discover/qml/ApplicationPage.qml:887
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:836
+#: discover/qml/ApplicationPage.qml:893
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -517,7 +517,7 @@ msgid ""
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:837
+#: discover/qml/ApplicationPage.qml:894
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -836,13 +836,13 @@ msgstr "ਅਸੀਂ ਤੁਹਾਡੇ ਸੁਝਾਅ ਦੀ ਉਡੀਕ ਵ�
 msgid "Participate…"
 msgstr "…ਹਿੱਸਾ ਲਵੋ"
 
-#: discover/qml/InstallApplicationButton.qml:25
+#: discover/qml/InstallApplicationButton.qml:24
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
 msgstr "…ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
-#: discover/qml/InstallApplicationButton.qml:29
+#: discover/qml/InstallApplicationButton.qml:28
 #, fuzzy, kde-format
 #| msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
 #| msgid "Install from %1"
@@ -850,14 +850,14 @@ msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "%1 ਤੋਂ ਇੰਸਟਾਲ ਕਰੋ"
 
-#: discover/qml/InstallApplicationButton.qml:31
+#: discover/qml/InstallApplicationButton.qml:30
 #, fuzzy, kde-format
 #| msgid "Install"
 msgctxt "@action:button"
 msgid "Install"
 msgstr "ਇੰਸਟਾਲ ਕਰੋ"
 
-#: discover/qml/InstallApplicationButton.qml:33
+#: discover/qml/InstallApplicationButton.qml:32
 #, kde-format
 msgid "Remove"
 msgstr "ਹਟਾਓ"

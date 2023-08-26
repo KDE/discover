@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 01:59+0000\n"
+"POT-Creation-Date: 2023-08-26 02:00+0000\n"
 "PO-Revision-Date: 2023-03-06 18:47+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -270,7 +270,7 @@ msgid "Add"
 msgstr "Pridať"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
-#: discover/qml/InstallApplicationButton.qml:46
+#: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
@@ -278,7 +278,7 @@ msgid "Cancel"
 msgstr "Zrušiť"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:213
+#: discover/qml/ApplicationPage.qml:214
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -287,12 +287,12 @@ msgstr[1] "%1 hodnotenia"
 msgstr[2] "%1 hodnotení"
 
 #: discover/qml/ApplicationDelegate.qml:141
-#: discover/qml/ApplicationPage.qml:213
+#: discover/qml/ApplicationPage.qml:214
 #, kde-format
 msgid "No ratings yet"
 msgstr "Zatiaľ bez hodnotení"
 
-#: discover/qml/ApplicationPage.qml:69
+#: discover/qml/ApplicationPage.qml:70
 #, kde-format
 msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
@@ -300,28 +300,28 @@ msgctxt ""
 msgid "From %1"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:80
+#: discover/qml/ApplicationPage.qml:81
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ApplicationPage.qml:193
+#: discover/qml/ApplicationPage.qml:194
 #, kde-format
 msgid "Unknown author"
 msgstr "Neznámy autor"
 
-#: discover/qml/ApplicationPage.qml:237
+#: discover/qml/ApplicationPage.qml:238
 #, fuzzy, kde-format
 #| msgid "Version"
 msgid "Version:"
 msgstr "Verzia"
 
-#: discover/qml/ApplicationPage.qml:249
+#: discover/qml/ApplicationPage.qml:250
 #, kde-format
 msgid "Size:"
 msgstr "Veľkosť:"
 
-#: discover/qml/ApplicationPage.qml:261
+#: discover/qml/ApplicationPage.qml:262
 #, fuzzy, kde-format
 #| msgid "License"
 #| msgid_plural "Licenses"
@@ -331,18 +331,18 @@ msgstr[0] "Licencia"
 msgstr[1] "Licencie"
 msgstr[2] "Licencie"
 
-#: discover/qml/ApplicationPage.qml:269
+#: discover/qml/ApplicationPage.qml:270
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Neznáma"
 
-#: discover/qml/ApplicationPage.qml:299
+#: discover/qml/ApplicationPage.qml:300
 #, kde-format
 msgid "What does this mean?"
 msgstr "Čo to znamená?"
 
-#: discover/qml/ApplicationPage.qml:308
+#: discover/qml/ApplicationPage.qml:309
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
@@ -350,24 +350,24 @@ msgstr[0] "Zobraziť viac..."
 msgstr[1] "Zobraziť viac..."
 msgstr[2] "Zobraziť viac..."
 
-#: discover/qml/ApplicationPage.qml:319
+#: discover/qml/ApplicationPage.qml:320
 #, fuzzy, kde-format
 #| msgid "Content Rating"
 msgid "Content Rating:"
 msgstr "Hodnotenie spokojnosti"
 
-#: discover/qml/ApplicationPage.qml:328
+#: discover/qml/ApplicationPage.qml:329
 #, kde-format
 msgid "Age: %1+"
 msgstr "Vek: %1+"
 
-#: discover/qml/ApplicationPage.qml:348
+#: discover/qml/ApplicationPage.qml:349
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
 msgstr "Zobraziť podrobnosti..."
 
-#: discover/qml/ApplicationPage.qml:370
+#: discover/qml/ApplicationPage.qml:371
 #, fuzzy, kde-format
 #| msgid ""
 #| "\n"
@@ -378,75 +378,75 @@ msgstr ""
 "\n"
 "Tiež dostupné v %1"
 
-#: discover/qml/ApplicationPage.qml:486
+#: discover/qml/ApplicationPage.qml:543
 #, kde-format
 msgid "Documentation"
 msgstr "Dokumentácia"
 
-#: discover/qml/ApplicationPage.qml:487
+#: discover/qml/ApplicationPage.qml:544
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Čítať oficiálnu dokumentáciu projektu"
 
-#: discover/qml/ApplicationPage.qml:503
+#: discover/qml/ApplicationPage.qml:560
 #, kde-format
 msgid "Website"
 msgstr "Webová stránka"
 
-#: discover/qml/ApplicationPage.qml:504
+#: discover/qml/ApplicationPage.qml:561
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Navštívte webovú stránku projektu"
 
-#: discover/qml/ApplicationPage.qml:520
+#: discover/qml/ApplicationPage.qml:577
 #, kde-format
 msgid "Addons"
 msgstr "Doplnky"
 
-#: discover/qml/ApplicationPage.qml:521
+#: discover/qml/ApplicationPage.qml:578
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Inštalovať alebo odstrániť dodatočné funkcie"
 
-#: discover/qml/ApplicationPage.qml:540
+#: discover/qml/ApplicationPage.qml:597
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Zdieľať"
 
-#: discover/qml/ApplicationPage.qml:541
+#: discover/qml/ApplicationPage.qml:598
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Odoslať odkaz na túto aplikáciu"
 
-#: discover/qml/ApplicationPage.qml:557
+#: discover/qml/ApplicationPage.qml:614
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Pozrite sa na aplikáciu %1!"
 
-#: discover/qml/ApplicationPage.qml:577
+#: discover/qml/ApplicationPage.qml:634
 #, kde-format
 msgid "What's New"
 msgstr "Čo je nové"
 
-#: discover/qml/ApplicationPage.qml:607
+#: discover/qml/ApplicationPage.qml:664
 #, kde-format
 msgid "Reviews"
 msgstr "Recenzie"
 
-#: discover/qml/ApplicationPage.qml:619
+#: discover/qml/ApplicationPage.qml:676
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Načítanie recenzií pre %1"
 
-#: discover/qml/ApplicationPage.qml:627
+#: discover/qml/ApplicationPage.qml:684
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:655
+#: discover/qml/ApplicationPage.qml:712
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
@@ -454,67 +454,67 @@ msgstr[0] "Zobraziť %1 recenziu"
 msgstr[1] "Zobraziť všetky %1 recenzie"
 msgstr[2] "Zobraziť všetkých %1 recenzií"
 
-#: discover/qml/ApplicationPage.qml:667
+#: discover/qml/ApplicationPage.qml:724
 #, kde-format
 msgid "Write a Review"
 msgstr "Napísať recenziu..."
 
-#: discover/qml/ApplicationPage.qml:667
+#: discover/qml/ApplicationPage.qml:724
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Nainštalovať na napísanie recenzie"
 
-#: discover/qml/ApplicationPage.qml:679
+#: discover/qml/ApplicationPage.qml:736
 #, kde-format
 msgid "Get Involved"
 msgstr "Zapojiť sa"
 
-#: discover/qml/ApplicationPage.qml:721
+#: discover/qml/ApplicationPage.qml:778
 #, kde-format
 msgid "Donate"
 msgstr "Podporiť"
 
-#: discover/qml/ApplicationPage.qml:722
+#: discover/qml/ApplicationPage.qml:779
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "Podporiť vývojárov a poďakovať im príspevkom na ich projekt"
 
-#: discover/qml/ApplicationPage.qml:738
+#: discover/qml/ApplicationPage.qml:795
 #, kde-format
 msgid "Report Bug"
 msgstr "Nahlásiť chybu"
 
-#: discover/qml/ApplicationPage.qml:739
+#: discover/qml/ApplicationPage.qml:796
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Zaznamenať nájdený problém a pomôcť ho opraviť"
 
-#: discover/qml/ApplicationPage.qml:755
+#: discover/qml/ApplicationPage.qml:812
 #, kde-format
 msgid "Contribute"
 msgstr "Prispieť"
 
-#: discover/qml/ApplicationPage.qml:756
+#: discover/qml/ApplicationPage.qml:813
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "Pomôcť vývojárom pri kódovaní, navrhovaní, testovaní alebo prekladaní"
 
-#: discover/qml/ApplicationPage.qml:781
+#: discover/qml/ApplicationPage.qml:838
 #, kde-format
 msgid "All Licenses"
 msgstr "Všetky licencie"
 
-#: discover/qml/ApplicationPage.qml:814
+#: discover/qml/ApplicationPage.qml:871
 #, kde-format
 msgid "Content Rating"
 msgstr "Hodnotenie spokojnosti"
 
-#: discover/qml/ApplicationPage.qml:830
+#: discover/qml/ApplicationPage.qml:887
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Riziká proprietárneho softvéru"
 
-#: discover/qml/ApplicationPage.qml:836
+#: discover/qml/ApplicationPage.qml:893
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -540,7 +540,7 @@ msgstr ""
 "dôverujete jej autorom (<link url='%1'>%2</link>).<nl/><nl/>Viac informácií "
 "nájdete na <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:837
+#: discover/qml/ApplicationPage.qml:894
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -876,13 +876,13 @@ msgstr "Tešíme sa na vašu spätnú väzbu!"
 msgid "Participate…"
 msgstr "Zúčastniť sa..."
 
-#: discover/qml/InstallApplicationButton.qml:25
+#: discover/qml/InstallApplicationButton.qml:24
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
 msgstr "Načítava sa..."
 
-#: discover/qml/InstallApplicationButton.qml:29
+#: discover/qml/InstallApplicationButton.qml:28
 #, fuzzy, kde-format
 #| msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
 #| msgid "Install from %1"
@@ -890,14 +890,14 @@ msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "Nainštalovať z %1"
 
-#: discover/qml/InstallApplicationButton.qml:31
+#: discover/qml/InstallApplicationButton.qml:30
 #, fuzzy, kde-format
 #| msgid "Install"
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Nainštalovať"
 
-#: discover/qml/InstallApplicationButton.qml:33
+#: discover/qml/InstallApplicationButton.qml:32
 #, kde-format
 msgid "Remove"
 msgstr "Odstrániť"
