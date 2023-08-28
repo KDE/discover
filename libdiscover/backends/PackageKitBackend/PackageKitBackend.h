@@ -128,6 +128,11 @@ public:
     template<typename T, typename W>
     T resourcesByPackageNames(const W &names) const;
 
+    QStringList globalHints()
+    {
+        return m_globalHints;
+    }
+
 public Q_SLOTS:
     void reloadPackageList();
     void transactionError(PackageKit::Transaction::Error, const QString &message);
@@ -185,4 +190,5 @@ private:
     QPointer<PackageKit::Transaction> m_getUpdatesTransaction;
     QThreadPool m_threadPool;
     QPointer<PKResolveTransaction> m_resolveTransaction;
+    QStringList m_globalHints;
 };

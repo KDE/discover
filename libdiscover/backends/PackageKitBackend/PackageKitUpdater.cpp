@@ -374,6 +374,7 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
     if (m_toUpgrade.contains(m_upgrade) && m_upgrade->isDistroUpgrade()) {
         const QString &upgradeVersion = m_upgrade->getDistroUpgrade().version();
         m_transaction = PackageKit::Daemon::upgradeSystem(upgradeVersion, PackageKit::Transaction::UpgradeKind::UpgradeKindComplete, flags);
+        m_transaction->setHints(m_backend->globalHints() << QStringLiteral("cache-age=86400" /* 24*60*60 */));
     } else {
         auto pkgs = involvedPackages(m_toUpgrade).values();
         pkgs.sort();

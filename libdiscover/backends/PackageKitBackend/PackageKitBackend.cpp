@@ -212,8 +212,8 @@ PackageKitBackend::PackageKitBackend(QObject *parent)
         },
         this);
 
-    PackageKit::Daemon::global()->setHints(QStringList() << QStringLiteral("interactive=true")
-                                                         << QStringLiteral("locale=%1").arg(qEnvironmentVariable("LANG")));
+    m_globalHints = QStringList() << QStringLiteral("interactive=true") << QStringLiteral("locale=%1").arg(qEnvironmentVariable("LANG"));
+    PackageKit::Daemon::global()->setHints(m_globalHints);
 }
 
 PackageKitBackend::~PackageKitBackend()
