@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-26 02:00+0000\n"
+"POT-Creation-Date: 2023-08-28 02:36+0000\n"
 "PO-Revision-Date: 2022-08-16 17:03+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -2102,13 +2102,13 @@ msgstr ""
 "Aşağıdakı paketlər bu yenilənmələr tərəfindən silinəcəklər:<ul><li>%1</li></"
 "ul><br/>quraşdırmaq üçün:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:695
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:699
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:703
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:707
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2118,13 +2118,13 @@ msgstr ""
 "\"%1\" daşıyıcısının dəyişdirilməsi tələb edilir.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:736
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "İstifadəçinin lisenziya müqaviləsini qəbul etmək"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:737
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2135,13 +2135,13 @@ msgstr ""
 "etmənizi tələb edir:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:854
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:858
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%2 də %1 üçün imza mövcud deyil"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:855
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:859
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""

@@ -645,11 +645,6 @@ msgstr "Fant ikke «%1» i de tilgjengelige kildene"
 
 #: discover/qml/ApplicationsListPage.qml:217
 #, fuzzy, kde-format
-#| msgctxt "@info:placeholder%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
@@ -667,7 +662,6 @@ msgstr "Leter fremdeles …"
 
 #: discover/qml/BrowsingPage.qml:20
 #, fuzzy, kde-format
-#| msgid "&Home"
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
 msgstr "&Hjem"
@@ -734,8 +728,6 @@ msgstr "Henter &oppdateringer"
 
 #: discover/qml/DiscoverWindow.qml:85
 #, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "&Update (%1)"
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
 msgstr[0] "&Oppdater (%1)"
