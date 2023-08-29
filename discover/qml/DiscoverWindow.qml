@@ -4,7 +4,7 @@ import QtQuick.Controls 2.14
 import QtQml.Models 2.15
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami as Kirigami
 import "navigation.js" as Navigation
 
 Kirigami.ApplicationWindow {
@@ -209,16 +209,19 @@ Kirigami.ApplicationWindow {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 8)
                 visible: page.errorMessage !== ""
+                type: Kirigami.PlaceholderMessage.Type.Actionable // All error messages must be actionable
                 icon.name: "emblem-warning"
                 text: page.errorMessage
                 explanation: page.errorExplanation
                 helpfulAction: Kirigami.Action {
                     icon.name: page.buttonIcon
                     text: page.buttonText
+                    enabled: page.buttonText.length > 0 && page.buttonUrl.length > 0
                     onTriggered: {
                         Qt.openUrlExternally(page.buttonUrl)
                     }
                 }
+                onLinkActivated: link => Qt.openUrlExternally(link)
             }
         }
     }

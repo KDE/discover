@@ -155,31 +155,28 @@ DiscoverObject::DiscoverObject(CompactMode mode, const QVariantMap &initialPrope
                 found |= b->hasApplications();
 
             if (!found) {
-                QString errorText = i18n(
-                    "Discover currently cannot be used to install any apps or "
-                    "perform system updates because none of its app backends are "
-                    "available.");
-                QString errorExplanation = xi18nc("@info",
-                    "You can install some on the Settings page, under the "
-                    "<interface>Missing Backends</interface> section.<nl/><nl/>"
-                    "Also please consider reporting this as a packaging issue to "
-                    "your distribution.");
+                const QString distroName = KOSRelease().name();
+
+                QString errorText =
+                    i18nc("@title %1 is the distro name", "%1 is not configured for installing apps through Discover—only app add-ons", distroName);
+                QString errorExplanation = xi18nc("@info:usagetip %1 is the distro name",
+                                                  "To use Discover for apps, install your preferred module on the <interface>Settings"
+                                                  "</interface> page, under <interface>Missing Backends</interface>.");
                 QString buttonIcon = QStringLiteral("tools-report-bug");
-                QString buttonText = i18n("Report This Issue");
+                QString buttonText = i18nc("@action:button %1 is the distro name", "Report This Issue to %1", distroName);
                 QString buttonUrl = KOSRelease().bugReportUrl();
 
-                if (KOSRelease().name().contains(QStringLiteral("Arch Linux"))) {
-                    errorExplanation = xi18nc("@info",
-                        "You can use <command>pacman</command> to "
-                        "install the optional dependencies that are needed to "
-                        "enable the application backends.<nl/><nl/>Please note "
-                        "that Arch Linux developers recommend using "
-                        "<command>pacman</command> for managing software because "
-                        "the PackageKit backend is not well-integrated on Arch "
-                        "Linux.");
-                    buttonIcon = QStringLiteral("help-about");
-                    buttonText = i18n("Learn More");
-                    buttonUrl = KOSRelease().supportUrl();
+                if (distroName.contains(QStringLiteral("Arch Linux"))) {
+                    errorExplanation = xi18nc("@info:usagetip %1 is the distro name; in this case it always contains 'Arch Linux'",
+                                              "To use Discover for apps, install"
+                                              " <link url='https://wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> or"
+                                              " <link url='https://wiki.archlinux.org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</link>"
+                                              " using the <command>pacman</command> package manager.<nl/><nl/>"
+                                              " Review <link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's packaging for Discover</link>",
+                                              distroName);
+                    buttonIcon = QString();
+                    buttonText = QString();
+                    buttonUrl = QString();
                 }
 
                 Q_EMIT openErrorPage(errorText, errorExplanation, buttonText, buttonIcon, buttonUrl);
