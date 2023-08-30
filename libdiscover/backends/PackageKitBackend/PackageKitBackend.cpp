@@ -941,6 +941,7 @@ void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
         m_updatesPackageId.clear();
         m_updater->setProgressing(true);
         PackageKit::Transaction *transaction = PackageKit::Daemon::upgradeSystem(upgradeVersion, PackageKit::Transaction::UpgradeKind::UpgradeKindComplete, PackageKit::Transaction::TransactionFlagSimulate);
+        transaction->setHints(globalHints() << QStringLiteral("cache-age=86400" /* 24*60*60 */));
         connect(transaction, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
         connect(transaction, &PackageKit::Transaction::percentageChanged, this, &PackageKitBackend::fetchingUpdatesProgressChanged);
         connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
