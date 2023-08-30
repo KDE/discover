@@ -332,7 +332,7 @@ void PackageKitUpdater::prepare()
     if (auto offline = PackageKit::Daemon::global()->offline(); offline->updateTriggered() || offline->upgradeTriggered()) {
         m_toUpgrade.clear();
         m_allUpgradeable.clear();
-        enableNeedsReboot();
+        setNeedsReboot(true);
         return;
     }
 
@@ -511,7 +511,7 @@ void PackageKitUpdater::start()
     setProgressing(true);
 
     if (useOfflineUpdates()) {
-        enableNeedsReboot();
+        setNeedsReboot(true);
     }
 }
 

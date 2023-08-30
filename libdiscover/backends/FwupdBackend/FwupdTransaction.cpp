@@ -122,7 +122,7 @@ void FwupdTransaction::finishTransaction()
     }
     m_app->setState(newState);
     if (m_app->needsReboot()) {
-        m_app->backend()->backendUpdater()->enableNeedsReboot();
+        m_app->backend()->backendUpdater()->setNeedsReboot(true);
     }
     setStatus(DoneStatus);
     deleteLater();

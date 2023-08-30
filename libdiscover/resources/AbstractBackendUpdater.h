@@ -123,7 +123,7 @@ public:
      */
     virtual quint64 downloadSpeed() const = 0;
 
-    void enableNeedsReboot();
+    void setNeedsReboot(bool enabled);
     void enableReadyToReboot();
 
     bool isReadyToReboot() const;

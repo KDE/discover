@@ -95,7 +95,7 @@ void SteamOSBackend::hasUpdateChanged(bool hasUpdate)
 void SteamOSBackend::needRebootChanged()
 {
     // Tell gui we need to reboot
-    m_updater->enableNeedsReboot();
+    m_updater->setNeedsReboot(true);
 }
 
 void SteamOSBackend::acquireFetching(bool f)

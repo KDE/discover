@@ -185,7 +185,7 @@ void RpmOstreeBackend::refreshDeployments()
             m_currentlyBootedDeployment = deployment;
         } else if (deployment->isPending()) {
             // Signal that we have a pending update
-            m_updater->enableNeedsReboot();
+            m_updater->setNeedsReboot(true);
         }
     }
 
@@ -277,7 +277,7 @@ void RpmOstreeBackend::checkForUpdates()
             if (deployment->version() == newVersion) {
                 qInfo() << "rpm-ostree-backend: Found existing deployment for new version. Skipping.";
                 // Let the user know that the update is pending a reboot
-                m_updater->enableNeedsReboot();
+                m_updater->setNeedsReboot(true);
                 if (m_currentlyBootedDeployment->getNextMajorVersion().isEmpty()) {
                     Q_EMIT inlineMessageChanged(nullptr);
                 } else {
@@ -420,7 +420,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
         }
         if (deploymentVersion == newMajorVersion) {
             qInfo() << "rpm-ostree-backend: Found existing deployment for new major version";
-            m_updater->enableNeedsReboot();
+            m_updater->setNeedsReboot(true);
             Q_EMIT inlineMessageChanged(nullptr);
             return;
         }
@@ -434,7 +434,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
         RpmOstreeResource *deployment = iterator.next();
         if ((deployment->version() == newVersion) || deployment->isPending()) {
             qInfo() << "rpm-ostree-backend: Found pending or updated deployment for current version";
-            m_updater->enableNeedsReboot();
+            m_updater->setNeedsReboot(true);
             Q_EMIT inlineMessageChanged(m_rebootBeforeRebaseMessage);
             return;
         }
@@ -446,7 +446,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
     // version.
     if (m_currentlyBootedDeployment->state() == AbstractResource::Upgradeable) {
         qInfo() << "rpm-ostree-backend: Found pending update for current version";
-        m_updater->enableNeedsReboot();
+        m_updater->setNeedsReboot(true);
         Q_EMIT inlineMessageChanged(m_rebootBeforeRebaseMessage);
         return;
     }
