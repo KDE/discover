@@ -596,6 +596,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
         fetchLastUpdateTime();
     } else if (exit != PackageKit::Transaction::ExitSuccess) {
         Q_EMIT resourceProgressed(m_upgrade, 0, None);
+        setNeedsReboot(false);
         setProgressing(false);
     }
 
@@ -606,6 +607,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
             reply.waitForFinished();
             if (reply.isError()) {
                 Q_EMIT resourceProgressed(m_upgrade, 0, None);
+                setNeedsReboot(false);
                 setProgressing(false);
                 Q_EMIT passiveMessage(reply.error().message());
                 return;
