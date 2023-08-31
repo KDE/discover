@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-29 01:55+0000\n"
+"POT-Creation-Date: 2023-08-31 01:57+0000\n"
 "PO-Revision-Date: 2023-03-06 18:47+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -20,65 +20,54 @@ msgstr ""
 "X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: discover/DiscoverObject.cpp:159
+#: discover/DiscoverObject.cpp:161
 #, kde-format
+msgctxt "@title %1 is the distro name"
 msgid ""
-"Discover currently cannot be used to install any apps or perform system "
-"updates because none of its app backends are available."
+"%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"Discover v súčasnosti nie je možné použiť na inštaláciu žiadnych aplikácií "
-"ani na vykonávanie systémových aktualizácie, pretože nie je k dispozícii "
-"žiadna z jeho aplikačných podporných programov."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
-"You can install some on the Settings page, under the <interface>Missing "
-"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
-"as a packaging issue to your distribution."
+"To use Discover for apps, install your preferred module on the "
+"<interface>Settings</interface> page, under <interface>Missing Backends</"
+"interface>."
 msgstr ""
-"Niektoré môžete nainštalovať na stránke Nastavenia v časti "
-"<interface>Chýbajúce podporné programy</interface>.<nl/><nl/>Zvážte tiež "
-"nahlásenie tohto nedostatku ako problému s balíkmi vašej distribúcie."
 
-#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
-#, kde-format
-msgid "Report This Issue"
+#: discover/DiscoverObject.cpp:166
+#, fuzzy, kde-format
+#| msgid "Report This Issue"
+msgctxt "@action:button %1 is the distro name"
+msgid "Report This Issue to %1"
 msgstr "Nahlásiť tento problém"
 
-#: discover/DiscoverObject.cpp:173
+#: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt ""
+"@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
+"Linux'"
 msgid ""
-"You can use <command>pacman</command> to install the optional dependencies "
-"that are needed to enable the application backends.<nl/><nl/>Please note "
-"that Arch Linux developers recommend using <command>pacman</command> for "
-"managing software because the PackageKit backend is not well-integrated on "
-"Arch Linux."
+"To use Discover for apps, install <link url='https://wiki.archlinux.org/"
+"title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
+"archlinux.org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</"
+"link> using the <command>pacman</command> package manager.<nl/><nl/> Review "
+"<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
+"packaging for Discover</link>"
 msgstr ""
-"Môžete použiť <command>pacman</command> na inštaláciu voliteľných "
-"závislostí, ktoré sú potrebné na povolenie podporných programov aplikácie."
-"<nl/><nl/>Treba upozorniť, že vývojári Arch Linuxu odporúčajú na správu "
-"softvéru používať príkaz <command>pacman</command>, pretože podporný program "
-"PackageKit nie je v Arch Linuxe dobre integrovaný."
 
-#: discover/DiscoverObject.cpp:181
-#, kde-format
-msgid "Learn More"
-msgstr "Zistite viac"
-
-#: discover/DiscoverObject.cpp:269
+#: discover/DiscoverObject.cpp:266
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Nepodarilo sa nájsť kategóriu \"%1\""
 
-#: discover/DiscoverObject.cpp:284
+#: discover/DiscoverObject.cpp:281
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Snaha o otvorenie neexistujúceho súboru '%1'"
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:303
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -87,17 +76,17 @@ msgstr ""
 "Nedá sa spolupracovať z prostriedkami balíkov flatpak, bez podporného "
 "programu pre flatpak %1. Prosím, najskôr ho nainštalujte."
 
-#: discover/DiscoverObject.cpp:310
+#: discover/DiscoverObject.cpp:307
 #, kde-format
 msgid "Could not open %1"
 msgstr "Nepodarilo sa otvoriť %1"
 
-#: discover/DiscoverObject.cpp:372
+#: discover/DiscoverObject.cpp:369
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Uistite sa prosím, že je nainštalovaná podpora pre Snap"
 
-#: discover/DiscoverObject.cpp:374
+#: discover/DiscoverObject.cpp:371
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -106,18 +95,23 @@ msgstr ""
 "Nepodarilo sa otvoriť %1, pretože sa nenašiel v žiadnych dostupných "
 "softvérových repozitároch."
 
-#: discover/DiscoverObject.cpp:377
+#: discover/DiscoverObject.cpp:374
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Prosím, nahláste tento problém správcom balíkov vašej distribúcie."
 
-#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
+#: discover/DiscoverObject.cpp:377
+#, kde-format
+msgid "Report This Issue"
+msgstr "Nahlásiť tento problém"
+
+#: discover/DiscoverObject.cpp:439 discover/DiscoverObject.cpp:441
 #: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:445
+#: discover/DiscoverObject.cpp:442
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -269,7 +263,7 @@ msgstr "Pridať nový repozitár %1"
 msgid "Add"
 msgstr "Pridať"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -277,7 +271,7 @@ msgstr "Pridať"
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "%1 rating"
@@ -286,7 +280,7 @@ msgstr[0] "%1 hodnotenie"
 msgstr[1] "%1 hodnotenia"
 msgstr[2] "%1 hodnotení"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "No ratings yet"
@@ -774,8 +768,8 @@ msgstr "O aplikácii"
 msgid "S&ettings"
 msgstr "Nastavenia"
 
-#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:338
-#: discover/qml/DiscoverWindow.qml:445
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:448
 #, kde-format
 msgid "Error"
 msgstr "Chyba"
@@ -785,34 +779,34 @@ msgstr "Chyba"
 msgid "Unable to find resource: %1"
 msgstr "Nie je možné nájsť prostriedok: %1"
 
-#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Pokračovať"
 
-#: discover/qml/DiscoverWindow.qml:314
+#: discover/qml/DiscoverWindow.qml:317
 #, kde-format
 msgid "Report this issue"
 msgstr "Nahlásiť problém"
 
-#: discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:341
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Chyba %1 z %2"
 
-#: discover/qml/DiscoverWindow.qml:383
+#: discover/qml/DiscoverWindow.qml:386
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Zobraziť predchádzajúce"
 
-#: discover/qml/DiscoverWindow.qml:396
+#: discover/qml/DiscoverWindow.qml:399
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Zobraziť nasledujúce"
 
-#: discover/qml/DiscoverWindow.qml:412
+#: discover/qml/DiscoverWindow.qml:415
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Skopírovať do schránky"
@@ -1283,6 +1277,41 @@ msgstr "Mali by sa skontrolovať aktualizácie"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Čas poslednej aktualizácie je neznámy"
+
+#~ msgid ""
+#~ "Discover currently cannot be used to install any apps or perform system "
+#~ "updates because none of its app backends are available."
+#~ msgstr ""
+#~ "Discover v súčasnosti nie je možné použiť na inštaláciu žiadnych "
+#~ "aplikácií ani na vykonávanie systémových aktualizácie, pretože nie je k "
+#~ "dispozícii žiadna z jeho aplikačných podporných programov."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "You can install some on the Settings page, under the <interface>Missing "
+#~ "Backends</interface> section.<nl/><nl/>Also please consider reporting "
+#~ "this as a packaging issue to your distribution."
+#~ msgstr ""
+#~ "Niektoré môžete nainštalovať na stránke Nastavenia v časti "
+#~ "<interface>Chýbajúce podporné programy</interface>.<nl/><nl/>Zvážte tiež "
+#~ "nahlásenie tohto nedostatku ako problému s balíkmi vašej distribúcie."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "You can use <command>pacman</command> to install the optional "
+#~ "dependencies that are needed to enable the application backends.<nl/><nl/"
+#~ ">Please note that Arch Linux developers recommend using <command>pacman</"
+#~ "command> for managing software because the PackageKit backend is not well-"
+#~ "integrated on Arch Linux."
+#~ msgstr ""
+#~ "Môžete použiť <command>pacman</command> na inštaláciu voliteľných "
+#~ "závislostí, ktoré sú potrebné na povolenie podporných programov aplikácie."
+#~ "<nl/><nl/>Treba upozorniť, že vývojári Arch Linuxu odporúčajú na správu "
+#~ "softvéru používať príkaz <command>pacman</command>, pretože podporný "
+#~ "program PackageKit nie je v Arch Linuxe dobre integrovaný."
+
+#~ msgid "Learn More"
+#~ msgstr "Zistite viac"
 
 #~ msgid "Could not access the screenshots"
 #~ msgstr "Nepodarilo sa dostať k snímkam obrazovky"

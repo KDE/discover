@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-29 01:55+0000\n"
+"POT-Creation-Date: 2023-08-31 01:57+0000\n"
 "PO-Revision-Date: 2022-02-07 10:40+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -20,62 +20,54 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 21.07.70\n"
 
-#: discover/DiscoverObject.cpp:159
-#, fuzzy, kde-format
-#| msgid ""
-#| "Discover currently cannot be used to install any apps because none of its "
-#| "app backends are available. Please report this issue to the packagers of "
-#| "your distribution."
+#: discover/DiscoverObject.cpp:161
+#, kde-format
+msgctxt "@title %1 is the distro name"
 msgid ""
-"Discover currently cannot be used to install any apps or perform system "
-"updates because none of its app backends are available."
+"%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"A Discover jelenleg nem használható alkalmazások telepítésére, mert egyik "
-"háttérprogramja sem érhető el. Kérjük, jelentse ezt a hibát a disztribúciója "
-"csomagolójának."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
-"You can install some on the Settings page, under the <interface>Missing "
-"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
-"as a packaging issue to your distribution."
+"To use Discover for apps, install your preferred module on the "
+"<interface>Settings</interface> page, under <interface>Missing Backends</"
+"interface>."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
+#: discover/DiscoverObject.cpp:166
 #, fuzzy, kde-format
 #| msgid "Report this issue"
-msgid "Report This Issue"
+msgctxt "@action:button %1 is the distro name"
+msgid "Report This Issue to %1"
 msgstr "Jelentse ezt a hibát"
 
-#: discover/DiscoverObject.cpp:173
+#: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt ""
+"@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
+"Linux'"
 msgid ""
-"You can use <command>pacman</command> to install the optional dependencies "
-"that are needed to enable the application backends.<nl/><nl/>Please note "
-"that Arch Linux developers recommend using <command>pacman</command> for "
-"managing software because the PackageKit backend is not well-integrated on "
-"Arch Linux."
+"To use Discover for apps, install <link url='https://wiki.archlinux.org/"
+"title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
+"archlinux.org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</"
+"link> using the <command>pacman</command> package manager.<nl/><nl/> Review "
+"<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
+"packaging for Discover</link>"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:181
-#, kde-format
-msgid "Learn More"
-msgstr ""
-
-#: discover/DiscoverObject.cpp:269
+#: discover/DiscoverObject.cpp:266
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Nem található kategória: „%1”"
 
-#: discover/DiscoverObject.cpp:284
+#: discover/DiscoverObject.cpp:281
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:303
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -84,17 +76,17 @@ msgstr ""
 "Nem lehet dolgozni Flatpak erőforrásokkal a(z) %1 backend nélkül. Kérjük, "
 "telepítse azt."
 
-#: discover/DiscoverObject.cpp:310
+#: discover/DiscoverObject.cpp:307
 #, kde-format
 msgid "Could not open %1"
 msgstr "A(z) %1 nem nyitható meg"
 
-#: discover/DiscoverObject.cpp:372
+#: discover/DiscoverObject.cpp:369
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Ellenőrizze, hogy a Snap támogatás telepítve van-e"
 
-#: discover/DiscoverObject.cpp:374
+#: discover/DiscoverObject.cpp:371
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not open %1 because it was not found in any available software "
@@ -108,7 +100,7 @@ msgstr ""
 "szoftvertárolóban sem. Kérjük, jelentse ezt a hibát a disztribúciója "
 "csomagolójának."
 
-#: discover/DiscoverObject.cpp:377
+#: discover/DiscoverObject.cpp:374
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not open %1 because it was not found in any available software "
@@ -120,13 +112,19 @@ msgstr ""
 "szoftvertárolóban sem. Kérjük, jelentse ezt a hibát a disztribúciója "
 "csomagolójának."
 
-#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
+#: discover/DiscoverObject.cpp:377
+#, fuzzy, kde-format
+#| msgid "Report this issue"
+msgid "Report This Issue"
+msgstr "Jelentse ezt a hibát"
+
+#: discover/DiscoverObject.cpp:439 discover/DiscoverObject.cpp:441
 #: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:445
+#: discover/DiscoverObject.cpp:442
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -277,7 +275,7 @@ msgstr "Új %1 tároló hozzáadása"
 msgid "Add"
 msgstr "Hozzáadás"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -285,7 +283,7 @@ msgstr "Hozzáadás"
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "%1 rating"
@@ -293,7 +291,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 értékelés"
 msgstr[1] "%1 értékelés"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "No ratings yet"
@@ -773,8 +771,8 @@ msgstr "Né&vjegy"
 msgid "S&ettings"
 msgstr "&Beállítások"
 
-#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:338
-#: discover/qml/DiscoverWindow.qml:445
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:448
 #, kde-format
 msgid "Error"
 msgstr "Hiba"
@@ -784,36 +782,36 @@ msgstr "Hiba"
 msgid "Unable to find resource: %1"
 msgstr "Nem található erőforrás: %1"
 
-#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Folytatás"
 
-#: discover/qml/DiscoverWindow.qml:314
+#: discover/qml/DiscoverWindow.qml:317
 #, kde-format
 msgid "Report this issue"
 msgstr "Jelentse ezt a hibát"
 
-#: discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:341
 #, fuzzy, kde-format
 #| msgid "Votes: %1 out of %2"
 msgid "Error %1 of %2"
 msgstr "Szavazatok: %1 / %2"
 
-#: discover/qml/DiscoverWindow.qml:383
+#: discover/qml/DiscoverWindow.qml:386
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:396
+#: discover/qml/DiscoverWindow.qml:399
 #, fuzzy, kde-format
 #| msgid "Show contents"
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Tartalom megjelenítése"
 
-#: discover/qml/DiscoverWindow.qml:412
+#: discover/qml/DiscoverWindow.qml:415
 #, fuzzy, kde-format
 #| msgid "Copy to clipboard"
 msgid "Copy to Clipboard"
@@ -1285,6 +1283,19 @@ msgstr "Frissítések keresése szükséges"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Az utolsó frissítés időpontja ismeretlen"
+
+#, fuzzy
+#~| msgid ""
+#~| "Discover currently cannot be used to install any apps because none of "
+#~| "its app backends are available. Please report this issue to the "
+#~| "packagers of your distribution."
+#~ msgid ""
+#~ "Discover currently cannot be used to install any apps or perform system "
+#~ "updates because none of its app backends are available."
+#~ msgstr ""
+#~ "A Discover jelenleg nem használható alkalmazások telepítésére, mert egyik "
+#~ "háttérprogramja sem érhető el. Kérjük, jelentse ezt a hibát a "
+#~ "disztribúciója csomagolójának."
 
 #~ msgid "&Up to date"
 #~ msgstr "&Naprakész"

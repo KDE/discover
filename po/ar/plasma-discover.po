@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-29 01:55+0000\n"
+"POT-Creation-Date: 2023-08-31 01:57+0000\n"
 "PO-Revision-Date: 2023-05-07 20:03+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -19,63 +19,55 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Lokalize 21.12.3\n"
 
-#: discover/DiscoverObject.cpp:159
+#: discover/DiscoverObject.cpp:161
 #, kde-format
+msgctxt "@title %1 is the distro name"
 msgid ""
-"Discover currently cannot be used to install any apps or perform system "
-"updates because none of its app backends are available."
+"%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"لا يمكن للمستكشف حاليًا تثبيت أي تطبيقات أو تحديث النظام نظرًا لعدم توفر أي من "
-"الخلفيات للتطبيقات."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
-"You can install some on the Settings page, under the <interface>Missing "
-"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
-"as a packaging issue to your distribution."
+"To use Discover for apps, install your preferred module on the "
+"<interface>Settings</interface> page, under <interface>Missing Backends</"
+"interface>."
 msgstr ""
-"يمكنك تثبيت بعضا منها في صفحة الإعدادات تحت قسم <interface>الخلفيات "
-"المفقودة</interface> <nl/><nl/> كذلك يمكنك التبليغ عن هذا كعلة تحزيم إلى "
-"توزيعتك."
 
-#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
-#, kde-format
-msgid "Report This Issue"
-msgstr "أبلغ عن هذه المشكلة"
+#: discover/DiscoverObject.cpp:166
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the name of the user's distro/OS"
+#| msgid "Report Issue to %1"
+msgctxt "@action:button %1 is the distro name"
+msgid "Report This Issue to %1"
+msgstr "أبلغ عن هذه المشكلة إلى %1"
 
-#: discover/DiscoverObject.cpp:173
+#: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt ""
+"@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
+"Linux'"
 msgid ""
-"You can use <command>pacman</command> to install the optional dependencies "
-"that are needed to enable the application backends.<nl/><nl/>Please note "
-"that Arch Linux developers recommend using <command>pacman</command> for "
-"managing software because the PackageKit backend is not well-integrated on "
-"Arch Linux."
+"To use Discover for apps, install <link url='https://wiki.archlinux.org/"
+"title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
+"archlinux.org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</"
+"link> using the <command>pacman</command> package manager.<nl/><nl/> Review "
+"<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
+"packaging for Discover</link>"
 msgstr ""
-"يمكن استخدام <command>pacman</command> لتثبيت الاعتمادات الاختيارية التي "
-"تحتاجها لتثبيت خلفية التطبيقات. <nl/><nl/> الرجاء ملاحظة أن مطوري آرش لينكس "
-"يوصون باستخدام <command>pacman</command> لإدارة التطبيقات بسبب أن خلفية "
-"PackageKit غير متكاملة بشكل جيد مع آرش لينكس."
 
-#: discover/DiscoverObject.cpp:181
-#, kde-format
-msgid "Learn More"
-msgstr "اعرف المزيد"
-
-#: discover/DiscoverObject.cpp:269
+#: discover/DiscoverObject.cpp:266
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "تعذّر العثور على الفئة ’%1‘"
 
-#: discover/DiscoverObject.cpp:284
+#: discover/DiscoverObject.cpp:281
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "يحاول فتح ملف غير موجود '%1'"
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:303
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -84,35 +76,40 @@ msgstr ""
 "لا يمكن التفاعل مع موارد فلاتباك بدون الواجهة الخلفية لـ فلاتباك %1.الرجاء "
 "تثبيتها أولاً."
 
-#: discover/DiscoverObject.cpp:310
+#: discover/DiscoverObject.cpp:307
 #, kde-format
 msgid "Could not open %1"
 msgstr "تعذّر فتح %1"
 
-#: discover/DiscoverObject.cpp:372
+#: discover/DiscoverObject.cpp:369
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "يرجى التأكد من تثبيت دعم سناب"
 
-#: discover/DiscoverObject.cpp:374
+#: discover/DiscoverObject.cpp:371
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr "لا يمكن فتح %1 بسبب عدم العثور عليه في أي مستودع تطبيقات."
 
-#: discover/DiscoverObject.cpp:377
+#: discover/DiscoverObject.cpp:374
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "الرجاء الإبلاغ عن هذه المشكلة لمحزمي التطبيقات في توزيعتك."
 
-#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
+#: discover/DiscoverObject.cpp:377
+#, kde-format
+msgid "Report This Issue"
+msgstr "أبلغ عن هذه المشكلة"
+
+#: discover/DiscoverObject.cpp:439 discover/DiscoverObject.cpp:441
 #: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "استكشف"
 
-#: discover/DiscoverObject.cpp:445
+#: discover/DiscoverObject.cpp:442
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -260,7 +257,7 @@ msgstr "أضف مستودع %1 جديد"
 msgid "Add"
 msgstr "أضف"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -268,7 +265,7 @@ msgstr "أضف"
 msgid "Cancel"
 msgstr "ألغِ"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "%1 rating"
@@ -280,7 +277,7 @@ msgstr[3] "%1 تقييمات"
 msgstr[4] "%1 تقييما"
 msgstr[5] "%1 تقييم"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "No ratings yet"
@@ -779,8 +776,8 @@ msgstr "&عن"
 msgid "S&ettings"
 msgstr "إ&عدادات"
 
-#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:338
-#: discover/qml/DiscoverWindow.qml:445
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:448
 #, kde-format
 msgid "Error"
 msgstr "خطأ"
@@ -790,34 +787,34 @@ msgstr "خطأ"
 msgid "Unable to find resource: %1"
 msgstr "تعذّر العثور على المورد:‏ %1"
 
-#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "تابِع"
 
-#: discover/qml/DiscoverWindow.qml:314
+#: discover/qml/DiscoverWindow.qml:317
 #, kde-format
 msgid "Report this issue"
 msgstr "أبلغ عن هذه المشكلة"
 
-#: discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:341
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "الخطأ %1 من %2"
 
-#: discover/qml/DiscoverWindow.qml:383
+#: discover/qml/DiscoverWindow.qml:386
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "اعرض السابق"
 
-#: discover/qml/DiscoverWindow.qml:396
+#: discover/qml/DiscoverWindow.qml:399
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "اعرض التالي"
 
-#: discover/qml/DiscoverWindow.qml:412
+#: discover/qml/DiscoverWindow.qml:415
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "انسخ إلى الحافظة"
@@ -1283,6 +1280,39 @@ msgstr "يجب التماس التّحديثات"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "وقت أخر تحديث مجهول"
+
+#~ msgid ""
+#~ "Discover currently cannot be used to install any apps or perform system "
+#~ "updates because none of its app backends are available."
+#~ msgstr ""
+#~ "لا يمكن للمستكشف حاليًا تثبيت أي تطبيقات أو تحديث النظام نظرًا لعدم توفر أي "
+#~ "من الخلفيات للتطبيقات."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "You can install some on the Settings page, under the <interface>Missing "
+#~ "Backends</interface> section.<nl/><nl/>Also please consider reporting "
+#~ "this as a packaging issue to your distribution."
+#~ msgstr ""
+#~ "يمكنك تثبيت بعضا منها في صفحة الإعدادات تحت قسم <interface>الخلفيات "
+#~ "المفقودة</interface> <nl/><nl/> كذلك يمكنك التبليغ عن هذا كعلة تحزيم إلى "
+#~ "توزيعتك."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "You can use <command>pacman</command> to install the optional "
+#~ "dependencies that are needed to enable the application backends.<nl/><nl/"
+#~ ">Please note that Arch Linux developers recommend using <command>pacman</"
+#~ "command> for managing software because the PackageKit backend is not well-"
+#~ "integrated on Arch Linux."
+#~ msgstr ""
+#~ "يمكن استخدام <command>pacman</command> لتثبيت الاعتمادات الاختيارية التي "
+#~ "تحتاجها لتثبيت خلفية التطبيقات. <nl/><nl/> الرجاء ملاحظة أن مطوري آرش "
+#~ "لينكس يوصون باستخدام <command>pacman</command> لإدارة التطبيقات بسبب أن "
+#~ "خلفية PackageKit غير متكاملة بشكل جيد مع آرش لينكس."
+
+#~ msgid "Learn More"
+#~ msgstr "اعرف المزيد"
 
 #~ msgid "Could not access the screenshots"
 #~ msgstr "تعثر الوصول إلى لقطات الشاشة"

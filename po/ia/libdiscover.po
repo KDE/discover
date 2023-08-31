@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-28 02:36+0000\n"
+"POT-Creation-Date: 2023-08-31 01:57+0000\n"
 "PO-Revision-Date: 2023-07-19 16:39+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -1164,7 +1164,7 @@ msgstr ""
 msgid "Upgrade to %1 %2"
 msgstr "Actualisa a %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:955
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:956
 #, kde-format
 msgid "A new major version has been released"
 msgstr "Un nove version major ha essite liberate!"
@@ -2085,7 +2085,7 @@ msgstr ""
 "Spatio non sufficiente per executar le actualisation. Il ha solmente %1 de "
 "spatiodisponibile."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:572
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2098,12 +2098,12 @@ msgstr ""
 ">Si tuu crede que isto es un error, profavor tu reporta lo como un bug al "
 "impacchettator de tu distribution."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:579
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Cofirma modificationes"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2112,13 +2112,13 @@ msgstr ""
 "Le pacchettos sequente essera removite per le actualisation:<ul><li>%1</li></"
 "ul><br/>pro installar:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:699
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:700
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:707
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:708
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2128,13 +2128,13 @@ msgstr ""
 "Cambio de Multimedia de typo '%1' es requirite.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Accepta EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2144,13 +2144,13 @@ msgstr ""
 "Le pacchetto %1 e su venditor %2 require que tu accepta lor licentia:\n"
 "%3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:858
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:859
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Signatura mancante per %1 in %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:859
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:860
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-28 02:36+0000\n"
+"POT-Creation-Date: 2023-08-31 01:57+0000\n"
 "PO-Revision-Date: 2023-07-19 06:36+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1159,7 +1159,7 @@ msgstr ""
 msgid "Upgrade to %1 %2"
 msgstr "Posodobi na %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:955
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:956
 #, kde-format
 msgid "A new major version has been released"
 msgstr "Izšla je pomembnejša novejša različica"
@@ -2084,7 +2084,7 @@ msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 "Ni dovolj prostora za izvedbo posodobitve; samo %1 prostora je na voljo."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:572
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2097,12 +2097,12 @@ msgstr ""
 "%1</li></ul><nl/>Če menite, da je to napaka, jo prijavite kot napako pri "
 "pakiranju vaše distribucije."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:579
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Potrdi spremembe"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2111,13 +2111,13 @@ msgstr ""
 "Posodobitev bo odstranila naslednje pakete:<ul><li>%1</li></ul><br/>zato da "
 "bi namestila:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:699
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:700
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:707
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:708
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2127,13 +2127,13 @@ msgstr ""
 "Zahtevana je sprememba nosilca vrste '%1'.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Sprejmi EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2143,13 +2143,13 @@ msgstr ""
 "Paket %1 in njegov proizvajalec %2 zahtevata, da sprejmete njihovo licenco:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:858
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:859
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Manjka podpis za %1 in %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:859
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:860
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""

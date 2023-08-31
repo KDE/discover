@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-28 02:36+0000\n"
+"POT-Creation-Date: 2023-08-31 01:57+0000\n"
 "PO-Revision-Date: 2023-08-13 22:47+0300\n"
 "Last-Translator: George Stefanakis <george.stefanakis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -1168,7 +1168,7 @@ msgstr ""
 msgid "Upgrade to %1 %2"
 msgstr "Αναβάθμιση σε %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:955
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:956
 #, kde-format
 msgid "A new major version has been released"
 msgstr "Κυκλοφόρησε μια νέα κύρια έκδοση"
@@ -2086,7 +2086,7 @@ msgstr ""
 "Δεν υπάρχει αρκετά διαθέσιμος χώρος για την ενημέρωση, μόνο %1 χώρου είναι "
 "διαθέσιμος."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:572
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2099,12 +2099,12 @@ msgstr ""
 "><ul><li>%1</li></ul><nl/>Εάν πιστεύετε ότι πρόκειται για σφάλμα, αναφέρετέ "
 "το ως σφάλμα στους διαχειριστές του πακέτου διανομής σας."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:579
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Επιβεβαίωση αλλαγών"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2113,13 +2113,13 @@ msgstr ""
 "Τα ακόλουθα πακέτα θα αφαιρεθούν με την ενημέρωση:<ul><li>%1</li></ul><br/ "
 ">ώστε να εγκατασταθεί:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:699
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:700
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:707
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:708
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2129,13 +2129,13 @@ msgstr ""
 "Ζητήθηκε αλλαγή μέσου τύπου '%1'.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Αποδοχή EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2146,13 +2146,13 @@ msgstr ""
 "χρήσης τους:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:858
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:859
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Λείπει υπογραφή για %1 στο %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:859
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:860
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""

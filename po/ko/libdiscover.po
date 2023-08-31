@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-28 02:36+0000\n"
+"POT-Creation-Date: 2023-08-31 01:57+0000\n"
 "PO-Revision-Date: 2023-07-22 22:59+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1135,7 +1135,7 @@ msgstr ""
 msgid "Upgrade to %1 %2"
 msgstr "%1 %2(으)로 업그레이드"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:955
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:956
 #, kde-format
 msgid "A new major version has been released"
 msgstr "새 주 버전이 출시되었습니다"
@@ -2040,7 +2040,7 @@ msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "업데이트를 할 공간이 부족합니다. 현재 %1 공간이 비어 있습니다."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:572
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2052,12 +2052,12 @@ msgstr ""
 "완료할 수 없습니다:<nl/><ul><li>%1</li></ul><nl/>오류로 인해서 메시지가 표시"
 "된 것 같으면 배포판 패키지 관리자에게 버그를 보그하십시오."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:579
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
 #, kde-format
 msgid "Confirm Changes"
 msgstr "변경 사항 확인"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2066,13 +2066,13 @@ msgstr ""
 "업데이트 과정에서 <ul><li>%2</li></ul> 패키지를 설치하려면<br/>다음 패키지를 "
 "삭제해야 합니다:<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:699
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:700
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:707
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:708
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2082,13 +2082,13 @@ msgstr ""
 "'%1' 형식 미디어 변경이 필요합니다.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "EULA 수락"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2098,13 +2098,13 @@ msgstr ""
 "패키지 %1 및 제조사 %2에서 다음 라이선스를 받아들일 것을 요청했습니다:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:858
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:859
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%2의 %1에 서명이 없음"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:859
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:860
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""

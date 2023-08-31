@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-29 01:55+0000\n"
+"POT-Creation-Date: 2023-08-31 01:57+0000\n"
 "PO-Revision-Date: 2023-07-25 12:15+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -20,66 +20,55 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 23.07.70\n"
 
-#: discover/DiscoverObject.cpp:159
+#: discover/DiscoverObject.cpp:161
 #, kde-format
+msgctxt "@title %1 is the distro name"
 msgid ""
-"Discover currently cannot be used to install any apps or perform system "
-"updates because none of its app backends are available."
+"%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"Discover, şu anda herhangi bir uygulamayı kurmak veya sistemi güncellemek "
-"için kullanılamıyor; çünkü uygulama arka uçlarının hiçbiri kullanılabilir "
-"değil."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
-"You can install some on the Settings page, under the <interface>Missing "
-"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
-"as a packaging issue to your distribution."
+"To use Discover for apps, install your preferred module on the "
+"<interface>Settings</interface> page, under <interface>Missing Backends</"
+"interface>."
 msgstr ""
-"Birkaçını Ayarlar sayfasında, <interface>Eksik Arka Uçlar</interface> "
-"bölümünde kurabilirsiniz.<nl/><nl/>Ayrıca bunu, dağıtımınıza bir paketleme "
-"sorunu olarak bildirmeyi düşünün."
 
-#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
-#, kde-format
-msgid "Report This Issue"
-msgstr "Bu Sorunu Bildir"
+#: discover/DiscoverObject.cpp:166
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the name of the user's distro/OS"
+#| msgid "Report Issue to %1"
+msgctxt "@action:button %1 is the distro name"
+msgid "Report This Issue to %1"
+msgstr "Sorunu %1 Topluluğuna Bildir"
 
-#: discover/DiscoverObject.cpp:173
+#: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt ""
+"@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
+"Linux'"
 msgid ""
-"You can use <command>pacman</command> to install the optional dependencies "
-"that are needed to enable the application backends.<nl/><nl/>Please note "
-"that Arch Linux developers recommend using <command>pacman</command> for "
-"managing software because the PackageKit backend is not well-integrated on "
-"Arch Linux."
+"To use Discover for apps, install <link url='https://wiki.archlinux.org/"
+"title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
+"archlinux.org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</"
+"link> using the <command>pacman</command> package manager.<nl/><nl/> Review "
+"<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
+"packaging for Discover</link>"
 msgstr ""
-"Uygulama arka uçlarını etkinleştirmek için gereken isteğe bağlı "
-"bağımlılıkları kurmak için <command>pacman</command> komutunu "
-"kullanabilirsiniz.<nl/><nl/>PackageKit arka ucu, Arch Linux ile pek iyi bir "
-"biçimde tümleşmediğinden dolayı, Arch Linux geliştiricilerinin yazılımları "
-"yönetmek için <command>pacman</command> komutunu kullanmayı önerdiğini not "
-"edin."
 
-#: discover/DiscoverObject.cpp:181
-#, kde-format
-msgid "Learn More"
-msgstr "Daha Fazla Öğren"
-
-#: discover/DiscoverObject.cpp:269
+#: discover/DiscoverObject.cpp:266
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "'%1' kategorisi bulunamadı"
 
-#: discover/DiscoverObject.cpp:284
+#: discover/DiscoverObject.cpp:281
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Var olmayan '%1' dosyası açılmaya çalışılıyor"
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:303
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -88,17 +77,17 @@ msgstr ""
 "%1 flatpak arka ucu olmadan flatpak kaynaklarıyla etkileşim kurulamıyor. "
 "Lütfen önce kurun."
 
-#: discover/DiscoverObject.cpp:310
+#: discover/DiscoverObject.cpp:307
 #, kde-format
 msgid "Could not open %1"
 msgstr "%1 açılamadı"
 
-#: discover/DiscoverObject.cpp:372
+#: discover/DiscoverObject.cpp:369
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Lütfen Snap desteğinin kurulu olduğundan emin olun"
 
-#: discover/DiscoverObject.cpp:374
+#: discover/DiscoverObject.cpp:371
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -106,18 +95,23 @@ msgid ""
 msgstr ""
 "%1 açılamıyor; çünkü hiçbir kullanılabilir yazılım deposunda bulunamadı."
 
-#: discover/DiscoverObject.cpp:377
+#: discover/DiscoverObject.cpp:374
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Lütfen bu sorunu dağıtımınızın paketleyicilerine bildirin."
 
-#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
+#: discover/DiscoverObject.cpp:377
+#, kde-format
+msgid "Report This Issue"
+msgstr "Bu Sorunu Bildir"
+
+#: discover/DiscoverObject.cpp:439 discover/DiscoverObject.cpp:441
 #: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Keşfet"
 
-#: discover/DiscoverObject.cpp:445
+#: discover/DiscoverObject.cpp:442
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -267,7 +261,7 @@ msgstr "Yeni %1 Deposu Ekle"
 msgid "Add"
 msgstr "Ekle"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -275,7 +269,7 @@ msgstr "Ekle"
 msgid "Cancel"
 msgstr "İptal"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "%1 rating"
@@ -283,7 +277,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 derecelendirme"
 msgstr[1] "%1 derecelendirme"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "No ratings yet"
@@ -751,8 +745,8 @@ msgstr "&Hakkında"
 msgid "S&ettings"
 msgstr "A&yarlar"
 
-#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:338
-#: discover/qml/DiscoverWindow.qml:445
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:448
 #, kde-format
 msgid "Error"
 msgstr "Hata"
@@ -762,34 +756,34 @@ msgstr "Hata"
 msgid "Unable to find resource: %1"
 msgstr "Kaynak bulunamadı: %1"
 
-#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Sürdür"
 
-#: discover/qml/DiscoverWindow.qml:314
+#: discover/qml/DiscoverWindow.qml:317
 #, kde-format
 msgid "Report this issue"
 msgstr "Bu Sorunu Bildir"
 
-#: discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:341
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Hata %1/%2"
 
-#: discover/qml/DiscoverWindow.qml:383
+#: discover/qml/DiscoverWindow.qml:386
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Öncekini Göster"
 
-#: discover/qml/DiscoverWindow.qml:396
+#: discover/qml/DiscoverWindow.qml:399
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Sonrakini Göster"
 
-#: discover/qml/DiscoverWindow.qml:412
+#: discover/qml/DiscoverWindow.qml:415
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Panoya Kopyala"
@@ -1258,6 +1252,42 @@ msgstr "Güncellemeler denetlenmeli"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Son güncelleme zamanı bilinmiyor"
+
+#~ msgid ""
+#~ "Discover currently cannot be used to install any apps or perform system "
+#~ "updates because none of its app backends are available."
+#~ msgstr ""
+#~ "Discover, şu anda herhangi bir uygulamayı kurmak veya sistemi güncellemek "
+#~ "için kullanılamıyor; çünkü uygulama arka uçlarının hiçbiri kullanılabilir "
+#~ "değil."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "You can install some on the Settings page, under the <interface>Missing "
+#~ "Backends</interface> section.<nl/><nl/>Also please consider reporting "
+#~ "this as a packaging issue to your distribution."
+#~ msgstr ""
+#~ "Birkaçını Ayarlar sayfasında, <interface>Eksik Arka Uçlar</interface> "
+#~ "bölümünde kurabilirsiniz.<nl/><nl/>Ayrıca bunu, dağıtımınıza bir "
+#~ "paketleme sorunu olarak bildirmeyi düşünün."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "You can use <command>pacman</command> to install the optional "
+#~ "dependencies that are needed to enable the application backends.<nl/><nl/"
+#~ ">Please note that Arch Linux developers recommend using <command>pacman</"
+#~ "command> for managing software because the PackageKit backend is not well-"
+#~ "integrated on Arch Linux."
+#~ msgstr ""
+#~ "Uygulama arka uçlarını etkinleştirmek için gereken isteğe bağlı "
+#~ "bağımlılıkları kurmak için <command>pacman</command> komutunu "
+#~ "kullanabilirsiniz.<nl/><nl/>PackageKit arka ucu, Arch Linux ile pek iyi "
+#~ "bir biçimde tümleşmediğinden dolayı, Arch Linux geliştiricilerinin "
+#~ "yazılımları yönetmek için <command>pacman</command> komutunu kullanmayı "
+#~ "önerdiğini not edin."
+
+#~ msgid "Learn More"
+#~ msgstr "Daha Fazla Öğren"
 
 #~ msgid "Could not access the screenshots"
 #~ msgstr "Ekran görüntülerine erişilemedi"

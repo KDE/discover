@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-29 01:55+0000\n"
+"POT-Creation-Date: 2023-08-31 01:57+0000\n"
 "PO-Revision-Date: 2023-07-30 12:13+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -17,62 +17,55 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 23.04.3\n"
 
-#: discover/DiscoverObject.cpp:159
+#: discover/DiscoverObject.cpp:161
 #, kde-format
+msgctxt "@title %1 is the distro name"
 msgid ""
-"Discover currently cannot be used to install any apps or perform system "
-"updates because none of its app backends are available."
+"%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"டிஸ்கவருக்கான பின்னிலைகளில் எதுவும் நிறுவப்படாத‍தால், அதைக் கொண்டு எந்த செயலியையும் "
-"நிறுவ முடியாது, மேலும் அதைக்கொண்டு இயங்குதள நிரல்களை புதுப்பிக்க முடியாது."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
-"You can install some on the Settings page, under the <interface>Missing "
-"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
-"as a packaging issue to your distribution."
+"To use Discover for apps, install your preferred module on the "
+"<interface>Settings</interface> page, under <interface>Missing Backends</"
+"interface>."
 msgstr ""
-"அமைப்புகளில் <interface>இல்லாத பின்னிலைகள்</interface> என்ற பகுதிக்கு சென்று சிலவற்றை "
-"நீங்கள் நிறுவலாம்.<nl/><nl/>உங்கள் இயங்குதள பராமரிப்பாளர்களிடம் இதைப்பற்றி புகாரளியுங்கள்."
 
-#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
-#, kde-format
-msgid "Report This Issue"
-msgstr "இச்சிக்கலை தெரிவி"
+#: discover/DiscoverObject.cpp:166
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the name of the user's distro/OS"
+#| msgid "Report Issue to %1"
+msgctxt "@action:button %1 is the distro name"
+msgid "Report This Issue to %1"
+msgstr "%1-க்கு இச்சிக்கலை தெரிவி"
 
-#: discover/DiscoverObject.cpp:173
+#: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt ""
+"@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
+"Linux'"
 msgid ""
-"You can use <command>pacman</command> to install the optional dependencies "
-"that are needed to enable the application backends.<nl/><nl/>Please note "
-"that Arch Linux developers recommend using <command>pacman</command> for "
-"managing software because the PackageKit backend is not well-integrated on "
-"Arch Linux."
+"To use Discover for apps, install <link url='https://wiki.archlinux.org/"
+"title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
+"archlinux.org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</"
+"link> using the <command>pacman</command> package manager.<nl/><nl/> Review "
+"<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
+"packaging for Discover</link>"
 msgstr ""
-"செயலிகளுக்கான பின்னிலையை இயக்கத் தேவையான நிரல்களை நிறுவ <command>pacman</command> "
-"கட்டளையை நீங்கள் பயன்படுத்தலாம்.<nl/><nl/>Arch Linux இயங்குதளத்தில் PackageKit பின்னிலை "
-"சரியாக ஒன்றிணைக்கப்படாத‍தால், பயனர்கள் <command>pacman</command> கட்டளையைக் கொண்டே "
-"செயலிகளை நிறுவுவதை அவ்வியங்குதளத்தின் பராமரிப்பாளர்கள் பரிந்துரைக்கிறார்கள்."
 
-#: discover/DiscoverObject.cpp:181
-#, kde-format
-msgid "Learn More"
-msgstr "மேலும் விவரங்கள்"
-
-#: discover/DiscoverObject.cpp:269
+#: discover/DiscoverObject.cpp:266
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "'%1 என்ற பகுப்பை கண்டுபிடிக்க முடியவில்லை"
 
-#: discover/DiscoverObject.cpp:284
+#: discover/DiscoverObject.cpp:281
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "'%1' எனும் இல்லாத கோப்பின் திறப்பு முயற்சிக்கப்பட்டது"
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:303
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -81,17 +74,17 @@ msgstr ""
 "%1 எனும் flatpak பின்நிலை இல்லாமல் ஃபலாட்பாக்குகளைக் கையாள முடியாது. அதை முதலில் "
 "நிறுவுங்கள்."
 
-#: discover/DiscoverObject.cpp:310
+#: discover/DiscoverObject.cpp:307
 #, kde-format
 msgid "Could not open %1"
 msgstr "%1 தனை திறக்க முடியவில்லை"
 
-#: discover/DiscoverObject.cpp:372
+#: discover/DiscoverObject.cpp:369
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Snap ஆதரவு நிறுவப்பட்டுள்ளதா என்பதை சரிபாருங்கள்"
 
-#: discover/DiscoverObject.cpp:374
+#: discover/DiscoverObject.cpp:371
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -99,18 +92,23 @@ msgid ""
 msgstr ""
 "%1 என்பது இயக்கப்பட்டுள்ள நிரல்கிடங்குகளில் கண்டுபிடிக்கப்படாத‍தால் அதைத் திறக்க முடியவில்லை."
 
-#: discover/DiscoverObject.cpp:377
+#: discover/DiscoverObject.cpp:374
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "உங்கள் இயக்குதளத்தின் பராமரிப்பாளர்களிடம் இதைத் தெரிவியுங்கள்."
 
-#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
+#: discover/DiscoverObject.cpp:377
+#, kde-format
+msgid "Report This Issue"
+msgstr "இச்சிக்கலை தெரிவி"
+
+#: discover/DiscoverObject.cpp:439 discover/DiscoverObject.cpp:441
 #: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "டிஸ்கவர்"
 
-#: discover/DiscoverObject.cpp:445
+#: discover/DiscoverObject.cpp:442
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -260,7 +258,7 @@ msgstr "புதிய %1 களஞ்சியத்தை சேர்"
 msgid "Add"
 msgstr "சேர்"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -268,7 +266,7 @@ msgstr "சேர்"
 msgid "Cancel"
 msgstr "ரத்து செய்"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "%1 rating"
@@ -276,7 +274,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 மதிப்பீடு"
 msgstr[1] "%1 மதிப்பீடுகள்"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "No ratings yet"
@@ -738,8 +736,8 @@ msgstr "&பற்றி"
 msgid "S&ettings"
 msgstr "&அமைப்புகள்"
 
-#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:338
-#: discover/qml/DiscoverWindow.qml:445
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:448
 #, kde-format
 msgid "Error"
 msgstr "சிக்கல்"
@@ -749,34 +747,34 @@ msgstr "சிக்கல்"
 msgid "Unable to find resource: %1"
 msgstr "இதை கண்டுபிடிக்க முடியவில்லை: %1"
 
-#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "தொடர்"
 
-#: discover/qml/DiscoverWindow.qml:314
+#: discover/qml/DiscoverWindow.qml:317
 #, kde-format
 msgid "Report this issue"
 msgstr "இச்சிக்கலை தெரிவி"
 
-#: discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:341
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "%2-இல் %1-வது சிக்கல்"
 
-#: discover/qml/DiscoverWindow.qml:383
+#: discover/qml/DiscoverWindow.qml:386
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "முந்தையதைக் காட்டு"
 
-#: discover/qml/DiscoverWindow.qml:396
+#: discover/qml/DiscoverWindow.qml:399
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "அடுத்ததைக் காட்டு"
 
-#: discover/qml/DiscoverWindow.qml:412
+#: discover/qml/DiscoverWindow.qml:415
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "பிடிப்புப்பலகைக்கு நகலெடு"
@@ -1246,6 +1244,40 @@ msgstr "புதுப்பிப்புகள் உள்ளனவா எ�
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "கடைசியாக புதுப்பித்த நேரம் தெரியாத‍து"
+
+#~ msgid ""
+#~ "Discover currently cannot be used to install any apps or perform system "
+#~ "updates because none of its app backends are available."
+#~ msgstr ""
+#~ "டிஸ்கவருக்கான பின்னிலைகளில் எதுவும் நிறுவப்படாத‍தால், அதைக் கொண்டு எந்த செயலியையும் "
+#~ "நிறுவ முடியாது, மேலும் அதைக்கொண்டு இயங்குதள நிரல்களை புதுப்பிக்க முடியாது."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "You can install some on the Settings page, under the <interface>Missing "
+#~ "Backends</interface> section.<nl/><nl/>Also please consider reporting "
+#~ "this as a packaging issue to your distribution."
+#~ msgstr ""
+#~ "அமைப்புகளில் <interface>இல்லாத பின்னிலைகள்</interface> என்ற பகுதிக்கு சென்று "
+#~ "சிலவற்றை நீங்கள் நிறுவலாம்.<nl/><nl/>உங்கள் இயங்குதள பராமரிப்பாளர்களிடம் இதைப்பற்றி "
+#~ "புகாரளியுங்கள்."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "You can use <command>pacman</command> to install the optional "
+#~ "dependencies that are needed to enable the application backends.<nl/><nl/"
+#~ ">Please note that Arch Linux developers recommend using <command>pacman</"
+#~ "command> for managing software because the PackageKit backend is not well-"
+#~ "integrated on Arch Linux."
+#~ msgstr ""
+#~ "செயலிகளுக்கான பின்னிலையை இயக்கத் தேவையான நிரல்களை நிறுவ <command>pacman</"
+#~ "command> கட்டளையை நீங்கள் பயன்படுத்தலாம்.<nl/><nl/>Arch Linux இயங்குதளத்தில் "
+#~ "PackageKit பின்னிலை சரியாக ஒன்றிணைக்கப்படாத‍தால், பயனர்கள் <command>pacman</"
+#~ "command> கட்டளையைக் கொண்டே செயலிகளை நிறுவுவதை அவ்வியங்குதளத்தின் பராமரிப்பாளர்கள் "
+#~ "பரிந்துரைக்கிறார்கள்."
+
+#~ msgid "Learn More"
+#~ msgstr "மேலும் விவரங்கள்"
 
 #~ msgid "Could not access the screenshots"
 #~ msgstr "திரைப்பிடிப்புகளை அணுக முடியவில்லை"

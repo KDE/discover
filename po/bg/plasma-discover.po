@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-29 01:55+0000\n"
+"POT-Creation-Date: 2023-08-31 01:57+0000\n"
 "PO-Revision-Date: 2023-07-27 14:58+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: \n"
@@ -17,66 +17,55 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 23.04.3\n"
 
-#: discover/DiscoverObject.cpp:159
+#: discover/DiscoverObject.cpp:161
 #, kde-format
+msgctxt "@title %1 is the distro name"
 msgid ""
-"Discover currently cannot be used to install any apps or perform system "
-"updates because none of its app backends are available."
+"%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"Discover понастоящем не може да се използва за инсталиране на приложения или "
-"за актуализация на системата, защото не е наличен бекенд."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
-"You can install some on the Settings page, under the <interface>Missing "
-"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
-"as a packaging issue to your distribution."
+"To use Discover for apps, install your preferred module on the "
+"<interface>Settings</interface> page, under <interface>Missing Backends</"
+"interface>."
 msgstr ""
-"Можете да инсталирате някои от тях на страницата с настройки, в "
-"<interface>Липсващ бекенд</interface>.<nl/><nl/>Моля, помислете за "
-"докладване на това като проблем със системата за пакетиране на вашата "
-"дистрибуция."
 
-#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
-#, kde-format
-msgid "Report This Issue"
-msgstr "Докладвайте този проблем"
+#: discover/DiscoverObject.cpp:166
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the name of the user's distro/OS"
+#| msgid "Report Issue to %1"
+msgctxt "@action:button %1 is the distro name"
+msgid "Report This Issue to %1"
+msgstr "Докладвайте този проблем на %1"
 
-#: discover/DiscoverObject.cpp:173
+#: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt ""
+"@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
+"Linux'"
 msgid ""
-"You can use <command>pacman</command> to install the optional dependencies "
-"that are needed to enable the application backends.<nl/><nl/>Please note "
-"that Arch Linux developers recommend using <command>pacman</command> for "
-"managing software because the PackageKit backend is not well-integrated on "
-"Arch Linux."
+"To use Discover for apps, install <link url='https://wiki.archlinux.org/"
+"title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
+"archlinux.org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</"
+"link> using the <command>pacman</command> package manager.<nl/><nl/> Review "
+"<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
+"packaging for Discover</link>"
 msgstr ""
-"Можете да използвате <command>pacman</command>, за да инсталирате "
-"незадължителните зависимости които са необходими, за да се активират "
-"бекендите на приложенията.<nl/><nl/>Моля, обърнете внимание че "
-"разработчиците на Arch Linux препоръчват използването на <command>pacman</"
-"command> за управлението на софтуер, тъй като бекендът PackageKit не е добре "
-"интегриран в Arch Linux."
 
-#: discover/DiscoverObject.cpp:181
-#, kde-format
-msgid "Learn More"
-msgstr "Научете повече"
-
-#: discover/DiscoverObject.cpp:269
+#: discover/DiscoverObject.cpp:266
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Неуспешно намиране на категория \"%1\""
 
-#: discover/DiscoverObject.cpp:284
+#: discover/DiscoverObject.cpp:281
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Опитва се отваряне на несъществуващ файл \"%1\""
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:303
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -85,17 +74,17 @@ msgstr ""
 "Не може да взаимодейства с ресурси на flatpak без бекенда %1 на flatpak."
 "Моля, първо го инсталирайте."
 
-#: discover/DiscoverObject.cpp:310
+#: discover/DiscoverObject.cpp:307
 #, kde-format
 msgid "Could not open %1"
 msgstr "Не може да се зареди %1"
 
-#: discover/DiscoverObject.cpp:372
+#: discover/DiscoverObject.cpp:369
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Моля, уверете се, че поддръжка за Snap е инсталирана"
 
-#: discover/DiscoverObject.cpp:374
+#: discover/DiscoverObject.cpp:371
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -103,18 +92,23 @@ msgid ""
 msgstr ""
 "Не може да се отвори %1, защото не е намерен в наличните софтуерни хранилища."
 
-#: discover/DiscoverObject.cpp:377
+#: discover/DiscoverObject.cpp:374
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr " Моля, докладвайте този проблем на вашата дистрибуция."
 
-#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
+#: discover/DiscoverObject.cpp:377
+#, kde-format
+msgid "Report This Issue"
+msgstr "Докладвайте този проблем"
+
+#: discover/DiscoverObject.cpp:439 discover/DiscoverObject.cpp:441
 #: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:445
+#: discover/DiscoverObject.cpp:442
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -268,7 +262,7 @@ msgstr "Добавяне на ново хранилище %1"
 msgid "Add"
 msgstr "Добавяне"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -276,7 +270,7 @@ msgstr "Добавяне"
 msgid "Cancel"
 msgstr "Отказ"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "%1 rating"
@@ -284,7 +278,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 рейтинг"
 msgstr[1] "%1 оценки"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "No ratings yet"
@@ -752,8 +746,8 @@ msgstr "&Относно"
 msgid "S&ettings"
 msgstr "&Настройки"
 
-#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:338
-#: discover/qml/DiscoverWindow.qml:445
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:448
 #, kde-format
 msgid "Error"
 msgstr "Грешка"
@@ -763,34 +757,34 @@ msgstr "Грешка"
 msgid "Unable to find resource: %1"
 msgstr "Не може да се намери ресурс: %1"
 
-#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Продължаване"
 
-#: discover/qml/DiscoverWindow.qml:314
+#: discover/qml/DiscoverWindow.qml:317
 #, kde-format
 msgid "Report this issue"
 msgstr "Докладвайте този проблем"
 
-#: discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:341
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Грешка %1 от %2"
 
-#: discover/qml/DiscoverWindow.qml:383
+#: discover/qml/DiscoverWindow.qml:386
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Показване на предишно"
 
-#: discover/qml/DiscoverWindow.qml:396
+#: discover/qml/DiscoverWindow.qml:399
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Показване на следващо"
 
-#: discover/qml/DiscoverWindow.qml:412
+#: discover/qml/DiscoverWindow.qml:415
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Копиране в клипборда"
@@ -1259,3 +1253,39 @@ msgstr "Трябва да проверите за актуализации"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Неизвестно време от последното актуализиране"
+
+#~ msgid ""
+#~ "Discover currently cannot be used to install any apps or perform system "
+#~ "updates because none of its app backends are available."
+#~ msgstr ""
+#~ "Discover понастоящем не може да се използва за инсталиране на приложения "
+#~ "или за актуализация на системата, защото не е наличен бекенд."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "You can install some on the Settings page, under the <interface>Missing "
+#~ "Backends</interface> section.<nl/><nl/>Also please consider reporting "
+#~ "this as a packaging issue to your distribution."
+#~ msgstr ""
+#~ "Можете да инсталирате някои от тях на страницата с настройки, в "
+#~ "<interface>Липсващ бекенд</interface>.<nl/><nl/>Моля, помислете за "
+#~ "докладване на това като проблем със системата за пакетиране на вашата "
+#~ "дистрибуция."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "You can use <command>pacman</command> to install the optional "
+#~ "dependencies that are needed to enable the application backends.<nl/><nl/"
+#~ ">Please note that Arch Linux developers recommend using <command>pacman</"
+#~ "command> for managing software because the PackageKit backend is not well-"
+#~ "integrated on Arch Linux."
+#~ msgstr ""
+#~ "Можете да използвате <command>pacman</command>, за да инсталирате "
+#~ "незадължителните зависимости които са необходими, за да се активират "
+#~ "бекендите на приложенията.<nl/><nl/>Моля, обърнете внимание че "
+#~ "разработчиците на Arch Linux препоръчват използването на <command>pacman</"
+#~ "command> за управлението на софтуер, тъй като бекендът PackageKit не е "
+#~ "добре интегриран в Arch Linux."
+
+#~ msgid "Learn More"
+#~ msgstr "Научете повече"

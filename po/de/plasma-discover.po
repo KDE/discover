@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-29 01:55+0000\n"
+"POT-Creation-Date: 2023-08-31 01:57+0000\n"
 "PO-Revision-Date: 2023-08-14 22:02+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -16,66 +16,55 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 23.11.70\n"
 
-#: discover/DiscoverObject.cpp:159
+#: discover/DiscoverObject.cpp:161
 #, kde-format
+msgctxt "@title %1 is the distro name"
 msgid ""
-"Discover currently cannot be used to install any apps or perform system "
-"updates because none of its app backends are available."
+"%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"Discover kann derzeit nicht zur Installation von Anwendungen oder "
-"Systemaktualisierungen verwendet werden, da keines seiner Anwendungen-"
-"Backends verfügbar ist."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
-"You can install some on the Settings page, under the <interface>Missing "
-"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
-"as a packaging issue to your distribution."
+"To use Discover for apps, install your preferred module on the "
+"<interface>Settings</interface> page, under <interface>Missing Backends</"
+"interface>."
 msgstr ""
-"Sie können diese auf der Einstellungsseite im Abschnitt <interface>Fehlende "
-"Backends</interface> installieren.<nl/><nl/>Ziehen Sie bitte in Erwägung, "
-"dies als Paketierungsproblem Ihrer Distribution zu melden."
 
-#: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
-#, kde-format
-msgid "Report This Issue"
-msgstr "Dieses Problem berichten"
+#: discover/DiscoverObject.cpp:166
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the name of the user's distro/OS"
+#| msgid "Report Issue to %1"
+msgctxt "@action:button %1 is the distro name"
+msgid "Report This Issue to %1"
+msgstr "Problem an %1 berichten"
 
-#: discover/DiscoverObject.cpp:173
+#: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
-msgctxt "@info"
+msgctxt ""
+"@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
+"Linux'"
 msgid ""
-"You can use <command>pacman</command> to install the optional dependencies "
-"that are needed to enable the application backends.<nl/><nl/>Please note "
-"that Arch Linux developers recommend using <command>pacman</command> for "
-"managing software because the PackageKit backend is not well-integrated on "
-"Arch Linux."
+"To use Discover for apps, install <link url='https://wiki.archlinux.org/"
+"title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
+"archlinux.org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</"
+"link> using the <command>pacman</command> package manager.<nl/><nl/> Review "
+"<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
+"packaging for Discover</link>"
 msgstr ""
-"Sie können <command>pacman</command> verwenden, um die für die Aktivierung "
-"der Anwendungen-Backends erforderlichen optionalen Abhängigkeiten zu "
-"installieren.<nl/><nl/>Bitte beachte Sie, dass die Entwickler von Arch Linux "
-"die Verwendung von <command>pacman</command> zur Software-Verwaltung "
-"empfehlen, da das PackageKit-Backend in Arch Linux nur eingeschränkt "
-"implementiert ist."
 
-#: discover/DiscoverObject.cpp:181
-#, kde-format
-msgid "Learn More"
-msgstr "Mehr erfahren"
-
-#: discover/DiscoverObject.cpp:269
+#: discover/DiscoverObject.cpp:266
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Die Kategorie „%1“ wurde nicht gefunden"
 
-#: discover/DiscoverObject.cpp:284
+#: discover/DiscoverObject.cpp:281
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Es wird versucht, die nicht vorhandene Datei „%1“ zu öffnen"
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:303
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -84,18 +73,18 @@ msgstr ""
 "Die Bearbeitung von Flatpack-Ressourcen ist ohne das Flatpak-Backend %1 "
 "nicht möglich. Installieren Sie es zuerst."
 
-#: discover/DiscoverObject.cpp:310
+#: discover/DiscoverObject.cpp:307
 #, kde-format
 msgid "Could not open %1"
 msgstr "„%1“ kann nicht geöffnet werden"
 
-#: discover/DiscoverObject.cpp:372
+#: discover/DiscoverObject.cpp:369
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr ""
 "Bitten stellen Sie sicher, dass Unterstützung für Snaps installiert ist"
 
-#: discover/DiscoverObject.cpp:374
+#: discover/DiscoverObject.cpp:371
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -104,18 +93,23 @@ msgstr ""
 "%1 kann nicht geöffnet werden, da es in keiner verfügbaren Paketquelle "
 "gefunden wurde."
 
-#: discover/DiscoverObject.cpp:377
+#: discover/DiscoverObject.cpp:374
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Berichten Sie bitte diesen Fehler an Ihre Distribution."
 
-#: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:444
+#: discover/DiscoverObject.cpp:377
+#, kde-format
+msgid "Report This Issue"
+msgstr "Dieses Problem berichten"
+
+#: discover/DiscoverObject.cpp:439 discover/DiscoverObject.cpp:441
 #: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:445
+#: discover/DiscoverObject.cpp:442
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -269,7 +263,7 @@ msgstr "Neue Paketquelle %1 hinzufügen"
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:269
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
 #: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -277,7 +271,7 @@ msgstr "Hinzufügen"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "%1 rating"
@@ -285,7 +279,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 Bewertung"
 msgstr[1] "%1 Bewertungen"
 
-#: discover/qml/ApplicationDelegate.qml:141
+#: discover/qml/ApplicationDelegate.qml:161
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
 msgid "No ratings yet"
@@ -766,8 +760,8 @@ msgstr "&Über"
 msgid "S&ettings"
 msgstr "&Einstellungen"
 
-#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:338
-#: discover/qml/DiscoverWindow.qml:445
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:448
 #, kde-format
 msgid "Error"
 msgstr "Fehler"
@@ -777,34 +771,34 @@ msgstr "Fehler"
 msgid "Unable to find resource: %1"
 msgstr "Ressource %1 wurde nicht gefunden"
 
-#: discover/qml/DiscoverWindow.qml:256 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Fortfahren"
 
-#: discover/qml/DiscoverWindow.qml:314
+#: discover/qml/DiscoverWindow.qml:317
 #, kde-format
 msgid "Report this issue"
 msgstr "Dieses Problem berichten"
 
-#: discover/qml/DiscoverWindow.qml:338
+#: discover/qml/DiscoverWindow.qml:341
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Fehler %1 von %2"
 
-#: discover/qml/DiscoverWindow.qml:383
+#: discover/qml/DiscoverWindow.qml:386
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Vorherigen anzeigen"
 
-#: discover/qml/DiscoverWindow.qml:396
+#: discover/qml/DiscoverWindow.qml:399
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Nächsten anzeigen"
 
-#: discover/qml/DiscoverWindow.qml:412
+#: discover/qml/DiscoverWindow.qml:415
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "In die Zwischenablage kopieren"
@@ -1271,6 +1265,43 @@ msgstr "Soll auf Aktualisierungen prüfen"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Zeit der letzten Aktualisierung unbekannt"
+
+#~ msgid ""
+#~ "Discover currently cannot be used to install any apps or perform system "
+#~ "updates because none of its app backends are available."
+#~ msgstr ""
+#~ "Discover kann derzeit nicht zur Installation von Anwendungen oder "
+#~ "Systemaktualisierungen verwendet werden, da keines seiner Anwendungen-"
+#~ "Backends verfügbar ist."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "You can install some on the Settings page, under the <interface>Missing "
+#~ "Backends</interface> section.<nl/><nl/>Also please consider reporting "
+#~ "this as a packaging issue to your distribution."
+#~ msgstr ""
+#~ "Sie können diese auf der Einstellungsseite im Abschnitt "
+#~ "<interface>Fehlende Backends</interface> installieren.<nl/><nl/>Ziehen "
+#~ "Sie bitte in Erwägung, dies als Paketierungsproblem Ihrer Distribution zu "
+#~ "melden."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "You can use <command>pacman</command> to install the optional "
+#~ "dependencies that are needed to enable the application backends.<nl/><nl/"
+#~ ">Please note that Arch Linux developers recommend using <command>pacman</"
+#~ "command> for managing software because the PackageKit backend is not well-"
+#~ "integrated on Arch Linux."
+#~ msgstr ""
+#~ "Sie können <command>pacman</command> verwenden, um die für die "
+#~ "Aktivierung der Anwendungen-Backends erforderlichen optionalen "
+#~ "Abhängigkeiten zu installieren.<nl/><nl/>Bitte beachte Sie, dass die "
+#~ "Entwickler von Arch Linux die Verwendung von <command>pacman</command> "
+#~ "zur Software-Verwaltung empfehlen, da das PackageKit-Backend in Arch "
+#~ "Linux nur eingeschränkt implementiert ist."
+
+#~ msgid "Learn More"
+#~ msgstr "Mehr erfahren"
 
 #~ msgid "Could not access the screenshots"
 #~ msgstr "Zugriff auf Bildschirmfotos nicht möglich"
