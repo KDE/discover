@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-31 01:57+0000\n"
-"PO-Revision-Date: 2023-07-26 22:37+0300\n"
+"PO-Revision-Date: 2023-08-31 08:50+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -26,6 +26,8 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"%1 не налаштовано для встановлення програм за допомогою призначених лише для "
+"Discover додатків"
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -35,14 +37,15 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"Щоб скористатися Discover, встановіть бажаний для вас модуль на сторінці "
+"<interface>Параметри</interface> зі списку <interface>Не вистачає модулів "
+"обробки</interface>."
 
 #: discover/DiscoverObject.cpp:166
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of the user's distro/OS"
-#| msgid "Report Issue to %1"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr "Повідомити про ваду %1"
+msgstr "Повідомте про цю проблему %1"
 
 #: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
@@ -57,6 +60,13 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"Щоб скористатися Discover для програм, встановіть <link url='https://wiki."
+"archlinux.org/title/Flatpak#Installation'>Flatpak</link> або <link "
+"url='https://wiki.archlinux.org/title/"
+"KDE#Discover_does_not_show_any_applications'>PackageKit</link> за допомогою "
+"програми для керування пакунків <command>pacman</command>.<nl/><nl/> "
+"Ознайомтеся із <link url='https://archlinux.org/packages/extra/x86_64/"
+"discover/'>пакуванням %1 Discover</link>"
 
 #: discover/DiscoverObject.cpp:266
 #, kde-format

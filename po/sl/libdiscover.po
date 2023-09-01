@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-31 01:57+0000\n"
+"POT-Creation-Date: 2023-09-01 01:57+0000\n"
 "PO-Revision-Date: 2023-07-19 06:36+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -540,7 +540,7 @@ msgid "Local bundle"
 msgstr "Krajevna zbirka"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:734
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:736
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Napačno oblikovan URL appstream '%1'"
@@ -1122,12 +1122,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Pisave"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:287
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:289
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Prepričajte se, da je Appstream pravilno nastavljen na vašem sistemu"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:323
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:325
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1137,12 +1137,12 @@ msgstr ""
 "Vaš operacijski sistem nima več podpore na %1. Razmislite o nadgradnji na "
 "podprto različico."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:846
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:848
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Ni mogoče odstraniti '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:926
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:928
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1153,13 +1153,13 @@ msgstr ""
 "Če želite posodobiti programje na to novo različico sistema, zagotovite "
 "uveljavitve vseh čakajočih posodobitev in ponovno zaženite sistem."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:937
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Posodobi na %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:956
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, kde-format
 msgid "A new major version has been released"
 msgstr "Izšla je pomembnejša novejša različica"
@@ -2111,13 +2111,13 @@ msgstr ""
 "Posodobitev bo odstranila naslednje pakete:<ul><li>%1</li></ul><br/>zato da "
 "bi namestila:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:700
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:702
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:708
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:710
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2127,13 +2127,13 @@ msgstr ""
 "Zahtevana je sprememba nosilca vrste '%1'.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:743
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Sprejmi EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2143,13 +2143,13 @@ msgstr ""
 "Paket %1 in njegov proizvajalec %2 zahtevata, da sprejmete njihovo licenco:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:859
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:861
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Manjka podpis za %1 in %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:860
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:862
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""

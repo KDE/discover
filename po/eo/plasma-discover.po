@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-31 01:57+0000\n"
-"PO-Revision-Date: 2023-07-25 22:40+0100\n"
+"PO-Revision-Date: 2023-08-31 21:15+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -24,6 +24,7 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"%1 ne estas agordita por instali aplikaĵojn per nur-Discover aplik-aldonaĵoj"
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -33,14 +34,15 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"Por uzi Discover por apoj, instalu vian preferatan modulon sur la paĝo "
+"<interface>Agordoj</interface>, sub <interface>Mankantaj Backends</"
+"interface>."
 
 #: discover/DiscoverObject.cpp:166
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of the user's distro/OS"
-#| msgid "Report Issue to %1"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr "Raporti temon al %1"
+msgstr "Raporti Ĉi Temon al %1"
 
 #: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
@@ -55,6 +57,12 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"Por uzi Discover por aplikoj, instalu <link url='https://wiki.archlinux.org/"
+"title/Flatpak#Installation'>Flatpak</link> aŭ <link url='https://wiki."
+"archlinux.org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</"
+"link> uzante la <command>pacman</command> pakaĵadministrilon.<nl/><nl/> "
+"Konsultu <link url='https://archlinux.org/packages/extra/x86_64/"
+"discover/'>La pakado de %1 por Discover</link>"
 
 #: discover/DiscoverObject.cpp:266
 #, kde-format
@@ -1245,37 +1253,3 @@ msgstr "Devus kontroli ĝisdatigojn"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tempo de lasta ĝisdatigo nekonata"
-
-#~ msgid ""
-#~ "Discover currently cannot be used to install any apps or perform system "
-#~ "updates because none of its app backends are available."
-#~ msgstr ""
-#~ "Discover nuntempe ne povas esti uzata por instali iujn ajn programojn aŭ "
-#~ "fari sistemajn ĝisdatigojn ĉar neniu el ĝiaj aplikaj backends disponeblas."
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "You can install some on the Settings page, under the <interface>Missing "
-#~ "Backends</interface> section.<nl/><nl/>Also please consider reporting "
-#~ "this as a packaging issue to your distribution."
-#~ msgstr ""
-#~ "Vi povas instali iujn sur la paĝo Agordoj, sub la sekcio "
-#~ "<interface>Mankas Backends</interface>.<nl/><nl/>Ankaŭ bonvolu konsideri "
-#~ "raporti ĉi tion kiel paka problemo al via distribuo."
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "You can use <command>pacman</command> to install the optional "
-#~ "dependencies that are needed to enable the application backends.<nl/><nl/"
-#~ ">Please note that Arch Linux developers recommend using <command>pacman</"
-#~ "command> for managing software because the PackageKit backend is not well-"
-#~ "integrated on Arch Linux."
-#~ msgstr ""
-#~ "Vi povas uzi <command>pacman</command> por instali la laŭvolajn "
-#~ "dependecojn, kiuj estas bezonataj por ebligi la aplikajn malantaŭojn.<nl/"
-#~ "><nl/>Bonvolu noti, ke programistoj de Arch Linux rekomendas uzi "
-#~ "<command>pacman</command> por administri programaron ĉar la Backend "
-#~ "PackageKit ne estas bone integrita en Arch Linukso."
-
-#~ msgid "Learn More"
-#~ msgstr "Lernu pli"

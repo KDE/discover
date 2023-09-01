@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-31 01:57+0000\n"
+"POT-Creation-Date: 2023-09-01 01:57+0000\n"
 "PO-Revision-Date: 2023-07-19 06:22+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -538,7 +538,7 @@ msgid "Local bundle"
 msgstr "ლოკალური პაკეტი"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:734
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:736
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "აღმავლის არასწორი URL '%1'"
@@ -1117,12 +1117,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "ფონტები"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:287
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:289
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "დარწმუნდით, რომ AppStream სწორად აყენია"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:323
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:325
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1132,12 +1132,12 @@ msgstr ""
 "თქვენი ოპერაციული სისტემის მხარდაჭერა %1-ზე დასრულდა. სჯობს მხარდაჭერილ "
 "ვერსიამდე განახლდეთ."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:846
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:848
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "%1-ის წაშლის შეცდომა"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:926
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:928
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1148,13 +1148,13 @@ msgstr ""
 "ამ ვერსიამდე განახლებისთვის დარწმუნდით, რომ ყველა დარჩენილი განახლება "
 "დააყენეთ და გადატვირთეთ სისტემა."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:937
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "განახლება ვერსიამდე %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:956
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, kde-format
 msgid "A new major version has been released"
 msgstr "გამოვიდა ახალი ვერსია"
@@ -2090,13 +2090,13 @@ msgid ""
 msgstr ""
 "<ul><li>%2</li></ul>-ის დასაყენებლად წაიშლება <ul><li>%1</li></ul><br/>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:700
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:702
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:708
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:710
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2106,13 +2106,13 @@ msgstr ""
 "მოთხოვილია '%1' მედიის ცვლილება.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:743
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "EULA-ის დათანხმება"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2122,13 +2122,13 @@ msgstr ""
 "პაკეტი %1 და მისი მომწოდებელი %2 ითხოვენ, რომ მათ ლიცენზიას დაეთანხმოთ:\n"
 "%3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:859
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:861
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%1-სთვის ხელმოწერა %2-ში არ არსებობს"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:860
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:862
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""

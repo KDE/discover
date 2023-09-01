@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-31 01:57+0000\n"
+"POT-Creation-Date: 2023-09-01 01:57+0000\n"
 "PO-Revision-Date: 2023-06-17 12:02+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -539,7 +539,7 @@ msgid "Local bundle"
 msgstr "Local bundle"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:734
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:736
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Malformed appstream URL '%1'"
@@ -1120,12 +1120,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Fonts"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:287
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:289
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Please make sure that Appstream is properly set up on your system"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:323
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:325
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1135,12 +1135,12 @@ msgstr ""
 "Your operating system ended support on %1. Consider upgrading to a supported "
 "version."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:846
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:848
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Cannot remove '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:926
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:928
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1151,13 +1151,13 @@ msgstr ""
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:937
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Upgrade to %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:956
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, kde-format
 msgid "A new major version has been released"
 msgstr "A new major version has been released"
@@ -2099,13 +2099,13 @@ msgstr ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
 ">in order to install:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:700
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:702
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:708
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:710
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
 #, kde-format
 msgid ""
@@ -2115,13 +2115,13 @@ msgstr ""
 "Media Change of type '%1' is requested.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:741
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:743
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
 msgstr "Accept EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
 #, kde-format
 msgid ""
@@ -2131,13 +2131,13 @@ msgstr ""
 "The package %1 and its vendor %2 require that you accept their licence:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:859
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:861
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Missing signature for %1 in %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:860
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:862
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
 #, kde-format
 msgid ""
