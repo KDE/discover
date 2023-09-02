@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-31 01:57+0000\n"
-"PO-Revision-Date: 2023-06-23 11:27+0200\n"
+"PO-Revision-Date: 2023-08-10 15:48+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #: discover/DiscoverObject.cpp:161
 #, kde-format
@@ -34,12 +34,10 @@ msgid ""
 msgstr ""
 
 #: discover/DiscoverObject.cpp:166
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of the user's distro/OS"
-#| msgid "Report Issue to %1"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr "Nahlaste problém na %1"
+msgstr ""
 
 #: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
@@ -351,7 +349,7 @@ msgstr "Podrobnosti…"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
+msgstr "Pro %1 není dostupný snímek obrazovky"
 
 #: discover/qml/ApplicationPage.qml:547
 #, kde-format
@@ -419,7 +417,7 @@ msgstr "Načítají se recenze pro %1"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "Hodnocení pro %1 jsou dočasně nedostupná"
 
 #: discover/qml/ApplicationPage.qml:716
 #, kde-format
@@ -635,11 +633,10 @@ msgid "Still looking…"
 msgstr "Stále hledám…"
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "&Domů"
+msgstr "Domů"
 
 #: discover/qml/BrowsingPage.qml:63
 #, kde-format
@@ -702,14 +699,12 @@ msgid "Fetching &updates…"
 msgstr "Získávají se akt&ualizace…"
 
 #: discover/qml/DiscoverWindow.qml:85
-#, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "&Update (%1)"
+#, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
-msgstr[0] "Akt&ualizovat (%1)"
-msgstr[1] "Akt&ualizovat (%1)"
-msgstr[2] "Akt&ualizovat (%1)"
+msgstr[0] "Akt&ualizace (%1)"
+msgstr[1] "Akt&ualizace (%1)"
+msgstr[2] "Akt&ualizace (%1)"
 
 #: discover/qml/DiscoverWindow.qml:93
 #, kde-format
@@ -1218,12 +1213,3 @@ msgstr "Měli byste zkontrolovat aktualizace"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#~ msgid "Learn More"
-#~ msgstr "Chcete se dozvědět více?"
-
-#~ msgid "Could not access the screenshots"
-#~ msgstr "Ke snímkům obrazovky nelze přistupovat"
-
-#~ msgid "&Up to date"
-#~ msgstr "Akt&uální"

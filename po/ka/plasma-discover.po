@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-31 01:57+0000\n"
-"PO-Revision-Date: 2023-07-26 06:01+0200\n"
+"PO-Revision-Date: 2023-09-01 04:45+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -24,6 +24,7 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"%1 აპების Discover-ით დასაყენებლად მორგებული არაა, - მხოლოდ აპის დამატებების"
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -33,14 +34,15 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"Discover-ის აპებისთვის აღმოსაჩენად დააყენეთ სასურველი მოდული "
+"<interface>მორგების</interface> გვერდზე, <interface>ნაკლული უკანაბოლოების</"
+"interface> ქვეშ."
 
 #: discover/DiscoverObject.cpp:166
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of the user's distro/OS"
-#| msgid "Report Issue to %1"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr "პრობლემის გადაგზავნა %1-სთვის"
+msgstr "ამ პრობლემის გადაგზავნა %1-სთვის"
 
 #: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
@@ -55,6 +57,13 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"Discover-ის აპებისთვის გამოსაყენებლად, დააყენეთ <link url='https://wiki."
+"archlinux.org/title/Flatpak#Installation'>Flatpak</link> ან <link "
+"url='https://wiki.archlinux.org/title/"
+"KDE#Discover_does_not_show_any_applications'>PackageKit</link> "
+"<command>pacman</command> პაკეტების მმართველის გამოყენებით.<nl/><nl/> "
+"გადახედეთ <link url='https://archlinux.org/packages/extra/x86_64/discover/'>"
+"%1-ის პაკეტს Discover-სთვის</link>"
 
 #: discover/DiscoverObject.cpp:266
 #, kde-format
