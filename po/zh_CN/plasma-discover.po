@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-31 01:57+0000\n"
-"PO-Revision-Date: 2023-08-27 03:38\n"
+"PO-Revision-Date: 2023-09-02 02:55\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -23,6 +23,7 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"%1 没有配置为通过 Discover 安装应用 — 它只通过 Discover 安装应用的附加组件"
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -32,14 +33,14 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"要使用 Discover 安装应用，请在 <interface>设置</interface> 页面的 <interface>"
+"缺失的后端程序</interface> 栏目中安装您首选使用的模块。"
 
 #: discover/DiscoverObject.cpp:166
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of the user's distro/OS"
-#| msgid "Report Issue to %1"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr "报告问题给 %1"
+msgstr "报告此问题给 %1"
 
 #: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
@@ -54,6 +55,12 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"要使用 Discover 安装应用，请通过 <command>pacman</command> 软件包管理器安装 "
+"<link url='https://wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</"
+"link> 或者 <link url='https://wiki.archlinux.org/title/"
+"KDE#Discover_does_not_show_any_applications'>PackageKit</link><nl/><nl/> 为 "
+"Discover 检查 <link url='https://archlinux.org/packages/extra/x86_64/"
+"discover/'>%1 的打包情况</link>"
 
 #: discover/DiscoverObject.cpp:266
 #, kde-format
@@ -1220,33 +1227,3 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
-
-#~ msgid ""
-#~ "Discover currently cannot be used to install any apps or perform system "
-#~ "updates because none of its app backends are available."
-#~ msgstr "Discover 的所有后端程序均不可用，因此无法进行软件安装或系统升级。"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "You can install some on the Settings page, under the <interface>Missing "
-#~ "Backends</interface> section.<nl/><nl/>Also please consider reporting "
-#~ "this as a packaging issue to your distribution."
-#~ msgstr ""
-#~ "您可以在设置页面中的<interface>缺少后端程序</interface>处安装后端程序。"
-#~ "<nl/><nl/>同时请考虑将此情况作为打包问题报告给您正在使用的发行版项目。"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "You can use <command>pacman</command> to install the optional "
-#~ "dependencies that are needed to enable the application backends.<nl/><nl/"
-#~ ">Please note that Arch Linux developers recommend using <command>pacman</"
-#~ "command> for managing software because the PackageKit backend is not well-"
-#~ "integrated on Arch Linux."
-#~ msgstr ""
-#~ "您可以使用 <command>pacman</command> 来安装 Discover 后端程序所需的可选依"
-#~ "赖软件包。<nl/><nl/>请注意，由于 PackageKit 后端程序在 Arch Linux 上没有进"
-#~ "行良好的集成，Arch Linux 的开发者建议使用 <command>pacman</command> 来管理"
-#~ "软件。"
-
-#~ msgid "Learn More"
-#~ msgstr "了解详情"
