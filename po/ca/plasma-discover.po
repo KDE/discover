@@ -40,7 +40,7 @@ msgid ""
 msgstr ""
 "Per utilitzar el Discover per a les aplicacions, instal·leu el mòdul "
 "preferit a la pàgina <interface>Configuració</interface>, sota "
-"<interface>Dorsals que manquen</interfície>."
+"<interface>Dorsals que manquen</interface>."
 
 #: discover/DiscoverObject.cpp:166
 #, kde-format
