@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-31 01:57+0000\n"
+"POT-Creation-Date: 2023-09-06 01:55+0000\n"
 "PO-Revision-Date: 2023-08-31 21:15+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -278,16 +278,16 @@ msgstr "Aldoni"
 msgid "Cancel"
 msgstr "Nuligi"
 
-#: discover/qml/ApplicationDelegate.qml:161
-#: discover/qml/ApplicationPage.qml:218
+#: discover/qml/ApplicationDelegate.qml:162
+#: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "%1 taksado"
 msgstr[1] "%1 taksadoj"
 
-#: discover/qml/ApplicationDelegate.qml:161
-#: discover/qml/ApplicationPage.qml:218
+#: discover/qml/ApplicationDelegate.qml:162
+#: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "No ratings yet"
 msgstr "Ankoraŭ neniuj taksoj"
@@ -310,199 +310,199 @@ msgstr "%1 - %2"
 msgid "Unknown author"
 msgstr "Nekonata aŭtoro"
 
-#: discover/qml/ApplicationPage.qml:242
+#: discover/qml/ApplicationPage.qml:243
 #, kde-format
 msgid "Version:"
 msgstr "Versio:"
 
-#: discover/qml/ApplicationPage.qml:254
+#: discover/qml/ApplicationPage.qml:255
 #, kde-format
 msgid "Size:"
 msgstr "Grandeco:"
 
-#: discover/qml/ApplicationPage.qml:266
+#: discover/qml/ApplicationPage.qml:267
 #, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
 msgstr[0] "Permesilo:"
 msgstr[1] "Permesiloj:"
 
-#: discover/qml/ApplicationPage.qml:274
+#: discover/qml/ApplicationPage.qml:275
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Nekonata"
 
-#: discover/qml/ApplicationPage.qml:304
+#: discover/qml/ApplicationPage.qml:305
 #, kde-format
 msgid "What does this mean?"
 msgstr "Kion ĉi tio signifas?"
 
-#: discover/qml/ApplicationPage.qml:313
+#: discover/qml/ApplicationPage.qml:314
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] "Vidi pli…"
 msgstr[1] "Vidi pli…"
 
-#: discover/qml/ApplicationPage.qml:324
+#: discover/qml/ApplicationPage.qml:325
 #, kde-format
 msgid "Content Rating:"
 msgstr "Enhavo Taksado:"
 
-#: discover/qml/ApplicationPage.qml:333
+#: discover/qml/ApplicationPage.qml:334
 #, kde-format
 msgid "Age: %1+"
 msgstr "Aĝo: %1+"
 
-#: discover/qml/ApplicationPage.qml:353
+#: discover/qml/ApplicationPage.qml:354
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
 msgstr "Vidi detalojn…"
 
-#: discover/qml/ApplicationPage.qml:375
+#: discover/qml/ApplicationPage.qml:376
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr "Ekrankopioj ne haveblas por %1"
 
-#: discover/qml/ApplicationPage.qml:547
+#: discover/qml/ApplicationPage.qml:548
 #, kde-format
 msgid "Documentation"
 msgstr "Dokumentado"
 
-#: discover/qml/ApplicationPage.qml:548
+#: discover/qml/ApplicationPage.qml:549
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Legi la oficialan dokumentaron de la projekto"
 
-#: discover/qml/ApplicationPage.qml:564
+#: discover/qml/ApplicationPage.qml:565
 #, kde-format
 msgid "Website"
 msgstr "Retejo"
 
-#: discover/qml/ApplicationPage.qml:565
+#: discover/qml/ApplicationPage.qml:566
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Viziti la retejon de la projekto"
 
-#: discover/qml/ApplicationPage.qml:581
+#: discover/qml/ApplicationPage.qml:582
 #, kde-format
 msgid "Addons"
 msgstr "Aldonaĵoj"
 
-#: discover/qml/ApplicationPage.qml:582
+#: discover/qml/ApplicationPage.qml:583
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Instali aŭ forigi pliajn funkciojn"
 
-#: discover/qml/ApplicationPage.qml:601
+#: discover/qml/ApplicationPage.qml:602
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Kunhavigi"
 
-#: discover/qml/ApplicationPage.qml:602
+#: discover/qml/ApplicationPage.qml:603
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Sendi ligon por ĉi tiu aplikaĵo"
 
-#: discover/qml/ApplicationPage.qml:618
+#: discover/qml/ApplicationPage.qml:619
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Ekprovu la %1 apon!"
 
-#: discover/qml/ApplicationPage.qml:638
+#: discover/qml/ApplicationPage.qml:639
 #, kde-format
 msgid "What's New"
 msgstr "Kio novas"
 
-#: discover/qml/ApplicationPage.qml:668
+#: discover/qml/ApplicationPage.qml:669
 #, kde-format
 msgid "Reviews"
 msgstr "Recenzoj"
 
-#: discover/qml/ApplicationPage.qml:680
+#: discover/qml/ApplicationPage.qml:681
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Ŝargante recenzojn por %1"
 
-#: discover/qml/ApplicationPage.qml:688
+#: discover/qml/ApplicationPage.qml:689
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "Recenzoj por %1 dumtempe ne haveblas"
 
-#: discover/qml/ApplicationPage.qml:716
+#: discover/qml/ApplicationPage.qml:717
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "Montri ĉiujn %1 recenzojn"
 msgstr[1] "Montri ĉiujn %1 recenzojn"
 
-#: discover/qml/ApplicationPage.qml:728
+#: discover/qml/ApplicationPage.qml:729
 #, kde-format
 msgid "Write a Review"
 msgstr "Skribi recenzon"
 
-#: discover/qml/ApplicationPage.qml:728
+#: discover/qml/ApplicationPage.qml:729
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Instali por Skribi Recenzon"
 
-#: discover/qml/ApplicationPage.qml:740
+#: discover/qml/ApplicationPage.qml:741
 #, kde-format
 msgid "Get Involved"
 msgstr "Implikiĝi"
 
-#: discover/qml/ApplicationPage.qml:782
+#: discover/qml/ApplicationPage.qml:783
 #, kde-format
 msgid "Donate"
 msgstr "Doni"
 
-#: discover/qml/ApplicationPage.qml:783
+#: discover/qml/ApplicationPage.qml:784
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "Subteni kaj danki la programistojn per donacado al ilia projekto"
 
-#: discover/qml/ApplicationPage.qml:799
+#: discover/qml/ApplicationPage.qml:800
 #, kde-format
 msgid "Report Bug"
 msgstr "Raporti Cimon"
 
-#: discover/qml/ApplicationPage.qml:800
+#: discover/qml/ApplicationPage.qml:801
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Protokolu problemon, kiun vi trovis por helpi ĝin solvi"
 
-#: discover/qml/ApplicationPage.qml:816
+#: discover/qml/ApplicationPage.qml:817
 #, kde-format
 msgid "Contribute"
 msgstr "Kontribuu"
 
-#: discover/qml/ApplicationPage.qml:817
+#: discover/qml/ApplicationPage.qml:818
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "Helpu la programistojn per kodado, desegnado, testado aŭ tradukado"
 
-#: discover/qml/ApplicationPage.qml:842
+#: discover/qml/ApplicationPage.qml:843
 #, kde-format
 msgid "All Licenses"
 msgstr "Ĉiuj Licencoj"
 
-#: discover/qml/ApplicationPage.qml:875
+#: discover/qml/ApplicationPage.qml:876
 #, kde-format
 msgid "Content Rating"
 msgstr "Enhavo Taksado"
 
-#: discover/qml/ApplicationPage.qml:891
+#: discover/qml/ApplicationPage.qml:892
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Riskoj de proprieta programaro"
 
-#: discover/qml/ApplicationPage.qml:897
+#: discover/qml/ApplicationPage.qml:898
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -528,7 +528,7 @@ msgstr ""
 "ĝiajn aŭtorojn (<link url='%1'>%2</link>).<nl/><nl/>Vi povas lerni pli ĉe "
 "<link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:898
+#: discover/qml/ApplicationPage.qml:899
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -595,7 +595,7 @@ msgstr "Ordigi: %1"
 msgid "Name"
 msgstr "Nomo"
 
-#: discover/qml/ApplicationsListPage.qml:103
+#: discover/qml/ApplicationsListPage.qml:103 discover/qml/Rating.qml:117
 #, kde-format
 msgid "Rating"
 msgstr "Taksado"
@@ -964,52 +964,52 @@ msgstr "Ne"
 msgid "Reviewing %1"
 msgstr "Reviziante %1"
 
-#: discover/qml/ReviewDialog.qml:25
+#: discover/qml/ReviewDialog.qml:26
 #, kde-format
 msgid "Submit review"
 msgstr "Sendi recenzon"
 
-#: discover/qml/ReviewDialog.qml:38
+#: discover/qml/ReviewDialog.qml:39
 #, kde-format
 msgid "Rating:"
 msgstr "Taksado:"
 
-#: discover/qml/ReviewDialog.qml:43
+#: discover/qml/ReviewDialog.qml:44
 #, kde-format
 msgid "Name:"
 msgstr "Nomo:"
 
-#: discover/qml/ReviewDialog.qml:51
+#: discover/qml/ReviewDialog.qml:52
 #, kde-format
 msgid "Title:"
 msgstr "Titolo:"
 
-#: discover/qml/ReviewDialog.qml:69
+#: discover/qml/ReviewDialog.qml:71
 #, kde-format
 msgid "Enter a rating"
 msgstr "Enigi takson"
 
-#: discover/qml/ReviewDialog.qml:72
+#: discover/qml/ReviewDialog.qml:74
 #, kde-format
 msgid "Write the title"
 msgstr "Skribi la titolon"
 
-#: discover/qml/ReviewDialog.qml:75
+#: discover/qml/ReviewDialog.qml:77
 #, kde-format
 msgid "Write the review"
 msgstr "Skribi la recenzon"
 
-#: discover/qml/ReviewDialog.qml:78
+#: discover/qml/ReviewDialog.qml:80
 #, kde-format
 msgid "Keep writing…"
 msgstr "Daŭre skribu…"
 
-#: discover/qml/ReviewDialog.qml:81
+#: discover/qml/ReviewDialog.qml:83
 #, kde-format
 msgid "Too long!"
 msgstr "Tro longa!"
 
-#: discover/qml/ReviewDialog.qml:84
+#: discover/qml/ReviewDialog.qml:86
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
