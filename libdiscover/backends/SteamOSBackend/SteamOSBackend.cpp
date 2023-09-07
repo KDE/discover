@@ -59,10 +59,11 @@ SteamOSBackend::SteamOSBackend(QObject *parent)
     // First try to get the current version, only check valid after that since
     // this could wake up the service
     m_currentVersion = m_interface->currentVersion();
-    qDebug() << "steamos-backend: Current version from dbus api: " << m_currentVersion;
+    m_currentBuildID = m_interface->currentBuildID();
+    qDebug() << "steamos-backend: Current version from dbus api: " << m_currentVersion << " and build ID: " << m_currentBuildID;
 
     // If we got a version property, assume the service is responding and check for updates
-    if (!m_currentVersion.isEmpty()) {
+    if (!m_currentVersion.isEmpty() && !m_currentBuildID.isEmpty()) {
         checkForUpdates();
     } else {
         qDebug() << "steamos-backend: Unable to query atomupd for SteamOS Updates...";
@@ -78,9 +79,10 @@ void SteamOSBackend::hasUpdateChanged(bool hasUpdate)
         // Create or update resource from m_updateVersion, m_updateBuild
         if (!m_resource) {
             qDebug() << "steamos-backend: Creating new SteamOSResource with build id: " << m_updateBuild;
-            m_resource = new SteamOSResource(m_updateVersion, m_updateBuild, m_updateSize, m_currentVersion, this);
+            m_resource =
+                new SteamOSResource(m_updateVersion, m_updateBuild, m_updateSize, QStringLiteral("%1 - %2").arg(m_currentVersion).arg(m_currentBuildID), this);
         } else {
-            qDebug() << "steamos-backend: Updating SteamOSResource with new build id: " << m_updateBuild;
+            qDebug() << "steamos-backend: Updating SteamOSResource with new version: " << m_updateVersion << " and new build id: " << m_updateBuild;
             m_resource->setVersion(m_updateVersion);
             m_resource->setBuild(m_updateBuild);
             Q_EMIT m_resource->versionsChanged();
@@ -148,6 +150,7 @@ void SteamOSBackend::checkForUpdatesFinished(QDBusPendingCallWatcher *call)
         } else {
             m_updateBuild = versions.keys().at(0);
             QVariantMap data = versions.value(m_updateBuild);
+            m_updateVersion = data.value("version").toString();
             m_updateSize = data.value("estimated_size").toUInt();
             qDebug() << "steamos-backend: Data values: " << data.values();
             hasUpdateChanged(true);

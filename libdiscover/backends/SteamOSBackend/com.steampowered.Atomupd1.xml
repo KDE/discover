@@ -79,13 +79,15 @@
     </property>
 
     <!--
-        UpdateVersion:
+        UpdateBuildID:
 
-        String representing the version ID of the update that has been chosen
-        when `StartUpdate` method was executed.
+        String that uniquely represents the OS Build ID of the image update
+        that has been chosen when `StartUpdate` method was executed.
         It is the empty string if `StartUpdate` has not been called yet.
+        Please check `CurrentBuildID` description for an explanation of how
+        Build ID can be interpreted.
     -->
-    <property name="UpdateVersion" type="s" access="read"/>
+    <property name="UpdateBuildID" type="s" access="read"/>
 
     <!--
         Variant:
@@ -123,10 +125,10 @@
     </property>
 
     <!--
-        VersionsAvailable:
+        UpdatesAvailable:
 
-        Map of available update IDs (i.e. version number) to their keys and
-        values. It is an empty map if either there aren't any available
+        Map of available update Build IDs to their keys and values.
+        It is an empty map if either there aren't any available
         updates or if `CheckForUpdates` has not been called yet.
 
         The values of this map are vardicts that include the following keys:
@@ -136,6 +138,12 @@
             <listitem><para>
               Represents the variant of this update. Possible values include
               `steamdeck` and `steamdeck-beta`.
+            </para></listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>version s</term>
+            <listitem><para>
+              The version of this update. E.g. "3.5.1".
             </para></listitem>
           </varlistentry>
           <varlistentry>
@@ -157,12 +165,12 @@
           </varlistentry>
         </variablelist>
     -->
-    <property name="VersionsAvailable" type="a{sa{sv}}" access="read">
+    <property name="UpdatesAvailable" type="a{sa{sv}}" access="read">
         <annotation name="org.qtproject.QtDBus.QtTypeName" type="a{sa{sv}}" value="VariantMapMap"/>
     </property>
 
     <!--
-        VersionsAvailableLater:
+        UpdatesAvailableLater:
 
         Map of available update IDs (i.e. version number) to their keys and
         values. These updates can't be directly installed because they require
@@ -170,7 +178,7 @@
         It is an empty map if either there aren't any available
         later updates or if `CheckForUpdates` has not been called yet.
 
-        The values of this map are the same as for `VersionsAvailable`,
+        The values of this map are the same as for `UpdatesAvailable`,
         plus additional vardicts with the following keys:
         <variablelist>
           <varlistentry>
@@ -185,16 +193,40 @@
         download size, under the assumption that the update will be performed
         with a system running the version specified in the `requires` key.
     -->
-    <property name="VersionsAvailableLater" type="a{sa{sv}}" access="read">
+    <property name="UpdatesAvailableLater" type="a{sa{sv}}" access="read">
         <annotation name="org.qtproject.QtDBus.QtTypeName" type="a{sa{sv}}" value="VariantMapMap"/>
     </property>
 
     <!--
         CurrentVersion:
 
-        String representing the system version that is currently in use.
+        The user-facing version of the OS, suitable for display in user
+        interfaces, for example 3.4.9. Internally, this behaves more like
+        a branch than a version number: there can be several release-candidates
+        for the same user-facing version.
+        To avoid potentially showing in the UI an update to the same user-facing
+        version, it is recommended to include the build ID alongside it.
     -->
     <property name="CurrentVersion" type="s" access="read"/>
+
+    <!--
+        CurrentBuildID:
+
+        String that uniquely represents the OS Build ID of the image that is
+        currently in use, for example "20230906.1".
+        Build IDs for the same version can be compared like any other version
+        number. Comparing Build IDs for different versions will instead only
+        tell you the release order and not which one has the latest features.
+    -->
+    <property name="CurrentBuildID" type="s" access="read"/>
+
+    <!--
+        KnownVariants:
+
+        Array of strings representing the known suggested variants that could
+        be chosen.
+    -->
+    <property name="KnownVariants" type="as" access="read"/>
 
     <!--
         SwitchToVariant:
@@ -213,21 +245,21 @@
         CheckForUpdates:
         @options: Vardict with configuration options. None currently available,
           reserved for future use
-        @versions_available: Map of available update IDs to their keys and values
-        @versions_available_later: Map of available update IDs, to their keys and
+        @updates_available: Map of available update Build IDs to their keys and values
+        @updates_available_later: Map of available update Build IDs, to their keys and
           values, that require a newer system version
 
         At least one update is available, for the current system version, when
-        @versions_available is not the empty map.
+        @updates_available is not the empty map.
 
-        For more information about the content of @versions_available and
-        @versions_available_later, please refer to the description of the
-        properties `VersionsAvailable` and `VersionsAvailableLater` respectively.
+        For more information about the content of @updates_available and
+        @updates_available_later, please refer to the description of the
+        properties `UpdatesAvailable` and `UpdatesAvailableLater` respectively.
     -->
     <method name="CheckForUpdates">
       <arg type="a{sv}" name="options" direction="in"/>
-      <arg type="a{sa{sv}}" name="versions_available" direction="out"/>
-      <arg type="a{sa{sv}}" name="versions_available_later" direction="out"/>
+      <arg type="a{sa{sv}}" name="updates_available" direction="out"/>
+      <arg type="a{sa{sv}}" name="updates_available_later" direction="out"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.In0" type="a{sv}" value="QVariantMap"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" type="a{sa{sv}}" value="VariantMapMap"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out1" type="a{sa{sv}}" value="VariantMapMap"/>
@@ -239,7 +271,7 @@
 
         Start to apply the @id update.
         This method is expected to be called after `CheckForUpdates`, with an
-        @id taken from the returned `versions_available`.
+        @id taken from the returned `updates_available`.
 
         If the provided @id is not a valid update, either because not available
         or because it requires a newer system version, this method will fail.
