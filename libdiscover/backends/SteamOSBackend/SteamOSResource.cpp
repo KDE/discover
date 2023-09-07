@@ -36,7 +36,7 @@ QList<PackageState> SteamOSResource::addonsInformation()
 
 QString SteamOSResource::availableVersion() const
 {
-    return QStringLiteral("%1 %2").arg(m_version, m_build);
+    return QStringLiteral("%1 - %2").arg(m_version, m_build);
 }
 
 QStringList SteamOSResource::categories()
