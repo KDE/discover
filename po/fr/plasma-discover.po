@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-06 01:55+0000\n"
-"PO-Revision-Date: 2023-08-31 19:42+0200\n"
+"PO-Revision-Date: 2023-09-05 17:03+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -35,6 +35,8 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"%1 n'est pas configuré pour l'installation d'applications grâce à Discover— "
+"Uniquement des modules additionnels pour applications"
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -44,11 +46,12 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"Pour utiliser Discover pour les applications, veuillez installer votre "
+"module préféré dans la page de <interface>Configuration</interface>, en "
+"dessous de <interface>Moteurs absents</interface>."
 
 #: discover/DiscoverObject.cpp:166
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of the user's distro/OS"
-#| msgid "Report Issue to %1"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Signaler ce problème à %1"
@@ -66,6 +69,13 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"Pour utiliser Discover pour les applications, veuillez installer <link "
+"url='https://wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> "
+"ou <link url='https://wiki.archlinux.org/title/"
+"KDE#Discover_does_not_show_any_applications'>PackageKit</link> en utilisant "
+"le<command>pacman</command> gestionnaire de paquets.<nl/><nl/>Veuillez "
+"relire la <link url='https://archlinux.org/packages/extra/x86_64/"
+"discover/'>mise en paquet de %1 pour Discover</link>"
 
 #: discover/DiscoverObject.cpp:266
 #, kde-format
