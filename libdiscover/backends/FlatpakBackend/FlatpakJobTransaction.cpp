@@ -1,6 +1,7 @@
 /*
  *   SPDX-FileCopyrightText: 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *   SPDX-FileCopyrightText: 2017 Jan Grulich <jgrulich@redhat.com>
+ *   SPDX-FileCopyrightText: 2023 Harald Sitter <sitter@kde.org>
  *
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
@@ -10,8 +11,30 @@
 #include "FlatpakResource.h"
 #include "FlatpakTransactionThread.h"
 
+#include <thread>
+
 #include <QDebug>
+#include <QScopeGuard>
 #include <QTimer>
+
+namespace
+{
+class ThreadPool : public QThreadPool
+{
+public:
+    ThreadPool()
+    {
+        // Cap the amount of concurrency to prevent too many in-flight transactions. This in particular
+        // prevents running out of file descriptors or other limited resources.
+        // https://bugs.kde.org/show_bug.cgi?id=474231
+        constexpr auto arbitraryMaxConcurrency = 4U;
+        const auto concurrency = std::min(std::thread::hardware_concurrency(), arbitraryMaxConcurrency);
+        setMaxThreadCount(std::make_signed_t<decltype(concurrency)>(concurrency));
+    }
+};
+} // namespace
+
+Q_GLOBAL_STATIC(ThreadPool, s_pool);
 
 FlatpakJobTransaction::FlatpakJobTransaction(FlatpakResource *app, Role role, bool delayStart)
     : Transaction(app->backend(), app, role, {})
@@ -27,11 +50,12 @@ FlatpakJobTransaction::FlatpakJobTransaction(FlatpakResource *app, Role role, bo
 
 FlatpakJobTransaction::~FlatpakJobTransaction()
 {
-    if (m_appJob->isRunning()) {
-        cancel();
-        m_appJob->wait();
+    cancel();
+    if (s_pool->tryTake(m_appJob)) { // immediately delete if the runnable hasn't started yet
+        delete m_appJob;
+    } else { // otherwise defer cleanup to the pool
+        m_appJob->setAutoDelete(true);
     }
-    delete m_appJob;
 }
 
 void FlatpakJobTransaction::cancel()
@@ -45,6 +69,7 @@ void FlatpakJobTransaction::start()
 
     // App job will be added every time
     m_appJob = new FlatpakTransactionThread(m_app, role());
+    m_appJob->setAutoDelete(false);
     connect(m_appJob, &FlatpakTransactionThread::finished, this, &FlatpakJobTransaction::finishTransaction);
     connect(m_appJob, &FlatpakTransactionThread::progressChanged, this, &FlatpakJobTransaction::setProgress);
     connect(m_appJob, &FlatpakTransactionThread::speedChanged, this, &FlatpakJobTransaction::setDownloadSpeed);
@@ -52,7 +77,7 @@ void FlatpakJobTransaction::start()
     connect(m_appJob, &FlatpakTransactionThread::webflowStarted, this, &FlatpakJobTransaction::webflowStarted);
     connect(m_appJob, &FlatpakTransactionThread::webflowDone, this, &FlatpakJobTransaction::webflowDone);
 
-    m_appJob->start();
+    s_pool->start(m_appJob);
 }
 
 void FlatpakJobTransaction::finishTransaction()

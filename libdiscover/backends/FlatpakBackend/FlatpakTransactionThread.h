@@ -1,5 +1,6 @@
 /*
  *   SPDX-FileCopyrightText: 2017 Jan Grulich <jgrulich@redhat.com>
+ *   SPDX-FileCopyrightText: 2023 Harald Sitter <sitter@kde.org>
  *
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
@@ -11,12 +12,13 @@
 #include <glib.h>
 
 #include <QMap>
+#include <QRunnable>
 #include <QStringList>
 #include <QThread>
 #include <Transaction/Transaction.h>
 
 class FlatpakResource;
-class FlatpakTransactionThread : public QThread
+class FlatpakTransactionThread : public QObject, public QRunnable
 {
     Q_OBJECT
 public:
@@ -49,6 +51,7 @@ Q_SIGNALS:
     void passiveMessage(const QString &msg);
     void webflowStarted(const QUrl &url, int id);
     void webflowDone(int id);
+    void finished();
 
 private:
     static gboolean

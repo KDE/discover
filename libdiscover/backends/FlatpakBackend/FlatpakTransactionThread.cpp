@@ -1,5 +1,6 @@
 /*
  *   SPDX-FileCopyrightText: 2017 Jan Grulich <jgrulich@redhat.com>
+ *   SPDX-FileCopyrightText: 2023 Harald Sitter <sitter@kde.org>
  *
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
@@ -92,8 +93,7 @@ void FlatpakTransactionThread::webflowDoneCallback(FlatpakTransaction *transacti
 }
 
 FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role)
-    : QThread()
-    , m_result(false)
+    : m_result(false)
     , m_app(app)
     , m_role(role)
 {
@@ -131,6 +131,10 @@ void FlatpakTransactionThread::cancel()
 
 void FlatpakTransactionThread::run()
 {
+    auto finish = qScopeGuard([this] {
+        Q_EMIT finished();
+    });
+
     if (!m_transaction)
         return;
     g_autoptr(GError) localError = nullptr;
