@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-01 01:57+0000\n"
-"PO-Revision-Date: 2023-07-19 14:05+0300\n"
+"PO-Revision-Date: 2023-09-11 23:24+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -981,7 +981,7 @@ msgstr "%1 İzinleri"
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr "İzinleri yapılandır…"
+msgstr "İzinleri Yapılandır…"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1014,7 +1014,7 @@ msgstr ""
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:153
 #, kde-format
 msgid "Backend %1 took too long to initialize"
-msgstr "Arka uç %1 başlaması çok zaman aldı"
+msgstr "%1 arka ucunun başlatılması pek uzun sürde"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:212
 #, kde-format
@@ -1083,7 +1083,7 @@ msgstr "%1: %2"
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:518
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
-msgstr "Hatalı KNewStuff URI: %1"
+msgstr "Hatalı KNewStuff URI'si: %1"
 
 #: libdiscover/backends/KNSBackend/KNSResource.cpp:169
 #, kde-format
@@ -2197,7 +2197,7 @@ msgstr "Bağımlılıkları Göster…"
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr "Paket için bağımlılıklar: %1"
+msgstr "Paket bağımlılıkları: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
 #, kde-format
