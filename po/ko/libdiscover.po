@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 02:27+0000\n"
+"POT-Creation-Date: 2023-09-12 02:27+0000\n"
 "PO-Revision-Date: 2023-07-22 22:59+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2339,7 +2339,7 @@ msgstr ""
 "Snap 앱이 보안 샌드박스와 호환되지 않으며 컴퓨터의 모든 자원에 접근할 수 있습"
 "니다. 그래도 설치하시겠습니까?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr "SteamOS: atomupd에 SteamOS 업데이트를 질의할 수 없음..."

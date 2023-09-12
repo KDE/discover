@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 02:27+0000\n"
+"POT-Creation-Date: 2023-09-12 02:27+0000\n"
 "PO-Revision-Date: 2023-03-12 19:51+0100\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -2406,7 +2406,7 @@ msgstr ""
 "Diese Snap-Anwendung ist nicht mit der Sicherheits-Sandbox kompatibel und "
 "hat vollen Zugriff auf Ihren Computer. Dennoch installieren?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""

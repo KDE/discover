@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 02:27+0000\n"
+"POT-Creation-Date: 2023-09-12 02:27+0000\n"
 "PO-Revision-Date: 2023-05-17 07:31+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2398,7 +2398,7 @@ msgstr ""
 "bateragarria eta ordenagailu honetara sarbide osoa izango du. Hala ere "
 "instalatu?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr "SteamOS: Ez da SteamOSetik «atomupd» itauntzeko gai"
