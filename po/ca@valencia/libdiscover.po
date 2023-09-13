@@ -721,7 +721,7 @@ msgstr "Accés a baix nivell del sistema"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:842
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr "Pot fer crides de baix nivell al sistema (p. ex. «ptrace»)"
+msgstr "Pot fer crides de baix nivell al sistema (p. ex., «ptrace»)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
 #, kde-format
