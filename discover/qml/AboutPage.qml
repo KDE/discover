@@ -4,10 +4,10 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQml 2.1
-import org.kde.kirigami 2.14 as Kirigami
+import QtQuick
+import org.kde.kirigamiaddons.formcard 1 as FormCard
 
-Kirigami.AboutPage {
+FormCard.AboutPage {
     readonly property bool isHome: true
     aboutData: discoverAboutData
 }
