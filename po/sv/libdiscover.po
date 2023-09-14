@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-01 01:57+0000\n"
+"POT-Creation-Date: 2023-09-14 01:54+0000\n"
 "PO-Revision-Date: 2022-09-25 09:30+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -934,12 +934,12 @@ msgstr "%1 (användare)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Ange webbadress för ett Flatpak-arkiv (*.flatpakrepo):"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:28
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:29
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Lägger till fjärrplats '%1' i %2 från %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:191
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:195
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
@@ -2473,7 +2473,7 @@ msgstr ""
 "Det här låsningsprogrammet är inte kompatibelt med säkerhetsisolering och "
 "har fullständig åtkomst av datorn. Installera det ändå?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""

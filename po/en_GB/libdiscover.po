@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-01 01:57+0000\n"
+"POT-Creation-Date: 2023-09-14 01:54+0000\n"
 "PO-Revision-Date: 2023-06-17 12:02+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -924,12 +924,12 @@ msgstr "%1 (user)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Enter a Flatpak repository URI (*.flatpakrepo):"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:28
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:29
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Adding remote '%1' in %2 from %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:191
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:195
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "Could not find '%1' in '%2'; please make sure it's available."
@@ -2440,7 +2440,7 @@ msgstr ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this computer. Install it anyway?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr "SteamOS: Unable to query atomupd for SteamOS Updates..."

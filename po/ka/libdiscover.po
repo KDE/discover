@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-01 01:57+0000\n"
+"POT-Creation-Date: 2023-09-14 01:54+0000\n"
 "PO-Revision-Date: 2023-09-01 04:42+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -922,12 +922,12 @@ msgstr "%1 (მომხმარებელი)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "შეიყვანეთ Flatpak რეპოზიტორიის URI (*.flatpakrepo):"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:28
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:29
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "დაშორებულის '%1' დამატება %2-ში, %3-დან"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:191
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:195
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "'%2'-ში '%1' ვერ ვიპოვე. დარწმუნდით, რომ ის ხელმისაწვდომია."
@@ -2437,7 +2437,7 @@ msgstr ""
 "ეს Snap აპლიკაცია უსაფრთხო შემოსაზღვრასთან თავსებადი არაა და მას "
 "კომპიუტერთან სრული წვდომა ექნება. გნებავთ, მაინც დავაყენოთ?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr "SteamOS: atomupd -დან SteamOS -ის განახლებების გამოთხოვის შეცდომა..."

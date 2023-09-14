@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-01 01:57+0000\n"
+"POT-Creation-Date: 2023-09-14 01:54+0000\n"
 "PO-Revision-Date: 2023-06-10 09:21+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -928,12 +928,12 @@ msgstr "%1 (użytkownik)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Wpisz URI repozytorium Flatpak (*.flatpakrepo):"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:28
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:29
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Dodawanie zdalnego źródła '%1' w %2 z %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:191
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:195
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "Nie można znaleźć '%1' w '%2'; upewnij się, że jest dostępny."
@@ -2463,7 +2463,7 @@ msgstr ""
 "umieszczaniu programów w piaskownicy, więc będzie miał pełny dostęp do tego "
 "komputera. Czy mimo to go wgrać?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:71
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr "SteamOS: Nie można odpytać atomupd o uaktualnienia SteamOS..."
