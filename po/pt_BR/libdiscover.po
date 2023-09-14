@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-12 02:27+0000\n"
+"POT-Creation-Date: 2023-09-14 02:26+0000\n"
 "PO-Revision-Date: 2023-07-04 10:37-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -931,12 +931,12 @@ msgstr "%1 (usuário)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Digite uma URI de repositório Flatpak URI (*.flatpakrepo)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:28
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:30
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Adicionando '%1' remoto em %2 a partir de %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:191
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:196
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
