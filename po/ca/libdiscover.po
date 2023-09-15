@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-14 01:54+0000\n"
-"PO-Revision-Date: 2023-07-31 13:00+0200\n"
+"PO-Revision-Date: 2023-09-14 19:05+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1126,7 +1126,7 @@ msgstr "Ginys del Plasma"
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"
-msgstr "Tipus de lletra"
+msgstr "Fonts"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:289
 #, kde-format
