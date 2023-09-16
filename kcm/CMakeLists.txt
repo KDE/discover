@@ -20,7 +20,7 @@ kcmutils_generate_module_data(kcm_updates
 kconfig_add_kcfg_files(kcm_updates updatessettings.kcfgc GENERATE_MOC)
 kconfig_add_kcfg_files(kcm_updates discoversettings.kcfgc GENERATE_MOC)
 
-target_link_libraries(kcm_updates
+target_link_libraries(kcm_updates PRIVATE
     KF6::I18n
     KF6::ConfigGui
     KF6::KCMUtilsQuick
