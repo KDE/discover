@@ -11,15 +11,15 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-14 01:54+0000\n"
-"PO-Revision-Date: 2023-01-16 23:12-0300\n"
+"PO-Revision-Date: 2023-09-18 11:47-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
-"Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
+"Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -89,10 +89,9 @@ msgid "Intense Content"
 msgstr "Conteúdo intenso"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:171
-#, fuzzy, kde-format
-#| msgid "Internal error: %1"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "Erro interno: %1"
+msgstr "Mensagem de erro técnica: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
@@ -935,6 +934,8 @@ msgstr "Adicionando '%1' remoto em %2 a partir de %3"
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
+"Não foi possível encontrar '%1' em '%2'; certifique-se de que está "
+"disponível."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
@@ -1012,6 +1013,8 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"Pergunta não suportada:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:153
 #, kde-format
@@ -1161,7 +1164,7 @@ msgstr "Atualizar para %1 %2"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, kde-format
 msgid "A new major version has been released"
-msgstr ""
+msgstr "Uma nova versão principal foi lançada!"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1970,10 +1973,9 @@ msgstr[0] "%1 pacote atualizado com sucesso"
 msgstr[1] "%1 pacotes atualizados com sucesso"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
-#, fuzzy, kde-format
-#| msgid "Unknown Status"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Status desconhecido"
+msgstr "Fonte desconhecida"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
 #, kde-format
@@ -2028,7 +2030,7 @@ msgstr "URL do repositório:"
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
@@ -2036,18 +2038,18 @@ msgid "System upgrade"
 msgstr "Atualização do sistema"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 pacote a atualizar"
-msgstr[1] "%1 pacotes a atualizar"
+msgstr[0] "1 pacote será atualizado"
+msgstr[1] "%1 pacotes serão atualizados"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:195
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Atualize para a nova versão %2<br/>Nenhuma nota de lançamento "
+"fornecida"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
@@ -2055,6 +2057,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Atualize para a nova versão %2<br/>Nota de lançamento:<blockquote>"
+"%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:224
 #, kde-format
@@ -2090,7 +2094,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
 #, kde-format
 msgid "Confirm Changes"
-msgstr ""
+msgstr "Confirmar alterações"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
 #, kde-format
@@ -2235,21 +2239,27 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>Uma nova versão principal de %1 foi lançada!</b>\n"
+"Para poder atualizar para esta versão, certifique-se de aplicar todas as "
+"atualizações pendentes e reiniciar seu sistema."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:409
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>Uma nova versão principal foi lançada!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:545
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
+"Você tem atualizações pendentes para a versão atual. Continuando de qualquer "
+"maneira."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
+"Atualize para a última versão antes de mudar para uma nova versão principal"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:556
 #, kde-format
@@ -2299,7 +2309,7 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "Versão que será usada após o reinício"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
@@ -2361,6 +2371,7 @@ msgstr ""
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"Cancelando a transação do rpm-ostree. Isto pode levar algum tempo. Aguarde."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
 #, kde-format
@@ -2380,13 +2391,12 @@ msgstr "Atualizando o sistema"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Atualizando para a próxima versão principal"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
-#, fuzzy, kde-format
-#| msgid "Transaction in progress (started outside of Discover)"
+#, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "Transação em progresso (iniciada fora do Discover)"
+msgstr "Operação em progresso (iniciada fora do Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
@@ -2437,6 +2447,7 @@ msgstr ""
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""
+"SteamOS: Não foi possível consultar o atomupd por atualizações do SteamOS..."
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113
 #, kde-format
