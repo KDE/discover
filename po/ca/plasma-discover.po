@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-06 01:55+0000\n"
-"PO-Revision-Date: 2023-08-31 10:52+0200\n"
+"PO-Revision-Date: 2023-09-19 18:49+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -27,7 +27,7 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"%1 no està configurat per instal·lar aplicacions mitjançant el Discover, "
+"%1 no està configurat per a instal·lar aplicacions mitjançant el Discover, "
 "només aplicacions i complements"
 
 #: discover/DiscoverObject.cpp:163
@@ -38,7 +38,7 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
-"Per utilitzar el Discover per a les aplicacions, instal·leu el mòdul "
+"Per a utilitzar el Discover per a les aplicacions, instal·leu el mòdul "
 "preferit a la pàgina <interface>Configuració</interface>, sota "
 "<interface>Dorsals que manquen</interface>."
 
@@ -483,7 +483,7 @@ msgstr "Informa d'un error"
 #: discover/qml/ApplicationPage.qml:801
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
-msgstr "Enregistreu una incidència que heu trobat per ajudar a solucionar-la"
+msgstr "Enregistreu una incidència que heu trobat per a ajudar a solucionar-la"
 
 #: discover/qml/ApplicationPage.qml:817
 #, kde-format
