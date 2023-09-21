@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-14 01:54+0000\n"
-"PO-Revision-Date: 2023-09-14 19:05+0200\n"
+"PO-Revision-Date: 2023-09-19 19:09+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -660,7 +660,7 @@ msgstr "S'atorga accés complet al bus del sistema"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:814
 #, kde-format
 msgid "Remote Login Access"
-msgstr "Accés a inici de sessió remot"
+msgstr "Accés a inici remot de sessió"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:815
 #, kde-format
