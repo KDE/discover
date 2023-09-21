@@ -23,6 +23,9 @@
     <file>qml/AddSourceDialog.qml</file>
     <file>qml/ConditionalLoader.qml</file>
     <file>qml/CarouselInlineView.qml</file>
+    <file>qml/CarouselNavigationButton.qml</file>
+    <file>qml/CarouselNavigationButtons.qml</file>
+    <file>qml/CarouselNavigationButtonsListViewAdapter.qml</file>
     <file>qml/LabelBackground.qml</file>
     <file>qml/DiscoverInlineMessage.qml</file>
     <file>qml/DiscoverPage.qml</file>

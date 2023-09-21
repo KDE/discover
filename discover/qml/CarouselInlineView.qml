@@ -105,6 +105,14 @@ ListView {
         }
     }
 
+    CarouselNavigationButtonsListViewAdapter {
+        LayoutMirroring.enabled: root.LayoutMirroring.enabled
+
+        view: root
+        policy: CarouselNavigationButtonsListViewAdapter.CurrentIndex
+        edgeMargin: Kirigami.Units.largeSpacing
+    }
+
     QQC2.Popup {
         id: overlay
         parent: applicationWindow().overlay
@@ -115,8 +123,8 @@ ListView {
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
         readonly property real proportion: (overlayImage.sourceSize.width > 1) ? (overlayImage.sourceSize.height / overlayImage.sourceSize.width) : 1
-        height: overlayImage.imageStatus >= Image.Loading ? Kirigami.Units.gridUnit * 5 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
-        width: (height - 2 * padding) / proportion
+        height: overlayImage.imageStatus >= Image.Loading ? Kirigami.Units.gridUnit * 20 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
+        width: overlayImage.imageStatus >= Image.Loading ? Kirigami.Units.gridUnit * 20 : (height - 2 * padding) / proportion
 
         QQC2.BusyIndicator {
             id: indicator
@@ -137,7 +145,7 @@ ListView {
             anchors.fill: parent
             readonly property var imageStatus: item.status
             readonly property var sourceSize: item.sourceSize
-            condition: root.currentItem.animated
+            condition: root.currentItem?.animated ?? false
 
             componentFalse: Component {
                 Image {
@@ -170,25 +178,10 @@ ListView {
             onClicked: overlay.close()
         }
 
+        CarouselNavigationButtonsListViewAdapter {
+            LayoutMirroring.enabled: root.LayoutMirroring.enabled
 
-        QQC2.RoundButton {
-            anchors {
-                right: parent.left
-                verticalCenter: parent.verticalCenter
-            }
-            visible: leftAction.visible
-            icon.name: leftAction.icon.name
-            onClicked: leftAction.triggered(null)
-        }
-
-        QQC2.RoundButton {
-            anchors {
-                left: parent.right
-                verticalCenter: parent.verticalCenter
-            }
-            visible: rightAction.visible
-            icon.name: rightAction.icon.name
-            onClicked: rightAction.triggered(null)
+            view: root
         }
 
         Kirigami.Action {
@@ -209,38 +202,4 @@ ListView {
     }
 
     clip: true
-
-    QQC2.RoundButton {
-        anchors {
-            left: parent.left
-            leftMargin: Kirigami.Units.largeSpacing
-            verticalCenter: parent.verticalCenter
-        }
-        width: Kirigami.Units.gridUnit * 2
-        height: width
-        icon.name: root.LayoutMirroring.enabled ? "arrow-right" : "arrow-left"
-        visible: !Kirigami.Settings.isMobile
-                 && root.count > 1
-                 && root.currentIndex > 0
-                 && root.showNavigationArrows
-        Keys.forwardTo: [root]
-        onClicked: root.currentIndex -= 1
-    }
-
-    QQC2.RoundButton {
-        anchors {
-            right: parent.right
-            rightMargin: Kirigami.Units.largeSpacing
-            verticalCenter: parent.verticalCenter
-        }
-        width: Kirigami.Units.gridUnit * 2
-        height: width
-        icon.name: root.LayoutMirroring.enabled ? "arrow-left" : "arrow-right"
-        visible: !Kirigami.Settings.isMobile
-                 && root.count > 1
-                 && root.currentIndex < root.count - 1
-                 && root.showNavigationArrows
-        Keys.forwardTo: [root]
-        onClicked: root.currentIndex += 1
-    }
 }
