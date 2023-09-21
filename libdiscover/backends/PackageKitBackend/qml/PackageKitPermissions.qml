@@ -23,7 +23,7 @@ ColumnLayout {
         Layout.fillWidth: true
         text: i18nd("libdiscover","Full Access")
         subtitle: i18nd("libdiscover", "Can access everything on the system")
-        icon: "security-medium"
+        icon.name: "security-medium"
         subtitleItem.wrapMode: Text.WordWrap
 
         // so that it gets neither hover nor pressed appearance
