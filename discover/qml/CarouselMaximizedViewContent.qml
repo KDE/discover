@@ -90,13 +90,108 @@ Item {
         }
     }
 
-    // Showcase some buttons for now
-    CarouselNavigationButtons {
-        Kirigami.Theme.inherit: true
-        z: 1
+    Keys.forwardTo: view
 
-        edgeMargin: root.edgeMargin
-        atBeginning: false
-        atEnd: false
+    ColumnLayout {
+        z: 1
+        anchors.fill: parent
+        spacing: 0
+
+        ListView {
+            id: view
+
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            keyNavigationEnabled: true
+            interactive: true
+
+            clip: true
+            pixelAligned: true
+            orientation: ListView.Horizontal
+            snapMode: ListView.SnapToItem
+            highlightRangeMode: ListView.StrictlyEnforceRange
+
+            displayMarginBeginning: root.edgeMargin
+            displayMarginEnd: root.edgeMargin
+
+            preferredHighlightBegin: currentItem ? Math.round((width - currentItem.width) / 2) : 0
+            preferredHighlightEnd: currentItem ? preferredHighlightBegin + currentItem.width : 0
+
+            highlightMoveDuration: Kirigami.Units.longDuration
+            highlightResizeDuration: Kirigami.Units.longDuration
+
+            spacing: Kirigami.Units.gridUnit
+            cacheBuffer: 10000
+
+            Component.onCompleted: {
+                // HACK: Layout polish loop detected for QQuickColumnLayout. Aborting after two iterations.
+                //
+                // That error leads to ListView content being initially mis-positioned.
+                // So, let's fire a callback exactly after two event loop iterations.
+                Qt.callLater(() => {
+                    Qt.callLater(() => {
+                        // Set current index without animations
+                        const backup = highlightMoveDuration;
+                        highlightMoveDuration = 0;
+
+                        model = Qt.binding(() => root.host.model);
+                        currentIndex = Qt.binding(() => root.host.currentIndex);
+                        currentIndexChanged.connect(() => root.host.currentIndex = currentIndex);
+                        // Autoplay current video when view is first opened.
+                        currentItem?.play();
+
+                        highlightMoveDuration = backup;
+                    });
+                });
+            }
+
+            delegate: CarouselDelegate {
+                z: 1
+                loadLargeImage: true
+                onActivated: {
+                    if (root.host.currentIndex === index) {
+                        root.host.close(true);
+                    } else {
+                        root.host.currentIndex = index;
+                    }
+                }
+            }
+
+            CarouselNavigationButtonsListViewAdapter {
+                LayoutMirroring.enabled: root.LayoutMirroring.enabled
+
+                view: view
+                policy: CarouselNavigationButtonsListViewAdapter.CurrentIndex
+                edgeMargin: root.edgeMargin
+            }
+
+            TapHandler {
+                onTapped: {
+                    root.host.close(true);
+                }
+            }
+        }
+
+        CarouselPageIndicator {
+            id: pageIndicator
+
+            Layout.fillWidth: true
+            topPadding: Kirigami.Units.largeSpacing * 3
+            bottomPadding: Kirigami.Units.largeSpacing * 3
+
+            focusPolicy: Qt.NoFocus
+            interactive: true
+            count: carouselModel.count
+            visible: count > 1
+
+            function bindCurrentIndex() {
+                currentIndex = Qt.binding(() => root.host.currentIndex);
+            }
+
+            onCurrentIndexChanged: {
+                root.host.currentIndex = currentIndex;
+            }
+        }
     }
 }

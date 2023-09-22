@@ -42,7 +42,7 @@ T.Control {
     Keys.forwardTo: view
 
     contentItem: ColumnLayout {
-        spacing: Kirigami.Units.largeSpacing * 3
+        spacing: 0
 
         LayoutMirroring.enabled: root.mirrored
         LayoutMirroring.childrenInherit: true
@@ -117,6 +117,7 @@ T.Control {
             id: pageIndicator
 
             Layout.fillWidth: true
+            topPadding: Kirigami.Units.largeSpacing * 3
 
             focusPolicy: Qt.NoFocus
             interactive: true
@@ -137,7 +138,13 @@ T.Control {
         id: controller
 
         onCurrentIndexChanged: currentIndex => {
+            // Set current index without animations
+            const backup = view.highlightMoveDuration;
+            view.highlightMoveDuration = 0;
+
             root.currentIndex = currentIndex;
+
+            view.highlightMoveDuration = backup;
         }
     }
 }

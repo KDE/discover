@@ -19,6 +19,7 @@ MouseArea {
     property alias count: indicator.count
     property alias focusPolicy: indicator.focusPolicy
 
+    property alias topPadding: indicator.topPadding
     property alias bottomPadding: indicator.bottomPadding
 
     implicitHeight: indicator.implicitHeight

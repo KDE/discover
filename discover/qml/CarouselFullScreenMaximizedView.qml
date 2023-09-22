@@ -34,6 +34,7 @@ CarouselAbstractMaximizedView {
 
         CarouselMaximizedViewContent {
             anchors.fill: parent
+            focus: true
             host: root
         }
 

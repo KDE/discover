@@ -39,7 +39,19 @@ Item {
 
     readonly property real widestRatio: 2/1
 
-    height: ListView.view?.height ?? 0
+    anchors.verticalCenter: parent?.verticalCenter
+    height: {
+        if (!ListView.view) {
+            return 0;
+        }
+        const widthForWidestRatio = Math.round(ListView.view.height * widestRatio);
+        if (widthForWidestRatio > ListView.view.width) {
+            const ratio = widthForWidestRatio / ListView.view.width;
+            return Math.floor(ListView.view.height / ratio);
+        } else {
+            return ListView.view.height;
+        }
+    }
     width: Math.round(height * widestRatio)
 
     readonly property bool isCurrentItem: ListView.isCurrentItem
@@ -183,28 +195,33 @@ Item {
                 z: 100
 
                 display: T.AbstractButton.IconOnly
-                text: {
-                    const player = delegate.activeAnimatedImage;
-                    if (!player) {
-                        return "";
+                action: QQC2.Action {
+                    text: {
+                        const player = delegate.activeAnimatedImage;
+                        if (!player) {
+                            return "";
+                        }
+                        if (player.paused) {
+                            return i18nc("@action:button Start playing media", "Play");
+                        } else {
+                            return i18nc("@action:button Pause any media that is playing", "Pause");
+                        }
                     }
-                    if (player.paused) {
-                        return i18n("Play");
-                    } else {
-                        return i18n("Pause");
+                    icon.name: {
+                        const player = delegate.activeAnimatedImage;
+                        if (!player) {
+                            return "";
+                        }
+                        if (player.paused) {
+                            return mirrored ? "media-playback-start-rtl-symbolic" : "media-playback-start-symbolic";
+                        } else {
+                            return mirrored ? "media-playback-pause-rtl-symbolic" : "media-playback-pause-symbolic";
+                        }
                     }
+                    enabled: delegate.activeAnimatedImage && delegate.isCurrentItem
+                    shortcut: "Space"
                 }
-                icon.name: {
-                    const player = delegate.activeAnimatedImage;
-                    if (!player) {
-                        return "";
-                    }
-                    if (player.paused) {
-                        return "media-playback-start-symbolic";
-                    } else {
-                        return "media-playback-pause-symbolic";
-                    }
-                }
+                // other icon properties are not bound automatically because RaoundButton overrides them
                 icon.width: Kirigami.Units.iconSizes.large
                 icon.height: Kirigami.Units.iconSizes.large
                 icon.color: "white"
@@ -283,6 +300,14 @@ Item {
                     }
                 }
 
+                function toggleOrActivate() {
+                    if (delegate.loadLargeImage && delegate.activeAnimatedImage) {
+                        toggle(true);
+                    } else {
+                        delegate.activated();
+                    }
+                }
+
                 Timer {
                     id: autohidePlayPauseButtonTimer
                     interval: Kirigami.Units.humanMoment
@@ -311,13 +336,7 @@ Item {
                 }
 
                 onClicked: {
-                    if (delegate.activeAnimatedImage) {
-                        if (loadLargeImage) {
-                            toggle(true);
-                        } else {
-                            delegate.activated();
-                        }
-                    }
+                    toggleOrActivate();
                 }
             }
         }
@@ -335,7 +354,7 @@ Item {
         }
 
         onClicked: {
-            delegate.activated();
+            playPauseButton.toggleOrActivate();
         }
 
         MouseArea {
@@ -349,15 +368,23 @@ Item {
         }
     }
 
+    function play() {
+        if (loadLargeImage) {
+            playPauseButton.play(/*animated*/true);
+        }
+    }
+
     function __initPlayPause() {
         if (activeAnimatedImage) {
-            if (loadLargeImage && isCurrentItem) {
-                playPauseButton.play(/*animated*/true);
-            } else {
-                playPauseButton.show(/*animated*/false, /*autohide*/false);
-            }
+            playPauseButton.show(/*animated*/false, /*autohide*/false);
         } else {
             playPauseButton.hide(/*animated*/false);
+        }
+    }
+
+    onIsCurrentItemChanged: {
+        if (!isCurrentItem) {
+            playPauseButton.pause(true);
         }
     }
 

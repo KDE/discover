@@ -58,6 +58,7 @@ CarouselAbstractMaximizedView {
         padding: 0
 
         contentItem: CarouselMaximizedViewContent {
+            focus: true
             host: root
         }
 
