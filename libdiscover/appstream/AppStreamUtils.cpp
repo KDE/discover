@@ -35,10 +35,20 @@ QUrl AppStreamUtils::imageOfKind(const QList<AppStream::Image> &images, AppStrea
 
 QString AppStreamUtils::changelogToHtml(const AppStream::Component &appdata)
 {
-    if (appdata.releases().isEmpty())
+#if ASQ_CHECK_VERSION(1, 0, 0)
+    const auto releases = appdata.releasesPlain();
+#else
+    const auto releases = appdata.releases();
+#endif
+    if (releases.isEmpty()) {
         return {};
+    }
 
-    const auto release = appdata.releases().constFirst();
+#if ASQ_CHECK_VERSION(1, 0, 0)
+    const auto release = releases.indexSafe(0).value();
+#else
+    const auto release = releases.constFirst();
+#endif
     if (release.description().isEmpty())
         return {};
 
@@ -251,7 +261,7 @@ QList<AppStream::Component> AppStreamUtils::componentsByCategories(AppStream::Po
 {
     QList<AppStream::Component> ret;
     for (const auto &categoryName : cat->involvedCategories()) {
-        ret += pool->componentsByCategories({categoryName});
+        ret += pool->componentsByCategories({categoryName}).toList();
     }
     kRemoveDuplicates(ret, kind);
     return ret;

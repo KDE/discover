@@ -303,12 +303,16 @@ void PackageKitBackend::reloadPackageList()
         }
         acquireFetching(false);
 
-        const QList<AppStream::Component> distroComponents = m_appdata->componentsById(AppStream::Utils::currentDistroComponentId());
+        const auto distroComponents = m_appdata->componentsById(AppStream::Utils::currentDistroComponentId());
         if (distroComponents.isEmpty()) {
             qWarning() << "PackageKitBackend: No distro component found for" << AppStream::Utils::currentDistroComponentId();
         }
-        for (const AppStream::Component &dc : distroComponents) {
+        for (const auto list = distroComponents.toList(); const AppStream::Component &dc : list) {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+            const auto releases = dc.releasesPlain().entries();
+#else
             const auto releases = dc.releases();
+#endif
             for (const auto &r : releases) {
                 int cmp = AppStream::Utils::vercmpSimple(r.version(), AppStreamIntegration::global()->osRelease()->versionId());
                 if (cmp == 0) {
@@ -511,7 +515,7 @@ T PackageKitBackend::resourcesByPackageNames(const W &pkgnames) const
                 if (res) {
                     ret += res;
                 } else {
-                    ret += resourcesByComponents<T>(m_appdata->componentsByBundleId(AppStream::Bundle::KindPackage, pkg_name, false));
+                    ret += resourcesByComponents<T>(m_appdata->componentsByBundleId(AppStream::Bundle::KindPackage, pkg_name, false).toList());
                 }
             }
         }
@@ -549,7 +553,7 @@ QList<AppStream::Component> PackageKitBackend::componentsById(const QString &id)
     if (comps.isEmpty()) {
         comps = m_appdata->componentsByProvided(AppStream::Provided::KindId, id);
     }
-    return comps;
+    return comps.toList();
 }
 
 static const auto needsResolveFilter = [](const StreamResult &res) {
@@ -613,7 +617,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-extends"));
         auto f = [this, filter, stream] {
             const auto extendingComponents = m_appdata->componentsByExtends(filter.extends);
-            auto resources = resultsByComponents(extendingComponents);
+            auto resources = resultsByComponents(extendingComponents.toList());
             stream->sendResources(resources, filter.state != AbstractResource::Broken);
         };
         runWhenInitialized(f, stream);
@@ -681,13 +685,15 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
     } else {
         auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-search"));
         const auto f = [this, stream, filter]() {
-            auto components = !filter.search.isEmpty() ? m_appdata->search(filter.search)
-#if ASQ_CHECK_VERSION(0, 15, 6)
-                                  : filter.category          ? AppStreamUtils::componentsByCategories(m_appdata.get(),
-                                                                                                      filter.category,
-                                                                                                      AppStream::Bundle::KindUnknown)
-#endif
-                                                             : m_appdata->components();
+            QList<AppStream::Component> components;
+            if (!filter.search.isEmpty()) {
+                components = m_appdata->search(filter.search).toList();
+            } else if (filter.category) {
+                components = AppStreamUtils::componentsByCategories(m_appdata.get(), filter.category, AppStream::Bundle::KindUnknown).toList();
+            } else {
+                components = m_appdata->components().toList();
+            }
+
             QSet<QString> ids;
             components = kFilter<QList<AppStream::Component>>(components, [&ids](const AppStream::Component &comp) {
                 if (ids.contains(comp.id()))
@@ -1030,7 +1036,7 @@ AbstractBackendUpdater *PackageKitBackend::backendUpdater() const
 
 QVector<AbstractResource *> PackageKitBackend::extendedBy(const QString &id) const
 {
-    const auto components = m_appdata->componentsById(id);
+    const auto components = m_appdata->componentsById(id).toList();
     return resourcesByComponents<QVector<AbstractResource *>>(components);
 }
 

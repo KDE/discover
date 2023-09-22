@@ -156,18 +156,19 @@ public:
 
     QList<AppStream::Component> componentsByName(const QString &name)
     {
-        QList<AppStream::Component> comps = m_pool->componentsById(name);
-        if (!comps.isEmpty())
-            return comps;
+        auto comps = m_pool->componentsById(name);
+        if (!comps.isEmpty()) {
+            return comps.toList();
+        }
 
         comps = m_pool->componentsByProvided(AppStream::Provided::KindId, name);
-        return comps;
+        return comps.toList();
     }
 
     QList<AppStream::Component> componentsByFlatpakId(const QString &ref)
     {
 #if ASQ_CHECK_VERSION(0, 16, 0)
-        QList<AppStream::Component> comps = m_pool->componentsByBundleId(AppStream::Bundle::KindFlatpak, ref, false);
+        QList<AppStream::Component> comps = m_pool->componentsByBundleId(AppStream::Bundle::KindFlatpak, ref, false).toList();
 #else
         QList<AppStream::Component> comps = m_pool->components();
         comps = kFilter<QList<AppStream::Component>>(comps, [&ref](const AppStream::Component &component) {
@@ -178,7 +179,7 @@ public:
         if (!comps.isEmpty())
             return comps;
 
-        comps = m_pool->componentsByProvided(AppStream::Provided::KindId, ref.section('/'_L1, 1, 1));
+        comps = m_pool->componentsByProvided(AppStream::Provided::KindId, ref.section('/'_L1, 1, 1)).toList();
         return comps;
     }
 
@@ -810,7 +811,7 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
     }
 
     // TODO optimise, this lookup should happen in libappstream
-    auto comps = pool.components();
+    auto comps = pool.components().toList();
     comps = kFilter<QList<AppStream::Component>>(comps, [name, branch](const AppStream::Component &component) {
         const QString id = component.bundle(AppStream::Bundle::KindFlatpak).id();
         // app/app.getspace.Space/x86_64/stable
@@ -1585,11 +1586,11 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
         for (const auto &source : std::as_const(m_flatpakSources)) {
             QList<FlatpakResource *> resources;
             if (source->m_pool) {
-                const auto a = !filter.search.isEmpty() ? source->m_pool->search(filter.search)
+                const auto a = !filter.search.isEmpty() ? source->m_pool->search(filter.search).toList()
 #if ASQ_CHECK_VERSION(0, 15, 6)
                     : filter.category ? AppStreamUtils::componentsByCategories(source->m_pool, filter.category, AppStream::Bundle::KindFlatpak)
 #endif
-                                      : source->m_pool->components();
+                                      : source->m_pool->components().toList();
                 resources = kTransform<QList<FlatpakResource *>>(a, [this, &source](const auto &comp) {
                     return resourceForComponent(comp, source);
                 });

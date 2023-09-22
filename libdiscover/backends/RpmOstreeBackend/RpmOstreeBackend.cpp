@@ -316,7 +316,7 @@ void RpmOstreeBackend::lookForNextMajorVersion()
     }
 
     // Look at releases to see if we have a new major version available.
-    const QList<AppStream::Component> distroComponents = m_appdata->componentsById(distroId);
+    const auto distroComponents = m_appdata->componentsById(distroId);
     if (distroComponents.isEmpty()) {
         qWarning() << "rpm-ostree-backend: No component found for" << distroId;
         return;
@@ -324,8 +324,12 @@ void RpmOstreeBackend::lookForNextMajorVersion()
 
     QString currentVersion = AppStreamIntegration::global()->osRelease()->versionId();
     QString nextVersion;
-    for (const AppStream::Component &dc : distroComponents) {
+    for (const auto list = distroComponents.toList(); const AppStream::Component &dc : list) {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+        const auto releases = dc.releasesPlain().entries();
+#else
         const auto releases = dc.releases();
+#endif
         for (const auto &r : releases) {
             // Only look at stable releases unless development mode is enabled
             if ((r.kind() != AppStream::Release::KindStable) && !m_developmentEnabled) {

@@ -10,6 +10,7 @@
 #include <AppStreamQt/image.h>
 #include <AppStreamQt/release.h>
 #include <AppStreamQt/screenshot.h>
+#include <AppStreamQt/version.h>
 #include <KLocalizedString>
 #include <KService>
 #include <PackageKit/Daemon>
@@ -236,8 +237,13 @@ QString AppPackageKitResource::versionString()
 
 QDate AppPackageKitResource::releaseDate() const
 {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+    if (!m_appdata.releasesPlain().isEmpty()) {
+        const auto release = m_appdata.releasesPlain().indexSafe(0).value();
+#else
     if (!m_appdata.releases().isEmpty()) {
-        auto release = m_appdata.releases().constFirst();
+        const auto release = m_appdata.releases().constFirst();
+#endif
         return release.timestamp().date();
     }
 

@@ -16,6 +16,7 @@
 #include <AppStreamQt/icon.h>
 #include <AppStreamQt/screenshot.h>
 #include <AppStreamQt/utils.h>
+#include <AppStreamQt/version.h>
 #include <appstream/AppStreamUtils.h>
 
 #include <KConfigGroup>
@@ -115,7 +116,11 @@ QList<PackageState> FlatpakResource::addonsInformation()
 QString FlatpakResource::availableVersion() const
 {
     if (m_availableVersion.isEmpty()) {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+        const auto releases = m_appdata.releasesPlain().entries();
+#else
         const auto releases = m_appdata.releases();
+#endif
         if (!releases.isEmpty()) {
             auto latestVersion = releases.constFirst().version();
             for (const auto &release : releases) {
@@ -654,8 +659,13 @@ QUrl FlatpakResource::url() const
 
 QDate FlatpakResource::releaseDate() const
 {
-    if (!m_appdata.releases().isEmpty()) {
-        auto release = m_appdata.releases().constFirst();
+#if ASQ_CHECK_VERSION(1, 0, 0)
+    if (!m_appdata.releasesPlain().isEmpty()) {
+        auto release = m_appdata.releasesPlain().indexSafe(0).value();
+#else
+    if (const auto releases = m_appdata.releases(); !releases.isEmpty()) {
+        auto release = releases.constFirst();
+#endif
         return release.timestamp().date();
     }
 
@@ -716,8 +726,13 @@ QString FlatpakResource::versionString()
         if (ref) {
             version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(ref));
         }
+#if ASQ_CHECK_VERSION(1, 0, 0)
+    } else if (!m_appdata.releasesPlain().isEmpty()) {
+        const auto release = m_appdata.releasesPlain().indexSafe(0).value();
+#else
     } else if (!m_appdata.releases().isEmpty()) {
-        auto release = m_appdata.releases().constFirst();
+        const auto release = m_appdata.releases().constFirst();
+#endif
         version = release.version();
     } else {
         version = m_id.branch;
