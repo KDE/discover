@@ -6,6 +6,7 @@
 
 import QtQuick
 import QtQuick.Controls as QQC2
+import QtQuick.Templates as T
 import Qt5Compat.GraphicalEffects as GE
 import org.kde.kirigami as Kirigami
 
@@ -180,8 +181,19 @@ Item {
 
                 anchors.centerIn: parent
                 z: 100
-                // playing
 
+                display: T.AbstractButton.IconOnly
+                text: {
+                    const player = delegate.activeAnimatedImage;
+                    if (!player) {
+                        return "";
+                    }
+                    if (player.paused) {
+                        return i18n("Play");
+                    } else {
+                        return i18n("Pause");
+                    }
+                }
                 icon.name: {
                     const player = delegate.activeAnimatedImage;
                     if (!player) {

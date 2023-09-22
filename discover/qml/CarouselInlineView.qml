@@ -95,8 +95,7 @@ T.Control {
             delegate: CarouselDelegate {
                 onActivated: {
                     if (root.currentIndex === index) {
-                        // TODO
-                        // maximizedHost.open();
+                        controller.open(root.Window.window, root.carouselModel, index);
                     } else {
                         root.currentIndex = index;
                     }
@@ -131,6 +130,14 @@ T.Control {
             onCurrentIndexChanged: {
                 root.currentIndex = currentIndex;
             }
+        }
+    }
+
+    CarouselMaximizedViewController {
+        id: controller
+
+        onCurrentIndexChanged: currentIndex => {
+            root.currentIndex = currentIndex;
         }
     }
 }
