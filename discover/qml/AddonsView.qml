@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import "navigation.js" as Navigation
 import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami.delegates as KD
 
 Kirigami.OverlaySheet {
     id: addonsView
@@ -28,13 +29,13 @@ Kirigami.OverlaySheet {
 
         model: ApplicationAddonsModel { id: addonsModel }
 
-        delegate: Kirigami.CheckableListItem {
+        delegate: KD.CheckSubtitleDelegate {
             id: listItem
 
             enabled: !addonsView.isInstalling
 
             icon: undefined
-            label: model.display
+            text: model.display
             subtitle: model.toolTip
 
             checked: model.checked
