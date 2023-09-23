@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 01:55+0000\n"
+"POT-Creation-Date: 2023-09-23 01:45+0000\n"
 "PO-Revision-Date: 2021-08-31 18:57+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -232,23 +232,23 @@ msgstr "Prieinamos vidinės pusės:\n"
 msgid "Available modes:\n"
 msgstr "Prieinamos veiksenos:\n"
 
-#: discover/qml/AddonsView.qml:19 discover/qml/navigation.js:43
+#: discover/qml/AddonsView.qml:20 discover/qml/navigation.js:43
 #, fuzzy, kde-format
 #| msgid "Addons"
 msgid "Addons for %1"
 msgstr "Papildiniai"
 
-#: discover/qml/AddonsView.qml:51
+#: discover/qml/AddonsView.qml:52
 #, kde-format
 msgid "More…"
 msgstr "Daugiau…"
 
-#: discover/qml/AddonsView.qml:60
+#: discover/qml/AddonsView.qml:61
 #, kde-format
 msgid "Apply Changes"
 msgstr "Taikyti pakeitimus"
 
-#: discover/qml/AddonsView.qml:67
+#: discover/qml/AddonsView.qml:68
 #, kde-format
 msgid "Reset"
 msgstr "Atstatyti"

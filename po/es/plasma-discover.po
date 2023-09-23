@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 01:55+0000\n"
+"POT-Creation-Date: 2023-09-23 01:45+0000\n"
 "PO-Revision-Date: 2023-08-31 12:06+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -244,22 +244,22 @@ msgstr "Motores disponibles:\n"
 msgid "Available modes:\n"
 msgstr "Modos disponibles:\n"
 
-#: discover/qml/AddonsView.qml:19 discover/qml/navigation.js:43
+#: discover/qml/AddonsView.qml:20 discover/qml/navigation.js:43
 #, kde-format
 msgid "Addons for %1"
 msgstr "Complementos para %1"
 
-#: discover/qml/AddonsView.qml:51
+#: discover/qml/AddonsView.qml:52
 #, kde-format
 msgid "More…"
 msgstr "Más..."
 
-#: discover/qml/AddonsView.qml:60
+#: discover/qml/AddonsView.qml:61
 #, kde-format
 msgid "Apply Changes"
 msgstr "Aplicar cambios"
 
-#: discover/qml/AddonsView.qml:67
+#: discover/qml/AddonsView.qml:68
 #, kde-format
 msgid "Reset"
 msgstr "Reiniciar"

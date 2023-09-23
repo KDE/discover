@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 01:55+0000\n"
+"POT-Creation-Date: 2023-09-23 01:45+0000\n"
 "PO-Revision-Date: 2023-08-07 22:40+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -227,22 +227,22 @@ msgstr "可用的後端介面：\n"
 msgid "Available modes:\n"
 msgstr "可用的模式：\n"
 
-#: discover/qml/AddonsView.qml:19 discover/qml/navigation.js:43
+#: discover/qml/AddonsView.qml:20 discover/qml/navigation.js:43
 #, kde-format
 msgid "Addons for %1"
 msgstr "%1 的附加功能"
 
-#: discover/qml/AddonsView.qml:51
+#: discover/qml/AddonsView.qml:52
 #, kde-format
 msgid "More…"
 msgstr "更多…"
 
-#: discover/qml/AddonsView.qml:60
+#: discover/qml/AddonsView.qml:61
 #, kde-format
 msgid "Apply Changes"
 msgstr "套用變更"
 
-#: discover/qml/AddonsView.qml:67
+#: discover/qml/AddonsView.qml:68
 #, kde-format
 msgid "Reset"
 msgstr "重設"
