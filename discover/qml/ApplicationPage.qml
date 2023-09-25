@@ -387,12 +387,10 @@ DiscoverPage {
             Layout.preferredHeight: Math.round(width / 2) + Math.round((2 + 7/9) * Kirigami.Units.gridUnit)
             Layout.topMargin: appInfo.internalSpacings
 
-            displayMarginBeginning: appInfo.internalSpacings
-            displayMarginEnd: appInfo.internalSpacings
+            edgeMargin: appInfo.internalSpacings
+            visible: carouselModel.count > 0 && !hasFailed
 
-            visible: count > 0 && !hasFailed
-
-            screenshotsModel: ScreenshotsModel {
+            carouselModel: ScreenshotsModel {
                 application: appInfo.application
             }
         }

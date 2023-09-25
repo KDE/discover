@@ -11,195 +11,126 @@ import QtQuick.Layouts
 import QtQuick.Controls as QQC2
 import QtQuick.Templates as T
 import org.kde.discover
-import org.kde.kirigami 2 as Kirigami
+import org.kde.kirigami as Kirigami
 
-ListView {
+T.Control {
     id: root
 
-    required property ScreenshotsModel screenshotsModel
+    required property ScreenshotsModel carouselModel
 
-    property bool showNavigationArrows: true
+    property real edgeMargin: 0
+    property alias view: view
+
+    property int currentIndex: 0
+
+    // TODO: Re-add tracking of failed images, store per-screenshot data in model
     property int failedCount: 0
-    readonly property bool hasFailed: count !== 0 && failedCount === count
+    readonly property bool hasFailed: failedCount !== 0 && failedCount === view.count
 
-    spacing: Kirigami.Units.largeSpacing
-    focus: overlay.visible
-    orientation: Qt.Horizontal
-    cacheBuffer: 10 // keep some screenshots in memory
+    implicitWidth: 0
+    implicitHeight: implicitContentHeight
 
-    Keys.onLeftPressed:  if (leftAction.visible)  leftAction.trigger()
-    Keys.onRightPressed: if (rightAction.visible) rightAction.trigger()
+    padding: 0
+    topPadding: undefined
+    leftPadding: undefined
+    rightPadding: undefined
+    bottomPadding: undefined
+    verticalPadding: undefined
+    horizontalPadding: undefined
 
-    property real delegateHeight: height - topMargin - bottomMargin
+    focusPolicy: Qt.StrongFocus
+    Keys.forwardTo: view
 
-    model: screenshotsModel
+    contentItem: ColumnLayout {
+        spacing: Kirigami.Units.largeSpacing * 3
 
-    delegate: QQC2.AbstractButton {
-        readonly property bool animated: isAnimated
-        readonly property url imageSource: large_image_url
-        readonly property real proportion: (thumbnail.imageStatus === Image.Ready && thumbnail.sourceSize.width > 1)
-            ? (thumbnail.sourceSize.height / thumbnail.sourceSize.width) : 1
+        LayoutMirroring.enabled: root.mirrored
+        LayoutMirroring.childrenInherit: true
 
-        implicitWidth: root.delegateHeight / proportion
-        implicitHeight: root.delegateHeight
-        opacity: hovered ? 0.7 : 1
+        ListView {
+            id: view
 
-        hoverEnabled: true
-        onClicked: {
-            root.currentIndex = model.row
-            overlay.open()
-        }
+            Layout.fillWidth: true
+            Layout.fillHeight: true
 
-        HoverHandler {
-            cursorShape: Qt.PointingHandCursor
-        }
+            keyNavigationEnabled: true
+            interactive: true
 
-        background: Item {
-            QQC2.BusyIndicator {
-                visible: running
-                running: thumbnail.imageStatus === Image.Loading
-                anchors.centerIn: parent
+            clip: true
+            pixelAligned: true
+            orientation: ListView.Horizontal
+            snapMode: ListView.SnapToItem
+            highlightRangeMode: ListView.StrictlyEnforceRange
+
+            displayMarginBeginning: root.edgeMargin
+            displayMarginEnd: root.edgeMargin
+
+            preferredHighlightBegin: currentItem ? Math.round((width - currentItem.width) / 2) : 0
+            preferredHighlightEnd: currentItem ? preferredHighlightBegin + currentItem.width : 0
+
+            highlightMoveDuration: Kirigami.Units.longDuration
+            highlightResizeDuration: Kirigami.Units.longDuration
+
+            spacing: Kirigami.Units.gridUnit
+            cacheBuffer: 10000
+
+            currentIndex: root.currentIndex
+
+            onCurrentIndexChanged: {
+                root.currentIndex = currentIndex;
             }
-            Kirigami.Icon {
-                implicitWidth: Kirigami.Units.iconSizes.large
-                implicitHeight: Kirigami.Units.iconSizes.large
-                visible: thumbnail.imageStatus === Image.Error
-                source: "image-missing"
+
+            Component.onCompleted: {
+                // HACK: Layout polish loop detected for QQuickColumnLayout. Aborting after two iterations.
+                //
+                // That error leads to ListView content being initially mis-positioned.
+                // So, let's fire a callback exactly after two event loop iterations.
+                Qt.callLater(() => {
+                    Qt.callLater(() => {
+                        model = Qt.binding(() => root.carouselModel);
+                    });
+                });
             }
-            ConditionalLoader {
-                id: thumbnail
-                anchors.fill: parent
-                readonly property int imageStatus: item.status
-                readonly property var sourceSize: item.sourceSize
-                condition: isAnimated
 
-                componentFalse: Component {
-                    Image {
-                        source: small_image_url
-
-                        onStatusChanged: {
-                            if (status == Image.Error) {
-                                source = large_image_url
-                            }
-                        }
-                    }
-                }
-                componentTrue: Component {
-                    AnimatedImage {
-                        source: small_image_url
-
-                        onStatusChanged: {
-                            if (status == Image.Error) {
-                                source = large_image_url
-                            }
-                        }
-                    }
-                }
-
-                onImageStatusChanged: {
-                    if (imageStatus === Image.Error) {
-                        root.failedCount += 1;
+            delegate: CarouselDelegate {
+                onActivated: {
+                    if (root.currentIndex === index) {
+                        // TODO
+                        // maximizedHost.open();
+                    } else {
+                        root.currentIndex = index;
                     }
                 }
             }
+
+            CarouselNavigationButtonsListViewAdapter {
+                LayoutMirroring.enabled: root.LayoutMirroring.enabled
+
+                Kirigami.Theme.colorSet: Kirigami.Theme.Button
+
+                view: view
+                policy: CarouselNavigationButtonsListViewAdapter.CurrentIndex
+                edgeMargin: root.edgeMargin
+            }
+        }
+
+        CarouselPageIndicator {
+            id: pageIndicator
+
+            Layout.fillWidth: true
+
+            focusPolicy: Qt.NoFocus
+            interactive: true
+            count: carouselModel.count
+            visible: count > 1
+
+            function bindCurrentIndex() {
+                currentIndex = Qt.binding(() => root.currentIndex);
+            }
+
+            onCurrentIndexChanged: {
+                root.currentIndex = currentIndex;
+            }
         }
     }
-
-    CarouselNavigationButtonsListViewAdapter {
-        LayoutMirroring.enabled: root.LayoutMirroring.enabled
-
-        view: root
-        policy: CarouselNavigationButtonsListViewAdapter.CurrentIndex
-        edgeMargin: Kirigami.Units.largeSpacing
-    }
-
-    QQC2.Popup {
-        id: overlay
-        parent: applicationWindow().overlay
-        z: applicationWindow().globalDrawer.z + 10
-        modal: true
-        clip: false
-
-        x: (parent.width - width) / 2
-        y: (parent.height - height) / 2
-        readonly property real proportion: (overlayImage.sourceSize.width > 1) ? (overlayImage.sourceSize.height / overlayImage.sourceSize.width) : 1
-        height: overlayImage.imageStatus >= Image.Loading ? Kirigami.Units.gridUnit * 20 : Math.min(parent.height * 0.9, (parent.width * 0.9) * proportion, overlayImage.sourceSize.height)
-        width: overlayImage.imageStatus >= Image.Loading ? Kirigami.Units.gridUnit * 20 : (height - 2 * padding) / proportion
-
-        QQC2.BusyIndicator {
-            id: indicator
-            visible: running
-            running: overlayImage.imageStatus === Image.Loading
-            anchors.centerIn: parent
-        }
-
-        Kirigami.Icon {
-            implicitWidth: Kirigami.Units.iconSizes.large
-            implicitHeight: Kirigami.Units.iconSizes.large
-            visible: overlayImage.imageStatus === Image.Error
-            source: "image-missing"
-        }
-
-        ConditionalLoader {
-            id: overlayImage
-            anchors.fill: parent
-            readonly property var imageStatus: item.status
-            readonly property var sourceSize: item.sourceSize
-            condition: root.currentItem?.animated ?? false
-
-            componentFalse: Component {
-                Image {
-                    source: root.currentItem ? root.currentItem.imageSource : ""
-                    fillMode: Image.PreserveAspectFit
-                    smooth: true
-                }
-            }
-            componentTrue: Component {
-                AnimatedImage {
-                    source: root.currentItem ? root.currentItem.imageSource : ""
-                    fillMode: Image.PreserveAspectFit
-                    smooth: true
-                }
-            }
-
-            onImageStatusChanged: {
-                if (imageStatus === Image.Error) {
-                    root.failedCount += 1;
-                }
-            }
-        }
-
-        QQC2.Button {
-            anchors {
-                left: parent.right
-                bottom: parent.top
-            }
-            icon.name: "window-close"
-            onClicked: overlay.close()
-        }
-
-        CarouselNavigationButtonsListViewAdapter {
-            LayoutMirroring.enabled: root.LayoutMirroring.enabled
-
-            view: root
-        }
-
-        Kirigami.Action {
-            id: leftAction
-            icon.name: root.LayoutMirroring.enabled ? "arrow-right" : "arrow-left"
-            enabled: overlay.visible && visible
-            visible: root.currentIndex >= 1 && !indicator.running
-            onTriggered: root.currentIndex = (root.currentIndex - 1) % root.count
-        }
-
-        Kirigami.Action {
-            id: rightAction
-            icon.name: root.LayoutMirroring.enabled ? "arrow-left" : "arrow-right"
-            enabled: overlay.visible && visible
-            visible: root.currentIndex < (root.count - 1) && !indicator.running
-            onTriggered: root.currentIndex = (root.currentIndex + 1) % root.count
-        }
-    }
-
-    clip: true
 }
