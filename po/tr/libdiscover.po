@@ -2594,33 +2594,3 @@ msgstr "Sistem Yazılımı"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Eklentiler"
-
-#~ msgid "Error while fetching reviews: %1"
-#~ msgstr "İncelemeler getirilirken hata: %1"
-
-#~ msgid "Packages to remove"
-#~ msgstr "Kaldırılacak paketler"
-
-#~ msgid "%1, released on %2"
-#~ msgstr "%2 tarihinde yayımlanan %1"
-
-#~ msgid "<li>%1 (%2): No changelog information</li>\n"
-#~ msgstr "<li>%1 (%2): Değişiklik günlüğü bilgisi yok</li>\n"
-
-#~ msgid "<li>%1 (%2): %3</li>\n"
-#~ msgstr "<li>%1 (%2): %3</li>\n"
-
-#~ msgid ""
-#~ "An update has been successfully installed. Reboot your system at your "
-#~ "convenience to start using it."
-#~ msgstr ""
-#~ "Güncellemeler başarıyla kuruldu. Kullanmaya başlamak için uygun bir "
-#~ "zamanda bilgisayarınızı yeniden başlatın."
-
-#~ msgid ""
-#~ "The update to %1 %2 has been successfully installed. Reboot your system "
-#~ "at your convenience to start using it."
-#~ msgstr ""
-#~ "%1 %2 güncellemesi başarıyla kuruldu. Bu yeni sürümü kullanmaya başlamak "
-#~ "için, lütfen bekleyen tüm güncellemeleri uygulayın ve sisteminizi yeniden "
-#~ "başlatın."
