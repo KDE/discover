@@ -380,10 +380,12 @@ DiscoverPage {
             id: carousel
 
             Layout.fillWidth: true
-            Layout.preferredHeight: Math.round(Math.min(Kirigami.Units.gridUnit * 25, appInfo.height * 0.3))
+            // This roughly replicates scaling formula for the screenshots
+            // gallery on FlatHub website, adjusted to scale with gridUnit
+            Layout.minimumHeight: Math.round((16 + 1/9) * Kirigami.Units.gridUnit)
+            Layout.maximumHeight: 30 * Kirigami.Units.gridUnit
+            Layout.preferredHeight: Math.round(width / 2) + Math.round((2 + 7/9) * Kirigami.Units.gridUnit)
             Layout.topMargin: appInfo.internalSpacings
-            Layout.leftMargin: appInfo.internalSpacings
-            Layout.rightMargin: appInfo.internalSpacings
 
             displayMarginBeginning: appInfo.internalSpacings
             displayMarginEnd: appInfo.internalSpacings
