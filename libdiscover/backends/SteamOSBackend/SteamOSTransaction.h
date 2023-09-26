@@ -29,7 +29,7 @@ private Q_SLOTS:
     void refreshStatus();
 
 private:
-    void finishTransaction();
+    void finishTransaction(bool installed);
 
     SteamOSResource *const m_app;
     QPointer<ComSteampoweredAtomupd1Interface> m_interface; // Interface to atomupd dbus api
