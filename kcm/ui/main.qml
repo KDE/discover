@@ -14,10 +14,18 @@ SimpleKCM {
     id: root
 
     ConfigModule.buttons: ConfigModule.Default | ConfigModule.Apply
+
     QQC2.ButtonGroup {
         id: autoUpdatesGroup
         onCheckedButtonChanged: {
             kcm.updatesSettings.useUnattendedUpdates = automaticallyRadio.checked
+        }
+    }
+
+    QQC2.ButtonGroup {
+        id: offlineUpdatesGroup
+        onCheckedButtonChanged: {
+            kcm.discoverSettings.useOfflineUpdates = offlineUpdatesOption.checked
         }
     }
 
@@ -106,29 +114,40 @@ SimpleKCM {
             implicitHeight: Kirigami.Units.largeSpacing
         }
 
-        RowLayout {
-            spacing: Kirigami.Units.smallSpacing
-            Kirigami.FormData.label: i18n("Use offline updates:")
+        ColumnLayout {
+            spacing: 0
+            Kirigami.FormData.label: i18n("Apply system updates:")
+            Kirigami.FormData.buddyFor: offlineUpdatesOption
             visible: !kcm.isRpmOstree
+            enabled: !kcm.discoverSettings.isUseOfflineUpdatesImmutable
 
-            QQC2.CheckBox {
-                id: offlineUpdatesBox
-                enabled: !kcm.discoverSettings.isUseOfflineUpdatesImmutable
+            QQC2.RadioButton {
+                id: offlineUpdatesOption
+                text: i18nc("@option:radio part of the logical sentence 'Apply system updates after rebooting'", "After rebooting")
+
+                QQC2.ButtonGroup.group: offlineUpdatesGroup
                 checked: kcm.discoverSettings.useOfflineUpdates
-                onToggled: {
-                    kcm.discoverSettings.useOfflineUpdates = checked
-                }
             }
 
-            ContextualHelpButton {
-                toolTipText: i18n("Offline updates maximize system stability by applying changes while restarting the system. Using this update mode is strongly recommended.")
+            QQC2.Label {
+                text: i18nc("@label The thing being recommended is to use the 'apply updates when rebooting' setting", "Recommended to maximize system stability")
+                leftPadding: offlineUpdatesOption.indicator.width
+                font: Kirigami.Theme.smallFont
             }
+        }
+
+        QQC2.RadioButton {
+            text: i18nc("@option:radio part of the logical sentence 'Apply system updates immediately'", "Immediately")
+
+            QQC2.ButtonGroup.group: offlineUpdatesGroup
+            enabled: !kcm.discoverSettings.isUseOfflineUpdatesImmutable
+            checked: !kcm.discoverSettings.useOfflineUpdates
         }
 
         SettingStateBinding {
             configObject: kcm.discoverSettings
             settingName: "useOfflineUpdates"
-            target: offlineUpdatesBox
+            target: offlineUpdatesOption
         }
     }
 }
