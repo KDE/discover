@@ -62,10 +62,10 @@ QDebug operator<<(QDebug debug, const QSnapdSlot *slot)
     return debug;
 }
 
-const QStringList SnapResource::m_objects({QStringLiteral("qrc:/qml/PermissionsButton.qml")
+const QStringList SnapResource::m_topObjects({QStringLiteral("qrc:/qml/PermissionsButton.qml")
 #ifdef SNAP_CHANNELS
-                                               ,
-                                           QStringLiteral("qrc:/qml/ChannelsButton.qml")
+                                                  ,
+                                              QStringLiteral("qrc:/qml/ChannelsButton.qml")
 #endif
 });
 

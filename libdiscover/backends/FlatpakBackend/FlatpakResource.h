@@ -25,8 +25,8 @@ class FlatpakSource;
 class FlatpakResource : public AbstractResource
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList topObjects MEMBER s_objects CONSTANT)
-    Q_PROPERTY(QStringList objects MEMBER s_bottomObjects CONSTANT)
+    Q_PROPERTY(QStringList topObjects MEMBER s_topObjects CONSTANT)
+    Q_PROPERTY(QStringList bottomObjects MEMBER s_bottomObjects CONSTANT)
     Q_PROPERTY(QString attentionText READ attentionText CONSTANT)
     Q_PROPERTY(QString dataLocation READ dataLocation CONSTANT)
     Q_PROPERTY(QString branch READ branch CONSTANT)
@@ -241,7 +241,7 @@ private:
     QSharedPointer<FlatpakSource> m_temp;
     QVector<FlatpakPermission> m_permissions;
     std::optional<QString> m_eolReason;
-    static const QStringList s_objects;
+    static const QStringList s_topObjects;
     static const QStringList s_bottomObjects;
 };
 

@@ -30,7 +30,7 @@ extern "C" {
 
 using namespace Qt::StringLiterals;
 
-const QStringList PackageKitResource::m_objects({QStringLiteral("qrc:/qml/DependenciesButton.qml"), QStringLiteral("qrc:/qml/PackageKitPermissions.qml")});
+const QStringList PackageKitResource::m_topObjects({QStringLiteral("qrc:/qml/DependenciesButton.qml"), QStringLiteral("qrc:/qml/PackageKitPermissions.qml")});
 
 PackageKitResource::PackageKitResource(QString packageName, QString summary, PackageKitBackend *parent)
     : AbstractResource(parent)

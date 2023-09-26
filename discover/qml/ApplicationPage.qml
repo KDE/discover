@@ -823,7 +823,7 @@ DiscoverPage {
             }
 
             Repeater {
-                model: application.objects
+                model: application.bottomObjects
                 delegate: Loader {
                     property QtObject resource: appInfo.application
                     source: modelData
