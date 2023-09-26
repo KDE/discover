@@ -71,21 +71,17 @@ void SteamOSTransaction::cancel()
     setStatus(CancelledStatus);
 }
 
-void SteamOSTransaction::finishTransaction()
+void SteamOSTransaction::finishTransaction(bool installed)
 {
     AbstractResource::State newState;
-    switch (role()) {
-    case InstallRole:
-    case ChangeAddonsRole:
+    if (installed) {
         newState = AbstractResource::Installed;
         Q_EMIT needReboot();
-        break;
-    case RemoveRole:
-        newState = AbstractResource::None;
-        break;
+        m_app->setState(newState);
+        setStatus(DoneStatus);
     }
-    m_app->setState(newState);
-    setStatus(DoneStatus);
+
+    // If not installed, don't change Status since it was already set.
     deleteLater();
 }
 
@@ -95,13 +91,6 @@ void SteamOSTransaction::refreshStatus()
     uint status = m_interface->updateStatus();
     qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "steamos-backend: New state: " << status;
 
-    // Status is one of these from the xml definition:
-    //    0 = IDLE, the update has not been launched yet
-    //    1 = IN_PROGRESS, the update is currently being applied
-    //    2 = PAUSED, the update has been paused
-    //    3 = SUCCESSFUL, the update process successfully completed
-    //    4 = FAILED, an error occurred during the update
-    //    5 = CANCELLED, a special case of FAILED where the update attempt has been cancelled
     switch (status) {
     case SteamOSBackend::Idle:
         break;
@@ -113,15 +102,15 @@ void SteamOSTransaction::refreshStatus()
         break;
     case SteamOSBackend::Successful: // SUCCESSFUL
         setStatus(Status::DoneStatus);
-        finishTransaction();
+        finishTransaction(true);
         break;
     case SteamOSBackend::Failed: // FAILED
         setStatus(Status::DoneWithErrorStatus);
-        finishTransaction();
+        finishTransaction(false);
         break;
     case SteamOSBackend::Cancelled: // CANCELLED
         setStatus(Status::CancelledStatus);
-        finishTransaction();
+        finishTransaction(false);
         break;
     }
 }

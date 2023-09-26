@@ -24,7 +24,13 @@ class SteamOSBackend : public AbstractResourcesBackend
 public:
     explicit SteamOSBackend(QObject *parent = nullptr);
 
-    // Some constants from com.steampowered.Atomupd1 dbus interface
+    // Status is one of these from the xml definition:
+    //    0 = IDLE, the update has not been launched yet
+    //    1 = IN_PROGRESS, the update is currently being applied
+    //    2 = PAUSED, the update has been paused
+    //    3 = SUCCESSFUL, the update process successfully completed
+    //    4 = FAILED, an error occurred during the update
+    //    5 = CANCELLED, a special case of FAILED where the update attempt has been cancelled
     enum Status {
         Idle = 0,
         InProgress,
