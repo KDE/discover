@@ -815,14 +815,14 @@ void FlatpakResource::loadPermissions()
     const QString sockets = contextGroup.readEntry("sockets", QString());
     if (sockets.contains("session-bus"_L1)) {
         brief = i18n("Session Bus Access");
-        description = i18n("Access is granted to the entire Session Bus");
-        m_permissions.append(FlatpakPermission(brief, description, u"plugins-symbolic"_s));
+        description = i18n("Can communicate with all other applications and processes run in this user account");
+        m_permissions.append(FlatpakPermission(brief, description, u"security-medium-symbolic"_s));
         fullSessionBusAccess = true;
     }
     if (sockets.contains("system-bus"_L1)) {
         brief = i18n("System Bus Access");
-        description = i18n("Access is granted to the entire System Bus");
-        m_permissions.append(FlatpakPermission(brief, description, u"plugins-symbolic"_s));
+        description = i18n("Can communicate with all other applications and processes on the system");
+        m_permissions.append(FlatpakPermission(brief, description, u"security-medium-symbolic"_s));
         fullSystemBusAccess = true;
     }
     if (sockets.contains("ssh-auth"_L1)) {
