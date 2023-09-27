@@ -813,6 +813,11 @@ void FlatpakResource::loadPermissions()
     }
 
     const QString sockets = contextGroup.readEntry("sockets", QString());
+    if (sockets.contains("pulseaudio"_L1)) {
+        brief = i18n("Sound system access");
+        description = i18n("Can play audio");
+        m_permissions.append(FlatpakPermission(brief, description, u"audio-speakers-symbolic"_s));
+    }
     if (sockets.contains("session-bus"_L1)) {
         brief = i18n("Session Bus Access");
         description = i18n("Can communicate with all other applications and processes run in this user account");
