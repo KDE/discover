@@ -119,5 +119,6 @@
     "X-KDE-Keywords[uk]": "оновлення",
     "X-KDE-Keywords[x-test]": "xxupdatesxx",
     "X-KDE-ParentApp": "kcontrol",
-    "X-KDE-System-Settings-Parent-Category": "system-administration"
+    "X-KDE-System-Settings-Parent-Category": "system-administration",
+    "X-KDE-Weight": 30
 }
