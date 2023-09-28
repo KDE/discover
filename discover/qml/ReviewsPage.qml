@@ -74,7 +74,8 @@ Kirigami.OverlaySheet {
         bottomMargin: Kirigami.Units.largeSpacing
         spacing: Kirigami.Units.smallSpacing
         implicitWidth: Kirigami.Units.gridUnit * 25
-        cacheBuffer: Math.max(0, contentHeight)
+        // Still preload some items to make the scrollbar behave better, but can't preload all the comments as some apps like Firefox have thousands of them which will freeze Discover for minutes
+        cacheBuffer: height * 2
         reuseItems: true
 
         delegate: ReviewDelegate {
