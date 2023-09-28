@@ -292,6 +292,8 @@ void PackageKitNotifier::refreshDatabase()
 
     if (!m_refresher) {
         m_refresher = PackageKit::Daemon::refreshCache(false);
+        // Limit the cache-age so that we actually download new caches if necessary
+        m_refresher->setHints(QStringLiteral("cache-age=300" /* 5 minutes */));
         connect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     }
 

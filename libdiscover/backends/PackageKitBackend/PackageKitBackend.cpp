@@ -534,6 +534,8 @@ void PackageKitBackend::checkForUpdates()
         acquireFetching(true);
         m_updater->clearDistroUpgrade();
         m_refresher = PackageKit::Daemon::refreshCache(false);
+        // Limit the cache-age so that we actually download new caches if necessary
+        m_refresher->setHints(globalHints() << QStringLiteral("cache-age=300" /* 5 minutes */));
 
         connect(m_refresher.data(), &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
         connect(m_refresher.data(), &PackageKit::Transaction::finished, this, [this]() {
