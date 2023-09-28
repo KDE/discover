@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-08 02:13+0000\n"
+"POT-Creation-Date: 2023-09-28 01:40+0000\n"
 "PO-Revision-Date: 2022-08-27 04:07+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -18,22 +18,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.1.1\n"
 
-#: kcm/ui/main.qml:32
+#: kcm/ui/main.qml:40
 #, kde-format
 msgid "Update software:"
 msgstr "პროგრამების განახლებa:"
 
-#: kcm/ui/main.qml:33
+#: kcm/ui/main.qml:41
 #, kde-format
 msgid "Manually"
 msgstr "ხელით"
 
-#: kcm/ui/main.qml:43
+#: kcm/ui/main.qml:51
 #, kde-format
 msgid "Automatically"
 msgstr "ავტომატურად"
 
-#: kcm/ui/main.qml:50
+#: kcm/ui/main.qml:58
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -45,55 +45,79 @@ msgstr ""
 "ხელმისაწვდომი გახდებიან. აპლიკაციების განახლებები მაშინვე გადმოიწერება, "
 "მაგრამ გადატარდება მხოლოდ კომპიუტერის გადატვირთვის შემდეგ."
 
-#: kcm/ui/main.qml:61
+#: kcm/ui/main.qml:69
 #, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
 msgstr "განახლების სიხშირე:"
 
-#: kcm/ui/main.qml:61
+#: kcm/ui/main.qml:69
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
 msgstr "გაფრთხილების სიხშირე:"
 
-#: kcm/ui/main.qml:64
+#: kcm/ui/main.qml:72
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
 msgstr "დღიურად"
 
-#: kcm/ui/main.qml:65
+#: kcm/ui/main.qml:73
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
 msgstr "კვირაში ერთხელ"
 
-#: kcm/ui/main.qml:66
+#: kcm/ui/main.qml:74
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
 msgstr "თვეში ერთხელ"
 
-#: kcm/ui/main.qml:67
+#: kcm/ui/main.qml:75
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
 msgstr "არასდროს"
 
-#: kcm/ui/main.qml:111
+#: kcm/ui/main.qml:119
 #, kde-format
-msgid "Use offline updates:"
-msgstr "გათიშული განახლებების გამოყენება:"
-
-#: kcm/ui/main.qml:124
-#, kde-format
-msgid ""
-"Offline updates maximize system stability by applying changes while "
-"restarting the system. Using this update mode is strongly recommended."
+msgid "Apply system updates:"
 msgstr ""
-"ოფლაინ განახლებები მაქსიმალურად იცავენ სისტემის სტაბილურობას განახლებების "
-"ჩატვირთვისას გადატარების გზით. განახლების ეს მეთოდი ძალიან რეკომენდებულია."
+
+#: kcm/ui/main.qml:126
+#, kde-format
+msgctxt ""
+"@option:radio part of the logical sentence 'Apply system updates after "
+"rebooting'"
+msgid "After rebooting"
+msgstr ""
+
+#: kcm/ui/main.qml:133
+#, kde-format
+msgctxt ""
+"@label The thing being recommended is to use the 'apply updates when "
+"rebooting' setting"
+msgid "Recommended to maximize system stability"
+msgstr ""
+
+#: kcm/ui/main.qml:140
+#, kde-format
+msgctxt ""
+"@option:radio part of the logical sentence 'Apply system updates immediately'"
+msgid "Immediately"
+msgstr ""
+
+#~ msgid "Use offline updates:"
+#~ msgstr "გათიშული განახლებების გამოყენება:"
+
+#~ msgid ""
+#~ "Offline updates maximize system stability by applying changes while "
+#~ "restarting the system. Using this update mode is strongly recommended."
+#~ msgstr ""
+#~ "ოფლაინ განახლებები მაქსიმალურად იცავენ სისტემის სტაბილურობას განახლებების "
+#~ "ჩატვირთვისას გადატარების გზით. განახლების ეს მეთოდი ძალიან რეკომენდებულია."
 
 #~ msgid "Software Update"
 #~ msgstr "პროგრამების განახლება"

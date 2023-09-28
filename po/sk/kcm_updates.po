@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_updates\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-08 02:13+0000\n"
+"POT-Creation-Date: 2023-09-28 01:40+0000\n"
 "PO-Revision-Date: 2023-03-04 18:52+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -18,22 +18,22 @@ msgstr ""
 "X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: kcm/ui/main.qml:32
+#: kcm/ui/main.qml:40
 #, kde-format
 msgid "Update software:"
 msgstr "Aktualizovať softvér:"
 
-#: kcm/ui/main.qml:33
+#: kcm/ui/main.qml:41
 #, kde-format
 msgid "Manually"
 msgstr "Ručne"
 
-#: kcm/ui/main.qml:43
+#: kcm/ui/main.qml:51
 #, kde-format
 msgid "Automatically"
 msgstr "Automaticky"
 
-#: kcm/ui/main.qml:50
+#: kcm/ui/main.qml:58
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -45,55 +45,80 @@ msgstr ""
 "Aktualizácie aplikácií sa nainštalujú okamžite, zatiaľ čo aktualizácie "
 "systému sa nainštalujú pri ďalšom reštartovaní počítača."
 
-#: kcm/ui/main.qml:61
+#: kcm/ui/main.qml:69
 #, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
 msgstr "Frekvencia aktualizovania:"
 
-#: kcm/ui/main.qml:61
+#: kcm/ui/main.qml:69
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
 msgstr "Frekvencia upozornení:"
 
-#: kcm/ui/main.qml:64
+#: kcm/ui/main.qml:72
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
 msgstr "Denne"
 
-#: kcm/ui/main.qml:65
+#: kcm/ui/main.qml:73
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
 msgstr "Týždenne"
 
-#: kcm/ui/main.qml:66
+#: kcm/ui/main.qml:74
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
 msgstr "Mesačne"
 
-#: kcm/ui/main.qml:67
+#: kcm/ui/main.qml:75
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
 msgstr "Nikdy"
 
-#: kcm/ui/main.qml:111
+#: kcm/ui/main.qml:119
 #, kde-format
-msgid "Use offline updates:"
-msgstr "Používať offline aktualizácie"
-
-#: kcm/ui/main.qml:124
-#, kde-format
-msgid ""
-"Offline updates maximize system stability by applying changes while "
-"restarting the system. Using this update mode is strongly recommended."
+msgid "Apply system updates:"
 msgstr ""
-"Offline aktualizácie maximalizujú stabilitu systému uplatnením zmien pri "
-"reštartovaní systému. Dôrazne sa odporúča použitie tohto režimu aktualizácií."
+
+#: kcm/ui/main.qml:126
+#, kde-format
+msgctxt ""
+"@option:radio part of the logical sentence 'Apply system updates after "
+"rebooting'"
+msgid "After rebooting"
+msgstr ""
+
+#: kcm/ui/main.qml:133
+#, kde-format
+msgctxt ""
+"@label The thing being recommended is to use the 'apply updates when "
+"rebooting' setting"
+msgid "Recommended to maximize system stability"
+msgstr ""
+
+#: kcm/ui/main.qml:140
+#, kde-format
+msgctxt ""
+"@option:radio part of the logical sentence 'Apply system updates immediately'"
+msgid "Immediately"
+msgstr ""
+
+#~ msgid "Use offline updates:"
+#~ msgstr "Používať offline aktualizácie"
+
+#~ msgid ""
+#~ "Offline updates maximize system stability by applying changes while "
+#~ "restarting the system. Using this update mode is strongly recommended."
+#~ msgstr ""
+#~ "Offline aktualizácie maximalizujú stabilitu systému uplatnením zmien pri "
+#~ "reštartovaní systému. Dôrazne sa odporúča použitie tohto režimu "
+#~ "aktualizácií."
 
 #~ msgid "Software Update"
 #~ msgstr "Aktualizácia softvéru"
