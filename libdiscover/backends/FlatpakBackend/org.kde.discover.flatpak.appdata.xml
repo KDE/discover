@@ -39,6 +39,7 @@
   <name xml:lang="pt-BR">Infraestrutura Flatpak</name>
   <name xml:lang="ro">Platformă Flatpak</name>
   <name xml:lang="ru">Модуль для работы с форматом Flatpak</name>
+  <name xml:lang="sa">सपाटपैक् पृष्ठान्त्</name>
   <name xml:lang="sk">Podporný program pre Flatpak</name>
   <name xml:lang="sl">Zaledje Flatpak</name>
   <name xml:lang="sv">Gränssnitt för Flatpak</name>
@@ -87,6 +88,7 @@
   <summary xml:lang="pt-BR">Integra aplicativos Flatpak no Discover</summary>
   <summary xml:lang="ro">Integrează aplicații Flatpak în Discover</summary>
   <summary xml:lang="ru">Добавление поддержки формата Flatpak в центр программ Discover</summary>
+  <summary xml:lang="sa">डिस्कोवर् इत्यस्मिन् सपाटपैक् अनुप्रयोगानाम् एकीकरणं करोति</summary>
   <summary xml:lang="sk">Integruje aplikácie Flatpad do aplikácie Discover</summary>
   <summary xml:lang="sl">V Discover vgradi programe Flatpack</summary>
   <summary xml:lang="sv">Integrerar Flatpak-program i Discover</summary>
@@ -139,6 +141,7 @@
   <developer_name xml:lang="pt-BR">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ro">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ru">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="sa">अलेक्स् पोल् गोन्जालेज्</developer_name>
   <developer_name xml:lang="sk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sl">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
