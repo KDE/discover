@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-07-19 16:39+0200\n"
+"PO-Revision-Date: 2023-09-28 10:29+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -632,15 +632,14 @@ msgid "Can access the internet"
 msgstr "Pote acceder a internet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Accesso de Bus de Systema"
+msgstr "Accesso de Systema de Sono"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Pote reproducer audio"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:963
@@ -649,16 +648,13 @@ msgid "Session Bus Access"
 msgstr "Accesso de Bus de Session"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Pote communicar con altere applicationes e processos in le mesme session de "
-"scriptorio usante le sequente protocollos de communication: %1"
+"Pote communicar con omne altere applicationes e processos in execution in "
+"iste conto de usator"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:974
@@ -667,14 +663,10 @@ msgid "System Bus Access"
 msgstr "Accesso de Bus de Systema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
-"Pote communicar con altere applicationes e processos in le mesme session de "
-"scriptorio usante le sequente protocollos de communication: %1"
+"Pote communicar con omne altere applicationes e processos  sur le systema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format

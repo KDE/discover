@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-07-19 06:36+0200\n"
+"PO-Revision-Date: 2023-09-28 12:24+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.3.2\n"
 
@@ -634,15 +634,14 @@ msgid "Can access the internet"
 msgstr "Lahko dostopa do interneta"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Sistemski dostop do vodila"
+msgstr "Sistemski dostop do zvoka"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Lahko predvaja zvok"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:963
@@ -651,16 +650,13 @@ msgid "Session Bus Access"
 msgstr "Dostop do vodila na seji"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Lahko komunicira z drugimi aplikacijami in procesi v isti seji namizja z "
-"uporabo naslednjih komunikacijskih protokolov: %1"
+"Lahko komunicira z vsemi drugimi aplikacijami in procesi, ki se izvajajo v "
+"tem uporabniškem računu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:974
@@ -669,14 +665,9 @@ msgid "System Bus Access"
 msgstr "Sistemski dostop do vodila"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
-msgstr ""
-"Lahko komunicira z drugimi aplikacijami in procesi v isti seji namizja z "
-"uporabo naslednjih komunikacijskih protokolov: %1"
+msgstr "Lahko komunicira z vsemi drugimi aplikacijami in procesi v sistemu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format

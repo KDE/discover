@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2022-08-25 12:36+0200\n"
+"PO-Revision-Date: 2023-09-28 12:58+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.0\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: kcm/ui/main.qml:40
 #, kde-format
@@ -84,7 +84,7 @@ msgstr "Nooit"
 #: kcm/ui/main.qml:119
 #, kde-format
 msgid "Apply system updates:"
-msgstr ""
+msgstr "Elementen voor bijwerken toepassen:"
 
 #: kcm/ui/main.qml:126
 #, kde-format
@@ -92,7 +92,7 @@ msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates after "
 "rebooting'"
 msgid "After rebooting"
-msgstr ""
+msgstr "Na opnieuw opstarten"
 
 #: kcm/ui/main.qml:133
 #, kde-format
@@ -100,14 +100,14 @@ msgctxt ""
 "@label The thing being recommended is to use the 'apply updates when "
 "rebooting' setting"
 msgid "Recommended to maximize system stability"
-msgstr ""
+msgstr "Aanbevolen om stabiliteit van het systeem te maximaliseren"
 
 #: kcm/ui/main.qml:140
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"
 msgid "Immediately"
-msgstr ""
+msgstr "Onmiddellijk"
 
 #~ msgid "Use offline updates:"
 #~ msgstr "Offline elementen voor bijwerken gebruiken:"

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-09-19 19:09+0200\n"
+"PO-Revision-Date: 2023-09-28 12:29+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -636,15 +636,14 @@ msgid "Can access the internet"
 msgstr "Pot accedir a Internet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Accés al bus del sistema"
+msgstr "Accés al sistema de so"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Pot reproduir àudio"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:963
@@ -653,16 +652,13 @@ msgid "Session Bus Access"
 msgstr "Accés al bus de la sessió"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Pot comunicar-se amb altres aplicacions i processos en la mateixa sessió "
-"d'escriptori utilitzant els protocols de comunicació següents: %1"
+"Pot comunicar-se amb totes les altres aplicacions i processos que s'executen "
+"en este compte d'usuari"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:974
@@ -671,14 +667,10 @@ msgid "System Bus Access"
 msgstr "Accés al bus del sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
-"Pot comunicar-se amb altres aplicacions i processos en la mateixa sessió "
-"d'escriptori utilitzant els protocols de comunicació següents: %1"
+"Pot comunicar-se amb totes les altres aplicacions i processos en el sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
@@ -2644,9 +2636,3 @@ msgstr "Programari del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complements"
-
-#~ msgid "Access is granted to the entire Session Bus"
-#~ msgstr "S'atorga accés complet al bus de la sessió"
-
-#~ msgid "Access is granted to the entire System Bus"
-#~ msgstr "S'atorga accés complet al bus del sistema"

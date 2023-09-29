@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-03-30 19:46+0200\n"
+"PO-Revision-Date: 2023-09-28 12:27+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -87,7 +87,7 @@ msgstr "Mai"
 #: kcm/ui/main.qml:119
 #, kde-format
 msgid "Apply system updates:"
-msgstr ""
+msgstr "Aplica les actualitzacions del sistema:"
 
 #: kcm/ui/main.qml:126
 #, kde-format
@@ -95,7 +95,7 @@ msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates after "
 "rebooting'"
 msgid "After rebooting"
-msgstr ""
+msgstr "Després de reiniciar"
 
 #: kcm/ui/main.qml:133
 #, kde-format
@@ -103,28 +103,11 @@ msgctxt ""
 "@label The thing being recommended is to use the 'apply updates when "
 "rebooting' setting"
 msgid "Recommended to maximize system stability"
-msgstr ""
+msgstr "Es recomana per a maximitzar l'estabilitat del sistema"
 
 #: kcm/ui/main.qml:140
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"
 msgid "Immediately"
-msgstr ""
-
-#~ msgid "Use offline updates:"
-#~ msgstr "Usa les actualitzacions fora de línia:"
-
-#~ msgid ""
-#~ "Offline updates maximize system stability by applying changes while "
-#~ "restarting the system. Using this update mode is strongly recommended."
-#~ msgstr ""
-#~ "Les actualitzacions sense connexió maximitzen l'estabilitat del sistema "
-#~ "mitjançant l'aplicació dels canvis mentre es reinicia el sistema. Es "
-#~ "recomana fermament emprar aquest mode d'actualització."
-
-#~ msgid "Software Update"
-#~ msgstr "Actualització de programari"
-
-#~ msgid "Configure software update settings"
-#~ msgstr "Configura les opcions d'actualització de programari"
+msgstr "Immediatament"

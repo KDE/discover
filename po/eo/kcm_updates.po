@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-04-28 07:03+0100\n"
+"PO-Revision-Date: 2023-09-28 07:45+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -49,7 +49,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
-msgstr "Ĝisdatigo ofteco:"
+msgstr "Ofteco de ĝisdatigo:"
 
 #: kcm/ui/main.qml:69
 #, kde-format
@@ -84,7 +84,7 @@ msgstr "Neniam"
 #: kcm/ui/main.qml:119
 #, kde-format
 msgid "Apply system updates:"
-msgstr ""
+msgstr "Apliki sistemajn ĝistdatigojn:"
 
 #: kcm/ui/main.qml:126
 #, kde-format
@@ -92,7 +92,7 @@ msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates after "
 "rebooting'"
 msgid "After rebooting"
-msgstr ""
+msgstr "Post restartigo"
 
 #: kcm/ui/main.qml:133
 #, kde-format
@@ -100,28 +100,11 @@ msgctxt ""
 "@label The thing being recommended is to use the 'apply updates when "
 "rebooting' setting"
 msgid "Recommended to maximize system stability"
-msgstr ""
+msgstr "Rekomendita por maksimumigi sisteman stabilon"
 
 #: kcm/ui/main.qml:140
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"
 msgid "Immediately"
-msgstr ""
-
-#~ msgid "Use offline updates:"
-#~ msgstr "Uzi eksterretajn ĝisdatigojn:"
-
-#~ msgid ""
-#~ "Offline updates maximize system stability by applying changes while "
-#~ "restarting the system. Using this update mode is strongly recommended."
-#~ msgstr ""
-#~ "Senretaj ĝisdatigoj maksimumigas sisteman stabilecon aplikante ŝanĝojn "
-#~ "dum rekomenco de la sistemo. Uzi ĉi tiun ĝisdatigreĝimon estas forte "
-#~ "rekomendita."
-
-#~ msgid "Software Update"
-#~ msgstr "Programaro Ĝisdatigo"
-
-#~ msgid "Configure software update settings"
-#~ msgstr "Meti programĝisdatigajn agordojn"
+msgstr "Tuje"

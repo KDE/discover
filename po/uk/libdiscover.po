@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-07-19 08:08+0300\n"
+"PO-Revision-Date: 2023-09-28 09:12+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -634,15 +634,14 @@ msgid "Can access the internet"
 msgstr "Може отримувати доступ до мережі"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Доступ до шини системи"
+msgstr "Доступ до звукової підсистеми"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Може відтворювати звук"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:963
@@ -651,16 +650,13 @@ msgid "Session Bus Access"
 msgstr "Доступ до шини сеансу"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Може обмінюватися даними із іншими програмами і процесами у тому самому "
-"стільничному сеансі за допомогою таких протоколів обміну даними: %1"
+"Може обмінюватися даними із усіма іншими програмами і процесами, які "
+"запущено у цьому обліковому записі користувача"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:974
@@ -669,14 +665,10 @@ msgid "System Bus Access"
 msgstr "Доступ до шини системи"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
-"Може обмінюватися даними із іншими програмами і процесами у тому самому "
-"стільничному сеансі за допомогою таких протоколів обміну даними: %1"
+"Може обмінюватися даними із усіма іншими програмами і процесами у системі"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format

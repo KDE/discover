@@ -1,7 +1,7 @@
 # Translation for libdiscover.po to Euskara/Basque (eu).
 # Copyright (C) 2017-2023 This file is copyright:
 # This file is distributed under the same license as the discover package.
-# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
 # Iñigo Salvador Azurmendi <xalba@ni.eus>, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-07-19 17:50+0200\n"
+"PO-Revision-Date: 2023-09-28 19:20+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -634,15 +634,14 @@ msgid "Can access the internet"
 msgstr "Internetera sar daiteke"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Sistemako buserako sarbidea"
+msgstr "Soinu sistemarako sarbidea"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Audioa jo dezake"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:963
@@ -651,16 +650,13 @@ msgid "Session Bus Access"
 msgstr "Saioko buserako sarbidea"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Mahaigain saio bereko beste aplikazio eta prozesu batzuekin komunikatu "
-"daiteke ondoko komunikazio protokoloak erabiliz: %1"
+"Erabiltzaile-kontu horretan ibiltzen ari diren beste aplikazio eta prozesu "
+"guztiekin komunikatu daiteke"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:974
@@ -669,14 +665,11 @@ msgid "System Bus Access"
 msgstr "Sistemako buserako sarbidea"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
-"Mahaigain saio bereko beste aplikazio eta prozesu batzuekin komunikatu "
-"daiteke ondoko komunikazio protokoloak erabiliz: %1"
+"Sisteman ibiltzen ari diren beste aplikazio eta prozesu guztiekin komunikatu "
+"daiteke"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
