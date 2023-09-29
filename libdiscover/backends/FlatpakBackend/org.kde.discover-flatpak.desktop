@@ -40,6 +40,7 @@ Name[pt]=Discover
 Name[pt_BR]=Discover
 Name[ro]=Discover
 Name[ru]=Discover
+Name[sa]=डिस्कोवर्
 Name[sk]=Discover
 Name[sl]=Discover
 Name[sr]=Oткривач
