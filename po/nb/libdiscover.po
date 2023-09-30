@@ -2621,9 +2621,3 @@ msgstr "Systemprogram"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tillegg"
-
-#~ msgid "Access is granted to the entire Session Bus"
-#~ msgstr "Får tilgang til hele øktbussen"
-
-#~ msgid "Access is granted to the entire System Bus"
-#~ msgstr "Får tilgang til hele systembussen"

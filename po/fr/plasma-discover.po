@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-23 01:45+0000\n"
-"PO-Revision-Date: 2023-09-05 17:03+0200\n"
+"PO-Revision-Date: 2023-09-28 17:42+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.0\n"
+"X-Generator: Lokalize 23.08.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -455,7 +455,7 @@ msgstr "Chargement des commentaires pour %1"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr "Les revues pour %1 sont temporairement indisponibles."
+msgstr "Les avis pour %1 sont temporairement indisponibles."
 
 #: discover/qml/ApplicationPage.qml:717
 #, kde-format
@@ -588,7 +588,7 @@ msgstr ""
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Rechercher : %2 - élément %3"
+msgstr[0] "Rechercher : %2 - %3 élément"
 msgstr[1] "Rechercher : %2 - %3 éléments"
 
 #: discover/qml/ApplicationsListPage.qml:56
@@ -600,14 +600,14 @@ msgstr "Chercher : %1"
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%2 - élément %1"
-msgstr[1] "%1 - %2 éléments"
+msgstr[0] "%2 - %1 élément"
+msgstr[1] "%2 - %1 éléments"
 
 #: discover/qml/ApplicationsListPage.qml:66
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Rechercher - élément %1"
+msgstr[0] "Rechercher - %1 élément"
 msgstr[1] "Rechercher - %1 éléments"
 
 #: discover/qml/ApplicationsListPage.qml:68
@@ -981,7 +981,7 @@ msgstr "Votes : %1 sur %2"
 #: discover/qml/ReviewDelegate.qml:105
 #, kde-format
 msgid "Was this review useful?"
-msgstr "Cette revue a elle été utile ?"
+msgstr "Cette avis a-t-il été utile ?"
 
 #: discover/qml/ReviewDelegate.qml:117
 #, kde-format
@@ -1018,7 +1018,7 @@ msgstr "Nom :"
 #: discover/qml/ReviewDialog.qml:52
 #, kde-format
 msgid "Title:"
-msgstr "Titre : "
+msgstr "Titre :"
 
 #: discover/qml/ReviewDialog.qml:71
 #, kde-format

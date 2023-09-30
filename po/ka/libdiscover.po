@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-09-01 04:42+0200\n"
+"PO-Revision-Date: 2023-09-29 05:08+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -632,15 +632,14 @@ msgid "Can access the internet"
 msgstr "წვდომა ინტერნეტთან"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "წვდომა სისტემურ მატარებელთნ"
+msgstr "წვდომა ხმის სისტემასთან"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "შეუძლია ხმის დაკვრა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:963
@@ -649,16 +648,13 @@ msgid "Session Bus Access"
 msgstr "სესიის მატარებლის წვდომა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"შეუძლია იგივე სამუშაო მაგიდის სესიაში სხვა აპლიკაციებთან და პროცესებთან "
-"ურთიერთობა შემდეგი პროტოკოლების გამოყენებით: %1"
+"შეუძლია ამ მომხმარებლის ანგარიშში გაშვებულ ყველა სხვა აპლიკაციასთან და "
+"პროცესთან ურთიერთობა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:974
@@ -667,14 +663,10 @@ msgid "System Bus Access"
 msgstr "წვდომა სისტემურ მატარებელთნ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
-"შეუძლია იგივე სამუშაო მაგიდის სესიაში სხვა აპლიკაციებთან და პროცესებთან "
-"ურთიერთობა შემდეგი პროტოკოლების გამოყენებით: %1"
+"შეუძლია სისტემაში გაშვებულ ყველა სხვა აპლიკაციასთან და პროცესთან ურთიერთობა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
