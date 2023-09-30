@@ -83,12 +83,17 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
         } break;
         case Transaction::RemoveRole:
             // see bug #315063
+#ifdef PACKAGEKIT_AUTOREMOVE
+            constexpr bool autoremove = true;
+#else
+            constexpr bool autoremove = false;
+#endif
             m_trans = PackageKit::Daemon::removePackages(packageIds(m_apps,
                                                                     [](PackageKitResource *r) {
                                                                         return r->installedPackageId();
                                                                     }),
                                                          true /*allowDeps*/,
-                                                         false,
+                                                         autoremove,
                                                          flags);
             break;
         };

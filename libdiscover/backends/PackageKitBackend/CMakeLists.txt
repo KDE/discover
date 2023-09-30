@@ -41,3 +41,8 @@ install(TARGETS DiscoverPackageKitNotifier DESTINATION ${KDE_INSTALL_PLUGINDIR}/
 install(FILES packagekit-backend-categories.xml DESTINATION ${KDE_INSTALL_DATADIR}/libdiscover/categories)
 
 install( FILES org.kde.discover.packagekit.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )
+
+option(PACKAGEKIT_AUTOREMOVE "Enable auto-removing unused dependencies when removing packages with PackageKit." "OFF")
+if(PACKAGEKIT_AUTOREMOVE)
+    add_definitions(-DPACKAGEKIT_AUTOREMOVE)
+endif()
