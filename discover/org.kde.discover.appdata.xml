@@ -41,7 +41,7 @@
   <name xml:lang="pt-BR">Discover</name>
   <name xml:lang="ro">Discover</name>
   <name xml:lang="ru">Центр приложений Discover</name>
-  <name xml:lang="sa">डिस्कोवर्</name>
+  <name xml:lang="sa">डिस्कवर्</name>
   <name xml:lang="sk">Discover</name>
   <name xml:lang="sl">Discover</name>
   <name xml:lang="sr">Oткривач</name>
@@ -93,7 +93,7 @@
   <summary xml:lang="pt-BR">Discover</summary>
   <summary xml:lang="ro">Discover</summary>
   <summary xml:lang="ru">Центр приложений Discover</summary>
-  <summary xml:lang="sa">डिस्कोवर्</summary>
+  <summary xml:lang="sa">डिस्कवर्</summary>
   <summary xml:lang="sk">Discover</summary>
   <summary xml:lang="sl">Discover</summary>
   <summary xml:lang="sr">Oткривач</summary>
@@ -144,7 +144,7 @@
     <p xml:lang="pt-BR">O Discover ajuda-o a encontrar e instalar aplicativos, jogos e ferramentas. Você pode pesquisar ou navegar por categoria, assim como ver as capturas de tela e ler as avaliações e comentários que o possam ajudá-lo a escolher o aplicativo perfeito.</p>
     <p xml:lang="ro">Discover vă permite să găsiți și să instalați aplicații, jocuri și unelte. Puteți căuta sau răsfoi după categorie, precum și să vedeți capturi de ecran și să citiți recenzii ce vă ajută la alegerea aplicației perfecte.</p>
     <p xml:lang="ru">Центр программ Discover предназначен для поиска, в числе по категориям и установки приложений и игр. Описания приложений содержат снимки экрана и отзывы других пользователей.</p>
-    <p xml:lang="sa">डिस्कोवर् भवन्तं अनुप्रयोगाः, क्रीडाः, साधनानि च अन्वेष्टुं संस्थापयितुं च सहायं करोति । भवान् श्रेणीनुसारं अन्वेष्टुं वा गवेषयत कर्तुं वा शक्नोति, तथा च पटलछवि अवलोकयितुं समीक्षां च पठितुं शक्नोति यत् भवान् सम्यक् अनुप्रयोगं चिन्वितुं साहाय्यं करोति।.</p>
+    <p xml:lang="sa">डिस्कवर् भवन्तं अनुप्रयोगाः, क्रीडाः, साधनानि च अन्वेष्टुं संस्थापयितुं च सहायं करोति । भवान् श्रेणीनुसारं अन्वेष्टुं वा गवेषयत कर्तुं वा शक्नोति, तथा च पटलछवि अवलोकयितुं समीक्षां च पठितुं शक्नोति यत् भवान् सम्यक् अनुप्रयोगं चिन्वितुं साहाय्यं करोति।.</p>
     <p xml:lang="sk">Aplikácia Discover vám pomôže nájsť a nainštalovať aplikácie, hry a nástroje. Môžete vyhľadávať alebo prehliadať podľa kategórií, prezerať si snímky obrazoviek a čítať recenzie, ktoré vám pomôžu vybrať si perfektnú aplikáciu.</p>
     <p xml:lang="sl">Discover vam pomaga najti in namestiti programe, igre in orodja. Lahko iščete ali brskate po kategorijah in si ogledate posnetke zaslona in preberete ocene, ki vam pomagajo izbrati popoln program.</p>
     <p xml:lang="sv">Discover hjälper till att hitta och installera program, spel och verktyg. Man kan söka eller bläddra enligt kategori, och titta på skärmbilder och läsa recensioner för att hjälpa till att välja det perfekta programmet.</p>
@@ -189,7 +189,7 @@
     <p xml:lang="pt-BR">Com o Discover você poderá gerenciar aplicativos de várias origens, incluindo os repositórios de aplicativos do seu sistema operacional, os repositórios do Flatpak, a loja do Snap ou mesmo AppImages do store.kde.org.</p>
     <p xml:lang="ro">Cu Discover puteți gestiona programe  din surse diferite, inclusiv depozitul software al sistemului de operare, depozite Flatpak, magazinul Snap, sau chiar programe AppImage de la store.kde.org.</p>
     <p xml:lang="ru">Discover позволяет управлять приложениями, получаемыми из различных источников: репозиториев установленной системы, репозиториев Flatpak, магазина приложений Snap, и даже приложений AppImages, расположенных по адресу store.kde.org.</p>
-    <p xml:lang="sa">डिस्कोवर् इत्यनेन भवान् बहुभ्यः स्रोतेभ्यः तन्त्रांशं प्रबन्धयितुं शक्नोति, यत्र स्वस्य प्रचालन प्रणाली इत्यस्य तन्त्रांश भण्डारः, फ्लैटपैक् भण्डाराः, स्नैप स्टोर, अथवा store.kde.org तः एपइमेजेज अपि सन्ति.</p>
+    <p xml:lang="sa">डिस्कवर् इत्यनेन भवान् बहुभ्यः स्रोतेभ्यः तन्त्रांशं प्रबन्धयितुं शक्नोति, यत्र स्वस्य प्रचालन प्रणाली इत्यस्य तन्त्रांश भण्डारः, फ्लैटपैक् भण्डाराः, स्नैप स्टोर, अथवा store.kde.org तः एपइमेजेज अपि सन्ति.</p>
     <p xml:lang="sk">S Discover môžete spravovať softvér z viacerých zdrojov vrátane úložiska softvéru vášho operačného systému, úložiska Flatpak, úložiska Snap alebo dokonca AppImages z obchodu store.kde.org.</p>
     <p xml:lang="sl">S programom Discover lahko upravljate programsko opremo iz več virov, vključno s svojo shrambo programske opreme operacijskega sistema, programske pakete Flatpak, trgovina Snap ali celo programe AppImages iz store.kde.org.</p>
     <p xml:lang="sv">Man kan hantera programvara från flera olika källor med Discover, inklusive operativsystemets programvaruarkiv, Flatpak-arkiv, Snap-butiken eller till och med programavbilder från store.kde.org.</p>
@@ -234,7 +234,7 @@
     <p xml:lang="pt-BR">Finalmente, o Discover também lhe permite procurar, instalar e gerenciar as extensões do Plasma e de todos os seus aplicativos favoritos do KDE!</p>
     <p xml:lang="ro">De asemenea, Discover vă ajută să găsiți, instalați și gestionați suplimente pentru Plasma și toate aplicațiile KDE favorite!</p>
     <p xml:lang="ru">Кроме того, при помощи Discover возможно искать, устанавливать и управлять дополнениями рабочей среды Plasma и приложений KDE.</p>
-    <p xml:lang="sa">अन्ते, डिस्कोवर् भवन्तं प्लाज्मा तथा च भवतः सर्वेषां प्रिय KDE अनुप्रयोगानाम् कृते ऐड-ऑन् अन्वेष्टुं, संस्थापयितुं, प्रबन्धयितुं च अनुमतिं ददाति!</p>
+    <p xml:lang="sa">अन्ते, डिस्कवर् भवन्तं प्लाज्मा तथा च भवतः सर्वेषां प्रिय KDE अनुप्रयोगानाम् कृते ऐड-ऑन् अन्वेष्टुं, संस्थापयितुं, प्रबन्धयितुं च अनुमतिं ददाति!</p>
     <p xml:lang="sk">Konečne aplikácia Discover tiež umožňuje nájsť, nainštalovať a spravovať doplnky pre Plasmu a všetky vaše obľúbené aplikácie prostredia KDE!</p>
     <p xml:lang="sl">Končno Discover vam omogoča iskanje, namestitev in upravljanje dodatkov za Plazma in vse vaše najljubše programe za KDE!</p>
     <p xml:lang="sv">Slutligen låter Discovery dig söka efter, installera och hantera tilläggsprogram för Plasma och alla favoritprogram i KDE.</p>
@@ -285,7 +285,7 @@
       <caption xml:lang="pt-BR">Plasma Discover</caption>
       <caption xml:lang="ro">Plasma Discover</caption>
       <caption xml:lang="ru">Центр приложений Discover</caption>
-      <caption xml:lang="sa">प्लाज्मा डिस्कोवर्</caption>
+      <caption xml:lang="sa">प्लाज्मा डिस्कवर्</caption>
       <caption xml:lang="sk">Plasma Discover</caption>
       <caption xml:lang="sl">Plasma Discover</caption>
       <caption xml:lang="sv">Plasma Discover</caption>
