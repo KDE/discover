@@ -59,7 +59,7 @@ msgstr ""
 #: discover/DiscoverObject.cpp:266
 #, kde-format
 msgid "Could not find category '%1'"
-msgstr "Non se puido atopar a categoría «%1»."
+msgstr "Non foi posíbel atopar a categoría «%1»."
 
 #: discover/DiscoverObject.cpp:281
 #, kde-format
@@ -72,7 +72,7 @@ msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr ""
-"Non se pode interactuar con recursos de flatpak sen a infraestrutura de "
+"Non é posíbel interactuar con recursos de flatpak sen a infraestrutura de "
 "flatpak %1. Instálea primeiro."
 
 #: discover/DiscoverObject.cpp:307
@@ -1102,7 +1102,7 @@ msgstr ""
 #: discover/qml/SourcesPage.qml:228
 #, kde-format
 msgid "Failed to increase '%1' preference"
-msgstr "Non se puido aumentar a opción «%1»"
+msgstr "Non foi posíbel aumentar a opción «%1»"
 
 #: discover/qml/SourcesPage.qml:234
 #, kde-format

@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the libmuon package.
 # Valter Mura <valtermura@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015.
-# Vincenzo Reale <smart2128vr@gmail.com>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Vincenzo Reale <smart2128vr@gmail.com>
 # Paolo Zamponi <feus73@gmail.com>, 2022.
 #
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-07-21 09:24+0200\n"
+"PO-Revision-Date: 2023-09-28 14:02+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -633,15 +633,14 @@ msgid "Can access the internet"
 msgstr "Può accedere a Internet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Accesso al bus di sistema"
+msgstr "Accesso al sistema sonoro"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Può riprodurre l'audio"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:963
@@ -650,16 +649,13 @@ msgid "Session Bus Access"
 msgstr "Accesso al bus di sessione"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Può comunicare con altre applicazioni e processi nella stessa sessione "
-"desktop utilizzando i seguenti protocolli di comunicazione: %1"
+"Può comunicare con tutte le altre applicazioni e processi eseguiti in questo "
+"account utente"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:974
@@ -668,14 +664,9 @@ msgid "System Bus Access"
 msgstr "Accesso al bus di sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
-msgstr ""
-"Può comunicare con altre applicazioni e processi nella stessa sessione "
-"desktop utilizzando i seguenti protocolli di comunicazione: %1"
+msgstr "Può comunicare con altre applicazioni e processi sul sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format

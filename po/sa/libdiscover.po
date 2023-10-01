@@ -1,41 +1,44 @@
-# Copyright (C) 2023 This file is copyright:
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the discover package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Shreekant <skkalwar999@gmail.com>, 2023.
 #
-# SPDX-FileCopyrightText: 2022, 2023 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-09-30 10:36+0200\n"
-"Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
-"Language-Team: \n"
-"Language: bg\n"
+"PO-Revision-Date: 2023-10-01 00:18+0530\n"
+"Last-Translator: Shreekant <skkalwar999@gmail.com>\n"
+"Language-Team: Sanskrit <N/A>\n"
+"Language: sa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"Plural-Forms: nplurals=2;plural=(n>2);\n"
+"X-Generator: Poedit 3.3.2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Минчо Кондарев"
+msgstr "श्रीकान्त् कलवार्"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "mkondarev@yahoo.de"
+msgstr "skkalwar999@gmail.com"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:103
 #, kde-format
 msgid "Proprietary"
-msgstr "Патентован"
+msgstr "स्वामित्वयुक्तः"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:105
 #, kde-format
 msgid "Public Domain"
-msgstr "Публичен домейн"
+msgstr "सार्वजनिक क्षेत्र"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:111
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
@@ -46,7 +49,7 @@ msgstr "Публичен домейн"
 #: libdiscover/UpdateModel/UpdateModel.cpp:329
 #, kde-format
 msgid "Unknown"
-msgstr "Неизвестно"
+msgstr "अज्ञात"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:187
 #, kde-format
@@ -54,7 +57,7 @@ msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr "Всички аудитории"
+msgstr "सर्वे प्रेक्षकाः"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:190
 #, kde-format
@@ -63,7 +66,7 @@ msgctxt ""
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr "Леко съдържание"
+msgstr "मृदु सामग्री"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:193
 #, kde-format
@@ -72,7 +75,7 @@ msgctxt ""
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr "Умерено съдържание"
+msgstr "मध्यम सामग्री"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:196
 #, kde-format
@@ -82,480 +85,480 @@ msgctxt ""
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "Наситено съдържание"
+msgstr "तीव्र सामग्री"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:171
 #, kde-format
 msgid "Technical error message: %1"
-msgstr "Съобщение за техническа грешка: %1"
+msgstr "तकनीकीदोषसन्देशः: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
 msgid "Error while submitting usefulness: %1"
-msgstr "Грешка при изпращане на полезност: %1"
+msgstr "उपयोगिता प्रस्तूयमाणे त्रुटिः: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:280
 #, kde-format
 msgid "Error while submitting review: %1"
-msgstr "Грешка при изпращане на рецензия: %1"
+msgstr "समीक्षां प्रस्तूयन्ते सति त्रुटिः: %1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
 msgctxt "Category"
 msgid "Dummy Category"
-msgstr "Фиктивна категория"
+msgstr "मिथ्या श्रेणी"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
 #, kde-format
 msgctxt "Category"
 msgid "dummy"
-msgstr "фиктивен"
+msgstr "मिथ्या"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
 #, kde-format
 msgctxt "Category"
 msgid "dummy addons"
-msgstr "фиктивни добавки"
+msgstr "मिथ्या एडोन्स्"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
 #, kde-format
 msgctxt "Category"
 msgid "dummy 1"
-msgstr "фиктивен 1"
+msgstr "मिथ्या १"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
-msgstr "фиктивен с неща"
+msgstr "द्रव्यैः सह मिथ्या"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
 #, kde-format
 msgctxt "Category"
 msgid "dummy 2.1"
-msgstr "фиктивен 2.1"
+msgstr "मिथ्या 2.1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
-msgstr "фиктивен с доста неща"
+msgstr "मिथ्या सह अत्यधिकं वस्तूनि"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
 #, kde-format
 msgctxt "Category"
 msgid "dummy 3"
-msgstr "фиктивен 3"
+msgstr "मिथ्या 3"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
 #, kde-format
 msgctxt "Category"
 msgid "dummy 4"
-msgstr "фиктивен 4"
+msgstr "मिथ्या 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
 #, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Всички приложения"
+msgstr "सर्वे अनुप्रयोगाः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
 #, kde-format
 msgctxt "Category"
 msgid "Accessories"
-msgstr "Помощни програми"
+msgstr "उपसाधनम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
 #, kde-format
 msgctxt "Category"
 msgid "Accessibility"
-msgstr "Достъпност"
+msgstr "अभिगम्यता"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
 #, kde-format
 msgctxt "Category"
 msgid "Developer Tools"
-msgstr "Инструменти за разработка"
+msgstr "विकासकसाधनम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
 #, kde-format
 msgctxt "Category"
 msgid "Debugging"
-msgstr "Отстраняване на грешки"
+msgstr "त्रुटिनिवारणम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
 #, kde-format
 msgctxt "Category"
 msgid "Graphic Interface Design"
-msgstr "Дизайн на графичен интерфейс"
+msgstr "चित्रण अन्तरफलक परिकल्पना"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
 #, kde-format
 msgctxt "Category"
 msgid "IDEs"
-msgstr "Среди за разработка на софтуер"
+msgstr "IDEs"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
 #, kde-format
 msgctxt "Category"
 msgid "Localization"
-msgstr "Превод"
+msgstr "स्थानीयकरणम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
 #, kde-format
 msgctxt "Category"
 msgid "Profiling"
-msgstr "Профилиране"
+msgstr "गुणलक्षणयोगः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
 #, kde-format
 msgctxt "Category"
 msgid "Web Development"
-msgstr "Уеб разработка"
+msgstr "जालविकासः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
 #, kde-format
 msgctxt "Category"
 msgid "Education"
-msgstr "Образование"
+msgstr "शिक्षा"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
 #, kde-format
 msgctxt "Category"
 msgid "Science and Engineering"
-msgstr "Наука и инженерство"
+msgstr "विज्ञानं च अभियांत्रिकी"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
 #, kde-format
 msgctxt "Category"
 msgid "Astronomy"
-msgstr "Астрономия"
+msgstr "खगोलशास्त्र"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
 #, kde-format
 msgctxt "Category"
 msgid "Biology"
-msgstr "Биология"
+msgstr "जीवशास्त्र"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
 #, kde-format
 msgctxt "Category"
 msgid "Chemistry"
-msgstr "Химия"
+msgstr "रसायनशास्त्र"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
 #, kde-format
 msgctxt "Category"
 msgid "Computer Science and Robotics"
-msgstr "Компютърни науки и роботика"
+msgstr "संगणकशास्त्रं च यान्त्रिकशास्त्रं"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
 #, kde-format
 msgctxt "Category"
 msgid "Electronics"
-msgstr "Електроника"
+msgstr "विद्युत् यांत्रिकी"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
 #, kde-format
 msgctxt "Category"
 msgid "Engineering"
-msgstr "Инженерство"
+msgstr "अभियांत्रिकी"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
 #, kde-format
 msgctxt "Category"
 msgid "Geography"
-msgstr "География"
+msgstr "भूगोलशास्त्र"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
 #, kde-format
 msgctxt "Category"
 msgid "Geology"
-msgstr "Геология"
+msgstr "भूविज्ञानम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
 #, kde-format
 msgctxt "Category"
 msgid "Mathematics"
-msgstr "Математика"
+msgstr "गणितम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
 #, kde-format
 msgctxt "Category"
 msgid "Physics"
-msgstr "Физика"
+msgstr "भौतिकशास्त्रम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
 #, kde-format
 msgctxt "Category"
 msgid "Games"
-msgstr "Игри"
+msgstr "क्रीडाः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
 #, kde-format
 msgctxt "Category"
 msgid "Arcade"
-msgstr "Аркадни"
+msgstr "खेलमण्डपः क्रीडाः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
 #, kde-format
 msgctxt "Category"
 msgid "Board Games"
-msgstr "Настолни игри"
+msgstr "पट्टखेलाः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
 #, kde-format
 msgctxt "Category"
 msgid "Card Games"
-msgstr "Карти"
+msgstr "पत्ताखेलाः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
 #, kde-format
 msgctxt "Category"
 msgid "Puzzles"
-msgstr "Пъзели"
+msgstr "विच्छिन्नाः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
 #, kde-format
 msgctxt "Category"
 msgid "Role Playing"
-msgstr "Ролеви игри"
+msgstr "भूमिकानिर्वाहः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
 #, kde-format
 msgctxt "Category"
 msgid "Simulation"
-msgstr "Симулатори"
+msgstr "अनुकरणम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
 #, kde-format
 msgctxt "Category"
 msgid "Strategy"
-msgstr "Стратегия"
+msgstr "रणनीति"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
 #, kde-format
 msgctxt "Category"
 msgid "Sports"
-msgstr "Спортни"
+msgstr "क्रीडाः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
 #, kde-format
 msgctxt "Category"
 msgid "Action"
-msgstr "Екшън"
+msgstr "क्रियाखेलाः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
 #, kde-format
 msgctxt "Category"
 msgid "Emulators"
-msgstr "Емулатори"
+msgstr "अनुकर्षकाः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
 #, kde-format
 msgctxt "Category"
 msgid "Graphics"
-msgstr "Графика"
+msgstr "चित्रण"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
 #, kde-format
 msgctxt "Category"
 msgid "3D"
-msgstr "3D"
+msgstr "त्रिमात्रिक"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
 #, kde-format
 msgctxt "Category"
 msgid "Drawing"
-msgstr "Чертане"
+msgstr "चित्रकरणम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
 #, kde-format
 msgctxt "Category"
 msgid "Painting and Editing"
-msgstr "Рисуване и обработка"
+msgstr "चित्रकला च सम्पादनम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
 #, kde-format
 msgctxt "Category"
 msgid "Photography"
-msgstr "Фотография"
+msgstr "छायाचित्रकला"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
 #, kde-format
 msgctxt "Category"
 msgid "Publishing"
-msgstr "Издателска дейност"
+msgstr "प्रकाशनम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
 #, kde-format
 msgctxt "Category"
 msgid "Scanning and OCR"
-msgstr "Сканиране и разпознаване на текст"
+msgstr "अवगमनम् च दृश्यअक्षरज्ञानम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
 #, kde-format
 msgctxt "Category"
 msgid "Viewers"
-msgstr "Програми за преглед"
+msgstr "दर्शकाः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
 #, kde-format
 msgctxt "Category"
 msgid "Internet"
-msgstr "Интернет"
+msgstr "अन्तर्जालम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
 #, kde-format
 msgctxt "Category"
 msgid "Chat"
-msgstr "Чат"
+msgstr "संभाषणम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
 #, kde-format
 msgctxt "Category"
 msgid "File Sharing"
-msgstr "Споделяне на файлове"
+msgstr "सञ्चिकासाझाकरणम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
 #, kde-format
 msgctxt "Category"
 msgid "Mail"
-msgstr "Поща"
+msgstr "पत्रम्"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
 #, kde-format
 msgctxt "Category"
 msgid "Web Browsers"
-msgstr "Уеб браузъри"
+msgstr "जालसञ्चारकाः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
 #, kde-format
 msgctxt "Category"
 msgid "Multimedia"
-msgstr "Мултимедия"
+msgstr "माध्यमसमूह"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
 #, kde-format
 msgctxt "Category"
 msgid "Audio and Video Editors"
-msgstr "Аудио и видео обработка"
+msgstr "ध्वनिसंपादकः च दृश्यसंपादकः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
 #, kde-format
 msgctxt "Category"
 msgid "Audio Players"
-msgstr "Аудио плейъри"
+msgstr "ध्वनि वादकाः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
 #, kde-format
 msgctxt "Category"
 msgid "Video Players"
-msgstr "Видео плейъри"
+msgstr "दृश्यवादकाः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
 #, kde-format
 msgctxt "Category"
 msgid "CD and DVD"
-msgstr "CD и DVD"
+msgstr "CD च DVD"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
 #, kde-format
 msgctxt "Category"
 msgid "Office"
-msgstr "Офис"
+msgstr "कार्यालयः"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
 msgid "System Settings"
-msgstr "Системни настройки"
+msgstr "सन्गणक तन्त्र समायोजनानि"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:124
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
-msgstr "%1 (потребител)"
+msgstr "%1 (उपयोक्ता)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:709
 #, kde-format
 msgid "Local bundle"
-msgstr "Локален пакет"
+msgstr "स्थानीय पोटलिका"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1676
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:742
 #, kde-format
 msgid "Malformed appstream url '%1'"
-msgstr "Неправилен URL адрес на потока на приложението \"%1\""
+msgstr "विकृत एप्स्ट्रीम url '%1'."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1780
 #, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "Неуспешно добавяне на източник '%1': %2"
+msgstr "स्रोतः '%1' योजयितुं असफलम्: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1901
 #, kde-format
 msgid "There are no Flatpak sources."
-msgstr "Няма източници на Flatpak."
+msgstr "तत्र फ्लैटपैकस्रोताः नास्ति ।."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1905
 #, kde-format
 msgid "Failed to load \"%1\" source"
-msgstr "Неуспешно зареждане на източник '%1'"
+msgstr "\"%1\" स्रोतः आरोपयतुं असफलः"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:352
 #, kde-kuit-format
@@ -565,141 +568,149 @@ msgid ""
 "software in this repository will also be made be available in Discover when "
 "the application is installed.</para>"
 msgstr ""
-"<para> Това приложение идва от \"%1\" (хоствано на <link>%2</link>). Друг "
-"софтуер в това хранилище също ще бъде достъпен в Discover, когато "
-"приложението бъде инсталирано.</para>"
+"<para>इदं अनुप्रयोगं \"%1\" (<link>%2</link> इत्यत्र आतिथ्यं) तः आगच्छति । अस्मिन् "
+"भण्डारे अन्ये तन्त्रांश अपि डिस्कवर् इत्यत्र उपलभ्यन्ते यदा अनुप्रयोगः संस्थापितः भवति।</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:447
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:455
 #, kde-format
 msgid "Retrieving size information"
-msgstr "Извличане на информация за размера"
+msgstr "आकारस्य सूचनां प्राप्य"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:449
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:457
 #, kde-format
 msgid "Unknown size"
-msgstr "Неизвестен размер"
+msgstr "अज्ञातः आकारः"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:451
 #, kde-format
 msgctxt "@info app size"
 msgid "%1 to download, %2 on disk"
-msgstr "%1 за изтегляне, %2 на диска"
+msgstr "%1 अवतरणं कर्तुं, %2 डिस्क मध्ये"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:459
 #, kde-format
 msgctxt "@info app size"
 msgid "%1 on disk"
-msgstr "%1 на диска"
+msgstr "%1 डिस्क मध्ये"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:513
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "Неуспешно стартиране на '%1': %2"
+msgstr "'%1' आरभ्यतुं असफलम्: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:747
 #, kde-format
 msgid "All Files"
-msgstr "Всички файлове"
+msgstr "सर्वाणि सञ्चिकानि"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:749
 #, kde-format
 msgid "Home"
-msgstr "Начална страница"
+msgstr "गृहम्‌"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:751
 #, kde-format
 msgid "Downloads"
-msgstr "Изтегляния"
+msgstr "अवारोपण"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:753
 #, kde-format
 msgid "Music"
-msgstr "Музика"
+msgstr "सङ्गीतम्"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
 #, kde-format
 msgid "Network Access"
-msgstr "Мрежов достъп"
+msgstr "संजाल अभिगमः"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid "Can access the internet"
-msgstr "Може да се свързва с интернет"
+msgstr "अन्तर्जालस्य उपयोगं कर्तुं शक्नोति"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "System Bus Access"
 msgid "Sound system access"
-msgstr "Достъп до системния звук"
+msgstr "प्रणाली बस अभिगमः"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Can play audio"
-msgstr "Може да използва аудиото"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:963
 #, kde-format
 msgid "Session Bus Access"
-msgstr "Достъп до сесийния Bus"
+msgstr "सत्र बस अभिगम"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Can communicate with other applications and processes in the same desktop "
+#| "session using the following communication protocols: %1"
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Може да комуникира с всички други приложения и процеси в тази потребителска "
-"сесия"
+"निम्नलिखितसञ्चारसंविद्स्य उपयोगेन एकस्मिन् एव कार्यमुखसत्रे अन्यैः अनुप्रयोगैः प्रक्रियाभिः च "
+"सह संवादं कर्तुं शक्नोति: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:974
 #, kde-format
 msgid "System Bus Access"
-msgstr "Достъп до системния Bus"
+msgstr "प्रणाली बस अभिगमः"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Can communicate with other applications and processes in the same desktop "
+#| "session using the following communication protocols: %1"
 msgid "Can communicate with all other applications and processes on the system"
-msgstr "Може да комуникира с всички други приложения и процеси на системата"
+msgstr ""
+"निम्नलिखितसञ्चारसंविद्स्य उपयोगेन एकस्मिन् एव कार्यमुखसत्रे अन्यैः अनुप्रयोगैः प्रक्रियाभिः च "
+"सह संवादं कर्तुं शक्नोति: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Remote Login Access"
-msgstr "Отдалечен достъп"
+msgstr "दूरस्थसम्प्रवेशः अभिगमः"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
-msgstr "Може да инициира заявки за отдалечено влизане чрез протокола SSH"
+msgstr "SSH संविद्स्य उपयोगेन दूरस्थप्रवेशनिवेदनानि आरभुं शक्नोति"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Smart Card Access"
-msgstr "Достъп със смарт карта"
+msgstr "स्मार्ट कार्ड अभिगमः"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr "Може да се интегрира и комуникира със смарт карти"
+msgstr "स्मार्टकार्डैः सह एकीकृत्य संवादं कर्तुं शक्नोति"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
 msgid "Printer Access"
-msgstr "Достъп до принтер"
+msgstr "मुद्रक अभिगमः"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:845
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Може да се интегрира и комуникира с принтер"
+msgstr "मुद्रकैः सह एकीकृत्य संवादं कर्तुं शक्नोति"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:849
 #, kde-format
 msgid "GPG Agent"
-msgstr "Агент GPG"
+msgstr "GPG दूत"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #, kde-format
@@ -707,75 +718,71 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
-"Позволява достъп до криптографската услуга GPG, която обикновено се използва "
-"за подписване и четене на подписани документи"
+"सामान्यतया हस्ताक्षरितदस्तावेजानां हस्ताक्षरार्थं पठनार्थं च उपयुज्यमानस्य GPG "
+"क्रिप्टोग्राफीसेवायाः अभिगमनस्य अनुमतिं ददाति"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Bluetooth Access"
-msgstr "Достъп до Bluetooth"
+msgstr "ब्लूटूथ-अभिगमः"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:857
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Може да се интегрира и комуникира с Bluetooth устройства"
+msgstr "ब्लूटूथ-यन्त्रैः सह एकीकृत्य संवादं कर्तुं शक्नोति"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:861
 #, kde-format
 msgid "Low-Level System Access"
-msgstr "Системен достъп на ниско ниво"
+msgstr "निम्नस्तरीय प्रणाली अभिगम"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr "Може да извършва системни извиквания на ниско ниво (напр. ptrace)"
+msgstr "निम्नस्तरीयं प्रणाली-आह्वानं कर्तुं शक्नोति (उदा. ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Device Access"
-msgstr "Достъп до устройства"
+msgstr "यन्त्र अभिगमः"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
-msgstr ""
-"Може да комуникира с вградени или свързани хардуерни устройства и да ги "
-"управлява"
+msgstr "अन्तः निर्मितैः अथवा सम्बद्धैः यन्त्रांश-यन्त्रैः सह संवादं कर्तुं नियन्त्रयितुं च शक्नोति"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:873
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr "Достъп до Kernel базирани виртуални машини"
+msgstr "कर्नेल्-आधारितः आभासी यन्त्रम् अभिगमः"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
-msgstr ""
-"Позволява стартирането на други операционни системи като гости във виртуални "
-"машини"
+msgstr "आभासीयन्त्रेषु अतिथिरूपेण अन्येषां प्रचालनतन्त्राणां चालनं कर्तुं शक्नोति"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "%1 (read-only)"
-msgstr "%1 (само за четене)"
+msgstr "%1 (पठनमात्रम्)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:913
 #, kde-format
 msgid "%1 (can create files)"
-msgstr "%1 (може да създава файлове)"
+msgstr "%1 (सञ्चिकाः निर्मातुं शक्नोति)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:904
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
 #, kde-format
 msgid "%1 (read & write) "
-msgstr "%1 (четене и запис) "
+msgstr "%1 (पठितुं लिखितुं च शक्नोति) "
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
 #, kde-format
 msgid "Home Folder Access"
-msgstr "Достъп до домашна папка"
+msgstr "गृहपुटस्य अभिगमनम्"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:934
 #, kde-format
@@ -783,8 +790,8 @@ msgid ""
 "Can read, write, and create files in the following locations in your home "
 "folder without asking permission first: %1"
 msgstr ""
-"Може да чете, записва и създава файлове на следните места в домашната папка, "
-"без да иска разрешение: %1"
+"प्रथमं अनुमतिं न याचयित्वा स्वस्य गृहपुटे निम्नलिखितस्थानेषु सञ्चिकाः पठितुं, लिखितुं, निर्मातुं च "
+"शक्नोति: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:936
 #, kde-format
@@ -792,17 +799,15 @@ msgid ""
 "Can read and write files in the following locations in your home folder "
 "without asking permission first: %1"
 msgstr ""
-"Може да чете и записва файлове на следните места в домашната папка, без да "
-"иска първо разрешение: %1"
+"प्रथमं अनुमतिं न याचयित्वा स्वस्य गृहपुटे निम्नलिखितस्थानेषु सञ्चिकाः पठितुं लिखितुं च शक्नोति: "
+"%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:938
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
-msgstr ""
-"Може да чете файлове на следните места в домашната папка, без да иска първо "
-"разрешение: %1"
+msgstr "प्रथमं अनुमतिं न याचयित्वा स्वस्य गृहपुटे निम्नलिखितस्थानेषु सञ्चिकाः पठितुं शक्नोति: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:940
 #, kde-format
@@ -810,13 +815,12 @@ msgid ""
 "Can access files in the following locations in your home folder without "
 "asking permission first: %1"
 msgstr ""
-"Може да има достъп до файлове на следните места в домашната папка, без да "
-"иска първо разрешение: %1"
+"प्रथमं अनुमतिं न याचयित्वा स्वस्य गृहपुटे निम्नलिखितस्थानेषु सञ्चिकाः अभिगन्तुं शक्नोति: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:946
 #, kde-format
 msgid "System Folder Access"
-msgstr "Достъп до системните папки"
+msgstr "प्रणालीपुटम् अभिगमनम्"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:948
 #, kde-format
@@ -824,8 +828,8 @@ msgid ""
 "Can read, write, and create system files in the following locations without "
 "asking permission first: %1"
 msgstr ""
-"Може да чете, записва и създава системни файлове на следните места без да "
-"иска разрешение: %1"
+"प्रथमं अनुमतिं न याचयित्वा निम्नलिखितस्थानेषु प्रणालीसञ्चिकाः पठितुं, लिखितुं, निर्मातुं च "
+"शक्नोति: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:950
 #, kde-format
@@ -833,26 +837,21 @@ msgid ""
 "Can read and write system files in the following locations without asking "
 "permission first: %1"
 msgstr ""
-"Може да чете и записва системни файлове на следните места без да иска първо "
-"разрешение: %1"
+"प्रथमं अनुमतिं न याचयित्वा निम्नलिखितस्थानेषु प्रणालीसञ्चिकाः पठितुं लिखितुं च शक्नोति: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:952
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
-msgstr ""
-"Може да чете системни файлове на следните места без да иска първо "
-"разрешение: %1"
+msgstr "प्रथमं अनुमतिं न याचयित्वा निम्नलिखितस्थानेषु प्रणालीसञ्चिकाः पठितुं शक्नोति: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:954
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
-msgstr ""
-"Може да има достъп до системни файлове на следните места без да иска първо "
-"разрешение: %1"
+msgstr "प्रथमं अनुमतिं न याचयित्वा निम्नलिखितस्थानेषु प्रणालीसञ्चिकाः अभिगन्तुं शक्नोति: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:964
 #, kde-format
@@ -860,8 +859,8 @@ msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
-"Може да комуникира с други приложения и процеси в същата сесия, използвайки "
-"следните комуникационни протоколи: %1"
+"निम्नलिखितसञ्चारसंविद्स्य उपयोगेन एकस्मिन् एव कार्यमुखसत्रे अन्यैः अनुप्रयोगैः प्रक्रियाभिः च "
+"सह संवादं कर्तुं शक्नोति: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:976
 #, kde-format
@@ -869,45 +868,41 @@ msgid ""
 "Can communicate with all applications and system services using the "
 "following communication protocols: %1"
 msgstr ""
-"Може да комуникира с всички приложения и системни процеси, използвайки "
-"следните комуникационни протоколи: %1"
+"निम्नलिखितसञ्चारसंविद्स्य उपयोगेन सर्वैः अनुप्रयोगैः प्रणालीसेवाभिः सह संवादं कर्तुं शक्नोति: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
 #, kde-format
 msgid "Add Flathub"
-msgstr "Добавяне на Flathub"
+msgstr "फ्लैटहब योजयन्तु"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
 #, kde-format
 msgid "Apply Changes"
-msgstr "Прилагане на промените"
+msgstr "परिवर्तनानि प्रयोजयन्तु"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:95
 #, kde-format
 msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
-msgstr ""
-"Промените в приоритета на източниците на Flatpak трябва да се приложат, "
-"преди те да да влязат в сила."
+msgstr "फ्लैटपैक् स्रोतांशानां प्राथमिकतायां परिवर्तनं तेषां प्रभावात् पूर्वं प्रयोक्तव्यम् ।."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:99
 #, kde-format
 msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
-msgstr ""
-"Позволява лесно да се инсталират приложенията, изброени в https://flathub.org"
+msgstr "https://flathub.org इत्यत्र सूचीकृतानि अनुप्रयोगाः सुलभतया संस्थापनं सम्भवं करोति"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:165
 #, kde-format
 msgid "Could not add the source %1"
-msgstr "Не може да се добави източникът %1"
+msgstr "%1 स्रोतः योजयितुं न शक्तवान्"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:281
 #, kde-format
 msgid "Removing '%1'"
-msgstr "Премахване \"%1\""
+msgstr "'%1' अपसारयन्"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:282
 #, kde-format
@@ -915,38 +910,37 @@ msgid ""
 "To remove this repository, the following applications must be uninstalled:"
 "<ul><li>%1</li></ul>"
 msgstr ""
-"За да премахнете това хранилище, трябва да се деинсталират следните "
-"приложения:<ul><li> %1</li> </ul>"
+"एतत् भण्डारं निष्कासयितुं निम्नलिखित-अनुप्रयोगानाम् अस्थापनं करणीयम्:<ul><li>%1</li></ul>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:299
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
-msgstr "Неуспешно премахване на %1 отдалечено хранилище: %2"
+msgstr "%1 दूरस्थं भण्डारं निष्कासयितुं असफलम्: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:303
 #, kde-format
 msgid "Could not find %1"
-msgstr "Неуспешно намиране на %1"
+msgstr "%1 न लब्धम्"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:335
 #, kde-format
 msgid "%1 (user)"
-msgstr "%1 (прихващане)"
+msgstr "%1 (उपयोक्ता)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:396
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
-msgstr "Въведете адрес на хранилището Flatpak (* .flatpakrepo):"
+msgstr "एकं फ्लैटपैक् भण्डारं URI (*.flatpakrepo) प्रविष्टं कुर्वन्तु:"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:29
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
-msgstr "Добавяне на отдалечено '%1' в %2 от %3"
+msgstr "%3 तः %2 मध्ये दूरस्थं '%1' योजयन्"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:195
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr "Не може да се намери '%1' в '%2'; моля, уверете се, че е наличен."
+msgstr "'%2' मध्ये '%1' न प्राप्नोत्; कृपया सुनिश्चितं कुर्वन्तु यत् एतत् उपलब्धम् अस्ति।."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
@@ -955,48 +949,48 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
-"Тази версия на разработка на %1 е остаряла. Използването на стабилната "
-"версия есилно препоръчително."
+"%1 इत्यस्य एतत् विकाससंस्करणं पुरातनम् अस्ति । स्थिरसंस्करणस्य उपयोगः अत्यन्तं अनुशंसितः अस्ति "
+"।."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr "Налична е по-стабилна версия на %1."
+msgstr "%1 इत्यस्य अधिकं स्थिरं संस्करणं उपलब्धम् अस्ति ।."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr "Вижте стабилната версия на %1"
+msgstr "%1 इत्यस्मिन् स्थिरसंस्करणं पश्यन्तु"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr "%1 не е инсталиран, но все още са налични негови данни."
+msgstr "%1 संस्थापितम् नास्ति किन्तु अस्मिन् अद्यापि दत्तांशः उपस्थितः अस्ति ।."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
 #, kde-format
 msgid "Delete settings and user data"
-msgstr "Изтриване на настройките и потребителските данни"
+msgstr "समयोजननी तथा उपयोक्तृदत्तांशं विलोपयन्तु"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
 #, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Изтриване на настройките и потребителските данни..."
+msgstr "समयोजननी तथा उपयोक्तृदत्तांशं स्वच्छं कुर्वन्…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr "Права за %1"
+msgstr "%1 कृते अनुमतिः"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:56
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr "Настройване на правата…"
+msgstr "अनुमतिः विन्यस्यताम्…"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1004,18 +998,18 @@ msgid ""
 "The remote %1 require that you accept their license:\n"
 " %2"
 msgstr ""
-"Отдалечения %1 изисква приемане на техния лиценз:\n"
-"%2"
+"दूरस्थस्य %1 इत्यस्य आवश्यकता अस्ति यत् भवान् तेषां अनुज्ञापत्रं स्वीकुर्यात्:\n"
+" %2"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
 #, kde-format
 msgid "Review EULA"
-msgstr "Преглед на  EULA"
+msgstr "EULA समीक्षतुम्"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
 #, kde-format
 msgid "Could not enable remote %1: %2"
-msgstr "Не може да се активира отдалечен %1: %2"
+msgstr "दूरस्थं %1: %2 सक्षमं कर्तुं न शक्तम्"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:61
 #, kde-format
@@ -1023,33 +1017,33 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
-"Неподдържан въпрос:\n"
+"असमर्थितः प्रश्नः :\n"
 "%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:153
 #, kde-format
 msgid "Backend %1 took too long to initialize"
-msgstr "Бекенд  %1 отне твърде много време за инициализиране"
+msgstr "पृष्ठभाग %1 इत्यस्य आरम्भार्थं बहुकालं व्यतीतवान्"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:212
 #, kde-format
 msgid "Applications"
-msgstr "Приложения"
+msgstr "अनुप्रयोगाः"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
 #, kde-format
 msgid "Plasma Addons"
-msgstr "Добавки на Plasma"
+msgstr "प्लाज्मा एडोन्स्"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
 #, kde-format
 msgid "Application Addons"
-msgstr "Добавки за приложения"
+msgstr "अनुप्रयोग एडोन्स्"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:346
 #, kde-format
 msgid "Network error in backend %1: %2"
-msgstr "Грешка в мрежата в бекенд %1: %2"
+msgstr "पृष्ठभागे संजालदोषः %1: %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:353
 #, kde-format
@@ -1057,15 +1051,15 @@ msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr ""
-"Твърде много заявки, изпратени до сървъра за бекенд %1. Моля, опитайте "
-"отново след няколко минути."
+"पृष्ठभागस्य %1 कृते वितारकं प्रति बहु अनुरोधाः प्रेषिताः । कृपया कतिपयेषु निमेषेषु पुनः प्रयासं "
+"कुर्वन्तु।."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
-msgstr "Невалиден %1 бекенд, свържете се с вашия дистрибутор."
+msgstr "अमान्य %1 पृष्ठभागः, स्ववितरकेन सह सम्पर्कं कुर्वन्तु ।."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:386
 #, kde-format
@@ -1075,20 +1069,19 @@ msgid ""
 "reported error was:\n"
 "%2"
 msgstr ""
-"Не може да се завърши актуализацията на %1. Можете да опитате да извършите "
-"това действие чрез диалога Изтегляне на нови разширения , който дава по-"
-"добър контрол. Отчетената грешка беше:\n"
+"%1 इत्यस्य अद्यतनं पूर्णं कर्तुं असमर्थः । भवान् उष्णं नवीनं सामानं प्राप्नुत इति संवादस्य माध्यमेन "
+"एतत् कार्यं कर्तुं प्रयतितुं शक्नोति, यत् कठिनतरं नियन्त्रणं प्रदाति । निवेदितः त्रुटिः आसीत् :\n"
 "%2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:396
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
-msgstr "Неуспешно изтегляне на екранна снимка за записа %1 в бекенд %2"
+msgstr "पृष्ठभागे %2 मध्ये %1 प्रविष्टेः पटलचित्रम् आनेतुं न शक्तम्"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
-msgstr "Необработена грешка в %1 бекенд. Свържете се с вашия дистрибутор."
+msgstr "%1 पृष्ठभागे अनियंत्रितदोषः । स्वस्य वितरकेन सह सम्पर्कं कुर्वन्तु।."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
 #, kde-format
@@ -1098,46 +1091,46 @@ msgstr "%1: %2"
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:518
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
-msgstr "Грешен адрес на KNewStuff: %1"
+msgstr "मिथ्या KNewStuff URI: %1"
 
 #: libdiscover/backends/KNSBackend/KNSResource.cpp:169
 #, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"
-msgstr "Магазин KDE"
+msgstr "केडीई भण्डार"
 
 #: libdiscover/backends/KNSBackend/KNSReviews.cpp:145
 #, kde-format
 msgid "Log in information for %1"
-msgstr "Информация за влизане на %1"
+msgstr "%1 कृते प्रवेशसूचना"
 
 #: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:226
 #, kde-format
 msgid "Cannot launch %1"
-msgstr "Не може да се стартира %1"
+msgstr "%1 प्रारम्भं कर्तुं न शक्यते"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Addons"
-msgstr "Добавки на Plasma"
+msgstr "प्लाज्मा एडोन्स्"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
-msgstr "Приспособления за Plasma"
+msgstr "प्लाज्मा विजेट्स्"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"
-msgstr "Шрифтове"
+msgstr "वर्णचित्राः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:289
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
-msgstr "Моля, уверете се, че Appstream е правилно настроен във вашата система"
+msgstr "कृपया सुनिश्चितं कुर्वन्तु यत् एप्स्ट्रीम् भवतः प्रणाल्यां सम्यक् स्थापितः अस्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:329
 #, kde-format
@@ -1146,13 +1139,13 @@ msgid ""
 "Your operating system ended support on %1. Consider upgrading to a supported "
 "version."
 msgstr ""
-"Поддръжката на вашата операционна система приключи на %1. Помислете за "
-"обновяване до поддържана версия."
+"भवतः प्रचालनतन्त्रं %1 इत्यत्र समर्थनं समाप्तवान् । समर्थितसंस्करणं प्रति उन्नयनं कर्तुं "
+"विचारयन्तु ।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:854
 #, kde-format
 msgid "Cannot remove '%1'"
-msgstr "Не може да се премахне \"%1\""
+msgstr "'%1' अपसारयितुं न शक्यते ।"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:934
 #, kde-format
@@ -1161,561 +1154,557 @@ msgid ""
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
-"<b>Издадена е нова основна версия на %1!</b>\n"
-"За да можете да актуализирате до тази нова версия, уверете се, че сте "
-"приложили всички налични актуализации и рестартирайте системата."
+"<b>%1 इत्यस्य नूतनं प्रमुखं संस्करणं प्रकाशितम् ।</b>\n"
+"अस्मिन् नूतने संस्करणे उन्नयनं कर्तुं शक्नुवन्तु, सर्वाणि उपलब्धानि अद्यतनं प्रयोक्तुं सुनिश्चितं कुर्वन्तु "
+"ततः प्रणालीं पुनः आरभत ।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:943
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgid "Upgrade to %1 %2"
-msgstr "Актуализиране до %1 %2"
+msgstr "%1 %2 मध्ये उन्नयनं कुर्वन्तु"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:964
 #, kde-format
 msgid "A new major version has been released"
-msgstr "Издадена е нова основна версия"
+msgstr "नूतनं प्रमुखं संस्करणं प्रकाशितम् अस्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
 msgid "Out of memory"
-msgstr "Недостатъчна памет"
+msgstr "भण्डारणात् बहिः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
 #, kde-format
 msgid "No network connection available"
-msgstr "Няма връзка с мрежата"
+msgstr "जालसम्बद्धता उपलब्धा नास्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:22
 #, kde-format
 msgid "Operation not supported"
-msgstr "Действието не се поддържа"
+msgstr "संचालन समर्थितम् नास्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:25
 #, kde-format
 msgid "Internal error"
-msgstr "Вътрешна грешка"
+msgstr "आन्तरिकदोषः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:27
 #, kde-format
 msgid "Internal error: %1"
-msgstr "Вътрешна грешка: %1"
+msgstr "आन्तरिकदोषः %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:31
 #, kde-format
 msgid "GPG failure"
-msgstr "Грешка в GPG"
+msgstr "GPG विफलता"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:33
 #, kde-format
 msgid "PackageID invalid"
-msgstr "Невалиден идентификатор на пакет"
+msgstr "संकुल-परिचयः अमान्यः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
 #, kde-format
 msgid "Package not installed"
-msgstr "Пакетът не е инсталиран"
+msgstr "संकुलं न संस्थापितम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:37
 #, kde-format
 msgid "Package not found"
-msgstr "Пакетът не е намерен"
+msgstr "संकुलं न लब्धम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:39
 #, kde-format
 msgid "Package is already installed"
-msgstr "Пакетът вече е инсталиран"
+msgstr "संकुलं पूर्वमेव संस्थापितम् अस्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:41
 #, kde-format
 msgid "Package download failed"
-msgstr "Неуспешно изтегляне на пакета"
+msgstr "संकुलस्य अवारोपणं विफलम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:43
 #, kde-format
 msgid "Package group not found"
-msgstr "Групата от пакети не е намерена"
+msgstr "संकुलसमूहः न प्राप्तः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:45
 #, kde-format
 msgid "Package group list invalid"
-msgstr "Списъкът на групите от пакети е невалиден"
+msgstr "संकुलसमूहसूची अमान्यम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:47
 #, kde-format
 msgid "Dependency resolution failed"
-msgstr "Неуспешно разрешаване на зависимостите"
+msgstr "निर्भरतानिराकरणं असफलम् अभवत्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:49
 #, kde-format
 msgid "Filter invalid"
-msgstr "Невалиден филтър"
+msgstr "शोधक अमान्यम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
 #, kde-format
 msgid "Failed while creating a thread"
-msgstr "Неуспех при създаване на нишка"
+msgstr "सूत्रं निर्माय विफलम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:53
 #, kde-format
 msgid "Transaction failure"
-msgstr "Неуспех на транзакцията"
+msgstr "विनिमयव्यवहारस्य विफलता"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:55
 #, kde-format
 msgid "Transaction canceled"
-msgstr "Транзакцията е прекъсната"
+msgstr "विनिमयव्यवहार रद्द"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:57
 #, kde-format
 msgid "No Cache available"
-msgstr "Няма наличен кеш"
+msgstr "कोऽपि संग्रहणम् उपलब्धः नास्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:59
 #, kde-format
 msgid "Cannot find repository"
-msgstr "Хранилището не може да бъде открито"
+msgstr "भण्डारं न प्राप्नोति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:61
 #, kde-format
 msgid "Cannot remove system package"
-msgstr "Не може да се премахне системен пакет"
+msgstr "प्रणाली संकुलं निष्कासयितुं न शक्यते"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:63
 #, kde-format
 msgid "The PackageKit daemon has crashed"
-msgstr "Демонът PackageKit се срина"
+msgstr "पैकेजकिट डेमन् नष्टः अभवत्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:65
 #, kde-format
 msgid "Initialization failure"
-msgstr "Неуспешно инициализиране"
+msgstr "आरंभीकरण विफलता"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:67
 #, kde-format
 msgid "Failed to finalize transaction"
-msgstr "Неуспешно завършване на транзакцията"
+msgstr "विनिमयव्यवहारं अन्तिमरूपेण निर्धारयितुं असफलः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:69
 #, kde-format
 msgid "Config parsing failed"
-msgstr "Неуспешна обработка на конфигурация"
+msgstr "विन्यासविश्लेषणं विफलम् अभवत्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:71
 #, kde-format
 msgid "Cannot cancel transaction"
-msgstr "Транзакцията не може да бъде отменена"
+msgstr "विनिमयव्यवहारं रद्दं कर्तुं न शक्यते"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:73
 #, kde-format
 msgid "Cannot obtain lock"
-msgstr "Не може да се получи заключване"
+msgstr "तालं प्राप्तुं न शक्नोति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:75
 #, kde-format
 msgid "No packages to update"
-msgstr "Няма пакети за актуализиране"
+msgstr "अद्यतनं कर्तुं कोऽपि संकुलः नास्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:77
 #, kde-format
 msgid "Cannot write repo config"
-msgstr "Настройките на хранилището не могат да бъдат записани"
+msgstr "भण्डारविन्यासं लिखितुं न शक्यते"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:79
 #, kde-format
 msgid "Local install failed"
-msgstr "Локалното инсталиране е неуспешно"
+msgstr "स्थानीयस्थापनं विफलम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:81
 #, kde-format
 msgid "Bad GPG signature found"
-msgstr "Открит е повреден подпис на GPG"
+msgstr "अमान्य GPG हस्ताक्षरं प्राप्तम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:83
 #, kde-format
 msgid "No GPG signature found"
-msgstr "Не е открит подпис на GPG"
+msgstr "GPG हस्ताक्षरं न प्राप्तम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:85
 #, kde-format
 msgid "Cannot install source package"
-msgstr "Не може да се инсталира пакета с изходния код"
+msgstr "स्रोतसङ्कुलं संस्थापयितुं न शक्यते"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:87
 #, kde-format
 msgid "Repo configuration error"
-msgstr "Грешка при настройване на хранилището"
+msgstr "भण्डारस्य विन्यासदोषः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:89
 #, kde-format
 msgid "No license agreement"
-msgstr "Липсва лицензионно споразумение"
+msgstr "अनुज्ञापत्रसम्झौता नास्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:91
 #, kde-format
 msgid "File conflicts found"
-msgstr "Открити са конфликти между файлове"
+msgstr "सञ्चिकाविग्रहाः प्राप्ताः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:93
 #, kde-format
 msgid "Package conflict found"
-msgstr "Открити са конфликти между пакети"
+msgstr "संकुलविग्रहः प्राप्तः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:95
 #, kde-format
 msgid "Repo not available"
-msgstr "Хранилището не е налично"
+msgstr "भण्डारः उपलब्धः नास्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:97
 #, kde-format
 msgid "Invalid package file"
-msgstr "Невалиден пакет"
+msgstr "अमान्य संकुलसञ्चिका"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:99
 #, kde-format
 msgid "Package install blocked"
-msgstr "Инсталирането на пакета е блокирано"
+msgstr "संकुलस्थापनं अवरुद्धम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:101
 #, kde-format
 msgid "Corrupt package found"
-msgstr "Открит е повреден пакет"
+msgstr "दूषितं संकुलं प्राप्तम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:103
 #, kde-format
 msgid "All packages already installed"
-msgstr "Всички пакети са вече инсталирани"
+msgstr "सर्वे संकुलाः पूर्वमेव संस्थापिताः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:105
 #, kde-format
 msgid "File not found"
-msgstr "Файлът не е открит"
+msgstr "सञ्चिका न प्राप्ता"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:107
 #, kde-format
 msgid "No more mirrors available"
-msgstr "Няма повече огледални сървъри"
+msgstr "न अधिकानि दर्पणाः उपलब्धाः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
 #, kde-format
 msgid "No distro upgrade data"
-msgstr "Няма данни за надграждане на дистрибуцията"
+msgstr "कोऽपि डिस्ट्रो उन्नयनदत्तांशः नास्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:111
 #, kde-format
 msgid "Incompatible architecture"
-msgstr "Несъвместима архитектура"
+msgstr "असङ्गत वास्तुकला"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:113
 #, kde-format
 msgid "No space on device left"
-msgstr "Няма място в устройството"
+msgstr "यन्त्रे कोऽपि स्थानं न अवशिष्टम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:115
 #, kde-format
 msgid "A media change is required"
-msgstr "Необходима е смяна на носителя"
+msgstr "माध्यमपरिवर्तनं आवश्यकम् अस्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:117
 #, kde-format
 msgid "You have no authorization to execute this operation"
-msgstr "Нямате права за изпълнение на тази операция"
+msgstr "एतत् कार्यं निष्पादयितुं भवतः प्राधिकरणं नास्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:119
 #, kde-format
 msgid "Update not found"
-msgstr "Актуализацията не е намерена"
+msgstr "अद्यतनं न प्राप्तम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
 #, kde-format
 msgid "Cannot install from unsigned repo"
-msgstr "Не може да се инсталира от неподписано хранилище"
+msgstr "अहस्ताक्षरितभण्डारतः संस्थापनं कर्तुं न शक्यते"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
 #, kde-format
 msgid "Cannot update from unsigned repo"
-msgstr "Не може да се актуализира от неподписано хранилище"
+msgstr "अहस्ताक्षरितभण्डारतः अद्यतनं कर्तुं न शक्यते"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:125
 #, kde-format
 msgid "Cannot get file list"
-msgstr "Списъкът с файлове не може да се получи"
+msgstr "सञ्चिकासूचीं प्राप्तुं न शक्यते"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:127
 #, kde-format
 msgid "Cannot get requires"
-msgstr "Изискванията не могат да се получат"
+msgstr "आवश्यकतां प्राप्तुं न शक्नोति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:129
 #, kde-format
 msgid "Cannot disable repository"
-msgstr "Хранилището не може да се деактивира"
+msgstr "भण्डारं निष्क्रियं कर्तुं न शक्यते"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:131
 #, kde-format
 msgid "Restricted download detected"
-msgstr "Открито е ограничено изтегляне"
+msgstr "प्रतिबन्धितं अवारोपणं ज्ञातम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:133
 #, kde-format
 msgid "Package failed to configure"
-msgstr "Неуспешно конфигуриране на пакета"
+msgstr "संकुलं विन्यस्तं कर्तुं असफलम् अभवत्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:135
 #, kde-format
 msgid "Package failed to build"
-msgstr "Неуспешно изграждане на пакета"
+msgstr "संकुलस्य निर्माणे असफलः अभवत्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:137
 #, kde-format
 msgid "Package failed to install"
-msgstr "Неуспешно инсталиране на пакета"
+msgstr "संकुलं संस्थापनं कर्तुं असफलम् अभवत्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:139
 #, kde-format
 msgid "Package failed to remove"
-msgstr "Неуспешно премахване на пакета"
+msgstr "संकुलं निष्कासयितुं असफलम् अभवत्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:141
 #, kde-format
 msgid "Update failed due to running process"
-msgstr "Актуализирането се провали поради изпълняващ се процес"
+msgstr "चालनप्रक्रियायाः कारणेन अद्यतनं विफलम् अभवत्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:143
 #, kde-format
 msgid "The package database changed"
-msgstr "Базата данни на пакета е променена"
+msgstr "संकुलदत्तांशकोशः परिवर्तितः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:145
 #, kde-format
 msgid "The provided type is not supported"
-msgstr "Предоставения тип не се поддържа"
+msgstr "प्रदत्तः प्रकारः समर्थितः नास्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:147
 #, kde-format
 msgid "Install root is invalid"
-msgstr "Коренът за инсталиране е невалиден"
+msgstr "संस्थापनमूलम् अमान्यम् अस्ति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:149
 #, kde-format
 msgctxt ""
 "Failed to sync your Linux distro repositories or other sources of packages"
 msgid "Cannot fetch sources"
-msgstr "Източниците не могат да бъдат получени"
+msgstr "स्रोतान् आनेतुं न शक्नोति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:151
 #, kde-format
 msgid "Canceled priority"
-msgstr "Отказан приоритет"
+msgstr "रद्दीकृत प्राथमिकता"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:153
 #, kde-format
 msgid "Unfinished transaction"
-msgstr "Незавършена транзакция"
+msgstr "असमाप्तः विनिमयव्यवहारः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:155
 #, kde-format
 msgid "Lock required"
-msgstr "Изисква се заключване"
+msgstr "ताला आवश्यकम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:160
 #, kde-format
 msgid "Unknown error %1."
-msgstr "Неизвестна грешка %1."
+msgstr "अज्ञातदोषः %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
 #, kde-format
 msgid "'%1' was changed and suggests to be restarted."
-msgstr "'%1' беше променен и предлага да бъде рестартиран."
+msgstr "'%1' परिवर्तनं कृत्वा पुनः आरभ्यत इति सूचयति ।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
 #, kde-format
 msgid "A change by '%1' suggests your session to be restarted."
-msgstr "Промяна, извършена от '%1' предлага рестартиране на сесията."
+msgstr "'%1' द्वारा परिवर्तनं भवतः सत्रं पुनः आरभ्यत इति सूचयति ।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
 #, kde-format
 msgid ""
 "'%1' was updated for security reasons, a restart of the session is "
 "recommended."
-msgstr ""
-"'%1' беше обновен от съображения за сигурност и се препоръчва рестартиране "
-"на сесията."
+msgstr "'%1' सुरक्षाकारणात् अद्यतनं कृतम्, सत्रस्य पुनः आरम्भः अनुशंसितः ।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
 #, kde-format
 msgid ""
 "'%1' was updated for security reasons, a restart of the system is "
 "recommended."
-msgstr ""
-"'%1' беше обновен от съображения за сигурност и се препоръчва рестартиране "
-"на системата."
+msgstr "'%1' सुरक्षाकारणात् अद्यतनं कृतम्, प्रणाल्याः पुनः आरम्भः अनुशंसितः ।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
 #, kde-format
 msgid "A change by '%1' suggests your system to be restarted."
-msgstr "Промяна, извършена от '%1' предлага рестартиране на системата."
+msgstr "'%1' इत्यनेन परिवर्तनं भवतः प्रणालीं पुनः आरभ्यत इति सूचयति ।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
 msgid "The application will have to be restarted."
-msgstr "Приложението ще трябва да бъде рестартирано."
+msgstr "अनुप्रयोगं पुनः आरभ्यतव्यं भविष्यति।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:190
 #, kde-format
 msgid "The session will have to be restarted"
-msgstr "Сесията ще трябва да бъде рестартирана"
+msgstr "सत्रं पुनः आरभणीयम् भविष्यति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:192
 #, kde-format
 msgid "The system will have to be restarted."
-msgstr "Системата ще трябва да бъде рестартирана."
+msgstr "प्रणालीं पुनः आरभणीयम् भविष्यति।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:194
 #, kde-format
 msgid "For security, the session will have to be restarted."
-msgstr "От съображения за сигурност сесията ще трябва да бъде рестартирана."
+msgstr "सुरक्षार्थं सत्रं पुनः आरभणीयं भविष्यति ।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:196
 #, kde-format
 msgid "For security, the system will have to be restarted."
-msgstr "От съображения за сигурност системата ще трябва да бъде рестартирана."
+msgstr "सुरक्षायै प्रणाली पुनः आरभ्यत इति भविष्यति ।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
 #, kde-format
 msgid "Waiting…"
-msgstr "Изчакване…"
+msgstr "प्रतीक्षमाणः…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
 #, kde-format
 msgid "Refreshing Cache…"
-msgstr "Опресняване на кеша…"
+msgstr "संग्रहणम् नवीकरणम्…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
 #, kde-format
 msgid "Setup…"
-msgstr "Настройка…"
+msgstr "स्थापयति…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:214
 #, kde-format
 msgid "Processing…"
-msgstr "Обработка…"
+msgstr "प्रसंस्करण…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:216
 #, kde-format
 msgid "Remove…"
-msgstr "Премахване…"
+msgstr "निष्कासयतु…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:218
 #, kde-format
 msgid "Downloading…"
-msgstr "Изтегляне…"
+msgstr "अवारोपण…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:220
 #, kde-format
 msgid "Installing…"
-msgstr "Инсталиране…"
+msgstr "संस्थापनम्…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:222
 #, kde-format
 msgid "Updating…"
-msgstr "Актуализиране…"
+msgstr "अद्यतनम्…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:224
 #, kde-format
 msgid "Cleaning up…"
-msgstr "Изчистване…"
+msgstr "स्वच्छता करण…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:227
 #, kde-format
 msgid "Resolving dependencies…"
-msgstr "Обработване на зависимостите…"
+msgstr "आश्रयाणां समाधानम्…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:229
 #, kde-format
 msgid "Checking signatures…"
-msgstr "Проверка на подписите…"
+msgstr "हस्ताक्षरं जाँचयन्…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
 #, kde-format
 msgid "Test committing…"
-msgstr "Тест на подаването…"
+msgstr "परीक्षण प्रतिबद्धता…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
 #, kde-format
 msgid "Committing…"
-msgstr "Подаване…"
+msgstr "प्रतिबद्धता…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:236
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:362
 #, kde-format
 msgid "Finished"
-msgstr "Завършено"
+msgstr "समाप्तम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:238
 #, kde-format
 msgid "Canceled"
-msgstr "Отменено"
+msgstr "रद्दीकृतम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:240
 #, kde-format
 msgid "Waiting for lock…"
-msgstr "Изчакване за заключване…"
+msgstr "ताले प्रतीक्षमाणः…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:242
 #, kde-format
 msgid "Waiting for authorization…"
-msgstr "Изчакване за упълномощаване…"
+msgstr "प्राधिकरणस्य प्रतीक्षया…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:247
 #, kde-format
 msgid "Copying files…"
-msgstr "Копиране на файловете…"
+msgstr "सञ्चिकानां प्रतिलिपिः…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:250
 #, kde-format
 msgid "Unknown Status"
-msgstr "Неизвестно състояние"
+msgstr "अज्ञात स्थितिः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:258
 #, kde-format
 msgid "We are waiting for something."
-msgstr "Процесът изчаква нещо да се случи."
+msgstr "वयं किमपि प्रतीक्षमाणाः स्मः ।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
 #, kde-format
 msgid "Setting up transaction…"
-msgstr "Настройване на транзакцията…"
+msgstr "विनिमयव्यवहारस्य स्थापना…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
 #, kde-format
 msgid "The transaction is currently working…"
-msgstr "В момента транзакцията се изпълнява…"
+msgstr "विनिमयव्यवहारः सम्प्रति कार्यं कुर्वन् अस्ति…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
 #, kde-format
 msgid "The transaction is currently removing packages…"
-msgstr "В момента транзакцията премахва пакети…"
+msgstr "विनिमयव्यवहारः सम्प्रति संकुलं निष्कासयति…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
 #, kde-format
 msgid "The transaction is currently downloading packages…"
-msgstr "В момента транзакцията изтегля пакети…"
+msgstr "विनिमयव्यवहारः सम्प्रति संकुलं अवारोपण कुर्वन् अस्ति…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
 #, kde-format
 msgid "The transactions is currently installing packages…"
-msgstr "В момента транзакциите инсталират пакети…"
+msgstr "विनिमयव्यवहारः सम्प्रति संकुलं संस्थापयन्ति…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
 #, kde-format
 msgid "The transaction is currently updating packages…"
-msgstr "В момента транзакцията актуализира пакетите…"
+msgstr "विनिमयव्यवहारः सम्प्रति संकुलानाम् अद्यतनीकरणं कुर्वन् अस्ति…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
 #, kde-format
 msgid "The transaction is currently cleaning up…"
-msgstr "В момента транзакцията почиства след себе си…"
+msgstr "सम्प्रति विनिमयव्यवहारः स्वच्छतां कुर्वन् अस्ति…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
 #, kde-format
@@ -1723,203 +1712,202 @@ msgid ""
 "The transaction is currently resolving the dependencies of the packages it "
 "will install…"
 msgstr ""
-"В момента транзакцията установява зависимостите на пакетите, които ще бъдат "
-"инсталирани…"
+"विनिमयव्यवहारः सम्प्रति तेषां संकुलानाम् आश्रयाणां समाधानं कुर्वन् अस्ति यत् सः संस्थापयिष्यति…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
 #, kde-format
 msgid "The transaction is currently checking the signatures of the packages…"
-msgstr "В момента транзакцията проверява подписите на пакетите…"
+msgstr "विनिमयव्यवहारः सम्प्रति संकुलानाम् हस्ताक्षराणां जाँचं कुर्वन् अस्ति…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
 #, kde-format
 msgid ""
 "The transaction is currently testing the commit of this set of packages…"
-msgstr "В момента транзакцията пробва подаването на този набор пакети…"
+msgstr "विनिमयव्यवहारः सम्प्रति अस्य संकुलसमूहस्य प्रतिबद्धतायाः परीक्षणं कुर्वन् अस्ति…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
 #, kde-format
 msgid "The transaction is currently committing its set of packages…"
-msgstr "В момента транзакцията подава набора си от пакети…"
+msgstr "विनिमयव्यवहारः सम्प्रति स्वस्य संकुलसमूहं प्रतिबद्धः अस्ति…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
 #, kde-format
 msgid "The transaction has finished!"
-msgstr "Транзакцията приключи!"
+msgstr "विनिमयव्यवहारः समाप्तः अस्ति!"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:286
 #, kde-format
 msgid "The transaction was canceled"
-msgstr "Транзакцията беше отменена"
+msgstr "विनिमयव्यवहारः रद्दः अभवत्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
 #, kde-format
 msgid "The transaction is currently waiting for the lock…"
-msgstr "В момента транзакцията изчаква за заключване…"
+msgstr "विनिमयव्यवहारः सम्प्रति तालानां प्रतीक्षां कुर्वन् अस्ति…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
 #, kde-format
 msgid "Waiting for the user to authorize the transaction…"
-msgstr "Изчакване на потребителя да упълномощи транзакцията…"
+msgstr "उपयोक्तुः विनिमयव्यवहारः अधिकृत्य प्रतीक्षमाणः…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
 #, kde-format
 msgid "The transaction is currently copying files…"
-msgstr "В момента транзакцията копира файлове…"
+msgstr "विनिमयव्यवहारः सम्प्रति सञ्चिकानां प्रतिलिपिं कुर्वन् अस्ति…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
 #, kde-format
 msgid "Currently refreshing the repository cache…"
-msgstr "В момента се опреснява кешът на хранилището…"
+msgstr "सम्प्रति भण्डारस्य संग्रहणं ताजगीकृत्य…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
 #, kde-format
 msgid "Unknown status %1."
-msgstr "Неизвестно състояние %1."
+msgstr "अज्ञात स्थिति %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:313
 #, kde-format
 msgctxt "update state"
 msgid "Stable"
-msgstr "Стабилна"
+msgstr "स्थिरः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:315
 #, kde-format
 msgctxt "update state"
 msgid "Unstable"
-msgstr "Нестабилна"
+msgstr "अस्थिरम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:317
 #, kde-format
 msgctxt "update state"
 msgid "Testing"
-msgstr "Тестване"
+msgstr "परीक्षणम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
 #: libdiscover/resources/AbstractResource.cpp:103
 #, kde-format
 msgid "Installed"
-msgstr "Инсталиран"
+msgstr "संस्थापितम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:330
 #, kde-format
 msgid "Not Installed"
-msgstr "Инсталиран"
+msgstr "न संस्थापितम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:332
 #, kde-format
 msgid "Low"
-msgstr "Ниско"
+msgstr "न्यूनम्‌"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:334
 #, kde-format
 msgid "Enhancement"
-msgstr "Подобрение"
+msgstr "वर्धनम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:336
 #, kde-format
 msgid "Normal"
-msgstr "Нормално"
+msgstr "सामान्य"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:338
 #, kde-format
 msgid "Bugfix"
-msgstr "Поправки"
+msgstr "दोषनिवारणम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:340
 #, kde-format
 msgid "Important"
-msgstr "Важно"
+msgstr "महत्वपूर्णः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:342
 #, kde-format
 msgid "Security"
-msgstr "Сигурност"
+msgstr "सुरक्षा"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:344
 #, kde-format
 msgid "Blocked"
-msgstr "Блокиран"
+msgstr "अवरुद्धम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:346
 #, kde-format
 msgid "Downloading"
-msgstr "Сваляне"
+msgstr "अवारोपण"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
 #, kde-format
 msgid "Updating"
-msgstr "Обновяване"
+msgstr "अद्यतनम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:350
 #, kde-format
 msgid "Installing"
-msgstr "Инсталиране"
+msgstr "संस्थापनम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:352
 #, kde-format
 msgid "Removing"
-msgstr "Деинсталиране"
+msgstr "अपसारयन्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:354
 #, kde-format
 msgid "Cleanup"
-msgstr "Изчистване"
+msgstr "स्वच्छं कुरुत"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:356
 #, kde-format
 msgid "Obsoleting"
-msgstr "Обявяване за остарели"
+msgstr "अप्रचलनम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:358
 #, kde-format
 msgid "Collection Installed"
-msgstr "Инсталирани колекции"
+msgstr "संग्रहः स्थापितः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:360
 #, kde-format
 msgid "Collection Available"
-msgstr "Налични колекции"
+msgstr "संग्रह उपलब्ध"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:364
 #, kde-format
 msgid "Reinstalling"
-msgstr "Преинсталиране"
+msgstr "पुनः संस्थापनम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:366
 #, kde-format
 msgid "Downgrading"
-msgstr "Връщане до предишна версия"
+msgstr "अवनतिकरणम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:368
 #, kde-format
 msgid "Preparing"
-msgstr "Подготвяне"
+msgstr "सज्जीकरणम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:370
 #, kde-format
 msgid "Decompressing"
-msgstr "Декомпресиране"
+msgstr "विसंपीडनम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:372
 #, kde-format
 msgid "Untrusted"
-msgstr "Ненадеждни"
+msgstr "अविश्वसनीयः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:374
 #, kde-format
 msgid "Trusted"
-msgstr "Доверени"
+msgstr "विश्वस्तः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:376
 #, kde-format
 msgid "Unavailable"
-msgstr "Не е наличен"
+msgstr "अनुपलब्धम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:123
 #, kde-format
 msgid "Failed Offline Update"
-msgstr "Неуспешни офлайн актуализации"
+msgstr "वियुक्त अद्यतनं विफलम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
 #, kde-format
@@ -1930,10 +1918,10 @@ msgid_plural ""
 "Failed to update %1 packages\n"
 "%2"
 msgstr[0] ""
-"Неуспешно актуализиране на %1 пакет\n"
+"%1 संकुलं अद्यतनीकर्तुं असफलम्\n"
 "%2"
 msgstr[1] ""
-"Неуспешно актуализиране на %1 пакета\n"
+"%1 संकुलानाम् अद्यतनीकरणे असफलम्\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
@@ -1941,51 +1929,51 @@ msgstr[1] ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
-msgstr "Отваряне на Discover"
+msgstr "डिस्कवरं उद्घाटयन्तु"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
-msgstr "Поправяне на системата"
+msgstr "मरम्मत प्रणाली"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
 #, kde-format
 msgid "Repairing failed offline update"
-msgstr "Поправяне на неуспешни офлайн актуализации"
+msgstr "मरम्मतं विफलं वियुक्त अद्यतनम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:142
 #, kde-format
 msgid "Repair Failed"
-msgstr "Неуспешно поправяне"
+msgstr "मरम्मतं विफलम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
-msgstr "%1<nl/>Моля, докладвайте на вашата дистрибуция."
+msgstr "%1<nl/>कृपया एतत् दोषं स्ववितरणं प्रति सूचयन्तु ।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:153
 #, kde-format
 msgid "Repaired Successfully"
-msgstr "Поправянето е успешно"
+msgstr "सफलतया मरम्मतम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:175
 #, kde-format
 msgid "Offline Updates"
-msgstr "Офлайн актуализации"
+msgstr "वियुक्त अद्यतनम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:176
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
-msgstr[0] "Успешно актуализиран пакет %1"
-msgstr[1] "Успешно актуализирани пакети %1"
+msgstr[0] "%1 संकुलं सफलतया अद्यतनम्"
+msgstr[1] "%1 संकुलं सफलतया अद्यतनं कृतम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
 #, kde-format
 msgid "Unknown Source"
-msgstr "Неизвестен източник"
+msgstr "अज्ञात स्रोतः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
 #, kde-format
@@ -2002,39 +1990,39 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:394
 #, kde-format
 msgid "Obsoletes:"
-msgstr "Остарели:"
+msgstr "अप्रचलिताः :"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
 #, kde-format
 msgid "Release Notes:"
-msgstr "Бележки към изданието:"
+msgstr "प्रकाशन टिप्पणियाँ:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:396
 #, kde-format
 msgid "Update State:"
-msgstr "Състояние на актуализацията:"
+msgstr "अद्यतनस्थितिः :"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
 #, kde-format
 msgid "Restart:"
-msgstr "Рестартиране:"
+msgstr "पुनः आरभ्यताम् :"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
 #, kde-format
 msgid "Vendor:"
-msgstr "Доставчик:"
+msgstr "विक्रेता :"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:420
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
-msgstr[0] "%2 (плюс %1 зависимост)"
-msgstr[1] "%2 (плюс %1 зависимости)"
+msgstr[0] "%2 (च %1 आश्रयः)"
+msgstr[1] "%2 (च %1 आश्रयाः)"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:103
 #, kde-format
 msgid "Repository URL:"
-msgstr "URL адрес на хранилището:"
+msgstr "भण्डारस्य URL :"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:93
 #, kde-format
@@ -2045,21 +2033,19 @@ msgstr "%1 %2"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
 msgid "System upgrade"
-msgstr "Надграждане на системата"
+msgstr "प्रणाली उन्नयनम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 пакет ще се актуализира"
-msgstr[1] "%1 пакета ще се актуализират"
+msgstr[0] "१ संकुलं उन्नयनं भविष्यति"
+msgstr[1] "%1 संकुल उन्नयनं भविष्यति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:195
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-msgstr ""
-"<h3>%1</h3>Надграждане до нова версия %2<br/>Не са предоставени бележки за "
-"версиите"
+msgstr "<h3>%1</h3>नूतनसंस्करणं %2 मध्ये उन्नयनं कुर्वन्तु<br/>प्रकाशनटिप्पणी न प्रदत्ता"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
@@ -2067,26 +2053,24 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
-"<h3>%1</h3>Надграждане до нова версия %2<br/>Бележки за версията:<blockquote>"
-"%3</blockquote>"
+"<h3>%1</h3>नूतनसंस्करणं %2 मध्ये उन्नयनं कुर्वन्तु<br/>प्रकाशन टिप्पणियाँ:<blockquote>%3</"
+"blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:224
 #, kde-format
 msgid "Present"
-msgstr "Настоящи"
+msgstr "वर्तमान"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
 #, kde-format
 msgid "Future"
-msgstr "Бъдещи"
+msgstr "भविष्यम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
-msgstr ""
-"Няма достатъчно място на диска за извършване на актуализацията. Налични са "
-"само %1."
+msgstr "अद्यतनं कर्तुं पर्याप्तं स्थानं नास्ति; केवलं %1 स्थानम् उपलभ्यते ।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
 #, kde-format
@@ -2096,15 +2080,14 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
-"Тази актуализация не може да бъде завършена, тъй като ще премахне следния "
-"софтуер, който е от решаващо значение за работата на системата:<nl/><ul><li>"
-"%1</li></ul><nl/> Ако смятате, че това е грешка, моля, докладвайте го като "
-"грешка на пакетирането на вашата дистрибуция."
+"इदं अद्यतनं पूर्णं कर्तुं न शक्यते यतः एतत् निम्नलिखिततन्त्रांशं निष्कासयिष्यति यत् प्रणाल्याः "
+"संचालनाय महत्त्वपूर्णम् अस्ति:<nl/><ul><li>%1</li></ul><nl/>यदि भवान् मन्यते यत् एतत् एकं "
+"त्रुटि, कृपया भवतः वितरणस्य संकुलकर्तृभ्यः दोषरूपेण निवेदयन्तु ।."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
 #, kde-format
 msgid "Confirm Changes"
-msgstr "Потвърдете промените"
+msgstr "परिवर्तनं पुष्टयन्तु"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
 #, kde-format
@@ -2112,8 +2095,8 @@ msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
 ">in order to install:<ul><li>%2</li></ul>"
 msgstr ""
-"Следните пакети ще бъдат премахнати от актуализацията: <ul> <li> %1 </li> </"
-"ul> <br /> за да инсталирате: <ul> <li> %2 </li> </ul>"
+"अद्यतनेन निम्नलिखितसङ्कुलाः निष्कासिताः भविष्यन्ति:<ul><li>%1</li></ul><br/>स्थापनार्थं:"
+"<ul><li>%2</li></ul >"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:702
 #, kde-kuit-format
@@ -2128,14 +2111,14 @@ msgid ""
 "Media Change of type '%1' is requested.\n"
 "%2"
 msgstr ""
-"Изисква се промяна на носителя от типа \"%1\".\n"
+"'%1' प्रकारस्य माध्यमपरिवर्तनं अनुरोधितम् अस्ति ।\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:743
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
-msgstr "Приемане на EULA"
+msgstr "EULA स्वीकुरुत"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
@@ -2144,14 +2127,14 @@ msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
 " %3"
 msgstr ""
-"Пакетът %1 и неговия издател %2 изискват да приемете техния лиценз:\n"
+"%1 संकुलं तस्य विक्रेता %2 च भवता तेषां अनुज्ञापत्रं स्वीकुर्वन्तु:\n"
 " %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:861
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
 #, kde-format
 msgid "Missing signature for %1 in %2"
-msgstr "Липсващ подпис за %1 в %2"
+msgstr "%2 मध्ये %1 कृते हस्ताक्षरं लुप्तम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:862
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
@@ -2165,13 +2148,14 @@ msgid ""
 "Fingerprint: %4\n"
 "Timestamp: %4\n"
 msgstr ""
-"Имате ли доверие на следния ключ?\n"
+"किं भवन्तः निम्नलिखितकुञ्जीम् विश्वसन्ति ?\n"
 "\n"
-"URL адрес: %1\n"
-"Потребител: %2\n"
-"Ключ: %3\n"
-"Отпечатък: %4\n"
-"Клеймо за време: %4\n"
+"Url: %1\n"
+"उपयोक्ता: %2\n"
+"कुंजी: %3\n"
+"अङ्गुलिचिह्न: %4\n"
+"समयमुद्रिका: %4\n"
+"\n"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:190
 #, kde-format
@@ -2181,15 +2165,14 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
-"Това действие не може да бъде завършено, тъй като ще премахне следния "
-"софтуер, който е от решаващо значение за работата на системата:<nl/><ul><li>"
-"%1</li></ul><nl/> Ако смятате, че това е грешка, моля, докладвайте го като "
-"грешка на пакетирането на вашата дистрибуция."
+"एषा क्रिया सम्पन्नं कर्तुं न शक्यते यतः एतत् निम्नलिखिततन्त्रांशं निष्कासयिष्यति यत् प्रणाल्याः "
+"संचालनाय महत्त्वपूर्णम् अस्ति:<nl/><ul><li>%1</li></ul><nl/>यदि भवान् मन्यते यत् एतत् एकं "
+"त्रुटि, कृपया भवतः वितरणस्य संकुलकर्तृभ्यः दोषरूपेण निवेदयन्तु ।."
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:203
 #, kde-format
 msgid "Confirm package removal"
-msgstr "Потвърждаване на премахването на пакета"
+msgstr "संकुलनिष्कासनस्य पुष्टिं कुर्वन्तु"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:204
 #, kde-format
@@ -2200,51 +2183,48 @@ msgid_plural ""
 "This action will also remove the following packages:\n"
 "%2"
 msgstr[0] ""
-"Това действие ще премахне и следния пакет:\n"
+"एषा क्रिया निम्नलिखितसङ्कुलम् अपि निष्कासयिष्यति :\n"
 "%2"
 msgstr[1] ""
-"Това действие ще премахне и следните пакети:\n"
+"एषा क्रिया निम्नलिखितसङ्कुलानाम् अपि निष्कासनं करिष्यति :\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
 #, kde-format
 msgid "Show Dependencies…"
-msgstr "Показване на зависимостите…"
+msgstr "आश्रिताः दर्शयन्तु…"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr "Зависимости за пакет: %1"
+msgstr "संकुलस्य कृते आश्रयाः : %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
 #, kde-format
 msgid "Full Access"
-msgstr "Пълен достъп"
+msgstr "पूर्ण अभिगम"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Can access everything on the system"
-msgstr "Има достъп до всичко в системата"
+msgstr "प्रणाल्यां सर्वं अभिगन्तुं शक्नोति"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
 msgctxt "Category"
 msgid "Operating System"
-msgstr "Операционна система"
+msgstr "संचालन प्रणाली"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:182
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: Открити са няколко стартирани варианти. Моля, подайте сигнал за "
-"грешка."
+"rpm-ostree: बहुविधाः प्रारंभितानि परिनियोजनानि प्राप्तानि। कृपया दोषं दातव्यम् ।."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
-msgstr ""
-"rpm-ostree: Не са открити стартирани варианти. Моля, подайте сигнал за "
-"грешка."
+msgstr "rpm-ostree: प्रारंभितः परिनियोजनं न प्राप्तम् । कृपया दोषं दातव्यम् ।."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
@@ -2253,101 +2233,95 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
-"<b>Издадена е нова основна версия на %1!</b>\n"
-"За да можете да актуализирате до тази нова версия, уверете се, че сте "
-"приложили всички чакащи актуализации и рестартирайте системата си."
+"<b>%1 इत्यस्य नूतनं प्रमुखं संस्करणं प्रकाशितम्!</b>\n"
+"अस्मिन् नूतने संस्करणे अद्यतनं कर्तुं शक्नुवन्तु, सर्वाणि लम्बितानि अद्यतनानि प्रयोक्तुं सुनिश्चितं "
+"कुर्वन्तु तथा च स्वस्य प्रणालीं पुनः आरभ्यताम् ।."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr "<b>Издадена е нова основна версия!/b>"
+msgstr "<b>नवं प्रमुखं संस्करणं प्रकाशितम्!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr "Имате чакащи актуализации за текущата версия. Продължаваме все пак."
+msgstr "वर्तमानसंस्करणस्य कृते भवतः लम्बितानि अद्यतनानि सन्ति । तथापि प्रवर्तते।."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
-msgstr ""
-"Моля, актуализирайте до най-новата версия, преди да преминете към основна "
-"версия."
+msgstr "कृपया प्रमुखसंस्करणं प्रति पुनः आधारं स्थापयितुं पूर्वं नवीनतमसंस्करणं प्रति अद्यतनं कुर्वन्तु"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
-msgstr ""
-"Липсва отдалечен референтен номер за операцията rebase. Моля, подайте сигнал "
-"за грешка."
+msgstr "पुनः आधारसञ्चालनार्थं दूरस्थसन्दर्भः अनुपलब्धः । कृपया दोषं दातव्यम् ।."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
 #, kde-format
 msgid "GPL and other licenses"
-msgstr "GPL и други лицензи"
+msgstr "GPL इत्यादीनि अनुज्ञापत्राणि"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
 #, kde-format
 msgid "Additional packages: "
-msgstr "Допълнителни пакети: "
+msgstr "अतिरिक्तसङ्कुलाः : "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
 #, kde-format
 msgid "Additional modules: "
-msgstr "Допълнителни модули: "
+msgstr "अतिरिक्त विभागाः : "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
 #, kde-format
 msgid "Local packages: "
-msgstr "Локални пакети:"
+msgstr "स्थानीयसङ्कुलाः : "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
 #, kde-format
 msgid "Replaced packages:"
-msgstr "Заместени пакети:"
+msgstr "प्रतिस्थापिताः सङ्कुलाः :"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, kde-format
 msgid "Removed packages:"
-msgstr "Премахнати пакети:"
+msgstr "निष्कासितानि सङ्कुलाः :"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "Текущо стартирана версия"
+msgstr "वर्तमाने प्रारंभितः संस्करणः (स्थापितम्)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
 #, kde-format
 msgid "Currently booted version"
-msgstr "Текущата стартирана версия"
+msgstr "वर्तमाने प्रारंभितः संस्करणः"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr "Версията, която ще се използва след рестартиране"
+msgstr "पुनः आरम्भस्य अनन्तरं यत् संस्करणं उपयुज्यते"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr "Резервна версия за възстановяване"
+msgstr "पुनर्मार्ग संस्करणम् (स्थापितम्)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Fallback version"
-msgstr "Резервна версия за възстановяване"
+msgstr "पुनर्मार्ग संस्करणम्"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
 msgid "ostree remotes"
-msgstr "ostree отдалечено"
+msgstr "ओएस् वृक्ष दूरस्थ"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
-msgstr ""
-"rpm-ostree-backend: Грешка: Не е предоставен интерфейс DBus.  Моля, подайте "
-"сигнал за грешка."
+msgstr "rpm-ostree-backend: त्रुटिः : DBus अन्तरफलकं न प्रदत्तम् । कृपया दोषं दातव्यम् ।."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
@@ -2355,25 +2329,22 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Грешка: Не може да се стартира транзакция за ресурс с "
-"невалиден формат.  Моля, подайте сигнал за грешка."
+"rpm-ostree-backend: त्रुटिः: अमान्यस्वरूपेण संसाधनस्य विनिमयव्यवहारं आरभुं न शक्यते। कृपया "
+"दोषं दातव्यम् ।."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Грешка: Не може да се пребазира към празно ref.  Моля, "
-"подайте сигнал за грешка."
+"rpm-ostree-backend: त्रुटिः: रिक्तसन्दर्भे पुनः आधारं कर्तुं न शक्यते । कृपया दोषं दातव्यम् ।."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
-msgstr ""
-"rpm-ostree-backend: Грешка: Заявена е неизвестна операция.  Моля, подайте "
-"сигнал за грешка."
+msgstr "rpm-ostree-backend: त्रुटिः अज्ञातं संचालनं अनुरोधितम्। कृपया दोषं दातव्यम् ।."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
@@ -2382,63 +2353,60 @@ msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
 msgstr ""
-"Грешка в rpm-ostree транзакция:\n"
+"rpm-ostree विनिमयव्यवहारः विफलः अभवत्:\n"
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
-msgstr ""
-"rpm-ostree-backend: Грешка: неизвестен формат на ресурс.  Моля, подайте "
-"сигнал за грешка."
+msgstr "rpm-ostree-backend: त्रुटिः : अज्ञातसंसाधनस्वरूपम्। कृपया दोषं दातव्यम् ।."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
-"Отмяна на транзакция на rpm-ostree. Това може да отнеме известно време. "
-"Моля, изчакайте."
+"rpm-ostree विनिमयव्यवहारं रद्दं कुर्वन्। एतत् किञ्चित् समयं गृह्णीयात् । कृपया प्रतीक्ष्यताम्।."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
 #, kde-format
 msgid "Checking for a system update"
-msgstr "Проверка за налична системна актуализация"
+msgstr "प्रणाली अद्यतनस्य जाँचः"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:385
 #, kde-format
 msgid "Downloading system update"
-msgstr "Сваляне на системна актуализация"
+msgstr "प्रणाली अद्यतनं अवारोपण करणम्"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:388
 #, kde-format
 msgid "Updating the system"
-msgstr "Актуализиране на системата"
+msgstr "प्रणालीं अद्यतनं करणम्"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
 #, kde-format
 msgid "Updating to the next major version"
-msgstr "Актуализиране до следващата основна версия"
+msgstr "अग्रिमप्रमुखसंस्करणं प्रति अद्यतनीकरणम्"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "Изпълняване на операция (започната извън Discover)"
+msgstr "संचालन प्रचलति (डिस्कवरस्य बहिः आरब्धम्)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
 msgid "Unknown transaction type"
-msgstr "Неизвестен вид транзакция"
+msgstr "अज्ञातः विनिमयव्यवहारः प्रकारः"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
 msgid "Channels…"
-msgstr "Канали…"
+msgstr "चैनल्स्…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:24
 #, kde-format
 msgid "%1 channels"
-msgstr "%1 канала"
+msgstr "%1 चैनल्स्"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:32
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
@@ -2449,17 +2417,17 @@ msgstr "%1 - %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:35
 #, kde-format
 msgid "Switch"
-msgstr "Превключване"
+msgstr "परिवर्ततु"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
 msgid "Permissions for %1"
-msgstr "Права за %1"
+msgstr "%1 कृते अनुमतिः"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
 msgid "Snap"
-msgstr "Snap"
+msgstr "स्नैप्"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:51
 #, kde-format
@@ -2467,49 +2435,48 @@ msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this computer. Install it anyway?"
 msgstr ""
-"Това Snap приложение не е съвместимо със sandboxing сигурност и ще има пълен "
-"достъп до този компютър. Да се инсталира ли въпреки това?"
+"इदं स्नैप् अनुप्रयोगं सुरक्षाकट्टापूर्णितम् इत्यनेन सह सङ्गतं नास्ति तथा च अस्मिन् सङ्गणके "
+"पूर्णप्रवेशः भविष्यति । तथापि संस्थापयन्तु?"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
-"SteamOS: Невъзможност за запитване към atomupd за актуализации на SteamOS..."
+msgstr "SteamOS: SteamOS अद्यतनस्य कृते atomupd इत्यस्य प्रश्नं कर्तुं असमर्थः..."
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
 msgstr ""
-"Избройте всички бекенд програми, които искате да се заредят, разделени със "
-"запетая ','."
+"वयं यत् किमपि पृष्ठभागं आरोपय कर्तुम् इच्छेम, तत् सर्वान् सूचीकृत्य, अल्पविरामेन ',' इत्यनेन पृथक् "
+"कृत्वा ।."
 
 #: libdiscover/resources/AbstractResource.cpp:99
 #, kde-format
 msgid "Broken"
-msgstr "Повреден"
+msgstr "भग्नः"
 
 #: libdiscover/resources/AbstractResource.cpp:101
 #, kde-format
 msgid "Available"
-msgstr "Наличен"
+msgstr "उपलब्धः"
 
 #: libdiscover/resources/AbstractResource.cpp:105
 #, kde-format
 msgid "Upgradeable"
-msgstr "С възможност за надграждане"
+msgstr "उन्नयनीयम्"
 
 #: libdiscover/resources/AbstractResource.cpp:242
 #, kde-format
 msgid "Launch"
-msgstr "Стартиране"
+msgstr "आरभत"
 
 #: libdiscover/resources/AbstractResource.cpp:251
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "Актуализиране на версия %1"
+msgstr "%1 संस्करणस्य पुनर्नवीकरणम्"
 
 #: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
@@ -2520,12 +2487,12 @@ msgstr "%1 → %2%1 → %2%2"
 #: libdiscover/resources/AbstractResourcesBackend.cpp:166
 #, kde-format
 msgid "Please verify Internet connectivity"
-msgstr "Моля, проверете интернет връзката"
+msgstr "कृपया अन्तर्जालसंपर्कस्य सत्यापनम् कुर्वन्तु"
 
 #: libdiscover/resources/ResourcesModel.cpp:99
 #, kde-format
 msgid "Refresh"
-msgstr "Обновяване"
+msgstr "नवीकरणम्"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:720
 #, kde-format
@@ -2536,7 +2503,7 @@ msgstr "%1+"
 #: libdiscover/resources/ResourcesUpdatesModel.cpp:109
 #, kde-format
 msgid "Updates"
-msgstr "Актуализации"
+msgstr "अद्यतनाः"
 
 #: libdiscover/Transaction/Transaction.cpp:133
 #, kde-format
@@ -2548,76 +2515,76 @@ msgstr "%1/s"
 #, kde-format
 msgctxt "@info:status"
 msgid "Starting"
-msgstr "Стартиране"
+msgstr "आरभ्यते"
 
 #: libdiscover/Transaction/TransactionModel.cpp:76
 #, kde-format
 msgctxt "@info:status"
 msgid "Waiting"
-msgstr "Изчакване"
+msgstr "उपास्ते"
 
 #: libdiscover/Transaction/TransactionModel.cpp:78
 #, kde-format
 msgctxt "@info:status"
 msgid "Downloading"
-msgstr "Изтегляне"
+msgstr "अवारोपण"
 
 #: libdiscover/Transaction/TransactionModel.cpp:82
 #, kde-format
 msgctxt "@info:status"
 msgid "Installing"
-msgstr "Инсталиране"
+msgstr "संस्थापनम्"
 
 #: libdiscover/Transaction/TransactionModel.cpp:84
 #, kde-format
 msgctxt "@info:status"
 msgid "Removing"
-msgstr "Премахване"
+msgstr "अपसारयन्"
 
 #: libdiscover/Transaction/TransactionModel.cpp:86
 #, kde-format
 msgctxt "@info:status"
 msgid "Changing Addons"
-msgstr "Промяна на добавките"
+msgstr "एडोन्स् परिवर्तनम्"
 
 #: libdiscover/Transaction/TransactionModel.cpp:90
 #, kde-format
 msgctxt "@info:status"
 msgid "Done"
-msgstr "Извършено"
+msgstr "कृतम्‌"
 
 #: libdiscover/Transaction/TransactionModel.cpp:92
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
-msgstr "Неуспешно"
+msgstr "असफलः अभवत्"
 
 #: libdiscover/Transaction/TransactionModel.cpp:94
 #, kde-format
 msgctxt "@info:status"
 msgid "Cancelled"
-msgstr "Отменено"
+msgstr "रद्दीकृतम्"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:130
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
-msgstr "Приложения"
+msgstr "अनुप्रयोगाः"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:131
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
-msgstr "Системен софтуер"
+msgstr "प्रणालि तन्त्रांश्"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:132
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"
-msgstr "Добавки"
+msgstr "एडोन्स्"
 
 #~ msgid "Access is granted to the entire Session Bus"
-#~ msgstr "Достъпът е гарантиран за целия сесиен Bus"
+#~ msgstr "सम्पूर्णस्य सत्रबसस्य प्रवेशः प्रदत्तः अस्ति"
 
 #~ msgid "Access is granted to the entire System Bus"
-#~ msgstr "Достъпът е гарантиран за целия системен Bus"
+#~ msgstr "सम्पूर्णं System Bus - मध्ये प्रवेशः प्रदत्तः अस्ति"

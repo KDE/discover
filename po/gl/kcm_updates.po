@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-09-17 15:16+0200\n"
+"PO-Revision-Date: 2023-09-30 09:46+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -84,7 +84,7 @@ msgstr "Nunca"
 #: kcm/ui/main.qml:119
 #, kde-format
 msgid "Apply system updates:"
-msgstr ""
+msgstr "Aplicar as actualizacións do sistema:"
 
 #: kcm/ui/main.qml:126
 #, kde-format
@@ -92,7 +92,7 @@ msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates after "
 "rebooting'"
 msgid "After rebooting"
-msgstr ""
+msgstr "Tras reiniciar"
 
 #: kcm/ui/main.qml:133
 #, kde-format
@@ -100,14 +100,14 @@ msgctxt ""
 "@label The thing being recommended is to use the 'apply updates when "
 "rebooting' setting"
 msgid "Recommended to maximize system stability"
-msgstr ""
+msgstr "Recoméndase para maximizar a estabilidade do sistema."
 
 #: kcm/ui/main.qml:140
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"
 msgid "Immediately"
-msgstr ""
+msgstr "Inmediatamente"
 
 #~ msgid "Use offline updates:"
 #~ msgstr "Usar actualizacións sen conexión:"

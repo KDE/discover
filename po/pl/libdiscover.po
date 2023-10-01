@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-09-24 08:01+0200\n"
+"PO-Revision-Date: 2023-09-30 10:20+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -635,15 +635,14 @@ msgid "Can access the internet"
 msgstr "Dozwolony dostęp do sieci"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Dostęp do szyny systemowej"
+msgstr "Dostęp do dźwięku systemowego"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Może odtwarzać dźwięki"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:963
@@ -652,16 +651,13 @@ msgid "Session Bus Access"
 msgstr "Dostęp do szyny sesji"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Może porozumiewać się z innymi aplikacjami i procesami w tej samej sesji "
-"przy użyciu następującego protokołów porozumiewania: %1"
+"Może porozumiewać się ze wszystkimi innymi aplikacjami i procesami "
+"uruchomionymi przez konto tego użytkownika"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:974
@@ -670,14 +666,10 @@ msgid "System Bus Access"
 msgstr "Dostęp do szyny systemowej"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
-"Może porozumiewać się z innymi aplikacjami i procesami w tej samej sesji "
-"przy użyciu następującego protokołów porozumiewania: %1"
+"Może porozumiewać się ze wszystkimi innymi aplikacjami i procesami w systemie"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
