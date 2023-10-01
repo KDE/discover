@@ -187,7 +187,6 @@ private:
     Delay m_details;
     Delay m_updateDetails;
     QSharedPointer<OdrsReviewsBackend> m_reviews;
-    QPointer<PackageKit::Transaction> m_getUpdatesTransaction;
     QThreadPool m_threadPool;
     QPointer<PKResolveTransaction> m_resolveTransaction;
     QStringList m_globalHints;

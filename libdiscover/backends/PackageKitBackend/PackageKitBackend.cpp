@@ -381,17 +381,14 @@ void PackageKitBackend::fetchUpdates()
     if (m_updater->isProgressing())
         return;
 
-    m_getUpdatesTransaction = PackageKit::Daemon::getUpdates();
-    connect(m_getUpdatesTransaction, &PackageKit::Transaction::finished, this, &PackageKitBackend::getUpdatesFinished);
-    connect(m_getUpdatesTransaction, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
-    connect(m_getUpdatesTransaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
-    connect(m_getUpdatesTransaction, &PackageKit::Transaction::percentageChanged, this, &PackageKitBackend::fetchingUpdatesProgressChanged);
+    PackageKit::Transaction *tUpdates = PackageKit::Daemon::getUpdates();
+    connect(tUpdates, &PackageKit::Transaction::finished, this, &PackageKitBackend::getUpdatesFinished);
+    connect(tUpdates, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
+    connect(tUpdates, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
     m_updatesPackageId.clear();
     m_hasSecurityUpdates = false;
 
     m_updater->setProgressing(true);
-
-    Q_EMIT fetchingUpdatesProgressChanged();
 }
 
 void PackageKitBackend::addPackageArch(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
@@ -538,6 +535,7 @@ void PackageKitBackend::checkForUpdates()
         m_refresher->setHints(globalHints() << QStringLiteral("cache-age=300" /* 5 minutes */));
 
         connect(m_refresher.data(), &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
+        connect(m_refresher.data(), &PackageKit::Transaction::percentageChanged, this, &PackageKitBackend::fetchingUpdatesProgressChanged);
         connect(m_refresher.data(), &PackageKit::Transaction::finished, this, [this]() {
             m_refresher = nullptr;
             fetchUpdates();
