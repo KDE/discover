@@ -389,6 +389,8 @@ void PackageKitBackend::fetchUpdates()
     m_hasSecurityUpdates = false;
 
     m_updater->setProgressing(true);
+
+    Q_EMIT fetchingUpdatesProgressChanged();
 }
 
 void PackageKitBackend::addPackageArch(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
@@ -544,6 +546,8 @@ void PackageKitBackend::checkForUpdates()
     } else {
         qWarning() << "PackageKitBackend: Already resetting";
     }
+
+    Q_EMIT fetchingUpdatesProgressChanged();
 }
 
 QList<AppStream::Component> PackageKitBackend::componentsById(const QString &id) const
@@ -1052,16 +1056,20 @@ QString PackageKitBackend::displayName() const
 
 int PackageKitBackend::fetchingUpdatesProgress() const
 {
-    if (!m_getUpdatesTransaction)
-        return 0;
+    if (!m_refresher)
+        return 100;
 
-    if (m_getUpdatesTransaction->status() == PackageKit::Transaction::StatusWait
-        || m_getUpdatesTransaction->status() == PackageKit::Transaction::StatusUnknown) {
-        return m_getUpdatesTransaction->property("lastPercentage").toInt();
+    int percentage = m_refresher->percentage();
+    if (percentage > 100) {
+        return m_refresher->property("lastPercentage").toInt();
     }
-    int percentage = percentageWithStatus(m_getUpdatesTransaction->status(), m_getUpdatesTransaction->percentage());
-    m_getUpdatesTransaction->setProperty("lastPercentage", percentage);
+    m_refresher->setProperty("lastPercentage", percentage);
     return percentage;
+}
+
+uint PackageKitBackend::fetchingUpdatesProgressWeight() const
+{
+    return 50;
 }
 
 InlineMessage *PackageKitBackend::explainDysfunction() const

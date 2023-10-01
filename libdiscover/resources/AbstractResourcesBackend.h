@@ -231,6 +231,12 @@ public:
 
     virtual int fetchingUpdatesProgress() const;
 
+    /**
+     * @returns how much this backend should influence the global fetching progress.
+     * This is not a percentage.
+     */
+    virtual uint fetchingUpdatesProgressWeight() const;
+
 public Q_SLOTS:
     /**
      * This gets called when the backend should install an application.

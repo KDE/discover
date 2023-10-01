@@ -161,6 +161,11 @@ int AbstractResourcesBackend::fetchingUpdatesProgress() const
     return isFetching() ? 42 : 100;
 }
 
+uint AbstractResourcesBackend::fetchingUpdatesProgressWeight() const
+{
+    return 1;
+}
+
 InlineMessage *AbstractResourcesBackend::explainDysfunction() const
 {
     return new InlineMessage(InlineMessage::Error, QStringLiteral("network-disconnect"), i18n("Please verify Internet connectivity"));

@@ -64,10 +64,12 @@ ResourcesModel::ResourcesModel(QObject *parent)
                   return 0;
 
               int sum = 0;
+              int weights = 0;
               for (auto backend : std::as_const(m_backends)) {
-                  sum += backend->fetchingUpdatesProgress();
+                  sum += backend->fetchingUpdatesProgress() * backend->fetchingUpdatesProgressWeight();
+                  weights += backend->fetchingUpdatesProgressWeight();
               }
-              return sum / (int)m_backends.count();
+              return sum / weights;
           },
           [this](int progress) {
               Q_EMIT fetchingUpdatesProgressChanged(progress);

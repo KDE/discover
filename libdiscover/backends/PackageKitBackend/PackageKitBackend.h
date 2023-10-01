@@ -112,6 +112,7 @@ public:
     QList<AppStream::Component> componentsById(const QString &id) const;
     void fetchUpdates();
     int fetchingUpdatesProgress() const override;
+    uint fetchingUpdatesProgressWeight() const override;
 
     InlineMessage *explainDysfunction() const override;
 
