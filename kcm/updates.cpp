@@ -6,6 +6,8 @@
 
 #include "updates.h"
 
+#include <QFile>
+
 #include <KAboutData>
 #include <KConfigGroup>
 #include <KLocalizedString>
