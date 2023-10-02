@@ -1,6 +1,7 @@
 /*
  *   SPDX-FileCopyrightText: 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *   SPDX-FileCopyrightText: 2013 Lukas Appelhans <l.appelhans@gmx.de>
+ *   SPDX-FileCopyrightText: 2023 Harald Sitter <sitter@kde.org>
  *
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
@@ -560,7 +561,7 @@ static const auto needsResolveFilter = [](AbstractResource *res) {
 
 class PKResultsStream : public ResultsStream
 {
-public:
+private:
     PKResultsStream(PackageKitBackend *backend, const QString &name)
         : ResultsStream(name)
         , backend(backend)
@@ -574,6 +575,13 @@ public:
         QTimer::singleShot(0, this, [resources, this]() {
             sendResources(resources);
         });
+    }
+
+public:
+    template<typename... Args>
+    [[nodiscard]] static QPointer<PKResultsStream> create(Args&& ...args)
+    {
+        return new PKResultsStream(std::forward<Args>(args)...);
     }
 
     void sendResources(const QVector<AbstractResource *> &res, bool waitForResolved = false)
@@ -612,8 +620,11 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
     if (!filter.resourceUrl.isEmpty()) {
         return findResourceByPackageName(filter.resourceUrl);
     } else if (!filter.extends.isEmpty()) {
-        auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-extends"));
+        auto stream = PKResultsStream::create(this, QStringLiteral("PackageKitStream-extends"));
         auto f = [this, filter, stream] {
+            if (!stream) {
+                return;
+            }
             const auto resources = kTransform<QVector<AbstractResource *>>(m_packages.extendedBy.value(filter.extends), [](AppPackageKitResource *a) {
                 return a;
             });
@@ -625,8 +636,11 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         return new ResultsStream(QStringLiteral("PackageKitStream-upgradeable"),
                                  kTransform<QVector<AbstractResource *>>(upgradeablePackages())); // No need for it to be a PKResultsStream
     } else if (filter.state == AbstractResource::Installed) {
-        auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-installed"));
+        auto stream = PKResultsStream::create(this, QStringLiteral("PackageKitStream-installed"));
         auto f = [this, stream, filter] {
+            if (!stream) {
+                return;
+            }
             const auto toResolve = kFilter<QVector<AbstractResource *>>(m_packages.packages, needsResolveFilter);
 
             auto installedAndNameFilter = [filter](AbstractResource *res) {
@@ -665,8 +679,11 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         runWhenInitialized(f, stream);
         return stream;
     } else if (filter.search.isEmpty() && !filter.category) {
-        auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-all"));
+        auto stream = PKResultsStream::create(this, QStringLiteral("PackageKitStream-all"));
         auto f = [this, filter, stream] {
+            if (!stream) {
+                return;
+            }
             auto resources = kFilter<QVector<AbstractResource *>>(m_packages.packages, [](AbstractResource *res) {
                 return res->type() != AbstractResource::Technical && !qobject_cast<PackageKitResource *>(res)->isCritical()
                     && !qobject_cast<PackageKitResource *>(res)->extendsItself();
@@ -676,8 +693,11 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         runWhenInitialized(f, stream);
         return stream;
     } else {
-        auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-search"));
+        auto stream = PKResultsStream::create(this, QStringLiteral("PackageKitStream-search"));
         const auto f = [this, stream, filter]() {
+            if (!stream) {
+                return;
+            }
             const auto components = !filter.search.isEmpty() ? m_appdata->search(filter.search)
 #if ASQ_CHECK_VERSION(0, 15, 6)
                                   : filter.category          ? AppStreamUtils::componentsByCategories(m_appdata.get(),
@@ -721,15 +741,18 @@ PKResultsStream *PackageKitBackend::findResourceByPackageName(const QUrl &url)
             || mime.inherits(QStringLiteral("application/x-tar")) //
             || mime.inherits(QStringLiteral("application/x-zstd-compressed-tar")) //
             || mime.inherits(QStringLiteral("application/x-xz-compressed-tar"))) {
-            return new PKResultsStream(this, QStringLiteral("PackageKitStream-localpkg"), {new LocalFilePKResource(url, this)});
+            return PKResultsStream::create(this, QStringLiteral("PackageKitStream-localpkg"), QVector<AbstractResource *>{new LocalFilePKResource(url, this)}).data();
         }
     } else if (url.scheme() == QLatin1String("appstream")) {
         const auto appstreamIds = AppStreamUtils::appstreamIds(url);
         if (appstreamIds.isEmpty())
             Q_EMIT passiveMessage(i18n("Malformed appstream url '%1'", url.toDisplayString()));
         else {
-            auto stream = new PKResultsStream(this, QStringLiteral("PackageKitStream-appstream-url"));
+            auto stream = PKResultsStream::create(this, QStringLiteral("PackageKitStream-appstream-url"));
             const auto f = [this, appstreamIds, stream]() {
+                if (!stream) {
+                    return;
+                }
                 auto toSend = QSet<AbstractResource *>();
                 toSend.reserve(appstreamIds.size());
                 for (const auto &appstreamId : appstreamIds) {
@@ -748,7 +771,7 @@ PKResultsStream *PackageKitBackend::findResourceByPackageName(const QUrl &url)
             return stream;
         }
     }
-    return new PKResultsStream(this, QStringLiteral("PackageKitStream-unknown-url"), {});
+    return PKResultsStream::create(this, QStringLiteral("PackageKitStream-unknown-url"), QVector<AbstractResource *>{}).data();
 }
 
 template<typename T>
