@@ -744,7 +744,7 @@ void PackageKitBackend::runWhenInitialized(const std::function<void()> &f, QObje
     if (!m_appstreamInitialized) {
         connect(this, &PackageKitBackend::loadedAppStream, stream, f);
     } else {
-        QTimer::singleShot(0, this, f);
+        QTimer::singleShot(0, stream, f); // NOTE `stream` is a child of `this` so this transitively also depends on `this`
     }
 }
 
