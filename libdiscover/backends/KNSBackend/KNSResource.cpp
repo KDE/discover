@@ -7,7 +7,7 @@
 #include "KNSResource.h"
 #include "KNSBackend.h"
 #include <KLocalizedString>
-#include <KNSCore/Engine>
+#include <KNSCore/EngineBase>
 #include <KNSCore/Transaction>
 #include <KShell>
 #include <QProcess>

@@ -8,7 +8,7 @@
 #include "KNSBackend.h"
 #include "KNSResource.h"
 #include <KLocalizedString>
-#include <KNSCore/Engine>
+#include <KNSCore/EngineBase>
 #include <KPasswordDialog>
 #include <QDebug>
 #include <QDesktopServices>
