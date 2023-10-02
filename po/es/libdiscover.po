@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-28 01:40+0000\n"
+"POT-Creation-Date: 2023-10-02 01:42+0000\n"
 "PO-Revision-Date: 2023-09-28 18:51+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -540,7 +540,7 @@ msgid "Local bundle"
 msgstr "Paquete local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1676
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:742
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:744
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL de «appstream» mal formada «%1»"
@@ -1157,12 +1157,12 @@ msgstr ""
 "El soporte de su sistema operativo finalizó el %1. Considere actualizarlo a "
 "una versión con soporte."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:854
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:856
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "No se puede eliminar «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:934
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:936
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1173,13 +1173,13 @@ msgstr ""
 "Para poder actualizar a esta versión, asegúrese de aplicar todas las "
 "actualizaciones disponibles y reinicie el sistema."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:943
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Renovar a %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:964
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:966
 #, kde-format
 msgid "A new major version has been released"
 msgstr "Se ha publicado una nueva versión mayor"
@@ -2135,7 +2135,7 @@ msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:710
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:317
 #, kde-format
 msgid ""
 "Media Change of type '%1' is requested.\n"
@@ -2145,13 +2145,13 @@ msgstr ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:743
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:294
 #, kde-format
 msgid "Accept EULA"
 msgstr "Aceptar EULA"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -2161,13 +2161,13 @@ msgstr ""
 " %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:861
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:334
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Falta la firma de %1 en %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:862
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2186,7 +2186,7 @@ msgstr ""
 "Huella digital: %4\n"
 "Marca temporal: %4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:190
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:195
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
@@ -2199,12 +2199,12 @@ msgstr ""
 "ul><nl/>Si cree que se trata de un error, notifíquelo a los empaquetadores "
 "de su distribución."
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:203
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:208
 #, kde-format
 msgid "Confirm package removal"
 msgstr "Confirmar eliminación del paquete"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:204
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:209
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"

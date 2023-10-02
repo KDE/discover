@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-28 01:40+0000\n"
+"POT-Creation-Date: 2023-10-02 01:42+0000\n"
 "PO-Revision-Date: 2020-10-11 01:23+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -549,7 +549,7 @@ msgid "Local bundle"
 msgstr "Kohalik kimp"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1676
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:742
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:744
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Vigane appstream'i URL '%1'"
@@ -1159,13 +1159,13 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:854
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:856
 #, fuzzy, kde-format
 #| msgid "Cannot remove system package"
 msgid "Cannot remove '%1'"
 msgstr "Süsteemset paketti ei saa eemaldada"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:934
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:936
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1173,14 +1173,14 @@ msgid ""
 "updates and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:943
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, fuzzy, kde-format
 #| msgid "Upgrade"
 msgid "Upgrade to %1 %2"
 msgstr "Uuenda"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:964
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:966
 #, kde-format
 msgid "A new major version has been released"
 msgstr ""
@@ -2193,7 +2193,7 @@ msgid "%1:<nl/><nl/>%2"
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:710
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:317
 #, kde-format
 msgid ""
 "Media Change of type '%1' is requested.\n"
@@ -2203,13 +2203,13 @@ msgstr ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:743
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:294
 #, kde-format
 msgid "Accept EULA"
 msgstr "EULA-ga nõustumine"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -2219,13 +2219,13 @@ msgstr ""
 " %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:861
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:334
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%1 allkiri asukohas %2 puudub"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:862
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2244,7 +2244,7 @@ msgstr ""
 "Sõrmejälg: %4\n"
 "Ajatempel: %4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:190
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:195
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
@@ -2253,12 +2253,12 @@ msgid ""
 "your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:203
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:208
 #, kde-format
 msgid "Confirm package removal"
 msgstr "Paketi eemaldamise kinnitus"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:204
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:209
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"

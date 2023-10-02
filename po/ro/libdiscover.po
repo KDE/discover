@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-28 01:40+0000\n"
+"POT-Creation-Date: 2023-10-02 01:42+0000\n"
 "PO-Revision-Date: 2022-12-28 20:25+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -546,7 +546,7 @@ msgid "Local bundle"
 msgstr "Pachet local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1676
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:742
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:744
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL appstream eronat „%1”"
@@ -1163,12 +1163,12 @@ msgstr ""
 "Sistemul acesta de operare a rămas fără suport pe %1. Luați în calcul "
 "înnoirea la o versiune susținută."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:854
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:856
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nu se poate elimina „%1”"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:934
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:936
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1176,7 +1176,7 @@ msgid ""
 "updates and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:943
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
@@ -1184,7 +1184,7 @@ msgstr ""
 msgid "Upgrade to %1 %2"
 msgstr "Actualizează"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:964
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:966
 #, kde-format
 msgid "A new major version has been released"
 msgstr ""
@@ -2141,7 +2141,7 @@ msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:710
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:312
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:317
 #, kde-format
 msgid ""
 "Media Change of type '%1' is requested.\n"
@@ -2151,13 +2151,13 @@ msgstr ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:743
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:294
 #, kde-format
 msgid "Accept EULA"
 msgstr "Acceptă acordul"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -2167,13 +2167,13 @@ msgstr ""
 " %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:861
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:329
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:334
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Lipsește semnătura pentru %1 în %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:862
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:330
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2192,7 +2192,7 @@ msgstr ""
 "Amprentă: %4\n"
 "Amprentă temporală: %4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:190
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:195
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
@@ -2205,12 +2205,12 @@ msgstr ""
 ">Dacă credeți că aceasta e o greșeală, raportați-o ca defect "
 "împachetatorilor distribuției dumneavoastră."
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:203
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:208
 #, kde-format
 msgid "Confirm package removal"
 msgstr "Confirmă eliminarea pachetului"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:204
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:209
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"
