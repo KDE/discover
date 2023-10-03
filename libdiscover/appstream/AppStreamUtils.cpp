@@ -59,7 +59,7 @@ QString AppStreamUtils::changelogToHtml(const AppStream::Component &appdata)
 
 Screenshots AppStreamUtils::fetchScreenshots(const AppStream::Component &appdata)
 {
-    const auto appdataScreenshots = appdata.screenshots();
+    const auto appdataScreenshots = appdata.screenshotsAll();
     Screenshots ret;
     ret.reserve(appdataScreenshots.size());
     for (const AppStream::Screenshot &s : appdataScreenshots) {
