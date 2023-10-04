@@ -324,7 +324,7 @@ void RpmOstreeBackend::lookForNextMajorVersion()
 
     QString currentVersion = AppStreamIntegration::global()->osRelease()->versionId();
     QString nextVersion;
-    for (const auto list = distroComponents.toList(); const AppStream::Component &dc : list) {
+    for (const AppStream::Component &dc : distroComponents) {
 #if ASQ_CHECK_VERSION(1, 0, 0)
         const auto releases = dc.releasesPlain().entries();
 #else

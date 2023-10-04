@@ -243,7 +243,7 @@ uint AppStreamUtils::contentRatingMinimumAge(const AppStream::Component &appdata
 #endif
 }
 
-static void kRemoveDuplicates(QList<AppStream::Component> &input, AppStream::Bundle::Kind kind)
+static void kRemoveDuplicates(AppStream::ComponentBox &input, AppStream::Bundle::Kind kind)
 {
     QSet<QString> ret;
     for (auto it = input.begin(); it != input.end();) {
@@ -257,11 +257,11 @@ static void kRemoveDuplicates(QList<AppStream::Component> &input, AppStream::Bun
     }
 }
 
-QList<AppStream::Component> AppStreamUtils::componentsByCategories(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind)
+AppStream::ComponentBox AppStreamUtils::componentsByCategories(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind)
 {
-    QList<AppStream::Component> ret;
+    AppStream::ComponentBox ret(AppStream::ComponentBox::FlagNoChecks);
     for (const auto &categoryName : cat->involvedCategories()) {
-        ret += pool->componentsByCategories({categoryName}).toList();
+        ret += pool->componentsByCategories({categoryName});
     }
     kRemoveDuplicates(ret, kind);
     return ret;

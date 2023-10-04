@@ -88,6 +88,17 @@ static T kFilter(const Q &input, _UnaryOperation op)
     return ret;
 }
 
+template<typename T, typename Q, typename _UnaryOperation>
+static void kFilterInPlace(Q &input, _UnaryOperation op)
+{
+    for (auto it = input.begin(); it != input.end();) {
+        if (op(*it))
+            ++it;
+        else
+            it = input.erase(it);
+    }
+}
+
 template<typename Q, typename W>
 static int kIndexOf(const Q &list, W func)
 {

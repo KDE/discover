@@ -38,7 +38,7 @@ std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStre
 
     QString currentVersion = osRelease()->versionId();
     std::optional<AppStream::Release> nextRelease;
-    for (const auto list = distroComponents.toList(); const AppStream::Component &dc : list) {
+    for (const AppStream::Component &dc : distroComponents) {
 #if ASQ_CHECK_VERSION(1, 0, 0)
         const auto releases = dc.releasesPlain().entries();
 #else

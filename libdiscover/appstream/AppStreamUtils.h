@@ -40,5 +40,5 @@ DISCOVERCOMMON_EXPORT QString contentRatingDescription(const AppStream::Componen
 DISCOVERCOMMON_EXPORT AbstractResource::ContentIntensity contentRatingIntensity(const AppStream::Component &appdata);
 DISCOVERCOMMON_EXPORT uint contentRatingMinimumAge(const AppStream::Component &appdata);
 
-DISCOVERCOMMON_EXPORT QList<AppStream::Component> componentsByCategories(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind);
+DISCOVERCOMMON_EXPORT AppStream::ComponentBox componentsByCategories(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind);
 }

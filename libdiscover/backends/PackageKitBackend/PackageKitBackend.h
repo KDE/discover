@@ -109,7 +109,7 @@ public:
     }
     static QString locateService(const QString &filename);
 
-    QList<AppStream::Component> componentsById(const QString &id) const;
+    AppStream::ComponentBox componentsById(const QString &id) const;
     void fetchUpdates();
     int fetchingUpdatesProgress() const override;
     uint fetchingUpdatesProgressWeight() const override;
@@ -156,9 +156,9 @@ private:
     T resourcesByAppNames(const W &names) const;
 
     template<typename T>
-    T resourcesByComponents(const QList<AppStream::Component> &names) const;
+    T resourcesByComponents(const AppStream::ComponentBox &names) const;
 
-    QVector<StreamResult> resultsByComponents(const QList<AppStream::Component> &names) const;
+    QVector<StreamResult> resultsByComponents(const AppStream::ComponentBox &names) const;
 
     void runWhenInitialized(const std::function<void()> &f, QObject *stream);
 

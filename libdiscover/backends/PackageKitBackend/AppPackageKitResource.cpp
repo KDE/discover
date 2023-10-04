@@ -41,7 +41,7 @@ QString AppPackageKitResource::name() const
             if (components.isEmpty())
                 qWarning() << "couldn't find" << m_appdata.extends() << "which is supposedly extended by" << m_appdata.id();
             else
-                m_name = components.constFirst().name() + QLatin1String(" - ") + m_appdata.name();
+                m_name = components.indexSafe(0)->name() + QLatin1String(" - ") + m_appdata.name();
         }
 
         if (m_name.isEmpty())
