@@ -13,6 +13,7 @@
 
 #include <Transaction/AddonList.h>
 
+#include <AppStreamQt/developer.h>
 #include <AppStreamQt/icon.h>
 #include <AppStreamQt/screenshot.h>
 #include <AppStreamQt/utils.h>
@@ -689,7 +690,7 @@ QString FlatpakResource::sourceIcon() const
 
 QString FlatpakResource::author() const
 {
-    QString name = m_appdata.developerName();
+    QString name = m_appdata.developer().name();
 
     if (name.isEmpty()) {
         name = m_appdata.projectGroup();

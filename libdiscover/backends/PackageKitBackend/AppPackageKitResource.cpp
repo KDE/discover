@@ -6,6 +6,7 @@
 
 #include "AppPackageKitResource.h"
 #include "utils.h"
+#include <AppStreamQt/developer.h>
 #include <AppStreamQt/icon.h>
 #include <AppStreamQt/image.h>
 #include <AppStreamQt/release.h>
@@ -252,7 +253,7 @@ QDate AppPackageKitResource::releaseDate() const
 
 QString AppPackageKitResource::author() const
 {
-    QString name = m_appdata.developerName();
+    QString name = m_appdata.developer().name();
 
     if (name.isEmpty()) {
         name = m_appdata.projectGroup();
