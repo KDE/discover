@@ -26,6 +26,7 @@
   <name xml:lang="hu">Discover</name>
   <name xml:lang="ia">Discoperi</name>
   <name xml:lang="id">Discover</name>
+  <name xml:lang="is">Discover</name>
   <name xml:lang="it">Discover</name>
   <name xml:lang="ka">Discover</name>
   <name xml:lang="ko">Discover</name>
@@ -78,6 +79,7 @@
   <summary xml:lang="hu">Discover</summary>
   <summary xml:lang="ia">Discoperi</summary>
   <summary xml:lang="id">Discover</summary>
+  <summary xml:lang="is">Discover</summary>
   <summary xml:lang="it">Discover</summary>
   <summary xml:lang="ka">Discover</summary>
   <summary xml:lang="ko">Discover</summary>
@@ -130,6 +132,7 @@
     <p xml:lang="hu">A Discover segít az alkalmazások, játékok és eszközök keresésében és telepítésében. Kereshet vagy böngészhet kategóriák szerint, nézhet képernyőképeket és olvashat értékeléseket, hogy könnyen megtalálja a tökéletes alkalmazást.</p>
     <p xml:lang="ia">Discover adjuta te a trovar e installar aplicationes, jocos, e instrumentos. Tu pote cercar e navigar per categoria, e reguardar a instantanee de schermo e lege reviews per adjutar te a colliger le perfect app.</p>
     <p xml:lang="id">Discover membantu kamu untuk menemukan dan menginstal aplikasi, permainan, dan peralatan. Kamu bisa mencari atau menelusuri berdasarkan kategori, dan melihat screenshot dan membaca ulasan untuk membantu kamu memilih aplikasi yang sempurna.</p>
+    <p xml:lang="is">Discover auðveldar þér að finna og setja upp forrit, leiki og verkfæri. Þú getur leitað eða skoðað eftir flokkum, skoðað skjáskot og lesið umsagnir sem auðvelda þér að velja forritið sem hentar þér.</p>
     <p xml:lang="it">Discover ti aiuta a trovare e installare applicazioni, giochi e strumenti. Puoi cercare o sfogliare per categoria, vedere schermate e leggere recensioni per aiutarti a scegliere l'applicazione perfetta.</p>
     <p xml:lang="ka">Discover გეხმარებად იპოვოთ და დააყენოთ აპლიკაციები, თამაშები და საჭირო პგორამები. შეგიძლიათ მოძებნოთ კატეგორიის მიხედვით, დაათვალიეროთ ეკრანის ანაბეჭდები და წაიკითხოთ კომენტარები, რათა თქვენთვის იდეალური აპი აარჩიოთ.</p>
     <p xml:lang="ko">Discover를 사용하여 앱, 게임, 도구를 찾고 설치할 수 있습니다. 분류별로 검색 및 탐색하고, 스크린샷과 리뷰를 참조하여 꼭 필요한 앱을 찾으십시오.</p>
@@ -175,6 +178,7 @@
     <p xml:lang="hu">A Discoverrel egy helyen kezelheti több forrásból származó szoftvereit, legyen szó akár az operációs rendszer tárolóiról, a Flatpak tárolókról a Snap boltról vagy akár a store.kde.org-ról származó AppImage-ekről.</p>
     <p xml:lang="ia">Con Discover, tu pote gerer software ab multiple fontes, includente le repositorio de software de tusystema operative. repos de Flatpak, le magazin de Snap, o etiam Appimages ex store.kde.org.</p>
     <p xml:lang="id">Dengan Discover, kamu bisa mengelola perangkat lunak dari banyak sumber, termasuk repositori perangkat lunak operasi sistemmu, repo Flatpak, Snap store, atau bahkan AppImages dari store.kde.org.</p>
+    <p xml:lang="is">Með Discover geturðu haft umsjón með hugbúnaði frá mörgum stöðum, þ.á m. hugbúnaðarsafni stýrikerfisins þíns, Flatpak-söfnum, Snap-versluninni eða forritum á AppImage-sniði frá store.kde.org.</p>
     <p xml:lang="it">Con Discover, puoi gestire i programmi da diverse fonti, inclusi i depositi del software del tuo sistema operativo, depositi Flatpak, lo Snap Store o anche AppImages da store.kde.org.</p>
     <p xml:lang="ka">Discover -თან ერთად შეგიძლიათ მართოთ პროგრამები მრავალი წყაროდან, თქვენი ოპერაციული სისტემის პროგრამების რეპოზიტორიის, Flatpak-ის რეპოზიტორიის, Snap Store-ის და store.kde.org-დან გადმოწერილი AppImage-ების ჩათვლით.</p>
     <p xml:lang="ko">Discover를 사용하면 여러 원본에서 제공되는 소프트웨어를 관리할 수 있습니다. 운영 체제 소프트웨어 저장소, Flatpak 저장소, Snap 스토어, store.kde.org의 AppImage를 한 곳에서 관리할 수 있습니다.</p>
@@ -220,6 +224,7 @@
     <p xml:lang="hu">Végül, de nem utolsósorban a Discoverrel kereshet, telepíthet és kezelhet kiegészítőket a Plasmához és a kedvenc KDE alkalmazásaihoz!</p>
     <p xml:lang="ia">Al fin, Discover anque te permitte trovar, installar, e gerer add-ons per Plasma e omne tu favorite apps de KDE!</p>
     <p xml:lang="id">Terakhir, Discover juga memungkinkan kamu untuk menemukan, menginstal, dan mengelola pernik untuk Plasma dan semua aplikasi KDE favoritmu.</p>
+    <p xml:lang="is">Discover getur einnig hjálpað þér að finna, setja upp og hafa umsjón með viðbótum fyrir Plasma og öllum uppáhalds KDE-forritunum þínum.</p>
     <p xml:lang="it">Infine, Discover ti consente di trovare, installare e gestire componenti aggiuntivi di Plasma e tutte le tue applicazioni preferite di KDE!</p>
     <p xml:lang="ka">და ბოლოს, Discover -ი ასევე საშუალებას გაძლევთ მოძებნოთ, დააყენოთ და მართოთ Plasma-ის და ყველა თქვენი საყვარელი KDE-ის აპების დამატებები!</p>
     <p xml:lang="ko">또한 Discover를 사용하면 Plasma와 KDE 앱의 추가 기능을 찾고, 설치하고, 관리할 수 있습니다!</p>
@@ -270,6 +275,7 @@
       <caption xml:lang="hu">Plasma Discover</caption>
       <caption xml:lang="ia">Plasma Discover (Discoperi de Plasma)</caption>
       <caption xml:lang="id">Discover Plasma</caption>
+      <caption xml:lang="is">Plasma Discover</caption>
       <caption xml:lang="it">Plasma Discover</caption>
       <caption xml:lang="ka">Plasma Discover</caption>
       <caption xml:lang="ko">Plasma Discover</caption>
