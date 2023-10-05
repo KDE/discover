@@ -390,17 +390,19 @@ void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFla
     connect(m_transaction.data(), &PackageKit::Transaction::eulaRequired, this, &PackageKitUpdater::eulaRequired);
     connect(m_transaction.data(), &PackageKit::Transaction::repoSignatureRequired, this, &PackageKitUpdater::repoSignatureRequired);
     connect(m_transaction.data(), &PackageKit::Transaction::allowCancelChanged, this, &PackageKitUpdater::cancellableChanged);
-    connect(m_transaction.data(), &PackageKit::Transaction::percentageChanged, this, &PackageKitUpdater::percentageChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::itemProgress, this, &PackageKitUpdater::itemProgress);
     connect(m_transaction.data(), &PackageKit::Transaction::speedChanged, this, [this] {
         Q_EMIT downloadSpeedChanged(downloadSpeed());
     });
-    if (m_toUpgrade.contains(m_upgrade)) {
-        connect(m_transaction, &PackageKit::Transaction::percentageChanged, this, [this] {
-            if (m_transaction->status() == PackageKit::Transaction::StatusDownload) {
-                Q_EMIT resourceProgressed(m_upgrade, m_transaction->percentage(), Downloading);
-            }
-        });
+    if (!(flags & PackageKit::Transaction::TransactionFlagSimulate)) {
+        connect(m_transaction.data(), &PackageKit::Transaction::percentageChanged, this, &PackageKitUpdater::percentageChanged);
+        if (m_toUpgrade.contains(m_upgrade)) {
+            connect(m_transaction, &PackageKit::Transaction::percentageChanged, this, [this] {
+                if (m_transaction->status() == PackageKit::Transaction::StatusDownload) {
+                    Q_EMIT resourceProgressed(m_upgrade, m_transaction->percentage(), Downloading);
+                }
+            });
+        }
     }
 }
 
