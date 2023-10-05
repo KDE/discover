@@ -484,7 +484,7 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
             g_autoptr(GBytes) metadata = flatpak_installed_ref_load_appdata(ref, m_cancellable, nullptr);
             if (metadata) {
                 auto meta = metadataFromBytes(metadata, m_cancellable);
-                comps = meta->components();
+                comps = meta->components().toList();
             }
         }
 
@@ -631,9 +631,8 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
             return;
         }
 
-        const QList<AppStream::Component> components = metadata->components();
-        if (components.size()) {
-            asComponent = components.first();
+        if (std::optional<AppStream::Component> firstComponent = metadata->components().indexSafe(0); firstComponent.has_value()) {
+            asComponent = *firstComponent;
         } else {
             qWarning() << "Failed to parse appstream metadata";
             return;
