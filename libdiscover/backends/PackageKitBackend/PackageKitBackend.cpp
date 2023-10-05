@@ -972,12 +972,14 @@ void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
         const QString& upgradeVersion = release.version();
         m_updatesPackageId.clear();
         m_updater->setProgressing(true);
-        PackageKit::Transaction *transaction = PackageKit::Daemon::upgradeSystem(upgradeVersion, PackageKit::Transaction::UpgradeKind::UpgradeKindComplete, PackageKit::Transaction::TransactionFlagSimulate);
-        transaction->setHints(globalHints() << QStringLiteral("cache-age=86400" /* 24*60*60 */));
-        connect(transaction, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
-        connect(transaction, &PackageKit::Transaction::percentageChanged, this, &PackageKitBackend::fetchingUpdatesProgressChanged);
-        connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
-        connect(transaction, &PackageKit::Transaction::finished, this, [this, release] (PackageKit::Transaction::Exit e, uint x){
+        m_refresher = PackageKit::Daemon::upgradeSystem(upgradeVersion,
+                                                        PackageKit::Transaction::UpgradeKind::UpgradeKindComplete,
+                                                        PackageKit::Transaction::TransactionFlagSimulate);
+        m_refresher->setHints(globalHints() << QStringLiteral("cache-age=86400" /* 24*60*60 */));
+        connect(m_refresher, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
+        connect(m_refresher, &PackageKit::Transaction::percentageChanged, this, &PackageKitBackend::fetchingUpdatesProgressChanged);
+        connect(m_refresher, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
+        connect(m_refresher, &PackageKit::Transaction::finished, this, [this, release](PackageKit::Transaction::Exit e, uint x) {
             m_updater->setDistroUpgrade(release);
             getUpdatesFinished(e, x);
         });
