@@ -631,7 +631,10 @@ void PackageKitUpdater::cancellableChanged()
 
 void PackageKitUpdater::percentageChanged()
 {
-    const auto actualPercentage = percentageWithStatus(m_transaction->status(), m_transaction->percentage());
+    const int percentage = m_transaction->percentage();
+    if (percentage > 100)
+        return;
+    const auto actualPercentage = useOfflineUpdates() ? percentage : percentageWithStatus(m_transaction->status(), percentage);
     if (actualPercentage >= 0 && m_percentage != actualPercentage) {
         m_percentage = actualPercentage;
         Q_EMIT progressChanged(m_percentage);
