@@ -274,9 +274,6 @@ static bool loadAppStream(AppStream::Pool *appdata)
 void PackageKitBackend::reloadPackageList()
 {
     acquireFetching(true);
-    if (m_refresher) {
-        disconnect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
-    }
 
     m_appdata.reset(new AppStream::Pool);
 
