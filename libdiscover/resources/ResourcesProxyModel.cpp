@@ -227,7 +227,7 @@ void ResourcesProxyModel::addResources(const QVector<StreamResult> &_res)
 
     if (!m_sortByRelevancy)
         std::sort(res.begin(), res.end(), [this](auto res, auto res2) {
-            return lessThan(res, res2);
+            return orderedLessThan(res, res2);
         });
 
     sortedInsertion(res);
@@ -242,7 +242,7 @@ void ResourcesProxyModel::invalidateSorting()
     if (!m_sortByRelevancy) {
         beginResetModel();
         std::sort(m_displayedResources.begin(), m_displayedResources.end(), [this](auto res, auto res2) {
-            return lessThan(res, res2);
+            return orderedLessThan(res, res2);
         });
         endResetModel();
     }
@@ -373,6 +373,12 @@ bool ResourcesProxyModel::lessThan(const StreamResult &left, const StreamResult 
         return lessThan(left.resource, right.resource);
     }
     return left.sortScore < right.sortScore;
+}
+
+bool ResourcesProxyModel::orderedLessThan(const StreamResult &left, const StreamResult &right) const
+{
+    bool less = lessThan(left, right);
+    return m_sortOrder == Qt::AscendingOrder ? less : !less;
 }
 
 bool ResourcesProxyModel::lessThan(AbstractResource *leftPackage, AbstractResource *rightPackage) const
@@ -589,7 +595,7 @@ void ResourcesProxyModel::sortedInsertion(const QVector<StreamResult> &_res)
 
     for (auto result : std::as_const(resources)) {
         const auto finder = [this](StreamResult result, StreamResult res) {
-            return lessThan(result, res);
+            return orderedLessThan(result, res);
         };
         const auto it = std::upper_bound(m_displayedResources.constBegin(), m_displayedResources.constEnd(), result, finder);
         const auto newIdx = it == m_displayedResources.constEnd() ? m_displayedResources.count() : (it - m_displayedResources.constBegin());

@@ -124,6 +124,7 @@ public:
     }
 
     bool lessThan(const StreamResult &left, const StreamResult &right) const;
+    bool orderedLessThan(const StreamResult &left, const StreamResult &right) const;
     bool lessThan(AbstractResource *rl, AbstractResource *rr) const;
     Q_SCRIPTABLE void invalidateFilter();
     void invalidateSorting();
