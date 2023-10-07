@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-14 02:26+0000\n"
+"POT-Creation-Date: 2023-10-07 02:28+0000\n"
 "PO-Revision-Date: 2023-03-08 21:54+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -543,7 +543,7 @@ msgid "Local bundle"
 msgstr "Локален пакет"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1648
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:729
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:749
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Неправилен URL адрес на потока на приложението \"%1\""
@@ -1115,12 +1115,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Шрифтове"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:292
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:293
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Моля, уверете се, че Appstream е правилно настроен във вашата система"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:330
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:331
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1130,7 +1130,7 @@ msgstr ""
 "Поддръжката на вашата операционна система приключи на %1. Помислете за "
 "обновяване до поддържана версия."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:823
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:846
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Не може да се премахне \"%1\""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-14 02:26+0000\n"
+"POT-Creation-Date: 2023-10-07 02:28+0000\n"
 "PO-Revision-Date: 2023-05-26 07:30+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -546,7 +546,7 @@ msgid "Local bundle"
 msgstr "Bundel lokal"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1648
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:729
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:749
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Url appstream yang rusak '%1'"
@@ -1117,12 +1117,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Font"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:292
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:293
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Silakan pastikan Appstream telah disiapkan dengan benar pada sistemmu"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:330
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:331
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1132,7 +1132,7 @@ msgstr ""
 "Operasi sistemmu berakhir dukungan pada %1. Dianjurkan memutakhirkan ke "
 "versi yang didukung."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:823
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:846
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Tidak bisa menghapus '%1'"
