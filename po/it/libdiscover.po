@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-06 01:41+0000\n"
+"POT-Creation-Date: 2023-10-07 01:41+0000\n"
 "PO-Revision-Date: 2023-09-28 14:02+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -539,7 +539,7 @@ msgid "Local bundle"
 msgstr "Pacchetto locale"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:746
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:763
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL di appstream «%1» non corretto"
@@ -1136,12 +1136,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Caratteri"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:289
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:287
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Assicurati che Appstream sia configurato correttamente sul tuo sistema"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:329
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:327
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1151,12 +1151,12 @@ msgstr ""
 "Il tuo sistema operativo ha terminato il supporto il %1. Considera "
 "l'aggiornamento a una versione supportata."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:858
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:878
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Impossibile rimuovere «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:938
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1167,13 +1167,13 @@ msgstr ""
 "Per poter eseguire l'aggiornamento a questa nuova versione, assicurati di "
 "applicare tutti gli aggiornamenti disponibili e riavvia il sistema."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:947
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:967
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Aggiornamento a %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:968
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:990
 #, kde-format
 msgid "A new major version has been released"
 msgstr "È stata rilasciata una nuova versione principale"
@@ -2521,7 +2521,7 @@ msgstr "Verifica la tua connettività Internet"
 msgid "Refresh"
 msgstr "Aggiorna"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:720
+#: libdiscover/resources/ResourcesProxyModel.cpp:726
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

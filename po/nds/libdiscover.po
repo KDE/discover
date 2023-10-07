@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-06 01:41+0000\n"
+"POT-Creation-Date: 2023-10-07 01:41+0000\n"
 "PO-Revision-Date: 2014-07-06 22:08+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -607,7 +607,7 @@ msgid "Local bundle"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:746
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:763
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
@@ -1206,12 +1206,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Schriftoorden"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:289
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:287
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:329
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:327
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1219,12 +1219,12 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:858
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:878
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:938
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1232,7 +1232,7 @@ msgid ""
 "updates and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:947
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:967
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
@@ -1240,7 +1240,7 @@ msgstr ""
 msgid "Upgrade to %1 %2"
 msgstr "Opgraderen"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:968
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:990
 #, kde-format
 msgid "A new major version has been released"
 msgstr ""
@@ -2745,7 +2745,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:720
+#: libdiscover/resources/ResourcesProxyModel.cpp:726
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
