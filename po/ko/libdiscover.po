@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-07 01:41+0000\n"
-"PO-Revision-Date: 2023-07-22 22:59+0200\n"
+"PO-Revision-Date: 2023-10-08 22:35+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -631,15 +631,14 @@ msgid "Can access the internet"
 msgstr "인터넷에 접근할 수 있음"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:819
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "시스템 버스 접근"
+msgstr "사운드 시스템 접근"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:820
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "오디오를 재생할 수 있음"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:824
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
@@ -648,16 +647,11 @@ msgid "Session Bus Access"
 msgstr "세션 버스 접근"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
-msgstr ""
-"다음 통신 프로토콜을 사용하여 같은 데스크톱 세션에서 실행 중인 다른 앱이나 프"
-"로세스와 통신할 수 있음: %1"
+msgstr "이 사용자 계정으로 실행 중인 다른 앱이나 프로세스와 통신할 수 있음"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:976
@@ -666,14 +660,9 @@ msgid "System Bus Access"
 msgstr "시스템 버스 접근"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:831
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
-msgstr ""
-"다음 통신 프로토콜을 사용하여 같은 데스크톱 세션에서 실행 중인 다른 앱이나 프"
-"로세스와 통신할 수 있음: %1"
+msgstr "시스템의 모든 다른 앱이나 프로세스와 통신할 수 있음"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:836
 #, kde-format

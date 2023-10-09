@@ -160,6 +160,3 @@ msgstr ""
 #, kde-format
 msgid "Click to restart the device"
 msgstr ""
-
-#~ msgid "New version: %1"
-#~ msgstr "新しいバージョン : %1"

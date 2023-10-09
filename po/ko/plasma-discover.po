@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-23 01:45+0000\n"
-"PO-Revision-Date: 2023-08-06 19:37+0200\n"
+"PO-Revision-Date: 2023-10-08 22:37+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -24,6 +24,8 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"%1에서 Discover를 사용하여 앱을 설치할 수 있도록 설정되지 않았음(앱 추가 기능"
+"만 사용 가능)"
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -33,11 +35,11 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"Discover를 통해서 앱을 관리하려면 <interface>설정</interface> 페이지의 "
+"<interface>존재하지 않는 백엔드</interface>에서 선호하는 모듈을 설치하십시오."
 
 #: discover/DiscoverObject.cpp:166
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of the user's distro/OS"
-#| msgid "Report Issue to %1"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "%1에 이 문제 보고"
@@ -55,6 +57,12 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"Discover를 통해서 앱을 관리하려면 <command>pacman</command> 패키지 관리자를 "
+"통해서 <link url='https://wiki.archlinux.org/title/"
+"Flatpak#Installation'>Flatpak</link>이나 <link url='https://wiki.archlinux."
+"org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</link>을 설"
+"치하십시오.<nl/><nl/><link url='https://archlinux.org/packages/extra/x86_64/"
+"discover/'>%1의 Discover 패키지 정보</link> 탐색"
 
 #: discover/DiscoverObject.cpp:266
 #, kde-format

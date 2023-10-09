@@ -2528,9 +2528,3 @@ msgstr "システムソフトウェア"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "アドオン"
-
-#~ msgid "Error while fetching reviews: %1"
-#~ msgstr "レビュー取得中にエラーが発生しました: %1"
-
-#~ msgid "Packages to remove"
-#~ msgstr "削除するパッケージ"

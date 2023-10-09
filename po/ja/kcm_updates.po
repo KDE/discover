@@ -106,20 +106,3 @@ msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"
 msgid "Immediately"
 msgstr ""
-
-#~ msgid "Use offline updates:"
-#~ msgstr "オフライン更新を使用:"
-
-#~ msgid ""
-#~ "Offline updates maximize system stability by applying changes while "
-#~ "restarting the system. Using this update mode is strongly recommended."
-#~ msgstr ""
-#~ "オフライン更新を有効にすると、変更はシステムの再起動時に適用されるようにな"
-#~ "り、安定性が最大化されます。この更新モードを使用することを強くおすすめしま"
-#~ "す。"
-
-#~ msgid "Software Update"
-#~ msgstr "ソフトウェア更新"
-
-#~ msgid "Configure software update settings"
-#~ msgstr "ソフトウェア更新を設定"
