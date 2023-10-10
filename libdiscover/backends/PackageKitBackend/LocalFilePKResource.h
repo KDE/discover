@@ -17,10 +17,6 @@ public:
     QString name() const override;
     QString comment() override;
 
-    AbstractResource::State state() override
-    {
-        return m_state;
-    }
     quint64 size() override;
     QString origin() const override;
     void fetchDetails() override;
@@ -34,8 +30,7 @@ public:
         return origin();
     }
 
-    void setDetails(const PackageKit::Details &details);
-    void setState(AbstractResource::State state);
+    void resolve(const PackageKit::Details &inDetails);
 
 private:
     AbstractResource::State m_state = AbstractResource::Broken;

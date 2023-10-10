@@ -42,6 +42,11 @@ static QStringList packageIds(const QVector<AbstractResource *> &res, std::funct
     return ret;
 }
 
+bool PKTransaction::isLocal() const
+{
+    return m_apps.size() == 1 && qobject_cast<LocalFilePKResource *>(m_apps.at(0));
+}
+
 void PKTransaction::start()
 {
     trigger(PackageKit::Transaction::TransactionFlagSimulate);
@@ -53,15 +58,9 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
         m_trans->deleteLater();
     m_newPackageStates.clear();
 
-    if (m_apps.size() == 1 && qobject_cast<LocalFilePKResource *>(m_apps.at(0))) {
+    if (isLocal() && role() == Transaction::InstallRole) {
         auto app = qobject_cast<LocalFilePKResource *>(m_apps.at(0));
         m_trans = PackageKit::Daemon::installFile(QUrl(app->packageName()).toLocalFile(), flags);
-        connect(m_trans.data(), &PackageKit::Transaction::finished, this, [this, app](PackageKit::Transaction::Exit status) {
-            const bool simulate = m_trans->transactionFlags() & PackageKit::Transaction::TransactionFlagSimulate;
-            if (!simulate && status == PackageKit::Transaction::ExitSuccess) {
-                app->setState(AbstractResource::Installed);
-            }
-        });
     } else
         switch (role()) {
         case Transaction::ChangeAddonsRole:
@@ -217,6 +216,8 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     }
 
     this->submitResolve();
+    if (isLocal())
+        qobject_cast<LocalFilePKResource *>(m_apps.at(0))->resolve({});
     if (failed)
         setStatus(Transaction::DoneWithErrorStatus);
     else if (cancel)
@@ -248,7 +249,7 @@ void PKTransaction::proceed()
     if (!m_proceedFunctions.isEmpty()) {
         processProceedFunction();
     } else {
-        if (m_apps.size() == 1 && qobject_cast<LocalFilePKResource *>(m_apps.at(0))) {
+        if (isLocal()) {
             trigger(PackageKit::Transaction::TransactionFlagNone);
         } else {
             trigger(PackageKit::Transaction::TransactionFlagOnlyTrusted);

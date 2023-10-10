@@ -45,6 +45,7 @@ private:
                                const QString &keyFingerprint,
                                const QString &keyTimestamp,
                                PackageKit::Transaction::SigType type);
+    bool isLocal() const;
 
     void trigger(PackageKit::Transaction::TransactionFlags flags);
     QPointer<PackageKit::Transaction> m_trans;
