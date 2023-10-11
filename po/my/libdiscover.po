@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-07 01:41+0000\n"
+"POT-Creation-Date: 2023-10-11 02:07+0000\n"
 "PO-Revision-Date: 2021-09-27 23:44+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -2044,7 +2044,7 @@ msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:575
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2053,12 +2053,12 @@ msgid ""
 "your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:582
 #, kde-format
 msgid "Confirm Changes"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:583
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2067,13 +2067,13 @@ msgstr ""
 "အောက်ပါပတ်ကေ့ချ်များကို အပ်ဒိတ် <ul><li>%2</li></ul> တင်ရန် ဖယ်ရှားမည်-<ul><li>%1</li></"
 "ul><br/>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:702
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:707
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:710
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:317
 #, kde-format
 msgid ""
@@ -2083,13 +2083,13 @@ msgstr ""
 "မီဒီယာပြောင်းလဲမှုအမျိုးအစား '%1' ကိုတောင်းဆိုထားသည်။\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:743
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:748
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:294
 #, kde-format
 msgid "Accept EULA"
 msgstr "အီးယူအယ်အေ လက်ခံမည်"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:749
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid ""
@@ -2099,13 +2099,13 @@ msgstr ""
 "ပတ်ကေ့ချ် %1 နှင့် ၎င်း၏ရောင်းချသူ %2 က သင်ကိုလိုင်စင်အားလက်ခံရန် လိုအပ်သည်။\n"
 "%3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:861
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:866
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:334
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%2 တွင် %1 အတွက် လက်မှတ်ပျောက်နေသည်"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:862
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:867
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid ""
@@ -2402,6 +2402,11 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+msgstr ""
+
+#: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
+#, kde-format
+msgid "SteamOS"
 msgstr ""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113

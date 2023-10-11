@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-07 01:41+0000\n"
+"POT-Creation-Date: 2023-10-11 02:07+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -2188,7 +2188,7 @@ msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:575
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2197,12 +2197,12 @@ msgid ""
 "your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:582
 #, kde-format
 msgid "Confirm Changes"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:583
 #, fuzzy, kde-format
 #| msgid ""
 #| "The following packages will be removed by the update:\n"
@@ -2214,13 +2214,13 @@ msgstr ""
 "Naredni paketi će biti uklonjeni po ažuriranju:\n"
 "%1<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:702
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:707
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:710
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:317
 #, kde-format
 msgid ""
@@ -2230,13 +2230,13 @@ msgstr ""
 "Potrebna izmena medijuma tipa „%1“.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:743
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:748
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:294
 #, kde-format
 msgid "Accept EULA"
 msgstr "Prihvati EULu"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:749
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid ""
@@ -2246,13 +2246,13 @@ msgstr ""
 "Paket %1 i njegov izdavač %2 traže da prihvatite sledeću licencu:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:861
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:866
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:334
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Nedostaje potpis za %1 u %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:862
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:867
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid ""
@@ -2561,6 +2561,11 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+msgstr ""
+
+#: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
+#, kde-format
+msgid "SteamOS"
 msgstr ""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113

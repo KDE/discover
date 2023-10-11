@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-07 01:41+0000\n"
+"POT-Creation-Date: 2023-10-11 02:07+0000\n"
 "PO-Revision-Date: 2022-09-25 09:30+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -2108,7 +2108,7 @@ msgstr ""
 "Utrymmet räcker inte till för att utföra uppdateringen: bara %1 utrymme "
 "tillgängligt."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:573
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:575
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2121,14 +2121,14 @@ msgstr ""
 "ul><nl/>Om du anser att det är felaktigt, rapportera det gärna som ett fel "
 "till distributionens paketerare."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:580
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:582
 #, fuzzy, kde-format
 #| msgctxt "@info:status Package state"
 #| msgid "No Change"
 msgid "Confirm Changes"
 msgstr "Ingen ändring"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:583
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2137,13 +2137,13 @@ msgstr ""
 "Följande paket kommer att tas bort av uppdateringen:<ul><li>%1</li></ul>\n"
 "för att installera:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:702
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:707
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:710
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:317
 #, kde-format
 msgid ""
@@ -2153,13 +2153,13 @@ msgstr ""
 "Mediabyte av typ '%1' begärs.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:743
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:748
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:294
 #, kde-format
 msgid "Accept EULA"
 msgstr "Acceptera slutanvändarlicensavtal"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:749
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid ""
@@ -2169,13 +2169,13 @@ msgstr ""
 "Paketet %1 och dess leverantör %2 kräver att du accepterar deras licens:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:861
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:866
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:334
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Saknar signatur för %1 i %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:862
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:867
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid ""
@@ -2499,6 +2499,11 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+msgstr ""
+
+#: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
+#, kde-format
+msgid "SteamOS"
 msgstr ""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113

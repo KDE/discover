@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-09-16 10:05\n"
+"PO-Revision-Date: 2023-10-10 14:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -82,7 +82,7 @@ msgstr "不通知"
 #: kcm/ui/main.qml:119
 #, kde-format
 msgid "Apply system updates:"
-msgstr ""
+msgstr "应用系统更新："
 
 #: kcm/ui/main.qml:126
 #, kde-format
@@ -90,7 +90,7 @@ msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates after "
 "rebooting'"
 msgid "After rebooting"
-msgstr ""
+msgstr "重新开机之后应用"
 
 #: kcm/ui/main.qml:133
 #, kde-format
@@ -98,21 +98,11 @@ msgctxt ""
 "@label The thing being recommended is to use the 'apply updates when "
 "rebooting' setting"
 msgid "Recommended to maximize system stability"
-msgstr ""
+msgstr "建议设置为此项以提高系统稳定性"
 
 #: kcm/ui/main.qml:140
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"
 msgid "Immediately"
-msgstr ""
-
-#~ msgid "Use offline updates:"
-#~ msgstr "使用离线更新："
-
-#~ msgid ""
-#~ "Offline updates maximize system stability by applying changes while "
-#~ "restarting the system. Using this update mode is strongly recommended."
-#~ msgstr ""
-#~ "离线更新会留待重启系统时应用更改，这能够在最大程度上保证系统的稳定性。强烈"
-#~ "建议使用此更新模式。"
+msgstr "立即应用"

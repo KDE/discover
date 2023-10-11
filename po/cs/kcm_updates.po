@@ -104,13 +104,3 @@ msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"
 msgid "Immediately"
 msgstr ""
-
-#~ msgid "Use offline updates:"
-#~ msgstr "Použít aktualizace offline:"
-
-#~ msgid ""
-#~ "Offline updates maximize system stability by applying changes while "
-#~ "restarting the system. Using this update mode is strongly recommended."
-#~ msgstr ""
-#~ "Aktualizace offline zvyšují stabilitu systému tím, že provedou změny při "
-#~ "restartu systému. Použití tohoto způsobu aktualizace je silně doporučeno."
