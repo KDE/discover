@@ -16,6 +16,7 @@
 #include <resources/ResourcesProxyModel.h>
 #include <resources/ResourcesUpdatesModel.h>
 
+#include <QSignalSpy>
 #include <QTest>
 
 class UpdateDummyTest : public QObject

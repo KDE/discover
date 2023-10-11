@@ -9,7 +9,6 @@
 #include <ApplicationAddonsModel.h>
 #include <Category/CategoryModel.h>
 #include <QAbstractItemModelTester>
-#include <QTest>
 #include <ReviewsBackend/ReviewsModel.h>
 #include <ScreenshotsModel.h>
 #include <Transaction/TransactionModel.h>
@@ -19,6 +18,7 @@
 #include <resources/ResourcesProxyModel.h>
 #include <resources/ResourcesUpdatesModel.h>
 
+#include <QSignalSpy>
 #include <QTest>
 
 QTEST_MAIN(DummyTest)
