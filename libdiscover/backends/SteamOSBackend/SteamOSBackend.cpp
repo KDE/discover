@@ -150,8 +150,8 @@ void SteamOSBackend::checkForUpdatesFinished(QDBusPendingCallWatcher *call)
         } else {
             m_updateBuild = versions.keys().at(0);
             QVariantMap data = versions.value(m_updateBuild);
-            m_updateVersion = data.value("version").toString();
-            m_updateSize = data.value("estimated_size").toUInt();
+            m_updateVersion = data.value(QLatin1String("version")).toString();
+            m_updateSize = data.value(QLatin1String("estimated_size")).toUInt();
             qDebug() << "steamos-backend: Data values: " << data.values();
             hasUpdateChanged(true);
         }

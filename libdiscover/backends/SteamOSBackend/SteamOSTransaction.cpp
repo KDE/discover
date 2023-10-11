@@ -34,18 +34,18 @@ SteamOSTransaction::SteamOSTransaction(SteamOSResource *app, Transaction::Role r
                 auto changed = [&](const QString &property) {
                     return changed_properties.contains(property) || invalidated_properties.contains(property);
                 };
-                if (changed("ProgressPercentage")) {
+                if (changed(QLatin1String("ProgressPercentage"))) {
                     // Get percentage and pass on to gui
                     double percent = m_interface->progressPercentage();
                     qDebug() << "steamos-backend: Progress percentage: " << percent;
                     setProgress(qBound(0.0, percent, 100.0));
                 }
-                if (changed("EstimatedCompletionTime")) {
+                if (changed(QLatin1String("EstimatedCompletionTime"))) {
                     qulonglong timeRemaining = m_interface->estimatedCompletionTime();
                     qDebug() << "steamos-backend: Estimated completion time: " << timeRemaining;
                     setRemainingTime(timeRemaining);
                 }
-                if (changed("UpdateStatus")) {
+                if (changed(QLatin1String("UpdateStatus"))) {
                     refreshStatus();
                 }
             });

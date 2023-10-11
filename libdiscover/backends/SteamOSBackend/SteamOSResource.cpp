@@ -5,6 +5,7 @@
  */
 
 #include "SteamOSResource.h"
+#include <KLocalizedString>
 #include <QDesktopServices>
 #include <QStringList>
 #include <QTimer>
@@ -12,11 +13,11 @@
 
 SteamOSResource::SteamOSResource(const QString &version, const QString &build, quint64 size, const QString &currentVersion, AbstractResourcesBackend *parent)
     : AbstractResource(parent)
-    , m_name("SteamOS")
+    , m_name(i18n("SteamOS"))
     , m_build(build)
     , m_version(version)
     , m_currentVersion(currentVersion)
-    , m_appstreamId("steamos." + m_build)
+    , m_appstreamId(QLatin1String("steamos.") + m_build)
     , m_state(State::Upgradeable)
     , m_addons()
     , m_type(AbstractResource::Technical)
@@ -180,7 +181,7 @@ void SteamOSResource::setVersion(const QString &version)
 void SteamOSResource::setBuild(const QString &build)
 {
     m_build = build;
-    m_appstreamId = "steamos." + m_build;
+    m_appstreamId = QLatin1String("steamos.") + m_build;
 }
 
 QString SteamOSResource::getBuild() const
