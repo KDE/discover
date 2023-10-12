@@ -6,14 +6,18 @@
 
 import QtQuick 2.5
 import QtQuick.Controls 2.5 as QQC2
+import QtQuick.Layouts
 
 import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami.delegates as KD
 
-Kirigami.BasicListItem {
+QQC2.ItemDelegate {
     id: item
 
-    separatorVisible: false
-    visible: action.enabled
+    Layout.fillWidth: true
+
+    highlighted: checked
+    visible: enabled
 
     Keys.onEnterPressed: trigger()
     Keys.onReturnPressed: trigger()
@@ -27,10 +31,34 @@ Kirigami.BasicListItem {
         }
     }
 
+    property string subtitle
+    property string stateIconName
+
+    contentItem: RowLayout {
+        spacing: Kirigami.Units.largeSpacing
+        KD.IconTitleSubtitle {
+            Layout.fillWidth: true
+            icon: icon.fromControlsIcon(item.icon)
+            title: item.text
+            subtitle: item.subtitle
+            selected: item.highlighted
+            font: item.font
+        }
+        Kirigami.Icon {
+            Layout.fillHeight: true
+            visible: item.stateIconName.length > 0
+            source: item.stateIconName
+            implicitWidth: Kirigami.Units.iconSizes.sizeForLabels
+            implicitHeight: Kirigami.Units.iconSizes.sizeForLabels
+        }
+    }
+
     Kirigami.MnemonicData.enabled: item.enabled && item.visible
     Kirigami.MnemonicData.controlType: Kirigami.MnemonicData.MenuItem
     Kirigami.MnemonicData.label: action.text
-    label: Kirigami.MnemonicData.richTextLabel
+
+    // Note changing text here does not affect the action.text
+    text: Kirigami.MnemonicData.richTextLabel
 
     QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
     QQC2.ToolTip.visible: hovered && p0.nativeText.length > 0

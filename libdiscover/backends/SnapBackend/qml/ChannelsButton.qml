@@ -8,6 +8,7 @@ import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.1
 import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami.delegates as KD
 
 Button {
     id: root
@@ -27,14 +28,26 @@ Button {
             id: view
 
             model: resource.channels(root).channels
-            delegate: Kirigami.BasicListItem {
+            delegate: ItemDelegate {
+                id: delegate
                 readonly property bool current: resource.channel === modelData.name
-                label: i18nd("libdiscover", "%1 - %2", modelData.name, modelData.version)
+                text: i18nd("libdiscover", "%1 - %2", modelData.name, modelData.version)
 
-                trailing: Button {
-                    text: i18nd("libdiscover", "Switch")
-                    enabled: !parent.current
-                    onClicked: resource.channel = modelData.name
+                contentItem: RowLayout {
+                    spacing: Kirigami.Units.smallSpacing
+                    KD.IconTitleSubtitle {
+                        Layout.fillWidth: true
+                        icon: icon.fromControlsIcon(delegate.icon)
+                        title: delegate.text
+                        selected: delegate.highlighted
+                        font: delegate.font
+                    }
+
+                    Button {
+                        text: i18nd("libdiscover", "Switch")
+                        enabled: !delegate.current
+                        onClicked: resource.channel = modelData.name
+                    }
                 }
             }
         }

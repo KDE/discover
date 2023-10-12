@@ -10,6 +10,7 @@ import QtQuick.Layouts 1.12
 import QtQml.Models 2.15
 import org.kde.kirigami 2.14 as Kirigami
 import org.kde.kcmutils as KCMUtils
+import org.kde.kirigami.delegates as KD
 
 ColumnLayout {
     visible: list.model.rowCount() > 0
@@ -28,12 +29,11 @@ ColumnLayout {
         id: list
         model: resource.permissionsModel()
 
-        delegate: Kirigami.BasicListItem {
+        delegate: KD.SubtitleDelegate {
             Layout.fillWidth: true
             text: model.brief
             subtitle: model.description
             icon.name: model.icon
-            subtitleItem.wrapMode: Text.WordWrap
 
             // so that it gets neither hover nor pressed appearance when it's not interactive
             hoverEnabled: resource.isInstalled

@@ -853,10 +853,7 @@ DiscoverPage {
 
                 model: appInfo.application.licenses
 
-                delegate: Kirigami.BasicListItem {
-                    activeBackgroundColor: "transparent"
-                    activeTextColor: Kirigami.Theme.textColor
-                    separatorVisible: false
+                delegate: ItemDelegate {
                     contentItem: Kirigami.UrlButton {
                         enabled: url !== ""
                         text: modelData.name

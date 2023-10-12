@@ -9,6 +9,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.12
 import QtQml.Models 2.15
 import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami.delegates as KD
 
 ColumnLayout {
     Kirigami.Heading {
@@ -19,12 +20,11 @@ ColumnLayout {
         wrapMode: Text.Wrap
     }
 
-    Kirigami.BasicListItem {
+    KD.SubtitleDelegate {
         Layout.fillWidth: true
         text: i18nd("libdiscover","Full Access")
         subtitle: i18nd("libdiscover", "Can access everything on the system")
         icon.name: "security-medium"
-        subtitleItem.wrapMode: Text.WordWrap
 
         // so that it gets neither hover nor pressed appearance
         hoverEnabled: false

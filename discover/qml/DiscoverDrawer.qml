@@ -123,13 +123,7 @@ Kirigami.GlobalDrawer {
             objectName: "updateButton"
             action: updateAction
             visible: drawer.wideScreen
-
-            trailing: Kirigami.Icon {
-                visible: ResourcesModel.updatesCount > 0
-                width: Kirigami.Units.iconSizes.sizeForLabels
-                height: Kirigami.Units.iconSizes.sizeForLabels
-                source: "emblem-important"
-            }
+            stateIconName: ResourcesModel.updatesCount > 0 ? "emblem-important" : ""
 
             // Disable down navigation on the last item so we don't escape the
             // actual list.

@@ -6,6 +6,7 @@ import org.kde.discover.app 1.0
 import org.kde.kirigami 2.14 as Kirigami
 import "navigation.js" as Navigation
 import org.kde.kcmutils as KCMUtils
+import org.kde.kirigami.delegates as KD
 
 DiscoverPage {
     id: page
@@ -307,13 +308,22 @@ DiscoverPage {
                     filterMinimumState: false
                     stateFilter: AbstractResource.None
                 }
-                delegate: Kirigami.BasicListItem {
-                    supportsMouseEvents: false
-                    label: name
-                    icon: model.icon
-                    subtitle: model.comment
-                    trailing: InstallApplicationButton {
-                        application: model.application
+                delegate: ItemDelegate {
+                    Layout.fillWidth: true
+                    hoverEnabled: false
+                    down: false
+
+                    contentItem: RowLayout {
+                        spacing: Kirigami.Units.smallSpacing
+                        KD.IconTitleSubtitle {
+                            title: name
+                            icon.source: model.icon
+                            subtitle: model.comment
+                            Layout.fillWidth: true
+                        }
+                        InstallApplicationButton {
+                            application: model.application
+                        }
                     }
                 }
             }

@@ -7,6 +7,7 @@
 import QtQuick 2.8
 import QtQuick.Controls 2.1
 import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami.delegates as KD
 
 Kirigami.LinkButton {
     text: i18nd("libdiscover", "Show Dependencies…")
@@ -46,14 +47,15 @@ Kirigami.LinkButton {
                 height: Kirigami.Units.fontMetrics.xHeight * 4
                 label: section
             }
-            delegate: Kirigami.BasicListItem {
+            delegate: KD.SubtitleDelegate {
                 width: view.width
                 text: model.packageName
                 subtitle: model.packageDescription
+
                 // No need to offer a hover/selection effect since these list
                 // items are non-interactive and non-selectable
-                activeBackgroundColor: "transparent"
-                activeTextColor: Kirigami.Theme.textColor
+                hoverEnabled: false
+                down: false
             }
         }
     }
