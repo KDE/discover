@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:07+0000\n"
+"POT-Creation-Date: 2023-10-12 01:42+0000\n"
 "PO-Revision-Date: 2023-03-15 19:07+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -2155,7 +2155,7 @@ msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:317
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:318
 #, kde-format
 msgid ""
 "Media Change of type '%1' is requested.\n"
@@ -2165,13 +2165,13 @@ msgstr ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:748
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:294
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid "Accept EULA"
 msgstr "Prijať EULA"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:749
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:296
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -2181,13 +2181,13 @@ msgstr ""
 " %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:866
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:334
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Chýba podpis balíka %1 v repozitári %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:867
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:336
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2206,7 +2206,7 @@ msgstr ""
 "Otlačok: %4\n"
 "Časová značka: %4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:195
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:194
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
@@ -2219,12 +2219,12 @@ msgstr ""
 "myslíte, že ide o chybu, nahláste to prosím ako chybu baličom vašej "
 "distribúcie."
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:208
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:207
 #, kde-format
 msgid "Confirm package removal"
 msgstr "Potvrdenie odstránenia balíka"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:209
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:208
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"

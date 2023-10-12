@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-11 02:07+0000\n"
-"PO-Revision-Date: 2023-09-28 07:45+0100\n"
+"POT-Creation-Date: 2023-10-12 01:42+0000\n"
+"PO-Revision-Date: 2023-10-11 20:29+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -2116,7 +2116,7 @@ msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:317
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:318
 #, kde-format
 msgid ""
 "Media Change of type '%1' is requested.\n"
@@ -2126,13 +2126,13 @@ msgstr ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:748
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:294
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid "Accept EULA"
 msgstr "Akcepti EULA"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:749
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:296
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -2142,13 +2142,13 @@ msgstr ""
 " %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:866
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:334
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Mankas subskribo por %1 en %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:867
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:336
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2167,7 +2167,7 @@ msgstr ""
 "Fingrospuro: %4\n"
 "Tempindiko: %4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:195
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:194
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
@@ -2180,12 +2180,12 @@ msgstr ""
 ">Se vi kredas, ke tio estas eraro, bonvolu raporti ĝin kiel cimon al la "
 "pakistoj de via distribuo."
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:208
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:207
 #, kde-format
 msgid "Confirm package removal"
 msgstr "Konfirmi forigon de pakaĵo"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:209
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:208
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"
@@ -2467,7 +2467,7 @@ msgstr "SteamOS: Ne eblas pridemandi atomupd por SteamOS-Ĝisdatigoj..."
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113
 #, kde-format
@@ -2608,9 +2608,3 @@ msgstr "Sistema Programaro"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Aldonaĵoj"
-
-#~ msgid "Access is granted to the entire Session Bus"
-#~ msgstr "Aliro estas donita al la tuta Sesiobuso"
-
-#~ msgid "Access is granted to the entire System Bus"
-#~ msgstr "Aliro estas donita al la tuta Sistembuso"
