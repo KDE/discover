@@ -17,7 +17,6 @@ Kirigami.GlobalDrawer {
 
     property bool wideScreen: false
     property string currentSearchText
-    readonly property real minimumHeight: header.implicitHeight + content.height + footer.implicitHeight
 
     function suggestSearchText(text) {
         if (searchField.visible) {
