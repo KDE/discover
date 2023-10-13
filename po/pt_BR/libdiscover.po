@@ -6,30 +6,32 @@
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
 # Marcus Gama <marcus.gama@gmail.com>, 2011, 2012, 2013.
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2012, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2023 Geraldo Simiao <geraldosimiao@fedoraproject.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-12 01:42+0000\n"
-"PO-Revision-Date: 2023-09-18 11:47-0300\n"
-"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
+"PO-Revision-Date: 2023-10-12 16:48-0300\n"
+"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "André Marcelo Alvarenga, Luiz Fernando Ranghetti"
+msgstr "André Marcelo Alvarenga, Luiz Fernando Ranghetti, Geraldo Simião"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "alvarenga@kde.org, elchevive@opensuse.org"
+msgstr ""
+"alvarenga@kde.org, elchevive@opensuse.org, geraldosimiao@fedoraproject.org"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:103
 #, kde-format
@@ -635,15 +637,14 @@ msgid "Can access the internet"
 msgstr "Pode acessar a Internet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:819
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Acesso ao Bus do sistema"
+msgstr "Acesso ao som do sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:820
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Permite reproduzir arquivo de audio"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:824
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
@@ -652,16 +653,13 @@ msgid "Session Bus Access"
 msgstr "Acesso ao Bus da sessão"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Pode se comunicar com outros aplicativos e processos na mesma sessão da área "
-"de trabalho usando os seguintes protocolos de comunicação: %1"
+"Pode se comunicar com outros aplicativos e processos rodando nessa conta de "
+"usuário"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:976
@@ -670,14 +668,9 @@ msgid "System Bus Access"
 msgstr "Acesso ao Bus do sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:831
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
-msgstr ""
-"Pode se comunicar com outros aplicativos e processos na mesma sessão da área "
-"de trabalho usando os seguintes protocolos de comunicação: %1"
+msgstr "Pode se comunicar com outros aplicativos e processos do sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:836
 #, kde-format
@@ -720,6 +713,8 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Permite acesso ao serviço de criptografia GPG, geralmente usado para assinar "
+"e ler documentos assinados"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
 #, kde-format
@@ -734,12 +729,12 @@ msgstr "Pode integrar e comunicar com dispositivos Bluetooth"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
 msgid "Low-Level System Access"
-msgstr ""
+msgstr "Acesso de baixo nível ao sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Permite fazer chamadas de sistema de baixo nível (por exemplo ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
 #, kde-format
@@ -993,10 +988,9 @@ msgid "Delete settings and user data"
 msgstr "Excluir dados de usuário e configurações"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Excluir dados de usuário e configurações"
+msgstr "Excluindo dados de usuário e configurações..."
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
@@ -1177,6 +1171,9 @@ msgid ""
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
+"<b>Uma nova versão principal de %1 foi lançada.<b>\n"
+" Para poder atualizar para esta nova versão, certifique-se de aplicar todas "
+"as atualizações disponíveis e, em seguida, reiniciar o sistema."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:967
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
@@ -2249,11 +2246,15 @@ msgstr "Sistema operacional"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
+"rpm-ostree: Múltiplos deployments inicializados encontrados. Envie um "
+"relatório de erro."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
+"rpm-ostree: Nenhum deployment inicializado encontrado. Envie um relatório de "
+"erro."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
@@ -2288,6 +2289,8 @@ msgstr ""
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Referência remota ausente para operação de rebase. Envie um relatório de "
+"erro."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
 #, kde-format
@@ -2322,12 +2325,12 @@ msgstr "Pacotes excluídos:"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #, kde-format
 msgid "Currently booted version (pinned)"
-msgstr ""
+msgstr "Versão atualmente inicializada (fixada)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
 #, kde-format
 msgid "Currently booted version"
-msgstr ""
+msgstr "Versão atualmente inicializada"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
@@ -2337,12 +2340,12 @@ msgstr "Versão que será usada após o reinício"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr ""
+msgstr "Versão de fallback (fixada)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "Versão de fallback"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
@@ -2354,6 +2357,8 @@ msgstr "ostree remoto"
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Erro: Nenhuma interface DBus fornecida. Envie um "
+"relatório de erro."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
@@ -2361,12 +2366,16 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Erro: Não é possível iniciar uma transação para um "
+"recurso com um formato inválido. Envie um relatório de erro."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Erro: Não é possível realizar um rebase em uma "
+"referência vazia. Envie um relatório de erro."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
@@ -2374,20 +2383,25 @@ msgstr ""
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Erro: Operação desconhecida solicitada. Envie um "
+"relatório de erro."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
-msgstr "Transação do rpm-ostree atualmente em progresso:"
+msgstr ""
+"Transação do rpm-ostree falhou com:\n"
+" %1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Erro: Formato de recurso desconhecido. Envie um "
+"relatório de erro."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
@@ -2475,7 +2489,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113
 #, kde-format

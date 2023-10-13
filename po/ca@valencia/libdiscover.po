@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-12 01:42+0000\n"
-"PO-Revision-Date: 2023-09-28 12:29+0200\n"
+"PO-Revision-Date: 2023-10-11 09:39+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1065,8 +1065,8 @@ msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr ""
-"Hi ha massa peticions enviades al servidor pel dorsal %1. Torneu-ho a provar "
-"en uns quants minuts."
+"Hi ha massa peticions enviades cap al servidor pel dorsal %1. Torneu-ho a "
+"provar en uns quants minuts."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
@@ -2500,7 +2500,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113
 #, kde-format
