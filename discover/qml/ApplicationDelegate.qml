@@ -26,13 +26,10 @@ BasicAbstractCard {
     showClickFeedback: true
 
     function trigger() {
-        const view = typeof delegateRecycler !== 'undefined' ? delegateRecycler.ListView.view : ListView.view
-        if (view) {
-            view.currentIndex = index
-        }
+        ListView.currentIndex = index
         Navigation.openApplication(application)
     }
-    highlighted: ListView.isCurrentItem || (typeof delegateRecycler !== 'undefined' && delegateRecycler.ListView.isCurrentItem)
+    highlighted: ListView.isCurrentItem
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
 
