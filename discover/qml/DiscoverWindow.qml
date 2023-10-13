@@ -171,16 +171,18 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    footer: Loader {
+
+    footer: footerLoader.item
+
+    Loader {
+        id: footerLoader
         active: !window.wideScreen
-        visible: active // ensure that no height is used when not loaded
-        height: item?.implicitHeight ?? 0
         sourceComponent: Kirigami.NavigationTabBar {
             actions: [
                 featuredAction,
                 searchAction,
                 installedAction,
-                updateAction
+                updateAction,
             ]
             Component.onCompleted: {
                 // Exclusivity is already handled by the actions. This prevents BUG:448460
