@@ -478,9 +478,9 @@ Kirigami.ApplicationWindow {
     }
 
     onCurrentTopLevelChanged: {
-        window.pageStack.clear()
+        pageStack.clear();
         if (currentTopLevel) {
-            window.pageStack.push(currentTopLevel, {}, window.status !== Component.Ready)
+            pageStack.push(currentTopLevel);
         }
         globalDrawer.forceSearchFieldFocus();
     }
