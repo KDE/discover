@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-23 01:45+0000\n"
+"POT-Creation-Date: 2023-10-14 01:49+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
@@ -262,7 +262,7 @@ msgstr "قىستۇرمىلار"
 msgid "Cancel"
 msgstr "ئەمەلدىن قالدۇر"
 
-#: discover/qml/ApplicationDelegate.qml:162
+#: discover/qml/ApplicationDelegate.qml:159
 #: discover/qml/ApplicationPage.qml:219
 #, fuzzy, kde-format
 #| msgid "Rating:"
@@ -270,7 +270,7 @@ msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "باھالاش:"
 
-#: discover/qml/ApplicationDelegate.qml:162
+#: discover/qml/ApplicationDelegate.qml:159
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "No ratings yet"

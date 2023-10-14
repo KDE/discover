@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-23 01:45+0000\n"
+"POT-Creation-Date: 2023-10-14 01:49+0000\n"
 "PO-Revision-Date: 2023-02-07 10:31\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -273,7 +273,7 @@ msgstr "Дадаць"
 msgid "Cancel"
 msgstr "Скасаваць"
 
-#: discover/qml/ApplicationDelegate.qml:162
+#: discover/qml/ApplicationDelegate.qml:159
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "%1 rating"
@@ -283,7 +283,7 @@ msgstr[1] "%1 адзнакі"
 msgstr[2] "%1 адзнак"
 msgstr[3] "%1 адзнакі"
 
-#: discover/qml/ApplicationDelegate.qml:162
+#: discover/qml/ApplicationDelegate.qml:159
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "No ratings yet"

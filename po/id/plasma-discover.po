@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-23 01:45+0000\n"
+"POT-Creation-Date: 2023-10-14 01:49+0000\n"
 "PO-Revision-Date: 2023-05-26 07:49+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -274,7 +274,7 @@ msgstr "Tambah"
 msgid "Cancel"
 msgstr "Batal"
 
-#: discover/qml/ApplicationDelegate.qml:162
+#: discover/qml/ApplicationDelegate.qml:159
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "%1 rating"
@@ -282,7 +282,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 peringkat"
 msgstr[1] "%1 peringkat"
 
-#: discover/qml/ApplicationDelegate.qml:162
+#: discover/qml/ApplicationDelegate.qml:159
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "No ratings yet"

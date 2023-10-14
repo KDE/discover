@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-23 01:45+0000\n"
+"POT-Creation-Date: 2023-10-14 01:49+0000\n"
 "PO-Revision-Date: 2023-07-27 21:20+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -272,7 +272,7 @@ msgstr "Legg til"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: discover/qml/ApplicationDelegate.qml:162
+#: discover/qml/ApplicationDelegate.qml:159
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "%1 rating"
@@ -280,7 +280,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 karakter"
 msgstr[1] "%1 karakterar"
 
-#: discover/qml/ApplicationDelegate.qml:162
+#: discover/qml/ApplicationDelegate.qml:159
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "No ratings yet"
