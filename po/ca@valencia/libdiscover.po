@@ -1044,8 +1044,8 @@ msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr ""
-"Hi ha massa peticions enviades al servidor pel dorsal %1. Torneu-ho a provar "
-"en uns quants minuts."
+"Hi ha massa peticions enviades cap al servidor pel dorsal %1. Torneu-ho a "
+"provar en uns quants minuts."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:454

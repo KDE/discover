@@ -780,7 +780,7 @@ msgstr "Mostra el següent"
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format
 msgid "Copy to Clipboard"
-msgstr "Copia al porta-retalls"
+msgstr "Copia a dins del porta-retalls"
 
 #: discover/qml/Feedback.qml:12
 #, kde-format
