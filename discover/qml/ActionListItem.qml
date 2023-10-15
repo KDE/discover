@@ -4,16 +4,15 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-import QtQuick 2.5
-import QtQuick.Controls 2.5 as QQC2
-
-import org.kde.kirigami 2.14 as Kirigami
+import QtQuick
+import QtQuick.Controls as QQC2
+import org.kde.kirigami as Kirigami
 
 Kirigami.BasicListItem {
-    id: item
+    id: controlRoot
 
     separatorVisible: false
-    visible: action.enabled
+    visible: enabled
 
     Keys.onEnterPressed: trigger()
     Keys.onReturnPressed: trigger()
@@ -27,18 +26,25 @@ Kirigami.BasicListItem {
         }
     }
 
-    Kirigami.MnemonicData.enabled: item.enabled && item.visible
+    Kirigami.MnemonicData.enabled: enabled && visible
     Kirigami.MnemonicData.controlType: Kirigami.MnemonicData.MenuItem
+    // Note: normally text is sync'ed with action along with other properties,
+    // but unlike other properties if text is set explicitly, it won't be
+    // written back to action, so this is technically not a binding loop.
+    // Implementation of controls normally binds richTextLabel directly to
+    // Text, but in overrides that don't implement style directly, this is
+    // our only option left.
     Kirigami.MnemonicData.label: action.text
-    label: Kirigami.MnemonicData.richTextLabel
+    text: Kirigami.MnemonicData.richTextLabel
 
+    QQC2.ToolTip.text: shortcut.nativeText
+    QQC2.ToolTip.visible: (Kirigami.Settings.tabletMode ? down : hovered) && shortcut.nativeText.length > 0
     QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-    QQC2.ToolTip.visible: hovered && p0.nativeText.length > 0
-    QQC2.ToolTip.text: p0.nativeText
 
-    readonly property var p0: Shortcut {
-        sequence: item.Kirigami.MnemonicData.sequence
-        onActivated: item.trigger()
+    Shortcut {
+        id: shortcut
+        sequence: controlRoot.Kirigami.MnemonicData.sequence
+        onActivated: controlRoot.trigger()
     }
 
     // Using the generic onPressed so individual instances can override
