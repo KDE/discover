@@ -9,7 +9,8 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.1
 import org.kde.discover 2.0
 import org.kde.discover.app 1.0
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.labs.components 1.0 as KirigamiLabs
 import "navigation.js" as Navigation
 
 Kirigami.GlobalDrawer {
@@ -67,9 +68,14 @@ Kirigami.GlobalDrawer {
 
     header: Kirigami.AbstractApplicationHeader {
         visible: drawer.wideScreen
+            && window.leftPage
+            && (window.leftPage.searchFor !== null
+                || window.leftPage.hasOwnProperty("search"))
 
-        contentItem: SearchField {
-            id: searchField
+        // AbstractApplicationHeader isn't really a Control, so contentItem
+        // and paddings wouldn't work here.
+        contentItem: KirigamiLabs.SearchPopupField {
+            id: searchPopupField
 
             anchors {
                 left: parent.left
@@ -78,31 +84,98 @@ Kirigami.GlobalDrawer {
                 rightMargin: Kirigami.Units.smallSpacing
             }
 
-            // Give the search field keyboard focus by default, unless it would
-            // make the virtual keyboard appear, because we don't want that
-            focus: !Kirigami.InputMethod.willShowOnActive
+            function acceptSuggestion(index: int) {
+                const text = searchSuggestionsListView.model[index];
 
-            visible: window.leftPage && (window.leftPage.searchFor !== null || window.leftPage.hasOwnProperty("search"))
+                searchField.text = text;
+                searchField.accepted();
+                popup.close();
+            }
 
-            page: window.leftPage
+            searchField: SearchField {
+                id: searchField
 
-            onCurrentSearchTextChanged: {
-                var curr = window.leftPage;
+                page: window.leftPage
 
-                if (pageStack.depth > 1) {
-                    pageStack.pop()
+                onCurrentSearchTextChanged: {
+                    var curr = window.leftPage;
+
+                    if (pageStack.depth > 1) {
+                        pageStack.pop()
+                    }
+
+                    if (currentSearchText === "" && window.currentTopLevel === "" && !window.leftPage.category) {
+                        Navigation.openHome()
+                    } else if (!curr.hasOwnProperty("search")) {
+                        if (currentSearchText) {
+                            Navigation.clearStack()
+                            Navigation.openApplicationList({ search: currentSearchText })
+                        }
+                    } else {
+                        curr.search = currentSearchText;
+                        curr.forceActiveFocus()
+                    }
                 }
 
-                if (currentSearchText === "" && window.currentTopLevel === "" && !window.leftPage.category) {
-                    Navigation.openHome()
-                } else if (!curr.hasOwnProperty("search")) {
-                    if (currentSearchText) {
-                        Navigation.clearStack()
-                        Navigation.openApplicationList({ search: currentSearchText })
+                onActiveFocusChanged: {
+                    if (activeFocus) {
+                        searchSuggestionsListView.currentIndex = 0;
                     }
-                } else {
-                    curr.search = currentSearchText;
-                    curr.forceActiveFocus()
+                }
+            }
+
+            ListView {
+                id: searchSuggestionsListView
+
+                model: {
+                    if (searchField.text.length > 0) {
+                        const results = [searchField.text];
+                        for (let i = 0; i < Math.max(0, 20 - searchField.text.length * 2); i++) {
+                            results.push(`${searchField.text} suggestion #${i + 1}`);
+                        }
+                        return results;
+                    } else {
+                        return null;
+                    }
+                }
+
+                delegate: ItemDelegate {
+                    required property int index
+                    required property string modelData
+
+                    width: ListView.view?.width ?? undefined
+                    text: modelData
+                    highlighted: ListView.isCurrentItem
+
+                    onClicked: {
+                        searchPopupField.acceptSuggestion(index);
+                    }
+                }
+
+                onActiveFocusChanged: {
+                    if (activeFocus) {
+                        if (currentIndex === -1) {
+                            currentIndex = 0;
+                        }
+                    } else {
+                        currentIndex = -1;
+                    }
+                }
+
+                footerPositioning: ListView.OverlayFooter
+                footer: Kirigami.InlineViewHeader {
+                    width: ListView.view?.width ?? undefined
+                    height: visible ? undefined : 0
+                    visible: searchField.text.length > 0
+                    text: searchField.placeholderText
+                }
+
+                Kirigami.PlaceholderMessage {
+                    id: loadingPlaceholder
+                    anchors.centerIn: parent
+                    width: parent.width - Kirigami.Units.gridUnit * 4
+                    visible: searchField.text.length === 0
+                    text: searchField.placeholderText
                 }
             }
         }

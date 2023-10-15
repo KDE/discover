@@ -482,7 +482,7 @@ Kirigami.ApplicationWindow {
         if (currentTopLevel) {
             pageStack.push(currentTopLevel);
         }
-        globalDrawer.forceSearchFieldFocus();
+        // globalDrawer.forceSearchFieldFocus();
     }
 
     UnityLauncher {
