@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-14 01:49+0000\n"
+"POT-Creation-Date: 2023-10-15 01:40+0000\n"
 "PO-Revision-Date: 2023-09-10 19:07+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -266,7 +266,7 @@ msgstr "புதிய %1 களஞ்சியத்தை சேர்"
 msgid "Add"
 msgstr "சேர்"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:274
 #: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -744,8 +744,8 @@ msgstr "&பற்றி"
 msgid "S&ettings"
 msgstr "&அமைப்புகள்"
 
-#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:341
-#: discover/qml/DiscoverWindow.qml:448
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:343
+#: discover/qml/DiscoverWindow.qml:450
 #, kde-format
 msgid "Error"
 msgstr "சிக்கல்"
@@ -755,34 +755,34 @@ msgstr "சிக்கல்"
 msgid "Unable to find resource: %1"
 msgstr "இதை கண்டுபிடிக்க முடியவில்லை: %1"
 
-#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "தொடர்"
 
-#: discover/qml/DiscoverWindow.qml:317
+#: discover/qml/DiscoverWindow.qml:319
 #, kde-format
 msgid "Report this issue"
 msgstr "இச்சிக்கலை தெரிவி"
 
-#: discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:343
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "%2-இல் %1-வது சிக்கல்"
 
-#: discover/qml/DiscoverWindow.qml:386
+#: discover/qml/DiscoverWindow.qml:388
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "முந்தையதைக் காட்டு"
 
-#: discover/qml/DiscoverWindow.qml:399
+#: discover/qml/DiscoverWindow.qml:401
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "அடுத்ததைக் காட்டு"
 
-#: discover/qml/DiscoverWindow.qml:415
+#: discover/qml/DiscoverWindow.qml:417
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "பிடிப்புப்பலகைக்கு நகலெடு"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-14 01:49+0000\n"
+"POT-Creation-Date: 2023-10-15 01:40+0000\n"
 "PO-Revision-Date: 2023-09-28 17:42+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -292,7 +292,7 @@ msgstr "Ajouter un nouveau dépôt %1"
 msgid "Add"
 msgstr "Ajouter"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:274
 #: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -783,8 +783,8 @@ msgstr "&À propos"
 msgid "S&ettings"
 msgstr "C&onfiguration"
 
-#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:341
-#: discover/qml/DiscoverWindow.qml:448
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:343
+#: discover/qml/DiscoverWindow.qml:450
 #, kde-format
 msgid "Error"
 msgstr "Erreur"
@@ -794,34 +794,34 @@ msgstr "Erreur"
 msgid "Unable to find resource: %1"
 msgstr "Impossible de trouver la ressource : %1"
 
-#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Continuer"
 
-#: discover/qml/DiscoverWindow.qml:317
+#: discover/qml/DiscoverWindow.qml:319
 #, kde-format
 msgid "Report this issue"
 msgstr "Signaler un problème"
 
-#: discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:343
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Erreur %1 parmi %2"
 
-#: discover/qml/DiscoverWindow.qml:386
+#: discover/qml/DiscoverWindow.qml:388
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Afficher le précédent"
 
-#: discover/qml/DiscoverWindow.qml:399
+#: discover/qml/DiscoverWindow.qml:401
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Afficher le suivant"
 
-#: discover/qml/DiscoverWindow.qml:415
+#: discover/qml/DiscoverWindow.qml:417
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Copier dans le presse-papier"

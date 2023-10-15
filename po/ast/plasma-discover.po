@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-14 01:49+0000\n"
+"POT-Creation-Date: 2023-10-15 01:40+0000\n"
 "PO-Revision-Date: 2023-05-14 17:13+0200\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
@@ -251,7 +251,7 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:274
 #: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -708,8 +708,8 @@ msgstr ""
 msgid "S&ettings"
 msgstr "&Configuración"
 
-#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:341
-#: discover/qml/DiscoverWindow.qml:448
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:343
+#: discover/qml/DiscoverWindow.qml:450
 #, kde-format
 msgid "Error"
 msgstr "Error"
@@ -719,34 +719,34 @@ msgstr "Error"
 msgid "Unable to find resource: %1"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:317
+#: discover/qml/DiscoverWindow.qml:319
 #, kde-format
 msgid "Report this issue"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:343
 #, kde-format
 msgid "Error %1 of %2"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:386
+#: discover/qml/DiscoverWindow.qml:388
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:399
+#: discover/qml/DiscoverWindow.qml:401
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:415
+#: discover/qml/DiscoverWindow.qml:417
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr ""

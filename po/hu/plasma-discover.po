@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-14 01:49+0000\n"
+"POT-Creation-Date: 2023-10-15 01:40+0000\n"
 "PO-Revision-Date: 2022-02-07 10:40+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -275,7 +275,7 @@ msgstr "Új %1 tároló hozzáadása"
 msgid "Add"
 msgstr "Hozzáadás"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:272
+#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:274
 #: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
@@ -771,8 +771,8 @@ msgstr "Né&vjegy"
 msgid "S&ettings"
 msgstr "&Beállítások"
 
-#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:341
-#: discover/qml/DiscoverWindow.qml:448
+#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:343
+#: discover/qml/DiscoverWindow.qml:450
 #, kde-format
 msgid "Error"
 msgstr "Hiba"
@@ -782,36 +782,36 @@ msgstr "Hiba"
 msgid "Unable to find resource: %1"
 msgstr "Nem található erőforrás: %1"
 
-#: discover/qml/DiscoverWindow.qml:259 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:180
 #, kde-format
 msgid "Proceed"
 msgstr "Folytatás"
 
-#: discover/qml/DiscoverWindow.qml:317
+#: discover/qml/DiscoverWindow.qml:319
 #, kde-format
 msgid "Report this issue"
 msgstr "Jelentse ezt a hibát"
 
-#: discover/qml/DiscoverWindow.qml:341
+#: discover/qml/DiscoverWindow.qml:343
 #, fuzzy, kde-format
 #| msgid "Votes: %1 out of %2"
 msgid "Error %1 of %2"
 msgstr "Szavazatok: %1 / %2"
 
-#: discover/qml/DiscoverWindow.qml:386
+#: discover/qml/DiscoverWindow.qml:388
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:399
+#: discover/qml/DiscoverWindow.qml:401
 #, fuzzy, kde-format
 #| msgid "Show contents"
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Tartalom megjelenítése"
 
-#: discover/qml/DiscoverWindow.qml:415
+#: discover/qml/DiscoverWindow.qml:417
 #, fuzzy, kde-format
 #| msgid "Copy to clipboard"
 msgid "Copy to Clipboard"
