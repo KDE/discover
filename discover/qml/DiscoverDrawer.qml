@@ -122,7 +122,7 @@ Kirigami.GlobalDrawer {
         ActionListItem {
             objectName: "updateButton"
             action: updateAction
-            visible: drawer.wideScreen
+            visible: enabled && drawer.wideScreen
 
             badgeIconName: ResourcesModel.updatesCount > 0 ? "emblem-important" : ""
 
