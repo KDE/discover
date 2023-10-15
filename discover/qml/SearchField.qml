@@ -5,13 +5,15 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-import QtQuick 2.5
-import QtQuick.Controls 2.1
-import org.kde.kirigami 2.14 as Kirigami
+import QtQuick
+import QtQuick.Controls
+import org.kde.kirigami as Kirigami
 
 Kirigami.SearchField {
-    id: searchField
-    objectName: "searchField" // for appium tests
+    id: root
+
+    // for appium tests
+    objectName: "searchField"
 
     // Search operations are network-intensive, so we can't have search-as-you-type.
     // This means we should turn off auto-accept entirely, rather than having it on
@@ -24,20 +26,21 @@ Kirigami.SearchField {
     placeholderText: (!enabled || !page || page.hasOwnProperty("isHome") || window.leftPage.name.length === 0) ? i18n("Search…") : i18n("Search in '%1'…", window.leftPage.name)
 
     onAccepted: {
-        searchField.text = searchField.text.replace(/\n/g, ' ');
-        currentSearchText = searchField.text
+        text = text.replace(/\n/g, ' ');
+        currentSearchText = text;
     }
 
     function clearText() {
-        searchField.text = ""
-        searchField.accepted()
+        text = "";
+        accepted();
     }
 
     Connections {
         ignoreUnknownSignals: true
-        target: page
+        target: root.page
+
         function onClearSearch() {
-            clearText()
+            root.clearText();
         }
     }
 
@@ -45,7 +48,7 @@ Kirigami.SearchField {
         target: applicationWindow()
         function onCurrentTopLevelChanged() {
             if (applicationWindow().currentTopLevel.length > 0) {
-                clearText()
+                root.clearText();
             }
         }
     }
