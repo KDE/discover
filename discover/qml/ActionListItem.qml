@@ -6,13 +6,18 @@
 
 import QtQuick
 import QtQuick.Controls as QQC2
+import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
+import org.kde.kirigami.delegates as KD
 
-Kirigami.BasicListItem {
+QQC2.ItemDelegate {
     id: controlRoot
 
-    separatorVisible: false
+    property string badgeIconName
+
     visible: enabled
+
+    Layout.fillWidth: true
 
     Keys.onEnterPressed: trigger()
     Keys.onReturnPressed: trigger()
@@ -62,6 +67,25 @@ Kirigami.BasicListItem {
         } else if (event.key === Qt.Key_Down) {
             nextItemInFocusChain(true).forceActiveFocus()
             event.accepted = true
+        }
+    }
+
+    contentItem: RowLayout {
+        spacing: Kirigami.Units.smallSpacing
+
+        KD.IconTitleSubtitle {
+            Layout.fillWidth: true
+            icon: icon.fromControlsIcon(controlRoot.icon)
+            title: controlRoot.text
+            selected: controlRoot.highlighted
+            font: controlRoot.font
+        }
+
+        Kirigami.Icon {
+            visible: controlRoot.badgeIconName !== ""
+            source: controlRoot.badgeIconName
+            implicitWidth: Kirigami.Units.iconSizes.sizeForLabels
+            implicitHeight: Kirigami.Units.iconSizes.sizeForLabels
         }
     }
 }
