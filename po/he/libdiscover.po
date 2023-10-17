@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-12 01:42+0000\n"
-"PO-Revision-Date: 2020-10-21 13:36+0300\n"
+"PO-Revision-Date: 2023-10-17 01:10+0300\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -27,7 +27,7 @@ msgstr "צוות התרגום של KDE ישראל,,עומר א״ש"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "kde-l10n-he@kde.org,,omeritzicschwartz@gmail.com"
+msgstr "kde-l10n-he@kde.org,omeritzicschwartz@gmail.com"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:103
 #, kde-format
@@ -35,11 +35,9 @@ msgid "Proprietary"
 msgstr "קנייני"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:105
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Publishing"
+#, kde-format
 msgid "Public Domain"
-msgstr "הוצאה לאור"
+msgstr "נחלת הכלל"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:111
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
@@ -58,7 +56,7 @@ msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr ""
+msgstr "כל סוגי הקהל"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:190
 #, kde-format
@@ -67,36 +65,31 @@ msgctxt ""
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr ""
+msgstr "תוכן עדין"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:193
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr "אינטרנט"
+msgstr "תוכן מתון"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:196
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "אינטרנט"
+msgstr "תוכן עז"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:171
-#, fuzzy, kde-format
-#| msgid "Internal error"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "שגיאה פנימית"
+msgstr "הודעת שגיאה טכנית: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
@@ -112,7 +105,7 @@ msgstr "שגיאה במהלך שליחת הביקורת: %1"
 #, kde-format
 msgctxt "Category"
 msgid "Dummy Category"
-msgstr "קטגורית דמה"
+msgstr "קטגוריית דמה"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
 #, kde-format
@@ -165,11 +158,10 @@ msgstr "דמה 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "יישומים"
+msgstr "כל היישומים"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -197,14 +189,14 @@ msgstr "כלי מפתחים"
 #, kde-format
 msgctxt "Category"
 msgid "Debugging"
-msgstr "ניפוי באגים"
+msgstr "ניפוי תקלות"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
 #, kde-format
 msgctxt "Category"
 msgid "Graphic Interface Design"
-msgstr "מעצבי ממשק משתמש"
+msgstr "עיצוב ממשקי משתמש"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
@@ -225,14 +217,14 @@ msgstr "בינאום"
 #, kde-format
 msgctxt "Category"
 msgid "Profiling"
-msgstr ""
+msgstr "מיפוי משאבי מערכת"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
 #, kde-format
 msgctxt "Category"
 msgid "Web Development"
-msgstr "פיתוח Web"
+msgstr "פיתוח אתרים"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
@@ -330,7 +322,7 @@ msgstr "משחקים"
 #, kde-format
 msgctxt "Category"
 msgid "Arcade"
-msgstr "ארקייד"
+msgstr "משחקי הרפתקה"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
@@ -351,7 +343,7 @@ msgstr "משחקי קלפים"
 #, kde-format
 msgctxt "Category"
 msgid "Puzzles"
-msgstr "פזלים"
+msgstr "פאזלים"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
@@ -365,7 +357,7 @@ msgstr "משחקי תפקידים"
 #, kde-format
 msgctxt "Category"
 msgid "Simulation"
-msgstr "סימולציות"
+msgstr "הדמיה"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
@@ -393,7 +385,7 @@ msgstr "פעולה"
 #, kde-format
 msgctxt "Category"
 msgid "Emulators"
-msgstr "מדמים"
+msgstr "אמולטורים"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
@@ -407,14 +399,14 @@ msgstr "גרפיקה"
 #, kde-format
 msgctxt "Category"
 msgid "3D"
-msgstr "תלת מימד"
+msgstr "תלת־ממד"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
 #, kde-format
 msgctxt "Category"
 msgid "Drawing"
-msgstr "שירטוט"
+msgstr "שרטוט"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
@@ -463,7 +455,7 @@ msgstr "אינטרנט"
 #, kde-format
 msgctxt "Category"
 msgid "Chat"
-msgstr "צאטים"
+msgstr "צ׳אטים"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
@@ -477,7 +469,7 @@ msgstr "שיתוף קבצים"
 #, kde-format
 msgctxt "Category"
 msgid "Mail"
-msgstr "דואר אלקטרוני"
+msgstr "דואר"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
@@ -512,7 +504,7 @@ msgstr "נגני שמע"
 #, kde-format
 msgctxt "Category"
 msgid "Video Players"
-msgstr "נגני שמע"
+msgstr "נגני וידאו"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
@@ -526,7 +518,7 @@ msgstr "תקליטורי CD ו־DVD"
 #, kde-format
 msgctxt "Category"
 msgid "Office"
-msgstr "משרד"
+msgstr "כלי הפקה"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
@@ -536,53 +528,36 @@ msgid "System Settings"
 msgstr "הגדרות מערכת"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:124
-#, fuzzy, kde-format
-#| msgid "%1 (%2)"
+#, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
-msgstr "%1 (%2)"
+msgstr "%1 (משתמש)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:708
 #, kde-format
 msgid "Local bundle"
-msgstr ""
+msgstr "מאגד מקומי"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1675
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:763
 #, kde-format
 msgid "Malformed appstream url '%1'"
-msgstr ""
+msgstr "כתובת appstream‏ ‚%1’ משובשת"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1779
-#, fuzzy, kde-format
-#| msgid ""
-#| "Failed to update %1 package\n"
-#| "%2"
-#| msgid_plural ""
-#| "Failed to update %1 packages\n"
-#| "%2"
+#, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr ""
-"עדכון חבילה %1 נכשל\n"
-"%2"
+msgstr "הוספת המקור ‚%1’ נכשלה: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1900
 #, kde-format
 msgid "There are no Flatpak sources."
-msgstr ""
+msgstr "אין מקורות Flatpak."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
-#, fuzzy, kde-format
-#| msgid ""
-#| "Failed to update %1 package\n"
-#| "%2"
-#| msgid_plural ""
-#| "Failed to update %1 packages\n"
-#| "%2"
+#, kde-format
 msgid "Failed to load \"%1\" source"
-msgstr ""
-"עדכון חבילה %1 נכשל\n"
-"%2"
+msgstr "טעינת המקור „%1” נכשלה"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:354
 #, kde-kuit-format
@@ -592,12 +567,14 @@ msgid ""
 "software in this repository will also be made be available in Discover when "
 "the application is installed.</para>"
 msgstr ""
+"<para>מקור היישומון הוא „%1” (מתארח אצל <link>%2</link>). תוכנות נוספות "
+"שבמאגר הזה תהיינה זמינות גם כן ב־Discover עם התקנת היישום.</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:449
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:457
 #, kde-format
 msgid "Retrieving size information"
-msgstr "אחזר מידע על הגודל"
+msgstr "המידע על הגודל מתקבל"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:451
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:459
@@ -609,131 +586,119 @@ msgstr "גודל לא ידוע"
 #, kde-format
 msgctxt "@info app size"
 msgid "%1 to download, %2 on disk"
-msgstr "%1 להורדה, %2 על דיסק"
+msgstr "%1 להורדה, %2 בכונן"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:461
 #, kde-format
 msgctxt "@info app size"
 msgid "%1 on disk"
-msgstr "%1 על דיסק"
+msgstr "%1 בכונן"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:515
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
-#, fuzzy, kde-format
-#| msgid ""
-#| "Failed to update %1 package\n"
-#| "%2"
-#| msgid_plural ""
-#| "Failed to update %1 packages\n"
-#| "%2"
+#, kde-format
 msgid "Failed to start '%1': %2"
-msgstr ""
-"עדכון חבילה %1 נכשל\n"
-"%2"
+msgstr "הפעלת ‚%1’ נכשלה: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:749
 #, kde-format
 msgid "All Files"
-msgstr ""
+msgstr "כל הקבצים"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:751
 #, kde-format
 msgid "Home"
-msgstr ""
+msgstr "בית"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:753
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloads"
-msgstr "בהורדה"
+msgstr "הורדות"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:755
 #, kde-format
 msgid "Music"
-msgstr ""
+msgstr "מוזיקה"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
 msgid "Network Access"
-msgstr ""
+msgstr "גישה לרשת"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:813
 #, kde-format
 msgid "Can access the internet"
-msgstr ""
+msgstr "יש גישה לאינטרנט"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:819
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "System Updates"
+#, kde-format
 msgid "Sound system access"
-msgstr "עדכוני מערכת"
+msgstr "גישה למערכת שמע"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:820
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "יש אפשרות לנגן שמע"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:824
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
 #, kde-format
 msgid "Session Bus Access"
-msgstr ""
+msgstr "גישה לאפיק הפעלה"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
-msgstr ""
+msgstr "אפשר לתקשר עם כל שאר היישומים והתהליכים שרצים בחשבון המשתמש הזה"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:976
 #, kde-format
 msgid "System Bus Access"
-msgstr ""
+msgstr "גישה לאפיק המערכת"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:831
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
-msgstr ""
+msgstr "אפשר לתקשר עם כל שאר היישומים והתהליכים במערכת"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:836
 #, kde-format
 msgid "Remote Login Access"
-msgstr ""
+msgstr "גישת כניסה מרחוק"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:837
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
-msgstr ""
+msgstr "אפשר לפתוח בקשות לכניסה מרחוק באמצעות פרוטוקול SSH"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
 #, kde-format
 msgid "Smart Card Access"
-msgstr ""
+msgstr "גישה עם כרטיס חכם"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:842
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr ""
+msgstr "אפשר להשתלב ולתקשר עם כרטיסים חכמים"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:846
 #, kde-format
 msgid "Printer Access"
-msgstr ""
+msgstr "גישה למדפסת"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:847
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr ""
+msgstr "אפשר להשתלב ולתקשר עם מדפסות"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "סוכן GPG"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
 #, kde-format
@@ -741,69 +706,71 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"מאפשר גישה לשירות הקריפטוגרפי GPG, שבדרך כלל משמש לחתימה ולקריאה של מסמכים "
+"חתומים"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
 #, kde-format
 msgid "Bluetooth Access"
-msgstr ""
+msgstr "גישה לבלוטות׳"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr ""
+msgstr "אפשר להשתלב ולתקשר עם התקני בלוטות׳"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
 msgid "Low-Level System Access"
-msgstr ""
+msgstr "גישה למערכת ברמה נמוכה"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "אפשר לבצע קריאות מערכת ברמה נמוכה (למשל: ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
 #, kde-format
 msgid "Device Access"
-msgstr ""
+msgstr "גישה להתקנים"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:871
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
-msgstr ""
+msgstr "אפשר לתקשר ולשלוט בהתקני חומרה מובנים או מחוברים"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:875
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr ""
+msgstr "גישה למכונה וירטואלית ברמת ליבה"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:876
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
-msgstr ""
+msgstr "מאפשר להריץ מערכות הפעלה אחרות כאורחות במכונות וירטואליות"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:900
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:912
 #, kde-format
 msgid "%1 (read-only)"
-msgstr ""
+msgstr "%1 (קריאה בלבד)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:903
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:915
 #, kde-format
 msgid "%1 (can create files)"
-msgstr ""
+msgstr "%1 (אפשר ליצור קבצים)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:906
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:924
 #, kde-format
 msgid "%1 (read & write) "
-msgstr ""
+msgstr "%1 (קריאה וכתיבה) "
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
 #, kde-format
 msgid "Home Folder Access"
-msgstr ""
+msgstr "גישה לתיקיית הבית"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:936
 #, kde-format
@@ -811,6 +778,8 @@ msgid ""
 "Can read, write, and create files in the following locations in your home "
 "folder without asking permission first: %1"
 msgstr ""
+"אפשר לקרוא, לכתוב וליצור קבצים במקומות הבאים בתיקיית הבית שלך מבלי לבקש "
+"הרשאה קודם: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:938
 #, kde-format
@@ -818,6 +787,8 @@ msgid ""
 "Can read and write files in the following locations in your home folder "
 "without asking permission first: %1"
 msgstr ""
+"אפשר לקרוא ולכתוב קבצים במקומות הבאים בתיקיית הבית שלך מבלי לבקש הרשאה קודם: "
+"%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:940
 #, kde-format
@@ -825,6 +796,7 @@ msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
 msgstr ""
+"אפשר לקרוא קבצים במקומות הבאים בתיקיית הבית שלך מבלי לבקש הרשאה קודם: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:942
 #, kde-format
@@ -832,11 +804,12 @@ msgid ""
 "Can access files in the following locations in your home folder without "
 "asking permission first: %1"
 msgstr ""
+"אפשר לגשת לקבצים במקומות הבאים בתיקיית הבית שלך מבלי לבקשה הרשאה קודם: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:948
 #, kde-format
 msgid "System Folder Access"
-msgstr ""
+msgstr "גישה לתיקיית המערכת"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:950
 #, kde-format
@@ -844,27 +817,28 @@ msgid ""
 "Can read, write, and create system files in the following locations without "
 "asking permission first: %1"
 msgstr ""
+"אפשר לקרוא, לכתוב וליצור קובצי מערכת במקומות הבאים מבלי לבקש הרשאה קודם: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:952
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
 "permission first: %1"
-msgstr ""
+msgstr "אפשר לקרוא ולכתוב קובצי מערכת במקומות הבאים מבלי לבקש הרשאה קודם: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:954
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
-msgstr ""
+msgstr "אפשר לקרוא קובצי מערכת במקומות הבאים מבלי לבקש הרשאה קודם: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:956
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
-msgstr ""
+msgstr "אפשר לגשת לקובצי מערכת במקומות הבאים מבלי לבקש הרשאה קודם: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:966
 #, kde-format
@@ -872,6 +846,8 @@ msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
+"אפשר לתקשר עם יישומים ותהליכים אחרים באותה הפעלת שולחן העבודה באמצעות "
+"פרוטוקולי התקשורת הבאים: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:978
 #, kde-format
@@ -879,6 +855,7 @@ msgid ""
 "Can communicate with all applications and system services using the "
 "following communication protocols: %1"
 msgstr ""
+"אפשר לתקשר עם כל היישומים ושירותים המערכת באמצעות פרוטוקולי התקשורת הבאים: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
 #, kde-format
@@ -888,31 +865,31 @@ msgstr "הוספת Flathub"
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
 #, kde-format
 msgid "Apply Changes"
-msgstr ""
+msgstr "החלת שינויים"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:95
 #, kde-format
 msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
-msgstr ""
+msgstr "יש להחיל שינויים לעדיפות של מקורות Flatpak בטרם אלו ייכנסו לתוקף."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:99
 #, kde-format
 msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
-msgstr ""
+msgstr "מאפשר להתקין בקלות את היישומים שמופיעים תחת https://flathub.org"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:165
 #, kde-format
 msgid "Could not add the source %1"
-msgstr "לא היה ניתן להוסיף את המקור %1"
+msgstr "לא ניתן היה להוסיף את המקור %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:281
 #, kde-format
 msgid "Removing '%1'"
-msgstr "בהסרת \"%1\""
+msgstr "‚%1’ נמחק"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:282
 #, kde-format
@@ -925,33 +902,32 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:299
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
-msgstr ""
+msgstr "הסרת המאגר המרוחק %1 נכשלה: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:303
 #, kde-format
 msgid "Could not find %1"
-msgstr "לא היה ניתן למצוא את %1"
+msgstr "לא ניתן היה למצוא את %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:335
-#, fuzzy, kde-format
-#| msgid "%1 (%2)"
+#, kde-format
 msgid "%1 (user)"
-msgstr "%1 (%2)"
+msgstr "%1 (משתמש)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:396
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
-msgstr ""
+msgstr "נא למלא כתובת מאגר Flatpak מלאה (‎*.flatpakrepo):"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:29
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
-msgstr ""
+msgstr "נוסף המקור המרוחק ‚%1’ ב־%2 מתוך %3"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:195
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "לא ניתן למצוא את ‚%1’ בתוך ‚%2’, נא לוודא שהוא זמין."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
@@ -959,47 +935,47 @@ msgctxt "@label %1 is the name of an application"
 msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
-msgstr ""
+msgstr "גרסת הפיתוח של %1 אינה בתוקף. מומלץ בחום להשתמש בגרסה היציבה."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr ""
+msgstr "קיימת גרסה יציבה יותר של %1."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr ""
+msgstr "הצגת הגרסה היציבה של %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "%1 לא מותקנת במערכת שלך אך הנתונים שלה עדיין קיימים."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "מחיקת הגדרות ונתוני משתמש"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
 #, kde-format
 msgid "Clearing settings and user data…"
-msgstr ""
+msgstr "ההגדרות ונתוני המשתמש נמחקים…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "הרשאות עבור %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:56
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "הגדרת הרשאות…"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1007,17 +983,18 @@ msgid ""
 "The remote %1 require that you accept their license:\n"
 " %2"
 msgstr ""
+"המקור המרוחק %1 דורש ממך לאשר את הרישיון שלו:\n"
+"%2"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
 #, kde-format
 msgid "Review EULA"
-msgstr ""
+msgstr "סקירת הסכם משתמש הקצה"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
-#, fuzzy, kde-format
-#| msgid "Could not add the source %1"
+#, kde-format
 msgid "Could not enable remote %1: %2"
-msgstr "לא היה ניתן להוסיף את המקור %1"
+msgstr "לא ניתן להפעיל את המקור המרוחק %1: %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:61
 #, kde-format
@@ -1025,11 +1002,13 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"שאלה לא נתמכת:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:153
 #, kde-format
 msgid "Backend %1 took too long to initialize"
-msgstr ""
+msgstr "לקח זמן רב לטעון את המנגנון %1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:212
 #, kde-format
@@ -1039,7 +1018,7 @@ msgstr "יישומים"
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
 #, kde-format
 msgid "Plasma Addons"
-msgstr "תוספי Plasma"
+msgstr "תוספי פלזמה"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
 #, kde-format
@@ -1049,7 +1028,7 @@ msgstr "תוספי יישומים"
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:346
 #, kde-format
 msgid "Network error in backend %1: %2"
-msgstr "שגיאת רשת בגישור החבוי %1:‏ %2"
+msgstr "שגיאת רשת במנגנון %1:‏ %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:353
 #, kde-format
@@ -1057,13 +1036,14 @@ msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr ""
+"נשלחו יותר מדי בקשות לשרת עבור המנגנון %1. נא לנסות שוב בעוד מספר דקות."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
-msgstr ""
+msgstr "מנגנון %1 שגוי, נא ליצור קשר עם מפיק ההפצה שלך."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:386
 #, kde-format
@@ -1073,37 +1053,40 @@ msgid ""
 "reported error was:\n"
 "%2"
 msgstr ""
+"לא ניתן להשלים את העדכון של %1. אפשר לנסות לבצע את הפעולה הזאת דרך החלונית "
+"‚קבלת דברים חדשים חמים’, שמעניק גישה אדוקה יותר. השגיאה שדווחה הייתה:\n"
+"%2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:396
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
-msgstr ""
+msgstr "לא ניתן למשוך את צילום המסך לרשומה %1 במנגנון %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
-msgstr ""
+msgstr "שגיאה לא מטופלת במנגנון %1. נא ליצור קשר עם הפקת ההפצה שלך."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
 #, kde-format
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:518
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
-msgstr ""
+msgstr "כתובת KNewStuff שגויה: %1"
 
 #: libdiscover/backends/KNSBackend/KNSResource.cpp:169
 #, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"
-msgstr ""
+msgstr "חנות KDE"
 
 #: libdiscover/backends/KNSBackend/KNSReviews.cpp:145
 #, kde-format
 msgid "Log in information for %1"
-msgstr ""
+msgstr "פרטי כניסה של %1"
 
 #: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:227
 #, kde-format
@@ -1114,13 +1097,13 @@ msgstr "לא ניתן להפעיל את %1"
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Addons"
-msgstr "תוספי Plasma"
+msgstr "תוספי פלזמה"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
-msgstr "יישומוני Plasma"
+msgstr "יישומוני פלזמה"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
 #, kde-format
@@ -1131,7 +1114,7 @@ msgstr "גופנים"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:287
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
-msgstr ""
+msgstr "נא לוודא ש־Appstream מותקן כראוי במערכת שלך"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:327
 #, kde-format
@@ -1139,12 +1122,12 @@ msgctxt "%1 is the date as formatted by the locale"
 msgid ""
 "Your operating system ended support on %1. Consider upgrading to a supported "
 "version."
-msgstr ""
+msgstr "התמיכה במערכת ההפעלה שלך הסתיימה ב־%1. מוטב לשקול לשדרג לגרסה נתמכת."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:878
 #, kde-format
 msgid "Cannot remove '%1'"
-msgstr ""
+msgstr "לא ניתן להסיר את ‚%1’"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, kde-format
@@ -1153,22 +1136,25 @@ msgid ""
 "To be able to upgrade to this new version, make sure to apply all available "
 "updates and then restart the system."
 msgstr ""
+"<b>גרסה עיקרית חדשה של %1 יצאה לאור.</b>\n"
+"כדי שיתאפשר לעדכן לגרסה הזאת, רצוי לוודא שכל העדכונים הזמינים חלו ולאחר מכן "
+"להפעיל את המערכת מחדש."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:967
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgid "Upgrade to %1 %2"
-msgstr ""
+msgstr "שדרוג אל %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:990
 #, kde-format
 msgid "A new major version has been released"
-msgstr ""
+msgstr "הופצה גרסה עיקרית חדש"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
 msgid "Out of memory"
-msgstr ""
+msgstr "נגמר הזיכרון"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
 #, kde-format
@@ -1178,7 +1164,7 @@ msgstr "אין חיבור זמין לרשת"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:22
 #, kde-format
 msgid "Operation not supported"
-msgstr ""
+msgstr "אין תמיכה בפעולה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:25
 #, kde-format
@@ -1186,35 +1172,34 @@ msgid "Internal error"
 msgstr "שגיאה פנימית"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:27
-#, fuzzy, kde-format
-#| msgid "Internal error"
+#, kde-format
 msgid "Internal error: %1"
-msgstr "שגיאה פנימית"
+msgstr "שגיאה פנימית: %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:31
 #, kde-format
 msgid "GPG failure"
-msgstr ""
+msgstr "כשל ב־GPG"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:33
 #, kde-format
 msgid "PackageID invalid"
-msgstr ""
+msgstr "PackageID שגוי"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
 #, kde-format
 msgid "Package not installed"
-msgstr ""
+msgstr "החבילה לא מותקנת"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:37
 #, kde-format
 msgid "Package not found"
-msgstr ""
+msgstr "החבילה לא נמצאת"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:39
 #, kde-format
 msgid "Package is already installed"
-msgstr ""
+msgstr "החבילה כבר מותקנת"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:41
 #, kde-format
@@ -1224,82 +1209,82 @@ msgstr "הורדת החבילה נכשלה"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:43
 #, kde-format
 msgid "Package group not found"
-msgstr ""
+msgstr "קבוצת החבילה לא נמצאה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:45
 #, kde-format
 msgid "Package group list invalid"
-msgstr ""
+msgstr "רשימת קבוצת החבילות שגויה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:47
 #, kde-format
 msgid "Dependency resolution failed"
-msgstr ""
+msgstr "פתרון תלויות נכשל"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:49
 #, kde-format
 msgid "Filter invalid"
-msgstr ""
+msgstr "המסנן שגוי"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
 #, kde-format
 msgid "Failed while creating a thread"
-msgstr ""
+msgstr "יצירת תהליכון נכשלה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:53
 #, kde-format
 msgid "Transaction failure"
-msgstr ""
+msgstr "העברה נכשלה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:55
 #, kde-format
 msgid "Transaction canceled"
-msgstr ""
+msgstr "העברה בוטלה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:57
 #, kde-format
 msgid "No Cache available"
-msgstr ""
+msgstr "אין מטמון זמין"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:59
 #, kde-format
 msgid "Cannot find repository"
-msgstr ""
+msgstr "לא ניתן למצוא מאגר"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:61
 #, kde-format
 msgid "Cannot remove system package"
-msgstr ""
+msgstr "לא ניתן להסיר את חבילת המערכת"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:63
 #, kde-format
 msgid "The PackageKit daemon has crashed"
-msgstr ""
+msgstr "סוכן PackageKit קרס"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:65
 #, kde-format
 msgid "Initialization failure"
-msgstr ""
+msgstr "שגיאת הנעה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:67
 #, kde-format
 msgid "Failed to finalize transaction"
-msgstr ""
+msgstr "הנעת ההעברה נכשלה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:69
 #, kde-format
 msgid "Config parsing failed"
-msgstr ""
+msgstr "פענוח ההגדרות נכשל"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:71
 #, kde-format
 msgid "Cannot cancel transaction"
-msgstr ""
+msgstr "לא ניתן לבטל העברה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:73
 #, kde-format
 msgid "Cannot obtain lock"
-msgstr ""
+msgstr "לא ניתן להשיג נעילה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:75
 #, kde-format
@@ -1309,52 +1294,52 @@ msgstr "אין חבילות לעדכון"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:77
 #, kde-format
 msgid "Cannot write repo config"
-msgstr ""
+msgstr "לא ניתן לכתוב הגדרות מאגר"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:79
 #, kde-format
 msgid "Local install failed"
-msgstr ""
+msgstr "ההתקנה המקומית נכשלה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:81
 #, kde-format
 msgid "Bad GPG signature found"
-msgstr ""
+msgstr "נמצאה חתימת GPG פגומה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:83
 #, kde-format
 msgid "No GPG signature found"
-msgstr ""
+msgstr "לא נמצאה חתימת GPG"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:85
 #, kde-format
 msgid "Cannot install source package"
-msgstr ""
+msgstr "לא ניתן להתקין את חבילת המקור"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:87
 #, kde-format
 msgid "Repo configuration error"
-msgstr ""
+msgstr "שגיאת הגדרת מאגר"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:89
 #, kde-format
 msgid "No license agreement"
-msgstr ""
+msgstr "אין הסכם רישוי"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:91
 #, kde-format
 msgid "File conflicts found"
-msgstr ""
+msgstr "נמצאו סתירות קבצים"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:93
 #, kde-format
 msgid "Package conflict found"
-msgstr ""
+msgstr "נמצאה סתירת חבילות"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:95
 #, kde-format
 msgid "Repo not available"
-msgstr "המאגר לא נמצא"
+msgstr "המאגר לא זמין"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:97
 #, kde-format
@@ -1364,7 +1349,7 @@ msgstr "קובץ חבילה לא תקין"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:99
 #, kde-format
 msgid "Package install blocked"
-msgstr ""
+msgstr "התקנת חבילות חסומה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:101
 #, kde-format
@@ -1384,17 +1369,17 @@ msgstr "הקובץ לא נמצא"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:107
 #, kde-format
 msgid "No more mirrors available"
-msgstr ""
+msgstr "אין אתרי מראה נוספים זמינים"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
 #, kde-format
 msgid "No distro upgrade data"
-msgstr ""
+msgstr "אין נתוני שדרוג הפצה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:111
 #, kde-format
 msgid "Incompatible architecture"
-msgstr ""
+msgstr "ארכיטקטורה לא תואמת"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:113
 #, kde-format
@@ -1404,12 +1389,12 @@ msgstr "לא נותר שטח פנוי בהתקן"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:115
 #, kde-format
 msgid "A media change is required"
-msgstr ""
+msgstr "דרושה החלפת מדיה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:117
 #, kde-format
 msgid "You have no authorization to execute this operation"
-msgstr ""
+msgstr "אין לך אישור להפעיל את הפעולה הזאת"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:119
 #, kde-format
@@ -1419,32 +1404,32 @@ msgstr "העדכון לא נמצא"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
 #, kde-format
 msgid "Cannot install from unsigned repo"
-msgstr ""
+msgstr "לא ניתן להתקין ממאגר לא חתום"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
 #, kde-format
 msgid "Cannot update from unsigned repo"
-msgstr ""
+msgstr "לא ניתן לעדכן ממאגר לא חתום"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:125
 #, kde-format
 msgid "Cannot get file list"
-msgstr ""
+msgstr "לא ניתן לקבל רשימת קבצים"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:127
 #, kde-format
 msgid "Cannot get requires"
-msgstr ""
+msgstr "לא ניתן לקבל דרישות"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:129
 #, kde-format
 msgid "Cannot disable repository"
-msgstr ""
+msgstr "לא ניתן להשבית מאגר"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:131
 #, kde-format
 msgid "Restricted download detected"
-msgstr ""
+msgstr "התגלתה הורדה מוגבלת"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:133
 #, kde-format
@@ -1454,7 +1439,7 @@ msgstr "הגדרת החבילה נכשלה"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:135
 #, kde-format
 msgid "Package failed to build"
-msgstr "בניית  החבילה נכשלה"
+msgstr "בניית החבילה נכשלה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:137
 #, kde-format
@@ -1469,22 +1454,22 @@ msgstr "הסרת החבילה נכשלה"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:141
 #, kde-format
 msgid "Update failed due to running process"
-msgstr ""
+msgstr "העדכון נכשל עקב תהליך פעיל"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:143
 #, kde-format
 msgid "The package database changed"
-msgstr ""
+msgstr "מסד נתוני החבילות השתנה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:145
 #, kde-format
 msgid "The provided type is not supported"
-msgstr ""
+msgstr "הסוג שסופק לא נתמך"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:147
 #, kde-format
 msgid "Install root is invalid"
-msgstr ""
+msgstr "שורש ההתקנה שגוי"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:149
 #, kde-format
@@ -1496,17 +1481,17 @@ msgstr "לא ניתן למשוך את המקורות"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:151
 #, kde-format
 msgid "Canceled priority"
-msgstr ""
+msgstr "עדיפות בוטלה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:153
 #, kde-format
 msgid "Unfinished transaction"
-msgstr ""
+msgstr "העברה חלקית"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:155
 #, kde-format
 msgid "Lock required"
-msgstr ""
+msgstr "נדרשת נעילה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:160
 #, kde-format
@@ -1516,133 +1501,121 @@ msgstr "שגיאה לא ידועה %1."
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
 #, kde-format
 msgid "'%1' was changed and suggests to be restarted."
-msgstr ""
+msgstr "‚%1’ השתנה ומציע להפעיל אותו מחדש."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
 #, kde-format
 msgid "A change by '%1' suggests your session to be restarted."
-msgstr ""
+msgstr "שינוי ב־‚%1’ מציע להפעיל את ההפעלה שלך מחדש."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
 #, kde-format
 msgid ""
 "'%1' was updated for security reasons, a restart of the session is "
 "recommended."
-msgstr ""
+msgstr "‚%1’ עודכן מטעמי אבטחה, מומלץ להעלות את ההפעלה מחדש."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
 #, kde-format
 msgid ""
 "'%1' was updated for security reasons, a restart of the system is "
 "recommended."
-msgstr ""
+msgstr "‚%1’ עודכן מטעמי אבטחה, מומלץ להעלות את המערכת מחדש."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
 #, kde-format
 msgid "A change by '%1' suggests your system to be restarted."
-msgstr ""
+msgstr "שינוי ב־‚%1’ מציע להפעיל את המערכת שלך מחדש."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
 msgid "The application will have to be restarted."
-msgstr ""
+msgstr "יש להפעיל את היישום מחדש."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:190
 #, kde-format
 msgid "The session will have to be restarted"
-msgstr ""
+msgstr "יש להפעיל את ההפעלה מחדש"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:192
 #, kde-format
 msgid "The system will have to be restarted."
-msgstr ""
+msgstr "יש להפעיל את המערכת מחדש."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:194
 #, kde-format
 msgid "For security, the session will have to be restarted."
-msgstr ""
+msgstr "מטעמי אבטחה, יש להעלות את ההפעלה מחדש."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:196
 #, kde-format
 msgid "For security, the system will have to be restarted."
-msgstr "מסיבות אבטחה, יש להפעיל מחדש את המערכת."
+msgstr "מטעמי אבטחה, יש להפעיל את המערכת מחדש."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Waiting"
+#, kde-format
 msgid "Waiting…"
-msgstr "בהמתנה"
+msgstr "בהמתנה…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
-#, fuzzy, kde-format
-#| msgid "Refreshing Cache..."
+#, kde-format
 msgid "Refreshing Cache…"
-msgstr "ברענון המטמון..."
+msgstr "המטמון מרוענן…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
-#, fuzzy, kde-format
-#| msgid "Setup..."
+#, kde-format
 msgid "Setup…"
-msgstr "הגדרה..."
+msgstr "הגדרה…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:214
-#, fuzzy, kde-format
-#| msgid "Processing..."
+#, kde-format
 msgid "Processing…"
-msgstr "בעיבוד..."
+msgstr "בעיבוד…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:216
-#, fuzzy, kde-format
-#| msgid "Remove..."
+#, kde-format
 msgid "Remove…"
-msgstr "מסיר..."
+msgstr "הסרה…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:218
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading…"
-msgstr "בהורדה"
+msgstr "בהורדה…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Installing"
+#, kde-format
 msgid "Installing…"
-msgstr "בהתקנה"
+msgstr "בהתקנה…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:222
-#, fuzzy, kde-format
-#| msgid "Updating..."
+#, kde-format
 msgid "Updating…"
-msgstr "בעדכון..."
+msgstr "עדכון…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:224
-#, fuzzy, kde-format
-#| msgid "Cleaning up..."
+#, kde-format
 msgid "Cleaning up…"
-msgstr "בניקוי..."
+msgstr "ניקוי…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:227
 #, kde-format
 msgid "Resolving dependencies…"
-msgstr ""
+msgstr "התלויות נפתרות…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:229
 #, kde-format
 msgid "Checking signatures…"
-msgstr ""
+msgstr "החתימות נבדקות…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
 #, kde-format
 msgid "Test committing…"
-msgstr ""
+msgstr "בדיקה מוגשת…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
 #, kde-format
 msgid "Committing…"
-msgstr ""
+msgstr "מתבצעת הגשה…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:236
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:362
@@ -1653,24 +1626,22 @@ msgstr "הסתיים"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:238
 #, kde-format
 msgid "Canceled"
-msgstr "מבוטל"
+msgstr "בוטל"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:240
 #, kde-format
 msgid "Waiting for lock…"
-msgstr ""
+msgstr "בהמתנה לנעילה…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:242
-#, fuzzy, kde-format
-#| msgid "Waiting for authorization..."
+#, kde-format
 msgid "Waiting for authorization…"
-msgstr "ממתין לאימות"
+msgstr "בהמתנה לאימות…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:247
-#, fuzzy, kde-format
-#| msgid "Copying files..."
+#, kde-format
 msgid "Copying files…"
-msgstr "בהעתקת הקבצים..."
+msgstr "קבצים מועתקים…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:250
 #, kde-format
@@ -1680,102 +1651,100 @@ msgstr "מצב לא ידוע"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:258
 #, kde-format
 msgid "We are waiting for something."
-msgstr ""
+msgstr "אנחנו ממתינים למשהו."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
-#, fuzzy, kde-format
-#| msgid "Setting up for install..."
+#, kde-format
 msgid "Setting up transaction…"
-msgstr "מגדיר להתקנה..."
+msgstr "העברה מוגדרת…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
 #, kde-format
 msgid "The transaction is currently working…"
-msgstr ""
+msgstr "ההעברה מתבצעת כרגע…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
 #, kde-format
 msgid "The transaction is currently removing packages…"
-msgstr ""
+msgstr "ההעברה מסירה חבילות כרגע…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
 #, kde-format
 msgid "The transaction is currently downloading packages…"
-msgstr ""
+msgstr "ההעברה מורידה חבילות כרגע…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
 #, kde-format
 msgid "The transactions is currently installing packages…"
-msgstr ""
+msgstr "ההעברה מתקינה חבילות כרגע…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
 #, kde-format
 msgid "The transaction is currently updating packages…"
-msgstr ""
+msgstr "ההעברה מעדכנת חבילות כרגע…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
 #, kde-format
 msgid "The transaction is currently cleaning up…"
-msgstr ""
+msgstr "ההעברה מבצעת ניקיון כרגע…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
 #, kde-format
 msgid ""
 "The transaction is currently resolving the dependencies of the packages it "
 "will install…"
-msgstr ""
+msgstr "ההעברה פותרת כרגע את תלויות החבילות שמיועדות להתקנה…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
 #, kde-format
 msgid "The transaction is currently checking the signatures of the packages…"
-msgstr ""
+msgstr "ההעברה בודקת את חתימת החבילות כעת…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
 #, kde-format
 msgid ""
 "The transaction is currently testing the commit of this set of packages…"
-msgstr ""
+msgstr "ההעברה בודקת את הגשת סדרת החבילות הזאת כעת…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
 #, kde-format
 msgid "The transaction is currently committing its set of packages…"
-msgstr ""
+msgstr "ההעברה מגישה כרגע סדרה של חבילות…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
 #, kde-format
 msgid "The transaction has finished!"
-msgstr ""
+msgstr "ההעברה הסתיימה!"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:286
 #, kde-format
 msgid "The transaction was canceled"
-msgstr ""
+msgstr "ההעברה בוטלה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
 #, kde-format
 msgid "The transaction is currently waiting for the lock…"
-msgstr ""
+msgstr "ההעברה ממתינה לנעילה…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
-#, fuzzy, kde-format
-#| msgid "Waiting for authorization..."
+#, kde-format
 msgid "Waiting for the user to authorize the transaction…"
-msgstr "ממתין לאימות"
+msgstr "בהמתנה לאישור ההעברה על ידי המשתמש…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
 #, kde-format
 msgid "The transaction is currently copying files…"
-msgstr ""
+msgstr "ההעברה מעתיקה קבצים כרגע…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
 #, kde-format
 msgid "Currently refreshing the repository cache…"
-msgstr ""
+msgstr "מטמון המאגרים מתרענן כרגע…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
 #, kde-format
 msgid "Unknown status %1."
-msgstr "מצב לא ידוע %1."
+msgstr "מצב %1 לא ידוע."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:313
 #, kde-format
@@ -1802,141 +1771,124 @@ msgid "Installed"
 msgstr "הותקן"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:330
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "Not Installed"
-msgstr "הותקן"
+msgstr "לא מותקן"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:332
 #, kde-format
 msgid "Low"
-msgstr ""
+msgstr "נמוכה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:334
 #, kde-format
 msgid "Enhancement"
-msgstr ""
+msgstr "הרחבה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:336
 #, kde-format
 msgid "Normal"
-msgstr ""
+msgstr "רגילה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:338
 #, kde-format
 msgid "Bugfix"
-msgstr ""
+msgstr "תיקון תקלה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:340
 #, kde-format
 msgid "Important"
-msgstr ""
+msgstr "חשובה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:342
 #, kde-format
 msgid "Security"
-msgstr ""
+msgstr "אבטחה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:344
 #, kde-format
 msgid "Blocked"
-msgstr ""
+msgstr "חסומה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading"
 msgstr "בהורדה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
-#, fuzzy, kde-format
-#| msgid "Updating..."
+#, kde-format
 msgid "Updating"
-msgstr "בעדכון..."
+msgstr "בעדכון"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:350
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Installing"
+#, kde-format
 msgid "Installing"
 msgstr "בהתקנה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:352
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Removing"
+#, kde-format
 msgid "Removing"
 msgstr "בהסרה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:354
-#, fuzzy, kde-format
-#| msgid "Cleaning up..."
+#, kde-format
 msgid "Cleanup"
-msgstr "בניקוי..."
+msgstr "בניקוי"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:356
 #, kde-format
 msgid "Obsoleting"
-msgstr ""
+msgstr "מחליפה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:358
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "Collection Installed"
-msgstr "הותקן"
+msgstr "האוסף הותקן"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:360
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgid "Collection Available"
-msgstr "המאגר לא נמצא"
+msgstr "האוסף זמין"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:364
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Installing"
+#, kde-format
 msgid "Reinstalling"
-msgstr "בהתקנה"
+msgstr "התקנה מחדש"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:366
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Downloading"
+#, kde-format
 msgid "Downgrading"
-msgstr "בהורדה"
+msgstr "שנמוך"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:368
 #, kde-format
 msgid "Preparing"
-msgstr ""
+msgstr "בהכנה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:370
 #, kde-format
 msgid "Decompressing"
-msgstr ""
+msgstr "בפריסה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:372
 #, kde-format
 msgid "Untrusted"
-msgstr ""
+msgstr "לא מהימן"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:374
 #, kde-format
 msgid "Trusted"
-msgstr ""
+msgstr "מהימן"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:376
-#, fuzzy, kde-format
-#| msgid "Available"
+#, kde-format
 msgid "Unavailable"
-msgstr "זמין"
+msgstr "לא זמין"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:123
-#, fuzzy, kde-format
-#| msgid "Offline Updates"
+#, kde-format
 msgid "Failed Offline Update"
-msgstr "עדכונים לא מקוונים"
+msgstr "עדכון בלתי־מקוון נכשל"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
 #, kde-format
@@ -1947,7 +1899,7 @@ msgid_plural ""
 "Failed to update %1 packages\n"
 "%2"
 msgstr[0] ""
-"עדכון חבילה %1 נכשל\n"
+"עדכון חבילה נכשל\n"
 "%2"
 msgstr[1] ""
 "עדכון %1 חבילות נכשל\n"
@@ -1967,10 +1919,9 @@ msgid "Repair System"
 msgstr "תיקון המערכת"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
-#, fuzzy, kde-format
-#| msgid "Offline Updates"
+#, kde-format
 msgid "Repairing failed offline update"
-msgstr "עדכונים לא מקוונים"
+msgstr "עדכון בלתי־מקוון שנכשל עובר תיקון"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:142
 #, kde-format
@@ -1978,34 +1929,32 @@ msgid "Repair Failed"
 msgstr "התיקון נכשל"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
-#, fuzzy, kde-kuit-format
-#| msgid "Please report to your distribution: %1"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
-msgstr "נא לדווח על כך להפצה שלך: %1"
+msgstr "%1<nl/>נא לדווח על השגיאה הזאת להפצה שלך."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:153
 #, kde-format
 msgid "Repaired Successfully"
-msgstr ""
+msgstr "תוקן בהצלחה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:175
 #, kde-format
 msgid "Offline Updates"
-msgstr "עדכונים לא מקוונים"
+msgstr "עדכונים בלתי־מקוונים"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:176
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
-msgstr[0] "חבילה %1 עודכנה בהצלחה"
+msgstr[0] "חבילה עודכנה בהצלחה"
 msgstr[1] "%1 חבילות עודכנו בהצלחה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
-#, fuzzy, kde-format
-#| msgid "Unknown Status"
+#, kde-format
 msgid "Unknown Source"
-msgstr "מצב לא ידוע"
+msgstr "מקור לא ידוע"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
 #, kde-format
@@ -2017,17 +1966,17 @@ msgstr "%1 (%2)"
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
-msgstr ","
+msgstr ", "
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:394
 #, kde-format
 msgid "Obsoletes:"
-msgstr ""
+msgstr "מחליפה:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
 #, kde-format
 msgid "Release Notes:"
-msgstr "הערות שחרור:"
+msgstr "הערות מהדורה:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:396
 #, kde-format
@@ -2037,7 +1986,7 @@ msgstr "מצב עדכון:"
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
 #, kde-format
 msgid "Restart:"
-msgstr "הפעל מחדש:"
+msgstr "הפעלה מחדש:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
 #, kde-format
@@ -2048,39 +1997,36 @@ msgstr "יצרן:"
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
-msgstr[0] "%2 (ועוד תלות %1)"
+msgstr[0] "%2 (ועוד תלות)"
 msgstr[1] "%2 (ועוד %1 תלויות)"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:103
 #, kde-format
 msgid "Repository URL:"
-msgstr ""
+msgstr "כתובת מאגר:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:93
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "System Updates"
+#, kde-format
 msgid "System upgrade"
-msgstr "עדכוני מערכת"
+msgstr "שדרוג מערכת"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
-#, fuzzy, kde-format
-#| msgid "No packages to update"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "אין חבילות לעדכון"
-msgstr[1] "אין חבילות לעדכון"
+msgstr[0] "חבילה תשודרג"
+msgstr[1] "%1 חבילות תשודרגנה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:195
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-msgstr ""
+msgstr "<h3>%1</h3>שדרוג לגרסה %2 החדשה<br/>לא סופקו הערות למהדורה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
@@ -2088,22 +2034,23 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>שדרוג לגרסה %2 החדשה<br/>הערות מהדורה:<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:224
 #, kde-format
 msgid "Present"
-msgstr ""
+msgstr "נוכחי"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
 #, kde-format
 msgid "Future"
-msgstr ""
+msgstr "עתידי"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
-msgstr ""
+msgstr "אין מספיק מקום לביצוע העדכון, יש רק %1 פנויים."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:575
 #, kde-format
@@ -2113,11 +2060,14 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"לא ניתן להשלים את העדכון הזה כיוון שהוא יסיר את התוכנה הבאה שהכרחית לפעילות "
+"המערכת:<nl/><ul><li>%1</li></ul><nl/>אם לדעתך מדובר בשגיאה, נא לדווח על כך "
+"כתקלה מול אורזי ההפצה שלך."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:582
 #, kde-format
 msgid "Confirm Changes"
-msgstr ""
+msgstr "אישור השינויים"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:583
 #, kde-format
@@ -2125,12 +2075,14 @@ msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
 ">in order to install:<ul><li>%2</li></ul>"
 msgstr ""
+"החבילות הבאות תוסרנה על ידי העדכון:<ul><li>%1</li></ul><br/>כדי להתקין:"
+"<ul><li>%2</li></ul>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:707
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
-msgstr ""
+msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:318
@@ -2139,12 +2091,14 @@ msgid ""
 "Media Change of type '%1' is requested.\n"
 "%2"
 msgstr ""
+"התקבלה בקשה להחלפת מדיה מסוג ‚%1’.\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:748
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid "Accept EULA"
-msgstr "אישור EULA"
+msgstr "אישור הסכם משתמש קצה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:749
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:296
@@ -2153,12 +2107,14 @@ msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
 " %3"
 msgstr ""
+"החבילה %1 והיצרן שלה %2 דורשת לאשר את הרישיון שלה:\n"
+"%3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:866
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid "Missing signature for %1 in %2"
-msgstr ""
+msgstr "חסרה חתימה עבור %1 תחת %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:867
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:336
@@ -2172,6 +2128,13 @@ msgid ""
 "Fingerprint: %4\n"
 "Timestamp: %4\n"
 msgstr ""
+"המפתח הבא אמין מבחינתך?\n"
+"\n"
+"כתובת: %1\n"
+"משתמש: %2\n"
+"מפתח: %3\n"
+"טביעת אצבע: %4\n"
+"חותמת זמן: %4\n"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:194
 #, kde-format
@@ -2181,6 +2144,9 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"אי אפשר להשלים את הפעולה כיוון שהיא תסיר את התוכנה הבאה שהיא הכרחית לפעילות "
+"המערכת:<nl/><ul><li>%1</li></ul><nl/>אם לדעתך מדובר בשגיאה, נא לוודא עליה "
+"כתקלה לאורזי ההפצה שלך."
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:207
 #, kde-format
@@ -2196,45 +2162,47 @@ msgid_plural ""
 "This action will also remove the following packages:\n"
 "%2"
 msgstr[0] ""
+"הפעולה הזאת תסיר גם את החבילה הבאה:\n"
+"%2"
 msgstr[1] ""
+"הפעולה הזאת תסיר גם את החבילות הבאות:\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
 #, kde-format
 msgid "Show Dependencies…"
-msgstr ""
+msgstr "הצגת תלויות…"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "תלויות לחבילה: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
 #, kde-format
 msgid "Full Access"
-msgstr ""
+msgstr "גישה מלאה"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Can access everything on the system"
-msgstr ""
+msgstr "אפשר לגשת לכל דבר במערכת"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgctxt "Category"
 msgid "Operating System"
-msgstr "תיקון המערכת"
+msgstr "מערכת הפעלה"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:182
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree: נמצאות מספר הטמעות נטענות פעילות. נא לדווח על תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree: לא נמצאה הטמעה נטענת פעילה. נא לדווח על תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
@@ -2243,94 +2211,95 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>גרסה עיקרית חדשה של %1 יצאה לאור!</b>\n"
+"כדי שיתאפשר לעדכן לגרסה החדשה הזאת, רצוי לוודא שכל העדכונים הממתינים חלו "
+"ולהפעיל את המערכת שלך מחדש."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>גרסה עיקרית חדשה יצאה לאור!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr ""
+msgstr "יש לך עדכונים ממתינים לגרסה הנוכחית. נמשיך בכל מקרה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
-msgstr ""
+msgstr "נא לעדכן לגרסה האחרונה בטרם הסבת הבסיס לגרסה עיקרית"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
-msgstr ""
+msgstr "חסר מקור מרוחק לפעולת הסבת בסיס. נא לדווח על תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
 #, kde-format
 msgid "GPL and other licenses"
-msgstr ""
+msgstr "GPL ורישיונות נוספים"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Additional packages: "
-msgstr "קובץ חבילה לא תקין"
+msgstr "חבילות נוספות: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
 #, kde-format
 msgid "Additional modules: "
-msgstr ""
+msgstr "מודולים נוספים: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Local packages: "
-msgstr "קובץ חבילה לא תקין"
+msgstr "חבילות מקומיות: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
 #, kde-format
 msgid "Replaced packages:"
-msgstr ""
+msgstr "חבילות שהוחלפו:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, kde-format
 msgid "Removed packages:"
-msgstr ""
+msgstr "חבילות שהוסרו:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #, kde-format
 msgid "Currently booted version (pinned)"
-msgstr ""
+msgstr "הגרסה שנטענה כרגע (נעוצה)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
 #, kde-format
 msgid "Currently booted version"
-msgstr ""
+msgstr "הגרסה שנטענה כרגע"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "הגרסה שתעלה אחרי הפעלה מחדש"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr ""
+msgstr "גרסת נסיגה (נעוצה)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "גרסת נסיגה"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
 msgid "ostree remotes"
-msgstr ""
+msgstr "מקורות מרוחקים של ostree"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree-backend: שגיאה: לא סופק ממשק DBus. נא לדווח על תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
@@ -2338,19 +2307,23 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: שגיאה: אי אפשר להפעיל העברה למשאב במבנה שגוי. נא לדווח "
+"על תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: שגיאה: לא ניתן להסב את הבסיס להפנייה ריקה. נא לדווח על "
+"תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree-backend: שגיאה: התבקשה פעולה לא ידועה. נא לדווח על תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
@@ -2359,64 +2332,59 @@ msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
 msgstr ""
+"העברה של rpm-ostree נכשלה עם:\n"
+"%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree-backend: שגיאה: מבנה משאב לא ידוע. נא לדווח על תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
-msgstr ""
+msgstr "העברות rpm-ostree מבוטלות. פעולה זו עלולה לארוך זמן מה. נא להמתין."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@action Checks the Internet for updates"
-#| msgid "Check for Updates"
+#, kde-format
 msgid "Checking for a system update"
-msgstr "בדוק עדכונים"
+msgstr "עדכון מערכת נבדק"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:385
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading system update"
-msgstr "בהורדה"
+msgstr "עדכון מערכת יורד"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:388
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgid "Updating the system"
-msgstr "תיקון המערכת"
+msgstr "המערכת מעודכנת"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "מתבצע עדכון לגרסה העיקרי הבאה"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr ""
+msgstr "פעולה מתבצעת (החלה מחוץ ל־Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
-#, fuzzy, kde-format
-#| msgid "Unknown size"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "גודל לא ידוע"
+msgstr "סוג העברה לא ידוע"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "ערוצים…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:24
 #, kde-format
 msgid "%1 channels"
-msgstr ""
+msgstr "%1 ערוצים"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:32
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
@@ -2427,12 +2395,12 @@ msgstr "%1 - %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:35
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "החלפה"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
 msgid "Permissions for %1"
-msgstr ""
+msgstr "הרשאות עבור %1"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2445,27 +2413,29 @@ msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this computer. Install it anyway?"
 msgstr ""
+"יישום Snap זה לא תואם לדגם בידוד האבטחה ותהיה לו גישה מלאה למחשב. להתקין "
+"אותו בכל זאת?"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
+msgstr "SteamOS: לא ניתן לתשאל את atomupd לאיתור עדכוני SteamOS…"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
-msgstr ""
+msgstr "הצגת כל המנגונים שנרצה שיישארו טעונים, מופרדים בפסיקים ‚,’."
 
 #: libdiscover/resources/AbstractResource.cpp:99
 #, kde-format
 msgid "Broken"
-msgstr "שבור"
+msgstr "פגום"
 
 #: libdiscover/resources/AbstractResource.cpp:101
 #, kde-format
@@ -2483,46 +2453,44 @@ msgid "Launch"
 msgstr "הפעלה"
 
 #: libdiscover/resources/AbstractResource.cpp:251
-#, fuzzy, kde-format
-#| msgid "Update not found"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "העדכון לא נמצא"
+msgstr "רענון גרסת %1"
 
 #: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
-msgstr ""
+msgstr "%1 → %2%1 → %2%2"
 
 #: libdiscover/resources/AbstractResourcesBackend.cpp:171
 #, kde-format
 msgid "Please verify Internet connectivity"
-msgstr ""
+msgstr "נא לוודא שיש חיבור לאינטרנט"
 
 #: libdiscover/resources/ResourcesModel.cpp:101
 #, kde-format
 msgid "Refresh"
-msgstr ""
+msgstr "רענון"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:726
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
-msgstr ""
+msgstr "‎%1+‎"
 
 #: libdiscover/resources/ResourcesUpdatesModel.cpp:109
-#, fuzzy, kde-format
-#| msgid "Updates:"
+#, kde-format
 msgid "Updates"
-msgstr "עדכונים:"
+msgstr "עדכונים"
 
 #: libdiscover/Transaction/Transaction.cpp:133
 #, kde-format
 msgctxt "@label Download rate"
 msgid "%1/s"
-msgstr "%1/שנ׳"
+msgstr "%1 לשנ׳"
 
 #: libdiscover/Transaction/TransactionModel.cpp:74
 #, kde-format
@@ -2558,7 +2526,7 @@ msgstr "בהסרה"
 #, kde-format
 msgctxt "@info:status"
 msgid "Changing Addons"
-msgstr ""
+msgstr "החלפת תוספים"
 
 #: libdiscover/Transaction/TransactionModel.cpp:90
 #, kde-format
@@ -2570,28 +2538,25 @@ msgstr "בוצע"
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
-msgstr "כשל"
+msgstr "נכשל"
 
 #: libdiscover/Transaction/TransactionModel.cpp:94
 #, kde-format
 msgctxt "@info:status"
 msgid "Cancelled"
-msgstr "מבוטל"
+msgstr "בוטל"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:130
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "יישומים"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:131
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "System Updates"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
-msgstr "עדכוני מערכת"
+msgstr "תוכנת מערכת"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:132
 #, kde-format

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-19 01:57+0000\n"
-"PO-Revision-Date: 2020-10-20 19:03+0300\n"
+"PO-Revision-Date: 2023-10-16 23:38+0300\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: notifier/DiscoverNotifier.cpp:143
 #, kde-format
@@ -42,7 +42,7 @@ msgstr "המערכת מעודכנת"
 #: notifier/DiscoverNotifier.cpp:251
 #, kde-format
 msgid "Computer needs to restart"
-msgstr "הפעלת המחשב מחדש נחוצה"
+msgstr "צריך להפעיל את המחשב מחדש"
 
 #: notifier/DiscoverNotifier.cpp:253
 #, kde-format
@@ -52,7 +52,7 @@ msgstr "מצב לא מקוון"
 #: notifier/DiscoverNotifier.cpp:255
 #, kde-format
 msgid "Applying unattended updates…"
-msgstr ""
+msgstr "חלים עדכונים ללא התערבות…"
 
 #: notifier/DiscoverNotifier.cpp:279
 #, kde-format
@@ -85,45 +85,44 @@ msgstr "שדרוג זמין"
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr ""
+msgstr "%1 זמינה כעת."
 
 #: notifier/main.cpp:36
 #, kde-format
 msgid "Discover Notifier"
-msgstr "מתריע Discover"
+msgstr "מודיע Discover"
 
 #: notifier/main.cpp:38
 #, kde-format
 msgid "System update status notifier"
-msgstr "מתריע מצב עדכון המערכת"
+msgstr "מודיע מצב עדכון המערכת"
 
 #: notifier/main.cpp:40
-#, fuzzy, kde-format
-#| msgid "© 2010-2019 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr "© 2010-2019 צוות פיתוח Plasma"
+msgstr "© 2010‏-2022 צוות פיתוח פלזמה"
 
 #: notifier/main.cpp:44
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "עומר א״ש"
+msgstr "עומר א״ש וצוות התרגום של KDE ישראל"
 
 #: notifier/main.cpp:44
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "omeritzicschwartz@gmail.com"
+msgstr "omeritzicschwartz@gmail.com,kde-l10n-he@kde.org"
 
 #: notifier/main.cpp:49
 #, kde-format
 msgid "Replace an existing instance"
-msgstr "החלפת תהליך הקיים"
+msgstr "החלפת מופע קיים"
 
 #: notifier/main.cpp:51
 #, kde-format
 msgid "Do not show the notifier"
-msgstr "לא להציג את  המתריע"
+msgstr "לא להציג את המודיע"
 
 #: notifier/main.cpp:51
 #, kde-format
@@ -136,22 +135,19 @@ msgid "Updates"
 msgstr "עדכונים"
 
 #: notifier/NotifierItem.cpp:50
-#, fuzzy, kde-format
-#| msgid "Open Discover..."
+#, kde-format
 msgid "Open Discover…"
-msgstr "פתיחת Discover..."
+msgstr "פתיחת Discover…"
 
 #: notifier/NotifierItem.cpp:55
-#, fuzzy, kde-format
-#| msgid "See Updates..."
+#, kde-format
 msgid "See Updates…"
-msgstr "הצגת העדכונים..."
+msgstr "הצגת העדכונים…"
 
 #: notifier/NotifierItem.cpp:60
-#, fuzzy, kde-format
-#| msgid "Refresh..."
+#, kde-format
 msgid "Refresh…"
-msgstr "רענון..."
+msgstr "רענון…"
 
 #: notifier/NotifierItem.cpp:64
 #, kde-format
@@ -159,10 +155,9 @@ msgid "Restart to apply installed updates"
 msgstr "יש להפעיל מחדש כדי להחיל את העדכונים הנבחרים"
 
 #: notifier/NotifierItem.cpp:65
-#, fuzzy, kde-format
-#| msgid "Click to restart the computer"
+#, kde-format
 msgid "Click to restart the device"
-msgstr "יש ללחוץ כדי להפעיל את המחשב מחדש"
+msgstr "לחיצה כאן תפעיל את המכשיר מחדש"
 
 #~ msgid "New version: %1"
 #~ msgstr "הגרסה החדשה: %1"
