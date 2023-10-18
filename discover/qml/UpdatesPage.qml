@@ -346,7 +346,7 @@ DiscoverPage {
             Keys.onPressed: if (event.key === Qt.Key_Alt) model.extended = true
             Keys.onReleased: if (event.key === Qt.Key_Alt) model.extended = false
 
-            ColumnLayout {
+            contentItem: ColumnLayout {
                 id: layout
                 property bool extended: model.extended
                 onExtendedChanged: if (extended) {

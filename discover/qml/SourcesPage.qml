@@ -262,7 +262,7 @@ DiscoverPage {
                 }
             ]
 
-            RowLayout {
+            contentItem: RowLayout {
                 CheckBox {
                     id: enabledBox
 
