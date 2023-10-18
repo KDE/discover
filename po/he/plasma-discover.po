@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-15 01:40+0000\n"
-"PO-Revision-Date: 2020-10-16 09:44+0300\n"
+"PO-Revision-Date: 2023-10-17 14:54+0300\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
@@ -17,14 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: discover/DiscoverObject.cpp:161
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
-msgstr ""
+msgstr "%1 לא מוגדר להתקנת יישומים דרך Discover–רק הרחבות ליישומים"
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -34,12 +34,14 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"כדי להשתמש ב־Discover ליישומים, יש להתקין את המודול המועדף עליך דרך עמוד "
+"ה<interface>הגדרות</interface>, תחת <interface>מנגנונים חסרים</interface>."
 
 #: discover/DiscoverObject.cpp:166
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr ""
+msgstr "דיווח על התקלה הזאת אל %1"
 
 #: discover/DiscoverObject.cpp:171
 #, kde-kuit-format
@@ -54,16 +56,23 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"כדי להשתמש ב־Discover ליישומים, יש להתקין את <link url='https://wiki."
+"archlinux.org/title/Flatpak#Installation'>Flatpak</link> או את <link "
+"url='https://wiki.archlinux.org/title/"
+"KDE#Discover_does_not_show_any_applications'>PackageKit</link> עם מנהל "
+"החבילות <command>pacman</command>.<nl/><nl/> כדאי לקרוא על ה<link "
+"url='https://archlinux.org/packages/extra/x86_64/discover/'>אריזה של "
+"Discover ל־%1</link>"
 
 #: discover/DiscoverObject.cpp:266
 #, kde-format
 msgid "Could not find category '%1'"
-msgstr "לא היה ניתן למצוא קטגוריית \"%1\""
+msgstr "הקטגוריה ‚%1’ לא נמצאה"
 
 #: discover/DiscoverObject.cpp:281
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "מתבצע ניסיון לפתוח קובץ לא קיים ‚%1’"
 
 #: discover/DiscoverObject.cpp:303
 #, kde-format
@@ -71,36 +80,35 @@ msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr ""
-"לא ניתן לתקשר עם משאבי flatpak ללא הגישור החבוי %1 ל־flatpak. נא להתקינו "
-"קודם."
+"אי אפשר לתקשר עם משאבי flatpak מבלי מנגנון ה־flatpak‏ %1. נא להתקין אותו "
+"תחילה."
 
 #: discover/DiscoverObject.cpp:307
-#, fuzzy, kde-format
-#| msgid "Couldn't open %1"
+#, kde-format
 msgid "Could not open %1"
-msgstr "לא היה ניתן לפתוח את %1"
+msgstr "לא ניתן לפתוח את %1"
 
 #: discover/DiscoverObject.cpp:369
 #, kde-format
 msgid "Please make sure Snap support is installed"
-msgstr ""
+msgstr "נא לוודא שמותקנת תמיכה ב־Snap"
 
 #: discover/DiscoverObject.cpp:371
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
-msgstr ""
+msgstr "לא ניתן לפתוח את %1 כיוון שלא נמצא באף אחד ממאגרי התוכנה הזמינים."
 
 #: discover/DiscoverObject.cpp:374
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
-msgstr ""
+msgstr "נא לדווח על התקלה הזאת לאורזי ההפצה שלך."
 
 #: discover/DiscoverObject.cpp:377
 #, kde-format
 msgid "Report This Issue"
-msgstr ""
+msgstr "דיווח על התקלה הזאת"
 
 #: discover/DiscoverObject.cpp:439 discover/DiscoverObject.cpp:441
 #: discover/main.cpp:121
@@ -112,47 +120,47 @@ msgstr "Discover"
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
-msgstr ""
+msgstr "Discover נסגר לפני שמספר משימות הספיקו לסיים, נמתין לסיומן."
 
 #: discover/main.cpp:42
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
-msgstr ""
+msgstr "לפתוח את היישום שצוין ישירות באמצעות כתובת ה־appstream://‎ המלאה שלו."
 
 #: discover/main.cpp:43
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
-msgstr ""
+msgstr "פתיחה עם חיפוש אחר תוכניות שיכולות לטפל בסוג המדיה (MIME) שצוין."
 
 #: discover/main.cpp:44
 #, kde-format
 msgid "Display a list of entries with a category."
-msgstr "הצגת רשימה של ערכים עם קטגוריה."
+msgstr "הצגת רשימת ערכים עם קטגוריה."
 
 #: discover/main.cpp:45
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
-msgstr ""
+msgstr "פתיחת Discover במצב שנבחר. מצבים תואמים לכפתורי סרגל הכלים."
 
 #: discover/main.cpp:46
 #, kde-format
 msgid "List all the available modes."
-msgstr "רישום כל המצבים הזמינים."
+msgstr "הצגת כל המצבים הזמינים."
 
 #: discover/main.cpp:47
 #, kde-format
 msgid "Compact Mode (auto/compact/full)."
-msgstr "מצב קומפקטי (אוטומטי/קומפקטי/מלא)."
+msgstr "מצב מצומצם (אוטומטי/מצומצם/מלא)."
 
 #: discover/main.cpp:48
 #, kde-format
 msgid "Local package file to install"
-msgstr "חבילה מקומית להתקנה"
+msgstr "קובץ חבילה מקומית להתקנה"
 
 #: discover/main.cpp:49
 #, kde-format
 msgid "List all the available backends."
-msgstr "פירוט כל הגישורים החבויים הזמינים."
+msgstr "הצגת כל המנגנונים הזמינים."
 
 #: discover/main.cpp:50
 #, kde-format
@@ -162,12 +170,12 @@ msgstr "חיפוש מחרוזת."
 #: discover/main.cpp:51
 #, kde-format
 msgid "Lists the available options for user feedback"
-msgstr "פירוט כל האפשרויות הזמינות למשוב משתמש"
+msgstr "הצגת כל האפשרויות הזמינות למשוב משתמש"
 
 #: discover/main.cpp:53
 #, kde-format
 msgid "Supports appstream: url scheme"
-msgstr ""
+msgstr "תומך בסכמת כתובות מסוג appstream:‎"
 
 #: discover/main.cpp:123
 #, kde-format
@@ -175,52 +183,51 @@ msgid "An application explorer"
 msgstr "סייר יישומים"
 
 #: discover/main.cpp:125
-#, fuzzy, kde-format
-#| msgid "© 2010-2019 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr "© 2010-2019 צוות פיתוח Plasma"
+msgstr "© 2010‏-2022 צוות פיתוח פלזמה"
 
 #: discover/main.cpp:126
 #, kde-format
 msgid "Aleix Pol Gonzalez"
-msgstr ""
+msgstr "אלש פול י גונזלז"
 
 #: discover/main.cpp:127
 #, kde-format
 msgid "Nate Graham"
-msgstr ""
+msgstr "נייט גרהם"
 
 #: discover/main.cpp:128
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
-msgstr ""
+msgstr "אבטחת איכות, עיצוב ושימושיות"
 
 #: discover/main.cpp:132
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
-msgstr ""
+msgstr "דן לייניר טורתרה ג׳נסן"
 
 #: discover/main.cpp:133
 #, kde-format
 msgid "KNewStuff"
-msgstr ""
+msgstr "KNewStuff"
 
 #: discover/main.cpp:140
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "צוות התרגום של KDE ישראל,,עומר א״ש"
+msgstr "צוות התרגום של KDE ישראל,עומר א״ש"
 
 #: discover/main.cpp:140
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "kde-l10n-he@kde.org,,omeritzicschwartz@gmail.com"
+msgstr "kde-l10n-he@kde.org,omeritzicschwartz@gmail.com"
 
 #: discover/main.cpp:153
 #, kde-format
 msgid "Available backends:\n"
-msgstr "הגישורים החבויים הזמינים:\n"
+msgstr "המנגנונים הזמינים:\n"
 
 #: discover/main.cpp:209
 #, kde-format
@@ -228,15 +235,14 @@ msgid "Available modes:\n"
 msgstr "המצבים הזמינים:\n"
 
 #: discover/qml/AddonsView.qml:20 discover/qml/navigation.js:43
-#, fuzzy, kde-format
-#| msgid "Addons"
+#, kde-format
 msgid "Addons for %1"
-msgstr "תוספים"
+msgstr "תוספים עבור %1"
 
 #: discover/qml/AddonsView.qml:52
 #, kde-format
 msgid "More…"
-msgstr ""
+msgstr "עוד…"
 
 #: discover/qml/AddonsView.qml:61
 #, kde-format
@@ -246,7 +252,7 @@ msgstr "החלת הגדרות"
 #: discover/qml/AddonsView.qml:68
 #, kde-format
 msgid "Reset"
-msgstr ""
+msgstr "איפוס"
 
 #: discover/qml/AddSourceDialog.qml:20
 #, kde-format
@@ -271,7 +277,7 @@ msgstr "ביטול"
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
-msgstr[0] "דירוג %1"
+msgstr[0] "דירוג"
 msgstr[1] "%1 דירוגים"
 
 #: discover/qml/ApplicationDelegate.qml:159
@@ -286,7 +292,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "מ־%1"
 
 #: discover/qml/ApplicationPage.qml:81
 #, kde-format
@@ -296,11 +302,10 @@ msgstr "%1 - %2"
 #: discover/qml/ApplicationPage.qml:198
 #, kde-format
 msgid "Unknown author"
-msgstr ""
+msgstr "יוצר לא ידוע"
 
 #: discover/qml/ApplicationPage.qml:243
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgid "Version:"
 msgstr "גרסה:"
 
@@ -310,76 +315,71 @@ msgid "Size:"
 msgstr "גודל:"
 
 #: discover/qml/ApplicationPage.qml:267
-#, fuzzy, kde-format
-#| msgid "License:"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
 msgstr[0] "רישיון:"
-msgstr[1] "רישיון:"
+msgstr[1] "רישיונות:"
 
 #: discover/qml/ApplicationPage.qml:275
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
-msgstr ""
+msgstr "לא ידוע"
 
 #: discover/qml/ApplicationPage.qml:305
-#, fuzzy, kde-format
-#| msgid "What's New"
+#, kde-format
 msgid "What does this mean?"
-msgstr "מה חדש"
+msgstr "מה הכוונה?"
 
 #: discover/qml/ApplicationPage.qml:314
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "להציג עוד…"
+msgstr[1] "להציג עוד…"
 
 #: discover/qml/ApplicationPage.qml:325
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "נא להזין דירוג"
+msgstr "דירוג התוכן:"
 
 #: discover/qml/ApplicationPage.qml:334
 #, kde-format
 msgid "Age: %1+"
-msgstr ""
+msgstr "גיל: ‎%1+‎"
 
 #: discover/qml/ApplicationPage.qml:354
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr ""
+msgstr "הצגת פרטים…"
 
 #: discover/qml/ApplicationPage.qml:376
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
+msgstr "אין צילומי מסך זמינים עבור %1"
 
 #: discover/qml/ApplicationPage.qml:548
-#, fuzzy, kde-format
-#| msgid "Documentation:"
+#, kde-format
 msgid "Documentation"
-msgstr "תיעוד:"
+msgstr "תיעוד"
 
 #: discover/qml/ApplicationPage.qml:549
 #, kde-format
 msgid "Read the project's official documentation"
-msgstr ""
+msgstr "הצגת תיעוד המיזם הרשמי"
 
 #: discover/qml/ApplicationPage.qml:565
 #, kde-format
 msgid "Website"
-msgstr ""
+msgstr "אתר"
 
 #: discover/qml/ApplicationPage.qml:566
-#, fuzzy, kde-format
-#| msgid "Visit the app's website"
+#, kde-format
 msgid "Visit the project's website"
-msgstr "ביקור באתר של היישום"
+msgstr "ביקור באתר היישום"
 
 #: discover/qml/ApplicationPage.qml:582
 #, kde-format
@@ -389,24 +389,24 @@ msgstr "תוספים"
 #: discover/qml/ApplicationPage.qml:583
 #, kde-format
 msgid "Install or remove additional functionality"
-msgstr ""
+msgstr "התקנת או הסרת יכולות נוספות"
 
 #: discover/qml/ApplicationPage.qml:602
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "שיתוף"
 
 #: discover/qml/ApplicationPage.qml:603
 #, kde-format
 msgid "Send a link for this application"
-msgstr ""
+msgstr "שליחת קישור ליישום הזה"
 
 #: discover/qml/ApplicationPage.qml:619
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "רוצה להמליץ לך על היישום %1!"
 
 #: discover/qml/ApplicationPage.qml:639
 #, kde-format
@@ -419,91 +419,82 @@ msgid "Reviews"
 msgstr "ביקורות"
 
 #: discover/qml/ApplicationPage.qml:681
-#, fuzzy, kde-format
-#| msgid "Reviews for %1"
+#, kde-format
 msgid "Loading reviews for %1"
-msgstr "ביקורות על %1"
+msgstr "הביקורות על %1 נטענות"
 
 #: discover/qml/ApplicationPage.qml:689
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "הביקורות על %1 לא זמינות כרגע"
 
 #: discover/qml/ApplicationPage.qml:717
-#, fuzzy, kde-format
-#| msgid "Show %1 review..."
-#| msgid_plural "Show all %1 reviews..."
+#, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
-msgstr[0] "הצגת ביקורת %1..."
-msgstr[1] "הצגת %1 ביקורות..."
+msgstr[0] "הצגת הביקורת"
+msgstr[1] "הצגת %1 הביקורות"
 
 #: discover/qml/ApplicationPage.qml:729
-#, fuzzy, kde-format
-#| msgid "Write a Review..."
+#, kde-format
 msgid "Write a Review"
-msgstr "כתיבת ביקורת..."
+msgstr "כתיבת ביקורת"
 
 #: discover/qml/ApplicationPage.qml:729
-#, fuzzy, kde-format
-#| msgid "Install to write a review!"
+#, kde-format
 msgid "Install to Write a Review"
-msgstr "יש להתקין כדי לכתוב ביקורת!"
+msgstr "יש להתקין כדי לכתוב ביקורת"
 
 #: discover/qml/ApplicationPage.qml:741
-#, fuzzy, kde-format
-#| msgid "Get involved:"
+#, kde-format
 msgid "Get Involved"
-msgstr "לקיחת חלק:"
+msgstr "השתתפות"
 
 #: discover/qml/ApplicationPage.qml:783
 #, kde-format
 msgid "Donate"
-msgstr ""
+msgstr "תרומה"
 
 #: discover/qml/ApplicationPage.qml:784
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
-msgstr ""
+msgstr "אפשר לתמוך ולהוקיר תודה למפתחים על ידי תרומה למיזם שלהם"
 
 #: discover/qml/ApplicationPage.qml:800
 #, kde-format
 msgid "Report Bug"
-msgstr ""
+msgstr "דיווח על תקלה"
 
 #: discover/qml/ApplicationPage.qml:801
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
-msgstr ""
+msgstr "תיעוד תקלה שמצאת כדי לסייע בתיקונה"
 
 #: discover/qml/ApplicationPage.qml:817
-#, fuzzy, kde-format
-#| msgid "Contribute..."
+#, kde-format
 msgid "Contribute"
-msgstr "תרומה..."
+msgstr "תרומה"
 
 #: discover/qml/ApplicationPage.qml:818
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
-msgstr ""
+msgstr "סיוע למתכנתים בפיתוח, עיצוב או תרגום"
 
 #: discover/qml/ApplicationPage.qml:843
-#, fuzzy, kde-format
-#| msgid "License:"
+#, kde-format
 msgid "All Licenses"
-msgstr "רישיון:"
+msgstr "כל הרישיונות"
 
 #: discover/qml/ApplicationPage.qml:876
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating"
-msgstr "נא להזין דירוג"
+msgstr "דירוג התוכן"
 
 #: discover/qml/ApplicationPage.qml:892
 #, kde-format
 msgid "Risks of proprietary software"
-msgstr ""
+msgstr "סכנות בתוכנה קניינית"
 
 #: discover/qml/ApplicationPage.qml:898
 #, kde-kuit-format
@@ -520,6 +511,14 @@ msgid ""
 "you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
+"קוד המקור של היישום הזה סגור לסקירה ושיפור על ידי הציבור באופן חלקי או מלא. "
+"משמעות הדבר היא שגורמי צד־שלישי ומשתמשים כמוך לא יכולים לחקור מה קורה מאחורי "
+"הקלעים ועד כמה הוא מאובטח ומהימן או לשנות ולהפיץ ללא הרשאה מפורשת מהיוצרים."
+"<nl/><nl/>יכול להיות שהיישום בטוח לחלוטין לשימוש או שהוא פועל נגדך במגוון "
+"דרכים–כגון קצירת הפרטים האישיים שלך, מעקב אחר המיקום שלך או העברת תוכן "
+"הקבצים שלך לגורם אחר. אין דרך קלה לוודא, לכן כדאי להתקין את היישום הזה רק אם "
+"לדעתך אפשר לסמוך על היוצרים שלו לחלוטין (<link url='%1'>%2</link>).<nl/><nl/"
+">אפשר לקרוא עוד בכתובת <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:899
 #, kde-kuit-format
@@ -536,14 +535,21 @@ msgid ""
 "you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
+"קוד המקור של היישום הזה סגור לסקירה ושיפור על ידי הציבור באופן חלקי או מלא. "
+"משמעות הדבר היא שגורמי צד־שלישי ומשתמשים כמוך לא יכולים לחקור מה קורה מאחורי "
+"הקלעים ועד כמה הוא מאובטח ומהימן או לשנות ולהפיץ ללא הרשאה מפורשת מהיוצרים."
+"<nl/><nl/>יכול להיות שהיישום בטוח לחלוטין לשימוש או שהוא פועל נגדך במגוון "
+"דרכים–כגון קצירת הפרטים האישיים שלך, מעקב אחר המיקום שלך או העברת תוכן "
+"הקבצים שלך לגורם אחר. אין דרך קלה לוודא, לכן כדאי להתקין את היישום הזה רק אם "
+"לדעתך אפשר לסמוך על היוצרים שלו לחלוטין (%1).<nl/><nl/>אפשר לקרוא עוד בכתובת "
+"<link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:54
-#, fuzzy, kde-format
-#| msgid "Search: %1"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "חיפוש: %1"
-msgstr[1] "חיפוש: %1"
+msgstr[0] "חיפוש: %2 - פריט"
+msgstr[1] "חיפוש: %2 - %3 פריטים"
 
 #: discover/qml/ApplicationsListPage.qml:56
 #, kde-format
@@ -551,20 +557,18 @@ msgid "Search: %1"
 msgstr "חיפוש: %1"
 
 #: discover/qml/ApplicationsListPage.qml:60
-#, fuzzy, kde-format
-#| msgid "%1 - %2"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 - %2"
-msgstr[1] "%1 - %2"
+msgstr[0] "%2 - פריט"
+msgstr[1] "%2 - %1 פריטים"
 
 #: discover/qml/ApplicationsListPage.qml:66
-#, fuzzy, kde-format
-#| msgid "Search: %1"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "חיפוש: %1"
-msgstr[1] "חיפוש: %1"
+msgstr[0] "חיפוש - פריט"
+msgstr[1] "חיפוש - %1 פריטים"
 
 #: discover/qml/ApplicationsListPage.qml:68
 #: discover/qml/ApplicationsListPage.qml:235
@@ -598,22 +602,21 @@ msgid "Release Date"
 msgstr "תאריך שחרור"
 
 #: discover/qml/ApplicationsListPage.qml:181
-#, fuzzy, kde-format
-#| msgid "Sorry, nothing found"
+#, kde-format
 msgid "Nothing found"
-msgstr "לא נמצא דבר, עמך הסליחה"
+msgstr "לא נמצא כלום"
 
 #: discover/qml/ApplicationsListPage.qml:189
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
-msgstr ""
+msgstr "חיפוש בכל הקטגוריות"
 
 #: discover/qml/ApplicationsListPage.qml:199
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
-msgstr ""
+msgstr "חיפוש באינטרנט אחר „%1”"
 
 #: discover/qml/ApplicationsListPage.qml:203
 #, kde-format
@@ -621,7 +624,7 @@ msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
 "language. %1 is the text that will be searched for."
 msgid "https://duckduckgo.com/?q=%1"
-msgstr ""
+msgstr "https://duckduckgo.com/?q=%1&kl=he-il"
 
 #: discover/qml/ApplicationsListPage.qml:214
 #, kde-format
@@ -629,13 +632,13 @@ msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr ""
+msgstr "„%1” לא נמצא בקטגוריה „%2”"
 
 #: discover/qml/ApplicationsListPage.qml:216
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
-msgstr ""
+msgstr "„%1” לא נמצא במקורות הזמינים"
 
 #: discover/qml/ApplicationsListPage.qml:217
 #, kde-format
@@ -645,113 +648,107 @@ msgid ""
 "been reviewed by your distributor for functionality or stability. Use with "
 "caution."
 msgstr ""
+"אפשר להוריד את „%1” מהאינטרנט. עם זאת, תוכנות שמגיעות ישירות מאתרים לא נבדקו "
+"על ידי המפיץ שלך כדי לוודא אם יש להן יכולות או שהן יציבות. יש להשתמש בזהירות."
 
 #: discover/qml/ApplicationsListPage.qml:250
-#, fuzzy, kde-format
-#| msgid "Still looking..."
+#, kde-format
 msgid "Still looking…"
-msgstr "עדיין בחיפוש..."
+msgstr "עדיין בחיפוש…"
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "דך הבית"
+msgstr "דף הבית"
 
 #: discover/qml/BrowsingPage.qml:63
 #, kde-format
 msgid "Unable to load applications"
-msgstr ""
+msgstr "לא ניתן לטעון יישומים"
 
 #: discover/qml/BrowsingPage.qml:101
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr ""
+msgstr "הכי נפוץ"
 
 #: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "בחירת העורך"
 
 #: discover/qml/BrowsingPage.qml:138
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "המשחקים בדירוג העליון"
 
 #: discover/qml/BrowsingPage.qml:157 discover/qml/BrowsingPage.qml:186
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr ""
+msgstr "להציג עוד"
 
 #: discover/qml/BrowsingPage.qml:167
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "כלי הפיתוח בדירוג העליון"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
-msgstr "הרצה בתור <em>משתמש־על (root)</em> היא מסוכנת ומיותרת."
+msgstr "הרצה כ<em>משתמש־על (root)</em> היא מסוכנת ומיותרת."
 
 #: discover/qml/DiscoverWindow.qml:56
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Home"
-msgstr "דך הבית"
+msgstr "דף ה&בית"
 
 #: discover/qml/DiscoverWindow.qml:66
-#, fuzzy, kde-format
-#| msgid "Search"
+#, kde-format
 msgid "&Search"
-msgstr "חיפוש"
+msgstr "&חיפוש"
 
 #: discover/qml/DiscoverWindow.qml:74
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "&Installed"
-msgstr "מותקן"
+msgstr "מו&תקן"
 
 #: discover/qml/DiscoverWindow.qml:85
-#, fuzzy, kde-format
-#| msgid "Fetching updates..."
+#, kde-format
 msgid "Fetching &updates…"
-msgstr "באחזור העדכונים..."
+msgstr "מ&שיכת עדכונים…"
 
 #: discover/qml/DiscoverWindow.qml:85
-#, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "Update (%1)"
+#, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
-msgstr[0] "עדכון (%1)"
-msgstr[1] "עדכון (%1)"
+msgstr[0] "&עדכון (%1)"
+msgstr[1] "&עדכונים (%1)"
 
 #: discover/qml/DiscoverWindow.qml:93
-#, fuzzy, kde-format
-#| msgid "About"
+#, kde-format
 msgid "&About"
-msgstr "אודות"
+msgstr "על &אודות"
 
 #: discover/qml/DiscoverWindow.qml:101
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgid "S&ettings"
-msgstr "הגדרות"
+msgstr "ה&גדרות"
 
 #: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:343
 #: discover/qml/DiscoverWindow.qml:450
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "שגיאה"
 
 #: discover/qml/DiscoverWindow.qml:158
 #, kde-format
 msgid "Unable to find resource: %1"
-msgstr "אין יכולת למצוא את המשאב: %1"
+msgstr "לא ניתן למצוא את המשאב: %1"
 
 #: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:180
 #, kde-format
@@ -761,31 +758,29 @@ msgstr "המשך"
 #: discover/qml/DiscoverWindow.qml:319
 #, kde-format
 msgid "Report this issue"
-msgstr ""
+msgstr "דיווח על התקלה הזאת"
 
 #: discover/qml/DiscoverWindow.qml:343
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "הצבעות: %1 מתוך %2"
+msgstr "שגיאה %1 מתוך %2"
 
 #: discover/qml/DiscoverWindow.qml:388
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "הצגת הקודם"
 
 #: discover/qml/DiscoverWindow.qml:401
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "הצגת תוכן"
+msgstr "הצגת הבא"
 
 #: discover/qml/DiscoverWindow.qml:417
 #, kde-format
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "העתקה ללוח הגזירים"
 
 #: discover/qml/Feedback.qml:13
 #, kde-format
@@ -802,10 +797,9 @@ msgstr ""
 "מידע נוסף בכתובת https://kde.org/privacypolicy-apps.php."
 
 #: discover/qml/Feedback.qml:18
-#, fuzzy, kde-format
-#| msgid "Submitting usage information..."
+#, kde-format
 msgid "Submitting usage information…"
-msgstr "בשליחת פרטי שימוש..."
+msgstr "פרטי שימוש נשלחים…"
 
 #: discover/qml/Feedback.qml:18
 #, kde-format
@@ -813,29 +807,26 @@ msgid "Configure"
 msgstr "הגדרה"
 
 #: discover/qml/Feedback.qml:22
-#, fuzzy, kde-format
-#| msgid "Configure feedback..."
+#, kde-format
 msgid "Configure feedback…"
-msgstr "הגדרת משוב..."
+msgstr "הגדרת משוב…"
 
 #: discover/qml/Feedback.qml:29 discover/qml/SourcesPage.qml:21
-#, fuzzy, kde-format
-#| msgid "Configure feedback..."
+#, kde-format
 msgid "Configure Updates…"
-msgstr "הגדרת משוב..."
+msgstr "הגדרת עדכונים…"
 
 #: discover/qml/Feedback.qml:57
 #, kde-format
 msgid ""
 "You can help us improving this application by sharing statistics and "
 "participate in surveys."
-msgstr "ניתן לעזור לנו לשפר את היישום הזה בשיתוף הסטטיסטיקה והשתתפות בסקרים."
+msgstr "ניתן לסייע לנו לשפר את היישום הזה בשיתוף הסטטיסטיקה והשתתפות בסקרים."
 
 #: discover/qml/Feedback.qml:57
-#, fuzzy, kde-format
-#| msgid "Contribute..."
+#, kde-format
 msgid "Contribute…"
-msgstr "תרומה..."
+msgstr "תרומה…"
 
 #: discover/qml/Feedback.qml:62
 #, kde-format
@@ -843,28 +834,24 @@ msgid "We are looking for your feedback!"
 msgstr "אנחנו מחכים למשוב שלך!"
 
 #: discover/qml/Feedback.qml:62
-#, fuzzy, kde-format
-#| msgid "Participate..."
+#, kde-format
 msgid "Participate…"
-msgstr "השתתפות..."
+msgstr "השתתפות…"
 
 #: discover/qml/InstallApplicationButton.qml:24
-#, fuzzy, kde-format
-#| msgid "Loading..."
+#, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
-msgstr "בטעינה..."
+msgstr "בטעינה…"
 
 #: discover/qml/InstallApplicationButton.qml:28
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
-msgstr "התקנה"
+msgstr "התקנה מתוך %1"
 
 #: discover/qml/InstallApplicationButton.qml:30
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "התקנה"
@@ -882,7 +869,7 @@ msgstr "מותקן"
 #: discover/qml/navigation.js:18
 #, kde-format
 msgid "Resources for '%1'"
-msgstr ""
+msgstr "משאבים עבור ‚%1’"
 
 #: discover/qml/ProgressView.qml:16
 #, kde-format
@@ -895,17 +882,13 @@ msgid "Tasks"
 msgstr "משימות"
 
 #: discover/qml/ProgressView.qml:99
-#, fuzzy, kde-format
-#| msgctxt "TransactioName - TransactionStatus"
-#| msgid "%1 - %2: %3"
+#, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
-msgstr "%1 - %2: %3"
+msgstr "%1 - %2: %3, נותרו %4"
 
 #: discover/qml/ProgressView.qml:100
-#, fuzzy, kde-format
-#| msgctxt "TransactioName - TransactionStatus"
-#| msgid "%1 - %2: %3"
+#, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
@@ -919,7 +902,7 @@ msgstr "%1 - %2"
 #: discover/qml/ReviewDelegate.qml:64
 #, kde-format
 msgid "unknown reviewer"
-msgstr "נותן/ת ביקורת לא ידוע/ה"
+msgstr "ביקורת ממקור לא ידוע"
 
 #: discover/qml/ReviewDelegate.qml:65
 #, kde-format
@@ -937,10 +920,9 @@ msgid "Version: %1"
 msgstr "גרסה: %1"
 
 #: discover/qml/ReviewDelegate.qml:83
-#, fuzzy, kde-format
-#| msgid "Version: %1"
+#, kde-format
 msgid "Version: unknown"
-msgstr "גרסה: %1"
+msgstr "גרסה: לא ידועה"
 
 #: discover/qml/ReviewDelegate.qml:98
 #, kde-format
@@ -950,7 +932,7 @@ msgstr "הצבעות: %1 מתוך %2"
 #: discover/qml/ReviewDelegate.qml:105
 #, kde-format
 msgid "Was this review useful?"
-msgstr ""
+msgstr "הביקורת הזאת שימושית?"
 
 #: discover/qml/ReviewDelegate.qml:117
 #, kde-format
@@ -967,7 +949,7 @@ msgstr "לא"
 #: discover/qml/ReviewDialog.qml:19
 #, kde-format
 msgid "Reviewing %1"
-msgstr "בביקורת על %1"
+msgstr "כתיבת ביקורת על %1"
 
 #: discover/qml/ReviewDialog.qml:26
 #, kde-format
@@ -992,7 +974,7 @@ msgstr "כותרת:"
 #: discover/qml/ReviewDialog.qml:71
 #, kde-format
 msgid "Enter a rating"
-msgstr "נא להזין דירוג"
+msgstr "נא לבחור דירוג"
 
 #: discover/qml/ReviewDialog.qml:74
 #, kde-format
@@ -1005,21 +987,20 @@ msgid "Write the review"
 msgstr "נא לכתוב את הביקורת"
 
 #: discover/qml/ReviewDialog.qml:80
-#, fuzzy, kde-format
-#| msgid "Keep writing..."
+#, kde-format
 msgid "Keep writing…"
-msgstr "להמשיך לכתוב..."
+msgstr "להמשיך בכתיבה…"
 
 #: discover/qml/ReviewDialog.qml:83
 #, kde-format
 msgid "Too long!"
-msgstr "ארוך מדי!"
+msgstr "ארוכה מדי!"
 
 #: discover/qml/ReviewDialog.qml:86
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr ""
+msgstr "נא למלא שם"
 
 #: discover/qml/ReviewsPage.qml:44
 #, kde-format
@@ -1027,27 +1008,24 @@ msgid "Reviews for %1"
 msgstr "ביקורות על %1"
 
 #: discover/qml/ReviewsPage.qml:55
-#, fuzzy, kde-format
-#| msgid "Write a Review..."
+#, kde-format
 msgid "Write a Review…"
-msgstr "כתיבת ביקורת..."
+msgstr "כתיבת ביקורת…"
 
 #: discover/qml/ReviewsPage.qml:60
 #, kde-format
 msgid "Install this app to write a review"
-msgstr "יש להתקין יישום זה לכתיבת ביקורת"
+msgstr "יש להתקין יישום זה כדי לכתוב עליו ביקורת"
 
 #: discover/qml/SearchField.qml:24
-#, fuzzy, kde-format
-#| msgid "Search"
+#, kde-format
 msgid "Search…"
-msgstr "חיפוש"
+msgstr "חיפוש…"
 
 #: discover/qml/SearchField.qml:24
-#, fuzzy, kde-format
-#| msgid "Search in '%1'..."
+#, kde-format
 msgid "Search in '%1'…"
-msgstr "חיפוש בתוך \"%1\"..."
+msgstr "חיפוש בתוך ‚%1’…"
 
 #: discover/qml/SourcesPage.qml:17
 #, kde-format
@@ -1057,13 +1035,12 @@ msgstr "הגדרות"
 #: discover/qml/SourcesPage.qml:98
 #, kde-format
 msgid "Default source"
-msgstr ""
+msgstr "מקור ברירת מחדל"
 
 #: discover/qml/SourcesPage.qml:105
-#, fuzzy, kde-format
-#| msgid "Add Source..."
+#, kde-format
 msgid "Add Source…"
-msgstr "הוספת מקור..."
+msgstr "הוספת מקור…"
 
 #: discover/qml/SourcesPage.qml:131
 #, kde-format
@@ -1073,27 +1050,27 @@ msgstr "הפיכה לברירת המחדל"
 #: discover/qml/SourcesPage.qml:222
 #, kde-format
 msgid "Increase priority"
-msgstr ""
+msgstr "הגברת העדיפות"
 
 #: discover/qml/SourcesPage.qml:228
 #, kde-format
 msgid "Failed to increase '%1' preference"
-msgstr "ההגדלה של העדפת \"%1\" נכשלה"
+msgstr "ההגברה של העדפת „%1” נכשלה"
 
 #: discover/qml/SourcesPage.qml:234
 #, kde-format
 msgid "Decrease priority"
-msgstr ""
+msgstr "הפחתת העדיפות"
 
 #: discover/qml/SourcesPage.qml:240
 #, kde-format
 msgid "Failed to decrease '%1' preference"
-msgstr "ההקטנה של העדפת \"%1\" נכשלה"
+msgstr "ההפחתה של העדפת „%1” נכשלה"
 
 #: discover/qml/SourcesPage.qml:246
 #, kde-format
 msgid "Remove repository"
-msgstr ""
+msgstr "הסרת מאגר"
 
 #: discover/qml/SourcesPage.qml:257
 #, kde-format
@@ -1103,7 +1080,7 @@ msgstr "הצגת תוכן"
 #: discover/qml/SourcesPage.qml:297
 #, kde-format
 msgid "Missing Backends"
-msgstr "גישורים חבויים שחסרים"
+msgstr "מנגנונים חסרים"
 
 #: discover/qml/UpdatesPage.qml:12
 #, kde-format
@@ -1113,22 +1090,22 @@ msgstr "עדכונים"
 #: discover/qml/UpdatesPage.qml:45
 #, kde-format
 msgid "Update Issue"
-msgstr "בעיה בעדכון"
+msgstr "תקלה בעדכון"
 
 #: discover/qml/UpdatesPage.qml:45
 #, kde-format
 msgid "Technical details"
-msgstr ""
+msgstr "פרטים טכניים"
 
 #: discover/qml/UpdatesPage.qml:61
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
-msgstr ""
+msgstr "אירעה תקלה בהתקנת העדכון. נא לנסות שוב מאוחר יותר."
 
 #: discover/qml/UpdatesPage.qml:67
 #, kde-format
 msgid "See Technical Details"
-msgstr ""
+msgstr "הצגת פרטים טכניים"
 
 #: discover/qml/UpdatesPage.qml:94
 #, kde-format
@@ -1137,68 +1114,67 @@ msgid ""
 "If the error indicated above looks like a real issue and not a temporary "
 "network error, please report it to %1, not KDE."
 msgstr ""
+"אם השגיאה שצוינה להלן נראית כמו תקלה אמתית ולא שגיאת רשת זמנית, נא לדווח "
+"עליה אל %1, לא ל־KDE."
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Copy Text"
-msgstr ""
+msgstr "העתקת טקסט"
 
 #: discover/qml/UpdatesPage.qml:106
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
-msgstr ""
+msgstr "הודעת השגיאה הועתקה. נא לזכור לדווח עליה ל־%1, לא ל־KDE!"
 
 #: discover/qml/UpdatesPage.qml:113
 #, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr ""
+msgstr "דיווח על התקלה ל־%1"
 
 #: discover/qml/UpdatesPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Update Selected"
+#, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "עדכון הנבחרים"
 
 #: discover/qml/UpdatesPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
-msgstr "עדכון הכל"
+msgstr "עדכון הכול"
 
 #: discover/qml/UpdatesPage.qml:181
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "התעלמות"
 
 #: discover/qml/UpdatesPage.qml:227
 #, kde-format
 msgid "Select All"
-msgstr ""
+msgstr "לבחור הכול"
 
 #: discover/qml/UpdatesPage.qml:235
 #, kde-format
 msgid "Select None"
-msgstr ""
+msgstr "לבטל בחירה"
 
 #: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Restart automatically after update has completed"
-msgstr ""
+msgstr "להפעיל מחדש לאחר השלמת העדכון"
 
 #: discover/qml/UpdatesPage.qml:249
 #, kde-format
 msgid "Total size: %1"
-msgstr ""
+msgstr "גודל כולל: %1"
 
 #: discover/qml/UpdatesPage.qml:284
-#, fuzzy, kde-format
-#| msgid "Restart"
+#, kde-format
 msgid "Restart Now"
-msgstr "הפעלה מחדש"
+msgstr "הפעלה מחדש כעת"
 
 #: discover/qml/UpdatesPage.qml:384
 #, kde-format
@@ -1211,14 +1187,12 @@ msgid "Installing"
 msgstr "בהתקנה"
 
 #: discover/qml/UpdatesPage.qml:436
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgid "Update from:"
-msgstr "עדכון הכל"
+msgstr "עדכון מתוך:"
 
 #: discover/qml/UpdatesPage.qml:448
-#, fuzzy, kde-format
-#| msgid "%1 (%2)"
+#, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
 "address within that backend"
@@ -1226,18 +1200,15 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:455
-#, fuzzy, kde-format
-#| msgid "More Information..."
+#, kde-format
 msgid "More Information…"
-msgstr "מידע נוסף..."
+msgstr "מידע נוסף…"
 
 #: discover/qml/UpdatesPage.qml:483
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Fetching updates..."
+#, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
-msgstr "באחזור העדכונים..."
+msgstr "העדכונים מתקבלים…"
 
 #: discover/qml/UpdatesPage.qml:496
 #, kde-format
@@ -1249,26 +1220,26 @@ msgstr "עדכונים"
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
-msgstr ""
+msgstr "להפעיל את המערכת מחדש כדי להשלים את תהליך העדכון"
 
 #: discover/qml/UpdatesPage.qml:517 discover/qml/UpdatesPage.qml:524
 #: discover/qml/UpdatesPage.qml:531
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
-msgstr "המערכת מעודכנת"
+msgstr "עדכני"
 
 #: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
-msgstr "כדאי לבדוק אם יש עדכונים"
+msgstr "צריך לבדוק אם יש עדכונים"
 
 #: discover/qml/UpdatesPage.qml:545
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
-msgstr ""
+msgstr "מועד העדכון האחרון לא ידוע"
 
 #, fuzzy
 #~| msgid "Up to date"
