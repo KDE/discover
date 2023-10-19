@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.1
 import QtQuick 2.15
@@ -158,6 +160,8 @@ DiscoverPage {
     header: ColumnLayout {
         id: errorsColumn
 
+        spacing: Kirigami.Units.smallSpacing
+
         DiscoverInlineMessage {
             Layout.fillWidth: true
             Layout.margins: Kirigami.Units.smallSpacing
@@ -168,8 +172,11 @@ DiscoverPage {
             model: resourcesUpdatesModel.errorMessages
             delegate: Kirigami.InlineMessage {
                 id: inline
+
+                required property string modelData
+
                 Layout.fillWidth: true
-                Layout.margins: visible ? Kirigami.Units.smallSpacing : 0
+                Layout.margins: Kirigami.Units.smallSpacing
                 text: modelData
                 visible: true
                 type: Kirigami.MessageType.Error
@@ -325,6 +332,8 @@ DiscoverPage {
         section {
             property: "section"
             delegate: Kirigami.ListSectionHeader {
+                required property string section
+
                 width: updatesView.width
                 label: section
             }
@@ -332,6 +341,11 @@ DiscoverPage {
 
         delegate: ItemDelegate {
             id: listItem
+
+            // type: roles of UpdateModel
+            required property var model
+            required property int index
+            required property bool extended
 
             width: updatesView.width
 
@@ -341,7 +355,7 @@ DiscoverPage {
                 model.extended = false;
             }
 
-            visible: resourceState < 3 //3=AbstractBackendUpdater.Done
+            visible: model.resourceState < 3 //3=AbstractBackendUpdater.Done
 
             Keys.onReturnPressed: event => {
                 itemChecked.clicked();
@@ -357,28 +371,30 @@ DiscoverPage {
                 }
             }
 
+            onExtendedChanged: if (extended) {
+                updateModel.fetchUpdateDetails(index)
+            }
+
             contentItem: ColumnLayout {
-                id: layout
-                property bool extended: model.extended
-                onExtendedChanged: if (extended) {
-                    updateModel.fetchUpdateDetails(index)
-                }
+                spacing: Kirigami.Units.smallSpacing
+
                 RowLayout {
+                    spacing: Kirigami.Units.smallSpacing
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
                     CheckBox {
                         id: itemChecked
                         Layout.alignment: Qt.AlignVCenter
-                        checked: model.checked === Qt.Checked
-                        onClicked: model.checked = (model.checked === Qt.Checked ? Qt.Unchecked : Qt.Checked)
+                        checked: listItem.model.checked === Qt.Checked
+                        onClicked: listItem.model.checked = (listItem.model.checked === Qt.Checked ? Qt.Unchecked : Qt.Checked)
                         enabled: !resourcesUpdatesModel.isProgressing
                     }
 
                     Kirigami.Icon {
                         width: Kirigami.Units.gridUnit * 2
                         Layout.preferredHeight: width
-                        source: decoration
+                        source: listItem.model.decoration
                         smooth: true
                     }
 
@@ -392,7 +408,7 @@ DiscoverPage {
                         // App name
                         Kirigami.Heading {
                             Layout.fillWidth: true
-                            text: i18n("%1", model.display)
+                            text: listItem.model.display
                             level: 3
                             elide: Text.ElideRight
                         }
@@ -401,30 +417,30 @@ DiscoverPage {
                         Label {
                             Layout.fillWidth: true
                             elide: truncated ? Text.ElideLeft : Text.ElideRight
-                            text: resource.upgradeText
+                            text: listItem.model.resource.upgradeText
                             opacity: listItem.hovered ? 0.8 : 0.6
                         }
                     }
 
                     LabelBackground {
                         Layout.minimumWidth: Kirigami.Units.gridUnit * 6
-                        text: resourceState === 2 ? i18n("Installing") : size
+                        text: listItem.model.resourceState === 2 ? i18n("Installing") : listItem.model.size
 
-                        progress: resourceProgress / 100
+                        progress: listItem.model.resourceProgress / 100
                     }
                 }
 
                 Frame {
                     Layout.fillWidth: true
                     implicitHeight: view.contentHeight
-                    visible: layout.extended && changelog.length>0
+                    visible: listItem.model.extended && listItem.model.changelog.length > 0
                     Label {
                         id: view
                         anchors {
                             right: parent.right
                             left: parent.left
                         }
-                        text: changelog
+                        text: listItem.model.changelog
                         textFormat: Text.StyledText
                         wrapMode: Text.WordWrap
                         onLinkActivated: link => Qt.openUrlExternally(link)
@@ -440,7 +456,8 @@ DiscoverPage {
 
                 RowLayout {
                     Layout.fillWidth: true
-                    visible: layout.extended
+                    spacing: Kirigami.Units.smallSpacing
+                    visible: listItem.model.extended
 
                     Label {
                         Layout.leftMargin: Kirigami.Units.gridUnit
@@ -448,16 +465,16 @@ DiscoverPage {
                     }
                     // Backend icon
                     Kirigami.Icon {
-                        source: resource.sourceIcon
+                        source: listItem.model.resource.sourceIcon
                         implicitWidth: Kirigami.Units.iconSizes.smallMedium
                         implicitHeight: Kirigami.Units.iconSizes.smallMedium
                     }
                     // Backend label and origin/remote
                     Label {
                         Layout.fillWidth: true
-                        text: resource.origin.length === 0 ? resource.backend.displayName
+                        text: listItem.model.resource.origin.length === 0 ? listItem.model.resource.backend.displayName
                                 : i18nc("%1 is the backend that provides this app, %2 is the specific repository or address within that backend","%1 (%2)",
-                                        resource.backend.displayName, resource.origin)
+                                        listItem.model.resource.backend.displayName, listItem.model.resource.origin)
                         elide: Text.ElideRight
                     }
 
@@ -465,7 +482,7 @@ DiscoverPage {
                         Layout.alignment: Qt.AlignRight
                         text: i18n("More Information…")
                         enabled: !resourcesUpdatesModel.isProgressing
-                        onClicked: Navigation.openApplication(resource)
+                        onClicked: Navigation.openApplication(listItem.model.resource)
                     }
                 }
             }
