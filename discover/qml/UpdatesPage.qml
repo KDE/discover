@@ -343,11 +343,19 @@ DiscoverPage {
 
             visible: resourceState < 3 //3=AbstractBackendUpdater.Done
 
-            Keys.onReturnPressed: {
-                itemChecked.clicked()
+            Keys.onReturnPressed: event => {
+                itemChecked.clicked();
             }
-            Keys.onPressed: if (event.key === Qt.Key_Alt) model.extended = true
-            Keys.onReleased: if (event.key === Qt.Key_Alt) model.extended = false
+            Keys.onPressed: event => {
+                if (event.key === Qt.Key_Alt) {
+                    model.extended = true;
+                }
+            }
+            Keys.onReleased: event => {
+                if (event.key === Qt.Key_Alt) {
+                    model.extended = false;
+                }
+            }
 
             contentItem: ColumnLayout {
                 id: layout
