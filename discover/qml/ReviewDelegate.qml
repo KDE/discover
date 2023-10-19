@@ -72,7 +72,7 @@ Kirigami.AbstractCard {
                 Layout.rightMargin: Kirigami.Units.largeSpacing
                 Layout.bottomMargin: Kirigami.Units.smallSpacing
 
-                text: display
+                text: model.display
                 wrapMode: Text.Wrap
             }
 
