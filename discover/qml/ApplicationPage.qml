@@ -491,6 +491,7 @@ DiscoverPage {
 
                 // Match `level: 1` in Kirigami.Heading
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 1.35
+                font.weight: Font.DemiBold
 
                 Accessible.role: Accessible.Heading
             }
