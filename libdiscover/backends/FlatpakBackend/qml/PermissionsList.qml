@@ -4,6 +4,8 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
+pragma ComponentBehavior: Bound
+
 import QtQuick 2.15
 import QtQuick.Controls 2.15 as QQC2
 import QtQuick.Layouts 1.12
@@ -30,9 +32,16 @@ ColumnLayout {
         model: resource.permissionsModel()
 
         delegate: KD.SubtitleDelegate {
+            id: delegate
+
+            required property var model
+            required property string brief
+            required property string description
+
             Layout.fillWidth: true
-            text: model.brief
-            subtitle: model.description
+
+            text: brief
+            subtitle: description
             icon.name: model.icon
 
             // so that it gets neither hover nor pressed appearance when it's not interactive
