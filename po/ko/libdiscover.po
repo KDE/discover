@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-12 01:42+0000\n"
+"POT-Creation-Date: 2023-10-19 01:41+0000\n"
 "PO-Revision-Date: 2023-10-08 22:35+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -961,8 +961,8 @@ msgstr "설정과 사용자 데이터 삭제"
 msgid "Clearing settings and user data…"
 msgstr "설정과 사용자 데이터 삭제 중…"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:22
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
@@ -2165,22 +2165,22 @@ msgstr[0] ""
 "이 작업을 진행하려면 다음 패키지를 삭제해야 합니다:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:13
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "의존성 표시…"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "패키지의 의존성: %1"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Full Access"
 msgstr "전체 접근"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
 #, kde-format
 msgid "Can access everything on the system"
 msgstr "시스템의 모든 것에 접근"
@@ -2379,23 +2379,23 @@ msgstr "작업 진행 중(Discover 외부에서 시작됨)"
 msgid "Unknown transaction type"
 msgstr "알 수 없는 트랜잭션 형식"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:16
 #, kde-format
 msgid "Channels…"
 msgstr "채널…"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:24
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:25
 #, kde-format
 msgid "%1 channels"
 msgstr "채널 %1개"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:32
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:35
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:47
 #, kde-format
 msgid "Switch"
 msgstr "전환"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-12 01:42+0000\n"
+"POT-Creation-Date: 2023-10-19 01:41+0000\n"
 "PO-Revision-Date: 2023-02-06 22:01\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -995,8 +995,8 @@ msgstr "Выдаліць налады і карыстальніцкія даны
 msgid "Clearing settings and user data…"
 msgstr "Выдаліць налады і карыстальніцкія даныя"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:22
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
@@ -2236,22 +2236,22 @@ msgstr[3] ""
 "Пры выкананні гэтага дзеяння будуць таксама выдаленыя наступныя пакункі:\n"
 " %2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:13
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "Паказаць залежнасці…"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "Залежнасці для пакунка: %1"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Full Access"
 msgstr "Поўны доступ"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
 #, kde-format
 msgid "Can access everything on the system"
 msgstr "Магчымасць доступу да ўсіх файлаў у сістэме"
@@ -2459,23 +2459,23 @@ msgstr "Выконваецца аперацыя (запушчана па-за м
 msgid "Unknown transaction type"
 msgstr "Невядомы тып трансакцыі"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:16
 #, kde-format
 msgid "Channels…"
 msgstr "Каналы…"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:24
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:25
 #, kde-format
 msgid "%1 channels"
 msgstr "%1 каналаў"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:32
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:35
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:47
 #, kde-format
 msgid "Switch"
 msgstr "Пераключыць"

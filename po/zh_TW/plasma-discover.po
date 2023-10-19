@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-15 01:40+0000\n"
+"POT-Creation-Date: 2023-10-19 01:41+0000\n"
 "PO-Revision-Date: 2023-08-07 22:40+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -259,7 +259,7 @@ msgstr "新增"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:274
 #: discover/qml/InstallApplicationButton.qml:45
-#: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
+#: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:191
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -475,17 +475,17 @@ msgstr "透過寫程式、進行設計、測試或是翻譯來幫助開發者們
 msgid "All Licenses"
 msgstr "所有授權"
 
-#: discover/qml/ApplicationPage.qml:876
+#: discover/qml/ApplicationPage.qml:873
 #, kde-format
 msgid "Content Rating"
 msgstr "內容評級"
 
-#: discover/qml/ApplicationPage.qml:892
+#: discover/qml/ApplicationPage.qml:889
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "私有軟體的風險"
 
-#: discover/qml/ApplicationPage.qml:898
+#: discover/qml/ApplicationPage.qml:895
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -508,7 +508,7 @@ msgstr ""
 "link> —— 時才安裝本應用程式。<nl/><nl/>您可以至 <link url='%3'>%3</link> 了解"
 "更多。"
 
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:896
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -732,7 +732,7 @@ msgstr "錯誤"
 msgid "Unable to find resource: %1"
 msgstr "找不到資源：%1"
 
-#: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:181
 #, kde-format
 msgid "Proceed"
 msgstr "繼續"
@@ -793,7 +793,7 @@ msgstr "設定"
 msgid "Configure feedback…"
 msgstr "設定回報等級…"
 
-#: discover/qml/Feedback.qml:29 discover/qml/SourcesPage.qml:21
+#: discover/qml/Feedback.qml:29 discover/qml/SourcesPage.qml:22
 #, kde-format
 msgid "Configure Updates…"
 msgstr "設定更新…"
@@ -1009,57 +1009,57 @@ msgstr "搜尋…"
 msgid "Search in '%1'…"
 msgstr "在 %1 中搜尋…"
 
-#: discover/qml/SourcesPage.qml:17
+#: discover/qml/SourcesPage.qml:18
 #, kde-format
 msgid "Settings"
 msgstr "設定"
 
-#: discover/qml/SourcesPage.qml:98
+#: discover/qml/SourcesPage.qml:99
 #, kde-format
 msgid "Default source"
 msgstr "預設來源"
 
-#: discover/qml/SourcesPage.qml:105
+#: discover/qml/SourcesPage.qml:106
 #, kde-format
 msgid "Add Source…"
 msgstr "新增來源…"
 
-#: discover/qml/SourcesPage.qml:131
+#: discover/qml/SourcesPage.qml:132
 #, kde-format
 msgid "Make default"
 msgstr "設為預設值"
 
-#: discover/qml/SourcesPage.qml:222
+#: discover/qml/SourcesPage.qml:223
 #, kde-format
 msgid "Increase priority"
 msgstr "增加優先度"
 
-#: discover/qml/SourcesPage.qml:228
+#: discover/qml/SourcesPage.qml:229
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "無法增加「%1」設定"
 
-#: discover/qml/SourcesPage.qml:234
+#: discover/qml/SourcesPage.qml:235
 #, kde-format
 msgid "Decrease priority"
 msgstr "降低優先度"
 
-#: discover/qml/SourcesPage.qml:240
+#: discover/qml/SourcesPage.qml:241
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "無法移除「%1」設定"
 
-#: discover/qml/SourcesPage.qml:246
+#: discover/qml/SourcesPage.qml:247
 #, kde-format
 msgid "Remove repository"
 msgstr "移除軟體庫"
 
-#: discover/qml/SourcesPage.qml:257
+#: discover/qml/SourcesPage.qml:258
 #, kde-format
 msgid "Show contents"
 msgstr "顯示內容"
 
-#: discover/qml/SourcesPage.qml:297
+#: discover/qml/SourcesPage.qml:298
 #, kde-format
 msgid "Missing Backends"
 msgstr "未發現後端"

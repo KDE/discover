@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-12 01:42+0000\n"
+"POT-Creation-Date: 2023-10-19 01:41+0000\n"
 "PO-Revision-Date: 2023-08-08 16:07+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -964,8 +964,8 @@ msgstr "正在刪除設定與使用者資料"
 msgid "Clearing settings and user data…"
 msgstr "正在清除設定與使用者資料…"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:22
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
@@ -2154,22 +2154,22 @@ msgstr[0] ""
 "這動作也會移除下述的軟體包：\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:13
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "顯示相依性關係…"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "軟體包的依賴：%1"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Full Access"
 msgstr "完整存取權"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
 #, kde-format
 msgid "Can access everything on the system"
 msgstr "可以存取系統上的所有東西"
@@ -2356,23 +2356,23 @@ msgstr "操作進行中（在 Discover 外開始）"
 msgid "Unknown transaction type"
 msgstr "未知的工作階段形態"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:16
 #, kde-format
 msgid "Channels…"
 msgstr "頻道…"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:24
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:25
 #, kde-format
 msgid "%1 channels"
 msgstr "%1 個頻道"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:32
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:35
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:47
 #, kde-format
 msgid "Switch"
 msgstr "切換"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-12 01:42+0000\n"
+"POT-Creation-Date: 2023-10-19 01:41+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -995,8 +995,8 @@ msgstr ""
 msgid "Clearing settings and user data…"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:22
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
@@ -2313,22 +2313,22 @@ msgstr[3] ""
 "Da bi se ova radnja nastavila potrebno je ukloniti sledeći paket:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:13
 #, kde-format
 msgid "Show Dependencies…"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Full Access"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
 #, kde-format
 msgid "Can access everything on the system"
 msgstr ""
@@ -2520,23 +2520,23 @@ msgstr ""
 msgid "Unknown transaction type"
 msgstr "Ne mogu da otkažem transakciju"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:16
 #, kde-format
 msgid "Channels…"
 msgstr ""
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:24
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:25
 #, kde-format
 msgid "%1 channels"
 msgstr ""
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:32
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
 msgstr ""
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:35
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:47
 #, kde-format
 msgid "Switch"
 msgstr ""

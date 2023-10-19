@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-15 01:40+0000\n"
+"POT-Creation-Date: 2023-10-19 01:41+0000\n"
 "PO-Revision-Date: 2023-10-17 14:54+0300\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -266,7 +266,7 @@ msgstr "הוספה"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:274
 #: discover/qml/InstallApplicationButton.qml:45
-#: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
+#: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:191
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -486,17 +486,17 @@ msgstr "סיוע למתכנתים בפיתוח, עיצוב או תרגום"
 msgid "All Licenses"
 msgstr "כל הרישיונות"
 
-#: discover/qml/ApplicationPage.qml:876
+#: discover/qml/ApplicationPage.qml:873
 #, kde-format
 msgid "Content Rating"
 msgstr "דירוג התוכן"
 
-#: discover/qml/ApplicationPage.qml:892
+#: discover/qml/ApplicationPage.qml:889
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "סכנות בתוכנה קניינית"
 
-#: discover/qml/ApplicationPage.qml:898
+#: discover/qml/ApplicationPage.qml:895
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -520,7 +520,7 @@ msgstr ""
 "לדעתך אפשר לסמוך על היוצרים שלו לחלוטין (<link url='%1'>%2</link>).<nl/><nl/"
 ">אפשר לקרוא עוד בכתובת <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:896
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -750,7 +750,7 @@ msgstr "שגיאה"
 msgid "Unable to find resource: %1"
 msgstr "לא ניתן למצוא את המשאב: %1"
 
-#: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:181
 #, kde-format
 msgid "Proceed"
 msgstr "המשך"
@@ -811,7 +811,7 @@ msgstr "הגדרה"
 msgid "Configure feedback…"
 msgstr "הגדרת משוב…"
 
-#: discover/qml/Feedback.qml:29 discover/qml/SourcesPage.qml:21
+#: discover/qml/Feedback.qml:29 discover/qml/SourcesPage.qml:22
 #, kde-format
 msgid "Configure Updates…"
 msgstr "הגדרת עדכונים…"
@@ -1027,57 +1027,57 @@ msgstr "חיפוש…"
 msgid "Search in '%1'…"
 msgstr "חיפוש בתוך ‚%1’…"
 
-#: discover/qml/SourcesPage.qml:17
+#: discover/qml/SourcesPage.qml:18
 #, kde-format
 msgid "Settings"
 msgstr "הגדרות"
 
-#: discover/qml/SourcesPage.qml:98
+#: discover/qml/SourcesPage.qml:99
 #, kde-format
 msgid "Default source"
 msgstr "מקור ברירת מחדל"
 
-#: discover/qml/SourcesPage.qml:105
+#: discover/qml/SourcesPage.qml:106
 #, kde-format
 msgid "Add Source…"
 msgstr "הוספת מקור…"
 
-#: discover/qml/SourcesPage.qml:131
+#: discover/qml/SourcesPage.qml:132
 #, kde-format
 msgid "Make default"
 msgstr "הפיכה לברירת המחדל"
 
-#: discover/qml/SourcesPage.qml:222
+#: discover/qml/SourcesPage.qml:223
 #, kde-format
 msgid "Increase priority"
 msgstr "הגברת העדיפות"
 
-#: discover/qml/SourcesPage.qml:228
+#: discover/qml/SourcesPage.qml:229
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "ההגברה של העדפת „%1” נכשלה"
 
-#: discover/qml/SourcesPage.qml:234
+#: discover/qml/SourcesPage.qml:235
 #, kde-format
 msgid "Decrease priority"
 msgstr "הפחתת העדיפות"
 
-#: discover/qml/SourcesPage.qml:240
+#: discover/qml/SourcesPage.qml:241
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "ההפחתה של העדפת „%1” נכשלה"
 
-#: discover/qml/SourcesPage.qml:246
+#: discover/qml/SourcesPage.qml:247
 #, kde-format
 msgid "Remove repository"
 msgstr "הסרת מאגר"
 
-#: discover/qml/SourcesPage.qml:257
+#: discover/qml/SourcesPage.qml:258
 #, kde-format
 msgid "Show contents"
 msgstr "הצגת תוכן"
 
-#: discover/qml/SourcesPage.qml:297
+#: discover/qml/SourcesPage.qml:298
 #, kde-format
 msgid "Missing Backends"
 msgstr "מנגנונים חסרים"

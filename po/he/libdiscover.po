@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-12 01:42+0000\n"
+"POT-Creation-Date: 2023-10-19 01:41+0000\n"
 "PO-Revision-Date: 2023-10-17 01:10+0300\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -964,8 +964,8 @@ msgstr "מחיקת הגדרות ונתוני משתמש"
 msgid "Clearing settings and user data…"
 msgstr "ההגדרות ונתוני המשתמש נמחקים…"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:21
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:22
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
@@ -2168,22 +2168,22 @@ msgstr[1] ""
 "הפעולה הזאת תסיר גם את החבילות הבאות:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:13
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "הצגת תלויות…"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "תלויות לחבילה: %1"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Full Access"
 msgstr "גישה מלאה"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
 #, kde-format
 msgid "Can access everything on the system"
 msgstr "אפשר לגשת לכל דבר במערכת"
@@ -2376,23 +2376,23 @@ msgstr "פעולה מתבצעת (החלה מחוץ ל־Discover)"
 msgid "Unknown transaction type"
 msgstr "סוג העברה לא ידוע"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:16
 #, kde-format
 msgid "Channels…"
 msgstr "ערוצים…"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:24
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:25
 #, kde-format
 msgid "%1 channels"
 msgstr "%1 ערוצים"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:32
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:35
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:47
 #, kde-format
 msgid "Switch"
 msgstr "החלפה"

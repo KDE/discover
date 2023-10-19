@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-15 01:40+0000\n"
+"POT-Creation-Date: 2023-10-19 01:41+0000\n"
 "PO-Revision-Date: 2023-09-29 19:09+0530\n"
 "Last-Translator: \n"
 "Language-Team: Sanskrit\n"
@@ -267,7 +267,7 @@ msgstr "योजयतु"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:274
 #: discover/qml/InstallApplicationButton.qml:45
-#: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
+#: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:191
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -487,17 +487,17 @@ msgstr "विध्यादेशन, कल्पिन्, परीक्�
 msgid "All Licenses"
 msgstr "सर्वे अनुज्ञापत्राणि"
 
-#: discover/qml/ApplicationPage.qml:876
+#: discover/qml/ApplicationPage.qml:873
 #, kde-format
 msgid "Content Rating"
 msgstr "सामग्रीमूल्याङ्कनम्"
 
-#: discover/qml/ApplicationPage.qml:892
+#: discover/qml/ApplicationPage.qml:889
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "स्वामित्वयुक्तस्य सॉफ्टवेयरस्य सङ्कटपदाः"
 
-#: discover/qml/ApplicationPage.qml:898
+#: discover/qml/ApplicationPage.qml:895
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -522,7 +522,7 @@ msgstr ""
 "लेखकान् पूर्णतया विश्वसिति (<link url='%1'>%2</link>).<nl/><nl/> भवन्तः इत्यत्र अधिकं "
 "ज्ञातुं शक्नुवन्ति ।<link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:896
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -753,7 +753,7 @@ msgstr "त्रुटि"
 msgid "Unable to find resource: %1"
 msgstr "संसाधनं अन्वेष्टुं असमर्थः: %1"
 
-#: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:181
 #, kde-format
 msgid "Proceed"
 msgstr "प्रवर्तते"
@@ -814,7 +814,7 @@ msgstr "विन्यस्यताम्"
 msgid "Configure feedback…"
 msgstr "प्रतिक्रियां विन्यस्यताम्…"
 
-#: discover/qml/Feedback.qml:29 discover/qml/SourcesPage.qml:21
+#: discover/qml/Feedback.qml:29 discover/qml/SourcesPage.qml:22
 #, kde-format
 msgid "Configure Updates…"
 msgstr "अद्यतनं विन्यस्यताम्…"
@@ -1032,57 +1032,57 @@ msgstr "अन्वेषण…"
 msgid "Search in '%1'…"
 msgstr "'%1' इत्यत्र अन्वेष्टुम्…"
 
-#: discover/qml/SourcesPage.qml:17
+#: discover/qml/SourcesPage.qml:18
 #, kde-format
 msgid "Settings"
 msgstr "समयोजनानि"
 
-#: discover/qml/SourcesPage.qml:98
+#: discover/qml/SourcesPage.qml:99
 #, kde-format
 msgid "Default source"
 msgstr "पूर्वनिर्धारित स्रोतः"
 
-#: discover/qml/SourcesPage.qml:105
+#: discover/qml/SourcesPage.qml:106
 #, kde-format
 msgid "Add Source…"
 msgstr "स्रोतः योजयतु…"
 
-#: discover/qml/SourcesPage.qml:131
+#: discover/qml/SourcesPage.qml:132
 #, kde-format
 msgid "Make default"
 msgstr "पूर्वनिर्धारितं कुरुत"
 
-#: discover/qml/SourcesPage.qml:222
+#: discover/qml/SourcesPage.qml:223
 #, kde-format
 msgid "Increase priority"
 msgstr "प्राथमिकता वर्धयतु"
 
-#: discover/qml/SourcesPage.qml:228
+#: discover/qml/SourcesPage.qml:229
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "'%1' प्राधान्यं वर्धयितुं असफलम्"
 
-#: discover/qml/SourcesPage.qml:234
+#: discover/qml/SourcesPage.qml:235
 #, kde-format
 msgid "Decrease priority"
 msgstr "प्राधान्यं न्यूनीकरोतु"
 
-#: discover/qml/SourcesPage.qml:240
+#: discover/qml/SourcesPage.qml:241
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "'%1' प्राधान्यं न्यूनीकर्तुं असफलम्"
 
-#: discover/qml/SourcesPage.qml:246
+#: discover/qml/SourcesPage.qml:247
 #, kde-format
 msgid "Remove repository"
 msgstr "भण्डारं निष्कासयन्तु"
 
-#: discover/qml/SourcesPage.qml:257
+#: discover/qml/SourcesPage.qml:258
 #, kde-format
 msgid "Show contents"
 msgstr "सामग्रीं दर्शयन्तु"
 
-#: discover/qml/SourcesPage.qml:297
+#: discover/qml/SourcesPage.qml:298
 #, kde-format
 msgid "Missing Backends"
 msgstr "अनुपलब्धः पृष्ठभागाः"

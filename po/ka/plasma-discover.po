@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-15 01:40+0000\n"
+"POT-Creation-Date: 2023-10-19 01:41+0000\n"
 "PO-Revision-Date: 2023-09-01 04:45+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -270,7 +270,7 @@ msgstr "დამატება"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:274
 #: discover/qml/InstallApplicationButton.qml:45
-#: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:190
+#: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:191
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -491,17 +491,17 @@ msgstr "დაეხმარეთ პროგრამისტებს კ�
 msgid "All Licenses"
 msgstr "ყველა ლიცენზია"
 
-#: discover/qml/ApplicationPage.qml:876
+#: discover/qml/ApplicationPage.qml:873
 #, kde-format
 msgid "Content Rating"
 msgstr "შემცველობის შეფასება"
 
-#: discover/qml/ApplicationPage.qml:892
+#: discover/qml/ApplicationPage.qml:889
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "დახურული კოდის მქონე პროგრამების რისკი"
 
-#: discover/qml/ApplicationPage.qml:898
+#: discover/qml/ApplicationPage.qml:895
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -527,7 +527,7 @@ msgstr ""
 "დააყენოთ (<link url='%1'>%2</link>).<nl/><nl/>გაიგეთ მეტი <link url='%3'>%3</"
 "link>."
 
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:896
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -759,7 +759,7 @@ msgstr "შეცდომა"
 msgid "Unable to find resource: %1"
 msgstr "რესურსის პოვნა შეუძლებელია: %1"
 
-#: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:180
+#: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:181
 #, kde-format
 msgid "Proceed"
 msgstr "გაგრძელება"
@@ -821,7 +821,7 @@ msgstr "მორგება"
 msgid "Configure feedback…"
 msgstr "უკუპასუხის მორგება…"
 
-#: discover/qml/Feedback.qml:29 discover/qml/SourcesPage.qml:21
+#: discover/qml/Feedback.qml:29 discover/qml/SourcesPage.qml:22
 #, kde-format
 msgid "Configure Updates…"
 msgstr "განახლებების მორგება…"
@@ -1039,57 +1039,57 @@ msgstr "ძებნა…"
 msgid "Search in '%1'…"
 msgstr "'%1'-ში ძებნა…"
 
-#: discover/qml/SourcesPage.qml:17
+#: discover/qml/SourcesPage.qml:18
 #, kde-format
 msgid "Settings"
 msgstr "მორგება"
 
-#: discover/qml/SourcesPage.qml:98
+#: discover/qml/SourcesPage.qml:99
 #, kde-format
 msgid "Default source"
 msgstr "ნაგულისხმები წყარო"
 
-#: discover/qml/SourcesPage.qml:105
+#: discover/qml/SourcesPage.qml:106
 #, kde-format
 msgid "Add Source…"
 msgstr "წყაროს დამატება…"
 
-#: discover/qml/SourcesPage.qml:131
+#: discover/qml/SourcesPage.qml:132
 #, kde-format
 msgid "Make default"
 msgstr "ნაგულისხმებად გამოყენება"
 
-#: discover/qml/SourcesPage.qml:222
+#: discover/qml/SourcesPage.qml:223
 #, kde-format
 msgid "Increase priority"
 msgstr "პრიორიტეტის გაზრდა"
 
-#: discover/qml/SourcesPage.qml:228
+#: discover/qml/SourcesPage.qml:229
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "'%1'-ის უპირატესობის გაზრდის შეცდომა"
 
-#: discover/qml/SourcesPage.qml:234
+#: discover/qml/SourcesPage.qml:235
 #, kde-format
 msgid "Decrease priority"
 msgstr "პრიორიტეტის დაწევა"
 
-#: discover/qml/SourcesPage.qml:240
+#: discover/qml/SourcesPage.qml:241
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "'%1'-ის უპირატესობის შემცირების შეცდომა"
 
-#: discover/qml/SourcesPage.qml:246
+#: discover/qml/SourcesPage.qml:247
 #, kde-format
 msgid "Remove repository"
 msgstr "რეპოზიტორიის წაშლა"
 
-#: discover/qml/SourcesPage.qml:257
+#: discover/qml/SourcesPage.qml:258
 #, kde-format
 msgid "Show contents"
 msgstr "შემცველობის ჩვენება"
 
-#: discover/qml/SourcesPage.qml:297
+#: discover/qml/SourcesPage.qml:298
 #, kde-format
 msgid "Missing Backends"
 msgstr "უკანაბოლოები ხელმიუწვდომელია"
