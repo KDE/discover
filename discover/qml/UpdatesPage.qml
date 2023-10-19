@@ -317,13 +317,6 @@ DiscoverPage {
         reuseItems: true
         clip: true
 
-        displaced: Transition {
-            YAnimator {
-                duration: Kirigami.Units.longDuration
-                easing.type: Easing.InOutQuad
-            }
-        }
-
         model: QSortFilterProxyModel {
             sourceModel: updateModel
             sortRole: UpdateModel.SectionResourceProgressRole
@@ -445,12 +438,6 @@ DiscoverPage {
                         wrapMode: Text.WordWrap
                         onLinkActivated: link => Qt.openUrlExternally(link)
 
-                    }
-
-                    //This saves a binding loop on implictHeight, as the Label
-                    //height is updated twice (first time with the wrong value)
-                    Behavior on implicitHeight {
-                        PropertyAnimation { duration: Kirigami.Units.shortDuration }
                     }
                 }
 
