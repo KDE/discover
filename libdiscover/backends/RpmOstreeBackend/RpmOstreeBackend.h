@@ -86,7 +86,7 @@ private:
     bool m_registrered;
 
     /* The list of available deployments */
-    QVector<RpmOstreeResource *> m_resources;
+    QList<RpmOstreeResource *> m_resources;
 
     /* The currently booted deployment */
     RpmOstreeResource *m_currentlyBootedDeployment;

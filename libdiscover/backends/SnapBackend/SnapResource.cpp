@@ -333,7 +333,7 @@ public:
         auto req = backend->client()->getInterfaces();
         req->runSync();
 
-        QHash<QString, QVector<QSnapdSlot *>> slotsForInterface;
+        QHash<QString, QList<QSnapdSlot *>> slotsForInterface;
         for (int i = 0; i < req->slotCount(); ++i) {
             const auto slot = req->slot(i);
             slot->setParent(this);

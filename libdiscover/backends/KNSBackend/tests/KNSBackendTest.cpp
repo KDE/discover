@@ -37,7 +37,7 @@ KNSBackendTest::KNSBackendTest(QObject *parent)
     auto findTestBackend = [](AbstractResourcesBackend *backend) {
         return backend->name() == QLatin1String("ksplash.knsrc");
     };
-    m_backend = kFilter<QVector<AbstractResourcesBackend *>>(model->backends(), findTestBackend).value(0);
+    m_backend = kFilter<QList<AbstractResourcesBackend *>>(model->backends(), findTestBackend).value(0);
 
     if (!m_backend || !m_backend->isValid()) {
         qWarning() << "couldn't run the test";
@@ -47,14 +47,14 @@ KNSBackendTest::KNSBackendTest(QObject *parent)
     connect(m_backend->reviewsBackend(), &AbstractReviewsBackend::reviewsReady, this, &KNSBackendTest::reviewsArrived);
 }
 
-QVector<AbstractResource *> KNSBackendTest::getResources(ResultsStream *stream, bool canBeEmpty)
+QList<AbstractResource *> KNSBackendTest::getResources(ResultsStream *stream, bool canBeEmpty)
 {
     Q_ASSERT(stream);
     Q_ASSERT(stream->objectName() != QLatin1String("KNS-void"));
     QSignalSpy spyResources(stream, &ResultsStream::destroyed);
-    QVector<AbstractResource *> resources;
-    connect(stream, &ResultsStream::resourcesFound, this, [&resources, stream](const QVector<StreamResult> &res) {
-        resources += kTransform<QVector<AbstractResource *>>(res, [](auto result) {
+    QList<AbstractResource *> resources;
+    connect(stream, &ResultsStream::resourcesFound, this, [&resources, stream](const QList<StreamResult> &res) {
+        resources += kTransform<QList<AbstractResource *>>(res, [](auto result) {
             return result.resource;
         });
         Q_EMIT stream->fetchMore();
@@ -69,7 +69,7 @@ QVector<AbstractResource *> KNSBackendTest::getResources(ResultsStream *stream, 
     return resources;
 }
 
-QVector<AbstractResource *> KNSBackendTest::getAllResources(AbstractResourcesBackend *backend)
+QList<AbstractResource *> KNSBackendTest::getAllResources(AbstractResourcesBackend *backend)
 {
     AbstractResourcesBackend::Filters f;
     if (CategoryModel::global()->rootCategories().isEmpty())
@@ -111,7 +111,7 @@ void KNSBackendTest::testRetrieval()
 
 void KNSBackendTest::testReviews()
 {
-    const QVector<AbstractResource *> resources = getAllResources(m_backend);
+    const QList<AbstractResource *> resources = getAllResources(m_backend);
     AbstractReviewsBackend *rev = m_backend->reviewsBackend();
     QVERIFY(!rev->hasCredentials());
     for (AbstractResource *res : resources) {
@@ -127,7 +127,7 @@ void KNSBackendTest::testReviews()
     QVERIFY(spy.count() || spy.wait());
 }
 
-void KNSBackendTest::reviewsArrived(AbstractResource *r, const QVector<ReviewPtr> &revs)
+void KNSBackendTest::reviewsArrived(AbstractResource *r, const QList<ReviewPtr> &revs)
 {
     m_r = r;
     m_revs = revs;
@@ -137,8 +137,8 @@ void KNSBackendTest::testResourceByUrl()
 {
     AbstractResourcesBackend::Filters f;
     f.resourceUrl = QUrl(QLatin1String("kns://") + m_backend->name() + QLatin1String("/api.kde-look.org/1136471"));
-    const QVector<AbstractResource *> resources = getResources(m_backend->search(f));
-    const QVector<QUrl> res = kTransform<QVector<QUrl>>(resources, [](AbstractResource *res) {
+    const QList<AbstractResource *> resources = getResources(m_backend->search(f));
+    const QList<QUrl> res = kTransform<QList<QUrl>>(resources, [](AbstractResource *res) {
         return res->url();
     });
     QCOMPARE(res.count(), 1);
@@ -163,7 +163,7 @@ void KNSBackendTest::testResourceByUrlResourcesModel()
     filter.resourceUrl = QUrl(QStringLiteral("kns://plasmoids.knsrc/store.kde.org/1169537")); // Wrong domain
 
     auto resources = getResources(ResourcesModel::global()->search(filter), true);
-    const QVector<QUrl> res = kTransform<QVector<QUrl>>(resources, [](AbstractResource *res) {
+    const QList<QUrl> res = kTransform<QList<QUrl>>(resources, [](AbstractResource *res) {
         return res->url();
     });
     QCOMPARE(res.count(), 0);

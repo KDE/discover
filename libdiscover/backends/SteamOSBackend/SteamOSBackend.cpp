@@ -170,7 +170,7 @@ int SteamOSBackend::updatesCount() const
 // give a void stream
 ResultsStream *SteamOSBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
-    QVector<StreamResult> res;
+    QList<StreamResult> res;
     if (m_resource && m_resource->state() >= filter.state)
         res << StreamResult{m_resource, 0};
     return new ResultsStream(QLatin1String("SteamOS-stream"), res);

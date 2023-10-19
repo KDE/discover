@@ -6,8 +6,8 @@
 
 #pragma once
 
+#include <QList>
 #include <QStringList>
-#include <QVector>
 
 #include "discovercommon_export.h"
 

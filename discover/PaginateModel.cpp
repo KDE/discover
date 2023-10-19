@@ -262,7 +262,7 @@ void PaginateModel::_k_sourceColumnsRemoved(const QModelIndex &parent, int start
     endResetModel();
 }
 
-void PaginateModel::_k_sourceDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)
+void PaginateModel::_k_sourceDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles)
 {
     if (topLeft.parent().isValid() || bottomRight.row() < d->m_firstItem || topLeft.row() > lastItem()) {
         return;

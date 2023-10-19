@@ -9,7 +9,7 @@
 StoredResultsStream::StoredResultsStream(const QSet<ResultsStream *> &streams)
     : AggregatedResultsStream(streams)
 {
-    connect(this, &ResultsStream::resourcesFound, this, [this](const QVector<StreamResult> &resources) {
+    connect(this, &ResultsStream::resourcesFound, this, [this](const QList<StreamResult> &resources) {
         for (auto r : resources)
             connect(r.resource, &QObject::destroyed, this, [this, r]() {
                 for (auto it = m_results.begin(); it != m_results.end(); ++it) {
@@ -27,7 +27,7 @@ StoredResultsStream::StoredResultsStream(const QSet<ResultsStream *> &streams)
     });
 }
 
-QVector<StreamResult> StoredResultsStream::resources() const
+QList<StreamResult> StoredResultsStream::resources() const
 {
     return m_results;
 }

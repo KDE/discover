@@ -41,7 +41,7 @@ public:
     void removeResources(const QList<AbstractResource *> &resources);
 
     qint64 secsToLastUpdate() const;
-    QVector<AbstractBackendUpdater *> updaters() const
+    QList<AbstractBackendUpdater *> updaters() const
     {
         return m_updaters;
     }
@@ -73,7 +73,7 @@ private:
     void init();
     void setTransaction(UpdateTransaction *transaction);
 
-    QVector<AbstractBackendUpdater *> m_updaters;
+    QList<AbstractBackendUpdater *> m_updaters;
     bool m_lastIsProgressing;
     bool m_offlineUpdates = false;
     QPointer<UpdateTransaction> m_transaction;

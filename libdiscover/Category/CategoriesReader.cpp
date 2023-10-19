@@ -15,7 +15,7 @@
 #include <DiscoverBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
 
-QVector<Category *> CategoriesReader::loadCategoriesFile(AbstractResourcesBackend *backend)
+QList<Category *> CategoriesReader::loadCategoriesFile(AbstractResourcesBackend *backend)
 {
     QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
                                           QStringLiteral("libdiscover/categories/") + backend->name() + QStringLiteral("-categories.xml"));
@@ -30,9 +30,9 @@ QVector<Category *> CategoriesReader::loadCategoriesFile(AbstractResourcesBacken
     return loadCategoriesPath(path);
 }
 
-QVector<Category *> CategoriesReader::loadCategoriesPath(const QString &path)
+QList<Category *> CategoriesReader::loadCategoriesPath(const QString &path)
 {
-    QVector<Category *> ret;
+    QList<Category *> ret;
     QFile menuFile(path);
     if (!menuFile.open(QIODevice::ReadOnly)) {
         qCWarning(LIBDISCOVER_LOG) << "couldn't open" << path;

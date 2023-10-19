@@ -91,7 +91,7 @@ public:
 
     bool isPackageNameUpgradeable(const PackageKitResource *res) const;
     QSet<QString> upgradeablePackageId(const PackageKitResource *res) const;
-    QVector<AbstractResource *> extendedBy(const QString &id) const;
+    QList<AbstractResource *> extendedBy(const QString &id) const;
 
     PKResolveTransaction *resolvePackages(const QStringList &packageNames);
     void fetchDetails(const QString &pkgid)
@@ -158,7 +158,7 @@ private:
     template<typename T>
     T resourcesByComponents(const QList<AppStream::Component> &names) const;
 
-    QVector<StreamResult> resultsByComponents(const QList<AppStream::Component> &names) const;
+    QList<StreamResult> resultsByComponents(const QList<AppStream::Component> &names) const;
 
     void runWhenInitialized(const std::function<void()> &f, QObject *stream);
 

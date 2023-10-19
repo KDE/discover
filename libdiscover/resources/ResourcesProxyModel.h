@@ -141,23 +141,23 @@ public:
     QString roughCount() const;
 
 private Q_SLOTS:
-    void refreshBackend(AbstractResourcesBackend *backend, const QVector<QByteArray> &properties);
-    void refreshResource(AbstractResource *resource, const QVector<QByteArray> &properties);
+    void refreshBackend(AbstractResourcesBackend *backend, const QList<QByteArray> &properties);
+    void refreshResource(AbstractResource *resource, const QList<QByteArray> &properties);
     void removeResource(AbstractResource *resource);
 
 private:
-    void sortedInsertion(const QVector<StreamResult> &res);
+    void sortedInsertion(const QList<StreamResult> &res);
     QVariant roleToValue(const StreamResult &result, int role) const
     {
         return roleToValue(result.resource, role);
     }
     QVariant roleToValue(AbstractResource *res, int role) const;
 
-    QVector<int> propertiesToRoles(const QVector<QByteArray> &properties) const;
-    void addResources(const QVector<StreamResult> &res);
+    QList<int> propertiesToRoles(const QList<QByteArray> &properties) const;
+    void addResources(const QList<StreamResult> &res);
     void fetchSubcategories();
-    void removeDuplicates(QVector<StreamResult> &newResources);
-    bool isSorted(const QVector<StreamResult> &resources);
+    void removeDuplicates(QList<StreamResult> &newResources);
+    bool isSorted(const QList<StreamResult> &resources);
 
     Roles m_sortRole;
     Qt::SortOrder m_sortOrder;
@@ -169,7 +169,7 @@ private:
     AbstractResourcesBackend::Filters m_filters;
     QVariantList m_subcategories;
 
-    QVector<StreamResult> m_displayedResources;
+    QList<StreamResult> m_displayedResources;
     static const QHash<int, QByteArray> s_roles;
     ResultsStream *m_currentStream;
 

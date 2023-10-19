@@ -288,7 +288,7 @@ void DiscoverObject::openLocalPackage(const QUrl &localfile)
             AbstractResourcesBackend::Filters f;
             f.resourceUrl = localfile;
             auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
-            connect(stream, &StoredResultsStream::finishedResources, this, [this, localfile](const QVector<StreamResult> &res) {
+            connect(stream, &StoredResultsStream::finishedResources, this, [this, localfile](const QList<StreamResult> &res) {
                 if (res.count() == 1) {
                     Q_EMIT openApplicationInternal(res.first().resource);
                 } else {
@@ -327,7 +327,7 @@ void DiscoverObject::openApplication(const QUrl &url)
             AbstractResourcesBackend::Filters f;
             f.resourceUrl = url;
             auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
-            connect(stream, &StoredResultsStream::finishedResources, this, [this, url](const QVector<StreamResult> &res) {
+            connect(stream, &StoredResultsStream::finishedResources, this, [this, url](const QList<StreamResult> &res) {
                 if (res.count() >= 1) {
                     QPointer<QTimer> timeout = new QTimer(this);
                     timeout->setSingleShot(true);

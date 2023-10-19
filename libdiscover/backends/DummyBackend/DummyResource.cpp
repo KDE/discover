@@ -12,7 +12,7 @@
 #include <Transaction/AddonList.h>
 
 Q_GLOBAL_STATIC_WITH_ARGS(
-    QVector<QString>,
+    QList<QString>,
     s_icons,
     ({QLatin1String("kdevelop"), QLatin1String("kalgebra"), QLatin1String("kmail"), QLatin1String("akregator"), QLatin1String("korganizer")}))
 
@@ -96,7 +96,7 @@ QUrl DummyResource::contributeURL()
 
 QVariant DummyResource::icon() const
 {
-    static const QVector<QVariant> icons = {QStringLiteral("device-notifier"), QStringLiteral("media-floppy"), QStringLiteral("drink-beer")};
+    static const QList<QVariant> icons = {QStringLiteral("device-notifier"), QStringLiteral("media-floppy"), QStringLiteral("drink-beer")};
     return icons[type()];
 }
 

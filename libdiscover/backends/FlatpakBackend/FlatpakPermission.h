@@ -7,9 +7,9 @@
 #pragma once
 
 #include <QAbstractListModel>
+#include <QList>
 #include <QString>
 #include <QVariant>
-#include <QVector>
 
 class FlatpakPermission
 {
@@ -28,7 +28,7 @@ private:
 class FlatpakPermissionsModel : public QAbstractListModel
 {
 public:
-    FlatpakPermissionsModel(QVector<FlatpakPermission> permissions);
+    FlatpakPermissionsModel(QList<FlatpakPermission> permissions);
 
     enum Roles {
         BriefRole = Qt::UserRole + 1,
@@ -42,5 +42,5 @@ public:
     virtual QHash<int, QByteArray> roleNames() const override;
 
 private:
-    QVector<FlatpakPermission> m_permissions;
+    QList<FlatpakPermission> m_permissions;
 };

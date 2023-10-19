@@ -19,7 +19,7 @@
 #include <functional>
 #include <resources/AbstractResource.h>
 
-PKTransaction::PKTransaction(const QVector<AbstractResource *> &apps, Transaction::Role role)
+PKTransaction::PKTransaction(const QList<AbstractResource *> &apps, Transaction::Role role)
     : Transaction(apps.first(), apps.first(), role)
     , m_apps(apps)
 {
@@ -32,7 +32,7 @@ PKTransaction::PKTransaction(const QVector<AbstractResource *> &apps, Transactio
     QTimer::singleShot(0, this, &PKTransaction::start);
 }
 
-static QStringList packageIds(const QVector<AbstractResource *> &res, std::function<QString(PackageKitResource *)> func)
+static QStringList packageIds(const QList<AbstractResource *> &res, std::function<QString(PackageKitResource *)> func)
 {
     QStringList ret;
     for (auto r : res) {

@@ -24,7 +24,7 @@ class FlatpakTest : public QObject
 public:
     AbstractResourcesBackend *backendByName(ResourcesModel *m, const QString &name)
     {
-        const QVector<AbstractResourcesBackend *> backends = m->backends();
+        const QList<AbstractResourcesBackend *> backends = m->backends();
         for (AbstractResourcesBackend *backend : backends) {
             if (QLatin1String(backend->metaObject()->className()) == name) {
                 return backend;
@@ -161,12 +161,12 @@ private:
         return ret;
     }
 
-    QVector<AbstractResource *> getResources(ResultsStream *stream, bool canBeEmpty = true)
+    QList<AbstractResource *> getResources(ResultsStream *stream, bool canBeEmpty = true)
     {
         Q_ASSERT(stream);
         QSignalSpy spyResources(stream, &ResultsStream::destroyed);
-        QVector<AbstractResource *> resources;
-        connect(stream, &ResultsStream::resourcesFound, this, [&resources](const QVector<StreamResult> &res) {
+        QList<AbstractResource *> resources;
+        connect(stream, &ResultsStream::resourcesFound, this, [&resources](const QList<StreamResult> &res) {
             for (auto result : res) {
                 resources += result.resource;
             }
@@ -176,7 +176,7 @@ private:
         return resources;
     }
 
-    QVector<AbstractResource *> getAllResources(AbstractResourcesBackend *backend)
+    QList<AbstractResource *> getAllResources(AbstractResourcesBackend *backend)
     {
         AbstractResourcesBackend::Filters f;
         if (CategoryModel::global()->rootCategories().isEmpty())

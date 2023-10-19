@@ -49,12 +49,12 @@ public Q_SLOTS:
     void cleanup();
 
 private:
-    void resourcesChanged(AbstractResource *res, const QVector<QByteArray> &props);
+    void resourcesChanged(AbstractResource *res, const QList<QByteArray> &props);
     void refreshUpdateable();
     void transactionAdded(Transaction *newTransaction);
     void transactionProgressChanged();
     void refreshProgress();
-    QVector<Transaction *> transactions() const;
+    QList<Transaction *> transactions() const;
 
     QSet<AbstractResource *> m_toUpgrade;
     QSet<AbstractResource *> m_upgradeable;

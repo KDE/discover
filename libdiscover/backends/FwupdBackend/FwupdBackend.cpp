@@ -370,7 +370,7 @@ ResultsStream *FwupdBackend::search(const AbstractResourcesBackend::Filters &fil
 
     auto stream = new ResultsStream(QStringLiteral("FwupdStream"));
     auto f = [this, stream, filter]() {
-        QVector<StreamResult> ret;
+        QList<StreamResult> ret;
         for (AbstractResource *r : std::as_const(m_resources)) {
             if (r->state() < filter.state)
                 continue;

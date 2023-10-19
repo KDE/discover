@@ -133,7 +133,7 @@ void ReviewsModel::fetchMore(const QModelIndex &parent)
     // qCDebug(LIBDISCOVER_LOG) << "fetching reviews... " << m_lastPage;
 }
 
-void ReviewsModel::addReviews(AbstractResource *app, const QVector<ReviewPtr> &reviews, bool canFetchMore)
+void ReviewsModel::addReviews(AbstractResource *app, const QList<ReviewPtr> &reviews, bool canFetchMore)
 {
     if (app != m_app)
         return;

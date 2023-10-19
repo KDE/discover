@@ -349,7 +349,7 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
 
     QJsonArray reviews = document.array();
     if (!reviews.isEmpty()) {
-        QVector<ReviewPtr> reviewList;
+        QList<ReviewPtr> reviewList;
         for (auto it = reviews.begin(); it != reviews.end(); it++) {
             const QJsonObject review = it->toObject();
             if (!review.isEmpty()) {

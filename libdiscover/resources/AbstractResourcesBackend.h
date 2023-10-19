@@ -6,10 +6,10 @@
 
 #pragma once
 
+#include <QList>
 #include <QObject>
 #include <QPair>
 #include <QVariantList>
-#include <QVector>
 
 #include "AbstractResource.h"
 #include "DiscoverAction.h"
@@ -50,13 +50,13 @@ public:
     ResultsStream(const QString &objectName);
 
     /// assumes all the information is in @p resources
-    ResultsStream(const QString &objectName, const QVector<StreamResult> &resources);
+    ResultsStream(const QString &objectName, const QList<StreamResult> &resources);
     ~ResultsStream() override;
 
     void finish();
 
 Q_SIGNALS:
-    void resourcesFound(const QVector<StreamResult> &resources);
+    void resourcesFound(const QList<StreamResult> &resources);
     void fetchMore();
 };
 
@@ -159,8 +159,8 @@ public:
         }
 
         bool shouldFilter(AbstractResource *res) const;
-        void filterJustInCase(QVector<AbstractResource *> &input) const;
-        void filterJustInCase(QVector<StreamResult> &input) const;
+        void filterJustInCase(QList<AbstractResource *> &input) const;
+        void filterJustInCase(QList<StreamResult> &input) const;
     };
 
     /**
@@ -219,7 +219,7 @@ public:
     /**
      * @returns the root category tree
      */
-    virtual QVector<Category *> category() const
+    virtual QList<Category *> category() const
     {
         return {};
     }
@@ -288,12 +288,12 @@ Q_SIGNALS:
      * This should be emitted when all data of the backends resources changed. Internally it will Q_EMIT
      * a signal in the model to show the view that all data of a certain backend changed.
      */
-    void allDataChanged(const QVector<QByteArray> &propertyNames);
+    void allDataChanged(const QList<QByteArray> &propertyNames);
 
     /**
      * Allows to notify some @p properties in @p resource have changed
      */
-    void resourcesChanged(AbstractResource *resource, const QVector<QByteArray> &properties);
+    void resourcesChanged(AbstractResource *resource, const QList<QByteArray> &properties);
     void resourceRemoved(AbstractResource *resource);
 
     void passiveMessage(const QString &message);
@@ -313,7 +313,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackendFactory : public QObject
 {
     Q_OBJECT
 public:
-    virtual QVector<AbstractResourcesBackend *> newInstance(QObject *parent, const QString &name) const = 0;
+    virtual QList<AbstractResourcesBackend *> newInstance(QObject *parent, const QString &name) const = 0;
 };
 
 #define DISCOVER_BACKEND_PLUGIN(ClassName)                                                                                                                     \
@@ -323,7 +323,7 @@ public:
         Q_PLUGIN_METADATA(IID "org.kde.muon.AbstractResourcesBackendFactory")                                                                                  \
         Q_INTERFACES(AbstractResourcesBackendFactory)                                                                                                          \
     public:                                                                                                                                                    \
-        QVector<AbstractResourcesBackend *> newInstance(QObject *parent, const QString &name) const override                                                   \
+        QList<AbstractResourcesBackend *> newInstance(QObject *parent, const QString &name) const override                                                     \
         {                                                                                                                                                      \
             auto c = new ClassName(parent);                                                                                                                    \
             c->setName(name);                                                                                                                                  \

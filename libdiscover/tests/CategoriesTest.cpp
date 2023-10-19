@@ -17,19 +17,19 @@ public:
     {
     }
 
-    QVector<Category *> populateCategories()
+    QList<Category *> populateCategories()
     {
-        const QVector<QString> categoryFiles = {
+        const QList<QString> categoryFiles = {
             QFINDTESTDATA("../backends/PackageKitBackend/packagekit-backend-categories.xml"),
             QFINDTESTDATA("../backends/FlatpakBackend/flatpak-backend-categories.xml"),
             QFINDTESTDATA("../backends/DummyBackend/dummy-backend-categories.xml"),
         };
 
-        QVector<Category *> ret;
+        QList<Category *> ret;
         CategoriesReader reader;
         for (const QString &name : categoryFiles) {
             qDebug() << "doing..." << name;
-            const QVector<Category *> cats = reader.loadCategoriesPath(name);
+            const QList<Category *> cats = reader.loadCategoriesPath(name);
 
             if (ret.isEmpty()) {
                 ret = cats;

@@ -23,7 +23,7 @@ public:
 
 public Q_SLOTS:
     void fetchResources();
-    void exportResources(const QVector<StreamResult> &resources);
+    void exportResources(const QList<StreamResult> &resources);
 
 Q_SIGNALS:
     void exportDone();

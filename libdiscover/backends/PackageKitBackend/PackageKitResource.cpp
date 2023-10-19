@@ -462,7 +462,7 @@ void PackageKitResource::fetchDependencies()
 
 bool PackageKitResource::extendsItself() const
 {
-    const auto extendsResources = backend()->resourcesByPackageNames<QVector<AbstractResource *>>(extends());
+    const auto extendsResources = backend()->resourcesByPackageNames<QList<AbstractResource *>>(extends());
     if (extendsResources.isEmpty())
         return false;
 

@@ -126,9 +126,9 @@ public:
         return false;
     }
 
-    QVector<PackageKitResource *> withoutDuplicates() const
+    QList<PackageKitResource *> withoutDuplicates() const
     {
-        QVector<PackageKitResource *> ret;
+        QList<PackageKitResource *> ret;
         QSet<QString> donePkgs;
         for (auto res : std::as_const(m_resources)) {
             PackageKitResource *app = qobject_cast<PackageKitResource *>(res);
@@ -559,7 +559,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
         if (!toremove.isEmpty()) {
             QStringList criticals;
             for (const auto &pkgid : std::as_const(toremove)) {
-                auto res = kFilter<QVector<AbstractResource *>>(m_backend->resourcesByPackageName(pkgid), [](AbstractResource *res) {
+                auto res = kFilter<QList<AbstractResource *>>(m_backend->resourcesByPackageName(pkgid), [](AbstractResource *res) {
                     return static_cast<PackageKitResource *>(res)->isCritical();
                 });
                 criticals << kTransform<QStringList>(res, [](AbstractResource *a) {

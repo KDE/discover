@@ -30,5 +30,5 @@ public:
 
 private:
     const QString m_id;
-    QVector<KNSCore::Question *> m_questions;
+    QList<KNSCore::Question *> m_questions;
 };

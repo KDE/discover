@@ -73,5 +73,5 @@ private:
     const Transaction::Role m_role;
     QMap<QString, QStringList> m_addedRepositories;
 
-    QVector<int> m_webflows;
+    QList<int> m_webflows;
 };

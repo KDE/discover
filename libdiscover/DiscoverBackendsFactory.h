@@ -17,8 +17,8 @@ class DISCOVERCOMMON_EXPORT DiscoverBackendsFactory
 public:
     DiscoverBackendsFactory();
 
-    QVector<AbstractResourcesBackend *> backend(const QString &name) const;
-    QVector<AbstractResourcesBackend *> allBackends() const;
+    QList<AbstractResourcesBackend *> backend(const QString &name) const;
+    QList<AbstractResourcesBackend *> allBackends() const;
     QStringList allBackendNames(bool whitelist = true, bool allowDummy = false) const;
     int backendsCount() const;
 
@@ -28,5 +28,5 @@ public:
     static bool hasRequestedBackends();
 
 private:
-    QVector<AbstractResourcesBackend *> backendForFile(const QString &path, const QString &name) const;
+    QList<AbstractResourcesBackend *> backendForFile(const QString &path, const QString &name) const;
 };

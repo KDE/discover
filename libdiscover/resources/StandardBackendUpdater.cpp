@@ -38,7 +38,7 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend *parent)
     connect(&m_timer, &QTimer::timeout, this, &StandardBackendUpdater::refreshUpdateable);
 }
 
-void StandardBackendUpdater::resourcesChanged(AbstractResource *res, const QVector<QByteArray> &props)
+void StandardBackendUpdater::resourcesChanged(AbstractResource *res, const QList<QByteArray> &props)
 {
     if (props.contains("state") && (res->state() == AbstractResource::Upgradeable || m_upgradeable.contains(res)))
         m_timer.start();
@@ -177,7 +177,7 @@ void StandardBackendUpdater::refreshUpdateable()
     f.state = AbstractResource::Upgradeable;
     m_upgradeable.clear();
     auto r = m_backend->search(f);
-    connect(r, &ResultsStream::resourcesFound, this, [this](const QVector<StreamResult> &resources) {
+    connect(r, &ResultsStream::resourcesFound, this, [this](const QList<StreamResult> &resources) {
         for (auto res : resources)
             if (res.resource->state() == AbstractResource::Upgradeable)
                 m_upgradeable.insert(res.resource);
@@ -271,10 +271,10 @@ double StandardBackendUpdater::updateSize() const
     return ret;
 }
 
-QVector<Transaction *> StandardBackendUpdater::transactions() const
+QList<Transaction *> StandardBackendUpdater::transactions() const
 {
     const auto trans = TransactionModel::global()->transactions();
-    return kFilter<QVector<Transaction *>>(trans, [this](Transaction *t) {
+    return kFilter<QList<Transaction *>>(trans, [this](Transaction *t) {
         return t->property("updater").value<QObject *>() == this;
     });
 }

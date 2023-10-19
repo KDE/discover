@@ -45,13 +45,13 @@ void CategoryModel::populateCategories()
 {
     const auto backends = ResourcesModel::global()->backends();
 
-    QVector<Category *> ret;
+    QList<Category *> ret;
     CategoriesReader cr;
     for (const auto backend : backends) {
         if (!backend->isValid())
             continue;
 
-        const QVector<Category *> cats = cr.loadCategoriesFile(backend);
+        const QList<Category *> cats = cr.loadCategoriesFile(backend);
 
         if (ret.isEmpty()) {
             ret = cats;

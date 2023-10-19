@@ -23,7 +23,7 @@ OdrsAppsModel::OdrsAppsModel()
 void OdrsAppsModel::refresh()
 {
     const auto top = OdrsReviewsBackend::global()->top();
-    setUris(kTransform<QVector<QUrl>>(top, [](auto r) {
+    setUris(kTransform<QList<QUrl>>(top, [](auto r) {
         return QUrl("appstream://"_L1 + r->packageName());
     }));
 }

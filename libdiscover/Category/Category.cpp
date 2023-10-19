@@ -32,7 +32,7 @@ Category::Category(const QString &name,
                    const QString &iconName,
                    const CategoryFilter &filter,
                    const QSet<QString> &pluginName,
-                   const QVector<Category *> &subCategories,
+                   const QList<Category *> &subCategories,
                    bool isAddons)
     : QObject(nullptr)
     , m_name(name)
@@ -137,7 +137,7 @@ CategoryFilter Category::parseIncludes(QXmlStreamReader *xml)
     Q_ASSERT(xml->isStartElement());
 
     auto subIncludes = [&]() {
-        QVector<CategoryFilter> filters;
+        QList<CategoryFilter> filters;
 
         Q_ASSERT(xml->isStartElement());
         const QString opening = xml->name().toString();
@@ -210,7 +210,7 @@ void Category::setFilter(const CategoryFilter &filter)
     m_filter = filter;
 }
 
-QVector<Category *> Category::subCategories() const
+QList<Category *> Category::subCategories() const
 {
     return m_subCategories;
 }
@@ -220,7 +220,7 @@ bool Category::categoryLessThan(Category *c1, const Category *c2)
     return (c1->priority() < c2->priority()) || (c1->priority() == c2->priority() && QString::localeAwareCompare(c1->name(), c2->name()) < 0);
 }
 
-static bool isSorted(const QVector<Category *> &vector)
+static bool isSorted(const QList<Category *> &vector)
 {
     Category *last = nullptr;
     for (auto a : vector) {
@@ -231,7 +231,7 @@ static bool isSorted(const QVector<Category *> &vector)
     return true;
 }
 
-void Category::sortCategories(QVector<Category *> &cats)
+void Category::sortCategories(QList<Category *> &cats)
 {
     std::sort(cats.begin(), cats.end(), &categoryLessThan);
     for (auto cat : cats) {
@@ -249,13 +249,13 @@ QDebug operator<<(QDebug debug, const CategoryFilter &filter)
     if (auto x = std::get_if<QString>(&filter.value)) {
         debug << x;
     } else {
-        debug << std::get<QVector<CategoryFilter>>(filter.value);
+        debug << std::get<QList<CategoryFilter>>(filter.value);
     }
     debug.nospace() << ')';
     return debug;
 }
 
-void Category::addSubcategory(QVector<Category *> &list, Category *newcat)
+void Category::addSubcategory(QList<Category *> &list, Category *newcat)
 {
     Q_ASSERT(isSorted(list));
 
@@ -271,7 +271,7 @@ void Category::addSubcategory(QVector<Category *> &list, Category *newcat)
             qCWarning(LIBDISCOVER_LOG) << "the following categories seem to be the same but they're not entirely" << c->icon() << newcat->icon() << "--"
                                        << c->name() << newcat->name() << "--" << c->isAddons() << newcat->isAddons();
         } else {
-            CategoryFilter newFilter = {CategoryFilter::OrFilter, QVector<CategoryFilter>{c->m_filter, newcat->m_filter}};
+            CategoryFilter newFilter = {CategoryFilter::OrFilter, QList<CategoryFilter>{c->m_filter, newcat->m_filter}};
             c->m_filter = newFilter;
             c->m_plugins.unite(newcat->m_plugins);
             const auto subCategories = newcat->subCategories();
@@ -299,10 +299,10 @@ void Category::addSubcategory(Category *cat)
     Q_ASSERT(isSorted(m_subCategories));
 }
 
-bool Category::blacklistPluginsInVector(const QSet<QString> &pluginNames, QVector<Category *> &subCategories)
+bool Category::blacklistPluginsInVector(const QSet<QString> &pluginNames, QList<Category *> &subCategories)
 {
     bool ret = false;
-    for (QVector<Category *>::iterator it = subCategories.begin(); it != subCategories.end();) {
+    for (QList<Category *>::iterator it = subCategories.begin(); it != subCategories.end();) {
         if ((*it)->blacklistPlugins(pluginNames)) {
             delete *it;
             it = subCategories.erase(it);
@@ -362,7 +362,7 @@ static QStringList involvedCategories(const CategoryFilter &f)
         return {std::get<QString>(f.value)};
     case CategoryFilter::OrFilter:
     case CategoryFilter::AndFilter: {
-        const auto filters = std::get<QVector<CategoryFilter>>(f.value);
+        const auto filters = std::get<QList<CategoryFilter>>(f.value);
         QStringList ret;
         ret.reserve(filters.size());
         for (const auto &subFilters : filters) {
@@ -396,6 +396,6 @@ bool CategoryFilter::operator==(const CategoryFilter &other) const
     if (auto x = std::get_if<QString>(&value)) {
         return *x == std::get<QString>(other.value);
     } else {
-        return std::get<QVector<CategoryFilter>>(value) == std::get<QVector<CategoryFilter>>(other.value);
+        return std::get<QList<CategoryFilter>>(value) == std::get<QList<CategoryFilter>>(other.value);
     }
 }

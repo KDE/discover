@@ -214,7 +214,7 @@ AbstractResource::ContentIntensity AppStreamUtils::contentRatingIntensity(const 
         }
     }
 
-    static QVector<AbstractResource::ContentIntensity> intensities = {
+    static QList<AbstractResource::ContentIntensity> intensities = {
         AbstractResource::Mild,
         AbstractResource::Mild,
         AbstractResource::Mild,

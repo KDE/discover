@@ -105,7 +105,7 @@ private:
     int m_percentage;
     QDateTime m_lastUpdate;
     QMap<PackageKit::Transaction::Info, QStringList> m_packagesModified;
-    QVector<std::function<PackageKit::Transaction *()>> m_proceedFunctions;
+    QList<std::function<PackageKit::Transaction *()>> m_proceedFunctions;
 
     SystemUpgrade *m_upgrade = nullptr;
 };

@@ -571,7 +571,7 @@ private:
     {
     }
 
-    PKResultsStream(PackageKitBackend *backend, const QString &name, const QVector<StreamResult> &resources)
+    PKResultsStream(PackageKitBackend *backend, const QString &name, const QList<StreamResult> &resources)
         : ResultsStream(name)
         , backend(backend)
     {
@@ -587,7 +587,7 @@ public:
         return new PKResultsStream(std::forward<Args>(args)...);
     }
 
-    void sendResources(const QVector<StreamResult> &res, bool waitForResolved = false)
+    void sendResources(const QList<StreamResult> &res, bool waitForResolved = false)
     {
         if (res.isEmpty()) {
             finish();
@@ -595,7 +595,7 @@ public:
         }
 
         Q_ASSERT(res.size() == QSet(res.constBegin(), res.constEnd()).size());
-        const auto toResolve = kFilter<QVector<StreamResult>>(res, needsResolveFilter);
+        const auto toResolve = kFilter<QList<StreamResult>>(res, needsResolveFilter);
         if (!toResolve.isEmpty()) {
             auto transaction = backend->resolvePackages(kTransform<QStringList>(toResolve, [](const StreamResult &res) {
                 return res.resource->packageName();
@@ -636,14 +636,14 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         return stream;
     } else if (filter.state == AbstractResource::Upgradeable) {
         return new ResultsStream(QStringLiteral("PackageKitStream-upgradeable"),
-                                 kTransform<QVector<StreamResult>>(upgradeablePackages())); // No need for it to be a PKResultsStream
+                                 kTransform<QList<StreamResult>>(upgradeablePackages())); // No need for it to be a PKResultsStream
     } else if (filter.state == AbstractResource::Installed) {
         auto stream = PKResultsStream::create(this, QStringLiteral("PackageKitStream-installed"));
         auto f = [this, stream, filter] {
             if (!stream) {
                 return;
             }
-            const auto toResolve = kFilter<QVector<AbstractResource *>>(m_packages.packages, needsResolveFilter);
+            const auto toResolve = kFilter<QList<AbstractResource *>>(m_packages.packages, needsResolveFilter);
 
             auto installedAndNameFilter = [filter](AbstractResource *res) {
                 return res->state() >= AbstractResource::Installed && !qobject_cast<PackageKitResource *>(res)->isCritical()
@@ -655,9 +655,9 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
                     return res->packageName();
                 }));
                 connect(m_resolveTransaction, &PKResolveTransaction::allFinished, this, [stream, toResolve, installedAndNameFilter] {
-                    const auto resolved = kFilter<QVector<AbstractResource *>>(toResolve, installedAndNameFilter);
+                    const auto resolved = kFilter<QList<AbstractResource *>>(toResolve, installedAndNameFilter);
                     if (!resolved.isEmpty())
-                        Q_EMIT stream->resourcesFound(kTransform<QVector<StreamResult>>(resolved, [](auto resource) {
+                        Q_EMIT stream->resourcesFound(kTransform<QList<StreamResult>>(resolved, [](auto resource) {
                             return StreamResult{resource, 0};
                         }));
                     stream->finish();
@@ -665,11 +665,11 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
                 furtherSearch = true;
             }
 
-            const auto resolved = kFilter<QVector<AbstractResource *>>(m_packages.packages, installedAndNameFilter);
+            const auto resolved = kFilter<QList<AbstractResource *>>(m_packages.packages, installedAndNameFilter);
             if (!resolved.isEmpty()) {
                 QTimer::singleShot(0, this, [resolved, toResolve, stream]() {
                     if (!resolved.isEmpty())
-                        Q_EMIT stream->resourcesFound(kTransform<QVector<StreamResult>>(resolved, [](auto resource) {
+                        Q_EMIT stream->resourcesFound(kTransform<QList<StreamResult>>(resolved, [](auto resource) {
                             return StreamResult{resource, 0};
                         }));
 
@@ -690,11 +690,11 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
             if (!stream) {
                 return;
             }
-            auto resources = kFilter<QVector<AbstractResource *>>(m_packages.packages, [](AbstractResource *res) {
+            auto resources = kFilter<QList<AbstractResource *>>(m_packages.packages, [](AbstractResource *res) {
                 return res->type() != AbstractResource::Technical && !qobject_cast<PackageKitResource *>(res)->isCritical()
                     && !qobject_cast<PackageKitResource *>(res)->extendsItself();
             });
-            stream->sendResources(kTransform<QVector<StreamResult>>(resources, [](auto resource) {
+            stream->sendResources(kTransform<QList<StreamResult>>(resources, [](auto resource) {
                 return StreamResult{resource, 0};
             }));
         };
@@ -723,7 +723,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
                 return true;
             });
             if (!ids.isEmpty()) {
-                const auto resources = kFilter<QVector<StreamResult>>(resultsByComponents(components), [](const StreamResult &res) {
+                const auto resources = kFilter<QList<StreamResult>>(resultsByComponents(components), [](const StreamResult &res) {
                     return !qobject_cast<PackageKitResource *>(res.resource)->extendsItself();
                 });
                 stream->sendResources(resources, filter.state != AbstractResource::Broken);
@@ -755,7 +755,7 @@ PKResultsStream *PackageKitBackend::findResourceByPackageName(const QUrl &url)
             || mime.inherits(QStringLiteral("application/x-tar")) //
             || mime.inherits(QStringLiteral("application/x-zstd-compressed-tar")) //
             || mime.inherits(QStringLiteral("application/x-xz-compressed-tar"))) {
-            return PKResultsStream::create(this, QStringLiteral("PackageKitStream-localpkg"), QVector<StreamResult>{new LocalFilePKResource(url, this)}).data();
+            return PKResultsStream::create(this, QStringLiteral("PackageKitStream-localpkg"), QList<StreamResult>{new LocalFilePKResource(url, this)}).data();
         }
     } else if (url.scheme() == QLatin1String("appstream")) {
         const auto appstreamIds = AppStreamUtils::appstreamIds(url);
@@ -785,7 +785,7 @@ PKResultsStream *PackageKitBackend::findResourceByPackageName(const QUrl &url)
             return stream;
         }
     }
-    return PKResultsStream::create(this, QStringLiteral("PackageKitStream-unknown-url"), QVector<StreamResult>{}).data();
+    return PKResultsStream::create(this, QStringLiteral("PackageKitStream-unknown-url"), QList<StreamResult>{}).data();
 }
 
 template<typename T>
@@ -806,9 +806,9 @@ T PackageKitBackend::resourcesByComponents(const QList<AppStream::Component> &co
     return ret;
 }
 
-QVector<StreamResult> PackageKitBackend::resultsByComponents(const QList<AppStream::Component> &comps) const
+QList<StreamResult> PackageKitBackend::resultsByComponents(const QList<AppStream::Component> &comps) const
 {
-    QVector<StreamResult> ret;
+    QList<StreamResult> ret;
     ret.reserve(comps.size());
     QSet<QString> done;
     for (const auto &comp : comps) {
@@ -851,7 +851,7 @@ Transaction *PackageKitBackend::installApplication(AbstractResource *app, const 
 {
     Transaction *t = nullptr;
     if (!addons.addonsToInstall().isEmpty()) {
-        QVector<AbstractResource *> appsToInstall = resourcesByPackageNames<QVector<AbstractResource *>>(addons.addonsToInstall());
+        QList<AbstractResource *> appsToInstall = resourcesByPackageNames<QList<AbstractResource *>>(addons.addonsToInstall());
         if (!app->isInstalled())
             appsToInstall << app;
         t = new PKTransaction(appsToInstall, Transaction::ChangeAddonsRole);
@@ -859,7 +859,7 @@ Transaction *PackageKitBackend::installApplication(AbstractResource *app, const 
         t = installApplication(app);
 
     if (!addons.addonsToRemove().isEmpty()) {
-        const auto appsToRemove = resourcesByPackageNames<QVector<AbstractResource *>>(addons.addonsToRemove());
+        const auto appsToRemove = resourcesByPackageNames<QList<AbstractResource *>>(addons.addonsToRemove());
         t = new PKTransaction(appsToRemove, Transaction::RemoveRole);
     }
 
@@ -1060,10 +1060,10 @@ AbstractBackendUpdater *PackageKitBackend::backendUpdater() const
     return m_updater;
 }
 
-QVector<AbstractResource *> PackageKitBackend::extendedBy(const QString &id) const
+QList<AbstractResource *> PackageKitBackend::extendedBy(const QString &id) const
 {
     const auto components = m_appdata->componentsById(id).toList();
-    return resourcesByComponents<QVector<AbstractResource *>>(components);
+    return resourcesByComponents<QList<AbstractResource *>>(components);
 }
 
 AbstractReviewsBackend *PackageKitBackend::reviewsBackend() const

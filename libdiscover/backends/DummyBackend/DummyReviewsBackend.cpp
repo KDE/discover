@@ -29,7 +29,7 @@ void DummyReviewsBackend::fetchReviews(AbstractResource *app, int page)
     if (page >= 5)
         return;
 
-    QVector<ReviewPtr> review;
+    QList<ReviewPtr> review;
     for (int i = 0; i < 33; i++) {
         review += ReviewPtr(new Review(app->name(),
                                        app->packageName(),

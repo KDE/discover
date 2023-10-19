@@ -61,9 +61,9 @@ void KNSReviews::acquireFetching(bool f)
     Q_ASSERT(m_fetching >= 0);
 }
 
-static QVector<ReviewPtr> createReviewList(AbstractResource *app, const Attica::Comment::List comments, int depth = 0)
+static QList<ReviewPtr> createReviewList(AbstractResource *app, const Attica::Comment::List comments, int depth = 0)
 {
-    QVector<ReviewPtr> reviews;
+    QList<ReviewPtr> reviews;
     for (const Attica::Comment &comment : comments) {
         // TODO: language lookup?
         ReviewPtr r(new Review(app->name(),
@@ -94,7 +94,7 @@ void KNSReviews::commentsReceived(Attica::BaseJob *j)
     Attica::ListJob<Attica::Comment> *job = static_cast<Attica::ListJob<Attica::Comment> *>(j);
 
     AbstractResource *app = job->property("app").value<AbstractResource *>();
-    QVector<ReviewPtr> reviews = createReviewList(app, job->itemList());
+    QList<ReviewPtr> reviews = createReviewList(app, job->itemList());
 
     Q_EMIT reviewsReady(app, reviews, !reviews.isEmpty());
 }

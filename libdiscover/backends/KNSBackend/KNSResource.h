@@ -64,7 +64,7 @@ public:
         return QStringLiteral("get-hot-new-stuff");
     }
     QDate releaseDate() const override;
-    QVector<int> linkIds() const;
+    QList<int> linkIds() const;
     QUrl donationURL() override;
 
     Rating *ratingInstance();

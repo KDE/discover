@@ -73,7 +73,7 @@ public:
     void unloadRemote(FlatpakInstallation *installation, FlatpakRemote *remote);
 
     InlineMessage *explainDysfunction() const override;
-    QVector<FlatpakInstallation *> installations() const
+    QList<FlatpakInstallation *> installations() const
     {
         return m_installations;
     }
@@ -125,7 +125,7 @@ private:
     void updateAppState(FlatpakResource *resource);
     QSharedPointer<FlatpakSource> findSource(FlatpakInstallation *installation, const QString &origin) const;
 
-    QVector<StreamResult> resultsByAppstreamName(const QString &name) const;
+    QList<StreamResult> resultsByAppstreamName(const QString &name) const;
     void acquireFetching(bool f);
     void checkForRemoteUpdates(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
     void createPool(QSharedPointer<FlatpakSource> source);
@@ -138,10 +138,10 @@ private:
     QSet<FlatpakRemote *> m_refreshAppstreamMetadataJobs;
 
     GCancellable *m_cancellable;
-    QVector<FlatpakInstallation *> m_installations;
+    QList<FlatpakInstallation *> m_installations;
     QThreadPool m_threadPool;
-    QVector<QSharedPointer<FlatpakSource>> m_flatpakSources;
-    QVector<QSharedPointer<FlatpakSource>> m_flatpakLoadingSources;
+    QList<QSharedPointer<FlatpakSource>> m_flatpakSources;
+    QList<QSharedPointer<FlatpakSource>> m_flatpakLoadingSources;
     QSharedPointer<FlatpakSource> m_localSource;
     QTimer *const m_checkForUpdatesTimer;
 };

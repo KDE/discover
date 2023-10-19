@@ -36,7 +36,7 @@ DiscoverBackendsFactory::DiscoverBackendsFactory()
 {
 }
 
-QVector<AbstractResourcesBackend *> DiscoverBackendsFactory::backend(const QString &name) const
+QList<AbstractResourcesBackend *> DiscoverBackendsFactory::backend(const QString &name) const
 {
     if (QDir::isAbsolutePath(name) && QStandardPaths::isTestModeEnabled()) {
         return backendForFile(name, QFileInfo(name).fileName());
@@ -45,7 +45,7 @@ QVector<AbstractResourcesBackend *> DiscoverBackendsFactory::backend(const QStri
     }
 }
 
-QVector<AbstractResourcesBackend *> DiscoverBackendsFactory::backendForFile(const QString &libname, const QString &name) const
+QList<AbstractResourcesBackend *> DiscoverBackendsFactory::backendForFile(const QString &libname, const QString &name) const
 {
     QPluginLoader *loader = new QPluginLoader(QLatin1String("discover/") + libname, QCoreApplication::instance());
 
@@ -89,10 +89,10 @@ QStringList DiscoverBackendsFactory::allBackendNames(bool whitelist, bool allowD
     return pluginNames;
 }
 
-QVector<AbstractResourcesBackend *> DiscoverBackendsFactory::allBackends() const
+QList<AbstractResourcesBackend *> DiscoverBackendsFactory::allBackends() const
 {
     QStringList names = allBackendNames();
-    auto ret = kTransform<QVector<AbstractResourcesBackend *>>(names, [this](const QString &name) {
+    auto ret = kTransform<QList<AbstractResourcesBackend *>>(names, [this](const QString &name) {
         return backend(name);
     });
     ret.removeAll(nullptr);

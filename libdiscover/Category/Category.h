@@ -6,12 +6,12 @@
 
 #pragma once
 
+#include <QList>
 #include <QObject>
 #include <QPair>
 #include <QSet>
 #include <QString>
 #include <QUrl>
-#include <QVector>
 #include <variant>
 
 #include "discovercommon_export.h"
@@ -36,7 +36,7 @@ public:
     Q_ENUM(FilterType)
 
     FilterType type;
-    std::variant<QString, QVector<CategoryFilter>> value;
+    std::variant<QString, QList<CategoryFilter>> value;
 
     bool operator==(const CategoryFilter &other) const;
     bool operator!=(const CategoryFilter &other) const
@@ -59,7 +59,7 @@ public:
              const QString &iconName,
              const CategoryFilter &filters,
              const QSet<QString> &pluginName,
-             const QVector<Category *> &subCategories,
+             const QList<Category *> &subCategories,
              bool isAddons);
     ~Category() override;
 
@@ -70,11 +70,11 @@ public:
     QString icon() const;
     void setFilter(const CategoryFilter &filter);
     CategoryFilter filter() const;
-    QVector<Category *> subCategories() const;
+    QList<Category *> subCategories() const;
     QVariantList subCategoriesVariant() const;
 
-    static void sortCategories(QVector<Category *> &cats);
-    static void addSubcategory(QVector<Category *> &cats, Category *cat);
+    static void sortCategories(QList<Category *> &cats);
+    static void addSubcategory(QList<Category *> &cats, Category *cat);
     /**
      * Add a subcategory to this category. This function should only
      * be used during the initialisation stage, before adding the local
@@ -97,7 +97,7 @@ public:
     Q_SCRIPTABLE bool contains(const QVariantList &cats) const;
 
     static bool categoryLessThan(Category *c1, const Category *c2);
-    static bool blacklistPluginsInVector(const QSet<QString> &pluginNames, QVector<Category *> &subCategories);
+    static bool blacklistPluginsInVector(const QSet<QString> &pluginNames, QList<Category *> &subCategories);
 
     QStringList involvedCategories() const;
     QString untranslatedName() const
@@ -114,7 +114,7 @@ private:
     QString m_untranslatedName;
     QString m_iconString;
     CategoryFilter m_filter;
-    QVector<Category *> m_subCategories;
+    QList<Category *> m_subCategories;
 
     CategoryFilter parseIncludes(QXmlStreamReader *xml);
     QSet<QString> m_plugins;

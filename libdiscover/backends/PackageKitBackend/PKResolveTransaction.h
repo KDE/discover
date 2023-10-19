@@ -7,9 +7,9 @@
 #pragma once
 
 #include <PackageKit/Transaction>
+#include <QList>
 #include <QObject>
 #include <QTimer>
-#include <QVector>
 
 class PackageKitBackend;
 
@@ -31,6 +31,6 @@ private:
 
     QTimer m_floodTimer;
     QStringList m_packageNames;
-    QVector<PackageKit::Transaction *> m_transactions;
+    QList<PackageKit::Transaction *> m_transactions;
     PackageKitBackend *const m_backend;
 };

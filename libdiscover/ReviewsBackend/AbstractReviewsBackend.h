@@ -51,7 +51,7 @@ public Q_SLOTS:
     virtual void fetchReviews(AbstractResource *app, int page = 1) = 0;
 
 Q_SIGNALS:
-    void reviewsReady(AbstractResource *app, const QVector<ReviewPtr> &reviews, bool canFetchMore);
+    void reviewsReady(AbstractResource *app, const QList<ReviewPtr> &reviews, bool canFetchMore);
     void error(const QString &message);
     void fetchingChanged(bool fetching);
     void preferredUserNameChanged();

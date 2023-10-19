@@ -25,7 +25,7 @@ QTEST_MAIN(DummyTest)
 
 AbstractResourcesBackend *backendByName(ResourcesModel *m, const QString &name)
 {
-    const QVector<AbstractResourcesBackend *> backends = m->backends();
+    const QList<AbstractResourcesBackend *> backends = m->backends();
     for (AbstractResourcesBackend *backend : backends) {
         if (QString::fromLatin1(backend->metaObject()->className()) == name) {
             return backend;
@@ -54,10 +54,10 @@ void DummyTest::initTestCase()
     }
 }
 
-QVector<StreamResult> fetchResources(ResultsStream *stream)
+QList<StreamResult> fetchResources(ResultsStream *stream)
 {
-    QVector<StreamResult> ret;
-    QObject::connect(stream, &ResultsStream::resourcesFound, stream, [&ret](const QVector<StreamResult> &res) {
+    QList<StreamResult> ret;
+    QObject::connect(stream, &ResultsStream::resourcesFound, stream, [&ret](const QList<StreamResult> &res) {
         ret += res;
     });
     QSignalSpy spy(stream, &ResultsStream::destroyed);

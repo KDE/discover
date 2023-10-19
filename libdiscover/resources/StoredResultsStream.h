@@ -14,11 +14,11 @@ class DISCOVERCOMMON_EXPORT StoredResultsStream : public AggregatedResultsStream
 public:
     StoredResultsStream(const QSet<ResultsStream *> &streams);
 
-    QVector<StreamResult> resources() const;
+    QList<StreamResult> resources() const;
 
 Q_SIGNALS:
-    void finishedResources(const QVector<StreamResult> &resources);
+    void finishedResources(const QList<StreamResult> &resources);
 
 private:
-    QVector<StreamResult> m_results;
+    QList<StreamResult> m_results;
 };

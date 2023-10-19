@@ -27,12 +27,12 @@ private Q_SLOTS:
     void testResourceByUrlResourcesModel();
 
 public Q_SLOTS:
-    void reviewsArrived(AbstractResource *r, const QVector<ReviewPtr> &revs);
+    void reviewsArrived(AbstractResource *r, const QList<ReviewPtr> &revs);
 
 private:
-    QVector<AbstractResource *> getResources(ResultsStream *stream, bool canBeEmpty = false);
-    QVector<AbstractResource *> getAllResources(AbstractResourcesBackend *backend);
+    QList<AbstractResource *> getResources(ResultsStream *stream, bool canBeEmpty = false);
+    QList<AbstractResource *> getAllResources(AbstractResourcesBackend *backend);
     QPointer<AbstractResourcesBackend> m_backend;
     QPointer<AbstractResource> m_r;
-    QVector<ReviewPtr> m_revs;
+    QList<ReviewPtr> m_revs;
 };

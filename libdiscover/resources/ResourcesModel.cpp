@@ -195,14 +195,14 @@ void ResourcesModel::callerFetchingChanged()
     }
 }
 
-void ResourcesModel::updateCaller(const QVector<QByteArray> &properties)
+void ResourcesModel::updateCaller(const QList<QByteArray> &properties)
 {
     AbstractResourcesBackend *backend = qobject_cast<AbstractResourcesBackend *>(sender());
 
     Q_EMIT backendDataChanged(backend, properties);
 }
 
-QVector<AbstractResourcesBackend *> ResourcesModel::backends() const
+QList<AbstractResourcesBackend *> ResourcesModel::backends() const
 {
     return m_backends;
 }
@@ -325,7 +325,7 @@ AggregatedResultsStream::AggregatedResultsStream(const QSet<ResultsStream *> &st
 
 AggregatedResultsStream::~AggregatedResultsStream() = default;
 
-void AggregatedResultsStream::addResults(const QVector<StreamResult> &res)
+void AggregatedResultsStream::addResults(const QList<StreamResult> &res)
 {
     for (auto r : res)
         connect(r.resource, &QObject::destroyed, this, &AggregatedResultsStream::resourceDestruction);

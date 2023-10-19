@@ -71,9 +71,9 @@ public:
         });
     }
 
-    QVector<AbstractResourcesBackend *> newInstance(QObject *parent, const QString & /*name*/) const override
+    QList<AbstractResourcesBackend *> newInstance(QObject *parent, const QString & /*name*/) const override
     {
-        QVector<AbstractResourcesBackend *> ret;
+        QList<AbstractResourcesBackend *> ret;
         const QStringList availableConfigFiles = KNSCore::EngineBase::availableConfigFiles();
         for (const QString &configFile : availableConfigFiles) {
             auto bk = new KNSBackend(parent, QStringLiteral("plasma"), configFile);
@@ -164,7 +164,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     m_hasApplications = group.readEntry<bool>("X-Discover-HasApplications", false);
 
     const QStringList cats = group.readEntry<QStringList>("Categories", QStringList{});
-    QVector<Category *> categories;
+    QList<Category *> categories;
     if (cats.count() > 1) {
         m_categories += cats;
         for (const auto &cat : cats) {
@@ -175,7 +175,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
         }
     }
 
-    QVector<Category *> topCategories{categories};
+    QList<Category *> topCategories{categories};
     for (const auto &cat : std::as_const(categories)) {
         const QString catName = cat->name().append(QLatin1Char('/'));
         for (const auto &potentialSubCat : std::as_const(categories)) {
@@ -215,7 +215,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
                                                 backendName,
                                                 {actualCategory},
                                                 false);
-        const QVector<CategoryFilter> filters = {{CategoryFilter::CategoryNameFilter, QLatin1String("Application")}, filter};
+        const QList<CategoryFilter> filters = {{CategoryFilter::CategoryNameFilter, QLatin1String("Application")}, filter};
         applicationCategory->setFilter({CategoryFilter::AndFilter, filters});
         m_categories.append(applicationCategory->name());
         m_rootCategories = {applicationCategory};

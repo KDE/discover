@@ -271,7 +271,7 @@ void RpmOstreeBackend::checkForUpdates()
         m_currentlyBootedDeployment->setNewVersion(newVersion);
 
         // Look for an existing deployment for the new version
-        QVectorIterator<RpmOstreeResource *> iterator(m_resources);
+        QListIterator<RpmOstreeResource *> iterator(m_resources);
         while (iterator.hasNext()) {
             RpmOstreeResource *deployment = iterator.next();
             if (deployment->version() == newVersion) {
@@ -414,7 +414,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
     m_rebaseAvailableMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info, rebase);
 
     // Look for an existing deployment for the new major version
-    QVectorIterator<RpmOstreeResource *> iterator(m_resources);
+    QListIterator<RpmOstreeResource *> iterator(m_resources);
     while (iterator.hasNext()) {
         RpmOstreeResource *deployment = iterator.next();
         QString deploymentVersion = deployment->version();
@@ -433,7 +433,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
     // Look for an existing updated deployment or a pending deployment for the
     // current version
     QString newVersion = m_currentlyBootedDeployment->getNewVersion();
-    iterator = QVectorIterator<RpmOstreeResource *>(m_resources);
+    iterator = QListIterator<RpmOstreeResource *>(m_resources);
     while (iterator.hasNext()) {
         RpmOstreeResource *deployment = iterator.next();
         if ((deployment->version() == newVersion) || deployment->isPending()) {
@@ -487,7 +487,7 @@ ResultsStream *RpmOstreeBackend::search(const AbstractResourcesBackend::Filters 
     // Trim whitespace from beginning and end of the string entered in the search field.
     QString keyword = filter.search.trimmed();
 
-    QVector<AbstractResource *> res;
+    QList<AbstractResource *> res;
     for (RpmOstreeResource *r : m_resources) {
         // Skip if the state does not match the filter
         if (r->state() < filter.state) {

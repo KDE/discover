@@ -37,7 +37,7 @@ QDebug operator<<(QDebug debug, const AbstractResourcesBackend::Filters &filters
     return debug;
 }
 
-ResultsStream::ResultsStream(const QString &objectName, const QVector<StreamResult> &resources)
+ResultsStream::ResultsStream(const QString &objectName, const QList<StreamResult> &resources)
     : ResultsStream(objectName)
 {
     Q_ASSERT(!kContains(resources, [](const StreamResult &res) {
@@ -131,7 +131,7 @@ bool AbstractResourcesBackend::Filters::shouldFilter(AbstractResource *res) cons
     return !category || res->categoryMatches(category);
 }
 
-void AbstractResourcesBackend::Filters::filterJustInCase(QVector<AbstractResource *> &input) const
+void AbstractResourcesBackend::Filters::filterJustInCase(QList<AbstractResource *> &input) const
 {
     for (auto it = input.begin(); it != input.end();) {
         if (shouldFilter(*it))
@@ -141,7 +141,7 @@ void AbstractResourcesBackend::Filters::filterJustInCase(QVector<AbstractResourc
     }
 }
 
-void AbstractResourcesBackend::Filters::filterJustInCase(QVector<StreamResult> &input) const
+void AbstractResourcesBackend::Filters::filterJustInCase(QList<StreamResult> &input) const
 {
     for (auto it = input.begin(); it != input.end();) {
         if (shouldFilter(it->resource))

@@ -20,7 +20,7 @@ class FlatpakSourcesBackend : public AbstractSourcesBackend
 {
     Q_OBJECT
 public:
-    explicit FlatpakSourcesBackend(const QVector<FlatpakInstallation *> &installations, AbstractResourcesBackend *parent);
+    explicit FlatpakSourcesBackend(const QList<FlatpakInstallation *> &installations, AbstractResourcesBackend *parent);
     ~FlatpakSourcesBackend() override;
 
     enum Roles {

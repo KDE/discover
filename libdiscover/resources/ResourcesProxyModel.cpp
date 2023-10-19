@@ -116,11 +116,11 @@ void ResourcesProxyModel::setSearch(const QString &_searchText)
     }
 }
 
-void ResourcesProxyModel::removeDuplicates(QVector<StreamResult> &resources)
+void ResourcesProxyModel::removeDuplicates(QList<StreamResult> &resources)
 {
     const auto cab = ResourcesModel::global()->currentApplicationBackend();
     QHash<QString, QString> aliases;
-    QHash<QString, QVector<StreamResult>::iterator> storedIds;
+    QHash<QString, QList<StreamResult>::iterator> storedIds;
     for (auto it = m_displayedResources.begin(); it != m_displayedResources.end(); ++it) {
         const auto appstreamid = it->resource->appstreamId();
         if (appstreamid.isEmpty()) {
@@ -140,7 +140,7 @@ void ResourcesProxyModel::removeDuplicates(QVector<StreamResult> &resources)
         }
     }
 
-    QHash<QString, QVector<StreamResult>::iterator> ids;
+    QHash<QString, QList<StreamResult>::iterator> ids;
     for (auto it = resources.begin(); it != resources.end();) {
         const auto appstreamid = it->resource->appstreamId();
         if (appstreamid.isEmpty()) {
@@ -217,7 +217,7 @@ void ResourcesProxyModel::removeDuplicates(QVector<StreamResult> &resources)
     }
 }
 
-void ResourcesProxyModel::addResources(const QVector<StreamResult> &_res)
+void ResourcesProxyModel::addResources(const QList<StreamResult> &_res)
 {
     auto res = _res;
     m_filters.filterJustInCase(res);
@@ -557,7 +557,7 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource *resource, int role) 
     }
 }
 
-bool ResourcesProxyModel::isSorted(const QVector<StreamResult> &resources)
+bool ResourcesProxyModel::isSorted(const QList<StreamResult> &resources)
 {
     auto last = resources.constFirst();
     for (auto it = resources.constBegin() + 1, itEnd = resources.constEnd(); it != itEnd; ++it) {
@@ -571,7 +571,7 @@ bool ResourcesProxyModel::isSorted(const QVector<StreamResult> &resources)
     return true;
 }
 
-void ResourcesProxyModel::sortedInsertion(const QVector<StreamResult> &_res)
+void ResourcesProxyModel::sortedInsertion(const QList<StreamResult> &_res)
 {
     Q_ASSERT(_res.size() == QSet(_res.constBegin(), _res.constEnd()).size());
 
@@ -610,7 +610,7 @@ void ResourcesProxyModel::sortedInsertion(const QVector<StreamResult> &_res)
     }
 }
 
-void ResourcesProxyModel::refreshResource(AbstractResource *resource, const QVector<QByteArray> &properties)
+void ResourcesProxyModel::refreshResource(AbstractResource *resource, const QList<QByteArray> &properties)
 {
     const auto residx = indexOf(resource);
     if (residx < 0) {
@@ -647,7 +647,7 @@ void ResourcesProxyModel::removeResource(AbstractResource *resource)
     endRemoveRows();
 }
 
-void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend *backend, const QVector<QByteArray> &properties)
+void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend *backend, const QList<QByteArray> &properties)
 {
     auto roles = propertiesToRoles(properties);
     const int count = m_displayedResources.count();
@@ -671,9 +671,9 @@ void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend *backend, cons
     }
 }
 
-QVector<int> ResourcesProxyModel::propertiesToRoles(const QVector<QByteArray> &properties) const
+QList<int> ResourcesProxyModel::propertiesToRoles(const QList<QByteArray> &properties) const
 {
-    QVector<int> roles = kTransform<QVector<int>>(properties, [this](const QByteArray &arr) {
+    QList<int> roles = kTransform<QList<int>>(properties, [this](const QByteArray &arr) {
         return roleNames().key(arr, -1);
     });
     roles.removeAll(-1);

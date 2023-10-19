@@ -7,13 +7,13 @@
 #pragma once
 
 #include "discovercommon_export.h"
-#include <QVector>
+#include <QList>
 
 class Category;
 class AbstractResourcesBackend;
 class DISCOVERCOMMON_EXPORT CategoriesReader
 {
 public:
-    QVector<Category *> loadCategoriesPath(const QString &path);
-    QVector<Category *> loadCategoriesFile(AbstractResourcesBackend *backend);
+    QList<Category *> loadCategoriesPath(const QString &path);
+    QList<Category *> loadCategoriesFile(AbstractResourcesBackend *backend);
 };

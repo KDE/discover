@@ -15,7 +15,7 @@ class PKTransaction : public Transaction
 {
     Q_OBJECT
 public:
-    explicit PKTransaction(const QVector<AbstractResource *> &app, Transaction::Role role);
+    explicit PKTransaction(const QList<AbstractResource *> &app, Transaction::Role role);
     PackageKit::Transaction *transaction();
 
     void cancel() override;
@@ -49,9 +49,9 @@ private:
 
     void trigger(PackageKit::Transaction::TransactionFlags flags);
     QPointer<PackageKit::Transaction> m_trans;
-    const QVector<AbstractResource *> m_apps;
+    const QList<AbstractResource *> m_apps;
     QSet<QString> m_pkgnames;
-    QVector<std::function<PackageKit::Transaction *()>> m_proceedFunctions;
+    QList<std::function<PackageKit::Transaction *()>> m_proceedFunctions;
 
     QMap<PackageKit::Transaction::Info, QStringList> m_newPackageStates;
 };

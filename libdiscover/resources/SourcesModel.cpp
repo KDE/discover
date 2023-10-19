@@ -99,9 +99,9 @@ AbstractSourcesBackend *SourcesModel::sourcesBackendByName(const QString &id) co
     return nullptr;
 }
 
-QVector<AbstractSourcesBackend *> SourcesModel::sources() const
+QList<AbstractSourcesBackend *> SourcesModel::sources() const
 {
-    QVector<AbstractSourcesBackend *> sources;
+    QList<AbstractSourcesBackend *> sources;
     for (int i = 0, c = rowCount(); i < c; ++i) {
         const auto idx = index(i, 0);
         auto source = qobject_cast<AbstractSourcesBackend *>(modelAt(idx)->property(SourcesBackendId).value<QObject *>());

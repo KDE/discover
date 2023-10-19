@@ -64,7 +64,7 @@ void DiscoverExporter::fetchResources()
     QTimer::singleShot(15s, stream, &AggregatedResultsStream::finished);
 }
 
-void DiscoverExporter::exportResources(const QVector<StreamResult> &resources)
+void DiscoverExporter::exportResources(const QList<StreamResult> &resources)
 {
     QJsonArray data;
     for (auto res : resources) {

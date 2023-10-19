@@ -30,7 +30,7 @@ QString FlatpakPermission::description() const
     return m_description;
 }
 
-FlatpakPermissionsModel::FlatpakPermissionsModel(QVector<FlatpakPermission> permissions)
+FlatpakPermissionsModel::FlatpakPermissionsModel(QList<FlatpakPermission> permissions)
     : QAbstractListModel()
     , m_permissions(permissions)
 {

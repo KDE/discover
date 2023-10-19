@@ -147,7 +147,7 @@ void AbstractResource::reportNewState()
     if (backend()->isFetching())
         return;
 
-    static const QVector<QByteArray> ns = {"state", "status", "canUpgrade", "size", "sizeDescription", "installedVersion", "availableVersion"};
+    static const QList<QByteArray> ns = {"state", "status", "canUpgrade", "size", "sizeDescription", "installedVersion", "availableVersion"};
     Q_EMIT backend()->resourcesChanged(this, ns);
 }
 
@@ -175,21 +175,21 @@ static bool shouldFilter(AbstractResource *res, const CategoryFilter &filter)
         ret = res->packageName() == std::get<QString>(filter.value);
         break;
     case CategoryFilter::AndFilter: {
-        const auto filters = std::get<QVector<CategoryFilter>>(filter.value);
+        const auto filters = std::get<QList<CategoryFilter>>(filter.value);
         ret = std::all_of(filters.begin(), filters.end(), [res](const CategoryFilter &f) {
             return shouldFilter(res, f);
         });
         break;
     }
     case CategoryFilter::OrFilter: {
-        const auto filters = std::get<QVector<CategoryFilter>>(filter.value);
+        const auto filters = std::get<QList<CategoryFilter>>(filter.value);
         ret = std::any_of(filters.begin(), filters.end(), [res](const CategoryFilter &f) {
             return shouldFilter(res, f);
         });
         break;
     }
     case CategoryFilter::NotFilter: {
-        const auto filters = std::get<QVector<CategoryFilter>>(filter.value);
+        const auto filters = std::get<QList<CategoryFilter>>(filter.value);
         ret = !std::any_of(filters.begin(), filters.end(), [res](const CategoryFilter &f) {
             return shouldFilter(res, f);
         });
@@ -204,7 +204,7 @@ bool AbstractResource::categoryMatches(Category *cat)
     return shouldFilter(this, cat->filter());
 }
 
-static QSet<Category *> walkCategories(AbstractResource *res, const QVector<Category *> &cats)
+static QSet<Category *> walkCategories(AbstractResource *res, const QList<Category *> &cats)
 {
     QSet<Category *> ret;
     for (Category *cat : cats) {
@@ -221,7 +221,7 @@ static QSet<Category *> walkCategories(AbstractResource *res, const QVector<Cate
     return ret;
 }
 
-QSet<Category *> AbstractResource::categoryObjects(const QVector<Category *> &cats) const
+QSet<Category *> AbstractResource::categoryObjects(const QList<Category *> &cats) const
 {
     return walkCategories(const_cast<AbstractResource *>(this), cats);
 }

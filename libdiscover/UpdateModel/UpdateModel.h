@@ -76,7 +76,7 @@ Q_SIGNALS:
     void updateSizeChanged();
 
 private:
-    void resourceDataChanged(AbstractResource *res, const QVector<QByteArray> &properties);
+    void resourceDataChanged(AbstractResource *res, const QList<QByteArray> &properties);
     void integrateChangelog(const QString &changelog);
     QModelIndex indexFromItem(UpdateItem *item) const;
     UpdateItem *itemFromResource(AbstractResource *res);
@@ -84,7 +84,7 @@ private:
     void activityChanged();
 
     QTimer *const m_updateSizeTimer;
-    QVector<UpdateItem *> m_updateItems;
+    QList<UpdateItem *> m_updateItems;
     ResourcesUpdatesModel *m_updates;
     QList<AbstractResource *> m_resources;
 };

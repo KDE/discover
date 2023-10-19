@@ -239,7 +239,7 @@ private:
     mutable QString m_availableVersion;
     FlatpakResource::ResourceType m_type = DesktopApp;
     QSharedPointer<FlatpakSource> m_temp;
-    QVector<FlatpakPermission> m_permissions;
+    QList<FlatpakPermission> m_permissions;
     std::optional<QString> m_eolReason;
     static const QStringList s_topObjects;
     static const QStringList s_bottomObjects;

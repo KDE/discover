@@ -15,7 +15,7 @@
 class DISCOVERCOMMON_EXPORT SourcesModel : public QConcatenateTablesProxyModel
 {
     Q_OBJECT
-    Q_PROPERTY(QVector<AbstractSourcesBackend *> sources READ sources NOTIFY sourcesChanged)
+    Q_PROPERTY(QList<AbstractSourcesBackend *> sources READ sources NOTIFY sourcesChanged)
 public:
     enum Roles {
         SourceNameRole = AbstractSourcesBackend::LastRole,
@@ -35,7 +35,7 @@ public:
     void addSourcesBackend(AbstractSourcesBackend *sources);
 
     Q_SCRIPTABLE AbstractSourcesBackend *sourcesBackendByName(const QString &name) const;
-    QVector<AbstractSourcesBackend *> sources() const;
+    QList<AbstractSourcesBackend *> sources() const;
 Q_SIGNALS:
     void sourcesChanged();
     void showingNow();

@@ -113,9 +113,9 @@ static bool kContainsValue(const Q &list, W value)
 }
 
 template<typename T>
-static QVector<T> kSetToVector(const QSet<T> &set)
+static QList<T> kSetToVector(const QSet<T> &set)
 {
-    QVector<T> ret;
+    QList<T> ret;
     ret.reserve(set.size());
     for (auto &x : set)
         ret.append(x);

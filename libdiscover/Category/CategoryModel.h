@@ -25,7 +25,7 @@ public:
 
     Q_SCRIPTABLE Category *findCategoryByName(const QString &name) const;
     void blacklistPlugin(const QString &name);
-    QVector<Category *> rootCategories() const
+    QList<Category *> rootCategories() const
     {
         return m_rootCategories;
     }
@@ -37,5 +37,5 @@ Q_SIGNALS:
 
 private:
     QTimer *m_rootCategoriesChanged;
-    QVector<Category *> m_rootCategories;
+    QList<Category *> m_rootCategories;
 };

@@ -180,7 +180,7 @@ QString KNSResource::section()
 
 static bool isAnimated(const QString &path)
 {
-    static const QVector<QLatin1String> s_extensions = {QLatin1String(".gif"), QLatin1String(".apng"), QLatin1String(".webp"), QLatin1String(".avif")};
+    static const QList<QLatin1String> s_extensions = {QLatin1String(".gif"), QLatin1String(".apng"), QLatin1String(".webp"), QLatin1String(".avif")};
     return kContains(s_extensions, [path](const QLatin1String &postfix) {
         return path.endsWith(postfix);
     });
@@ -238,9 +238,9 @@ QDate KNSResource::releaseDate() const
     return m_entry.updateReleaseDate().isNull() ? m_entry.releaseDate() : m_entry.updateReleaseDate();
 }
 
-QVector<int> KNSResource::linkIds() const
+QList<int> KNSResource::linkIds() const
 {
-    QVector<int> ids;
+    QList<int> ids;
     const auto linkInfo = m_entry.downloadLinkInformationList();
     for (const auto &e : linkInfo) {
         if (e.isDownloadtypeLink)

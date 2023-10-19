@@ -6,9 +6,9 @@
 
 #pragma once
 
+#include <QList>
 #include <QSet>
 #include <QTimer>
-#include <QVector>
 
 #include "AbstractResourcesBackend.h"
 #include "discovercommon_export.h"
@@ -31,14 +31,14 @@ Q_SIGNALS:
     void finished();
 
 private:
-    void addResults(const QVector<StreamResult> &res);
+    void addResults(const QList<StreamResult> &res);
     void emitResults();
     void streamDestruction(QObject *obj);
     void resourceDestruction(QObject *obj);
     void clear();
 
     QSet<QObject *> m_streams;
-    QVector<StreamResult> m_results;
+    QList<StreamResult> m_results;
     QTimer m_delayedEmission;
 };
 
@@ -89,7 +89,7 @@ public:
     static ResourcesModel *global();
     ~ResourcesModel() override;
 
-    QVector<AbstractResourcesBackend *> backends() const;
+    QList<AbstractResourcesBackend *> backends() const;
     int updatesCount() const
     {
         return m_updatesCount.m_value;
@@ -138,8 +138,8 @@ Q_SIGNALS:
     void allInitialized();
     void backendsChanged();
     void updatesCountChanged(int updatesCount);
-    void backendDataChanged(AbstractResourcesBackend *backend, const QVector<QByteArray> &properties);
-    void resourceDataChanged(AbstractResource *resource, const QVector<QByteArray> &properties);
+    void backendDataChanged(AbstractResourcesBackend *backend, const QList<QByteArray> &properties);
+    void resourceDataChanged(AbstractResource *resource, const QList<QByteArray> &properties);
     void resourceRemoved(AbstractResource *resource);
     void passiveMessage(const QString &message);
     void currentApplicationBackendChanged(AbstractResourcesBackend *currentApplicationBackend);
@@ -149,7 +149,7 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     void callerFetchingChanged();
-    void updateCaller(const QVector<QByteArray> &properties);
+    void updateCaller(const QList<QByteArray> &properties);
     void registerAllBackends();
 
 private:
@@ -163,7 +163,7 @@ private:
 
     bool m_isFetching;
     bool m_isInitializing = true;
-    QVector<AbstractResourcesBackend *> m_backends;
+    QList<AbstractResourcesBackend *> m_backends;
     int m_initializingBackendsCount;
     DiscoverAction *m_updateAction = nullptr;
     AbstractResourcesBackend *m_currentApplicationBackend;

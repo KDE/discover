@@ -18,7 +18,7 @@ ApplicationAddonsModel::ApplicationAddonsModel(QObject *parent)
     // new QAbstractItemModelTester(this, this);
 
     connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &ApplicationAddonsModel::transactionOver);
-    connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, [this](AbstractResource *resource, const QVector<QByteArray> &properties) {
+    connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, [this](AbstractResource *resource, const QList<QByteArray> &properties) {
         if (!properties.contains("state"))
             return;
 

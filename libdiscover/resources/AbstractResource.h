@@ -11,12 +11,12 @@
 #include <QDate>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QList>
 #include <QObject>
 #include <QScopedPointer>
 #include <QSet>
 #include <QStringList>
 #include <QUrl>
-#include <QVector>
 
 #include "PackageState.h"
 #include "discovercommon_export.h"
@@ -44,7 +44,7 @@ struct Screenshot {
     bool isAnimated = false;
 };
 
-using Screenshots = QVector<Screenshot>;
+using Screenshots = QList<Screenshot>;
 
 /**
  * \class AbstractResource  AbstractResource.h "AbstractResource.h"
@@ -225,7 +225,7 @@ public:
 
     bool categoryMatches(Category *cat);
 
-    QSet<Category *> categoryObjects(const QVector<Category *> &cats) const;
+    QSet<Category *> categoryObjects(const QList<Category *> &cats) const;
 
     /**
      * @returns a url that uniquely identifies the application
@@ -290,4 +290,4 @@ private:
     QJsonObject m_metadata;
 };
 
-Q_DECLARE_METATYPE(QVector<AbstractResource *>)
+Q_DECLARE_METATYPE(QList<AbstractResource *>)

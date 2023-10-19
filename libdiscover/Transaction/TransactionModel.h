@@ -49,7 +49,7 @@ public:
         return m_transactions.contains(transaction);
     }
     int progress() const;
-    QVector<Transaction *> transactions() const
+    QList<Transaction *> transactions() const
     {
         return m_transactions;
     }
@@ -57,7 +57,7 @@ public:
     QString mainTransactionText() const;
 
 private:
-    QVector<Transaction *> m_transactions;
+    QList<Transaction *> m_transactions;
 
 Q_SIGNALS:
     void startingFirstTransaction();

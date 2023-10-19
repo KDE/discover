@@ -23,7 +23,7 @@ class UpdateTransaction : public Transaction
 {
     Q_OBJECT
 public:
-    UpdateTransaction(ResourcesUpdatesModel * /*parent*/, const QVector<AbstractBackendUpdater *> &updaters)
+    UpdateTransaction(ResourcesUpdatesModel * /*parent*/, const QList<AbstractBackendUpdater *> &updaters)
         : Transaction(nullptr, nullptr, Transaction::InstallRole)
         , m_allUpdaters(updaters)
     {
@@ -52,7 +52,7 @@ public:
 
     void cancel() override
     {
-        const QVector<AbstractBackendUpdater *> toCancel = m_updatersWaitingForFeedback.isEmpty() ? m_allUpdaters : m_updatersWaitingForFeedback;
+        const QList<AbstractBackendUpdater *> toCancel = m_updatersWaitingForFeedback.isEmpty() ? m_allUpdaters : m_updatersWaitingForFeedback;
 
         for (auto updater : toCancel) {
             updater->cancel();
@@ -113,8 +113,8 @@ Q_SIGNALS:
     void finished();
 
 private:
-    QVector<AbstractBackendUpdater *> m_updatersWaitingForFeedback;
-    const QVector<AbstractBackendUpdater *> m_allUpdaters;
+    QList<AbstractBackendUpdater *> m_updatersWaitingForFeedback;
+    const QList<AbstractBackendUpdater *> m_allUpdaters;
 };
 
 ResourcesUpdatesModel::ResourcesUpdatesModel(QObject *parent)
@@ -129,7 +129,7 @@ ResourcesUpdatesModel::ResourcesUpdatesModel(QObject *parent)
 
 void ResourcesUpdatesModel::init()
 {
-    const QVector<AbstractResourcesBackend *> backends = ResourcesModel::global()->backends();
+    const QList<AbstractResourcesBackend *> backends = ResourcesModel::global()->backends();
     m_lastIsProgressing = false;
     for (AbstractResourcesBackend *b : backends) {
         AbstractBackendUpdater *updater = b->backendUpdater();
@@ -215,7 +215,7 @@ void ResourcesUpdatesModel::updateAll()
     if (!m_updaters.isEmpty()) {
         delete m_transaction;
 
-        const auto updaters = kFilter<QVector<AbstractBackendUpdater *>>(m_updaters, [](AbstractBackendUpdater *u) {
+        const auto updaters = kFilter<QList<AbstractBackendUpdater *>>(m_updaters, [](AbstractBackendUpdater *u) {
             return u->hasUpdates();
         });
         if (updaters.isEmpty()) {

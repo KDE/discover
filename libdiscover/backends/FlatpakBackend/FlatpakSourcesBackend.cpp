@@ -83,7 +83,7 @@ private:
     FlatpakBackend *const m_backend;
 };
 
-FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *> &installations, AbstractResourcesBackend *parent)
+FlatpakSourcesBackend::FlatpakSourcesBackend(const QList<FlatpakInstallation *> &installations, AbstractResourcesBackend *parent)
     : AbstractSourcesBackend(parent)
     , m_preferredInstallation(installations.constFirst())
     , m_sources(new QStandardItemModel(this))
@@ -168,7 +168,7 @@ bool FlatpakSourcesBackend::addSource(const QString &id)
     if (flatpakrepoUrl.isLocalFile()) {
         auto stream = new ResultsStream(QStringLiteral("FlatpakSource-") + flatpakrepoUrl.toDisplayString());
         backend->addSourceFromFlatpakRepo(flatpakrepoUrl, stream);
-        connect(stream, &ResultsStream::resourcesFound, this, [addSource](const QVector<StreamResult> &res) {
+        connect(stream, &ResultsStream::resourcesFound, this, [addSource](const QList<StreamResult> &res) {
             addSource(res.constFirst());
         });
     } else {

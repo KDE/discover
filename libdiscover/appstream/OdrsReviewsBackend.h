@@ -64,7 +64,7 @@ public:
         return m_errorMessage;
     }
 
-    QVector<Rating *> top() const
+    QList<Rating *> top() const
     {
         return m_top;
     }
@@ -94,5 +94,5 @@ private:
     bool m_isFetching = false;
     CachedNetworkAccessManager *m_delayedNam = nullptr;
 
-    QVector<Rating *> m_top;
+    QList<Rating *> m_top;
 };

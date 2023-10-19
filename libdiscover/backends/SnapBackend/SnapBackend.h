@@ -6,9 +6,9 @@
 
 #pragma once
 
+#include <QList>
 #include <QThreadPool>
 #include <QVariantList>
-#include <QVector>
 #include <Snapd/Client>
 #include <functional>
 #include <resources/AbstractResource.h>
@@ -66,13 +66,13 @@ private:
     ResultsStream *populateWithFilter(T *snaps, std::function<bool(const QSharedPointer<QSnapdSnap> &)> &filter);
 
     template<class T>
-    ResultsStream *populateJobsWithFilter(const QVector<T *> &snaps, std::function<bool(const QSharedPointer<QSnapdSnap> &)> &filter);
+    ResultsStream *populateJobsWithFilter(const QList<T *> &snaps, std::function<bool(const QSharedPointer<QSnapdSnap> &)> &filter);
 
     template<class T>
     ResultsStream *populate(T *snaps);
 
     template<class T>
-    ResultsStream *populate(const QVector<T *> &snaps);
+    ResultsStream *populate(const QList<T *> &snaps);
 
     QHash<QString, SnapResource *> m_resources;
     StandardBackendUpdater *m_updater;

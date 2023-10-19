@@ -61,7 +61,7 @@ public Q_SLOTS:
     void markUseful(int row, bool useful);
 
 private Q_SLOTS:
-    void addReviews(AbstractResource *app, const QVector<ReviewPtr> &reviews, bool canFetchMore);
+    void addReviews(AbstractResource *app, const QList<ReviewPtr> &reviews, bool canFetchMore);
     void restartFetching();
 
 Q_SIGNALS:
@@ -72,7 +72,7 @@ Q_SIGNALS:
 private:
     AbstractResource *m_app = nullptr;
     AbstractReviewsBackend *m_backend = nullptr;
-    QVector<ReviewPtr> m_reviews;
+    QList<ReviewPtr> m_reviews;
     int m_lastPage;
     bool m_canFetchMore = true;
 };

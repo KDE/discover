@@ -37,7 +37,7 @@ public:
 
         for (auto stream : streams) {
             m_streams.insert(stream);
-            connect(stream, &ResultsStream::resourcesFound, this, [this](const QVector<StreamResult> &resources) {
+            connect(stream, &ResultsStream::resourcesFound, this, [this](const QList<StreamResult> &resources) {
                 m_resources.append(resources.constFirst());
             });
             connect(stream, &QObject::destroyed, this, &BestInResultsStream::streamDestruction);
@@ -58,10 +58,10 @@ public:
     }
 
 Q_SIGNALS:
-    void finished(QVector<StreamResult> resources);
+    void finished(QList<StreamResult> resources);
 
 private:
-    QVector<StreamResult> m_resources;
+    QList<StreamResult> m_resources;
     QSet<QObject *> m_streams;
 };
 
@@ -92,7 +92,7 @@ void AbstractAppsModel::refreshCurrentApplicationBackend()
     Q_EMIT currentApplicationBackendChanged(m_backend);
 }
 
-void AbstractAppsModel::setUris(const QVector<QUrl> &uris)
+void AbstractAppsModel::setUris(const QList<QUrl> &uris)
 {
     if (!m_backend)
         return;
@@ -115,7 +115,7 @@ void AbstractAppsModel::setUris(const QVector<QUrl> &uris)
     }
 }
 
-static void filterDupes(QVector<StreamResult> &resources)
+static void filterDupes(QList<StreamResult> &resources)
 {
     QSet<QString> found;
     for (auto it = resources.begin(); it != resources.end();) {
@@ -142,7 +142,7 @@ void AbstractAppsModel::acquireFetching(bool f)
     Q_ASSERT(m_isFetching >= 0);
 }
 
-void AbstractAppsModel::setResources(const QVector<StreamResult> &_resources)
+void AbstractAppsModel::setResources(const QList<StreamResult> &_resources)
 {
     auto resources = _resources;
     filterDupes(resources);

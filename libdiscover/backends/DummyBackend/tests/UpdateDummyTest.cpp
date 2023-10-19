@@ -25,7 +25,7 @@ class UpdateDummyTest : public QObject
 public:
     AbstractResourcesBackend *backendByName(ResourcesModel *m, const QString &name)
     {
-        const QVector<AbstractResourcesBackend *> backends = m->backends();
+        const QList<AbstractResourcesBackend *> backends = m->backends();
         for (AbstractResourcesBackend *backend : backends) {
             if (QLatin1String(backend->metaObject()->className()) == name) {
                 return backend;

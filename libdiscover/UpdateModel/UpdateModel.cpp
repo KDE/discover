@@ -237,7 +237,7 @@ void UpdateModel::setResources(const QList<AbstractResource *> &resources)
     qDeleteAll(m_updateItems);
     m_updateItems.clear();
 
-    QVector<UpdateItem *> appItems, systemItems, addonItems;
+    QList<UpdateItem *> appItems, systemItems, addonItems;
     for (AbstractResource *res : resources) {
         connect(res, &AbstractResource::changelogFetched, this, &UpdateModel::integrateChangelog, Qt::UniqueConnection);
 
@@ -261,7 +261,7 @@ void UpdateModel::setResources(const QList<AbstractResource *> &resources)
     std::sort(appItems.begin(), appItems.end(), sortUpdateItems);
     std::sort(systemItems.begin(), systemItems.end(), sortUpdateItems);
     std::sort(addonItems.begin(), addonItems.end(), sortUpdateItems);
-    m_updateItems = (QVector<UpdateItem *>() << appItems << addonItems << systemItems);
+    m_updateItems = (QList<UpdateItem *>() << appItems << addonItems << systemItems);
     endResetModel();
 
     Q_EMIT hasUpdatesChanged(!resources.isEmpty());
@@ -339,7 +339,7 @@ UpdateItem *UpdateModel::itemFromIndex(const QModelIndex &index) const
     return m_updateItems[index.row()];
 }
 
-void UpdateModel::resourceDataChanged(AbstractResource *res, const QVector<QByteArray> &properties)
+void UpdateModel::resourceDataChanged(AbstractResource *res, const QList<QByteArray> &properties)
 {
     auto item = itemFromResource(res);
     if (!item) {

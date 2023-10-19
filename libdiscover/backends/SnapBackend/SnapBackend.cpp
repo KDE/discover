@@ -141,10 +141,10 @@ ResultsStream *SnapBackend::findResourceByPackageName(const QUrl &search)
     return search.scheme() == QLatin1String("snap") ? populate(m_client.find(QSnapdClient::MatchName, search.host())) :
 #ifdef SNAP_FIND_COMMON_ID
         search.scheme() == QLatin1String("appstream")
-        ? populate(kTransform<QVector<QSnapdFindRequest *>>(AppStreamUtils::appstreamIds(search),
-                                                            [this](const QString &id) {
-                                                                return m_client.find(QSnapdClient::MatchCommonId, id);
-                                                            }))
+        ? populate(kTransform<QList<QSnapdFindRequest *>>(AppStreamUtils::appstreamIds(search),
+                                                          [this](const QString &id) {
+                                                              return m_client.find(QSnapdClient::MatchCommonId, id);
+                                                          }))
         :
 #endif
         voidStream();
@@ -153,11 +153,11 @@ ResultsStream *SnapBackend::findResourceByPackageName(const QUrl &search)
 template<class T>
 ResultsStream *SnapBackend::populate(T *job)
 {
-    return populate<T>(QVector<T *>{job});
+    return populate<T>(QList<T *>{job});
 }
 
 template<class T>
-ResultsStream *SnapBackend::populate(const QVector<T *> &jobs)
+ResultsStream *SnapBackend::populate(const QList<T *> &jobs)
 {
     std::function<bool(const QSharedPointer<QSnapdSnap> &)> acceptAll = [](const QSharedPointer<QSnapdSnap> &) {
         return true;
@@ -172,7 +172,7 @@ ResultsStream *SnapBackend::populateWithFilter(T *job, std::function<bool(const 
 }
 
 template<class T>
-ResultsStream *SnapBackend::populateJobsWithFilter(const QVector<T *> &jobs, std::function<bool(const QSharedPointer<QSnapdSnap> &s)> &filter)
+ResultsStream *SnapBackend::populateJobsWithFilter(const QList<T *> &jobs, std::function<bool(const QSharedPointer<QSnapdSnap> &s)> &filter)
 {
     auto stream = new ResultsStream(QStringLiteral("Snap-populate"));
     auto future = QtConcurrent::run(&m_threadPool, [this, jobs]() {
@@ -186,7 +186,7 @@ ResultsStream *SnapBackend::populateJobsWithFilter(const QVector<T *> &jobs, std
     watcher->setFuture(future);
     connect(watcher, &QFutureWatcher<void>::finished, watcher, &QObject::deleteLater);
     connect(watcher, &QFutureWatcher<void>::finished, stream, [this, jobs, filter, stream] {
-        QVector<AbstractResource *> ret;
+        QList<AbstractResource *> ret;
         for (auto job : jobs) {
             job->deleteLater();
             if (job->error()) {
@@ -265,7 +265,7 @@ QString SnapBackend::displayName() const
 void SnapBackend::refreshStates()
 {
     auto ret = new StoredResultsStream({populate(m_client.getSnaps())});
-    connect(ret, &StoredResultsStream::finishedResources, this, [this](const QVector<AbstractResource *> &resources) {
+    connect(ret, &StoredResultsStream::finishedResources, this, [this](const QList<AbstractResource *> &resources) {
         for (auto res : std::as_const(m_resources)) {
             if (resources.contains(res))
                 res->setState(AbstractResource::Installed);

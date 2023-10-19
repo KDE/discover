@@ -82,7 +82,7 @@ void FeaturedModel::refresh()
         return;
     }
 
-    const auto uris = kTransform<QVector<QUrl>>(array, [](const QJsonValue &uri) {
+    const auto uris = kTransform<QList<QUrl>>(array, [](const QJsonValue &uri) {
         return QUrl(uri.toString());
     });
     setUris(uris);

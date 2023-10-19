@@ -120,8 +120,8 @@ private:
     virtual void fetchDetails();
 
     struct Ids {
-        QVector<QString> archPkgIds;
-        QVector<QString> nonarchPkgIds;
+        QList<QString> archPkgIds;
+        QList<QString> nonarchPkgIds;
 
         QString first() const
         {
