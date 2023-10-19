@@ -31,7 +31,7 @@ ColumnLayout {
         id: list
         model: resource.permissionsModel()
 
-        delegate: KD.SubtitleDelegate {
+        delegate: QQC2.ItemDelegate {
             id: delegate
 
             required property var model
@@ -41,12 +41,22 @@ ColumnLayout {
             Layout.fillWidth: true
 
             text: brief
-            subtitle: description
             icon.name: model.icon
 
             // so that it gets neither hover nor pressed appearance when it's not interactive
             hoverEnabled: resource.isInstalled
             down: resource.isInstalled ? undefined : false
+
+            // ToolTip is intentionally omitted, as everything is wrapped and thus visible
+
+            contentItem: KD.IconTitleSubtitle {
+                icon: icon.fromControlsIcon(delegate.icon)
+                title: delegate.text
+                subtitle: delegate.description
+                selected: delegate.highlighted
+                font: delegate.font
+                wrapMode: Text.Wrap
+            }
 
             onClicked: {
                 if (resource.isInstalled) {
