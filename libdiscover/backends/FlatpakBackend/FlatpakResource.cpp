@@ -441,25 +441,14 @@ quint64 FlatpakResource::size()
 
 QString FlatpakResource::sizeDescription()
 {
-    KFormat f;
-    if (!isInstalled() || canUpgrade()) {
-        if (propertyState(DownloadSize) == NotKnownYet || propertyState(InstalledSize) == NotKnownYet || propertyState(DownloadSize) == Fetching
-            || propertyState(InstalledSize) == Fetching) {
-            qobject_cast<FlatpakBackend *>(backend())->updateAppSize(this);
-            return i18n("Retrieving size information");
-        } else if (propertyState(DownloadSize) == UnknownOrFailed || propertyState(InstalledSize) == UnknownOrFailed) {
-            return i18n("Unknown size");
-        } else {
-            return i18nc("@info app size", "%1 to download, %2 on disk", f.formatByteSize(downloadSize()), f.formatByteSize(installedSize()));
-        }
+    if (propertyState(InstalledSize) == NotKnownYet || propertyState(InstalledSize) == Fetching) {
+        qobject_cast<FlatpakBackend *>(backend())->updateAppSize(this);
+        return i18n("Retrieving size information");
+    } else if (propertyState(InstalledSize) == UnknownOrFailed) {
+        return i18nc("@label app size", "Unknown");
     } else {
-        if (propertyState(InstalledSize) == NotKnownYet || propertyState(InstalledSize) == Fetching) {
-            return i18n("Retrieving size information");
-        } else if (propertyState(InstalledSize) == UnknownOrFailed) {
-            return i18n("Unknown size");
-        } else {
-            return i18nc("@info app size", "%1 on disk", f.formatByteSize(installedSize()));
-        }
+        const KFormat f;
+        return f.formatByteSize(installedSize());
     }
 }
 
