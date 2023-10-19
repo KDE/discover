@@ -335,8 +335,8 @@ DiscoverPage {
 
             width: updatesView.width
 
-            highlighted: ListView.isCurrentItem
-            hoverEnabled: !page.isBusy
+            highlighted: false
+
             onEnabledChanged: if (!enabled) {
                 model.extended = false;
             }
