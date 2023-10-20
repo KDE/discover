@@ -104,6 +104,7 @@ Kirigami.GlobalDrawer {
                     curr.search = currentSearchText;
                     curr.forceActiveFocus()
                 }
+                drawer.currentSearchText = currentSearchText
             }
         }
     }
@@ -143,6 +144,10 @@ Kirigami.GlobalDrawer {
         }
     ]
 
+    ResourcesProxyModel {
+        id: appsModel
+        search: currentSearchText
+    }
     ColumnLayout {
         spacing: 0
         Layout.fillWidth: true
@@ -180,11 +185,8 @@ Kirigami.GlobalDrawer {
             text: category ? category.name : ""
             icon.name: category ? category.icon : ""
             checked: itsMe
-            visible: (!window.leftPage
-                   || !window.leftPage.subcategories
-                   || window.leftPage.subcategories === undefined
-                   || currentSearchText.length === 0
-                   || (category && category.contains(window.leftPage.subcategories))
+            enabled: (currentSearchText.length === 0
+                      || (category && category.contains(appsModel.subcategories))
                      )
             onTriggered: {
                 if (!window.leftPage.canNavigate) {
