@@ -48,6 +48,9 @@ DiscoverPage {
         Navigation.openCategory(null, "")
     }
 
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+    Kirigami.Theme.inherit: false
+
     Kirigami.LoadingPlaceholder {
         visible: featuredModel.isFetching
         anchors.centerIn: parent

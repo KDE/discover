@@ -72,6 +72,9 @@ DiscoverPage {
 
     signal clearSearch()
 
+    Kirigami.Theme.colorSet: Kirigami.Theme.Window
+    Kirigami.Theme.inherit: false
+
     supportsRefreshing: true
     onRefreshingChanged: if (refreshing) {
         appsModel.invalidateFilter()
