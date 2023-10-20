@@ -25,7 +25,7 @@ DiscoverPage {
     required property Discover.AbstractResource application
 
     readonly property int visibleReviews: 3
-    readonly property int internalSpacings: Kirigami.Units.largeSpacing
+    readonly property int internalSpacings: Kirigami.Units.largeSpacing * 2
     readonly property bool availableFromOnlySingleSource: !originsMenuAction.visible
 
     // Usually this page is not the top level page, but when we are, isHome being
@@ -49,6 +49,8 @@ DiscoverPage {
     }
 
     actions: [
+        addonsAction,
+        shareAction,
         appbutton.isActive ? appbutton.cancelAction : appbutton.action,
         invokeAction,
         originsMenuAction
@@ -57,6 +59,28 @@ DiscoverPage {
     QQC2.ActionGroup {
         id: sourcesGroup
         exclusive: true
+    }
+
+    Kirigami.Action {
+        id: shareAction
+        text: i18nc("@action:button share a link to this app", "Share")
+        icon.name: "document-share"
+        visible: application.url.toString().length > 0 && !appInfo.isOfflineUpgrade
+        onTriggered: shareSheet.open()
+    }
+
+    Kirigami.Action {
+        id: addonsAction
+        text: i18nc("@action:button", "Add-ons")
+        icon.name: "extension-symbolic"
+        visible: addonsView.containsAddons
+        onTriggered: {
+            if (addonsView.addonsCount === 0) {
+                Navigation.openExtends(application.appstreamId, appInfo.application.name)
+            } else {
+                addonsView.visible = true
+            }
+        }
     }
 
     // Multi-source origin display and switcher
@@ -111,6 +135,30 @@ DiscoverPage {
         source: appInfo.application.icon
     }
 
+    Kirigami.PromptDialog {
+        id: shareSheet
+        parent: applicationWindow().overlay
+        title: i18nc("@title:window", "Share Link to Application")
+        standardButtons: QQC2.Dialog.NoButton
+
+        Purpose.AlternativesView {
+            id: alts
+            Layout.fillWidth: true
+            pluginType: "ShareUrl"
+            inputData: {
+                "urls": [ application.url.toString() ],
+                "title": i18nc("The subject line for an email. %1 is the name of an application", "Check out the %1 app!", application.name)
+            }
+            onFinished: {
+                shareSheet.close()
+                if (error !== 0) {
+                    console.error("job finished with error", error, message)
+                }
+                alts.reset()
+            }
+        }
+    }
+
     // Scrollable page content
     ColumnLayout {
         id: pageLayout
@@ -143,8 +191,8 @@ DiscoverPage {
 
                 columns: stackedMode ? 1 : 2
                 rows: stackedMode ? 2 : 1
-                columnSpacing: appInfo.internalSpacings
-                rowSpacing: appInfo.internalSpacings
+                columnSpacing: 0
+                rowSpacing: appInfo.padding
 
                 anchors {
                     top: parent.top
@@ -161,7 +209,7 @@ DiscoverPage {
                     id: appBasicInfoLayout
                     Layout.maximumWidth: headerLayout.implicitWidth
                     Layout.alignment: headerLayout.stackedMode ? Qt.AlignHCenter : Qt.AlignLeft
-                    spacing: appInfo.internalSpacings
+                    spacing: appInfo.padding
 
                     // App icon
                     Kirigami.Icon {
@@ -356,11 +404,17 @@ DiscoverPage {
                             color: colors[appInfo.application.contentRatingIntensity]
                         }
 
-                        Kirigami.LinkButton {
+                        // Button to open the content rating details dialog
+                        QQC2.ToolButton {
                             visible: appInfo.application.contentRatingDescription.length > 0
-                            text: i18nc("@action", "See details…")
-                            elide: Text.ElideRight
-                            onClicked: contentRatingDialog.open();
+                            icon.name: "help-contextual"
+                            text: i18n("See details")
+                            display: QQC2.AbstractButton.IconOnly
+                            onClicked: contentRatingDialog.open()
+
+                            QQC2.ToolTip {
+                                text: parent.text
+                            }
                         }
                     }
                 }
@@ -479,14 +533,11 @@ DiscoverPage {
             }
         }
 
-        // Layout for textual content; this isn't in the main ColumnLayout
-        // because we want it to be bounded to a maximum width
+        // App description section
         ColumnLayout {
-            id: textualContentLayout
+            id: appDescriptionLayout
 
-            Layout.fillWidth: true
-
-            spacing: appInfo.internalSpacings
+            spacing: Kirigami.Units.smallSpacing
 
             // Short description
             // Not using Kirigami.Heading here because that component doesn't
@@ -518,137 +569,20 @@ DiscoverPage {
                 onLinkActivated: link => Qt.openUrlExternally(link);
             }
 
-            // External resources
-            GridLayout {
-                id: externalResourcesLayout
-                readonly property int visibleButtons: (helpButton.visible ? 1 : 0)
-                                                    + (homepageButton.visible ? 1: 0)
-                                                    + (addonsButton.visible ? 1 : 0)
-                                                    + (shareButton.visible ? 1 : 0)
-                readonly property int buttonWidth: Math.round(textualContentLayout.width / columns)
-                readonly property int tallestButtonHeight: Math.max(helpButton.implicitHeight,
-                                                                    homepageButton.implicitHeight,
-                                                                    shareButton.implicitHeight,
-                                                                    addonsButton.implicitHeight)
-                readonly property int minWidth: Math.max(helpButton.visible ? helpButton.implicitMinWidth : 0,
-                                                                  homepageButton.visible ? homepageButton.implicitMinWidth: 0,
-                                                                  addonsButton.visible ? addonsButton.implicitMinWidth : 0,
-                                                                  shareButton.visible ? shareButton.implicitMinWidth : 0)
-                readonly property bool stackedlayout: minWidth > Math.round(textualContentLayout.width / visibleButtons) -
-                                                        (columnSpacing * (visibleButtons + 1))
-
+            Kirigami.Separator {
+                Layout.topMargin: appInfo.internalSpacings - appDescriptionLayout.spacing
                 Layout.fillWidth: true
-                Layout.bottomMargin: appInfo.internalSpacings * 2
-
-
-                rows: stackedlayout ? visibleButtons : 1
-                columns: stackedlayout ? 1: visibleButtons
-                rowSpacing: Kirigami.Units.smallSpacing
-                columnSpacing: Kirigami.Units.smallSpacing
-
-                visible: visibleButtons > 0
-
-                ApplicationResourceButton {
-                    id: helpButton
-
-                    Layout.fillWidth: true
-                    Layout.maximumWidth: externalResourcesLayout.buttonWidth
-                    Layout.minimumHeight: externalResourcesLayout.tallestButtonHeight
-
-                    visible: application.helpURL.toString() !== ""
-
-                    buttonIcon: "documentation"
-                    title: i18n("Documentation")
-                    subtitle: i18n("Read the project's official documentation")
-                    tooltipText: application.helpURL.toString()
-
-                    onClicked: Qt.openUrlExternally(application.helpURL);
-                }
-
-                ApplicationResourceButton {
-                    id: homepageButton
-
-                    Layout.fillWidth: true
-                    Layout.maximumWidth: externalResourcesLayout.buttonWidth
-                    Layout.minimumHeight: externalResourcesLayout.tallestButtonHeight
-
-                    visible: application.homepage.toString() !== ""
-
-                    buttonIcon: "internet-services"
-                    title: i18n("Website")
-                    subtitle: i18n("Visit the project's website")
-                    tooltipText: application.homepage.toString()
-
-                    onClicked: Qt.openUrlExternally(application.homepage);
-                }
-
-                ApplicationResourceButton {
-                    id: addonsButton
-
-                    Layout.fillWidth: true
-                    Layout.maximumWidth: externalResourcesLayout.buttonWidth
-                    Layout.minimumHeight: externalResourcesLayout.tallestButtonHeight
-
-                    visible: addonsView.containsAddons
-
-                    buttonIcon: "extension-symbolic"
-                    title: i18n("Addons")
-                    subtitle: i18n("Install or remove additional functionality")
-
-                    onClicked: {
-                        if (addonsView.addonsCount === 0) {
-                            Navigation.openExtends(application.appstreamId, appInfo.application.name)
-                        } else {
-                            addonsView.visible = true
-                        }
-                    }
-                }
-
-                ApplicationResourceButton {
-                    id: shareButton
-
-                    Layout.fillWidth: true
-                    Layout.maximumWidth: externalResourcesLayout.buttonWidth
-                    Layout.minimumHeight: externalResourcesLayout.tallestButtonHeight
-
-                    buttonIcon: "document-share"
-                    title: i18nc("Exports the application's URL to an external service", "Share")
-                    subtitle: i18n("Send a link for this application")
-                    tooltipText: application.url.toString()
-                    visible: tooltipText.length > 0 && !appInfo.isOfflineUpgrade
-
-                    Kirigami.PromptDialog {
-                        id: shareSheet
-                        parent: appInfo.QQC2.Overlay.overlay
-                        title: shareButton.title
-                        standardButtons: QQC2.Dialog.NoButton
-
-                        Purpose.AlternativesView {
-                            id: alts
-                            Layout.fillWidth: true
-                            pluginType: "ShareUrl"
-                            inputData: {
-                                "urls": [ application.url.toString() ],
-                                "title": i18nc("The subject line for an email. %1 is the name of an application", "Check out the %1 app!", application.name)
-                            }
-                            onFinished: (/*var*/ output, /*int*/ error, /*string*/ message) => {
-                                shareSheet.close()
-                                if (error !== 0) {
-                                    console.error("job finished with error", error, message)
-                                }
-                                alts.reset()
-                            }
-                        }
-                    }
-
-                    onClicked: {
-                        shareSheet.open();
-                    }
-                }
             }
+        }
+
+        // Changelog section
+        ColumnLayout {
+            id: changelogLayout
+
+            spacing: Kirigami.Units.smallSpacing
+            visible: changelogLabel.visible
 
             Kirigami.Heading {
-                visible: changelogLabel.visible
                 text: i18n("What's New")
                 level: 2
                 type: Kirigami.Heading.Type.Primary
@@ -660,7 +594,6 @@ DiscoverPage {
                 id: changelogLabel
 
                 Layout.fillWidth: true
-                Layout.bottomMargin: appInfo.internalSpacings * 2
 
                 // Some backends are known to produce empty line break as a text
                 visible: text !== "" && text !== "<br />"
@@ -675,10 +608,21 @@ DiscoverPage {
                 }
             }
 
+            Kirigami.Separator {
+                Layout.topMargin: appInfo.internalSpacings - changelogLayout.spacing
+                Layout.fillWidth: true
+            }
+        }
+
+        // Reviews section
+        ColumnLayout {
+            id: reviewsLayout
+
+            spacing: Kirigami.Units.smallSpacing
+            visible: reviewsSheet.sortModel.count > 0 && !reviewsLoadingPlaceholder.visible && !reviewsError.visible
 
             Kirigami.Heading {
                 Layout.fillWidth: true
-                visible: reviewsSheet.sortModel.count > 0 && !reviewsLoadingPlaceholder.visible && !reviewsError.visible
                 text: i18n("Reviews")
                 level: 2
                 type: Kirigami.Heading.Type.Primary
@@ -689,7 +633,6 @@ DiscoverPage {
                 id: reviewsLoadingPlaceholder
                 Layout.alignment: Qt.AlignHCenter
                 Layout.maximumWidth: Kirigami.Units.gridUnit * 15
-                Layout.bottomMargin: appInfo.internalSpacings * 2
                 visible: reviewsModel.fetching
                 text: i18n("Loading reviews for %1", appInfo.application.name)
             }
@@ -716,9 +659,7 @@ DiscoverPage {
             // Review-related buttons
             Flow {
                 Layout.fillWidth: true
-                Layout.bottomMargin: appInfo.internalSpacings * 2
-
-                spacing: appInfo.internalSpacings
+                spacing: Kirigami.Units.smallSpacing
 
                 QQC2.Button {
                     visible: reviewsModel.count > visibleReviews
@@ -744,38 +685,92 @@ DiscoverPage {
                 }
             }
 
-            // "Get Involved" section
+            Kirigami.Separator {
+                Layout.topMargin: appInfo.internalSpacings - reviewsLayout.spacing
+                Layout.fillWidth: true
+            }
+        }
+
+        // "Learn More" section
+        ColumnLayout {
+            id: learnMoreLayout
+
+            spacing: Kirigami.Units.smallSpacing
+            visible: learnMoreUrlsLayout.visible
+
             Kirigami.Heading {
-                visible: getInvolvedLayout.visible
+                text: i18nc("@title", "Learn More")
+                level: 2
+                type: Kirigami.Heading.Type.Primary
+                wrapMode: Text.Wrap
+            }
+
+            ColumnLayout {
+                id: learnMoreUrlsLayout
+                readonly property int visibleButtons: (helpButton.visible ? 1 : 0)
+                + (homepageButton.visible ? 1: 0)
+                Layout.fillWidth: true
+
+                spacing: Kirigami.Units.smallSpacing
+                visible: visibleButtons > 0
+
+                ApplicationResourceButton {
+                    id: helpButton
+
+                    Layout.fillWidth: true
+
+                    visible: website.length > 0
+
+                    icon: "documentation"
+                    title: i18n("Documentation")
+                    subtitle: i18n("Read the project's official documentation")
+                    website: application.helpURL.toString()
+                }
+
+                ApplicationResourceButton {
+                    id: homepageButton
+
+                    Layout.fillWidth: true
+
+                    visible: website.length > 0
+
+                    icon: "internet-services"
+                    title: i18n("Website")
+                    subtitle: i18n("Visit the project's website")
+                    website: application.homepage.toString()
+                }
+            }
+
+            Kirigami.Separator {
+                Layout.topMargin: appInfo.internalSpacings - learnMoreLayout.spacing
+                Layout.fillWidth: true
+            }
+        }
+
+        // "Get Involved" section
+        ColumnLayout {
+            id: getInvolvedLayout
+
+            spacing: Kirigami.Units.smallSpacing
+            visible: getInvolvedUrlsLayout.visible
+
+            Kirigami.Heading {
                 text: i18n("Get Involved")
                 level: 2
                 type: Kirigami.Heading.Type.Primary
                 wrapMode: Text.Wrap
             }
 
-            GridLayout {
-                id: getInvolvedLayout
+            ColumnLayout {
+                id: getInvolvedUrlsLayout
 
                 readonly property int visibleButtons: (donateButton.visible ? 1 : 0)
                                                     + (bugButton.visible ? 1 : 0)
                                                     + (contributeButton.visible ? 1 : 0)
-                readonly property int buttonWidth: Math.round(textualContentLayout.width / columns)
-                readonly property int tallestButtonHeight: Math.max(donateButton.implicitHeight,
-                                                                    bugButton.implicitHeight,
-                                                                    contributeButton.implicitHeight)
-                readonly property int minWidth: Math.max(donateButton.visible ? donateButton.implicitMinWidth : 0,
-                                                          bugButton.visible ? bugButton.implicitMinWidth: 0,
-                                                          contributeButton.visible ? contributeButton.implicitMinWidth : 0)
-                readonly property bool stackedlayout: minWidth > Math.round(textualContentLayout.width / visibleButtons) -
-                                                        (columnSpacing * (visibleButtons + 1))
 
                 Layout.fillWidth: true
-                Layout.bottomMargin: appInfo.internalSpacings * 2
 
-                rows: stackedlayout ? visibleButtons : 1
-                columns: stackedlayout ? 1: visibleButtons
-                rowSpacing: Kirigami.Units.smallSpacing
-                columnSpacing: Kirigami.Units.smallSpacing
+                spacing: Kirigami.Units.smallSpacing
 
                 visible: visibleButtons > 0
 
@@ -783,65 +778,57 @@ DiscoverPage {
                     id: donateButton
 
                     Layout.fillWidth: true
-                    Layout.maximumWidth: getInvolvedLayout.buttonWidth
-                    Layout.minimumHeight: getInvolvedLayout.tallestButtonHeight
 
-                    visible: application.donationURL.toString() !== ""
+                    visible: website.length > 0
 
-                    buttonIcon: "help-donate"
+                    icon: "help-donate"
                     title: i18n("Donate")
                     subtitle: i18n("Support and thank the developers by donating to their project")
-                    tooltipText: application.donationURL.toString()
-
-                    onClicked: Qt.openUrlExternally(application.donationURL);
+                    website: application.donationURL.toString()
                 }
 
                 ApplicationResourceButton {
                     id: bugButton
 
                     Layout.fillWidth: true
-                    Layout.maximumWidth: getInvolvedLayout.buttonWidth
-                    Layout.minimumHeight: getInvolvedLayout.tallestButtonHeight
 
-                    visible: application.bugURL.toString() !== ""
+                    visible: website.length > 0
 
-                    buttonIcon: "tools-report-bug"
+                    icon: "tools-report-bug"
                     title: i18n("Report Bug")
                     subtitle: i18n("Log an issue you found to help get it fixed")
-                    tooltipText: application.bugURL.toString()
-
-                    onClicked: Qt.openUrlExternally(application.bugURL);
+                    website: application.bugURL.toString()
                 }
 
                 ApplicationResourceButton {
                     id: contributeButton
 
                     Layout.fillWidth: true
-                    Layout.maximumWidth: getInvolvedLayout.buttonWidth
-                    Layout.minimumHeight: getInvolvedLayout.tallestButtonHeight
 
-                    visible: application.contributeURL.toString() !== ""
+                    visible: website.length > 0
 
-                    buttonIcon: "project-development"
+                    icon: "project-development"
                     title: i18n("Contribute")
                     subtitle: i18n("Help the developers by coding, designing, testing, or translating")
-                    tooltipText: application.contributeURL.toString()
-
-                    onClicked: Qt.openUrlExternally(application.contributeURL);
+                    website: application.contributeURL.toString()
                 }
             }
+            Kirigami.Separator {
+                Layout.topMargin: appInfo.internalSpacings - getInvolvedLayout.spacing
+                Layout.fillWidth: true
+            }
+        }
 
-            Repeater {
-                model: appInfo.application.bottomObjects
+        Repeater {
+            model: appInfo.application.bottomObjects
 
-                delegate: Loader {
-                    required property string modelData
+            delegate: Loader {
+                required property string modelData
 
-                    Layout.fillWidth: true
+                Layout.fillWidth: true
 
-                    onModelDataChanged: {
-                        setSource(modelData, { resource: Qt.binding(() => appInfo.application) });
-                    }
+                onModelDataChanged: {
+                    setSource(modelData, { resource: Qt.binding(() => appInfo.application) });
                 }
             }
         }
