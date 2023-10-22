@@ -4,21 +4,22 @@
 # Elkana Bardugo <ttv200@gmail.com>, 2016.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata.
 # Omer I.S. <omeritzicschwartz@gmail.com>, 2020.
+# SPDX-FileCopyrightText: 2023 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-21 01:39+0000\n"
-"PO-Revision-Date: 2023-10-17 14:54+0300\n"
-"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
-"Language-Team: Hebrew <>\n"
+"PO-Revision-Date: 2023-10-21 23:15+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: discover/DiscoverObject.cpp:161
 #, kde-format
@@ -275,13 +276,13 @@ msgstr "ביטול"
 
 #: discover/qml/ApplicationDelegate.qml:159
 #: discover/qml/ApplicationPage.qml:219
-#, fuzzy, kde-format
+#, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "דירוג"
-msgstr[1] "%1 דירוגים"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[1] "שני דירוגים"
+msgstr[2] "%1 דירוגים"
+msgstr[3] "%1 דירוגים"
 
 #: discover/qml/ApplicationDelegate.qml:159
 #: discover/qml/ApplicationPage.qml:219
@@ -318,13 +319,13 @@ msgid "Size:"
 msgstr "גודל:"
 
 #: discover/qml/ApplicationPage.qml:267
-#, fuzzy, kde-format
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
 msgstr[0] "רישיון:"
 msgstr[1] "רישיונות:"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[2] "רישיונות:"
+msgstr[3] "רישיונות:"
 
 #: discover/qml/ApplicationPage.qml:275
 #, kde-format
@@ -338,13 +339,13 @@ msgid "What does this mean?"
 msgstr "מה הכוונה?"
 
 #: discover/qml/ApplicationPage.qml:314
-#, fuzzy, kde-format
+#, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] "להציג עוד…"
 msgstr[1] "להציג עוד…"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[2] "להציג עוד…"
+msgstr[3] "להציג עוד…"
 
 #: discover/qml/ApplicationPage.qml:325
 #, kde-format
@@ -437,13 +438,13 @@ msgid "Reviews for %1 are temporarily unavailable"
 msgstr "הביקורות על %1 לא זמינות כרגע"
 
 #: discover/qml/ApplicationPage.qml:718
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "הצגת הביקורת"
-msgstr[1] "הצגת %1 הביקורות"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[1] "הצגת שתי הביקורות"
+msgstr[2] "הצגת %1 הביקורות"
+msgstr[3] "הצגת %1 הביקורות"
 
 #: discover/qml/ApplicationPage.qml:730
 #, kde-format
@@ -554,13 +555,13 @@ msgstr ""
 "<link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:54
-#, fuzzy, kde-format
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
 msgstr[0] "חיפוש: %2 - פריט"
-msgstr[1] "חיפוש: %2 - %3 פריטים"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[1] "חיפוש: %2 - שני פריטים"
+msgstr[2] "חיפוש: %2 - %3 פריטים"
+msgstr[3] "חיפוש: %2 - %3 פריטים"
 
 #: discover/qml/ApplicationsListPage.qml:56
 #, kde-format
@@ -568,22 +569,22 @@ msgid "Search: %1"
 msgstr "חיפוש: %1"
 
 #: discover/qml/ApplicationsListPage.qml:60
-#, fuzzy, kde-format
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
 msgstr[0] "%2 - פריט"
-msgstr[1] "%2 - %1 פריטים"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[1] "%2 - שני פריטים"
+msgstr[2] "%2 - %1 פריטים"
+msgstr[3] "%2 - %1 פריטים"
 
 #: discover/qml/ApplicationsListPage.qml:66
-#, fuzzy, kde-format
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
 msgstr[0] "חיפוש - פריט"
-msgstr[1] "חיפוש - %1 פריטים"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[1] "חיפוש - שני פריטים"
+msgstr[2] "חיפוש - %1 פריטים"
+msgstr[3] "חיפוש - %1 פריטים"
 
 #: discover/qml/ApplicationsListPage.qml:68
 #: discover/qml/ApplicationsListPage.qml:238
@@ -738,13 +739,13 @@ msgid "Fetching &updates…"
 msgstr "מ&שיכת עדכונים…"
 
 #: discover/qml/DiscoverWindow.qml:85
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
 msgstr[0] "&עדכון (%1)"
 msgstr[1] "&עדכונים (%1)"
-msgstr[2] ""
-msgstr[3] ""
+msgstr[2] "&עדכונים (%1)"
+msgstr[3] "&עדכונים (%1)"
 
 #: discover/qml/DiscoverWindow.qml:93
 #, kde-format
