@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-21 01:39+0000\n"
-"PO-Revision-Date: 2023-10-15 12:44+0530\n"
+"PO-Revision-Date: 2023-10-22 17:56+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -577,8 +577,7 @@ msgid "Retrieving size information"
 msgstr "அளவுகுறித்த விவரங்கள் பெறப்படுகின்றன"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:448
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "தெரியாதது"
@@ -637,15 +636,11 @@ msgid "Session Bus Access"
 msgstr "அமர்வுப் பாட்டை அணுகல்"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:814
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
-msgstr ""
-"பின்வரும் நேறிமுறைகளின் மூலம் உங்கள் அமர்விலுள்ள மற்ற செயலிகளை தொடர்புகொள்ளலாம்: %1"
+msgstr "உங்கள் அமர்வில் இயங்கும் அனைத்து செயலிகளையும் தொடர்புகொள்ளலாம்."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:819
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
@@ -654,13 +649,9 @@ msgid "System Bus Access"
 msgstr "கணினிப் பாட்டை அணுகல்"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:820
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
-msgstr ""
-"பின்வரும் நேறிமுறைகளின் மூலம் உங்கள் அமர்விலுள்ள மற்ற செயலிகளை தொடர்புகொள்ளலாம்: %1"
+msgstr "கணினியில் இயங்கும் அனைத்து செயலிகளையும் தொடர்புகொள்ளலாம்."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
 #, kde-format
@@ -1502,7 +1493,7 @@ msgstr "பூட்டு தேவை"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:160
 #, kde-format
 msgid "Unknown error %1."
-msgstr "தெரியாத சிக்கல். %1."
+msgstr "தெரியாத சிக்கல் %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
 #, kde-format
@@ -2276,10 +2267,9 @@ msgid "Removed packages:"
 msgstr "நீக்கப்பட்டுள்ள தொகுப்புகள்: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
-#, fuzzy, kde-format
-#| msgid "Currently booted version"
+#, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "இப்போது பயன்படுத்தப்படும் பதிப்பு"
+msgstr "இப்போது பயன்படுத்தப்படும் பதிப்பு (தக்கவைக்கப்பட்டுள்ளது)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
 #, kde-format
