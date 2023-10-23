@@ -5,17 +5,21 @@
  */
 
 import QtQuick
+import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.components 1 as Components
 
-Kirigami.InlineMessage {
+Components.Banner {
     id: root
     // resource is set by the creator of the element in ApplicationPage.
     Layout.fillWidth: true
+    height: visible ? implicitHeight : 0
+
+    position: QQC2.ToolBar.Header
     text: i18nd("libdiscover", "%1 is not installed but it still has data present.", resource.name)
     visible: resource.hasData && query.count === 0
-    height: visible ? implicitHeight : 0
 
     Discover.ResourcesProxyModel {
         id: query

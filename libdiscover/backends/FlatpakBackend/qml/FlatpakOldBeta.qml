@@ -7,12 +7,14 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
+import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.discover.app
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.components 1 as Components
 
-Kirigami.InlineMessage {
+Components.Banner {
     id: root
 
     // resource is set by the creator of the element in ApplicationPage.
@@ -26,6 +28,7 @@ Kirigami.InlineMessage {
     height: visible ? implicitHeight : 0
     visible: actions.some(action => action?.visible)
     type: __betaOlderThanStable ? Kirigami.MessageType.Warning : Kirigami.MessageType.Information
+    position: QQC2.ToolBar.Header
 
     onAppChanged: {
         __betaOlderThanStable = false
