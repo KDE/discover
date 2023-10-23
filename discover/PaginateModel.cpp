@@ -15,6 +15,7 @@ public:
     int m_pageSize = 0;
     QAbstractItemModel *m_sourceModel = nullptr;
     bool m_hasStaticRowCount = false;
+    bool m_modelResetInProgress = false;
 };
 
 PaginateModel::PaginateModel(QObject *object)
@@ -34,9 +35,11 @@ void PaginateModel::setFirstItem(int row)
 {
     Q_ASSERT(row >= 0 && row < d->m_sourceModel->rowCount());
     if (row != d->m_firstItem) {
+        d->m_modelResetInProgress = true;
         beginResetModel();
         d->m_firstItem = row;
         endResetModel();
+        d->m_modelResetInProgress = false;
         Q_EMIT firstItemChanged();
     }
 }
@@ -79,6 +82,7 @@ void PaginateModel::setSourceModel(QAbstractItemModel *model)
     }
 
     if (model != d->m_sourceModel) {
+        d->m_modelResetInProgress = true;
         beginResetModel();
         d->m_sourceModel = model;
         if (model) {
@@ -107,6 +111,7 @@ void PaginateModel::setSourceModel(QAbstractItemModel *model)
             connect(d->m_sourceModel, &QAbstractItemModel::modelReset, this, &PaginateModel::pageCountChanged);
         }
         endResetModel();
+        d->m_modelResetInProgress = false;
         Q_EMIT sourceModelChanged();
     }
 }
@@ -197,9 +202,11 @@ void PaginateModel::setStaticRowCount(bool src)
         return;
     }
 
+    d->m_modelResetInProgress = true;
     beginResetModel();
     d->m_hasStaticRowCount = src;
     endResetModel();
+    d->m_modelResetInProgress = false;
 
     Q_EMIT staticRowCountChanged();
 }
@@ -212,6 +219,7 @@ void PaginateModel::_k_sourceColumnsAboutToBeInserted(const QModelIndex &parent,
     if (parent.isValid() || start != 0) {
         return;
     }
+    d->m_modelResetInProgress = true;
     beginResetModel();
 }
 
@@ -222,6 +230,7 @@ void PaginateModel::_k_sourceColumnsAboutToBeMoved(const QModelIndex &sourcePare
     Q_UNUSED(sourceEnd)
     Q_UNUSED(destParent)
     Q_UNUSED(dest)
+    d->m_modelResetInProgress = true;
     beginResetModel();
 }
 
@@ -231,6 +240,7 @@ void PaginateModel::_k_sourceColumnsAboutToBeRemoved(const QModelIndex &parent, 
     if (parent.isValid() || start != 0) {
         return;
     }
+    d->m_modelResetInProgress = true;
     beginResetModel();
 }
 
@@ -241,6 +251,7 @@ void PaginateModel::_k_sourceColumnsInserted(const QModelIndex &parent, int star
         return;
     }
     endResetModel();
+    d->m_modelResetInProgress = false;
 }
 
 void PaginateModel::_k_sourceColumnsMoved(const QModelIndex &sourceParent, int sourceStart, int sourceEnd, const QModelIndex &destParent, int dest)
@@ -251,6 +262,7 @@ void PaginateModel::_k_sourceColumnsMoved(const QModelIndex &sourceParent, int s
     Q_UNUSED(destParent)
     Q_UNUSED(dest)
     endResetModel();
+    d->m_modelResetInProgress = false;
 }
 
 void PaginateModel::_k_sourceColumnsRemoved(const QModelIndex &parent, int start, int end)
@@ -260,6 +272,7 @@ void PaginateModel::_k_sourceColumnsRemoved(const QModelIndex &parent, int start
         return;
     }
     endResetModel();
+    d->m_modelResetInProgress = false;
 }
 
 void PaginateModel::_k_sourceDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)
@@ -287,12 +300,14 @@ void PaginateModel::_k_sourceHeaderDataChanged(Qt::Orientation orientation, int 
 
 void PaginateModel::_k_sourceModelAboutToBeReset()
 {
+    d->m_modelResetInProgress = true;
     beginResetModel();
 }
 
 void PaginateModel::_k_sourceModelReset()
 {
     endResetModel();
+    d->m_modelResetInProgress = false;
 }
 
 bool PaginateModel::isIntervalValid(const QModelIndex &parent, int start, int /*end*/) const
@@ -316,6 +331,7 @@ void PaginateModel::_k_sourceRowsAboutToBeInserted(const QModelIndex &parent, in
         const int insertedCount = qMin(end - start, pageSize() - newStart - 1);
         beginInsertRows(QModelIndex(), newStart, newStart + insertedCount);
     } else {
+        d->m_modelResetInProgress = true;
         beginResetModel();
     }
 }
@@ -326,10 +342,11 @@ void PaginateModel::_k_sourceRowsInserted(const QModelIndex &parent, int start, 
         return;
     }
 
-    if (canSizeChange()) {
-        endInsertRows();
-    } else {
+    if (d->m_modelResetInProgress) {
         endResetModel();
+        d->m_modelResetInProgress = false;
+    } else {
+        endInsertRows();
     }
 }
 
@@ -341,6 +358,7 @@ void PaginateModel::_k_sourceRowsAboutToBeMoved(const QModelIndex &sourceParent,
     Q_UNUSED(destParent)
     Q_UNUSED(dest)
     // NOTE could optimize, unsure if it makes sense
+    d->m_modelResetInProgress = true;
     beginResetModel();
 }
 
@@ -352,6 +370,7 @@ void PaginateModel::_k_sourceRowsMoved(const QModelIndex &sourceParent, int sour
     Q_UNUSED(destParent)
     Q_UNUSED(dest)
     endResetModel();
+    d->m_modelResetInProgress = false;
 }
 
 void PaginateModel::_k_sourceRowsAboutToBeRemoved(const QModelIndex &parent, int start, int end)
@@ -365,6 +384,7 @@ void PaginateModel::_k_sourceRowsAboutToBeRemoved(const QModelIndex &parent, int
         const int newStart = qMax(start - d->m_firstItem, 0);
         beginRemoveRows(QModelIndex(), newStart, newStart + removedCount);
     } else {
+        d->m_modelResetInProgress = true;
         beginResetModel();
     }
 }
@@ -378,6 +398,7 @@ void PaginateModel::_k_sourceRowsRemoved(const QModelIndex &parent, int start, i
     if (canSizeChange()) {
         endRemoveRows();
     } else {
+        d->m_modelResetInProgress = true;
         beginResetModel();
     }
 }
