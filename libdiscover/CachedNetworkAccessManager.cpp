@@ -17,7 +17,7 @@ CachedNetworkAccessManager::CachedNetworkAccessManager(const QString &path, QObj
 {
     const QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1Char('/') + path;
     QNetworkDiskCache *cache = new QNetworkDiskCache(this);
-    QStorageInfo storageInfo(cacheDir);
+    QStorageInfo storageInfo(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
     cache->setCacheDirectory(cacheDir);
     cache->setMaximumCacheSize(storageInfo.bytesTotal() / 1000);
     setCache(cache);
