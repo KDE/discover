@@ -808,7 +808,7 @@ QVector<StreamResult> PackageKitBackend::resultsByComponents(const AppStream::Co
     ret.reserve(comps.size());
     QSet<QString> done;
     for (const auto &comp : comps) {
-        if (comp.packageNames().isEmpty() || done.contains(comp.id())) {
+        if (comp.packageNames().isEmpty() ||  comp.kind() == AppStream::Component::KindFirmware || done.contains(comp.id())) {
             continue;
         }
         done += comp.id();
