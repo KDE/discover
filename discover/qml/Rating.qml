@@ -124,7 +124,7 @@ QQC2.Control {
 
     hoverEnabled: !readOnly
 
-    padding: Kirigami.Units.smallSpacing
+    padding: 0
     // Reset paddings after qqc2-desktop-style Control
     topPadding: undefined
     leftPadding: undefined

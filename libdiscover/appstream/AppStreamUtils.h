@@ -19,7 +19,7 @@
 
 namespace AppStreamUtils
 {
-DISCOVERCOMMON_EXPORT QUrl imageOfKind(const QList<AppStream::Image> &images, AppStream::Image::Kind kind);
+DISCOVERCOMMON_EXPORT std::pair<QUrl, size_t> imageOfKind(const QList<AppStream::Image> &images, AppStream::Image::Kind kind);
 
 DISCOVERCOMMON_EXPORT QString changelogToHtml(const AppStream::Component &appdata);
 

@@ -12,7 +12,7 @@ import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.kcmutils as KCMUtils
 import org.kde.kirigami as Kirigami
-import org.kde.kirigami.delegates as KD
+import org.kde.kirigamiaddons.formcard as FormCard
 
 ColumnLayout {
     id: root
@@ -21,62 +21,59 @@ ColumnLayout {
     Discover.Activatable.active: list.model.rowCount() > 0
     spacing: 0
 
-    Kirigami.Heading {
-        Layout.fillWidth: true
-        text: i18ndc("libdiscover", "Permission to access system resources and hardware devices", "Permissions")
-        level: 2
-        type: Kirigami.Heading.Type.Primary
-        wrapMode: Text.Wrap
+    FormCard.FormHeader {
+        title: i18ndc("libdiscover", "Permission to access system resources and hardware devices", "Permissions")
     }
 
-    Repeater {
-        id: list
-        model: root.resource.permissionsModel()
+    FormCard.FormCard {
+        Repeater {
+            id: list
+            model: root.resource.permissionsModel()
 
-        delegate: QQC2.ItemDelegate {
-            id: delegate
+            delegate: ColumnLayout {
+                id: delegate
 
-            required property var model
-            required property string brief
-            required property string description
+                required property int index
+                required property string brief
+                required property string description
+                required property string icon
 
-            Layout.fillWidth: true
+                FormCard.FormDelegateSeparator {
+                    visible: delegate.index !== 0
+                }
 
-            text: brief
-            icon.name: model.icon
+                FormCard.FormButtonDelegate {
+                    text: delegate.brief
+                    description: delegate.description
+                    icon.name: delegate.icon
 
-            // so that it gets neither hover nor pressed appearance when it's not interactive
-            hoverEnabled: root.resource.isInstalled
-            down: root.resource.isInstalled ? undefined : false
+                    // so that it gets neither hover nor pressed appearance when it's not interactive
+                    hoverEnabled: root.resource.isInstalled
+                    down: root.resource.isInstalled ? undefined : false
 
-            // ToolTip is intentionally omitted, as everything is wrapped and thus visible
+                    background {
+                        visible: root.resource.isInstalled
+                    }
 
-            contentItem: KD.IconTitleSubtitle {
-                icon: icon.fromControlsIcon(delegate.icon)
-                title: delegate.text
-                subtitle: delegate.description
-                selected: delegate.highlighted || delegate.down
-                font: delegate.font
-                wrapMode: Text.Wrap
-            }
-
-            onClicked: {
-                if (root.resource.isInstalled) {
-                    // TODO: Not only open KCM on the app's page, but also focus on relevant permission row
-                    KCMUtils.KCMLauncher.openSystemSettings("kcm_flatpak", [root.resource.ref]);
+                    onClicked: {
+                        if (resource.isInstalled) {
+                            // TODO: Not only open KCM on the app's page, but also focus on relevant permission row
+                            KCMUtils.KCMLauncher.openSystemSettings("kcm_flatpak", [root.resource.ref]);
+                        }
+                    }
                 }
             }
         }
-    }
 
-    QQC2.Button {
-        Layout.alignment: Qt.AlignHCenter
-        Layout.maximumWidth: parent.width
-        visible: root.resource.isInstalled
-        text: i18nd("libdiscover", "Configure permissions…")
-        icon.name: "configure"
-        onClicked: {
-            KCMUtils.KCMLauncher.openSystemSettings("kcm_flatpak", [root.resource.ref]);
+        FormCard.FormDelegateSeparator {}
+
+        FormCard.FormButtonDelegate {
+            visible: root.resource.isInstalled
+            text: i18nd("libdiscover", "Configure permissions…")
+            icon.name: "configure"
+            onClicked: {
+                KCMUtils.KCMLauncher.openSystemSettings("kcm_flatpak", [root.resource.ref]);
+            }
         }
     }
 }

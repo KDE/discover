@@ -17,6 +17,7 @@
 #include <KLocalizedString>
 #include <QCoroTimer>
 #include <QDebug>
+#include <QGuiApplication>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QUrlQuery>
@@ -24,16 +25,28 @@
 using namespace std::chrono_literals;
 using namespace AppStreamUtils;
 
-QUrl AppStreamUtils::imageOfKind(const QList<AppStream::Image> &images, AppStream::Image::Kind kind)
+static size_t preferredScreenshotHeight()
+{
+    static size_t height = qGuiApp->devicePixelRatio() * 600;
+    return height;
+}
+
+std::pair<QUrl, size_t> AppStreamUtils::imageOfKind(const QList<AppStream::Image> &images, AppStream::Image::Kind kind)
 {
     QUrl ret;
+    size_t height = -1;
     for (const AppStream::Image &i : images) {
-        if (i.kind() == kind) {
+        if (i.kind() == kind && (ret.isEmpty() || i.height() > height)) {
             ret = i.url();
-            break;
+            height = i.height();
+            if (kind == AppStream::Image::KindSource || height > preferredScreenshotHeight()) {
+                // there is only one source image and we don't need bigger screenshot than
+                // preferredScreenshotHeight
+                break;
+            }
         }
     }
-    return ret;
+    return {ret, height};
 }
 
 QString AppStreamUtils::changelogToHtml(const AppStream::Component &appdata)
@@ -47,9 +60,7 @@ QString AppStreamUtils::changelogToHtml(const AppStream::Component &appdata)
     if (release.description().isEmpty())
         return {};
 
-    QString changelog =
-        QLatin1String("<h3>") + release.version() + QLatin1String("</h3>") + QStringLiteral("<p>") + release.description() + QStringLiteral("</p>");
-    return changelog;
+    return QLatin1String("<h3>") + i18nc("@title:group", "Changes in version %1", release.version()) + QLatin1String("</h3>") + release.description();
 }
 
 Screenshots AppStreamUtils::fetchScreenshots(const AppStream::Component &appdata)
@@ -59,14 +70,14 @@ Screenshots AppStreamUtils::fetchScreenshots(const AppStream::Component &appdata
     ret.reserve(appdataScreenshots.size());
     for (const AppStream::Screenshot &s : appdataScreenshots) {
         const auto images = s.images();
-        const QUrl thumbnail = AppStreamUtils::imageOfKind(images, AppStream::Image::KindThumbnail);
-        const QUrl full = AppStreamUtils::imageOfKind(images, AppStream::Image::KindSource);
+        const auto [thumbnail, thumbnailHeight] = AppStreamUtils::imageOfKind(images, AppStream::Image::KindThumbnail);
+        const auto [full, fullHeight] = AppStreamUtils::imageOfKind(images, AppStream::Image::KindSource);
         if (full.isEmpty()) {
             qWarning() << "AppStreamUtils: Invalid screenshot for" << appdata.name();
         }
         const bool isAnimated = s.mediaKind() == AppStream::Screenshot::MediaKindVideo;
 
-        ret.append(Screenshot{thumbnail.isEmpty() ? full : thumbnail, full, isAnimated});
+        ret.append(Screenshot{thumbnail.isEmpty() || thumbnailHeight < preferredScreenshotHeight() ? full : thumbnail, full, isAnimated});
     }
     return ret;
 }

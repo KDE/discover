@@ -8,7 +8,7 @@ import QtQuick
 import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.kirigami as Kirigami
-import org.kde.kirigami.delegates as KD
+import org.kde.kirigamiaddons.formcard as FormCard
 
 ColumnLayout {
     id: root
@@ -16,24 +16,17 @@ ColumnLayout {
     required property Discover.AbstractResource resource
     Discover.Activatable.active: true
 
-    spacing: Kirigami.Units.smallSpacing
+    spacing: 0
 
-    Kirigami.Heading {
-        Layout.fillWidth: true
-        text: i18ndc("libdiscover", "Permission to access system resources and hardware devices", "Permissions")
-        level: 2
-        type: Kirigami.Heading.Type.Primary
-        wrapMode: Text.Wrap
+    FormCard.FormHeader {
+        title: i18ndc("libdiscover", "Permission to access system resources and hardware devices", "Permissions")
     }
 
-    KD.SubtitleDelegate {
-        Layout.fillWidth: true
-        text: i18nd("libdiscover","Full Access")
-        subtitle: i18nd("libdiscover", "Can access everything on the system")
-        icon.name: "security-medium"
-
-        // so that it gets neither hover nor pressed appearance
-        hoverEnabled: false
-        down: false
+    FormCard.FormCard {
+        FormCard.FormTextDelegate {
+            text: i18nd("libdiscover","Full Access")
+            description: i18nd("libdiscover", "Can access everything on the system")
+            icon.name: "security-medium"
+        }
     }
 }

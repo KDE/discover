@@ -13,8 +13,9 @@ import org.kde.discover as Discover
 import org.kde.discover.app as DiscoverApp
 import org.kde.kirigami as Kirigami
 import org.kde.kitemmodels as KItemModels
+import org.kde.kirigamiaddons.formcard as FormCard
 
-BasicAbstractCard {
+FormCard.AbstractFormDelegate {
     id: root
 
     required property Discover.AbstractResource application
@@ -23,7 +24,9 @@ BasicAbstractCard {
     required property int visibleReviews
     required property bool compact
 
-    content: GridLayout {
+    background: null
+
+    contentItem: GridLayout {
         rows: root.compact ? 6 : 5
         columns: root.compact ? 2 : 3
         flow: GridLayout.TopToBottom
@@ -220,6 +223,8 @@ BasicAbstractCard {
                     currentIndex: reviewsPreview.currentIndex
                     interactive: true
                     onCurrentIndexChanged: reviewsPreview.currentIndex = currentIndex
+                    topPadding: 0
+                    bottomPadding: 0
                 }
                 MouseArea {
                     Layout.fillWidth: true
