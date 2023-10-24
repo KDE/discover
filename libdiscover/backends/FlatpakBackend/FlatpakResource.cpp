@@ -804,7 +804,10 @@ void FlatpakResource::loadPermissions()
     }
 
     const QString sockets = contextGroup.readEntry("sockets", QString());
-    if (sockets.contains("pulseaudio"_L1)) {
+    const QString filesystems = contextGroup.readEntry("filesystems", QString());
+    const auto dirs = QStringView(filesystems).split(';'_L1, Qt::SkipEmptyParts);
+
+    if (sockets.contains("pulseaudio"_L1) || filesystems.contains("xdg-run/pipewire-0"_L1)) {
         brief = i18n("Sound system access");
         description = i18n("Can play audio");
         m_permissions.append(FlatpakPermission(brief, description, u"audio-speakers-symbolic"_s));
@@ -866,8 +869,6 @@ void FlatpakResource::loadPermissions()
         m_permissions.append(FlatpakPermission(brief, description, u"virt-manager-symbolic"_s));
     }
 
-    const QString filesystems = contextGroup.readEntry("filesystems", QString());
-    const auto dirs = QStringView(filesystems).split(';'_L1, Qt::SkipEmptyParts);
     QStringList homeList, systemList;
     bool home_ro = false, home_rw = false, home_cr = false, homeAccess = false;
     bool system_ro = false, system_rw = false, system_cr = false, systemAccess = false;
@@ -877,6 +878,11 @@ void FlatpakResource::loadPermissions()
     for (const QStringView &dir : dirs) {
         if (dir == QLatin1String("xdg-config/kdeglobals:ro")) {
             // Ignore notifying about the global file being visible, since it's intended by design
+            continue;
+        }
+
+        if (dir.startsWith("xdg-run/pipewire-0"_L1)) {
+            // This is already handled as sound system above
             continue;
         }
 
