@@ -76,11 +76,23 @@ ListView {
                 componentFalse: Component {
                     Image {
                         source: small_image_url
+
+                        onStatusChanged: {
+                            if (status == Image.Error) {
+                                source = large_image_url
+                            }
+                        }
                     }
                 }
                 componentTrue: Component {
                     AnimatedImage {
                         source: small_image_url
+
+                        onStatusChanged: {
+                            if (status == Image.Error) {
+                                source = large_image_url
+                            }
+                        }
                     }
                 }
 
