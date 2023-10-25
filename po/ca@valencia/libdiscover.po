@@ -3,14 +3,14 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Josep M. Ferrer <txemaq@gmail.com>
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-24 01:42+0000\n"
-"PO-Revision-Date: 2023-10-11 09:39+0200\n"
+"POT-Creation-Date: 2023-10-25 01:50+0000\n"
+"PO-Revision-Date: 2023-10-21 10:44+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -580,11 +580,10 @@ msgid "Retrieving size information"
 msgstr "S'està recuperant la informació de la mida"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:448
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
-msgstr "Desconegut"
+msgstr "Desconeguda"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:504
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
@@ -623,23 +622,23 @@ msgstr "Accés a xarxes"
 msgid "Can access the internet"
 msgstr "Pot accedir a Internet"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:808
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid "Sound system access"
 msgstr "Accés al sistema de so"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:809
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
 msgid "Can play audio"
 msgstr "Pot reproduir àudio"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:813
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:954
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Accés al bus de la sessió"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:814
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
@@ -648,56 +647,56 @@ msgstr ""
 "Pot comunicar-se amb totes les altres aplicacions i processos que s'executen "
 "en este compte d'usuari"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:819
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
 msgid "System Bus Access"
 msgstr "Accés al bus del sistema"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:820
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
 "Pot comunicar-se amb totes les altres aplicacions i processos en el sistema"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Accés a inici remot de sessió"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:826
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr ""
 "Pot iniciar sol·licituds d'inici de sessió remot utilitzant el protocol SSH"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Accés a targeta intel·ligent"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:831
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "Pot integrar i comunicar-se amb targetes intel·ligents"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
 #, kde-format
 msgid "Printer Access"
 msgstr "Accés a les impressores"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:836
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "Pot integrar i comunicar-se amb impressores"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
 #, kde-format
 msgid "GPG Agent"
 msgstr "Agent de GPG"
 
 # skip-rule: punctuation-period-no
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -706,73 +705,73 @@ msgstr ""
 "Permet accedir al servei de criptografia GPG, utilitzat generalment per a "
 "signar i llegir documents signats."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:847
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "Accés a Bluetooth"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "Pot integrar i comunicar-se amb dispositius Bluetooth"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "Accés a baix nivell del sistema"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:853
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "Pot fer crides de baix nivell al sistema (p. ex., «ptrace»)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
 msgid "Device Access"
 msgstr "Accés a dispositius"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
 "Pot comunicar-se i controlar dispositius de maquinari integrats o connectats"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Accés a màquina virtual basada en el nucli"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:865
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr ""
 "Permet executar altres sistemes operatius com a convidats en màquines "
 "virtuals"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:889
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:907
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (només de lectura)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:892
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:904
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (pot crear fitxers)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:913
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:919
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (lectura i escriptura) "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:928
 #, kde-format
 msgid "Home Folder Access"
 msgstr "Accés a la carpeta d'inici"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -781,7 +780,7 @@ msgstr ""
 "Pot llegir, escriure i crear fitxers en les ubicacions següents de la vostra "
 "carpeta d'inici sense abans demanar permís: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:927
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -790,7 +789,7 @@ msgstr ""
 "Pot llegir i escriure fitxers en les ubicacions següents de la vostra "
 "carpeta d'inici sense abans demanar permís: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -799,7 +798,7 @@ msgstr ""
 "Pot llegir fitxers en les ubicacions següents de la vostra carpeta d'inici "
 "sense abans demanar permís: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -808,12 +807,12 @@ msgstr ""
 "Pot accedir a fitxers en les ubicacions següents de la vostra carpeta "
 "d'inici sense abans demanar permís: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
 #, kde-format
 msgid "System Folder Access"
 msgstr "Accés a carpetes del sistema"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:939
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -822,7 +821,7 @@ msgstr ""
 "Pot llegir, escriure i crear fitxers del sistema en les ubicacions següents "
 "sense abans demanar permís: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:941
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -831,7 +830,7 @@ msgstr ""
 "Pot llegir i escriure fitxers del sistema en les ubicacions següents sense "
 "abans demanar permís: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:949
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
@@ -840,7 +839,7 @@ msgstr ""
 "Pot llegir fitxers del sistema en les ubicacions següents sense abans "
 "demanar permís: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:951
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
@@ -849,7 +848,7 @@ msgstr ""
 "Pot accedir a fitxers del sistema en les ubicacions següents sense abans "
 "demanar permís: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:955
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:961
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -858,7 +857,7 @@ msgstr ""
 "Pot comunicar-se amb altres aplicacions i processos en la mateixa sessió "
 "d'escriptori utilitzant els protocols de comunicació següents: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:967
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
@@ -2629,14 +2628,3 @@ msgstr "Programari del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complements"
-
-#~ msgid "Unknown size"
-#~ msgstr "Mida desconeguda"
-
-#~ msgctxt "@info app size"
-#~ msgid "%1 to download, %2 on disk"
-#~ msgstr "%1 per a baixar, %2 en el disc"
-
-#~ msgctxt "@info app size"
-#~ msgid "%1 on disk"
-#~ msgstr "%1 en el disc"

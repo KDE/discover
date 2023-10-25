@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-24 01:42+0000\n"
+"POT-Creation-Date: 2023-10-25 01:50+0000\n"
 "PO-Revision-Date: 2023-10-22 17:56+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -619,76 +619,76 @@ msgstr "பிணைய அணுகல்"
 msgid "Can access the internet"
 msgstr "இணையத்தை அணுகலாம்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:808
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid "Sound system access"
 msgstr "ஒலிக்கருவி அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:809
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
 msgid "Can play audio"
 msgstr "ஒலியை இயக்கலாம்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:813
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:954
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
 #, kde-format
 msgid "Session Bus Access"
 msgstr "அமர்வுப் பாட்டை அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:814
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr "உங்கள் அமர்வில் இயங்கும் அனைத்து செயலிகளையும் தொடர்புகொள்ளலாம்."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:819
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
 msgid "System Bus Access"
 msgstr "கணினிப் பாட்டை அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:820
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr "கணினியில் இயங்கும் அனைத்து செயலிகளையும் தொடர்புகொள்ளலாம்."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
 msgid "Remote Login Access"
 msgstr "தொலை நுழைவு அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:826
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "SSH நெறிமுறையின் மூலம் தொலை நுழைவு கோரிக்கைகளை அனுப்பலாம்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
 #, kde-format
 msgid "Smart Card Access"
 msgstr "நுண்ணறி அட்டை அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:831
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "நுண்ணறி (ஸ்மார்ட்) அட்டைகளை பயன்படுத்தலாம்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
 #, kde-format
 msgid "Printer Access"
 msgstr "அச்சுப்பொறி அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:836
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "அச்சுப்பொறிகளை பயன்படுத்த முடியும்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
 #, kde-format
 msgid "GPG Agent"
 msgstr "GPG பின்னணி சேவை"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -696,70 +696,70 @@ msgid ""
 msgstr ""
 "ஆவணங்களுக்கு கையொப்பமிடவும் கையொப்பங்களை சரிபார்க்கவும் பயன்படும் GPG சேவையை அணுக விடும்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:847
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "ஊடலை அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "ஊடலை (bluetooth) சாதனங்களை தொடர்புகொள்ளலாம்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "இயங்குதள அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:853
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "இயங்குதளத்தின் அடிப்படை அம்சங்களை (ptrace போன்ற syscall-களை) பயன்படுத்தலாம்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
 msgid "Device Access"
 msgstr "சாதன அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr "இணைக்கப்பட்டுள்ள சாதனங்களை தொடர்புகொண்டு அவற்றை கட்டுப்படுத்தலாம்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "கருனிமட்ட மெய்நிகர் கணினி அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:865
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr "மெய்நிகர் கணினிகளில் மற்ற இயங்குதளங்களை நன்றாக இயங்க உதவும்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:889
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:907
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (படித்தல் மட்டும்)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:892
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:904
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (கோப்புகளை உருவாக்கலாம்)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:913
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:919
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (படித்தல் & எழுதுதல்) "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:928
 #, kde-format
 msgid "Home Folder Access"
 msgstr "முகப்பு அடைவு அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -768,7 +768,7 @@ msgstr ""
 "உங்கள் அனுமதியில்லாமல் உங்கள் முகப்பு (home) அடைவிலுள்ள பின்வரும் இடங்களிலுள்ள கோப்புகளை "
 "படிக்கலாம், அவற்றினுள் எழுதலாம், மற்றும் புதிய கோப்புகளை உருவாக்கலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:927
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -777,7 +777,7 @@ msgstr ""
 "உங்கள் அனுமதியில்லாமல் உங்கள் முகப்பு (home) அடைவிலுள்ள பின்வரும் இடங்களிலுள்ள கோப்புகளை "
 "படிக்கலாம் மற்றும் அவற்றினுள் எழுதலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -786,7 +786,7 @@ msgstr ""
 "உங்கள் அனுமதியில்லாமல் உங்கள் முகப்பு (home) அடைவிலுள்ள பின்வரும் இடங்களிலுள்ள கோப்புகளை "
 "படிக்கலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -794,12 +794,12 @@ msgid ""
 msgstr ""
 "உங்கள் அனுமதியில்லாமல் உங்கள் முகப்பு (home) அடைவிலுள்ள பின்வரும் இடங்களை அணுகலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
 #, kde-format
 msgid "System Folder Access"
 msgstr "கணினி அடைவு அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:939
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -808,7 +808,7 @@ msgstr ""
 "உங்கள் அனுமதியில்லாமல் பின்வரும் இடங்களிலுள்ள கோப்புகளை படிக்கலாம், அவற்றினுள் எழுதலாம், "
 "மற்றும் புதிய கோப்புகளை உருவாக்கலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:941
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -817,21 +817,21 @@ msgstr ""
 "உங்கள் அனுமதியில்லாமல் பின்வரும் இடங்களிலுள்ள கோப்புகளை படிக்கலாம், மற்றும் அவற்றினுள் "
 "எழுதலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:949
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
 msgstr "உங்கள் அனுமதியில்லாமல் பின்வரும் இடங்களிலுள்ள கோப்புகளை படிக்கலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:951
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
 msgstr "உங்கள் அனுமதியில்லாமல் பின்வரும் இடங்களிலுள்ள கோப்புகளை அணுகலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:955
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:961
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -839,7 +839,7 @@ msgid ""
 msgstr ""
 "பின்வரும் நேறிமுறைகளின் மூலம் உங்கள் அமர்விலுள்ள மற்ற செயலிகளை தொடர்புகொள்ளலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:967
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "

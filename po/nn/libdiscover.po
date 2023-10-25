@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-24 01:42+0000\n"
+"POT-Creation-Date: 2023-10-25 01:50+0000\n"
 "PO-Revision-Date: 2023-07-27 21:19+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -622,25 +622,25 @@ msgstr "Nettverks­tilgang"
 msgid "Can access the internet"
 msgstr "Får fri tilgang til Internett"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:808
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, fuzzy, kde-format
 #| msgid "System Bus Access"
 msgid "Sound system access"
 msgstr "Tilgang til systembussen"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:809
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
 msgid "Can play audio"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:813
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:954
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Tilgang til øktbussen"
 
 # Vert litt langt og tungt med «kommunikasjonsprotokollane». Starten av setninga seier jo uansett at det er snakk om kommunikasjon, så me kan forkorta det til «protokollane».
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:814
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #, fuzzy, kde-format
 #| msgid ""
 #| "Can communicate with other applications and processes in the same desktop "
@@ -652,14 +652,14 @@ msgstr ""
 "Får kommunisera med andre program og prosessar i same skrivebordsøkt via "
 "desse protokollane: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:819
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
 msgid "System Bus Access"
 msgstr "Tilgang til systembussen"
 
 # Vert litt langt og tungt med «kommunikasjonsprotokollane». Starten av setninga seier jo uansett at det er snakk om kommunikasjon, så me kan forkorta det til «protokollane».
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:820
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, fuzzy, kde-format
 #| msgid ""
 #| "Can communicate with other applications and processes in the same desktop "
@@ -669,42 +669,42 @@ msgstr ""
 "Får kommunisera med andre program og prosessar i same skrivebordsøkt via "
 "desse protokollane: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Tilgang til fjerninnlogging"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:826
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "Får logga på eksterne maskiner via SSH-protokollen"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Smartkort-tilgang"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:831
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "Får integrera og kommunisera med smartkort"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
 #, kde-format
 msgid "Printer Access"
 msgstr "Skrivartilgang"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:836
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "Får integrera og kommunisera med skrivarar"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
 #, kde-format
 msgid "GPG Agent"
 msgstr "GPG-agent"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -713,71 +713,71 @@ msgstr ""
 "Får tilgang til kryptografi­tenesta GPG, vanlegvis brukt for signering av "
 "dokument og lesing av signerte dokument"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:847
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "Bluetooth-tilgang"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "Får integrera og kommunisera med Bluetooth-einingar"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "Lågnivå-systemtilgang"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:853
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "Får gjera systemkall på lågt nivå (for eksempel «ptrace»)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
 msgid "Device Access"
 msgstr "Maskinvaretilgang"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr "Får kommunisera med og styra innebygd eller tilkopla utstyr"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Kjernebasert tilgang til virtuelle maskiner"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:865
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr ""
 "Får tilgang til å køyra andre operativsystem som gjestar i virtuelle maskiner"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:889
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:907
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (berre lesa)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:892
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:904
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (oppretta filer)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:913
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:919
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (lesa/skriva)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:928
 #, kde-format
 msgid "Home Folder Access"
 msgstr "Tilgang til heimemappa"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -786,7 +786,7 @@ msgstr ""
 "Får lesa, skriva og oppretta filer i desse mappene i heimemappa di utan "
 "først å be om løyve: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:927
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -795,7 +795,7 @@ msgstr ""
 "Får lesa og skriva filer i desse mappene i heimemappa di utan først å be om "
 "løyve: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -803,7 +803,7 @@ msgid ""
 msgstr ""
 "Får lesa filer i desse mappene i heimemappa di utan først å be om løyve: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -812,12 +812,12 @@ msgstr ""
 "Får tilgang til filer i desse mappene i heimemappa di utan først å be om "
 "løyve: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
 #, kde-format
 msgid "System Folder Access"
 msgstr "Tilgang til systemmappa"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:939
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -826,7 +826,7 @@ msgstr ""
 "Får lesa, skriva og oppretta systemfiler i desse mappene utan først å be om "
 "løyve: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:941
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -834,14 +834,14 @@ msgid ""
 msgstr ""
 "Får lesa og skriva systemfiler i desse mappene utan først å be om løyve: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:949
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
 msgstr "Får lesa systemfiler i desse mappene utan først å be om løyve: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:951
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
@@ -850,7 +850,7 @@ msgstr ""
 "Får tilgang til systemfiler i desse mappene utan først å be om løyve: %1"
 
 # Vert litt langt og tungt med «kommunikasjonsprotokollane». Starten av setninga seier jo uansett at det er snakk om kommunikasjon, så me kan forkorta det til «protokollane».
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:955
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:961
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -859,7 +859,7 @@ msgstr ""
 "Får kommunisera med andre program og prosessar i same skrivebordsøkt via "
 "desse protokollane: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:967
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "

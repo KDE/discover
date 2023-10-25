@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-24 01:42+0000\n"
+"POT-Creation-Date: 2023-10-25 01:50+0000\n"
 "PO-Revision-Date: 2023-10-21 07:44+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -618,23 +618,23 @@ msgstr "Reta Aliro"
 msgid "Can access the internet"
 msgstr "Povas aliri la interreton"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:808
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid "Sound system access"
 msgstr "Sonsistema Aliro"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:809
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
 msgid "Can play audio"
 msgstr "Eblas ludi aŭdaĵon"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:813
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:954
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Seancbusa Aliro"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:814
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
@@ -643,53 +643,53 @@ msgstr ""
 "Povas komuniki kun ĉiuj aliaj aplikaĵoj kaj procezoj rulataj en ĉi tiu "
 "uzantkonto"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:819
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
 msgid "System Bus Access"
 msgstr "Sistema Busa Aliro"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:820
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr "Povas komuniki kun ĉiuj aliaj aplikaĵoj kaj procezoj en la sistemo"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Fora Ensaluta Aliro"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:826
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "Povas iniciati forajn ensalutpetojn per la SSH-protokolo"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Aliro al Smart Card"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:831
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "Kapablas integri kaj komuniki per inteligentaj kartoj"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
 #, kde-format
 msgid "Printer Access"
 msgstr "Presilo-Aliro"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:836
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "Kapablas integri kaj komuniki kun presiloj"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
 #, kde-format
 msgid "GPG Agent"
 msgstr "GPG-agento"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -698,71 +698,71 @@ msgstr ""
 "Permesas aliron al la GPG-kriptografia servo, ĝenerale uzata por subskribi "
 "kaj legi subskribitajn dokumentojn"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:847
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "Bluetooth-Aliro"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "Povas integri kaj komuniki kun Bluetooth-aparatoj"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "Malaltnivela Sistema Aliro"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:853
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "Povas fari malaltnivelajn sistemajn vokojn (ekz. ptrace)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
 msgid "Device Access"
 msgstr "Aparato Aliro"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
 "Kapablas komuniki kun kaj kontroli enkonstruitajn aŭ konektitajn aparataĵojn"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Kernel-bazita Virtuala Maŝina Aliro"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:865
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr "Permesas funkcii aliajn operaciumojn kiel gastoj en virtualaj maŝinoj"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:889
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:907
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (nurlegebla)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:892
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:904
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (povas krei dosierojn)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:913
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:919
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (legi kaj skribi)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:928
 #, kde-format
 msgid "Home Folder Access"
 msgstr "Hejma Dosierujo Aliro"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -771,7 +771,7 @@ msgstr ""
 "Povas legi, skribi kaj krei dosierojn en la sekvaj lokoj en via hejma "
 "dosierujo sen peti permeson unue: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:927
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -780,7 +780,7 @@ msgstr ""
 "Povas legi kaj skribi dosierojn en la sekvaj lokoj en via hejma dosierujo "
 "sen peti permeson unue: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -789,7 +789,7 @@ msgstr ""
 "Povas legi dosierojn en la sekvaj lokoj en via hejma dosierujo sen peti "
 "permeson unue: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -798,12 +798,12 @@ msgstr ""
 "Povas aliri dosierojn en la sekvaj lokoj en via hejma dosierujo sen peti "
 "permeson unue: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
 #, kde-format
 msgid "System Folder Access"
 msgstr "Sistema Dosierujo-Aliro"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:939
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -812,7 +812,7 @@ msgstr ""
 "Povas legi, skribi kaj krei sistemajn dosierojn en la sekvaj lokoj sen peti "
 "permeson unue: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:941
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -821,7 +821,7 @@ msgstr ""
 "Povas legi kaj skribi sistemajn dosierojn en la sekvaj lokoj sen unue peti "
 "permeson: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:949
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
@@ -829,7 +829,7 @@ msgid ""
 msgstr ""
 "Povas legi sistemdosierojn en la sekvaj lokoj sen unue peti permeson: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:951
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
@@ -837,7 +837,7 @@ msgid ""
 msgstr ""
 "Povas aliri sistemajn dosierojn en la sekvaj lokoj sen peti permeson unue: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:955
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:961
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -846,7 +846,7 @@ msgstr ""
 "Povas komuniki kun aliaj aplikaĵoj kaj procezoj en la sama labortabla sesio "
 "uzante la jenajn komunikajn protokolojn: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:967
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
