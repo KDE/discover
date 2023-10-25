@@ -162,7 +162,6 @@ Item {
                 LayoutMirroring.enabled: root.LayoutMirroring.enabled
 
                 view: view
-                policy: CarouselNavigationButtonsListViewAdapter.CurrentIndex
                 edgeMargin: root.edgeMargin
             }
 

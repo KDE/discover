@@ -108,7 +108,6 @@ T.Control {
                 Kirigami.Theme.colorSet: Kirigami.Theme.Button
 
                 view: view
-                policy: CarouselNavigationButtonsListViewAdapter.CurrentIndex
                 edgeMargin: root.edgeMargin
             }
         }

@@ -12,33 +12,23 @@ import QtQuick
 CarouselNavigationButtons {
     id: root
 
-    enum Policy {
-        AtXBeginningEnd,
-        CurrentIndex
-    }
-
     required property ListView view
 
-    property /*Policy*/ int policy: CarouselNavigationButtonsListViewAdapter.CurrentIndex
+    // We experimented with ListView::atXBeginning/atXEnd, but ultimately
+    // binding on currentIndex provides smoother experience overall.
 
     atBeginning: {
-        switch (policy) {
-        case CarouselNavigationButtonsListViewAdapter.AtXBeginningEnd:
-            return view.atXBeginning;
-        case CarouselNavigationButtonsListViewAdapter.CurrentIndex:
+        if (view) {
             return view.currentIndex === 0;
-        default:
+        } else {
             return false;
         }
     }
 
     atEnd: {
-        switch (policy) {
-        case CarouselNavigationButtonsListViewAdapter.AtXBeginningEnd:
-            return view.atXEnd;
-        case CarouselNavigationButtonsListViewAdapter.CurrentIndex:
+        if (view) {
             return view.currentIndex === view.count - 1;
-        default:
+        } else {
             return false;
         }
     }
