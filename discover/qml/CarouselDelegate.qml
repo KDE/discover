@@ -78,7 +78,14 @@ Item {
             return Math.max(minimumRatio, Math.min(maximumRatio, preferredRatio));
         }
 
-        readonly property Image activeImage: delegate.loadLargeImage ? largeImageView : smallImageView
+        readonly property bool smallImageFailed: smallImageView !== null && smallImageView.status === Image.Error
+
+        // Purely for graphical purposes, in case small image is not
+        // available. Does not affect playback behavior.
+        readonly property bool effectiveLoadLargeImage: delegate.loadLargeImage || smallImageFailed
+
+        readonly property Image activeImage: effectiveLoadLargeImage ? largeImageView : smallImageView
+
         readonly property AnimatedImage activeAnimatedImage: activeImage as AnimatedImage
 
         readonly property Image largeImageView: largeImageLoader.item
@@ -162,7 +169,7 @@ Item {
                 anchors.fill: parent
                 z: 1
 
-                active: delegate.loadLargeImage
+                active: controlRoot.effectiveLoadLargeImage
                 condition: delegate.isProbablyAnimated
 
                 componentTrue: AnimatedImage {
