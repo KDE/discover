@@ -29,25 +29,37 @@ BasicAbstractCard {
         ListView.currentIndex = index
         Navigation.openApplication(application)
     }
+    padding: Kirigami.Units.largeSpacing * 2
     highlighted: ListView.isCurrentItem
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
 
     content: Item {
-        implicitHeight: Math.max(columnLayout.implicitHeight, resourceIcon.height)
+        implicitHeight: Math.max(columnLayout.implicitHeight, resourceIconFrame.implicitHeight)
 
-        // App icon
-        Kirigami.Icon {
-            id: resourceIcon
-            readonly property real contHeight: root.compact ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.huge
-            source: application.icon
-            animated: false
-            height: contHeight
-            width: contHeight
+        // App icon, This Item is to simplify the alignment logic a lot
+        Item {
+            id: resourceIconFrame
             anchors {
-                verticalCenter: parent.verticalCenter
                 left: parent.left
-                leftMargin: root.compact ? Kirigami.Units.largeSpacing : Kirigami.Units.largeSpacing * 2
+                top: parent.top
+                bottom: parent.bottom
+            }
+            clip:true
+            width: height
+            implicitHeight: (root.compact ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.huge) + (Kirigami.Units.largeSpacing * 2)
+
+            Kirigami.Icon {
+                id: resourceIcon
+                anchors {
+                    fill: parent
+                    margins: Kirigami.Units.largeSpacing
+                }
+                readonly property real contHeight: root.compact ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.huge
+                source: application.icon
+                animated: false
+                height: contHeight
+                width: contHeight
             }
         }
 
@@ -56,9 +68,10 @@ BasicAbstractCard {
             id: columnLayout
 
             anchors {
-                verticalCenter: parent.verticalCenter
+                top: parent.top
                 right: parent.right
-                left: resourceIcon.right
+                bottom: parent.bottom
+                left: resourceIconFrame.right
                 leftMargin: Kirigami.Units.largeSpacing * 2
             }
             spacing: 0
@@ -71,11 +84,21 @@ BasicAbstractCard {
                 Kirigami.Heading {
                     id: head
                     Layout.fillWidth: true
+                    // We want the heading visually top-aligned with the top margin, the icon background and that in general
+                    // it's root.padding away from the border. We can't just align the label to the top for it because internally
+                    // everything is aligned respecting the text boundingRect, which includes blank space on the top as a "line" height, called "leading". Instead we need to base ourselves on tightBoundingRect which is a rect only around the
+                    // painted area of the label, not including the leading
+                    topPadding: headMetrics.boundingRect.y - headMetrics.tightBoundingRect.y
                     level: root.compact ? 2 : 1
                     type: Kirigami.Heading.Type.Primary
                     text: root.application.name
                     elide: Text.ElideRight
                     maximumLineCount: 1
+                    TextMetrics {
+                        id: headMetrics
+                        font: head.font
+                        text: head.text
+                    }
                 }
 
                 // Backend name label (shown if app is from a non-default backend and
@@ -114,11 +137,9 @@ BasicAbstractCard {
                     text: "Sample text"
                 }
             }
-
             // Container for rating, size, and install button
             RowLayout {
                 Layout.fillWidth: true
-                Layout.topMargin: root.compact ? Kirigami.Units.smallSpacing : Kirigami.Units.largeSpacing
                 spacing: Kirigami.Units.largeSpacing
 
                 // Combined condition of both children items
@@ -134,6 +155,7 @@ BasicAbstractCard {
                     // sizeInfo text is visible, because the base layout is
                     // vertically centered rather than filling a distinct space.
                     Layout.preferredHeight: root.compact ? -1 : rating.implicitHeight + sizeInfo.implicitHeight
+                    Layout.alignment: Qt.AlignBottom
                     spacing: 0
 
                     // Combined condition of both children items
@@ -143,22 +165,31 @@ BasicAbstractCard {
                     RowLayout {
                         id: rating
                         Layout.fillWidth: true
-                        Layout.alignment: Qt.AlignTop
+                        Layout.alignment: Qt.AlignBottom
                         visible: root.showRating
                         opacity: 0.6
                         spacing: Kirigami.Units.largeSpacing
 
                         Rating {
+                            Layout.alignment: Qt.AlignVCenter
                             value: root.application.rating ? root.application.rating.sortableRating : 0
                             starSize: root.compact ? description.font.pointSize : head.font.pointSize
                             precision: Rating.Precision.HalfStar
+                            padding: 0
                         }
                         Label {
                             Layout.fillWidth: true
+                            Layout.alignment: Qt.AlignVCenter
+                            topPadding: (ratingLabelMetrics.boundingRect.y - ratingLabelMetrics.tightBoundingRect.y)/2
                             visible: root.application.rating || (root.application.backend.reviewsBackend && root.application.backend.reviewsBackend.isResourceSupported(root.application))
                             text: root.application.rating ? i18np("%1 rating", "%1 ratings", root.application.rating.ratingCount) : i18n("No ratings yet")
                             font: Kirigami.Theme.smallFont
                             elide: Text.ElideRight
+                            TextMetrics {
+                                id: ratingLabelMetrics
+                                font: head.font
+                                text: head.text
+                            }
                         }
                     }
 
@@ -166,6 +197,7 @@ BasicAbstractCard {
                     Label {
                         id: sizeInfo
                         Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignBottom
                         visible: !root.compact && root.showSize
                         text: visible ? root.application.sizeDescription : ""
                         horizontalAlignment: Text.AlignRight
@@ -179,7 +211,7 @@ BasicAbstractCard {
                 // Install button
                 InstallApplicationButton {
                     id: installButton
-                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                    Layout.alignment: Qt.AlignBottom | Qt.AlignRight
                     visible: !root.compact
                 }
             }
