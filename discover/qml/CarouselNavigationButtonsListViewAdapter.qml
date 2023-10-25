@@ -17,6 +17,15 @@ CarouselNavigationButtons {
     // We experimented with ListView::atXBeginning/atXEnd, but ultimately
     // binding on currentIndex provides smoother experience overall.
 
+    animated: {
+        if (view) {
+            // Zero duration is a trick used to reset currentIndex without animations
+            return view.highlightMoveDuration !== 0;
+        } else {
+            return false;
+        }
+    }
+
     atBeginning: {
         if (view) {
             return view.currentIndex === 0;

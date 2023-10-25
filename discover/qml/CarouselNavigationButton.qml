@@ -14,6 +14,12 @@ KirigamiComponents.FloatingButton {
     id: controlRoot
 
     /*
+     * This property controls whether opacity and translation should be animated.
+     * Note that any cuurently running animations can not be stopped.
+     */
+    required property bool animated
+
+    /*
      * Two properties reflecting whether the current item is the first one in
      * carousel, and/or whether it is the last one. Note that they are not
      * mutually exclusive, if the carousel contains only a single item.
@@ -57,6 +63,7 @@ KirigamiComponents.FloatingButton {
     opacity: enabled ? 1 : 0
 
     Behavior on opacity {
+        enabled: controlRoot.visible && controlRoot.animated
         NumberAnimation {
             duration: Kirigami.Units.longDuration
             easing.type: Easing.OutCubic
@@ -68,6 +75,7 @@ KirigamiComponents.FloatingButton {
             : Kirigami.Units.gridUnit * 2 * (controlRoot.effectiveRole === Qt.AlignLeading ? -1 : 1)
 
         Behavior on x {
+            enabled: controlRoot.visible && controlRoot.animated
             NumberAnimation {
                 duration: Kirigami.Units.longDuration
                 easing.type: Easing.OutCubic

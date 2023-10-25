@@ -12,6 +12,7 @@ Item {
     id: root
 
     // See documentation in CarouselNavigationButton.qml
+    required property bool animated
     required property bool atBeginning
     required property bool atEnd
 
@@ -29,6 +30,7 @@ Item {
         Kirigami.Theme.inherit: true
         LayoutMirroring.enabled: root.LayoutMirroring.enabled
 
+        animated: root.animated
         atBeginning: root.atBeginning
         atEnd: root.atEnd
         edgeMargin: root.edgeMargin
@@ -43,6 +45,7 @@ Item {
         Kirigami.Theme.inherit: true
         LayoutMirroring.enabled: root.LayoutMirroring.enabled
 
+        animated: root.animated
         atBeginning: root.atBeginning
         atEnd: root.atEnd
         edgeMargin: root.edgeMargin
