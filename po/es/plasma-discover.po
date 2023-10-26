@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-21 01:39+0000\n"
+"POT-Creation-Date: 2023-10-26 01:46+0000\n"
 "PO-Revision-Date: 2023-10-17 22:51+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -282,7 +282,7 @@ msgstr "Añadir"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: discover/qml/ApplicationDelegate.qml:159
+#: discover/qml/ApplicationDelegate.qml:185
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "%1 rating"
@@ -290,7 +290,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 evaluación"
 msgstr[1] "%1 evaluaciones"
 
-#: discover/qml/ApplicationDelegate.qml:159
+#: discover/qml/ApplicationDelegate.qml:185
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "No ratings yet"

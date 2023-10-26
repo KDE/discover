@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-21 01:39+0000\n"
+"POT-Creation-Date: 2023-10-26 01:46+0000\n"
 "PO-Revision-Date: 2023-10-01 17:52+0000\n"
 "Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -267,7 +267,7 @@ msgstr "Bæta við"
 msgid "Cancel"
 msgstr "Hætta við"
 
-#: discover/qml/ApplicationDelegate.qml:159
+#: discover/qml/ApplicationDelegate.qml:185
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "%1 rating"
@@ -275,7 +275,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 einkunn"
 msgstr[1] "%1 einkunnir"
 
-#: discover/qml/ApplicationDelegate.qml:159
+#: discover/qml/ApplicationDelegate.qml:185
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "No ratings yet"

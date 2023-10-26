@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-21 01:39+0000\n"
+"POT-Creation-Date: 2023-10-26 01:46+0000\n"
 "PO-Revision-Date: 2013-04-01 10:16+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -270,7 +270,7 @@ msgstr "एडोन्स"
 msgid "Cancel"
 msgstr "रद्द करा"
 
-#: discover/qml/ApplicationDelegate.qml:159
+#: discover/qml/ApplicationDelegate.qml:185
 #: discover/qml/ApplicationPage.qml:219
 #, fuzzy, kde-format
 #| msgid "Rating"
@@ -279,7 +279,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "गुणवत्ताश्रेणी"
 msgstr[1] "गुणवत्ताश्रेणी"
 
-#: discover/qml/ApplicationDelegate.qml:159
+#: discover/qml/ApplicationDelegate.qml:185
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgid "No ratings yet"

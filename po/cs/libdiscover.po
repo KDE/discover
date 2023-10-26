@@ -574,11 +574,10 @@ msgid "Retrieving size information"
 msgstr "Získávám informace o velikosti"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:448
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
-msgstr "Neznámý"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:504
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
@@ -2499,14 +2498,3 @@ msgstr "Systémový software"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Doplňky"
-
-#~ msgid "Unknown size"
-#~ msgstr "Neznámá velikost"
-
-#~ msgctxt "@info app size"
-#~ msgid "%1 to download, %2 on disk"
-#~ msgstr "%1 ke stažení, %2 na disku"
-
-#~ msgctxt "@info app size"
-#~ msgid "%1 on disk"
-#~ msgstr "%1 na disku"
