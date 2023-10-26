@@ -14,6 +14,7 @@
 #include "PackageKitSourcesBackend.h"
 #include "PackageKitUpdater.h"
 #include <AppStreamQt/release.h>
+#include <AppStreamQt/systeminfo.h>
 #include <AppStreamQt/utils.h>
 #include <AppStreamQt/version.h>
 #include <appstream/AppStreamIntegration.h>
@@ -301,9 +302,9 @@ void PackageKitBackend::reloadPackageList()
         }
         acquireFetching(false);
 
-        const auto distroComponents = m_appdata->componentsById(AppStream::Utils::currentDistroComponentId());
+        const auto distroComponents = m_appdata->componentsById(AppStream::SystemInfo::currentDistroComponentId());
         if (distroComponents.isEmpty()) {
-            qWarning() << "PackageKitBackend: No distro component found for" << AppStream::Utils::currentDistroComponentId();
+            qWarning() << "PackageKitBackend: No distro component found for" << AppStream::SystemInfo::currentDistroComponentId();
         }
         for (const AppStream::Component &dc : distroComponents) {
             const auto releases = dc.releasesPlain().entries();

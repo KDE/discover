@@ -6,6 +6,7 @@
 
 #include "AppStreamIntegration.h"
 
+#include <AppStreamQt/systeminfo.h>
 #include <AppStreamQt/utils.h>
 #include <AppStreamQt/version.h>
 #include <KConfigGroup>
@@ -24,7 +25,7 @@ AppStreamIntegration *AppStreamIntegration::global()
 
 std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStream::Pool *pool)
 {
-    QString distroId = AppStream::Utils::currentDistroComponentId();
+    QString distroId = AppStream::SystemInfo::currentDistroComponentId();
 
     // Look at releases to see if we have a new major version available.
     const auto distroComponents = pool->componentsById(distroId);
