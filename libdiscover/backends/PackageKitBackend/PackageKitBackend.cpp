@@ -497,7 +497,6 @@ T PackageKitBackend::resourcesByPackageNames(const W &pkgnames) const
             }
             if (res) {
                 ret += res;
-                m_packagesToAdd.insert(pkgId, res);
             }
         } else {
             for (const QString &app_id : app_names) {
