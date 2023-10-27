@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-26 01:46+0000\n"
+"POT-Creation-Date: 2023-10-27 01:41+0000\n"
 "PO-Revision-Date: 2023-09-28 17:42+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -738,6 +738,50 @@ msgstr "Voir plus d'informations"
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "Outils de développement les mieux cotés"
+
+#: discover/qml/CarouselDelegate.qml:212
+#, kde-format
+msgctxt "@action:button Start playing media"
+msgid "Play"
+msgstr ""
+
+#: discover/qml/CarouselDelegate.qml:214
+#, kde-format
+msgctxt "@action:button Pause any media that is playing"
+msgid "Pause"
+msgstr ""
+
+#: discover/qml/CarouselMaximizedViewContent.qml:40
+#, kde-format
+msgctxt "@action:button"
+msgid "Switch to Overlay"
+msgstr ""
+
+#: discover/qml/CarouselMaximizedViewContent.qml:42
+#, kde-format
+msgctxt "@action:button"
+msgid "Switch to Full Screen"
+msgstr ""
+
+#: discover/qml/CarouselMaximizedViewContent.qml:75
+#, fuzzy, kde-format
+#| msgid "Close"
+msgctxt ""
+"@action:button Close overlay/window/popup with carousel of screenshots"
+msgid "Close"
+msgstr "Fermer"
+
+#: discover/qml/CarouselNavigationButton.qml:56
+#, kde-format
+msgctxt "@action:button"
+msgid "Previous Screenshot"
+msgstr ""
+
+#: discover/qml/CarouselNavigationButton.qml:56
+#, kde-format
+msgctxt "@action:button"
+msgid "Next Screenshot"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -1777,9 +1821,6 @@ msgstr "Date inconnue de la dernière mise à jour"
 #~ msgstr ""
 #~ "Liste, séparée par des virgules (« , »), de tous les moteurs que nous "
 #~ "voulons voir chargés."
-
-#~ msgid "Close"
-#~ msgstr "Fermer"
 
 #~ msgid ""
 #~ "<sourceline> - The apt repository source line to add. This is one of:\n"

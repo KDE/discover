@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-26 01:46+0000\n"
+"POT-Creation-Date: 2023-10-27 01:41+0000\n"
 "PO-Revision-Date: 2023-10-08 22:37+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -695,6 +695,50 @@ msgstr "더 보기"
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "별점이 높은 개발 도구"
+
+#: discover/qml/CarouselDelegate.qml:212
+#, kde-format
+msgctxt "@action:button Start playing media"
+msgid "Play"
+msgstr ""
+
+#: discover/qml/CarouselDelegate.qml:214
+#, kde-format
+msgctxt "@action:button Pause any media that is playing"
+msgid "Pause"
+msgstr ""
+
+#: discover/qml/CarouselMaximizedViewContent.qml:40
+#, kde-format
+msgctxt "@action:button"
+msgid "Switch to Overlay"
+msgstr ""
+
+#: discover/qml/CarouselMaximizedViewContent.qml:42
+#, kde-format
+msgctxt "@action:button"
+msgid "Switch to Full Screen"
+msgstr ""
+
+#: discover/qml/CarouselMaximizedViewContent.qml:75
+#, fuzzy, kde-format
+#| msgid "Close"
+msgctxt ""
+"@action:button Close overlay/window/popup with carousel of screenshots"
+msgid "Close"
+msgstr "닫기"
+
+#: discover/qml/CarouselNavigationButton.qml:56
+#, kde-format
+msgctxt "@action:button"
+msgid "Previous Screenshot"
+msgstr ""
+
+#: discover/qml/CarouselNavigationButton.qml:56
+#, kde-format
+msgctxt "@action:button"
+msgid "Next Screenshot"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -1692,9 +1736,6 @@ msgstr "마지막 업데이트 시간 알 수 없음"
 #~ msgid ""
 #~ "List all the backends we'll want to have loaded, separated by coma ','."
 #~ msgstr "불러온 백엔드 목록을 쉼표로 구분하여 표시합니다."
-
-#~ msgid "Close"
-#~ msgstr "닫기"
 
 #~ msgid ""
 #~ "<sourceline> - The apt repository source line to add. This is one of:\n"

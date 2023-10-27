@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-26 01:46+0000\n"
+"POT-Creation-Date: 2023-10-27 01:41+0000\n"
 "PO-Revision-Date: 2023-08-14 00:08+0300\n"
 "Last-Translator: George Stefanakis <george.stefanakis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -714,6 +714,50 @@ msgstr "Δείτε περισσότερα"
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "Εργαλεία Ανάπτυξης με την Υψηλότερη Βαθμολογία"
+
+#: discover/qml/CarouselDelegate.qml:212
+#, kde-format
+msgctxt "@action:button Start playing media"
+msgid "Play"
+msgstr ""
+
+#: discover/qml/CarouselDelegate.qml:214
+#, kde-format
+msgctxt "@action:button Pause any media that is playing"
+msgid "Pause"
+msgstr ""
+
+#: discover/qml/CarouselMaximizedViewContent.qml:40
+#, kde-format
+msgctxt "@action:button"
+msgid "Switch to Overlay"
+msgstr ""
+
+#: discover/qml/CarouselMaximizedViewContent.qml:42
+#, kde-format
+msgctxt "@action:button"
+msgid "Switch to Full Screen"
+msgstr ""
+
+#: discover/qml/CarouselMaximizedViewContent.qml:75
+#, fuzzy, kde-format
+#| msgid "Close"
+msgctxt ""
+"@action:button Close overlay/window/popup with carousel of screenshots"
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: discover/qml/CarouselNavigationButton.qml:56
+#, kde-format
+msgctxt "@action:button"
+msgid "Previous Screenshot"
+msgstr ""
+
+#: discover/qml/CarouselNavigationButton.qml:56
+#, kde-format
+msgctxt "@action:button"
+msgid "Next Screenshot"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -1662,9 +1706,6 @@ msgstr "Άγνωστος χρόνος τελευταίας ενημέρωσης"
 #~ msgstr ""
 #~ "Εμφάνιση όλων των συστημάτων υποστήριξης που θα θέλαμε να φορτωθούν, "
 #~ "χωρισμένα με κόμμα ','."
-
-#~ msgid "Close"
-#~ msgstr "Κλείσιμο"
 
 #~ msgid ""
 #~ "<sourceline> - The apt repository source line to add. This is one of:\n"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-26 01:46+0000\n"
+"POT-Creation-Date: 2023-10-27 01:41+0000\n"
 "PO-Revision-Date: 2023-03-06 18:47+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -722,6 +722,50 @@ msgstr "Zobraziť viac"
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "Najvyššie hodnotené nástroje pre vývojárov"
+
+#: discover/qml/CarouselDelegate.qml:212
+#, kde-format
+msgctxt "@action:button Start playing media"
+msgid "Play"
+msgstr ""
+
+#: discover/qml/CarouselDelegate.qml:214
+#, kde-format
+msgctxt "@action:button Pause any media that is playing"
+msgid "Pause"
+msgstr ""
+
+#: discover/qml/CarouselMaximizedViewContent.qml:40
+#, kde-format
+msgctxt "@action:button"
+msgid "Switch to Overlay"
+msgstr ""
+
+#: discover/qml/CarouselMaximizedViewContent.qml:42
+#, kde-format
+msgctxt "@action:button"
+msgid "Switch to Full Screen"
+msgstr ""
+
+#: discover/qml/CarouselMaximizedViewContent.qml:75
+#, fuzzy, kde-format
+#| msgid "Close"
+msgctxt ""
+"@action:button Close overlay/window/popup with carousel of screenshots"
+msgid "Close"
+msgstr "Zatvoriť"
+
+#: discover/qml/CarouselNavigationButton.qml:56
+#, kde-format
+msgctxt "@action:button"
+msgid "Previous Screenshot"
+msgstr ""
+
+#: discover/qml/CarouselNavigationButton.qml:56
+#, kde-format
+msgctxt "@action:button"
+msgid "Next Screenshot"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -1748,9 +1792,6 @@ msgstr "Čas poslednej aktualizácie je neznámy"
 #~ "List all the backends we'll want to have loaded, separated by coma ','."
 #~ msgstr ""
 #~ "Výpis všetkých backendov, ktoré chceme načítať, oddelené čiarkou ','."
-
-#~ msgid "Close"
-#~ msgstr "Zatvoriť"
 
 #~ msgid ""
 #~ "<sourceline> - The apt repository source line to add. This is one of:\n"

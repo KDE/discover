@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-25 01:50+0000\n"
+"POT-Creation-Date: 2023-10-27 01:41+0000\n"
 "PO-Revision-Date: 2023-10-22 17:56+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -539,7 +539,7 @@ msgid "Local bundle"
 msgstr "உள்ளமை தொகுப்பு"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1667
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:759
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:760
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "முறையற்ற appstream முகவரி '%1'"
@@ -1107,12 +1107,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "எழுத்துருக்கள்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:287
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:288
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "உங்கள் கணினியில் Appstream சரியாக நிறுவப்பட்டுள்ளதா என பாருங்கள்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:323
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:324
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1121,12 +1121,12 @@ msgid ""
 msgstr ""
 "உங்கள் இயங்குதளத்திற்கான ஆதரவு %1 அன்று நிறைவடைந்த‍து. ஆதரவுள்ள பதிப்பிற்கு மாறுங்கள்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:874
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:875
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' என்பதை நீக்க முடியாது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:955
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1137,13 +1137,13 @@ msgstr ""
 "மீதமுள்ள நிரல் புதுப்பிப்புகளை நிறுவி உங்கள் கணினியை மீள்துவக்கியபின் நீங்கள் விரும்பினால் "
 "அப்புதிய பதிப்பை நிறுவலாம்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:963
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:964
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "%1 %2 தனை நிறுவு"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:986
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
 #, kde-format
 msgid "A new major version has been released"
 msgstr "ஓர் புதிய பெரும்பதிப்பு வெளியிடப்பட்டுள்ளது"

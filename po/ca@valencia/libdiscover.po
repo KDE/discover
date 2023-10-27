@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-25 01:50+0000\n"
+"POT-Creation-Date: 2023-10-27 01:41+0000\n"
 "PO-Revision-Date: 2023-10-21 10:44+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -542,7 +542,7 @@ msgid "Local bundle"
 msgstr "Paquet local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1667
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:759
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:760
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL d'«appstream» amb format incorrecte «%1»"
@@ -1133,12 +1133,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Fonts"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:287
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:288
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Assegureu-vos que Appstream està ben instal·lat en el sistema"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:323
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:324
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1148,12 +1148,12 @@ msgstr ""
 "El vostre sistema operatiu ha finalitzat el suport %1. Considereu "
 "l'actualització a una versió suportada."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:874
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:875
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "No s'ha pogut eliminar «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:955
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1164,13 +1164,13 @@ msgstr ""
 "Per a poder actualitzar a esta versió nova, assegureu-vos d'aplicar totes "
 "les actualitzacions i després reinicieu el sistema."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:963
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:964
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Actualitza a %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:986
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
 #, kde-format
 msgid "A new major version has been released"
 msgstr "S'ha publicat una versió major nova"

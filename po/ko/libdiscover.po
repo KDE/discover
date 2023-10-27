@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-25 01:50+0000\n"
+"POT-Creation-Date: 2023-10-27 01:41+0000\n"
 "PO-Revision-Date: 2023-10-08 22:35+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -537,7 +537,7 @@ msgid "Local bundle"
 msgstr "로컬 번들"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1667
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:759
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:760
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "잘못된 AppStream URL '%1'"
@@ -1098,12 +1098,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "글꼴"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:287
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:288
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "시스템에 Appstream이 올바르게 설정되어 있는지 확인하십시오"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:323
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:324
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1113,12 +1113,12 @@ msgstr ""
 "운영 체제의 지원이 %1에 끝났습니다. 지원 중인 버전으로 업그레이드하기를 추천"
 "합니다."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:874
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:875
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1'을(를) 삭제할 수 없음"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:955
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1129,13 +1129,13 @@ msgstr ""
 "새로운 버전으로 업데이트하려면 모든 대기 중인 업데이트를 적용한 다음 시스템"
 "을 다시 시작하십시오."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:963
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:964
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "%1 %2(으)로 업그레이드"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:986
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
 #, kde-format
 msgid "A new major version has been released"
 msgstr "새 주 버전이 출시되었습니다"

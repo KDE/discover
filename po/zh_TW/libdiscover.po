@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-25 01:50+0000\n"
+"POT-Creation-Date: 2023-10-27 01:41+0000\n"
 "PO-Revision-Date: 2023-08-08 16:07+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -544,7 +544,7 @@ msgid "Local bundle"
 msgstr "本機 Bundle"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1667
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:759
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:760
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正確的 appstream 網址 '%1'"
@@ -1098,12 +1098,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "字型"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:287
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:288
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "請確認 Appstream 已經在您的系統上設定好了"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:323
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:324
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1111,12 +1111,12 @@ msgid ""
 "version."
 msgstr "您的作業系統自 %1 起已不再受支援。請考慮更新到受支援的版本。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:874
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:875
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "無法移除 %1"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:955
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1126,13 +1126,13 @@ msgstr ""
 "<b>%1 有新的大版本更新。</b>\n"
 "要能更新到這個新版本，請先確保現有的待處理更新皆已套用並重新啟動過。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:963
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:964
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "更新到 %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:986
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
 #, kde-format
 msgid "A new major version has been released"
 msgstr "有新的大版本更新"
