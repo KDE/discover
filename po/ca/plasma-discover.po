@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-19 18:49+0200\n"
+"PO-Revision-Date: 2023-10-27 11:38+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -721,44 +721,44 @@ msgstr "Eines de desenvolupament amb la puntuació més alta"
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
-msgstr ""
+msgstr "Reprodueix"
 
 #: discover/qml/CarouselDelegate.qml:214
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
-msgstr ""
+msgstr "Pausa"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Overlay"
-msgstr ""
+msgstr "Canvia a superposició"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Full Screen"
-msgstr ""
+msgstr "Canvia a pantalla completa"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
 #, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
-msgstr ""
+msgstr "Tanca"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "Captura de pantalla anterior"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr ""
+msgstr "Captura de pantalla següent"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -1307,38 +1307,3 @@ msgstr "Cal comprovar si hi ha actualitzacions"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Es desconeix l'hora de l'última actualització"
-
-#~ msgid ""
-#~ "Discover currently cannot be used to install any apps or perform system "
-#~ "updates because none of its app backends are available."
-#~ msgstr ""
-#~ "Actualment, no es pot usar el Discover per a instal·lar cap aplicació o "
-#~ "portar a terme actualitzacions del sistema perquè no hi ha disponible cap "
-#~ "dels seus dorsals d'aplicacions."
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "You can install some on the Settings page, under the <interface>Missing "
-#~ "Backends</interface> section.<nl/><nl/>Also please consider reporting "
-#~ "this as a packaging issue to your distribution."
-#~ msgstr ""
-#~ "Els podeu instal·lar a la pàgina de configuració, a la secció "
-#~ "<interface>Manquen dorsals</interface>.<nl/><nl/> A més, considereu "
-#~ "informar aquest problema als empaquetadors de la vostra distribució."
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "You can use <command>pacman</command> to install the optional "
-#~ "dependencies that are needed to enable the application backends.<nl/><nl/"
-#~ ">Please note that Arch Linux developers recommend using <command>pacman</"
-#~ "command> for managing software because the PackageKit backend is not well-"
-#~ "integrated on Arch Linux."
-#~ msgstr ""
-#~ "Podeu usar el <command>pacman</command> per a instal·lar les dependències "
-#~ "opcionals que es necessiten per activar els dorsals d'aplicació.<nl/><nl/"
-#~ ">Tingueu en compte que els desenvolupadors de l'Arch Linux recomanen usar "
-#~ "el <command>pacman</command> per gestionar el programari perquè els "
-#~ "dorsal del PackageKit no està ben integrat en l'Arch Linux."
-
-#~ msgid "Learn More"
-#~ msgstr "Apreneu-ne més"
