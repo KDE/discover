@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-01 04:45+0200\n"
+"PO-Revision-Date: 2023-10-28 05:41+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: discover/DiscoverObject.cpp:161
 #, kde-format
@@ -710,44 +710,44 @@ msgstr "უმაღლესი-რეიტინგის პროგრა�
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
-msgstr ""
+msgstr "დაკვრა"
 
 #: discover/qml/CarouselDelegate.qml:214
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
-msgstr ""
+msgstr "შეჩერება"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Overlay"
-msgstr ""
+msgstr "განლაგებაზე გადართვა"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Full Screen"
-msgstr ""
+msgstr "სრულ ეკრანზე გადართვა"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
 #, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
-msgstr ""
+msgstr "დახურვა"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "წინა ეკრანის ანაბეჭდი"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr ""
+msgstr "შემდეგი ეკრანის ანაბეჭდი"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format

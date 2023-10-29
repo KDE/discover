@@ -6,13 +6,13 @@
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
 # Marcus Gama <marcus.gama@gmail.com>, 2012.
 # Blumen Herzenschein <herzenschein@gmail.com>, 2020, 2021.
-# Geraldo Simiao <geraldosimiao@fedoraproject.org>, 2023.
+# SPDX-FileCopyrightText: 2023 Geraldo Simiao <geraldosimiao@fedoraproject.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-27 01:41+0000\n"
-"PO-Revision-Date: 2023-09-16 02:40-0300\n"
+"PO-Revision-Date: 2023-10-28 00:33-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: discover/DiscoverObject.cpp:161
 #, kde-format
@@ -720,44 +720,44 @@ msgstr "Ferramentas de desenvolvimento melhores avaliadas"
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
-msgstr ""
+msgstr "Reproduzir"
 
 #: discover/qml/CarouselDelegate.qml:214
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
-msgstr ""
+msgstr "Pausar"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Overlay"
-msgstr ""
+msgstr "Mudar para sobreposição"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Full Screen"
-msgstr ""
+msgstr "Mudar para tela cheia"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
 #, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "Captura de tela anterior"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr ""
+msgstr "Próxima captura de tela"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
