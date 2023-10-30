@@ -18,8 +18,6 @@ Kirigami.AbstractCard {
 
     signal markUseful(bool useful)
 
-    visible: model.shouldShow
-
     // Spacers to indent nested comments/replies
     Layout.leftMargin: depth * Kirigami.Units.largeSpacing
 

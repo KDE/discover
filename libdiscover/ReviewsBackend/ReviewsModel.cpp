@@ -5,8 +5,11 @@
  */
 
 #include "libdiscover_debug.h"
+#include <KConfigGroup>
+#include <KSharedConfig>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Review.h>
+#include <ksharedconfig.h>
 #include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/ResourcesModel.h>
@@ -15,6 +18,14 @@ ReviewsModel::ReviewsModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_lastPage(0)
 {
+    KSharedConfigPtr config = KSharedConfig::openConfig();
+    KConfigGroup configGroup(config, "Reviews");
+    const QString role = configGroup.readEntry("PreferredSortRole");
+    if (QStringList({QStringLiteral("wilsonScore"), QStringLiteral("date"), QStringLiteral("rating")}).contains(role)) {
+        m_preferredSortRole = role;
+    } else {
+        m_preferredSortRole = QStringLiteral("wilsonScore");
+    }
 }
 
 ReviewsModel::~ReviewsModel() = default;
@@ -27,6 +38,7 @@ QHash<int, QByteArray> ReviewsModel::roleNames() const
     roles.insert(CreationDate, "date");
     roles.insert(UsefulnessTotal, "usefulnessTotal");
     roles.insert(UsefulnessFavorable, "usefulnessFavorable");
+    roles.insert(WilsonScore, "wilsonScore");
     roles.insert(UsefulChoice, "usefulChoice");
     roles.insert(Rating, "rating");
     roles.insert(Summary, "summary");
@@ -52,6 +64,8 @@ QVariant ReviewsModel::data(const QModelIndex &index, int role) const
         return m_reviews.at(index.row())->usefulnessTotal();
     case UsefulnessFavorable:
         return m_reviews.at(index.row())->usefulnessFavorable();
+    case WilsonScore:
+        return m_reviews.at(index.row())->wilsonScore();
     case UsefulChoice:
         return m_reviews.at(index.row())->usefulChoice();
     case Rating:
@@ -71,6 +85,25 @@ int ReviewsModel::rowCount(const QModelIndex &parent) const
     if (parent.isValid())
         return 0;
     return m_reviews.count();
+}
+
+QString ReviewsModel::preferredSortRole() const
+{
+    return m_preferredSortRole;
+}
+
+void ReviewsModel::setPreferredSortRole(const QString &sorting)
+{
+    if (m_preferredSortRole == sorting || !QStringList({QStringLiteral("wilsonScore"), QStringLiteral("date"), QStringLiteral("rating")}).contains(sorting)) {
+        return;
+    }
+
+    m_preferredSortRole = sorting;
+    KSharedConfigPtr config = KSharedConfig::openConfig();
+    KConfigGroup configGroup(config, "Reviews");
+    configGroup.writeEntry("PreferredSortRole", sorting);
+
+    Q_EMIT preferredSortRoleChanged();
 }
 
 AbstractResource *ReviewsModel::resource() const

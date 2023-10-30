@@ -12,6 +12,7 @@
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>
 
+#include <qnumeric.h>
 #include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
 
@@ -134,9 +135,9 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
         return;
     }
     Q_UNUSED(page)
-    const QString version = app->isInstalled() ? app->installedVersion() : app->availableVersion();
+    QString version = app->isInstalled() ? app->installedVersion() : app->availableVersion();
     if (version.isEmpty()) {
-        return;
+        version = QStringLiteral("unknown");
     }
     setFetching(true);
 
@@ -353,10 +354,48 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
         for (auto it = reviews.begin(); it != reviews.end(); it++) {
             const QJsonObject review = it->toObject();
             if (!review.isEmpty()) {
+                // Same ranking algorythm Gnome Software uses
                 const int usefulFavorable = review.value(QStringLiteral("karma_up")).toInt();
-                const int usefulTotal = review.value(QStringLiteral("karma_down")).toInt() + usefulFavorable;
+                const int usefulNegative = review.value(QStringLiteral("karma_down")).toInt();
+                const int usefulTotal = usefulFavorable + usefulNegative;
+
+                qreal usefulWilson = 0.f;
+
+                /* from http://www.evanmiller.org/how-not-to-sort-by-average-rating.html */
+                if (usefulFavorable > 0 || usefulNegative > 0) {
+                    usefulWilson = ((usefulFavorable + 1.9208) / (usefulFavorable + usefulNegative)
+                                    - 1.96 * sqrt((usefulFavorable * usefulNegative) / qreal(usefulFavorable + usefulNegative) + 0.9604)
+                                        / (usefulFavorable + usefulNegative))
+                        / (1 + 3.8416 / (usefulFavorable + usefulNegative));
+                    usefulWilson *= 100.f;
+                }
+
                 QDateTime dateTime;
                 dateTime.setSecsSinceEpoch(review.value(QStringLiteral("date_created")).toInt());
+
+                // If there is no score or the score is the same, base on the age
+                QDateTime currentDateTime = QDateTime::currentDateTime();
+                qreal totalDays = dateTime.daysTo(currentDateTime);
+
+                // use also the longest common subsequence of the version string to compute relevance
+                const QString reviewVersion = review.value(QStringLiteral("version")).toString();
+                const QString availableVersion = resource->availableVersion();
+                qreal versionScore = 0;
+                const int minLength = std::min(reviewVersion.length(), availableVersion.length());
+                if (minLength > 0) {
+                    for (int i = 0; i < minLength; ++i) {
+                        if (reviewVersion[i] != availableVersion[i] || i == minLength - 1) {
+                            versionScore = i;
+                            break;
+                        }
+                    }
+                    // Normalize
+                    versionScore = versionScore / qreal(std::max(reviewVersion.length(), availableVersion.length()) - 1);
+                }
+
+                // Very random heuristic which weights usefulness with age and versioin similarity. Don't penalise usefulness more than 6 months
+                usefulWilson = versionScore + 1.0 / std::max(1.0, totalDays) + usefulWilson / std::clamp(totalDays, 1.0, 93.0);
+
                 ReviewPtr r(new Review(review.value(QStringLiteral("app_id")).toString(),
                                        resource->packageName(),
                                        review.value(QStringLiteral("locale")).toString(),
@@ -364,12 +403,13 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                                        review.value(QStringLiteral("description")).toString(),
                                        review.value(QStringLiteral("user_display")).toString(),
                                        dateTime,
-                                       true,
+                                       usefulFavorable >= usefulNegative * 2 || review.value(QStringLiteral("reported")).toInt() > 4,
                                        review.value(QStringLiteral("review_id")).toInt(),
                                        review.value(QStringLiteral("rating")).toInt() / 10,
                                        usefulTotal,
                                        usefulFavorable,
-                                       review.value(QStringLiteral("version")).toString()));
+                                       usefulWilson,
+                                       reviewVersion));
                 // We can also receive just a json with app name and user info so filter these out as there is no review
                 if (!r->summary().isEmpty() && !r->reviewText().isEmpty()) {
                     reviewList << r;

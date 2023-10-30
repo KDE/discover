@@ -78,6 +78,7 @@ static QVector<ReviewPtr> createReviewList(AbstractResource *app, const Attica::
                                comment.score() / 10,
                                0,
                                0,
+                               0.0,
                                QString()));
         r->addMetadata(QStringLiteral("NumberOfParents"), depth);
         reviews += r;

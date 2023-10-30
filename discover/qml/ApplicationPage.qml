@@ -49,7 +49,9 @@ DiscoverPage {
         model: ReviewsModel {
             id: reviewsModel
             resource: appInfo.application
+            preferredSortRole: reviewsSheet.sortRole
         }
+        Component.onCompleted: reviewsSheet.sortRole = reviewsModel.preferredSortRole
     }
 
     actions: [
@@ -695,7 +697,7 @@ DiscoverPage {
             Repeater {
                 id: rep
                 model: PaginateModel {
-                    sourceModel: reviewsSheet.model
+                    sourceModel: reviewsSheet.sortModel
                     pageSize: visibleReviews
                 }
                 delegate: ReviewDelegate {

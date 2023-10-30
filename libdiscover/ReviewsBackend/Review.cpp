@@ -19,6 +19,7 @@ Review::Review(QString name,
                int rating,
                int usefulTotal,
                int usefulFavorable,
+               qreal wilsonScore,
                QString packageVersion)
     : m_appName(std::move(name))
     , m_creationDate(date)
@@ -31,6 +32,7 @@ Review::Review(QString name,
     , m_reviewer(std::move(userName))
     , m_usefulnessTotal(usefulTotal)
     , m_usefulnessFavorable(usefulFavorable)
+    , m_wilsonScore(wilsonScore)
     , m_usefulChoice(ReviewsModel::None)
     , m_summary(std::move(summary))
     , m_packageVersion(std::move(packageVersion))
@@ -112,6 +114,11 @@ int Review::usefulnessTotal() const
 int Review::usefulnessFavorable() const
 {
     return m_usefulnessFavorable;
+}
+
+qreal Review::wilsonScore() const
+{
+    return m_wilsonScore;
 }
 
 ReviewsModel::UserChoice Review::usefulChoice() const

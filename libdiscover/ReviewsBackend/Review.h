@@ -27,6 +27,7 @@ public:
            int rating,
            int usefulTotal,
            int usefulFavorable,
+           qreal wilsonScore,
            QString packageVersion);
     ~Review();
 
@@ -47,6 +48,7 @@ public:
     int rating() const;
     int usefulnessTotal() const;
     int usefulnessFavorable() const;
+    qreal wilsonScore() const;
     ReviewsModel::UserChoice usefulChoice() const;
     void setUsefulChoice(ReviewsModel::UserChoice useful);
     void addMetadata(const QString &key, const QVariant &value);
@@ -64,6 +66,7 @@ private:
     QString m_reviewer;
     int m_usefulnessTotal;
     int m_usefulnessFavorable;
+    qreal m_wilsonScore;
     ReviewsModel::UserChoice m_usefulChoice;
     QString m_summary;
     QString m_packageVersion;

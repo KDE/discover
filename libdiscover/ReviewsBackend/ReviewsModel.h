@@ -22,6 +22,7 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
     Q_PROPERTY(AbstractResource *resource READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY rowsChanged)
     Q_PROPERTY(bool fetching READ isFetching NOTIFY fetchingChanged)
+    Q_PROPERTY(QString preferredSortRole READ preferredSortRole WRITE setPreferredSortRole NOTIFY preferredSortRoleChanged)
 public:
     enum Roles {
         ShouldShow = Qt::UserRole + 1,
@@ -29,6 +30,7 @@ public:
         CreationDate,
         UsefulnessTotal,
         UsefulnessFavorable,
+        WilsonScore,
         UsefulChoice,
         Rating,
         Summary,
@@ -46,6 +48,9 @@ public:
     ~ReviewsModel() override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+
+    QString preferredSortRole() const;
+    void setPreferredSortRole(const QString &sorting);
 
     AbstractReviewsBackend *backend() const;
     void setResource(AbstractResource *app);
@@ -68,11 +73,13 @@ Q_SIGNALS:
     void rowsChanged();
     void resourceChanged();
     void fetchingChanged(bool fetching);
+    void preferredSortRoleChanged();
 
 private:
     AbstractResource *m_app = nullptr;
     AbstractReviewsBackend *m_backend = nullptr;
     QVector<ReviewPtr> m_reviews;
+    QString m_preferredSortRole;
     int m_lastPage;
     bool m_canFetchMore = true;
 };
