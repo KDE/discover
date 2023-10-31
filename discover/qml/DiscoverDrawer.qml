@@ -160,7 +160,7 @@ Kirigami.GlobalDrawer {
 
         ProgressView {
             id: progressView
-            separatorVisible: false
+            Layout.fillWidth: true
         }
 
         states: [

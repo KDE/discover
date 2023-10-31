@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.1
 import org.kde.discover 2.0
 import org.kde.kirigami 2.14 as Kirigami
 
-Kirigami.AbstractListItem {
+ItemDelegate {
     id: listItem
 
     contentItem: ColumnLayout {
@@ -64,25 +64,23 @@ Kirigami.AbstractListItem {
                     }
                 }
 
-                delegate: Kirigami.AbstractListItem {
+                delegate: ItemDelegate {
                     id: del
-                    width: tasksView.width
-
-                    // Don't need a highlight or hover effects as it can make the
-                    // progress bar a bit hard to see
-                    highlighted: false
-                    activeBackgroundColor: "transparent"
-                    activeTextColor: Kirigami.Theme.textColor
-                    separatorVisible: false
-                    hoverEnabled: false
 
                     readonly property QtObject listener: listenerComp.createObject(del,
                         (model.transaction.resource
                             ? { resource: model.transaction.resource }
                             : { transaction: model.transaction }))
 
-                    contentItem: ColumnLayout {
+                    width: tasksView.width
 
+                    // Don't need a highlight or hover effects as it can make the
+                    // progress bar a bit hard to see
+                    highlighted: false
+                    hoverEnabled: false
+                    down: false
+
+                    contentItem: ColumnLayout {
                         RowLayout {
                             Layout.fillWidth: true
 

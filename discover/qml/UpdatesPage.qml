@@ -330,8 +330,11 @@ DiscoverPage {
             }
         }
 
-        delegate: Kirigami.AbstractListItem {
+        delegate: ItemDelegate {
             id: listItem
+
+            width: updatesView.width
+
             highlighted: ListView.isCurrentItem
             hoverEnabled: !page.isBusy
             onEnabledChanged: if (!enabled) {
