@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-28 01:45+0000\n"
+"POT-Creation-Date: 2023-10-31 01:40+0000\n"
 "PO-Revision-Date: 2023-10-21 13:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -87,17 +87,17 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "Ağır Düzeyli İçerik"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:172
 #, kde-format
 msgid "Technical error message: %1"
 msgstr "Teknik hata iletisi: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:224
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "Yararlılık gönderilirken hata: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:280
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:281
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "İnceleme gönderilirken hata: %1"
@@ -1093,7 +1093,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "KDE Mağazası"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:145
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
 #, kde-format
 msgid "Log in information for %1"
 msgstr "%1 için bilgi günlükle"

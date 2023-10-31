@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-28 01:45+0000\n"
+"POT-Creation-Date: 2023-10-31 01:40+0000\n"
 "PO-Revision-Date: 2021-08-21 16:08+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -96,18 +96,18 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "Internetas"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:172
 #, fuzzy, kde-format
 #| msgid "Internal error"
 msgid "Technical error message: %1"
 msgstr "Vidinė klaida"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:224
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "Klaida pateikiant naudingumą: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:280
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:281
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Klaida pateikiant apžvalgą: %1"
@@ -1082,7 +1082,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:145
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
 #, kde-format
 msgid "Log in information for %1"
 msgstr "%1 prisijungimo informacija"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-28 01:45+0000\n"
+"POT-Creation-Date: 2023-10-31 01:40+0000\n"
 "PO-Revision-Date: 2023-08-08 16:07+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -91,17 +91,17 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "強烈內容"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:172
 #, kde-format
 msgid "Technical error message: %1"
 msgstr "技術性錯誤訊息：%1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:224
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "提交可用度評價時發生錯誤：%1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:280
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:281
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "提交評論時發生錯誤：%1"
@@ -1070,7 +1070,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "KDE Store"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:145
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
 #, kde-format
 msgid "Log in information for %1"
 msgstr "%1 的登入資訊"

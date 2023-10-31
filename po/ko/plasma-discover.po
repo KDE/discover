@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-27 01:41+0000\n"
+"POT-Creation-Date: 2023-10-31 01:40+0000\n"
 "PO-Revision-Date: 2023-10-08 22:37+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -276,19 +276,19 @@ msgid "Cancel"
 msgstr "취소"
 
 #: discover/qml/ApplicationDelegate.qml:185
-#: discover/qml/ApplicationPage.qml:219
+#: discover/qml/ApplicationPage.qml:221
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "별점 %1개"
 
 #: discover/qml/ApplicationDelegate.qml:185
-#: discover/qml/ApplicationPage.qml:219
+#: discover/qml/ApplicationPage.qml:221
 #, kde-format
 msgid "No ratings yet"
 msgstr "별점 없음"
 
-#: discover/qml/ApplicationPage.qml:70
+#: discover/qml/ApplicationPage.qml:72
 #, kde-format
 msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
@@ -296,206 +296,206 @@ msgctxt ""
 msgid "From %1"
 msgstr "출처: %1"
 
-#: discover/qml/ApplicationPage.qml:81
+#: discover/qml/ApplicationPage.qml:83
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ApplicationPage.qml:198
+#: discover/qml/ApplicationPage.qml:200
 #, kde-format
 msgid "Unknown author"
 msgstr "알 수 없는 작성자"
 
-#: discover/qml/ApplicationPage.qml:243
+#: discover/qml/ApplicationPage.qml:245
 #, kde-format
 msgid "Version:"
 msgstr "버전:"
 
-#: discover/qml/ApplicationPage.qml:255
+#: discover/qml/ApplicationPage.qml:257
 #, kde-format
 msgid "Size:"
 msgstr "크기:"
 
-#: discover/qml/ApplicationPage.qml:267
+#: discover/qml/ApplicationPage.qml:269
 #, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
 msgstr[0] "라이선스:"
 
-#: discover/qml/ApplicationPage.qml:275
+#: discover/qml/ApplicationPage.qml:277
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: discover/qml/ApplicationPage.qml:305
+#: discover/qml/ApplicationPage.qml:307
 #, kde-format
 msgid "What does this mean?"
 msgstr "무엇을 뜻하나요?"
 
-#: discover/qml/ApplicationPage.qml:314
+#: discover/qml/ApplicationPage.qml:316
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] "더 보기…"
 
-#: discover/qml/ApplicationPage.qml:325
+#: discover/qml/ApplicationPage.qml:327
 #, kde-format
 msgid "Content Rating:"
 msgstr "내용 등급:"
 
-#: discover/qml/ApplicationPage.qml:334
+#: discover/qml/ApplicationPage.qml:336
 #, kde-format
 msgid "Age: %1+"
 msgstr "나이: %1+"
 
-#: discover/qml/ApplicationPage.qml:354
+#: discover/qml/ApplicationPage.qml:356
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
 msgstr "자세한 정보 보기…"
 
-#: discover/qml/ApplicationPage.qml:376
+#: discover/qml/ApplicationPage.qml:378
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr "%1의 스크린샷을 사용할 수 없음"
 
-#: discover/qml/ApplicationPage.qml:549
+#: discover/qml/ApplicationPage.qml:551
 #, kde-format
 msgid "Documentation"
 msgstr "문서"
 
-#: discover/qml/ApplicationPage.qml:550
+#: discover/qml/ApplicationPage.qml:552
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "프로젝트 공식 문서 읽기"
 
-#: discover/qml/ApplicationPage.qml:566
+#: discover/qml/ApplicationPage.qml:568
 #, kde-format
 msgid "Website"
 msgstr "웹사이트"
 
-#: discover/qml/ApplicationPage.qml:567
+#: discover/qml/ApplicationPage.qml:569
 #, kde-format
 msgid "Visit the project's website"
 msgstr "프로젝트 웹사이트 방문"
 
-#: discover/qml/ApplicationPage.qml:583
+#: discover/qml/ApplicationPage.qml:585
 #, kde-format
 msgid "Addons"
 msgstr "부가 기능"
 
-#: discover/qml/ApplicationPage.qml:584
+#: discover/qml/ApplicationPage.qml:586
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "추가 기능 설치 및 삭제"
 
-#: discover/qml/ApplicationPage.qml:603
+#: discover/qml/ApplicationPage.qml:605
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "공유"
 
-#: discover/qml/ApplicationPage.qml:604
+#: discover/qml/ApplicationPage.qml:606
 #, kde-format
 msgid "Send a link for this application"
 msgstr "이 앱 링크 보내기"
 
-#: discover/qml/ApplicationPage.qml:620
+#: discover/qml/ApplicationPage.qml:622
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "%1 앱을 확인해 보세요!"
 
-#: discover/qml/ApplicationPage.qml:640
+#: discover/qml/ApplicationPage.qml:642
 #, kde-format
 msgid "What's New"
 msgstr "새로운 항목"
 
-#: discover/qml/ApplicationPage.qml:670
+#: discover/qml/ApplicationPage.qml:672
 #, kde-format
 msgid "Reviews"
 msgstr "리뷰"
 
-#: discover/qml/ApplicationPage.qml:682
+#: discover/qml/ApplicationPage.qml:684
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "%1 리뷰 불러오는 중"
 
-#: discover/qml/ApplicationPage.qml:690
+#: discover/qml/ApplicationPage.qml:692
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "%1의 리뷰를 임시로 사용할 수 없음"
 
-#: discover/qml/ApplicationPage.qml:718
+#: discover/qml/ApplicationPage.qml:720
 #, kde-format
 msgid "Show all %1 Reviews"
 msgid_plural "Show all %1 Reviews"
 msgstr[0] "모든 리뷰 %1개 보기"
 
-#: discover/qml/ApplicationPage.qml:730
+#: discover/qml/ApplicationPage.qml:732
 #, kde-format
 msgid "Write a Review"
 msgstr "리뷰 작성"
 
-#: discover/qml/ApplicationPage.qml:730
+#: discover/qml/ApplicationPage.qml:732
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "이 앱을 설치한 다음 리뷰를 작성하십시오"
 
-#: discover/qml/ApplicationPage.qml:742
+#: discover/qml/ApplicationPage.qml:744
 #, kde-format
 msgid "Get Involved"
 msgstr "참여하기"
 
-#: discover/qml/ApplicationPage.qml:784
+#: discover/qml/ApplicationPage.qml:786
 #, kde-format
 msgid "Donate"
 msgstr "기부하기"
 
-#: discover/qml/ApplicationPage.qml:785
+#: discover/qml/ApplicationPage.qml:787
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "프로젝트에 기부하여 개발을 지원하고 감사 표시"
 
-#: discover/qml/ApplicationPage.qml:801
+#: discover/qml/ApplicationPage.qml:803
 #, kde-format
 msgid "Report Bug"
 msgstr "버그 보고"
 
-#: discover/qml/ApplicationPage.qml:802
+#: discover/qml/ApplicationPage.qml:804
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "발견한 버그를 보고하고 해결 과정 돕기"
 
-#: discover/qml/ApplicationPage.qml:818
+#: discover/qml/ApplicationPage.qml:820
 #, kde-format
 msgid "Contribute"
 msgstr "기여하기"
 
-#: discover/qml/ApplicationPage.qml:819
+#: discover/qml/ApplicationPage.qml:821
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "코딩, 디자인, 테스트, 번역으로 개발자를 도울 수 있습니다"
 
-#: discover/qml/ApplicationPage.qml:844
+#: discover/qml/ApplicationPage.qml:846
 #, kde-format
 msgid "All Licenses"
 msgstr "모든 라이선스"
 
-#: discover/qml/ApplicationPage.qml:874
+#: discover/qml/ApplicationPage.qml:876
 #, kde-format
 msgid "Content Rating"
 msgstr "내용 등급"
 
-#: discover/qml/ApplicationPage.qml:890
+#: discover/qml/ApplicationPage.qml:892
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "독점 소프트웨어 주의점"
 
-#: discover/qml/ApplicationPage.qml:896
+#: discover/qml/ApplicationPage.qml:898
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -520,7 +520,7 @@ msgstr ""
 "만 설치하십시오.<nl/><nl/>더 많은 정보를 확인하려면 <link url='%3'>%3</link> "
 "페이지를 방문하십시오."
 
-#: discover/qml/ApplicationPage.qml:897
+#: discover/qml/ApplicationPage.qml:899
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -574,7 +574,7 @@ msgstr[0] "검색 - 항목 %1개"
 msgid "Search"
 msgstr "검색"
 
-#: discover/qml/ApplicationsListPage.qml:92
+#: discover/qml/ApplicationsListPage.qml:92 discover/qml/ReviewsPage.qml:98
 #, kde-format
 msgid "Sort: %1"
 msgstr "정렬: %1"
@@ -944,48 +944,48 @@ msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ReviewDelegate.qml:64
+#: discover/qml/ReviewDelegate.qml:62
 #, kde-format
 msgid "unknown reviewer"
 msgstr "알 수 없는 리뷰어"
 
-#: discover/qml/ReviewDelegate.qml:65
+#: discover/qml/ReviewDelegate.qml:63
 #, kde-format
 msgid "<b>%1</b> by %2"
 msgstr "<b>%1</b>, %2 작성"
 
-#: discover/qml/ReviewDelegate.qml:65
+#: discover/qml/ReviewDelegate.qml:63
 #, kde-format
 msgid "Comment by %1"
 msgstr "%1 님의 댓글"
 
-#: discover/qml/ReviewDelegate.qml:83
+#: discover/qml/ReviewDelegate.qml:81
 #, kde-format
 msgid "Version: %1"
 msgstr "버전: %1"
 
-#: discover/qml/ReviewDelegate.qml:83
+#: discover/qml/ReviewDelegate.qml:81
 #, kde-format
 msgid "Version: unknown"
 msgstr "버전: 알 수 없음"
 
-#: discover/qml/ReviewDelegate.qml:98
+#: discover/qml/ReviewDelegate.qml:96
 #, kde-format
 msgid "Votes: %1 out of %2"
 msgstr "투표: %1/%2"
 
-#: discover/qml/ReviewDelegate.qml:105
+#: discover/qml/ReviewDelegate.qml:103
 #, kde-format
 msgid "Was this review useful?"
 msgstr "이 리뷰가 유용합니까?"
 
-#: discover/qml/ReviewDelegate.qml:117
+#: discover/qml/ReviewDelegate.qml:115
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "Yes"
 msgstr "예"
 
-#: discover/qml/ReviewDelegate.qml:134
+#: discover/qml/ReviewDelegate.qml:132
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "No"
@@ -1047,20 +1047,40 @@ msgctxt "@info:usagetip"
 msgid "Insert a name"
 msgstr "이름 입력"
 
-#: discover/qml/ReviewsPage.qml:44
+#: discover/qml/ReviewsPage.qml:53
 #, kde-format
 msgid "Reviews for %1"
 msgstr "%1 리뷰"
 
-#: discover/qml/ReviewsPage.qml:55
+#: discover/qml/ReviewsPage.qml:61
 #, kde-format
 msgid "Write a Review…"
 msgstr "리뷰 작성…"
 
-#: discover/qml/ReviewsPage.qml:60
+#: discover/qml/ReviewsPage.qml:73
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "리뷰를 작성하려면 앱을 설치해야 합니다"
+
+#: discover/qml/ReviewsPage.qml:102
+#, kde-format
+msgctxt "@label:listbox Most relevant reviews"
+msgid "Most Relevant"
+msgstr ""
+
+#: discover/qml/ReviewsPage.qml:109
+#, kde-format
+msgctxt "@label:listbox Most recent reviews"
+msgid "Most Recent"
+msgstr ""
+
+#: discover/qml/ReviewsPage.qml:116
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Highest-Rated Games"
+msgctxt "@label:listbox Reviews with the highest ratings"
+msgid "Highest Ratings"
+msgstr "별점이 높은 게임"
 
 #: discover/qml/SearchField.qml:24
 #, kde-format

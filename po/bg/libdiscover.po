@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-28 01:45+0000\n"
+"POT-Creation-Date: 2023-10-31 01:40+0000\n"
 "PO-Revision-Date: 2023-10-16 11:34+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: \n"
@@ -84,17 +84,17 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "Наситено съдържание"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:172
 #, kde-format
 msgid "Technical error message: %1"
 msgstr "Съобщение за техническа грешка: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:224
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "Грешка при изпращане на полезност: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:280
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:281
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Грешка при изпращане на рецензия: %1"
@@ -1094,7 +1094,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "Магазин KDE"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:145
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
 #, kde-format
 msgid "Log in information for %1"
 msgstr "Информация за влизане на %1"
