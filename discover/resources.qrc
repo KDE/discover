@@ -20,6 +20,7 @@
     <file>qml/SearchPage.qml</file>
     <file>qml/SourcesPage.qml</file>
     <file>qml/ReviewDelegate.qml</file>
+    <file>qml/ReviewsStats.qml</file>
     <file>qml/AddSourceDialog.qml</file>
     <file>qml/ConditionalLoader.qml</file>
     <file>qml/CarouselAbstractMaximizedView.qml</file>

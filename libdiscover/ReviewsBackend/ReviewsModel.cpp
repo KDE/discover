@@ -4,15 +4,75 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
+#include "ReviewsBackend/ReviewsModel.h"
 #include "libdiscover_debug.h"
 #include <KConfigGroup>
 #include <KSharedConfig>
+#include <QtQml/qqmllist.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Review.h>
 #include <ksharedconfig.h>
 #include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/ResourcesModel.h>
+
+int StarsCount::one() const
+{
+    return m_one;
+}
+
+int StarsCount::two() const
+{
+    return m_two;
+}
+
+int StarsCount::three() const
+{
+    return m_three;
+}
+
+int StarsCount::four() const
+{
+    return m_four;
+}
+
+int StarsCount::five() const
+{
+    return m_five;
+}
+
+void StarsCount::addRating(int rating)
+{
+    // Ratings are 1-10, but we show only 5 stars
+    switch (int(std::ceil(qreal(rating) / 2.0))) {
+    case 1:
+        ++m_one;
+        break;
+    case 2:
+        ++m_two;
+        break;
+    case 3:
+        ++m_three;
+        break;
+    case 4:
+        ++m_four;
+        break;
+    case 5:
+        ++m_five;
+        break;
+    default:
+        break;
+    }
+}
+
+void StarsCount::clear()
+{
+    m_one = 0;
+    m_two = 0;
+    m_three = 0;
+    m_four = 0;
+    m_five = 0;
+}
 
 ReviewsModel::ReviewsModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -120,6 +180,7 @@ void ReviewsModel::setResource(AbstractResource *app)
 {
     if (m_app != app) {
         beginResetModel();
+        m_starsCount.clear();
         m_reviews.clear();
         m_lastPage = 0;
 
@@ -175,6 +236,9 @@ void ReviewsModel::addReviews(AbstractResource *app, const QVector<ReviewPtr> &r
     qCDebug(LIBDISCOVER_LOG) << "reviews arrived..." << m_lastPage << reviews.size();
 
     if (!reviews.isEmpty()) {
+        for (ReviewPtr r : reviews) {
+            m_starsCount.addRating(r->rating());
+        }
         beginInsertRows(QModelIndex(), rowCount(), rowCount() + reviews.size() - 1);
         m_reviews += reviews;
         endInsertRows();
@@ -207,6 +271,11 @@ void ReviewsModel::flagReview(int row, const QString &reason, const QString &tex
 {
     Review *r = m_reviews[row].data();
     m_backend->flagReview(r, reason, text);
+}
+
+StarsCount ReviewsModel::starsCount() const
+{
+    return m_starsCount;
 }
 
 bool ReviewsModel::isFetching() const

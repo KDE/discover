@@ -33,7 +33,6 @@ DiscoverPage {
     property alias listHeader: apps.header
     property alias listHeaderPositioning: apps.headerPositioning
     property string sortProperty: "appsListPageSorting"
-    property bool compact: page.width < Kirigami.Units.gridUnit * 28 || !applicationWindow().wideScreen
     property bool showRating: true
     property bool showSize: false
     property bool searchPage: false

@@ -12,6 +12,7 @@ Kirigami.ScrollablePage {
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
+    property bool compact: root.width < Kirigami.Units.gridUnit * 28 || !applicationWindow().wideScreen
 
     readonly property var s1: Shortcut {
         sequences: [ StandardKey.MoveToNextPage ]

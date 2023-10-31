@@ -668,7 +668,7 @@ DiscoverPage {
 
             Kirigami.Heading {
                 Layout.fillWidth: true
-                visible: rep.count > 0 && !reviewsLoadingPlaceholder.visible && !reviewsError.visible
+                visible: reviewsSheet.sortModel.count > 0 && !reviewsLoadingPlaceholder.visible && !reviewsError.visible
                 text: i18n("Reviews")
                 level: 2
                 type: Kirigami.Heading.Type.Primary
@@ -687,24 +687,20 @@ DiscoverPage {
             Kirigami.PlaceholderMessage {
                 id: reviewsError
                 Layout.fillWidth: true
-                visible: reviewsModel.backend && text.length > 0 && rep.count === 0 && !reviewsLoadingPlaceholder.visible
+                visible: reviewsModel.backend && reviewsModel.backend.errorMessage.length > 0 && text.length > 0 && reviewsModel.count === 0 && !reviewsLoadingPlaceholder.visible
                 icon.name: "text-unflow"
                 text: i18nc("@info placeholder message", "Reviews for %1 are temporarily unavailable", appInfo.application.name)
                 explanation: reviewsModel.backend ? reviewsModel.backend.errorMessage : ""
             }
 
-            // Top three reviews
-            Repeater {
-                id: rep
-                model: PaginateModel {
-                    sourceModel: reviewsSheet.sortModel
-                    pageSize: visibleReviews
-                }
-                delegate: ReviewDelegate {
-                    Layout.fillWidth: true
-                    separator: false
-                    compact: true
-                }
+            ReviewsStats {
+                visible: reviewsModel.count > 3
+                Layout.fillWidth: true
+                application: appInfo.application
+                reviewsModel: reviewsModel
+                sortModel: reviewsSheet.sortModel
+                visibleReviews: appInfo.visibleReviews
+                compact: appInfo.compact
             }
 
             // Review-related buttons
@@ -717,7 +713,7 @@ DiscoverPage {
                 Button {
                     visible: reviewsModel.count > visibleReviews
 
-                    text: i18np("Show all %1 Reviews", "Show all %1 Reviews", reviewsModel.count)
+                    text: i18nc("@action:button", "Show All Reviews")
                     icon.name: "view-visible"
 
                     onClicked: {

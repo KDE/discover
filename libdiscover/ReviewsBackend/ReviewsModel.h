@@ -13,6 +13,32 @@
 class Review;
 typedef QSharedPointer<Review> ReviewPtr;
 
+class StarsCount
+{
+    Q_GADGET
+    Q_PROPERTY(int one READ one CONSTANT)
+    Q_PROPERTY(int two READ two CONSTANT)
+    Q_PROPERTY(int three READ three CONSTANT)
+    Q_PROPERTY(int four READ four CONSTANT)
+    Q_PROPERTY(int five READ five CONSTANT)
+public:
+    int one() const;
+    int two() const;
+    int three() const;
+    int four() const;
+    int five() const;
+
+    void addRating(int rating);
+    void clear();
+
+private:
+    int m_one = 0;
+    int m_two = 0;
+    int m_three = 0;
+    int m_four = 0;
+    int m_five = 0;
+};
+
 class AbstractResource;
 class AbstractReviewsBackend;
 class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
@@ -21,6 +47,7 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
     Q_PROPERTY(AbstractReviewsBackend *backend READ backend NOTIFY resourceChanged)
     Q_PROPERTY(AbstractResource *resource READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY rowsChanged)
+    Q_PROPERTY(StarsCount starsCount READ starsCount NOTIFY rowsChanged)
     Q_PROPERTY(bool fetching READ isFetching NOTIFY fetchingChanged)
     Q_PROPERTY(QString preferredSortRole READ preferredSortRole WRITE setPreferredSortRole NOTIFY preferredSortRoleChanged)
 public:
@@ -58,6 +85,7 @@ public:
     void fetchMore(const QModelIndex &parent = QModelIndex()) override;
     bool canFetchMore(const QModelIndex & /*parent*/) const override;
     QHash<int, QByteArray> roleNames() const override;
+    StarsCount starsCount() const;
     bool isFetching() const;
 
 public Q_SLOTS:
@@ -80,6 +108,7 @@ private:
     AbstractReviewsBackend *m_backend = nullptr;
     QVector<ReviewPtr> m_reviews;
     QString m_preferredSortRole;
+    StarsCount m_starsCount;
     int m_lastPage;
     bool m_canFetchMore = true;
 };
