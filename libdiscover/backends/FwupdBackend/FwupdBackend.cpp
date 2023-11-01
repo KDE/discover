@@ -328,7 +328,7 @@ void FwupdBackend::setRemotes(GPtrArray *remotes)
 {
     for (uint i = 0; remotes && i < remotes->len; i++) {
         FwupdRemote *remote = (FwupdRemote *)g_ptr_array_index(remotes, i);
-        if (!fwupd_remote_get_enabled(remote))
+        if (!fwupd_remote_has_flag(remote, FWUPD_REMOTE_FLAG_ENABLED))
             continue;
 
         if (fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL
@@ -336,7 +336,7 @@ void FwupdBackend::setRemotes(GPtrArray *remotes)
             continue;
         }
 
-        fwupd_client_refresh_remote_async(client, remote, m_cancellable, fwupd_client_refresh_remote_cb, this);
+        fwupd_client_refresh_remote2_async(client, remote, FWUPD_CLIENT_DOWNLOAD_FLAG_NONE, m_cancellable, fwupd_client_refresh_remote_cb, this);
     }
 }
 

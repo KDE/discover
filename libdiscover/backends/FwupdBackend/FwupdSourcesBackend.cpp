@@ -34,7 +34,7 @@ public:
         case Qt::CheckStateRole: {
             if (value == Qt::Checked) {
                 m_backend->m_currentItem = item;
-                if (fwupd_remote_get_approval_required(remote)) {
+                if (fwupd_remote_has_flag(remote, FWUPD_REMOTE_FLAG_APPROVAL_REQUIRED)) {
                     QString eulaText = i18n("The remote %1 require that you accept their license:\n %2",
                                             QString::fromUtf8(fwupd_remote_get_title(remote)),
                                             QString::fromUtf8(fwupd_remote_get_agreement(remote)));
@@ -88,7 +88,7 @@ void FwupdSourcesBackend::populateSources()
         it->setData(id, AbstractSourcesBackend::IdRole);
         it->setData(QVariant(QString::fromUtf8(fwupd_remote_get_title(remote))), Qt::ToolTipRole);
         it->setCheckable(true);
-        it->setCheckState(fwupd_remote_get_enabled(remote) ? Qt::Checked : Qt::Unchecked);
+        it->setCheckState(fwupd_remote_has_flag(remote, FWUPD_REMOTE_FLAG_ENABLED) ? Qt::Checked : Qt::Unchecked);
         m_sources->appendRow(it);
     }
 }
@@ -121,7 +121,7 @@ void FwupdSourcesBackend::cancel()
 {
     FwupdRemote *remote =
         fwupd_client_get_remote_by_id(backend->client, m_currentItem->data(AbstractSourcesBackend::IdRole).toString().toUtf8().constData(), nullptr, nullptr);
-    m_currentItem->setCheckState(fwupd_remote_get_enabled(remote) ? Qt::Checked : Qt::Unchecked);
+    m_currentItem->setCheckState(fwupd_remote_has_flag(remote, FWUPD_REMOTE_FLAG_ENABLED) ? Qt::Checked : Qt::Unchecked);
 
     m_currentItem = nullptr;
 }
