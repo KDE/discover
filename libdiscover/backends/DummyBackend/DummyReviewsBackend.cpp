@@ -43,6 +43,7 @@ void DummyReviewsBackend::fetchReviews(AbstractResource *app, int page)
                                        i % 5,
                                        1,
                                        1,
+                                       3,
                                        app->packageName()));
     }
     Q_EMIT reviewsReady(app, review, false);
