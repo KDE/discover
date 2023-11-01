@@ -361,7 +361,7 @@ void PackageKitResource::updateDetail(const QString &packageID,
 {
 #if defined(WITH_MARKDOWN)
     const QByteArray xx = _updateText.toUtf8();
-    MMIOT *markdownHandle = mkd_string(xx.constData(), _updateText.size(), 0);
+    MMIOT *markdownHandle = mkd_string(xx.constData(), _updateText.size(), nullptr);
 
 #ifdef MARKDOWN3
     mkd_flag_t *flags = mkd_flags();

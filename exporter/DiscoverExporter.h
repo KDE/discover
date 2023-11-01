@@ -10,7 +10,7 @@
 #include <QTimer>
 #include <QUrl>
 
-class StreamResult;
+struct StreamResult;
 
 class DiscoverExporter : public QObject
 {

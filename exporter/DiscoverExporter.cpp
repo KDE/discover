@@ -39,7 +39,7 @@ QJsonObject itemDataToMap(const AbstractResource *res, const QSet<QByteArray> &e
     int propsCount = res->metaObject()->propertyCount();
     for (int i = 0; i < propsCount; i++) {
         QMetaProperty prop = res->metaObject()->property(i);
-        if (prop.type() == QVariant::UserType || excluded.contains(prop.name()))
+        if (prop.userType() >= QMetaType::User || excluded.contains(prop.name()))
             continue;
 
         const QVariant val = prop.read(res);
