@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-31 01:40+0000\n"
+"POT-Creation-Date: 2023-11-01 01:41+0000\n"
 "PO-Revision-Date: 2023-10-01 17:52+0000\n"
 "Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -261,7 +261,7 @@ msgstr "Bæta við"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:274
 #: discover/qml/InstallApplicationButton.qml:45
-#: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:191
+#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:191
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -424,74 +424,75 @@ msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "Umsagnir fyrir %1 eru tímabundið ekki í boði"
 
-#: discover/qml/ApplicationPage.qml:720
-#, kde-format
-msgid "Show all %1 Reviews"
-msgid_plural "Show all %1 Reviews"
-msgstr[0] "Sýna allar %1 umsagnir"
-msgstr[1] "Sýna allar %1 umsagnir"
+#: discover/qml/ApplicationPage.qml:716
+#, fuzzy, kde-format
+#| msgid "Show all %1 Reviews"
+#| msgid_plural "Show all %1 Reviews"
+msgctxt "@action:button"
+msgid "Show All Reviews"
+msgstr "Sýna allar %1 umsagnir"
 
-#: discover/qml/ApplicationPage.qml:732
+#: discover/qml/ApplicationPage.qml:728
 #, kde-format
 msgid "Write a Review"
 msgstr "Skrifa umsögn"
 
-#: discover/qml/ApplicationPage.qml:732
+#: discover/qml/ApplicationPage.qml:728
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Settu forritið upp til að skrifa umsögn"
 
-#: discover/qml/ApplicationPage.qml:744
+#: discover/qml/ApplicationPage.qml:740
 #, kde-format
 msgid "Get Involved"
 msgstr "Taka þátt"
 
-#: discover/qml/ApplicationPage.qml:786
+#: discover/qml/ApplicationPage.qml:782
 #, kde-format
 msgid "Donate"
 msgstr "Styrkja"
 
-#: discover/qml/ApplicationPage.qml:787
+#: discover/qml/ApplicationPage.qml:783
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "Sýndu þakklæti þitt og stuðning með því að styrkja verkefnið"
 
-#: discover/qml/ApplicationPage.qml:803
+#: discover/qml/ApplicationPage.qml:799
 #, kde-format
 msgid "Report Bug"
 msgstr "Senda villuskýrslu"
 
-#: discover/qml/ApplicationPage.qml:804
+#: discover/qml/ApplicationPage.qml:800
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Skráðu vandamál sem þú rakst á til að hægt sé að lagfæra það"
 
-#: discover/qml/ApplicationPage.qml:820
+#: discover/qml/ApplicationPage.qml:816
 #, kde-format
 msgid "Contribute"
 msgstr "Leggja þitt af mörkum"
 
-#: discover/qml/ApplicationPage.qml:821
+#: discover/qml/ApplicationPage.qml:817
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "Hjálpaðu þróunaraðilunum með því að forrita, hanna, prófa eða þýða"
 
-#: discover/qml/ApplicationPage.qml:846
+#: discover/qml/ApplicationPage.qml:842
 #, kde-format
 msgid "All Licenses"
 msgstr "Öll notandaleyfi"
 
-#: discover/qml/ApplicationPage.qml:876
+#: discover/qml/ApplicationPage.qml:872
 #, kde-format
 msgid "Content Rating"
 msgstr "Aldurshæfi efnis"
 
-#: discover/qml/ApplicationPage.qml:892
+#: discover/qml/ApplicationPage.qml:888
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Áhætta vegna séreignarhugbúnaðar"
 
-#: discover/qml/ApplicationPage.qml:898
+#: discover/qml/ApplicationPage.qml:894
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -517,7 +518,7 @@ msgstr ""
 "upp forritið ef þú berð fullt traust til höfunda þess (<link url='%1'>%2</"
 "link>). <nl/><nl/>Frekari upplýsingar er að finna á <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:895
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -543,81 +544,81 @@ msgstr ""
 "upp forritið ef þú berð fullt traust til höfunda þess (%1). <nl/><nl/"
 ">Frekari upplýsingar er að finna á <link url='%2'>%2</link>."
 
-#: discover/qml/ApplicationsListPage.qml:54
+#: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
 msgstr[0] "Leita: %2 - %3 hlutur"
 msgstr[1] "Leita: %2 - %3 hlutir"
 
-#: discover/qml/ApplicationsListPage.qml:56
+#: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
 msgid "Search: %1"
 msgstr "Leita: %1"
 
-#: discover/qml/ApplicationsListPage.qml:60
+#: discover/qml/ApplicationsListPage.qml:59
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
 msgstr[0] "%2 - %1 hlutur"
 msgstr[1] "%2 - %1 hlutir"
 
-#: discover/qml/ApplicationsListPage.qml:66
+#: discover/qml/ApplicationsListPage.qml:65
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
 msgstr[0] "Leita - %1 hlutur"
 msgstr[1] "Leita - %1 hlutir"
 
-#: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:238
+#: discover/qml/ApplicationsListPage.qml:67
+#: discover/qml/ApplicationsListPage.qml:237
 #, kde-format
 msgid "Search"
 msgstr "Leita"
 
-#: discover/qml/ApplicationsListPage.qml:92 discover/qml/ReviewsPage.qml:98
+#: discover/qml/ApplicationsListPage.qml:91 discover/qml/ReviewsPage.qml:98
 #, kde-format
 msgid "Sort: %1"
 msgstr "Raða: %1"
 
-#: discover/qml/ApplicationsListPage.qml:96
+#: discover/qml/ApplicationsListPage.qml:95
 #, kde-format
 msgid "Name"
 msgstr "Heiti"
 
-#: discover/qml/ApplicationsListPage.qml:106 discover/qml/Rating.qml:117
+#: discover/qml/ApplicationsListPage.qml:105 discover/qml/Rating.qml:117
 #, kde-format
 msgid "Rating"
 msgstr "Einkunn"
 
-#: discover/qml/ApplicationsListPage.qml:116
+#: discover/qml/ApplicationsListPage.qml:115
 #, kde-format
 msgid "Size"
 msgstr "Stærð"
 
-#: discover/qml/ApplicationsListPage.qml:126
+#: discover/qml/ApplicationsListPage.qml:125
 #, kde-format
 msgid "Release Date"
 msgstr "Útgáfudagur"
 
-#: discover/qml/ApplicationsListPage.qml:184
+#: discover/qml/ApplicationsListPage.qml:183
 #, kde-format
 msgid "Nothing found"
 msgstr "Ekkert fannst"
 
-#: discover/qml/ApplicationsListPage.qml:192
+#: discover/qml/ApplicationsListPage.qml:191
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "Leita í öllum flokkum"
 
-#: discover/qml/ApplicationsListPage.qml:202
+#: discover/qml/ApplicationsListPage.qml:201
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Leita á netinu að \"%1\""
 
-#: discover/qml/ApplicationsListPage.qml:206
+#: discover/qml/ApplicationsListPage.qml:205
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -625,7 +626,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:217
+#: discover/qml/ApplicationsListPage.qml:216
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -633,13 +634,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "\"%1\" fannst ekki í flokknum \"%2\""
 
-#: discover/qml/ApplicationsListPage.qml:219
+#: discover/qml/ApplicationsListPage.qml:218
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "\"%1\" fannst ekki á þeim stöðum sem eru í boði"
 
-#: discover/qml/ApplicationsListPage.qml:220
+#: discover/qml/ApplicationsListPage.qml:219
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -651,7 +652,7 @@ msgstr ""
 "hefur ekki verið yfirfarinn af dreifingaraðila þínum hvað varðar virkni og "
 "stöðugleika. Notaðu hann með gát."
 
-#: discover/qml/ApplicationsListPage.qml:253
+#: discover/qml/ApplicationsListPage.qml:252
 #, kde-format
 msgid "Still looking…"
 msgstr "Enn að leita..."
@@ -927,19 +928,19 @@ msgstr "Verk (%1%)"
 msgid "Tasks"
 msgstr "Verk"
 
-#: discover/qml/ProgressView.qml:99
+#: discover/qml/ProgressView.qml:97
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3, %4 eftir"
 
-#: discover/qml/ProgressView.qml:100
+#: discover/qml/ProgressView.qml:98
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:101
+#: discover/qml/ProgressView.qml:99
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
@@ -1082,6 +1083,37 @@ msgstr ""
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
 msgstr "Leikir með hæstu einkunn"
+
+#: discover/qml/ReviewsStats.qml:51
+#, fuzzy, kde-format
+#| msgid "Reviews"
+msgctxt "how many reviews"
+msgid "%1 reviews"
+msgstr "Umsagnir"
+
+#: discover/qml/ReviewsStats.qml:69
+#, kde-format
+msgctxt "widest character in the language"
+msgid "M"
+msgstr ""
+
+#: discover/qml/ReviewsStats.qml:143
+#, fuzzy, kde-format
+#| msgid "unknown reviewer"
+msgid "Unknown reviewer"
+msgstr "óþekktur umsagnaraðili"
+
+#: discover/qml/ReviewsStats.qml:163
+#, kde-format
+msgctxt "Opening upper air quote"
+msgid "“"
+msgstr ""
+
+#: discover/qml/ReviewsStats.qml:178
+#, kde-format
+msgctxt "Closing lower air quote"
+msgid "„"
+msgstr ""
 
 #: discover/qml/SearchField.qml:24
 #, kde-format
@@ -1242,22 +1274,22 @@ msgstr "Heildarstærð: %1"
 msgid "Restart Now"
 msgstr "Endurræsa núna"
 
-#: discover/qml/UpdatesPage.qml:384
+#: discover/qml/UpdatesPage.qml:387
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:400
+#: discover/qml/UpdatesPage.qml:403
 #, kde-format
 msgid "Installing"
 msgstr "Set upp"
 
-#: discover/qml/UpdatesPage.qml:436
+#: discover/qml/UpdatesPage.qml:439
 #, kde-format
 msgid "Update from:"
 msgstr "Uppfæra frá:"
 
-#: discover/qml/UpdatesPage.qml:448
+#: discover/qml/UpdatesPage.qml:451
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1265,43 +1297,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:455
+#: discover/qml/UpdatesPage.qml:458
 #, kde-format
 msgid "More Information…"
 msgstr "Frekari upplýsingar..."
 
-#: discover/qml/UpdatesPage.qml:483
+#: discover/qml/UpdatesPage.qml:486
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Sæki uppfærslur..."
 
-#: discover/qml/UpdatesPage.qml:496
+#: discover/qml/UpdatesPage.qml:499
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Uppfærslur"
 
-#: discover/qml/UpdatesPage.qml:505
+#: discover/qml/UpdatesPage.qml:508
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Endurræstu tölvuna til að ljúka uppfærslunni"
 
-#: discover/qml/UpdatesPage.qml:517 discover/qml/UpdatesPage.qml:524
-#: discover/qml/UpdatesPage.qml:531
+#: discover/qml/UpdatesPage.qml:520 discover/qml/UpdatesPage.qml:527
+#: discover/qml/UpdatesPage.qml:534
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Allt uppfært"
 
-#: discover/qml/UpdatesPage.qml:538
+#: discover/qml/UpdatesPage.qml:541
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Ættir að athuga með uppfærslur"
 
-#: discover/qml/UpdatesPage.qml:545
+#: discover/qml/UpdatesPage.qml:548
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

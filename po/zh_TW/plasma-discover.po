@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-31 01:40+0000\n"
+"POT-Creation-Date: 2023-11-01 01:41+0000\n"
 "PO-Revision-Date: 2023-08-07 22:40+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -259,7 +259,7 @@ msgstr "新增"
 
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:274
 #: discover/qml/InstallApplicationButton.qml:45
-#: discover/qml/ProgressView.qml:106 discover/qml/SourcesPage.qml:191
+#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:191
 #: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -419,73 +419,75 @@ msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "%1 的評論目前暫時無法使用"
 
-#: discover/qml/ApplicationPage.qml:720
-#, kde-format
-msgid "Show all %1 Reviews"
-msgid_plural "Show all %1 Reviews"
-msgstr[0] "顯示所有評論（共 %1 條）"
+#: discover/qml/ApplicationPage.qml:716
+#, fuzzy, kde-format
+#| msgid "Show all %1 Reviews"
+#| msgid_plural "Show all %1 Reviews"
+msgctxt "@action:button"
+msgid "Show All Reviews"
+msgstr "顯示所有評論（共 %1 條）"
 
-#: discover/qml/ApplicationPage.qml:732
+#: discover/qml/ApplicationPage.qml:728
 #, kde-format
 msgid "Write a Review"
 msgstr "撰寫評論"
 
-#: discover/qml/ApplicationPage.qml:732
+#: discover/qml/ApplicationPage.qml:728
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "安裝以撰寫評論"
 
-#: discover/qml/ApplicationPage.qml:744
+#: discover/qml/ApplicationPage.qml:740
 #, kde-format
 msgid "Get Involved"
 msgstr "參與"
 
-#: discover/qml/ApplicationPage.qml:786
+#: discover/qml/ApplicationPage.qml:782
 #, kde-format
 msgid "Donate"
 msgstr "贊助"
 
-#: discover/qml/ApplicationPage.qml:787
+#: discover/qml/ApplicationPage.qml:783
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "贊助專案來向開發者表達支持與感謝"
 
-#: discover/qml/ApplicationPage.qml:803
+#: discover/qml/ApplicationPage.qml:799
 #, kde-format
 msgid "Report Bug"
 msgstr "回報問題"
 
-#: discover/qml/ApplicationPage.qml:804
+#: discover/qml/ApplicationPage.qml:800
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "記錄您找到的問題來幫助它被修復"
 
-#: discover/qml/ApplicationPage.qml:820
+#: discover/qml/ApplicationPage.qml:816
 #, kde-format
 msgid "Contribute"
 msgstr "貢獻"
 
-#: discover/qml/ApplicationPage.qml:821
+#: discover/qml/ApplicationPage.qml:817
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "透過寫程式、進行設計、測試或是翻譯來幫助開發者們"
 
-#: discover/qml/ApplicationPage.qml:846
+#: discover/qml/ApplicationPage.qml:842
 #, kde-format
 msgid "All Licenses"
 msgstr "所有授權"
 
-#: discover/qml/ApplicationPage.qml:876
+#: discover/qml/ApplicationPage.qml:872
 #, kde-format
 msgid "Content Rating"
 msgstr "內容評級"
 
-#: discover/qml/ApplicationPage.qml:892
+#: discover/qml/ApplicationPage.qml:888
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "私有軟體的風險"
 
-#: discover/qml/ApplicationPage.qml:898
+#: discover/qml/ApplicationPage.qml:894
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -508,7 +510,7 @@ msgstr ""
 "link> —— 時才安裝本應用程式。<nl/><nl/>您可以至 <link url='%3'>%3</link> 了解"
 "更多。"
 
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:895
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -530,78 +532,78 @@ msgstr ""
 "體要進行確認較為困難，所以您應該只在完全信任它的作者 —— %1 —— 時才安裝本應用"
 "程式。<nl/><nl/>您可以至 <link url='%2'>%2</link> 了解更多。"
 
-#: discover/qml/ApplicationsListPage.qml:54
+#: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
 msgstr[0] "搜尋：%2 - %3 項"
 
-#: discover/qml/ApplicationsListPage.qml:56
+#: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
 msgid "Search: %1"
 msgstr "搜尋：%1"
 
-#: discover/qml/ApplicationsListPage.qml:60
+#: discover/qml/ApplicationsListPage.qml:59
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
 msgstr[0] "%2 - %1 項"
 
-#: discover/qml/ApplicationsListPage.qml:66
+#: discover/qml/ApplicationsListPage.qml:65
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
 msgstr[0] "搜尋 - %1 項"
 
-#: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:238
+#: discover/qml/ApplicationsListPage.qml:67
+#: discover/qml/ApplicationsListPage.qml:237
 #, kde-format
 msgid "Search"
 msgstr "搜尋"
 
-#: discover/qml/ApplicationsListPage.qml:92 discover/qml/ReviewsPage.qml:98
+#: discover/qml/ApplicationsListPage.qml:91 discover/qml/ReviewsPage.qml:98
 #, kde-format
 msgid "Sort: %1"
 msgstr "排序：%1"
 
-#: discover/qml/ApplicationsListPage.qml:96
+#: discover/qml/ApplicationsListPage.qml:95
 #, kde-format
 msgid "Name"
 msgstr "名稱"
 
-#: discover/qml/ApplicationsListPage.qml:106 discover/qml/Rating.qml:117
+#: discover/qml/ApplicationsListPage.qml:105 discover/qml/Rating.qml:117
 #, kde-format
 msgid "Rating"
 msgstr "評分"
 
-#: discover/qml/ApplicationsListPage.qml:116
+#: discover/qml/ApplicationsListPage.qml:115
 #, kde-format
 msgid "Size"
 msgstr "大小"
 
-#: discover/qml/ApplicationsListPage.qml:126
+#: discover/qml/ApplicationsListPage.qml:125
 #, kde-format
 msgid "Release Date"
 msgstr "釋出日期"
 
-#: discover/qml/ApplicationsListPage.qml:184
+#: discover/qml/ApplicationsListPage.qml:183
 #, kde-format
 msgid "Nothing found"
 msgstr "找不到東西"
 
-#: discover/qml/ApplicationsListPage.qml:192
+#: discover/qml/ApplicationsListPage.qml:191
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "在所有分類中搜尋"
 
-#: discover/qml/ApplicationsListPage.qml:202
+#: discover/qml/ApplicationsListPage.qml:201
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "在網路上搜尋 %1"
 
-#: discover/qml/ApplicationsListPage.qml:206
+#: discover/qml/ApplicationsListPage.qml:205
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -609,7 +611,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:217
+#: discover/qml/ApplicationsListPage.qml:216
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -617,13 +619,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "「%2」分類裡找不到 %1"
 
-#: discover/qml/ApplicationsListPage.qml:219
+#: discover/qml/ApplicationsListPage.qml:218
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "可用的來源中找不到 %1"
 
-#: discover/qml/ApplicationsListPage.qml:220
+#: discover/qml/ApplicationsListPage.qml:219
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -634,7 +636,7 @@ msgstr ""
 "網路上其他來源可能有提供 %1。網路上下載的軟體未經過發行者查核其功能和穩定性，"
 "請小心使用。"
 
-#: discover/qml/ApplicationsListPage.qml:253
+#: discover/qml/ApplicationsListPage.qml:252
 #, kde-format
 msgid "Still looking…"
 msgstr "正在搜尋中..."
@@ -906,19 +908,19 @@ msgstr "工作排程 (%1%)"
 msgid "Tasks"
 msgstr "工作排程"
 
-#: discover/qml/ProgressView.qml:99
+#: discover/qml/ProgressView.qml:97
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3, 剩下 %4"
 
-#: discover/qml/ProgressView.qml:100
+#: discover/qml/ProgressView.qml:98
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:101
+#: discover/qml/ProgressView.qml:99
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
@@ -1061,6 +1063,37 @@ msgstr ""
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
 msgstr "評價最高的遊戲"
+
+#: discover/qml/ReviewsStats.qml:51
+#, fuzzy, kde-format
+#| msgid "Reviews"
+msgctxt "how many reviews"
+msgid "%1 reviews"
+msgstr "評論"
+
+#: discover/qml/ReviewsStats.qml:69
+#, kde-format
+msgctxt "widest character in the language"
+msgid "M"
+msgstr ""
+
+#: discover/qml/ReviewsStats.qml:143
+#, fuzzy, kde-format
+#| msgid "unknown reviewer"
+msgid "Unknown reviewer"
+msgstr "未知的評論者"
+
+#: discover/qml/ReviewsStats.qml:163
+#, kde-format
+msgctxt "Opening upper air quote"
+msgid "“"
+msgstr ""
+
+#: discover/qml/ReviewsStats.qml:178
+#, kde-format
+msgctxt "Closing lower air quote"
+msgid "„"
+msgstr ""
 
 #: discover/qml/SearchField.qml:24
 #, kde-format
@@ -1221,22 +1254,22 @@ msgstr "總計大小：%1"
 msgid "Restart Now"
 msgstr "立刻重新開機"
 
-#: discover/qml/UpdatesPage.qml:384
+#: discover/qml/UpdatesPage.qml:387
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: discover/qml/UpdatesPage.qml:400
+#: discover/qml/UpdatesPage.qml:403
 #, kde-format
 msgid "Installing"
 msgstr "安裝中…"
 
-#: discover/qml/UpdatesPage.qml:436
+#: discover/qml/UpdatesPage.qml:439
 #, kde-format
 msgid "Update from:"
 msgstr "更新自："
 
-#: discover/qml/UpdatesPage.qml:448
+#: discover/qml/UpdatesPage.qml:451
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1244,43 +1277,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:455
+#: discover/qml/UpdatesPage.qml:458
 #, kde-format
 msgid "More Information…"
 msgstr "更多資訊…"
 
-#: discover/qml/UpdatesPage.qml:483
+#: discover/qml/UpdatesPage.qml:486
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "正在下載更新…"
 
-#: discover/qml/UpdatesPage.qml:496
+#: discover/qml/UpdatesPage.qml:499
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "更新"
 
-#: discover/qml/UpdatesPage.qml:505
+#: discover/qml/UpdatesPage.qml:508
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "重新啟動電腦以完成更新"
 
-#: discover/qml/UpdatesPage.qml:517 discover/qml/UpdatesPage.qml:524
-#: discover/qml/UpdatesPage.qml:531
+#: discover/qml/UpdatesPage.qml:520 discover/qml/UpdatesPage.qml:527
+#: discover/qml/UpdatesPage.qml:534
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "最新"
 
-#: discover/qml/UpdatesPage.qml:538
+#: discover/qml/UpdatesPage.qml:541
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "應該檢查更新"
 
-#: discover/qml/UpdatesPage.qml:545
+#: discover/qml/UpdatesPage.qml:548
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
