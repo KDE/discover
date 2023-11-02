@@ -5,13 +5,13 @@
 # Stelios <sstavra@gmail.com>, 2012.
 # Dimitrios Glentadakis <dglent@gmail.com>, 2012.
 # Dimitris Kardarakos <dimkard@gmail.com>, 2014, 2015, 2016, 2017.
-# George Stefanakis <george.stefanakis@gmail.com>, 2023.
+# SPDX-FileCopyrightText: 2023 George Stefanakis <george.stefanakis@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-01 01:41+0000\n"
-"PO-Revision-Date: 2023-08-14 00:08+0300\n"
+"PO-Revision-Date: 2023-09-07 00:09+0300\n"
 "Last-Translator: George Stefanakis <george.stefanakis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
 "Language: el\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.0\n"
 
 #: discover/DiscoverObject.cpp:161
 #, kde-format
@@ -27,6 +27,8 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"%1 δεν είναι ρυθμισμένο για εγκατάσταση εφαρμογών μέσο του Discover—μόνο "
+"πρόσθετα εφαρμογών"
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -36,11 +38,12 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"Για να χρησιμοποιήσετε το Discover για εφαρμογές, εγκαταστήστε το "
+"προτιμώμενο άρθρωμα στην σελίδα <interface>Ρυθμίσεις</interface>, στο "
+"<interface>Απόντα Backends</interface>."
 
 #: discover/DiscoverObject.cpp:166
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of the user's distro/OS"
-#| msgid "Report Issue to %1"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Αναφορά προβλήματος στο %1"
@@ -58,6 +61,13 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"Για να χρησιμοποιήσετε το Discover για εφαρμογές, εγκαταστήστε το <link "
+"url='https://wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> ή "
+"το <link url='https://wiki.archlinux.org/title/"
+"KDE#Discover_does_not_show_any_applications'>PackageKit</link> "
+"χρησιμοποιώντας τον διαχειριστή πακέτων <command>pacman</command>.<nl/><nl/"
+">Κοιτάξτε το <link url='https://archlinux.org/packages/extra/x86_64/"
+"discover/'>%1 για δημιουργία πακέτων για το Discover.</link>"
 
 #: discover/DiscoverObject.cpp:266
 #, kde-format
