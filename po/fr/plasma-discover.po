@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-01 01:41+0000\n"
-"PO-Revision-Date: 2023-10-28 13:10+0200\n"
+"PO-Revision-Date: 2023-11-01 11:03+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.2\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -1114,21 +1114,19 @@ msgstr "Installez cette appli et donnez votre avis"
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "Le plus pertinent"
 
 #: discover/qml/ReviewsPage.qml:109
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "Le plus récent"
 
 #: discover/qml/ReviewsPage.qml:116
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "Jeux les mieux cotés"
+msgstr "Les meilleures notes"
 
 #: discover/qml/ReviewsStats.qml:51
 #, fuzzy, kde-format

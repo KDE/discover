@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-01 01:41+0000\n"
-"PO-Revision-Date: 2023-11-01 07:17+0100\n"
+"PO-Revision-Date: 2023-11-02 10:31+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1122,7 +1122,7 @@ msgstr "M"
 #: discover/qml/ReviewsStats.qml:143
 #, kde-format
 msgid "Unknown reviewer"
-msgstr "neznani recenzent"
+msgstr "Neznani recenzent"
 
 #: discover/qml/ReviewsStats.qml:163
 #, kde-format

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-01 01:41+0000\n"
-"PO-Revision-Date: 2023-10-28 14:27+0300\n"
+"PO-Revision-Date: 2023-11-02 07:39+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -438,12 +438,10 @@ msgid "Reviews for %1 are temporarily unavailable"
 msgstr "הביקורות על %1 לא זמינות כרגע"
 
 #: discover/qml/ApplicationPage.qml:716
-#, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "הצגת הביקורת"
+msgstr "הצגת כל הביקורות"
 
 #: discover/qml/ApplicationPage.qml:728
 #, kde-format
@@ -1081,52 +1079,48 @@ msgstr "יש להתקין יישום זה כדי לכתוב עליו ביקור�
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "הרלוונטיים ביותר"
 
 #: discover/qml/ReviewsPage.qml:109
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "האחרונים"
 
 #: discover/qml/ReviewsPage.qml:116
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "המשחקים בדירוג העליון"
+msgstr "הדירוגים הגבוהים ביותר"
 
 #: discover/qml/ReviewsStats.qml:51
-#, fuzzy, kde-format
-#| msgid "Reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "ביקורות"
+msgstr "%1 ביקורות"
 
 #: discover/qml/ReviewsStats.qml:69
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "ש"
 
 #: discover/qml/ReviewsStats.qml:143
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
-msgstr "ביקורת ממקור לא ידוע"
+msgstr "מקור ביקורת לא ידוע"
 
 #: discover/qml/ReviewsStats.qml:163
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "„"
 
 #: discover/qml/ReviewsStats.qml:178
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "”"
 
 #: discover/qml/SearchField.qml:24
 #, kde-format
