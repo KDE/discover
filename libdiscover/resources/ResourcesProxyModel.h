@@ -40,7 +40,6 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, pub
     Q_PROPERTY(QVariantList subcategories READ subcategories NOTIFY subcategoriesChanged)
     Q_PROPERTY(bool isBusy READ isBusy NOTIFY busyChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
-    Q_PROPERTY(bool sortByRelevancy READ sortByRelevancy NOTIFY sortByRelevancyChanged)
     Q_PROPERTY(QString roughCount READ roughCount NOTIFY roughCountChanged)
 public:
     explicit ResourcesProxyModel(QObject *parent = nullptr);
@@ -53,6 +52,7 @@ public:
         RatingPointsRole,
         RatingCountRole,
         SortableRatingRole,
+        SearchRelevanceRole,
         InstalledRole,
         ApplicationRole,
         OriginRole,
@@ -125,13 +125,11 @@ public:
 
     bool lessThan(const StreamResult &left, const StreamResult &right) const;
     bool orderedLessThan(const StreamResult &left, const StreamResult &right) const;
-    bool lessThan(AbstractResource *rl, AbstractResource *rr) const;
     Q_SCRIPTABLE void invalidateFilter();
     void invalidateSorting();
 
     bool canFetchMore(const QModelIndex &parent) const override;
     void fetchMore(const QModelIndex &parent) override;
-    bool sortByRelevancy() const;
 
     void classBegin() override
     {
@@ -147,11 +145,7 @@ private Q_SLOTS:
 
 private:
     void sortedInsertion(const QVector<StreamResult> &res);
-    QVariant roleToValue(const StreamResult &result, int role) const
-    {
-        return roleToValue(result.resource, role);
-    }
-    QVariant roleToValue(AbstractResource *res, int role) const;
+    QVariant roleToValue(const StreamResult &result, int role) const;
 
     QVector<int> propertiesToRoles(const QVector<QByteArray> &properties) const;
     void addResources(const QVector<StreamResult> &res);
@@ -162,7 +156,6 @@ private:
     Roles m_sortRole;
     Qt::SortOrder m_sortOrder;
 
-    bool m_sortByRelevancy;
     bool m_setup = false;
     QString m_categoryName;
 
@@ -185,5 +178,4 @@ Q_SIGNALS:
     void resourcesUrlChanged(const QUrl &url);
     void countChanged();
     void filterMinimumStateChanged(bool filterMinimumState);
-    void sortByRelevancyChanged(bool sortByRelevancy);
 };

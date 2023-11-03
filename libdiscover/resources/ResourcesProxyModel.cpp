@@ -10,6 +10,7 @@
 #include "libdiscover_debug.h"
 #include <QMetaProperty>
 #include <cmath>
+#include <qnamespace.h>
 #include <utils.h>
 
 #include "ResourcesModel.h"
@@ -26,6 +27,7 @@ const QHash<int, QByteArray> ResourcesProxyModel::s_roles = {{NameRole, "name"},
                                                              {RatingPointsRole, "ratingPoints"},
                                                              {RatingCountRole, "ratingCount"},
                                                              {SortableRatingRole, "sortableRating"},
+                                                             {SearchRelevanceRole, "searchRelevance"},
                                                              {InstalledRole, "isInstalled"},
                                                              {ApplicationRole, "application"},
                                                              {OriginRole, "origin"},
@@ -40,11 +42,58 @@ const QHash<int, QByteArray> ResourcesProxyModel::s_roles = {{NameRole, "name"},
                                                              {SizeRole, "size"},
                                                              {ReleaseDateRole, "releaseDate"}};
 
+int levenshteinDistance(const QString &source, const QString &target)
+{
+    if (source == target) {
+        return 0;
+    }
+
+    // Do a case insensitive version of it
+    const QString &sourceUp = source.toUpper();
+    const QString &targetUp = target.toUpper();
+
+    if (sourceUp == targetUp) {
+        return 0;
+    }
+
+    const int sourceCount = sourceUp.size();
+    const int targetCount = targetUp.size();
+
+    if (sourceUp.isEmpty()) {
+        return targetCount;
+    }
+
+    if (targetUp.isEmpty()) {
+        return sourceCount;
+    }
+
+    if (sourceCount > targetCount) {
+        return levenshteinDistance(targetUp, sourceUp);
+    }
+
+    QVector<int> column;
+    column.fill(0, targetCount + 1);
+    QVector<int> previousColumn;
+    previousColumn.reserve(targetCount + 1);
+    for (int i = 0; i < targetCount + 1; i++) {
+        previousColumn.append(i);
+    }
+
+    for (int i = 0; i < sourceCount; i++) {
+        column[0] = i + 1;
+        for (int j = 0; j < targetCount; j++) {
+            column[j + 1] = std::min({1 + column.at(j), 1 + previousColumn.at(1 + j), previousColumn.at(j) + ((sourceUp.at(i) == targetUp.at(j)) ? 0 : 1)});
+        }
+        column.swap(previousColumn);
+    }
+
+    return previousColumn.at(targetCount);
+}
+
 ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_sortRole(NameRole)
     , m_sortOrder(Qt::AscendingOrder)
-    , m_sortByRelevancy(false)
     , m_currentStream(nullptr)
 {
     // new QAbstractItemModelTester(this, this);
@@ -107,10 +156,6 @@ void ResourcesProxyModel::setSearch(const QString &_searchText)
 
     if (diff) {
         m_filters.search = searchText;
-        if (m_sortByRelevancy == searchText.isEmpty()) {
-            m_sortByRelevancy = !searchText.isEmpty();
-            Q_EMIT sortByRelevancyChanged(m_sortByRelevancy);
-        }
         invalidateFilter();
         Q_EMIT searchChanged(m_filters.search);
     }
@@ -225,10 +270,9 @@ void ResourcesProxyModel::addResources(const QVector<StreamResult> &_res)
     if (res.isEmpty())
         return;
 
-    if (!m_sortByRelevancy)
-        std::sort(res.begin(), res.end(), [this](auto res, auto res2) {
-            return orderedLessThan(res, res2);
-        });
+    std::sort(res.begin(), res.end(), [this](auto res, auto res2) {
+        return orderedLessThan(res, res2);
+    });
 
     sortedInsertion(res);
     fetchSubcategories();
@@ -239,13 +283,11 @@ void ResourcesProxyModel::invalidateSorting()
     if (m_displayedResources.isEmpty())
         return;
 
-    if (!m_sortByRelevancy) {
-        beginResetModel();
-        std::sort(m_displayedResources.begin(), m_displayedResources.end(), [this](auto res, auto res2) {
-            return orderedLessThan(res, res2);
-        });
-        endResetModel();
-    }
+    beginResetModel();
+    std::sort(m_displayedResources.begin(), m_displayedResources.end(), [this](auto res, auto res2) {
+        return orderedLessThan(res, res2);
+    });
+    endResetModel();
 }
 
 QString ResourcesProxyModel::lastSearch() const
@@ -367,30 +409,25 @@ int ResourcesProxyModel::rowCount(const QModelIndex &parent) const
     return parent.isValid() ? 0 : m_displayedResources.count();
 }
 
-bool ResourcesProxyModel::lessThan(const StreamResult &left, const StreamResult &right) const
-{
-    if (left.sortScore == right.sortScore) {
-        return lessThan(left.resource, right.resource);
-    }
-    return left.sortScore < right.sortScore;
-}
-
 bool ResourcesProxyModel::orderedLessThan(const StreamResult &left, const StreamResult &right) const
 {
     bool less = lessThan(left, right);
     return m_sortOrder == Qt::AscendingOrder ? less : !less;
 }
 
-bool ResourcesProxyModel::lessThan(AbstractResource *leftPackage, AbstractResource *rightPackage) const
+bool ResourcesProxyModel::lessThan(const StreamResult &left, const StreamResult &right) const
 {
+    AbstractResource *leftPackage = left.resource;
+    AbstractResource *rightPackage = right.resource;
+
     auto role = m_sortRole;
     Qt::SortOrder order = m_sortOrder;
     QVariant leftValue;
     QVariant rightValue;
     // if we're comparing two equal values, we want the model sorted by application name
     if (role != NameRole) {
-        leftValue = roleToValue(leftPackage, role);
-        rightValue = roleToValue(rightPackage, role);
+        leftValue = roleToValue(left, role);
+        rightValue = roleToValue(right, role);
 
         if (leftValue == rightValue) {
             role = NameRole;
@@ -508,13 +545,13 @@ QVariant ResourcesProxyModel::data(const QModelIndex &index, int role) const
     if (!index.isValid()) {
         return QVariant();
     }
-
     const auto result = m_displayedResources[index.row()];
-    return roleToValue(result.resource, role);
+    return roleToValue(result, role);
 }
 
-QVariant ResourcesProxyModel::roleToValue(AbstractResource *resource, int role) const
+QVariant ResourcesProxyModel::roleToValue(const StreamResult &result, int role) const
 {
+    AbstractResource *resource = result.resource;
     switch (role) {
     case ApplicationRole:
         return QVariant::fromValue<QObject *>(resource);
@@ -533,6 +570,24 @@ QVariant ResourcesProxyModel::roleToValue(AbstractResource *resource, int role) 
             val.convert(prop.metaType());
             return val;
         }
+    }
+    case SearchRelevanceRole: {
+        qreal rating = roleToValue(result, SortableRatingRole).value<qreal>();
+
+        qreal reverseDistance = 0;
+        for (const QString &word : resource->name().split(QLatin1Char(' '))) {
+            const qreal maxLength = std::max(word.length(), m_filters.search.length());
+            reverseDistance =
+                std::max(reverseDistance, (maxLength - std::min(reverseDistance, qreal(levenshteinDistance(word, m_filters.search)))) / maxLength * 10.0);
+        }
+
+        qreal exactMatch = 0.0;
+        if (resource->name().toUpper() == m_filters.search.toUpper()) {
+            exactMatch = 10.0;
+        } else if (resource->name().contains(m_filters.search, Qt::CaseInsensitive)) {
+            exactMatch = 5.0;
+        }
+        return qreal(result.sortScore) / 100 + rating + reverseDistance + exactMatch;
     }
     case Qt::DecorationRole:
     case Qt::DisplayRole:
@@ -584,8 +639,7 @@ void ResourcesProxyModel::sortedInsertion(const QVector<StreamResult> &_res)
             return;
     }
 
-    if (m_sortByRelevancy || m_displayedResources.isEmpty()) {
-        // Q_ASSERT(m_sortByRelevancy || isSorted(resources));
+    if (m_displayedResources.isEmpty()) {
         int rows = rowCount();
         beginInsertRows({}, rows, rows + resources.count() - 1);
         m_displayedResources += resources;
@@ -627,7 +681,7 @@ void ResourcesProxyModel::refreshResource(AbstractResource *resource, const QVec
     const QModelIndex idx = index(residx, 0);
     Q_ASSERT(idx.isValid());
     const auto roles = propertiesToRoles(properties);
-    if (!m_sortByRelevancy && roles.contains(m_sortRole)) {
+    if (roles.contains(m_sortRole)) {
         beginRemoveRows({}, residx, residx);
         m_displayedResources.removeAt(residx);
         endRemoveRows();
@@ -704,11 +758,6 @@ void ResourcesProxyModel::fetchMore(const QModelIndex &parent)
     if (!m_currentStream)
         return;
     Q_EMIT m_currentStream->fetchMore();
-}
-
-bool ResourcesProxyModel::sortByRelevancy() const
-{
-    return m_sortByRelevancy;
 }
 
 QString ResourcesProxyModel::roughCount() const

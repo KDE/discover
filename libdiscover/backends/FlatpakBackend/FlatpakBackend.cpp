@@ -1548,9 +1548,9 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     if (!resource) {
                         continue;
                     }
-                    if (!filter.search.isEmpty() && !resource->name().contains(filter.search, Qt::CaseInsensitive))
+                    if (!filter.search.isEmpty() && !resource->name().contains(filter.search, Qt::CaseInsensitive)
+                        && !resource->appstreamId().contains(filter.search, Qt::CaseInsensitive))
                         continue;
-
                     if (resource->resourceType() == FlatpakResource::Runtime) {
                         resources.prepend(resource);
                     } else {
@@ -1608,6 +1608,10 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 } else if (r->name().contains(filter.search, Qt::CaseInsensitive)) {
                     prioritary += r;
                 } else if (r->comment().contains(filter.search, Qt::CaseInsensitive)) {
+                    rest += r;
+                    // trust The search terms provided by appstream are relevant, this makes possible finding "gimp"
+                    // since the name() is "GNU Image Manipulation Program"
+                } else if (r->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
                     rest += r;
                 }
             }

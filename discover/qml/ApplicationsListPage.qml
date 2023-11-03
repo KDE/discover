@@ -74,6 +74,14 @@ DiscoverPage {
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
     Kirigami.Theme.inherit: false
 
+    onSearchChanged: {
+        if (search.length > 0) {
+            appsModel.tempSortRole = ResourcesProxyModel.SearchRelevanceRole
+        } else {
+            appsModel.tempSortRole = -1
+        }
+    }
+
     supportsRefreshing: true
     onRefreshingChanged: if (refreshing) {
         appsModel.invalidateFilter()
@@ -87,15 +95,27 @@ DiscoverPage {
 
     actions: [
         Kirigami.Action {
-            visible: !appsModel.sortByRelevancy
             text: i18n("Sort: %1", sortGroup.checkedAction.text)
             icon.name: "view-sort"
+            Kirigami.Action {
+                visible: appsModel.search.length > 0
+                QQC2.ActionGroup.group: sortGroup
+                text: i18nc("Search results most relevant to the search query", "Relevance")
+                icon.name: "file-search-symbolic"
+                onTriggered: {
+                    // Do *not* save the sort role on searches
+                    appsModel.tempSortRole = ResourcesProxyModel.SearchRelevanceRole
+                }
+                checkable: true
+                checked: appsModel.sortRole === ResourcesProxyModel.SearchRelevanceRole
+            }
             Kirigami.Action {
                 QQC2.ActionGroup.group: sortGroup
                 text: i18n("Name")
                 icon.name: "sort-name"
                 onTriggered: {
                     DiscoverSettings[page.sortProperty] = ResourcesProxyModel.NameRole
+                    appsModel.tempSortRole = -1
                 }
                 checkable: true
                 checked: appsModel.sortRole === ResourcesProxyModel.NameRole
@@ -106,6 +126,7 @@ DiscoverPage {
                 icon.name: "rating"
                 onTriggered: {
                     DiscoverSettings[page.sortProperty] = ResourcesProxyModel.SortableRatingRole
+                    appsModel.tempSortRole = -1
                 }
                 checkable: true
                 checked: appsModel.sortRole === ResourcesProxyModel.SortableRatingRole
@@ -116,6 +137,7 @@ DiscoverPage {
                 icon.name: "download"
                 onTriggered: {
                     DiscoverSettings[page.sortProperty] = ResourcesProxyModel.SizeRole
+                    appsModel.tempSortRole = -1
                 }
                 checkable: true
                 checked: appsModel.sortRole === ResourcesProxyModel.SizeRole
@@ -126,6 +148,7 @@ DiscoverPage {
                 icon.name: "change-date-symbolic"
                 onTriggered: {
                     DiscoverSettings[page.sortProperty] = ResourcesProxyModel.ReleaseDateRole
+                    appsModel.tempSortRole = -1
                 }
                 checkable: true
                 checked: appsModel.sortRole === ResourcesProxyModel.ReleaseDateRole
@@ -150,7 +173,8 @@ DiscoverPage {
 
         model: ResourcesProxyModel {
             id: appsModel
-            sortRole: DiscoverSettings.appsListPageSorting
+            property int tempSortRole: -1
+            sortRole: tempSortRole >= 0 ? tempSortRole : DiscoverSettings.appsListPageSorting
             sortOrder: sortRole === ResourcesProxyModel.NameRole ? Qt.AscendingOrder : Qt.DescendingOrder
 
             onBusyChanged: isBusy => {
