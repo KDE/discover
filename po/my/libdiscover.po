@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:38+0000\n"
+"POT-Creation-Date: 2023-11-04 16:52+0000\n"
 "PO-Revision-Date: 2021-09-27 23:44+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -1885,47 +1885,47 @@ msgstr[0] ""
 "ပတ်ကေ့ချ် %1ခု ကိုအပ်ဒိတ်မတင်နိုင်ခဲ့ပါ\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:181
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "ဒစ်(စ)ကာဗာ ဖွင့်မည်"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:132
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "စစ်စတမ်ကို ပြန်ပြင်မည်"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:137
 #, fuzzy, kde-format
 #| msgid "Offline Updates"
 msgid "Repairing failed offline update"
 msgstr "အော့ဖ်လိုင်း အပ်ဒိတ်များ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:142
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
 #, kde-format
 msgid "Repair Failed"
 msgstr "ပြန်ပြင်မှုမအောင်မြင်ပါ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:145
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr "%1<nl/>ကျေးဇူးပြု၍ ဤအမှားကို သင်၏ဒစ်စထရီဗျူးရှင်းထံ တင်ပြပါ။"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:153
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
 #, kde-format
 msgid "Repaired Successfully"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:175
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
 #, kde-format
 msgid "Offline Updates"
 msgstr "အော့ဖ်လိုင်း အပ်ဒိတ်များ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:176
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"

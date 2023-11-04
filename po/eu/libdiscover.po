@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:38+0000\n"
+"POT-Creation-Date: 2023-11-04 16:52+0000\n"
 "PO-Revision-Date: 2023-10-22 14:07+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1934,46 +1934,46 @@ msgstr[1] ""
 "%1 pakete eguneratzea huts egin du\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:181
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Ireki Discover"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:132
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "Konpondu sistema"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:137
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "Konponketak huts egin du lerroz kanpo eguneratzean"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:142
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
 #, kde-format
 msgid "Repair Failed"
 msgstr "Konpontzea huts egin du"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:145
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr "%1<nl/>Mesedez, jakinarazi errore hau zure banaketari."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:153
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Konponketa arrakastatsua"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:175
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
 #, kde-format
 msgid "Offline Updates"
 msgstr "Lerroz kanpoko eguneratzeak"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:176
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"

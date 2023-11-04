@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:38+0000\n"
+"POT-Creation-Date: 2023-11-04 16:52+0000\n"
 "PO-Revision-Date: 2023-10-23 09:53+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1925,46 +1925,46 @@ msgstr[1] ""
 "Aggiornamento di %1 pacchetti non riuscito\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:181
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Apri Discover"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:132
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "Ripara sistema"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:137
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "Riparazione dell'aggiornamento non in linea non riuscito"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:142
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
 #, kde-format
 msgid "Repair Failed"
 msgstr "Riparazione non riuscita"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:145
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr "%1<nl/>Segnala questo errore alla tua distribuzione."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:153
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Riparato correttamente"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:175
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
 #, kde-format
 msgid "Offline Updates"
 msgstr "Aggiornamenti non in linea"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:176
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"

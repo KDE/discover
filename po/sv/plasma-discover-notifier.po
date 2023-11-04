@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-01 01:41+0000\n"
+"POT-Creation-Date: 2023-11-04 16:52+0000\n"
 "PO-Revision-Date: 2022-01-05 21:55+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -22,68 +22,68 @@ msgstr ""
 msgid "View Updates"
 msgstr "Visa uppdateringar"
 
-#: notifier/DiscoverNotifier.cpp:240
+#: notifier/DiscoverNotifier.cpp:245
 #, kde-format
 msgid "Security updates available"
 msgstr "Säkerhetsuppdateringar är tillgängliga"
 
-#: notifier/DiscoverNotifier.cpp:242
+#: notifier/DiscoverNotifier.cpp:247
 #, kde-format
 msgid "Updates available"
 msgstr "Uppdateringar tillgängliga"
 
-#: notifier/DiscoverNotifier.cpp:244
+#: notifier/DiscoverNotifier.cpp:249
 #, kde-format
 msgid "System up to date"
 msgstr "Systemet är uppdaterat"
 
-#: notifier/DiscoverNotifier.cpp:246
+#: notifier/DiscoverNotifier.cpp:251
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Datorn måste startas om"
 
-#: notifier/DiscoverNotifier.cpp:248
+#: notifier/DiscoverNotifier.cpp:253
 #, kde-format
 msgid "Offline"
 msgstr "Nerkopplad"
 
-#: notifier/DiscoverNotifier.cpp:250
+#: notifier/DiscoverNotifier.cpp:255
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Verkställer uppdateringar utan tillsyn…"
 
-#: notifier/DiscoverNotifier.cpp:274
+#: notifier/DiscoverNotifier.cpp:279
 #, kde-format
 msgid "Restart is required"
 msgstr "Omstart krävs"
 
-#: notifier/DiscoverNotifier.cpp:275
+#: notifier/DiscoverNotifier.cpp:280
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Systemet måste startas om för att uppdateringarna ska få effekt."
 
-#: notifier/DiscoverNotifier.cpp:280
+#: notifier/DiscoverNotifier.cpp:285
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Starta om"
 
-#: notifier/DiscoverNotifier.cpp:306
-#, kde-format
-msgctxt "@action:button"
-msgid "Upgrade"
-msgstr "Uppgradera"
-
-#: notifier/DiscoverNotifier.cpp:307
+#: notifier/DiscoverNotifier.cpp:310
 #, kde-format
 msgid "Upgrade available"
 msgstr "Uppgradering tillgänglig"
 
-#: notifier/DiscoverNotifier.cpp:308
+#: notifier/DiscoverNotifier.cpp:311
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr ""
+
+#: notifier/DiscoverNotifier.cpp:314
+#, kde-format
+msgctxt "@action:button"
+msgid "Upgrade"
+msgstr "Uppgradera"
 
 #: notifier/main.cpp:36
 #, kde-format

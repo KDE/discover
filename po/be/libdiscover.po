@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:38+0000\n"
+"POT-Creation-Date: 2023-11-04 16:52+0000\n"
 "PO-Revision-Date: 2023-02-06 22:01\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -1943,30 +1943,30 @@ msgstr[3] ""
 "Не ўдалося абнавіць %1 пакункі\n"
 " %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:181
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Адкрыць Discover"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:125
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:132
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "Выпраўленне сістэмы"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:137
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "Выпраўленне няўдалага пазасеціўнага абнаўлення"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:142
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
 #, kde-format
 msgid "Repair Failed"
 msgstr "Не атрымалася выканаць выпраўленне"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:145
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
@@ -1974,17 +1974,17 @@ msgstr ""
 "%1<nl/>Адпраўце справаздачу пра памылку ў службу падтрымкі вашага "
 "дыстрыбутыва."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:153
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Выпраўленне паспяхова выканана"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:175
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
 #, kde-format
 msgid "Offline Updates"
 msgstr "Пазасеціўныя абнаўленні"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:176
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
