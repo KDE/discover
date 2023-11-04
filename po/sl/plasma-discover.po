@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-01 01:41+0000\n"
+"POT-Creation-Date: 2023-11-04 01:38+0000\n"
 "PO-Revision-Date: 2023-11-02 10:31+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
-"%100<=4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.4\n"
 
@@ -595,54 +595,62 @@ msgstr[2] "Iskanje - %1 elementi"
 msgstr[3] "Iskanje - %1 elementov"
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:237
+#: discover/qml/ApplicationsListPage.qml:261
 #, kde-format
 msgid "Search"
 msgstr "Iskanje"
 
-#: discover/qml/ApplicationsListPage.qml:91 discover/qml/ReviewsPage.qml:98
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:98
 #, kde-format
 msgid "Sort: %1"
 msgstr "Razvrsti po: %1"
 
-#: discover/qml/ApplicationsListPage.qml:95
+#: discover/qml/ApplicationsListPage.qml:103
+#, fuzzy, kde-format
+#| msgctxt "@label:listbox Most relevant reviews"
+#| msgid "Most Relevant"
+msgctxt "Search results most relevant to the search query"
+msgid "Relevance"
+msgstr "Najbolj relevantno"
+
+#: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
 msgid "Name"
 msgstr "Ime"
 
-#: discover/qml/ApplicationsListPage.qml:105 discover/qml/Rating.qml:117
+#: discover/qml/ApplicationsListPage.qml:125 discover/qml/Rating.qml:117
 #, kde-format
 msgid "Rating"
 msgstr "Ocena"
 
-#: discover/qml/ApplicationsListPage.qml:115
+#: discover/qml/ApplicationsListPage.qml:136
 #, kde-format
 msgid "Size"
 msgstr "Velikost"
 
-#: discover/qml/ApplicationsListPage.qml:125
+#: discover/qml/ApplicationsListPage.qml:147
 #, kde-format
 msgid "Release Date"
 msgstr "Datum izdaje"
 
-#: discover/qml/ApplicationsListPage.qml:183
+#: discover/qml/ApplicationsListPage.qml:207
 #, kde-format
 msgid "Nothing found"
 msgstr "Nič najdenega"
 
-#: discover/qml/ApplicationsListPage.qml:191
+#: discover/qml/ApplicationsListPage.qml:215
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "Išči po vseh kategorijah"
 
-#: discover/qml/ApplicationsListPage.qml:201
+#: discover/qml/ApplicationsListPage.qml:225
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Išči po spletu za \"%1\""
 
-#: discover/qml/ApplicationsListPage.qml:205
+#: discover/qml/ApplicationsListPage.qml:229
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -650,7 +658,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:216
+#: discover/qml/ApplicationsListPage.qml:240
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -658,13 +666,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "\"%1\" ni bil najden v kategoriji \"%2\""
 
-#: discover/qml/ApplicationsListPage.qml:218
+#: discover/qml/ApplicationsListPage.qml:242
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "\"%1\" ni bil najden v razpoložljivih virih"
 
-#: discover/qml/ApplicationsListPage.qml:219
+#: discover/qml/ApplicationsListPage.qml:243
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -676,7 +684,7 @@ msgstr ""
 "pregledano s stani vašega distributerja glede funkcionalnosti ali "
 "stabilnosti. Uporabljajte ga pazljivo."
 
-#: discover/qml/ApplicationsListPage.qml:252
+#: discover/qml/ApplicationsListPage.qml:276
 #, kde-format
 msgid "Still looking…"
 msgstr "Iskanje poteka…"

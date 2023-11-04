@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-31 01:40+0000\n"
+"POT-Creation-Date: 2023-11-04 01:38+0000\n"
 "PO-Revision-Date: 2022-12-28 20:25+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -545,23 +545,23 @@ msgstr "%1 (utilizator)"
 msgid "Local bundle"
 msgstr "Pachet local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1667
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:759
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL appstream eronat „%1”"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1771
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1775
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Adăugarea sursei „%1” a eșuat: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1892
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Nu sunt surse Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1900
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Încărcarea sursei „%1” a eșuat"
@@ -2549,7 +2549,7 @@ msgstr "Verificați conexiunea la Internet"
 msgid "Refresh"
 msgstr "Reîmprospătează"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:726
+#: libdiscover/resources/ResourcesProxyModel.cpp:775
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

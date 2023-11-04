@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-01 01:41+0000\n"
+"POT-Creation-Date: 2023-11-04 01:38+0000\n"
 "PO-Revision-Date: 2015-02-04 16:18+0000\n"
 "Last-Translator: Nermina Ahmić <nahmic1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -572,56 +572,62 @@ msgstr[1] "Tražim u  '%1'..."
 msgstr[2] "Tražim u  '%1'..."
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:237
+#: discover/qml/ApplicationsListPage.qml:261
 #, fuzzy, kde-format
 #| msgid "Search..."
 msgid "Search"
 msgstr "Traži..."
 
-#: discover/qml/ApplicationsListPage.qml:91 discover/qml/ReviewsPage.qml:98
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:98
 #, fuzzy, kde-format
 #| msgid "Search in '%1'..."
 msgid "Sort: %1"
 msgstr "Tražim u  '%1'..."
 
-#: discover/qml/ApplicationsListPage.qml:95
+#: discover/qml/ApplicationsListPage.qml:103
+#, kde-format
+msgctxt "Search results most relevant to the search query"
+msgid "Relevance"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
 msgid "Name"
 msgstr "Ime"
 
-#: discover/qml/ApplicationsListPage.qml:105 discover/qml/Rating.qml:117
+#: discover/qml/ApplicationsListPage.qml:125 discover/qml/Rating.qml:117
 #, kde-format
 msgid "Rating"
 msgstr "Rejting"
 
-#: discover/qml/ApplicationsListPage.qml:115
+#: discover/qml/ApplicationsListPage.qml:136
 #, fuzzy, kde-format
 msgid "Size"
 msgstr "<b>Ukupna veličina:</b> %1<br/>"
 
-#: discover/qml/ApplicationsListPage.qml:125
+#: discover/qml/ApplicationsListPage.qml:147
 #, kde-format
 msgid "Release Date"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:183
+#: discover/qml/ApplicationsListPage.qml:207
 #, kde-format
 msgid "Nothing found"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:191
+#: discover/qml/ApplicationsListPage.qml:215
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:201
+#: discover/qml/ApplicationsListPage.qml:225
 #, fuzzy, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Navedi novi izvor"
 
-#: discover/qml/ApplicationsListPage.qml:205
+#: discover/qml/ApplicationsListPage.qml:229
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -629,7 +635,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:216
+#: discover/qml/ApplicationsListPage.qml:240
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -637,13 +643,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:218
+#: discover/qml/ApplicationsListPage.qml:242
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:219
+#: discover/qml/ApplicationsListPage.qml:243
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -652,7 +658,7 @@ msgid ""
 "caution."
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:252
+#: discover/qml/ApplicationsListPage.qml:276
 #, fuzzy, kde-format
 #| msgid "Install"
 msgid "Still looking…"

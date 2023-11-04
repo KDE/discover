@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-01 01:41+0000\n"
+"POT-Creation-Date: 2023-11-04 01:38+0000\n"
 "PO-Revision-Date: 2023-11-02 07:39+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -584,54 +584,62 @@ msgstr[2] "חיפוש - %1 פריטים"
 msgstr[3] "חיפוש - %1 פריטים"
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:237
+#: discover/qml/ApplicationsListPage.qml:261
 #, kde-format
 msgid "Search"
 msgstr "חיפוש"
 
-#: discover/qml/ApplicationsListPage.qml:91 discover/qml/ReviewsPage.qml:98
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:98
 #, kde-format
 msgid "Sort: %1"
 msgstr "מיון לפי: %1"
 
-#: discover/qml/ApplicationsListPage.qml:95
+#: discover/qml/ApplicationsListPage.qml:103
+#, fuzzy, kde-format
+#| msgctxt "@label:listbox Most relevant reviews"
+#| msgid "Most Relevant"
+msgctxt "Search results most relevant to the search query"
+msgid "Relevance"
+msgstr "הרלוונטיים ביותר"
+
+#: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
 msgid "Name"
 msgstr "שם"
 
-#: discover/qml/ApplicationsListPage.qml:105 discover/qml/Rating.qml:117
+#: discover/qml/ApplicationsListPage.qml:125 discover/qml/Rating.qml:117
 #, kde-format
 msgid "Rating"
 msgstr "דירוג"
 
-#: discover/qml/ApplicationsListPage.qml:115
+#: discover/qml/ApplicationsListPage.qml:136
 #, kde-format
 msgid "Size"
 msgstr "גודל"
 
-#: discover/qml/ApplicationsListPage.qml:125
+#: discover/qml/ApplicationsListPage.qml:147
 #, kde-format
 msgid "Release Date"
 msgstr "תאריך שחרור"
 
-#: discover/qml/ApplicationsListPage.qml:183
+#: discover/qml/ApplicationsListPage.qml:207
 #, kde-format
 msgid "Nothing found"
 msgstr "לא נמצא כלום"
 
-#: discover/qml/ApplicationsListPage.qml:191
+#: discover/qml/ApplicationsListPage.qml:215
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "חיפוש בכל הקטגוריות"
 
-#: discover/qml/ApplicationsListPage.qml:201
+#: discover/qml/ApplicationsListPage.qml:225
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "חיפוש באינטרנט אחר „%1”"
 
-#: discover/qml/ApplicationsListPage.qml:205
+#: discover/qml/ApplicationsListPage.qml:229
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -639,7 +647,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1&kl=he-il"
 
-#: discover/qml/ApplicationsListPage.qml:216
+#: discover/qml/ApplicationsListPage.qml:240
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -647,13 +655,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "„%1” לא נמצא בקטגוריה „%2”"
 
-#: discover/qml/ApplicationsListPage.qml:218
+#: discover/qml/ApplicationsListPage.qml:242
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "„%1” לא נמצא במקורות הזמינים"
 
-#: discover/qml/ApplicationsListPage.qml:219
+#: discover/qml/ApplicationsListPage.qml:243
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -664,7 +672,7 @@ msgstr ""
 "אפשר להוריד את „%1” מהאינטרנט. עם זאת, תוכנות שמגיעות ישירות מאתרים לא נבדקו "
 "על ידי המפיץ שלך כדי לוודא אם יש להן יכולות או שהן יציבות. יש להשתמש בזהירות."
 
-#: discover/qml/ApplicationsListPage.qml:252
+#: discover/qml/ApplicationsListPage.qml:276
 #, kde-format
 msgid "Still looking…"
 msgstr "עדיין בחיפוש…"

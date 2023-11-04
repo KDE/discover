@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-31 01:40+0000\n"
+"POT-Creation-Date: 2023-11-04 01:38+0000\n"
 "PO-Revision-Date: 2023-10-21 07:44+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -537,23 +537,23 @@ msgstr "%1 (uzanto)"
 msgid "Local bundle"
 msgstr "Loka pakaĵo"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1667
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:759
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Misformita appstream URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1771
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1775
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Malsukcesis aldoni fonton '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1892
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Ne ekzistas Flatpak-fontoj."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1900
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Malsukcesis ŝargi la fonton \"%1\"."
@@ -2507,7 +2507,7 @@ msgstr "Bonvolu kontroli interretan konekteblecon"
 msgid "Refresh"
 msgstr "Refreŝigi"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:726
+#: libdiscover/resources/ResourcesProxyModel.cpp:775
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

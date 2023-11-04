@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-31 01:40+0000\n"
+"POT-Creation-Date: 2023-11-04 01:38+0000\n"
 "PO-Revision-Date: 2023-05-08 23:47+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -539,23 +539,23 @@ msgstr "%1 (Benutzer)"
 msgid "Local bundle"
 msgstr "Lokales Paket"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1667
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:759
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Ungültige Appstream Adresse „%1“"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1771
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1775
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Paketquelle „%1“ kann nicht hinzugefügt werden: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1892
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Es gibt keine Flatpak-Paketquellen."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1900
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Paketquelle „%1“ kann nicht geladen werden"
@@ -2548,7 +2548,7 @@ msgstr "Bitte überprüfen Sie Ihre Internet-Verbindung"
 msgid "Refresh"
 msgstr "Auf Aktualisierungen prüfen"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:726
+#: libdiscover/resources/ResourcesProxyModel.cpp:775
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
