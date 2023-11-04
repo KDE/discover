@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 01:38+0000\n"
-"PO-Revision-Date: 2023-11-01 05:59+0300\n"
+"PO-Revision-Date: 2023-11-04 13:05+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -596,12 +596,10 @@ msgid "Sort: %1"
 msgstr "Sırala: %1"
 
 #: discover/qml/ApplicationsListPage.qml:103
-#, fuzzy, kde-format
-#| msgctxt "@label:listbox Most relevant reviews"
-#| msgid "Most Relevant"
+#, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr "En Uygun"
+msgstr "Uygunluk"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format

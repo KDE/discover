@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 01:38+0000\n"
-"PO-Revision-Date: 2023-10-28 09:27+0200\n"
+"PO-Revision-Date: 2023-11-04 12:24+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -442,12 +442,10 @@ msgid "Reviews for %1 are temporarily unavailable"
 msgstr "Opinie o %1 są tymczasowo niedostępne"
 
 #: discover/qml/ApplicationPage.qml:716
-#, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Pokaż %1 opinię"
+msgstr "Pokaż wszystkie opinie"
 
 #: discover/qml/ApplicationPage.qml:728
 #, kde-format
@@ -608,7 +606,7 @@ msgstr "Uszereguj wg: %1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr ""
+msgstr "Trafność"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
@@ -1098,25 +1096,22 @@ msgstr "Aby móc wyrazić swoją opinię, najpierw wgraj tę aplikację"
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "Najbardziej odpowiednie"
 
 #: discover/qml/ReviewsPage.qml:109
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "Ostatnio odtwarzane"
 
 #: discover/qml/ReviewsPage.qml:116
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "Najwyżej ocenianie gry"
+msgstr "Najwyżej ocenianie"
 
 #: discover/qml/ReviewsStats.qml:51
-#, fuzzy, kde-format
-#| msgid "%1 reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
 msgstr "%1 opinii"
@@ -1125,25 +1120,24 @@ msgstr "%1 opinii"
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #: discover/qml/ReviewsStats.qml:143
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
-msgstr "nieznany opiniujący"
+msgstr "Nieznany opiniujący"
 
 #: discover/qml/ReviewsStats.qml:163
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "“"
 
 #: discover/qml/ReviewsStats.qml:178
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "„"
 
 #: discover/qml/SearchField.qml:24
 #, kde-format
