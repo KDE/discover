@@ -38,6 +38,8 @@
 #include <PackageKit/Details>
 #include <PackageKit/Offline>
 
+#include <KConfig>
+#include <KConfigGroup>
 #include <KLocalizedString>
 #include <KProtocolManager>
 
@@ -226,18 +228,46 @@ PackageKitBackend::~PackageKitBackend()
     m_threadPool.clear();
 }
 
+QString proxyFor(KConfigGroup *config, const QString &protocol)
+{
+    const QString key = protocol + QLatin1String("Proxy");
+    QString proxyStr(config->readEntry(key));
+    const int index = proxyStr.lastIndexOf(QLatin1Char(' '));
+
+    if (index > -1) {
+        const QStringView portStr = QStringView(proxyStr).right(proxyStr.length() - index - 1);
+        const bool isDigits = std::all_of(portStr.cbegin(), portStr.cend(), [](const QChar c) {
+            return c.isDigit();
+        });
+
+        if (isDigits) {
+            proxyStr = QStringView(proxyStr).left(index) + QLatin1Char(':') + portStr;
+        } else {
+            proxyStr.clear();
+        }
+    }
+
+    return proxyStr;
+}
+
 void PackageKitBackend::updateProxy()
 {
     if (PackageKit::Daemon::isRunning()) {
-        static bool everHad = KProtocolManager::useProxy();
-        if (!everHad && !KProtocolManager::useProxy())
+        KConfig kioSettings(QStringLiteral("kioslaverc"));
+        KConfigGroup proxyConfig = kioSettings.group("Proxy Settings");
+
+        bool useProxy = proxyConfig.readEntry<int>("ProxyType", 0) != 0;
+
+        static bool everHad = useProxy;
+        if (!everHad && !useProxy)
             return;
 
-        everHad = KProtocolManager::useProxy();
-        PackageKit::Daemon::global()->setProxy(KProtocolManager::proxyFor(QStringLiteral("http")),
-                                               KProtocolManager::proxyFor(QStringLiteral("https")),
-                                               KProtocolManager::proxyFor(QStringLiteral("ftp")),
-                                               KProtocolManager::proxyFor(QStringLiteral("socks")),
+        everHad = useProxy;
+
+        PackageKit::Daemon::global()->setProxy(proxyFor(&proxyConfig, QStringLiteral("http")),
+                                               proxyFor(&proxyConfig, QStringLiteral("https")),
+                                               proxyFor(&proxyConfig, QStringLiteral("ftp")),
+                                               proxyFor(&proxyConfig, QStringLiteral("socks")),
                                                {},
                                                {});
     }
