@@ -337,7 +337,7 @@ void PackageKitUpdater::prepare()
     }
 
     if (QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
-        qDebug() << "Removed offline results file";
+        qCDebug(LIBDISCOVER_BACKEND_LOG) << "Removed offline results file";
         PackageKit::Daemon::global()->offline()->clearResults();
     }
 

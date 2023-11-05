@@ -74,7 +74,7 @@ AbstractResourcesBackend::AbstractResourcesBackend(QObject *parent)
     fetchingChangedTimer->setInterval(3000);
     fetchingChangedTimer->setSingleShot(true);
     connect(fetchingChangedTimer, &QTimer::timeout, this, [this] {
-        qDebug() << "took really long to fetch" << this;
+        qCDebug(LIBDISCOVER_LOG) << "took really long to fetch" << this;
     });
 
     connect(this, &AbstractResourcesBackend::fetchingChanged, this, [this, fetchingChangedTimer] {

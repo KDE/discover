@@ -130,7 +130,7 @@ void PKTransaction::progressChanged()
 {
     auto percent = m_trans->percentage();
     if (percent == 101) {
-        qWarning() << "percentage cannot be calculated";
+        qCWarning(LIBDISCOVER_BACKEND_LOG) << "percentage cannot be calculated";
         percent = 50;
     }
 

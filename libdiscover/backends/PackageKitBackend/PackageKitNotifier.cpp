@@ -162,7 +162,7 @@ void PackageKitNotifier::checkOfflineUpdates()
             // No matter what happened, clean up the results file if it still exists
             // because at this point, there's nothing anyone can do with it
             if (QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
-                qDebug() << "Removed offline results file";
+                qCDebug(LIBDISCOVER_BACKEND_LOG) << "Removed offline results file";
                 PackageKit::Daemon::global()->offline()->clearResults();
             }
         });
