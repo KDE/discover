@@ -27,13 +27,15 @@ Dependencies:
     'frameworks/kxmlgui': '@latest-kf6'
     'frameworks/purpose': '@latest-kf6'
     'frameworks/kstatusnotifieritem': '@latest-kf6'
-    'libraries/kuserfeedback': '@latest-kf6'
+    'frameworks/kuserfeedback': '@latest-kf6'
     'libraries/kirigami-addons': '@latest-kf6'
     'third-party/packagekit-qt': '@latest'
     'third-party/appstream': '@latest'
+
 RuntimeDependencies:
 - 'on': ['Linux']
   'require':
     'sdk/selenium-webdriver-at-spi': '@latest'
+
 Options:
   require-passing-tests-on: [ 'Linux', 'FreeBSD']
