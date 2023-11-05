@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 01:38+0000\n"
-"PO-Revision-Date: 2023-11-01 20:49+0200\n"
+"PO-Revision-Date: 2023-11-04 19:22+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -613,12 +613,10 @@ msgid "Sort: %1"
 msgstr "Упорядковування: %1"
 
 #: discover/qml/ApplicationsListPage.qml:103
-#, fuzzy, kde-format
-#| msgctxt "@label:listbox Most relevant reviews"
-#| msgid "Most Relevant"
+#, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr "Найвідповідніші"
+msgstr "Відповідність"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format

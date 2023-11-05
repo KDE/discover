@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 01:38+0000\n"
-"PO-Revision-Date: 2023-11-01 17:55+0100\n"
+"PO-Revision-Date: 2023-11-04 19:37+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -590,12 +590,10 @@ msgid "Sort: %1"
 msgstr "Ordigi: %1"
 
 #: discover/qml/ApplicationsListPage.qml:103
-#, fuzzy, kde-format
-#| msgctxt "@label:listbox Most relevant reviews"
-#| msgid "Most Relevant"
+#, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr "Plej Rilata"
+msgstr "Rilateco"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
