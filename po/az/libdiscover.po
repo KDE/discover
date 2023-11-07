@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:52+0000\n"
+"POT-Creation-Date: 2023-11-07 02:43+0000\n"
 "PO-Revision-Date: 2022-08-16 17:03+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -544,7 +544,7 @@ msgid "Local bundle"
 msgstr "Yerli paketlər"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:759
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:789
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Pozulmuş appstream ünvanı '%1'"
@@ -1139,12 +1139,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Şriftlər"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:288
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:318
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Appstream-in komputerinizdə düzgün quraşdırdığını yoxlayın"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:324
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:354
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1154,12 +1154,12 @@ msgstr ""
 "%1 tarixində sizin əməliyyat sisteminin dəstəklənməsi dayandırılıb. "
 "Dəstəklənən versiyaya yeniləməyi gözdən keçirin."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:874
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:904
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "\"%1\" silinə bilmir"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:984
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1167,13 +1167,13 @@ msgid ""
 "updates and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:963
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:993
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:986
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
 #, kde-format
 msgid "A new major version has been released"
 msgstr ""

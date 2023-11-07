@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:52+0000\n"
+"POT-Creation-Date: 2023-11-07 02:43+0000\n"
 "PO-Revision-Date: 2014-01-31 20:46+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -577,7 +577,7 @@ msgid "Local bundle"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:759
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:789
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
@@ -1133,12 +1133,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Fontovi"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:288
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:318
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:324
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:354
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1146,12 +1146,12 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:874
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:904
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:984
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1159,7 +1159,7 @@ msgid ""
 "updates and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:963
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:993
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
@@ -1167,7 +1167,7 @@ msgstr ""
 msgid "Upgrade to %1 %2"
 msgstr "Nadogradnja"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:986
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
 #, kde-format
 msgid "A new major version has been released"
 msgstr ""

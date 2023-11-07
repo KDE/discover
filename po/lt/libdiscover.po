@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:52+0000\n"
+"POT-Creation-Date: 2023-11-07 02:43+0000\n"
 "PO-Revision-Date: 2021-08-21 16:08+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -552,7 +552,7 @@ msgid "Local bundle"
 msgstr "Vietinis paketas"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:759
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:789
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Netaisyklingas appstream url „%1“"
@@ -1110,12 +1110,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Šriftai"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:288
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:318
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Įsitikinkite, kad Appstream yra tinkamai nustatyta jūsų sistemoje"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:324
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:354
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1123,12 +1123,12 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:874
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:904
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nepavyksta pašalinti „%1“"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:984
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1136,14 +1136,14 @@ msgid ""
 "updates and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:963
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:993
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, fuzzy, kde-format
 #| msgid "Upgrade"
 msgid "Upgrade to %1 %2"
 msgstr "Atnaujinti versiją"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:986
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
 #, kde-format
 msgid "A new major version has been released"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:52+0000\n"
+"POT-Creation-Date: 2023-11-07 02:43+0000\n"
 "PO-Revision-Date: 2023-10-01 21:56+0530\n"
 "Last-Translator: Shreekant <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <N/A>\n"
@@ -540,7 +540,7 @@ msgid "Local bundle"
 msgstr "स्थानीय पोटलिका"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:759
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:789
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "विकृत एप्स्ट्रीम url '%1'."
@@ -1105,12 +1105,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "वर्णचित्राः"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:288
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:318
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "कृपया सुनिश्चितं कुर्वन्तु यत् एप्स्ट्रीम् भवतः प्रणाल्यां सम्यक् स्थापितः अस्ति"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:324
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:354
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1120,12 +1120,12 @@ msgstr ""
 "भवतः प्रचालनतन्त्रं %1 इत्यत्र समर्थनं समाप्तवान् । समर्थितसंस्करणं प्रति उन्नयनं कर्तुं "
 "विचारयन्तु ।."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:874
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:904
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' अपसारयितुं न शक्यते ।"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:984
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1136,13 +1136,13 @@ msgstr ""
 "अस्मिन् नूतने संस्करणे उन्नयनं कर्तुं शक्नुवन्तु, सर्वाणि उपलब्धानि अद्यतनं प्रयोक्तुं सुनिश्चितं कुर्वन्तु "
 "ततः प्रणालीं पुनः आरभत ।."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:963
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:993
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "%1 %2 मध्ये उन्नयनं कुर्वन्तु"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:986
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
 #, kde-format
 msgid "A new major version has been released"
 msgstr "नूतनं प्रमुखं संस्करणं प्रकाशितम् अस्ति"

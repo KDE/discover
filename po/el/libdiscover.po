@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:52+0000\n"
+"POT-Creation-Date: 2023-11-07 02:43+0000\n"
 "PO-Revision-Date: 2023-08-13 22:47+0300\n"
 "Last-Translator: George Stefanakis <george.stefanakis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -541,7 +541,7 @@ msgid "Local bundle"
 msgstr "Τοπικό πακέτο"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:759
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:789
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Κακοδιατυπωμένο appstream url '%1'"
@@ -1141,12 +1141,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Γραμματοσειρές"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:288
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:318
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Βεβαιωθείτε ότι το Appstream έχει εγκατασταθεί σωστά στο σύστημά σας"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:324
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:354
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1156,12 +1156,12 @@ msgstr ""
 "Το λειτουργικό σας σύστημα σταμάτησε την υποστήριξη για το %1. Εξετάστε το "
 "ενδεχόμενο αναβάθμισης σε υποστηριζόμενη έκδοση."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:874
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:904
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Αδυναμία αφαίρεσης '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:954
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:984
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released.</b>\n"
@@ -1173,13 +1173,13 @@ msgstr ""
 "έχετε εφαρμόσει όλες τις διαθέσιμες ενημερώσεις και, στη συνέχεια, "
 "επανεκκινήστε το σύστημα."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:963
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:993
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "Αναβάθμιση σε %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:986
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
 #, kde-format
 msgid "A new major version has been released"
 msgstr "Κυκλοφόρησε μια νέα κύρια έκδοση"
