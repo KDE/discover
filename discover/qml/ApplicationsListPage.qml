@@ -48,21 +48,22 @@ DiscoverPage {
     property string name: category ? category.name : ""
     title: {
         const rough = appsModel.roughCount;
+        const roughNum = rough.length > 0 ? parseInt(rough.replace("+", ""), 10) : 0;
         if (search.length > 0) {
             if (rough.length > 0) {
-                return i18np("Search: %2 - %3 item", "Search: %2 - %3 items", appsModel.count, stripHtml(search), rough)
+                return i18np("Search: %2 - %3 item", "Search: %2 - %3 items", roughNum, stripHtml(search), rough)
             } else {
                 return i18n("Search: %1", stripHtml(search))
             }
         } else if (name.length > 0) {
             if (rough.length > 0) {
-                return i18np("%3 - %2 item", "%3 - %2 items", appsModel.count, rough, name)
+                return i18np("%3 - %2 item", "%3 - %2 items", roughNum, rough, name)
             } else {
                 return name
             }
         } else {
             if (rough.length > 0) {
-                return i18np("Search - %2 item", "Search - %2 items", appsModel.count, rough)
+                return i18np("Search - %2 item", "Search - %2 items", roughNum, rough)
             } else {
                 return i18n("Search")
             }
