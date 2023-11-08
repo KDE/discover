@@ -56,13 +56,13 @@ DiscoverPage {
             }
         } else if (name.length > 0) {
             if (rough.length > 0) {
-                return i18np("%2 - %1 item", "%2 - %1 items", rough, name)
+                return i18np("%3 - %2 item", "%3 - %2 items", appsModel.count, rough, name)
             } else {
                 return name
             }
         } else {
             if (rough.length > 0) {
-                return i18np("Search - %1 item", "Search - %1 items", rough)
+                return i18np("Search - %2 item", "Search - %2 items", appsModel.count, rough)
             } else {
                 return i18n("Search")
             }
