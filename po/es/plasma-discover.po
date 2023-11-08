@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 01:38+0000\n"
-"PO-Revision-Date: 2023-11-01 22:40+0100\n"
+"PO-Revision-Date: 2023-11-07 21:29+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -600,12 +600,10 @@ msgid "Sort: %1"
 msgstr "Ordenar: %1"
 
 #: discover/qml/ApplicationsListPage.qml:103
-#, fuzzy, kde-format
-#| msgctxt "@label:listbox Most relevant reviews"
-#| msgid "Most Relevant"
+#, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr "Más relevantes"
+msgstr "Relevancia"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
