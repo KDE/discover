@@ -60,11 +60,12 @@ QQC2.ItemDelegate {
     // Note changing text here does not affect the action.text
     text: Kirigami.MnemonicData.richTextLabel
 
+    QQC2.ToolTip.text: shortcut.nativeText
+    QQC2.ToolTip.visible: (Kirigami.Settings.tabletMode ? down : hovered) && QQC2.ToolTip.text.length > 0
     QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-    QQC2.ToolTip.visible: hovered && p0.nativeText.length > 0
-    QQC2.ToolTip.text: p0.nativeText
 
-    readonly property var p0: Shortcut {
+    Shortcut {
+        id: shortcut
         sequence: item.Kirigami.MnemonicData.sequence
         onActivated: item.trigger()
     }
