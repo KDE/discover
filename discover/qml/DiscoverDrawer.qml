@@ -118,12 +118,12 @@ Kirigami.GlobalDrawer {
         },
         ActionListItem {
             action: installedAction
-            visible: drawer.wideScreen
+            visible: enabled && drawer.wideScreen
         },
         ActionListItem {
             objectName: "updateButton"
             action: updateAction
-            visible: drawer.wideScreen
+            visible: enabled && drawer.wideScreen
             stateIconName: ResourcesModel.updatesCount > 0 ? "emblem-important" : ""
 
             // Disable down navigation on the last item so we don't escape the
