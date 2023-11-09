@@ -28,7 +28,6 @@ DiscoverPage {
     property alias resourcesUrl: appsModel.resourcesUrl
     property alias isBusy: appsModel.isBusy
     property alias allBackends: appsModel.allBackends
-    property alias roughCount: appsModel.roughCount
     property alias count: apps.count
     property alias listHeader: apps.header
     property alias listHeaderPositioning: apps.headerPositioning
@@ -47,22 +46,22 @@ DiscoverPage {
 
     property string name: category ? category.name : ""
     title: {
-        const rough = appsModel.roughCount;
+        const count = appsModel.count;
         if (search.length > 0) {
-            if (rough.length > 0) {
-                return i18np("Search: %2 - %3 item", "Search: %2 - %3 items", appsModel.count, stripHtml(search), rough)
+            if (count.valid) {
+                return i18np("Search: %2 - %3 item", "Search: %2 - %3 items", count.number, stripHtml(search), count.string)
             } else {
                 return i18n("Search: %1", stripHtml(search))
             }
         } else if (name.length > 0) {
-            if (rough.length > 0) {
-                return i18np("%2 - %1 item", "%2 - %1 items", rough, name)
+            if (count.valid) {
+                return i18np("%2 - %1 item", "%2 - %1 items", count.number, name)
             } else {
                 return name
             }
         } else {
-            if (rough.length > 0) {
-                return i18np("Search - %1 item", "Search - %1 items", rough)
+            if (count.valid) {
+                return i18np("Search - %1 item", "Search - %1 items", count.number)
             } else {
                 return i18n("Search")
             }
