@@ -54,17 +54,15 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, &ResourcesProxyModel::refreshResource);
     connect(ResourcesModel::global(), &ResourcesModel::resourceRemoved, this, &ResourcesProxyModel::removeResource);
 
-    connect(this, &QAbstractItemModel::modelReset, this, &ResourcesProxyModel::countChanged);
-    connect(this, &QAbstractItemModel::rowsInserted, this, &ResourcesProxyModel::countChanged);
-    connect(this, &QAbstractItemModel::rowsRemoved, this, &ResourcesProxyModel::countChanged);
+    m_countTimer.setInterval(10);
+    m_countTimer.setSingleShot(true);
+    connect(&m_countTimer, &QTimer::timeout, this, &ResourcesProxyModel::countChanged);
 
-    QTimer *roughCountTimer = new QTimer(this);
-    roughCountTimer->setInterval(10);
-    roughCountTimer->setSingleShot(true);
+    connect(this, &QAbstractItemModel::modelReset, &m_countTimer, qOverload<>(&QTimer::start));
+    connect(this, &QAbstractItemModel::rowsInserted, &m_countTimer, qOverload<>(&QTimer::start));
+    connect(this, &QAbstractItemModel::rowsRemoved, &m_countTimer, qOverload<>(&QTimer::start));
 
-    connect(roughCountTimer, &QTimer::timeout, this, &ResourcesProxyModel::roughCountChanged);
-    connect(this, &ResourcesProxyModel::countChanged, roughCountTimer, qOverload<>(&QTimer::start));
-    connect(this, &ResourcesProxyModel::busyChanged, roughCountTimer, qOverload<>(&QTimer::start));
+    connect(this, &ResourcesProxyModel::busyChanged, &m_countTimer, qOverload<>(&QTimer::start));
 }
 
 void ResourcesProxyModel::componentComplete()
@@ -699,20 +697,43 @@ bool ResourcesProxyModel::sortByRelevancy() const
     return m_sortByRelevancy;
 }
 
-QString ResourcesProxyModel::roughCount() const
+ResourcesCount ResourcesProxyModel::count() const
 {
     const int rows = rowCount();
     if (isBusy()) {
         // We return an empty string because it's evidently confusing
         if (rows == 0) {
-            return {};
+            return ResourcesCount();
         }
 
         // We convert rows=1234 into round=1000
         const int round = std::pow(10, std::floor(std::log10(rows)));
         if (round >= 1) {
-            return i18nc("an approximation number, like 3000+", "%1+", (rows / round) * round);
+            const int roughCount = (rows / round) * round;
+            const auto string = i18nc("an approximation number, like 3000+", "%1+", roughCount);
+            return ResourcesCount(roughCount, string);
         }
     }
-    return QString::number(rows);
+    return ResourcesCount(rows);
+}
+
+ResourcesCount::ResourcesCount()
+    : m_valid(false)
+    , m_number(0)
+    , m_string()
+{
+}
+
+ResourcesCount::ResourcesCount(int number)
+    : m_valid(true)
+    , m_number(number)
+    , m_string(QString::number(number))
+{
+}
+
+ResourcesCount::ResourcesCount(int number, const QString &string)
+    : m_valid(true)
+    , m_number(number)
+    , m_string(string)
+{
 }

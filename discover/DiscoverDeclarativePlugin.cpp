@@ -34,6 +34,7 @@ void DiscoverDeclarativePlugin::registerTypes(const char * /*uri*/)
     qmlRegisterType<TransactionListener>("org.kde.discover", 2, 0, "TransactionListener");
     qmlRegisterType<ResourcesUpdatesModel>("org.kde.discover", 2, 0, "ResourcesUpdatesModel");
     qmlRegisterType<ResourcesProxyModel>("org.kde.discover", 2, 0, "ResourcesProxyModel");
+    qRegisterMetaType<ResourcesCount>();
 
     qmlRegisterType<ReviewsModel>("org.kde.discover", 2, 0, "ReviewsModel");
     qmlRegisterType<ApplicationAddonsModel>("org.kde.discover", 2, 0, "ApplicationAddonsModel");

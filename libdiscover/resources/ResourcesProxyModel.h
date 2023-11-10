@@ -11,6 +11,7 @@
 #include <QSortFilterProxyModel>
 #include <QString>
 #include <QStringList>
+#include <QTimer>
 
 #include <Category/Category.h>
 
@@ -19,6 +20,31 @@
 #include "discovercommon_export.h"
 
 class AggregatedResultsStream;
+
+/*
+ * This class encapsulates model's counter. The string property is a
+ * pre-formatted number possibly with extra symbols for a "rough" appearance.
+ * If counter is not valid, accessing its number and string is pointless.
+ */
+class DISCOVERCOMMON_EXPORT ResourcesCount
+{
+    Q_GADGET
+    Q_PROPERTY(bool valid MEMBER m_valid CONSTANT FINAL)
+    Q_PROPERTY(int number MEMBER m_number CONSTANT FINAL)
+    Q_PROPERTY(QString string MEMBER m_string CONSTANT FINAL)
+
+public:
+    explicit ResourcesCount();
+    explicit ResourcesCount(int number);
+    explicit ResourcesCount(int number, const QString &string);
+
+private:
+    bool m_valid;
+    int m_number;
+    QString m_string;
+};
+
+Q_DECLARE_METATYPE(ResourcesCount)
 
 class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, public QQmlParserStatus
 {
@@ -39,9 +65,8 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, pub
     Q_PROPERTY(bool allBackends READ allBackends WRITE setAllBackends)
     Q_PROPERTY(QVariantList subcategories READ subcategories NOTIFY subcategoriesChanged)
     Q_PROPERTY(bool isBusy READ isBusy NOTIFY busyChanged)
-    Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
     Q_PROPERTY(bool sortByRelevancy READ sortByRelevancy NOTIFY sortByRelevancyChanged)
-    Q_PROPERTY(QString roughCount READ roughCount NOTIFY roughCountChanged)
+    Q_PROPERTY(ResourcesCount count READ count NOTIFY countChanged FINAL)
 public:
     explicit ResourcesProxyModel(QObject *parent = nullptr);
     enum Roles {
@@ -136,7 +161,7 @@ public:
     }
     void componentComplete() override;
 
-    QString roughCount() const;
+    ResourcesCount count() const;
 
 private Q_SLOTS:
     void refreshBackend(AbstractResourcesBackend *backend, const QVector<QByteArray> &properties);
@@ -166,9 +191,9 @@ private:
     QVector<AbstractResource *> m_displayedResources;
     static const QHash<int, QByteArray> s_roles;
     ResultsStream *m_currentStream;
+    QTimer m_countTimer;
 
 Q_SIGNALS:
-    void roughCountChanged();
     void busyChanged(bool isBusy);
     void sortRoleChanged(int sortRole);
     void sortOrderChanged(Qt::SortOrder order);
