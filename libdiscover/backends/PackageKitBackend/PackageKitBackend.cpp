@@ -976,26 +976,28 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
 
 void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
 {
+    const QString upgradeVersion = release.version();
+    const QString newDistroVersionText = AppStreamIntegration::global()->osRelease()->name() + QStringLiteral(" ") + upgradeVersion;
+
     QString info;
     // Message to display when:
     // - A new major version is available
     // - An update to the current version is available or pending a reboot
-    info = i18n(
-        "<b>A new major version of %1 has been released.</b>\n"
-        "To be able to upgrade to this new version, make sure to apply all available updates and then restart the system.",
-        AppStreamIntegration::global()->osRelease()->name());
+    info = i18nc("@info:status %1 is a new major version of the user's distro",
+                 "<b>%1 is now available.</b>\n"
+                 "To be able to upgrade to this new version, first apply all available updates, and then restart the system.",
+                 newDistroVersionText);
     QSharedPointer<InlineMessage> updateBeforeMajorUpgradeMessage =
-        QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info);
+        QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("system-software-update"), info);
 
     // Message to display when:
     // - A new major version is available
     // - No update to the current version are available or pending a reboot
-    DiscoverAction *majorUpgrade = new DiscoverAction(i18n("Upgrade to %1 %2", AppStreamIntegration::global()->osRelease()->name(), release.version()), this);
-    connect(majorUpgrade, &DiscoverAction::triggered, this, [this, release] {
+    DiscoverAction *majorUpgrade = new DiscoverAction(QStringLiteral("system-upgrade-symbolic"), i18nc("@action: button", "Upgrade Now"), this);
+    connect(majorUpgrade, &DiscoverAction::triggered, this, [this, release, upgradeVersion] {
         if (m_updater->isProgressing())
             return;
 
-        const QString& upgradeVersion = release.version();
         m_updatesPackageId.clear();
         m_updater->setProgressing(true);
         m_refresher = PackageKit::Daemon::upgradeSystem(upgradeVersion,
@@ -1013,9 +1015,9 @@ void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
         ResourcesModel::global()->switchToUpdates();
     });
 
-    info = i18n("A new major version has been released");
+    info = i18nc("@info:status %1 is a new major version of the user's distro", "%1 is now available.", newDistroVersionText);
     QSharedPointer<InlineMessage> majorUpgradeAvailableMessage =
-        QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info, majorUpgrade);
+        QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("system-software-update"), info, majorUpgrade);
 
     // Allow upgrade only if up to date on the current release
     if (!m_updatesPackageId.isEmpty()) {

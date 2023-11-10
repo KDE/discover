@@ -395,23 +395,25 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
         return;
     }
 
+    const QString newDistroVersionText = m_currentlyBootedDeployment->packageName() + QStringLiteral(" ") + newMajorVersion;
+
     QString info;
     // Message to display when:
     // - A new major version is available
     // - An update to the current version is available or pending a reboot
-    info = i18n(
-        "<b>A new major version of %1 has been released!</b>\n"
-        "To be able to update to this new version, make sure to apply all pending updates and reboot your system.",
-        m_currentlyBootedDeployment->packageName());
-    m_rebootBeforeRebaseMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info);
+    info = i18nc("@info:status %1 is a new major version of the user's distro",
+                 "<b>%1 is now available.</b>\n"
+                 "To be able to upgrade to this new version, first apply all available updates, and then restart the system.",
+                 newDistroVersionText);
+    m_rebootBeforeRebaseMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("system-software-update"), info);
 
     // Message to display when:
     // - A new major version is available
     // - No update to the current version are available or pending a reboot
-    DiscoverAction *rebase = new DiscoverAction(i18n("Upgrade to %1 %2", m_currentlyBootedDeployment->packageName(), newMajorVersion), this);
+    DiscoverAction *majorUpgrade = new DiscoverAction(QStringLiteral("system-upgrade-symbolic"), i18nc("@action: button", "Begin Upgrade…"), this);
     connect(rebase, &DiscoverAction::triggered, this, &RpmOstreeBackend::rebaseToNewVersion);
-    info = i18n("<b>A new major version has been released!</b>");
-    m_rebaseAvailableMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("application-x-rpm"), info, rebase);
+    info = i18nc("@info:status %1 is a new major version of the user's distro", "%1 is now available.", newDistroVersionText);
+    m_rebaseAvailableMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("system-software-update"), info, rebase);
 
     // Look for an existing deployment for the new major version
     QVectorIterator<RpmOstreeResource *> iterator(m_resources);
