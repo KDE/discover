@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:38+0000\n"
+"POT-Creation-Date: 2023-11-10 01:47+0000\n"
 "PO-Revision-Date: 2023-11-07 09:29+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -1161,12 +1161,12 @@ msgctxt "Closing lower air quote"
 msgid "„"
 msgstr "„"
 
-#: discover/qml/SearchField.qml:24
+#: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search…"
 msgstr "Rechercher…"
 
-#: discover/qml/SearchField.qml:24
+#: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search in '%1'…"
 msgstr "Rechercher dans « %1 »…"

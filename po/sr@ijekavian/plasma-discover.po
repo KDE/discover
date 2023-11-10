@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:38+0000\n"
+"POT-Creation-Date: 2023-11-10 01:47+0000\n"
 "PO-Revision-Date: 2018-01-06 09:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -1153,14 +1153,14 @@ msgid "„"
 msgstr ""
 
 # >> @title
-#: discover/qml/SearchField.qml:24
+#: discover/qml/SearchField.qml:26
 #, fuzzy, kde-format
 #| msgid "Search"
 msgid "Search…"
 msgstr "Претрага"
 
 # >> %1 is one of categories from libmuon
-#: discover/qml/SearchField.qml:24
+#: discover/qml/SearchField.qml:26
 #, fuzzy, kde-format
 #| msgid "Search in '%1'..."
 msgid "Search in '%1'…"

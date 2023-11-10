@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:38+0000\n"
+"POT-Creation-Date: 2023-11-10 01:47+0000\n"
 "PO-Revision-Date: 2023-10-28 00:33-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -1140,12 +1140,12 @@ msgctxt "Closing lower air quote"
 msgid "„"
 msgstr ""
 
-#: discover/qml/SearchField.qml:24
+#: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search…"
 msgstr "Pesquisar..."
 
-#: discover/qml/SearchField.qml:24
+#: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search in '%1'…"
 msgstr "Pesquisar em '%1'..."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:38+0000\n"
+"POT-Creation-Date: 2023-11-10 01:47+0000\n"
 "PO-Revision-Date: 2015-02-04 16:18+0000\n"
 "Last-Translator: Nermina Ahmić <nahmic1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -1137,13 +1137,13 @@ msgctxt "Closing lower air quote"
 msgid "„"
 msgstr ""
 
-#: discover/qml/SearchField.qml:24
+#: discover/qml/SearchField.qml:26
 #, fuzzy, kde-format
 #| msgid "Search..."
 msgid "Search…"
 msgstr "Traži..."
 
-#: discover/qml/SearchField.qml:24
+#: discover/qml/SearchField.qml:26
 #, fuzzy, kde-format
 #| msgid "Search in '%1'..."
 msgid "Search in '%1'…"

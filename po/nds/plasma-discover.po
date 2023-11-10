@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:38+0000\n"
+"POT-Creation-Date: 2023-11-10 01:47+0000\n"
 "PO-Revision-Date: 2014-03-16 09:10+0100\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1136,13 +1136,13 @@ msgctxt "Closing lower air quote"
 msgid "„"
 msgstr ""
 
-#: discover/qml/SearchField.qml:24
+#: discover/qml/SearchField.qml:26
 #, fuzzy, kde-format
 #| msgid "Search..."
 msgid "Search…"
 msgstr "Söken..."
 
-#: discover/qml/SearchField.qml:24
+#: discover/qml/SearchField.qml:26
 #, fuzzy, kde-format
 #| msgid "Search..."
 msgid "Search in '%1'…"
