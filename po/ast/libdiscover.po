@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-07 02:43+0000\n"
-"PO-Revision-Date: 2023-11-07 21:26+0100\n"
+"PO-Revision-Date: 2023-11-11 01:05+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
 "Language: ast\n"
@@ -587,7 +587,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:738
 #, kde-format
 msgid "All Files"
-msgstr ""
+msgstr "Tolos ficheros"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:740
 #, kde-format
@@ -602,7 +602,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:744
 #, kde-format
 msgid "Music"
-msgstr ""
+msgstr "Música"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:801
 #, kde-format
@@ -1032,7 +1032,7 @@ msgstr ""
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
 #, kde-format
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:518
 #, kde-format
@@ -1043,7 +1043,7 @@ msgstr ""
 #, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"
-msgstr ""
+msgstr "KDE Store"
 
 #: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
 #, kde-format
@@ -1915,7 +1915,7 @@ msgstr ""
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:330
 #, kde-format
@@ -1964,7 +1964,7 @@ msgstr ""
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
@@ -2031,7 +2031,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
-msgstr ""
+msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:318
@@ -2123,7 +2123,7 @@ msgstr "Pue acceder a toles partes del sistema"
 #, kde-format
 msgctxt "Category"
 msgid "Operating System"
-msgstr ""
+msgstr "Sistema operativu"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:182
 #, kde-format
@@ -2171,17 +2171,17 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
 #, kde-format
 msgid "Additional packages: "
-msgstr ""
+msgstr "Paquetes adicionales:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
 #, kde-format
 msgid "Additional modules: "
-msgstr ""
+msgstr "Módulos adicionales:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
 #, kde-format
 msgid "Local packages: "
-msgstr ""
+msgstr "Paquetes llocales:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
 #, kde-format
@@ -2482,4 +2482,4 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"
-msgstr ""
+msgstr "Complementos"
