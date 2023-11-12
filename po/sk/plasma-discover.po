@@ -3,21 +3,21 @@
 # Roman Paholik <wizzardsk@gmail.com>, 2012, 2013, 2014, 2015, 2016, 2017, 2019, 2021.
 # Mthw <jari_45@hotmail.com>, 2018, 2019.
 # Dusan Kazik <prescott66@gmail.com>, 2020.
-# Matej Mrenica <matejm98mthw@gmail.com>, 2019-2021, 2022.
+# SPDX-FileCopyrightText: 2019-2021, 2022, 2023 Matej Mrenica <matejm98mthw@gmail.com>
 # Ferdinand Galko <galko.ferdinand@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-10 01:47+0000\n"
-"PO-Revision-Date: 2023-03-06 18:47+0100\n"
-"Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
-"Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
+"PO-Revision-Date: 2023-11-11 16:05+0100\n"
+"Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
+"Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: discover/DiscoverObject.cpp:161
@@ -292,7 +292,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "Od %1"
 
 #: discover/qml/ApplicationPage.qml:83
 #, kde-format
@@ -305,10 +305,9 @@ msgid "Unknown author"
 msgstr "Neznámy autor"
 
 #: discover/qml/ApplicationPage.qml:245
-#, fuzzy, kde-format
-#| msgid "Version"
+#, kde-format
 msgid "Version:"
-msgstr "Verzia"
+msgstr "Verzia:"
 
 #: discover/qml/ApplicationPage.qml:257
 #, kde-format
@@ -316,14 +315,12 @@ msgid "Size:"
 msgstr "Veľkosť:"
 
 #: discover/qml/ApplicationPage.qml:269
-#, fuzzy, kde-format
-#| msgid "License"
-#| msgid_plural "Licenses"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "Licencia"
-msgstr[1] "Licencie"
-msgstr[2] "Licencie"
+msgstr[0] "Licencia:"
+msgstr[1] "Licencie:"
+msgstr[2] "Licencií:"
 
 #: discover/qml/ApplicationPage.qml:277
 #, kde-format
@@ -345,10 +342,9 @@ msgstr[1] "Zobraziť viac..."
 msgstr[2] "Zobraziť viac..."
 
 #: discover/qml/ApplicationPage.qml:327
-#, fuzzy, kde-format
-#| msgid "Content Rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "Hodnotenie spokojnosti"
+msgstr "Hodnotenie spokojnosti:"
 
 #: discover/qml/ApplicationPage.qml:336
 #, kde-format
@@ -441,12 +437,10 @@ msgid "Reviews for %1 are temporarily unavailable"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:716
-#, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Zobraziť %1 recenziu"
+msgstr "Zobraziť všetky recenzie"
 
 #: discover/qml/ApplicationPage.qml:728
 #, kde-format
@@ -604,7 +598,7 @@ msgstr "Usporiadať podľa: %1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr ""
+msgstr "Relevancia"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
@@ -666,12 +660,7 @@ msgid "\"%1\" was not found in the available sources"
 msgstr "\"%1\" nebolo nájdené v dostupných zdrojoch"
 
 #: discover/qml/ApplicationsListPage.qml:243
-#, fuzzy, kde-format
-#| msgctxt "@info:placeholder%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
@@ -688,8 +677,7 @@ msgid "Still looking…"
 msgstr "Stále hľadám..."
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
 msgstr "Domov"
@@ -733,13 +721,13 @@ msgstr "Najvyššie hodnotené nástroje pre vývojárov"
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
-msgstr ""
+msgstr "Prehrať"
 
 #: discover/qml/CarouselDelegate.qml:214
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
-msgstr ""
+msgstr "Pozastaviť"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:40
 #, kde-format
@@ -751,11 +739,10 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Full Screen"
-msgstr ""
+msgstr "Prepnúť na celú obrazovku"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
-#, fuzzy, kde-format
-#| msgid "Close"
+#, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
@@ -765,13 +752,13 @@ msgstr "Zatvoriť"
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "Predchádzajúca snímka obrazovky"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr ""
+msgstr "Ďalšia snímka obrazovky"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -927,16 +914,13 @@ msgid "Loading…"
 msgstr "Načítava sa..."
 
 #: discover/qml/InstallApplicationButton.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
-#| msgid "Install from %1"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "Nainštalovať z %1"
 
 #: discover/qml/InstallApplicationButton.qml:30
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Nainštalovať"
@@ -1106,52 +1090,48 @@ msgstr "Nainštalujte túto aplikáciu, aby ste mohli napísať recenziu"
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "Najrelevantnejšie"
 
 #: discover/qml/ReviewsPage.qml:109
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "Najnovšie"
 
 #: discover/qml/ReviewsPage.qml:116
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "Najvyššie hodnotené hry"
+msgstr "Najvyššie hodnotené"
 
 #: discover/qml/ReviewsStats.qml:51
-#, fuzzy, kde-format
-#| msgid "Reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "Recenzie"
+msgstr "%1 recenzií"
 
 #: discover/qml/ReviewsStats.qml:69
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #: discover/qml/ReviewsStats.qml:143
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
-msgstr "neznámy recenzent"
+msgstr "Neznámy recenzent"
 
 #: discover/qml/ReviewsStats.qml:163
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "“"
 
 #: discover/qml/ReviewsStats.qml:178
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "„"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format
@@ -1255,7 +1235,7 @@ msgstr ""
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Copy Text"
-msgstr ""
+msgstr "Kopírovať text"
 
 #: discover/qml/UpdatesPage.qml:106
 #, kde-format
@@ -1271,15 +1251,13 @@ msgid "Report Issue to %1"
 msgstr "Nahlásiť tento problém"
 
 #: discover/qml/UpdatesPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Update Selected"
+#, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "Vybraná aktualizácia"
 
 #: discover/qml/UpdatesPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Aktualizovať všetko"
