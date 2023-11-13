@@ -43,6 +43,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, pub
     Q_PROPERTY(QString roughCount READ roughCount NOTIFY roughCountChanged)
 public:
     explicit ResourcesProxyModel(QObject *parent = nullptr);
+    // Make sure the role values don't change since some get stored in config files.
     enum Roles {
         NameRole = Qt::UserRole,
         IconRole,
@@ -52,7 +53,6 @@ public:
         RatingPointsRole,
         RatingCountRole,
         SortableRatingRole,
-        SearchRelevanceRole,
         InstalledRole,
         ApplicationRole,
         OriginRole,
@@ -66,6 +66,8 @@ public:
         LongDescriptionRole,
         SourceIconRole,
         ReleaseDateRole,
+        // This is better that's always the last value as this one should be never saved to disk
+        SearchRelevanceRole
     };
     Q_ENUM(Roles)
 
