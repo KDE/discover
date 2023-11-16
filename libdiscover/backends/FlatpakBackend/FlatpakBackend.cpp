@@ -1609,9 +1609,10 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     prioritary += r;
                 } else if (r->comment().contains(filter.search, Qt::CaseInsensitive)) {
                     rest += r;
-                    // trust The search terms provided by appstream are relevant, this makes possible finding "gimp"
-                    // since the name() is "GNU Image Manipulation Program"
+                } else if (r->longDescription().contains(filter.search, Qt::CaseInsensitive)) {
+                    rest += r;
                 } else if (r->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
+                    // since the name() is "GNU Image Manipulation Program"
                     rest += r;
                 }
             }
