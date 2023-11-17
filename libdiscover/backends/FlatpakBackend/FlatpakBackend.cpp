@@ -1609,10 +1609,11 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     prioritary += r;
                 } else if (r->comment().contains(filter.search, Qt::CaseInsensitive)) {
                     rest += r;
-                } else if (r->longDescription().contains(filter.search, Qt::CaseInsensitive)) {
+                } else if (r->longDescription().contains(
+                               QRegularExpression(QStringLiteral("%1\\b").arg(filter.search), QRegularExpression::CaseInsensitiveOption))) {
                     rest += r;
                 } else if (r->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
-                    // since the name() is "GNU Image Manipulation Program"
+                    // Sometimes matches better, ie gimp when name() is "GNU Image Manipulation Program"
                     rest += r;
                 }
             }

@@ -579,8 +579,9 @@ QVariant ResourcesProxyModel::roleToValue(const StreamResult &result, int role) 
             exactMatch = 10.0;
         } else if (resource->name().contains(m_filters.search, Qt::CaseInsensitive)) {
             exactMatch = 5.0;
-        } else if (resource->longDescription().contains(m_filters.search, Qt::CaseInsensitive)) {
-            exactMatch = 2.0;
+        } else if (resource->longDescription().contains(
+                       QRegularExpression(QStringLiteral("%1\\b").arg(m_filters.search), QRegularExpression::CaseInsensitiveOption))) {
+            exactMatch = 3.0;
         }
         return qreal(result.sortScore) / 100 + rating + reverseDistance + exactMatch;
     }
