@@ -489,7 +489,7 @@ ResultsStream *RpmOstreeBackend::search(const AbstractResourcesBackend::Filters 
     // Trim whitespace from beginning and end of the string entered in the search field.
     QString keyword = filter.search.trimmed();
 
-    QVector<AbstractResource *> res;
+    QVector<StreamResult> res;
     for (RpmOstreeResource *r : m_resources) {
         // Skip if the state does not match the filter
         if (r->state() < filter.state) {
