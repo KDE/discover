@@ -1589,7 +1589,9 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 resources = source->m_resources.values();
             }
 
+            const QString search = filter.search;
             for (auto r : std::as_const(resources)) {
+                const auto mimetypes = r->mimetypes();
                 const bool matchById = r->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
                 if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
                     continue;
@@ -1609,8 +1611,14 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     prioritary += r;
                 } else if (r->comment().contains(filter.search, Qt::CaseInsensitive)) {
                     rest += r;
-                } else if (r->longDescription().contains(
-                               QRegularExpression(QStringLiteral("%1\\b").arg(filter.search), QRegularExpression::CaseInsensitiveOption))) {
+                } else if (r->appstreamComponent().searchTokens().contains(filter.search, Qt::CaseInsensitive)) {
+                    rest += r;
+                } else if (auto it = std::find_if(mimetypes.constBegin(),
+                                                  mimetypes.constEnd(),
+                                                  [search](const QString &str) {
+                                                      return str.contains(search, Qt::CaseInsensitive);
+                                                  })
+                               != mimetypes.constEnd()) {
                     rest += r;
                 } else if (r->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
                     // Sometimes matches better, ie gimp when name() is "GNU Image Manipulation Program"
