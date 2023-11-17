@@ -186,7 +186,7 @@ ResultsStream *SnapBackend::populateJobsWithFilter(const QVector<T *> &jobs, std
     watcher->setFuture(future);
     connect(watcher, &QFutureWatcher<void>::finished, watcher, &QObject::deleteLater);
     connect(watcher, &QFutureWatcher<void>::finished, stream, [this, jobs, filter, stream] {
-        QVector<AbstractResource *> ret;
+        QVector<StreamResult> ret;
         for (auto job : jobs) {
             job->deleteLater();
             if (job->error()) {
@@ -265,9 +265,12 @@ QString SnapBackend::displayName() const
 void SnapBackend::refreshStates()
 {
     auto ret = new StoredResultsStream({populate(m_client.getSnaps())});
-    connect(ret, &StoredResultsStream::finishedResources, this, [this](const QVector<AbstractResource *> &resources) {
+    connect(ret, &StoredResultsStream::finishedResources, this, [this](const QVector<StreamResult> &resources) {
         for (auto res : std::as_const(m_resources)) {
-            if (resources.contains(res))
+            bool contained = kContains(resources, [res](const StreamResult &in) {
+                return in.resource == res;
+            });
+            if (contained)
                 res->setState(AbstractResource::Installed);
             else
                 res->setState(AbstractResource::None);
