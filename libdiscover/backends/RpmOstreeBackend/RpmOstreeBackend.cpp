@@ -12,6 +12,7 @@
 #include "Transaction/TransactionModel.h"
 
 #include <AppStreamQt/release.h>
+#include <AppStreamQt/systeminfo.h>
 #include <AppStreamQt/utils.h>
 #include <KLocalizedString>
 #include <appstream/AppStreamIntegration.h>
@@ -310,7 +311,7 @@ void RpmOstreeBackend::lookForNextMajorVersion()
 
     // Get the DistroComponentId. For Fedora Kinoite, we follow Fedora's
     // release schedule so we don't have our own ID.
-    QString distroId = AppStream::Utils::currentDistroComponentId();
+    QString distroId = AppStream::SystemInfo::currentDistroComponentId();
     if (distroId == QLatin1String("org.fedoraproject.kinoite.fedora")) {
         distroId = QStringLiteral("org.fedoraproject.fedora");
     }
@@ -325,11 +326,7 @@ void RpmOstreeBackend::lookForNextMajorVersion()
     QString currentVersion = AppStreamIntegration::global()->osRelease()->versionId();
     QString nextVersion;
     for (const AppStream::Component &dc : distroComponents) {
-#if ASQ_CHECK_VERSION(1, 0, 0)
         const auto releases = dc.releasesPlain().entries();
-#else
-        const auto releases = dc.releases();
-#endif
         for (const auto &r : releases) {
             // Only look at stable releases unless development mode is enabled
             if ((r.kind() != AppStream::Release::KindStable) && !m_developmentEnabled) {
