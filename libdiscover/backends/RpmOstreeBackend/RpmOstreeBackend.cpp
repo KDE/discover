@@ -411,9 +411,9 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
     // - A new major version is available
     // - No update to the current version are available or pending a reboot
     DiscoverAction *majorUpgrade = new DiscoverAction(QStringLiteral("system-upgrade-symbolic"), i18nc("@action: button", "Begin Upgrade…"), this);
-    connect(rebase, &DiscoverAction::triggered, this, &RpmOstreeBackend::rebaseToNewVersion);
+    connect(majorUpgrade, &DiscoverAction::triggered, this, &RpmOstreeBackend::rebaseToNewVersion);
     info = i18nc("@info:status %1 is a new major version of the user's distro", "%1 is now available.", newDistroVersionText);
-    m_rebaseAvailableMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("system-software-update"), info, rebase);
+    m_rebaseAvailableMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("system-software-update"), info, majorUpgrade);
 
     // Look for an existing deployment for the new major version
     QVectorIterator<RpmOstreeResource *> iterator(m_resources);
