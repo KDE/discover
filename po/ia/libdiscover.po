@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
+"POT-Creation-Date: 2023-11-18 01:36+0000\n"
 "PO-Revision-Date: 2023-10-22 17:17+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -1150,27 +1150,37 @@ msgstr ""
 msgid "Cannot remove '%1'"
 msgstr "Non pote remover '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:984
-#, kde-format
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>A new major version of %1 has been released.</b>\n"
+#| "To be able to upgrade to this new version, make sure to apply all "
+#| "available updates and then restart the system."
+msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
-"<b>A new major version of %1 has been released.</b>\n"
-"To be able to upgrade to this new version, make sure to apply all available "
-"updates and then restart the system."
+"<b>%1 is now available.</b>\n"
+"To be able to upgrade to this new version, first apply all available "
+"updates, and then restart the system."
 msgstr ""
 "<b>Un nove major version de %1 ha essite liberate!</b>\n"
 "Per poter actualisar a iste nove version, assecura te a applicar omne "
 "actualisationes pendente e post restarta tu systema."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:993
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
-#, kde-format
-msgid "Upgrade to %1 %2"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
+#, fuzzy, kde-format
+#| msgid "Upgrade to %1 %2"
+msgctxt "@action: button"
+msgid "Upgrade Now"
 msgstr "Actualisa a %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
-#, kde-format
-msgid "A new major version has been released"
-msgstr "Un nove version major ha essite liberate!"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
+#, fuzzy, kde-format
+#| msgid "Repo not available"
+msgctxt "@info:status %1 is a new major version of the user's distro"
+msgid "%1 is now available."
+msgstr "Repo non disponibile"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2232,47 +2242,37 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Systema operative o operational"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:182
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree: Trovate un Multiple booted deployments .Pro favor invia un bug."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree: Trovate nulle booted deployments .Pro favor invia un bug."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
 #, kde-format
-msgid ""
-"<b>A new major version of %1 has been released!</b>\n"
-"To be able to update to this new version, make sure to apply all pending "
-"updates and reboot your system."
+msgctxt "@action: button"
+msgid "Begin Upgrade…"
 msgstr ""
-"<b>Un nove major version de %1 ha essite liberate!</b>\n"
-"Per poter te actualisar a iste noveversion, assecura te de applicar omne "
-"actualisationes pendente e restarta tu systema."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
-#, kde-format
-msgid "<b>A new major version has been released!</b>"
-msgstr "<b>Un nove version major ha essite liberate!</b>"
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Tu ha actualisationes pendente per le version currente. On procede de omne "
 "modo."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Pro favor actualisa al ultime version ante facer le rebase a un version major"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2617,6 +2617,21 @@ msgstr "Software de Systema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Addons(Elementos adjunte)"
+
+#~ msgid "A new major version has been released"
+#~ msgstr "Un nove version major ha essite liberate!"
+
+#~ msgid ""
+#~ "<b>A new major version of %1 has been released!</b>\n"
+#~ "To be able to update to this new version, make sure to apply all pending "
+#~ "updates and reboot your system."
+#~ msgstr ""
+#~ "<b>Un nove major version de %1 ha essite liberate!</b>\n"
+#~ "Per poter te actualisar a iste noveversion, assecura te de applicar omne "
+#~ "actualisationes pendente e restarta tu systema."
+
+#~ msgid "<b>A new major version has been released!</b>"
+#~ msgstr "<b>Un nove version major ha essite liberate!</b>"
 
 #~ msgid "Unknown size"
 #~ msgstr "Grandor incognite"

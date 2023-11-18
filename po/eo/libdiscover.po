@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
+"POT-Creation-Date: 2023-11-18 01:36+0000\n"
 "PO-Revision-Date: 2023-10-21 07:44+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -1136,27 +1136,37 @@ msgstr ""
 msgid "Cannot remove '%1'"
 msgstr "Ne povas forigi '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:984
-#, kde-format
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>A new major version of %1 has been released.</b>\n"
+#| "To be able to upgrade to this new version, make sure to apply all "
+#| "available updates and then restart the system."
+msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
-"<b>A new major version of %1 has been released.</b>\n"
-"To be able to upgrade to this new version, make sure to apply all available "
-"updates and then restart the system."
+"<b>%1 is now available.</b>\n"
+"To be able to upgrade to this new version, first apply all available "
+"updates, and then restart the system."
 msgstr ""
 "<b>Nova ĉefa versio de %1 estis publikigita.</b>\n"
 "Por povi ĝisdatigi al ĉi tiu nova versio, nepre apliki ĉiujn disponeblajn "
 "ĝisdatigojn kaj poste rekomenci la sistemon."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:993
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
-#, kde-format
-msgid "Upgrade to %1 %2"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
+#, fuzzy, kde-format
+#| msgid "Upgrade to %1 %2"
+msgctxt "@action: button"
+msgid "Upgrade Now"
 msgstr "Ĝisdatigi al %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
-#, kde-format
-msgid "A new major version has been released"
-msgstr "Nova grava versio estis publikigita"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
+#, fuzzy, kde-format
+#| msgid "Repo not available"
+msgctxt "@info:status %1 is a new major version of the user's distro"
+msgid "%1 is now available."
+msgstr "Repo ne havebla"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2213,47 +2223,37 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Operaciumo"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:182
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree: Multoblaj ekfunkciigitaj deplojoj trovitaj. Bonvolu registri "
 "cimon."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree: Neniu startita deplojo trovita. Bonvolu registri cimon."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
 #, kde-format
-msgid ""
-"<b>A new major version of %1 has been released!</b>\n"
-"To be able to update to this new version, make sure to apply all pending "
-"updates and reboot your system."
+msgctxt "@action: button"
+msgid "Begin Upgrade…"
 msgstr ""
-"<b>Nova ĉefa versio de %1 estis publikigita!</b>\n"
-"Por povi ĝisdatigi al ĉi tiu nova versio, nepre apliki ĉiujn atendatajn "
-"ĝisdatigojn kaj rekomencu vian sistemon."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
-#, kde-format
-msgid "<b>A new major version has been released!</b>"
-msgstr "<b>Nova grava versio estis publikigita!</b>"
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Vi havas pritraktatajn ĝisdatigojn por la nuna versio. Procedante ĉiuokaze."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Bonvolu ĝisdatigi al la plej nova versio antaŭ ol rebazi al grava versio"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "Mankas fora ref por rebaza operacio. Bonvolu registri cimon."
@@ -2595,6 +2595,21 @@ msgstr "Sistema Programaro"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Aldonaĵoj"
+
+#~ msgid "A new major version has been released"
+#~ msgstr "Nova grava versio estis publikigita"
+
+#~ msgid ""
+#~ "<b>A new major version of %1 has been released!</b>\n"
+#~ "To be able to update to this new version, make sure to apply all pending "
+#~ "updates and reboot your system."
+#~ msgstr ""
+#~ "<b>Nova ĉefa versio de %1 estis publikigita!</b>\n"
+#~ "Por povi ĝisdatigi al ĉi tiu nova versio, nepre apliki ĉiujn atendatajn "
+#~ "ĝisdatigojn kaj rekomencu vian sistemon."
+
+#~ msgid "<b>A new major version has been released!</b>"
+#~ msgstr "<b>Nova grava versio estis publikigita!</b>"
 
 #~ msgid "Unknown size"
 #~ msgstr "Nekonata grandeco"

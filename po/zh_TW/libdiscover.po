@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
+"POT-Creation-Date: 2023-11-18 01:36+0000\n"
 "PO-Revision-Date: 2023-08-08 16:07+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -1116,26 +1116,36 @@ msgstr "您的作業系統自 %1 起已不再受支援。請考慮更新到受�
 msgid "Cannot remove '%1'"
 msgstr "無法移除 %1"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:984
-#, kde-format
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>A new major version of %1 has been released.</b>\n"
+#| "To be able to upgrade to this new version, make sure to apply all "
+#| "available updates and then restart the system."
+msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
-"<b>A new major version of %1 has been released.</b>\n"
-"To be able to upgrade to this new version, make sure to apply all available "
-"updates and then restart the system."
+"<b>%1 is now available.</b>\n"
+"To be able to upgrade to this new version, first apply all available "
+"updates, and then restart the system."
 msgstr ""
 "<b>%1 有新的大版本更新。</b>\n"
 "要能更新到這個新版本，請先確保現有的待處理更新皆已套用並重新啟動過。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:993
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
-#, kde-format
-msgid "Upgrade to %1 %2"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
+#, fuzzy, kde-format
+#| msgid "Upgrade to %1 %2"
+msgctxt "@action: button"
+msgid "Upgrade Now"
 msgstr "更新到 %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
-#, kde-format
-msgid "A new major version has been released"
-msgstr "有新的大版本更新"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
+#, fuzzy, kde-format
+#| msgid "Repo not available"
+msgctxt "@info:status %1 is a new major version of the user's distro"
+msgid "%1 is now available."
+msgstr "無法使用軟體庫"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2168,42 +2178,33 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "作業系統"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:182
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
 #, kde-format
-msgid ""
-"<b>A new major version of %1 has been released!</b>\n"
-"To be able to update to this new version, make sure to apply all pending "
-"updates and reboot your system."
+msgctxt "@action: button"
+msgid "Begin Upgrade…"
 msgstr ""
-"<b>%1 有新的大版本更新！</b>\n"
-"要能更新到這個新版本，請先確保現有的待處理更新皆已套用並重新啟動過。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
-#, kde-format
-msgid "<b>A new major version has been released!</b>"
-msgstr "<b>有新的大版本更新！</b>"
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "您在目前版本尚有待處理的更新。處理仍將繼續。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2531,6 +2532,20 @@ msgstr "系統軟體"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "附加功能"
+
+#~ msgid "A new major version has been released"
+#~ msgstr "有新的大版本更新"
+
+#~ msgid ""
+#~ "<b>A new major version of %1 has been released!</b>\n"
+#~ "To be able to update to this new version, make sure to apply all pending "
+#~ "updates and reboot your system."
+#~ msgstr ""
+#~ "<b>%1 有新的大版本更新！</b>\n"
+#~ "要能更新到這個新版本，請先確保現有的待處理更新皆已套用並重新啟動過。"
+
+#~ msgid "<b>A new major version has been released!</b>"
+#~ msgstr "<b>有新的大版本更新！</b>"
 
 #~ msgid "Unknown size"
 #~ msgstr "未知的大小"

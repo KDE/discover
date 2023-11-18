@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
+"POT-Creation-Date: 2023-11-18 01:36+0000\n"
 "PO-Revision-Date: 2022-09-25 09:30+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1160,25 +1160,31 @@ msgstr ""
 msgid "Cannot remove '%1'"
 msgstr "Kan inte ta bort '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:984
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
+msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
-"<b>A new major version of %1 has been released.</b>\n"
-"To be able to upgrade to this new version, make sure to apply all available "
-"updates and then restart the system."
+"<b>%1 is now available.</b>\n"
+"To be able to upgrade to this new version, first apply all available "
+"updates, and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:993
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
 #, fuzzy, kde-format
+#| msgctxt "@info:status Requested action"
 #| msgid "Upgrade"
-msgid "Upgrade to %1 %2"
+msgctxt "@action: button"
+msgid "Upgrade Now"
 msgstr "Uppgradera"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
-#, kde-format
-msgid "A new major version has been released"
-msgstr ""
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
+#, fuzzy, kde-format
+#| msgid "Repo not available"
+msgctxt "@info:status %1 is a new major version of the user's distro"
+msgid "%1 is now available."
+msgstr "Arkiv ej tillgängligt"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2245,40 +2251,35 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Operativsystem"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:182
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
-#, kde-format
-msgid ""
-"<b>A new major version of %1 has been released!</b>\n"
-"To be able to update to this new version, make sure to apply all pending "
-"updates and reboot your system."
-msgstr ""
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
+#, fuzzy, kde-format
+#| msgctxt "@info:status Requested action"
+#| msgid "Upgrade"
+msgctxt "@action: button"
+msgid "Begin Upgrade…"
+msgstr "Uppgradera"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
-#, kde-format
-msgid "<b>A new major version has been released!</b>"
-msgstr ""
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2632,6 +2633,11 @@ msgstr "Systemprogramvara"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tillägg"
+
+#, fuzzy
+#~| msgid "Upgrade"
+#~ msgid "Upgrade to %1 %2"
+#~ msgstr "Uppgradera"
 
 #~ msgid "Unknown size"
 #~ msgstr "Okänd storlek"
@@ -3118,10 +3124,6 @@ msgstr "Tillägg"
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"
 #~ msgstr "Installera"
-
-#~ msgctxt "@info:status Requested action"
-#~ msgid "Upgrade"
-#~ msgstr "Uppgradera"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Downgrade"

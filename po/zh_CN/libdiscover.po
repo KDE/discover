@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
+"POT-Creation-Date: 2023-11-18 01:36+0000\n"
 "PO-Revision-Date: 2023-11-11 07:19\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1108,26 +1108,36 @@ msgstr ""
 msgid "Cannot remove '%1'"
 msgstr "无法移除“%1”"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:984
-#, kde-format
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>A new major version of %1 has been released.</b>\n"
+#| "To be able to upgrade to this new version, make sure to apply all "
+#| "available updates and then restart the system."
+msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
-"<b>A new major version of %1 has been released.</b>\n"
-"To be able to upgrade to this new version, make sure to apply all available "
-"updates and then restart the system."
+"<b>%1 is now available.</b>\n"
+"To be able to upgrade to this new version, first apply all available "
+"updates, and then restart the system."
 msgstr ""
 "<b>%1 的新主要版本已经发布！</b>\n"
 "如需升级到此版本，请确保安装所有可用更新，并重启您的系统。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:993
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
-#, kde-format
-msgid "Upgrade to %1 %2"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
+#, fuzzy, kde-format
+#| msgid "Upgrade to %1 %2"
+msgctxt "@action: button"
+msgid "Upgrade Now"
 msgstr "升级到 %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
-#, kde-format
-msgid "A new major version has been released"
-msgstr "新的主要版本已经发布"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
+#, fuzzy, kde-format
+#| msgid "Repo not available"
+msgctxt "@info:status %1 is a new major version of the user's distro"
+msgid "%1 is now available."
+msgstr "软件仓库不可用"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2161,42 +2171,33 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "操作系统"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:182
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr "rpm-ostree：发现多个已启动的部署。请提交一个程序缺陷报告。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree：未发现已启动的部署。请提交一个程序缺陷报告。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
 #, kde-format
-msgid ""
-"<b>A new major version of %1 has been released!</b>\n"
-"To be able to update to this new version, make sure to apply all pending "
-"updates and reboot your system."
+msgctxt "@action: button"
+msgid "Begin Upgrade…"
 msgstr ""
-"<b>%1 的新主要版本已经发布！</b>\n"
-"如需更新到此版本，请确保应用所有待处理的更新，并重启您的系统。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
-#, kde-format
-msgid "<b>A new major version has been released!</b>"
-msgstr "<b>新的主要版本已经发布！</b>"
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "当前版本有待处理的更新。将无视它们继续进行操作。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "在重新定位到一个主要版本之前，请更新到最新版本"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "缺少重新定位操作所需的远程参考源。请提交一个程序缺陷报告。"
@@ -2530,3 +2531,17 @@ msgstr "系统软件"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "插件"
+
+#~ msgid "A new major version has been released"
+#~ msgstr "新的主要版本已经发布"
+
+#~ msgid ""
+#~ "<b>A new major version of %1 has been released!</b>\n"
+#~ "To be able to update to this new version, make sure to apply all pending "
+#~ "updates and reboot your system."
+#~ msgstr ""
+#~ "<b>%1 的新主要版本已经发布！</b>\n"
+#~ "如需更新到此版本，请确保应用所有待处理的更新，并重启您的系统。"
+
+#~ msgid "<b>A new major version has been released!</b>"
+#~ msgstr "<b>新的主要版本已经发布！</b>"

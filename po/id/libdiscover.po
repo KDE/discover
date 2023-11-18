@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
+"POT-Creation-Date: 2023-11-18 01:36+0000\n"
 "PO-Revision-Date: 2023-05-26 07:30+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -1154,27 +1154,37 @@ msgstr ""
 msgid "Cannot remove '%1'"
 msgstr "Tidak bisa menghapus '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:984
-#, kde-format
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>A new major version of %1 has been released.</b>\n"
+#| "To be able to upgrade to this new version, make sure to apply all "
+#| "available updates and then restart the system."
+msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
-"<b>A new major version of %1 has been released.</b>\n"
-"To be able to upgrade to this new version, make sure to apply all available "
-"updates and then restart the system."
+"<b>%1 is now available.</b>\n"
+"To be able to upgrade to this new version, first apply all available "
+"updates, and then restart the system."
 msgstr ""
 "<b>Sebuah versi pokok baru %1 telah dirilis.</b>\n"
 "Agar bisa meningkatkan ke versi baru ini, pastikan untuk menerapkan semua "
 "pembaruan yang tersedia dan kemudian nyalakan ulang."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:993
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
-#, kde-format
-msgid "Upgrade to %1 %2"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
+#, fuzzy, kde-format
+#| msgid "Upgrade to %1 %2"
+msgctxt "@action: button"
+msgid "Upgrade Now"
 msgstr "Tingkatkan ke %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
-#, kde-format
-msgid "A new major version has been released"
-msgstr "Sebuah versi pokok baru telah dirilis"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
+#, fuzzy, kde-format
+#| msgid "Repo not available"
+msgctxt "@info:status %1 is a new major version of the user's distro"
+msgid "%1 is now available."
+msgstr "Repo tidak tersedia"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2234,47 +2244,37 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Sistem Operasi"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:182
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr "rpm-ostree: Beberapa penerapan di-boot ditemukan. Harap laporkan bug."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree: Tidak ada penerapan di-boot yang ditemukan. Harap laporkan bug."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
 #, kde-format
-msgid ""
-"<b>A new major version of %1 has been released!</b>\n"
-"To be able to update to this new version, make sure to apply all pending "
-"updates and reboot your system."
+msgctxt "@action: button"
+msgid "Begin Upgrade…"
 msgstr ""
-"<b>Sebuah versi utama baru %1 telah dirilis!</b>\n"
-"Agar bisa memperbarui ke versi baru ini, pastikan untuk menerapkan semua "
-"pembaruan yang tertunda dan menyalakan ulang sistem Anda."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
-#, kde-format
-msgid "<b>A new major version has been released!</b>"
-msgstr "<b>Sebuah versi pokok baru telah dirilis!</b>"
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Anda memiliki pembaruan yang tertunda untuk versi saat ini. Tetap "
 "memprosesnya meski demikian."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Harap perbarui ke versi terbaru sebelum melakukan rebase ke versi pokok"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "Ref jarak jauh tidak ada untuk operasi rebase. Harap laporkan bug."
@@ -2615,6 +2615,21 @@ msgstr "Perangkat Lunak Sistem"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Pernik"
+
+#~ msgid "A new major version has been released"
+#~ msgstr "Sebuah versi pokok baru telah dirilis"
+
+#~ msgid ""
+#~ "<b>A new major version of %1 has been released!</b>\n"
+#~ "To be able to update to this new version, make sure to apply all pending "
+#~ "updates and reboot your system."
+#~ msgstr ""
+#~ "<b>Sebuah versi utama baru %1 telah dirilis!</b>\n"
+#~ "Agar bisa memperbarui ke versi baru ini, pastikan untuk menerapkan semua "
+#~ "pembaruan yang tertunda dan menyalakan ulang sistem Anda."
+
+#~ msgid "<b>A new major version has been released!</b>"
+#~ msgstr "<b>Sebuah versi pokok baru telah dirilis!</b>"
 
 #~ msgid "Unknown size"
 #~ msgstr "Ukuran tak diketahui"

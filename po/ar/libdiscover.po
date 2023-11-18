@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
+"POT-Creation-Date: 2023-11-18 01:36+0000\n"
 "PO-Revision-Date: 2023-06-08 12:03+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -1139,27 +1139,38 @@ msgstr "انتهى دعم نظام تشغيلك في %1. ضع في اعتبار�
 msgid "Cannot remove '%1'"
 msgstr "لا يمكن إزالة '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:984
-#, kde-format
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>A new major version of %1 has been released.</b>\n"
+#| "To be able to upgrade to this new version, make sure to apply all "
+#| "available updates and then restart the system."
+msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
-"<b>A new major version of %1 has been released.</b>\n"
-"To be able to upgrade to this new version, make sure to apply all available "
-"updates and then restart the system."
+"<b>%1 is now available.</b>\n"
+"To be able to upgrade to this new version, first apply all available "
+"updates, and then restart the system."
 msgstr ""
 "<b>صدر إصدار رئيسي لـ %1!</b>\n"
 "لتكون قادرًا على للترقية إلى هذا الإصدار الجديد، تأكد من تطبيق جميع التحديثات "
 "المتوفرة وإعادة تشغيل نظامك."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:993
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
-#, kde-format
-msgid "Upgrade to %1 %2"
-msgstr "رقِّ إلى %1 %2"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
+#, fuzzy, kde-format
+#| msgctxt "@info:status Requested action"
+#| msgid "Upgrade"
+msgctxt "@action: button"
+msgid "Upgrade Now"
+msgstr "تحديثها"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
-#, kde-format
-msgid "A new major version has been released"
-msgstr "صدر إصدار رئيسي جديد!"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
+#, fuzzy, kde-format
+#| msgid "Repo not available"
+msgctxt "@info:status %1 is a new major version of the user's distro"
+msgid "%1 is now available."
+msgstr "المستودع غير متوفّر"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2241,43 +2252,35 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "نظام التشغيل"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:182
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr "rpm-ostree: عثر على عمليات نشر قابلة للإقلاع متعددة. يرجى تقديم خطأ."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree: لم يعثر على عملية نشر قابلة للإقلاع. الرجاء أبلغ عنها."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
-#, kde-format
-msgid ""
-"<b>A new major version of %1 has been released!</b>\n"
-"To be able to update to this new version, make sure to apply all pending "
-"updates and reboot your system."
-msgstr ""
-"<b>صدرت إصدارة رئيسة لـ %1!</b>\n"
-"لتكون قادرًا على التحديث إلى هذا الإصدار الجديد، تأكد من تطبيق جميع التحديثات "
-"المعلقة وإعادة تشغيل نظامك."
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
+#, fuzzy, kde-format
+#| msgctxt "@info:status Requested action"
+#| msgid "Upgrade"
+msgctxt "@action: button"
+msgid "Begin Upgrade…"
+msgstr "تحديثها"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
-#, kde-format
-msgid "<b>A new major version has been released!</b>"
-msgstr "<b>صدر إصدار رئيسي جديد!</b>"
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "لديك تحديثات معلقة للإصدارة الحالية. سيتابع على أية حالة."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "الرجاء التحديث إلى أخر إصدارة قبل إعادة تأسيس النظام إلى إصدارة رئيسة"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "ينقص إحالة بعيدة إلى عملية إعادة تأسيس النظام. الرجاء أبلغ عنها."
@@ -2609,6 +2612,24 @@ msgstr "برمجيّات النظام"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "الإضافات"
+
+#~ msgid "Upgrade to %1 %2"
+#~ msgstr "رقِّ إلى %1 %2"
+
+#~ msgid "A new major version has been released"
+#~ msgstr "صدر إصدار رئيسي جديد!"
+
+#~ msgid ""
+#~ "<b>A new major version of %1 has been released!</b>\n"
+#~ "To be able to update to this new version, make sure to apply all pending "
+#~ "updates and reboot your system."
+#~ msgstr ""
+#~ "<b>صدرت إصدارة رئيسة لـ %1!</b>\n"
+#~ "لتكون قادرًا على التحديث إلى هذا الإصدار الجديد، تأكد من تطبيق جميع "
+#~ "التحديثات المعلقة وإعادة تشغيل نظامك."
+
+#~ msgid "<b>A new major version has been released!</b>"
+#~ msgstr "<b>صدر إصدار رئيسي جديد!</b>"
 
 #~ msgid "Unknown size"
 #~ msgstr "الحجم مجهول"
@@ -3062,10 +3083,6 @@ msgstr "الإضافات"
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"
 #~ msgstr "تثبيتها"
-
-#~ msgctxt "@info:status Requested action"
-#~ msgid "Upgrade"
-#~ msgstr "تحديثها"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Downgrade"

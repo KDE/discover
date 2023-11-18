@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-07 02:43+0000\n"
+"POT-Creation-Date: 2023-11-18 01:36+0000\n"
 "PO-Revision-Date: 2023-10-21 18:45+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1145,27 +1145,38 @@ msgstr ""
 msgid "Cannot remove '%1'"
 msgstr "Kan '%1' niet verwijderen"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:984
-#, kde-format
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>A new major version of %1 has been released.</b>\n"
+#| "To be able to upgrade to this new version, make sure to apply all "
+#| "available updates and then restart the system."
+msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
-"<b>A new major version of %1 has been released.</b>\n"
-"To be able to upgrade to this new version, make sure to apply all available "
-"updates and then restart the system."
+"<b>%1 is now available.</b>\n"
+"To be able to upgrade to this new version, first apply all available "
+"updates, and then restart the system."
 msgstr ""
 "<b>Een nieuwe hoofdversie van %1 is uitgegeven.</b>\n"
 "Om naar deze nieuwe versie te gaan, ga na dat alle beschikbare zaken voor "
 "het bijwerken zijn toegepast en start uw systeem opnieuw."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:993
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
-#, kde-format
-msgid "Upgrade to %1 %2"
-msgstr "Opwaarderen naar %1 %2"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
+#, fuzzy, kde-format
+#| msgctxt "@info:status Requested action"
+#| msgid "Upgrade"
+msgctxt "@action: button"
+msgid "Upgrade Now"
+msgstr "Opwaarderen"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
-#, kde-format
-msgid "A new major version has been released"
-msgstr "Een nieuwe hoofdversie is uitgegeven"
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
+#, fuzzy, kde-format
+#| msgid "Repo not available"
+msgctxt "@info:status %1 is a new major version of the user's distro"
+msgid "%1 is now available."
+msgstr "Installatiebron niet beschikbaar"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2224,47 +2235,39 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Besturingssysteem"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:182
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree: Meerdere opgestarte benuttingen gevonden. Dien een bugrapport in."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree: Geen opgestarte benutting gevonden. Dien een bugrapport in."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
-#, kde-format
-msgid ""
-"<b>A new major version of %1 has been released!</b>\n"
-"To be able to update to this new version, make sure to apply all pending "
-"updates and reboot your system."
-msgstr ""
-"<b>Een nieuwe hoofdversie van %1 is uitgegeven!</b>\n"
-"Om naar deze nieuwe versie bij te werken, gan na dat alle zaken voor het "
-"bijwerken zijn toegepast en start uw systeem opnieuw."
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
+#, fuzzy, kde-format
+#| msgctxt "@info:status Requested action"
+#| msgid "Upgrade"
+msgctxt "@action: button"
+msgid "Begin Upgrade…"
+msgstr "Opwaarderen"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
-#, kde-format
-msgid "<b>A new major version has been released!</b>"
-msgstr "<b>Een nieuwe hoofdversie is uitgegeven!</b>"
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "U hebt nog wachtende elementen voor bijwerken voor de huidige versie. Toch "
 "wordt doorgegaan."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "bijwerken tot de laatste versie alvorens naar een hoofdversie te gaan"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2608,6 +2611,24 @@ msgstr "Systeemsoftware"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Add-ons"
+
+#~ msgid "Upgrade to %1 %2"
+#~ msgstr "Opwaarderen naar %1 %2"
+
+#~ msgid "A new major version has been released"
+#~ msgstr "Een nieuwe hoofdversie is uitgegeven"
+
+#~ msgid ""
+#~ "<b>A new major version of %1 has been released!</b>\n"
+#~ "To be able to update to this new version, make sure to apply all pending "
+#~ "updates and reboot your system."
+#~ msgstr ""
+#~ "<b>Een nieuwe hoofdversie van %1 is uitgegeven!</b>\n"
+#~ "Om naar deze nieuwe versie bij te werken, gan na dat alle zaken voor het "
+#~ "bijwerken zijn toegepast en start uw systeem opnieuw."
+
+#~ msgid "<b>A new major version has been released!</b>"
+#~ msgstr "<b>Een nieuwe hoofdversie is uitgegeven!</b>"
 
 #~ msgid "Unknown size"
 #~ msgstr "Onbekende grootte"
@@ -3117,10 +3138,6 @@ msgstr "Add-ons"
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Install"
 #~ msgstr "Installeren"
-
-#~ msgctxt "@info:status Requested action"
-#~ msgid "Upgrade"
-#~ msgstr "Opwaarderen"
 
 #~ msgctxt "@info:status Requested action"
 #~ msgid "Downgrade"
