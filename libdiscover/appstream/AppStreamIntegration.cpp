@@ -47,7 +47,8 @@ std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStre
 #endif
         for (const auto &r : releases) {
             // Only look at stable releases unless requested
-            if (!allowPreRelease && r.kind() != AppStream::Release::KindStable) {
+            if (! (r.kind() == AppStream::Release::KindStable ||
+                  (r.kind() == AppStream::Release::KindDevelopment && allowPreRelease))) {
                 continue;
             }
 
