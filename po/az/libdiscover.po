@@ -1,13 +1,14 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# Xəyyam Qocayev <xxmn77@gmail.com>, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2023 X əyyam
+# SPDX-FileCopyrightText: 2023 Kheyyam <xxmn77@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-07 02:28+0000\n"
-"PO-Revision-Date: 2022-08-16 17:03+0400\n"
+"PO-Revision-Date: 2023-11-18 17:45+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
 "Language: az\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.04.3\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -55,13 +56,12 @@ msgid "%1, released on %2"
 msgstr "%1, %2 buraxılışı"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:182
-#, fuzzy, kde-format
-#| msgid "All Files"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr "Bütün fayllar"
+msgstr "Bütün auditoriya"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:185
 #, kde-format
@@ -70,30 +70,26 @@ msgctxt ""
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr ""
+msgstr "Yüngül məzmun"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:188
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr "İnternet"
+msgstr "Orta məzmun"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:191
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "İnternet"
+msgstr "Güclü məzmun"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:174
 #, kde-format
@@ -114,64 +110,63 @@ msgstr "Rəy göndərmə zamanı xəta: %1"
 #, kde-format
 msgctxt "Category"
 msgid "Dummy Category"
-msgstr "Test edilən kateqoriya"
+msgstr "Boş kateqoriya"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
 #, kde-format
 msgctxt "Category"
 msgid "dummy"
-msgstr "kateqoriya"
+msgstr "boş"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
 #, kde-format
 msgctxt "Category"
 msgid "dummy addons"
-msgstr "test edilən əlavələr"
+msgstr "cürbəcür əlavələr"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
 #, kde-format
 msgctxt "Category"
 msgid "dummy 1"
-msgstr "test 1"
+msgstr "cürbəcür 1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
-msgstr "Tərkibi ilə test etmək"
+msgstr "cürbəcür əşyalarla dolu"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
 #, kde-format
 msgctxt "Category"
 msgid "dummy 2.1"
-msgstr "test 2.1"
+msgstr "cürbəcür 2.1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
-msgstr "tərkibi daha çox olanları test etmək"
+msgstr "cürbəcür şeylərlə tam dolu"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
 #, kde-format
 msgctxt "Category"
 msgid "dummy 3"
-msgstr "test 3"
+msgstr "cürbəcür 3"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
 #, kde-format
 msgctxt "Category"
 msgid "dummy 4"
-msgstr "test 4"
+msgstr "cürbəcür 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Tətbiqlər"
+msgstr "Bütün tətbiqlər"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -206,7 +201,7 @@ msgstr "Sazlama"
 #, kde-format
 msgctxt "Category"
 msgid "Graphic Interface Design"
-msgstr "Qrafik interfeys dizaynı"
+msgstr "Qrafik interfeys tərtibatı"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
@@ -220,7 +215,7 @@ msgstr "İDE-lər"
 #, kde-format
 msgctxt "Category"
 msgid "Localization"
-msgstr "Lokallaşma"
+msgstr "Lokallaşdırma"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
@@ -234,7 +229,7 @@ msgstr "Profilləmə"
 #, kde-format
 msgctxt "Category"
 msgid "Web Development"
-msgstr "Veb Tərtibatı"
+msgstr "Veb tərtibatı"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
@@ -248,7 +243,7 @@ msgstr "Təhsil"
 #, kde-format
 msgctxt "Category"
 msgid "Science and Engineering"
-msgstr "Elm və Mühəndislik"
+msgstr "Elm və mühəndislik"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
@@ -276,7 +271,7 @@ msgstr "Kimiya"
 #, kde-format
 msgctxt "Category"
 msgid "Computer Science and Robotics"
-msgstr "İnformasiya Texnologiyaları"
+msgstr "İnformasiya texnologiyaları"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
@@ -402,7 +397,7 @@ msgstr "Emulyatorlar"
 #, kde-format
 msgctxt "Category"
 msgid "Graphics"
-msgstr "Qrafik"
+msgstr "Qrafika"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
@@ -423,7 +418,7 @@ msgstr "Rəsm və Rəsmxətt"
 #, kde-format
 msgctxt "Category"
 msgid "Painting and Editing"
-msgstr "Rəsm və Redaktə etmə"
+msgstr "Rəsm və redaktə etmə"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
@@ -444,14 +439,14 @@ msgstr "Nəşriyyat"
 #, kde-format
 msgctxt "Category"
 msgid "Scanning and OCR"
-msgstr "Skan və OCR (mətn tanıması)"
+msgstr "Skan və OCR (mətn tanıma)"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
 #, kde-format
 msgctxt "Category"
 msgid "Viewers"
-msgstr "Baxış"
+msgstr "İzləyicilər"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
@@ -479,7 +474,7 @@ msgstr "Fayl paylaşımı"
 #, kde-format
 msgctxt "Category"
 msgid "Mail"
-msgstr "E-poçt"
+msgstr "Poçt"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
@@ -500,14 +495,14 @@ msgstr "Multimediya"
 #, kde-format
 msgctxt "Category"
 msgid "Audio and Video Editors"
-msgstr "Səs və Video redaktorları"
+msgstr "Səs və video redaktorları"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
 #, kde-format
 msgctxt "Category"
 msgid "Audio Players"
-msgstr "Audio oynadıcılar"
+msgstr "Səs oynadıcılar"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
@@ -567,7 +562,7 @@ msgstr "Flatpak mənbələri yoxdur."
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1877
 #, kde-format
 msgid "Failed to load \"%1\" source"
-msgstr "\"%1\" yüklənə bilmədi"
+msgstr "\"%1\" mənbəsini yükləmək mümükün olmadı"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:349
 #, kde-kuit-format
@@ -597,7 +592,7 @@ msgstr "Naməlum ölçü"
 #, kde-format
 msgctxt "@info app size"
 msgid "%1 to download, %2 on disk"
-msgstr "Yükləmək üçün: %1, diskdə tutacağı yer: %2"
+msgstr "Yüklənəcək: %1, diskdə tutacağı yer: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:444
 #, kde-format
@@ -608,10 +603,9 @@ msgstr "Diskdə %1 yer tutacaq"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:498
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:481
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1'"
+#, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "\"%1\" başladıla bilmədi"
+msgstr "\"%1\" başlatmaq mümkün olmadı: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:727
 #, kde-format
@@ -641,7 +635,7 @@ msgstr "Şəbəkəyə giriş"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:782
 #, kde-format
 msgid "Can access the internet"
-msgstr "İnternetə girişi istifadə edə bilərsiniz"
+msgstr "İnternetə girişi mümkündür"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:788
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
@@ -683,24 +677,22 @@ msgstr "Ağıllı karta giriş"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:806
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr "Ağıllı kartlar ilə bütünləşə və məlumat mübadiləsi yarada bilir"
+msgstr "Ağıllı kartlar ilə inteqrasiya və məlumat mübadiləsi yaratmaq olar"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Printer Access"
-msgstr "Cihaza giriş"
+msgstr "Printerə giriş"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Ağıllı kartlar ilə bütünləşə və məlumat mübadiləsi yarada bilir"
+msgstr "Printerlər ilə inteqrasiya oluna və əlaqələndirilə bilər"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:815
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "GPG agent"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
 #, kde-format
@@ -708,29 +700,28 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Əsasən sənədləri imzalamaq və imzalanmış sənədləri oxumaq üçün istifadə "
+"olunan GPG şifrələmə xidmətinə icazə verir."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
-#, fuzzy, kde-format
-#| msgid "Network Access"
+#, kde-format
 msgid "Bluetooth Access"
-msgstr "Şəbəkəyə giriş"
+msgstr "Bluetooth-a giriş"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Ağıllı kartlar ilə bütünləşə və məlumat mübadiləsi yarada bilir"
+msgstr "Bluetooth cihazları ilə inteqrasiya oluna və əlaqələndirilə bilər"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:827
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Low-Level System Access"
-msgstr "Sistemin verilənlər yoluna giriş"
+msgstr "Aşağı səviyyəli sistemə giriş"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Aşağı səviyyəli sistem çağırışları edə bilir (məs. ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
@@ -741,8 +732,8 @@ msgstr "Cihaza giriş"
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
-"Qoşulmuş və ya daxili quraşdırılmış avadanlıq cihazları ilə bağlantı yarada "
-"bilər"
+"Qoşulmuş və ya daxili quraşdırılmış avadanlıq cihazları ilə bağlantı "
+"yaratmaq mümkündür"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
@@ -775,7 +766,7 @@ msgstr "%1 {oxumaq və yazmaq}"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
 #, kde-format
 msgid "Home Folder Access"
-msgstr "Ev qovluğuna giri."
+msgstr "Ev qovluğuna giriş"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:900
 #, kde-format
@@ -888,8 +879,8 @@ msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
 msgstr ""
-"Flatpak mənbələrinin üstünlyünə edilən dəyişikliklər onlar qüvvəyə minmədən "
-"tətbiq edilməlidir."
+"Flatpak mənbələrinin üstünlüyü üçün edilən dəyişikliklər onlar qüvvəyə "
+"minmədən tətbiq edilməlidir."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
@@ -903,7 +894,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:163
 #, kde-format
 msgid "Could not add the source %1"
-msgstr "%1 mənbəsi əlavə edilmədi"
+msgstr "%1 mənbəsi əlavə etmək mümkün olmadı"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:279
 #, kde-format
@@ -941,12 +932,12 @@ msgstr "Flatpack mənbəyi ünvanını daxil edin (*.flatpakrepo):"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:30
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
-msgstr "%2 daxilindəki \"%1\", %3 mövqeyindən əlavə olunur"
+msgstr "%2 daxilindəki \"%1\", %3 mənbəyindən əlavə olunur"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:196
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "\"%1\"/\"%2\" tapılmadı, onun mövcudluğuna əmin olun."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
@@ -955,35 +946,37 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
+"Tərtibat mərhələsində olan \"%1\" versiyası köhnəlmişdir. Stabil versiyanı "
+"istifadə etmək tövsiyyə olunur."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr ""
+msgstr "Daha stabil %1 versiyası əlçatandır."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr ""
+msgstr "Stabil versiyaya burada baxın: %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "%1 quraşdırılmayıb, lakin onun verilənləri hələ də qalır."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "Ayarları və istifadəçi verilənlərini silin"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:20
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:16
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "%1 üçün icazələr"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -991,13 +984,13 @@ msgid ""
 "The remote %1 require that you accept their license:\n"
 " %2"
 msgstr ""
-"%1 paketinin təhcizatçısı bu müqaviləni qəbul etmənizi tələb edir:\n"
+"%1 paketinin təhcizatçısı bu razılaşmanı qəbul etmənizi tələb edir:\n"
 " %2"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
 #, kde-format
 msgid "Review EULA"
-msgstr "EULA İcmalı"
+msgstr "EULA-nə nəzərdən keçirin"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
 #, kde-format
@@ -1010,6 +1003,8 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"Dəstəklənməyən sual:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format
@@ -1024,12 +1019,12 @@ msgstr "Tətbiqlər"
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Plasma Addons"
-msgstr "Plasma Əlavələri"
+msgstr "Plasma əlavələri"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Application Addons"
-msgstr "Tətbiq Əlavələri"
+msgstr "Tətbiq əlavələri"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:438
 #, kde-format
@@ -1062,7 +1057,7 @@ msgid ""
 "%2"
 msgstr ""
 "%1 yenilənməsini başa çatdırmaq mümkün deyil. Bu əməliyyatı, daha sərt "
-"nəzarət təmin edən Yeni materiallar almaq informasiya qutusu vasitəsilə icra "
+"nəzarət təmin edən \"Yeni materiallar alın\" dialoqu vasitəsi ilə icra "
 "etməyə cəhd edə və həyata keçirə bilərsiniz. Xəta bildirişi:\n"
 "%2"
 
@@ -1092,7 +1087,7 @@ msgstr "Səhv KNewStuff ünvanı: %1"
 #, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"
-msgstr "KDE Mağazası"
+msgstr "KDE mağazası"
 
 #: libdiscover/backends/KNSBackend/KNSReviews.cpp:145
 #, kde-format
@@ -1108,13 +1103,13 @@ msgstr "%1 başladıla bilmədi"
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Addons"
-msgstr "Plasma Əlavələri"
+msgstr "Plasma əlavələri"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
-msgstr "Plasma Vidjetləri"
+msgstr "Plasma vidjetləri"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
 #, kde-format
@@ -1175,7 +1170,7 @@ msgstr "GPG xətası"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:33
 #, kde-format
 msgid "PackageID invalid"
-msgstr "Pozulmuş PackageID"
+msgstr "PackageID xətalıdır"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
 #, kde-format
@@ -1215,7 +1210,7 @@ msgstr "Asılılıqların həlli uğursuz oldu"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:49
 #, kde-format
 msgid "Filter invalid"
-msgstr "Səhv filtrləmə"
+msgstr "Səhv süzgəcləmə"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
 #, kde-format
@@ -1265,12 +1260,12 @@ msgstr "Əməliyyatın başa çatması uğursuz oldu"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:69
 #, kde-format
 msgid "Config parsing failed"
-msgstr "Konfiqurasiya faylının işlınməsi zaman xəta"
+msgstr "Konfiqurasiya faylının işlənməsi zaman xəta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:71
 #, kde-format
 msgid "Cannot cancel transaction"
-msgstr "Əməliyyat ləğv edilə bilmir"
+msgstr "Əməliyyat ləğv edilə bilməz"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:73
 #, kde-format
@@ -1280,12 +1275,12 @@ msgstr "Kilidləmək mümkün deyil"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:75
 #, kde-format
 msgid "No packages to update"
-msgstr "Yeniləmək üçün paketlər yoxdur"
+msgstr "Yenilənəcək paketlər yoxdur"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:77
 #, kde-format
 msgid "Cannot write repo config"
-msgstr "Mənbə konfiqurasiya faylı yazıla bilmir"
+msgstr "Mənbə konfiqurasiya faylını yazmaq mükün deyil"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:79
 #, kde-format
@@ -1340,7 +1335,7 @@ msgstr "Pozulmuş paket faylı"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:99
 #, kde-format
 msgid "Package install blocked"
-msgstr "Paket quraşdırılması bloklanıb"
+msgstr "Paket quraşdırılması əngəllənib"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:101
 #, kde-format
@@ -1360,7 +1355,7 @@ msgstr "Fayl tapılmadı"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:107
 #, kde-format
 msgid "No more mirrors available"
-msgstr "Mövcud güzgülər siyahısı bitmişdir"
+msgstr "Başqa güzgülər əlçatan deyil"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
 #, kde-format
@@ -1395,7 +1390,7 @@ msgstr "Yenilənmə tapılmadı"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
 #, kde-format
 msgid "Cannot install from unsigned repo"
-msgstr "İmzalanmamış mənbədən quraşdırıla bilmir"
+msgstr "İmzalanmamış mənbədən quraşdırıla bilməz"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
 #, kde-format
@@ -1948,10 +1943,9 @@ msgstr[0] "%1 paket müvəffəqiyyətlə yeniləndi"
 msgstr[1] "%1 paket müvəffəqiyyətlə yeniləndi"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
-#, fuzzy, kde-format
-#| msgid "Unknown Status"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Naməlum vəziyyət"
+msgstr "Naməlum mənbə"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:326
 #, kde-format
@@ -2008,9 +2002,7 @@ msgid "System upgrade"
 msgstr "Sistem yenilənməsi"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:172
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
 msgstr[0] "%1 paket yeniləcək"
@@ -2020,6 +2012,7 @@ msgstr[1] "%1 paket yeniləcək"
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Yeni %2 versiyasına yeniləyin<br/>Buraxılış qeydləri göstərilməyib"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:183
 #, kde-format
@@ -2027,6 +2020,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Yeni %2 versiyasına yeniləyin<br/>Buraxılış qeydləri:<blockquote>"
+"%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:202
 #, kde-format
@@ -2043,6 +2038,8 @@ msgstr "Gələcək"
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
+"Yenilənməni həyata keçirmək üçün kifayət qədər yer yoxdur; yalnız %1 boş yer "
+"əlçatandır."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:508
 #, kde-format
@@ -2164,27 +2161,24 @@ msgstr[1] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
-#, fuzzy, kde-format
-#| msgid "Resolving dependencies…"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "Asılılıqların həlli…"
+msgstr "Asılılıqları göstərmək..."
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "Paket üçün asılılıqlar: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:24
-#, fuzzy, kde-format
-#| msgid "Home Folder Access"
+#, kde-format
 msgid "Full Access"
-msgstr "Ev qovluğuna giri."
+msgstr "Tam giriş"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
-#, fuzzy, kde-format
-#| msgid "Can access the internet"
+#, kde-format
 msgid "Can access everything on the system"
-msgstr "İnternetə girişi istifadə edə bilərsiniz"
+msgstr "Sistemdə hər şeyə giriş edə bilər"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
@@ -2196,11 +2190,14 @@ msgstr "Əməliyyat Sistemi"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
+"rpm-ostree: Çoxqatlı yüklənən sistemlər aşkarlandı. Lütfən xəta bildirişi "
+"göndərin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
+"rpm-estree: Yüklənən sistemlər tapılmadı. Lütfən xəta bildirişi göndərin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:399
 #, kde-format
@@ -2209,31 +2206,38 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>Yeni əsas %1 versiyası buraxılıb!</b>\n"
+"Bu yeni versiyaya yeniləyə bilmək üçün bütün gözlənilən yenilənmələrin "
+"tətbiq olunduğuna əmin olun və sistemi yenidən başladın."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
 #, kde-format
 msgid "Upgrade to %1 %2"
-msgstr ""
+msgstr "%1 %2 buraxılışına yeniləyin"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:409
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>Yeni əsas versiya buraxılıb!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:545
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
+"Cari versiya üçün gözləyən yenilənmələriniz mövcuddur. İstənilən halda davam "
+"edir."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
-msgstr ""
+msgstr "Əsas versiyaya keçməzdən əvvəl ona qədərki ən son versiyaya yeniləyin"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:556
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Yenidən qurma əməliyyatı üçün uzaq istinad nöqtəsi yoxdur. Lütfən xəta "
+"bildirişi göndərin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
 #, kde-format
@@ -2241,56 +2245,54 @@ msgid "GPL and other licenses"
 msgstr "GPL və başqa liseziyalar"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Additional packages: "
-msgstr "Pozulmuş paket faylı"
+msgstr "Əlavə paketlər: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:310
 #, kde-format
 msgid "Additional modules: "
-msgstr ""
+msgstr "Əlavə modullar: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:317
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Local packages: "
-msgstr "Pozulmuş paket faylı"
+msgstr "Yerli paketlər: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:324
 #, kde-format
 msgid "Replaced packages:"
-msgstr ""
+msgstr "Əvəzlənmiş paketlər: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:331
 #, kde-format
 msgid "Removed packages:"
-msgstr ""
+msgstr "Silinmiş paketlər:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:392
 #, kde-format
 msgid "Currently booted version (pinned)"
-msgstr ""
+msgstr "Hazırkı yüklənmiş versiya (bərkidilmiş)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
 #, kde-format
 msgid "Currently booted version"
-msgstr ""
+msgstr "Hazırkı yüklənmiş versiya"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "Yenidən başlatdıqdan sonra istifadə olunacaq versiya"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr ""
+msgstr "Geri qaytarmaq üçün versiya (bərkidilmiş)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "Geri qaytarmaq üçün versiya"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
@@ -2299,62 +2301,56 @@ msgstr "serverəki OSTree"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr "Hazırda ostree köçürülməsi icra olunur:"
+msgstr "rpm-ostree köçürməsi bunula mümkün olmadı:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"rpm-ostree köçürməsi ləğv edilir. Bu bir az vaxt ala bilər. Lütfən gözləyin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@action Checks the Internet for updates"
-#| msgid "Check for Updates"
+#, kde-format
 msgid "Checking for a system update"
-msgstr "Yenilənmələri yoxlamaq"
+msgstr "Sistem yenilənməsi yoxlanılır"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:385
-#, fuzzy, kde-format
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading system update"
-msgstr "Yüklənir"
+msgstr "Sistem yenilənməsi endirilir"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:388
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "Əməliyyat Sistemi"
+msgstr "Sİstem yenilənir"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Növbəti əsas versiyaya yenilənir"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr ""
+msgstr "əməliyyat icra olunur (Discover-dən kənarda başladılmış)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "Əməliyyat ləğv edilə bilmir"
+msgstr "Naməlum köçürmə növü"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "Kanallar..."
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
 #, kde-format
 msgid "%1 channels"
-msgstr ""
+msgstr "%1 kanal"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:354
@@ -2365,17 +2361,17 @@ msgstr "%1 - %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "Dəyişdirin"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "İcazələri tənzimləyin..."
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
 msgid "Permissions for %1"
-msgstr ""
+msgstr "%1 üçün icazələr"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2394,7 +2390,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
+msgstr "StemOS: SteamOS yenilənmələri üçün \"atomupd\" sorğusu baş tutmadı..."
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
@@ -2424,12 +2420,11 @@ msgid "Launch"
 msgstr "Başlatmaq"
 
 #: libdiscover/resources/AbstractResource.cpp:251
-#, fuzzy, kde-format
-#| msgid "Update to version %1"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "%1 versiyasına yeniləmək"
+msgstr "%1 versiyasının yenilənməsi"
 
 #: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format

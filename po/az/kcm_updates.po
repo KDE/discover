@@ -1,21 +1,21 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# Kheyyam Gojayev <xxmn77@gmail.com>, 2020, 2021.
+# SPDX-FileCopyrightText: 2020, 2021, 2023 Kheyyam Gojayev <xxmn77@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-07 00:45+0000\n"
-"PO-Revision-Date: 2021-04-28 14:39+0400\n"
-"Last-Translator: Kheyyam Gojayev <xxmn77@gmail.com>\n"
+"PO-Revision-Date: 2023-11-18 17:47+0400\n"
+"Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
 "Language: az\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.04.0\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #: kcm/package/contents/ui/main.qml:32
 #, kde-format
@@ -45,41 +45,40 @@ msgstr ""
 "komputer növbəti dəfə yenidən başladıldığında quraşdırılacaqdır."
 
 #: kcm/package/contents/ui/main.qml:61
-#, fuzzy, kde-format
-#| msgid "Update software:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
-msgstr "Proqram təminatını yeniləmək:"
+msgstr "Yenilənmə tezliyi:"
 
 #: kcm/package/contents/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
-msgstr ""
+msgstr "Bildiriş tezliyi:"
 
 #: kcm/package/contents/ui/main.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
-msgstr ""
+msgstr "Hər gün"
 
 #: kcm/package/contents/ui/main.qml:65
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
-msgstr ""
+msgstr "Hər həftə"
 
 #: kcm/package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
-msgstr ""
+msgstr "Hər ay"
 
 #: kcm/package/contents/ui/main.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
-msgstr ""
+msgstr "Heç vaxt"
 
 #: kcm/package/contents/ui/main.qml:111
 #, kde-format
