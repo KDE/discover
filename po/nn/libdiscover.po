@@ -2605,18 +2605,3 @@ msgstr "Systemprogram"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tillegg"
-
-#~ msgid "A new major version has been released"
-#~ msgstr "Ein ny hovudversjon er ute"
-
-#~ msgid ""
-#~ "<b>A new major version of %1 has been released!</b>\n"
-#~ "To be able to update to this new version, make sure to apply all pending "
-#~ "updates and reboot your system."
-#~ msgstr ""
-#~ "<b>Ein ny versjon av %1 er ute!</b>\n"
-#~ "For å kunna oppgradera til denne versjonen må du først installera alle "
-#~ "gjenståande oppdateringane og så starta maskina på nytt."
-
-#~ msgid "<b>A new major version has been released!</b>"
-#~ msgstr "<b>Ein ny hovudversjon er ute!</b>"
