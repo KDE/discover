@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-18 01:36+0000\n"
-"PO-Revision-Date: 2023-11-18 08:15+0100\n"
+"PO-Revision-Date: 2023-11-19 20:05+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -1138,35 +1138,29 @@ msgstr "Ne povas forigi '%1'"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released.</b>\n"
-#| "To be able to upgrade to this new version, make sure to apply all "
-#| "available updates and then restart the system."
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
 "<b>%1 is now available.</b>\n"
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
-"<b>Nova ĉefa versio de %1 estis publikigita.</b>\n"
-"Por povi ĝisdatigi al ĉi tiu nova versio, nepre apliki ĉiujn disponeblajn "
-"ĝisdatigojn kaj poste rekomenci la sistemon."
+"<b>%1 nun estas havebla.</b>\n"
+"Por povi ĝisdatigi al ĉi tiu nova versio, unue apliku ĉiujn disponeblajn "
+"ĝisdatigojn, tiam rekomencu la sistemon."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
-#, fuzzy, kde-format
-#| msgid "Upgrade to %1 %2"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "Ĝisdatigi al %1 %2"
+msgstr "Eldonpromocii Nun"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "Repo ne havebla"
+msgstr "%1 nun estas havebla."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2595,29 +2589,3 @@ msgstr "Sistema Programaro"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Aldonaĵoj"
-
-#~ msgid "A new major version has been released"
-#~ msgstr "Nova grava versio estis publikigita"
-
-#~ msgid ""
-#~ "<b>A new major version of %1 has been released!</b>\n"
-#~ "To be able to update to this new version, make sure to apply all pending "
-#~ "updates and reboot your system."
-#~ msgstr ""
-#~ "<b>Nova ĉefa versio de %1 estis publikigita!</b>\n"
-#~ "Por povi ĝisdatigi al ĉi tiu nova versio, nepre apliki ĉiujn atendatajn "
-#~ "ĝisdatigojn kaj rekomencu vian sistemon."
-
-#~ msgid "<b>A new major version has been released!</b>"
-#~ msgstr "<b>Nova grava versio estis publikigita!</b>"
-
-#~ msgid "Unknown size"
-#~ msgstr "Nekonata grandeco"
-
-#~ msgctxt "@info app size"
-#~ msgid "%1 to download, %2 on disk"
-#~ msgstr "%1 por elŝuti, %2 sur disko"
-
-#~ msgctxt "@info app size"
-#~ msgid "%1 on disk"
-#~ msgstr "%1 sur disko"

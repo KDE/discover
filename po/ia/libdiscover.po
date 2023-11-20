@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-18 01:36+0000\n"
-"PO-Revision-Date: 2023-10-22 17:17+0200\n"
+"PO-Revision-Date: 2023-11-19 17:33+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1152,35 +1152,29 @@ msgstr "Non pote remover '%1'"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released.</b>\n"
-#| "To be able to upgrade to this new version, make sure to apply all "
-#| "available updates and then restart the system."
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
 "<b>%1 is now available.</b>\n"
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
-"<b>Un nove major version de %1 ha essite liberate!</b>\n"
+"<b>%1 es nunc disponibile.</b>\n"
 "Per poter actualisar a iste nove version, assecura te a applicar omne "
 "actualisationes pendente e post restarta tu systema."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
-#, fuzzy, kde-format
-#| msgid "Upgrade to %1 %2"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "Actualisa a %1 %2"
+msgstr "Actualisa nunc"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "Repo non disponibile"
+msgstr "%1 es nunc disponibile."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2257,7 +2251,7 @@ msgstr "rpm-ostree: Trovate nulle booted deployments .Pro favor invia un bug."
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr ""
+msgstr "Initia actualisation..."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
