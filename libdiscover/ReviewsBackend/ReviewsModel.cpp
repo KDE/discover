@@ -16,6 +16,8 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/ResourcesModel.h>
 
+using namespace Qt::StringLiterals;
+
 int StarsCount::one() const
 {
     return m_one;
@@ -79,7 +81,7 @@ ReviewsModel::ReviewsModel(QObject *parent)
     , m_lastPage(0)
 {
     KSharedConfigPtr config = KSharedConfig::openConfig();
-    KConfigGroup configGroup(config, "Reviews");
+    KConfigGroup configGroup(config, u"Reviews"_s);
     const QString role = configGroup.readEntry("PreferredSortRole");
     if (QStringList({QStringLiteral("wilsonScore"), QStringLiteral("date"), QStringLiteral("rating")}).contains(role)) {
         m_preferredSortRole = role;
@@ -160,7 +162,7 @@ void ReviewsModel::setPreferredSortRole(const QString &sorting)
 
     m_preferredSortRole = sorting;
     KSharedConfigPtr config = KSharedConfig::openConfig();
-    KConfigGroup configGroup(config, "Reviews");
+    KConfigGroup configGroup(config, u"Reviews"_s);
     configGroup.writeEntry("PreferredSortRole", sorting);
 
     Q_EMIT preferredSortRoleChanged();

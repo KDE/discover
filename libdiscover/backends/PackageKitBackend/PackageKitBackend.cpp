@@ -51,6 +51,8 @@
 #include <Category/Category.h>
 #include <resources/ResourcesModel.h>
 
+using namespace Qt::StringLiterals;
+
 DISCOVER_BACKEND_PLUGIN(PackageKitBackend)
 
 QDebug operator<<(QDebug dbg, const PackageOrAppId &value)
@@ -254,7 +256,7 @@ void PackageKitBackend::updateProxy()
 {
     if (PackageKit::Daemon::isRunning()) {
         KConfig kioSettings(QStringLiteral("kioslaverc"));
-        KConfigGroup proxyConfig = kioSettings.group("Proxy Settings");
+        KConfigGroup proxyConfig = kioSettings.group(u"Proxy Settings"_s);
 
         bool useProxy = proxyConfig.readEntry<int>("ProxyType", 0) != 0;
 

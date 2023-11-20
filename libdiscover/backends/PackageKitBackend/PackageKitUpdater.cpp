@@ -29,6 +29,8 @@
 #include "pk-offline-private.h"
 #include "utils.h"
 
+using namespace Qt::StringLiterals;
+
 int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage)
 {
     const auto was = percentage;
@@ -717,7 +719,7 @@ void PackageKitUpdater::mediaChange(PackageKit::Transaction::MediaType media, co
 
 EulaHandling handleEula(const QString &eulaID, const QString &licenseAgreement)
 {
-    KConfigGroup group(KSharedConfig::openConfig(), "EULA");
+    KConfigGroup group(KSharedConfig::openConfig(), u"EULA"_s);
     auto licenseGroup = group.group(eulaID);
     QCryptographicHash hash(QCryptographicHash::Sha256);
     hash.addData(licenseAgreement.toUtf8());
@@ -731,7 +733,7 @@ EulaHandling handleEula(const QString &eulaID, const QString &licenseAgreement)
         };
     } else {
         ret.proceedFunction = [eulaID, hashHex] {
-            KConfigGroup group(KSharedConfig::openConfig(), "EULA");
+            KConfigGroup group(KSharedConfig::openConfig(), u"EULA"_s);
             KConfigGroup licenseGroup = group.group(eulaID);
             licenseGroup.writeEntry<QByteArray>("Hash", hashHex);
             return PackageKit::Daemon::acceptEula(eulaID);

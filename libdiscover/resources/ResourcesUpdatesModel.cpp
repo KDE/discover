@@ -19,6 +19,8 @@
 #include <KLocalizedString>
 #include <KSharedConfig>
 
+using namespace Qt::StringLiterals;
+
 class UpdateTransaction : public Transaction
 {
     Q_OBJECT
@@ -151,7 +153,7 @@ void ResourcesUpdatesModel::init()
     // To enable from command line use:
     // kwriteconfig5 --file discoverrc --group Software --key UseOfflineUpdates true
     auto sharedConfig = KSharedConfig::openConfig();
-    KConfigGroup group(sharedConfig, "Software");
+    KConfigGroup group(sharedConfig, u"Software"_s);
     m_offlineUpdates = group.readEntry<bool>("UseOfflineUpdates", false);
 
     KConfigWatcher::Ptr watcher = KConfigWatcher::create(sharedConfig);

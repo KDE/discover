@@ -116,7 +116,7 @@ FlatpakSourcesBackend::~FlatpakSourcesBackend()
     }
 
     auto conf = KSharedConfig::openConfig();
-    KConfigGroup group = conf->group("FlatpakSources");
+    KConfigGroup group = conf->group(u"FlatpakSources"_s);
     group.writeEntry("Sources", ids);
 
     if (!m_noSourcesItem->model())
@@ -365,7 +365,7 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     // Add the remotes before those with lower priorities, after the rest.
     // We disambiguate with internal discover settings
     const auto conf = KSharedConfig::openConfig();
-    const KConfigGroup group = conf->group("FlatpakSources");
+    const KConfigGroup group = conf->group(u"FlatpakSources"_s);
     const auto ids = group.readEntry<QStringList>("Sources", QStringList());
     const int ourIdx = ids.indexOf(id);
 

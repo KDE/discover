@@ -67,6 +67,8 @@
 #include "PowerManagementInterface.h"
 #include "discoversettings.h"
 
+using namespace Qt::StringLiterals;
+
 class CachedNetworkAccessManagerFactory : public QQmlNetworkAccessManagerFactory
 {
     virtual QNetworkAccessManager *create(QObject *parent) override
@@ -493,7 +495,7 @@ void DiscoverObject::integrateObject(QObject *object)
 
     Q_ASSERT(object == rootObject());
 
-    KConfigGroup window(KSharedConfig::openConfig(), "Window");
+    KConfigGroup window(KSharedConfig::openConfig(), u"Window"_s);
     if (window.hasKey("geometry"))
         rootObject()->setGeometry(window.readEntry("geometry", QRect()));
     if (window.hasKey("visibility")) {
@@ -526,7 +528,7 @@ bool DiscoverObject::eventFilter(QObject *object, QEvent *event)
             return true;
         }
 
-        KConfigGroup window(KSharedConfig::openConfig(), "Window");
+        KConfigGroup window(KSharedConfig::openConfig(), u"Window"_s);
         window.writeEntry("geometry", rootObject()->geometry());
         window.writeEntry<int>("visibility", rootObject()->visibility());
         // } else if (event->type() == QEvent::ShortcutOverride) {
@@ -644,7 +646,7 @@ void DiscoverObject::rebootNow()
 
 QRect DiscoverObject::initialGeometry() const
 {
-    KConfigGroup window(KSharedConfig::openConfig(), "Window");
+    KConfigGroup window(KSharedConfig::openConfig(), u"Window"_s);
     return window.readEntry("geometry", QRect());
 }
 

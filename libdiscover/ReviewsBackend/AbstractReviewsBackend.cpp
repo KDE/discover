@@ -8,6 +8,8 @@
 #include <KConfigGroup>
 #include <KSharedConfig>
 
+using namespace Qt::StringLiterals;
+
 AbstractReviewsBackend::AbstractReviewsBackend(QObject *parent)
     : QObject(parent)
 {
@@ -29,7 +31,7 @@ QString AbstractReviewsBackend::preferredUserName() const
         return userName();
     } else {
         auto config = KSharedConfig::openConfig();
-        auto configGroup = KConfigGroup(config, "Identity");
+        auto configGroup = KConfigGroup(config, u"Identity"_s);
         const QString configName = configGroup.readEntry("Name", QString());
         return configName.isEmpty() ? userName() : configName;
     }
@@ -43,7 +45,7 @@ void AbstractReviewsBackend::submitReview(AbstractResource *app,
 {
     if (supportsNameChange() && !userName.isEmpty()) {
         auto config = KSharedConfig::openConfig();
-        auto configGroup = KConfigGroup(config, "Identity");
+        auto configGroup = KConfigGroup(config, u"Identity"_s);
         configGroup.writeEntry("Name", userName);
         configGroup.config()->sync();
 

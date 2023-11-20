@@ -104,7 +104,7 @@ void PackageKitNotifier::checkOfflineUpdates()
     qCDebug(LIBDISCOVER_BACKEND_LOG) << "found offline update results at " << PK_OFFLINE_RESULTS_FILENAME;
 
     KDesktopFile file(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME));
-    KConfigGroup group(&file, PK_OFFLINE_RESULTS_GROUP);
+    KConfigGroup group(&file, QStringLiteral(PK_OFFLINE_RESULTS_GROUP));
 
     const bool success = group.readEntry("Success", false);
     const QString packagesJoined = group.readEntry("Packages");

@@ -34,6 +34,8 @@
 #include "utils.h"
 #include <resources/StandardBackendUpdater.h>
 
+using namespace Qt::StringLiterals;
+
 static const int ENGINE_PAGE_SIZE = 100;
 
 class KNSBackendFactory : public AbstractResourcesBackendFactory
@@ -131,14 +133,14 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     setObjectName(knsrc);
 
     const KConfig conf(m_name, KConfig::SimpleConfig);
-    if (!conf.hasGroup("KNewStuff3")) {
+    if (!conf.hasGroup(u"KNewStuff3"_s)) {
         markInvalid(QStringLiteral("Config group not found! Check your KNSCore installation."));
         return;
     }
 
     m_categories = QStringList{fileName};
 
-    const KConfigGroup group = conf.group("KNewStuff3");
+    const KConfigGroup group = conf.group(u"KNewStuff3"_s);
     m_extends = group.readEntry("Extends", QStringList());
 
     setFetching(true);

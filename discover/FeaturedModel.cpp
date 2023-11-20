@@ -21,12 +21,14 @@
 #include <resources/StoredResultsStream.h>
 #include <utils.h>
 
+using namespace Qt::StringLiterals;
+
 Q_GLOBAL_STATIC(QString, featuredCache)
 
 static QString featuredFileName()
 {
     // kwriteconfig5 --file discoverrc --group Software --key FeaturedListingFileName featured-5.9.json
-    KConfigGroup grp(KSharedConfig::openConfig(), "Software");
+    KConfigGroup grp(KSharedConfig::openConfig(), u"Software"_s);
     if (grp.hasKey("FeaturedListingFileName")) {
         return grp.readEntry("FeaturedListingFileName", QString());
     }

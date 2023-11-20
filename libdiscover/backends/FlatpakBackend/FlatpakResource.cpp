@@ -795,7 +795,7 @@ void FlatpakResource::loadPermissions()
     bool fullSessionBusAccess = false;
     bool fullSystemBusAccess = false;
 
-    const KConfigGroup contextGroup = parser.group("Context");
+    const KConfigGroup contextGroup = parser.group(u"Context"_s);
     const QString shared = contextGroup.readEntry("shared", QString());
     if (shared.contains("network"_L1)) {
         brief = i18n("Network Access");
@@ -954,7 +954,7 @@ void FlatpakResource::loadPermissions()
     }
 
     if (!fullSessionBusAccess) {
-        const KConfigGroup sessionBusGroup = parser.group("Session Bus Policy");
+        const KConfigGroup sessionBusGroup = parser.group(u"Session Bus Policy"_s);
         if (sessionBusGroup.exists()) {
             const QStringList busList = sessionBusGroup.keyList();
             brief = i18n("Session Bus Access");
@@ -965,7 +965,7 @@ void FlatpakResource::loadPermissions()
     }
 
     if (!fullSystemBusAccess) {
-        const KConfigGroup systemBusGroup = parser.group("System Bus Policy");
+        const KConfigGroup systemBusGroup = parser.group(u"System Bus Policy"_s);
         if (systemBusGroup.exists()) {
             const QStringList busList = systemBusGroup.keyList();
             brief = i18n("System Bus Access");

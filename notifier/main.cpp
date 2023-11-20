@@ -22,6 +22,8 @@
 
 #include "NotifierItem.h"
 
+using namespace Qt::StringLiterals;
+
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
@@ -59,7 +61,7 @@ int main(int argc, char **argv)
         }
 
         const auto config = KSharedConfig::openConfig();
-        KConfigGroup group(config, "Behavior");
+        KConfigGroup group(config, u"Behavior"_s);
 
         if (parser.isSet(hideOption)) {
             hide = parser.value(hideOption) == QLatin1String("true");

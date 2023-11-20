@@ -13,6 +13,8 @@
 #include <KSharedConfig>
 #include <QDebug>
 
+using namespace Qt::StringLiterals;
+
 AppStreamIntegration *AppStreamIntegration::global()
 {
     static AppStreamIntegration *var = nullptr;
@@ -34,7 +36,7 @@ std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStre
         return std::nullopt;
     }
 
-    KConfigGroup settings(KSharedConfig::openConfig(QStringLiteral("discoverrc")), "DistroUpgrade");
+    KConfigGroup settings(KSharedConfig::openConfig(QStringLiteral("discoverrc")), u"DistroUpgrade"_s);
     bool allowPreRelease = settings.readEntry<bool>("AllowPreRelease", false);
 
     QString currentVersion = osRelease()->versionId();

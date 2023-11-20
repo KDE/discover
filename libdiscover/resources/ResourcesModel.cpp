@@ -28,6 +28,8 @@
 #include <functional>
 #include <resources/DiscoverAction.h>
 
+using namespace Qt::StringLiterals;
+
 ResourcesModel *ResourcesModel::s_self = nullptr;
 
 ResourcesModel *ResourcesModel::global()
@@ -397,7 +399,7 @@ void ResourcesModel::setCurrentApplicationBackend(AbstractResourcesBackend *back
 {
     if (backend != m_currentApplicationBackend) {
         if (write) {
-            KConfigGroup settings(KSharedConfig::openConfig(), "ResourcesModel");
+            KConfigGroup settings(KSharedConfig::openConfig(), u"ResourcesModel"_s);
             if (backend)
                 settings.writeEntry("currentApplicationBackend", backend->name());
             else
@@ -428,7 +430,7 @@ void ResourcesModel::initApplicationsBackend()
 
 QString ResourcesModel::applicationSourceName() const
 {
-    KConfigGroup settings(KSharedConfig::openConfig(), "ResourcesModel");
+    KConfigGroup settings(KSharedConfig::openConfig(), u"ResourcesModel"_s);
     return settings.readEntry<QString>("currentApplicationBackend", QStringLiteral("packagekit-backend"));
 }
 
