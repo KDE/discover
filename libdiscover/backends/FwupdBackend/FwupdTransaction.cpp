@@ -110,7 +110,7 @@ void FwupdTransaction::cancel()
 
 void FwupdTransaction::finishTransaction()
 {
-    AbstractResource::State newState;
+    AbstractResource::State newState = AbstractResource::None;
     switch (role()) {
     case InstallRole:
     case ChangeAddonsRole:
