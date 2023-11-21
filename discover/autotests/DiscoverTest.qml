@@ -1,9 +1,9 @@
-import QtQuick 2.1
-import QtTest 1.1
-import org.kde.discover.app 1.0
+import QtQuick
+import QtTest
+import org.kde.discover as Discover
+import org.kde.discover.app as DiscoverApp
 
-Item
-{
+Item {
     id: testRoot
 
     signal reset()
@@ -103,10 +103,10 @@ Item
     onCurrentTestChanged: console.log("changed to test", currentTest)
 
     Connections {
-        target: ResourcesModel
+        target: Discover.ResourcesModel
         property bool done: false
         function onIsFetchingChanged() {
-            if (ResourcesModel.isFetching || done)
+            if (Discover.ResourcesModel.isFetching || done)
                 return;
 
             done = true;

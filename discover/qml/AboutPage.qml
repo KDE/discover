@@ -5,7 +5,7 @@
  */
 
 import QtQuick
-import org.kde.kirigamiaddons.formcard 1 as FormCard
+import org.kde.kirigamiaddons.formcard as FormCard
 
 FormCard.AboutPage {
     readonly property bool isHome: true

@@ -1,9 +1,8 @@
-import QtQuick 2.0
-import org.kde.discover.app 1.0
-import QtTest 1.1
+import QtQuick
+import QtTest
+import org.kde.discover as Discover
 
-DiscoverTest
-{
+DiscoverTest {
     onReset: {
         appRoot.currentTopLevel = appRoot.topBrowsingComp
     }
@@ -71,7 +70,7 @@ DiscoverTest
 
         while(updatePage.state !== "now-uptodate")
             waitForSignal(updatePage, "stateChanged")
-        compare(ResourcesModel.updatesCount, 0, "should be up to date")
+        compare(Discover.ResourcesModel.updatesCount, 0, "should be up to date")
     }
 
     function test_search() {
@@ -87,7 +86,7 @@ DiscoverTest
         app.openSearch("dummy")
         listPage = appRoot.stack.currentItem
         compare(listPage.search, "dummy")
-//     compare(listPage.count, ResourcesModel.rowCount()/2)
+//     compare(listPage.count, Discover.ResourcesModel.rowCount()/2)
     }
 
     function test_modes() {

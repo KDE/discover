@@ -1,9 +1,8 @@
-import QtQuick 2.0
-import org.kde.discover.app 1.0
-import QtTest 1.1
+import QtQuick
+import QtTest
+import org.kde.discover as Discover
 
-DiscoverTest
-{
+DiscoverTest {
     function test_openResource() {
         app.openApplication("dummy://dummy.1");
         verify(waitForSignal(appRoot.stack, "currentItemChanged"))
@@ -19,7 +18,7 @@ DiscoverTest
 
     SignalSpy {
         id: cancelSpy
-        target: TransactionModel
+        target: Discover.TransactionModel
         signalName: "transactionRemoved"
     }
     function test_cancel() {
@@ -27,10 +26,10 @@ DiscoverTest
         verify(waitForSignal(appRoot.stack, "currentItemChanged"))
         var button = findChild(appRoot.stack.currentItem, "InstallApplicationButton")
         verify(!button.isActive)
-        
+
         cancelSpy.clear()
         var state = button.application.state;
-        
+
         button.click()
         verify(button.isActive)
         button.listener.cancel()

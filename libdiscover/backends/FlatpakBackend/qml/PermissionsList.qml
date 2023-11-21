@@ -6,12 +6,11 @@
 
 pragma ComponentBehavior: Bound
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15 as QQC2
-import QtQuick.Layouts 1.12
-import QtQml.Models 2.15
-import org.kde.kirigami 2.14 as Kirigami
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
 import org.kde.kcmutils as KCMUtils
+import org.kde.kirigami as Kirigami
 import org.kde.kirigami.delegates as KD
 
 ColumnLayout {
@@ -53,7 +52,7 @@ ColumnLayout {
                 icon: icon.fromControlsIcon(delegate.icon)
                 title: delegate.text
                 subtitle: delegate.description
-                selected: delegate.highlighted
+                selected: delegate.highlighted || delegate.down
                 font: delegate.font
                 wrapMode: Text.Wrap
             }

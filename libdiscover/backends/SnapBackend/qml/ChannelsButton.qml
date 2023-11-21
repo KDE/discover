@@ -4,13 +4,16 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.1
-import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.1
-import org.kde.kirigami 2.14 as Kirigami
-import org.kde.kirigami.delegates as KD
+pragma ComponentBehavior: Bound
 
-Button {
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls as QQC2
+import org.kde.kirigami as Kirigami
+import org.kde.kirigami.delegates as KD
+import org.kde.discover as Discover
+
+QQC2.Button {
     id: root
 
     text: i18nd("libdiscover", "Channels…")
@@ -21,16 +24,20 @@ Button {
     Kirigami.OverlaySheet {
         id: overlay
 
-        parent: applicationWindow().overlay
+        parent: root.QQC2.Overlay.overlay
         title: i18nd("libdiscover", "%1 channels", resource.name)
 
         ListView {
             id: view
 
             model: resource.channels(root).channels
-            delegate: ItemDelegate {
+            delegate: QQC2.ItemDelegate {
                 id: delegate
+
+                required property var modelData
+
                 readonly property bool current: resource.channel === modelData.name
+
                 text: i18nd("libdiscover", "%1 - %2", modelData.name, modelData.version)
 
                 contentItem: RowLayout {
@@ -43,10 +50,10 @@ Button {
                         font: delegate.font
                     }
 
-                    Button {
+                    QQC2.Button {
                         text: i18nd("libdiscover", "Switch")
                         enabled: !delegate.current
-                        onClicked: resource.channel = modelData.name
+                        onClicked: resource.channel = delegate.modelData.name
                     }
                 }
             }

@@ -4,18 +4,19 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.1
-import QtQuick.Controls 2.1
-import QtQuick.Layouts 1.1
-import org.kde.kirigami 2.20 as Kirigami
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
+import org.kde.kirigami as Kirigami
+import org.kde.discover as Discover
 
 Kirigami.PromptDialog {
-    id: newSourceDialog
+    id: root
 
     preferredWidth: Kirigami.Units.gridUnit * 20
 
-    property string displayName
-    property QtObject source
+    required property string displayName
+    required property Discover.AbstractSourcesBackend source
 
     title: i18n("Add New %1 Repository", displayName)
 
@@ -25,45 +26,45 @@ Kirigami.PromptDialog {
         }
     }
 
-    standardButtons: Kirigami.Dialog.NoButton
-    
+    standardButtons: QQC2.Dialog.NoButton
+
     onAccepted: {
         if (source.addSource(repository.text)) {
-            newSourceDialog.close()
+            close()
         } else {
             repository.color = Kirigami.Theme.negativeTextColor
         }
     }
 
     onRejected: {
-        newSourceDialog.close()
+        close()
     }
 
     customFooterActions: [
         Kirigami.Action {
             text: i18n("Add")
             icon.name: "list-add"
-            onTriggered: newSourceDialog.accept();
+            onTriggered: root.accept();
         },
         Kirigami.Action {
             text: i18n("Cancel")
             icon.name: "dialog-cancel"
-            onTriggered: newSourceDialog.reject();
+            onTriggered: root.reject();
         }
     ]
 
     ColumnLayout {
-        Label {
+        QQC2.Label {
             Layout.fillWidth: true
             wrapMode: Text.Wrap
             textFormat: Text.PlainText
-            text: source.idDescription
+            text: root.source.idDescription
         }
 
-        TextField {
+        QQC2.TextField {
             id: repository
             Layout.fillWidth: true
-            onAccepted: newSourceDialog.accept()
+            onAccepted: root.accept()
             focus: true
             onTextChanged: color = Kirigami.Theme.textColor
         }

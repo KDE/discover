@@ -6,8 +6,8 @@
 
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Layouts 1.1
-import org.kde.kirigami 2.14 as Kirigami
+import QtQuick.Layouts
+import org.kde.kirigami as Kirigami
 
 /*
  * An AbstractCard with a default background but without any fancy sizing

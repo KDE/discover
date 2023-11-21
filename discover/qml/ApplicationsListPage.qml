@@ -4,14 +4,14 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
-import QtQuick.Window
-import "navigation.js" as Navigation
-import org.kde.discover.app
-import org.kde.discover
-import org.kde.kirigami 2 as Kirigami
+import org.kde.kirigami as Kirigami
+import org.kde.discover as Discover
+import org.kde.discover.app as DiscoverApp
 
 DiscoverPage {
     id: page
@@ -44,7 +44,8 @@ DiscoverPage {
         return input.replace(regex, "");
     }
 
-    property string name: category ? category.name : ""
+    property string name: category?.name ?? ""
+
     title: {
         const count = appsModel.count;
         if (search.length > 0) {
@@ -75,7 +76,7 @@ DiscoverPage {
 
     onSearchChanged: {
         if (search.length > 0) {
-            appsModel.tempSortRole = ResourcesProxyModel.SearchRelevanceRole
+            appsModel.tempSortRole = Discover.ResourcesProxyModel.SearchRelevanceRole
         } else {
             appsModel.tempSortRole = -1
         }
@@ -103,54 +104,54 @@ DiscoverPage {
                 icon.name: "file-search-symbolic"
                 onTriggered: {
                     // Do *not* save the sort role on searches
-                    appsModel.tempSortRole = ResourcesProxyModel.SearchRelevanceRole
+                    appsModel.tempSortRole = Discover.ResourcesProxyModel.SearchRelevanceRole
                 }
                 checkable: true
-                checked: appsModel.sortRole === ResourcesProxyModel.SearchRelevanceRole
+                checked: appsModel.sortRole === Discover.ResourcesProxyModel.SearchRelevanceRole
             }
             Kirigami.Action {
                 QQC2.ActionGroup.group: sortGroup
                 text: i18n("Name")
                 icon.name: "sort-name"
                 onTriggered: {
-                    DiscoverSettings[page.sortProperty] = ResourcesProxyModel.NameRole
+                    DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.NameRole
                     appsModel.tempSortRole = -1
                 }
                 checkable: true
-                checked: appsModel.sortRole === ResourcesProxyModel.NameRole
+                checked: appsModel.sortRole === Discover.ResourcesProxyModel.NameRole
             }
             Kirigami.Action {
                 QQC2.ActionGroup.group: sortGroup
                 text: i18n("Rating")
                 icon.name: "rating"
                 onTriggered: {
-                    DiscoverSettings[page.sortProperty] = ResourcesProxyModel.SortableRatingRole
+                    DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.SortableRatingRole
                     appsModel.tempSortRole = -1
                 }
                 checkable: true
-                checked: appsModel.sortRole === ResourcesProxyModel.SortableRatingRole
+                checked: appsModel.sortRole === Discover.ResourcesProxyModel.SortableRatingRole
             }
             Kirigami.Action {
                 QQC2.ActionGroup.group: sortGroup
                 text: i18n("Size")
                 icon.name: "download"
                 onTriggered: {
-                    DiscoverSettings[page.sortProperty] = ResourcesProxyModel.SizeRole
+                    DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.SizeRole
                     appsModel.tempSortRole = -1
                 }
                 checkable: true
-                checked: appsModel.sortRole === ResourcesProxyModel.SizeRole
+                checked: appsModel.sortRole === Discover.ResourcesProxyModel.SizeRole
             }
             Kirigami.Action {
                 QQC2.ActionGroup.group: sortGroup
                 text: i18n("Release Date")
                 icon.name: "change-date-symbolic"
                 onTriggered: {
-                    DiscoverSettings[page.sortProperty] = ResourcesProxyModel.ReleaseDateRole
+                    DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.ReleaseDateRole
                     appsModel.tempSortRole = -1
                 }
                 checkable: true
-                checked: appsModel.sortRole === ResourcesProxyModel.ReleaseDateRole
+                checked: appsModel.sortRole === Discover.ResourcesProxyModel.ReleaseDateRole
             }
         }
     ]
@@ -163,18 +164,11 @@ DiscoverPage {
             currentIndex = 0;
         }
 
-        section.delegate: QQC2.Label {
-            text: section
-            anchors {
-                right: parent.right
-            }
-        }
-
-        model: ResourcesProxyModel {
+        model: Discover.ResourcesProxyModel {
             id: appsModel
             property int tempSortRole: -1
-            sortRole: tempSortRole >= 0 ? tempSortRole : DiscoverSettings.appsListPageSorting
-            sortOrder: sortRole === ResourcesProxyModel.NameRole ? Qt.AscendingOrder : Qt.DescendingOrder
+            sortRole: tempSortRole >= 0 ? tempSortRole : DiscoverApp.DiscoverSettings.appsListPageSorting
+            sortOrder: sortRole === Discover.ResourcesProxyModel.NameRole ? Qt.AscendingOrder : Qt.DescendingOrder
 
             onBusyChanged: isBusy => {
                 if (isBusy) {
@@ -182,7 +176,11 @@ DiscoverPage {
                 }
             }
         }
+
         delegate: ApplicationDelegate {
+            // simply `required application` does not work due to QTBUG-86897
+            required property var model
+
             application: model.application
             compact: !applicationWindow().wideScreen
             showRating: page.showRating
@@ -190,7 +188,7 @@ DiscoverPage {
         }
 
         Item {
-            readonly property bool nothingFound: apps.count == 0 && !appsModel.isBusy && !ResourcesModel.isInitializing && (!page.searchPage || appsModel.search.length > 0)
+            readonly property bool nothingFound: apps.count == 0 && !appsModel.isBusy && !Discover.ResourcesModel.isInitializing && (!page.searchPage || appsModel.search.length > 0)
 
             anchors.fill: parent
             opacity: nothingFound ? 1 : 0
@@ -232,7 +230,7 @@ DiscoverPage {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 8)
 
-                visible: appsModel.search.length > 0 && stateFilter !== AbstractResource.Installed
+                visible: appsModel.search.length > 0 && stateFilter !== Discover.AbstractResource.Installed
 
                 icon.name: "edit-none"
                 text: page.category ? i18nc("@info:placeholder %1 is the name of an application; %2 is the name of a category of apps or add-ons",

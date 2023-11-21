@@ -1,27 +1,27 @@
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.14
-import QtQml.Models 2.15
-import org.kde.discover 2.0
-import org.kde.discover.app 1.0
+pragma ComponentBehavior: Bound
+
+import QtQml.Models
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
+import org.kde.discover as Discover
+import org.kde.discover.app as DiscoverApp
 import org.kde.kirigami as Kirigami
-import "navigation.js" as Navigation
 
 Kirigami.ApplicationWindow {
     id: window
 
     property string currentTopLevel
 
-    readonly property string topBrowsingComp: ("qrc:/qml/BrowsingPage.qml")
-    readonly property string topInstalledComp: ("qrc:/qml/InstalledPage.qml")
-    readonly property string topSearchComp: ("qrc:/qml/SearchPage.qml")
-    readonly property string topUpdateComp: ("qrc:/qml/UpdatesPage.qml")
-    readonly property string topSourcesComp: ("qrc:/qml/SourcesPage.qml")
-    readonly property string topAboutComp: ("qrc:/qml/AboutPage.qml")
-    readonly property QtObject stack: window.pageStack
+    readonly property string topBrowsingComp: "BrowsingPage.qml"
+    readonly property string topInstalledComp: "InstalledPage.qml"
+    readonly property string topSearchComp: "SearchPage.qml"
+    readonly property string topUpdateComp: "UpdatesPage.qml"
+    readonly property string topSourcesComp: "SourcesPage.qml"
+    readonly property string topAboutComp: "AboutPage.qml"
 
     objectName: "DiscoverMainWindow"
-    title: leftPage ? leftPage.title : ""
+    title: leftPage?.title ?? ""
 
     width: app.initialGeometry.width >= 10 ? app.initialGeometry.width : Kirigami.Units.gridUnit * 52
     height: app.initialGeometry.height >= 10 ? app.initialGeometry.height : Math.max(Kirigami.Units.gridUnit * 38, window.globalDrawer.contentHeight)
@@ -36,7 +36,7 @@ Kirigami.ApplicationWindow {
     pageStack.globalToolBar.showNavigationButtons: pageStack.currentIndex === 0 ? Kirigami.ApplicationHeaderStyle.None : Kirigami.ApplicationHeaderStyle.ShowBackButton
     pageStack.globalToolBar.canContainHandles: true // mobile handles in header
 
-    readonly property var leftPage: window.stack.depth > 0 ? window.stack.get(0) : null
+    readonly property Item leftPage: window.pageStack.depth > 0 ? window.pageStack.get(0) : null
 
     Component.onCompleted: {
         if (app.isRoot) {
@@ -44,6 +44,7 @@ Kirigami.ApplicationWindow {
         }
     }
 
+    // This property is queried from C++, do not remove it
     readonly property string describeSources: feedbackLoader.item ? feedbackLoader.item.describeDataSources : ""
     Loader {
         id: feedbackLoader
@@ -78,11 +79,11 @@ Kirigami.ApplicationWindow {
     TopLevelPageData {
         id: updateAction
 
-        icon.name: ResourcesModel.updatesCount <= 0
+        icon.name: Discover.ResourcesModel.updatesCount <= 0
             ? "update-none"
-            : (ResourcesModel.hasSecurityUpdates ? "update-high" : "update-low")
+            : (Discover.ResourcesModel.hasSecurityUpdates ? "update-high" : "update-low")
 
-        text: ResourcesModel.isFetching ? i18n("Fetching &updates…") : i18np("&Update (%1)", "&Updates (%1)", ResourcesModel.updatesCount)
+        text: Discover.ResourcesModel.isFetching ? i18n("Fetching &updates…") : i18np("&Update (%1)", "&Updates (%1)", Discover.ResourcesModel.updatesCount)
 
         component: topUpdateComp
         objectName: "update"
@@ -106,7 +107,7 @@ Kirigami.ApplicationWindow {
 
     Kirigami.Action {
         id: refreshAction
-        readonly property QtObject action: ResourcesModel.updateAction
+        readonly property Discover.DiscoverAction action: Discover.ResourcesModel.updateAction
         text: action.text
         icon.name: "view-refresh"
         onTriggered: action.trigger()
@@ -140,7 +141,7 @@ Kirigami.ApplicationWindow {
 
         function onListCategoryInternal(cat)  {
             currentTopLevel = topBrowsingComp;
-            Navigation.openCategory(cat, "")
+            Navigation.openCategory(cat)
         }
 
         function onOpenSearch(search) {
@@ -151,7 +152,7 @@ Kirigami.ApplicationWindow {
         function onOpenErrorPage(errorMessage, errorExplanation, buttonText, buttonIcon, buttonUrl) {
             Navigation.clearStack()
             console.warn(`Error: ${errorMessage}\n${errorExplanation}\nPlease visit ${buttonUrl}`)
-            window.stack.push(errorPageComponent, { title: i18n("Error"), errorMessage, errorExplanation, buttonText, buttonIcon, buttonUrl })
+            window.pageStack.push(errorPageComponent, { title: i18n("Error"), errorMessage, errorExplanation, buttonText, buttonIcon, buttonUrl })
         }
 
         function onUnableToFind(resid) {
@@ -161,7 +162,7 @@ Kirigami.ApplicationWindow {
     }
 
     Connections {
-        target: ResourcesModel
+        target: Discover.ResourcesModel
 
         function onSwitchToUpdates() {
             window.currentTopLevel = topUpdateComp
@@ -201,12 +202,7 @@ Kirigami.ApplicationWindow {
             property string buttonIcon: ""
             property string buttonUrl: ""
             readonly property bool isHome: true
-            function searchFor(text) {
-                if (text.length === 0) {
-                    return;
-                }
-                Navigation.openCategory(null, "")
-            }
+
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 8)
@@ -234,7 +230,7 @@ Kirigami.ApplicationWindow {
             id: sheet
             showCloseButton: false
             property QtObject transaction
-            property alias description: desc.text
+            property alias description: descriptionLabel.text
             property bool acted: false
 
             // No need to add our own ScrollView since OverlaySheet includes
@@ -242,8 +238,8 @@ Kirigami.ApplicationWindow {
             // But we do need to put the label into a Layout of some sort so we
             // can limit the width of the sheet.
             ColumnLayout {
-                Label {
-                    id: desc
+                QQC2.Label {
+                    id: descriptionLabel
 
                     Layout.fillWidth: true
                     Layout.maximumWidth: Kirigami.Units.gridUnit * 20
@@ -257,7 +253,7 @@ Kirigami.ApplicationWindow {
 
                 Item { Layout.fillWidth : true }
 
-                Button {
+                QQC2.Button {
                     text: i18n("Proceed")
                     icon.name: "dialog-ok"
                     onClicked: {
@@ -269,7 +265,7 @@ Kirigami.ApplicationWindow {
                     Keys.onReturnPressed: clicked()
                 }
 
-                Button {
+                QQC2.Button {
                     Layout.alignment: Qt.AlignRight
                     text: i18n("Cancel")
                     icon.name: "dialog-cancel"
@@ -295,15 +291,15 @@ Kirigami.ApplicationWindow {
         id: distroErrorMessageDialog
         Kirigami.OverlaySheet {
             id: sheet
-            property alias message: desc.text
+            property alias message: messageLabel.text
 
             // No need to add our own ScrollView since OverlaySheet includes
             // one automatically.
             // But we do need to put the label into a Layout of some sort so we
             // can limit the width of the sheet.
             ColumnLayout {
-                Label {
-                    id: desc
+                QQC2.Label {
+                    id: messageLabel
 
                     Layout.fillWidth: true
                     Layout.maximumWidth: Kirigami.Units.gridUnit * 20
@@ -313,18 +309,18 @@ Kirigami.ApplicationWindow {
                 }
 
                 RowLayout {
-                    Item { Layout.fillWidth : true }
-                    Button {
+                    Item { Layout.fillWidth: true }
+                    QQC2.Button {
                         icon.name: "tools-report-bug"
                         text: i18n("Report this issue")
                         onClicked: {
-                            Qt.openUrlExternally(ResourcesModel.distroBugReportUrl())
+                            Qt.openUrlExternally(Discover.ResourcesModel.distroBugReportUrl())
                         }
                     }
                 }
             }
 
-            onVisibleChanged: if(!visible) {
+            onVisibleChanged: if (!visible) {
                 sheet.destroy(1000)
             }
         }
@@ -359,6 +355,9 @@ Kirigami.ApplicationWindow {
                 Layout.bottomMargin: Kirigami.Units.gridUnit
 
                 Repeater {
+                    // roles: {
+                    //   message: string
+                    // }
                     model: ListModel {
                         id: messages
 
@@ -371,10 +370,12 @@ Kirigami.ApplicationWindow {
                         }
                     }
 
-                    delegate: Label {
+                    delegate: QQC2.Label {
+                        required property string message
+
                         Layout.fillWidth: true
 
-                        text: model.message
+                        text: message
                         textFormat: Text.StyledText
                         wrapMode: Text.WordWrap
                     }
@@ -384,7 +385,7 @@ Kirigami.ApplicationWindow {
             RowLayout {
                 Layout.fillWidth: true
 
-                Button {
+                QQC2.Button {
                     text: i18nc("@action:button", "Show Previous")
                     icon.name: "go-previous"
                     visible: messages.count > 1
@@ -397,7 +398,7 @@ Kirigami.ApplicationWindow {
                     }
                 }
 
-                Button {
+                QQC2.Button {
                     text: i18nc("@action:button", "Show Next")
                     icon.name: "go-next"
                     visible: messages.count > 1
@@ -412,7 +413,7 @@ Kirigami.ApplicationWindow {
 
                 Item { Layout.fillWidth: true }
 
-                Button {
+                QQC2.Button {
                     Layout.alignment: Qt.AlignRight
                     text: i18n("Copy to Clipboard")
                     icon.name: "edit-copy"
@@ -431,13 +432,15 @@ Kirigami.ApplicationWindow {
     }
 
     Instantiator {
-        model: TransactionModel
+        model: Discover.TransactionModel
 
         delegate: Connections {
-            target: model.transaction ? model.transaction : null
+            required property Discover.Transaction transaction
+
+            target: transaction
 
             function onProceedRequest(title, description) {
-                var dialog = proceedDialog.createObject(window, { transaction, title, description })
+                const dialog = proceedDialog.createObject(window, { transaction, title, description })
                 dialog.open()
                 app.restore()
             }
@@ -447,13 +450,13 @@ Kirigami.ApplicationWindow {
             }
 
             function onDistroErrorMessage(message, actions) {
-                var dialog = distroErrorMessageDialog.createObject(window, { title: i18n("Error"), transaction, message })
+                const dialog = distroErrorMessageDialog.createObject(window, { title: i18n("Error"), transaction, message })
                 dialog.open()
                 app.restore()
             }
 
             function onWebflowStarted(url) {
-                var component = Qt.createComponent("WebflowDialog.qml");
+                const component = Qt.createComponent("WebflowDialog.qml");
                 if (component.status === Component.Error) {
                     Qt.openUrlExternally(url);
                     console.error("Webflow Error", component.errorString())
@@ -466,9 +469,9 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    PowerManagementInterface {
-        reason: TransactionModel.mainTransactionText
-        preventSleep: TransactionModel.count > 0
+    DiscoverApp.PowerManagementInterface {
+        reason: Discover.TransactionModel.mainTransactionText
+        preventSleep: Discover.TransactionModel.count > 0
     }
 
     contextDrawer: Kirigami.ContextDrawer {}
@@ -480,14 +483,15 @@ Kirigami.ApplicationWindow {
     onCurrentTopLevelChanged: {
         pageStack.clear();
         if (currentTopLevel) {
-            pageStack.push(currentTopLevel);
+            const pageUrl = Qt.resolvedUrl(currentTopLevel);
+            pageStack.push(pageUrl);
         }
         globalDrawer.forceSearchFieldFocus();
     }
 
-    UnityLauncher {
+    DiscoverApp.UnityLauncher {
         launcherId: "org.kde.discover.desktop"
-        progressVisible: TransactionModel.count > 0
-        progress: TransactionModel.progress
+        progressVisible: Discover.TransactionModel.count > 0
+        progress: Discover.TransactionModel.progress
     }
 }

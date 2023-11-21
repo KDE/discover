@@ -4,65 +4,69 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.1
-import org.kde.kirigami 2.10 as Kirigami
-import org.kde.discover 2.0
-import org.kde.discover.app 1.0
-import "navigation.js" as Navigation
+pragma ComponentBehavior: Bound
+
+import QtQuick
+import QtQuick.Layouts
+import org.kde.discover as Discover
+import org.kde.discover.app
+import org.kde.kirigami as Kirigami
 
 Kirigami.InlineMessage {
-    id: oldBetaItem
+    id: root
 
     // resource is set by the creator of the element in ApplicationPage.
-    //required property AbstractResource resource
-    Layout.fillWidth: true
-    text: betaOlderThanStable ? i18ndc("libdiscover", "@label %1 is the name of an application", "This development version of %1 is outdated. Using the stable version is highly recommended.", resource.name) : i18ndc("libdiscover", "@label %1 is the name of an application", "A more stable version of %1 is available.", resource.name)
-    height: visible ? implicitHeight : 0
-    visible: actionsArray.filter(action => action.visible).length > 0
-    type: betaOlderThanStable ? Kirigami.MessageType.Warning : Kirigami.MessageType.Information
+    property Discover.AbstractResource app: resource
 
-    property bool betaOlderThanStable: false
-    property var app: resource
+    property bool __betaOlderThanStable: false
+
+    Layout.fillWidth: true
+
+    text: __betaOlderThanStable ? i18ndc("libdiscover", "@label %1 is the name of an application", "This development version of %1 is outdated. Using the stable version is highly recommended.", resource.name) : i18ndc("libdiscover", "@label %1 is the name of an application", "A more stable version of %1 is available.", resource.name)
+    height: visible ? implicitHeight : 0
+    visible: actions.some(action => action?.visible)
+    type: __betaOlderThanStable ? Kirigami.MessageType.Warning : Kirigami.MessageType.Information
+
     onAppChanged: {
-        betaOlderThanStable = false
-        for (const action in actionsArray) {
-            actionsArray[action].reset()
+        __betaOlderThanStable = false
+        for (const action of actions) {
+            action.reset()
         }
     }
 
     Instantiator {
-        id: inst
-        model: ResourcesProxyModel {
+        id: instantiator
+        model: Discover.ResourcesProxyModel {
             allBackends: true
-            backendFilter: resource.backend
-            resourcesUrl: resource.url
+            backendFilter: root.app.backend
+            resourcesUrl: root.app.url
         }
-        active: resource.isDesktopApp
+        active: root.app.isDesktopApp
         delegate: Kirigami.Action {
-            visible: inst.active && model.application !== resource && model.application.branch !== "beta" && model.application.branch !== "master" && versionCompare !== 0
-            text: i18ndc("libdiscover", "@action: button %1 is the name of a Flatpak repo", "View Stable Version on %1", displayOrigin)
+            required property var model
+
+            readonly property int versionCompare: root.app.versionCompare(model.application)
+
+            visible: instantiator.active && model.application !== root.app && model.application.branch !== "beta" && model.application.branch !== "master" && versionCompare !== 0
+            text: i18ndc("libdiscover", "@action: button %1 is the name of a Flatpak repo", "View Stable Version on %1", model.displayOrigin)
+
             onTriggered: {
                 applicationWindow().pageStack.pop();
                 Navigation.openApplication(model.application)
             }
-            readonly property int versionCompare: resource.versionCompare(model.application)
+
             Component.onCompleted: reset()
+
             function reset() {
-                oldBetaItem.betaOlderThanStable |= versionCompare < 0
+                root.__betaOlderThanStable |= versionCompare < 0
             }
         }
 
         onObjectAdded: (index, object) => {
-            oldBetaItem.actionsArray.splice(index, 0, object)
-            oldBetaItem.actions = oldBetaItem.actionsArray = oldBetaItem.actionsArray
+            root.actions.push(object);
         }
         onObjectRemoved: (index, object) => {
-            oldBetaItem.actionsArray.splice(index, 1)
-            oldBetaItem.actions = oldBetaItem.actionsArray = oldBetaItem.actionsArray
+            root.actions = root.actions.filter(action => action !== object)
         }
     }
-
-    property var actionsArray: []
-    actions: actionsArray
 }

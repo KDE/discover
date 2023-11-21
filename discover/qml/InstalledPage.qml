@@ -1,16 +1,15 @@
-import QtQuick 2.1
-import QtQuick.Controls 2.1
-import QtQuick.Layouts 1.1
-import org.kde.discover 2.0
-import org.kde.discover.app 1.0
+import QtQuick
+import QtQuick.Layouts
+import org.kde.discover as Discover
+import org.kde.discover.app as DiscoverApp
 
 ApplicationsListPage {
     id: page
 
-    stateFilter: AbstractResource.Installed
+    stateFilter: Discover.AbstractResource.Installed
     allBackends: true
     sortProperty: "installedPageSorting"
-    sortRole: DiscoverSettings.installedPageSorting
+    sortRole: DiscoverApp.DiscoverSettings.installedPageSorting
 
     name: i18n("Installed")
     compact: true

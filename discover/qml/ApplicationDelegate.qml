@@ -6,23 +6,25 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQuick.Controls 2.1
-import QtQuick.Layouts 1.1
-import QtQuick.Window 2.1
-import "navigation.js" as Navigation
-import org.kde.discover 2.0
-import org.kde.kirigami 2.14 as Kirigami
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
+import org.kde.discover as Discover
+import org.kde.kirigami as Kirigami
 
 BasicAbstractCard {
     id: root
 
+    required property int index
+
+    // Should be required, but QML Engine does not support required aliases yet: QTBUG-86897
     property alias application: installButton.application
+
     property bool compact: false
     property bool showRating: true
     property bool showSize: false
 
-    readonly property bool appIsFromNonDefaultBackend: ResourcesModel.currentApplicationBackend !== application.backend && application.backend.hasApplications
+    readonly property bool appIsFromNonDefaultBackend: Discover.ResourcesModel.currentApplicationBackend !== application.backend && application.backend.hasApplications
     showClickFeedback: true
 
     function trigger() {
@@ -31,6 +33,7 @@ BasicAbstractCard {
     }
     padding: Kirigami.Units.largeSpacing * 2
     highlighted: ListView.isCurrentItem
+
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
 
@@ -113,7 +116,7 @@ BasicAbstractCard {
                         implicitWidth: Kirigami.Units.iconSizes.smallMedium
                         implicitHeight: Kirigami.Units.iconSizes.smallMedium
                     }
-                    Label {
+                    QQC2.Label {
                         text: application.backend.displayName
                         font: Kirigami.Theme.smallFont
                     }
@@ -121,7 +124,7 @@ BasicAbstractCard {
             }
 
             // Description/"Comment" label
-            Label {
+            QQC2.Label {
                 id: description
                 Layout.fillWidth: true
                 Layout.preferredHeight: descriptionMetrics.height
@@ -177,7 +180,7 @@ BasicAbstractCard {
                             precision: Rating.Precision.HalfStar
                             padding: 0
                         }
-                        Label {
+                        QQC2.Label {
                             Layout.fillWidth: true
                             Layout.alignment: Qt.AlignVCenter
                             topPadding: (ratingLabelMetrics.boundingRect.y - ratingLabelMetrics.tightBoundingRect.y)/2
@@ -194,7 +197,7 @@ BasicAbstractCard {
                     }
 
                     // Size label
-                    Label {
+                    QQC2.Label {
                         id: sizeInfo
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignBottom

@@ -1,8 +1,8 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.13
-import org.kde.discover 2.0
-import org.kde.kirigami 2.14 as Kirigami
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
+import org.kde.kirigami as Kirigami
+import org.kde.discover as Discover
 
 ConditionalLoader {
     id: root
@@ -10,11 +10,11 @@ ConditionalLoader {
     property alias application: listener.resource
 
     readonly property alias isActive: listener.isActive
-    readonly property bool isStateAvailable: application.state !== AbstractResource.Broken
+    readonly property bool isStateAvailable: application.state !== Discover.AbstractResource.Broken
     readonly property alias listener: listener
     property bool availableFromOnlySingleSource: false
 
-    TransactionListener {
+    Discover.TransactionListener {
         id: listener
     }
 
@@ -41,6 +41,7 @@ ConditionalLoader {
         enabled: !listener.isActive && root.isStateAvailable
         onTriggered: root.click()
     }
+
     readonly property Kirigami.Action cancelAction: Kirigami.Action {
         text: i18n("Cancel")
         icon.name: "dialog-cancel"
@@ -57,9 +58,9 @@ ConditionalLoader {
     function click() {
         if (!isActive) {
             if(application.isInstalled) {
-                ResourcesModel.removeApplication(application);
+                Discover.ResourcesModel.removeApplication(application);
             } else {
-                ResourcesModel.installApplication(application);
+                Discover.ResourcesModel.installApplication(application);
             }
         } else {
             console.warn("trying to un/install but resource still active", application.name);
@@ -68,15 +69,15 @@ ConditionalLoader {
 
     condition: listener.isActive
     componentTrue: RowLayout {
-        ToolButton {
+        QQC2.ToolButton {
             Layout.fillHeight: true
             action: root.cancelAction
 
-            display: AbstractButton.IconOnly
+            display: QQC2.AbstractButton.IconOnly
 
-            ToolTip.text: text
-            ToolTip.visible: hovered
-            ToolTip.delay: Kirigami.Units.toolTipDelay
+            QQC2.ToolTip.text: text
+            QQC2.ToolTip.visible: hovered
+            QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
         }
 
         LabelBackground {
@@ -86,18 +87,18 @@ ConditionalLoader {
         }
     }
 
-    componentFalse: Button {
+    componentFalse: QQC2.Button {
         visible: !application.isInstalled || application.isRemovable
-        enabled: application.state !== AbstractResource.Broken
+        enabled: application.state !== Discover.AbstractResource.Broken
         activeFocusOnTab: false
 
         text: root.action.text
         icon.name: root.action.icon.name
-        display: AbstractButton.IconOnly
+        display: QQC2.AbstractButton.IconOnly
 
-        ToolTip.text: text
-        ToolTip.visible: hovered
-        ToolTip.delay: Kirigami.Units.toolTipDelay
+        QQC2.ToolTip.text: text
+        QQC2.ToolTip.visible: hovered
+        QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
 
         onClicked: root.click()
     }

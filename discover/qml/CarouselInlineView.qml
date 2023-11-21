@@ -10,13 +10,13 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as QQC2
 import QtQuick.Templates as T
-import org.kde.discover
+import org.kde.discover as Discover
 import org.kde.kirigami as Kirigami
 
 T.Control {
     id: root
 
-    required property ScreenshotsModel carouselModel
+    required property Discover.ScreenshotsModel carouselModel
 
     property real edgeMargin: 0
     property alias view: view

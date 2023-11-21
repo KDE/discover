@@ -5,14 +5,14 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQuick.Controls 2.4
-import QtQuick.Layouts 1.1
-import QtQml.Models 2.15
-import org.kde.discover 2.0
-import org.kde.discover.app 1.0
-import "navigation.js" as Navigation
-import org.kde.kirigami 2.19 as Kirigami
+pragma ComponentBehavior: Bound
+
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
+import org.kde.kirigami as Kirigami
+import org.kde.discover as Discover
+import org.kde.discover.app as DiscoverApp
 
 DiscoverPage {
     id: page
@@ -35,18 +35,11 @@ DiscoverPage {
                 margins: Kirigami.Units.smallSpacing
             }
 
-            inlineMessage: ResourcesModel.inlineMessage
+            inlineMessage: Discover.ResourcesModel.inlineMessage
         }
     }
 
     readonly property bool isHome: true
-
-    function searchFor(text) {
-        if (text.length === 0) {
-            return;
-        }
-        Navigation.openCategory(null, "")
-    }
 
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
     Kirigami.Theme.inherit: false
@@ -61,17 +54,23 @@ DiscoverPage {
         anchors.centerIn: parent
         width: parent.width - (Kirigami.Units.largeSpacing * 4)
         sourceComponent: Kirigami.PlaceholderMessage {
-            readonly property var helpfulError: featuredModel.currentApplicationBackend.explainDysfunction()
+            readonly property Discover.InlineMessage helpfulError: featuredModel.currentApplicationBackend.explainDysfunction()
+
             icon.name: helpfulError.iconName
             text: i18n("Unable to load applications")
             explanation: helpfulError.message
 
             Repeater {
                 model: helpfulError.actions
-                delegate: Button {
+                delegate: QQC2.Button {
+                    id: delegate
+
+                    required property Discover.DiscoverAction modelData
+
                     Layout.alignment: Qt.AlignHCenter
+
                     action: ConvertDiscoverAction {
-                        action: modelData
+                        action: delegate.modelData
                     }
                 }
             }
@@ -107,9 +106,9 @@ DiscoverPage {
 
         Repeater {
             id: popRep
-            model: PaginateModel {
+            model: DiscoverApp.PaginateModel {
                 pageSize: apps.maximumColumns * 2
-                sourceModel: OdrsAppsModel {
+                sourceModel: DiscoverApp.OdrsAppsModel {
                     // filter: FOSS
                 }
             }
@@ -127,7 +126,7 @@ DiscoverPage {
 
         Repeater {
             id: featuredRep
-            model: FeaturedModel {
+            model: DiscoverApp.FeaturedModel {
                 id: featuredModel
             }
             delegate: GridApplicationDelegate { visible: !featuredModel.isFetching }
@@ -144,23 +143,23 @@ DiscoverPage {
 
         Repeater {
             id: gamesRep
-            model: PaginateModel {
+            model: DiscoverApp.PaginateModel {
                 pageSize: apps.maximumColumns
-                sourceModel: ResourcesProxyModel {
+                sourceModel: Discover.ResourcesProxyModel {
                     filteredCategoryName: "Games"
-                    backendFilter: ResourcesModel.currentApplicationBackend
-                    sortRole: ResourcesProxyModel.SortableRatingRole
+                    backendFilter: Discover.ResourcesModel.currentApplicationBackend
+                    sortRole: Discover.ResourcesProxyModel.SortableRatingRole
                     sortOrder: Qt.DescendingOrder
                 }
             }
             delegate: GridApplicationDelegate { visible: !featuredModel.isFetching }
         }
 
-        Button {
+        QQC2.Button {
             text: i18nc("@action:button", "See More")
             icon.name: "go-next-view"
             Layout.columnSpan: apps.columns
-            onClicked: Navigation.openCategory(CategoryModel.findCategoryByName("Games"))
+            onClicked: Navigation.openCategory(Discover.CategoryModel.findCategoryByName("Games"))
             visible: gamesRep.count > 0 && !featuredModel.isFetching
         }
 
@@ -173,23 +172,23 @@ DiscoverPage {
 
         Repeater {
             id: devRep
-            model: PaginateModel {
+            model: DiscoverApp.PaginateModel {
                 pageSize: apps.maximumColumns
-                sourceModel: ResourcesProxyModel {
+                sourceModel: Discover.ResourcesProxyModel {
                     filteredCategoryName: "Developer Tools"
-                    backendFilter: ResourcesModel.currentApplicationBackend
-                    sortRole: ResourcesProxyModel.SortableRatingRole
+                    backendFilter: Discover.ResourcesModel.currentApplicationBackend
+                    sortRole: Discover.ResourcesProxyModel.SortableRatingRole
                     sortOrder: Qt.DescendingOrder
                 }
             }
             delegate: GridApplicationDelegate { visible: !featuredModel.isFetching }
         }
 
-        Button {
+        QQC2.Button {
             text: i18nc("@action:button", "See More")
             icon.name: "go-next-view"
             Layout.columnSpan: apps.columns
-            onClicked: Navigation.openCategory(CategoryModel.findCategoryByName("Developer Tools"))
+            onClicked: Navigation.openCategory(Discover.CategoryModel.findCategoryByName("Developer Tools"))
             visible: devRep.count > 0 && !featuredModel.isFetching
         }
     }

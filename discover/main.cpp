@@ -26,15 +26,6 @@
 
 #include <QProcessEnvironment>
 
-typedef QHash<QString, DiscoverObject::CompactMode> StringCompactMode;
-Q_GLOBAL_STATIC(StringCompactMode,
-                          s_decodeCompactMode,
-                          StringCompactMode{
-                              {QLatin1String("auto"), DiscoverObject::Auto},
-                              {QLatin1String("compact"), DiscoverObject::Compact},
-                              {QLatin1String("full"), DiscoverObject::Full},
-                          })
-
 QCommandLineParser *createParser()
 {
     // clang-format off
@@ -44,7 +35,6 @@ QCommandLineParser *createParser()
     parser->addOption(QCommandLineOption(QStringLiteral("category"), i18n("Display a list of entries with a category."), QStringLiteral("name")));
     parser->addOption(QCommandLineOption(QStringLiteral("mode"), i18n("Open Discover in a said mode. Modes correspond to the toolbar buttons."), QStringLiteral("name")));
     parser->addOption(QCommandLineOption(QStringLiteral("listmodes"), i18n("List all the available modes.")));
-    parser->addOption(QCommandLineOption(QStringLiteral("compact"), i18n("Compact Mode (auto/compact/full)."), QStringLiteral("mode"), QStringLiteral("auto")));
     parser->addOption(QCommandLineOption(QStringLiteral("local-filename"), i18n("Local package file to install"), QStringLiteral("package")));
     parser->addOption(QCommandLineOption(QStringLiteral("listbackends"), i18n("List all the available backends.")));
     parser->addOption(QCommandLineOption(QStringLiteral("search"), i18n("Search string."), QStringLiteral("text")));
@@ -89,7 +79,7 @@ void processArgs(QCommandLineParser *parser, DiscoverObject *discoverObject)
         }
     }
 
-    if (auto window = discoverObject->rootObject()) {
+    if (auto window = discoverObject->mainWindow()) {
         if (window->property("pageStack").value<QObject *>()->property("depth").toInt() == 0) {
             discoverObject->openMode(QStringLiteral("Browsing"));
         }
@@ -176,36 +166,32 @@ int main(int argc, char **argv)
             options.removeAll(QStringLiteral("test"));
             QVariantMap initialProperties;
             if (!options.isEmpty() || !parser->positionalArguments().isEmpty())
-                initialProperties = {{QStringLiteral("currentTopLevel"), QStringLiteral("qrc:/qml/LoadingPage.qml")}};
+                initialProperties = {{QStringLiteral("currentTopLevel"), QStringLiteral(DISCOVER_BASE_URL "/LoadingPage.qml")}};
             if (feedback) {
                 initialProperties.insert(QStringLiteral("visible"), false);
             }
-            discoverObject = new DiscoverObject(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverObject::Full), initialProperties);
+            discoverObject = new DiscoverObject(initialProperties);
         }
         if (feedback) {
             QTextStream(stdout) << discoverObject->describeSources() << '\n';
             delete discoverObject;
             return 0;
         } else {
-            auto onActivateRequested = [discoverObject](const QStringList &arguments, const QString & /*workingDirectory*/) {
-                discoverObject->restore();
-                auto window = discoverObject->rootObject();
-                if (!window) {
-                    // Should never happen anyway
-                    QCoreApplication::instance()->quit();
-                    return;
-                }
-
-                raiseWindow(window);
-
-                if (arguments.isEmpty()) {
-                    return;
-                }
-                QScopedPointer<QCommandLineParser> parser(createParser());
-                parser->parse(arguments);
-                processArgs(parser.data(), discoverObject);
-            };
-            QObject::connect(service, &KDBusService::activateRequested, discoverObject, onActivateRequested);
+            QObject::connect(service,
+                             &KDBusService::activateRequested,
+                             discoverObject,
+                             [discoverObject](const QStringList &arguments, const QString & /*workingDirectory*/) {
+                                 discoverObject->restore();
+                                 if (auto window = discoverObject->mainWindow()) {
+                                     raiseWindow(window);
+                                     if (arguments.isEmpty()) {
+                                         return;
+                                     }
+                                     QScopedPointer<QCommandLineParser> parser(createParser());
+                                     parser->parse(arguments);
+                                     processArgs(parser.data(), discoverObject);
+                                 }
+                             });
         }
 
         QObject::connect(&app, &QCoreApplication::aboutToQuit, discoverObject, &DiscoverObject::deleteLater);

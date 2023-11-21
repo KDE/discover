@@ -18,31 +18,20 @@ class QQmlApplicationEngine;
 class CachedNetworkAccessManagerFactory;
 class TransactionsJob;
 
+#define DISCOVER_BASE_URL "qrc:/qt/qml/org/kde/discover/qml"
+
 class DiscoverObject : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(CompactMode compactMode READ compactMode WRITE setCompactMode NOTIFY compactModeChanged)
     Q_PROPERTY(bool isRoot READ isRoot CONSTANT)
     Q_PROPERTY(QRect initialGeometry READ initialGeometry CONSTANT)
+    Q_PROPERTY(QQuickWindow *mainWindow READ mainWindow CONSTANT)
 
 public:
-    enum CompactMode {
-        Auto,
-        Compact,
-        Full,
-    };
-    Q_ENUM(CompactMode)
-
-    explicit DiscoverObject(CompactMode mode, const QVariantMap &initialProperties);
+    explicit DiscoverObject(const QVariantMap &initialProperties);
     ~DiscoverObject() override;
 
     QStringList modes() const;
-
-    CompactMode compactMode() const
-    {
-        return m_mode;
-    }
-    void setCompactMode(CompactMode mode);
 
     bool eventFilter(QObject *object, QEvent *event) override;
 
@@ -51,7 +40,7 @@ public:
     void loadTest(const QUrl &url);
 
     static bool isRoot();
-    QQuickWindow *rootObject() const;
+    QQuickWindow *mainWindow() const;
     void showError(const QString &msg);
     Q_INVOKABLE void copyTextToClipboard(const QString text);
     QRect initialGeometry() const;
@@ -78,13 +67,12 @@ Q_SIGNALS:
     void listMimeInternal(const QString &mime);
     void listCategoryInternal(Category *cat);
 
-    void compactModeChanged(DiscoverObject::CompactMode compactMode);
     void unableToFind(const QString &resid);
     void openErrorPage(const QString &errorMessage, const QString &errorExplanation, const QString &buttonText, const QString &buttonIcon, const QString &buttonURL);
 
 private:
     void showLoadingPage();
-    void integrateObject(QObject *object);
+    void initMainWindow(QQuickWindow *mainWindow);
     bool quitWhenIdle();
     void reconsiderQuit();
     QQmlApplicationEngine *engine() const
@@ -93,8 +81,8 @@ private:
     }
 
     QQmlApplicationEngine *const m_engine;
+    std::unique_ptr<QQuickWindow> m_mainWindow;
 
-    CompactMode m_mode;
     QScopedPointer<CachedNetworkAccessManagerFactory> m_networkAccessManagerFactory;
     KStatusNotifierItem *m_sni = nullptr;
 };

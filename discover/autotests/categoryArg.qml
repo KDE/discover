@@ -1,8 +1,7 @@
-import QtQuick 2.0
-import QtTest 1.1
+import QtQuick
+import QtTest
 
-DiscoverTest
-{
+DiscoverTest {
     function test_openCategory() {
         verify(appRoot.stack.currentItem, "has a page");
         while (appRoot.stack.currentItem.title === "")

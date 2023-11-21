@@ -1,14 +1,15 @@
-import org.kde.kirigami 2.14 as Kirigami
-import org.kde.userfeedback 1.0 as UserFeedback
+import QtQml
+import QtQuick.Templates as T
+import org.kde.kirigami as Kirigami
+import org.kde.userfeedback as UserFeedback
 import org.kde.kcmutils as KCMUtils
-import org.kde.discover 2.0
-import org.kde.discover.app 1.0
-import QtQml 2.0
+import org.kde.discover as Discover
+import org.kde.discover.app as DiscoverApp
 
 UserFeedback.Provider {
     id: provider
 
-    readonly property list<QtObject> actions: [
+    readonly property list<T.Action> actions: [
         Kirigami.Action {
             text: i18n("Submit usage information")
             tooltip: i18n("Sends anonymized usage information to KDE so we can better understand our users. For more information see https://kde.org/privacypolicy-apps.php.")
@@ -40,7 +41,7 @@ UserFeedback.Provider {
     encouragementInterval: 30
     applicationStartsUntilEncouragement: 1
     applicationUsageTimeUntilEncouragement: 1
-    telemetryMode: UserFeedbackSettings.feedbackLevel
+    telemetryMode: DiscoverApp.UserFeedbackSettings.feedbackLevel
 
     function encouraged() {
         KCMUtils.KCMLauncher.openSystemSettings("kcm_feedback");
@@ -68,13 +69,13 @@ UserFeedback.Provider {
     UserFeedback.StartCountSource { mode: UserFeedback.Provider.BasicUsageStatistics }
     UserFeedback.UsageTimeSource { mode: UserFeedback.Provider.BasicUsageStatistics }
     UserFeedback.LocaleInfoSource { mode: UserFeedback.Provider.DetailedSystemInformation }
-    UserFeedback.OpenGLInfoSource{ mode: UserFeedback.Provider.DetailedSystemInformation }
+    UserFeedback.OpenGLInfoSource { mode: UserFeedback.Provider.DetailedSystemInformation }
     UserFeedback.ScreenInfoSource { mode: UserFeedback.Provider.DetailedSystemInformation }
     UserFeedback.PropertySource {
         mode: UserFeedback.Provider.DetailedUsageStatistics
         name: "Application Source Name"
         sourceId: "applicationSourceName"
-        data: { "value": ResourcesModel.applicationSourceName }
+        data: { "value": Discover.ResourcesModel.applicationSourceName }
         description: "The source for applications"
     }
 }

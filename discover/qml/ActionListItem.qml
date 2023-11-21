@@ -4,11 +4,11 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-import QtQuick 2.5
-import QtQuick.Controls 2.5 as QQC2
+import QtQuick
+import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 
-import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami as Kirigami
 import org.kde.kirigami.delegates as KD
 
 QQC2.ItemDelegate {

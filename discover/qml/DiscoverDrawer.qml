@@ -4,13 +4,11 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-import QtQuick 2.5
-import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.1
-import org.kde.discover 2.0
-import org.kde.discover.app 1.0
-import org.kde.kirigami 2.19 as Kirigami
-import "navigation.js" as Navigation
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
+import org.kde.discover as Discover
+import org.kde.kirigami as Kirigami
 
 Kirigami.GlobalDrawer {
     id: drawer
@@ -31,23 +29,24 @@ Kirigami.GlobalDrawer {
         }
     }
 
-    function createCategoryActions(categories) {
-        var ret = []
-        for (var x in categories) {
-            var y = categoryActionComponent.createObject(drawer, {
-                category: categories[x]
-            })
-            y.children = createCategoryActions(categories[x].subcategories)
-            ret.push(y)
+    function createCategoryActions(categories /*list<Discover.Category>*/) /*list<Kirigami.Action>*/ {
+        const ret = []
+        for (const category of categories) {
+            const categoryAction = categoryActionComponent.createObject(drawer, { category })
+            categoryAction.children = createCategoryActions(category.subcategories)
+            ret.push(categoryAction)
         }
         return ret;
     }
-    actions: createCategoryActions(CategoryModel.rootCategories)
+    actions: createCategoryActions(Discover.CategoryModel.rootCategories)
 
-    leftPadding: 0
-    rightPadding: 0
-    topPadding: 0
-    bottomPadding: 0
+    padding: 0
+    topPadding: undefined
+    leftPadding: undefined
+    rightPadding: undefined
+    bottomPadding: undefined
+    verticalPadding: undefined
+    horizontalPadding: undefined
 
     // FIXME: Dirty workaround for 385992
     width: Kirigami.Units.gridUnit * 14
@@ -124,7 +123,7 @@ Kirigami.GlobalDrawer {
             objectName: "updateButton"
             action: updateAction
             visible: enabled && drawer.wideScreen
-            stateIconName: ResourcesModel.updatesCount > 0 ? "emblem-important" : ""
+            stateIconName: Discover.ResourcesModel.updatesCount > 0 ? "emblem-important" : ""
 
             // Disable down navigation on the last item so we don't escape the
             // actual list.
@@ -144,10 +143,11 @@ Kirigami.GlobalDrawer {
         }
     ]
 
-    ResourcesProxyModel {
+    Discover.ResourcesProxyModel {
         id: appsModel
-        search: currentSearchText
+        search: drawer.currentSearchText
     }
+
     ColumnLayout {
         spacing: 0
         Layout.fillWidth: true
@@ -180,14 +180,16 @@ Kirigami.GlobalDrawer {
     Component {
         id: categoryActionComponent
         Kirigami.Action {
-            property QtObject category
-            readonly property bool itsMe: window.leftPage && window.leftPage.hasOwnProperty("category") && (window.leftPage.category === category)
-            text: category ? category.name : ""
-            icon.name: category ? category.icon : ""
+            required property Discover.Category category
+
+            readonly property bool itsMe: window?.leftPage?.category === category
+
+            text: category?.name ?? ""
+            icon.name: category?.icon ?? ""
             checked: itsMe
             enabled: (currentSearchText.length === 0
-                      || (category && category.contains(appsModel.subcategories))
-                     )
+                      || (category?.contains(appsModel.subcategories) ?? false))
+
             onTriggered: {
                 if (!window.leftPage.canNavigate) {
                     Navigation.openCategory(category, currentSearchText)

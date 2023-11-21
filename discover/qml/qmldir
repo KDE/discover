@@ -1,0 +1,7 @@
+# This file exists for the sake of DiscoverObject, so that it can query
+# singleton and load main window using a nice URI. Singletones are not
+# even possible to load without a module definition simply by file path.
+module org.kde.discover.qml
+
+singleton Navigation Navigation.qml
+DiscoverWindow DiscoverWindow.qml

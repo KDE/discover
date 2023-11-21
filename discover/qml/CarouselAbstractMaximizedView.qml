@@ -6,11 +6,11 @@
 
 import QtQml
 import QtQuick
-import org.kde.discover
+import org.kde.discover as Discover
 
 QtObject {
     required property int currentIndex
-    required property ScreenshotsModel model
+    required property Discover.ScreenshotsModel model
     required property Window transientParent
     required property int mode
 

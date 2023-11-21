@@ -4,11 +4,11 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15 as QQC2
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls as QQC2
 
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami as Kirigami
 
 QQC2.Button {
     id: root
@@ -19,7 +19,7 @@ QQC2.Button {
     property string tooltipText
     readonly property int implicitMinWidth: leftPadding +
                                             layout.spacing +
-                                            text.width +
+                                            textMetrics.width +
                                             layout.spacing +
                                             icon.Layout.preferredWidth +
                                             layout.spacing +
@@ -36,7 +36,7 @@ QQC2.Button {
     bottomPadding: Kirigami.Units.largeSpacing
 
     TextMetrics {
-        id: text
+        id: textMetrics
         text: root.title
     }
 

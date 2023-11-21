@@ -6,15 +6,15 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Window 2.15
-import QtQuick.Layouts 1.15
-import org.kde.discover 2.0
-import org.kde.discover.app 1.0
-import org.kde.kirigami 2.20 as Kirigami
-import org.kde.purpose 1.0 as Purpose
-import "navigation.js" as Navigation
+pragma ComponentBehavior: Bound
+
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
+import org.kde.discover as Discover
+import org.kde.discover.app as DiscoverApp
+import org.kde.kirigami as Kirigami
+import org.kde.purpose as Purpose
 
 DiscoverPage {
     id: appInfo
@@ -22,7 +22,8 @@ DiscoverPage {
     title: "" // It would duplicate the text in the header right below it
     clip: true
 
-    property QtObject application: null
+    required property Discover.AbstractResource application
+
     readonly property int visibleReviews: 3
     readonly property int internalSpacings: Kirigami.Units.largeSpacing
     readonly property int pageContentMargins: Kirigami.Units.gridUnit
@@ -37,16 +38,10 @@ DiscoverPage {
 
     readonly property bool isOfflineUpgrade: application.packageName === "discover-offline-upgrade"
 
-    function searchFor(text) {
-        if (text.length === 0) {
-            return;
-        }
-        Navigation.openCategory(null, "")
-    }
-
     ReviewsPage {
         id: reviewsSheet
-        model: ReviewsModel {
+        parent: appInfo.QQC2.Overlay.overlay
+        model: Discover.ReviewsModel {
             id: reviewsModel
             resource: appInfo.application
             preferredSortRole: reviewsSheet.sortRole
@@ -60,7 +55,7 @@ DiscoverPage {
         originsMenuAction
     ]
 
-    ActionGroup {
+    QQC2.ActionGroup {
         id: sourcesGroup
         exclusive: true
     }
@@ -72,21 +67,27 @@ DiscoverPage {
         text: i18nc("@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu\"", "From %1", appInfo.application.displayOrigin)
         visible: children.length > 1
         children: sourcesGroup.actions
-        readonly property var r0: Instantiator {
-            model: ResourcesProxyModel {
-                id: alternativeResourcesModel
-                allBackends: true
-                resourcesUrl: appInfo.application.url
-            }
-            delegate: Action {
-                ActionGroup.group: sourcesGroup
-                text: model.application.availableVersion ? i18n("%1 - %2", displayOrigin, model.application.availableVersion) : displayOrigin
-                icon.name: sourceIcon
-                checkable: true
-                checked: appInfo.application === model.application
-                onTriggered: if (index >= 0) {
-                    appInfo.application = model.application
-                }
+    }
+
+    Instantiator {
+        // alternativeResourcesModel
+        model: Discover.ResourcesProxyModel {
+            allBackends: true
+            resourcesUrl: appInfo.application.url
+        }
+        delegate: QQC2.Action {
+            required property int index
+            required property var model
+
+            QQC2.ActionGroup.group: sourcesGroup
+            text: model.availableVersion
+                ? i18n("%1 - %2", model.displayOrigin, model.availableVersion)
+                : model.displayOrigin
+            icon.name: model.sourceIcon
+            checkable: true
+            checked: appInfo.application === model.application
+            onTriggered: if (index >= 0) {
+                appInfo.application = model.application
             }
         }
     }
@@ -112,11 +113,13 @@ DiscoverPage {
         source: appInfo.application.icon
     }
 
-    topPadding: 0
-    bottomPadding: 0
-    leftPadding: 0
-    rightPadding: 0
-
+    padding: 0
+    topPadding: undefined
+    leftPadding: undefined
+    rightPadding: undefined
+    bottomPadding: undefined
+    verticalPadding: undefined
+    horizontalPadding: undefined
 
     // Scrollable page content
     ColumnLayout {
@@ -185,7 +188,7 @@ DiscoverPage {
                         }
 
                         // Author (for apps) or upgrade info (for offline upgrades)
-                        Label {
+                        QQC2.Label {
                             id: author
 
                             Layout.fillWidth: true
@@ -217,7 +220,7 @@ DiscoverPage {
                                 precision: Rating.Precision.HalfStar
                             }
 
-                            Label {
+                            QQC2.Label {
                                 text: appInfo.application.rating ? i18np("%1 rating", "%1 ratings", appInfo.application.rating.ratingCount) : i18n("No ratings yet")
                             }
                         }
@@ -241,11 +244,11 @@ DiscoverPage {
                     visible: !appInfo.isOfflineUpgrade
 
                     // Version
-                    Label {
+                    QQC2.Label {
                         text: i18n("Version:")
                         Layout.alignment: Qt.AlignRight
                     }
-                    Label {
+                    QQC2.Label {
                         text: appInfo.application.versionString
                         wrapMode: Text.Wrap
                         maximumLineCount: 3
@@ -253,11 +256,11 @@ DiscoverPage {
                     }
 
                     // Size
-                    Label {
+                    QQC2.Label {
                         text: i18n("Size:")
                         Layout.alignment: Qt.AlignRight
                     }
-                    Label {
+                    QQC2.Label {
                         text: appInfo.application.sizeDescription
                         wrapMode: Text.Wrap
                         maximumLineCount: 3
@@ -265,14 +268,14 @@ DiscoverPage {
                     }
 
                     // Licenses
-                    Label {
+                    QQC2.Label {
                         text: i18np("License:", "Licenses:", appInfo.application.licenses.length)
                         Layout.alignment: Qt.AlignRight
                     }
                     RowLayout {
                         spacing: Kirigami.Units.smallSpacing
 
-                        Label {
+                        QQC2.Label {
                             visible : appInfo.application.licenses.length === 0
                             text: i18nc("The app does not provide any licenses", "Unknown")
                             wrapMode: Text.Wrap
@@ -280,30 +283,34 @@ DiscoverPage {
                         }
 
                         Repeater {
-                            visible : appInfo.application.licenses.length > 0
+                            visible: appInfo.application.licenses.length > 0
                             model: appInfo.application.licenses.slice(0, 2)
                             delegate: RowLayout {
+                                id: delegate
+
+                                required property var modelData
+
                                 spacing: 0
 
                                 Kirigami.UrlButton {
                                     enabled: url !== ""
-                                    text: modelData.name
-                                    url: modelData.url
+                                    text: delegate.modelData.name
+                                    url: delegate.modelData.url
                                     horizontalAlignment: Text.AlignHCenter
                                     verticalAlignment: Text.AlignTop
                                     wrapMode: Text.Wrap
                                     maximumLineCount: 3
                                     elide: Text.ElideRight
-                                    color: !modelData.hasFreedom ? Kirigami.Theme.neutralTextColor: enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor
+                                    color: !delegate.modelData.hasFreedom ? Kirigami.Theme.neutralTextColor : (enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor)
                                 }
 
                                 // Button to open "What's the risk of proprietary software?" sheet
-                                ToolButton {
-                                    visible: !modelData.hasFreedom
+                                QQC2.ToolButton {
+                                    visible: !delegate.modelData.hasFreedom
                                     icon.name: "help-contextual"
                                     onClicked: properietarySoftwareRiskExplanationDialog.open();
 
-                                    ToolTip {
+                                    QQC2.ToolTip {
                                         text: i18n("What does this mean?")
                                     }
                                 }
@@ -322,7 +329,7 @@ DiscoverPage {
                     }
 
                     // Content Rating
-                    Label {
+                    QQC2.Label {
                         visible: appInfo.application.contentRatingText.length > 0
                         text: i18n("Content Rating:")
                         Layout.alignment: Qt.AlignRight
@@ -331,7 +338,7 @@ DiscoverPage {
                         visible: appInfo.application.contentRatingText.length > 0
                         spacing: Kirigami.Units.smallSpacing
 
-                        Label {
+                        QQC2.Label {
                             visible: text.length > 0
                             text: appInfo.application.contentRatingMinimumAge === 0 ? "" : i18n("Age: %1+", appInfo.application.contentRatingMinimumAge)
                             horizontalAlignment: Text.AlignHCenter
@@ -341,7 +348,7 @@ DiscoverPage {
                             elide: Text.ElideRight
                         }
 
-                        Label {
+                        QQC2.Label {
                             text: appInfo.application.contentRatingText
                             wrapMode: Text.Wrap
                             maximumLineCount: 3
@@ -392,7 +399,7 @@ DiscoverPage {
             edgeMargin: appInfo.internalSpacings
             visible: carouselModel.count > 0 && !hasFailed
 
-            carouselModel: ScreenshotsModel {
+            carouselModel: Discover.ScreenshotsModel {
                 application: appInfo.application
             }
         }
@@ -447,7 +454,8 @@ DiscoverPage {
                     required property int index
                     required property string modelData
 
-                    property QtObject resource: appInfo.application
+                    // Context property for loaded component
+                    readonly property Discover.AbstractResource resource: appInfo.application
 
                     Layout.fillWidth: item?.Layout.fillWidth ?? false
                     Layout.topMargin: 0
@@ -609,9 +617,9 @@ DiscoverPage {
 
                     Kirigami.PromptDialog {
                         id: shareSheet
-                        parent: applicationWindow().overlay
+                        parent: appInfo.QQC2.Overlay.overlay
                         title: shareButton.title
-                        standardButtons: Dialog.NoButton
+                        standardButtons: QQC2.Dialog.NoButton
 
                         Purpose.AlternativesView {
                             id: alts
@@ -621,7 +629,7 @@ DiscoverPage {
                                 "urls": [ application.url.toString() ],
                                 "title": i18nc("The subject line for an email. %1 is the name of an application", "Check out the %1 app!", application.name)
                             }
-                            onFinished: {
+                            onFinished: (/*var*/ output, /*int*/ error, /*string*/ message) => {
                                 shareSheet.close()
                                 if (error !== 0) {
                                     console.error("job finished with error", error, message)
@@ -646,7 +654,7 @@ DiscoverPage {
             }
 
             // Changelog text
-            Label {
+            QQC2.Label {
                 id: changelogLabel
 
                 Layout.fillWidth: true
@@ -710,7 +718,7 @@ DiscoverPage {
 
                 spacing: appInfo.internalSpacings
 
-                Button {
+                QQC2.Button {
                     visible: reviewsModel.count > visibleReviews
 
                     text: i18nc("@action:button", "Show All Reviews")
@@ -721,7 +729,7 @@ DiscoverPage {
                     }
                 }
 
-                Button {
+                QQC2.Button {
                     visible: appbutton.isStateAvailable && reviewsModel.backend && !reviewsError.visible && reviewsModel.backend.isResourceSupported(appInfo.application)
                     enabled: appInfo.application.isInstalled
 
@@ -824,7 +832,12 @@ DiscoverPage {
             Repeater {
                 model: application.bottomObjects
                 delegate: Loader {
-                    property QtObject resource: appInfo.application
+                    required property int index
+                    required property string modelData
+
+                    // Context property for loaded component
+                    readonly property Discover.AbstractResource resource: appInfo.application
+
                     source: modelData
                     Layout.fillWidth: true
                 }
@@ -832,9 +845,11 @@ DiscoverPage {
         }
     }
 
-    readonly property var addons: AddonsView {
+    AddonsView {
         id: addonsView
+
         application: appInfo.application
+        parent: appInfo.QQC2.Overlay.overlay
     }
 
     Kirigami.Dialog {
@@ -848,17 +863,19 @@ DiscoverPage {
             spacing: 0
 
             Repeater {
-                id: listview
-
                 model: appInfo.application.licenses
 
-                delegate: ItemDelegate {
+                delegate: QQC2.ItemDelegate {
+                    id: delegate
+
+                    required property var modelData
+
                     contentItem: Kirigami.UrlButton {
                         enabled: url !== ""
-                        text: modelData.name
-                        url: modelData.url
+                        text: delegate.modelData.name
+                        url: delegate.modelData.url
                         horizontalAlignment: Text.AlignLeft
-                        color: !modelData.hasFreedom
+                        color: !delegate.modelData.hasFreedom
                             ? Kirigami.Theme.neutralTextColor
                             : (enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor)
                     }
@@ -869,11 +886,12 @@ DiscoverPage {
 
     Kirigami.PromptDialog {
         id: contentRatingDialog
+        parent: appInfo.QQC2.Overlay.overlay
         title: i18n("Content Rating")
         preferredWidth: Kirigami.Units.gridUnit * 25
         standardButtons: Kirigami.Dialog.NoButton
 
-        Label {
+        QQC2.Label {
             text: appInfo.application.contentRatingDescription
             textFormat: Text.MarkdownText
             wrapMode: Text.Wrap
@@ -882,6 +900,7 @@ DiscoverPage {
 
     Kirigami.PromptDialog {
         id: properietarySoftwareRiskExplanationDialog
+        parent: appInfo.QQC2.Overlay.overlay
         preferredWidth: Kirigami.Units.gridUnit * 25
         standardButtons: Kirigami.Dialog.NoButton
 

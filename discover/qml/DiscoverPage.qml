@@ -4,17 +4,18 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.15
-import org.kde.kirigami 2.14 as Kirigami
+import QtQuick
+import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
     id: root
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
+
     property bool compact: root.width < Kirigami.Units.gridUnit * 28 || !applicationWindow().wideScreen
 
-    readonly property var s1: Shortcut {
+    Shortcut {
         sequences: [ StandardKey.MoveToNextPage ]
         enabled: root.isCurrentPage
         onActivated: {
@@ -23,7 +24,7 @@ Kirigami.ScrollablePage {
         }
     }
 
-    readonly property var s2: Shortcut {
+    Shortcut {
         sequences: [ StandardKey.MoveToPreviousPage ]
         enabled: root.isCurrentPage
         onActivated: {
@@ -31,15 +32,15 @@ Kirigami.ScrollablePage {
         }
     }
 
-    readonly property var sClose: Shortcut {
+    Shortcut {
         sequences: [ StandardKey.Cancel ]
-        enabled: root.isCurrentPage && applicationWindow().pageStack.depth>1
+        enabled: root.isCurrentPage && applicationWindow().pageStack.depth > 1
         onActivated: {
             applicationWindow().pageStack.pop()
         }
     }
 
-    readonly property var sRefresh: Shortcut {
+    Shortcut {
         sequences: [ StandardKey.Refresh ]
         enabled: root.isCurrentPage && root.supportsRefreshing
         onActivated: {
@@ -49,8 +50,8 @@ Kirigami.ScrollablePage {
         }
     }
 
-    readonly property var readableCharacters: /\w+/
     Keys.onPressed: event => {
+        const readableCharacters = /\w+/;
         if (event.text.length > 0 && event.modifiers === Qt.NoModifier && event.text.match(readableCharacters)) {
             window.globalDrawer.suggestSearchText(event.text)
         }

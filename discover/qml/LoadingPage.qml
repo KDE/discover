@@ -1,8 +1,9 @@
-import org.kde.kirigami 2.19 as Kirigami
+import org.kde.kirigami as Kirigami
 
 Kirigami.Page {
-    title: placeholder.text
     readonly property bool isHome: true
+
+    title: placeholder.text
 
     Kirigami.LoadingPlaceholder {
         id: placeholder

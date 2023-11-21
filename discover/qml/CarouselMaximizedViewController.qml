@@ -6,7 +6,7 @@
 
 import QtQuick
 import org.kde.kirigami as Kirigami
-import org.kde.discover
+import org.kde.discover as Discover
 
 QtObject {
     id: root
@@ -24,9 +24,9 @@ QtObject {
 
     property CarouselAbstractMaximizedView __view
 
-    function open(transientParent: Window, model: ScreenshotsModel, currentIndex: int) {
+    function open(transientParent: Window, model: Discover.ScreenshotsModel, currentIndex: int) {
         if (__view) {
-            if (__view.transientParent === transientParent && __view.model === ScreenshotsModel) {
+            if (__view.transientParent === transientParent && __view.model === model) {
                 __view.currentIndex = currentIndex;
                 return;
             } else {
@@ -58,7 +58,7 @@ QtObject {
         open(transientParent, model, currentIndex);
     }
 
-    function __createView(transientParent: Window, model: ScreenshotsModel, currentIndex: int): CarouselAbstractMaximizedView {
+    function __createView(transientParent: Window, model: Discover.ScreenshotsModel, currentIndex: int): CarouselAbstractMaximizedView {
         let component = null;
         switch (__mode) {
         case CarouselMaximizedViewController.Mode.FullScreen:

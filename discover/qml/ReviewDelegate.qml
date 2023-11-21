@@ -4,14 +4,17 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.1
-import QtQuick.Layouts 1.1
-import QtQuick.Controls 2.1
-import org.kde.discover 2.0
-import org.kde.kirigami 2.14 as Kirigami
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
+import org.kde.discover as Discover
+import org.kde.kirigami as Kirigami
 
 Kirigami.AbstractCard {
-    id: reviewDelegateItem
+    id: root
+
+    // type: roles of Discover.ReviewsModel
+    required property var model
 
     property bool compact: false
     property bool separator: true
@@ -19,7 +22,7 @@ Kirigami.AbstractCard {
     signal markUseful(bool useful)
 
     // Spacers to indent nested comments/replies
-    Layout.leftMargin: depth * Kirigami.Units.largeSpacing
+    Layout.leftMargin: model.depth * Kirigami.Units.largeSpacing
 
     contentItem: Item {
         implicitHeight: mainContent.childrenRect.height
@@ -40,45 +43,45 @@ Kirigami.AbstractCard {
                     id: rating
                     Layout.fillWidth: true
                     Layout.bottomMargin: Kirigami.Units.largeSpacing
-                    value: model.rating
+                    value: root.model.rating
                     starSize: Kirigami.Units.gridUnit
                 }
-                Label {
+                QQC2.Label {
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignRight
-                    text: date.toLocaleDateString(Qt.locale(), "MMMM yyyy")
+                    text: root.model.date.toLocaleDateString(Qt.locale(), "MMMM yyyy")
                     opacity: 0.6
                 }
             }
 
             // Review title and author
-            Label {
+            QQC2.Label {
                 id: content
                 Layout.fillWidth: true
                 Layout.leftMargin: Kirigami.Units.largeSpacing
                 Layout.rightMargin: Kirigami.Units.largeSpacing
 
                 elide: Text.ElideRight
-                readonly property string author: reviewer ? reviewer : i18n("unknown reviewer")
-                text: summary ? i18n("<b>%1</b> by %2", summary, author) : i18n("Comment by %1", author)
+                readonly property string author: root.model.reviewer || i18n("unknown reviewer")
+                text: root.model.summary ? i18n("<b>%1</b> by %2", root.model.summary, author) : i18n("Comment by %1", author)
             }
 
             // Review text
-            Label {
+            QQC2.Label {
                 Layout.fillWidth: true
                 Layout.leftMargin: Kirigami.Units.largeSpacing
                 Layout.rightMargin: Kirigami.Units.largeSpacing
                 Layout.bottomMargin: Kirigami.Units.smallSpacing
 
-                text: model.display
+                text: root.model.display
                 wrapMode: Text.Wrap
             }
 
-            Label {
+            QQC2.Label {
                 Layout.fillWidth: true
                 Layout.leftMargin: Kirigami.Units.largeSpacing
                 Layout.rightMargin: Kirigami.Units.largeSpacing
-                text: packageVersion ? i18n("Version: %1", packageVersion) : i18n("Version: unknown")
+                text: root.model.packageVersion ? i18n("Version: %1", root.model.packageVersion) : i18n("Version: unknown")
                 elide: Text.ElideRight
                 opacity: 0.6
             }
@@ -86,26 +89,27 @@ Kirigami.AbstractCard {
     }
 
     footer: Loader {
-        active: !reviewDelegateItem.compact
+        active: !root.compact
         sourceComponent: RowLayout {
-            id: rateTheReviewLayout
-            visible: !reviewDelegateItem.compact
-            Label {
+            spacing: Kirigami.Units.smallSpacing
+            visible: !root.compact
+
+            QQC2.Label {
                 Layout.leftMargin: Kirigami.Units.largeSpacing
-                visible: usefulnessTotal !== 0
-                text: i18n("Votes: %1 out of %2", usefulnessFavorable, usefulnessTotal)
+                visible: root.model.usefulnessTotal !== 0
+                text: i18n("Votes: %1 out of %2", root.model.usefulnessFavorable, root.model.usefulnessTotal)
             }
 
-            Label {
+            QQC2.Label {
                 Layout.fillWidth: true
-                Layout.leftMargin: usefulnessTotal === 0 ? Kirigami.Units.largeSpacing : 0
+                Layout.leftMargin: root.model.usefulnessTotal === 0 ? Kirigami.Units.largeSpacing : 0
                 horizontalAlignment: Text.AlignRight
                 text: i18n("Was this review useful?")
                 elide: Text.ElideLeft
             }
 
             // Useful/Not Useful buttons
-            Button {
+            QQC2.Button {
                 id: yesButton
                 Layout.maximumWidth: Kirigami.Units.gridUnit * 3
                 Layout.topMargin: Kirigami.Units.smallSpacing
@@ -115,13 +119,13 @@ Kirigami.AbstractCard {
                 text: i18nc("Keep this string as short as humanly possible", "Yes")
 
                 checkable: true
-                checked: usefulChoice === ReviewsModel.Yes
+                checked: root.model.usefulChoice === Discover.ReviewsModel.Yes
                 onClicked: {
                     noButton.checked = false
-                    reviewDelegateItem.markUseful(true)
+                    root.markUseful(true)
                 }
             }
-            Button {
+            QQC2.Button {
                 id: noButton
                 Layout.maximumWidth: Kirigami.Units.gridUnit * 3
                 Layout.topMargin: Kirigami.Units.smallSpacing
@@ -132,10 +136,10 @@ Kirigami.AbstractCard {
                 text: i18nc("Keep this string as short as humanly possible", "No")
 
                 checkable: true
-                checked: usefulChoice === ReviewsModel.No
+                checked: root.model.usefulChoice === Discover.ReviewsModel.No
                 onClicked: {
                     yesButton.checked = false
-                    reviewDelegateItem.markUseful(false)
+                    root.markUseful(false)
                 }
             }
         }

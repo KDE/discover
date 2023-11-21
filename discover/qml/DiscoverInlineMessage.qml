@@ -4,13 +4,14 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-import QtQuick 2.15
-import org.kde.kirigami 2.19 as Kirigami
+import QtQuick
+import org.kde.kirigami as Kirigami
+import org.kde.discover as Discover
 
 Loader {
     id: root
 
-    property QtObject inlineMessage
+    property Discover.InlineMessage inlineMessage
 
     active: inlineMessage !== null
 
@@ -20,10 +21,10 @@ Loader {
         icon.name: root.inlineMessage.iconName
 
         Component {
-            id: comp
+            id: component
             ConvertDiscoverAction {}
         }
-        actions: root.inlineMessage.actions.map(action => comp.createObject(this, { action }))
+        actions: root.inlineMessage.actions.map(action => component.createObject(this, { action }))
         visible: true
     }
 }

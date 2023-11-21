@@ -4,11 +4,14 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.1
-import QtQuick.Controls 2.1
-import org.kde.kirigami 2.14 as Kirigami
+pragma ComponentBehavior: Bound
 
-Button {
+import QtQuick
+import QtQuick.Controls as QQC2
+import org.kde.kirigami as Kirigami
+import org.kde.discover as Discover
+
+QQC2.Button {
     id: root
 
     text: i18nd("libdiscover", "Configure permissions…")
@@ -18,10 +21,11 @@ Button {
 
     Kirigami.OverlaySheet {
         id: overlay
-        parent: applicationWindow().overlay
+
+        parent: root.QQC2.Overlay.overlay
         title: i18nd("libdiscover", "Permissions for %1", resource.name)
 
-        property QtObject errorMessage: null
+        property Discover.InlineMessage errorMessage
 
         ListView {
             id: view
@@ -35,13 +39,16 @@ Button {
             header: DiscoverInlineMessage {
                 inlineMessage: overlay.errorMessage
             }
-            delegate: CheckDelegate {
+            delegate: QQC2.CheckDelegate {
                 id: delegate
+
+                required property var model
+
                 width: view.width
                 text: model.display
                 checked: model.checked
                 onToggled: {
-                    model.checked = delegate.checked
+                    model.checked = checked
                 }
             }
         }

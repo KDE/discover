@@ -4,11 +4,11 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-import org.kde.kirigami 2.19 as Kirigami
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
-import QtWebView 1.15
+import org.kde.kirigami as Kirigami
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtWebView
 
 Kirigami.OverlaySheet {
     id: sheet
@@ -49,7 +49,7 @@ Kirigami.OverlaySheet {
         }
     }
 
-    onVisibleChanged: if(!visible) {
+    onVisibleChanged: if (!visible) {
         sheet.destroy(1000)
         if (!sheet.acted) {
             transaction.cancel()

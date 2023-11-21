@@ -1,6 +1,6 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
- <qresource>
+ <qresource prefix="/qt/qml/org/kde/discover">
     <file>qml/TopLevelPageData.qml</file>
     <file>qml/ApplicationsListPage.qml</file>
     <file>qml/ApplicationPage.qml</file>
@@ -47,6 +47,9 @@
     <file>qml/ConvertDiscoverAction.qml</file>
     <file>qml/WebflowDialog.qml</file>
 
-    <file>qml/navigation.js</file>
+    <!-- Singleton -->
+    <file>qml/Navigation.qml</file>
+
+    <file>qml/qmldir</file>
  </qresource>
 </RCC>

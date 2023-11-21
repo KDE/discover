@@ -6,14 +6,17 @@
  *   SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-import QtQuick 2.1
-import QtQuick.Controls 2.1
-import QtQuick.Layouts 1.1
-import QtQuick.Window 2.1
-import "navigation.js" as Navigation
-import org.kde.kirigami 2.6 as Kirigami
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
+import org.kde.discover as Discover
+import org.kde.kirigami as Kirigami
 
 BasicAbstractCard {
+    id: root
+
+    required property Discover.AbstractResource application
+
     showClickFeedback: true
 
     // Don't let RowLayout affect parent GridLayout's decisions, or else it
@@ -29,7 +32,7 @@ BasicAbstractCard {
             Layout.margins: Kirigami.Units.largeSpacing
             implicitWidth: Kirigami.Units.iconSizes.huge
             implicitHeight: Kirigami.Units.iconSizes.huge
-            source: model.application.icon
+            source: root.application.icon
             animated: false
         }
 
@@ -47,20 +50,20 @@ BasicAbstractCard {
                 wrapMode: Text.WordWrap
                 maximumLineCount: 2
 
-                text: model.application.name
+                text: root.application.name
             }
 
-            Label {
+            QQC2.Label {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignTop
                 maximumLineCount: head.lineCount === 1 ? 3 : 2
                 opacity: 0.6
                 wrapMode: Text.WordWrap
 
-                text: model.application.comment
+                text: root.application.comment
             }
         }
     }
 
-    onClicked: Navigation.openApplication(model.application)
+    onClicked: Navigation.openApplication(root.application)
 }

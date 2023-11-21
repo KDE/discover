@@ -1,28 +1,32 @@
-import QtQuick 2.1
-import QtQuick.Controls 2.1
-import QtQuick.Layouts 1.1
-import org.kde.discover 2.0
-import org.kde.kirigami 2.14 as Kirigami
+pragma ComponentBehavior: Bound
 
-ItemDelegate {
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
+import org.kde.discover as Discover
+import org.kde.kirigami as Kirigami
+
+QQC2.ItemDelegate {
     id: listItem
 
     contentItem: ColumnLayout {
-        Label {
+        QQC2.Label {
             id: label
             Layout.fillWidth: true
             Layout.leftMargin: Kirigami.Units.iconSizes.smallMedium + (LayoutMirroring.enabled ? listItem.rightPadding : listItem.leftPadding)
             Layout.rightMargin: Layout.leftMargin
-            text: TransactionModel.count ? i18n("Tasks (%1%)", TransactionModel.progress) : i18n("Tasks")
+            text: Discover.TransactionModel.count ? i18n("Tasks (%1%)", Discover.TransactionModel.progress) : i18n("Tasks")
         }
-        ProgressBar {
+        QQC2.ProgressBar {
             Layout.fillWidth: true
-            value: TransactionModel.progress / 100
+            value: Discover.TransactionModel.progress / 100
         }
     }
-    visible: TransactionModel.count > 0
 
-    property Kirigami.OverlaySheet sheetObject: null
+    visible: Discover.TransactionModel.count > 0
+
+    property Kirigami.OverlaySheet sheetObject
+
     onClicked: {
         if (!sheetObject) {
             sheetObject = sheet.createObject()
@@ -33,14 +37,14 @@ ItemDelegate {
         }
     }
 
-    readonly property var v3: Component {
+    Component {
         id: sheet
         Kirigami.OverlaySheet {
-            parent: applicationWindow().overlay
+            parent: listItem.QQC2.Overlay.overlay
 
             title: i18n("Tasks")
 
-            onVisibleChanged: if(!visible) {
+            onVisibleChanged: if (!visible) {
                 sheetObject.destroy(100)
             }
 
@@ -51,23 +55,26 @@ ItemDelegate {
 
                 Component {
                     id: listenerComp
-                    TransactionListener {}
+                    Discover.TransactionListener {}
                 }
-                model: TransactionModel
+                model: Discover.TransactionModel
 
                 Connections {
-                    target: TransactionModel
+                    target: Discover.TransactionModel
                     function onRowsRemoved() {
-                        if (TransactionModel.count === 0) {
+                        if (Discover.TransactionModel.count === 0) {
                             sheetObject.close();
                         }
                     }
                 }
 
-                delegate: ItemDelegate {
-                    id: del
+                delegate: QQC2.ItemDelegate {
+                    id: delegate
 
-                    readonly property QtObject listener: listenerComp.createObject(del,
+                    required property int index
+                    required property var model
+
+                    readonly property Discover.TransactionListener listener: listenerComp.createObject(this,
                         (model.transaction.resource
                             ? { resource: model.transaction.resource }
                             : { transaction: model.transaction }))
@@ -81,43 +88,71 @@ ItemDelegate {
                     down: false
 
                     contentItem: ColumnLayout {
+                        spacing: Kirigami.Units.smallSpacing
+
                         RowLayout {
+                            spacing: Kirigami.Units.smallSpacing
                             Layout.fillWidth: true
 
                             Kirigami.Icon {
                                 Layout.fillHeight: true
                                 Layout.minimumWidth: height
-                                source: model.transaction.icon
+                                source: delegate.model.transaction.icon
                             }
 
-                            Label {
+                            QQC2.Label {
                                 Layout.alignment: Qt.AlignVCenter
                                 Layout.fillWidth: true
                                 elide: Text.ElideRight
-                                text: listener.isActive && model.transaction.remainingTime > 0 ? i18nc("TransactioName - TransactionStatus: speed, remaining time", "%1 - %2: %3, %4 remaining", model.transaction.name, listener.statusText, model.transaction.downloadSpeedString, model.transaction.remainingTime) :
-                                      listener.isActive && model.transaction.downloadSpeed > 0 ? i18nc("TransactioName - TransactionStatus: speed", "%1 - %2: %3", model.transaction.name, listener.statusText, model.transaction.downloadSpeedString) :
-                                                                             listener.isActive ? i18nc("TransactioName - TransactionStatus", "%1 - %2", model.transaction.name, listener.statusText)
-                                                                                               : model.transaction.name
+                                text: {
+                                    const tr = delegate.model.transaction;
+                                    const li = delegate.listener;
+
+                                    if (li.isActive && tr.remainingTime > 0) {
+                                        return i18nc(
+                                            "TransactioName - TransactionStatus: speed, remaining time", "%1 - %2: %3, %4 remaining",
+                                            tr.name,
+                                            li.statusText,
+                                            tr.downloadSpeedString,
+                                            tr.remainingTime
+                                        );
+                                    } else if (li.isActive && tr.downloadSpeed > 0) {
+                                        return i18nc(
+                                            "TransactioName - TransactionStatus: speed", "%1 - %2: %3",
+                                            tr.name,
+                                            li.statusText,
+                                            tr.downloadSpeedString
+                                        );
+                                    } else if (li.isActive) {
+                                        return i18nc(
+                                            "TransactioName - TransactionStatus", "%1 - %2",
+                                            tr.name,
+                                            li.statusText
+                                        );
+                                    } else {
+                                        return tr.name;
+                                    }
+                                }
                             }
-                            ToolButton {
+                            QQC2.ToolButton {
                                 icon.name: "dialog-cancel"
                                 text: i18n("Cancel")
-                                visible: listener.isCancellable
-                                onClicked: listener.cancel()
+                                visible: delegate.listener.isCancellable
+                                onClicked: delegate.listener.cancel()
                             }
-                            ToolButton {
+                            QQC2.ToolButton {
                                 icon.name: "system-run"
-                                visible: model.application !== undefined && model.application.isInstalled && !listener.isActive && model.application.canExecute
+                                visible: delegate.model.application !== undefined && delegate.model.application.isInstalled && !delegate.listener.isActive && delegate.model.application.canExecute
                                 onClicked: {
-                                    model.application.invokeApplication()
-                                    model.remove(index)
+                                    delegate.model.application.invokeApplication()
+                                    delegate.model.remove(index)
                                 }
                             }
                         }
-                        ProgressBar {
+                        QQC2.ProgressBar {
                             Layout.fillWidth: true
-                            visible: listener.isActive
-                            value: listener.progress / 100
+                            visible: delegate.listener.isActive
+                            value: delegate.listener.progress / 100
                         }
                     }
                 }

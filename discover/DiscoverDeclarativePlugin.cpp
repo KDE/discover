@@ -49,12 +49,17 @@ void DiscoverDeclarativePlugin::registerTypes(const char * /*uri*/)
     qmlRegisterUncreatableType<SourcesModel>("org.kde.discover", 2, 0, "SourcesModelClass", QStringLiteral("should come from the backends"));
     qmlRegisterUncreatableType<AbstractBackendUpdater>("org.kde.discover", 2, 0, "AbstractBackendUpdater", QStringLiteral("should come from the backends"));
     qmlRegisterUncreatableType<InlineMessage>("org.kde.discover", 2, 0, "InlineMessage", QStringLiteral("should come from the backend"));
+    qmlRegisterUncreatableType<Category>("org.kde.discover", 2, 0, "Category", QStringLiteral("should come from CategoryModel"));
+    qmlRegisterUncreatableType<AbstractReviewsBackend>("org.kde.discover", 2, 0, "AbstractReviewsBackend", QStringLiteral("should come from the backends"));
+    qmlRegisterUncreatableType<AbstractResourcesBackend>("org.kde.discover", 2, 0, "AbstractResourcesBackend", QStringLiteral("should come from the backends"));
+
     qmlRegisterAnonymousType<TransactionModel>("org.kde.discover", 1);
     qmlRegisterAnonymousType<Rating>("org.kde.discover", 1);
     qmlRegisterAnonymousType<AbstractResourcesBackend>("org.kde.discover", 1);
     qmlRegisterAnonymousType<AbstractReviewsBackend>("org.kde.discover", 1);
     qmlRegisterAnonymousType<Category>("org.kde.discover", 1);
     qmlRegisterAnonymousType<ResourcesModel>("org.kde.discover", 1);
+
     qmlRegisterSingletonInstance("org.kde.discover", 2, 0, "CategoryModel", CategoryModel::global());
     qmlRegisterSingletonInstance("org.kde.discover", 2, 0, "ResourcesModel", ResourcesModel::global());
     qmlRegisterSingletonInstance("org.kde.discover", 2, 0, "TransactionModel", TransactionModel::global());

@@ -1441,9 +1441,9 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
         return stream;
     } else if (filter.resourceUrl.scheme() == QLatin1String("appstream")) {
         return findResourceByPackageName(filter.resourceUrl);
-    } else if (!filter.resourceUrl.isEmpty())
+    } else if (!filter.resourceUrl.isEmpty()) {
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
-    else if (filter.state == AbstractResource::Upgradeable) {
+    } else if (filter.state == AbstractResource::Upgradeable) {
         auto stream = new ResultsStream(QStringLiteral("FlatpakStream-upgradeable"));
         auto f = [this, stream] {
             auto fw = new QFutureWatcher<QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>(this);

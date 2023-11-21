@@ -1,12 +1,11 @@
 pragma ComponentBehavior: Bound
 
-import QtQuick.Controls 2.3
-import QtQuick.Layouts 1.1
-import QtQuick 2.15
-import org.kde.discover 2.0
-import org.kde.discover.app 1.0
-import "navigation.js" as Navigation
-import org.kde.kirigami 2.19 as Kirigami
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
+import org.kde.discover as Discover
+import org.kde.discover.app as DiscoverApp
+import org.kde.kirigami as Kirigami
 
 DiscoverPage {
     id: page
@@ -18,7 +17,7 @@ DiscoverPage {
     property bool isBusy: false
     readonly property string name: title
 
-    readonly property var resourcesUpdatesModel: ResourcesUpdatesModel {
+    Discover.ResourcesUpdatesModel {
         id: resourcesUpdatesModel
         onPassiveMessage: {
             sheet.errorMessage = message;
@@ -37,12 +36,12 @@ DiscoverPage {
         }
     }
 
-    readonly property var sheet: Kirigami.OverlaySheet {
+    Kirigami.OverlaySheet {
         id: sheet
 
         property string errorMessage: ""
 
-        parent: applicationWindow().overlay
+        parent: page.QQC2.Overlay.overlay
 
         title: contentLoader.sourceComponent === friendlyMessageComponent ? i18n("Update Issue") :  i18n("Technical details")
 
@@ -55,7 +54,7 @@ DiscoverPage {
                 id: friendlyMessageComponent
 
                 ColumnLayout {
-                    Label {
+                    QQC2.Label {
                         id: friendlyMessage
                         Layout.fillWidth: true
                         Layout.maximumWidth: Math.round(page.width * 0.75)
@@ -63,7 +62,7 @@ DiscoverPage {
                         text: i18n("There was an issue installing this update. Please try again later.")
                         wrapMode: Text.WordWrap
                     }
-                    Button {
+                    QQC2.Button {
                         id: seeDetailsAndreportIssueButton
                         Layout.alignment: Qt.AlignRight
                         text: i18n("See Technical Details")
@@ -81,41 +80,41 @@ DiscoverPage {
                 ColumnLayout {
                     spacing: Kirigami.Units.smallSpacing
 
-                    TextArea {
+                    QQC2.TextArea {
                         Layout.fillWidth: true
                         text: sheet.errorMessage
                         textFormat: Text.RichText
                         wrapMode: Text.WordWrap
                     }
 
-                    Label {
+                    QQC2.Label {
                         Layout.fillWidth: true
                         Layout.maximumWidth: Math.round(page.width*0.75)
                         Layout.topMargin: Kirigami.Units.largeSpacing
                         Layout.bottomMargin: Kirigami.Units.largeSpacing
-                        text: i18nc("@info %1 is the name of the user's distro/OS", "If the error indicated above looks like a real issue and not a temporary network error, please report it to %1, not KDE.", ResourcesModel.distroName)
+                        text: i18nc("@info %1 is the name of the user's distro/OS", "If the error indicated above looks like a real issue and not a temporary network error, please report it to %1, not KDE.", Discover.ResourcesModel.distroName)
                         wrapMode: Text.WordWrap
                     }
 
                     RowLayout {
                         Layout.fillWidth: true
 
-                        Button {
+                        QQC2.Button {
                             text: i18n("Copy Text")
                             icon.name: "edit-copy"
                             onClicked: {
                                 app.copyTextToClipboard(sheet.errorMessage);
-                                window.showPassiveNotification(i18nc("@info %1 is the name of the user's distro/OS", "Error message copied. Remember to report it to %1, not KDE!", ResourcesModel.distroName));
+                                window.showPassiveNotification(i18nc("@info %1 is the name of the user's distro/OS", "Error message copied. Remember to report it to %1, not KDE!", Discover.ResourcesModel.distroName));
                             }
                         }
 
                         Item { Layout.fillWidth: true}
 
-                        Button {
-                            text: i18nc("@action:button %1 is the name of the user's distro/OS", "Report Issue to %1", ResourcesModel.distroName)
+                        QQC2.Button {
+                            text: i18nc("@action:button %1 is the name of the user's distro/OS", "Report Issue to %1", Discover.ResourcesModel.distroName)
                             icon.name: "tools-report-bug"
                             onClicked: {
-                                Qt.openUrlExternally(ResourcesModel.distroBugReportUrl())
+                                Qt.openUrlExternally(Discover.ResourcesModel.distroBugReportUrl())
                                 sheet.visible = false
                             }
                         }
@@ -126,18 +125,17 @@ DiscoverPage {
 
         // Ensure that friendly message is shown if the user closes the sheet and
         // then opens it again
-        onVisibleChanged: if(visible) {
+        onVisibleChanged: if (visible) {
             contentLoader.sourceComponent = friendlyMessageComponent;
         }
     }
 
-    readonly property var updateModel: UpdateModel {
+    Discover.UpdateModel {
         id: updateModel
         backend: resourcesUpdatesModel
     }
 
-    readonly property var updateAction: Kirigami.Action
-    {
+    Kirigami.Action {
         id: updateAction
         text: page.unselected > 0 ? i18nc("@action:button as in, 'update the selected items' ", "Update Selected") : i18nc("@action:button as in, 'update all items'", "Update All")
         visible: updateModel.toUpdateCount
@@ -153,7 +151,7 @@ DiscoverPage {
             return false;
         }
 
-        enabled: !resourcesUpdatesModel.isProgressing && !ResourcesModel.isFetching && !anyVisible(page.header.children)
+        enabled: !resourcesUpdatesModel.isProgressing && !Discover.ResourcesModel.isFetching && !anyVisible(page.header.children)
         onTriggered: resourcesUpdatesModel.updateAll()
     }
 
@@ -165,7 +163,7 @@ DiscoverPage {
         DiscoverInlineMessage {
             Layout.fillWidth: true
             Layout.margins: Kirigami.Units.smallSpacing
-            inlineMessage: ResourcesModel.inlineMessage
+            inlineMessage: Discover.ResourcesModel.inlineMessage
         }
 
         Repeater {
@@ -199,19 +197,19 @@ DiscoverPage {
         width: parent.width
         spacing: 0
 
-        ScrollView {
+        QQC2.ScrollView {
             id: scv
             Layout.fillWidth: true
             Layout.preferredHeight: visible ? Kirigami.Units.gridUnit * 10 : 0
             visible: log.contents.length > 0
-            TextArea {
+            QQC2.TextArea {
                 readOnly: true
                 text: log.contents
 
                 cursorPosition: text.length - 1
                 font.family: "monospace"
 
-                ReadFile {
+                Discover.ReadFile {
                     id: log
                     filter: ".*ALPM-SCRIPTLET\\] .*"
                     path: "/var/log/pacman.log"
@@ -219,37 +217,37 @@ DiscoverPage {
             }
         }
 
-        ToolBar {
+        QQC2.ToolBar {
             id: footerToolbar
             Layout.fillWidth: true
             visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
 
-            position: ToolBar.Footer
+            position: QQC2.ToolBar.Footer
 
             contentItem: RowLayout {
-                ToolButton {
-                    enabled: page.unselected > 0 && updateAction.enabled && !ResourcesModel.isFetching
+                QQC2.ToolButton {
+                    enabled: page.unselected > 0 && updateAction.enabled && !Discover.ResourcesModel.isFetching
                     visible: updateModel.totalUpdatesCount > 1 && !resourcesUpdatesModel.isProgressing
                     icon.name: "edit-select-all"
                     text: i18n("Select All")
                     onClicked: { updateModel.checkAll(); }
                 }
 
-                ToolButton {
-                    enabled: page.unselected !== updateModel.totalUpdatesCount && updateAction.enabled && !ResourcesModel.isFetching
+                QQC2.ToolButton {
+                    enabled: page.unselected !== updateModel.totalUpdatesCount && updateAction.enabled && !Discover.ResourcesModel.isFetching
                     visible: updateModel.totalUpdatesCount > 1 && !resourcesUpdatesModel.isProgressing
                     icon.name: "edit-select-none"
                     text: i18n("Select None")
                     onClicked: { updateModel.uncheckAll(); }
                 }
 
-                CheckBox {
+                QQC2.CheckBox {
                     id: rebootAtEnd
                     visible: resourcesUpdatesModel.needsReboot && resourcesUpdatesModel.isProgressing
                     text: i18n("Restart automatically after update has completed");
                 }
 
-                Label {
+                QQC2.Label {
                     Layout.fillWidth: true
                     Layout.rightMargin: Kirigami.Units.largeSpacing
                     horizontalAlignment: Text.AlignRight
@@ -272,7 +270,7 @@ DiscoverPage {
 
     supportsRefreshing: true
     onRefreshingChanged: {
-        ResourcesModel.updateAction.triggered()
+        Discover.ResourcesModel.updateAction.triggered()
         refreshing = false
     }
 
@@ -317,9 +315,9 @@ DiscoverPage {
         reuseItems: true
         clip: true
 
-        model: QSortFilterProxyModel {
+        model: DiscoverApp.QSortFilterProxyModel {
             sourceModel: updateModel
-            sortRole: UpdateModel.SectionResourceProgressRole
+            sortRole: Discover.UpdateModel.SectionResourceProgressRole
         }
 
         section {
@@ -332,10 +330,10 @@ DiscoverPage {
             }
         }
 
-        delegate: ItemDelegate {
+        delegate: QQC2.ItemDelegate {
             id: listItem
 
-            // type: roles of UpdateModel
+            // type: roles of Discover.UpdateModel
             required property var model
             required property int index
             required property bool extended
@@ -348,7 +346,7 @@ DiscoverPage {
                 model.extended = false;
             }
 
-            visible: model.resourceState < 3 //3=AbstractBackendUpdater.Done
+            visible: model.resourceState < Discover.AbstractBackendUpdater.Done
 
             Keys.onReturnPressed: event => {
                 itemChecked.clicked();
@@ -376,7 +374,7 @@ DiscoverPage {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
-                    CheckBox {
+                    QQC2.CheckBox {
                         id: itemChecked
                         Layout.alignment: Qt.AlignVCenter
                         checked: listItem.model.checked === Qt.Checked
@@ -407,7 +405,7 @@ DiscoverPage {
                         }
 
                         // Version numbers
-                        Label {
+                        QQC2.Label {
                             Layout.fillWidth: true
                             elide: truncated ? Text.ElideLeft : Text.ElideRight
                             text: listItem.model.resource.upgradeText
@@ -423,11 +421,11 @@ DiscoverPage {
                     }
                 }
 
-                Frame {
+                QQC2.Frame {
                     Layout.fillWidth: true
                     implicitHeight: view.contentHeight
                     visible: listItem.model.extended && listItem.model.changelog.length > 0
-                    Label {
+                    QQC2.Label {
                         id: view
                         anchors {
                             right: parent.right
@@ -446,7 +444,7 @@ DiscoverPage {
                     spacing: Kirigami.Units.smallSpacing
                     visible: listItem.model.extended
 
-                    Label {
+                    QQC2.Label {
                         Layout.leftMargin: Kirigami.Units.gridUnit
                         text: i18n("Update from:")
                     }
@@ -457,7 +455,7 @@ DiscoverPage {
                         implicitHeight: Kirigami.Units.iconSizes.smallMedium
                     }
                     // Backend label and origin/remote
-                    Label {
+                    QQC2.Label {
                         Layout.fillWidth: true
                         text: listItem.model.resource.origin.length === 0 ? listItem.model.resource.backend.displayName
                                 : i18nc("%1 is the backend that provides this app, %2 is the specific repository or address within that backend","%1 (%2)",
@@ -465,7 +463,7 @@ DiscoverPage {
                         elide: Text.ElideRight
                     }
 
-                    Button {
+                    QQC2.Button {
                         Layout.alignment: Qt.AlignRight
                         text: i18n("More Information…")
                         enabled: !resourcesUpdatesModel.isProgressing
@@ -482,7 +480,7 @@ DiscoverPage {
 
     readonly property alias secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
     state:  ( resourcesUpdatesModel.isProgressing        ? "progressing"
-            : ResourcesModel.isFetching                  ? "fetching"
+            : Discover.ResourcesModel.isFetching         ? "fetching"
             : updateModel.hasUpdates                     ? "has-updates"
             : resourcesUpdatesModel.needsReboot          ? "reboot"
             : secSinceUpdate < 0                         ? "unknown"
@@ -496,7 +494,7 @@ DiscoverPage {
         State {
             name: "fetching"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching updates…") }
-            PropertyChanges { target: page; footerProgress: ResourcesModel.fetchingUpdatesProgress }
+            PropertyChanges { target: page; footerProgress: Discover.ResourcesModel.fetchingUpdatesProgress }
             PropertyChanges { target: page; isBusy: true }
             PropertyChanges { target: updatesView; opacity: 0 }
         },
