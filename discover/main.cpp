@@ -57,36 +57,42 @@ QCommandLineParser *createParser()
     return parser;
 }
 
-void processArgs(QCommandLineParser *parser, DiscoverObject *mainWindow)
+void processArgs(QCommandLineParser *parser, DiscoverObject *discoverObject)
 {
-    if (parser->isSet(QStringLiteral("application")))
-        mainWindow->openApplication(QUrl(parser->value(QStringLiteral("application"))));
-    else if (parser->isSet(QStringLiteral("mime")))
-        mainWindow->openMimeType(parser->value(QStringLiteral("mime")));
-    else if (parser->isSet(QStringLiteral("category")))
-        mainWindow->openCategory(parser->value(QStringLiteral("category")));
-    else if (parser->isSet(QStringLiteral("mode")))
-        mainWindow->openMode(parser->value(QStringLiteral("mode")));
+    if (parser->isSet(QStringLiteral("application"))) {
+        discoverObject->openApplication(QUrl(parser->value(QStringLiteral("application"))));
+    } else if (parser->isSet(QStringLiteral("mime"))) {
+        discoverObject->openMimeType(parser->value(QStringLiteral("mime")));
+    } else if (parser->isSet(QStringLiteral("category"))) {
+        discoverObject->openCategory(parser->value(QStringLiteral("category")));
+    } else if (parser->isSet(QStringLiteral("mode"))) {
+        discoverObject->openMode(parser->value(QStringLiteral("mode")));
+    }
 
-    if (parser->isSet(QStringLiteral("search")))
-        Q_EMIT mainWindow->openSearch(parser->value(QStringLiteral("search")));
+    if (parser->isSet(QStringLiteral("search"))) {
+        Q_EMIT discoverObject->openSearch(parser->value(QStringLiteral("search")));
+    }
 
-    if (parser->isSet(QStringLiteral("local-filename")))
-        mainWindow->openLocalPackage(QUrl::fromUserInput(parser->value(QStringLiteral("local-filename")), {}, QUrl::AssumeLocalFile));
+    if (parser->isSet(QStringLiteral("local-filename"))) {
+        discoverObject->openLocalPackage(QUrl::fromUserInput(parser->value(QStringLiteral("local-filename")), {}, QUrl::AssumeLocalFile));
+    }
 
     const auto positionalArguments = parser->positionalArguments();
     for (const QString &arg : positionalArguments) {
         const QUrl url = QUrl::fromUserInput(arg, {}, QUrl::AssumeLocalFile);
-        if (url.isLocalFile())
-            mainWindow->openLocalPackage(url);
-        else if (url.scheme() == QLatin1String("apt"))
-            Q_EMIT mainWindow->openSearch(url.host());
-        else
-            mainWindow->openApplication(url);
+        if (url.isLocalFile()) {
+            discoverObject->openLocalPackage(url);
+        } else if (url.scheme() == QLatin1String("apt")) {
+            Q_EMIT discoverObject->openSearch(url.host());
+        } else {
+            discoverObject->openApplication(url);
+        }
     }
 
-    if (mainWindow->rootObject()->property("pageStack").value<QObject *>()->property("depth").toInt() == 0) {
-        mainWindow->openMode(QStringLiteral("Browsing"));
+    if (auto window = discoverObject->rootObject()) {
+        if (window->property("pageStack").value<QObject *>()->property("depth").toInt() == 0) {
+            discoverObject->openMode(QStringLiteral("Browsing"));
+        }
     }
 }
 
@@ -141,7 +147,7 @@ int main(int argc, char **argv)
 
     KAboutData::setApplicationData(about);
 
-    DiscoverObject *mainWindow = nullptr;
+    DiscoverObject *discoverObject = nullptr;
     {
         QScopedPointer<QCommandLineParser> parser(createParser());
         parser->process(app);
@@ -174,16 +180,16 @@ int main(int argc, char **argv)
             if (feedback) {
                 initialProperties.insert(QStringLiteral("visible"), false);
             }
-            mainWindow = new DiscoverObject(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverObject::Full), initialProperties);
+            discoverObject = new DiscoverObject(s_decodeCompactMode->value(parser->value(QStringLiteral("compact")), DiscoverObject::Full), initialProperties);
         }
         if (feedback) {
-            QTextStream(stdout) << mainWindow->describeSources() << '\n';
-            delete mainWindow;
+            QTextStream(stdout) << discoverObject->describeSources() << '\n';
+            delete discoverObject;
             return 0;
         } else {
-            auto onActivateRequested = [mainWindow](const QStringList &arguments, const QString & /*workingDirectory*/) {
-                mainWindow->restore();
-                auto window = qobject_cast<QWindow *>(mainWindow->rootObject());
+            auto onActivateRequested = [discoverObject](const QStringList &arguments, const QString & /*workingDirectory*/) {
+                discoverObject->restore();
+                auto window = discoverObject->rootObject();
                 if (!window) {
                     // Should never happen anyway
                     QCoreApplication::instance()->quit();
@@ -192,25 +198,26 @@ int main(int argc, char **argv)
 
                 raiseWindow(window);
 
-                if (arguments.isEmpty())
+                if (arguments.isEmpty()) {
                     return;
+                }
                 QScopedPointer<QCommandLineParser> parser(createParser());
                 parser->parse(arguments);
-                processArgs(parser.data(), mainWindow);
+                processArgs(parser.data(), discoverObject);
             };
-            QObject::connect(service, &KDBusService::activateRequested, mainWindow, onActivateRequested);
+            QObject::connect(service, &KDBusService::activateRequested, discoverObject, onActivateRequested);
         }
 
-        QObject::connect(&app, &QCoreApplication::aboutToQuit, mainWindow, &DiscoverObject::deleteLater);
+        QObject::connect(&app, &QCoreApplication::aboutToQuit, discoverObject, &DiscoverObject::deleteLater);
 
-        processArgs(parser.data(), mainWindow);
+        processArgs(parser.data(), discoverObject);
 
         if (parser->isSet(QStringLiteral("listmodes"))) {
             QTextStream(stdout) << i18n("Available modes:\n");
-            const auto modes = mainWindow->modes();
+            const auto modes = discoverObject->modes();
             for (const QString &mode : modes)
                 QTextStream(stdout) << " * " << mode << '\n';
-            delete mainWindow;
+            delete discoverObject;
             return 0;
         }
 
@@ -218,7 +225,7 @@ int main(int argc, char **argv)
             const QUrl testFile = QUrl::fromUserInput(parser->value(QStringLiteral("test")), {}, QUrl::AssumeLocalFile);
             Q_ASSERT(!testFile.isEmpty() && testFile.isLocalFile());
 
-            mainWindow->loadTest(testFile);
+            discoverObject->loadTest(testFile);
         }
     }
 

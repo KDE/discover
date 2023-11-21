@@ -609,7 +609,8 @@ void DiscoverObject::loadTest(const QUrl &url)
 
 QQuickWindow *DiscoverObject::rootObject() const
 {
-    return qobject_cast<QQuickWindow *>(m_engine->rootObjects().at(0));
+    // Don't crash if rootObjects is empty
+    return qobject_cast<QQuickWindow *>(m_engine->rootObjects().value(0));
 }
 
 void DiscoverObject::showError(const QString &msg)
