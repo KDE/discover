@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-18 01:36+0000\n"
+"POT-Creation-Date: 2023-11-21 01:35+0000\n"
 "PO-Revision-Date: 2023-05-26 07:30+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -2218,12 +2218,12 @@ msgstr[1] ""
 "Aksi ini juga akan menghapus paket-paket berikut ini:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:13
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "Tampilkan Dependensi..."
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "Dependensi untuk paket: %1"

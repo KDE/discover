@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-18 01:36+0000\n"
+"POT-Creation-Date: 2023-11-21 01:35+0000\n"
 "PO-Revision-Date: 2023-05-08 23:47+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -2231,12 +2231,12 @@ msgstr[1] ""
 "Diese Aktion wird zusätzlich folgende Pakete entfernen:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:13
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "Abhängigkeiten anzeigen ..."
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "Abhängigkeiten für Paket: %1"

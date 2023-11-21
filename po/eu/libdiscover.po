@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-18 01:36+0000\n"
+"POT-Creation-Date: 2023-11-21 01:35+0000\n"
 "PO-Revision-Date: 2023-10-22 14:07+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2214,12 +2214,12 @@ msgstr[1] ""
 "Ekintza honek ondoko paketeak ere kenduko ditu:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:13
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "Erakutsi mendekotasunak..."
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "Paketearen mendekotasunak: %1"

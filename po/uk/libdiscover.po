@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-18 01:36+0000\n"
+"POT-Creation-Date: 2023-11-21 01:35+0000\n"
 "PO-Revision-Date: 2023-11-18 18:10+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2226,12 +2226,12 @@ msgstr[3] ""
 "У результаті виконання цієї дії буде також вилучено такий пакунок:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:13
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "Показати залежності…"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "Залежності для пакунка: %1"

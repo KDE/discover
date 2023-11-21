@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-18 01:36+0000\n"
+"POT-Creation-Date: 2023-11-21 01:35+0000\n"
 "PO-Revision-Date: 2022-01-01 09:30-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -2159,13 +2159,13 @@ msgstr[1] ""
 "ਇਹ ਕਾਰਵਾਈ ਹੇਠ ਦਿੱਤੇ ਪੈਕੇਜ ਵੀ ਹਟਾਏਗੀ:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:13
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
 #, fuzzy, kde-format
 #| msgid "Resolving dependencies…"
 msgid "Show Dependencies…"
 msgstr "…ਨਿਰਭਰਤਾ ਹੱਲ਼ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr ""

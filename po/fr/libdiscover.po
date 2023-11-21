@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-18 01:36+0000\n"
-"PO-Revision-Date: 2023-10-21 20:08+0200\n"
+"POT-Creation-Date: 2023-11-21 01:35+0000\n"
+"PO-Revision-Date: 2023-11-19 17:02+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -1167,37 +1167,30 @@ msgstr "Impossible de supprimer « %1 »"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released.</b>\n"
-#| "To be able to upgrade to this new version, make sure to apply all "
-#| "available updates and then restart the system."
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
 "<b>%1 is now available.</b>\n"
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
-"<b>Une nouvelle version majeure de %1 a été publiée.</b> \n"
+"<b>%1 est maintenant disponible.</b> \n"
 "Pour effectuer une mise à jour vers cette nouvelle version, veuillez vous "
 "assurer d'avoir appliqué toutes les mises à jour et d'avoir re-démarré votre "
 "système."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "Mettre à niveau"
+msgstr "Mettre à niveau maintenant"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "Dépôt indisponible"
+msgstr "%1 est maintenant disponible."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2239,12 +2232,12 @@ msgstr[1] ""
 "Cette action supprimera également les paquets suivants :\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:13
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "Afficher les dépendances..."
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "Dépendances de paquet : %1"
@@ -2280,12 +2273,10 @@ msgstr ""
 "Veuillez rédiger un rapport de bogue."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr "Mettre à niveau"
+msgstr "Démarrer la mise à niveau..."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-18 01:36+0000\n"
-"PO-Revision-Date: 2023-10-21 23:12+0300\n"
+"POT-Creation-Date: 2023-11-21 01:35+0000\n"
+"PO-Revision-Date: 2023-11-20 14:32+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1120,35 +1120,29 @@ msgstr "לא ניתן להסיר את ‚%1’"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released.</b>\n"
-#| "To be able to upgrade to this new version, make sure to apply all "
-#| "available updates and then restart the system."
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
 "<b>%1 is now available.</b>\n"
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
-"<b>גרסה עיקרית חדשה של %1 יצאה לאור.</b>\n"
-"כדי שיתאפשר לעדכן לגרסה הזאת, רצוי לוודא שכל העדכונים הזמינים חלו ולאחר מכן "
+"<b>%1 יצאה לאור.</b>\n"
+"כדי שיתאפשר לעדכן לגרסה הזאת, רצוי להחיל את כל העדכונים הזמינים ולאחר מכן "
 "להפעיל את המערכת מחדש."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
-#, fuzzy, kde-format
-#| msgid "Upgrade to %1 %2"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "שדרוג אל %1 %2"
+msgstr "שדרוג כעת"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "המאגר לא זמין"
+msgstr "%1 יצאה לאור."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2185,12 +2179,12 @@ msgstr[3] ""
 "הפעולה הזאת תסיר גם את החבילות הבאות:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:13
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "הצגת תלויות…"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "תלויות לחבילה: %1"
@@ -2225,7 +2219,7 @@ msgstr "rpm-ostree: לא נמצאה הטמעה נטענת פעילה. נא לד�
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr ""
+msgstr "התחלה בשדרוג…"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
