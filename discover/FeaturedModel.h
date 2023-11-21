@@ -7,12 +7,6 @@
 #pragma once
 
 #include "AbstractAppsModel.h"
-#include <QPointer>
-
-namespace KIO
-{
-class StoredTransferJob;
-}
 
 class FeaturedModel : public AbstractAppsModel
 {

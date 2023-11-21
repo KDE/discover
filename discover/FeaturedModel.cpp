@@ -89,3 +89,5 @@ void FeaturedModel::refresh()
     });
     setUris(uris);
 }
+
+#include "FeaturedModel.moc"
