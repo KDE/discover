@@ -120,6 +120,43 @@ DiscoverPage {
             // Need to undo some the row spacing of the parent layout which looks bad here
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
+            text: i18nc("@title:group", "Newly Published & Recently Updated")
+            visible: recentlyUpdatedRepeater.count > 0 && !featuredModel.isFetching
+        }
+
+        Repeater {
+            id: recentlyUpdatedRepeater
+            model: recentlyUpdatedModelInstantiator.object
+            delegate: GridApplicationDelegate { visible: !featuredModel.isFetching }
+        }
+
+        Instantiator {
+            id: recentlyUpdatedModelInstantiator
+
+            active: {
+                // TODO: Add packagekit-backend of rolling distros
+                return [
+                    "flatpak-backend",
+                    "snap-backend",
+                ].includes(Discover.ResourcesModel.currentApplicationBackend.name);
+            }
+
+            DiscoverApp.PaginateModel {
+                pageSize: apps.maximumColumns * 2
+                sourceModel: Discover.ResourcesProxyModel {
+                    filteredCategoryName: "All Applications"
+                    backendFilter: Discover.ResourcesModel.currentApplicationBackend
+                    sortRole: Discover.ResourcesProxyModel.ReleaseDateRole
+                    sortOrder: Qt.DescendingOrder
+                }
+            }
+        }
+
+        Kirigami.Heading {
+            Layout.topMargin: Kirigami.Units.gridUnit
+            // Need to undo some the row spacing of the parent layout which looks bad here
+            Layout.bottomMargin: -(apps.rowSpacing / 2)
+            Layout.columnSpan: apps.columns
             text: i18nc("@title:group", "Editor's Choice")
             visible: featuredRep.count > 0 && !featuredModel.isFetching
         }
