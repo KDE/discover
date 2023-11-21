@@ -1,20 +1,22 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
+# SPDX-FileCopyrightText: 2023 pieter <pieterkristensen@gmail.com>
 # Freek de Kruijf <freekdekruijf@kde.nl>, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Luc Castermans <luc.castermans@kde.nl>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-30 03:25+0000\n"
-"PO-Revision-Date: 2023-02-01 11:03+0100\n"
-"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"PO-Revision-Date: 2023-11-20 19:33+0100\n"
+"Last-Translator: Luc Castermans <luc.castermans@kde.nl>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: discover/DiscoverObject.cpp:159
@@ -24,7 +26,7 @@ msgid ""
 "updates because none of its app backends are available."
 msgstr ""
 "Ontdekken kan nu niet gebruikt worden om toepassingen te installeren of bij "
-"te werken omdat geen van zijn backends voor toepassingen beschikbaar zijn."
+"te werken omdat geen van de backends voor toepassingen beschikbaar zijn."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -34,7 +36,7 @@ msgid ""
 "Backends</interface> section.<nl/><nl/>Also please consider reporting this "
 "as a packaging issue to your distribution."
 msgstr ""
-"U kunt er enigen installeren op de pagina Instellingen, onder de sectie "
+"U kunt er installeren op de pagina Instellingen, onder de sectie "
 "<interface>Ontbrekende backends</interface>.<nl/><nl/>Overweeg ook dit te "
 "rapporteren als een probleem bij het maken van pakketten aan uw distributie."
 
@@ -81,7 +83,7 @@ msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr ""
-"Kan niet samenwerken met flatpak hulpbronnen zonder de flatpak-backend %1. "
+"Kan niet werken met flatpak hulpbronnen zonder de flatpak-backend %1. "
 "Installeer deze eerst."
 
 #: discover/DiscoverObject.cpp:310
@@ -101,7 +103,7 @@ msgid ""
 "repositories."
 msgstr ""
 "Kon %1 niet openen omdat het niet werd gevonden in een van de beschikbare "
-"software opslagruimten."
+"software repositories."
 
 #: discover/DiscoverObject.cpp:377
 #, kde-format
@@ -121,12 +123,12 @@ msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
 "Ontdekken werd gesloten voordat bepaalde taken gereed waren, wacht op het "
-"beëindigen."
+"beëindigen daarvan."
 
 #: discover/main.cpp:42
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
-msgstr "De gespecificeerde toepassing direct openen met zijn appstream:// URI."
+msgstr "De gespecificeerde toepassing direct openen met appstream:// URI."
 
 #: discover/main.cpp:43
 #, kde-format
@@ -150,7 +152,7 @@ msgstr ""
 #: discover/main.cpp:46
 #, kde-format
 msgid "List all the available modes."
-msgstr "Maak een lijst met de beschikbare modi."
+msgstr "Toon met de beschikbare modi."
 
 #: discover/main.cpp:47
 #, kde-format
@@ -165,7 +167,7 @@ msgstr "Lokaal bestand met te installeren pakket"
 #: discover/main.cpp:49
 #, kde-format
 msgid "List all the available backends."
-msgstr "Maak een lijst met de beschikbare backends."
+msgstr "Toon de beschikbare backends."
 
 #: discover/main.cpp:50
 #, kde-format
@@ -175,8 +177,7 @@ msgstr "Zoekterm."
 #: discover/main.cpp:51
 #, kde-format
 msgid "Lists the available options for user feedback"
-msgstr ""
-"Geeft een lijst met de beschikbare opties voor terugkoppeling van gebruiker"
+msgstr "Toon de beschikbare opties voor terugkoppeling van gebruiker"
 
 #: discover/main.cpp:53
 #, kde-format
@@ -222,13 +223,13 @@ msgstr "KNewStuff"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Freek de Kruijf"
+msgstr "Luc Castermans"
 
 #: discover/main.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "freekdekruijf@kde.nl"
+msgstr "luc.castermans@kde.nl"
 
 #: discover/main.cpp:152
 #, kde-format
@@ -263,7 +264,7 @@ msgstr "Reset"
 #: discover/qml/AddSourceDialog.qml:20
 #, kde-format
 msgid "Add New %1 Repository"
-msgstr "Een nieuwe opslagruimte %1 toevoegen"
+msgstr "Een nieuwe repository %1 toevoegen"
 
 #: discover/qml/AddSourceDialog.qml:44
 #, kde-format
@@ -326,7 +327,7 @@ msgstr "Grootte"
 #: discover/qml/ApplicationPage.qml:333
 #, kde-format
 msgid "Distributed by"
-msgstr "Gedistribueerd door "
+msgstr "Uitgegeven door "
 
 #: discover/qml/ApplicationPage.qml:360
 #, kde-format
@@ -356,7 +357,7 @@ msgstr[1] "Bekijk meer…"
 #: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:907
 #, kde-format
 msgid "Content Rating"
-msgstr "Waardering van inhoud"
+msgstr "Waardering"
 
 #: discover/qml/ApplicationPage.qml:445
 #, kde-format
@@ -397,7 +398,7 @@ msgstr "Add-ons"
 #: discover/qml/ApplicationPage.qml:621
 #, kde-format
 msgid "Install or remove additional functionality"
-msgstr "Additionele functionaliteit installeren of verwijderen"
+msgstr "Aanvullend functionaliteit toevoegen of verwijderen"
 
 #: discover/qml/ApplicationPage.qml:640
 #, kde-format
@@ -511,15 +512,15 @@ msgid ""
 msgstr ""
 "De broncode van deze toepassing is gedeeltelijk of geheel gesloten voor "
 "publieke inspectie en verbetering. Dat betekent dat derden en gebruikers "
-"zoals u zijn werking, beveiliging en betrouwbaarheid niet kunnen verifiëren "
-"of modificeren en het opnieuw distribueren zonder de uitdrukkelijke "
-"toestemming van de auteur.<nl/><nl/>De toepassing kan perfect veilig voor "
-"ons zijn of het kan op verschillende manieren tegen u werken - zoals het "
-"oogsten van uw persoonlijke informatie, uw locatie volgen of de inhoud van "
-"uw bestanden naar iemand anders versturen. Er is geen gemakkelijke manier om "
-"zeker te zijn, u zou deze toepassing dus alleen moeten installeren als u "
-"zijn auteurs volledig vertrouwt(<link url='%1'>%2</link>).<nl/><nl/>U kunt "
-"meer te weten komen op <link url='%3'>%3</link>."
+"zoals u de werking, beveiliging en betrouwbaarheid niet kunnen verifiëren of "
+"modificeren en het opnieuw distribueren zonder de uitdrukkelijke toestemming "
+"van de auteur.<nl/><nl/>De toepassing kan perfect veilig  of het kan in uw "
+"nadeel werken werken - zoals het door oogsten van uw persoonlijke "
+"informatie, uw locatie volgen of de inhoud van uw bestanden naar iemand "
+"anders versturen. Er is geen gemakkelijke manier om zeker te zijn, u zou "
+"deze toepassing dus alleen moeten installeren als u zijn auteurs volledig "
+"vertrouwt(<link url='%1'>%2</link>).<nl/><nl/>U kunt meer te weten komen op "
+"<link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:930
 #, kde-kuit-format
@@ -540,13 +541,13 @@ msgstr ""
 "publieke inspectie en verbetering. Dat betekent dat derden en gebruikers "
 "zoals u zijn werking, beveiliging en betrouwbaarheid niet kunnen verifiëren "
 "of modificeren en het opnieuw distribueren zonder de uitdrukkelijke "
-"toestemming van de auteur.<nl/><nl/>De toepassing kan perfect veilig voor "
-"ons zijn of het kan op verschillende manieren tegen u werken - zoals het "
-"oogsten van uw persoonlijke informatie, uw locatie volgen of de inhoud van "
-"uw bestanden naar iemand anders versturen. Er is geen gemakkelijke manier om "
-"zeker te zijn, u zou deze toepassing dus alleen moeten installeren als u "
-"zijn auteurs volledig vertrouwt(%1).<nl/><nl/>U kunt meer te weten komen op "
-"<link url='%2'>%2</link>."
+"toestemming van de auteur.<nl/><nl/>De toepassing kan perfect veilig  of het "
+"kan in uw nadeel werken werken - zoals het door oogsten van uw persoonlijke "
+"informatie, uw locatie volgen of de inhoud van uw bestanden naar iemand "
+"anders versturen. Er is geen gemakkelijke manier om zeker te zijn, u zou "
+"deze toepassing dus alleen moeten installeren als u zijn auteurs volledig "
+"vertrouwt(%1).<nl/><nl/>U kunt meer te weten komen op <link url='%2'>%2</"
+"link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -714,7 +715,7 @@ msgstr "&Geïnstalleerd"
 #: discover/qml/DiscoverWindow.qml:81
 #, kde-format
 msgid "Fetching &updates…"
-msgstr "Bijwerkitems worden opgehaald…"
+msgstr " &Updates ophalen..."
 
 #: discover/qml/DiscoverWindow.qml:81
 #, kde-format
@@ -751,7 +752,7 @@ msgstr "Hulpbron '%1' kon niet worden gevonden"
 #: discover/qml/DiscoverWindow.qml:244 discover/qml/SourcesPage.qml:169
 #, kde-format
 msgid "Proceed"
-msgstr "Verder gaan"
+msgstr "Ga verder"
 
 #: discover/qml/DiscoverWindow.qml:301
 #, kde-format
@@ -808,12 +809,12 @@ msgstr "Configureren"
 #: discover/qml/Feedback.qml:21
 #, kde-format
 msgid "Configure feedback…"
-msgstr "Terugkoppeling configureren…"
+msgstr "Instellingen terugkoppeling…"
 
 #: discover/qml/Feedback.qml:28 discover/qml/SourcesPage.qml:19
 #, kde-format
 msgid "Configure Updates…"
-msgstr "Bijwerken configureren…"
+msgstr "Updates configureren…"
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
@@ -832,7 +833,7 @@ msgstr "Meewerken…"
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "We are looking for your feedback!"
-msgstr "Wij zijn op zoek naar uw feedback!"
+msgstr "Wij zijn nieuwgierig naar uw mening!"
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
@@ -968,7 +969,7 @@ msgstr "Titel:"
 #: discover/qml/ReviewDialog.qml:67
 #, kde-format
 msgid "Enter a rating"
-msgstr "Waardering invoeren"
+msgstr "Geef waardering"
 
 #: discover/qml/ReviewDialog.qml:68
 #, kde-format
@@ -1064,7 +1065,7 @@ msgstr "Verlagen van '%1' voorkeur is mislukt"
 #: discover/qml/SourcesPage.qml:232
 #, kde-format
 msgid "Remove repository"
-msgstr "Opslagruimte verwijderen"
+msgstr "Repository verwijderen"
 
 #: discover/qml/SourcesPage.qml:243
 #, kde-format
@@ -1074,12 +1075,12 @@ msgstr "Inhoud tonen"
 #: discover/qml/SourcesPage.qml:283
 #, kde-format
 msgid "Missing Backends"
-msgstr "Backends ontbreken"
+msgstr "Ontbrekende backends"
 
 #: discover/qml/UpdatesPage.qml:12
 #, kde-format
 msgid "Updates"
-msgstr "Bijwerkitems"
+msgstr "Updates"
 
 #: discover/qml/UpdatesPage.qml:45
 #, kde-format
@@ -1189,13 +1190,13 @@ msgstr "Meer informatie…"
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
-msgstr "Ophalen…"
+msgstr "Updates ophalen…"
 
 #: discover/qml/UpdatesPage.qml:490
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
-msgstr "Bijwerkitems"
+msgstr "Updates"
 
 #: discover/qml/UpdatesPage.qml:500
 #, kde-format
@@ -1214,7 +1215,7 @@ msgstr "Bijgewerkt"
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
-msgstr "Zou moeten controleren op bijwerken"
+msgstr "Zou moeten controleren op updates"
 
 #: discover/qml/UpdatesPage.qml:540
 #, kde-format

@@ -3,20 +3,21 @@
 #
 # Freek de Kruijf <freekdekruijf@kde.nl>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Luc Castermans <luc.castermans@gmail.com>, 2021.
+# SPDX-FileCopyrightText: 2023 pieter <pieterkristensen@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-07 02:28+0000\n"
-"PO-Revision-Date: 2023-02-28 09:26+0100\n"
-"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"PO-Revision-Date: 2023-11-19 15:20+0100\n"
+"Last-Translator: pieter <pieterkristensen@gmail.com>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -31,7 +32,7 @@ msgstr "freekdekruijf@kde.nl"
 #: libdiscover/appstream/AppStreamUtils.cpp:91
 #, kde-format
 msgid "Proprietary"
-msgstr "Bedrijfseigendom"
+msgstr "Niet Open"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:93
 #, kde-format
@@ -134,7 +135,7 @@ msgstr "dummy 1"
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
-msgstr "dummy met stuf"
+msgstr "dummy waar iets inzit"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
@@ -147,7 +148,7 @@ msgstr "dummy 2.1"
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
-msgstr "dummy met heel wat stuf"
+msgstr "dummy met aardig wat erin"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
 #, kde-format
@@ -173,7 +174,7 @@ msgstr "Alle toepassingen"
 #, kde-format
 msgctxt "Category"
 msgid "Accessories"
-msgstr "Accessoires"
+msgstr "Hulptoepassingen"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -187,7 +188,7 @@ msgstr "Toegankelijkheid"
 #, kde-format
 msgctxt "Category"
 msgid "Developer Tools"
-msgstr "Hulpmiddelen voor ontwikkelaars"
+msgstr "Ontwikkelgereedschap"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -201,7 +202,7 @@ msgstr "Debuggen"
 #, kde-format
 msgctxt "Category"
 msgid "Graphic Interface Design"
-msgstr "Ontwerpen van grafisch interface"
+msgstr "Grafische interface"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
@@ -215,7 +216,7 @@ msgstr "IDE's"
 #, kde-format
 msgctxt "Category"
 msgid "Localization"
-msgstr "Aanpassen aan taalregio"
+msgstr "Localisatie"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
@@ -243,7 +244,7 @@ msgstr "Onderwijs"
 #, kde-format
 msgctxt "Category"
 msgid "Science and Engineering"
-msgstr "Wetenschap en techniek"
+msgstr "Wetenschap"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
@@ -271,7 +272,7 @@ msgstr "Scheikunde"
 #, kde-format
 msgctxt "Category"
 msgid "Computer Science and Robotics"
-msgstr "Computerwetenschap en robotica"
+msgstr "IT en robotica"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
@@ -355,7 +356,7 @@ msgstr "Puzzels"
 #, kde-format
 msgctxt "Category"
 msgid "Role Playing"
-msgstr "Rollen spellen"
+msgstr "Rollenspellen"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
@@ -397,7 +398,7 @@ msgstr "Emulators"
 #, kde-format
 msgctxt "Category"
 msgid "Graphics"
-msgstr "Illustraties"
+msgstr "Grafisch"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
@@ -432,7 +433,7 @@ msgstr "Fotografie"
 #, kde-format
 msgctxt "Category"
 msgid "Publishing"
-msgstr "Uitgeven"
+msgstr "Publiceren"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
@@ -530,7 +531,7 @@ msgstr "Kantoor"
 #, kde-format
 msgctxt "Category"
 msgid "System Settings"
-msgstr "Systeeminstellingen"
+msgstr "Systeemgereedschap"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:123
 #, kde-format
@@ -635,7 +636,7 @@ msgstr "Netwerktoegang"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:782
 #, kde-format
 msgid "Can access the internet"
-msgstr "Heb toegang tot het internet"
+msgstr "Heeft toegang tot het internet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:788
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
@@ -706,7 +707,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #, kde-format
 msgid "Bluetooth Access"
-msgstr "Toegang via Bluetooth"
+msgstr "Toegang tot Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
@@ -721,7 +722,7 @@ msgstr "Toegang tot systeem op laag niveau"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr "Kan systeem aanroepen maken op laag niveau (bijv. ptrace)"
+msgstr "Kan systeem-aanroepen maken op laag niveau (bijv. ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
@@ -915,7 +916,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
-msgstr "Verwijderen van %1 installatiebron op afstand is mislukt: %2"
+msgstr "Verwijderen van %1 repository op afstand is mislukt: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:301
 #, kde-format
@@ -930,7 +931,7 @@ msgstr "%1 (gebruiker)"
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:394
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
-msgstr "Flatpak opslagruimte URI (*.flatpakrepo) invoeren:"
+msgstr "Flatpak repository URI (*.flatpakrepo) invoeren:"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:30
 #, kde-format
@@ -940,7 +941,7 @@ msgstr "'%1' op afstand in %2 van %3 wordt toegevoegd"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:196
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr "Kon '%1' niet in '%2' vinden; ga na dat het beschikbaar is."
+msgstr "Kon '%1' niet in '%2' vinden; is het beschikbaar?"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
@@ -987,7 +988,7 @@ msgid ""
 "The remote %1 require that you accept their license:\n"
 " %2"
 msgstr ""
-"Het systeem op afstand %1 vereist dat u hun licentie accepteert:\n"
+"Het systeem op afstand %1 vereist acceptatie van licentie:\n"
 " %2"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
@@ -1236,7 +1237,7 @@ msgstr "Er is geen cache beschikbaar"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:59
 #, kde-format
 msgid "Cannot find repository"
-msgstr "Kan installatiebron niet vinden"
+msgstr "Kan repository niet vinden"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:61
 #, kde-format
@@ -1306,7 +1307,7 @@ msgstr "Kan broncodepakket niet installeren"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:87
 #, kde-format
 msgid "Repo configuration error"
-msgstr "Configuratiefout in installatiebron"
+msgstr "Configuratiefout in repository"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:89
 #, kde-format
@@ -1326,7 +1327,7 @@ msgstr "Conflicten tussen pakketten gevonden"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:95
 #, kde-format
 msgid "Repo not available"
-msgstr "Installatiebron niet beschikbaar"
+msgstr "Repositoy niet beschikbaar"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:97
 #, kde-format
@@ -1391,17 +1392,17 @@ msgstr "Update niet gevonden"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
 #, kde-format
 msgid "Cannot install from unsigned repo"
-msgstr "Kan niet installeren vanaf een niet-ondertekende installatiebron"
+msgstr "Kan niet installeren vanaf een niet-ondertekende repository"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
 #, kde-format
 msgid "Cannot update from unsigned repo"
-msgstr "Kan niet bijwerken vanaf een niet-ondertekende installatiebron"
+msgstr "Kan niet bijwerken vanaf een niet-ondertekende repository"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:125
 #, kde-format
 msgid "Cannot get file list"
-msgstr "Kan lijst met bestanden niet ophalen"
+msgstr "Kan bestandslijst niet ophalen"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:127
 #, kde-format
@@ -1411,7 +1412,7 @@ msgstr "Kan de vereisten niet ophalen"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:129
 #, kde-format
 msgid "Cannot disable repository"
-msgstr "Kan installatiebron niet uitschakelen"
+msgstr "Kan repository niet uitschakelen"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:131
 #, kde-format
@@ -1446,7 +1447,7 @@ msgstr "Bijwerken is mislukt vanwege een actief proces"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:143
 #, kde-format
 msgid "The package database changed"
-msgstr "De database van het pakket is gewijzigd"
+msgstr "De pakkettendatabase is gewijzigd"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:145
 #, kde-format
@@ -1601,7 +1602,7 @@ msgstr "Ondertekening aan het controleren…"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
 #, kde-format
 msgid "Test committing…"
-msgstr "Bezig met testen van vastleggen (commit)…"
+msgstr "Commit testen…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
 #, kde-format
@@ -1881,7 +1882,7 @@ msgstr "Niet beschikbaar"
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:115
 #, kde-format
 msgid "Failed Offline Update"
-msgstr "Offline bijwerken is mislukt"
+msgstr "Bijwerken na herstart is mislukt"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
 #, kde-format
@@ -1996,7 +1997,7 @@ msgstr[1] "%2 (plus %1 afhankelijkheden)"
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:103
 #, kde-format
 msgid "Repository URL:"
-msgstr "Installatiebron-URL:"
+msgstr "Repository-URL:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:85
 #, kde-format
@@ -2100,7 +2101,7 @@ msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
 " %3"
 msgstr ""
-"Het pakket %1 en zijn leverancier %2 vereisen dat u hun licentie "
+"Het pakket %1 en de leverancier daarvan %2 vereisen dat u hun licentie "
 "accepteert:\n"
 " %3"
 
@@ -2181,7 +2182,7 @@ msgstr "Volledige toegang"
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Can access everything on the system"
-msgstr "Heb toegang tot alles op het systeem"
+msgstr "Heeft toegang tot alles op het systeem"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
@@ -2193,7 +2194,8 @@ msgstr "Besturingssysteem"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: Meerdere opgestarte benuttingen gevonden. Dien een bugrapport in."
+"rpm-ostree: Meerdere opgestarte werkende uitvoeringen gevonden. Dien een "
+"bugrapport in."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
 #, kde-format
@@ -2209,7 +2211,7 @@ msgid ""
 "updates and reboot your system."
 msgstr ""
 "<b>Een nieuwe hoofdversie van %1 is uitgegeven!</b>\n"
-"Om naar deze nieuwe versie bij te werken, gan na dat alle zaken voor het "
+"Om naar deze nieuwe versie bij te werken, ga na dat alle zaken voor het "
 "bijwerken zijn toegepast en start uw systeem opnieuw."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
@@ -2226,13 +2228,14 @@ msgstr "<b>Een nieuwe hoofdversie is uitgegeven!</b>"
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
-"U hebt nog wachtende elementen voor bijwerken voor de huidige versie. Toch "
-"wordt doorgegaan."
+"Er zijn nog niet voltooide updates voor de huidige versie. Toch wordt "
+"doorgegaan."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
-msgstr "bijwerken tot de laatste versie alvorens naar een hoofdversie te gaan"
+msgstr ""
+"bijwerken tot de laatste versie alvorens naar een andere hoofdversie te gaan"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:556
 #, kde-format
@@ -2318,7 +2321,7 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
 #, kde-format
 msgid "Checking for a system update"
-msgstr "Controleren op bijwerken van het systeem"
+msgstr "Controleren op systeemupdates"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:385
 #, kde-format
@@ -2369,7 +2372,7 @@ msgstr "Omschakelen"
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr "Toegangsrechten configureren…"
+msgstr "Toegangsrechten instellen…"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
@@ -2393,8 +2396,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
-"SteamOS: kan atomupd niet afvragen op elementen voor bijwerken van SteamOS..."
+msgstr "SteamOS: kan atomupd niet vragen naar updates SteamOS..."
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
