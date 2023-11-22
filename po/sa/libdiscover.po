@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-21 01:35+0000\n"
+"POT-Creation-Date: 2023-11-22 01:36+0000\n"
 "PO-Revision-Date: 2023-10-01 21:56+0530\n"
 "Last-Translator: Shreekant <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <N/A>\n"
@@ -540,7 +540,7 @@ msgid "Local bundle"
 msgstr "स्थानीय पोटलिका"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:789
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:791
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "विकृत एप्स्ट्रीम url '%1'."
@@ -957,14 +957,14 @@ msgstr "समयोजननी तथा उपयोक्तृदत्त�
 msgid "Clearing settings and user data…"
 msgstr "समयोजननी तथा उपयोक्तृदत्तांशं स्वच्छं कुर्वन्…"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:22
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:24
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "%1 कृते अनुमतिः"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:56
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:75
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
@@ -989,7 +989,7 @@ msgstr "EULA समीक्षतुम्"
 msgid "Could not enable remote %1: %2"
 msgstr "दूरस्थं %1: %2 सक्षमं कर्तुं न शक्तम्"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:61
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:63
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -998,32 +998,32 @@ msgstr ""
 "असमर्थितः प्रश्नः :\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:153
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:155
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "पृष्ठभाग %1 इत्यस्य आरम्भार्थं बहुकालं व्यतीतवान्"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:212
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
 #, kde-format
 msgid "Applications"
 msgstr "अनुप्रयोगाः"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
 #, kde-format
 msgid "Plasma Addons"
 msgstr "प्लाज्मा एडोन्स्"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
 #, kde-format
 msgid "Application Addons"
 msgstr "अनुप्रयोग एडोन्स्"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:346
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:348
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "पृष्ठभागे संजालदोषः %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:353
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:355
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1032,14 +1032,14 @@ msgstr ""
 "पृष्ठभागस्य %1 कृते वितारकं प्रति बहु अनुरोधाः प्रेषिताः । कृपया कतिपयेषु निमेषेषु पुनः प्रयासं "
 "कुर्वन्तु।."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:358
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:364
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "अमान्य %1 पृष्ठभागः, स्ववितरकेन सह सम्पर्कं कुर्वन्तु ।."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:386
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:388
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1051,22 +1051,22 @@ msgstr ""
 "एतत् कार्यं कर्तुं प्रयतितुं शक्नोति, यत् कठिनतरं नियन्त्रणं प्रदाति । निवेदितः त्रुटिः आसीत् :\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:396
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:398
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "पृष्ठभागे %2 मध्ये %1 प्रविष्टेः पटलचित्रम् आनेतुं न शक्तम्"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "%1 पृष्ठभागे अनियंत्रितदोषः । स्वस्य वितरकेन सह सम्पर्कं कुर्वन्तु।."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:407
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:518
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:520
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "मिथ्या KNewStuff URI: %1"
@@ -1105,12 +1105,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "वर्णचित्राः"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:318
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:320
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "कृपया सुनिश्चितं कुर्वन्तु यत् एप्स्ट्रीम् भवतः प्रणाल्यां सम्यक् स्थापितः अस्ति"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:354
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:356
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1120,12 +1120,12 @@ msgstr ""
 "भवतः प्रचालनतन्त्रं %1 इत्यत्र समर्थनं समाप्तवान् । समर्थितसंस्करणं प्रति उन्नयनं कर्तुं "
 "विचारयन्तु ।."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:904
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:906
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' अपसारयितुं न शक्यते ।"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:989
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, fuzzy, kde-format
 #| msgid ""
@@ -1142,14 +1142,14 @@ msgstr ""
 "अस्मिन् नूतने संस्करणे उन्नयनं कर्तुं शक्नुवन्तु, सर्वाणि उपलब्धानि अद्यतनं प्रयोक्तुं सुनिश्चितं कुर्वन्तु "
 "ततः प्रणालीं पुनः आरभत ।."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
 #, fuzzy, kde-format
 #| msgid "Upgrade to %1 %2"
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "%1 %2 मध्ये उन्नयनं कुर्वन्तु"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, fuzzy, kde-format
 #| msgid "Repo not available"
@@ -2012,30 +2012,30 @@ msgstr[1] "%2 (च %1 आश्रयाः)"
 msgid "Repository URL:"
 msgstr "भण्डारस्य URL :"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:93
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
 #, kde-format
 msgid "System upgrade"
 msgstr "प्रणाली उन्नयनम्"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
 msgstr[0] "१ संकुलं उन्नयनं भविष्यति"
 msgstr[1] "%1 संकुल उन्नयनं भविष्यति"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:195
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr "<h3>%1</h3>नूतनसंस्करणं %2 मध्ये उन्नयनं कुर्वन्तु<br/>प्रकाशनटिप्पणी न प्रदत्ता"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
@@ -2044,23 +2044,23 @@ msgstr ""
 "<h3>%1</h3>नूतनसंस्करणं %2 मध्ये उन्नयनं कुर्वन्तु<br/>प्रकाशन टिप्पणियाँ:<blockquote>%3</"
 "blockquote>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:224
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
 #, kde-format
 msgid "Present"
 msgstr "वर्तमान"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:230
 #, kde-format
 msgid "Future"
 msgstr "भविष्यम्"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:365
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:367
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "अद्यतनं कर्तुं पर्याप्तं स्थानं नास्ति; केवलं %1 स्थानम् उपलभ्यते ।."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:575
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:577
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2072,12 +2072,12 @@ msgstr ""
 "संचालनाय महत्त्वपूर्णम् अस्ति:<nl/><ul><li>%1</li></ul><nl/>यदि भवान् मन्यते यत् एतत् एकं "
 "त्रुटि, कृपया भवतः वितरणस्य संकुलकर्तृभ्यः दोषरूपेण निवेदयन्तु ।."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:582
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:584
 #, kde-format
 msgid "Confirm Changes"
 msgstr "परिवर्तनं पुष्टयन्तु"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:583
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:585
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2086,13 +2086,13 @@ msgstr ""
 "अद्यतनेन निम्नलिखितसङ्कुलाः निष्कासिताः भविष्यन्ति:<ul><li>%1</li></ul><br/>स्थापनार्थं:"
 "<ul><li>%2</li></ul >"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:707
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:709
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:717
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:318
 #, kde-format
 msgid ""
@@ -2102,13 +2102,13 @@ msgstr ""
 "'%1' प्रकारस्य माध्यमपरिवर्तनं अनुरोधितम् अस्ति ।\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:748
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:750
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid "Accept EULA"
 msgstr "EULA स्वीकुरुत"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:749
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:751
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:296
 #, kde-format
 msgid ""
@@ -2118,13 +2118,13 @@ msgstr ""
 "%1 संकुलं तस्य विक्रेता %2 च भवता तेषां अनुज्ञापत्रं स्वीकुर्वन्तु:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:866
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:868
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%2 मध्ये %1 कृते हस्ताक्षरं लुप्तम्"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:867
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:869
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:336
 #, kde-format
 msgid ""
@@ -2472,7 +2472,7 @@ msgstr "%1 → %2%1 → %2%2"
 msgid "Please verify Internet connectivity"
 msgstr "कृपया अन्तर्जालसंपर्कस्य सत्यापनम् कुर्वन्तु"
 
-#: libdiscover/resources/ResourcesModel.cpp:101
+#: libdiscover/resources/ResourcesModel.cpp:103
 #, kde-format
 msgid "Refresh"
 msgstr "नवीकरणम्"
@@ -2483,7 +2483,7 @@ msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr "%1+"
 
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:111
 #, kde-format
 msgid "Updates"
 msgstr "अद्यतनाः"

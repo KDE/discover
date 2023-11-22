@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-21 01:35+0000\n"
+"POT-Creation-Date: 2023-11-22 01:36+0000\n"
 "PO-Revision-Date: 2023-10-22 17:56+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -539,7 +539,7 @@ msgid "Local bundle"
 msgstr "உள்ளமை தொகுப்பு"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:789
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:791
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "முறையற்ற appstream முகவரி '%1'"
@@ -958,14 +958,14 @@ msgstr "அமைப்புகளையும் பயனர் தரவை�
 msgid "Clearing settings and user data…"
 msgstr "அமைப்புகளையும் பயனர் தரவையும் நீக்குகிறது…"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:22
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:24
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "%1-க்கான அனுமதிகள்"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:56
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:75
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
@@ -990,7 +990,7 @@ msgstr "நிபந்தனைகளை (EULA-வை) காட்டு"
 msgid "Could not enable remote %1: %2"
 msgstr "%1 என்ற களஞ்சியத்தைச் சேர்க்க முடியவில்லை: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:61
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:63
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -999,32 +999,32 @@ msgstr ""
 "ஆதரிக்கப்படாதக் கேள்வி:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:153
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:155
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "%1 என்ற பின்நிலையை துவக்குவதற்கு நிறைய நேரம் ஆனது"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:212
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
 #, kde-format
 msgid "Applications"
 msgstr "செயலிகள்"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
 #, kde-format
 msgid "Plasma Addons"
 msgstr "பிளாஸ்மா துணை நிரல்கள்"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
 #, kde-format
 msgid "Application Addons"
 msgstr "செயலி துணை நிரல்கள்"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:346
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:348
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "%1 பின்நிலையில் சிக்கல்: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:353
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:355
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1033,14 +1033,14 @@ msgstr ""
 "%1 பின்நிலைக்கான சேவையகத்திற்கு அனுப்ப‍ப்பட்டுள்ள கோரிக்கைகளின் எண்ணிக்கை மிக அதிகமாக "
 "உள்ளது. சில நிமிடங்கள் கழித்து மீண்டும் முயற்சியுங்கள்."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:358
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:364
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "செல்லுபடியாகாத %1 பின்நிலை. உங்கள் இயங்குதள நிறுவனத்தை தொடர்புகொள்ளுங்கள்."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:386
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:388
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1052,23 +1052,23 @@ msgstr ""
 "இச்செயல்பாட்டை நீங்கள் முயற்சித்து பார்க்கலாம். தெரிவிக்கப்பட்ட சிக்கல்:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:396
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:398
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "%2 பின்நிலையை பயன்படுத்தும் %1 என்பதற்கான திரைப்பிடிப்பை பதிவிறக்க முடியவில்லை"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "%1 பின்னிலையால் கையாளப்படாத சிக்கல். உங்கள் இயங்குதள பராமரிப்பாளர்களைத் தொடர்பு கொள்ளுங்கள்."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:407
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:518
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:520
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "தவறான KNewStuff முகவரி: %1"
@@ -1107,12 +1107,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "எழுத்துருக்கள்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:318
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:320
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "உங்கள் கணினியில் Appstream சரியாக நிறுவப்பட்டுள்ளதா என பாருங்கள்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:354
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:356
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1121,12 +1121,12 @@ msgid ""
 msgstr ""
 "உங்கள் இயங்குதளத்திற்கான ஆதரவு %1 அன்று நிறைவடைந்த‍து. ஆதரவுள்ள பதிப்பிற்கு மாறுங்கள்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:904
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:906
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' என்பதை நீக்க முடியாது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:989
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, fuzzy, kde-format
 #| msgid ""
@@ -1143,14 +1143,14 @@ msgstr ""
 "மீதமுள்ள நிரல் புதுப்பிப்புகளை நிறுவி உங்கள் கணினியை மீள்துவக்கியபின் நீங்கள் விரும்பினால் "
 "அப்புதிய பதிப்பை நிறுவலாம்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
 #, fuzzy, kde-format
 #| msgid "Upgrade to %1 %2"
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "%1 %2 தனை நிறுவு"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, fuzzy, kde-format
 #| msgid "Repo not available"
@@ -2014,30 +2014,30 @@ msgstr[1] "%2 (மேலும் தேவையான %1)"
 msgid "Repository URL:"
 msgstr "களஞ்சிய முகவரி:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:93
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
 #, kde-format
 msgid "System upgrade"
 msgstr "கணினி புதுப்பிப்புகள்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
 msgstr[0] "1 தொகுப்பு புதுப்பிக்கப்படும்"
 msgstr[1] "%1 தொகுப்புகள் புதுப்பிக்கப்படும்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:195
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr "<h3>%1</h3>புதிய பதிப்பான %2<br/>வெளியீட்டுக் குறிப்புகள் இல்லை"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
@@ -2046,23 +2046,23 @@ msgstr ""
 "<h3>%1</h3>புதிய பதிப்பான %2<br/>வெளியீட்டுக் குறிப்புகள்:<blockquote>%3</"
 "blockquote>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:224
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
 #, kde-format
 msgid "Present"
 msgstr "தற்போது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:230
 #, kde-format
 msgid "Future"
 msgstr "வரவிருப்பது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:365
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:367
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "புதிப்பிப்பதற்கு போதுமான காலியிடம் இல்லை; %1-யே காலியாக உள்ளது."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:575
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:577
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2074,12 +2074,12 @@ msgstr ""
 "முடியாது:<nl/><ul><li>%1</li></ul><nl/> இது பிழையெனில், உங்கள் இயங்குதள "
 "பராமரிப்பாளர்களிடம் இச்சிக்கலைத் தெரிவியுங்கள்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:582
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:584
 #, kde-format
 msgid "Confirm Changes"
 msgstr "மாற்றங்களை உறுதிசெய்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:583
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:585
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2088,13 +2088,13 @@ msgstr ""
 "புதுப்பிப்பு பின்வருபவற்றை நீக்கும்:<ul><li>%1</li></ul><br/>பின்வருவதை நிறுவ அவ்வாறு "
 "செய்ய வேண்டும்:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:707
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:709
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:717
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:318
 #, kde-format
 msgid ""
@@ -2104,13 +2104,13 @@ msgstr ""
 "'%1' வகையான ஊடகமாற்றம் கோரப்பட்டுள்ளது.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:748
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:750
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid "Accept EULA"
 msgstr "நிபந்தனைகளை ஏற்கவும்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:749
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:751
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:296
 #, kde-format
 msgid ""
@@ -2121,13 +2121,13 @@ msgstr ""
 "கட்டாயப்படுத்துகின்றனர்:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:866
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:868
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%2 என்பதில் %1 என்பதற்கான கையொப்பம் காணவில்லை"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:867
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:869
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:336
 #, kde-format
 msgid ""
@@ -2463,7 +2463,7 @@ msgstr "%1 → %2%1 → %2%2"
 msgid "Please verify Internet connectivity"
 msgstr "இணைய இணைப்பை சரிபார்க்கவும்"
 
-#: libdiscover/resources/ResourcesModel.cpp:101
+#: libdiscover/resources/ResourcesModel.cpp:103
 #, kde-format
 msgid "Refresh"
 msgstr "புதுப்பி"
@@ -2474,7 +2474,7 @@ msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr "%1+"
 
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:111
 #, kde-format
 msgid "Updates"
 msgstr "புதுப்பிப்புகள்"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:52+0000\n"
+"POT-Creation-Date: 2023-11-22 01:36+0000\n"
 "PO-Revision-Date: 2022-02-19 12:22+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -85,44 +85,44 @@ msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Upgrade"
 
-#: notifier/main.cpp:36
+#: notifier/main.cpp:38
 #, kde-format
 msgid "Discover Notifier"
 msgstr "Discover Notifier"
 
-#: notifier/main.cpp:38
+#: notifier/main.cpp:40
 #, kde-format
 msgid "System update status notifier"
 msgstr "System update status notifier"
 
-#: notifier/main.cpp:40
+#: notifier/main.cpp:42
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010-2022 Plasma Development Team"
 
-#: notifier/main.cpp:44
+#: notifier/main.cpp:46
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Steve Allewell"
 
-#: notifier/main.cpp:44
+#: notifier/main.cpp:46
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "steve.allewell@gmail.com"
 
-#: notifier/main.cpp:49
+#: notifier/main.cpp:51
 #, kde-format
 msgid "Replace an existing instance"
 msgstr "Replace an existing instance"
 
-#: notifier/main.cpp:51
+#: notifier/main.cpp:53
 #, kde-format
 msgid "Do not show the notifier"
 msgstr "Do not show the notifier"
 
-#: notifier/main.cpp:51
+#: notifier/main.cpp:53
 #, kde-format
 msgid "hidden"
 msgstr "hidden"

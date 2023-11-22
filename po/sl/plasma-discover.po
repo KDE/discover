@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-10 01:47+0000\n"
+"POT-Creation-Date: 2023-11-22 01:36+0000\n"
 "PO-Revision-Date: 2023-11-04 08:26+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.4\n"
 
-#: discover/DiscoverObject.cpp:161
+#: discover/DiscoverObject.cpp:163
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -29,7 +29,7 @@ msgstr ""
 "%1 ni konfiguriran za nameščanje aplikacij prek programa Discover – samo za "
 "dodatke aplikacijam"
 
-#: discover/DiscoverObject.cpp:163
+#: discover/DiscoverObject.cpp:165
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -41,13 +41,13 @@ msgstr ""
 "strani <interface>Nastavitve</interface> pod <interface>Mankajoča zaledja</"
 "interface>."
 
-#: discover/DiscoverObject.cpp:166
+#: discover/DiscoverObject.cpp:168
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Poročajte o tem na %1"
 
-#: discover/DiscoverObject.cpp:171
+#: discover/DiscoverObject.cpp:173
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -68,17 +68,17 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 paketov za "
 "Discover</link>"
 
-#: discover/DiscoverObject.cpp:266
+#: discover/DiscoverObject.cpp:268
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Ni bilo mogoče najti kategorije '%1'"
 
-#: discover/DiscoverObject.cpp:281
+#: discover/DiscoverObject.cpp:283
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Poskus odpiranja neobstoječe datoteke '%1'"
 
-#: discover/DiscoverObject.cpp:303
+#: discover/DiscoverObject.cpp:305
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -87,17 +87,17 @@ msgstr ""
 "Ni mogoče komunicirati z viri flatpack brez programa za flatback v ozadju "
 "%1. Prosimo, da ga najprej namestite."
 
-#: discover/DiscoverObject.cpp:307
+#: discover/DiscoverObject.cpp:309
 #, kde-format
 msgid "Could not open %1"
 msgstr "Ni bilo mogoče odpreti %1"
 
-#: discover/DiscoverObject.cpp:369
+#: discover/DiscoverObject.cpp:371
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Zagotovite, da je nameščena podpora Snap"
 
-#: discover/DiscoverObject.cpp:371
+#: discover/DiscoverObject.cpp:373
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -106,23 +106,23 @@ msgstr ""
 "Ni bilo mogoče odpreti %1, ker ni bila najdena v nobenem razpoložljivem "
 "skladišču programja."
 
-#: discover/DiscoverObject.cpp:374
+#: discover/DiscoverObject.cpp:376
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Prijavite to težavo vzdrževalcem paketov vaše distribucije."
 
-#: discover/DiscoverObject.cpp:377
+#: discover/DiscoverObject.cpp:379
 #, kde-format
 msgid "Report This Issue"
 msgstr "Poročajte o tem"
 
-#: discover/DiscoverObject.cpp:439 discover/DiscoverObject.cpp:441
+#: discover/DiscoverObject.cpp:441 discover/DiscoverObject.cpp:443
 #: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:442
+#: discover/DiscoverObject.cpp:444
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -276,7 +276,7 @@ msgstr "Dodaj"
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:274
 #: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:191
-#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:266 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "Prekliči"
@@ -1207,32 +1207,32 @@ msgstr "Prikaži vsebino"
 msgid "Missing Backends"
 msgstr "Manjkajo programi v ozadju"
 
-#: discover/qml/UpdatesPage.qml:12
+#: discover/qml/UpdatesPage.qml:14
 #, kde-format
 msgid "Updates"
 msgstr "Posodobitve"
 
-#: discover/qml/UpdatesPage.qml:45
+#: discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "Posodobi izdajo"
 
-#: discover/qml/UpdatesPage.qml:45
+#: discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Technical details"
 msgstr "Tehnične podrobnosti"
 
-#: discover/qml/UpdatesPage.qml:61
+#: discover/qml/UpdatesPage.qml:63
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr "Prišlo do težave pri posodobitvi. Prosimo poskusite kasneje."
 
-#: discover/qml/UpdatesPage.qml:67
+#: discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "Poglejte tehnične podrobnosti"
 
-#: discover/qml/UpdatesPage.qml:94
+#: discover/qml/UpdatesPage.qml:96
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid ""
@@ -1242,12 +1242,12 @@ msgstr ""
 "Če je napaka prikazana zgoraj, videti kot realna težava in ne začasna napaka "
 "omrežij, jo poročajte na %1, ne na KDE."
 
-#: discover/qml/UpdatesPage.qml:102
+#: discover/qml/UpdatesPage.qml:104
 #, kde-format
 msgid "Copy Text"
 msgstr "Kopiraj besedilo"
 
-#: discover/qml/UpdatesPage.qml:106
+#: discover/qml/UpdatesPage.qml:108
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
@@ -1255,70 +1255,65 @@ msgstr ""
 "Sporočilo o napaki je prekopirano. Ne pozabite o tem poročati na %1, ne na "
 "KDE!"
 
-#: discover/qml/UpdatesPage.qml:113
+#: discover/qml/UpdatesPage.qml:115
 #, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
 msgstr "Poročajte o tem na %1"
 
-#: discover/qml/UpdatesPage.qml:140
+#: discover/qml/UpdatesPage.qml:142
 #, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "Posodobi izbrano"
 
-#: discover/qml/UpdatesPage.qml:140
+#: discover/qml/UpdatesPage.qml:142
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Posodobi vse"
 
-#: discover/qml/UpdatesPage.qml:181
+#: discover/qml/UpdatesPage.qml:188
 #, kde-format
 msgid "Ignore"
 msgstr "Prezri"
 
-#: discover/qml/UpdatesPage.qml:227
+#: discover/qml/UpdatesPage.qml:234
 #, kde-format
 msgid "Select All"
 msgstr "Izberi vse"
 
-#: discover/qml/UpdatesPage.qml:235
+#: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Select None"
 msgstr "Ne izberi ničesar"
 
-#: discover/qml/UpdatesPage.qml:242
+#: discover/qml/UpdatesPage.qml:249
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "Samodejno se ponovno zaženi, ko je osvežitev končana"
 
-#: discover/qml/UpdatesPage.qml:249
+#: discover/qml/UpdatesPage.qml:256
 #, kde-format
 msgid "Total size: %1"
 msgstr "Skupna velikost: %1"
 
-#: discover/qml/UpdatesPage.qml:284
+#: discover/qml/UpdatesPage.qml:291
 #, kde-format
 msgid "Restart Now"
 msgstr "Ponovno zaženi zdaj"
 
-#: discover/qml/UpdatesPage.qml:387
-#, kde-format
-msgid "%1"
-msgstr "%1"
-
-#: discover/qml/UpdatesPage.qml:403
+#: discover/qml/UpdatesPage.qml:420
 #, kde-format
 msgid "Installing"
 msgstr "Nameščanje"
 
-#: discover/qml/UpdatesPage.qml:439
+#: discover/qml/UpdatesPage.qml:451
 #, kde-format
 msgid "Update from:"
 msgstr "Posodobi iz:"
 
-#: discover/qml/UpdatesPage.qml:451
+#: discover/qml/UpdatesPage.qml:463
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1326,47 +1321,50 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:458
+#: discover/qml/UpdatesPage.qml:470
 #, kde-format
 msgid "More Information…"
 msgstr "Več informacij…"
 
-#: discover/qml/UpdatesPage.qml:486
+#: discover/qml/UpdatesPage.qml:498
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Pridobivanje posodobitev…"
 
-#: discover/qml/UpdatesPage.qml:499
+#: discover/qml/UpdatesPage.qml:511
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Posodobitve"
 
-#: discover/qml/UpdatesPage.qml:508
+#: discover/qml/UpdatesPage.qml:520
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Ponovno zaženite sistem, da bi končali postopek posodobitve"
 
-#: discover/qml/UpdatesPage.qml:520 discover/qml/UpdatesPage.qml:527
-#: discover/qml/UpdatesPage.qml:534
+#: discover/qml/UpdatesPage.qml:532 discover/qml/UpdatesPage.qml:539
+#: discover/qml/UpdatesPage.qml:546
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Posodobljeno"
 
-#: discover/qml/UpdatesPage.qml:541
+#: discover/qml/UpdatesPage.qml:553
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Preveriti bi morali za posodobitvami"
 
-#: discover/qml/UpdatesPage.qml:548
+#: discover/qml/UpdatesPage.qml:560
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Čas zadnje posodobitve je neznan"
+
+#~ msgid "%1"
+#~ msgstr "%1"
 
 #~ msgid ""
 #~ "Discover currently cannot be used to install any apps or perform system "

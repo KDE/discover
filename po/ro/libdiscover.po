@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-21 01:35+0000\n"
+"POT-Creation-Date: 2023-11-22 01:36+0000\n"
 "PO-Revision-Date: 2022-12-28 20:25+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -546,7 +546,7 @@ msgid "Local bundle"
 msgstr "Pachet local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:789
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:791
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL appstream eronat „%1”"
@@ -988,14 +988,14 @@ msgstr ""
 msgid "Clearing settings and user data…"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:22
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:24
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:56
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:75
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
@@ -1020,39 +1020,39 @@ msgstr "Consultă acordul"
 msgid "Could not enable remote %1: %2"
 msgstr "Nu s-a putut adăuga sursa %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:61
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:63
 #, kde-format
 msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:153
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:155
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Platformei %1 i-a luat prea mult să se inițializeze"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:212
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
 #, kde-format
 msgid "Applications"
 msgstr "Aplicații"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Suplimente Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
 #, kde-format
 msgid "Application Addons"
 msgstr "Suplimente pentru aplicații"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:346
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:348
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Eroare de rețea în platforma %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:353
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:355
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1061,14 +1061,14 @@ msgstr ""
 "Prea multe cereri trimise la server pentru platforma %1. Reîncercați în "
 "câteva minute."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:358
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:364
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Platformă %1 nevalidă, contactați-vă distribuitorul."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:386
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:388
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1081,23 +1081,23 @@ msgstr ""
 "restrâns. Eroarea raportată a fost:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:396
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:398
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "Nu s-a putut prelua captura de ecran pentru înregistrarea %1 în platforma %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "Eroare neprevăzută în platforma %1. Contactați-vă distribuitorul."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:407
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:518
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:520
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "URI KNewStuff greșit: %1"
@@ -1136,12 +1136,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Fonturi"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:318
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:320
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Asigurați-vă că Appstream e configurat corect în sistem"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:354
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:356
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1151,12 +1151,12 @@ msgstr ""
 "Sistemul acesta de operare a rămas fără suport pe %1. Luați în calcul "
 "înnoirea la o versiune susținută."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:904
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:906
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nu se poate elimina „%1”"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:989
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1166,7 +1166,7 @@ msgid ""
 "updates, and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
 #| msgid "Upgrade"
@@ -1174,7 +1174,7 @@ msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Actualizează"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, fuzzy, kde-format
 #| msgid "Repo not available"
@@ -2047,7 +2047,7 @@ msgstr[2] "%2 (plus %1 de dependențe)"
 msgid "Repository URL:"
 msgstr "URL depozit:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:93
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, fuzzy, kde-format
 #| msgctxt "@item example: muon installed at 16:00"
 #| msgid "%1 %2 at %3"
@@ -2055,12 +2055,12 @@ msgctxt "distro upgrade: name version"
 msgid "%1 %2"
 msgstr "%1 %2 la %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
 #, kde-format
 msgid "System upgrade"
 msgstr "Înnoirea sistemului"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
 #, fuzzy, kde-format
 #| msgid "1 package to upgrade"
 #| msgid_plural "%1 packages to upgrade"
@@ -2070,35 +2070,35 @@ msgstr[0] "1 pachet de înnoit"
 msgstr[1] "%1 pachete de înnoit"
 msgstr[2] "%1 de pachete de înnoit"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:195
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:224
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
 #, kde-format
 msgid "Present"
 msgstr "Prezent"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:230
 #, kde-format
 msgid "Future"
 msgstr "Viitor"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:365
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:367
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:575
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:577
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2111,14 +2111,14 @@ msgstr ""
 ">Dacă credeți că aceasta e o greșeală, raportați-o ca defect "
 "împachetatorilor distribuției dumneavoastră."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:582
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:584
 #, fuzzy, kde-format
 #| msgctxt "@info:status Package state"
 #| msgid "No Change"
 msgid "Confirm Changes"
 msgstr "Nicio modificare"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:583
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:585
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2127,13 +2127,13 @@ msgstr ""
 "Următoarele pachete vor fi eliminate de către actualizare:<ul><li>%1</li></"
 "ul><br/>pentru a instala:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:707
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:709
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:717
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:318
 #, kde-format
 msgid ""
@@ -2143,13 +2143,13 @@ msgstr ""
 "Este cerută schimbarea mediului de tip „%1”.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:748
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:750
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid "Accept EULA"
 msgstr "Acceptă acordul"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:749
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:751
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:296
 #, kde-format
 msgid ""
@@ -2159,13 +2159,13 @@ msgstr ""
 "Pachetul %1 și vânzătorul acestuia %2 vă cer să le acceptați licența:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:866
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:868
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Lipsește semnătura pentru %1 în %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:867
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:869
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:336
 #, kde-format
 msgid ""
@@ -2544,7 +2544,7 @@ msgstr "%1 → %2%1 → %2%2"
 msgid "Please verify Internet connectivity"
 msgstr "Verificați conexiunea la Internet"
 
-#: libdiscover/resources/ResourcesModel.cpp:101
+#: libdiscover/resources/ResourcesModel.cpp:103
 #, kde-format
 msgid "Refresh"
 msgstr "Reîmprospătează"
@@ -2555,7 +2555,7 @@ msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr "%1+"
 
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:111
 #, kde-format
 msgid "Updates"
 msgstr "Actualizări"

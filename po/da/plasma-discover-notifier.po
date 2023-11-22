@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:52+0000\n"
+"POT-Creation-Date: 2023-11-22 01:36+0000\n"
 "PO-Revision-Date: 2020-10-04 16:57+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -85,45 +85,45 @@ msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Opgradér"
 
-#: notifier/main.cpp:36
+#: notifier/main.cpp:38
 #, kde-format
 msgid "Discover Notifier"
 msgstr "Statusikon til Discover"
 
-#: notifier/main.cpp:38
+#: notifier/main.cpp:40
 #, kde-format
 msgid "System update status notifier"
 msgstr "Statusikon til systemopdateringer"
 
-#: notifier/main.cpp:40
+#: notifier/main.cpp:42
 #, fuzzy, kde-format
 #| msgid "© 2010-2019 Plasma Development Team"
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010-2019 Plasma-udviklingsholdet"
 
-#: notifier/main.cpp:44
+#: notifier/main.cpp:46
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Martin Schlander"
 
-#: notifier/main.cpp:44
+#: notifier/main.cpp:46
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "mschlander@opensuse.org"
 
-#: notifier/main.cpp:49
+#: notifier/main.cpp:51
 #, kde-format
 msgid "Replace an existing instance"
 msgstr "Erstat en eksisterende instans"
 
-#: notifier/main.cpp:51
+#: notifier/main.cpp:53
 #, kde-format
 msgid "Do not show the notifier"
 msgstr "Vis ikke bekendtgørelse"
 
-#: notifier/main.cpp:51
+#: notifier/main.cpp:53
 #, kde-format
 msgid "hidden"
 msgstr "skjult"

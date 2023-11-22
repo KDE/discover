@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:52+0000\n"
+"POT-Creation-Date: 2023-11-22 01:36+0000\n"
 "PO-Revision-Date: 2022-01-14 10:51+0100\n"
 "Last-Translator: Kristóf Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -87,44 +87,44 @@ msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Frissítés"
 
-#: notifier/main.cpp:36
+#: notifier/main.cpp:38
 #, kde-format
 msgid "Discover Notifier"
 msgstr "Discover értesítő"
 
-#: notifier/main.cpp:38
+#: notifier/main.cpp:40
 #, kde-format
 msgid "System update status notifier"
 msgstr "Rendszerfrissítés állapotértesítő"
 
-#: notifier/main.cpp:40
+#: notifier/main.cpp:42
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© A Plasma fejlesztői, 2010-2022."
 
-#: notifier/main.cpp:44
+#: notifier/main.cpp:46
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Kiszel Kristóf"
 
-#: notifier/main.cpp:44
+#: notifier/main.cpp:46
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ulysses@kubuntu.org"
 
-#: notifier/main.cpp:49
+#: notifier/main.cpp:51
 #, kde-format
 msgid "Replace an existing instance"
 msgstr "Meglévő példány cseréje"
 
-#: notifier/main.cpp:51
+#: notifier/main.cpp:53
 #, kde-format
 msgid "Do not show the notifier"
 msgstr "Ne mutassa az értesítőt"
 
-#: notifier/main.cpp:51
+#: notifier/main.cpp:53
 #, kde-format
 msgid "hidden"
 msgstr "rejtett"

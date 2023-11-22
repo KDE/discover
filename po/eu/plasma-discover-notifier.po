@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 16:52+0000\n"
+"POT-Creation-Date: 2023-11-22 01:36+0000\n"
 "PO-Revision-Date: 2023-07-28 10:20+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -88,44 +88,44 @@ msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Bertsio-berritu"
 
-#: notifier/main.cpp:36
+#: notifier/main.cpp:38
 #, kde-format
 msgid "Discover Notifier"
 msgstr "Discover jakinarazlea"
 
-#: notifier/main.cpp:38
+#: notifier/main.cpp:40
 #, kde-format
 msgid "System update status notifier"
 msgstr "Sistemako eguneratze egoeraren jakinarazlea"
 
-#: notifier/main.cpp:40
+#: notifier/main.cpp:42
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© 2010-2022 Plasma garapen taldea"
 
-#: notifier/main.cpp:44
+#: notifier/main.cpp:46
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Iñigo Salvador Azurmendi"
 
-#: notifier/main.cpp:44
+#: notifier/main.cpp:46
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xalba@ni.eus"
 
-#: notifier/main.cpp:49
+#: notifier/main.cpp:51
 #, kde-format
 msgid "Replace an existing instance"
 msgstr "Ordezkatu dagoen instantzia bat"
 
-#: notifier/main.cpp:51
+#: notifier/main.cpp:53
 #, kde-format
 msgid "Do not show the notifier"
 msgstr "Ez erakutsi jakinarazlea"
 
-#: notifier/main.cpp:51
+#: notifier/main.cpp:53
 #, kde-format
 msgid "hidden"
 msgstr "ezkutuan"

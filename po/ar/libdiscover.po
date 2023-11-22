@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-21 01:35+0000\n"
+"POT-Creation-Date: 2023-11-22 01:36+0000\n"
 "PO-Revision-Date: 2023-06-08 12:03+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -540,7 +540,7 @@ msgid "Local bundle"
 msgstr "حزمة محليّة"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:789
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:791
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "مسار appstream ‏’%1‘ مشوّه"
@@ -973,14 +973,14 @@ msgstr "احذف الإعدادات وبيانات المستخدم"
 msgid "Clearing settings and user data…"
 msgstr "يمسح الإعدادات وبيانات المستخدم…"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:22
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:24
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "صلاحيات لـ %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:56
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:75
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
@@ -1005,7 +1005,7 @@ msgstr "راجع رخصة المستخدم النهائي"
 msgid "Could not enable remote %1: %2"
 msgstr "تعذّر تمكين %1 البعيد: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:61
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:63
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -1014,32 +1014,32 @@ msgstr ""
 "سؤال غير مدعوم:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:153
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:155
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "أخذت الخلفية %1 وقت طويل للبدء"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:212
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
 #, kde-format
 msgid "Applications"
 msgstr "التّطبيقات"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
 #, kde-format
 msgid "Plasma Addons"
 msgstr "إضافات بلازما"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
 #, kde-format
 msgid "Application Addons"
 msgstr "إضافات التّطبيقات"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:346
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:348
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "خطأ شبكيّ في الخلفية %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:353
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:355
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1047,14 +1047,14 @@ msgid ""
 msgstr ""
 "العديد من الطلبات أرسلت إلى الخادم لخلفية %1 . رجاء حاول مجددا بعد بضع دقائق."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:358
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:364
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "خلفية %1 غير صالح، راجع توزيعتك."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:386
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:388
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1067,22 +1067,22 @@ msgstr ""
 "الإبلاغ عنه هو: \n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:396
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:398
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "لم يستطع جلب لقطات للمدخلة %1 في خلفية %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "خطأ لا يمكن التعامل معه في خلفية %1. راجع توزيعتك."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:407
 #, kde-format
 msgid "%1: %2"
 msgstr "‏%1:‏ %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:518
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:520
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "معرّف «أشياء جديدة» خطأ: %1"
@@ -1121,12 +1121,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "الخطوط"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:318
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:320
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "تحقّق من أنّ Appstream مضبوط كما ينبغي في النّظام"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:354
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:356
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1134,12 +1134,12 @@ msgid ""
 "version."
 msgstr "انتهى دعم نظام تشغيلك في %1. ضع في اعتبارك الترقية إلى إصدار مدعوم."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:904
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:906
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "لا يمكن إزالة '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:987
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:989
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, fuzzy, kde-format
 #| msgid ""
@@ -1156,7 +1156,7 @@ msgstr ""
 "لتكون قادرًا على للترقية إلى هذا الإصدار الجديد، تأكد من تطبيق جميع التحديثات "
 "المتوفرة وإعادة تشغيل نظامك."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:996
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
 #| msgid "Upgrade"
@@ -1164,7 +1164,7 @@ msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "تحديثها"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, fuzzy, kde-format
 #| msgid "Repo not available"
@@ -2046,18 +2046,18 @@ msgstr[5] "‏%2 (و%1 اعتماديّة)"
 msgid "Repository URL:"
 msgstr "مسار المستودع:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:93
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
 #, kde-format
 msgid "System upgrade"
 msgstr "ترقية النّظام"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:186
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
@@ -2068,12 +2068,12 @@ msgstr[3] "%1 حزم سترقى"
 msgstr[4] "%1 حزمة سترقى"
 msgstr[5] "%1 حزمة سترقى"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:195
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr "<h3>%1</h3>سترقى إلى الإصدارة الأحدث %2<br/>لا يوجد ملاحظات للإصدارة"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
@@ -2082,23 +2082,23 @@ msgstr ""
 "<h3>%1</h3>سترقى إلى الإصدارة الأحدث %2<br/>ملاحظات الإصدارة:<blockquote>%3</"
 "blockquote>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:224
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
 #, kde-format
 msgid "Present"
 msgstr "موجود"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:230
 #, kde-format
 msgid "Future"
 msgstr "المستقبل"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:365
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:367
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "لا يوجد مساحة كافية للتحديث. المتوفر لديك %1."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:575
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:577
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2110,12 +2110,12 @@ msgstr ""
 "بالغة الأهمية لتشغيل النظام: <nl/><ul><li>‏%1</li></ul><nl/>إذا كنت تعتقد أن "
 "هذا خطأ ، فالرجاء الإبلاغ عنه على أنه خطأ إلى محزمي التطبيقات  في توزيعتك."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:582
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:584
 #, kde-format
 msgid "Confirm Changes"
 msgstr "أكد التغييرات"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:583
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:585
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2124,13 +2124,13 @@ msgstr ""
 "سيُزيل التّحديث الحزم الآتية:<ul><li>%1</li></ul><br/>لتثبيت:<ul><li>%2</li></"
 "ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:707
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:709
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "‏%1:<nl/><nl/>‏%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:717
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:318
 #, kde-format
 msgid ""
@@ -2140,13 +2140,13 @@ msgstr ""
 "تغيير الوسيط من نوع ’%1‘ مطلوب.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:748
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:750
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid "Accept EULA"
 msgstr "اقبل اتّفاقيّة المستخدم النّهائي"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:749
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:751
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:296
 #, kde-format
 msgid ""
@@ -2156,13 +2156,13 @@ msgstr ""
 "تطلب الحزمة %1 وبائعها %2 قبول رخصتهم:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:866
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:868
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "توقيع %1 ناقص في %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:867
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:869
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:336
 #, kde-format
 msgid ""
@@ -2519,7 +2519,7 @@ msgstr "‏%1 ← %2%1‏ ←‏ %2‏%2"
 msgid "Please verify Internet connectivity"
 msgstr "رجاء تأكد من الاتصال بالإنترنت"
 
-#: libdiscover/resources/ResourcesModel.cpp:101
+#: libdiscover/resources/ResourcesModel.cpp:103
 #, kde-format
 msgid "Refresh"
 msgstr "أنعش"
@@ -2530,7 +2530,7 @@ msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr "%1+"
 
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:109
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:111
 #, kde-format
 msgid "Updates"
 msgstr "التّحديثات"

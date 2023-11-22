@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-10 01:47+0000\n"
+"POT-Creation-Date: 2023-11-22 01:36+0000\n"
 "PO-Revision-Date: 2023-11-14 21:08+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 23.11.70\n"
 
-#: discover/DiscoverObject.cpp:161
+#: discover/DiscoverObject.cpp:163
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -30,7 +30,7 @@ msgstr ""
 "%1, yalnızca Keşfet'e özgü uygulama eklentileriyle uygulama kurmak için "
 "yapılandırılmadı"
 
-#: discover/DiscoverObject.cpp:163
+#: discover/DiscoverObject.cpp:165
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -42,13 +42,13 @@ msgstr ""
 "sayfasında <interface>Eksik Arka Uçlar</interface> altında yeğlediğiniz "
 "modülü kurun."
 
-#: discover/DiscoverObject.cpp:166
+#: discover/DiscoverObject.cpp:168
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Sorunu %1 Topluluğuna Bildir"
 
-#: discover/DiscoverObject.cpp:171
+#: discover/DiscoverObject.cpp:173
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -69,17 +69,17 @@ msgstr ""
 "><nl/><link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 "
 "dağıtımının Keşfet paketini gözden geçirin</link>"
 
-#: discover/DiscoverObject.cpp:266
+#: discover/DiscoverObject.cpp:268
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "'%1' kategorisi bulunamadı"
 
-#: discover/DiscoverObject.cpp:281
+#: discover/DiscoverObject.cpp:283
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Var olmayan '%1' dosyası açılmaya çalışılıyor"
 
-#: discover/DiscoverObject.cpp:303
+#: discover/DiscoverObject.cpp:305
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -88,17 +88,17 @@ msgstr ""
 "%1 flatpak arka ucu olmadan flatpak kaynaklarıyla etkileşim kurulamıyor. "
 "Lütfen önce kurun."
 
-#: discover/DiscoverObject.cpp:307
+#: discover/DiscoverObject.cpp:309
 #, kde-format
 msgid "Could not open %1"
 msgstr "%1 açılamadı"
 
-#: discover/DiscoverObject.cpp:369
+#: discover/DiscoverObject.cpp:371
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Lütfen Snap desteğinin kurulu olduğundan emin olun"
 
-#: discover/DiscoverObject.cpp:371
+#: discover/DiscoverObject.cpp:373
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -106,23 +106,23 @@ msgid ""
 msgstr ""
 "%1 açılamıyor; çünkü hiçbir kullanılabilir yazılım deposunda bulunamadı."
 
-#: discover/DiscoverObject.cpp:374
+#: discover/DiscoverObject.cpp:376
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Lütfen bu sorunu dağıtımınızın paketleyicilerine bildirin."
 
-#: discover/DiscoverObject.cpp:377
+#: discover/DiscoverObject.cpp:379
 #, kde-format
 msgid "Report This Issue"
 msgstr "Bu Sorunu Bildir"
 
-#: discover/DiscoverObject.cpp:439 discover/DiscoverObject.cpp:441
+#: discover/DiscoverObject.cpp:441 discover/DiscoverObject.cpp:443
 #: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Keşfet"
 
-#: discover/DiscoverObject.cpp:442
+#: discover/DiscoverObject.cpp:444
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -275,7 +275,7 @@ msgstr "Ekle"
 #: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:274
 #: discover/qml/InstallApplicationButton.qml:45
 #: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:191
-#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:266 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "İptal"
@@ -1197,33 +1197,33 @@ msgstr "İçeriği göster"
 msgid "Missing Backends"
 msgstr "Eksik Arka Uçlar"
 
-#: discover/qml/UpdatesPage.qml:12
+#: discover/qml/UpdatesPage.qml:14
 #, kde-format
 msgid "Updates"
 msgstr "Güncellemeler"
 
-#: discover/qml/UpdatesPage.qml:45
+#: discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "Güncelleme Sorunu"
 
-#: discover/qml/UpdatesPage.qml:45
+#: discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Technical details"
 msgstr "Teknik ayrıntılar"
 
-#: discover/qml/UpdatesPage.qml:61
+#: discover/qml/UpdatesPage.qml:63
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
 "Bu güncellemeyi kurarken bir sorun oluştu. Lütfen daha sonra yeniden deneyin."
 
-#: discover/qml/UpdatesPage.qml:67
+#: discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "Teknik Ayrıntıları Gör"
 
-#: discover/qml/UpdatesPage.qml:94
+#: discover/qml/UpdatesPage.qml:96
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid ""
@@ -1233,12 +1233,12 @@ msgstr ""
 "Yukarıda belirtilen hata geçici bir ağ hatası değil de gerçek bir sorun gibi "
 "görünüyorsa lütfen bunu KDE'ye değil de %1 topluluğuna bildirin."
 
-#: discover/qml/UpdatesPage.qml:102
+#: discover/qml/UpdatesPage.qml:104
 #, kde-format
 msgid "Copy Text"
 msgstr "Metni Kopyala"
 
-#: discover/qml/UpdatesPage.qml:106
+#: discover/qml/UpdatesPage.qml:108
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
@@ -1246,70 +1246,65 @@ msgstr ""
 "Hata iletisi kopyalandı. Bunu KDE'ye değil de %1 topluluğuna bildirmeyi "
 "unutmayın!"
 
-#: discover/qml/UpdatesPage.qml:113
+#: discover/qml/UpdatesPage.qml:115
 #, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
 msgstr "Sorunu %1 Topluluğuna Bildir"
 
-#: discover/qml/UpdatesPage.qml:140
+#: discover/qml/UpdatesPage.qml:142
 #, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "Seçiliyi Güncelle"
 
-#: discover/qml/UpdatesPage.qml:140
+#: discover/qml/UpdatesPage.qml:142
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Tümünü Güncelle"
 
-#: discover/qml/UpdatesPage.qml:181
+#: discover/qml/UpdatesPage.qml:188
 #, kde-format
 msgid "Ignore"
 msgstr "Yok Say"
 
-#: discover/qml/UpdatesPage.qml:227
+#: discover/qml/UpdatesPage.qml:234
 #, kde-format
 msgid "Select All"
 msgstr "Tümünü Seç"
 
-#: discover/qml/UpdatesPage.qml:235
+#: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Select None"
 msgstr "Seçimleri Kaldır"
 
-#: discover/qml/UpdatesPage.qml:242
+#: discover/qml/UpdatesPage.qml:249
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "Güncellemeler tamamlanınca yeniden başlat"
 
-#: discover/qml/UpdatesPage.qml:249
+#: discover/qml/UpdatesPage.qml:256
 #, kde-format
 msgid "Total size: %1"
 msgstr "Toplam boyut: %1"
 
-#: discover/qml/UpdatesPage.qml:284
+#: discover/qml/UpdatesPage.qml:291
 #, kde-format
 msgid "Restart Now"
 msgstr "Şimdi Yeniden Başlat"
 
-#: discover/qml/UpdatesPage.qml:387
-#, kde-format
-msgid "%1"
-msgstr "%1"
-
-#: discover/qml/UpdatesPage.qml:403
+#: discover/qml/UpdatesPage.qml:420
 #, kde-format
 msgid "Installing"
 msgstr "Kuruluyor"
 
-#: discover/qml/UpdatesPage.qml:439
+#: discover/qml/UpdatesPage.qml:451
 #, kde-format
 msgid "Update from:"
 msgstr "Güncelleme konumu:"
 
-#: discover/qml/UpdatesPage.qml:451
+#: discover/qml/UpdatesPage.qml:463
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1317,44 +1312,47 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:458
+#: discover/qml/UpdatesPage.qml:470
 #, kde-format
 msgid "More Information…"
 msgstr "Daha Fazla Bilgi…"
 
-#: discover/qml/UpdatesPage.qml:486
+#: discover/qml/UpdatesPage.qml:498
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Güncellemeler alınıyor…"
 
-#: discover/qml/UpdatesPage.qml:499
+#: discover/qml/UpdatesPage.qml:511
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Güncellemeler"
 
-#: discover/qml/UpdatesPage.qml:508
+#: discover/qml/UpdatesPage.qml:520
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Güncelleme sürecini tamamlamak için sistemi yeniden başlatın"
 
-#: discover/qml/UpdatesPage.qml:520 discover/qml/UpdatesPage.qml:527
-#: discover/qml/UpdatesPage.qml:534
+#: discover/qml/UpdatesPage.qml:532 discover/qml/UpdatesPage.qml:539
+#: discover/qml/UpdatesPage.qml:546
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Sisteminiz güncel"
 
-#: discover/qml/UpdatesPage.qml:541
+#: discover/qml/UpdatesPage.qml:553
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Güncellemeler denetlenmeli"
 
-#: discover/qml/UpdatesPage.qml:548
+#: discover/qml/UpdatesPage.qml:560
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Son güncelleme zamanı bilinmiyor"
+
+#~ msgid "%1"
+#~ msgstr "%1"
