@@ -15,9 +15,7 @@ set(flatpak-backend_SRCS
 add_library(flatpak-backend MODULE ${flatpak-backend_SRCS})
 target_link_libraries(flatpak-backend Qt::Core Qt::Widgets Qt::Concurrent KF5::CoreAddons KF5::ConfigCore KF5::KIOGui Discover::Common AppStreamQt PkgConfig::Flatpak)
 
-if (AppStreamQt_VERSION VERSION_GREATER 0.14.6)
-    target_compile_definitions(flatpak-backend PRIVATE -DAPPSTREAM_NEW_POOL_API)
-endif()
+target_compile_definitions(flatpak-backend PRIVATE -DAPPSTREAM_NEW_POOL_API)
 
 if (NOT Flatpak_VERSION VERSION_LESS 1.1.2)
     target_compile_definitions(flatpak-backend PRIVATE -DFLATPAK_VERBOSE_PROGRESS -DFLATPAK_LIST_UNUSED_REFS)
