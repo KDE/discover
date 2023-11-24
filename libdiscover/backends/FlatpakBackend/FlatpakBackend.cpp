@@ -1613,12 +1613,12 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     rest += r;
                 } else if (r->appstreamComponent().searchTokens().contains(filter.search, Qt::CaseInsensitive)) {
                     rest += r;
-                } else if (auto it = std::find_if(mimetypes.constBegin(),
-                                                  mimetypes.constEnd(),
-                                                  [search](const QString &str) {
-                                                      return str.contains(search, Qt::CaseInsensitive);
-                                                  })
-                               != mimetypes.constEnd()) {
+                } else if (std::find_if(mimetypes.constBegin(),
+                                        mimetypes.constEnd(),
+                                        [search](const QString &str) {
+                                            return str.contains(search, Qt::CaseInsensitive);
+                                        })
+                           != mimetypes.constEnd()) {
                     rest += r;
                 } else if (r->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
                     // Sometimes matches better, ie gimp when name() is "GNU Image Manipulation Program"
