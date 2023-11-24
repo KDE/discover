@@ -12,7 +12,11 @@
 #include "FlatpakPermission.h"
 #include "flatpak-helper.h"
 
+#ifdef DISCOVER_USE_STABLE_APPSTREAM
+#include <AppStreamQt5/component.h>
+#else
 #include <AppStreamQt/component.h>
+#endif
 
 #include <QAbstractItemModel>
 #include <QPixmap>

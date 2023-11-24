@@ -30,8 +30,19 @@ find_package(PkgConfig REQUIRED)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui KIO Declarative KCMUtils IdleTime Notifications Purpose)
 find_package(KF5Kirigami2 2.7.0)
 
+find_package(AppStreamQt5 1.0 CONFIG)
+if (AppStreamQt5_FOUND)
+    add_definitions(-DDISCOVER_USE_STABLE_APPSTREAM)
+    set(DISCOVER_AppStreamQt_FOUND ${AppStreamQt5_FOUND})
+    set(DISCOVER_AppStreamQt_VERSION ${AppStreamQt5_VERSION})
+    set(DISCOVER_AppStreamQt_PACKAGE_NAME AppStreamQt5)
+else()
+    find_package(AppStreamQt 0.15.3 CONFIG REQUIRED)
+    set(DISCOVER_AppStreamQt_FOUND ${AppStreamQt_FOUND})
+    set(DISCOVER_AppStreamQt_VERSION ${AppStreamQt_VERSION})
+    set(DISCOVER_AppStreamQt_PACKAGE_NAME AppStreamQt)
+endif()
 find_package(packagekitqt5 1.0.1 CONFIG)
-find_package(AppStreamQt 0.15.3 CONFIG REQUIRED)
 find_package(KF5Attica 5.23 CONFIG)
 find_package(KF5NewStuff 5.53 CONFIG)
 
@@ -85,7 +96,7 @@ set_package_properties(packagekitqt5 PROPERTIES
     URL "https://www.freedesktop.org/software/PackageKit/"
     PURPOSE "Required to build the PackageKit backend"
     TYPE OPTIONAL)
-set_package_properties(AppStreamQt PROPERTIES
+set_package_properties(${DISCOVER_AppStreamQt_PACKAGE_NAME} PROPERTIES
     DESCRIPTION "Library that lists Appstream resources"
     URL "https://www.freedesktop.org"
     PURPOSE "Required to build the PackageKit, Flatpak and Snap backends"

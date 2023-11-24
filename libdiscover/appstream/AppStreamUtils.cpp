@@ -7,11 +7,21 @@
 #include "AppStreamUtils.h"
 
 #include "utils.h"
+
+#ifdef DISCOVER_USE_STABLE_APPSTREAM
+#include <AppStreamQt5/pool.h>
+#include <AppStreamQt5/release.h>
+#include <AppStreamQt5/screenshot.h>
+#include <AppStreamQt5/spdx.h>
+#include <AppStreamQt5/version.h>
+#else
 #include <AppStreamQt/pool.h>
 #include <AppStreamQt/release.h>
 #include <AppStreamQt/screenshot.h>
 #include <AppStreamQt/spdx.h>
 #include <AppStreamQt/version.h>
+#endif
+
 #include <Category/Category.h>
 #include <KLocalizedString>
 #include <QDebug>
@@ -35,10 +45,20 @@ QUrl AppStreamUtils::imageOfKind(const QList<AppStream::Image> &images, AppStrea
 
 QString AppStreamUtils::changelogToHtml(const AppStream::Component &appdata)
 {
-    if (appdata.releases().isEmpty())
+#if ASQ_CHECK_VERSION(1, 0, 0)
+    const auto releases = appdata.releasesPlain();
+#else
+    const auto releases = appdata.releases();
+#endif
+    if (releases.isEmpty()) {
         return {};
+    }
 
-    const auto release = appdata.releases().constFirst();
+#if ASQ_CHECK_VERSION(1, 0, 0)
+    const auto release = releases.indexSafe(0).value();
+#else
+    const auto release = releases.constFirst();
+#endif
     if (release.description().isEmpty())
         return {};
 
@@ -49,7 +69,11 @@ QString AppStreamUtils::changelogToHtml(const AppStream::Component &appdata)
 
 Screenshots AppStreamUtils::fetchScreenshots(const AppStream::Component &appdata)
 {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+    const auto appdataScreenshots = appdata.screenshotsAll();
+#else
     const auto appdataScreenshots = appdata.screenshots();
+#endif
     Screenshots ret;
     ret.reserve(appdataScreenshots.size());
     for (const AppStream::Screenshot &s : appdataScreenshots) {
@@ -131,10 +155,18 @@ QString AppStreamUtils::versionString(const QString &version, const AppStream::C
     if (version.isEmpty()) {
         return {};
     } else {
-        if (appdata.releases().isEmpty())
+#if ASQ_CHECK_VERSION(1, 0, 0)
+        if (appdata.releasesPlain().isEmpty()) {
             return version;
-
+        }
+        auto release = appdata.releasesPlain().indexSafe(0).value();
+#else
+        if (appdata.releases().isEmpty()) {
+            return version;
+        }
         auto release = appdata.releases().constFirst();
+#endif
+
         if (release.timestamp().isValid() && version.startsWith(release.version())) {
             QLocale l;
             return i18n("%1, released on %2", version, l.toString(release.timestamp().date(), QLocale::ShortFormat));
@@ -256,7 +288,11 @@ QList<AppStream::Component> AppStreamUtils::componentsByCategories(AppStream::Po
 {
     QList<AppStream::Component> ret;
     for (const auto &categoryName : cat->involvedCategories()) {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+        ret += pool->componentsByCategories({categoryName}).toList();
+#else
         ret += pool->componentsByCategories({categoryName});
+#endif
     }
     kRemoveDuplicates(ret, kind);
     return ret;

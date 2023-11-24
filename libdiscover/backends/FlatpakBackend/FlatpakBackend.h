@@ -14,7 +14,11 @@
 #include <QVariantList>
 #include <resources/AbstractResourcesBackend.h>
 
+#ifdef DISCOVER_USE_STABLE_APPSTREAM
+#include <AppStreamQt5/component.h>
+#else
 #include <AppStreamQt/component.h>
+#endif
 
 #include "flatpak-helper.h"
 

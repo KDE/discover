@@ -10,7 +10,13 @@
 #include "PackageKitMessages.h"
 #include "appstream/AppStreamUtils.h"
 #include "config-paths.h"
+
+#ifdef DISCOVER_USE_STABLE_APPSTREAM
+#include <AppStreamQt5/spdx.h>
+#else
 #include <AppStreamQt/spdx.h>
+#endif
+
 #include <KIO/ApplicationLauncherJob>
 #include <KLocalizedString>
 #include <KService>

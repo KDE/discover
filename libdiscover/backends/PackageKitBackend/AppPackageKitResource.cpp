@@ -6,10 +6,22 @@
 
 #include "AppPackageKitResource.h"
 #include "utils.h"
+
+#ifdef DISCOVER_USE_STABLE_APPSTREAM
+#include <AppStreamQt5/developer.h>
+#include <AppStreamQt5/icon.h>
+#include <AppStreamQt5/image.h>
+#include <AppStreamQt5/release.h>
+#include <AppStreamQt5/screenshot.h>
+#include <AppStreamQt5/version.h>
+#else
 #include <AppStreamQt/icon.h>
 #include <AppStreamQt/image.h>
 #include <AppStreamQt/release.h>
 #include <AppStreamQt/screenshot.h>
+#include <AppStreamQt/version.h>
+#endif
+
 #include <KLocalizedString>
 #include <KService>
 #include <PackageKit/Daemon>
@@ -236,8 +248,13 @@ QString AppPackageKitResource::versionString()
 
 QDate AppPackageKitResource::releaseDate() const
 {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+    if (const auto optional = m_appdata.releasesPlain().indexSafe(0); optional.has_value()) {
+        auto release = optional.value();
+#else
     if (!m_appdata.releases().isEmpty()) {
-        auto release = m_appdata.releases().constFirst();
+        const auto release = m_appdata.releases().constFirst();
+#endif
         return release.timestamp().date();
     }
 
@@ -246,7 +263,11 @@ QDate AppPackageKitResource::releaseDate() const
 
 QString AppPackageKitResource::author() const
 {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+    QString name = m_appdata.developer().name();
+#else
     QString name = m_appdata.developerName();
+#endif
 
     if (name.isEmpty()) {
         name = m_appdata.projectGroup();

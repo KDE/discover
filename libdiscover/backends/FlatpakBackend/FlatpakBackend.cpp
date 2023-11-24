@@ -20,12 +20,21 @@
 #include <resources/StandardBackendUpdater.h>
 #include <utils.h>
 
+#ifdef DISCOVER_USE_STABLE_APPSTREAM
+#include <AppStreamQt5/bundle.h>
+#include <AppStreamQt5/icon.h>
+#include <AppStreamQt5/metadata.h>
+#include <AppStreamQt5/pool.h>
+#include <AppStreamQt5/release.h>
+#include <AppStreamQt5/version.h>
+#else
 #include <AppStreamQt/bundle.h>
 #include <AppStreamQt/icon.h>
 #include <AppStreamQt/metadata.h>
 #include <AppStreamQt/pool.h>
 #include <AppStreamQt/release.h>
 #include <AppStreamQt/version.h>
+#endif
 
 #include <KAboutData>
 #include <KConfigGroup>
@@ -159,17 +168,29 @@ public:
 
     QList<AppStream::Component> componentsByName(const QString &name)
     {
-        QList<AppStream::Component> comps = m_pool->componentsById(name);
-        if (!comps.isEmpty())
+        auto comps = m_pool->componentsById(name);
+        if (!comps.isEmpty()) {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+            return comps.toList();
+#else
             return comps;
+#endif
+        }
 
         comps = m_pool->componentsByProvided(AppStream::Provided::KindId, name);
+
+#if ASQ_CHECK_VERSION(1, 0, 0)
+        return comps.toList();
+#else
         return comps;
+#endif
     }
 
     QList<AppStream::Component> componentsByFlatpakId(const QString &ref)
     {
-#if ASQ_CHECK_VERSION(0, 16, 0)
+#if ASQ_CHECK_VERSION(1, 0, 0)
+        QList<AppStream::Component> comps = m_pool->componentsByBundleId(AppStream::Bundle::KindFlatpak, ref, false).toList();
+#elif ASQ_CHECK_VERSION(0, 16, 0)
         QList<AppStream::Component> comps = m_pool->componentsByBundleId(AppStream::Bundle::KindFlatpak, ref, false);
 #else
         QList<AppStream::Component> comps = m_pool->components();
@@ -180,8 +201,11 @@ public:
 #endif
         if (!comps.isEmpty())
             return comps;
-
+#if ASQ_CHECK_VERSION(1, 0, 0)
+        comps = m_pool->componentsByProvided(AppStream::Provided::KindId, ref.section('/', 1, 1)).toList();
+#else
         comps = m_pool->componentsByProvided(AppStream::Provided::KindId, ref.section('/', 1, 1));
+#endif
         return comps;
     }
 
@@ -274,7 +298,11 @@ static std::optional<AppStream::Metadata> metadataFromBytes(GBytes *appstreamGz,
     gconstpointer data = g_bytes_get_data(appstream, &len);
 
     AppStream::Metadata metadata;
+#if ASQ_CHECK_VERSION(0, 16, 0)
+    metadata.setFormatStyle(AppStream::Metadata::FormatStyleCatalog);
+#else
     metadata.setFormatStyle(AppStream::Metadata::FormatStyleCollection);
+#endif
     AppStream::Metadata::MetadataError error = metadata.parse(QString::fromUtf8((char *)data, len), AppStream::Metadata::FormatKindXml);
     if (error != AppStream::Metadata::MetadataErrorNoError) {
         qWarning() << "Failed to parse appstream metadata: " << error;
@@ -479,7 +507,11 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
             g_autoptr(GBytes) metadata = flatpak_installed_ref_load_appdata(ref, 0, 0);
             if (metadata) {
                 auto meta = metadataFromBytes(metadata, m_cancellable);
+#if ASQ_CHECK_VERSION(1, 0, 0)
+                comps = meta->components().toList();
+#else
                 comps = meta->components();
+#endif
             }
         }
 
@@ -626,7 +658,11 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
             return;
         }
 
+#if ASQ_CHECK_VERSION(1, 0, 0)
+        const QList<AppStream::Component> components = metadata->components().toList();
+#else
         const QList<AppStream::Component> components = metadata->components();
+#endif
         if (components.size()) {
             asComponent = components.first();
         } else {
@@ -777,7 +813,11 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
     AppStream::Pool pool;
 #ifdef APPSTREAM_NEW_POOL_API
     pool.setLoadStdDataLocations(false);
+#if ASQ_CHECK_VERSION(0, 16, 0)
+    pool.addExtraDataLocation(appstreamLocation, AppStream::Metadata::FormatStyleCatalog);
+#else
     pool.addExtraDataLocation(appstreamLocation, AppStream::Metadata::FormatStyleCollection);
+#endif
 #else
     pool.clearMetadataLocations();
     pool.addMetadataLocation(appstreamLocation);
@@ -795,7 +835,11 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
     }
 
     // TODO optimise, this lookup should happen in libappstream
+#if ASQ_CHECK_VERSION(1, 0, 0)
+    auto comps = pool.components().toList();
+#else
     auto comps = pool.components();
+#endif
     comps = kFilter<QList<AppStream::Component>>(comps, [name, branch](const AppStream::Component &component) {
         const QString id = component.bundle(AppStream::Bundle::KindFlatpak).id();
         // app/app.getspace.Space/x86_64/stable
@@ -1079,7 +1123,11 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
 
 #ifdef APPSTREAM_NEW_POOL_API
     pool->setLoadStdDataLocations(false);
+#if ASQ_CHECK_VERSION(0, 16, 0)
+    pool->addExtraDataLocation(appstreamDirPath, AppStream::Metadata::FormatStyleCatalog);
+#else
     pool->addExtraDataLocation(appstreamDirPath, AppStream::Metadata::FormatStyleCollection);
+#endif
 #else
     pool->clearMetadataLocations();
     pool->addMetadataLocation(appstreamDirPath);
@@ -1558,12 +1606,25 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
         for (const auto &source : qAsConst(m_flatpakSources)) {
             QList<FlatpakResource *> resources;
             if (source->m_pool) {
-                const auto a = !filter.search.isEmpty() ? source->m_pool->search(filter.search)
-#if ASQ_CHECK_VERSION(0, 15, 6)
-                    : filter.category ? AppStreamUtils::componentsByCategories(source->m_pool, filter.category, AppStream::Bundle::KindFlatpak)
+                QList<AppStream::Component> components;
+                if (!filter.search.isEmpty()) {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+                    components = source->m_pool->search(filter.search).toList();
+#else
+                    components = source->m_pool->search(filter.search);
 #endif
-                                      : source->m_pool->components();
-                resources = kTransform<QList<FlatpakResource *>>(a, [this, &source](const auto &comp) {
+#if ASQ_CHECK_VERSION(0, 15, 6)
+                } else if (filter.category) {
+                    components = AppStreamUtils::componentsByCategories(source->m_pool, filter.category, AppStream::Bundle::KindFlatpak);
+#endif
+                } else {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+                    components = source->m_pool->components().toList();
+#else
+                    components = source->m_pool->components();
+#endif
+                }
+                resources = kTransform<QList<FlatpakResource *>>(components, [this, &source](const auto &comp) {
                     return resourceForComponent(comp, source);
                 });
             } else {

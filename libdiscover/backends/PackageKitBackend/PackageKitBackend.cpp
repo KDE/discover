@@ -13,9 +13,19 @@
 #include "PKTransaction.h"
 #include "PackageKitSourcesBackend.h"
 #include "PackageKitUpdater.h"
+
+#ifdef DISCOVER_USE_STABLE_APPSTREAM
+#include <AppStreamQt5/release.h>
+#include <AppStreamQt5/systeminfo.h>
+#include <AppStreamQt5/utils.h>
+#include <AppStreamQt5/version.h>
+#else
 #include <AppStreamQt/release.h>
+#include <AppStreamQt/systeminfo.h>
 #include <AppStreamQt/utils.h>
 #include <AppStreamQt/version.h>
+#endif
+
 #include <appstream/AppStreamIntegration.h>
 #include <appstream/AppStreamUtils.h>
 #include <appstream/OdrsReviewsBackend.h>
@@ -309,12 +319,26 @@ void PackageKitBackend::reloadPackageList()
         }
         acquireFetching(false);
 
-        const QList<AppStream::Component> distroComponents = m_appdata->componentsById(AppStream::Utils::currentDistroComponentId());
+        const QList<AppStream::Component> distroComponents =
+#if ASQ_CHECK_VERSION(1, 0, 0)
+            m_appdata->componentsById(AppStream::SystemInfo::currentDistroComponentId()).toList();
+#else
+            m_appdata->componentsById(AppStream::Utils::currentDistroComponentId());
+#endif
+
         if (distroComponents.isEmpty()) {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+            qWarning() << "no component found for" << AppStream::SystemInfo::currentDistroComponentId();
+#else
             qWarning() << "no component found for" << AppStream::Utils::currentDistroComponentId();
+#endif
         }
         for (const AppStream::Component &dc : distroComponents) {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+            const auto releases = dc.releasesPlain().entries();
+#else
             const auto releases = dc.releases();
+#endif
             for (const auto &r : releases) {
                 int cmp = AppStream::Utils::vercmpSimple(r.version(), AppStreamIntegration::global()->osRelease()->versionId());
                 if (cmp == 0) {
@@ -552,7 +576,11 @@ QList<AppStream::Component> PackageKitBackend::componentsById(const QString &id)
     if (comps.isEmpty()) {
         comps = m_appdata->componentsByProvided(AppStream::Provided::KindId, id);
     }
+#if ASQ_CHECK_VERSION(1, 0, 0)
+    return comps.toList();
+#else
     return comps;
+#endif
 }
 
 static const auto needsResolveFilter = [](AbstractResource *res) {
@@ -698,13 +726,25 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
             if (!stream) {
                 return;
             }
-            const auto components = !filter.search.isEmpty() ? m_appdata->search(filter.search)
-#if ASQ_CHECK_VERSION(0, 15, 6)
-                                  : filter.category          ? AppStreamUtils::componentsByCategories(m_appdata.get(),
-                                                                                                      filter.category,
-                                                                                                      AppStream::Bundle::KindUnknown)
+            QList<AppStream::Component> components;
+            if (!filter.search.isEmpty()) {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+                components = m_appdata->search(filter.search).toList();
+#else
+                components = m_appdata->search(filter.search);
 #endif
-                                                             : m_appdata->components();
+#if ASQ_CHECK_VERSION(0, 15, 6)
+            } else if (filter.category) {
+                components = AppStreamUtils::componentsByCategories(m_appdata.get(), filter.category, AppStream::Bundle::KindUnknown);
+#endif
+            } else {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+                components = m_appdata->components().toList();
+#else
+                components = m_appdata->components();
+#endif
+            }
+
             const QSet<QString> ids = kTransform<QSet<QString>>(components, [](const AppStream::Component &comp) {
                 return comp.id();
             });

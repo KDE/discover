@@ -6,9 +6,16 @@
 
 #pragma once
 
+#ifdef DISCOVER_USE_STABLE_APPSTREAM
+#include <AppStreamQt5/component.h>
+#include <AppStreamQt5/image.h>
+#include <AppStreamQt5/pool.h>
+#else
 #include <AppStreamQt/component.h>
 #include <AppStreamQt/image.h>
 #include <AppStreamQt/pool.h>
+#endif
+
 #include <QColor>
 #include <QList>
 #include <QUrl>

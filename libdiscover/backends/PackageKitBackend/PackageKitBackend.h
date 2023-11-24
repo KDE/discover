@@ -7,7 +7,13 @@
 #pragma once
 
 #include "PackageKitResource.h"
+
+#ifdef DISCOVER_USE_STABLE_APPSTREAM
+#include <AppStreamQt5/pool.h>
+#else
 #include <AppStreamQt/pool.h>
+#endif
+
 #include <PackageKit/Transaction>
 #include <QFile>
 #include <QPointer>

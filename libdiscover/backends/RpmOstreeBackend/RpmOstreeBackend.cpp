@@ -10,8 +10,16 @@
 
 #include "Transaction/TransactionModel.h"
 
+#ifdef DISCOVER_USE_STABLE_APPSTREAM
+#include <AppStreamQt5/release.h>
+#include <AppStreamQt5/utils.h>
+#include <AppStreamQt5/version.h>
+#else
 #include <AppStreamQt/release.h>
 #include <AppStreamQt/utils.h>
+#include <AppStreamQt/version.h>
+#endif
+
 #include <Category/Category.h>
 #include <KLocalizedString>
 #include <appstream/AppStreamIntegration.h>
@@ -316,7 +324,12 @@ void RpmOstreeBackend::lookForNextMajorVersion()
     }
 
     // Look at releases to see if we have a new major version available.
-    const QList<AppStream::Component> distroComponents = m_appdata->componentsById(distroId);
+#if ASQ_CHECK_VERSION(1, 0, 0)
+    const auto distroComponents = m_appdata->componentsById(distroId).toList();
+#else
+    const auto distroComponents = m_appdata->componentsById(distroId);
+#endif
+
     if (distroComponents.isEmpty()) {
         qWarning() << "rpm-ostree-backend: No component found for" << distroId;
         return;
@@ -324,8 +337,13 @@ void RpmOstreeBackend::lookForNextMajorVersion()
 
     QString currentVersion = AppStreamIntegration::global()->osRelease()->versionId();
     QString nextVersion;
+
     for (const AppStream::Component &dc : distroComponents) {
+#if ASQ_CHECK_VERSION(1, 0, 0)
+        const auto releases = dc.releasesPlain().entries();
+#else
         const auto releases = dc.releases();
+#endif
         for (const auto &r : releases) {
             // Only look at stable releases unless development mode is enabled
             if ((r.kind() != AppStream::Release::KindStable) && !m_developmentEnabled) {
