@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-07 02:28+0000\n"
+"POT-Creation-Date: 2023-11-25 02:23+0000\n"
 "PO-Revision-Date: 2023-04-15 13:46+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -2477,7 +2477,7 @@ msgstr "Проверьте подключение к интернету"
 msgid "Refresh"
 msgstr "Обновить"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:714
+#: libdiscover/resources/ResourcesProxyModel.cpp:713
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

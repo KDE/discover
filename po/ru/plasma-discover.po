@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-30 03:25+0000\n"
+"POT-Creation-Date: 2023-11-25 02:23+0000\n"
 "PO-Revision-Date: 2023-07-22 14:09+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -330,7 +330,7 @@ msgid "Version"
 msgstr "Версия"
 
 #: discover/qml/ApplicationPage.qml:306
-#: discover/qml/ApplicationsListPage.qml:109
+#: discover/qml/ApplicationsListPage.qml:108
 #, kde-format
 msgid "Size"
 msgstr "По размеру"
@@ -568,7 +568,7 @@ msgstr ""
 "авторам (%1).<nl/><nl/>Дополнительная информация представлена на странице "
 "<link url='%2'>%</link>."
 
-#: discover/qml/ApplicationsListPage.qml:53
+#: discover/qml/ApplicationsListPage.qml:52
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
@@ -577,12 +577,12 @@ msgstr[1] "Поиск: %2 — %3 объекта"
 msgstr[2] "Поиск: %2 — %3 объектов"
 msgstr[3] "Поиск: %2 — %3 объект"
 
-#: discover/qml/ApplicationsListPage.qml:55
+#: discover/qml/ApplicationsListPage.qml:54
 #, kde-format
 msgid "Search: %1"
 msgstr "Поиск: %1"
 
-#: discover/qml/ApplicationsListPage.qml:59
+#: discover/qml/ApplicationsListPage.qml:58
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
@@ -591,7 +591,7 @@ msgstr[1] "%1 — %2 объекта"
 msgstr[2] "%1 — %2 объектов"
 msgstr[3] "%1 — %2 объект"
 
-#: discover/qml/ApplicationsListPage.qml:65
+#: discover/qml/ApplicationsListPage.qml:64
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
@@ -600,50 +600,50 @@ msgstr[1] "Поиск:  — %1 объекта"
 msgstr[2] "Поиск:  — %1 объектов"
 msgstr[3] "Поиск:  — %1 объект"
 
-#: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:225
+#: discover/qml/ApplicationsListPage.qml:66
+#: discover/qml/ApplicationsListPage.qml:224
 #, kde-format
 msgid "Search"
 msgstr "Поиск"
 
-#: discover/qml/ApplicationsListPage.qml:88
+#: discover/qml/ApplicationsListPage.qml:87
 #, kde-format
 msgid "Sort: %1"
 msgstr "Сортировать: %1"
 
-#: discover/qml/ApplicationsListPage.qml:91
+#: discover/qml/ApplicationsListPage.qml:90
 #, kde-format
 msgid "Name"
 msgstr "По названию"
 
-#: discover/qml/ApplicationsListPage.qml:100
+#: discover/qml/ApplicationsListPage.qml:99
 #, kde-format
 msgid "Rating"
 msgstr "По оценке"
 
-#: discover/qml/ApplicationsListPage.qml:118
+#: discover/qml/ApplicationsListPage.qml:117
 #, kde-format
 msgid "Release Date"
 msgstr "По дате выпуска"
 
-#: discover/qml/ApplicationsListPage.qml:173
+#: discover/qml/ApplicationsListPage.qml:172
 #, kde-format
 msgid "Nothing found"
 msgstr "Ничего не найдено."
 
-#: discover/qml/ApplicationsListPage.qml:180
+#: discover/qml/ApplicationsListPage.qml:179
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "Искать во всех категориях"
 
-#: discover/qml/ApplicationsListPage.qml:189
+#: discover/qml/ApplicationsListPage.qml:188
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Искать «%1» в интернете"
 
-#: discover/qml/ApplicationsListPage.qml:193
+#: discover/qml/ApplicationsListPage.qml:192
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -651,7 +651,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:204
+#: discover/qml/ApplicationsListPage.qml:203
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -659,13 +659,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "Не удалось найти приложение «%1» в категории «%2»"
 
-#: discover/qml/ApplicationsListPage.qml:206
+#: discover/qml/ApplicationsListPage.qml:205
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "Не удалось найти приложение «%1» среди доступных источников"
 
-#: discover/qml/ApplicationsListPage.qml:207
+#: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
 msgctxt "@info:placeholder%1 is the name of an application"
 msgid ""
@@ -677,7 +677,7 @@ msgstr ""
 "в интернете, не проверялись на работоспособность и стабильность. Будьте "
 "внимательны при использовании приложений, полученных из этого источника."
 
-#: discover/qml/ApplicationsListPage.qml:240
+#: discover/qml/ApplicationsListPage.qml:239
 #, kde-format
 msgid "Still looking…"
 msgstr "Выполняется поиск..."
