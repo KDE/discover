@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-22 01:36+0000\n"
+"POT-Creation-Date: 2023-11-25 01:35+0000\n"
 "PO-Revision-Date: 2023-10-01 18:26+0000\n"
 "Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -2500,7 +2500,7 @@ msgstr "Kannaðu hvort þú sért með nettengingu"
 msgid "Refresh"
 msgstr "Endurhlaða"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:775
+#: libdiscover/resources/ResourcesProxyModel.cpp:774
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

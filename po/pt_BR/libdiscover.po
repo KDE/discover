@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-22 01:36+0000\n"
+"POT-Creation-Date: 2023-11-25 01:35+0000\n"
 "PO-Revision-Date: 2023-11-22 22:59-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -2522,7 +2522,7 @@ msgstr "Verifique a conectividade com a Internet"
 msgid "Refresh"
 msgstr "Atualizar lista"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:775
+#: libdiscover/resources/ResourcesProxyModel.cpp:774
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

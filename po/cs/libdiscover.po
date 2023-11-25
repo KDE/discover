@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-22 01:36+0000\n"
+"POT-Creation-Date: 2023-11-25 01:35+0000\n"
 "PO-Revision-Date: 2023-11-07 15:35+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -2409,7 +2409,7 @@ msgstr "Prosím, ověřte internetové spojení"
 msgid "Refresh"
 msgstr "Obnovit"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:775
+#: libdiscover/resources/ResourcesProxyModel.cpp:774
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
