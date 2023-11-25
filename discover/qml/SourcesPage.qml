@@ -26,7 +26,7 @@ DiscoverPage {
         }
     }
 
-    actions: feedbackLoader.item ? feedbackLoader.item.actions : [configureUpdatesAction]
+    actions: feedbackLoader.item?.actions ?? [configureUpdatesAction]
 
     header: ColumnLayout {
         spacing: Kirigami.Units.smallSpacing

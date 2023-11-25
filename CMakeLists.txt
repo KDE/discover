@@ -27,8 +27,8 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG OPTIONAL_COMPONENTS WebView)
 
 find_package(PkgConfig REQUIRED)
 
-find_package(KF6 ${KF6_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui KIO KCMUtils IdleTime Notifications Purpose Auth StatusNotifierItem)
-find_package(KF6Kirigami2 2.7.0)
+find_package(KF6 ${KF6_MIN_VERSION} REQUIRED Kirigami CoreAddons Config Crash DBusAddons I18n Archive XmlGui KIO KCMUtils IdleTime Notifications Purpose Auth StatusNotifierItem)
+find_package(KF6 ${KF6_MIN_VERSION} COMPONENTS UserFeedback)
 
 find_package(packagekitqt6 1.0.1 CONFIG)
 find_package(AppStreamQt 1.0 CONFIG REQUIRED)
@@ -49,7 +49,6 @@ if(Markdown_FOUND AND Markdown_VERSION VERSION_GREATER_EQUAL 3)
 endif()
 pkg_check_modules(Ostree IMPORTED_TARGET ostree-1)
 pkg_check_modules(RpmOstree IMPORTED_TARGET rpm-ostree-1)
-find_package(KUserFeedbackQt6)
 
 list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "DISCOVER_BACKEND_PLUGIN")
 
@@ -86,6 +85,11 @@ set_package_properties(KF6Kirigami2 PROPERTIES
 set_package_properties(KF6NewStuff PROPERTIES
     DESCRIPTION "Qt library that allows to interact with KNewStuff implementations"
     PURPOSE "Required to build the KNS backend"
+    TYPE OPTIONAL)
+set_package_properties(KF6UserFeedback PROPERTIES
+    DESCRIPTION "Framework for collecting feedback from application users via telemetry and targeted surveys"
+    URL "https://invent.kde.org/frameworks/kuserfeedback"
+    PURPOSE "Required for submission of telemetry data"
     TYPE OPTIONAL)
 set_package_properties(packagekitqt6 PROPERTIES
     DESCRIPTION "Library that exposes PackageKit resources"

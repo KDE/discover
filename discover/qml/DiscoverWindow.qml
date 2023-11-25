@@ -45,9 +45,10 @@ Kirigami.ApplicationWindow {
     }
 
     // This property is queried from C++, do not remove it
-    readonly property string describeSources: feedbackLoader.item ? feedbackLoader.item.describeDataSources : ""
+    readonly property string describeSources: feedbackLoader.item?.describeDataSources ?? ""
     Loader {
         id: feedbackLoader
+        active: typeof DiscoverApp.UserFeedbackSettings !== "undefined"
         source: "Feedback.qml"
     }
 
