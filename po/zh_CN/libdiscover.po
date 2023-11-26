@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 01:35+0000\n"
-"PO-Revision-Date: 2023-11-19 03:37\n"
+"PO-Revision-Date: 2023-11-25 02:26\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -30,7 +30,7 @@ msgid "Your emails"
 msgstr ""
 "kde-china@kde.org, charles.dong@kde.org, fang.zheng@kde.org, "
 "fusionfuture@kde.org, i@guoyunhe.me, honghao.li@kde.org, LiYulin@kde.org, "
-"tang142857@kde.org, tysontan@tysontan.com"
+"tang142857@kde.org, tds00@qq.com"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:103
 #, kde-format
@@ -1117,19 +1117,21 @@ msgid ""
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
+"<b>%1 已经推出，可以升级。</b>\n"
+"如需升级到此新版本，请先安装所有可用更新，然后重新启动您的系统。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr ""
+msgstr "立即升级"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr ""
+msgstr "%1 已经推出，可以升级。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1204,7 +1206,7 @@ msgstr "依赖关系解决失败"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:49
 #, kde-format
 msgid "Filter invalid"
-msgstr "筛选条件无效"
+msgstr "过滤条件无效"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
 #, kde-format
@@ -2177,7 +2179,7 @@ msgstr "rpm-ostree：未发现已启动的部署。请提交一个程序缺陷�
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr ""
+msgstr "开始升级…"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format

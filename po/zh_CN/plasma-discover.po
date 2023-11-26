@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 01:35+0000\n"
-"PO-Revision-Date: 2023-11-19 03:37\n"
+"PO-Revision-Date: 2023-11-25 02:26\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -221,7 +221,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 "kde-china@kde.org, dy55@kde.org, CoelacanthusHex@kde.org, DuckSoft@kde.org, "
-"i@guoyunhe.me, tysontan@tysontan.com"
+"i@guoyunhe.me, tds00@qq.com"
 
 #: discover/main.cpp:153
 #, kde-format
@@ -429,7 +429,7 @@ msgstr "%1 的评论暂时不可用"
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr ""
+msgstr "显示全部评价"
 
 #: discover/qml/ApplicationPage.qml:728
 #, kde-format
@@ -573,7 +573,7 @@ msgstr "排序：%1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr ""
+msgstr "相关性"
 
 #: discover/qml/ApplicationsListPage.qml:113
 #, kde-format
@@ -1057,48 +1057,48 @@ msgstr "请先安装本程序再发表评价"
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "最相关"
 
 #: discover/qml/ReviewsPage.qml:109
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "最新"
 
 #: discover/qml/ReviewsPage.qml:116
 #, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr ""
+msgstr "最高评分"
 
 #: discover/qml/ReviewsStats.qml:51
 #, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr ""
+msgstr "%1 条评价"
 
 #: discover/qml/ReviewsStats.qml:69
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #: discover/qml/ReviewsStats.qml:143
 #, kde-format
 msgid "Unknown reviewer"
-msgstr ""
+msgstr "未知评价者"
 
 #: discover/qml/ReviewsStats.qml:163
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "“"
 
 #: discover/qml/ReviewsStats.qml:178
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "”"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format
@@ -1318,6 +1318,3 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
-
-#~ msgid "%1"
-#~ msgstr "%1"
