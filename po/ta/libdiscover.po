@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-25 02:23+0000\n"
+"POT-Creation-Date: 2023-11-26 03:13+0000\n"
 "PO-Revision-Date: 2023-03-26 12:38+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -27,17 +27,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Kde-l10n-ta@kde.org"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:91
+#: libdiscover/appstream/AppStreamUtils.cpp:115
 #, kde-format
 msgid "Proprietary"
 msgstr "தனியுடைமை"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:93
+#: libdiscover/appstream/AppStreamUtils.cpp:117
 #, kde-format
 msgid "Public Domain"
 msgstr "பொதுவுடைமை"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:99
+#: libdiscover/appstream/AppStreamUtils.cpp:123
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:296
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:359
@@ -48,13 +48,13 @@ msgstr "பொதுவுடைமை"
 msgid "Unknown"
 msgstr "தெரியாதது"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:140
+#: libdiscover/appstream/AppStreamUtils.cpp:172
 #: libdiscover/resources/AbstractResource.cpp:278
 #, kde-format
 msgid "%1, released on %2"
 msgstr "%1, %2 அன்று வெளியிடப்பட்டது"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:182
+#: libdiscover/appstream/AppStreamUtils.cpp:214
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -62,7 +62,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "அனைவரும்"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:185
+#: libdiscover/appstream/AppStreamUtils.cpp:217
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -71,7 +71,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:188
+#: libdiscover/appstream/AppStreamUtils.cpp:220
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -80,7 +80,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:191
+#: libdiscover/appstream/AppStreamUtils.cpp:223
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Internet"
@@ -533,39 +533,39 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "கணினி அமைப்புகள்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:123
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:132
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (பயனர்)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:704
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:740
 #, kde-format
 msgid "Local bundle"
 msgstr "உள்ளமை தொகுப்பு"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1648
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:749
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1709
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:789
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "முறையற்ற appstream முகவரி '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1752
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1813
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' என்ற மூலத்தை சேர்ப்பதில் சிக்கல்: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1873
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1934
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Flatpak-க்கான மூலம் ஏதுமில்லை."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1877
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1938
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" என்ற மூலத்தை ஏற்றுவது தோல்வியடைந்தது"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:349
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:364
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -577,125 +577,125 @@ msgstr ""
 "அளிக்கப்படுவது) வருகிறது. இச்செயலியை நிறுவியபின், அக்கிடங்கிலுள்ள மற்ற செயலிகளும் "
 "டிஸ்கவரில் காட்டப்படும்.</para>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:432
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:440
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:447
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:455
 #, kde-format
 msgid "Retrieving size information"
 msgstr "அளவுகுறித்த விவரங்கள் பெறப்படுகின்றன"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:434
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:442
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:449
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:457
 #, kde-format
 msgid "Unknown size"
 msgstr "தெரியாத அளவு"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:436
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:451
 #, kde-format
 msgctxt "@info app size"
 msgid "%1 to download, %2 on disk"
 msgstr "%1 பதிவிறக்கம், வட்டில் %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:444
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:459
 #, kde-format
 msgctxt "@info app size"
 msgid "%1 on disk"
 msgstr "வட்டில் %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:498
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:481
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:513
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:487
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "'%1' என்பதை துவக்குவது தோல்வியடைந்தது: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:727
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:756
 #, kde-format
 msgid "All Files"
 msgstr "அனைத்து கோப்புகள்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:729
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:758
 #, kde-format
 msgid "Home"
 msgstr "முகப்பு"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:731
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:760
 #, kde-format
 msgid "Downloads"
 msgstr "பதிவிறக்கங்கள்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:733
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:762
 #, kde-format
 msgid "Music"
 msgstr "பாடல்கள்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:781
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
 #, kde-format
 msgid "Network Access"
 msgstr "பிணைய அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:782
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid "Can access the internet"
 msgstr "இணையத்தை அணுகலாம்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:788
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:958
 #, kde-format
 msgid "Session Bus Access"
 msgstr "அமர்வுப் பாட்டை அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:789
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Access is granted to the entire Session Bus"
 msgstr "அமர்வுப் பாட்டைக்கான (session bus-க்கான) முழு அணுகல் வழங்கப்படும்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:794
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:940
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:969
 #, kde-format
 msgid "System Bus Access"
 msgstr "கணினிப் பாட்டை அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:795
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:824
 #, kde-format
 msgid "Access is granted to the entire System Bus"
 msgstr "கணினிப் பாட்டைக்கான (system bus-க்கான) முழு அணுகல் வழங்கப்படும்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:800
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "Remote Login Access"
 msgstr "தொலை நுழைவு அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:801
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "SSH நெறிமுறையின் மூலம் தொலை நுழைவு கோரிக்கைகளை அனுப்பலாம்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Smart Card Access"
 msgstr "நுண்ணறி அட்டை அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:806
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "நுண்ணறி (ஸ்மார்ட்) அட்டைகளை பயன்படுத்தலாம்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:810
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Printer Access"
 msgstr "அச்சுப்பொறி அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "அச்சுப்பொறிகளை பயன்படுத்த முடியும்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:815
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
 msgid "GPG Agent"
 msgstr "GPG பின்னணி சேவை"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:845
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -703,70 +703,70 @@ msgid ""
 msgstr ""
 "ஆவணங்களுக்கு கையொப்பமிடவும் கையொப்பங்களை சரிபார்க்கவும் பயன்படும் GPG சேவையை அணுக விடும்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "ஊடலை அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "ஊடலை (bluetooth) சாதனங்களை தொடர்புகொள்ளலாம்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:827
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "இயங்குதள அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:857
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "இயங்குதளத்தின் அடிப்படை அம்சங்களை (ptrace போன்ற syscall-களை) பயன்படுத்தலாம்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
 msgid "Device Access"
 msgstr "சாதன அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr "இணைக்கப்பட்டுள்ள சாதனங்களை தொடர்புகொண்டு அவற்றை கட்டுப்படுத்தலாம்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "கருனிமட்ட மெய்நிகர் கணினி அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr "மெய்நிகர் கணினிகளில் மற்ற இயங்குதளங்களை நன்றாக இயங்க உதவும்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:876
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:893
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:905
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (படித்தல் மட்டும்)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:879
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:896
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:908
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (கோப்புகளை உருவாக்கலாம்)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:888
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:899
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:917
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (படித்தல் & எழுதுதல்) "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:926
 #, kde-format
 msgid "Home Folder Access"
 msgstr "முகப்பு அடைவு அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:900
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -775,7 +775,7 @@ msgstr ""
 "உங்கள் அனுமதியில்லாமல் உங்கள் முகப்பு (home) அடைவிலுள்ள பின்வரும் இடங்களிலுள்ள கோப்புகளை "
 "படிக்கலாம், அவற்றினுள் எழுதலாம், மற்றும் புதிய கோப்புகளை உருவாக்கலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:902
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -784,7 +784,7 @@ msgstr ""
 "உங்கள் அனுமதியில்லாமல் உங்கள் முகப்பு (home) அடைவிலுள்ள பின்வரும் இடங்களிலுள்ள கோப்புகளை "
 "படிக்கலாம் மற்றும் அவற்றினுள் எழுதலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:904
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -793,7 +793,7 @@ msgstr ""
 "உங்கள் அனுமதியில்லாமல் உங்கள் முகப்பு (home) அடைவிலுள்ள பின்வரும் இடங்களிலுள்ள கோப்புகளை "
 "படிக்கலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:906
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -801,12 +801,12 @@ msgid ""
 msgstr ""
 "உங்கள் அனுமதியில்லாமல் உங்கள் முகப்பு (home) அடைவிலுள்ள பின்வரும் இடங்களை அணுகலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:912
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:941
 #, kde-format
 msgid "System Folder Access"
 msgstr "கணினி அடைவு அணுகல்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -815,7 +815,7 @@ msgstr ""
 "உங்கள் அனுமதியில்லாமல் பின்வரும் இடங்களிலுள்ள கோப்புகளை படிக்கலாம், அவற்றினுள் எழுதலாம், "
 "மற்றும் புதிய கோப்புகளை உருவாக்கலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:916
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -824,21 +824,21 @@ msgstr ""
 "உங்கள் அனுமதியில்லாமல் பின்வரும் இடங்களிலுள்ள கோப்புகளை படிக்கலாம், மற்றும் அவற்றினுள் "
 "எழுதலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:918
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
 msgstr "உங்கள் அனுமதியில்லாமல் பின்வரும் இடங்களிலுள்ள கோப்புகளை படிக்கலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:920
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:949
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
 msgstr "உங்கள் அனுமதியில்லாமல் பின்வரும் இடங்களிலுள்ள கோப்புகளை அணுகலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:930
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:959
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -846,7 +846,7 @@ msgid ""
 msgstr ""
 "பின்வரும் நேறிமுறைகளின் மூலம் உங்கள் அமர்விலுள்ள மற்ற செயலிகளை தொடர்புகொள்ளலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:942
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
@@ -1080,7 +1080,7 @@ msgstr "கே.டீ.யீ. களஞ்சியம்"
 msgid "Log in information for %1"
 msgstr "%1 என்பதற்கான நுழைவு விவரங்கள்"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:225
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:237
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 என்பதை இயக்க முடியவில்லை"
@@ -1103,12 +1103,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "எழுத்துருக்கள்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:293
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:303
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "உங்கள் கணினியில் Appstream சரியாக நிறுவப்பட்டுள்ளதா என பாருங்கள்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:331
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:355
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1117,7 +1117,7 @@ msgid ""
 msgstr ""
 "உங்கள் இயங்குதளத்திற்கான ஆதரவு %1 அன்று நிறைவடைந்த‍து. ஆதரவுள்ள பதிப்பிற்கு மாறுங்கள்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:846
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:886
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' என்பதை நீக்க முடியாது"
@@ -1924,49 +1924,49 @@ msgid_plural "Successfully updated %1 packages"
 msgstr[0] "%1 நிரல் வெற்றிகரமாக புதுப்பிக்கப்பட்டுள்ளது"
 msgstr[1] "%1 நிரல்கள் வெற்றிகரமாக புதுப்பிக்கப்பட்டுள்ளன"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:181
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:187
 #, kde-format
 msgid "Unknown Source"
 msgstr "தெரியாத மூலம்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:326
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:332
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:334
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:392
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:398
 #, kde-format
 msgid "Obsoletes:"
 msgstr "வழக்கற்றவை:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:393
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:399
 #, kde-format
 msgid "Release Notes:"
 msgstr "வெளியீட்டு குறிப்புகள்:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:394
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
 #, kde-format
 msgid "Update State:"
 msgstr "புதுப்பித்தலின் நிலை"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:401
 #, kde-format
 msgid "Restart:"
 msgstr "மீள்துவக்கம்:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:398
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:404
 #, kde-format
 msgid "Vendor:"
 msgstr "வியாபாரி:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:418
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:424
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2163,17 +2163,17 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "இயக்குதளம்"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:182
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:194
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:202
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:399
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:417
 #, kde-format
 msgid ""
 "<b>A new major version of %1 has been released!</b>\n"
@@ -2184,27 +2184,27 @@ msgstr ""
 "மீதமுள்ள நிரல் புதுப்பிப்புகளை நிறுவி உங்கள் கணினியை மீள்துவக்கியபின் நீங்கள் விரும்பினால் "
 "அப்புதிய பதிப்பை நிறுவலாம்."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:407
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:425
 #, kde-format
 msgid "Upgrade to %1 %2"
 msgstr "%1 %2 தனை நிறுவு"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:409
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:427
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
 msgstr "<b>ஓர் புதிய பெரும்பதிப்பு வெளியிடப்பட்டுள்ளது!</b>"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:545
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:563
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "தற்போதைய பதிப்பிற்கே புதுப்பிப்புகள் மீதம் உள்ளன. இருந்தாலும் தொடர்கிறது."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:566
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:556
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:574
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
