@@ -83,8 +83,8 @@ DiscoverPage {
                     QQC2.TextArea {
                         Layout.fillWidth: true
                         text: sheet.errorMessage
-                        textFormat: Text.RichText
-                        wrapMode: Text.WordWrap
+                        textFormat: TextEdit.RichText
+                        wrapMode: TextEdit.Wrap
                     }
 
                     QQC2.Label {
@@ -205,6 +205,7 @@ DiscoverPage {
             QQC2.TextArea {
                 readOnly: true
                 text: log.contents
+                wrapMode: TextEdit.Wrap
 
                 cursorPosition: text.length - 1
                 font.family: "monospace"

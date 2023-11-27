@@ -62,6 +62,7 @@ Kirigami.PromptDialog {
             Layout.fillWidth: true
             Layout.minimumHeight: Kirigami.Units.gridUnit * 8
             KeyNavigation.priority: KeyNavigation.BeforeItem
+            wrapMode: TextEdit.Wrap
         }
 
         QQC2.Label {
