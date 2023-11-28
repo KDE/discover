@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-25 01:35+0000\n"
+"POT-Creation-Date: 2023-11-28 01:36+0000\n"
 "PO-Revision-Date: 2023-08-08 16:07+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -917,7 +917,7 @@ msgstr "正在增加來自 %3 的 %2 中「%1」遠端位置"
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "在 '%2' 中找不到 '%1'；請確定它真的存在。"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -925,42 +925,42 @@ msgid ""
 "highly recommended."
 msgstr "這個 %1 的開發版本已過時。強烈建議使用穩定版本。"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "有更穩定的 %1 版本可供使用。"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:51
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr "在 %1 上檢視穩定版本"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 並非已安裝但仍有它的資料存在。"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "正在刪除設定與使用者資料"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:33
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "正在清除設定與使用者資料…"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:24
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:23
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "%1 的權限"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:75
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:74
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:17
 #, kde-format
 msgid "Configure permissions…"
 msgstr "設定權限…"
@@ -2345,28 +2345,28 @@ msgstr "操作進行中（在 Discover 外開始）"
 msgid "Unknown transaction type"
 msgstr "未知的工作階段形態"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:16
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
 #, kde-format
 msgid "Channels…"
 msgstr "頻道…"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:25
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:28
 #, kde-format
 msgid "%1 channels"
 msgstr "%1 個頻道"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:41
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:47
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
 #, kde-format
 msgid "Switch"
 msgstr "切換"
 
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:26
 #, kde-format
 msgid "Permissions for %1"
 msgstr "%1 的權限"

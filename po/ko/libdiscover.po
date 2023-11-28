@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-25 01:35+0000\n"
+"POT-Creation-Date: 2023-11-28 01:36+0000\n"
 "PO-Revision-Date: 2023-10-08 22:35+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -914,7 +914,7 @@ msgstr "%3에서 %2에 '%1' 원격 항목 추가 중"
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "'%2'에서 '%1'을(를) 찾을 수 없습니다. 존재 여부를 확인하십시오"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -922,42 +922,42 @@ msgid ""
 "highly recommended."
 msgstr "%1의 이 개발 버전은 오래되었습니다. 안정 버전을 사용하기를 추천합니다."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "%1의 더 안정적인 버전을 사용할 수 있습니다."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:51
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr "%1에서 안정 버전 보기"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr "%1이(가) 설치되지 않았지만 데이터가 남아 있습니다."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "설정과 사용자 데이터 삭제"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:33
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "설정과 사용자 데이터 삭제 중…"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:24
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:23
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "%1의 권한"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:75
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:74
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:17
 #, kde-format
 msgid "Configure permissions…"
 msgstr "권한 설정…"
@@ -2370,28 +2370,28 @@ msgstr "작업 진행 중(Discover 외부에서 시작됨)"
 msgid "Unknown transaction type"
 msgstr "알 수 없는 트랜잭션 형식"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:16
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
 #, kde-format
 msgid "Channels…"
 msgstr "채널…"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:25
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:28
 #, kde-format
 msgid "%1 channels"
 msgstr "채널 %1개"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:41
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:47
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
 #, kde-format
 msgid "Switch"
 msgstr "전환"
 
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:26
 #, kde-format
 msgid "Permissions for %1"
 msgstr "%1 권한"

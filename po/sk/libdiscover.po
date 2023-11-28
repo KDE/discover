@@ -1,24 +1,24 @@
 # translation of libmuon.po to Slovak
+# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023 Matej Mrenica <matejm98mthw@gmail.com>
 # Richard Fric <Richard.Fric@kdemail.net>, 2010.
 # Milan Basa <minkob@mail.t-com.sk>, 2011.
 # Roman Paholík <wizzardsk@gmail.com>, 2013, 2014, 2015, 2016, 2017, 2019, 2021.
 # Mthw <jari_45@hotmail.com>, 2018, 2019.
-# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023 Matej Mrenica <matejm98mthw@gmail.com>
 # Dusan Kazik <prescott66@gmail.com>, 2020.
 # Ferdinand Galko <galko.ferdinand@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-25 01:35+0000\n"
-"PO-Revision-Date: 2023-11-11 16:02+0100\n"
-"Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
-"Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2023-11-28 01:36+0000\n"
+"PO-Revision-Date: 2023-11-27 18:34+0100\n"
+"Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
+"Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #, kde-format
@@ -89,10 +89,9 @@ msgid "Intense Content"
 msgstr "Vysoko nevhodný obsah"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:172
-#, fuzzy, kde-format
-#| msgid "Internal error: %1"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "Interná chyba: %1"
+msgstr "Technická chybová správa: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:224
 #, kde-format
@@ -623,15 +622,14 @@ msgid "Can access the internet"
 msgstr "Má prístup na internet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Prístup k systémovej zbernici"
+msgstr "Prístup k zvukovému systému"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Môže prehrávať zvuk"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
@@ -640,16 +638,13 @@ msgid "Session Bus Access"
 msgstr "Prístup k zbernici sedení"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Môže komunikovať s inými aplikáciami a procesmi v rovnakom sedení plochy "
-"pomocou nasledujúcich komunikačných protokolov: %1"
+"Môže komunikovať so všetkými ostatnými aplikáciami a procesmi spustenými v "
+"tomto používateľskom účte"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
@@ -658,14 +653,10 @@ msgid "System Bus Access"
 msgstr "Prístup k systémovej zbernici"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
-"Môže komunikovať s inými aplikáciami a procesmi v rovnakom sedení plochy "
-"pomocou nasledujúcich komunikačných protokolov: %1"
+"Môže komunikovať so všetkými ostatnými aplikáciami a procesmi v systéme"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
@@ -950,7 +941,7 @@ msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
 "Nepodarilo sa nájsť '%1' v '%2'; prosím, uistite sa, že je k dispozícii."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -960,43 +951,42 @@ msgstr ""
 "Táto vývojová verzia %1 je zastaraná. Dôrazne sa odporúča použitie stabilnej "
 "verzie."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "K dispozícii je stabilnejšia verzia %1."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:51
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr "Zobraziť stabilnú verziu na %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 nie je nainštalované, ale stále obsahuje dáta."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "Vymazať nastavenia a používateľské údaje"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:34
-#, fuzzy, kde-format
-#| msgid "Delete settings and user data"
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:33
+#, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Vymazať nastavenia a používateľské údaje"
+msgstr "Vymazávanie nastavení a používateľských údajov..."
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:24
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:23
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "Oprávnenia pre %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:75
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:74
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:17
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Konfigurovať oprávnenia..."
@@ -1161,36 +1151,29 @@ msgstr "Nedá sa odstrániť '%1'"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:989
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released!</b>\n"
-#| "To be able to update to this new version, make sure to apply all pending "
-#| "updates and reboot your system."
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
 "<b>%1 is now available.</b>\n"
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
-"<b>Bola vydaná nová hlavná verzia %1!</b>\n"
-"Ak chcete aktualizovať na túto novú verziu, uistite sa, že ste vykonali "
-"všetky čakajúce aktualizácie a reštartovali systém."
+"<b>%1 je teraz k dispozícii.</b>\n"
+"Ak chcete prejsť na novú verziu, najprv aplikujte všetky dostupné "
+"aktualizácie a potom reštartujte systém."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "Aktualizovať"
+msgstr "Prejsť na vyššiu verziu teraz"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "Repozitár nie je dostupný"
+msgstr "%1 je teraz k dispozícii."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2270,12 +2253,10 @@ msgstr ""
 "rpm-ostree: Nenašlo sa žiadne spustené nasadenie. Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr "Aktualizovať"
+msgstr "Začať prechod na vyššiu verziu..."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
@@ -2354,12 +2335,12 @@ msgid "ostree remotes"
 msgstr "ostree vzdialené"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree: Nenašlo sa žiadne spustené nasadenie. Prosím, nahláste chybu."
+"rpm-ostree-backend: Chyba: Nie je k dispozícii žiadne rozhranie DBus. "
+"Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
@@ -2367,39 +2348,41 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Chyba: Nie je možné spustiť transakciu pre zdroj s "
+"neplatným formátom. Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree: Nenašlo sa žiadne spustené nasadenie. Prosím, nahláste chybu."
+"rpm-ostree-backend: Chyba: Nie je možné vykonať rebase na prázdny ref. "
+"Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree: Nenašlo sa žiadne spustené nasadenie. Prosím, nahláste chybu."
+"rpm-ostree-backend: Chyba: Požadovaná neznáma operácia. Prosím, nahláste "
+"chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
-#, fuzzy, kde-format
-#| msgid "rpm-ostree transaction failed with:"
+#, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
-msgstr "Transakcia rpm-ostree zlyhala s:"
+msgstr ""
+"Transakcia rpm-ostree zlyhala s:\n"
+"%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree: Nenašlo sa žiadne spustené nasadenie. Prosím, nahláste chybu."
+"rpm-ostree-backend: Chyba: Neznámy formát zdroja. Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
 #, kde-format
@@ -2438,28 +2421,28 @@ msgstr "Prebiehajúca operácia (spustená mimo Discover)"
 msgid "Unknown transaction type"
 msgstr "Neznámy typ transakcie"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:16
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
 #, kde-format
 msgid "Channels…"
 msgstr "Kanály…"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:25
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:28
 #, kde-format
 msgid "%1 channels"
 msgstr "%1 kanálov"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:41
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:47
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
 #, kde-format
 msgid "Switch"
 msgstr "Prepnúť"
 
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:26
 #, kde-format
 msgid "Permissions for %1"
 msgstr "Oprávnenia pre %1"

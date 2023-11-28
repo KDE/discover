@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-25 01:35+0000\n"
+"POT-Creation-Date: 2023-11-28 01:36+0000\n"
 "PO-Revision-Date: 2022-02-07 10:40+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -20,14 +20,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 21.07.70\n"
 
-#: discover/DiscoverObject.cpp:163
+#: discover/DiscoverObject.cpp:190
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:165
+#: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -36,14 +36,14 @@ msgid ""
 "interface>."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:168
+#: discover/DiscoverObject.cpp:195
 #, fuzzy, kde-format
 #| msgid "Report this issue"
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Jelentse ezt a hibát"
 
-#: discover/DiscoverObject.cpp:173
+#: discover/DiscoverObject.cpp:200
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -57,17 +57,17 @@ msgid ""
 "packaging for Discover</link>"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:268
+#: discover/DiscoverObject.cpp:291
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Nem található kategória: „%1”"
 
-#: discover/DiscoverObject.cpp:283
+#: discover/DiscoverObject.cpp:306
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:305
+#: discover/DiscoverObject.cpp:328
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -76,17 +76,17 @@ msgstr ""
 "Nem lehet dolgozni Flatpak erőforrásokkal a(z) %1 backend nélkül. Kérjük, "
 "telepítse azt."
 
-#: discover/DiscoverObject.cpp:309
+#: discover/DiscoverObject.cpp:332
 #, kde-format
 msgid "Could not open %1"
 msgstr "A(z) %1 nem nyitható meg"
 
-#: discover/DiscoverObject.cpp:371
+#: discover/DiscoverObject.cpp:394
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Ellenőrizze, hogy a Snap támogatás telepítve van-e"
 
-#: discover/DiscoverObject.cpp:373
+#: discover/DiscoverObject.cpp:396
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not open %1 because it was not found in any available software "
@@ -100,7 +100,7 @@ msgstr ""
 "szoftvertárolóban sem. Kérjük, jelentse ezt a hibát a disztribúciója "
 "csomagolójának."
 
-#: discover/DiscoverObject.cpp:376
+#: discover/DiscoverObject.cpp:399
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not open %1 because it was not found in any available software "
@@ -112,192 +112,187 @@ msgstr ""
 "szoftvertárolóban sem. Kérjük, jelentse ezt a hibát a disztribúciója "
 "csomagolójának."
 
-#: discover/DiscoverObject.cpp:379
+#: discover/DiscoverObject.cpp:402
 #, fuzzy, kde-format
 #| msgid "Report this issue"
 msgid "Report This Issue"
 msgstr "Jelentse ezt a hibát"
 
-#: discover/DiscoverObject.cpp:441 discover/DiscoverObject.cpp:443
-#: discover/main.cpp:121
+#: discover/DiscoverObject.cpp:464 discover/DiscoverObject.cpp:466
+#: discover/main.cpp:117
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:444
+#: discover/DiscoverObject.cpp:467
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
 
-#: discover/main.cpp:42
+#: discover/main.cpp:33
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr ""
 "A megadott alkalmazás közvetlen megnyitása az appstream:// URI-je szerint."
 
-#: discover/main.cpp:43
+#: discover/main.cpp:34
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr "Megnyitás a megadott MIME-típust kezelni képes program keresésével."
 
-#: discover/main.cpp:44
+#: discover/main.cpp:35
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "Bejegyzések listájának megjelenítése kategóriával."
 
-#: discover/main.cpp:45
+#: discover/main.cpp:36
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "A Discover megnyitása biztonságos módban. A módoknak az eszköztár gombjai "
 "felelnek meg."
 
-#: discover/main.cpp:46
+#: discover/main.cpp:37
 #, kde-format
 msgid "List all the available modes."
 msgstr "Az összes elérhető mód listázása."
 
-#: discover/main.cpp:47
-#, kde-format
-msgid "Compact Mode (auto/compact/full)."
-msgstr "Kompakt mód (automatikus/kompakt/teljes)."
-
-#: discover/main.cpp:48
+#: discover/main.cpp:38
 #, kde-format
 msgid "Local package file to install"
 msgstr "Helyi csomagfájlok telepítése"
 
-#: discover/main.cpp:49
+#: discover/main.cpp:39
 #, kde-format
 msgid "List all the available backends."
 msgstr "Az összes elérhető backend listázása."
 
-#: discover/main.cpp:50
+#: discover/main.cpp:40
 #, kde-format
 msgid "Search string."
 msgstr "Szöveg keresése."
 
-#: discover/main.cpp:51
+#: discover/main.cpp:41
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "Felsorolja a felhasználói visszajelzés lehetőségeit"
 
-#: discover/main.cpp:53
+#: discover/main.cpp:43
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "Az appstream: url séma támogatása"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:119
 #, kde-format
 msgid "An application explorer"
 msgstr "Egy alkalmazásfelfedező"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:121
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
 msgstr "© A Plasma fejlesztői, 2010-2022."
 
-#: discover/main.cpp:126
+#: discover/main.cpp:122
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:127
+#: discover/main.cpp:123
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:128
+#: discover/main.cpp:124
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Minőségbiztosítás, design és használhatóság"
 
-#: discover/main.cpp:132
+#: discover/main.cpp:128
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:133
+#: discover/main.cpp:129
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:140
+#: discover/main.cpp:136
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Kiszel Kristóf"
 
-#: discover/main.cpp:140
+#: discover/main.cpp:136
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ulysses@kubuntu.org"
 
-#: discover/main.cpp:153
+#: discover/main.cpp:149
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Elérhető háttérprogramok:\n"
 
-#: discover/main.cpp:209
+#: discover/main.cpp:202
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Elérhető módok:\n"
 
-#: discover/qml/AddonsView.qml:20 discover/qml/navigation.js:43
+#: discover/qml/AddonsView.qml:20 discover/qml/Navigation.qml:58
 #, kde-format
 msgid "Addons for %1"
 msgstr "%1 bővítmények"
 
-#: discover/qml/AddonsView.qml:52
+#: discover/qml/AddonsView.qml:56
 #, kde-format
 msgid "More…"
 msgstr "Több…"
 
-#: discover/qml/AddonsView.qml:61
+#: discover/qml/AddonsView.qml:65
 #, kde-format
 msgid "Apply Changes"
 msgstr "Változtatások alkalmazása"
 
-#: discover/qml/AddonsView.qml:68
+#: discover/qml/AddonsView.qml:72
 #, kde-format
 msgid "Reset"
 msgstr "Visszaállítás"
 
-#: discover/qml/AddSourceDialog.qml:20
+#: discover/qml/AddSourceDialog.qml:21
 #, kde-format
 msgid "Add New %1 Repository"
 msgstr "Új %1 tároló hozzáadása"
 
-#: discover/qml/AddSourceDialog.qml:44
+#: discover/qml/AddSourceDialog.qml:45
 #, kde-format
 msgid "Add"
 msgstr "Hozzáadás"
 
-#: discover/qml/AddSourceDialog.qml:49 discover/qml/DiscoverWindow.qml:274
-#: discover/qml/InstallApplicationButton.qml:45
-#: discover/qml/ProgressView.qml:104 discover/qml/SourcesPage.qml:191
-#: discover/qml/UpdatesPage.qml:266 discover/qml/WebflowDialog.qml:41
+#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:271
+#: discover/qml/InstallApplicationButton.qml:46
+#: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:203
+#: discover/qml/UpdatesPage.qml:265 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: discover/qml/ApplicationDelegate.qml:185
-#: discover/qml/ApplicationPage.qml:221
+#: discover/qml/ApplicationDelegate.qml:188
+#: discover/qml/ApplicationPage.qml:224
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "%1 értékelés"
 msgstr[1] "%1 értékelés"
 
-#: discover/qml/ApplicationDelegate.qml:185
-#: discover/qml/ApplicationPage.qml:221
+#: discover/qml/ApplicationDelegate.qml:188
+#: discover/qml/ApplicationPage.qml:224
 #, kde-format
 msgid "No ratings yet"
 msgstr "Nincsenek értékelések"
 
-#: discover/qml/ApplicationPage.qml:72
+#: discover/qml/ApplicationPage.qml:67
 #, kde-format
 msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
@@ -305,30 +300,30 @@ msgctxt ""
 msgid "From %1"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:83
+#: discover/qml/ApplicationPage.qml:84
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ApplicationPage.qml:200
+#: discover/qml/ApplicationPage.qml:203
 #, fuzzy, kde-format
 #| msgctxt "The app does not provide any licenses"
 #| msgid "Unknown"
 msgid "Unknown author"
 msgstr "Ismeretlen"
 
-#: discover/qml/ApplicationPage.qml:245
+#: discover/qml/ApplicationPage.qml:248
 #, fuzzy, kde-format
 #| msgid "Version"
 msgid "Version:"
 msgstr "Verzió"
 
-#: discover/qml/ApplicationPage.qml:257
+#: discover/qml/ApplicationPage.qml:260
 #, kde-format
 msgid "Size:"
 msgstr "Méret:"
 
-#: discover/qml/ApplicationPage.qml:269
+#: discover/qml/ApplicationPage.qml:272
 #, fuzzy, kde-format
 #| msgid "License"
 #| msgid_plural "Licenses"
@@ -337,37 +332,37 @@ msgid_plural "Licenses:"
 msgstr[0] "Licenc"
 msgstr[1] "Licencek"
 
-#: discover/qml/ApplicationPage.qml:277
+#: discover/qml/ApplicationPage.qml:280
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: discover/qml/ApplicationPage.qml:307
+#: discover/qml/ApplicationPage.qml:314
 #, fuzzy, kde-format
 #| msgid "What's New"
 msgid "What does this mean?"
 msgstr "Újdonságok"
 
-#: discover/qml/ApplicationPage.qml:316
+#: discover/qml/ApplicationPage.qml:323
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] "Több…"
 msgstr[1] "Több…"
 
-#: discover/qml/ApplicationPage.qml:327
+#: discover/qml/ApplicationPage.qml:334
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating:"
 msgstr "Adjon értékelést"
 
-#: discover/qml/ApplicationPage.qml:336
+#: discover/qml/ApplicationPage.qml:343
 #, kde-format
 msgid "Age: %1+"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:356
+#: discover/qml/ApplicationPage.qml:363
 #, fuzzy, kde-format
 #| msgid "See more…"
 #| msgid_plural "See more…"
@@ -375,85 +370,85 @@ msgctxt "@action"
 msgid "See details…"
 msgstr "Több…"
 
-#: discover/qml/ApplicationPage.qml:378
+#: discover/qml/ApplicationPage.qml:385
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:551
+#: discover/qml/ApplicationPage.qml:559
 #, kde-format
 msgid "Documentation"
 msgstr "Dokumentáció"
 
-#: discover/qml/ApplicationPage.qml:552
+#: discover/qml/ApplicationPage.qml:560
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:568
+#: discover/qml/ApplicationPage.qml:576
 #, kde-format
 msgid "Website"
 msgstr "Weboldal"
 
-#: discover/qml/ApplicationPage.qml:569
+#: discover/qml/ApplicationPage.qml:577
 #, fuzzy, kde-format
 #| msgid "Visit the app's website"
 msgid "Visit the project's website"
 msgstr "Az alkalmazás weboldalának meglátogatása"
 
-#: discover/qml/ApplicationPage.qml:585
+#: discover/qml/ApplicationPage.qml:593
 #, kde-format
 msgid "Addons"
 msgstr "Bővítmények"
 
-#: discover/qml/ApplicationPage.qml:586
+#: discover/qml/ApplicationPage.qml:594
 #, fuzzy, kde-format
 #| msgid "Install or remove add-ons for %1"
 msgid "Install or remove additional functionality"
 msgstr "%1 bővítmények telepítése vagy eltávolítása"
 
-#: discover/qml/ApplicationPage.qml:605
+#: discover/qml/ApplicationPage.qml:613
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:606
+#: discover/qml/ApplicationPage.qml:614
 #, fuzzy, kde-format
 #| msgid "Unable to load applications"
 msgid "Send a link for this application"
 msgstr "Nem lehet betölteni alkalmazásokat"
 
-#: discover/qml/ApplicationPage.qml:622
+#: discover/qml/ApplicationPage.qml:630
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:642
+#: discover/qml/ApplicationPage.qml:650
 #, kde-format
 msgid "What's New"
 msgstr "Újdonságok"
 
-#: discover/qml/ApplicationPage.qml:672
+#: discover/qml/ApplicationPage.qml:680
 #, kde-format
 msgid "Reviews"
 msgstr "Vélemények"
 
-#: discover/qml/ApplicationPage.qml:684
+#: discover/qml/ApplicationPage.qml:692
 #, fuzzy, kde-format
 #| msgid "Reviews for %1"
 msgid "Loading reviews for %1"
 msgstr "Értékelések ehhez: %1"
 
-#: discover/qml/ApplicationPage.qml:692
+#: discover/qml/ApplicationPage.qml:700
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:716
+#: discover/qml/ApplicationPage.qml:724
 #, fuzzy, kde-format
 #| msgid "Show all %1 Reviews"
 #| msgid_plural "Show all %1 Reviews"
@@ -461,70 +456,70 @@ msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Összes %1 értékelés megjelenítése…"
 
-#: discover/qml/ApplicationPage.qml:728
+#: discover/qml/ApplicationPage.qml:736
 #, kde-format
 msgid "Write a Review"
 msgstr "Írjon értékelést"
 
-#: discover/qml/ApplicationPage.qml:728
+#: discover/qml/ApplicationPage.qml:736
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Telepítse értékelés írásához"
 
-#: discover/qml/ApplicationPage.qml:740
+#: discover/qml/ApplicationPage.qml:748
 #, fuzzy, kde-format
 #| msgid "Get involved:"
 msgid "Get Involved"
 msgstr "Csatlakozzon:"
 
-#: discover/qml/ApplicationPage.qml:782
+#: discover/qml/ApplicationPage.qml:790
 #, kde-format
 msgid "Donate"
 msgstr "Támogatás"
 
-#: discover/qml/ApplicationPage.qml:783
+#: discover/qml/ApplicationPage.qml:791
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:799
+#: discover/qml/ApplicationPage.qml:807
 #, kde-format
 msgid "Report Bug"
 msgstr "Hiba bejelentése"
 
-#: discover/qml/ApplicationPage.qml:800
+#: discover/qml/ApplicationPage.qml:808
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:816
+#: discover/qml/ApplicationPage.qml:824
 #, fuzzy, kde-format
 #| msgid "Contribute…"
 msgid "Contribute"
 msgstr "Hozzájárulás…"
 
-#: discover/qml/ApplicationPage.qml:817
+#: discover/qml/ApplicationPage.qml:825
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:842
+#: discover/qml/ApplicationPage.qml:857
 #, kde-format
 msgid "All Licenses"
 msgstr "Minden licenc"
 
-#: discover/qml/ApplicationPage.qml:872
+#: discover/qml/ApplicationPage.qml:890
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating"
 msgstr "Adjon értékelést"
 
-#: discover/qml/ApplicationPage.qml:888
+#: discover/qml/ApplicationPage.qml:907
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:894
+#: discover/qml/ApplicationPage.qml:913
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -540,7 +535,7 @@ msgid ""
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:895
+#: discover/qml/ApplicationPage.qml:914
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -556,7 +551,7 @@ msgid ""
 "url='%2'>%2</link>."
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:52
+#: discover/qml/ApplicationsListPage.qml:53
 #, fuzzy, kde-format
 #| msgid "Search: %1 - %2 items"
 msgid "Search: %2 - %3 item"
@@ -564,12 +559,12 @@ msgid_plural "Search: %2 - %3 items"
 msgstr[0] "Keresés: %1 - %2 elem"
 msgstr[1] "Keresés: %1 - %2 elem"
 
-#: discover/qml/ApplicationsListPage.qml:54
+#: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
 msgid "Search: %1"
 msgstr "Keresés: %1"
 
-#: discover/qml/ApplicationsListPage.qml:58
+#: discover/qml/ApplicationsListPage.qml:59
 #, fuzzy, kde-format
 #| msgid "%1 - %2 items"
 msgid "%2 - %1 item"
@@ -577,7 +572,7 @@ msgid_plural "%2 - %1 items"
 msgstr[0] "%1 - %2 elem"
 msgstr[1] "%1 - %2 elem"
 
-#: discover/qml/ApplicationsListPage.qml:64
+#: discover/qml/ApplicationsListPage.qml:65
 #, fuzzy, kde-format
 #| msgid "Search - %1 items"
 msgid "Search - %1 item"
@@ -585,55 +580,55 @@ msgid_plural "Search - %1 items"
 msgstr[0] "Keresés - %1 elem"
 msgstr[1] "Keresés - %1 elem"
 
-#: discover/qml/ApplicationsListPage.qml:66
-#: discover/qml/ApplicationsListPage.qml:260
+#: discover/qml/ApplicationsListPage.qml:67
+#: discover/qml/ApplicationsListPage.qml:258
 #, kde-format
 msgid "Search"
 msgstr "Keresés"
 
-#: discover/qml/ApplicationsListPage.qml:97 discover/qml/ReviewsPage.qml:98
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:99
 #, kde-format
 msgid "Sort: %1"
 msgstr "Rendezés: %1"
 
-#: discover/qml/ApplicationsListPage.qml:102
+#: discover/qml/ApplicationsListPage.qml:103
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:113
+#: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
 msgid "Name"
 msgstr "Név"
 
-#: discover/qml/ApplicationsListPage.qml:124 discover/qml/Rating.qml:117
+#: discover/qml/ApplicationsListPage.qml:125 discover/qml/Rating.qml:119
 #, kde-format
 msgid "Rating"
 msgstr "Értékelés"
 
-#: discover/qml/ApplicationsListPage.qml:135
+#: discover/qml/ApplicationsListPage.qml:136
 #, kde-format
 msgid "Size"
 msgstr "Méret"
 
-#: discover/qml/ApplicationsListPage.qml:146
+#: discover/qml/ApplicationsListPage.qml:147
 #, kde-format
 msgid "Release Date"
 msgstr "Kiadás ideje"
 
-#: discover/qml/ApplicationsListPage.qml:206
+#: discover/qml/ApplicationsListPage.qml:204
 #, kde-format
 msgid "Nothing found"
 msgstr "Nincs találat"
 
-#: discover/qml/ApplicationsListPage.qml:214
+#: discover/qml/ApplicationsListPage.qml:212
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:224
+#: discover/qml/ApplicationsListPage.qml:222
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid "Search the web for \"%1\""
@@ -641,7 +636,7 @@ msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "„%1” keresése az interneten"
 
-#: discover/qml/ApplicationsListPage.qml:228
+#: discover/qml/ApplicationsListPage.qml:226
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -649,7 +644,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:239
+#: discover/qml/ApplicationsListPage.qml:237
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid "\"%1\" was not found in the available sources"
@@ -659,7 +654,7 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "A(z) „%1” nem található az elérhető forrásokban"
 
-#: discover/qml/ApplicationsListPage.qml:241
+#: discover/qml/ApplicationsListPage.qml:239
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid "\"%1\" was not found in the available sources"
@@ -667,7 +662,7 @@ msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "A(z) „%1” nem található az elérhető forrásokban"
 
-#: discover/qml/ApplicationsListPage.qml:242
+#: discover/qml/ApplicationsListPage.qml:240
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid ""
@@ -684,7 +679,7 @@ msgstr ""
 "ellenőrizte a disztribúciója stabilitás vagy funkcionalitás szempontjából, "
 "ezért használja azokat fokozott óvatossággal."
 
-#: discover/qml/ApplicationsListPage.qml:275
+#: discover/qml/ApplicationsListPage.qml:273
 #, kde-format
 msgid "Still looking…"
 msgstr "Még keressük…"
@@ -696,31 +691,31 @@ msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
 msgstr "&Kezdőlap"
 
-#: discover/qml/BrowsingPage.qml:66
+#: discover/qml/BrowsingPage.qml:60
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Nem lehet betölteni alkalmazásokat"
 
-#: discover/qml/BrowsingPage.qml:104
+#: discover/qml/BrowsingPage.qml:103
 #, fuzzy, kde-format
 #| msgid "Popularity"
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Népszerűség"
 
-#: discover/qml/BrowsingPage.qml:124
+#: discover/qml/BrowsingPage.qml:123
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:141
+#: discover/qml/BrowsingPage.qml:140
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:160 discover/qml/BrowsingPage.qml:189
+#: discover/qml/BrowsingPage.qml:159 discover/qml/BrowsingPage.qml:188
 #, fuzzy, kde-format
 #| msgid "See more…"
 #| msgid_plural "See more…"
@@ -728,7 +723,7 @@ msgctxt "@action:button"
 msgid "See More"
 msgstr "Több…"
 
-#: discover/qml/BrowsingPage.qml:170
+#: discover/qml/BrowsingPage.qml:169
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
@@ -783,27 +778,27 @@ msgstr ""
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "A <em>root</em> felhasználóként futtatás nem javasolt és szükségtelen."
 
-#: discover/qml/DiscoverWindow.qml:56
+#: discover/qml/DiscoverWindow.qml:58
 #, kde-format
 msgid "&Home"
 msgstr "&Kezdőlap"
 
-#: discover/qml/DiscoverWindow.qml:66
+#: discover/qml/DiscoverWindow.qml:68
 #, kde-format
 msgid "&Search"
 msgstr "K&eresés"
 
-#: discover/qml/DiscoverWindow.qml:74
+#: discover/qml/DiscoverWindow.qml:76
 #, kde-format
 msgid "&Installed"
 msgstr "&Telepített"
 
-#: discover/qml/DiscoverWindow.qml:85
+#: discover/qml/DiscoverWindow.qml:87
 #, kde-format
 msgid "Fetching &updates…"
 msgstr "&Frissítések letöltése…"
 
-#: discover/qml/DiscoverWindow.qml:85
+#: discover/qml/DiscoverWindow.qml:87
 #, fuzzy, kde-format
 #| msgctxt "Update section name"
 #| msgid "&Update (%1)"
@@ -812,68 +807,68 @@ msgid_plural "&Updates (%1)"
 msgstr[0] "F&rissítés (%1)"
 msgstr[1] "F&rissítés (%1)"
 
-#: discover/qml/DiscoverWindow.qml:93
+#: discover/qml/DiscoverWindow.qml:95
 #, kde-format
 msgid "&About"
 msgstr "Né&vjegy"
 
-#: discover/qml/DiscoverWindow.qml:101
+#: discover/qml/DiscoverWindow.qml:103
 #, kde-format
 msgid "S&ettings"
 msgstr "&Beállítások"
 
-#: discover/qml/DiscoverWindow.qml:154 discover/qml/DiscoverWindow.qml:343
-#: discover/qml/DiscoverWindow.qml:450
+#: discover/qml/DiscoverWindow.qml:156 discover/qml/DiscoverWindow.qml:340
+#: discover/qml/DiscoverWindow.qml:454
 #, kde-format
 msgid "Error"
 msgstr "Hiba"
 
-#: discover/qml/DiscoverWindow.qml:158
+#: discover/qml/DiscoverWindow.qml:160
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "Nem található erőforrás: %1"
 
-#: discover/qml/DiscoverWindow.qml:261 discover/qml/SourcesPage.qml:181
+#: discover/qml/DiscoverWindow.qml:258 discover/qml/SourcesPage.qml:193
 #, kde-format
 msgid "Proceed"
 msgstr "Folytatás"
 
-#: discover/qml/DiscoverWindow.qml:319
+#: discover/qml/DiscoverWindow.qml:316
 #, kde-format
 msgid "Report this issue"
 msgstr "Jelentse ezt a hibát"
 
-#: discover/qml/DiscoverWindow.qml:343
+#: discover/qml/DiscoverWindow.qml:340
 #, fuzzy, kde-format
 #| msgid "Votes: %1 out of %2"
 msgid "Error %1 of %2"
 msgstr "Szavazatok: %1 / %2"
 
-#: discover/qml/DiscoverWindow.qml:388
+#: discover/qml/DiscoverWindow.qml:390
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:401
+#: discover/qml/DiscoverWindow.qml:403
 #, fuzzy, kde-format
 #| msgid "Show contents"
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Tartalom megjelenítése"
 
-#: discover/qml/DiscoverWindow.qml:417
+#: discover/qml/DiscoverWindow.qml:419
 #, fuzzy, kde-format
 #| msgid "Copy to clipboard"
 msgid "Copy to Clipboard"
 msgstr "Másolás a vágólapra"
 
-#: discover/qml/Feedback.qml:13
+#: discover/qml/Feedback.qml:14
 #, kde-format
 msgid "Submit usage information"
 msgstr "Használati statisztikák elküldése"
 
-#: discover/qml/Feedback.qml:14
+#: discover/qml/Feedback.qml:15
 #, kde-format
 msgid ""
 "Sends anonymized usage information to KDE so we can better understand our "
@@ -883,27 +878,27 @@ msgstr ""
 "a felhasználók szokásait. További információkért keresse fel a https://kde."
 "org/privacypolicy-apps.php oldalt."
 
-#: discover/qml/Feedback.qml:18
+#: discover/qml/Feedback.qml:19
 #, kde-format
 msgid "Submitting usage information…"
 msgstr "Használati statisztikák küldése…"
 
-#: discover/qml/Feedback.qml:18
+#: discover/qml/Feedback.qml:19
 #, kde-format
 msgid "Configure"
 msgstr "Beállítások"
 
-#: discover/qml/Feedback.qml:22
+#: discover/qml/Feedback.qml:23
 #, kde-format
 msgid "Configure feedback…"
 msgstr "Visszajelzés beállítása…"
 
-#: discover/qml/Feedback.qml:29 discover/qml/SourcesPage.qml:22
+#: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
 #, kde-format
 msgid "Configure Updates…"
 msgstr "Frissítések beállítása…"
 
-#: discover/qml/Feedback.qml:57
+#: discover/qml/Feedback.qml:58
 #, kde-format
 msgid ""
 "You can help us improving this application by sharing statistics and "
@@ -912,17 +907,17 @@ msgstr ""
 "A statisztikák megosztásával és felmérésekben való részvétellel segítheti az "
 "alkalmazás fejlesztését."
 
-#: discover/qml/Feedback.qml:57
+#: discover/qml/Feedback.qml:58
 #, kde-format
 msgid "Contribute…"
 msgstr "Hozzájárulás…"
 
-#: discover/qml/Feedback.qml:62
+#: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "We are looking for your feedback!"
 msgstr "Kíváncsiak vagyunk a véleményére!"
 
-#: discover/qml/Feedback.qml:62
+#: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "Participate…"
 msgstr "Részvétel…"
@@ -952,207 +947,207 @@ msgstr "Telepítés"
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#: discover/qml/InstalledPage.qml:15
+#: discover/qml/InstalledPage.qml:14
 #, kde-format
 msgid "Installed"
 msgstr "Telepített"
 
-#: discover/qml/navigation.js:18
+#: discover/qml/Navigation.qml:34
 #, kde-format
 msgid "Resources for '%1'"
 msgstr "Erőforrások ehhez: „%1”"
 
-#: discover/qml/ProgressView.qml:16
+#: discover/qml/ProgressView.qml:18
 #, kde-format
 msgid "Tasks (%1%)"
 msgstr "Feladatok (%1%)"
 
-#: discover/qml/ProgressView.qml:16 discover/qml/ProgressView.qml:41
+#: discover/qml/ProgressView.qml:18 discover/qml/ProgressView.qml:45
 #, kde-format
 msgid "Tasks"
 msgstr "Feladatok"
 
-#: discover/qml/ProgressView.qml:97
+#: discover/qml/ProgressView.qml:113
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3, %4 van hátra"
 
-#: discover/qml/ProgressView.qml:98
+#: discover/qml/ProgressView.qml:121
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:99
+#: discover/qml/ProgressView.qml:128
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ReviewDelegate.qml:62
+#: discover/qml/ReviewDelegate.qml:65
 #, kde-format
 msgid "unknown reviewer"
 msgstr "ismeretlen értékelő"
 
-#: discover/qml/ReviewDelegate.qml:63
+#: discover/qml/ReviewDelegate.qml:66
 #, kde-format
 msgid "<b>%1</b> by %2"
 msgstr "<b>%1</b>, szerző: %2"
 
-#: discover/qml/ReviewDelegate.qml:63
+#: discover/qml/ReviewDelegate.qml:66
 #, kde-format
 msgid "Comment by %1"
 msgstr "Megjegyzés, tőle: %1"
 
-#: discover/qml/ReviewDelegate.qml:81
+#: discover/qml/ReviewDelegate.qml:84
 #, kde-format
 msgid "Version: %1"
 msgstr "Verzió: %1"
 
-#: discover/qml/ReviewDelegate.qml:81
+#: discover/qml/ReviewDelegate.qml:84
 #, kde-format
 msgid "Version: unknown"
 msgstr "Verzió: ismeretlen"
 
-#: discover/qml/ReviewDelegate.qml:96
+#: discover/qml/ReviewDelegate.qml:100
 #, kde-format
 msgid "Votes: %1 out of %2"
 msgstr "Szavazatok: %1 / %2"
 
-#: discover/qml/ReviewDelegate.qml:103
+#: discover/qml/ReviewDelegate.qml:107
 #, kde-format
 msgid "Was this review useful?"
 msgstr "Hasznos ez az értékelés?"
 
-#: discover/qml/ReviewDelegate.qml:115
+#: discover/qml/ReviewDelegate.qml:119
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "Yes"
 msgstr "Igen"
 
-#: discover/qml/ReviewDelegate.qml:132
+#: discover/qml/ReviewDelegate.qml:136
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "No"
 msgstr "Nem"
 
-#: discover/qml/ReviewDialog.qml:19
+#: discover/qml/ReviewDialog.qml:20
 #, kde-format
 msgid "Reviewing %1"
 msgstr "A(z) %1 értékelése"
 
-#: discover/qml/ReviewDialog.qml:26
+#: discover/qml/ReviewDialog.qml:27
 #, kde-format
 msgid "Submit review"
 msgstr "Értékelés elküldése"
 
-#: discover/qml/ReviewDialog.qml:39
+#: discover/qml/ReviewDialog.qml:40
 #, kde-format
 msgid "Rating:"
 msgstr "Értékelés:"
 
-#: discover/qml/ReviewDialog.qml:44
+#: discover/qml/ReviewDialog.qml:45
 #, kde-format
 msgid "Name:"
 msgstr "Név:"
 
-#: discover/qml/ReviewDialog.qml:52
+#: discover/qml/ReviewDialog.qml:53
 #, kde-format
 msgid "Title:"
 msgstr "Cím:"
 
-#: discover/qml/ReviewDialog.qml:71
+#: discover/qml/ReviewDialog.qml:73
 #, kde-format
 msgid "Enter a rating"
 msgstr "Adjon értékelést"
 
-#: discover/qml/ReviewDialog.qml:74
+#: discover/qml/ReviewDialog.qml:76
 #, kde-format
 msgid "Write the title"
 msgstr "Írja be a címet"
 
-#: discover/qml/ReviewDialog.qml:77
+#: discover/qml/ReviewDialog.qml:79
 #, kde-format
 msgid "Write the review"
 msgstr "Írjon értékelést"
 
-#: discover/qml/ReviewDialog.qml:80
+#: discover/qml/ReviewDialog.qml:82
 #, kde-format
 msgid "Keep writing…"
 msgstr "Írja tovább…"
 
-#: discover/qml/ReviewDialog.qml:83
+#: discover/qml/ReviewDialog.qml:85
 #, kde-format
 msgid "Too long!"
 msgstr "Túl hosszú!"
 
-#: discover/qml/ReviewDialog.qml:86
+#: discover/qml/ReviewDialog.qml:88
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
 msgstr ""
 
-#: discover/qml/ReviewsPage.qml:53
+#: discover/qml/ReviewsPage.qml:54
 #, kde-format
 msgid "Reviews for %1"
 msgstr "Értékelések ehhez: %1"
 
-#: discover/qml/ReviewsPage.qml:61
+#: discover/qml/ReviewsPage.qml:62
 #, kde-format
 msgid "Write a Review…"
 msgstr "Írjon értékelést…"
 
-#: discover/qml/ReviewsPage.qml:73
+#: discover/qml/ReviewsPage.qml:74
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "Telepítse ezt az alkalmazást, és írjon értékelést róla"
 
-#: discover/qml/ReviewsPage.qml:102
+#: discover/qml/ReviewsPage.qml:103
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
 msgstr ""
 
-#: discover/qml/ReviewsPage.qml:109
+#: discover/qml/ReviewsPage.qml:110
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
 msgstr ""
 
-#: discover/qml/ReviewsPage.qml:116
+#: discover/qml/ReviewsPage.qml:117
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
 msgstr "Adjon értékelést"
 
-#: discover/qml/ReviewsStats.qml:51
+#: discover/qml/ReviewsStats.qml:53
 #, fuzzy, kde-format
 #| msgid "%1 reviews"
 msgctxt "how many reviews"
 msgid "%1 reviews"
 msgstr "%1 vélemény"
 
-#: discover/qml/ReviewsStats.qml:69
+#: discover/qml/ReviewsStats.qml:76
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
 msgstr ""
 
-#: discover/qml/ReviewsStats.qml:143
+#: discover/qml/ReviewsStats.qml:154
 #, fuzzy, kde-format
 #| msgid "unknown reviewer"
 msgid "Unknown reviewer"
 msgstr "ismeretlen értékelő"
 
-#: discover/qml/ReviewsStats.qml:163
+#: discover/qml/ReviewsStats.qml:175
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
 msgstr ""
 
-#: discover/qml/ReviewsStats.qml:178
+#: discover/qml/ReviewsStats.qml:190
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
@@ -1173,84 +1168,84 @@ msgstr "Keresés itt: „%1”…"
 msgid "Settings"
 msgstr "Beállítások"
 
-#: discover/qml/SourcesPage.qml:99
+#: discover/qml/SourcesPage.qml:110
 #, kde-format
 msgid "Default source"
 msgstr "Alapértelmezett forrás"
 
-#: discover/qml/SourcesPage.qml:106
+#: discover/qml/SourcesPage.qml:118
 #, kde-format
 msgid "Add Source…"
 msgstr "Forrás hozzáadása…"
 
-#: discover/qml/SourcesPage.qml:132
+#: discover/qml/SourcesPage.qml:145
 #, kde-format
 msgid "Make default"
 msgstr "Legyen alapértelmezett"
 
-#: discover/qml/SourcesPage.qml:223
+#: discover/qml/SourcesPage.qml:240
 #, kde-format
 msgid "Increase priority"
 msgstr "Prioritás növelése"
 
-#: discover/qml/SourcesPage.qml:229
+#: discover/qml/SourcesPage.qml:246
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "Nem sikerült növelni a(z) „%1” prioritását"
 
-#: discover/qml/SourcesPage.qml:235
+#: discover/qml/SourcesPage.qml:252
 #, kde-format
 msgid "Decrease priority"
 msgstr "Prioritás csökkentése"
 
-#: discover/qml/SourcesPage.qml:241
+#: discover/qml/SourcesPage.qml:258
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "Nem sikerült csökkenteni a(z) „%1” prioritását"
 
-#: discover/qml/SourcesPage.qml:247
+#: discover/qml/SourcesPage.qml:264
 #, kde-format
 msgid "Remove repository"
 msgstr "Tároló eltávolítása"
 
-#: discover/qml/SourcesPage.qml:258
+#: discover/qml/SourcesPage.qml:275
 #, kde-format
 msgid "Show contents"
 msgstr "Tartalom megjelenítése"
 
-#: discover/qml/SourcesPage.qml:298
+#: discover/qml/SourcesPage.qml:316
 #, kde-format
 msgid "Missing Backends"
 msgstr "Hiányzó backendek"
 
-#: discover/qml/UpdatesPage.qml:14
+#: discover/qml/UpdatesPage.qml:13
 #, kde-format
 msgid "Updates"
 msgstr "Frissítések"
 
-#: discover/qml/UpdatesPage.qml:47
+#: discover/qml/UpdatesPage.qml:46
 #, kde-format
 msgid "Update Issue"
 msgstr "Frissítési probléma"
 
-#: discover/qml/UpdatesPage.qml:47
+#: discover/qml/UpdatesPage.qml:46
 #, kde-format
 msgid "Technical details"
 msgstr "Technikai részletek"
 
-#: discover/qml/UpdatesPage.qml:63
+#: discover/qml/UpdatesPage.qml:62
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
 "Hiba történt a frissítés telepítése során. Kérjük, próbálkozzon később."
 
-#: discover/qml/UpdatesPage.qml:69
+#: discover/qml/UpdatesPage.qml:68
 #, fuzzy, kde-format
 #| msgid "See technical details"
 msgid "See Technical Details"
 msgstr "Technikai részletek megtekintése"
 
-#: discover/qml/UpdatesPage.qml:96
+#: discover/qml/UpdatesPage.qml:95
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid ""
@@ -1258,79 +1253,79 @@ msgid ""
 "network error, please report it to %1, not KDE."
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:104
+#: discover/qml/UpdatesPage.qml:103
 #, kde-format
 msgid "Copy Text"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:108
+#: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:115
+#: discover/qml/UpdatesPage.qml:114
 #, fuzzy, kde-format
 #| msgid "Report this issue"
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
 msgstr "Jelentse ezt a hibát"
 
-#: discover/qml/UpdatesPage.qml:142
+#: discover/qml/UpdatesPage.qml:140
 #, fuzzy, kde-format
 #| msgid "Update Selected"
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "Kijelöltek frissítése"
 
-#: discover/qml/UpdatesPage.qml:142
+#: discover/qml/UpdatesPage.qml:140
 #, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Összes frissítése"
 
-#: discover/qml/UpdatesPage.qml:188
+#: discover/qml/UpdatesPage.qml:186
 #, kde-format
 msgid "Ignore"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:234
+#: discover/qml/UpdatesPage.qml:233
 #, kde-format
 msgid "Select All"
 msgstr "Összes kijelölése"
 
-#: discover/qml/UpdatesPage.qml:242
+#: discover/qml/UpdatesPage.qml:241
 #, kde-format
 msgid "Select None"
 msgstr "Kijelölés megszüntetése"
 
-#: discover/qml/UpdatesPage.qml:249
+#: discover/qml/UpdatesPage.qml:248
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "Automatikus újraindítás a frissítés befejeződése után"
 
-#: discover/qml/UpdatesPage.qml:256
+#: discover/qml/UpdatesPage.qml:255
 #, kde-format
 msgid "Total size: %1"
 msgstr "Teljes méret: %1"
 
-#: discover/qml/UpdatesPage.qml:291
+#: discover/qml/UpdatesPage.qml:290
 #, kde-format
 msgid "Restart Now"
 msgstr "Újraindítás most"
 
-#: discover/qml/UpdatesPage.qml:420
+#: discover/qml/UpdatesPage.qml:419
 #, kde-format
 msgid "Installing"
 msgstr "Telepítés"
 
-#: discover/qml/UpdatesPage.qml:451
+#: discover/qml/UpdatesPage.qml:450
 #, kde-format
 msgid "Update from:"
 msgstr "Frissítés innen:"
 
-#: discover/qml/UpdatesPage.qml:463
+#: discover/qml/UpdatesPage.qml:462
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1338,47 +1333,50 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:470
+#: discover/qml/UpdatesPage.qml:469
 #, kde-format
 msgid "More Information…"
 msgstr "További információk…"
 
-#: discover/qml/UpdatesPage.qml:498
+#: discover/qml/UpdatesPage.qml:497
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Frissítések letöltése…"
 
-#: discover/qml/UpdatesPage.qml:511
+#: discover/qml/UpdatesPage.qml:510
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Frissítések"
 
-#: discover/qml/UpdatesPage.qml:520
+#: discover/qml/UpdatesPage.qml:519
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Indítsa újra a rendszert a frissítési folyamat befejezéséhez"
 
-#: discover/qml/UpdatesPage.qml:532 discover/qml/UpdatesPage.qml:539
-#: discover/qml/UpdatesPage.qml:546
+#: discover/qml/UpdatesPage.qml:531 discover/qml/UpdatesPage.qml:538
+#: discover/qml/UpdatesPage.qml:545
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Naprakész"
 
-#: discover/qml/UpdatesPage.qml:553
+#: discover/qml/UpdatesPage.qml:552
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Frissítések keresése szükséges"
 
-#: discover/qml/UpdatesPage.qml:560
+#: discover/qml/UpdatesPage.qml:559
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Az utolsó frissítés időpontja ismeretlen"
+
+#~ msgid "Compact Mode (auto/compact/full)."
+#~ msgstr "Kompakt mód (automatikus/kompakt/teljes)."
 
 #~ msgid "%1"
 #~ msgstr "%1"
