@@ -293,6 +293,8 @@ void RpmOstreeNotifier::checkSystemUpdateOCI()
         checkForPendingDeployment();
     });
 
+    // This will fail on non-remote transports (oci, oci-archive, containers-storage) but that's
+    // OK as we can not check for updates in those cases.
     m_process->start(QStringLiteral("skopeo"),
                      {QStringLiteral("inspect"), QStringLiteral("docker://") + m_ostreeFormat->repo() + QStringLiteral(":") + m_ostreeFormat->tag()});
 }
