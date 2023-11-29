@@ -44,10 +44,13 @@ public:
     QString repo() const;
     QString tag() const;
 
+    QString transport() const;
     QString remote() const;
     QString ref() const;
 
 private:
+    bool parseTransport(QStringList *);
+
     /* Store the format used by ostree to pull each deployment */
     Format m_format;
 
@@ -58,6 +61,10 @@ private:
     /* For the classic format: the ostree ref (branch/name/version) used for the image
      * For the OCI format: The container image tag */
     QString m_branch;
+
+    /* Only for the OCI format: The transport method used to get the container.
+     * Also includes the Ostree remote when used for signature validation */
+    QString m_transport;
 };
 
 #endif
