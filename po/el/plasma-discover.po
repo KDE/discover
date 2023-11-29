@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 01:36+0000\n"
+"POT-Creation-Date: 2023-11-29 01:38+0000\n"
 "PO-Revision-Date: 2023-09-07 00:09+0300\n"
 "Last-Translator: George Stefanakis <george.stefanakis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -706,22 +706,28 @@ msgstr "Πιο Δημοφιλή"
 #: discover/qml/BrowsingPage.qml:123
 #, kde-format
 msgctxt "@title:group"
+msgid "Newly Published & Recently Updated"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:160
+#, kde-format
+msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Επιλογή Συντακτών"
 
-#: discover/qml/BrowsingPage.qml:140
+#: discover/qml/BrowsingPage.qml:177
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Παιχνίδια με την Υψηλότερη Βαθμολογία"
 
-#: discover/qml/BrowsingPage.qml:159 discover/qml/BrowsingPage.qml:188
+#: discover/qml/BrowsingPage.qml:196 discover/qml/BrowsingPage.qml:225
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Δείτε περισσότερα"
 
-#: discover/qml/BrowsingPage.qml:169
+#: discover/qml/BrowsingPage.qml:206
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

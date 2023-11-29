@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 01:36+0000\n"
+"POT-Creation-Date: 2023-11-29 01:38+0000\n"
 "PO-Revision-Date: 2023-11-16 20:11+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -694,22 +694,28 @@ msgstr "Máis popular"
 #: discover/qml/BrowsingPage.qml:123
 #, kde-format
 msgctxt "@title:group"
+msgid "Newly Published & Recently Updated"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:160
+#, kde-format
+msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Escolla editorial"
 
-#: discover/qml/BrowsingPage.qml:140
+#: discover/qml/BrowsingPage.qml:177
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Xogos mellor puntuados"
 
-#: discover/qml/BrowsingPage.qml:159 discover/qml/BrowsingPage.qml:188
+#: discover/qml/BrowsingPage.qml:196 discover/qml/BrowsingPage.qml:225
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Ver máis"
 
-#: discover/qml/BrowsingPage.qml:169
+#: discover/qml/BrowsingPage.qml:206
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

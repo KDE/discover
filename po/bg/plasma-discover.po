@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 01:36+0000\n"
+"POT-Creation-Date: 2023-11-29 01:38+0000\n"
 "PO-Revision-Date: 2023-11-11 16:43+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: \n"
@@ -692,22 +692,28 @@ msgstr "Най-популярни"
 #: discover/qml/BrowsingPage.qml:123
 #, kde-format
 msgctxt "@title:group"
+msgid "Newly Published & Recently Updated"
+msgstr ""
+
+#: discover/qml/BrowsingPage.qml:160
+#, kde-format
+msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Избор на редактора"
 
-#: discover/qml/BrowsingPage.qml:140
+#: discover/qml/BrowsingPage.qml:177
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Най-високо оценени игри"
 
-#: discover/qml/BrowsingPage.qml:159 discover/qml/BrowsingPage.qml:188
+#: discover/qml/BrowsingPage.qml:196 discover/qml/BrowsingPage.qml:225
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Още"
 
-#: discover/qml/BrowsingPage.qml:169
+#: discover/qml/BrowsingPage.qml:206
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
