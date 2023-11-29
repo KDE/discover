@@ -17,9 +17,8 @@ DiscoverPage {
     id: page
 
     readonly property var model: appsModel
+
     property alias category: appsModel.filteredCategory
-    property alias sortRole: appsModel.sortRole
-    property alias sortOrder: appsModel.sortOrder
     property alias originFilter: appsModel.originFilter
     property alias mimeTypeFilter: appsModel.mimeTypeFilter
     property alias stateFilter: appsModel.stateFilter
@@ -31,13 +30,36 @@ DiscoverPage {
     property alias count: apps.count
     property alias listHeader: apps.header
     property alias listHeaderPositioning: apps.headerPositioning
-    property string sortProperty: "appsListPageSorting"
+
     property bool showRating: true
     property bool showSize: false
     property bool searchPage: false
 
+    // sortProperty is a key into DiscoverSettings config object to support
+    // subtypes that have separate persistent sorting preferences. Changing
+    // sortProperty after the component creation is not supported, however
+    // the property which it references on the DiscoverSettings singleton is
+    // expected to be observable.
+    property string sortProperty: "appsListPageSorting"
+    // Subclasses should override it with their values according to
+    // sortProperty and discoversettings.kcfg
+    property int defaultSortRole: Discover.ResourcesProxyModel.SortableRatingRole
+
+    readonly property int sortRole: DiscoverApp.DiscoverSettings[sortProperty]
+    function setSortRole(role: int) {
+        DiscoverApp.DiscoverSettings[sortProperty] = role;
+    }
+    // This property is a non-persistent sort role. Currently used for
+    // overriding regular sort role with SearchRelevanceRole during search.
+    property int sortRoleTemporaryOverride: -1
+    readonly property int effectiveSortRole: sortRoleTemporaryOverride !== -1 ? sortRoleTemporaryOverride : sortRole
+    readonly property int effectiveSortOrder: effectiveSortRole === Discover.ResourcesProxyModel.NameRole ? Qt.AscendingOrder : Qt.DescendingOrder
+
     property bool canNavigate: true
     readonly property alias subcategories: appsModel.subcategories
+
+    // This property is used to prevent superfluous property writes during initialization.
+    property bool __completed: false
 
     function stripHtml(input) {
         var regex = /(<([^>]+)>)/ig
@@ -74,23 +96,118 @@ DiscoverPage {
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
     Kirigami.Theme.inherit: false
 
-    onSearchChanged: {
-        if (search.length > 0) {
-            appsModel.tempSortRole = Discover.ResourcesProxyModel.SearchRelevanceRole
-        } else {
-            appsModel.tempSortRole = -1
-        }
-    }
-
     supportsRefreshing: true
     onRefreshingChanged: if (refreshing) {
         appsModel.invalidateFilter()
         refreshing = false
     }
 
+    onSearchChanged: {
+        const isTemporaryOverride = (search.length > 0);
+        if (isTemporaryOverride) {
+            sortRoleTemporaryOverride = Discover.ResourcesProxyModel.SearchRelevanceRole;
+        } else {
+            sortRoleTemporaryOverride = -1;
+        }
+    }
+
+    onEffectiveSortRoleChanged: __updateCheckedAction()
+
+    Component.onCompleted: {
+        __completed = true;
+        __updateCheckedAction()
+    }
+
+    function __updateCheckedAction() {
+        if (!__completed) {
+            return;
+        }
+
+        let action = null;
+
+        switch (effectiveSortRole) {
+        case Discover.ResourcesProxyModel.SearchRelevanceRole:
+            action = actionSortByRelevance;
+            break;
+
+        case Discover.ResourcesProxyModel.NameRole:
+            action = actionSortByName;
+            break;
+
+        case Discover.ResourcesProxyModel.SortableRatingRole:
+            action = actionSortByRating;
+            break;
+
+        case Discover.ResourcesProxyModel.SizeRole:
+            action = actionSortBySize;
+            break;
+
+        case Discover.ResourcesProxyModel.ReleaseDateRole:
+            action = actionSortByReleaseDate;
+            break;
+
+        default:
+            // Fallback if config is corrupted
+            const isTemporaryOverride = (search.length > 0);
+            if (isTemporaryOverride) {
+                sortRoleTemporaryOverride = Discover.ResourcesProxyModel.SearchRelevanceRole;
+            } else {
+                setSortRole(defaultSortRole);
+                sortRoleTemporaryOverride = -1;
+                return;
+            }
+            break;
+        }
+        sortGroup.checkedAction = action;
+    }
+
+    function __checkedActionChanged() {
+        if (!__completed) {
+            return;
+        }
+
+        let role = -1;
+
+        switch (sortGroup.checkedAction) {
+        case actionSortByRelevance:
+            role = Discover.ResourcesProxyModel.SearchRelevanceRole;
+            break;
+
+        case actionSortByName:
+            role = Discover.ResourcesProxyModel.NameRole;
+            break;
+
+        case actionSortByRating:
+            role = Discover.ResourcesProxyModel.SortableRatingRole;
+            break;
+
+        case actionSortBySize:
+            role = Discover.ResourcesProxyModel.SizeRole;
+            break;
+
+        case actionSortByReleaseDate:
+            role = Discover.ResourcesProxyModel.ReleaseDateRole;
+            break;
+
+        default:
+            return;
+        }
+
+        const isTemporaryOverride = (search.length > 0);
+        if (isTemporaryOverride) {
+            sortRoleTemporaryOverride = role;
+        } else {
+            // Assign role before resetting temporary override to avoid extra sorting pass using a stale sortRole.
+            setSortRole(role);
+            sortRoleTemporaryOverride = -1;
+        }
+    }
+
     QQC2.ActionGroup {
         id: sortGroup
         exclusive: true
+
+        onCheckedActionChanged: page.__checkedActionChanged()
     }
 
     actions: [
@@ -98,60 +215,40 @@ DiscoverPage {
             text: i18n("Sort: %1", sortGroup.checkedAction.text)
             icon.name: "view-sort"
             Kirigami.Action {
-                visible: appsModel.search.length > 0
+                id: actionSortByRelevance
                 QQC2.ActionGroup.group: sortGroup
+                visible: appsModel.search.length > 0
                 text: i18nc("Search results most relevant to the search query", "Relevance")
                 icon.name: "file-search-symbolic"
-                onTriggered: {
-                    // Do *not* save the sort role on searches
-                    appsModel.tempSortRole = Discover.ResourcesProxyModel.SearchRelevanceRole
-                }
                 checkable: true
-                checked: appsModel.sortRole === Discover.ResourcesProxyModel.SearchRelevanceRole
             }
             Kirigami.Action {
+                id: actionSortByName
                 QQC2.ActionGroup.group: sortGroup
                 text: i18n("Name")
                 icon.name: "sort-name"
-                onTriggered: {
-                    DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.NameRole
-                    appsModel.tempSortRole = -1
-                }
                 checkable: true
-                checked: appsModel.sortRole === Discover.ResourcesProxyModel.NameRole
             }
             Kirigami.Action {
+                id: actionSortByRating
                 QQC2.ActionGroup.group: sortGroup
                 text: i18n("Rating")
                 icon.name: "rating"
-                onTriggered: {
-                    DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.SortableRatingRole
-                    appsModel.tempSortRole = -1
-                }
                 checkable: true
-                checked: appsModel.sortRole === Discover.ResourcesProxyModel.SortableRatingRole
             }
             Kirigami.Action {
+                id: actionSortBySize
                 QQC2.ActionGroup.group: sortGroup
                 text: i18n("Size")
                 icon.name: "download"
-                onTriggered: {
-                    DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.SizeRole
-                    appsModel.tempSortRole = -1
-                }
                 checkable: true
-                checked: appsModel.sortRole === Discover.ResourcesProxyModel.SizeRole
             }
             Kirigami.Action {
+                id: actionSortByReleaseDate
                 QQC2.ActionGroup.group: sortGroup
                 text: i18n("Release Date")
                 icon.name: "change-date-symbolic"
-                onTriggered: {
-                    DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.ReleaseDateRole
-                    appsModel.tempSortRole = -1
-                }
                 checkable: true
-                checked: appsModel.sortRole === Discover.ResourcesProxyModel.ReleaseDateRole
             }
         }
     ]
@@ -166,9 +263,9 @@ DiscoverPage {
 
         model: Discover.ResourcesProxyModel {
             id: appsModel
-            property int tempSortRole: -1
-            sortRole: tempSortRole >= 0 ? tempSortRole : DiscoverApp.DiscoverSettings.appsListPageSorting
-            sortOrder: sortRole === Discover.ResourcesProxyModel.NameRole ? Qt.AscendingOrder : Qt.DescendingOrder
+
+            sortRole: page.effectiveSortRole
+            sortOrder: page.effectiveSortOrder
 
             onBusyChanged: isBusy => {
                 if (isBusy) {

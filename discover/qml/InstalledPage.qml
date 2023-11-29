@@ -9,7 +9,7 @@ ApplicationsListPage {
     stateFilter: Discover.AbstractResource.Installed
     allBackends: true
     sortProperty: "installedPageSorting"
-    sortRole: DiscoverApp.DiscoverSettings.installedPageSorting
+    defaultSortRole: Discover.ResourcesProxyModel.NameRole
 
     name: i18n("Installed")
     compact: true
