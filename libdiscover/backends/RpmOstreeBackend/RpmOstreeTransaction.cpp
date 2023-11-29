@@ -49,6 +49,8 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
             m_args.append({QStringLiteral("update"), QStringLiteral("--check")});
         } else if (m_resource->isOCI()) {
             m_prog = QStringLiteral("skopeo");
+            // This will fail on non-remote transports (oci, oci-archive, containers-storage) but
+            // that's OK as we can not check for updates in those cases.
             m_args.append({QStringLiteral("inspect"), m_resource->OCIUrl()});
         } else {
             // Should never happen

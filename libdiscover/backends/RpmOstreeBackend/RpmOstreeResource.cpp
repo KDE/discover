@@ -477,6 +477,8 @@ bool RpmOstreeResource::isOCI()
 
 QString RpmOstreeResource::OCIUrl()
 {
+    // This will fail on non-remote transports (oci, oci-archive, containers-storage) but that's
+    // OK as we can not check for updates in those cases.
     if (m_ostreeFormat->isValid() && m_ostreeFormat->isOCI()) {
         return QLatin1String("docker://") + m_ostreeFormat->repo() + ':' + m_ostreeFormat->tag();
         ;
