@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-29 01:38+0000\n"
-"PO-Revision-Date: 2023-11-04 10:24+0100\n"
+"PO-Revision-Date: 2023-11-29 13:35+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -697,7 +697,7 @@ msgstr "Més popular"
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
-msgstr ""
+msgstr "Novetats publicades i actualitzats recentment"
 
 #: discover/qml/BrowsingPage.qml:160
 #, kde-format
@@ -1356,9 +1356,3 @@ msgstr "Cal comprovar si hi ha actualitzacions"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Es desconeix l'hora de l'última actualització"
-
-#~ msgid "Compact Mode (auto/compact/full)."
-#~ msgstr "Mode compacte (auto/compacte/complet)."
-
-#~ msgid "%1"
-#~ msgstr "%1"
