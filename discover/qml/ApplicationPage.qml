@@ -550,14 +550,25 @@ DiscoverPage {
             // Some backends are known to produce empty line break as a text
             visible: changelogLabel.text !== "" && changelogLabel.text !== "<br />"
 
-            FormCard.FormTextDelegate {
+            FormCard.AbstractFormDelegate {
                 id: changelogLabel
+
+                Layout.fillWidth: true
+                Layout.preferredHeight: contentItem.paintedHeight + topPadding + bottomPadding
+
+                background: null
+
+                contentItem: QQC2.Label {
+                    readonly property int headerFontSize: Math.round(Kirigami.Theme.defaultFont.pixelSize * 1.15) // similar to Kirigami.Heading
+                    textFormat: Text.RichText
+                    text: `<style>h3 { font-size: ${headerFontSize}; font-weight: 400; }</style> ${changelogLabel.text}`
+                }
 
                 Component.onCompleted: appInfo.application.fetchChangelog()
                 Connections {
                     target: appInfo.application
-                    function onChangelogFetched(changelog) {
-                        changelogLabel.text = changelog
+                    function onChangelogFetched(changelog: string): void {
+                        changelogLabel.text = changelog;
                     }
                 }
             }

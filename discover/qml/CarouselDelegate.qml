@@ -92,10 +92,9 @@ Item {
         readonly property Image smallImageView: smallImageLoader.item
 
         width: Math.round(height * ratio)
-        height: parent.height - backgroundShadow.shadow.size
+        height: parent.height
 
         anchors.centerIn: parent
-        anchors.verticalCenterOffset: -backgroundShadow.shadow.yOffset
 
         padding: 0
         topPadding: undefined
@@ -111,34 +110,17 @@ Item {
             implicitWidth: controlRoot.activeImage?.implicitWidth ?? 0
             implicitHeight: controlRoot.activeImage?.implicitHeight ?? 0
 
-            layer.enabled: true
-            layer.effect: GE.OpacityMask {
-                maskSource: Rectangle {
-                    width: content.width
-                    height: content.height
-
-                    color: "black"
-                    radius: controlRoot.radius
-                }
+            QQC2.BusyIndicator {
+                anchors.centerIn: parent
+                running: controlRoot.activeImage?.status === Image.Loading
             }
 
-            Rectangle {
-                anchors.fill: parent
-
-                color: Qt.tint(controlRoot.Kirigami.Theme.backgroundColor, Qt.alpha(controlRoot.Kirigami.Theme.textColor, 0.14))
-
-                QQC2.BusyIndicator {
-                    anchors.centerIn: parent
-                    running: controlRoot.activeImage?.status === Image.Loading
-                }
-
-                Kirigami.Icon {
-                    anchors.centerIn: parent
-                    implicitWidth: Kirigami.Units.iconSizes.large
-                    implicitHeight: Kirigami.Units.iconSizes.large
-                    visible: controlRoot.activeImage?.status === Image.Error
-                    source: "image-missing"
-                }
+            Kirigami.Icon {
+                anchors.centerIn: parent
+                implicitWidth: Kirigami.Units.iconSizes.large
+                implicitHeight: Kirigami.Units.iconSizes.large
+                visible: controlRoot.activeImage?.status === Image.Error
+                source: "image-missing"
             }
 
             ConditionalLoader {
@@ -348,7 +330,8 @@ Item {
             }
         }
 
-        background: Kirigami.ShadowedRectangle {
+        background: null
+        /*Kirigami.ShadowedRectangle {
             id: backgroundShadow
 
             color: "transparent"
@@ -358,7 +341,7 @@ Item {
             shadow.xOffset: 0
             shadow.yOffset: 5
             shadow.color: Qt.rgba(0, 0, 0, 0.4)
-        }
+        }*/
 
         onClicked: {
             playPauseButton.toggleOrActivate();
