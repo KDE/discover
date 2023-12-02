@@ -63,10 +63,9 @@ ColumnLayout {
             }
         }
 
-        QQC2.Button {
-            Layout.alignment: Qt.AlignHCenter
-            Layout.maximumWidth: parent.width
-            Layout.topMargin: Kirigami.Units.largeSpacing
+        FormCard.FormDelegateSeparator {}
+
+        FormCard.FormButtonDelegate {
             visible: resource.isInstalled
             text: i18nd("libdiscover", "Configure permissions…")
             icon.name: "configure"

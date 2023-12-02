@@ -324,6 +324,8 @@ DiscoverPage {
 
         // Long app description
         FormCard.FormCard {
+            visible: appInfo.application.longDescription.length > 0
+
             Kirigami.SelectableLabel {
                 objectName: "applicationDescription" // for appium tests
                 leftPadding: Kirigami.Units.gridUnit
@@ -331,7 +333,8 @@ DiscoverPage {
                 topPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
                 bottomPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
                 wrapMode: Text.WordWrap
-                text: appInfo.application.longDescription
+                readonly property int headerFontSize: Math.round(Kirigami.Theme.defaultFont.pixelSize * 1.15) // similar to Kirigami.Heading level 2
+                text: `<style>h3 { font-size: ${headerFontSize}; font-weight: 600; }</style> ${appInfo.application.longDescription}`
                 textFormat: TextEdit.RichText
                 onLinkActivated: link => Qt.openUrlExternally(link);
 
@@ -458,6 +461,7 @@ DiscoverPage {
                 FormCard.FormGridContainer.InfoCard {
                     title: i18nc("@label", "Version:")
                     subtitle: appInfo.application.versionString
+                    visible: subtitle.length > 0
                 },
                 // Size
                 FormCard.FormGridContainer.InfoCard {
@@ -559,7 +563,7 @@ DiscoverPage {
                 background: null
 
                 contentItem: QQC2.Label {
-                    readonly property int headerFontSize: Math.round(Kirigami.Theme.defaultFont.pixelSize * 1.15) // similar to Kirigami.Heading
+                    readonly property int headerFontSize: Math.round(Kirigami.Theme.defaultFont.pixelSize * 1.25) // similar to Kirigami.Heading level 3
                     textFormat: Text.RichText
                     text: `<style>h3 { font-size: ${headerFontSize}; font-weight: 400; }</style> ${changelogLabel.text}`
                 }

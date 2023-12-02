@@ -32,7 +32,6 @@ DiscoverPage {
                 top: parent.top
                 left: parent.left
                 right: parent.right
-                margins: Kirigami.Units.smallSpacing
             }
 
             inlineMessage: Discover.ResourcesModel.inlineMessage

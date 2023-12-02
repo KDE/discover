@@ -5,20 +5,24 @@
  */
 
 import QtQuick
+import QtQuick.Controls as QQC2
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.components as Components
 import org.kde.discover as Discover
 
 Loader {
     id: root
 
     property Discover.InlineMessage inlineMessage
+    property int position: QQC2.ToolBar.Header
 
     active: inlineMessage !== null
 
-    sourceComponent: Kirigami.InlineMessage {
+    sourceComponent: Components.Banner {
         text: root.inlineMessage.message
         type: root.inlineMessage.type
-        icon.name: root.inlineMessage.iconName
+        iconName: root.inlineMessage.iconName
+        position: root.position
 
         Component {
             id: component

@@ -6,6 +6,7 @@ import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.discover.app as DiscoverApp
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.components as Components
 
 DiscoverPage {
     id: page
@@ -158,23 +159,21 @@ DiscoverPage {
     header: ColumnLayout {
         id: errorsColumn
 
-        spacing: Kirigami.Units.smallSpacing
+        spacing: 0
 
         DiscoverInlineMessage {
             Layout.fillWidth: true
-            Layout.margins: Kirigami.Units.smallSpacing
             inlineMessage: Discover.ResourcesModel.inlineMessage
         }
 
         Repeater {
             model: resourcesUpdatesModel.errorMessages
-            delegate: Kirigami.InlineMessage {
+            delegate: Components.Banner {
                 id: inline
 
                 required property string modelData
 
                 Layout.fillWidth: true
-                Layout.margins: Kirigami.Units.smallSpacing
                 text: modelData
                 visible: true
                 type: Kirigami.MessageType.Error
@@ -424,19 +423,15 @@ DiscoverPage {
 
                 QQC2.Frame {
                     Layout.fillWidth: true
-                    implicitHeight: view.contentHeight
                     visible: listItem.model.extended && listItem.model.changelog.length > 0
-                    QQC2.Label {
+                    implicitHeight: view.paintedHeight + topPadding + bottomPadding
+                    contentItem: QQC2.Label {
                         id: view
-                        anchors {
-                            right: parent.right
-                            left: parent.left
-                        }
-                        text: listItem.model.changelog
-                        textFormat: Text.StyledText
+                        readonly property int headerFontSize: Math.round(Kirigami.Theme.defaultFont.pixelSize * 1.25) // similar to Kirigami.Heading level 3
+                        text: `<style>h3 { font-size: ${headerFontSize}; font-weight: 400; }</style> ${listItem.model.changelog}`
+                        textFormat: Text.RichText
                         wrapMode: Text.WordWrap
                         onLinkActivated: link => Qt.openUrlExternally(link)
-
                     }
                 }
 
