@@ -5,28 +5,28 @@
 # Jeff Huang <s8321414@gmail.com>, 2016, 2017, 2020.
 # pan93412 <pan93412@gmail.com>, 2018, 2019, 2020.
 # Chaoting Liu <brli@chakralinux.org>, 2021.
-# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-29 01:38+0000\n"
-"PO-Revision-Date: 2023-08-07 22:40+0900\n"
+"PO-Revision-Date: 2023-12-02 20:47+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
-"Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #: discover/DiscoverObject.cpp:190
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
-msgstr ""
+msgstr "%1 並未設定為透過 Discover 安裝應用程式—Discover 只能安裝附加功能"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -36,14 +36,14 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"要使用 Discover 安裝應用程式，請在 <interface>設定</interface> 頁面中的 "
+"<interface>缺乏的後端</interface> 底下安裝您所要使用的模組。"
 
 #: discover/DiscoverObject.cpp:195
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of the user's distro/OS"
-#| msgid "Report Issue to %1"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr "回報問題給 %1"
+msgstr "回報此問題給 %1"
 
 #: discover/DiscoverObject.cpp:200
 #, kde-kuit-format
@@ -58,6 +58,12 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"要使用 Discover 安裝應用程式，請使用 <command>pacman</command> 軟體包管理員安"
+"裝 <link url='https://wiki.archlinux.org/title/"
+"Flatpak#Installation'>Flatpak</link> 或是 <link url='https://wiki.archlinux."
+"org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</link>。"
+"<nl/><nl/>請審閱 <link url='https://archlinux.org/packages/extra/x86_64/"
+"discover/'>%1 的 Discover 軟體包打包細節</link>"
 
 #: discover/DiscoverObject.cpp:291
 #, kde-format
@@ -415,12 +421,10 @@ msgid "Reviews for %1 are temporarily unavailable"
 msgstr "%1 的評論目前暫時無法使用"
 
 #: discover/qml/ApplicationPage.qml:724
-#, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "顯示所有評論（共 %1 條）"
+msgstr "顯示所有評論"
 
 #: discover/qml/ApplicationPage.qml:736
 #, kde-format
@@ -565,7 +569,7 @@ msgstr "排序：%1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr ""
+msgstr "相關度"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
@@ -663,7 +667,7 @@ msgstr "最受歡迎"
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
-msgstr ""
+msgstr "最新發佈與最近更新"
 
 #: discover/qml/BrowsingPage.qml:160
 #, kde-format
@@ -693,44 +697,44 @@ msgstr "評價最高的開發者工具"
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
-msgstr ""
+msgstr "播放"
 
 #: discover/qml/CarouselDelegate.qml:214
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
-msgstr ""
+msgstr "暫停"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Overlay"
-msgstr ""
+msgstr "切換至覆蓋"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Full Screen"
-msgstr ""
+msgstr "切換至全螢幕"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
 #, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
-msgstr ""
+msgstr "關閉"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "上一張螢幕截圖"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr ""
+msgstr "下一張螢幕截圖"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -1055,38 +1059,34 @@ msgstr "安裝這個應用程式來撰寫評論"
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "最相關"
 
 #: discover/qml/ReviewsPage.qml:110
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "最近"
 
 #: discover/qml/ReviewsPage.qml:117
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "評價最高的遊戲"
+msgstr "最高的評價"
 
 #: discover/qml/ReviewsStats.qml:53
-#, fuzzy, kde-format
-#| msgid "Reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "評論"
+msgstr "%1 個評論"
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "寬"
 
 #: discover/qml/ReviewsStats.qml:154
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
 msgstr "未知的評論者"
 
@@ -1094,13 +1094,13 @@ msgstr "未知的評論者"
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "「"
 
 #: discover/qml/ReviewsStats.qml:190
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "」"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format
@@ -1165,7 +1165,7 @@ msgstr "顯示內容"
 #: discover/qml/SourcesPage.qml:316
 #, kde-format
 msgid "Missing Backends"
-msgstr "未發現後端"
+msgstr "缺乏的後端"
 
 #: discover/qml/UpdatesPage.qml:13
 #, kde-format
