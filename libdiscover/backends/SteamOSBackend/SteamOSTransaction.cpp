@@ -41,9 +41,12 @@ SteamOSTransaction::SteamOSTransaction(SteamOSResource *app, Transaction::Role r
                     setProgress(qBound(0.0, percent, 100.0));
                 }
                 if (changed("EstimatedCompletionTime")) {
-                    qulonglong timeRemaining = m_interface->estimatedCompletionTime();
-                    qDebug() << "steamos-backend: Estimated completion time: " << timeRemaining;
-                    setRemainingTime(timeRemaining);
+                    qulonglong estimatedCompletion = m_interface->estimatedCompletionTime();
+                    QDateTime potentialEndTime = QDateTime::fromSecsSinceEpoch(estimatedCompletion);
+                    qDebug() << "steamos-backend: Estimated completion time: " << potentialEndTime.toString();
+                    qulonglong secondsLeft = QDateTime::currentDateTimeUtc().secsTo(potentialEndTime);
+                    qDebug() << "Remaining seconds: " << secondsLeft;
+                    setRemainingTime(secondsLeft);
                 }
                 if (changed("UpdateStatus")) {
                     refreshStatus();
