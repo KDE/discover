@@ -180,42 +180,50 @@ DiscoverPage {
                 parent: page.QQC2.Overlay.overlay
                 showCloseButton: false
 
-                ColumnLayout {
-                    QQC2.Label {
-                        id: descriptionLabel
-                        Layout.fillWidth: true
-                        textFormat: Text.StyledText
-                        wrapMode: Text.WordWrap
+                implicitWidth: Kirigami.Units.gridUnit * 30
+
+                Kirigami.SelectableLabel {
+                    id: descriptionLabel
+                    width: parent.width
+                    textFormat: TextEdit.RichText
+                    wrapMode: TextEdit.Wrap
+                }
+
+                footer: QQC2.DialogButtonBox {
+                    QQC2.Button {
+                        QQC2.DialogButtonBox.buttonRole: QQC2.DialogButtonBox.AcceptRole
+                        text: i18n("Proceed")
+                        icon.name: "dialog-ok"
                     }
-                    RowLayout {
-                        Layout.alignment: Qt.AlignRight
-                        QQC2.Button {
-                            text: i18n("Proceed")
-                            icon.name: "dialog-ok"
-                            onClicked: {
-                                sheet.sourcesBackend.proceed()
-                                sheet.acted = true
-                                sheet.close()
-                            }
-                        }
-                        QQC2.Button {
-                            Layout.alignment: Qt.AlignRight
-                            text: i18n("Cancel")
-                            icon.name: "dialog-cancel"
-                            onClicked: {
-                                sheet.sourcesBackend.cancel()
-                                sheet.acted = true
-                                sheet.close()
-                            }
-                        }
+
+                    QQC2.Button {
+                        QQC2.DialogButtonBox.buttonRole: QQC2.DialogButtonBox.RejectRole
+                        text: i18n("Cancel")
+                        icon.name: "dialog-cancel"
+                    }
+
+                    onAccepted: {
+                        sheet.sourcesBackend.proceed()
+                        sheet.acted = true
+                        sheet.close()
+                    }
+
+                    onRejected: {
+                        sheet.sourcesBackend.cancel()
+                        sheet.acted = true
+                        sheet.close()
                     }
                 }
 
-                onVisibleChanged: if (!visible) {
-                    sheet.destroy(1000)
-                    if (!sheet.acted) {
+                onOpened: {
+                    descriptionLabel.forceActiveFocus(Qt.PopupFocusReason);
+                }
+
+                onClosed: {
+                    if (!acted) {
                         sourcesBackend.cancel()
                     }
+                    destroy();
                 }
             }
         }
