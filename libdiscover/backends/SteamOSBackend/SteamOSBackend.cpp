@@ -23,6 +23,7 @@
 #include <QDBusPendingCall>
 #include <QDBusPendingCallWatcher>
 #include <QDebug>
+#include <QFile>
 #include <QThread>
 #include <QTimer>
 
@@ -32,6 +33,7 @@ DISCOVER_BACKEND_PLUGIN(SteamOSBackend)
 
 // We expect 2 results, updates and later updates
 #define CHECK_UPDATES_RETURN_COUNT 2
+#define ATOMUPD_SERVICE_PATH "/usr/lib/systemd/system/atomupd.service"
 
 QString SteamOSBackend::service()
 {
@@ -183,7 +185,7 @@ QHash<QString, SteamOSResource *> SteamOSBackend::resources() const
 
 bool SteamOSBackend::isValid() const
 {
-    return m_interface->isValid();
+    return QFile(QStringLiteral(ATOMUPD_SERVICE_PATH)).exists();
 }
 
 AbstractBackendUpdater *SteamOSBackend::backendUpdater() const
