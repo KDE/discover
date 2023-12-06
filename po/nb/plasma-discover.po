@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-29 01:38+0000\n"
+"POT-Creation-Date: 2023-12-06 01:38+0000\n"
 "PO-Revision-Date: 2023-02-24 14:56+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -256,7 +256,7 @@ msgstr "Legg til"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:271
 #: discover/qml/InstallApplicationButton.qml:46
-#: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:203
+#: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:265 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -802,7 +802,7 @@ msgstr "Feil"
 msgid "Unable to find resource: %1"
 msgstr "Finner ikke ressurs: %1."
 
-#: discover/qml/DiscoverWindow.qml:258 discover/qml/SourcesPage.qml:193
+#: discover/qml/DiscoverWindow.qml:258 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
 msgstr "Fortsett"
@@ -1152,37 +1152,37 @@ msgstr "Legg til kilde …"
 msgid "Make default"
 msgstr "Gjør til  standard"
 
-#: discover/qml/SourcesPage.qml:240
+#: discover/qml/SourcesPage.qml:248
 #, kde-format
 msgid "Increase priority"
 msgstr "Høyere prioritet"
 
-#: discover/qml/SourcesPage.qml:246
+#: discover/qml/SourcesPage.qml:254
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "Klarte ikke øke prioriteten til «%1»"
 
-#: discover/qml/SourcesPage.qml:252
+#: discover/qml/SourcesPage.qml:260
 #, kde-format
 msgid "Decrease priority"
 msgstr "Lavere prioritet"
 
-#: discover/qml/SourcesPage.qml:258
+#: discover/qml/SourcesPage.qml:266
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "Klarte ikke senke prioriteten til «%1»"
 
-#: discover/qml/SourcesPage.qml:264
+#: discover/qml/SourcesPage.qml:272
 #, kde-format
 msgid "Remove repository"
 msgstr "Fjern pakkebrønn"
 
-#: discover/qml/SourcesPage.qml:275
+#: discover/qml/SourcesPage.qml:283
 #, kde-format
 msgid "Show contents"
 msgstr "Vis innhold"
 
-#: discover/qml/SourcesPage.qml:316
+#: discover/qml/SourcesPage.qml:324
 #, kde-format
 msgid "Missing Backends"
 msgstr "Manglende baksystemer"

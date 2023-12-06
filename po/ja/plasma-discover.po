@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-29 01:38+0000\n"
+"POT-Creation-Date: 2023-12-06 01:38+0000\n"
 "PO-Revision-Date: 2023-04-07 23:45-0700\n"
 "Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -258,7 +258,7 @@ msgstr "追加"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:271
 #: discover/qml/InstallApplicationButton.qml:46
-#: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:203
+#: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:265 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -803,7 +803,7 @@ msgstr "エラー"
 msgid "Unable to find resource: %1"
 msgstr "リソースが見つかりません: %1"
 
-#: discover/qml/DiscoverWindow.qml:258 discover/qml/SourcesPage.qml:193
+#: discover/qml/DiscoverWindow.qml:258 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
 msgstr "進む"
@@ -1154,37 +1154,37 @@ msgstr "ソースを追加..."
 msgid "Make default"
 msgstr "デフォルトに戻す"
 
-#: discover/qml/SourcesPage.qml:240
+#: discover/qml/SourcesPage.qml:248
 #, kde-format
 msgid "Increase priority"
 msgstr "優先度を上げる"
 
-#: discover/qml/SourcesPage.qml:246
+#: discover/qml/SourcesPage.qml:254
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "'%1' の優先度を上げられませんでした。"
 
-#: discover/qml/SourcesPage.qml:252
+#: discover/qml/SourcesPage.qml:260
 #, kde-format
 msgid "Decrease priority"
 msgstr "優先度を下げる"
 
-#: discover/qml/SourcesPage.qml:258
+#: discover/qml/SourcesPage.qml:266
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "'%1' の優先度を下げられませんでした。"
 
-#: discover/qml/SourcesPage.qml:264
+#: discover/qml/SourcesPage.qml:272
 #, kde-format
 msgid "Remove repository"
 msgstr "リポジトリを削除"
 
-#: discover/qml/SourcesPage.qml:275
+#: discover/qml/SourcesPage.qml:283
 #, kde-format
 msgid "Show contents"
 msgstr "内容を表示"
 
-#: discover/qml/SourcesPage.qml:316
+#: discover/qml/SourcesPage.qml:324
 #, kde-format
 msgid "Missing Backends"
 msgstr "欠けているバックエンド"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-29 01:38+0000\n"
+"POT-Creation-Date: 2023-12-06 01:38+0000\n"
 "PO-Revision-Date: 2023-11-29 09:52+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -274,7 +274,7 @@ msgstr "Додати"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:271
 #: discover/qml/InstallApplicationButton.qml:46
-#: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:203
+#: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:265 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -836,7 +836,7 @@ msgstr "Помилка"
 msgid "Unable to find resource: %1"
 msgstr "Не вдалося знайти ресурс: %1"
 
-#: discover/qml/DiscoverWindow.qml:258 discover/qml/SourcesPage.qml:193
+#: discover/qml/DiscoverWindow.qml:258 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
 msgstr "Продовжити"
@@ -1183,37 +1183,37 @@ msgstr "Додати джерело…"
 msgid "Make default"
 msgstr "Зробити типовим"
 
-#: discover/qml/SourcesPage.qml:240
+#: discover/qml/SourcesPage.qml:248
 #, kde-format
 msgid "Increase priority"
 msgstr "Збільшити пріоритет"
 
-#: discover/qml/SourcesPage.qml:246
+#: discover/qml/SourcesPage.qml:254
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "Не вдалося підвищити пріоритетність «%1»"
 
-#: discover/qml/SourcesPage.qml:252
+#: discover/qml/SourcesPage.qml:260
 #, kde-format
 msgid "Decrease priority"
 msgstr "Зменшити пріоритет"
 
-#: discover/qml/SourcesPage.qml:258
+#: discover/qml/SourcesPage.qml:266
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "Не вдалося знизити пріоритетність «%1»"
 
-#: discover/qml/SourcesPage.qml:264
+#: discover/qml/SourcesPage.qml:272
 #, kde-format
 msgid "Remove repository"
 msgstr "Вилучити сховище"
 
-#: discover/qml/SourcesPage.qml:275
+#: discover/qml/SourcesPage.qml:283
 #, kde-format
 msgid "Show contents"
 msgstr "Показати дані"
 
-#: discover/qml/SourcesPage.qml:316
+#: discover/qml/SourcesPage.qml:324
 #, kde-format
 msgid "Missing Backends"
 msgstr "Не вистачає модулів обробки"

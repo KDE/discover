@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-29 01:38+0000\n"
+"POT-Creation-Date: 2023-12-06 01:38+0000\n"
 "PO-Revision-Date: 2013-04-01 10:16+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -259,7 +259,7 @@ msgstr "एडोन्स"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:271
 #: discover/qml/InstallApplicationButton.qml:46
-#: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:203
+#: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:265 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -807,7 +807,7 @@ msgstr ""
 msgid "Unable to find resource: %1"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:258 discover/qml/SourcesPage.qml:193
+#: discover/qml/DiscoverWindow.qml:258 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
 msgstr ""
@@ -1170,37 +1170,37 @@ msgstr "स्रोत जोडा"
 msgid "Make default"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:240
+#: discover/qml/SourcesPage.qml:248
 #, kde-format
 msgid "Increase priority"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:246
+#: discover/qml/SourcesPage.qml:254
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:252
+#: discover/qml/SourcesPage.qml:260
 #, kde-format
 msgid "Decrease priority"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:258
+#: discover/qml/SourcesPage.qml:266
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:264
+#: discover/qml/SourcesPage.qml:272
 #, kde-format
 msgid "Remove repository"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:275
+#: discover/qml/SourcesPage.qml:283
 #, kde-format
 msgid "Show contents"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:316
+#: discover/qml/SourcesPage.qml:324
 #, kde-format
 msgid "Missing Backends"
 msgstr ""
