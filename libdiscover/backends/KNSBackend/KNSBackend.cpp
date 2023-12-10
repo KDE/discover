@@ -133,14 +133,15 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     setObjectName(knsrc);
 
     const KConfig conf(m_name, KConfig::SimpleConfig);
-    if (!conf.hasGroup(u"KNewStuff3"_s)) {
+    const bool hasVersionlessGrp = conf.hasGroup(u"KNewStuff"_s);
+    if (!conf.hasGroup(u"KNewStuff3"_s) && !hasVersionlessGrp) {
         markInvalid(QStringLiteral("Config group not found! Check your KNSCore installation."));
         return;
     }
 
     m_categories = QStringList{fileName};
 
-    const KConfigGroup group = conf.group(u"KNewStuff3"_s);
+    const KConfigGroup group = hasVersionlessGrp ? conf.group(u"KNewStuff"_s) : conf.group(u"KNewStuff3"_s);
     m_extends = group.readEntry("Extends", QStringList());
 
     setFetching(true);
