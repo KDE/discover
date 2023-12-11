@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 01:36+0000\n"
+"POT-Creation-Date: 2023-12-11 01:35+0000\n"
 "PO-Revision-Date: 2022-12-28 20:25+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -1027,32 +1027,32 @@ msgid ""
 "%1"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:155
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:156
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Platformei %1 i-a luat prea mult să se inițializeze"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
 #, kde-format
 msgid "Applications"
 msgstr "Aplicații"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:261
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Suplimente Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:261
 #, kde-format
 msgid "Application Addons"
 msgstr "Suplimente pentru aplicații"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:348
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:349
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Eroare de rețea în platforma %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:355
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1061,14 +1061,14 @@ msgstr ""
 "Prea multe cereri trimise la server pentru platforma %1. Reîncercați în "
 "câteva minute."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:358
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:364
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:359
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:365
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:370
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Platformă %1 nevalidă, contactați-vă distribuitorul."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:388
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:389
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1081,23 +1081,23 @@ msgstr ""
 "restrâns. Eroarea raportată a fost:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:398
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "Nu s-a putut prelua captura de ecran pentru înregistrarea %1 în platforma %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:403
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "Eroare neprevăzută în platforma %1. Contactați-vă distribuitorul."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:407
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:520
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:521
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "URI KNewStuff greșit: %1"

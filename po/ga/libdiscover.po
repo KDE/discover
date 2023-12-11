@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 01:36+0000\n"
+"POT-Creation-Date: 2023-12-11 01:35+0000\n"
 "PO-Revision-Date: 2011-12-28 12:28-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -1010,48 +1010,48 @@ msgid ""
 "%1"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:155
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:156
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
 #, fuzzy, kde-format
 #| msgid "Applications"
 msgid "Applications"
 msgstr "Feidhmchláir"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:261
 #, kde-format
 msgid "Plasma Addons"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:261
 #, fuzzy, kde-format
 #| msgid "Applications"
 msgid "Application Addons"
 msgstr "Feidhmchláir"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:348
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:349
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:355
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:358
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:364
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:359
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:365
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:370
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:388
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:389
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1060,22 +1060,22 @@ msgid ""
 "%2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:398
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:403
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:407
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
 #, kde-format
 msgid "%1: %2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:520
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:521
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr ""

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 01:36+0000\n"
+"POT-Creation-Date: 2023-12-11 01:35+0000\n"
 "PO-Revision-Date: 2022-08-16 17:03+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -1028,32 +1028,32 @@ msgid ""
 "%1"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:155
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:156
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "%1 mexanizminin işlənməsi çox vaxt aparır"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:214
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
 #, kde-format
 msgid "Applications"
 msgstr "Tətbiqlər"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:261
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma Əlavələri"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:260
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:261
 #, kde-format
 msgid "Application Addons"
 msgstr "Tətbiq Əlavələri"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:348
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:349
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "%1 alt sistemində şəbəkə xətası: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:355
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1062,15 +1062,15 @@ msgstr ""
 "%1 server sisteminə həddindən çox sorğu göndərildi. Lütfən bir neşə "
 "dəqiqədən sonra yenidən cəhd edin."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:358
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:364
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:359
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:365
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:370
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr ""
 "Xətalı dəstək modulu %1, distribütorunuzun tərtibatçısı ilə əlaqə yaradın."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:388
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:389
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1083,24 +1083,24 @@ msgstr ""
 "etməyə cəhd edə və həyata keçirə bilərsiniz. Xəta bildirişi:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:398
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "%2 modulundakı %1 girişi üçün ekran şəklini əldə etmək mümkün olmadı"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:403
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "%1 dəstək mexanizmi modulunda xəta. Distribütorunuzun tərtibatçısı ilə əlaqə "
 "yaradın."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:407
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:520
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:521
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Səhv KNewStuff ünvanı: %1"
