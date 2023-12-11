@@ -268,8 +268,8 @@ void ResourcesProxyModel::addResources(const QVector<StreamResult> &_res)
     if (res.isEmpty())
         return;
 
-    std::sort(res.begin(), res.end(), [this](auto res, auto res2) {
-        return orderedLessThan(res, res2);
+    std::sort(res.begin(), res.end(), [this](const auto &left, const auto &right) {
+        return orderedLessThan(left, right);
     });
 
     sortedInsertion(res);
@@ -282,8 +282,8 @@ void ResourcesProxyModel::invalidateSorting()
         return;
 
     beginResetModel();
-    std::sort(m_displayedResources.begin(), m_displayedResources.end(), [this](auto res, auto res2) {
-        return orderedLessThan(res, res2);
+    std::sort(m_displayedResources.begin(), m_displayedResources.end(), [this](const auto &left, const auto &right) {
+        return orderedLessThan(left, right);
     });
     endResetModel();
 }
@@ -646,7 +646,7 @@ void ResourcesProxyModel::sortedInsertion(const QVector<StreamResult> &_res)
     }
 
     for (auto result : std::as_const(resources)) {
-        const auto finder = [this](StreamResult result, StreamResult res) {
+        const auto finder = [this](const StreamResult &result, const StreamResult &res) {
             return orderedLessThan(result, res);
         };
         const auto it = std::upper_bound(m_displayedResources.constBegin(), m_displayedResources.constEnd(), result, finder);
