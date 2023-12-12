@@ -827,7 +827,7 @@ msgstr "Continua"
 #: discover/qml/DiscoverWindow.qml:316
 #, kde-format
 msgid "Report this issue"
-msgstr "Informa d'un problema"
+msgstr "Informeu d'un problema"
 
 #: discover/qml/DiscoverWindow.qml:340
 #, kde-format
