@@ -407,43 +407,38 @@ int ResourcesProxyModel::rowCount(const QModelIndex &parent) const
     return parent.isValid() ? 0 : m_displayedResources.count();
 }
 
+// This comparator takes m_sortRole and m_sortOrder into account. It has a
+// fallback mechanism to use secondary sort role and order.
 bool ResourcesProxyModel::orderedLessThan(const StreamResult &left, const StreamResult &right) const
 {
-    bool less = lessThan(left, right);
-    return m_sortOrder == Qt::AscendingOrder ? less : !less;
-}
+    // (role, order) pair
+    using SortCombination = std::pair<Roles, Qt::SortOrder>;
+    const std::array<SortCombination, 2> sortFallbackChain = {{
+        {m_sortRole, m_sortOrder},
+        {NameRole, Qt::AscendingOrder},
+    }};
 
-bool ResourcesProxyModel::lessThan(const StreamResult &left, const StreamResult &right) const
-{
-    AbstractResource *leftPackage = left.resource;
-    AbstractResource *rightPackage = right.resource;
-
-    auto role = m_sortRole;
-    Qt::SortOrder order = m_sortOrder;
-    QVariant leftValue;
-    QVariant rightValue;
-    // if we're comparing two equal values, we want the model sorted by application name
-    if (role != NameRole) {
-        leftValue = roleToValue(left, role);
-        rightValue = roleToValue(right, role);
+    for (const auto &[role, order] : sortFallbackChain) {
+        QVariant leftValue = roleToOrderedValue(left, role);
+        QVariant rightValue = roleToOrderedValue(right, role);
 
         if (leftValue == rightValue) {
-            role = NameRole;
-            order = Qt::AscendingOrder;
+            continue;
         }
+
+        const auto result = QVariant::compare(leftValue, rightValue);
+
+        // Should not happen, but it's better to skip than assert
+        if (!(result == QPartialOrdering::Less || result == QPartialOrdering::Greater)) {
+            continue;
+        }
+
+        // Yes, there is a shorter but incomprehensible way of rewriting this
+        return (order == Qt::AscendingOrder) ? (result == QPartialOrdering::Less) : (result == QPartialOrdering::Greater);
     }
 
-    bool ret;
-    if (role == NameRole) {
-        ret = leftPackage->nameSortKey().compare(rightPackage->nameSortKey()) < 0;
-    } else if (role == CanUpgrade) {
-        ret = leftValue.toBool();
-    } else {
-        const auto order = QVariant::compare(leftValue, rightValue);
-        Q_ASSERT(order != QPartialOrdering::Unordered);
-        return order == QPartialOrdering::Less;
-    }
-    return ret != (order != Qt::AscendingOrder);
+    // They compared equal, so it is definitely not a "less than" relation
+    return false;
 }
 
 Category *ResourcesProxyModel::filteredCategory() const
@@ -610,12 +605,27 @@ QVariant ResourcesProxyModel::roleToValue(const StreamResult &result, int role) 
     }
 }
 
+// Wraps roleToValue with additional features for sorting/comparison.
+QVariant ResourcesProxyModel::roleToOrderedValue(const StreamResult &result, int role) const
+{
+    AbstractResource *resource = result.resource;
+    switch (role) {
+    case NameRole:
+        return QVariant::fromValue(resource->nameSortKey());
+    case CanUpgrade:
+        // Those which can, should be ordered higher (i.e. less than) those which can not
+        return resource->canUpgrade() ? 0 : 1;
+    default:
+        return roleToValue(result, role);
+    }
+}
+
 bool ResourcesProxyModel::isSorted(const QVector<StreamResult> &resources)
 {
     auto last = resources.constFirst();
     for (auto it = resources.constBegin() + 1, itEnd = resources.constEnd(); it != itEnd; ++it) {
         auto v1 = roleToValue(last, m_sortRole), v2 = roleToValue(*it, m_sortRole);
-        if (!lessThan(last, *it) && v1 != v2) {
+        if (!orderedLessThan(last, *it) && v1 != v2) {
             qDebug() << "faulty sort" << last.resource->name() << (*it).resource->name() << last.resource << (*it).resource;
             return false;
         }

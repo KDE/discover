@@ -148,7 +148,6 @@ public:
         return m_currentStream != nullptr;
     }
 
-    bool lessThan(const StreamResult &left, const StreamResult &right) const;
     bool orderedLessThan(const StreamResult &left, const StreamResult &right) const;
     Q_SCRIPTABLE void invalidateFilter();
     void invalidateSorting();
@@ -171,6 +170,7 @@ private Q_SLOTS:
 private:
     void sortedInsertion(const QVector<StreamResult> &res);
     QVariant roleToValue(const StreamResult &result, int role) const;
+    QVariant roleToOrderedValue(const StreamResult &result, int role) const;
 
     QVector<int> propertiesToRoles(const QVector<QByteArray> &properties) const;
     void addResources(const QVector<StreamResult> &res);
