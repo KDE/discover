@@ -612,9 +612,6 @@ QVariant ResourcesProxyModel::roleToOrderedValue(const StreamResult &result, int
     switch (role) {
     case NameRole:
         return QVariant::fromValue(resource->nameSortKey());
-    case CanUpgrade:
-        // Those which can, should be ordered higher (i.e. less than) those which can not
-        return resource->canUpgrade() ? 0 : 1;
     default:
         return roleToValue(result, role);
     }
