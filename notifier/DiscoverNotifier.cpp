@@ -27,14 +27,26 @@
 
 using namespace std::chrono_literals;
 
+namespace
+{
+bool isOnline()
+{
+    return QNetworkInformation::instance() && QNetworkInformation::instance()->reachability() == QNetworkInformation::Reachability::Online;
+}
+} // namespace
+
 DiscoverNotifier::DiscoverNotifier(QObject *parent)
     : QObject(parent)
 {
     m_settings = new UpdatesSettings(this);
     m_settingsWatcher = KConfigWatcher::create(m_settings->sharedConfig());
-    QNetworkInformation::instance()->loadBackendByFeatures(QNetworkInformation::Feature::Reachability | QNetworkInformation::Feature::TransportMedium);
-    connect(QNetworkInformation::instance(), &QNetworkInformation::reachabilityChanged, this, &DiscoverNotifier::stateChanged);
-    connect(QNetworkInformation::instance(), &QNetworkInformation::transportMediumChanged, this, &DiscoverNotifier::stateChanged);
+    if (auto info = QNetworkInformation::instance()) {
+        info->loadBackendByFeatures(QNetworkInformation::Feature::Reachability | QNetworkInformation::Feature::TransportMedium);
+        connect(info, &QNetworkInformation::reachabilityChanged, this, &DiscoverNotifier::stateChanged);
+        connect(info, &QNetworkInformation::transportMediumChanged, this, &DiscoverNotifier::stateChanged);
+    } else {
+        qWarning() << "QNetworkInformation has no backend. Is NetworkManager.service running?";
+    }
 
     refreshUnattended();
     connect(m_settingsWatcher.data(), &KConfigWatcher::configChanged, this, [this](const KConfigGroup &group, const QByteArrayList &names) {
@@ -174,6 +186,9 @@ void DiscoverNotifier::updateStatusNotifier()
 static bool isConnectionAdequate()
 {
     const auto info = QNetworkInformation::instance();
+    if (!info) {
+        return false; // no backend available (e.g. NetworkManager not running), assume not adequate
+    }
     if (info->supports(QNetworkInformation::Feature::Metered)) {
         return !info->isMetered();
     } else {
@@ -190,8 +205,7 @@ void DiscoverNotifier::refreshUnattended()
         return;
     }
 
-    const auto enabled = m_settings->useUnattendedUpdates() && QNetworkInformation::instance()->reachability() == QNetworkInformation::Reachability::Online
-        && isConnectionAdequate();
+    const auto enabled = m_settings->useUnattendedUpdates() && isOnline() && isConnectionAdequate();
     if (bool(m_unattended) == enabled)
         return;
 
@@ -209,7 +223,7 @@ DiscoverNotifier::State DiscoverNotifier::state() const
         return RebootRequired;
     else if (m_isBusy)
         return Busy;
-    else if (QNetworkInformation::instance()->reachability() != QNetworkInformation::Reachability::Online)
+    else if (!isOnline())
         return Offline;
     else if (m_hasSecurityUpdates)
         return SecurityUpdates;
