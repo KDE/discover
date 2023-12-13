@@ -16,9 +16,7 @@ BasicAbstractCard {
     id: root
 
     required property int index
-
-    // Should be required, but QML Engine does not support required aliases yet: QTBUG-86897
-    property alias application: installButton.application
+    required property Discover.AbstractResource application
 
     property bool compact: false
     property bool showRating: true
@@ -59,7 +57,7 @@ BasicAbstractCard {
                     margins: Kirigami.Units.largeSpacing
                 }
                 readonly property real contHeight: root.compact ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.huge
-                source: application.icon
+                source: root.application.icon
                 animated: false
                 height: contHeight
                 width: contHeight
@@ -112,12 +110,12 @@ BasicAbstractCard {
                     spacing: Kirigami.Units.smallSpacing
 
                     Kirigami.Icon {
-                        source: application.sourceIcon
+                        source: root.application.sourceIcon
                         implicitWidth: Kirigami.Units.iconSizes.smallMedium
                         implicitHeight: Kirigami.Units.iconSizes.smallMedium
                     }
                     QQC2.Label {
-                        text: application.backend.displayName
+                        text: root.application.backend.displayName
                         font: Kirigami.Theme.smallFont
                     }
                 }
@@ -216,6 +214,7 @@ BasicAbstractCard {
                     id: installButton
                     Layout.alignment: Qt.AlignBottom | Qt.AlignRight
                     visible: !root.compact
+                    application: root.application
                 }
             }
         }

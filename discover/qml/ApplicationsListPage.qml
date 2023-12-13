@@ -178,10 +178,6 @@ DiscoverPage {
         }
 
         delegate: ApplicationDelegate {
-            // simply `required application` does not work due to QTBUG-86897
-            required property var model
-
-            application: model.application
             compact: !applicationWindow().wideScreen
             showRating: page.showRating
             showSize: page.showSize
