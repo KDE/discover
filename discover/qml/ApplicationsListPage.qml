@@ -26,7 +26,7 @@ DiscoverPage {
     property alias extending: appsModel.extending
     property alias search: appsModel.search
     property alias resourcesUrl: appsModel.resourcesUrl
-    property alias isBusy: appsModel.isBusy
+    property alias busy: appsModel.busy
     property alias allBackends: appsModel.allBackends
     property alias count: apps.count
     property alias listHeader: apps.header
@@ -170,8 +170,8 @@ DiscoverPage {
             sortRole: tempSortRole >= 0 ? tempSortRole : DiscoverApp.DiscoverSettings.appsListPageSorting
             sortOrder: sortRole === Discover.ResourcesProxyModel.NameRole ? Qt.AscendingOrder : Qt.DescendingOrder
 
-            onBusyChanged: isBusy => {
-                if (isBusy) {
+            onBusyChanged: {
+                if (busy) {
                     apps.currentIndex = -1
                 }
             }
@@ -184,7 +184,7 @@ DiscoverPage {
         }
 
         Item {
-            readonly property bool nothingFound: apps.count == 0 && !appsModel.isBusy && !Discover.ResourcesModel.isInitializing && (!page.searchPage || appsModel.search.length > 0)
+            readonly property bool nothingFound: apps.count == 0 && !appsModel.busy && !Discover.ResourcesModel.isInitializing && (!page.searchPage || appsModel.search.length > 0)
 
             anchors.fill: parent
             opacity: nothingFound ? 1 : 0
@@ -256,7 +256,7 @@ DiscoverPage {
 
         footer: ColumnLayout {
             anchors.horizontalCenter: parent.horizontalCenter
-            visible: appsModel.isBusy && apps.atYEnd
+            visible: appsModel.busy && apps.atYEnd
             opacity: visible ? 0.5 : 0
             height: visible ? Layout.preferredHeight : 0
 

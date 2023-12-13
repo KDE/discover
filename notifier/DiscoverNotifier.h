@@ -26,7 +26,7 @@ class DiscoverNotifier : public QObject
     Q_PROPERTY(QString message READ message NOTIFY stateChanged)
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
     Q_PROPERTY(bool needsReboot READ needsReboot NOTIFY needsRebootChanged)
-    Q_PROPERTY(bool isBusy READ isBusy NOTIFY busyChanged)
+    Q_PROPERTY(bool busy READ isBusy NOTIFY busyChanged)
 public:
     enum State {
         NoUpdates,
@@ -81,7 +81,7 @@ Q_SIGNALS:
     void stateChanged();
     bool needsRebootChanged(bool needsReboot);
     void newUpgradeAction(UpgradeAction *action);
-    bool busyChanged(bool isBusy);
+    bool busyChanged();
 
 private:
     void showRebootNotification();

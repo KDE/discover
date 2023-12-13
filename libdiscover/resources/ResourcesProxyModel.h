@@ -62,7 +62,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, pub
     Q_PROPERTY(QString extending READ extends WRITE setExtends)
     Q_PROPERTY(bool allBackends READ allBackends WRITE setAllBackends)
     Q_PROPERTY(QVariantList subcategories READ subcategories NOTIFY subcategoriesChanged)
-    Q_PROPERTY(bool isBusy READ isBusy NOTIFY busyChanged)
+    Q_PROPERTY(bool busy READ isBusy NOTIFY busyChanged)
     Q_PROPERTY(ResourcesCount count READ count NOTIFY countChanged FINAL)
 public:
     explicit ResourcesProxyModel(QObject *parent = nullptr);
@@ -193,7 +193,7 @@ private:
     QTimer m_countTimer;
 
 Q_SIGNALS:
-    void busyChanged(bool isBusy);
+    void busyChanged();
     void sortRoleChanged(int sortRole);
     void sortOrderChanged(Qt::SortOrder order);
     void categoryChanged();

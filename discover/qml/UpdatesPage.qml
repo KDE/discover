@@ -14,7 +14,7 @@ DiscoverPage {
 
     property string footerLabel: ""
     property int footerProgress: 0
-    property bool isBusy: false
+    property bool busy: false
     readonly property string name: title
 
     Discover.ResourcesUpdatesModel {
@@ -294,7 +294,7 @@ DiscoverPage {
         Kirigami.LoadingPlaceholder {
             id: statusLabel
             icon.name: {
-                if (page.footerProgress === 0 && page.footerLabel !== "" && !page.isBusy) {
+                if (page.footerProgress === 0 && page.footerLabel !== "" && !page.busy) {
                     return "update-none"
                 } else {
                     return ""
@@ -496,7 +496,7 @@ DiscoverPage {
             name: "fetching"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching updates…") }
             PropertyChanges { target: page; footerProgress: Discover.ResourcesModel.fetchingUpdatesProgress }
-            PropertyChanges { target: page; isBusy: true }
+            PropertyChanges { target: page; busy: true }
             PropertyChanges { target: updatesView; opacity: 0 }
         },
         State {

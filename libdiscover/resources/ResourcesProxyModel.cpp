@@ -387,7 +387,7 @@ void ResourcesProxyModel::invalidateFilter()
     }
 
     m_currentStream = m_filters.backend ? m_filters.backend->search(m_filters) : ResourcesModel::global()->search(m_filters);
-    Q_EMIT busyChanged(true);
+    Q_EMIT busyChanged();
 
     if (!m_displayedResources.isEmpty()) {
         beginResetModel();
@@ -398,7 +398,7 @@ void ResourcesProxyModel::invalidateFilter()
     connect(m_currentStream, &ResultsStream::resourcesFound, this, &ResourcesProxyModel::addResources);
     connect(m_currentStream, &ResultsStream::destroyed, this, [this]() {
         m_currentStream = nullptr;
-        Q_EMIT busyChanged(false);
+        Q_EMIT busyChanged();
     });
 }
 

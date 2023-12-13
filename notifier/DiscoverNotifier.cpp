@@ -343,6 +343,6 @@ void DiscoverNotifier::setBusy(bool isBusy)
         return;
 
     m_isBusy = isBusy;
-    Q_EMIT busyChanged(isBusy);
+    Q_EMIT busyChanged();
     Q_EMIT stateChanged();
 }
