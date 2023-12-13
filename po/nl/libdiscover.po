@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 03:13+0000\n"
+"POT-Creation-Date: 2023-12-13 02:29+0000\n"
 "PO-Revision-Date: 2023-11-19 15:20+0100\n"
 "Last-Translator: pieter <pieterkristensen@gmail.com>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
@@ -2304,13 +2304,13 @@ msgstr "Versie om op terug te vallen"
 msgid "ostree remotes"
 msgstr "ostree remotes"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
 msgstr "Transactie van rpm-ostree is mislukt met:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:355
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
@@ -2318,32 +2318,32 @@ msgstr ""
 "Transactie van rpm-ostree wordt geannuleerd. Dit kan enige tijd kosten. Even "
 "geduld."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:384
 #, kde-format
 msgid "Checking for a system update"
 msgstr "Controleren op systeemupdates"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:385
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:387
 #, kde-format
 msgid "Downloading system update"
 msgstr "Downloaden voor bijwerken van systeem"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:388
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:390
 #, kde-format
 msgid "Updating the system"
 msgstr "Het systeem wordt bijgewerkt"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Updating to the next major version"
 msgstr "Opwaarderen naar de volgende hoofdversie"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr "Bewerking is bezig (gestart buiten Ontdekken)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "Onbekend type transactie"
@@ -2393,7 +2393,7 @@ msgstr ""
 "Deze toepassing uit Snap is niet compatibel met beveiliging via een sandbox "
 "en zal volledig toegang tot deze computer hebben. Toch installeren?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:74
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr "SteamOS: kan atomupd niet vragen naar updates SteamOS..."

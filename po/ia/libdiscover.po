@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 03:13+0000\n"
+"POT-Creation-Date: 2023-12-13 02:29+0000\n"
 "PO-Revision-Date: 2023-11-23 10:43+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -2307,13 +2307,13 @@ msgstr "Version de reserva"
 msgid "ostree remotes"
 msgstr "ostree remotes"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
 msgstr "Transaction  de rpm-ostree falleva con:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:355
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
@@ -2321,32 +2321,32 @@ msgstr ""
 "Cancellante transation de rpm-ostree. Isto pote prender alcun tempore. Pro "
 "favor tu attende."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:384
 #, kde-format
 msgid "Checking for a system update"
 msgstr "Verificante un actualisation de systema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:385
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:387
 #, kde-format
 msgid "Downloading system update"
 msgstr "Discargante actualisation de systema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:388
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:390
 #, kde-format
 msgid "Updating the system"
 msgstr "Actualisante le systema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Updating to the next major version"
 msgstr "Actualisante al proxime version major"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr "Operation in progresso (initiate foras de Discover)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "Typo de transaction incognite"
@@ -2396,7 +2396,7 @@ msgstr ""
 "Iste application de Snap non es compatibile con le sendbox de securitate e "
 "habera plen accesso a iste computator. Tu installa lo malgrado isto?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:74
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""
