@@ -44,6 +44,10 @@ DiscoverPage {
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
     Kirigami.Theme.inherit: false
 
+    DiscoverApp.FeaturedModel {
+        id: featuredModel
+    }
+
     Kirigami.LoadingPlaceholder {
         visible: featuredModel.isFetching
         anchors.centerIn: parent
@@ -154,9 +158,7 @@ DiscoverPage {
 
         Repeater {
             id: featuredRep
-            model: DiscoverApp.FeaturedModel {
-                id: featuredModel
-            }
+            model: featuredModel
             delegate: GridApplicationDelegate { visible: !featuredModel.isFetching }
         }
 
