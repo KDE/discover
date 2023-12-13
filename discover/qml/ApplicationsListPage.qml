@@ -48,20 +48,20 @@ DiscoverPage {
 
     title: {
         const count = appsModel.count;
-        if (search.length > 0) {
+        if (search.length > 0 && count.number > 0) {
             if (count.valid) {
                 return i18np("Search: %2 - %3 item", "Search: %2 - %3 items", count.number, stripHtml(search), count.string)
             } else {
                 return i18n("Search: %1", stripHtml(search))
             }
-        } else if (name.length > 0) {
+        } else if (name.length > 0 && count.number > 0) {
             if (count.valid) {
                 return i18np("%2 - %1 item", "%2 - %1 items", count.number, name)
             } else {
                 return name
             }
         } else {
-            if (count.valid) {
+            if (count.valid && count.number > 0) {
                 return i18np("Search - %1 item", "Search - %1 items", count.number)
             } else {
                 return i18n("Search")
