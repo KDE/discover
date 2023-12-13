@@ -8,11 +8,11 @@ ConditionalLoader {
     id: root
 
     property alias application: listener.resource
+    property bool availableFromOnlySingleSource: false
 
     readonly property alias isActive: listener.isActive
     readonly property bool isStateAvailable: application.state !== Discover.AbstractResource.Broken
     readonly property alias listener: listener
-    property bool availableFromOnlySingleSource: false
 
     Discover.TransactionListener {
         id: listener
@@ -23,22 +23,22 @@ ConditionalLoader {
             if (!root.isStateAvailable) {
                 return i18nc("State being fetched", "Loading…")
             }
-            if (!application.isInstalled) {
+            if (!root.application.isInstalled) {
                 if (root.availableFromOnlySingleSource) {
-                    return i18nc("@action:button %1 is the name of a software repository", "Install from %1", application.displayOrigin);
+                    return i18nc("@action:button %1 is the name of a software repository", "Install from %1", root.application.displayOrigin);
                 }
                 return i18nc("@action:button", "Install");
             }
             return i18n("Remove");
         }
         icon {
-            name: application.isInstalled ? "edit-delete" : "download"
-            color: !listener.isActive && enabled
-                ? (application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor)
+            name: root.application.isInstalled ? "edit-delete" : "download"
+            color: !root.isActive && enabled
+                ? (root.application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor)
                 : Kirigami.Theme.backgroundColor
         }
-        visible: !listener.isActive && (!application.isInstalled || application.isRemovable)
-        enabled: !listener.isActive && root.isStateAvailable
+        visible: !root.isActive && (!root.application.isInstalled || root.application.isRemovable)
+        enabled: !root.isActive && root.isStateAvailable
         onTriggered: root.click()
     }
 
@@ -51,23 +51,23 @@ ConditionalLoader {
             listener.cancel()
             enabled = false
         }
-        visible: listener.isActive
+        visible: root.isActive
         onVisibleChanged: enabled = true
     }
 
     function click() {
         if (!isActive) {
-            if(application.isInstalled) {
-                Discover.ResourcesModel.removeApplication(application);
+            if (root.application.isInstalled) {
+                Discover.ResourcesModel.removeApplication(root.application);
             } else {
-                Discover.ResourcesModel.installApplication(application);
+                Discover.ResourcesModel.installApplication(root.application);
             }
         } else {
-            console.warn("trying to un/install but resource still active", application.name);
+            console.warn("trying to un/install but resource still active", root.application.name);
         }
     }
 
-    condition: listener.isActive
+    condition: root.isActive
     componentTrue: RowLayout {
         QQC2.ToolButton {
             Layout.fillHeight: true
@@ -88,8 +88,8 @@ ConditionalLoader {
     }
 
     componentFalse: QQC2.Button {
-        visible: !application.isInstalled || application.isRemovable
-        enabled: application.state !== Discover.AbstractResource.Broken
+        visible: !root.application.isInstalled || root.application.isRemovable
+        enabled: root.application.state !== Discover.AbstractResource.Broken
         activeFocusOnTab: false
 
         text: root.action.text
