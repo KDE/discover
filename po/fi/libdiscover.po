@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-11 01:35+0000\n"
+"POT-Creation-Date: 2023-12-13 01:35+0000\n"
 "PO-Revision-Date: 2023-09-04 14:34+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2343,7 +2343,7 @@ msgstr ""
 "rpm-ostree-taustajärjestelmä: Virhe: DBus-liitäntää ei ole annettu. Ilmoita "
 "ohjelmavirheestä."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:58
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
@@ -2352,7 +2352,7 @@ msgstr ""
 "rpm-ostree-taustajärjestelmä: Toimenpidettä ei voi aloittaa resurssille, "
 "jonka muoto on virheellinen. Ilmoita ohjelmavirheestä."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:78
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
@@ -2360,8 +2360,8 @@ msgstr ""
 "rpm-ostree-taustajärjestelmä: Virhe: pohjaa ei voi vaihtaa tyhjään "
 "viitteeseen. Ilmoita ohjelmavirheestä."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:261
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
@@ -2369,8 +2369,8 @@ msgstr ""
 "rpm-ostree-taustajärjestelmä: Virhe: pyydettiin tuntematonta tapahtumaa. "
 "Ilmoita ohjelmavirheestä."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
 #, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
@@ -2379,45 +2379,45 @@ msgstr ""
 "rpm-ostree-toimenpide epäonnistui:\n"
 "%1"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:235
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
 "rpm-ostree-taustajärjestelmä: Virhe: tuntematon resurssimuoto. Ilmoita "
 "ohjelmavirheestä."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:355
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr "Peruutetaan rpm-ostree-toimenpidettä. Tämä voi kestää. Odota."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:384
 #, kde-format
 msgid "Checking for a system update"
 msgstr "Tarkistetaan järjestelmäpäivityksiä"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:385
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:387
 #, kde-format
 msgid "Downloading system update"
 msgstr "Ladataan järjestelmäpäivitystä"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:388
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:390
 #, kde-format
 msgid "Updating the system"
 msgstr "Päivitetään järjestelmää"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Updating to the next major version"
 msgstr "Päivitetään seuraavaan pääversioon"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr "Toimenpide meneillään (käynnistetty Discoverin ulkopuolelta)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "Tuntematon toimenpidetyyppi"
@@ -2462,7 +2462,7 @@ msgstr ""
 "Tämä Snap-sovellus ei ole yhteensopiva tietoturvahiekkalaatikon kanssa, "
 "joten sillä on tietokoneeseen täydet käyttöoikeudet. Asennetaanko se silti?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:74
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr "SteamOS: atomupd-kyselyä SteamOS-päivityksistä ei voida suorittaa…"

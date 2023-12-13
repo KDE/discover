@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-11 01:35+0000\n"
+"POT-Creation-Date: 2023-12-13 01:35+0000\n"
 "PO-Revision-Date: 2023-06-08 12:03+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -2351,7 +2351,7 @@ msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr "خلفية rpm-ostree: خطأ: لم يعثر على واجهة دي باص. الرجاء أبلغ عنها."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:58
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
@@ -2360,22 +2360,22 @@ msgstr ""
 "خلفية rpm-ostree: خطأ: لا يمكن بدء معاملة لمورد بتنسيق غير صالح. الرجاء أبلغ "
 "عنها."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:78
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
 "خلفية rpm-ostree: خطأ: لا يمكن تغيير العنوان إلى مرجع فارغ. الرجاء أبلغ عنها."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:259
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:261
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
 msgstr "خلفية rpm-ostree: خطأ: طلبت عملية غير معروفة. الرجاء أبلغ عنها."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
 #, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
@@ -2384,43 +2384,43 @@ msgstr ""
 "فشلت عملية rpm-ostree بالخرج التالي:\n"
 "%1"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:233
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:235
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr "خلفية rpm-ostree: خطأ: تنسيق مورد غير معروف. الرجاء أبلغ عنها."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:353
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:355
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr "إلغاء عملية rpm-ostree. سيأخذ هذا بعض الوقت. الرجاء الانتظار."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:382
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:384
 #, kde-format
 msgid "Checking for a system update"
 msgstr "يلتمس تحديثات للنظام"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:385
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:387
 #, kde-format
 msgid "Downloading system update"
 msgstr "ينزّل تحديث النظام"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:388
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:390
 #, kde-format
 msgid "Updating the system"
 msgstr "يحدث النظام"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Updating to the next major version"
 msgstr "يحدّث إلى الإصدارة الرئيسة التالية"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr "عملية قيد التنفيذ (بدأت خارج المستكشف)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "نوع معاملة مجهول"
@@ -2465,7 +2465,7 @@ msgstr ""
 "تطبيق سناب هذا غير متوافق مع وضع الحماية للأمان وسيكون له حق الوصول الكامل "
 "إلى هذا الحاسوب. أتثبته على أي حال؟"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:72
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:74
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr "ستيم او اس: لم يتمكن من استعلام atomupd لتحديثات ستيم او اس…"
