@@ -28,9 +28,9 @@ DiscoverPage {
     property alias resourcesUrl: appsModel.resourcesUrl
     property alias busy: appsModel.busy
     property alias allBackends: appsModel.allBackends
-    property alias count: apps.count
-    property alias listHeader: apps.header
-    property alias listHeaderPositioning: apps.headerPositioning
+    property alias count: appsView.count
+    property alias listHeader: appsView.header
+    property alias listHeaderPositioning: appsView.headerPositioning
     property string sortProperty: "appsListPageSorting"
     property bool showRating: true
     property bool showSize: false
@@ -157,7 +157,7 @@ DiscoverPage {
     ]
 
     Kirigami.CardsListView {
-        id: apps
+        id: appsView
         activeFocusOnTab: true
         currentIndex: -1
         onActiveFocusChanged: if (activeFocus && currentIndex === -1) {
@@ -172,7 +172,7 @@ DiscoverPage {
 
             onBusyChanged: {
                 if (busy) {
-                    apps.currentIndex = -1
+                    appsView.currentIndex = -1
                 }
             }
         }
@@ -184,7 +184,7 @@ DiscoverPage {
         }
 
         Item {
-            readonly property bool nothingFound: apps.count == 0 && !appsModel.busy && !Discover.ResourcesModel.isInitializing && (!page.searchPage || appsModel.search.length > 0)
+            readonly property bool nothingFound: appsView.count == 0 && !appsModel.busy && !Discover.ResourcesModel.isInitializing && (!page.searchPage || appsModel.search.length > 0)
 
             anchors.fill: parent
             opacity: nothingFound ? 1 : 0
@@ -247,7 +247,7 @@ DiscoverPage {
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
 
             visible: opacity !== 0
-            opacity: apps.count === 0 && page.searchPage && appsModel.search.length === 0 ? 1 : 0
+            opacity: appsView.count === 0 && page.searchPage && appsModel.search.length === 0 ? 1 : 0
             Behavior on opacity { NumberAnimation { duration: Kirigami.Units.shortDuration; easing.type: Easing.InOutQuad } }
 
             icon.name: "search"
@@ -256,7 +256,7 @@ DiscoverPage {
 
         footer: ColumnLayout {
             anchors.horizontalCenter: parent.horizontalCenter
-            visible: appsModel.busy && apps.atYEnd
+            visible: appsModel.busy && appsView.atYEnd
             opacity: visible ? 0.5 : 0
             height: visible ? Layout.preferredHeight : 0
 
