@@ -79,15 +79,6 @@ DiscoverPage {
 
     signal clearSearch()
 
-    footer: ColumnLayout {
-        spacing: 0
-
-        Kirigami.Separator {
-            Layout.fillWidth: true
-            visible: Kirigami.Settings.isMobile && inlineMessage.visible
-        }
-    }
-
     Kirigami.CardsLayout {
         id: apps
 
