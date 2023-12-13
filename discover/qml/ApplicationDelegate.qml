@@ -38,29 +38,20 @@ BasicAbstractCard {
     content: Item {
         implicitHeight: Math.max(columnLayout.implicitHeight, resourceIconFrame.implicitHeight)
 
-        // App icon, This Item is to simplify the alignment logic a lot
-        Item {
+        Kirigami.Padding {
             id: resourceIconFrame
             anchors {
-                left: parent.left
                 top: parent.top
+                left: parent.left
                 bottom: parent.bottom
             }
-            clip:true
-            width: height
-            implicitHeight: (root.compact ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.huge) + (Kirigami.Units.largeSpacing * 2)
-
-            Kirigami.Icon {
-                id: resourceIcon
-                anchors {
-                    fill: parent
-                    margins: Kirigami.Units.largeSpacing
-                }
-                readonly property real contHeight: root.compact ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.huge
+            padding: Kirigami.Units.largeSpacing
+            contentItem: Kirigami.Icon {
                 source: root.application.icon
                 animated: false
-                height: contHeight
-                width: contHeight
+
+                implicitHeight: root.compact ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.huge
+                implicitWidth: implicitHeight
             }
         }
 
@@ -73,7 +64,7 @@ BasicAbstractCard {
                 right: parent.right
                 bottom: parent.bottom
                 left: resourceIconFrame.right
-                leftMargin: Kirigami.Units.largeSpacing * 2
+                leftMargin: Kirigami.Units.gridUnit
             }
             spacing: 0
 
