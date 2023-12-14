@@ -1431,6 +1431,23 @@ bool FlatpakBackend::flatpakResourceLessThan(AbstractResource *l, AbstractResour
     // clang-format on
 }
 
+ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, std::function<void(ResultsStream *)> callback)
+{
+    ResultsStream *stream = new ResultsStream(streamName);
+
+    auto f = [stream, callback = std::move(callback)] {
+        callback(stream);
+    };
+
+    if (isFetching()) {
+        connect(this, &FlatpakBackend::initialized, stream, f);
+    } else {
+        QTimer::singleShot(0, this, f);
+    }
+
+    return stream;
+}
+
 ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
     const auto fileName = filter.resourceUrl.fileName();
@@ -1444,8 +1461,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
     } else if (!filter.resourceUrl.isEmpty()) {
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
     } else if (filter.state == AbstractResource::Upgradeable) {
-        auto stream = new ResultsStream(QStringLiteral("FlatpakStream-upgradeable"));
-        auto f = [this, stream] {
+        return deferredResultStream(u"FlatpakStream-upgradeable"_s, [this](ResultsStream *stream) {
             auto fw = new QFutureWatcher<QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>(this);
             connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, fw, stream]() {
                 if (g_cancellable_is_cancelled(m_cancellable)) {
@@ -1516,17 +1532,9 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 }
                 return ret;
             }));
-        };
-
-        if (isFetching()) {
-            connect(this, &FlatpakBackend::initialized, stream, f);
-        } else {
-            QTimer::singleShot(0, this, f);
-        }
-        return stream;
+        });
     } else if (filter.state == AbstractResource::Installed) {
-        auto stream = new ResultsStream(QStringLiteral("FlatpakStream-installed"));
-        auto f = [this, stream, filter] {
+        return deferredResultStream(u"FlatpakStream-installed"_s, [this, filter](ResultsStream *stream) {
             QVector<StreamResult> resources;
             for (auto installation : std::as_const(m_installations)) {
                 g_autoptr(GError) localError = nullptr;
@@ -1561,77 +1569,63 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
             if (!resources.isEmpty())
                 Q_EMIT stream->resourcesFound(resources);
             stream->finish();
-        };
-
-        if (isFetching()) {
-            connect(this, &FlatpakBackend::initialized, stream, f);
-        } else {
-            QTimer::singleShot(0, this, f);
-        }
-        return stream;
-    }
-
-    auto stream = new ResultsStream(QStringLiteral("FlatpakStream"));
-    auto f = [this, stream, filter]() {
-        QVector<StreamResult> prioritary, rest;
-        for (const auto &source : std::as_const(m_flatpakSources)) {
-            QList<FlatpakResource *> resources;
-            if (source->m_pool) {
-                const auto a = !filter.search.isEmpty() ? source->m_pool->search(filter.search)
-#if ASQ_CHECK_VERSION(0, 15, 6)
-                    : filter.category ? AppStreamUtils::componentsByCategories(source->m_pool, filter.category, AppStream::Bundle::KindFlatpak)
-#endif
-                                      : source->m_pool->components();
-                resources = kTransform<QList<FlatpakResource *>>(a, [this, &source](const auto &comp) {
-                    return resourceForComponent(comp, source);
-                });
-            } else {
-                resources = source->m_resources.values();
-            }
-
-            for (auto r : std::as_const(resources)) {
-                const bool matchById = r->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
-                if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
-                    continue;
-                }
-                if (r->state() < filter.state)
-                    continue;
-
-                if (!filter.extends.isEmpty() && !r->extends().contains(filter.extends))
-                    continue;
-
-                if (!filter.mimetype.isEmpty() && !r->mimetypes().contains(filter.mimetype))
-                    continue;
-
-                if (filter.search.isEmpty() || matchById) {
-                    rest += r;
-                } else if (r->name().contains(filter.search, Qt::CaseInsensitive)) {
-                    prioritary += r;
-                } else if (r->comment().contains(filter.search, Qt::CaseInsensitive)) {
-                    rest += r;
-                    // trust The search terms provided by appstream are relevant, this makes possible finding "gimp"
-                    // since the name() is "GNU Image Manipulation Program"
-                } else if (r->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
-                    rest += r;
-                }
-            }
-        }
-        auto f = [this](auto l, auto r) {
-            return flatpakResourceLessThan(l, r);
-        };
-        std::sort(rest.begin(), rest.end(), f);
-        std::sort(prioritary.begin(), prioritary.end(), f);
-        rest = prioritary + rest;
-        if (!rest.isEmpty())
-            Q_EMIT stream->resourcesFound(rest);
-        stream->finish();
-    };
-    if (isFetching()) {
-        connect(this, &FlatpakBackend::initialized, stream, f);
+        });
     } else {
-        QTimer::singleShot(0, this, f);
+        return deferredResultStream(u"FlatpakStream"_s, [this, filter](ResultsStream *stream) {
+            QVector<StreamResult> prioritary, rest;
+            for (const auto &source : std::as_const(m_flatpakSources)) {
+                QList<FlatpakResource *> resources;
+                if (source->m_pool) {
+                    const auto a = !filter.search.isEmpty() ? source->m_pool->search(filter.search)
+#if ASQ_CHECK_VERSION(0, 15, 6)
+                        : filter.category ? AppStreamUtils::componentsByCategories(source->m_pool, filter.category, AppStream::Bundle::KindFlatpak)
+#endif
+                                          : source->m_pool->components();
+                    resources = kTransform<QList<FlatpakResource *>>(a, [this, &source](const auto &comp) {
+                        return resourceForComponent(comp, source);
+                    });
+                } else {
+                    resources = source->m_resources.values();
+                }
+
+                for (auto r : std::as_const(resources)) {
+                    const bool matchById = r->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
+                    if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
+                        continue;
+                    }
+                    if (r->state() < filter.state)
+                        continue;
+
+                    if (!filter.extends.isEmpty() && !r->extends().contains(filter.extends))
+                        continue;
+
+                    if (!filter.mimetype.isEmpty() && !r->mimetypes().contains(filter.mimetype))
+                        continue;
+
+                    if (filter.search.isEmpty() || matchById) {
+                        rest += r;
+                    } else if (r->name().contains(filter.search, Qt::CaseInsensitive)) {
+                        prioritary += r;
+                    } else if (r->comment().contains(filter.search, Qt::CaseInsensitive)) {
+                        rest += r;
+                        // trust The search terms provided by appstream are relevant, this makes possible finding "gimp"
+                        // since the name() is "GNU Image Manipulation Program"
+                    } else if (r->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
+                        rest += r;
+                    }
+                }
+            }
+            auto f = [this](auto l, auto r) {
+                return flatpakResourceLessThan(l, r);
+            };
+            std::sort(rest.begin(), rest.end(), f);
+            std::sort(prioritary.begin(), prioritary.end(), f);
+            rest = prioritary + rest;
+            if (!rest.isEmpty())
+                Q_EMIT stream->resourcesFound(rest);
+            stream->finish();
+        });
     }
-    return stream;
 }
 
 bool FlatpakBackend::isTracked(FlatpakResource *resource) const

@@ -131,6 +131,8 @@ private:
     void createPool(QSharedPointer<FlatpakSource> source);
     FlatpakRemote *installSource(FlatpakResource *resource);
 
+    ResultsStream *deferredResultStream(const QString &streamName, std::function<void(ResultsStream *)> callback);
+
     StandardBackendUpdater *m_updater;
     FlatpakSourcesBackend *m_sources = nullptr;
     QSharedPointer<OdrsReviewsBackend> m_reviews;
