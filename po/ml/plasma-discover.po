@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:38+0000\n"
+"POT-Creation-Date: 2023-12-14 01:36+0000\n"
 "PO-Revision-Date: 2019-12-29 20:50+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -260,7 +260,7 @@ msgstr "കൂട്ടിച്ചേര്‍ക്കുക"
 msgid "Cancel"
 msgstr "റദ്ദാക്കുക"
 
-#: discover/qml/ApplicationDelegate.qml:188
+#: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:224
 #, kde-format
 msgid "%1 rating"
@@ -268,7 +268,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 റേറ്റിംഗ്"
 msgstr[1] "%1 റേറ്റിംഗുകൾ"
 
-#: discover/qml/ApplicationDelegate.qml:188
+#: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:224
 #, kde-format
 msgid "No ratings yet"
@@ -554,7 +554,7 @@ msgstr[0] "തിരയുക: %1"
 msgstr[1] "തിരയുക: %1"
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:258
+#: discover/qml/ApplicationsListPage.qml:254
 #, kde-format
 msgid "Search"
 msgstr "തിരയുക"
@@ -590,24 +590,24 @@ msgstr "വലുപ്പം"
 msgid "Release Date"
 msgstr "പ്രകാശന തീയതി"
 
-#: discover/qml/ApplicationsListPage.qml:204
+#: discover/qml/ApplicationsListPage.qml:200
 #, fuzzy, kde-format
 msgid "Nothing found"
 msgstr "ക്ഷമിക്കണം, ഒന്നും കണ്ടെത്തിയില്ല ..."
 
-#: discover/qml/ApplicationsListPage.qml:212
+#: discover/qml/ApplicationsListPage.qml:208
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:222
+#: discover/qml/ApplicationsListPage.qml:218
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:226
+#: discover/qml/ApplicationsListPage.qml:222
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -615,7 +615,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:237
+#: discover/qml/ApplicationsListPage.qml:233
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -623,13 +623,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:239
+#: discover/qml/ApplicationsListPage.qml:235
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:240
+#: discover/qml/ApplicationsListPage.qml:236
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -638,7 +638,7 @@ msgid ""
 "caution."
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:273
+#: discover/qml/ApplicationsListPage.qml:269
 #, fuzzy, kde-format
 #| msgid "Still looking..."
 msgid "Still looking…"
@@ -651,42 +651,42 @@ msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
 msgstr "ഹോം‌പേജ്:"
 
-#: discover/qml/BrowsingPage.qml:60
+#: discover/qml/BrowsingPage.qml:64
 #, kde-format
 msgid "Unable to load applications"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:103
+#: discover/qml/BrowsingPage.qml:98
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:123
+#: discover/qml/BrowsingPage.qml:118
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:160
+#: discover/qml/BrowsingPage.qml:155
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:177
+#: discover/qml/BrowsingPage.qml:170
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:196 discover/qml/BrowsingPage.qml:225
+#: discover/qml/BrowsingPage.qml:189 discover/qml/BrowsingPage.qml:218
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:206
+#: discover/qml/BrowsingPage.qml:199
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

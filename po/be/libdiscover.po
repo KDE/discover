@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-13 01:35+0000\n"
+"POT-Creation-Date: 2023-12-14 01:36+0000\n"
 "PO-Revision-Date: 2023-02-06 22:01\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -2541,7 +2541,7 @@ msgstr "Праверце злучэнне з інтэрнэтам"
 msgid "Refresh"
 msgstr "Абнавіць"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:774
+#: libdiscover/resources/ResourcesProxyModel.cpp:781
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

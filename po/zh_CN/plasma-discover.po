@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:38+0000\n"
+"POT-Creation-Date: 2023-12-14 01:36+0000\n"
 "PO-Revision-Date: 2023-12-09 09:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -266,14 +266,14 @@ msgstr "添加"
 msgid "Cancel"
 msgstr "取消"
 
-#: discover/qml/ApplicationDelegate.qml:188
+#: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:224
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "%1 个评分"
 
-#: discover/qml/ApplicationDelegate.qml:188
+#: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:224
 #, kde-format
 msgid "No ratings yet"
@@ -554,7 +554,7 @@ msgid_plural "Search - %1 items"
 msgstr[0] "搜索 - %1 个项目"
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:258
+#: discover/qml/ApplicationsListPage.qml:254
 #, kde-format
 msgid "Search"
 msgstr "搜索"
@@ -590,24 +590,24 @@ msgstr "体积"
 msgid "Release Date"
 msgstr "发布日期"
 
-#: discover/qml/ApplicationsListPage.qml:204
+#: discover/qml/ApplicationsListPage.qml:200
 #, kde-format
 msgid "Nothing found"
 msgstr "未找到任何内容"
 
-#: discover/qml/ApplicationsListPage.qml:212
+#: discover/qml/ApplicationsListPage.qml:208
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "在所有分类中搜索"
 
-#: discover/qml/ApplicationsListPage.qml:222
+#: discover/qml/ApplicationsListPage.qml:218
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "在互联网上搜索“%1”"
 
-#: discover/qml/ApplicationsListPage.qml:226
+#: discover/qml/ApplicationsListPage.qml:222
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -615,7 +615,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://cn.bing.com/search?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:237
+#: discover/qml/ApplicationsListPage.qml:233
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -623,13 +623,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "在“%2”分类中没有找到“%1”"
 
-#: discover/qml/ApplicationsListPage.qml:239
+#: discover/qml/ApplicationsListPage.qml:235
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "无法在可用来源中找到“%1”"
 
-#: discover/qml/ApplicationsListPage.qml:240
+#: discover/qml/ApplicationsListPage.qml:236
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -640,7 +640,7 @@ msgstr ""
 "您或许可以通过互联网下载“%1”。请注意：从互联网获取的软件没有经过本机系统分发"
 "组织的审核，无法保证在本机系统中运行时的功能和稳定性。请谨慎操作。"
 
-#: discover/qml/ApplicationsListPage.qml:273
+#: discover/qml/ApplicationsListPage.qml:269
 #, kde-format
 msgid "Still looking…"
 msgstr "正在查找…"
@@ -651,42 +651,42 @@ msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
 msgstr "主页"
 
-#: discover/qml/BrowsingPage.qml:60
+#: discover/qml/BrowsingPage.qml:64
 #, kde-format
 msgid "Unable to load applications"
 msgstr "无法加载应用程序"
 
-#: discover/qml/BrowsingPage.qml:103
+#: discover/qml/BrowsingPage.qml:98
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "最热门"
 
-#: discover/qml/BrowsingPage.qml:123
+#: discover/qml/BrowsingPage.qml:118
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "全新推出和最近更新"
 
-#: discover/qml/BrowsingPage.qml:160
+#: discover/qml/BrowsingPage.qml:155
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "编辑推荐"
 
-#: discover/qml/BrowsingPage.qml:177
+#: discover/qml/BrowsingPage.qml:170
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "最高评分的游戏"
 
-#: discover/qml/BrowsingPage.qml:196 discover/qml/BrowsingPage.qml:225
+#: discover/qml/BrowsingPage.qml:189 discover/qml/BrowsingPage.qml:218
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "查看更多"
 
-#: discover/qml/BrowsingPage.qml:206
+#: discover/qml/BrowsingPage.qml:199
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

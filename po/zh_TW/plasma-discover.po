@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:38+0000\n"
+"POT-Creation-Date: 2023-12-14 01:36+0000\n"
 "PO-Revision-Date: 2023-12-02 20:47+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -266,14 +266,14 @@ msgstr "新增"
 msgid "Cancel"
 msgstr "取消"
 
-#: discover/qml/ApplicationDelegate.qml:188
+#: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:224
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "%1 個評分"
 
-#: discover/qml/ApplicationDelegate.qml:188
+#: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:224
 #, kde-format
 msgid "No ratings yet"
@@ -555,7 +555,7 @@ msgid_plural "Search - %1 items"
 msgstr[0] "搜尋 - %1 項"
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:258
+#: discover/qml/ApplicationsListPage.qml:254
 #, kde-format
 msgid "Search"
 msgstr "搜尋"
@@ -591,24 +591,24 @@ msgstr "大小"
 msgid "Release Date"
 msgstr "釋出日期"
 
-#: discover/qml/ApplicationsListPage.qml:204
+#: discover/qml/ApplicationsListPage.qml:200
 #, kde-format
 msgid "Nothing found"
 msgstr "找不到東西"
 
-#: discover/qml/ApplicationsListPage.qml:212
+#: discover/qml/ApplicationsListPage.qml:208
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "在所有分類中搜尋"
 
-#: discover/qml/ApplicationsListPage.qml:222
+#: discover/qml/ApplicationsListPage.qml:218
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "在網路上搜尋 %1"
 
-#: discover/qml/ApplicationsListPage.qml:226
+#: discover/qml/ApplicationsListPage.qml:222
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -616,7 +616,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:237
+#: discover/qml/ApplicationsListPage.qml:233
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -624,13 +624,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "「%2」分類裡找不到 %1"
 
-#: discover/qml/ApplicationsListPage.qml:239
+#: discover/qml/ApplicationsListPage.qml:235
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "可用的來源中找不到 %1"
 
-#: discover/qml/ApplicationsListPage.qml:240
+#: discover/qml/ApplicationsListPage.qml:236
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -641,7 +641,7 @@ msgstr ""
 "網路上其他來源可能有提供 %1。網路上下載的軟體未經過發行者查核其功能和穩定性，"
 "請小心使用。"
 
-#: discover/qml/ApplicationsListPage.qml:273
+#: discover/qml/ApplicationsListPage.qml:269
 #, kde-format
 msgid "Still looking…"
 msgstr "正在搜尋中..."
@@ -652,42 +652,42 @@ msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
 msgstr "首頁"
 
-#: discover/qml/BrowsingPage.qml:60
+#: discover/qml/BrowsingPage.qml:64
 #, kde-format
 msgid "Unable to load applications"
 msgstr "無法載入應用程式"
 
-#: discover/qml/BrowsingPage.qml:103
+#: discover/qml/BrowsingPage.qml:98
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "最受歡迎"
 
-#: discover/qml/BrowsingPage.qml:123
+#: discover/qml/BrowsingPage.qml:118
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "最新發佈與最近更新"
 
-#: discover/qml/BrowsingPage.qml:160
+#: discover/qml/BrowsingPage.qml:155
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "編輯精選"
 
-#: discover/qml/BrowsingPage.qml:177
+#: discover/qml/BrowsingPage.qml:170
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "評價最高的遊戲"
 
-#: discover/qml/BrowsingPage.qml:196 discover/qml/BrowsingPage.qml:225
+#: discover/qml/BrowsingPage.qml:189 discover/qml/BrowsingPage.qml:218
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "檢視更多"
 
-#: discover/qml/BrowsingPage.qml:206
+#: discover/qml/BrowsingPage.qml:199
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

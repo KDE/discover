@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-13 01:35+0000\n"
+"POT-Creation-Date: 2023-12-14 01:36+0000\n"
 "PO-Revision-Date: 2023-02-17 08:42+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -2522,7 +2522,7 @@ msgstr "Sjekk et Internetttilkoblingen fungerer"
 msgid "Refresh"
 msgstr "Oppfrisk"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:774
+#: libdiscover/resources/ResourcesProxyModel.cpp:781
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

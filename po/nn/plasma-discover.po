@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:38+0000\n"
+"POT-Creation-Date: 2023-12-14 01:36+0000\n"
 "PO-Revision-Date: 2023-07-27 21:20+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -267,7 +267,7 @@ msgstr "Legg til"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: discover/qml/ApplicationDelegate.qml:188
+#: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:224
 #, kde-format
 msgid "%1 rating"
@@ -275,7 +275,7 @@ msgid_plural "%1 ratings"
 msgstr[0] "%1 karakter"
 msgstr[1] "%1 karakterar"
 
-#: discover/qml/ApplicationDelegate.qml:188
+#: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:224
 #, kde-format
 msgid "No ratings yet"
@@ -575,7 +575,7 @@ msgstr[0] "Søk – %1 element"
 msgstr[1] "Søk – %1 element"
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:258
+#: discover/qml/ApplicationsListPage.qml:254
 #, kde-format
 msgid "Search"
 msgstr "Søk"
@@ -611,24 +611,24 @@ msgstr "Storleik"
 msgid "Release Date"
 msgstr "Utgjevingsdato"
 
-#: discover/qml/ApplicationsListPage.qml:204
+#: discover/qml/ApplicationsListPage.qml:200
 #, kde-format
 msgid "Nothing found"
 msgstr "Fann ingenting"
 
-#: discover/qml/ApplicationsListPage.qml:212
+#: discover/qml/ApplicationsListPage.qml:208
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "Søk i alle kategoriane"
 
-#: discover/qml/ApplicationsListPage.qml:222
+#: discover/qml/ApplicationsListPage.qml:218
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Søk på nettet etter «%1»"
 
-#: discover/qml/ApplicationsListPage.qml:226
+#: discover/qml/ApplicationsListPage.qml:222
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -636,7 +636,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:237
+#: discover/qml/ApplicationsListPage.qml:233
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -644,13 +644,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "Fann ikkje «%1» i kategorien «%2»"
 
-#: discover/qml/ApplicationsListPage.qml:239
+#: discover/qml/ApplicationsListPage.qml:235
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "Fann ikkje «%1» i dei tilgjengelege kjeldene"
 
-#: discover/qml/ApplicationsListPage.qml:240
+#: discover/qml/ApplicationsListPage.qml:236
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -662,7 +662,7 @@ msgstr ""
 "stabiliteten på eller funksjonane til program som vert lasta ned frå nettet. "
 "Ver derfor varsam."
 
-#: discover/qml/ApplicationsListPage.qml:273
+#: discover/qml/ApplicationsListPage.qml:269
 #, kde-format
 msgid "Still looking…"
 msgstr "Leitar framleis …"
@@ -673,42 +673,42 @@ msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
 msgstr "Heim"
 
-#: discover/qml/BrowsingPage.qml:60
+#: discover/qml/BrowsingPage.qml:64
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Klarte ikkje lasta programoversikt"
 
-#: discover/qml/BrowsingPage.qml:103
+#: discover/qml/BrowsingPage.qml:98
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Mest populære"
 
-#: discover/qml/BrowsingPage.qml:123
+#: discover/qml/BrowsingPage.qml:118
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:160
+#: discover/qml/BrowsingPage.qml:155
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Redaktørens utvalde"
 
-#: discover/qml/BrowsingPage.qml:177
+#: discover/qml/BrowsingPage.qml:170
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Høgast vurderte spel"
 
-#: discover/qml/BrowsingPage.qml:196 discover/qml/BrowsingPage.qml:225
+#: discover/qml/BrowsingPage.qml:189 discover/qml/BrowsingPage.qml:218
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Vis fleire"
 
-#: discover/qml/BrowsingPage.qml:206
+#: discover/qml/BrowsingPage.qml:199
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

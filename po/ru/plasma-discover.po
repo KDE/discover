@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-06 01:38+0000\n"
+"POT-Creation-Date: 2023-12-14 01:36+0000\n"
 "PO-Revision-Date: 2023-02-05 19:25+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -274,7 +274,7 @@ msgstr "Добавить"
 msgid "Cancel"
 msgstr "Отмена"
 
-#: discover/qml/ApplicationDelegate.qml:188
+#: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:224
 #, kde-format
 msgid "%1 rating"
@@ -284,7 +284,7 @@ msgstr[1] "%1 оценки"
 msgstr[2] "%1 оценок"
 msgstr[3] "%1 оценка"
 
-#: discover/qml/ApplicationDelegate.qml:188
+#: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:224
 #, kde-format
 msgid "No ratings yet"
@@ -604,7 +604,7 @@ msgstr[2] "Поиск:  — %1 объектов"
 msgstr[3] "Поиск:  — %1 объект"
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:258
+#: discover/qml/ApplicationsListPage.qml:254
 #, kde-format
 msgid "Search"
 msgstr "Поиск"
@@ -640,24 +640,24 @@ msgstr "По размеру"
 msgid "Release Date"
 msgstr "По дате выпуска"
 
-#: discover/qml/ApplicationsListPage.qml:204
+#: discover/qml/ApplicationsListPage.qml:200
 #, kde-format
 msgid "Nothing found"
 msgstr "Ничего не найдено."
 
-#: discover/qml/ApplicationsListPage.qml:212
+#: discover/qml/ApplicationsListPage.qml:208
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "Искать во всех категориях"
 
-#: discover/qml/ApplicationsListPage.qml:222
+#: discover/qml/ApplicationsListPage.qml:218
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Искать «%1» в интернете"
 
-#: discover/qml/ApplicationsListPage.qml:226
+#: discover/qml/ApplicationsListPage.qml:222
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -665,7 +665,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:237
+#: discover/qml/ApplicationsListPage.qml:233
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -673,13 +673,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "Не удалось найти приложение «%1» в категории «%2»"
 
-#: discover/qml/ApplicationsListPage.qml:239
+#: discover/qml/ApplicationsListPage.qml:235
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "Не удалось найти приложение «%1» среди доступных источников"
 
-#: discover/qml/ApplicationsListPage.qml:240
+#: discover/qml/ApplicationsListPage.qml:236
 #, fuzzy, kde-format
 #| msgctxt "@info:placeholder%1 is the name of an application"
 #| msgid ""
@@ -696,7 +696,7 @@ msgstr ""
 "в интернете, не проверялись на работоспособность и стабильность. Будьте "
 "внимательны при использовании приложений, полученных из этого источника."
 
-#: discover/qml/ApplicationsListPage.qml:273
+#: discover/qml/ApplicationsListPage.qml:269
 #, kde-format
 msgid "Still looking…"
 msgstr "Выполняется поиск..."
@@ -708,42 +708,42 @@ msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
 msgstr "&Весь каталог"
 
-#: discover/qml/BrowsingPage.qml:60
+#: discover/qml/BrowsingPage.qml:64
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Не удалось получить список приложений"
 
-#: discover/qml/BrowsingPage.qml:103
+#: discover/qml/BrowsingPage.qml:98
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Самые популярные"
 
-#: discover/qml/BrowsingPage.qml:123
+#: discover/qml/BrowsingPage.qml:118
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:160
+#: discover/qml/BrowsingPage.qml:155
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Выбор редактора"
 
-#: discover/qml/BrowsingPage.qml:177
+#: discover/qml/BrowsingPage.qml:170
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Лучшие игры"
 
-#: discover/qml/BrowsingPage.qml:196 discover/qml/BrowsingPage.qml:225
+#: discover/qml/BrowsingPage.qml:189 discover/qml/BrowsingPage.qml:218
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Дополнительно…"
 
-#: discover/qml/BrowsingPage.qml:206
+#: discover/qml/BrowsingPage.qml:199
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
