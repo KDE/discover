@@ -141,17 +141,11 @@ DiscoverPage {
         visible: updateModel.toUpdateCount
         icon.name: "update-none"
 
-        function anyVisible(items) {
-            for (const itemPos in items) {
-                const item = items[itemPos];
-                if (item.visible && item instanceof Kirigami.InlineMessage) {
-                    return true
-                }
-            }
-            return false;
+        function anyPageHeaderChildrenVisible() {
+            return page.header.children.some(item?.visible && item instanceof Kirigami.InlineMessage);
         }
 
-        enabled: !resourcesUpdatesModel.isProgressing && !Discover.ResourcesModel.isFetching && !anyVisible(page.header.children)
+        enabled: !resourcesUpdatesModel.isProgressing && !Discover.ResourcesModel.isFetching && !anyPageHeaderChildrenVisible()
         onTriggered: resourcesUpdatesModel.updateAll()
     }
 
