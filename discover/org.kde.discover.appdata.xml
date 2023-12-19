@@ -255,7 +255,9 @@
     <p xml:lang="zh-CN">不仅如此，Discover 还能查找、安装和管理 Plasma 附加组件以及您喜爱的 KDE 应用程序！</p>
     <p xml:lang="zh-TW">最後，Discover 也能協助您搜尋、安裝與管理 Plasma 的外掛程式及你所有喜歡的 KDE 應用程式！</p>
   </description>
+  <url type="homepage">https://apps.kde.org/discover</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=Discover</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=discover&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
       <caption>Plasma Discover</caption>
