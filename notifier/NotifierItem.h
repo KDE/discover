@@ -25,6 +25,11 @@ public:
     }
     void setVisible(bool visible);
 
+    /**
+     * Returns true if notifying is allowed
+     */
+    bool isEnabled() const;
+
 private:
     bool m_visible = false;
     DiscoverNotifier m_notifier;

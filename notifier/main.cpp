@@ -75,5 +75,14 @@ int main(int argc, char **argv)
     KDBusService service(KDBusService::Unique | startup);
     notifier.setVisible(!hide);
 
+    // Just quit if the notification frequency is set to never
+    // The downside is that updates to the notification frequency will only take
+    // effect after reboot
+    // FIXME: more graceful handeling of notification frequency changes, while
+    // making sure the notifier does not run when the frequency is set to never
+    if (!notifier.isEnabled()) {
+        return 0;
+    }
+
     return app.exec();
 }

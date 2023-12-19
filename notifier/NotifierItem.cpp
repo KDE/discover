@@ -5,6 +5,7 @@
  */
 
 #include "NotifierItem.h"
+#include "updatessettings.h"
 #include <KLocalizedString>
 #include <QDebug>
 #include <QMenu>
@@ -97,4 +98,9 @@ void NotifierItem::setVisible(bool visible)
         setupNotifierItem();
     else
         delete m_item;
+}
+
+bool NotifierItem::isEnabled() const
+{
+    return m_notifier.settings()->requiredNotificationInterval() > 0;
 }
