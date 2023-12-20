@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-13 01:35+0000\n"
+"POT-Creation-Date: 2023-12-20 01:35+0000\n"
 "PO-Revision-Date: 2021-08-24 23:31+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -102,7 +102,7 @@ msgstr "Sistemos atnaujinimų būsenos pranešiklis"
 #: notifier/main.cpp:42
 #, fuzzy, kde-format
 #| msgid "© 2010-2021 Plasma Development Team"
-msgid "© 2010-2022 Plasma Development Team"
+msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010-2021 Plasma plėtojimo komanda"
 
 #: notifier/main.cpp:46

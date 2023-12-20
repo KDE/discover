@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-13 01:35+0000\n"
+"POT-Creation-Date: 2023-12-20 01:35+0000\n"
 "PO-Revision-Date: 2023-07-24 21:32+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-doc@kde.org>\n"
@@ -98,8 +98,9 @@ msgid "System update status notifier"
 msgstr "Statusbenachrichtigungen für Systemaktualisierungen"
 
 #: notifier/main.cpp:42
-#, kde-format
-msgid "© 2010-2022 Plasma Development Team"
+#, fuzzy, kde-format
+#| msgid "© 2010-2022 Plasma Development Team"
+msgid "© 2010-2024 Plasma Development Team"
 msgstr "Copyright © 2010-2022 Plasma-Entwicklerteam"
 
 #: notifier/main.cpp:46

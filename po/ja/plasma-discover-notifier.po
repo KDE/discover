@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-13 01:35+0000\n"
+"POT-Creation-Date: 2023-12-20 01:35+0000\n"
 "PO-Revision-Date: 2020-09-28 23:48+0900\n"
 "Last-Translator: Tomohiro Hyakutake <tomhioo@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -99,7 +99,7 @@ msgstr "システムは最新です"
 
 #: notifier/main.cpp:42
 #, kde-format
-msgid "© 2010-2022 Plasma Development Team"
+msgid "© 2010-2024 Plasma Development Team"
 msgstr ""
 
 #: notifier/main.cpp:46

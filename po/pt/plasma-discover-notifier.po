@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-13 01:35+0000\n"
+"POT-Creation-Date: 2023-12-20 01:35+0000\n"
 "PO-Revision-Date: 2022-03-26 22:21+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -97,8 +97,9 @@ msgid "System update status notifier"
 msgstr "Notificação do estado de actualização do sistema"
 
 #: notifier/main.cpp:42
-#, kde-format
-msgid "© 2010-2022 Plasma Development Team"
+#, fuzzy, kde-format
+#| msgid "© 2010-2022 Plasma Development Team"
+msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010-2022 da Equipa de Desenvolvimento do Plasma"
 
 #: notifier/main.cpp:46

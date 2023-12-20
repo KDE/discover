@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-13 01:35+0000\n"
+"POT-Creation-Date: 2023-12-20 01:35+0000\n"
 "PO-Revision-Date: 2023-10-01 00:23+0530\n"
 "Last-Translator: \n"
 "Language-Team: Sanskrit\n"
@@ -99,8 +99,9 @@ msgid "System update status notifier"
 msgstr "तन्त्र अद्यतन स्थिति सूचक"
 
 #: notifier/main.cpp:42
-#, kde-format
-msgid "© 2010-2022 Plasma Development Team"
+#, fuzzy, kde-format
+#| msgid "© 2010-2022 Plasma Development Team"
+msgid "© 2010-2024 Plasma Development Team"
 msgstr "© २०१०-२०२२ प्लाज्मा विकासदल"
 
 #: notifier/main.cpp:46
