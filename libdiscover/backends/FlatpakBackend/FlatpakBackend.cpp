@@ -1463,7 +1463,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
     } else if (filter.state == AbstractResource::Upgradeable) {
         return deferredResultStream(u"FlatpakStream-upgradeable"_s, [this](ResultsStream *stream) {
             auto fw = new QFutureWatcher<QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>(this);
-            connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, fw, stream]() {
+            connect(fw, &QFutureWatcher<QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>::finished, this, [this, fw, stream]() {
                 if (g_cancellable_is_cancelled(m_cancellable)) {
                     stream->finish();
                     fw->deleteLater();
