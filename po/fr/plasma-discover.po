@@ -8,16 +8,16 @@
 # Johan Claude-Breuninger <johan.claudebreuninger@gmail.com>, 2017.
 # Yoann Laissus <yoann.laissus@gmail.com>, 2017, 2018.
 # Simon Depiets <sdepiets@gmail.com>, 2018, 2019, 2020.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@neuf.fr>
-# Xavier BESNARD <xavier.besnard@neuf.fr>, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@kde.org>
+# Xavier Besnard <xavier.besnard@kde.org>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2023-11-02 12:13+0100\n"
-"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
+"PO-Revision-Date: 2023-11-30 09:12+0100\n"
+"Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -247,8 +247,8 @@ msgstr "Geoffray Levasseur, Matthieu Robin, Xavier Besnard"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
-"geoffray.levasseurbrandin@numericable.fr, kde@macolu.org, xavier."
-"besnard@neuf.fr"
+"geoffray.levasseurbrandin@numericable.fr, kde@macolu.org, xavier.besnard@kde."
+"org"
 
 #: discover/main.cpp:152
 #, kde-format
