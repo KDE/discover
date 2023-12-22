@@ -1631,12 +1631,9 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
 bool FlatpakBackend::isTracked(FlatpakResource *resource) const
 {
     const auto uid = resource->uniqueId();
-    for (const auto &source : m_flatpakSources) {
-        if (source->m_resources.contains(uid)) {
-            return true;
-        }
-    }
-    return false;
+    return std::any_of(m_flatpakSources.constBegin(), m_flatpakSources.constEnd(), [uid](const auto &source) {
+        return source->m_resources.contains(uid);
+    });
 }
 
 QVector<StreamResult> FlatpakBackend::resultsByAppstreamName(const QString &name) const
@@ -1899,14 +1896,9 @@ InlineMessage *FlatpakBackend::explainDysfunction() const
 
 bool FlatpakBackend::extends(const QString &extends) const
 {
-    for (const auto &source : m_flatpakSources) {
-        if (source->m_pool && !source->m_pool->lastError().isEmpty()) {
-            if (!source->m_pool->componentsByExtends(extends).isEmpty()) {
-                return true;
-            }
-        }
-    }
-    return false;
+    return std::any_of(m_flatpakSources.constBegin(), m_flatpakSources.constEnd(), [extends](const auto &source) {
+        return source->m_pool && !source->m_pool->lastError().isEmpty() && !source->m_pool->componentsByExtends(extends).isEmpty();
+    });
 }
 
 #include "FlatpakBackend.moc"
