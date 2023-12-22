@@ -142,7 +142,7 @@ DiscoverPage {
         icon.name: "update-none"
 
         function anyPageHeaderChildrenVisible() {
-            return page.header.children.some(item?.visible && item instanceof Kirigami.InlineMessage);
+            return page.header.children.some(item => item?.visible && item instanceof Kirigami.InlineMessage);
         }
 
         enabled: !resourcesUpdatesModel.isProgressing && !Discover.ResourcesModel.isFetching && !anyPageHeaderChildrenVisible()
