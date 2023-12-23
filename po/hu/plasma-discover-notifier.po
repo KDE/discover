@@ -2,22 +2,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Kiszel Kristóf <ulysses@kubuntu.org>, 2015, 2017, 2019.
-# Kristof Kiszel <kiszel.kristof@gmail.com>, 2018, 2020, 2021.
+# SPDX-FileCopyrightText: 2018, 2020, 2021, 2023 Kristof Kiszel <kiszel.kristof@gmail.com>
 # Kristóf Kiszel <ulysses@fsf.hu>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-20 01:35+0000\n"
-"PO-Revision-Date: 2022-01-14 10:51+0100\n"
-"Last-Translator: Kristóf Kiszel <ulysses@fsf.hu>\n"
+"PO-Revision-Date: 2023-12-22 21:24+0100\n"
+"Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.07.70\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: notifier/DiscoverNotifier.cpp:150
 #, kde-format
@@ -79,7 +79,7 @@ msgstr "Frissítés érhetők el"
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr ""
+msgstr "A(z) %1 most már elérhető."
 
 #: notifier/DiscoverNotifier.cpp:328
 #, kde-format
@@ -98,10 +98,9 @@ msgid "System update status notifier"
 msgstr "Rendszerfrissítés állapotértesítő"
 
 #: notifier/main.cpp:42
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© A Plasma fejlesztői, 2010-2022."
+msgstr "© A Plasma fejlesztői, 2010-2024."
 
 #: notifier/main.cpp:46
 #, kde-format

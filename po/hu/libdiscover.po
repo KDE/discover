@@ -4,13 +4,13 @@
 # Kristóf Kiszel <ulysses@kubuntu.org>, 2010, 2011, 2012, 2014, 2015, 2019, 2020, 2021.
 # Kiszel Kristóf, 2011, 2017.
 # Balázs Úr <urbalazs@gmail.com>, 2012, 2013, 2014.
-# Kristof Kiszel <ulysses@fsf.hu>, 2021, 2022.
+# SPDX-FileCopyrightText: 2021, 2022, 2023 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-14 01:36+0000\n"
-"PO-Revision-Date: 2022-08-29 11:34+0200\n"
+"PO-Revision-Date: 2023-12-22 21:37+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.07.70\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -36,11 +36,9 @@ msgid "Proprietary"
 msgstr "Zárt"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:105
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Publishing"
+#, kde-format
 msgid "Public Domain"
-msgstr "Kiadványszerkesztés"
+msgstr "Közkincs"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:111
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
@@ -54,14 +52,12 @@ msgid "Unknown"
 msgstr "Ismeretlen"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:187
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Installed Files"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr "Telepített fájlok"
+msgstr "Minden célközönség"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:190
 #, kde-format
@@ -96,10 +92,9 @@ msgid "Intense Content"
 msgstr "Internet"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:172
-#, fuzzy, kde-format
-#| msgid "Internal error"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "Belső hiba"
+msgstr "Technikai hibaüzenet: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:224
 #, kde-format
@@ -168,11 +163,10 @@ msgstr "üres 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Alkalmazások"
+msgstr "Minden alkalmazás"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -539,11 +533,10 @@ msgid "System Settings"
 msgstr "Rendszerbeállítások"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:124
-#, fuzzy, kde-format
-#| msgid "%1 (user)"
+#, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
-msgstr "%1 (felhasználó)"
+msgstr "%1 (felhasználói)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:700
 #, kde-format
@@ -557,10 +550,9 @@ msgid "Malformed appstream url '%1'"
 msgstr "Hibás appstream URL: „%1”"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1775
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1'"
+#, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "Nem sikerült elindítani: „%1”"
+msgstr "A(z) „%1” forrás hozzáadása sikertelen: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
 #, kde-format
@@ -590,8 +582,7 @@ msgid "Retrieving size information"
 msgstr "Méretinformáció lekérdezése"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:448
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Ismeretlen"
@@ -599,55 +590,49 @@ msgstr "Ismeretlen"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:504
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1'"
+#, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "Nem sikerült elindítani: „%1”"
+msgstr "A(z) „%1” indítása sikertelen: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:738
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Installed Files"
+#, kde-format
 msgid "All Files"
-msgstr "Telepített fájlok"
+msgstr "Minden fájl"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:740
 #, kde-format
 msgid "Home"
-msgstr ""
+msgstr "Saját mappa"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:742
-#, fuzzy, kde-format
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloads"
-msgstr "Letöltés"
+msgstr "Letöltések"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:744
 #, kde-format
 msgid "Music"
-msgstr ""
+msgstr "Zene"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:801
 #, kde-format
 msgid "Network Access"
-msgstr ""
+msgstr "Hálózati hozzáférés"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
 #, kde-format
 msgid "Can access the internet"
-msgstr ""
+msgstr "Hozzáférhet az internethez"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "System Updates"
+#, kde-format
 msgid "Sound system access"
-msgstr "Rendszerfrissítések"
+msgstr "Hangrendszer hozzáférés"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Lejátszhat hangot"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
@@ -2298,11 +2283,9 @@ msgid "Replaced packages:"
 msgstr "Metacsomagok"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
-#, fuzzy, kde-format
-#| msgctxt "@label The parent package that this package comes from"
-#| msgid "Source Package:"
+#, kde-format
 msgid "Removed packages:"
-msgstr "Forráscsomag:"
+msgstr "Eltávolított csomagok:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #, fuzzy, kde-format
@@ -2475,7 +2458,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113
 #, kde-format
@@ -2505,12 +2488,11 @@ msgid "Launch"
 msgstr "Indítás"
 
 #: libdiscover/resources/AbstractResource.cpp:251
-#, fuzzy, kde-format
-#| msgid "Update to version %1"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "Frissítés erre a verzióra: %1"
+msgstr "A(z) %1 verzió frissítése"
 
 #: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
