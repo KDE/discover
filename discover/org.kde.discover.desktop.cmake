@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Discover
 Name[ar]=المستكشف
+Name[ast]=Discover
 Name[az]=Discover
 Name[be]=Discover
 Name[bg]=Discover
@@ -127,6 +128,7 @@ GenericName[zh_TW]=軟體中心
 Categories=Qt;KDE;System;
 Keywords=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
 Keywords[ar]=برنامج;برمجيّة;برمجية;مستودع;حزمة;تثبيت;إزالة;أرشيف;تحديث;تطبيقات;تطبيق;
+Keywords[ast]=programa;software;depósitu;paquete;amestar;amiestu;instalar;instalación;desinstalar;desinstalación;anovar;anovamientu;aplicaciones;xuegos;xugar;flatpak;snap;complementos;plugins;firmware;
 Keywords[az]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;proqram;proqram təminatı;anbar;paket;əlavə edin;quraşdırın;silin;ləğv edin;yeniləyin;tətbiqlər; tətbiqetmələr;oyunlar;əlavələr
 Keywords[be]=праграма;праграмнае забеспячэнне;рэпазіторый;пакунак;дадаць;усталяваць;выдаліць;абнавіць;праграмы;гульні;flatpak;snap;дапаўненні;прашыўка;
 Keywords[bg]=програма;софтуер;хранилище;пакет;инсталиране;премахване;актуализация;програми;приложения;
