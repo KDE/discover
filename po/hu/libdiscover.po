@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-14 01:36+0000\n"
-"PO-Revision-Date: 2023-12-22 21:37+0100\n"
+"PO-Revision-Date: 2023-12-23 21:53+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -66,30 +66,26 @@ msgctxt ""
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr ""
+msgstr "Enyhén korhatáros"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:193
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr "Internet"
+msgstr "Közepesen korhatáros"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:196
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "Internet"
+msgstr "Erősen korhatáros"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:172
 #, kde-format
@@ -617,7 +613,7 @@ msgstr "Zene"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:801
 #, kde-format
 msgid "Network Access"
-msgstr "Hálózati hozzáférés"
+msgstr "Hálózat"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
 #, kde-format
@@ -627,7 +623,7 @@ msgstr "Hozzáférhet az internethez"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid "Sound system access"
-msgstr "Hangrendszer hozzáférés"
+msgstr "Hangrendszer"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
@@ -638,7 +634,7 @@ msgstr "Lejátszhat hangot"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
 #, kde-format
 msgid "Session Bus Access"
-msgstr ""
+msgstr "Munkamenet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #, kde-format
@@ -646,52 +642,55 @@ msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
+"Kommunikálhat a felhasználói fiók által futtatott egyéb alkalmazásokkal és "
+"folyamatokkal"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
 msgid "System Bus Access"
-msgstr ""
+msgstr "Rendszer"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
+"Kommunikálhat a rendszeren futtatott egyéb alkalmazásokkal és folyamatokkal"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
 msgid "Remote Login Access"
-msgstr ""
+msgstr "Távoli bejelentkezés"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
-msgstr ""
+msgstr "Távoli bejelentkezési kérést kezdeményezhet az SSH protokollal"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
 #, kde-format
 msgid "Smart Card Access"
-msgstr ""
+msgstr "Intelligens kártya"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr ""
+msgstr "Integrálható és kommunikálhat intelligens kártyákkal"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
 #, kde-format
 msgid "Printer Access"
-msgstr ""
+msgstr "Nyomtató"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr ""
+msgstr "Integrálható és kommunikálhat nyomtatókkal"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "GPG ügynök"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
@@ -699,69 +698,73 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Hozzáférhet a GPG titkosítási szolgáltatáshoz, amelyet általában aláíráshoz "
+"és aláírt dokumentumok olvasásához használnak"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #, kde-format
 msgid "Bluetooth Access"
-msgstr ""
+msgstr "Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr ""
+msgstr "Integrálható és kommunikálhat Bluetooth eszközökkel"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
 #, kde-format
 msgid "Low-Level System Access"
-msgstr ""
+msgstr "Rendszerhívások"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Hozzáférhet az alacsony szintű rendszerhívásokhoz (például ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
 msgid "Device Access"
-msgstr ""
+msgstr "Eszközök"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
+"Kommunikálhat beépített vagy csatlakoztatott hardvereszközökkel és "
+"vezérelheti azokat"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr ""
+msgstr "Kernel-alapú virtuális gépek"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
-msgstr ""
+msgstr "Futtathat vendégként más operációs renszereket virtuális számítógépen"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:907
 #, kde-format
 msgid "%1 (read-only)"
-msgstr ""
+msgstr "%1 (csak olvasható)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "%1 (can create files)"
-msgstr ""
+msgstr "%1 (létrehozhat fájlokat)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:919
 #, kde-format
 msgid "%1 (read & write) "
-msgstr ""
+msgstr "%1 (írható és olvasható)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:928
 #, kde-format
 msgid "Home Folder Access"
-msgstr ""
+msgstr "Saját mappa"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
 #, kde-format
@@ -769,6 +772,8 @@ msgid ""
 "Can read, write, and create files in the following locations in your home "
 "folder without asking permission first: %1"
 msgstr ""
+"Olvashat, írhat és létrehozhat fájlokat a következő helyeken a saját "
+"mappájában jogosultság kérése nélkül: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
 #, kde-format
@@ -776,6 +781,8 @@ msgid ""
 "Can read and write files in the following locations in your home folder "
 "without asking permission first: %1"
 msgstr ""
+"Olvashat és írhat és fájlokat a következő helyeken a saját mappájában "
+"jogosultság kérése nélkül: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
@@ -783,6 +790,8 @@ msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
 msgstr ""
+"Olvashat fájlokat a következő helyeken a saját mappájában jogosultság kérése "
+"nélkül: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
 #, kde-format
@@ -790,11 +799,13 @@ msgid ""
 "Can access files in the following locations in your home folder without "
 "asking permission first: %1"
 msgstr ""
+"Hozzáférhet fájlokhoz a következő helyeken a saját mappájában jogosultság "
+"kérése nélkül: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
 #, kde-format
 msgid "System Folder Access"
-msgstr ""
+msgstr "Rendszermappa"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
 #, kde-format
@@ -802,6 +813,8 @@ msgid ""
 "Can read, write, and create system files in the following locations without "
 "asking permission first: %1"
 msgstr ""
+"Olvashat, írhat és létrehozhat rendszerfájlokat a következő helyeken  "
+"jogosultság kérése nélkül: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
 #, kde-format
@@ -809,6 +822,8 @@ msgid ""
 "Can read and write system files in the following locations without asking "
 "permission first: %1"
 msgstr ""
+"Olvashat és írhat rendszerfájlokat a következő helyeken  jogosultság kérése "
+"nélkül: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:949
 #, kde-format
@@ -816,6 +831,7 @@ msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
 msgstr ""
+"Olvashat rendszerfájlokat a következő helyeken  jogosultság kérése nélkül: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:951
 #, kde-format
@@ -823,6 +839,8 @@ msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
 msgstr ""
+"Hozzáférhet rendszerfájlokhoz a következő helyeken  jogosultság kérése "
+"nélkül: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:961
 #, kde-format
@@ -830,6 +848,8 @@ msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
+"Kommunikálhat egyéb alkalmazásokkal és folyamatokkal a munkameneten belül a "
+"következő kommunikációs protokollok használatával: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
 #, kde-format
@@ -837,6 +857,8 @@ msgid ""
 "Can communicate with all applications and system services using the "
 "following communication protocols: %1"
 msgstr ""
+"Kommunikálhat minden alkalmazással és rendszerfolyamattal a következő "
+"kommunikációs protokollok használatával: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
 #, kde-format
@@ -844,9 +866,7 @@ msgid "Add Flathub"
 msgstr "Flathub hozzáadása"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Applying Changes"
+#, kde-format
 msgid "Apply Changes"
 msgstr "Változtatások alkalmazása"
 
@@ -856,6 +876,8 @@ msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
 msgstr ""
+"A Flatpak források prioritásának módosításait alkalmazni kell, mielőtt azok "
+"életbe lépnek."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:99
 #, kde-format
@@ -913,7 +935,7 @@ msgstr "„%1” hozzáadása itt: %2, innen: %3"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:195
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "A(z) „%1” nem található itt: „%2”; ellenőrizze, hogy elérhető-e."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
 #, kde-format
@@ -922,50 +944,48 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
+"A(z) %1 fejlesztői verziója elavult. A stabil verzió használata erősen "
+"ajánlott."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
-#, fuzzy, kde-format
-#| msgctxt "Notification when a new version of Kubuntu is available"
-#| msgid "A new version of Kubuntu is available."
+#, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr "Új Kubuntu kiadás érhető el."
+msgstr "Egy sokkal stabilabb verzió érhető el ebből: %1."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:51
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Available Version"
+#, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr "Elérhető verzió"
+msgstr "Stabil verzió megtekintése itt: %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "A(z) %1 nincs telepítve, de az adatai még jelen vannak."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "Beállítások és felhasználói adatok törlése"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:33
 #, kde-format
 msgid "Clearing settings and user data…"
-msgstr ""
+msgstr "Beállítások és felhasználói adatok eltávolítása…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:23
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "A(z) %1 jogosultságai"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:74
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:17
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "Jogosultságok beállítása…"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -982,10 +1002,9 @@ msgid "Review EULA"
 msgstr "EULA áttekintése"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
-#, fuzzy, kde-format
-#| msgid "Could not add the source %1"
+#, kde-format
 msgid "Could not enable remote %1: %2"
-msgstr "Nem sikerült hozzáadni a forrást: %1"
+msgstr "A távoli %1 engedélyezése nem sikerült: %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:63
 #, kde-format
@@ -993,6 +1012,8 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"Nem támogatott kérdés:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:156
 #, kde-format
@@ -1075,7 +1096,7 @@ msgstr "Hibás KNewStuff URI: %1"
 #, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"
-msgstr ""
+msgstr "KDE Store"
 
 #: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
 #, kde-format
@@ -1118,6 +1139,8 @@ msgid ""
 "Your operating system ended support on %1. Consider upgrading to a supported "
 "version."
 msgstr ""
+"Az operációs rendszere befejezte a támogatást ekkor: %1. Fontolja meg a "
+"frissítést egy támogatott verzióra."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:906
 #, kde-format
@@ -1133,22 +1156,22 @@ msgid ""
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
+"<b>A(z) %1 mostantól elérhető.</b>\n"
+"Az új verzióra váltáshoz először telepítsen minden elérhető frissítést, majd "
+"indítsa újra a rendszert."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "Frissítésre"
+msgstr "Frissítés most"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "A tároló nem érhető el"
+msgstr "A(z) %1 most már elérhető."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1171,10 +1194,9 @@ msgid "Internal error"
 msgstr "Belső hiba"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:27
-#, fuzzy, kde-format
-#| msgid "Internal error"
+#, kde-format
 msgid "Internal error: %1"
-msgstr "Belső hiba"
+msgstr "Belső hiba: %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:31
 #, kde-format
@@ -1926,10 +1948,9 @@ msgid "Repair System"
 msgstr "Rendszer javítása"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:137
-#, fuzzy, kde-format
-#| msgid "Failed Offline Update"
+#, kde-format
 msgid "Repairing failed offline update"
-msgstr "Sikertelen offline frissítés"
+msgstr "Sikertelen offline frissítés javítása"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
 #, kde-format
@@ -1945,7 +1966,7 @@ msgstr "%1<nl/>Kérjük, jelentse ezt a hibát a disztribúciójának."
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
 #, kde-format
 msgid "Repaired Successfully"
-msgstr ""
+msgstr "Sikeres javítás"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
 #, kde-format
@@ -1960,11 +1981,9 @@ msgstr[0] "%1 csomag sikeresen frissítve"
 msgstr[1] "%1 csomag sikeresen frissítve"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Unknown Error"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Ismeretlen hiba"
+msgstr "Ismeretlen forrás"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
 #, kde-format
@@ -2016,12 +2035,10 @@ msgid "Repository URL:"
 msgstr "Tároló:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
-#, fuzzy, kde-format
-#| msgctxt "@item example: muon installed at 16:00"
-#| msgid "%1 %2 at %3"
+#, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr "A(z) %1 %2 ekkor: %3"
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
 #, kde-format
@@ -2029,18 +2046,17 @@ msgid "System upgrade"
 msgstr "Rendszerfrissítés"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 frissítendő csomag"
-msgstr[1] "%1 frissítendő csomag"
+msgstr[0] "1 csomag frissül"
+msgstr[1] "%1 csomag frissül"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Frissítés az új %2 verzióra<br/>Nincsenek kiadási megjegyzések"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
 #, kde-format
@@ -2048,6 +2064,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Frissítés az új %2 verzióra<br/>Kiadási megjegyzések:<blockquote>"
+"%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
 #, kde-format
@@ -2063,7 +2081,7 @@ msgstr "Jövőbeli"
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
-msgstr ""
+msgstr "Nincs elég hely a frissítés végrehajtásához; csak %1 érhető el."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:577
 #, kde-format
@@ -2079,11 +2097,9 @@ msgstr ""
 "disztribúciója csomagolójának."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:584
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "No Change"
+#, kde-format
 msgid "Confirm Changes"
-msgstr "Nincs változás"
+msgstr "Változtatások megerősítése"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:585
 #, kde-format
@@ -2187,26 +2203,24 @@ msgstr[1] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Dependencies"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "Függőségek"
+msgstr "Függőségek megjelenítése…"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "Csomag függőségei: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Full Access"
-msgstr ""
+msgstr "Teljes hozzáférés"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
 #, kde-format
 msgid "Can access everything on the system"
-msgstr ""
+msgstr "Mindenhez hozzáférhet a rendszeren"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
@@ -2218,34 +2232,38 @@ msgstr "Operációs rendszer"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
+"rpm-ostree: Több betöltött környezet található. Küldjön hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
+"rpm-ostree: Nem található betöltött környezet. Küldjön hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr "Frissítésre"
+msgstr "Frissítés megkezdése…"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
+"Az aktuális verzióhoz várakozó frissítések vannak. Folytatás mindenképp."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
+"Frissítsen a legutóbbi verzióra egy fő verzióra újraalapozás (rebase) előtt"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Hiányzó távoli hivatkozás az újraalapozás (rebase) művelethez. Küldjön "
+"hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
 #, kde-format
@@ -2253,34 +2271,24 @@ msgid "GPL and other licenses"
 msgstr "GPL és egyéb licencek"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Confirm Additional Changes"
+#, kde-format
 msgid "Additional packages: "
-msgstr "További változtatások megerősítése"
+msgstr "További csomagok: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Confirm Additional Changes"
+#, kde-format
 msgid "Additional modules: "
-msgstr "További változtatások megerősítése"
+msgstr "További modulok: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Unlock package"
+#, kde-format
 msgid "Local packages: "
-msgstr "Csomag feloldása"
+msgstr "Helyi csomagok: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"metapackages\""
-#| msgid "Meta Packages"
+#, kde-format
 msgid "Replaced packages:"
-msgstr "Metacsomagok"
+msgstr "Cserélt csomagok:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, kde-format
@@ -2288,37 +2296,29 @@ msgid "Removed packages:"
 msgstr "Eltávolított csomagok:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Lock at Current Version"
+#, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "Jelenlegi verzió zárolása"
+msgstr "Jelenleg betöltött verzió (rögzítve)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Lock at Current Version"
+#, kde-format
 msgid "Currently booted version"
-msgstr "Jelenlegi verzió zárolása"
+msgstr "Jelenleg betöltött verzió"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "Az újraindítás után használt verzió"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Force Version"
+#, kde-format
 msgid "Fallback version (pinned)"
-msgstr "Verzió kényszerítése"
+msgstr "Tartalék verzió (rögzítve)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Force Version"
+#, kde-format
 msgid "Fallback version"
-msgstr "Verzió kényszerítése"
+msgstr "Tartalék verzió"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
@@ -2330,6 +2330,8 @@ msgstr "ostree távoliak"
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Hiba: Nincs megadva DBus interfész. Küldjön "
+"hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:58
 #, kde-format
@@ -2337,12 +2339,16 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Hiba: Nem lehet elindítani egy tranzakcióz érvénytelen "
+"formátumú erőforráshoz. Küldjön hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:78
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Hiba: Nem lehet újraalapozni (rebase) üres hivatkozásra. "
+"Küldjön hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:261
@@ -2350,75 +2356,71 @@ msgstr ""
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Hiba: Ismeretlen művelet kérve. Küldjön hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
-msgstr "Jelenleg folyamatban lévő rpm-ostree tranzakció:"
+msgstr ""
+"rpm-ostree tranzakció nem sikerült:\n"
+"%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:235
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Hiba: Ismeretlen erőforrásformátum. Küldjön "
+"hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:355
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"Az rpm-ostree tranzakció megszakítása. Ez némi időbe telhet. Kérjük, várjon."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@action Checks the Internet for updates"
-#| msgid "Check for Updates"
+#, kde-format
 msgid "Checking for a system update"
-msgstr "Frissítések keresése"
+msgstr "Rendszerfrissítés keresése"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:387
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Downloading Packages"
+#, kde-format
 msgid "Downloading system update"
-msgstr "Csomagok letöltése"
+msgstr "Rendszerfrissítés letöltése"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:390
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "Operációs rendszer"
+msgstr "A rendszer frissítése"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Frissítés a következő főverzióra"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr ""
+msgstr "Művelet folyamatban (a Discoveren kívül lettindítva)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "Nem lehet megszakítani a tranzakciót"
+msgstr "Ismeretlen tranzakciótípus"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "Csatornák…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:28
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox Filters all changes in the history view"
-#| msgid "All changes"
+#, kde-format
 msgid "%1 channels"
-msgstr "Minden változtatás"
+msgstr "%1 csatornák"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:41
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
@@ -2429,12 +2431,12 @@ msgstr "%1 - %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "Váltás"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:26
 #, kde-format
 msgid "Permissions for %1"
-msgstr ""
+msgstr "A(z) %1 jogosultságai"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2453,7 +2455,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:74
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
+msgstr "SteamOS: Az atomupd nem kérhető le a SteamOS frissítésekhez…"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
