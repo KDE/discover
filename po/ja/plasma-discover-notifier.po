@@ -1,12 +1,13 @@
+# SPDX-FileCopyrightText: 2023 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019, 2020.
-# Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019.
+# Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 02:43+0000\n"
-"PO-Revision-Date: 2020-09-28 23:48+0900\n"
-"Last-Translator: Tomohiro Hyakutake <tomhioo@outlook.jp>\n"
+"PO-Revision-Date: 2023-12-22 19:29-0800\n"
+"Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -15,13 +16,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #: notifier/DiscoverNotifier.cpp:154
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "View Updates"
-msgstr "更新"
+msgstr "更新を表示"
 
 #: notifier/DiscoverNotifier.cpp:271
 #, kde-format
@@ -51,7 +51,7 @@ msgstr "オフライン"
 #: notifier/DiscoverNotifier.cpp:281
 #, kde-format
 msgid "Applying unattended updates…"
-msgstr ""
+msgstr "自動更新を適用中..."
 
 #: notifier/DiscoverNotifier.cpp:315
 #, kde-format
@@ -73,7 +73,7 @@ msgstr "再起動"
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
-msgstr ""
+msgstr "アップグレード"
 
 #: notifier/DiscoverNotifier.cpp:343
 #, kde-format
@@ -88,45 +88,44 @@ msgstr "新しいバージョン : %1"
 #: notifier/main.cpp:39
 #, kde-format
 msgid "Discover Notifier"
-msgstr ""
+msgstr "Discover 通知"
 
 #: notifier/main.cpp:41
-#, fuzzy, kde-format
-#| msgid "System up to date"
+#, kde-format
 msgid "System update status notifier"
-msgstr "システムは最新です"
+msgstr "システム更新通知"
 
 #: notifier/main.cpp:43
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr ""
+msgstr "© 2010-2022 Plasma Development Team"
 
 #: notifier/main.cpp:47
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Ryuichi Yamada"
 
 #: notifier/main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "ryuichi_ya220@outlook.jp"
 
 #: notifier/main.cpp:52
 #, kde-format
 msgid "Replace an existing instance"
-msgstr ""
+msgstr "既存のインスタンスを置換"
 
 #: notifier/main.cpp:54
 #, kde-format
 msgid "Do not show the notifier"
-msgstr ""
+msgstr "通知を表示しない"
 
 #: notifier/main.cpp:54
 #, kde-format
 msgid "hidden"
-msgstr ""
+msgstr "非表示"
 
 #: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
 #, kde-format
@@ -136,26 +135,24 @@ msgstr "更新"
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Open Discover…"
-msgstr ""
+msgstr "Discover を開く…"
 
 #: notifier/NotifierItem.cpp:55
-#, fuzzy, kde-format
-#| msgid "See Updates..."
+#, kde-format
 msgid "See Updates…"
 msgstr "更新を表示..."
 
 #: notifier/NotifierItem.cpp:60
-#, fuzzy, kde-format
-#| msgid "Refresh..."
+#, kde-format
 msgid "Refresh…"
 msgstr "再読み込み..."
 
 #: notifier/NotifierItem.cpp:64
 #, kde-format
 msgid "Restart to apply installed updates"
-msgstr ""
+msgstr "再起動してインストールされた更新を適用"
 
 #: notifier/NotifierItem.cpp:65
 #, kde-format
 msgid "Click to restart the device"
-msgstr ""
+msgstr "クリックしてデバイスを再起動"
