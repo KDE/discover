@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-20 01:35+0000\n"
-"PO-Revision-Date: 2023-12-23 21:21+0100\n"
+"PO-Revision-Date: 2023-12-25 21:56+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -26,6 +26,8 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"A(z) %1 nincs beállítva alkalmazások telepítésére Discoverrel - csak "
+"alkalmazások bővítményeire"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -35,6 +37,9 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"A Discover használatához alkalmazásokhoz telepítse az Ön által preferált "
+"modult a <interface>Beállítások</interface> oldalon, a <interface>Hiányzó "
+"háttérprogramok</interface> alatt."
 
 #: discover/DiscoverObject.cpp:195
 #, fuzzy, kde-format
@@ -113,8 +118,7 @@ msgstr ""
 "csomagolójának."
 
 #: discover/DiscoverObject.cpp:402
-#, fuzzy, kde-format
-#| msgid "Report this issue"
+#, kde-format
 msgid "Report This Issue"
 msgstr "Jelentse ezt a hibát"
 
@@ -189,10 +193,9 @@ msgid "An application explorer"
 msgstr "Egy alkalmazásfelfedező"
 
 #: discover/main.cpp:121
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© A Plasma fejlesztői, 2010-2022."
+msgstr "© A Plasma fejlesztői, 2010-2024."
 
 #: discover/main.cpp:122
 #, kde-format
@@ -307,17 +310,14 @@ msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:203
-#, fuzzy, kde-format
-#| msgctxt "The app does not provide any licenses"
-#| msgid "Unknown"
+#, kde-format
 msgid "Unknown author"
-msgstr "Ismeretlen"
+msgstr "Ismeretlen szerző"
 
 #: discover/qml/ApplicationPage.qml:248
-#, fuzzy, kde-format
-#| msgid "Version"
+#, kde-format
 msgid "Version:"
-msgstr "Verzió"
+msgstr "Verzió:"
 
 #: discover/qml/ApplicationPage.qml:260
 #, kde-format
@@ -325,13 +325,11 @@ msgid "Size:"
 msgstr "Méret:"
 
 #: discover/qml/ApplicationPage.qml:272
-#, fuzzy, kde-format
-#| msgid "License"
-#| msgid_plural "Licenses"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "Licenc"
-msgstr[1] "Licencek"
+msgstr[0] "Licenc:"
+msgstr[1] "Licencek:"
 
 #: discover/qml/ApplicationPage.qml:280
 #, kde-format
@@ -404,16 +402,15 @@ msgid "Addons"
 msgstr "Bővítmények"
 
 #: discover/qml/ApplicationPage.qml:594
-#, fuzzy, kde-format
-#| msgid "Install or remove add-ons for %1"
+#, kde-format
 msgid "Install or remove additional functionality"
-msgstr "%1 bővítmények telepítése vagy eltávolítása"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:613
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "Megosztás"
 
 #: discover/qml/ApplicationPage.qml:614
 #, fuzzy, kde-format
@@ -1223,7 +1220,7 @@ msgstr "Tartalom megjelenítése"
 #: discover/qml/SourcesPage.qml:324
 #, kde-format
 msgid "Missing Backends"
-msgstr "Hiányzó backendek"
+msgstr "Hiányzó háttérprogramok"
 
 #: discover/qml/UpdatesPage.qml:13
 #, kde-format
