@@ -1,17 +1,18 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
+# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023 Alexander Yavorsky <kekcuha@gmail.com>
 # Yuri Efremov <yur.arh@gmail.com>, 2010, 2011, 2012, 2013, 2014.
 # Alexander Potashev <aspotashev@gmail.com>, 2010, 2011, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
-# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023 Alexander Yavorsky <kekcuha@gmail.com>
 # Мария Шикунова <translation-team@basealt.ru>, 2022.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-14 01:36+0000\n"
-"PO-Revision-Date: 2023-12-07 22:41+0300\n"
+"PO-Revision-Date: 2023-12-26 13:47+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 21.08.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -587,18 +588,17 @@ msgid "Retrieving size information"
 msgstr "Определение размера"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:448
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
-msgstr "неизвестная"
+msgstr "неизвестно"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:504
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
-#, fuzzy, kde-format
+#, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "Не удалось запустить «%1»"
+msgstr "Не удалось запустить «%1»: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:738
 #, kde-format
@@ -631,15 +631,14 @@ msgid "Can access the internet"
 msgstr "Может использовать подключение к интернету"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Доступ к шине на уровне системы"
+msgstr "Доступ к подсистеме воспроизведения звуков"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Разрешено воспроизведение звуков"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
@@ -648,16 +647,13 @@ msgid "Session Bus Access"
 msgstr "Доступ к шине на уровне сеанса"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Разрешён обмен данными с другими приложениями и процессами в том же сеансе "
-"рабочего стола с использованием следующих протоколов: %1"
+"Разрешён обмен данными с другими приложениями и процессами, принадлежащих "
+"пользователю"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
@@ -666,14 +662,9 @@ msgid "System Bus Access"
 msgstr "Доступ к шине на уровне системы"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
-msgstr ""
-"Разрешён обмен данными с другими приложениями и процессами в том же сеансе "
-"рабочего стола с использованием следующих протоколов: %1"
+msgstr "Разрешён обмен данными со всеми с другими приложениями и процессами"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
@@ -697,21 +688,20 @@ msgid "Can integrate and communicate with smart cards"
 msgstr "Предоставлен доступ к использованию смарт-карт"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Printer Access"
-msgstr "Доступ к оборудованию"
+msgstr "Доступ к принтерам"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Предоставлен доступ к использованию смарт-карт"
+msgstr ""
+"Предоставлен доступ использовать принтеры и обмениваться с ними данными"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "GPG Agent"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
@@ -719,29 +709,28 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Доступ к криптографической службе GPG, используемой, как правило, для "
+"подписывания и чтения подписанных документов"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
-#, fuzzy, kde-format
-#| msgid "Network Access"
+#, kde-format
 msgid "Bluetooth Access"
-msgstr "Сетевой доступ"
+msgstr "Доступ к Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Предоставлен доступ к использованию смарт-карт"
+msgstr "Возможность использовать устройства Bluetooth и передавать им данные"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Low-Level System Access"
-msgstr "Доступ к шине на уровне системы"
+msgstr "Низкоуровневый доступ к системе"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Возможность выполнять низкоуровневые вызовы, такие как ptrace"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
@@ -960,7 +949,7 @@ msgstr "Добавление «%1» (%2) из %3"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:195
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "Не удалось найти «%1» в «%2»: проверьте, что файл доступен."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
 #, kde-format
@@ -969,49 +958,48 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
+"Разрабатываемая версия приложения %1 устарела. Настоятельно рекомендуется "
+"использовать стабильную версию."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
-#, fuzzy, kde-format
-#| msgctxt "Notification when a new version of Kubuntu is available"
-#| msgid "A new version of Kubuntu is available."
+#, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr "Доступна новая версия Kubuntu."
+msgstr "Доступна более стабильная версия приложения «%1»."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:51
-#, fuzzy, kde-format
-#| msgid "New unstable version: %1"
+#, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr "Новая нестабильная версия: %1"
+msgstr "Открыть стабильную версию приложения на %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "Приложение «%1» не установлено, но имеются его данные."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "Удалить сохранённые настройки и пользовательские данные"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:33
 #, kde-format
 msgid "Clearing settings and user data…"
-msgstr ""
+msgstr "Выполняется очистка настроек и данных пользователя…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:23
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "Права доступа «%1»"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:74
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:17
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "Настроить права доступа…"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1038,6 +1026,8 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"Неподдерживаемый вопрос:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:156
 #, kde-format
@@ -1179,22 +1169,22 @@ msgid ""
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
+"<b>Доступна версия %1.</b>\n"
+"Чтобы обновиться до этой версии, сначала установите все доступные обновления "
+"системы и перезагрузите систему."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "Обновления"
+msgstr "Начать обновление сейчас"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "Репозиторий недоступен."
+msgstr "Доступна версия %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2011,11 +2001,9 @@ msgstr[2] "Успешно обновлены %1 пакетов"
 msgstr[3] "Успешно обновлён %1 пакет"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Unknown Error"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Неизвестная ошибка"
+msgstr "Неизвестный источник"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
 #, kde-format
@@ -2069,12 +2057,10 @@ msgid "Repository URL:"
 msgstr "Адрес репозитория:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
-#, fuzzy, kde-format
-#| msgctxt "@item example: muon installed at 16:00"
-#| msgid "%1 %2 at %3"
+#, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr "%1 %2 в %3"
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
 #, kde-format
@@ -2082,20 +2068,18 @@ msgid "System upgrade"
 msgstr "Обновление системы"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "Возможно обновить %1 пакет"
-msgstr[1] "Возможно обновить %1 пакета"
-msgstr[2] "Возможно обновить %1 пакетов"
-msgstr[3] "Возможно обновить один пакет"
+msgstr[0] "Будет обновлён %1 пакет"
+msgstr[1] "Будут обновлены %1 пакета"
+msgstr[2] "Будут обновлены %1 пакетов"
+msgstr[3] "Будет обновлён один пакет"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-msgstr ""
+msgstr "<h3>%1</h3>Обновление до версии %2<br/>Заметки о выпуске отсутствуют"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
 #, kde-format
@@ -2103,6 +2087,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Обновление до версии %2<br/>Заметки о выпуске:<blockquote>%3</"
+"blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
 #, kde-format
@@ -2133,11 +2119,9 @@ msgstr ""
 "поведение является ошибочным, сообщите об этом разработчикам дистрибутива."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:584
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "No Change"
+#, kde-format
 msgid "Confirm Changes"
-msgstr "Без изменений"
+msgstr "Подтвердить изменения"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:585
 #, kde-format
@@ -2246,28 +2230,24 @@ msgstr[3] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Dependencies"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "Зависимости"
+msgstr "Показать зависимости…"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "Зависимости пакета: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
-#, fuzzy, kde-format
-#| msgid "Home Folder Access"
+#, kde-format
 msgid "Full Access"
-msgstr "Доступ к домашней папке"
+msgstr "Полный доступ"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
-#, fuzzy, kde-format
-#| msgid "Can access the internet"
+#, kde-format
 msgid "Can access everything on the system"
-msgstr "Может использовать подключение к интернету"
+msgstr "Доступ ко всей системе"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
@@ -2279,34 +2259,40 @@ msgstr "Операционная система"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
+"rpm-ostree: Обнаружена загрузка множества развёртываний. Сообщите об этой "
+"ошибке."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
+"rpm-ostree: Не обнаружена загрузка развёртывания. Сообщите об этой ошибке."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr "Обновления"
+msgstr "Начать обновление…"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
+"Для текущей версии имеются отложенные обновления, операция продолжается."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
+"Обновитесь до последней версии перед переходом на версию со значительным "
+"изменением номера."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Отсутствует удалённая ссылка, необходимая для перехода. Сообщите об этой "
+"ошибке."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
 #, kde-format
@@ -2314,72 +2300,54 @@ msgid "GPL and other licenses"
 msgstr "GPL и другие лицензии"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Confirm Additional Changes"
+#, kde-format
 msgid "Additional packages: "
-msgstr "Подтверждение дополнительных изменений"
+msgstr "Дополнительные пакеты: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Confirm Additional Changes"
+#, kde-format
 msgid "Additional modules: "
-msgstr "Подтверждение дополнительных изменений"
+msgstr "Дополнительные модули: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Unlock package"
+#, kde-format
 msgid "Local packages: "
-msgstr "Снять фиксирование версии"
+msgstr "Локальные пакеты: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"metapackages\""
-#| msgid "Meta Packages"
+#, kde-format
 msgid "Replaced packages:"
-msgstr "Метапакеты"
+msgstr "Заменённые пакеты: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
-#, fuzzy, kde-format
-#| msgctxt "@label The parent package that this package comes from"
-#| msgid "Source Package:"
+#, kde-format
 msgid "Removed packages:"
-msgstr "Родительский пакет:"
+msgstr "Удалённые пакеты: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
-#, fuzzy, kde-format
-#| msgid "Current Version:"
+#, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "Текущая версия:"
+msgstr "Текущая загруженная версия (закреплено)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
-#, fuzzy, kde-format
-#| msgid "Current Version:"
+#, kde-format
 msgid "Currently booted version"
-msgstr "Текущая версия:"
+msgstr "Текущая загруженная версия"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "Версия, которая будет использована после перезагрузки"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Force Version"
+#, kde-format
 msgid "Fallback version (pinned)"
-msgstr "Установить принудительно"
+msgstr "Резервная версия (закреплено)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Force Version"
+#, kde-format
 msgid "Fallback version"
-msgstr "Установить принудительно"
+msgstr "Резервная версия"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
@@ -2391,6 +2359,8 @@ msgstr "удалённые системы ostree"
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Не обнаружена шина обмена данными DBus. Сообщите об этой "
+"ошибке."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:58
 #, kde-format
@@ -2398,12 +2368,16 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Не удалось начать транзакцию, ресурс неверного формата. "
+"Сообщите об этой ошибке."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:78
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Не удалось перебазироваться по пустой ссылке. Сообщите "
+"об этой ошибке."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:261
@@ -2411,75 +2385,69 @@ msgstr ""
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Запрошена неизвестная операция. Сообщите об этой ошибке."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
-msgstr "Выполняемая операция rpm-ostree:"
+msgstr "Операция rpm-ostree завершилась ошибкой:%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:235
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Неизвестный формат ресурса. Сообщите об этой ошибке."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:355
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"Выполняется отмена выполняемой операции rpm-ostree. Это может занять "
+"некоторое время."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@action Checks the Internet for updates"
-#| msgid "Check for Updates"
+#, kde-format
 msgid "Checking for a system update"
-msgstr "Проверить обновления"
+msgstr "Выполняется проверка наличия обновлений системы"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:387
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Downloading Packages"
+#, kde-format
 msgid "Downloading system update"
-msgstr "Загрузка пакетов"
+msgstr "Выполняется загрузка обновлений системы"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:390
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "Операционная система"
+msgstr "Выполняется обновление системы"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Выполняется обновление до следующей значительной версии"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr ""
+msgstr "Выполняется операция, запущенная не в Discover"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "Невозможно отменить операцию."
+msgstr "Неизвестный тип операции"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "Каналы…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:28
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox Filters all changes in the history view"
-#| msgid "All changes"
+#, kde-format
 msgid "%1 channels"
-msgstr "Все изменения"
+msgstr "Каналов: %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:41
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
@@ -2490,12 +2458,12 @@ msgstr "%1 — %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "Использовать"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:26
 #, kde-format
 msgid "Permissions for %1"
-msgstr ""
+msgstr "Права доступа «%1»"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2515,11 +2483,12 @@ msgstr ""
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""
+"SteamOS: Не удалось получить данные о наличии обновлений SteamOS от atomupd…"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113
 #, kde-format
