@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-14 01:36+0000\n"
-"PO-Revision-Date: 2023-11-11 01:05+0100\n"
+"PO-Revision-Date: 2023-12-29 00:55+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
-"Language-Team: \n"
+"Language-Team: Assamese <alministradores@softastur.org>\n"
 "Language: ast\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -597,7 +597,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:742
 #, kde-format
 msgid "Downloads"
-msgstr ""
+msgstr "Descargues"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:744
 #, kde-format
@@ -612,23 +612,23 @@ msgstr "Accesu a la rede"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
 #, kde-format
 msgid "Can access the internet"
-msgstr ""
+msgstr "Pue acceder a internet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid "Sound system access"
-msgstr ""
+msgstr "Accesu al soníu del sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Pue reproducir audiu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
 #, kde-format
 msgid "Session Bus Access"
-msgstr ""
+msgstr "Accesu al bus de sesiones"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #, kde-format
@@ -641,7 +641,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
 msgid "System Bus Access"
-msgstr ""
+msgstr "Accesu al bus del sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
@@ -661,7 +661,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
 #, kde-format
 msgid "Smart Card Access"
-msgstr ""
+msgstr "Accesu a les tarxetes intelixentes"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
@@ -671,7 +671,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
 #, kde-format
 msgid "Printer Access"
-msgstr ""
+msgstr "Accesu a les imprentadores"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
@@ -681,7 +681,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "Axente GPG"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
@@ -693,7 +693,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #, kde-format
 msgid "Bluetooth Access"
-msgstr ""
+msgstr "Accesu al Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
@@ -703,7 +703,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
 #, kde-format
 msgid "Low-Level System Access"
-msgstr ""
+msgstr "Accesu al nivel baxu del sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
@@ -713,7 +713,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
 msgid "Device Access"
-msgstr ""
+msgstr "Accesu a los preseos"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
@@ -2309,7 +2309,7 @@ msgstr ""
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
-msgstr ""
+msgstr "%1 - %2"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
 #, kde-format
@@ -2341,7 +2341,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113
 #, kde-format
@@ -2407,7 +2407,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label Download rate"
 msgid "%1/s"
-msgstr ""
+msgstr "%1/s"
 
 #: libdiscover/Transaction/TransactionModel.cpp:74
 #, kde-format
@@ -2467,7 +2467,7 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
-msgstr ""
+msgstr "Aplicaciones"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:131
 #, kde-format

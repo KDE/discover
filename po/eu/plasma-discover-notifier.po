@@ -1,7 +1,7 @@
 # Translation for plasma-discover-notifier.po to Euskara/Basque (eu).
 # Copyright (C) 2017-2023 This file is copyright:
 # This file is distributed under the same license as the discover package.
-# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
 # Iñigo Salvador Azurmendi <xalba@ni.eus>, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-20 01:35+0000\n"
-"PO-Revision-Date: 2023-07-28 10:20+0200\n"
+"PO-Revision-Date: 2023-12-28 20:21+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: notifier/DiscoverNotifier.cpp:150
 #, kde-format
@@ -99,10 +99,9 @@ msgid "System update status notifier"
 msgstr "Sistemako eguneratze egoeraren jakinarazlea"
 
 #: notifier/main.cpp:42
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2022 Plasma garapen taldea"
+msgstr "© 2010-2024 Plasma garapen taldea"
 
 #: notifier/main.cpp:46
 #, kde-format
