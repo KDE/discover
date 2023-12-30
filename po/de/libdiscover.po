@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-14 01:36+0000\n"
-"PO-Revision-Date: 2023-12-20 22:16+0100\n"
+"PO-Revision-Date: 2023-12-21 15:10+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -642,8 +642,8 @@ msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Kann mit anderen Anwendungen und Prozessen in diesem Benutzerkonto "
-"kommunizieren"
+"Kann mit allen anderen Anwendungen und laufenden Prozessen in diesem "
+"Benutzerkonto kommunizieren"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
@@ -1160,9 +1160,9 @@ msgid ""
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
-"<b>%1 ist nun verfügbar.</b>\n"
-"Zum Aktualisieren zu dieser neuen Version wenden Sie zunächst alle "
-"verfügbaren Aktualisierungen an und führen dann einen Neustart durch."
+"<b>%1 ist jetzt verfügbar.</b>\n"
+"Wenden Sie alle ausstehenden Aktualisierungen an und starten Sie dann das "
+"System neu, um auf diese neue Version aktualisieren zu können."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
 #, kde-format
@@ -1175,7 +1175,7 @@ msgstr "Jetzt aktualisieren"
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "%1 ist nun verfügbar."
+msgstr "%1 ist jetzt verfügbar."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2348,8 +2348,8 @@ msgstr "ostree-Paketquellen"
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Es ist keine DBus-Schnittstelle verfügbar. Bitte senden "
-"Sie einen Fehlerbericht."
+"rpm-ostree-backend: Fehler: Es ist keine DBus-Schnittstelle verfügbar. Bitte "
+"senden Sie einen Fehlerbericht."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:58
 #, kde-format
@@ -2358,7 +2358,7 @@ msgid ""
 "invalid format. Please file a bug."
 msgstr ""
 "rpm-ostree-backend: Fehler: Das Starten einer Transaktion für eine Ressource "
-"mit einem ungültigen Format ist nicht möglich. Bitte erstellen Sie einen "
+"mit einem ungültigen Format ist nicht möglich. Bitte senden Sie einen "
 "Fehlerbericht."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:78
@@ -2385,7 +2385,7 @@ msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
 msgstr ""
-"rpm-ostree-Transaktion fehlgeschlagen mit:\n"
+"rpm-ostree-Transaktion ist fehlgeschlagen mit:\n"
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:235

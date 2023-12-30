@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-20 01:35+0000\n"
-"PO-Revision-Date: 2023-12-20 11:14+0300\n"
+"PO-Revision-Date: 2023-12-29 13:18+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.80\n"
+"X-Generator: Lokalize 24.01.85\n"
 
 #: discover/DiscoverObject.cpp:190
 #, kde-format
@@ -345,7 +345,7 @@ msgstr[1] "Daha fazla…"
 #: discover/qml/ApplicationPage.qml:334
 #, kde-format
 msgid "Content Rating:"
-msgstr "İçerik Derecelendirmesi:"
+msgstr "İçerik derecelendirmesi:"
 
 #: discover/qml/ApplicationPage.qml:343
 #, kde-format

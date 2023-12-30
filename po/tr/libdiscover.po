@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-14 01:36+0000\n"
-"PO-Revision-Date: 2023-11-18 14:01+0300\n"
+"PO-Revision-Date: 2023-12-29 13:18+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.01.85\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1999,17 +1999,17 @@ msgstr "Eskiler:"
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
 #, kde-format
 msgid "Release Notes:"
-msgstr "Sürüm Notları:"
+msgstr "Sürüm notları:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:396
 #, kde-format
 msgid "Update State:"
-msgstr "Durumu Güncelle:"
+msgstr "Güncelleme durumu:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
 #, kde-format
 msgid "Restart:"
-msgstr "Yeniden Başlat:"
+msgstr "Yeniden başlat:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
 #, kde-format
