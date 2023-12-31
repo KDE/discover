@@ -1345,6 +1345,3 @@ msgstr "更新の確認が必要です"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "最後の更新時刻は不明です"
-
-#~ msgid "Compact Mode (auto/compact/full)."
-#~ msgstr "コンパクトモード (オート/コンパクト/フル)"
