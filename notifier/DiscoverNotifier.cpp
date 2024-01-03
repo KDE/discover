@@ -40,8 +40,8 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
 {
     m_settings = new UpdatesSettings(this);
     m_settingsWatcher = KConfigWatcher::create(m_settings->sharedConfig());
+    QNetworkInformation::loadBackendByFeatures(QNetworkInformation::Feature::Reachability | QNetworkInformation::Feature::TransportMedium);
     if (auto info = QNetworkInformation::instance()) {
-        info->loadBackendByFeatures(QNetworkInformation::Feature::Reachability | QNetworkInformation::Feature::TransportMedium);
         connect(info, &QNetworkInformation::reachabilityChanged, this, &DiscoverNotifier::stateChanged);
         connect(info, &QNetworkInformation::transportMediumChanged, this, &DiscoverNotifier::stateChanged);
     } else {
