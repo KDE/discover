@@ -7,7 +7,9 @@
 #include "SteamOSBackend.h"
 #include "SteamOSResource.h"
 #include "SteamOSTransaction.h"
+
 #include <Transaction/Transaction.h>
+#include <Transaction/TransactionModel.h>
 #include <resources/SourcesModel.h>
 #include <resources/StandardBackendUpdater.h>
 
@@ -51,6 +53,7 @@ SteamOSBackend::SteamOSBackend(QObject *parent)
     , m_updateVersion()
     , m_updateSize(0)
     , m_resource(nullptr)
+    , m_transaction(nullptr)
 {
     qDBusRegisterMetaType<VariantMapMap>();
 
@@ -66,6 +69,10 @@ SteamOSBackend::SteamOSBackend(QObject *parent)
 
     // If we got a version property, assume the service is responding and check for updates
     if (!m_currentVersion.isEmpty() && !m_currentBuildID.isEmpty()) {
+        if (hasExistingTransaction()) {
+            return;
+        }
+
         checkForUpdates();
     } else {
         qDebug() << "steamos-backend: Unable to query atomupd for SteamOS Updates...";
@@ -114,6 +121,36 @@ void SteamOSBackend::acquireFetching(bool f)
     }
 }
 
+bool SteamOSBackend::hasExistingTransaction()
+{
+    // Do we already know that we have a transaction in progress?
+    if (m_transaction) {
+        qInfo() << "steamos-backend: A transaction is already in progress";
+        return true;
+    }
+
+    // Is there actualy a transaction in progress we don't know about yet?
+    uint status = m_interface->updateStatus();
+    if (status != Idle) {
+        qInfo() << "steamos-backend: Found a transaction in progress";
+        // We don't check that m_currentlyBootedDeployment is != nullptr here as we expect
+        // that the backend is initialized when we're called.
+        m_updateBuild = m_interface->updateBuildID();
+        m_resource = new SteamOSResource(m_updateVersion, m_updateBuild, m_updateSize, QString("[%1] - %2").arg(m_currentVersion).arg(m_currentBuildID), this);
+        setupTransaction(m_resource);
+        TransactionModel::global()->addTransaction(m_transaction);
+        return true;
+    }
+
+    return false;
+}
+
+void SteamOSBackend::setupTransaction(SteamOSResource *app)
+{
+    m_transaction = new SteamOSTransaction(qobject_cast<SteamOSResource *>(app), Transaction::InstallRole, m_interface);
+    connect(m_transaction, &SteamOSTransaction::needReboot, this, &SteamOSBackend::needRebootChanged);
+}
+
 void SteamOSBackend::checkForUpdates()
 {
     if (m_fetching)
@@ -124,9 +161,15 @@ void SteamOSBackend::checkForUpdates()
     if (m_currentVersion.isEmpty())
         return;
 
+    if (hasExistingTransaction()) {
+        qInfo() << "steamos-backend: Not checking for updates while a transaction is in progress";
+        return;
+    }
+
     acquireFetching(true);
 
-    qDebug() << "steamos-backend-backend::checkForUpdates asking DBus api";
+    qDebug() << "steamos-backend::checkForUpdates asking DBus api";
+
     // We don't send any options for now, dbus api doesn't do anything with them yet anyway
     QDBusPendingReply<VariantMapMap, VariantMapMap> reply = m_interface->CheckForUpdates({});
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply, this);
@@ -206,9 +249,8 @@ Transaction *SteamOSBackend::installApplication(AbstractResource *app, const Add
 
 Transaction *SteamOSBackend::installApplication(AbstractResource *app)
 {
-    SteamOSTransaction *transaction = new SteamOSTransaction(qobject_cast<SteamOSResource *>(app), Transaction::InstallRole, m_interface);
-    connect(transaction, &SteamOSTransaction::needReboot, this, &SteamOSBackend::needRebootChanged);
-    return transaction;
+    setupTransaction(qobject_cast<SteamOSResource *>(app));
+    return m_transaction;
 }
 
 Transaction *SteamOSBackend::removeApplication(AbstractResource *)
