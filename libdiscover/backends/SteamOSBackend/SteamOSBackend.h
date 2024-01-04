@@ -16,11 +16,23 @@ class ComSteampoweredAtomupd1Interface;
 class QDBusPendingCallWatcher;
 class StandardBackendUpdater;
 class SteamOSResource;
+class SteamOSTransaction;
+
 class SteamOSBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
 public:
     explicit SteamOSBackend(QObject *parent = nullptr);
+
+    // Some constants from com.steampowered.Atomupd1 dbus interface
+    enum Status {
+        Idle = 0,
+        InProgress,
+        Paused,
+        Successful,
+        Failed,
+        Cancelled,
+    };
 
     int updatesCount() const override;
     AbstractBackendUpdater *backendUpdater() const override;
@@ -53,15 +65,24 @@ private:
 
     void acquireFetching(bool f);
 
+    /* Check if a transaction exists already */
+    bool fetchExistingTransaction();
+
+    /* Helper to setup a Transaction and connect all signals/slots */
+    void setupTransaction(SteamOSResource *app);
+
     QHash<QString, SteamOSResource *> m_resources;
     StandardBackendUpdater *m_updater;
     uint m_fetching = 0;
 
     QString m_updateVersion; // Next update version, can use once we get from dbus.
-    QString m_updateBuild; // Next build version.
+    QString m_updateBuildID; // Next build version.
     quint64 m_updateSize; // Estimated size of next update
 
     QPointer<SteamOSResource> m_resource; // Since we only ever have one, cache it.
+
+    /* The current transaction in progress, if any */
+    SteamOSTransaction *m_transaction;
 
     QPointer<ComSteampoweredAtomupd1Interface> m_interface; // Interface to atomupd dbus api
     QString m_currentVersion;

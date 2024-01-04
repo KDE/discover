@@ -4,7 +4,7 @@
 
 
 <!--
-  Copyright © 2021-2022 Collabora Ltd.
+  Copyright © 2021-2024 Collabora Ltd.
   SPDX-License-Identifier: MIT
 
   Permission is hereby granted, free of charge, to any person obtaining
@@ -38,7 +38,7 @@
         Version:
 
         The version of this interface implemented by this object.
-        This file documents version 1 of the interface.
+        This file documents version 4 of the interface.
     -->
     <property name="Version" type="u" access="read"/>
 
@@ -90,17 +90,40 @@
     <property name="UpdateBuildID" type="s" access="read"/>
 
     <!--
+        UpdateVersion:
+
+        String that represents the user-facing OS version of the image update
+        that has been chosen when `StartUpdate` method was executed.
+        This is suitable for display in user interfaces.
+        It is the empty string if `StartUpdate` has not been called yet.
+    -->
+    <property name="UpdateVersion" type="s" access="read"/>
+
+    <!--
         Variant:
 
         String that represents the chosen update variant that is currently
         being tracked.
         This value is updated every time a new variant is chosen with
         `SwitchToVariant` method or via the CLI tool steamos-select-branch.
-        Typical values include `steamdeck` and `steamdeck-beta`.
+        A typical value is `steamdeck`.
         It defaults to the variant value from the steamos-atomupd manifest JSON
         if the text file is empty or missing.
     -->
     <property name="Variant" type="s" access="read">
+      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+    </property>
+
+    <!--
+        Branch:
+
+        String that represents the chosen update branch that is currently
+        being tracked.
+        Typical values include `stable` and `beta`.
+        It defaults to the branch value from the steamos-atomupd manifest JSON
+        if a branch was never explicitly chosen.
+    -->
+    <property name="Branch" type="s" access="read">
       <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
     </property>
 
@@ -136,8 +159,14 @@
           <varlistentry>
             <term>variant s</term>
             <listitem><para>
-              Represents the variant of this update. Possible values include
-              `steamdeck` and `steamdeck-beta`.
+              Represents the variant of this update. A typical value is `steamdeck`.
+            </para></listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>branch s</term>
+            <listitem><para>
+              Represents the branch of this update. Possible values include
+              `stable` and `main`.
             </para></listitem>
           </varlistentry>
           <varlistentry>
@@ -229,9 +258,16 @@
     <property name="KnownVariants" type="as" access="read"/>
 
     <!--
+        KnownBranches:
+
+        Array of strings representing the known suggested branches that could
+        be chosen.
+    -->
+    <property name="KnownBranches" type="as" access="read"/>
+
+    <!--
         SwitchToVariant:
-        @variant: Desired update variant. Possible values include `steamdeck` and
-          and `steamdeck-beta`
+        @variant: Desired update variant. A typical value is `steamdeck`
 
         Change the update variant to @variant.
         This value is stored in the same text file that the CLI tool
@@ -242,9 +278,22 @@
     </method>
 
     <!--
+        SwitchToBranch:
+        @branch: Desired update branch. Possible values include
+          `stable` and `beta`
+
+        Change the update branch to @branch.
+        This value is stored in the same text file that the CLI tool
+        steamos-select-branch uses.
+    -->
+    <method name="SwitchToBranch">
+      <arg type="s" name="branch" direction="in"/>
+    </method>
+
+    <!--
         CheckForUpdates:
-        @options: Vardict with configuration options. None currently available,
-          reserved for future use
+        @options: Vardict with configuration options. Currently the only available option
+          is 'penultimate', to ask for the penultimate update.
         @updates_available: Map of available update Build IDs to their keys and values
         @updates_available_later: Map of available update Build IDs, to their keys and
           values, that require a newer system version

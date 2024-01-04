@@ -7,7 +7,9 @@
 #include "SteamOSBackend.h"
 #include "SteamOSResource.h"
 #include "SteamOSTransaction.h"
+
 #include <Transaction/Transaction.h>
+#include <Transaction/TransactionModel.h>
 #include <resources/SourcesModel.h>
 #include <resources/StandardBackendUpdater.h>
 
@@ -52,6 +54,7 @@ SteamOSBackend::SteamOSBackend(QObject *parent)
     , m_updateVersion()
     , m_updateSize(0)
     , m_resource(nullptr)
+    , m_transaction(nullptr)
 {
     qDBusRegisterMetaType<VariantMapMap>();
 
@@ -67,6 +70,10 @@ SteamOSBackend::SteamOSBackend(QObject *parent)
 
     // If we got a version property, assume the service is responding and check for updates
     if (!m_currentVersion.isEmpty() && !m_currentBuildID.isEmpty()) {
+        if (fetchExistingTransaction()) {
+            return;
+        }
+
         checkForUpdates();
     } else {
         qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "steamos-backend: Unable to query atomupd for SteamOS Updates...";
@@ -79,16 +86,19 @@ SteamOSBackend::SteamOSBackend(QObject *parent)
 void SteamOSBackend::hasUpdateChanged(bool hasUpdate)
 {
     if (hasUpdate) {
-        // Create or update resource from m_updateVersion, m_updateBuild
+        // Create or update resource from m_updateVersion, m_updateBuildID
         if (!m_resource) {
-            qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "steamos-backend: Creating new SteamOSResource with build id: " << m_updateBuild;
-            m_resource =
-                new SteamOSResource(m_updateVersion, m_updateBuild, m_updateSize, QStringLiteral("%1 - %2").arg(m_currentVersion).arg(m_currentBuildID), this);
+            qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "steamos-backend: Creating new SteamOSResource with build id: " << m_updateBuildID;
+            m_resource = new SteamOSResource(m_updateVersion,
+                                             m_updateBuildID,
+                                             m_updateSize,
+                                             QStringLiteral("%1 - %2").arg(m_currentVersion).arg(m_currentBuildID),
+                                             this);
         } else {
             qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "steamos-backend: Updating SteamOSResource with new version: " << m_updateVersion
-                                                     << " and new build id: " << m_updateBuild;
+                                                     << " and new build id: " << m_updateBuildID;
             m_resource->setVersion(m_updateVersion);
-            m_resource->setBuild(m_updateBuild);
+            m_resource->setBuild(m_updateBuildID);
             Q_EMIT m_resource->versionsChanged();
         }
     } else {
@@ -119,6 +129,40 @@ void SteamOSBackend::acquireFetching(bool f)
     }
 }
 
+bool SteamOSBackend::fetchExistingTransaction()
+{
+    // Do we already know that we have a transaction in progress?
+    if (m_transaction) {
+        qInfo() << "steamos-backend: A transaction is already in progress";
+        return true;
+    }
+
+    // Is there actualy a transaction in progress we don't know about yet?
+    uint status = m_interface->updateStatus();
+    if (status != Idle) {
+        qInfo() << "steamos-backend: Found a transaction in progress";
+        // We don't check that m_currentlyBootedDeployment is != nullptr here as we expect
+        // that the backend is initialized when we're called.
+        m_updateVersion = m_interface->updateVersion();
+        m_updateBuildID = m_interface->updateBuildID();
+        m_currentVersion = m_interface->currentVersion();
+        m_currentBuildID = m_interface->currentBuildID();
+        m_resource =
+            new SteamOSResource(m_updateVersion, m_updateBuildID, m_updateSize, QStringLiteral("[%1] - %2").arg(m_currentVersion).arg(m_currentBuildID), this);
+        setupTransaction(m_resource);
+        TransactionModel::global()->addTransaction(m_transaction);
+        return true;
+    }
+
+    return false;
+}
+
+void SteamOSBackend::setupTransaction(SteamOSResource *app)
+{
+    m_transaction = new SteamOSTransaction(app, Transaction::InstallRole, m_interface);
+    connect(m_transaction, &SteamOSTransaction::needReboot, this, &SteamOSBackend::needRebootChanged);
+}
+
 void SteamOSBackend::checkForUpdates()
 {
     if (m_fetching) {
@@ -131,9 +175,15 @@ void SteamOSBackend::checkForUpdates()
         return;
     }
 
+    if (fetchExistingTransaction()) {
+        qInfo() << "steamos-backend: Not checking for updates while a transaction is in progress";
+        return;
+    }
+
     acquireFetching(true);
 
     qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "steamos-backend-backend::checkForUpdates asking DBus api";
+
     // We don't send any options for now, dbus api doesn't do anything with them yet anyway
     QDBusPendingReply<VariantMapMap, VariantMapMap> reply = m_interface->CheckForUpdates({});
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply, this);
@@ -157,8 +207,8 @@ void SteamOSBackend::checkForUpdatesFinished(QDBusPendingCallWatcher *call)
             // No updates
             hasUpdateChanged(false);
         } else {
-            m_updateBuild = versions.keys().at(0);
-            QVariantMap data = versions.value(m_updateBuild);
+            m_updateBuildID = versions.keys().at(0);
+            QVariantMap data = versions.value(m_updateBuildID);
             m_updateVersion = data.value(QLatin1String("version")).toString();
             m_updateSize = data.value(QLatin1String("estimated_size")).toUInt();
             qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "steamos-backend: Data values: " << data.values();
@@ -214,9 +264,8 @@ Transaction *SteamOSBackend::installApplication(AbstractResource *app, const Add
 
 Transaction *SteamOSBackend::installApplication(AbstractResource *app)
 {
-    SteamOSTransaction *transaction = new SteamOSTransaction(qobject_cast<SteamOSResource *>(app), Transaction::InstallRole, m_interface);
-    connect(transaction, &SteamOSTransaction::needReboot, this, &SteamOSBackend::needRebootChanged);
-    return transaction;
+    setupTransaction(static_cast<SteamOSResource *>(app));
+    return m_transaction;
 }
 
 Transaction *SteamOSBackend::removeApplication(AbstractResource *)

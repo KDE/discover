@@ -103,23 +103,23 @@ void SteamOSTransaction::refreshStatus()
     //    4 = FAILED, an error occurred during the update
     //    5 = CANCELLED, a special case of FAILED where the update attempt has been cancelled
     switch (status) {
-    case 0: // IDLE
+    case SteamOSBackend::Idle:
         break;
-    case 1: // IN_PROGRESS
+    case SteamOSBackend::InProgress:
         setStatus(Status::DownloadingStatus);
         break;
-    case 2: // PAUSED
+    case SteamOSBackend::Paused:
         setStatus(Status::QueuedStatus);
         break;
-    case 3: // SUCCESSFUL
+    case SteamOSBackend::Successful: // SUCCESSFUL
         setStatus(Status::DoneStatus);
         finishTransaction();
         break;
-    case 4: // FAILED
+    case SteamOSBackend::Failed: // FAILED
         setStatus(Status::DoneWithErrorStatus);
         finishTransaction();
         break;
-    case 5: // CANCELLED
+    case SteamOSBackend::Cancelled: // CANCELLED
         setStatus(Status::CancelledStatus);
         finishTransaction();
         break;
