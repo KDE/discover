@@ -13,6 +13,7 @@
 
 #include "SteamOSBackend.h"
 #include "dbusproperties_interface.h"
+#include "libdiscover_steamos_debug.h"
 
 SteamOSTransaction::SteamOSTransaction(SteamOSResource *app, Transaction::Role role, ComSteampoweredAtomupd1Interface *interface)
     : Transaction(app->backend(), app, role, {})
@@ -37,12 +38,12 @@ SteamOSTransaction::SteamOSTransaction(SteamOSResource *app, Transaction::Role r
                 if (changed(QLatin1String("ProgressPercentage"))) {
                     // Get percentage and pass on to gui
                     double percent = m_interface->progressPercentage();
-                    qDebug() << "steamos-backend: Progress percentage: " << percent;
+                    qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend: Progress percentage: " << percent;
                     setProgress(qBound(0.0, percent, 100.0));
                 }
                 if (changed(QLatin1String("EstimatedCompletionTime"))) {
                     qulonglong timeRemaining = m_interface->estimatedCompletionTime();
-                    qDebug() << "steamos-backend: Estimated completion time: " << timeRemaining;
+                    qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend: Estimated completion time: " << timeRemaining;
                     setRemainingTime(timeRemaining);
                 }
                 if (changed(QLatin1String("UpdateStatus"))) {
@@ -89,7 +90,7 @@ void SteamOSTransaction::refreshStatus()
 {
     // Get update state and update our state
     uint status = m_interface->updateStatus();
-    qDebug() << "steamos-backend: New state: " << status;
+    qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend: New state: " << status;
 
     // Status is one of these from the xml definition:
     //    0 = IDLE, the update has not been launched yet

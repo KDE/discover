@@ -28,6 +28,7 @@
 #include <QTimer>
 
 #include "atomupd1.h"
+#include "libdiscover_steamos_debug.h"
 
 DISCOVER_BACKEND_PLUGIN(SteamOSBackend)
 
@@ -62,13 +63,13 @@ SteamOSBackend::SteamOSBackend(QObject *parent)
     // this could wake up the service
     m_currentVersion = m_interface->currentVersion();
     m_currentBuildID = m_interface->currentBuildID();
-    qDebug() << "steamos-backend: Current version from dbus api: " << m_currentVersion << " and build ID: " << m_currentBuildID;
+    qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend: Current version from dbus api: " << m_currentVersion << " and build ID: " << m_currentBuildID;
 
     // If we got a version property, assume the service is responding and check for updates
     if (!m_currentVersion.isEmpty() && !m_currentBuildID.isEmpty()) {
         checkForUpdates();
     } else {
-        qDebug() << "steamos-backend: Unable to query atomupd for SteamOS Updates...";
+        qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend: Unable to query atomupd for SteamOS Updates...";
         // Should never happen, since trying to open the interface above starts
         // it, but if this plugin is on non steamos devices we should show something
         Q_EMIT passiveMessage(i18n("SteamOS: Unable to query atomupd for SteamOS Updates..."));
@@ -80,11 +81,12 @@ void SteamOSBackend::hasUpdateChanged(bool hasUpdate)
     if (hasUpdate) {
         // Create or update resource from m_updateVersion, m_updateBuild
         if (!m_resource) {
-            qDebug() << "steamos-backend: Creating new SteamOSResource with build id: " << m_updateBuild;
+            qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend: Creating new SteamOSResource with build id: " << m_updateBuild;
             m_resource =
                 new SteamOSResource(m_updateVersion, m_updateBuild, m_updateSize, QStringLiteral("%1 - %2").arg(m_currentVersion).arg(m_currentBuildID), this);
         } else {
-            qDebug() << "steamos-backend: Updating SteamOSResource with new version: " << m_updateVersion << " and new build id: " << m_updateBuild;
+            qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend: Updating SteamOSResource with new version: " << m_updateVersion
+                                             << " and new build id: " << m_updateBuild;
             m_resource->setVersion(m_updateVersion);
             m_resource->setBuild(m_updateBuild);
             Q_EMIT m_resource->versionsChanged();
@@ -93,7 +95,7 @@ void SteamOSBackend::hasUpdateChanged(bool hasUpdate)
         // Clear or remove any previously created resource
     }
 
-    qDebug() << "steamos-backend: Updates count is now " << updatesCount();
+    qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend: Updates count is now " << updatesCount();
 }
 
 void SteamOSBackend::needRebootChanged()
@@ -126,7 +128,7 @@ void SteamOSBackend::checkForUpdates()
 
     acquireFetching(true);
 
-    qDebug() << "steamos-backend-backend::checkForUpdates asking DBus api";
+    qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend-backend::checkForUpdates asking DBus api";
     // We don't send any options for now, dbus api doesn't do anything with them yet anyway
     QDBusPendingReply<VariantMapMap, VariantMapMap> reply = m_interface->CheckForUpdates({});
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply, this);
@@ -139,11 +141,11 @@ void SteamOSBackend::checkForUpdatesFinished(QDBusPendingCallWatcher *call)
     //            qobject_cast<QDBusPendingReply<VariantMapMap, VariantMapMap>(*call);
     if (call->isError()) {
         Q_EMIT passiveMessage(call->error().message());
-        qDebug() << "steamos-backend: CheckForUpdates error: " << call->error().message();
+        qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend: CheckForUpdates error: " << call->error().message();
     } else {
         // Valid response, parse it
         VariantMapMap versions = reply.argumentAt<0>();
-        qDebug() << "steamos-backend-backend: Versions available: " << versions;
+        qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend-backend: Versions available: " << versions;
         VariantMapMap laterVersions = reply.argumentAt<1>();
 
         if (versions.isEmpty()) {
@@ -154,7 +156,7 @@ void SteamOSBackend::checkForUpdatesFinished(QDBusPendingCallWatcher *call)
             QVariantMap data = versions.value(m_updateBuild);
             m_updateVersion = data.value(QLatin1String("version")).toString();
             m_updateSize = data.value(QLatin1String("estimated_size")).toUInt();
-            qDebug() << "steamos-backend: Data values: " << data.values();
+            qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend: Data values: " << data.values();
             hasUpdateChanged(true);
         }
     }
