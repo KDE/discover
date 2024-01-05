@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-14 01:36+0000\n"
+"POT-Creation-Date: 2024-01-05 01:35+0000\n"
 "PO-Revision-Date: 2023-05-26 07:30+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -2467,7 +2467,7 @@ msgstr ""
 "Aplikasi Snap ini tidaklah kompatibel dengan security sandboxing dan akan "
 "diakses penuh ke komputer ini. Tetap instal meskipun begitu?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:74
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr "SteamOS: Tidak dapat mengkueri automupd untuk Pembaruan SteamOS..."

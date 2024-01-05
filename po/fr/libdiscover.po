@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-14 01:36+0000\n"
+"POT-Creation-Date: 2024-01-05 01:35+0000\n"
 "PO-Revision-Date: 2023-11-19 17:02+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -2490,7 +2490,7 @@ msgstr ""
 "Elle n'aura pas un accès total à cet ordinateur. Voulez-vous vraiment "
 "l'installer ?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:74
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""

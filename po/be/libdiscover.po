@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-14 01:36+0000\n"
+"POT-Creation-Date: 2024-01-05 01:35+0000\n"
 "PO-Revision-Date: 2023-02-06 22:01\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -2482,7 +2482,7 @@ msgstr ""
 "Гэтая праграма Snap несумяшчальная з ізаляваным асяроддзем бяспекі і будзе "
 "мець поўны доступ да гэтага камп'ютара. Усё адно ўсталяваць?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:74
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr "SteamOS: не ўдалося запытаць у atomupd абнаўленні SteamOS..."

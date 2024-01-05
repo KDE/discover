@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-14 01:36+0000\n"
+"POT-Creation-Date: 2024-01-05 01:35+0000\n"
 "PO-Revision-Date: 2023-10-01 21:56+0530\n"
 "Last-Translator: Shreekant <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <N/A>\n"
@@ -2416,7 +2416,7 @@ msgstr ""
 "इदं स्नैप् अनुप्रयोगं सुरक्षाकट्टापूर्णितम् इत्यनेन सह सङ्गतं नास्ति तथा च अस्मिन् सङ्गणके "
 "पूर्णप्रवेशः भविष्यति । तथापि संस्थापयन्तु?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:74
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr "SteamOS: SteamOS अद्यतनस्य कृते atomupd इत्यस्य प्रश्नं कर्तुं असमर्थः..."

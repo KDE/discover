@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-14 01:36+0000\n"
+"POT-Creation-Date: 2024-01-05 01:35+0000\n"
 "PO-Revision-Date: 2023-06-08 12:03+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -2465,7 +2465,7 @@ msgstr ""
 "تطبيق سناب هذا غير متوافق مع وضع الحماية للأمان وسيكون له حق الوصول الكامل "
 "إلى هذا الحاسوب. أتثبته على أي حال؟"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:74
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr "ستيم او اس: لم يتمكن من استعلام atomupd لتحديثات ستيم او اس…"
