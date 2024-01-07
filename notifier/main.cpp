@@ -73,7 +73,7 @@ int main(int argc, char **argv)
     }
 
     KDBusService service(KDBusService::Unique | startup);
-    notifier.setVisible(!hide);
+    notifier.setStatusNotifierEnabled(!hide);
 
     return app.exec();
 }

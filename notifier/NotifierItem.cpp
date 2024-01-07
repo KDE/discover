@@ -5,27 +5,14 @@
  */
 
 #include "NotifierItem.h"
+#include "updatessettings.h"
 #include <KLocalizedString>
 #include <QDebug>
 #include <QMenu>
 
-KStatusNotifierItem::ItemStatus sniStatus(DiscoverNotifier::State state)
-{
-    switch (state) {
-    case DiscoverNotifier::Offline:
-    case DiscoverNotifier::NoUpdates:
-        return KStatusNotifierItem::Passive;
-    case DiscoverNotifier::Busy:
-    case DiscoverNotifier::NormalUpdates:
-    case DiscoverNotifier::SecurityUpdates:
-    case DiscoverNotifier::RebootRequired:
-        return KStatusNotifierItem::Active;
-    }
-    return KStatusNotifierItem::Active;
-}
-
 NotifierItem::NotifierItem()
 {
+    connect(&m_notifier, &DiscoverNotifier::stateChanged, this, &NotifierItem::refreshStatusNotifierVisibility);
 }
 
 void NotifierItem::setupNotifierItem()
@@ -34,8 +21,6 @@ void NotifierItem::setupNotifierItem()
     m_item = new KStatusNotifierItem(QStringLiteral("org.kde.DiscoverNotifier"), this);
     m_item->setTitle(i18n("Updates"));
     m_item->setToolTipTitle(i18n("Updates"));
-
-    connect(&m_notifier, &DiscoverNotifier::stateChanged, this, &NotifierItem::refresh);
 
     connect(m_item, &KStatusNotifierItem::activateRequested, &m_notifier, [this]() {
         if (m_notifier.needsReboot()) {
@@ -76,25 +61,65 @@ void NotifierItem::setupNotifierItem()
         menu->addAction(action);
     });
     m_item->setContextMenu(menu);
+    m_item->setStatus(KStatusNotifierItem::Active);
     refresh();
+}
+
+void NotifierItem::refreshStatusNotifierVisibility()
+{
+    bool shouldShow = shouldShowStatusNotifier();
+    if (!m_item && shouldShow) {
+        setStatusNotifierVisibility(true);
+    } else if (m_item && !shouldShow) {
+        setStatusNotifierVisibility(false);
+    }
+    refresh();
+}
+
+void NotifierItem::setStatusNotifierEnabled(bool enabled)
+{
+    m_statusNotifierEnabled = enabled;
+    refreshStatusNotifierVisibility();
 }
 
 void NotifierItem::refresh()
 {
-    Q_ASSERT(m_item);
-    m_item->setStatus(sniStatus(m_notifier.state()));
+    if (!m_item) {
+        return;
+    }
     m_item->setIconByName(m_notifier.iconName());
     m_item->setToolTipSubTitle(m_notifier.message());
 }
 
-void NotifierItem::setVisible(bool visible)
+void NotifierItem::setStatusNotifierVisibility(bool visible)
 {
-    if (visible == m_visible)
-        return;
-    m_visible = visible;
-
-    if (m_visible)
+    if (visible) {
+        Q_ASSERT(!m_item);
         setupNotifierItem();
-    else
+    } else {
+        Q_ASSERT(m_item);
         delete m_item;
+    }
+}
+
+bool NotifierItem::shouldShowStatusNotifier() const
+{
+    if (!isStatusNotifierEnabled()) {
+        return false;
+    }
+
+    // Only show the status notifier if there is something to notify about
+    // BUG: 413053
+    switch (m_notifier.state()) {
+    case DiscoverNotifier::Busy:
+    case DiscoverNotifier::RebootRequired:
+        return true;
+    case DiscoverNotifier::NormalUpdates:
+    case DiscoverNotifier::SecurityUpdates:
+        return m_notifier.settings()->requiredNotificationInterval() > 0;
+    case DiscoverNotifier::Offline:
+    case DiscoverNotifier::NoUpdates:
+    default:
+        return false;
+    }
 }
