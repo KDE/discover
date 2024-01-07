@@ -50,8 +50,12 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
 
     refreshUnattended();
     connect(m_settingsWatcher.data(), &KConfigWatcher::configChanged, this, [this](const KConfigGroup &group, const QByteArrayList &names) {
-        if (group.config()->name() == m_settings->config()->name() && group.name() == QLatin1String("Global") && names.contains("UseUnattendedUpdates")) {
+        if (group.config()->name() != m_settings->config()->name() || group.name() != QLatin1String("Global")) {
+            return;
+        }
+        if (names.contains("UseUnattendedUpdates") || names.contains("RequiredNotificationInterval")) {
             refreshUnattended();
+            Q_EMIT stateChanged();
         }
     });
 
