@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Sergiu Bivol <sergiu@cip.md>, 2011, 2012, 2013, 2014, 2020, 2021, 2022.
+# Sergiu Bivol <sergiu@cip.md>, 2011, 2012, 2013, 2014, 2020, 2021, 2022, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-05 01:35+0000\n"
-"PO-Revision-Date: 2022-12-28 20:25+0000\n"
+"PO-Revision-Date: 2024-01-07 16:01+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -50,14 +50,12 @@ msgid "Unknown"
 msgstr "Necunoscut"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:187
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Installed Files"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr "Fișiere instalate"
+msgstr "Toate audiențele"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:190
 #, kde-format
@@ -66,36 +64,31 @@ msgctxt ""
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr ""
+msgstr "Conținut inofensiv"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:193
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr "Internet"
+msgstr "Conținut moderat"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:196
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "Internet"
+msgstr "Conținut intens"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:172
-#, fuzzy, kde-format
-#| msgid "Internal error: %1"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "Eroare internă: %1"
+msgstr "Mesaj tehnic de eroare: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:224
 #, kde-format
@@ -164,11 +157,10 @@ msgstr "fictivă 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Aplicații"
+msgstr "Toate aplicațiile"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -584,19 +576,17 @@ msgid "Retrieving size information"
 msgstr "Se preiau informații despre dimensiune"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:448
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
-msgstr "Necunoscut"
+msgstr "Necunoscută"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:504
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1'"
+#, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "Pornirea „%1” a eșuat"
+msgstr "Pornirea „%1” a eșuat: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:738
 #, kde-format
@@ -629,15 +619,14 @@ msgid "Can access the internet"
 msgstr "Poate accesa internetul"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Acces la magistrala sistemului"
+msgstr "Acces la sistemul de sunet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Poate reda sunete"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
@@ -646,16 +635,13 @@ msgid "Session Bus Access"
 msgstr "Acces la magistrala sesiunii"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Poate comunica cu alte aplicații și procese în aceeași sesiune de birou "
-"folosind următoarele protocoale de comunicare: %1"
+"Poate comunica cu toate celelalte aplicații și procese ce rulează în acest "
+"cont de utilizator"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
@@ -664,14 +650,9 @@ msgid "System Bus Access"
 msgstr "Acces la magistrala sistemului"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
-msgstr ""
-"Poate comunica cu alte aplicații și procese în aceeași sesiune de birou "
-"folosind următoarele protocoale de comunicare: %1"
+msgstr "Poate comunica cu toate celelalte aplicații și procese din sistem"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
@@ -696,17 +677,17 @@ msgstr "Poate comunica și se poate integra cu carduri inteligente"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
 #, kde-format
 msgid "Printer Access"
-msgstr ""
+msgstr "Acces la imprimantă"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr ""
+msgstr "Poate comunica și se poate integra cu imprimante"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "Agent GPG"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
@@ -714,26 +695,28 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Permite accesul la serviciul criptografic GPG, folosit de obicei la semnare "
+"și citirea documentelor semnate"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #, kde-format
 msgid "Bluetooth Access"
-msgstr ""
+msgstr "Acces la Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr ""
+msgstr "Poate comunica și se poate integra cu dispozitive Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
 #, kde-format
 msgid "Low-Level System Access"
-msgstr ""
+msgstr "Acces profund la sistem"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Poate face apeluri de sistem de nivel inferior (ca „ptrace”)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
@@ -947,7 +930,7 @@ msgstr "Se adaugă de la distanță „%1” în %2 din %3"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:195
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "Nu s-a putut găsi „%1” în „%2”, asigurați-vă că e disponibil."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
 #, kde-format
@@ -956,50 +939,48 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
+"Această versiune de dezvoltare a %1 e învechită. Se recomandă folosirea "
+"versiunii stabile."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
-#, fuzzy, kde-format
-#| msgctxt "Notification when a new version of Kubuntu is available"
-#| msgid "A new version of Kubuntu is available."
+#, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr "Este disponibilă o nouă versiune de Kubuntu."
+msgstr "E disponibilă o versiune mai stabilă a %1."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:51
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Available Version"
+#, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr "Versiune disponibilă"
+msgstr "Vezi versiunea stabilă pe %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "%1 nu e instalat dar încă mai are date prezente."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "Șterge configurările și datele utilizatorului"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:33
 #, kde-format
 msgid "Clearing settings and user data…"
-msgstr ""
+msgstr "Se șterg configurările și datele utilizatorului…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:23
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "Permisiuni pentru %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:74
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:17
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "Configurează permisiunile…"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1026,6 +1007,8 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"Întrebare nesusținută:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:156
 #, kde-format
@@ -1165,22 +1148,22 @@ msgid ""
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
+"<b>%1 e disponibil acum</b>\n"
+"Pentru a putea înnoi la noua versiune, asigurați-vă că ați aplicat toate "
+"actualizările disponibile, apoi reporniți sistemul."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "Actualizează"
+msgstr "Înnoiește acum"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "Depozitul nu e disponibil"
+msgstr "%1 e disponibil acum."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1991,11 +1974,9 @@ msgstr[1] "Actualizarea a reușit pentru %1 pachete"
 msgstr[2] "Actualizarea a reușit pentru %1 de pachete"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Unknown Error"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Eroare necunoscută"
+msgstr "Sursă necunoscută"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
 #, kde-format
@@ -2048,12 +2029,10 @@ msgid "Repository URL:"
 msgstr "URL depozit:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
-#, fuzzy, kde-format
-#| msgctxt "@item example: muon installed at 16:00"
-#| msgid "%1 %2 at %3"
+#, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr "%1 %2 la %3"
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
 #, kde-format
@@ -2061,19 +2040,19 @@ msgid "System upgrade"
 msgstr "Înnoirea sistemului"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 pachet de înnoit"
-msgstr[1] "%1 pachete de înnoit"
-msgstr[2] "%1 de pachete de înnoit"
+msgstr[0] "1 pachet va fi înnoit"
+msgstr[1] "%1 pachete vor fi înnoite"
+msgstr[2] "%1 de pachete vor fi înnoite"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Actualizează la noua versiune %2<br/>Nu au fost furnizate note de "
+"lansare"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
 #, kde-format
@@ -2081,6 +2060,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Actualizează la noua versiune %2<br/>Note de lansare:<blockquote>"
+"%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
 #, kde-format
@@ -2096,7 +2077,7 @@ msgstr "Viitor"
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
-msgstr ""
+msgstr "Spațiu insuficient pentru actualizare. Numai %1 e disponibil."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:577
 #, kde-format
@@ -2112,11 +2093,9 @@ msgstr ""
 "împachetatorilor distribuției dumneavoastră."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:584
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "No Change"
+#, kde-format
 msgid "Confirm Changes"
-msgstr "Nicio modificare"
+msgstr "Confirmă modificările"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:585
 #, kde-format
@@ -2222,26 +2201,24 @@ msgstr[2] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Dependencies"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "Dependențe"
+msgstr "Arată dependențele…"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "Dependențe pentru pachet: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Full Access"
-msgstr ""
+msgstr "Acces deplin"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
 #, kde-format
 msgid "Can access everything on the system"
-msgstr ""
+msgstr "Poate accesa tot ce e în sistem"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
@@ -2253,34 +2230,41 @@ msgstr "Sistem de operare"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
+"rpm-ostree: Au fost găsite multiple implementări demarate. Raportați un "
+"defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
+"rpm-ostree: Nu a fost găsită nicio implementare demarată. Raportați un "
+"defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr "Actualizează"
+msgstr "Începe înnoirea…"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
+"Sunt actualizări în așteptare pentru versiunea actuală. Se continuă oricum."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
+"Actualizați la cea mai recentă versiune înainte de a schimba baza la altă "
+"versiune majoră."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Lipsește referința distantă pentru operația de schimbare a bazei. Raportați "
+"un defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
 #, kde-format
@@ -2288,74 +2272,54 @@ msgid "GPL and other licenses"
 msgstr "GPL și alte licențe"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Confirm Additional Changes"
+#, kde-format
 msgid "Additional packages: "
-msgstr "Confirmă modificările suplimentare"
+msgstr "Pachete suplimentare: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Confirm Additional Changes"
+#, kde-format
 msgid "Additional modules: "
-msgstr "Confirmă modificările suplimentare"
+msgstr "Module suplimentare: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Unable to Mark Package"
+#, kde-format
 msgid "Local packages: "
-msgstr "Imposibil de marcat pachetul"
+msgstr "Pachete locale: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"metapackages\""
-#| msgid "Meta Packages"
+#, kde-format
 msgid "Replaced packages:"
-msgstr "Metapachete"
+msgstr "Pachete înlocuite:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
-#, fuzzy, kde-format
-#| msgctxt "@label The parent package that this package comes from"
-#| msgid "Source Package:"
+#, kde-format
 msgid "Removed packages:"
-msgstr "Pachet-sursă:"
+msgstr "Pachete eliminate:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Dependencies of the Current Version"
+#, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "Dependențele versiunii curente"
+msgstr "Versiunea demarată acum (fixat)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Dependencies of the Current Version"
+#, kde-format
 msgid "Currently booted version"
-msgstr "Dependențele versiunii curente"
+msgstr "Versiunea demarată acum"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "Versiunea ce va fi folosită după repornire"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Force Version"
+#, kde-format
 msgid "Fallback version (pinned)"
-msgstr "Forțează versiunea"
+msgstr "Versiunea de rezervă (fixat)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Force Version"
+#, kde-format
 msgid "Fallback version"
-msgstr "Forțează versiunea"
+msgstr "Versiunea de rezervă"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
@@ -2367,6 +2331,8 @@ msgstr "Distante ostree"
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Eroare: Nu a fost furnizată nicio interfață DBus. "
+"Raportați un defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:58
 #, kde-format
@@ -2374,12 +2340,16 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Eroare: Nu se poate porni tranzacția pentru resursă cu "
+"format nevalid. Raportați un defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:78
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Eroare: Nu se poate schimba baza la o referință goală. "
+"Raportați un defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:261
@@ -2387,75 +2357,70 @@ msgstr ""
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Eroare: Operație necunoscută cerută. Raportați un defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
-msgstr "Tranzacție actuală rpm-ostree în curs:"
+msgstr ""
+"Tranzacția rpm-ostree a eșuat cu:\n"
+"%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:235
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Eroare: Format de resursă necunoscut. Raportați un "
+"defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:355
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
-msgstr ""
+msgstr "Se anulează tranzacția rpm-ostree. Aceasta poate dura, așteptați."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@action Checks the Internet for updates"
-#| msgid "Check for Updates"
+#, kde-format
 msgid "Checking for a system update"
-msgstr "Caută actualizări"
+msgstr "Se caută o actualizare de sistem"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:387
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Downloading Packages"
+#, kde-format
 msgid "Downloading system update"
-msgstr "Descărcare pachete"
+msgstr "Se descarcă actualizarea sistemului"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:390
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "Sistem de operare"
+msgstr "Se actualizează sistemul"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Se actualizează la următoarea versiune majoră"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr ""
+msgstr "Operațiune în curs (pornită din afara Discover)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "Tranzacția nu poate fi anulată"
+msgstr "Tip de tranzacție necunoscut"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "Canale…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:28
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox Filters all changes in the history view"
-#| msgid "All changes"
+#, kde-format
 msgid "%1 channels"
-msgstr "Toate modificările"
+msgstr "Canale %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:41
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
@@ -2466,12 +2431,12 @@ msgstr "%1 - %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "Schimbă"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:26
 #, kde-format
 msgid "Permissions for %1"
-msgstr ""
+msgstr "Permisiuni pentru %1"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2490,12 +2455,12 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
+msgstr "SteamOS: Nu se poate interoga atomupd pentru actualizări SteamOS…"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113
 #, kde-format
@@ -2526,12 +2491,11 @@ msgid "Launch"
 msgstr "Lansează"
 
 #: libdiscover/resources/AbstractResource.cpp:251
-#, fuzzy, kde-format
-#| msgid "Update to version %1"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "Actualizează la versiunea %1"
+msgstr "Împrospătare a versiunii %1"
 
 #: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
