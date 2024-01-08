@@ -73,6 +73,11 @@ int main(int argc, char **argv)
     }
 
     KDBusService service(KDBusService::Unique | startup);
+
+    // Otherwise the QEventLoopLocker in KStatusNotifierItem quits the
+    // application when the status notifier is destroyed
+    app.setQuitLockEnabled(false);
+
     notifier.setStatusNotifierEnabled(!hide);
 
     return app.exec();
