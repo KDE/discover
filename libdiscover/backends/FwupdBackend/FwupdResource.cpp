@@ -7,6 +7,7 @@
 
 #include "FwupdResource.h"
 
+#include <KLocalizedString>
 #include <QDesktopServices>
 #include <QStringList>
 #include <QTimer>
@@ -112,7 +113,7 @@ QString FwupdResource::packageName() const
 
 QString FwupdResource::section()
 {
-    return QStringLiteral("Firmware Updates");
+    return i18n("Firmware Updates");
 }
 
 AbstractResource::State FwupdResource::state()

@@ -465,7 +465,7 @@ ResultsStream *FwupdBackend::resourceForFile(const QUrl &path)
 
 QString FwupdBackend::displayName() const
 {
-    return QStringLiteral("Firmware Updates");
+    return i18n("Firmware Updates");
 }
 
 bool FwupdBackend::hasApplications() const
