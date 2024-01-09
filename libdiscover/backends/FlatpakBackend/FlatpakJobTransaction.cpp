@@ -29,7 +29,7 @@ public:
         // https://bugs.kde.org/show_bug.cgi?id=474231
         constexpr auto arbitraryMaxConcurrency = 4U;
         const auto concurrency = std::min(std::thread::hardware_concurrency(), arbitraryMaxConcurrency);
-        setMaxThreadCount(std::make_signed_t<decltype(concurrency)>(concurrency));
+        setMaxThreadCount(static_cast<int>(concurrency));
     }
 };
 } // namespace
