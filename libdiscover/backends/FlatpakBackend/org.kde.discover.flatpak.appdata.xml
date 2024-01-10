@@ -30,6 +30,7 @@
   <name xml:lang="ka">Flatpak -ის უკანაბოლო</name>
   <name xml:lang="ko">Flatpak 백엔드</name>
   <name xml:lang="lt">Flatpak vidinė pusė</name>
+  <name xml:lang="lv">„Flatpak“ aizmugursistēma</name>
   <name xml:lang="ml">ഫ്ലാറ്റ്പ്പാക്ക് ബാക്കെൻഡ്</name>
   <name xml:lang="my">ဖလက်ပတ်ခ် အုတ်မြစ်ပရိုဂရမ်</name>
   <name xml:lang="nb">Baksystem for Flatpak</name>
@@ -81,6 +82,7 @@
   <summary xml:lang="ka">Discover-ში Flatpak-ის ინტეგრაცია</summary>
   <summary xml:lang="ko">Flatpak 앱을 Discover에 통합</summary>
   <summary xml:lang="lt">Integruoja Flatpak programas į Discover</summary>
+  <summary xml:lang="lv">Ļauj „Discover“ pārvaldīt „Flatpak“ programmas</summary>
   <summary xml:lang="ml">ഡിസ്കവറിൽ ഫ്ലാറ്റ്പ്പാക്ക് ആപ്ലിക്കേഷൻ സംയോജിപ്പിക്കുന്നു</summary>
   <summary xml:lang="my">ဖလက်ပတ်ခ် အပ္ပလီကေးရှင်းများကို ဒစ်(စ)ကာဗာနှင့် ပူးပေါင်းဆက်နွယ်ပေးသည်</summary>
   <summary xml:lang="nb">Integrerer Flatpak-programmer i Discover</summary>
@@ -136,6 +138,7 @@
   <developer_name xml:lang="ka">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ko">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="lt">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="lv">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ml">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="my">အဲလက်ပိုဂွန်ဇလက်</developer_name>
   <developer_name xml:lang="nb">Aleix Pol Gonzalez</developer_name>
