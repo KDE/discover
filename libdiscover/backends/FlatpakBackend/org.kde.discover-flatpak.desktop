@@ -31,6 +31,7 @@ Name[ja]=Discover
 Name[ka]=Discover
 Name[ko]=Discover
 Name[lt]=Discover
+Name[lv]=Discover
 Name[ml]=കണ്ടെത്തുക
 Name[my]=ဒစ်(စ)ကာဗာ
 Name[nb]=Discover
