@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-11-18 18:10+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -990,6 +990,13 @@ msgstr "Права доступу для %1"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Налаштовуємо права доступу…"
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "View Updates"
+msgid "Firmware Updates"
+msgstr "Перегляд оновлень"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2763,9 +2770,6 @@ msgstr "Додатки"
 #~ msgstr ""
 #~ "Для встановлення цієї програми snap слід вимкнути заходи обмеження "
 #~ "доступу."
-
-#~ msgid "View Updates"
-#~ msgstr "Перегляд оновлень"
 
 #~ msgid "Please restart the device to finish the update"
 #~ msgstr "Будь ласка, перезавантажте пристрій, щоб завершити оновлення"

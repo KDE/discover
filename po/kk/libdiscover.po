@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2013-10-03 04:53+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -1013,6 +1013,13 @@ msgstr ""
 #, kde-format
 msgid "Configure permissions…"
 msgstr ""
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "Applications"
+msgid "Firmware Updates"
+msgstr "Қолданбалар"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2832,11 +2839,6 @@ msgstr ""
 
 #~ msgid "Installing..."
 #~ msgstr "Орнату"
-
-#, fuzzy
-#~| msgid "Applications"
-#~ msgid "View Updates"
-#~ msgstr "Қолданбалар"
 
 #, fuzzy
 #~| msgctxt "@item:inlistbox Filters updates in the history view"

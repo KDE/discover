@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-20 01:35+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-09-04 14:34+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -20,70 +20,70 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.12.3\n"
 
-#: notifier/DiscoverNotifier.cpp:150
+#: notifier/DiscoverNotifier.cpp:154
 #, kde-format
 msgid "View Updates"
 msgstr "Näytä päivitykset"
 
-#: notifier/DiscoverNotifier.cpp:259
+#: notifier/DiscoverNotifier.cpp:263
 #, kde-format
 msgid "Security updates available"
 msgstr "Turvallisuuspäivityksiä saatavilla"
 
-#: notifier/DiscoverNotifier.cpp:261
+#: notifier/DiscoverNotifier.cpp:265
 #, kde-format
 msgid "Updates available"
 msgstr "Päivityksiä saatavilla"
 
-#: notifier/DiscoverNotifier.cpp:263
+#: notifier/DiscoverNotifier.cpp:267
 #, kde-format
 msgid "System up to date"
 msgstr "Järjestelmä on ajan tasalla"
 
-#: notifier/DiscoverNotifier.cpp:265
+#: notifier/DiscoverNotifier.cpp:269
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Tietokone on käynnistettävä uudelleen"
 
-#: notifier/DiscoverNotifier.cpp:267
+#: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "Offline"
 msgstr "Ei verkossa"
 
-#: notifier/DiscoverNotifier.cpp:269
+#: notifier/DiscoverNotifier.cpp:273
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Toteutetaan automaattisia päivityksiä…"
 
-#: notifier/DiscoverNotifier.cpp:293
+#: notifier/DiscoverNotifier.cpp:297
 #, kde-format
 msgid "Restart is required"
 msgstr "Uudellenkäynnistys vaaditaan"
 
-#: notifier/DiscoverNotifier.cpp:294
+#: notifier/DiscoverNotifier.cpp:298
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr ""
 "Järjestelmä on käynnistettävä uudelleen, jotta päivitykset tulevat voimaan."
 
-#: notifier/DiscoverNotifier.cpp:299
+#: notifier/DiscoverNotifier.cpp:303
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Käynnistä uudelleen"
 
-#: notifier/DiscoverNotifier.cpp:324
+#: notifier/DiscoverNotifier.cpp:328
 #, kde-format
 msgid "Upgrade available"
 msgstr "Päivitys saatavilla"
 
-#: notifier/DiscoverNotifier.cpp:325
+#: notifier/DiscoverNotifier.cpp:329
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 on nyt saatavilla."
 
-#: notifier/DiscoverNotifier.cpp:328
+#: notifier/DiscoverNotifier.cpp:332
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
@@ -132,32 +132,32 @@ msgstr "Älä näytä ilmoituksia"
 msgid "hidden"
 msgstr "piilotettu"
 
-#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
+#: notifier/NotifierItem.cpp:22 notifier/NotifierItem.cpp:23
 #, kde-format
 msgid "Updates"
 msgstr "Päivitykset"
 
-#: notifier/NotifierItem.cpp:50
+#: notifier/NotifierItem.cpp:35
 #, kde-format
 msgid "Open Discover…"
 msgstr "Avaa Discover…"
 
-#: notifier/NotifierItem.cpp:55
+#: notifier/NotifierItem.cpp:40
 #, kde-format
 msgid "See Updates…"
 msgstr "Näytä päivitykset…"
 
-#: notifier/NotifierItem.cpp:60
+#: notifier/NotifierItem.cpp:45
 #, kde-format
 msgid "Refresh…"
 msgstr "Virkistä…"
 
-#: notifier/NotifierItem.cpp:64
+#: notifier/NotifierItem.cpp:49
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "Ota asennetut päivitykset käyttöön käynnistämällä uudelleen"
 
-#: notifier/NotifierItem.cpp:65
+#: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Käynnistä laite uudelleen napsauttamalla"

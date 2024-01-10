@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-11-23 17:25+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -986,6 +986,13 @@ msgstr "Permisos de %1"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Configurar os permisos…"
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "Offline Updates"
+msgid "Firmware Updates"
+msgstr "Actualizacións sen Internet"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2690,11 +2697,6 @@ msgstr "Complementos"
 #~ msgstr ""
 #~ "Esta aplicación de Snap necesita desactivar as medidas de reclusión de "
 #~ "seguranza."
-
-#, fuzzy
-#~| msgid "Offline Updates"
-#~ msgid "View Updates"
-#~ msgstr "Actualizacións sen Internet"
 
 #, fuzzy
 #~| msgid "Please restart the computer to finish the update"

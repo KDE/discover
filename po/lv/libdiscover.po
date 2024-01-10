@@ -1,43 +1,43 @@
-# Uyghur translation for libmuon.
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
-# Sahran <sahran.ug@gmail.com>, 2011.
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the discover package.
 #
+# SPDX-FileCopyrightText: 2023, 2024 Toms Trasuns <toms.trasuns@posteo.net>
+# Māris Nartišs <maris.kde@gmail.com>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: libmuon\n"
+"Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-10 01:35+0000\n"
-"PO-Revision-Date: 2013-09-08 07:04+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
-"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
-"Language: ug\n"
+"PO-Revision-Date: 2024-01-09 19:34+0200\n"
+"Last-Translator: Māris Nartišs <maris.kde@gmail.com>\n"
+"Language-Team: \n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Toms Trasūns"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "toms.trasuns@posteo.net"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:103
-#, fuzzy, kde-format
-#| msgctxt "@info license"
-#| msgid "Proprietary"
+#, kde-format
 msgid "Proprietary"
-msgstr "ئىگىسى بار"
+msgstr "Īpašniekprogrammatūra"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:105
 #, kde-format
 msgid "Public Domain"
-msgstr ""
+msgstr "Sabiedrības īpašums"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:111
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
@@ -46,11 +46,9 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
 #: libdiscover/UpdateModel/UpdateModel.cpp:118
 #: libdiscover/UpdateModel/UpdateModel.cpp:329
-#, fuzzy, kde-format
-#| msgctxt "@info license"
-#| msgid "Unknown"
+#, kde-format
 msgid "Unknown"
-msgstr "نامەلۇم"
+msgstr "Nezināms"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:187
 #, kde-format
@@ -58,7 +56,7 @@ msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr ""
+msgstr "Piemērots visiem"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:190
 #, kde-format
@@ -67,535 +65,499 @@ msgctxt ""
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr ""
+msgstr "Viegls saturs"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:193
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr "ئىنتېرنېت"
+msgstr "Vidējs saturs"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:196
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "ئىنتېرنېت"
+msgstr "Intensīvs saturs"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:172
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"web\""
-#| msgid "Internet"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "ئىنتېرنېت"
+msgstr "Tehniskas kļūdas ziņojums: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:224
 #, kde-format
 msgid "Error while submitting usefulness: %1"
-msgstr ""
+msgstr "Kļūda iesniedzot lietderību: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:281
 #, kde-format
 msgid "Error while submitting review: %1"
-msgstr ""
+msgstr "Kļūda iesniedzot apskatu: %1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
-#, fuzzy, kde-format
-#| msgctxt "@label Label preceding the package category"
-#| msgid "Category:"
+#, kde-format
 msgctxt "Category"
 msgid "Dummy Category"
-msgstr "تۈرى:"
+msgstr "Testa kategorija"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
 #, kde-format
 msgctxt "Category"
 msgid "dummy"
-msgstr ""
+msgstr "testa"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
 #, kde-format
 msgctxt "Category"
 msgid "dummy addons"
-msgstr ""
+msgstr "testa pielikumi"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
 #, kde-format
 msgctxt "Category"
 msgid "dummy 1"
-msgstr ""
+msgstr "tests 1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
-msgstr ""
+msgstr "tests ar lietām"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
 #, kde-format
 msgctxt "Category"
 msgid "dummy 2.1"
-msgstr ""
+msgstr "tests 2.1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
-msgstr ""
+msgstr "tests ar kaut kādām lietām"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
 #, kde-format
 msgctxt "Category"
 msgid "dummy 3"
-msgstr ""
+msgstr "tests 3"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
 #, kde-format
 msgctxt "Category"
 msgid "dummy 4"
-msgstr ""
+msgstr "tests 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "پروگراممىلار"
+msgstr "Visas programmas"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
 #, kde-format
 msgctxt "Category"
 msgid "Accessories"
-msgstr ""
+msgstr "Aksesuāri"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
 #, kde-format
 msgctxt "Category"
 msgid "Accessibility"
-msgstr ""
+msgstr "Pieejamība"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
 #, kde-format
 msgctxt "Category"
 msgid "Developer Tools"
-msgstr "ئىجادىيەت"
+msgstr "Rīki izstrādātājiem"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
 #, kde-format
 msgctxt "Category"
 msgid "Debugging"
-msgstr "سازلا"
+msgstr "Atkļūdošana"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
 #, kde-format
 msgctxt "Category"
 msgid "Graphic Interface Design"
-msgstr ""
+msgstr "Grafiskās saskarnes dizains"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
 #, kde-format
 msgctxt "Category"
 msgid "IDEs"
-msgstr ""
+msgstr "Izstrādes vides"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
 #, kde-format
 msgctxt "Category"
 msgid "Localization"
-msgstr "يەرلىكلەشتۈرۈش"
+msgstr "Lokalizācija"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
 #, kde-format
 msgctxt "Category"
 msgid "Profiling"
-msgstr ""
+msgstr "Profilēšana"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"devel"
-#| "\""
-#| msgid "Development"
+#, kde-format
 msgctxt "Category"
 msgid "Web Development"
-msgstr "ئىجادىيەت"
+msgstr "Tīmekļa izstrāde"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
 #, kde-format
 msgctxt "Category"
 msgid "Education"
-msgstr "ئورنى"
+msgstr "Izglītība"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
 #, kde-format
 msgctxt "Category"
 msgid "Science and Engineering"
-msgstr ""
+msgstr "Zinātne un inženierzinības"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
 #, kde-format
 msgctxt "Category"
 msgid "Astronomy"
-msgstr ""
+msgstr "Astronomija"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
 #, kde-format
 msgctxt "Category"
 msgid "Biology"
-msgstr ""
+msgstr "Bioloģija"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
 #, kde-format
 msgctxt "Category"
 msgid "Chemistry"
-msgstr ""
+msgstr "Ķīmija"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
 #, kde-format
 msgctxt "Category"
 msgid "Computer Science and Robotics"
-msgstr ""
+msgstr "Datorzinātne un robotika"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
 #, kde-format
 msgctxt "Category"
 msgid "Electronics"
-msgstr "ئېلېكترونىكا"
+msgstr "Elektronika"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
 #, kde-format
 msgctxt "Category"
 msgid "Engineering"
-msgstr ""
+msgstr "Inženierzinības"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
 #, kde-format
 msgctxt "Category"
 msgid "Geography"
-msgstr ""
+msgstr "Ģeogrāfija"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
 #, kde-format
 msgctxt "Category"
 msgid "Geology"
-msgstr ""
+msgstr "Ģeoloģija"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
 #, kde-format
 msgctxt "Category"
 msgid "Mathematics"
-msgstr "ماتېماتىكا"
+msgstr "Matemātika"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
 #, kde-format
 msgctxt "Category"
 msgid "Physics"
-msgstr ""
+msgstr "Fizika"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
 #, kde-format
 msgctxt "Category"
 msgid "Games"
-msgstr ""
+msgstr "Spēles"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
 #, kde-format
 msgctxt "Category"
 msgid "Arcade"
-msgstr ""
+msgstr "Arkādas"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
 #, kde-format
 msgctxt "Category"
 msgid "Board Games"
-msgstr ""
+msgstr "Galda spēles"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
 #, kde-format
 msgctxt "Category"
 msgid "Card Games"
-msgstr ""
+msgstr "Kāršu spēles"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
 #, kde-format
 msgctxt "Category"
 msgid "Puzzles"
-msgstr ""
+msgstr "Mīklas"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
 #, kde-format
 msgctxt "Category"
 msgid "Role Playing"
-msgstr ""
+msgstr "Lomu spēles"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
 #, kde-format
 msgctxt "Category"
 msgid "Simulation"
-msgstr "ئورنى"
+msgstr "Simulācijas"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
 #, kde-format
 msgctxt "Category"
 msgid "Strategy"
-msgstr ""
+msgstr "Stratēģijas"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
 #, kde-format
 msgctxt "Category"
 msgid "Sports"
-msgstr ""
+msgstr "Sporta spēles"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "Action"
-msgstr "پروگراممىلار"
+msgstr "Darbības spēles"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Simulation"
+#, kde-format
 msgctxt "Category"
 msgid "Emulators"
-msgstr "ئورنى"
+msgstr "Emulatori"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
 #, kde-format
 msgctxt "Category"
 msgid "Graphics"
-msgstr "گرافىك"
+msgstr "Grafika"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
 #, kde-format
 msgctxt "Category"
 msgid "3D"
-msgstr ""
+msgstr "3D"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
 #, kde-format
 msgctxt "Category"
 msgid "Drawing"
-msgstr ""
+msgstr "Zīmēšana"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
 #, kde-format
 msgctxt "Category"
 msgid "Painting and Editing"
-msgstr ""
+msgstr "Zīmēšana un apstrāde"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
 #, kde-format
 msgctxt "Category"
 msgid "Photography"
-msgstr ""
+msgstr "Fotogrāfija"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
 #, kde-format
 msgctxt "Category"
 msgid "Publishing"
-msgstr ""
+msgstr "Publicēšana"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
 #, kde-format
 msgctxt "Category"
 msgid "Scanning and OCR"
-msgstr ""
+msgstr "Skenēšana un OCR"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
 #, kde-format
 msgctxt "Category"
 msgid "Viewers"
-msgstr ""
+msgstr "Skatītāji"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
 #, kde-format
 msgctxt "Category"
 msgid "Internet"
-msgstr "ئىنتېرنېت"
+msgstr "Internets"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
 #, kde-format
 msgctxt "Category"
 msgid "Chat"
-msgstr ""
+msgstr "Tērzēšana"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
 #, kde-format
 msgctxt "Category"
 msgid "File Sharing"
-msgstr ""
+msgstr "Datņu pārsūtīšana"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
 #, kde-format
 msgctxt "Category"
 msgid "Mail"
-msgstr ""
+msgstr "Pasts"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
 #, kde-format
 msgctxt "Category"
 msgid "Web Browsers"
-msgstr ""
+msgstr "Tīmekļa pārlūki"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
 #, kde-format
 msgctxt "Category"
 msgid "Multimedia"
-msgstr "كۆپ ۋاسىتە"
+msgstr "Multivide"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
 #, kde-format
 msgctxt "Category"
 msgid "Audio and Video Editors"
-msgstr ""
+msgstr "Audio un video redaktori"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
 #, kde-format
 msgctxt "Category"
 msgid "Audio Players"
-msgstr ""
+msgstr "Audio atskaņotāji"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
 #, kde-format
 msgctxt "Category"
 msgid "Video Players"
-msgstr ""
+msgstr "Video atskaņotāji"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
 #, kde-format
 msgctxt "Category"
 msgid "CD and DVD"
-msgstr ""
+msgstr "CD un DVD"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
 #, kde-format
 msgctxt "Category"
 msgid "Office"
-msgstr ""
+msgstr "Birojs"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox Filters updates in the history view"
-#| msgid "Updates"
+#, kde-format
 msgctxt "Category"
 msgid "System Settings"
-msgstr "يېڭىلانمىلار"
+msgstr "Sistēmas iestatījumi"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:124
-#, fuzzy, kde-format
-#| msgid "%1 (%2)"
+#, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
-msgstr "%1 (%2)"
+msgstr "%1 (lietotājs)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:700
 #, kde-format
 msgid "Local bundle"
-msgstr ""
+msgstr "Vietējs komplekts"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1662
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:791
 #, kde-format
 msgid "Malformed appstream url '%1'"
-msgstr ""
+msgstr "Nepareizi noformēta lietotņu plūsmas adrese „%1“"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1766
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid ""
-#| "Failed to download %1\n"
-#| "%2\n"
-#| "\n"
+#, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr ""
-"%1 نى چۈرۈش مەغلۇپ بولدى\n"
-"%2\n"
-"\n"
+msgstr "Neizdevās pievienot avotu „%1“: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1887
 #, kde-format
 msgid "There are no Flatpak sources."
-msgstr ""
+msgstr "Nav „Flatpak“ pakotņu avotu."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1891
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid ""
-#| "Failed to download %1\n"
-#| "%2\n"
-#| "\n"
+#, kde-format
 msgid "Failed to load \"%1\" source"
-msgstr ""
-"%1 نى چۈرۈش مەغلۇپ بولدى\n"
-"%2\n"
-"\n"
+msgstr "Neizdevās ielādēt „%1“ avotu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:354
 #, kde-kuit-format
@@ -605,73 +567,64 @@ msgid ""
 "software in this repository will also be made be available in Discover when "
 "the application is installed.</para>"
 msgstr ""
+"<para>Šīs programmas izcelsme ir „%1“ (mitināta <link>%2</link>). Pēc "
+"programmas instalēšanas programmatūras centrā „Discover“ būs pieejama arī "
+"cita programmatūra no šī repozitorija.</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:446
 #, kde-format
 msgid "Retrieving size information"
-msgstr ""
+msgstr "Tiek iegūt informācija par izmēru"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:448
 #, fuzzy, kde-format
-#| msgctxt "@info license"
 #| msgid "Unknown"
 msgctxt "@label app size"
 msgid "Unknown"
-msgstr "نامەلۇم"
+msgstr "Nezināms"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:504
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid ""
-#| "Failed to download %1\n"
-#| "%2\n"
-#| "\n"
+#, kde-format
 msgid "Failed to start '%1': %2"
-msgstr ""
-"%1 نى چۈرۈش مەغلۇپ بولدى\n"
-"%2\n"
-"\n"
+msgstr "Neizdevās palaist „%1“: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:738
 #, kde-format
 msgid "All Files"
-msgstr ""
+msgstr "Visas datnes"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:740
 #, kde-format
 msgid "Home"
-msgstr ""
+msgstr "Mājas"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:742
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloads"
-msgstr "چۈشۈرۈۋاتىدۇ"
+msgstr "Lejupielādes"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:744
 #, kde-format
 msgid "Music"
-msgstr ""
+msgstr "Mūzika"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:801
 #, kde-format
 msgid "Network Access"
-msgstr ""
+msgstr "Tīkla pieeja"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
 #, kde-format
 msgid "Can access the internet"
-msgstr ""
+msgstr "Var piekļūt internetam"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, fuzzy, kde-format
-#| msgctxt "@item:inlistbox Filters updates in the history view"
-#| msgid "Updates"
+#| msgid "System Bus Access"
 msgid "Sound system access"
-msgstr "يېڭىلانمىلار"
+msgstr "Sistēmas kopnes piekļuve"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
@@ -682,60 +635,71 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
 #, kde-format
 msgid "Session Bus Access"
-msgstr ""
+msgstr "Sesijas kopnes piekļuve"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Can communicate with other applications and processes in the same desktop "
+#| "session using the following communication protocols: %1"
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
+"Var sazināties ar citām programmām un procesiem tajā pašā darbvirsmas "
+"sesijā, izmantojot šos komunikāciju protokolus: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
 msgid "System Bus Access"
-msgstr ""
+msgstr "Sistēmas kopnes piekļuve"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Can communicate with other applications and processes in the same desktop "
+#| "session using the following communication protocols: %1"
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
+"Var sazināties ar citām programmām un procesiem tajā pašā darbvirsmas "
+"sesijā, izmantojot šos komunikāciju protokolus: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
 msgid "Remote Login Access"
-msgstr ""
+msgstr "Attālinātas ierakstīšanās piekļuve"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr ""
+"Var uzsākt attālinātas ierakstīšanās pieprasījumus, izmantojot SSH protokolu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
 #, kde-format
 msgid "Smart Card Access"
-msgstr ""
+msgstr "Piekļuve ar viedkarti"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr ""
+msgstr "Var izmantot viedkarti un ar to komunicēt"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
 #, kde-format
 msgid "Printer Access"
-msgstr ""
+msgstr "Piekļuve printerim"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr ""
+msgstr "Var izmantot un komunicēt ar printeriem"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "GPG aģents"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
@@ -743,69 +707,72 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Ļauj piekļūt GPG kriptogrāfijas pakalpojumiem, kas parasti tiek izmantoti "
+"dokumentu parakstīšanai un parakstīto dokumentu atvēršanai"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #, kde-format
 msgid "Bluetooth Access"
-msgstr ""
+msgstr "Piekļuve pie „Bluetooth“"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr ""
+msgstr "Var izmantot un komunicēt ar „Bluetooth“ ierīcēm"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
 #, kde-format
 msgid "Low-Level System Access"
-msgstr ""
+msgstr "Zema līmeņa sistēmas piekļuve"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Var padot zema līmeņa sistēmas komandas (piemēram, ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
 msgid "Device Access"
-msgstr ""
+msgstr "Piekļuve ierīcei"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
-msgstr ""
+msgstr "Var komunicēt ar iebūvētām vai savienotām ierīcēm un tās kontrolēt"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr ""
+msgstr "Kodolā balstītas virtuālās mašīnas piekļuve"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr ""
+"Ļauj palaist citas operētājsistēmas kā viesu sistēmas virtuālās mašīnas"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:907
 #, kde-format
 msgid "%1 (read-only)"
-msgstr ""
+msgstr "%1 (tikai lasāms)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "%1 (can create files)"
-msgstr ""
+msgstr "%1 (var izveidot datnes)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:919
 #, kde-format
 msgid "%1 (read & write) "
-msgstr ""
+msgstr "%1 (lasīt un rakstīt) "
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:928
 #, kde-format
 msgid "Home Folder Access"
-msgstr ""
+msgstr "Piekļuve mājas mapei"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
 #, kde-format
@@ -813,6 +780,8 @@ msgid ""
 "Can read, write, and create files in the following locations in your home "
 "folder without asking permission first: %1"
 msgstr ""
+"Var lasīt, rakstīt un izveidot datnes šajās vietās jūsu mājas mapē, neprasot "
+"atļauju: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
 #, kde-format
@@ -820,25 +789,27 @@ msgid ""
 "Can read and write files in the following locations in your home folder "
 "without asking permission first: %1"
 msgstr ""
+"Var lasīt un rakstīt datnes šajās vietās jūsu mājas mapē, neprasot atļauju: "
+"%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
-msgstr ""
+msgstr "Var lasīt datnes šajās vietās mājas mapē, neprasot atļauju: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
 "asking permission first: %1"
-msgstr ""
+msgstr "Var piekļūt datnēm šajās vietās mājas mapē, neprasot atļauju: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
 #, kde-format
 msgid "System Folder Access"
-msgstr ""
+msgstr "Piekļuve sistēmas mapei"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
 #, kde-format
@@ -846,6 +817,8 @@ msgid ""
 "Can read, write, and create system files in the following locations without "
 "asking permission first: %1"
 msgstr ""
+"Var lasīt, rakstīt un izveidot sistēmas datnes šajās vietās, neprasot "
+"atļauju: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
 #, kde-format
@@ -853,20 +826,21 @@ msgid ""
 "Can read and write system files in the following locations without asking "
 "permission first: %1"
 msgstr ""
+"Var lasīt un rakstīt sistēmas datnes šajās vietās, neprasot atļauju: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:949
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
-msgstr ""
+msgstr "Var lasīt sistēmas datnes šajās vietās, neprasot atļauju: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:951
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
-msgstr ""
+msgstr "Var piekļūt sistēmas datnēm šajās vietās, neprasot atļauju: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:961
 #, kde-format
@@ -874,6 +848,8 @@ msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
+"Var sazināties ar citām programmām un procesiem tajā pašā darbvirsmas "
+"sesijā, izmantojot šos komunikāciju protokolus: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
 #, kde-format
@@ -881,18 +857,18 @@ msgid ""
 "Can communicate with all applications and system services using the "
 "following communication protocols: %1"
 msgstr ""
+"Var sazināties ar visām programmām un sistēmas pakalpojumiem, izmantojot šos "
+"komunikācijas protokolus: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
 #, kde-format
 msgid "Add Flathub"
-msgstr ""
+msgstr "Pievienot „FlatHub“"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Applying Changes"
+#, kde-format
 msgid "Apply Changes"
-msgstr "ئۆزگەرتىشلەرنى قوللىنىۋاتىدۇ"
+msgstr "Apstiprināt izmaiņas"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:95
 #, kde-format
@@ -900,6 +876,7 @@ msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
 msgstr ""
+"Izmaiņas „Flatpak“ avotu prioritātei ir jāapstiprina pirms tās stājas spēkā."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:99
 #, kde-format
@@ -907,18 +884,18 @@ msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
 msgstr ""
+"Nodrošina vienkāršu interneta vietnē https://flathub.org esošo programmu "
+"instalēšanu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:165
 #, kde-format
 msgid "Could not add the source %1"
-msgstr ""
+msgstr "Neizdevās pievienot avotu %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:281
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Removing"
+#, kde-format
 msgid "Removing '%1'"
-msgstr "ئۆچۈرۈۋاتىدۇ..."
+msgstr "Tiek noņemta „%1“"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:282
 #, kde-format
@@ -926,37 +903,37 @@ msgid ""
 "To remove this repository, the following applications must be uninstalled:"
 "<ul><li>%1</li></ul>"
 msgstr ""
+"Lai noņemtu šo krātuvi, ir jāatinstalē šīs programmas: <ul><li>%1</li></ul>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:299
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
-msgstr ""
+msgstr "Neizdevās noņemt %1 attālināto krātuvi: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:303
 #, kde-format
 msgid "Could not find %1"
-msgstr ""
+msgstr "Neizdevās atrast %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:335
-#, fuzzy, kde-format
-#| msgid "%1 (%2)"
+#, kde-format
 msgid "%1 (user)"
-msgstr "%1 (%2)"
+msgstr "%1 (lietotājs)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:396
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
-msgstr ""
+msgstr "Ievadiet „Flatpak“ repozitorija URI (*.flatpakrepo):"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:29
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
-msgstr ""
+msgstr "Tiek pievienots attālināts „%1“ uz %2 no %3"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:195
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "Neizdevās atrast „%1“, meklējot „%2“. Pārbaudiet, vai tas ir pieejams."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
 #, kde-format
@@ -965,53 +942,54 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
+"Šī %1 izstrādātāju versija ir novecojusi. Ieteicams izmantot stabilu versiju."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr ""
+msgstr "Ir pieejama %1 stabilāka versija."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:51
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr ""
+msgstr "Skatiet stabilo versiju %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "%1 vairs nav instalēta, bet ierīcē ir saglabāti tās dati."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "Dzēst iestatījumus un lietotāja datus"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:33
 #, kde-format
 msgid "Clearing settings and user data…"
-msgstr ""
+msgstr "Notiek iestatījumu un lietotāja datu dzēšana..."
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:23
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "„%1“ atļaujas"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:74
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:17
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "Pielāgot atļaujas..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, fuzzy, kde-format
-#| msgid "Applications"
+#| msgid "Offline Updates"
 msgid "Firmware Updates"
-msgstr "پروگراممىلار"
+msgstr "Bezsaistes atjauninājumi"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1019,16 +997,18 @@ msgid ""
 "The remote %1 require that you accept their license:\n"
 " %2"
 msgstr ""
+"Attālinātais %1 pieprasa piekrišanu licencei:\n"
+" %2"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
 #, kde-format
 msgid "Review EULA"
-msgstr ""
+msgstr "Pārskatīt EULA"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
 #, kde-format
 msgid "Could not enable remote %1: %2"
-msgstr ""
+msgstr "Neizdevās ieslēgt attālināto %1: %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:63
 #, kde-format
@@ -1036,33 +1016,33 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"Neatbalstīts jautājums:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:156
 #, kde-format
 msgid "Backend %1 took too long to initialize"
-msgstr ""
+msgstr "Aizmugursistēmas %1 ieslēgšana aizņēma pārāk daudz laika"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgid "Applications"
-msgstr "پروگراممىلار"
+msgstr "Programmas"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:261
 #, kde-format
 msgid "Plasma Addons"
-msgstr ""
+msgstr "„Plasma“ pielikumi"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:261
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgid "Application Addons"
-msgstr "پروگراممىلار"
+msgstr "Programmas pielikumi"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:349
 #, kde-format
 msgid "Network error in backend %1: %2"
-msgstr ""
+msgstr "Tīkla kļūda aizmugursistēmā %1: %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
 #, kde-format
@@ -1070,13 +1050,15 @@ msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr ""
+"Serverim saistībā ar aizmigursistēmu %1 ir nosūtīti pārāk daudzi "
+"pieprasījumi. Nogaidiet dažas minūtes un mēģiniet vēlreiz."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:359
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:365
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:370
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
-msgstr ""
+msgstr "Nederīga %1 aizmugursistēma, sazinieties ar izplatītāju."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:389
 #, kde-format
@@ -1086,65 +1068,69 @@ msgid ""
 "reported error was:\n"
 "%2"
 msgstr ""
+"Neizdevās pabeigt %1 atjaunināšanu. Varat mēģināt un veikt šo darbību caur "
+"lodziņu „Iegūstiet jaunas interesantas lietas“, kas sniedz stingrāku "
+"kontroli. Attiecīgā kļūda ir:\n"
+"%2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
-msgstr ""
+msgstr "Neizdevās pievienot ekrānattēlu ierakstam %1 aizmugursistēmā %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:403
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
-msgstr ""
+msgstr "Kritiska kļūda aizmugursistēmā %1. Sazinieties ar izplatītāju."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
 #, kde-format
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:521
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
-msgstr ""
+msgstr "Nepareiza „KNewStuff“ URI: %1"
 
 #: libdiscover/backends/KNSBackend/KNSResource.cpp:169
 #, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"
-msgstr ""
+msgstr "KDE veikals"
 
 #: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
 #, kde-format
 msgid "Log in information for %1"
-msgstr ""
+msgstr "Ierakstīšanās informācija priekš %1"
 
 #: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:227
 #, kde-format
 msgid "Cannot launch %1"
-msgstr ""
+msgstr "Neizdodas palaist %1"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Addons"
-msgstr ""
+msgstr "„Plasma“ pielikumi"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
-msgstr ""
+msgstr "Plasma logdaļas"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"
-msgstr "خەت نۇسخا"
+msgstr "Fonti"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:320
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
-msgstr ""
+msgstr "Pārliecinieties, ka „Appstream“ ir pareizi pielāgots sistēmai"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:356
 #, kde-format
@@ -1153,435 +1139,402 @@ msgid ""
 "Your operating system ended support on %1. Consider upgrading to a supported "
 "version."
 msgstr ""
+"Jūsu operētājsistēmas atbalsts beidzās %1. Apsveriet tās atjaunināšanu uz "
+"atbalstītu versiju."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:906
 #, kde-format
 msgid "Cannot remove '%1'"
-msgstr ""
+msgstr "Neizdodas noņemt „%1“"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:989
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<b>A new major version of %1 has been released.</b>\n"
+#| "To be able to upgrade to this new version, make sure to apply all "
+#| "available updates and then restart the system."
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
 "<b>%1 is now available.</b>\n"
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
+"<b>Ir pieejama jauna %1 versija.</b>\n"
+"Lai atjauninātu uz šo versiju, ieinstalējiet visus pieejamos atjauninājumus "
+"un pārstartējiet sistēmu."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
 #, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#| msgid "Upgrade to %1 %2"
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "يۈكسەلدۈر"
+msgstr "Uzlabot uz %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, fuzzy, kde-format
-#| msgid "Available"
+#| msgid "Repo not available"
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "ئىشلەتكىلى بولىدۇ"
+msgstr "Krātuve nav pieejama"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
 msgid "Out of memory"
-msgstr ""
+msgstr "Nepietiek atmiņas"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
 #, kde-format
 msgid "No network connection available"
-msgstr ""
+msgstr "Nav pieejams interneta savienojums"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:22
 #, kde-format
 msgid "Operation not supported"
-msgstr ""
+msgstr "Darbība nav atbalstīta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:25
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"web\""
-#| msgid "Internet"
+#, kde-format
 msgid "Internal error"
-msgstr "ئىنتېرنېت"
+msgstr "Iekšēja kļūda"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:27
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"web\""
-#| msgid "Internet"
+#, kde-format
 msgid "Internal error: %1"
-msgstr "ئىنتېرنېت"
+msgstr "Iekšēja kļūda: %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:31
 #, kde-format
 msgid "GPG failure"
-msgstr ""
+msgstr "GPG kļūda"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:33
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "Not Installed"
+#, kde-format
 msgid "PackageID invalid"
-msgstr "قاچىلانمىدى"
+msgstr "PackageID nav derīgs"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "Not Installed"
+#, kde-format
 msgid "Package not installed"
-msgstr "قاچىلانمىدى"
+msgstr "Pakotne nav instalēta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:37
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "Not Installed"
+#, kde-format
 msgid "Package not found"
-msgstr "قاچىلانمىدى"
+msgstr "Pakotne nav atrasta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "Not Installed"
+#, kde-format
 msgid "Package is already installed"
-msgstr "قاچىلانمىدى"
+msgstr "Pakotne jau ir instalēta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:41
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save Package Download List..."
+#, kde-format
 msgid "Package download failed"
-msgstr "بوغچا چۈشۈرۈش تىزىمىنى ساقلاش…"
+msgstr "Pakotnes lejupielāde nav izdevusies"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:43
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "Not Installed"
+#, kde-format
 msgid "Package group not found"
-msgstr "قاچىلانمىدى"
+msgstr "Pakotņu grupa nav atrasta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "Not Installed"
+#, kde-format
 msgid "Package group list invalid"
-msgstr "قاچىلانمىدى"
+msgstr "Pakotņu grupas saraksts nav derīgs"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:47
 #, kde-format
 msgid "Dependency resolution failed"
-msgstr ""
+msgstr "Neizdevās atrisināt atkarības"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:49
 #, kde-format
 msgid "Filter invalid"
-msgstr ""
+msgstr "Nederīgs filtrs"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
 #, kde-format
 msgid "Failed while creating a thread"
-msgstr ""
+msgstr "Kļūda pavediena izveidošanas laikā"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:53
 #, kde-format
 msgid "Transaction failure"
-msgstr ""
+msgstr "Operācijas kļūme"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:55
 #, kde-format
 msgid "Transaction canceled"
-msgstr ""
+msgstr "Operācija ir atcelta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:57
 #, kde-format
 msgid "No Cache available"
-msgstr ""
+msgstr "Kešatmiņa nav pieejama"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:59
 #, kde-format
 msgid "Cannot find repository"
-msgstr ""
+msgstr "Neizdodas atrast krātuvi"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:61
 #, kde-format
 msgid "Cannot remove system package"
-msgstr ""
+msgstr "Neizdodas noņemt sistēmas pakotni"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:63
 #, kde-format
 msgid "The PackageKit daemon has crashed"
-msgstr ""
+msgstr "„PackageKit“ dēmons ir avarējis"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:65
 #, kde-format
 msgid "Initialization failure"
-msgstr ""
+msgstr "Inicializēšanas kļūme"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:67
 #, kde-format
 msgid "Failed to finalize transaction"
-msgstr ""
+msgstr "Kļūme operācijas inicializēšanā"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:69
 #, kde-format
 msgid "Config parsing failed"
-msgstr ""
+msgstr "Konfigurācijas parsēšana neizdevās"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:71
 #, kde-format
 msgid "Cannot cancel transaction"
-msgstr ""
+msgstr "Neizdevās atcelt operāciju"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:73
 #, kde-format
 msgid "Cannot obtain lock"
-msgstr ""
+msgstr "Neizdevās iegūt bloķēšanu"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:75
 #, kde-format
 msgid "No packages to update"
-msgstr ""
+msgstr "Nav atjaunināmu pakotņu"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:77
 #, kde-format
 msgid "Cannot write repo config"
-msgstr ""
+msgstr "Neizdodas ierakstīt krātuves konfigurāciju"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:79
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "Not Installed"
+#, kde-format
 msgid "Local install failed"
-msgstr "قاچىلانمىدى"
+msgstr "Lokālā instalēšana neizdevās"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:81
 #, kde-format
 msgid "Bad GPG signature found"
-msgstr ""
+msgstr "Atrasts nederīgs GPG paraksts"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:83
 #, kde-format
 msgid "No GPG signature found"
-msgstr ""
+msgstr "Nav atrasts GPG paraksts"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:85
 #, kde-format
 msgid "Cannot install source package"
-msgstr ""
+msgstr "Neizdodas ieinstalēt avota pakotni"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:87
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Authentication error"
+#, kde-format
 msgid "Repo configuration error"
-msgstr "كىملىك دەلىللەش خاتالىقى"
+msgstr "Krātuves konfigurācijas kļūda"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:89
 #, kde-format
 msgid "No license agreement"
-msgstr ""
+msgstr "Trūkst piekrišanas licencei"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:91
 #, kde-format
 msgid "File conflicts found"
-msgstr ""
+msgstr "Atrasti datņu konflikti"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:93
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Save Package Download List..."
+#, kde-format
 msgid "Package conflict found"
-msgstr "بوغچا چۈشۈرۈش تىزىمىنى ساقلاش…"
+msgstr "Atrasts pakotnes konflikts"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:95
 #, kde-format
 msgid "Repo not available"
-msgstr ""
+msgstr "Krātuve nav pieejama"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:97
 #, kde-format
 msgid "Invalid package file"
-msgstr ""
+msgstr "Nederīga pakotnes datne"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:99
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "Not Installed"
+#, kde-format
 msgid "Package install blocked"
-msgstr "قاچىلانمىدى"
+msgstr "Pakotnes instalācija ir bloķēta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:101
 #, kde-format
 msgid "Corrupt package found"
-msgstr ""
+msgstr "Atrasta sabojāta pakotne"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:103
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "Not Installed"
+#, kde-format
 msgid "All packages already installed"
-msgstr "قاچىلانمىدى"
+msgstr "Visas pakotnes jau ir instalētas"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:105
 #, kde-format
 msgid "File not found"
-msgstr ""
+msgstr "Datne nav atrasta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:107
 #, kde-format
 msgid "No more mirrors available"
-msgstr ""
+msgstr "Vairs nav pieejamu spoguļserveru"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
-#, fuzzy, kde-format
-#| msgid "Distribution upgrades"
+#, kde-format
 msgid "No distro upgrade data"
-msgstr "تارقىتىلما يۈكسەلدۈرۈش"
+msgstr "Nav distribūcijas uzlabojuma datu"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:111
 #, kde-format
 msgid "Incompatible architecture"
-msgstr ""
+msgstr "Nesaderīga arhitektūra"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:113
 #, kde-format
 msgid "No space on device left"
-msgstr ""
+msgstr "Ierīcē nepietiek brīvas vietas"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:115
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Media Change Required"
+#, kde-format
 msgid "A media change is required"
-msgstr "ۋاسىتە ئۆزگەرتىش زۆرۈر"
+msgstr "Nepieciešama informācijas nesēja maiņa"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:117
 #, kde-format
 msgid "You have no authorization to execute this operation"
-msgstr ""
+msgstr "Jums nav tiesību izpildīt šo operāciju"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:119
 #, kde-format
 msgid "Update not found"
-msgstr ""
+msgstr "Atjauninājums nav atrasts"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
 #, kde-format
 msgid "Cannot install from unsigned repo"
-msgstr ""
+msgstr "Neizdodas instalēt no neparakstītas krātuves"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
 #, kde-format
 msgid "Cannot update from unsigned repo"
-msgstr ""
+msgstr "Neizdodas atjaunināt no neparakstītas krātuves"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:125
 #, kde-format
 msgid "Cannot get file list"
-msgstr ""
+msgstr "Neizdodas iegūt datņu sarakstu"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:127
 #, kde-format
 msgid "Cannot get requires"
-msgstr ""
+msgstr "Neizdodas iegūt vajadzīgos vienumus"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:129
 #, kde-format
 msgid "Cannot disable repository"
-msgstr ""
+msgstr "Neizdodas izslēgt krātuvi"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:131
 #, kde-format
 msgid "Restricted download detected"
-msgstr ""
+msgstr "Konstatēta ierobežota lejupielāde"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:133
 #, kde-format
 msgid "Package failed to configure"
-msgstr ""
+msgstr "Neizdevās konfigurēt pakotni"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:135
 #, kde-format
 msgid "Package failed to build"
-msgstr ""
+msgstr "Neizdevās pakotnes būvēšana"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "Not Installed"
+#, kde-format
 msgid "Package failed to install"
-msgstr "قاچىلانمىدى"
+msgstr "Pakotni neizdevās instalēt"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:139
 #, kde-format
 msgid "Package failed to remove"
-msgstr ""
+msgstr "Pakotni neizdevās noņemt"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:141
 #, kde-format
 msgid "Update failed due to running process"
-msgstr ""
+msgstr "Atjaunināšana neizdevās palaista procesa dēļ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:143
 #, kde-format
 msgid "The package database changed"
-msgstr ""
+msgstr "Ir mainījusies pakotņu datubāze"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:145
 #, kde-format
 msgid "The provided type is not supported"
-msgstr ""
+msgstr "Norādītais tips nav atbalstīts"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:147
 #, kde-format
 msgid "Install root is invalid"
-msgstr ""
+msgstr "Instalācijas sakne nav derīga"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:149
 #, kde-format
 msgctxt ""
 "Failed to sync your Linux distro repositories or other sources of packages"
 msgid "Cannot fetch sources"
-msgstr ""
+msgstr "Neizdodas iegūt avotus"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:151
-#, fuzzy, kde-format
-#| msgctxt "@action:button Cancels the download"
-#| msgid "Cancel"
+#, kde-format
 msgid "Canceled priority"
-msgstr "ۋاز كەچ"
+msgstr "Atcelta prioritāte"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:153
 #, kde-format
 msgid "Unfinished transaction"
-msgstr ""
+msgstr "Nepabeigta operācija"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:155
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package locked at a certain version"
-#| msgid "Locked"
+#, kde-format
 msgid "Lock required"
-msgstr "قۇلۇپلانغان"
+msgstr "Nepieciešama bloķēšana"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:160
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Unknown Error"
+#, kde-format
 msgid "Unknown error %1."
-msgstr "نامەلۇم خاتالىق"
+msgstr "Nezināma kļūda %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
 #, kde-format
 msgid "'%1' was changed and suggests to be restarted."
-msgstr ""
+msgstr "„%1“ izmaiņu dēļ ir ieteicams to pārstartēt."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
 #, kde-format
 msgid "A change by '%1' suggests your session to be restarted."
-msgstr ""
+msgstr "„%1“ izmaiņu dēļ ieteicams pārstartēt sesiju."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
 #, kde-format
@@ -1589,6 +1542,8 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
+"„%1“ tika atjaunināts drošības iemeslu dēļ, tāpēc ieteicams pārstartēt "
+"sesiju."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
 #, kde-format
@@ -1596,432 +1551,379 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the system is "
 "recommended."
 msgstr ""
+"„%1“ tika atjaunināts drošības iemeslu dēļ, tāpēc ieteicams pārstartēt "
+"sistēmu."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
 #, kde-format
 msgid "A change by '%1' suggests your system to be restarted."
-msgstr ""
+msgstr "„%1“ izmaiņu dēļ ieteicams pārstartēt sistēmu."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
 msgid "The application will have to be restarted."
-msgstr ""
+msgstr "Programma būs jāpārstartē."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:190
 #, kde-format
 msgid "The session will have to be restarted"
-msgstr ""
+msgstr "Sesija būs jāpārstartē"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:192
 #, kde-format
 msgid "The system will have to be restarted."
-msgstr ""
+msgstr "Sistēma būs jāpārstartē."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:194
 #, kde-format
 msgid "For security, the session will have to be restarted."
-msgstr ""
+msgstr "Drošības apsvērumu dēļ sesija būs jāpārstartē."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:196
 #, kde-format
 msgid "For security, the system will have to be restarted."
-msgstr ""
+msgstr "Drošības apsvērumu dēļ sistēma būs jāpārstartē."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Waiting"
+#, kde-format
 msgid "Waiting…"
-msgstr "كۈتۈۋاتىدۇ"
+msgstr "Gaida..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
 #, kde-format
 msgid "Refreshing Cache…"
-msgstr ""
+msgstr "Pārlādē kešatmiņu..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
 #, kde-format
 msgid "Setup…"
-msgstr ""
+msgstr "Sagatavo..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:214
 #, kde-format
 msgid "Processing…"
-msgstr ""
+msgstr "Apstrādā..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:216
-#, fuzzy, kde-format
-#| msgctxt "@status describes a past-tense action"
-#| msgid "Removed"
+#, kde-format
 msgid "Remove…"
-msgstr "چىقىرىۋېتىلدى"
+msgstr "Noņem..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:218
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading…"
-msgstr "چۈشۈرۈۋاتىدۇ"
+msgstr "Lejupielādē..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Installing"
+#, kde-format
 msgid "Installing…"
-msgstr "ئورنىتىۋاتىدۇ"
+msgstr "Instalē..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:222
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Waiting"
+#, kde-format
 msgid "Updating…"
-msgstr "كۈتۈۋاتىدۇ"
+msgstr "Atjaunina..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:224
 #, kde-format
 msgid "Cleaning up…"
-msgstr ""
+msgstr "Satīra..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:227
 #, kde-format
 msgid "Resolving dependencies…"
-msgstr ""
+msgstr "Risina atkarības..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:229
 #, kde-format
 msgid "Checking signatures…"
-msgstr ""
+msgstr "Pārbauda parakstus..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
 #, kde-format
 msgid "Test committing…"
-msgstr ""
+msgstr "Pārbauda apstiprināšanu..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"comm"
-#| "\""
-#| msgid "Communication"
+#, kde-format
 msgid "Committing…"
-msgstr "ئالاقە"
+msgstr "Apstiprina..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:236
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:362
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Finished"
+#, kde-format
 msgid "Finished"
-msgstr "تاماملاندى"
+msgstr "Pabeigts"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:238
-#, fuzzy, kde-format
-#| msgctxt "@action:button Cancels the download"
-#| msgid "Cancel"
+#, kde-format
 msgid "Canceled"
-msgstr "ۋاز كەچ"
+msgstr "Atcelts"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:240
 #, kde-format
 msgid "Waiting for lock…"
-msgstr ""
+msgstr "Gaida bloķēšanu"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:242
-#, fuzzy, kde-format
-#| msgctxt "@info Status info, widget title"
-#| msgid "Waiting for Authentication"
+#, kde-format
 msgid "Waiting for authorization…"
-msgstr "دەلىللەشنى كۈتۈۋاتىدۇ‏"
+msgstr "Gaida autorizāciju..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:247
 #, kde-format
 msgid "Copying files…"
-msgstr ""
+msgstr "Kopē datnes..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:250
-#, fuzzy, kde-format
-#| msgctxt "@info license"
-#| msgid "Unknown"
+#, kde-format
 msgid "Unknown Status"
-msgstr "نامەلۇم"
+msgstr "Nezināms statuss"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:258
 #, kde-format
 msgid "We are waiting for something."
-msgstr ""
+msgstr "Kaut ko gaida."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
 #, kde-format
 msgid "Setting up transaction…"
-msgstr ""
+msgstr "Sagatavo operāciju..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
 #, kde-format
 msgid "The transaction is currently working…"
-msgstr ""
+msgstr "Šobrīd notiek operācija..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
 #, kde-format
 msgid "The transaction is currently removing packages…"
-msgstr ""
+msgstr "Notiek pakotņu noņemšana..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Downloading Packages"
+#, kde-format
 msgid "The transaction is currently downloading packages…"
-msgstr "بوغچىلارنى چۈشۈرۈۋاتىدۇ"
+msgstr "Notiek pakotņu lejupielāde..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
 #, kde-format
 msgid "The transactions is currently installing packages…"
-msgstr ""
+msgstr "Notiek pakotņu instalēšana..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
 #, kde-format
 msgid "The transaction is currently updating packages…"
-msgstr ""
+msgstr "Notiek pakotņu atjaunināšana..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
 #, kde-format
 msgid "The transaction is currently cleaning up…"
-msgstr ""
+msgstr "Notiek satīrīšana..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
 #, kde-format
 msgid ""
 "The transaction is currently resolving the dependencies of the packages it "
 "will install…"
-msgstr ""
+msgstr "Notiek instalējamās pakotnes atkarību risināšana..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
 #, kde-format
 msgid "The transaction is currently checking the signatures of the packages…"
-msgstr ""
+msgstr "Notiek pakotņu parakstu pārbaude..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
 #, kde-format
 msgid ""
 "The transaction is currently testing the commit of this set of packages…"
-msgstr ""
+msgstr "Notiek šo pakotņu komplekta apstiprināšanas pārbaude..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
 #, kde-format
 msgid "The transaction is currently committing its set of packages…"
-msgstr ""
+msgstr "Notiek pakotņu komplekta apstiprināšana..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
 #, kde-format
 msgid "The transaction has finished!"
-msgstr ""
+msgstr "Operācija ir pabeigta!"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:286
 #, kde-format
 msgid "The transaction was canceled"
-msgstr ""
+msgstr "Operācija ir atcelta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
 #, kde-format
 msgid "The transaction is currently waiting for the lock…"
-msgstr ""
+msgstr "Operācija gaida bloķēšanu..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
-#, fuzzy, kde-format
-#| msgctxt "@info Status info, widget title"
-#| msgid "Waiting for Authentication"
+#, kde-format
 msgid "Waiting for the user to authorize the transaction…"
-msgstr "دەلىللەشنى كۈتۈۋاتىدۇ‏"
+msgstr "Gaida, kad lietotājs autorizēs operāciju..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
 #, kde-format
 msgid "The transaction is currently copying files…"
-msgstr ""
+msgstr "Notiek datņu kopēšana..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
 #, kde-format
 msgid "Currently refreshing the repository cache…"
-msgstr ""
+msgstr "Notiek krātuves kešatmiņas pārlādēšana..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
-#, fuzzy, kde-format
-#| msgctxt "@info license"
-#| msgid "Unknown"
+#, kde-format
 msgid "Unknown status %1."
-msgstr "نامەلۇم"
+msgstr "Nezināms statuss %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:313
 #, kde-format
 msgctxt "update state"
 msgid "Stable"
-msgstr ""
+msgstr "Stabils"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:315
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgctxt "update state"
 msgid "Unstable"
-msgstr "ئورنىتىلغان"
+msgstr "Nestabils"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:317
 #, kde-format
 msgctxt "update state"
 msgid "Testing"
-msgstr ""
+msgstr "Testēšanas"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
 #: libdiscover/resources/AbstractResource.cpp:103
 #, kde-format
 msgid "Installed"
-msgstr "ئورنىتىلغان"
+msgstr "Instalēts"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:330
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "Not Installed"
-msgstr "ئورنىتىلغان"
+msgstr "Nav instalēts"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:332
 #, kde-format
 msgid "Low"
-msgstr ""
+msgstr "Zems"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:334
 #, kde-format
 msgid "Enhancement"
-msgstr ""
+msgstr "Uzlabojums"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:336
 #, kde-format
 msgid "Normal"
-msgstr ""
+msgstr "Normāls"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:338
 #, kde-format
 msgid "Bugfix"
-msgstr ""
+msgstr "Kļūdu labojums"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:340
 #, kde-format
 msgid "Important"
-msgstr ""
+msgstr "Svarīgs"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:342
 #, kde-format
 msgid "Security"
-msgstr ""
+msgstr "Drošības"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:344
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package locked at a certain version"
-#| msgid "Locked"
+#, kde-format
 msgid "Blocked"
-msgstr "قۇلۇپلانغان"
+msgstr "Bloķēts"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloading"
-msgstr "چۈشۈرۈۋاتىدۇ"
+msgstr "Lejupielādē"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Waiting"
+#, kde-format
 msgid "Updating"
-msgstr "كۈتۈۋاتىدۇ"
+msgstr "Atjaunina"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:350
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Installing"
+#, kde-format
 msgid "Installing"
-msgstr "ئورنىتىۋاتىدۇ"
+msgstr "Instalē"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:352
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Removing"
+#, kde-format
 msgid "Removing"
-msgstr "ئۆچۈرۈۋاتىدۇ..."
+msgstr "Noņem"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:354
 #, kde-format
 msgid "Cleanup"
-msgstr ""
+msgstr "Satīra"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:356
 #, kde-format
 msgid "Obsoleting"
-msgstr ""
+msgstr "Padara novecojušu"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:358
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "Collection Installed"
-msgstr "ئورنىتىلغان"
+msgstr "Kolekcija ir instalēta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:360
-#, fuzzy, kde-format
-#| msgid "Available"
+#, kde-format
 msgid "Collection Available"
-msgstr "ئىشلەتكىلى بولىدۇ"
+msgstr "Kolekcija ir pieejama"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:364
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Reinstall"
+#, kde-format
 msgid "Reinstalling"
-msgstr "قايتا ئورنات"
+msgstr "Pārinstalēšana"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:366
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Downloading"
+#, kde-format
 msgid "Downgrading"
-msgstr "چۈشۈرۈۋاتىدۇ"
+msgstr "Atjauno uz vecāku versiju"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:368
 #, kde-format
 msgid "Preparing"
-msgstr ""
+msgstr "Sagatavo"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:370
 #, kde-format
 msgid "Decompressing"
-msgstr ""
+msgstr "Atarhivē"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:372
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Untrusted Packages"
+#, kde-format
 msgid "Untrusted"
-msgstr "ئىشەنچسىز بوغچىلار"
+msgstr "Neuzticams"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:374
 #, kde-format
 msgid "Trusted"
-msgstr ""
+msgstr "Uzticams"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:376
-#, fuzzy, kde-format
-#| msgid "Available"
+#, kde-format
 msgid "Unavailable"
-msgstr "ئىشلەتكىلى بولىدۇ"
+msgstr "Nepieejams"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:123
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgid "Failed Offline Update"
-msgstr "پروگراممىلار"
+msgstr "Bezsaistes atjaunināšana neizdevās"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid ""
-#| "Failed to download %1\n"
-#| "%2\n"
-#| "\n"
+#, kde-format
 msgid ""
 "Failed to update %1 package\n"
 "%2"
@@ -2029,81 +1931,69 @@ msgid_plural ""
 "Failed to update %1 packages\n"
 "%2"
 msgstr[0] ""
-"%1 نى چۈرۈش مەغلۇپ بولدى\n"
-"%2\n"
-"\n"
+"Neizdevās atjaunināt %1 pakotni\n"
+"%2"
+msgstr[1] ""
+"Neizdevās atjaunināt %1 pakotnes\n"
+"%2"
+msgstr[2] ""
+"Neizdevās atjaunināt %1 pakotņu\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:181
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Open File"
+#, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
-msgstr "ھۆججەت ئاچ"
+msgstr "Atvērt programmu „Discover“"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:132
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"base"
-#| "\""
-#| msgid "Base System"
+#, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
-msgstr "ئاساسى سىستېما"
+msgstr "Labot sistēmu"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:137
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgid "Repairing failed offline update"
-msgstr "پروگراممىلار"
+msgstr "Labo neizdevušos bezsaistes atjauninājumu"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
 #, kde-format
 msgid "Repair Failed"
-msgstr ""
+msgstr "Labošana neizdevās"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:145
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
-msgstr ""
+msgstr "%1<nl/>Informējiet par šo kļūdu operētājsistēmas izplatītāju"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
 #, kde-format
 msgid "Repaired Successfully"
-msgstr ""
+msgstr "Labošana notikusi veiksmīgi"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgid "Offline Updates"
-msgstr "پروگراممىلار"
+msgstr "Bezsaistes atjauninājumi"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:178
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid ""
-#| "Failed to download %1\n"
-#| "%2\n"
-#| "\n"
+#, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
-msgstr[0] ""
-"%1 نى چۈرۈش مەغلۇپ بولدى\n"
-"%2\n"
-"\n"
+msgstr[0] "Veiksmīgi atjaunināta %1 pakotne"
+msgstr[1] "Veiksmīgi atjauninātas %1 pakotnes"
+msgstr[2] "Veiksmīgi atjauninātas %1 pakotnes"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Unknown Error"
+#, kde-format
 msgid "Unknown Source"
-msgstr "نامەلۇم خاتالىق"
+msgstr "Nezināms avots"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
-#, fuzzy, kde-format
-#| msgid "%1 (%2)"
+#, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
@@ -2112,69 +2002,71 @@ msgstr "%1 (%2)"
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:394
 #, kde-format
 msgid "Obsoletes:"
-msgstr ""
+msgstr "Novecojušas:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
 #, kde-format
 msgid "Release Notes:"
-msgstr ""
+msgstr "Laidiena informācija:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:396
 #, kde-format
 msgid "Update State:"
-msgstr ""
+msgstr "Atjauninājuma statuss:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
 #, kde-format
 msgid "Restart:"
-msgstr ""
+msgstr "Pārstartēt:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
 #, kde-format
 msgid "Vendor:"
-msgstr ""
+msgstr "Izdevējs:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:420
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
-msgstr[0] ""
+msgstr[0] "%2 (un %1 atkarība)"
+msgstr[1] "%2 (un %1 atkarības)"
+msgstr[2] "%2 (un %1 atkarību)"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:103
 #, kde-format
 msgid "Repository URL:"
-msgstr ""
+msgstr "Krātuves URL adrese:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox Filters updates in the history view"
-#| msgid "Updates"
+#, kde-format
 msgid "System upgrade"
-msgstr "يېڭىلانمىلار"
+msgstr "Sistēmas uzlabojumi"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
-#, fuzzy, kde-format
-#| msgctxt "@title:column"
-#| msgid "Package"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "بوغچا"
+msgstr[0] "Atjaunināma %1 pakotne"
+msgstr[1] "Atjaunināmas %1 pakotnes"
+msgstr[2] "Atjaunināmas %1 pakotnes"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Atjauninājums uz jaunāku versiju %2<br/>Laidiena informācija nav "
+"norādīta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
 #, kde-format
@@ -2182,22 +2074,25 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Atjaunināšana uz jaunāku versiju %2<br/>Laidiena informācija:"
+"<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
 #, kde-format
 msgid "Present"
-msgstr ""
+msgstr "Tagadne"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:230
 #, kde-format
 msgid "Future"
-msgstr ""
+msgstr "Nākotne"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:367
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
+"Atjauninājumam nepietiek brīvas vietas. Pieejams tikai %1 brīvas vietas."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:577
 #, kde-format
@@ -2207,13 +2102,15 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"Atjauninājumu nav iespējams veikt, jo tā rezultātā tiktu noņemta šī "
+"programmatūra, kas ir kritiska sistēmas darbībai:<nl/><ul><li>%1</li></"
+"ul><nl/>Ja, jūsuprāt, tā ir kļūda, sazinieties ar sava distributīva pakotņu "
+"pārziņiem."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:584
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "No Change"
+#, kde-format
 msgid "Confirm Changes"
-msgstr "ئۆزگىرىش يوق"
+msgstr "Apstiprināt izmaiņas"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:585
 #, kde-format
@@ -2221,12 +2118,14 @@ msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
 ">in order to install:<ul><li>%2</li></ul>"
 msgstr ""
+"Atjaunināšanās rezultātā tiks noņemtas šīs pakotnes:<ul><li>%1</li></ul><br/"
+">lai ieinstalētu:<ul><li>%2</li></ul>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:709
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
-msgstr ""
+msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:717
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:318
@@ -2235,12 +2134,14 @@ msgid ""
 "Media Change of type '%1' is requested.\n"
 "%2"
 msgstr ""
+"Pieprasīta „%1“ tipa datu nesēja maiņa.\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:750
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
 #, kde-format
 msgid "Accept EULA"
-msgstr ""
+msgstr "Pieņemt EULA"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:751
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:296
@@ -2249,12 +2150,14 @@ msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
 " %3"
 msgstr ""
+"Pakotne „%1“ un tās izdevējs „%2“ pieprasa apstiprināt licenci:\n"
+" %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:868
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
 #, kde-format
 msgid "Missing signature for %1 in %2"
-msgstr ""
+msgstr "Trūkst paraksts pakotnei „%1“, kas atrodas krātuvē „%2“"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:869
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:336
@@ -2268,6 +2171,13 @@ msgid ""
 "Fingerprint: %4\n"
 "Timestamp: %4\n"
 msgstr ""
+"Vai uzticaties šai atslēgai?\n"
+"\n"
+"Url: %1\n"
+"Lietotājs: %2\n"
+"Atslēga: %3\n"
+"Digitālnospiedums: %4\n"
+"Laika zīme: %4\n"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:194
 #, kde-format
@@ -2277,162 +2187,160 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"Šo darbību nav iespējams pabeigt, jo tās rezultātā tikt noņemta šī "
+"programmatūra, kas ir kritiska sistēmas pareizai darbībai:<nl/><ul><li>%1</"
+"li></ul><nl/>Ja uzskatāt, ka tā ir kļūda, ziņojiet par to sava distributīva "
+"pakotņu pārzinim."
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:207
 #, kde-format
 msgid "Confirm package removal"
-msgstr ""
+msgstr "Apstiprināt pakotnes noņemšanu"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:208
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Unable to download the following packages:"
+#, kde-format
 msgid ""
 "This action will also remove the following package:\n"
 "%2"
 msgid_plural ""
 "This action will also remove the following packages:\n"
 "%2"
-msgstr[0] "تۆۋەندىكى بوغچىلارنى چۈشۈرگىلى بولمىدى:"
+msgstr[0] ""
+"Šīs darbības rezultātā tiks noņemta arī šī pakotne:\n"
+"%2"
+msgstr[1] ""
+"Šīs darbības rezultātā tiks noņemtas arī šīs pakotnes:\n"
+"%2"
+msgstr[2] ""
+"Šīs darbības rezultātā tiks noņemtas arī šīs pakotnes:\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Dependencies"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "بېقىنىشچانلىق"
+msgstr "Parādīt atkarības..."
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "Atkarības pakotnei: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Full Access"
-msgstr ""
+msgstr "Pilna piekļuve"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
 #, kde-format
 msgid "Can access everything on the system"
-msgstr ""
+msgstr "Var piekļūt visam sistēmā"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"base"
-#| "\""
-#| msgid "Base System"
+#, kde-format
 msgctxt "Category"
 msgid "Operating System"
-msgstr "ئاساسى سىستېما"
+msgstr "Operētājsistēma"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree: Atrasti vairāki sāknēti izvietojumi. Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree: Nav atrasti sāknēti izvietojumi. Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr "يۈكسەلدۈر"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
+"Jums ir neapstiprināti atjauninājumi pašreizējai versijai. Turpina tāpat."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
+"Pirms atjaunināšanas uz jaunāku OS versiju, atjauniniet pašreizējo versiju"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Trūkst attālinātas atsauces bāzes nomaiņas operācijai. Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
 #, kde-format
 msgid "GPL and other licenses"
-msgstr ""
+msgstr "GPL un citas licences"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Add Downloaded Packages"
+#, kde-format
 msgid "Additional packages: "
-msgstr "چۈشۈرۈلگەن بوغچىلارنى قوش"
+msgstr "Papildu pakotnes: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Add Downloaded Packages"
+#, kde-format
 msgid "Additional modules: "
-msgstr "چۈشۈرۈلگەن بوغچىلارنى قوش"
+msgstr "Papildu moduļi: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
 #, kde-format
 msgid "Local packages: "
-msgstr ""
+msgstr "Lokālās pakotnes: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
 #, kde-format
 msgid "Replaced packages:"
-msgstr ""
+msgstr "Aizstātās pakotnes:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, kde-format
 msgid "Removed packages:"
-msgstr ""
+msgstr "Noņemtās pakotnes:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Versions"
+#, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "نەشرى"
+msgstr "Šobrīd sāknētā versija (piesprausta)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Versions"
+#, kde-format
 msgid "Currently booted version"
-msgstr "نەشرى"
+msgstr "Šobrīd sāknētā versija"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "Versija, kas tiks lietota pēc sāknēšanas"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr ""
+msgstr "Rezerves versija (piesprausta)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "Rezerves versija"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
 msgid "ostree remotes"
-msgstr ""
+msgstr "ostree attālinātie"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Kļūda: Nav norādīta „DBus“ saskarne. Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:58
 #, kde-format
@@ -2440,12 +2348,16 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Kļūda: Neizdodas uzsākt operāciju ar nederīgu resursa "
+"formātu. Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:78
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Kļūda: Neizdodas pāriet uz tukšu atsauci. Ziņojiet par "
+"kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:261
@@ -2453,6 +2365,8 @@ msgstr ""
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Kļūda: Ir pieprasīta nezināma operācija. Ziņojiet par "
+"kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
@@ -2461,90 +2375,82 @@ msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
 msgstr ""
+"rpm-ostree operācija neizdevās, jo:\n"
+"%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:235
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Kļūda. Nezināms resursa formāts. Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:355
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"Tiek atcelta rpm-ostree operācija. Tas var aizņemt kādu laiku. Uzgaidiet."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@action Checks the Internet for updates"
-#| msgid "Check for Updates"
+#, kde-format
 msgid "Checking for a system update"
-msgstr "يېڭىلانمىنى تەكشۈرۈش"
+msgstr "Meklē sistēmas atjauninājumus"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:387
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Downloading Packages"
+#, kde-format
 msgid "Downloading system update"
-msgstr "بوغچىلارنى چۈشۈرۈۋاتىدۇ"
+msgstr "Lejupielādē sistēmas atjauninājumus"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:390
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"base"
-#| "\""
-#| msgid "Base System"
+#, kde-format
 msgid "Updating the system"
-msgstr "ئاساسى سىستېما"
+msgstr "Atjaunina sistēmu"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Atjaunina uz nākamo lielo OS versiju"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr ""
+msgstr "Notiek operācija (sākusies ārpus „Discover“)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
-#, fuzzy, kde-format
-#| msgctxt "@info license"
-#| msgid "Unknown"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "نامەلۇم"
+msgstr "Nezināms operācijas tips"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "Kanāli..."
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:28
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox Filters all changes in the history view"
-#| msgid "All changes"
+#, kde-format
 msgid "%1 channels"
-msgstr "بارلىق ئۆزگىرىشلەر"
+msgstr "%1 kanāli"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:41
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
-msgstr ""
+msgstr "%1 - %2"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "Pārslēgties"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:26
 #, kde-format
 msgid "Permissions for %1"
-msgstr ""
+msgstr "Atļaujas attiecībā uz %1"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
 msgid "Snap"
-msgstr ""
+msgstr "Snap"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:51
 #, kde-format
@@ -2552,11 +2458,15 @@ msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this computer. Install it anyway?"
 msgstr ""
+"Šī „Snap“ programma nav saderīga ar drošības smilšu kasti un tai būs pilna "
+"pieeja šim datoram. Vai to tik un tā instalēt?"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""
+"SteamOS: Neizdodas nosūtīt vaicājumu „SteamOS“ atjauninājumu „atomupd“ "
+"pakalpojumam..."
 
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
@@ -2568,807 +2478,169 @@ msgstr ""
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
 msgstr ""
+"Uzskaitīt visas aizmugursistēmas, kuras vēlaties ielādēt, tās atdalot ar "
+"komatu „,“."
 
 #: libdiscover/resources/AbstractResource.cpp:99
 #, kde-format
 msgid "Broken"
-msgstr "بۇزۇلغان"
+msgstr "Nefunkcionējošs"
 
 #: libdiscover/resources/AbstractResource.cpp:101
 #, kde-format
 msgid "Available"
-msgstr "ئىشلەتكىلى بولىدۇ"
+msgstr "Pieejams"
 
 #: libdiscover/resources/AbstractResource.cpp:105
 #, kde-format
 msgid "Upgradeable"
-msgstr "يۈكشەلدۈرگىلى بولىدۇ"
+msgstr "Uzlabojams"
 
 #: libdiscover/resources/AbstractResource.cpp:242
 #, kde-format
 msgid "Launch"
-msgstr ""
+msgstr "Palaist"
 
 #: libdiscover/resources/AbstractResource.cpp:251
-#, fuzzy, kde-format
-#| msgctxt "@info:label Refers to a software version, Ex: Version 1.2.1:"
-#| msgid "Version %1:"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "نەشرى  %1:"
+msgstr "%1 versijas pārlādēšana"
 
 #: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
-msgstr ""
+msgstr "%1 → %2%1 → %2%2"
 
 #: libdiscover/resources/AbstractResourcesBackend.cpp:171
 #, kde-format
 msgid "Please verify Internet connectivity"
-msgstr ""
+msgstr "Pārbaudiet interneta savienojumu"
 
 #: libdiscover/resources/ResourcesModel.cpp:103
 #, kde-format
 msgid "Refresh"
-msgstr ""
+msgstr "Pārlādēt"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:781
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
-msgstr ""
+msgstr "%1+"
 
 #: libdiscover/resources/ResourcesUpdatesModel.cpp:111
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox Filters updates in the history view"
-#| msgid "Updates"
+#, kde-format
 msgid "Updates"
-msgstr "يېڭىلانمىلار"
+msgstr "Atjauninājumi"
 
 #: libdiscover/Transaction/Transaction.cpp:133
 #, kde-format
 msgctxt "@label Download rate"
 msgid "%1/s"
-msgstr ""
+msgstr "%1/s"
 
 #: libdiscover/Transaction/TransactionModel.cpp:74
 #, kde-format
 msgctxt "@info:status"
 msgid "Starting"
-msgstr "باشلاۋاتىدۇ..."
+msgstr "Ieslēdzas"
 
 #: libdiscover/Transaction/TransactionModel.cpp:76
 #, kde-format
 msgctxt "@info:status"
 msgid "Waiting"
-msgstr "كۈتۈۋاتىدۇ"
+msgstr "Gaida"
 
 #: libdiscover/Transaction/TransactionModel.cpp:78
 #, kde-format
 msgctxt "@info:status"
 msgid "Downloading"
-msgstr "چۈشۈرۈۋاتىدۇ"
+msgstr "Lejupielādē"
 
 #: libdiscover/Transaction/TransactionModel.cpp:82
 #, kde-format
 msgctxt "@info:status"
 msgid "Installing"
-msgstr "ئورنىتىۋاتىدۇ"
+msgstr "Instalē"
 
 #: libdiscover/Transaction/TransactionModel.cpp:84
 #, kde-format
 msgctxt "@info:status"
 msgid "Removing"
-msgstr "ئۆچۈرۈۋاتىدۇ..."
+msgstr "Noņem"
 
 #: libdiscover/Transaction/TransactionModel.cpp:86
 #, kde-format
 msgctxt "@info:status"
 msgid "Changing Addons"
-msgstr ""
+msgstr "Maina pielikumus"
 
 #: libdiscover/Transaction/TransactionModel.cpp:90
 #, kde-format
 msgctxt "@info:status"
 msgid "Done"
-msgstr "تامام"
+msgstr "Pabeigts"
 
 #: libdiscover/Transaction/TransactionModel.cpp:92
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
-msgstr ""
+msgstr "Neizdevās"
 
 #: libdiscover/Transaction/TransactionModel.cpp:94
-#, fuzzy, kde-format
-#| msgctxt "@action:button Cancels the download"
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@info:status"
 msgid "Cancelled"
-msgstr "ۋاز كەچ"
+msgstr "Atcelts"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:130
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
-msgstr "پروگراممىلار"
+msgstr "Programmas"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:131
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox Filters updates in the history view"
-#| msgid "Updates"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
-msgstr "يېڭىلانمىلار"
+msgstr "Sistēmas programmatūra"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:132
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"
-msgstr ""
+msgstr "Pielikumi"
 
-#, fuzzy
-#~| msgctxt "@info:status Requested action"
-#~| msgid "Upgrade"
-#~ msgid "Upgrade to %1 %2"
-#~ msgstr "يۈكسەلدۈر"
-
-#, fuzzy
-#~| msgctxt "@info license"
-#~| msgid "Unknown"
 #~ msgid "Unknown size"
-#~ msgstr "نامەلۇم"
+#~ msgstr "Nezināms izmērs"
 
-#, fuzzy
-#~| msgctxt "@title:column"
-#~| msgid "Package"
-#~ msgid "Packages to remove"
-#~ msgstr "بوغچا"
+#~ msgctxt "@info app size"
+#~ msgid "%1 to download, %2 on disk"
+#~ msgstr "%1 lejupielādei, %2 uz diska"
 
-#, fuzzy
-#~| msgctxt "@info:status Requested action"
-#~| msgid "Remove"
-#~ msgid "Remote: "
-#~ msgstr "چىقىرىۋەت"
+#~ msgctxt "@info app size"
+#~ msgid "%1 on disk"
+#~ msgstr "%1 uz diska"
 
-#, fuzzy
-#~| msgid "%1 (%2)"
-#~ msgctxt "version (branch)"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
+#~ msgid "Access is granted to the entire Session Bus"
+#~ msgstr "Piekļuve tiek piešķirts visai Sesijas kopnei"
 
-#, fuzzy
-#~| msgid "Applications"
-#~ msgctxt "Category"
-#~ msgid "Applications"
-#~ msgstr "پروگراممىلار"
+#~ msgid "Access is granted to the entire System Bus"
+#~ msgstr "Piekļuve ir piešķirta visai Sistēmas kopnei"
 
-#, fuzzy
-#~| msgid "%1 (%2)"
-#~ msgctxt "origin (backend name)"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
+#~ msgid "A new major version has been released"
+#~ msgstr "Ir pieejama jauna lielā OS versija"
 
-#, fuzzy
-#~| msgid "Applications"
-#~ msgctxt "@item:inlistbox"
-#~ msgid "Application Updates"
-#~ msgstr "پروگراممىلار"
-
-#, fuzzy
-#~| msgctxt "@info:label Refers to a software version, Ex: Version 1.2.1:"
-#~| msgid "Version %1:"
-#~ msgid "Version: "
-#~ msgstr "نەشرى  %1:"
-
-#, fuzzy
-#~| msgctxt "@label The software source that this package comes from"
-#~| msgid "Origin:"
-#~ msgid "Origin: "
-#~ msgstr "مەنبە:"
-
-#, fuzzy
-#~| msgctxt "@info Status information, widget title"
-#~| msgid "Waiting"
-#~ msgid "Waiting..."
-#~ msgstr "كۈتۈۋاتىدۇ"
-
-#, fuzzy
-#~| msgctxt "@info:status Requested action"
-#~| msgid "Remove"
-#~ msgid "Remove..."
-#~ msgstr "چىقىرىۋەت"
-
-#, fuzzy
-#~| msgctxt "@info:status"
-#~| msgid "Downloading"
-#~ msgid "Downloading..."
-#~ msgstr "چۈشۈرۈۋاتىدۇ"
-
-#~ msgid "Installing..."
-#~ msgstr "ئورنىتىۋاتىدۇ..."
-
-#, fuzzy
-#~| msgctxt "@item:inlistbox Filters updates in the history view"
-#~| msgid "Updates"
-#~ msgid "Update"
-#~ msgstr "يېڭىلانمىلار"
-
-#, fuzzy
-#~| msgctxt "@info:status Package state"
-#~| msgid "Not Installed"
-#~ msgid "Not Invokable"
-#~ msgstr "قاچىلانمىدى"
-
-#, fuzzy
-#~| msgid "Upgradeable"
-#~ msgid "Upgrade available"
-#~ msgstr "يۈكشەلدۈرگىلى بولىدۇ"
-
-#, fuzzy
-#~| msgctxt "@title:window"
-#~| msgid "Media Change Required"
-#~ msgid "Restart is required"
-#~ msgstr "ۋاسىتە ئۆزگەرتىش زۆرۈر"
-
-#, fuzzy
-#~| msgctxt "@title:window"
-#~| msgid "Media Change Required"
-#~ msgid "Session restart is required"
-#~ msgstr "ۋاسىتە ئۆزگەرتىش زۆرۈر"
-
-#, fuzzy
-#~| msgctxt "@item:inlistbox Filters updates in the history view"
-#~| msgid "Updates"
-#~ msgid "Updates:"
-#~ msgstr "يېڭىلانمىلار"
-
-#, fuzzy
-#~| msgid "%1 (%2)"
-#~ msgctxt "description (url)"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
-
-#~ msgctxt "@item:intext Remaining time"
-#~ msgid "%1 remaining"
-#~ msgstr "%1  قالدى"
-
-#~ msgid "%1 has been updated"
-#~ msgstr "%1 يېڭىلىنىپ بولغان"
-
-#, fuzzy
-#~| msgid "Available updates"
-#~ msgid "Available backends:\n"
-#~ msgstr "بار يېڭىلانمىلار"
-
-#, fuzzy
-#~| msgid "Applications"
-#~ msgctxt "Category"
-#~ msgid "Application Addons"
-#~ msgstr "پروگراممىلار"
-
-#, fuzzy
-#~| msgctxt ""
-#~| "@item:inlistbox Human-readable name for the Debian package section \"vcs"
-#~| "\""
-#~| msgid "Version Control Systems"
-#~ msgctxt "Category"
-#~ msgid "Version Control"
-#~ msgstr "نەشر باشقۇرۇش سىستېمىلىرى"
-
-#~ msgctxt "@info license"
-#~ msgid "Open Source"
-#~ msgstr "ئوچۇق مەنبە"
-
-#~ msgctxt "@info license"
-#~ msgid "Unknown"
-#~ msgstr "نامەلۇم"
-
-#~ msgctxt "@title:window"
-#~ msgid "Media Change Required"
-#~ msgstr "ۋاسىتە ئۆزگەرتىش زۆرۈر"
-
-#~ msgctxt "@label"
-#~ msgid "Please insert %1 into <filename>%2</filename>"
-#~ msgstr "%1 نى <filename>%2</filename> غا قىستۇرۇڭ"
-
-#~ msgctxt "@title:window"
-#~ msgid "Warning - Unverified Software"
-#~ msgstr "دىققەت - تەكشۈرۈلمىگەن يۇمشاق دېتال"
-
-#~ msgctxt "@info Status info, widget title"
-#~ msgid "Starting"
-#~ msgstr "باشلاۋاتىدۇ..."
-
-#~ msgctxt "@info Status info, widget title"
-#~ msgid "Waiting for Authentication"
-#~ msgstr "دەلىللەشنى كۈتۈۋاتىدۇ‏"
-
-#~ msgctxt "@info Status information, widget title"
-#~ msgid "Waiting"
-#~ msgstr "كۈتۈۋاتىدۇ"
-
-#~ msgctxt "@info Status info"
-#~ msgid "Waiting for other software managers to quit"
-#~ msgstr ""
-#~ "باشقا يۇمشاق دېتال باشقۇرۇش پروگراممىلىرىنىڭ تاماملىنىشىنى كۈتۈۋاتىدۇ"
-
-#~ msgctxt "@info Status info"
-#~ msgid "Waiting for required medium"
-#~ msgstr "زۆرۈر بولغان CD/DDV نى كۈتۈۋاتىدۇ"
-
-#~ msgctxt "@info Status info"
-#~ msgid "Loading Software List"
-#~ msgstr "يۇمشاق دېتال تىزىمىنى ئوقۇۋاتىدۇ"
-
-#~ msgctxt "@info Status information, widget title"
-#~ msgid "Updating software sources"
-#~ msgstr "يۇمشاق دېتال مەنبەلىرىنى يېڭىلاۋاتىدۇ"
-
-#~ msgctxt "@info Status information, widget title"
-#~ msgid "Finished"
-#~ msgstr "تاماملاندى"
-
-#~ msgctxt "@label Line edit click message"
-#~ msgid "Search"
-#~ msgstr "ئىزدە"
-
-#~ msgctxt "@item:inlistbox Filters installations in the history view"
-#~ msgid "Installations"
-#~ msgstr "ئورنىتىلغانلىرى"
-
-#~ msgctxt "@item:inlistbox Filters removals in the history view"
-#~ msgid "Removals"
-#~ msgstr "ئۆچۈرۈلگەنلىرى"
-
-#~ msgctxt "@title:column"
-#~ msgid "Date"
-#~ msgstr "چېسلا"
-
-#~ msgctxt "@info:status describes a past-tense action"
-#~ msgid "Installed"
-#~ msgstr "ئورنىتىلغان"
-
-#~ msgctxt "@info:status describes a past-tense action"
-#~ msgid "Upgraded"
-#~ msgstr "يۈكسەلدۈرۈلگەن"
-
-#~ msgctxt "@info:status Requested action"
-#~ msgid "Install"
-#~ msgstr "ئورنات"
-
-#~ msgctxt "@info:status Requested action"
-#~ msgid "Downgrade"
-#~ msgstr "نەشرىنى تۆۋەنلەت"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Installed"
-#~ msgstr "ئورنىتىلغان"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Upgradeable"
-#~ msgstr "يۈكشەلدۈرگىلى بولىدۇ"
-
-#~ msgctxt "@info:status Package state"
-#~ msgid "Broken"
-#~ msgstr "بۇزۇلغان"
-
-#, fuzzy
-#~| msgid "Installed"
-#~ msgctxt "@info:status Package state"
-#~ msgid "Install Broken"
-#~ msgstr "ئورنىتىلغان"
-
-#, fuzzy
-#~| msgctxt "@title:window"
-#~| msgid "Download failed"
-#~ msgctxt "@info:status Package state"
-#~ msgid "Not Downloadable"
-#~ msgstr "چۈشۈرۈش مەغلۇپ بولدى."
-
-#~ msgctxt "@info:status Requested action"
-#~ msgid "Purge"
-#~ msgstr "پاكىزلا"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Version Control"
-#~ msgctxt "@info:status Package state"
-#~ msgid "Version overridden"
-#~ msgstr "نەشر باشقۇرۇش سىستېمىلىرى"
-
-#, fuzzy
-#~| msgid "Broken"
-#~ msgctxt "@info:status Package state"
-#~ msgid "Policy Broken"
-#~ msgstr "بۇزۇلغان"
-
-#~ msgctxt "@info:status Package locked at a certain version"
-#~ msgid "Locked"
-#~ msgstr "قۇلۇپلانغان"
-
-#~ msgctxt "@title:window"
-#~ msgid "Low Disk Space"
-#~ msgstr "دىسكىدىكى بوشلۇق ئاز"
-
-#~ msgctxt "@title:window"
-#~ msgid "Authentication error"
-#~ msgstr "كىملىك دەلىللەش خاتالىقى"
-
-#~ msgctxt "@title:window"
-#~ msgid "Unexpected Error"
-#~ msgstr "كۈتۈلمىگەن خاتالىق"
-
-#~ msgctxt "@label"
 #~ msgid ""
-#~ "The package system could not be initialized, your configuration may be "
-#~ "broken."
+#~ "<b>A new major version of %1 has been released!</b>\n"
+#~ "To be able to update to this new version, make sure to apply all pending "
+#~ "updates and reboot your system."
 #~ msgstr ""
-#~ "بوغچا سىستېمىسىنى دەسلەپلەشتۈرگىلى بولمىدى. سەپلىمىڭىز بۇزۇلغاندەك قىلىدۇ."
-
-#~ msgctxt "@label"
-#~ msgid ""
-#~ "Another application seems to be using the package system at this time. "
-#~ "You must close all other package managers before you will be able to "
-#~ "install or remove any packages."
-#~ msgstr ""
-#~ "باشقا بىر پروگرامما بوغچا سىستېمىسىنى ئىشلىتىۋاتقاندەك قىلىدۇ. بوغچىنى "
-#~ "ئورنىتىش ياكى چىقىرىۋېتىش ئۈچۈن باشقا بارلىق بوغچا باشقۇرغۇچلارنى "
-#~ "يېپىشىڭىز كېرەك."
-
-#~ msgctxt "@label"
-#~ msgid "Could not download packages"
-#~ msgstr "بوغچىلارنى چۈشۈرگىلى بولمىدى"
-
-#~ msgctxt "@label"
-#~ msgid "An error occurred while applying changes:"
-#~ msgstr "ئۆزگىرىشلەرنى قوللىنىۋاتقاندا تۆۋەندىكىدەك خاتالىق كۆرۈلدى:"
-
-#~ msgctxt "@action"
-#~ msgid "Read Markings..."
-#~ msgstr "بەلگە قويۇلغانلىرىنى ئوقۇش..."
-
-#~ msgctxt "@action"
-#~ msgid "Save Markings As..."
-#~ msgstr "بەلگە قويۇلغاننى باشقا نامدا ساقلاش..."
-
-#~ msgctxt "@action"
-#~ msgid "Save Package Download List..."
-#~ msgstr "بوغچا چۈشۈرۈش تىزىمىنى ساقلاش…"
-
-#~ msgctxt "@action"
-#~ msgid "Download Packages From List..."
-#~ msgstr "تىزىملىكتىن بوغچىلارنى چۈشۈرۈش…"
-
-#~ msgctxt "@action::inmenu"
-#~ msgid "History..."
-#~ msgstr "ئىز…"
-
-#~ msgctxt "@action"
-#~ msgid "Upgrade"
-#~ msgstr "يۈكسەلدۈر"
-
-#~ msgctxt "@title:window"
-#~ msgid "Choose a Directory"
-#~ msgstr "مۇندەرىجە تاللاش"
-
-#~ msgctxt "@label The label used for viewing all members of this category"
-#~ msgid "All"
-#~ msgstr "ھەممىسى"
-
-#, fuzzy
-#~| msgctxt "@info license"
-#~| msgid "Unknown"
-#~ msgctxt "Category"
-#~ msgid "Unknown"
-#~ msgstr "نامەلۇم"
-
-#, fuzzy
-#~| msgctxt "@label Shows the error"
-#~| msgid "Error: %1"
-#~ msgid "Error"
-#~ msgstr "خاتالىق: %1"
-
-#, fuzzy
-#~| msgctxt "@info:status"
-#~| msgid "Downloading"
-#~ msgid "Started downloading %1..."
-#~ msgstr "چۈشۈرۈۋاتىدۇ"
-
-#, fuzzy
-#~| msgctxt "@info:status"
-#~| msgid "Downloading"
-#~ msgctxt "@label Column label"
-#~ msgid "Download Size"
-#~ msgstr "چۈشۈرۈۋاتىدۇ"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"admin"
-#~ "\""
-#~ msgid "System Administration"
-#~ msgstr "سىستېما باشقۇرۇش"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"comm"
-#~ "\""
-#~ msgid "Communication"
-#~ msgstr "ئالاقە"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"database\""
-#~ msgid "Databases"
-#~ msgstr "ساندان"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"devel"
-#~ "\""
-#~ msgid "Development"
-#~ msgstr "ئىجادىيەت"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"doc\""
-#~ msgid "Documentation"
-#~ msgstr "قوللانمىلار"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"debug"
-#~ "\""
-#~ msgid "Debug"
-#~ msgstr "سازلا"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"editors\""
-#~ msgid "Editors"
-#~ msgstr "تەھرىرلىگۈچ"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"electronics\""
-#~ msgid "Electronics"
-#~ msgstr "ئېلېكترونىكا"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"embedded\""
-#~ msgid "Embedded Devices"
-#~ msgstr "سىڭدۈرمە ئۈسكۈنىلەر"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"fonts"
-#~ "\""
-#~ msgid "Fonts"
-#~ msgstr "خەت نۇسخىلىرى"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"gnome"
-#~ "\""
-#~ msgid "GNOME Desktop Environment"
-#~ msgstr "گىنوم ئۈستەلئۈستى"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"graphics\""
-#~ msgid "Graphics"
-#~ msgstr "گرافىك"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"libs"
-#~ "\""
-#~ msgid "Libraries"
-#~ msgstr "ئامبارلار"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"localization\""
-#~ msgid "Localization"
-#~ msgstr "يەرلىكلەشتۈرۈش"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"mail"
-#~ "\""
-#~ msgid "Email"
-#~ msgstr "ئېلخەت"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"math"
-#~ "\""
-#~ msgid "Mathematics"
-#~ msgstr "ماتېماتىكا"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"net\""
-#~ msgid "Networking"
-#~ msgstr "تور"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"news"
-#~ "\""
-#~ msgid "Newsgroups"
-#~ msgstr "خەۋەر گۇرۇپپىسى"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"science\""
-#~ msgid "Science"
-#~ msgstr "ئىلىم"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"sound"
-#~ "\""
-#~ msgid "Multimedia"
-#~ msgstr "كۆپ ۋاسىتە"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"utils"
-#~ "\""
-#~ msgid "Utilities"
-#~ msgstr "قوراللار"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"vcs\""
-#~ msgid "Version Control Systems"
-#~ msgstr "نەشر باشقۇرۇش سىستېمىلىرى"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"web\""
-#~ msgid "Internet"
-#~ msgstr "ئىنتېرنېت"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"unknown\""
-#~ msgid "Unknown"
-#~ msgstr "نامەلۇم"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"education\""
-#~ msgid "Education"
-#~ msgstr "مائارىپ"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "Common"
-#~ msgstr "ئورتاق"
-
-#~ msgctxt "@item:inlistbox CPU architecture"
-#~ msgid "32-bit"
-#~ msgstr "32 بىتلىق"
-
-#~ msgctxt "@item:inlistbox CPU architecture"
-#~ msgid "64-bit"
-#~ msgstr "64 بىتلىق"
-
-#~ msgctxt "@item:inlistbox PU architecture"
-#~ msgid "Power PC"
-#~ msgstr "Power PC"
-
-#, fuzzy
-#~| msgid "Show the number of available updates"
-#~ msgid "Show notifications for available updates"
-#~ msgstr "بار يېڭىلانمىلارنىڭ سانىنى كۆرسىتىدۇ"
-
-#~ msgid "Show the number of available updates"
-#~ msgstr "بار يېڭىلانمىلارنىڭ سانىنى كۆرسىتىدۇ"
-
-#, fuzzy
-#~| msgid "Notification type:"
-#~ msgid "Muon Notification Daemon"
-#~ msgstr "ئۇقتۇرۇش تىپى:"
-
-#, fuzzy
-#~| msgid "Show notifications for:"
-#~ msgid "A Notification Daemon for Muon"
-#~ msgstr "تۆۋەندىكى ئۇقتۇرۇشلارنى كۆرسەتسۇن:"
-
-#, fuzzy
-#~| msgid "Applications in your system"
-#~ msgid "A security update is available for your system."
-#~ msgstr "سىستېمڭىزدىكى پروگراممىلار"
-
-#, fuzzy
-#~| msgid "Applications in your system"
-#~ msgid "An update is available for your system!"
-#~ msgstr "سىستېمڭىزدىكى پروگراممىلار"
-
-#, fuzzy
-#~| msgid "Applications Backend"
-#~ msgid "Akabei Backend"
-#~ msgstr "پروگراممالىرنىڭ ئارقا ئۇچى"
-
-#, fuzzy
-#~| msgid "Applications in your system"
-#~ msgid "Chakra-Applications in your system"
-#~ msgstr "سىستېمڭىزدىكى پروگراممىلار"
-
-#~ msgid "Applications Backend"
-#~ msgstr "پروگراممالىرنىڭ ئارقا ئۇچى"
-
-#~ msgid "Applications in your system"
-#~ msgstr "سىستېمڭىزدىكى پروگراممىلار"
-
-#, fuzzy
-#~| msgctxt "@info Status information, widget title"
-#~| msgid "Finished"
-#~ msgid "Finished."
-#~ msgstr "تاماملاندى"
-
-#~ msgid "Use both popups and tray icons"
-#~ msgstr "سەكرىمە ۋە قونداق سىنبەلگىلىرى"
-
-#~ msgid "Tray icons only"
-#~ msgstr "قونداق سىنبەلگىسىلا"
-
-#~ msgid "Popup notifications only"
-#~ msgstr "سەكرىمە ئۇقتۇرۇشلا"
-
-#~ msgctxt "@info:status Progress text when done"
-#~ msgid "Done"
-#~ msgstr "تامام"
-
-#~ msgctxt "@label"
-#~ msgid "The size of the downloaded items did not equal the expected size."
-#~ msgstr "چۈشۈرگەن تۈرلەرنىڭ چوڭلۇقى ئويلىغاندىكىدەك ئەمەس."
-
-#~ msgctxt "@title:window"
-#~ msgid "Size Mismatch"
-#~ msgstr "چوڭلۇقى ماسلاشمىدى"
-
-#~ msgctxt "@label Shows which package failed"
-#~ msgid "Package: %1"
-#~ msgstr "بوغچا: %1"
-
-#~ msgctxt "@title:window"
-#~ msgid "Commit error"
-#~ msgstr "تاپشۇرۇش خاتالىقى"
-
-#~ msgctxt "@label Label preceding the package maintainer"
-#~ msgid "Maintainer:"
-#~ msgstr "مەسئۇلى:"
-
-#~ msgctxt "@label Label preceding the package size"
-#~ msgid "Installed Size:"
-#~ msgstr "ئورنىتىلغان چوڭلۇقى:"
-
-#~ msgctxt "@action:button"
-#~ msgid "Installation"
-#~ msgstr "قاچىلاش"
-
-#~ msgctxt "@action:button"
-#~ msgid "Removal"
-#~ msgstr "چىقىرىش"
-
-#~ msgctxt "@action:button"
-#~ msgid "Purge"
-#~ msgstr "پاكىزلا"
-
-#~ msgctxt "@title:column"
-#~ msgid "Size"
-#~ msgstr "چوڭلۇقى"
-
-#~ msgctxt "@title:column"
-#~ msgid "Progress"
-#~ msgstr "سۈرئەت"
-
-#~ msgctxt "@info:status Progress text when a download is ignored"
-#~ msgid "Ignored"
-#~ msgstr "پەرۋا قىلمىدى"
-
-#~ msgid "Status"
-#~ msgstr "ھالەت"
-
-#~ msgctxt "@title:tab"
-#~ msgid "Details"
-#~ msgstr "تەپسىلاتى"
-
-#~ msgctxt "@title:tab"
-#~ msgid "Technical Details"
-#~ msgstr "تېخنىكىلىق تەپسىلات"
-
-#~ msgctxt "@title:window"
-#~ msgid "Screenshot"
-#~ msgstr "ئېكران كەسمىسى"
+#~ "<b>Ir iznākusi jauna %1 versija!</b>\n"
+#~ "Lai atjauninātu uz šo versiju, pārliecinieties, ka ir apstiprināti visi "
+#~ "neapstiprinātie atjauninājumi un pārstartējiet sistēmu."
+
+#~ msgid "<b>A new major version has been released!</b>"
+#~ msgstr "<b>Ir iznākusi jauna lielā versija!</b>"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-12-01 16:54-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -991,6 +991,13 @@ msgstr "Permissões de %1"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Configurar permissões..."
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "View Updates"
+msgid "Firmware Updates"
+msgstr "Exibir atualizações"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2723,9 +2730,6 @@ msgstr "Extensões"
 #~ msgstr ""
 #~ "Este aplicativo snap necessita que as medidas de confinamento de "
 #~ "segurança sejam desabilitadas."
-
-#~ msgid "View Updates"
-#~ msgstr "Exibir atualizações"
 
 #~ msgid "Please restart the device to finish the update"
 #~ msgstr "Reinicie o dispositivo para concluir a atualização"

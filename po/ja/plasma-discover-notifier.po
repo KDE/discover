@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-20 01:35+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-12-22 19:29-0800\n"
 "Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -18,69 +18,69 @@ msgstr ""
 "X-Text-Markup: kde4\n"
 "X-Generator: Lokalize 23.08.3\n"
 
-#: notifier/DiscoverNotifier.cpp:150
+#: notifier/DiscoverNotifier.cpp:154
 #, kde-format
 msgid "View Updates"
 msgstr "更新を表示"
 
-#: notifier/DiscoverNotifier.cpp:259
+#: notifier/DiscoverNotifier.cpp:263
 #, kde-format
 msgid "Security updates available"
 msgstr "セキュリティの更新が利用可能です"
 
-#: notifier/DiscoverNotifier.cpp:261
+#: notifier/DiscoverNotifier.cpp:265
 #, kde-format
 msgid "Updates available"
 msgstr "更新が利用可能です"
 
-#: notifier/DiscoverNotifier.cpp:263
+#: notifier/DiscoverNotifier.cpp:267
 #, kde-format
 msgid "System up to date"
 msgstr "システムは最新です"
 
-#: notifier/DiscoverNotifier.cpp:265
+#: notifier/DiscoverNotifier.cpp:269
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "コンピュータを再起動する必要があります。"
 
-#: notifier/DiscoverNotifier.cpp:267
+#: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "Offline"
 msgstr "オフライン"
 
-#: notifier/DiscoverNotifier.cpp:269
+#: notifier/DiscoverNotifier.cpp:273
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "自動更新を適用中..."
 
-#: notifier/DiscoverNotifier.cpp:293
+#: notifier/DiscoverNotifier.cpp:297
 #, kde-format
 msgid "Restart is required"
 msgstr "再起動が必要です。"
 
-#: notifier/DiscoverNotifier.cpp:294
+#: notifier/DiscoverNotifier.cpp:298
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "アップデートを有効にするには、システムを再起動する必要があります。"
 
-#: notifier/DiscoverNotifier.cpp:299
+#: notifier/DiscoverNotifier.cpp:303
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "再起動"
 
-#: notifier/DiscoverNotifier.cpp:324
+#: notifier/DiscoverNotifier.cpp:328
 #, kde-format
 msgid "Upgrade available"
 msgstr "アップグレード可能"
 
-#: notifier/DiscoverNotifier.cpp:325
+#: notifier/DiscoverNotifier.cpp:329
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 が利用可能になりました。"
 
-#: notifier/DiscoverNotifier.cpp:328
+#: notifier/DiscoverNotifier.cpp:332
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
@@ -128,32 +128,32 @@ msgstr "通知を表示しない"
 msgid "hidden"
 msgstr "非表示"
 
-#: notifier/NotifierItem.cpp:35 notifier/NotifierItem.cpp:36
+#: notifier/NotifierItem.cpp:22 notifier/NotifierItem.cpp:23
 #, kde-format
 msgid "Updates"
 msgstr "更新"
 
-#: notifier/NotifierItem.cpp:50
+#: notifier/NotifierItem.cpp:35
 #, kde-format
 msgid "Open Discover…"
 msgstr "Discover を開く…"
 
-#: notifier/NotifierItem.cpp:55
+#: notifier/NotifierItem.cpp:40
 #, kde-format
 msgid "See Updates…"
 msgstr "更新を表示..."
 
-#: notifier/NotifierItem.cpp:60
+#: notifier/NotifierItem.cpp:45
 #, kde-format
 msgid "Refresh…"
 msgstr "再読み込み..."
 
-#: notifier/NotifierItem.cpp:64
+#: notifier/NotifierItem.cpp:49
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "再起動してインストールされた更新を適用"
 
-#: notifier/NotifierItem.cpp:65
+#: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Click to restart the device"
 msgstr "クリックしてデバイスを再起動"

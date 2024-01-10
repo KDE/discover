@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-11-20 14:32+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -965,6 +965,13 @@ msgstr "הרשאות עבור %1"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "הגדרת הרשאות…"
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "View Updates"
+msgid "Firmware Updates"
+msgstr "הצגת העדכונים"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2634,9 +2641,6 @@ msgstr "תוספים"
 
 #~ msgid "Updating..."
 #~ msgstr "בעדכון..."
-
-#~ msgid "View Updates"
-#~ msgstr "הצגת העדכונים"
 
 #~ msgid "Use"
 #~ msgstr "שימוש"

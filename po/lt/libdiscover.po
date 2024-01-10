@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2021-08-21 16:08+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -974,6 +974,13 @@ msgstr ""
 #, kde-format
 msgid "Configure permissions…"
 msgstr ""
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "View Updates"
+msgid "Firmware Updates"
+msgstr "Rodyti atnaujinimus"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2706,9 +2713,6 @@ msgstr "Papildiniai"
 #~ msgstr ""
 #~ "Ši snap programa reikalauja, kad būtų išjungtos saugumo izoliavimo "
 #~ "priemonės."
-
-#~ msgid "View Updates"
-#~ msgstr "Rodyti atnaujinimus"
 
 #, fuzzy
 #~| msgid "Please restart the computer to finish the update"

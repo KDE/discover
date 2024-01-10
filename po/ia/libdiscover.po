@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-11-23 10:22+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -988,6 +988,13 @@ msgstr "Permissiones per %1"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Configura permissiones..."
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "View Updates"
+msgid "Firmware Updates"
+msgstr "Actualisationes de vista"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2722,9 +2729,6 @@ msgstr "Addons(Elementos adjunte)"
 
 #~ msgid "Updating..."
 #~ msgstr "Il es actualisante..."
-
-#~ msgid "View Updates"
-#~ msgstr "Actualisationes de vista"
 
 #~ msgid "Please restart the device to finish the update"
 #~ msgstr "Pro favor tu re-starta le dispositivo per terminar le actualisation"

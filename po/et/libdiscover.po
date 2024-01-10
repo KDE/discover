@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2020-10-11 01:23+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -998,6 +998,13 @@ msgstr ""
 #, kde-format
 msgid "Configure permissions…"
 msgstr ""
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "View Updates"
+msgid "Firmware Updates"
+msgstr "Vaata uuendusi"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2774,9 +2781,6 @@ msgstr "Lisad"
 
 #~ msgid "This snap application needs security confinement measures disabled."
 #~ msgstr "Selle snapi rakenduse puhul on tarvis turbemeetmed keelata."
-
-#~ msgid "View Updates"
-#~ msgstr "Vaata uuendusi"
 
 #, fuzzy
 #~| msgid "Please restart the computer to finish the update"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-11-19 15:13+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -986,6 +986,13 @@ msgstr "Permessi per %1"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Configura i permessi..."
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "View Updates"
+msgid "Firmware Updates"
+msgstr "Visualizza aggiornamenti"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2718,9 +2725,6 @@ msgstr "Aggiunte"
 #~ msgstr ""
 #~ "Questa applicazione snap richiede che le misure di confinamento di "
 #~ "sicurezza siano disabilitate."
-
-#~ msgid "View Updates"
-#~ msgstr "Visualizza aggiornamenti"
 
 #~ msgid "Please restart the device to finish the update"
 #~ msgstr "Riavvia il dispositivo per terminare l'aggiornamento"

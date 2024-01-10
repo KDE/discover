@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2014-07-06 22:08+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1058,6 +1058,14 @@ msgstr ""
 #, kde-format
 msgid "Configure permissions…"
 msgstr ""
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox Filters updates in the history view"
+#| msgid "Updates"
+msgid "Firmware Updates"
+msgstr "Opfrischen"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2906,12 +2914,6 @@ msgstr ""
 #~| msgid "Install"
 #~ msgid "Installing..."
 #~ msgstr "Installeren"
-
-#, fuzzy
-#~| msgctxt "@item:inlistbox Filters updates in the history view"
-#~| msgid "Updates"
-#~ msgid "View Updates"
-#~ msgstr "Opfrischen"
 
 #, fuzzy
 #~| msgctxt "@item:inlistbox Filters updates in the history view"

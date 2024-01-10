@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-11-19 17:02+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -1004,6 +1004,13 @@ msgstr "Permissions pour %1"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Configurer les permissions..."
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "View Updates"
+msgid "Firmware Updates"
+msgstr "Afficher les mises à jour"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2768,9 +2775,6 @@ msgstr "Modules complémentaires"
 #~ msgstr ""
 #~ "Cette application snap nécessite la désactivation des mesures de sécurité "
 #~ "de confinement."
-
-#~ msgid "View Updates"
-#~ msgstr "Afficher les mises à jour"
 
 #~ msgid "Please restart the device to finish the update"
 #~ msgstr "Veuillez redémarrer le périphérique pour terminer la mise à jour"

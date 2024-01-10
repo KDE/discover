@@ -1,162 +1,160 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# Edward Wornar <edi.werner@gmx.de>, 2021.
+# SPDX-FileCopyrightText: 2024 Toms Trasuns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-10 01:35+0000\n"
-"PO-Revision-Date: 2021-10-29 12:53+0200\n"
-"Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
-"Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
-"Language: hsb\n"
+"PO-Revision-Date: 2024-01-08 19:25+0200\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: notifier/DiscoverNotifier.cpp:154
 #, kde-format
 msgid "View Updates"
-msgstr "Aktualizowanja pokazać"
+msgstr "Skatīt atjauninājumus"
 
 #: notifier/DiscoverNotifier.cpp:263
 #, kde-format
 msgid "Security updates available"
-msgstr "Wěstotne aktualizowanja steja k dispoziciji"
+msgstr "Ir pieejami drošības atjauninājumi"
 
 #: notifier/DiscoverNotifier.cpp:265
 #, kde-format
 msgid "Updates available"
-msgstr "Aktualizowanja steja k dispoziciji"
+msgstr "Ir pieejami atjauninājumi"
 
 #: notifier/DiscoverNotifier.cpp:267
 #, kde-format
 msgid "System up to date"
-msgstr "Sytem je na aktualnym stawje"
+msgstr "Sistēma ir atjaunināta"
 
 #: notifier/DiscoverNotifier.cpp:269
 #, kde-format
 msgid "Computer needs to restart"
-msgstr "Kompjuter dyrbi so znowa startować"
+msgstr "Dators ir jāpārstartē"
 
 #: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "Offline"
-msgstr "Offline"
+msgstr "Bezsaistē"
 
 #: notifier/DiscoverNotifier.cpp:273
 #, kde-format
 msgid "Applying unattended updates…"
-msgstr "Nałožuju awtomatiske aktualizowanja..."
+msgstr "Tiek pielietoti nepieskatītie atjauninājumi..."
 
 #: notifier/DiscoverNotifier.cpp:297
 #, kde-format
 msgid "Restart is required"
-msgstr "Kompjuter dyrbi so znowa startować"
+msgstr "Nepieciešams pārstartēt"
 
 #: notifier/DiscoverNotifier.cpp:298
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
-msgstr ""
-"System dyrbi so znowa startować, zo bychu so aktualizowanja wobkedźbowali."
+msgstr "Sistēma ir jāpārstartē, lai atjauninājumi stātos spēkā."
 
 #: notifier/DiscoverNotifier.cpp:303
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
-msgstr "Znowa startować"
+msgstr "Pārstartēt"
 
 #: notifier/DiscoverNotifier.cpp:328
 #, kde-format
 msgid "Upgrade available"
-msgstr "Zlěpšenje steji k dispoziciji"
+msgstr "Ir pieejams uzlabojums"
 
 #: notifier/DiscoverNotifier.cpp:329
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr ""
+msgstr "%1 tagad ir pieejams."
 
 #: notifier/DiscoverNotifier.cpp:332
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
-msgstr "Zlěpšić"
+msgstr "Uzlabot"
 
 #: notifier/main.cpp:38
 #, kde-format
 msgid "Discover Notifier"
-msgstr "Discover skedźbnjenje"
+msgstr "Discover paziņotājs"
 
 #: notifier/main.cpp:40
 #, kde-format
 msgid "System update status notifier"
-msgstr "Skedźbnjenje na staw aktualizowanja"
+msgstr "Sistēmas atjauninājumu statusa paziņotājs"
 
 #: notifier/main.cpp:42
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "© 2010-2022 Plasma Development Team"
 msgid "© 2010-2024 Plasma Development Team"
-msgstr ""
+msgstr "© 2010-2022 Plasma Development Team"
 
 #: notifier/main.cpp:46
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Edward Wornar"
+msgstr "Toms Trasūns"
 
 #: notifier/main.cpp:46
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "ewerner@uni-leipzig.de"
+msgstr "toms.trasuns@posteo.net"
 
 #: notifier/main.cpp:51
 #, kde-format
 msgid "Replace an existing instance"
-msgstr "Naruna ekstistowacu instancu"
+msgstr "Aizvietot jau eksistējošu instanci"
 
 #: notifier/main.cpp:53
 #, kde-format
 msgid "Do not show the notifier"
-msgstr "Njepokaž skedźbnjenja"
+msgstr "Nerādīt paziņotāju"
 
 #: notifier/main.cpp:53
 #, kde-format
 msgid "hidden"
-msgstr "chowane"
+msgstr "paslēpts"
 
 #: notifier/NotifierItem.cpp:22 notifier/NotifierItem.cpp:23
 #, kde-format
 msgid "Updates"
-msgstr "Aktualizowanja"
+msgstr "Atjauninājumi"
 
 #: notifier/NotifierItem.cpp:35
 #, kde-format
 msgid "Open Discover…"
-msgstr "Discover wočinić..."
+msgstr "Atvērt „Discover“..."
 
 #: notifier/NotifierItem.cpp:40
 #, kde-format
 msgid "See Updates…"
-msgstr "Pokaž aktualizowanja…"
+msgstr "Apskatīt atjauninājumus..."
 
 #: notifier/NotifierItem.cpp:45
 #, kde-format
 msgid "Refresh…"
-msgstr "Napohlad ponowić..."
+msgstr "Atsvaidzināt..."
 
 #: notifier/NotifierItem.cpp:49
 #, kde-format
 msgid "Restart to apply installed updates"
-msgstr "Znowa startować za nałoženje instalowanych aktualizowanjow"
+msgstr "Pārstartēt, lai pielietotu instalētos atjauninājumus"
 
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Click to restart the device"
-msgstr "Klikńće, zo byšće grat znowa startowali"
-
-#~ msgid "New version: %1"
-#~ msgstr "Nowa wersija: %1"
+msgstr "Spiediet te, lai pārstartētu ierīci"

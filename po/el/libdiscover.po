@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-08-13 22:47+0300\n"
 "Last-Translator: George Stefanakis <george.stefanakis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -1001,6 +1001,14 @@ msgstr "Δικαιώματα για %1"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Ρύθμιση δικαιωμάτων..."
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox"
+#| msgid "Application Updates"
+msgid "Firmware Updates"
+msgstr "Ενημερώσεις εφαρμογών"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2727,12 +2735,6 @@ msgstr "Πρόσθετα"
 
 #~ msgid "Updating..."
 #~ msgstr "Ενημέρωση..."
-
-#, fuzzy
-#~| msgctxt "@item:inlistbox"
-#~| msgid "Application Updates"
-#~ msgid "View Updates"
-#~ msgstr "Ενημερώσεις εφαρμογών"
 
 #~ msgid "Update"
 #~ msgstr "Ενημέρωση"

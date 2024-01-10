@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-11-18 11:45+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -987,6 +987,13 @@ msgstr "Toegangsrechten voor %1"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Toegangsrechten configureren…"
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "View Updates"
+msgid "Firmware Updates"
+msgstr "Elementen voor bijwerken bekijken"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2738,9 +2745,6 @@ msgstr "Add-ons"
 #~ msgstr ""
 #~ "Deze snap-toepassing heeft uitschakeling van maatregelen voor beperking "
 #~ "voor beveiliging nodig."
-
-#~ msgid "View Updates"
-#~ msgstr "Elementen voor bijwerken bekijken"
 
 #~ msgid "Please restart the device to finish the update"
 #~ msgstr "Herstart het apparaat om het bijwerken af te ronden"

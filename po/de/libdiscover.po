@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-12-21 15:10+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -991,6 +991,13 @@ msgstr "Berechtigungen für %1"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Berechtigungen einrichten ..."
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "View Updates"
+msgid "Firmware Updates"
+msgstr "Aktualisierungen ansehen"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2732,9 +2739,6 @@ msgstr "Erweiterungen"
 #~ msgstr ""
 #~ "Für diese Snap-Anwendung muss die Sicherheitseinschränkung abgeschaltet "
 #~ "werden."
-
-#~ msgid "View Updates"
-#~ msgstr "Aktualisierungen ansehen"
 
 #, fuzzy
 #~| msgid "Please restart the computer to finish the update"

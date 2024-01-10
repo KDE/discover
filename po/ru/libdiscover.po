@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-12-26 13:47+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -1000,6 +1000,13 @@ msgstr "Права доступа «%1»"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Настроить права доступа…"
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "View Updates"
+msgid "Firmware Updates"
+msgstr "Посмотреть обновления"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2729,9 +2736,6 @@ msgstr "Дополнения"
 #~ msgstr ""
 #~ "Для работы приложения snap требуется отключить механизмы ограждения "
 #~ "данных от несанкционированного использования."
-
-#~ msgid "View Updates"
-#~ msgstr "Посмотреть обновления"
 
 #~ msgid "Please restart the device to finish the update"
 #~ msgstr "Для завершения обновления требуется перезагрузка"

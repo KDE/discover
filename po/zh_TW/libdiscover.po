@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-12-15 18:23+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -957,6 +957,13 @@ msgstr "%1 的權限"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "設定權限…"
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "View Updates"
+msgid "Firmware Updates"
+msgstr "檢視更新"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2626,9 +2633,6 @@ msgstr "附加功能"
 
 #~ msgid "This snap application needs security confinement measures disabled."
 #~ msgstr "這個 Snap 程序需要安全性監禁措施被停用。"
-
-#~ msgid "View Updates"
-#~ msgstr "檢視更新"
 
 #, fuzzy
 #~| msgid "Please restart the computer to finish the update"

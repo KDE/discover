@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-10-08 22:35+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -961,6 +961,13 @@ msgstr "%1의 권한"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "권한 설정…"
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "View Updates"
+msgid "Firmware Updates"
+msgstr "업데이트 보기"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2671,9 +2678,6 @@ msgstr "부가 기능"
 
 #~ msgid "This snap application needs security confinement measures disabled."
 #~ msgstr "이 Snap 프로그램은 보안 컨테이너 설정을 비활성화해야 합니다."
-
-#~ msgid "View Updates"
-#~ msgstr "업데이트 보기"
 
 #, fuzzy
 #~| msgid "Please restart the computer to finish the update"

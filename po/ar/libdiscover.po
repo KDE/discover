@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-09 01:33+0000\n"
+"POT-Creation-Date: 2024-01-10 01:35+0000\n"
 "PO-Revision-Date: 2023-06-08 12:03+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -985,6 +985,13 @@ msgstr "صلاحيات لـ %1"
 #, kde-format
 msgid "Configure permissions…"
 msgstr "اضبط الصلاحيات…"
+
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
+#, fuzzy, kde-format
+#| msgid "Offline Updates"
+msgid "Firmware Updates"
+msgstr "التّحديثات غير الشّبكيّة"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2728,11 +2735,6 @@ msgstr "الإضافات"
 
 #~ msgid "Updating..."
 #~ msgstr "يحدّث..."
-
-#, fuzzy
-#~| msgid "Offline Updates"
-#~ msgid "View Updates"
-#~ msgstr "التّحديثات غير الشّبكيّة"
 
 #~ msgid "Update"
 #~ msgstr "حدّث"
