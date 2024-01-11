@@ -196,3 +196,29 @@ public:
 private:
     T &m_data;
 };
+
+class ProfilingTimer : public QObject
+{
+public:
+    explicit ProfilingTimer(QObject *parent, const QString &comment = QString())
+        : QObject(parent)
+        , m_comment(comment)
+    {
+        m_timer.start();
+    }
+
+    ~ProfilingTimer()
+    {
+        const auto elapsed = m_timer.elapsed();
+        if (m_comment.isEmpty()) {
+            qDebug() << "Timer for" << parent() << "took" << elapsed << "milliseconds";
+        } else {
+            qDebug() << "Timer for" << parent() << "(" << m_comment << ")"
+                     << "took" << elapsed << "milliseconds";
+        }
+    }
+
+private:
+    QElapsedTimer m_timer;
+    QString m_comment;
+};

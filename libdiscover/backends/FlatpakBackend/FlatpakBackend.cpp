@@ -1448,6 +1448,38 @@ ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, s
     return stream;
 }
 
+template<typename FutureInput, typename FutureOutput>
+ResultsStream *FlatpakBackend::deferredFutureResultStream(const QString &streamName,
+                                                          std::function<FutureInput(void)> inputMapper,
+                                                          std::function<FutureOutput(GCancellable *, FutureInput)> future,
+                                                          std::function<QVector<StreamResult>(FutureOutput)> outputMapper)
+{
+    return deferredResultStream(
+        streamName,
+        [this, inputMapper = std::move(inputMapper), future = std::move(future), outputMapper = std::move(outputMapper)](ResultsStream *stream) {
+            const auto input = inputMapper();
+            auto watcher = new QFutureWatcher<FutureOutput>(this);
+
+            connect(watcher, &QFutureWatcher<FutureOutput>::finished, this, [this, watcher, stream, outputMapper = std::move(outputMapper)]() {
+                if (g_cancellable_is_cancelled(m_cancellable)) {
+                    stream->finish();
+                    watcher->deleteLater();
+                    return;
+                }
+
+                const FutureOutput futureOutput = watcher->result();
+                QVector<StreamResult> resources = outputMapper(futureOutput);
+
+                if (!resources.isEmpty()) {
+                    Q_EMIT stream->resourcesFound(resources);
+                }
+                stream->finish();
+                watcher->deleteLater();
+            });
+            watcher->setFuture(QtConcurrent::run(&m_threadPool, future, m_cancellable, input));
+        });
+}
+
 ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
     const auto fileName = filter.resourceUrl.fileName();
@@ -1461,45 +1493,18 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
     } else if (!filter.resourceUrl.isEmpty()) {
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
     } else if (filter.state == AbstractResource::Upgradeable) {
-        return deferredResultStream(u"FlatpakStream-upgradeable"_s, [this](ResultsStream *stream) {
-            auto fw = new QFutureWatcher<QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>(this);
-            connect(fw, &QFutureWatcher<QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>::finished, this, [this, fw, stream]() {
-                if (g_cancellable_is_cancelled(m_cancellable)) {
-                    stream->finish();
-                    fw->deleteLater();
-                    return;
-                }
+        ProfilingTimer timer(this, u"FlatpakStream-upgradeable"_s);
 
-                const auto refs = fw->result();
-                QVector<StreamResult> resources;
-                for (auto it = refs.constBegin(), itEnd = refs.constEnd(); it != itEnd; ++it) {
-                    resources.reserve(resources.size() + it->size());
-                    for (auto ref : std::as_const(it.value())) {
-                        bool fresh;
-                        auto resource = getAppForInstalledRef(it.key(), ref, &fresh);
-                        g_object_unref(ref);
-                        if (resource) {
-                            resource->setState(AbstractResource::Upgradeable, !fresh);
-                            updateAppSize(resource);
-                            if (resource->resourceType() == FlatpakResource::Runtime) {
-                                resources.prepend(resource);
-                            } else {
-                                resources.append(resource);
-                            }
-                        }
-                    }
-                }
+        using FutureInput = QVector<FlatpakInstallation *>;
+        using FutureOutput = QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>;
 
-                if (!resources.isEmpty())
-                    Q_EMIT stream->resourcesFound(resources);
-                stream->finish();
-                fw->deleteLater();
-            });
-
-            QVector<FlatpakInstallation *> installations = m_installations;
-            auto cancellable = m_cancellable;
-            fw->setFuture(QtConcurrent::run(&m_threadPool, [installations, cancellable] {
-                QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
+        return deferredFutureResultStream<FutureInput, FutureOutput>(
+            u"FlatpakStream-upgradeable"_s,
+            [this] {
+                return m_installations;
+            },
+            [](GCancellable *cancellable, FutureInput installations) {
+                FutureOutput ret;
                 if (g_cancellable_is_cancelled(cancellable)) {
                     qWarning() << "Job cancelled";
                     return ret;
@@ -1531,100 +1536,193 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     }
                 }
                 return ret;
-            }));
-        });
+            },
+            [this](const FutureOutput &hash) {
+                QVector<StreamResult> resources;
+                for (const auto &[installation, refs] : hash.asKeyValueRange()) {
+                    resources.reserve(resources.size() + refs.size());
+                    for (auto ref : std::as_const(refs)) {
+                        bool fresh;
+                        auto resource = getAppForInstalledRef(installation, ref, &fresh);
+                        g_object_unref(ref);
+                        if (resource) {
+                            resource->setState(AbstractResource::Upgradeable, !fresh);
+                            updateAppSize(resource);
+                            if (resource->resourceType() == FlatpakResource::Runtime) {
+                                resources.prepend(resource);
+                            } else {
+                                resources.append(resource);
+                            }
+                        }
+                    }
+                }
+                return resources;
+            });
     } else if (filter.state == AbstractResource::Installed) {
-        return deferredResultStream(u"FlatpakStream-installed"_s, [this, filter](ResultsStream *stream) {
-            QVector<StreamResult> resources;
-            for (auto installation : std::as_const(m_installations)) {
-                g_autoptr(GError) localError = nullptr;
-                g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(installation, m_cancellable, &localError);
-                if (!refs) {
-                    qWarning() << "Failed to get list of installed refs for listing installed:" << localError->message;
-                    continue;
-                }
+        ProfilingTimer timer(this, u"FlatpakStream-installed"_s);
 
-                resources.reserve(resources.size() + refs->len);
-                for (uint i = 0; i < refs->len; i++) {
-                    FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
-                    QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(ref));
-                    if (name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".BaseApp"))
-                        || name.endsWith(QLatin1String(".Docs")))
-                        continue;
+        // TODO: Are installations and refs really Send?
+        using FutureInput = QVector<FlatpakInstallation *>;
+        using FutureOutput = QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>;
 
-                    auto resource = getAppForInstalledRef(installation, ref);
-                    if (!resource) {
+        return deferredFutureResultStream<FutureInput, FutureOutput>(
+            u"FlatpakStream-installed"_s,
+            [this] {
+                return m_installations;
+            },
+            [](GCancellable *cancellable, FutureInput installations) {
+                FutureOutput ret;
+
+                for (auto installation : std::as_const(installations)) {
+                    g_autoptr(GError) localError = nullptr;
+                    g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(installation, cancellable, &localError);
+                    if (!refs) {
+                        qWarning() << "Failed to get list of installed refs for listing installed:" << localError->message;
                         continue;
                     }
-                    if (!filter.search.isEmpty() && !resource->name().contains(filter.search, Qt::CaseInsensitive)
-                        && !resource->appstreamId().contains(filter.search, Qt::CaseInsensitive))
+                    if (g_cancellable_is_cancelled(cancellable)) {
+                        qWarning() << "Job cancelled";
+                        ret.clear();
+                        break;
+                    }
+
+                    if (refs->len == 0) {
                         continue;
-                    if (resource->resourceType() == FlatpakResource::Runtime) {
-                        resources.prepend(resource);
-                    } else {
-                        resources.append(resource);
+                    }
+
+                    auto &current = ret[installation];
+                    current.reserve(refs->len);
+
+                    for (uint i = 0; i < refs->len; i++) {
+                        FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+                        QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(ref));
+
+                        if (name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".BaseApp"))
+                            || name.endsWith(QLatin1String(".Docs"))) {
+                            continue;
+                        }
+
+                        g_object_ref(ref);
+                        current.append(ref);
                     }
                 }
-            }
-            if (!resources.isEmpty())
-                Q_EMIT stream->resourcesFound(resources);
-            stream->finish();
-        });
+
+                return ret;
+            },
+            // Unfortunate that it has to be done on the main thread, but getAppForInstalledRef() acesses too many thread-local things.
+            [this, filter](FutureOutput hash) {
+                QVector<StreamResult> resources;
+                for (const auto &[installation, refs] : hash.asKeyValueRange()) {
+                    resources.reserve(resources.size() + refs.size());
+
+                    for (const auto ref : std::as_const(refs)) {
+                        auto resource = getAppForInstalledRef(installation, ref);
+                        if (!resource) {
+                            continue;
+                        }
+                        if (!filter.search.isEmpty() && !resource->name().contains(filter.search, Qt::CaseInsensitive)
+                            && !resource->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
+                            continue;
+                        }
+
+                        if (resource->resourceType() == FlatpakResource::Runtime) {
+                            resources.prepend(resource);
+                        } else {
+                            resources.append(resource);
+                        }
+                    }
+                }
+                return resources;
+            });
     } else {
-        return deferredResultStream(u"FlatpakStream"_s, [this, filter](ResultsStream *stream) {
-            QVector<StreamResult> prioritary, rest;
-            for (const auto &source : std::as_const(m_flatpakSources)) {
-                QList<FlatpakResource *> resources;
-                if (source->m_pool) {
-                    const auto a = !filter.search.isEmpty() ? source->m_pool->search(filter.search)
+        ProfilingTimer timer(this, u"FlatpakStream"_s);
+
+        // TODO: Are installations and refs really Send?
+        using FutureInput = QVector<QSharedPointer<FlatpakSource>>;
+        using FutureOutput = QVector<StreamResult>;
+
+        return deferredFutureResultStream<FutureInput, FutureOutput>(
+            u"FlatpakStream"_s,
+            [this] {
+                return m_flatpakSources;
+            },
+            [this, filter](GCancellable *cancellable, QVector<QSharedPointer<FlatpakSource>> flatpakSources) {
+                qDebug() << "AAAAAAAAAAAAAAAAAAAA" << this;
+                ProfilingTimer timer1(this, u"overall stream"_s);
+
+                QVector<StreamResult> prioritary, rest;
+
+                if (g_cancellable_is_cancelled(cancellable)) {
+                    qWarning() << "Job cancelled";
+                    return rest;
+                }
+
+                for (const auto &source : std::as_const(flatpakSources)) {
+                    if (g_cancellable_is_cancelled(cancellable)) {
+                        qWarning() << "Job cancelled";
+                        rest.clear();
+                        return rest;
+                    }
+
+                    QList<FlatpakResource *> resources;
+                    if (source->m_pool) {
+                        const auto a = !filter.search.isEmpty() ? source->m_pool->search(filter.search)
 #if ASQ_CHECK_VERSION(0, 15, 6)
-                        : filter.category ? AppStreamUtils::componentsByCategories(source->m_pool, filter.category, AppStream::Bundle::KindFlatpak)
+                            : filter.category ? AppStreamUtils::componentsByCategories(source->m_pool, filter.category, AppStream::Bundle::KindFlatpak)
 #endif
-                                          : source->m_pool->components();
-                    resources = kTransform<QList<FlatpakResource *>>(a, [this, &source](const auto &comp) {
-                        return resourceForComponent(comp, source);
-                    });
-                } else {
-                    resources = source->m_resources.values();
-                }
-
-                for (auto r : std::as_const(resources)) {
-                    const bool matchById = r->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
-                    if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
-                        continue;
+                                              : source->m_pool->components();
+                        resources = kTransform<QList<FlatpakResource *>>(a, [this, &source](const auto &comp) {
+                            return resourceForComponent(comp, source);
+                        });
+                    } else {
+                        resources = source->m_resources.values();
                     }
-                    if (r->state() < filter.state)
-                        continue;
 
-                    if (!filter.extends.isEmpty() && !r->extends().contains(filter.extends))
-                        continue;
+                    for (auto r : std::as_const(resources)) {
+                        if (g_cancellable_is_cancelled(cancellable)) {
+                            qWarning() << "Job cancelled";
+                            rest.clear();
+                            return rest;
+                        }
 
-                    if (!filter.mimetype.isEmpty() && !r->mimetypes().contains(filter.mimetype))
-                        continue;
+                        const bool matchById = r->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
+                        if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
+                            continue;
+                        }
+                        if (r->state() < filter.state) {
+                            continue;
+                        }
 
-                    if (filter.search.isEmpty() || matchById) {
-                        rest += r;
-                    } else if (r->name().contains(filter.search, Qt::CaseInsensitive)) {
-                        prioritary += r;
-                    } else if (r->comment().contains(filter.search, Qt::CaseInsensitive)) {
-                        rest += r;
-                        // trust The search terms provided by appstream are relevant, this makes possible finding "gimp"
-                        // since the name() is "GNU Image Manipulation Program"
-                    } else if (r->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
-                        rest += r;
+                        if (!filter.extends.isEmpty() && !r->extends().contains(filter.extends)) {
+                            continue;
+                        }
+
+                        if (!filter.mimetype.isEmpty() && !r->mimetypes().contains(filter.mimetype)) {
+                            continue;
+                        }
+
+                        if (filter.search.isEmpty() || matchById) {
+                            rest += r;
+                        } else if (r->name().contains(filter.search, Qt::CaseInsensitive)) {
+                            prioritary += r;
+                        } else if (r->comment().contains(filter.search, Qt::CaseInsensitive)) {
+                            rest += r;
+                            // trust The search terms provided by appstream are relevant, this makes possible finding "gimp"
+                            // since the name() is "GNU Image Manipulation Program"
+                        } else if (r->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
+                            rest += r;
+                        }
                     }
                 }
-            }
-            auto f = [this](auto l, auto r) {
-                return flatpakResourceLessThan(l, r);
-            };
-            std::sort(rest.begin(), rest.end(), f);
-            std::sort(prioritary.begin(), prioritary.end(), f);
-            rest = prioritary + rest;
-            if (!rest.isEmpty())
-                Q_EMIT stream->resourcesFound(rest);
-            stream->finish();
-        });
+                ProfilingTimer timer2(this, u"sort"_s);
+                auto f = [this](auto l, auto r) {
+                    return flatpakResourceLessThan(l, r);
+                };
+                std::sort(rest.begin(), rest.end(), f);
+                std::sort(prioritary.begin(), prioritary.end(), f);
+                rest = prioritary + rest;
+                return rest;
+            });
     }
 }
 
@@ -1690,6 +1788,7 @@ ResultsStream *FlatpakBackend::findResourceByPackageName(const QUrl &url)
     return new ResultsStream(QStringLiteral("FlatpakStream-packageName-void"), {});
 }
 
+// TODO: Thread safety?
 FlatpakResource *FlatpakBackend::resourceForComponent(const AppStream::Component &component, const QSharedPointer<FlatpakSource> &source) const
 {
     const auto ref = idForComponent(component);

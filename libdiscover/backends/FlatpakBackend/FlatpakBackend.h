@@ -132,6 +132,23 @@ private:
     FlatpakRemote *installSource(FlatpakResource *resource);
 
     ResultsStream *deferredResultStream(const QString &streamName, std::function<void(ResultsStream *)> callback);
+    // Future function will be executed in some other thread. Therefore it is
+    // not allowed to capture and access any unsynchronized resources, such
+    // as members of `this` backend. Input and output mappers will be
+    // executed on the main thread, so they should not block for long
+    // computations. FutureInput and FutureOutput types must be safe to Send
+    // across threads. Default mapper works when FutureOutput type is also
+    // default.
+    template<typename FutureInput, typename FutureOutput = QVector<StreamResult>>
+    ResultsStream *deferredFutureResultStream(const QString &streamName,
+                                              std::function<FutureInput(void)> inputMapper,
+                                              std::function<FutureOutput(GCancellable *, FutureInput)> future,
+                                              std::function<QVector<StreamResult>(FutureOutput)> outputMapper = &FlatpakBackend::identity);
+
+    static QVector<StreamResult> identity(QVector<StreamResult> data)
+    {
+        return data;
+    }
 
     StandardBackendUpdater *m_updater;
     FlatpakSourcesBackend *m_sources = nullptr;
