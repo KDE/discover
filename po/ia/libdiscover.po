@@ -3,13 +3,13 @@
 #
 # SPDX-FileCopyrightText: 2017, 2020, 2021, 2022, 2023 giovanni <g.sora@tiscali.it>
 # Giovanni Sora <g.sora@kheper.it>, 2017.
-# giovanni <g.sora@tiscali.it>, 2023.
+# giovanni <g.sora@tiscali.it>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-10 01:35+0000\n"
-"PO-Revision-Date: 2023-11-23 10:22+0100\n"
+"PO-Revision-Date: 2024-01-10 10:31+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -991,10 +991,9 @@ msgstr "Configura permissiones..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "View Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "Actualisationes de vista"
+msgstr "Actualisationes de  Firmware"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
