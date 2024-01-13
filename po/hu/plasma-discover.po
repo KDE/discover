@@ -4,13 +4,13 @@
 # Kristóf Kiszel <ulysses@kubuntu.org>, 2012, 2014, 2015, 2019.
 # Balázs Úr <urbalazs@gmail.com>, 2012, 2013, 2014.
 # Kiszel Kristóf <kiszel.kristof@gmail.com>, 2017, 2020.
-# SPDX-FileCopyrightText: 2021, 2022, 2023 Kristof Kiszel <ulysses@fsf.hu>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-20 01:35+0000\n"
-"PO-Revision-Date: 2023-12-25 21:56+0100\n"
+"PO-Revision-Date: 2024-01-12 22:40+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -550,12 +550,11 @@ msgid ""
 msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1 - %2 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Keresés: %1 - %2 elem"
-msgstr[1] "Keresés: %1 - %2 elem"
+msgstr[0] "Keresés: %2 - %3 elem"
+msgstr[1] "Keresés: %2 - %3 elem"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -563,16 +562,14 @@ msgid "Search: %1"
 msgstr "Keresés: %1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, fuzzy, kde-format
-#| msgid "%1 - %2 items"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
 msgstr[0] "%1 - %2 elem"
 msgstr[1] "%1 - %2 elem"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, fuzzy, kde-format
-#| msgid "Search - %1 items"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
 msgstr[0] "Keresés - %1 elem"
@@ -593,7 +590,7 @@ msgstr "Rendezés: %1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr ""
+msgstr "Relevancia"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
@@ -624,12 +621,10 @@ msgstr "Nincs találat"
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
-msgstr ""
+msgstr "Keresés az összes kategóriában"
 
 #: discover/qml/ApplicationsListPage.qml:218
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "Search the web for \"%1\""
+#, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "„%1” keresése az interneten"
@@ -643,30 +638,21 @@ msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:233
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr "A(z) „%1” nem található az elérhető forrásokban"
+msgstr "A(z) „%1” nem található a(z) „%2” kategóriában"
 
 #: discover/qml/ApplicationsListPage.qml:235
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "A(z) „%1” nem található az elérhető forrásokban"
 
 #: discover/qml/ApplicationsListPage.qml:236
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
@@ -683,11 +669,10 @@ msgid "Still looking…"
 msgstr "Még keressük…"
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "&Kezdőlap"
+msgstr "Kezdőlap"
 
 #: discover/qml/BrowsingPage.qml:64
 #, kde-format
@@ -695,71 +680,67 @@ msgid "Unable to load applications"
 msgstr "Nem lehet betölteni alkalmazásokat"
 
 #: discover/qml/BrowsingPage.qml:98
-#, fuzzy, kde-format
-#| msgid "Popularity"
+#, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr "Népszerűség"
+msgstr "Legnépszerűbbek"
 
 #: discover/qml/BrowsingPage.qml:118
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
-msgstr ""
+msgstr "Újonnan közzétett és nemrég frissített"
 
 #: discover/qml/BrowsingPage.qml:155
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "A szerkesztő választása"
 
 #: discover/qml/BrowsingPage.qml:170
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "Legjobbra értékelt játékok"
 
 #: discover/qml/BrowsingPage.qml:189 discover/qml/BrowsingPage.qml:218
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "Több…"
+msgstr "Több"
 
 #: discover/qml/BrowsingPage.qml:199
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "Legjobbra értékelt fejlesztőeszközök"
 
 #: discover/qml/CarouselDelegate.qml:212
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
-msgstr ""
+msgstr "Lejátszás"
 
 #: discover/qml/CarouselDelegate.qml:214
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
-msgstr ""
+msgstr "Szünet"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Overlay"
-msgstr ""
+msgstr "Váltás átfedésre"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Full Screen"
-msgstr ""
+msgstr "Váltás teljes képernyős módba"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
-#, fuzzy, kde-format
-#| msgid "Close"
+#, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
@@ -769,13 +750,13 @@ msgstr "Bezárás"
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "Előző képernyőkép"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr ""
+msgstr "Következő képernyőkép"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -803,13 +784,11 @@ msgid "Fetching &updates…"
 msgstr "&Frissítések letöltése…"
 
 #: discover/qml/DiscoverWindow.qml:87
-#, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "&Update (%1)"
+#, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
 msgstr[0] "F&rissítés (%1)"
-msgstr[1] "F&rissítés (%1)"
+msgstr[1] "F&rissítések (%1)"
 
 #: discover/qml/DiscoverWindow.qml:95
 #, kde-format
@@ -843,27 +822,24 @@ msgid "Report this issue"
 msgstr "Jelentse ezt a hibát"
 
 #: discover/qml/DiscoverWindow.qml:340
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "Szavazatok: %1 / %2"
+msgstr "%1 / %2 hiba"
 
 #: discover/qml/DiscoverWindow.qml:390
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "Előző"
 
 #: discover/qml/DiscoverWindow.qml:403
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "Tartalom megjelenítése"
+msgstr "Következő"
 
 #: discover/qml/DiscoverWindow.qml:419
-#, fuzzy, kde-format
-#| msgid "Copy to clipboard"
+#, kde-format
 msgid "Copy to Clipboard"
 msgstr "Másolás a vágólapra"
 
@@ -933,15 +909,13 @@ msgid "Loading…"
 msgstr "Betöltés…"
 
 #: discover/qml/InstallApplicationButton.qml:28
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
-msgstr "Telepítés"
+msgstr "Telepítés innen: %1"
 
 #: discover/qml/InstallApplicationButton.qml:30
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Telepítés"
@@ -1090,7 +1064,7 @@ msgstr "Túl hosszú!"
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr ""
+msgstr "Szúrjon be egy nevet"
 
 #: discover/qml/ReviewsPage.qml:54
 #, kde-format
@@ -1111,24 +1085,22 @@ msgstr "Telepítse ezt az alkalmazást, és írjon értékelést róla"
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "Leglényegesebb"
 
 #: discover/qml/ReviewsPage.qml:110
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "Legfrissebb"
 
 #: discover/qml/ReviewsPage.qml:117
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "Adjon értékelést"
+msgstr "Legjobb értékelések"
 
 #: discover/qml/ReviewsStats.qml:53
-#, fuzzy, kde-format
-#| msgid "%1 reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
 msgstr "%1 vélemény"
@@ -1137,25 +1109,24 @@ msgstr "%1 vélemény"
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #: discover/qml/ReviewsStats.qml:154
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
-msgstr "ismeretlen értékelő"
+msgstr "Ismeretlen értékelő"
 
 #: discover/qml/ReviewsStats.qml:175
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "”"
 
 #: discover/qml/ReviewsStats.qml:190
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "„"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format
@@ -1244,8 +1215,7 @@ msgstr ""
 "Hiba történt a frissítés telepítése során. Kérjük, próbálkozzon később."
 
 #: discover/qml/UpdatesPage.qml:68
-#, fuzzy, kde-format
-#| msgid "See technical details"
+#, kde-format
 msgid "See Technical Details"
 msgstr "Technikai részletek megtekintése"
 
@@ -1256,24 +1226,27 @@ msgid ""
 "If the error indicated above looks like a real issue and not a temporary "
 "network error, please report it to %1, not KDE."
 msgstr ""
+"Ha a fent jelzett hiba valódi problémának tűnik, és nem átmeneti hálózati "
+"hibának, jelentse azt a(z) %1 disztribúciónak, ne a KDE-nek."
 
 #: discover/qml/UpdatesPage.qml:103
 #, kde-format
 msgid "Copy Text"
-msgstr ""
+msgstr "Szöveg másolása"
 
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr ""
+"Hibaüzenet másolva. Ne feledje, ne a KDE-nek jelentse, hanem a(z) %1 "
+"disztribúciónak!"
 
 #: discover/qml/UpdatesPage.qml:114
-#, fuzzy, kde-format
-#| msgid "Report this issue"
+#, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr "Jelentse ezt a hibát"
+msgstr "Hiba jelentése a(z) %1 disztribúciónak"
 
 #: discover/qml/UpdatesPage.qml:140
 #, kde-format

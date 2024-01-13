@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the discover package.
 #
 # SPDX-FileCopyrightText: 2023 Geraldo Simiao <geraldosimiao@fedoraproject.org>
-# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2012, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2012, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
 # Marcus Gama <marcus.gama@gmail.com>, 2012.
 # Blumen Herzenschein <herzenschein@gmail.com>, 2020, 2021.
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-20 01:35+0000\n"
-"PO-Revision-Date: 2023-12-01 16:54-0300\n"
+"PO-Revision-Date: 2024-01-11 20:48-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -192,10 +192,9 @@ msgid "An application explorer"
 msgstr "Um explorador de aplicativos"
 
 #: discover/main.cpp:121
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2022 Equipe de desenvolvimento do Plasma"
+msgstr "© 2010-2024 Equipe de desenvolvimento do Plasma"
 
 #: discover/main.cpp:122
 #, kde-format
