@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-20 01:35+0000\n"
-"PO-Revision-Date: 2024-01-12 22:40+0100\n"
+"PO-Revision-Date: 2024-01-13 13:50+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -42,11 +42,10 @@ msgstr ""
 "háttérprogramok</interface> alatt."
 
 #: discover/DiscoverObject.cpp:195
-#, fuzzy, kde-format
-#| msgid "Report this issue"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr "Jelentse ezt a hibát"
+msgstr "Hiba jelentése a(z) %1 disztribúciónak"
 
 #: discover/DiscoverObject.cpp:200
 #, kde-kuit-format
@@ -61,6 +60,13 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"A Discover alkalmazásokhoz használatához telepítse a <link url='https://wiki."
+"archlinux.org/title/Flatpak#Installation'>Flatpakot</link> vagy a <link "
+"url='https://wiki.archlinux.org/title/"
+"KDE#Discover_does_not_show_any_applications'>PackageKitet</link> a "
+"<command>pacman</command> csomagkezelővel.<nl/><nl/>Tekintse át az <link "
+"url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 Discover "
+"csomagját</link>"
 
 #: discover/DiscoverObject.cpp:291
 #, kde-format
@@ -70,7 +76,7 @@ msgstr "Nem található kategória: „%1”"
 #: discover/DiscoverObject.cpp:306
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "A(z) „%1” nem létező fájl megnyitására tett kísérlet"
 
 #: discover/DiscoverObject.cpp:328
 #, kde-format
@@ -92,30 +98,18 @@ msgid "Please make sure Snap support is installed"
 msgstr "Ellenőrizze, hogy a Snap támogatás telepítve van-e"
 
 #: discover/DiscoverObject.cpp:396
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories. Please report this issue to the packagers of your "
-#| "distribution."
+#, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr ""
 "Nem sikerült a(z) %1 megnyitása, mivel nem található meg egyik elérhető "
-"szoftvertárolóban sem. Kérjük, jelentse ezt a hibát a disztribúciója "
-"csomagolójának."
+"szoftvertárolóban sem."
 
 #: discover/DiscoverObject.cpp:399
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories. Please report this issue to the packagers of your "
-#| "distribution."
+#, kde-format
 msgid "Please report this issue to the packagers of your distribution."
-msgstr ""
-"Nem sikerült a(z) %1 megnyitása, mivel nem található meg egyik elérhető "
-"szoftvertárolóban sem. Kérjük, jelentse ezt a hibát a disztribúciója "
-"csomagolójának."
+msgstr "Kérjük, jelentse ezt a hibát a disztribúciója csomagolóinak."
 
 #: discover/DiscoverObject.cpp:402
 #, kde-format
@@ -133,6 +127,8 @@ msgstr "Discover"
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
+"A Discovert bizonyos feladatok befejezése előtt bezárták, várakozás a "
+"befejezésre."
 
 #: discover/main.cpp:33
 #, kde-format
@@ -302,7 +298,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "Forrás: %1"
 
 #: discover/qml/ApplicationPage.qml:84
 #, kde-format
@@ -338,10 +334,9 @@ msgid "Unknown"
 msgstr "Ismeretlen"
 
 #: discover/qml/ApplicationPage.qml:314
-#, fuzzy, kde-format
-#| msgid "What's New"
+#, kde-format
 msgid "What does this mean?"
-msgstr "Újdonságok"
+msgstr "Mit jelent ez?"
 
 #: discover/qml/ApplicationPage.qml:323
 #, kde-format
@@ -351,20 +346,17 @@ msgstr[0] "Több…"
 msgstr[1] "Több…"
 
 #: discover/qml/ApplicationPage.qml:334
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "Adjon értékelést"
+msgstr "Tartalmi besorolás:"
 
 #: discover/qml/ApplicationPage.qml:343
 #, kde-format
 msgid "Age: %1+"
-msgstr ""
+msgstr "Életkor: %1+"
 
 #: discover/qml/ApplicationPage.qml:363
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action"
 msgid "See details…"
 msgstr "Több…"
@@ -373,7 +365,7 @@ msgstr "Több…"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
+msgstr "Nem érhető el képernyőkép ehhez: %1"
 
 #: discover/qml/ApplicationPage.qml:559
 #, kde-format
@@ -383,7 +375,7 @@ msgstr "Dokumentáció"
 #: discover/qml/ApplicationPage.qml:560
 #, kde-format
 msgid "Read the project's official documentation"
-msgstr ""
+msgstr "A projekt hivatalos dokumentációjának olvasása"
 
 #: discover/qml/ApplicationPage.qml:576
 #, kde-format
@@ -391,8 +383,7 @@ msgid "Website"
 msgstr "Weboldal"
 
 #: discover/qml/ApplicationPage.qml:577
-#, fuzzy, kde-format
-#| msgid "Visit the app's website"
+#, kde-format
 msgid "Visit the project's website"
 msgstr "Az alkalmazás weboldalának meglátogatása"
 
@@ -404,7 +395,7 @@ msgstr "Bővítmények"
 #: discover/qml/ApplicationPage.qml:594
 #, kde-format
 msgid "Install or remove additional functionality"
-msgstr ""
+msgstr "További funkcionalitás telepítése vagy eltávolítása"
 
 #: discover/qml/ApplicationPage.qml:613
 #, kde-format
@@ -413,16 +404,15 @@ msgid "Share"
 msgstr "Megosztás"
 
 #: discover/qml/ApplicationPage.qml:614
-#, fuzzy, kde-format
-#| msgid "Unable to load applications"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "Nem lehet betölteni alkalmazásokat"
+msgstr "Hivatkozás küldése ehhez az alkalmazáshoz"
 
 #: discover/qml/ApplicationPage.qml:630
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "Nézze meg a(z) %1 alkalmazást!"
 
 #: discover/qml/ApplicationPage.qml:650
 #, kde-format
@@ -435,24 +425,21 @@ msgid "Reviews"
 msgstr "Vélemények"
 
 #: discover/qml/ApplicationPage.qml:692
-#, fuzzy, kde-format
-#| msgid "Reviews for %1"
+#, kde-format
 msgid "Loading reviews for %1"
-msgstr "Értékelések ehhez: %1"
+msgstr "Értékelések betöltése ehhez: %1"
 
 #: discover/qml/ApplicationPage.qml:700
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "A(z) %1 értékelései átmenetileg nem érhetők el"
 
 #: discover/qml/ApplicationPage.qml:724
-#, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Összes %1 értékelés megjelenítése…"
+msgstr "Összes értékelés megjelenítése"
 
 #: discover/qml/ApplicationPage.qml:736
 #, kde-format
@@ -465,10 +452,9 @@ msgid "Install to Write a Review"
 msgstr "Telepítse értékelés írásához"
 
 #: discover/qml/ApplicationPage.qml:748
-#, fuzzy, kde-format
-#| msgid "Get involved:"
+#, kde-format
 msgid "Get Involved"
-msgstr "Csatlakozzon:"
+msgstr "Közreműködés"
 
 #: discover/qml/ApplicationPage.qml:790
 #, kde-format
@@ -479,6 +465,7 @@ msgstr "Támogatás"
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
+"Támogassa a fejlesztőket és köszönje meg nekik a projekt anyagi támogatásával"
 
 #: discover/qml/ApplicationPage.qml:807
 #, kde-format
@@ -488,18 +475,19 @@ msgstr "Hiba bejelentése"
 #: discover/qml/ApplicationPage.qml:808
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
-msgstr ""
+msgstr "Naplózza a talált problémát, hogy segítsen a javításában"
 
 #: discover/qml/ApplicationPage.qml:824
-#, fuzzy, kde-format
-#| msgid "Contribute…"
+#, kde-format
 msgid "Contribute"
-msgstr "Hozzájárulás…"
+msgstr "Hozzájárulás"
 
 #: discover/qml/ApplicationPage.qml:825
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
+"Segítsen a fejlesztőknek kódolással, dizájnolással, teszteléssel vagy "
+"fordítással"
 
 #: discover/qml/ApplicationPage.qml:857
 #, kde-format
@@ -507,15 +495,14 @@ msgid "All Licenses"
 msgstr "Minden licenc"
 
 #: discover/qml/ApplicationPage.qml:890
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating"
-msgstr "Adjon értékelést"
+msgstr "Tartalmi besorolás"
 
 #: discover/qml/ApplicationPage.qml:907
 #, kde-format
 msgid "Risks of proprietary software"
-msgstr ""
+msgstr "A zárt szoftver kockázatai"
 
 #: discover/qml/ApplicationPage.qml:913
 #, kde-kuit-format
@@ -532,6 +519,17 @@ msgid ""
 "you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
+"Az alkalmazás forráskódja részben vagy teljesen zárt a nyilvános vizsgálat "
+"és fejlesztés előtt. Ez azt jelenti, hogy sem harmadik felek, sem olyan "
+"felhasználók, mint Ön nem ellenőrizhetik a működését, biztonságát és "
+"megbízhatóságát, vagy módosíthatják és terjeszthetik a szerzők kifejezett "
+"engedélye nélkül.<nl/><nl/>Az alkalmazás használata talán teljesen "
+"biztonságos, de az is lehet, hogy az Ön érdekei ellenében cselekszik — "
+"például személyes adatokat gyűjt, követi a tartózkodási helyét, vagy "
+"továbbítja a fájljait valaki másnak. Nincs egyszerű módja annak, hogy "
+"biztosra menjen, ezért csak akkor telepítse az alkalmazást, ha teljesen "
+"megbízik a szerzőiben (<link url='%1'>%2</link>).<nl/><nl/>Többet tudhat meg "
+"a(z) <link url='%3'>%3</link> oldalon."
 
 #: discover/qml/ApplicationPage.qml:914
 #, kde-kuit-format
@@ -548,6 +546,17 @@ msgid ""
 "you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
+"Az alkalmazás forráskódja részben vagy teljesen zárt a nyilvános vizsgálat "
+"és fejlesztés előtt. Ez azt jelenti, hogy sem harmadik felek, sem olyan "
+"felhasználók, mint Ön nem ellenőrizhetik a működését, biztonságát és "
+"megbízhatóságát, vagy módosíthatják és terjeszthetik a szerzők kifejezett "
+"engedélye nélkül.<nl/><nl/>Az alkalmazás használata talán teljesen "
+"biztonságos, de az is lehet, hogy az Ön érdekei ellenében cselekszik — "
+"például személyes adatokat gyűjt, követi a tartózkodási helyét, vagy "
+"továbbítja a fájljait valaki másnak. Nincs egyszerű módja annak, hogy "
+"biztosra menjen, ezért csak akkor telepítse az alkalmazást, ha teljesen "
+"megbízik a szerzőiben (%1).<nl/><nl/>Többet tudhat meg a(z) <link url='%2'>"
+"%</link> oldalon."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
