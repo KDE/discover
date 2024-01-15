@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2022, 2023 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 # Franklin Weng <franklin@goodhorse.idv.tw>, 2012, 2013, 2014, 2015.
 # Jeff Huang <s8321414@gmail.com>, 2016, 2017, 2020.
 # pan93412 <pan93412@gmail.com>, 2018, 2019, 2020.
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-20 01:35+0000\n"
-"PO-Revision-Date: 2023-12-22 01:23+0900\n"
+"PO-Revision-Date: 2024-01-14 14:43+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.01.80\n"
+"X-Generator: Lokalize 24.01.90\n"
 
 #: discover/DiscoverObject.cpp:190
 #, kde-format
@@ -403,7 +403,7 @@ msgstr "來看 %1 這個應用程式吧！"
 #: discover/qml/ApplicationPage.qml:650
 #, kde-format
 msgid "What's New"
-msgstr "發掘新鮮事"
+msgstr "新功能"
 
 #: discover/qml/ApplicationPage.qml:680
 #, kde-format
@@ -745,38 +745,38 @@ msgstr "不鼓勵且不必要以 <em>root</em> 身份執行。"
 #: discover/qml/DiscoverWindow.qml:58
 #, kde-format
 msgid "&Home"
-msgstr "首頁 (&H)："
+msgstr "首頁(&H)"
 
 #: discover/qml/DiscoverWindow.qml:68
 #, kde-format
 msgid "&Search"
-msgstr "搜尋 (&S)"
+msgstr "搜尋(&S)"
 
 #: discover/qml/DiscoverWindow.qml:76
 #, kde-format
 msgid "&Installed"
-msgstr "已安裝 (&I)"
+msgstr "已安裝(&I)"
 
 #: discover/qml/DiscoverWindow.qml:87
 #, kde-format
 msgid "Fetching &updates…"
-msgstr "正在下載更新 (&u)…"
+msgstr "正在下載更新(&U)…"
 
 #: discover/qml/DiscoverWindow.qml:87
 #, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
-msgstr[0] "更新項目(&U) (%1)"
+msgstr[0] "更新項目 (%1)(&U)"
 
 #: discover/qml/DiscoverWindow.qml:95
 #, kde-format
 msgid "&About"
-msgstr "關於 (&A)"
+msgstr "關於(&A)"
 
 #: discover/qml/DiscoverWindow.qml:103
 #, kde-format
 msgid "S&ettings"
-msgstr "設定 (&E)"
+msgstr "設定(&E)"
 
 #: discover/qml/DiscoverWindow.qml:156 discover/qml/DiscoverWindow.qml:340
 #: discover/qml/DiscoverWindow.qml:454

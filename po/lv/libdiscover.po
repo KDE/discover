@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-10 01:35+0000\n"
-"PO-Revision-Date: 2024-01-09 19:34+0200\n"
+"PO-Revision-Date: 2024-01-14 11:33+0200\n"
 "Last-Translator: Māris Nartišs <maris.kde@gmail.com>\n"
 "Language-Team: \n"
 "Language: lv\n"
@@ -123,38 +123,38 @@ msgstr "testa pielikumi"
 #, kde-format
 msgctxt "Category"
 msgid "dummy 1"
-msgstr "tests 1"
+msgstr "testa 1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
-msgstr "tests ar lietām"
+msgstr "testa ar lietām"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
 #, kde-format
 msgctxt "Category"
 msgid "dummy 2.1"
-msgstr "tests 2.1"
+msgstr "testa 2.1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
-msgstr "tests ar kaut kādām lietām"
+msgstr "testa ar kaut kādām lietām"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
 #, kde-format
 msgctxt "Category"
 msgid "dummy 3"
-msgstr "tests 3"
+msgstr "testa 3"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
 #, kde-format
 msgctxt "Category"
 msgid "dummy 4"
-msgstr "tests 4"
+msgstr "testa 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
@@ -577,8 +577,7 @@ msgid "Retrieving size information"
 msgstr "Tiek iegūt informācija par izmēru"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:448
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Nezināms"
@@ -621,15 +620,14 @@ msgid "Can access the internet"
 msgstr "Var piekļūt internetam"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Sistēmas kopnes piekļuve"
+msgstr "Piekļuve skaņas sistēmai"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Var atskaņot skaņu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
@@ -638,16 +636,11 @@ msgid "Session Bus Access"
 msgstr "Sesijas kopnes piekļuve"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
-msgstr ""
-"Var sazināties ar citām programmām un procesiem tajā pašā darbvirsmas "
-"sesijā, izmantojot šos komunikāciju protokolus: %1"
+msgstr "Var sazināties ar citām programmām un procesiem lietotāja sesijā"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
@@ -656,14 +649,9 @@ msgid "System Bus Access"
 msgstr "Sistēmas kopnes piekļuve"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
-msgstr ""
-"Var sazināties ar citām programmām un procesiem tajā pašā darbvirsmas "
-"sesijā, izmantojot šos komunikāciju protokolus: %1"
+msgstr "Var sazināties ar citām programmām un procesiem sistēmā"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
@@ -986,10 +974,9 @@ msgstr "Pielāgot atļaujas..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "Offline Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "Bezsaistes atjauninājumi"
+msgstr "Aparātprogrammatūras atjauninājumi"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1149,35 +1136,29 @@ msgstr "Neizdodas noņemt „%1“"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:989
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released.</b>\n"
-#| "To be able to upgrade to this new version, make sure to apply all "
-#| "available updates and then restart the system."
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
 "<b>%1 is now available.</b>\n"
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
-"<b>Ir pieejama jauna %1 versija.</b>\n"
-"Lai atjauninātu uz šo versiju, ieinstalējiet visus pieejamos atjauninājumus "
-"un pārstartējiet sistēmu."
+"<b>Pieejama operētājsistēma „%1“.</b>\n"
+"Lai atjauninātu uz šo versiju, vispirms ieinstalējiet visus pieejamos "
+"atjauninājumus un pārstartējiet sistēmu."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
-#, fuzzy, kde-format
-#| msgid "Upgrade to %1 %2"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "Uzlabot uz %1 %2"
+msgstr "Uzlabot tagad"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "Krātuve nav pieejama"
+msgstr "Pieejama operētājsistēma „%1“."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2244,18 +2225,18 @@ msgstr "Operētājsistēma"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
-msgstr "rpm-ostree: Atrasti vairāki sāknēti izvietojumi. Ziņojiet par kļūdu."
+msgstr "rpm-ostree: Atrasti vairāki sāknētas instalācijas. Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
-msgstr "rpm-ostree: Nav atrasti sāknēti izvietojumi. Ziņojiet par kļūdu."
+msgstr "rpm-ostree: Nav atrasti sāknētas instalācijas. Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr ""
+msgstr "Sāk atjaunināšanu..."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
@@ -2471,7 +2452,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113
 #, kde-format
@@ -2506,7 +2487,7 @@ msgstr "Palaist"
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "%1 versijas pārlādēšana"
+msgstr "%1. versijas atsvaidzināšana"
 
 #: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
