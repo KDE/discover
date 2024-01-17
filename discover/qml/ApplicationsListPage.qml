@@ -255,10 +255,10 @@ DiscoverPage {
         }
 
         footer: ColumnLayout {
-            anchors.horizontalCenter: parent.horizontalCenter
             visible: appsModel.busy && appsView.atYEnd
             opacity: visible ? 0.5 : 0
             height: visible ? Layout.preferredHeight : 0
+            width: appsView.width
 
             Item {
                 Layout.preferredHeight: Kirigami.Units.gridUnit
