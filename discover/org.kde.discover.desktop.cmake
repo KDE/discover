@@ -156,6 +156,7 @@ Keywords[it]=programma;software;deposito;pacchetto;installa;disinstalla;rimuovi;
 Keywords[ja]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;インストール;アンインストール;アプリケーション;ソフトウェア;更新;削除;リポジトリ;アドオン;ゲーム;パッケージ;ファームウェア;
 Keywords[ka]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
 Keywords[ko]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;앱;소프트웨어;저장소;리포지토리;패키지;꾸러미;추가;설치;삭제;업데이트;앱;게임;추가 기능;부가 기능;펌웨어;
+Keywords[lt]=programa;programinė įranga;programine iranga;saugykla;repozitorija;paketas;pridėti;prideti;įdiegti;idiegti;diegti;šalinti;salinti;ištrinti;istrinti;naujinti;atnaujinti;programos;programas;programėlės;programeles;žaidimai;zaidimai;zaidimas;žaidimas;programą;flatpak;snap;papildinys;papildiniai;programinė aparatinė įranga;programine aparatine iranga;
 Keywords[lv]=programma;programmatūra;repozitorijs;pakotne;pievienot;instalēt;atinstalēt;noņemt;atjaunināt;lietotnes;aplikācijas;spēles;flatpak;snap;pielikumi;add-ons;firmware;aparātprogrammatūra;
 Keywords[nb]=program;programvare;pakkebrønn;pakke;legg til;installer;avinstaller;fjern;oppdater;apper;applikasjoner;spill;flatpak;snap;tillegg;programtillegg;fastvare;
 Keywords[nl]=programma;software;opslagruimte;pakket;toevoegen;installeren;installatie ongedaan maken;verwijderen;bijwerken;apps;toepassingen;applicaties;spellen;flatpak;snap;add-ons;firmware;
