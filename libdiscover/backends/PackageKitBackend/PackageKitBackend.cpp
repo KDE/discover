@@ -1092,7 +1092,7 @@ AbstractBackendUpdater *PackageKitBackend::backendUpdater() const
 
 QVector<AbstractResource *> PackageKitBackend::extendedBy(const QString &id) const
 {
-    const auto components = m_appdata->componentsById(id);
+    const auto components = m_appdata->componentsByExtends(id);
     return resourcesByComponents<QVector<AbstractResource *>>(components);
 }
 
