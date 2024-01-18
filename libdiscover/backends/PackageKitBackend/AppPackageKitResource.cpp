@@ -196,8 +196,13 @@ QStringList AppPackageKitResource::allPackageNames() const
 
 QList<PackageState> AppPackageKitResource::addonsInformation()
 {
-    auto res = backend()->resourcesByPackageNames<QSet<AbstractResource *>>(m_appdata.extends());
-    return kTransform<QList<PackageState>>(res, [](AbstractResource *r) {
+    const auto extendedBy = backend()->extendedBy(m_appdata.id());
+    const auto allPackageNamesCached = allPackageNames();
+    const auto resources = kFilter<QVector<AbstractResource *>>(extendedBy, [&](AbstractResource *r) {
+        auto apkr = qobject_cast<AppPackageKitResource *>(r);
+        return apkr && apkr->allPackageNames() != allPackageNamesCached;
+    });
+    return kTransform<QList<PackageState>>(resources, [](AbstractResource *r) {
         return PackageState(r->packageName(), r->name(), r->comment(), r->isInstalled());
     });
 }
