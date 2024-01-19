@@ -59,13 +59,16 @@ QHash<int, QByteArray> UpdateModel::roleNames() const
 void UpdateModel::setBackend(ResourcesUpdatesModel *updates)
 {
     if (m_updates) {
-        disconnect(m_updates, nullptr, this, nullptr);
+        disconnect(m_updates, &ResourcesUpdatesModel::progressingChanged, this, &UpdateModel::activityChanged);
+        disconnect(m_updates, &ResourcesUpdatesModel::resourceProgressed, this, &UpdateModel::resourceHasProgressed);
     }
 
     m_updates = updates;
 
-    connect(m_updates, &ResourcesUpdatesModel::progressingChanged, this, &UpdateModel::activityChanged);
-    connect(m_updates, &ResourcesUpdatesModel::resourceProgressed, this, &UpdateModel::resourceHasProgressed);
+    if (m_updates) {
+        connect(m_updates, &ResourcesUpdatesModel::progressingChanged, this, &UpdateModel::activityChanged);
+        connect(m_updates, &ResourcesUpdatesModel::resourceProgressed, this, &UpdateModel::resourceHasProgressed);
+    }
 
     activityChanged();
 }
