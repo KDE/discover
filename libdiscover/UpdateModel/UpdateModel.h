@@ -63,12 +63,11 @@ public:
     QString updateSize() const;
 
     ResourcesUpdatesModel *backend() const;
+    void setBackend(ResourcesUpdatesModel *);
 
 public Q_SLOTS:
     void checkAll();
     void uncheckAll();
-
-    void setBackend(ResourcesUpdatesModel *updates);
 
 Q_SIGNALS:
     void hasUpdatesChanged(bool hasUpdates);
