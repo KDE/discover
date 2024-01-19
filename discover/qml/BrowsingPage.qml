@@ -95,7 +95,9 @@ DiscoverPage {
             // Need to undo some the row spacing of the parent layout which looks bad here
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
+            Layout.fillWidth: true
             text: i18nc("@title:group", "Most Popular")
+            wrapMode: Text.Wrap
             visible: popRep.count > 0 && !featuredModel.isFetching
         }
 
@@ -115,7 +117,9 @@ DiscoverPage {
             // Need to undo some the row spacing of the parent layout which looks bad here
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
+            Layout.fillWidth: true
             text: i18nc("@title:group", "Newly Published & Recently Updated")
+            wrapMode: Text.Wrap
             visible: recentlyUpdatedRepeater.count > 0 && !featuredModel.isFetching
         }
 
@@ -152,7 +156,9 @@ DiscoverPage {
             // Need to undo some the row spacing of the parent layout which looks bad here
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
+            Layout.fillWidth: true
             text: i18nc("@title:group", "Editor's Choice")
+            wrapMode: Text.Wrap
             visible: featuredRep.count > 0 && !featuredModel.isFetching
         }
 
@@ -167,7 +173,9 @@ DiscoverPage {
             // Need to undo some the row spacing of the parent layout which looks bad here
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
+            Layout.fillWidth: true
             text: i18nc("@title:group", "Highest-Rated Games")
+            wrapMode: Text.Wrap
             visible: gamesRep.count > 0 && !featuredModel.isFetching
         }
 
@@ -196,7 +204,9 @@ DiscoverPage {
         Kirigami.Heading {
             Layout.topMargin: Kirigami.Units.gridUnit
             Layout.columnSpan: apps.columns
+            Layout.fillWidth: true
             text: i18nc("@title:group", "Highest-Rated Developer Tools")
+            wrapMode: Text.Wrap
             visible: devRep.count > 0 && !featuredModel.isFetching
         }
 
