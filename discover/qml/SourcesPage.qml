@@ -359,5 +359,14 @@ DiscoverPage {
                 }
             }
         }
+
+        Kirigami.PlaceholderMessage {
+            visible: count === 0
+            anchors.centerIn: visible ? parent : undefined
+            width: parent.width - (Kirigami.Units.largeSpacing * 8)
+
+            icon.name: "edit-none"
+            text: i18n("No sources")
+        }
     }
 }
