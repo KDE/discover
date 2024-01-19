@@ -27,11 +27,15 @@ Kirigami.OverlaySheet {
         visible: root.containsAddons
         enabled: !root.isInstalling
 
-        model: Discover.ApplicationAddonsModel { id: addonsModel }
+        model: Discover.ApplicationAddonsModel {
+            id: addonsModel
+        }
 
         delegate: KD.CheckSubtitleDelegate {
             required property int index
             required property var model
+
+            width: ListView.view.width
 
             enabled: !root.isInstalling
 
@@ -41,7 +45,9 @@ Kirigami.OverlaySheet {
 
             checked: model.checked
 
-            onCheckedChanged: addonsModel.changeState(packageName, checked)
+            onToggled: {
+                addonsModel.changeState(model.packageName, checked);
+            }
         }
     }
 
@@ -67,6 +73,7 @@ Kirigami.OverlaySheet {
 
             enabled: footer.active
         }
+
         QQC2.Button {
             icon.name: "document-revert"
             text: i18n("Reset")
