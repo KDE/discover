@@ -296,13 +296,9 @@ bool ResourcesModel::isBusy() const
 
 bool ResourcesModel::isExtended(const QString &id)
 {
-    bool ret = true;
-    for (AbstractResourcesBackend *backend : std::as_const(m_backends)) {
-        ret = backend->extends(id);
-        if (ret)
-            break;
-    }
-    return ret;
+    return std::any_of(m_backends.constBegin(), m_backends.constEnd(), [&](AbstractResourcesBackend *backend) {
+        return backend->extends(id);
+    });
 }
 
 AggregatedResultsStream::AggregatedResultsStream(const QSet<ResultsStream *> &streams)
