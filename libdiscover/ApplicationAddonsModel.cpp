@@ -85,18 +85,19 @@ QVariant ApplicationAddonsModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
+    const auto &packageState = m_initial[index.row()];
+
     switch (role) {
     case Qt::DisplayRole:
-        return m_initial[index.row()].name();
+        return packageState.name();
     case Qt::ToolTipRole:
-        return m_initial[index.row()].description();
+        return packageState.description();
     case PackageNameRole:
-        return m_initial[index.row()].packageName();
+        return packageState.packageName();
     case Qt::CheckStateRole: {
-        const PackageState init = m_initial[index.row()];
-        const AddonList::State state = m_state.addonState(init.name());
+        const AddonList::State state = m_state.addonState(packageState.name());
         if (state == AddonList::None) {
-            return init.isInstalled() ? Qt::Checked : Qt::Unchecked;
+            return packageState.isInstalled() ? Qt::Checked : Qt::Unchecked;
         } else {
             return state == AddonList::ToInstall ? Qt::Checked : Qt::Unchecked;
         }
