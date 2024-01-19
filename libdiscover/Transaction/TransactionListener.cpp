@@ -54,8 +54,9 @@ void TransactionListener::setResource(AbstractResource *resource)
 
 void TransactionListener::setResourceInternal(AbstractResource *resource)
 {
-    if (m_resource == resource)
+    if (m_resource == resource) {
         return;
+    }
 
     m_resource = resource;
     Q_EMIT resourceChanged();
@@ -63,8 +64,9 @@ void TransactionListener::setResourceInternal(AbstractResource *resource)
 
 void TransactionListener::transactionAdded(Transaction *trans)
 {
-    if (trans->resource() != m_resource)
+    if (trans->resource() != m_resource) {
         return;
+    }
 
     setTransaction(trans);
 }

@@ -46,8 +46,9 @@ QHash<int, QByteArray> TransactionModel::roleNames() const
 int TransactionModel::rowCount(const QModelIndex &parent) const
 {
     // Root element parents all children
-    if (!parent.isValid())
+    if (!parent.isValid()) {
         return m_transactions.size();
+    }
 
     // Child elements have no children themselves
     return 0;
@@ -55,8 +56,9 @@ int TransactionModel::rowCount(const QModelIndex &parent) const
 
 QVariant TransactionModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid())
+    if (!index.isValid()) {
         return QVariant();
+    }
 
     Transaction *transaction = m_transactions[index.row()];
     switch (role) {

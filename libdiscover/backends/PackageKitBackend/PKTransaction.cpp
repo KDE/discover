@@ -135,8 +135,9 @@ void PKTransaction::progressChanged()
     }
 
     const auto processedPercentage = percentageWithStatus(m_trans->status(), qBound<int>(0, percent, 100));
-    if (processedPercentage >= 0)
+    if (processedPercentage >= 0) {
         setProgress(processedPercentage);
+    }
 }
 
 void PKTransaction::cancellableChanged()
@@ -216,14 +217,16 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     }
 
     this->submitResolve();
-    if (isLocal())
+    if (isLocal()) {
         qobject_cast<LocalFilePKResource *>(m_apps.at(0))->resolve({});
-    if (failed)
+    }
+    if (failed) {
         setStatus(Transaction::DoneWithErrorStatus);
-    else if (cancel)
+    } else if (cancel) {
         setStatus(Transaction::CancelledStatus);
-    else
+    } else {
         setStatus(Transaction::DoneStatus);
+    }
 }
 
 void PKTransaction::processProceedFunction()

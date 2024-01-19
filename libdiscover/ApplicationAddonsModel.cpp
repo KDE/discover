@@ -5,7 +5,6 @@
  */
 
 #include "ApplicationAddonsModel.h"
-#include "libdiscover_debug.h"
 #include "utils.h"
 #include <Transaction/TransactionModel.h>
 #include <resources/AbstractResource.h>
@@ -19,8 +18,9 @@ ApplicationAddonsModel::ApplicationAddonsModel(QObject *parent)
 
     connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &ApplicationAddonsModel::transactionOver);
     connect(ResourcesModel::global(), &ResourcesModel::resourceDataChanged, this, [this](AbstractResource *resource, const QVector<QByteArray> &properties) {
-        if (!properties.contains("state"))
+        if (!properties.contains("state")) {
             return;
+        }
 
         const QString appstreamId = resource->appstreamId();
         if (kContains(m_initial, [&appstreamId](const PackageState &state) {
@@ -41,11 +41,13 @@ QHash<int, QByteArray> ApplicationAddonsModel::roleNames() const
 
 void ApplicationAddonsModel::setApplication(AbstractResource *app)
 {
-    if (app == m_app)
+    if (app == m_app) {
         return;
+    }
 
-    if (m_app)
+    if (m_app) {
         disconnect(m_app, nullptr, this, nullptr);
+    }
 
     m_app = app;
     resetState();
@@ -79,8 +81,9 @@ int ApplicationAddonsModel::rowCount(const QModelIndex &parent) const
 
 QVariant ApplicationAddonsModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid() || index.row() >= m_initial.size())
+    if (!index.isValid() || index.row() >= m_initial.size()) {
         return QVariant();
+    }
 
     switch (role) {
     case Qt::DisplayRole:
@@ -119,19 +122,19 @@ void ApplicationAddonsModel::applyChanges()
 
 void ApplicationAddonsModel::changeState(const QString &packageName, bool installed)
 {
-    auto it = m_initial.constBegin();
-    for (; it != m_initial.constEnd(); ++it) {
-        if (it->packageName() == packageName)
-            break;
-    }
+    auto it = std::find_if(m_initial.constBegin(), m_initial.constEnd(), [packageName](const auto &packageState) {
+        return packageState.packageName() == packageName;
+    });
     Q_ASSERT(it != m_initial.constEnd());
+    const auto &packageState = *it;
 
-    const bool restored = it->isInstalled() == installed;
+    const bool restored = packageState.isInstalled() == installed;
 
-    if (restored)
+    if (restored) {
         m_state.resetAddon(packageName);
-    else
+    } else {
         m_state.addAddon(packageName, installed);
+    }
 
     Q_EMIT stateChanged();
 }
@@ -148,8 +151,9 @@ bool ApplicationAddonsModel::isEmpty() const
 
 void ApplicationAddonsModel::transactionOver(Transaction *t)
 {
-    if (t->resource() != m_app)
+    if (t->resource() != m_app) {
         return;
+    }
 
     resetState();
 }

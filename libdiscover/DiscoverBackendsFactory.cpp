@@ -97,8 +97,9 @@ QVector<AbstractResourcesBackend *> DiscoverBackendsFactory::allBackends() const
     });
     ret.removeAll(nullptr);
 
-    if (ret.isEmpty())
+    if (ret.isEmpty()) {
         qCWarning(LIBDISCOVER_LOG) << "Didn't find any Discover backend!";
+    }
     return ret;
 }
 
@@ -126,8 +127,9 @@ void DiscoverBackendsFactory::processCommandLine(QCommandLineParser *parser, boo
         ? QStringList{QStringLiteral("dummy-backend")} //
         : parser->value(QStringLiteral("backends")).split(QLatin1Char(','), Qt::SkipEmptyParts);
     for (auto &backend : backends) {
-        if (!backend.endsWith(QLatin1String("-backend")))
+        if (!backend.endsWith(QLatin1String("-backend"))) {
             backend.append(QLatin1String("-backend"));
+        }
     }
     *s_requestedBackends = backends;
 }
