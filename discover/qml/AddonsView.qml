@@ -1,3 +1,11 @@
+/*
+ *   SPDX-FileCopyrightText: 2012-2023 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+ *   SPDX-FileCopyrightText: 2020-2022 Nate Graham <nate@kde.org>
+ *   SPDX-FileCopyrightText: 2023-2024 ivan tkachenko <me@ratijas.tk>
+ *
+ *   SPDX-License-Identifier: LGPL-2.0-or-later
+ */
+
 pragma ComponentBehavior: Bound
 
 import QtQuick
