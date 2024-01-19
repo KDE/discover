@@ -19,6 +19,10 @@ Kirigami.OverlaySheet {
 
     title: i18n("Addons for %1", application.name)
 
+    onOpened: {
+        listview.forceActiveFocus(Qt.PopupFocusReason);
+    }
+
     ListView {
         id: listview
 
@@ -26,6 +30,10 @@ Kirigami.OverlaySheet {
 
         visible: root.containsAddons
         enabled: !root.isInstalling
+
+        activeFocusOnTab: true
+        keyNavigationEnabled: true
+        keyNavigationWraps: false
 
         model: Discover.ApplicationAddonsModel {
             id: addonsModel
@@ -44,9 +52,11 @@ Kirigami.OverlaySheet {
             subtitle: model.toolTip
 
             checked: model.checked
+            highlighted: ListView.isCurrentItem
 
             onToggled: {
                 addonsModel.changeState(model.packageName, checked);
+                ListView.view.currentIndex = index;
             }
         }
     }
