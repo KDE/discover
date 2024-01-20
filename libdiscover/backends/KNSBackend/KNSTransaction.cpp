@@ -59,7 +59,7 @@ KNSTransaction::KNSTransaction(QObject *parent, KNSResource *res, Role role)
                 setStatus(DoneStatus);
             }
         });
-        connect(knsTransaction, &KNSCore::Transaction::signalErrorCode, this, [this](KNSCore::ErrorCode /*errorCode*/, const QString &message) {
+        connect(knsTransaction, &KNSCore::Transaction::signalErrorCode, this, [this](KNSCore::ErrorCode::ErrorCode /*errorCode*/, const QString &message) {
             Q_EMIT passiveMessage(message);
         });
     });
