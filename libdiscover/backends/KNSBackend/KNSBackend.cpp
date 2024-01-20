@@ -335,7 +335,7 @@ void KNSBackend::statusChanged(const KNSCore::Entry &entry)
     resourceForEntry(entry);
 }
 
-void KNSBackend::slotErrorCode(const KNSCore::ErrorCode &errorCode, const QString &message, const QVariant &metadata)
+void KNSBackend::slotErrorCode(const KNSCore::ErrorCode::ErrorCode &errorCode, const QString &message, const QVariant &metadata)
 {
     QString error = message;
     qWarning() << "KNS error in" << m_displayName << ":" << errorCode << message << metadata;
