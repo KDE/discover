@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-20 01:35+0000\n"
+"POT-Creation-Date: 2024-01-20 02:23+0000\n"
 "PO-Revision-Date: 2023-12-20 09:09+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -687,37 +687,37 @@ msgstr "Inici"
 msgid "Unable to load applications"
 msgstr "No es poden carregar les aplicacions"
 
-#: discover/qml/BrowsingPage.qml:98
+#: discover/qml/BrowsingPage.qml:99
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Més popular"
 
-#: discover/qml/BrowsingPage.qml:118
+#: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "Novetats publicades i actualitzats recentment"
 
-#: discover/qml/BrowsingPage.qml:155
+#: discover/qml/BrowsingPage.qml:160
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Seleccioneu l'editor"
 
-#: discover/qml/BrowsingPage.qml:170
+#: discover/qml/BrowsingPage.qml:177
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Jocs amb la puntuació més alta"
 
-#: discover/qml/BrowsingPage.qml:189 discover/qml/BrowsingPage.qml:218
+#: discover/qml/BrowsingPage.qml:197 discover/qml/BrowsingPage.qml:228
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Vegeu-ne més"
 
-#: discover/qml/BrowsingPage.qml:199
+#: discover/qml/BrowsingPage.qml:208
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

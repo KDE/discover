@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-20 01:35+0000\n"
+"POT-Creation-Date: 2024-01-20 02:23+0000\n"
 "PO-Revision-Date: 2023-12-23 11:57+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmai.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -690,37 +690,37 @@ msgstr "Dom"
 msgid "Unable to load applications"
 msgstr "Nie można wczytać programów"
 
-#: discover/qml/BrowsingPage.qml:98
+#: discover/qml/BrowsingPage.qml:99
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Najpopularniejsze"
 
-#: discover/qml/BrowsingPage.qml:118
+#: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "Nowoopublikowane i ostatnio uaktualnione"
 
-#: discover/qml/BrowsingPage.qml:155
+#: discover/qml/BrowsingPage.qml:160
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Wybór twórców"
 
-#: discover/qml/BrowsingPage.qml:170
+#: discover/qml/BrowsingPage.qml:177
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Najwyżej ocenianie gry"
 
-#: discover/qml/BrowsingPage.qml:189 discover/qml/BrowsingPage.qml:218
+#: discover/qml/BrowsingPage.qml:197 discover/qml/BrowsingPage.qml:228
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Zobacz więcej"
 
-#: discover/qml/BrowsingPage.qml:199
+#: discover/qml/BrowsingPage.qml:208
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
