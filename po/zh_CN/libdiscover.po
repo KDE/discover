@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-10 01:35+0000\n"
+"POT-Creation-Date: 2024-01-20 00:38+0000\n"
 "PO-Revision-Date: 2024-01-13 05:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1072,7 +1072,7 @@ msgstr "KDE 商店"
 msgid "Log in information for %1"
 msgstr "%1 的登录信息"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:227
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:232
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "无法启动 %1"

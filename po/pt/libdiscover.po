@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-10 01:35+0000\n"
+"POT-Creation-Date: 2024-01-20 00:38+0000\n"
 "PO-Revision-Date: 2023-01-09 18:43+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -1126,7 +1126,7 @@ msgstr "Loja do KDE"
 msgid "Log in information for %1"
 msgstr "Informação da sessão para %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:227
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:232
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Não é possível lançar o %1"

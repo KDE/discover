@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-10 01:35+0000\n"
+"POT-Creation-Date: 2024-01-20 00:38+0000\n"
 "PO-Revision-Date: 2024-01-11 10:23+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -1123,7 +1123,7 @@ msgstr "KDE Store"
 msgid "Log in information for %1"
 msgstr "Данные для входа в %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:227
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:232
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Не удалось запустить %1"

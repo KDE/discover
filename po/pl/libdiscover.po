@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-10 01:35+0000\n"
+"POT-Creation-Date: 2024-01-20 00:38+0000\n"
 "PO-Revision-Date: 2023-12-23 11:59+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmai.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -1109,7 +1109,7 @@ msgstr "Sklep KDE"
 msgid "Log in information for %1"
 msgstr "Dane logowania dla %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:227
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:232
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Nie można uruchomić %1"

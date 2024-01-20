@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-20 01:35+0000\n"
+"POT-Creation-Date: 2024-01-20 00:38+0000\n"
 "PO-Revision-Date: 2024-01-13 05:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -233,17 +233,17 @@ msgstr "可用模式：\n"
 msgid "Addons for %1"
 msgstr "%1 的附加组件"
 
-#: discover/qml/AddonsView.qml:56
+#: discover/qml/AddonsView.qml:62
 #, kde-format
 msgid "More…"
 msgstr "更多…"
 
-#: discover/qml/AddonsView.qml:65
+#: discover/qml/AddonsView.qml:71
 #, kde-format
 msgid "Apply Changes"
 msgstr "应用更改"
 
-#: discover/qml/AddonsView.qml:72
+#: discover/qml/AddonsView.qml:79
 #, kde-format
 msgid "Reset"
 msgstr "重置"
@@ -656,37 +656,37 @@ msgstr "主页"
 msgid "Unable to load applications"
 msgstr "无法加载应用程序"
 
-#: discover/qml/BrowsingPage.qml:98
+#: discover/qml/BrowsingPage.qml:99
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "最热门"
 
-#: discover/qml/BrowsingPage.qml:118
+#: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "全新推出和最近更新"
 
-#: discover/qml/BrowsingPage.qml:155
+#: discover/qml/BrowsingPage.qml:160
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "编辑推荐"
 
-#: discover/qml/BrowsingPage.qml:170
+#: discover/qml/BrowsingPage.qml:177
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "最高评分的游戏"
 
-#: discover/qml/BrowsingPage.qml:189 discover/qml/BrowsingPage.qml:218
+#: discover/qml/BrowsingPage.qml:197 discover/qml/BrowsingPage.qml:228
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "查看更多"
 
-#: discover/qml/BrowsingPage.qml:199
+#: discover/qml/BrowsingPage.qml:208
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

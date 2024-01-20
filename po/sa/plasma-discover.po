@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-20 01:35+0000\n"
+"POT-Creation-Date: 2024-01-20 00:38+0000\n"
 "PO-Revision-Date: 2023-09-29 19:09+0530\n"
 "Last-Translator: \n"
 "Language-Team: Sanskrit\n"
@@ -236,17 +236,17 @@ msgstr "उपलब्धविधानानि :\n"
 msgid "Addons for %1"
 msgstr "%1 कृते योजकाः"
 
-#: discover/qml/AddonsView.qml:56
+#: discover/qml/AddonsView.qml:62
 #, kde-format
 msgid "More…"
 msgstr "अधिकः…"
 
-#: discover/qml/AddonsView.qml:65
+#: discover/qml/AddonsView.qml:71
 #, kde-format
 msgid "Apply Changes"
 msgstr "परिवर्तनानि प्रयोजयन्तु"
 
-#: discover/qml/AddonsView.qml:72
+#: discover/qml/AddonsView.qml:79
 #, kde-format
 msgid "Reset"
 msgstr "पुनः निरुपयतु"
@@ -673,37 +673,37 @@ msgstr "गृहम्‌"
 msgid "Unable to load applications"
 msgstr "अनुप्रयोगाः आरोपयतुं असमर्थाः"
 
-#: discover/qml/BrowsingPage.qml:98
+#: discover/qml/BrowsingPage.qml:99
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "सर्वाधिक लोकप्रिय"
 
-#: discover/qml/BrowsingPage.qml:118
+#: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:155
+#: discover/qml/BrowsingPage.qml:160
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "सम्पादकस्य चयनम्"
 
-#: discover/qml/BrowsingPage.qml:170
+#: discover/qml/BrowsingPage.qml:177
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "उच्चतम-मुल्याङ्कित् क्रीडाः"
 
-#: discover/qml/BrowsingPage.qml:189 discover/qml/BrowsingPage.qml:218
+#: discover/qml/BrowsingPage.qml:197 discover/qml/BrowsingPage.qml:228
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "अधिकं पश्यन्तु"
 
-#: discover/qml/BrowsingPage.qml:199
+#: discover/qml/BrowsingPage.qml:208
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

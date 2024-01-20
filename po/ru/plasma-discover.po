@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-20 01:35+0000\n"
+"POT-Creation-Date: 2024-01-20 00:38+0000\n"
 "PO-Revision-Date: 2023-12-26 14:02+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -248,17 +248,17 @@ msgstr "Доступные режимы:\n"
 msgid "Addons for %1"
 msgstr "Дополнения для %1"
 
-#: discover/qml/AddonsView.qml:56
+#: discover/qml/AddonsView.qml:62
 #, kde-format
 msgid "More…"
 msgstr "Дополнительно…"
 
-#: discover/qml/AddonsView.qml:65
+#: discover/qml/AddonsView.qml:71
 #, kde-format
 msgid "Apply Changes"
 msgstr "Применить изменения"
 
-#: discover/qml/AddonsView.qml:72
+#: discover/qml/AddonsView.qml:79
 #, kde-format
 msgid "Reset"
 msgstr "Сброс"
@@ -703,37 +703,37 @@ msgstr "Весь каталог"
 msgid "Unable to load applications"
 msgstr "Не удалось получить список приложений"
 
-#: discover/qml/BrowsingPage.qml:98
+#: discover/qml/BrowsingPage.qml:99
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Самые популярные"
 
-#: discover/qml/BrowsingPage.qml:118
+#: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "Недавно опубликованные и обновлённые"
 
-#: discover/qml/BrowsingPage.qml:155
+#: discover/qml/BrowsingPage.qml:160
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Выбор редактора"
 
-#: discover/qml/BrowsingPage.qml:170
+#: discover/qml/BrowsingPage.qml:177
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Лучшие игры"
 
-#: discover/qml/BrowsingPage.qml:189 discover/qml/BrowsingPage.qml:218
+#: discover/qml/BrowsingPage.qml:197 discover/qml/BrowsingPage.qml:228
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Дополнительно…"
 
-#: discover/qml/BrowsingPage.qml:199
+#: discover/qml/BrowsingPage.qml:208
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
