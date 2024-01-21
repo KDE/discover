@@ -1056,6 +1056,7 @@ void FlatpakBackend::metadataRefreshed(FlatpakRemote *remote)
 void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
 {
     if (source->m_pool) {
+        metadataRefreshed(source->remote());
         return;
     }
 
