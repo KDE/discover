@@ -148,14 +148,13 @@ Kirigami.GlobalDrawer {
         search: drawer.currentSearchText
     }
 
-    ColumnLayout {
+    footer: ColumnLayout {
         spacing: 0
         Layout.fillWidth: true
 
         Kirigami.Separator {
             visible: progressView.visible
             Layout.fillWidth: true
-            Layout.margins: Kirigami.Units.smallSpacing
         }
 
         ProgressView {
