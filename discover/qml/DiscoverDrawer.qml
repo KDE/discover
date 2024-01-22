@@ -59,8 +59,6 @@ Kirigami.GlobalDrawer {
             currentSubMenu.trigger()
         } else if (currentSearchText.length > 0) {
             window.leftPage.category = null
-        } else {
-            Navigation.openHome()
         }
     }
 
