@@ -2,22 +2,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Kira J. Fernandez <kirajfdez@gmail.com>, 2010, 2011, 2012.
-# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 # Rafael Belmonte <eaglescreen@gmail.com>, 2013.
 # Rocio Gallego <traducciones@rociogallego.com>, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-20 02:23+0000\n"
-"PO-Revision-Date: 2023-11-19 03:04+0100\n"
+"POT-Creation-Date: 2024-01-22 03:08+0000\n"
+"PO-Revision-Date: 2024-01-22 02:21+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -539,23 +539,23 @@ msgstr "%1 (usuario)"
 msgid "Local bundle"
 msgstr "Paquete local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1662
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1663
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:791
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL de «appstream» mal formada «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1766
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1767
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "No se ha podido añadir la fuente «%1»: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1887
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1888
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "No hay fuentes Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1891
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1892
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "No se ha podido cargar la fuente «%1»"
@@ -991,10 +991,9 @@ msgstr "Configurar permisos..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "View Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "Ver actualizaciones"
+msgstr "Actualizaciones de firmware"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
