@@ -44,11 +44,16 @@ FeaturedModel::FeaturedModel()
     static const QString fileName = featuredFileName();
     *featuredCache = dir + QLatin1Char('/') + fileName;
     const QUrl featuredUrl(QStringLiteral("https://autoconfig.kde.org/discover/") + fileName);
+    const bool shouldBlock = !QFileInfo::exists(*featuredCache);
     auto *fetchJob = KIO::storedGet(featuredUrl, KIO::NoReload, KIO::HideProgressInfo);
-    acquireFetching(true);
-    connect(fetchJob, &KIO::StoredTransferJob::result, this, [this, fetchJob]() {
-        const auto dest = qScopeGuard([this] {
-            acquireFetching(false);
+    if (shouldBlock) {
+        acquireFetching(true);
+    }
+    connect(fetchJob, &KIO::StoredTransferJob::result, this, [this, fetchJob, shouldBlock]() {
+        const auto dest = qScopeGuard([this, shouldBlock] {
+            if (shouldBlock) {
+                acquireFetching(false);
+            }
             refresh();
         });
         if (fetchJob->error() != 0)
@@ -60,6 +65,9 @@ FeaturedModel::FeaturedModel()
         f.write(fetchJob->data());
         f.close();
     });
+    if (!shouldBlock) {
+        refresh();
+    }
 }
 
 void FeaturedModel::refresh()
