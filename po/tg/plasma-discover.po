@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-20 00:38+0000\n"
+"POT-Creation-Date: 2024-01-23 00:38+0000\n"
 "PO-Revision-Date: 2020-08-27 11:51+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -218,23 +218,23 @@ msgstr "Коркардкунандаи дастрас:\n"
 msgid "Available modes:\n"
 msgstr "Реҷаҳои дастрас:\n"
 
-#: discover/qml/AddonsView.qml:20 discover/qml/Navigation.qml:58
+#: discover/qml/AddonsView.qml:28 discover/qml/Navigation.qml:58
 #, fuzzy, kde-format
 #| msgid "Addons"
 msgid "Addons for %1"
 msgstr "Барномаи иловагӣ"
 
-#: discover/qml/AddonsView.qml:62
+#: discover/qml/AddonsView.qml:80
 #, kde-format
 msgid "More…"
 msgstr ""
 
-#: discover/qml/AddonsView.qml:71
+#: discover/qml/AddonsView.qml:89
 #, kde-format
 msgid "Apply Changes"
 msgstr "Тағйиротро татбиқ кардан"
 
-#: discover/qml/AddonsView.qml:79
+#: discover/qml/AddonsView.qml:97
 #, kde-format
 msgid "Reset"
 msgstr ""

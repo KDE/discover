@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-20 00:38+0000\n"
+"POT-Creation-Date: 2024-01-23 00:38+0000\n"
 "PO-Revision-Date: 2024-01-14 11:36+0200\n"
 "Last-Translator: Māris Nartišs <maris.kde@gmail.com>\n"
 "Language-Team: \n"
@@ -238,22 +238,22 @@ msgstr "Pieejamās aizmugursistēmas:\n"
 msgid "Available modes:\n"
 msgstr "Pieejamie režīmi:\n"
 
-#: discover/qml/AddonsView.qml:20 discover/qml/Navigation.qml:58
+#: discover/qml/AddonsView.qml:28 discover/qml/Navigation.qml:58
 #, kde-format
 msgid "Addons for %1"
 msgstr "%1 pielikumi"
 
-#: discover/qml/AddonsView.qml:62
+#: discover/qml/AddonsView.qml:80
 #, kde-format
 msgid "More…"
 msgstr "Vairāk..."
 
-#: discover/qml/AddonsView.qml:71
+#: discover/qml/AddonsView.qml:89
 #, kde-format
 msgid "Apply Changes"
 msgstr "Pielietot izmaiņas"
 
-#: discover/qml/AddonsView.qml:79
+#: discover/qml/AddonsView.qml:97
 #, kde-format
 msgid "Reset"
 msgstr "Atiestatīt"
@@ -768,7 +768,7 @@ msgstr "Nākamais ekrānattēls"
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
-msgstr "Palaišanā kā <en>saknes</em> lietotājam nav ieteicama un nepieciešama."
+msgstr "Palaišanā kā <em>saknes</em> lietotājam nav ieteicama un nepieciešama."
 
 #: discover/qml/DiscoverWindow.qml:58
 #, kde-format

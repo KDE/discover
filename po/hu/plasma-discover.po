@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-20 00:38+0000\n"
+"POT-Creation-Date: 2024-01-23 00:38+0000\n"
 "PO-Revision-Date: 2024-01-13 13:50+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -240,22 +240,22 @@ msgstr "Elérhető háttérprogramok:\n"
 msgid "Available modes:\n"
 msgstr "Elérhető módok:\n"
 
-#: discover/qml/AddonsView.qml:20 discover/qml/Navigation.qml:58
+#: discover/qml/AddonsView.qml:28 discover/qml/Navigation.qml:58
 #, kde-format
 msgid "Addons for %1"
 msgstr "%1 bővítmények"
 
-#: discover/qml/AddonsView.qml:62
+#: discover/qml/AddonsView.qml:80
 #, kde-format
 msgid "More…"
 msgstr "Több…"
 
-#: discover/qml/AddonsView.qml:71
+#: discover/qml/AddonsView.qml:89
 #, kde-format
 msgid "Apply Changes"
 msgstr "Változtatások alkalmazása"
 
-#: discover/qml/AddonsView.qml:79
+#: discover/qml/AddonsView.qml:97
 #, kde-format
 msgid "Reset"
 msgstr "Visszaállítás"

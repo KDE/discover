@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-20 00:38+0000\n"
+"POT-Creation-Date: 2024-01-23 00:38+0000\n"
 "PO-Revision-Date: 2023-12-05 17:21+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -240,22 +240,22 @@ msgstr "Dostupné podporné programy:\n"
 msgid "Available modes:\n"
 msgstr "Dostupné režimy:\n"
 
-#: discover/qml/AddonsView.qml:20 discover/qml/Navigation.qml:58
+#: discover/qml/AddonsView.qml:28 discover/qml/Navigation.qml:58
 #, kde-format
 msgid "Addons for %1"
 msgstr "Doplnky pre %1"
 
-#: discover/qml/AddonsView.qml:62
+#: discover/qml/AddonsView.qml:80
 #, kde-format
 msgid "More…"
 msgstr "Viac…"
 
-#: discover/qml/AddonsView.qml:71
+#: discover/qml/AddonsView.qml:89
 #, kde-format
 msgid "Apply Changes"
 msgstr "Aplikovať zmeny"
 
-#: discover/qml/AddonsView.qml:79
+#: discover/qml/AddonsView.qml:97
 #, kde-format
 msgid "Reset"
 msgstr "Obnoviť"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-22 00:38+0000\n"
+"POT-Creation-Date: 2024-01-23 00:38+0000\n"
 "PO-Revision-Date: 2023-02-06 22:01\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -46,8 +46,8 @@ msgstr "Публічны дамен"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
-#: libdiscover/UpdateModel/UpdateModel.cpp:118
-#: libdiscover/UpdateModel/UpdateModel.cpp:329
+#: libdiscover/UpdateModel/UpdateModel.cpp:121
+#: libdiscover/UpdateModel/UpdateModel.cpp:332
 #, kde-format
 msgid "Unknown"
 msgstr "Невядома"
@@ -2146,7 +2146,7 @@ msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:717
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:318
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:321
 #, kde-format
 msgid ""
 "Media Change of type '%1' is requested.\n"
@@ -2156,13 +2156,13 @@ msgstr ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:750
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:298
 #, kde-format
 msgid "Accept EULA"
 msgstr "Прыняць EULA"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:751
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:296
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:299
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -2172,13 +2172,13 @@ msgstr ""
 " %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:868
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:338
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "У %2 няма подпісу для %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:869
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:336
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:339
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2197,7 +2197,7 @@ msgstr ""
 " Адбітак пальца: %4\n"
 " Адзнака часу: %4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:194
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:195
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
@@ -2210,12 +2210,12 @@ msgstr ""
 "><ul><li>%1</li></ul><nl/>Калі вы лічыце, што гэта памылка, паведаміце пра "
 "гэта як пра хібу ў службу падтрымкі вашага дыстрыбутыва."
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:207
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:208
 #, kde-format
 msgid "Confirm package removal"
 msgstr "Пацвердзіць выдаленне пакунка"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:208
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:209
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"
@@ -2499,7 +2499,7 @@ msgstr "SteamOS: не ўдалося запытаць у atomupd абнаўле�
 msgid "SteamOS"
 msgstr ""
 
-#: libdiscover/DiscoverBackendsFactory.cpp:113
+#: libdiscover/DiscoverBackendsFactory.cpp:114
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
@@ -2565,73 +2565,73 @@ msgctxt "@label Download rate"
 msgid "%1/s"
 msgstr "%1/с"
 
-#: libdiscover/Transaction/TransactionModel.cpp:74
+#: libdiscover/Transaction/TransactionModel.cpp:76
 #, kde-format
 msgctxt "@info:status"
 msgid "Starting"
 msgstr "Запуск"
 
-#: libdiscover/Transaction/TransactionModel.cpp:76
+#: libdiscover/Transaction/TransactionModel.cpp:78
 #, kde-format
 msgctxt "@info:status"
 msgid "Waiting"
 msgstr "Чаканне"
 
-#: libdiscover/Transaction/TransactionModel.cpp:78
+#: libdiscover/Transaction/TransactionModel.cpp:80
 #, kde-format
 msgctxt "@info:status"
 msgid "Downloading"
 msgstr "Спампоўванне"
 
-#: libdiscover/Transaction/TransactionModel.cpp:82
+#: libdiscover/Transaction/TransactionModel.cpp:84
 #, kde-format
 msgctxt "@info:status"
 msgid "Installing"
 msgstr "Усталяванне"
 
-#: libdiscover/Transaction/TransactionModel.cpp:84
+#: libdiscover/Transaction/TransactionModel.cpp:86
 #, kde-format
 msgctxt "@info:status"
 msgid "Removing"
 msgstr "Выдаленне"
 
-#: libdiscover/Transaction/TransactionModel.cpp:86
+#: libdiscover/Transaction/TransactionModel.cpp:88
 #, kde-format
 msgctxt "@info:status"
 msgid "Changing Addons"
 msgstr "Змена дапаўненняў"
 
-#: libdiscover/Transaction/TransactionModel.cpp:90
+#: libdiscover/Transaction/TransactionModel.cpp:92
 #, kde-format
 msgctxt "@info:status"
 msgid "Done"
 msgstr "Завершана"
 
-#: libdiscover/Transaction/TransactionModel.cpp:92
+#: libdiscover/Transaction/TransactionModel.cpp:94
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
 msgstr "Не ўдалося"
 
-#: libdiscover/Transaction/TransactionModel.cpp:94
+#: libdiscover/Transaction/TransactionModel.cpp:96
 #, kde-format
 msgctxt "@info:status"
 msgid "Cancelled"
 msgstr "Скасавана"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:130
+#: libdiscover/UpdateModel/UpdateModel.cpp:133
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "Праграмы"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:131
+#: libdiscover/UpdateModel/UpdateModel.cpp:134
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "Сістэмнае праграмнае забеспячэнне"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:132
+#: libdiscover/UpdateModel/UpdateModel.cpp:135
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"

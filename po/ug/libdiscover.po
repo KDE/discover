@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-22 00:38+0000\n"
+"POT-Creation-Date: 2024-01-23 00:38+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -44,8 +44,8 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
-#: libdiscover/UpdateModel/UpdateModel.cpp:118
-#: libdiscover/UpdateModel/UpdateModel.cpp:329
+#: libdiscover/UpdateModel/UpdateModel.cpp:121
+#: libdiscover/UpdateModel/UpdateModel.cpp:332
 #, fuzzy, kde-format
 #| msgctxt "@info license"
 #| msgid "Unknown"
@@ -2229,7 +2229,7 @@ msgid "%1:<nl/><nl/>%2"
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:717
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:318
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:321
 #, kde-format
 msgid ""
 "Media Change of type '%1' is requested.\n"
@@ -2237,13 +2237,13 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:750
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:295
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:298
 #, kde-format
 msgid "Accept EULA"
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:751
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:296
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:299
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -2251,13 +2251,13 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:868
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:335
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:338
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:869
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:336
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:339
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2269,7 +2269,7 @@ msgid ""
 "Timestamp: %4\n"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:194
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:195
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
@@ -2278,12 +2278,12 @@ msgid ""
 "your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:207
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:208
 #, kde-format
 msgid "Confirm package removal"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:208
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:209
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Unable to download the following packages:"
@@ -2563,7 +2563,7 @@ msgstr ""
 msgid "SteamOS"
 msgstr ""
 
-#: libdiscover/DiscoverBackendsFactory.cpp:113
+#: libdiscover/DiscoverBackendsFactory.cpp:114
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
@@ -2633,55 +2633,55 @@ msgctxt "@label Download rate"
 msgid "%1/s"
 msgstr ""
 
-#: libdiscover/Transaction/TransactionModel.cpp:74
+#: libdiscover/Transaction/TransactionModel.cpp:76
 #, kde-format
 msgctxt "@info:status"
 msgid "Starting"
 msgstr "باشلاۋاتىدۇ..."
 
-#: libdiscover/Transaction/TransactionModel.cpp:76
+#: libdiscover/Transaction/TransactionModel.cpp:78
 #, kde-format
 msgctxt "@info:status"
 msgid "Waiting"
 msgstr "كۈتۈۋاتىدۇ"
 
-#: libdiscover/Transaction/TransactionModel.cpp:78
+#: libdiscover/Transaction/TransactionModel.cpp:80
 #, kde-format
 msgctxt "@info:status"
 msgid "Downloading"
 msgstr "چۈشۈرۈۋاتىدۇ"
 
-#: libdiscover/Transaction/TransactionModel.cpp:82
+#: libdiscover/Transaction/TransactionModel.cpp:84
 #, kde-format
 msgctxt "@info:status"
 msgid "Installing"
 msgstr "ئورنىتىۋاتىدۇ"
 
-#: libdiscover/Transaction/TransactionModel.cpp:84
+#: libdiscover/Transaction/TransactionModel.cpp:86
 #, kde-format
 msgctxt "@info:status"
 msgid "Removing"
 msgstr "ئۆچۈرۈۋاتىدۇ..."
 
-#: libdiscover/Transaction/TransactionModel.cpp:86
+#: libdiscover/Transaction/TransactionModel.cpp:88
 #, kde-format
 msgctxt "@info:status"
 msgid "Changing Addons"
 msgstr ""
 
-#: libdiscover/Transaction/TransactionModel.cpp:90
+#: libdiscover/Transaction/TransactionModel.cpp:92
 #, kde-format
 msgctxt "@info:status"
 msgid "Done"
 msgstr "تامام"
 
-#: libdiscover/Transaction/TransactionModel.cpp:92
+#: libdiscover/Transaction/TransactionModel.cpp:94
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
 msgstr ""
 
-#: libdiscover/Transaction/TransactionModel.cpp:94
+#: libdiscover/Transaction/TransactionModel.cpp:96
 #, fuzzy, kde-format
 #| msgctxt "@action:button Cancels the download"
 #| msgid "Cancel"
@@ -2689,14 +2689,14 @@ msgctxt "@info:status"
 msgid "Cancelled"
 msgstr "ۋاز كەچ"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:130
+#: libdiscover/UpdateModel/UpdateModel.cpp:133
 #, fuzzy, kde-format
 #| msgid "Applications"
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "پروگراممىلار"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:131
+#: libdiscover/UpdateModel/UpdateModel.cpp:134
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox Filters updates in the history view"
 #| msgid "Updates"
@@ -2704,7 +2704,7 @@ msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "يېڭىلانمىلار"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:132
+#: libdiscover/UpdateModel/UpdateModel.cpp:135
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"
