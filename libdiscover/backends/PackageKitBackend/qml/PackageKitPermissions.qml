@@ -10,6 +10,8 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigami.delegates as KD
 
 ColumnLayout {
+    spacing: Kirigami.Units.smallSpacing
+
     Kirigami.Heading {
         Layout.fillWidth: true
         text: i18ndc("libdiscover", "%1 is the name of the application", "Permissions for %1", resource.name)
