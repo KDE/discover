@@ -16,9 +16,10 @@ import org.kde.kirigami as Kirigami
 Kirigami.InlineMessage {
     id: root
 
+    // actual subtype: FlatpakResource
     required property Discover.AbstractResource resource
 
-    property bool __betaOlderThanStable: false
+    readonly property bool __betaOlderThanStable: actions.some(action => action?.versionCompare < 0)
 
     Layout.fillWidth: true
 
@@ -29,13 +30,6 @@ Kirigami.InlineMessage {
     height: visible ? implicitHeight : 0
     visible: actions.some(action => action?.visible)
     type: __betaOlderThanStable ? Kirigami.MessageType.Warning : Kirigami.MessageType.Information
-
-    onResourceChanged: {
-        __betaOlderThanStable = false
-        for (const action of actions) {
-            action.reset()
-        }
-    }
 
     Instantiator {
         id: instantiator
@@ -57,19 +51,13 @@ Kirigami.InlineMessage {
                 applicationWindow().pageStack.pop();
                 Navigation.openApplication(model.application);
             }
-
-            Component.onCompleted: reset()
-
-            function reset() {
-                root.__betaOlderThanStable |= versionCompare < 0
-            }
         }
 
         onObjectAdded: (index, object) => {
             root.actions.push(object);
         }
         onObjectRemoved: (index, object) => {
-            root.actions = root.actions.filter(action => action !== object)
+            root.actions = root.actions.filter(action => action !== object);
         }
     }
 }
