@@ -447,8 +447,6 @@ DiscoverPage {
             Repeater {
                 id: topObjectsRepeater
 
-                // Whenever application changes, model will change as well, reloading all delegates.
-                // List of objects is static, and not expected to change.
                 model: appInfo.application.topObjects
 
                 delegate: Loader {
@@ -461,8 +459,8 @@ DiscoverPage {
                     Layout.bottomMargin: item?.visible ? appInfo.internalSpacings : 0
                     Layout.preferredHeight: item?.visible ? item.implicitHeight : 0
 
-                    Component.onCompleted: {
-                        setSource(modelData, { resource: appInfo.application });
+                    onModelDataChanged: {
+                        setSource(modelData, { resource: Qt.binding(() => appInfo.application) });
                     }
                 }
                 onItemAdded: (index, item) => {
@@ -829,16 +827,15 @@ DiscoverPage {
             }
 
             Repeater {
-                // Whenever application changes, model will change as well, reloading all delegates.
-                // List of objects is static, and not expected to change.
                 model: appInfo.application.bottomObjects
+
                 delegate: Loader {
                     required property string modelData
 
                     Layout.fillWidth: true
 
-                    Component.onCompleted: {
-                        setSource(modelData, { resource: appInfo.application });
+                    onModelDataChanged: {
+                        setSource(modelData, { resource: Qt.binding(() => appInfo.application) });
                     }
                 }
             }
