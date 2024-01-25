@@ -76,7 +76,6 @@ DiscoverPage {
             resourcesUrl: appInfo.application.url
         }
         delegate: QQC2.Action {
-            required property int index
             required property var model
 
             QQC2.ActionGroup.group: sourcesGroup
@@ -86,7 +85,7 @@ DiscoverPage {
             icon.name: model.sourceIcon
             checkable: true
             checked: appInfo.application === model.application
-            onTriggered: if (index >= 0) {
+            onTriggered: {
                 appInfo.application = model.application
             }
         }
