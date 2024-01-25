@@ -14,6 +14,8 @@ import org.kde.discover as Discover
 QQC2.Button {
     id: root
 
+    required property Discover.AbstractResource resource
+
     text: i18nd("libdiscover", "Configure permissions…")
     visible: resource.isInstalled && view.count > 0
 
@@ -23,13 +25,13 @@ QQC2.Button {
         id: overlay
 
         parent: root.QQC2.Overlay.overlay
-        title: i18nd("libdiscover", "Permissions for %1", resource.name)
+        title: i18nd("libdiscover", "Permissions for %1", root.resource.name)
 
         property Discover.InlineMessage errorMessage
 
         ListView {
             id: view
-            model: resource.plugs(root)
+            model: root.resource.plugs(root)
             Connections {
                 target: view.model
                 function onError(message) {

@@ -15,19 +15,21 @@ import org.kde.kirigami as Kirigami
 Kirigami.InlineMessage {
     id: root
 
-    // resource is set by the creator of the element in ApplicationPage.
-    property Discover.AbstractResource app: resource
+    required property Discover.AbstractResource resource
 
     property bool __betaOlderThanStable: false
 
     Layout.fillWidth: true
 
-    text: __betaOlderThanStable ? i18ndc("libdiscover", "@label %1 is the name of an application", "This development version of %1 is outdated. Using the stable version is highly recommended.", resource.name) : i18ndc("libdiscover", "@label %1 is the name of an application", "A more stable version of %1 is available.", resource.name)
+    text: __betaOlderThanStable
+        ? i18ndc("libdiscover", "@label %1 is the name of an application", "This development version of %1 is outdated. Using the stable version is highly recommended.", resource.name)
+        : i18ndc("libdiscover", "@label %1 is the name of an application", "A more stable version of %1 is available.", resource.name)
+
     height: visible ? implicitHeight : 0
     visible: actions.some(action => action?.visible)
     type: __betaOlderThanStable ? Kirigami.MessageType.Warning : Kirigami.MessageType.Information
 
-    onAppChanged: {
+    onResourceChanged: {
         __betaOlderThanStable = false
         for (const action of actions) {
             action.reset()
@@ -38,16 +40,16 @@ Kirigami.InlineMessage {
         id: instantiator
         model: Discover.ResourcesProxyModel {
             allBackends: true
-            backendFilter: root.app.backend
-            resourcesUrl: root.app.url
+            backendFilter: root.resource.backend
+            resourcesUrl: root.resource.url
         }
-        active: root.app.isDesktopApp
+        active: root.resource.isDesktopApp
         delegate: Kirigami.Action {
             required property var model
 
-            readonly property int versionCompare: root.app.versionCompare(model.application)
+            readonly property int versionCompare: root.resource.versionCompare(model.application)
 
-            visible: instantiator.active && model.application !== root.app && model.application.branch !== "beta" && model.application.branch !== "master" && versionCompare !== 0
+            visible: instantiator.active && model.application !== root.resource && model.application.branch !== "beta" && model.application.branch !== "master" && versionCompare !== 0
             text: i18ndc("libdiscover", "@action: button %1 is the name of a Flatpak repo", "View Stable Version on %1", model.displayOrigin)
 
             onTriggered: {

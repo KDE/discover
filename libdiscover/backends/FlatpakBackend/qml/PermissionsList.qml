@@ -9,18 +9,23 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
+import org.kde.discover as Discover
 import org.kde.kcmutils as KCMUtils
 import org.kde.kirigami as Kirigami
 import org.kde.kirigami.delegates as KD
 
 ColumnLayout {
+    id: root
+
+    required property Discover.AbstractResource resource
+
     visible: list.model.rowCount() > 0
     spacing: 0
 
     Kirigami.Heading {
         Layout.fillWidth: true
         Layout.bottomMargin: Kirigami.Units.largeSpacing
-        text: i18ndc("libdiscover", "%1 is the name of the application", "Permissions for %1", resource.name)
+        text: i18ndc("libdiscover", "%1 is the name of the application", "Permissions for %1", root.resource.name)
         level: 2
         type: Kirigami.Heading.Type.Primary
         wrapMode: Text.Wrap
@@ -28,7 +33,7 @@ ColumnLayout {
 
     Repeater {
         id: list
-        model: resource.permissionsModel()
+        model: root.resource.permissionsModel()
 
         delegate: QQC2.ItemDelegate {
             id: delegate
@@ -43,8 +48,8 @@ ColumnLayout {
             icon.name: model.icon
 
             // so that it gets neither hover nor pressed appearance when it's not interactive
-            hoverEnabled: resource.isInstalled
-            down: resource.isInstalled ? undefined : false
+            hoverEnabled: root.resource.isInstalled
+            down: root.resource.isInstalled ? undefined : false
 
             // ToolTip is intentionally omitted, as everything is wrapped and thus visible
 
@@ -58,9 +63,9 @@ ColumnLayout {
             }
 
             onClicked: {
-                if (resource.isInstalled) {
+                if (root.resource.isInstalled) {
                     // TODO: Not only open KCM on the app's page, but also focus on relevant permission row
-                    KCMUtils.KCMLauncher.openSystemSettings("kcm_flatpak", [resource.ref]);
+                    KCMUtils.KCMLauncher.openSystemSettings("kcm_flatpak", [root.resource.ref]);
                 }
             }
         }
@@ -70,11 +75,11 @@ ColumnLayout {
         Layout.alignment: Qt.AlignHCenter
         Layout.maximumWidth: parent.width
         Layout.topMargin: Kirigami.Units.largeSpacing
-        visible: resource.isInstalled
+        visible: root.resource.isInstalled
         text: i18nd("libdiscover", "Configure permissions…")
         icon.name: "configure"
         onClicked: {
-            KCMUtils.KCMLauncher.openSystemSettings("kcm_flatpak", [resource.ref]);
+            KCMUtils.KCMLauncher.openSystemSettings("kcm_flatpak", [root.resource.ref]);
         }
     }
 }

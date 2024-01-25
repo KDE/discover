@@ -448,14 +448,12 @@ DiscoverPage {
             Repeater {
                 id: topObjectsRepeater
 
-                model: application.topObjects
+                // Whenever application changes, model will change as well, reloading all delegates.
+                // List of objects is static, and not expected to change.
+                model: appInfo.application.topObjects
 
                 delegate: Loader {
-                    required property int index
                     required property string modelData
-
-                    // Context property for loaded component
-                    readonly property Discover.AbstractResource resource: appInfo.application
 
                     Layout.fillWidth: item?.Layout.fillWidth ?? false
                     Layout.topMargin: 0
@@ -464,7 +462,9 @@ DiscoverPage {
                     Layout.bottomMargin: item?.visible ? appInfo.internalSpacings : 0
                     Layout.preferredHeight: item?.visible ? item.implicitHeight : 0
 
-                    source: modelData
+                    Component.onCompleted: {
+                        setSource(modelData, { resource: appInfo.application });
+                    }
                 }
                 onItemAdded: (index, item) => {
                     bindVisibilityTimer.start();
@@ -830,16 +830,17 @@ DiscoverPage {
             }
 
             Repeater {
-                model: application.bottomObjects
+                // Whenever application changes, model will change as well, reloading all delegates.
+                // List of objects is static, and not expected to change.
+                model: appInfo.application.bottomObjects
                 delegate: Loader {
-                    required property int index
                     required property string modelData
 
-                    // Context property for loaded component
-                    readonly property Discover.AbstractResource resource: appInfo.application
-
-                    source: modelData
                     Layout.fillWidth: true
+
+                    Component.onCompleted: {
+                        setSource(modelData, { resource: appInfo.application });
+                    }
                 }
             }
         }

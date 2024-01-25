@@ -6,10 +6,12 @@
 
 import QtQuick
 import QtQuick.Layouts
+import org.kde.discover as Discover
 import org.kde.kirigami as Kirigami
 
 Kirigami.InlineMessage {
-    // resource is set by the creator of the element in ApplicationPage.
+    required property Discover.AbstractResource resource
+
     Layout.fillWidth: true
     text: resource.eolReason
     height: visible ? implicitHeight : 0

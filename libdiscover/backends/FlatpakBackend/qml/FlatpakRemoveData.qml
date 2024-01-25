@@ -11,7 +11,9 @@ import org.kde.kirigami as Kirigami
 
 Kirigami.InlineMessage {
     id: root
-    // resource is set by the creator of the element in ApplicationPage.
+
+    required property Discover.AbstractResource resource
+
     Layout.fillWidth: true
     text: i18nd("libdiscover", "%1 is not installed but it still has data present.", resource.name)
     visible: resource.hasData && query.count.number === 0
@@ -19,8 +21,8 @@ Kirigami.InlineMessage {
 
     Discover.ResourcesProxyModel {
         id: query
-        backendFilter: resource.backend
-        resourcesUrl: resource.url
+        backendFilter: root.resource.backend
+        resourcesUrl: root.resource.url
         stateFilter: Discover.AbstractResource.Installed
     }
 
@@ -31,7 +33,7 @@ Kirigami.InlineMessage {
             onTriggered: {
                 enabled = false
                 root.text = i18nd("libdiscover", "Clearing settings and user data…")
-                resource.clearUserData()
+                root.resource.clearUserData()
             }
         }
     ]

@@ -16,6 +16,8 @@ import org.kde.discover as Discover
 QQC2.Button {
     id: root
 
+    required property Discover.AbstractResource resource
+
     text: i18nd("libdiscover", "Channels…")
 
     onClicked: overlay.open()
@@ -25,18 +27,18 @@ QQC2.Button {
         id: overlay
 
         parent: root.QQC2.Overlay.overlay
-        title: i18nd("libdiscover", "%1 channels", resource.name)
+        title: i18nd("libdiscover", "%1 channels", root.resource.name)
 
         ListView {
             id: view
 
-            model: resource.channels(root).channels
+            model: root.resource.channels(root).channels
             delegate: QQC2.ItemDelegate {
                 id: delegate
 
                 required property var modelData
 
-                readonly property bool current: resource.channel === modelData.name
+                readonly property bool current: root.resource.channel === modelData.name
 
                 text: i18nd("libdiscover", "%1 - %2", modelData.name, modelData.version)
 
@@ -53,7 +55,7 @@ QQC2.Button {
                     QQC2.Button {
                         text: i18nd("libdiscover", "Switch")
                         enabled: !delegate.current
-                        onClicked: resource.channel = delegate.modelData.name
+                        onClicked: root.resource.channel = delegate.modelData.name
                     }
                 }
             }
