@@ -6,15 +6,20 @@
 
 import QtQuick
 import QtQuick.Layouts
+import org.kde.discover as Discover
 import org.kde.kirigami as Kirigami
 import org.kde.kirigami.delegates as KD
 
 ColumnLayout {
+    id: root
+
+    required property Discover.AbstractResource resource
+
     spacing: Kirigami.Units.smallSpacing
 
     Kirigami.Heading {
         Layout.fillWidth: true
-        text: i18ndc("libdiscover", "%1 is the name of the application", "Permissions for %1", resource.name)
+        text: i18ndc("libdiscover", "%1 is the name of the application", "Permissions for %1", root.resource.name)
         level: 2
         type: Kirigami.Heading.Type.Primary
         wrapMode: Text.Wrap

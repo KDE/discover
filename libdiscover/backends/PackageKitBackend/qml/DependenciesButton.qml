@@ -9,11 +9,14 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import QtQuick.Templates as T
+import org.kde.discover as Discover
 import org.kde.kirigami as Kirigami
 import org.kde.kirigami.delegates as KD
 
 Kirigami.LinkButton {
     id: root
+
+    required property Discover.AbstractResource resource
 
     property Kirigami.OverlaySheet __overlay
 
@@ -31,7 +34,7 @@ Kirigami.LinkButton {
     onClicked: __open()
 
     Connections {
-        target: resource
+        target: root.resource
         function onDependenciesFound(dependencies) {
             dependenciesModel.clear()
             for (const dependency of dependencies) {
@@ -50,7 +53,7 @@ Kirigami.LinkButton {
         Kirigami.OverlaySheet {
             parent: root.T.Overlay.overlay
 
-            title: i18nd("libdiscover", "Dependencies for package: %1", resource.packageName)
+            title: i18nd("libdiscover", "Dependencies for package: %1", root.resource.packageName)
 
             focus: true
 
