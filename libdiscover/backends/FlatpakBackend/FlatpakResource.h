@@ -25,8 +25,6 @@ class FlatpakSource;
 class FlatpakResource : public AbstractResource
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList topObjects MEMBER s_topObjects CONSTANT)
-    Q_PROPERTY(QStringList bottomObjects MEMBER s_bottomObjects CONSTANT)
     Q_PROPERTY(QString attentionText READ attentionText CONSTANT)
     Q_PROPERTY(QString dataLocation READ dataLocation CONSTANT)
     Q_PROPERTY(QString branch READ branch CONSTANT)
@@ -203,6 +201,10 @@ public:
     QString contentRatingDescription() const override;
     ContentIntensity contentRatingIntensity() const override;
     uint contentRatingMinimumAge() const override;
+
+    QStringList topObjects() const override;
+    QStringList bottomObjects() const override;
+
     bool isDesktopApp() const
     {
         return m_type == DesktopApp;

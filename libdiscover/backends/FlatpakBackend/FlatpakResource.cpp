@@ -1029,3 +1029,13 @@ uint FlatpakResource::contentRatingMinimumAge() const
 {
     return AppStreamUtils::contentRatingMinimumAge(m_appdata);
 }
+
+QStringList FlatpakResource::topObjects() const
+{
+    return s_topObjects;
+}
+
+QStringList FlatpakResource::bottomObjects() const
+{
+    return s_bottomObjects;
+}

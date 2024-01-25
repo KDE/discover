@@ -62,7 +62,7 @@ QDebug operator<<(QDebug debug, const QSnapdSlot *slot)
     return debug;
 }
 
-const QStringList SnapResource::m_topObjects({QStringLiteral("qrc:/qml/PermissionsButton.qml")
+const QStringList SnapResource::s_topObjects({QStringLiteral("qrc:/qml/PermissionsButton.qml")
 #ifdef SNAP_CHANNELS
                                                   ,
                                               QStringLiteral("qrc:/qml/ChannelsButton.qml")
@@ -419,6 +419,11 @@ QString SnapResource::appstreamId() const
 #endif
         ;
     return ids.isEmpty() ? QLatin1String("io.snapcraft.") + m_snap->name() + QLatin1Char('-') + m_snap->id() : ids.first();
+}
+
+QStringList SnapResource::topObjects() const
+{
+    return s_topObjects;
 }
 
 QString SnapResource::channel() const

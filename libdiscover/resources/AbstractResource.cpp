@@ -295,3 +295,13 @@ uint AbstractResource::contentRatingMinimumAge() const
 {
     return 0;
 }
+
+QStringList AbstractResource::topObjects() const
+{
+    return {};
+}
+
+QStringList AbstractResource::bottomObjects() const
+{
+    return {};
+}

@@ -96,6 +96,9 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString contentRatingDescription READ contentRatingDescription CONSTANT)
     Q_PROPERTY(ContentIntensity contentRatingIntensity READ contentRatingIntensity CONSTANT)
     Q_PROPERTY(uint contentRatingMinimumAge READ contentRatingMinimumAge CONSTANT)
+    Q_PROPERTY(QStringList topObjects READ topObjects CONSTANT)
+    Q_PROPERTY(QStringList bottomObjects READ bottomObjects CONSTANT)
+
 public:
     /**
      * This describes the state of the resource
@@ -260,6 +263,15 @@ public:
     virtual ContentIntensity contentRatingIntensity() const;
     virtual QString contentRatingDescription() const;
     virtual uint contentRatingMinimumAge() const;
+
+    /**
+     * @returns List of component URLs to display at the top of application page.
+     */
+    virtual QStringList topObjects() const;
+    /**
+     * @returns List of component URLs to display at the bottom of application page.
+     */
+    virtual QStringList bottomObjects() const;
 
 public Q_SLOTS:
     virtual void fetchScreenshots();

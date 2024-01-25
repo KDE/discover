@@ -18,7 +18,6 @@ class QSnapdClient;
 class SnapResource : public AbstractResource
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList topObjects MEMBER m_topObjects CONSTANT)
     Q_PROPERTY(QString channel READ channel WRITE setChannel NOTIFY channelChanged)
 public:
     explicit SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::State state, SnapBackend *parent);
@@ -64,6 +63,8 @@ public:
     Q_SCRIPTABLE QObject *channels(QObject *parent);
     QString appstreamId() const override;
 
+    QStringList topObjects() const override;
+
     QString channel() const;
     void setChannel(const QString &channel);
 
@@ -84,5 +85,5 @@ public:
 
     QSharedPointer<QSnapdSnap> m_snap;
     mutable QVariant m_icon;
-    static const QStringList m_topObjects;
+    static const QStringList s_topObjects;
 };
