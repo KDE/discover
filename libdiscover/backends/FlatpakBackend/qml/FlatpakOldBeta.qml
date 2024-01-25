@@ -10,6 +10,7 @@ import QtQuick
 import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.discover.app
+import org.kde.discover.qml
 import org.kde.kirigami as Kirigami
 
 Kirigami.InlineMessage {
@@ -54,7 +55,7 @@ Kirigami.InlineMessage {
 
             onTriggered: {
                 applicationWindow().pageStack.pop();
-                Navigation.openApplication(model.application)
+                Navigation.openApplication(model.application);
             }
 
             Component.onCompleted: reset()
