@@ -24,15 +24,16 @@ DummyReviewsBackend::~DummyReviewsBackend() noexcept
     qDeleteAll(m_ratings);
 }
 
-void DummyReviewsBackend::fetchReviews(AbstractResource *app, int page)
+void DummyReviewsBackend::fetchReviews(AbstractResource *resource, int page)
 {
-    if (page >= 5)
+    if (page >= 5) {
         return;
+    }
 
     QVector<ReviewPtr> review;
     for (int i = 0; i < 33; i++) {
-        review += ReviewPtr(new Review(app->name(),
-                                       app->packageName(),
+        review += ReviewPtr(new Review(resource->name(),
+                                       resource->packageName(),
                                        QStringLiteral("en_US"),
                                        QStringLiteral("good morning"),
                                        QStringLiteral("the morning is very good"),
@@ -44,45 +45,51 @@ void DummyReviewsBackend::fetchReviews(AbstractResource *app, int page)
                                        1,
                                        1,
                                        3,
-                                       app->packageName()));
+                                       resource->packageName()));
     }
-    Q_EMIT reviewsReady(app, review, false);
+    Q_EMIT reviewsReady(resource, review, false);
 }
 
-Rating *DummyReviewsBackend::ratingForApplication(AbstractResource *app) const
+Rating *DummyReviewsBackend::ratingForApplication(AbstractResource *resource) const
 {
-    return m_ratings[app];
+    return m_ratings[resource];
 }
 
 void DummyReviewsBackend::initialize()
 {
     int i = 11;
-    DummyBackend *b = qobject_cast<DummyBackend *>(parent());
-    const auto resources = b->resources();
-    for (DummyResource *app : resources) {
-        if (m_ratings.contains(app))
+    const auto backend = qobject_cast<DummyBackend *>(parent());
+    const auto resources = backend->resources();
+    for (const auto resource : resources) {
+        if (m_ratings.contains(resource)) {
             continue;
+        }
 
         int ratings[] = {0, 0, 0, 0, 0, QRandomGenerator::global()->bounded(0, 10)};
-        Rating *rating = new Rating(app->packageName(), ++i, ratings);
-        m_ratings.insert(app, rating);
-        Q_EMIT app->ratingFetched();
+        auto rating = new Rating(resource->packageName(), ++i, ratings);
+        m_ratings.insert(resource, rating);
+        Q_EMIT resource->ratingFetched();
     }
     Q_EMIT ratingsReady();
 }
 
-void DummyReviewsBackend::submitUsefulness(Review *r, bool useful)
+void DummyReviewsBackend::submitUsefulness(Review *review, bool useful)
 {
-    qDebug() << "usefulness..." << r->applicationName() << r->reviewer() << useful;
-    r->setUsefulChoice(useful ? ReviewsModel::Yes : ReviewsModel::No);
+    qDebug() << "usefulness..." << review->applicationName() << review->reviewer() << useful;
+    review->setUsefulChoice(useful ? ReviewsModel::Yes : ReviewsModel::No);
 }
 
-void DummyReviewsBackend::sendReview(AbstractResource *res, const QString &a, const QString &b, const QString &c, const QString &d)
+void DummyReviewsBackend::sendReview(AbstractResource *resource,
+                                     const QString &summary,
+                                     const QString &reviewText,
+                                     const QString &rating,
+                                     const QString &userName)
 {
-    qDebug() << "dummy submit review" << res->name() << a << b << c << d;
+    qDebug() << "dummy submit review" << resource->name() << summary << reviewText << rating << userName;
 }
 
-bool DummyReviewsBackend::isResourceSupported(AbstractResource * /*res*/) const
+bool DummyReviewsBackend::isResourceSupported(AbstractResource *resource) const
 {
+    Q_UNUSED(resource)
     return true;
 }

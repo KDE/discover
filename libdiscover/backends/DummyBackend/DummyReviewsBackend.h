@@ -32,7 +32,7 @@ public:
     {
     }
 
-    Rating *ratingForApplication(AbstractResource *app) const override;
+    Rating *ratingForApplication(AbstractResource *resource) const override;
     bool hasCredentials() const override
     {
         return false;
@@ -40,7 +40,7 @@ public:
     void deleteReview(Review *) override
     {
     }
-    void fetchReviews(AbstractResource *app, int page = 1) override;
+    void fetchReviews(AbstractResource *resource, int page = 1) override;
     bool isFetching() const override
     {
         return false;
@@ -52,13 +52,13 @@ public:
     void submitUsefulness(Review *, bool) override;
 
     void initialize();
-    bool isResourceSupported(AbstractResource *res) const override;
+    bool isResourceSupported(AbstractResource *resource) const override;
 
 Q_SIGNALS:
     void ratingsReady();
 
 protected:
-    void sendReview(AbstractResource *, const QString &, const QString &, const QString &, const QString &) override;
+    void sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName) override;
 
 private:
     QHash<AbstractResource *, Rating *> m_ratings;

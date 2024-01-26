@@ -22,21 +22,21 @@ class KNSReviews : public AbstractReviewsBackend
 public:
     explicit KNSReviews(KNSBackend *backend);
 
-    void fetchReviews(AbstractResource *app, int page = 1) override;
+    void fetchReviews(AbstractResource *resource, int page = 1) override;
     bool isFetching() const override;
-    void flagReview(Review *r, const QString &reason, const QString &text) override;
-    void deleteReview(Review *r) override;
-    void submitUsefulness(Review *r, bool useful) override;
+    void flagReview(Review *review, const QString &reason, const QString &text) override;
+    void deleteReview(Review *review) override;
+    void submitUsefulness(Review *review, bool useful) override;
     void logout() override;
     void registerAndLogin() override;
     void login() override;
-    Rating *ratingForApplication(AbstractResource *app) const override;
+    Rating *ratingForApplication(AbstractResource *resource) const override;
     bool hasCredentials() const override;
 
-    bool isResourceSupported(AbstractResource *res) const override;
+    bool isResourceSupported(AbstractResource *resource) const override;
 
 protected:
-    void sendReview(AbstractResource *app, const QString &summary, const QString &review_text, const QString &rating, const QString &userName) override;
+    void sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName) override;
     QString userName() const override;
 
 private Q_SLOTS:

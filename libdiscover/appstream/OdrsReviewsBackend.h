@@ -36,7 +36,7 @@ public:
     {
     }
 
-    Rating *ratingForApplication(AbstractResource *app) const override;
+    Rating *ratingForApplication(AbstractResource *resource) const override;
     bool hasCredentials() const override
     {
         return false;
@@ -48,7 +48,7 @@ public:
     void deleteReview(Review *) override
     {
     }
-    void fetchReviews(AbstractResource *app, int page = 1) override;
+    void fetchReviews(AbstractResource *resource, int page = 1) override;
     bool isFetching() const override
     {
         return m_isFetching;
@@ -57,8 +57,8 @@ public:
     {
     }
     void submitUsefulness(Review *review, bool useful) override;
-    bool isResourceSupported(AbstractResource *res) const override;
-    void emitRatingFetched(AbstractResourcesBackend *backend, const QList<AbstractResource *> &res) const;
+    bool isResourceSupported(AbstractResource *resource) const override;
+    void emitRatingFetched(AbstractResourcesBackend *backend, const QList<AbstractResource *> &resources) const;
     QString errorMessage() const override
     {
         return m_errorMessage;
@@ -79,12 +79,12 @@ Q_SIGNALS:
     void ratingsReady();
 
 protected:
-    void sendReview(AbstractResource *app, const QString &summary, const QString &review_text, const QString &rating, const QString &userName) override;
+    void sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName) override;
     QString userName() const override;
 
 private:
     void fetchRatings();
-    void setFetching(bool);
+    void setFetching(bool fetching);
     QNetworkAccessManager *nam();
     void parseRatings();
     void parseReviews(const QJsonDocument &document, AbstractResource *resource);

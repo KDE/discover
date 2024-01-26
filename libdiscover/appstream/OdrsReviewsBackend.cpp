@@ -129,20 +129,20 @@ static QString userHash()
     return QString::fromUtf8(QCryptographicHash::hash(salted.toUtf8(), QCryptographicHash::Sha1).toHex());
 }
 
-void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
+void OdrsReviewsBackend::fetchReviews(AbstractResource *resource, int page)
 {
-    if (app->appstreamId().isEmpty()) {
+    if (resource->appstreamId().isEmpty()) {
         return;
     }
     Q_UNUSED(page)
-    QString version = app->isInstalled() ? app->installedVersion() : app->availableVersion();
+    QString version = resource->isInstalled() ? resource->installedVersion() : resource->availableVersion();
     if (version.isEmpty()) {
         version = QStringLiteral("unknown");
     }
     setFetching(true);
 
     const QJsonDocument document(QJsonObject{
-        {QStringLiteral("app_id"), app->appstreamId()},
+        {QStringLiteral("app_id"), resource->appstreamId()},
         {QStringLiteral("distro"), osName()},
         {QStringLiteral("user_hash"), userHash()},
         {QStringLiteral("version"), version},
@@ -154,8 +154,8 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
     QNetworkRequest request(QUrl(QStringLiteral(APIURL "/fetch")));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, json.size());
-    // Store reference to the app for which we request reviews
-    request.setOriginatingObject(app);
+    // Store reference to the resource for which we request reviews
+    request.setOriginatingObject(resource);
 
     auto reply = nam()->post(request, json);
     connect(reply, &QNetworkReply::finished, this, &OdrsReviewsBackend::reviewsFetched);
@@ -163,7 +163,7 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *app, int page)
 
 void OdrsReviewsBackend::reviewsFetched()
 {
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    const auto reply = qobject_cast<QNetworkReply *>(sender());
     QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(reply);
     const QByteArray data = reply->readAll();
     const auto networkError = reply->error();
@@ -181,18 +181,18 @@ void OdrsReviewsBackend::reviewsFetched()
         qWarning() << "OdrsReviewsBackend: Error parsing reviews:" << reply->url() << error.errorString();
     }
 
-    AbstractResource *resource = qobject_cast<AbstractResource *>(reply->request().originatingObject());
+    const auto resource = qobject_cast<AbstractResource *>(reply->request().originatingObject());
     Q_ASSERT(resource);
     parseReviews(document, resource);
 }
 
-Rating *OdrsReviewsBackend::ratingForApplication(AbstractResource *app) const
+Rating *OdrsReviewsBackend::ratingForApplication(AbstractResource *resource) const
 {
-    if (app->appstreamId().isEmpty()) {
+    if (resource->appstreamId().isEmpty()) {
         return nullptr;
     }
 
-    return m_ratings[app->appstreamId()];
+    return m_ratings[resource->appstreamId()];
 }
 
 void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
@@ -215,7 +215,7 @@ void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
 
 void OdrsReviewsBackend::usefulnessSubmitted()
 {
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    const auto reply = qobject_cast<QNetworkReply *>(sender());
     const auto networkError = reply->error();
     if (networkError == QNetworkReply::NoError) {
         qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Usefulness submitted";
@@ -231,25 +231,29 @@ QString OdrsReviewsBackend::userName() const
     return KUser().property(KUser::FullName).toString();
 }
 
-void OdrsReviewsBackend::sendReview(AbstractResource *res, const QString &summary, const QString &description, const QString &rating, const QString &userName)
+void OdrsReviewsBackend::sendReview(AbstractResource *resource,
+                                    const QString &summary,
+                                    const QString &reviewText,
+                                    const QString &rating,
+                                    const QString &userName)
 {
-    Q_ASSERT(res);
+    Q_ASSERT(resource);
     QJsonObject map = {
-        {QStringLiteral("app_id"), res->appstreamId()},
-        {QStringLiteral("user_skey"), res->getMetadata(QStringLiteral("ODRS::user_skey")).toString()},
+        {QStringLiteral("app_id"), resource->appstreamId()},
+        {QStringLiteral("user_skey"), resource->getMetadata(QStringLiteral("ODRS::user_skey")).toString()},
         {QStringLiteral("user_hash"), userHash()},
-        {QStringLiteral("version"), res->isInstalled() ? res->installedVersion() : res->availableVersion()},
+        {QStringLiteral("version"), resource->isInstalled() ? resource->installedVersion() : resource->availableVersion()},
         {QStringLiteral("locale"), QLocale::system().name()},
         {QStringLiteral("distro"), osName()},
         {QStringLiteral("user_display"), QJsonValue::fromVariant(userName)},
         {QStringLiteral("summary"), summary},
-        {QStringLiteral("description"), description},
+        {QStringLiteral("description"), reviewText},
         {QStringLiteral("rating"), rating.toInt() * 10},
     };
 
     const QJsonDocument document(map);
 
-    QNetworkAccessManager *accessManager = nam();
+    const auto accessManager = nam();
     QNetworkRequest request(QUrl(QStringLiteral(APIURL "/submit")));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
@@ -257,8 +261,8 @@ void OdrsReviewsBackend::sendReview(AbstractResource *res, const QString &summar
     // Store what we need so we can immediately show our review once it is submitted
     // Use review_id 0 for now as odrs starts numbering from 1 and once reviews are re-downloaded we get correct id
     map.insert(QStringLiteral("review_id"), 0);
-    res->addMetadata(QStringLiteral("ODRS::review_map"), map);
-    request.setOriginatingObject(res);
+    resource->addMetadata(QStringLiteral("ODRS::review_map"), map);
+    request.setOriginatingObject(resource);
 
     accessManager->post(request, document.toJson());
     connect(accessManager, &QNetworkAccessManager::finished, this, &OdrsReviewsBackend::reviewSubmitted);
@@ -268,7 +272,7 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
 {
     const auto networkError = reply->error();
     if (networkError == QNetworkReply::NoError) {
-        AbstractResource *resource = qobject_cast<AbstractResource *>(reply->request().originatingObject());
+        const auto resource = qobject_cast<AbstractResource *>(reply->request().originatingObject());
         Q_ASSERT(resource);
         qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Review submitted for" << resource;
         if (resource) {
@@ -288,12 +292,12 @@ void OdrsReviewsBackend::parseRatings()
 {
     auto fw = new QFutureWatcher<QJsonDocument>(this);
     connect(fw, &QFutureWatcher<QJsonDocument>::finished, this, [this, fw] {
-        const QJsonDocument jsonDocument = fw->result();
+        const auto jsonDocument = fw->result();
         fw->deleteLater();
-        const QJsonObject jsonObject = jsonDocument.object();
+        const auto jsonObject = jsonDocument.object();
         m_ratings.reserve(jsonObject.size());
         for (auto it = jsonObject.begin(); it != jsonObject.end(); it++) {
-            QJsonObject appJsonObject = it.value().toObject();
+            const auto appJsonObject = it.value().toObject();
 
             const int ratingCount = appJsonObject.value(QLatin1String("total")).toInt();
             int ratingMap[] = {
@@ -305,19 +309,20 @@ void OdrsReviewsBackend::parseRatings()
                 appJsonObject.value(QLatin1String("star5")).toInt(),
             };
 
-            Rating *rating = new Rating(it.key(), ratingCount, ratingMap);
+            const auto rating = new Rating(it.key(), ratingCount, ratingMap);
             m_ratings.insert(it.key(), rating);
 
-            const auto finder = [rating](Rating *r) {
-                return r->ratingPoints() < rating->ratingPoints();
+            const auto finder = [rating](Rating *review) {
+                return review->ratingPoints() < rating->ratingPoints();
             };
             const auto topIt = std::find_if(m_top.begin(), m_top.end(), finder);
             if (topIt == m_top.end()) {
                 if (m_top.size() < 25) {
                     m_top.append(rating);
                 }
-            } else
+            } else {
                 m_top.insert(topIt, rating);
+            }
             if (m_top.size() > 25) {
                 m_top.resize(25);
             }
@@ -348,9 +353,9 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
         return;
     }
 
-    QJsonArray reviews = document.array();
+    const auto reviews = document.array();
     if (!reviews.isEmpty()) {
-        QVector<ReviewPtr> reviewList;
+        QList<ReviewPtr> reviewsList;
         for (auto it = reviews.begin(); it != reviews.end(); it++) {
             const QJsonObject review = it->toObject();
             if (!review.isEmpty()) {
@@ -374,12 +379,12 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                 dateTime.setSecsSinceEpoch(review.value(QStringLiteral("date_created")).toInt());
 
                 // If there is no score or the score is the same, base on the age
-                QDateTime currentDateTime = QDateTime::currentDateTime();
-                qreal totalDays = dateTime.daysTo(currentDateTime);
+                const auto currentDateTime = QDateTime::currentDateTime();
+                const auto totalDays = static_cast<qreal>(dateTime.daysTo(currentDateTime));
 
                 // use also the longest common subsequence of the version string to compute relevance
-                const QString reviewVersion = review.value(QStringLiteral("version")).toString();
-                const QString availableVersion = resource->availableVersion();
+                const auto reviewVersion = review.value(QStringLiteral("version")).toString();
+                const auto availableVersion = resource->availableVersion();
                 qreal versionScore = 0;
                 const int minLength = std::min(reviewVersion.length(), availableVersion.length());
                 if (minLength > 0) {
@@ -412,7 +417,7 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                                        reviewVersion));
                 // We can also receive just a json with app name and user info so filter these out as there is no review
                 if (!r->summary().isEmpty() && !r->reviewText().isEmpty()) {
-                    reviewList << r;
+                    reviewsList.append(r);
                     // Needed for submitting usefulness
                     r->addMetadata(QStringLiteral("ODRS::user_skey"), review.value(QStringLiteral("user_skey")).toString());
                 }
@@ -422,21 +427,21 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
             }
         }
 
-        Q_EMIT reviewsReady(resource, reviewList, false);
+        Q_EMIT reviewsReady(resource, reviewsList, false);
     }
 }
 
-bool OdrsReviewsBackend::isResourceSupported(AbstractResource *res) const
+bool OdrsReviewsBackend::isResourceSupported(AbstractResource *resource) const
 {
-    return !res->appstreamId().isEmpty();
+    return !resource->appstreamId().isEmpty();
 }
 
-void OdrsReviewsBackend::emitRatingFetched(AbstractResourcesBackend *b, const QList<AbstractResource *> &resources) const
+void OdrsReviewsBackend::emitRatingFetched(AbstractResourcesBackend *backend, const QList<AbstractResource *> &resources) const
 {
-    b->emitRatingsReady();
-    for (AbstractResource *res : resources) {
-        if (m_ratings.contains(res->appstreamId())) {
-            Q_EMIT res->ratingFetched();
+    backend->emitRatingsReady();
+    for (const auto resource : resources) {
+        if (m_ratings.contains(resource->appstreamId())) {
+            Q_EMIT resource->ratingFetched();
         }
     }
 }

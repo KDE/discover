@@ -24,50 +24,51 @@ KNSReviews::KNSReviews(KNSBackend *backend)
 {
 }
 
-Rating *KNSReviews::ratingForApplication(AbstractResource *app) const
+Rating *KNSReviews::ratingForApplication(AbstractResource *resource) const
 {
-    KNSResource *resource = qobject_cast<KNSResource *>(app);
-    if (!resource) {
-        qDebug() << app->packageName() << "<= couldn't find resource";
+    KNSResource *knsResource = qobject_cast<KNSResource *>(resource);
+    if (!knsResource) {
+        qDebug() << resource->packageName() << "<= couldn't find resource";
         return nullptr;
     }
 
-    return resource->ratingInstance();
+    return knsResource->ratingInstance();
 }
 
-void KNSReviews::fetchReviews(AbstractResource *app, int page)
+void KNSReviews::fetchReviews(AbstractResource *resource, int page)
 {
-    Attica::ListJob<Attica::Comment> *job = provider().requestComments(Attica::Comment::ContentComment, app->packageName(), QStringLiteral("0"), page - 1, 10);
+    const auto job = provider().requestComments(Attica::Comment::ContentComment, resource->packageName(), QStringLiteral("0"), page - 1, 10);
     if (!job) {
-        Q_EMIT reviewsReady(app, {}, false);
+        Q_EMIT reviewsReady(resource, {}, false);
         return;
     }
-    job->setProperty("app", QVariant::fromValue<AbstractResource *>(app));
+    job->setProperty("app", QVariant::fromValue(resource));
     connect(job, &Attica::BaseJob::finished, this, &KNSReviews::commentsReceived);
     job->start();
     acquireFetching(true);
 }
 
-void KNSReviews::acquireFetching(bool f)
+void KNSReviews::acquireFetching(bool fetching)
 {
-    if (f)
+    if (fetching) {
         m_fetching++;
-    else
+    } else {
         m_fetching--;
+    }
 
-    if ((!f && m_fetching == 0) || (f && m_fetching == 1)) {
+    if ((!fetching && m_fetching == 0) || (fetching && m_fetching == 1)) {
         Q_EMIT fetchingChanged(m_fetching != 0);
     }
     Q_ASSERT(m_fetching >= 0);
 }
 
-static QVector<ReviewPtr> createReviewList(AbstractResource *app, const Attica::Comment::List comments, int depth = 0)
+static QVector<ReviewPtr> createReviewList(AbstractResource *resource, const Attica::Comment::List comments, int depth = 0)
 {
     QVector<ReviewPtr> reviews;
     for (const Attica::Comment &comment : comments) {
         // TODO: language lookup?
-        ReviewPtr r(new Review(app->name(),
-                               app->packageName(),
+        ReviewPtr r(new Review(resource->name(),
+                               resource->packageName(),
                                QStringLiteral("en"),
                                comment.subject(),
                                comment.text(),
@@ -83,7 +84,7 @@ static QVector<ReviewPtr> createReviewList(AbstractResource *app, const Attica::
         r->addMetadata(QStringLiteral("NumberOfParents"), depth);
         reviews += r;
         if (comment.childCount() > 0) {
-            reviews += createReviewList(app, comment.children(), depth + 1);
+            reviews += createReviewList(resource, comment.children(), depth + 1);
         }
     }
     return reviews;
@@ -92,9 +93,9 @@ static QVector<ReviewPtr> createReviewList(AbstractResource *app, const Attica::
 void KNSReviews::commentsReceived(Attica::BaseJob *j)
 {
     acquireFetching(false);
-    Attica::ListJob<Attica::Comment> *job = static_cast<Attica::ListJob<Attica::Comment> *>(j);
+    const auto job = static_cast<Attica::ListJob<Attica::Comment> *>(j);
 
-    AbstractResource *app = job->property("app").value<AbstractResource *>();
+    const auto app = job->property("app").value<AbstractResource *>();
     QVector<ReviewPtr> reviews = createReviewList(app, job->itemList());
 
     Q_EMIT reviewsReady(app, reviews, !reviews.isEmpty());
@@ -115,24 +116,26 @@ void KNSReviews::deleteReview(Review * /*r*/)
     qWarning() << "cannot delete comments";
 }
 
-void KNSReviews::sendReview(AbstractResource *app, const QString &summary, const QString &review_text, const QString &rating, const QString &userName)
+void KNSReviews::sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName)
 {
     Q_UNUSED(userName);
-    provider().voteForContent(app->packageName(), rating.toUInt() * 20);
-    if (!summary.isEmpty())
-        provider().addNewComment(Attica::Comment::ContentComment, app->packageName(), QString(), QString(), summary, review_text);
+    provider().voteForContent(resource->packageName(), rating.toUInt() * 20);
+    if (!summary.isEmpty()) {
+        provider().addNewComment(Attica::Comment::ContentComment, resource->packageName(), QString(), QString(), summary, reviewText);
+    }
 }
 
-void KNSReviews::submitUsefulness(Review *r, bool useful)
+void KNSReviews::submitUsefulness(Review *review, bool useful)
 {
-    provider().voteForComment(QString::number(r->id()), useful * 5);
+    provider().voteForComment(QString::number(review->id()), useful * 5);
 }
 
 void KNSReviews::logout()
 {
-    bool b = provider().saveCredentials(QString(), QString());
-    if (!b)
+    bool ok = provider().saveCredentials(QString(), QString());
+    if (!ok) {
         qWarning() << "couldn't log out";
+    }
 }
 
 void KNSReviews::registerAndLogin()
@@ -142,16 +145,17 @@ void KNSReviews::registerAndLogin()
 
 void KNSReviews::login()
 {
-    KPasswordDialog *dialog = new KPasswordDialog;
+    const auto dialog = new KPasswordDialog;
     dialog->setPrompt(i18n("Log in information for %1", provider().name()));
     connect(dialog, &KPasswordDialog::gotUsernameAndPassword, this, &KNSReviews::credentialsReceived);
 }
 
 void KNSReviews::credentialsReceived(const QString &user, const QString &password)
 {
-    bool b = provider().saveCredentials(user, password);
-    if (!b)
+    bool ok = provider().saveCredentials(user, password);
+    if (!ok) {
         qWarning() << "couldn't save" << user << "credentials for" << provider().name();
+    }
 }
 
 bool KNSReviews::hasCredentials() const
@@ -174,7 +178,7 @@ Attica::Provider KNSReviews::provider() const
     return *m_backend->engine()->atticaProviders().constFirst();
 }
 
-bool KNSReviews::isResourceSupported(AbstractResource *res) const
+bool KNSReviews::isResourceSupported(AbstractResource *resource) const
 {
-    return qobject_cast<KNSResource *>(res);
+    return qobject_cast<KNSResource *>(resource);
 }

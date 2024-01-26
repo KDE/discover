@@ -37,9 +37,9 @@ QString AbstractReviewsBackend::preferredUserName() const
     }
 }
 
-void AbstractReviewsBackend::submitReview(AbstractResource *app,
+void AbstractReviewsBackend::submitReview(AbstractResource *resource,
                                           const QString &summary,
-                                          const QString &review_text,
+                                          const QString &reviewText,
                                           const QString &rating,
                                           const QString &userName)
 {
@@ -51,7 +51,7 @@ void AbstractReviewsBackend::submitReview(AbstractResource *app,
 
         Q_EMIT preferredUserNameChanged();
     }
-    sendReview(app, summary, review_text, rating, userName);
+    sendReview(resource, summary, reviewText, rating, userName);
 }
 
 QString AbstractReviewsBackend::errorMessage() const
