@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:38+0000\n"
+"POT-Creation-Date: 2024-01-26 00:38+0000\n"
 "PO-Revision-Date: 2023-09-04 14:34+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -478,22 +478,22 @@ msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Auta kehittäjiä koodaamalla, suunnittelemalla, testaamalla tai kääntämällä"
 
-#: discover/qml/ApplicationPage.qml:857
+#: discover/qml/ApplicationPage.qml:858
 #, kde-format
 msgid "All Licenses"
 msgstr "Kaikki lisenssit"
 
-#: discover/qml/ApplicationPage.qml:890
+#: discover/qml/ApplicationPage.qml:891
 #, kde-format
 msgid "Content Rating"
 msgstr "Sisältöarvio"
 
-#: discover/qml/ApplicationPage.qml:907
+#: discover/qml/ApplicationPage.qml:908
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Suljetun lähdekoodin vaarat"
 
-#: discover/qml/ApplicationPage.qml:913
+#: discover/qml/ApplicationPage.qml:914
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -518,7 +518,7 @@ msgstr ""
 "joten sovellus tulisi asentaa vain, jos luotat täysin sen tekijöihin (<link "
 "url='%1'>%2</link>).<nl/><nl/>Lisätietoa: <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:915
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

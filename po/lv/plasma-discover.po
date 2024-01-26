@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:38+0000\n"
+"POT-Creation-Date: 2024-01-26 00:38+0000\n"
 "PO-Revision-Date: 2024-01-14 11:36+0200\n"
 "Last-Translator: Māris Nartišs <maris.kde@gmail.com>\n"
 "Language-Team: \n"
@@ -488,22 +488,22 @@ msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Palīdzi izstrādātājiem, programmējot, veidojot dizainu, testējot vai tulkojot"
 
-#: discover/qml/ApplicationPage.qml:857
+#: discover/qml/ApplicationPage.qml:858
 #, kde-format
 msgid "All Licenses"
 msgstr "Visas licences"
 
-#: discover/qml/ApplicationPage.qml:890
+#: discover/qml/ApplicationPage.qml:891
 #, kde-format
 msgid "Content Rating"
 msgstr "Satura vērtējums"
 
-#: discover/qml/ApplicationPage.qml:907
+#: discover/qml/ApplicationPage.qml:908
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Īpašniekprogrammatūras riski"
 
-#: discover/qml/ApplicationPage.qml:913
+#: discover/qml/ApplicationPage.qml:914
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -528,7 +528,7 @@ msgstr ""
 "pilnībā uzticaties tās autoriem (<link url='%1'>%2</link>).<nl/><nl/>Vairāk "
 "varat uzzināt: <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:915
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

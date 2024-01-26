@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:38+0000\n"
+"POT-Creation-Date: 2024-01-26 00:38+0000\n"
 "PO-Revision-Date: 2023-12-05 17:21+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -489,22 +489,22 @@ msgstr "Prispieť"
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "Pomôcť vývojárom pri kódovaní, navrhovaní, testovaní alebo prekladaní"
 
-#: discover/qml/ApplicationPage.qml:857
+#: discover/qml/ApplicationPage.qml:858
 #, kde-format
 msgid "All Licenses"
 msgstr "Všetky licencie"
 
-#: discover/qml/ApplicationPage.qml:890
+#: discover/qml/ApplicationPage.qml:891
 #, kde-format
 msgid "Content Rating"
 msgstr "Hodnotenie spokojnosti"
 
-#: discover/qml/ApplicationPage.qml:907
+#: discover/qml/ApplicationPage.qml:908
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Riziká proprietárneho softvéru"
 
-#: discover/qml/ApplicationPage.qml:913
+#: discover/qml/ApplicationPage.qml:914
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -530,7 +530,7 @@ msgstr ""
 "dôverujete jej autorom (<link url='%1'>%2</link>).<nl/><nl/>Viac informácií "
 "nájdete na <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:915
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

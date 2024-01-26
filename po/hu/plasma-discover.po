@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:38+0000\n"
+"POT-Creation-Date: 2024-01-26 00:38+0000\n"
 "PO-Revision-Date: 2024-01-13 13:50+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -489,22 +489,22 @@ msgstr ""
 "Segítsen a fejlesztőknek kódolással, dizájnolással, teszteléssel vagy "
 "fordítással"
 
-#: discover/qml/ApplicationPage.qml:857
+#: discover/qml/ApplicationPage.qml:858
 #, kde-format
 msgid "All Licenses"
 msgstr "Minden licenc"
 
-#: discover/qml/ApplicationPage.qml:890
+#: discover/qml/ApplicationPage.qml:891
 #, kde-format
 msgid "Content Rating"
 msgstr "Tartalmi besorolás"
 
-#: discover/qml/ApplicationPage.qml:907
+#: discover/qml/ApplicationPage.qml:908
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "A zárt szoftver kockázatai"
 
-#: discover/qml/ApplicationPage.qml:913
+#: discover/qml/ApplicationPage.qml:914
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -531,7 +531,7 @@ msgstr ""
 "megbízik a szerzőiben (<link url='%1'>%2</link>).<nl/><nl/>Többet tudhat meg "
 "a(z) <link url='%3'>%3</link> oldalon."
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:915
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

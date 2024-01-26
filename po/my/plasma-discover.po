@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:38+0000\n"
+"POT-Creation-Date: 2024-01-26 00:38+0000\n"
 "PO-Revision-Date: 2021-09-19 20:01+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -478,24 +478,24 @@ msgstr "ပါဝင်ကူညီမည်…"
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:857
+#: discover/qml/ApplicationPage.qml:858
 #, fuzzy, kde-format
 #| msgid "License:"
 msgid "All Licenses"
 msgstr "လိုင်စင် -"
 
-#: discover/qml/ApplicationPage.qml:890
+#: discover/qml/ApplicationPage.qml:891
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating"
 msgstr "အကဲဖြတ်ချက် ရေးသွင်းပါ"
 
-#: discover/qml/ApplicationPage.qml:907
+#: discover/qml/ApplicationPage.qml:908
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:913
+#: discover/qml/ApplicationPage.qml:914
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -511,7 +511,7 @@ msgid ""
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:915
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

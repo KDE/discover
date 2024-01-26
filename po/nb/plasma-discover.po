@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:38+0000\n"
+"POT-Creation-Date: 2024-01-26 00:38+0000\n"
 "PO-Revision-Date: 2023-02-24 14:56+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -474,22 +474,22 @@ msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Hjelp utviklerene med programmering, design, testing eller oversetting."
 
-#: discover/qml/ApplicationPage.qml:857
+#: discover/qml/ApplicationPage.qml:858
 #, kde-format
 msgid "All Licenses"
 msgstr "Alle lisenser"
 
-#: discover/qml/ApplicationPage.qml:890
+#: discover/qml/ApplicationPage.qml:891
 #, kde-format
 msgid "Content Rating"
 msgstr "Aldersgrense"
 
-#: discover/qml/ApplicationPage.qml:907
+#: discover/qml/ApplicationPage.qml:908
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Risiko ved proprietær programvare"
 
-#: discover/qml/ApplicationPage.qml:913
+#: discover/qml/ApplicationPage.qml:914
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -515,7 +515,7 @@ msgstr ""
 "installere dette programmet om du stoler på utviklerene (<link url='%1'>%2</"
 "link>).<nl/><nl/> Du kan lese mer på <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:915
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

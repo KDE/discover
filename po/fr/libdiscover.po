@@ -8,23 +8,23 @@
 # Johan Claude-Breuninger <johan.claudebreuninger@gmail.com>, 2017.
 # Simon Depiets <sdepiets@gmail.com>, 2018, 2019, 2020.
 # William Oprandi <william.oprandi@gmail.com>, 2019.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Xavier Besnard <xavier.besnard@kde.org>
 # Xavier Besnard <xavier.besnard@kde.org>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:38+0000\n"
-"PO-Revision-Date: 2023-11-19 17:02+0100\n"
+"POT-Creation-Date: 2024-01-26 00:38+0000\n"
+"PO-Revision-Date: 2024-01-22 21:58+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
-"Language-Team: fr\n"
+"Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -965,52 +965,51 @@ msgstr ""
 "Cette version de développement de %1 est obsolète. Il est fortement "
 "recommandé d'utiliser la version stable."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "Une nouvelle version plus stable de %1 est disponible."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:51
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:53
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr "Afficher la version stable de %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:18
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 n'est pas installé mais des données associées sont présentes."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:32
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "Supprimer la configuration et les données utilisateur"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:33
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:35
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "Suppression en cours de la configuration et des données utilisateur..."
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:23
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "Permissions pour %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:74
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:17
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:79
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:19
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Configurer les permissions..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "View Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "Afficher les mises à jour"
+msgstr "Mises à jour des microprogrammes"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2456,28 +2455,28 @@ msgstr "Opération en cours (Débutée en dehors de Discover)"
 msgid "Unknown transaction type"
 msgstr "Type inconnu de transaction"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:21
 #, kde-format
 msgid "Channels…"
 msgstr "Canaux..."
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:28
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:30
 #, kde-format
 msgid "%1 channels"
 msgstr "%1 canaux"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:41
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:43
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:56
 #, kde-format
 msgid "Switch"
 msgstr "Basculer"
 
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:26
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:28
 #, kde-format
 msgid "Permissions for %1"
 msgstr "Permissions pour %1"

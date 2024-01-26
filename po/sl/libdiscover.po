@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:38+0000\n"
+"POT-Creation-Date: 2024-01-26 00:38+0000\n"
 "PO-Revision-Date: 2024-01-23 13:21+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -946,42 +946,42 @@ msgstr ""
 "Ta razvojna različica %1 je zastarela. Zelo priporočljiva. je uporaba "
 "stabilne različice."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "Stabilnejša različica %1 je na voljo."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:51
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:53
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr "Poglej stabilno različico na %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:18
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 ni nameščena, a ima še vedno prisotne podatke."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:32
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "Zbriši nastavitve in uporabniške podatke"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:33
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:35
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "Brisanje nastavitev in uporabniških podatkov…"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:23
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "Dovoljenja za %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:74
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:17
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:79
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:19
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Konfiguriraj dovoljenja…"
@@ -2423,28 +2423,28 @@ msgstr "Operacija v teku (pognana izven programa Discover)"
 msgid "Unknown transaction type"
 msgstr "Neznana vrsta transakcije"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:21
 #, kde-format
 msgid "Channels…"
 msgstr "Kanali…"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:28
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:30
 #, kde-format
 msgid "%1 channels"
 msgstr "%1 kanali"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:41
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:43
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:56
 #, kde-format
 msgid "Switch"
 msgstr "Preklop"
 
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:26
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:28
 #, kde-format
 msgid "Permissions for %1"
 msgstr "Dovoljenja za %1"

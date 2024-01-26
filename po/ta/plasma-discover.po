@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:38+0000\n"
+"POT-Creation-Date: 2024-01-26 00:38+0000\n"
 "PO-Revision-Date: 2023-12-10 12:44+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -478,22 +478,22 @@ msgstr "பங்களி…"
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "நிரலாக்கியோ, சோதித்தோ, வடிவமைத்தோ, மொழிபெயர்த்தோ, இதன் நிரலாளர்களுக்கு உதவுங்கள்"
 
-#: discover/qml/ApplicationPage.qml:857
+#: discover/qml/ApplicationPage.qml:858
 #, kde-format
 msgid "All Licenses"
 msgstr "அனைத்து உரிமங்கள்"
 
-#: discover/qml/ApplicationPage.qml:890
+#: discover/qml/ApplicationPage.qml:891
 #, kde-format
 msgid "Content Rating"
 msgstr "வயதுவரம்பு"
 
-#: discover/qml/ApplicationPage.qml:907
+#: discover/qml/ApplicationPage.qml:908
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "தனியுடைமை மென்பொருட்களால் ஏற்படும் ஆபத்து"
 
-#: discover/qml/ApplicationPage.qml:913
+#: discover/qml/ApplicationPage.qml:914
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -518,7 +518,7 @@ msgstr ""
 "முழுதாக நம்பும் பட்சத்திலேயே இந்நிரலை நிறுவ வேண்டும்.<nl/><nl/><link url='%3'>%3</"
 "link> என்ற இணைப்பில் சென்று மேலும் அறியலாம்."
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:915
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

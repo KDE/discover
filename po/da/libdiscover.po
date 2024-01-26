@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:38+0000\n"
+"POT-Creation-Date: 2024-01-26 00:38+0000\n"
 "PO-Revision-Date: 2020-10-04 16:58+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -955,7 +955,7 @@ msgid ""
 "highly recommended."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
 #, fuzzy, kde-format
 #| msgctxt "Notification when a new version of Kubuntu is available"
 #| msgid "A new version of Kubuntu is available."
@@ -963,37 +963,37 @@ msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "En ny version af Kubuntu er tilgængelig."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:51
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:53
 #, fuzzy, kde-format
 #| msgid "New unstable version: %1"
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr "Ny ustabil version: %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:18
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:32
 #, kde-format
 msgid "Delete settings and user data"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:33
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:35
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:23
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:74
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:17
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:79
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:19
 #, kde-format
 msgid "Configure permissions…"
 msgstr ""
@@ -2492,30 +2492,30 @@ msgstr ""
 msgid "Unknown transaction type"
 msgstr "Kan ikke annullere transaktionen"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:21
 #, kde-format
 msgid "Channels…"
 msgstr ""
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:28
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:30
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox Filters all changes in the history view"
 #| msgid "All changes"
 msgid "%1 channels"
 msgstr "Alle ændringer"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:41
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:43
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:56
 #, kde-format
 msgid "Switch"
 msgstr ""
 
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:26
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:28
 #, kde-format
 msgid "Permissions for %1"
 msgstr ""

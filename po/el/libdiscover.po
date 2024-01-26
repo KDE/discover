@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:38+0000\n"
+"POT-Creation-Date: 2024-01-26 00:38+0000\n"
 "PO-Revision-Date: 2023-08-13 22:47+0300\n"
 "Last-Translator: George Stefanakis <george.stefanakis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -962,42 +962,42 @@ msgstr ""
 "Αυτή η έκδοση ανάπτυξης του %1 είναι ξεπερασμένη. Συνιστάται η χρήση της "
 "σταθερής έκδοσης"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "Μια πιο σταθερή έκδοση του %1 είναι διαθέσιμη."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:51
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:53
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr "Προβολή Σταθερής Έκδοσης στο %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:18
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 δεν έχει εγκατασταθεί, αλλά εξακολουθεί να έχει δεδομένα."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:32
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "Διαγραφή ρυθμίσεων και δεδομένων χρήστη"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:33
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:35
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "Εκκαθάριση ρυθμίσεων και δεδομένων χρήστη..."
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:23
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "Δικαιώματα για %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:74
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:17
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:79
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:19
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Ρύθμιση δικαιωμάτων..."
@@ -2452,28 +2452,28 @@ msgstr "Λειτουργία σε εξέλιξη (ξεκίνησε έξω από
 msgid "Unknown transaction type"
 msgstr "Άγνωστος τύπος συναλλαγής"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:21
 #, kde-format
 msgid "Channels…"
 msgstr "Κανάλια…"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:28
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:30
 #, kde-format
 msgid "%1 channels"
 msgstr "%1 κανάλια"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:41
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:43
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:56
 #, kde-format
 msgid "Switch"
 msgstr "Εναλλαγή"
 
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:26
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:28
 #, kde-format
 msgid "Permissions for %1"
 msgstr "Δικαιώματα για %1"

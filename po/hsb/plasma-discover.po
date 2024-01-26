@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:38+0000\n"
+"POT-Creation-Date: 2024-01-26 00:38+0000\n"
 "PO-Revision-Date: 2021-10-29 12:52+0200\n"
 "Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
 "Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
@@ -471,23 +471,23 @@ msgstr ""
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:857
+#: discover/qml/ApplicationPage.qml:858
 #, kde-format
 msgid "All Licenses"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:890
+#: discover/qml/ApplicationPage.qml:891
 #, fuzzy, kde-format
 #| msgid "Rating"
 msgid "Content Rating"
 msgstr "Rating"
 
-#: discover/qml/ApplicationPage.qml:907
+#: discover/qml/ApplicationPage.qml:908
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:913
+#: discover/qml/ApplicationPage.qml:914
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -503,7 +503,7 @@ msgid ""
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:915
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
