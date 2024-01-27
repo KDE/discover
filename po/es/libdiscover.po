@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-23 00:38+0000\n"
+"POT-Creation-Date: 2024-01-27 00:38+0000\n"
 "PO-Revision-Date: 2024-01-11 01:54+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -584,7 +584,7 @@ msgid "Unknown"
 msgstr "Desconocido"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:504
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:491
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
@@ -939,7 +939,7 @@ msgstr "Añadiendo «%1» remoto en %2 desde %3"
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "No se encontrado «%1» en «%2». Asegúrese de que está disponible."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -949,42 +949,42 @@ msgstr ""
 "Esta versión de desarrollo de %1 está desactualizada. Se recomienda "
 "encarecidamente el uso de la versión estable."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "Hay disponible una versión más estable de %1."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:51
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:54
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr "Ver la versión estable en %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:18
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 no está instalado, pero todavía tiene datos presentes."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:32
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "Borrar preferencias y datos del usuario"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:33
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:35
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "Borrando preferencias y datos del usuario..."
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:23
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:22
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "Permisos para %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:74
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:17
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:79
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:19
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Configurar permisos..."
@@ -1992,49 +1992,49 @@ msgid_plural "Successfully updated %1 packages"
 msgstr[0] "Se ha actualizado con éxito %1 paquete"
 msgstr[1] "Se han actualizado con éxito %1 paquetes"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:186
 #, kde-format
 msgid "Unknown Source"
 msgstr "Fuente desconocida"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:330
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:333
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:394
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
 #, kde-format
 msgid "Obsoletes:"
 msgstr "Vuelve obsoleto:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:398
 #, kde-format
 msgid "Release Notes:"
 msgstr "Notas del lanzamiento:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:396
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:399
 #, kde-format
 msgid "Update State:"
 msgstr "Estado de actualización:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
 #, kde-format
 msgid "Restart:"
 msgstr "Reiniciar:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:403
 #, kde-format
 msgid "Vendor:"
 msgstr "Vendedor:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:420
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:423
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2216,22 +2216,22 @@ msgstr[1] ""
 "Esta acción también eliminará los siguientes paquetes:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:30
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "Mostrar dependencias..."
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:56
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "Dependencias para el paquete: %1"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:30
 #, kde-format
 msgid "Full Access"
 msgstr "Acceso total"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:31
 #, kde-format
 msgid "Can access everything on the system"
 msgstr "Puede acceder a todo en el sistema"
@@ -2427,28 +2427,28 @@ msgstr "Operación en curso (se ha iniciado fuera de Discover)"
 msgid "Unknown transaction type"
 msgstr "Tipo de transacción desconocido"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:21
 #, kde-format
 msgid "Channels…"
 msgstr "Canales..."
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:28
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:30
 #, kde-format
 msgid "%1 channels"
 msgstr "%1 canales"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:41
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:43
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:56
 #, kde-format
 msgid "Switch"
 msgstr "Cambiar"
 
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:26
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:28
 #, kde-format
 msgid "Permissions for %1"
 msgstr "Permisos para %1"

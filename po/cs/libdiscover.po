@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-26 00:38+0000\n"
+"POT-Creation-Date: 2024-01-27 00:38+0000\n"
 "PO-Revision-Date: 2023-11-07 15:35+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -580,7 +580,7 @@ msgid "Unknown"
 msgstr "Neznámý"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:504
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:491
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
@@ -901,7 +901,7 @@ msgstr ""
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -909,13 +909,13 @@ msgid ""
 "highly recommended."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:53
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:54
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
@@ -937,7 +937,7 @@ msgid "Clearing settings and user data…"
 msgstr "Vymazání nastavení a uživatelských dat..."
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:22
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
@@ -1923,49 +1923,49 @@ msgstr[0] "%1 balíček byl úspěšně aktualizován"
 msgstr[1] "%1 balíčky byly úspěšně aktualizovány"
 msgstr[2] "%1 balíčků bylo úspěšně aktualizováno"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:186
 #, kde-format
 msgid "Unknown Source"
 msgstr "Neznámý zdroj"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:330
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:333
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:394
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
 #, kde-format
 msgid "Obsoletes:"
 msgstr "Zastarává:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:398
 #, kde-format
 msgid "Release Notes:"
 msgstr "Poznámky k vydání:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:396
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:399
 #, kde-format
 msgid "Update State:"
 msgstr "Aktualizovat stav:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
 #, kde-format
 msgid "Restart:"
 msgstr "Restartovat:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:403
 #, kde-format
 msgid "Vendor:"
 msgstr "Dodavatel:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:420
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:423
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2127,22 +2127,22 @@ msgstr[2] ""
 "Tato činnost rovněž odinstaluje následující balíčky:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:30
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "Zobrazit závislosti..."
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:56
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:30
 #, kde-format
 msgid "Full Access"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:31
 #, kde-format
 msgid "Can access everything on the system"
 msgstr ""

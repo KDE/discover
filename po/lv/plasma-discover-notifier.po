@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-10 01:35+0000\n"
-"PO-Revision-Date: 2024-01-08 19:25+0200\n"
+"PO-Revision-Date: 2024-01-25 12:14+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -72,13 +72,13 @@ msgstr "Pārstartēt"
 #: notifier/DiscoverNotifier.cpp:328
 #, kde-format
 msgid "Upgrade available"
-msgstr "Ir pieejams uzlabojums"
+msgstr "Pieejams uzlabojums"
 
 #: notifier/DiscoverNotifier.cpp:329
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr "%1 tagad ir pieejams."
+msgstr "Pieejama operētājsistēma „%1“."
 
 #: notifier/DiscoverNotifier.cpp:332
 #, kde-format
@@ -89,7 +89,7 @@ msgstr "Uzlabot"
 #: notifier/main.cpp:38
 #, kde-format
 msgid "Discover Notifier"
-msgstr "Discover paziņotājs"
+msgstr "„Discover“ paziņotājs"
 
 #: notifier/main.cpp:40
 #, kde-format
@@ -97,10 +97,9 @@ msgid "System update status notifier"
 msgstr "Sistēmas atjauninājumu statusa paziņotājs"
 
 #: notifier/main.cpp:42
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2022 Plasma Development Team"
+msgstr "© 2010–2024 „Plasma“ izstrādātāju komanda"
 
 #: notifier/main.cpp:46
 #, kde-format
@@ -147,7 +146,7 @@ msgstr "Apskatīt atjauninājumus..."
 #: notifier/NotifierItem.cpp:45
 #, kde-format
 msgid "Refresh…"
-msgstr "Atsvaidzināt..."
+msgstr "Pārlādēt…"
 
 #: notifier/NotifierItem.cpp:49
 #, kde-format

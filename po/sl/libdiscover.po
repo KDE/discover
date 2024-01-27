@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-26 00:38+0000\n"
-"PO-Revision-Date: 2024-01-23 13:21+0100\n"
+"POT-Creation-Date: 2024-01-27 00:38+0000\n"
+"PO-Revision-Date: 2024-01-26 07:44+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.4.2\n"
 
@@ -584,7 +584,7 @@ msgid "Unknown"
 msgstr "Neznano"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:504
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:491
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
@@ -936,7 +936,7 @@ msgstr "Dodajanje oddaljenega '%1' v %2 iz %3"
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "Ni bilo mogoče najti  '%1' v '%2'; zagotovite, da so na voljo."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -946,13 +946,13 @@ msgstr ""
 "Ta razvojna različica %1 je zastarela. Zelo priporočljiva. je uporaba "
 "stabilne različice."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "Stabilnejša različica %1 je na voljo."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:53
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:54
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
@@ -974,7 +974,7 @@ msgid "Clearing settings and user data…"
 msgstr "Brisanje nastavitev in uporabniških podatkov…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:22
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
@@ -1987,49 +1987,49 @@ msgstr[1] "Uspešno posodobljena %1 paketa"
 msgstr[2] "Uspešno posodobljeni %1 paketi"
 msgstr[3] "Uspešno posodobljeno %1 paketov"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:186
 #, kde-format
 msgid "Unknown Source"
 msgstr "Neznani vir"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:330
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:333
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:394
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
 #, kde-format
 msgid "Obsoletes:"
 msgstr "Zastarelo:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:398
 #, kde-format
 msgid "Release Notes:"
 msgstr "Opombe k izdaji:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:396
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:399
 #, kde-format
 msgid "Update State:"
 msgstr "Stanje posodobitve:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
 #, kde-format
 msgid "Restart:"
 msgstr "Ponovni zagon:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:403
 #, kde-format
 msgid "Vendor:"
 msgstr "Proizvajalec:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:420
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:423
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2219,22 +2219,22 @@ msgstr[3] ""
 "S tem dejanjem bodo odstranjeni tudi naslednji paketi:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:30
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "Prikaži odvisnosti…"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:56
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "Odvisnosti za paket: %1"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:30
 #, kde-format
 msgid "Full Access"
 msgstr "Polni dostop"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:31
 #, kde-format
 msgid "Can access everything on the system"
 msgstr "Lahko dostopa do vsega na sistemu"

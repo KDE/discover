@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-26 00:38+0000\n"
-"PO-Revision-Date: 2024-01-14 11:36+0200\n"
-"Last-Translator: Māris Nartišs <maris.kde@gmail.com>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2024-01-27 00:38+0000\n"
+"PO-Revision-Date: 2024-01-26 08:28+0200\n"
+"Last-Translator: Toms Trasūns <toms.trasuns@posteo.net>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: discover/DiscoverObject.cpp:190
 #, kde-format
@@ -277,7 +277,7 @@ msgid "Cancel"
 msgstr "Atcelt"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:224
+#: discover/qml/ApplicationPage.qml:223
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -286,7 +286,7 @@ msgstr[1] "%1 vērtējumi"
 msgstr[2] "%1 vērtējumu"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:224
+#: discover/qml/ApplicationPage.qml:223
 #, kde-format
 msgid "No ratings yet"
 msgstr "Vēl nav vērtējumu"
@@ -299,27 +299,27 @@ msgctxt ""
 msgid "From %1"
 msgstr "No %1"
 
-#: discover/qml/ApplicationPage.qml:84
+#: discover/qml/ApplicationPage.qml:83
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 — %2"
 
-#: discover/qml/ApplicationPage.qml:203
+#: discover/qml/ApplicationPage.qml:202
 #, kde-format
 msgid "Unknown author"
 msgstr "Nezināms autors"
 
-#: discover/qml/ApplicationPage.qml:248
+#: discover/qml/ApplicationPage.qml:247
 #, kde-format
 msgid "Version:"
 msgstr "Versija:"
 
-#: discover/qml/ApplicationPage.qml:260
+#: discover/qml/ApplicationPage.qml:259
 #, kde-format
 msgid "Size:"
 msgstr "Izmērs:"
 
-#: discover/qml/ApplicationPage.qml:272
+#: discover/qml/ApplicationPage.qml:271
 #, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
@@ -327,18 +327,18 @@ msgstr[0] "Licence:"
 msgstr[1] "Licences:"
 msgstr[2] "Licenču:"
 
-#: discover/qml/ApplicationPage.qml:280
+#: discover/qml/ApplicationPage.qml:279
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Nezināms"
 
-#: discover/qml/ApplicationPage.qml:314
+#: discover/qml/ApplicationPage.qml:313
 #, kde-format
 msgid "What does this mean?"
 msgstr "Ko tas nozīmē?"
 
-#: discover/qml/ApplicationPage.qml:323
+#: discover/qml/ApplicationPage.qml:322
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
@@ -346,164 +346,164 @@ msgstr[0] "Skatīt vairāk..."
 msgstr[1] "Skatīt vairāk..."
 msgstr[2] "Skatīt vairāk..."
 
-#: discover/qml/ApplicationPage.qml:334
+#: discover/qml/ApplicationPage.qml:333
 #, kde-format
 msgid "Content Rating:"
 msgstr "Satura vērtējums:"
 
-#: discover/qml/ApplicationPage.qml:343
+#: discover/qml/ApplicationPage.qml:342
 #, kde-format
 msgid "Age: %1+"
 msgstr "Vecums: %1+"
 
-#: discover/qml/ApplicationPage.qml:363
+#: discover/qml/ApplicationPage.qml:362
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
 msgstr "Skatīt informāciju..."
 
-#: discover/qml/ApplicationPage.qml:385
+#: discover/qml/ApplicationPage.qml:384
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr "%1 nav pieejami ekrānattēli"
 
-#: discover/qml/ApplicationPage.qml:559
+#: discover/qml/ApplicationPage.qml:556
 #, kde-format
 msgid "Documentation"
 msgstr "Dokumentācija"
 
-#: discover/qml/ApplicationPage.qml:560
+#: discover/qml/ApplicationPage.qml:557
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Lasiet projekta oficiālo dokumentāciju"
 
-#: discover/qml/ApplicationPage.qml:576
+#: discover/qml/ApplicationPage.qml:573
 #, kde-format
 msgid "Website"
 msgstr "Tīmekļa vietne"
 
-#: discover/qml/ApplicationPage.qml:577
+#: discover/qml/ApplicationPage.qml:574
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Apmeklējiet projekta vietni"
 
-#: discover/qml/ApplicationPage.qml:593
+#: discover/qml/ApplicationPage.qml:590
 #, kde-format
 msgid "Addons"
 msgstr "Pielikumi"
 
-#: discover/qml/ApplicationPage.qml:594
+#: discover/qml/ApplicationPage.qml:591
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Instalēt vai noņemt papildu funkcionalitāti"
 
-#: discover/qml/ApplicationPage.qml:613
+#: discover/qml/ApplicationPage.qml:610
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Dalīties"
 
-#: discover/qml/ApplicationPage.qml:614
+#: discover/qml/ApplicationPage.qml:611
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Nosūtiet saiti uz šo programmu"
 
-#: discover/qml/ApplicationPage.qml:630
+#: discover/qml/ApplicationPage.qml:627
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Apskatiet programmu „%1“!"
 
-#: discover/qml/ApplicationPage.qml:650
+#: discover/qml/ApplicationPage.qml:647
 #, kde-format
 msgid "What's New"
 msgstr "Kas jauns"
 
-#: discover/qml/ApplicationPage.qml:680
+#: discover/qml/ApplicationPage.qml:677
 #, kde-format
 msgid "Reviews"
 msgstr "Atsauksmes"
 
-#: discover/qml/ApplicationPage.qml:692
+#: discover/qml/ApplicationPage.qml:689
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Ielādē „%1“ atsauksmes"
 
-#: discover/qml/ApplicationPage.qml:700
+#: discover/qml/ApplicationPage.qml:697
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "„%1“ atsauksmes īslaicīgi nav pieejamas"
 
-#: discover/qml/ApplicationPage.qml:724
+#: discover/qml/ApplicationPage.qml:721
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Parādīt visas atsauksmes"
 
-#: discover/qml/ApplicationPage.qml:736
+#: discover/qml/ApplicationPage.qml:733
 #, kde-format
 msgid "Write a Review"
 msgstr "Rakstīt atsauksmi"
 
-#: discover/qml/ApplicationPage.qml:736
+#: discover/qml/ApplicationPage.qml:733
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Ieinstalējiet, lai rakstītu atsauksmi"
 
-#: discover/qml/ApplicationPage.qml:748
+#: discover/qml/ApplicationPage.qml:745
 #, kde-format
 msgid "Get Involved"
 msgstr "Iesaisties"
 
-#: discover/qml/ApplicationPage.qml:790
+#: discover/qml/ApplicationPage.qml:787
 #, kde-format
 msgid "Donate"
 msgstr "Ziedo"
 
-#: discover/qml/ApplicationPage.qml:791
+#: discover/qml/ApplicationPage.qml:788
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
-msgstr "Atbalsti un pateicies izstrādātājiem, ziedojot projektam"
+msgstr "Atbalsti un pasaki paldies izstrādātājiem, ziedojot projektam"
 
-#: discover/qml/ApplicationPage.qml:807
+#: discover/qml/ApplicationPage.qml:804
 #, kde-format
 msgid "Report Bug"
 msgstr "Ziņot par kļūdu"
 
-#: discover/qml/ApplicationPage.qml:808
+#: discover/qml/ApplicationPage.qml:805
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Reģistrē atrasto problēmu, lai palīdzētu to novērst"
 
-#: discover/qml/ApplicationPage.qml:824
+#: discover/qml/ApplicationPage.qml:821
 #, kde-format
 msgid "Contribute"
 msgstr "Darbojieties līdzi"
 
-#: discover/qml/ApplicationPage.qml:825
+#: discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Palīdzi izstrādātājiem, programmējot, veidojot dizainu, testējot vai tulkojot"
 
-#: discover/qml/ApplicationPage.qml:858
+#: discover/qml/ApplicationPage.qml:854
 #, kde-format
 msgid "All Licenses"
 msgstr "Visas licences"
 
-#: discover/qml/ApplicationPage.qml:891
+#: discover/qml/ApplicationPage.qml:887
 #, kde-format
 msgid "Content Rating"
 msgstr "Satura vērtējums"
 
-#: discover/qml/ApplicationPage.qml:908
+#: discover/qml/ApplicationPage.qml:904
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Īpašniekprogrammatūras riski"
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:910
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -528,7 +528,7 @@ msgstr ""
 "pilnībā uzticaties tās autoriem (<link url='%1'>%2</link>).<nl/><nl/>Vairāk "
 "varat uzzināt: <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:915
+#: discover/qml/ApplicationPage.qml:911
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -768,7 +768,7 @@ msgstr "Nākamais ekrānattēls"
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
-msgstr "Palaišanā kā <em>saknes</em> lietotājam nav ieteicama un nepieciešama."
+msgstr "Palaišana kā <em>saknes</em> lietotājam nav ieteicama un nepieciešama."
 
 #: discover/qml/DiscoverWindow.qml:58
 #, kde-format
@@ -1220,7 +1220,8 @@ msgstr "Tehniskā informācija"
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
-"Ir problēma ar šī atjauninājuma instalēšanu. Uzgaidiet un mēģiniet vēlreiz."
+"Radās problēma ar šī atjauninājuma instalēšanu. Uzgaidiet un mēģiniet "
+"vēlreiz."
 
 #: discover/qml/UpdatesPage.qml:68
 #, kde-format

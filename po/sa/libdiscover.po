@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-26 00:38+0000\n"
+"POT-Creation-Date: 2024-01-27 00:38+0000\n"
 "PO-Revision-Date: 2023-10-01 21:56+0530\n"
 "Last-Translator: Shreekant <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <N/A>\n"
@@ -584,7 +584,7 @@ msgid "Unknown"
 msgstr "अज्ञात"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:504
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:491
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
 #, kde-format
 msgid "Failed to start '%1': %2"
@@ -920,7 +920,7 @@ msgstr "%3 तः %2 मध्ये दूरस्थं '%1' योजयन�
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "'%2' मध्ये '%1' न प्राप्नोत्; कृपया सुनिश्चितं कुर्वन्तु यत् एतत् उपलब्धम् अस्ति।."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -930,13 +930,13 @@ msgstr ""
 "%1 इत्यस्य एतत् विकाससंस्करणं पुरातनम् अस्ति । स्थिरसंस्करणस्य उपयोगः अत्यन्तं अनुशंसितः अस्ति "
 "।."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "%1 इत्यस्य अधिकं स्थिरं संस्करणं उपलब्धम् अस्ति ।."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:53
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:54
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
@@ -958,7 +958,7 @@ msgid "Clearing settings and user data…"
 msgstr "समयोजननी तथा उपयोक्तृदत्तांशं स्वच्छं कुर्वन्…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:22
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
@@ -1965,49 +1965,49 @@ msgid_plural "Successfully updated %1 packages"
 msgstr[0] "%1 संकुलं सफलतया अद्यतनम्"
 msgstr[1] "%1 संकुलं सफलतया अद्यतनं कृतम्"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:186
 #, kde-format
 msgid "Unknown Source"
 msgstr "अज्ञात स्रोतः"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:331
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:330
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:333
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:394
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
 #, kde-format
 msgid "Obsoletes:"
 msgstr "अप्रचलिताः :"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:398
 #, kde-format
 msgid "Release Notes:"
 msgstr "प्रकाशन टिप्पणियाँ:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:396
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:399
 #, kde-format
 msgid "Update State:"
 msgstr "अद्यतनस्थितिः :"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:397
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
 #, kde-format
 msgid "Restart:"
 msgstr "पुनः आरभ्यताम् :"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:400
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:403
 #, kde-format
 msgid "Vendor:"
 msgstr "विक्रेता :"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:420
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:423
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2184,22 +2184,22 @@ msgstr[1] ""
 "एषा क्रिया निम्नलिखितसङ्कुलानाम् अपि निष्कासनं करिष्यति :\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:30
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "आश्रिताः दर्शयन्तु…"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:56
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "संकुलस्य कृते आश्रयाः : %1"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:30
 #, kde-format
 msgid "Full Access"
 msgstr "पूर्ण अभिगम"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:31
 #, kde-format
 msgid "Can access everything on the system"
 msgstr "प्रणाल्यां सर्वं अभिगन्तुं शक्नोति"
