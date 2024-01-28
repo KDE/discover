@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-22 03:08+0000\n"
-"PO-Revision-Date: 2024-01-10 12:24+0900\n"
+"PO-Revision-Date: 2024-01-27 20:41+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.01.95\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1148,7 +1148,7 @@ msgstr "記憶體不足"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
 #, kde-format
 msgid "No network connection available"
-msgstr "沒有可用的網路連結"
+msgstr "網路連線不可用"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:22
 #, kde-format
@@ -1173,7 +1173,7 @@ msgstr "GPG 失敗"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:33
 #, kde-format
 msgid "PackageID invalid"
-msgstr "PackageID 不合法"
+msgstr "PackageID 無效"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
 #, kde-format
@@ -1203,7 +1203,7 @@ msgstr "找不到軟體包群組"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:45
 #, kde-format
 msgid "Package group list invalid"
-msgstr "軟體包群組清單不合法"
+msgstr "軟體包群組清單無效"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:47
 #, kde-format
@@ -1213,7 +1213,7 @@ msgstr "相依性解決失敗"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:49
 #, kde-format
 msgid "Filter invalid"
-msgstr "過濾器不合法"
+msgstr "過濾器無效"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
 #, kde-format
@@ -1223,12 +1223,12 @@ msgstr "建立執行緒失敗"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:53
 #, kde-format
 msgid "Transaction failure"
-msgstr "工作階段失敗"
+msgstr "作業階段失敗"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:55
 #, kde-format
 msgid "Transaction canceled"
-msgstr "工作階段取消"
+msgstr "作業階段取消"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:57
 #, kde-format
@@ -1258,7 +1258,7 @@ msgstr "初始化失敗"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:67
 #, kde-format
 msgid "Failed to finalize transaction"
-msgstr "無法收尾工作階段"
+msgstr "無法收尾作業階段"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:69
 #, kde-format
@@ -1268,7 +1268,7 @@ msgstr "剖析設定失敗"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:71
 #, kde-format
 msgid "Cannot cancel transaction"
-msgstr "無法取消工作階段"
+msgstr "無法取消作業階段"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:73
 #, kde-format
@@ -1458,7 +1458,7 @@ msgstr "不支援所提供的型態"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:147
 #, kde-format
 msgid "Install root is invalid"
-msgstr "安裝目錄不合法"
+msgstr "安裝目錄無效"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:149
 #, kde-format
@@ -1475,7 +1475,7 @@ msgstr "已取消優先權"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:153
 #, kde-format
 msgid "Unfinished transaction"
-msgstr "未完成的工作階段"
+msgstr "未完成的作業階段"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:155
 #, kde-format
@@ -1599,12 +1599,12 @@ msgstr "正在檢查憑證…"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
 #, kde-format
 msgid "Test committing…"
-msgstr "正在驗證軟體集"
+msgstr "正在測試提交…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
 #, kde-format
 msgid "Committing…"
-msgstr "正在排入軟體集…"
+msgstr "正在提交…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:236
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:362
@@ -1645,85 +1645,85 @@ msgstr "正在等待中。"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
 #, kde-format
 msgid "Setting up transaction…"
-msgstr "正在套用工作階段…"
+msgstr "正在設定作業階段…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
 #, kde-format
 msgid "The transaction is currently working…"
-msgstr "工作階段正在進行安裝…"
+msgstr "作業階段正在進行中…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
 #, kde-format
 msgid "The transaction is currently removing packages…"
-msgstr "工作階段正在移除軟體包…"
+msgstr "作業階段正在移除軟體包…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
 #, kde-format
 msgid "The transaction is currently downloading packages…"
-msgstr "工作階段正在下載軟體包…"
+msgstr "作業階段正在下載軟體包…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
 #, kde-format
 msgid "The transactions is currently installing packages…"
-msgstr "工作階段正在安裝軟體包…"
+msgstr "作業階段正在安裝軟體包…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
 #, kde-format
 msgid "The transaction is currently updating packages…"
-msgstr "工作階段正在更新軟體包…"
+msgstr "作業階段正在更新軟體包…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
 #, kde-format
 msgid "The transaction is currently cleaning up…"
-msgstr "工作階段正在處理善後…"
+msgstr "作業階段正在處理善後…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
 #, kde-format
 msgid ""
 "The transaction is currently resolving the dependencies of the packages it "
 "will install…"
-msgstr "工作階段正在解決軟體包相依性問題…"
+msgstr "作業階段正在解決軟體包的依賴關係…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
 #, kde-format
 msgid "The transaction is currently checking the signatures of the packages…"
-msgstr "工作階段正在檢查簽章…"
+msgstr "作業階段正在檢查軟體包的簽章…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
 #, kde-format
 msgid ""
 "The transaction is currently testing the commit of this set of packages…"
-msgstr "工作階段正在驗證軟體集…"
+msgstr "作業階段正在測試此軟體包集合的提交…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
 #, kde-format
 msgid "The transaction is currently committing its set of packages…"
-msgstr "工作階段正在排入軟體集…"
+msgstr "作業階段正在提交軟體包集合…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
 #, kde-format
 msgid "The transaction has finished!"
-msgstr "此工作階段已完成。"
+msgstr "作業階段已完成！"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:286
 #, kde-format
 msgid "The transaction was canceled"
-msgstr "工作階段已取消"
+msgstr "作業階段已取消"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
 #, kde-format
 msgid "The transaction is currently waiting for the lock…"
-msgstr "工作階段正在等待鎖定…"
+msgstr "作業階段正在等待鎖定…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
 #, kde-format
 msgid "Waiting for the user to authorize the transaction…"
-msgstr "工作階段正在等待使用者認證…"
+msgstr "作業階段正在等待使用者認證…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
 #, kde-format
 msgid "The transaction is currently copying files…"
-msgstr "工作階段正在複製檔案…"
+msgstr "作業階段正在複製檔案…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
 #, kde-format
@@ -2273,8 +2273,7 @@ msgstr "rpm-ostree-backend: 錯誤：未提供 DBus 介面。請回報問題。"
 msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
-msgstr ""
-"rpm-ostree-backend: 錯誤：無法為格式無效的資源開始工作階段。請回報問題。"
+msgstr "rpm-ostree-backend: 錯誤：無法為格式無效的資源開始作業。請回報問題。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:78
 #, kde-format
@@ -2296,7 +2295,7 @@ msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
 msgstr ""
-"rpm-ostree 工作階段失敗，訊息：\n"
+"rpm-ostree 作業失敗，訊息：\n"
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:235
@@ -2308,7 +2307,7 @@ msgstr "rpm-ostree-backend: 錯誤：未知的資源格式。請回報問題。"
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
-msgstr "正在取消 rpm-ostree 工作階段。這可能會花一些時間。請稍候。"
+msgstr "正在取消 rpm-ostree 作業。這可能會花一些時間。請稍候。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:384
 #, kde-format
@@ -2338,7 +2337,7 @@ msgstr "操作進行中（在 Discover 外開始）"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
 msgid "Unknown transaction type"
-msgstr "未知的工作階段形態"
+msgstr "未知的作業階段形態"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
 #, kde-format
