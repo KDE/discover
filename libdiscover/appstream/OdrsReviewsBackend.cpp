@@ -178,7 +178,7 @@ void OdrsReviewsBackend::reviewsFetched()
     QJsonParseError error;
     const QJsonDocument document = QJsonDocument::fromJson(data, &error);
     if (error.error) {
-        qWarning() << "OdrsReviewsBackend: Error parsing reviews:" << reply->url() << error.errorString();
+        qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Error parsing reviews:" << reply->url() << error.errorString();
     }
 
     const auto resource = qobject_cast<AbstractResource *>(reply->request().originatingObject());
@@ -220,7 +220,7 @@ void OdrsReviewsBackend::usefulnessSubmitted()
     if (networkError == QNetworkReply::NoError) {
         qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Usefulness submitted";
     } else {
-        qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Failed to submit usefulness: " << reply->errorString();
+        qCWarning(LIBDISCOVER_LOG).noquote() << "OdrsReviewsBackend: Failed to submit usefulness:" << reply->errorString();
         Q_EMIT error(i18n("Error while submitting usefulness: %1", reply->errorString()));
     }
     reply->deleteLater();
@@ -282,8 +282,8 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
             qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Failed to submit review: missing object";
         }
     } else {
+        qCWarning(LIBDISCOVER_LOG).noquote() << "OdrsReviewsBackend: Failed to submit review:" << reply->errorString();
         Q_EMIT error(i18n("Error while submitting review: %1", reply->errorString()));
-        qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Failed to submit review:" << reply->errorString();
     }
     reply->deleteLater();
 }
@@ -332,14 +332,14 @@ void OdrsReviewsBackend::parseRatings()
     fw->setFuture(QtConcurrent::run([] {
         QFile ratingsDocument(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings/ratings"));
         if (!ratingsDocument.open(QIODevice::ReadOnly)) {
-            qWarning() << "OdrsReviewsBackend: Could not open file" << ratingsDocument.fileName();
+            qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Could not open file" << ratingsDocument.fileName();
             return QJsonDocument::fromJson({});
         }
 
         QJsonParseError error;
         const auto ret = QJsonDocument::fromJson(ratingsDocument.readAll(), &error);
         if (error.error) {
-            qWarning() << "OdrsReviewsBackend: Error parsing ratings: " << ratingsDocument.errorString() << error.errorString();
+            qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Error parsing ratings:" << ratingsDocument.errorString() << error.errorString();
         }
         return ret;
     }));
