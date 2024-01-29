@@ -1,26 +1,26 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# A S Alam <aalam@satluj.org>, 2021.
+# SPDX-FileCopyrightText: 2021, 2024 A S Alam <aalam@satluj.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2021-05-01 23:36-0700\n"
-"Last-Translator: A S Alam <aalam@satluj.org>\n"
-"Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
+"PO-Revision-Date: 2024-01-28 15:20-0600\n"
+"Last-Translator: A S Alam <aalam@punlinux.org>\n"
+"Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.12.2\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: kcm/ui/main.qml:40
 #, kde-format
 msgid "Update software:"
-msgstr "ਅੱਪਡੇਟ ਸਾਫਟਵੇਅਰ:"
+msgstr "ਸਾਫਟਵੇਅਰ ਅੱਪਡੇਟ:"
 
 #: kcm/ui/main.qml:41
 #, kde-format
@@ -40,48 +40,50 @@ msgid ""
 "available. Updates for applications will be installed immediately, while "
 "system updates will be installed the next time the computer is restarted."
 msgstr ""
+"ਜਦੋਂ ਵੀ ਸਾਫਟਵੇਅਰ ਅੱਪਡੇਟ ਮੌਜੂਦ ਹੋਣਗੇ ਤਾਂ ਉਹਨਾਂ ਨੂੰ ਆਪਣੇ-ਆਪ ਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾਵੇਗਾ। ਐਪਲੀਕੇਸ਼ਨਾਂ ਲਈ "
+"ਅੱਪਡੇਟਾਂ ਨੂੰ ਫ਼ੌਰਨ ਇੰਸਟਾਲ ਕੀਤਾ ਜਾਵੇਗਾ, ਜਦੋਂ ਕਿ ਸਿਸਟਮ ਪੱਧਰ ਦੇ ਅੱਪਡੇਟਾਂ ਨੂੰ ਅਗਲੀ ਵਾਰ ਕੰਪਿਊਟਰ ਮੁੜ-"
+"ਚਾਲੂ ਕਰਨ ਸਮੇਂ ਇੰਸਟਾਲ ਕੀਤਾ ਜਾਵੇਗਾ।"
 
 #: kcm/ui/main.qml:69
-#, fuzzy, kde-format
-#| msgid "Update software:"
+#, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
-msgstr "ਅੱਪਡੇਟ ਸਾਫਟਵੇਅਰ:"
+msgstr "ਅੱਪਡੇਟ ਫਰੀਕਿਊਨਸੀ:"
 
 #: kcm/ui/main.qml:69
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
-msgstr ""
+msgstr "ਨੋਟੀਫਿਕੇਸ਼ਨ ਫਰੀਕਿਊਨਸੀ:"
 
 #: kcm/ui/main.qml:72
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
-msgstr ""
+msgstr "ਰੋਜ਼ਾਨਾ"
 
 #: kcm/ui/main.qml:73
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
-msgstr ""
+msgstr "ਹਫ਼ਤੇਵਾਰ"
 
 #: kcm/ui/main.qml:74
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
-msgstr ""
+msgstr "ਮਹੀਨੇਵਾਰ"
 
 #: kcm/ui/main.qml:75
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
-msgstr ""
+msgstr "ਕਦੇ ਨਹੀਂ"
 
 #: kcm/ui/main.qml:119
 #, kde-format
 msgid "Apply system updates:"
-msgstr ""
+msgstr "ਸਿਸਟਮ ਅੱਪਡੇਟਾਂ ਨੂੰ ਲਾਗੂ ਕਰੋ:"
 
 #: kcm/ui/main.qml:126
 #, kde-format
@@ -89,7 +91,7 @@ msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates after "
 "rebooting'"
 msgid "After rebooting"
-msgstr ""
+msgstr "ਮੁੜ-ਚਾਲੂ ਹੋਣ ਦੇ ਬਾਅਦ"
 
 #: kcm/ui/main.qml:133
 #, kde-format
@@ -97,14 +99,14 @@ msgctxt ""
 "@label The thing being recommended is to use the 'apply updates when "
 "rebooting' setting"
 msgid "Recommended to maximize system stability"
-msgstr ""
+msgstr "ਵੱਧ ਤੋਂ ਵੱਧ ਸਿਸਟਮ ਸਥਿਰਤਾ ਲਈ ਸਿਫਾਰਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ"
 
 #: kcm/ui/main.qml:140
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"
 msgid "Immediately"
-msgstr ""
+msgstr "ਫ਼ੌਰਨ"
 
 #~ msgid "Use offline updates:"
 #~ msgstr "ਆਫ਼ਲਾਈਨ ਅੱਪਡੇਟ ਵਰਤੋਂ:"

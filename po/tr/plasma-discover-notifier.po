@@ -2,13 +2,13 @@
 # Translators:
 #
 # Volkan Gezer <volkangezer@gmail.com>, 2017, 2021.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-10 01:35+0000\n"
-"PO-Revision-Date: 2023-12-20 11:14+0300\n"
+"PO-Revision-Date: 2024-01-28 13:48+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.80\n"
+"X-Generator: Lokalize 24.01.95\n"
 
 #: notifier/DiscoverNotifier.cpp:154
 #, kde-format
@@ -26,12 +26,12 @@ msgstr "Güncellemeleri Görüntüle"
 #: notifier/DiscoverNotifier.cpp:263
 #, kde-format
 msgid "Security updates available"
-msgstr "Güvenlik güncellemeleri kullanılabilir"
+msgstr "Kullanılabilir güvenlik güncellemeleri var"
 
 #: notifier/DiscoverNotifier.cpp:265
 #, kde-format
 msgid "Updates available"
-msgstr "Güncellemeler kullanılabilir"
+msgstr "Kullanılabilir güncellemeler var"
 
 #: notifier/DiscoverNotifier.cpp:267
 #, kde-format
@@ -51,7 +51,7 @@ msgstr "Çevrimdışı"
 #: notifier/DiscoverNotifier.cpp:273
 #, kde-format
 msgid "Applying unattended updates…"
-msgstr "Gözetimsiz güncellemeler uygulanıyor…"
+msgstr "Gözetilmeyen güncellemeler uygulanıyor…"
 
 #: notifier/DiscoverNotifier.cpp:297
 #, kde-format
@@ -68,7 +68,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
-msgstr "Yeniden başlat"
+msgstr "Yeniden Başlat"
 
 #: notifier/DiscoverNotifier.cpp:328
 #, kde-format
