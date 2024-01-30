@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-20 02:23+0000\n"
-"PO-Revision-Date: 2021-08-31 18:57+0300\n"
+"PO-Revision-Date: 2024-01-30 02:12+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: discover/DiscoverObject.cpp:190
 #, kde-format
@@ -29,6 +29,8 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"%1 nėra sukonfigūruota programų diegimui per Discover – tik programų "
+"papildinių"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -38,12 +40,15 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"Norėdami naudoti Discover programoms, <interface>Nuostatų</interface> "
+"puslapyje, <interface>Trūkstamų vidinių pusių</interface> sekcijoje "
+"įsidiekite pageidaujamą modulį."
 
 #: discover/DiscoverObject.cpp:195
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr ""
+msgstr "Pranešti apie šią problemą %1"
 
 #: discover/DiscoverObject.cpp:200
 #, kde-kuit-format
@@ -58,6 +63,13 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"Norėdami naudoti Discover programoms, įsidiekite <link url='https://wiki."
+"archlinux.org/title/Flatpak#Installation'>Flatpak</link> ar <link "
+"url='https://wiki.archlinux.org/title/"
+"KDE#Discover_does_not_show_any_applications'>PackageKit</link>, naudodami "
+"<command>pacman</command> paketų tvarkytuvę.<nl/><nl/> Peržiūrėkite <link "
+"url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 teikiamo "
+"Discover pakavimą</link>"
 
 #: discover/DiscoverObject.cpp:291
 #, kde-format
@@ -67,7 +79,7 @@ msgstr "Nepavyko rasti kategorijos „%1“"
 #: discover/DiscoverObject.cpp:306
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "Bandoma atverti failą, kurio nėra „%1“"
 
 #: discover/DiscoverObject.cpp:328
 #, kde-format
@@ -94,16 +106,18 @@ msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr ""
+"Nepavyko atverti %1, nes jos nepavyko surasti jokiose prieinamose "
+"programinės įrangos saugyklose."
 
 #: discover/DiscoverObject.cpp:399
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
-msgstr ""
+msgstr "Praneškite apie šią problemą savo platinamojo paketo pakuotojams."
 
 #: discover/DiscoverObject.cpp:402
 #, kde-format
 msgid "Report This Issue"
-msgstr ""
+msgstr "Pranešti apie šią problemą"
 
 #: discover/DiscoverObject.cpp:464 discover/DiscoverObject.cpp:466
 #: discover/main.cpp:117
@@ -116,6 +130,8 @@ msgstr "Discover"
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
+"Discover buvo užverta dar neatlikus iki galo tam tikrų užduočių, laukiama, "
+"kol jos bus užbaigtos."
 
 #: discover/main.cpp:33
 #, kde-format
@@ -175,10 +191,9 @@ msgid "An application explorer"
 msgstr "Programų paieškos įrankis"
 
 #: discover/main.cpp:121
-#, fuzzy, kde-format
-#| msgid "© 2010-2021 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2021 Plasma plėtojimo komanda"
+msgstr "© 2010–2024 Plasma plėtojimo komanda"
 
 #: discover/main.cpp:122
 #, kde-format
@@ -228,10 +243,9 @@ msgid "Available modes:\n"
 msgstr "Prieinamos veiksenos:\n"
 
 #: discover/qml/AddonsView.qml:20 discover/qml/Navigation.qml:58
-#, fuzzy, kde-format
-#| msgid "Addons"
+#, kde-format
 msgid "Addons for %1"
-msgstr "Papildiniai"
+msgstr "%1 papildiniai"
 
 #: discover/qml/AddonsView.qml:56
 #, kde-format
@@ -288,7 +302,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "Iš %1"
 
 #: discover/qml/ApplicationPage.qml:84
 #, kde-format
@@ -298,11 +312,10 @@ msgstr "%1 - %2"
 #: discover/qml/ApplicationPage.qml:203
 #, kde-format
 msgid "Unknown author"
-msgstr ""
+msgstr "Nežinomas autorius"
 
 #: discover/qml/ApplicationPage.qml:248
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgid "Version:"
 msgstr "Versija:"
 
@@ -312,87 +325,75 @@ msgid "Size:"
 msgstr "Dydis:"
 
 #: discover/qml/ApplicationPage.qml:272
-#, fuzzy, kde-format
-#| msgid "License:"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
 msgstr[0] "Licencija:"
-msgstr[1] "Licencija:"
-msgstr[2] "Licencija:"
-msgstr[3] "Licencija:"
+msgstr[1] "Licencijos:"
+msgstr[2] "Licencijos:"
+msgstr[3] "Licencijos:"
 
 #: discover/qml/ApplicationPage.qml:280
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
-msgstr ""
+msgstr "Nežinoma"
 
 #: discover/qml/ApplicationPage.qml:314
-#, fuzzy, kde-format
-#| msgid "What's New"
+#, kde-format
 msgid "What does this mean?"
-msgstr "Kas naujo"
+msgstr "Ką tai reiškia?"
 
 #: discover/qml/ApplicationPage.qml:323
-#, fuzzy, kde-format
-#| msgid "More…"
+#, kde-format
 msgid "See more…"
 msgid_plural "See more…"
-msgstr[0] "Daugiau…"
+msgstr[0] "Rodyti daugiau…"
 msgstr[1] "Daugiau…"
 msgstr[2] "Daugiau…"
 msgstr[3] "Daugiau…"
 
 #: discover/qml/ApplicationPage.qml:334
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "Įveskite įvertinimą"
+msgstr "Turinio įvertinimas:"
 
 #: discover/qml/ApplicationPage.qml:343
 #, kde-format
 msgid "Age: %1+"
-msgstr ""
+msgstr "Amžius: %1+"
 
 #: discover/qml/ApplicationPage.qml:363
-#, fuzzy, kde-format
-#| msgid "More…"
+#, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr "Daugiau…"
+msgstr "Rodyti išsamiau…"
 
 #: discover/qml/ApplicationPage.qml:385
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "Also available in %1"
+#, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
-"\n"
-"%1 irgi turi"
+msgstr "Nėra jokių prieinamų %1 ekrano kopijų"
 
 #: discover/qml/ApplicationPage.qml:559
-#, fuzzy, kde-format
-#| msgid "Documentation:"
+#, kde-format
 msgid "Documentation"
-msgstr "Dokumentacija:"
+msgstr "Dokumentacija"
 
 #: discover/qml/ApplicationPage.qml:560
 #, kde-format
 msgid "Read the project's official documentation"
-msgstr ""
+msgstr "Skaityti oficialią projekto dokumentaciją"
 
 #: discover/qml/ApplicationPage.qml:576
 #, kde-format
 msgid "Website"
-msgstr ""
+msgstr "Internetinė svetainė"
 
 #: discover/qml/ApplicationPage.qml:577
-#, fuzzy, kde-format
-#| msgid "Visit the app's website"
+#, kde-format
 msgid "Visit the project's website"
-msgstr "Apsilankyti programos internetinėje svetainėje"
+msgstr "Apsilankyti projekto internetinėje svetainėje"
 
 #: discover/qml/ApplicationPage.qml:593
 #, kde-format
@@ -402,25 +403,24 @@ msgstr "Papildiniai"
 #: discover/qml/ApplicationPage.qml:594
 #, kde-format
 msgid "Install or remove additional functionality"
-msgstr ""
+msgstr "Įdiegti ar šalinti papildomą funkcionalumą"
 
 #: discover/qml/ApplicationPage.qml:613
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "Bendrinti"
 
 #: discover/qml/ApplicationPage.qml:614
-#, fuzzy, kde-format
-#| msgid "Unable to load applications"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "Nepavyko įkelti programų"
+msgstr "Siųsti šios programos nuorodą"
 
 #: discover/qml/ApplicationPage.qml:630
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "Pasižiūrėk %1 programą!"
 
 #: discover/qml/ApplicationPage.qml:650
 #, kde-format
@@ -433,24 +433,21 @@ msgid "Reviews"
 msgstr "Apžvalgos"
 
 #: discover/qml/ApplicationPage.qml:692
-#, fuzzy, kde-format
-#| msgid "Reviews for %1"
+#, kde-format
 msgid "Loading reviews for %1"
-msgstr "%1 apžvalgos"
+msgstr "Įkeliamos %1 apžvalgos"
 
 #: discover/qml/ApplicationPage.qml:700
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "%1 apžvalgos laikinai neprieinamos"
 
 #: discover/qml/ApplicationPage.qml:724
-#, fuzzy, kde-format
-#| msgid "Show %1 Review…"
-#| msgid_plural "Show All %1 Reviews…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Rodyti %1 apžvalgą…"
+msgstr "Rodyti visas apžvalgas"
 
 #: discover/qml/ApplicationPage.qml:736
 #, kde-format
@@ -463,59 +460,55 @@ msgid "Install to Write a Review"
 msgstr "Įsidiekite, norėdami rašyti apžvalgą"
 
 #: discover/qml/ApplicationPage.qml:748
-#, fuzzy, kde-format
-#| msgid "Get involved:"
+#, kde-format
 msgid "Get Involved"
-msgstr "Įsitraukti:"
+msgstr "Įsitraukti"
 
 #: discover/qml/ApplicationPage.qml:790
-#, fuzzy, kde-format
-#| msgid "Donate:"
+#, kde-format
 msgid "Donate"
-msgstr "Paremti:"
+msgstr "Paremti"
 
 #: discover/qml/ApplicationPage.qml:791
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
-msgstr ""
+msgstr "Paremti ir padėkoti plėtotojams paaukojant jų projektui lėšų"
 
 #: discover/qml/ApplicationPage.qml:807
 #, kde-format
 msgid "Report Bug"
-msgstr ""
+msgstr "Pranešti apie programos klaidą"
 
 #: discover/qml/ApplicationPage.qml:808
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
-msgstr ""
+msgstr "Registruoti rastą klaidą, kad padėtumėte ją pataisyti"
 
 #: discover/qml/ApplicationPage.qml:824
-#, fuzzy, kde-format
-#| msgid "Contribute…"
+#, kde-format
 msgid "Contribute"
-msgstr "Talkinti…"
+msgstr "Talkinti"
 
 #: discover/qml/ApplicationPage.qml:825
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
+"Padėkite plėtotojams rašydami kodą, kurdami dizainą, testuodami ar versdami"
 
 #: discover/qml/ApplicationPage.qml:857
-#, fuzzy, kde-format
-#| msgid "License:"
+#, kde-format
 msgid "All Licenses"
-msgstr "Licencija:"
+msgstr "Visos licencijos"
 
 #: discover/qml/ApplicationPage.qml:890
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating"
-msgstr "Įveskite įvertinimą"
+msgstr "Turinio įvertinimas"
 
 #: discover/qml/ApplicationPage.qml:907
 #, kde-format
 msgid "Risks of proprietary software"
-msgstr ""
+msgstr "Nuosavybinės programinės įrangos rizikos"
 
 #: discover/qml/ApplicationPage.qml:913
 #, kde-kuit-format
@@ -532,6 +525,16 @@ msgid ""
 "you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
+"Šios programos pradinis kodas yra dalinai ar visiškai uždaras viešam "
+"tyrinėjimui ir tobulinimui. Tai reiškia, jog trečiosios šalys ir tokie "
+"naudotojai, kaip jūs, negali patikrinti programos veikimo, saugumo bei "
+"patikimumo ar negali modifikuoti ir platinti jos be aiškaus autorių leidimo."
+"<nl/><nl/>Programa gali būti saugi naudoti arba gali įvairiais būdais veikti "
+"prieš jus – pavyzdžiui, rinkti jūsų asmeninę informaciją, sekti jūsų buvimo "
+"vietą ar persiųsti kažkam kitam jūsų failų turinį. Nėra lengvo būdo, kaip "
+"būti užtikrintiems, todėl šią programą turėtumėte įdiegti tik tuo atveju, "
+"jei visiškai pasitikite jos autoriais (<link url='%1'>%2</link>).<nl/><nl/"
+">Daugiau galite sužinoti apsilankę <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:914
 #, kde-kuit-format
@@ -548,16 +551,25 @@ msgid ""
 "you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
+"Šios programos pradinis kodas yra dalinai ar visiškai uždaras viešam "
+"tyrinėjimui ir tobulinimui. Tai reiškia, jog trečiosios šalys ir tokie "
+"naudotojai, kaip jūs, negali patikrinti programos veikimo, saugumo bei "
+"patikimumo ar negali modifikuoti ir platinti jos be aiškaus autorių leidimo."
+"<nl/><nl/>Programa gali būti saugi naudoti arba gali įvairiais būdais veikti "
+"prieš jus – pavyzdžiui, rinkti jūsų asmeninę informaciją, sekti jūsų buvimo "
+"vietą ar persiųsti kažkam kitam jūsų failų turinį. Nėra lengvo būdo, kaip "
+"būti užtikrintiems, todėl šią programą turėtumėte įdiegti tik tuo atveju, "
+"jei visiškai pasitikite jos autoriais (%1).<nl/><nl/>Daugiau galite sužinoti "
+"apsilankę <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %1 + %2"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Ieškoti: „%1“ + „%2“"
-msgstr[1] "Ieškoti: „%1“ + „%2“"
-msgstr[2] "Ieškoti: „%1“ + „%2“"
-msgstr[3] "Ieškoti: „%1“ + „%2“"
+msgstr[0] "Paieška: %2 - %3 elementas"
+msgstr[1] "Paieška: %2 - %3 elementai"
+msgstr[2] "Paieška: %2 - %3 elementų"
+msgstr[3] "Paieška: %2 - %3 elementas"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -565,24 +577,22 @@ msgid "Search: %1"
 msgstr "Ieškoti: %1"
 
 #: discover/qml/ApplicationsListPage.qml:59
-#, fuzzy, kde-format
-#| msgid "%1 - %2"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 - %2"
-msgstr[1] "%1 - %2"
-msgstr[2] "%1 - %2"
-msgstr[3] "%1 - %2"
+msgstr[0] "%2 - %1 elementas"
+msgstr[1] "%2 - %1 elementai"
+msgstr[2] "%2 - %1 elementų"
+msgstr[3] "%2 - %1 elementas"
 
 #: discover/qml/ApplicationsListPage.qml:65
-#, fuzzy, kde-format
-#| msgid "Search: %1"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Ieškoti: %1"
-msgstr[1] "Ieškoti: %1"
-msgstr[2] "Ieškoti: %1"
-msgstr[3] "Ieškoti: %1"
+msgstr[0] "Paieška - %1 elementas"
+msgstr[1] "Paieška - %1 elementai"
+msgstr[2] "Paieška - %1 elementų"
+msgstr[3] "Paieška - %1 elementas"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:254
@@ -599,7 +609,7 @@ msgstr "Rikiuoti: %1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr ""
+msgstr "Atitikimas"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
@@ -630,14 +640,13 @@ msgstr "Nieko nerasta"
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
-msgstr ""
+msgstr "Ieškoti visose kategorijose"
 
 #: discover/qml/ApplicationsListPage.qml:218
-#, fuzzy, kde-format
-#| msgid "Specify the new source for %1"
+#, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
-msgstr "Nurodyti naują šaltinį, skirtą %1"
+msgstr "Ieškoti saityne „%1“"
 
 #: discover/qml/ApplicationsListPage.qml:222
 #, kde-format
@@ -645,7 +654,7 @@ msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
 "language. %1 is the text that will be searched for."
 msgid "https://duckduckgo.com/?q=%1"
-msgstr ""
+msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:233
 #, kde-format
@@ -653,13 +662,13 @@ msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr ""
+msgstr "„%1“ nepavyko rasti kategorijoje „%2“"
 
 #: discover/qml/ApplicationsListPage.qml:235
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
-msgstr ""
+msgstr "„%1“ nerasta prieinamuose šaltiniuose"
 
 #: discover/qml/ApplicationsListPage.qml:236
 #, kde-format
@@ -669,6 +678,9 @@ msgid ""
 "been reviewed by your distributor for functionality or stability. Use with "
 "caution."
 msgstr ""
+"Gali būti, kad „%1“ yra prieinama tik saityne. Jūsų platinamojo paketo "
+"platintojas nepatikrino, kaip iš saityno gauta programinė įranga veikia "
+"funkcionalumo ar stabilumo atžvilgiu. Naudokite atsargiai."
 
 #: discover/qml/ApplicationsListPage.qml:269
 #, kde-format
@@ -676,11 +688,10 @@ msgid "Still looking…"
 msgstr "Vis dar ieškoma…"
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "P&radžia"
+msgstr "Pradžia"
 
 #: discover/qml/BrowsingPage.qml:64
 #, kde-format
@@ -688,85 +699,83 @@ msgid "Unable to load applications"
 msgstr "Nepavyko įkelti programų"
 
 #: discover/qml/BrowsingPage.qml:99
-#, fuzzy, kde-format
-#| msgid "Popularity"
+#, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr "Populiarumas"
+msgstr "Populiariausios"
 
 #: discover/qml/BrowsingPage.qml:121
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
-msgstr ""
+msgstr "Naujai išleistos ir paskiausiai atnaujintos"
 
 #: discover/qml/BrowsingPage.qml:160
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "Redaktoriaus pasirinkimas"
 
 #: discover/qml/BrowsingPage.qml:177
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "Aukščiausio įvertinimo žaidimai"
 
 #: discover/qml/BrowsingPage.qml:197 discover/qml/BrowsingPage.qml:228
-#, fuzzy, kde-format
-#| msgid "More…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "Daugiau…"
+msgstr "Rodyti daugiau"
 
 #: discover/qml/BrowsingPage.qml:208
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "Aukščiausio įvertinimo plėtojimo įrankiai"
 
 #: discover/qml/CarouselDelegate.qml:212
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
-msgstr ""
+msgstr "Atkurti"
 
 #: discover/qml/CarouselDelegate.qml:214
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
-msgstr ""
+msgstr "Pristabdyti"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Overlay"
-msgstr ""
+msgstr "Perjungti į perdangą"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Full Screen"
-msgstr ""
+msgstr "Perjungti į visą ekraną"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
 #, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
-msgstr ""
+msgstr "Užverti"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "Ankstesnė ekrano kopija"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr ""
+msgstr "Kita ekrano kopija"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -796,9 +805,7 @@ msgid "Fetching &updates…"
 msgstr "Gaunami atna&ujinimai…"
 
 #: discover/qml/DiscoverWindow.qml:87
-#, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "&Update (%1)"
+#, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
 msgstr[0] "Atna&ujinimas (%1)"
@@ -835,31 +842,29 @@ msgstr "Tęsti"
 #: discover/qml/DiscoverWindow.qml:316
 #, kde-format
 msgid "Report this issue"
-msgstr ""
+msgstr "Pranešti apie šią problemą"
 
 #: discover/qml/DiscoverWindow.qml:340
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "Balsai: %1 iš %2"
+msgstr "Klaida %1 iš %2"
 
 #: discover/qml/DiscoverWindow.qml:390
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "Rodyti ankstesnę"
 
 #: discover/qml/DiscoverWindow.qml:403
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "Rodyti turinį"
+msgstr "Rodyti kitą"
 
 #: discover/qml/DiscoverWindow.qml:419
 #, kde-format
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "Kuopijuoti į iškarpinę"
 
 #: discover/qml/Feedback.qml:14
 #, kde-format
@@ -892,10 +897,9 @@ msgid "Configure feedback…"
 msgstr "Konfigūruoti grįžtamąjį ryšį…"
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Updates…"
-msgstr "Konfigūruoti grįžtamąjį ryšį…"
+msgstr "Konfigūruoti atnaujinimus…"
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
@@ -928,16 +932,13 @@ msgid "Loading…"
 msgstr "Įkeliama…"
 
 #: discover/qml/InstallApplicationButton.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
-#| msgid "Install from %1"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "Įdiegti iš %1"
 
 #: discover/qml/InstallApplicationButton.qml:30
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Įdiegti"
@@ -1086,7 +1087,7 @@ msgstr "Pernelyg ilgas!"
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr ""
+msgstr "Įrašykite vardą"
 
 #: discover/qml/ReviewsPage.qml:54
 #, kde-format
@@ -1107,51 +1108,48 @@ msgstr "Norėdami rašyti apžvalgą, įdiekite šią programą"
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "Aktualiausios"
 
 #: discover/qml/ReviewsPage.qml:110
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "Naujausios"
 
 #: discover/qml/ReviewsPage.qml:117
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "Įveskite įvertinimą"
+msgstr "Aukščiausio įvertinimo"
 
 #: discover/qml/ReviewsStats.qml:53
-#, fuzzy, kde-format
-#| msgid "Reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "Apžvalgos"
+msgstr "Apžvalgų: %1"
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #: discover/qml/ReviewsStats.qml:154
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
-msgstr "nežinomas apžvalgininkas"
+msgstr "Nežinomas apžvalgininkas"
 
 #: discover/qml/ReviewsStats.qml:175
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "„"
 
 #: discover/qml/ReviewsStats.qml:190
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "“"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format
@@ -1169,10 +1167,9 @@ msgid "Settings"
 msgstr "Nuostatos"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Sources"
+#, kde-format
 msgid "Default source"
-msgstr "Šaltiniai"
+msgstr "Numatytasis šaltinis"
 
 #: discover/qml/SourcesPage.qml:118
 #, kde-format
@@ -1232,18 +1229,17 @@ msgstr "Atnaujinimo problema"
 #: discover/qml/UpdatesPage.qml:46
 #, kde-format
 msgid "Technical details"
-msgstr ""
+msgstr "Techninė informacija"
 
 #: discover/qml/UpdatesPage.qml:62
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
-msgstr ""
+msgstr "Įdiegiant šį atnaujinimą iškilo problemų. Vėliau bandykite dar kartą."
 
 #: discover/qml/UpdatesPage.qml:68
-#, fuzzy, kde-format
-#| msgid "Show technical packages"
+#, kde-format
 msgid "See Technical Details"
-msgstr "Rodyti techninio pobūdžio paketus"
+msgstr "Rodyti techninę informaciją"
 
 #: discover/qml/UpdatesPage.qml:95
 #, kde-format
@@ -1252,34 +1248,35 @@ msgid ""
 "If the error indicated above looks like a real issue and not a temporary "
 "network error, please report it to %1, not KDE."
 msgstr ""
+"Jei aukščiau nurodyta klaida atrodo kaip rimta problema, o ne laikinas "
+"tinklo ryšio sutrikimas, praneškite apie ją %1, o ne KDE."
 
 #: discover/qml/UpdatesPage.qml:103
 #, kde-format
 msgid "Copy Text"
-msgstr ""
+msgstr "Kopijuoti tekstą"
 
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr ""
+"Klaidos pranešimas nukopijuotas. Atminkite pranešti apie klaidą %1, o ne KDE!"
 
 #: discover/qml/UpdatesPage.qml:114
 #, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr ""
+msgstr "Pranešti apie problemą %1"
 
 #: discover/qml/UpdatesPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Update Selected"
+#, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "Atnaujinti pažymėtus"
 
 #: discover/qml/UpdatesPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Atnaujinti visus"
@@ -1287,27 +1284,27 @@ msgstr "Atnaujinti visus"
 #: discover/qml/UpdatesPage.qml:180
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "Nepaisyti"
 
 #: discover/qml/UpdatesPage.qml:227
 #, kde-format
 msgid "Select All"
-msgstr ""
+msgstr "Žymėti viską"
 
 #: discover/qml/UpdatesPage.qml:235
 #, kde-format
 msgid "Select None"
-msgstr ""
+msgstr "Nuimti žymėjimą nuo visų"
 
 #: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Restart automatically after update has completed"
-msgstr ""
+msgstr "Užbaigus šį atnaujinimą, automatiškai paleisti iš naujo"
 
 #: discover/qml/UpdatesPage.qml:249
 #, kde-format
 msgid "Total size: %1"
-msgstr ""
+msgstr "Bendras dydis: %1"
 
 #: discover/qml/UpdatesPage.qml:284
 #, kde-format
@@ -1320,19 +1317,17 @@ msgid "Installing"
 msgstr "Įdiegiama"
 
 #: discover/qml/UpdatesPage.qml:444
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgid "Update from:"
-msgstr "Atnaujinti visus"
+msgstr "Atnaujinti iš:"
 
 #: discover/qml/UpdatesPage.qml:456
-#, fuzzy, kde-format
-#| msgid "%1 (%2%)\n"
+#, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
 "address within that backend"
 msgid "%1 (%2)"
-msgstr "%1 (%2%)\n"
+msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:463
 #, kde-format
@@ -1355,7 +1350,7 @@ msgstr "Atnaujinimai"
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
-msgstr ""
+msgstr "Norėdami užbaigti atnaujinimo procesą, paleiskite sistemą iš naujo"
 
 #: discover/qml/UpdatesPage.qml:525 discover/qml/UpdatesPage.qml:532
 #: discover/qml/UpdatesPage.qml:539
