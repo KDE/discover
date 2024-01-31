@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2015.
-# Tommi Nieminen <translator@legisign.org>, 2018, 2019, 2020, 2021, 2022, 2023.
+# Tommi Nieminen <translator@legisign.org>, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
 #
 #
 #
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-10 01:35+0000\n"
-"PO-Revision-Date: 2023-09-04 14:34+0300\n"
+"PO-Revision-Date: 2024-01-29 17:46+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -120,7 +120,7 @@ msgstr "translator@legisign.org"
 #: notifier/main.cpp:51
 #, kde-format
 msgid "Replace an existing instance"
-msgstr "Korvaa aiempi instanssi"
+msgstr "Korvaa aiempi ilmentymä"
 
 #: notifier/main.cpp:53
 #, kde-format

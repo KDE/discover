@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-27 00:38+0000\n"
-"PO-Revision-Date: 2023-09-04 14:34+0300\n"
+"PO-Revision-Date: 2023-11-29 17:04+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -584,8 +584,7 @@ msgid "Retrieving size information"
 msgstr "Noudetaan kokotietoa"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:448
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Tuntematon"
@@ -628,15 +627,14 @@ msgid "Can access the internet"
 msgstr "Internetiä saa käyttää"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Järjestelmäväylän käyttö"
+msgstr "Äänijärjestelmän käyttö"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Voi toistaa ääntä"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
@@ -645,16 +643,13 @@ msgid "Session Bus Access"
 msgstr "Istuntoväylän käyttö"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Voi viestiä saman työpöytäistunnon toisten sovellusten ja prosessien kanssa "
-"seuraavilla yhteyskäytännöillä: %1"
+"Voi viestiä kaikkien tällä käyttäjätunnuksella suoritettujen sovellusten ja "
+"prosessien kanssa"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
@@ -663,14 +658,10 @@ msgid "System Bus Access"
 msgstr "Järjestelmäväylän käyttö"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
-"Voi viestiä saman työpöytäistunnon toisten sovellusten ja prosessien kanssa "
-"seuraavilla yhteyskäytännöillä: %1"
+"Voi viestiä järjestelmän kaikkien muiden sovellusten ja prosessien kanssa"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
@@ -2477,7 +2468,7 @@ msgstr "SteamOS: atomupd-kyselyä SteamOS-päivityksistä ei voida suorittaa…"
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:114
 #, kde-format
