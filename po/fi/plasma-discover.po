@@ -2,13 +2,13 @@
 # Author: Artnay
 # Author: Lliehu
 # Lasse Liehu <lasse.liehu@gmail.com>, 2012, 2013, 2014, 2015, 2016, 2022.
-# Tommi Nieminen <translator@legisign.org>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Tommi Nieminen <translator@legisign.org>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-20 02:23+0000\n"
-"PO-Revision-Date: 2023-09-04 14:34+0300\n"
+"PO-Revision-Date: 2024-01-29 17:46+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
-msgstr ""
+msgstr "%1 ei salli sovellusten asentamista Discoverilla, ainoastaan lisäosien"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -34,11 +34,12 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"Käyttääksesi Discoveria sovelluksiin asenna haluamasi moduuli "
+"<interface>Asetukset</interface>-sivun kohdasta <interface>Puuttuvat "
+"taustajärjestelmät</interface>."
 
 #: discover/DiscoverObject.cpp:195
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of the user's distro/OS"
-#| msgid "Report Issue to %1"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Ilmoita ongelmasta: %1"
@@ -56,6 +57,13 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"Käyttääksesi Discoveria sovelluksiin asenna <link url='https://wiki."
+"archlinux.org/title/Flatpak#Installation'>Flatpak</link> tai <link "
+"url='https://wiki.archlinux.org/title/"
+"KDE#Discover_does_not_show_any_applications'>PackageKit</link> "
+"<command>pacman</command>-paketinhallinnalla.<nl/><nl/>Tarkastele <link "
+"url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 -jakelun "
+"Discover-paketointia</link>"
 
 #: discover/DiscoverObject.cpp:291
 #, kde-format
@@ -176,10 +184,9 @@ msgid "An application explorer"
 msgstr "Sovellushaku"
 
 #: discover/main.cpp:121
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2022 Plasman kehitysryhmä"
+msgstr "© 2010-2024 Plasman kehitysryhmä"
 
 #: discover/main.cpp:122
 #, kde-format
@@ -425,12 +432,10 @@ msgid "Reviews for %1 are temporarily unavailable"
 msgstr "%1: arviot eivät tilapäisesti ole käytettävissä"
 
 #: discover/qml/ApplicationPage.qml:724
-#, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Näytä %1 arvostelu"
+msgstr "Näytä kaikki arvostelut"
 
 #: discover/qml/ApplicationPage.qml:736
 #, kde-format
@@ -584,7 +589,7 @@ msgstr "Lajittelu: %1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr ""
+msgstr "Asiaankuuluvuus"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
@@ -682,7 +687,7 @@ msgstr "Suosituimmat"
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
-msgstr ""
+msgstr "Vasta julkaistut ja äskettäin päivitetyt"
 
 #: discover/qml/BrowsingPage.qml:160
 #, kde-format
@@ -712,29 +717,28 @@ msgstr "Parhaimmiksi arvioidut kehitystyökalut"
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
-msgstr ""
+msgstr "Toista"
 
 #: discover/qml/CarouselDelegate.qml:214
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
-msgstr ""
+msgstr "Keskeytä"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Overlay"
-msgstr ""
+msgstr "Vaihda peittokuvaan"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Full Screen"
-msgstr ""
+msgstr "Vaihda koko näytölle"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
-#, fuzzy, kde-format
-#| msgid "Close"
+#, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
@@ -744,13 +748,13 @@ msgstr "Sulje"
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "Edellinen ruutukaappaus"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr ""
+msgstr "Seuraava ruutukaappaus"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -1086,25 +1090,22 @@ msgstr "Asenna sovellus arvostellaksesi sen"
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "Asiaankuuluvin"
 
 #: discover/qml/ReviewsPage.qml:110
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "Viimeisin"
 
 #: discover/qml/ReviewsPage.qml:117
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "Parhaimmiksi arvioidut pelit"
+msgstr "Parhaimmiksi arvioidut"
 
 #: discover/qml/ReviewsStats.qml:53
-#, fuzzy, kde-format
-#| msgid "%1 reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
 msgstr "%1 arvostelua"
@@ -1113,25 +1114,24 @@ msgstr "%1 arvostelua"
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #: discover/qml/ReviewsStats.qml:154
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
-msgstr "tuntematon tarkastaja"
+msgstr "Tuntematon arvioija"
 
 #: discover/qml/ReviewsStats.qml:175
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "”"
 
 #: discover/qml/ReviewsStats.qml:190
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "„"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format

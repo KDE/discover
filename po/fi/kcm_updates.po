@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the discover package.
-# Tommi Nieminen <translator@legisign.org>, 2021, 2022.
+# Tommi Nieminen <translator@legisign.org>, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2022-11-22 12:48+0200\n"
+"PO-Revision-Date: 2023-11-29 17:02+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: kcm/ui/main.qml:40
 #, kde-format
@@ -83,7 +83,7 @@ msgstr "Ei koskaan"
 #: kcm/ui/main.qml:119
 #, kde-format
 msgid "Apply system updates:"
-msgstr ""
+msgstr "Ota järjestelmäpäivitykset käyttöön:"
 
 #: kcm/ui/main.qml:126
 #, kde-format
@@ -91,7 +91,7 @@ msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates after "
 "rebooting'"
 msgid "After rebooting"
-msgstr ""
+msgstr "Uudelleenkäynnistyksen jälkeen"
 
 #: kcm/ui/main.qml:133
 #, kde-format
@@ -99,14 +99,14 @@ msgctxt ""
 "@label The thing being recommended is to use the 'apply updates when "
 "rebooting' setting"
 msgid "Recommended to maximize system stability"
-msgstr ""
+msgstr "Suositellaan järjestelmän vakauden takia"
 
 #: kcm/ui/main.qml:140
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"
 msgid "Immediately"
-msgstr ""
+msgstr "Välittömästi"
 
 #~ msgid "Use offline updates:"
 #~ msgstr "Päivitä käynnistettäessä:"
