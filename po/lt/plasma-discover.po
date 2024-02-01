@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-20 02:23+0000\n"
-"PO-Revision-Date: 2024-01-30 02:12+0200\n"
+"PO-Revision-Date: 2024-01-31 19:43+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -864,7 +864,7 @@ msgstr "Rodyti kitą"
 #: discover/qml/DiscoverWindow.qml:419
 #, kde-format
 msgid "Copy to Clipboard"
-msgstr "Kuopijuoti į iškarpinę"
+msgstr "Kopijuoti į iškarpinę"
 
 #: discover/qml/Feedback.qml:14
 #, kde-format

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-22 03:08+0000\n"
-"PO-Revision-Date: 2021-08-21 16:08+0300\n"
+"PO-Revision-Date: 2024-01-31 13:24+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -39,11 +39,9 @@ msgid "Proprietary"
 msgstr "Nuosavybinė"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:105
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Publishing"
+#, kde-format
 msgid "Public Domain"
-msgstr "Publikavimas"
+msgstr "Viešoji sritis"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:111
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
@@ -62,7 +60,7 @@ msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr ""
+msgstr "Tinkama visiems"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:190
 #, kde-format
@@ -71,36 +69,31 @@ msgctxt ""
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr ""
+msgstr "Šiek tiek prieštaringas turinys"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:193
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr "Internetas"
+msgstr "Vidutiniškai prieštaringas turinys"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:196
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "Internetas"
+msgstr "Labai prieštaringas turinys"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:172
-#, fuzzy, kde-format
-#| msgid "Internal error"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "Vidinė klaida"
+msgstr "Techninės klaidos pranešimas: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:224
 #, kde-format
@@ -169,11 +162,10 @@ msgstr "kita 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Programos"
+msgstr "Visos programos"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -540,8 +532,7 @@ msgid "System Settings"
 msgstr "Sistemos nuostatos"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:124
-#, fuzzy, kde-format
-#| msgid "%1 (user)"
+#, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (naudotojas)"
@@ -558,21 +549,19 @@ msgid "Malformed appstream url '%1'"
 msgstr "Netaisyklingas appstream url „%1“"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1767
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1'"
+#, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "Nepavyko paleisti „%1“"
+msgstr "Nepavyko pridėti šaltinio „%1“: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1888
 #, kde-format
 msgid "There are no Flatpak sources."
-msgstr ""
+msgstr "Nėra jokių Flatpak šaltinių."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1892
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1'"
+#, kde-format
 msgid "Failed to load \"%1\" source"
-msgstr "Nepavyko paleisti „%1“"
+msgstr "Nepavyko įkelti „%1“ šaltinio"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:354
 #, kde-kuit-format
@@ -582,6 +571,9 @@ msgid ""
 "software in this repository will also be made be available in Discover when "
 "the application is installed.</para>"
 msgstr ""
+"<para>Ši programa pateikiama iš „%1“ (patalpinta <link>%2</link>). Įdiegus "
+"programą, kita programinė įranga iš šios saugyklos irgi taps prieinama "
+"Discover.</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:446
 #, kde-format
@@ -589,68 +581,63 @@ msgid "Retrieving size information"
 msgstr "Gaunama dydžio informacija"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:448
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
-msgstr "Nežinoma"
+msgstr "Nežinomas"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:504
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:483
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:69
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1'"
+#, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "Nepavyko paleisti „%1“"
+msgstr "Nepavyko paleisti „%1“: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:738
 #, kde-format
 msgid "All Files"
-msgstr ""
+msgstr "Visi failai"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:740
 #, kde-format
 msgid "Home"
-msgstr ""
+msgstr "Pradžia"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:742
-#, fuzzy, kde-format
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloads"
-msgstr "Atsiunčiama"
+msgstr "Atsiuntimai"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:744
 #, kde-format
 msgid "Music"
-msgstr ""
+msgstr "Muzika"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:801
 #, kde-format
 msgid "Network Access"
-msgstr ""
+msgstr "Prieiga prie tinklo"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
 #, kde-format
 msgid "Can access the internet"
-msgstr ""
+msgstr "Gali pasiekti internetą"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "System Updates"
+#, kde-format
 msgid "Sound system access"
-msgstr "Sistemos atnaujinimai"
+msgstr "Prieiga prie garso sistemos"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Gali atkurti garso įrašus"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:816
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
 #, kde-format
 msgid "Session Bus Access"
-msgstr ""
+msgstr "Prieiga prie seanso magistralės"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #, kde-format
@@ -658,52 +645,57 @@ msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
+"Gali komunikuoti su visomis kitomis programomis ir procesais, paleistais šio "
+"naudotojo paskyroje"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
 msgid "System Bus Access"
-msgstr ""
+msgstr "Prieiga prie sistemos magistralės"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
+"Gali komunikuoti su visomis kitomis sistemoje esančiomis programomis ir "
+"procesais"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
 msgid "Remote Login Access"
-msgstr ""
+msgstr "Prieiga prie nuotolinio prisijungimo"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr ""
+"Gali inicijuoti nuotolinio prisijungimo užklausas naudodama SSH protokolą"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
 #, kde-format
 msgid "Smart Card Access"
-msgstr ""
+msgstr "Prieiga prie lustinės kortelės"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr ""
+msgstr "Gali integruoti ir komunikuoti su lustinėmis kortelėmis"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
 #, kde-format
 msgid "Printer Access"
-msgstr ""
+msgstr "Prieiga prie spausdintuvo"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr ""
+msgstr "Gali integruoti ir komunikuoti su spausdintuvais"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "GPG agentas"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
@@ -711,69 +703,75 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Leidžia prieigą prie GPG šifravimo tarnybos, įprastai naudojama dokumentų "
+"pasirašymui ir pasirašytų dokumentų skaitymui"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #, kde-format
 msgid "Bluetooth Access"
-msgstr ""
+msgstr "Prieiga prie Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr ""
+msgstr "Gali integruoti ir komunikuoti su Bluetooth įrenginiais"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
 #, kde-format
 msgid "Low-Level System Access"
-msgstr ""
+msgstr "Prieiga prie žemo lygmens sistemos"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Gali atlikti žemo lygmens sistemos iškvietas (pvz., ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
 msgid "Device Access"
-msgstr ""
+msgstr "Prieiga prie įrenginių"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
+"Gali komunikuoti ir valdyti įtaisytus ar prijungtus aparatinės įrangos "
+"įrenginius"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr ""
+msgstr "Prieiga prie branduoliu grįstos virtualios mašinos"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr ""
+"Leidžia kitų operacinių sistemų paleidimą svečio teisėmis virtualiose "
+"mašinose"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:907
 #, kde-format
 msgid "%1 (read-only)"
-msgstr ""
+msgstr "%1 (tik skaityti)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "%1 (can create files)"
-msgstr ""
+msgstr "%1 (gali kurti failus)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:919
 #, kde-format
 msgid "%1 (read & write) "
-msgstr ""
+msgstr "%1 (skaityti ir rašyti) "
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:928
 #, kde-format
 msgid "Home Folder Access"
-msgstr ""
+msgstr "Prieiga prie namų aplanko"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
 #, kde-format
@@ -781,6 +779,8 @@ msgid ""
 "Can read, write, and create files in the following locations in your home "
 "folder without asking permission first: %1"
 msgstr ""
+"Gali iš anksto neprašant leidimo skaityti, rašyti ir kurti failus toliau "
+"nurodytose jūsų namų aplanko vietose: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
 #, kde-format
@@ -788,6 +788,8 @@ msgid ""
 "Can read and write files in the following locations in your home folder "
 "without asking permission first: %1"
 msgstr ""
+"Gali iš anksto neprašant leidimo skaityti ir rašyti failus toliau nurodytose "
+"jūsų namų aplanko vietose: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
@@ -795,6 +797,8 @@ msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
 msgstr ""
+"Gali iš anksto neprašant leidimo skaityti failus toliau nurodytose jūsų namų "
+"aplanko vietose: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
 #, kde-format
@@ -802,11 +806,13 @@ msgid ""
 "Can access files in the following locations in your home folder without "
 "asking permission first: %1"
 msgstr ""
+"Gali iš anksto neprašant leidimo gauti prieigą prie failų toliau nurodytose "
+"jūsų namų aplanko vietose: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
 #, kde-format
 msgid "System Folder Access"
-msgstr ""
+msgstr "Prieiga prie sistemos aplanko"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
 #, kde-format
@@ -814,6 +820,8 @@ msgid ""
 "Can read, write, and create system files in the following locations without "
 "asking permission first: %1"
 msgstr ""
+"Gali iš anksto neprašant leidimo skaityti, rašyti ir kurti sisteminius "
+"failus toliau nurodytose vietose: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
 #, kde-format
@@ -821,6 +829,8 @@ msgid ""
 "Can read and write system files in the following locations without asking "
 "permission first: %1"
 msgstr ""
+"Gali iš anksto neprašant leidimo skaityti ir rašyti sisteminius failus "
+"toliau nurodytose vietose: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:949
 #, kde-format
@@ -828,6 +838,8 @@ msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
 msgstr ""
+"Gali iš anksto neprašant leidimo skaityti sisteminius failus toliau "
+"nurodytose vietose: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:951
 #, kde-format
@@ -835,6 +847,8 @@ msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
 msgstr ""
+"Gali iš anksto neprašant leidimo gauti prieigą prie sisteminių failų toliau "
+"nurodytose vietose: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:961
 #, kde-format
@@ -842,6 +856,8 @@ msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
+"Gali komunikuoti su kitomis programomis ir procesais tame pačiame "
+"darbalaukio seanse naudojant šiuos komunikacijos protokolus: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
 #, kde-format
@@ -849,6 +865,8 @@ msgid ""
 "Can communicate with all applications and system services using the "
 "following communication protocols: %1"
 msgstr ""
+"Gali komunikuoti su visomis programomis ir sistemos tarnybomis naudojant "
+"šiuos komunikacijos protokolus: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
 #, kde-format
@@ -856,9 +874,7 @@ msgid "Add Flathub"
 msgstr "Pridėti Flathub"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Applying Changes"
+#, kde-format
 msgid "Apply Changes"
 msgstr "Taikyti pakeitimus"
 
@@ -868,6 +884,8 @@ msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
 msgstr ""
+"Flatpak šaltinių pirmenybės pakeitimai privalo būti taikomi dar prieš jiems "
+"įsigaliojus."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:99
 #, kde-format
@@ -923,7 +941,7 @@ msgstr "Pridedama nuotolinė saugykla \"%1\", ties %2 iš %3"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:195
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "Nepavyko rasti „%1“ ties „%2“; įsitikinkite, kad ji prieinama."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
 #, kde-format
@@ -932,55 +950,54 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
+"Ši plėtojama %1 versija yra pasenusi. Yra primygtinai rekomenduojama stabili "
+"versija."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:25
-#, fuzzy, kde-format
-#| msgctxt "Notification when a new version of Kubuntu is available"
-#| msgid "A new version of Kubuntu is available."
+#, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr "Yra pasiekiama nauja Kubuntu versija."
+msgstr "Yra prieinama stabilesnė %1 versija."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:51
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr ""
+msgstr "Rodyti stabilią versiją iš %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:16
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "%1 nėra įdiegta, bet vis dar yra likusių jos duomenų."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:30
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "Ištrinti nuostatas ir naudotojo duomenis"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:33
 #, kde-format
 msgid "Clearing settings and user data…"
-msgstr ""
+msgstr "Išvalomos nuostatos ir naudotojo duomenys…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:23
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:17
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "%1 leidimai"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:74
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:17
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "Konfigūruoti leidimus…"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "View Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "Rodyti atnaujinimus"
+msgstr "Programinės aparatinės įrangos atnaujinimai"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -997,10 +1014,9 @@ msgid "Review EULA"
 msgstr "Peržiūrėti EULA"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
-#, fuzzy, kde-format
-#| msgid "Could not add the source %1"
+#, kde-format
 msgid "Could not enable remote %1: %2"
-msgstr "Nepavyko pridėti šaltinio %1"
+msgstr "Nepavyko įjungti nuotolinės saugyklos %1: %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:63
 #, kde-format
@@ -1008,6 +1024,8 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"Nepalaikomas klausimas:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:156
 #, kde-format
@@ -1087,7 +1105,7 @@ msgstr "Neteisingas KNewStuff URI: %1"
 #, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"
-msgstr ""
+msgstr "KDE parduotuvė"
 
 #: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
 #, kde-format
@@ -1129,6 +1147,8 @@ msgid ""
 "Your operating system ended support on %1. Consider upgrading to a supported "
 "version."
 msgstr ""
+"%1 pasibaigė jūsų operacinės sistemos palaikymo terminas. Apsvarstykite "
+"galimybę atnaujinti į palaikomą versiją."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:906
 #, kde-format
@@ -1144,22 +1164,23 @@ msgid ""
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
+"<b>Yra prieinama %1.</b>\n"
+"Norėdami turėti galimybę naujinti į šią naują versiją, visų pirma, "
+"pritaikykite visus prieinamus atnaujinimus, o tuomet paleiskite sistemą iš "
+"naujo."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "Atnaujinti versiją"
+msgstr "Naujinti dabar"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "Saugykla neprieinama"
+msgstr "Yra prieinama %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1182,10 +1203,9 @@ msgid "Internal error"
 msgstr "Vidinė klaida"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:27
-#, fuzzy, kde-format
-#| msgid "Internal error"
+#, kde-format
 msgid "Internal error: %1"
-msgstr "Vidinė klaida"
+msgstr "Vidinė klaida: %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:31
 #, kde-format
@@ -1901,10 +1921,9 @@ msgid "Unavailable"
 msgstr "Neprieinamas"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:123
-#, fuzzy, kde-format
-#| msgid "Offline Updates"
+#, kde-format
 msgid "Failed Offline Update"
-msgstr "Autonominiai atnaujinimai"
+msgstr "Nepavykęs autonominis atnaujinimas"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
 #, kde-format
@@ -1941,10 +1960,9 @@ msgid "Repair System"
 msgstr "Pataisyti sistemą"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:137
-#, fuzzy, kde-format
-#| msgid "Offline Updates"
+#, kde-format
 msgid "Repairing failed offline update"
-msgstr "Autonominiai atnaujinimai"
+msgstr "Pataisomas nepavykęs autonominis atnaujinimas"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
 #, kde-format
@@ -1960,7 +1978,7 @@ msgstr "%1<nl/>Praneškite apie šią klaidą savo platinamojo paketo atstovams.
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
 #, kde-format
 msgid "Repaired Successfully"
-msgstr ""
+msgstr "Sėkmingai pataisyta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
 #, kde-format
@@ -1977,11 +1995,9 @@ msgstr[2] "Sėkmingai atnaujinta %1 paketų"
 msgstr[3] "Sėkmingai atnaujintas %1 paketas"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Unknown Error"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Nežinoma klaida"
+msgstr "Nežinomas šaltinis"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:328
 #, kde-format
@@ -2035,12 +2051,10 @@ msgid "Repository URL:"
 msgstr "Saugyklos URL:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
-#, fuzzy, kde-format
-#| msgctxt "@item example: muon installed at 16:00"
-#| msgid "%1 %2 at %3"
+#, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr "%1 %2 įdiegta %3"
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
 #, kde-format
@@ -2048,20 +2062,19 @@ msgid "System upgrade"
 msgstr "Sistemos naujinimas"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 naujinti skirtas paketas"
-msgstr[1] "%1 naujinti skirti paketai"
-msgstr[2] "%1 naujinti skirtų paketų"
-msgstr[3] "%1 naujinti skirtas paketas"
+msgstr[0] "Bus naujintas 1 paketas"
+msgstr[1] "Bus naujinti %1 paketai"
+msgstr[2] "Bus naujinta %1 paketų"
+msgstr[3] "Bus naujintas %1 paketas"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Naujinti į naują versiją %2<br/>Laidos informacija nepateikta"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
 #, kde-format
@@ -2069,6 +2082,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Naujinti į naują versiją %2<br/>Laidos informacija:<blockquote>"
+"%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
 #, kde-format
@@ -2085,6 +2100,8 @@ msgstr "Ateities"
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
+"Trūksta vietos diske, kad galima būtų atlikti atnaujinimą; yra prieinama tik "
+"%1 laisvos vietos."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:577
 #, kde-format
@@ -2094,13 +2111,15 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"Šis atnaujinimas negali būti užbaigtas, nes jis pašalins šią programinę "
+"įrangą, kuri savo ruožtu yra kritiškai reikalinga sistemos veikimui:<nl/"
+"><ul><li>%1</li></ul><nl/>Jei manote, jog tai klaida, pateikite pranešimą "
+"apie klaidą jūsų platinamojo paketo pakuotojams."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:584
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "No Change"
+#, kde-format
 msgid "Confirm Changes"
-msgstr "Be pakeitimų"
+msgstr "Patvirtinti pakeitimus"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:585
 #, kde-format
@@ -2115,7 +2134,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
-msgstr ""
+msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:717
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:318
@@ -2177,6 +2196,10 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"Šis veiksmas negali būti užbaigtas, nes jis pašalins šią programinę įrangą, "
+"kuri savo ruožtu yra kritiškai reikalinga sistemos veikimui:<nl/><ul><li>%1</"
+"li></ul><nl/>Jei manote, jog tai klaida, pateikite pranešimą apie klaidą "
+"jūsų platinamojo paketo pakuotojams."
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:207
 #, kde-format
@@ -2205,148 +2228,135 @@ msgstr[3] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:27
-#, fuzzy, kde-format
-#| msgid "Resolving dependencies…"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "Sprendžiamos priklausomybės…"
+msgstr "Rodyti priklausomybes…"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:53
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "Paketo priklausomybės: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:25
 #, kde-format
 msgid "Full Access"
-msgstr ""
+msgstr "Visa prieiga"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:26
 #, kde-format
 msgid "Can access everything on the system"
-msgstr ""
+msgstr "Gali sistemoje gauti prieigą prie bet ko"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgctxt "Category"
 msgid "Operating System"
-msgstr "Pataisyti sistemą"
+msgstr "Operacinė sistema"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
+"rpm-ostree: Rasti keli paleisti visuotiniai diegimai. Praneškite apie klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
+"rpm-ostree: Nerasta jokio paleisto visuotinio diegimo. Praneškite apie "
+"klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr "Atnaujinti versiją"
+msgstr "Pradėti naujinimą…"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr ""
+msgstr "Yra laukiančių atnaujinimų dabartinei versijai. Vis tiek tęsiama."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
+"Prieš pakeisdami pagrindą į kitą pagrindinę versiją, atsinaujinkite į "
+"naujausią versiją"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Nurodymo operacijai trūksta nutolinės saugyklos. Praneškite apie klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
 #, kde-format
 msgid "GPL and other licenses"
-msgstr ""
+msgstr "GPL ir kitos licencijos"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Confirm Additional Changes"
+#, kde-format
 msgid "Additional packages: "
-msgstr "Patvirtinkite papildomus pakeitimus"
+msgstr "Papildomi paketai: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Confirm Additional Changes"
+#, kde-format
 msgid "Additional modules: "
-msgstr "Patvirtinkite papildomus pakeitimus"
+msgstr "Papildomi moduliai: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"metapackages\""
-#| msgid "Meta Packages"
+#, kde-format
 msgid "Local packages: "
-msgstr "Meta paketai"
+msgstr "Vietiniai paketai: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"metapackages\""
-#| msgid "Meta Packages"
+#, kde-format
 msgid "Replaced packages:"
-msgstr "Meta paketai"
+msgstr "Pakeisti paketai:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, kde-format
 msgid "Removed packages:"
-msgstr ""
+msgstr "Pašalinti paketai:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
-#, fuzzy, kde-format
-#| msgctxt "@info:label Refers to a software version, Ex: Version 1.2.1:"
-#| msgid "Version %1:"
+#, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "Versija %1:"
+msgstr "Šiuo metu paleista versija (prisegta)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
-#, fuzzy, kde-format
-#| msgctxt "@info:label Refers to a software version, Ex: Version 1.2.1:"
-#| msgid "Version %1:"
+#, kde-format
 msgid "Currently booted version"
-msgstr "Versija %1:"
+msgstr "Šiuo metu paleista versija"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "Versija, kuri bus naudojama po paleidimo iš naujo"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr ""
+msgstr "Atsarginė versija (prisegta)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "Atsarginė versija"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
 msgid "ostree remotes"
-msgstr ""
+msgstr "ostree nuotolinės saugyklos"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Klaida: Nepateikta jokios DBus sąsajos. Praneškite apie "
+"klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:58
 #, kde-format
@@ -2354,12 +2364,16 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Klaida: Nepavyksta pradėti operacijos neteisingo formato "
+"ištekliui. Praneškite apie klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:78
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Klaida: Negalima iš naujo pakeisti pagrindo į tuščią "
+"nurodymą. Praneškite apie klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:261
@@ -2367,6 +2381,8 @@ msgstr ""
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Klaida: Paprašyta nežinomos operacijos. Praneškite apie "
+"klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
@@ -2375,66 +2391,62 @@ msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
 msgstr ""
+"rpm-ostree operacija patyrė nesėkmę su:\n"
+"%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:235
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Klaida: Nežinomas ištekliaus formatas. Praneškite apie "
+"klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:355
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"Atsisakoma rpm-ostree operacijos. Tai gali šiek tiek užtrukti. Palaukite."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@action Checks the Internet for updates"
-#| msgid "Check for Updates"
+#, kde-format
 msgid "Checking for a system update"
-msgstr "Tikrinti, ar yra atnaujinimų"
+msgstr "Tikrinama, ar yra sistemos atnaujinimų"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:387
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Downloading Packages"
+#, kde-format
 msgid "Downloading system update"
-msgstr "Paketai atsisiunčiami"
+msgstr "Atsiunčiamas sistemos atnaujinimas"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:390
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgid "Updating the system"
-msgstr "Pataisyti sistemą"
+msgstr "Sistema atnaujinama"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "Atnaujinama į kitą pagrindinę versiją"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr ""
+msgstr "Vyksta operacija (paleista už Discover ribų)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "Nepavyksta atsisakyti operacijos"
+msgstr "Nežinomas operacijos tipas"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:19
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "Kanalai…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:28
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox Filters all changes in the history view"
-#| msgid "All changes"
+#, kde-format
 msgid "%1 channels"
-msgstr "Visi pakeitimai"
+msgstr "%1 kanalai"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:41
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
@@ -2445,12 +2457,12 @@ msgstr "%1 - %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:54
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "Perjungti"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:26
 #, kde-format
 msgid "Permissions for %1"
-msgstr ""
+msgstr "%1 leidimai"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2469,12 +2481,12 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
+msgstr "SteamOS: Nepavyko užklausti atomupd dėl SteamOS atnaujinimų..."
 
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:113
 #, kde-format
@@ -2505,12 +2517,11 @@ msgid "Launch"
 msgstr "Paleisti"
 
 #: libdiscover/resources/AbstractResource.cpp:251
-#, fuzzy, kde-format
-#| msgid "Update to version %1"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "Atnaujinti į versiją %1"
+msgstr "%1 versijos papildymas"
 
 #: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
@@ -2521,18 +2532,18 @@ msgstr "%1 → %2%1 → %2%2"
 #: libdiscover/resources/AbstractResourcesBackend.cpp:171
 #, kde-format
 msgid "Please verify Internet connectivity"
-msgstr ""
+msgstr "Patikrinkite interneto ryšio jungiamumą"
 
 #: libdiscover/resources/ResourcesModel.cpp:103
 #, kde-format
 msgid "Refresh"
-msgstr ""
+msgstr "Įkelti iš naujo"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:781
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
-msgstr ""
+msgstr "%1+"
 
 #: libdiscover/resources/ResourcesUpdatesModel.cpp:111
 #, kde-format
@@ -2600,21 +2611,16 @@ msgid "Cancelled"
 msgstr "Atsisakyta"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:130
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "Programos"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:131
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"video"
-#| "\""
-#| msgid "Video Software"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
-msgstr "Video programinė įranga"
+msgstr "Sistemos programinė įranga"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:132
 #, kde-format
