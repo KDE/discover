@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-27 00:38+0000\n"
+"POT-Creation-Date: 2024-02-02 00:38+0000\n"
 "PO-Revision-Date: 2024-01-26 07:44+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -97,7 +97,7 @@ msgstr "Sporočilo tehnične napake: %1"
 msgid "Error while submitting usefulness: %1"
 msgstr "Napaka pri oddaji uporabnosti: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:281
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Napaka pri oddaji pregleda: %1"
@@ -1101,7 +1101,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "KDE Store"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
 #, kde-format
 msgid "Log in information for %1"
 msgstr "Prijavni podatki za %1"

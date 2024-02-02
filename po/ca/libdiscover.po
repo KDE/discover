@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-27 00:38+0000\n"
+"POT-Creation-Date: 2024-02-02 00:38+0000\n"
 "PO-Revision-Date: 2024-01-10 11:23+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -98,7 +98,7 @@ msgstr "Missatge tècnic d'error: %1"
 msgid "Error while submitting usefulness: %1"
 msgstr "Error en enviar la utilitat: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:281
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Error en enviar la revisió: %1"
@@ -1108,7 +1108,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "KDE Store"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
 #, kde-format
 msgid "Log in information for %1"
 msgstr "Informació d'accés per a %1"

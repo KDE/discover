@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-27 00:38+0000\n"
+"POT-Creation-Date: 2024-02-02 00:38+0000\n"
 "PO-Revision-Date: 2024-01-25 12:21+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -96,7 +96,7 @@ msgstr "Tehniskas kļūdas ziņojums: %1"
 msgid "Error while submitting usefulness: %1"
 msgstr "Kļūda iesniedzot lietderību: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:281
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Kļūda iesniedzot apskatu: %1"
@@ -1086,7 +1086,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "KDE veikals"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
 #, kde-format
 msgid "Log in information for %1"
 msgstr "Ierakstīšanās informācija priekš %1"

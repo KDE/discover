@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-27 00:38+0000\n"
+"POT-Creation-Date: 2024-02-02 00:38+0000\n"
 "PO-Revision-Date: 2023-05-26 07:30+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -98,7 +98,7 @@ msgstr "Galat internal: %1"
 msgid "Error while submitting usefulness: %1"
 msgstr "Galat ketika sedang mengajukan kebergunaan: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:281
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Galat ketika sedang mengajukan ulasan: %1"
@@ -1113,7 +1113,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "KDE Store"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
 #, kde-format
 msgid "Log in information for %1"
 msgstr "Log informasi untuk %1"

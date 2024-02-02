@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-27 00:38+0000\n"
+"POT-Creation-Date: 2024-02-02 00:38+0000\n"
 "PO-Revision-Date: 2023-12-10 12:47+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -96,7 +96,7 @@ msgstr "சிக்கலைக்குறித்த விரிவான �
 msgid "Error while submitting usefulness: %1"
 msgstr "பயனுள்ளமையை சமர்ப்பிப்பதில் சிக்கல்: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:281
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "விமர்சனத்தை சமர்ப்பிப்பதில் சிக்கல்: %1"
@@ -1086,7 +1086,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "கே.டீ.யீ. களஞ்சியம்"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
 #, kde-format
 msgid "Log in information for %1"
 msgstr "%1 என்பதற்கான நுழைவு விவரங்கள்"

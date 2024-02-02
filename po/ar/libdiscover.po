@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-27 00:38+0000\n"
+"POT-Creation-Date: 2024-02-02 00:38+0000\n"
 "PO-Revision-Date: 2024-01-20 19:33+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -96,7 +96,7 @@ msgstr "رسالة الخطأ التقنية: %1"
 msgid "Error while submitting usefulness: %1"
 msgstr "خطأ أثناء إرسال مدى الاستفادة:‏ %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:281
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "خطأ أثناء إرسال المراجعة: %1"
@@ -1088,7 +1088,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "متجر كِيدِي"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
 #, kde-format
 msgid "Log in information for %1"
 msgstr "معلومات ولوج %1"

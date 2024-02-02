@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-27 00:38+0000\n"
+"POT-Creation-Date: 2024-02-02 00:38+0000\n"
 "PO-Revision-Date: 2023-10-01 21:56+0530\n"
 "Last-Translator: Shreekant <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <N/A>\n"
@@ -97,7 +97,7 @@ msgstr "तकनीकीदोषसन्देशः: %1"
 msgid "Error while submitting usefulness: %1"
 msgstr "उपयोगिता प्रस्तूयमाणे त्रुटिः: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:281
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "समीक्षां प्रस्तूयन्ते सति त्रुटिः: %1"
@@ -1084,7 +1084,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "केडीई भण्डार"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
 #, kde-format
 msgid "Log in information for %1"
 msgstr "%1 कृते प्रवेशसूचना"

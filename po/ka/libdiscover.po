@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-27 00:38+0000\n"
+"POT-Creation-Date: 2024-02-02 00:38+0000\n"
 "PO-Revision-Date: 2024-01-10 05:35+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -95,7 +95,7 @@ msgstr "ტექნიკური შეცდომის შეტყობ�
 msgid "Error while submitting usefulness: %1"
 msgstr "საჭიროობის გადაცემის შეცდომა: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:281
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "მიმოხილვის გადაცემის შეცდომა: %1"
@@ -1097,7 +1097,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "KDE -ის მაღაზია"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
 #, kde-format
 msgid "Log in information for %1"
 msgstr "შესვლის ინფორმაცია %1-სთვის"
