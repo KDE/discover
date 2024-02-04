@@ -2607,35 +2607,3 @@ msgstr "Системен софтуер"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Добавки"
-
-#~ msgid "A new major version has been released"
-#~ msgstr "Издадена е нова основна версия"
-
-#~ msgid ""
-#~ "<b>A new major version of %1 has been released!</b>\n"
-#~ "To be able to update to this new version, make sure to apply all pending "
-#~ "updates and reboot your system."
-#~ msgstr ""
-#~ "<b>Издадена е нова основна версия на %1!</b>\n"
-#~ "За да можете да актуализирате до тази нова версия, уверете се, че сте "
-#~ "приложили всички чакащи актуализации и рестартирайте системата си."
-
-#~ msgid "<b>A new major version has been released!</b>"
-#~ msgstr "<b>Издадена е нова основна версия!/b>"
-
-#~ msgid "Unknown size"
-#~ msgstr "Неизвестен размер"
-
-#~ msgctxt "@info app size"
-#~ msgid "%1 to download, %2 on disk"
-#~ msgstr "%1 за изтегляне, %2 на диска"
-
-#~ msgctxt "@info app size"
-#~ msgid "%1 on disk"
-#~ msgstr "%1 на диска"
-
-#~ msgid "Access is granted to the entire Session Bus"
-#~ msgstr "Достъпът е гарантиран за целия сесиен Bus"
-
-#~ msgid "Access is granted to the entire System Bus"
-#~ msgstr "Достъпът е гарантиран за целия системен Bus"
