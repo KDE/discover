@@ -1528,6 +1528,13 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
         auto fetchResourceJob = new FlatpakFetchRemoteResourceJob(filter.resourceUrl, stream, this);
         fetchResourceJob->start();
         return stream;
+    } else if (filter.resourceUrl.scheme() == QLatin1String("flatpak+https")) {
+        QUrl newUrl = filter.resourceUrl;
+        newUrl.setScheme(QStringLiteral("https"));
+        auto stream = new ResultsStream(QLatin1String("FlatpakStream-http-") + fileName);
+        FlatpakFetchRemoteResourceJob *fetchResourceJob = new FlatpakFetchRemoteResourceJob(newUrl, stream, this);
+        fetchResourceJob->start();
+        return stream;
     } else if (filter.resourceUrl.scheme() == QLatin1String("flatpak")) {
         return deferredResultStream(u"FlatpakStream-flatpak-ref"_s, [this, filter](ResultsStream *stream) -> QCoro::Task<> {
             return [](FlatpakBackend *self, ResultsStream *stream, const AbstractResourcesBackend::Filters filter) -> QCoro::Task<> {
