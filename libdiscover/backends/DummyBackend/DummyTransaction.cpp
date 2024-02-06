@@ -64,7 +64,7 @@ void DummyTransaction::cancel()
 
 void DummyTransaction::finishTransaction()
 {
-    AbstractResource::State newState;
+    AbstractResource::State newState = AbstractResource::State::Broken;
     switch (role()) {
     case InstallRole:
     case ChangeAddonsRole:
