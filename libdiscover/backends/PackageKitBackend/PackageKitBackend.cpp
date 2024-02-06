@@ -878,18 +878,12 @@ int PackageKitBackend::updatesCount() const
         return 0;
     }
 
-    int ret = 0;
     QSet<QString> packages;
     const auto toUpgrade = upgradeablePackages();
     for (auto resource : toUpgrade) {
-        const auto packageName = resource->packageName();
-        if (packages.contains(packageName)) {
-            continue;
-        }
-        packages.insert(packageName);
-        ret += 1;
+        packages.insert(resource->packageName());
     }
-    return ret;
+    return packages.count();
 }
 
 Transaction *PackageKitBackend::installApplication(AbstractResource *app, const AddonList &addons)
