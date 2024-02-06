@@ -21,7 +21,7 @@ gboolean FlatpakTransactionThread::add_new_remote_cb(FlatpakTransaction *object,
                                                      gchar *url,
                                                      gpointer user_data)
 {
-    FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
+    auto obj = static_cast<FlatpakTransactionThread *>(user_data);
 
     // TODO ask instead
     auto name = QString::fromUtf8(suggested_remote_name);
@@ -32,7 +32,7 @@ gboolean FlatpakTransactionThread::add_new_remote_cb(FlatpakTransaction *object,
 
 void FlatpakTransactionThread::progress_changed_cb(FlatpakTransactionProgress *progress, gpointer user_data)
 {
-    FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
+    auto obj = static_cast<FlatpakTransactionThread *>(user_data);
 
     g_autolist(GObject) ops = flatpak_transaction_get_operations(obj->m_transaction);
     g_autoptr(FlatpakTransactionOperation) op = flatpak_transaction_get_current_operation(obj->m_transaction);
@@ -54,7 +54,7 @@ void FlatpakTransactionThread::new_operation_cb(FlatpakTransaction * /*object*/,
                                                 FlatpakTransactionProgress *progress,
                                                 gpointer user_data)
 {
-    FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
+    auto obj = static_cast<FlatpakTransactionThread *>(user_data);
 
     g_signal_connect(progress, "changed", G_CALLBACK(&FlatpakTransactionThread::progress_changed_cb), obj);
     flatpak_transaction_progress_set_update_frequency(progress, FLATPAK_CLI_UPDATE_FREQUENCY);
@@ -62,7 +62,7 @@ void FlatpakTransactionThread::new_operation_cb(FlatpakTransaction * /*object*/,
 
 void operation_error_cb(FlatpakTransaction * /*object*/, FlatpakTransactionOperation * /*operation*/, GError *error, gint /*details*/, gpointer user_data)
 {
-    FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
+    auto obj = static_cast<FlatpakTransactionThread *>(user_data);
     if (error) {
         obj->addErrorMessage(QString::fromUtf8(error->message));
     }
@@ -76,7 +76,7 @@ FlatpakTransactionThread::webflowStart(FlatpakTransaction *transaction, const ch
 
     QUrl webflowUrl(QString::fromUtf8(url));
     qDebug() << "starting web flow" << webflowUrl << remote << id;
-    FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
+    auto obj = static_cast<FlatpakTransactionThread *>(user_data);
     obj->m_webflows << id;
     Q_EMIT obj->webflowStarted(webflowUrl, id);
     return true;
@@ -86,7 +86,7 @@ void FlatpakTransactionThread::webflowDoneCallback(FlatpakTransaction *transacti
 {
     Q_UNUSED(transaction);
     Q_UNUSED(options);
-    FlatpakTransactionThread *obj = (FlatpakTransactionThread *)user_data;
+    auto obj = static_cast<FlatpakTransactionThread *>(user_data);
     obj->m_webflows << id;
     Q_EMIT obj->webflowDone(id);
     qDebug() << "webflow done" << id;
@@ -124,8 +124,9 @@ FlatpakTransactionThread::~FlatpakTransactionThread()
 
 void FlatpakTransactionThread::cancel()
 {
-    for (int id : std::as_const(m_webflows))
+    for (int id : std::as_const(m_webflows)) {
         flatpak_transaction_abort_webflow(m_transaction, id);
+    }
     g_cancellable_cancel(m_cancellable);
 }
 
@@ -135,8 +136,9 @@ void FlatpakTransactionThread::run()
         Q_EMIT finished();
     });
 
-    if (!m_transaction)
+    if (!m_transaction) {
         return;
+    }
     g_autoptr(GError) localError = nullptr;
 
     const QString refName = m_app->ref();
@@ -255,8 +257,9 @@ bool FlatpakTransactionThread::result() const
 
 void FlatpakTransactionThread::addErrorMessage(const QString &error)
 {
-    if (!m_errorMessage.isEmpty())
+    if (!m_errorMessage.isEmpty()) {
         m_errorMessage.append(QLatin1Char('\n'));
+    }
     m_errorMessage.append(error);
 }
 

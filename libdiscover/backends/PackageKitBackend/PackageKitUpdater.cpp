@@ -76,8 +76,8 @@ public:
         , m_backend(backend)
         , m_updateSizeTimer(new QTimer(this))
     {
-        connect(m_backend, &AbstractResourcesBackend::resourceRemoved, this, [this](AbstractResource *res) {
-            m_resources.remove(res);
+        connect(m_backend, &AbstractResourcesBackend::resourceRemoved, this, [this](AbstractResource *resource) {
+            m_resources.remove(resource);
         });
 
         m_updateSizeTimer->setInterval(100);
@@ -132,12 +132,12 @@ public:
     {
         QVector<PackageKitResource *> ret;
         QSet<QString> donePkgs;
-        for (auto res : std::as_const(m_resources)) {
-            PackageKitResource *app = qobject_cast<PackageKitResource *>(res);
-            QString pkgname = app->packageName();
-            if (!donePkgs.contains(pkgname)) {
-                donePkgs.insert(pkgname);
-                ret += app;
+        for (auto resource : std::as_const(m_resources)) {
+            const auto pkResource = qobject_cast<PackageKitResource *>(resource);
+            const auto pkgName = pkResource->packageName();
+            if (!donePkgs.contains(pkgName)) {
+                donePkgs.insert(pkgName);
+                ret += pkResource;
             }
         }
         return ret;
@@ -151,8 +151,8 @@ public:
         }
 
         const auto resources = withoutDuplicates();
-        for (auto res : resources) {
-            ret += res->size();
+        for (auto pkResource : resources) {
+            ret += pkResource->size();
         }
         return ret;
     }
@@ -191,14 +191,14 @@ public:
     {
         QStringList changes;
         const auto resources = withoutDuplicates();
-        for (auto res : resources) {
-            const auto changelog = res->changelog();
+        for (auto resource : resources) {
+            const auto changelog = resource->changelog();
             if (changelog.isEmpty()) {
-                changes += i18n("<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided", res->packageName(), res->availableVersion());
+                changes += i18n("<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided", resource->packageName(), resource->availableVersion());
             } else {
                 changes += i18n("<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</blockquote>",
-                                res->packageName(),
-                                res->availableVersion(),
+                                resource->packageName(),
+                                resource->availableVersion(),
                                 changelog);
             }
         }
@@ -215,8 +215,8 @@ public:
             return;
         }
 
-        for (auto res : std::as_const(m_resources)) {
-            res->fetchUpdateDetails();
+        for (auto resource : std::as_const(m_resources)) {
+            resource->fetchUpdateDetails();
         }
         Q_EMIT changelogFetched({});
     }
@@ -246,8 +246,8 @@ public:
     QSet<QString> allPackageNames() const
     {
         QSet<QString> ret;
-        for (auto res : std::as_const(m_resources)) {
-            ret += kToSet(qobject_cast<PackageKitResource *>(res)->allPackageNames());
+        for (auto resource : std::as_const(m_resources)) {
+            ret += kToSet(qobject_cast<PackageKitResource *>(resource)->allPackageNames());
         }
         return ret;
     }
@@ -261,16 +261,17 @@ public:
     void setCandidates(const QSet<AbstractResource *> &candidates)
     {
         const auto toDisconnect = (m_resources - candidates);
-        for (auto res : toDisconnect) {
-            disconnect(res, &AbstractResource::sizeChanged, this, &SystemUpgrade::startIfStopped);
-            disconnect(res, &AbstractResource::changelogFetched, this, &SystemUpgrade::startIfStopped);
+        for (auto resource : toDisconnect) {
+            disconnect(resource, &AbstractResource::sizeChanged, this, &SystemUpgrade::startIfStopped);
+            disconnect(resource, &AbstractResource::changelogFetched, this, &SystemUpgrade::startIfStopped);
         }
 
         const auto newCandidates = (candidates - m_resources);
         m_resources = candidates;
-        for (auto res : newCandidates) {
-            connect(res, &AbstractResource::sizeChanged, this, &SystemUpgrade::startIfStopped);
-            connect(res, &AbstractResource::changelogFetched, this, &SystemUpgrade::startIfStopped);
+
+        for (auto resource : newCandidates) {
+            connect(resource, &AbstractResource::sizeChanged, this, &SystemUpgrade::startIfStopped);
+            connect(resource, &AbstractResource::changelogFetched, this, &SystemUpgrade::startIfStopped);
         }
     }
 
@@ -331,7 +332,8 @@ PackageKitUpdater::~PackageKitUpdater()
 
 void PackageKitUpdater::prepare()
 {
-    if (auto offline = PackageKit::Daemon::global()->offline(); offline->updateTriggered() || offline->upgradeTriggered()) {
+    auto offline = PackageKit::Daemon::global()->offline();
+    if (offline->updateTriggered() || offline->upgradeTriggered()) {
         m_toUpgrade.clear();
         m_allUpgradeable.clear();
         setNeedsReboot(true);
@@ -340,7 +342,7 @@ void PackageKitUpdater::prepare()
 
     if (QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
         qCDebug(LIBDISCOVER_BACKEND_LOG) << "Removed offline results file";
-        PackageKit::Daemon::global()->offline()->clearResults();
+        offline->clearResults();
     }
 
     Q_ASSERT(!m_transaction);
@@ -360,12 +362,12 @@ void PackageKitUpdater::prepare()
 
 void PackageKitUpdater::checkFreeSpace()
 {
-    auto j = KIO::fileSystemFreeSpace(QUrl::fromLocalFile(QStringLiteral("/usr")));
-    connect(j, &KJob::result, this, [this, j]() {
-        if (j->availableSize() < updateSize()) {
+    auto job = KIO::fileSystemFreeSpace(QUrl::fromLocalFile(QStringLiteral("/usr")));
+    connect(job, &KJob::result, this, [this, job]() {
+        if (job->availableSize() < updateSize()) {
             setErrorMessage(i18nc("@info:status %1 is a formatted disk space string e.g. '240 MiB'",
                                   "Not enough space to perform the update; only %1 of space are available.",
-                                  KFormat().formatByteSize(j->availableSize())));
+                                  KFormat().formatByteSize(job->availableSize())));
         }
     });
 }
@@ -415,17 +417,17 @@ QSet<AbstractResource *> PackageKitUpdater::packagesForPackageId(const QSet<QStr
     });
 
     QSet<AbstractResource *> ret;
-    for (AbstractResource *res : std::as_const(m_allUpgradeable)) {
-        if (auto upgrade = dynamic_cast<SystemUpgrade *>(res)) {
-            if (packages.contains(upgrade->allPackageNames())) {
-                ret += upgrade;
-            }
-            continue;
+    for (auto resource : std::as_const(m_allUpgradeable)) {
+        QSet<QString> allPackageNames;
+
+        if (auto upgrade = qobject_cast<SystemUpgrade *>(resource)) {
+            allPackageNames = upgrade->allPackageNames();
+        } else if (auto pkResource = qobject_cast<PackageKitResource *>(resource)) {
+            allPackageNames = kToSet(pkResource->allPackageNames());
         }
 
-        PackageKitResource *pres = qobject_cast<PackageKitResource *>(res);
-        if (packages.contains(kToSet(pres->allPackageNames()))) {
-            ret.insert(res);
+        if (!allPackageNames.isEmpty() && packages.contains(allPackageNames)) {
+            ret.insert(resource);
         }
     }
 
@@ -436,16 +438,16 @@ QSet<QString> PackageKitUpdater::involvedPackages(const QSet<AbstractResource *>
 {
     QSet<QString> packageIds;
     packageIds.reserve(packages.size());
-    for (AbstractResource *res : packages) {
-        if (SystemUpgrade *upgrade = dynamic_cast<SystemUpgrade *>(res)) {
+    for (auto resource : packages) {
+        if (auto upgrade = qobject_cast<SystemUpgrade *>(resource)) {
             packageIds = involvedPackages(upgrade->resources());
             continue;
         }
 
-        PackageKitResource *app = qobject_cast<PackageKitResource *>(res);
-        const QSet<QString> ids = m_backend->upgradeablePackageId(app);
+        auto pkResource = qobject_cast<PackageKitResource *>(resource);
+        const QSet<QString> ids = m_backend->upgradeablePackageId(pkResource);
         if (ids.isEmpty()) {
-            qWarning() << "no upgradeablePackageId for" << app;
+            qWarning() << "no upgradeablePackageId for" << pkResource;
             continue;
         }
 
@@ -474,12 +476,13 @@ void PackageKitUpdater::processProceedFunction()
 
 void PackageKitUpdater::proceed()
 {
-    if (!m_proceedFunctions.isEmpty())
+    if (!m_proceedFunctions.isEmpty()) {
         processProceedFunction();
-    else if (useOfflineUpdates())
+    } else if (useOfflineUpdates()) {
         setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted | PackageKit::Transaction::TransactionFlagOnlyDownload);
-    else
+    } else {
         setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted);
+    }
 }
 
 bool PackageKitUpdater::useOfflineUpdates() const
@@ -522,8 +525,9 @@ void PackageKitUpdater::start()
 void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time*/)
 {
     // qCDebug(LIBDISCOVER_BACKEND_LOG) << "update finished!" << exit << time;
-    if (!m_proceedFunctions.isEmpty())
+    if (!m_proceedFunctions.isEmpty()) {
         return;
+    }
     const bool cancel = exit == PackageKit::Transaction::ExitCancelled;
     const bool simulate = m_transaction->transactionFlags() & PackageKit::Transaction::TransactionFlagSimulate;
 
@@ -561,11 +565,11 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
         if (!toremove.isEmpty()) {
             QStringList criticals;
             for (const auto &pkgid : std::as_const(toremove)) {
-                auto res = kFilter<QVector<AbstractResource *>>(m_backend->resourcesByPackageName(pkgid), [](AbstractResource *res) {
-                    return static_cast<PackageKitResource *>(res)->isCritical();
+                auto resources = kFilter<QVector<AbstractResource *>>(m_backend->resourcesByPackageName(pkgid), [](AbstractResource *resource) {
+                    return static_cast<PackageKitResource *>(resource)->isCritical();
                 });
-                criticals << kTransform<QStringList>(res, [](AbstractResource *a) {
-                    return a->name();
+                criticals << kTransform<QStringList>(resources, [](AbstractResource *resource) {
+                    return resource->name();
                 });
                 if (!criticals.isEmpty()) {
                     break;
@@ -636,8 +640,9 @@ void PackageKitUpdater::cancellableChanged()
 void PackageKitUpdater::percentageChanged()
 {
     const int percentage = m_transaction->percentage();
-    if (percentage > 100)
+    if (percentage > 100) {
         return;
+    }
     const auto actualPercentage = useOfflineUpdates() ? percentage : percentageWithStatus(m_transaction->status(), percentage);
     if (actualPercentage >= 0 && m_percentage != actualPercentage) {
         m_percentage = actualPercentage;
@@ -655,15 +660,15 @@ qreal PackageKitUpdater::progress() const
     return m_percentage;
 }
 
-void PackageKitUpdater::removeResources(const QList<AbstractResource *> &apps)
+void PackageKitUpdater::removeResources(const QList<AbstractResource *> &resources)
 {
-    const QSet<QString> pkgs = involvedPackages(kToSet(apps));
+    const QSet<QString> pkgs = involvedPackages(kToSet(resources));
     m_toUpgrade.subtract(packagesForPackageId(pkgs));
 }
 
-void PackageKitUpdater::addResources(const QList<AbstractResource *> &apps)
+void PackageKitUpdater::addResources(const QList<AbstractResource *> &resources)
 {
-    const QSet<QString> pkgs = involvedPackages(kToSet(apps));
+    const QSet<QString> pkgs = involvedPackages(kToSet(resources));
     m_toUpgrade.unite(packagesForPackageId(pkgs));
 }
 
@@ -672,9 +677,9 @@ QList<AbstractResource *> PackageKitUpdater::toUpdate() const
     return m_toUpgrade.values();
 }
 
-bool PackageKitUpdater::isMarked(AbstractResource *res) const
+bool PackageKitUpdater::isMarked(AbstractResource *resource) const
 {
-    return m_toUpgrade.contains(res);
+    return m_toUpgrade.contains(resource);
 }
 
 QDateTime PackageKitUpdater::lastUpdate() const
@@ -694,10 +699,11 @@ bool PackageKitUpdater::isProgressing() const
 
 void PackageKitUpdater::cancel()
 {
-    if (m_transaction)
+    if (m_transaction) {
         m_transaction->cancel();
-    else
+    } else {
         setProgressing(false);
+    }
 }
 
 void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QString &error)
@@ -807,28 +813,28 @@ AbstractBackendUpdater::State toUpdateState(PackageKit::Transaction::Status t)
 
 void PackageKitUpdater::itemProgress(const QString &itemID, PackageKit::Transaction::Status status, uint percentage)
 {
-    const auto res = packagesForPackageId({itemID});
+    const auto resources = packagesForPackageId({itemID});
 
-    for (auto r : res) {
-        Q_EMIT resourceProgressed(r, percentage, toUpdateState(status));
+    for (auto resource : resources) {
+        Q_EMIT resourceProgressed(resource, percentage, toUpdateState(status));
     }
 }
 
 void PackageKitUpdater::fetchChangelog() const
 {
     QStringList pkgids;
-    for (AbstractResource *res : std::as_const(m_allUpgradeable)) {
-        if (auto upgrade = dynamic_cast<SystemUpgrade *>(res)) {
+    for (auto resource : std::as_const(m_allUpgradeable)) {
+        if (auto upgrade = qobject_cast<SystemUpgrade *>(resource)) {
             upgrade->fetchChangelog();
         } else {
-            pkgids += static_cast<PackageKitResource *>(res)->availablePackageId();
+            pkgids += static_cast<PackageKitResource *>(resource)->availablePackageId();
         }
     }
     Q_ASSERT(!pkgids.isEmpty());
 
-    PackageKit::Transaction *t = PackageKit::Daemon::getUpdatesDetails(pkgids);
-    connect(t, &PackageKit::Transaction::updateDetail, this, &PackageKitUpdater::updateDetail);
-    connect(t, &PackageKit::Transaction::errorCode, this, &PackageKitUpdater::errorFound);
+    PackageKit::Transaction *transaction = PackageKit::Daemon::getUpdatesDetails(pkgids);
+    connect(transaction, &PackageKit::Transaction::updateDetail, this, &PackageKitUpdater::updateDetail);
+    connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitUpdater::errorFound);
 }
 
 void PackageKitUpdater::updateDetail(const QString &packageID,
@@ -844,10 +850,10 @@ void PackageKitUpdater::updateDetail(const QString &packageID,
                                      const QDateTime &issued,
                                      const QDateTime &updated)
 {
-    const auto res = packagesForPackageId({packageID});
-    for (auto r : res) {
-        static_cast<PackageKitResource *>(r)
-            ->updateDetail(packageID, updates, obsoletes, vendorUrls, bugzillaUrls, cveUrls, restart, updateText, changelog, state, issued, updated);
+    const auto resources = packagesForPackageId({packageID});
+    for (auto resource : resources) {
+        auto pkResource = static_cast<PackageKitResource *>(resource);
+        pkResource->updateDetail(packageID, updates, obsoletes, vendorUrls, bugzillaUrls, cveUrls, restart, updateText, changelog, state, issued, updated);
     }
 }
 
@@ -881,17 +887,15 @@ double PackageKitUpdater::updateSize() const
 {
     double ret = 0.;
     QSet<QString> donePkgs;
-    for (AbstractResource *res : m_toUpgrade) {
-        if (auto upgrade = dynamic_cast<SystemUpgrade *>(res)) {
+    for (auto resource : std::as_const(m_toUpgrade)) {
+        if (auto upgrade = qobject_cast<SystemUpgrade *>(resource)) {
             ret += upgrade->size();
-            continue;
-        }
-
-        PackageKitResource *app = qobject_cast<PackageKitResource *>(res);
-        QString pkgname = app->packageName();
-        if (!donePkgs.contains(pkgname)) {
-            donePkgs.insert(pkgname);
-            ret += app->size();
+        } else if (auto pkResource = qobject_cast<PackageKitResource *>(resource)) {
+            QString pkgname = pkResource->packageName();
+            if (!donePkgs.contains(pkgname)) {
+                donePkgs.insert(pkgname);
+                ret += pkResource->size();
+            }
         }
     }
     return ret;

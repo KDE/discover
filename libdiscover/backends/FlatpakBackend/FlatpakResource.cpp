@@ -240,8 +240,9 @@ QVariant FlatpakResource::icon() const
             } break;
             case AppStream::Icon::KindStock: {
                 const auto ret = QIcon::fromTheme(icon.name());
-                if (!ret.isNull())
+                if (!ret.isNull()) {
                     return ret;
+                }
                 break;
             }
             case AppStream::Icon::KindRemote: {
@@ -498,7 +499,7 @@ void FlatpakResource::invokeApplication() const
         return;
     }
 
-    auto *job = new KIO::ApplicationLauncherJob(service);
+    auto job = new KIO::ApplicationLauncherJob(service);
     connect(job, &KJob::finished, this, [this, service](KJob *job) {
         if (job->error()) {
             Q_EMIT backend()->passiveMessage(i18n("Failed to start '%1': %2", service->name(), job->errorString()));
@@ -672,8 +673,9 @@ QString FlatpakResource::sourceIcon() const
     }
 
     const auto iconUrl = sourceItem->data(FlatpakSourcesBackend::IconUrlRole).toString();
-    if (iconUrl.isEmpty())
+    if (iconUrl.isEmpty()) {
         return QStringLiteral("flatpak-discover");
+    }
     return iconUrl;
 }
 
@@ -771,8 +773,9 @@ QString FlatpakResource::eolReason()
 QString createHtmlList(const QStringList &itemList)
 {
     QString str = QStringLiteral("<ul>");
-    for (const QString &itemText : std::as_const(itemList))
-      str += QStringLiteral("<li>%1</li>").arg(itemText.toHtmlEscaped());
+    for (const QString &itemText : std::as_const(itemList)) {
+        str += QStringLiteral("<li>%1</li>").arg(itemText.toHtmlEscaped());
+    }
     str += QStringLiteral("</ul>");
     return str;
 }

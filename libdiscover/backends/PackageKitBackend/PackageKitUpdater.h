@@ -33,10 +33,10 @@ public:
 
     void setProgressing(bool progressing);
 
-    void removeResources(const QList<AbstractResource *> &apps) override;
-    void addResources(const QList<AbstractResource *> &apps) override;
+    void removeResources(const QList<AbstractResource *> &resources) override;
+    void addResources(const QList<AbstractResource *> &resources) override;
     QList<AbstractResource *> toUpdate() const override;
-    bool isMarked(AbstractResource *res) const override;
+    bool isMarked(AbstractResource *resource) const override;
     QDateTime lastUpdate() const override;
     bool isCancelable() const override;
     bool isProgressing() const override;

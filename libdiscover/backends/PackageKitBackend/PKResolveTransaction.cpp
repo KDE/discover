@@ -32,19 +32,19 @@ void PKResolveTransaction::start()
 
     m_transactions = {tArch, tNotArch};
 
-    for (PackageKit::Transaction *t : std::as_const(m_transactions)) {
-        connect(t, &PackageKit::Transaction::finished, this, &PKResolveTransaction::transactionFinished);
+    for (auto transaction : std::as_const(m_transactions)) {
+        connect(transaction, &PackageKit::Transaction::finished, this, &PKResolveTransaction::transactionFinished);
     }
 }
 
 void PKResolveTransaction::transactionFinished(PackageKit::Transaction::Exit exit)
 {
-    PackageKit::Transaction *t = qobject_cast<PackageKit::Transaction *>(sender());
+    auto transaction = qobject_cast<PackageKit::Transaction *>(sender());
     if (exit != PackageKit::Transaction::ExitSuccess) {
-        qWarning() << "failed" << exit << t;
+        qWarning() << "failed" << exit << transaction;
     }
 
-    m_transactions.removeAll(t);
+    m_transactions.removeAll(transaction);
     if (m_transactions.isEmpty()) {
         Q_EMIT allFinished();
         deleteLater();

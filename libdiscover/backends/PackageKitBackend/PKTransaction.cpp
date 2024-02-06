@@ -19,24 +19,24 @@
 #include <functional>
 #include <resources/AbstractResource.h>
 
-PKTransaction::PKTransaction(const QVector<AbstractResource *> &apps, Transaction::Role role)
-    : Transaction(apps.first(), apps.first(), role)
-    , m_apps(apps)
+PKTransaction::PKTransaction(const QVector<AbstractResource *> &resources, Transaction::Role role)
+    : Transaction(resources.first(), resources.first(), role)
+    , m_apps(resources)
 {
-    Q_ASSERT(!apps.contains(nullptr));
-    for (auto r : apps) {
-        PackageKitResource *res = qobject_cast<PackageKitResource *>(r);
-        m_pkgnames.unite(kToSet(res->allPackageNames()));
+    Q_ASSERT(!resources.contains(nullptr));
+    for (auto resource : resources) {
+        auto pkResource = qobject_cast<PackageKitResource *>(resource);
+        m_pkgnames.unite(kToSet(pkResource->allPackageNames()));
     }
 
     QTimer::singleShot(0, this, &PKTransaction::start);
 }
 
-static QStringList packageIds(const QVector<AbstractResource *> &res, std::function<QString(PackageKitResource *)> func)
+static QStringList packageIds(const QVector<AbstractResource *> &resources, std::function<QString(PackageKitResource *)> func)
 {
     QStringList ret;
-    for (auto r : res) {
-        ret += func(qobject_cast<PackageKitResource *>(r));
+    for (auto resource : resources) {
+        ret += func(qobject_cast<PackageKitResource *>(resource));
     }
     ret.removeDuplicates();
     return ret;
@@ -54,52 +54,58 @@ void PKTransaction::start()
 
 void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
 {
-    if (m_trans)
+    if (m_trans) {
         m_trans->deleteLater();
+    }
     m_newPackageStates.clear();
 
     if (isLocal() && role() == Transaction::InstallRole) {
-        auto app = qobject_cast<LocalFilePKResource *>(m_apps.at(0));
-        m_trans = PackageKit::Daemon::installFile(QUrl(app->packageName()).toLocalFile(), flags);
+        auto resource = qobject_cast<LocalFilePKResource *>(m_apps.at(0));
+        m_trans = PackageKit::Daemon::installFile(QUrl(resource->packageName()).toLocalFile(), flags);
     } else
         switch (role()) {
         case Transaction::ChangeAddonsRole:
         case Transaction::InstallRole: {
-            const QStringList ids = packageIds(m_apps, [](PackageKitResource *r) {
-                return r->availablePackageId();
+            const auto ids = packageIds(m_apps, [](PackageKitResource *resource) {
+                return resource->availablePackageId();
             });
             if (ids.isEmpty()) {
                 // FIXME this state shouldn't exist
                 qWarning() << "Installing no packages found!";
-                for (auto app : m_apps) {
-                    qCDebug(LIBDISCOVER_BACKEND_LOG) << "app" << app << app->state();
+                for (auto resource : std::as_const(m_apps)) {
+                    qCDebug(LIBDISCOVER_BACKEND_LOG) << "app" << resource << resource->state();
                 }
 
                 setStatus(Transaction::DoneWithErrorStatus);
                 return;
             }
             m_trans = PackageKit::Daemon::installPackages(ids, flags);
-        } break;
+            break;
+        }
         case Transaction::RemoveRole:
             // see bug #315063
 #ifdef PACKAGEKIT_AUTOREMOVE
-            constexpr bool autoremove = true;
+            constexpr bool autoRemove = true;
 #else
-            constexpr bool autoremove = false;
+            constexpr bool autoRemove = false;
 #endif
             m_trans = PackageKit::Daemon::removePackages(packageIds(m_apps,
-                                                                    [](PackageKitResource *r) {
-                                                                        return r->installedPackageId();
+                                                                    [](PackageKitResource *resource) {
+                                                                        return resource->installedPackageId();
                                                                     }),
                                                          true /*allowDeps*/,
-                                                         autoremove,
+                                                         autoRemove,
                                                          flags);
             break;
         };
     Q_ASSERT(m_trans);
 
-    // connect(m_trans.data(), &PackageKit::Transaction::statusChanged, this, [this]() { qCDebug(LIBDISCOVER_BACKEND_LOG) << "state..." <<
-    // m_trans->status(); });
+    if (false) {
+        connect(m_trans.data(), &PackageKit::Transaction::statusChanged, this, [this]() {
+            qCDebug(LIBDISCOVER_BACKEND_LOG) << "state..." << m_trans->status();
+        });
+    }
+
     connect(m_trans.data(), &PackageKit::Transaction::package, this, &PKTransaction::packageResolved);
     connect(m_trans.data(), &PackageKit::Transaction::finished, this, &PKTransaction::cleanup);
     connect(m_trans.data(), &PackageKit::Transaction::errorCode, this, &PKTransaction::errorFound);
@@ -182,8 +188,8 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         }
         removedResources.subtract(kToSet(m_apps));
 
-        auto isCritical = [](AbstractResource *r) {
-            return static_cast<PackageKitResource *>(r)->isCritical();
+        auto isCritical = [](AbstractResource *resource) {
+            return static_cast<PackageKitResource *>(resource)->isCritical();
         };
         auto criticals = kFilter<QSet<AbstractResource *>>(removedResources, isCritical);
         criticals.unite(kFilter<QSet<AbstractResource *>>(m_apps, isCritical));
@@ -273,11 +279,11 @@ void PKTransaction::submitResolve()
         const auto &itValue = it.value();
         for (const auto &pkgid : itValue) {
             const auto resources = backend->resourcesByPackageName(PackageKit::Daemon::packageName(pkgid));
-            for (auto res : resources) {
-                auto r = qobject_cast<PackageKitResource *>(res);
-                r->clearPackageIds();
-                Q_EMIT r->stateChanged();
-                needResolving << r->allPackageNames();
+            for (auto resource : resources) {
+                auto pkResource = qobject_cast<PackageKitResource *>(resource);
+                pkResource->clearPackageIds();
+                Q_EMIT pkResource->stateChanged();
+                needResolving << pkResource->allPackageNames();
             }
         }
     }

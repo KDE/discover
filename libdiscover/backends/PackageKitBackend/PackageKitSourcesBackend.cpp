@@ -31,8 +31,9 @@ public:
     bool setData(const QModelIndex &index, const QVariant &value, int role) override
     {
         auto item = itemFromIndex(index);
-        if (!item)
+        if (!item) {
             return false;
+        }
 
         switch (role) {
         case Qt::CheckStateRole: {
@@ -84,8 +85,9 @@ PackageKitSourcesBackend::PackageKitSourcesBackend(AbstractResourcesBackend *par
     // Kubuntu-based
     auto addNativeSourcesManager = [this](const QString &file) {
         auto service = PackageKitBackend::locateService(file);
-        if (!service.isEmpty())
+        if (!service.isEmpty()) {
             m_actions += QVariant::fromValue<QObject *>(createActionForService(service, this));
+        }
     };
 
     // New Ubuntu
@@ -107,8 +109,9 @@ QStandardItem *PackageKitSourcesBackend::findItemForId(const QString &id) const
 {
     for (int i = 0, c = m_sources->rowCount(); i < c; ++i) {
         auto it = m_sources->item(i);
-        if (it->data(AbstractSourcesBackend::IdRole).toString() == id)
+        if (it->data(AbstractSourcesBackend::IdRole).toString() == id) {
             return it;
+        }
     }
     return nullptr;
 }
@@ -136,8 +139,9 @@ void PackageKitSourcesBackend::addRepositoryDetails(const QString &id, const QSt
     item->setCheckState(enabled ? Qt::Checked : Qt::Unchecked);
     item->setEnabled(true);
 
-    if (add)
+    if (add) {
         m_sources->appendRow(item);
+    }
 }
 
 QAbstractItemModel *PackageKitSourcesBackend::sources()
@@ -165,7 +169,7 @@ QVariantList PackageKitSourcesBackend::actions() const
 void PackageKitSourcesBackend::resetSources()
 {
     disconnect(SourcesModel::global(), &SourcesModel::showingNow, this, &PackageKitSourcesBackend::resetSources);
-    for (int i = 0, c = m_sources->rowCount(); i < c; ++i) {
+    for (int i = 0, count = m_sources->rowCount(); i < count; ++i) {
         m_sources->item(i, 0)->setEnabled(false);
     }
     auto transaction = PackageKit::Daemon::global()->getRepoList();

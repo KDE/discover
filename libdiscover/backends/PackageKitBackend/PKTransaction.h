@@ -15,7 +15,7 @@ class PKTransaction : public Transaction
 {
     Q_OBJECT
 public:
-    explicit PKTransaction(const QVector<AbstractResource *> &app, Transaction::Role role);
+    explicit PKTransaction(const QVector<AbstractResource *> &resources, Transaction::Role role);
     PackageKit::Transaction *transaction();
 
     void cancel() override;

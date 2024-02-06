@@ -43,8 +43,10 @@ PackageKitNotifier::PackageKitNotifier(QObject *parent)
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::transactionListChanged, this, &PackageKitNotifier::transactionListChanged);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::restartScheduled, this, &PackageKitNotifier::nowNeedsReboot);
     connect(PackageKit::Daemon::global()->offline(), &PackageKit::Offline::changed, this, [this] {
-        if (auto offline = PackageKit::Daemon::global()->offline(); offline->updateTriggered() || offline->upgradeTriggered())
+        auto offline = PackageKit::Daemon::global()->offline();
+        if (offline->updateTriggered() || offline->upgradeTriggered()) {
             nowNeedsReboot();
+        }
     });
 
     m_appdata->load();
@@ -63,8 +65,9 @@ PackageKitNotifier::PackageKitNotifier(QObject *parent)
             if (!ok || days == 0) {
                 regularCheck->setInterval(24h); // refresh at least once every day
                 regularCheck->start();
-                if (!value.isEmpty())
+                if (!value.isEmpty()) {
                     qWarning() << "couldn't understand value for timer:" << value;
+                }
             }
 
             // if the setting is not empty, refresh will be carried out by unattended-upgrade
@@ -87,8 +90,9 @@ PackageKitNotifier::PackageKitNotifier(QObject *parent)
     connect(watcher, &QFileSystemWatcher::fileChanged, this, &PackageKitNotifier::nowNeedsReboot);
 
     QTimer::singleShot(100, this, [this]() {
-        if (QFile::exists(QStringLiteral(PK_OFFLINE_ACTION_FILENAME)))
+        if (QFile::exists(QStringLiteral(PK_OFFLINE_ACTION_FILENAME))) {
             nowNeedsReboot();
+        }
     });
 }
 
@@ -199,8 +203,10 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
         first = false;
     }
 
-    if (auto offline = PackageKit::Daemon::global()->offline(); offline->updateTriggered() || offline->upgradeTriggered())
+    auto offline = PackageKit::Daemon::global()->offline();
+    if (offline->updateTriggered() || offline->upgradeTriggered()) {
         return;
+    }
 
     m_recheckTimer->start();
 }
@@ -280,13 +286,13 @@ void PackageKitNotifier::checkDistroUpgrade()
 
 void PackageKitNotifier::refreshDatabase()
 {
-    if (auto offline = PackageKit::Daemon::global()->offline();
-        offline->updatePrepared() || offline->upgradePrepared() || offline->updateTriggered() || offline->upgradeTriggered()) {
+    auto offline = PackageKit::Daemon::global()->offline();
+    if (offline->updatePrepared() || offline->upgradePrepared() || offline->updateTriggered() || offline->upgradeTriggered()) {
         return;
     }
 
-    for (const auto &t : m_transactions) {
-        auto role = t->role();
+    for (const auto transaction : std::as_const(m_transactions)) {
+        auto role = transaction->role();
         if (role == PackageKit::Transaction::RoleUpdatePackages || role == PackageKit::Transaction::RoleUpgradeSystem) {
             return;
         }
@@ -309,8 +315,9 @@ QProcess *PackageKitNotifier::checkAptVariable(const QString &aptconfig, const Q
     QProcess *process = new QProcess;
     process->start(aptconfig, {QStringLiteral("dump")});
     connect(process, &QProcess::finished, this, [func, process, varname](int code) {
-        if (code != 0)
+        if (code != 0) {
             return;
+        }
 
         QRegularExpression rx(QLatin1Char('^') + varname + QStringLiteral(" \"(.*?)\";?$"), QRegularExpression::CaseInsensitiveOption);
         QTextStream stream(process);
@@ -328,16 +335,19 @@ QProcess *PackageKitNotifier::checkAptVariable(const QString &aptconfig, const Q
     return process;
 }
 
-void PackageKitNotifier::transactionListChanged(const QStringList &tids)
+void PackageKitNotifier::transactionListChanged(const QStringList &transactionIDs)
 {
-    if (auto offline = PackageKit::Daemon::global()->offline(); offline->updateTriggered() || offline->upgradeTriggered())
+    auto offline = PackageKit::Daemon::global()->offline();
+    if (offline->updateTriggered() || offline->upgradeTriggered()) {
         return;
+    }
 
-    for (const auto &tid : tids) {
-        if (m_transactions.contains(tid))
+    for (const auto &transactionID : transactionIDs) {
+        if (m_transactions.contains(transactionID)) {
             continue;
+        }
 
-        auto t = new PackageKit::Transaction(QDBusObjectPath(tid));
+        auto t = new PackageKit::Transaction(QDBusObjectPath(transactionID));
 
         connect(t, &PackageKit::Transaction::roleChanged, this, [this, t]() {
             if (t->role() == PackageKit::Transaction::RoleGetUpdates) {
@@ -356,7 +366,7 @@ void PackageKitNotifier::transactionListChanged(const QStringList &tids)
             m_transactions.remove(t->tid().path());
             t->deleteLater();
         });
-        m_transactions.insert(tid, t);
+        m_transactions.insert(transactionID, t);
     }
 }
 
@@ -370,7 +380,8 @@ void PackageKitNotifier::nowNeedsReboot()
 
 void PackageKitNotifier::onRequireRestart(PackageKit::Transaction::Restart type, const QString &packageID)
 {
-    PackageKit::Transaction *t = qobject_cast<PackageKit::Transaction *>(sender());
-    t->setProperty("requireRestart", qMax<int>(t->property("requireRestart").toInt(), type));
-    qCDebug(LIBDISCOVER_BACKEND_LOG) << "RESTART" << type << "is required for package" << packageID;
+    auto transaction = qobject_cast<PackageKit::Transaction *>(sender());
+    transaction->setProperty("requireRestart", qMax<int>(transaction->property("requireRestart").toInt(), type));
+    qCDebug(LIBDISCOVER_BACKEND_LOG) << "RESTART" << QMetaEnum::fromType<PackageKit::Transaction::Restart>().valueToKey(type) << "is required for package"
+                                     << packageID;
 }

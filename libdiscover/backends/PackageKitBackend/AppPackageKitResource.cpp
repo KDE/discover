@@ -38,14 +38,16 @@ QString AppPackageKitResource::name() const
         if (!m_appdata.extends().isEmpty()) {
             const auto components = backend()->componentsById(m_appdata.extends().constFirst());
 
-            if (components.isEmpty())
+            if (components.isEmpty()) {
                 qWarning() << "couldn't find" << m_appdata.extends() << "which is supposedly extended by" << m_appdata.id();
-            else
+            } else {
                 m_name = components.indexSafe(0)->name() + QLatin1String(" - ") + m_appdata.name();
+            }
         }
 
-        if (m_name.isEmpty())
+        if (m_name.isEmpty()) {
             m_name = m_appdata.name();
+        }
     }
     return m_name;
 }
@@ -53,8 +55,9 @@ QString AppPackageKitResource::name() const
 QString AppPackageKitResource::longDescription()
 {
     const auto desc = m_appdata.description();
-    if (!desc.isEmpty())
+    if (!desc.isEmpty()) {
         return desc;
+    }
 
     return PackageKitResource::longDescription();
 }
@@ -74,8 +77,9 @@ static QIcon componentIcon(const AppStream::Component &comp)
             break;
         case AppStream::Icon::KindStock: {
             const auto ret = QIcon::fromTheme(icon.name());
-            if (!ret.isNull())
+            if (!ret.isNull()) {
                 return ret;
+            }
             break;
         }
         default:
@@ -108,16 +112,18 @@ static constexpr auto s_addonKinds = {AppStream::Component::KindAddon, AppStream
 QStringList AppPackageKitResource::categories()
 {
     auto cats = m_appdata.categories();
-    if (!kContainsValue(s_addonKinds, m_appdata.kind()))
+    if (!kContainsValue(s_addonKinds, m_appdata.kind())) {
         cats.append(QStringLiteral("Application"));
+    }
     return cats;
 }
 
 QString AppPackageKitResource::comment()
 {
     const auto summary = m_appdata.summary();
-    if (!summary.isEmpty())
+    if (!summary.isEmpty()) {
         return summary;
+    }
 
     return PackageKitResource::comment();
 }

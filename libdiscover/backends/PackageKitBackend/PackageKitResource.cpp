@@ -62,12 +62,14 @@ QString PackageKitResource::availablePackageId() const
 {
     // First we check if it's upgradeable and use this version to display
     const QSet<QString> pkgids = backend()->upgradeablePackageId(this);
-    if (!pkgids.isEmpty())
+    if (!pkgids.isEmpty()) {
         return *pkgids.constBegin();
+    }
 
     const auto it = m_packages.constFind(PackageKit::Transaction::InfoAvailable);
-    if (it != m_packages.constEnd())
+    if (it != m_packages.constEnd()) {
         return it->first();
+    }
     return installedPackageId();
 }
 
@@ -179,11 +181,11 @@ QString PackageKitResource::origin() const
         // so we can set the OS name if we see it as origin prefix, and otherwise need to fall back
         // to the origin string.
         int i = dataField.indexOf(QLatin1Char(':'));
-        QString origin = i > 0? dataField.mid(i + 1) : dataField;
+        QString origin = i > 0 ? dataField.mid(i + 1) : dataField;
         if (origin.startsWith(osRelease->id().toLower() + QLatin1Char('-'))) {
             return osRelease->name();
         } else {
-            return origin.isEmpty()? i18n("Unknown Source") : origin;
+            return origin.isEmpty() ? i18n("Unknown Source") : origin;
         }
     }
 
@@ -204,26 +206,29 @@ QString PackageKitResource::section()
 
 AbstractResource::State PackageKitResource::state()
 {
-    if (backend()->isPackageNameUpgradeable(this))
+    if (backend()->isPackageNameUpgradeable(this)) {
         return Upgradeable;
-    else if (m_packages.contains(PackageKit::Transaction::InfoInstalled))
+    } else if (m_packages.contains(PackageKit::Transaction::InfoInstalled)) {
         return Installed;
-    else if (m_packages.contains(PackageKit::Transaction::InfoAvailable))
+    } else if (m_packages.contains(PackageKit::Transaction::InfoAvailable)) {
         return None;
-    else
+    } else {
         return Broken;
+    }
 }
 
 void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, bool arch)
 {
     auto oldState = state();
-    if (arch)
+    if (arch) {
         m_packages[info].archPkgIds.append(packageId);
-    else
+    } else {
         m_packages[info].nonarchPkgIds.append(packageId);
+    }
 
-    if (oldState != state())
+    if (oldState != state()) {
         Q_EMIT stateChanged();
+    }
 
     Q_EMIT versionsChanged();
 }
@@ -241,8 +246,9 @@ AbstractResource::Type PackageKitResource::type() const
 void PackageKitResource::fetchDetails()
 {
     const QString pkgid = availablePackageId();
-    if (!m_details.isEmpty() || pkgid.isEmpty())
+    if (!m_details.isEmpty() || pkgid.isEmpty()) {
         return;
+    }
     m_details.insert(QStringLiteral("fetching"), true); // we add an entry so it's not re-fetched.
 
     backend()->fetchDetails(pkgid);
@@ -264,8 +270,9 @@ void PackageKitResource::setDependenciesCount(int deps)
 void PackageKitResource::setDetails(const PackageKit::Details &details)
 {
     const bool ourDetails = details.packageId() == availablePackageId();
-    if (!ourDetails)
+    if (!ourDetails) {
         return;
+    }
 
     if (m_details != details) {
         const auto oldState = state();
@@ -274,11 +281,13 @@ void PackageKitResource::setDetails(const PackageKit::Details &details)
         const auto oldDescription = m_details.description();
         m_details = details;
 
-        if (oldState != state())
+        if (oldState != state()) {
             Q_EMIT stateChanged();
+        }
 
-        if (!backend()->isFetching())
+        if (!backend()->isFetching()) {
             Q_EMIT backend()->resourcesChanged(this, {"size", "homepage", "license"});
+        }
 
         if (oldSize != uint(size())) {
             Q_EMIT sizeChanged();
@@ -315,9 +324,10 @@ void PackageKitResource::fetchUpdateDetails()
 
 static void addIfNotEmpty(const QString &title, const QString &content, QString &where)
 {
-    if (!content.isEmpty())
+    if (!content.isEmpty()) {
         where += QLatin1String("<p><b>") + title + QLatin1String("</b>&nbsp;") + QString(content).replace(QLatin1Char('\n'), QLatin1String("<br />"))
             + QLatin1String("</p>");
+    }
 }
 
 QString PackageKitResource::joinPackages(const QStringList &pkgids, const QString &_sep, const QString &shadowPackage)
@@ -325,10 +335,11 @@ QString PackageKitResource::joinPackages(const QStringList &pkgids, const QStrin
     QStringList ret;
     for (const QString &pkgid : pkgids) {
         const auto pkgname = PackageKit::Daemon::packageName(pkgid);
-        if (pkgname == shadowPackage)
+        if (pkgname == shadowPackage) {
             ret += PackageKit::Daemon::packageVersion(pkgid);
-        else
+        } else {
             ret += i18nc("package-name (version)", "%1 (%2)", pkgname, PackageKit::Daemon::packageVersion(pkgid));
+        }
     }
     const QString sep = _sep.isEmpty() ? i18nc("comma separating package names", ", ") : _sep;
     return ret.join(sep);
@@ -337,8 +348,9 @@ QString PackageKitResource::joinPackages(const QStringList &pkgids, const QStrin
 static QStringList urlToLinks(const QStringList &urls)
 {
     QStringList ret;
-    for (const QString &in : urls)
-        ret += QStringLiteral("<a href='%1'>%1</a>").arg(in);
+    for (const auto &url : urls) {
+        ret += QStringLiteral("<a href='%1'>%1</a>").arg(url);
+    }
     return ret;
 }
 
@@ -399,8 +411,9 @@ void PackageKitResource::updateDetail(const QString &packageID,
     addIfNotEmpty(i18n("Update State:"), PackageKitMessages::updateStateMessage(state), info);
     addIfNotEmpty(i18n("Restart:"), PackageKitMessages::restartMessage(restart), info);
 
-    if (!vendorUrls.isEmpty())
+    if (!vendorUrls.isEmpty()) {
         addIfNotEmpty(i18n("Vendor:"), urlToLinks(vendorUrls).join(QLatin1String(", ")), info);
+    }
 
     Q_EMIT changelogFetched(info);
 }
@@ -417,10 +430,11 @@ QString PackageKitResource::sizeDescription()
         fetchDependencies();
     }
 
-    if (m_dependenciesCount <= 0)
+    if (m_dependenciesCount <= 0) {
         return AbstractResource::sizeDescription();
-    else
+    } else {
         return i18np("%2 (plus %1 dependency)", "%2 (plus %1 dependencies)", m_dependenciesCount, AbstractResource::sizeDescription());
+    }
 }
 
 QString PackageKitResource::sourceIcon() const
@@ -436,8 +450,9 @@ QStringList PackageKitResource::topObjects() const
 void PackageKitResource::fetchDependencies()
 {
     const auto id = isInstalled() ? installedPackageId() : availablePackageId();
-    if (id.isEmpty())
+    if (id.isEmpty()) {
         return;
+    }
     m_dependenciesCount = 0;
 
     auto packageDependencies = QSharedPointer<QJsonArray>::create();
@@ -471,14 +486,16 @@ void PackageKitResource::fetchDependencies()
 bool PackageKitResource::extendsItself() const
 {
     const auto extendsResources = backend()->resourcesByPackageNames<QVector<AbstractResource *>>(extends());
-    if (extendsResources.isEmpty())
+    if (extendsResources.isEmpty()) {
         return false;
+    }
 
     const auto ourPackageNames = allPackageNames();
-    for (auto r : extendsResources) {
-        PackageKitResource *pkres = qobject_cast<PackageKitResource *>(r);
-        if (pkres->allPackageNames() != ourPackageNames)
+    for (auto resource : extendsResources) {
+        auto pkResource = qobject_cast<PackageKitResource *>(resource);
+        if (pkResource->allPackageNames() != ourPackageNames) {
             return false;
+        }
     }
     return true;
 }
