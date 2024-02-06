@@ -178,9 +178,16 @@ void StandardBackendUpdater::refreshUpdateable()
     m_upgradeable.clear();
     auto r = m_backend->search(f);
     connect(r, &ResultsStream::resourcesFound, this, [this](const QVector<StreamResult> &resources) {
-        for (auto res : resources)
-            if (res.resource->state() == AbstractResource::Upgradeable)
-                m_upgradeable.insert(res.resource);
+        const auto predicate = [](const StreamResult &result) -> bool {
+            return result.resource->state() == AbstractResource::Upgradeable;
+        };
+        const auto count = std::count_if(resources.constBegin(), resources.constEnd(), predicate);
+        m_upgradeable.reserve(m_upgradeable.count() + count);
+        for (auto result : resources) {
+            if (predicate(result)) {
+                m_upgradeable.insert(result.resource);
+            }
+        }
     });
     connect(r, &ResultsStream::destroyed, this, [this]() {
         m_settingUp = false;
