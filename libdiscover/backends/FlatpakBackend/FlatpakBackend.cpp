@@ -32,6 +32,8 @@
 #include <KPluginFactory>
 #include <KSharedConfig>
 
+#include <QCoroCore>
+
 #include <QDebug>
 #include <QDir>
 #include <QFile>
@@ -55,7 +57,8 @@
 
 DISCOVER_BACKEND_PLUGIN(FlatpakBackend)
 
-using namespace Qt::Literals::StringLiterals;
+using namespace std::chrono_literals;
+using namespace Qt::StringLiterals;
 
 class FlatpakSource
 {
@@ -1416,40 +1419,73 @@ int FlatpakBackend::updatesCount() const
     return m_updater->updatesCount();
 }
 
-bool FlatpakBackend::flatpakResourceLessThan(const StreamResult &l, const StreamResult &r) const
+bool FlatpakBackend::flatpakResourceLessThan(const StreamResult &left, const StreamResult &right) const
 {
-    if (l.sortScore == r.sortScore) {
-        return flatpakResourceLessThan(l.resource, r.resource);
+    if (left.sortScore == right.sortScore) {
+        return flatpakResourceLessThan(left.resource, right.resource);
     }
-    return l.sortScore < r.sortScore;
+    return left.sortScore < right.sortScore;
 }
 
-bool FlatpakBackend::flatpakResourceLessThan(AbstractResource *l, AbstractResource *r) const
+bool FlatpakBackend::flatpakResourceLessThan(AbstractResource *left, AbstractResource *right) const
 {
-    // clang-format off
-    return (l->isInstalled() != r->isInstalled()) ? l->isInstalled()
-         : (l->origin() != r->origin()) ? m_sources->originIndex(l->origin()) < m_sources->originIndex(r->origin())
-         : (l->rating() && r->rating() && l->rating()->ratingPoints() != r->rating()->ratingPoints()) ? l->rating()->ratingPoints() > r->rating()->ratingPoints()
-         : l < r;
-    // clang-format on
+    if (left->isInstalled() != right->isInstalled()) {
+        return left->isInstalled();
+    }
+    if (left->origin() != right->origin()) {
+        return m_sources->originIndex(left->origin()) < m_sources->originIndex(right->origin());
+    }
+    const auto leftRating = left->rating();
+    const auto rightRating = right->rating();
+    if (leftRating && rightRating) {
+        const auto leftPoints = leftRating->ratingPoints();
+        const auto rightPoints = rightRating->ratingPoints();
+        if (leftPoints != rightPoints) {
+            return leftPoints > rightPoints;
+        }
+    }
+    return left < right;
 }
 
-ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, std::function<void(ResultsStream *)> callback)
+ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, std::function<QCoro::Task<>(ResultsStream *)> callback)
 {
     ResultsStream *stream = new ResultsStream(streamName);
+    stream->setParent(this);
 
-    auto f = [stream, callback = std::move(callback)] {
-        callback(stream);
-    };
-
-    if (isFetching()) {
-        connect(this, &FlatpakBackend::initialized, stream, f);
-    } else {
-        QTimer::singleShot(0, this, f);
-    }
+    // Don't capture variables into a coroutine lambda, pass them in as arguments instead
+    // See https://devblogs.microsoft.com/oldnewthing/20211103-00/?p=105870
+    [](FlatpakBackend *self, ResultsStream *stream, std::function<QCoro::Task<>(ResultsStream *)> callback) -> QCoro::Task<> {
+        QPointer<ResultsStream> guard = stream;
+        if (self->isFetching()) {
+            co_await qCoro(self, &FlatpakBackend::initialized);
+        } else {
+            co_await QCoro::sleepFor(0ms);
+        }
+        if (guard.isNull()) {
+            co_return;
+        }
+        co_await callback(stream);
+        if (guard.isNull()) {
+            co_return;
+        }
+        stream->finish();
+    }(this, stream, std::move(callback));
 
     return stream;
 }
+
+#define FLATPAK_BACKEND_GUARD                                                                                                                                  \
+    QPointer<ResultsStream> guardStream(stream);                                                                                                               \
+    auto cancellable = self->m_cancellable;
+
+#define FLATPAK_BACKEND_CHECK                                                                                                                                  \
+    if (guardStream.isNull() || g_cancellable_is_cancelled(cancellable)) {                                                                                     \
+        co_return;                                                                                                                                             \
+    }
+
+#define FLATPAK_BACKEND_YIELD                                                                                                                                  \
+    co_await QCoro::sleepFor(0ms);                                                                                                                             \
+    FLATPAK_BACKEND_CHECK
 
 ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
@@ -1464,169 +1500,217 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
     } else if (!filter.resourceUrl.isEmpty()) {
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
     } else if (filter.state == AbstractResource::Upgradeable) {
-        return deferredResultStream(u"FlatpakStream-upgradeable"_s, [this](ResultsStream *stream) {
-            auto fw = new QFutureWatcher<QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>(this);
-            connect(fw, &QFutureWatcher<QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>::finished, this, [this, fw, stream]() {
-                if (g_cancellable_is_cancelled(m_cancellable)) {
-                    stream->finish();
-                    fw->deleteLater();
-                    return;
-                }
+        return deferredResultStream(u"FlatpakStream-upgradeable"_s, [this](ResultsStream *stream) -> QCoro::Task<> {
+            return [](FlatpakBackend *self, ResultsStream *stream) -> QCoro::Task<> {
+                FLATPAK_BACKEND_GUARD
 
-                const auto refs = fw->result();
+                const auto ret = co_await QtConcurrent::run(&self->m_threadPool, [cancellable, installations = self->m_installations] {
+                    QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
+                    if (g_cancellable_is_cancelled(cancellable)) {
+                        qWarning() << "Job cancelled";
+                        return ret;
+                    }
+
+                    for (auto installation : std::as_const(installations)) {
+                        g_autoptr(GError) localError = nullptr;
+                        g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_for_update(installation, cancellable, &localError);
+                        if (!refs) {
+                            qWarning() << "Failed to get list of installed refs for listing updates:" << localError->message;
+                            continue;
+                        }
+                        if (g_cancellable_is_cancelled(cancellable)) {
+                            qWarning() << "Job cancelled";
+                            ret.clear();
+                            break;
+                        }
+
+                        if (refs->len == 0) {
+                            continue;
+                        }
+
+                        auto &current = ret[installation];
+                        current.reserve(refs->len);
+                        for (uint i = 0; i < refs->len; i++) {
+                            FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+                            g_object_ref(ref);
+                            current.append(ref);
+                        }
+                    }
+                    return ret;
+                });
+
+                FLATPAK_BACKEND_CHECK
+
                 QVector<StreamResult> resources;
-                for (auto it = refs.constBegin(), itEnd = refs.constEnd(); it != itEnd; ++it) {
-                    resources.reserve(resources.size() + it->size());
-                    for (auto ref : std::as_const(it.value())) {
-                        bool fresh;
-                        auto resource = getAppForInstalledRef(it.key(), ref, &fresh);
+                for (const auto &[installation, refs] : ret.asKeyValueRange()) {
+                    resources.reserve(resources.size() + refs.size());
+                    for (const auto ref : refs) {
+                        bool fresh = false;
+                        auto resource = self->getAppForInstalledRef(installation, ref, &fresh);
                         g_object_unref(ref);
                         if (resource) {
                             resource->setState(AbstractResource::Upgradeable, !fresh);
-                            updateAppSize(resource);
+                            self->updateAppSize(resource);
                             if (resource->resourceType() == FlatpakResource::Runtime) {
                                 resources.prepend(resource);
                             } else {
                                 resources.append(resource);
                             }
                         }
+
+                        FLATPAK_BACKEND_YIELD
                     }
                 }
 
-                if (!resources.isEmpty())
+                FLATPAK_BACKEND_CHECK
+
+                if (!resources.isEmpty()) {
                     Q_EMIT stream->resourcesFound(resources);
-                stream->finish();
-                fw->deleteLater();
-            });
-
-            QVector<FlatpakInstallation *> installations = m_installations;
-            auto cancellable = m_cancellable;
-            fw->setFuture(QtConcurrent::run(&m_threadPool, [installations, cancellable] {
-                QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
-                if (g_cancellable_is_cancelled(cancellable)) {
-                    qWarning() << "Job cancelled";
-                    return ret;
                 }
-
-                for (auto installation : std::as_const(installations)) {
-                    g_autoptr(GError) localError = nullptr;
-                    g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_for_update(installation, cancellable, &localError);
-                    if (!refs) {
-                        qWarning() << "Failed to get list of installed refs for listing updates:" << localError->message;
-                        continue;
-                    }
-                    if (g_cancellable_is_cancelled(cancellable)) {
-                        qWarning() << "Job cancelled";
-                        ret.clear();
-                        break;
-                    }
-
-                    if (refs->len == 0) {
-                        continue;
-                    }
-
-                    auto &current = ret[installation];
-                    current.reserve(refs->len);
-                    for (uint i = 0; i < refs->len; i++) {
-                        FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
-                        g_object_ref(ref);
-                        current.append(ref);
-                    }
-                }
-                return ret;
-            }));
+            }(this, stream);
         });
     } else if (filter.state == AbstractResource::Installed) {
-        return deferredResultStream(u"FlatpakStream-installed"_s, [this, filter](ResultsStream *stream) {
-            QVector<StreamResult> resources;
-            for (auto installation : std::as_const(m_installations)) {
-                g_autoptr(GError) localError = nullptr;
-                g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(installation, m_cancellable, &localError);
-                if (!refs) {
-                    qWarning() << "Failed to get list of installed refs for listing installed:" << localError->message;
-                    continue;
-                }
+        return deferredResultStream(u"FlatpakStream-installed"_s, [this, filter](ResultsStream *stream) -> QCoro::Task<> {
+            return [](FlatpakBackend *self, ResultsStream *stream, const AbstractResourcesBackend::Filters filter) -> QCoro::Task<> {
+                FLATPAK_BACKEND_GUARD
+                const auto installations = self->m_installations;
+                QVector<StreamResult> resources;
 
-                resources.reserve(resources.size() + refs->len);
-                for (uint i = 0; i < refs->len; i++) {
-                    FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
-                    QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(ref));
-                    if (name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".BaseApp"))
-                        || name.endsWith(QLatin1String(".Docs")))
-                        continue;
+                for (auto installation : std::as_const(installations)) {
+                    FLATPAK_BACKEND_YIELD
 
-                    auto resource = getAppForInstalledRef(installation, ref);
-                    if (!resource) {
+                    g_autoptr(GError) localError = nullptr;
+                    g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(installation, cancellable, &localError);
+                    if (!refs) {
+                        qWarning() << "Failed to get list of installed refs for listing installed:" << localError->message;
                         continue;
                     }
-                    if (!filter.search.isEmpty() && !resource->name().contains(filter.search, Qt::CaseInsensitive)
-                        && !resource->appstreamId().contains(filter.search, Qt::CaseInsensitive))
-                        continue;
-                    if (resource->resourceType() == FlatpakResource::Runtime) {
-                        resources.prepend(resource);
-                    } else {
-                        resources.append(resource);
+
+                    resources.reserve(resources.size() + refs->len);
+                    for (uint i = 0; i < refs->len; i++) {
+                        FLATPAK_BACKEND_YIELD;
+
+                        FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+                        QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(ref));
+                        if (name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".BaseApp"))
+                            || name.endsWith(QLatin1String(".Docs"))) {
+                            continue;
+                        }
+
+                        auto resource = self->getAppForInstalledRef(installation, ref);
+                        if (!resource) {
+                            continue;
+                        }
+                        if (!filter.search.isEmpty() && !resource->name().contains(filter.search, Qt::CaseInsensitive)
+                            && !resource->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
+                            continue;
+                        }
+                        if (resource->resourceType() == FlatpakResource::Runtime) {
+                            resources.prepend(resource);
+                        } else {
+                            resources.append(resource);
+                        }
                     }
                 }
-            }
-            if (!resources.isEmpty())
-                Q_EMIT stream->resourcesFound(resources);
-            stream->finish();
+
+                FLATPAK_BACKEND_CHECK
+
+                if (!resources.isEmpty()) {
+                    Q_EMIT stream->resourcesFound(resources);
+                }
+            }(this, stream, filter);
         });
     } else {
-        return deferredResultStream(u"FlatpakStream"_s, [this, filter](ResultsStream *stream) {
-            QVector<StreamResult> prioritary, rest;
-            for (const auto &source : std::as_const(m_flatpakSources)) {
-                QList<FlatpakResource *> resources;
-                if (source->m_pool) {
-                    const auto a = !filter.search.isEmpty() ? source->m_pool->search(filter.search)
+        // Multithreading is nearly impossible for this stream, since child
+        // objects are created and interact with this backend object. So the
+        // task is split into hunks, interleaved by zero timers.
+        return deferredResultStream(u"FlatpakStream"_s, [this, filter](ResultsStream *stream) -> QCoro::Task<> {
+            return [](FlatpakBackend *self, ResultsStream *stream, const AbstractResourcesBackend::Filters filter) -> QCoro::Task<> {
+                FLATPAK_BACKEND_GUARD
+                const auto installations = self->m_installations;
+                const auto flatpakSources = self->m_flatpakSources;
+                QVector<StreamResult> prioritary, rest;
+
+                for (const auto &source : flatpakSources) {
+                    FLATPAK_BACKEND_YIELD;
+
+                    QList<FlatpakResource *> resources;
+                    if (source->m_pool) {
+                        const auto components = [&]() {
+                            if (!filter.search.isEmpty()) {
+                                return source->m_pool->search(filter.search);
+                            }
 #if ASQ_CHECK_VERSION(0, 15, 6)
-                        : filter.category ? AppStreamUtils::componentsByCategories(source->m_pool, filter.category, AppStream::Bundle::KindFlatpak)
+                            if (filter.category) {
+                                return AppStreamUtils::componentsByCategories(source->m_pool, filter.category, AppStream::Bundle::KindFlatpak);
+                            }
 #endif
-                                          : source->m_pool->components();
-                    resources = kTransform<QList<FlatpakResource *>>(a, [this, &source](const auto &comp) {
-                        return resourceForComponent(comp, source);
-                    });
-                } else {
-                    resources = source->m_resources.values();
-                }
+                            return source->m_pool->components();
+                        }();
 
-                for (auto r : std::as_const(resources)) {
-                    const bool matchById = r->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
-                    if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
-                        continue;
+                        resources.reserve(components.size());
+                        for (const auto &component : components) {
+                            FLATPAK_BACKEND_YIELD;
+
+                            resources += self->resourceForComponent(component, source);
+                        }
+                    } else {
+                        resources = source->m_resources.values();
                     }
-                    if (r->state() < filter.state)
-                        continue;
 
-                    if (!filter.extends.isEmpty() && !r->extends().contains(filter.extends))
-                        continue;
+                    for (auto resource : std::as_const(resources)) {
+                        FLATPAK_BACKEND_YIELD;
 
-                    if (!filter.mimetype.isEmpty() && !r->mimetypes().contains(filter.mimetype))
-                        continue;
+                        const bool matchById = resource->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
+                        if (resource->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
+                            continue;
+                        }
 
-                    if (filter.search.isEmpty() || matchById) {
-                        rest += r;
-                    } else if (r->name().contains(filter.search, Qt::CaseInsensitive)) {
-                        prioritary += r;
-                    } else if (r->comment().contains(filter.search, Qt::CaseInsensitive)) {
-                        rest += r;
-                        // trust The search terms provided by appstream are relevant, this makes possible finding "gimp"
-                        // since the name() is "GNU Image Manipulation Program"
-                    } else if (r->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
-                        rest += r;
+                        if (resource->state() < filter.state) {
+                            continue;
+                        }
+
+                        if (!filter.extends.isEmpty() && !resource->extends().contains(filter.extends)) {
+                            continue;
+                        }
+
+                        if (!filter.mimetype.isEmpty() && !resource->mimetypes().contains(filter.mimetype)) {
+                            continue;
+                        }
+
+                        if (filter.search.isEmpty() || matchById) {
+                            rest += resource;
+                        } else if (resource->name().contains(filter.search, Qt::CaseInsensitive)) {
+                            prioritary += resource;
+                        } else if (resource->comment().contains(filter.search, Qt::CaseInsensitive)) {
+                            rest += resource;
+                            // trust The search terms provided by appstream are relevant, this makes possible finding "gimp"
+                            // since the name() is "GNU Image Manipulation Program"
+                        } else if (resource->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
+                            rest += resource;
+                        }
                     }
                 }
-            }
-            auto f = [this](auto l, auto r) {
-                return flatpakResourceLessThan(l, r);
-            };
-            std::sort(rest.begin(), rest.end(), f);
-            std::sort(prioritary.begin(), prioritary.end(), f);
-            rest = prioritary + rest;
-            if (!rest.isEmpty())
-                Q_EMIT stream->resourcesFound(rest);
-            stream->finish();
+                auto f = [self](auto left, auto right) {
+                    return self->flatpakResourceLessThan(left, right);
+                };
+
+                // Even sorting can not be performed in other thread, and it can take a while
+                std::sort(rest.begin(), rest.end(), f);
+
+                FLATPAK_BACKEND_YIELD;
+
+                std::sort(prioritary.begin(), prioritary.end(), f);
+
+                QList<StreamResult> resources;
+                resources.reserve(prioritary.size() + rest.size());
+                resources.append(std::move(prioritary));
+                resources.append(std::move(rest));
+
+                if (!resources.isEmpty()) {
+                    Q_EMIT stream->resourcesFound(resources);
+                }
+            }(this, stream, filter);
         });
     }
 }
@@ -1650,8 +1734,8 @@ QVector<StreamResult> FlatpakBackend::resultsByAppstreamName(const QString &name
             });
         }
     }
-    auto f = [this](auto l, auto r) {
-        return flatpakResourceLessThan(l, r);
+    auto f = [this](auto left, auto right) {
+        return flatpakResourceLessThan(left, right);
     };
     std::sort(resources.begin(), resources.end(), f);
     return resources;

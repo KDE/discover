@@ -27,6 +27,7 @@
 #include <KLocalizedString>
 
 #include <AppStreamQt/release.h>
+#include <QCoroCore>
 #include <QDebug>
 #include <QDesktopServices>
 #include <QDir>
@@ -750,24 +751,41 @@ QString translateSymbolicName(const QStringView &name)
 
 QString FlatpakResource::eolReason()
 {
-    if (!m_eolReason.has_value()) {
-        auto futureWatcher = new QFutureWatcher<FlatpakRemoteRef *>(this);
-        connect(futureWatcher, &QFutureWatcher<FlatpakRemoteRef *>::finished, this, [this, futureWatcher]() {
-            g_autoptr(FlatpakRemoteRef) rref = futureWatcher->result();
-            if (rref) {
-                m_eolReason = QString::fromUtf8(flatpak_remote_ref_get_eol(rref));
-                Q_EMIT eolReasonChanged();
-            }
-            futureWatcher->deleteLater();
-        });
+    if (!m_eolReason.has_value() && !m_eolReasonTask.has_value()) {
+        QPointer<FlatpakResource> self = this;
 
-        futureWatcher->setFuture(QtConcurrent::run(qobject_cast<FlatpakBackend *>(backend())->threadPool(),
-                                                   &FlatpakRunnables::findRemoteRef,
-                                                   this,
-                                                   qobject_cast<FlatpakBackend *>(backend())->cancellable()));
-        return {};
+        m_eolReasonTask = [](FlatpakResource *self) -> QCoro::Task<std::optional<QString>> {
+            QPointer<FlatpakResource> guard = self;
+            auto backend = qobject_cast<FlatpakBackend *>(self->backend());
+            auto cancellable = backend->cancellable();
+
+            g_autoptr(FlatpakRemoteRef) rref = co_await QtConcurrent::run(backend->threadPool(), &FlatpakRunnables::findRemoteRef, self, cancellable);
+
+            if (guard && !g_cancellable_is_cancelled(cancellable) && rref) {
+                co_return QString::fromUtf8(flatpak_remote_ref_get_eol(rref));
+            }
+
+            co_return std::nullopt;
+        }(this)
+                                                           .then([guard = QPointer(this)](std::optional<QString> reason) {
+                                                               if (!guard) {
+                                                                   return;
+                                                               }
+                                                               guard->m_eolReasonTask.reset();
+                                                               if (reason.has_value()) {
+                                                                   guard->setEolReason(reason.value());
+                                                               }
+                                                           });
     }
     return m_eolReason.value_or(QString());
+}
+
+void FlatpakResource::setEolReason(const QString &reason)
+{
+    if (m_eolReason != reason) {
+        m_eolReason = reason;
+        Q_EMIT eolReasonChanged();
+    }
 }
 
 QString createHtmlList(const QStringList &itemList)

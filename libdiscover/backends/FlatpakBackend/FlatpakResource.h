@@ -16,6 +16,9 @@
 
 #include <QAbstractItemModel>
 #include <QPixmap>
+
+#include <QCoroTask>
+
 #include <optional>
 
 class AddonList;
@@ -218,6 +221,7 @@ Q_SIGNALS:
 
 private:
     void setCommit(const QString &commit);
+    void setEolReason(const QString &reason);
     void loadPermissions();
 
     const AppStream::Component m_appdata;
@@ -243,6 +247,7 @@ private:
     QSharedPointer<FlatpakSource> m_temp;
     QVector<FlatpakPermission> m_permissions;
     std::optional<QString> m_eolReason;
+    std::optional<QCoro::Task<>> m_eolReasonTask;
     static const QStringList s_topObjects;
     static const QStringList s_bottomObjects;
 };

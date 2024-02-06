@@ -16,6 +16,8 @@
 
 #include <AppStreamQt/component.h>
 
+#include <QCoroTask>
+
 #include "flatpak-helper.h"
 
 class FlatpakSourcesBackend;
@@ -100,8 +102,8 @@ private:
     friend class FlatpakSource;
 
     void metadataRefreshed(FlatpakRemote *remote);
-    bool flatpakResourceLessThan(const StreamResult &l, const StreamResult &r) const;
-    bool flatpakResourceLessThan(AbstractResource *l, AbstractResource *r) const;
+    bool flatpakResourceLessThan(const StreamResult &left, const StreamResult &right) const;
+    bool flatpakResourceLessThan(AbstractResource *left, AbstractResource *right) const;
     FlatpakInstallation *preferredInstallation() const
     {
         return m_installations.constFirst();
@@ -131,7 +133,7 @@ private:
     void createPool(QSharedPointer<FlatpakSource> source);
     FlatpakRemote *installSource(FlatpakResource *resource);
 
-    ResultsStream *deferredResultStream(const QString &streamName, std::function<void(ResultsStream *)> callback);
+    ResultsStream *deferredResultStream(const QString &streamName, std::function<QCoro::Task<>(ResultsStream *)> callback);
 
     StandardBackendUpdater *m_updater;
     FlatpakSourcesBackend *m_sources = nullptr;

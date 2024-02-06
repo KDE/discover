@@ -8,6 +8,9 @@ set(QT_MIN_VERSION "6.6.0")
 set(KF6_MIN_VERSION "5.240.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.85")
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH}  "${CMAKE_SOURCE_DIR}/cmake")
@@ -50,9 +53,12 @@ endif()
 pkg_check_modules(Ostree IMPORTED_TARGET ostree-1)
 pkg_check_modules(RpmOstree IMPORTED_TARGET rpm-ostree-1)
 
+find_package(QCoro6 REQUIRED COMPONENTS Core)
+
+qcoro_enable_coroutines()
+
 list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "DISCOVER_BACKEND_PLUGIN")
 
-set(CMAKE_CXX_STANDARD 17)
 add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS -DQT_NO_URL_CAST_FROM_STRING)
 
 configure_file(DiscoverVersion.h.in DiscoverVersion.h)

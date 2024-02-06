@@ -157,7 +157,7 @@ private:
 
     QVector<StreamResult> resultsByComponents(const AppStream::ComponentBox &names) const;
 
-    void runWhenInitialized(const std::function<void()> &f, QObject *stream);
+    PKResultsStream *deferredResultStream(const QString &streamName, std::function<void(PKResultsStream *)> callback);
 
     void checkDaemonRunning();
     void acquireFetching(bool f);
