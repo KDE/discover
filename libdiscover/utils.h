@@ -33,8 +33,9 @@ public:
 
     void trigger()
     {
-        if (m_done)
+        if (m_done) {
             return;
+        }
         m_done = m_function();
         deleteLater();
     }
@@ -82,8 +83,9 @@ static T kFilter(const Q &input, _UnaryOperation op)
 {
     T ret;
     for (const auto &v : input) {
-        if (op(v))
+        if (op(v)) {
             ret += v;
+        }
     }
     return ret;
 }
@@ -92,10 +94,11 @@ template<typename T, typename Q, typename _UnaryOperation>
 static void kFilterInPlace(Q &input, _UnaryOperation op)
 {
     for (auto it = input.begin(); it != input.end();) {
-        if (op(*it))
+        if (op(*it)) {
             ++it;
-        else
+        } else {
             it = input.erase(it);
+        }
     }
 }
 
@@ -104,8 +107,9 @@ static int kIndexOf(const Q &list, W func)
 {
     int i = 0;
     for (auto it = list.constBegin(), itEnd = list.constEnd(); it != itEnd; ++it) {
-        if (func(*it))
+        if (func(*it)) {
             return i;
+        }
         ++i;
     }
     return -1;
@@ -128,19 +132,23 @@ static QVector<T> kSetToVector(const QSet<T> &set)
 {
     QVector<T> ret;
     ret.reserve(set.size());
-    for (auto &x : set)
+    for (auto &x : set) {
         ret.append(x);
+    }
     return ret;
 }
+
 template<typename T>
 static QList<T> kSetToList(const QSet<T> &set)
 {
     QList<T> ret;
     ret.reserve(set.size());
-    for (auto &x : set)
+    for (auto &x : set) {
         ret.append(x);
+    }
     return ret;
 }
+
 template<typename T>
 static QSet<T> kToSet(const QList<T> &set)
 {

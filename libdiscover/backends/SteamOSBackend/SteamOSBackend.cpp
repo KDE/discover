@@ -106,10 +106,11 @@ void SteamOSBackend::needRebootChanged()
 
 void SteamOSBackend::acquireFetching(bool f)
 {
-    if (f)
+    if (f) {
         m_fetching++;
-    else
+    } else {
         m_fetching--;
+    }
 
     if ((!f && m_fetching == 0) || (f && m_fetching == 1)) {
         Q_EMIT fetchingChanged();
@@ -118,13 +119,15 @@ void SteamOSBackend::acquireFetching(bool f)
 
 void SteamOSBackend::checkForUpdates()
 {
-    if (m_fetching)
+    if (m_fetching) {
         return;
+    }
 
     // If there's no dbus object to talk to, just return
     // TODO: Maybe show a warning/error?
-    if (m_currentVersion.isEmpty())
+    if (m_currentVersion.isEmpty()) {
         return;
+    }
 
     acquireFetching(true);
 
@@ -175,8 +178,9 @@ int SteamOSBackend::updatesCount() const
 ResultsStream *SteamOSBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
     QVector<StreamResult> res;
-    if (m_resource && m_resource->state() >= filter.state)
+    if (m_resource && m_resource->state() >= filter.state) {
         res << StreamResult{m_resource, 0};
+    }
     return new ResultsStream(QLatin1String("SteamOS-stream"), res);
 }
 

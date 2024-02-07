@@ -33,6 +33,6 @@ private:
     QVector<AbstractResource *> getResources(ResultsStream *stream, bool canBeEmpty = false);
     QVector<AbstractResource *> getAllResources(AbstractResourcesBackend *backend);
     QPointer<AbstractResourcesBackend> m_backend;
-    QPointer<AbstractResource> m_r;
-    QVector<ReviewPtr> m_revs;
+    QPointer<AbstractResource> m_resource;
+    QVector<ReviewPtr> m_reviews;
 };

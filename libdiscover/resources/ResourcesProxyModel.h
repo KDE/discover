@@ -118,7 +118,7 @@ public:
 
     Category *filteredCategory() const;
     QString filteredCategoryName() const;
-    void setFilteredCategoryName(const QString &cat);
+    void setFilteredCategoryName(const QString &categoryName);
 
     QString mimeTypeFilter() const;
     void setMimeTypeFilter(const QString &mime);
@@ -168,15 +168,15 @@ private Q_SLOTS:
     void removeResource(AbstractResource *resource);
 
 private:
-    void sortedInsertion(const QVector<StreamResult> &res);
+    void sortedInsertion(const QVector<StreamResult> &results);
     QVariant roleToValue(const StreamResult &result, int role) const;
     QVariant roleToOrderedValue(const StreamResult &result, int role) const;
 
     QVector<int> propertiesToRoles(const QVector<QByteArray> &properties) const;
-    void addResources(const QVector<StreamResult> &res);
+    void addResources(const QVector<StreamResult> &results);
     void fetchSubcategories();
     void removeDuplicates(QVector<StreamResult> &newResources);
-    bool isSorted(const QVector<StreamResult> &resources);
+    bool isSorted(const QVector<StreamResult> &results);
 
     Roles m_sortRole;
     Qt::SortOrder m_sortOrder;

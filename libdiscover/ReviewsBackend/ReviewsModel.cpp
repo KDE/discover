@@ -111,8 +111,9 @@ QHash<int, QByteArray> ReviewsModel::roleNames() const
 
 QVariant ReviewsModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid())
+    if (!index.isValid()) {
         return QVariant();
+    }
     switch (role) {
     case Qt::DisplayRole:
         return m_reviews.at(index.row())->reviewText();
@@ -144,8 +145,9 @@ QVariant ReviewsModel::data(const QModelIndex &index, int role) const
 
 int ReviewsModel::rowCount(const QModelIndex &parent) const
 {
-    if (parent.isValid())
+    if (parent.isValid()) {
         return 0;
+    }
     return m_reviews.count();
 }
 
@@ -210,8 +212,9 @@ void ReviewsModel::setResource(AbstractResource *app)
 
 void ReviewsModel::restartFetching()
 {
-    if (!m_app || !m_backend)
+    if (!m_app || !m_backend) {
         return;
+    }
 
     m_canFetchMore = true;
     m_lastPage = 0;
@@ -221,8 +224,9 @@ void ReviewsModel::restartFetching()
 
 void ReviewsModel::fetchMore(const QModelIndex &parent)
 {
-    if (!m_backend || !m_app || parent.isValid() || m_backend->isFetching() || !m_canFetchMore)
+    if (!m_backend || !m_app || parent.isValid() || m_backend->isFetching() || !m_canFetchMore) {
         return;
+    }
 
     m_lastPage++;
     m_backend->fetchReviews(m_app, m_lastPage);
@@ -231,15 +235,16 @@ void ReviewsModel::fetchMore(const QModelIndex &parent)
 
 void ReviewsModel::addReviews(AbstractResource *app, const QVector<ReviewPtr> &reviews, bool canFetchMore)
 {
-    if (app != m_app)
+    if (app != m_app) {
         return;
+    }
 
     m_canFetchMore = canFetchMore;
     qCDebug(LIBDISCOVER_LOG) << "reviews arrived..." << m_lastPage << reviews.size();
 
     if (!reviews.isEmpty()) {
-        for (ReviewPtr r : reviews) {
-            m_starsCount.addRating(r->rating());
+        for (ReviewPtr review : reviews) {
+            m_starsCount.addRating(review->rating());
         }
         beginInsertRows(QModelIndex(), rowCount(), rowCount() + reviews.size() - 1);
         m_reviews += reviews;

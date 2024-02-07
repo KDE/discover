@@ -13,9 +13,9 @@ using namespace Qt::StringLiterals;
 
 OdrsAppsModel::OdrsAppsModel()
 {
-    auto x = OdrsReviewsBackend::global();
-    connect(x.get(), &OdrsReviewsBackend::ratingsReady, this, &OdrsAppsModel::refresh);
-    if (!x->top().isEmpty()) {
+    auto backend = OdrsReviewsBackend::global();
+    connect(backend.get(), &OdrsReviewsBackend::ratingsReady, this, &OdrsAppsModel::refresh);
+    if (!backend->top().isEmpty()) {
         refresh();
     }
 }
@@ -23,7 +23,7 @@ OdrsAppsModel::OdrsAppsModel()
 void OdrsAppsModel::refresh()
 {
     const auto top = OdrsReviewsBackend::global()->top();
-    setUris(kTransform<QVector<QUrl>>(top, [](auto r) {
-        return QUrl("appstream://"_L1 + r->packageName());
+    setUris(kTransform<QVector<QUrl>>(top, [](auto rating) {
+        return QUrl("appstream://"_L1 + rating->packageName());
     }));
 }

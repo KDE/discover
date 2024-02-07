@@ -28,9 +28,9 @@ void AbstractBackendUpdater::fetchChangelog() const
 
 void AbstractBackendUpdater::setNeedsReboot(bool enabled)
 {
-    if (m_needsReboot == enabled)
+    if (m_needsReboot == enabled) {
         return;
-
+    }
     m_needsReboot = enabled;
     Q_EMIT needsRebootChanged();
 }

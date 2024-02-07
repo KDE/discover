@@ -81,7 +81,7 @@ void OdrsReviewsBackend::fetchRatings()
     qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Fetch ratings:" << fetchRatings;
     if (fetchRatings) {
         setFetching(true);
-        KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl, fileUrl, -1, KIO::Overwrite | KIO::HideProgressInfo);
+        auto getJob = KIO::file_copy(ratingsUrl, fileUrl, -1, KIO::Overwrite | KIO::HideProgressInfo);
         connect(getJob, &KIO::FileCopyJob::result, this, &OdrsReviewsBackend::ratingsFetched);
     } else {
         parseRatings();
@@ -356,8 +356,8 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
     const auto reviews = document.array();
     if (!reviews.isEmpty()) {
         QList<ReviewPtr> reviewsList;
-        for (auto it = reviews.begin(); it != reviews.end(); it++) {
-            const QJsonObject review = it->toObject();
+        for (const auto &it : reviews) {
+            const QJsonObject review = it.toObject();
             if (!review.isEmpty()) {
                 // Same ranking algorythm Gnome Software uses
                 const int usefulFavorable = review.value(QStringLiteral("karma_up")).toInt();

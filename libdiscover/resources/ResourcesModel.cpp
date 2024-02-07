@@ -154,8 +154,8 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend *backend)
     connect(backend, &AbstractResourcesBackend::passiveMessage, this, &ResourcesModel::passiveMessage);
     connect(backend, &AbstractResourcesBackend::inlineMessageChanged, this, &ResourcesModel::setInlineMessage);
     connect(backend->backendUpdater(), &AbstractBackendUpdater::progressingChanged, this, &ResourcesModel::slotFetching);
-    if (backend->reviewsBackend()) {
-        connect(backend->reviewsBackend(), &AbstractReviewsBackend::error, this, &ResourcesModel::passiveMessage, Qt::UniqueConnection);
+    if (auto reviewsBackend = backend->reviewsBackend()) {
+        connect(reviewsBackend, &AbstractReviewsBackend::error, this, &ResourcesModel::passiveMessage, Qt::UniqueConnection);
     }
 
     // In case this is in fact the first backend to be added, and also happens to be

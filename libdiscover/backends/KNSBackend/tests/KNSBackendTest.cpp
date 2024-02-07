@@ -27,7 +27,7 @@ static QString s_knsrcName = QStringLiteral("ksplash.knsrc");
 
 KNSBackendTest::KNSBackendTest(QObject *parent)
     : QObject(parent)
-    , m_r(nullptr)
+    , m_resource(nullptr)
 {
     QStandardPaths::setTestModeEnabled(true);
     QDir(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)).removeRecursively();
@@ -53,16 +53,17 @@ QVector<AbstractResource *> KNSBackendTest::getResources(ResultsStream *stream, 
     Q_ASSERT(stream->objectName() != QLatin1String("KNS-void"));
     QSignalSpy spyResources(stream, &ResultsStream::destroyed);
     QVector<AbstractResource *> resources;
-    connect(stream, &ResultsStream::resourcesFound, this, [&resources, stream](const QVector<StreamResult> &res) {
-        resources += kTransform<QVector<AbstractResource *>>(res, [](auto result) {
+    connect(stream, &ResultsStream::resourcesFound, this, [&resources, stream](const QVector<StreamResult> &results) {
+        resources += kTransform<QVector<AbstractResource *>>(results, [](auto result) {
             return result.resource;
         });
         Q_EMIT stream->fetchMore();
     });
     bool waited = spyResources.wait(10000);
     if (!waited) {
-        if (auto x = qobject_cast<AggregatedResultsStream *>(stream))
+        if (auto x = qobject_cast<AggregatedResultsStream *>(stream)) {
             qDebug() << "waited" << x->streams();
+        }
     }
     Q_ASSERT(waited);
     Q_ASSERT(!resources.isEmpty() || canBeEmpty);
@@ -71,11 +72,12 @@ QVector<AbstractResource *> KNSBackendTest::getResources(ResultsStream *stream, 
 
 QVector<AbstractResource *> KNSBackendTest::getAllResources(AbstractResourcesBackend *backend)
 {
-    AbstractResourcesBackend::Filters f;
-    if (CategoryModel::global()->rootCategories().isEmpty())
+    AbstractResourcesBackend::Filters filters;
+    if (CategoryModel::global()->rootCategories().isEmpty()) {
         CategoryModel::global()->populateCategories();
-    f.category = CategoryModel::global()->rootCategories().constFirst();
-    return getResources(backend->search(f));
+    }
+    filters.category = CategoryModel::global()->rootCategories().constFirst();
+    return getResources(backend->search(filters));
 }
 
 void KNSBackendTest::testRetrieval()
@@ -87,71 +89,71 @@ void KNSBackendTest::testRetrieval()
     QVERIFY(!m_backend->isFetching() || spy.wait());
 
     const auto resources = getAllResources(m_backend);
-    for (AbstractResource *res : resources) {
-        QVERIFY(!res->name().isEmpty());
-        QVERIFY(!res->categories().isEmpty());
-        QVERIFY(!res->origin().isEmpty());
-        QVERIFY(!res->icon().isNull());
-        //     QVERIFY(!res->comment().isEmpty());
-        //     QVERIFY(!res->longDescription().isEmpty());
-        //     QVERIFY(!res->license().isEmpty());
-        QVERIFY(res->homepage().isValid() && !res->homepage().isEmpty());
-        QVERIFY(res->state() > AbstractResource::Broken);
-        QVERIFY(res->addonsInformation().isEmpty());
+    for (auto ressource : resources) {
+        QVERIFY(!ressource->name().isEmpty());
+        QVERIFY(!ressource->categories().isEmpty());
+        QVERIFY(!ressource->origin().isEmpty());
+        QVERIFY(!ressource->icon().isNull());
+        //     QVERIFY(!ressource->comment().isEmpty());
+        //     QVERIFY(!ressource->longDescription().isEmpty());
+        //     QVERIFY(!ressource->license().isEmpty());
+        QVERIFY(ressource->homepage().isValid() && !ressource->homepage().isEmpty());
+        QVERIFY(ressource->state() > AbstractResource::Broken);
+        QVERIFY(ressource->addonsInformation().isEmpty());
 
-        QSignalSpy spy(res, &AbstractResource::screenshotsFetched);
-        res->fetchScreenshots();
+        QSignalSpy spy(ressource, &AbstractResource::screenshotsFetched);
+        ressource->fetchScreenshots();
         QVERIFY(spy.count() || spy.wait());
 
-        QSignalSpy spy1(res, &AbstractResource::changelogFetched);
-        res->fetchChangelog();
+        QSignalSpy spy1(ressource, &AbstractResource::changelogFetched);
+        ressource->fetchChangelog();
         QVERIFY(spy1.count() || spy1.wait());
     }
 }
 
 void KNSBackendTest::testReviews()
 {
-    const QVector<AbstractResource *> resources = getAllResources(m_backend);
-    AbstractReviewsBackend *rev = m_backend->reviewsBackend();
-    QVERIFY(!rev->hasCredentials());
-    for (AbstractResource *res : resources) {
-        Rating *r = rev->ratingForApplication(res);
-        QVERIFY(r);
-        QCOMPARE(r->packageName(), res->packageName());
-        QVERIFY(r->rating() > 0 && r->rating() <= 10);
+    const auto resources = getAllResources(m_backend);
+    auto reviewsBackend = m_backend->reviewsBackend();
+    QVERIFY(!reviewsBackend->hasCredentials());
+    for (auto resource : resources) {
+        auto rating = reviewsBackend->ratingForApplication(resource);
+        QVERIFY(rating);
+        QCOMPARE(rating->packageName(), resource->packageName());
+        QVERIFY(rating->rating() > 0 && rating->rating() <= 10);
     }
 
-    auto res = resources.first();
-    QSignalSpy spy(rev, &AbstractReviewsBackend::reviewsReady);
-    rev->fetchReviews(res);
+    auto resource = resources.first();
+    QSignalSpy spy(reviewsBackend, &AbstractReviewsBackend::reviewsReady);
+    reviewsBackend->fetchReviews(resource);
     QVERIFY(spy.count() || spy.wait());
 }
 
-void KNSBackendTest::reviewsArrived(AbstractResource *r, const QVector<ReviewPtr> &revs)
+void KNSBackendTest::reviewsArrived(AbstractResource *resource, const QVector<ReviewPtr> &reviews)
 {
-    m_r = r;
-    m_revs = revs;
+    m_resource = resource;
+    m_reviews = reviews;
 }
 
 void KNSBackendTest::testResourceByUrl()
 {
-    AbstractResourcesBackend::Filters f;
-    f.resourceUrl = QUrl(QLatin1String("kns://") + m_backend->name() + QLatin1String("/api.kde-look.org/1136471"));
-    const QVector<AbstractResource *> resources = getResources(m_backend->search(f));
-    const QVector<QUrl> res = kTransform<QVector<QUrl>>(resources, [](AbstractResource *res) {
-        return res->url();
+    AbstractResourcesBackend::Filters filters;
+    filters.resourceUrl = QUrl(QLatin1String("kns://") + m_backend->name() + QLatin1String("/api.kde-look.org/1136471"));
+    const QVector<AbstractResource *> resources = getResources(m_backend->search(filters));
+    const QVector<QUrl> urls = kTransform<QVector<QUrl>>(resources, [](AbstractResource *resource) {
+        return resource->url();
     });
-    QCOMPARE(res.count(), 1);
-    QCOMPARE(f.resourceUrl, res.constFirst());
+    QCOMPARE(urls.count(), 1);
+    QCOMPARE(filters.resourceUrl, urls.constFirst());
 
     auto resource = resources.constFirst();
     QVERIFY(!resource->isInstalled()); // Make sure .qttest is clean before running the test
 
     QSignalSpy spy(resource, &AbstractResource::stateChanged);
-    auto b = resource->backend();
-    b->installApplication(resource);
+    auto backend = resource->backend();
+    backend->installApplication(resource);
     QVERIFY(spy.wait());
-    b->removeApplication(resource);
+    backend->removeApplication(resource);
     QVERIFY(spy.wait());
     QCOMPARE(spy.count(), 2);
     QVERIFY(!resource->isInstalled());
@@ -163,10 +165,10 @@ void KNSBackendTest::testResourceByUrlResourcesModel()
     filter.resourceUrl = QUrl(QStringLiteral("kns://plasmoids.knsrc/store.kde.org/1169537")); // Wrong domain
 
     auto resources = getResources(ResourcesModel::global()->search(filter), true);
-    const QVector<QUrl> res = kTransform<QVector<QUrl>>(resources, [](AbstractResource *res) {
-        return res->url();
+    const QVector<QUrl> urls = kTransform<QVector<QUrl>>(resources, [](AbstractResource *resource) {
+        return resource->url();
     });
-    QCOMPARE(res.count(), 0);
+    QCOMPARE(urls.count(), 0);
 }
 
 #include "moc_KNSBackendTest.cpp"

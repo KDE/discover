@@ -150,9 +150,7 @@ void ResourcesProxyModel::setSearch(const QString &_searchText)
     // 1-character searches are painfully slow. >= 2 chars are fine, though
     const QString searchText = _searchText.size() <= 1 ? QString() : _searchText;
 
-    const bool diff = searchText != m_filters.search;
-
-    if (diff) {
+    if (m_filters.search != searchText) {
         m_filters.search = searchText;
         invalidateFilter();
         Q_EMIT searchChanged(m_filters.search);
@@ -161,7 +159,7 @@ void ResourcesProxyModel::setSearch(const QString &_searchText)
 
 void ResourcesProxyModel::removeDuplicates(QVector<StreamResult> &resources)
 {
-    const auto cab = ResourcesModel::global()->currentApplicationBackend();
+    const auto currentApplicationBackend = ResourcesModel::global()->currentApplicationBackend();
     QHash<QString, QString> aliases;
     QHash<QString, QVector<StreamResult>::iterator> storedIds;
     for (auto it = m_displayedResources.begin(); it != m_displayedResources.end(); ++it) {
@@ -202,14 +200,16 @@ void ResourcesProxyModel::removeDuplicates(QVector<StreamResult> &resources)
             const auto alts = it->resource->alternativeAppstreamIds();
             for (const auto &alt : alts) {
                 at = storedIds.find(alt);
-                if (at == storedIds.end())
+                if (at == storedIds.end()) {
                     break;
+                }
 
                 auto aliased = aliases.constFind(alt);
                 if (aliased != aliases.constEnd()) {
                     at = storedIds.find(aliased.value());
-                    if (at != storedIds.end())
+                    if (at != storedIds.end()) {
                         break;
+                    }
                 }
             }
         }
@@ -225,14 +225,16 @@ void ResourcesProxyModel::removeDuplicates(QVector<StreamResult> &resources)
                 const auto alts = it->resource->alternativeAppstreamIds();
                 for (const auto &alt : alts) {
                     at = ids.find(alt);
-                    if (at != ids.end())
+                    if (at != ids.end()) {
                         break;
+                    }
 
                     auto aliased = aliases.constFind(appstreamid);
                     if (aliased != aliases.constEnd()) {
                         at = ids.find(aliased.value());
-                        if (at != ids.end())
+                        if (at != ids.end()) {
                             break;
+                        }
                     }
                 }
             }
@@ -244,13 +246,13 @@ void ResourcesProxyModel::removeDuplicates(QVector<StreamResult> &resources)
                 }
                 ++it;
             } else {
-                if (it->resource->backend() == cab && it->resource->backend() != (**at).resource->backend()) {
+                if (it->resource->backend() == currentApplicationBackend && it->resource->backend() != (**at).resource->backend()) {
                     qSwap(*it, **at);
                 }
                 it = resources.erase(it);
             }
         } else {
-            if (it->resource->backend() == cab) {
+            if (it->resource->backend() == currentApplicationBackend) {
                 **at = *it;
                 auto pos = index(*at - m_displayedResources.begin(), 0);
                 Q_EMIT dataChanged(pos, pos);
@@ -260,26 +262,28 @@ void ResourcesProxyModel::removeDuplicates(QVector<StreamResult> &resources)
     }
 }
 
-void ResourcesProxyModel::addResources(const QVector<StreamResult> &_res)
+void ResourcesProxyModel::addResources(const QVector<StreamResult> &results)
 {
-    auto res = _res;
-    m_filters.filterJustInCase(res);
+    auto resultsCopy = results;
+    m_filters.filterJustInCase(resultsCopy);
 
-    if (res.isEmpty())
+    if (resultsCopy.isEmpty()) {
         return;
+    }
 
-    std::sort(res.begin(), res.end(), [this](const auto &left, const auto &right) {
+    std::sort(resultsCopy.begin(), resultsCopy.end(), [this](const auto &left, const auto &right) {
         return orderedLessThan(left, right);
     });
 
-    sortedInsertion(res);
+    sortedInsertion(resultsCopy);
     fetchSubcategories();
 }
 
 void ResourcesProxyModel::invalidateSorting()
 {
-    if (m_displayedResources.isEmpty())
+    if (m_displayedResources.isEmpty()) {
         return;
+    }
 
     beginResetModel();
     std::sort(m_displayedResources.begin(), m_displayedResources.end(), [this](const auto &left, const auto &right) {
@@ -295,12 +299,10 @@ QString ResourcesProxyModel::lastSearch() const
 
 void ResourcesProxyModel::setOriginFilter(const QString &origin)
 {
-    if (origin == m_filters.origin)
-        return;
-
-    m_filters.origin = origin;
-
-    invalidateFilter();
+    if (m_filters.origin != origin) {
+        m_filters.origin = origin;
+        invalidateFilter();
+    }
 }
 
 QString ResourcesProxyModel::originFilter() const
@@ -313,54 +315,53 @@ QString ResourcesProxyModel::filteredCategoryName() const
     return m_categoryName;
 }
 
-void ResourcesProxyModel::setFilteredCategoryName(const QString &cat)
+void ResourcesProxyModel::setFilteredCategoryName(const QString &categoryName)
 {
-    if (cat == m_categoryName)
+    if (categoryName == m_categoryName) {
         return;
+    }
 
-    m_categoryName = cat;
+    m_categoryName = categoryName;
 
-    auto category = CategoryModel::global()->findCategoryByName(cat);
-    if (category) {
+    if (auto category = CategoryModel::global()->findCategoryByName(categoryName)) {
         setFiltersFromCategory(category);
     } else {
         qDebug() << "looking up wrong category or too early" << m_categoryName;
-        auto f = [this, cat] {
-            auto category = CategoryModel::global()->findCategoryByName(cat);
+        auto f = [this, categoryName] {
+            auto category = CategoryModel::global()->findCategoryByName(categoryName);
             setFiltersFromCategory(category);
         };
-        auto one = new OneTimeAction(f, this);
-        connect(CategoryModel::global(), &CategoryModel::rootCategoriesChanged, one, &OneTimeAction::trigger);
+        auto action = new OneTimeAction(f, this);
+        connect(CategoryModel::global(), &CategoryModel::rootCategoriesChanged, action, &OneTimeAction::trigger);
     }
 }
 
 void ResourcesProxyModel::setFiltersFromCategory(Category *category)
 {
-    if (category == m_filters.category)
-        return;
-
-    m_filters.category = category;
-    invalidateFilter();
-    Q_EMIT categoryChanged();
+    if (m_filters.category != category) {
+        m_filters.category = category;
+        invalidateFilter();
+        Q_EMIT categoryChanged();
+    }
 }
 
 void ResourcesProxyModel::fetchSubcategories()
 {
-    auto cats = kToSet(m_filters.category ? m_filters.category->subCategories() : CategoryModel::global()->rootCategories());
+    auto categories = kToSet(m_filters.category ? m_filters.category->subCategories() : CategoryModel::global()->rootCategories());
 
     const int count = rowCount();
     QSet<Category *> done;
-    for (int i = 0; i < count && !cats.isEmpty(); ++i) {
-        AbstractResource *res = m_displayedResources[i].resource;
-        const auto found = res->categoryObjects(kSetToVector(cats));
+    for (int i = 0; i < count && !categories.isEmpty(); ++i) {
+        const auto resource = m_displayedResources[i].resource;
+        const auto found = resource->categoryObjects(kSetToVector(categories));
         done.unite(found);
-        cats.subtract(found);
+        categories.subtract(found);
     }
 
-    const QVariantList ret = kTransform<QVariantList>(done, [](Category *cat) {
-        return QVariant::fromValue<QObject *>(cat);
+    const QVariantList ret = kTransform<QVariantList>(done, [](Category *category) {
+        return QVariant::fromValue<QObject *>(category);
     });
-    if (ret != m_subcategories) {
+    if (m_subcategories != ret) {
         m_subcategories = ret;
         Q_EMIT subcategoriesChanged(m_subcategories);
     }
@@ -544,25 +545,25 @@ QVariant ResourcesProxyModel::data(const QModelIndex &index, int role) const
 
 QVariant ResourcesProxyModel::roleToValue(const StreamResult &result, int role) const
 {
-    AbstractResource *resource = result.resource;
+    const auto resource = result.resource;
     switch (role) {
     case ApplicationRole:
         return QVariant::fromValue<QObject *>(resource);
-    case RatingPointsRole:
-    case RatingRole:
-    case RatingCountRole:
+    case RatingPointsRole: {
+        const auto rating = resource->rating();
+        return rating ? rating->ratingPoints() : 0;
+    }
+    case RatingRole: {
+        const auto rating = resource->rating();
+        return rating ? rating->rating() : 0;
+    }
+    case RatingCountRole: {
+        const auto rating = resource->rating();
+        return rating ? rating->ratingCount() : 0;
+    }
     case SortableRatingRole: {
-        Rating *const rating = resource->rating();
-        const int idx = Rating::staticMetaObject.indexOfProperty(roleNames().value(role).constData());
-        Q_ASSERT(idx >= 0);
-        auto prop = Rating::staticMetaObject.property(idx);
-        if (rating) {
-            return prop.readOnGadget(rating);
-        } else {
-            QVariant val(0);
-            val.convert(prop.metaType());
-            return val;
-        }
+        const auto rating = resource->rating();
+        return rating ? rating->sortableRating() : 0;
     }
     case SearchRelevanceRole: {
         qreal rating = roleToValue(result, SortableRatingRole).value<qreal>();
@@ -586,7 +587,7 @@ QVariant ResourcesProxyModel::roleToValue(const StreamResult &result, int role) 
     case Qt::DisplayRole:
     case Qt::StatusTipRole:
     case Qt::ToolTipRole:
-        return QVariant();
+        return {};
     default: {
         QByteArray roleText = roleNames().value(role);
         if (Q_UNLIKELY(roleText.isEmpty())) {
@@ -598,9 +599,10 @@ QVariant ResourcesProxyModel::roleToValue(const StreamResult &result, int role) 
 
         if (Q_UNLIKELY(propidx < 0)) {
             qCWarning(LIBDISCOVER_LOG) << "unknown role:" << role << roleText;
-            return QVariant();
-        } else
+            return {};
+        } else {
             return m->property(propidx).read(resource);
+        }
     }
     }
 }
@@ -617,13 +619,14 @@ QVariant ResourcesProxyModel::roleToOrderedValue(const StreamResult &result, int
     }
 }
 
-bool ResourcesProxyModel::isSorted(const QVector<StreamResult> &resources)
+bool ResourcesProxyModel::isSorted(const QVector<StreamResult> &results)
 {
-    auto last = resources.constFirst();
-    for (auto it = resources.constBegin() + 1, itEnd = resources.constEnd(); it != itEnd; ++it) {
-        auto v1 = roleToValue(last, m_sortRole), v2 = roleToValue(*it, m_sortRole);
+    auto last = results.constFirst();
+    for (auto it = results.constBegin() + 1, itEnd = results.constEnd(); it != itEnd; ++it) {
+        auto v1 = roleToValue(last, m_sortRole);
+        auto v2 = roleToValue(*it, m_sortRole);
         if (!orderedLessThan(last, *it) && v1 != v2) {
-            qDebug() << "faulty sort" << last.resource->name() << (*it).resource->name() << last.resource << (*it).resource;
+            qCDebug(LIBDISCOVER_LOG) << "Faulty sort" << last.resource->name() << (*it).resource->name() << last.resource << (*it).resource;
             return false;
         }
         last = *it;
@@ -631,76 +634,81 @@ bool ResourcesProxyModel::isSorted(const QVector<StreamResult> &resources)
     return true;
 }
 
-void ResourcesProxyModel::sortedInsertion(const QVector<StreamResult> &_res)
+void ResourcesProxyModel::sortedInsertion(const QVector<StreamResult> &results)
 {
-    Q_ASSERT(_res.size() == QSet(_res.constBegin(), _res.constEnd()).size());
+    Q_ASSERT(results.size() == QSet(results.constBegin(), results.constEnd()).size());
 
-    auto resources = _res;
-    Q_ASSERT(!resources.isEmpty());
+    auto resultsCopy = results;
+    Q_ASSERT(!resultsCopy.isEmpty());
 
     if (!m_filters.allBackends) {
-        removeDuplicates(resources);
-        if (resources.isEmpty())
+        removeDuplicates(resultsCopy);
+        if (resultsCopy.isEmpty()) {
             return;
+        }
     }
 
     if (m_displayedResources.isEmpty()) {
         int rows = rowCount();
-        beginInsertRows({}, rows, rows + resources.count() - 1);
-        m_displayedResources += resources;
+        beginInsertRows({}, rows, rows + resultsCopy.count() - 1);
+        m_displayedResources += resultsCopy;
         endInsertRows();
         return;
     }
 
-    for (auto result : std::as_const(resources)) {
-        const auto finder = [this](const StreamResult &result, const StreamResult &res) {
-            return orderedLessThan(result, res);
+    for (const auto &result : std::as_const(resultsCopy)) {
+        const auto finder = [this](const StreamResult &left, const StreamResult &right) {
+            return orderedLessThan(left, right);
         };
         const auto it = std::upper_bound(m_displayedResources.constBegin(), m_displayedResources.constEnd(), result, finder);
+        const auto prev = it - 1;
         const auto newIdx = it == m_displayedResources.constEnd() ? m_displayedResources.count() : (it - m_displayedResources.constBegin());
 
-        if ((it - 1) != m_displayedResources.constEnd() && (it - 1)->resource == result.resource)
+        if (prev != m_displayedResources.constEnd() && prev->resource == result.resource) {
             continue;
+        }
 
         beginInsertRows({}, newIdx, newIdx);
         m_displayedResources.insert(newIdx, result);
         endInsertRows();
-        // Q_ASSERT(isSorted(resources));
+        // Q_ASSERT(isSorted(resultsCopy));
     }
 }
 
 void ResourcesProxyModel::refreshResource(AbstractResource *resource, const QVector<QByteArray> &properties)
 {
-    const auto residx = indexOf(resource);
-    if (residx < 0) {
+    const auto row = indexOf(resource);
+    if (row < 0) {
         return;
     }
 
     if (!m_filters.shouldFilter(resource)) {
-        beginRemoveRows({}, residx, residx);
-        m_displayedResources.removeAt(residx);
+        beginRemoveRows({}, row, row);
+        m_displayedResources.removeAt(row);
         endRemoveRows();
         return;
     }
 
-    const QModelIndex idx = index(residx, 0);
+    const QModelIndex idx = index(row, 0);
     Q_ASSERT(idx.isValid());
     const auto roles = propertiesToRoles(properties);
     if (roles.contains(m_sortRole)) {
-        beginRemoveRows({}, residx, residx);
-        m_displayedResources.removeAt(residx);
+        beginRemoveRows({}, row, row);
+        m_displayedResources.removeAt(row);
         endRemoveRows();
 
         sortedInsertion({{resource, 0}});
-    } else
+    } else {
         Q_EMIT dataChanged(idx, idx, roles);
+    }
 }
 
 void ResourcesProxyModel::removeResource(AbstractResource *resource)
 {
     const auto residx = indexOf(resource);
-    if (residx < 0)
+    if (residx < 0) {
         return;
+    }
     beginRemoveRows({}, residx, residx);
     m_displayedResources.removeAt(residx);
     endRemoveRows();
@@ -714,11 +722,14 @@ void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend *backend, cons
     bool found = false;
 
     for (int i = 0; i < count; ++i) {
-        if (backend != m_displayedResources[i].resource->backend())
+        if (backend != m_displayedResources[i].resource->backend()) {
             continue;
+        }
 
         int j = i + 1;
-        for (; j < count && backend == m_displayedResources[j].resource->backend(); ++j) { }
+        while (j < count && backend == m_displayedResources[j].resource->backend()) {
+            j++;
+        }
 
         Q_EMIT dataChanged(index(i, 0), index(j - 1, 0), roles);
         i = j;
@@ -732,17 +743,17 @@ void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend *backend, cons
 
 QVector<int> ResourcesProxyModel::propertiesToRoles(const QVector<QByteArray> &properties) const
 {
-    QVector<int> roles = kTransform<QVector<int>>(properties, [this](const QByteArray &arr) {
-        return roleNames().key(arr, -1);
+    QVector<int> roles = kTransform<QVector<int>>(properties, [this](const QByteArray &property) {
+        return roleNames().key(property, -1);
     });
     roles.removeAll(-1);
     return roles;
 }
 
-int ResourcesProxyModel::indexOf(AbstractResource *res)
+int ResourcesProxyModel::indexOf(AbstractResource *resource)
 {
-    return kIndexOf(m_displayedResources, [res](auto result) {
-        return result.resource == res;
+    return kIndexOf(m_displayedResources, [resource](const StreamResult &result) {
+        return result.resource == resource;
     });
 }
 
@@ -760,9 +771,9 @@ bool ResourcesProxyModel::canFetchMore(const QModelIndex &parent) const
 void ResourcesProxyModel::fetchMore(const QModelIndex &parent)
 {
     Q_ASSERT(!parent.isValid());
-    if (!m_currentStream)
-        return;
-    Q_EMIT m_currentStream->fetchMore();
+    if (m_currentStream) {
+        Q_EMIT m_currentStream->fetchMore();
+    }
 }
 
 ResourcesCount ResourcesProxyModel::count() const

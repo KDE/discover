@@ -388,8 +388,9 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     }
 
     m_sources->insertRow(idx, it);
-    if (m_sources->rowCount() == 1)
+    if (m_sources->rowCount() == 1) {
         Q_EMIT firstSourceIdChanged();
+    }
     Q_EMIT lastSourceIdChanged();
 
     if (m_sources->rowCount() > 0) {

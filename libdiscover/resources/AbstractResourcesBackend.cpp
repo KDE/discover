@@ -40,8 +40,8 @@ QDebug operator<<(QDebug debug, const AbstractResourcesBackend::Filters &filters
 ResultsStream::ResultsStream(const QString &objectName, const QVector<StreamResult> &resources)
     : ResultsStream(objectName)
 {
-    Q_ASSERT(!kContains(resources, [](const StreamResult &res) {
-        return res.resource == nullptr;
+    Q_ASSERT(!kContains(resources, [](const StreamResult &result) {
+        return result.resource == nullptr;
     }));
     QTimer::singleShot(0, this, [resources, this]() {
         if (!resources.isEmpty())
@@ -79,10 +79,11 @@ AbstractResourcesBackend::AbstractResourcesBackend(QObject *parent)
 
     connect(this, &AbstractResourcesBackend::fetchingChanged, this, [this, fetchingChangedTimer] {
         // Q_ASSERT(isFetching() != fetchingChangedTimer->isActive());
-        if (isFetching())
+        if (isFetching()) {
             fetchingChangedTimer->start();
-        else
+        } else {
             fetchingChangedTimer->stop();
+        }
 
         Q_EMIT fetchingUpdatesProgressChanged();
     });
@@ -108,46 +109,48 @@ void AbstractResourcesBackend::emitRatingsReady()
     Q_EMIT allDataChanged({"rating", "ratingPoints", "ratingCount", "sortableRating"});
 }
 
-bool AbstractResourcesBackend::Filters::shouldFilter(AbstractResource *res) const
+bool AbstractResourcesBackend::Filters::shouldFilter(AbstractResource *resourse) const
 {
-    Q_ASSERT(res);
+    Q_ASSERT(resourse);
 
-    if (!extends.isEmpty() && !res->extends().contains(extends)) {
+    if (!extends.isEmpty() && !resourse->extends().contains(extends)) {
         return false;
     }
 
-    if (!origin.isEmpty() && res->origin() != origin) {
+    if (!origin.isEmpty() && resourse->origin() != origin) {
         return false;
     }
 
-    if (filterMinimumState ? (res->state() < state) : (res->state() != state)) {
+    if (filterMinimumState ? (resourse->state() < state) : (resourse->state() != state)) {
         return false;
     }
 
-    if (!mimetype.isEmpty() && !res->mimetypes().contains(mimetype)) {
+    if (!mimetype.isEmpty() && !resourse->mimetypes().contains(mimetype)) {
         return false;
     }
 
-    return !category || res->categoryMatches(category);
+    return !category || resourse->categoryMatches(category);
 }
 
-void AbstractResourcesBackend::Filters::filterJustInCase(QVector<AbstractResource *> &input) const
+void AbstractResourcesBackend::Filters::filterJustInCase(QVector<AbstractResource *> &resources) const
 {
-    for (auto it = input.begin(); it != input.end();) {
-        if (shouldFilter(*it))
+    for (auto it = resources.begin(); it != resources.end();) {
+        if (shouldFilter(*it)) {
             ++it;
-        else
-            it = input.erase(it);
+        } else {
+            it = resources.erase(it);
+        }
     }
 }
 
-void AbstractResourcesBackend::Filters::filterJustInCase(QVector<StreamResult> &input) const
+void AbstractResourcesBackend::Filters::filterJustInCase(QVector<StreamResult> &results) const
 {
-    for (auto it = input.begin(); it != input.end();) {
-        if (shouldFilter(it->resource))
+    for (auto it = results.begin(); it != results.end();) {
+        if (shouldFilter(it->resource)) {
             ++it;
-        else
-            it = input.erase(it);
+        } else {
+            it = results.erase(it);
+        }
     }
 }
 

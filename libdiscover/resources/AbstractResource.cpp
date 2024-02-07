@@ -117,8 +117,8 @@ QCollatorSortKey AbstractResource::nameSortKey()
 
 Rating *AbstractResource::rating() const
 {
-    AbstractReviewsBackend *ratings = backend()->reviewsBackend();
-    return ratings ? ratings->ratingForApplication(const_cast<AbstractResource *>(this)) : nullptr;
+    auto reviewsBackend = backend()->reviewsBackend();
+    return reviewsBackend ? reviewsBackend->ratingForApplication(const_cast<AbstractResource *>(this)) : nullptr;
 }
 
 QVariant AbstractResource::ratingVariant() const
@@ -139,54 +139,65 @@ QString AbstractResource::appstreamId() const
 
 void AbstractResource::reportNewState()
 {
-    if (backend()->isFetching())
+    if (backend()->isFetching()) {
         return;
+    }
 
-    static const QVector<QByteArray> ns = {"state", "status", "canUpgrade", "size", "sizeDescription", "installedVersion", "availableVersion"};
-    Q_EMIT backend()->resourcesChanged(this, ns);
+    static const QVector<QByteArray> properties = {
+        "state",
+        "status",
+        "canUpgrade",
+        "size",
+        "sizeDescription",
+        "installedVersion",
+        "availableVersion",
+    };
+    Q_EMIT backend()->resourcesChanged(this, properties);
 }
 
-static bool shouldFilter(AbstractResource *res, const CategoryFilter &filter)
+static bool shouldFilter(AbstractResource *resource, const CategoryFilter &filter)
 {
     bool ret = true;
     switch (filter.type) {
     case CategoryFilter::CategoryNameFilter:
-        ret = res->categories().contains(std::get<QString>(filter.value));
+        ret = resource->categories().contains(std::get<QString>(filter.value));
         break;
     case CategoryFilter::PkgSectionFilter:
-        ret = res->section() == std::get<QString>(filter.value);
+        ret = resource->section() == std::get<QString>(filter.value);
         break;
     case CategoryFilter::PkgWildcardFilter: {
         QString wildcard = std::get<QString>(filter.value);
         wildcard.remove(QLatin1Char('*'));
-        ret = res->packageName().contains(wildcard);
-    } break;
+        ret = resource->packageName().contains(wildcard);
+        break;
+    }
     case CategoryFilter::AppstreamIdWildcardFilter: {
         QString wildcard = std::get<QString>(filter.value);
         wildcard.remove(QLatin1Char('*'));
-        ret = res->appstreamId().contains(wildcard);
-    } break;
+        ret = resource->appstreamId().contains(wildcard);
+        break;
+    }
     case CategoryFilter::PkgNameFilter: // Only useful in the not filters
-        ret = res->packageName() == std::get<QString>(filter.value);
+        ret = resource->packageName() == std::get<QString>(filter.value);
         break;
     case CategoryFilter::AndFilter: {
         const auto filters = std::get<QVector<CategoryFilter>>(filter.value);
-        ret = std::all_of(filters.begin(), filters.end(), [res](const CategoryFilter &f) {
-            return shouldFilter(res, f);
+        ret = std::all_of(filters.begin(), filters.end(), [resource](const CategoryFilter &filter) {
+            return shouldFilter(resource, filter);
         });
         break;
     }
     case CategoryFilter::OrFilter: {
         const auto filters = std::get<QVector<CategoryFilter>>(filter.value);
-        ret = std::any_of(filters.begin(), filters.end(), [res](const CategoryFilter &f) {
-            return shouldFilter(res, f);
+        ret = std::any_of(filters.begin(), filters.end(), [resource](const CategoryFilter &filter) {
+            return shouldFilter(resource, filter);
         });
         break;
     }
     case CategoryFilter::NotFilter: {
         const auto filters = std::get<QVector<CategoryFilter>>(filter.value);
-        ret = !std::any_of(filters.begin(), filters.end(), [res](const CategoryFilter &f) {
-            return shouldFilter(res, f);
+        ret = !std::any_of(filters.begin(), filters.end(), [resource](const CategoryFilter &filter) {
+            return shouldFilter(resource, filter);
         });
         break;
     }
@@ -199,14 +210,14 @@ bool AbstractResource::categoryMatches(Category *cat)
     return shouldFilter(this, cat->filter());
 }
 
-static QSet<Category *> walkCategories(AbstractResource *res, const QVector<Category *> &cats)
+static QSet<Category *> walkCategories(AbstractResource *resource, const QVector<Category *> &categories)
 {
     QSet<Category *> ret;
-    for (Category *cat : cats) {
-        if (res->categoryMatches(cat)) {
-            const auto subcats = walkCategories(res, cat->subCategories());
+    for (auto category : categories) {
+        if (resource->categoryMatches(category)) {
+            const auto subcats = walkCategories(resource, category->subCategories());
             if (subcats.isEmpty()) {
-                ret += cat;
+                ret += category;
             } else {
                 ret += subcats;
             }
@@ -216,9 +227,9 @@ static QSet<Category *> walkCategories(AbstractResource *res, const QVector<Cate
     return ret;
 }
 
-QSet<Category *> AbstractResource::categoryObjects(const QVector<Category *> &cats) const
+QSet<Category *> AbstractResource::categoryObjects(const QVector<Category *> &categories) const
 {
-    return walkCategories(const_cast<AbstractResource *>(this), cats);
+    return walkCategories(const_cast<AbstractResource *>(this), categories);
 }
 
 QUrl AbstractResource::url() const
@@ -239,7 +250,9 @@ QString AbstractResource::executeLabel() const
 
 QString AbstractResource::upgradeText() const
 {
-    QString installed = installedVersion(), available = availableVersion();
+    const auto installed = installedVersion();
+    const auto available = availableVersion();
+
     if (installed == available) {
         // Update of the same version; show when old and new are
         // the same (common with Flatpak runtimes)
