@@ -27,6 +27,8 @@
 #include <QThread>
 #include <QTimer>
 
+#include <QCoro/QCoroDBus>
+
 #include "atomupd1.h"
 #include "libdiscover_steamos_debug.h"
 
@@ -119,32 +121,37 @@ void SteamOSBackend::acquireFetching(bool f)
 
 void SteamOSBackend::checkForUpdates()
 {
+    // Can't turn an overridden method into a coroutine
+    checkForUpdatesTask();
+}
+
+QCoro::Task<> SteamOSBackend::checkForUpdatesTask()
+{
+    QPointer<SteamOSBackend> guard = this;
+
     if (m_fetching) {
-        return;
+        co_return;
     }
 
     // If there's no dbus object to talk to, just return
     // TODO: Maybe show a warning/error?
     if (m_currentVersion.isEmpty()) {
-        return;
+        co_return;
     }
 
     acquireFetching(true);
 
     qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "steamos-backend-backend::checkForUpdates asking DBus api";
     // We don't send any options for now, dbus api doesn't do anything with them yet anyway
-    QDBusPendingReply<VariantMapMap, VariantMapMap> reply = m_interface->CheckForUpdates({});
-    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply, this);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, &SteamOSBackend::checkForUpdatesFinished);
-}
+    QDBusPendingReply<VariantMapMap, VariantMapMap> reply = co_await m_interface->CheckForUpdates({});
 
-void SteamOSBackend::checkForUpdatesFinished(QDBusPendingCallWatcher *call)
-{
-    QDBusPendingReply<VariantMapMap, VariantMapMap> reply = *call;
-    //            qobject_cast<QDBusPendingReply<VariantMapMap, VariantMapMap>(*call);
-    if (call->isError()) {
-        Q_EMIT passiveMessage(call->error().message());
-        qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "steamos-backend: CheckForUpdates error: " << call->error().message();
+    if (!guard) {
+        co_return;
+    }
+
+    if (reply.isError()) {
+        Q_EMIT passiveMessage(reply.error().message());
+        qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "steamos-backend: CheckForUpdates error: " << reply.error().message();
     } else {
         // Valid response, parse it
         VariantMapMap versions = reply.argumentAt<0>();
@@ -164,8 +171,6 @@ void SteamOSBackend::checkForUpdatesFinished(QDBusPendingCallWatcher *call)
         }
     }
     acquireFetching(false);
-
-    call->deleteLater();
 }
 
 int SteamOSBackend::updatesCount() const

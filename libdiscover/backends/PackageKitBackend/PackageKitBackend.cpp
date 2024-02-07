@@ -24,6 +24,7 @@
 #include <resources/SourcesModel.h>
 #include <resources/StandardBackendUpdater.h>
 
+#include <QDBusReply>
 #include <QDebug>
 #include <QFileSystemWatcher>
 #include <QFutureWatcher>
@@ -35,6 +36,7 @@
 #include <QtConcurrentRun>
 
 #include <QCoroCore>
+#include <QCoroDBus>
 
 #include <PackageKit/Daemon>
 #include <PackageKit/Details>
@@ -99,14 +101,14 @@ PackageOrAppId makeResourceId(PackageKitResource *resource)
 }
 
 template<typename T, typename W>
-static void setWhenAvailable(const QDBusPendingReply<T> &pending, W func, QObject *parent)
+static QCoro::Task<> setWhenAvailable(const QDBusPendingReply<T> &pending, W func, QObject *context)
 {
-    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pending, parent);
-    QObject::connect(watcher, &QDBusPendingCallWatcher::finished, parent, [func](QDBusPendingCallWatcher *watcher) {
-        watcher->deleteLater();
-        QDBusPendingReply<T> reply = *watcher;
-        func(reply.value());
-    });
+    QPointer<QObject> guard = context;
+    const QDBusReply<T> reply = co_await pending;
+    if (!guard) {
+        co_return;
+    }
+    func(reply.value());
 }
 
 QString PackageKitBackend::locateService(const QString &filename)

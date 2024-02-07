@@ -5,6 +5,8 @@
  */
 #pragma once
 
+#include <QCoro/QCoroTask>
+
 #include "PackageKitBackend.h"
 #include <PackageKit/Transaction>
 #include <resources/AbstractBackendUpdater.h>
@@ -87,8 +89,7 @@ private Q_SLOTS:
 private:
     void processProceedFunction();
     void itemProgress(const QString &itemID, PackageKit::Transaction::Status status, uint percentage);
-    void fetchLastUpdateTime();
-    void lastUpdateTimeReceived(QDBusPendingCallWatcher *w);
+    QCoro::Task<> fetchLastUpdateTime();
     void setupTransaction(PackageKit::Transaction::TransactionFlags flags);
     bool useOfflineUpdates() const;
 

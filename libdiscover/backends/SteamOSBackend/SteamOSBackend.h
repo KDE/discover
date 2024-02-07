@@ -10,6 +10,9 @@
 #include <QDBusMessage>
 #include <QPointer>
 #include <QVariantList>
+
+#include <QCoro/QCoroTask>
+
 #include <resources/AbstractResourcesBackend.h>
 
 class ComSteampoweredAtomupd1Interface;
@@ -39,13 +42,11 @@ public:
     static QString service();
     static QString path();
 
-public Q_SLOTS:
-    void checkForUpdatesFinished(QDBusPendingCallWatcher *call);
-
 private Q_SLOTS:
     void needRebootChanged();
 
 private:
+    QCoro::Task<> checkForUpdatesTask();
     void hasUpdateChanged(bool hasUpdate);
 
     void acquireFetching(bool f);

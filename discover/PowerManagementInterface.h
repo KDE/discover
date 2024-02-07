@@ -8,6 +8,8 @@
 
 #include <QObject>
 
+#include <QCoro/QCoroTask>
+
 #include <memory>
 
 class QDBusPendingCallWatcher;
@@ -51,14 +53,10 @@ private Q_SLOTS:
 
     void hostSleepInhibitChanged();
 
-    void inhibitDBusCallFinished(QDBusPendingCallWatcher *aWatcher);
-
-    void uninhibitDBusCallFinished(QDBusPendingCallWatcher *aWatcher);
-
 private:
-    void inhibitSleep();
+    QCoro::Task<> inhibitSleep();
 
-    void uninhibitSleep();
+    QCoro::Task<> uninhibitSleep();
 
     std::unique_ptr<PowerManagementInterfacePrivate> d;
 };

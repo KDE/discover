@@ -17,6 +17,8 @@
 #include <QDebug>
 #include <QSet>
 
+#include <QCoro/QCoroDBus>
+
 #include <KConfigGroup>
 #include <KFormat>
 #include <KIO/FileSystemFreeSpaceJob>
@@ -771,22 +773,21 @@ void PackageKitUpdater::setProgressing(bool progressing)
     }
 }
 
-void PackageKitUpdater::fetchLastUpdateTime()
+QCoro::Task<> PackageKitUpdater::fetchLastUpdateTime()
 {
-    QDBusPendingReply<uint> transaction = PackageKit::Daemon::global()->getTimeSinceAction(PackageKit::Transaction::RoleGetUpdates);
-    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(transaction, this);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, &PackageKitUpdater::lastUpdateTimeReceived);
-}
+    QPointer<PackageKitUpdater> guard = this;
 
-void PackageKitUpdater::lastUpdateTimeReceived(QDBusPendingCallWatcher *w)
-{
-    QDBusPendingReply<uint> reply = w->reply();
+    QDBusPendingReply<uint> reply = co_await PackageKit::Daemon::global()->getTimeSinceAction(PackageKit::Transaction::RoleGetUpdates);
+
+    if (!guard) {
+        co_return;
+    }
+
     if (reply.isError()) {
         qWarning() << "Error when fetching the last update time" << reply.error();
     } else {
         m_lastUpdate = QDateTime::currentDateTime().addSecs(-int(reply.value()));
     }
-    w->deleteLater();
 }
 
 AbstractBackendUpdater::State toUpdateState(PackageKit::Transaction::Status t)

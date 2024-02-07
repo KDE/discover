@@ -19,6 +19,8 @@
 
 #include <QGuiApplication>
 
+#include <QCoro/QCoroDBus>
+
 #include "discover_debug.h"
 #include <QLoggingCategory>
 
@@ -88,34 +90,10 @@ void PowerManagementInterface::hostSleepInhibitChanged()
 {
 }
 
-void PowerManagementInterface::inhibitDBusCallFinished(QDBusPendingCallWatcher *aWatcher)
+QCoro::Task<> PowerManagementInterface::inhibitSleep()
 {
-    QDBusPendingReply<uint> reply = *aWatcher;
-    if (reply.isError()) {
-    } else {
-        d->mInhibitSleepCookie = reply.argumentAt<0>();
-        d->mInhibitedSleep = true;
+    QPointer<PowerManagementInterface> guard = this;
 
-        Q_EMIT sleepInhibitedChanged();
-    }
-    aWatcher->deleteLater();
-}
-
-void PowerManagementInterface::uninhibitDBusCallFinished(QDBusPendingCallWatcher *aWatcher)
-{
-    QDBusPendingReply<> reply = *aWatcher;
-    if (reply.isError()) {
-        qCWarning(DISCOVER_LOG) << "PowerManagementInterface::uninhibitDBusCallFinished" << reply.error();
-    } else {
-        d->mInhibitedSleep = false;
-
-        Q_EMIT sleepInhibitedChanged();
-    }
-    aWatcher->deleteLater();
-}
-
-void PowerManagementInterface::inhibitSleep()
-{
     auto sessionBus = QDBusConnection::sessionBus();
 
     auto inhibitCall = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.PowerManagement.Inhibit"),
@@ -125,15 +103,26 @@ void PowerManagementInterface::inhibitSleep()
 
     inhibitCall.setArguments({{QGuiApplication::desktopFileName()}, {d->m_reason}});
 
-    auto asyncReply = sessionBus.asyncCall(inhibitCall);
+    QDBusPendingReply<uint> reply = co_await sessionBus.asyncCall(inhibitCall);
 
-    auto replyWatcher = new QDBusPendingCallWatcher(asyncReply, this);
+    if (!guard) {
+        co_return;
+    }
 
-    QObject::connect(replyWatcher, &QDBusPendingCallWatcher::finished, this, &PowerManagementInterface::inhibitDBusCallFinished);
+    if (reply.isError()) {
+        qCWarning(DISCOVER_LOG) << "PowerManagementInterface::inhibitSleep" << reply.error();
+    } else {
+        d->mInhibitSleepCookie = reply.argumentAt<0>();
+        d->mInhibitedSleep = true;
+
+        Q_EMIT sleepInhibitedChanged();
+    }
 }
 
-void PowerManagementInterface::uninhibitSleep()
+QCoro::Task<> PowerManagementInterface::uninhibitSleep()
 {
+    QPointer<PowerManagementInterface> guard = this;
+
     auto sessionBus = QDBusConnection::sessionBus();
 
     auto uninhibitCall = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.PowerManagement.Inhibit"),
@@ -143,11 +132,19 @@ void PowerManagementInterface::uninhibitSleep()
 
     uninhibitCall.setArguments({{d->mInhibitSleepCookie}});
 
-    auto asyncReply = sessionBus.asyncCall(uninhibitCall);
+    QDBusPendingReply<> reply = co_await sessionBus.asyncCall(uninhibitCall);
 
-    auto replyWatcher = new QDBusPendingCallWatcher(asyncReply, this);
+    if (!guard) {
+        co_return;
+    }
 
-    QObject::connect(replyWatcher, &QDBusPendingCallWatcher::finished, this, &PowerManagementInterface::uninhibitDBusCallFinished);
+    if (reply.isError()) {
+        qCWarning(DISCOVER_LOG) << "PowerManagementInterface::uninhibitDBusCallFinished" << reply.error();
+    } else {
+        d->mInhibitedSleep = false;
+
+        Q_EMIT sleepInhibitedChanged();
+    }
 }
 
 QString PowerManagementInterface::reason() const

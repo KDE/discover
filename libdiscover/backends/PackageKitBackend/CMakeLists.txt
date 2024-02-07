@@ -48,6 +48,7 @@ target_link_libraries(packagekit-backend
         KF6::Archive
         AppStreamQt
         QCoro::Core
+        QCoro::DBus
         libdiscover-backend-packagekit-logging-category
 )
 

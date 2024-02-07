@@ -39,19 +39,22 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
 add_executable(Plasma::Discover ALIAS plasma-discover)
 set_target_properties(plasma-discover PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
-target_link_libraries(plasma-discover PUBLIC
-                                     KF6::Crash
-                                     KF6::DBusAddons
-                                     KF6::I18n
-                                     KF6::ConfigGui
-                                     KF6::KIOCore
-                                     KF6::WindowSystem
-                                     KF6::Notifications
-                                     KF6::JobWidgets
-                                     KF6::StatusNotifierItem
-                                     Qt::Widgets
-                                     Qt::Quick
-                                     Discover::Common
+target_link_libraries(plasma-discover
+    PUBLIC
+        KF6::Crash
+        KF6::DBusAddons
+        KF6::I18n
+        KF6::ConfigGui
+        KF6::KIOCore
+        KF6::WindowSystem
+        KF6::Notifications
+        KF6::JobWidgets
+        KF6::StatusNotifierItem
+        Qt::Widgets
+        Qt::Quick
+        Discover::Common
+        QCoro::Core
+        QCoro::DBus
 )
 
 if (TARGET Qt::WebView)

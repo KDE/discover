@@ -27,12 +27,15 @@ ecm_qt_declare_logging_category(steamos-backend_SRCS
 
 add_library(steamos-backend MODULE ${steamos-backend_SRCS})
 target_link_libraries(steamos-backend
-    Qt::Core
-    Qt::Widgets
-    Qt::DBus
-    KF6::CoreAddons
-    KF6::ConfigCore
-    Discover::Common
+    PRIVATE
+        Qt::Core
+        Qt::Widgets
+        Qt::DBus
+        KF6::CoreAddons
+        KF6::ConfigCore
+        Discover::Common
+        QCoro::Core
+        QCoro::DBus
 )
 
 install(TARGETS steamos-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
