@@ -79,17 +79,19 @@ void LocalFilePKResource::resolve(const PackageKit::Details &inDetails)
 {
     clearPackageIds();
     const PackageKit::Details details = inDetails.isEmpty() ? m_details : inDetails;
-    PackageKit::Transaction *resolve = PackageKit::Daemon::resolve(PackageKit::Daemon::packageName(details.packageId()), PackageKit::Transaction::FilterNone);
-    connect(resolve, &PackageKit::Transaction::package, this, [this, details](PackageKit::Transaction::Info info, const QString &packageId) {
-        if (PackageKit::Daemon::packageName(packageId) == PackageKit::Daemon::packageName(details.packageId())
-            && PackageKit::Daemon::packageVersion(packageId) == PackageKit::Daemon::packageVersion(details.packageId())
-            && PackageKit::Daemon::packageArch(packageId) == PackageKit::Daemon::packageArch(details.packageId())
+    const auto detailsPackageId = details.packageId();
+    auto resolve = PackageKit::Daemon::resolve(PackageKit::Daemon::packageName(detailsPackageId), PackageKit::Transaction::FilterNone);
+
+    connect(resolve, &PackageKit::Transaction::package, this, [this, detailsPackageId](PackageKit::Transaction::Info info, const QString &packageId) {
+        if (PackageKit::Daemon::packageName(packageId) == PackageKit::Daemon::packageName(detailsPackageId)
+            && PackageKit::Daemon::packageVersion(packageId) == PackageKit::Daemon::packageVersion(detailsPackageId)
+            && PackageKit::Daemon::packageArch(packageId) == PackageKit::Daemon::packageArch(detailsPackageId)
             && info == PackageKit::Transaction::InfoInstalled) {
             addPackageId(info, packageId, true);
         }
     });
-    connect(resolve, &PackageKit::Transaction::finished, this, [this, details] {
-        addPackageId(PackageKit::Transaction::InfoAvailable, details.packageId(), true);
+    connect(resolve, &PackageKit::Transaction::finished, this, [this, details, detailsPackageId] {
+        addPackageId(PackageKit::Transaction::InfoAvailable, detailsPackageId, true);
         PackageKitResource::setDetails(details);
     });
 }
