@@ -23,6 +23,10 @@ QQC2.ItemDelegate {
         }
     }
 
+    background: Rectangle {
+        color: Kirigami.Theme.backgroundColor
+    }
+
     visible: Discover.TransactionModel.count > 0
 
     property Kirigami.OverlaySheet sheetObject
