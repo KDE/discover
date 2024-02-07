@@ -195,9 +195,8 @@ PackageKitBackend::PackageKitBackend(QObject *parent)
     });
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitBackend::checkDaemonRunning);
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
-        m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource *>>(m_packages.packages, [](AbstractResource *r) {
-                                         return r;
-                                     }));
+        const auto resources = m_packages.packages.values();
+        m_reviews->emitRatingFetched(this, resources);
     });
 
     auto proxyWatch = new QFileSystemWatcher(this);
