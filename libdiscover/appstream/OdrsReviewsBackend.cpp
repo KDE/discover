@@ -53,7 +53,7 @@ OdrsReviewsBackend::OdrsReviewsBackend()
     fetchRatings();
 }
 
-OdrsReviewsBackend::~OdrsReviewsBackend() noexcept
+OdrsReviewsBackend::~OdrsReviewsBackend()
 {
     qDeleteAll(m_ratings);
 }
