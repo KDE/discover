@@ -2,7 +2,7 @@
 # Translators:
 #
 # Volkan Gezer <volkangezer@gmail.com>, 2017, 2021.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.80\n"
+"X-Generator: Lokalize 24.01.95\n"
 
 #: notifier/DiscoverNotifier.cpp:154
 #, kde-format
@@ -26,12 +26,12 @@ msgstr "Güncellemeleri Görüntüle"
 #: notifier/DiscoverNotifier.cpp:263
 #, kde-format
 msgid "Security updates available"
-msgstr "Güvenlik güncellemeleri kullanılabilir"
+msgstr "Kullanılabilir güvenlik güncellemeleri var"
 
 #: notifier/DiscoverNotifier.cpp:265
 #, kde-format
 msgid "Updates available"
-msgstr "Güncellemeler kullanılabilir"
+msgstr "Kullanılabilir güncellemeler var"
 
 #: notifier/DiscoverNotifier.cpp:267
 #, kde-format
@@ -51,7 +51,7 @@ msgstr "Çevrimdışı"
 #: notifier/DiscoverNotifier.cpp:273
 #, kde-format
 msgid "Applying unattended updates…"
-msgstr "Gözetimsiz güncellemeler uygulanıyor…"
+msgstr "Gözetilmeyen güncellemeler uygulanıyor…"
 
 #: notifier/DiscoverNotifier.cpp:297
 #, kde-format
@@ -68,7 +68,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
-msgstr "Yeniden başlat"
+msgstr "Yeniden Başlat"
 
 #: notifier/DiscoverNotifier.cpp:328
 #, kde-format
@@ -158,6 +158,3 @@ msgstr "Kurulu güncellemeleri uygulamak için yeniden başlat"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Aygıtı yeniden başlatmak için tıkla"
-
-#~ msgid "New version: %1"
-#~ msgstr "Yeni sürüm: %1"
