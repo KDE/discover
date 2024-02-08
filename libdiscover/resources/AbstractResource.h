@@ -81,7 +81,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString availableVersion READ availableVersion NOTIFY versionsChanged)
     Q_PROPERTY(QString section READ section CONSTANT)
     Q_PROPERTY(QStringList mimetypes READ mimetypes CONSTANT)
-    Q_PROPERTY(QObject *backend READ backendObject CONSTANT)
+    Q_PROPERTY(AbstractResourcesBackend *backend READ backend CONSTANT)
     Q_PROPERTY(QVariant rating READ ratingVariant NOTIFY ratingFetched)
     Q_PROPERTY(QString appstreamId READ appstreamId CONSTANT)
     Q_PROPERTY(QUrl url READ url CONSTANT)
@@ -98,6 +98,9 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(uint contentRatingMinimumAge READ contentRatingMinimumAge CONSTANT)
     Q_PROPERTY(QStringList topObjects READ topObjects CONSTANT)
     Q_PROPERTY(QStringList bottomObjects READ bottomObjects CONSTANT)
+
+    // Resolve circular dependency for QObject* properties in both classes
+    Q_MOC_INCLUDE("resources/AbstractResourcesBackend.h")
 
 public:
     /**
@@ -211,7 +214,6 @@ public:
     virtual QString status();
 
     AbstractResourcesBackend *backend() const;
-    QObject *backendObject() const;
 
     /**
      * @returns a name sort key for faster sorting
