@@ -1,13 +1,13 @@
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
-# Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2022, 2023.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-27 00:38+0000\n"
-"PO-Revision-Date: 2023-04-07 23:45-0700\n"
-"Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
+"PO-Revision-Date: 2024-02-06 22:58+0900\n"
+"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: discover/DiscoverObject.cpp:190
 #, kde-format
@@ -24,6 +24,8 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"%1 は Discover を使用してアプリケーションをインストールできるように設定されて"
+"いません。現在、アプリケーションのアドオンのみインストールできます。"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -33,13 +35,15 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"Discover をアプリケーションのインストールのために使用するには、<interface>設"
+"定</interface>ページの<interface>欠けているバックエンド</interface>でお好みの"
+"モジュールをインストールしてください。"
 
 #: discover/DiscoverObject.cpp:195
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr "この問題を報告する"
+msgstr "この問題を %1 に報告する"
 
 #: discover/DiscoverObject.cpp:200
 #, kde-kuit-format
@@ -54,6 +58,15 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"アプリケーションのインストールに Discover を使用するためには、"
+"<command>pacman</command> を使用して <link url='https://wiki.archlinux.jp/"
+"index.php/Flatpak#.E3.82.A4.E3.83.B3.E3.82.B9.E3.83.88.E3.83.BC.E3.83."
+"AB'>Flatpak</link> や <link url='https://wiki.archlinux.jp/index.php/"
+"KDE#Discover_.E3.81.8C.E3.82.A2.E3.83.97.E3.83.AA.E3.82.B1.E3.83.BC.E3.82.B7."
+"E3.83.A7.E3.83.B3.E3.82.92.E8.A1.A8.E7.A4.BA.E3.81.97.E3.81.AA."
+"E3.81.84'>PackageKit</link> をインストールしてください。<nl/><nl/><link "
+"url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 の Discover "
+"パッケージをレビュー</link>"
 
 #: discover/DiscoverObject.cpp:291
 #, kde-format
@@ -63,7 +76,7 @@ msgstr "カテゴリ '%1' が見つかりませんでした。"
 #: discover/DiscoverObject.cpp:306
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr "存在しないファイル '%1' を開いています"
+msgstr "存在しないファイル '%1' を開こうとしています"
 
 #: discover/DiscoverObject.cpp:328
 #, kde-format
@@ -96,7 +109,8 @@ msgstr ""
 #: discover/DiscoverObject.cpp:399
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
-msgstr "この問題をディストリビューションのパッケージャに報告してください。"
+msgstr ""
+"この問題をお使いのディストリビューションのパッケージャに報告してください。"
 
 #: discover/DiscoverObject.cpp:402
 #, kde-format
@@ -114,8 +128,7 @@ msgstr "Discover"
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
-"Discover はタスクが完了する前に閉じられました。タスクが完了するのを待っていま"
-"す。"
+"Discover はタスクが完了する前に閉じられました。完了するまで待機します。"
 
 #: discover/main.cpp:33
 #, kde-format
@@ -172,13 +185,12 @@ msgstr "appstream をサポート: URL スキーム"
 #: discover/main.cpp:119
 #, kde-format
 msgid "An application explorer"
-msgstr "アプリケーション エクスプローラ"
+msgstr "アプリケーションエクスプローラ"
 
 #: discover/main.cpp:121
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2024 Plasma Development Team"
 
 #: discover/main.cpp:122
 #, kde-format
@@ -349,7 +361,7 @@ msgstr "詳細を見る..."
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
+msgstr "利用可能な %1 のスクリーンショットはありません"
 
 #: discover/qml/ApplicationPage.qml:556
 #, kde-format
@@ -417,15 +429,13 @@ msgstr "%1 のレビューを読み込み中"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "%1 のレビューは一時的に利用できません"
 
 #: discover/qml/ApplicationPage.qml:721
-#, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "%1 件のレビューをすべて表示"
+msgstr "レビューをすべて表示"
 
 #: discover/qml/ApplicationPage.qml:733
 #, kde-format
@@ -470,7 +480,7 @@ msgstr "貢献"
 #: discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
-msgstr "プログラミング、デザイン、テストもしくは翻訳をして開発者を支援する"
+msgstr "プログラミング、デザイン、テストもしくは翻訳に参加して開発者を支援する"
 
 #: discover/qml/ApplicationPage.qml:854
 #, kde-format
@@ -534,7 +544,7 @@ msgstr ""
 "まない動作 ― 個人情報の詮索、位置情報の追跡、ファイルの内容の他者への転送な"
 "ど ― をするかもしれません。これらを確認する簡単な方法は存在しないため、このソ"
 "フトウェアの作者 (%1) を完全に信頼する場合のみインストールすることが推奨され"
-"ます。<nl/><nl/><link url='%2'>%</link> でさらなる情報を得ることができます。"
+"ます。<nl/><nl/><link url='%2'>%2</link> でさらなる情報を得ることができます。"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -574,7 +584,7 @@ msgstr "ソート: %1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr ""
+msgstr "関連性"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
@@ -636,12 +646,7 @@ msgid "\"%1\" was not found in the available sources"
 msgstr "\"%1\" は利用可能なソースの中に見つかりませんでした"
 
 #: discover/qml/ApplicationsListPage.qml:236
-#, fuzzy, kde-format
-#| msgctxt "@info:placeholder%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
@@ -658,11 +663,10 @@ msgid "Still looking…"
 msgstr "検索しています..."
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "ホーム(&H)"
+msgstr "ホーム"
 
 #: discover/qml/BrowsingPage.qml:64
 #, kde-format
@@ -679,7 +683,7 @@ msgstr "人気"
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
-msgstr ""
+msgstr "最近リリース＆更新"
 
 #: discover/qml/BrowsingPage.qml:160
 #, kde-format
@@ -709,44 +713,44 @@ msgstr "高く評価された開発ツール"
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
-msgstr ""
+msgstr "再生"
 
 #: discover/qml/CarouselDelegate.qml:214
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
-msgstr ""
+msgstr "一時停止"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Overlay"
-msgstr ""
+msgstr "オーバーレイ表示に切り替え"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Full Screen"
-msgstr ""
+msgstr "フルスクリーン表示に切り替え"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
 #, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "前のスクリーンショット"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr ""
+msgstr "次のスクリーンショット"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -776,12 +780,10 @@ msgid "Fetching &updates…"
 msgstr "更新を取得中(&U)..."
 
 #: discover/qml/DiscoverWindow.qml:87
-#, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "&Update (%1)"
+#, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
-msgstr[0] "更新(&U) があります (%1)"
+msgstr[0] "%1 件の更新(&U)"
 
 #: discover/qml/DiscoverWindow.qml:95
 #, kde-format
@@ -883,7 +885,7 @@ msgstr ""
 #: discover/qml/Feedback.qml:58
 #, kde-format
 msgid "Contribute…"
-msgstr "貢献..."
+msgstr "貢献する！"
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
@@ -1006,7 +1008,7 @@ msgstr "いいえ"
 #: discover/qml/ReviewDialog.qml:20
 #, kde-format
 msgid "Reviewing %1"
-msgstr "%1 をレビュー"
+msgstr "%1 をレビューしています"
 
 #: discover/qml/ReviewDialog.qml:27
 #, kde-format
@@ -1078,52 +1080,48 @@ msgstr "レビューを書くにはこのアプリケーションをインスト
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "関連性が高い"
 
 #: discover/qml/ReviewsPage.qml:110
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "最近"
 
 #: discover/qml/ReviewsPage.qml:117
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "高く評価されたゲーム"
+msgstr "高評価"
 
 #: discover/qml/ReviewsStats.qml:53
-#, fuzzy, kde-format
-#| msgid "Reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "レビュー"
+msgstr "%1 件のレビュー"
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #: discover/qml/ReviewsStats.qml:154
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
-msgstr "不明なレビューア"
+msgstr "不明なレビュア"
 
 #: discover/qml/ReviewsStats.qml:175
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "「"
 
 #: discover/qml/ReviewsStats.qml:190
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "」"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format
@@ -1224,31 +1222,33 @@ msgid ""
 "If the error indicated above looks like a real issue and not a temporary "
 "network error, please report it to %1, not KDE."
 msgstr ""
+"以上に示されているエラーが一時的なネットワークエラーではなく実際の不具合であ"
+"ると思われる場合、%1 に報告してください。(KDE には報告しないでください。)"
 
 #: discover/qml/UpdatesPage.qml:103
 #, kde-format
 msgid "Copy Text"
-msgstr ""
+msgstr "テキストをコピー"
 
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr ""
+"エラーメッセージがコピーされました。この問題に関しては %1 に報告してくださ"
+"い。(KDE には報告しないでください。)"
 
 #: discover/qml/UpdatesPage.qml:114
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
+#, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr "この問題を報告する"
+msgstr "この問題を %1 に報告する"
 
 #: discover/qml/UpdatesPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Update Selected"
+#, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
-msgstr "選択した更新"
+msgstr "選択したものを更新"
 
 #: discover/qml/UpdatesPage.qml:140
 #, kde-format
@@ -1332,7 +1332,7 @@ msgstr "更新を完了するには再起動が必要です"
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
-msgstr "最新です"
+msgstr "最新の状態です"
 
 #: discover/qml/UpdatesPage.qml:546
 #, kde-format
