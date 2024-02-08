@@ -11,11 +11,17 @@
 #include <PackageKit/Transaction>
 #include <resources/AbstractResource.h>
 
+#include <optional>
+
+#include "PackageKitDependencies.h"
+
 class PackageKitBackend;
 
 class PackageKitResource : public AbstractResource
 {
     Q_OBJECT
+
+    Q_PROPERTY(QList<PackageKitDependency> dependencies READ dependencies NOTIFY dependenciesChanged)
 
 public:
     explicit PackageKitResource(QString packageName, QString summary, PackageKitBackend *parent);
@@ -70,7 +76,8 @@ public:
     }
 
     QString sizeDescription() override;
-    void setDependenciesCount(int count);
+
+    QList<PackageKitDependency> dependencies();
 
     QString sourceIcon() const override;
 
@@ -92,7 +99,7 @@ public:
     bool containsPackageId(const QString &pkgid) const;
 
 Q_SIGNALS:
-    void dependenciesFound(const QJsonArray &dependencies);
+    void dependenciesChanged();
 
 public Q_SLOTS:
     void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, bool arch);
@@ -117,7 +124,7 @@ protected:
     PackageKit::Details m_details;
 
 private:
-    void fetchDependencies();
+    void updatePackageIdForDependencies();
     /** fetches details individually, it's better if done in batch, like for updates */
     virtual void fetchDetails();
 
@@ -139,6 +146,6 @@ private:
     const QString m_summary;
     const QString m_name;
     QString m_changelog;
-    int m_dependenciesCount = -1;
+    PackageKitDependencies m_dependencies;
     static const QStringList s_topObjects;
 };

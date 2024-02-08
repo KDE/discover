@@ -4,6 +4,7 @@ find_package(KF6 REQUIRED Notifications)
 set (packagekit-backend_SRCS
     PackageKitBackend.cpp
     PackageKitResource.cpp
+    PackageKitDependencies.cpp
     AppPackageKitResource.cpp
     PKTransaction.cpp
     PackageKitUpdater.cpp

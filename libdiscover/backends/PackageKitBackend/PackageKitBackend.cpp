@@ -1081,6 +1081,11 @@ QSet<QString> PackageKitBackend::upgradeablePackageId(const PackageKitResource *
     return ids;
 }
 
+void PackageKitBackend::fetchDetails(const QString &pkgid)
+{
+    m_details.add(pkgid);
+}
+
 void PackageKitBackend::fetchDetails(const QSet<QString> &pkgid)
 {
     m_details.add(pkgid);

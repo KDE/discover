@@ -94,10 +94,7 @@ public:
     QVector<AbstractResource *> extendedBy(const QString &id) const;
 
     PKResolveTransaction *resolvePackages(const QStringList &packageNames);
-    void fetchDetails(const QString &pkgid)
-    {
-        m_details.add(pkgid);
-    }
+    void fetchDetails(const QString &pkgid);
     void fetchDetails(const QSet<QString> &pkgid);
 
     void checkForUpdates() override;

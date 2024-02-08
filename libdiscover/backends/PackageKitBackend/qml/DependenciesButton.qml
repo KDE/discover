@@ -8,6 +8,7 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
+import QtQuick.Controls as QQC2
 import QtQuick.Templates as T
 import org.kde.discover as Discover
 import org.kde.kirigami as Kirigami
@@ -16,6 +17,7 @@ import org.kde.kirigami.delegates as KD
 Kirigami.LinkButton {
     id: root
 
+    // actual subtype: PackageKitResource
     required property Discover.AbstractResource resource
 
     property Kirigami.OverlaySheet __overlay
@@ -29,23 +31,9 @@ Kirigami.LinkButton {
 
     text: i18nd("libdiscover", "Show Dependencies…")
 
-    visible: dependenciesModel.count > 0
+    visible: resource.dependencies.length > 0
 
     onClicked: __open()
-
-    Connections {
-        target: root.resource
-        function onDependenciesFound(dependencies) {
-            dependenciesModel.clear()
-            for (const dependency of dependencies) {
-                dependenciesModel.append(dependency)
-            }
-        }
-    }
-
-    ListModel {
-        id: dependenciesModel
-    }
 
     Component {
         id: overlaySheetComponent
@@ -79,9 +67,9 @@ Kirigami.LinkButton {
                     implicitHeight = implicitHeight;
                 }
 
-                model: dependenciesModel
+                model: root.resource.dependencies
 
-                section.property: "packageInfo"
+                section.property: "infoString"
                 section.delegate: Kirigami.ListSectionHeader {
                     required property string section
 
@@ -89,20 +77,33 @@ Kirigami.LinkButton {
                     text: section
                 }
 
-                delegate: KD.SubtitleDelegate {
-                    required property string packageName
-                    required property string packageDescription
+                delegate: QQC2.ItemDelegate {
+                    id: delegate
+
+                    required property var modelData
+
+                    readonly property string summary: modelData.summary
 
                     width: ListView.view.width
                     icon.width: 0
 
-                    text: packageName
-                    subtitle: packageDescription
+                    text: modelData.packageName
 
                     // No need to offer a hover/selection effect since these list
                     // items are non-interactive and non-selectable
                     hoverEnabled: false
                     down: false
+
+                    // ToolTip is intentionally omitted, as everything is wrapped and thus visible
+
+                    contentItem: KD.IconTitleSubtitle {
+                        icon: icon.fromControlsIcon(delegate.icon)
+                        title: delegate.text
+                        subtitle: delegate.summary
+                        selected: delegate.highlighted || delegate.down
+                        font: delegate.font
+                        wrapMode: Text.Wrap
+                    }
                 }
             }
         }
