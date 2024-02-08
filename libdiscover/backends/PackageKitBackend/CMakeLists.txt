@@ -1,7 +1,7 @@
 find_package(KF6 REQUIRED Notifications)
 
 #packagekit-backend
-set (packagekit-backend_SRCS
+set(packagekit-backend_SRCS
     PackageKitBackend.cpp
     PackageKitResource.cpp
     PackageKitDependencies.cpp
@@ -13,49 +13,58 @@ set (packagekit-backend_SRCS
     LocalFilePKResource.cpp
     PKResolveTransaction.cpp
     pkui.qrc
-    )
+)
+
 ecm_qt_declare_logging_category(packagekit-backend_SRCS HEADER libdiscover_backend_debug.h IDENTIFIER LIBDISCOVER_BACKEND_LOG CATEGORY_NAME org.kde.plasma.libdiscover.backend DESCRIPTION "libdiscover backend" EXPORT DISCOVER)
 
 add_library(packagekit-backend MODULE ${packagekit-backend_SRCS})
 
 target_link_libraries(packagekit-backend
     PRIVATE
-    Discover::Common
-    Qt::Core
-    Qt::Concurrent
-    PK::packagekitqt6
-    KF6::ConfigGui
-    KF6::KIOCore
-    KF6::KIOGui
-    KF6::Archive
-    AppStreamQt
-    QCoro::Core
+        Discover::Common
+        Qt::Core
+        Qt::Concurrent
+        PK::packagekitqt6
+        KF6::ConfigGui
+        KF6::KIOCore
+        KF6::KIOGui
+        KF6::Archive
+        AppStreamQt
+        QCoro::Core
 )
 install(TARGETS packagekit-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 
-if(TARGET PkgConfig::Markdown)
+if (TARGET PkgConfig::Markdown)
     target_compile_definitions(packagekit-backend PRIVATE -DWITH_MARKDOWN)
     target_link_libraries(packagekit-backend PRIVATE PkgConfig::Markdown)
 endif()
 
 #notifier
-set (DiscoverPackageKitNotifier_SRCS
+set(DiscoverPackageKitNotifier_SRCS
     PackageKitNotifier.cpp
 )
 ecm_qt_declare_logging_category(DiscoverPackageKitNotifier_SRCS HEADER libdiscover_backend_debug.h IDENTIFIER LIBDISCOVER_BACKEND_LOG CATEGORY_NAME org.kde.plasma.libdiscover.backend)
 
 add_library(DiscoverPackageKitNotifier MODULE ${DiscoverPackageKitNotifier_SRCS})
 
-target_link_libraries(DiscoverPackageKitNotifier PRIVATE PK::packagekitqt6 Discover::Notifiers KF6::I18n KF6::Notifications KF6::ConfigCore DiscoverAppStreamIntegration)
+target_link_libraries(DiscoverPackageKitNotifier
+    PRIVATE
+        PK::packagekitqt6
+        Discover::Notifiers
+        KF6::I18n
+        KF6::Notifications
+        KF6::ConfigCore
+        DiscoverAppStreamIntegration
+)
 set_target_properties(DiscoverPackageKitNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 install(TARGETS DiscoverPackageKitNotifier DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover-notifier)
 
 install(FILES packagekit-backend-categories.xml DESTINATION ${KDE_INSTALL_DATADIR}/libdiscover/categories)
 
-install( FILES org.kde.discover.packagekit.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )
+install(FILES org.kde.discover.packagekit.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )
 
 option(PACKAGEKIT_AUTOREMOVE "Enable auto-removing unused dependencies when removing packages with PackageKit." "OFF")
-if(PACKAGEKIT_AUTOREMOVE)
+if (PACKAGEKIT_AUTOREMOVE)
     add_definitions(-DPACKAGEKIT_AUTOREMOVE)
 endif()

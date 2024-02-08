@@ -50,8 +50,13 @@ set(discovercommon_SRCS
     utilscoro.h
 )
 
-ecm_qt_declare_logging_category(discovercommon_SRCS HEADER libdiscover_debug.h IDENTIFIER LIBDISCOVER_LOG CATEGORY_NAME org.kde.plasma.libdiscover DESCRIPTION "libdiscover" EXPORT DISCOVER)
-
+ecm_qt_declare_logging_category(discovercommon_SRCS
+    HEADER libdiscover_debug.h
+    IDENTIFIER LIBDISCOVER_LOG
+    CATEGORY_NAME org.kde.plasma.libdiscover
+    DESCRIPTION "libdiscover"
+    EXPORT DISCOVER
+)
 
 add_library(DiscoverCommon ${discovercommon_SRCS})
 if(TARGET AppStreamQt)

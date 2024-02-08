@@ -15,16 +15,17 @@ set(flatpak-backend_SRCS
 add_library(flatpak-backend MODULE ${flatpak-backend_SRCS})
 kde_target_enable_exceptions(flatpak-backend PRIVATE)
 target_link_libraries(flatpak-backend
-    Qt::Core
-    Qt::Widgets
-    Qt::Concurrent
-    KF6::CoreAddons
-    KF6::ConfigCore
-    KF6::KIOGui
-    Discover::Common
-    AppStreamQt
-    PkgConfig::Flatpak
-    QCoro::Core
+    PRIVATE
+        Qt::Core
+        Qt::Widgets
+        Qt::Concurrent
+        KF6::CoreAddons
+        KF6::ConfigCore
+        KF6::KIOGui
+        Discover::Common
+        AppStreamQt
+        PkgConfig::Flatpak
+        QCoro::Core
 )
 
 if (AppStreamQt_VERSION VERSION_GREATER 0.14.6)
@@ -39,7 +40,12 @@ install(TARGETS flatpak-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 install(FILES flatpak-backend-categories.xml DESTINATION ${KDE_INSTALL_DATADIR}/libdiscover/categories)
 
 add_library(FlatpakNotifier MODULE FlatpakNotifier.cpp)
-target_link_libraries(FlatpakNotifier Discover::Notifiers Qt::Concurrent PkgConfig::Flatpak)
+target_link_libraries(FlatpakNotifier
+    PRIVATE
+        Discover::Notifiers
+        Qt::Concurrent
+        PkgConfig::Flatpak
+)
 set_target_properties(FlatpakNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 if (Flatpak_VERSION VERSION_LESS 1.10.2)
