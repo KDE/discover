@@ -6,7 +6,7 @@
 
 #include "PackageKitDependencies.h"
 #include "PackageKitMessages.h"
-#include "libdiscover_backend_debug.h"
+#include "libdiscover_backend_packagekit_debug.h"
 
 #include <QDebug>
 
@@ -172,7 +172,7 @@ void PakcageKitFetchDependenciesJob::cancel()
 
 void PakcageKitFetchDependenciesJob::onTransactionErrorCode(PackageKit::Transaction::Error error, const QString &details)
 {
-    qCWarning(LIBDISCOVER_BACKEND_LOG) << "PakcageKitFetchDependenciesJob: Transaction error:" << m_transaction << error << details;
+    qCWarning(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "PakcageKitFetchDependenciesJob: Transaction error:" << m_transaction << error << details;
 }
 
 void PakcageKitFetchDependenciesJob::onTransactionPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)

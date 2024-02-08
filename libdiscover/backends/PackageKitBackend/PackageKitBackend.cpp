@@ -48,7 +48,7 @@
 #include <optional>
 
 #include "config-paths.h"
-#include "libdiscover_backend_debug.h"
+#include "libdiscover_backend_packagekit_debug.h"
 #include "utils.h"
 #include <Category/Category.h>
 #include <resources/ResourcesModel.h>
@@ -329,7 +329,7 @@ void PackageKitBackend::reloadPackageList()
 
         // TODO
         // if (data.components.isEmpty()) {
-        //     qCDebug(LIBDISCOVER_BACKEND_LOG) << "empty appstream db";
+        //     qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "empty appstream db";
         //     if (PackageKit::Daemon::backendName() == QLatin1String("aptcc") || PackageKit::Daemon::backendName().isEmpty()) {
         //         checkForUpdates();
         //     }
@@ -562,7 +562,7 @@ T PackageKitBackend::resourcesByPackageNames(const W &pkgnames) const
 void PackageKitBackend::checkForUpdates()
 {
     if (auto offline = PackageKit::Daemon::global()->offline(); offline->updateTriggered() || offline->upgradeTriggered()) {
-        qCDebug(LIBDISCOVER_BACKEND_LOG) << "Won't be checking for updates again, the system needs a reboot to apply the fetched offline updates.";
+        qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "Won't be checking for updates again, the system needs a reboot to apply the fetched offline updates.";
         return;
     }
 

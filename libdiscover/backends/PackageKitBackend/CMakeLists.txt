@@ -1,5 +1,24 @@
 find_package(KF6 REQUIRED Notifications)
 
+ecm_qt_declare_logging_category(libdiscover-backend-packagekit-logging-category_SRCS
+    HEADER libdiscover_backend_packagekit_debug.h
+    IDENTIFIER LIBDISCOVER_BACKEND_PACKAGEKIT_LOG
+    CATEGORY_NAME org.kde.plasma.libdiscover.backend.packagekit
+    DESCRIPTION "libdiscover (backend - PackageKit)"
+    EXPORT DISCOVER
+)
+
+add_library(libdiscover-backend-packagekit-logging-category STATIC
+    ${libdiscover-backend-packagekit-logging-category_SRCS}
+)
+
+set_property(TARGET libdiscover-backend-packagekit-logging-category PROPERTY POSITION_INDEPENDENT_CODE ON)
+
+target_link_libraries(libdiscover-backend-packagekit-logging-category
+    PRIVATE
+        Qt::Core
+)
+
 #packagekit-backend
 set(packagekit-backend_SRCS
     PackageKitBackend.cpp
@@ -15,8 +34,6 @@ set(packagekit-backend_SRCS
     pkui.qrc
 )
 
-ecm_qt_declare_logging_category(packagekit-backend_SRCS HEADER libdiscover_backend_debug.h IDENTIFIER LIBDISCOVER_BACKEND_LOG CATEGORY_NAME org.kde.plasma.libdiscover.backend DESCRIPTION "libdiscover backend" EXPORT DISCOVER)
-
 add_library(packagekit-backend MODULE ${packagekit-backend_SRCS})
 
 target_link_libraries(packagekit-backend
@@ -31,7 +48,9 @@ target_link_libraries(packagekit-backend
         KF6::Archive
         AppStreamQt
         QCoro::Core
+        libdiscover-backend-packagekit-logging-category
 )
+
 install(TARGETS packagekit-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 
 if (TARGET PkgConfig::Markdown)
@@ -43,7 +62,6 @@ endif()
 set(DiscoverPackageKitNotifier_SRCS
     PackageKitNotifier.cpp
 )
-ecm_qt_declare_logging_category(DiscoverPackageKitNotifier_SRCS HEADER libdiscover_backend_debug.h IDENTIFIER LIBDISCOVER_BACKEND_LOG CATEGORY_NAME org.kde.plasma.libdiscover.backend)
 
 add_library(DiscoverPackageKitNotifier MODULE ${DiscoverPackageKitNotifier_SRCS})
 
@@ -55,7 +73,9 @@ target_link_libraries(DiscoverPackageKitNotifier
         KF6::Notifications
         KF6::ConfigCore
         DiscoverAppStreamIntegration
+        libdiscover-backend-packagekit-logging-category
 )
+
 set_target_properties(DiscoverPackageKitNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 install(TARGETS DiscoverPackageKitNotifier DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover-notifier)

@@ -10,7 +10,7 @@
 #include "PackageKitMessages.h"
 #include "PackageKitResource.h"
 #include "PackageKitUpdater.h"
-#include "libdiscover_backend_debug.h"
+#include "libdiscover_backend_packagekit_debug.h"
 #include "utils.h"
 #include <KLocalizedString>
 #include <PackageKit/Daemon>
@@ -73,7 +73,7 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
                 // FIXME this state shouldn't exist
                 qWarning() << "Installing no packages found!";
                 for (auto resource : std::as_const(m_apps)) {
-                    qCDebug(LIBDISCOVER_BACKEND_LOG) << "app" << resource << resource->state();
+                    qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "app" << resource << resource->state();
                 }
 
                 setStatus(Transaction::DoneWithErrorStatus);
@@ -102,7 +102,7 @@ void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
 
     if (false) {
         connect(m_trans.data(), &PackageKit::Transaction::statusChanged, this, [this]() {
-            qCDebug(LIBDISCOVER_BACKEND_LOG) << "state..." << m_trans->status();
+            qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "state..." << m_trans->status();
         });
     }
 
@@ -136,7 +136,7 @@ void PKTransaction::progressChanged()
 {
     auto percent = m_trans->percentage();
     if (percent == 101) {
-        qCWarning(LIBDISCOVER_BACKEND_LOG) << "percentage cannot be calculated";
+        qCWarning(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "percentage cannot be calculated";
         percent = 50;
     }
 

@@ -38,15 +38,15 @@ SteamOSTransaction::SteamOSTransaction(SteamOSResource *app, Transaction::Role r
                 if (changed(QLatin1String("ProgressPercentage"))) {
                     // Get percentage and pass on to gui
                     double percent = m_interface->progressPercentage();
-                    qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend: Progress percentage: " << percent;
+                    qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "steamos-backend: Progress percentage: " << percent;
                     setProgress(qBound(0.0, percent, 100.0));
                 }
                 if (changed(QLatin1String("EstimatedCompletionTime"))) {
                     qulonglong estimatedCompletion = m_interface->estimatedCompletionTime();
                     QDateTime potentialEndTime = QDateTime::fromSecsSinceEpoch(estimatedCompletion);
-                    qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend: Estimated completion time:" << potentialEndTime.toString();
+                    qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "steamos-backend: Estimated completion time:" << potentialEndTime.toString();
                     qulonglong secondsLeft = QDateTime::currentDateTimeUtc().secsTo(potentialEndTime);
-                    qCDebug(LIBDISCOVER_STEAMOS_LOG) << "Remaining seconds:" << secondsLeft;
+                    qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "Remaining seconds:" << secondsLeft;
                     setRemainingTime(secondsLeft);
                 }
                 if (changed(QLatin1String("UpdateStatus"))) {
@@ -93,7 +93,7 @@ void SteamOSTransaction::refreshStatus()
 {
     // Get update state and update our state
     uint status = m_interface->updateStatus();
-    qCDebug(LIBDISCOVER_STEAMOS_LOG) << "steamos-backend: New state: " << status;
+    qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "steamos-backend: New state: " << status;
 
     // Status is one of these from the xml definition:
     //    0 = IDLE, the update has not been launched yet

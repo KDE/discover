@@ -6,13 +6,14 @@
 
 #include "FlatpakFetchDataJob.h"
 #include "FlatpakResource.h"
+#include "libdiscover_backend_flatpak_debug.h"
 
 namespace FlatpakRunnables
 {
 FlatpakRemoteRef *findRemoteRef(FlatpakResource *app, GCancellable *cancellable)
 {
     if (app->origin().isEmpty()) {
-        qWarning("Failed to get metadata file because of missing origin");
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get metadata file because of missing origin";
         return nullptr;
     }
 
@@ -29,7 +30,7 @@ FlatpakRemoteRef *findRemoteRef(FlatpakResource *app, GCancellable *cancellable)
                                                                cancellable,
                                                                &localError);
     if (localError) {
-        qWarning() << "Failed to find remote ref:" << localError->message;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to find remote ref:" << localError->message;
     }
     return ret;
 }
@@ -39,7 +40,7 @@ QByteArray fetchMetadata(FlatpakResource *app, GCancellable *cancellable)
     FlatpakRemoteRef *remoteRef = findRemoteRef(app, cancellable);
     if (!remoteRef) {
         if (!g_cancellable_is_cancelled(cancellable)) {
-            qDebug() << "failed to find the remote" << app->name();
+            qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "failed to find the remote" << app->name();
         }
 
         return {};
@@ -51,7 +52,7 @@ QByteArray fetchMetadata(FlatpakResource *app, GCancellable *cancellable)
     const QByteArray metadataContent((const char *)buff, len);
 
     if (metadataContent.isEmpty()) {
-        qWarning() << "Failed to get metadata file: empty metadata";
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get metadata file: empty metadata";
         return {};
     }
     return metadataContent;

@@ -25,7 +25,7 @@
 
 #include <optional>
 
-#include "libdiscover_backend_debug.h"
+#include "libdiscover_backend_packagekit_debug.h"
 #include "pk-offline-private.h"
 #include "utils.h"
 
@@ -44,12 +44,12 @@ int percentageWithStatus(PackageKit::Transaction::Status status, uint percentage
         };
         const auto idx = statuses.value(status, -1);
         if (idx < 0) {
-            qCDebug(LIBDISCOVER_BACKEND_LOG) << "Status not present" << status << "among" << statuses.keys() << percentage;
+            qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "Status not present" << status << "among" << statuses.keys() << percentage;
             return -1;
         }
         percentage = (idx * 100 + percentage) / 2 /*the maximum in statuses*/;
     }
-    qCDebug(LIBDISCOVER_BACKEND_LOG) << "reporting progress with status:" << status << percentage << was;
+    qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "reporting progress with status:" << status << percentage << was;
     return percentage;
 }
 
@@ -341,7 +341,7 @@ void PackageKitUpdater::prepare()
     }
 
     if (QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
-        qCDebug(LIBDISCOVER_BACKEND_LOG) << "Removed offline results file";
+        qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "Removed offline results file";
         offline->clearResults();
     }
 
@@ -524,7 +524,7 @@ void PackageKitUpdater::start()
 
 void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time*/)
 {
-    // qCDebug(LIBDISCOVER_BACKEND_LOG) << "update finished!" << exit << time;
+    // qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "update finished!" << exit << time;
     if (!m_proceedFunctions.isEmpty()) {
         return;
     }
@@ -805,7 +805,7 @@ AbstractBackendUpdater::State toUpdateState(PackageKit::Transaction::Status t)
     case PackageKit::Transaction::StatusCancel:
         return AbstractBackendUpdater::Done;
     default:
-        qCDebug(LIBDISCOVER_BACKEND_LOG) << "unknown packagekit status" << t;
+        qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "unknown packagekit status" << t;
         return AbstractBackendUpdater::None;
     }
     Q_UNREACHABLE();

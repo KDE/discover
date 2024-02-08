@@ -1,3 +1,22 @@
+ecm_qt_declare_logging_category(libdiscover-backend-flatpak-logging-category_SRCS
+    HEADER libdiscover_backend_flatpak_debug.h
+    IDENTIFIER LIBDISCOVER_BACKEND_FLATPAK_LOG
+    CATEGORY_NAME org.kde.plasma.libdiscover.backend.flatpak
+    DESCRIPTION "libdiscover (backend - Flatpak)"
+    EXPORT DISCOVER
+)
+
+add_library(libdiscover-backend-flatpak-logging-category STATIC
+    ${libdiscover-backend-flatpak-logging-category_SRCS}
+)
+
+set_property(TARGET libdiscover-backend-flatpak-logging-category PROPERTY POSITION_INDEPENDENT_CODE ON)
+
+target_link_libraries(libdiscover-backend-flatpak-logging-category
+    PRIVATE
+        Qt::Core
+)
+
 add_subdirectory(tests)
 
 set(flatpak-backend_SRCS
@@ -26,6 +45,7 @@ target_link_libraries(flatpak-backend
         AppStreamQt
         PkgConfig::Flatpak
         QCoro::Core
+        libdiscover-backend-flatpak-logging-category
 )
 
 if (AppStreamQt_VERSION VERSION_GREATER 0.14.6)
@@ -45,6 +65,8 @@ target_link_libraries(FlatpakNotifier
         Discover::Notifiers
         Qt::Concurrent
         PkgConfig::Flatpak
+        libdiscover-backend-flatpak-logging-category
+
 )
 set_target_properties(FlatpakNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 

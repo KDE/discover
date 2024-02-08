@@ -27,7 +27,7 @@
 #include <AppStreamQt/release.h>
 #include <appstream/AppStreamIntegration.h>
 
-#include "libdiscover_backend_debug.h"
+#include "libdiscover_backend_packagekit_debug.h"
 #include "pk-offline-private.h"
 
 using namespace std::chrono_literals;
@@ -105,7 +105,7 @@ void PackageKitNotifier::checkOfflineUpdates()
     if (!QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
         return;
     }
-    qCDebug(LIBDISCOVER_BACKEND_LOG) << "found offline update results at " << PK_OFFLINE_RESULTS_FILENAME;
+    qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "found offline update results at " << PK_OFFLINE_RESULTS_FILENAME;
 
     KDesktopFile file(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME));
     KConfigGroup group(&file, QStringLiteral(PK_OFFLINE_RESULTS_GROUP));
@@ -166,7 +166,7 @@ void PackageKitNotifier::checkOfflineUpdates()
             // No matter what happened, clean up the results file if it still exists
             // because at this point, there's nothing anyone can do with it
             if (QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
-                qCDebug(LIBDISCOVER_BACKEND_LOG) << "Removed offline results file";
+                qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "Removed offline results file";
                 PackageKit::Daemon::global()->offline()->clearResults();
             }
         });
@@ -220,7 +220,7 @@ void PackageKitNotifier::recheckSystemUpdate()
 
 void PackageKitNotifier::setupGetUpdatesTransaction(PackageKit::Transaction *trans)
 {
-    qCDebug(LIBDISCOVER_BACKEND_LOG) << "using..." << trans << trans->tid().path();
+    qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "using..." << trans << trans->tid().path();
 
     trans->setProperty("normalUpdates", 0);
     trans->setProperty("securityUpdates", 0);
@@ -382,8 +382,8 @@ void PackageKitNotifier::onRequireRestart(PackageKit::Transaction::Restart type,
 {
     auto transaction = qobject_cast<PackageKit::Transaction *>(sender());
     transaction->setProperty("requireRestart", qMax<int>(transaction->property("requireRestart").toInt(), type));
-    qCDebug(LIBDISCOVER_BACKEND_LOG) << "RESTART" << QMetaEnum::fromType<PackageKit::Transaction::Restart>().valueToKey(type) << "is required for package"
-                                     << packageID;
+    qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "RESTART" << QMetaEnum::fromType<PackageKit::Transaction::Restart>().valueToKey(type)
+                                                << "is required for package" << packageID;
 }
 
 #include "moc_PackageKitNotifier.cpp"

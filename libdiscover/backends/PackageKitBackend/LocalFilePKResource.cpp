@@ -5,7 +5,8 @@
  */
 
 #include "LocalFilePKResource.h"
-#include "libdiscover_backend_debug.h"
+#include "libdiscover_backend_packagekit_debug.h"
+
 #include <PackageKit/Daemon>
 #include <PackageKit/Details>
 #include <QDebug>
@@ -69,7 +70,7 @@ void LocalFilePKResource::fetchDetails()
                     m_exec.prepend(QLatin1Char('/'));
                 }
             } else {
-                qWarning() << "could not find an executable desktop file for" << m_path << "among" << files;
+                qCWarning(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "could not find an executable desktop file for" << m_path << "among" << files;
             }
         });
     }
