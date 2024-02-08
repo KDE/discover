@@ -1,13 +1,13 @@
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
-# Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2022, 2023.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2023-04-07 23:45-0700\n"
-"Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
+"PO-Revision-Date: 2024-02-06 22:58+0900\n"
+"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -35,7 +35,7 @@ msgid ""
 "Backends</interface> section.<nl/><nl/>Also please consider reporting this "
 "as a packaging issue to your distribution."
 msgstr ""
-"いくつかのバックエンドは設定ページの<interface>「欠けているバックエンド」</"
+"いくつかのバックエンドは設定ページの<interface>欠けているバックエンド</"
 "interface>セクションでインストールできます。<nl/><nl/>これをパッケージの問題"
 "としてご使用のディストリビューションに報告することもご検討ください。"
 
@@ -74,7 +74,7 @@ msgstr "カテゴリ '%1' が見つかりませんでした。"
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr "存在しないファイル '%1' を開いています"
+msgstr "存在しないファイル '%1' を開こうとしています"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -107,7 +107,8 @@ msgstr ""
 #: discover/DiscoverObject.cpp:377
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
-msgstr "この問題をディストリビューションのパッケージャに報告してください。"
+msgstr ""
+"この問題をお使いのディストリビューションのパッケージャに報告してください。"
 
 #: discover/DiscoverObject.cpp:442 discover/DiscoverObject.cpp:443
 #: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
@@ -120,8 +121,7 @@ msgstr "Discover"
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
-"Discover はタスクが完了する前に閉じられました。タスクが完了するのを待っていま"
-"す。"
+"Discover はタスクが完了する前に閉じられました。完了するまで待機します。"
 
 #: discover/main.cpp:42
 #, kde-format
@@ -183,7 +183,7 @@ msgstr "appstream をサポート: URL スキーム"
 #: discover/main.cpp:122
 #, kde-format
 msgid "An application explorer"
-msgstr "アプリケーション エクスプローラ"
+msgstr "アプリケーションエクスプローラ"
 
 #: discover/main.cpp:124
 #, kde-format
@@ -474,7 +474,7 @@ msgstr "貢献"
 #: discover/qml/ApplicationPage.qml:851
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
-msgstr "プログラミング、デザイン、テストもしくは翻訳をして開発者を支援する"
+msgstr "プログラミング、デザイン、テストもしくは翻訳に参加して開発者を支援する"
 
 #: discover/qml/ApplicationPage.qml:876
 #, kde-format
@@ -533,7 +533,7 @@ msgstr ""
 "まない動作 ― 個人情報の詮索、位置情報の追跡、ファイルの内容の他者への転送な"
 "ど ― をするかもしれません。これらを確認する簡単な方法は存在しないため、このソ"
 "フトウェアの作者 (%1) を完全に信頼する場合のみインストールすることが推奨され"
-"ます。<nl/><nl/><link url='%2'>%</link> でさらなる情報を得ることができます。"
+"ます。<nl/><nl/><link url='%2'>%2</link> でさらなる情報を得ることができます。"
 
 #: discover/qml/ApplicationsListPage.qml:52
 #, kde-format
@@ -705,13 +705,13 @@ msgstr "更新を取得中(&U)..."
 #: discover/qml/DiscoverWindow.qml:81
 #, kde-format
 msgid "&Up to date"
-msgstr "最新です(&U)"
+msgstr "最新の状態です(&U)"
 
 #: discover/qml/DiscoverWindow.qml:81
 #, kde-format
 msgctxt "Update section name"
 msgid "&Update (%1)"
-msgstr "更新(&U) があります (%1)"
+msgstr "更新(&U) (%1)"
 
 #: discover/qml/DiscoverWindow.qml:88
 #, kde-format
@@ -813,7 +813,7 @@ msgstr ""
 #: discover/qml/Feedback.qml:58
 #, kde-format
 msgid "Contribute…"
-msgstr "貢献..."
+msgstr "貢献する！"
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
@@ -929,7 +929,7 @@ msgstr "いいえ"
 #: discover/qml/ReviewDialog.qml:18
 #, kde-format
 msgid "Reviewing %1"
-msgstr "%1 をレビュー"
+msgstr "%1 をレビューしています"
 
 #: discover/qml/ReviewDialog.qml:24
 #, kde-format
@@ -1106,7 +1106,7 @@ msgstr "エラーメッセージがクリップボードにコピーされまし
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format
 msgid "Update Selected"
-msgstr "選択した更新"
+msgstr "選択したものを更新"
 
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format
@@ -1194,7 +1194,7 @@ msgstr "更新を完了するには再起動が必要です"
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
-msgstr "最新です"
+msgstr "最新の状態です"
 
 #: discover/qml/UpdatesPage.qml:533
 #, kde-format
