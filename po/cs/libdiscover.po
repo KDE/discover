@@ -951,10 +951,9 @@ msgstr "Nastavit oprávnění..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "Offline Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "Aktualizace offline"
+msgstr ""
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1111,19 +1110,17 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1014
-#, fuzzy, kde-format
-#| msgid "Upgradeable"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "Aktualizovatelné"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1037
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "Repozitář je nedostupný"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2504,6 +2501,3 @@ msgstr "Systémový software"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Doplňky"
-
-#~ msgid "A new major version has been released"
-#~ msgstr "Byla vydána nová hlavní verze"
