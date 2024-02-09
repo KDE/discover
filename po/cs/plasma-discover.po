@@ -165,10 +165,9 @@ msgid "An application explorer"
 msgstr "Prohlížeč aplikací"
 
 #: discover/main.cpp:121
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2022 Vývojový tým Plasma"
+msgstr ""
 
 #: discover/main.cpp:122
 #, kde-format
@@ -1304,6 +1303,3 @@ msgstr "Měli byste zkontrolovat aktualizace"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#~ msgid "%1"
-#~ msgstr "%1"
