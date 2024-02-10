@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-07 00:38+0000\n"
-"PO-Revision-Date: 2024-01-10 16:00+0300\n"
+"PO-Revision-Date: 2024-02-09 20:03+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.85\n"
+"X-Generator: Lokalize 24.01.95\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -543,7 +543,7 @@ msgstr "Yerel paket"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:806
 #, kde-format
 msgid "Malformed appstream url '%1'"
-msgstr "Hatalı oluşturulmuş Appstream URL'si '%1'"
+msgstr "Hatalı oluşturulmuş Appstream URL’si ‘%1’"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1767
 #, kde-format
@@ -862,7 +862,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
 #, kde-format
 msgid "Add Flathub"
-msgstr "Flathub'ı ekle"
+msgstr "Flathub’ı ekle"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
 #, kde-format
@@ -884,7 +884,7 @@ msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
 msgstr ""
-"https://flathub.org'da listelenen uygulamaları kolayca kurmayı olanaklı kılar"
+"https://flathub.org’da listelenen uygulamaları kolayca kurmayı olanaklı kılar"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:167
 #, kde-format
@@ -1003,7 +1003,7 @@ msgstr ""
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
 #, kde-format
 msgid "Review EULA"
-msgstr "EULA'yı gözden geçir"
+msgstr "EULA’yı gözden geçir"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
 #, kde-format
@@ -1091,7 +1091,7 @@ msgstr "%1: %2"
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:521
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
-msgstr "Hatalı KNewStuff URI'si: %1"
+msgstr "Hatalı KNewStuff URI’si: %1"
 
 #: libdiscover/backends/KNSBackend/KNSResource.cpp:169
 #, kde-format
@@ -1131,7 +1131,7 @@ msgstr "Yazıtipleri"
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
-"Appstream'in sisteminizde düzgün şekilde yapılandırıldığından emin olun"
+"Appstream’in sisteminizde düzgün şekilde yapılandırıldığından emin olun"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:360
 #, kde-format
@@ -1939,7 +1939,7 @@ msgstr[1] ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
-msgstr "Keşfet'i Aç"
+msgstr "Keşfet’i Aç"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
 #, kde-format
@@ -2032,7 +2032,7 @@ msgstr[1] "%2 (ve %1 bağımlılık)"
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:105
 #, kde-format
 msgid "Repository URL:"
-msgstr "Depo URL'si:"
+msgstr "Depo URL’si:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
@@ -2405,7 +2405,7 @@ msgstr "Sonraki majör sürüme güncelleniyor"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "İşlem sürüyor (Keşfet'ten bağımsız olarak başlatıldı)"
+msgstr "İşlem sürüyor (Keşfet’ten bağımsız olarak başlatıldı)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format

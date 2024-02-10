@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-27 00:38+0000\n"
-"PO-Revision-Date: 2024-01-09 22:13+0300\n"
+"PO-Revision-Date: 2024-02-09 17:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.85\n"
+"X-Generator: Lokalize 24.01.95\n"
 
 #: discover/DiscoverObject.cpp:190
 #, kde-format
@@ -27,7 +27,7 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"%1, yalnızca Keşfet'e özgü uygulama eklentileriyle uygulama kurmak için "
+"%1, yalnızca Keşfet’e özgü uygulama eklentileriyle uygulama kurmak için "
 "yapılandırılmadı"
 
 #: discover/DiscoverObject.cpp:192
@@ -38,7 +38,7 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
-"Uygulamalar için Keşfet'i kullanmak üzere, <interface>Ayarlar</interface> "
+"Uygulamalar için Keşfet’i kullanmak üzere, <interface>Ayarlar</interface> "
 "sayfasında <interface>Eksik Arka Uçlar</interface> altında yeğlediğiniz "
 "modülü kurun."
 
@@ -61,11 +61,11 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
-"Uygulamalar için Keşfet'i kullanmak üzere, <command>pacman</command> paket "
+"Uygulamalar için Keşfet’i kullanmak üzere, <command>pacman</command> paket "
 "yöneticisini kullanarak <link url='https://wiki.archlinux.org/title/"
-"Flatpak#Installation'>Flatpak'i</link> veya <link url='https://wiki."
+"Flatpak#Installation'>Flatpak’i</link> veya <link url='https://wiki."
 "archlinux.org/title/"
-"KDE#Discover_does_not_show_any_applications'>PackageKit'i</link> kurun.<nl/"
+"KDE#Discover_does_not_show_any_applications'>PackageKit’i</link> kurun.<nl/"
 "><nl/><link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 "
 "dağıtımının Keşfet paketini gözden geçirin</link>"
 
@@ -148,7 +148,7 @@ msgstr "Bir kategoriye sahip girdi listelerini göster."
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
-"Keşfet'i söylenilen bir kipte aç. Kipler araç çubuğu düğmelerini değiştirir."
+"Keşfet’i söylenilen bir kipte aç. Kipler araç çubuğu düğmelerini değiştirir."
 
 #: discover/main.cpp:37
 #, kde-format
@@ -632,7 +632,7 @@ msgstr "Tüm Kategorilerde Ara"
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
-msgstr "%1 için Web'i Ara"
+msgstr "%1 için Web’i Ara"
 
 #: discover/qml/ApplicationsListPage.qml:222
 #, kde-format
@@ -860,7 +860,7 @@ msgid ""
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
 "Kullanıcılarımızı daha iyi anlayabilmemiz için anonim kullanım bilgilerini "
-"KDE'ye gönderir. Daha fazla bilgi için bkz. https://kde.org/privacypolicy-"
+"KDE’ye gönderir. Daha fazla bilgi için bkz. https://kde.org/privacypolicy-"
 "apps.php."
 
 #: discover/qml/Feedback.qml:19
@@ -1232,7 +1232,7 @@ msgid ""
 "network error, please report it to %1, not KDE."
 msgstr ""
 "Yukarıda belirtilen hata geçici bir ağ hatası değil de gerçek bir sorun gibi "
-"görünüyorsa lütfen bunu KDE'ye değil de %1 topluluğuna bildirin."
+"görünüyorsa lütfen bunu KDE’ye değil de %1 topluluğuna bildirin."
 
 #: discover/qml/UpdatesPage.qml:103
 #, kde-format
@@ -1244,7 +1244,7 @@ msgstr "Metni Kopyala"
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr ""
-"Hata iletisi kopyalandı. Bunu KDE'ye değil de %1 topluluğuna bildirmeyi "
+"Hata iletisi kopyalandı. Bunu KDE’ye değil de %1 topluluğuna bildirmeyi "
 "unutmayın!"
 
 #: discover/qml/UpdatesPage.qml:114
