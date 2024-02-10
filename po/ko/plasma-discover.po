@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
 # Jung Hee Lee <daemul72@gmail.com>, 2019.
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-20 02:23+0000\n"
-"PO-Revision-Date: 2023-11-04 22:10+0100\n"
+"PO-Revision-Date: 2024-02-09 20:11+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -181,10 +181,9 @@ msgid "An application explorer"
 msgstr "앱 탐색기"
 
 #: discover/main.cpp:121
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2024 Plasma Development Team"
 
 #: discover/main.cpp:122
 #, kde-format
@@ -579,7 +578,7 @@ msgstr "정렬: %1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr ""
+msgstr "관련성"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
@@ -678,7 +677,7 @@ msgstr "인기 항목"
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
-msgstr ""
+msgstr "새로 게시됨 및 최근 업데이트됨"
 
 #: discover/qml/BrowsingPage.qml:160
 #, kde-format
