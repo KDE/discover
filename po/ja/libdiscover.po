@@ -1,13 +1,13 @@
+# SPDX-FileCopyrightText: 2023, 2024 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
-# Ryuichi Yamada <ryuichi_ya220@outlook.jp>, 2023.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-13 02:29+0000\n"
-"PO-Revision-Date: 2023-02-25 15:02-0800\n"
-"Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
+"PO-Revision-Date: 2024-02-09 22:21+0900\n"
+"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -70,7 +70,7 @@ msgctxt ""
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr "注意が必要 (軽微)"
+msgstr "少し刺激的なコンテンツ"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:220
 #, kde-format
@@ -79,7 +79,7 @@ msgctxt ""
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr "注意が必要"
+msgstr "刺激的なコンテンツ"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:223
 #, kde-format
@@ -89,7 +89,7 @@ msgctxt ""
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "注意が必要 (重大)"
+msgstr "とても刺激的なコンテンツ"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:174
 #, kde-format
@@ -134,7 +134,7 @@ msgstr "ダミー 1"
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
-msgstr "スタッフのダミー"
+msgstr "ちょっとしたダミー"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
@@ -147,7 +147,7 @@ msgstr "ダミー 2.1"
 #, kde-format
 msgctxt "Category"
 msgid "dummy with quite some stuff"
-msgstr "いくつかのダミー"
+msgstr "たくさんのダミー"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
 #, kde-format
@@ -355,7 +355,7 @@ msgstr "パズル"
 #, kde-format
 msgctxt "Category"
 msgid "Role Playing"
-msgstr "ロール・プレイング"
+msgstr "RPG"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
@@ -552,7 +552,7 @@ msgstr "不正な AppStream の URL '%1'"
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1813
 #, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "ソースの追加に失敗しました '%1': %2"
+msgstr "ソース '%1' の追加に失敗しました: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1934
 #, kde-format
@@ -572,6 +572,9 @@ msgid ""
 "software in this repository will also be made be available in Discover when "
 "the application is installed.</para>"
 msgstr ""
+"<para>このアプリケーションは \"%1\" (<link>%2</link> でホストされています) か"
+"ら提供されています。このアプリケーションがインストールされているとき、このリ"
+"ポジトリにある他のアプリケーションも利用可能になります。</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:447
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:455
@@ -589,13 +592,13 @@ msgstr "サイズ不明"
 #, kde-format
 msgctxt "@info app size"
 msgid "%1 to download, %2 on disk"
-msgstr "インストールで %1 をダウンロード、%2 のディスク容量を使用"
+msgstr "%1 をダウンロード、%2 のディスク容量を使用"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:459
 #, kde-format
 msgctxt "@info app size"
 msgid "%1 on disk"
-msgstr "インストールで %1 のディスク容量を使用"
+msgstr "%1 のディスク容量を使用"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:513
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:487
@@ -632,64 +635,64 @@ msgstr "ネットワークへのアクセス"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid "Can access the internet"
-msgstr "インターネットにアクセス可能"
+msgstr "インターネットにアクセスできます"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:958
 #, kde-format
 msgid "Session Bus Access"
-msgstr ""
+msgstr "セッションバスへのアクセス"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Access is granted to the entire Session Bus"
-msgstr ""
+msgstr "セッションバス全体にアクセスできます"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:969
 #, kde-format
 msgid "System Bus Access"
-msgstr ""
+msgstr "システムバスへのアクセス"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:824
 #, kde-format
 msgid "Access is granted to the entire System Bus"
-msgstr ""
+msgstr "システムバス全体にアクセスできます"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "Remote Login Access"
-msgstr ""
+msgstr "リモートログイン"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
-msgstr ""
+msgstr "SSH プロトコルを使用してリモートログインの要求ができます"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Smart Card Access"
-msgstr ""
+msgstr "スマートカードへのアクセス"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr ""
+msgstr "スマートカードと統合してやり取りできます"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Printer Access"
-msgstr ""
+msgstr "プリンタへのアクセス"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr ""
+msgstr "プリンタと統合してやり取りできます"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "GPG エージェント"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:845
 #, kde-format
@@ -697,69 +700,73 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"GPG 暗号化サービスにアクセスできます。通常、文書に署名したり署名付きの文書を"
+"読み込んだりするために使用されます。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Bluetooth Access"
-msgstr ""
+msgstr "Bluetooth へのアクセス"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr ""
+msgstr "Bluetooth デバイスと統合してやり取りできます"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Low-Level System Access"
-msgstr ""
+msgstr "低レベルシステムへのアクセス"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:857
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "低レベルのシステムコールを呼び出せます (例: ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
 msgid "Device Access"
-msgstr ""
+msgstr "デバイスへのアクセス"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
+"内蔵デバイスや接続されたデバイスとやり取りできます\n"
+"内蔵デバイスや接続されたデバイスを制御できます"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr ""
+msgstr "KVM へのアクセス"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
-msgstr ""
+msgstr "他の OS を仮想マシンのゲストとして実行できます"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:893
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:905
 #, kde-format
 msgid "%1 (read-only)"
-msgstr ""
+msgstr "%1 (読み取り専用)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:896
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:908
 #, kde-format
 msgid "%1 (can create files)"
-msgstr ""
+msgstr "%1 (ファイル作成可能)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:899
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:917
 #, kde-format
 msgid "%1 (read & write) "
-msgstr ""
+msgstr "%1 (読み取りと書き込み)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:926
 #, kde-format
 msgid "Home Folder Access"
-msgstr ""
+msgstr "ホームフォルダへのアクセス"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
 #, kde-format
@@ -767,6 +774,8 @@ msgid ""
 "Can read, write, and create files in the following locations in your home "
 "folder without asking permission first: %1"
 msgstr ""
+"ホームフォルダの以下の場所で許可なしにファイルの読み取り、書き込みと作成がで"
+"きます: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
 #, kde-format
@@ -774,25 +783,27 @@ msgid ""
 "Can read and write files in the following locations in your home folder "
 "without asking permission first: %1"
 msgstr ""
+"ホームフォルダの以下の場所で許可なしにファイルの読み取りと書き込みができま"
+"す: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
-msgstr ""
+msgstr "ホームフォルダの以下の場所で許可なしにファイルの読み取りができます: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
 "asking permission first: %1"
-msgstr ""
+msgstr "ホームフォルダの以下の場所で許可なしにファイルにアクセスできます: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:941
 #, kde-format
 msgid "System Folder Access"
-msgstr ""
+msgstr "システムフォルダへのアクセス"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
 #, kde-format
@@ -800,6 +811,8 @@ msgid ""
 "Can read, write, and create system files in the following locations without "
 "asking permission first: %1"
 msgstr ""
+"以下の場所で許可なしにシステムファイルの読み取り、書き込みと作成ができます: "
+"%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
 #, kde-format
@@ -807,20 +820,21 @@ msgid ""
 "Can read and write system files in the following locations without asking "
 "permission first: %1"
 msgstr ""
+"以下の場所で許可なしにシステムファイルの読み取りと書き込みができます: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
-msgstr ""
+msgstr "以下の場所で許可なしにシステムファイルの読み取りができます: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:949
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
-msgstr ""
+msgstr "以下の場所で許可なしにシステムファイルにアクセスできます: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:959
 #, kde-format
@@ -828,6 +842,8 @@ msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
+"以下のコミュケーションプロトコルを使用して、同じデスクトップセッションで実行"
+"されている他のアプリケーションやプロセスとやり取りできます: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
@@ -835,6 +851,8 @@ msgid ""
 "Can communicate with all applications and system services using the "
 "following communication protocols: %1"
 msgstr ""
+"以下のコミュケーションプロトコルを使用して、すべてのアプリケーションやシステ"
+"ムサービスとやり取りできます: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:88
 #, kde-format
@@ -851,7 +869,7 @@ msgstr "変更を適用"
 msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
-msgstr ""
+msgstr "Flatpak ソースの優先度の変更は適用された後に有効になります。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
@@ -859,6 +877,8 @@ msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
 msgstr ""
+"https://flathub.org から簡単にアプリケーションをインストールできるようになり"
+"ます"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:163
 #, kde-format
@@ -868,7 +888,7 @@ msgstr "ソース %1 を追加できませんでした。"
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:279
 #, kde-format
 msgid "Removing '%1'"
-msgstr "'%1'を削除中"
+msgstr "'%1' を削除中"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:280
 #, kde-format
@@ -876,11 +896,13 @@ msgid ""
 "To remove this repository, the following applications must be uninstalled:"
 "<ul><li>%1</li></ul>"
 msgstr ""
+"このリポジトリを削除するためには、以下のアプリケーションをアンインストールす"
+"る必要があります: <ul><li>%1</li></ul>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
-msgstr ""
+msgstr "リモートリポジトリ %1 の削除に失敗しました: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:301
 #, kde-format
@@ -900,12 +922,13 @@ msgstr "Flatpak リポジトリ URI (*.flatpakrepo) を入力:"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:30
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
-msgstr ""
+msgstr "%3 の %2 からリモート '%1' を追加しています"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:196
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
+"'%1' を '%2' の中に見つけられませんでした。利用可能であるか確認してください。"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
@@ -914,23 +937,25 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
+"この開発版の %1 は古くなっています。安定版を使用することを強くおすすめしま"
+"す。"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:20
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr ""
+msgstr "安定版の %1 が利用可能です。"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:44
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr ""
+msgstr "%1 から取得できる安定版について表示"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:17
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "%1 はインストールされていませんが、データが残っています。"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:31
 #, kde-format
@@ -949,7 +974,9 @@ msgstr "%1 の権限"
 msgid ""
 "The remote %1 require that you accept their license:\n"
 " %2"
-msgstr "リモートの %1 では、ライセンス %2 に同意する必要があります。"
+msgstr ""
+"リモート %1 がライセンスへの同意を要求しています:\n"
+"%2"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
 #, kde-format
@@ -967,6 +994,8 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"サポートされていないクエスチョン:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
 #, kde-format
@@ -981,7 +1010,7 @@ msgstr "アプリケーション"
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
 msgid "Plasma Addons"
-msgstr "Plasma のアドオン"
+msgstr "Plasma アドオン"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:237
 #, kde-format
@@ -999,6 +1028,8 @@ msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr ""
+"バックエンド %1 のサーバへの要求が多すぎます。数分待ってから再試行してくださ"
+"い。"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:454
@@ -1015,6 +1046,9 @@ msgid ""
 "reported error was:\n"
 "%2"
 msgstr ""
+"%1 の更新を完了できませんでした。より強い権限を持つ「新しいものを入手」ダイア"
+"ログでこの操作を再試行することができます。報告されたエラー:\n"
+"%2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:488
 #, kde-format
@@ -1035,7 +1069,7 @@ msgstr "%1: %2"
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:638
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
-msgstr "間違った KNewStuff URI: %1"
+msgstr "不正な KNewStuff URI: %1"
 
 #: libdiscover/backends/KNSBackend/KNSResource.cpp:168
 #, kde-format
@@ -1057,13 +1091,13 @@ msgstr "%1 を起動できません"
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Addons"
-msgstr "Plasma のアドオン"
+msgstr "Plasma アドオン"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
-msgstr "Plasma のウィジェット"
+msgstr "Plasma ウィジェット"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
 #, kde-format
@@ -1124,7 +1158,7 @@ msgstr "GPG の失敗"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:33
 #, kde-format
 msgid "PackageID invalid"
-msgstr "PackageID が無効です。"
+msgstr "無効な PackageID"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
 #, kde-format
@@ -1294,12 +1328,12 @@ msgstr "パッケージのインストールがブロックされました。"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:101
 #, kde-format
 msgid "Corrupt package found"
-msgstr "壊れたパッケージが見つかりました。"
+msgstr "壊れたパッケージが見つかりました"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:103
 #, kde-format
 msgid "All packages already installed"
-msgstr "すべてのパッケージは既にインストールされています。"
+msgstr "すべてのパッケージが既にインストールされています。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:105
 #, kde-format
@@ -1893,10 +1927,9 @@ msgid_plural "Successfully updated %1 packages"
 msgstr[0] "%1 パッケージの更新に成功しました。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:187
-#, fuzzy, kde-format
-#| msgid "Unknown Status"
+#, kde-format
 msgid "Unknown Source"
-msgstr "不明なステータス"
+msgstr "不明なソース"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:332
 #, kde-format
@@ -1995,6 +2028,10 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"システムの動作に不可欠な以下のソフトウェアが削除されるため、この更新を完了で"
+"きませんでした:<nl/><ul><li>%1</li></ul><nl/>これがエラーであると思われる場合"
+"は、お使いのディストリビューションのパッケージャにバグとして報告してくださ"
+"い。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:515
 #, kde-format
@@ -2030,7 +2067,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
 #, kde-format
 msgid "Accept EULA"
-msgstr "EULA (ソフトウェア使用許諾契約) に同意します。"
+msgstr "EULA (ソフトウェア使用許諾契約) に同意"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:656
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:290
@@ -2039,7 +2076,7 @@ msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
 " %3"
 msgstr ""
-"パッケージ %1 とそのベンダー %2 の使用許諾契約に同意する必要があります。:\n"
+"パッケージ %1 とそのベンダー %2 の使用許諾契約に同意する必要があります:\n"
 " %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:773
@@ -2076,6 +2113,10 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"システムの動作に不可欠な以下のソフトウェアが削除されるため、この操作を完了で"
+"きませんでした:<nl/><ul><li>%1</li></ul><nl/>これがエラーであると思われる場合"
+"は、お使いのディストリビューションのパッケージャにバグとして報告してくださ"
+"い。"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:203
 #, kde-format
@@ -2124,11 +2165,15 @@ msgstr "オペレーティングシステム"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
+"rpm-ostree: 複数の起動されたデプロイメントが見つかりました。バグとして報告し"
+"てください。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:202
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
+"rpm-ostree: 起動されたデプロイメントが見つかりませんでした。バグとして報告し"
+"てください。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:417
 #, kde-format
@@ -2154,22 +2199,23 @@ msgstr "<b>新しいメジャーバージョンがリリースされました！
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:563
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr "現在のバージョン向けの更新待ちパッケージがありますが、続行します。"
+msgstr "現在のバージョン向けの更新がありますが、続行します。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:566
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
-msgstr ""
+msgstr "メジャーバージョンをリベースする前に最新の状態に更新してください"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:574
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"リベース操作のためのリモート参照が欠けています。バグとして報告してください。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:293
 #, kde-format
 msgid "GPL and other licenses"
-msgstr ""
+msgstr "GPL とその他のライセンス"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #, kde-format
@@ -2224,19 +2270,21 @@ msgstr "フォールバック"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
 msgid "ostree remotes"
-msgstr ""
+msgstr "ostree リモート"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
 #, kde-format
 msgid "rpm-ostree transaction failed with:"
-msgstr ""
+msgstr "rpm-ostree のトランザクションが失敗しました:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:355
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
+"rpm-ostree のトランザクションをキャンセルしています。これには時間がかかること"
+"があります。しばらくお待ちください。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:384
 #, kde-format
@@ -2256,12 +2304,12 @@ msgstr "システムを更新中"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Updating to the next major version"
-msgstr "新しいメジャーバージョンに更新中"
+msgstr "次のメジャーバージョンに更新中"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr ""
+msgstr "操作が進行中です (Discover の外側で開始されました)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2271,12 +2319,12 @@ msgstr "不明のトランザクションタイプ"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "チャンネル…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
 #, kde-format
 msgid "%1 channels"
-msgstr ""
+msgstr "%1 チャンネル"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:354
@@ -2287,7 +2335,7 @@ msgstr "%1 - %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "切り替え"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
@@ -2310,17 +2358,22 @@ msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this computer. Install it anyway?"
 msgstr ""
+"この Snap アプリケーションはセキュリティサンドボックス機能に対応しておらず、"
+"このコンピュータへの完全なアクセス権を持ちます。インストールを続行しますか？"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:74
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""
+"SteamOS: SteamOS Updates のために atomupd をクエリすることができませんでし"
+"た..."
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
-msgstr "ロードしたいすべてのバックエンドをコンマ','で区切ってリストします。"
+msgstr ""
+"ロードしたいすべてのバックエンドをコンマ ',' で区切ってリストできます。"
 
 #: libdiscover/resources/AbstractResource.cpp:99
 #, kde-format
@@ -2353,7 +2406,7 @@ msgstr "バージョン %1 の更新"
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
-msgstr ""
+msgstr "%1 → %2%1 → %2%2"
 
 #: libdiscover/resources/AbstractResourcesBackend.cpp:153
 #, kde-format

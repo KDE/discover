@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2024-02-06 22:58+0900\n"
+"PO-Revision-Date: 2024-02-09 15:37+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
@@ -173,7 +173,7 @@ msgstr "文字列を検索"
 #: discover/main.cpp:51
 #, kde-format
 msgid "Lists the available options for user feedback"
-msgstr "ユーザ フィードバックのために利用可能なオプションのリスト"
+msgstr "ユーザフィードバックのために利用可能なオプションをリスト"
 
 #: discover/main.cpp:53
 #, kde-format
