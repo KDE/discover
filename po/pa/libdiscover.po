@@ -1,31 +1,31 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# A S Alam <aalam@users.sf.net>, 2012, 2013, 2021, 2022.
+# SPDX-FileCopyrightText: 2012, 2013, 2021, 2022, 2024 A S Alam <aalam@users.sf.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-07 00:38+0000\n"
-"PO-Revision-Date: 2022-01-01 09:30-0800\n"
-"Last-Translator: A S Alam <aalam@satluj.org>\n"
-"Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
+"PO-Revision-Date: 2024-02-10 10:00-0600\n"
+"Last-Translator: A S Alam <aalam@punlinux.org>\n"
+"Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.04.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "ਅ.ਸ.ਆਲਮ. ੨੦੦੯-੨੦੨੨"
+msgstr "ਅ.ਸ.ਆਲਮ. ੨੦੦੯-੨੦੨੪"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "alam.yellow@gmail.com"
+msgstr "aalam@punlinux.org"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:103
 #, kde-format
@@ -33,11 +33,9 @@ msgid "Proprietary"
 msgstr "ਪਰੋਪ੍ਰੈਟਰੀ"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:105
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Publishing"
+#, kde-format
 msgid "Public Domain"
-msgstr "ਪਰਕਾਸ਼ਨ"
+msgstr "ਪਬਲਿਕ ਡੋਮੇਨ"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:111
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
@@ -56,7 +54,7 @@ msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr ""
+msgstr "ਸਭ ਲੋਕਾਂ ਲਈ"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:190
 #, kde-format
@@ -65,7 +63,7 @@ msgctxt ""
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr ""
+msgstr "ਰਲਵੀਂ ਸਮੱਗਰੀ"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:193
 #, fuzzy, kde-format
@@ -79,32 +77,29 @@ msgid "Moderate Content"
 msgstr "ਇੰਟਰਨੈੱਟ"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:196
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "ਇੰਟਰਨੈੱਟ"
+msgstr "ਤੀਬਰ ਸਮੱਗਰੀ"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:172
-#, fuzzy, kde-format
-#| msgid "Internal error"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "ਅੰਦਰੂਨੀ ਗਲਤੀ"
+msgstr "ਤਕਨੀਕੀ ਗਲਤੀ ਸੁਨੇਹਾ: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:224
 #, kde-format
 msgid "Error while submitting usefulness: %1"
-msgstr ""
+msgstr "ਵਰਤੋਂਯੋਗਤਾ ਭੇਜਣ ਦੌਰਾਨ ਗਲਤੀ: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
-msgstr ""
+msgstr "ਰੀਵਿਊ ਭੇਜਣ ਦੌਰਾਨ ਗਲਤੀ: %1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -134,7 +129,7 @@ msgstr "ਫ਼ਰਜ਼ੀ 1"
 #, kde-format
 msgctxt "Category"
 msgid "dummy with stuff"
-msgstr ""
+msgstr "ਸਾਮਾਨ ਨਾਲ ਫਰਜ਼ੀ"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
@@ -163,11 +158,10 @@ msgstr "ਫ਼ਰਜ਼ੀ 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "ਐਪਲੀਕੇਸ਼ਨਾਂ"
+msgstr "ਸਭ ਐਪਲੀਕੇਸ਼ਨਾਂ"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -181,7 +175,7 @@ msgstr "ਸਹਾਇਕ"
 #, kde-format
 msgctxt "Category"
 msgid "Accessibility"
-msgstr "ਸੁਲੱਭਤਾ"
+msgstr "ਅਸੈੱਸਬਿਲਟੀ"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
@@ -244,7 +238,7 @@ msgstr "ਸਿੱਖਿਆ"
 #, kde-format
 msgctxt "Category"
 msgid "Science and Engineering"
-msgstr "ਵਿਗਿਆਨ ਤੇ ਇੰਜਨਅਰਿੰਗ"
+msgstr "ਵਿਗਿਆਨ ਅਤੇ ਇੰਜਨਅਰਿੰਗ"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
@@ -258,7 +252,7 @@ msgstr "ਤਾਰਾ ਵਿਗਿਆਨ"
 #, kde-format
 msgctxt "Category"
 msgid "Biology"
-msgstr "ਬਾਇਓਲੋਜੀ"
+msgstr "ਜੀਵ-ਵਿਗਿਆਨ"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
@@ -534,8 +528,7 @@ msgid "System Settings"
 msgstr "ਸਿਸਟਮ ਸੈਟਿੰਗਾਂ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:124
-#, fuzzy, kde-format
-#| msgid "%1 (user)"
+#, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (ਵਰਤੋਂਕਾਰ)"
@@ -552,10 +545,9 @@ msgid "Malformed appstream url '%1'"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1767
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1'"
+#, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "'%1' ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਫ਼ਲ ਹੈ"
+msgstr "'%1' ਸਰੋਤ ਜੋੜਨ ਲਈ ਅਸਫ਼ਲ: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1888
 #, kde-format
@@ -575,6 +567,8 @@ msgid ""
 "software in this repository will also be made be available in Discover when "
 "the application is installed.</para>"
 msgstr ""
+"<para>ਇਹ ਐਪਲੀਕੇਸ਼ਨ \"%1\" (<link>%2</link> ਉੱਤੇ ਹੋਸਟ ਹੈ) ਤੋਂ ਮਿਲਦੀ ਹੈ। ਇਸ ਰਿਪੋਜ਼ਟਰੀ ਵਿੱਚ "
+"ਹੋਰ ਸਾਫਟਵੇਅਰ ਵੀ ਡਿਸਕਵਰ ਵਿੱਚ ਮੌਜੂਦ ਹੋਣਗੇ, ਜਦ ਇਹ ਐਪਲੀਕੇਸ਼ਨ ਇੰਸਟਾਲ ਹੁੰਦੀ ਹੈ।</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:447
 #, kde-format
@@ -582,8 +576,7 @@ msgid "Retrieving size information"
 msgstr "ਆਕਾਰ ਦੀ ਜਾਣਕਾਰੀ ਲਈ ਜਾ ਰਹੀ ਹੈ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:449
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "ਅਣਪਛਾਤਾ"
@@ -591,59 +584,55 @@ msgstr "ਅਣਪਛਾਤਾ"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:505
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:508
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1'"
+#, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "'%1' ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਫ਼ਲ ਹੈ"
+msgstr "'%1' ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਫ਼ਲ: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:740
 #, kde-format
 msgid "All Files"
-msgstr ""
+msgstr "ਸਭ ਫਾਇਲਾਂ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:742
 #, kde-format
 msgid "Home"
-msgstr ""
+msgstr "ਮੁੱਖ-ਸਫ਼ਾ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:744
-#, fuzzy, kde-format
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloads"
-msgstr "ਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
+msgstr "ਡਾਊਨਲੋਡ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:746
 #, kde-format
 msgid "Music"
-msgstr ""
+msgstr "ਸੰਗੀਤ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:804
 #, kde-format
 msgid "Network Access"
-msgstr ""
+msgstr "ਨੈੱਟਵਰਕ ਪਹੁੰਚ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
 #, kde-format
 msgid "Can access the internet"
-msgstr ""
+msgstr "ਇੰਟਰਨੈ਼ਟ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:814
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "System Updates"
+#, kde-format
 msgid "Sound system access"
-msgstr "ਸਿਸਟਮ ਅੱਪਡੇਟ ਕਰੋ"
+msgstr "ਸਾਊਂਡ ਸਿਸਟਮ ਪਹੁੰਚ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:815
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "ਆਡੀਓ ਚਲਾਈ ਜਾ ਸਕਦੀ ਹੈ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:819
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:963
 #, kde-format
 msgid "Session Bus Access"
-msgstr ""
+msgstr "ਸ਼ੈਸ਼ਨ ਬੱਸ ਪਹੁੰਚ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:820
 #, kde-format
@@ -651,52 +640,53 @@ msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
+"ਇਸ ਵਰਤੋਂਕਾਰ ਖਾਤੇ ਵਿੱਚ ਚੱਲਣ ਵਾਲੀਆਂ ਐਪਲੀਕੇਸ਼ਨਾਂ ਅਤੇ ਕਾਰਵਾਈਆਂ ਨਾਲ ਸੰਚਾਰ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:974
 #, kde-format
 msgid "System Bus Access"
-msgstr ""
+msgstr "ਸਿਸਟਮ ਬੱਸ ਪਹੁੰਚ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:826
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
-msgstr ""
+msgstr "ਸਿਸਟਮ ਉੱਤੇ ਚੱਲਣ ਵਾਲੀਆਂ ਐਪਲੀਕੇਸ਼ਨਾਂ ਅਤੇ ਕਾਰਵਾਈਆਂ ਨਾਲ ਸੰਚਾਰ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:831
 #, kde-format
 msgid "Remote Login Access"
-msgstr ""
+msgstr "ਰਿਮੋਟ ਲਾਗਇਨ ਪਹੁੰਚ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:832
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
-msgstr ""
+msgstr "SSH ਪਰੋਟੋਕਾਲ ਵਰਤ ਕੇ ਰਿਮੋਟ ਲਾਗਇਨ ਬੇਨਤੀਆਂ ਸ਼ੁਰੂ ਕੀਤੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:836
 #, kde-format
 msgid "Smart Card Access"
-msgstr ""
+msgstr "ਸਮਾਰਟ ਕਾਰਡ ਪਹੁੰਚ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:837
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr ""
+msgstr "ਸਮਾਰਟ ਕਾਰਡ ਨਾਲ ਤਾਲਮੇਲ ਅਤੇ ਸੰਚਾਰ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
 #, kde-format
 msgid "Printer Access"
-msgstr ""
+msgstr "ਪਰਿੰਟਰ ਪਹੁੰਚ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:842
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr ""
+msgstr "ਪਰਿੰਟਰਾਂ ਨਾਲ ਤਾਲਮੇਲ ਅਤੇ ਸੰਚਾਰ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:846
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "GPG ਏਜੰਟ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:847
 #, kde-format
@@ -708,37 +698,37 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:853
 #, kde-format
 msgid "Bluetooth Access"
-msgstr ""
+msgstr "ਬਲੂਟੁੱਥ ਪਹੁੰਚ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:854
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr ""
+msgstr "ਬਲੂਟੁੱਥ ਡਿਵਾਈਸਾਂ ਨਾਲ ਤਾਲਮੇਲ ਅਤੇ ਸੰਚਾਰ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
 #, kde-format
 msgid "Low-Level System Access"
-msgstr ""
+msgstr "ਮੁੱਢਲੇ-ਪੱਧਰ ਦੀ ਸਿਸਟਮ ਪਹੁੰਚ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "ਮੁੱਢਲੇ ਪੱਧਰ ਦੀਆਂ ਸਿਸਟਮ ਕਾਲਾਂ ਕੀਤੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ (ਜਿਵੇਂ ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:865
 #, kde-format
 msgid "Device Access"
-msgstr ""
+msgstr "ਡਿਵਾਈਸ ਪਹੁੰਚ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:866
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
-msgstr ""
+msgstr "ਬਿਲਟ-ਇਨ ਜਾਂ ਕਨੈਕਟ ਹੋਏ ਹਾਰਡਵੇਅਰ ਡਿਵਾਈਸਾਂ ਨਾਲ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਕੰਟਰੋਲ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr ""
+msgstr "ਕਰਨਲ ਅਧਾਰਿਤ ਵਰਚੁਅਲ ਮਸ਼ੀਨ ਪਹੁੰਚ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:871
 #, kde-format
@@ -749,24 +739,24 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "%1 (read-only)"
-msgstr ""
+msgstr "%1 (ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:913
 #, kde-format
 msgid "%1 (can create files)"
-msgstr ""
+msgstr "%1 (ਫਾਇਲਾਂ ਬਣਾਈਆਂ ਜਾ ਸਕਦੀਆਂ)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:904
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
 #, kde-format
 msgid "%1 (read & write) "
-msgstr ""
+msgstr "%1 (ਪੜ੍ਹਨ ਤੇ ਲਿਖਣ) "
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
 #, kde-format
 msgid "Home Folder Access"
-msgstr ""
+msgstr "ਘਰ ਫੋਲਡਰ ਪਹੁੰਚ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:934
 #, kde-format
@@ -774,6 +764,8 @@ msgid ""
 "Can read, write, and create files in the following locations in your home "
 "folder without asking permission first: %1"
 msgstr ""
+"ਤੁਹਾਡੇ ਘਰ ਫੋਲਡਰ ਵਿੱਚ ਅੱਗੇ ਦਿੱਤੇ ਟਿਕਾਣਿਆਂ ਵਿੱਚ ਫਾਇਲਾਂ ਨੂੰ ਬਿਨਾਂ ਇਜਾਜ਼ਤ ਲਏ ਪੜ੍ਹਿਆ, ਲਿਖਿਆ ਅਤੇ "
+"ਬਣਾਇਆ ਜਾ ਸਕਦਾ ਹੈ: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:936
 #, kde-format
@@ -781,6 +773,8 @@ msgid ""
 "Can read and write files in the following locations in your home folder "
 "without asking permission first: %1"
 msgstr ""
+"ਤੁਹਾਡੇ ਘਰ ਫੋਲਡਰ ਵਿੱਚ ਅੱਗੇ ਦਿੱਤੇ ਟਿਕਾਣਿਆਂ ਵਿੱਚ ਫਾਇਲਾਂ ਨੂੰ ਬਿਨਾਂ ਇਜਾਜ਼ਤ ਲਏ ਪੜ੍ਹਿਆ ਅਤੇ ਲਿਖਿਆ ਜਾ "
+"ਸਕਦਾ ਹੈ: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:938
 #, kde-format
@@ -788,6 +782,7 @@ msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
 msgstr ""
+"ਤੁਹਾਡੇ ਘਰ ਫੋਲਡਰ ਵਿੱਚ ਅੱਗੇ ਦਿੱਤੇ ਟਿਕਾਣਿਆਂ ਵਿੱਚ ਫਾਇਲਾਂ ਨੂੰ ਬਿਨਾਂ ਇਜਾਜ਼ਤ ਲਏ ਪੜ੍ਹਿਆ ਜਾ ਸਕਦਾ ਹੈ: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:940
 #, kde-format
@@ -795,11 +790,13 @@ msgid ""
 "Can access files in the following locations in your home folder without "
 "asking permission first: %1"
 msgstr ""
+"ਤੁਹਾਡੇ ਘਰ ਫੋਲਡਰ ਵਿੱਚ ਅੱਗੇ ਦਿੱਤੇ ਟਿਕਾਣਿਆਂ ਵਿੱਚ ਫਾਇਲਾਂ ਨੂੰ ਬਿਨਾਂ ਇਜਾਜ਼ਤ ਲਏ ਪਹੁੰਚ ਕੀਤਾ ਜਾ ਸਕਦਾ "
+"ਹੈ: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:946
 #, kde-format
 msgid "System Folder Access"
-msgstr ""
+msgstr "ਸਿਸਟਮ ਫੋਲਡਰ ਪਹੁੰਚ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:948
 #, kde-format
@@ -807,6 +804,8 @@ msgid ""
 "Can read, write, and create system files in the following locations without "
 "asking permission first: %1"
 msgstr ""
+"ਅੱਗੇ ਦਿੱਤੇ ਟਿਕਾਣਿਆਂ ਵਿੱਚ ਸਿਸਟਮ ਫਾਇਲਾਂ ਨੂੰ ਬਿਨਾਂ ਇਜਾਜ਼ਤ ਲਏ ਪੜ੍ਹਿਆ, ਲਿਖਿਆ ਅਤੇ ਬਣਾਇਆ ਜਾ ਸਕਦਾ "
+"ਹੈ: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:950
 #, kde-format
@@ -814,20 +813,21 @@ msgid ""
 "Can read and write system files in the following locations without asking "
 "permission first: %1"
 msgstr ""
+"ਅੱਗੇ ਦਿੱਤੇ ਟਿਕਾਣਿਆਂ ਵਿੱਚ ਸਿਸਟਮ ਫਾਇਲਾਂ ਨੂੰ ਬਿਨਾਂ ਇਜਾਜ਼ਤ ਲਏ ਪੜ੍ਹਿਆ ਅਤੇ ਲਿਖਿਆ ਜਾ ਸਕਦਾ ਹੈ: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:952
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
-msgstr ""
+msgstr "ਅੱਗੇ ਦਿੱਤੇ ਟਿਕਾਣਿਆਂ ਵਿੱਚ ਸਿਸਟਮ ਫਾਇਲਾਂ ਨੂੰ ਬਿਨਾਂ ਇਜਾਜ਼ਤ ਲਏ ਪੜ੍ਹਿਆ ਜਾ ਸਕਦਾ ਹੈ: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:954
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
-msgstr ""
+msgstr "ਅੱਗੇ ਦਿੱਤੇ ਟਿਕਾਣਿਆਂ ਵਿੱਚ ਸਿਸਟਮ ਫਾਇਲਾਂ ਨੂੰ ਬਿਨਾਂ ਇਜਾਜ਼ਤ ਲਏ ਪਹੁੰਚ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:964
 #, kde-format
@@ -849,11 +849,9 @@ msgid "Add Flathub"
 msgstr "ਫਲੈਟਹੱਬ ਜੋੜੋ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Applying Changes"
+#, kde-format
 msgid "Apply Changes"
-msgstr "ਬਦਲਾਅ ਲਾਗੂ ਕੀਤੇ ਜਾ ਰਹੇ ਹਨ"
+msgstr "ਤਬਦੀਲੀਆਂ ਲਾਗੂ ਕਰੋ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:95
 #, kde-format
@@ -867,12 +865,12 @@ msgstr ""
 msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
-msgstr ""
+msgstr "https://flathub.org ਵਿੱਚ ਮੌਜੂਦ ਐਪਲੀਕੇਸ਼ਨਾਂ ਨੂੰ ਸੌਖੀ ਤਰ੍ਹਾਂ ਇੰਸਟਾਲ ਕਰਨਾ ਸੰਭਵ ਕਰਦਾ ਹੈ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:167
 #, kde-format
 msgid "Could not add the source %1"
-msgstr "%1 ਸਰੋਤ ਜੋਝਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
+msgstr "%1 ਸਰੋਤ ਜੋੜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:287
 #, kde-format
@@ -915,7 +913,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:197
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "'%2' ਵਿੱਚ '%1' ਲੱਭਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ; ਯਕੀਨੀ ਬਣਾਓ ਕਿ ਇਹ ਮੌਜੂਦ ਹੈ।"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
 #, kde-format
@@ -923,56 +921,53 @@ msgctxt "@label %1 is the name of an application"
 msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
-msgstr ""
+msgstr "%1 ਦਾ ਇਸ ਡਿਵੈਲਪਮੈਂਟ ਵਰਜ਼ਨ ਹੈ। ਸਥਿਰ ਵਰਜ਼ਨ ਵਰਤਣ ਦੀ ਜ਼ੋਰਦਾਰ ਸਿਫਾਰਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ।"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
-#, fuzzy, kde-format
-#| msgctxt "Notification when a new version of Kubuntu is available"
-#| msgid "A new version of Kubuntu is available."
+#, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr "ਕੂਬੰਤੂ ਦਾ ਨਵਾਂ ਵਰਜਨ ਉਪਲੱਬਧ ਹੈ।"
+msgstr "%1 ਦਾ ਹੋਰ ਸਥਿਰ ਵਰਜ਼ਨ ਹੈ।"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:54
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr ""
+msgstr "%1 ਉੱਤੇ ਸਥਿਰ ਵਰਜ਼ਨ ਵੇਖੋ"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:18
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "%1 ਇੰਸਟਾਲ ਨਹੀਂ ਹੈ, ਪਰ ਇਸ ਦਾ ਡਾਟਾ ਹਾਲੇ ਵੀ ਮੌਜੂਦ ਹੈ।"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:32
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "ਸੈਟਿੰਗਾਂ ਅਤੇ ਵਰਤੋਂਕਾਰ ਡਾਟੇ ਨੂੰ ਹਟਾਓ"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:35
 #, kde-format
 msgid "Clearing settings and user data…"
-msgstr ""
+msgstr "…ਸੈਟਿੰਗਾਂ ਅਤੇ ਵਰਤੋਂਕਾਰ ਡਾਟੇ ਨੂੰ ਮਿਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:22
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "%1 ਲਈ ਇਜਾਜ਼ਤਾਂ"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:79
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:19
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "…ਇਜਾਜ਼ਤਾਂ ਦੀ ਸੰਰਚਨਾ"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "View Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "ਅੱਪਡੇਟ ਵੇਖੋ"
+msgstr "ਫਿਰਮਵੇਅਰ ਅੱਪਡੇਟ"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -980,17 +975,18 @@ msgid ""
 "The remote %1 require that you accept their license:\n"
 " %2"
 msgstr ""
+"ਰਿਮੋਟ %1 ਵਲੋਂ ਤੁਹਾਨੂੰ ਉਹਨਾਂ ਦੇ ਲਸੰਸ ਨੂੰ ਮਨਜ਼ੂਰ ਕਰਨ ਦੀ ਲੋੜ ਹੈ:\n"
+" %2"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:41
 #, kde-format
 msgid "Review EULA"
-msgstr "EULA ਦੀ ਪੜਤਾਲ"
+msgstr "EULA ਦਾ ਰੀਵਿਊ"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:137
-#, fuzzy, kde-format
-#| msgid "Could not add the source %1"
+#, kde-format
 msgid "Could not enable remote %1: %2"
-msgstr "%1 ਸਰੋਤ ਜੋਝਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
+msgstr "%1 ਰਿਮੋਟ ਨੂੰ ਸਮਰੱਥ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ: %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:63
 #, kde-format
@@ -998,11 +994,13 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"ਗ਼ੈਰ-ਸਹਾਇਕ ਸਵਾਲ:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:156
 #, kde-format
 msgid "Backend %1 took too long to initialize"
-msgstr ""
+msgstr "ਬੈਕਐਂਡ %1 ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਬਹੁਤ ਸਮਾਂ ਲੱਗਾ"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
 #, kde-format
@@ -1036,7 +1034,7 @@ msgstr ""
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:370
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
-msgstr ""
+msgstr "ਗਲਤ %1 ਬੈਕਐਂਡ ਹੈ। ਆਪਣੇ ਡਿਸਟਰੀਬਿਊਟਰ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:389
 #, kde-format
@@ -1055,7 +1053,7 @@ msgstr ""
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:403
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
-msgstr ""
+msgstr "%1 ਬੈਕਐਂਡ ਵਿੱਚ ਬਿਨਾਂ-ਨਿਪਟਾਈ ਗਲਤੀ ਹੈ। ਆਪਣੇ ਡਿਸਟਰੀਬਿਊਟਰ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
 #, kde-format
@@ -1065,13 +1063,13 @@ msgstr "%1: %2"
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:521
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
-msgstr ""
+msgstr "ਗਲਤ KNewStuff URI: %1"
 
 #: libdiscover/backends/KNSBackend/KNSResource.cpp:169
 #, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"
-msgstr ""
+msgstr "KDE ਸਟੋਰ"
 
 #: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
 #, kde-format
@@ -1104,7 +1102,7 @@ msgstr "ਫੋਂਟ"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:324
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
-msgstr ""
+msgstr "ਯਕੀਨੀ ਬਣਾਓ ਕਿ ਤੁਹਾਡੇ ਸਿਸਟਮ ਉੱਤੇ ਐਪ-ਸਟਰੀਮ ਨੂੰ ਠੀਕ ਤਰ੍ਹਾਂ ਸੈੱਟ ਅੱਪ ਕੀਤਾ ਹੈ।"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:360
 #, kde-format
@@ -1113,6 +1111,7 @@ msgid ""
 "Your operating system ended support on %1. Consider upgrading to a supported "
 "version."
 msgstr ""
+"ਤੁਹਾਡੇ ਓਪਰੇਟਿੰਗ ਸਿਸਟਮ ਲਈ ਸਹਿਯੋਗ %1 ਨੂੰ ਖਤਮ ਹੋਈ ਹੈ। ਸਹਾਇਕ ਵਰਜ਼ਨ ਲਈ ਅੱਪਗਰੇਡ ਬਾਰੇ ਵਿਚਾਰ ਕਰੋ।"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:919
 #, kde-format
@@ -1128,22 +1127,22 @@ msgid ""
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
+"<b>%1 ਹੁਣ ਮੌਜੂਦ ਹੈ।</b>\n"
+"ਇਸ ਨਵੇਂ ਵਰਜ਼ਨ ਲਈ ਅੱਪਗਰੇਡ ਕਰਨ ਦੇ ਯੋਗ ਹੋਣ ਲਈ, ਪਹਿਲਾਂ ਸਾਰੇ ਅੱਪਡੇਟ ਲਾਗੂ ਕਰੋ ਅਤੇ ਸਿਸਟਮ ਨੂੰ ਮੁੜ-ਚਾਲੂ "
+"ਕਰੋ।"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1014
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "ਅੱਪਗਰੇਡ"
+msgstr "ਹੁਣੇ ਅੱਪਗਰੇਡ ਕਰੋ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1037
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "ਰਿਪੋ ਉਪਲਬਧ ਨਹੀਂ ਹੈ"
+msgstr "%1 ਹੁਣ ਮੌਜੂਦ ਹੈ।"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1166,10 +1165,9 @@ msgid "Internal error"
 msgstr "ਅੰਦਰੂਨੀ ਗਲਤੀ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:27
-#, fuzzy, kde-format
-#| msgid "Internal error"
+#, kde-format
 msgid "Internal error: %1"
-msgstr "ਅੰਦਰੂਨੀ ਗਲਤੀ"
+msgstr "ਅੰਦਰੂਨੀ ਗਲਤੀ: %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:31
 #, kde-format
@@ -1374,7 +1372,7 @@ msgstr "ਕੋਈ ਡਿਸਟਰੀ ਅੱਪਗਰੇਡ ਡਾਟਾ ਨਹ�
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:111
 #, kde-format
 msgid "Incompatible architecture"
-msgstr ""
+msgstr "ਨਾ-ਅਨੁਕੂਲ ਢਾਂਚਾ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:113
 #, kde-format
@@ -1424,7 +1422,7 @@ msgstr "ਰਿਪੋਜ਼ਟਰੀ ਅਸਮਰੱਥ ਨਹੀਂ ਕੀਤੀ �
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:131
 #, kde-format
 msgid "Restricted download detected"
-msgstr ""
+msgstr "ਪਾਬੰਦੀਸ਼ੁਦਾ ਡਾਊਨਲੋਡ ਖੋਜਿਆ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:133
 #, kde-format
@@ -1917,10 +1915,9 @@ msgid "Repair System"
 msgstr "ਸਿਸਟਮ ਰਿਪੇਅਰ ਕਰੋ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:141
-#, fuzzy, kde-format
-#| msgid "Failed Offline Update"
+#, kde-format
 msgid "Repairing failed offline update"
-msgstr "ਆਫਲਾਇਨ ਅੱਪਡੇਟ ਫੇਲ੍ਹ ਹੈ"
+msgstr "ਅਸਫ਼ਲ ਹੋਏ ਆਫਲਾਇਨ ਅੱਪਡੇਟ ਰਿਪੇਅਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
 #, kde-format
@@ -1936,7 +1933,7 @@ msgstr "%1<nl/>ਇਸ ਗ਼ਲਤੀ ਬਾਰੇ ਆਪਣੀ ਡਿਸਟਰ�
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:159
 #, kde-format
 msgid "Repaired Successfully"
-msgstr ""
+msgstr "ਕਾਮਯਾਬੀ ਨਾਲ ਰਿਪੇਅਰ ਕੀਤੀ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:181
 #, kde-format
@@ -1951,11 +1948,9 @@ msgstr[0] "ਕਾਮਯਾਬੀ ਨਾਲ %1 ਪੈਕੇਜ ਅੱਪਡੇਟ
 msgstr[1] "ਕਾਮਯਾਬੀ ਨਾਲ %1 ਪੈਕੇਜ ਅੱਪਡੇਟ ਕੀਤੇ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:188
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Unknown Error"
+#, kde-format
 msgid "Unknown Source"
-msgstr "ਅਣਜਾਣ ਗਲਤੀ"
+msgstr "ਅਣਪਛਾਤਾ ਸਰੋਤ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:341
 #, kde-format
@@ -2007,12 +2002,10 @@ msgid "Repository URL:"
 msgstr "ਰਿਪੋਰਜ਼ਟਰੀ URL:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
-#, fuzzy, kde-format
-#| msgctxt "@item example: muon installed at 16:00"
-#| msgid "%1 %2 at %3"
+#, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr "%1 %2 %3 ਉੱਤੇ"
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
 #, kde-format
@@ -2020,18 +2013,16 @@ msgid "System upgrade"
 msgstr "ਸਿਸਟਮ ਅੱਪਗਰੇਡ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "ਅੱਪਗਰੇਡ ਕਰਨ ਲਈ 1 ਪੈਕੇਜ"
-msgstr[1] "ਅੱਪਗਰੇਡ ਕਰਨ ਲਈ %1 ਪੈਕੇਜ"
+msgstr[0] "1 ਪੈਕੇਜ ਅੱਪਗਰੇਡ ਕੀਤਾ ਜਾਵੇਗਾ"
+msgstr[1] "%1 ਪੈਕੇਜ ਅੱਪਗਰੇਡ ਕੀਤੇ ਜਾਣਗੇ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-msgstr ""
+msgstr "<h3>%1<h3>ਨਵੇਂ ਵਰਜ਼ਨ %2 ਲਈ ਅੱਪਗਰੇਡ ਕਰੋ<br/>ਕੋਈ ਰੀਲਿਜ਼ ਨੋਟਿਸ ਨਹੀਂ ਦਿੱਤਾ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
 #, kde-format
@@ -2039,6 +2030,7 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1<h3>ਨਵੇਂ ਵਰਜ਼ਨ %2 ਲਈ ਅੱਪਗਰੇਡ ਕਰੋ<br/>ਰੀਲਿਜ਼ ਨੋਟਿਸ:<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
 #, kde-format
@@ -2054,7 +2046,7 @@ msgstr "ਭਵਿੱਖ"
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
-msgstr ""
+msgstr "ਅੱਪਡੇਟ ਕਰਨ ਲਈ ਲੋੜੀਂਦੀ ਥਾਂ ਨਹੀਂ ਹੈ; ਸਿਰਫ਼ %1 ਥਾਂ ਹੀ ਮੌਜੂਦ ਹੈ।"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
 #, kde-format
@@ -2066,11 +2058,9 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:588
-#, fuzzy, kde-format
-#| msgctxt "@info:status Package state"
-#| msgid "No Change"
+#, kde-format
 msgid "Confirm Changes"
-msgstr "ਕੋਈ ਤਬਦੀਲੀ ਨਹੀਂ"
+msgstr "ਬਦਲਾਅ ਦੀ ਪੁਸ਼ਟੀ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:589
 #, kde-format
@@ -2094,6 +2084,8 @@ msgid ""
 "Media Change of type '%1' is requested.\n"
 "%2"
 msgstr ""
+"'%1' ਕਿਸਮ ਦੀ ਮੀਡਿਆ ਤਬਦੀਲੀ ਦੀ ਬੇਨਤੀ ਕੀਤੀ ਹੈ।\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:756
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
@@ -2115,7 +2107,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
-msgstr ""
+msgstr "%2 ਵਿੱਚ %1 ਲਈ ਦਸਤਖਤ ਗੁੰਮ ਹੈ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:875
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
@@ -2167,25 +2159,24 @@ msgstr[1] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:30
-#, fuzzy, kde-format
-#| msgid "Resolving dependencies…"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "…ਨਿਰਭਰਤਾ ਹੱਲ਼ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
+msgstr "…ਨਿਰਭਰਤਾਵਾਂ ਵੇਖਾਓ"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:56
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "ਪੈਕੇਜ ਲਈ ਨਿਰਭਰਤਾਵਾਂ: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:30
 #, kde-format
 msgid "Full Access"
-msgstr ""
+msgstr "ਪੂਰੀ ਪਹੁੰਚ"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:31
 #, kde-format
 msgid "Can access everything on the system"
-msgstr ""
+msgstr "ਸਿਸਟਮ ਉੱਤੇ ਹਰ ਚੀਜ਼ ਲਈ ਪਹੁੰਚ ਹੋ ਸਕਦੀ ਹੈ"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
@@ -2196,35 +2187,33 @@ msgstr "ਓਪਰੇਟਿੰਗ ਸਿਸਟਮ"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree: ਕਈ ਬੂਟ ਹੋਏ ਡਿਪਲਾਏਮੈਂਟ ਲੱਭੇ। ਬੱਗ ਬਾਰੇ ਰਿਪੋਰਟ ਕਰੋ।"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree: ਕੋਈ ਵੀ ਬੂਟ ਹੋਏ ਡਿਪਲਾਏਮੈਂਟ ਨਹੀਂ ਲੱਭੇ। ਬੱਗ ਬਾਰੇ ਰਿਪੋਰਟ ਕਰੋ।"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr "ਅੱਪਗਰੇਡ"
+msgstr "…ਅੱਪਗਰੇਡ ਸ਼ੁਰੂ"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
-msgstr ""
+msgstr "ਤੁਹਾਡੇ ਕੋਲ ਮੌਜੂਦਾ ਵਰਜ਼ਨ ਲਈ ਅੱਪਡੇਟ ਬਕਾਇਆ ਹਨ। ਕਿਵੇਂ ਵੀ ਜਾਰੀ ਰੱਖਿਆ ਜਾ ਰਿਹਾ ਹੈ।"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
-msgstr ""
+msgstr "ਵੱਡੇ ਵਰਜ਼ਨ ਲਈ ਰੀ-ਬੇਸ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਨਵੇਂ ਵਰਜ਼ਨ ਲਈ ਅੱਪਡੇਟ ਕਰੋ"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
-msgstr ""
+msgstr "ਰੀ-ਬੇਸ ਓਪਰੇਸ਼ਨ ਲਈ ਰਿਮੋਟ ref ਗੁੰਮ ਹੈ। ਬੱਗ ਬਾਰੇ ਰਿਪੋਰਟ ਕਰੋ।"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
 #, kde-format
@@ -2232,70 +2221,54 @@ msgid "GPL and other licenses"
 msgstr "GPL ਅਤੇ ਹੋਰ ਲਸੰਸ"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Add Downloaded Packages"
+#, kde-format
 msgid "Additional packages: "
-msgstr "ਡਾਊਨਲੋਡ ਕੀਤੇ ਪੈਕੇਜ ਜੋੜੋ"
+msgstr "ਵਧੀਕ ਪੈਕੇਜ: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Add Downloaded Packages"
+#, kde-format
 msgid "Additional modules: "
-msgstr "ਡਾਊਨਲੋਡ ਕੀਤੇ ਪੈਕੇਜ ਜੋੜੋ"
+msgstr "ਵਧੀਕ ਮੋਡੀਊਲ: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"metapackages\""
-#| msgid "Meta Packages"
+#, kde-format
 msgid "Local packages: "
-msgstr "ਮੇਟਾ ਪੈਕੇਜ"
+msgstr "ਲੋਕਲ ਪੈਕੇਜ: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"metapackages\""
-#| msgid "Meta Packages"
+#, kde-format
 msgid "Replaced packages:"
-msgstr "ਮੇਟਾ ਪੈਕੇਜ"
+msgstr "ਤਬਦੀਲ ਕੀਤੇ ਪੈਕੇਜ:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, kde-format
 msgid "Removed packages:"
-msgstr ""
+msgstr "ਹਟਾਉਣਯੋਗ ਪੈਕੇਜ:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
-#, fuzzy, kde-format
-#| msgctxt "@info:label Refers to a software version, Ex: Version 1.2.1:"
-#| msgid "Version %1:"
+#, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "ਵਰਜਨ: %1"
+msgstr "ਇਸ ਵੇਲੇ ਬੂਟ ਹੋਇਆ ਵਰਜ਼ਨ (ਪਿੰਨ ਕੀਤਾ)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
-#, fuzzy, kde-format
-#| msgctxt "@info:label Refers to a software version, Ex: Version 1.2.1:"
-#| msgid "Version %1:"
+#, kde-format
 msgid "Currently booted version"
-msgstr "ਵਰਜਨ: %1"
+msgstr "ਇਸ ਵੇਲੇ ਬੂਟ ਹੋਇਆ ਵਰਜ਼ਨ"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "ਮੁੜ-ਚਾਲੂ ਹੋਣ ਦੇ ਬਾਅਦ ਵਰਤਿਆ ਜਾਣ ਵਾਲਾ ਵਰਜ਼ਨ"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr ""
+msgstr "ਫਾਲਬੈਕ ਵਰਜ਼ਨ (ਪਿੰਨ ਕੀਤਾ)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "ਫਾਲਬੈਕ ਵਰਜ਼ਨ"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
@@ -2326,7 +2299,7 @@ msgstr ""
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree-backend: ਗਲਤੀ: ਅਣਪਛਾਤਾ ਓਪਰੇਸ਼ਨ ਬੇਨਤੀ। ਬੱਗ ਬਾਰੇ ਰਿਪੋਰਟ ਕਰੋ।"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
@@ -2335,11 +2308,13 @@ msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
 msgstr ""
+"rpm-ostree transaction ਇਸ ਨਾਲ ਅਸਫ਼ਲ:\n"
+"%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:235
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
-msgstr ""
+msgstr "rpm-ostree-backend: ਗਲਤੀ: ਅਣਪਛਾਤਾ ਸਰੋਤ ਫਾਰਮੈਟ। ਬੱਗ ਬਾਰੇ ਰਿਪੋਰਟ ਕਰੋ।"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:355
 #, kde-format
@@ -2348,53 +2323,44 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:384
-#, fuzzy, kde-format
-#| msgctxt "@action Checks the Internet for updates"
-#| msgid "Check for Updates"
+#, kde-format
 msgid "Checking for a system update"
-msgstr "ਅੱਪਡੇਟ ਲਈ ਚੈੱਕ ਕਰੋ"
+msgstr "ਸਿਸਟਮ ਅੱਪਡੇਟ ਲਈ ਚੈਕ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:387
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Downloading Packages"
+#, kde-format
 msgid "Downloading system update"
-msgstr "ਪੈਕੇਜ ਡਾਊਨਲੋਡ ਕੀਤੇ ਜਾ ਰਹੇ ਹਨ"
+msgstr "ਸਿਸਟਮ ਅੱਪਡੇਟ ਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:390
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Updating the system"
-msgstr "ਓਪਰੇਟਿੰਗ ਸਿਸਟਮ"
+msgstr "ਸਿਸਟਮ ਅੱਪਡੇਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Updating to the next major version"
-msgstr ""
+msgstr "ਅਗਲੇ ਵੱਡੇ ਵਰਜ਼ਨ ਲਈ ਅੱਪਡੇਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr ""
+msgstr "ਓਪਰੇਸ਼ਨ ਜਾਰੀ ਹੈ (ਡਿਸਕਵਰ ਤੋਂ ਬਾਹਰ ਸ਼ੁਰੂ ਕੀਤਾ)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
-#, fuzzy, kde-format
-#| msgid "Cannot cancel transaction"
+#, kde-format
 msgid "Unknown transaction type"
-msgstr "ਟਰਾਂਜ਼ੈਕਸ਼ਨ ਰੱਦ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ"
+msgstr "ਅਣਪਛਾੀ ਟਰਾਂਜ਼ੈਕਸ਼ਨ ਕਿਸਮ"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:21
 #, kde-format
 msgid "Channels…"
-msgstr ""
+msgstr "ਚੈਨਲ…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:30
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox Filters all changes in the history view"
-#| msgid "All changes"
+#, kde-format
 msgid "%1 channels"
-msgstr "ਸਭ ਬਦਲਾਅ"
+msgstr "%1 ਚੈਨਲ"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:43
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
@@ -2405,12 +2371,12 @@ msgstr "%1 - %2"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:56
 #, kde-format
 msgid "Switch"
-msgstr ""
+msgstr "ਬਲੋ"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:28
 #, kde-format
 msgid "Permissions for %1"
-msgstr ""
+msgstr "%1 ਲਈ ਇਜਾਜ਼ਤਾਂ"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2427,12 +2393,12 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
+msgstr "SteamOS: ਸਟੀਮਓ.ਐਸ. ਅੱਪਡੇਟ ਲਈ atomupd ਕਿਊਰੀ ਲਈ ਅਸਮਰੱਥ ਹੈ..."
 
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "ਸਟੀਮ-ਓ.ਐਸ."
 
 #: libdiscover/DiscoverBackendsFactory.cpp:114
 #, kde-format
@@ -2461,12 +2427,11 @@ msgid "Launch"
 msgstr "ਚਲਾਓ"
 
 #: libdiscover/resources/AbstractResource.cpp:251
-#, fuzzy, kde-format
-#| msgid "Update to version %1"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "ਵਰਜ਼ਨ %1 ਲਈ ਅੱਪਡੇਟ ਕਰੋ"
+msgstr "ਵਰਜ਼ਨ %1 ਲਈ ਤਾਜ਼ਾ ਕਰੋ"
 
 #: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
@@ -2488,7 +2453,7 @@ msgstr "ਤਾਜ਼ਾ ਕਰੋ"
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
-msgstr ""
+msgstr "%1+"
 
 #: libdiscover/resources/ResourcesUpdatesModel.cpp:111
 #, kde-format
@@ -2499,7 +2464,7 @@ msgstr "ਅੱਪਡੇਟ"
 #, kde-format
 msgctxt "@label Download rate"
 msgid "%1/s"
-msgstr "%1/ਸਕਿੰਟ"
+msgstr "%1/ਸ"
 
 #: libdiscover/Transaction/TransactionModel.cpp:76
 #, kde-format
