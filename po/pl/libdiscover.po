@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-22 03:08+0000\n"
-"PO-Revision-Date: 2024-01-27 11:05+0100\n"
+"PO-Revision-Date: 2024-02-11 10:40+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -549,7 +549,7 @@ msgstr "Zniekształcony adres url appstream '%1'"
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1767
 #, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "Nie udało dodać źródła '%1': %2"
+msgstr "Nie udało się dodać źródła '%1': %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1888
 #, kde-format
@@ -619,7 +619,7 @@ msgstr "Dostęp do sieci"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
 #, kde-format
 msgid "Can access the internet"
-msgstr "Dozwolony dostęp do sieci"
+msgstr "Może korzystać z internetu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
@@ -635,7 +635,7 @@ msgstr "Może odtwarzać dźwięki"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
 #, kde-format
 msgid "Session Bus Access"
-msgstr "Dostęp do szyny sesji"
+msgstr "Dostęp do szyny posiedzenia"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #, kde-format
@@ -677,17 +677,17 @@ msgstr "Dostęp do kart inteligentnych"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr "Może integrować się i porozumiewać z karami inteligentnymi"
+msgstr "Może wyświetlać w sobie i porozumiewać się z kartami inteligentnymi"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
 #, kde-format
 msgid "Printer Access"
-msgstr "Dostęp do drukarki"
+msgstr "Dostęp do drukarek"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Może integrować i porozumiewać się z drukarkami"
+msgstr "Może wyświetlać w sobie i porozumiewać się z drukarkami"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
 #, kde-format
@@ -711,7 +711,7 @@ msgstr "Dostęp do Bluetooth"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Może integrować i porozumiewać się z urządzeniami Bluetooth"
+msgstr "Może wyświetlać w sobie i porozumiewać się z urządzeniami Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
 #, kde-format
@@ -852,8 +852,8 @@ msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
-"Może porozumiewać się z innymi aplikacjami i procesami w tej samej sesji "
-"przy użyciu następującego protokołów porozumiewania: %1"
+"Może porozumiewać się z innymi aplikacjami i procesami w tym samym "
+"posiedzeniu przy użyciu następującego protokołów wymiany danych: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
 #, kde-format
@@ -862,7 +862,7 @@ msgid ""
 "following communication protocols: %1"
 msgstr ""
 "Może porozumiewać się ze wszystkimi aplikacjami i usługami systemowymi przy "
-"użyciu następującego protokołów porozumiewania: %1"
+"użyciu następujących protokołów wymiany danych: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
 #, kde-format
@@ -1532,7 +1532,7 @@ msgstr "'%1' został zmieniony i sugeruje ponowne uruchomienie."
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
 #, kde-format
 msgid "A change by '%1' suggests your session to be restarted."
-msgstr "Zmiana '%1' sugeruje ponowne uruchomienie sesji."
+msgstr "Zmiana '%1' sugeruje rozpoczęcie posiedzenia na nowo."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
 #, kde-format
@@ -1540,8 +1540,8 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
-"'%1' został uaktualniony ze względów bezpieczeństwa, zalecane jest ponowne "
-"uruchomienie sesji."
+"'%1' został uaktualniony ze względów bezpieczeństwa, zalecane jest "
+"rozpoczęcie posiedzenia na nowo."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
 #, kde-format
