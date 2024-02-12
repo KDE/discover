@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
 # Kris Zadra <x-men@mixbox.pl>, 2013.
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2023-04-29 11:00+0200\n"
+"PO-Revision-Date: 2024-02-11 11:12+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -290,7 +290,7 @@ msgstr[2] "%1 ocen"
 #: discover/qml/ApplicationPage.qml:208
 #, kde-format
 msgid "No ratings yet"
-msgstr "Brak ocen"
+msgstr "Nie wystawiono jeszcze żadnej oceny"
 
 #: discover/qml/ApplicationPage.qml:62
 #, kde-format
@@ -321,7 +321,7 @@ msgstr "Wersja"
 #: discover/qml/ApplicationsListPage.qml:108
 #, kde-format
 msgid "Size"
-msgstr "Rozmiaru"
+msgstr "Rozmiar"
 
 #: discover/qml/ApplicationPage.qml:333
 #, kde-format
@@ -410,7 +410,7 @@ msgstr "Udostępnij"
 #: discover/qml/ApplicationPage.qml:641
 #, kde-format
 msgid "Send a link for this application"
-msgstr "Wyślij odnośnik do tej aplikacji"
+msgstr "Wyślij adres do tej aplikacji"
 
 #: discover/qml/ApplicationPage.qml:657
 #, kde-format
@@ -449,12 +449,12 @@ msgstr "Wyraź swoją opinię"
 #: discover/qml/ApplicationPage.qml:764
 #, kde-format
 msgid "Install to Write a Review"
-msgstr "Wgraj, aby podzielić się opinią"
+msgstr "Wgraj, aby móc podzielić się opinią"
 
 #: discover/qml/ApplicationPage.qml:776
 #, kde-format
 msgid "Get Involved"
-msgstr "Dołącz"
+msgstr "Daj coś od siebie"
 
 #: discover/qml/ApplicationPage.qml:818
 #, kde-format
@@ -474,7 +474,7 @@ msgstr "Zgłoś błąd"
 #: discover/qml/ApplicationPage.qml:836
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
-msgstr "Zgłoś kłopot, który napotkałeś, aby pomóc w jego naprawie"
+msgstr "Zgłoś napotkany błąd, aby pomóc w jego naprawie"
 
 #: discover/qml/ApplicationPage.qml:850
 #, kde-format
@@ -555,9 +555,9 @@ msgstr ""
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Poszukaj: %2 - %3 rzeczy"
-msgstr[1] "Poszukaj: %2 - %3 rzeczy"
-msgstr[2] "Poszukaj: %2 - %3 rzeczy"
+msgstr[0] "Znaleziono %2 - %3 raz"
+msgstr[1] "Znaleziono %2 - %3 razy"
+msgstr[2] "Znaleziono %2 - %3 razy"
 
 #: discover/qml/ApplicationsListPage.qml:54
 #, kde-format
@@ -710,7 +710,7 @@ msgstr "&Strona domowa"
 #: discover/qml/DiscoverWindow.qml:66
 #, kde-format
 msgid "&Search"
-msgstr "Po&szukaj"
+msgstr "&Szukaj"
 
 #: discover/qml/DiscoverWindow.qml:74
 #, kde-format
@@ -1149,7 +1149,7 @@ msgstr "Odznacz wszystkie"
 #: discover/qml/UpdatesPage.qml:236
 #, kde-format
 msgid "Restart automatically after update has completed"
-msgstr "Po ukończeniu uaktualniania sam uruchom ponownie"
+msgstr "Po uaktualnieniu uruchom się ponownie sam"
 
 #: discover/qml/UpdatesPage.qml:243
 #, kde-format
@@ -1187,7 +1187,7 @@ msgstr "%1 (%2)"
 #: discover/qml/UpdatesPage.qml:449
 #, kde-format
 msgid "More Information…"
-msgstr "Więcej danych..."
+msgstr "Więcej szczegółów..."
 
 #: discover/qml/UpdatesPage.qml:477
 #, kde-format

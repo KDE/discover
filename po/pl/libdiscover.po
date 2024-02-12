@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Artur Chłond <eugenewolfe@o2.pl>, 2011.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
 # Ignacy Kajdan <ignacy.kajdan@gmail.com>, 2021.
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-13 02:29+0000\n"
-"PO-Revision-Date: 2023-03-04 08:29+0100\n"
+"PO-Revision-Date: 2024-02-11 11:10+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -555,7 +555,7 @@ msgstr "Zniekształcony adres url appstream '%1'"
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1813
 #, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "Nie udało dodać źródła '%1': %2"
+msgstr "Nie udało się dodać źródła '%1': %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1934
 #, kde-format
@@ -638,13 +638,13 @@ msgstr "Dostęp do sieci"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid "Can access the internet"
-msgstr "Dozwolony dostęp do sieci"
+msgstr "Może korzystać z internetu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:958
 #, kde-format
 msgid "Session Bus Access"
-msgstr "Dostęp do szyny sesji"
+msgstr "Dostęp do szyny posiedzenia"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
@@ -681,17 +681,17 @@ msgstr "Dostęp do kart inteligentnych"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr "Może integrować się i porozumiewać z karami inteligentnymi"
+msgstr "Może wyświetlać w sobie i porozumiewać się z kartami inteligentnymi"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Printer Access"
-msgstr "Dostęp do drukarki"
+msgstr "Dostęp do drukarek"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Może integrować i porozumiewać się z drukarkami"
+msgstr "Może wyświetlać w sobie i porozumiewać się z drukarkami"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
@@ -715,7 +715,7 @@ msgstr "Dostęp do Bluetooth"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Może integrować i porozumiewać się z urządzeniami Bluetooth"
+msgstr "Może wyświetlać w sobie i porozumiewać się z urządzeniami Bluetooth"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
@@ -856,8 +856,8 @@ msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
-"Może porozumiewać się z innymi aplikacjami i procesami w tej samej sesji "
-"przy użyciu następującego protokołów porozumiewania: %1"
+"Może porozumiewać się z innymi aplikacjami i procesami w tym samym "
+"posiedzeniu przy użyciu następującego protokołów wymiany danych: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
@@ -866,7 +866,7 @@ msgid ""
 "following communication protocols: %1"
 msgstr ""
 "Może porozumiewać się ze wszystkimi aplikacjami i usługami systemowymi przy "
-"użyciu następującego protokołów porozumiewania: %1"
+"użyciu następujących protokołów wymiany danych: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:88
 #, kde-format
@@ -1141,7 +1141,7 @@ msgstr "Nie usunąć '%1'"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
 msgid "Out of memory"
-msgstr "Brak pamięci"
+msgstr "Wyczerpano pamięć"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
 #, kde-format
@@ -1493,7 +1493,7 @@ msgstr "'%1' został zmieniony i sugeruje ponowne uruchomienie."
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
 #, kde-format
 msgid "A change by '%1' suggests your session to be restarted."
-msgstr "Zmiana '%1' sugeruje ponowne uruchomienie sesji."
+msgstr "Zmiana '%1' sugeruje rozpoczęcie posiedzenia na nowo."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
 #, kde-format
@@ -1501,8 +1501,8 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
-"'%1' został uaktualniony ze względów bezpieczeństwa, zalecane jest ponowne "
-"uruchomienie sesji."
+"'%1' został uaktualniony ze względów bezpieczeństwa, zalecane jest "
+"rozpoczęcie posiedzenia na nowo."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
 #, kde-format
