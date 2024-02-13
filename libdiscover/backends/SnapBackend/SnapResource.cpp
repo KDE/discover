@@ -441,9 +441,6 @@ QString SnapResource::author() const
 {
 #ifdef SNAP_PUBLISHER
     QString author = m_snap->publisherDisplayName();
-    if (m_snap->publisherValidation() == QSnapdEnums::PublisherValidationVerified) {
-        author += QStringLiteral(" ✅");
-    }
 #else
     QString author;
 #endif
@@ -537,6 +534,14 @@ QObject *SnapResource::channels(QObject *parent)
 #else
     return nullptr;
 #endif
+}
+
+QString SnapResource::verifiedMessage() const
+{
+    if (m_snap->publisherValidation() == QSnapdEnums::PublisherValidationVerified) {
+        return i18n("Verified on snapcraft.io");
+    }
+    return {};
 }
 
 #include "SnapResource.moc"
