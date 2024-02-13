@@ -177,9 +177,7 @@ void PakcageKitFetchDependenciesJob::onTransactionPackage(PackageKit::Transactio
 void PakcageKitFetchDependenciesJob::onTransactionFinished()
 {
     std::sort(m_dependencies.begin(), m_dependencies.end(), [](const PackageKitDependency &a, const PackageKitDependency &b) {
-        // TODO: Maybe actually sort by info enum, so that the order is universal across locales?
-        const auto packageInfoCompared = a.infoString().compare(b.infoString());
-        return packageInfoCompared < 0 || (packageInfoCompared == 0 && a.packageName() < b.packageName());
+        return a.info() < b.info() || (a.info() == b.info() && a.packageName() < b.packageName());
     });
 
     Q_EMIT finished(m_dependencies);
