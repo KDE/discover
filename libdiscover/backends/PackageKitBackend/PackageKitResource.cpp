@@ -355,6 +355,11 @@ static QStringList urlToLinks(const QStringList &urls)
     return ret;
 }
 
+QString PackageKitResource::verifiedMessage() const
+{
+    return i18n("Software verified by %1", displayOrigin());
+}
+
 bool PackageKitResource::containsPackageId(const QString &pkgid) const
 {
     return kContains(m_packages, [pkgid](const auto &x) {

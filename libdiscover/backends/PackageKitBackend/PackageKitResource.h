@@ -67,6 +67,8 @@ public:
      */
     virtual bool isCritical() const;
 
+    QString verifiedMessage() const override;
+
     void invokeApplication() const override
     {
     }

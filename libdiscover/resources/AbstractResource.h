@@ -97,6 +97,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(uint contentRatingMinimumAge READ contentRatingMinimumAge CONSTANT)
     Q_PROPERTY(QStringList topObjects READ topObjects CONSTANT)
     Q_PROPERTY(QStringList bottomObjects READ bottomObjects CONSTANT)
+    Q_PROPERTY(QString verifiedMessage READ verifiedMessage CONSTANT)
+    Q_PROPERTY(QString verifiedIconName READ verifiedIconName CONSTANT)
 
     // Resolve circular dependency for QObject* properties in both classes
     Q_MOC_INCLUDE("resources/AbstractResourcesBackend.h")
@@ -273,6 +275,26 @@ public:
     virtual QStringList bottomObjects() const;
     [[nodiscard]] virtual bool hasResolvedIcon() const;
     virtual void resolveIcon();
+
+    /**
+     * @returns whether the verification message of the resource
+     *
+     * Normally app stores will have extra trust checks on certain assets.
+     * If the string is empty it means that the asset isn't verified.
+     * The text will contain the explanation of what the verification entails.
+     */
+    virtual QString verifiedMessage() const
+    {
+        return {};
+    }
+
+    /**
+     * @returns the icon name of the verification badge appropriate to the verification
+     */
+    virtual QString verifiedIconName() const
+    {
+        return QStringLiteral("checkmark");
+    }
 
 public Q_SLOTS:
     virtual void fetchScreenshots();
