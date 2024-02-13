@@ -222,6 +222,7 @@ public:
 
     [[nodiscard]] bool hasResolvedIcon() const override;
     void resolveIcon() override;
+    QString verifiedMessage() const override;
 
 Q_SIGNALS:
     void hasDataChanged();

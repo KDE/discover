@@ -289,12 +289,10 @@ DiscoverPage {
 
                     // App name, author, and rating
                     ColumnLayout {
-
                         spacing: 0
 
                         // App name
                         Kirigami.Heading {
-                            Layout.fillWidth: true
                             text: appInfo.application.name
                             type: Kirigami.Heading.Type.Primary
                             wrapMode: Text.Wrap
@@ -302,25 +300,43 @@ DiscoverPage {
                             elide: Text.ElideRight
                         }
 
-                        // Author (for apps) or upgrade info (for offline upgrades)
-                        QQC2.Label {
-                            id: author
-
+                        // Author (for apps) or upgrade info (for offline upgrades). Verification check
+                        RowLayout {
                             Layout.fillWidth: true
-                            visible: text.length > 0
 
-                            text: {
-                                if (appInfo.isOfflineUpgrade) {
-                                    return appInfo.application.upgradeText.length > 0 ? appInfo.application.upgradeText : "";
-                                } else if (appInfo.application.author.length > 0) {
-                                    return appInfo.application.author;
-                                } else {
-                                    return i18n("Unknown author");
+                            QQC2.Label {
+                                id: author
+
+                                visible: text.length > 0
+
+                                text: {
+                                    if (appInfo.isOfflineUpgrade) {
+                                        return appInfo.application.upgradeText.length > 0 ? appInfo.application.upgradeText : "";
+                                    } else if (appInfo.application.author.length > 0) {
+                                        return appInfo.application.author;
+                                    } else {
+                                        return i18n("Unknown author");
+                                    }
+                                }
+                                wrapMode: Text.Wrap
+                                maximumLineCount: 5
+                                elide: Text.ElideRight
+                            }
+
+                            Kirigami.Icon {
+                                visible: verifiedTooltip.QQC2.ToolTip.text.length > 0
+                                source: "checkmark"
+                                height: author.contentHeight
+
+                                QQC2.Control {
+                                    id: verifiedTooltip
+                                    anchors.fill: parent
+
+                                    QQC2.ToolTip.text: appInfo.application.verifiedMessage
+                                    QQC2.ToolTip.visible: (Kirigami.Settings.tabletMode ? pressed : hovered) && QQC2.ToolTip.text !== ""
+                                    QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                                 }
                             }
-                            wrapMode: Text.Wrap
-                            maximumLineCount: 5
-                            elide: Text.ElideRight
                         }
 
                         // Rating
