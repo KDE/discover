@@ -82,6 +82,7 @@ public:
     QString appstreamId() const override;
 
     QStringList topObjects() const override;
+    QString verifiedMessage() const override;
 
     QString channel();
     void setChannel(const QString &channel);
