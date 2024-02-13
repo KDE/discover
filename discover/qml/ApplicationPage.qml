@@ -177,13 +177,28 @@ DiscoverPage {
                         spacing: 0
 
                         // App name
-                        Kirigami.Heading {
+                        RowLayout {
                             Layout.fillWidth: true
-                            text: appInfo.application.name
-                            type: Kirigami.Heading.Type.Primary
-                            wrapMode: Text.Wrap
-                            maximumLineCount: 5
-                            elide: Text.ElideRight
+                            Kirigami.Heading {
+                                text: appInfo.application.name
+                                type: Kirigami.Heading.Type.Primary
+                                wrapMode: Text.Wrap
+                                maximumLineCount: 5
+                                elide: Text.ElideRight
+                            }
+                            Kirigami.Icon {
+                                visible: verifiedTooltip.QQC2.ToolTip.text.length > 0
+                                source: "checkmark"
+
+                                QQC2.Control {
+                                    id: verifiedTooltip
+                                    anchors.fill: parent
+
+                                    QQC2.ToolTip.text: appInfo.application.verifiedMessage
+                                    QQC2.ToolTip.visible: (Kirigami.Settings.tabletMode ? pressed : hovered) && QQC2.ToolTip.text !== ""
+                                    QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
+                                }
+                            }
                         }
 
                         // Author (for apps) or upgrade info (for offline upgrades)

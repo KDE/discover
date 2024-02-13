@@ -1042,3 +1042,14 @@ QStringList FlatpakResource::bottomObjects() const
 {
     return s_bottomObjects;
 }
+
+QString FlatpakResource::verifiedMessage() const
+{
+    const bool flathubVerified = m_appdata.customValue(QStringLiteral("flathub::verification::verified")) == QLatin1String("true");
+    if (flathubVerified) {
+        bool ok;
+        const qint64 time = m_appdata.customValue(QStringLiteral("flathub::verification::timestamp")).toUInt(&ok);
+        return i18n("App Verified on %1", KFormat().formatRelativeDateTime(QDateTime::fromSecsSinceEpoch(time), QLocale::ShortFormat));
+    }
+    return {};
+}

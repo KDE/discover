@@ -98,6 +98,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(uint contentRatingMinimumAge READ contentRatingMinimumAge CONSTANT)
     Q_PROPERTY(QStringList topObjects READ topObjects CONSTANT)
     Q_PROPERTY(QStringList bottomObjects READ bottomObjects CONSTANT)
+    Q_PROPERTY(QString verifiedMessage READ verifiedMessage CONSTANT)
 
 public:
     /**
@@ -272,6 +273,18 @@ public:
      * @returns List of component URLs to display at the bottom of application page.
      */
     virtual QStringList bottomObjects() const;
+
+    /**
+     * @returns whether the verification message of the resource
+     *
+     * Normally app stores will have extra trust checks on certain assets.
+     * If the string is empty it means that the asset isn't verified.
+     * The text will contain the explanation of what the verification entails.
+     */
+    virtual QString verifiedMessage() const
+    {
+        return {};
+    }
 
 public Q_SLOTS:
     virtual void fetchScreenshots();

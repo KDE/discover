@@ -210,6 +210,7 @@ public:
         return m_type == DesktopApp;
     }
     QString eolReason();
+    QString verifiedMessage() const override;
 
 Q_SIGNALS:
     void hasDataChanged();
