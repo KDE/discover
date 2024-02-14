@@ -1749,7 +1749,8 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                         FLATPAK_BACKEND_YIELD;
 
                         const bool matchById = resource->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
-                        if (resource->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable && !matchById) {
+                        // Note: FlatpakResource can not have type == System
+                        if (resource->type() == AbstractResource::ApplicationSupport && filter.state != AbstractResource::Upgradeable && !matchById) {
                             continue;
                         }
 

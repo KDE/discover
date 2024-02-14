@@ -134,12 +134,15 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return item->isExtended();
     case SectionRole: {
         static const QString appUpdatesSection = i18nc("@item:inlistbox", "Applications");
+        static const QString applicationSupportSection = i18nc("@item:inlistbox", "Application Support");
         static const QString systemUpdateSection = i18nc("@item:inlistbox", "System Software");
         static const QString addonsSection = i18nc("@item:inlistbox", "Addons");
         switch (item->resource()->type()) {
         case AbstractResource::Application:
             return appUpdatesSection;
-        case AbstractResource::Technical:
+        case AbstractResource::ApplicationSupport:
+            return applicationSupportSection;
+        case AbstractResource::System:
             return systemUpdateSection;
         case AbstractResource::Addon:
             return addonsSection;
@@ -243,18 +246,21 @@ void UpdateModel::setResources(const QList<AbstractResource *> &resources)
     qDeleteAll(m_updateItems);
     m_updateItems.clear();
 
-    QVector<UpdateItem *> appItems, systemItems, addonItems;
-    for (AbstractResource *res : resources) {
-        connect(res, &AbstractResource::changelogFetched, this, &UpdateModel::integrateChangelog, Qt::UniqueConnection);
+    QVector<UpdateItem *> appItems, appSupportItems, systemItems, addonItems;
+    for (AbstractResource *resource : resources) {
+        connect(resource, &AbstractResource::changelogFetched, this, &UpdateModel::integrateChangelog, Qt::UniqueConnection);
 
-        UpdateItem *updateItem = new UpdateItem(res);
+        UpdateItem *updateItem = new UpdateItem(resource);
 
-        switch (res->type()) {
-        case AbstractResource::Technical:
-            systemItems += updateItem;
-            break;
+        switch (resource->type()) {
         case AbstractResource::Application:
             appItems += updateItem;
+            break;
+        case AbstractResource::ApplicationSupport:
+            appSupportItems += updateItem;
+            break;
+        case AbstractResource::System:
+            systemItems += updateItem;
             break;
         case AbstractResource::Addon:
             addonItems += updateItem;
@@ -265,9 +271,10 @@ void UpdateModel::setResources(const QList<AbstractResource *> &resources)
         return a->name() < b->name();
     };
     std::sort(appItems.begin(), appItems.end(), sortUpdateItems);
+    std::sort(appSupportItems.begin(), appSupportItems.end(), sortUpdateItems);
     std::sort(systemItems.begin(), systemItems.end(), sortUpdateItems);
     std::sort(addonItems.begin(), addonItems.end(), sortUpdateItems);
-    m_updateItems = (QVector<UpdateItem *>() << appItems << addonItems << systemItems);
+    m_updateItems = (QVector<UpdateItem *>() << appItems << addonItems << appSupportItems << systemItems);
     endResetModel();
 
     Q_EMIT hasUpdatesChanged(!resources.isEmpty());

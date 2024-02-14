@@ -176,7 +176,14 @@ public:
     enum Type {
         Application,
         Addon,
-        Technical,
+        /**
+         * This is where Flatpak runtimes would go
+         */
+        ApplicationSupport,
+        /**
+         * This is where system updates would go
+         */
+        System,
     };
     Q_ENUM(Type)
     virtual Type type() const = 0;

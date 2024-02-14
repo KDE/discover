@@ -20,7 +20,7 @@ SteamOSResource::SteamOSResource(const QString &version, const QString &build, q
     , m_appstreamId(QLatin1String("steamos.") + m_build)
     , m_state(State::Upgradeable)
     , m_addons()
-    , m_type(AbstractResource::Technical)
+    , m_type(AbstractResource::System)
     , m_size(size)
 {
 }

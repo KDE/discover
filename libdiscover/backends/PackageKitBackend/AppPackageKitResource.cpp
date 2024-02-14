@@ -183,7 +183,13 @@ AbstractResource::Type AppPackageKitResource::type() const
 {
     static QString desktop = QString::fromUtf8(qgetenv("XDG_CURRENT_DESKTOP"));
     const auto desktops = m_appdata.compulsoryForDesktops();
-    return kContainsValue(s_addonKinds, m_appdata.kind()) ? Addon : (desktops.isEmpty() || !desktops.contains(desktop)) ? Application : Technical;
+    if (kContainsValue(s_addonKinds, m_appdata.kind())) {
+        return Addon;
+    } else if (desktops.isEmpty() || !desktops.contains(desktop)) {
+        return Application;
+    } else {
+        return System;
+    }
 }
 
 void AppPackageKitResource::fetchScreenshots()

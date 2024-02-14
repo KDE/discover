@@ -246,7 +246,7 @@ QStringList PackageKitResource::categories()
 
 AbstractResource::Type PackageKitResource::type() const
 {
-    return Technical;
+    return System;
 }
 
 void PackageKitResource::fetchDetails()
