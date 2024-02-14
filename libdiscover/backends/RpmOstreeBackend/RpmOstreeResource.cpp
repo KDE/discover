@@ -434,7 +434,7 @@ QStringList RpmOstreeResource::extends() const
 }
 AbstractResource::Type RpmOstreeResource::type() const
 {
-    return Technical;
+    return System;
 }
 
 bool RpmOstreeResource::isRemovable() const

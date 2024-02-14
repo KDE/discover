@@ -43,7 +43,7 @@ public:
     QString vendor() const;
     AbstractResource::Type type() const override
     {
-        return Technical;
+        return System;
     }
     bool canExecute() const override
     {

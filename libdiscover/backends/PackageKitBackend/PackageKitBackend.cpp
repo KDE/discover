@@ -746,7 +746,8 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         return deferredResultStream(u"PackageKitStream-all"_s, [this](PKResultsStream *stream) {
             auto resources = kFilter<QVector<AbstractResource *>>(m_packages.packages, [](AbstractResource *resource) {
                 auto pkResource = qobject_cast<PackageKitResource *>(resource);
-                return resource->type() != AbstractResource::Technical && pkResource && !pkResource->isCritical() && !pkResource->extendsItself();
+                // Neither PackageKitResource or its subclass AppPackageKitResource can have type == ApplicationSupport
+                return resource->type() != AbstractResource::System && pkResource && !pkResource->isCritical() && !pkResource->extendsItself();
             });
             stream->sendResources(kTransform<QVector<StreamResult>>(resources, [](auto resource) {
                 return StreamResult(resource, 0);

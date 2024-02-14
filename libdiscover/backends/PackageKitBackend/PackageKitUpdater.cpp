@@ -121,7 +121,7 @@ public:
     }
     AbstractResource::Type type() const override
     {
-        return Technical;
+        return System;
     }
     bool isRemovable() const override
     {

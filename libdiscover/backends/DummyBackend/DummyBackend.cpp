@@ -68,7 +68,7 @@ void DummyBackend::populate(const QString &n)
 
     for (int i = start; i < start + m_startElements; i++) {
         const QString name = QLatin1String("techie") + QString::number(i);
-        DummyResource *res = new DummyResource(name, AbstractResource::Technical, this);
+        DummyResource *res = new DummyResource(name, AbstractResource::System, this);
         res->setState(AbstractResource::State(1 + (i % 3)));
         res->setSize(300 + (m_startElements - i));
         m_resources.insert(name, res);
@@ -107,7 +107,7 @@ ResultsStream *DummyBackend::search(const AbstractResourcesBackend::Filters &fil
         return findResourceByPackageName(filter.resourceUrl);
     else
         for (AbstractResource *r : std::as_const(m_resources)) {
-            if (r->type() == AbstractResource::Technical && filter.state != AbstractResource::Upgradeable) {
+            if (r->type() == AbstractResource::System && filter.state != AbstractResource::Upgradeable) {
                 continue;
             }
 
@@ -123,7 +123,7 @@ ResultsStream *DummyBackend::search(const AbstractResourcesBackend::Filters &fil
 ResultsStream *DummyBackend::findResourceByPackageName(const QUrl &search)
 {
     if (search.isLocalFile()) {
-        DummyResource *res = new DummyResource(search.fileName(), AbstractResource::Technical, this);
+        DummyResource *res = new DummyResource(search.fileName(), AbstractResource::System, this);
         res->setSize(666);
         res->setState(AbstractResource::None);
         m_resources.insert(res->packageName(), res);

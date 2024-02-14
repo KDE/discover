@@ -281,7 +281,7 @@ AbstractResource::Type FlatpakResource::type() const
 {
     switch (m_type) {
     case FlatpakResource::Runtime:
-        return Technical;
+        return ApplicationSupport;
     case FlatpakResource::Extension:
         return Addon;
     default:
