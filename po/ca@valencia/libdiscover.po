@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-07 00:38+0000\n"
+"POT-Creation-Date: 2024-02-14 00:39+0000\n"
 "PO-Revision-Date: 2024-01-10 11:23+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1806,7 +1806,7 @@ msgid "Testing"
 msgstr "Proves"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
-#: libdiscover/resources/AbstractResource.cpp:103
+#: libdiscover/resources/AbstractResource.cpp:98
 #, kde-format
 msgid "Installed"
 msgstr "Instal·lat"
@@ -2497,34 +2497,34 @@ msgstr ""
 "Llista tots els dorsals que voldríeu tindre carregats, separats per una coma "
 "«,»."
 
-#: libdiscover/resources/AbstractResource.cpp:99
+#: libdiscover/resources/AbstractResource.cpp:94
 #, kde-format
 msgid "Broken"
 msgstr "Trencat"
 
-#: libdiscover/resources/AbstractResource.cpp:101
+#: libdiscover/resources/AbstractResource.cpp:96
 #, kde-format
 msgid "Available"
 msgstr "Disponible"
 
-#: libdiscover/resources/AbstractResource.cpp:105
+#: libdiscover/resources/AbstractResource.cpp:100
 #, kde-format
 msgid "Upgradeable"
 msgstr "Actualitzable"
 
-#: libdiscover/resources/AbstractResource.cpp:242
+#: libdiscover/resources/AbstractResource.cpp:237
 #, kde-format
 msgid "Launch"
 msgstr "Inicia"
 
-#: libdiscover/resources/AbstractResource.cpp:251
+#: libdiscover/resources/AbstractResource.cpp:246
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
 msgstr "Actualitza la versió %1"
 
-#: libdiscover/resources/AbstractResource.cpp:261
+#: libdiscover/resources/AbstractResource.cpp:256
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"

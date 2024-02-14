@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-07 00:38+0000\n"
+"POT-Creation-Date: 2024-02-14 00:39+0000\n"
 "PO-Revision-Date: 2014-01-31 20:46+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -1820,7 +1820,7 @@ msgid "Testing"
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
-#: libdiscover/resources/AbstractResource.cpp:103
+#: libdiscover/resources/AbstractResource.cpp:98
 #, kde-format
 msgid "Installed"
 msgstr "Instalirano"
@@ -2519,27 +2519,27 @@ msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:99
+#: libdiscover/resources/AbstractResource.cpp:94
 #, kde-format
 msgid "Broken"
 msgstr "Oštećeni"
 
-#: libdiscover/resources/AbstractResource.cpp:101
+#: libdiscover/resources/AbstractResource.cpp:96
 #, kde-format
 msgid "Available"
 msgstr "Dostupno"
 
-#: libdiscover/resources/AbstractResource.cpp:105
+#: libdiscover/resources/AbstractResource.cpp:100
 #, kde-format
 msgid "Upgradeable"
 msgstr "Nadogradivo"
 
-#: libdiscover/resources/AbstractResource.cpp:242
+#: libdiscover/resources/AbstractResource.cpp:237
 #, kde-format
 msgid "Launch"
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:251
+#: libdiscover/resources/AbstractResource.cpp:246
 #, fuzzy, kde-format
 #| msgctxt "@info:label Refers to a software version, Ex: Version 1.2.1:"
 #| msgid "Version %1:"
@@ -2548,7 +2548,7 @@ msgctxt ""
 msgid "Refresh of version %1"
 msgstr "Verzija %1:"
 
-#: libdiscover/resources/AbstractResource.cpp:261
+#: libdiscover/resources/AbstractResource.cpp:256
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"

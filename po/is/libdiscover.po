@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-07 00:38+0000\n"
+"POT-Creation-Date: 2024-02-14 00:39+0000\n"
 "PO-Revision-Date: 2023-12-04 09:48+0000\n"
 "Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -1786,7 +1786,7 @@ msgid "Testing"
 msgstr "Til prófunar"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
-#: libdiscover/resources/AbstractResource.cpp:103
+#: libdiscover/resources/AbstractResource.cpp:98
 #, kde-format
 msgid "Installed"
 msgstr "Uppsett"
@@ -2458,34 +2458,34 @@ msgid ""
 msgstr ""
 "Telja upp alla bakenda sem við viljum hafa í gangi, aðskilda með kommu ','."
 
-#: libdiscover/resources/AbstractResource.cpp:99
+#: libdiscover/resources/AbstractResource.cpp:94
 #, kde-format
 msgid "Broken"
 msgstr "Bilað"
 
-#: libdiscover/resources/AbstractResource.cpp:101
+#: libdiscover/resources/AbstractResource.cpp:96
 #, kde-format
 msgid "Available"
 msgstr "Tiltækt"
 
-#: libdiscover/resources/AbstractResource.cpp:105
+#: libdiscover/resources/AbstractResource.cpp:100
 #, kde-format
 msgid "Upgradeable"
 msgstr "Hægt að uppfæra"
 
-#: libdiscover/resources/AbstractResource.cpp:242
+#: libdiscover/resources/AbstractResource.cpp:237
 #, kde-format
 msgid "Launch"
 msgstr "Ræsa"
 
-#: libdiscover/resources/AbstractResource.cpp:251
+#: libdiscover/resources/AbstractResource.cpp:246
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
 msgstr "Endurhleðsla á útgáfu %1"
 
-#: libdiscover/resources/AbstractResource.cpp:261
+#: libdiscover/resources/AbstractResource.cpp:256
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-07 00:38+0000\n"
+"POT-Creation-Date: 2024-02-14 00:39+0000\n"
 "PO-Revision-Date: 2024-02-09 20:10+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1767,7 +1767,7 @@ msgid "Testing"
 msgstr "테스팅 버전"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
-#: libdiscover/resources/AbstractResource.cpp:103
+#: libdiscover/resources/AbstractResource.cpp:98
 #, kde-format
 msgid "Installed"
 msgstr "설치됨"
@@ -2422,34 +2422,34 @@ msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
 msgstr "불러온 백엔드 목록을 쉼표로 구분하여 표시합니다."
 
-#: libdiscover/resources/AbstractResource.cpp:99
+#: libdiscover/resources/AbstractResource.cpp:94
 #, kde-format
 msgid "Broken"
 msgstr "깨짐"
 
-#: libdiscover/resources/AbstractResource.cpp:101
+#: libdiscover/resources/AbstractResource.cpp:96
 #, kde-format
 msgid "Available"
 msgstr "사용 가능"
 
-#: libdiscover/resources/AbstractResource.cpp:105
+#: libdiscover/resources/AbstractResource.cpp:100
 #, kde-format
 msgid "Upgradeable"
 msgstr "업그레이드 가능"
 
-#: libdiscover/resources/AbstractResource.cpp:242
+#: libdiscover/resources/AbstractResource.cpp:237
 #, kde-format
 msgid "Launch"
 msgstr "실행"
 
-#: libdiscover/resources/AbstractResource.cpp:251
+#: libdiscover/resources/AbstractResource.cpp:246
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
 msgstr "버전 %1의 리프레시"
 
-#: libdiscover/resources/AbstractResource.cpp:261
+#: libdiscover/resources/AbstractResource.cpp:256
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"

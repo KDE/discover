@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-27 00:38+0000\n"
-"PO-Revision-Date: 2024-01-26 08:28+0200\n"
+"PO-Revision-Date: 2024-02-12 10:56+0200\n"
 "Last-Translator: Toms Trasūns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -557,9 +557,9 @@ msgstr ""
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Meklē: %2 — %3 vienība"
-msgstr[1] "Meklē: %2 — %3 vienības"
-msgstr[2] "Meklē: %2 — %3 vienību"
+msgstr[0] "Meklē: „%2“ — %3 vienums"
+msgstr[1] "Meklē: „%2“ — %3 vienumi"
+msgstr[2] "Meklē: „%2“ — %3 vienumu"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -570,17 +570,17 @@ msgstr "Meklēt: %1"
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%2 — %1 vienība"
-msgstr[1] "%2 — %1 vienības"
-msgstr[2] "%2 — %1 vienību"
+msgstr[0] "„%2“ — %1 vienums"
+msgstr[1] "„%2“ — %1 vienumi"
+msgstr[2] "„%2“ — %1 vienumu"
 
 #: discover/qml/ApplicationsListPage.qml:65
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Meklē — %1 vienība"
-msgstr[1] "Meklē — %1 vienības"
-msgstr[2] "Meklē — %1 vienību"
+msgstr[0] "Meklē — %1 vienums"
+msgstr[1] "Meklē — %1 vienumi"
+msgstr[2] "Meklē — %1 vienumu"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:254
@@ -1144,7 +1144,7 @@ msgstr "Meklēt..."
 #: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search in '%1'…"
-msgstr "Meklēt „%1“...."
+msgstr "Meklēt „%1“..."
 
 #: discover/qml/SourcesPage.qml:18
 #, kde-format
