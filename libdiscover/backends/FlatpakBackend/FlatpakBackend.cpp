@@ -841,7 +841,8 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
         auto source = integrateRemote(preferredInstallation(), remote);
         if (source) {
             const QString ref = composeRef(isRuntime, name, branch);
-            auto searchComponent = [this, stream, source, ref] {
+            auto searchComponent = [this, stream, source, ref, remote] {
+                Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(remote));
                 auto comps = source->componentsByFlatpakId(ref);
                 auto resources = kTransform<QVector<StreamResult>>(comps, [this, source](const auto &comp) {
                     return resourceForComponent(comp, source);
@@ -1059,7 +1060,9 @@ void FlatpakBackend::metadataRefreshed(FlatpakRemote *remote)
 void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
 {
     if (source->m_pool) {
-        metadataRefreshed(source->remote());
+        if (m_refreshAppstreamMetadataJobs.contains(source->remote())) {
+            metadataRefreshed(source->remote());
+        }
         return;
     }
 
@@ -1113,19 +1116,24 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
 {
     Q_ASSERT(m_refreshAppstreamMetadataJobs.contains(remote));
     m_sources->addRemote(remote, flatpakInstallation);
-    for (auto source : std::as_const(m_flatpakSources)) {
-        if (source->url() == QString::fromUtf8(flatpak_remote_get_url(remote)) && source->installation() == flatpakInstallation
-            && source->name() == QString::fromUtf8(flatpak_remote_get_name(remote))) {
-            createPool(source);
-            return source;
+    const auto matchRemote = [this, flatpakInstallation, remote](const auto &sources) -> QSharedPointer<FlatpakSource> {
+        for (auto source : sources) {
+            if (source->url() == QString::fromUtf8(flatpak_remote_get_url(remote)) && source->installation() == flatpakInstallation
+                && source->name() == QString::fromUtf8(flatpak_remote_get_name(remote))) {
+                createPool(source);
+                if (source->remote() != remote) {
+                    m_refreshAppstreamMetadataJobs.remove(remote);
+                }
+                return source;
+            }
         }
+        return {};
+    };
+    if (auto source = matchRemote(m_flatpakSources); source) {
+        return source;
     }
-    for (auto source : std::as_const(m_flatpakLoadingSources)) {
-        if (source->url() == QString::fromUtf8(flatpak_remote_get_url(remote)) && source->installation() == flatpakInstallation
-            && source->name() == QString::fromUtf8(flatpak_remote_get_name(remote))) {
-            createPool(source);
-            return source;
-        }
+    if (auto source = matchRemote(m_flatpakLoadingSources); source) {
+        return source;
     }
 
     auto source = QSharedPointer<FlatpakSource>::create(this, flatpakInstallation, remote);
