@@ -102,6 +102,19 @@ static void kFilterInPlace(Q &input, _UnaryOperation op)
     }
 }
 
+template<typename T, typename Q, typename _UnaryOperation>
+static T kFilterTransform(Q &input, _UnaryOperation op)
+{
+    T ret;
+    for (const auto &v : input) {
+        const std::optional<typename T::value_type> result = op(v);
+        if (result.has_value()) {
+            ret += result.value();
+        }
+    }
+    return ret;
+}
+
 template<typename Q, typename W>
 static int kIndexOf(const Q &list, W func)
 {

@@ -743,11 +743,10 @@ void ResourcesProxyModel::refreshBackend(AbstractResourcesBackend *backend, cons
 
 QVector<int> ResourcesProxyModel::propertiesToRoles(const QVector<QByteArray> &properties) const
 {
-    QVector<int> roles = kTransform<QVector<int>>(properties, [this](const QByteArray &property) {
-        return roleNames().key(property, -1);
+    return kFilterTransform<QVector<int>>(properties, [this](const QByteArray &property) {
+        const auto role = roleNames().key(property, -1);
+        return role == -1 ? std::nullopt : std::optional(role);
     });
-    roles.removeAll(-1);
-    return roles;
 }
 
 int ResourcesProxyModel::indexOf(AbstractResource *resource)
