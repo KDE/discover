@@ -18,6 +18,7 @@
 #include <resources/SourcesModel.h>
 #include <resources/StandardBackendUpdater.h>
 #include <utils.h>
+#include <utilscoro.h>
 
 #include <AppStreamQt/bundle.h>
 #include <AppStreamQt/icon.h>
@@ -1478,7 +1479,8 @@ ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, s
 
 #define FLATPAK_BACKEND_GUARD                                                                                                                                  \
     QPointer<ResultsStream> guardStream(stream);                                                                                                               \
-    auto cancellable = self->m_cancellable;
+    auto cancellable = self->m_cancellable;                                                                                                                    \
+    CoroutineSplitter coroutineSplitter;
 
 #define FLATPAK_BACKEND_CHECK                                                                                                                                  \
     if (guardStream.isNull() || g_cancellable_is_cancelled(cancellable)) {                                                                                     \
@@ -1486,7 +1488,7 @@ ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, s
     }
 
 #define FLATPAK_BACKEND_YIELD                                                                                                                                  \
-    co_await QCoro::sleepFor(0ms);                                                                                                                             \
+    co_await coroutineSplitter();                                                                                                                              \
     FLATPAK_BACKEND_CHECK
 
 static bool isFlatpakSubRef(const QLatin1String &name)

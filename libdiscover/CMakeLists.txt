@@ -44,6 +44,10 @@ set(discovercommon_SRCS
     ScreenshotsModel.cpp
     ApplicationAddonsModel.cpp
     CachedNetworkAccessManager.cpp
+
+    utils.h
+    utilscoro.cpp
+    utilscoro.h
 )
 
 ecm_qt_declare_logging_category(discovercommon_SRCS HEADER libdiscover_debug.h IDENTIFIER LIBDISCOVER_LOG CATEGORY_NAME org.kde.plasma.libdiscover DESCRIPTION "libdiscover" EXPORT DISCOVER)
@@ -65,6 +69,7 @@ PUBLIC
     Qt::Qml
     Qt::Gui
     KF6::I18n
+    QCoro::Core
 PRIVATE
     KF6::CoreAddons
     KF6::ConfigCore
