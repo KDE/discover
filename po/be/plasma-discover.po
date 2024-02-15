@@ -1,10 +1,10 @@
 # Zmicier <zmicerturok@gmail.com>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
+"Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-27 00:38+0000\n"
-"PO-Revision-Date: 2023-02-07 10:31\n"
+"PO-Revision-Date: 2024-02-13 20:30\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
 "Language: be\n"
@@ -15,11 +15,12 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || n%10>=5 && n%10<=9 || n"
 "%100>=11 && n%100<=14 ? 2 : 3);\n"
 "X-Generator: Lokalize 22.12.1\n"
-"X-Crowdin-Project: 86ff119b1606fcaa910d6b44fc14b611\n"
-"X-Crowdin-Project-ID: 127\n"
+"X-Crowdin-Project: fc57ad16a28d02dea100ceb1c60de14e\n"
+"X-Crowdin-Project-ID: 136\n"
 "X-Crowdin-Language: be\n"
-"X-Crowdin-File: /main/be/discover/plasma-discover.po\n"
-"X-Crowdin-File-ID: 9166\n"
+"X-Crowdin-File: /[antikruk.KDE] main/KDE6/be/messages/discover/plasma-"
+"discover.po\n"
+"X-Crowdin-File-ID: 9808\n"
 
 #: discover/DiscoverObject.cpp:190
 #, kde-format
@@ -27,6 +28,8 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"Дыстрыбутыў \"%1\" не наладжаны на ўсталяванне праграм з дапамогай Discover "
+"- толькі дапаўненняў для праграм"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -36,13 +39,15 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"Каб выкарыстоўваць Discover для праграм, усталюйце патрэбны модуль на "
+"старонцы <interface>Налады</interface> у раздзеле <interface>Адсутныя "
+"рухавік і</interface>."
 
 #: discover/DiscoverObject.cpp:195
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr "Паведаміць пра праблему"
+msgstr "Паведаміць пра праблему %1"
 
 #: discover/DiscoverObject.cpp:200
 #, kde-kuit-format
@@ -57,6 +62,12 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"Каб выкарыстоўваць Discover для праграм, усталюйце <link url='https://wiki."
+"archlinux.org/title/Flatpak#Installation'>Flatpak</link> або <link "
+"url='https://wiki.archlinux.org/title/"
+"KDE#Discover_does_not_show_any_applications'>PackageKit</link> з дапамогай "
+"<command>pacman</command>.<nl/><nl/> Агляд <link url='https://archlinux.org/"
+"packages/extra/x86_64/discover/'>%1's пакункаў для Discover</link>"
 
 #: discover/DiscoverObject.cpp:291
 #, kde-format
@@ -179,10 +190,9 @@ msgid "An application explorer"
 msgstr "Агляд праграм"
 
 #: discover/main.cpp:121
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2022 Каманда распрацоўвання Plasma"
+msgstr "© 2010-2024 Каманда распрацоўвання Plasma"
 
 #: discover/main.cpp:122
 #, kde-format
@@ -291,7 +301,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "З %1"
 
 #: discover/qml/ApplicationPage.qml:83
 #, kde-format
@@ -304,27 +314,23 @@ msgid "Unknown author"
 msgstr "Невядомы аўтар"
 
 #: discover/qml/ApplicationPage.qml:247
-#, fuzzy, kde-format
-#| msgid "Version"
+#, kde-format
 msgid "Version:"
-msgstr "Версія"
+msgstr "Версія:"
 
 #: discover/qml/ApplicationPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Size"
+#, kde-format
 msgid "Size:"
-msgstr "Памер"
+msgstr "Памер:"
 
 #: discover/qml/ApplicationPage.qml:271
-#, fuzzy, kde-format
-#| msgid "License"
-#| msgid_plural "Licenses"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "Ліцэнзія"
-msgstr[1] "Ліцэнзіі"
-msgstr[2] "Ліцэнзіі"
-msgstr[3] "Ліцэнзіі"
+msgstr[0] "Ліцэнзія:"
+msgstr[1] "Ліцэнзіі:"
+msgstr[2] "Ліцэнзіі:"
+msgstr[3] "Ліцэнзіі:"
 
 #: discover/qml/ApplicationPage.qml:279
 #, kde-format
@@ -347,10 +353,9 @@ msgstr[2] "Паказаць яшчэ…"
 msgstr[3] "Паказаць яшчэ…"
 
 #: discover/qml/ApplicationPage.qml:333
-#, fuzzy, kde-format
-#| msgid "Content Rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "Рэйтынг змесціва"
+msgstr "Рэйтынг змесціва:"
 
 #: discover/qml/ApplicationPage.qml:342
 #, kde-format
@@ -367,7 +372,7 @@ msgstr "Падрабязнасці…"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
+msgstr "Для %1 здымкі экрана забароненыя"
 
 #: discover/qml/ApplicationPage.qml:556
 #, kde-format
@@ -435,15 +440,13 @@ msgstr "Загрузка водгукаў для %1"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "Водгукі для %1 часова недаступныя"
 
 #: discover/qml/ApplicationPage.qml:721
-#, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Паказаць %1 водгук"
+msgstr "Паказаць усе водгукі"
 
 #: discover/qml/ApplicationPage.qml:733
 #, kde-format
@@ -559,15 +562,13 @@ msgstr ""
 "link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
-#, fuzzy, kde-format
-#| msgid "Search: %2 - %1 item"
-#| msgid_plural "Search: %2 - %1 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Пошук: %2 - %1 элемент"
-msgstr[1] "Пошук: %2 - %1 элементы"
-msgstr[2] "Пошук: %2 - %1 элементаў"
-msgstr[3] "Пошук: %2 - %1 элементы"
+msgstr[0] "Пошук: %2 - %3 элемент"
+msgstr[1] "Пошук: %2 - %3 элементы"
+msgstr[2] "Пошук: %2 - %3 элементаў"
+msgstr[3] "Пошук: %2 - %3 элементы"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -607,7 +608,7 @@ msgstr "Сартаванне: %1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr ""
+msgstr "Актуальнасць"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
@@ -669,12 +670,7 @@ msgid "\"%1\" was not found in the available sources"
 msgstr "Не ўдалося знайсці \"%1\" у даступных крыніцах"
 
 #: discover/qml/ApplicationsListPage.qml:236
-#, fuzzy, kde-format
-#| msgctxt "@info:placeholder%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
@@ -691,11 +687,10 @@ msgid "Still looking…"
 msgstr "Пошук працягваецца…"
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "&Хатняя старонка"
+msgstr "Каталог праграмы"
 
 #: discover/qml/BrowsingPage.qml:64
 #, kde-format
@@ -712,7 +707,7 @@ msgstr "Найбольш папулярныя"
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
-msgstr ""
+msgstr "Нядаўна апублікаваныя і нядаўна абноўленыя"
 
 #: discover/qml/BrowsingPage.qml:160
 #, kde-format
@@ -742,44 +737,44 @@ msgstr "Інструменты для распрацоўвання з самым
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
-msgstr ""
+msgstr "Прайграць"
 
 #: discover/qml/CarouselDelegate.qml:214
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
-msgstr ""
+msgstr "Прыпыніць"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Overlay"
-msgstr ""
+msgstr "Пераключыцца на накладанне"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Full Screen"
-msgstr ""
+msgstr "Пераключыцца на поўны экран"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
 #, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
-msgstr ""
+msgstr "Закрыць"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "Папярэдні здымак экрана"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr ""
+msgstr "Наступны здымак экрана"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -807,15 +802,13 @@ msgid "Fetching &updates…"
 msgstr "Атрыманне &абнаўленняў…"
 
 #: discover/qml/DiscoverWindow.qml:87
-#, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "&Update (%1)"
+#, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
-msgstr[0] "&Абнавіць (%1)"
-msgstr[1] "&Абнавіць (%1)"
-msgstr[2] "&Абнавіць (%1)"
-msgstr[3] "&Абнавіць (%1)"
+msgstr[0] "&Абнаўленне (%1)"
+msgstr[1] "&Абнаўленні (%1)"
+msgstr[2] "&Абнаўленні (%1)"
+msgstr[3] "&Абнаўленні (%1)"
 
 #: discover/qml/DiscoverWindow.qml:95
 #, kde-format
@@ -936,15 +929,13 @@ msgid "Loading…"
 msgstr "Загрузка…"
 
 #: discover/qml/InstallApplicationButton.qml:28
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
-msgstr "Усталяваць"
+msgstr "Усталяваць з %1"
 
 #: discover/qml/InstallApplicationButton.qml:30
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
 msgstr "Усталяваць"
@@ -1114,52 +1105,48 @@ msgstr "Каб напісаць водгук, усталюйце гэтую пр
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "Самыя актуальныя"
 
 #: discover/qml/ReviewsPage.qml:110
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "Самыя апошнія"
 
 #: discover/qml/ReviewsPage.qml:117
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "Гульні з самым высокім рэйтынгам"
+msgstr "З найбольшым рэйтынгам"
 
 #: discover/qml/ReviewsStats.qml:53
-#, fuzzy, kde-format
-#| msgid "Reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "Водгукі"
+msgstr "%1 водгукаў"
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "М"
 
 #: discover/qml/ReviewsStats.qml:154
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
-msgstr "невядомы рэцэнзент"
+msgstr "Невядомы рэцэнзент"
 
 #: discover/qml/ReviewsStats.qml:175
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "“"
 
 #: discover/qml/ReviewsStats.qml:190
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "„"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format
@@ -1260,35 +1247,36 @@ msgid ""
 "If the error indicated above looks like a real issue and not a temporary "
 "network error, please report it to %1, not KDE."
 msgstr ""
+"Калі памылка, пазначаная вышэй, выглядае як рэальная праблема, а не часовая "
+"памылка сеткі, паведаміце пра гэта ў %1, а не ў KDE."
 
 #: discover/qml/UpdatesPage.qml:103
 #, kde-format
 msgid "Copy Text"
-msgstr ""
+msgstr "Скапіяваць тэкст"
 
 #: discover/qml/UpdatesPage.qml:107
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr ""
+"Паведамленне памылкі скапіявана. Не забудзьцеся паведаміць пра гэта %1, а не "
+"KDE!"
 
 #: discover/qml/UpdatesPage.qml:114
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
+#, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr "Паведаміць пра праблему"
+msgstr "Паведаміць пра праблему %1"
 
 #: discover/qml/UpdatesPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Update Selected"
+#, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "Абнавіць абранае"
 
 #: discover/qml/UpdatesPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Абнавіць усё"

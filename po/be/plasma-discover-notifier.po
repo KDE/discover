@@ -1,10 +1,10 @@
 # Zmicier <zmicerturok@gmail.com>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
+"Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-10 01:35+0000\n"
-"PO-Revision-Date: 2023-02-06 14:02\n"
+"PO-Revision-Date: 2024-02-13 20:30\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
 "Language: be\n"
@@ -15,11 +15,12 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || n%10>=5 && n%10<=9 || n"
 "%100>=11 && n%100<=14 ? 2 : 3);\n"
 "X-Generator: Lokalize 22.12.1\n"
-"X-Crowdin-Project: 86ff119b1606fcaa910d6b44fc14b611\n"
-"X-Crowdin-Project-ID: 127\n"
+"X-Crowdin-Project: fc57ad16a28d02dea100ceb1c60de14e\n"
+"X-Crowdin-Project-ID: 136\n"
 "X-Crowdin-Language: be\n"
-"X-Crowdin-File: /main/be/discover/plasma-discover-notifier.po\n"
-"X-Crowdin-File-ID: 9164\n"
+"X-Crowdin-File: /[antikruk.KDE] main/KDE6/be/messages/discover/plasma-"
+"discover-notifier.po\n"
+"X-Crowdin-File-ID: 9806\n"
 
 #: notifier/DiscoverNotifier.cpp:154
 #, kde-format
@@ -81,7 +82,7 @@ msgstr "Даступна абнаўленне"
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr ""
+msgstr "Зараз даступны %1."
 
 #: notifier/DiscoverNotifier.cpp:332
 #, kde-format
@@ -100,22 +101,23 @@ msgid "System update status notifier"
 msgstr "Апавяшчэнне пра стан абнаўлення сістэмы"
 
 #: notifier/main.cpp:42
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2022 Каманда распрацоўвання Plasma"
+msgstr "© 2010-2024 Каманда распрацоўвання Plasma"
 
 #: notifier/main.cpp:46
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Antikruk"
+msgstr "Дарафей Праляскоўскі, Андрэйчанка Анастасія, Сталярчук Іван, Antikruk"
 
 #: notifier/main.cpp:46
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "nashtlumach@gmail.com"
+msgstr ""
+"komzpa@licei2.com, bashybuzuk@tut.by, ivan.telkontar@gmail.com, "
+"nashtlumach@gmail.com"
 
 #: notifier/main.cpp:51
 #, kde-format

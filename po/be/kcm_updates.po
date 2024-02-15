@@ -1,10 +1,10 @@
 # Zmicier <zmicerturok@gmail.com>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
+"Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-02-01 10:16\n"
+"PO-Revision-Date: 2024-02-13 20:30\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
 "Language: be\n"
@@ -15,11 +15,12 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || n%10>=5 && n%10<=9 || n"
 "%100>=11 && n%100<=14 ? 2 : 3);\n"
 "X-Generator: Lokalize 22.12.1\n"
-"X-Crowdin-Project: 86ff119b1606fcaa910d6b44fc14b611\n"
-"X-Crowdin-Project-ID: 127\n"
+"X-Crowdin-Project: fc57ad16a28d02dea100ceb1c60de14e\n"
+"X-Crowdin-Project-ID: 136\n"
 "X-Crowdin-Language: be\n"
-"X-Crowdin-File: /main/be/discover/kcm_updates.po\n"
-"X-Crowdin-File-ID: 9152\n"
+"X-Crowdin-File: /[antikruk.KDE] main/KDE6/be/messages/discover/kcm_updates."
+"po\n"
+"X-Crowdin-File-ID: 9794\n"
 
 #: kcm/ui/main.qml:40
 #, kde-format
@@ -87,7 +88,7 @@ msgstr "Ніколі"
 #: kcm/ui/main.qml:119
 #, kde-format
 msgid "Apply system updates:"
-msgstr ""
+msgstr "Ужыванне абнаўленняў сістэмы:"
 
 #: kcm/ui/main.qml:126
 #, kde-format
@@ -95,7 +96,7 @@ msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates after "
 "rebooting'"
 msgid "After rebooting"
-msgstr ""
+msgstr "Пасля перазапуску"
 
 #: kcm/ui/main.qml:133
 #, kde-format
@@ -103,14 +104,14 @@ msgctxt ""
 "@label The thing being recommended is to use the 'apply updates when "
 "rebooting' setting"
 msgid "Recommended to maximize system stability"
-msgstr ""
+msgstr "Рэкамендуецца для максімальнай стабільнасці сістэмы"
 
 #: kcm/ui/main.qml:140
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"
 msgid "Immediately"
-msgstr ""
+msgstr "Неадкладна"
 
 #~ msgid "Use offline updates:"
 #~ msgstr "Пазасеціўнае абнаўленне:"
