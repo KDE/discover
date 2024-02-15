@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-22 03:08+0000\n"
+"POT-Creation-Date: 2024-02-15 02:21+0000\n"
 "PO-Revision-Date: 2023-02-17 08:42+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -539,23 +539,23 @@ msgstr "%1 (bruker)"
 msgid "Local bundle"
 msgstr "Lokal samling"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1663
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:791
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Ugyldig appstream-adresse «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1767
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1775
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Klarte ikke legge til kilde «%1»: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1888
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Det finnes ingen Flatpak-kilder."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1892
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1900
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Klarte ikke laste kilden «%1»"
