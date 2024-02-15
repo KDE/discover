@@ -669,6 +669,7 @@ Action=Popup
 [Event/DistUpgrade]
 Name=Upgrade available
 Name[ar]=تتوفّر ترقية
+Name[be]=Даступна абнаўленне
 Name[bg]=Налични актуализации
 Name[ca]=Hi ha una actualització disponible
 Name[ca@valencia]=Hi ha una actualització disponible
