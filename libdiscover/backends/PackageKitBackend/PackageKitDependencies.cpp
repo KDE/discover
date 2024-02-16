@@ -106,7 +106,13 @@ void PackageKitDependencies::refresh()
 
 void PackageKitDependencies::onJobFinished(QList<PackageKitDependency> dependencies)
 {
-    Q_ASSERT(m_state.has_value() && std::holds_alternative<Job>(m_state.value()));
+    Q_ASSERT(m_state.has_value());
+    Q_ASSERT(std::holds_alternative<Job>(m_state.value()));
+
+    if (auto job = std::get<Job>(m_state.value())) {
+        // Should not emit twice, but better be on the safe side
+        disconnect(job, &PakcageKitFetchDependenciesJob::finished, this, &PackageKitDependencies::onJobFinished);
+    }
 
     m_state = dependencies;
     Q_EMIT dependenciesChanged();
