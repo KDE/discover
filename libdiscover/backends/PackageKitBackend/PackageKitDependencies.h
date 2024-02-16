@@ -51,7 +51,7 @@ class PackageKitDependencies : public QObject
     Q_PROPERTY(QList<PackageKitDependency> dependencies READ dependencies NOTIFY dependenciesChanged)
 
 public:
-    explicit PackageKitDependencies();
+    explicit PackageKitDependencies(QObject *parent = nullptr);
     ~PackageKitDependencies();
 
     QString packageId() const;

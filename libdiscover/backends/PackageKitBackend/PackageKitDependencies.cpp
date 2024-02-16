@@ -56,7 +56,8 @@ QString PackageKitDependency::summary() const
     return m_summary;
 }
 
-PackageKitDependencies::PackageKitDependencies()
+PackageKitDependencies::PackageKitDependencies(QObject *parent)
+    : QObject(parent)
 {
 }
 
@@ -89,7 +90,7 @@ QList<PackageKitDependency> PackageKitDependencies::dependencies()
         }
     } else if (!m_packageId.isEmpty()) {
         // start the job
-        QPointer job{new PakcageKitFetchDependenciesJob(m_packageId)};
+        Job job{new PakcageKitFetchDependenciesJob(m_packageId)};
         connect(job, &PakcageKitFetchDependenciesJob::finished, this, &PackageKitDependencies::onJobFinished);
         m_state = job;
     }
@@ -119,7 +120,6 @@ void PackageKitDependencies::cancel(bool notify)
                 disconnect(job, &PakcageKitFetchDependenciesJob::finished, this, &PackageKitDependencies::onJobFinished);
                 job->cancel();
             }
-            m_state.reset();
             notify = false;
         }
         m_state.reset();
