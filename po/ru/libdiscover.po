@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 00:39+0000\n"
+"POT-Creation-Date: 2024-02-17 00:38+0000\n"
 "PO-Revision-Date: 2024-01-11 10:23+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -550,7 +550,7 @@ msgid "Local bundle"
 msgstr "Локальный пакет"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1757
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:802
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Некорректная ссылка AppStream «%1»."
@@ -1146,12 +1146,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Шрифты"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:327
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:326
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Проверьте правильность установки Appstream на компьютере."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:363
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:362
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1161,12 +1161,12 @@ msgstr ""
 "Срок поддержки используемой вами системы истёк %1. Рекомендуется выполнить "
 "обновление до версии, находящийся на поддержке."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:909
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:908
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Невозможно удалить «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:995
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1179,13 +1179,13 @@ msgstr ""
 "Чтобы обновиться до этой версии, сначала установите все доступные обновления "
 "системы и перезагрузите систему."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1004
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1003
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Начать обновление сейчас"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1027
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1026
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -2547,7 +2547,7 @@ msgstr "Проверьте подключение к интернету"
 msgid "Refresh"
 msgstr "Обновить"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:792
+#: libdiscover/resources/ResourcesProxyModel.cpp:791
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

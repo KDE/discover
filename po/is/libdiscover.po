@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 00:39+0000\n"
+"POT-Creation-Date: 2024-02-17 00:38+0000\n"
 "PO-Revision-Date: 2023-12-04 09:48+0000\n"
 "Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -537,7 +537,7 @@ msgid "Local bundle"
 msgstr "Staðbundinn forritsvöndull"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1757
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:802
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Gölluð appstream-slóð '%1'"
@@ -1124,12 +1124,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Leturgerðir"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:327
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:326
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Gakktu úr skugga um að Appstream sé rétt sett upp í tölvunni"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:363
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:362
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1139,12 +1139,12 @@ msgstr ""
 "Stýrikerfið þitt hætti stuðningi við %1. Þú ættir að íhuga að uppfæra í nýja "
 "studda útgáfu."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:909
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:908
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Get ekki fjarlægt '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:995
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1157,13 +1157,13 @@ msgstr ""
 "Til að hægt sé að uppfæra í nýju útgáfuna skaltu setja upp allar tiltækar "
 "uppfærslur og endurræsa svo tölvuna."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1004
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1003
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Uppfæra núna í nýja útgáfu"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1027
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1026
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -2501,7 +2501,7 @@ msgstr "Athugaðu hvort þú sért með nettengingu"
 msgid "Refresh"
 msgstr "Endurhlaða"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:792
+#: libdiscover/resources/ResourcesProxyModel.cpp:791
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

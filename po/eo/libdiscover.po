@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-16 00:39+0000\n"
+"POT-Creation-Date: 2024-02-17 00:38+0000\n"
 "PO-Revision-Date: 2024-02-05 22:05+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -538,7 +538,7 @@ msgid "Local bundle"
 msgstr "Loka pakaĵo"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1757
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:802
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Misformita appstream URL '%1'"
@@ -1123,12 +1123,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Tiparoj"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:327
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:326
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Bonvolu certigi, ke Appstream estas ĝuste agordita en via sistemo"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:363
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:362
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1137,12 +1137,12 @@ msgid ""
 msgstr ""
 "Via operaciumo ĉesis subtenon je %1. Konsideru ĝisdatigi al subtenata versio."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:909
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:908
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Ne povas forigi '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:995
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1155,13 +1155,13 @@ msgstr ""
 "Por povi ĝisdatigi al ĉi tiu nova versio, unue apliku ĉiujn disponeblajn "
 "ĝisdatigojn, tiam rekomencu la sistemon."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1004
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1003
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Eldonpromocii Nun"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1027
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1026
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -2507,7 +2507,7 @@ msgstr "Bonvolu kontroli interretan konekteblecon"
 msgid "Refresh"
 msgstr "Refreŝigi"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:792
+#: libdiscover/resources/ResourcesProxyModel.cpp:791
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
