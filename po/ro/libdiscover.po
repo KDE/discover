@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-17 00:38+0000\n"
-"PO-Revision-Date: 2024-01-07 16:01+0000\n"
+"PO-Revision-Date: 2024-02-18 14:29+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -984,10 +984,9 @@ msgstr "Configurează permisiunile…"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "View Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "Vezi actualizările"
+msgstr "Actualizări de microcod"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
