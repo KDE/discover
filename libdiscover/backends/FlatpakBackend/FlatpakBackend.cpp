@@ -461,7 +461,7 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
     if (freshResource) {
         *freshResource = false;
     }
-    const QString origin = QString::fromUtf8(flatpak_installed_ref_get_origin(ref));
+    const auto origin = QString::fromUtf8(flatpak_installed_ref_get_origin(ref));
     auto source = findSource(installation, origin);
     if (source) {
         if (auto resource = source->m_resources.value(idForInstalledRef(ref, {}))) {
@@ -839,14 +839,13 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     if (remote) {
         Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(remote));
         m_refreshAppstreamMetadataJobs.insert(remote);
-        auto source = integrateRemote(preferredInstallation(), remote);
-        if (source) {
+        if (auto source = integrateRemote(preferredInstallation(), remote)) {
             const QString ref = composeRef(isRuntime, name, branch);
             auto searchComponent = [this, stream, source, ref, remote] {
                 Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(remote));
                 auto components = source->componentsByFlatpakId(ref);
-                auto resources = kTransform<QVector<StreamResult>>(components, [this, source](const auto &comp) {
-                    return resourceForComponent(comp, source);
+                auto resources = kTransform<QVector<StreamResult>>(components, [this, source](const auto &component) {
+                    return resourceForComponent(component, source);
                 });
                 Q_EMIT stream->resourcesFound(resources);
                 stream->finish();
@@ -1819,10 +1818,11 @@ AbstractReviewsBackend *FlatpakBackend::reviewsBackend() const
 
 void FlatpakBackend::checkRepositories(const FlatpakJobTransaction::Repositories &repositories)
 {
-    auto flatpakInstallationByPath = [this](const QString &path) -> FlatpakInstallation * {
+    auto flatpakInstallationByPath = [this](const QString &installationPath) -> FlatpakInstallation * {
         for (auto installation : std::as_const(m_installations)) {
-            if (FlatpakResource::installationPath(installation) == path)
+            if (FlatpakResource::installationPath(installation) == installationPath) {
                 return installation;
+            }
         }
         return nullptr;
     };
@@ -1845,7 +1845,7 @@ FlatpakRemote *FlatpakBackend::installSource(FlatpakResource *resource)
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
 
     if (auto remote = flatpak_installation_get_remote_by_name(preferredInstallation(), resource->flatpakName().toUtf8().constData(), cancellable, nullptr)) {
-        qWarning() << "Source " << resource->flatpakName() << " already exists in" << flatpak_installation_get_path(preferredInstallation());
+        qWarning() << "Source" << resource->flatpakName() << "already exists in" << flatpak_installation_get_path(preferredInstallation());
         return nullptr;
     }
 
