@@ -1129,10 +1129,10 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
         }
         return {};
     };
-    if (auto source = matchRemote(m_flatpakSources); source) {
+    if (auto source = matchRemote(m_flatpakSources)) {
         return source;
     }
-    if (auto source = matchRemote(m_flatpakLoadingSources); source) {
+    if (auto source = matchRemote(m_flatpakLoadingSources)) {
         return source;
     }
 
