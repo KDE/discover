@@ -2,22 +2,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Safa Alfulaij <safaalfulaij@hotmail.com>, 2013, 2015, 2018.
-# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-20 02:23+0000\n"
-"PO-Revision-Date: 2023-05-07 20:03+0400\n"
+"PO-Revision-Date: 2024-02-22 14:02+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
-"Language-Team: ar\n"
+"Language-Team: Arabic <kde-i18n-ar@kde.org>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: discover/DiscoverObject.cpp:190
 #, kde-format
@@ -25,6 +25,8 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"التوزيعة %1 غير مضبوطة لتثبيت التطبيقات بواسطة المستكشف - فقط ملحقات "
+"التطبيقات"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -34,6 +36,8 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"لتستخدم المستكشف ، ثبت وحدتك المفضلة من صفحة<interface>الإعدادات</interface> "
+"تحت <interface>الخلفيات الناقصة</interface>."
 
 #: discover/DiscoverObject.cpp:195
 #, fuzzy, kde-format
@@ -56,6 +60,12 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"لتستخدم المستكشف للتطبيقات؛ ثبت <link url='https://wiki.archlinux.org/title/"
+"Flatpak#Installation'>Flatpak</link> أو <link url='https://wiki.archlinux."
+"org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</link> "
+"باستخدام مدير الحزم <command>pacman</command>.<nl/><nl/> راجع <link "
+"url='https://archlinux.org/packages/extra/x86_64/discover/'>حزم %1 للمستكشف "
+"</link>"
 
 #: discover/DiscoverObject.cpp:291
 #, kde-format
@@ -171,10 +181,9 @@ msgid "An application explorer"
 msgstr "متصفّح للتّطبيقات"
 
 #: discover/main.cpp:121
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2022 لفريق تطوير بلازما"
+msgstr "© 2010-2024 لفريق تطوير بلازما"
 
 #: discover/main.cpp:122
 #, kde-format
@@ -357,15 +366,10 @@ msgid "See details…"
 msgstr "أظهر التفاصيل…"
 
 #: discover/qml/ApplicationPage.qml:385
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "Also available in %1"
+#, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
-"\n"
-"متوفّر أيضًا في %1"
+msgstr "لقطات الشاشة غير متوفرة لـ %1"
 
 #: discover/qml/ApplicationPage.qml:559
 #, kde-format
@@ -433,15 +437,13 @@ msgstr "تحميل مراجعات %1"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "مراجعات %1 غير متوفرة مؤقتاً."
 
 #: discover/qml/ApplicationPage.qml:724
-#, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "أظهر مراجعة..."
+msgstr "أظهر كل المراجعات"
 
 #: discover/qml/ApplicationPage.qml:736
 #, kde-format
@@ -603,7 +605,7 @@ msgstr "افرز: ‏%1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr ""
+msgstr "الصلة"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
@@ -665,12 +667,7 @@ msgid "\"%1\" was not found in the available sources"
 msgstr "لم يعثر على \"%1\" في المصادر المتوفرة"
 
 #: discover/qml/ApplicationsListPage.qml:236
-#, fuzzy, kde-format
-#| msgctxt "@info:placeholder%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
@@ -686,11 +683,10 @@ msgid "Still looking…"
 msgstr "ما زلنا نبحث..."
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "الصفحة الأ&ولى"
+msgstr "الصفحة الأولى"
 
 #: discover/qml/BrowsingPage.qml:64
 #, kde-format
@@ -707,7 +703,7 @@ msgstr "الأكثر شعبيّة"
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
-msgstr ""
+msgstr "المنشور حديثا و المحدث قريبا"
 
 #: discover/qml/BrowsingPage.qml:160
 #, kde-format
@@ -737,29 +733,28 @@ msgstr "أدوات المطوّر الأعلى تقييماً"
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
-msgstr ""
+msgstr "شغّل"
 
 #: discover/qml/CarouselDelegate.qml:214
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
-msgstr ""
+msgstr "ألبث"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Overlay"
-msgstr ""
+msgstr "بدل إلى التراكب"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Full Screen"
-msgstr ""
+msgstr "حوّل إلى ملء الشاشة"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
-#, fuzzy, kde-format
-#| msgid "Close"
+#, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
@@ -769,13 +764,13 @@ msgstr "أغلق"
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "لقطة شاشة السابقة"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr ""
+msgstr "لقطة شاشة التالية"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -1109,38 +1104,34 @@ msgstr "ثبت هذا التطبيق لتكتب مراجعة"
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "الأكثر صلة"
 
 #: discover/qml/ReviewsPage.qml:110
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "الأحدث"
 
 #: discover/qml/ReviewsPage.qml:117
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "الألعاب الأعلى تقييماً"
+msgstr "الأعلى تقييماً"
 
 #: discover/qml/ReviewsStats.qml:53
-#, fuzzy, kde-format
-#| msgid "Reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "المراجعات"
+msgstr " %1 مراجعة"
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "س"
 
 #: discover/qml/ReviewsStats.qml:154
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
 msgstr "مقيّم مجهول"
 
@@ -1148,13 +1139,13 @@ msgstr "مقيّم مجهول"
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "“"
 
 #: discover/qml/ReviewsStats.qml:190
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "„"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format
