@@ -1489,6 +1489,11 @@ ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, s
     co_await QCoro::sleepFor(0ms);                                                                                                                             \
     FLATPAK_BACKEND_CHECK
 
+static bool isFlatpakSubRef(const QLatin1String &name)
+{
+    return name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".Docs"));
+}
+
 ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
     const auto fileName = filter.resourceUrl.fileName();
@@ -1548,8 +1553,42 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     resources.reserve(resources.size() + refs.size());
                     for (const auto ref : refs) {
                         bool fresh = false;
+                        const QLatin1String id(flatpak_ref_get_name(FLATPAK_REF(ref)));
+                        if (isFlatpakSubRef(id)) {
+                            g_autoptr(GError) localError = nullptr;
+
+                            const QByteArray parentId(id.constData(), id.lastIndexOf(QLatin1Char('.')));
+
+                            // We need to bruteforce the API as we don't know from here if it's app or runtime 🙄
+                            auto parentRef = flatpak_installation_get_installed_ref(installation,
+                                                                                    FLATPAK_REF_KIND_APP,
+                                                                                    parentId.constData(),
+                                                                                    flatpak_ref_get_arch(FLATPAK_REF(ref)),
+                                                                                    flatpak_ref_get_branch(FLATPAK_REF(ref)),
+                                                                                    cancellable,
+                                                                                    &localError);
+                            if (!parentRef) {
+                                parentRef = flatpak_installation_get_installed_ref(installation,
+                                                                                   FLATPAK_REF_KIND_RUNTIME,
+                                                                                   parentId.constData(),
+                                                                                   flatpak_ref_get_arch(FLATPAK_REF(ref)),
+                                                                                   flatpak_ref_get_branch(FLATPAK_REF(ref)),
+                                                                                   cancellable,
+                                                                                   &localError);
+                            }
+                            if (parentRef) {
+                                if (auto resource = self->getAppForInstalledRef(installation, parentRef)) {
+                                    resource->addRefToUpdate(flatpak_ref_format_ref_cached(FLATPAK_REF(parentRef)));
+                                    if (!kContains(refs, [&parentId](auto ref) {
+                                            return parentId == flatpak_ref_get_name(FLATPAK_REF(ref));
+                                        })) {
+                                        resources.append(resource);
+                                    }
+                                    continue;
+                                }
+                            }
+                        }
                         auto resource = self->getAppForInstalledRef(installation, ref, &fresh);
-                        g_object_unref(ref);
                         if (resource) {
                             resource->setState(AbstractResource::Upgradeable, !fresh);
                             self->updateAppSize(resource);
@@ -1561,6 +1600,10 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                         }
 
                         FLATPAK_BACKEND_YIELD
+                    }
+
+                    for (const auto ref : refs) {
+                        g_object_unref(ref);
                     }
                 }
 
@@ -1593,9 +1636,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                         FLATPAK_BACKEND_YIELD;
 
                         FlatpakRef *ref = FLATPAK_REF(g_ptr_array_index(refs, i));
-                        const QLatin1String name(flatpak_ref_get_name(ref));
-                        if (name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".BaseApp"))
-                            || name.endsWith(QLatin1String(".Docs"))) {
+                        if (isFlatpakSubRef(QLatin1String(flatpak_ref_get_name(ref)))) {
                             continue;
                         }
 

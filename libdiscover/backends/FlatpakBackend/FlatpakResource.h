@@ -212,6 +212,12 @@ public:
         return m_type == DesktopApp;
     }
     QString eolReason();
+    void addRefToUpdate(const QByteArray &toUpdate);
+    void clearToUpdate();
+    QVector<QByteArray> toUpdate() const
+    {
+        return m_toUpdate;
+    }
 
 Q_SIGNALS:
     void hasDataChanged();
@@ -247,6 +253,7 @@ private:
     std::optional<QCoro::Task<>> m_eolReasonTask;
     static const QStringList s_topObjects;
     static const QStringList s_bottomObjects;
+    QVector<QByteArray> m_toUpdate;
 };
 
 inline uint qHash(const FlatpakResource::Id &key)

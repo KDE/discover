@@ -147,6 +147,9 @@ void FlatpakTransactionThread::run()
         bool correct = false;
         if (m_app->state() == AbstractResource::Upgradeable && m_app->isInstalled()) {
             correct = flatpak_transaction_add_update(m_transaction, refName.toUtf8().constData(), nullptr, nullptr, &localError);
+            for (const QByteArray &subref : m_app->toUpdate()) {
+                correct |= flatpak_transaction_add_update(m_transaction, subref.constData(), nullptr, nullptr, &localError);
+            }
         } else if (m_app->flatpakFileType() == FlatpakResource::FileFlatpak) {
             g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
             if (!file) {

@@ -1051,4 +1051,14 @@ QStringList FlatpakResource::bottomObjects() const
     return s_bottomObjects;
 }
 
+void FlatpakResource::addRefToUpdate(const QByteArray &toUpdate)
+{
+    m_toUpdate += toUpdate;
+}
+
+void FlatpakResource::clearToUpdate()
+{
+    m_toUpdate.clear();
+}
+
 #include "moc_FlatpakResource.cpp"
