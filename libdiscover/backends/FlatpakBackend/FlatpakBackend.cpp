@@ -1592,14 +1592,15 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     for (uint i = 0; i < refs->len; i++) {
                         FLATPAK_BACKEND_YIELD;
 
-                        FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
-                        QString name = QString::fromUtf8(flatpak_installed_ref_get_appdata_name(ref));
+                        FlatpakRef *ref = FLATPAK_REF(g_ptr_array_index(refs, i));
+                        const QLatin1String name(flatpak_ref_get_name(ref));
                         if (name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".BaseApp"))
                             || name.endsWith(QLatin1String(".Docs"))) {
                             continue;
                         }
 
-                        auto resource = self->getAppForInstalledRef(installation, ref);
+                        FlatpakInstalledRef *iref = FLATPAK_INSTALLED_REF(ref);
+                        auto resource = self->getAppForInstalledRef(installation, iref);
                         if (!resource) {
                             continue;
                         }
