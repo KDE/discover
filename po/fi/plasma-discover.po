@@ -1,22 +1,23 @@
 # KDE Finnish translation sprint participants:
 # Author: Artnay
 # Author: Lliehu
-# Lasse Liehu <lasse.liehu@gmail.com>, 2012, 2013, 2014, 2015, 2016, 2022.
+# SPDX-FileCopyrightText: 2024 Kimmo Kujansuu <mrkujansuu@gmail.com>
+# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2022, 2024 Lasse Liehu <lasse.liehu@gmail.com>
 # Tommi Nieminen <translator@legisign.org>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2024-01-29 17:46+0200\n"
-"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
+"PO-Revision-Date: 2024-02-25 02:08+0200\n"
+"Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2012-12-01 22:21:39+0000\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: discover/DiscoverObject.cpp:159
@@ -25,8 +26,8 @@ msgid ""
 "Discover currently cannot be used to install any apps or perform system "
 "updates because none of its app backends are available."
 msgstr ""
-"Discoveria ei juuri nyt voi käyttää sovellusten asentamiseen tai "
-"järjestelmäpäivitykseen, koska yksikään sen taustaosa ei ole käytettävissä."
+"Discoveria ei voi juuri nyt käyttää sovellusten asennukseen tai "
+"järjestelmäpäivityksiin, koska yhtäkään sen taustaosaa ei ole käytettävissä."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -188,7 +189,7 @@ msgstr "Sovellushaku"
 #: discover/main.cpp:124
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr "© 2010-2022 Plasman kehitysryhmä"
+msgstr "© 2010–2022 Plasman kehitysryhmä"
 
 #: discover/main.cpp:125
 #, kde-format
@@ -642,7 +643,7 @@ msgid ""
 "caution."
 msgstr ""
 "”%1” voi olla saatavilla verkosta. Jakelusi ei ole tarkistanut verkosta "
-"ladattavien ohjelmien toiminnallisuutta ja vakautta. Käytä niitä varoen."
+"ladattavien ohjelmien toiminnallisuutta ja vakautta."
 
 #: discover/qml/ApplicationsListPage.qml:239
 #, kde-format
@@ -721,7 +722,7 @@ msgstr "&Ajan tasalla"
 #, kde-format
 msgctxt "Update section name"
 msgid "&Update (%1)"
-msgstr "Päi&vitä (%1)"
+msgstr "&Päivitys (%1)"
 
 #: discover/qml/DiscoverWindow.qml:88
 #, kde-format
@@ -1143,7 +1144,7 @@ msgstr "Poista valinnat"
 #: discover/qml/UpdatesPage.qml:236
 #, kde-format
 msgid "Restart automatically after update has completed"
-msgstr "Käynnistä uudelleen automaattisesti päivityksen valmistuttua"
+msgstr "Käynnistä uudelleen päivityksen valmistuttua"
 
 #: discover/qml/UpdatesPage.qml:243
 #, kde-format
@@ -1153,7 +1154,7 @@ msgstr "Koko kaikkiaan: %1"
 #: discover/qml/UpdatesPage.qml:279
 #, kde-format
 msgid "Restart Now"
-msgstr "Käynnistä uudelleen nyt"
+msgstr "Käynnistä uudelleen"
 
 #: discover/qml/UpdatesPage.qml:379
 #, kde-format
@@ -1199,14 +1200,15 @@ msgstr "Päivitykset"
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
-msgstr "Viimeistele päivitys käynnistämällä järjestelmä uudelleen"
+msgstr "Viimeistele päivitys käynnistämällä uudelleen"
 
+# Päivitetty valmiina käyttöön näyttää paremmalta ja tilaa on hyvin pidemmälle tekstille. Ajan tasalla oli aikaisempi.
 #: discover/qml/UpdatesPage.qml:512 discover/qml/UpdatesPage.qml:519
 #: discover/qml/UpdatesPage.qml:526
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
-msgstr "Ajan tasalla"
+msgstr "Päivitetty valmiina käyttöön"
 
 #: discover/qml/UpdatesPage.qml:533
 #, kde-format
