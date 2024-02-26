@@ -167,6 +167,7 @@ void FlatpakResource::updateFromRef(FlatpakRef *ref)
     setFlatpakName(QString::fromUtf8(flatpak_ref_get_name(ref)));
     setType(flatpak_ref_get_kind(ref) == FLATPAK_REF_KIND_APP ? DesktopApp : extends().isEmpty() ? Runtime : Extension);
     setObjectName(packageName());
+    qDebug() << "doing..." << packageName() << flatpak_ref_get_collection_id(ref) << this << ref;
 }
 
 void FlatpakResource::updateFromAppStream()
@@ -393,17 +394,17 @@ QString FlatpakResource::displayOrigin() const
 // use string builder with arguments directly instead of temporary allocated strings.
 QString FlatpakResource::packageName() const
 {
-    return QStringLiteral("%1/%2/%3").arg(flatpakName(), arch(), branch());
+    return flatpakName() + '/'_L1 + arch() + '/'_L1 + branch();
 }
 
 QString FlatpakResource::ref() const
 {
-    return QStringLiteral("%1/%2/%3/%4").arg(typeAsString(), flatpakName(), arch(), branch());
+    return typeAsString() + '/'_L1 + flatpakName() + '/'_L1 + arch() + '/'_L1 + branch();
 }
 
 QString FlatpakResource::installPath() const
 {
-    return QStringLiteral("%1/%2/%3/%4/%5/active").arg(installationPath(), typeAsString(), flatpakName(), arch(), branch());
+    return installationPath() + '/'_L1 + typeAsString() + '/'_L1 + flatpakName() + '/'_L1 + arch() + '/'_L1 + branch() + "/active"_L1;
 }
 
 FlatpakResource::PropertyState FlatpakResource::propertyState(FlatpakResource::PropertyKind kind) const
