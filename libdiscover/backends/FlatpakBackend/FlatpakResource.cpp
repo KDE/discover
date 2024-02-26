@@ -458,7 +458,7 @@ FlatpakResource::ResourceType FlatpakResource::resourceType() const
     return m_type;
 }
 
-QString FlatpakResource::typeAsString() const
+QLatin1String FlatpakResource::typeAsString() const
 {
     switch (m_type) {
     case FlatpakResource::Runtime:

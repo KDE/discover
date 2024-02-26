@@ -87,7 +87,7 @@ public:
         }
     };
 
-    static QString typeAsString(ResourceType type)
+    static QLatin1String typeAsString(ResourceType type)
     {
         if (type == DesktopApp) {
             return QLatin1String("app");
@@ -133,7 +133,7 @@ public:
     QString sizeDescription() override;
     AbstractResource::State state() override;
     ResourceType resourceType() const;
-    QString typeAsString() const;
+    QLatin1String typeAsString() const;
     FlatpakResource::Id uniqueId() const;
     QUrl url() const override;
     QDate releaseDate() const override;
