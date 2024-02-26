@@ -164,7 +164,6 @@ void FlatpakResource::updateFromRef(FlatpakRef *ref)
 {
     setArch(QString::fromUtf8(flatpak_ref_get_arch(ref)));
     setBranch(QString::fromUtf8(flatpak_ref_get_branch(ref)));
-    setCommit(QString::fromUtf8(flatpak_ref_get_commit(ref)));
     setFlatpakName(QString::fromUtf8(flatpak_ref_get_name(ref)));
     setType(flatpak_ref_get_kind(ref) == FLATPAK_REF_KIND_APP ? DesktopApp : extends().isEmpty() ? Runtime : Extension);
     setObjectName(packageName());
@@ -198,11 +197,6 @@ QString FlatpakResource::comment()
     }
 
     return QString();
-}
-
-QString FlatpakResource::commit() const
-{
-    return m_commit;
 }
 
 quint64 FlatpakResource::downloadSize() const
@@ -533,11 +527,6 @@ void FlatpakResource::setBranch(const QString &branch)
 void FlatpakResource::setBundledIcon(const QPixmap &pixmap)
 {
     m_bundledIcon = pixmap;
-}
-
-void FlatpakResource::setCommit(const QString &commit)
-{
-    m_commit = commit;
 }
 
 void FlatpakResource::setDownloadSize(quint64 size)

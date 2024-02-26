@@ -107,7 +107,6 @@ public:
     bool canExecute() const override;
     QStringList categories() override;
     QString comment() override;
-    QString commit() const;
     quint64 downloadSize() const;
     QVariant icon() const override;
     QString installedVersion() const override;
@@ -220,7 +219,6 @@ Q_SIGNALS:
     void eolReasonChanged();
 
 private:
-    void setCommit(const QString &commit);
     void setEolReason(const QString &reason);
     void loadPermissions();
 
@@ -228,7 +226,6 @@ private:
     FlatpakResource::Id m_id;
     FlatpakRefKind m_flatpakRefKind;
     QPixmap m_bundledIcon;
-    QString m_commit;
     qint64 m_downloadSize;
     FlatpakFileType m_flatpakFileType = FlatpakResource::NotAFile;
     QString m_flatpakName;
