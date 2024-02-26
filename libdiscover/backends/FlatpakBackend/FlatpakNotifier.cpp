@@ -153,3 +153,5 @@ bool FlatpakNotifier::setupFlatpakInstallations(GError **error)
 
     return true;
 }
+
+#include "moc_FlatpakNotifier.cpp"

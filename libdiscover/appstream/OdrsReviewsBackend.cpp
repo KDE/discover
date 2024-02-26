@@ -453,3 +453,5 @@ QNetworkAccessManager *OdrsReviewsBackend::nam()
     }
     return m_delayedNam;
 }
+
+#include "moc_OdrsReviewsBackend.cpp"

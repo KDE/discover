@@ -31,3 +31,5 @@ QVector<StreamResult> StoredResultsStream::resources() const
 {
     return m_results;
 }
+
+#include "moc_StoredResultsStream.cpp"

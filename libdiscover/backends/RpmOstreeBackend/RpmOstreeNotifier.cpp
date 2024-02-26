@@ -389,3 +389,5 @@ bool RpmOstreeNotifier::hasUpdates()
 {
     return m_hasUpdates;
 }
+
+#include "moc_RpmOstreeNotifier.cpp"

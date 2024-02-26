@@ -601,3 +601,4 @@ void RpmOstreeBackend::setFetching(bool fetching)
 }
 
 #include "RpmOstreeBackend.moc"
+#include "moc_RpmOstreeBackend.cpp"

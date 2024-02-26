@@ -123,3 +123,5 @@ void SnapTransaction::progressed()
     setProgress(percentage / qMax(count, 1));
     setStatus(status);
 }
+
+#include "moc_SnapTransaction.cpp"

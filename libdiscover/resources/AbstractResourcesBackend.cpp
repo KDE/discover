@@ -173,3 +173,5 @@ InlineMessage *AbstractResourcesBackend::explainDysfunction() const
 {
     return new InlineMessage(InlineMessage::Error, QStringLiteral("network-disconnect"), i18n("Please verify Internet connectivity"));
 }
+
+#include "moc_AbstractResourcesBackend.cpp"

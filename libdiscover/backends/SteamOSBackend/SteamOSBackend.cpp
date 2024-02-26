@@ -234,3 +234,4 @@ QString SteamOSBackend::displayName() const
 }
 
 #include "SteamOSBackend.moc"
+#include "moc_SteamOSBackend.cpp"

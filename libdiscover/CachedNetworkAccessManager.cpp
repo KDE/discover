@@ -31,3 +31,5 @@ QNetworkReply *CachedNetworkAccessManager::createRequest(Operation op, const QNe
     req.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
     return QNetworkAccessManager::createRequest(op, request, outgoingData);
 }
+
+#include "moc_CachedNetworkAccessManager.cpp"

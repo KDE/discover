@@ -815,3 +815,5 @@ ResourcesCount::ResourcesCount(int number, const QString &string)
     , m_string(string)
 {
 }
+
+#include "moc_ResourcesProxyModel.cpp"

@@ -12,3 +12,5 @@ BackendNotifierModule::BackendNotifierModule(QObject *parent)
 }
 
 BackendNotifierModule::~BackendNotifierModule() = default;
+
+#include "moc_BackendNotifierModule.cpp"

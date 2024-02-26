@@ -88,3 +88,5 @@ bool RpmOstreeSourcesBackend::canMoveSources() const
 {
     return false;
 }
+
+#include "moc_RpmOstreeSourcesBackend.cpp"

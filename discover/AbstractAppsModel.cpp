@@ -192,3 +192,4 @@ QHash<int, QByteArray> AbstractAppsModel::roleNames() const
 }
 
 #include "AbstractAppsModel.moc"
+#include "moc_AbstractAppsModel.cpp"

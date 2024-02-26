@@ -192,3 +192,5 @@ QString OstreeFormat::transport() const
     }
     return m_transport;
 }
+
+#include "moc_OstreeFormat.cpp"

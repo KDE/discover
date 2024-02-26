@@ -1060,3 +1060,5 @@ QStringList FlatpakResource::bottomObjects() const
 {
     return s_bottomObjects;
 }
+
+#include "moc_FlatpakResource.cpp"

@@ -125,3 +125,5 @@ void SteamOSTransaction::refreshStatus()
         break;
     }
 }
+
+#include "moc_SteamOSTransaction.cpp"

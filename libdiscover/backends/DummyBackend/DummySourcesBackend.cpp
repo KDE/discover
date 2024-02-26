@@ -82,3 +82,5 @@ bool DummySourcesBackend::moveSource(const QString &sourceId, int delta)
         Q_EMIT lastSourceIdChanged();
     return true;
 }
+
+#include "moc_DummySourcesBackend.cpp"

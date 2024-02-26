@@ -1998,3 +1998,4 @@ bool FlatpakBackend::extends(const QString &extends) const
 }
 
 #include "FlatpakBackend.moc"
+#include "moc_FlatpakBackend.cpp"

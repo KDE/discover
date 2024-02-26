@@ -123,3 +123,5 @@ bool NotifierItem::shouldShowStatusNotifier() const
         return false;
     }
 }
+
+#include "moc_NotifierItem.cpp"

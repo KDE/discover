@@ -96,3 +96,5 @@ QString ReadFile::filter() const
 {
     return m_filter.pattern();
 }
+
+#include "moc_ReadFile.cpp"

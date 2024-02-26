@@ -560,3 +560,4 @@ void KNSBackend::detailsLoaded(const KNSCore::Entry &entry)
 }
 
 #include "KNSBackend.moc"
+#include "moc_KNSBackend.cpp"

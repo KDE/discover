@@ -385,3 +385,5 @@ void PackageKitNotifier::onRequireRestart(PackageKit::Transaction::Restart type,
     qCDebug(LIBDISCOVER_BACKEND_LOG) << "RESTART" << QMetaEnum::fromType<PackageKit::Transaction::Restart>().valueToKey(type) << "is required for package"
                                      << packageID;
 }
+
+#include "moc_PackageKitNotifier.cpp"

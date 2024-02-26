@@ -202,3 +202,5 @@ QString FwupdResource::cacheFile() const
     Q_ASSERT(!filename_cache.isEmpty());
     return filename_cache;
 }
+
+#include "moc_FwupdResource.cpp"

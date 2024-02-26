@@ -279,3 +279,4 @@ void SnapBackend::refreshStates()
 }
 
 #include "SnapBackend.moc"
+#include "moc_SnapBackend.cpp"

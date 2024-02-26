@@ -79,3 +79,5 @@ void DummyTransaction::finishTransaction()
     setStatus(DoneStatus);
     deleteLater();
 }
+
+#include "moc_DummyTransaction.cpp"

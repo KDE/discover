@@ -127,3 +127,5 @@ void FwupdTransaction::finishTransaction()
     setStatus(DoneStatus);
     deleteLater();
 }
+
+#include "moc_FwupdTransaction.cpp"

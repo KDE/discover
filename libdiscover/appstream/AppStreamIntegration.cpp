@@ -73,3 +73,5 @@ std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStre
 
     return nextRelease;
 }
+
+#include "moc_AppStreamIntegration.cpp"

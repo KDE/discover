@@ -218,3 +218,5 @@ QUrl DummyResource::url() const
 {
     return QUrl(QLatin1String("dummy://") + packageName().replace(QLatin1Char(' '), QLatin1Char('.')));
 }
+
+#include "moc_DummyResource.cpp"

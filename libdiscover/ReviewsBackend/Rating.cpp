@@ -147,3 +147,5 @@ double Rating::sortableRating() const
 {
     return m_sortableRating;
 }
+
+#include "moc_Rating.cpp"

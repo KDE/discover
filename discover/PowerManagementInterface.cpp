@@ -159,3 +159,5 @@ void PowerManagementInterface::setReason(const QString &reason)
 {
     d->m_reason = reason;
 }
+
+#include "moc_PowerManagementInterface.cpp"

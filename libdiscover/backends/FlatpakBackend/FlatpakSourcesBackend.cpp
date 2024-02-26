@@ -440,3 +440,5 @@ void FlatpakSourcesBackend::proceed()
 {
     m_proceedFunctions.pop()();
 }
+
+#include "moc_FlatpakSourcesBackend.cpp"

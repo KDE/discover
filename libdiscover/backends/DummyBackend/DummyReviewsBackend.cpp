@@ -93,3 +93,5 @@ bool DummyReviewsBackend::isResourceSupported(AbstractResource *resource) const
     Q_UNUSED(resource)
     return true;
 }
+
+#include "moc_DummyReviewsBackend.cpp"

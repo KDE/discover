@@ -140,3 +140,4 @@ void FwupdSourcesBackend::proceed()
 }
 
 #include "FwupdSourcesBackend.moc"
+#include "moc_FwupdSourcesBackend.cpp"

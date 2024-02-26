@@ -907,3 +907,4 @@ quint64 PackageKitUpdater::downloadSpeed() const
 }
 
 #include "PackageKitUpdater.moc"
+#include "moc_PackageKitUpdater.cpp"

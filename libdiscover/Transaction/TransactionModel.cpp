@@ -217,3 +217,5 @@ QString TransactionModel::mainTransactionText() const
 {
     return m_transactions.isEmpty() ? QString() : m_transactions.constFirst()->name();
 }
+
+#include "moc_TransactionModel.cpp"

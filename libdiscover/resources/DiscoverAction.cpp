@@ -73,3 +73,5 @@ void DiscoverAction::trigger()
 {
     Q_EMIT triggered();
 }
+
+#include "moc_DiscoverAction.cpp"

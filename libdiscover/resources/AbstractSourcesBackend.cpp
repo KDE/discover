@@ -38,3 +38,5 @@ QString AbstractSourcesBackend::lastSourceId() const
     auto m = const_cast<AbstractSourcesBackend *>(this)->sources();
     return m->index(m->rowCount() - 1, 0).data(AbstractSourcesBackend::IdRole).toString();
 }
+
+#include "moc_AbstractSourcesBackend.cpp"

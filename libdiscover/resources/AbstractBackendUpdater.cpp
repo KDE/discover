@@ -63,3 +63,5 @@ void AbstractBackendUpdater::setErrorMessage(const QString &errorMessage)
     m_errorMessage = errorMessage;
     Q_EMIT errorMessageChanged();
 }
+
+#include "moc_AbstractBackendUpdater.cpp"

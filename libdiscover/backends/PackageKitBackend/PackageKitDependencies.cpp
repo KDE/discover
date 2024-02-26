@@ -190,3 +190,5 @@ void PakcageKitFetchDependenciesJob::onTransactionFinished()
 
     deleteLater();
 }
+
+#include "moc_PackageKitDependencies.cpp"

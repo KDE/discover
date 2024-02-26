@@ -84,3 +84,5 @@ void UnattendedUpdates::triggerUpdate(int timeoutId)
     process->start(QStringLiteral("plasma-discover-update"), {QStringLiteral("--offline")});
     qInfo() << "started unattended update" << QDateTime::currentDateTimeUtc();
 }
+
+#include "moc_UnattendedUpdates.cpp"

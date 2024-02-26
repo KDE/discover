@@ -56,3 +56,5 @@ void DiscoverUpdate::transactionStatusChanged(Transaction::Status status)
         QCoreApplication::instance()->exit(withError);
     }
 }
+
+#include "moc_DiscoverUpdate.cpp"

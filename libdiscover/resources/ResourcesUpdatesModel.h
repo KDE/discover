@@ -27,6 +27,8 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     Q_PROPERTY(bool readyToReboot READ readyToReboot)
     Q_PROPERTY(bool useUnattendedUpdates READ useUnattendedUpdates NOTIFY useUnattendedUpdatesChanged)
     Q_PROPERTY(QStringList errorMessages READ errorMessages NOTIFY errorMessagesChanged)
+
+    Q_MOC_INCLUDE("Transaction/Transaction.h")
 public:
     explicit ResourcesUpdatesModel(QObject *parent = nullptr);
 

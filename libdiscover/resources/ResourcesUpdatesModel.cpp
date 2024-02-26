@@ -360,3 +360,4 @@ QStringList ResourcesUpdatesModel::errorMessages() const
 }
 
 #include "ResourcesUpdatesModel.moc"
+#include "moc_ResourcesUpdatesModel.cpp"

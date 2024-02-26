@@ -350,3 +350,5 @@ void DiscoverNotifier::setBusy(bool isBusy)
     Q_EMIT busyChanged();
     Q_EMIT stateChanged();
 }
+
+#include "moc_DiscoverNotifier.cpp"

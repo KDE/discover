@@ -98,4 +98,4 @@ void FeaturedModel::refresh()
     setUris(uris);
 }
 
-#include "FeaturedModel.moc"
+#include "moc_FeaturedModel.cpp"

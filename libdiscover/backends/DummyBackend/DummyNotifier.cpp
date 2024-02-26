@@ -20,3 +20,5 @@ void DummyNotifier::recheckSystemUpdateNeeded()
 {
     Q_EMIT foundUpdates();
 }
+
+#include "moc_DummyNotifier.cpp"

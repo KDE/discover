@@ -490,3 +490,5 @@ bool PackageKitResource::isCritical() const
 {
     return false;
 }
+
+#include "moc_PackageKitResource.cpp"

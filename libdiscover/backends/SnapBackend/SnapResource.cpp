@@ -540,3 +540,4 @@ QObject *SnapResource::channels(QObject *parent)
 }
 
 #include "SnapResource.moc"
+#include "moc_SnapResource.cpp"

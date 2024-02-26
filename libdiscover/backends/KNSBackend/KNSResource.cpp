@@ -269,3 +269,5 @@ QString KNSResource::author() const
 {
     return m_entry.author().name();
 }
+
+#include "moc_KNSResource.cpp"

@@ -669,3 +669,4 @@ QString DiscoverObject::describeSources() const
 }
 
 #include "DiscoverObject.moc"
+#include "moc_DiscoverObject.cpp"

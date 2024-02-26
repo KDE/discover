@@ -127,6 +127,8 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
     Q_PROPERTY(bool hasSecurityUpdates READ hasSecurityUpdates NOTIFY updatesCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
     Q_PROPERTY(bool hasApplications READ hasApplications CONSTANT)
+
+    Q_MOC_INCLUDE("ReviewsBackend/AbstractReviewsBackend.h")
 public:
     /**
      * Constructs an AbstractResourcesBackend

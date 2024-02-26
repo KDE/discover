@@ -191,3 +191,5 @@ void PackageKitSourcesBackend::transactionError(PackageKit::Transaction::Error e
     Q_EMIT passiveMessage(message);
     qWarning() << "Transaction error: " << error << message << sender();
 }
+
+#include "moc_PackageKitSourcesBackend.cpp"

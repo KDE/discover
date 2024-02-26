@@ -399,3 +399,5 @@ bool CategoryFilter::operator==(const CategoryFilter &other) const
         return std::get<QVector<CategoryFilter>>(value) == std::get<QVector<CategoryFilter>>(other.value);
     }
 }
+
+#include "moc_Category.cpp"

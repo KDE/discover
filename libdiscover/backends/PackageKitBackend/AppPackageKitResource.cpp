@@ -302,3 +302,5 @@ uint AppPackageKitResource::contentRatingMinimumAge() const
 {
     return AppStreamUtils::contentRatingMinimumAge(m_appdata);
 }
+
+#include "moc_AppPackageKitResource.cpp"

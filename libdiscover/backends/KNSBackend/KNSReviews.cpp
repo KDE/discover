@@ -182,3 +182,5 @@ bool KNSReviews::isResourceSupported(AbstractResource *resource) const
 {
     return qobject_cast<KNSResource *>(resource);
 }
+
+#include "moc_KNSReviews.cpp"

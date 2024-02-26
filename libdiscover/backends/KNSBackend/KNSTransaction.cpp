@@ -105,3 +105,5 @@ void KNSTransaction::proceed()
 {
     m_questions.takeFirst()->setResponse(KNSCore::Question::ContinueResponse);
 }
+
+#include "moc_KNSTransaction.cpp"

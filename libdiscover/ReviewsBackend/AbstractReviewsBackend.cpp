@@ -58,3 +58,5 @@ QString AbstractReviewsBackend::errorMessage() const
 {
     return QString();
 }
+
+#include "moc_AbstractReviewsBackend.cpp"

@@ -352,3 +352,5 @@ void PKTransaction::repoSignatureRequired(const QString &packageID,
         return PackageKit::Daemon::installSignature(type, keyId, packageID);
     };
 }
+
+#include "moc_PKTransaction.cpp"

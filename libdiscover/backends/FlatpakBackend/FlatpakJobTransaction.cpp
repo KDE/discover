@@ -102,3 +102,5 @@ void FlatpakJobTransaction::finishTransaction()
         setStatus(m_appJob->cancelled() ? CancelledStatus : DoneWithErrorStatus);
     }
 }
+
+#include "moc_FlatpakJobTransaction.cpp"

@@ -474,3 +474,4 @@ bool FwupdBackend::hasApplications() const
 }
 
 #include "FwupdBackend.moc"
+#include "moc_FwupdBackend.cpp"

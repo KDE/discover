@@ -1149,3 +1149,4 @@ InlineMessage *PackageKitBackend::explainDysfunction() const
 }
 
 #include "PackageKitBackend.moc"
+#include "moc_PackageKitBackend.cpp"

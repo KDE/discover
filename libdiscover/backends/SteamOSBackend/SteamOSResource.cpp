@@ -198,3 +198,5 @@ QString SteamOSResource::author() const
 {
     return QStringLiteral("Valve");
 }
+
+#include "moc_SteamOSResource.cpp"

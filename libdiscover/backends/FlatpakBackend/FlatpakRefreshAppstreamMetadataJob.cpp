@@ -52,3 +52,5 @@ void FlatpakRefreshAppstreamMetadataJob::run()
     }
     Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote);
 }
+
+#include "moc_FlatpakRefreshAppstreamMetadataJob.cpp"

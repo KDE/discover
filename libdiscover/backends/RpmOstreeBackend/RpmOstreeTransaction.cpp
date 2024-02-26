@@ -406,3 +406,5 @@ QVariant RpmOstreeTransaction::icon() const
 {
     return QStringLiteral("application-x-rpm");
 }
+
+#include "moc_RpmOstreeTransaction.cpp"

@@ -487,3 +487,5 @@ QString RpmOstreeResource::OCIUrl()
     // Should never happen
     return {};
 }
+
+#include "moc_RpmOstreeResource.cpp"

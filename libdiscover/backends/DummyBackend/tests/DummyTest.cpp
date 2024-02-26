@@ -285,3 +285,5 @@ void DummyTest::testScreenshotsModel()
 }
 
 // TODO test cancel transaction
+
+#include "moc_DummyTest.cpp"

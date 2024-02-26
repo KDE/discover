@@ -67,3 +67,5 @@ void DiscoverDeclarativePlugin::registerTypes(const char * /*uri*/)
 
     qmlProtectModule("org.kde.discover", 2);
 }
+
+#include "moc_DiscoverDeclarativePlugin.cpp"

@@ -27,3 +27,5 @@ void OdrsAppsModel::refresh()
         return QUrl("appstream://"_L1 + rating->packageName());
     }));
 }
+
+#include "moc_OdrsAppsModel.cpp"

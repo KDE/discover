@@ -43,4 +43,5 @@ bool Updates::isRpmOstree() const
     return QFile::exists(QStringLiteral("/run/ostree-booted"));
 }
 
+#include "moc_updates.cpp"
 #include "updates.moc"

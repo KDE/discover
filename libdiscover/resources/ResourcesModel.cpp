@@ -449,3 +449,5 @@ void ResourcesModel::setInlineMessage(const QSharedPointer<InlineMessage> &inlin
     m_inlineMessage = inlineMessage;
     Q_EMIT inlineMessageChanged(inlineMessage);
 }
+
+#include "moc_ResourcesModel.cpp"

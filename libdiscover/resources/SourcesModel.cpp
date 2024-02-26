@@ -111,3 +111,5 @@ QVector<AbstractSourcesBackend *> SourcesModel::sources() const
     }
     return sources;
 }
+
+#include "moc_SourcesModel.cpp"

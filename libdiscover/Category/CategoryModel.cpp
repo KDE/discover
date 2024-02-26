@@ -108,3 +108,5 @@ Category *CategoryModel::findCategoryByName(const QString &name) const
     }
     return nullptr;
 }
+
+#include "moc_CategoryModel.cpp"

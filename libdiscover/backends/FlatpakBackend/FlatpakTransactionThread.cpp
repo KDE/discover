@@ -267,3 +267,5 @@ bool FlatpakTransactionThread::cancelled() const
 {
     return g_cancellable_is_cancelled(m_cancellable);
 }
+
+#include "moc_FlatpakTransactionThread.cpp"

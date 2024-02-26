@@ -106,3 +106,5 @@ void LocalFilePKResource::invokeApplication() const
 
     runService(service);
 }
+
+#include "moc_LocalFilePKResource.cpp"

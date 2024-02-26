@@ -407,3 +407,5 @@ int PaginateModel::lastItem() const
 {
     return d->m_firstItem + rowCount();
 }
+
+#include "moc_PaginateModel.cpp"

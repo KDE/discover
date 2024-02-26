@@ -191,3 +191,4 @@ InlineMessage *DummyBackend::explainDysfunction() const
 }
 
 #include "DummyBackend.moc"
+#include "moc_DummyBackend.cpp"

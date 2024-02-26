@@ -295,3 +295,5 @@ quint64 StandardBackendUpdater::downloadSpeed() const
     }
     return ret;
 }
+
+#include "moc_StandardBackendUpdater.cpp"

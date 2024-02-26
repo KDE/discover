@@ -57,3 +57,5 @@ void PKResolveTransaction::addPackageNames(const QStringList &packageNames)
     m_packageNames.removeDuplicates();
     m_floodTimer.start();
 }
+
+#include "moc_PKResolveTransaction.cpp"

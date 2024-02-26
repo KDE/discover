@@ -313,3 +313,5 @@ QStringList AbstractResource::bottomObjects() const
 {
     return {};
 }
+
+#include "moc_AbstractResource.cpp"
