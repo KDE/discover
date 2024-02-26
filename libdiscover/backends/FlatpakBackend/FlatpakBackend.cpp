@@ -136,11 +136,7 @@ public:
 
     void addResource(FlatpakResource *resource)
     {
-        // Update app with all possible information we have
-        if (!m_backend->parseMetadataFromAppBundle(resource)) {
-            qWarning() << "Failed to parse metadata from app bundle for" << resource->name();
-        }
-
+        Q_ASSERT(!resource->packageName().isEmpty());
         m_backend->updateAppState(resource);
 
         Q_ASSERT(!m_resources.contains(resource->uniqueId()) || m_resources.value(resource->uniqueId()) == resource);
@@ -1190,20 +1186,6 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
         }
         Q_ASSERT(!resource->temporarySource());
     }
-}
-
-bool FlatpakBackend::parseMetadataFromAppBundle(FlatpakResource *resource)
-{
-    g_autoptr(GError) localError = nullptr;
-    g_autoptr(FlatpakRef) ref = flatpak_ref_parse(resource->ref().toUtf8().constData(), &localError);
-    if (!ref) {
-        qWarning() << "Failed to parse" << resource->ref() << localError->message;
-        return false;
-    } else {
-        resource->updateFromRef(ref);
-    }
-
-    return true;
 }
 
 bool FlatpakBackend::setupFlatpakInstallations(GError **error)
