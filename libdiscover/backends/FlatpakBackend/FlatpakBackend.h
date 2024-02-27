@@ -75,10 +75,6 @@ public:
     void unloadRemote(FlatpakInstallation *installation, FlatpakRemote *remote);
 
     InlineMessage *explainDysfunction() const override;
-    QVector<FlatpakInstallation *> installations() const
-    {
-        return m_installations;
-    }
 
     bool isTracked(FlatpakResource *resource) const;
     QThreadPool *threadPool()
