@@ -579,14 +579,13 @@ FlatpakResource *FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) con
     }
 
     for (auto installation : m_installations) {
-        auto iref = flatpak_installation_get_installed_ref(installation,
-                                                           FLATPAK_REF_KIND_RUNTIME,
-                                                           runtimeInfo.at(0).toUtf8().constData(),
-                                                           runtimeInfo.at(1).toUtf8().constData(),
-                                                           runtimeInfo.at(2).toUtf8().constData(),
-                                                           m_cancellable,
-                                                           nullptr);
-        if (iref) {
+        if (auto iref = flatpak_installation_get_installed_ref(installation,
+                                                               FLATPAK_REF_KIND_RUNTIME,
+                                                               runtimeInfo.at(0).toUtf8().constData(),
+                                                               runtimeInfo.at(1).toUtf8().constData(),
+                                                               runtimeInfo.at(2).toUtf8().constData(),
+                                                               m_cancellable,
+                                                               nullptr)) {
             return getAppForInstalledRef(installation, iref);
         }
     }
