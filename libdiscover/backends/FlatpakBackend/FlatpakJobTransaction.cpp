@@ -88,8 +88,8 @@ void FlatpakJobTransaction::finishTransaction()
         m_app->setState(AbstractResource::None);
     }
 
-    if (!m_appJob->addedRepositories().isEmpty()) {
-        Q_EMIT repositoriesAdded(m_appJob->addedRepositories());
+    if (const auto repositories = m_appJob->addedRepositories(); !repositories.isEmpty()) {
+        Q_EMIT repositoriesAdded(repositories);
     }
 
     if (!m_appJob->cancelled() && !m_appJob->errorMessage().isEmpty()) {

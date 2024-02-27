@@ -228,6 +228,11 @@ void FlatpakTransactionThread::run()
     setProgress(100);
 }
 
+int FlatpakTransactionThread::progress() const
+{
+    return m_progress;
+}
+
 void FlatpakTransactionThread::setProgress(int progress)
 {
     Q_ASSERT(qBound(0, progress, 100) == progress);
@@ -266,6 +271,11 @@ void FlatpakTransactionThread::addErrorMessage(const QString &error)
 bool FlatpakTransactionThread::cancelled() const
 {
     return g_cancellable_is_cancelled(m_cancellable);
+}
+
+FlatpakTransactionThread::Repositories FlatpakTransactionThread::addedRepositories() const
+{
+    return m_addedRepositories;
 }
 
 #include "moc_FlatpakTransactionThread.cpp"

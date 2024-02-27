@@ -28,10 +28,7 @@ public:
     void cancel();
     void run() override;
 
-    int progress() const
-    {
-        return m_progress;
-    }
+    int progress() const;
     void setProgress(int progress);
     void setSpeed(quint64 speed);
 
@@ -40,10 +37,10 @@ public:
     bool cancelled() const;
 
     void addErrorMessage(const QString &error);
-    QMap<QString, QStringList> addedRepositories() const
-    {
-        return m_addedRepositories;
-    }
+
+    /** Mapping of repositories where a key is an installation path and a value is a list of names */
+    using Repositories = QMap<QString, QStringList>;
+    Repositories addedRepositories() const;
 
 Q_SIGNALS:
     void progressChanged(int progress);

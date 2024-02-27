@@ -112,7 +112,7 @@ private:
     FlatpakRemote *getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const;
     FlatpakResource *getRuntimeForApp(FlatpakResource *resource) const;
     FlatpakResource *resourceForComponent(const AppStream::Component &component, const QSharedPointer<FlatpakSource> &source) const;
-    void checkRepositories(const QMap<QString, QStringList> &names);
+    void checkRepositories(const QMap<QString, QStringList> &repositories);
 
     void loadAppsFromAppstreamData();
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);

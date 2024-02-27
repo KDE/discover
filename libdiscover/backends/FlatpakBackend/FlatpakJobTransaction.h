@@ -26,12 +26,15 @@ public:
 
     void cancel() override;
 
+    /** Mapping of repositories where a key is an installation path and a value is a list of names */
+    using Repositories = QMap<QString, QStringList>;
+
 public Q_SLOTS:
     void finishTransaction();
     void start();
 
 Q_SIGNALS:
-    void repositoriesAdded(const QMap<QString, QStringList> &repositoryNames);
+    void repositoriesAdded(const Repositories &repositories);
 
 private:
     void updateProgress();
