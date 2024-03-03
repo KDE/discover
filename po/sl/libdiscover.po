@@ -3,13 +3,14 @@
 #
 # Andrej Mernik <andrejm@ubuntu.si>, 2012, 2013, 2014, 2015, 2016, 2017, 2018.
 # Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2024 Jure Repinc <jlp@holodeck1.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-02 00:38+0000\n"
-"PO-Revision-Date: 2024-01-26 07:44+0100\n"
-"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"PO-Revision-Date: 2024-03-01 23:48+0100\n"
+"Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -18,17 +19,17 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Andrej Mernik,Matjaž Jeran"
+msgstr "Andrej Mernik,Matjaž Jeran,Jure Repinc"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "andrejm@ubuntu.si,matjaz.jeran@amis.net"
+msgstr "andrejm@ubuntu.si,matjaz.jeran@amis.net,jlp@holodeck1.com"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:103
 #, kde-format
@@ -162,7 +163,7 @@ msgstr "preizkusno 4"
 #, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Vse aplikacije"
+msgstr "Vsi programi"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -543,12 +544,12 @@ msgstr "Krajevna zbirka"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
-msgstr "Napačno oblikovan URL appstream '%1'"
+msgstr "Napačno oblikovan URL appstream »%1«"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1854
 #, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "Ni bilo mogoče dodati vira '%1': %2"
+msgstr "Ni bilo mogoče dodati vira »%1«: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1975
 #, kde-format
@@ -558,7 +559,7 @@ msgstr "Ni virov za Flatpak."
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1979
 #, kde-format
 msgid "Failed to load \"%1\" source"
-msgstr "Ni bilo mogoče naložiti vira '%1'"
+msgstr "Ni bilo mogoče naložiti vira »%1«"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:351
 #, kde-kuit-format
@@ -568,9 +569,9 @@ msgid ""
 "software in this repository will also be made be available in Discover when "
 "the application is installed.</para>"
 msgstr ""
-"<para>Ta aplikacija prihaja od \"%1\" (gostujoč pri <link>%2</link>). Ostalo "
-"programje v tem skladišču bo prav tako na voljo v Discoverju, ko bo "
-"aplikacija nameščena.</para>"
+"<para>Ta program prihaja od »%1« (gostujoč pri <link>%2</link>). Ostalo "
+"programje v tem skladišču bo prav tako na voljo v Discoverju, ko bo program "
+"nameščen.</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:443
 #, kde-format
@@ -588,7 +589,7 @@ msgstr "Neznano"
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "Ni bilo mogoče zagnati '%1': %2"
+msgstr "Ni bilo mogoče zagnati »%1«: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:731
 #, kde-format
@@ -642,8 +643,8 @@ msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Lahko komunicira z vsemi drugimi aplikacijami in procesi, ki se izvajajo v "
-"tem uporabniškem računu"
+"Lahko komunicira z vsemi drugimi programi in procesi, ki se izvajajo v tem "
+"uporabniškem računu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:982
@@ -654,7 +655,7 @@ msgstr "Sistemski dostop do vodila"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
-msgstr "Lahko komunicira z vsemi drugimi aplikacijami in procesi v sistemu"
+msgstr "Lahko komunicira z vsemi drugimi programi in procesi v sistemu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
@@ -849,8 +850,8 @@ msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
-"Lahko komunicira z drugimi aplikacijami in procesi v isti seji namizja z "
-"uporabo naslednjih komunikacijskih protokolov: %1"
+"Lahko komunicira z drugimi programi in procesi v isti seji namizja z uporabo "
+"naslednjih komunikacijskih protokolov: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:984
 #, kde-format
@@ -858,7 +859,7 @@ msgid ""
 "Can communicate with all applications and system services using the "
 "following communication protocols: %1"
 msgstr ""
-"Lahko komunicira z vsemi aplikacijami in sistemskimi storitvami z uporabo "
+"Lahko komunicira z vsemi programi in sistemskimi storitvami z uporabo "
 "naslednjih komunikacijskih protokolov: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
@@ -885,7 +886,7 @@ msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
 msgstr ""
-"Omogoča enostavno namestitev aplikacij, navedenih v https://flathub.org"
+"Omogoča enostavno namestitev programov, navedenih na https://flathub.org"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:167
 #, kde-format
@@ -895,7 +896,7 @@ msgstr "Ni bilo mogoče dodati vira %1"
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:287
 #, kde-format
 msgid "Removing '%1'"
-msgstr "Odstranjevanje '%1'"
+msgstr "Odstranjevanje »%1«"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:288
 #, kde-format
@@ -929,12 +930,12 @@ msgstr "Vnesite URI skladišča Flatpak (*.flatpakrepo):"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:29
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
-msgstr "Dodajanje oddaljenega '%1' v %2 iz %3"
+msgstr "Dodajanje oddaljenega »%1« v %2 iz %3"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:197
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr "Ni bilo mogoče najti  '%1' v '%2'; zagotovite, da so na voljo."
+msgstr "Ni bilo mogoče najti »%1« v »%2«; zagotovite, da je na voljo."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
 #, kde-format
@@ -971,7 +972,7 @@ msgstr "Zbriši nastavitve in uporabniške podatke"
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:35
 #, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Brisanje nastavitev in uporabniških podatkov…"
+msgstr "Brisanje nastavitev in uporabniških podatkov …"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:22
@@ -984,7 +985,7 @@ msgstr "Dovoljenja za %1"
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:19
 #, kde-format
 msgid "Configure permissions…"
-msgstr "Konfiguriraj dovoljenja…"
+msgstr "Nastavi dovoljenja …"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
@@ -1077,7 +1078,7 @@ msgstr ""
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
-msgstr "Posnetka zaslona za vnos %1 ni bilo mogoče pridobiti v ozadju %2"
+msgstr "Posnetka zaslona za vnos %1 ni bilo mogoče pridobiti v zaledju %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:403
 #, kde-format
@@ -1147,7 +1148,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:908
 #, kde-format
 msgid "Cannot remove '%1'"
-msgstr "Ni mogoče odstraniti '%1'"
+msgstr "Ni mogoče odstraniti »%1«"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
@@ -1525,12 +1526,12 @@ msgstr "Neznana napaka %1."
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
 #, kde-format
 msgid "'%1' was changed and suggests to be restarted."
-msgstr "'%1' je bil spremenjen in predlaga ponovni zagon."
+msgstr "»%1« je bil spremenjen in predlaga ponovni zagon."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
 #, kde-format
 msgid "A change by '%1' suggests your session to be restarted."
-msgstr "Sprememba '%1' predlaga, da znova zaženete sejo."
+msgstr "Sprememba od »%1« predlaga, da znova zaženete sejo."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
 #, kde-format
@@ -1538,7 +1539,7 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
-"'%1' je bil posodobljen. Iz varnostnih razlogov je priporočen ponovni zagon "
+"»%1« je bil posodobljen iz varnostnih razlogov. Priporočen je ponovni zagon "
 "seje."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
@@ -1547,13 +1548,13 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the system is "
 "recommended."
 msgstr ""
-"'%1' je bil posodobljen. Iz varnostnih razlogov je priporočen ponovni zagon "
+"»%1« je bil posodobljen iz varnostnih razlogov. Priporočen je ponovni zagon "
 "sistema."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
 #, kde-format
 msgid "A change by '%1' suggests your system to be restarted."
-msgstr "Sprememba '%1' predlaga, da znova zaženete sistem."
+msgstr "Sprememba od »%1« predlaga, da znova zaženete sistem."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
@@ -1583,67 +1584,67 @@ msgstr "Iz varnostnih razlogov bo potrebno znova zagnati sistem."
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
 #, kde-format
 msgid "Waiting…"
-msgstr "Čakanje…"
+msgstr "Čakanje …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
 #, kde-format
 msgid "Refreshing Cache…"
-msgstr "Osveževanje predpomnilnika…"
+msgstr "Osveževanje predpomnilnika …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
 #, kde-format
 msgid "Setup…"
-msgstr "Nastavi…"
+msgstr "Nastavitev …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:214
 #, kde-format
 msgid "Processing…"
-msgstr "Obdelovanje…"
+msgstr "Obdelovanje …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:216
 #, kde-format
 msgid "Remove…"
-msgstr "Odstrani…"
+msgstr "Odstranitev …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:218
 #, kde-format
 msgid "Downloading…"
-msgstr "Prejemanje…"
+msgstr "Prejemanje …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:220
 #, kde-format
 msgid "Installing…"
-msgstr "Nameščanje…"
+msgstr "Nameščanje …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:222
 #, kde-format
 msgid "Updating…"
-msgstr "Posodabljanje…"
+msgstr "Posodabljanje …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:224
 #, kde-format
 msgid "Cleaning up…"
-msgstr "Čiščenje…"
+msgstr "Čiščenje …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:227
 #, kde-format
 msgid "Resolving dependencies…"
-msgstr "Razreševanje odvisnosti…"
+msgstr "Razreševanje odvisnosti …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:229
 #, kde-format
 msgid "Checking signatures…"
-msgstr "Preverjanje podpisov…"
+msgstr "Preverjanje podpisov …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
 #, kde-format
 msgid "Test committing…"
-msgstr "Preizkušanje uveljavljanja…"
+msgstr "Preizkušanje uveljavljanja …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
 #, kde-format
 msgid "Committing…"
-msgstr "Uveljavljanje…"
+msgstr "Uveljavljanje …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:236
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:362
@@ -1659,17 +1660,17 @@ msgstr "Preklicano"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:240
 #, kde-format
 msgid "Waiting for lock…"
-msgstr "Čakanje na zaklep…"
+msgstr "Čakanje na zaklep …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:242
 #, kde-format
 msgid "Waiting for authorization…"
-msgstr "Čakanje na pooblastitev…"
+msgstr "Čakanje na pooblastitev …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:247
 #, kde-format
 msgid "Copying files…"
-msgstr "Kopiranje datotek…"
+msgstr "Kopiranje datotek …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:250
 #, kde-format
@@ -1684,60 +1685,60 @@ msgstr "Čakanje na nekaj."
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
 #, kde-format
 msgid "Setting up transaction…"
-msgstr "Nastavljanje transakcije…"
+msgstr "Nastavljanje transakcije …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
 #, kde-format
 msgid "The transaction is currently working…"
-msgstr "Transakcija je v teku…"
+msgstr "Transakcija je v teku …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
 #, kde-format
 msgid "The transaction is currently removing packages…"
-msgstr "Transakcija trenutno odstranjuje pakete…"
+msgstr "Transakcija trenutno odstranjuje pakete …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
 #, kde-format
 msgid "The transaction is currently downloading packages…"
-msgstr "Transakcija trenutno prejema pakete…"
+msgstr "Transakcija trenutno prejema pakete …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
 #, kde-format
 msgid "The transactions is currently installing packages…"
-msgstr "Transakcija trenutno namešča pakete…"
+msgstr "Transakcija trenutno namešča pakete …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
 #, kde-format
 msgid "The transaction is currently updating packages…"
-msgstr "Transakcija trenutno posodablja pakete…"
+msgstr "Transakcija trenutno posodablja pakete …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
 #, kde-format
 msgid "The transaction is currently cleaning up…"
-msgstr "Transakcija trenutno čisti…"
+msgstr "Transakcija trenutno čisti …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
 #, kde-format
 msgid ""
 "The transaction is currently resolving the dependencies of the packages it "
 "will install…"
-msgstr "Transakcija trenutno razrešuje odvisnosti paketov, ki bodo nameščeni…"
+msgstr "Transakcija trenutno razrešuje odvisnosti paketov, ki bodo nameščeni …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
 #, kde-format
 msgid "The transaction is currently checking the signatures of the packages…"
-msgstr "Transakcija trenutno preverja podpise paketov…"
+msgstr "Transakcija trenutno preverja podpise paketov …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
 #, kde-format
 msgid ""
 "The transaction is currently testing the commit of this set of packages…"
-msgstr "Transakcija trenutno preizkuša uveljavljanje tega nabora paketov…"
+msgstr "Transakcija trenutno preizkuša uveljavljanje tega nabora paketov …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
 #, kde-format
 msgid "The transaction is currently committing its set of packages…"
-msgstr "Transakcija trenutno uveljavlja nabor paketov…"
+msgstr "Transakcija trenutno uveljavlja nabor paketov …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
 #, kde-format
@@ -1752,22 +1753,22 @@ msgstr "Transakcija je bila preklicana"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
 #, kde-format
 msgid "The transaction is currently waiting for the lock…"
-msgstr "Transakcija trenutno čaka na zaklep…"
+msgstr "Transakcija trenutno čaka na zaklep …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
 #, kde-format
 msgid "Waiting for the user to authorize the transaction…"
-msgstr "Čakanje, da uporabnik pooblasti transakcijo…"
+msgstr "Čakanje, da uporabnik pooblasti transakcijo …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
 #, kde-format
 msgid "The transaction is currently copying files…"
-msgstr "Transakcija trenutno kopira datoteke…"
+msgstr "Transakcija trenutno kopira datoteke …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
 #, kde-format
 msgid "Currently refreshing the repository cache…"
-msgstr "Poteka osveževanje predpomnilnika skladišča…"
+msgstr "Poteka osveževanje predpomnilnika skladišča …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
 #, kde-format
@@ -1886,7 +1887,7 @@ msgstr "Ponovno nameščam"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:366
 #, kde-format
 msgid "Downgrading"
-msgstr "Obnavljam prejšnjo verzijo"
+msgstr "Obnavljanje prejšnje različice"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:368
 #, kde-format
@@ -1927,16 +1928,16 @@ msgid_plural ""
 "Failed to update %1 packages\n"
 "%2"
 msgstr[0] ""
-"Posodobitev ni uspela %1 paket:\n"
+"Posodobitev %1 paketov ni uspela:\n"
 "%2"
 msgstr[1] ""
-"Posodobitev ni uspela %1 paketa:\n"
+"Posodobitev %1 paketa ni uspela:\n"
 "%2"
 msgstr[2] ""
-"Posodobitev ni uspela %1 paketi:\n"
+"Posodobitev %1 paketov ni uspela:\n"
 "%2"
 msgstr[3] ""
-"Posodobitev ni uspela %1 paketov:\n"
+"Posodobitev %1 paketov ni uspela:\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
@@ -1982,10 +1983,10 @@ msgstr "Krajevne posodobitve"
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
-msgstr[0] "Uspešno posodobljen %1 paket"
-msgstr[1] "Uspešno posodobljena %1 paketa"
-msgstr[2] "Uspešno posodobljeni %1 paketi"
-msgstr[3] "Uspešno posodobljeno %1 paketov"
+msgstr[0] "Uspešno posodobljenih %1 paketov"
+msgstr[1] "Uspešno posodobljen %1 paket"
+msgstr[2] "Uspešno posodobljena %1 paketa"
+msgstr[3] "Uspešno posodobljeni %1 paketi"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:194
 #, kde-format
@@ -2033,8 +2034,8 @@ msgstr "Proizvajalec:"
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
-msgstr[0] "%2 (in %1 odvisnost)"
-msgstr[1] "%2 (in %1 odvisnosti)"
+msgstr[0] "%2 (in %1 odvisnosti)"
+msgstr[1] "%2 (in %1 odvisnost)"
 msgstr[2] "%2 (in %1 odvisnosti)"
 msgstr[3] "%2 (in %1 odvisnosti)"
 
@@ -2058,10 +2059,10 @@ msgstr "Nadgradnja sistema"
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "%1 paket bo nadgrajen"
-msgstr[1] "%1 paketa bosta nadgrajena"
-msgstr[2] "%1 paketi bodo nadgrajeni"
-msgstr[3] "%1 paketov bo nadgrajeno"
+msgstr[0] "%1 paketov bo nadgrajenih"
+msgstr[1] "%1 paket bo nadgrajen"
+msgstr[2] "%1 paketa bosta nadgrajena"
+msgstr[3] "%1 paketi bodo nadgrajeni"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
@@ -2135,7 +2136,7 @@ msgid ""
 "Media Change of type '%1' is requested.\n"
 "%2"
 msgstr ""
-"Zahtevana je sprememba nosilca vrste '%1'.\n"
+"Zahtevana je sprememba nosilca vrste »%1«.\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:756
@@ -2207,13 +2208,13 @@ msgid_plural ""
 "This action will also remove the following packages:\n"
 "%2"
 msgstr[0] ""
-"S tem dejanjem bo odstranjen tudi naslednji paket:\n"
+"S tem dejanjem bodo odstranjeni tudi naslednji paketi:\n"
 "%2"
 msgstr[1] ""
-"S tem dejanjem bosta odstranjena tudi naslednja paketa:\n"
+"S tem dejanjem bo odstranjen tudi naslednji paket:\n"
 "%2"
 msgstr[2] ""
-"S tem dejanjem bodo odstranjeni tudi naslednji paketi:\n"
+"S tem dejanjem bosta odstranjena tudi naslednja paketa:\n"
 "%2"
 msgstr[3] ""
 "S tem dejanjem bodo odstranjeni tudi naslednji paketi:\n"
@@ -2222,7 +2223,7 @@ msgstr[3] ""
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
 msgid "Show Dependencies…"
-msgstr "Prikaži odvisnosti…"
+msgstr "Prikaži odvisnosti …"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:44
 #, kde-format
@@ -2260,7 +2261,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr "Začetek nadgradnje…"
+msgstr "Začni nadgradnjo …"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
 #, kde-format
@@ -2426,23 +2427,23 @@ msgstr "Neznana vrsta transakcije"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:21
 #, kde-format
 msgid "Channels…"
-msgstr "Kanali…"
+msgstr "Kanali …"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:30
 #, kde-format
 msgid "%1 channels"
-msgstr "%1 kanali"
+msgstr "Kanali %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:43
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr "%1 – %2"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:56
 #, kde-format
 msgid "Switch"
-msgstr "Preklop"
+msgstr "Preklopi"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:28
 #, kde-format
@@ -2452,7 +2453,7 @@ msgstr "Dovoljenja za %1"
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
 msgid "Snap"
-msgstr "Posnetek zaslona"
+msgstr "Snap"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:51
 #, kde-format
@@ -2460,13 +2461,13 @@ msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this computer. Install it anyway?"
 msgstr ""
-"Ta Snap aplikacija ni kompatibilna z varnostnim peskovnikom in bo imela "
-"polni dostop do tega računalnika. Naj jo kljub temu namestim?"
+"Ta program Snap ni združljiv z varnostnim peskovnikom in bo imel polni "
+"dostop do tega računalnika. Naj ga kljub temu namestim?"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr "SteamOS: Ni mogoča poizvedba na atomupd za posodobitve SteamOS..."
+msgstr "SteamOS: Ni mogoča poizvedba na atomupd za posodobitve SteamOS …"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
@@ -2477,7 +2478,7 @@ msgstr "SteamOS"
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
-msgstr "Izpiše vsa zaledja, ki bi jih želeli naložiti, ločena z vejico ','."
+msgstr "Izpiše vsa zaledja, ki bi jih želeli naložiti, ločena z vejico »,«."
 
 #: libdiscover/resources/AbstractResource.cpp:94
 #, kde-format
@@ -2497,7 +2498,7 @@ msgstr "Ima nadgradnjo"
 #: libdiscover/resources/AbstractResource.cpp:248
 #, kde-format
 msgid "Launch"
-msgstr "Poženi"
+msgstr "Zaženi"
 
 #: libdiscover/resources/AbstractResource.cpp:259
 #, kde-format
@@ -2597,7 +2598,7 @@ msgstr "Preklicano"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
-msgstr "Aplikacije"
+msgstr "Programi"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:134
 #, kde-format
