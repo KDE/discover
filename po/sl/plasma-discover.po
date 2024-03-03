@@ -3,13 +3,14 @@
 #
 # Andrej Mernik <andrejm@ubuntu.si>, 2012, 2013, 2014, 2015, 2016, 2017, 2018.
 # Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2024 Jure Repinc <jlp@holodeck1.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-20 02:23+0000\n"
-"PO-Revision-Date: 2023-12-20 07:22+0100\n"
-"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"PO-Revision-Date: 2024-03-01 23:46+0100\n"
+"Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #: discover/DiscoverObject.cpp:190
 #, kde-format
@@ -26,8 +27,8 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"%1 ni konfiguriran za nameščanje aplikacij prek programa Discover – samo za "
-"dodatke aplikacijam"
+"%1 ni nastavljen za nameščanje programov prek programa Discover – samo za "
+"dodatke programom"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -37,8 +38,8 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
-"Če želite uporabljati Discover za aplikacije, namestite želeni modul na "
-"strani <interface>Nastavitve</interface> pod <interface>Mankajoča zaledja</"
+"Če želite uporabljati Discover za programe, namestite želeni modul na strani "
+"<interface>Nastavitve</interface> pod <interface>Manjkajoča zaledja</"
 "interface>."
 
 #: discover/DiscoverObject.cpp:195
@@ -60,23 +61,23 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
-"Za uporabo programa Discover za aplikacije, namestite <link url='https://"
-"wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> or <link "
+"Za uporabo programa Discover za programe, namestite <link url='https://wiki."
+"archlinux.org/title/Flatpak#Installation'>Flatpak</link> ali <link "
 "url='https://wiki.archlinux.org/title/"
 "KDE#Discover_does_not_show_any_applications'>PackageKit</link> z uporabo "
-"upravljalnika <command>pacman</command>.<nl/><nl/> Pregled <link "
-"url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 paketov za "
+"upravljalnika <command>pacman</command>.<nl/><nl/> Poglejte <link "
+"url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 paketi za "
 "Discover</link>"
 
 #: discover/DiscoverObject.cpp:291
 #, kde-format
 msgid "Could not find category '%1'"
-msgstr "Ni bilo mogoče najti kategorije '%1'"
+msgstr "Ni bilo mogoče najti kategorije »%1«"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr "Poskus odpiranja neobstoječe datoteke '%1'"
+msgstr "Poskus odpiranja neobstoječe datoteke »%1«"
 
 #: discover/DiscoverObject.cpp:328
 #, kde-format
@@ -133,7 +134,7 @@ msgstr ""
 #: discover/main.cpp:33
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
-msgstr "Neposredno odpri podano aplikacijo prek spletnega naslova toka."
+msgstr "Neposredno odpri podani program prek URI-ja appstream://."
 
 #: discover/main.cpp:34
 #, kde-format
@@ -189,7 +190,7 @@ msgstr "Raziskovalnik po programih"
 #: discover/main.cpp:121
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2024 Razvojna ekipa Plasme"
+msgstr "© 2010–2024 Razvojna ekipa Plasme"
 
 #: discover/main.cpp:122
 #, kde-format
@@ -246,7 +247,7 @@ msgstr "Dodatki za %1"
 #: discover/qml/AddonsView.qml:56
 #, kde-format
 msgid "More…"
-msgstr "Več…"
+msgstr "Več …"
 
 #: discover/qml/AddonsView.qml:65
 #, kde-format
@@ -281,10 +282,10 @@ msgstr "Prekliči"
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
-msgstr[0] "%1 ocena"
-msgstr[1] "%1 oceni"
-msgstr[2] "%1 ocene"
-msgstr[3] "%1 ocen"
+msgstr[0] "%1 ocen"
+msgstr[1] "%1 ocena"
+msgstr[2] "%1 oceni"
+msgstr[3] "%1 ocene"
 
 #: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:224
@@ -303,7 +304,7 @@ msgstr "Iz %1"
 #: discover/qml/ApplicationPage.qml:84
 #, kde-format
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr "%1 – %2"
 
 #: discover/qml/ApplicationPage.qml:203
 #, kde-format
@@ -313,7 +314,7 @@ msgstr "Neznani avtor"
 #: discover/qml/ApplicationPage.qml:248
 #, kde-format
 msgid "Version:"
-msgstr "Verzija:"
+msgstr "Različica:"
 
 #: discover/qml/ApplicationPage.qml:260
 #, kde-format
@@ -324,10 +325,10 @@ msgstr "Velikost:"
 #, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "Licenca:"
-msgstr[1] "Licenci:"
-msgstr[2] "Licence:"
-msgstr[3] "Licenc:"
+msgstr[0] "Licence:"
+msgstr[1] "Licenca:"
+msgstr[2] "Licenci:"
+msgstr[3] "Licence:"
 
 #: discover/qml/ApplicationPage.qml:280
 #, kde-format
@@ -344,10 +345,10 @@ msgstr "Kaj to pomeni?"
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
-msgstr[0] "Poglejte več…"
-msgstr[1] "Poglejte več…"
-msgstr[2] "Poglejte več…"
-msgstr[3] "Poglejte več…"
+msgstr[0] "Poglejte več …"
+msgstr[1] "Poglejte več …"
+msgstr[2] "Poglejte več …"
+msgstr[3] "Poglejte več …"
 
 #: discover/qml/ApplicationPage.qml:334
 #, kde-format
@@ -363,7 +364,7 @@ msgstr "Starost: %1+"
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr "Poglejte podrobnosti…"
+msgstr "Poglejte podrobnosti …"
 
 #: discover/qml/ApplicationPage.qml:385
 #, kde-format
@@ -410,7 +411,7 @@ msgstr "Deli"
 #: discover/qml/ApplicationPage.qml:614
 #, kde-format
 msgid "Send a link for this application"
-msgstr "Pošlji povezavo za to aplikacijo"
+msgstr "Pošlji povezavo za ta program"
 
 #: discover/qml/ApplicationPage.qml:630
 #, kde-format
@@ -458,7 +459,7 @@ msgstr "Namestite ta program, zato da napišete mnenje"
 #: discover/qml/ApplicationPage.qml:748
 #, kde-format
 msgid "Get Involved"
-msgstr "Bodite vpleteni"
+msgstr "Prispevajte"
 
 #: discover/qml/ApplicationPage.qml:790
 #, kde-format
@@ -521,14 +522,14 @@ msgid ""
 "you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
-"Izvorna koda te aplikacije je delno ali v celoti zaprta za javni pregled in "
-"izboljšave. To pomeni, da tretje osebe in uporabniki kot ste vi ne more "
+"Izvorna koda tega programa je delno ali v celoti zaprta za javni pregled in "
+"izboljšave. To pomeni, da tretje osebe in uporabniki kot ste vi ne morejo "
 "preveriti delovanja, varnosti in zanesljivosti programa ali ga spremeniti in "
 "razširjati naprej brez dovoljenja avtorjev.<nl/><nl/>Uporaba je lahko "
-"popolnoma varna, lahko pa deluje tudi proti vam na različne načine - kot "
-"danabira osebne podatke, sledi vaši lokaciji ali posreduje vsebine datotek "
-"nekomu drugemu. Ne obstaja enostaven način, da se o tem prepričate, zato "
-"smete namestiti to aplikacijo, samo če popolnoma zaupate njenim avtorjem "
+"popolnoma varna, lahko pa deluje tudi proti vam na različne načine – na "
+"primer zbira osebne podatke, sledi vaši lokaciji ali posreduje vsebine "
+"datotek nekomu drugemu. Ne obstaja enostaven način, da se o tem prepričate, "
+"zato namestite ta program, samo če popolnoma zaupate njegovim avtorjem "
 "(<link url='%1'>%2</link>).<nl/><nl/>Več o tem se lahko poučite na <link "
 "url='%3'>%3</link>."
 
@@ -547,24 +548,24 @@ msgid ""
 "you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
-"Izvorna koda te aplikacije je delno ali v celoti zaprta za javni pregled in "
-"izboljšave. To pomeni, da tretje osebe in uporabniki, kot ste vi ne more "
+"Izvorna koda tega programa je delno ali v celoti zaprta za javni pregled in "
+"izboljšave. To pomeni, da tretje osebe in uporabniki kot ste vi ne morejo "
 "preveriti delovanja, varnosti in zanesljivosti programa ali ga spremeniti in "
 "razširjati naprej brez dovoljenja avtorjev.<nl/><nl/>Uporaba je lahko "
-"popolnoma varna, lahko pa deluje tudi proti vam na različne načine - kot "
-"danabira osebne podatke, sledi vaši lokaciji ali posreduje vsebine datotek "
-"nekomu drugemu. Ne obstaja enostaven način, da se o tem prepričate, zato "
-"smete namestiti to aplikacijo, samo če popolnoma zaupate njenim avtorjem "
-"(%1).<nl/><nl/>Več o tem se lahko poučite na <link url='%2'>%2</link>."
+"popolnoma varna, lahko pa deluje tudi proti vam na različne načine – na "
+"primer zbira osebne podatke, sledi vaši lokaciji ali posreduje vsebine "
+"datotek nekomu drugemu. Ne obstaja enostaven način, da se o tem prepričate, "
+"zato namestite ta program, samo če popolnoma zaupate njegovim avtorjem (%1)."
+"<nl/><nl/>Več o tem se lahko poučite na <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Iskanje: %2 - %3 element"
-msgstr[1] "Iskanje: %2 - %3 elementa"
-msgstr[2] "Iskanje: %2 - %3 elementi"
-msgstr[3] "Iskanje: %2 - %3 elementov"
+msgstr[0] "Iskanje: %2 – %3 elementov"
+msgstr[1] "Iskanje: %2 – %3 element"
+msgstr[2] "Iskanje: %2 – %3 elementa"
+msgstr[3] "Iskanje: %2 – %3 elementi"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -575,19 +576,19 @@ msgstr "Poišči: %1"
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%2 - %1 element"
-msgstr[1] "%2 - %1 elementa"
-msgstr[2] "%2 - %1 elementi"
-msgstr[3] "%2 - %1 elementov"
+msgstr[0] "%2 – %1 elementov"
+msgstr[1] "%2 – %1 element"
+msgstr[2] "%2 – %1 elementa"
+msgstr[3] "%2 – %1 elementi"
 
 #: discover/qml/ApplicationsListPage.qml:65
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Iskanje - %1 element"
-msgstr[1] "Iskanje - %1 elementa"
-msgstr[2] "Iskanje - %1 elementi"
-msgstr[3] "Iskanje - %1 elementov"
+msgstr[0] "Iskanje – %1 elementov"
+msgstr[1] "Iskanje – %1 element"
+msgstr[2] "Iskanje – %1 elementa"
+msgstr[3] "Iskanje – %1 elementi"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:254
@@ -641,7 +642,7 @@ msgstr "Išči po vseh kategorijah"
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
-msgstr "Išči po spletu za \"%1\""
+msgstr "Poišči »%1« na spletu"
 
 #: discover/qml/ApplicationsListPage.qml:222
 #, kde-format
@@ -657,13 +658,13 @@ msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr "\"%1\" ni bil najden v kategoriji \"%2\""
+msgstr "»%1« ni bil najden v kategoriji »%2«"
 
 #: discover/qml/ApplicationsListPage.qml:235
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
-msgstr "\"%1\" ni bil najden v razpoložljivih virih"
+msgstr "»%1« ni bil najden v razpoložljivih virih"
 
 #: discover/qml/ApplicationsListPage.qml:236
 #, kde-format
@@ -673,14 +674,14 @@ msgid ""
 "been reviewed by your distributor for functionality or stability. Use with "
 "caution."
 msgstr ""
-"\"%1\" je morda na voljo na spletu. Programje pridobljeno na spletu ni bilo "
-"pregledano s stani vašega distributerja glede funkcionalnosti ali "
+"»%1« je morda na voljo na spletu. Programje pridobljeno s spleta ni bilo "
+"pregledano s strani vašega distributerja glede funkcionalnosti ali "
 "stabilnosti. Uporabljajte ga pazljivo."
 
 #: discover/qml/ApplicationsListPage.qml:269
 #, kde-format
 msgid "Still looking…"
-msgstr "Iskanje poteka…"
+msgstr "Iskanje še poteka …"
 
 #: discover/qml/BrowsingPage.qml:20
 #, kde-format
@@ -691,7 +692,7 @@ msgstr "Dom"
 #: discover/qml/BrowsingPage.qml:64
 #, kde-format
 msgid "Unable to load applications"
-msgstr "Ni mogoče naložiti aplikacij"
+msgstr "Ni mogoče naložiti programov"
 
 #: discover/qml/BrowsingPage.qml:99
 #, kde-format
@@ -795,16 +796,16 @@ msgstr "Nameščeno"
 #: discover/qml/DiscoverWindow.qml:87
 #, kde-format
 msgid "Fetching &updates…"
-msgstr "Pridobivanje posodobitev…"
+msgstr "Pridobivanje &posodobitev …"
 
 #: discover/qml/DiscoverWindow.qml:87
 #, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
-msgstr[0] "Posodobitev (%1)"
-msgstr[1] "Posodobitvi (%1)"
-msgstr[2] "Posodobitve (%1)"
-msgstr[3] "Posodobitev (%1)"
+msgstr[0] "Posodobitve (%1)"
+msgstr[1] "Posodobitev (%1)"
+msgstr[2] "Posodobitvi (%1)"
+msgstr[3] "Posodobitve (%1)"
 
 #: discover/qml/DiscoverWindow.qml:95
 #, kde-format
@@ -870,13 +871,13 @@ msgid ""
 "Sends anonymized usage information to KDE so we can better understand our "
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
-"KDE pošlje anonimizirane podatke o uporabi, da bi lažje razumeli naše "
+"Pošlje anonimizirane podatke o uporabi KDE-ju, da bi lažje razumeli naše "
 "uporabnike. Za več informacij glejte https://kde.org/privacypolicy-apps.php."
 
 #: discover/qml/Feedback.qml:19
 #, kde-format
 msgid "Submitting usage information…"
-msgstr "Pošiljam podatke o uporabi…"
+msgstr "Pošiljanje podatkov o uporabi …"
 
 #: discover/qml/Feedback.qml:19
 #, kde-format
@@ -886,12 +887,12 @@ msgstr "Nastavi"
 #: discover/qml/Feedback.qml:23
 #, kde-format
 msgid "Configure feedback…"
-msgstr "Nastavi povratne informacije…"
+msgstr "Nastavi povratne informacije …"
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
 #, kde-format
 msgid "Configure Updates…"
-msgstr "Nastavi posodobitve…"
+msgstr "Nastavi posodobitve …"
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
@@ -905,7 +906,7 @@ msgstr ""
 #: discover/qml/Feedback.qml:58
 #, kde-format
 msgid "Contribute…"
-msgstr "Prispevaj…"
+msgstr "Prispevaj …"
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
@@ -915,13 +916,13 @@ msgstr "Pričakujemo vaše povratne informacije!"
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "Participate…"
-msgstr "Sodeluj…"
+msgstr "Sodeluj …"
 
 #: discover/qml/InstallApplicationButton.qml:24
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
-msgstr "Nalaganje…"
+msgstr "Nalaganje …"
 
 #: discover/qml/InstallApplicationButton.qml:28
 #, kde-format
@@ -948,12 +949,12 @@ msgstr "Nameščeno"
 #: discover/qml/Navigation.qml:34
 #, kde-format
 msgid "Resources for '%1'"
-msgstr "Viri za '%1'"
+msgstr "Viri za »%1«"
 
 #: discover/qml/ProgressView.qml:18
 #, kde-format
 msgid "Tasks (%1%)"
-msgstr "Opravila (%1%)"
+msgstr "Opravila (%1 %)"
 
 #: discover/qml/ProgressView.qml:18 discover/qml/ProgressView.qml:45
 #, kde-format
@@ -964,19 +965,19 @@ msgstr "Opravila"
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
-msgstr "%1 - %2: %3, %4 ostanek"
+msgstr "%1 – %2: %3, še %4"
 
 #: discover/qml/ProgressView.qml:121
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
-msgstr "%1 - %2: %3"
+msgstr "%1 – %2: %3"
 
 #: discover/qml/ProgressView.qml:128
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr "%1 – %2"
 
 #: discover/qml/ReviewDelegate.qml:65
 #, kde-format
@@ -996,12 +997,12 @@ msgstr "Opomba od %1"
 #: discover/qml/ReviewDelegate.qml:84
 #, kde-format
 msgid "Version: %1"
-msgstr "Verzija: %1"
+msgstr "Različica: %1"
 
 #: discover/qml/ReviewDelegate.qml:84
 #, kde-format
 msgid "Version: unknown"
-msgstr "Verzija: neznana"
+msgstr "Različica: neznana"
 
 #: discover/qml/ReviewDelegate.qml:100
 #, kde-format
@@ -1068,7 +1069,7 @@ msgstr "Napiši mnenje"
 #: discover/qml/ReviewDialog.qml:82
 #, kde-format
 msgid "Keep writing…"
-msgstr "Nadaljuj pisanje…"
+msgstr "Nadaljujte s pisanjem …"
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-format
@@ -1089,7 +1090,7 @@ msgstr "Ocene za %1"
 #: discover/qml/ReviewsPage.qml:62
 #, kde-format
 msgid "Write a Review…"
-msgstr "Napiši mnenje…"
+msgstr "Napiši mnenje …"
 
 #: discover/qml/ReviewsPage.qml:74
 #, kde-format
@@ -1146,12 +1147,12 @@ msgstr "«"
 #: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search…"
-msgstr "Iskanje…"
+msgstr "Iskanje …"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search in '%1'…"
-msgstr "Išči v '%1'…"
+msgstr "Poišči v »%1« …"
 
 #: discover/qml/SourcesPage.qml:18
 #, kde-format
@@ -1166,7 +1167,7 @@ msgstr "Privzeti viri"
 #: discover/qml/SourcesPage.qml:118
 #, kde-format
 msgid "Add Source…"
-msgstr "Dodaj vir…"
+msgstr "Dodaj vir …"
 
 #: discover/qml/SourcesPage.qml:145
 #, kde-format
@@ -1181,7 +1182,7 @@ msgstr "Povečaj prednost"
 #: discover/qml/SourcesPage.qml:254
 #, kde-format
 msgid "Failed to increase '%1' preference"
-msgstr "Nastavitve '%1' ni bilo mogoče povečati"
+msgstr "Nastavitve »%1« ni bilo mogoče povečati"
 
 #: discover/qml/SourcesPage.qml:260
 #, kde-format
@@ -1191,7 +1192,7 @@ msgstr "Zmanjšaj prednost"
 #: discover/qml/SourcesPage.qml:266
 #, kde-format
 msgid "Failed to decrease '%1' preference"
-msgstr "Nastavitve '%1' ni bilo mogoče zmanjšati"
+msgstr "Nastavitve »%1« ni bilo mogoče zmanjšati"
 
 #: discover/qml/SourcesPage.qml:272
 #, kde-format
@@ -1325,13 +1326,13 @@ msgstr "%1 (%2)"
 #: discover/qml/UpdatesPage.qml:463
 #, kde-format
 msgid "More Information…"
-msgstr "Več informacij…"
+msgstr "Več informacij …"
 
 #: discover/qml/UpdatesPage.qml:491
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
-msgstr "Pridobivanje posodobitev…"
+msgstr "Pridobivanje posodobitev …"
 
 #: discover/qml/UpdatesPage.qml:504
 #, kde-format
