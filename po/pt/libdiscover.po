@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-02 00:38+0000\n"
+"POT-Creation-Date: 2024-03-04 00:38+0000\n"
 "PO-Revision-Date: 2023-01-09 18:43+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -542,23 +542,23 @@ msgstr "%1 (utilizador)"
 msgid "Local bundle"
 msgstr "Grupo local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1750
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1792
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL do AppStream inválido '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1854
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Não foi possível adicionar a fonte '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1975
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2017
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Não existem fontes de Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1979
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2021
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Não foi possível carregar a fonte \"%1\""
@@ -947,7 +947,7 @@ msgstr "Indique um URI do repositório Flatpak (*.flatpakrepo):"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "A adicionar o repositório remoto '%1' em %2 de %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:197
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:200
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""

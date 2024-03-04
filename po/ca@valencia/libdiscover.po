@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-02 00:38+0000\n"
+"POT-Creation-Date: 2024-03-04 00:38+0000\n"
 "PO-Revision-Date: 2024-01-10 11:23+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -541,23 +541,23 @@ msgstr "%1 (usuari)"
 msgid "Local bundle"
 msgstr "Paquet local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1750
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1792
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL d'«appstream» amb format incorrecte «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1854
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "No s'ha pogut afegir la font «%1»: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1975
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2017
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "No hi ha cap font de Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1979
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2021
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "No s'ha pogut carregar la font «%1»"
@@ -938,7 +938,7 @@ msgstr "Introduïu l'URI d'un repositori Flatpak (*.flatpakrepo):"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "S'afig el remot «%1» a %2 des de %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:197
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:200
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "No s'ha pogut trobar «%1» a «%2»; assegureu-vos que està disponible."

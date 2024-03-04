@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-02 00:38+0000\n"
+"POT-Creation-Date: 2024-03-04 00:38+0000\n"
 "PO-Revision-Date: 2024-01-27 20:41+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -544,23 +544,23 @@ msgstr "%1 (使用者)"
 msgid "Local bundle"
 msgstr "本機 Bundle"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1750
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1792
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正確的 appstream 網址 '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1854
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "新增來源「%1」失敗：%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1975
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2017
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "沒有 Flatpak 來源。"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1979
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2021
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "載入來源「%1」失敗"
@@ -905,7 +905,7 @@ msgstr "輸入 Flatpak 軟體庫連結 URI (*.flatpakrepo)："
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "正在增加來自 %3 的 %2 中「%1」遠端位置"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:197
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:200
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "在 '%2' 中找不到 '%1'；請確定它真的存在。"

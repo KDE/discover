@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-02 00:38+0000\n"
+"POT-Creation-Date: 2024-03-04 00:38+0000\n"
 "PO-Revision-Date: 2024-01-10 22:35+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -540,23 +540,23 @@ msgstr "%1 (משתמש)"
 msgid "Local bundle"
 msgstr "מאגד מקומי"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1750
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1792
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "כתובת appstream‏ ‚%1’ משובשת"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1854
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "הוספת המקור ‚%1’ נכשלה: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1975
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2017
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "אין מקורות Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1979
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2021
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "טעינת המקור „%1” נכשלה"
@@ -913,7 +913,7 @@ msgstr "נא למלא כתובת מאגר Flatpak מלאה (‎*.flatpakrepo):"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "נוסף המקור המרוחק ‚%1’ ב־%2 מתוך %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:197
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:200
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "לא ניתן למצוא את ‚%1’ בתוך ‚%2’, נא לוודא שהוא זמין."
