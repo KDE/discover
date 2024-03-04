@@ -361,6 +361,7 @@ void PackageKitBackend::reloadPackageList()
         }
     });
     fw->setFuture(QtConcurrent::run(&m_threadPool, &loadAppStream, m_appdata.get()));
+    fw->future().waitForFinished();
 }
 
 AppPackageKitResource *PackageKitBackend::addComponent(const AppStream::Component &component) const
