@@ -58,14 +58,14 @@ DiscoverPage {
         anchors.centerIn: parent
         width: parent.width - (Kirigami.Units.largeSpacing * 4)
         sourceComponent: Kirigami.PlaceholderMessage {
-            readonly property Discover.InlineMessage helpfulError: featuredModel.currentApplicationBackend.explainDysfunction()
+            readonly property Discover.InlineMessage helpfulError: featuredModel.currentApplicationBackend?.explainDysfunction() ?? null
 
-            icon.name: helpfulError.iconName
+            icon.name: helpfulError?.iconName ?? ""
             text: i18n("Unable to load applications")
-            explanation: helpfulError.message
+            explanation: helpfulError?.message ?? ""
 
             Repeater {
-                model: helpfulError.actions
+                model: helpfulError?.actions ?? null
                 delegate: QQC2.Button {
                     id: delegate
 
@@ -133,11 +133,15 @@ DiscoverPage {
             id: recentlyUpdatedModelInstantiator
 
             active: {
+                const backend = Discover.ResourcesModel.currentApplicationBackend;
+                if (!backend) {
+                    return [];
+                }
                 // TODO: Add packagekit-backend of rolling distros
                 return [
                     "flatpak-backend",
                     "snap-backend",
-                ].includes(Discover.ResourcesModel.currentApplicationBackend.name);
+                ].includes(backend.name);
             }
 
             DiscoverApp.PaginateModel {
