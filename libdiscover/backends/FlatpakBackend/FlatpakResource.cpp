@@ -167,7 +167,6 @@ void FlatpakResource::updateFromRef(FlatpakRef *ref)
     setFlatpakName(QString::fromUtf8(flatpak_ref_get_name(ref)));
     setType(flatpak_ref_get_kind(ref) == FLATPAK_REF_KIND_APP ? DesktopApp : extends().isEmpty() ? Runtime : Extension);
     setObjectName(packageName());
-    qDebug() << "doing..." << packageName() << flatpak_ref_get_collection_id(ref) << this << ref;
 }
 
 void FlatpakResource::updateFromAppStream()
