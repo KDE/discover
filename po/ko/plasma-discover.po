@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-27 00:38+0000\n"
+"POT-Creation-Date: 2024-03-07 00:38+0000\n"
 "PO-Revision-Date: 2024-02-09 20:11+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -679,25 +679,25 @@ msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "새로 게시됨 및 최근 업데이트됨"
 
-#: discover/qml/BrowsingPage.qml:160
+#: discover/qml/BrowsingPage.qml:164
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "편집자의 선택"
 
-#: discover/qml/BrowsingPage.qml:177
+#: discover/qml/BrowsingPage.qml:181
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "별점이 높은 게임"
 
-#: discover/qml/BrowsingPage.qml:197 discover/qml/BrowsingPage.qml:228
+#: discover/qml/BrowsingPage.qml:201 discover/qml/BrowsingPage.qml:232
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "더 보기"
 
-#: discover/qml/BrowsingPage.qml:208
+#: discover/qml/BrowsingPage.qml:212
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

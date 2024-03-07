@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-27 00:38+0000\n"
+"POT-Creation-Date: 2024-03-07 00:38+0000\n"
 "PO-Revision-Date: 2023-12-20 21:19+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -693,25 +693,25 @@ msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "חדשים שפורסמו ואחרונים שעודכנו"
 
-#: discover/qml/BrowsingPage.qml:160
+#: discover/qml/BrowsingPage.qml:164
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "בחירת העורך"
 
-#: discover/qml/BrowsingPage.qml:177
+#: discover/qml/BrowsingPage.qml:181
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "המשחקים בדירוג העליון"
 
-#: discover/qml/BrowsingPage.qml:197 discover/qml/BrowsingPage.qml:228
+#: discover/qml/BrowsingPage.qml:201 discover/qml/BrowsingPage.qml:232
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "להציג עוד"
 
-#: discover/qml/BrowsingPage.qml:208
+#: discover/qml/BrowsingPage.qml:212
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
