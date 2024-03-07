@@ -1513,40 +1513,44 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
             return [](FlatpakBackend *self, ResultsStream *stream) -> QCoro::Task<> {
                 FLATPAK_BACKEND_GUARD
 
-                const auto ret = co_await QtConcurrent::run(&self->m_threadPool, [cancellable, installations = self->m_installations] {
-                    QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
-                    if (g_cancellable_is_cancelled(cancellable)) {
-                        qWarning() << "Job cancelled";
-                        return ret;
-                    }
-
-                    for (auto installation : std::as_const(installations)) {
-                        g_autoptr(GError) localError = nullptr;
-                        g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_for_update(installation, cancellable, &localError);
-                        if (!refs) {
-                            qWarning() << "Failed to get list of installed refs for listing updates:" << localError->message;
-                            continue;
-                        }
+                const auto ret = co_await QtConcurrent::run(
+                    &self->m_threadPool,
+                    [](GCancellable *cancellable, QVector<FlatpakInstallation *> installations) {
+                        QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
                         if (g_cancellable_is_cancelled(cancellable)) {
                             qWarning() << "Job cancelled";
-                            ret.clear();
-                            break;
+                            return ret;
                         }
 
-                        if (refs->len == 0) {
-                            continue;
-                        }
+                        for (auto installation : std::as_const(installations)) {
+                            g_autoptr(GError) localError = nullptr;
+                            g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_for_update(installation, cancellable, &localError);
+                            if (!refs) {
+                                qWarning() << "Failed to get list of installed refs for listing updates:" << localError->message;
+                                continue;
+                            }
+                            if (g_cancellable_is_cancelled(cancellable)) {
+                                qWarning() << "Job cancelled";
+                                ret.clear();
+                                break;
+                            }
 
-                        auto &current = ret[installation];
-                        current.reserve(refs->len);
-                        for (uint i = 0; i < refs->len; i++) {
-                            FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
-                            g_object_ref(ref);
-                            current.append(ref);
+                            if (refs->len == 0) {
+                                continue;
+                            }
+
+                            auto &current = ret[installation];
+                            current.reserve(refs->len);
+                            for (uint i = 0; i < refs->len; i++) {
+                                FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+                                g_object_ref(ref);
+                                current.append(ref);
+                            }
                         }
-                    }
-                    return ret;
-                });
+                        return ret;
+                    },
+                    cancellable,
+                    self->m_installations);
 
                 FLATPAK_BACKEND_CHECK
 
