@@ -1513,7 +1513,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
             return [](FlatpakBackend *self, ResultsStream *stream) -> QCoro::Task<> {
                 FLATPAK_BACKEND_GUARD
 
-                const auto ret = co_await QtConcurrent::run(&self->m_threadPool, [cancellable, installations = self->m_installations] {
+                const auto ret = co_await QtConcurrent::run(&self->m_threadPool, [] (GCancellable *cancellable, QList<FlatpakInstallation *> installations){
                     QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
                     if (g_cancellable_is_cancelled(cancellable)) {
                         qWarning() << "Job cancelled";
@@ -1546,7 +1546,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                         }
                     }
                     return ret;
-                });
+                }, cancellable, self->m_installations);
 
                 FLATPAK_BACKEND_CHECK
 
