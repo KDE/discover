@@ -64,12 +64,12 @@ void processArgs(QCommandLineParser *parser, DiscoverObject *discoverObject)
     }
 
     if (parser->isSet(QStringLiteral("local-filename"))) {
-        discoverObject->openLocalPackage(QUrl::fromUserInput(parser->value(QStringLiteral("local-filename")), {}, QUrl::AssumeLocalFile));
+        discoverObject->openLocalPackage(QUrl::fromUserInput(parser->value(QStringLiteral("local-filename")), QDir::currentPath(), QUrl::AssumeLocalFile));
     }
 
     const auto positionalArguments = parser->positionalArguments();
     for (const QString &arg : positionalArguments) {
-        const QUrl url = QUrl::fromUserInput(arg, {}, QUrl::AssumeLocalFile);
+        const QUrl url = QUrl::fromUserInput(arg, QDir::currentPath(), QUrl::AssumeLocalFile);
         if (url.isLocalFile()) {
             discoverObject->openLocalPackage(url);
         } else if (url.scheme() == QLatin1String("apt")) {
