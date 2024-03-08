@@ -636,16 +636,6 @@ bool ResourcesProxyModel::isSorted(const QVector<StreamResult> &results)
 
 void ResourcesProxyModel::sortedInsertion(const QVector<StreamResult> &results)
 {
-    {
-        QSet<AbstractResource *> r;
-        for (auto rr : results) {
-            if (!r.contains(rr.resource)) {
-                r.insert(rr.resource);
-            } else {
-                qDebug() << "fuuuuuuuuck" << rr.resource << rr.resource->name() << rr.sortScore;
-            }
-        }
-    }
     Q_ASSERT(results.size() == QSet(results.constBegin(), results.constEnd()).size());
 
     auto resultsCopy = results;
