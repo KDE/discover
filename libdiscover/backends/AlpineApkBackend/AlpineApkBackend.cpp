@@ -47,6 +47,8 @@
 #include <QThreadPool>
 #include <QTimer>
 
+#include <utility>
+
 DISCOVER_BACKEND_PLUGIN(AlpineApkBackend)
 
 AlpineApkBackend::AlpineApkBackend(QObject *parent)
@@ -54,6 +56,7 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
     , m_updater(new AlpineApkUpdater(this))
     , m_reviews(new AlpineApkReviewsBackend(this))
     , m_updatesTimeoutTimer(new QTimer(this))
+    , m_appStreamComponents(AppStream::ComponentBox::Flag::FlagNone)
 {
 #ifndef QT_DEBUG
     const_cast<QLoggingCategory &>(LOG_ALPINEAPK()).setEnabled(QtDebugMsg, false);
@@ -77,8 +80,9 @@ AlpineApkBackend::AlpineApkBackend(QObject *parent)
     // load packages data in a separate thread; it takes a noticeable amount of time
     //     and this way UI is not blocked here
     m_fetching = true; // we are busy!
-    QFuture<void> loadResFuture = QtConcurrent::run(QThreadPool::globalInstance(), this,
-                                                    &AlpineApkBackend::loadResources);
+    QFuture<void> loadResFuture = QtConcurrent::run([this]() {
+        this->loadResources();
+    });
 
     QObject::connect(&m_voidFutureWatcher, &QFutureWatcher<void>::finished,
                      this, &AlpineApkBackend::onLoadResourcesFinished);
@@ -93,10 +97,11 @@ void AlpineApkBackend::loadAppStreamComponents()
     AppStream::Pool *appStreamPool = new AppStream::Pool();
 #if ASQ_CHECK_VERSION(0, 15, 0)
     // use newer API and flags available only since 0.15.0
-    appStreamPool->setFlags(AppStream::Pool::FlagLoadOsCollection | AppStream::Pool::FlagLoadOsMetainfo | AppStream::Pool::FlagLoadOsDesktopFiles);
+    appStreamPool->setFlags(AppStream::Pool::Flags(AppStream::Pool::Flag::FlagLoadOsCatalog | AppStream::Pool::Flag::FlagLoadOsDesktopFiles
+                                                   | AppStream::Pool::Flag::FlagLoadOsMetainfo));
 
     // AS_FORMAT_STYLE_COLLECTION - Parse AppStream metadata collections (shipped by software distributors)
-    appStreamPool->addExtraDataLocation(AppstreamDataDownloader::appStreamCacheDir(), AppStream::Metadata::FormatStyleCollection);
+    appStreamPool->addExtraDataLocation(AppstreamDataDownloader::appStreamCacheDir(), AppStream::Metadata::FormatStyleCatalog);
 #else
     appStreamPool->setFlags(AppStream::Pool::FlagReadCollection |
                             AppStream::Pool::FlagReadMetainfo |
@@ -134,12 +139,10 @@ void AlpineApkBackend::loadAppStreamComponents()
 void AlpineApkBackend::parseAppStreamMetadata()
 {
     if (m_availablePackages.size() > 0) {
-
-        for (const QtApk::Package &pkg: qAsConst(m_availablePackages)) {
-
+        for (const QtApk::Package &pkg : std::as_const(m_availablePackages)) {
             // try to find appstream data for this package
             AppStream::Component appstreamComponent;
-            for (const auto& appsC : qAsConst(m_appStreamComponents)) {
+            for (const auto &appsC : std::as_const(m_appStreamComponents)) {
                 // find result which package name is exactly the one we want
                 if (appsC.packageNames().contains(pkg.name)) {
                     // workaround for kate (Kate Sessions is found first, but
@@ -215,7 +218,7 @@ void AlpineApkBackend::reloadAppStreamMetadata()
 {
     // mark us as "Loading..."
     m_fetching = true;
-    emit fetchingChanged();
+    Q_EMIT fetchingChanged();
 
     loadAppStreamComponents();
     parseAppStreamMetadata();
@@ -223,7 +226,7 @@ void AlpineApkBackend::reloadAppStreamMetadata()
 
     // mark us as "done loading"
     m_fetching = false;
-    emit fetchingChanged();
+    Q_EMIT fetchingChanged();
 }
 
 // this function is executed in the background thread
@@ -270,7 +273,7 @@ void AlpineApkBackend::onLoadResourcesFinished()
     qCDebug(LOG_ALPINEAPK) << "backend: resources loaded.";
 
     m_fetching = false;
-    emit fetchingChanged();
+    Q_EMIT fetchingChanged();
     // ^^ this causes the UI to update "Featured" page and show
     //    to user that we actually have loaded packages data
 
@@ -351,11 +354,11 @@ int AlpineApkBackend::updatesCount() const
 
 ResultsStream *AlpineApkBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
-    QVector<AbstractResource*> ret;
+    QVector<StreamResult> ret;
     if (!filter.resourceUrl.isEmpty()) {
         return findResourceByPackageName(filter.resourceUrl);
     } else {
-        for (AbstractResource *resource: qAsConst(m_resources)) {
+        for (AbstractResource *resource : std::as_const(m_resources)) {
             // skip technical package types (not apps/addons)
             //      that are not upgradeable
             //  (does not work because for now all Alpine packages are "technical"
@@ -473,8 +476,8 @@ void AlpineApkBackend::checkForUpdates()
     // update UI
     m_fetching = true;
     m_fetchProgress = 0;
-    emit fetchingChanged();
-    emit fetchingUpdatesProgressChanged();
+    Q_EMIT fetchingChanged();
+    Q_EMIT fetchingUpdatesProgressChanged();
 }
 
 void AlpineApkBackend::finishCheckForUpdates()
@@ -482,8 +485,8 @@ void AlpineApkBackend::finishCheckForUpdates()
     m_updatesTimeoutTimer->stop(); // stop safety timer
     // update UI
     m_fetching = false;
-    emit fetchingChanged();
-    emit fetchingUpdatesProgressChanged();
+    Q_EMIT fetchingChanged();
+    Q_EMIT fetchingUpdatesProgressChanged();
 }
 
 QString AlpineApkBackend::displayName() const
@@ -499,7 +502,7 @@ bool AlpineApkBackend::hasApplications() const
 void AlpineApkBackend::setFetchingUpdatesProgress(int percent)
 {
     m_fetchProgress = percent;
-    emit fetchingUpdatesProgressChanged();
+    Q_EMIT fetchingUpdatesProgressChanged();
 }
 
 // needed because DISCOVER_BACKEND_PLUGIN(AlpineApkBackend) contains Q_OBJECT

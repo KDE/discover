@@ -31,6 +31,7 @@
 
 #include <QtApk>
 
+#include <utility>
 
 AlpineApkUpdater::AlpineApkUpdater(AbstractResourcesBackend *parent)
     : AbstractBackendUpdater(parent)
@@ -49,12 +50,12 @@ void AlpineApkUpdater::prepare()
 
     // readonly is fine for a simulation of upgrade
     if (!db->open(QtApk::QTAPK_OPENF_READONLY)) {
-        emit passiveMessage(i18n("Failed to open APK database!"));
+        Q_EMIT passiveMessage(i18n("Failed to open APK database!"));
         return;
     }
 
     if (!db->upgrade(QtApk::QTAPK_UPGRADE_SIMULATE, &m_upgradeable)) {
-        emit passiveMessage(i18n("Failed to get a list of packages to upgrade!"));
+        Q_EMIT passiveMessage(i18n("Failed to get a list of packages to upgrade!"));
         db->close();
         return;
     }
@@ -67,7 +68,7 @@ void AlpineApkUpdater::prepare()
     m_allUpdateable.clear();
     m_markedToUpdate.clear();
     QHash<QString, AlpineApkResource *> *resources = m_backend->resourcesPtr();
-    for (const QtApk::ChangesetItem &it : qAsConst(m_upgradeable.changes())) {
+    for (const QtApk::ChangesetItem &it : std::as_const(m_upgradeable.changes())) {
         const QtApk::Package &oldPkg = it.oldPackage;
         const QString newVersion = it.newPackage.version;
         AlpineApkResource *res = resources->value(oldPkg.name);

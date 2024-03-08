@@ -1,5 +1,5 @@
-find_package(KF5Auth CONFIG REQUIRED)  # Probably should be moved to top CMakeLists
-find_package(KF5JobWidgets CONFIG REQUIRED)
+find_package(KF6Auth CONFIG REQUIRED)  # Probably should be moved to top CMakeLists
+find_package(KF6JobWidgets CONFIG REQUIRED)
 
 set(alpineapkbackend_SRCS
     AlpineApkAuthActionFactory.h
@@ -37,14 +37,14 @@ add_library(
 target_link_libraries(
     alpineapk-backend
     PRIVATE
-        Qt5::Core
-        Qt5::Widgets
-        Qt5::Concurrent
-        KF5::AuthCore
-        KF5::ConfigCore
-        KF5::CoreAddons
-        KF5::JobWidgets
-        KF5::KIOCore
+        Qt::Core
+        Qt::Widgets
+        Qt::Concurrent
+        KF6::AuthCore
+        KF6::ConfigCore
+        KF6::CoreAddons
+        KF6::JobWidgets
+        KF6::KIOCore
         Discover::Common
         ApkQt::ApkQt
         AppStreamQt
@@ -61,8 +61,8 @@ set_source_files_properties(
     PROPERTIES HEADER_FILE_ONLY ON
 )
 target_link_libraries(alpineapk_kauth_helper
-    Qt5::Core
-    KF5::AuthCore
+    Qt::Core
+    KF6::AuthCore
     ApkQt::ApkQt
 )
 
@@ -71,7 +71,7 @@ kauth_install_helper_files(alpineapk_kauth_helper org.kde.discover.alpineapkback
 
 install(
     TARGETS alpineapk-backend
-    DESTINATION ${PLUGIN_INSTALL_DIR}/discover
+    DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover
 )
 
 install(

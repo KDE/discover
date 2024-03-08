@@ -28,7 +28,7 @@
 
 #include <QtApk>
 
-#include <AppStreamQt/component.h>
+#include <AppStreamQt/component-box.h>
 
 class AlpineApkReviewsBackend;
 class AlpineApkUpdater;
@@ -90,7 +90,7 @@ private:
     bool m_fetching = false;
     int m_fetchProgress = 0;
     QTimer *m_updatesTimeoutTimer;
-    QList<AppStream::Component> m_appStreamComponents;
+    AppStream::ComponentBox m_appStreamComponents;
     // QVector<QString> m_collectedCategories;
     QFutureWatcher<void> m_voidFutureWatcher;
     AppstreamDataDownloader *m_appstreamDownloader;

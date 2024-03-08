@@ -33,6 +33,8 @@
 #include <KIO/TransferJob>
 #include <KUiServerJobTracker>
 
+#include <utility>
+
 #include "AppstreamDataDownloader.h"
 #include "alpineapk_backend_logging.h"
 
@@ -215,7 +217,7 @@ void AppstreamDataDownloader::start()
     const QString discoverVersion(QStringLiteral("plasma-discover %1").arg(DiscoverVersion::version));
 
     m_jobs.clear();
-    for (const QString &sUrl : qAsConst(m_urlsToDownload)) {
+    for (const QString &sUrl : std::as_const(m_urlsToDownload)) {
         const QUrl url(sUrl, QUrl::TolerantMode);
         KIO::TransferJob *job = KIO::get(url, KIO::LoadType::Reload, KIO::JobFlag::HideProgressInfo);
         job->addMetaData(QLatin1String("UserAgent"), discoverVersion);
