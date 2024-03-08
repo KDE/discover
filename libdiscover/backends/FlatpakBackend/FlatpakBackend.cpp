@@ -598,6 +598,17 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
     auto x = qScopeGuard([stream] {
         stream->finish();
     });
+
+    if (m_localSource) {
+        const auto it = std::ranges::find_if(m_localSource->m_resources, [url](auto resource) {
+            return resource->url() == url;
+        });
+        if (it != m_localSource->m_resources.end()) {
+            Q_EMIT stream->resourcesFound({it.value()});
+            return;
+        }
+    }
+
     g_autoptr(GBytes) appstreamGz = nullptr;
     g_autoptr(GError) localError = nullptr;
     g_autoptr(GFile) file = nullptr;
