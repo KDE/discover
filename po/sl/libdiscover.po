@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-15 02:21+0000\n"
+"POT-Creation-Date: 2024-03-09 02:28+0000\n"
 "PO-Revision-Date: 2024-03-01 23:48+0100\n"
 "Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1021,32 +1021,32 @@ msgstr ""
 "Nepodprto vprašanje:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:156
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:164
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Proces v ozadju %1 je trajal predolgo za pripravo"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:223
 #, kde-format
 msgid "Applications"
 msgstr "Programi"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:261
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:269
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Dodatki za Plasmo"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:261
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:269
 #, kde-format
 msgid "Application Addons"
 msgstr "Dodatki za programe"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:349
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:357
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Omrežna napaka v ozadnjem programu %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:364
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1055,14 +1055,14 @@ msgstr ""
 "Preveč zahtev poslanih strežniku za programe v ozadju %1. Poskusite znova "
 "čez nekaj minut."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:359
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:365
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:370
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:373
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Neveljavno zaledje %1. Stopite v stik z vašimi skrbniki distribucije."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:389
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:397
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1075,23 +1075,23 @@ msgstr ""
 "napaka je bila:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:407
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Posnetka zaslona za vnos %1 ni bilo mogoče pridobiti v zaledju %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:403
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:411
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Neobdelana napaka %1 v ozadju. Stopite v stik z distributerjem programja."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:521
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:529
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Napačen URI KNewStuff: %1"

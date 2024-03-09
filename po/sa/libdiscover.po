@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-15 02:21+0000\n"
+"POT-Creation-Date: 2024-03-09 02:28+0000\n"
 "PO-Revision-Date: 2023-10-01 21:56+0530\n"
 "Last-Translator: Shreekant <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <N/A>\n"
@@ -1005,32 +1005,32 @@ msgstr ""
 "असमर्थितः प्रश्नः :\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:156
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:164
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "पृष्ठभाग %1 इत्यस्य आरम्भार्थं बहुकालं व्यतीतवान्"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:215
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:223
 #, kde-format
 msgid "Applications"
 msgstr "अनुप्रयोगाः"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:261
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:269
 #, kde-format
 msgid "Plasma Addons"
 msgstr "प्लाज्मा एडोन्स्"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:261
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:269
 #, kde-format
 msgid "Application Addons"
 msgstr "अनुप्रयोग एडोन्स्"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:349
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:357
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "पृष्ठभागे संजालदोषः %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:356
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:364
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1039,14 +1039,14 @@ msgstr ""
 "पृष्ठभागस्य %1 कृते वितारकं प्रति बहु अनुरोधाः प्रेषिताः । कृपया कतिपयेषु निमेषेषु पुनः प्रयासं "
 "कुर्वन्तु।."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:359
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:365
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:370
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:373
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "अमान्य %1 पृष्ठभागः, स्ववितरकेन सह सम्पर्कं कुर्वन्तु ।."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:389
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:397
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1058,22 +1058,22 @@ msgstr ""
 "एतत् कार्यं कर्तुं प्रयतितुं शक्नोति, यत् कठिनतरं नियन्त्रणं प्रदाति । निवेदितः त्रुटिः आसीत् :\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:407
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "पृष्ठभागे %2 मध्ये %1 प्रविष्टेः पटलचित्रम् आनेतुं न शक्तम्"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:403
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:411
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "%1 पृष्ठभागे अनियंत्रितदोषः । स्वस्य वितरकेन सह सम्पर्कं कुर्वन्तु।."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:521
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:529
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "मिथ्या KNewStuff URI: %1"
