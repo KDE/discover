@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-07 00:38+0000\n"
+"POT-Creation-Date: 2024-03-09 00:38+0000\n"
 "PO-Revision-Date: 2024-01-20 19:33+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -925,7 +925,7 @@ msgstr "يضيف '%1' البعيد في %2 من %3"
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "تعثر العثور على '%1' في '%2'، الرجاء تأكد من توفره."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -935,13 +935,13 @@ msgstr ""
 "أصبحت هذه الإصدارة التطويرية من %1 قديمة. من المستحسن أن تستعمل الإصدارة "
 "المستقرة."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "يتوفّر إصدارة أكثر استقراراً من %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:54
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:48
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
@@ -2510,7 +2510,7 @@ msgstr "رجاء تأكد من الاتصال بالإنترنت"
 msgid "Refresh"
 msgstr "أنعش"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:801
+#: libdiscover/resources/ResourcesProxyModel.cpp:791
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

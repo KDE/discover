@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-07 00:38+0000\n"
+"POT-Creation-Date: 2024-03-09 00:38+0000\n"
 "PO-Revision-Date: 2021-09-27 23:44+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -916,7 +916,7 @@ msgstr "%3 မှ %2 တွင် အဝေး '%1' ထည့်သွင်း�
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -924,13 +924,13 @@ msgid ""
 "highly recommended."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:54
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:48
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
@@ -2453,7 +2453,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:801
+#: libdiscover/resources/ResourcesProxyModel.cpp:791
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

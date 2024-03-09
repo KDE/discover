@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-07 00:38+0000\n"
+"POT-Creation-Date: 2024-03-09 00:38+0000\n"
 "PO-Revision-Date: 2024-02-18 17:12+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -921,7 +921,7 @@ msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
 "'%2' என்பதில் '%1' என்பதை கண்டுபிடிக்க முடியவில்லை; அது உள்ளதா என்பதை சரிபாருங்கள்."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -931,13 +931,13 @@ msgstr ""
 "%1 தனின் இந்த நிரலாக்க பதிப்பு பழையது. சாதாரண பயனர்களுக்கான இதைவிட புதிய பதிப்பைப் "
 "பயன்படுத்துவது பரிந்துரைக்கப்படுகிறது."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "%1 தனின் இதைவிட புதிய பதிப்பு உள்ளது."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:54
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:48
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
@@ -2468,7 +2468,7 @@ msgstr "இணைய இணைப்பை சரிபார்க்கவு�
 msgid "Refresh"
 msgstr "புதுப்பி"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:801
+#: libdiscover/resources/ResourcesProxyModel.cpp:791
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

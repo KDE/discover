@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-07 00:38+0000\n"
+"POT-Creation-Date: 2024-03-09 00:38+0000\n"
 "PO-Revision-Date: 2024-03-01 23:48+0100\n"
 "Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -937,7 +937,7 @@ msgstr "Dodajanje oddaljenega »%1« v %2 iz %3"
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "Ni bilo mogoče najti »%1« v »%2«; zagotovite, da je na voljo."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -947,13 +947,13 @@ msgstr ""
 "Ta razvojna različica %1 je zastarela. Zelo priporočljiva. je uporaba "
 "stabilne različice."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "Stabilnejša različica %1 je na voljo."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:54
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:48
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
@@ -2523,7 +2523,7 @@ msgstr "Preverite povezavo z internetom"
 msgid "Refresh"
 msgstr "Osveži"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:801
+#: libdiscover/resources/ResourcesProxyModel.cpp:791
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-07 00:38+0000\n"
+"POT-Creation-Date: 2024-03-09 00:38+0000\n"
 "PO-Revision-Date: 2022-09-25 09:30+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -955,7 +955,7 @@ msgstr "Lägger till fjärrplats '%1' i %2 från %3"
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:26
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -963,7 +963,7 @@ msgid ""
 "highly recommended."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, fuzzy, kde-format
 #| msgctxt "Notification when a new version of Kubuntu is available"
 #| msgid "A new version of Kubuntu is available."
@@ -971,7 +971,7 @@ msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "En ny version av Kubuntu är tillgänglig."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:54
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:48
 #, fuzzy, kde-format
 #| msgid "New unstable version: %1"
 msgctxt "@action: button %1 is the name of a Flatpak repo"
@@ -2552,7 +2552,7 @@ msgstr "Kontrollera Internetanslutning"
 msgid "Refresh"
 msgstr "Uppdatera"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:801
+#: libdiscover/resources/ResourcesProxyModel.cpp:791
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
