@@ -20,12 +20,13 @@ QVector<Category *> CategoriesReader::loadCategoriesFile(AbstractResourcesBacken
     QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
                                           QStringLiteral("libdiscover/categories/") + backend->name() + QStringLiteral("-categories.xml"));
     if (path.isEmpty()) {
-        auto cat = backend->category();
-        if (cat.isEmpty())
-            qCDebug(LIBDISCOVER_LOG) << "Couldn't find a category for " << backend->name();
+        auto categories = backend->category();
+        if (categories.isEmpty()) {
+            qCDebug(LIBDISCOVER_LOG) << "CategoriesReader: Couldn't find a category for" << backend->name();
+        }
 
-        Category::sortCategories(cat);
-        return cat;
+        Category::sortCategories(categories);
+        return categories;
     }
     return loadCategoriesPath(path);
 }
@@ -33,9 +34,10 @@ QVector<Category *> CategoriesReader::loadCategoriesFile(AbstractResourcesBacken
 QVector<Category *> CategoriesReader::loadCategoriesPath(const QString &path)
 {
     QVector<Category *> ret;
+    qCDebug(LIBDISCOVER_LOG) << "CategoriesReader: Load categories from file" << path;
     QFile menuFile(path);
     if (!menuFile.open(QIODevice::ReadOnly)) {
-        qCWarning(LIBDISCOVER_LOG) << "couldn't open" << path;
+        qCWarning(LIBDISCOVER_LOG).nospace().noquote() << "CategoriesReader: Couldn't open the categories file " << path << ": " << menuFile.errorString();
         return ret;
     }
 
@@ -52,7 +54,8 @@ QVector<Category *> CategoriesReader::loadCategoriesPath(const QString &path)
     }
 
     if (xml.hasError()) {
-        qCWarning(LIBDISCOVER_LOG) << "error while parsing the categories file:" << path << ':' << xml.lineNumber() << xml.errorString();
+        qCWarning(LIBDISCOVER_LOG).nospace().noquote()
+            << "CategoriesReader: Error while parsing the categories file " << path << ':' << xml.lineNumber() << ": " << xml.errorString();
     }
 
     Category::sortCategories(ret);
