@@ -7,9 +7,9 @@
 
 #include "FlatpakTransactionThread.h"
 #include "FlatpakResource.h"
+#include "libdiscover_backend_flatpak_debug.h"
 
 #include <KLocalizedString>
-#include <QDebug>
 #include <QDesktopServices>
 
 static int FLATPAK_CLI_UPDATE_FREQUENCY = 150;
@@ -75,7 +75,7 @@ FlatpakTransactionThread::webflowStart(FlatpakTransaction *transaction, const ch
     Q_UNUSED(options);
 
     QUrl webflowUrl(QString::fromUtf8(url));
-    qDebug() << "starting web flow" << webflowUrl << remote << id;
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "starting web flow" << webflowUrl << remote << id;
     auto obj = static_cast<FlatpakTransactionThread *>(user_data);
     obj->m_webflows << id;
     Q_EMIT obj->webflowStarted(webflowUrl, id);
@@ -89,7 +89,7 @@ void FlatpakTransactionThread::webflowDoneCallback(FlatpakTransaction *transacti
     auto obj = static_cast<FlatpakTransactionThread *>(user_data);
     obj->m_webflows << id;
     Q_EMIT obj->webflowDone(id);
-    qDebug() << "webflow done" << id;
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "webflow done" << id;
 }
 
 FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role)
@@ -103,7 +103,7 @@ FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transac
     m_transaction = flatpak_transaction_new_for_installation(app->installation(), m_cancellable, &localError);
     if (localError) {
         addErrorMessage(QString::fromUtf8(localError->message));
-        qWarning() << "Failed to create transaction" << m_errorMessage;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to create transaction" << m_errorMessage;
     } else {
         g_signal_connect(m_transaction, "add-new-remote", G_CALLBACK(add_new_remote_cb), this);
         g_signal_connect(m_transaction, "new-operation", G_CALLBACK(new_operation_cb), this);
@@ -153,7 +153,7 @@ void FlatpakTransactionThread::run()
         } else if (m_app->flatpakFileType() == FlatpakResource::FileFlatpak) {
             g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
             if (!file) {
-                qWarning() << "Failed to install bundled application" << refName;
+                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to install bundled application" << refName;
                 m_result = false;
                 return;
             }
@@ -161,7 +161,7 @@ void FlatpakTransactionThread::run()
         } else if (m_app->flatpakFileType() == FlatpakResource::FileFlatpakRef && m_app->resourceFile().isLocalFile()) {
             g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
             if (!file) {
-                qWarning() << "Failed to install flatpakref application" << refName;
+                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to install flatpakref application" << refName;
                 m_result = false;
                 return;
             }
@@ -180,7 +180,7 @@ void FlatpakTransactionThread::run()
             m_errorMessage = QString::fromUtf8(localError->message);
             // We are done so we can set the progress to 100
             setProgress(100);
-            qWarning() << "Failed to install" << m_app->flatpakFileType() << refName << ':' << m_errorMessage;
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to install" << m_app->flatpakFileType() << refName << ':' << m_errorMessage;
             return;
         }
     } else if (m_role == Transaction::Role::RemoveRole) {
@@ -189,7 +189,7 @@ void FlatpakTransactionThread::run()
             m_errorMessage = QString::fromUtf8(localError->message);
             // We are done so we can set the progress to 100
             setProgress(100);
-            qWarning() << "Failed to uninstall" << refName << ':' << m_errorMessage;
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to uninstall" << refName << ':' << m_errorMessage;
             return;
         }
     }
@@ -207,22 +207,22 @@ void FlatpakTransactionThread::run()
         g_autoptr(GError) refsError = nullptr;
         g_autoptr(GPtrArray) refs = flatpak_installation_list_unused_refs(installation, nullptr, m_cancellable, &refsError);
         if (!refs) {
-            qWarning() << "could not fetch unused refs" << refsError->message;
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not fetch unused refs" << refsError->message;
         } else if (refs->len > 0) {
             g_autoptr(GError) localError = nullptr;
-            qDebug() << "found unused refs:" << refs->len;
+            qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "found unused refs:" << refs->len;
             auto transaction = flatpak_transaction_new_for_installation(installation, m_cancellable, &localError);
             for (uint i = 0; i < refs->len; i++) {
                 FlatpakRef *ref = FLATPAK_REF(g_ptr_array_index(refs, i));
                 g_autofree gchar *strRef = flatpak_ref_format_ref(ref);
-                qDebug() << "unused ref:" << strRef;
+                qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "unused ref:" << strRef;
                 if (!flatpak_transaction_add_uninstall(transaction, strRef, &localError)) {
-                    qDebug() << "failed to uninstall unused ref" << refName << localError->message;
+                    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "failed to uninstall unused ref" << refName << localError->message;
                     break;
                 }
             }
             if (!flatpak_transaction_run(transaction, m_cancellable, &localError)) {
-                qWarning() << "could not properly clean the elements" << refs->len << localError->message;
+                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not properly clean the elements" << refs->len << localError->message;
             }
         }
 #endif

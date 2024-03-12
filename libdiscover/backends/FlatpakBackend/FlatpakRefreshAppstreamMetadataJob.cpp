@@ -6,7 +6,7 @@
  */
 
 #include "FlatpakRefreshAppstreamMetadataJob.h"
-#include <QDebug>
+#include "libdiscover_backend_flatpak_debug.h"
 
 FlatpakRefreshAppstreamMetadataJob::FlatpakRefreshAppstreamMetadataJob(FlatpakInstallation *installation, FlatpakRemote *remote)
     : QThread()
@@ -48,7 +48,8 @@ void FlatpakRefreshAppstreamMetadataJob::run()
     if (!flatpak_installation_update_appstream_sync(m_installation, flatpak_remote_get_name(m_remote), nullptr, nullptr, m_cancellable, &localError)) {
 #endif
         const QString error = localError ? QString::fromUtf8(localError->message) : QStringLiteral("<no error>");
-        qWarning().nospace() << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote) << ": " << error;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG).nospace()
+            << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote) << ": " << error;
     }
     Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote);
 }

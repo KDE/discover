@@ -6,10 +6,10 @@
  */
 
 #include "FlatpakNotifier.h"
+#include "libdiscover_backend_flatpak_debug.h"
 
 #include <glib.h>
 
-#include <QDebug>
 #include <QFutureWatcher>
 #include <QTimer>
 #include <QtConcurrentRun>
@@ -66,7 +66,7 @@ void FlatpakNotifier::recheckSystemUpdateNeeded()
 
     // Load flatpak installation
     if (!setupFlatpakInstallations(&error)) {
-        qWarning() << "Failed to setup flatpak installations: " << error->message;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to setup flatpak installations: " << error->message;
     } else {
         // Load updates from remote repositories
         loadRemoteUpdates(&m_system);
@@ -101,7 +101,7 @@ void FlatpakNotifier::loadRemoteUpdates(Installation *installation)
         bool hasUpdates = false;
 
         if (!fetchedUpdates) {
-            qWarning() << "Failed to get list of installed refs for listing updates: " << localError->message;
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get list of installed refs for listing updates: " << localError->message;
             return false;
         }
         for (uint i = 0; !hasUpdates && i < fetchedUpdates->len; i++) {

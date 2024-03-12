@@ -10,6 +10,7 @@
 #include "FlatpakJobTransaction.h"
 #include "FlatpakRefreshAppstreamMetadataJob.h"
 #include "FlatpakSourcesBackend.h"
+#include "libdiscover_backend_flatpak_debug.h"
 
 #include <ReviewsBackend/Rating.h>
 #include <Transaction/Transaction.h>
@@ -35,7 +36,6 @@
 
 #include <QCoroCore>
 
-#include <QDebug>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -109,7 +109,7 @@ public:
         Q_ASSERT(m_remote);
         g_autoptr(GFile) appstreamDir = flatpak_remote_get_appstream_dir(m_remote, nullptr);
         if (!appstreamDir) {
-            qWarning() << "No appstream dir for" << flatpak_remote_get_name(m_remote);
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "No appstream dir for" << flatpak_remote_get_name(m_remote);
             return {};
         }
         g_autofree char *path_str = g_file_get_path(appstreamDir);
@@ -257,7 +257,7 @@ static std::optional<AppStream::Metadata> metadataFromBytes(GBytes *appstreamGz,
 
     appstream = g_input_stream_read_bytes(streamData, 0x100000, cancellable, &localError);
     if (!appstream) {
-        qWarning() << "Failed to extract appstream metadata from bundle:" << localError->message;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to extract appstream metadata from bundle:" << localError->message;
         return {};
     }
 
@@ -272,7 +272,7 @@ static std::optional<AppStream::Metadata> metadataFromBytes(GBytes *appstreamGz,
 #endif
     AppStream::Metadata::MetadataError error = metadata.parse(QString::fromUtf8((char *)data, len), AppStream::Metadata::FormatKindXml);
     if (error != AppStream::Metadata::MetadataErrorNoError) {
-        qWarning() << "Failed to parse appstream metadata: " << error;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to parse appstream metadata: " << error;
         return {};
     }
     return metadata;
@@ -291,7 +291,7 @@ FlatpakBackend::FlatpakBackend(QObject *parent)
 
     // Load flatpak installation
     if (!setupFlatpakInstallations(&error)) {
-        qWarning() << "Failed to setup flatpak installations:" << error->message;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to setup flatpak installations:" << error->message;
     } else {
         m_sources = new FlatpakSourcesBackend(m_installations, this);
         loadAppsFromAppstreamData();
@@ -321,7 +321,7 @@ FlatpakBackend::~FlatpakBackend()
 {
     g_cancellable_cancel(m_cancellable);
     if (!m_threadPool.waitForDone(200)) {
-        qDebug() << "could not kill them all" << m_threadPool.activeThreadCount();
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not kill them all" << m_threadPool.activeThreadCount();
     }
     m_threadPool.clear();
 
@@ -365,7 +365,7 @@ public:
         connect(replyGet, &QNetworkReply::finished, this, [this, replyGet] {
             QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(replyGet);
             if (replyGet->error() != QNetworkReply::NoError) {
-                qWarning() << "couldn't download" << m_url << replyGet->errorString();
+                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "couldn't download" << m_url << replyGet->errorString();
                 m_stream->finish();
                 return;
             }
@@ -375,7 +375,7 @@ public:
             connect(replyPut, &QNetworkReply::finished, this, [this, fileUrl, replyPut]() {
                 QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> replyPtr(replyPut);
                 if (replyPut->error() != QNetworkReply::NoError) {
-                    qWarning() << "couldn't save" << m_url << replyPut->errorString();
+                    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "couldn't save" << m_url << replyPut->errorString();
                     m_stream->finish();
                     return;
                 }
@@ -400,7 +400,7 @@ private:
         } else if (path.endsWith(QLatin1String(".flatpakrepo"))) {
             m_backend->addSourceFromFlatpakRepo(fileUrl, m_stream);
         } else {
-            qWarning() << "unrecognized format" << fileUrl;
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "unrecognized format" << fileUrl;
         }
     }
 
@@ -503,7 +503,7 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
         AppStream::Metadata::MetadataError error = metadata.parseFile(fnDesktop, AppStream::Metadata::FormatKindDesktopEntry);
         if (error != AppStream::Metadata::MetadataErrorNoError) {
             if (QFile::exists(fnDesktop)) {
-                qDebug() << "Failed to parse appstream metadata:" << error << fnDesktop;
+                qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to parse appstream metadata:" << error << fnDesktop;
             }
 
             cid.setId(name);
@@ -561,7 +561,7 @@ QSharedPointer<FlatpakSource> FlatpakBackend::findSource(FlatpakInstallation *in
         }
     }
 
-    qWarning() << "Could not find source:" << installation << origin;
+    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Could not find source:" << installation << origin;
     return {};
 }
 
@@ -598,7 +598,7 @@ FlatpakResource *FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) con
 
     // TODO if runtime wasn't found, create a new one from available info
     if (!runtime) {
-        qWarning() << "could not find runtime" << runtimeName << resource;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not find runtime" << runtimeName << resource;
     }
 
     return runtime;
@@ -619,7 +619,7 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
     bundleRef = flatpak_bundle_ref_new(file, &localError);
 
     if (!bundleRef) {
-        qWarning() << "Failed to load bundle:" << localError->message;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to load bundle:" << localError->message;
         return;
     }
 
@@ -637,16 +637,16 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
         if (std::optional<AppStream::Component> firstComponent = metadata->components().indexSafe(0); firstComponent.has_value()) {
             asComponent = *firstComponent;
         } else {
-            qWarning() << "Failed to parse appstream metadata";
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to parse appstream metadata";
             return;
         }
     } else {
-        qWarning() << "No appstream metadata in bundle";
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "No appstream metadata in bundle";
 
         QTemporaryFile tempFile;
         tempFile.setAutoRemove(false);
         if (!tempFile.open()) {
-            qWarning() << "Failed to get metadata file";
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get metadata file";
             return;
         }
 
@@ -664,7 +664,7 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
 
     g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(preferredInstallation(), m_cancellable, &localError);
     if (!refs) {
-        qWarning() << "Failed to get list of installed refs for listing local updates:" << localError->message;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get list of installed refs for listing local updates:" << localError->message;
         return;
     }
 
@@ -682,7 +682,7 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
     auto resource = new FlatpakResource(asComponent, preferredInstallation(), this);
     if (!updateAppMetadata(resource, metadataContent)) {
         delete resource;
-        qWarning() << "Failed to update metadata from app bundle";
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to update metadata from app bundle";
         return;
     }
 
@@ -748,7 +748,7 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
 
     g_autoptr(GError) localError = nullptr;
     const QString path = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-flatpak-temporary-") + remoteName;
-    qDebug() << "Creating temporary installation" << path;
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Creating temporary installation" << path;
     g_autoptr(GFile) file = g_file_new_for_path(QFile::encodeName(path).constData());
     g_autoptr(FlatpakInstallation) tempInstallation = flatpak_installation_new_for_path(file, true, cancellable, &localError);
     if (!tempInstallation) {
@@ -764,12 +764,12 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
                    settings.value(QStringLiteral("Flatpak Ref/Url")).toString(),
                    settings.value(QStringLiteral("Flatpak Ref/GPGKey")).toString());
     if (!flatpak_installation_modify_remote(tempInstallation, tempRemote, cancellable, &localError)) {
-        qDebug() << "error adding temporary remote" << localError->message;
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "error adding temporary remote" << localError->message;
         return asComponent;
     }
 
     auto cb = [](const char *status, guint progress, gboolean /*estimating*/, gpointer /*user_data*/) {
-        qDebug() << "Progress..." << status << progress;
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Progress..." << status << progress;
     };
 
     gboolean changed;
@@ -781,7 +781,7 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
                                                          &changed,
                                                          cancellable,
                                                          &localError)) {
-        qDebug() << "error fetching appstream" << localError->message;
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "error fetching appstream" << localError->message;
         return asComponent;
     }
     Q_ASSERT(changed);
@@ -807,7 +807,7 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
 #endif
 
     if (!pool.load()) {
-        qDebug() << "error loading pool" << pool.lastError();
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "error loading pool" << pool.lastError();
         return asComponent;
     }
 
@@ -819,7 +819,7 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
         return id.section(QLatin1Char('/'), 1, 1) == name && (branch.isEmpty() || id.section(QLatin1Char('/'), 3, 3) == branch);
     });
     if (comps.isEmpty()) {
-        qDebug() << "could not find" << name << "in" << remoteName;
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not find" << name << "in" << remoteName;
         return asComponent;
     }
     return *comps.indexSafe(0);
@@ -994,7 +994,7 @@ void FlatpakBackend::loadAppsFromAppstreamData()
         }
 
         if (!loadAppsFromAppstreamData(installation)) {
-            qWarning() << "Failed to load packages from appstream data from installation" << installation;
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to load packages from appstream data from installation" << installation;
         }
     }
 }
@@ -1006,7 +1006,7 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
     GError *error = nullptr;
     g_autoptr(GPtrArray) remotes = flatpak_installation_list_remotes(flatpakInstallation, m_cancellable, &error);
     if (!remotes) {
-        qWarning() << "failed to list remotes" << error->message;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "failed to list remotes" << error->message;
         return false;
     }
 
@@ -1040,7 +1040,7 @@ void FlatpakBackend::unloadRemote(FlatpakInstallation *installation, FlatpakRemo
     acquireFetching(true);
     for (auto it = m_flatpakSources.begin(); it != m_flatpakSources.end();) {
         if ((*it)->url() == QString::fromUtf8(flatpak_remote_get_url(remote)) && (*it)->installation() == installation) {
-            qDebug() << "unloading remote" << (*it) << remote;
+            qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "unloading remote" << (*it) << remote;
             it = m_flatpakSources.erase(it);
         } else {
             ++it;
@@ -1076,7 +1076,7 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
 
     const QString appstreamDirPath = source->appstreamDir();
     if (!QFile::exists(appstreamDirPath)) {
-        qWarning() << "No" << appstreamDirPath << "appstream metadata found for" << source->name();
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "No" << appstreamDirPath << "appstream metadata found for" << source->name();
         metadataRefreshed(source->remote());
         return;
     }
@@ -1089,7 +1089,7 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
         if (fw->result()) {
             m_flatpakSources += source;
         } else {
-            qWarning() << "Could not open the AppStream metadata pool" << pool->lastError();
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Could not open the AppStream metadata pool" << pool->lastError();
         }
         metadataRefreshed(source->remote());
         acquireFetching(false);
@@ -1161,7 +1161,7 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
     g_autoptr(GError) localError = nullptr;
     g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(flatpakInstallation, m_cancellable, &localError);
     if (!refs) {
-        qWarning() << "Failed to get list of installed refs for listing local updates:" << localError->message;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get list of installed refs for listing local updates:" << localError->message;
         return;
     }
 
@@ -1171,7 +1171,7 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
         const gchar *latestCommit = flatpak_installed_ref_get_latest_commit(ref);
 
         if (!latestCommit) {
-            qWarning() << "Couldn't get latest commit for" << flatpak_ref_get_name(FLATPAK_REF(ref));
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Couldn't get latest commit for" << flatpak_ref_get_name(FLATPAK_REF(ref));
             continue;
         }
 
@@ -1193,7 +1193,7 @@ bool FlatpakBackend::setupFlatpakInstallations(GError **error)
 {
     if (qEnvironmentVariableIsSet("FLATPAK_TEST_MODE")) {
         const QString path = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-flatpak-test");
-        qDebug() << "running flatpak backend on test mode" << path;
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "running flatpak backend on test mode" << path;
         g_autoptr(GFile) file = g_file_new_for_path(QFile::encodeName(path).constData());
         m_installations << flatpak_installation_new_for_path(file, true, m_cancellable, error);
         return m_installations.constLast() != nullptr;
@@ -1201,7 +1201,7 @@ bool FlatpakBackend::setupFlatpakInstallations(GError **error)
 
     g_autoptr(GPtrArray) installations = flatpak_get_system_installations(m_cancellable, error);
     if (*error) {
-        qWarning() << "Failed to call flatpak_get_system_installations:" << (*error)->message;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to call flatpak_get_system_installations:" << (*error)->message;
     }
     for (uint i = 0; installations && i < installations->len; i++) {
         auto installation = FLATPAK_INSTALLATION(g_ptr_array_index(installations, i));
@@ -1325,7 +1325,7 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakResource *resource)
 
             if (!runtime->isInstalled()) {
                 if (!updateAppSize(runtime)) {
-                    qWarning() << "Failed to get runtime size needed for total size of" << resource->name();
+                    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get runtime size needed for total size of" << resource->name();
                     return false;
                 }
                 // Set required download size to include runtime size even now, in case we fail to
@@ -1339,13 +1339,13 @@ bool FlatpakBackend::updateAppSizeFromRemote(FlatpakResource *resource)
         g_autoptr(FlatpakInstalledRef) ref = nullptr;
         ref = getInstalledRefForApp(resource);
         if (!ref) {
-            qWarning() << "Failed to get installed size of" << resource->name();
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get installed size of" << resource->name();
             return false;
         }
         resource->setInstalledSize(flatpak_installed_ref_get_installed_size(ref));
     } else if (resource->resourceType() != FlatpakResource::Source) {
         if (resource->origin().isEmpty()) {
-            qWarning() << "Failed to get size of" << resource->name() << " because of missing origin";
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get size of" << resource->name() << " because of missing origin";
             return false;
         }
 
@@ -1518,7 +1518,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     [](GCancellable *cancellable, QList<FlatpakInstallation *> installations) {
                         QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
                         if (g_cancellable_is_cancelled(cancellable)) {
-                            qWarning() << "Job cancelled";
+                            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Job cancelled";
                             return ret;
                         }
 
@@ -1526,11 +1526,12 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                             g_autoptr(GError) localError = nullptr;
                             g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_for_update(installation, cancellable, &localError);
                             if (!refs) {
-                                qWarning() << "Failed to get list of installed refs for listing updates:" << localError->message;
+                                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG)
+                                    << "Failed to get list of installed refs for listing updates:" << localError->message;
                                 continue;
                             }
                             if (g_cancellable_is_cancelled(cancellable)) {
-                                qWarning() << "Job cancelled";
+                                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Job cancelled";
                                 ret.clear();
                                 break;
                             }
@@ -1633,7 +1634,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     g_autoptr(GError) localError = nullptr;
                     g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs(installation, cancellable, &localError);
                     if (!refs) {
-                        qWarning() << "Failed to get list of installed refs for listing installed:" << localError->message;
+                        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get list of installed refs for listing installed:" << localError->message;
                         continue;
                     }
 
@@ -1873,7 +1874,7 @@ void FlatpakBackend::checkRepositories(const FlatpakJobTransaction::Repositories
             if (auto remote = flatpak_installation_get_remote_by_name(installation, name.toUtf8().constData(), m_cancellable, &localError)) {
                 loadRemote(installation, remote);
             } else {
-                qWarning() << "Could not find remote" << name << "in" << installationPath;
+                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Could not find remote" << name << "in" << installationPath;
             }
         }
     }
@@ -1884,7 +1885,8 @@ FlatpakRemote *FlatpakBackend::installSource(FlatpakResource *resource)
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
 
     if (auto remote = flatpak_installation_get_remote_by_name(preferredInstallation(), resource->flatpakName().toUtf8().constData(), cancellable, nullptr)) {
-        qWarning() << "Source" << resource->flatpakName() << "already exists in" << flatpak_installation_get_path(preferredInstallation());
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Source" << resource->flatpakName() << "already exists in"
+                                                   << flatpak_installation_get_path(preferredInstallation());
         return nullptr;
     }
 
@@ -1900,7 +1902,7 @@ FlatpakRemote *FlatpakBackend::installSource(FlatpakResource *resource)
     g_autoptr(GError) error = nullptr;
     if (!flatpak_installation_add_remote(preferredInstallation(), remote, false, cancellable, &error)) {
         Q_EMIT passiveMessage(i18n("Failed to add source '%1': %2", resource->flatpakName(), QString::fromUtf8(error->message)));
-        qWarning() << "Failed to add source" << resource->flatpakName() << error->message;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to add source" << resource->flatpakName() << error->message;
         return nullptr;
     }
     return remote;

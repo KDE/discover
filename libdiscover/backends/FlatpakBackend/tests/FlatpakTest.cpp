@@ -4,6 +4,8 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  ***************************************************************************/
 
+#include "libdiscover_backend_flatpak_debug.h"
+
 #include <ApplicationAddonsModel.h>
 #include <Category/CategoryModel.h>
 #include <ReviewsBackend/ReviewsModel.h>
@@ -151,10 +153,10 @@ private:
             }
         });
         connect(t, &Transaction::statusChanged, t, [t] {
-            qDebug() << "status" << t->status();
+            qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "status" << t->status();
         });
         while (t && spyInstalled.count() == 0) {
-            qDebug() << "waiting, currently" << ret << t->progress() << spyInstalled.count() << destructionSpy.count();
+            qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "waiting, currently" << ret << t->progress() << spyInstalled.count() << destructionSpy.count();
             spyInstalled.wait(1000);
         }
         Q_ASSERT(destructionSpy.count() || destructionSpy.wait());

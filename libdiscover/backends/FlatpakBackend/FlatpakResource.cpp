@@ -10,6 +10,7 @@
 #include "FlatpakFetchDataJob.h"
 #include "FlatpakSourcesBackend.h"
 #include "config-paths.h"
+#include "libdiscover_backend_flatpak_debug.h"
 
 #include <Transaction/AddonList.h>
 
@@ -28,7 +29,6 @@
 
 #include <AppStreamQt/release.h>
 #include <QCoroCore>
-#include <QDebug>
 #include <QDesktopServices>
 #include <QDir>
 #include <QDirIterator>
@@ -92,7 +92,7 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
                     if (file.open(QIODevice::WriteOnly)) {
                         file.write(iconData);
                     } else {
-                        qDebug() << "could not find icon for" << packageName() << reply->url();
+                        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not find icon for" << packageName() << reply->url();
                         QIcon::fromTheme(QStringLiteral("package-x-generic")).pixmap(32, 32).toImage().save(fileName);
                     }
                     file.close();
@@ -175,7 +175,7 @@ void FlatpakResource::updateFromAppStream()
     g_autoptr(GError) localError = nullptr;
     g_autoptr(FlatpakRef) ref = flatpak_ref_parse(refstr.toUtf8().constData(), &localError);
     if (!ref) {
-        qDebug() << "failed to obtain ref" << refstr << localError->message;
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "failed to obtain ref" << refstr << localError->message;
         return;
     }
     updateFromRef(ref);
@@ -483,14 +483,14 @@ void FlatpakResource::invokeApplication() const
     if (!launchables.isEmpty()) {
         desktopFileName = launchables.constFirst();
     } else {
-        qWarning() << "Failed to find launchable for " << m_appdata.name() << ", using AppStream identifier instead";
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to find launchable for " << m_appdata.name() << ", using AppStream identifier instead";
         desktopFileName = appstreamId();
     }
 
     KService::Ptr service = KService::serviceByStorageId(desktopFileName);
 
     if (!service) {
-        qWarning() << "Failed to find service" << desktopFileName;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to find service" << desktopFileName;
         return;
     }
 
@@ -658,7 +658,7 @@ QString FlatpakResource::sourceIcon() const
 {
     const auto sourceItem = qobject_cast<FlatpakBackend *>(backend())->sources()->sourceById(origin());
     if (!sourceItem) {
-        qWarning() << "Could not find source " << origin();
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Could not find source " << origin();
         return QStringLiteral("flatpak-discover");
     }
 
@@ -1004,12 +1004,12 @@ void FlatpakResource::clearUserData()
 {
     const auto location = dataLocation();
     if (location.isEmpty()) {
-        qWarning() << "Failed find location for" << name();
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed find location for" << name();
         return;
     }
 
     if (!QDir(location).removeRecursively()) {
-        qWarning() << "Failed to remove location" << location;
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to remove location" << location;
     }
     Q_EMIT hasDataChanged();
 }

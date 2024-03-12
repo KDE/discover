@@ -8,10 +8,11 @@
 #include "FlatpakSourcesBackend.h"
 #include "FlatpakBackend.h"
 #include "FlatpakResource.h"
+#include "libdiscover_backend_flatpak_debug.h"
+
 #include <KConfigGroup>
 #include <KLocalizedString>
 #include <KSharedConfig>
-#include <QDebug>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 
@@ -58,7 +59,7 @@ public:
                 flatpak_remote_set_disabled(m_remote, requestedDisabled);
                 g_autoptr(GError) error = nullptr;
                 if (!flatpak_installation_modify_remote(m_installation, m_remote, nullptr, &error)) {
-                    qWarning() << "set disabled failed" << error->message;
+                    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "set disabled failed" << error->message;
                     return;
                 }
 
@@ -135,7 +136,7 @@ void FlatpakSourcesBackend::save()
             flatpak_remote_set_prio(sourceItem->remote(), ++last);
             g_autoptr(GError) error = nullptr;
             if (!flatpak_installation_modify_remote(sourceItem->flatpakInstallation(), sourceItem->remote(), nullptr, &error)) {
-                qDebug() << "failed setting priorities" << error->message;
+                qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "failed setting priorities" << error->message;
             }
 
             it->setData(last, PrioRole);
@@ -290,7 +291,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
                 return false;
             }
         } else {
-            qWarning() << "could not list refs in repo" << id << error->message;
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not list refs in repo" << id << error->message;
         }
 
         g_autoptr(GError) errorRemoveRemote = nullptr;
@@ -349,7 +350,7 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
 
         auto item = static_cast<FlatpakSourceItem *>(m_sources->item(i));
         if (item->data(Qt::StatusTipRole) == remoteUrl && item->flatpakInstallation() == installation) {
-            qDebug() << "we already have an item for this" << remoteUrl;
+            qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "we already have an item for this" << remoteUrl;
             return;
         }
     }
