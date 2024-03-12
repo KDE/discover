@@ -19,6 +19,7 @@
 #include <QSignalSpy>
 #include <QStandardPaths>
 #include <QTest>
+#include <flatpak.h>
 
 class FlatpakTest : public QObject
 {
@@ -94,6 +95,8 @@ private Q_SLOTS:
         QCOMPARE(ourResource->state(), AbstractResource::None);
         QCOMPARE(waitTransaction(m_appBackend->installApplication(ourResource)), Transaction::DoneStatus);
         QCOMPARE(ourResource->state(), AbstractResource::Installed);
+        f.resourceUrl = QUrl(QStringLiteral("flatpak:app/com.dosbox.DOSBox/") + QLatin1StringView(flatpak_get_default_arch()) + QStringLiteral("/stable"));
+        QCOMPARE(getResources(m_appBackend->search(f)).count(), 1);
         QCOMPARE(waitTransaction(m_appBackend->removeApplication(ourResource)), Transaction::DoneStatus);
         QCOMPARE(ourResource->state(), AbstractResource::None);
     }
@@ -102,6 +105,18 @@ private Q_SLOTS:
     {
         AbstractResourcesBackend::Filters f;
         f.resourceUrl = QUrl(QStringLiteral("https://dl.flathub.org/repo/appstream/com.dosbox.DOSBox.flatpakref"));
+        const auto res = getResources(m_appBackend->search(f));
+        QCOMPARE(res.count(), 1);
+
+        f.resourceUrl = QUrl(QStringLiteral("appstream://dosbox.desktop"));
+        const auto res2 = getResources(m_appBackend->search(f));
+        QCOMPARE(res2, res);
+    }
+
+    void testSearches()
+    {
+        AbstractResourcesBackend::Filters f;
+        f.resourceUrl = QUrl(QStringLiteral("flatpak:app/com.dosbox.DOSBox/") + QLatin1StringView(flatpak_get_default_arch()) + QStringLiteral("/stable"));
         const auto res = getResources(m_appBackend->search(f));
         QCOMPARE(res.count(), 1);
 
