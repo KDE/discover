@@ -156,7 +156,8 @@ private:
     ///@p initialize tells if all backends load will be triggered on construction
     explicit ResourcesModel(QObject *parent = nullptr);
     void init(bool load);
-    void addResourcesBackend(AbstractResourcesBackend *backend);
+    void addResourcesBackends(const QList<AbstractResourcesBackend *> &backends);
+    bool addResourcesBackend(AbstractResourcesBackend *backend);
     void registerBackendByName(const QString &name);
     void initApplicationsBackend();
     void slotFetching();
