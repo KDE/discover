@@ -467,6 +467,9 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
     if (freshResource) {
         *freshResource = false;
     }
+    if (!ref) {
+        return nullptr;
+    }
     const auto origin = QString::fromUtf8(flatpak_installed_ref_get_origin(ref));
     auto source = findSource(installation, origin);
     if (source) {
@@ -1513,6 +1516,52 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
         auto fetchResourceJob = new FlatpakFetchRemoteResourceJob(filter.resourceUrl, stream, this);
         fetchResourceJob->start();
         return stream;
+    } else if (filter.resourceUrl.scheme() == QLatin1String("flatpak")) {
+        return deferredResultStream(u"FlatpakStream-flatpak-ref"_s, [this, filter](ResultsStream *stream) -> QCoro::Task<> {
+            return [](FlatpakBackend *self, ResultsStream *stream, const AbstractResourcesBackend::Filters filter) -> QCoro::Task<> {
+                FLATPAK_BACKEND_GUARD
+                const auto installations = self->m_installations;
+                QVector<StreamResult> resources;
+                const auto ref = filter.resourceUrl.path().toUtf8().split('/');
+                FlatpakRefKind kind = ref[0] == "app" ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME;
+
+                // need to issue the search of installed refs too
+                // it can happpen that a ref is present because it's installed but not part of the appstream metadata anymore
+                for (auto installation : std::as_const(installations)) {
+                    g_autoptr(GError) localError = nullptr;
+                    g_autoptr(FlatpakInstalledRef) installedRef = flatpak_installation_get_installed_ref(installation,
+                                                                                                         kind,
+                                                                                                         ref[1].constData(),
+                                                                                                         ref[2].constData(),
+                                                                                                         ref[3].constData(),
+                                                                                                         cancellable,
+                                                                                                         &localError);
+                    FLATPAK_BACKEND_CHECK
+                    FlatpakResource *resource = self->getAppForInstalledRef(installation, installedRef);
+                    if (resource) {
+                        resources += resource;
+                    }
+                }
+                if (filter.state < AbstractResource::Installed) {
+                    for (const auto &source : self->m_flatpakSources) {
+                        if (source->m_pool) {
+                            auto components = source->componentsByFlatpakId(filter.resourceUrl.path());
+                            resources << kTransform<QVector<StreamResult>>(components, [self, source](const AppStream::Component &comp) -> StreamResult {
+                                return {self->resourceForComponent(comp, source), comp.sortScore()};
+                            });
+                        }
+                    }
+
+                    // make sure we are not adding duplicates from the installed results
+                    kRemoveDuplicates(resources);
+                }
+                FLATPAK_BACKEND_YIELD
+
+                if (!resources.isEmpty()) {
+                    Q_EMIT stream->resourcesFound(resources);
+                }
+            }(this, stream, filter);
+        });
     } else if (filter.resourceUrl.scheme() == QLatin1String("appstream")) {
         return findResourceByPackageName(filter.resourceUrl);
     } else if (!filter.resourceUrl.isEmpty()) {
