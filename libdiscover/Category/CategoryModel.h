@@ -17,7 +17,7 @@ class QTimer;
 class DISCOVERCOMMON_EXPORT CategoryModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariantList rootCategories READ rootCategoriesVL NOTIFY rootCategoriesChanged)
+    Q_PROPERTY(QList<Category *> rootCategories READ rootCategories NOTIFY rootCategoriesChanged)
 public:
     explicit CategoryModel(QObject *parent = nullptr);
 
@@ -25,11 +25,7 @@ public:
 
     Q_SCRIPTABLE Category *findCategoryByName(const QString &name) const;
     void blacklistPlugin(const QString &name);
-    QVector<Category *> rootCategories() const
-    {
-        return m_rootCategories;
-    }
-    QVariantList rootCategoriesVL() const;
+    const QList<Category *> &rootCategories() const;
     void populateCategories();
 
 Q_SIGNALS:
@@ -37,5 +33,5 @@ Q_SIGNALS:
 
 private:
     QTimer *m_rootCategoriesChanged;
-    QVector<Category *> m_rootCategories;
+    QList<Category *> m_rootCategories;
 };

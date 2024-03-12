@@ -45,13 +45,13 @@ void CategoryModel::populateCategories()
 {
     const auto backends = ResourcesModel::global()->backends();
 
-    QVector<Category *> ret;
+    QList<Category *> ret;
     CategoriesReader cr;
     for (const auto backend : backends) {
         if (!backend->isValid())
             continue;
 
-        const QVector<Category *> cats = cr.loadCategoriesFile(backend);
+        const QList<Category *> cats = cr.loadCategoriesFile(backend);
 
         if (ret.isEmpty()) {
             ret = cats;
@@ -66,11 +66,9 @@ void CategoryModel::populateCategories()
     }
 }
 
-QVariantList CategoryModel::rootCategoriesVL() const
+const QList<Category *> &CategoryModel::rootCategories() const
 {
-    return kTransform<QVariantList>(m_rootCategories, [](Category *cat) {
-        return QVariant::fromValue<QObject *>(cat);
-    });
+    return m_rootCategories;
 }
 
 void CategoryModel::blacklistPlugin(const QString &name)
@@ -86,7 +84,7 @@ static Category *recFindCategory(Category *root, const QString &name)
     if (root->untranslatedName() == name)
         return root;
     else {
-        const auto subs = root->subCategories();
+        const auto &subs = root->subCategories();
         for (Category *c : subs) {
             Category *ret = recFindCategory(c, name);
             if (ret)

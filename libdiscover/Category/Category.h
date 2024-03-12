@@ -70,7 +70,7 @@ public:
     QString icon() const;
     void setFilter(const CategoryFilter &filter);
     CategoryFilter filter() const;
-    QVector<Category *> subCategories() const;
+    const QVector<Category *> &subCategories() const;
     QVariantList subCategoriesVariant() const;
 
     static void sortCategories(QVector<Category *> &cats);

@@ -210,7 +210,7 @@ void Category::setFilter(const CategoryFilter &filter)
     m_filter = filter;
 }
 
-QVector<Category *> Category::subCategories() const
+const QVector<Category *> &Category::subCategories() const
 {
     return m_subCategories;
 }
