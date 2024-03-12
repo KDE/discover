@@ -157,7 +157,7 @@ BasicAbstractCard {
             }
 
             Timer {
-                running: true
+                running: root.visible && !reviewsPreview.moving
                 repeat: true
                 interval: 10000
                 onTriggered: reviewsPreview.currentIndex = (reviewsPreview.currentIndex + 1) % reviewsPreview.count
