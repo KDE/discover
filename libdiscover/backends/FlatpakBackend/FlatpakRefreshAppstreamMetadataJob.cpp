@@ -11,17 +11,17 @@
 FlatpakRefreshAppstreamMetadataJob::FlatpakRefreshAppstreamMetadataJob(FlatpakInstallation *installation, FlatpakRemote *remote)
     : QThread()
     , m_cancellable(g_cancellable_new())
-    , m_installation(installation)
-    , m_remote(remote)
+    , m_installation(g_object_ref(installation))
+    , m_remote(g_object_ref(remote))
 {
-    g_object_ref(m_remote);
     connect(this, &FlatpakRefreshAppstreamMetadataJob::finished, this, &QObject::deleteLater);
 }
 
 FlatpakRefreshAppstreamMetadataJob::~FlatpakRefreshAppstreamMetadataJob()
 {
-    g_object_unref(m_remote);
     g_object_unref(m_cancellable);
+    g_object_unref(m_installation);
+    g_object_unref(m_remote);
 }
 
 void FlatpakRefreshAppstreamMetadataJob::cancel()
