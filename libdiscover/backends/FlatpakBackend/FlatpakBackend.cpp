@@ -456,7 +456,10 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
 {
     if (freshResource)
         *freshResource = false;
-    const QString origin = QString::fromUtf8(flatpak_installed_ref_get_origin(ref));
+    if (!ref) {
+        return nullptr;
+    }
+    const auto origin = QString::fromUtf8(flatpak_installed_ref_get_origin(ref));
     auto source = findSource(installation, origin);
     if (source) {
         auto ret = source->m_resources.value(idForInstalledRef(ref, {}));
@@ -1491,6 +1494,55 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
         FlatpakFetchRemoteResourceJob *fetchResourceJob = new FlatpakFetchRemoteResourceJob(filter.resourceUrl, stream, this);
         fetchResourceJob->start();
         return stream;
+    } else if (filter.resourceUrl.scheme() == QLatin1String("flatpak")) {
+        return deferredResultStream(u"FlatpakStream-flatpak-ref"_s, [this, filter](ResultsStream *stream) {
+            return [this](FlatpakBackend *self, ResultsStream *stream, const AbstractResourcesBackend::Filters filter) {
+                const auto installations = self->m_installations;
+                QVector<StreamResult> resources;
+                g_autoptr(GError) error = nullptr;
+
+                g_autoptr(FlatpakRef) ref = flatpak_ref_parse(filter.resourceUrl.path().toUtf8().constData(), &error);
+                if (!ref) {
+                    qWarning() << "failed to parse ref:" << error->message;
+                    stream->finish();
+                    return;
+                }
+                const auto refKind = flatpak_ref_get_kind(ref);
+                const auto refName = flatpak_ref_get_name(ref);
+                const auto refArch = flatpak_ref_get_arch(ref);
+                const auto refBranch = flatpak_ref_get_branch(ref);
+
+                // need to issue the search of installed refs too
+                // it can happpen that a ref is present because it's installed but not part of the appstream metadata anymore
+                for (auto installation : std::as_const(installations)) {
+                    g_autoptr(GError) localError = nullptr;
+                    g_autoptr(FlatpakInstalledRef) installedRef =
+                        flatpak_installation_get_installed_ref(installation, refKind, refName, refArch, refBranch, m_cancellable, &localError);
+                    const auto resource = self->getAppForInstalledRef(installation, installedRef);
+                    if (resource) {
+                        resources.append(StreamResult(resource));
+                    }
+                }
+                if (filter.state < AbstractResource::Installed) {
+                    for (const auto &source : self->m_flatpakSources) {
+                        if (source->m_pool) {
+                            auto components = source->componentsByFlatpakId(filter.resourceUrl.path());
+                            resources.append(kTransform<QVector<StreamResult>>(components, [self, source](const AppStream::Component &comp) {
+                                return StreamResult(self->resourceForComponent(comp, source), comp.sortScore());
+                            }));
+                        }
+                    }
+
+                    // make sure we are not adding duplicates from the installed results
+                    kRemoveDuplicates(resources);
+                }
+
+                if (!resources.isEmpty()) {
+                    Q_EMIT stream->resourcesFound(resources);
+                }
+                stream->finish();
+            }(this, stream, filter);
+        });
     } else if (filter.resourceUrl.scheme() == QLatin1String("appstream")) {
         return findResourceByPackageName(filter.resourceUrl);
     } else if (!filter.resourceUrl.isEmpty()) {

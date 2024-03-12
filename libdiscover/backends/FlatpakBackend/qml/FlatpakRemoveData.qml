@@ -20,7 +20,7 @@ Kirigami.InlineMessage {
     Discover.ResourcesProxyModel {
         id: query
         backendFilter: resource.backend
-        resourcesUrl: resource.url
+        resourcesUrl: "flatpak:" + resource.ref
         stateFilter: Discover.AbstractResource.Installed
     }
 

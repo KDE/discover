@@ -147,6 +147,20 @@ static QSet<T> kToSet(const QList<T> &set)
     return QSet<T>(set.begin(), set.end());
 }
 
+template<typename T>
+static void kRemoveDuplicates(QList<T> &input)
+{
+    QSet<T> ret;
+    for (auto it = input.begin(); it != input.end();) {
+        if (!ret.contains(*it)) {
+            ret << *it;
+            ++it;
+        } else {
+            it = input.erase(it);
+        }
+    }
+}
+
 class ElapsedDebug : private QElapsedTimer
 {
 public:
