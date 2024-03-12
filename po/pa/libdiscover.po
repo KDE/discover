@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-09 00:38+0000\n"
+"POT-Creation-Date: 2024-03-12 00:38+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -538,23 +538,23 @@ msgstr "%1 (ਵਰਤੋਂਕਾਰ)"
 msgid "Local bundle"
 msgstr "ਲੋਕਲ ਬੰਡਲ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1794
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1798
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1898
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1902
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' ਸਰੋਤ ਜੋੜਨ ਲਈ ਅਸਫ਼ਲ: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2019
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2023
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "ਕੋਈ ਫਲੈਟਪੈਕ ਸਰੋਤ ਨਹੀਂ ਹੈ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2023
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2027
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" ਸਰੋਤ ਲੋਡ ਕਰਨ ਲਈ ਫੇਲ੍ਹ"
