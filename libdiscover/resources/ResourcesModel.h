@@ -168,7 +168,7 @@ private:
     int m_initializingBackendsCount;
     DiscoverAction *m_updateAction = nullptr;
     AbstractResourcesBackend *m_currentApplicationBackend;
-    QTimer *m_allInitializedEmitter;
+    QTimer m_allInitializedEmitter;
 
     EmitWhenChanged<int> m_updatesCount;
     EmitWhenChanged<int> m_fetchingUpdatesProgress;

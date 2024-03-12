@@ -46,7 +46,6 @@ ResourcesModel::ResourcesModel(QObject *parent)
     , m_isFetching(false)
     , m_initializingBackendsCount(0)
     , m_currentApplicationBackend(nullptr)
-    , m_allInitializedEmitter(new QTimer(this))
     , m_updatesCount(
           0,
           [this] {
@@ -78,6 +77,7 @@ ResourcesModel::ResourcesModel(QObject *parent)
               Q_EMIT fetchingUpdatesProgressChanged(progress);
           })
 {
+    m_allInitializedEmitter.setObjectName(u"allInitializedEmitter"_s);
     connect(this, &ResourcesModel::allInitialized, this, &ResourcesModel::slotFetching);
     connect(this, &ResourcesModel::backendsChanged, this, &ResourcesModel::initApplicationsBackend);
 }
@@ -86,9 +86,9 @@ void ResourcesModel::init(bool load)
 {
     Q_ASSERT(QCoreApplication::instance()->thread() == QThread::currentThread());
 
-    m_allInitializedEmitter->setSingleShot(true);
-    m_allInitializedEmitter->setInterval(0);
-    connect(m_allInitializedEmitter, &QTimer::timeout, this, [this]() {
+    m_allInitializedEmitter.setSingleShot(true);
+    m_allInitializedEmitter.setInterval(0);
+    connect(&m_allInitializedEmitter, &QTimer::timeout, this, [this]() {
         if (m_initializingBackendsCount == 0) {
             m_isInitializing = false;
             Q_EMIT allInitialized();
@@ -177,7 +177,7 @@ bool ResourcesModel::addResourcesBackend(AbstractResourcesBackend *backend)
     // to send out the initialized signal. To ensure this happens, schedule it for the
     // start of the next run of the event loop.
     if (m_initializingBackendsCount == 0) {
-        m_allInitializedEmitter->start();
+        m_allInitializedEmitter.start();
     } else {
         slotFetching();
     }
@@ -206,7 +206,7 @@ void ResourcesModel::callerFetchingChanged()
     } else {
         m_initializingBackendsCount--;
         if (m_initializingBackendsCount == 0) {
-            m_allInitializedEmitter->start();
+            m_allInitializedEmitter.start();
         } else {
             slotFetching();
         }
@@ -253,7 +253,7 @@ void ResourcesModel::registerAllBackends()
     const auto backends = f.allBackends();
     if (m_initializingBackendsCount == 0 && backends.isEmpty()) {
         qCWarning(LIBDISCOVER_LOG) << "Couldn't find any backends";
-        m_allInitializedEmitter->start();
+        m_allInitializedEmitter.start();
     } else {
         addResourcesBackends(backends);
     }
