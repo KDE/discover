@@ -106,6 +106,13 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
     connect(this, &FlatpakResource::stateChanged, this, &FlatpakResource::hasDataChanged);
 }
 
+FlatpakBackend *FlatpakResource::backend() const
+{
+    const auto backend = qobject_cast<FlatpakBackend *>(AbstractResource::backend());
+    Q_ASSERT(backend);
+    return backend;
+}
+
 AppStream::Component FlatpakResource::appstreamComponent() const
 {
     return m_appdata;
@@ -261,7 +268,7 @@ QVariant FlatpakResource::icon() const
 
 QString FlatpakResource::installedVersion() const
 {
-    g_autoptr(FlatpakInstalledRef) ref = qobject_cast<FlatpakBackend *>(backend())->getInstalledRefForApp(this);
+    g_autoptr(FlatpakInstalledRef) ref = backend()->getInstalledRefForApp(this);
     if (ref) {
         const char *appdataVersion = flatpak_installed_ref_get_appdata_version(ref);
 
@@ -438,7 +445,7 @@ quint64 FlatpakResource::size()
 QString FlatpakResource::sizeDescription()
 {
     if (propertyState(InstalledSize) == NotKnownYet || propertyState(InstalledSize) == Fetching) {
-        qobject_cast<FlatpakBackend *>(backend())->updateAppSize(this);
+        backend()->updateAppSize(this);
         return i18n("Retrieving size information");
     } else if (propertyState(InstalledSize) == UnknownOrFailed) {
         return i18nc("@label app size", "Unknown");
@@ -599,7 +606,7 @@ void FlatpakResource::setState(AbstractResource::State state, bool shouldEmit)
     if (m_state != state) {
         m_state = state;
 
-        if (shouldEmit && qobject_cast<FlatpakBackend *>(backend())->isTracked(this)) {
+        if (shouldEmit && backend()->isTracked(this)) {
             Q_EMIT stateChanged();
         }
     }
@@ -656,7 +663,7 @@ QDate FlatpakResource::releaseDate() const
 
 QString FlatpakResource::sourceIcon() const
 {
-    const auto sourceItem = qobject_cast<FlatpakBackend *>(backend())->sources()->sourceById(origin());
+    const auto sourceItem = backend()->sources()->sourceById(origin());
     if (!sourceItem) {
         qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Could not find source " << origin();
         return QStringLiteral("flatpak-discover");
@@ -705,7 +712,7 @@ QString FlatpakResource::versionString()
         return {};
     }
     if (isInstalled()) {
-        auto ref = qobject_cast<FlatpakBackend *>(backend())->getInstalledRefForApp(this);
+        auto ref = backend()->getInstalledRefForApp(this);
         if (ref) {
             version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(ref));
         }

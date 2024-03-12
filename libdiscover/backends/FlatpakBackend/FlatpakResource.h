@@ -87,6 +87,8 @@ public:
         }
     };
 
+    FlatpakBackend *backend() const;
+
     static QLatin1String typeAsString(ResourceType type)
     {
         if (type == DesktopApp) {
