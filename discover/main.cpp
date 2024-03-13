@@ -16,6 +16,7 @@
 #include <KWindowSystem>
 #include <QApplication>
 #include <QCommandLineParser>
+#include <QDir>
 #include <QStandardPaths>
 #include <QSurfaceFormat>
 #include <QTextStream>
