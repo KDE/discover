@@ -15,7 +15,6 @@
 #include <QProcess>
 #include <QString>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
-#include <ReviewsBackend/Rating.h>
 
 AbstractResource::AbstractResource(AbstractResourcesBackend *parent)
     : QObject(parent)
@@ -115,16 +114,12 @@ QCollatorSortKey AbstractResource::nameSortKey()
     return *m_collatorKey;
 }
 
-Rating *AbstractResource::rating() const
+Rating AbstractResource::rating() const
 {
-    auto reviewsBackend = backend()->reviewsBackend();
-    return reviewsBackend ? reviewsBackend->ratingForApplication(const_cast<AbstractResource *>(this)) : nullptr;
-}
-
-QVariant AbstractResource::ratingVariant() const
-{
-    auto instance = rating();
-    return instance ? QVariant::fromValue<Rating>(*instance) : QVariant();
+    if (auto reviewsBackend = backend()->reviewsBackend()) {
+        return reviewsBackend->ratingForApplication(const_cast<AbstractResource *>(this));
+    }
+    return {};
 }
 
 QStringList AbstractResource::extends() const

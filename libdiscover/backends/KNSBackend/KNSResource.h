@@ -11,6 +11,8 @@
 #include <attica/content.h>
 #include <resources/AbstractResource.h>
 
+#include <optional>
+
 #include "discovercommon_export.h"
 
 class KNSBackend;
@@ -67,11 +69,11 @@ public:
     QVector<int> linkIds() const;
     QUrl donationURL() override;
 
-    Rating *ratingInstance();
+    Rating rating() const override;
 
 private:
     const QStringList m_categories;
     KNSCore::Entry m_entry;
     KNSCore::Entry::Status m_lastStatus;
-    QScopedPointer<Rating> m_rating;
+    mutable std::optional<Rating> m_rating;
 };

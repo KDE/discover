@@ -254,15 +254,15 @@ QUrl KNSResource::donationURL()
     return QUrl(m_entry.donationLink());
 }
 
-Rating *KNSResource::ratingInstance()
+Rating KNSResource::rating() const
 {
-    if (!m_rating) {
+    if (!m_rating.has_value()) {
         const int noc = m_entry.numberOfComments();
         const int rating = m_entry.rating();
         Q_ASSERT(rating <= 100);
-        m_rating.reset(new Rating(packageName(), noc, rating / 10));
+        m_rating = Rating(packageName(), noc, rating / 10);
     }
-    return m_rating.data();
+    return m_rating.value();
 }
 
 QString KNSResource::author() const

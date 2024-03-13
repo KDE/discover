@@ -18,6 +18,8 @@
 #include <QUrl>
 #include <QVector>
 
+#include <ReviewsBackend/Rating.h>
+
 #include "PackageState.h"
 #include "discovercommon_export.h"
 
@@ -82,7 +84,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString section READ section CONSTANT)
     Q_PROPERTY(QStringList mimetypes READ mimetypes CONSTANT)
     Q_PROPERTY(AbstractResourcesBackend *backend READ backend CONSTANT)
-    Q_PROPERTY(QVariant rating READ ratingVariant NOTIFY ratingFetched)
+    Q_PROPERTY(Rating rating READ rating NOTIFY ratingFetched)
     Q_PROPERTY(QString appstreamId READ appstreamId CONSTANT)
     Q_PROPERTY(QUrl url READ url CONSTANT)
     Q_PROPERTY(QString executeLabel READ executeLabel CONSTANT)
@@ -225,8 +227,7 @@ public:
      *
      * @returns the rating for the resource or null if not available
      */
-    Rating *rating() const;
-    QVariant ratingVariant() const;
+    virtual Rating rating() const;
 
     bool categoryMatches(Category *cat);
 

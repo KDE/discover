@@ -32,7 +32,7 @@ public:
     {
     }
 
-    Rating *ratingForApplication(AbstractResource *resource) const override;
+    Rating ratingForApplication(AbstractResource *resource) const override;
     bool hasCredentials() const override
     {
         return false;
@@ -61,5 +61,5 @@ protected:
     void sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName) override;
 
 private:
-    QHash<AbstractResource *, Rating *> m_ratings;
+    QHash<AbstractResource *, Rating> m_ratings;
 };

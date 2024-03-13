@@ -118,9 +118,8 @@ void KNSBackendTest::testReviews()
     QVERIFY(!reviewsBackend->hasCredentials());
     for (auto resource : resources) {
         auto rating = reviewsBackend->ratingForApplication(resource);
-        QVERIFY(rating);
-        QCOMPARE(rating->packageName(), resource->packageName());
-        QVERIFY(rating->rating() > 0 && rating->rating() <= 10);
+        QCOMPARE(rating.packageName(), resource->packageName());
+        QVERIFY(rating.rating() > 0 && rating.rating() <= 10);
     }
 
     auto resource = resources.first();

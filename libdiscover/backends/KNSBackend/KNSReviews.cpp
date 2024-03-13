@@ -24,15 +24,12 @@ KNSReviews::KNSReviews(KNSBackend *backend)
 {
 }
 
-Rating *KNSReviews::ratingForApplication(AbstractResource *resource) const
+Rating KNSReviews::ratingForApplication(AbstractResource *resource) const
 {
-    KNSResource *knsResource = qobject_cast<KNSResource *>(resource);
-    if (!knsResource) {
-        qDebug() << resource->packageName() << "<= couldn't find resource";
-        return nullptr;
+    if (resource) {
+        return resource->rating();
     }
-
-    return knsResource->ratingInstance();
+    return {};
 }
 
 void KNSReviews::fetchReviews(AbstractResource *resource, int page)

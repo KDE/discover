@@ -8,9 +8,10 @@
 
 #include <QObject>
 
+#include "Rating.h"
 #include "Review.h"
 #include "ReviewsModel.h"
-class Rating;
+
 class AbstractResource;
 
 class DISCOVERCOMMON_EXPORT AbstractReviewsBackend : public QObject
@@ -26,7 +27,7 @@ public:
 
     virtual bool hasCredentials() const = 0;
 
-    Q_SCRIPTABLE virtual Rating *ratingForApplication(AbstractResource *resource) const = 0;
+    Q_SCRIPTABLE virtual Rating ratingForApplication(AbstractResource *resource) const = 0;
     Q_INVOKABLE virtual QString errorMessage() const;
     Q_INVOKABLE virtual bool isResourceSupported(AbstractResource *resource) const = 0;
     virtual bool isFetching() const = 0;

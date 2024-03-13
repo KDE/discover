@@ -164,7 +164,7 @@ BasicAbstractCard {
 
                         Rating {
                             Layout.alignment: Qt.AlignVCenter
-                            value: root.application.rating ? root.application.rating.sortableRating : 0
+                            value: root.application.rating.sortableRating
                             starSize: root.compact ? description.font.pointSize : head.font.pointSize
                             precision: Rating.Precision.HalfStar
                             padding: 0
@@ -173,8 +173,8 @@ BasicAbstractCard {
                             Layout.fillWidth: true
                             Layout.alignment: Qt.AlignVCenter
                             topPadding: (ratingLabelMetrics.boundingRect.y - ratingLabelMetrics.tightBoundingRect.y)/2
-                            visible: root.application.rating || (root.application.backend.reviewsBackend && root.application.backend.reviewsBackend.isResourceSupported(root.application))
-                            text: root.application.rating ? i18np("%1 rating", "%1 ratings", root.application.rating.ratingCount) : i18n("No ratings yet")
+                            visible: root.application.backend.reviewsBackend?.isResourceSupported(root.application) ?? false
+                            text: root.application.rating.ratingCount > 0 ? i18np("%1 rating", "%1 ratings", root.application.rating.ratingCount) : i18n("No ratings yet")
                             font: Kirigami.Theme.smallFont
                             elide: Text.ElideRight
                             TextMetrics {

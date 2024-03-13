@@ -36,7 +36,7 @@ public:
     {
     }
 
-    Rating *ratingForApplication(AbstractResource *resource) const override;
+    Rating ratingForApplication(AbstractResource *resource) const override;
     bool hasCredentials() const override
     {
         return false;
@@ -64,7 +64,7 @@ public:
         return m_errorMessage;
     }
 
-    QVector<Rating *> top() const
+    const QList<Rating> &top() const
     {
         return m_top;
     }
@@ -90,9 +90,9 @@ private:
     void parseReviews(const QJsonDocument &document, AbstractResource *resource);
 
     QString m_errorMessage;
-    QHash<QString, Rating *> m_ratings;
+    QHash<QString, Rating> m_ratings;
     bool m_isFetching = false;
     CachedNetworkAccessManager *m_delayedNam = nullptr;
 
-    QVector<Rating *> m_top;
+    QList<Rating> m_top;
 };

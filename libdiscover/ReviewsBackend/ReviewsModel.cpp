@@ -114,31 +114,32 @@ QVariant ReviewsModel::data(const QModelIndex &index, int role) const
     if (!index.isValid()) {
         return QVariant();
     }
+    const auto &review = m_reviews.at(index.row());
     switch (role) {
     case Qt::DisplayRole:
-        return m_reviews.at(index.row())->reviewText();
+        return review->reviewText();
     case ShouldShow:
-        return m_reviews.at(index.row())->shouldShow();
+        return review->shouldShow();
     case Reviewer:
-        return m_reviews.at(index.row())->reviewer();
+        return review->reviewer();
     case CreationDate:
-        return m_reviews.at(index.row())->creationDate();
+        return review->creationDate();
     case UsefulnessTotal:
-        return m_reviews.at(index.row())->usefulnessTotal();
+        return review->usefulnessTotal();
     case UsefulnessFavorable:
-        return m_reviews.at(index.row())->usefulnessFavorable();
+        return review->usefulnessFavorable();
     case WilsonScore:
-        return m_reviews.at(index.row())->wilsonScore();
+        return review->wilsonScore();
     case UsefulChoice:
-        return m_reviews.at(index.row())->usefulChoice();
+        return review->usefulChoice();
     case Rating:
-        return m_reviews.at(index.row())->rating();
+        return review->rating();
     case Summary:
-        return m_reviews.at(index.row())->summary();
+        return review->summary();
     case PackageVersion:
-        return m_reviews.at(index.row())->packageVersion();
+        return review->packageVersion();
     case Depth:
-        return m_reviews.at(index.row())->getMetadata(QStringLiteral("NumberOfParents")).toInt();
+        return review->getMetadata(QStringLiteral("NumberOfParents")).toInt();
     }
     return QVariant();
 }

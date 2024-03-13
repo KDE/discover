@@ -21,7 +21,6 @@ DummyReviewsBackend::DummyReviewsBackend(DummyBackend *parent)
 
 DummyReviewsBackend::~DummyReviewsBackend() noexcept
 {
-    qDeleteAll(m_ratings);
 }
 
 void DummyReviewsBackend::fetchReviews(AbstractResource *resource, int page)
@@ -50,7 +49,7 @@ void DummyReviewsBackend::fetchReviews(AbstractResource *resource, int page)
     Q_EMIT reviewsReady(resource, review, false);
 }
 
-Rating *DummyReviewsBackend::ratingForApplication(AbstractResource *resource) const
+Rating DummyReviewsBackend::ratingForApplication(AbstractResource *resource) const
 {
     return m_ratings[resource];
 }
@@ -66,7 +65,7 @@ void DummyReviewsBackend::initialize()
         }
 
         int ratings[] = {0, 0, 0, 0, 0, QRandomGenerator::global()->bounded(0, 10)};
-        auto rating = new Rating(resource->packageName(), ++i, ratings);
+        auto rating = Rating(resource->packageName(), ++i, ratings);
         m_ratings.insert(resource, rating);
         Q_EMIT resource->ratingFetched();
     }

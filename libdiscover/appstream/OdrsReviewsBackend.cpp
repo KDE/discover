@@ -55,7 +55,6 @@ OdrsReviewsBackend::OdrsReviewsBackend()
 
 OdrsReviewsBackend::~OdrsReviewsBackend()
 {
-    qDeleteAll(m_ratings);
 }
 
 void OdrsReviewsBackend::fetchRatings()
@@ -186,10 +185,10 @@ void OdrsReviewsBackend::reviewsFetched()
     parseReviews(document, resource);
 }
 
-Rating *OdrsReviewsBackend::ratingForApplication(AbstractResource *resource) const
+Rating OdrsReviewsBackend::ratingForApplication(AbstractResource *resource) const
 {
     if (resource->appstreamId().isEmpty()) {
-        return nullptr;
+        return {};
     }
 
     return m_ratings[resource->appstreamId()];
@@ -309,11 +308,11 @@ void OdrsReviewsBackend::parseRatings()
                 appJsonObject.value(QLatin1String("star5")).toInt(),
             };
 
-            const auto rating = new Rating(it.key(), ratingCount, ratingMap);
+            const auto rating = Rating(it.key(), ratingCount, ratingMap);
             m_ratings.insert(it.key(), rating);
 
-            const auto finder = [rating](Rating *review) {
-                return review->ratingPoints() < rating->ratingPoints();
+            const auto finder = [&rating](const Rating &review) {
+                return review.ratingPoints() < rating.ratingPoints();
             };
             const auto topIt = std::find_if(m_top.begin(), m_top.end(), finder);
             if (topIt == m_top.end()) {

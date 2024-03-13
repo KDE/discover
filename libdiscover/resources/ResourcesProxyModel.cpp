@@ -551,19 +551,19 @@ QVariant ResourcesProxyModel::roleToValue(const StreamResult &result, int role) 
         return QVariant::fromValue<QObject *>(resource);
     case RatingPointsRole: {
         const auto rating = resource->rating();
-        return rating ? rating->ratingPoints() : 0;
+        return rating.ratingPoints();
     }
     case RatingRole: {
         const auto rating = resource->rating();
-        return rating ? rating->rating() : 0;
+        return rating.rating();
     }
     case RatingCountRole: {
         const auto rating = resource->rating();
-        return rating ? rating->ratingCount() : 0;
+        return rating.ratingCount();
     }
     case SortableRatingRole: {
         const auto rating = resource->rating();
-        return rating ? rating->sortableRating() : 0;
+        return rating.sortableRating();
     }
     case SearchRelevanceRole: {
         qreal rating = roleToValue(result, SortableRatingRole).value<qreal>();

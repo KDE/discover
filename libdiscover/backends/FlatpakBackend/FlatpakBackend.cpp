@@ -1449,15 +1449,13 @@ bool FlatpakBackend::flatpakResourceLessThan(AbstractResource *left, AbstractRes
     if (left->origin() != right->origin()) {
         return m_sources->originIndex(left->origin()) < m_sources->originIndex(right->origin());
     }
-    const auto leftRating = left->rating();
-    const auto rightRating = right->rating();
-    if (leftRating && rightRating) {
-        const auto leftPoints = leftRating->ratingPoints();
-        const auto rightPoints = rightRating->ratingPoints();
-        if (leftPoints != rightPoints) {
-            return leftPoints > rightPoints;
-        }
+
+    const auto leftPoints = left->rating().ratingPoints();
+    const auto rightPoints = right->rating().ratingPoints();
+    if (leftPoints != rightPoints) {
+        return leftPoints > rightPoints;
     }
+
     return left < right;
 }
 
