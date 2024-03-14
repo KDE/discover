@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-12 00:38+0000\n"
+"POT-Creation-Date: 2024-03-14 00:39+0000\n"
 "PO-Revision-Date: 2024-02-25 14:50+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -539,23 +539,23 @@ msgstr "%1 (usuaria)"
 msgid "Local bundle"
 msgstr "Fardo local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1798
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1799
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL de appstream incorrecto «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1902
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Non foi posíbel engadir a fonte «%1»: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2023
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2025
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Non hai fontes de Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2027
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2029
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Non foi posíbel cargar a fonte «%1»"
@@ -862,17 +862,17 @@ msgstr ""
 "Pode comunicarse con todas as aplicacións e servizos do sistema mediante os "
 "seguintes protocolos de comunicación: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
 #, kde-format
 msgid "Add Flathub"
 msgstr "Engadir Flathub"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
 msgid "Apply Changes"
 msgstr "Aplicar os cambios"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:95
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:96
 #, kde-format
 msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
@@ -881,24 +881,24 @@ msgstr ""
 "Os cambios de prioridade das fontes de Flatpak hai que aplicalos para que "
 "xurdan efecto."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:99
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:100
 #, kde-format
 msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
 msgstr "Facilita instalar aplicacións listadas en https://flathub.org"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:167
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:168
 #, kde-format
 msgid "Could not add the source %1"
 msgstr "Non foi posíbel engadir a fonte %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:287
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:288
 #, kde-format
 msgid "Removing '%1'"
 msgstr "Retirando «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:288
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -907,22 +907,22 @@ msgstr ""
 "Para retirar este repositorio debe desinstalar as seguintes aplicacións:"
 "<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:305
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:306
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "Non foi posíbel retirar o repositorio remoto %1: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:309
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:310
 #, kde-format
 msgid "Could not find %1"
 msgstr "Non foi posíbel atopar %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:341
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:342
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (usuaria)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:403
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:404
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Escriba un URI de repositorio de Flatpak (*.flatpakrepo):"
@@ -2514,7 +2514,7 @@ msgstr "%1 → %2%1 → %2%2"
 msgid "Please verify Internet connectivity"
 msgstr "Revise a conexión a Internet"
 
-#: libdiscover/resources/ResourcesModel.cpp:103
+#: libdiscover/resources/ResourcesModel.cpp:104
 #, kde-format
 msgid "Refresh"
 msgstr "Recargar"

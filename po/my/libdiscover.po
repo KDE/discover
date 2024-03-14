@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-12 00:38+0000\n"
+"POT-Creation-Date: 2024-03-14 00:39+0000\n"
 "PO-Revision-Date: 2021-09-27 23:44+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -546,24 +546,24 @@ msgstr "%1 (အသုံးပြုသူ)"
 msgid "Local bundle"
 msgstr "စက်တွင်းအထုပ်"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1798
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1799
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "ပုံပျက်-အပ်စထရင်း-ယူအာအယ်လ် '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1902
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' ကို မစတင်နိုင်ခဲ့ပါ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2023
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2025
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2027
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2029
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to load \"%1\" source"
@@ -845,63 +845,63 @@ msgid ""
 "following communication protocols: %1"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
 #, kde-format
 msgid "Add Flathub"
 msgstr "ဖလက်ဟပ်ဘ် ထည့်သွင်းမည်"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
 msgid "Apply Changes"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:95
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:96
 #, kde-format
 msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:99
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:100
 #, kde-format
 msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
 msgstr "ယင်းသည် https://flathub.org တွင် ပြထားသော အပ္ပလီကေးရှင်းများကို အလွယ်တကူ တပ်ဆင်နိုင်စေသည်"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:167
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:168
 #, kde-format
 msgid "Could not add the source %1"
 msgstr "ပရိုဂရမ်ဇစ်မြစ် %1 ကို မထည့်သွင်းနိုင်ပါ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:287
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:288
 #, kde-format
 msgid "Removing '%1'"
 msgstr "'%1' ကိုဖယ်ရှားနေသည်"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:288
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
 "<ul><li>%1</li></ul>"
 msgstr "ဤရီပိုစစ်တိုရီကို ဖယ်ရှာရန် အောက်ပါအပ္ပလီကေးရှင်းများကို ဖယ်ရှားပစ်ရမည်-<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:305
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:306
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "%1 အဝေးရီပိုစစ်တိုရီ ကိုမဖယ်ရှားနိုင်ခဲ့ပါ - %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:309
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:310
 #, kde-format
 msgid "Could not find %1"
 msgstr "%1ကိုရှာမတွေ့ခဲ့ပါ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:341
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:342
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (အသုံးပြုသူ)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:403
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:404
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "ဖလက်ပတ်ခ် ရီပိုစစ်တိုရီ ယူအာအိုင် (*.flatpakrepo) ရေးသွင်းပါ-"
@@ -2448,7 +2448,7 @@ msgstr ""
 msgid "Please verify Internet connectivity"
 msgstr ""
 
-#: libdiscover/resources/ResourcesModel.cpp:103
+#: libdiscover/resources/ResourcesModel.cpp:104
 #, kde-format
 msgid "Refresh"
 msgstr ""

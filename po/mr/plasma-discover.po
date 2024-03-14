@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-07 00:38+0000\n"
+"POT-Creation-Date: 2024-03-14 00:39+0000\n"
 "PO-Revision-Date: 2013-04-01 10:16+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -98,7 +98,7 @@ msgid "Report This Issue"
 msgstr ""
 
 #: discover/DiscoverObject.cpp:464 discover/DiscoverObject.cpp:466
-#: discover/main.cpp:117
+#: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "शोधा"
@@ -109,24 +109,24 @@ msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
 
-#: discover/main.cpp:33
+#: discover/main.cpp:34
 #, fuzzy, kde-format
 #| msgid "Directly open the specified application by its package name."
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "निर्देशीत अनुप्रयोग त्याच्या पॅकेज नावाने उघडा."
 
-#: discover/main.cpp:34
+#: discover/main.cpp:35
 #, fuzzy, kde-format
 #| msgid "Open with a program that can deal with the given mimetype."
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr "दिलेल्या माइम प्रकाराशी चालू शकेल अशा कार्यक्रमात उघडा."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:36
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "नोंदींची यादी विभागासहित दर्शवा."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:37
 #, fuzzy, kde-format
 #| msgid ""
 #| "Open Muon Discover in a said mode. Modes correspond to the toolbar "
@@ -134,94 +134,94 @@ msgstr "नोंदींची यादी विभागासहित द
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr "म्युओन डिस्कव्हर सांगितलेल्या पद्धतीने उघडा. पध्दती साधनपट्टी बटनांशी संलग्न असतात."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:38
 #, fuzzy, kde-format
 #| msgid "List all the available modes and output them on stdout."
 msgid "List all the available modes."
 msgstr "उपलब्ध पद्धतीची यादी करा व त्याचे आउटपुट stdout वर द्या."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:39
 #, kde-format
 msgid "Local package file to install"
 msgstr ""
 
-#: discover/main.cpp:39
+#: discover/main.cpp:40
 #, fuzzy, kde-format
 #| msgid "List all the available modes and output them on stdout."
 msgid "List all the available backends."
 msgstr "उपलब्ध पद्धतीची यादी करा व त्याचे आउटपुट stdout वर द्या."
 
-#: discover/main.cpp:40
+#: discover/main.cpp:41
 #, fuzzy, kde-format
 #| msgid "Search in '%1'..."
 msgid "Search string."
 msgstr "यामध्ये शोधा '%1'..."
 
-#: discover/main.cpp:41
+#: discover/main.cpp:42
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr ""
 
-#: discover/main.cpp:43
+#: discover/main.cpp:44
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr ""
 
-#: discover/main.cpp:119
+#: discover/main.cpp:120
 #, fuzzy, kde-format
 #| msgid "An application discoverer"
 msgid "An application explorer"
 msgstr "अनुप्रयोग शोधक"
 
-#: discover/main.cpp:121
+#: discover/main.cpp:122
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
 msgstr ""
 
-#: discover/main.cpp:122
+#: discover/main.cpp:123
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "एलैक्स पोल गोन्झालेझ"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:124
 #, kde-format
 msgid "Nate Graham"
 msgstr ""
 
-#: discover/main.cpp:124
+#: discover/main.cpp:125
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr ""
 
-#: discover/main.cpp:128
+#: discover/main.cpp:129
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr ""
 
-#: discover/main.cpp:129
+#: discover/main.cpp:130
 #, kde-format
 msgid "KNewStuff"
 msgstr ""
 
-#: discover/main.cpp:136
+#: discover/main.cpp:137
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: discover/main.cpp:136
+#: discover/main.cpp:137
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: discover/main.cpp:149
+#: discover/main.cpp:150
 #, fuzzy, kde-format
 #| msgid "Available modes:\n"
 msgid "Available backends:\n"
 msgstr "उपलब्ध पद्धती :\n"
 
-#: discover/main.cpp:202
+#: discover/main.cpp:203
 #, kde-format
 msgid "Available modes:\n"
 msgstr "उपलब्ध पद्धती :\n"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-07 00:38+0000\n"
+"POT-Creation-Date: 2024-03-14 00:39+0000\n"
 "PO-Revision-Date: 2023-12-20 16:43+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -117,7 +117,7 @@ msgid "Report This Issue"
 msgstr "Informar deste problema"
 
 #: discover/DiscoverObject.cpp:464 discover/DiscoverObject.cpp:466
-#: discover/main.cpp:117
+#: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "Descubrir"
@@ -130,112 +130,112 @@ msgstr ""
 "Discover pechouse antes de que rematasen algunhas tarefas, agardando a que "
 "rematen."
 
-#: discover/main.cpp:33
+#: discover/main.cpp:34
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "Abre directamente a aplicación indicada polo seu URI de appstream://."
 
-#: discover/main.cpp:34
+#: discover/main.cpp:35
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr ""
 "Abrir cunha busca de programas que poida xestionar o tipo MIME indicado."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:36
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "Mostra unha lista de entradas cunha categoría."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:37
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "Abrir Discover nun modo dito. Os modos correspóndense cos botón da barra de "
 "ferramentas."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:38
 #, kde-format
 msgid "List all the available modes."
 msgstr "Listar todos os modos dispoñíbeis."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:39
 #, kde-format
 msgid "Local package file to install"
 msgstr "O ficheiro local de paquete para instalar"
 
-#: discover/main.cpp:39
+#: discover/main.cpp:40
 #, kde-format
 msgid "List all the available backends."
 msgstr "Listar todas as infraestruturas dispoñíbeis."
 
-#: discover/main.cpp:40
+#: discover/main.cpp:41
 #, kde-format
 msgid "Search string."
 msgstr "Cadea de busca."
 
-#: discover/main.cpp:41
+#: discover/main.cpp:42
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "Lista todas as opcións dispoñíbeis de comentarios."
 
-#: discover/main.cpp:43
+#: discover/main.cpp:44
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "Compatíbel co esquema de URL «appstream:»"
 
-#: discover/main.cpp:119
+#: discover/main.cpp:120
 #, kde-format
 msgid "An application explorer"
 msgstr "Un explorador de aplicacións"
 
-#: discover/main.cpp:121
+#: discover/main.cpp:122
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010-2024 Equipo de desenvolvemento de Plasma"
 
-#: discover/main.cpp:122
+#: discover/main.cpp:123
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:124
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:125
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Control de calidade, deseño e ergonomía."
 
-#: discover/main.cpp:128
+#: discover/main.cpp:129
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:130
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:136
+#: discover/main.cpp:137
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Adrian Chaves (Gallaecio)"
 
-#: discover/main.cpp:136
+#: discover/main.cpp:137
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "adrian@chaves.io"
 
-#: discover/main.cpp:149
+#: discover/main.cpp:150
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Infraestruturas dispoñíbeis:\n"
 
-#: discover/main.cpp:202
+#: discover/main.cpp:203
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Modos dispoñíbeis:\n"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-07 00:38+0000\n"
+"POT-Creation-Date: 2024-03-14 00:39+0000\n"
 "PO-Revision-Date: 2023-12-20 09:09+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -118,7 +118,7 @@ msgid "Report This Issue"
 msgstr "Informa d'este problema"
 
 #: discover/DiscoverObject.cpp:464 discover/DiscoverObject.cpp:466
-#: discover/main.cpp:117
+#: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -131,113 +131,113 @@ msgstr ""
 "Discover es va tancar abans d'acabar determinades tasques, espereu que "
 "finalitze."
 
-#: discover/main.cpp:33
+#: discover/main.cpp:34
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "Obri directament l'aplicació especificada pel seu URI appstream://."
 
-#: discover/main.cpp:34
+#: discover/main.cpp:35
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr ""
 "Obri amb una busca per als programes que es poden gestionar amb el tipus "
 "MIME donat."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:36
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "Mostra una llista d'entrades amb una categoria."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:37
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "Obri Discover en un mode indicat. Els modes es corresponen als botons de la "
 "barra d'eines."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:38
 #, kde-format
 msgid "List all the available modes."
 msgstr "Llista tots els modes disponibles."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:39
 #, kde-format
 msgid "Local package file to install"
 msgstr "Fitxer local de paquet que s'ha d'instal·lar"
 
-#: discover/main.cpp:39
+#: discover/main.cpp:40
 #, kde-format
 msgid "List all the available backends."
 msgstr "Llista tots els dorsals disponibles."
 
-#: discover/main.cpp:40
+#: discover/main.cpp:41
 #, kde-format
 msgid "Search string."
 msgstr "Cadena de la busca."
 
-#: discover/main.cpp:41
+#: discover/main.cpp:42
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "Llista les opcions disponibles per als comentaris dels usuaris"
 
-#: discover/main.cpp:43
+#: discover/main.cpp:44
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "Implementa l'esquema d'URL «appstream:»"
 
-#: discover/main.cpp:119
+#: discover/main.cpp:120
 #, kde-format
 msgid "An application explorer"
 msgstr "Un explorador d'aplicacions"
 
-#: discover/main.cpp:121
+#: discover/main.cpp:122
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010-2024, L'equip de desenvolupament de Plasma"
 
-#: discover/main.cpp:122
+#: discover/main.cpp:123
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:124
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:125
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Control de qualitat, disseny i usabilitat"
 
-#: discover/main.cpp:128
+#: discover/main.cpp:129
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:130
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:136
+#: discover/main.cpp:137
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Orestes Mas"
 
-#: discover/main.cpp:136
+#: discover/main.cpp:137
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "orestes@tsc.upc.edu"
 
-#: discover/main.cpp:149
+#: discover/main.cpp:150
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Dorsals disponibles:\n"
 
-#: discover/main.cpp:202
+#: discover/main.cpp:203
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Modes disponibles:\n"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-07 00:38+0000\n"
+"POT-Creation-Date: 2024-03-14 00:39+0000\n"
 "PO-Revision-Date: 2024-01-13 13:50+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -117,7 +117,7 @@ msgid "Report This Issue"
 msgstr "Jelentse ezt a hibát"
 
 #: discover/DiscoverObject.cpp:464 discover/DiscoverObject.cpp:466
-#: discover/main.cpp:117
+#: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -130,112 +130,112 @@ msgstr ""
 "A Discovert bizonyos feladatok befejezése előtt bezárták, várakozás a "
 "befejezésre."
 
-#: discover/main.cpp:33
+#: discover/main.cpp:34
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr ""
 "A megadott alkalmazás közvetlen megnyitása az appstream:// URI-je szerint."
 
-#: discover/main.cpp:34
+#: discover/main.cpp:35
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr "Megnyitás a megadott MIME-típust kezelni képes program keresésével."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:36
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "Bejegyzések listájának megjelenítése kategóriával."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:37
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "A Discover megnyitása biztonságos módban. A módoknak az eszköztár gombjai "
 "felelnek meg."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:38
 #, kde-format
 msgid "List all the available modes."
 msgstr "Az összes elérhető mód listázása."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:39
 #, kde-format
 msgid "Local package file to install"
 msgstr "Helyi csomagfájlok telepítése"
 
-#: discover/main.cpp:39
+#: discover/main.cpp:40
 #, kde-format
 msgid "List all the available backends."
 msgstr "Az összes elérhető backend listázása."
 
-#: discover/main.cpp:40
+#: discover/main.cpp:41
 #, kde-format
 msgid "Search string."
 msgstr "Szöveg keresése."
 
-#: discover/main.cpp:41
+#: discover/main.cpp:42
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "Felsorolja a felhasználói visszajelzés lehetőségeit"
 
-#: discover/main.cpp:43
+#: discover/main.cpp:44
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "Az appstream: url séma támogatása"
 
-#: discover/main.cpp:119
+#: discover/main.cpp:120
 #, kde-format
 msgid "An application explorer"
 msgstr "Egy alkalmazásfelfedező"
 
-#: discover/main.cpp:121
+#: discover/main.cpp:122
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© A Plasma fejlesztői, 2010-2024."
 
-#: discover/main.cpp:122
+#: discover/main.cpp:123
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:124
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:125
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Minőségbiztosítás, design és használhatóság"
 
-#: discover/main.cpp:128
+#: discover/main.cpp:129
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:130
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:136
+#: discover/main.cpp:137
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Kiszel Kristóf"
 
-#: discover/main.cpp:136
+#: discover/main.cpp:137
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ulysses@kubuntu.org"
 
-#: discover/main.cpp:149
+#: discover/main.cpp:150
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Elérhető háttérprogramok:\n"
 
-#: discover/main.cpp:202
+#: discover/main.cpp:203
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Elérhető módok:\n"

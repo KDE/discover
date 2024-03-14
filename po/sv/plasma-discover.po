@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-07 00:38+0000\n"
+"POT-Creation-Date: 2024-03-14 00:39+0000\n"
 "PO-Revision-Date: 2022-09-25 09:29+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -103,7 +103,7 @@ msgid "Report This Issue"
 msgstr "Rapportera problemet"
 
 #: discover/DiscoverObject.cpp:464 discover/DiscoverObject.cpp:466
-#: discover/main.cpp:117
+#: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "Upptäck"
@@ -116,112 +116,112 @@ msgstr ""
 "Discover avslutades innan vissa uppgifter var klara, väntar på att de ska "
 "slutföras."
 
-#: discover/main.cpp:33
+#: discover/main.cpp:34
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "Öppna angivet program direkt enligt dess appstream:// webbadress."
 
-#: discover/main.cpp:34
+#: discover/main.cpp:35
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr ""
 "Öppna med sökning efter program som kan hantera den angivna Mime-typen."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:36
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "Visa en lista med poster med en kategori."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:37
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "Öppna Upptäck med angivet läge. Lägen motsvarar knapparna i verktygsraden."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:38
 #, kde-format
 msgid "List all the available modes."
 msgstr "Lista alla tillgängliga lägen."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:39
 #, kde-format
 msgid "Local package file to install"
 msgstr "Lokal paketfil att installera"
 
-#: discover/main.cpp:39
+#: discover/main.cpp:40
 #, kde-format
 msgid "List all the available backends."
 msgstr "Lista alla tillgängliga gränssnitt."
 
-#: discover/main.cpp:40
+#: discover/main.cpp:41
 #, kde-format
 msgid "Search string."
 msgstr "Söksträng."
 
-#: discover/main.cpp:41
+#: discover/main.cpp:42
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "Lista tillgängliga alternativ för användaråterkoppling"
 
-#: discover/main.cpp:43
+#: discover/main.cpp:44
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "Stöder appstream: webbadresschema"
 
-#: discover/main.cpp:119
+#: discover/main.cpp:120
 #, kde-format
 msgid "An application explorer"
 msgstr "En programutforskare"
 
-#: discover/main.cpp:121
+#: discover/main.cpp:122
 #, fuzzy, kde-format
 #| msgid "© 2010-2022 Plasma Development Team"
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010-2022 Plasma-utvecklingsgruppen"
 
-#: discover/main.cpp:122
+#: discover/main.cpp:123
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:124
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:125
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Kvalitetssäkring, konstruktion och användbarhet"
 
-#: discover/main.cpp:128
+#: discover/main.cpp:129
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:130
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:136
+#: discover/main.cpp:137
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Stefan Asserhäll"
 
-#: discover/main.cpp:136
+#: discover/main.cpp:137
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "stefan.asserhall@bredband.net"
 
-#: discover/main.cpp:149
+#: discover/main.cpp:150
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Tillgängliga gränssnitt:\n"
 
-#: discover/main.cpp:202
+#: discover/main.cpp:203
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Tillgängliga lägen:\n"

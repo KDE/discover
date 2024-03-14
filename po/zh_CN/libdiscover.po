@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-12 00:38+0000\n"
-"PO-Revision-Date: 2024-03-09 04:45\n"
+"POT-Creation-Date: 2024-03-14 00:39+0000\n"
+"PO-Revision-Date: 2024-03-13 20:04\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -541,23 +541,23 @@ msgstr "%1 (用户)"
 msgid "Local bundle"
 msgstr "本地包"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1798
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1799
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "错误的 AppStream URL “%1”"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1902
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "无法添加来源“%1”：%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2023
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2025
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "没有 Flatpak 来源。"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2027
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2029
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "加载“%1”来源失败"
@@ -835,41 +835,41 @@ msgid ""
 "following communication protocols: %1"
 msgstr "允许使用以下通信协议与所有应用程序和系统服务进行通信：%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:90
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
 #, kde-format
 msgid "Add Flathub"
 msgstr "添加 Flathub"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
 msgid "Apply Changes"
 msgstr "应用更改"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:95
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:96
 #, kde-format
 msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
 msgstr "更改 Flatpak 来源的优先级后必须先应用更改才能生效。"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:99
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:100
 #, kde-format
 msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
 msgstr "轻松安装来自 https://flathub.org 的应用"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:167
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:168
 #, kde-format
 msgid "Could not add the source %1"
 msgstr "无法添加源 %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:287
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:288
 #, kde-format
 msgid "Removing '%1'"
 msgstr "正在移除“%1”"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:288
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -878,22 +878,22 @@ msgstr ""
 "要移除此仓库，您必须卸载以下应用：\n"
 "<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:305
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:306
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "移除 %1 远程仓库失败：%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:309
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:310
 #, kde-format
 msgid "Could not find %1"
 msgstr "找不到 %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:341
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:342
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (用户)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:403
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:404
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "请输入 Flatpak 仓库 URI (*.flatpakrepo)："
@@ -2438,7 +2438,7 @@ msgstr "%1 → %2%1 → %2%2"
 msgid "Please verify Internet connectivity"
 msgstr "请检查网络连接"
 
-#: libdiscover/resources/ResourcesModel.cpp:103
+#: libdiscover/resources/ResourcesModel.cpp:104
 #, kde-format
 msgid "Refresh"
 msgstr "刷新"
