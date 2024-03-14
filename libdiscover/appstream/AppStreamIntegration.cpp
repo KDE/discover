@@ -54,7 +54,7 @@ std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStre
                 continue;
             }
 
-            // Let's look at this potentially new verson
+            // Let's look at this potentially new version
             const QString newVersion = r.version();
             if (AppStream::Utils::vercmpSimple(newVersion, currentVersion) > 0) {
                 if (!nextRelease) {
