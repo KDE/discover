@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-09 02:28+0000\n"
+"POT-Creation-Date: 2024-03-14 03:05+0000\n"
 "PO-Revision-Date: 2024-03-01 23:48+0100\n"
 "Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -535,28 +535,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (uporabnik)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:700
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:711
 #, kde-format
 msgid "Local bundle"
 msgstr "Krajevna zbirka"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1671
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1682
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:791
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Napačno oblikovan URL appstream »%1«"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1775
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1786
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Ni bilo mogoče dodati vira »%1«: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1907
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Ni virov za Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1900
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1911
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Ni bilo mogoče naložiti vira »%1«"
