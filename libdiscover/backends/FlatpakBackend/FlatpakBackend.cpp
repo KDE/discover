@@ -600,7 +600,7 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
     });
 
     if (m_localSource) {
-        const auto it = std::ranges::find_if(m_localSource->m_resources, [url](auto resource) {
+        const auto it = std::find_if(m_localSource->m_resources.constBegin(), m_localSource->m_resources.constEnd(), [url](auto resource) {
             return resource->url() == url;
         });
         if (it != m_localSource->m_resources.end()) {
