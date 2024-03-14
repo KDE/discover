@@ -50,6 +50,7 @@
 
 #include <Category/Category.h>
 #include <optional>
+#include <ranges>
 #include <set>
 #include <sys/stat.h>
 
