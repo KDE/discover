@@ -1498,7 +1498,7 @@ ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, s
 
 #define FLATPAK_BACKEND_GUARD                                                                                                                                  \
     QPointer<ResultsStream> guardStream(stream);                                                                                                               \
-    auto cancellable = self->m_cancellable;                                                                                                                    \
+    g_autoptr(GCancellable) cancellable = g_object_ref(self->m_cancellable);                                                                                   \
     CoroutineSplitter coroutineSplitter;
 
 #define FLATPAK_BACKEND_CHECK                                                                                                                                  \
@@ -1748,6 +1748,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
 
 QCoro::Task<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> FlatpakBackend::listInstalledRefsForUpdate()
 {
+    g_autoptr(GCancellable) cancellable = g_object_ref(m_cancellable);
     co_return co_await QtConcurrent::run(
         &m_threadPool,
         [](GCancellable *cancellable, QList<FlatpakInstallation *> installations) {
@@ -1784,7 +1785,7 @@ QCoro::Task<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> FlatpakB
             }
             return ret;
         },
-        m_cancellable,
+        cancellable,
         m_installations);
 }
 
