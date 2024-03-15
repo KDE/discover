@@ -129,6 +129,8 @@ private:
     FlatpakRemote *installSource(FlatpakResource *resource);
 
     ResultsStream *deferredResultStream(const QString &streamName, std::function<QCoro::Task<>(ResultsStream *)> callback);
+    // refs in lists are g_object_ref'ed, but installations are currently not!
+    QCoro::Task<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> listInstalledRefsForUpdate();
 
     StandardBackendUpdater *m_updater;
     FlatpakSourcesBackend *m_sources = nullptr;

@@ -1532,45 +1532,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
             return [](FlatpakBackend *self, ResultsStream *stream) -> QCoro::Task<> {
                 FLATPAK_BACKEND_GUARD
 
-                const auto ret = co_await QtConcurrent::run(
-                    &self->m_threadPool,
-                    [](GCancellable *cancellable, QList<FlatpakInstallation *> installations) {
-                        QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
-                        if (g_cancellable_is_cancelled(cancellable)) {
-                            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Job cancelled";
-                            return ret;
-                        }
-
-                        for (auto installation : std::as_const(installations)) {
-                            g_autoptr(GError) localError = nullptr;
-                            g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_for_update(installation, cancellable, &localError);
-                            if (!refs) {
-                                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG)
-                                    << "Failed to get list of installed refs for listing updates:" << localError->message;
-                                continue;
-                            }
-                            if (g_cancellable_is_cancelled(cancellable)) {
-                                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Job cancelled";
-                                ret.clear();
-                                break;
-                            }
-
-                            if (refs->len == 0) {
-                                continue;
-                            }
-
-                            auto &current = ret[installation];
-                            current.reserve(refs->len);
-                            for (uint i = 0; i < refs->len; i++) {
-                                FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
-                                g_object_ref(ref);
-                                current.append(ref);
-                            }
-                        }
-                        return ret;
-                    },
-                    cancellable,
-                    self->m_installations);
+                const auto ret = co_await self->listInstalledRefsForUpdate();
 
                 FLATPAK_BACKEND_CHECK
 
@@ -1782,6 +1744,48 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
             }(this, stream, filter);
         });
     }
+}
+
+QCoro::Task<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> FlatpakBackend::listInstalledRefsForUpdate()
+{
+    co_return co_await QtConcurrent::run(
+        &m_threadPool,
+        [](GCancellable *cancellable, QList<FlatpakInstallation *> installations) {
+            QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
+            if (g_cancellable_is_cancelled(cancellable)) {
+                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Job cancelled";
+                return ret;
+            }
+
+            for (auto installation : std::as_const(installations)) {
+                g_autoptr(GError) localError = nullptr;
+                g_autoptr(GPtrArray) refs = flatpak_installation_list_installed_refs_for_update(installation, cancellable, &localError);
+                if (!refs) {
+                    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get list of installed refs for listing updates:" << localError->message;
+                    continue;
+                }
+                if (g_cancellable_is_cancelled(cancellable)) {
+                    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Job cancelled";
+                    ret.clear();
+                    break;
+                }
+
+                if (refs->len == 0) {
+                    continue;
+                }
+
+                auto &current = ret[installation];
+                current.reserve(refs->len);
+                for (uint i = 0; i < refs->len; i++) {
+                    FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
+                    g_object_ref(ref);
+                    current.append(ref);
+                }
+            }
+            return ret;
+        },
+        m_cancellable,
+        m_installations);
 }
 
 bool FlatpakBackend::isTracked(FlatpakResource *resource) const
