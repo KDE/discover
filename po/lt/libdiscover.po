@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:38+0000\n"
 "PO-Revision-Date: 2024-01-31 13:23+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -537,33 +537,33 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (naudotojas)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:710
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:721
 #, kde-format
 msgid "Local bundle"
 msgstr "Vietinis paketas"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1799
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1810
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Netaisyklingas appstream url „%1“"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1904
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1915
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Nepavyko pridėti šaltinio „%1“: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2025
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2036
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Nėra jokių Flatpak šaltinių."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2029
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2040
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Nepavyko įkelti „%1“ šaltinio"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:350
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:357
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -575,71 +575,71 @@ msgstr ""
 "programą, kita programinė įranga iš šios saugyklos irgi taps prieinama "
 "Discover.</para>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:442
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:449
 #, kde-format
 msgid "Retrieving size information"
 msgstr "Gaunama dydžio informacija"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:444
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:451
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Nežinomas"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:500
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:507
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:482
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "Nepavyko paleisti „%1“: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:730
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:737
 #, kde-format
 msgid "All Files"
 msgstr "Visi failai"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:732
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:739
 #, kde-format
 msgid "Home"
 msgstr "Pradžia"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:734
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:741
 #, kde-format
 msgid "Downloads"
 msgstr "Atsiuntimai"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:736
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:743
 #, kde-format
 msgid "Music"
 msgstr "Muzika"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Network Access"
 msgstr "Prieiga prie tinklo"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:812
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:819
 #, kde-format
 msgid "Can access the internet"
 msgstr "Gali pasiekti internetą"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:821
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:828
 #, kde-format
 msgid "Sound system access"
 msgstr "Prieiga prie garso sistemos"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:822
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "Can play audio"
 msgstr "Gali atkurti garso įrašus"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:826
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:970
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:977
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Prieiga prie seanso magistralės"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:827
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
@@ -648,56 +648,56 @@ msgstr ""
 "Gali komunikuoti su visomis kitomis programomis ir procesais, paleistais šio "
 "naudotojo paskyroje"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:832
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:981
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:988
 #, kde-format
 msgid "System Bus Access"
 msgstr "Prieiga prie sistemos magistralės"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
 "Gali komunikuoti su visomis kitomis sistemoje esančiomis programomis ir "
 "procesais"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:845
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Prieiga prie nuotolinio prisijungimo"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:846
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr ""
 "Gali inicijuoti nuotolinio prisijungimo užklausas naudodama SSH protokolą"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Prieiga prie lustinės kortelės"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "Gali integruoti ir komunikuoti su lustinėmis kortelėmis"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
 #, kde-format
 msgid "Printer Access"
 msgstr "Prieiga prie spausdintuvo"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:849
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "Gali integruoti ir komunikuoti su spausdintuvais"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:853
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
 #, kde-format
 msgid "GPG Agent"
 msgstr "GPG agentas"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:854
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:861
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -706,74 +706,74 @@ msgstr ""
 "Leidžia prieigą prie GPG šifravimo tarnybos, įprastai naudojama dokumentų "
 "pasirašymui ir pasirašytų dokumentų skaitymui"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "Prieiga prie Bluetooth"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:861
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "Gali integruoti ir komunikuoti su Bluetooth įrenginiais"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:865
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:872
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "Prieiga prie žemo lygmens sistemos"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:866
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:873
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "Gali atlikti žemo lygmens sistemos iškvietas (pvz., ptrace)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:872
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:879
 #, kde-format
 msgid "Device Access"
 msgstr "Prieiga prie įrenginių"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:873
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:880
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
 "Gali komunikuoti ir valdyti įtaisytus ar prijungtus aparatinės įrangos "
 "įrenginius"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:877
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:884
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Prieiga prie branduoliu grįstos virtualios mašinos"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:878
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:885
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr ""
 "Leidžia kitų operacinių sistemų paleidimą svečio teisėmis virtualiose "
 "mašinose"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:905
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:917
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:912
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:924
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (tik skaityti)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:908
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:920
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:915
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:927
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (gali kurti failus)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:911
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:918
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:936
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (skaityti ir rašyti) "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:938
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
 #, kde-format
 msgid "Home Folder Access"
 msgstr "Prieiga prie namų aplanko"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:941
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:948
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -782,7 +782,7 @@ msgstr ""
 "Gali iš anksto neprašant leidimo skaityti, rašyti ir kurti failus toliau "
 "nurodytose jūsų namų aplanko vietose: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:950
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -791,7 +791,7 @@ msgstr ""
 "Gali iš anksto neprašant leidimo skaityti ir rašyti failus toliau nurodytose "
 "jūsų namų aplanko vietose: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:952
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -800,7 +800,7 @@ msgstr ""
 "Gali iš anksto neprašant leidimo skaityti failus toliau nurodytose jūsų namų "
 "aplanko vietose: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:954
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -809,12 +809,12 @@ msgstr ""
 "Gali iš anksto neprašant leidimo gauti prieigą prie failų toliau nurodytose "
 "jūsų namų aplanko vietose: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:953
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
 #, kde-format
 msgid "System Folder Access"
 msgstr "Prieiga prie sistemos aplanko"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:955
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:962
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -823,7 +823,7 @@ msgstr ""
 "Gali iš anksto neprašant leidimo skaityti, rašyti ir kurti sisteminius "
 "failus toliau nurodytose vietose: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:957
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:964
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -832,7 +832,7 @@ msgstr ""
 "Gali iš anksto neprašant leidimo skaityti ir rašyti sisteminius failus "
 "toliau nurodytose vietose: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:959
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:966
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
@@ -841,7 +841,7 @@ msgstr ""
 "Gali iš anksto neprašant leidimo skaityti sisteminius failus toliau "
 "nurodytose vietose: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:961
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:968
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
@@ -850,7 +850,7 @@ msgstr ""
 "Gali iš anksto neprašant leidimo gauti prieigą prie sisteminių failų toliau "
 "nurodytose vietose: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:978
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -859,7 +859,7 @@ msgstr ""
 "Gali komunikuoti su kitomis programomis ir procesais tame pačiame "
 "darbalaukio seanse naudojant šiuos komunikacijos protokolus: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:983
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:990
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
