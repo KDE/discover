@@ -1459,15 +1459,16 @@ bool FlatpakBackend::flatpakResourceLessThan(AbstractResource *left, AbstractRes
     return left < right;
 }
 
-ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, std::function<QCoro::Task<>(ResultsStream *)> callback)
+ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, std::function<QCoro::Task<>(ResultsStream *, GCancellable *)> callback)
 {
     ResultsStream *stream = new ResultsStream(streamName);
     stream->setParent(this);
 
     // Don't capture variables into a coroutine lambda, pass them in as arguments instead
     // See https://devblogs.microsoft.com/oldnewthing/20211103-00/?p=105870
-    [](FlatpakBackend *self, ResultsStream *stream, std::function<QCoro::Task<>(ResultsStream *)> callback) -> QCoro::Task<> {
+    [](FlatpakBackend *self, ResultsStream *stream, std::function<QCoro::Task<>(ResultsStream *, GCancellable *)> callback) -> QCoro::Task<> {
         QPointer<ResultsStream> guard = stream;
+        g_autoptr(GCancellable) cancellable = g_object_ref(self->m_cancellable);
         if (self->isFetching()) {
             co_await qCoro(self, &FlatpakBackend::initialized);
         } else {
@@ -1476,7 +1477,7 @@ ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, s
         if (guard.isNull()) {
             co_return;
         }
-        co_await callback(stream);
+        co_await callback(stream, cancellable);
         if (guard.isNull()) {
             co_return;
         }
@@ -1488,7 +1489,6 @@ ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, s
 
 #define FLATPAK_BACKEND_GUARD                                                                                                                                  \
     QPointer<ResultsStream> guardStream(stream);                                                                                                               \
-    auto cancellable = self->m_cancellable;                                                                                                                    \
     CoroutineSplitter coroutineSplitter;
 
 #define FLATPAK_BACKEND_CHECK                                                                                                                                  \
@@ -1518,8 +1518,8 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
     } else if (!filter.resourceUrl.isEmpty()) {
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
     } else if (filter.state == AbstractResource::Upgradeable) {
-        return deferredResultStream(u"FlatpakStream-upgradeable"_s, [this](ResultsStream *stream) -> QCoro::Task<> {
-            return [](FlatpakBackend *self, ResultsStream *stream) -> QCoro::Task<> {
+        return deferredResultStream(u"FlatpakStream-upgradeable"_s, [this](ResultsStream *stream, GCancellable *cancellable) -> QCoro::Task<> {
+            return [](FlatpakBackend *self, ResultsStream *stream, GCancellable *cancellable) -> QCoro::Task<> {
                 FLATPAK_BACKEND_GUARD
 
                 const auto ret = co_await QtConcurrent::run(
@@ -1559,8 +1559,9 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                         }
                         return ret;
                     },
-                    cancellable,
+                    g_object_ref(cancellable),
                     self->m_installations);
+                g_object_unref(cancellable);
 
                 FLATPAK_BACKEND_CHECK
 
@@ -1628,11 +1629,11 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 if (!resources.isEmpty()) {
                     Q_EMIT stream->resourcesFound(resources);
                 }
-            }(this, stream);
+            }(this, stream, cancellable);
         });
     } else if (filter.state == AbstractResource::Installed) {
-        return deferredResultStream(u"FlatpakStream-installed"_s, [this, filter](ResultsStream *stream) -> QCoro::Task<> {
-            return [](FlatpakBackend *self, ResultsStream *stream, const AbstractResourcesBackend::Filters filter) -> QCoro::Task<> {
+        return deferredResultStream(u"FlatpakStream-installed"_s, [this, filter](ResultsStream *stream, GCancellable *cancellable) -> QCoro::Task<> {
+            return [](FlatpakBackend *self, ResultsStream *stream, const AbstractResourcesBackend::Filters filter, GCancellable *cancellable) -> QCoro::Task<> {
                 FLATPAK_BACKEND_GUARD
                 const auto installations = self->m_installations;
                 QVector<StreamResult> resources;
@@ -1678,14 +1679,14 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 if (!resources.isEmpty()) {
                     Q_EMIT stream->resourcesFound(resources);
                 }
-            }(this, stream, filter);
+            }(this, stream, filter, cancellable);
         });
     } else {
         // Multithreading is nearly impossible for this stream, since child
         // objects are created and interact with this backend object. So the
         // task is split into hunks, interleaved by zero timers.
-        return deferredResultStream(u"FlatpakStream"_s, [this, filter](ResultsStream *stream) -> QCoro::Task<> {
-            return [](FlatpakBackend *self, ResultsStream *stream, const AbstractResourcesBackend::Filters filter) -> QCoro::Task<> {
+        return deferredResultStream(u"FlatpakStream"_s, [this, filter](ResultsStream *stream, GCancellable *cancellable) -> QCoro::Task<> {
+            return [](FlatpakBackend *self, ResultsStream *stream, const AbstractResourcesBackend::Filters filter, GCancellable *cancellable) -> QCoro::Task<> {
                 FLATPAK_BACKEND_GUARD
                 const auto flatpakSources = self->m_flatpakSources;
                 QVector<StreamResult> prioritary, rest;
@@ -1769,7 +1770,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 if (!resources.isEmpty()) {
                     Q_EMIT stream->resourcesFound(resources);
                 }
-            }(this, stream, filter);
+            }(this, stream, filter, cancellable);
         });
     }
 }
