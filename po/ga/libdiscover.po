@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:38+0000\n"
+"POT-Creation-Date: 2024-03-16 00:39+0000\n"
 "PO-Revision-Date: 2011-12-28 12:28-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -96,7 +96,7 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "Idirlíon"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:172
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section \"web\""
@@ -104,12 +104,12 @@ msgstr "Idirlíon"
 msgid "Technical error message: %1"
 msgstr "Idirlíon"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:224
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr ""
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr ""
@@ -565,23 +565,23 @@ msgstr ""
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1810
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1808
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1915
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1913
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2036
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2034
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2040
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2038
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr ""
@@ -1093,7 +1093,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
 #, kde-format
 msgid "Log in information for %1"
 msgstr ""
@@ -1848,7 +1848,7 @@ msgid "Testing"
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
-#: libdiscover/resources/AbstractResource.cpp:98
+#: libdiscover/resources/AbstractResource.cpp:97
 #, kde-format
 msgid "Installed"
 msgstr "Suiteáilte"
@@ -2557,27 +2557,27 @@ msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:94
+#: libdiscover/resources/AbstractResource.cpp:93
 #, kde-format
 msgid "Broken"
 msgstr "Briste"
 
-#: libdiscover/resources/AbstractResource.cpp:96
+#: libdiscover/resources/AbstractResource.cpp:95
 #, kde-format
 msgid "Available"
 msgstr "Le fáil"
 
-#: libdiscover/resources/AbstractResource.cpp:100
+#: libdiscover/resources/AbstractResource.cpp:99
 #, kde-format
 msgid "Upgradeable"
 msgstr "In-uasghrádaithe"
 
-#: libdiscover/resources/AbstractResource.cpp:248
+#: libdiscover/resources/AbstractResource.cpp:243
 #, kde-format
 msgid "Launch"
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:259
+#: libdiscover/resources/AbstractResource.cpp:254
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Version Control"
@@ -2586,7 +2586,7 @@ msgctxt ""
 msgid "Refresh of version %1"
 msgstr "Rialú Leaganacha"
 
-#: libdiscover/resources/AbstractResource.cpp:269
+#: libdiscover/resources/AbstractResource.cpp:264
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"

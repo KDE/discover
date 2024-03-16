@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# SPDX-FileCopyrightText: 2023 Enol P. <enolp@softastur.org>
+# SPDX-FileCopyrightText: 2023, 2024 Enol P. <enolp@softastur.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:38+0000\n"
-"PO-Revision-Date: 2023-12-29 00:55+0100\n"
+"POT-Creation-Date: 2024-03-16 00:39+0000\n"
+"PO-Revision-Date: 2024-03-15 01:18+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: Assamese <alministradores@softastur.org>\n"
 "Language: ast\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -84,17 +84,17 @@ msgctxt ""
 msgid "Intense Content"
 msgstr ""
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:172
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
 #, kde-format
 msgid "Technical error message: %1"
 msgstr ""
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:224
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr ""
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr ""
@@ -509,7 +509,7 @@ msgstr "Reproductores de videu"
 #, kde-format
 msgctxt "Category"
 msgid "CD and DVD"
-msgstr "CD ya DVD"
+msgstr "CD y DVD"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
@@ -536,23 +536,23 @@ msgstr ""
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1810
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1808
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1915
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1913
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2036
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2034
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2040
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2038
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr ""
@@ -1051,7 +1051,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "KDE Store"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
 #, kde-format
 msgid "Log in information for %1"
 msgstr ""
@@ -1734,7 +1734,7 @@ msgid "Testing"
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
-#: libdiscover/resources/AbstractResource.cpp:98
+#: libdiscover/resources/AbstractResource.cpp:97
 #, kde-format
 msgid "Installed"
 msgstr ""
@@ -2355,34 +2355,34 @@ msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:94
+#: libdiscover/resources/AbstractResource.cpp:93
 #, kde-format
 msgid "Broken"
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:96
+#: libdiscover/resources/AbstractResource.cpp:95
 #, kde-format
 msgid "Available"
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:100
+#: libdiscover/resources/AbstractResource.cpp:99
 #, kde-format
 msgid "Upgradeable"
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:248
+#: libdiscover/resources/AbstractResource.cpp:243
 #, kde-format
 msgid "Launch"
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:259
+#: libdiscover/resources/AbstractResource.cpp:254
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:269
+#: libdiscover/resources/AbstractResource.cpp:264
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"

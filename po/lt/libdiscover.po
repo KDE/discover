@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:38+0000\n"
+"POT-Creation-Date: 2024-03-16 00:39+0000\n"
 "PO-Revision-Date: 2024-01-31 13:23+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -90,17 +90,17 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "Labai prieštaringas turinys"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:172
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
 #, kde-format
 msgid "Technical error message: %1"
 msgstr "Techninės klaidos pranešimas: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:224
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "Klaida pateikiant naudingumą: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Klaida pateikiant apžvalgą: %1"
@@ -542,23 +542,23 @@ msgstr "%1 (naudotojas)"
 msgid "Local bundle"
 msgstr "Vietinis paketas"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1810
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1808
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Netaisyklingas appstream url „%1“"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1915
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1913
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Nepavyko pridėti šaltinio „%1“: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2036
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2034
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Nėra jokių Flatpak šaltinių."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2040
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2038
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Nepavyko įkelti „%1“ šaltinio"
@@ -1107,7 +1107,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "KDE parduotuvė"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
 #, kde-format
 msgid "Log in information for %1"
 msgstr "%1 prisijungimo informacija"
@@ -1800,7 +1800,7 @@ msgid "Testing"
 msgstr "Bandomasis"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
-#: libdiscover/resources/AbstractResource.cpp:98
+#: libdiscover/resources/AbstractResource.cpp:97
 #, kde-format
 msgid "Installed"
 msgstr "Įdiegta"
@@ -2496,34 +2496,34 @@ msgstr ""
 "Išvardyti visas vidines puses, atskirtas kableliais „,“, kurias norėsime "
 "turėti įkeltas."
 
-#: libdiscover/resources/AbstractResource.cpp:94
+#: libdiscover/resources/AbstractResource.cpp:93
 #, kde-format
 msgid "Broken"
 msgstr "Sugadinta"
 
-#: libdiscover/resources/AbstractResource.cpp:96
+#: libdiscover/resources/AbstractResource.cpp:95
 #, kde-format
 msgid "Available"
 msgstr "Prieinama"
 
-#: libdiscover/resources/AbstractResource.cpp:100
+#: libdiscover/resources/AbstractResource.cpp:99
 #, kde-format
 msgid "Upgradeable"
 msgstr "Galima naujinti"
 
-#: libdiscover/resources/AbstractResource.cpp:248
+#: libdiscover/resources/AbstractResource.cpp:243
 #, kde-format
 msgid "Launch"
 msgstr "Paleisti"
 
-#: libdiscover/resources/AbstractResource.cpp:259
+#: libdiscover/resources/AbstractResource.cpp:254
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
 msgstr "%1 versijos papildymas"
 
-#: libdiscover/resources/AbstractResource.cpp:269
+#: libdiscover/resources/AbstractResource.cpp:264
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"

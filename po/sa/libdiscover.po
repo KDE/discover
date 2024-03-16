@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:38+0000\n"
+"POT-Creation-Date: 2024-03-16 00:39+0000\n"
 "PO-Revision-Date: 2023-10-01 21:56+0530\n"
 "Last-Translator: Shreekant <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <N/A>\n"
@@ -87,17 +87,17 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "तीव्र सामग्री"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:172
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
 #, kde-format
 msgid "Technical error message: %1"
 msgstr "तकनीकीदोषसन्देशः: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:224
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "उपयोगिता प्रस्तूयमाणे त्रुटिः: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "समीक्षां प्रस्तूयन्ते सति त्रुटिः: %1"
@@ -539,23 +539,23 @@ msgstr "%1 (उपयोक्ता)"
 msgid "Local bundle"
 msgstr "स्थानीय पोटलिका"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1810
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1808
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "विकृत एप्स्ट्रीम url '%1'."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1915
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1913
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "स्रोतः '%1' योजयितुं असफलम्: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2036
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2034
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "तत्र फ्लैटपैकस्रोताः नास्ति ।."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2040
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2038
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" स्रोतः आरोपयतुं असफलः"
@@ -1084,7 +1084,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr "केडीई भण्डार"
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
 #, kde-format
 msgid "Log in information for %1"
 msgstr "%1 कृते प्रवेशसूचना"
@@ -1779,7 +1779,7 @@ msgid "Testing"
 msgstr "परीक्षणम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
-#: libdiscover/resources/AbstractResource.cpp:98
+#: libdiscover/resources/AbstractResource.cpp:97
 #, kde-format
 msgid "Installed"
 msgstr "संस्थापितम्"
@@ -2441,34 +2441,34 @@ msgstr ""
 "वयं यत् किमपि पृष्ठभागं आरोपय कर्तुम् इच्छेम, तत् सर्वान् सूचीकृत्य, अल्पविरामेन ',' इत्यनेन पृथक् "
 "कृत्वा ।."
 
-#: libdiscover/resources/AbstractResource.cpp:94
+#: libdiscover/resources/AbstractResource.cpp:93
 #, kde-format
 msgid "Broken"
 msgstr "भग्नः"
 
-#: libdiscover/resources/AbstractResource.cpp:96
+#: libdiscover/resources/AbstractResource.cpp:95
 #, kde-format
 msgid "Available"
 msgstr "उपलब्धः"
 
-#: libdiscover/resources/AbstractResource.cpp:100
+#: libdiscover/resources/AbstractResource.cpp:99
 #, kde-format
 msgid "Upgradeable"
 msgstr "उन्नयनीयम्"
 
-#: libdiscover/resources/AbstractResource.cpp:248
+#: libdiscover/resources/AbstractResource.cpp:243
 #, kde-format
 msgid "Launch"
 msgstr "आरभत"
 
-#: libdiscover/resources/AbstractResource.cpp:259
+#: libdiscover/resources/AbstractResource.cpp:254
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
 msgstr "%1 संस्करणस्य पुनर्नवीकरणम्"
 
-#: libdiscover/resources/AbstractResource.cpp:269
+#: libdiscover/resources/AbstractResource.cpp:264
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"

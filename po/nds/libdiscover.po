@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:38+0000\n"
+"POT-Creation-Date: 2024-03-16 00:39+0000\n"
 "PO-Revision-Date: 2014-07-06 22:08+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -98,7 +98,7 @@ msgctxt ""
 msgid "Intense Content"
 msgstr "Internet"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:172
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section \"web\""
@@ -106,12 +106,12 @@ msgstr "Internet"
 msgid "Technical error message: %1"
 msgstr "Internet"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:224
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr ""
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr ""
@@ -606,13 +606,13 @@ msgstr ""
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1810
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1808
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1915
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1913
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -625,12 +625,12 @@ msgstr ""
 "%2\n"
 "\n"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2036
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2034
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2040
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2038
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -1167,7 +1167,7 @@ msgctxt "The name of the KDE Store"
 msgid "KDE Store"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSReviews.cpp:149
+#: libdiscover/backends/KNSBackend/KNSReviews.cpp:146
 #, kde-format
 msgid "Log in information for %1"
 msgstr ""
@@ -1959,7 +1959,7 @@ msgid "Testing"
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
-#: libdiscover/resources/AbstractResource.cpp:98
+#: libdiscover/resources/AbstractResource.cpp:97
 #, fuzzy, kde-format
 #| msgctxt "@info:status describes a past-tense action"
 #| msgid "Installed"
@@ -2699,28 +2699,28 @@ msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:94
+#: libdiscover/resources/AbstractResource.cpp:93
 #, kde-format
 msgid "Broken"
 msgstr "Schaadhaftig"
 
-#: libdiscover/resources/AbstractResource.cpp:96
+#: libdiscover/resources/AbstractResource.cpp:95
 #, fuzzy, kde-format
 #| msgid "Available updates"
 msgid "Available"
 msgstr "Verföögbor Opfrischen"
 
-#: libdiscover/resources/AbstractResource.cpp:100
+#: libdiscover/resources/AbstractResource.cpp:99
 #, kde-format
 msgid "Upgradeable"
 msgstr "Opgradeerbor"
 
-#: libdiscover/resources/AbstractResource.cpp:248
+#: libdiscover/resources/AbstractResource.cpp:243
 #, kde-format
 msgid "Launch"
 msgstr ""
 
-#: libdiscover/resources/AbstractResource.cpp:259
+#: libdiscover/resources/AbstractResource.cpp:254
 #, fuzzy, kde-format
 #| msgctxt "@label Label preceding the package version"
 #| msgid "Version:"
@@ -2729,7 +2729,7 @@ msgctxt ""
 msgid "Refresh of version %1"
 msgstr "Verschoon:"
 
-#: libdiscover/resources/AbstractResource.cpp:269
+#: libdiscover/resources/AbstractResource.cpp:264
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
