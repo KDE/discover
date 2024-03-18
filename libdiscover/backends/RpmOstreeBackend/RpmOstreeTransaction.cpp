@@ -211,6 +211,7 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
             const QJsonDocument jsonDocument = QJsonDocument::fromJson(m_stdout);
             if (!jsonDocument.isObject()) {
                 qWarning() << "rpm-ostree-backend: Could not parse output as JSON:" << m_prog << m_args;
+                setStatus(Status::DoneWithErrorStatus);
                 return;
             }
 
@@ -218,6 +219,7 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
             const QString newVersion = jsonDocument.object().value(QLatin1String("Labels")).toObject().value(QLatin1String("version")).toString();
             if (newVersion.isEmpty()) {
                 qInfo() << "rpm-ostree-backend: Could not get the version from the container labels";
+                setStatus(Status::DoneWithErrorStatus);
                 return;
             }
 
@@ -233,6 +235,8 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
             // Should never happen
             qWarning() << "rpm-ostree-backend: Error: Unknown resource format. Please file a bug.";
             passiveMessage(i18n("rpm-ostree-backend: Error: Unknown resource format. Please file a bug."));
+            setStatus(Status::DoneWithErrorStatus);
+            return;
         }
 
         // Always tell the backend to look for a new major version
@@ -259,6 +263,8 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
         // This should never happen
         qWarning() << "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug.";
         passiveMessage(i18n("rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."));
+        setStatus(Status::DoneWithErrorStatus);
+        return;
     }
     setStatus(Status::DoneStatus);
 }
