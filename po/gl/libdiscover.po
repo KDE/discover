@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 03:05+0000\n"
+"POT-Creation-Date: 2024-03-19 02:30+0000\n"
 "PO-Revision-Date: 2024-02-25 14:50+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -540,7 +540,7 @@ msgid "Local bundle"
 msgstr "Fardo local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1682
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:791
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:792
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL de appstream incorrecto «%1»"
@@ -1149,12 +1149,12 @@ msgstr ""
 "A asistencia para o seu sistema operativo rematou o %1. Considere anovar a "
 "unha versión con asistencia."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:906
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:907
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Non é posíbel retirar «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:989
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:990
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1167,13 +1167,13 @@ msgstr ""
 "Para poder anovar a esta versión, primeiro aplique todas as actualizacións "
 "dispoñíbeis e despois reinicie o sistema."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:999
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Anovar agora"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"

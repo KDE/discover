@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 03:05+0000\n"
+"POT-Creation-Date: 2024-03-19 02:30+0000\n"
 "PO-Revision-Date: 2024-01-06 03:31\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -542,7 +542,7 @@ msgid "Local bundle"
 msgstr "本地包"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1682
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:791
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:792
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "错误的 AppStream URL “%1”"
@@ -1110,12 +1110,12 @@ msgid ""
 msgstr ""
 "本机安装的操作系统已于 %1 结束支持。请考虑升级到仍受支持的新版操作系统。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:906
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:907
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "无法移除“%1”"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:989
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:990
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1127,13 +1127,13 @@ msgstr ""
 "<b>%1 已经推出，可以升级。</b>\n"
 "如需升级到此新版本，请先安装所有可用更新，然后重新启动您的系统。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:999
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "立即升级"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 03:05+0000\n"
+"POT-Creation-Date: 2024-03-19 02:30+0000\n"
 "PO-Revision-Date: 2024-01-09 19:34+0200\n"
 "Last-Translator: Māris Nartišs <maris.kde@gmail.com>\n"
 "Language-Team: \n"
@@ -539,7 +539,7 @@ msgid "Local bundle"
 msgstr "Vietējs komplekts"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1682
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:791
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:792
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Nepareizi noformēta lietotņu plūsmas adrese „%1“"
@@ -1142,12 +1142,12 @@ msgstr ""
 "Jūsu operētājsistēmas atbalsts beidzās %1. Apsveriet tās atjaunināšanu uz "
 "atbalstītu versiju."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:906
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:907
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Neizdodas noņemt „%1“"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:989
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:990
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, fuzzy, kde-format
 #| msgid ""
@@ -1164,14 +1164,14 @@ msgstr ""
 "Lai atjauninātu uz šo versiju, ieinstalējiet visus pieejamos atjauninājumus "
 "un pārstartējiet sistēmu."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:999
 #, fuzzy, kde-format
 #| msgid "Upgrade to %1 %2"
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Uzlabot uz %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, fuzzy, kde-format
 #| msgid "Repo not available"

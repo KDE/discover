@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 03:05+0000\n"
+"POT-Creation-Date: 2024-03-19 02:30+0000\n"
 "PO-Revision-Date: 2024-01-10 05:35+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -538,7 +538,7 @@ msgid "Local bundle"
 msgstr "ლოკალური პაკეტი"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1682
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:791
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:792
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "აღმავლის არასწორი URL '%1'"
@@ -1140,12 +1140,12 @@ msgstr ""
 "თქვენი ოპერაციული სისტემის მხარდაჭერა %1-ზე დასრულდა. სჯობს მხარდაჭერილ "
 "ვერსიამდე განახლდეთ."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:906
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:907
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "%1-ის წაშლის შეცდომა"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:989
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:990
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1158,13 +1158,13 @@ msgstr ""
 "ამ ვერსიამდე განახლებისთვის დარწმუნდით, რომ ყველა დარჩენილი განახლება "
 "დააყენეთ და გადატვირთეთ სისტემა."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:999
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "განაახლეთ ახლა"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"

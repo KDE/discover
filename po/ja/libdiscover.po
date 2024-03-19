@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 03:05+0000\n"
+"POT-Creation-Date: 2024-03-19 02:30+0000\n"
 "PO-Revision-Date: 2024-02-09 22:21+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -538,7 +538,7 @@ msgid "Local bundle"
 msgstr "ローカルパッケージ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1682
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:791
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:792
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正な AppStream の URL '%1'"
@@ -1134,12 +1134,12 @@ msgstr ""
 "あなたのオペレーティングシステムのサポートは %1 に終了しました。サポートされ"
 "ているバージョンへの更新を検討してください。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:906
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:907
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1'を削除できません。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:989
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:990
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1152,13 +1152,13 @@ msgstr ""
 "この新しいバージョンに更新する前に、すべての利用可能な更新を適用してシステム"
 "を再起動する必要があります。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:998
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:999
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "今すぐ更新"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1020
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
