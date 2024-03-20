@@ -52,7 +52,7 @@ class PackageKitDependencies : public QObject
 
 public:
     explicit PackageKitDependencies(QObject *parent = nullptr);
-    ~PackageKitDependencies();
+    ~PackageKitDependencies() override;
 
     QString packageId() const;
     void setPackageId(const QString &packageId);
@@ -90,7 +90,7 @@ class PackageKitFetchDependenciesJob : public QObject
 
 public:
     explicit PackageKitFetchDependenciesJob(const QString &packageId);
-    ~PackageKitFetchDependenciesJob();
+    ~PackageKitFetchDependenciesJob() override;
 
     void cancel();
 
