@@ -53,6 +53,7 @@ class PackageKitDependencies : public QObject
 public:
     explicit PackageKitDependencies(QObject *parent = nullptr);
     ~PackageKitDependencies() override;
+    Q_DISABLE_COPY_MOVE(PackageKitDependencies)
 
     QString packageId() const;
     void setPackageId(const QString &packageId);
@@ -91,6 +92,7 @@ class PackageKitFetchDependenciesJob : public QObject
 public:
     explicit PackageKitFetchDependenciesJob(const QString &packageId);
     ~PackageKitFetchDependenciesJob() override;
+    Q_DISABLE_COPY_MOVE(PackageKitFetchDependenciesJob)
 
     void cancel();
 
