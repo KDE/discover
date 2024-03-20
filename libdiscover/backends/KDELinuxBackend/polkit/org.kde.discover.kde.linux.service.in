@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: 2024 Harald Sitter <sitter@kde.org>
+[D-BUS Service]
+Name=org.kde.discover.kde.linux
+Exec=@KDE_INSTALL_FULL_LIBEXECDIR_KF@/plasma-discover-kde-linux-polkit-helper
+User=root
