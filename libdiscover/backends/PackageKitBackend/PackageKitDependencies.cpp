@@ -90,8 +90,8 @@ QList<PackageKitDependency> PackageKitDependencies::dependencies()
         }
     } else if (!m_packageId.isEmpty()) {
         // start the job
-        Job job{new PakcageKitFetchDependenciesJob(m_packageId)};
-        connect(job, &PakcageKitFetchDependenciesJob::finished, this, &PackageKitDependencies::onJobFinished);
+        Job job{new PackageKitFetchDependenciesJob(m_packageId)};
+        connect(job, &PackageKitFetchDependenciesJob::finished, this, &PackageKitDependencies::onJobFinished);
         m_state = job;
     }
     return {};
@@ -111,7 +111,7 @@ void PackageKitDependencies::onJobFinished(QList<PackageKitDependency> dependenc
 
     if (auto job = std::get<Job>(m_state.value())) {
         // Should not emit twice, but better be on the safe side
-        disconnect(job, &PakcageKitFetchDependenciesJob::finished, this, &PackageKitDependencies::onJobFinished);
+        disconnect(job, &PackageKitFetchDependenciesJob::finished, this, &PackageKitDependencies::onJobFinished);
     }
 
     m_state = dependencies;
@@ -123,7 +123,7 @@ void PackageKitDependencies::cancel(bool notify)
     if (m_state.has_value()) {
         if (auto jobPtr = std::get_if<Job>(&m_state.value())) {
             if (auto job = *jobPtr) {
-                disconnect(job, &PakcageKitFetchDependenciesJob::finished, this, &PackageKitDependencies::onJobFinished);
+                disconnect(job, &PackageKitFetchDependenciesJob::finished, this, &PackageKitDependencies::onJobFinished);
                 job->cancel();
             }
             notify = false;
@@ -136,7 +136,7 @@ void PackageKitDependencies::cancel(bool notify)
     }
 }
 
-PakcageKitFetchDependenciesJob::PakcageKitFetchDependenciesJob(const QString &packageId)
+PackageKitFetchDependenciesJob::PackageKitFetchDependenciesJob(const QString &packageId)
 {
     if (packageId.isEmpty()) {
         onTransactionFinished();
@@ -152,17 +152,17 @@ PakcageKitFetchDependenciesJob::PakcageKitFetchDependenciesJob(const QString &pa
     m_transaction->setParent(this);
     connect(m_transaction, &QObject::destroyed, this, &QObject::deleteLater);
 
-    connect(m_transaction, &PackageKit::Transaction::errorCode, this, &PakcageKitFetchDependenciesJob::onTransactionErrorCode);
-    connect(m_transaction, &PackageKit::Transaction::package, this, &PakcageKitFetchDependenciesJob::onTransactionPackage);
-    connect(m_transaction, &PackageKit::Transaction::finished, this, &PakcageKitFetchDependenciesJob::onTransactionFinished);
+    connect(m_transaction, &PackageKit::Transaction::errorCode, this, &PackageKitFetchDependenciesJob::onTransactionErrorCode);
+    connect(m_transaction, &PackageKit::Transaction::package, this, &PackageKitFetchDependenciesJob::onTransactionPackage);
+    connect(m_transaction, &PackageKit::Transaction::finished, this, &PackageKitFetchDependenciesJob::onTransactionFinished);
 }
 
-PakcageKitFetchDependenciesJob::~PakcageKitFetchDependenciesJob()
+PackageKitFetchDependenciesJob::~PackageKitFetchDependenciesJob()
 {
     cancel();
 }
 
-void PakcageKitFetchDependenciesJob::cancel()
+void PackageKitFetchDependenciesJob::cancel()
 {
     if (m_transaction) {
         m_transaction->cancel();
@@ -170,17 +170,17 @@ void PakcageKitFetchDependenciesJob::cancel()
     deleteLater();
 }
 
-void PakcageKitFetchDependenciesJob::onTransactionErrorCode(PackageKit::Transaction::Error error, const QString &details)
+void PackageKitFetchDependenciesJob::onTransactionErrorCode(PackageKit::Transaction::Error error, const QString &details)
 {
-    qCWarning(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "PakcageKitFetchDependenciesJob: Transaction error:" << m_transaction << error << details;
+    qCWarning(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "PackageKitFetchDependenciesJob: Transaction error:" << m_transaction << error << details;
 }
 
-void PakcageKitFetchDependenciesJob::onTransactionPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
+void PackageKitFetchDependenciesJob::onTransactionPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
     m_dependencies.append(PackageKitDependency(info, packageId, summary));
 }
 
-void PakcageKitFetchDependenciesJob::onTransactionFinished()
+void PackageKitFetchDependenciesJob::onTransactionFinished()
 {
     std::sort(m_dependencies.begin(), m_dependencies.end(), [](const PackageKitDependency &a, const PackageKitDependency &b) {
         return a.info() < b.info() || (a.info() == b.info() && a.packageName() < b.packageName());

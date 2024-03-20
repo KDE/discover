@@ -12,7 +12,7 @@
 #include <optional>
 #include <variant>
 
-class PakcageKitFetchDependenciesJob;
+class PackageKitFetchDependenciesJob;
 
 // Minimal info about a package
 class PackageKitDependency
@@ -69,7 +69,7 @@ private Q_SLOTS:
     void onJobFinished(QList<PackageKitDependency> dependencies);
 
 private:
-    using Job = QPointer<PakcageKitFetchDependenciesJob>;
+    using Job = QPointer<PackageKitFetchDependenciesJob>;
     using Data = QList<PackageKitDependency>;
 
     void cancel(bool notify);
@@ -84,13 +84,13 @@ private:
 
 // Wrapper which hides some complexity of PackageKit::Transaction management.
 // Self-destructs and emiting finished() signal or being cancelled.
-class PakcageKitFetchDependenciesJob : public QObject
+class PackageKitFetchDependenciesJob : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit PakcageKitFetchDependenciesJob(const QString &packageId);
-    ~PakcageKitFetchDependenciesJob();
+    explicit PackageKitFetchDependenciesJob(const QString &packageId);
+    ~PackageKitFetchDependenciesJob();
 
     void cancel();
 
