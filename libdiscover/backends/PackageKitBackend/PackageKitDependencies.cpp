@@ -1,5 +1,6 @@
 /*
  *   SPDX-FileCopyrightText: 2024 ivan tkachenko <me@ratijas.tk>
+ *   SPDX-FileCopyrightText: 2024 Harald Sitter <sitter@kde.org>
  *
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
@@ -80,6 +81,11 @@ void PackageKitDependencies::setPackageId(const QString &packageId)
     }
 }
 
+bool PackageKitDependencies::hasFetchedDependencies()
+{
+    return m_state.has_value() && std::holds_alternative<Data>(*m_state);
+}
+
 QList<PackageKitDependency> PackageKitDependencies::dependencies()
 {
     if (m_state.has_value()) {
@@ -101,7 +107,8 @@ void PackageKitDependencies::refresh()
 {
     cancel(true);
     // force creation of a new job
-    dependencies();
+    // FIXME move the job start logic out of dependencies, it has no business being in there
+    std::ignore = dependencies();
 }
 
 void PackageKitDependencies::onJobFinished(QList<PackageKitDependency> dependencies)

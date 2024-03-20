@@ -1,6 +1,7 @@
 /*
  *   SPDX-FileCopyrightText: 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *   SPDX-FileCopyrightText: 2013 Lukas Appelhans <l.appelhans@gmx.de>
+ *   SPDX-FileCopyrightText: 2024 Harald Sitter <sitter@kde.org>
  *
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
@@ -41,7 +42,6 @@ PackageKitResource::PackageKitResource(QString packageName, QString summary, Pac
     , m_name(std::move(packageName))
 {
     setObjectName(m_name);
-    updatePackageIdForDependencies();
     connect(this, &AbstractResource::stateChanged, this, &PackageKitResource::updatePackageIdForDependencies);
     connect(&m_dependencies, &PackageKitDependencies::dependenciesChanged, this, [this] {
         Q_EMIT dependenciesChanged();
@@ -428,16 +428,19 @@ PackageKitBackend *PackageKitResource::backend() const
 
 QString PackageKitResource::sizeDescription()
 {
-    fetchDetails();
+    auto baseDescription = AbstractResource::sizeDescription();
+
+    if (!m_dependencies.hasFetchedDependencies()) {
+        fetchDetails();
+        updatePackageIdForDependencies();
+        return baseDescription;
+    }
 
     const auto dependenciesCount = m_dependencies.dependencies().count();
-    const auto baseDescription = AbstractResource::sizeDescription();
-
     if (dependenciesCount == 0) {
         return baseDescription;
-    } else {
-        return i18np("%2 (plus %1 dependency)", "%2 (plus %1 dependencies)", dependenciesCount, baseDescription);
     }
+    return i18np("%2 (plus %1 dependency)", "%2 (plus %1 dependencies)", dependenciesCount, baseDescription);
 }
 
 QString PackageKitResource::sourceIcon() const
