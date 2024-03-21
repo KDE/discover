@@ -110,13 +110,13 @@ public:
     void addEntries(const KNSCore::Entry::List &entries)
     {
         // Should probably address that KNSCore::ResultsStream would return the Entry several times...
-        const auto filteredEntries = kFilter<KNSCore::Entry::List>(entries, [this](const auto &entry) {
-            return m_sent.contains(entry.uniqueId());
+        const auto selectedEntries = kFilter<KNSCore::Entry::List>(entries, [this](const auto &entry) {
+            return !m_sent.contains(entry.uniqueId());
         });
-        const auto res = kTransform<QList<StreamResult>>(filteredEntries, [this](const auto &entry) {
+        const auto res = kTransform<QList<StreamResult>>(selectedEntries, [this](const auto &entry) {
             return StreamResult{m_backend->resourceForEntry(entry), 0};
         });
-        for (const auto &entry : filteredEntries) {
+        for (const auto &entry : selectedEntries) {
             m_sent.insert(entry.uniqueId());
         }
         Q_EMIT resourcesFound(res);
