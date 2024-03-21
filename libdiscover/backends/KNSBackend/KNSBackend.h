@@ -85,6 +85,9 @@ private:
     void fetchInstalled();
     void setFetching(bool f);
     void markInvalid(const QString &message);
+
+    template<typename T>
+    void deferredResultStream(KNSResultsStream *stream, T start);
     KNSResultsStream *searchStream(const QString &searchText);
 
     bool m_fetching;

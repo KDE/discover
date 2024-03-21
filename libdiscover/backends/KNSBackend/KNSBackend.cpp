@@ -100,6 +100,8 @@ public:
 
     void setRequest(const KNSCore::Provider::SearchRequest &request)
     {
+        Q_ASSERT(!m_started);
+        m_started = true;
         KNSCore::ResultsStream *job = m_backend->engine()->search(request);
         connect(job, &KNSCore::ResultsStream::entriesFound, this, &KNSResultsStream::addEntries);
         connect(job, &KNSCore::ResultsStream::finished, this, &KNSResultsStream::finish);
@@ -122,9 +124,15 @@ public:
         Q_EMIT resourcesFound(res);
     }
 
+    bool hasStarted() const
+    {
+        return m_started;
+    }
+
 private:
     QSet<QString> m_sent;
     KNSBackend *const m_backend;
+    bool m_started = false;
 };
 
 KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &knsrc)
@@ -464,6 +472,25 @@ static ResultsStream *voidStream()
     return new ResultsStream(QStringLiteral("KNS-void"), {});
 }
 
+template<typename T>
+void KNSBackend::deferredResultStream(KNSResultsStream *stream, T start)
+{
+    if (isFetching()) {
+        auto startOnce = [stream, start] {
+            if (stream->hasStarted()) {
+                return;
+            }
+            start();
+        };
+
+        // If it's not ready to take queries, wait a bit longer
+        connect(this, &KNSBackend::initialized, stream, startOnce, Qt::QueuedConnection);
+        connect(this, &KNSBackend::fetchingChanged, stream, startOnce, Qt::QueuedConnection);
+    } else {
+        QTimer::singleShot(0, stream, start);
+    }
+}
+
 ResultsStream *KNSBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
     if (!m_isValid || (!filter.resourceUrl.isEmpty() && filter.resourceUrl.scheme() != QLatin1String("kns")) || !filter.mimetype.isEmpty())
@@ -480,12 +507,7 @@ ResultsStream *KNSBackend::search(const AbstractResourcesBackend::Filters &filte
             }
             stream->finish();
         };
-        if (isFetching()) {
-            connect(this, &KNSBackend::initialized, stream, start);
-        } else {
-            QTimer::singleShot(0, stream, start);
-        }
-
+        deferredResultStream(stream, start);
         return stream;
     } else if ((!filter.category && !filter.search.isEmpty()) // Accept global searches
                                                               // If there /is/ a category, make sure we actually are one of those requested before searching
@@ -510,12 +532,7 @@ KNSResultsStream *KNSBackend::searchStream(const QString &searchText)
         KNSCore::Provider::SearchRequest p(KNSCore::Provider::Newest, KNSCore::Provider::None, searchText, {}, 0, ENGINE_PAGE_SIZE);
         stream->setRequest(p);
     };
-    if (isFetching()) {
-        connect(this, &KNSBackend::initialized, stream, start, Qt::QueuedConnection);
-        connect(this, &KNSBackend::fetchingChanged, stream, start, Qt::QueuedConnection);
-    } else {
-        QTimer::singleShot(0, stream, start);
-    }
+    deferredResultStream(stream, start);
     return stream;
 }
 
@@ -537,12 +554,7 @@ ResultsStream *KNSBackend::findResourceByPackageName(const QUrl &search)
         KNSCore::Provider::SearchRequest query(KNSCore::Provider::Newest, KNSCore::Provider::ExactEntryId, entryid, {}, 0, ENGINE_PAGE_SIZE);
         stream->setRequest(query);
     };
-    if (isFetching()) {
-        connect(this, &KNSBackend::initialized, stream, start, Qt::QueuedConnection);
-        connect(this, &KNSBackend::fetchingChanged, stream, start, Qt::QueuedConnection);
-    } else {
-        QTimer::singleShot(0, stream, start);
-    }
+    deferredResultStream(stream, start);
     return stream;
 }
 
