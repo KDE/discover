@@ -7,7 +7,7 @@
 import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.3 as QQC2
-import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami as Kirigami
 import org.kde.kcmutils
 
 SimpleKCM {
@@ -54,7 +54,7 @@ SimpleKCM {
                 checked: kcm.updatesSettings.useUnattendedUpdates
             }
 
-            ContextualHelpButton {
+            Kirigami.ContextualHelpButton {
                 toolTipText: xi18nc("@info", "Software updates will be downloaded automatically when they become available. Updates for applications will be installed immediately, while system updates will be installed the next time the computer is restarted.")
             }
         }
