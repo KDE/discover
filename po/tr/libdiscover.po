@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-16 00:39+0000\n"
-"PO-Revision-Date: 2024-02-29 16:59+0300\n"
+"PO-Revision-Date: 2024-03-21 23:13+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.02.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -548,7 +548,7 @@ msgstr "Hatalı oluşturulmuş Appstream URL’si ‘%1’"
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1913
 #, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "'%1' kaynağı eklenemedi: %2"
+msgstr "“%1” kaynağı eklenemedi: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2034
 #, kde-format
@@ -558,7 +558,7 @@ msgstr "Bir Flatpak kaynağı yok."
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2038
 #, kde-format
 msgid "Failed to load \"%1\" source"
-msgstr "\"%1\" kaynağı yüklenemedi"
+msgstr "“%1” kaynağı yüklenemedi"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:357
 #, kde-kuit-format
@@ -588,7 +588,7 @@ msgstr "Bilinmiyor"
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "'%1' başlatılamadı: %2"
+msgstr "“%1” başlatılamadı: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:737
 #, kde-format
@@ -894,7 +894,7 @@ msgstr "%1 kaynağı eklenemedi"
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:288
 #, kde-format
 msgid "Removing '%1'"
-msgstr "'%1' kaldırılıyor"
+msgstr "“%1” kaldırılıyor"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
 #, kde-format
@@ -928,12 +928,12 @@ msgstr "Bir Flatpak depo URI girin (*.flatpakrepo):"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:29
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
-msgstr "%2 içindeki '%1' uzak sunucusu %3 konumundan ekleniyor"
+msgstr "%2 içindeki “%1” uzak sunucusu %3 konumundan ekleniyor"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:200
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr "'%2' içinde '%1' bulunamadı; kullanılabilir olduğundan emin olun."
+msgstr "“%2” içinde “%1” bulunamadı; kullanılabilir olduğundan emin olun."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
@@ -1146,7 +1146,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:908
 #, kde-format
 msgid "Cannot remove '%1'"
-msgstr "'%1' kaldırılamıyor"
+msgstr "“%1” kaldırılamıyor"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
@@ -1524,13 +1524,13 @@ msgstr "Bilinmeyen hata %1."
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
 #, kde-format
 msgid "'%1' was changed and suggests to be restarted."
-msgstr "'%1' değişti ve yeniden başlatılma önerisinde bulunuyor."
+msgstr "“%1” değişti ve yeniden başlatılma önerisinde bulunuyor."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
 #, kde-format
 msgid "A change by '%1' suggests your session to be restarted."
 msgstr ""
-"'%1' tarafından yapılan bir değişiklik, oturumu yeniden başlatmanızı "
+"“%1” tarafından yapılan bir değişiklik, oturumu yeniden başlatmanızı "
 "öneriyor."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
@@ -1539,7 +1539,7 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
-"'%1' güvenlik nedeniyle güncellendi, oturumun yeniden başlatılması önerilir."
+"“%1” güvenlik nedeniyle güncellendi, oturumun yeniden başlatılması önerilir."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
 #, kde-format
@@ -1547,13 +1547,13 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the system is "
 "recommended."
 msgstr ""
-"'%1' güvenlik nedeniyle güncellendi, sistemin yeniden başlatılması önerilir."
+"“%1” güvenlik nedeniyle güncellendi, sistemin yeniden başlatılması önerilir."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
 #, kde-format
 msgid "A change by '%1' suggests your system to be restarted."
 msgstr ""
-"'%1' tarafından yapılan bir değişiklik, sistemi yeniden başlatmanızı "
+"“%1” tarafından yapılan bir değişiklik, sistemi yeniden başlatmanızı "
 "öneriyor."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
@@ -2124,7 +2124,7 @@ msgid ""
 "Media Change of type '%1' is requested.\n"
 "%2"
 msgstr ""
-"'%1' Ortam Değişimi türü istendi.\n"
+"“%1” Ortam Değişimi türü istendi.\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:756
@@ -2426,7 +2426,7 @@ msgstr "%1 kanal"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:356
 #, kde-format
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr "%1 — %2"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:56
 #, kde-format
@@ -2455,8 +2455,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
-"SteamOS: SteamOS güncellemeleri için atomupd ile iletişim kurulamıyor..."
+msgstr "SteamOS: SteamOS güncellemeleri için atomupd ile iletişim kurulamıyor…"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
@@ -2468,7 +2467,7 @@ msgstr "SteamOS"
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
 msgstr ""
-"Yüklemek isteyeceğimiz tüm arka uçları virgül ',' ile ayırarak listeleyin."
+"Yüklemek isteyeceğimiz tüm arka uçları virgül ‘,’ ile ayırarak listeleyin."
 
 #: libdiscover/resources/AbstractResource.cpp:93
 #, kde-format

@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-14 00:39+0000\n"
-"PO-Revision-Date: 2024-02-09 17:45+0300\n"
+"PO-Revision-Date: 2024-03-21 23:11+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.95\n"
+"X-Generator: Lokalize 24.02.1\n"
 
 #: discover/DiscoverObject.cpp:190
 #, kde-format
@@ -72,12 +72,12 @@ msgstr ""
 #: discover/DiscoverObject.cpp:291
 #, kde-format
 msgid "Could not find category '%1'"
-msgstr "'%1' kategorisi bulunamadı"
+msgstr "“%1” kategorisi bulunamadı"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr "Var olmayan '%1' dosyası açılmaya çalışılıyor"
+msgstr "Var olmayan “%1” dosyası açılmaya çalışılıyor"
 
 #: discover/DiscoverObject.cpp:328
 #, kde-format
@@ -188,7 +188,7 @@ msgstr "Uygulama kaşifi"
 #: discover/main.cpp:122
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2024 Plasma Geliştirme Takımı"
+msgstr "© 2010–2024 Plasma Geliştirme Takımı"
 
 #: discover/main.cpp:123
 #, kde-format
@@ -300,7 +300,7 @@ msgstr "%1 konumundan"
 #: discover/qml/ApplicationPage.qml:83
 #, kde-format
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr "%1 — %2"
 
 #: discover/qml/ApplicationPage.qml:202
 #, kde-format
@@ -558,8 +558,8 @@ msgstr ""
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Ara: %2 - %3 öge"
-msgstr[1] "Ara: %2 - %3 öge"
+msgstr[0] "Ara: %2 — %3 öge"
+msgstr[1] "Ara: %2 — %3 öge"
 
 #: discover/qml/ApplicationsListPage.qml:55
 #, kde-format
@@ -570,15 +570,15 @@ msgstr "Ara: %1"
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%2 - %1 öge"
-msgstr[1] "%2 - %1 öge"
+msgstr[0] "%2 — %1 öge"
+msgstr[1] "%2 — %1 öge"
 
 #: discover/qml/ApplicationsListPage.qml:65
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Ara - %1 öge"
-msgstr[1] "Ara - %1 öge"
+msgstr[0] "Ara — %1 öge"
+msgstr[1] "Ara — %1 öge"
 
 #: discover/qml/ApplicationsListPage.qml:67
 #: discover/qml/ApplicationsListPage.qml:254
@@ -648,13 +648,13 @@ msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr "\"%1\", \"%2\" kategorisinde bulunamadı"
+msgstr "“%1”, “%2” kategorisinde bulunamadı"
 
 #: discover/qml/ApplicationsListPage.qml:235
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
-msgstr "\"%1\", kullanılabilir kaynaklarda bulunamadı"
+msgstr "“%1”, kullanılabilir kaynaklarda bulunamadı"
 
 #: discover/qml/ApplicationsListPage.qml:236
 #, kde-format
@@ -664,9 +664,9 @@ msgid ""
 "been reviewed by your distributor for functionality or stability. Use with "
 "caution."
 msgstr ""
-"\"%1\", internette bulunabilir. İnternetten alınan yazılımlar dağıtıcınız "
-"tarafından işlevsellik veya kararlılık bakımından incelenmemiştir. Dikkatli "
-"kullanın."
+"“%1”, internet üzerinde bulunabilir. İnternetten alınan yazılımlar "
+"dağıtıcınız tarafından işlevsellik veya kararlılık bakımından "
+"incelenmemiştir. Dikkatli kullanın."
 
 #: discover/qml/ApplicationsListPage.qml:269
 #, kde-format
@@ -938,7 +938,7 @@ msgstr "Kurulu"
 #: discover/qml/Navigation.qml:34
 #, kde-format
 msgid "Resources for '%1'"
-msgstr "'%1' için kaynaklar"
+msgstr "“%1” için kaynaklar"
 
 #: discover/qml/ProgressView.qml:18
 #, kde-format
@@ -954,19 +954,19 @@ msgstr "Görevler"
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
-msgstr "%1 - %2: %3, %4 kaldı"
+msgstr "%1 — %2: %3, %4 kaldı"
 
 #: discover/qml/ProgressView.qml:121
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
-msgstr "%1 - %2: %3"
+msgstr "%1 — %2: %3"
 
 #: discover/qml/ProgressView.qml:128
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr "%1 — %2"
 
 #: discover/qml/ReviewDelegate.qml:65
 #, kde-format
@@ -1141,7 +1141,7 @@ msgstr "Ara…"
 #: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search in '%1'…"
-msgstr "'%1' içinde ara…"
+msgstr "“%1” içinde ara…"
 
 #: discover/qml/SourcesPage.qml:18
 #, kde-format
@@ -1171,7 +1171,7 @@ msgstr "Önceliği artırın"
 #: discover/qml/SourcesPage.qml:254
 #, kde-format
 msgid "Failed to increase '%1' preference"
-msgstr "'%1' tercihi artırılamadı"
+msgstr "“%1” tercihi artırılamadı"
 
 #: discover/qml/SourcesPage.qml:260
 #, kde-format
@@ -1181,7 +1181,7 @@ msgstr "Önceliği azaltın"
 #: discover/qml/SourcesPage.qml:266
 #, kde-format
 msgid "Failed to decrease '%1' preference"
-msgstr "'%1' tercihi azaltılamadı"
+msgstr "“%1” tercihi azaltılamadı"
 
 #: discover/qml/SourcesPage.qml:272
 #, kde-format
