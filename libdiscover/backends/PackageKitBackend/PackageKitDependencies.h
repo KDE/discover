@@ -75,6 +75,7 @@ private:
     using Job = QPointer<PackageKitFetchDependenciesJob>;
     using Data = QList<PackageKitDependency>;
 
+    void start();
     void cancel(bool notify);
 
     QString m_packageId;

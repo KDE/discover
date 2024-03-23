@@ -88,27 +88,26 @@ bool PackageKitDependencies::hasFetchedDependencies()
 
 QList<PackageKitDependency> PackageKitDependencies::dependencies()
 {
-    if (m_state.has_value()) {
-        if (auto list = std::get_if<Data>(&m_state.value())) {
-            return *list;
-        } else {
-            // the job is still running
-        }
-    } else if (!m_packageId.isEmpty()) {
-        // start the job
-        Job job{new PackageKitFetchDependenciesJob(m_packageId)};
-        connect(job, &PackageKitFetchDependenciesJob::finished, this, &PackageKitDependencies::onJobFinished);
-        m_state = job;
+    Q_ASSERT(m_state.has_value()); // start must have been called before!
+    if (auto list = std::get_if<Data>(&m_state.value())) {
+        return *list;
     }
+    // the job is still running
     return {};
+}
+
+void PackageKitDependencies::start()
+{
+    Q_ASSERT(!m_state.has_value()); // cancel must have been called before!
+    Job job{new PackageKitFetchDependenciesJob(m_packageId)};
+    connect(job, &PackageKitFetchDependenciesJob::finished, this, &PackageKitDependencies::onJobFinished);
+    m_state = job;
 }
 
 void PackageKitDependencies::refresh()
 {
     cancel(true);
-    // force creation of a new job
-    // FIXME move the job start logic out of dependencies, it has no business being in there
-    std::ignore = dependencies();
+    start();
 }
 
 void PackageKitDependencies::onJobFinished(QList<PackageKitDependency> dependencies)
