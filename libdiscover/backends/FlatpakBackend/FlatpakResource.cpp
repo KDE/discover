@@ -33,6 +33,7 @@
 #include <QDesktopServices>
 #include <QDir>
 #include <QDirIterator>
+#include <QEvent>
 #include <QFileInfo>
 #include <QFutureWatcher>
 #include <QIcon>
@@ -40,6 +41,7 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QProcess>
+#include <QQueue>
 #include <QStringList>
 #include <QTemporaryFile>
 #include <QTimer>
@@ -221,15 +223,70 @@ quint64 FlatpakResource::downloadSize() const
     return m_downloadSize;
 }
 
-QVariant FlatpakResource::icon() const
+// Lazy icon resolver using the event loop. Since QIcon doesn't make any thread
+// safety claims we'll want to resolve icons on the main thread, but in a way
+// that doesn't block the UI. The resolver takes care of this by resolving icons
+// with a short delay as well as low event priority.
+class IconResolver : public QObject
 {
-    QIcon ret;
+    Q_OBJECT
+    inline constexpr static auto LoopEvent = QEvent::User;
+
+public:
+    using QObject::QObject;
+
+    void queue(FlatpakResource *resource)
+    {
+        if (m_resources.isEmpty()) {
+            QCoreApplication::postEvent(this, new QEvent(LoopEvent), Qt::LowEventPriority);
+        }
+        m_resources.append(QPointer{resource});
+    }
+
+private:
+    void resolve()
+    {
+        if (m_resources.empty()) {
+            return;
+        }
+
+        // We take the last so the most recent request gets resolved first.
+        auto resource = m_resources.takeLast();
+        if (!resource) {
+            return;
+        }
+
+        if (resource->m_icon.has_value()) {
+            return;
+        }
+
+        resource->resolveIcon();
+    }
+
+    void customEvent(QEvent *event) override
+    {
+        if (event->type() == LoopEvent) {
+            resolve();
+            // Schedule a new loop run unconditionally of whether we resolved anything. So long as the queue is not empty.
+            if (!m_resources.isEmpty()) {
+                QCoreApplication::postEvent(this, new QEvent(LoopEvent), Qt::LowEventPriority);
+            }
+        }
+        QObject::customEvent(event);
+    }
+
+    QQueue<QPointer<FlatpakResource>> m_resources;
+};
+
+void FlatpakResource::resolveIcon()
+{
+    m_icon = QIcon();
     const auto icons = m_appdata.icons();
 
     if (!m_bundledIcon.isNull()) {
-        ret = QIcon(m_bundledIcon);
+        m_icon = QIcon(m_bundledIcon);
     } else if (icons.isEmpty()) {
-        ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+        m_icon = QIcon::fromTheme(QStringLiteral("package-x-generic"));
     } else {
         for (const AppStream::Icon &icon : icons) {
             switch (icon.kind()) {
@@ -243,24 +300,24 @@ QVariant FlatpakResource::icon() const
                     while (dit.hasNext()) {
                         const auto currentPath = dit.next();
                         if (dit.fileName() == path) {
-                            ret.addFile(currentPath, icon.size());
+                            m_icon->addFile(currentPath, icon.size());
                         }
                     }
                 } else {
-                    ret.addFile(path, icon.size());
+                    m_icon->addFile(path, icon.size());
                 }
                 break;
             }
             case AppStream::Icon::KindStock: {
                 if (m_stockIcon) {
-                    return QIcon::fromTheme(icon.name());
+                    m_icon = QIcon::fromTheme(icon.name());
                 }
                 break;
             }
             case AppStream::Icon::KindRemote: {
                 const QString fileName = iconCachePath(icon);
                 if (QFileInfo::exists(fileName)) {
-                    ret.addFile(fileName, icon.size());
+                    m_icon->addFile(fileName, icon.size());
                 }
                 break;
             }
@@ -270,11 +327,22 @@ QVariant FlatpakResource::icon() const
         }
     }
 
-    if (ret.isNull()) {
-        ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+    if (m_icon->isNull()) {
+        m_icon = QIcon::fromTheme(QStringLiteral("package-x-generic"));
     }
 
-    return ret;
+    Q_EMIT iconChanged();
+}
+
+QVariant FlatpakResource::icon() const
+{
+    if (m_icon.has_value()) {
+        return m_icon.value();
+    }
+
+    static IconResolver resolver;
+    resolver.queue(const_cast<FlatpakResource *>(this));
+    return u"package-x-generic"_s;
 }
 
 QString FlatpakResource::installedVersion() const
@@ -1075,4 +1143,5 @@ void FlatpakResource::clearToUpdate()
     m_toUpdate.clear();
 }
 
+#include "FlatpakResource.moc"
 #include "moc_FlatpakResource.cpp"
