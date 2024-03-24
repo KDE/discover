@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-16 00:39+0000\n"
+"POT-Creation-Date: 2024-03-24 00:39+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -2453,7 +2453,7 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:261
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:270
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
@@ -2467,47 +2467,47 @@ msgid ""
 "%1"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:235
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:242
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:355
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:384
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
 #, fuzzy, kde-format
 #| msgctxt "@action Checks the Internet for updates"
 #| msgid "Check for Updates"
 msgid "Checking for a system update"
 msgstr "Провери има ли допуна"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:387
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:398
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
 #| msgid "Downloading"
 msgid "Downloading system update"
 msgstr "Преузимам..."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:390
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
 #, kde-format
 msgid "Updating the system"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
 #, kde-format
 msgid "Updating to the next major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
 #, fuzzy, kde-format
 #| msgid "Cannot cancel transaction"
 msgid "Unknown transaction type"
