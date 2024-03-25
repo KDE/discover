@@ -215,11 +215,12 @@ QVariant FlatpakResource::icon() const
 {
     QIcon ret;
     const auto icons = m_appdata.icons();
+    static const auto genericIcon = QIcon::fromTheme(QStringLiteral("package-x-generic"));
 
     if (!m_bundledIcon.isNull()) {
         ret = QIcon(m_bundledIcon);
     } else if (icons.isEmpty()) {
-        ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+        ret = genericIcon;
     } else
         for (const AppStream::Icon &icon : icons) {
             switch (icon.kind()) {
@@ -265,7 +266,7 @@ QVariant FlatpakResource::icon() const
         }
 
     if (ret.isNull()) {
-        ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+        ret = genericIcon;
     }
 
     return ret;
