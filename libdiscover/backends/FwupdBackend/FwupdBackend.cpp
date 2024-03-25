@@ -331,8 +331,7 @@ void FwupdBackend::setRemotes(GPtrArray *remotes)
         if (!fwupd_remote_has_flag(remote, FWUPD_REMOTE_FLAG_ENABLED))
             continue;
 
-        if (fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL
-            || fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_DIRECTORY) {
+        if (fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_LOCAL || fwupd_remote_get_kind(remote) == FWUPD_REMOTE_KIND_DIRECTORY) {
             continue;
         }
 

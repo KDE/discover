@@ -84,8 +84,7 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml)
             xml->readNext();
         } else if (xml->name() == QLatin1String("Icon")) {
             m_iconString = xml->readElementText();
-        } else if (xml->name() == QLatin1String("Include")
-                   || xml->name() == QLatin1String("Categories")) {
+        } else if (xml->name() == QLatin1String("Include") || xml->name() == QLatin1String("Categories")) {
             const QString opening = xml->name().toString();
             while (!xml->atEnd() && !xml->hasError()) {
                 xml->readNext();

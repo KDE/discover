@@ -393,11 +393,13 @@ void DiscoverObject::openApplication(const QUrl &url)
                     openApplication(QUrl(QStringLiteral("appstream://org.kde.discover.snap")));
                     showError(i18n("Please make sure Snap support is installed"));
                 } else {
-                    const QString errorText = i18n("Could not open %1 because it "
-                    "was not found in any available software repositories.",
-                    url.toDisplayString());
-                    const QString errorExplanation = i18n("Please report this "
-                    "issue to the packagers of your distribution.");
+                    const QString errorText = i18n(
+                        "Could not open %1 because it "
+                        "was not found in any available software repositories.",
+                        url.toDisplayString());
+                    const QString errorExplanation = i18n(
+                        "Please report this "
+                        "issue to the packagers of your distribution.");
                     QString buttonIcon = QStringLiteral("tools-report-bug");
                     QString buttonText = i18n("Report This Issue");
                     QString buttonUrl = KOSRelease().bugReportUrl();

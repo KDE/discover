@@ -975,8 +975,9 @@ void FlatpakResource::loadPermissions()
         if (sessionBusGroup.exists()) {
             const QStringList busList = sessionBusGroup.keyList();
             brief = i18n("Session Bus Access");
-            description = i18n("Can communicate with other applications and processes in the same desktop session using the following communication protocols: %1",
-                           createHtmlList(busList));
+            description =
+                i18n("Can communicate with other applications and processes in the same desktop session using the following communication protocols: %1",
+                     createHtmlList(busList));
             m_permissions.append(FlatpakPermission(brief, description, "plugins-symbolic"_L1));
         }
     }

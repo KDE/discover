@@ -622,7 +622,7 @@ private:
 
 public:
     template<typename... Args>
-    [[nodiscard]] static QPointer<PKResultsStream> create(Args&& ...args)
+    [[nodiscard]] static QPointer<PKResultsStream> create(Args &&...args)
     {
         return new PKResultsStream(std::forward<Args>(args)...);
     }
