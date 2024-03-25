@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-19 02:30+0000\n"
+"POT-Creation-Date: 2024-03-25 02:52+0000\n"
 "PO-Revision-Date: 2023-08-13 22:47+0300\n"
 "Last-Translator: George Stefanakis <george.stefanakis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -1038,32 +1038,32 @@ msgstr ""
 "Μη υποστηριζόμενη ερώτηση:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:164
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:172
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Το backend %1 χρειάστηκε πολύ χρόνο για να αρχικοποιηθεί"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:223
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:231
 #, kde-format
 msgid "Applications"
 msgstr "Εφαρμογές"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:269
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:277
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Πρόσθετα Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:269
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:277
 #, kde-format
 msgid "Application Addons"
 msgstr "Πρόσθετα εφαρμογών"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:357
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:365
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Σφάλμα δικτύου στο backend %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:364
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:372
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1072,14 +1072,14 @@ msgstr ""
 "Έχουν σταλεί πάρα πολλές αιτήσεις στο διακομιστή για το backend %1. "
 "Προσπαθήστε ξανά σε  λίγα λεπτά."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:373
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:375
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:381
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:386
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Μη έγκυρο %1 backend, επικοινωνήστε με τον διανομέα σας."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:397
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1092,25 +1092,25 @@ msgstr ""
 "παρέχει αυστηρότερο έλεγχο. Το αναφερόμενο σφάλμα ήταν:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:407
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "Δεν ήταν δυνατή η λήψη στιγμιότυπου οθόνης για την καταχώρηση %1 στο backend "
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:411
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:419
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Μη διαχειρίσιμο σφάλμα στο %1 backend. Επικοινωνήστε με τον διανομέα σας."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:424
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:529
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:546
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Λανθασμένο KNewStuff URI: %1"
