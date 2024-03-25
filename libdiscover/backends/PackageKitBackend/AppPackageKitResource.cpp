@@ -76,9 +76,14 @@ static QIcon componentIcon(const AppStream::Component &comp)
             ret.addFile(icon.url().toLocalFile(), icon.size());
             break;
         case AppStream::Icon::KindStock: {
-            const auto ret = QIcon::fromTheme(icon.name());
-            if (!ret.isNull()) {
-                return ret;
+            // we only get the icon from the theme if it's not in the cache
+            if (!std::ranges::any_of(icons, [](const auto &icon) {
+                    return icon.kind() == AppStream::Icon::KindLocal || icon.kind() == AppStream::Icon::KindCached;
+                })) {
+                const auto ret = QIcon::fromTheme(icon.name());
+                if (!ret.isNull()) {
+                    return ret;
+                }
             }
             break;
         }
