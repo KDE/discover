@@ -108,25 +108,25 @@ QVariant PackageKitResource::icon() const
 }
 
 static QMap<QString, QString> s_translation = {
-    {u"AGPL"_s, u"AGPL-3.0"_s},
-    {u"AGPL3"_s, u"AGPL-3.0"_s},
-    {u"Artistic2.0"_s, u"Artistic-2.0"_s},
-    {u"Apache"_s, u"Apache-2.0"_s},
-    {u"APACHE"_s, u"Apache-2.0"_s},
-    {u"CCPL"_s, u"CC0-1.0"_s},
-    {u"GPL2"_s, u"GPL-2.0"_s},
-    {u"GPL3"_s, u"GPL-3.0"_s},
-    {u"FDL1.2"_s, u"GFDL-1.2-only"_s},
-    {u"FDL1.3"_s, u"GFDL-1.3-only"_s},
-    {u"LGPL"_s, u"LGPL-2.1"_s},
-    {u"LGPL3"_s, u"LGPL-3.0"_s},
-    {u"MPL"_s, u"MPL-1.1"_s},
-    {u"MPL2"_s, u"MPL-2.0"_s},
-    {u"PerlArtistic"_s, u"Artistic-1.0-Perl"_s},
-    {u"PHP"_s, u"PHP-3.01"_s},
-    {u"PSF"_s, u"Python-2.0"_s},
-    {u"RUBY"_s, u"Ruby"_s},
-    {u"ZPL"_s, u"ZPL-2.1"_s},
+    {u"AGPL"_s, u"AGPL-3.0"_s}, //
+    {u"AGPL3"_s, u"AGPL-3.0"_s}, //
+    {u"Artistic2.0"_s, u"Artistic-2.0"_s}, //
+    {u"Apache"_s, u"Apache-2.0"_s}, //
+    {u"APACHE"_s, u"Apache-2.0"_s}, //
+    {u"CCPL"_s, u"CC0-1.0"_s}, //
+    {u"GPL2"_s, u"GPL-2.0"_s}, //
+    {u"GPL3"_s, u"GPL-3.0"_s}, //
+    {u"FDL1.2"_s, u"GFDL-1.2-only"_s}, //
+    {u"FDL1.3"_s, u"GFDL-1.3-only"_s}, //
+    {u"LGPL"_s, u"LGPL-2.1"_s}, //
+    {u"LGPL3"_s, u"LGPL-3.0"_s}, //
+    {u"MPL"_s, u"MPL-1.1"_s}, //
+    {u"MPL2"_s, u"MPL-2.0"_s}, //
+    {u"PerlArtistic"_s, u"Artistic-1.0-Perl"_s}, //
+    {u"PHP"_s, u"PHP-3.01"_s}, //
+    {u"PSF"_s, u"Python-2.0"_s}, //
+    {u"RUBY"_s, u"Ruby"_s}, //
+    {u"ZPL"_s, u"ZPL-2.1"_s}, //
 };
 
 QJsonArray PackageKitResource::licenses()
