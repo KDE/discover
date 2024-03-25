@@ -1082,19 +1082,6 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
     }
 
     AppStream::Pool *pool = new AppStream::Pool;
-    auto fw = new QFutureWatcher<bool>(this);
-    connect(fw, &QFutureWatcher<bool>::finished, this, [this, fw, pool, source]() {
-        source->m_pool = pool;
-        m_flatpakLoadingSources.removeAll(source);
-        if (fw->result()) {
-            m_flatpakSources += source;
-        } else {
-            qWarning() << "Could not open the AppStream metadata pool" << pool->lastError();
-        }
-        metadataRefreshed(source->remote());
-        acquireFetching(false);
-        fw->deleteLater();
-    });
     acquireFetching(true);
 
 #ifdef APPSTREAM_NEW_POOL_API
@@ -1115,9 +1102,32 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
     QDir().mkpath(pool->cacheLocation());
 #endif
 
-    fw->setFuture(QtConcurrent::run(&m_threadPool, [pool] {
-        return pool->load();
-    }));
+    const auto loadDone = [this, source, pool](bool result) {
+        source->m_pool = pool;
+        m_flatpakLoadingSources.removeAll(source);
+        if (result) {
+            m_flatpakSources += source;
+        } else {
+            qWarning() << "Could not open the AppStream metadata pool" << pool->lastError();
+        }
+        metadataRefreshed(source->remote());
+        acquireFetching(false);
+    };
+
+    // We do not want to block the GUI for very long, so we load appstream pools via queued
+    // invocation both for the actual load and then for the post-load state changes.
+    QMetaObject::invokeMethod(
+        this,
+        [this, pool, loadDone] {
+            auto result = pool->load();
+            QMetaObject::invokeMethod(
+                this,
+                [loadDone, result] {
+                    loadDone(result);
+                },
+                Qt::QueuedConnection);
+        },
+        Qt::QueuedConnection);
 }
 
 QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote)

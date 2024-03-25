@@ -310,11 +310,7 @@ void PackageKitBackend::reloadPackageList()
 
     m_appdata.reset(new AppStream::Pool);
 
-    auto fw = new QFutureWatcher<bool>(this);
-    connect(fw, &QFutureWatcher<bool>::finished, this, [this, fw]() {
-        const auto correct = fw->result();
-        fw->deleteLater();
-
+    const auto loadDone = [this](bool correct) {
         if (!correct && m_packages.packages.isEmpty()) {
             QTimer::singleShot(0, this, [this]() {
                 Q_EMIT passiveMessage(i18n("Please make sure that Appstream is properly set up on your system"));
@@ -359,9 +355,22 @@ void PackageKitBackend::reloadPackageList()
                 }
             }
         }
-    });
-    fw->setFuture(QtConcurrent::run(&m_threadPool, &loadAppStream, m_appdata.get()));
-    fw->future().waitForFinished();
+    };
+
+    // We do not want to block the GUI for very long, so we load appstream pools via queued
+    // invocation both for the actual load and then for the post-load state changes.
+    QMetaObject::invokeMethod(
+        this,
+        [this, loadDone] {
+            auto result = loadAppStream(m_appdata.get());
+            QMetaObject::invokeMethod(
+                this,
+                [loadDone, result] {
+                    loadDone(result);
+                },
+                Qt::QueuedConnection);
+        },
+        Qt::QueuedConnection);
 }
 
 AppPackageKitResource *PackageKitBackend::addComponent(const AppStream::Component &component) const
