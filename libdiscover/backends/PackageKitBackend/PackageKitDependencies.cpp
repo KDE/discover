@@ -197,4 +197,9 @@ void PackageKitFetchDependenciesJob::onTransactionFinished()
     deleteLater();
 }
 
+void PackageKitDependencies::setDirty()
+{
+    cancel(true);
+}
+
 #include "moc_PackageKitDependencies.cpp"

@@ -42,7 +42,7 @@ PackageKitResource::PackageKitResource(QString packageName, QString summary, Pac
     , m_name(std::move(packageName))
 {
     setObjectName(m_name);
-    connect(this, &AbstractResource::stateChanged, this, &PackageKitResource::updatePackageIdForDependencies);
+    connect(this, &AbstractResource::stateChanged, &m_dependencies, &PackageKitDependencies::setDirty);
     connect(&m_dependencies, &PackageKitDependencies::dependenciesChanged, this, [this] {
         Q_EMIT dependenciesChanged();
         Q_EMIT sizeChanged();

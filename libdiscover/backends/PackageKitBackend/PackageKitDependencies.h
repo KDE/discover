@@ -62,6 +62,7 @@ public:
     [[nodiscard]] bool hasFetchedDependencies();
     [[nodiscard]] QList<PackageKitDependency> dependencies();
 
+    void setDirty();
     void refresh();
 
 Q_SIGNALS:
