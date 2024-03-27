@@ -430,6 +430,10 @@ QString PackageKitResource::sizeDescription()
 {
     auto baseDescription = AbstractResource::sizeDescription();
 
+    if (state() != AbstractResource::State::None) {
+        return baseDescription;
+    }
+
     if (!m_dependencies.hasFetchedDependencies()) {
         fetchDetails();
         updatePackageIdForDependencies();
