@@ -1590,9 +1590,10 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                         FLATPAK_BACKEND_YIELD
                     }
 
-                    for (const auto ref : refs) {
+                    std::for_each(refs.constBegin(), refs.constEnd(), [](FlatpakInstalledRef *ref) {
                         g_object_unref(ref);
-                    }
+                    });
+                    g_object_unref(installation);
                 }
 
                 FLATPAK_BACKEND_CHECK
@@ -1749,6 +1750,12 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
 QCoro::Task<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> FlatpakBackend::listInstalledRefsForUpdate()
 {
     g_autoptr(GCancellable) cancellable = g_object_ref(m_cancellable);
+    // Passing installations between threads and using them concurrently most
+    // likely isn't safe. But at least let's make sure they are ref'ed.
+    const auto installations = m_installations;
+    std::for_each(installations.constBegin(), installations.constEnd(), [](FlatpakInstallation *installation) {
+        g_object_ref(installation);
+    });
     co_return co_await QtConcurrent::run(
         &m_threadPool,
         [](GCancellable *cancellable, QList<FlatpakInstallation *> installations) {
@@ -1786,7 +1793,7 @@ QCoro::Task<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> FlatpakB
             return ret;
         },
         cancellable,
-        m_installations);
+        installations);
 }
 
 bool FlatpakBackend::isTracked(FlatpakResource *resource) const
