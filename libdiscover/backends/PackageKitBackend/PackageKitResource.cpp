@@ -409,6 +409,10 @@ PackageKitBackend *PackageKitResource::backend() const
 
 QString PackageKitResource::sizeDescription()
 {
+    if (state() != AbstractResource::State::None) {
+        return AbstractResource::sizeDescription();
+    }
+
     if (m_dependenciesCount < 0) {
         fetchDetails();
         fetchDependencies();
