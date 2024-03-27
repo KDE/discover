@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 00:38+0000\n"
+"POT-Creation-Date: 2024-03-27 00:38+0000\n"
 "PO-Revision-Date: 2020-10-04 16:58+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -547,13 +547,13 @@ msgstr "%1 (%2)"
 msgid "Local bundle"
 msgstr "Lokalt bundt"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1808
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1818
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:811
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Defekt appstream-URL \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1913
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1923
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -566,13 +566,13 @@ msgstr ""
 "Kunne ikke opdatere %1 pakke\n"
 "%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2034
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2044
 #, fuzzy, kde-format
 #| msgid "There are %1 updated packages!"
 msgid "There are no Flatpak sources."
 msgstr "Der er %1 opdaterede pakker!"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2038
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2048
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -607,7 +607,7 @@ msgid "Unknown"
 msgstr "Ukendt"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:507
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:482
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:489
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, fuzzy, kde-format
 #| msgid ""
@@ -681,7 +681,7 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:988
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:989
 #, kde-format
 msgid "System Bus Access"
 msgstr ""
@@ -857,14 +857,14 @@ msgid ""
 "first: %1"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:978
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:979
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:990
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:991
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
@@ -998,7 +998,7 @@ msgstr ""
 msgid "Configure permissions…"
 msgstr ""
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:467
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, fuzzy, kde-format
 #| msgid "View Updates"
@@ -1136,12 +1136,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Skrifttyper"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:326
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:322
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Sørg venligst for at Appstream er sat korrekt op på dit system"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:362
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:358
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1149,13 +1149,13 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:908
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:918
 #, fuzzy, kde-format
 #| msgid "Cannot remove system package"
 msgid "Cannot remove '%1'"
 msgstr "Kan ikke fjerne systempakke"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1004
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1165,7 +1165,7 @@ msgid ""
 "updates, and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1003
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1013
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
 #| msgid "Upgrade"
@@ -1173,7 +1173,7 @@ msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Opgradér"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1026
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1036
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, fuzzy, kde-format
 #| msgid "Repo not available"
@@ -2094,7 +2094,7 @@ msgstr "Genstart:"
 msgid "Vendor:"
 msgstr "Leverandør:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:439
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:447
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"

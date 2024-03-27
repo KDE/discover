@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 00:38+0000\n"
+"POT-Creation-Date: 2024-03-27 00:38+0000\n"
 "PO-Revision-Date: 2024-03-17 11:16+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -538,23 +538,23 @@ msgstr "%1 (brukar)"
 msgid "Local bundle"
 msgstr "Lokal samling"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1808
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1818
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:811
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Ugyldig appstream-adresse «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1913
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1923
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Klarte ikkje leggja til kjelda «%1»: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2034
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2044
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Det finst ingen Flatpak-kjelder."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2038
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2048
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Klarte ikkje lasta kjelda «%1»."
@@ -583,7 +583,7 @@ msgid "Unknown"
 msgstr "Ukjend"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:507
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:482
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:489
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start '%1': %2"
@@ -645,7 +645,7 @@ msgstr ""
 "Får kommunisera med andre program og prosessar som køyrer på brukarkontoen"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:988
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:989
 #, kde-format
 msgid "System Bus Access"
 msgstr "Tilgang til systembussen"
@@ -836,7 +836,7 @@ msgstr ""
 "Får tilgang til systemfiler i desse mappene utan først å be om løyve: %1"
 
 # Vert litt langt og tungt med «kommunikasjonsprotokollane». Starten av setninga seier jo uansett at det er snakk om kommunikasjon, så me kan forkorta det til «protokollane».
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:978
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:979
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -845,7 +845,7 @@ msgstr ""
 "Får kommunisera med andre program og prosessar i same skrivebordsøkt via "
 "desse protokollane: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:990
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:991
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
@@ -980,7 +980,7 @@ msgstr "Løyve for %1"
 msgid "Configure permissions…"
 msgstr "Set opp løyve …"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:468
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:467
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"
@@ -1122,12 +1122,12 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Skrifter"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:326
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:322
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Sjå til at AppStream er rett sett opp på systemet"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:362
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:358
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1137,12 +1137,12 @@ msgstr ""
 "Støtta for operativsystemet ditt gjekk ut %1. Du bør vurdera å oppgradera "
 "til ein nyare versjon."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:908
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:918
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Kan ikkje fjerna «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:994
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1004
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1155,13 +1155,13 @@ msgstr ""
 "For å kunna oppgradera til denne versjonen må du først installera alle "
 "tilgjengelege oppdateringar og så starta maskina på nytt."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1003
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1013
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Oppgrader no"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1026
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1036
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -2015,7 +2015,7 @@ msgstr "Omstart:"
 msgid "Vendor:"
 msgstr "Leverandør:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:439
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:447
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"

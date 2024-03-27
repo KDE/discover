@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 00:39+0000\n"
+"POT-Creation-Date: 2024-03-27 00:38+0000\n"
 "PO-Revision-Date: 2023-05-26 07:49+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -87,7 +87,7 @@ msgstr "Tidak bisa membuka %1"
 msgid "Please make sure Snap support is installed"
 msgstr "Mohon pastikan dukungan Snap telah terinstal"
 
-#: discover/DiscoverObject.cpp:396
+#: discover/DiscoverObject.cpp:397
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -96,23 +96,23 @@ msgstr ""
 "Tidak bisa membuka %1 karena tidak ketemu di repositori perangkat lunak "
 "apapun."
 
-#: discover/DiscoverObject.cpp:399
+#: discover/DiscoverObject.cpp:401
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Mohon laporkan masalah ini ke si pemaket distribusimu."
 
-#: discover/DiscoverObject.cpp:402
+#: discover/DiscoverObject.cpp:404
 #, kde-format
 msgid "Report This Issue"
 msgstr "Laporkan Masalah Ini"
 
-#: discover/DiscoverObject.cpp:464 discover/DiscoverObject.cpp:466
+#: discover/DiscoverObject.cpp:466 discover/DiscoverObject.cpp:468
 #: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:467
+#: discover/DiscoverObject.cpp:469
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

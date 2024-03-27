@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-14 00:39+0000\n"
+"POT-Creation-Date: 2024-03-27 00:38+0000\n"
 "PO-Revision-Date: 2024-02-09 15:37+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -97,7 +97,7 @@ msgstr "%1 を開けませんでした。"
 msgid "Please make sure Snap support is installed"
 msgstr "Snap サポートがインストールされていることを確認してください"
 
-#: discover/DiscoverObject.cpp:396
+#: discover/DiscoverObject.cpp:397
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -106,24 +106,24 @@ msgstr ""
 "利用可能なソフトウェアリポジトリに見つからなかったため、%1 を開けませんでし"
 "た。"
 
-#: discover/DiscoverObject.cpp:399
+#: discover/DiscoverObject.cpp:401
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 "この問題をお使いのディストリビューションのパッケージャに報告してください。"
 
-#: discover/DiscoverObject.cpp:402
+#: discover/DiscoverObject.cpp:404
 #, kde-format
 msgid "Report This Issue"
 msgstr "この問題を報告する"
 
-#: discover/DiscoverObject.cpp:464 discover/DiscoverObject.cpp:466
+#: discover/DiscoverObject.cpp:466 discover/DiscoverObject.cpp:468
 #: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:467
+#: discover/DiscoverObject.cpp:469
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
