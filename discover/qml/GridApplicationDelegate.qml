@@ -47,7 +47,7 @@ BasicAbstractCard {
                 type: Kirigami.Heading.Type.Primary
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignBottom
-                wrapMode: Text.WordWrap
+                wrapMode: Text.Wrap
                 maximumLineCount: 2
 
                 text: root.application.name
@@ -58,7 +58,7 @@ BasicAbstractCard {
                 Layout.alignment: Qt.AlignTop
                 maximumLineCount: head.lineCount === 1 ? 3 : 2
                 opacity: 0.6
-                wrapMode: Text.WordWrap
+                wrapMode: Text.Wrap
 
                 text: root.application.comment
             }
