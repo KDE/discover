@@ -193,7 +193,7 @@ DiscoverPage {
 
         QQC2.ScrollView {
             id: scv
-            Layout.fillWidth: true
+            Layout.preferredWidth: parent.width
             Layout.preferredHeight: visible ? Kirigami.Units.gridUnit * 10 : 0
             visible: log.contents.length > 0
             QQC2.TextArea {
@@ -214,7 +214,7 @@ DiscoverPage {
 
         QQC2.ToolBar {
             id: footerToolbar
-            Layout.fillWidth: true
+            Layout.preferredWidth: parent.width
             visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
 
             position: QQC2.ToolBar.Footer
