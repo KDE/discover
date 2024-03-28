@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-27 00:38+0000\n"
-"PO-Revision-Date: 2024-03-15 01:18+0100\n"
+"PO-Revision-Date: 2024-03-16 22:29+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: Assamese <alministradores@softastur.org>\n"
 "Language: ast\n"
@@ -488,7 +488,7 @@ msgstr "Multimedia"
 #, kde-format
 msgctxt "Category"
 msgid "Audio and Video Editors"
-msgstr ""
+msgstr "Editores d'audiu y videu"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
@@ -516,7 +516,7 @@ msgstr "CD y DVD"
 #, kde-format
 msgctxt "Category"
 msgid "Office"
-msgstr ""
+msgstr "Ofimática"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
@@ -1218,7 +1218,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:59
 #, kde-format
 msgid "Cannot find repository"
-msgstr ""
+msgstr "Nun se pue atopar el depósitu"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:61
 #, kde-format

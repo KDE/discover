@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-27 00:38+0000\n"
-"PO-Revision-Date: 2024-03-14 23:20+0100\n"
+"PO-Revision-Date: 2024-03-20 10:19+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: Asturian <alministradores@softastur.org>\n"
 "Language: ast\n"
@@ -56,7 +56,7 @@ msgstr ""
 #: discover/DiscoverObject.cpp:291
 #, kde-format
 msgid "Could not find category '%1'"
-msgstr ""
+msgstr "Nun se pudo atopar la categoría «%1»"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -73,7 +73,7 @@ msgstr ""
 #: discover/DiscoverObject.cpp:332
 #, kde-format
 msgid "Could not open %1"
-msgstr ""
+msgstr "Nun se pudo abrir «%1»"
 
 #: discover/DiscoverObject.cpp:394
 #, kde-format
@@ -86,11 +86,13 @@ msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr ""
+"Nun se pudo abrir «%1» porque nun s'atopó en nengún depósitu de software "
+"disponible"
 
 #: discover/DiscoverObject.cpp:401
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
-msgstr ""
+msgstr "Informa d'esti problema a los empaquetadores de la distribución."
 
 #: discover/DiscoverObject.cpp:404
 #, kde-format
@@ -294,14 +296,14 @@ msgstr "Versión:"
 #: discover/qml/ApplicationPage.qml:259
 #, kde-format
 msgid "Size:"
-msgstr ""
+msgstr "Tamañu:"
 
 #: discover/qml/ApplicationPage.qml:271
 #, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Llicencia:"
+msgstr[1] "Llicencies:"
 
 #: discover/qml/ApplicationPage.qml:279
 #, kde-format
@@ -356,12 +358,12 @@ msgstr ""
 #: discover/qml/ApplicationPage.qml:573
 #, kde-format
 msgid "Website"
-msgstr ""
+msgstr "Sitiu web"
 
 #: discover/qml/ApplicationPage.qml:574
 #, kde-format
 msgid "Visit the project's website"
-msgstr "Visitar el sitiu web del proyeutu"
+msgstr "Visita'l sitiu web del proyeutu"
 
 #: discover/qml/ApplicationPage.qml:590
 #, kde-format
@@ -377,7 +379,7 @@ msgstr "Instala o quita funciones adicionales"
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "Compartir"
 
 #: discover/qml/ApplicationPage.qml:611
 #, kde-format
@@ -629,7 +631,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr ""
+msgstr "Aniciu"
 
 #: discover/qml/BrowsingPage.qml:64
 #, kde-format
@@ -640,7 +642,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr ""
+msgstr "Lo más popular"
 
 #: discover/qml/BrowsingPage.qml:121
 #, kde-format
@@ -664,7 +666,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr ""
+msgstr "Ver más"
 
 #: discover/qml/BrowsingPage.qml:212
 #, kde-format
@@ -723,7 +725,7 @@ msgstr ""
 #: discover/qml/DiscoverWindow.qml:58
 #, kde-format
 msgid "&Home"
-msgstr ""
+msgstr "&Aniciu"
 
 #: discover/qml/DiscoverWindow.qml:68
 #, kde-format
@@ -733,7 +735,7 @@ msgstr ""
 #: discover/qml/DiscoverWindow.qml:76
 #, kde-format
 msgid "&Installed"
-msgstr ""
+msgstr "&Lo instalao"
 
 #: discover/qml/DiscoverWindow.qml:87
 #, kde-format
@@ -781,24 +783,24 @@ msgstr ""
 #: discover/qml/DiscoverWindow.qml:340
 #, kde-format
 msgid "Error %1 of %2"
-msgstr ""
+msgstr "Error %1 de %2"
 
 #: discover/qml/DiscoverWindow.qml:390
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "Amosar lo anterior"
 
 #: discover/qml/DiscoverWindow.qml:403
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr ""
+msgstr "Amosar lo siguiente"
 
 #: discover/qml/DiscoverWindow.qml:419
 #, kde-format
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "Copiar nel cartafueyu"
 
 #: discover/qml/Feedback.qml:14
 #, kde-format
@@ -875,12 +877,12 @@ msgstr ""
 #: discover/qml/InstallApplicationButton.qml:32
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "Quitar"
 
 #: discover/qml/InstalledPage.qml:14
 #, kde-format
 msgid "Installed"
-msgstr ""
+msgstr "Lo instalao"
 
 #: discover/qml/Navigation.qml:34
 #, kde-format
@@ -965,7 +967,7 @@ msgstr "Non"
 #: discover/qml/ReviewDialog.qml:20
 #, kde-format
 msgid "Reviewing %1"
-msgstr ""
+msgstr "Valoración de: %1"
 
 #: discover/qml/ReviewDialog.qml:27
 #, kde-format
@@ -975,7 +977,7 @@ msgstr ""
 #: discover/qml/ReviewDialog.qml:40
 #, kde-format
 msgid "Rating:"
-msgstr ""
+msgstr "Valoración:"
 
 #: discover/qml/ReviewDialog.qml:45
 #, kde-format
@@ -990,7 +992,7 @@ msgstr ""
 #: discover/qml/ReviewDialog.qml:73
 #, kde-format
 msgid "Enter a rating"
-msgstr ""
+msgstr "Introduz una valoración"
 
 #: discover/qml/ReviewDialog.qml:76
 #, kde-format
@@ -1037,13 +1039,13 @@ msgstr ""
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "Lo más relevante"
 
 #: discover/qml/ReviewsPage.qml:110
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "Lo más recién"
 
 #: discover/qml/ReviewsPage.qml:117
 #, kde-format
@@ -1226,6 +1228,7 @@ msgstr ""
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr ""
+"Reaniciar l'ordenador automáticamente dempués de completar l'anovamientu"
 
 #: discover/qml/UpdatesPage.qml:249
 #, kde-format
@@ -1258,7 +1261,7 @@ msgstr "%1 (%2)"
 #: discover/qml/UpdatesPage.qml:463
 #, kde-format
 msgid "More Information…"
-msgstr ""
+msgstr "Más información…"
 
 #: discover/qml/UpdatesPage.qml:491
 #, kde-format
@@ -1276,7 +1279,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
-msgstr ""
+msgstr "Reanicia'l sistema pa completar el procesu d'anovamientu"
 
 #: discover/qml/UpdatesPage.qml:525 discover/qml/UpdatesPage.qml:532
 #: discover/qml/UpdatesPage.qml:539

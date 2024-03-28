@@ -1,21 +1,21 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# SPDX-FileCopyrightText: 2023 Enol P. <enolp@softastur.org>
+# SPDX-FileCopyrightText: 2023, 2024 Enol P. <enolp@softastur.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-10-26 00:38+0200\n"
+"PO-Revision-Date: 2024-03-20 10:41+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
-"Language-Team: \n"
+"Language-Team: Asturian <alministradores@softastur.org>\n"
 "Language: ast\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 24.02.0\n"
 
 #: kcm/ui/main.qml:40
 #, kde-format
@@ -40,6 +40,10 @@ msgid ""
 "available. Updates for applications will be installed immediately, while "
 "system updates will be installed the next time the computer is restarted."
 msgstr ""
+"Los anovamientos de software báxense automáticamente cuando tean "
+"disponibles. Los anovamientos de les aplicaciones instálense nel intre, "
+"mentanto que los anovamientos del sistema instálense la proxima vegada que "
+"se reanicie l'ordenador."
 
 #: kcm/ui/main.qml:69
 #, kde-format
@@ -51,7 +55,7 @@ msgstr "Frecuencia del anovamientu"
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
-msgstr ""
+msgstr "Frecuencia de los avisos:"
 
 #: kcm/ui/main.qml:72
 #, kde-format
