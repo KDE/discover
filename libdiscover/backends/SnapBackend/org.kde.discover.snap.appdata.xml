@@ -162,9 +162,9 @@
   <developer_name xml:lang="zh-TW">Aleix Pol Gonzalez</developer_name>
   <icon type="stock">system-software-install</icon>
   <releases>
+    <release version="6.0.4" date="2024-04-02"/>
     <release version="6.0.3" date="2024-03-26"/>
     <release version="6.0.3" date="2024-03-26"/>
     <release version="6.0.2" date="2024-03-12"/>
-    <release version="6.0.1" date="2024-03-05"/>
   </releases>
 </component>
