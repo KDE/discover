@@ -1,36 +1,37 @@
+# translation of kcm_updates.pot to Esperanto
+# Copyright (C) 2020 Free Software Foundation, Inc.
+# This file is distributed under the same license as the discover package.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: kdeorg\n"
+"Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-07 00:45+0000\n"
-"PO-Revision-Date: 2024-03-28 19:25\n"
-"Last-Translator: \n"
-"Language-Team: Chinese Simplified\n"
-"Language: zh_CN\n"
+"PO-Revision-Date: 2023-09-28 07:45+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: kdeorg\n"
-"X-Crowdin-Project-ID: 269464\n"
-"X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-stable/messages/discover/kcm_updates.pot\n"
-"X-Crowdin-File-ID: 25232\n"
+"X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: kcm/package/contents/ui/main.qml:32
 #, kde-format
 msgid "Update software:"
-msgstr "软件更新方式："
+msgstr "Ĝisdatigi programaron:"
 
 #: kcm/package/contents/ui/main.qml:33
 #, kde-format
 msgid "Manually"
-msgstr "手动"
+msgstr "Mane"
 
 #: kcm/package/contents/ui/main.qml:43
 #, kde-format
 msgid "Automatically"
-msgstr "自动"
+msgstr "Aŭtomate"
 
 #: kcm/package/contents/ui/main.qml:50
 #, kde-kuit-format
@@ -40,49 +41,50 @@ msgid ""
 "available. Updates for applications will be installed immediately, while "
 "system updates will be installed the next time the computer is restarted."
 msgstr ""
-"软件更新将在可用时自动下载。应用程序的更新将被立即安装，系统软件更新则会在下"
-"次重启计算机时进行安装。"
+"Programaj ĝisdatigoj estos elŝutitaj aŭtomate kiam ili estos disponeblaj. "
+"Ĝisdatigoj por aplikoj estos instalitaj tuj, dum sistemaj ĝisdatigoj estos "
+"instalitaj la venontan fojon kiam la komputilo estos rekomencita."
 
 #: kcm/package/contents/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
-msgstr "更新频率："
+msgstr "Ofteco de ĝisdatigo:"
 
 #: kcm/package/contents/ui/main.qml:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
-msgstr "通知频率："
+msgstr "Ofteco de sciigo:"
 
 #: kcm/package/contents/ui/main.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
-msgstr "每天"
+msgstr "Ĉiutage"
 
 #: kcm/package/contents/ui/main.qml:65
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
-msgstr "每周"
+msgstr "Ĉiusemajne"
 
 #: kcm/package/contents/ui/main.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
-msgstr "每月"
+msgstr "Monata"
 
 #: kcm/package/contents/ui/main.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
-msgstr "不通知"
+msgstr "Neniam"
 
 #: kcm/package/contents/ui/main.qml:111
 #, kde-format
 msgid "Use offline updates:"
-msgstr "使用离线更新："
+msgstr ""
 
 #: kcm/package/contents/ui/main.qml:124
 #, kde-format
@@ -90,15 +92,13 @@ msgid ""
 "Offline updates maximize system stability by applying changes while "
 "restarting the system. Using this update mode is strongly recommended."
 msgstr ""
-"离线更新会留待重启系统时应用更改，这能够在最大程度上保证系统的稳定性。强烈建"
-"议使用此更新模式。"
 
 #: kcm/updates.cpp:31
 #, kde-format
 msgid "Software Update"
-msgstr "软件更新"
+msgstr "Programar-Ĝisdatigoj"
 
 #: kcm/updates.cpp:33
 #, kde-format
 msgid "Configure software update settings"
-msgstr "配置软件更新设置"
+msgstr ""
