@@ -88,7 +88,9 @@ bool PackageKitDependencies::hasFetchedDependencies()
 
 QList<PackageKitDependency> PackageKitDependencies::dependencies()
 {
-    Q_ASSERT(m_state.has_value()); // start must have been called before!
+    if (!m_state.has_value()) {
+        return {};
+    }
     if (auto list = std::get_if<Data>(&m_state.value())) {
         return *list;
     }
