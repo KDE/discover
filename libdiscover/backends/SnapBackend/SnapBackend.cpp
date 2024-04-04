@@ -84,6 +84,8 @@ SnapBackend::SnapBackend(QObject *parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(OdrsReviewsBackend::global())
 {
+    connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &SnapBackend::updatesCountChanged);
+
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
         m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource *>>(m_resources.values(), [](AbstractResource *r) {
                                          return r;
@@ -257,6 +259,22 @@ Transaction *SnapBackend::removeApplication(AbstractResource *_app)
     return new SnapTransaction(&m_client, app, Transaction::RemoveRole, AbstractResource::None);
 }
 
+void SnapBackend::checkForUpdates()
+{
+    auto ret = new StoredResultsStream({populate(m_client.findRefreshable())});
+    connect(ret, &StoredResultsStream::finishedResources, this, [this](const QVector<StreamResult> &resources) {
+        for (SnapResource *res : std::as_const(m_resources)) {
+            bool contained = kContains(resources, [res](const StreamResult &in) {
+                return in.resource == res;
+            });
+            if (contained) {
+                res->setState(AbstractResource::Upgradeable);
+                res->updateSizes();
+            }
+        }
+    });
+}
+
 QString SnapBackend::displayName() const
 {
     return QStringLiteral("Snap");
@@ -276,6 +294,7 @@ void SnapBackend::refreshStates()
             else
                 res->setState(AbstractResource::None);
         }
+        checkForUpdates();
     });
 }
 

@@ -43,9 +43,7 @@ public:
     {
         return m_fetching;
     }
-    void checkForUpdates() override
-    {
-    }
+    void checkForUpdates() override;
     bool hasApplications() const override
     {
         return true;
