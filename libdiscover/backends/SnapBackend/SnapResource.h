@@ -68,6 +68,10 @@ public:
     QString channel() const;
     void setChannel(const QString &channel);
 
+    quint64 installedSize() const;
+    quint64 downloadSize() const;
+    void updateSizes();
+
     QSharedPointer<QSnapdSnap> snap() const
     {
         return m_snap;
@@ -82,6 +86,8 @@ public:
     void refreshSnap();
     void gotIcon();
     AbstractResource::State m_state;
+    quint64 m_installedSize;
+    quint64 m_downloadSize;
 
     QSharedPointer<QSnapdSnap> m_snap;
     mutable QVariant m_icon;

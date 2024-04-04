@@ -72,6 +72,8 @@ const QStringList SnapResource::s_topObjects({QStringLiteral("qrc:/qml/Permissio
 SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::State state, SnapBackend *backend)
     : AbstractResource(backend)
     , m_state(state)
+    , m_installedSize(0)
+    , m_downloadSize(0)
     , m_snap(snap)
 {
     setObjectName(snap->name());
@@ -100,8 +102,11 @@ QString SnapResource::comment()
 
 quint64 SnapResource::size()
 {
-    // return isInstalled() ? m_snap->installedSize() : m_snap->downloadSize();
-    return m_snap->downloadSize();
+    if (m_state == AbstractResource::Installed) {
+        return installedSize();
+    } else {
+        return downloadSize();
+    }
 }
 
 QVariant SnapResource::icon() const
@@ -298,9 +303,12 @@ void SnapResource::setSnap(const QSharedPointer<QSnapdSnap> &snap)
     if (m_snap == snap)
         return;
 
-    const bool newSize = m_snap->installedSize() != snap->installedSize() || m_snap->downloadSize() != snap->downloadSize();
+    const auto oldSize = size();
     m_snap = snap;
-    if (newSize)
+    updateSizes();
+    const auto newSize = size();
+
+    if (newSize != oldSize)
         Q_EMIT sizeChanged();
 
     Q_EMIT newSnap();
@@ -466,6 +474,27 @@ void SnapResource::setChannel(const QString &channelName)
         }
     });
 #endif
+}
+
+quint64 SnapResource::installedSize() const
+{
+    return m_installedSize;
+}
+
+quint64 SnapResource::downloadSize() const
+{
+    return m_downloadSize;
+}
+
+void SnapResource::updateSizes()
+{
+    if (m_snap->installedSize() > 0) {
+        m_installedSize = m_snap->installedSize();
+    }
+
+    if (m_snap->downloadSize() > 0) {
+        m_downloadSize = m_snap->downloadSize();
+    }
 }
 
 void SnapResource::refreshSnap()

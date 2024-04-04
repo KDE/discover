@@ -270,6 +270,7 @@ void SnapBackend::refreshStates()
             bool contained = kContains(resources, [res](const StreamResult &in) {
                 return in.resource == res;
             });
+            res->updateSizes();
             if (contained)
                 res->setState(AbstractResource::Installed);
             else
