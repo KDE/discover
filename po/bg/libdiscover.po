@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-03 00:39+0000\n"
+"POT-Creation-Date: 2024-04-05 00:38+0000\n"
 "PO-Revision-Date: 2024-01-11 21:45+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -536,23 +536,23 @@ msgstr "%1 (потребител)"
 msgid "Local bundle"
 msgstr "Локален пакет"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1823
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1832
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:811
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Неправилен URL адрес на потока на приложението \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1928
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1937
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Неуспешно добавяне на източник '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2049
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2058
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Няма източници на Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2053
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2062
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Неуспешно зареждане на източник '%1'"
