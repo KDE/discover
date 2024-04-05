@@ -1465,9 +1465,12 @@ bool FlatpakBackend::flatpakResourceLessThan(AbstractResource *l, AbstractResour
 template<typename F>
 ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, const F &callback)
 {
-    ResultsStream *stream = new ResultsStream(streamName);
+    QPointer stream{new ResultsStream(streamName)};
 
     auto f = [stream, callback = std::move(callback)] {
+        if (!stream) { // already has been consumed somewhere else
+            return;
+        }
         callback(stream);
     };
 
@@ -1493,9 +1496,10 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
     } else if (!filter.resourceUrl.isEmpty()) {
         return new ResultsStream(QStringLiteral("FlatpakStream-void"), {});
     } else if (filter.state == AbstractResource::Upgradeable) {
-        return deferredResultStream(u"FlatpakStream-upgradeable"_s, [this](ResultsStream *stream) {
+        return deferredResultStream(u"FlatpakStream-upgradeable"_s, [this](const QPointer<ResultsStream> &stream) {
             auto fw = new QFutureWatcher<QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>(this);
-            connect(fw, &QFutureWatcher<QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>::finished, this, [this, fw, stream]() {
+            connect(fw, &QFutureWatcher<QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>>>::finished, stream, [this, fw, stream]() {
+                // `stream` doesn't outlive `this`, so when we get called both will be still alive!
                 if (g_cancellable_is_cancelled(m_cancellable)) {
                     stream->finish();
                     fw->deleteLater();
