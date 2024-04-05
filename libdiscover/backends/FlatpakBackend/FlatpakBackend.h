@@ -1,6 +1,7 @@
 /*
  *   SPDX-FileCopyrightText: 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *   SPDX-FileCopyrightText: 2017 Jan Grulich <jgrulich@redhat.com>
+ *   SPDX-FileCopyrightText: 2024 Harald Sitter <sitter@kde.org>
  *
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
@@ -131,7 +132,8 @@ private:
     void createPool(QSharedPointer<FlatpakSource> source);
     FlatpakRemote *installSource(FlatpakResource *resource);
 
-    ResultsStream *deferredResultStream(const QString &streamName, std::function<void(ResultsStream *)> callback);
+    template<typename F>
+    ResultsStream *deferredResultStream(const QString &streamName, const F &callback);
 
     StandardBackendUpdater *m_updater;
     FlatpakSourcesBackend *m_sources = nullptr;
