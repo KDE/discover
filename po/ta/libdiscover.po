@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-05 00:38+0000\n"
+"POT-Creation-Date: 2024-04-06 00:39+0000\n"
 "PO-Revision-Date: 2024-02-18 17:12+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -2382,7 +2382,7 @@ msgid "%1 channels"
 msgstr ""
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:43
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:356
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:364
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
@@ -2402,7 +2402,7 @@ msgstr "%1-க்கான அனுமதிகள்"
 msgid "Snap"
 msgstr ""
 
-#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:51
+#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:53
 #, kde-format
 msgid ""
 "This Snap application is not compatible with security sandboxing and will "
