@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-06 00:39+0000\n"
+"POT-Creation-Date: 2024-04-08 00:38+0000\n"
 "PO-Revision-Date: 2024-02-19 08:46+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -532,28 +532,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (notandi)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:721
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:724
 #, kde-format
 msgid "Local bundle"
 msgstr "Staðbundinn forritsvöndull"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1832
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1885
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:811
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Gölluð appstream-slóð '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1937
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1990
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Mistókst að bæta við slóð '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2058
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2111
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Engar Flatpak-slóðir tiltækar."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2062
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2115
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Mistókst að hlaða slóðinni \"%1\""
