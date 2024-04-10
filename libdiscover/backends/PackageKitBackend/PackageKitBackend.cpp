@@ -681,6 +681,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
             if (!stream) {
                 return;
             }
+            loadAllPackages();
             const auto toResolve = kFilter<QVector<AbstractResource *>>(m_packages.packages, needsResolveFilter);
 
             auto installedAndNameFilter = [filter](AbstractResource *res) {
@@ -728,6 +729,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
             if (!stream) {
                 return;
             }
+            loadAllPackages();
             auto resources = kFilter<QVector<AbstractResource *>>(m_packages.packages, [](AbstractResource *res) {
                 return res->type() != AbstractResource::Technical && !qobject_cast<PackageKitResource *>(res)->isCritical()
                     && !qobject_cast<PackageKitResource *>(res)->extendsItself();
@@ -1141,6 +1143,21 @@ InlineMessage *PackageKitBackend::explainDysfunction() const
         return new InlineMessage(InlineMessage::Error, QStringLiteral("network-disconnect"), error);
     }
     return AbstractResourcesBackend::explainDysfunction();
+}
+
+void PackageKitBackend::loadAllPackages()
+{
+    if (m_allPackagesLoaded) {
+        return;
+    }
+    const auto components = m_appdata->components();
+    for (const auto &component : components) {
+        if (!component.packageNames().isEmpty()) {
+            addComponent(component);
+        }
+    }
+    includePackagesToAdd();
+    m_allPackagesLoaded = true;
 }
 
 #include "PackageKitBackend.moc"

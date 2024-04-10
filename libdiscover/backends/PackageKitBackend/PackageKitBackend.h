@@ -144,6 +144,7 @@ private Q_SLOTS:
     void packageDetails(const PackageKit::Details &details);
     void addPackageToUpdate(PackageKit::Transaction::Info, const QString &pkgid, const QString &summary);
     void getUpdatesFinished(PackageKit::Transaction::Exit, uint);
+    void loadAllPackages();
 
 Q_SIGNALS:
     void loadedAppStream();
@@ -191,4 +192,5 @@ private:
     QThreadPool m_threadPool;
     QPointer<PKResolveTransaction> m_resolveTransaction;
     QStringList m_globalHints;
+    bool m_allPackagesLoaded = false;
 };
