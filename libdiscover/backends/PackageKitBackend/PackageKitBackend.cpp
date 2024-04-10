@@ -708,6 +708,8 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
                                  kTransform<QVector<StreamResult>>(upgradeablePackages())); // No need for it to be a PKResultsStream
     } else if (filter.state == AbstractResource::Installed) {
         return deferredResultStream(u"PackageKitStream-installed"_s, [this, filter = filter](PKResultsStream *stream) {
+            loadAllPackages();
+
             const auto toResolve = kFilter<QVector<AbstractResource *>>(m_packages.packages, needsResolveFilter);
 
             auto installedAndNameFilter = [filter](AbstractResource *resource) {
@@ -754,6 +756,8 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         });
     } else if (filter.search.isEmpty() && !filter.category) {
         return deferredResultStream(u"PackageKitStream-all"_s, [this](PKResultsStream *stream) {
+            loadAllPackages();
+
             auto resources = kFilter<QVector<AbstractResource *>>(m_packages.packages, [](AbstractResource *resource) {
                 auto pkResource = qobject_cast<PackageKitResource *>(resource);
                 return resource->type() != AbstractResource::Technical && pkResource && !pkResource->isCritical() && !pkResource->extendsItself();
@@ -1156,6 +1160,21 @@ InlineMessage *PackageKitBackend::explainDysfunction() const
         return new InlineMessage(InlineMessage::Error, QStringLiteral("network-disconnect"), error);
     }
     return AbstractResourcesBackend::explainDysfunction();
+}
+
+void PackageKitBackend::loadAllPackages()
+{
+    if (m_allPackagesLoaded) {
+        return;
+    }
+    const auto components = m_appdata->components();
+    for (const auto &component : components) {
+        if (!component.packageNames().isEmpty()) {
+            addComponent(component);
+        }
+    }
+    includePackagesToAdd();
+    m_allPackagesLoaded = true;
 }
 
 #include "PackageKitBackend.moc"
