@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-27 02:52+0000\n"
+"POT-Creation-Date: 2024-04-11 02:44+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -545,7 +545,7 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "Систем и поставке|/|$[својства лок 'Систему и поставкама']"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:124
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:125
 #, fuzzy, kde-format
 #| msgctxt "description (url)"
 #| msgid "%1 (%2)"
@@ -553,30 +553,30 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:711
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:712
 #, kde-format
 msgid "Local bundle"
 msgstr "Локална свеза"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1692
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1698
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Лош апстрим УРЛ ‘%1’"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1796
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1802
 #, fuzzy, kde-format
 #| msgid "Could not add the source %1"
 msgid "Failed to add source '%1': %2"
 msgstr "Не могу да додам извор %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1917
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1923
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
 # >! Plurals.
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1921
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1927
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 packages\n"
