@@ -95,7 +95,7 @@ DiscoverPage {
         id: invokeAction
         visible: application.isInstalled && application.canExecute && !appbutton.isActive
         text: application.executeLabel
-        icon.name: "media-playback-start"
+        icon.name: "media-playback-start-symbolic"
         onTriggered: application.invokeApplication()
     }
 
