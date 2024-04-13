@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-08 00:38+0000\n"
+"POT-Creation-Date: 2024-04-13 00:39+0000\n"
 "PO-Revision-Date: 2013-03-28 16:07+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -562,7 +562,7 @@ msgid "Local bundle"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1885
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:811
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:815
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
@@ -1129,12 +1129,12 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:918
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:922
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1004
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1144,14 +1144,14 @@ msgid ""
 "updates, and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1013
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1017
 #, fuzzy, kde-format
 #| msgid "Upgradeable"
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "अद्ययावत करण्यायोग्य"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1036
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, fuzzy, kde-format
 #| msgid "Available"

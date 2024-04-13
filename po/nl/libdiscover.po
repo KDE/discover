@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-08 00:38+0000\n"
+"POT-Creation-Date: 2024-04-13 00:39+0000\n"
 "PO-Revision-Date: 2024-01-10 10:43+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -538,7 +538,7 @@ msgid "Local bundle"
 msgstr "Lokale bundel"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1885
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:811
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:815
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Misvormde appstream-URL '%1'"
@@ -1146,12 +1146,12 @@ msgstr ""
 "Uw besturingssysteem heeft ondersteuning op %1 beëindigd. Overweeg "
 "opwaardering naar een ondersteunde versie."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:918
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:922
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Kan '%1' niet verwijderen"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1004
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1164,13 +1164,13 @@ msgstr ""
 "Om naar deze nieuwe versie te opwaarderen, pas alle beschikbare elementen "
 "voor bijwerken toe en start uw systeem opnieuw."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1013
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1017
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Nu opwaarderen"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1036
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
