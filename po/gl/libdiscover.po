@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-11 02:44+0000\n"
+"POT-Creation-Date: 2024-04-13 02:45+0000\n"
 "PO-Revision-Date: 2024-02-25 14:50+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -540,7 +540,7 @@ msgid "Local bundle"
 msgstr "Fardo local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1698
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:803
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL de appstream incorrecto «%1»"
@@ -1149,12 +1149,12 @@ msgstr ""
 "A asistencia para o seu sistema operativo rematou o %1. Considere anovar a "
 "unha versión con asistencia."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:916
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:918
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Non é posíbel retirar «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:999
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1001
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1167,13 +1167,13 @@ msgstr ""
 "Para poder anovar a esta versión, primeiro aplique todas as actualizacións "
 "dispoñíbeis e despois reinicie o sistema."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1010
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Anovar agora"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1030
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1032
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-11 02:44+0000\n"
+"POT-Creation-Date: 2024-04-13 02:45+0000\n"
 "PO-Revision-Date: 2023-12-04 09:48+0000\n"
 "Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -537,7 +537,7 @@ msgid "Local bundle"
 msgstr "Staðbundinn forritsvöndull"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1698
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:803
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Gölluð appstream-slóð '%1'"
@@ -1139,12 +1139,12 @@ msgstr ""
 "Stýrikerfið þitt hætti stuðningi við %1. Þú ættir að íhuga að uppfæra í nýja "
 "studda útgáfu."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:916
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:918
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Get ekki fjarlægt '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:999
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1001
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1157,13 +1157,13 @@ msgstr ""
 "Til að hægt sé að uppfæra í nýju útgáfuna skaltu setja upp allar tiltækar "
 "uppfærslur og endurræsa svo tölvuna."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1010
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Uppfæra núna í nýja útgáfu"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1030
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1032
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"

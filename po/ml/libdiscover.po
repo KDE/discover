@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-11 02:44+0000\n"
+"POT-Creation-Date: 2024-04-13 02:45+0000\n"
 "PO-Revision-Date: 2021-09-09 13:59+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Malayalam <https://kde.smc.org.in/projects/discover/"
@@ -548,7 +548,7 @@ msgid "Local bundle"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1698
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:803
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
@@ -1111,12 +1111,12 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:916
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:918
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' നീക്കം ചെയ്യാൻ കഴിയില്ല"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:999
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1001
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1126,14 +1126,14 @@ msgid ""
 "updates, and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1010
 #, fuzzy, kde-format
 #| msgid "Upgradeable"
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "അപ്ഗ്രേഡ് ചെയ്യാവുന്നത്"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1030
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1032
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, fuzzy, kde-format
 #| msgid "Repo not available"

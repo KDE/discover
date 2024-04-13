@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-11 02:44+0000\n"
+"POT-Creation-Date: 2024-04-13 02:45+0000\n"
 "PO-Revision-Date: 2024-01-27 21:06+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -537,7 +537,7 @@ msgid "Local bundle"
 msgstr "Локален пакет"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1698
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:801
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:803
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Неправилен URL адрес на потока на приложението \"%1\""
@@ -1142,12 +1142,12 @@ msgstr ""
 "Поддръжката на вашата операционна система приключи на %1. Помислете за "
 "обновяване до поддържана версия."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:916
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:918
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Не може да се премахне \"%1\""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:999
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1001
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1160,13 +1160,13 @@ msgstr ""
 "За да можете да надградите до тази нова версия, приложетепреди това всички "
 "налични актуализации и рестартирайте системата."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1010
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Надграждане на системата сега"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1030
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1032
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
