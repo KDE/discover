@@ -395,13 +395,13 @@ QString RpmOstreeTransaction::name() const
         return i18n("Checking for a system update");
         break;
     case Operation::DownloadOnly:
-        return i18n("Downloading system update");
+        return i18n("Downloading system update. Please be patient as progress is not reported.");
         break;
     case Operation::Update:
-        return i18n("Updating the system");
+        return i18n("Updating the system. Please be patient as progress is not reported.");
         break;
     case Operation::Rebase:
-        return i18n("Updating to the next major version");
+        return i18n("Updating to the next major version. Please be patient as progress is not reported.");
         break;
     case Operation::Unknown:
         return i18n("Operation in progress (started outside of Discover)");
