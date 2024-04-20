@@ -228,11 +228,6 @@ void RpmOstreeResource::setNewVersion(const QString &newVersion)
     m_newVersion = newVersion;
 }
 
-QString RpmOstreeResource::getNewVersion() const
-{
-    return m_newVersion;
-}
-
 QString RpmOstreeResource::getNextMajorVersion() const
 {
     return m_nextMajorVersion;

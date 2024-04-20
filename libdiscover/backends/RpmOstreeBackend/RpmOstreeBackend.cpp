@@ -431,7 +431,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
 
     // Look for an existing updated deployment or a pending deployment for the
     // current version
-    QString newVersion = m_currentlyBootedDeployment->getNewVersion();
+    QString newVersion = m_currentlyBootedDeployment->availableVersion();
     iterator = QVectorIterator<RpmOstreeResource *>(m_resources);
     while (iterator.hasNext()) {
         RpmOstreeResource *deployment = iterator.next();

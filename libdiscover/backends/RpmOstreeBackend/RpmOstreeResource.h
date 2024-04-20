@@ -63,9 +63,6 @@ public:
     /* Set the target version for updates */
     void setNewVersion(const QString &newVersion);
 
-    /* Get the target version for updates */
-    QString getNewVersion() const;
-
     /* Validate and set the target major version for rebase */
     bool setNewMajorVersion(const QString &newMajorVersion);
 
