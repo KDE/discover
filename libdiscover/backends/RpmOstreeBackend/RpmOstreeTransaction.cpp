@@ -267,9 +267,7 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
     default:
         // This should never happen
         qWarning() << "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug.";
-        passiveMessage(i18n("rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."));
-        setStatus(Status::DoneWithErrorStatus);
-        return;
+        setStatus(Status::DoneStatus);
     }
     setStatus(Status::DoneStatus);
 }
