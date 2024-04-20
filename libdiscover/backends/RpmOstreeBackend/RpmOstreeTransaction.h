@@ -70,7 +70,7 @@ Q_SIGNALS:
 
 public Q_SLOTS:
     /* Process the result of rpm-ostree commands */
-    void processCommand(int exitCode, QProcess::ExitStatus exitStatu);
+    void processCommand(int exitCode, QProcess::ExitStatus exitStatus);
 
 private:
     /* Timer setup for transactions started externally from Discover */
