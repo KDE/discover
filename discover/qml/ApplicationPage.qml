@@ -169,6 +169,7 @@ DiscoverPage {
                         implicitWidth: Kirigami.Units.iconSizes.huge
                         implicitHeight: Kirigami.Units.iconSizes.huge
                         source: appInfo.application.icon
+                        placeholder: "package-x-generic"
                     }
 
                     // App name, author, and rating

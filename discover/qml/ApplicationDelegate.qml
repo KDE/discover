@@ -48,6 +48,7 @@ BasicAbstractCard {
             padding: Kirigami.Units.largeSpacing
             contentItem: Kirigami.Icon {
                 source: root.application.icon
+                placeholder: "package-x-generic"
                 animated: false
 
                 implicitHeight: root.compact ? Kirigami.Units.iconSizes.large : Kirigami.Units.iconSizes.huge

@@ -33,6 +33,7 @@ BasicAbstractCard {
             implicitWidth: Kirigami.Units.iconSizes.huge
             implicitHeight: Kirigami.Units.iconSizes.huge
             source: root.application.icon
+            placeholder: "package-x-generic"
             animated: false
         }
 
