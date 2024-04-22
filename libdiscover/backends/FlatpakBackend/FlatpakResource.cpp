@@ -48,12 +48,6 @@
 
 using namespace Qt::StringLiterals;
 
-static QString iconCachePath(const AppStream::Icon &icon)
-{
-    Q_ASSERT(icon.kind() == AppStream::Icon::KindRemote);
-    return QStringLiteral("%1/icons/%2").arg(QStandardPaths::writableLocation(QStandardPaths::CacheLocation), icon.url().fileName());
-}
-
 const QStringList FlatpakResource::s_topObjects({
     QStringLiteral("qrc:/qml/FlatpakAttention.qml"),
     QStringLiteral("qrc:/qml/FlatpakRemoveData.qml"),
@@ -61,8 +55,6 @@ const QStringList FlatpakResource::s_topObjects({
     QStringLiteral("qrc:/qml/FlatpakEolReason.qml"),
 });
 const QStringList FlatpakResource::s_bottomObjects({QStringLiteral("qrc:/qml/PermissionsList.qml")});
-
-Q_GLOBAL_STATIC(QNetworkAccessManager, manager)
 
 FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakInstallation *installation, FlatpakBackend *parent)
     : AbstractResource(parent)
@@ -75,35 +67,6 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
     , m_installation(installation)
 {
     setObjectName(packageName());
-
-    // Start fetching remote icons during initialization
-    const auto icons = m_appdata.icons();
-    if (icons.count() == 1 && icons.constFirst().kind() == AppStream::Icon::KindRemote) {
-        const auto icon = icons.constFirst();
-        const QString fileName = iconCachePath(icon);
-        if (!QFileInfo::exists(fileName)) {
-            const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
-            // Create $HOME/.cache/discover/icons folder
-            cacheDir.mkdir(QStringLiteral("icons"));
-            auto reply = manager->get(QNetworkRequest(icon.url()));
-            connect(reply, &QNetworkReply::finished, this, [this, icon, fileName, reply] {
-                if (reply->error() == QNetworkReply::NoError) {
-                    QByteArray iconData = reply->readAll();
-                    QFile file(fileName);
-                    if (file.open(QIODevice::WriteOnly)) {
-                        file.write(iconData);
-                    } else {
-                        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not find icon for" << packageName() << reply->url();
-                        QIcon::fromTheme(QStringLiteral("package-x-generic")).pixmap(32, 32).toImage().save(fileName);
-                    }
-                    file.close();
-                    Q_EMIT iconChanged();
-                    reply->deleteLater();
-                }
-            });
-        }
-    }
-
     connect(this, &FlatpakResource::stateChanged, this, &FlatpakResource::hasDataChanged);
 }
 
@@ -216,6 +179,7 @@ QVariant FlatpakResource::icon() const
 {
     QIcon ret;
     const auto icons = m_appdata.icons();
+    QUrl url;
 
     if (!m_bundledIcon.isNull()) {
         ret = QIcon(m_bundledIcon);
@@ -248,10 +212,7 @@ QVariant FlatpakResource::icon() const
                 break;
             }
             case AppStream::Icon::KindRemote: {
-                const QString fileName = iconCachePath(icon);
-                if (QFileInfo::exists(fileName)) {
-                    ret.addFile(fileName, icon.size());
-                }
+                url = icon.url();
                 break;
             }
             case AppStream::Icon::KindUnknown:
@@ -259,6 +220,9 @@ QVariant FlatpakResource::icon() const
             }
         }
 
+    if (!url.isEmpty()) {
+        return url;
+    }
     if (ret.isNull()) {
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
     }
