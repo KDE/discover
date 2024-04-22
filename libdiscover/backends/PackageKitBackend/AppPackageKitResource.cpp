@@ -12,6 +12,7 @@
 #include <AppStreamQt/release.h>
 #include <AppStreamQt/screenshot.h>
 #include <AppStreamQt/version.h>
+#include <KIconLoader>
 #include <KLocalizedString>
 #include <KService>
 #include <PackageKit/Daemon>
@@ -76,9 +77,8 @@ static QIcon componentIcon(const AppStream::Component &comp)
             ret.addFile(icon.url().toLocalFile(), icon.size());
             break;
         case AppStream::Icon::KindStock: {
-            const auto ret = QIcon::fromTheme(icon.name());
-            if (!ret.isNull()) {
-                return ret;
+            if (KIconLoader::global()->hasIcon(icon.name())) {
+                return QIcon::fromTheme(icon.name());
             }
             break;
         }
