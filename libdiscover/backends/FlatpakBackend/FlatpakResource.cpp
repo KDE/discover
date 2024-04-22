@@ -78,7 +78,12 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
 
     // Start fetching remote icons during initialization
     const auto icons = m_appdata.icons();
-    if (icons.count() == 1 && icons.constFirst().kind() == AppStream::Icon::KindRemote) {
+    m_stockIcon = std::ranges::any_of(icons, [](const AppStream::Icon &icon) {
+        return icon.kind() == AppStream::Icon::KindStock && KIconLoader::global()->hasIcon(icon.name());
+    });
+    if (!m_stockIcon && !icons.isEmpty() && !std::ranges::any_of(icons, [](const AppStream::Icon &icon) {
+            return icon.kind() == AppStream::Icon::KindLocal || icon.kind() == AppStream::Icon::KindCached;
+        })) {
         const auto icon = icons.constFirst();
         const QString fileName = iconCachePath(icon);
         if (!QFileInfo::exists(fileName)) {
@@ -242,7 +247,7 @@ QVariant FlatpakResource::icon() const
                 }
             } break;
             case AppStream::Icon::KindStock: {
-                if (KIconLoader::global()->hasIcon(icon.name())) {
+                if (m_stockIcon) {
                     return QIcon::fromTheme(icon.name());
                 }
                 break;

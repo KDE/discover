@@ -256,6 +256,7 @@ private:
     static const QStringList s_topObjects;
     static const QStringList s_bottomObjects;
     QVector<QByteArray> m_toUpdate;
+    bool m_stockIcon;
 };
 
 inline uint qHash(const FlatpakResource::Id &key)
