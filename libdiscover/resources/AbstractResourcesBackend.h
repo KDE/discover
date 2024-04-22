@@ -307,6 +307,7 @@ private:
 };
 
 DISCOVERCOMMON_EXPORT QDebug operator<<(QDebug dbg, const AbstractResourcesBackend::Filters &filters);
+DISCOVERCOMMON_EXPORT QDebug operator<<(QDebug dbg, const StreamResult &filters);
 
 /**
  * @internal Workaround because QPluginLoader enforces 1 instance per plugin

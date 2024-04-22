@@ -37,6 +37,13 @@ QDebug operator<<(QDebug debug, const AbstractResourcesBackend::Filters &filters
     return debug;
 }
 
+QDebug operator<<(QDebug debug, const StreamResult &sss)
+{
+    QDebugStateSaver saver(debug);
+    debug.nospace() << "StreamResult(" << sss.resource << ", " << sss.sortScore << ')';
+    return debug;
+}
+
 ResultsStream::ResultsStream(const QString &objectName, const QVector<StreamResult> &resources)
     : ResultsStream(objectName)
 {
