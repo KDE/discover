@@ -229,6 +229,11 @@ void FlatpakTransactionThread::run()
 void FlatpakTransactionThread::setProgress(int progress)
 {
     Q_ASSERT(qBound(0, progress, 100) == progress);
+    if (m_progress > progress) {
+        qDebug() << "progress is regressing :(" << m_progress << progress;
+        return;
+    }
+
     if (m_progress != progress) {
         m_progress = progress;
         Q_EMIT progressChanged(m_progress);
