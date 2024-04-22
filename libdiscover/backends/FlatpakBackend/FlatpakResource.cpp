@@ -24,6 +24,7 @@
 #include <KDesktopFile>
 #include <KFormat>
 #include <KIO/ApplicationLauncherJob>
+#include <KIconLoader>
 #include <KLocalizedString>
 
 #include <AppStreamQt/release.h>
@@ -239,9 +240,9 @@ QVariant FlatpakResource::icon() const
                 }
             } break;
             case AppStream::Icon::KindStock: {
-                const auto ret = QIcon::fromTheme(icon.name());
-                if (!ret.isNull())
-                    return ret;
+                if (KIconLoader::global()->hasIcon(icon.name())) {
+                    return QIcon::fromTheme(icon.name());
+                }
                 break;
             }
             case AppStream::Icon::KindRemote: {
