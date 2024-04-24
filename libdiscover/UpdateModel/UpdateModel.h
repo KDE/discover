@@ -29,6 +29,7 @@ public:
         ResourceRole,
         ResourceProgressRole,
         ResourceStateRole,
+        ResourceStateIsDoneRole,
         SectionResourceProgressRole,
         ChangelogRole,
         SectionRole,

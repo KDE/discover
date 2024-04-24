@@ -314,6 +314,8 @@ DiscoverPage {
         model: KItemModels.KSortFilterProxyModel {
             sourceModel: updateModel
             sortRole: Discover.UpdateModel.SectionResourceProgressRole
+            filterRoleName: "resourceStateIsDone"
+            filterString: "false"
         }
 
         section {
@@ -341,8 +343,6 @@ DiscoverPage {
             onEnabledChanged: if (!enabled) {
                 model.extended = false;
             }
-
-            visible: model.resourceState < Discover.AbstractBackendUpdater.Done
 
             Keys.onReturnPressed: event => {
                 itemChecked.clicked();
