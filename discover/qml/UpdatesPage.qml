@@ -6,6 +6,7 @@ import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.discover.app as DiscoverApp
 import org.kde.kirigami as Kirigami
+import org.kde.kitemmodels as KItemModels
 
 DiscoverPage {
     id: page
@@ -310,7 +311,7 @@ DiscoverPage {
         reuseItems: true
         clip: true
 
-        model: DiscoverApp.QSortFilterProxyModel {
+        model: KItemModels.KSortFilterProxyModel {
             sourceModel: updateModel
             sortRole: Discover.UpdateModel.SectionResourceProgressRole
         }

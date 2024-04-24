@@ -28,7 +28,6 @@
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <QSessionManager>
-#include <QSortFilterProxyModel>
 #include <QTimer>
 #include <QtQuick/QQuickItem>
 #include <qqml.h>
@@ -77,21 +76,6 @@ class CachedNetworkAccessManagerFactory : public QQmlNetworkAccessManagerFactory
     }
 };
 
-class OurSortFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
-{
-    Q_OBJECT
-    Q_INTERFACES(QQmlParserStatus)
-public:
-    void classBegin() override
-    {
-    }
-    void componentComplete() override
-    {
-        if (dynamicSortFilter())
-            sort(0);
-    }
-};
-
 static void scheduleShutdownWithErrorCode()
 {
     QTimer::singleShot(0, QCoreApplication::instance(), []() {
@@ -118,7 +102,6 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
     qmlRegisterType<FeaturedModel>(uriApp, 1, 0, "FeaturedModel");
     qmlRegisterType<OdrsAppsModel>(uriApp, 1, 0, "OdrsAppsModel");
     qmlRegisterType<PowerManagementInterface>(uriApp, 1, 0, "PowerManagementInterface");
-    qmlRegisterType<OurSortFilterProxyModel>(uriApp, 1, 0, "QSortFilterProxyModel");
 #ifdef WITH_FEEDBACK
     qmlRegisterSingletonType<PlasmaUserFeedback>(uriApp, 1, 0, "UserFeedbackSettings", [](QQmlEngine *, QJSEngine *) -> QObject * {
         return new PlasmaUserFeedback(KSharedConfig::openConfig(QStringLiteral("PlasmaUserFeedback"), KConfig::NoGlobals));
