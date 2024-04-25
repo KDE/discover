@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2023 Johannes Obermayr <johannesobermayr@gmx.de>
+# SPDX-FileCopyrightText: 2023, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # Frederik Schwarzer <schwarzer@kde.org>, 2012, 2013, 2015, 2016, 2018, 2020, 2021, 2022, 2023.
 # Burkhard Lück <lueck@hube-lueck.de>, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
 # Jannick Kuhr <opensource@kuhr.org>, 2023.
@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-27 00:38+0000\n"
-"PO-Revision-Date: 2023-12-21 15:29+0100\n"
+"PO-Revision-Date: 2024-04-24 19:35+0200\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: discover/DiscoverObject.cpp:190
 #, kde-format
@@ -57,6 +57,13 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"Damit Discover für Anwendungen verwendet werden kann, muss zuerst <link "
+"url='https://wiki.archlinux.de/title/Flatpak#Installation'>Flatpak</link> "
+"oder <link url='https://wiki.archlinux.org/title/"
+"KDE#Discover_does_not_show_any_applications'>PackageKit</link> mit der "
+"<command>pacman</command>-Paketverwaltung installiert werden.<nl/><nl/"
+">Beachten Sie auch die Informationen des <link url='https://archlinux.org/"
+"packages/extra/x86_64/discover/'>Discover-Paketes von %1</link>."
 
 #: discover/DiscoverObject.cpp:291
 #, kde-format
@@ -737,7 +744,7 @@ msgstr "Pause"
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Overlay"
-msgstr ""
+msgstr "Zum Fenstermodus wechseln"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:42
 #, kde-format
