@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-13 02:45+0000\n"
+"POT-Creation-Date: 2024-04-26 02:23+0000\n"
 "PO-Revision-Date: 2022-02-26 11:47+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: Hindi <kde-l10n-hi@kde.org>\n"
@@ -44,8 +44,8 @@ msgstr "प्रकाशन"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
-#: libdiscover/UpdateModel/UpdateModel.cpp:118
-#: libdiscover/UpdateModel/UpdateModel.cpp:329
+#: libdiscover/UpdateModel/UpdateModel.cpp:119
+#: libdiscover/UpdateModel/UpdateModel.cpp:332
 #, kde-format
 msgid "Unknown"
 msgstr "अज्ञात"
@@ -2481,7 +2481,7 @@ msgctxt "@info:status"
 msgid "Cancelled"
 msgstr "रद्द किया गया है।"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:130
+#: libdiscover/UpdateModel/UpdateModel.cpp:133
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Action"
@@ -2489,13 +2489,13 @@ msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "क्रिया"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:131
+#: libdiscover/UpdateModel/UpdateModel.cpp:134
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr ""
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:132
+#: libdiscover/UpdateModel/UpdateModel.cpp:135
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-13 02:45+0000\n"
+"POT-Creation-Date: 2024-04-26 02:23+0000\n"
 "PO-Revision-Date: 2024-02-18 14:29+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -43,8 +43,8 @@ msgstr "Domeniu public"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
-#: libdiscover/UpdateModel/UpdateModel.cpp:118
-#: libdiscover/UpdateModel/UpdateModel.cpp:329
+#: libdiscover/UpdateModel/UpdateModel.cpp:119
+#: libdiscover/UpdateModel/UpdateModel.cpp:332
 #, kde-format
 msgid "Unknown"
 msgstr "Necunoscut"
@@ -2590,19 +2590,19 @@ msgctxt "@info:status"
 msgid "Cancelled"
 msgstr "Anulat"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:130
+#: libdiscover/UpdateModel/UpdateModel.cpp:133
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "Aplicații"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:131
+#: libdiscover/UpdateModel/UpdateModel.cpp:134
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "Programe de sistem"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:132
+#: libdiscover/UpdateModel/UpdateModel.cpp:135
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"

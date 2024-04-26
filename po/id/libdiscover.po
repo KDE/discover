@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-13 02:45+0000\n"
+"POT-Creation-Date: 2024-04-26 02:23+0000\n"
 "PO-Revision-Date: 2023-05-26 07:30+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -45,8 +45,8 @@ msgstr "Domain Publik"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
-#: libdiscover/UpdateModel/UpdateModel.cpp:118
-#: libdiscover/UpdateModel/UpdateModel.cpp:329
+#: libdiscover/UpdateModel/UpdateModel.cpp:119
+#: libdiscover/UpdateModel/UpdateModel.cpp:332
 #, kde-format
 msgid "Unknown"
 msgstr "Tidak diketahui"
@@ -2605,19 +2605,19 @@ msgctxt "@info:status"
 msgid "Cancelled"
 msgstr "Dibatalkan"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:130
+#: libdiscover/UpdateModel/UpdateModel.cpp:133
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "Aplikasi"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:131
+#: libdiscover/UpdateModel/UpdateModel.cpp:134
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "Perangkat Lunak Sistem"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:132
+#: libdiscover/UpdateModel/UpdateModel.cpp:135
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"

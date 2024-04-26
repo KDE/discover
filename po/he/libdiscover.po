@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-13 02:45+0000\n"
+"POT-Creation-Date: 2024-04-26 02:23+0000\n"
 "PO-Revision-Date: 2023-11-20 14:32+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -46,8 +46,8 @@ msgstr "נחלת הכלל"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
-#: libdiscover/UpdateModel/UpdateModel.cpp:118
-#: libdiscover/UpdateModel/UpdateModel.cpp:329
+#: libdiscover/UpdateModel/UpdateModel.cpp:119
+#: libdiscover/UpdateModel/UpdateModel.cpp:332
 #, kde-format
 msgid "Unknown"
 msgstr "לא ידוע"
@@ -2554,19 +2554,19 @@ msgctxt "@info:status"
 msgid "Cancelled"
 msgstr "בוטל"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:130
+#: libdiscover/UpdateModel/UpdateModel.cpp:133
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "יישומים"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:131
+#: libdiscover/UpdateModel/UpdateModel.cpp:134
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "תוכנת מערכת"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:132
+#: libdiscover/UpdateModel/UpdateModel.cpp:135
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"
