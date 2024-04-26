@@ -19,6 +19,7 @@ Loader {
         text: root.inlineMessage.message
         type: root.inlineMessage.type
         icon.name: root.inlineMessage.iconName
+        position: Kirigami.InlineMessage.Position.Header
 
         Component {
             id: component

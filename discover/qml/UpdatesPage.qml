@@ -157,7 +157,6 @@ DiscoverPage {
 
         DiscoverInlineMessage {
             Layout.fillWidth: true
-            Layout.margins: Kirigami.Units.smallSpacing
             inlineMessage: Discover.ResourcesModel.inlineMessage
         }
 
@@ -169,7 +168,7 @@ DiscoverPage {
                 required property string modelData
 
                 Layout.fillWidth: true
-                Layout.margins: Kirigami.Units.smallSpacing
+                position: Kirigami.InlineMessage.Position.Header
                 text: modelData
                 visible: true
                 type: Kirigami.MessageType.Error
