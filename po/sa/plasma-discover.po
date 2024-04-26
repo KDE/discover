@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-27 00:38+0000\n"
+"POT-Creation-Date: 2024-04-26 00:39+0000\n"
 "PO-Revision-Date: 2023-09-29 19:09+0530\n"
 "Last-Translator: \n"
 "Language-Team: Sanskrit\n"
@@ -19,14 +19,14 @@ msgstr ""
 "X-Generator: Poedit 3.3.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: discover/DiscoverObject.cpp:190
+#: discover/DiscoverObject.cpp:173
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr "%1 डिस्कोवर् मार्गेण एप्स् संस्थापनार्थं विन्यस्तं नास्ति—केवलं एप्-एड्-ऑन्"
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:175
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -37,13 +37,13 @@ msgstr ""
 "अनुप्रयोगानाम् कृते डिस्कोवर् इत्यस्य उपयोगाय, <interface>समयोजननि</interface> पृष्ठे, "
 "<interface>पृष्ठभागाः लुप्ताः</interface> इत्यस्य अधः, स्वस्य इष्टमॉड्यूल् संस्थापयन्तु ।."
 
-#: discover/DiscoverObject.cpp:195
+#: discover/DiscoverObject.cpp:178
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "%1 इत्यस्मै एतत् समस्यां प्रतिवेदयन्तु"
 
-#: discover/DiscoverObject.cpp:200
+#: discover/DiscoverObject.cpp:183
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -63,17 +63,17 @@ msgstr ""
 "command> संकुलप्रबन्धकस्य उपयोगेन ।<nl/><nl/> <link url='https://archlinux.org/"
 "packages/extra/x86_64/discover/'> डिस्कोवर् कृते %1 इत्यस्य पॅकेजिंग् समीक्ष्यताम्</link>"
 
-#: discover/DiscoverObject.cpp:291
+#: discover/DiscoverObject.cpp:274
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "'%1' श्रेणीं न लब्धम् ।"
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:289
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "अस्तित्वहीनां सञ्चिकां '%1' उद्घाटयितुं प्रयतते।"
 
-#: discover/DiscoverObject.cpp:328
+#: discover/DiscoverObject.cpp:311
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -82,40 +82,40 @@ msgstr ""
 "फ्लैटपैक् पृष्ठभागः %1 विना फ्लैटपैक् संसाधनैः सह अन्तरक्रियां कर्तुं न शक्यते । कृपया प्रथमं "
 "संस्थापयन्तु।."
 
-#: discover/DiscoverObject.cpp:332
+#: discover/DiscoverObject.cpp:315
 #, kde-format
 msgid "Could not open %1"
 msgstr "%1 उद्घाटयितुं न शक्तवान्"
 
-#: discover/DiscoverObject.cpp:394
+#: discover/DiscoverObject.cpp:377
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "कृपया सुनिश्चितं कुर्वन्तु यत् स्नैप समर्थनं संस्थापितम् अस्ति"
 
-#: discover/DiscoverObject.cpp:397
+#: discover/DiscoverObject.cpp:380
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr "%1 उद्घाटयितुं न शक्तवान् यतः एतत् कस्मिन् अपि उपलब्धतन्त्राश्ः-भण्डारे न प्राप्तम् ।."
 
-#: discover/DiscoverObject.cpp:401
+#: discover/DiscoverObject.cpp:384
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "कृपया एतत् विषयं स्वस्य वितरणस्य संकुलकर्तृभ्यः सूचयन्तु ।."
 
-#: discover/DiscoverObject.cpp:404
+#: discover/DiscoverObject.cpp:387
 #, kde-format
 msgid "Report This Issue"
 msgstr "अस्य मुद्देः सूचनां ददातु"
 
-#: discover/DiscoverObject.cpp:466 discover/DiscoverObject.cpp:468
+#: discover/DiscoverObject.cpp:449 discover/DiscoverObject.cpp:451
 #: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "डिस्कोवर्"
 
-#: discover/DiscoverObject.cpp:469
+#: discover/DiscoverObject.cpp:452
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -264,7 +264,7 @@ msgstr "योजयतु"
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:271
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
-#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:260 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "निरसयतु"
@@ -1190,32 +1190,32 @@ msgstr "सामग्रीं दर्शयन्तु"
 msgid "Missing Backends"
 msgstr "अनुपलब्धः पृष्ठभागाः"
 
-#: discover/qml/UpdatesPage.qml:13
+#: discover/qml/UpdatesPage.qml:14
 #, kde-format
 msgid "Updates"
 msgstr "अद्यतनाः"
 
-#: discover/qml/UpdatesPage.qml:46
+#: discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "अद्यतनस्य समस्या"
 
-#: discover/qml/UpdatesPage.qml:46
+#: discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Technical details"
 msgstr "तकनीकी विवरण"
 
-#: discover/qml/UpdatesPage.qml:62
+#: discover/qml/UpdatesPage.qml:63
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr "एतत् अद्यतनं संस्थापयन् एकः समस्या आसीत् । कृपया पश्चात् पुनः प्रयासं कुर्वन्तु।."
 
-#: discover/qml/UpdatesPage.qml:68
+#: discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "तकनीकीविवरणं पश्यन्तु"
 
-#: discover/qml/UpdatesPage.qml:95
+#: discover/qml/UpdatesPage.qml:96
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid ""
@@ -1225,76 +1225,76 @@ msgstr ""
 "यदि उपरि सूचितदोषः वास्तविकसमस्या इव दृश्यते न तु अस्थायीजालदोषः, तर्हि कृपया %1 इत्यस्मै "
 "निवेदयन्तु, न तु KDE इत्यस्मै ।."
 
-#: discover/qml/UpdatesPage.qml:103
+#: discover/qml/UpdatesPage.qml:104
 #, kde-format
 msgid "Copy Text"
 msgstr "पाठ्यं प्रतिलिख्यताम्"
 
-#: discover/qml/UpdatesPage.qml:107
+#: discover/qml/UpdatesPage.qml:108
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr "त्रुटिसन्देशः प्रतिलिपिकृतः। %1 इत्यस्मै तत् प्रतिवेदयितुं स्मर्यताम्, न तु KDE!"
 
-#: discover/qml/UpdatesPage.qml:114
+#: discover/qml/UpdatesPage.qml:115
 #, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
 msgstr "%1 इत्यस्मै समस्यां निवेदयन्तु"
 
-#: discover/qml/UpdatesPage.qml:140
+#: discover/qml/UpdatesPage.qml:141
 #, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "अद्यतनं चयनितम्"
 
-#: discover/qml/UpdatesPage.qml:140
+#: discover/qml/UpdatesPage.qml:141
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "सर्वं अद्यतनं कुर्वन्तु"
 
-#: discover/qml/UpdatesPage.qml:180
+#: discover/qml/UpdatesPage.qml:181
 #, kde-format
 msgid "Ignore"
 msgstr "उपेक्ष्यताम्"
 
-#: discover/qml/UpdatesPage.qml:227
+#: discover/qml/UpdatesPage.qml:228
 #, kde-format
 msgid "Select All"
 msgstr "सर्वं चिनोतु"
 
-#: discover/qml/UpdatesPage.qml:235
+#: discover/qml/UpdatesPage.qml:236
 #, kde-format
 msgid "Select None"
 msgstr "न चिनोतु"
 
-#: discover/qml/UpdatesPage.qml:242
+#: discover/qml/UpdatesPage.qml:243
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "अद्यतनं समाप्तं कृत्वा स्वयमेव पुनः आरभत"
 
-#: discover/qml/UpdatesPage.qml:249
+#: discover/qml/UpdatesPage.qml:250
 #, kde-format
 msgid "Total size: %1"
 msgstr "कुलम् आकारः %1"
 
-#: discover/qml/UpdatesPage.qml:284
+#: discover/qml/UpdatesPage.qml:285
 #, kde-format
 msgid "Restart Now"
 msgstr "इदानीं पुनः आरभत"
 
-#: discover/qml/UpdatesPage.qml:413
+#: discover/qml/UpdatesPage.qml:414
 #, kde-format
 msgid "Installing"
 msgstr "संस्थापनम्"
 
-#: discover/qml/UpdatesPage.qml:444
+#: discover/qml/UpdatesPage.qml:445
 #, kde-format
 msgid "Update from:"
 msgstr "अद्यतनं तः:"
 
-#: discover/qml/UpdatesPage.qml:456
+#: discover/qml/UpdatesPage.qml:457
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1302,43 +1302,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:463
+#: discover/qml/UpdatesPage.qml:464
 #, kde-format
 msgid "More Information…"
 msgstr "अधिकविवरणम्…"
 
-#: discover/qml/UpdatesPage.qml:491
+#: discover/qml/UpdatesPage.qml:492
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "अद्यतनं आनयन्…"
 
-#: discover/qml/UpdatesPage.qml:504
+#: discover/qml/UpdatesPage.qml:505
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "अद्यतनाः"
 
-#: discover/qml/UpdatesPage.qml:513
+#: discover/qml/UpdatesPage.qml:514
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "अद्यतनप्रक्रियायाः समाप्त्यर्थं तन्त्रं पुनः आरभत"
 
-#: discover/qml/UpdatesPage.qml:525 discover/qml/UpdatesPage.qml:532
-#: discover/qml/UpdatesPage.qml:539
+#: discover/qml/UpdatesPage.qml:526 discover/qml/UpdatesPage.qml:533
+#: discover/qml/UpdatesPage.qml:540
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "अद्यतनम्"
 
-#: discover/qml/UpdatesPage.qml:546
+#: discover/qml/UpdatesPage.qml:547
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "अद्यतनं अन्वेष्टव्यम्"
 
-#: discover/qml/UpdatesPage.qml:553
+#: discover/qml/UpdatesPage.qml:554
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

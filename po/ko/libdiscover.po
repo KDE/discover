@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-23 00:39+0000\n"
+"POT-Creation-Date: 2024-04-26 00:39+0000\n"
 "PO-Revision-Date: 2024-02-09 20:10+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -42,8 +42,8 @@ msgstr "공개 도메인"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
-#: libdiscover/UpdateModel/UpdateModel.cpp:121
-#: libdiscover/UpdateModel/UpdateModel.cpp:332
+#: libdiscover/UpdateModel/UpdateModel.cpp:122
+#: libdiscover/UpdateModel/UpdateModel.cpp:335
 #, kde-format
 msgid "Unknown"
 msgstr "알 수 없음"
@@ -2536,19 +2536,19 @@ msgctxt "@info:status"
 msgid "Cancelled"
 msgstr "취소됨"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:133
+#: libdiscover/UpdateModel/UpdateModel.cpp:136
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "앱"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:134
+#: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "시스템 소프트웨어"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:135
+#: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"

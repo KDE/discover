@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-23 00:39+0000\n"
+"POT-Creation-Date: 2024-04-26 00:39+0000\n"
 "PO-Revision-Date: 2023-08-13 22:47+0300\n"
 "Last-Translator: George Stefanakis <george.stefanakis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -46,8 +46,8 @@ msgstr "Δημόσια χρήση"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
-#: libdiscover/UpdateModel/UpdateModel.cpp:121
-#: libdiscover/UpdateModel/UpdateModel.cpp:332
+#: libdiscover/UpdateModel/UpdateModel.cpp:122
+#: libdiscover/UpdateModel/UpdateModel.cpp:335
 #, kde-format
 msgid "Unknown"
 msgstr "Άγνωστο"
@@ -2624,19 +2624,19 @@ msgctxt "@info:status"
 msgid "Cancelled"
 msgstr "Ακύρωση"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:133
+#: libdiscover/UpdateModel/UpdateModel.cpp:136
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "Εφαρμογές"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:134
+#: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "Λογισμικό συστήματος"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:135
+#: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"

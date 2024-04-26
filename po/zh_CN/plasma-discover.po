@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-27 00:38+0000\n"
+"POT-Creation-Date: 2024-04-26 00:39+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Crowdin-File: /kf6-trunk/messages/discover/plasma-discover.pot\n"
 "X-Crowdin-File-ID: 43165\n"
 
-#: discover/DiscoverObject.cpp:190
+#: discover/DiscoverObject.cpp:173
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "%1 没有配置为通过 Discover 安装应用 — 它只通过 Discover 安装应用的附加组件"
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:175
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -36,13 +36,13 @@ msgstr ""
 "要使用 Discover 安装应用，请在 <interface>设置</interface> 页面的 <interface>"
 "缺失的后端程序</interface> 栏目中安装您首选使用的模块。"
 
-#: discover/DiscoverObject.cpp:195
+#: discover/DiscoverObject.cpp:178
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "报告此问题给 %1"
 
-#: discover/DiscoverObject.cpp:200
+#: discover/DiscoverObject.cpp:183
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -62,57 +62,57 @@ msgstr ""
 "Discover 检查 <link url='https://archlinux.org/packages/extra/x86_64/"
 "discover/'>%1 的打包情况</link>"
 
-#: discover/DiscoverObject.cpp:291
+#: discover/DiscoverObject.cpp:274
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "找不到“%1”分类"
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:289
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "正在尝试打开不存在的文件“%1”"
 
-#: discover/DiscoverObject.cpp:328
+#: discover/DiscoverObject.cpp:311
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr "缺少 flatpak 后端程序 %1，无法处理 flatpak 资源。请先安装它。"
 
-#: discover/DiscoverObject.cpp:332
+#: discover/DiscoverObject.cpp:315
 #, kde-format
 msgid "Could not open %1"
 msgstr "无法打开 %1"
 
-#: discover/DiscoverObject.cpp:394
+#: discover/DiscoverObject.cpp:377
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "请确保 Snap 支持已经安装"
 
-#: discover/DiscoverObject.cpp:397
+#: discover/DiscoverObject.cpp:380
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr "无法打开 %1，在所有可用的软件仓库中均未发现该软件包。"
 
-#: discover/DiscoverObject.cpp:401
+#: discover/DiscoverObject.cpp:384
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "请将此问题报告给您使用的发行版的软件打包人员。"
 
-#: discover/DiscoverObject.cpp:404
+#: discover/DiscoverObject.cpp:387
 #, kde-format
 msgid "Report This Issue"
 msgstr "报告此问题"
 
-#: discover/DiscoverObject.cpp:466 discover/DiscoverObject.cpp:468
+#: discover/DiscoverObject.cpp:449 discover/DiscoverObject.cpp:451
 #: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:469
+#: discover/DiscoverObject.cpp:452
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -261,7 +261,7 @@ msgstr "添加"
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:271
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
-#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:260 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "取消"
@@ -1166,32 +1166,32 @@ msgstr "显示内容"
 msgid "Missing Backends"
 msgstr "缺少后端程序"
 
-#: discover/qml/UpdatesPage.qml:13
+#: discover/qml/UpdatesPage.qml:14
 #, kde-format
 msgid "Updates"
 msgstr "更新"
 
-#: discover/qml/UpdatesPage.qml:46
+#: discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "更新问题"
 
-#: discover/qml/UpdatesPage.qml:46
+#: discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Technical details"
 msgstr "技术详情"
 
-#: discover/qml/UpdatesPage.qml:62
+#: discover/qml/UpdatesPage.qml:63
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr "安装此更新时遇到问题。请稍后重试。"
 
-#: discover/qml/UpdatesPage.qml:68
+#: discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "查看技术详情"
 
-#: discover/qml/UpdatesPage.qml:95
+#: discover/qml/UpdatesPage.qml:96
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid ""
@@ -1201,76 +1201,76 @@ msgstr ""
 "如果上面反映的错误看起来是一个实际存在的程序缺陷而不是暂时性的网络故障，请将"
 "它报告给 %1，而不是报告给 KDE。"
 
-#: discover/qml/UpdatesPage.qml:103
+#: discover/qml/UpdatesPage.qml:104
 #, kde-format
 msgid "Copy Text"
 msgstr "复制文本"
 
-#: discover/qml/UpdatesPage.qml:107
+#: discover/qml/UpdatesPage.qml:108
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr "错误消息已复制。请记得将它报告给 %1，而不是报告给 KDE。"
 
-#: discover/qml/UpdatesPage.qml:114
+#: discover/qml/UpdatesPage.qml:115
 #, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
 msgstr "报告问题给 %1"
 
-#: discover/qml/UpdatesPage.qml:140
+#: discover/qml/UpdatesPage.qml:141
 #, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "更新选中项目"
 
-#: discover/qml/UpdatesPage.qml:140
+#: discover/qml/UpdatesPage.qml:141
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "全部更新"
 
-#: discover/qml/UpdatesPage.qml:180
+#: discover/qml/UpdatesPage.qml:181
 #, kde-format
 msgid "Ignore"
 msgstr "忽略"
 
-#: discover/qml/UpdatesPage.qml:227
+#: discover/qml/UpdatesPage.qml:228
 #, kde-format
 msgid "Select All"
 msgstr "全部选中"
 
-#: discover/qml/UpdatesPage.qml:235
+#: discover/qml/UpdatesPage.qml:236
 #, kde-format
 msgid "Select None"
 msgstr "全部不选"
 
-#: discover/qml/UpdatesPage.qml:242
+#: discover/qml/UpdatesPage.qml:243
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr "更新完成后自动重启"
 
-#: discover/qml/UpdatesPage.qml:249
+#: discover/qml/UpdatesPage.qml:250
 #, kde-format
 msgid "Total size: %1"
 msgstr "总体积：%1"
 
-#: discover/qml/UpdatesPage.qml:284
+#: discover/qml/UpdatesPage.qml:285
 #, kde-format
 msgid "Restart Now"
 msgstr "立即重新启动"
 
-#: discover/qml/UpdatesPage.qml:413
+#: discover/qml/UpdatesPage.qml:414
 #, kde-format
 msgid "Installing"
 msgstr "正在安装"
 
-#: discover/qml/UpdatesPage.qml:444
+#: discover/qml/UpdatesPage.qml:445
 #, kde-format
 msgid "Update from:"
 msgstr "更新来源："
 
-#: discover/qml/UpdatesPage.qml:456
+#: discover/qml/UpdatesPage.qml:457
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1278,43 +1278,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:463
+#: discover/qml/UpdatesPage.qml:464
 #, kde-format
 msgid "More Information…"
 msgstr "更多信息…"
 
-#: discover/qml/UpdatesPage.qml:491
+#: discover/qml/UpdatesPage.qml:492
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "正在获取更新…"
 
-#: discover/qml/UpdatesPage.qml:504
+#: discover/qml/UpdatesPage.qml:505
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "更新"
 
-#: discover/qml/UpdatesPage.qml:513
+#: discover/qml/UpdatesPage.qml:514
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "重新启动系统以完成更新进程"
 
-#: discover/qml/UpdatesPage.qml:525 discover/qml/UpdatesPage.qml:532
-#: discover/qml/UpdatesPage.qml:539
+#: discover/qml/UpdatesPage.qml:526 discover/qml/UpdatesPage.qml:533
+#: discover/qml/UpdatesPage.qml:540
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "系统已更新到最新状态"
 
-#: discover/qml/UpdatesPage.qml:546
+#: discover/qml/UpdatesPage.qml:547
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "建议检查更新"
 
-#: discover/qml/UpdatesPage.qml:553
+#: discover/qml/UpdatesPage.qml:554
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

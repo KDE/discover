@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-23 00:39+0000\n"
+"POT-Creation-Date: 2024-04-26 00:39+0000\n"
 "PO-Revision-Date: 2020-10-04 16:58+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -44,8 +44,8 @@ msgstr "Publicering"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
-#: libdiscover/UpdateModel/UpdateModel.cpp:121
-#: libdiscover/UpdateModel/UpdateModel.cpp:332
+#: libdiscover/UpdateModel/UpdateModel.cpp:122
+#: libdiscover/UpdateModel/UpdateModel.cpp:335
 #, kde-format
 msgid "Unknown"
 msgstr "Ukendt"
@@ -2665,14 +2665,14 @@ msgctxt "@info:status"
 msgid "Cancelled"
 msgstr "Annulleret"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:133
+#: libdiscover/UpdateModel/UpdateModel.cpp:136
 #, fuzzy, kde-format
 #| msgid "Applications"
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "Programmer"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:134
+#: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section \"video"
@@ -2682,7 +2682,7 @@ msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "Video-software"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:135
+#: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"

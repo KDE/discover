@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-23 00:39+0000\n"
+"POT-Creation-Date: 2024-04-26 00:39+0000\n"
 "PO-Revision-Date: 2024-01-11 01:54+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -45,8 +45,8 @@ msgstr "Dominio público"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
-#: libdiscover/UpdateModel/UpdateModel.cpp:121
-#: libdiscover/UpdateModel/UpdateModel.cpp:332
+#: libdiscover/UpdateModel/UpdateModel.cpp:122
+#: libdiscover/UpdateModel/UpdateModel.cpp:335
 #, kde-format
 msgid "Unknown"
 msgstr "Desconocido"
@@ -2602,19 +2602,19 @@ msgctxt "@info:status"
 msgid "Cancelled"
 msgstr "Cancelado"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:133
+#: libdiscover/UpdateModel/UpdateModel.cpp:136
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "Aplicaciones"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:134
+#: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "Software del sistema"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:135
+#: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"

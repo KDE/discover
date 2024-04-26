@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-23 00:39+0000\n"
+"POT-Creation-Date: 2024-04-26 00:39+0000\n"
 "PO-Revision-Date: 2024-01-12 22:29+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -45,8 +45,8 @@ msgstr "Közkincs"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
-#: libdiscover/UpdateModel/UpdateModel.cpp:121
-#: libdiscover/UpdateModel/UpdateModel.cpp:332
+#: libdiscover/UpdateModel/UpdateModel.cpp:122
+#: libdiscover/UpdateModel/UpdateModel.cpp:335
 #, kde-format
 msgid "Unknown"
 msgstr "Ismeretlen"
@@ -2589,19 +2589,19 @@ msgctxt "@info:status"
 msgid "Cancelled"
 msgstr "Megszakítva"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:133
+#: libdiscover/UpdateModel/UpdateModel.cpp:136
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "Alkalmazások"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:134
+#: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "Rendszerszoftver"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:135
+#: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"

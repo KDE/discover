@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-23 00:39+0000\n"
+"POT-Creation-Date: 2024-04-26 00:39+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -50,8 +50,8 @@ msgstr "Izdavaštvo|/|$[svojstva lok 'Izdavaštvu']"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
-#: libdiscover/UpdateModel/UpdateModel.cpp:121
-#: libdiscover/UpdateModel/UpdateModel.cpp:332
+#: libdiscover/UpdateModel/UpdateModel.cpp:122
+#: libdiscover/UpdateModel/UpdateModel.cpp:335
 #, kde-format
 msgid "Unknown"
 msgstr "nepoznata"
@@ -2683,7 +2683,7 @@ msgctxt "@info:status"
 msgid "Cancelled"
 msgstr "Otkazano."
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:133
+#: libdiscover/UpdateModel/UpdateModel.cpp:136
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Applications"
@@ -2691,7 +2691,7 @@ msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "Programi|/|$[svojstva lok 'Programima']"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:134
+#: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox"
 #| msgid "System Updates"
@@ -2699,7 +2699,7 @@ msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "dopune sistema"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:135
+#: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, fuzzy, kde-format
 #| msgid "Plasma Addons"
 msgctxt "@item:inlistbox"

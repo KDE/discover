@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-27 00:38+0000\n"
+"POT-Creation-Date: 2024-04-26 00:39+0000\n"
 "PO-Revision-Date: 2012-06-13 10:17+0800\n"
 "Last-Translator: HeroP <herophuong93@gmail.com>\n"
 "Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
@@ -17,14 +17,14 @@ msgstr ""
 "X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: discover/DiscoverObject.cpp:190
+#: discover/DiscoverObject.cpp:173
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:175
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -33,13 +33,13 @@ msgid ""
 "interface>."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:195
+#: discover/DiscoverObject.cpp:178
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:200
+#: discover/DiscoverObject.cpp:183
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -53,57 +53,57 @@ msgid ""
 "packaging for Discover</link>"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:291
+#: discover/DiscoverObject.cpp:274
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:289
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:328
+#: discover/DiscoverObject.cpp:311
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:332
+#: discover/DiscoverObject.cpp:315
 #, kde-format
 msgid "Could not open %1"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:394
+#: discover/DiscoverObject.cpp:377
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:397
+#: discover/DiscoverObject.cpp:380
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:401
+#: discover/DiscoverObject.cpp:384
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:404
+#: discover/DiscoverObject.cpp:387
 #, kde-format
 msgid "Report This Issue"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:466 discover/DiscoverObject.cpp:468
+#: discover/DiscoverObject.cpp:449 discover/DiscoverObject.cpp:451
 #: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "Khám phá"
 
-#: discover/DiscoverObject.cpp:469
+#: discover/DiscoverObject.cpp:452
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -253,7 +253,7 @@ msgstr "Phần mở rộng"
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:271
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
-#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:260 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "Huỷ"
@@ -1182,34 +1182,34 @@ msgstr ""
 msgid "Missing Backends"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:13
+#: discover/qml/UpdatesPage.qml:14
 #, fuzzy, kde-format
 #| msgid "Update"
 msgid "Updates"
 msgstr "Cập nhật"
 
-#: discover/qml/UpdatesPage.qml:46
+#: discover/qml/UpdatesPage.qml:47
 #, fuzzy, kde-format
 #| msgid "Update"
 msgid "Update Issue"
 msgstr "Cập nhật"
 
-#: discover/qml/UpdatesPage.qml:46
+#: discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Technical details"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:62
+#: discover/qml/UpdatesPage.qml:63
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:68
+#: discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:95
+#: discover/qml/UpdatesPage.qml:96
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid ""
@@ -1217,80 +1217,80 @@ msgid ""
 "network error, please report it to %1, not KDE."
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:103
+#: discover/qml/UpdatesPage.qml:104
 #, kde-format
 msgid "Copy Text"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:107
+#: discover/qml/UpdatesPage.qml:108
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:114
+#: discover/qml/UpdatesPage.qml:115
 #, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:140
+#: discover/qml/UpdatesPage.qml:141
 #, fuzzy, kde-format
 #| msgid "Upgrade All!"
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "Nâng cấp tất cả!"
 
-#: discover/qml/UpdatesPage.qml:140
+#: discover/qml/UpdatesPage.qml:141
 #, fuzzy, kde-format
 #| msgid "Upgrade All!"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Nâng cấp tất cả!"
 
-#: discover/qml/UpdatesPage.qml:180
+#: discover/qml/UpdatesPage.qml:181
 #, kde-format
 msgid "Ignore"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:227
+#: discover/qml/UpdatesPage.qml:228
 #, kde-format
 msgid "Select All"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:235
+#: discover/qml/UpdatesPage.qml:236
 #, kde-format
 msgid "Select None"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:242
+#: discover/qml/UpdatesPage.qml:243
 #, kde-format
 msgid "Restart automatically after update has completed"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:249
+#: discover/qml/UpdatesPage.qml:250
 #, kde-format
 msgid "Total size: %1"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:284
+#: discover/qml/UpdatesPage.qml:285
 #, kde-format
 msgid "Restart Now"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:413
+#: discover/qml/UpdatesPage.qml:414
 #, fuzzy, kde-format
 #| msgid "Install"
 msgid "Installing"
 msgstr "Cài đặt"
 
-#: discover/qml/UpdatesPage.qml:444
+#: discover/qml/UpdatesPage.qml:445
 #, fuzzy, kde-format
 #| msgid "Upgrade All!"
 msgid "Update from:"
 msgstr "Nâng cấp tất cả!"
 
-#: discover/qml/UpdatesPage.qml:456
+#: discover/qml/UpdatesPage.qml:457
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1298,46 +1298,46 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:463
+#: discover/qml/UpdatesPage.qml:464
 #, kde-format
 msgid "More Information…"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:491
+#: discover/qml/UpdatesPage.qml:492
 #, fuzzy, kde-format
 #| msgid "Update"
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Cập nhật"
 
-#: discover/qml/UpdatesPage.qml:504
+#: discover/qml/UpdatesPage.qml:505
 #, fuzzy, kde-format
 #| msgid "Update"
 msgctxt "@info"
 msgid "Updates"
 msgstr "Cập nhật"
 
-#: discover/qml/UpdatesPage.qml:513
+#: discover/qml/UpdatesPage.qml:514
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:525 discover/qml/UpdatesPage.qml:532
-#: discover/qml/UpdatesPage.qml:539
+#: discover/qml/UpdatesPage.qml:526 discover/qml/UpdatesPage.qml:533
+#: discover/qml/UpdatesPage.qml:540
 #, fuzzy, kde-format
 #| msgid "Update"
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Cập nhật"
 
-#: discover/qml/UpdatesPage.qml:546
+#: discover/qml/UpdatesPage.qml:547
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:553
+#: discover/qml/UpdatesPage.qml:554
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
