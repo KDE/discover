@@ -138,6 +138,7 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
 {
     if (!m_ostreeFormat->isValid()) {
         // Only operate on valid origin format
+        qWarning() << "rpm-ostree-backend: Current resource in unknown format. File a bug to your distribution.";
         return false;
     }
 
@@ -148,6 +149,7 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
         // major release and thus we don't need to rebase: it will automatically happen once
         // the latest tag points to a version build with the new major release.
         if (m_ostreeFormat->tag() == QLatin1String("latest")) {
+            qWarning() << "rpm-ostree-backend: Ignoring major version rebase on container origin following the 'latest' tag.";
             return false;
         }
 
@@ -157,12 +159,14 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
         // the new tag to rebase to. This assumes that container tag names are lowercase.
         QString currentVersion = AppStreamIntegration::global()->osRelease()->versionId();
         m_nextMajorVersionRef = m_ostreeFormat->tag().replace(currentVersion, newMajorVersion.toLower(), Qt::CaseInsensitive);
+        qInfo() << "rpm-ostree-backend: Setting new version to: " << newMajorVersion;
         return true;
     }
 
     // Assume we're using the classic format from now on
     if (!m_ostreeFormat->isClassic()) {
         // Only operate on valid origin format
+        qWarning() << "rpm-ostree-backend: Current resource in unknown format. File a bug to your distribution.";
         return false;
     }
 
@@ -203,6 +207,7 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
         if (ref == newVersionBranch) {
             m_nextMajorVersion = newMajorVersion;
             m_nextMajorVersionRef = newVersionBranch;
+            qInfo() << "rpm-ostree-backend: Setting new version to:" << newMajorVersion << "ostree:" << newVersionBranch;
             return true;
         }
     }
