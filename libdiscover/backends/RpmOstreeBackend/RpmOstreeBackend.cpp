@@ -253,7 +253,8 @@ bool RpmOstreeBackend::hasExternalTransaction()
 void RpmOstreeBackend::checkForUpdates()
 {
     if (!m_currentlyBootedDeployment) {
-        qInfo() << "rpm-ostree-backend: Called checkForUpdates before the backend is done getting deployments";
+        // Should never happen
+        qWarning() << "rpm-ostree-backend: Called checkForUpdates before the backend is done getting deployments. File a bug to your distribution.";
         return;
     }
 
