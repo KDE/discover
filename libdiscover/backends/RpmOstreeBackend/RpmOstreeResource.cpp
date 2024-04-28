@@ -150,6 +150,10 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
         // the latest tag points to a version build with the new major release.
         if (m_ostreeFormat->tag() == QLatin1String("latest")) {
             qWarning() << "rpm-ostree-backend: Ignoring major version rebase on container origin following the 'latest' tag.";
+            // Hidden environement variable to help debugging rebases, skipping this check
+            if (qEnvironmentVariableIntValue("ORG_KDE_DISCOVER_DEVEL") != 0) {
+                return true;
+            }
             return false;
         }
 

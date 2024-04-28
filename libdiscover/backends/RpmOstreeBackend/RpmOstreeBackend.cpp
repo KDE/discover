@@ -34,7 +34,6 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_fetching(false)
     , m_appdata(new AppStream::Pool)
-    , m_developmentEnabled(false)
 {
     // Refuse to start on systems not managed by rpm-ostree
     if (!this->isValid()) {
@@ -44,10 +43,6 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
 
     // Signal that we're fetching ostree deployments
     setFetching(true);
-
-    // Switch to development branches for testing.
-    // TODO: Create a settings option to set this value.
-    // m_developmentEnabled = true;
 
     // List configured remotes and display them in the settings page.
     // We can do this early as this does not depend on the rpm-ostree daemon.
@@ -392,6 +387,12 @@ void RpmOstreeBackend::foundNewMajorVersion(const AppStream::Release &release)
         }
     }
 
+    // Hidden environement variable to help debugging rebases, skipping the checks below
+    if (qEnvironmentVariableIntValue("DISCOVER_RPM_OSTREE_DEVEL") != 0) {
+        Q_EMIT inlineMessageChanged(m_rebaseAvailableMessage);
+        return;
+    }
+
     // Look for an existing updated deployment or a pending deployment for the
     // current version
     QString newVersion = m_currentlyBootedDeployment->availableVersion();
@@ -506,7 +507,8 @@ void RpmOstreeBackend::rebaseToNewVersion()
     }
 
     if (m_currentlyBootedDeployment->state() == AbstractResource::Upgradeable) {
-        if (m_developmentEnabled) {
+        // Hidden environement variable to help debugging this path
+        if (qEnvironmentVariableIntValue("DISCOVER_RPM_OSTREE_DEVEL") != 0) {
             qInfo() << "rpm-ostree-backend: You have pending updates for current version. Proceeding anyway.";
             passiveMessage(i18n("You have pending updates for the current version. Proceeding anyway."));
         } else {
