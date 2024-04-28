@@ -41,20 +41,45 @@ std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStre
         return std::nullopt;
     }
 
-    KConfigGroup settings(KSharedConfig::openConfig(QStringLiteral("discoverrc")), u"DistroUpgrade"_s);
+    // Settings to control if pre-release and development releases are offered
+    // for updates. Those options are not exposed to users via a graphical
+    // interface and must be manually set in the configuration file.
+    //
+    // For example for Fedora:
+    // - the development release is always Rawhide
+    // - the pre-release is a version that has been branched from Rawhide but is
+    //   not stable yet. For example Fedora 40 Beta
+    //
+    // In Appstream metadata terms:
+    // - Development releases are specified as KindSnapshot
+    // - Pre-releases are specified as KindDevelopment
+    KConfigGroup settings(KSharedConfig::openConfig(QStringLiteral("discoverrc")), QStringLiteral("DistroUpgrade"));
     bool allowPreRelease = settings.readEntry<bool>("AllowPreRelease", false);
+    bool allowDevelopmentRelease = settings.readEntry<bool>("AllowDevelopmentRelease", false);
 
     QString currentVersion = osRelease()->versionId();
     std::optional<AppStream::Release> nextRelease;
+    std::optional<AppStream::Release> developmentRelease;
     for (const AppStream::Component &dc : distroComponents) {
         const auto releases = dc.releasesPlain().entries();
         for (const auto &r : releases) {
-            // Only look at stable releases unless requested
-            if (!(r.kind() == AppStream::Release::KindStable || (r.kind() == AppStream::Release::KindDevelopment && allowPreRelease))) {
+            // Keep the development release for later only if requested
+            if (r.kind() == AppStream::Release::KindSnapshot) {
+                if (allowDevelopmentRelease) {
+                    developmentRelease = r;
+                }
                 continue;
             }
 
-            // Let's look at this potentially new version
+            // Skip releases that are not stable
+            if (r.kind() != AppStream::Release::KindStable) {
+                // Skip pre-releases if not requested
+                if (!(r.kind() == AppStream::Release::KindDevelopment && allowPreRelease)) {
+                    continue;
+                }
+            }
+
+            // Look at the potentially new version
             const QString newVersion = r.version();
             if (AppStream::Utils::vercmpSimple(newVersion, currentVersion) > 0) {
                 if (!nextRelease) {
@@ -69,6 +94,15 @@ std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStre
                 }
             }
         }
+    }
+
+    // If:
+    // - we did not find a major upcoming release
+    // - we are allowed to look at development releases
+    // - we found a development release
+    // then offer it.
+    if (!nextRelease && allowDevelopmentRelease && developmentRelease) {
+        nextRelease = developmentRelease;
     }
 
     return nextRelease;
