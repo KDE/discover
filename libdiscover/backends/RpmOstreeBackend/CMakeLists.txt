@@ -16,6 +16,7 @@ target_link_libraries(rpm-ostree-backend
     PRIVATE
         Discover::Common
         Qt::DBus
+        KF6::ConfigCore
         KF6::CoreAddons
         KF6::I18n
         PkgConfig::Ostree

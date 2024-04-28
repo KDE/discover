@@ -24,7 +24,6 @@ Q_DECLARE_METATYPE(QList<QVariantMap>)
 static const QString DBusServiceName = QStringLiteral("org.projectatomic.rpmostree1");
 static const QString SysrootObjectPath = QStringLiteral("/org/projectatomic/rpmostree1/Sysroot");
 static const QString TransactionConnection = QStringLiteral("discover_transaction");
-static const QString DevelopmentVersionName = QStringLiteral("Rawhide");
 
 RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
@@ -318,86 +317,44 @@ void RpmOstreeBackend::lookForNextMajorVersion()
             distroId = QStringLiteral("org.fedoraproject.fedora");
         }
 
-        // Look at releases to see if we have a new major version available.
-        const auto distroComponents = m_appdata->componentsById(distroId);
-        if (distroComponents.isEmpty()) {
-            qWarning() << "rpm-ostree-backend: No component found for" << distroId;
-            return;
-        }
-
-        QString currentVersion = AppStreamIntegration::global()->osRelease()->versionId();
-        QString nextVersion;
-        for (const AppStream::Component &dc : distroComponents) {
-            const auto releases = dc.releasesPlain().entries();
-            for (const auto &r : releases) {
-                // Only look at stable releases unless development mode is enabled
-                if ((r.kind() != AppStream::Release::KindStable) && !m_developmentEnabled) {
-                    continue;
-                }
-
-                // Let's look at this potentially new verson
-                QString newVersion = r.version();
-
-                // Ignore development versions by default for version comparisions.
-                // With the development mode enabled, we will offer it later if no
-                // other previous newer major version is found.
-                if (newVersion == DevelopmentVersionName) {
-                    continue;
-                }
-
-                if (AppStream::Utils::vercmpSimple(newVersion, currentVersion) > 0) {
-                    if (nextVersion.isEmpty()) {
-                        // No other newer version found yet so let's pick this one
-                        nextVersion = newVersion;
-                        qInfo() << "rpm-ostree-backend: Found new major release:" << nextVersion;
-                    } else if (AppStream::Utils::vercmpSimple(nextVersion, newVersion) > 0) {
-                        // We only offer updating to the very next major release so
-                        // we pick the smallest of all the newest versions
-                        nextVersion = newVersion;
-                        qInfo() << "rpm-ostree-backend: Found a closer new major release:" << nextVersion;
-                    }
-                }
-            }
-        }
-
-        if (nextVersion.isEmpty()) {
-            if (m_developmentEnabled) {
-                // If development mode is enabled, always offer Rawhide as an option if
-                // we are already on the latest major version.
-                nextVersion = DevelopmentVersionName;
-            } else {
-                // No new version found, and not in development mode: we're done here
+        auto nextRelease = AppStreamIntegration::global()->getDistroUpgrade(m_appdata.get(), distroId);
+        if (nextRelease) {
+            if (!m_currentlyBootedDeployment) {
+                // Should never happen
+                qWarning()
+                    << "rpm-ostree-backend: Called lookForNextMajorVersion before the backend is done getting deployments. File a bug to your distribution.";
                 return;
             }
-        }
-
-        if (!m_currentlyBootedDeployment) {
-            qInfo() << "rpm-ostree-backend: Called lookForNextMajorVersion before the backend is done getting deployments";
+            // Validate that the branch exists for the version to move to and set it for the resource
+            if (!m_currentlyBootedDeployment->setNewMajorVersion(nextRelease->version())) {
+                qInfo() << "rpm-ostree-backend: Not offering new version:" << nextRelease->version();
+                return;
+            }
+            // Offer the newly found major version to rebase to
+            foundNewMajorVersion(*nextRelease);
             return;
         }
 
-        // Validate that the branch exists for the version to move to and set it for the resource
-        if (!m_currentlyBootedDeployment->setNewMajorVersion(nextVersion)) {
-            qWarning() << "rpm-ostree-backend: Found new major release but could not validate it via ostree. File a bug to your distribution.";
-            return;
-        }
-        // Offer the newly found major version to rebase to
-        foundNewMajorVersion(nextVersion);
+        qInfo() << "rpm-ostree-backend: No new major version found";
     };
 
     connect(m_appdata.get(), &AppStream::Pool::loadFinished, this, loadDone);
     m_appdata->loadAsync();
 }
 
-void RpmOstreeBackend::foundNewMajorVersion(const QString &newMajorVersion)
+void RpmOstreeBackend::foundNewMajorVersion(const AppStream::Release &release)
 {
+    QString newMajorVersion = release.version();
+    if (newMajorVersion == QStringLiteral("rawhide")) {
+        newMajorVersion = QStringLiteral("Rawhide");
+    }
     qDebug() << "rpm-ostree-backend: Found new release:" << newMajorVersion;
 
     if (!m_currentlyBootedDeployment) {
-        qInfo() << "rpm-ostree-backend: Called foundNewMajorVersion before the backend is done getting deployments";
+        // Should never happen
+        qWarning() << "rpm-ostree-backend: Called foundNewMajorVersion before the backend is done getting deployments. File a bug to your distribution.";
         return;
     }
-
     const QString newDistroVersionText = m_currentlyBootedDeployment->packageName() + QStringLiteral(" ") + newMajorVersion;
 
     QString info;

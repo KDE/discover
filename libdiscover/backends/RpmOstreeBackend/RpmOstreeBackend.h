@@ -80,7 +80,7 @@ private:
     void setupTransaction(RpmOstreeTransaction::Operation op, QString arg = {});
 
     /* Called when a new major version is found to setup user facing actions */
-    void foundNewMajorVersion(const QString &newMajorVersion);
+    void foundNewMajorVersion(const AppStream::Release &release);
 
     /* Set to true once we've successfully registrered with rpm-ostree */
     bool m_registrered;
