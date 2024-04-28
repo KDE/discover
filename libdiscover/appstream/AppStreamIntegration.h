@@ -21,7 +21,7 @@ class DISCOVERCOMMON_EXPORT AppStreamIntegration : public QObject
 public:
     static AppStreamIntegration *global();
 
-    std::optional<AppStream::Release> getDistroUpgrade(AppStream::Pool *pool);
+    std::optional<AppStream::Release> getDistroUpgrade(AppStream::Pool *pool, std::optional<QString> IdOverride = {});
     KOSRelease *osRelease()
     {
         return &m_osrelease;

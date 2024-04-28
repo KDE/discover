@@ -25,9 +25,14 @@ AppStreamIntegration *AppStreamIntegration::global()
     return var;
 }
 
-std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStream::Pool *pool)
+std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStream::Pool *pool, std::optional<QString> IdOverride)
 {
-    QString distroId = AppStream::SystemInfo::currentDistroComponentId();
+    QString distroId;
+    if (IdOverride) {
+        distroId = *IdOverride;
+    } else {
+        distroId = AppStream::SystemInfo::currentDistroComponentId();
+    }
 
     // Look at releases to see if we have a new major version available.
     const auto distroComponents = pool->componentsById(distroId);
