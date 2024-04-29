@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-26 00:39+0000\n"
+"POT-Creation-Date: 2024-04-29 00:40+0000\n"
 "PO-Revision-Date: 2024-03-01 23:48+0100\n"
 "Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1151,7 +1151,7 @@ msgid "Cannot remove '%1'"
 msgstr "Ni mogoče odstraniti »%1«"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1170,7 +1170,7 @@ msgid "Upgrade Now"
 msgstr "Posodobi zdaj"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2257,23 +2257,23 @@ msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree: Ni najdenega nobenega zagonskega zametka. Poročajte o napaki."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Začni nadgradnjo …"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "Za trenutno različico imate čakajoče posodobitve. Vseeno nadaljujem."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "Posodobite na zadnjo različico pred spremembo osnovne različice"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2365,7 +2365,6 @@ msgstr ""
 "sklicevanju. Poročajte o napaki."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:270
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
@@ -2387,39 +2386,42 @@ msgstr ""
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr "rpm-ostree-backend: Napaka: Neznan format vira. Poročajte o napaki."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:364
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 "Preklic transakcije rpm-ostree. To lahko traja nekaj časa. Prosimo počakajte."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Checking for a system update"
 msgstr "Preverjanje za posodobitvijo sistema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:398
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
-msgid "Downloading system update"
-msgstr "Prejemanje sistemske posodobitve"
+msgid ""
+"Downloading system update. Please be patient as progress is not reported."
+msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
-msgid "Updating the system"
-msgstr "Posodabljanje sistema"
+msgid "Updating the system. Please be patient as progress is not reported."
+msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
-msgid "Updating to the next major version"
-msgstr "Posodabljanje na naslednjo osnovno različico"
+msgid ""
+"Updating to the next major version. Please be patient as progress is not "
+"reported."
+msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr "Operacija v teku (pognana izven programa Discover)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:411
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "Neznana vrsta transakcije"
@@ -2611,6 +2613,15 @@ msgstr "Sistemsko programje"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Dodatki"
+
+#~ msgid "Downloading system update"
+#~ msgstr "Prejemanje sistemske posodobitve"
+
+#~ msgid "Updating the system"
+#~ msgstr "Posodabljanje sistema"
+
+#~ msgid "Updating to the next major version"
+#~ msgstr "Posodabljanje na naslednjo osnovno različico"
 
 #~ msgid "A new major version has been released"
 #~ msgstr "Izšla je pomembnejša novejša različica"

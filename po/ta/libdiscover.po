@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-26 00:39+0000\n"
+"POT-Creation-Date: 2024-04-29 00:40+0000\n"
 "PO-Revision-Date: 2024-02-18 17:12+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1133,7 +1133,7 @@ msgid "Cannot remove '%1'"
 msgstr "'%1' என்பதை நீக்க முடியாது"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1152,7 +1152,7 @@ msgid "Upgrade Now"
 msgstr "இப்போதே புதுப்பி"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2215,23 +2215,23 @@ msgstr ""
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "புதுப்பிப்பை துவக்கு…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "தற்போதைய பதிப்பிற்கே புதுப்பிப்புகள் மீதம் உள்ளன. இருந்தாலும் தொடர்கிறது."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2316,7 +2316,6 @@ msgid ""
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:270
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
@@ -2335,38 +2334,41 @@ msgstr ""
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:364
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Checking for a system update"
 msgstr "புதுப்பிப்பு உள்ளதா என பார்க்கப்படுகிறது"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:398
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
-msgid "Downloading system update"
-msgstr "புதுப்பிப்பு பதிவிறக்கப்படுகிறது"
+msgid ""
+"Downloading system update. Please be patient as progress is not reported."
+msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
-msgid "Updating the system"
-msgstr "இயக்குதளம் புதுப்பிக்கப்படுகிறது"
+msgid "Updating the system. Please be patient as progress is not reported."
+msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
-msgid "Updating to the next major version"
-msgstr "அடுத்த பெரும்பதிப்பிற்கு இயக்குதளம் புதுப்பிக்கப்படுகிறது"
+msgid ""
+"Updating to the next major version. Please be patient as progress is not "
+"reported."
+msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr "செயல் நிலுவையிலுள்ளது (டிஸ்கவருக்கு வெளியே துவக்கப்பட்டது)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:411
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "தெரியாத வகையான செயல்"
@@ -2556,6 +2558,15 @@ msgstr "இயங்குதள நிரல்கள்"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "துணை நிரல்கள்"
+
+#~ msgid "Downloading system update"
+#~ msgstr "புதுப்பிப்பு பதிவிறக்கப்படுகிறது"
+
+#~ msgid "Updating the system"
+#~ msgstr "இயக்குதளம் புதுப்பிக்கப்படுகிறது"
+
+#~ msgid "Updating to the next major version"
+#~ msgstr "அடுத்த பெரும்பதிப்பிற்கு இயக்குதளம் புதுப்பிக்கப்படுகிறது"
 
 #~ msgid "A new major version has been released"
 #~ msgstr "ஓர் புதிய பெரும்பதிப்பு வெளியிடப்பட்டுள்ளது"

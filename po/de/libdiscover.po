@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-26 00:39+0000\n"
+"POT-Creation-Date: 2024-04-29 00:40+0000\n"
 "PO-Revision-Date: 2024-03-27 19:32+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1158,7 +1158,7 @@ msgid "Cannot remove '%1'"
 msgstr "„%1“ kann nicht entfernt werden"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1177,7 +1177,7 @@ msgid "Upgrade Now"
 msgstr "Jetzt aktualisieren"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2262,27 +2262,27 @@ msgstr ""
 "rpm-ostree: Keine gebooteten Deployments gefunden. Bitte senden Sie einen "
 "Fehlerbericht."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Aktualisierung starten …"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Es gibt noch ausstehende Aktualisierungen für die aktuelle Version. Es wird "
 "trotzdem fortgefahren."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Bitte führen Sie eine Aktualisierung auf die letzte Version durch, bevor Sie "
 "auf eine neue Hauptversion wechseln"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2376,7 +2376,6 @@ msgstr ""
 "nicht möglich. Bitte senden Sie einen Fehlerbericht."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:270
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
@@ -2401,7 +2400,7 @@ msgstr ""
 "rpm-ostree-backend: Fehler: Das Resourcenformat ist nicht bekannt. Bitte "
 "senden Sie einen Fehlerbericht."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:364
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
@@ -2409,32 +2408,35 @@ msgstr ""
 "Die rpm-ostree-Transaktion wird abgebrochen. Dies kann eine Weile dauern. "
 "Bitte warten."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Checking for a system update"
 msgstr "Auf Systemaktualisierungen prüfen"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:398
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
-msgid "Downloading system update"
-msgstr "Systemaktualisierung wird heruntergeladen"
+msgid ""
+"Downloading system update. Please be patient as progress is not reported."
+msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
-msgid "Updating the system"
-msgstr "System wird aktualisiert"
+msgid "Updating the system. Please be patient as progress is not reported."
+msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
-msgid "Updating to the next major version"
-msgstr "Aktualisierung auf die nächste Hauptversion"
+msgid ""
+"Updating to the next major version. Please be patient as progress is not "
+"reported."
+msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr "Vorgang wird ausgeführt (außerhalb von Discover gestartet)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:411
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "Unbekannter Transaktionstyp"
@@ -2628,6 +2630,15 @@ msgstr "System-Software"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Erweiterungen"
+
+#~ msgid "Downloading system update"
+#~ msgstr "Systemaktualisierung wird heruntergeladen"
+
+#~ msgid "Updating the system"
+#~ msgstr "System wird aktualisiert"
+
+#~ msgid "Updating to the next major version"
+#~ msgstr "Aktualisierung auf die nächste Hauptversion"
 
 #~ msgid "Upgrade to %1 %2"
 #~ msgstr "Aktualisierung auf %1 %2"

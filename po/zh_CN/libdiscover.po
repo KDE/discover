@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-26 00:39+0000\n"
+"POT-Creation-Date: 2024-04-29 00:40+0000\n"
 "PO-Revision-Date: 2024-04-23 19:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1115,7 +1115,7 @@ msgid "Cannot remove '%1'"
 msgstr "无法移除“%1”"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1133,7 +1133,7 @@ msgid "Upgrade Now"
 msgstr "立即升级"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:412
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2181,23 +2181,23 @@ msgstr "rpm-ostree：发现多个已启动的部署。请提交一个程序缺�
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree：未发现已启动的部署。请提交一个程序缺陷报告。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:410
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "开始升级…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:548
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "当前版本有待处理的更新。将无视它们继续进行操作。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:551
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "在重新定位到一个主要版本之前，请更新到最新版本"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:559
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "缺少重新定位操作所需的远程参考源。请提交一个程序缺陷报告。"
@@ -2287,7 +2287,6 @@ msgstr ""
 "告。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:270
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
@@ -2309,38 +2308,41 @@ msgstr ""
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr "rpm-ostree-backend：错误：未知的资源格式。请为此提交一个程序缺陷报告。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:364
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr "正在取消 rpm-ostree 的安装进程。这可能需要一些时间。请稍候。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
 #, kde-format
 msgid "Checking for a system update"
 msgstr "正在检查系统更新"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:398
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
 #, kde-format
-msgid "Downloading system update"
-msgstr "正在下载系统更新"
+msgid ""
+"Downloading system update. Please be patient as progress is not reported."
+msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
-msgid "Updating the system"
-msgstr "正在升级系统"
+msgid "Updating the system. Please be patient as progress is not reported."
+msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
-msgid "Updating to the next major version"
-msgstr "正在更新到下一个主要版本"
+msgid ""
+"Updating to the next major version. Please be patient as progress is not "
+"reported."
+msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr "操作正在进行中 (在 Discover 外部启动)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:411
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "未知的安装进程类型"
@@ -2531,3 +2533,12 @@ msgstr "系统软件"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "插件"
+
+#~ msgid "Downloading system update"
+#~ msgstr "正在下载系统更新"
+
+#~ msgid "Updating the system"
+#~ msgstr "正在升级系统"
+
+#~ msgid "Updating to the next major version"
+#~ msgstr "正在更新到下一个主要版本"
