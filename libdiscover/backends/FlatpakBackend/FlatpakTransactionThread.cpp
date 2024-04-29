@@ -92,6 +92,85 @@ void FlatpakTransactionThread::webflowDoneCallback(FlatpakTransaction *transacti
     qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "webflow done" << id;
 }
 
+namespace Callbacks
+{
+void operation_done([[maybe_unused]] FlatpakTransaction *transaction,
+                    [[maybe_unused]] FlatpakTransactionOperation *operation,
+                    const char *commit,
+                    [[maybe_unused]] FlatpakTransactionResult details)
+{
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "NOOP" << commit;
+}
+
+int choose_remote_for_ref([[maybe_unused]] FlatpakTransaction *transaction, const char *for_ref, const char *runtime_ref, const char *const *remotes)
+{
+    const auto remotesCount = g_strv_length(const_cast<char **>(remotes));
+    if (LIBDISCOVER_BACKEND_FLATPAK_LOG().isDebugEnabled()) {
+        const auto remotesSpan = std::span{remotes, remotesCount};
+        QStringList remotesStrings;
+        remotesStrings.reserve(remotesCount);
+        for (const auto &remote : remotesSpan) {
+            remotesStrings.append(QString::fromUtf8(remote));
+        }
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "NOOP" << for_ref << runtime_ref << remotesStrings;
+    }
+    // NOTE: this shouldn't actually happen for us, we always know the remote beforehand. If we fail the assertion here that indicates we have
+    // a problem earlier in the workflow producing multiple (unexpected) remotes.
+    Q_ASSERT(remotesCount <= 1);
+    return 0;
+}
+
+void end_of_lifed([[maybe_unused]] FlatpakTransaction *transaction, const char *ref, const char *reason, const char *rebase)
+{
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "NOOP" << ref << reason << rebase;
+}
+
+gboolean ready([[maybe_unused]] FlatpakTransaction *transaction)
+{
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "NOOP";
+    return true; // continue with transaction
+}
+
+gboolean run([[maybe_unused]] FlatpakTransaction *transaction, [[maybe_unused]] GCancellable *cancellable, [[maybe_unused]] GError **error)
+{
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "NOOP";
+    return true; // continue with transaction
+}
+
+gboolean end_of_lifed_with_rebase([[maybe_unused]] FlatpakTransaction *transaction,
+                                  const char *remote,
+                                  const char *ref,
+                                  const char *reason,
+                                  const char *rebased_to_ref,
+                                  const char **previous_ids,
+                                  gpointer user_data)
+{
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "end_of_lifed_with_rebase" << remote << ref << reason << rebased_to_ref << previous_ids;
+    return false;
+}
+
+gboolean basic_auth_start([[maybe_unused]] FlatpakTransaction *transaction,
+                          const char *remote,
+                          const char *realm,
+                          [[maybe_unused]] GVariant *options,
+                          [[maybe_unused]] guint id)
+{
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "NOOP" << remote << realm;
+    return true; // continue with transaction
+}
+
+void install_authenticator([[maybe_unused]] FlatpakTransaction *transaction, const char *remote, const char *authenticator_ref)
+{
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "NOOP" << remote << authenticator_ref;
+}
+
+gboolean ready_pre_auth([[maybe_unused]] FlatpakTransaction *transaction)
+{
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "NOOP";
+    return true; // continue with transaction
+}
+} // namespace Callbacks
+
 FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role)
     : m_result(false)
     , m_app(app)
@@ -108,6 +187,15 @@ FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transac
         g_signal_connect(m_transaction, "add-new-remote", G_CALLBACK(add_new_remote_cb), this);
         g_signal_connect(m_transaction, "new-operation", G_CALLBACK(new_operation_cb), this);
         g_signal_connect(m_transaction, "operation-error", G_CALLBACK(operation_error_cb), this);
+
+        g_signal_connect(m_transaction, "basic-auth-start", G_CALLBACK(Callbacks::basic_auth_start), this);
+        g_signal_connect(m_transaction, "choose-remote-for-ref", G_CALLBACK(Callbacks::choose_remote_for_ref), this);
+        g_signal_connect(m_transaction, "end-of-lifed", G_CALLBACK(Callbacks::end_of_lifed), this);
+        g_signal_connect(m_transaction, "end-of-lifed-with-rebase", G_CALLBACK(Callbacks::end_of_lifed_with_rebase), this);
+        g_signal_connect(m_transaction, "install-authenticator", G_CALLBACK(Callbacks::install_authenticator), this);
+        g_signal_connect(m_transaction, "operation-done", G_CALLBACK(Callbacks::operation_done), this);
+        g_signal_connect(m_transaction, "ready", G_CALLBACK(Callbacks::ready), this);
+        g_signal_connect(m_transaction, "ready-pre-auth", G_CALLBACK(Callbacks::ready_pre_auth), this);
 
         if (qEnvironmentVariableIntValue("DISCOVER_FLATPAK_WEBFLOW")) {
             g_signal_connect(m_transaction, "webflow-start", G_CALLBACK(webflowStart), this);
