@@ -215,7 +215,7 @@ QStringList KNSResource::extends() const
 
 QUrl KNSResource::url() const
 {
-    return QUrl(QStringLiteral("kns://") + knsBackend()->name() + QLatin1Char('/') + QUrl(m_entry.providerId()).host() + QLatin1Char('/') + m_entry.uniqueId());
+    return QUrl(QStringLiteral("kns://") + knsBackend()->name() + QLatin1Char('/') + m_entry.uniqueId());
 }
 
 bool KNSResource::canExecute() const

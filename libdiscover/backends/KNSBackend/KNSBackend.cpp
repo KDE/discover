@@ -542,15 +542,14 @@ ResultsStream *KNSBackend::findResourceByPackageName(const QUrl &search)
         return voidStream();
 
     const auto pathParts = search.path().split(QLatin1Char('/'), Qt::SkipEmptyParts);
-    if (pathParts.size() != 2) {
+    if (pathParts.size() != 1) {
         Q_EMIT passiveMessage(i18n("Wrong KNewStuff URI: %1", search.toString()));
         return voidStream();
     }
-    const auto providerid = pathParts.at(0);
-    const auto entryid = pathParts.at(1);
+    const auto entryid = pathParts.at(0);
 
     auto stream = new KNSResultsStream(this, QLatin1String("KNS-byname-") + entryid);
-    auto start = [entryid, stream, providerid]() {
+    auto start = [entryid, stream]() {
         KNSCore::Provider::SearchRequest query(KNSCore::Provider::Newest, KNSCore::Provider::ExactEntryId, entryid, {}, 0, ENGINE_PAGE_SIZE);
         stream->setRequest(query);
     };
