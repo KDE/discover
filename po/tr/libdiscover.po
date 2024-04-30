@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 00:40+0000\n"
-"PO-Revision-Date: 2024-03-21 23:13+0300\n"
+"PO-Revision-Date: 2024-04-30 00:20+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -543,7 +543,7 @@ msgstr "Yerel paket"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:815
 #, kde-format
 msgid "Malformed appstream url '%1'"
-msgstr "Hatalı oluşturulmuş Appstream URL’si ‘%1’"
+msgstr "Hatalı oluşturulmuş Appstream URL’si “%1”"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1990
 #, kde-format
@@ -2391,11 +2391,14 @@ msgstr "Sistem güncellemeleri denetleniyor"
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"Sistem güncellemesi indiriliyor. İlerleme durumu bildirilmediğinden lütfen "
+"sabırlı olun."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
+"Sistem güncelleniyor. İlerleme durumu bildirilmediğinden lütfen sabırlı olun."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2403,6 +2406,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"Bir sonraki majör sürüme yükseltiliyor. İlerleme durumu bildirilmediğinden "
+"lütfen sabırlı olun."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format

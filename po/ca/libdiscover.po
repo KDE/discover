@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 00:40+0000\n"
-"PO-Revision-Date: 2024-01-10 11:23+0100\n"
+"PO-Revision-Date: 2024-04-29 11:14+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -2413,11 +2413,15 @@ msgstr "S'està comprovant si hi ha una actualització del sistema"
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"S'està baixant una actualització del sistema. Tingueu paciència perquè no "
+"s'informa del progrés."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
+"S'està actualitzant el sistema Tingueu paciència perquè no s'informa del "
+"progrés."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2425,6 +2429,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"S'està actualitzant a la versió major següent. Tingueu paciència perquè no "
+"s'informa del progrés."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format

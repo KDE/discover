@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 00:40+0000\n"
-"PO-Revision-Date: 2024-01-10 05:35+0100\n"
+"PO-Revision-Date: 2024-04-29 10:08+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2378,11 +2378,15 @@ msgstr "სისტემის განახლების შემოწ�
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"სისტემის განახლების გადმოწერა. მოითმინეთ, რადგან მიმდინარეობის შესახებ "
+"ინფორმაცია არ მოგვეწოდება."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
+"მიმდინარეობს სისტემის განახლება. მოითმინეთ, რადგან მიმდინარეობის შესახებ "
+"ინფორმაცია არ მოგვეწოდება."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2390,6 +2394,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"განახლება შემდეგ ძირითად ვერსიამდე. მოითმინეთ, რადგან მიმდინარეობის შესახებ "
+"ინფორმაცია არ მოგვეწოდება."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
