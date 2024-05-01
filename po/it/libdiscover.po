@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 00:40+0000\n"
-"PO-Revision-Date: 2024-01-10 16:41+0100\n"
+"PO-Revision-Date: 2024-04-29 11:33+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2391,11 +2391,14 @@ msgstr "Verifica della presenza di un aggiornamento di sistema"
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"Scaricamento dell'aggiornamento del sistema. Pazienta poiché l'avanzamento "
+"non è riportato."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
+"Aggiornamento del sistema. Pazienta poiché l'avanzamento non viene riportato."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2403,6 +2406,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"Aggiornamento alla successiva versione principale. Pazienta poiché "
+"l'avanzamento non viene riportato."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
