@@ -2,25 +2,26 @@
 # This file is distributed under the same license as the discover package.
 #
 # SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2024 pieter <pieterkristensen@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-28 01:40+0000\n"
-"PO-Revision-Date: 2023-09-28 12:58+0200\n"
-"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2024-04-26 20:46+0200\n"
+"Last-Translator: pieter <pieterkristensen@gmail.com>\n"
+"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: kcm/ui/main.qml:40
 #, kde-format
 msgid "Update software:"
-msgstr "Software bijwerken:"
+msgstr "Software updaten:"
 
 #: kcm/ui/main.qml:41
 #, kde-format
@@ -40,22 +41,21 @@ msgid ""
 "available. Updates for applications will be installed immediately, while "
 "system updates will be installed the next time the computer is restarted."
 msgstr ""
-"Elementen voor bijwerken van software zullen automatisch worden gedownload "
-"wanneer ze beschikbaar komen. Deze voor toepassingen zullen onmiddellijk "
-"geïnstalleerd worden, terwijl deze voor het systeem geïnstalleerd zullen "
-"worden bij de volgende keer dat de computer opnieuw wordt gestart."
+"Software-updates worden automatisch gedownload wanneer ze verschijnen. "
+"Updates van toepassingen worden meteen geïnstalleerd, terwijl systeem-"
+"updates bij de eerstvolgende start van de computer geïnstalleerd worden."
 
 #: kcm/ui/main.qml:69
 #, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
-msgstr "Frequentie van bijwerken:"
+msgstr "Update-frequentie:"
 
 #: kcm/ui/main.qml:69
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
-msgstr "Frequentie van melding:"
+msgstr "Meldings-frequentie:"
 
 #: kcm/ui/main.qml:72
 #, kde-format
@@ -84,7 +84,7 @@ msgstr "Nooit"
 #: kcm/ui/main.qml:119
 #, kde-format
 msgid "Apply system updates:"
-msgstr "Elementen voor bijwerken toepassen:"
+msgstr "Systeem-updates toepassen:"
 
 #: kcm/ui/main.qml:126
 #, kde-format
@@ -121,7 +121,7 @@ msgstr "Onmiddellijk"
 #~ "Deze methode van bijwerken gebruiken wordt sterk aanbevolen."
 
 #~ msgid "Software Update"
-#~ msgstr "Bijwerken van software"
+#~ msgstr "Software updates"
 
 #~ msgid "Configure software update settings"
 #~ msgstr "Instellingen voor software bijwerken configureren"

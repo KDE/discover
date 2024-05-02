@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 00:40+0000\n"
-"PO-Revision-Date: 2024-04-21 17:45+0100\n"
+"PO-Revision-Date: 2024-05-01 17:30+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -2385,11 +2385,14 @@ msgstr "Kontrolante sisteman ĝisdatigon"
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"Elŝutante sisteman ĝisdatigon. Bonvolu pacienci ĉar progreso ne estas "
+"raportata."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
+"Ĝisdatigante sistemon. Bonvolu pacienci ĉar progreso ne estas raportata."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2397,6 +2400,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"Ĝisdatigante al sekva maĵora versio. Bonvolu pacienci ĉar progreso ne estas "
+"raportata."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
@@ -2597,12 +2602,3 @@ msgstr "Sistema Programaro"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Aldonaĵoj"
-
-#~ msgid "Downloading system update"
-#~ msgstr "Elŝutante sisteman ĝisdatigon"
-
-#~ msgid "Updating the system"
-#~ msgstr "Ĝisdatigante la sistemon"
-
-#~ msgid "Updating to the next major version"
-#~ msgstr "Ĝisdatigo al la sekva grava versio"
