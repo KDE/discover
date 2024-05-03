@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 00:40+0000\n"
-"PO-Revision-Date: 2024-01-20 19:33+0400\n"
+"PO-Revision-Date: 2024-05-02 10:03+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -2389,12 +2389,12 @@ msgstr "يلتمس تحديثات للنظام"
 #, kde-format
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
-msgstr ""
+msgstr "ينزّل تحديث النظام. يرجى التحلي بالصبر حيث لم يبلغ عن التقدم."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
-msgstr ""
+msgstr "يحدث النظام. يرجى التحلي بالصبر حيث لم يبلغ عن التقدم."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2402,6 +2402,7 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"يحدّث إلى الإصدارة الرئيسة التالية. يرجى التحلي بالصبر حيث لم يبلغ عن التقدم."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
