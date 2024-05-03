@@ -25,7 +25,7 @@ DiscoverPage {
     header: DiscoverInlineMessage {
         id: message
 
-        inlineMessage: Discover.ResourcesModel.inlineMessage
+        inlineMessage: Discover.ResourcesModel.inlineMessage ? Discover.ResourcesModel.inlineMessage : app.homePageMessage
     }
 
     readonly property bool isHome: true

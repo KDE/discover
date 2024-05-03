@@ -161,14 +161,17 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
     auto action = new OneTimeAction(
         [this]() {
             bool found = DiscoverBackendsFactory::hasRequestedBackends();
+            bool hasPackageKit = false;
             const auto backends = ResourcesModel::global()->backends();
             for (auto b : backends) {
                 found |= b->hasApplications();
+                hasPackageKit = hasPackageKit || (b->name() == "packagekit-backend"_L1 && b->isValid());
             }
 
+            const KOSRelease osRelease;
+            const QString distroName = osRelease.name();
+            const bool isArch = osRelease.id() == u"arch"_s || osRelease.idLike().contains(u"arch"_s);
             if (!found) {
-                const QString distroName = KOSRelease().name();
-
                 QString errorText =
                     i18nc("@title %1 is the distro name", "%1 is not configured for installing apps through Discover—only app add-ons", distroName);
                 QString errorExplanation = xi18nc("@info:usagetip %1 is the distro name",
@@ -176,13 +179,12 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
                                                   "</interface> page, under <interface>Missing Backends</interface>.");
                 QString buttonIcon = QStringLiteral("tools-report-bug");
                 QString buttonText = i18nc("@action:button %1 is the distro name", "Report This Issue to %1", distroName);
-                QString buttonUrl = KOSRelease().bugReportUrl();
+                QString buttonUrl = osRelease.bugReportUrl();
 
-                if (distroName.contains(QStringLiteral("Arch Linux"))) {
+                if (isArch) {
                     errorExplanation = xi18nc("@info:usagetip %1 is the distro name; in this case it always contains 'Arch Linux'",
                                               "To use Discover for apps, install"
-                                              " <link url='https://wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> or"
-                                              " <link url='https://wiki.archlinux.org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</link>"
+                                              " <link url='https://wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link>"
                                               " using the <command>pacman</command> package manager.<nl/><nl/>"
                                               " Review <link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's packaging for Discover</link>",
                                               distroName);
@@ -192,6 +194,17 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
                 }
 
                 Q_EMIT openErrorPage(errorText, errorExplanation, buttonText, buttonIcon, buttonUrl);
+            } else if (hasPackageKit && isArch) {
+                const QString errorText = xi18nc("@info:usagetip %1 is the distro name",
+                                                 "Support for managing packages from %1 is incomplete; you may experience any number of problems."
+                                                 " Do not report bugs to KDE. It is highly recommended to uninstall the"
+                                                 " <resource>packagekit-qt6</resource> package and use Discover only to manage Flatpaks, Snaps,"
+                                                 " and Add-Ons."
+                                                 "<para>%1 maintainers recommended instead using the <command>pacman</command> command-line tool"
+                                                 " to manage packages.</para>",
+                                                 distroName);
+                m_homePageMessage = std::make_unique<InlineMessage>(InlineMessage::Warning, QString(), errorText);
+                Q_EMIT homeMessageChanged();
             }
         },
         this);
@@ -651,6 +664,11 @@ QRect DiscoverObject::initialGeometry() const
 QString DiscoverObject::describeSources() const
 {
     return mainWindow()->property("describeSources").toString();
+}
+
+InlineMessage *DiscoverObject::homePageMessage() const
+{
+    return m_homePageMessage.get();
 }
 
 #include "DiscoverObject.moc"

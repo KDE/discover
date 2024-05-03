@@ -17,6 +17,7 @@ class QWindow;
 class QQmlApplicationEngine;
 class CachedNetworkAccessManagerFactory;
 class TransactionsJob;
+class InlineMessage;
 
 #define DISCOVER_BASE_URL "qrc:/qt/qml/org/kde/discover/qml"
 
@@ -26,6 +27,7 @@ class DiscoverObject : public QObject
     Q_PROPERTY(bool isRoot READ isRoot CONSTANT)
     Q_PROPERTY(QRect initialGeometry READ initialGeometry CONSTANT)
     Q_PROPERTY(QQuickWindow *mainWindow READ mainWindow CONSTANT)
+    Q_PROPERTY(InlineMessage *homePageMessage READ homePageMessage NOTIFY homeMessageChanged)
 
 public:
     explicit DiscoverObject(const QVariantMap &initialProperties);
@@ -47,6 +49,7 @@ public:
 
     QString describeSources() const;
     Q_SCRIPTABLE void restore();
+    [[nodiscard]] InlineMessage *homePageMessage() const;
 
 public Q_SLOTS:
     void openApplication(const QUrl &app);
@@ -70,6 +73,7 @@ Q_SIGNALS:
     void unableToFind(const QString &resid);
     void
     openErrorPage(const QString &errorMessage, const QString &errorExplanation, const QString &buttonText, const QString &buttonIcon, const QString &buttonURL);
+    void homeMessageChanged();
 
 private:
     void showLoadingPage();
@@ -86,4 +90,5 @@ private:
 
     QScopedPointer<CachedNetworkAccessManagerFactory> m_networkAccessManagerFactory;
     KStatusNotifierItem *m_sni = nullptr;
+    std::unique_ptr<InlineMessage> m_homePageMessage;
 };
