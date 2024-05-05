@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-27 00:39+0000\n"
+"POT-Creation-Date: 2024-05-05 00:39+0000\n"
 "PO-Revision-Date: 2024-02-09 20:11+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -569,7 +569,7 @@ msgstr[0] "검색 - 항목 %1개"
 msgid "Search"
 msgstr "검색"
 
-#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:99
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:144
 #, kde-format
 msgid "Sort: %1"
 msgstr "정렬: %1"
@@ -950,48 +950,48 @@ msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ReviewDelegate.qml:65
+#: discover/qml/ReviewDelegate.qml:58
 #, kde-format
 msgid "unknown reviewer"
 msgstr "알 수 없는 리뷰어"
 
-#: discover/qml/ReviewDelegate.qml:66
+#: discover/qml/ReviewDelegate.qml:59
 #, kde-format
 msgid "<b>%1</b> by %2"
 msgstr "<b>%1</b>, %2 작성"
 
-#: discover/qml/ReviewDelegate.qml:66
+#: discover/qml/ReviewDelegate.qml:59
 #, kde-format
 msgid "Comment by %1"
 msgstr "%1 님의 댓글"
 
-#: discover/qml/ReviewDelegate.qml:84
+#: discover/qml/ReviewDelegate.qml:73
 #, kde-format
 msgid "Version: %1"
 msgstr "버전: %1"
 
-#: discover/qml/ReviewDelegate.qml:84
+#: discover/qml/ReviewDelegate.qml:73
 #, kde-format
 msgid "Version: unknown"
 msgstr "버전: 알 수 없음"
 
-#: discover/qml/ReviewDelegate.qml:100
+#: discover/qml/ReviewDelegate.qml:87
 #, kde-format
 msgid "Votes: %1 out of %2"
 msgstr "투표: %1/%2"
 
-#: discover/qml/ReviewDelegate.qml:107
+#: discover/qml/ReviewDelegate.qml:94
 #, kde-format
 msgid "Was this review useful?"
 msgstr "이 리뷰가 유용합니까?"
 
-#: discover/qml/ReviewDelegate.qml:119
+#: discover/qml/ReviewDelegate.qml:106
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "Yes"
 msgstr "예"
 
-#: discover/qml/ReviewDelegate.qml:136
+#: discover/qml/ReviewDelegate.qml:122
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "No"
@@ -1053,34 +1053,34 @@ msgctxt "@info:usagetip"
 msgid "Insert a name"
 msgstr "이름 입력"
 
-#: discover/qml/ReviewsPage.qml:54
+#: discover/qml/ReviewsPage.qml:43
 #, kde-format
 msgid "Reviews for %1"
 msgstr "%1 리뷰"
 
-#: discover/qml/ReviewsPage.qml:62
+#: discover/qml/ReviewsPage.qml:108
 #, kde-format
 msgid "Write a Review…"
 msgstr "리뷰 작성…"
 
-#: discover/qml/ReviewsPage.qml:74
+#: discover/qml/ReviewsPage.qml:121
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "리뷰를 작성하려면 앱을 설치해야 합니다"
 
-#: discover/qml/ReviewsPage.qml:103
+#: discover/qml/ReviewsPage.qml:148
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
 msgstr "관련성 높은 리뷰"
 
-#: discover/qml/ReviewsPage.qml:110
+#: discover/qml/ReviewsPage.qml:155
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
 msgstr "최신 리뷰"
 
-#: discover/qml/ReviewsPage.qml:117
+#: discover/qml/ReviewsPage.qml:162
 #, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"

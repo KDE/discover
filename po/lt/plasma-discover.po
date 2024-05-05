@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-27 00:39+0000\n"
+"POT-Creation-Date: 2024-05-05 00:39+0000\n"
 "PO-Revision-Date: 2024-01-31 19:43+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -600,7 +600,7 @@ msgstr[3] "Paieška - %1 elementas"
 msgid "Search"
 msgstr "Ieškoti"
 
-#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:99
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:144
 #, kde-format
 msgid "Sort: %1"
 msgstr "Rikiuoti: %1"
@@ -986,48 +986,48 @@ msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ReviewDelegate.qml:65
+#: discover/qml/ReviewDelegate.qml:58
 #, kde-format
 msgid "unknown reviewer"
 msgstr "nežinomas apžvalgininkas"
 
-#: discover/qml/ReviewDelegate.qml:66
+#: discover/qml/ReviewDelegate.qml:59
 #, kde-format
 msgid "<b>%1</b> by %2"
 msgstr "<b>%1</b> / %2"
 
-#: discover/qml/ReviewDelegate.qml:66
+#: discover/qml/ReviewDelegate.qml:59
 #, kde-format
 msgid "Comment by %1"
 msgstr "%1 komentaras"
 
-#: discover/qml/ReviewDelegate.qml:84
+#: discover/qml/ReviewDelegate.qml:73
 #, kde-format
 msgid "Version: %1"
 msgstr "Versija: %1"
 
-#: discover/qml/ReviewDelegate.qml:84
+#: discover/qml/ReviewDelegate.qml:73
 #, kde-format
 msgid "Version: unknown"
 msgstr "Versija: nežinoma"
 
-#: discover/qml/ReviewDelegate.qml:100
+#: discover/qml/ReviewDelegate.qml:87
 #, kde-format
 msgid "Votes: %1 out of %2"
 msgstr "Balsai: %1 iš %2"
 
-#: discover/qml/ReviewDelegate.qml:107
+#: discover/qml/ReviewDelegate.qml:94
 #, kde-format
 msgid "Was this review useful?"
 msgstr "Ar ši apžvalga buvo naudinga?"
 
-#: discover/qml/ReviewDelegate.qml:119
+#: discover/qml/ReviewDelegate.qml:106
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "Yes"
 msgstr "Taip"
 
-#: discover/qml/ReviewDelegate.qml:136
+#: discover/qml/ReviewDelegate.qml:122
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "No"
@@ -1089,34 +1089,34 @@ msgctxt "@info:usagetip"
 msgid "Insert a name"
 msgstr "Įrašykite vardą"
 
-#: discover/qml/ReviewsPage.qml:54
+#: discover/qml/ReviewsPage.qml:43
 #, kde-format
 msgid "Reviews for %1"
 msgstr "%1 apžvalgos"
 
-#: discover/qml/ReviewsPage.qml:62
+#: discover/qml/ReviewsPage.qml:108
 #, kde-format
 msgid "Write a Review…"
 msgstr "Rašyti apžvalgą…"
 
-#: discover/qml/ReviewsPage.qml:74
+#: discover/qml/ReviewsPage.qml:121
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "Norėdami rašyti apžvalgą, įdiekite šią programą"
 
-#: discover/qml/ReviewsPage.qml:103
+#: discover/qml/ReviewsPage.qml:148
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
 msgstr "Aktualiausios"
 
-#: discover/qml/ReviewsPage.qml:110
+#: discover/qml/ReviewsPage.qml:155
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
 msgstr "Naujausios"
 
-#: discover/qml/ReviewsPage.qml:117
+#: discover/qml/ReviewsPage.qml:162
 #, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"

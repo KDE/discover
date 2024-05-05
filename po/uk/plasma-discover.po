@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-27 00:39+0000\n"
+"POT-Creation-Date: 2024-05-05 00:39+0000\n"
 "PO-Revision-Date: 2023-12-20 08:58+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -602,7 +602,7 @@ msgstr[3] "Пошук — %1 запис"
 msgid "Search"
 msgstr "Пошук"
 
-#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:99
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:144
 #, kde-format
 msgid "Sort: %1"
 msgstr "Упорядковування: %1"
@@ -988,48 +988,48 @@ msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "%1 — %2"
 
-#: discover/qml/ReviewDelegate.qml:65
+#: discover/qml/ReviewDelegate.qml:58
 #, kde-format
 msgid "unknown reviewer"
 msgstr "невідомий рецензент"
 
-#: discover/qml/ReviewDelegate.qml:66
+#: discover/qml/ReviewDelegate.qml:59
 #, kde-format
 msgid "<b>%1</b> by %2"
 msgstr "<b>%1</b>, %2"
 
-#: discover/qml/ReviewDelegate.qml:66
+#: discover/qml/ReviewDelegate.qml:59
 #, kde-format
 msgid "Comment by %1"
 msgstr "Коментар %1"
 
-#: discover/qml/ReviewDelegate.qml:84
+#: discover/qml/ReviewDelegate.qml:73
 #, kde-format
 msgid "Version: %1"
 msgstr "Версія: %1"
 
-#: discover/qml/ReviewDelegate.qml:84
+#: discover/qml/ReviewDelegate.qml:73
 #, kde-format
 msgid "Version: unknown"
 msgstr "Версія: невідома"
 
-#: discover/qml/ReviewDelegate.qml:100
+#: discover/qml/ReviewDelegate.qml:87
 #, kde-format
 msgid "Votes: %1 out of %2"
 msgstr "Голоси: %1 з %2"
 
-#: discover/qml/ReviewDelegate.qml:107
+#: discover/qml/ReviewDelegate.qml:94
 #, kde-format
 msgid "Was this review useful?"
 msgstr "Чи корисна ця рецензія?"
 
-#: discover/qml/ReviewDelegate.qml:119
+#: discover/qml/ReviewDelegate.qml:106
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "Yes"
 msgstr "Так"
 
-#: discover/qml/ReviewDelegate.qml:136
+#: discover/qml/ReviewDelegate.qml:122
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "No"
@@ -1091,34 +1091,34 @@ msgctxt "@info:usagetip"
 msgid "Insert a name"
 msgstr "Вставте назву"
 
-#: discover/qml/ReviewsPage.qml:54
+#: discover/qml/ReviewsPage.qml:43
 #, kde-format
 msgid "Reviews for %1"
 msgstr "Рецензії щодо %1"
 
-#: discover/qml/ReviewsPage.qml:62
+#: discover/qml/ReviewsPage.qml:108
 #, kde-format
 msgid "Write a Review…"
 msgstr "Написати рецензію…"
 
-#: discover/qml/ReviewsPage.qml:74
+#: discover/qml/ReviewsPage.qml:121
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "Встановіть цю програму, щоб написати рецензію"
 
-#: discover/qml/ReviewsPage.qml:103
+#: discover/qml/ReviewsPage.qml:148
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
 msgstr "Найвідповідніші"
 
-#: discover/qml/ReviewsPage.qml:110
+#: discover/qml/ReviewsPage.qml:155
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
 msgstr "Найсвіжіші"
 
-#: discover/qml/ReviewsPage.qml:117
+#: discover/qml/ReviewsPage.qml:162
 #, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
