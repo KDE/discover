@@ -53,6 +53,14 @@ public:
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(QObject *parent READ parent CONSTANT)
     Q_PROPERTY(QVariantList subcategories READ subCategoriesVariant NOTIFY subCategoriesChanged)
+
+    // Whether to apply localization during parsing.
+    enum class Localization {
+        No, /* < Don't apply localization (i.e. use strings from xml verbatim) */
+        Yes, /* < Route xml strings through i18n() */
+        Force, /* < Use localization even when it'd break something (only use this for tests!) */
+    };
+
     explicit Category(QSet<QString> pluginNames, QObject *parent = nullptr);
 
     Category(const QString &name,
@@ -81,7 +89,7 @@ public:
      * root category to the global root category model.
      */
     void addSubcategory(Category *cat);
-    void parseData(const QString &path, QXmlStreamReader *xml);
+    void parseData(const QString &path, QXmlStreamReader *xml, Localization localization);
     bool blacklistPlugins(const QSet<QString> &pluginName);
     bool isAddons() const
     {
@@ -104,12 +112,14 @@ public:
     {
         return m_untranslatedName;
     }
+    [[nodiscard]] static std::optional<QString> duplicatedNamesAsStringNested(const QList<Category *> &categories);
 
 Q_SIGNALS:
     void subCategoriesChanged();
     void nameChanged();
 
 private:
+    void setNameMembers(const QString &name, Localization localization);
     QString m_name;
     QString m_untranslatedName;
     QString m_iconString;

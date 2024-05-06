@@ -9,6 +9,8 @@
 #include <QList>
 #include <QTest>
 
+#include <KLocalizedString>
+
 class CategoriesTest : public QObject
 {
     Q_OBJECT
@@ -29,7 +31,7 @@ public:
         CategoriesReader reader;
         for (const QString &name : categoryFiles) {
             qDebug() << "doing..." << name;
-            const QVector<Category *> cats = reader.loadCategoriesPath(name);
+            const QVector<Category *> cats = reader.loadCategoriesPath(name, Category::Localization::Force);
 
             if (ret.isEmpty()) {
                 ret = cats;
@@ -56,6 +58,30 @@ private Q_SLOTS:
             QVERIFY(filter.type == CategoryFilter::CategoryNameFilter);
             QVERIFY(std::get<QString>(filter.value) == QLatin1String("dummy"));
         }
+    }
+
+    void testTranslations_data()
+    {
+        QTest::addColumn<QString>("language");
+
+        auto languages = KLocalizedString::availableDomainTranslations("libdiscover").values();
+        QVERIFY(languages.size() > 1); // at least one more than en_US!
+        std::ranges::sort(languages);
+        for (const auto &language : languages) {
+            QTest::newRow(qUtf8Printable(language)) << language;
+        }
+    }
+
+    void testTranslations()
+    {
+        // Make sure loading translations doesn't explode. Specifically because we have requirements for unique category names, so this
+        // would for example fail when a translation has ambiguous category translations. When that happens we need to inform the
+        // relevant l10n team.
+
+        QFETCH(QString, language);
+
+        KLocalizedString::setLanguages({language});
+        populateCategories();
     }
 };
 

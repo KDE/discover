@@ -6,14 +6,17 @@
 
 #pragma once
 
+#include "Category.h"
 #include "discovercommon_export.h"
 #include <QVector>
 
-class Category;
 class AbstractResourcesBackend;
 class DISCOVERCOMMON_EXPORT CategoriesReader
 {
 public:
-    QVector<Category *> loadCategoriesPath(const QString &path);
     QVector<Category *> loadCategoriesFile(AbstractResourcesBackend *backend);
+
+private:
+    friend class CategoriesTest;
+    QVector<Category *> loadCategoriesPath(const QString &path, Category::Localization localization);
 };

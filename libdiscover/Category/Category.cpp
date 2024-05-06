@@ -15,6 +15,35 @@
 #include <QXmlStreamReader>
 #include <utils.h>
 
+using namespace Qt::StringLiterals;
+
+namespace
+{
+[[nodiscard]] std::optional<QString> duplicatedNamesAsString(const QList<Category *> &categories)
+{
+    QStringList seen;
+    seen.reserve(categories.size());
+
+    QStringList duplicates;
+
+    for (const auto &category : categories) {
+        const auto name = category->name();
+        if (seen.contains(name)) {
+            duplicates.push_back(name);
+            continue;
+        }
+
+        seen.append(name);
+    }
+
+    if (duplicates.isEmpty()) {
+        return {};
+    }
+
+    return "Found duplicated category names: "_L1 + duplicates.join(", "_L1);
+}
+} // namespace
+
 Category::Category(QSet<QString> pluginName, QObject *parent)
     : QObject(parent)
     , m_iconString(QStringLiteral("applications-other"))
@@ -55,7 +84,7 @@ Category::Category(const QString &name,
 
 Category::~Category() = default;
 
-void Category::parseData(const QString &path, QXmlStreamReader *xml)
+void Category::parseData(const QString &path, QXmlStreamReader *xml, Localization localization)
 {
     Q_ASSERT(xml->name() == QLatin1String("Menu"));
     while (!xml->atEnd() && !xml->hasError()) {
@@ -72,12 +101,10 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml)
         }
 
         if (xml->name() == QLatin1String("Name")) {
-            m_untranslatedName = xml->readElementText();
-            m_name = i18nc("Category", m_untranslatedName.toUtf8().constData());
-            setObjectName(m_untranslatedName);
+            setNameMembers(xml->readElementText(), localization);
         } else if (xml->name() == QLatin1String("Menu")) {
             m_subCategories << new Category(m_plugins, this);
-            m_subCategories.last()->parseData(path, xml);
+            m_subCategories.last()->parseData(path, xml, localization);
         } else if (xml->name() == QLatin1String("Addons")) {
             m_isAddons = true;
             m_priority = 5;
@@ -232,6 +259,11 @@ static bool isSorted(const QVector<Category *> &vector)
 
 void Category::sortCategories(QVector<Category *> &cats)
 {
+#if !defined(QT_NO_DEBUG)
+    if (const auto duplicatedNames = duplicatedNamesAsString(cats); duplicatedNames.has_value()) {
+        Q_ASSERT_X(false, Q_FUNC_INFO, qUtf8Printable(duplicatedNames.value()));
+    }
+#endif
     std::sort(cats.begin(), cats.end(), &categoryLessThan);
     for (auto cat : cats) {
         sortCategories(cat->m_subCategories);
@@ -397,6 +429,42 @@ bool CategoryFilter::operator==(const CategoryFilter &other) const
     } else {
         return std::get<QVector<CategoryFilter>>(value) == std::get<QVector<CategoryFilter>>(other.value);
     }
+}
+
+std::optional<QString> Category::duplicatedNamesAsStringNested(const QList<Category *> &categories)
+{
+    // The recursive call chain here is a bit crappy but I can't think of a better way to visit all m_subCategories
+    // at unknown depths. It's not too bad. We know this is finite :)
+    if (categories.isEmpty()) {
+        return {};
+    }
+
+    if (auto optionalString = duplicatedNamesAsString(categories); optionalString) {
+        return optionalString;
+    }
+
+    for (const auto &category : categories) {
+        if (auto optionalString = duplicatedNamesAsStringNested(category->m_subCategories); optionalString) {
+            return optionalString;
+        }
+    }
+
+    return {};
+}
+
+void Category::setNameMembers(const QString &name, Localization localization)
+{
+    switch (localization) {
+    case Localization::No:
+        m_name = name;
+        break;
+    case Localization::Force:
+    case Localization::Yes:
+        m_name = i18nc("Category", name.toUtf8().constData());
+        break;
+    }
+    m_untranslatedName = name;
+    setObjectName(m_untranslatedName);
 }
 
 #include "moc_Category.cpp"
