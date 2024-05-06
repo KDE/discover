@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-28 02:24+0000\n"
-"PO-Revision-Date: 2024-02-18 17:12+0530\n"
+"PO-Revision-Date: 2024-05-05 14:44+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -63,7 +63,7 @@ msgctxt ""
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr ""
+msgstr "லேசான ஆட்சேபனைக்குரியவை"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:193
 #, kde-format
@@ -72,19 +72,17 @@ msgctxt ""
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr ""
+msgstr "மிதமான ஆட்சேபனைக்குரியவை"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:196
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "இணையம்"
+msgstr "கடும் ஆட்சேபனைக்குரியவை"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:172
 #, kde-format
