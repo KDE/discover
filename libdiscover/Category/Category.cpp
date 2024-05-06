@@ -15,6 +15,34 @@
 #include <QXmlStreamReader>
 #include <utils.h>
 
+using namespace Qt::StringLiterals;
+namespace
+{
+[[nodiscard]] std::optional<QString> duplicatedNamesAsString(const QList<Category *> &categories)
+{
+    QStringList seen;
+    seen.reserve(categories.size());
+
+    QStringList duplicates;
+
+    for (const auto &category : categories) {
+        const auto name = category->name();
+        if (seen.contains(name)) {
+            duplicates.push_back(name);
+            continue;
+        }
+
+        seen.append(name);
+    }
+
+    if (duplicates.isEmpty()) {
+        return {};
+    }
+
+    return "Found duplicated category names: "_L1 + duplicates.join(", "_L1);
+}
+} // namespace
+
 Category::Category(QSet<QString> pluginName, QObject *parent)
     : QObject(parent)
     , m_iconString(QStringLiteral("applications-other"))
@@ -232,6 +260,9 @@ static bool isSorted(const QVector<Category *> &vector)
 
 void Category::sortCategories(QVector<Category *> &cats)
 {
+    if (const auto duplicatedNames = duplicatedNamesAsString(cats); duplicatedNames.has_value()) {
+        Q_ASSERT_X(false, Q_FUNC_INFO, qUtf8Printable(duplicatedNames.value()));
+    }
     std::sort(cats.begin(), cats.end(), &categoryLessThan);
     for (auto cat : cats) {
         sortCategories(cat->m_subCategories);
