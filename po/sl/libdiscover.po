@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Andrej Mernik <andrejm@ubuntu.si>, 2012, 2013, 2014, 2015, 2016, 2017, 2018.
-# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Matjaž Jeran <matjaz.jeran@amis.net>
 # SPDX-FileCopyrightText: 2024 Jure Repinc <jlp@holodeck1.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 00:40+0000\n"
-"PO-Revision-Date: 2024-04-29 06:43+0200\n"
+"PO-Revision-Date: 2024-05-06 21:42+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -212,7 +212,7 @@ msgstr "Integrirana razvojna okolja"
 #, kde-format
 msgctxt "Category"
 msgid "Localization"
-msgstr "Prevajanje"
+msgstr "Lokalizacija"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
@@ -345,7 +345,7 @@ msgstr "Igre s kartami"
 #, kde-format
 msgctxt "Category"
 msgid "Puzzles"
-msgstr "Sestavljanke"
+msgstr "Izrezanke"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
@@ -549,7 +549,7 @@ msgstr "Napačno oblikovan URL appstream »%1«"
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1990
 #, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "Ni bilo mogoče dodati vira »%1«: %2"
+msgstr "Dodajanje vira ni uspelo '%1': %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2111
 #, kde-format
@@ -559,7 +559,7 @@ msgstr "Ni virov za Flatpak."
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2115
 #, kde-format
 msgid "Failed to load \"%1\" source"
-msgstr "Ni bilo mogoče naložiti vira »%1«"
+msgstr "Ni bilo mogoče naložiti vira \"%1\""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:357
 #, kde-kuit-format
@@ -896,7 +896,7 @@ msgstr "Ni bilo mogoče dodati vira %1"
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:288
 #, kde-format
 msgid "Removing '%1'"
-msgstr "Odstranjevanje »%1«"
+msgstr "Odstranjevanje '%1'"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
 #, kde-format
@@ -935,7 +935,7 @@ msgstr "Dodajanje oddaljenega »%1« v %2 iz %3"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:200
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr "Ni bilo mogoče najti »%1« v »%2«; zagotovite, da je na voljo."
+msgstr "Ni bilo mogoče najti '%1' in '%2'; zagotovite, da je na voljo."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
@@ -985,7 +985,7 @@ msgstr "Dovoljenja za %1"
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:19
 #, kde-format
 msgid "Configure permissions…"
-msgstr "Nastavi dovoljenja …"
+msgstr "Konfiguriraj dovoljenja…"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:467
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
@@ -1148,7 +1148,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:922
 #, kde-format
 msgid "Cannot remove '%1'"
-msgstr "Ni mogoče odstraniti »%1«"
+msgstr "Ni mogoče odstraniti '%1'"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
@@ -1594,7 +1594,7 @@ msgstr "Osveževanje predpomnilnika …"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
 #, kde-format
 msgid "Setup…"
-msgstr "Nastavitev …"
+msgstr "Nastavitev…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:214
 #, kde-format
@@ -1609,7 +1609,7 @@ msgstr "Odstranitev …"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:218
 #, kde-format
 msgid "Downloading…"
-msgstr "Prejemanje …"
+msgstr "Prejemanje…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:220
 #, kde-format
@@ -1842,7 +1842,7 @@ msgstr "Blokirano"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:346
 #, kde-format
 msgid "Downloading"
-msgstr "Prejemam"
+msgstr "Prejemanje"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
 #, kde-format
@@ -1852,7 +1852,7 @@ msgstr "Posodabljam"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:350
 #, kde-format
 msgid "Installing"
-msgstr "Nameščam"
+msgstr "Nameščanje"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:352
 #, kde-format
@@ -2588,7 +2588,7 @@ msgstr "Spreminjanje dodatkov"
 #, kde-format
 msgctxt "@info:status"
 msgid "Done"
-msgstr "Končano"
+msgstr "Narejeno"
 
 #: libdiscover/Transaction/TransactionModel.cpp:94
 #, kde-format

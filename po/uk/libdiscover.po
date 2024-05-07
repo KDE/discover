@@ -386,7 +386,7 @@ msgstr "Екшн"
 #, kde-format
 msgctxt "Category"
 msgid "Emulators"
-msgstr "Імітатори"
+msgstr "Емулятори"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
