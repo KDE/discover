@@ -6,7 +6,6 @@
  */
 
 #include "FwupdTransaction.h"
-#include "../DiscoverVersion.h"
 
 #include <QTimer>
 #include <resources/AbstractBackendUpdater.h>
@@ -46,7 +45,9 @@ void FwupdTransaction::install()
         setStatus(DownloadingStatus);
         QNetworkAccessManager *manager = new QNetworkAccessManager(this);
         auto req = QNetworkRequest(uri);
-        req.setHeader(QNetworkRequest::UserAgentHeader, QStringLiteral("plasma-discover/%1").arg(version));
+
+        const QString userAgent = QString::fromUtf8(fwupd_client_get_user_agent(m_backend->client));
+        req.setHeader(QNetworkRequest::UserAgentHeader, userAgent);
         req.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
         auto reply = manager->get(req);
         QFile *file = new QFile(fileName);
