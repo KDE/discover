@@ -137,7 +137,7 @@ QJsonArray PackageKitResource::licenses()
         return {AppStreamUtils::license(id)};
     }
 
-    return {QJsonObject{{QStringLiteral("name"), {}}}};
+    return {};
 }
 
 QList<PackageState> PackageKitResource::addonsInformation()
