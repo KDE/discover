@@ -109,9 +109,11 @@ void SnapTransaction::setRequest(QSnapdRequest *req)
 void SnapTransaction::progressed()
 {
     const auto change = m_request->change();
-    int percentage = 0, count = 0;
+    int percentage = 0;
+    int count = 0;
 
     auto status = SetupStatus;
+    quint64 bitsPerSecond = 0;
     for (int i = 0, c = change->taskCount(); i < c; ++i) {
         ++count;
         auto task = change->task(i);
@@ -121,9 +123,20 @@ void SnapTransaction::progressed()
             status = CommittingStatus;
         }
         percentage += (100 * task->progressDone()) / task->progressTotal();
+
+        if (const auto readyTime = task->readyTime(); readyTime.isValid()) {
+            const auto now = QDateTime::currentDateTime();
+            const auto timeDelta = now - readyTime;
+            const auto timeDeltaSeconds = std::chrono::duration_cast<std::chrono::seconds>(timeDelta).count();
+            const auto downloadedBits = (task->progressTotal() - task->progressDone()) * 8;
+            qDebug() << timeDeltaSeconds << downloadedBits;
+            bitsPerSecond = timeDeltaSeconds <= 0 ? 0 : downloadedBits / timeDeltaSeconds;
+            qDebug() << bitsPerSecond;
+        }
     }
     setProgress(percentage / qMax(count, 1));
     setStatus(status);
+    setDownloadSpeed(bitsPerSecond);
 }
 
 #include "moc_SnapTransaction.cpp"
