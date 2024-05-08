@@ -2619,12 +2619,3 @@ msgstr "Systemprogram"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tillegg"
-
-#~ msgid "Downloading system update"
-#~ msgstr "Laster ned systemoppdatering"
-
-#~ msgid "Updating the system"
-#~ msgstr "Oppdaterer systemet"
-
-#~ msgid "Updating to the next major version"
-#~ msgstr "Oppdaterer til neste hovedversjon"

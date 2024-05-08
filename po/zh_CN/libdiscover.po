@@ -2533,12 +2533,3 @@ msgstr "系统软件"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "插件"
-
-#~ msgid "Downloading system update"
-#~ msgstr "正在下载系统更新"
-
-#~ msgid "Updating the system"
-#~ msgstr "正在升级系统"
-
-#~ msgid "Updating to the next major version"
-#~ msgstr "正在更新到下一个主要版本"
