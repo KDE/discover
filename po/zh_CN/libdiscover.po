@@ -2323,12 +2323,12 @@ msgstr "正在检查系统更新"
 #, kde-format
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
-msgstr ""
+msgstr "正在下载系统更新。请耐心等待，因为系统不会报告更新的进度。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
-msgstr ""
+msgstr "正在更新系统。请耐心等待，因为系统不会报告更新的进度。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2336,6 +2336,7 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"正在升级到系统的下一个主要版本。请耐心等待，因为系统不会报告更新的进度。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
