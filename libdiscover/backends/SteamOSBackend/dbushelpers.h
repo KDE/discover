@@ -15,3 +15,4 @@
 
 /// a{sa{sv}}
 using VariantMapMap = QMap<QString, QMap<QString, QVariant>>;
+Q_DECLARE_METATYPE(VariantMapMap)

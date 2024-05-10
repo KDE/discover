@@ -55,12 +55,24 @@ SteamOSBackend::SteamOSBackend(QObject *parent)
     , m_updateSize(0)
     , m_resource(nullptr)
     , m_transaction(nullptr)
+    , m_testing(false)
 {
     qDBusRegisterMetaType<VariantMapMap>();
 
+    if (qEnvironmentVariableIsSet("STEAMOS_TEST_MODE")) {
+        const QString path = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-steamos-test");
+        qCDebug(LIBDISCOVER_BACKEND_STEAMOS_LOG) << "running steamos backend on test mode" << path;
+        m_testing = true;
+    }
+
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &SteamOSBackend::updatesCountChanged);
 
-    m_interface = new ComSteampoweredAtomupd1Interface(service(), path(), QDBusConnection::systemBus(), this);
+    // Use the session bus when testing.
+    if (m_testing) {
+        m_interface = new ComSteampoweredAtomupd1Interface(service(), path(), QDBusConnection::sessionBus(), this);
+    } else {
+        m_interface = new ComSteampoweredAtomupd1Interface(service(), path(), QDBusConnection::systemBus(), this);
+    }
 
     // First try to get the current version, only check valid after that since
     // this could wake up the service
@@ -243,6 +255,8 @@ QHash<QString, SteamOSResource *> SteamOSBackend::resources() const
 
 bool SteamOSBackend::isValid() const
 {
+    if (m_testing)
+        return true;
     return QFile(QStringLiteral(ATOMUPD_SERVICE_PATH)).exists();
 }
 

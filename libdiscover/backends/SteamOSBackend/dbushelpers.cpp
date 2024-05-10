@@ -8,5 +8,3 @@
  */
 
 #include "dbushelpers.h"
-
-Q_DECLARE_METATYPE(VariantMapMap)

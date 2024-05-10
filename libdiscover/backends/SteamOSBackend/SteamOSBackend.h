@@ -93,6 +93,7 @@ private:
     QPointer<ComSteampoweredAtomupd1Interface> m_interface; // Interface to atomupd dbus api
     QString m_currentVersion;
     QString m_currentBuildID;
+    bool m_testing;
 };
 
 #endif // STEAMOSBACKEND_H

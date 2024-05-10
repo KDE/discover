@@ -27,6 +27,21 @@ ecm_qt_declare_logging_category(steamos-backend_SRCS
 
 kcoreaddons_add_plugin(steamos-backend SOURCES ${steamos-backend_SRCS} INSTALL_NAMESPACE "discover")
 
+add_library(libdiscover-backend-steamos-logging-category STATIC
+    ${libdiscover-backend-steamos-logging-category_SRCS}
+)
+
+set_property(TARGET libdiscover-backend-steamos-logging-category PROPERTY POSITION_INDEPENDENT_CODE ON)
+
+target_link_libraries(libdiscover-backend-steamos-logging-category
+    PRIVATE
+        Qt::Core
+)
+
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
+
 target_link_libraries(steamos-backend
     Qt::Core
     Qt::Widgets
