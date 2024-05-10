@@ -113,10 +113,10 @@ Kirigami.ApplicationWindow {
         icon.name: "view-refresh"
         onTriggered: action.trigger()
         enabled: action.enabled
-        // Don't need to show this action in mobile view since you can pull down
-        // on the view to refresh, and this is the common and expected behavior
-        //on that platform
-        visible: window.wideScreen
+        // Don't need to show this action on mobile since you can pull down
+        // on the view to refresh, which is the common and expected behavior
+        // on that platform - but is not possible on desktop
+        visible: !Kirigami.Settings.isMobile
         tooltip: shortcut.nativeText
 
         // Need to define an explicit Shortcut object so we can get its text
