@@ -465,7 +465,7 @@ msgstr "Xat"
 #, kde-format
 msgctxt "Category"
 msgid "File Sharing"
-msgstr "Compartició de fitxers"
+msgstr "Compartiu els fitxers"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
@@ -2482,7 +2482,7 @@ msgstr ""
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""
 "SteamOS: no s'ha pogut consultar «atomupd» buscant actualitzacions de "
-"l'SteamOS..."
+"SteamOS…"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
