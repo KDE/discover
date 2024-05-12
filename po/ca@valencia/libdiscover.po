@@ -2490,7 +2490,7 @@ msgstr ""
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""
 "SteamOS: no s'ha pogut consultar «atomupd» buscant actualitzacions de "
-"l'SteamOS..."
+"SteamOS…"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
