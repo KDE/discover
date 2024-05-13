@@ -397,7 +397,7 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                     versionScore = versionScore / qreal(std::max(reviewVersion.length(), availableVersion.length()) - 1);
                 }
 
-                // Very random heuristic which weights usefulness with age and versioin similarity. Don't penalise usefulness more than 6 months
+                // Very random heuristic which weights usefulness with age and version similarity. Don't penalize usefulness more than 6 months
                 usefulWilson = versionScore + 1.0 / std::max(1.0, totalDays) + usefulWilson / std::clamp(totalDays, 1.0, 93.0);
 
                 ReviewPtr r(new Review(review.value(QStringLiteral("app_id")).toString(),
