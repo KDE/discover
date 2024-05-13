@@ -11,6 +11,8 @@
 #include <KNSCore/Question>
 #include <KNSCore/Transaction>
 
+#include <ranges>
+
 #include <QTimer>
 #include <Transaction/TransactionModel.h>
 
@@ -38,7 +40,15 @@ KNSTransaction::KNSTransaction(QObject *parent, KNSResource *res, Role role)
             setStatus(DoneStatus);
             return;
         } else {
-            knsTransaction = KNSCore::Transaction::install(engine, res->entry());
+            // If there are multiple download links pick the one with the greatest id. The assumption here is that greater
+            // id means later created and later created suggests newer release. Not ideal but we have to deal with the lack
+            // of artifact versioning somehow.
+            // https://bugs.kde.org/show_bug.cgi?id=482534
+            auto linkIds = res->linkIds();
+            const auto greatestIt = std::ranges::sort(linkIds, std::greater{});
+            Q_ASSERT(!linkIds.isEmpty());
+
+            knsTransaction = KNSCore::Transaction::install(engine, res->entry(), *greatestIt);
         }
 
         connect(knsTransaction, &KNSCore::Transaction::signalEntryEvent, this, [this, res](const KNSCore::Entry &entry, KNSCore::Entry::EntryEvent event) {
