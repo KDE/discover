@@ -281,7 +281,8 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
             qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Failed to submit review: missing object";
         }
     } else {
-        qCWarning(LIBDISCOVER_LOG).noquote() << "OdrsReviewsBackend: Failed to submit review:" << reply->errorString();
+        qCWarning(LIBDISCOVER_LOG).noquote() << "OdrsReviewsBackend: Failed to submit review:" << reply->error() << reply->errorString()
+                                             << reply->rawHeaderPairs();
         Q_EMIT error(i18n("Error while submitting review: %1", reply->errorString()));
     }
     reply->deleteLater();
