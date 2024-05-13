@@ -363,7 +363,7 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                 const int usefulNegative = review.value(QStringLiteral("karma_down")).toInt();
                 const int usefulTotal = usefulFavorable + usefulNegative;
 
-                qreal usefulWilson = 0.f;
+                qreal usefulWilson = 0.F;
 
                 /* from http://www.evanmiller.org/how-not-to-sort-by-average-rating.html */
                 if (usefulFavorable > 0 || usefulNegative > 0) {
@@ -371,7 +371,7 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                                     - 1.96 * sqrt((usefulFavorable * usefulNegative) / qreal(usefulFavorable + usefulNegative) + 0.9604)
                                         / (usefulFavorable + usefulNegative))
                         / (1 + 3.8416 / (usefulFavorable + usefulNegative));
-                    usefulWilson *= 100.f;
+                    usefulWilson *= 100.F;
                 }
 
                 QDateTime dateTime;
