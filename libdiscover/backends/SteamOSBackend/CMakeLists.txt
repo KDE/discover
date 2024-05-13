@@ -25,7 +25,8 @@ ecm_qt_declare_logging_category(steamos-backend_SRCS
     EXPORT DISCOVER
 )
 
-add_library(steamos-backend MODULE ${steamos-backend_SRCS})
+kcoreaddons_add_plugin(steamos-backend SOURCES ${steamos-backend_SRCS} INSTALL_NAMESPACE "discover")
+
 target_link_libraries(steamos-backend
     Qt::Core
     Qt::Widgets
@@ -34,5 +35,3 @@ target_link_libraries(steamos-backend
     KF6::ConfigCore
     Discover::Common
 )
-
-install(TARGETS steamos-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)

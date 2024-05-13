@@ -1,11 +1,12 @@
 add_subdirectory(libsnapclient)
 
-add_library(snap-backend MODULE
+set(snap-backend_SRCS
     SnapResource.cpp
     SnapBackend.cpp
     SnapTransaction.cpp
     snapui.qrc
 )
+kcoreaddons_add_plugin(snap-backend SOURCES ${snap-backend_SRCS} INSTALL_NAMESPACE "discover")
 target_link_libraries(snap-backend
     Qt::Gui
     Qt::Core
@@ -29,5 +30,4 @@ if ("${Snapd_VERSION}" VERSION_GREATER 1.48)
     target_compile_definitions(snap-backend PRIVATE -DSNAP_FIND_COMMON_ID -DSNAP_MARKDOWN)
 endif()
 
-install(TARGETS snap-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 install(FILES org.kde.discover.snap.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})

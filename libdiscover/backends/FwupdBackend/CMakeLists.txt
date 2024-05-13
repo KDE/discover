@@ -7,7 +7,7 @@ set(fwupd-backend_SRCS
     FwupdSourcesBackend.cpp
 )
 
-add_library(fwupd-backend MODULE ${fwupd-backend_SRCS})
+kcoreaddons_add_plugin(fwupd-backend SOURCES ${fwupd-backend_SRCS} INSTALL_NAMESPACE "discover")
 target_link_libraries(fwupd-backend
     Qt::Core
     KF6::CoreAddons
@@ -18,6 +18,4 @@ target_link_libraries(fwupd-backend
 if (Fwupd_VERSION VERSION_LESS 1.5.8)
     target_compile_definitions(fwupd-backend PRIVATE -DFWUPD_EXTERNC_REQUIRED)
 endif()
-
-install(TARGETS fwupd-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 

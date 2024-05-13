@@ -34,7 +34,7 @@ set(packagekit-backend_SRCS
     pkui.qrc
 )
 
-add_library(packagekit-backend MODULE ${packagekit-backend_SRCS})
+kcoreaddons_add_plugin(packagekit-backend SOURCES ${packagekit-backend_SRCS} INSTALL_NAMESPACE "discover")
 
 target_link_libraries(packagekit-backend
     PRIVATE
@@ -51,8 +51,6 @@ target_link_libraries(packagekit-backend
         QCoro::Core
         libdiscover-backend-packagekit-logging-category
 )
-
-install(TARGETS packagekit-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 
 if (TARGET PkgConfig::Markdown)
     target_compile_definitions(packagekit-backend PRIVATE -DWITH_MARKDOWN)

@@ -33,7 +33,7 @@ set(flatpak-backend_SRCS
     resources.qrc
 )
 
-add_library(flatpak-backend MODULE ${flatpak-backend_SRCS})
+kcoreaddons_add_plugin(flatpak-backend SOURCES ${flatpak-backend_SRCS} INSTALL_NAMESPACE "discover")
 kde_target_enable_exceptions(flatpak-backend PRIVATE)
 target_link_libraries(flatpak-backend
     PRIVATE
@@ -59,7 +59,6 @@ if (NOT Flatpak_VERSION VERSION_LESS 1.1.2)
     target_compile_definitions(flatpak-backend PRIVATE -DFLATPAK_VERBOSE_PROGRESS -DFLATPAK_LIST_UNUSED_REFS)
 endif()
 
-install(TARGETS flatpak-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 install(FILES flatpak-backend-categories.xml DESTINATION ${KDE_INSTALL_DATADIR}/libdiscover/categories)
 
 add_library(FlatpakNotifier MODULE FlatpakNotifier.cpp)

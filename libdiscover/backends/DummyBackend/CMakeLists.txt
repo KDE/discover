@@ -10,7 +10,7 @@ set(dummy-backend_SRCS
     DummySourcesBackend.cpp
 )
 
-add_library(dummy-backend MODULE ${dummy-backend_SRCS})
+kcoreaddons_add_plugin(dummy-backend SOURCES ${dummy-backend_SRCS} INSTALL_NAMESPACE "discover")
 target_link_libraries(dummy-backend
     Qt::Core
     Qt::Widgets
@@ -19,7 +19,6 @@ target_link_libraries(dummy-backend
     Discover::Common
 )
 
-install(TARGETS dummy-backend DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover)
 install(FILES dummy-backend-categories.xml DESTINATION ${KDE_INSTALL_DATADIR}/libdiscover/categories)
 
 add_library(DummyNotifier MODULE DummyNotifier.cpp)

@@ -19,6 +19,7 @@
 #include <resources/ResourcesUpdatesModel.h>
 
 #include <QSignalSpy>
+#include <QStandardPaths>
 #include <QTest>
 
 QTEST_MAIN(DummyTest)
@@ -39,6 +40,7 @@ DummyTest::DummyTest(QObject *parent)
 {
     DiscoverBackendsFactory::setRequestedBackends({QStringLiteral("dummy-backend")});
 
+    QStandardPaths::setTestModeEnabled(true);
     m_model = new ResourcesModel(QStringLiteral("dummy-backend"), this);
     m_appBackend = backendByName(m_model, QStringLiteral("DummyBackend"));
 
