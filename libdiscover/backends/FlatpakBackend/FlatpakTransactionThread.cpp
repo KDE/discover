@@ -12,6 +12,8 @@
 #include <KLocalizedString>
 #include <QDesktopServices>
 
+#include <span>
+
 static int FLATPAK_CLI_UPDATE_FREQUENCY = 150;
 
 gboolean FlatpakTransactionThread::add_new_remote_cb(FlatpakTransaction *object,
