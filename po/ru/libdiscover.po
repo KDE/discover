@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023 Alexander Yavorsky <kekcuha@gmail.com>
+# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024 Alexander Yavorsky <kekcuha@gmail.com>
 # Yuri Efremov <yur.arh@gmail.com>, 2010, 2011, 2012, 2013, 2014.
 # Alexander Potashev <aspotashev@gmail.com>, 2010, 2011, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 00:40+0000\n"
-"PO-Revision-Date: 2024-01-11 10:23+0300\n"
+"PO-Revision-Date: 2024-05-12 11:38+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.08.3\n"
+"X-Generator: Lokalize 24.02.2\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -2424,11 +2424,15 @@ msgstr "Выполняется проверка наличия обновлен�
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"Выполняется загрузка обновлений системы. Сведения о ходе выполнения не "
+"предоставляются, дождитесь завершения этого действия."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
+"Выполняется обновление системы. Сведения о ходе выполнения не "
+"предоставляются, дождитесь завершения этого действия."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2436,6 +2440,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"Выполняется обновление до следующей значительной версии. Сведения о ходе "
+"выполнения не предоставляются, дождитесь завершения этого действия."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
