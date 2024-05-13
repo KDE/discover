@@ -36,7 +36,7 @@ find_package(KF6 ${KF6_MIN_VERSION} OPTIONAL_COMPONENTS UserFeedback)
 find_package(packagekitqt6 1.0.1 CONFIG)
 find_package(AppStreamQt 1.0 CONFIG REQUIRED)
 find_package(KF6Attica 5.23 CONFIG)
-find_package(KF6NewStuff 5.53 CONFIG)
+find_package(KF6NewStuff 6.5 CONFIG)
 
 find_package(KF${QT_MAJOR_VERSION}KirigamiAddons REQUIRED)
 set_package_properties(KF${QT_MAJOR_VERSION}KirigamiAddons PROPERTIES

@@ -38,7 +38,8 @@ KNSTransaction::KNSTransaction(QObject *parent, KNSResource *res, Role role)
             setStatus(DoneStatus);
             return;
         } else {
-            knsTransaction = KNSCore::Transaction::install(engine, res->entry());
+            // -1 to let knewstuff pick the most suitable candidate (ideally the highest version)
+            knsTransaction = KNSCore::Transaction::install(engine, res->entry(), -1);
         }
 
         connect(knsTransaction, &KNSCore::Transaction::signalEntryEvent, this, [this, res](const KNSCore::Entry &entry, KNSCore::Entry::EntryEvent event) {
