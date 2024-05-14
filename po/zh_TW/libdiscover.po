@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-29 00:40+0000\n"
+"POT-Creation-Date: 2024-05-14 00:39+0000\n"
 "PO-Revision-Date: 2024-04-29 18:52+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -900,12 +900,12 @@ msgstr "%1 (使用者)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "輸入 Flatpak 軟體庫連結 URI (*.flatpakrepo)："
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:29
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:31
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "正在增加來自 %3 的 %2 中「%1」遠端位置"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:200
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:290
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "在 '%2' 中找不到 '%1'；請確定它真的存在。"

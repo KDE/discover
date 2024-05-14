@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-29 00:40+0000\n"
+"POT-Creation-Date: 2024-05-14 00:39+0000\n"
 "PO-Revision-Date: 2024-02-09 22:21+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -916,12 +916,12 @@ msgstr "%1 (ユーザ)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Flatpak リポジトリ URI (*.flatpakrepo) を入力:"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:29
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:31
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "%3 の %2 からリモート '%1' を追加しています"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:200
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:290
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr ""

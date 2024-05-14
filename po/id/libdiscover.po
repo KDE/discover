@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-29 00:40+0000\n"
+"POT-Creation-Date: 2024-05-14 00:39+0000\n"
 "PO-Revision-Date: 2023-05-26 07:30+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -938,12 +938,12 @@ msgstr "%1 (pengguna)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Masukkanlah URI repositori Flatpak (*.flatpakrepo):"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:29
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:31
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Penambahan jarak jauh '%1' di %2 dari %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:200
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:290
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "Tidak bisa menemukan '%1' di '%2'; mohon pastikan bahwa itu tersedia."

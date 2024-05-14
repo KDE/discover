@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-29 00:40+0000\n"
+"POT-Creation-Date: 2024-05-14 00:39+0000\n"
 "PO-Revision-Date: 2024-04-29 09:56+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -928,12 +928,12 @@ msgstr "%1 (gebruiker)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Flatpak opslagruimte URI (*.flatpakrepo) invoeren:"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:29
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:31
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "'%1' op afstand in %2 van %3 wordt toegevoegd"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:200
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:290
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "Kon '%1' niet in '%2' vinden; ga na dat het beschikbaar is."
