@@ -14,6 +14,8 @@
 
 #include <span>
 
+using namespace Qt::StringLiterals;
+
 static int FLATPAK_CLI_UPDATE_FREQUENCY = 150;
 
 gboolean FlatpakTransactionThread::add_new_remote_cb(FlatpakTransaction *object,
@@ -148,7 +150,7 @@ gboolean end_of_lifed_with_rebase([[maybe_unused]] FlatpakTransaction *transacti
                                   gpointer user_data)
 {
     qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "end_of_lifed_with_rebase" << remote << ref << reason << rebased_to_ref << previous_ids;
-    return false;
+    return static_cast<FlatpakTransactionThread *>(user_data)->end_of_lifed_with_rebase(remote, ref, reason, rebased_to_ref, previous_ids);
 }
 
 gboolean basic_auth_start([[maybe_unused]] FlatpakTransaction *transaction,
@@ -214,6 +216,10 @@ FlatpakTransactionThread::~FlatpakTransactionThread()
 
 void FlatpakTransactionThread::cancel()
 {
+    QMutexLocker lock(&m_proceedMutex);
+    m_proceed = false;
+    m_proceedCondition.wakeAll();
+
     for (int id : std::as_const(m_webflows)) {
         flatpak_transaction_abort_webflow(m_transaction, id);
     }
@@ -238,7 +244,7 @@ void FlatpakTransactionThread::run()
         if (m_app->state() == AbstractResource::Upgradeable && m_app->isInstalled()) {
             correct = flatpak_transaction_add_update(m_transaction, refName.toUtf8().constData(), nullptr, nullptr, &localError);
             for (const QByteArray &subref : m_app->toUpdate()) {
-                correct |= flatpak_transaction_add_update(m_transaction, subref.constData(), nullptr, nullptr, &localError);
+                correct = correct && flatpak_transaction_add_update(m_transaction, subref.constData(), nullptr, nullptr, &localError);
             }
         } else if (m_app->flatpakFileType() == FlatpakResource::FileFlatpak) {
             g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
@@ -266,11 +272,7 @@ void FlatpakTransactionThread::run()
         }
 
         if (!correct) {
-            m_result = false;
-            m_errorMessage = QString::fromUtf8(localError->message);
-            // We are done so we can set the progress to 100
-            setProgress(100);
-            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to install" << m_app->flatpakFileType() << refName << ':' << m_errorMessage;
+            fail(qUtf8Printable(refName), localError);
             return;
         }
     } else if (m_role == Transaction::Role::RemoveRole) {
@@ -374,6 +376,58 @@ bool FlatpakTransactionThread::cancelled() const
 FlatpakTransactionThread::Repositories FlatpakTransactionThread::addedRepositories() const
 {
     return m_addedRepositories;
+}
+
+void FlatpakTransactionThread::fail(const char *refName, GError *error)
+{
+    m_result = false;
+    m_errorMessage = QString::fromUtf8(error->message);
+    // We are done so we can set the progress to 100
+    setProgress(100);
+    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to install" << m_app->flatpakFileType() << refName << ':' << m_errorMessage;
+}
+
+bool FlatpakTransactionThread::end_of_lifed_with_rebase(const char *remote,
+                                                        const char *ref,
+                                                        const char *reason,
+                                                        const char *rebased_to_ref,
+                                                        const char **previous_ids)
+{
+    QMutexLocker lock(&m_proceedMutex);
+
+    if (QString::fromUtf8(rebased_to_ref).startsWith("runtime/"_L1)) {
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Automatically transitioning runtime";
+        m_proceed = true;
+    } else {
+        m_proceed = false;
+        Q_EMIT proceedRequest(
+            i18nc("@title", "Replacement Available"),
+            xi18nc(
+                "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy though)",
+                "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it with the supported version provided by <resource>%2</resource>?",
+                QString::fromUtf8(ref),
+                QString::fromUtf8(rebased_to_ref)));
+        m_proceedCondition.wait(&m_proceedMutex);
+    }
+
+    if (!m_proceed) {
+        return false;
+    }
+
+    GError *localError = nullptr;
+    const auto correct = flatpak_transaction_add_rebase_and_uninstall(m_transaction, remote, rebased_to_ref, ref, nullptr, previous_ids, &localError);
+    if (!correct || localError) {
+        fail(ref, localError);
+        return false;
+    }
+    return m_proceed;
+}
+
+void FlatpakTransactionThread::proceed()
+{
+    QMutexLocker lock(&m_proceedMutex);
+    m_proceed = true;
+    m_proceedCondition.wakeAll();
 }
 
 #include "moc_FlatpakTransactionThread.cpp"

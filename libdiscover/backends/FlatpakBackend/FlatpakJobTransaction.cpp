@@ -76,6 +76,7 @@ void FlatpakJobTransaction::start()
     connect(m_appJob, &FlatpakTransactionThread::passiveMessage, this, &FlatpakJobTransaction::passiveMessage);
     connect(m_appJob, &FlatpakTransactionThread::webflowStarted, this, &FlatpakJobTransaction::webflowStarted);
     connect(m_appJob, &FlatpakTransactionThread::webflowDone, this, &FlatpakJobTransaction::webflowDone);
+    connect(m_appJob, &FlatpakTransactionThread::proceedRequest, this, &FlatpakJobTransaction::proceedRequest);
 
     s_pool->start(m_appJob);
 }
@@ -100,6 +101,13 @@ void FlatpakJobTransaction::finishTransaction()
         setStatus(DoneStatus);
     } else {
         setStatus(m_appJob->cancelled() ? CancelledStatus : DoneWithErrorStatus);
+    }
+}
+
+void FlatpakJobTransaction::proceed()
+{
+    if (m_appJob) {
+        m_appJob->proceed();
     }
 }
 

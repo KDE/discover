@@ -24,6 +24,7 @@ public:
 
     ~FlatpakJobTransaction();
 
+    Q_SCRIPTABLE void proceed() override;
     void cancel() override;
 
     /** Mapping of repositories where a key is an installation path and a value is a list of names */
