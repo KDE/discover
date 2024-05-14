@@ -843,9 +843,11 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
 
     // If we already added the remote, just go with it
     g_autoptr(FlatpakRemote) remote = flatpak_installation_get_remote_by_name(preferredInstallation(), remoteName.toUtf8().constData(), m_cancellable, &error);
-    g_autofree char *remoteUrl = flatpak_remote_get_url(remote);
-    if (remote && QString::fromUtf8(remoteUrl) != refurl) {
-        remote = nullptr;
+    if (remote) {
+        g_autofree char *remoteUrl = flatpak_remote_get_url(remote);
+        if (remote && QString::fromUtf8(remoteUrl) != refurl) {
+            remote = nullptr;
+        }
     }
     if (remote) {
         Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(remote));
