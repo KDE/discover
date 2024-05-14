@@ -84,6 +84,38 @@ private Q_SLOTS:
         QVERIFY(resources.count() > 0);
     }
 
+    void testFlatpakrefWithoutExistingRemote()
+    {
+        // Remove the automatically added source again!
+        auto sourcesModel = SourcesModel::global();
+        QVERIFY(sourcesModel);
+        auto sourcesBackend = sourcesModel->index(0, 0).data(SourcesModel::SourcesBackend).value<AbstractSourcesBackend *>();
+        QVERIFY(sourcesBackend);
+        auto sources = sourcesBackend->sources();
+        QVERIFY(sources);
+        for (auto i = sources->rowCount() - 1; i >= 0; --i) {
+            QSignalSpy spy(sources, &QAbstractItemModel::rowsRemoved);
+            const auto id = sources->index(i, 0).data(AbstractSourcesBackend::IdRole).toString();
+            QVERIFY(sourcesBackend->removeSource(id));
+            QVERIFY(spy.count() >= 1 || spy.wait());
+        }
+        // NOTE: there will be a stub entry in the model now, don't assume it to be rowCount==0!
+
+        AbstractResourcesBackend::Filters f;
+        f.resourceUrl = QUrl(QStringLiteral("https://dl.flathub.org/repo/appstream/com.dosbox.DOSBox.flatpakref"));
+        const auto res = getResources(m_appBackend->search(f));
+        QCOMPARE(res.count(), 1);
+
+        const auto ourResource = res.constFirst();
+        QCOMPARE(ourResource->state(), AbstractResource::None);
+        QCOMPARE(waitTransaction(m_appBackend->installApplication(ourResource)), Transaction::DoneStatus);
+        QCOMPARE(ourResource->state(), AbstractResource::Installed);
+        f.resourceUrl = QUrl(QStringLiteral("flatpak:app/com.dosbox.DOSBox/") + QLatin1StringView(flatpak_get_default_arch()) + QStringLiteral("/stable"));
+        QCOMPARE(getResources(m_appBackend->search(f)).count(), 1);
+        QCOMPARE(waitTransaction(m_appBackend->removeApplication(ourResource)), Transaction::DoneStatus);
+        QCOMPARE(ourResource->state(), AbstractResource::None);
+    }
+
     void testInstallApp()
     {
         AbstractResourcesBackend::Filters f;
