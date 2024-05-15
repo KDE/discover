@@ -61,7 +61,7 @@ endif()
 
 install(FILES flatpak-backend-categories.xml DESTINATION ${KDE_INSTALL_DATADIR}/libdiscover/categories)
 
-add_library(FlatpakNotifier MODULE FlatpakNotifier.cpp)
+kcoreaddons_add_plugin(FlatpakNotifier SOURCES FlatpakNotifier.cpp INSTALL_NAMESPACE "discover-notifier")
 target_link_libraries(FlatpakNotifier
     PRIVATE
         Discover::Notifiers
@@ -77,7 +77,6 @@ if (Flatpak_VERSION VERSION_LESS 1.10.2)
     target_compile_definitions(FlatpakNotifier PRIVATE -DFLATPAK_EXTERNC_REQUIRED)
 endif()
 
-install(TARGETS FlatpakNotifier DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover-notifier)
 install(PROGRAMS org.kde.discover-flatpak.desktop DESTINATION ${KDE_INSTALL_APPDIR} )
 install(FILES org.kde.discover.flatpak.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )
 

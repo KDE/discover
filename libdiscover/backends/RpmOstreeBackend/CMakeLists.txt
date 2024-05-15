@@ -24,14 +24,13 @@ target_link_libraries(rpm-ostree-backend
 
 install(FILES rpm-ostree-backend-categories.xml DESTINATION ${KDE_INSTALL_DATADIR}/libdiscover/categories)
 
-add_library(rpm-ostree-notifier MODULE
+set(rpm-ostree-notifier_SRCS
     OstreeFormat.cpp
     RpmOstreeNotifier.cpp
 )
+kcoreaddons_add_plugin(rpm-ostree-notifier SOURCES ${rpm-ostree-notifier_SRCS} INSTALL_NAMESPACE "discover-notifier")
 target_link_libraries(rpm-ostree-notifier
     Discover::Notifiers
     PkgConfig::Ostree
 )
 set_target_properties(rpm-ostree-notifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
-
-install(TARGETS rpm-ostree-notifier DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover-notifier)

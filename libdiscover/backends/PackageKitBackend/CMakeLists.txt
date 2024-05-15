@@ -62,7 +62,7 @@ set(DiscoverPackageKitNotifier_SRCS
     PackageKitNotifier.cpp
 )
 
-add_library(DiscoverPackageKitNotifier MODULE ${DiscoverPackageKitNotifier_SRCS})
+kcoreaddons_add_plugin(DiscoverPackageKitNotifier SOURCES ${DiscoverPackageKitNotifier_SRCS} INSTALL_NAMESPACE "discover-notifier")
 
 target_link_libraries(DiscoverPackageKitNotifier
     PRIVATE
@@ -76,8 +76,6 @@ target_link_libraries(DiscoverPackageKitNotifier
 )
 
 set_target_properties(DiscoverPackageKitNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
-
-install(TARGETS DiscoverPackageKitNotifier DESTINATION ${KDE_INSTALL_PLUGINDIR}/discover-notifier)
 
 install(FILES packagekit-backend-categories.xml DESTINATION ${KDE_INSTALL_DATADIR}/libdiscover/categories)
 
