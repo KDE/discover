@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-14 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2024-04-29 11:33+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -96,7 +96,7 @@ msgstr "Messaggio di errore tecnico: %1"
 msgid "Error while submitting usefulness: %1"
 msgstr "Errore durante l'invio dell'utilità: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Errore durante l'invio della recensione: %1"

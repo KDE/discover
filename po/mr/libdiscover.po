@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-14 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2013-03-28 16:07+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -102,7 +102,7 @@ msgstr "अपरिचीत"
 msgid "Error while submitting usefulness: %1"
 msgstr ""
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr ""

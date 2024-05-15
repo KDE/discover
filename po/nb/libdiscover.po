@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-14 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2023-02-17 08:42+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -97,7 +97,7 @@ msgstr "Intern feil: %1"
 msgid "Error while submitting usefulness: %1"
 msgstr "Feil ved innsending av nyttevurdering: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Feil ved innsending av vurdering: %1"

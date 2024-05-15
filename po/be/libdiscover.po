@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-14 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2024-02-13 20:30\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -99,7 +99,7 @@ msgstr "Паведамленне тэхнічнай памылкі: %1"
 msgid "Error while submitting usefulness: %1"
 msgstr "Падчас адпраўлення водгуку пра карыснасць адбылася памылка: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Падчас адпраўлення водгуку адбылася памылка: %1"

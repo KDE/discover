@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-14 00:39+0000\n"
+"POT-Creation-Date: 2024-05-15 00:39+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -96,7 +96,7 @@ msgstr "ਤਕਨੀਕੀ ਗਲਤੀ ਸੁਨੇਹਾ: %1"
 msgid "Error while submitting usefulness: %1"
 msgstr "ਵਰਤੋਂਯੋਗਤਾ ਭੇਜਣ ਦੌਰਾਨ ਗਲਤੀ: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:285
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "ਰੀਵਿਊ ਭੇਜਣ ਦੌਰਾਨ ਗਲਤੀ: %1"
