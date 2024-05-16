@@ -31,7 +31,7 @@ namespace
 {
 bool isOnline()
 {
-    return QNetworkInformation::instance() && QNetworkInformation::instance()->reachability() == QNetworkInformation::Reachability::Online;
+    return !QNetworkInformation::instance() || QNetworkInformation::instance()->reachability() == QNetworkInformation::Reachability::Online;
 }
 } // namespace
 
