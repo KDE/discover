@@ -25,6 +25,8 @@ include(GenerateExportHeader)
 include(ECMQtDeclareLoggingCategory)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
+include(ECMFindQmlModule)
+
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Widgets Test Network Concurrent DBus Quick)
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG OPTIONAL_COMPONENTS WebView)
 
@@ -56,6 +58,8 @@ pkg_check_modules(RpmOstree IMPORTED_TARGET rpm-ostree-1)
 find_package(QCoro6 REQUIRED COMPONENTS Core)
 
 qcoro_enable_coroutines()
+
+ecm_find_qmlmodule(org.kde.kitemmodels 1.0 REQUIRED)
 
 list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "DISCOVER_BACKEND_PLUGIN")
 
