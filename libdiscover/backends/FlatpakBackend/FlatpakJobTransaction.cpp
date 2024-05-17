@@ -27,9 +27,11 @@ public:
         // Cap the amount of concurrency to prevent too many in-flight transactions. This in particular
         // prevents running out of file descriptors or other limited resources.
         // https://bugs.kde.org/show_bug.cgi?id=474231
-        constexpr auto arbitraryMaxConcurrency = 4U;
-        const auto concurrency = std::min(std::thread::hardware_concurrency(), arbitraryMaxConcurrency);
-        setMaxThreadCount(static_cast<int>(concurrency));
+        // Additionally we cannot go above 1 because it'd break serialization expectations when auth hardening is on.
+        // https://bugs.kde.org/show_bug.cgi?id=466559
+        // Note that threading is still worthwhile here because we may need to block the transactions while doing
+        // GUI interaction with the user.
+        setMaxThreadCount(1);
     }
 };
 } // namespace
