@@ -11,7 +11,7 @@ UserFeedback.Provider {
 
     readonly property list<T.Action> actions: [
         Kirigami.Action {
-            text: i18n("Submit usage information")
+            text: i18n("Submit Usage Information")
             tooltip: i18n("Sends anonymized usage information to KDE so we can better understand our users. For more information see https://kde.org/privacypolicy-apps.php.")
             displayHint: Kirigami.DisplayHint.AlwaysHide
             onTriggered: {
@@ -20,7 +20,7 @@ UserFeedback.Provider {
             }
         },
         Kirigami.Action {
-            text: i18n("Configure feedback…")
+            text: i18n("Configure Feedback…")
             displayHint: Kirigami.DisplayHint.AlwaysHide
             onTriggered: {
                 provider.encouraged()
