@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-15 00:39+0000\n"
+"POT-Creation-Date: 2024-05-18 00:39+0000\n"
 "PO-Revision-Date: 2024-04-23 19:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -898,15 +898,32 @@ msgstr "%1 (用户)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "请输入 Flatpak 仓库 URI (*.flatpakrepo)："
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:31
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:33
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "在“%2”中添加来自“%3”的远程“%1”"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:290
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:292
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "无法在“%2”中找到“%1”；请确保它是可用的。"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
+#, fuzzy, kde-format
+#| msgid "Repo not available"
+msgctxt "@title"
+msgid "Replacement Available"
+msgstr "软件仓库不可用"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
+#, kde-kuit-format
+msgctxt ""
+"@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
+"though)"
+msgid ""
+"<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
+"with the supported version provided by <resource>%2</resource>?"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format

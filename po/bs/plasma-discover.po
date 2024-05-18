@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-05 00:39+0000\n"
+"POT-Creation-Date: 2024-05-18 00:39+0000\n"
 "PO-Revision-Date: 2015-02-04 16:18+0000\n"
 "Last-Translator: Nermina Ahmić <nahmic1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -501,36 +501,34 @@ msgstr "Rejting"
 msgid "Risks of proprietary software"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:910
+#: discover/qml/ApplicationPage.qml:914
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"This application's source code is partially or entirely closed to public "
-"inspection and improvement. That means third parties and users like you "
+"Only install this application if you fully trust its authors (<link url='%1'>"
+"%2</link>).<nl/><nl/>Its source code is partially or entirely closed to "
+"public inspection and improvement, so third parties and users like you "
 "cannot verify its operation, security, and trustworthiness, or modify and "
 "redistribute it without the authors' express permission.<nl/><nl/>The "
 "application may be perfectly safe to use, or it may be acting against you in "
 "various ways—such as harvesting your personal information, tracking your "
-"location, or transmitting the contents of your files to someone else. There "
-"is no easy way to be sure, so you should only install this application if "
-"you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
-"learn more at <link url='%3'>%3</link>."
+"location, or transmitting the contents of your files to someone else.<nl/"
+"><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:911
+#: discover/qml/ApplicationPage.qml:915
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"This application's source code is partially or entirely closed to public "
+"Only install this application if you fully trust its authors (%1).<nl/><nl/"
+">This application's source code is partially or entirely closed to public "
 "inspection and improvement. That means third parties and users like you "
 "cannot verify its operation, security, and trustworthiness, or modify and "
 "redistribute it without the authors' express permission.<nl/><nl/>The "
 "application may be perfectly safe to use, or it may be acting against you in "
 "various ways—such as harvesting your personal information, tracking your "
-"location, or transmitting the contents of your files to someone else. There "
-"is no easy way to be sure, so you should only install this application if "
-"you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
-"url='%2'>%2</link>."
+"location, or transmitting the contents of your files to someone else.<nl/"
+"><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:53
@@ -844,7 +842,7 @@ msgstr ""
 
 #: discover/qml/Feedback.qml:14
 #, kde-format
-msgid "Submit usage information"
+msgid "Submit Usage Information"
 msgstr ""
 
 #: discover/qml/Feedback.qml:15
@@ -865,9 +863,10 @@ msgid "Configure"
 msgstr ""
 
 #: discover/qml/Feedback.qml:23
-#, kde-format
-msgid "Configure feedback…"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Update"
+msgid "Configure Feedback…"
+msgstr "Ažuriraj"
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
 #, fuzzy, kde-format

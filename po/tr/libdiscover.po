@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-15 00:39+0000\n"
+"POT-Creation-Date: 2024-05-18 00:39+0000\n"
 "PO-Revision-Date: 2024-05-06 16:38+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -925,15 +925,32 @@ msgstr "%1 (kullanıcı)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Bir Flatpak depo URI girin (*.flatpakrepo):"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:31
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:33
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "%2 içindeki “%1” uzak sunucusu %3 konumundan ekleniyor"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:290
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:292
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "“%2” içinde “%1” bulunamadı; kullanılabilir olduğundan emin olun."
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
+#, fuzzy, kde-format
+#| msgid "Repo not available"
+msgctxt "@title"
+msgid "Replacement Available"
+msgstr "Depo mevcut değil"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
+#, kde-kuit-format
+msgctxt ""
+"@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
+"though)"
+msgid ""
+"<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
+"with the supported version provided by <resource>%2</resource>?"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-15 00:39+0000\n"
+"POT-Creation-Date: 2024-05-18 00:39+0000\n"
 "PO-Revision-Date: 2024-02-18 14:29+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -922,15 +922,32 @@ msgstr "%1 (utilizator)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Introduceți un URI de depozit Flatpak (*.flatpakrepo):"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:31
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:33
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Se adaugă de la distanță „%1” în %2 din %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:290
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:292
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "Nu s-a putut găsi „%1” în „%2”, asigurați-vă că e disponibil."
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
+#, fuzzy, kde-format
+#| msgid "Repo not available"
+msgctxt "@title"
+msgid "Replacement Available"
+msgstr "Depozitul nu e disponibil"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
+#, kde-kuit-format
+msgctxt ""
+"@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
+"though)"
+msgid ""
+"<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
+"with the supported version provided by <resource>%2</resource>?"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format

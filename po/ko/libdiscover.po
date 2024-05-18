@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-15 00:39+0000\n"
+"POT-Creation-Date: 2024-05-18 00:39+0000\n"
 "PO-Revision-Date: 2024-02-09 20:10+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -903,15 +903,32 @@ msgstr "%1(사용자)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Flatpak 저장소 URI 입력 (*.flatpakrepo):"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:31
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:33
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "%3에서 %2에 '%1' 원격 항목 추가 중"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:290
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:292
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "'%2'에서 '%1'을(를) 찾을 수 없습니다. 존재 여부를 확인하십시오"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
+#, fuzzy, kde-format
+#| msgid "Repo not available"
+msgctxt "@title"
+msgid "Replacement Available"
+msgstr "저장소를 사용할 수 없음"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
+#, kde-kuit-format
+msgctxt ""
+"@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
+"though)"
+msgid ""
+"<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
+"with the supported version provided by <resource>%2</resource>?"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format

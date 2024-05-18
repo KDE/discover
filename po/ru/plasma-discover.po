@@ -1,18 +1,19 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
+# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024 Alexander Yavorsky <kekcuha@gmail.com>
 # Yuri Efremov <yur.arh@gmail.com>, 2012, 2013, 2014.
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # Alexander Potashev <aspotashev@gmail.com>, 2015, 2016, 2017, 2018, 2019, 2020.
 # Artem Grinev <agrinev98@gmail.com>, 2016.
-# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024 Alexander Yavorsky <kekcuha@gmail.com>
 # Olesya Gerasimenko <translation-team@basealt.ru>, 2022.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-05 00:39+0000\n"
-"PO-Revision-Date: 2024-02-07 10:34+0300\n"
+"POT-Creation-Date: 2024-05-18 00:39+0000\n"
+"PO-Revision-Date: 2024-05-17 14:28+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 21.08.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -519,20 +520,31 @@ msgstr "Оценка содержимого"
 msgid "Risks of proprietary software"
 msgstr "Риск использования проприетарного ПО"
 
-#: discover/qml/ApplicationPage.qml:910
-#, kde-kuit-format
+#: discover/qml/ApplicationPage.qml:914
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "This application's source code is partially or entirely closed to public "
+#| "inspection and improvement. That means third parties and users like you "
+#| "cannot verify its operation, security, and trustworthiness, or modify and "
+#| "redistribute it without the authors' express permission.<nl/><nl/>The "
+#| "application may be perfectly safe to use, or it may be acting against you "
+#| "in various ways—such as harvesting your personal information, tracking "
+#| "your location, or transmitting the contents of your files to someone "
+#| "else. There is no easy way to be sure, so you should only install this "
+#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
+#| "more at <link url='%2'>%2</link>."
 msgctxt "@info"
 msgid ""
-"This application's source code is partially or entirely closed to public "
-"inspection and improvement. That means third parties and users like you "
+"Only install this application if you fully trust its authors (<link url='%1'>"
+"%2</link>).<nl/><nl/>Its source code is partially or entirely closed to "
+"public inspection and improvement, so third parties and users like you "
 "cannot verify its operation, security, and trustworthiness, or modify and "
 "redistribute it without the authors' express permission.<nl/><nl/>The "
 "application may be perfectly safe to use, or it may be acting against you in "
 "various ways—such as harvesting your personal information, tracking your "
-"location, or transmitting the contents of your files to someone else. There "
-"is no easy way to be sure, so you should only install this application if "
-"you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
-"learn more at <link url='%3'>%3</link>."
+"location, or transmitting the contents of your files to someone else.<nl/"
+"><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
 "Исходный код приложения частично или полностью недоступен для изучения и "
 "доработки. Это означает, что никто, кроме разработчика, не может проверить "
@@ -543,23 +555,34 @@ msgstr ""
 "передавать ваши файлы третьим лицам. Не существует простого способа "
 "выяснить, как именно работает приложение с закрытым исходным кодом, поэтому "
 "вам следует устанавливать его, только если вы полностью доверяете его "
-"авторам (<link url='%1'>%2</link>).<nl/><nl/>Дополнительная информация "
-"представлена на странице <link url='%3'>%3</link>."
+"авторам (%1).<nl/><nl/>Дополнительная информация представлена на странице "
+"<link url='%2'>%</link>."
 
-#: discover/qml/ApplicationPage.qml:911
-#, kde-kuit-format
+#: discover/qml/ApplicationPage.qml:915
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "This application's source code is partially or entirely closed to public "
+#| "inspection and improvement. That means third parties and users like you "
+#| "cannot verify its operation, security, and trustworthiness, or modify and "
+#| "redistribute it without the authors' express permission.<nl/><nl/>The "
+#| "application may be perfectly safe to use, or it may be acting against you "
+#| "in various ways—such as harvesting your personal information, tracking "
+#| "your location, or transmitting the contents of your files to someone "
+#| "else. There is no easy way to be sure, so you should only install this "
+#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
+#| "more at <link url='%2'>%2</link>."
 msgctxt "@info"
 msgid ""
-"This application's source code is partially or entirely closed to public "
+"Only install this application if you fully trust its authors (%1).<nl/><nl/"
+">This application's source code is partially or entirely closed to public "
 "inspection and improvement. That means third parties and users like you "
 "cannot verify its operation, security, and trustworthiness, or modify and "
 "redistribute it without the authors' express permission.<nl/><nl/>The "
 "application may be perfectly safe to use, or it may be acting against you in "
 "various ways—such as harvesting your personal information, tracking your "
-"location, or transmitting the contents of your files to someone else. There "
-"is no easy way to be sure, so you should only install this application if "
-"you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
-"url='%2'>%2</link>."
+"location, or transmitting the contents of your files to someone else.<nl/"
+"><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
 "Исходный код приложения частично или полностью недоступен для изучения и "
 "доработки. Это означает, что никто, кроме разработчика, не может проверить "
@@ -878,8 +901,9 @@ msgid "Copy to Clipboard"
 msgstr "Копировать в буфер обмена"
 
 #: discover/qml/Feedback.qml:14
-#, kde-format
-msgid "Submit usage information"
+#, fuzzy, kde-format
+#| msgid "Submit usage information"
+msgid "Submit Usage Information"
 msgstr "Отправить статистику использования"
 
 #: discover/qml/Feedback.qml:15
@@ -903,8 +927,9 @@ msgid "Configure"
 msgstr "Настройка"
 
 #: discover/qml/Feedback.qml:23
-#, kde-format
-msgid "Configure feedback…"
+#, fuzzy, kde-format
+#| msgid "Configure feedback…"
+msgid "Configure Feedback…"
 msgstr "Настроить параметры обратной связи..."
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
@@ -1286,13 +1311,13 @@ msgstr "Сообщить об ошибке разработчикам %1"
 #, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
-msgstr "Обновить выбранные"
+msgstr "Установить выбранные обновления"
 
 #: discover/qml/UpdatesPage.qml:141
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
-msgstr "Обновить все"
+msgstr "Установить обновления"
 
 #: discover/qml/UpdatesPage.qml:180
 #, kde-format
@@ -1332,7 +1357,7 @@ msgstr "Установка"
 #: discover/qml/UpdatesPage.qml:444
 #, kde-format
 msgid "Update from:"
-msgstr "Обновить из:"
+msgstr "Источник:"
 
 #: discover/qml/UpdatesPage.qml:456
 #, kde-format
@@ -1383,6 +1408,32 @@ msgstr "Требуется проверка наличия обновлений"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Время последнего обновления неизвестно"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "This application's source code is partially or entirely closed to public "
+#~ "inspection and improvement. That means third parties and users like you "
+#~ "cannot verify its operation, security, and trustworthiness, or modify and "
+#~ "redistribute it without the authors' express permission.<nl/><nl/>The "
+#~ "application may be perfectly safe to use, or it may be acting against you "
+#~ "in various ways—such as harvesting your personal information, tracking "
+#~ "your location, or transmitting the contents of your files to someone "
+#~ "else. There is no easy way to be sure, so you should only install this "
+#~ "application if you fully trust its authors (<link url='%1'>%2</link>).<nl/"
+#~ "><nl/>You can learn more at <link url='%3'>%3</link>."
+#~ msgstr ""
+#~ "Исходный код приложения частично или полностью недоступен для изучения и "
+#~ "доработки. Это означает, что никто, кроме разработчика, не может "
+#~ "проверить работу приложения, его безопасность и надёжность, а также "
+#~ "вносить в код изменения и распространять их без получения явного "
+#~ "разрешения автора.<nl/><nl/>Приложение может быть как полностью "
+#~ "безопасным для использования, так и наоборот: может собирать личные "
+#~ "данные, отслеживать местоположение и передавать ваши файлы третьим лицам. "
+#~ "Не существует простого способа выяснить, как именно работает приложение с "
+#~ "закрытым исходным кодом, поэтому вам следует устанавливать его, только "
+#~ "если вы полностью доверяете его авторам (<link url='%1'>%2</link>).<nl/"
+#~ "><nl/>Дополнительная информация представлена на странице <link url='%3'>"
+#~ "%3</link>."
 
 #~ msgid "Compact Mode (auto/compact/full)."
 #~ msgstr "Компактный режим (автоматически/компактный/полный)."
