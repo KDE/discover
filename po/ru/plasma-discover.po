@@ -1,18 +1,19 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
+# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024 Alexander Yavorsky <kekcuha@gmail.com>
 # Yuri Efremov <yur.arh@gmail.com>, 2012, 2013, 2014.
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # Alexander Potashev <aspotashev@gmail.com>, 2015, 2016, 2017, 2018, 2019, 2020.
 # Artem Grinev <agrinev98@gmail.com>, 2016.
-# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024 Alexander Yavorsky <kekcuha@gmail.com>
 # Olesya Gerasimenko <translation-team@basealt.ru>, 2022.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-26 02:23+0000\n"
-"PO-Revision-Date: 2024-02-10 12:30+0300\n"
+"PO-Revision-Date: 2024-05-17 14:28+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.01.95\n"
+"X-Generator: Lokalize 21.08.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -1286,13 +1287,13 @@ msgstr "Сообщить об ошибке разработчикам %1"
 #, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
-msgstr "Обновить выбранные"
+msgstr "Установить выбранные обновления"
 
 #: discover/qml/UpdatesPage.qml:141
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
-msgstr "Обновить все"
+msgstr "Установить обновления"
 
 #: discover/qml/UpdatesPage.qml:181
 #, kde-format
@@ -1332,7 +1333,7 @@ msgstr "Установка"
 #: discover/qml/UpdatesPage.qml:445
 #, kde-format
 msgid "Update from:"
-msgstr "Обновить из:"
+msgstr "Источник:"
 
 #: discover/qml/UpdatesPage.qml:457
 #, kde-format
