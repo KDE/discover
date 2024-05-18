@@ -895,16 +895,20 @@ DiscoverPage {
         }
     }
 
-    Kirigami.PromptDialog {
+    Kirigami.Dialog {
         id: properietarySoftwareRiskExplanationDialog
         parent: appInfo.QQC2.Overlay.overlay
-        preferredWidth: Kirigami.Units.gridUnit * 25
+        width: Kirigami.Units.gridUnit * 25
         standardButtons: Kirigami.Dialog.NoButton
 
         title: i18n("Risks of proprietary software")
 
         TextEdit {
             readonly property string proprietarySoftwareExplanationPage: "https://www.gnu.org/proprietary"
+
+            leftPadding: Kirigami.Units.largeSpacing
+            rightPadding: Kirigami.Units.largeSpacing
+            bottomPadding: Kirigami.Units.largeSpacing
 
             text: homepageButton.visible
                 ? xi18nc("@info", "This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways—such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else. There is no easy way to be sure, so you should only install this application if you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can learn more at <link url='%3'>%3</link>.", application.homepage, author.text, proprietarySoftwareExplanationPage)
