@@ -44,7 +44,7 @@ set_package_properties(KF${QT_MAJOR_VERSION}KirigamiAddons PROPERTIES
     PURPOSE "Provides additional visual components"
 )
 
-pkg_check_modules(Flatpak IMPORTED_TARGET flatpak>=0.11.8)
+pkg_check_modules(Flatpak IMPORTED_TARGET flatpak>=1.15.4)
 pkg_check_modules(Fwupd IMPORTED_TARGET fwupd>=1.9.4)
 pkg_check_modules(Markdown IMPORTED_TARGET libmarkdown)
 if(Markdown_FOUND AND Markdown_VERSION VERSION_GREATER_EQUAL 3)
