@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-18 00:39+0000\n"
-"PO-Revision-Date: 2024-04-29 11:56+0200\n"
+"PO-Revision-Date: 2024-05-18 12:56+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -940,11 +940,10 @@ msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "No se encontrado «%1» en «%2». Asegúrese de que está disponible."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "El repositorio no está disponible"
+msgstr "Sustitución disponible"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-kuit-format
@@ -955,6 +954,9 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
+"<resource>%1</resource> ha dejado de recibir actualizaciones.<nl/><nl/"
+">¿Desea sustituirla con la versión mantenida que proporciona <resource>%2</"
+"resource>?"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format

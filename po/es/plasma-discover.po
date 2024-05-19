@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 # Rafael Belmonte <eaglescreen@gmail.com>, 2013.
 # Rocio Gallego <traducciones@rociogallego.com>, 2013, 2014.
 msgid ""
@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-18 00:39+0000\n"
-"PO-Revision-Date: 2023-12-21 01:35+0100\n"
+"PO-Revision-Date: 2024-05-18 13:01+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: discover/DiscoverObject.cpp:173
@@ -504,19 +504,7 @@ msgid "Risks of proprietary software"
 msgstr "Riesgos del software propietario"
 
 #: discover/qml/ApplicationPage.qml:914
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (<link url='%1'>"
@@ -529,32 +517,19 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
-"El código fuente de esta aplicación está parcial o completamente cerrado a "
-"la inspección y mejora pública. Esto significa que terceras partes y "
+"Instale esta aplicación solo si confía plenamente en sus autores (<link url="
+"\"%1\">%2</link>).<nl/><nl/>Su código fuente está parcial o completamente "
+"cerrado a la inspección y mejora pública, por lo que terceras partes y "
 "usuarios como usted no pueden verificar su forma de operar, su seguridad ni "
 "su fiabilidad, ni tampoco modificarlo ni redistribuirlo sin la autorización "
 "expresa de sus autores.<nl/><nl/>Es posible que el uso de la aplicación sea "
 "seguro, aunque también puede actuar en su contra de varias maneras (por "
 "ejemplo, recopilando su información personal, rastreando su ubicación o "
-"transmitiendo el contenido de sus archivos a otras personas). No existe un "
-"modo fácil de estar seguro, por lo que solo debería instalar esta aplicación "
-"si confía plenamente en sus autores (%1).<nl/><nl/>Dispone de más "
-"información en <link url='%2'>%2</link>."
+"transmitiendo el contenido de sus archivos a otras personas).<nl/><nl/"
+">Dispone de más información en <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:915
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -567,17 +542,16 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
-"El código fuente de esta aplicación está parcial o completamente cerrado a "
-"la inspección y mejora pública. Esto significa que terceras partes y "
-"usuarios como usted no pueden verificar su forma de operar, su seguridad ni "
-"su fiabilidad, ni tampoco modificarlo ni redistribuirlo sin la autorización "
-"expresa de sus autores.<nl/><nl/>Es posible que el uso de la aplicación sea "
-"seguro, aunque también puede actuar en su contra de varias maneras (por "
-"ejemplo, recopilando su información personal, rastreando su ubicación o "
-"transmitiendo el contenido de sus archivos a otras personas). No existe un "
-"modo fácil de estar seguro, por lo que solo debería instalar esta aplicación "
-"si confía plenamente en sus autores (%1).<nl/><nl/>Dispone de más "
-"información en <link url='%2'>%2</link>."
+"Instale esta aplicación solo si confía plenamente en sus autores (%1).<nl/"
+"><nl/>El código fuente de esta aplicación está parcial o completamente "
+"cerrado a la inspección y mejora pública. Esto significa que terceras partes "
+"y usuarios como usted no pueden verificar su forma de operar, su seguridad "
+"ni su fiabilidad, ni tampoco modificarlo ni redistribuirlo sin la "
+"autorización expresa de sus autores.<nl/><nl/>Es posible que el uso de la "
+"aplicación sea seguro, aunque también puede actuar en su contra de varias "
+"maneras (por ejemplo, recopilando su información personal, rastreando su "
+"ubicación o transmitiendo el contenido de sus archivos a otras personas).<nl/"
+"><nl/>Dispone de más información en <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -874,8 +848,7 @@ msgid "Copy to Clipboard"
 msgstr "Copiar en el portapapeles"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
 msgstr "Enviar información de uso"
 
@@ -900,8 +873,7 @@ msgid "Configure"
 msgstr "Configurar"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
 msgstr "Configurar los comentarios del usuario..."
 

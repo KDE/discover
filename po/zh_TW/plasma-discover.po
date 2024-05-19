@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-18 00:39+0000\n"
-"PO-Revision-Date: 2024-02-22 22:45+0900\n"
+"PO-Revision-Date: 2024-05-18 18:14+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #: discover/DiscoverObject.cpp:173
 #, kde-format
@@ -488,19 +488,7 @@ msgid "Risks of proprietary software"
 msgstr "私有軟體的風險"
 
 #: discover/qml/ApplicationPage.qml:914
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (<link url='%1'>"
@@ -513,27 +501,15 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
+"請只在完全信任其作者（<link url='%1'>%2</link>）時安裝本應用程式。<nl/><nl/>"
 "本應用程式的原始碼一部分或完全封閉於公開檢視及改善。這代表著第三方與包含您在"
 "內的使用者無法檢查它的動作、安全性與可靠性，作者沒有書面同意時也無法修改它或"
 "進行重新發佈。<nl/><nl/>本應用程式可能完全是安全的，也有可能侵犯您的權益 —— "
-"例如不當收集您的個人資料、記錄您的所在地，或是把您的檔案內容傳給別人。專有軟"
-"體要進行確認較為困難，所以您應該只在完全信任它的作者 —— %1 —— 時才安裝本應用"
-"程式。<nl/><nl/>您可以至 <link url='%2'>%2</link> 了解更多。"
+"例如不當收集您的個人資料、記錄您的所在地，或是把您的檔案內容傳給別人。<nl/"
+"><nl/>您可以至 <link url='%3'>%3</link> 了解更多。"
 
 #: discover/qml/ApplicationPage.qml:915
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -546,12 +522,12 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
-"本應用程式的原始碼一部分或完全封閉於公開檢視及改善。這代表著第三方與包含您在"
-"內的使用者無法檢查它的動作、安全性與可靠性，作者沒有書面同意時也無法修改它或"
-"進行重新發佈。<nl/><nl/>本應用程式可能完全是安全的，也有可能侵犯您的權益 —— "
-"例如不當收集您的個人資料、記錄您的所在地，或是把您的檔案內容傳給別人。專有軟"
-"體要進行確認較為困難，所以您應該只在完全信任它的作者 —— %1 —— 時才安裝本應用"
-"程式。<nl/><nl/>您可以至 <link url='%2'>%2</link> 了解更多。"
+"請只在完全信任其作者（%1）時安裝本應用程式。<nl/><nl/>本應用程式的原始碼一部"
+"分或完全封閉於公開檢視及改善。這代表著第三方與包含您在內的使用者無法檢查它的"
+"動作、安全性與可靠性，作者沒有書面同意時也無法修改它或進行重新發佈。<nl/><nl/"
+">本應用程式可能完全是安全的，也有可能侵犯您的權益 —— 例如不當收集您的個人資"
+"料、記錄您的所在地，或是把您的檔案內容傳給別人。<nl/><nl/>您可以至 <link "
+"url='%2'>%2</link> 了解更多。"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -843,10 +819,9 @@ msgid "Copy to Clipboard"
 msgstr "複製至剪貼簿"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
-msgstr "上傳使用量資訊"
+msgstr "提交使用量資訊"
 
 #: discover/qml/Feedback.qml:15
 #, kde-format
@@ -868,10 +843,9 @@ msgid "Configure"
 msgstr "設定"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
-msgstr "設定回報等級…"
+msgstr "設定回饋…"
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
 #, kde-format
