@@ -543,11 +543,18 @@ public:
         m_channels.clear();
 
         auto s = m_res->snap();
-        for (int i = 0, c = s->channelCount(); i < c; ++i) {
-            auto channel = s->channel(i);
-            channel->setParent(this);
-            m_channels << channel;
+        QStringList risks = { QStringLiteral("stable"), QStringLiteral("candidate"), QStringLiteral("beta"), QStringLiteral("edge")};
+        QStringList tempChannels;
+        for (auto track : s->tracks()) {
+            for (int i = 0; i < risks.size(); ++i) {
+                auto channel = s->matchChannel(track+QStringLiteral("/")+risks[i]);
+                if (!tempChannels.contains(channel->name())){
+                    m_channels << channel;
+                    tempChannels << channel->name();
+                }
+            }
         }
+        tempChannels.clear();
         Q_EMIT channelsChanged();
     }
 

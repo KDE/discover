@@ -19,15 +19,17 @@ QQC2.Button {
     required property Discover.AbstractResource resource
     Discover.Activatable.active: resource.isInstalled /*&& view.count > 0*/
 
-    text: i18nd("libdiscover", "Channels…")
+    text: i18nd("libdiscover", "Channel: %1", root.resource.channel)
 
     onClicked: overlay.open()
+    visible: view.count > 1
 
     Kirigami.OverlaySheet {
         id: overlay
+        width: parent.width / 2
 
         parent: root.QQC2.Overlay.overlay
-        title: i18nd("libdiscover", "%1 channels", root.resource.name)
+        title: i18nd("libdiscover", "Channels for %1", root.resource.name)
 
         ListView {
             id: view
@@ -35,6 +37,7 @@ QQC2.Button {
             model: root.resource.channels(root).channels
             delegate: QQC2.ItemDelegate {
                 id: delegate
+                width: parent.width
 
                 required property var modelData
 
@@ -46,11 +49,10 @@ QQC2.Button {
                     spacing: Kirigami.Units.smallSpacing
                     KD.IconTitleSubtitle {
                         Layout.fillWidth: true
-                        icon: icon.fromControlsIcon(delegate.icon)
-                        title: delegate.text
-                        selected: delegate.highlighted
-                        font: delegate.font
-                    }
+                                title: delegate.text
+                                selected: delegate.highlighted
+                                font: delegate.font
+                            }
 
                     QQC2.Button {
                         text: i18nd("libdiscover", "Switch")
