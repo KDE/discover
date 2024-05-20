@@ -909,11 +909,10 @@ msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "无法在“%2”中找到“%1”；请确保它是可用的。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "软件仓库不可用"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-kuit-format

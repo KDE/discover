@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-18 00:39+0000\n"
-"PO-Revision-Date: 2024-02-18 17:12+0530\n"
+"PO-Revision-Date: 2024-05-19 17:30+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: discover/DiscoverObject.cpp:173
 #, kde-format
@@ -493,19 +493,7 @@ msgid "Risks of proprietary software"
 msgstr "தனியுடைமை மென்பொருட்களால் ஏற்படும் ஆபத்து"
 
 #: discover/qml/ApplicationPage.qml:914
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (<link url='%1'>"
@@ -518,30 +506,18 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
-"இச்செயலியின் மூலக் குறியீட்டை பொதுமக்கள் பார்ப்பதோ மாற்றுவதோ அனுமதிக்கப்படாத‍தன. "
-"அப்படியிருக்கையில், மூன்றாம் தரப்பினராலோ உங்களை போன்ற பயனர்களாலோ, இந்நிரலை "
-"இயற்றியவர்களின் அனுமதியில்லாமல் இதன் செயலபாட்டையும் பாதுகாப்பையும் நம்பகத்தன்மையையும் "
-"சரிபார்க்க முடியாது.<nl/><nl/>இச்செயலி பாதுகாப்பானதாகவும் நம்பகமானதாகவும் இருக்கலாம், "
-"அல்லது உங்களுக்கு பல தீங்குகளை இழைக்கலாம் — எடுத்துக்காட்டாக உங்கள் தனிப்பட்ட தரவுகளை "
-"சேகரிக்கலாம், உங்கள் கோப்புகளை உங்களுக்கு தெரியாமல் மற்றவர்களுக்கு அனுப்பலாம், அல்லது உங்கள் "
-"இருப்பிடத்தை கண்டறியலாம். நீங்கள் இந்நிரலை இயற்றியவர்களை (%1) முழுதாக நம்பும் பட்சத்திலேயே "
-"இந்நிரலை நிறுவ வேண்டும்.<nl/><nl/><link url='%2'>%2</link> என்ற இணைப்பில் சென்று "
-"மேலும் அறியலாம்."
+"நீங்கள் இந்நிரலை இயற்றியவர்களை  (<link url='%1'>%2</link>) முழுதாக நம்பும் "
+"பட்சத்திலேயே இந்நிரலை நிறுவ வேண்டும்.இச்செயலியின் மூலக் குறியீட்டை பொதுமக்கள் பார்ப்பதோ "
+"மாற்றுவதோ அனுமதிக்கப்படாத‍தன. அப்படியிருக்கையில், மூன்றாம் தரப்பினராலோ உங்களை போன்ற "
+"பயனர்களாலோ, இந்நிரலை இயற்றியவர்களின் அனுமதியில்லாமல் இதன் செயலபாட்டையும் பாதுகாப்பையும் "
+"நம்பகத்தன்மையையும் சரிபார்க்க முடியாது.<nl/><nl/>இச்செயலி பாதுகாப்பானதாகவும் "
+"நம்பகமானதாகவும் இருக்கலாம், அல்லது உங்களுக்கு பல தீங்குகளை இழைக்கலாம் — எடுத்துக்காட்டாக "
+"உங்கள் தனிப்பட்ட தரவுகளை சேகரிக்கலாம், உங்கள் கோப்புகளை உங்களுக்கு தெரியாமல் மற்றவர்களுக்கு "
+"அனுப்பலாம், அல்லது உங்கள் இருப்பிடத்தை கண்டறியலாம்.<nl/><nl/><link url='%3'>%3</link> "
+"என்ற இணைப்பில் சென்று மேலும் அறியலாம்."
 
 #: discover/qml/ApplicationPage.qml:915
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -554,14 +530,14 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
+"நீங்கள் இந்நிரலை இயற்றியவர்களை (%1) முழுதாக நம்பும் பட்சத்திலேயே இந்நிரலை நிறுவ வேண்டும்."
 "இச்செயலியின் மூலக் குறியீட்டை பொதுமக்கள் பார்ப்பதோ மாற்றுவதோ அனுமதிக்கப்படாத‍தன. "
 "அப்படியிருக்கையில், மூன்றாம் தரப்பினராலோ உங்களை போன்ற பயனர்களாலோ, இந்நிரலை "
 "இயற்றியவர்களின் அனுமதியில்லாமல் இதன் செயலபாட்டையும் பாதுகாப்பையும் நம்பகத்தன்மையையும் "
 "சரிபார்க்க முடியாது.<nl/><nl/>இச்செயலி பாதுகாப்பானதாகவும் நம்பகமானதாகவும் இருக்கலாம், "
 "அல்லது உங்களுக்கு பல தீங்குகளை இழைக்கலாம் — எடுத்துக்காட்டாக உங்கள் தனிப்பட்ட தரவுகளை "
 "சேகரிக்கலாம், உங்கள் கோப்புகளை உங்களுக்கு தெரியாமல் மற்றவர்களுக்கு அனுப்பலாம், அல்லது உங்கள் "
-"இருப்பிடத்தை கண்டறியலாம். நீங்கள் இந்நிரலை இயற்றியவர்களை (%1) முழுதாக நம்பும் பட்சத்திலேயே "
-"இந்நிரலை நிறுவ வேண்டும்.<nl/><nl/><link url='%2'>%2</link> என்ற இணைப்பில் சென்று "
+"இருப்பிடத்தை கண்டறியலாம்.<nl/><nl/><link url='%2'>%2</link> என்ற இணைப்பில் சென்று "
 "மேலும் அறியலாம்."
 
 #: discover/qml/ApplicationsListPage.qml:53
@@ -859,8 +835,7 @@ msgid "Copy to Clipboard"
 msgstr "பிடிப்புப்பலகைக்கு நகலெடு"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
 msgstr "பயன்பாட்டு விவரங்களை சமர்ப்பி"
 
@@ -885,8 +860,7 @@ msgid "Configure"
 msgstr "அமை"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
 msgstr "பின்னூட்டத்தை அமை…"
 
