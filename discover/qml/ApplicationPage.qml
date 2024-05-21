@@ -26,7 +26,6 @@ DiscoverPage {
 
     readonly property int visibleReviews: 3
     readonly property int internalSpacings: Kirigami.Units.largeSpacing
-    readonly property int pageContentMargins: Kirigami.Units.gridUnit
     readonly property bool availableFromOnlySingleSource: !originsMenuAction.visible
 
     // Usually this page is not the top level page, but when we are, isHome being
@@ -112,14 +111,6 @@ DiscoverPage {
         source: appInfo.application.icon
     }
 
-    padding: 0
-    topPadding: undefined
-    leftPadding: undefined
-    rightPadding: undefined
-    bottomPadding: undefined
-    verticalPadding: undefined
-    horizontalPadding: undefined
-
     // Scrollable page content
     ColumnLayout {
         id: pageLayout
@@ -134,6 +125,14 @@ DiscoverPage {
         // Colored header with app icon, name, and metadata
         Rectangle {
             Layout.fillWidth: true
+
+            // Undo page paddings so that the header touches the edges. We don't
+            // want it to actually be in the header: area since then it wouldn't
+            // scroll away, which we do want.
+            Layout.topMargin: -appInfo.topPadding
+            Layout.leftMargin: -appInfo.leftPadding
+            Layout.rightMargin: -appInfo.rightPadding
+
             implicitHeight: headerLayout.implicitHeight + (headerLayout.anchors.topMargin * 2)
             color: Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, appImageColorExtractor.dominant, 0.1)
 
@@ -149,11 +148,11 @@ DiscoverPage {
 
                 anchors {
                     top: parent.top
-                    topMargin: appInfo.internalSpacings
+                    topMargin: appInfo.padding
                     left: parent.left
-                    leftMargin: appInfo.internalSpacings
+                    leftMargin: appInfo.padding
                     right: parent.right
-                    rightMargin: appInfo.internalSpacings
+                    rightMargin: appInfo.padding
                 }
 
 
@@ -376,8 +375,6 @@ DiscoverPage {
         // Screenshots
         Kirigami.PlaceholderMessage {
             Layout.fillWidth: true
-            Layout.leftMargin: appInfo.pageContentMargins
-            Layout.rightMargin: appInfo.pageContentMargins
 
             visible: carousel.hasFailed
             icon.name: "image-missing"
@@ -388,14 +385,18 @@ DiscoverPage {
             id: carousel
 
             Layout.fillWidth: true
+            // Undo page paddings so that the header touches the edges. We don't
+            // want it to actually be in the header: area since then it wouldn't
+            // scroll away, which we do want.
+            Layout.leftMargin: -appInfo.leftPadding
+            Layout.rightMargin: -appInfo.rightPadding
             // This roughly replicates scaling formula for the screenshots
             // gallery on FlatHub website, adjusted to scale with gridUnit
             Layout.minimumHeight: Math.round((16 + 1/9) * Kirigami.Units.gridUnit)
             Layout.maximumHeight: 30 * Kirigami.Units.gridUnit
             Layout.preferredHeight: Math.round(width / 2) + Math.round((2 + 7/9) * Kirigami.Units.gridUnit)
-            Layout.topMargin: appInfo.internalSpacings
 
-            edgeMargin: appInfo.internalSpacings
+            edgeMargin: appInfo.padding
             visible: carouselModel.count > 0 && !hasFailed
 
             carouselModel: Discover.ScreenshotsModel {
@@ -420,6 +421,7 @@ DiscoverPage {
             Layout.bottomMargin: -pageLayout.spacing
 
             property bool hasVisibleObjects: false
+            visible: hasVisibleObjects
 
             function bindVisibility() {
                 hasVisibleObjects = Qt.binding(() => {
@@ -454,9 +456,7 @@ DiscoverPage {
 
                     Layout.fillWidth: item?.Layout.fillWidth ?? false
                     Layout.topMargin: 0
-                    Layout.leftMargin: appInfo.pageContentMargins
-                    Layout.rightMargin: appInfo.pageContentMargins
-                    Layout.bottomMargin: item?.visible ? appInfo.internalSpacings : 0
+                    Layout.bottomMargin: item?.visible ? appInfo.padding : 0
                     Layout.preferredHeight: item?.visible ? item.implicitHeight : 0
 
                     onModelDataChanged: {
@@ -478,8 +478,6 @@ DiscoverPage {
             id: textualContentLayout
 
             Layout.fillWidth: true
-            Layout.margins: appInfo.pageContentMargins
-            Layout.alignment: Qt.AlignHCenter
 
             spacing: appInfo.internalSpacings
 

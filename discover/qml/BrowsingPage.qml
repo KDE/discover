@@ -76,8 +76,8 @@ DiscoverPage {
         id: apps
 
         maximumColumns: 4
-        rowSpacing: Kirigami.Units.gridUnit
-        columnSpacing: Kirigami.Units.gridUnit
+        rowSpacing: page.padding
+        columnSpacing: page.padding
         maximumColumnWidth: Kirigami.Units.gridUnit * 6
 
         Kirigami.Heading {
@@ -102,7 +102,7 @@ DiscoverPage {
         }
 
         Kirigami.Heading {
-            Layout.topMargin: Kirigami.Units.gridUnit
+            Layout.topMargin: page.padding
             // Need to undo some the row spacing of the parent layout which looks bad here
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
@@ -145,7 +145,7 @@ DiscoverPage {
         }
 
         Kirigami.Heading {
-            Layout.topMargin: Kirigami.Units.gridUnit
+            Layout.topMargin: page.padding
             // Need to undo some the row spacing of the parent layout which looks bad here
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
@@ -162,7 +162,7 @@ DiscoverPage {
         }
 
         Kirigami.Heading {
-            Layout.topMargin: Kirigami.Units.gridUnit
+            Layout.topMargin: page.padding
             // Need to undo some the row spacing of the parent layout which looks bad here
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
@@ -195,7 +195,7 @@ DiscoverPage {
         }
 
         Kirigami.Heading {
-            Layout.topMargin: Kirigami.Units.gridUnit
+            Layout.topMargin: page.padding
             Layout.columnSpan: apps.columns
             Layout.fillWidth: true
             text: i18nc("@title:group", "Highest-Rated Developer Tools")
