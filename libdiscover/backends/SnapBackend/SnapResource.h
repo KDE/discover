@@ -83,7 +83,7 @@ public:
 
     QStringList topObjects() const override;
 
-    QString channel() const;
+    QString channel();
     void setChannel(const QString &channel);
 
     quint64 installedSize() const;
@@ -108,6 +108,7 @@ public:
     quint64 m_downloadSize;
 
     QSharedPointer<QSnapdSnap> m_snap;
+    QString m_channel;
     mutable QVariant m_icon;
     static const QStringList s_topObjects;
 };

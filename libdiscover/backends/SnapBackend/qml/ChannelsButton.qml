@@ -55,9 +55,12 @@ QQC2.Button {
                             }
 
                     QQC2.Button {
-                        text: i18nd("libdiscover", "Switch")
+                        text: i18nd("libdiscover", root.resource.isInstalled ? "Switch" : "Select")
                         enabled: !delegate.current
-                        onClicked: root.resource.channel = delegate.modelData.name
+                        onClicked: {
+                            root.resource.channel = delegate.modelData.name
+                            overlay.close()
+                        }
                     }
                 }
             }

@@ -77,6 +77,7 @@ SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::St
     , m_installedSize(0)
     , m_downloadSize(0)
     , m_snap(snap)
+    , m_channel(QLatin1String("latest/stable"))
 {
     setObjectName(snap->name());
 }
@@ -453,11 +454,14 @@ QStringList SnapResource::topObjects() const
     return s_topObjects;
 }
 
-QString SnapResource::channel() const
+QString SnapResource::channel()
 {
-    auto req = client()->getSnap(packageName());
-    req->runSync();
-    return req->error() ? QString() : req->snap()->trackingChannel();
+    if (isInstalled()) {
+        auto req = client()->getSnap(packageName());
+        req->runSync();
+        return req->error() ? QString() : req->snap()->trackingChannel();
+    }
+    return m_channel;
 }
 
 QString SnapResource::author() const
@@ -471,7 +475,13 @@ QString SnapResource::author() const
 
 void SnapResource::setChannel(const QString &channelName)
 {
-    Q_ASSERT(isInstalled());
+    if(isInstalled()){
+        Q_ASSERT(isInstalled());
+    }else{
+        m_channel = channelName;
+        Q_EMIT channelChanged(channelName);
+        return;
+    }
     auto request = client()->switchChannel(m_snap->name(), channelName);
 
     const auto currentChannel = channel();
@@ -543,11 +553,11 @@ public:
         m_channels.clear();
 
         auto s = m_res->snap();
-        QStringList risks = { QStringLiteral("stable"), QStringLiteral("candidate"), QStringLiteral("beta"), QStringLiteral("edge")};
+        QStringList risks = { QLatin1String("stable"), QLatin1String("candidate"), QLatin1String("beta"), QLatin1String("edge")};
         QStringList tempChannels;
         for (auto track : s->tracks()) {
             for (int i = 0; i < risks.size(); ++i) {
-                auto channel = s->matchChannel(track+QStringLiteral("/")+risks[i]);
+                auto channel = s->matchChannel(track + QLatin1Char('/') + risks[i]);
                 if (!tempChannels.contains(channel->name())){
                     m_channels << channel;
                     tempChannels << channel->name();

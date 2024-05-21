@@ -15,6 +15,9 @@
 #include <QProcess>
 #include <QTimer>
 #include <Snapd/Request>
+#include <qlatin1stringview.h>
+#include <qlogging.h>
+#include <qstringliteral.h>
 
 SnapTransaction::SnapTransaction(QSnapdClient *client, SnapResource *app, Role role, AbstractResource::State newState)
     : Transaction(app, app, role)
@@ -27,7 +30,7 @@ SnapTransaction::SnapTransaction(QSnapdClient *client, SnapResource *app, Role r
     else if (app->state() == AbstractResource::Upgradeable)
         setRequest(m_client->refresh(app->packageName()));
     else
-        setRequest(m_client->install(app->packageName()));
+        setRequest(m_client->install(app->packageName(), app->m_channel));
 }
 
 void SnapTransaction::cancel()
