@@ -806,10 +806,9 @@ msgid "Copy to Clipboard"
 msgstr "Zkopírovat do schránky"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
-msgstr "Odeslat informace o použití"
+msgstr ""
 
 #: discover/qml/Feedback.qml:15
 #, kde-format
@@ -829,10 +828,9 @@ msgid "Configure"
 msgstr "Nastavit"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
-msgstr "Nastavit zpětnou vazbu…"
+msgstr ""
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
 #, kde-format

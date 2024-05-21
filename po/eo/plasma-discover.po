@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-18 00:39+0000\n"
-"PO-Revision-Date: 2023-12-20 07:31+0100\n"
+"PO-Revision-Date: 2024-05-20 13:35+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -171,7 +171,7 @@ msgstr "Serĉi ĉenon."
 #: discover/main.cpp:42
 #, kde-format
 msgid "Lists the available options for user feedback"
-msgstr "Listigas la disponeblajn opciojn por uzant-sugestoj"
+msgstr "Listigas la disponeblajn elekteblojn por uzant-sugestoj"
 
 #: discover/main.cpp:44
 #, kde-format
@@ -863,10 +863,9 @@ msgid "Copy to Clipboard"
 msgstr "Kopii al tondujo"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
-msgstr "Sendi informojn pri uzado"
+msgstr "Sendi Informojn pri Uzado"
 
 #: discover/qml/Feedback.qml:15
 #, kde-format
@@ -889,10 +888,9 @@ msgid "Configure"
 msgstr "Agordi"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
-msgstr "Agordi komentojn…"
+msgstr "Agordi Komentojn…"
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
 #, kde-format
@@ -1367,27 +1365,3 @@ msgstr "Devus kontroli ĝisdatigojn"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tempo de lasta ĝisdatigo nekonata"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "This application's source code is partially or entirely closed to public "
-#~ "inspection and improvement. That means third parties and users like you "
-#~ "cannot verify its operation, security, and trustworthiness, or modify and "
-#~ "redistribute it without the authors' express permission.<nl/><nl/>The "
-#~ "application may be perfectly safe to use, or it may be acting against you "
-#~ "in various ways—such as harvesting your personal information, tracking "
-#~ "your location, or transmitting the contents of your files to someone "
-#~ "else. There is no easy way to be sure, so you should only install this "
-#~ "application if you fully trust its authors (<link url='%1'>%2</link>).<nl/"
-#~ "><nl/>You can learn more at <link url='%3'>%3</link>."
-#~ msgstr ""
-#~ "La fontkodo de ĉi tiu aplikaĵo estas parte aŭ tute fermita al publika "
-#~ "inspektado kaj plibonigo. Tio signifas, ke triaj kaj uzantoj kiel vi ne "
-#~ "povas kontroli ĝian funkciadon, sekurecon kaj fidindecon, aŭ modifi kaj "
-#~ "redistribui ĝin sen eksplicita permeso de la aŭtoroj.<nl/><nl/>La "
-#~ "aplikaĵo povas esti tute sekura uzi, aŭ ĝi povas agas kontraŭ vi en "
-#~ "diversaj manieroj—kiel ekzemple rikolti viajn personajn informojn, spuri "
-#~ "vian lokon aŭ transdoni la enhavon de viaj dosieroj al iu alia. Ne estas "
-#~ "facila maniero esti certa, do vi devus instali ĉi tiun aplikaĵon nur se "
-#~ "vi plene fidas ĝiajn aŭtorojn (<link url='%1'>%2</link>).<nl/><nl/>Vi "
-#~ "povas lerni pli ĉe <link url='%3'>%3</link>."

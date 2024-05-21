@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Giovanni Sora <g.sora@tiscali.it>, 2016, 2020, 2021, 2022, 2023.
+# Giovanni Sora <g.sora@tiscali.it>, 2016, 2020, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-18 00:39+0000\n"
-"PO-Revision-Date: 2023-12-20 08:39+0100\n"
+"PO-Revision-Date: 2024-05-20 12:29+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -502,19 +502,7 @@ msgid "Risks of proprietary software"
 msgstr "Riscos de sftware proprietari"
 
 #: discover/qml/ApplicationPage.qml:914
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (<link url='%1'>"
@@ -527,31 +515,19 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
-"Iste codice fonte de application es partialmente o interemente claudite al "
-"inspection public e melioramento. Illo significa que terie partes e usatores "
-"como te non pote verificar su operation, securitate e fidelitatde,o "
-"modificar e redistribuer lo sin le permission exprimite per le autor.<nl/"
-"><nl/>Le application pote esser perfectemente secur a usar, o illo pote ager "
-"contra te in varie modos - tal como recoltar tu information personal,traciar "
-"tu location, o transmitter le contentode tu files a alicun altere. Il non ha "
-"alcun modo facile pro esser secur, assi tu deberea installar iste "
-"application solmente si tu te fide completemente de su autores(%1).<nl/><nl/"
-">Tu pote apprender plus a <link url='%2'>%2</link>."
+"Installa iste application si tu confida completemente in su autores (<link "
+"url='%1'>%2</link>).<nl/><nl/> Iste codice fonte de application es "
+"partialmente o interemente claudite al inspection public e melioramento. "
+"Illo significa que tertie partes e usatores como te non pote verificar su "
+"operation, securitate e fidelitate,o modificar e redistribuer lo sin le "
+"permission exprimite per le autor.<nl/><nl/>Le application pote esser "
+"perfectemente secur a usar, o illo pote ager contra te in varie modos - tal "
+"como recoltar tu information personal,traciar tu location, o transmitter le "
+"contento de tu files a alicun altere.<nl/><nl/>Tu pote apprender plus a "
+"<link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:915
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -564,16 +540,15 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Iste codice fonte de application es partialmente o interemente claudite al "
-"inspection public e melioramento. Illo significa que terie partes e usatores "
-"como te non pote verificar su operation, securitate e fidelitatde,o "
-"modificar e redistribuer lo sin le permission exprimite per le autor.<nl/"
-"><nl/>Le application pote esser perfectemente secur a usar, o illo pote ager "
-"contra te in varie modos - tal como recoltar tu information personal,traciar "
-"tu location, o transmitter le contentode tu files a alicun altere. Il non ha "
-"alcun modo facile pro esser secur, assi tu deberea installar iste "
-"application solmente si tu te fide completemente de su autores(%1).<nl/><nl/"
-">Tu pote apprender plus a <link url='%2'>%2</link>."
+"Installa iste application solmente si tu confida completemente in su "
+"autores(%1), <nl/><nl/>Iste codice fonte de application es partialmente o "
+"interemente claudite al inspection public e melioramento. Illo significa que "
+"tertie partes e usatores como te non pote verificar su operation, securitate "
+"e fidelitate,o modificar e redistribuer lo sin le permission exprimite per "
+"le autor.<nl/><nl/>Le application pote esser perfectemente secur a usar, o "
+"illo pote ager contra te in varie modos - tal como recoltar tu information "
+"personal,traciar tu location, o transmitter le contentode tu files a alicun "
+"altere. <nl/><nl/>Tu pote apprender plus a <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -870,8 +845,7 @@ msgid "Copy to Clipboard"
 msgstr "Copia a area de transferentia"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
 msgstr "Submitte information de uso"
 
@@ -896,10 +870,9 @@ msgid "Configure"
 msgstr "Configura"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
-msgstr "Configura retorno ..."
+msgstr "Configura responsa de usator ..."
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
 #, kde-format
