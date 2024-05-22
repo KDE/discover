@@ -500,6 +500,12 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
+"请在安装这款应用程序之前确保您可以完全信任它的作者 (<link url='%1'>%2</"
+"link>)。<nl/><nl/>这款应用程序的部分或者全部源代码没有开源。这意味着第三方机"
+"构和用户无法验证其工作方式、安全性和可靠性，也不能在未获得开发者许可的情况下"
+"对其进行修改或分发。<nl/><nl/>这款应用程序可能是安全的，也可能暗藏有侵害您的"
+"权益的行为——例如收集您的个人信息、跟踪您的位置、将您的文档传输给其他个人或者"
+"组织等。<nl/><nl/>更多详情请见 <link url='%3'>%3</link>。"
 
 #: discover/qml/ApplicationPage.qml:915
 #, kde-kuit-format
@@ -515,6 +521,12 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
+"请在安装这款应用程序之前确保您可以完全信任它的作者  (%1)。<nl/><nl/>这款应用"
+"程序的部分或者全部源代码没有开源。这意味着第三方机构和用户无法验证其工作方"
+"式、安全性和可靠性，也不能在未获得开发者许可的情况下对其进行修改或分发。<nl/"
+"><nl/>这款应用程序既可能是安全的，也可能暗藏有侵害您的权益的行为——例如收集您"
+"的个人信息、跟踪您的位置、将您的文档传输给其他人等。<nl/><nl/>更多详情请见 "
+"<link url='%2'>%2</link>。"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -808,7 +820,7 @@ msgstr "复制到剪贴板"
 #: discover/qml/Feedback.qml:14
 #, kde-format
 msgid "Submit Usage Information"
-msgstr ""
+msgstr "提交使用信息"
 
 #: discover/qml/Feedback.qml:15
 #, kde-format
@@ -832,7 +844,7 @@ msgstr "配置"
 #: discover/qml/Feedback.qml:23
 #, kde-format
 msgid "Configure Feedback…"
-msgstr ""
+msgstr "配置反馈…"
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
 #, kde-format
