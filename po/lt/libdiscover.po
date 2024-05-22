@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-20 02:30+0000\n"
+"POT-Creation-Date: 2024-05-22 02:32+0000\n"
 "PO-Revision-Date: 2024-01-31 13:24+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -542,23 +542,23 @@ msgstr "%1 (naudotojas)"
 msgid "Local bundle"
 msgstr "Vietinis paketas"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1750
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1752
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:803
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Netaisyklingas appstream url „%1“"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1854
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1856
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Nepavyko pridėti šaltinio „%1“: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1975
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1977
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Nėra jokių Flatpak šaltinių."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1979
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1981
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Nepavyko įkelti „%1“ šaltinio"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-20 02:30+0000\n"
+"POT-Creation-Date: 2024-05-22 02:32+0000\n"
 "PO-Revision-Date: 2024-04-22 16:00\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -541,23 +541,23 @@ msgstr "%1 (用户)"
 msgid "Local bundle"
 msgstr "本地包"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1750
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1752
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:803
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "错误的 AppStream URL “%1”"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1854
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1856
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "无法添加来源“%1”：%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1975
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1977
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "没有 Flatpak 来源。"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1979
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1981
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "加载“%1”来源失败"
