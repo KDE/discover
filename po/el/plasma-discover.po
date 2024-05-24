@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-18 00:39+0000\n"
+"POT-Creation-Date: 2024-05-24 00:40+0000\n"
 "PO-Revision-Date: 2023-09-07 00:09+0300\n"
 "Last-Translator: George Stefanakis <george.stefanakis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -285,7 +285,7 @@ msgid "Cancel"
 msgstr "Ακύρωση"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:223
+#: discover/qml/ApplicationPage.qml:222
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -293,12 +293,12 @@ msgstr[0] "%1 Αξιολόγηση"
 msgstr[1] "%1 Αξιολογήσεις"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:223
+#: discover/qml/ApplicationPage.qml:222
 #, kde-format
 msgid "No ratings yet"
 msgstr "Δεν υπάρχουν, ακόμα, αξιολογήσεις"
 
-#: discover/qml/ApplicationPage.qml:67
+#: discover/qml/ApplicationPage.qml:66
 #, kde-format
 msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
@@ -306,142 +306,142 @@ msgctxt ""
 msgid "From %1"
 msgstr "Από %1"
 
-#: discover/qml/ApplicationPage.qml:83
+#: discover/qml/ApplicationPage.qml:82
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ApplicationPage.qml:202
+#: discover/qml/ApplicationPage.qml:201
 #, kde-format
 msgid "Unknown author"
 msgstr "Άγνωστος συγγραφέας"
 
-#: discover/qml/ApplicationPage.qml:247
+#: discover/qml/ApplicationPage.qml:246
 #, kde-format
 msgid "Version:"
 msgstr "Έκδοση:"
 
-#: discover/qml/ApplicationPage.qml:259
+#: discover/qml/ApplicationPage.qml:258
 #, kde-format
 msgid "Size:"
 msgstr "Μέγεθος:"
 
-#: discover/qml/ApplicationPage.qml:271
+#: discover/qml/ApplicationPage.qml:270
 #, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
 msgstr[0] "Άδεια χρήσης:"
 msgstr[1] "Άδειες χρήσης:"
 
-#: discover/qml/ApplicationPage.qml:279
+#: discover/qml/ApplicationPage.qml:278
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: discover/qml/ApplicationPage.qml:313
+#: discover/qml/ApplicationPage.qml:312
 #, kde-format
 msgid "What does this mean?"
 msgstr "Τι σημαίνει αυτό;"
 
-#: discover/qml/ApplicationPage.qml:322
+#: discover/qml/ApplicationPage.qml:321
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] "Δείτε περισσότερο..."
 msgstr[1] "Δείτε περισσότερα..."
 
-#: discover/qml/ApplicationPage.qml:333
+#: discover/qml/ApplicationPage.qml:332
 #, kde-format
 msgid "Content Rating:"
 msgstr "Αξιολόγηση περιεχομένου:"
 
-#: discover/qml/ApplicationPage.qml:342
+#: discover/qml/ApplicationPage.qml:341
 #, kde-format
 msgid "Age: %1+"
 msgstr "Ηλικία: %1+"
 
-#: discover/qml/ApplicationPage.qml:362
+#: discover/qml/ApplicationPage.qml:361
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
 msgstr "Δείτε λεπτομέρειες..."
 
-#: discover/qml/ApplicationPage.qml:384
+#: discover/qml/ApplicationPage.qml:381
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr "Δεν υπάρχουν διαθέσιμα στιγμιότυπα για το %1"
 
-#: discover/qml/ApplicationPage.qml:556
+#: discover/qml/ApplicationPage.qml:554
 #, kde-format
 msgid "Documentation"
 msgstr "Τεκμηρίωση"
 
-#: discover/qml/ApplicationPage.qml:557
+#: discover/qml/ApplicationPage.qml:555
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Διαβάστε την επίσημη τεκμηρίωση του έργου"
 
-#: discover/qml/ApplicationPage.qml:573
+#: discover/qml/ApplicationPage.qml:571
 #, kde-format
 msgid "Website"
 msgstr "Ιστότοπος"
 
-#: discover/qml/ApplicationPage.qml:574
+#: discover/qml/ApplicationPage.qml:572
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Επισκεφτείτε τον ιστότοπο  του έργου"
 
-#: discover/qml/ApplicationPage.qml:590
+#: discover/qml/ApplicationPage.qml:588
 #, kde-format
 msgid "Addons"
 msgstr "Πρόσθετα"
 
-#: discover/qml/ApplicationPage.qml:591
+#: discover/qml/ApplicationPage.qml:589
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Εγκατάσταση ή κατάργηση πρόσθετων λειτουργιών"
 
-#: discover/qml/ApplicationPage.qml:610
+#: discover/qml/ApplicationPage.qml:608
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Διαμοιρασμός"
 
-#: discover/qml/ApplicationPage.qml:611
+#: discover/qml/ApplicationPage.qml:609
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Στείλτε ένα σύνδεσμο για αυτή την εφαρμογή"
 
-#: discover/qml/ApplicationPage.qml:627
+#: discover/qml/ApplicationPage.qml:625
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Δείτε την εφαρμογή %1!"
 
-#: discover/qml/ApplicationPage.qml:647
+#: discover/qml/ApplicationPage.qml:645
 #, kde-format
 msgid "What's New"
 msgstr "Τι Νέο υπάρχει"
 
-#: discover/qml/ApplicationPage.qml:677
+#: discover/qml/ApplicationPage.qml:675
 #, kde-format
 msgid "Reviews"
 msgstr "Κριτικές"
 
-#: discover/qml/ApplicationPage.qml:689
+#: discover/qml/ApplicationPage.qml:687
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Φόρτωση αξιολογήσεων για το %1"
 
-#: discover/qml/ApplicationPage.qml:697
+#: discover/qml/ApplicationPage.qml:695
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "Οι αξιολογήσεις για το %1 είναι προσωρινά μη διαθέσιμες"
 
-#: discover/qml/ApplicationPage.qml:721
+#: discover/qml/ApplicationPage.qml:719
 #, fuzzy, kde-format
 #| msgid "Show all %1 Reviews"
 #| msgid_plural "Show all %1 Reviews"
@@ -449,71 +449,71 @@ msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Εμφάνιση όλων των αξιολογήσεων για %1"
 
-#: discover/qml/ApplicationPage.qml:733
+#: discover/qml/ApplicationPage.qml:731
 #, kde-format
 msgid "Write a Review"
 msgstr "Γράψτε μια αξιολόγηση"
 
-#: discover/qml/ApplicationPage.qml:733
+#: discover/qml/ApplicationPage.qml:731
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Εγκαταστήστε για να γράψετε μια Αξιολόγηση"
 
-#: discover/qml/ApplicationPage.qml:745
+#: discover/qml/ApplicationPage.qml:743
 #, kde-format
 msgid "Get Involved"
 msgstr "Εμπλακείτε"
 
-#: discover/qml/ApplicationPage.qml:787
+#: discover/qml/ApplicationPage.qml:785
 #, kde-format
 msgid "Donate"
 msgstr "Κάντε μια Δωρεά"
 
-#: discover/qml/ApplicationPage.qml:788
+#: discover/qml/ApplicationPage.qml:786
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 "Υποστηρίξτε και ευχαριστήστε τους προγραμματιστές κάνοντας μια δωρεά στο "
 "έργο τους"
 
-#: discover/qml/ApplicationPage.qml:804
+#: discover/qml/ApplicationPage.qml:802
 #, kde-format
 msgid "Report Bug"
 msgstr "Αναφορά σφάλματος"
 
-#: discover/qml/ApplicationPage.qml:805
+#: discover/qml/ApplicationPage.qml:803
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Αναφέρατε ένα σφάλμα που βρήκατε για να βοηθήσετε να φτιαχτεί"
 
-#: discover/qml/ApplicationPage.qml:821
+#: discover/qml/ApplicationPage.qml:819
 #, kde-format
 msgid "Contribute"
 msgstr "Συνεισφορά"
 
-#: discover/qml/ApplicationPage.qml:822
+#: discover/qml/ApplicationPage.qml:820
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Βοηθήστε τους προγραμματιστές γράφοντας κώδικα, σχεδιάζοντας, δοκιμάζοντας ή "
 "μεταφράζοντας"
 
-#: discover/qml/ApplicationPage.qml:854
+#: discover/qml/ApplicationPage.qml:852
 #, kde-format
 msgid "All Licenses"
 msgstr "Όλες οι Άδειες"
 
-#: discover/qml/ApplicationPage.qml:887
+#: discover/qml/ApplicationPage.qml:885
 #, kde-format
 msgid "Content Rating"
 msgstr "Αξιολόγηση περιεχομένου"
 
-#: discover/qml/ApplicationPage.qml:904
+#: discover/qml/ApplicationPage.qml:902
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Κίνδυνοι του Ιδιοταγούς λογισμικού"
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:912
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -551,7 +551,7 @@ msgstr ""
 "αυτή την εφαρμογή μόνο εάν εμπιστεύεστε πλήρως τους δημιουργούς της (%1).<nl/"
 "><nl/>Μπορείτε να μάθετε περισσότερα στη διεύθυνση <link url='%2'>%</link>."
 
-#: discover/qml/ApplicationPage.qml:915
+#: discover/qml/ApplicationPage.qml:913
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
