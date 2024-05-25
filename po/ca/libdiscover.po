@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-22 00:40+0000\n"
-"PO-Revision-Date: 2024-05-18 08:37+0200\n"
+"PO-Revision-Date: 2024-05-24 20:54+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -2562,7 +2562,7 @@ msgstr "Comproveu la connectivitat amb Internet"
 #: libdiscover/resources/ResourcesModel.cpp:104
 #, kde-format
 msgid "Refresh"
-msgstr "Actualitza"
+msgstr "Actualitza la llista"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:791
 #, kde-format

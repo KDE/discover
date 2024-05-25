@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Andrew Coles <andrew_coles@yahoo.co.uk>, 2010, 2011.
-# Steve Allewell <steve.allewell@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Steve Allewell <steve.allewell@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-22 00:40+0000\n"
-"PO-Revision-Date: 2023-06-17 12:02+0100\n"
+"PO-Revision-Date: 2024-05-24 16:13+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.03.70\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -86,10 +86,9 @@ msgid "Intense Content"
 msgstr "Intense Content"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:171
-#, fuzzy, kde-format
-#| msgid "Internal error: %1"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "Internal error: %1"
+msgstr "Technical error message: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
@@ -577,8 +576,7 @@ msgid "Retrieving size information"
 msgstr "Retrieving size information"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:456
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Unknown"
@@ -621,15 +619,14 @@ msgid "Can access the internet"
 msgstr "Can access the internet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "System Bus Access"
+msgstr "Sound system access"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Can play audio"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:982
@@ -638,16 +635,13 @@ msgid "Session Bus Access"
 msgstr "Session Bus Access"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Can communicate with other applications and processes in the same desktop "
-"session using the following communication protocols: %1"
+"Can communicate with all other applications and processes run in this user "
+"account"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:994
@@ -656,14 +650,10 @@ msgid "System Bus Access"
 msgstr "System Bus Access"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:845
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
-"Can communicate with other applications and processes in the same desktop "
-"session using the following communication protocols: %1"
+"Can communicate with all other applications and processes on the system"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #, kde-format
@@ -946,11 +936,10 @@ msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "Could not find '%1' in '%2'; please make sure it's available."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "Repo not available"
+msgstr "Replacement Available"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-kuit-format
@@ -961,6 +950,8 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
+"<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
+"with the supported version provided by <resource>%2</resource>?"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
@@ -1014,10 +1005,9 @@ msgstr "Configure permissions…"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:467
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "View Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "View Updates"
+msgstr "Firmware Updates"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1177,36 +1167,29 @@ msgstr "Cannot remove '%1'"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released.</b>\n"
-#| "To be able to upgrade to this new version, make sure to apply all "
-#| "available updates and then restart the system."
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
 "<b>%1 is now available.</b>\n"
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
-"<b>A new major version of %1 has been released.</b>\n"
-"To be able to upgrade to this new version, make sure to apply all available "
-"updates and then restart the system."
+"<b>%1 is now available.</b>\n"
+"To be able to upgrade to this new version, first apply all available "
+"updates, and then restart the system."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1017
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "Upgrade"
+msgstr "Upgrade Now"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "Repo not available"
+msgstr "%1 is now available."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2273,12 +2256,10 @@ msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree: No booted deployment found. Please file a bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr "Upgrade"
+msgstr "Begin Upgrade…"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
 #, kde-format
@@ -2417,11 +2398,12 @@ msgstr "Checking for a system update"
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"Downloading system update. Please be patient as progress is not reported."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
-msgstr ""
+msgstr "Updating the system. Please be patient as progress is not reported."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2429,6 +2411,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"Updating to the next major version. Please be patient as progress is not "
+"reported."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
@@ -2488,7 +2472,7 @@ msgstr "SteamOS: Unable to query atomupd for SteamOS Updates..."
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:114
 #, kde-format
