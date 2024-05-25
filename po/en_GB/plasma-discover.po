@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Steve Allewell <steve.allewell@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Steve Allewell <steve.allewell@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-24 00:40+0000\n"
-"PO-Revision-Date: 2023-05-06 15:42+0100\n"
+"PO-Revision-Date: 2024-05-24 16:14+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.03.70\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: discover/DiscoverObject.cpp:173
 #, kde-format
@@ -23,6 +23,7 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"%1 is not configured for installing apps through Discover—only app add-ons"
 
 #: discover/DiscoverObject.cpp:175
 #, kde-kuit-format
@@ -32,14 +33,15 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"To use Discover for apps, install your preferred module on the "
+"<interface>Settings</interface> page, under <interface>Missing Backends</"
+"interface>."
 
 #: discover/DiscoverObject.cpp:178
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the name of the user's distro/OS"
-#| msgid "Report Issue to %1"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr "Report Issue to %1"
+msgstr "Report This Issue to %1"
 
 #: discover/DiscoverObject.cpp:183
 #, kde-kuit-format
@@ -54,6 +56,12 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"To use Discover for apps, install <link url='https://wiki.archlinux.org/"
+"title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
+"archlinux.org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</"
+"link> using the <command>pacman</command> package manager.<nl/><nl/> Review "
+"<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
+"packaging for Discover</link>"
 
 #: discover/DiscoverObject.cpp:274
 #, kde-format
@@ -172,10 +180,9 @@ msgid "An application explorer"
 msgstr "An application explorer"
 
 #: discover/main.cpp:122
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2024 Plasma Development Team"
 
 #: discover/main.cpp:123
 #, kde-format
@@ -346,15 +353,10 @@ msgid "See details…"
 msgstr "See details…"
 
 #: discover/qml/ApplicationPage.qml:381
-#, fuzzy, kde-format
-#| msgid ""
-#| "\n"
-#| "Also available in %1"
+#, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
-"\n"
-"Also available in %1"
+msgstr "Screenshots not available for %1"
 
 #: discover/qml/ApplicationPage.qml:554
 #, kde-format
@@ -422,15 +424,13 @@ msgstr "Loading reviews for %1"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "Reviews for %1 are temporarily unavailable"
 
 #: discover/qml/ApplicationPage.qml:719
-#, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Show all %1 Reviews"
+msgstr "Show All Reviews"
 
 #: discover/qml/ApplicationPage.qml:731
 #, kde-format
@@ -493,19 +493,7 @@ msgid "Risks of proprietary software"
 msgstr "Risks of proprietary software"
 
 #: discover/qml/ApplicationPage.qml:912
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (<link url='%1'>"
@@ -518,31 +506,18 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
-"This application's source code is partially or entirely closed to public "
-"inspection and improvement. That means third parties and users like you "
+"Only install this application if you fully trust its authors (<link url='%1'>"
+"%2</link>).<nl/><nl/>Its source code is partially or entirely closed to "
+"public inspection and improvement, so third parties and users like you "
 "cannot verify its operation, security, and trustworthiness, or modify and "
 "redistribute it without the authors' express permission.<nl/><nl/>The "
 "application may be perfectly safe to use, or it may be acting against you in "
 "various ways—such as harvesting your personal information, tracking your "
-"location, or transmitting the contents of your files to someone else. There "
-"is no easy way to be sure, so you should only install this application if "
-"you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
-"url='%2'>%2</link>."
+"location, or transmitting the contents of your files to someone else.<nl/"
+"><nl/>You can learn more at <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:913
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -555,16 +530,15 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
-"This application's source code is partially or entirely closed to public "
+"Only install this application if you fully trust its authors (%1).<nl/><nl/"
+">This application's source code is partially or entirely closed to public "
 "inspection and improvement. That means third parties and users like you "
 "cannot verify its operation, security, and trustworthiness, or modify and "
 "redistribute it without the authors' express permission.<nl/><nl/>The "
 "application may be perfectly safe to use, or it may be acting against you in "
 "various ways—such as harvesting your personal information, tracking your "
-"location, or transmitting the contents of your files to someone else. There "
-"is no easy way to be sure, so you should only install this application if "
-"you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
-"url='%2'>%2</link>."
+"location, or transmitting the contents of your files to someone else.<nl/"
+"><nl/>You can learn more at <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -607,7 +581,7 @@ msgstr "Sort: %1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr ""
+msgstr "Relevance"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
@@ -669,12 +643,7 @@ msgid "\"%1\" was not found in the available sources"
 msgstr "\"%1\" was not found in the available sources"
 
 #: discover/qml/ApplicationsListPage.qml:236
-#, fuzzy, kde-format
-#| msgctxt "@info:placeholder%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
@@ -691,11 +660,10 @@ msgid "Still looking…"
 msgstr "Still looking…"
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "&Home"
+msgstr "Home"
 
 #: discover/qml/BrowsingPage.qml:53
 #, kde-format
@@ -712,7 +680,7 @@ msgstr "Most Popular"
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
-msgstr ""
+msgstr "Newly Published & Recently Updated"
 
 #: discover/qml/BrowsingPage.qml:153
 #, kde-format
@@ -742,29 +710,28 @@ msgstr "Highest-Rated Developer Tools"
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
-msgstr ""
+msgstr "Play"
 
 #: discover/qml/CarouselDelegate.qml:214
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
-msgstr ""
+msgstr "Pause"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Overlay"
-msgstr ""
+msgstr "Switch to Overlay"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Full Screen"
-msgstr ""
+msgstr "Switch to Full Screen"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
-#, fuzzy, kde-format
-#| msgid "Close"
+#, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
@@ -774,13 +741,13 @@ msgstr "Close"
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "Previous Screenshot"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr ""
+msgstr "Next Screenshot"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -808,9 +775,7 @@ msgid "Fetching &updates…"
 msgstr "Fetching &updates…"
 
 #: discover/qml/DiscoverWindow.qml:87
-#, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "&Update (%1)"
+#, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
 msgstr[0] "&Update (%1)"
@@ -870,10 +835,9 @@ msgid "Copy to Clipboard"
 msgstr "Copy to Clipboard"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
-msgstr "Submit usage information"
+msgstr "Submit Usage Information"
 
 #: discover/qml/Feedback.qml:15
 #, kde-format
@@ -895,10 +859,9 @@ msgid "Configure"
 msgstr "Configure"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
-msgstr "Configure feedback…"
+msgstr "Configure Feedback…"
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
 #, kde-format
@@ -1112,52 +1075,48 @@ msgstr "Install this app to write a review"
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "Most Relevant"
 
 #: discover/qml/ReviewsPage.qml:155
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "Most Recent"
 
 #: discover/qml/ReviewsPage.qml:162
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "Highest-Rated Games"
+msgstr "Highest Ratings"
 
 #: discover/qml/ReviewsStats.qml:53
-#, fuzzy, kde-format
-#| msgid "Reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "Reviews"
+msgstr "%1 reviews"
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #: discover/qml/ReviewsStats.qml:154
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
-msgstr "unknown reviewer"
+msgstr "Unknown reviewer"
 
 #: discover/qml/ReviewsStats.qml:175
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "“"
 
 #: discover/qml/ReviewsStats.qml:190
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "„"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format

@@ -1,23 +1,23 @@
 # Translation of plasma-discover.po to Catalan (Valencian)
-# Copyright (C) 2012-2023 This_file_is_part_of_KDE
+# Copyright (C) 2012-2024 This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Orestes Mas <orestes@tsc.upc.edu>, 2012.
-# Josep M. Ferrer <txemaq@gmail.com>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023
+# SPDX-FileCopyrightText: 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-24 00:40+0000\n"
-"PO-Revision-Date: 2023-12-20 09:09+0100\n"
+"PO-Revision-Date: 2024-05-18 08:20+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -46,7 +46,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr "Informa del problema a %1"
+msgstr "Informeu del problema a %1"
 
 #: discover/DiscoverObject.cpp:183
 #, kde-kuit-format
@@ -505,19 +505,7 @@ msgid "Risks of proprietary software"
 msgstr "Riscos del programari propietari"
 
 #: discover/qml/ApplicationPage.qml:912
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (<link url='%1'>"
@@ -530,31 +518,19 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
-"El codi font d'esta aplicació està parcialment o totalment tancat a la "
-"inspecció i millora pública. Açò significa que tercers i usuaris com vós no "
-"poden verificar la seua operació, seguretat i fiabilitat, o modificar i "
-"redistribuir-la sense el permís exprés dels autors.<nl/><nl/>L'aplicació pot "
-"ser perfectament segura d'utilitzar, o pot estar actuant en contra vostra de "
-"diverses maneres… com ara arreplegar la vostra informació personal, seguir "
-"la vostra ubicació, o transmetre el contingut dels vostres fitxers a algú "
-"altre. No hi ha cap manera fàcil d'estar segur, així que només hauríeu "
-"d'instal·lar esta aplicació si confieu plenament en els seus autors (%1).<nl/"
-"><nl/>Podeu aprendre'n més a <link url='%2'>%2</link>."
+"Instal·leu esta aplicació només si confieu completament en els seus autors "
+"(<link url='%1'>%2</link><nl/><nl/>El seu codi font està parcialment o "
+"totalment tancat a la inspecció i millora pública. Açò significa que "
+"terceres parts i els usuaris com vós no poden verificar la seua operació, "
+"seguretat i fiabilitat, o modificar i redistribuir-la sense el permís exprés "
+"dels autors.<nl/><nl/>L'aplicació pot ser perfectament segura d'utilitzar, o "
+"pot estar actuant en contra vostra de diverses maneres… com ara arreplegar "
+"la vostra informació personal, seguir la vostra ubicació, o transmetre el "
+"contingut dels vostres fitxers a algú altre.<nl/><nl/>Podeu aprendre'n més a "
+"<link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:913
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -567,16 +543,18 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
-"El codi font d'esta aplicació està parcialment o totalment tancat a la "
-"inspecció i millora pública. Açò significa que tercers i usuaris com vós no "
-"poden verificar la seua operació, seguretat i fiabilitat, o modificar i "
-"redistribuir-la sense el permís exprés dels autors.<nl/><nl/>L'aplicació pot "
-"ser perfectament segura d'utilitzar, o pot estar actuant en contra vostra de "
-"diverses maneres… com ara arreplegar la vostra informació personal, seguir "
-"la vostra ubicació, o transmetre el contingut dels vostres fitxers a algú "
-"altre. No hi ha cap manera fàcil d'estar segur, així que només hauríeu "
-"d'instal·lar esta aplicació si confieu plenament en els seus autors (%1).<nl/"
-"><nl/>Podeu aprendre'n més a <link url='%2'>%2</link>."
+"Instal·leu esta aplicació només si confieu completament en els seus autors "
+"(%1).<nl/><nl/>El codi font d'esta aplicació està parcialment o totalment "
+"tancat a la inspecció i millora pública. Açò significa que terceres parts i "
+"els usuaris com vós no poden verificar la seua operació, seguretat i "
+"fiabilitat, o modificar i redistribuir-la sense el permís exprés dels autors."
+"<nl/><nl/>L'aplicació pot ser perfectament segura d'utilitzar, o pot estar "
+"actuant en contra vostra de diverses maneres… com ara arreplegar la vostra "
+"informació personal, seguir la vostra ubicació, o transmetre el contingut "
+"dels vostres fitxers a algú altre. No hi ha cap manera fàcil d'estar segur, "
+"així que només hauríeu d'instal·lar esta aplicació si confieu plenament en "
+"els seus autors (%1).<nl/><nl/>Podeu aprendre'n més a <link url='%2'>%2</"
+"link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -873,8 +851,7 @@ msgid "Copy to Clipboard"
 msgstr "Copia a dins del porta-retalls"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
 msgstr "Envia la informació d'ús"
 
@@ -898,8 +875,7 @@ msgid "Configure"
 msgstr "Configura"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
 msgstr "Configura els comentaris…"
 
@@ -1276,7 +1252,7 @@ msgstr "S'ha copiat el missatge d'error. Recordeu informar-ne a %1, no a KDE!"
 #, kde-format
 msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
-msgstr "Informa del problema a %1"
+msgstr "Informeu del problema a %1"
 
 #: discover/qml/UpdatesPage.qml:141
 #, kde-format
@@ -1379,28 +1355,3 @@ msgstr "Cal comprovar si hi ha actualitzacions"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Es desconeix l'hora de l'última actualització"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "This application's source code is partially or entirely closed to public "
-#~ "inspection and improvement. That means third parties and users like you "
-#~ "cannot verify its operation, security, and trustworthiness, or modify and "
-#~ "redistribute it without the authors' express permission.<nl/><nl/>The "
-#~ "application may be perfectly safe to use, or it may be acting against you "
-#~ "in various ways—such as harvesting your personal information, tracking "
-#~ "your location, or transmitting the contents of your files to someone "
-#~ "else. There is no easy way to be sure, so you should only install this "
-#~ "application if you fully trust its authors (<link url='%1'>%2</link>).<nl/"
-#~ "><nl/>You can learn more at <link url='%3'>%3</link>."
-#~ msgstr ""
-#~ "El codi font d'esta aplicació està parcialment o totalment tancat a la "
-#~ "inspecció i millora pública. Açò significa que tercers i usuaris com vós "
-#~ "no poden verificar la seua operació, seguretat i fiabilitat, o modificar "
-#~ "i redistribuir-la sense el permís exprés dels autors.<nl/><nl/"
-#~ ">L'aplicació pot ser perfectament segura d'utilitzar, o pot estar actuant "
-#~ "en contra vostra de diverses maneres… com ara arreplegar la vostra "
-#~ "informació personal, seguir la vostra ubicació, o transmetre el contingut "
-#~ "dels vostres fitxers a algú altre. No hi ha cap manera fàcil d'estar "
-#~ "segur, així que només hauríeu d'instal·lar esta aplicació si confieu "
-#~ "plenament en els seus autors (<link url='%1'>%2</link>).<nl/><nl/>Podeu "
-#~ "aprendre'n més a <link url='%3'>%3</link>."

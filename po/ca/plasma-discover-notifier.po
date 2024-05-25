@@ -1,16 +1,16 @@
 # Translation of plasma-discover-notifier.po to Catalan
-# Copyright (C) 2015-2023 This_file_is_part_of_KDE
+# Copyright (C) 2015-2024 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2015, 2018, 2019, 2020, 2022, 2023.
+# SPDX-FileCopyrightText: 2015, 2018, 2019, 2020, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2018, 2019, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-10 01:35+0000\n"
-"PO-Revision-Date: 2023-12-20 09:09+0100\n"
+"PO-Revision-Date: 2024-05-24 20:55+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: notifier/DiscoverNotifier.cpp:154
 #, kde-format
@@ -149,7 +149,7 @@ msgstr "Veure les actualitzacions…"
 #: notifier/NotifierItem.cpp:45
 #, kde-format
 msgid "Refresh…"
-msgstr "Actualitza…"
+msgstr "Actualitza la llista…"
 
 #: notifier/NotifierItem.cpp:49
 #, kde-format
