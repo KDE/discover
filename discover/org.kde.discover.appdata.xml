@@ -119,7 +119,7 @@
   <description>
     <p>Discover helps you find and install applications, games, and tools. You can search or browse by category, and look at screenshots and read reviews to help you pick the perfect app.</p>
     <p xml:lang="ar">يساعدك المستكشف في العثور على التطبيقات والألعاب والأدوات وتثبيتها. يمكنك البحث أو التصفح حسب الفئة، وإلقاء نظرة على لقطات الشاشة وقراءة المراجعات لمساعدتك في اختيار التطبيق المثالي.</p>
-    <p xml:lang="ast">Discover ayúdate a atopar ya instalar aplicaciones, xuegos y ferramientes. Pues buscar o restolar por categoría, mirar captures de pantalla y lleer reseñes como ayuda pa escoyer l'aplicación perfeuta.</p>
+    <p xml:lang="ast">Discover ayúdate a atopar ya instalar aplicaciones, xuegos ya ferramientes. Pues buscar o restolar por categoría, mirar captures de pantalla y lleer reseñes como ayuda pa escoyer l'aplicación perfeuta.</p>
     <p xml:lang="az">Discover sizə tətbiqləri, oyunları və digər alət və vasitələri tapmağa və quraşdırmağa kömək edir. Siz kateqoriyalar üzrə axtararaq, ekran şəkillərinə baxmaqla və rəyləri oxumaqla istəyinizə uyğun ən mükəmməl tətbiqi və ya əlavələri seçə bilərsiniz.</p>
     <p xml:lang="be">Праграма Discover дапамагае знаходзіць і ўсталёўваць праграмы, гульні і інш. Вы можаце шукаць па назве або праглядаць па катэгорыях, глядзець здымкі экрана і чытаць агляды.</p>
     <p xml:lang="bg">Discover ви помага да намерите и инсталирате приложения, игри и инструменти. Можете да търсите или разглеждате по категории и да погледнете снимки на екрана и да прочетете ревютата, за да ви помогнат да изберете перфектното приложение.</p>
@@ -151,7 +151,6 @@
     <p xml:lang="nb">Discover hjelper deg å finne og installere programmer, spill og verktøy. Du kan søke etter programmer eller bla gjennom programkategorierer, se skjermbilder og lese brukeromtaler for å finne det perfekte programmet.</p>
     <p xml:lang="nl">Ontdekken helpt om toepassingen, spellen en hulpmiddelen te zoeken en te installeren. U kunt zoeken of bladeren op categorie, kijken naar schermafdrukken en reviews lezen om u te helpen de perfecte toepassing te kiezen.</p>
     <p xml:lang="nn">Discover hjelper deg å finna og installera program, spel og verktøy. Du kan søkja etter program eller bla gjennom program­kategoriar, sjå skjermbilete og lesa brukaromtalar for å finna det perfekte programmet.</p>
-    <p xml:lang="pa">ਡਿਸਕਵਰ ਐਪ ਤੁਹਾਨੂੰ ਐਪਲੀਕੇਸ਼ਨਾਂ, ਖੇਡਾਂ ਅਤੇ ਟੂਲ ਲੱਭਣ ਅਤੇ ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਮਦਦ ਕਰਦੀ ਹੈ। ਤੁਸੀਂ ਕੈਟਾਗਰੀ ਰਾਹੀਂ ਲੱਭ ਜਾਂ ਬਰਾਊਜ਼ ਕਰ, ਸਕਰੀਨਸ਼ਾਟ ਵੇਖ, ਅਤੇ ਆਪਣੇ ਲਈ ਸਭ ਤੋਂ ਢੁੱਕਵੀਂ ਐਪ ਲੱਭਣ ਲਈ ਮਦਦ ਵਾਸਤੇ ਪੜਤਾਲਾਂ ਵੇਖ ਸਕਦੇ ਹੋ।</p>
     <p xml:lang="pl">Odkrywca pomaga znaleźć i wgrać aplikacje, gry oraz narzędzia. Można wyszukiwać lub przeglądać po kategorii. Można oglądać zrzuty ekranu i czytać oceny, aby wybrać najlepszą aplikację.</p>
     <p xml:lang="pt">O Discover ajuda-o a instalar aplicações, jogos e ferramentas. Poderá pesquisar ou navegar por categoria, assim como ver as imagens e ler as revisões e comentários que o possam ajudar a escolher a aplicação perfeita.</p>
     <p xml:lang="pt-BR">O Discover ajuda-o a encontrar e instalar aplicativos, jogos e ferramentas. Você pode pesquisar ou navegar por categoria, assim como ver as capturas de tela e ler as avaliações e comentários que o possam ajudá-lo a escolher o aplicativo perfeito.</p>
@@ -210,14 +209,14 @@
     <p xml:lang="sl">S programom Discover lahko upravljate programsko opremo iz več virov, vključno s svojo shrambo programske opreme operacijskega sistema, programske pakete Flatpak, trgovina Snap ali celo programe AppImages iz store.kde.org.</p>
     <p xml:lang="sv">Man kan hantera programvara från flera olika källor med Discover, inklusive operativsystemets programvaruarkiv, Flatpak-arkiv, Snap-butiken eller till och med programavbilder från store.kde.org.</p>
     <p xml:lang="tg">Ба воситаи Кашфиёт шумо метавонед нармафзорро аз якчанд манбаъ идора намоед, аз он ҷумла тавассути анбори додаҳои нармафзори низоми шумо, анборҳои додаҳои Flatpak, дукони Snap ё ҳатто файлҳои AppImages аз сомонаи store.kde.org.</p>
-    <p xml:lang="tr">Keşfet ile işletim sisteminizin yazılım deposu, Flatpak depoları, Snap mağazası ve hatta store.kde.org’dan AppImages dahil olmak üzere birden çok kaynaktan gelen yazılımı yönetebilirsiniz.</p>
+    <p xml:lang="tr">Keşfet ile işletim sisteminizin yazılım deposu, Flatpak depoları, Snap mağazası ve hatta store.kde.org'dan AppImages dahil olmak üzere birden çok kaynaktan gelen yazılımı yönetebilirsiniz.</p>
     <p xml:lang="uk">За допомогою Discover ви можете керувати програмним забезпеченням із багатьох джерел, зокрема зі сховищ програмного забезпечення вашої операційної системи, зі сховищ Flatpak, із крамниці Snap або навіть із образів AppImage з store.kde.org.</p>
     <p xml:lang="x-test">xxWith Discover, you can manage software from multiple sources, including your operating system's software repository, Flatpak repos, the Snap store, or even AppImages from store.kde.org.xx</p>
     <p xml:lang="zh-CN">您可以在 Discover 中管理多个软件来源，包括本机操作系统的软件仓库、Flatpak 软件仓库、Snap 软件商店、store.kde.org 提供的 AppImage 软件包等。</p>
     <p xml:lang="zh-TW">Discover 能幫助您管理各色來源的軟體，無論是系統內建的軟體庫、Flatpak 軟體庫、Snap 商店，甚或是來自 store.kde.org 的 AppImage。</p>
     <p>Finally, Discover also allows you to find, install, and manage add-ons for Plasma and all your favorite KDE apps!</p>
     <p xml:lang="ar">أخيرًا ، يتيح لك المستكشف أيضًا العثور على الوظائف الإضافية وتثبيتها وإدارتها لبلازما وجميع تطبيقات كِيدِي المفضلة لديك!</p>
-    <p xml:lang="ast">Y p'acabar, Discover tamién te permite atopar, instalar y xestionar complementos pa Plasma y toles tos aplicaciones favorites de KDE.</p>
+    <p xml:lang="ast">Y p'acabar, Discover tamién te permite atopar, instalar ya xestionar complementos pa Plasma y toles tos aplicaciones favorites de KDE.</p>
     <p xml:lang="az">Nəhayət, Discover həmçinin Plazma və bütün sevdiyiniz KDE tətbiqlərini tapmaq, quraşdırmaq və idarə etməyə imkan verir!</p>
     <p xml:lang="be">Таксама Discover можа шукаць, усталёўваць і кіраваць дапаўненнямі для Plasma і ўсіх вашых улюбёных праграм KDE!</p>
     <p xml:lang="bg">Накрая, Discover ви позволява също да намирате, инсталирате и управлявате разширения за Plasma и всички ваши любими приложения на KDE.</p>
@@ -249,7 +248,6 @@
     <p xml:lang="nb">Discover lar deg også finne, installere og håndtere programtillegg for Plasma og andre KDE-programmer.</p>
     <p xml:lang="nl">Tenslotte biedt Ontdekken ook om add-ons voor Plasma en al uw favoriete KDE toepassingen te vinden, te installeren en te beheren!</p>
     <p xml:lang="nn">Discover lèt deg òg finna, installera og handsama programtillegg for Plasma og andre KDE-program.</p>
-    <p xml:lang="pa">ਆਖੀਰ ਵਿੱਚ ਡਿਸਕਵਰ ਤੁਹਾਨੂੰ ਪਲਾਜ਼ਮਾ ਅਤੇ ਤੁਹਾਡੇ ਸਭ ਮਨਪਸੰਦ KDE ਐਪੈਂ ਲਈ ਐਡ-ਆਨ ਲੱਭਣ, ਇੰਸਟਾਲ ਅਤੇ ਇੰਤਜ਼ਾਮ ਕਰਨ ਲਈ ਮਦਦਗਾਰ ਹੈ।</p>
     <p xml:lang="pl">Odkrywca umożliwia także znalezienie, wgranie i zrządzanie dodatkami do Plazmy i innych ulubionych aplikacji KDE!</p>
     <p xml:lang="pt">Finalmente, o Discover também lhe permite procurar, instalar e gerir as extensões do Plasma e de todas as suas aplicações favoritas do KDE!</p>
     <p xml:lang="pt-BR">Finalmente, o Discover também lhe permite procurar, instalar e gerenciar as extensões do Plasma e de todos os seus aplicativos favoritos do KDE!</p>
