@@ -2652,12 +2652,3 @@ msgstr "Programari del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complements"
-
-#~ msgid "Downloading system update"
-#~ msgstr "S'està baixant una actualització del sistema"
-
-#~ msgid "Updating the system"
-#~ msgstr "S'està actualitzant el sistema"
-
-#~ msgid "Updating to the next major version"
-#~ msgstr "S'està actualitzant a la versió major següent"
