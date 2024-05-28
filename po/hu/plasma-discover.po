@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-24 00:40+0000\n"
-"PO-Revision-Date: 2024-03-14 13:55+0100\n"
+"PO-Revision-Date: 2024-05-27 10:58+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #: discover/DiscoverObject.cpp:173
 #, kde-format
@@ -543,19 +543,7 @@ msgstr ""
 "%</link> oldalon."
 
 #: discover/qml/ApplicationPage.qml:913
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -568,17 +556,16 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Az alkalmazás forráskódja részben vagy teljesen zárt a nyilvános vizsgálat "
-"és fejlesztés előtt. Ez azt jelenti, hogy sem harmadik felek, sem olyan "
-"felhasználók, mint Ön nem ellenőrizhetik a működését, biztonságát és "
-"megbízhatóságát, vagy módosíthatják és terjeszthetik a szerzők kifejezett "
-"engedélye nélkül.<nl/><nl/>Az alkalmazás használata talán teljesen "
-"biztonságos, de az is lehet, hogy az Ön érdekei ellenében cselekszik — "
-"például személyes adatokat gyűjt, követi a tartózkodási helyét, vagy "
-"továbbítja a fájljait valaki másnak. Nincs egyszerű módja annak, hogy "
-"biztosra menjen, ezért csak akkor telepítse az alkalmazást, ha teljesen "
-"megbízik a szerzőiben (%1).<nl/><nl/>Többet tudhat meg a(z) <link url='%2'>"
-"%</link> oldalon."
+"Csak akkor telepítse ezt az alkalmazást, ha teljesen megbízik a szerzőiben "
+"(%1). <nl/><nl/>Az alkalmazás forráskódja részben vagy teljesen zárt a "
+"nyilvános vizsgálat és fejlesztés előtt. Ez azt jelenti, hogy sem harmadik "
+"felek, sem olyan felhasználók, mint Ön nem ellenőrizhetik a működését, "
+"biztonságát és megbízhatóságát, vagy módosíthatják és terjeszthetik a "
+"szerzők kifejezett engedélye nélkül.<nl/><nl/>Az alkalmazás használata talán "
+"teljesen biztonságos, de az is lehet, hogy az Ön érdekei ellenében "
+"cselekszik — például személyes adatokat gyűjt, követi a tartózkodási helyét, "
+"vagy továbbítja a fájljait valaki másnak.<nl/><nl/>Többet tudhat meg a(z) "
+"<link url='%2'>%2</link> oldalon."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -875,8 +862,7 @@ msgid "Copy to Clipboard"
 msgstr "Másolás a vágólapra"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
 msgstr "Használati statisztikák elküldése"
 
@@ -901,8 +887,7 @@ msgid "Configure"
 msgstr "Beállítások"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
 msgstr "Visszajelzés beállítása…"
 
