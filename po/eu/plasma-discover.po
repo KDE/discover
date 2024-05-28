@@ -1,16 +1,16 @@
 # Translation for plasma-discover.po to Euskara/Basque (eu).
-# Copyright (C) 2017-2023 This file is copyright:
+# Copyright (C) 2017-2024 This file is copyright:
 # This file is distributed under the same license as the discover package.
-# SPDX-FileCopyrightText: 2023 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-24 00:40+0000\n"
-"PO-Revision-Date: 2023-12-28 20:21+0100\n"
+"PO-Revision-Date: 2024-05-27 16:32+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: discover/DiscoverObject.cpp:173
 #, kde-format
@@ -174,7 +174,7 @@ msgstr "Bilatu beharreko katea."
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr ""
-"Erabiltzaileen erreakzioak bidaltzeko aukera erabilgarriak zerrendatzen ditu"
+"Erabiltzaileen atzeraelikaduraren aukera erabilgarriak zerrendatzen ditu"
 
 #: discover/main.cpp:44
 #, kde-format
@@ -503,19 +503,7 @@ msgid "Risks of proprietary software"
 msgstr "Software jabedunaren arriskua"
 
 #: discover/qml/ApplicationPage.qml:912
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (<link url='%1'>"
@@ -528,32 +516,19 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
-"Aplikazio honen sorburu kodea ikuskapen eta hobekuntza publikoetara zati "
-"batean edo osorik itxia dago. Horrek esan nahi du hirugarrenek eta zure "
-"gisako erabiltzaileek ezin dituztela bere eragiketak, segurtasuna, eta "
+"Instalatu aplikazio hau egileengan konfiantza osoa baduzu bakarrik (<link "
+"url='%1'>%2</link>).<nl/><nl/>Bere sorburu kodea ikuskapen eta hobekuntza "
+"publikorako zati batean edo osorik itxita dago, beraz, hirugarrenek eta zure "
+"gisako erabiltzaileek ezin dituzte bere eragiketak, segurtasuna, eta "
 "fidagarritasuna egiaztatu, edo aldatu eta berriz banatu egileen berariazko "
 "baimenik gabe.<nl/><nl/>Aplikazioa erabiltzea segurua izan daiteke, edo zure "
-"aurkako era ezberdineko ekintzak egin litzake—zure datu pertsonalak biltzea, "
-"zure kokapenari jarraipena egitea, edo zure fitxategien edukia beste "
-"norbaiti transmititzea esaterako. Ez dago ziur egoteko era errazik, hori "
-"dela ez zenuke aplikazio hau instalatu behar non eta bere egileengan "
-"erabateko konfiantza ez baduzu (%1).<nl/><nl/>Gehiago jakiteko hona jo "
-"dezakezu, <link url='%2'>%2</link>."
+"aurkako era ezberdineko ekintzak egin litzake—zure datu pertsonalak bildu, "
+"zure kokapenari jarraipena egin, edo zure fitxategien edukia beste norbaiti "
+"transmititu esaterako.<nl/><nl/>Gehiago jakiteko hona jo dezakezu, <link "
+"url='%2'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:913
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -566,17 +541,16 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Aplikazio honen sorburu kodea ikuskapen eta hobekuntza publikoetara zati "
-"batean edo osorik itxia dago. Horrek esan nahi du hirugarrenek eta zure "
+"Instalatu aplikazio hau egileengan konfiantza osoa baduzu bakarrik (%1).<nl/"
+"><nl/>Aplikazio honen sorburu kodea ikuskapen eta hobekuntza publikoetara "
+"zati batean edo osorik itxia dago. Horrek esan nahi du hirugarrenek eta zure "
 "gisako erabiltzaileek ezin dituztela bere eragiketak, segurtasuna, eta "
-"fidagarritasuna egiaztatu, edo aldatu eta berriz banatu egileen berariazko "
-"baimenik gabe.<nl/><nl/>Aplikazioa erabiltzea segurua izan daiteke, edo zure "
-"aurkako era ezberdineko ekintzak egin litzake—zure datu pertsonalak biltzea, "
-"zure kokapenari jarraipena egitea, edo zure fitxategien edukia beste "
-"norbaiti transmititzea esaterako. Ez dago ziur egoteko era errazik, hori "
-"dela ez zenuke aplikazio hau instalatu behar non eta bere egileengan "
-"erabateko konfiantza ez baduzu (%1).<nl/><nl/>Gehiago jakiteko hona jo "
-"dezakezu, <link url='%2'>%2</link>."
+"fidagarritasuna egiaztatu, ez eta aldatu eta berriz banatu egileen "
+"berariazko baimenik gabe.<nl/><nl/>Aplikazioa erabiltzea segurua izan "
+"daiteke, edo zure aurkako era ezberdineko ekintzak egin litzake—zure datu "
+"pertsonalak bildu, zure kokapenari jarraipena egin, edo zure fitxategien "
+"edukia beste norbaiti transmititu esaterako.<nl/><nl/>Gehiago jakiteko hona "
+"jo dezakezu, <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -874,8 +848,7 @@ msgid "Copy to Clipboard"
 msgstr "Kopiatu arbelera"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
 msgstr "Bidali erabileraren gaineko informazioa"
 
@@ -900,10 +873,9 @@ msgid "Configure"
 msgstr "Konfiguratu"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
-msgstr "Konfiguratu erreakzioak..."
+msgstr "Konfiguratu atzeraelikadura..."
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
 #, kde-format
@@ -927,7 +899,7 @@ msgstr "Lagundu..."
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "We are looking for your feedback!"
-msgstr "Erreakzioak bidal ditzazuen zain gaude!"
+msgstr "Zure atzeraelikadura jaso nahi genuke!"
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
