@@ -415,7 +415,12 @@ bool FlatpakTransactionThread::end_of_lifed_with_rebase(const char *remote,
     }
 
     GError *localError = nullptr;
+#if FLATPAK_CHECK_VERSION(1, 15, 0)
     const auto correct = flatpak_transaction_add_rebase_and_uninstall(m_transaction, remote, rebased_to_ref, ref, nullptr, previous_ids, &localError);
+#else
+    const auto correct = flatpak_transaction_add_rebase(m_transaction, remote, rebased_to_ref, nullptr, previous_ids, &localError)
+        && flatpak_transaction_add_uninstall(m_transaction, ref, &localError);
+#endif
     if (!correct || localError) {
         fail(ref, localError);
         return false;
