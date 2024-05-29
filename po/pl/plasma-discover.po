@@ -18,7 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 23.08.5\n"
 
 #: discover/DiscoverObject.cpp:173
 #, kde-format
@@ -870,7 +869,7 @@ msgstr ""
 #: discover/qml/Feedback.qml:19
 #, kde-format
 msgid "Submitting usage information…"
-msgstr "Podeślij dane o użytkowaniu…"
+msgstr "Podeślij dane o użytkowaniu..."
 
 #: discover/qml/Feedback.qml:19
 #, kde-format
@@ -885,7 +884,7 @@ msgstr "Ustawienia informacji zwrotnej…"
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
 #, kde-format
 msgid "Configure Updates…"
-msgstr "Ustawienia uaktualnień…"
+msgstr "Ustawienia uaktualnień..."
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
@@ -899,7 +898,7 @@ msgstr ""
 #: discover/qml/Feedback.qml:58
 #, kde-format
 msgid "Contribute…"
-msgstr "Współtwórz…"
+msgstr "Współtwórz..."
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
@@ -909,13 +908,13 @@ msgstr "Czekamy na twoją informację zwrotną!"
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "Participate…"
-msgstr "Weź udział…"
+msgstr "Weź udział..."
 
 #: discover/qml/InstallApplicationButton.qml:24
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
-msgstr "Wczytywanie…"
+msgstr "Wczytywanie..."
 
 #: discover/qml/InstallApplicationButton.qml:28
 #, kde-format
@@ -980,7 +979,7 @@ msgstr "nieznany opiniujący"
 #: discover/qml/ReviewDelegate.qml:59
 #, kde-format
 msgid "<b>%1</b> by %2"
-msgstr "<b>%1</b> zdaniem %2"
+msgstr "<b>%1</b> przez %2"
 
 #: discover/qml/ReviewDelegate.qml:59
 #, kde-format
@@ -1078,7 +1077,7 @@ msgstr "Wstaw nazwę"
 #: discover/qml/ReviewsPage.qml:43
 #, kde-format
 msgid "Reviews for %1"
-msgstr "Opinie o %1"
+msgstr "Opinie na temat %1"
 
 #: discover/qml/ReviewsPage.qml:108
 #, kde-format
@@ -1140,12 +1139,12 @@ msgstr "„"
 #: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search…"
-msgstr "Poszukaj..."
+msgstr "Szukaj..."
 
 #: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search in '%1'…"
-msgstr "Poszukaj w '%1'..."
+msgstr "Szukaj w '%1'..."
 
 #: discover/qml/SourcesPage.qml:18
 #, kde-format
@@ -1284,7 +1283,7 @@ msgstr "Odznacz wszystkie"
 #: discover/qml/UpdatesPage.qml:242
 #, kde-format
 msgid "Restart automatically after update has completed"
-msgstr "Po ukończeniu uaktualniania sam uruchom ponownie"
+msgstr "Po uaktualnieniu uruchom się ponownie sam"
 
 #: discover/qml/UpdatesPage.qml:249
 #, kde-format
@@ -1317,7 +1316,7 @@ msgstr "%1 (%2)"
 #: discover/qml/UpdatesPage.qml:463
 #, kde-format
 msgid "More Information…"
-msgstr "Więcej danych..."
+msgstr "Więcej szczegółów..."
 
 #: discover/qml/UpdatesPage.qml:491
 #, kde-format

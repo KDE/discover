@@ -1,21 +1,28 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# Xəyyam Qocayev <xxmn77@gmail.com>, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 Xəyyam Qocayev <xxmn77@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-24 00:40+0000\n"
-"PO-Revision-Date: 2022-08-16 17:05+0400\n"
-"Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
+"PO-Revision-Date: 2024-05-29 02:20+0400\n"
+"Last-Translator: Xəyyam Qocayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
 "Language: az\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.04.3\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #: discover/DiscoverObject.cpp:173
 #, kde-format
@@ -32,13 +39,15 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
+"Discover-i tətbiqlər üçün istifadə etmək üçün, <interface>Ayarlar</"
+"interface> sıhifəsindəıki <interface>Çatışmayan modullar</interface> "
+"bölməsində lazımi modulu quraşdırın."
 
 #: discover/DiscoverObject.cpp:178
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
+#, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr "Bu problemi bildirin"
+msgstr "Bu xətanı bu tərtibatçıya bildirin: %1"
 
 #: discover/DiscoverObject.cpp:183
 #, kde-kuit-format
@@ -53,6 +62,14 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
+"Discover-dən istifadə edərək tətbiqləri idarə etmək üçün <link url='https://"
+"wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> və ya "
+"<command>pacman</command> paket menecerindən istifadə edərək <link "
+"url='https://wiki.archlinux.org/title/"
+"KDE#Discover_does_not_show_any_applications'>PackageKit</link> quraşdırın. "
+"<nl/><nl/> Daha çox öyrənmək üçün <link url='https://archlinux.org/packages/"
+"extra/x86_64/discover/'>%1 paketinin Discover üçün paketlənməsi</link>nə "
+"baxın."
 
 #: discover/DiscoverObject.cpp:274
 #, kde-format
@@ -62,7 +79,7 @@ msgstr "\"%1\" kateqoriyası tapılmadı"
 #: discover/DiscoverObject.cpp:289
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "Mövcud olmayan \"%1\" faylını açmağa cəhd edilir"
 
 #: discover/DiscoverObject.cpp:311
 #, kde-format
@@ -172,10 +189,9 @@ msgid "An application explorer"
 msgstr "Tətbiq bələdçisi"
 
 #: discover/main.cpp:122
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2022 Plasma Development Team"
+msgstr "© 2010-2024 Plasma tərtibatçılar komandası"
 
 #: discover/main.cpp:123
 #, kde-format
@@ -282,7 +298,7 @@ msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
 "\""
 msgid "From %1"
-msgstr ""
+msgstr "Mənbə: %1"
 
 #: discover/qml/ApplicationPage.qml:82
 #, kde-format
@@ -295,10 +311,9 @@ msgid "Unknown author"
 msgstr "Naməlum müəllif"
 
 #: discover/qml/ApplicationPage.qml:246
-#, fuzzy, kde-format
-#| msgid "Version"
+#, kde-format
 msgid "Version:"
-msgstr "Versiya"
+msgstr "Versiya:"
 
 #: discover/qml/ApplicationPage.qml:258
 #, kde-format
@@ -306,13 +321,11 @@ msgid "Size:"
 msgstr "Ölçüsü:"
 
 #: discover/qml/ApplicationPage.qml:270
-#, fuzzy, kde-format
-#| msgid "License"
-#| msgid_plural "Licenses"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "Lisenziya"
-msgstr[1] "Lisenziya:"
+msgstr[0] "Lisenziya:"
+msgstr[1] "Lisenziyalar:"
 
 #: discover/qml/ApplicationPage.qml:278
 #, kde-format
@@ -333,29 +346,26 @@ msgstr[0] "Daha çox…"
 msgstr[1] "Daha çox…"
 
 #: discover/qml/ApplicationPage.qml:332
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating:"
-msgstr "Reytinq daxil edin"
+msgstr "Məzmunun qiyməti:"
 
 #: discover/qml/ApplicationPage.qml:341
 #, kde-format
 msgid "Age: %1+"
-msgstr ""
+msgstr "Yaş: %1+"
 
 #: discover/qml/ApplicationPage.qml:361
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr "Daha çox…"
+msgstr "Təfərrüatlara baxın..."
 
 #: discover/qml/ApplicationPage.qml:381
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
-msgstr ""
+msgstr "%1 üçün ekran şəkli əlçatan deyil"
 
 #: discover/qml/ApplicationPage.qml:554
 #, kde-format
@@ -391,19 +401,18 @@ msgstr "Əlavə funksiyalar quraşdırın və ya ləğv edin"
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "Paylaşmaq"
 
 #: discover/qml/ApplicationPage.qml:609
-#, fuzzy, kde-format
-#| msgid "Unable to load applications"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "Tətbiqləri yükləmək alınmadı"
+msgstr "Bu tətbiq üçün keçid göndərin"
 
 #: discover/qml/ApplicationPage.qml:625
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "%1 tətbiqini sınayın"
 
 #: discover/qml/ApplicationPage.qml:645
 #, kde-format
@@ -424,15 +433,13 @@ msgstr "%1 üçün miniatürlər yüklənir"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr ""
+msgstr "%1 üçün rəylər müvəqqəti əlçatmazdır"
 
 #: discover/qml/ApplicationPage.qml:719
-#, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Bütün %1 rəyi göstərmək"
+msgstr "Bütün rəyləri göstərmək"
 
 #: discover/qml/ApplicationPage.qml:731
 #, kde-format
@@ -488,10 +495,9 @@ msgid "All Licenses"
 msgstr "Bütün lisenziyalar"
 
 #: discover/qml/ApplicationPage.qml:885
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating"
-msgstr "Reytinq daxil edin"
+msgstr "Məzmun reytingi"
 
 #: discover/qml/ApplicationPage.qml:902
 #, kde-format
@@ -1342,7 +1348,7 @@ msgstr "Ümumi ölçüsü: %1"
 #: discover/qml/UpdatesPage.qml:284
 #, kde-format
 msgid "Restart Now"
-msgstr "İndi enidən başladın"
+msgstr "İndi yenidən başladın"
 
 #: discover/qml/UpdatesPage.qml:413
 #, kde-format
