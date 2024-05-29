@@ -335,7 +335,11 @@ void FwupdBackend::setRemotes(GPtrArray *remotes)
             continue;
         }
 
+#if FWUPD_CHECK_VERSION(2, 0, 0)
+        fwupd_client_refresh_remote_async(client, remote, FWUPD_CLIENT_DOWNLOAD_FLAG_NONE, m_cancellable, fwupd_client_refresh_remote_cb, this);
+#else
         fwupd_client_refresh_remote2_async(client, remote, FWUPD_CLIENT_DOWNLOAD_FLAG_NONE, m_cancellable, fwupd_client_refresh_remote_cb, this);
+#endif
     }
 }
 
