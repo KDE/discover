@@ -188,7 +188,6 @@ void FwupdResource::setDeviceDetails(FwupdDevice *dev)
     m_vendor = QString::fromUtf8(fwupd_device_get_vendor(dev));
     m_releaseDate = QDateTime::fromSecsSinceEpoch(fwupd_device_get_created(dev)).date();
     m_availableVersion = QString::fromUtf8(fwupd_device_get_version(dev));
-    m_description = QString::fromUtf8((fwupd_device_get_description(dev)));
 
     if (fwupd_device_get_icons(dev)->len >= 1)
         m_iconName = QString::fromUtf8((const gchar *)g_ptr_array_index(fwupd_device_get_icons(dev), 0)); // Check whether given icon exists or not!
