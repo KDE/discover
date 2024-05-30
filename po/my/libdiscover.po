@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-22 00:40+0000\n"
+"POT-Creation-Date: 2024-05-30 02:35+0000\n"
 "PO-Revision-Date: 2021-09-27 23:44+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -981,7 +981,7 @@ msgstr ""
 msgid "Configure permissions…"
 msgstr ""
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:467
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:471
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, fuzzy, kde-format
 #| msgid "Offline Updates"

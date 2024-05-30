@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-22 00:40+0000\n"
+"POT-Creation-Date: 2024-05-30 02:35+0000\n"
 "PO-Revision-Date: 2024-02-09 22:21+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -994,7 +994,7 @@ msgstr "%1 の権限"
 msgid "Configure permissions…"
 msgstr "権限を設定..."
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:467
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:471
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"
