@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-22 00:40+0000\n"
+"POT-Creation-Date: 2024-05-30 00:39+0000\n"
 "PO-Revision-Date: 2024-02-07 19:19+0200\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1005,7 +1005,7 @@ msgstr "Käyttöoikeudet sovellukselle %1"
 msgid "Configure permissions…"
 msgstr "Käyttöoikeusasetukset…"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:467
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:471
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"

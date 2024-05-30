@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-22 00:40+0000\n"
-"PO-Revision-Date: 2024-04-30 15:51+0200\n"
+"POT-Creation-Date: 2024-05-30 00:39+0000\n"
+"PO-Revision-Date: 2024-05-29 11:26+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -905,7 +905,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr ""
+msgstr "Je dostupná náhrada"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-kuit-format
@@ -965,7 +965,7 @@ msgstr "Oprávnění pro %1"
 msgid "Configure permissions…"
 msgstr "Nastavit oprávnění..."
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:467
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:471
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"
