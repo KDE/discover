@@ -44,6 +44,7 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
     if (auto info = QNetworkInformation::instance()) {
         connect(info, &QNetworkInformation::reachabilityChanged, this, &DiscoverNotifier::stateChanged);
         connect(info, &QNetworkInformation::transportMediumChanged, this, &DiscoverNotifier::stateChanged);
+        connect(info, &QNetworkInformation::isBehindCaptivePortalChanged, this, &DiscoverNotifier::stateChanged);
     } else {
         qWarning() << "QNetworkInformation has no backend. Is NetworkManager.service running?";
     }
@@ -192,6 +193,9 @@ static bool isConnectionAdequate()
     const auto info = QNetworkInformation::instance();
     if (!info) {
         return false; // no backend available (e.g. NetworkManager not running), assume not adequate
+    }
+    if (info->supports(QNetworkInformation::Feature::CaptivePortal) && info->isBehindCaptivePortal()) {
+        return false;
     }
     if (info->supports(QNetworkInformation::Feature::Metered)) {
         return !info->isMetered();
