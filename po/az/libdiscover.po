@@ -1,21 +1,24 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# Xəyyam Qocayev <xxmn77@gmail.com>, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-30 00:39+0000\n"
-"PO-Revision-Date: 2022-08-16 17:03+0400\n"
-"Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
+"PO-Revision-Date: 2024-05-30 18:22+0400\n"
+"Last-Translator: Xəyyam Qocayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
 "Language: az\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.04.3\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -49,13 +52,12 @@ msgid "Unknown"
 msgstr "Naməlum"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:187
-#, fuzzy, kde-format
-#| msgid "All Files"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content suitable for everyone"
 msgid "All Audiences"
-msgstr "Bütün fayllar"
+msgstr "Bütün auditoriyalar"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:190
 #, kde-format
@@ -64,36 +66,31 @@ msgctxt ""
 "content with relatively benign themes only unsuitable for very young "
 "children, such as minor cartoon violence or mild profanity"
 msgid "Mild Content"
-msgstr ""
+msgstr "Az məhdudiyyətli"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:193
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "content with some intense themes, such as somewhat realistic violence, "
 "references to sexuality, or adult profanity"
 msgid "Moderate Content"
-msgstr "İnternet"
+msgstr "Orta məhdudiyyətli"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:196
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Internet"
+#, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
 "mature content that could be quite objectionable or unsuitable for young "
 "audiences, such as realistic graphic violence, extreme profanity or nudity, "
 "or glorification of drug use"
 msgid "Intense Content"
-msgstr "İnternet"
+msgstr "Sərt məhdudiyyətli"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:171
-#, fuzzy, kde-format
-#| msgid "Internal error: %1"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "Daxili xəta: %1"
+msgstr "Daxili xəta ismarıcı: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
@@ -162,11 +159,10 @@ msgstr "test 4"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "Category"
 msgid "All Applications"
-msgstr "Tətbiqlər"
+msgstr "Bütün tətbiqlər"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
@@ -582,8 +578,7 @@ msgid "Retrieving size information"
 msgstr "Ölçülərin təyin edilməsi"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:456
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Naməlum"
@@ -591,10 +586,9 @@ msgstr "Naməlum"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:512
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:489
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1'"
+#, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "\"%1\" başladıla bilmədi"
+msgstr "\"%1\" başlatmaq mümkün olmadı: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:742
 #, kde-format
@@ -627,15 +621,14 @@ msgid "Can access the internet"
 msgstr "İnternetə girişi istifadə edə bilərsiniz"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Sistemin verilənlər yoluna giriş"
+msgstr "Səs sisteminə giriş"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Audio səsləndirilə bilər"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:982
@@ -644,16 +637,13 @@ msgid "Session Bus Access"
 msgstr "Sesiyanın verilənlər yoluna giriş"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Aşağıdakı mübadilə protokollarından istifadə edərək eyni iş masası "
-"sesiyasında başqa tətbiqlər və proseslər ilə əlaqə yarada bilər: %1"
+"Bu istifadəçi hesabındakı bütün başqa tətbiqlər və proseslər ilə əlaqə "
+"yaradıla bilər"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:994
@@ -662,14 +652,10 @@ msgid "System Bus Access"
 msgstr "Sistemin verilənlər yoluna giriş"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:845
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
-"Aşağıdakı mübadilə protokollarından istifadə edərək eyni iş masası "
-"sesiyasında başqa tətbiqlər və proseslər ilə əlaqə yarada bilər: %1"
+"Bu sistemdəki bütün başqa tətbiqlər və proseslər ilə əlaqə yaradıla biulər"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #, kde-format
@@ -692,21 +678,19 @@ msgid "Can integrate and communicate with smart cards"
 msgstr "Ağıllı kartlar ilə bütünləşə və məlumat mübadiləsi yarada bilir"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
-#, fuzzy, kde-format
-#| msgid "Device Access"
+#, kde-format
 msgid "Printer Access"
-msgstr "Cihaza giriş"
+msgstr "Printerə giriş"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:861
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "Ağıllı kartlar ilə bütünləşə və məlumat mübadiləsi yarada bilir"
+msgstr "Printerlər ilə əlaqə yaratmaq və məlumat paylaşmaq olar"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:865
 #, kde-format
 msgid "GPG Agent"
-msgstr ""
+msgstr "GPG Agent"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:866
 #, kde-format
