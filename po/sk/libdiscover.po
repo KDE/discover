@@ -1,5 +1,5 @@
 # translation of libmuon.po to Slovak
-# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023 Matej Mrenica <matejm98mthw@gmail.com>
+# SPDX-FileCopyrightText: 2019, 2020, 2021, 2022, 2023, 2024 Matej Mrenica <matejm98mthw@gmail.com>
 # Richard Fric <Richard.Fric@kdemail.net>, 2010.
 # Milan Basa <minkob@mail.t-com.sk>, 2011.
 # Roman Paholík <wizzardsk@gmail.com>, 2013, 2014, 2015, 2016, 2017, 2019, 2021.
@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-30 02:35+0000\n"
-"PO-Revision-Date: 2023-11-27 18:34+0100\n"
-"Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
-"Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
+"PO-Revision-Date: 2024-05-30 11:23+0200\n"
+"Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
+"Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.05.0\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #, kde-format
@@ -942,11 +942,10 @@ msgstr ""
 "Nepodarilo sa nájsť '%1' v '%2'; prosím, uistite sa, že je k dispozícii."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "Repozitár nie je dostupný"
+msgstr "Náhrada je dostupná"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-kuit-format
@@ -1010,10 +1009,9 @@ msgstr "Konfigurovať oprávnenia..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:471
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "View Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "Zobraziť aktualizácie"
+msgstr "Aktualizácie firmvéru"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -2424,11 +2422,15 @@ msgstr "Kontrolovanie aktualizácie systému"
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"Preberanie aktualizácie systému. Buďte prosím trpezliví, pretože priebeh nie "
+"je hlásený."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
+"Prebieha aktualizácia systému. Buďte prosím trpezliví, pretože priebeh nie "
+"je hlásený."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2436,6 +2438,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"Aktualizácia na ďalšiu hlavnú verziu. Buďte prosím trpezliví, pretože "
+"priebeh nie je hlásený."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format

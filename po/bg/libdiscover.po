@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-30 02:35+0000\n"
-"PO-Revision-Date: 2024-05-19 10:03+0200\n"
+"PO-Revision-Date: 2024-05-30 16:57+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -903,7 +903,7 @@ msgid ""
 "<ul><li>%1</li></ul>"
 msgstr ""
 "За да премахнете това хранилище, трябва да се деинсталират следните "
-"приложения:<ul><li> %1</li> </ul>"
+"приложения:<ul><li> %1</li></ul>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:306
 #, kde-format
@@ -2127,8 +2127,8 @@ msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
 ">in order to install:<ul><li>%2</li></ul>"
 msgstr ""
-"Следните пакети ще бъдат премахнати от актуализацията: <ul> <li> %1 </li> </"
-"ul> <br /> за да инсталирате: <ul> <li> %2 </li> </ul>"
+"Следните пакети ще бъдат премахнати от актуализацията: <ul><li> %1 </li></"
+"ul><br /> за да инсталирате: <ul><li> %2 </li></ul>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
 #, kde-kuit-format
@@ -2633,12 +2633,3 @@ msgstr "Системен софтуер"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Добавки"
-
-#~ msgid "Downloading system update"
-#~ msgstr "Сваляне на системна актуализация"
-
-#~ msgid "Updating the system"
-#~ msgstr "Актуализиране на системата"
-
-#~ msgid "Updating to the next major version"
-#~ msgstr "Актуализиране до следващата основна версия"
