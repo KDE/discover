@@ -15,9 +15,6 @@
 #include <QProcess>
 #include <QTimer>
 #include <Snapd/Request>
-#include <qlatin1stringview.h>
-#include <qlogging.h>
-#include <qstringliteral.h>
 
 SnapTransaction::SnapTransaction(QSnapdClient *client, SnapResource *app, Role role, AbstractResource::State newState)
     : Transaction(app, app, role)

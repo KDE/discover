@@ -18,7 +18,6 @@
 #include <QImageReader>
 #include <QProcess>
 #include <QStandardItemModel>
-
 #include <Snapd/MarkdownParser>
 
 #include <appstream/AppStreamUtils.h>
@@ -77,7 +76,7 @@ SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::St
     , m_installedSize(0)
     , m_downloadSize(0)
     , m_snap(snap)
-    , m_channel(QLatin1String("latest/stable"))
+    , m_channel(QStringLiteral("latest/stable"))
 {
     setObjectName(snap->name());
 }
@@ -553,7 +552,7 @@ public:
         m_channels.clear();
 
         auto s = m_res->snap();
-        QStringList risks = { QLatin1String("stable"), QLatin1String("candidate"), QLatin1String("beta"), QLatin1String("edge")};
+        QStringList risks = { QStringLiteral("stable"), QStringLiteral("candidate"), QStringLiteral("beta"), QStringLiteral("edge")};
         QStringList tempChannels;
         for (auto track : s->tracks()) {
             for (int i = 0; i < risks.size(); ++i) {
