@@ -552,18 +552,17 @@ public:
         m_channels.clear();
 
         auto s = m_res->snap();
-        QStringList risks = { QStringLiteral("stable"), QStringLiteral("candidate"), QStringLiteral("beta"), QStringLiteral("edge")};
+        const auto risks = { QLatin1StringView("stable"), QLatin1StringView("candidate"), QLatin1StringView("beta"), QLatin1StringView("edge")};
         QStringList tempChannels;
         for (auto track : s->tracks()) {
-            for (int i = 0; i < risks.size(); ++i) {
-                auto channel = s->matchChannel(track + QLatin1Char('/') + risks[i]);
+            for (const auto &risk : risks) {
+                auto channel = s->matchChannel(track + QLatin1Char('/') + risk);
                 if (!tempChannels.contains(channel->name())){
                     m_channels << channel;
                     tempChannels << channel->name();
                 }
             }
         }
-        tempChannels.clear();
         Q_EMIT channelsChanged();
     }
 
