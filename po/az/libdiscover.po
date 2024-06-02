@@ -5,12 +5,27 @@
 # SPDX-FileCopyrightText: 2024 X əyyam
 # SPDX-FileCopyrightText: 2024 X əyyam
 # SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-30 00:39+0000\n"
-"PO-Revision-Date: 2024-05-30 18:22+0400\n"
+"PO-Revision-Date: 2024-06-01 13:05+0400\n"
 "Last-Translator: Xəyyam Qocayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
 "Language: az\n"
@@ -698,29 +713,28 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
+"Əsasən sənədlərin imzalanması və imzalanmış sənədlərin oxunması üçün "
+"istifadə olunanan GPG kriptoqrafiya xidmətinə girişə icazə verir"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:872
-#, fuzzy, kde-format
-#| msgid "Network Access"
+#, kde-format
 msgid "Bluetooth Access"
-msgstr "Şəbəkəyə giriş"
+msgstr "Bluetooth-a giriş"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:873
-#, fuzzy, kde-format
-#| msgid "Can integrate and communicate with smart cards"
+#, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Ağıllı kartlar ilə bütünləşə və məlumat mübadiləsi yarada bilir"
+msgstr "Bluetooth cihazları ilə məlumat paylaşa və əlaqə yarada bilər"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:877
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Low-Level System Access"
-msgstr "Sistemin verilənlər yoluna giriş"
+msgstr "Sistemə aşağı səviyyəli giriş"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:878
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr ""
+msgstr "Aşağı səviyyəlisistem çağırışları (məs. ptrace) edə bilər"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:884
 #, kde-format
@@ -936,14 +950,13 @@ msgstr "%2 daxilindəki \"%1\", %3 mövqeyindən əlavə olunur"
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:292
 #, kde-format
 msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
+msgstr "\"%2\" daxilində \"%1\" tapılmadı, onun mövcud olduğuna əmin olun."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "Mənbə əlçatan deyil"
+msgstr "Əvəzləmə mümkündür"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-kuit-format
@@ -954,6 +967,9 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
+"<resource>%1</resource> artıq yenilənmələri qəbul etmir.<nl/><nl/>Onu "
+"<resource>%2</resource> tərəfindən təqdim olunan dəstəklənən versiya ilə "
+"əvəz edək?"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
@@ -962,53 +978,54 @@ msgid ""
 "This development version of %1 is outdated. Using the stable version is "
 "highly recommended."
 msgstr ""
+"%1 üçün bu tərtibat versiyası köhnəlib. Mütləq stabil versiyada istifadə "
+"etməniz tovsiyyə olunur."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr ""
+msgstr "%1 üçün daha stabil versiyaya mövcuddur"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:48
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
-msgstr ""
+msgstr "Stabil versiyanı burada göstərmək: %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:18
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr ""
+msgstr "%1 quraşdırılmayıb, lakin onun verilənləri hələ də qalır."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:32
 #, kde-format
 msgid "Delete settings and user data"
-msgstr ""
+msgstr "Ayarları və istifadəçi verilənlərini silmək"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:35
 #, kde-format
 msgid "Clearing settings and user data…"
-msgstr ""
+msgstr "Ayarların və istifadəçi verilənlərinin silinməsi"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:22
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
-msgstr ""
+msgstr "%1 üçün icazələr"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:79
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:19
 #, kde-format
 msgid "Configure permissions…"
-msgstr ""
+msgstr "İcazələri tənzimləyin..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:471
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "Offline Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "Müstəqil yenilənmələr"
+msgstr "Proqram təminatı yenilənmələri"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1035,6 +1052,8 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
+"Dəstəklənməyən sual:\n"
+"%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:172
 #, kde-format
@@ -1176,21 +1195,22 @@ msgid ""
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
+"<b>%1 mövcud deyil.</b>\n"
+"Bu ən yeni versiyaya yeniləmək üçün, öncə bütün mövcud yenilənmələri tətbiq "
+"edin və sonra sistemi yenidən başladın."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1017
-#, fuzzy, kde-format
-#| msgid "Upgradeable"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "Ən son versiyaya yenilənmiş"
+msgstr "Yenilənməni indi başladın"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "Mənbə əlçatan deyil"
+msgstr "%1 əlçatan deyil."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1998,10 +2018,9 @@ msgstr[0] "%1 paket müvəffəqiyyətlə yeniləndi"
 msgstr[1] "%1 paket müvəffəqiyyətlə yeniləndi"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:194
-#, fuzzy, kde-format
-#| msgid "Unknown Status"
+#, kde-format
 msgid "Unknown Source"
-msgstr "Naməlum vəziyyət"
+msgstr "Mənbə bilinmir"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:344
 #, kde-format
@@ -2056,7 +2075,7 @@ msgstr "Mənbə ünvanı:"
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
 #, kde-format
@@ -2064,9 +2083,7 @@ msgid "System upgrade"
 msgstr "Sistem yenilənməsi"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
-#, fuzzy, kde-format
-#| msgid "1 package to upgrade"
-#| msgid_plural "%1 packages to upgrade"
+#, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
 msgstr[0] "%1 paket yeniləcək"
@@ -2076,6 +2093,8 @@ msgstr[1] "%1 paket yeniləcək"
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
+"<h3>%1</h3>Yeni %2 versiyasına yeniləyin<br/>Buraxılış haqqında qeydlər "
+"göstərilməyib"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
 #, kde-format
@@ -2083,6 +2102,8 @@ msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
+"<h3>%1</h3>Yeni %2 versiyasına yeniləyin<br/>Buraxılış haqıında qeydlər:"
+"<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
 #, kde-format
@@ -2099,6 +2120,8 @@ msgstr "Gələcək"
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
+"Bu yenilənməni icra etmək üçün lazımi qədər disk sahəsi yoxdur; yalnız %1 "
+"disk sahəsi əlçatandır."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
 #, kde-format
@@ -2116,7 +2139,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:588
 #, kde-format
 msgid "Confirm Changes"
-msgstr ""
+msgstr "Dəyişiklikləri təsdiq etmək"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:589
 #, kde-format
@@ -2220,27 +2243,24 @@ msgstr[1] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
-#, fuzzy, kde-format
-#| msgid "Resolving dependencies…"
+#, kde-format
 msgid "Show Dependencies…"
-msgstr "Asılılıqların həlli…"
+msgstr "Asılılıqları göstərmək..."
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:44
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr ""
+msgstr "Bu paket üçün asılılıqlar: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:30
-#, fuzzy, kde-format
-#| msgid "Home Folder Access"
+#, kde-format
 msgid "Full Access"
-msgstr "Ev qovluğuna giri."
+msgstr "Tam giriş"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:31
-#, fuzzy, kde-format
-#| msgid "Can access the internet"
+#, kde-format
 msgid "Can access everything on the system"
-msgstr "İnternetə girişi istifadə edə bilərsiniz"
+msgstr "Bütöv sistemə tam giriş mümkündür"
 
 #: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
 #, kde-format
@@ -2252,32 +2272,41 @@ msgstr "Əməliyyat Sistemi"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
+"rpm-ostree: Birdən çox öncədən yüklənmiş əməliyyat sistemi nümunəsi tapıldı. "
+"Bu barədə xəta hesabatı göndərin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
+"rpm-ostree: Heç bir öncədən yüklənmiş əməliyyat sistemi nümunəsi tapılmadı. "
+"Bu barədə xəta hesabatı göndərin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr ""
+msgstr "Yenilənməni başlatmaq..."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
+"Sizin hazırkı versiya üçün gözləmədə olan yenilənmələriniz var. İstənilən "
+"halda davam edilsin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
+"Əsas versiyaya keçmədən öncə ən yuxarı versiyaya yenilənməniz xahiş olunur"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
+"Yeni versiyaya keçid üçün serverdə heç bir istinad tapılmadı. Bu barədə bir "
+"xəta hesabatı göndərin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
 #, kde-format
@@ -2285,56 +2314,54 @@ msgid "GPL and other licenses"
 msgstr "GPL və başqa liseziyalar"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Additional packages: "
-msgstr "Pozulmuş paket faylı"
+msgstr "Əlavə paketlər: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
 #, kde-format
 msgid "Additional modules: "
-msgstr ""
+msgstr "Ilavı modullar: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
-#, fuzzy, kde-format
-#| msgid "Invalid package file"
+#, kde-format
 msgid "Local packages: "
-msgstr "Pozulmuş paket faylı"
+msgstr "Yerli paketlər: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
 #, kde-format
 msgid "Replaced packages:"
-msgstr ""
+msgstr "əvəzlənmiş paketlər: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, kde-format
 msgid "Removed packages:"
-msgstr ""
+msgstr "Silinmiş paketlər: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #, kde-format
 msgid "Currently booted version (pinned)"
-msgstr ""
+msgstr "Hazırkı yüklənmiş versiya (sancaqlanıb)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
 #, kde-format
 msgid "Currently booted version"
-msgstr ""
+msgstr "Hazırkı yüklənmiş versiya"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Version that will be used after reboot"
-msgstr ""
+msgstr "Yenidən başlatdıqdan sonra istifadə olunacaq versiya"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr ""
+msgstr "Ehtiyyat versiya (sancaqlanıb)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Fallback version"
-msgstr ""
+msgstr "Ehtiyyat versiya"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
 #, kde-format
@@ -2346,6 +2373,8 @@ msgstr "serverəki OSTree"
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
+"rpm-ostree-backend: Xəta: Heç bir DBus interfeysi verilməyib. Bu barədə bir "
+"hesabat göndərin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:58
 #, kde-format
