@@ -2,13 +2,14 @@
 # This file is distributed under the same license as the discover package.
 #
 # SPDX-FileCopyrightText: 2024 X əyyam
+# SPDX-FileCopyrightText: 2024 X əyyam
 # SPDX-FileCopyrightText: 2024 Xəyyam Qocayev <xxmn77@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-10 01:35+0000\n"
-"PO-Revision-Date: 2024-05-30 17:58+0400\n"
+"POT-Creation-Date: 2024-06-04 00:39+0000\n"
+"PO-Revision-Date: 2024-06-03 16:04+0400\n"
 "Last-Translator: Xəyyam Qocayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
 "Language: az\n"
@@ -18,69 +19,69 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 24.05.0\n"
 
-#: notifier/DiscoverNotifier.cpp:154
+#: notifier/DiscoverNotifier.cpp:155
 #, kde-format
 msgid "View Updates"
 msgstr "Yenilənmələrə baxış"
 
-#: notifier/DiscoverNotifier.cpp:263
+#: notifier/DiscoverNotifier.cpp:267
 #, kde-format
 msgid "Security updates available"
 msgstr "Təhlükəsizlik yenilənmələri mövcuddur"
 
-#: notifier/DiscoverNotifier.cpp:265
+#: notifier/DiscoverNotifier.cpp:269
 #, kde-format
 msgid "Updates available"
 msgstr "Yenilənmələr mövcuddur"
 
-#: notifier/DiscoverNotifier.cpp:267
+#: notifier/DiscoverNotifier.cpp:271
 #, kde-format
 msgid "System up to date"
 msgstr "Sistem yenilənib"
 
-#: notifier/DiscoverNotifier.cpp:269
+#: notifier/DiscoverNotifier.cpp:273
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Komputeri yenidən başlatmaq lazımdır"
 
-#: notifier/DiscoverNotifier.cpp:271
+#: notifier/DiscoverNotifier.cpp:275
 #, kde-format
 msgid "Offline"
 msgstr "Şəbəkədən kənar"
 
-#: notifier/DiscoverNotifier.cpp:273
+#: notifier/DiscoverNotifier.cpp:277
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Nəzarətsiz yenilənmələr tətbiq edilir..."
 
-#: notifier/DiscoverNotifier.cpp:297
+#: notifier/DiscoverNotifier.cpp:301
 #, kde-format
 msgid "Restart is required"
 msgstr "Yenidən başlatmaq tələb edilir"
 
-#: notifier/DiscoverNotifier.cpp:298
+#: notifier/DiscoverNotifier.cpp:302
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Yenilənmələrin tətbiqi üçün sistemi yenidən başlatmaq lazımdır."
 
-#: notifier/DiscoverNotifier.cpp:303
+#: notifier/DiscoverNotifier.cpp:307
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Yenidən başlatmaq"
 
-#: notifier/DiscoverNotifier.cpp:328
+#: notifier/DiscoverNotifier.cpp:332
 #, kde-format
 msgid "Upgrade available"
 msgstr "Yenilənmələr mövcuddur"
 
-#: notifier/DiscoverNotifier.cpp:329
+#: notifier/DiscoverNotifier.cpp:333
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 indi əlçatandır."
 
-#: notifier/DiscoverNotifier.cpp:332
+#: notifier/DiscoverNotifier.cpp:336
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
@@ -136,7 +137,7 @@ msgstr "Yeniləmələr"
 #: notifier/NotifierItem.cpp:35
 #, kde-format
 msgid "Open Discover…"
-msgstr "Discover'i açmaq..."
+msgstr "Discover-i açmaq..."
 
 #: notifier/NotifierItem.cpp:40
 #, kde-format
