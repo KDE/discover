@@ -6,11 +6,14 @@
 
 #include "AppPackageKitResource.h"
 #include "utils.h"
+#include <AppStreamQt/component.h>
 #include <AppStreamQt/developer.h>
 #include <AppStreamQt/icon.h>
 #include <AppStreamQt/image.h>
+#include <AppStreamQt/provided.h>
 #include <AppStreamQt/release.h>
 #include <AppStreamQt/screenshot.h>
+#include <AppStreamQt/systeminfo.h>
 #include <AppStreamQt/version.h>
 #include <KLocalizedString>
 #include <KService>
@@ -118,6 +121,15 @@ bool AppPackageKitResource::hasCategory(const QString &category) const
 {
     if (m_appdata.kind() != AppStream::Component::KindAddon && category == QStringLiteral("Application"))
         return true;
+    if (m_appdata.kind() == AppStream::Component::KindDriver && category == QStringLiteral("Drivers")) {
+        const auto mods = m_appdata.provided(AppStream::Provided::KindModalias).items();
+        auto sys = AppStream::SystemInfo();
+        for (const auto &mod : mods) {
+            if (sys.hasDeviceMatchingModalias(mod)) {
+                return true;
+            }
+        }
+    }
     return m_appdata.hasCategory(category);
 }
 

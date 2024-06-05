@@ -73,7 +73,8 @@ Category::Category(const QString &name,
                    const CategoryFilter &filter,
                    const QSet<QString> &pluginName,
                    const QList<std::shared_ptr<Category>> &subCategories,
-                   bool isAddons)
+                   bool isAddons,
+                   bool isDrivers)
     : QObject(nullptr)
     , m_name(name)
     , m_iconString(iconName)
@@ -81,7 +82,8 @@ Category::Category(const QString &name,
     , m_subCategories(subCategories)
     , m_plugins(pluginName)
     , m_isAddons(isAddons)
-    , m_priority(isAddons ? 5 : 0)
+    , m_isDrivers(isDrivers)
+    , m_priority(isAddons || isDrivers ? 5 : 0)
 {
     setObjectName(m_name);
 
@@ -122,6 +124,10 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml, Localizatio
             xml->readNext();
         } else if (xml->name() == QLatin1String("OnlyShowIn")) {
             m_visible = qEnvironmentVariable("XDG_CURRENT_DESKTOP") == xml->readElementText();
+        } else if (xml->name() == QLatin1String("Drivers")) {
+            m_isDrivers = true;
+            m_priority = 5;
+            xml->readNext();
         } else if (xml->name() == QLatin1String("Icon")) {
             m_iconString = xml->readElementText();
         } else if (xml->name() == QLatin1String("Include") || xml->name() == QLatin1String("Categories")) {

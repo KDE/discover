@@ -552,6 +552,18 @@
       </Or>
     </Include>
   </Menu>
+
+  <Menu>
+    <Name>Hardware Drivers</Name>
+    <Icon>computer-laptop</Icon>
+    <Drivers />
+    <Include>
+      <And>
+        <Category>Drivers</Category>
+      </And>
+    </Include>
+  </Menu>
+
   <Menu>
     <Name>Plasma Addons</Name>
     <Icon>plasma</Icon>

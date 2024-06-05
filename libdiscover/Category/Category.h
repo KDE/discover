@@ -68,7 +68,8 @@ public:
              const CategoryFilter &filters,
              const QSet<QString> &pluginName,
              const QList<std::shared_ptr<Category>> &subCategories,
-             bool isAddons);
+             bool isAddons,
+             bool isDrivers);
     ~Category() override;
 
     QString name() const;
@@ -94,6 +95,10 @@ public:
     bool isAddons() const
     {
         return m_isAddons;
+    }
+    bool isDrivers() const
+    {
+        return m_isDrivers;
     }
     qint8 priority() const
     {
@@ -149,6 +154,7 @@ private:
     CategoryFilter parseIncludes(QXmlStreamReader *xml);
     QSet<QString> m_plugins;
     bool m_isAddons = false;
+    bool m_isDrivers = false;
     qint8 m_priority = 0;
     QTimer *m_subCategoriesChanged;
     bool m_visible = true;

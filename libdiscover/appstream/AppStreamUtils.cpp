@@ -7,6 +7,7 @@
 #include "AppStreamUtils.h"
 
 #include "utils.h"
+#include <AppStreamQt/category.h>
 #include <AppStreamQt/pool.h>
 #include <AppStreamQt/release.h>
 #include <AppStreamQt/screenshot.h>
@@ -204,8 +205,12 @@ AppStreamUtils::componentsByCategoriesTask(AppStream::ConcurrentPool *pool, cons
     const auto categories = cat->involvedCategories();
     QList<QFuture<AppStream::ComponentBox>> futures;
     futures.reserve(categories.size());
-    for (const auto &categoryName : categories) {
-        futures += pool->componentsByCategories({categoryName});
+    if (cat->isDrivers()) {
+        futures += pool->componentsByKind(AppStream::Component::KindDriver);
+    } else {
+        for (const auto &categoryName : categories) {
+            futures += pool->componentsByCategories({categoryName});
+        }
     }
 
     if (futures.size() == 1) {

@@ -291,7 +291,8 @@ QList<std::shared_ptr<Category>> AlpineApkBackend::category() const
                                                                           s_apkFlt, // const CategoryFilter& filters
                                                                           QSet<QString>{displayName()}, // pluginName
                                                                           QList<std::shared_ptr<Category>>{}, // subcategories
-                                                                          false // isAddons
+                                                                          false, // isAddons
+                                                                          false // isDrivers
                                                                           ));
 
     return {s_rootCat};
