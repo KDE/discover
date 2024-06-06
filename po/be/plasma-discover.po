@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-24 00:40+0000\n"
-"PO-Revision-Date: 2024-02-13 20:30\n"
+"PO-Revision-Date: 2024-06-01 17:50\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
 "Language: be\n"
@@ -67,7 +67,7 @@ msgstr ""
 "url='https://wiki.archlinux.org/title/"
 "KDE#Discover_does_not_show_any_applications'>PackageKit</link> з дапамогай "
 "<command>pacman</command>.<nl/><nl/> Агляд <link url='https://archlinux.org/"
-"packages/extra/x86_64/discover/'>%1's пакункаў для Discover</link>"
+"packages/extra/x86_64/discover/'>%1's пакетаў для Discover</link>"
 
 #: discover/DiscoverObject.cpp:274
 #, kde-format
@@ -162,7 +162,7 @@ msgstr "Спіс усіх даступных рэжымаў."
 #: discover/main.cpp:39
 #, kde-format
 msgid "Local package file to install"
-msgstr "Файл лакальнага пакунка для ўсталявання"
+msgstr "Файл лакальнага пакета для ўсталявання"
 
 #: discover/main.cpp:40
 #, kde-format
@@ -510,19 +510,7 @@ msgid "Risks of proprietary software"
 msgstr "Імавернасць несвабоднага праграмнага забеспячэння"
 
 #: discover/qml/ApplicationPage.qml:912
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (<link url='%1'>"
@@ -535,31 +523,9 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
-"Зыходны код гэтай праграмы часткова або цалкам закрыты для правярання і "
-"паляпшэння. Гэта азначае, што трэція асобы не могуць правяраць функцыянал, "
-"бяспеку і надзейнасць, а таксама змяняць і распаўсюджваць яго без "
-"відавочнага дазволу аўтараў.<nl/><nl/>Праграма можа быць цалкам бяспечнай у "
-"выкарыстанні або можа дзейнічаць супраць вас рознымі спосабамі: збіраць "
-"вашыя асабістыя звесткі, адсочваць вашае месцазнаходжанне або перадаваць "
-"змесціва вашых файлаў іншым асобам. Няма простага спосабу праверыць гэта, "
-"таму вам варта ўсталёўваць гэтую праграму, толькі калі вы цалкам давяраеце "
-"яе аўтарам (%1).<nl/><nl/>Падрабязней можна даведацца на <link url='%2'>%2</"
-"link>."
 
 #: discover/qml/ApplicationPage.qml:913
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -572,16 +538,6 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Зыходны код гэтай праграмы часткова або цалкам закрыты для правярання і "
-"паляпшэння. Гэта азначае, што трэція асобы не могуць правяраць функцыянал, "
-"бяспеку і надзейнасць, а таксама змяняць і распаўсюджваць яго без "
-"відавочнага дазволу аўтараў.<nl/><nl/>Праграма можа быць цалкам бяспечнай у "
-"выкарыстанні або можа дзейнічаць супраць вас рознымі спосабамі: збіраць "
-"вашыя асабістыя звесткі, адсочваць вашае месцазнаходжанне або перадаваць "
-"змесціва вашых файлаў іншым асобам. Няма простага спосабу праверыць гэта, "
-"таму вам варта ўсталёўваць гэтую праграму, толькі калі вы цалкам давяраеце "
-"яе аўтарам (%1).<nl/><nl/>Падрабязней можна даведацца на <link url='%2'>%2</"
-"link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -886,10 +842,9 @@ msgid "Copy to Clipboard"
 msgstr "Скапіяваць у буфер абмену"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
-msgstr "Адправіць інфармацыю пра выкарыстанне"
+msgstr ""
 
 #: discover/qml/Feedback.qml:15
 #, kde-format
@@ -912,10 +867,9 @@ msgid "Configure"
 msgstr "Наладжванне"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
-msgstr "Наладжванне зваротнай сувязі…"
+msgstr ""
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
 #, kde-format

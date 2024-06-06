@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-30 00:39+0000\n"
-"PO-Revision-Date: 2024-02-13 20:30\n"
+"PO-Revision-Date: 2024-06-05 07:00\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
 "Language: be\n"
@@ -936,11 +936,10 @@ msgstr ""
 "Не ўдалося знайсці \"%1\" у \"%2\"; пераканайцеся, што элемент даступны."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "Рэпазіторый недаступны"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-kuit-format
@@ -1230,32 +1229,32 @@ msgstr "Хібны PackageID"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:35
 #, kde-format
 msgid "Package not installed"
-msgstr "Пакунак не ўсталяваны"
+msgstr "Пакет не ўсталяваны"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:37
 #, kde-format
 msgid "Package not found"
-msgstr "Пакунак не знойдзены"
+msgstr "Пакет не знойдзены"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:39
 #, kde-format
 msgid "Package is already installed"
-msgstr "Пакунак ужо ўсталяваны"
+msgstr "Пакет ужо ўсталяваны"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:41
 #, kde-format
 msgid "Package download failed"
-msgstr "Не ўдалося спампаваць пакунак"
+msgstr "Не ўдалося спампаваць пакет"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:43
 #, kde-format
 msgid "Package group not found"
-msgstr "Група пакункаў не знойдзеная"
+msgstr "Група пакетаў не знойдзеная"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:45
 #, kde-format
 msgid "Package group list invalid"
-msgstr "Хібная група пакункаў"
+msgstr "Хібная група пакетаў"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:47
 #, kde-format
@@ -1295,7 +1294,7 @@ msgstr "Не ўдалося знайсці рэпазіторый"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:61
 #, kde-format
 msgid "Cannot remove system package"
-msgstr "Немагчыма выдаліць сістэмны пакунак"
+msgstr "Немагчыма выдаліць сістэмны пакет"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:63
 #, kde-format
@@ -1330,7 +1329,7 @@ msgstr "Немагчыма атрымаць блакаванне"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:75
 #, kde-format
 msgid "No packages to update"
-msgstr "Няма пакункаў для абнаўлення"
+msgstr "Няма пакетаў для абнаўлення"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:77
 #, kde-format
@@ -1355,7 +1354,7 @@ msgstr "Не знойдзена подпісаў GPG"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:85
 #, kde-format
 msgid "Cannot install source package"
-msgstr "Не ўдалося ўсталяваць зыходны пакунак"
+msgstr "Не ўдалося ўсталяваць зыходны пакет"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:87
 #, kde-format
@@ -1375,7 +1374,7 @@ msgstr "Выяўлены канфлікт файлаў"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:93
 #, kde-format
 msgid "Package conflict found"
-msgstr "Выяўлены канфлікт пакункаў"
+msgstr "Выяўлены канфлікт пакетаў"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:95
 #, kde-format
@@ -1385,22 +1384,22 @@ msgstr "Рэпазіторый недаступны"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:97
 #, kde-format
 msgid "Invalid package file"
-msgstr "Хібны файл пакунка"
+msgstr "Хібны файл пакета"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:99
 #, kde-format
 msgid "Package install blocked"
-msgstr "Усталяванне пакунка заблакавана"
+msgstr "Усталяванне пакета заблакавана"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:101
 #, kde-format
 msgid "Corrupt package found"
-msgstr "Знойдзены пашкоджаны пакунак"
+msgstr "Знойдзены пашкоджаны пакет"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:103
 #, kde-format
 msgid "All packages already installed"
-msgstr "Усе пакункі ўжо ўсталяваныя"
+msgstr "Усе пакеты ўжо ўсталяваныя"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:105
 #, kde-format
@@ -1475,22 +1474,22 @@ msgstr "Выяўлена абмежаванае спампоўванне"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:133
 #, kde-format
 msgid "Package failed to configure"
-msgstr "Не ўдалося наладзіць пакунак"
+msgstr "Не ўдалося наладзіць пакет"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:135
 #, kde-format
 msgid "Package failed to build"
-msgstr "Не ўдалося сабраць пакунак"
+msgstr "Не ўдалося сабраць пакет"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:137
 #, kde-format
 msgid "Package failed to install"
-msgstr "Не ўдалося ўсталяваць пакунак"
+msgstr "Не ўдалося ўсталяваць пакет"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:139
 #, kde-format
 msgid "Package failed to remove"
-msgstr "Не ўдалося выдаліць пакунак"
+msgstr "Не ўдалося выдаліць пакет"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:141
 #, kde-format
@@ -1500,7 +1499,7 @@ msgstr "Не ўдалося абнавіць праз запушчаны пра�
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:143
 #, kde-format
 msgid "The package database changed"
-msgstr "База даных пакункаў змененая"
+msgstr "База даных пакетаў змененая"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:145
 #, kde-format
@@ -1709,22 +1708,22 @@ msgstr "Выконваецца трансакцыя…"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
 #, kde-format
 msgid "The transaction is currently removing packages…"
-msgstr "Трансакцыя выдаляе пакункі…"
+msgstr "Трансакцыя выдаляе пакеты…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
 #, kde-format
 msgid "The transaction is currently downloading packages…"
-msgstr "Трансакцыя спампоўвае пакункі…"
+msgstr "Трансакцыя спампоўвае пакеты…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
 #, kde-format
 msgid "The transactions is currently installing packages…"
-msgstr "Трансакцыя ўсталёўвае пакункі…"
+msgstr "Трансакцыя ўсталёўвае пакеты…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
 #, kde-format
 msgid "The transaction is currently updating packages…"
-msgstr "Трансакцыя абнаўляе пакункі…"
+msgstr "Трансакцыя абнаўляе пакеты…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
 #, kde-format
@@ -1736,23 +1735,23 @@ msgstr "Трансакцыя выконвае ачышчэнне…"
 msgid ""
 "The transaction is currently resolving the dependencies of the packages it "
 "will install…"
-msgstr "Трансакцыя развязвае залежнасці пакункаў, якія яна будзе ўсталёўваць…"
+msgstr "Трансакцыя развязвае залежнасці пакетаў, якія яна будзе ўсталёўваць…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
 #, kde-format
 msgid "The transaction is currently checking the signatures of the packages…"
-msgstr "Трансакцыя правярае подпісы пакункаў…"
+msgstr "Трансакцыя правярае подпісы пакетаў…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
 #, kde-format
 msgid ""
 "The transaction is currently testing the commit of this set of packages…"
-msgstr "Трансакцыя правярае ўнясенне гэтага набору пакункаў…"
+msgstr "Трансакцыя правярае ўнясенне гэтага набору пакетаў…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
 #, kde-format
 msgid "The transaction is currently committing its set of packages…"
-msgstr "Трансакцыя ўносіць гэты набор пакункаў…"
+msgstr "Трансакцыя ўносіць гэты набор пакетаў…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
 #, kde-format
@@ -1942,17 +1941,15 @@ msgid_plural ""
 "Failed to update %1 packages\n"
 "%2"
 msgstr[0] ""
-"Не ўдалося абнавіць %1 пакунак\n"
+"Не ўдалося абнавіць %1 пакет\n"
 " %2"
 msgstr[1] ""
-"Не ўдалося абнавіць %1 пакункі\n"
+"Не ўдалося абнавіць %1 пакеты\n"
 " %2"
 msgstr[2] ""
-"Не ўдалося абнавіць %1 пакункаў\n"
+"Не ўдалося абнавіць %1 пакетаў\n"
 " %2"
-msgstr[3] ""
-"Не ўдалося абнавіць %1 пакункі\n"
-" %2"
+msgstr[3] "Не ўдалося абнавіць %1 пакеты %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:185
@@ -1999,10 +1996,10 @@ msgstr "Пазасеціўныя абнаўленні"
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
-msgstr[0] "Паспяхова абноўлены %1 пакунак"
-msgstr[1] "Паспяхова абноўлена %1 пакункі"
-msgstr[2] "Паспяхова абноўлена %1 пакункаў"
-msgstr[3] "Паспяхова абноўлена %1 пакункі"
+msgstr[0] "Паспяхова абноўлены %1 пакет"
+msgstr[1] "Паспяхова абноўлена %1 пакеты"
+msgstr[2] "Паспяхова абноўлена %1 пакетаў"
+msgstr[3] "Паспяхова абноўлена %1 пакеты"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:194
 #, kde-format
@@ -2075,10 +2072,10 @@ msgstr "Абнаўленне сістэмы"
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "Будзе абноўлены %1 пакунак"
-msgstr[1] "Будзе абноўлена %1 пакункі"
-msgstr[2] "Будзе абноўлена %1 пакункаў"
-msgstr[3] "Будзе абноўлена %1 пакункі"
+msgstr[0] "Будзе абноўлены %1 пакет"
+msgstr[1] "Будзе абноўлена %1 пакеты"
+msgstr[2] "Будзе абноўлена %1 пакетаў"
+msgstr[3] "Будзе абноўлена %1 пакеты"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
 #, kde-format
@@ -2134,7 +2131,7 @@ msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
 ">in order to install:<ul><li>%2</li></ul>"
 msgstr ""
-"Пры абнаўленні будуць выдаленыя наступныя пакункі:<ul><li>%1</li></ul><br/>, "
+"Пры абнаўленні будуць выдаленыя наступныя пакеты:<ul><li>%1</li></ul><br/>, "
 "каб усталяваць:<ul><li>%2</li></ul>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
@@ -2166,7 +2163,7 @@ msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
 " %3"
 msgstr ""
-"Для пакунка %1 яго стваральнік %2 патрабуе прыняць ліцэнзію:\n"
+"Для пакета %1 яго стваральнік %2 патрабуе прыняць ліцэнзію:\n"
 " %3"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:874
@@ -2211,7 +2208,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:214
 #, kde-format
 msgid "Confirm package removal"
-msgstr "Пацвердзіць выдаленне пакунка"
+msgstr "Пацвердзіць выдаленне пакета"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:215
 #, kde-format
@@ -2222,16 +2219,16 @@ msgid_plural ""
 "This action will also remove the following packages:\n"
 "%2"
 msgstr[0] ""
-"Пры выкананні гэтага дзеяння будзе таксама выдалены наступны пакунак:\n"
+"Пры выкананні гэтага дзеяння будзе таксама выдалены наступны пакет:\n"
 " %2"
 msgstr[1] ""
-"Пры выкананні гэтага дзеяння будуць таксама выдаленыя наступныя пакункі:\n"
+"Пры выкананні гэтага дзеяння будуць таксама выдаленыя наступныя пакеты:\n"
 " %2"
 msgstr[2] ""
-"Пры выкананні гэтага дзеяння будуць таксама выдаленыя наступныя пакункі:\n"
+"Пры выкананні гэтага дзеяння будуць таксама выдаленыя наступныя пакеты:\n"
 " %2"
 msgstr[3] ""
-"Пры выкананні гэтага дзеяння будуць таксама выдаленыя наступныя пакункі:\n"
+"Пры выкананні гэтага дзеяння будуць таксама выдаленыя наступныя пакеты:\n"
 " %2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
@@ -2242,7 +2239,7 @@ msgstr "Паказаць залежнасці…"
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:44
 #, kde-format
 msgid "Dependencies for package: %1"
-msgstr "Залежнасці для пакунка: %1"
+msgstr "Залежнасці для пакета: %1"
 
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:30
 #, kde-format
@@ -2307,7 +2304,7 @@ msgstr "GPL і іншыя ліцэнзіі"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
 #, kde-format
 msgid "Additional packages: "
-msgstr "Дадатковыя пакункі: "
+msgstr "Дадатковыя пакеты: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
 #, kde-format
@@ -2317,17 +2314,17 @@ msgstr "Дадатковыя модулі: "
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
 #, kde-format
 msgid "Local packages: "
-msgstr "Лакальныя пакункі: "
+msgstr "Лакальныя пакеты: "
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
 #, kde-format
 msgid "Replaced packages:"
-msgstr "Замененыя пакункі:"
+msgstr "Замененыя пакеты:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, kde-format
 msgid "Removed packages:"
-msgstr "Выдаленыя пакункі:"
+msgstr "Выдаленыя пакеты:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #, kde-format
