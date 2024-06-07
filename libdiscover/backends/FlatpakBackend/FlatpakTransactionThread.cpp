@@ -397,18 +397,37 @@ bool FlatpakTransactionThread::end_of_lifed_with_rebase(const char *remote,
 {
     QMutexLocker lock(&m_proceedMutex);
 
+    enum class Execute { Rebase, Uninstall };
+    auto target = Execute::Rebase;
+    if (!rebased_to_ref) { // ref has no replacement -> uninstall
+        target = Execute::Uninstall;
+    }
+
     if (QString::fromUtf8(rebased_to_ref).startsWith("runtime/"_L1)) {
         qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Automatically transitioning runtime";
         m_proceed = true;
     } else {
         m_proceed = false;
-        Q_EMIT proceedRequest(
-            i18nc("@title", "Replacement Available"),
-            xi18nc(
-                "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy though)",
-                "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it with the supported version provided by <resource>%2</resource>?",
-                QString::fromUtf8(ref),
-                QString::fromUtf8(rebased_to_ref)));
+
+        switch (target) {
+        case Execute::Rebase:
+            Q_EMIT proceedRequest(i18nc("@title", "Replacement Available"),
+                                  xi18nc("@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy though)",
+                                         "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it with the supported version provided by "
+                                         "<resource>%2</resource>?",
+                                         QString::fromUtf8(ref),
+                                         QString::fromUtf8(rebased_to_ref)));
+            break;
+        case Execute::Uninstall:
+            Q_EMIT proceedRequest(i18nc("@title", "Automatic Removal"),
+                                  xi18nc("@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)",
+                                         "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason given is: "
+                                         "<message>%2</message></p><nl/><p>Automatically remove it?</p>",
+                                         QString::fromUtf8(ref),
+                                         QString::fromUtf8(reason)));
+            break;
+        }
+
         m_proceedCondition.wait(&m_proceedMutex);
     }
 
@@ -417,12 +436,20 @@ bool FlatpakTransactionThread::end_of_lifed_with_rebase(const char *remote,
     }
 
     GError *localError = nullptr;
+    auto correct = false;
+    switch (target) {
+    case Execute::Rebase:
 #if FLATPAK_CHECK_VERSION(1, 15, 0)
-    const auto correct = flatpak_transaction_add_rebase_and_uninstall(m_transaction, remote, rebased_to_ref, ref, nullptr, previous_ids, &localError);
+        correct = flatpak_transaction_add_rebase_and_uninstall(m_transaction, remote, rebased_to_ref, ref, nullptr, previous_ids, &localError);
 #else
-    const auto correct = flatpak_transaction_add_rebase(m_transaction, remote, rebased_to_ref, nullptr, previous_ids, &localError)
-        && flatpak_transaction_add_uninstall(m_transaction, ref, &localError);
+        correct = flatpak_transaction_add_rebase(m_transaction, remote, rebased_to_ref, nullptr, previous_ids, &localError)
+            && flatpak_transaction_add_uninstall(m_transaction, ref, &localError);
 #endif
+        break;
+    case Execute::Uninstall:
+        correct = flatpak_transaction_add_uninstall(m_transaction, ref, &localError);
+        break;
+    }
     if (!correct || localError) {
         fail(ref, localError);
         return false;
