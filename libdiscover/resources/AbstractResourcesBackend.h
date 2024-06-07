@@ -239,6 +239,16 @@ public:
      */
     virtual uint fetchingUpdatesProgressWeight() const;
 
+    // /**
+    //  * @brief schedule a set of transactions for processing.
+    //  *
+    //  * This in particular wants to be implemented when you want to merge a related set of transactions
+    //  * (such as during an upgrade) into one "meta" transaction behind the scenes
+    //  *
+    //  * @param transactions
+    //  */
+    // virtual void scheduleTransactions(const QList<Transaction *> &transactions);
+
 public Q_SLOTS:
     /**
      * This gets called when the backend should install an application.

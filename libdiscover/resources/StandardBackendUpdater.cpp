@@ -60,6 +60,7 @@ void StandardBackendUpdater::start()
     });
 
     const bool couldCancel = m_canCancel;
+    QList<Transaction *> transactions;
     for (AbstractResource *res : std::as_const(upgradeList)) {
         m_pendingResources += res;
         auto t = m_backend->installApplication(res);
@@ -70,12 +71,15 @@ void StandardBackendUpdater::start()
         });
         connect(this, &StandardBackendUpdater::cancelTransaction, t, &Transaction::cancel);
         TransactionModel::global()->addTransaction(t);
+        transactions.append(t);
         m_canCancel |= t->isCancellable();
     }
     if (m_canCancel != couldCancel) {
         Q_EMIT cancelableChanged(m_canCancel);
     }
     m_settingUp = false;
+
+    // m_backend->scheduleTransactions(transactions);
 
     if (m_pendingResources.isEmpty()) {
         cleanup();

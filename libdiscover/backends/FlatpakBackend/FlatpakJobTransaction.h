@@ -14,14 +14,14 @@
 #include <gio/gio.h>
 #include <glib.h>
 
+#include "FlatpakTransactionThread.h"
+
 class FlatpakResource;
-class FlatpakTransactionThread;
 class FlatpakJobTransaction : public Transaction
 {
     Q_OBJECT
 public:
-    FlatpakJobTransaction(FlatpakResource *app, Role role, bool delayStart = false);
-
+    FlatpakJobTransaction(FlatpakResource *app, Role role);
     ~FlatpakJobTransaction();
 
     Q_SCRIPTABLE void proceed() override;
@@ -31,15 +31,12 @@ public:
     using Repositories = QMap<QString, QStringList>;
 
 public Q_SLOTS:
-    void finishTransaction();
-    void start();
+    void finishTransaction(bool cancelled, const QString &errorMessage, const FlatpakTransactionThread::Repositories &addedRepositories, bool success);
 
 Q_SIGNALS:
     void repositoriesAdded(const Repositories &repositories);
 
-private:
-    void updateProgress();
-
+public:
     QPointer<FlatpakResource> m_app;
-    QPointer<FlatpakTransactionThread> m_appJob;
+    QPointer<FlatpakTransactionThread> m_thread;
 };
