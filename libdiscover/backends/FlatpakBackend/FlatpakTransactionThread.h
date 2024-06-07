@@ -11,6 +11,7 @@
 #include <gio/gio.h>
 #include <glib.h>
 
+#include <QHash>
 #include <QMap>
 #include <QMutex>
 #include <QRunnable>
@@ -19,40 +20,61 @@
 #include <QWaitCondition>
 #include <Transaction/Transaction.h>
 
+#include <QThreadPool>
+class FlatpakThreadPool : public QThreadPool
+{
+public:
+    [[nodiscard]] static FlatpakThreadPool *instance()
+    {
+        static FlatpakThreadPool pool;
+        return &pool;
+    }
+
+private:
+    FlatpakThreadPool()
+    {
+        // We only run a single transaction at a time but do so in a thread pool of size 1.
+        // We can't do more threading because we'd exhaust resources.
+        // https://bugs.kde.org/show_bug.cgi?id=474231
+        // But also because suse enforces authentication which means N auth dialogs for N threads.
+        // https://bugs.kde.org/show_bug.cgi?id=466559
+        setMaxThreadCount(1);
+    }
+};
+
+class FlatpakJobTransaction;
 class FlatpakResource;
 class FlatpakTransactionThread : public QObject, public QRunnable
 {
     Q_OBJECT
 public:
-    FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role);
+    /** Mapping of repositories where a key is an installation path and a value is a list of names */
+    using Repositories = QMap<QString, QStringList>;
+
+    FlatpakTransactionThread(Transaction::Role role, FlatpakInstallation *installation);
     ~FlatpakTransactionThread() override;
 
-    void proceed();
+    void addJobTransaction(FlatpakJobTransaction *jobTransaction);
+    void setCurrentRef(const char *ref);
+
     void cancel();
     void run() override;
 
-    int progress() const;
     void setProgress(int progress);
     void setSpeed(quint64 speed);
 
-    QString errorMessage() const;
-    bool result() const;
-    bool cancelled() const;
-
     void addErrorMessage(const QString &error);
+    void operationError(GError *error);
+    bool end_of_lifed_with_rebase(const char *remote, const char *ref, const char *reason, const char *rebased_to_ref, const char **previous_ids);
+    void proceed();
 
-    /** Mapping of repositories where a key is an installation path and a value is a list of names */
-    using Repositories = QMap<QString, QStringList>;
-    Repositories addedRepositories() const;
-    [[nodiscard]] bool end_of_lifed_with_rebase(const char *remote, const char *ref, const char *reason, const char *rebased_to_ref, const char **previous_ids);
-
-Q_SIGNALS:
+Q_SIGNALS: // Signals vastly simplify our live with regards to threading since Qt schedules them into the correct thread
     void progressChanged(int progress);
     void speedChanged(quint64 speed);
     void passiveMessage(const QString &msg);
     void webflowStarted(const QUrl &url, int id);
     void webflowDone(int id);
-    void finished();
+    void finished(bool cancelled, const QString &errorMessage, const FlatpakTransactionThread::Repositories &addedRepositories, bool success);
     void proceedRequest(const QString &title, const QString &description);
 
 private:
@@ -63,21 +85,33 @@ private:
     new_operation_cb(FlatpakTransaction * /*object*/, FlatpakTransactionOperation *operation, FlatpakTransactionProgress *progress, gpointer user_data);
     void fail(const char *refName, GError *error);
 
+    QString errorMessage() const;
+    bool cancelled() const;
+    int progress() const;
+    Repositories addedRepositories() const;
+    [[nodiscard]] bool success() const;
+    void finishAllJobTransactions();
+
     static gboolean webflowStart(FlatpakTransaction *transaction, const char *remote, const char *url, GVariant *options, guint id, gpointer user_data);
     static void webflowDoneCallback(FlatpakTransaction *transaction, GVariant *options, guint id, gpointer user_data);
+    [[nodiscard]] bool setupTransaction();
 
-    FlatpakTransaction *m_transaction;
-    bool m_result = false;
+    GCancellable *m_cancellable;
+    FlatpakTransaction *m_transaction = nullptr;
     int m_progress = 0;
     quint64 m_speed = 0;
     QString m_errorMessage;
-    GCancellable *m_cancellable;
-    FlatpakResource *const m_app;
     const Transaction::Role m_role;
+    FlatpakInstallation *m_installation;
     QMap<QString, QStringList> m_addedRepositories;
     QMutex m_proceedMutex;
     QWaitCondition m_proceedCondition;
     bool m_proceed = false;
+    // WARNING: Beware that the JobTransaction objects live in another thread! Do not call them directly. Use Signals.
+    QHash<QString, QPointer<FlatpakJobTransaction>> m_jobTransactionsByRef;
+    void *m_currentJobTransaction = nullptr; // void so you can't accidentally call into it. Use Signals.
+    QString m_initializationErrorMessage;
+    std::optional<bool> m_operationSuccess;
 
     QVector<int> m_webflows;
 };

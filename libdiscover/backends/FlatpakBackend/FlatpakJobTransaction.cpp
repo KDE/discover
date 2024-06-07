@@ -10,78 +10,135 @@
 #include "FlatpakBackend.h"
 #include "FlatpakResource.h"
 #include "FlatpakTransactionThread.h"
-
-#include <thread>
+#include "libdiscover_backend_flatpak_debug.h"
 
 #include <QDebug>
 #include <QScopeGuard>
 #include <QTimer>
-
 namespace
 {
-class ThreadPool : public QThreadPool
-{
-public:
-    ThreadPool()
+    struct InstallationContext {
+        FlatpakJobTransaction::Role role;
+        FlatpakInstallation *installation;
+
+        bool operator==(const InstallationContext &) const = default;
+    };
+
+    uint qHash(const InstallationContext &context, uint seed)
     {
-        // Cap the amount of concurrency to prevent too many in-flight transactions. This in particular
-        // prevents running out of file descriptors or other limited resources.
-        // https://bugs.kde.org/show_bug.cgi?id=474231
-        constexpr auto arbitraryMaxConcurrency = 4U;
-        const auto concurrency = std::min(std::thread::hardware_concurrency(), arbitraryMaxConcurrency);
-        setMaxThreadCount(static_cast<int>(concurrency));
+        return qHash(context.role, seed) ^ qHash(context.installation, seed);
     }
+}
+
+class FlatpakTransactionsMerger : public QObject
+{
+    Q_OBJECT
+public:
+    [[nodiscard]] static FlatpakTransactionsMerger *instance()
+    {
+        static FlatpakTransactionsMerger merger;
+        return &merger;
+    }
+
+    ~FlatpakTransactionsMerger() override
+    {
+        for (const auto &thread : m_activeThreads) {
+            thread->cancel();
+            if (FlatpakThreadPool::instance()->tryTake(thread)) { // immediately delete if the runnable hasn't started yet
+                delete thread;
+            } else { // otherwise defer cleanup to the pool
+                thread->setAutoDelete(true);
+            }
+        }
+    }
+
+    Q_DISABLE_COPY_MOVE(FlatpakTransactionsMerger)
+
+    void schedule(FlatpakJobTransaction *transaction)
+    {
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Scheduling transaction" << transaction;
+        m_pendingJobTransactions.push_back(transaction);
+        connect(&m_timer, &QTimer::timeout, this, &FlatpakTransactionsMerger::dispatch, Qt::UniqueConnection);
+        // We use a 0 timer because we merge all transactions that are being scheduled in one eventloop run
+        m_timer.setSingleShot(true);
+        m_timer.start(0);
+    }
+
+    void discard(FlatpakJobTransaction *transaction)
+    {
+        m_pendingJobTransactions.removeAll(transaction);
+    }
+
+private Q_SLOTS:
+    void dispatch()
+    {
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Dispatching from amount of jobs" << m_pendingJobTransactions.size();
+        if (m_pendingJobTransactions.isEmpty()) {
+            return;
+        }
+
+        QHash<InstallationContext, FlatpakTransactionThread *> threadsByInstallation;
+
+        for (const auto &pendingJobTransaction : std::as_const(m_pendingJobTransactions)) {
+            Q_ASSERT(pendingJobTransaction->m_app);
+            auto installation = pendingJobTransaction->m_app->installation();
+            Q_ASSERT(installation);
+            auto role = pendingJobTransaction->role();
+
+            InstallationContext installationContext{.role = role, .installation = installation};
+            if (!threadsByInstallation.contains(installationContext)) {
+                auto thread = new FlatpakTransactionThread(installationContext.role, installationContext.installation);
+                connect(thread, &QObject::destroyed, this, [this, thread] {
+                    m_activeThreads.removeAll(thread);
+                });
+                m_activeThreads.append(thread);
+                threadsByInstallation.insert(installationContext, thread);
+            }
+
+            auto &thread = threadsByInstallation[installationContext];
+            thread->setAutoDelete(false);
+            thread->addJobTransaction(pendingJobTransaction);
+            pendingJobTransaction->m_thread = thread;
+        }
+        m_pendingJobTransactions.clear();
+
+        for (auto &thread : std::as_const(threadsByInstallation)) {
+            FlatpakThreadPool::instance()->start(thread);
+        }
+    }
+
+private:
+    using QObject::QObject;
+
+    // Purely exists for cleanup. Do not call into these! Do not recycle these! They have been dispatched to the pool.
+    QList<FlatpakTransactionThread *> m_activeThreads;
+    QList<FlatpakJobTransaction *> m_pendingJobTransactions;
+    QTimer m_timer;
 };
-} // namespace
 
-Q_GLOBAL_STATIC(ThreadPool, s_pool);
-
-FlatpakJobTransaction::FlatpakJobTransaction(FlatpakResource *app, Role role, bool delayStart)
+FlatpakJobTransaction::FlatpakJobTransaction(FlatpakResource *app, Role role)
     : Transaction(app->backend(), app, role, {})
     , m_app(app)
 {
     setCancellable(true);
-    setStatus(QueuedStatus);
 
-    if (!delayStart) {
-        QTimer::singleShot(0, this, &FlatpakJobTransaction::start);
-    }
+    setStatus(CommittingStatus);
+    FlatpakTransactionsMerger::instance()->schedule(this);
 }
 
 FlatpakJobTransaction::~FlatpakJobTransaction()
 {
-    cancel();
-    if (s_pool->tryTake(m_appJob)) { // immediately delete if the runnable hasn't started yet
-        delete m_appJob;
-    } else { // otherwise defer cleanup to the pool
-        m_appJob->setAutoDelete(true);
-    }
+    FlatpakTransactionsMerger::instance()->discard(this);
 }
 
 void FlatpakJobTransaction::cancel()
 {
-    m_appJob->cancel();
+    if (m_thread) {
+        m_thread->cancel();
+    }
 }
 
-void FlatpakJobTransaction::start()
-{
-    setStatus(CommittingStatus);
-
-    // App job will be added every time
-    m_appJob = new FlatpakTransactionThread(m_app, role());
-    m_appJob->setAutoDelete(false);
-    connect(m_appJob, &FlatpakTransactionThread::finished, this, &FlatpakJobTransaction::finishTransaction);
-    connect(m_appJob, &FlatpakTransactionThread::progressChanged, this, &FlatpakJobTransaction::setProgress);
-    connect(m_appJob, &FlatpakTransactionThread::speedChanged, this, &FlatpakJobTransaction::setDownloadSpeed);
-    connect(m_appJob, &FlatpakTransactionThread::passiveMessage, this, &FlatpakJobTransaction::passiveMessage);
-    connect(m_appJob, &FlatpakTransactionThread::webflowStarted, this, &FlatpakJobTransaction::webflowStarted);
-    connect(m_appJob, &FlatpakTransactionThread::webflowDone, this, &FlatpakJobTransaction::webflowDone);
-    connect(m_appJob, &FlatpakTransactionThread::proceedRequest, this, &FlatpakJobTransaction::proceedRequest);
-
-    s_pool->start(m_appJob);
-}
-
-void FlatpakJobTransaction::finishTransaction()
+void FlatpakJobTransaction::finishTransaction(bool cancelled, const QString &errorMessage, const FlatpakTransactionThread::Repositories &addedRepositories, bool success)
 {
     if (static_cast<FlatpakBackend *>(m_app->backend())->getInstalledRefForApp(m_app)) {
         m_app->setState(AbstractResource::Installed);
@@ -89,26 +146,27 @@ void FlatpakJobTransaction::finishTransaction()
         m_app->setState(AbstractResource::None);
     }
 
-    if (const auto repositories = m_appJob->addedRepositories(); !repositories.isEmpty()) {
-        Q_EMIT repositoriesAdded(repositories);
+    if (addedRepositories.isEmpty()) {
+        Q_EMIT repositoriesAdded(addedRepositories);
     }
 
-    if (!m_appJob->cancelled() && !m_appJob->errorMessage().isEmpty()) {
-        Q_EMIT passiveMessage(m_appJob->errorMessage());
+    if (!cancelled && !errorMessage.isEmpty()) {
+        Q_EMIT passiveMessage(errorMessage);
     }
 
-    if (m_appJob->result()) {
+    if (success) {
         setStatus(DoneStatus);
     } else {
-        setStatus(m_appJob->cancelled() ? CancelledStatus : DoneWithErrorStatus);
+        setStatus(cancelled ? CancelledStatus : DoneWithErrorStatus);
     }
 }
 
 void FlatpakJobTransaction::proceed()
 {
-    if (m_appJob) {
-        m_appJob->proceed();
+    if (m_thread) {
+        m_thread->proceed();
     }
 }
 
+#include "FlatpakJobTransaction.moc"
 #include "moc_FlatpakJobTransaction.cpp"

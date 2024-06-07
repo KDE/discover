@@ -6,6 +6,7 @@
  */
 
 #include "FlatpakTransactionThread.h"
+#include "FlatpakJobTransaction.h"
 #include "FlatpakResource.h"
 #include "libdiscover_backend_flatpak_debug.h"
 
@@ -54,11 +55,13 @@ void FlatpakTransactionThread::progress_changed_cb(FlatpakTransactionProgress *p
 }
 
 void FlatpakTransactionThread::new_operation_cb(FlatpakTransaction * /*object*/,
-                                                FlatpakTransactionOperation * /*operation*/,
+                                                FlatpakTransactionOperation *operation,
                                                 FlatpakTransactionProgress *progress,
                                                 gpointer user_data)
 {
     auto obj = static_cast<FlatpakTransactionThread *>(user_data);
+
+    obj->setCurrentRef(flatpak_transaction_operation_get_ref(operation));
 
     g_signal_connect(progress, "changed", G_CALLBACK(&FlatpakTransactionThread::progress_changed_cb), obj);
     flatpak_transaction_progress_set_update_frequency(progress, FLATPAK_CLI_UPDATE_FREQUENCY);
@@ -67,9 +70,7 @@ void FlatpakTransactionThread::new_operation_cb(FlatpakTransaction * /*object*/,
 void operation_error_cb(FlatpakTransaction * /*object*/, FlatpakTransactionOperation * /*operation*/, GError *error, gint /*details*/, gpointer user_data)
 {
     auto obj = static_cast<FlatpakTransactionThread *>(user_data);
-    if (error) {
-        obj->addErrorMessage(QString::fromUtf8(error->message));
-    }
+    obj->operationError(error);
 }
 
 gboolean
@@ -175,37 +176,48 @@ gboolean ready_pre_auth([[maybe_unused]] FlatpakTransaction *transaction)
 }
 } // namespace Callbacks
 
-FlatpakTransactionThread::FlatpakTransactionThread(FlatpakResource *app, Transaction::Role role)
-    : m_result(false)
-    , m_app(app)
+FlatpakTransactionThread::FlatpakTransactionThread(Transaction::Role role, FlatpakInstallation *installation)
+    : m_cancellable(g_cancellable_new())
     , m_role(role)
+    , m_installation(installation)
 {
-    m_cancellable = g_cancellable_new();
+}
+
+bool FlatpakTransactionThread::setupTransaction()
+{
+    if (m_transaction) {
+        g_object_unref(m_transaction);
+        m_transaction = nullptr;
+    }
 
     g_autoptr(GError) localError = nullptr;
-    m_transaction = flatpak_transaction_new_for_installation(app->installation(), m_cancellable, &localError);
+    g_cancellable_reset(m_cancellable);
+    m_transaction = flatpak_transaction_new_for_installation(m_installation, m_cancellable, &localError);
     if (localError) {
-        addErrorMessage(QString::fromUtf8(localError->message));
-        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to create transaction" << m_errorMessage;
-    } else {
-        g_signal_connect(m_transaction, "add-new-remote", G_CALLBACK(add_new_remote_cb), this);
-        g_signal_connect(m_transaction, "new-operation", G_CALLBACK(new_operation_cb), this);
-        g_signal_connect(m_transaction, "operation-error", G_CALLBACK(operation_error_cb), this);
-
-        g_signal_connect(m_transaction, "basic-auth-start", G_CALLBACK(Callbacks::basic_auth_start), this);
-        g_signal_connect(m_transaction, "choose-remote-for-ref", G_CALLBACK(Callbacks::choose_remote_for_ref), this);
-        g_signal_connect(m_transaction, "end-of-lifed", G_CALLBACK(Callbacks::end_of_lifed), this);
-        g_signal_connect(m_transaction, "end-of-lifed-with-rebase", G_CALLBACK(Callbacks::end_of_lifed_with_rebase), this);
-        g_signal_connect(m_transaction, "install-authenticator", G_CALLBACK(Callbacks::install_authenticator), this);
-        g_signal_connect(m_transaction, "operation-done", G_CALLBACK(Callbacks::operation_done), this);
-        g_signal_connect(m_transaction, "ready", G_CALLBACK(Callbacks::ready), this);
-        g_signal_connect(m_transaction, "ready-pre-auth", G_CALLBACK(Callbacks::ready_pre_auth), this);
-
-        if (qEnvironmentVariableIntValue("DISCOVER_FLATPAK_WEBFLOW")) {
-            g_signal_connect(m_transaction, "webflow-start", G_CALLBACK(webflowStart), this);
-            g_signal_connect(m_transaction, "webflow-done", G_CALLBACK(webflowDoneCallback), this);
-        }
+        m_initializationErrorMessage = QString::fromUtf8(localError->message);
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to create transaction" << m_initializationErrorMessage;
+        return false;
     }
+
+    g_signal_connect(m_transaction, "add-new-remote", G_CALLBACK(add_new_remote_cb), this);
+    g_signal_connect(m_transaction, "new-operation", G_CALLBACK(new_operation_cb), this);
+    g_signal_connect(m_transaction, "operation-error", G_CALLBACK(operation_error_cb), this);
+
+    g_signal_connect(m_transaction, "basic-auth-start", G_CALLBACK(Callbacks::basic_auth_start), this);
+    g_signal_connect(m_transaction, "choose-remote-for-ref", G_CALLBACK(Callbacks::choose_remote_for_ref), this);
+    g_signal_connect(m_transaction, "end-of-lifed", G_CALLBACK(Callbacks::end_of_lifed), this);
+    g_signal_connect(m_transaction, "end-of-lifed-with-rebase", G_CALLBACK(Callbacks::end_of_lifed_with_rebase), this);
+    g_signal_connect(m_transaction, "install-authenticator", G_CALLBACK(Callbacks::install_authenticator), this);
+    g_signal_connect(m_transaction, "operation-done", G_CALLBACK(Callbacks::operation_done), this);
+    g_signal_connect(m_transaction, "ready", G_CALLBACK(Callbacks::ready), this);
+    g_signal_connect(m_transaction, "ready-pre-auth", G_CALLBACK(Callbacks::ready_pre_auth), this);
+
+    if (qEnvironmentVariableIntValue("DISCOVER_FLATPAK_WEBFLOW")) {
+        g_signal_connect(m_transaction, "webflow-start", G_CALLBACK(webflowStart), this);
+        g_signal_connect(m_transaction, "webflow-done", G_CALLBACK(webflowDoneCallback), this);
+    }
+
+    return true;
 }
 
 FlatpakTransactionThread::~FlatpakTransactionThread()
@@ -216,6 +228,7 @@ FlatpakTransactionThread::~FlatpakTransactionThread()
 
 void FlatpakTransactionThread::cancel()
 {
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "cancelling transaction thread";
     QMutexLocker lock(&m_proceedMutex);
     m_proceed = false;
     m_proceedCondition.wakeAll();
@@ -228,71 +241,74 @@ void FlatpakTransactionThread::cancel()
 
 void FlatpakTransactionThread::run()
 {
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Running new transaction";
+    // Make sure all transaction are finished when we return.
+    // This in particular makes sure that if we abort half way through all transactions will correctly enter some state.
     auto finish = qScopeGuard([this] {
-        Q_EMIT finished();
+        finishAllJobTransactions();
     });
 
-    if (!m_transaction) {
+    if (!setupTransaction()) {
         return;
     }
-    g_autoptr(GError) localError = nullptr;
+    Q_ASSERT(m_transaction);
 
-    const QString refName = m_app->ref();
+    for (const auto &[refName, jobTransaction] : m_jobTransactionsByRef.asKeyValueRange()) {
+        g_autoptr(GError) localError = nullptr;
 
-    if (m_role == Transaction::Role::InstallRole) {
-        bool correct = false;
-        if (m_app->state() == AbstractResource::Upgradeable && m_app->isInstalled()) {
-            correct = flatpak_transaction_add_update(m_transaction, refName.toUtf8().constData(), nullptr, nullptr, &localError);
-            for (const QByteArray &subref : m_app->toUpdate()) {
-                correct = correct && flatpak_transaction_add_update(m_transaction, subref.constData(), nullptr, nullptr, &localError);
+        auto app = jobTransaction->m_app;
+        if (m_role == Transaction::Role::InstallRole) {
+            bool correct = false;
+            if (app->state() == AbstractResource::Upgradeable && app->isInstalled()) {
+                correct = flatpak_transaction_add_update(m_transaction, refName.toUtf8().constData(), nullptr, nullptr, &localError);
+                for (const QByteArray &subref : app->toUpdate()) {
+                    correct = correct && flatpak_transaction_add_update(m_transaction, subref.constData(), nullptr, nullptr, &localError);
+                }
+            } else if (app->flatpakFileType() == FlatpakResource::FileFlatpak) {
+                g_autoptr(GFile) file = g_file_new_for_path(app->resourceFile().toLocalFile().toUtf8().constData());
+                if (!file) {
+                    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to install bundled application" << refName;
+                    m_operationSuccess = false;
+                    return;
+                }
+                correct = flatpak_transaction_add_install_bundle(m_transaction, file, nullptr, &localError);
+            } else if (app->flatpakFileType() == FlatpakResource::FileFlatpakRef && app->resourceFile().isLocalFile()) {
+                g_autoptr(GFile) file = g_file_new_for_path(app->resourceFile().toLocalFile().toUtf8().constData());
+                if (!file) {
+                    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to install flatpakref application" << refName;
+                    m_operationSuccess = false;
+                    return;
+                }
+                g_autoptr(GBytes) bytes = g_file_load_bytes(file, m_cancellable, nullptr, &localError);
+                correct = flatpak_transaction_add_install_flatpakref(m_transaction, bytes, &localError);
+            } else {
+                correct = flatpak_transaction_add_install(m_transaction, //
+                                                        app->origin().toUtf8().constData(),
+                                                        refName.toUtf8().constData(),
+                                                        nullptr,
+                                                        &localError);
             }
-        } else if (m_app->flatpakFileType() == FlatpakResource::FileFlatpak) {
-            g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
-            if (!file) {
-                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to install bundled application" << refName;
-                m_result = false;
+
+            if (!correct) {
+                fail(qUtf8Printable(refName), localError);
                 return;
             }
-            correct = flatpak_transaction_add_install_bundle(m_transaction, file, nullptr, &localError);
-        } else if (m_app->flatpakFileType() == FlatpakResource::FileFlatpakRef && m_app->resourceFile().isLocalFile()) {
-            g_autoptr(GFile) file = g_file_new_for_path(m_app->resourceFile().toLocalFile().toUtf8().constData());
-            if (!file) {
-                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to install flatpakref application" << refName;
-                m_result = false;
+        } else if (m_role == Transaction::Role::RemoveRole) {
+            if (!flatpak_transaction_add_uninstall(m_transaction, refName.toUtf8().constData(), &localError)) {
+                m_operationSuccess = false;
+                m_errorMessage = QString::fromUtf8(localError->message);
+                // We are done so we can set the progress to 100
+                setProgress(100);
+                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to uninstall" << refName << ':' << m_errorMessage;
                 return;
             }
-            g_autoptr(GBytes) bytes = g_file_load_bytes(file, m_cancellable, nullptr, &localError);
-            correct = flatpak_transaction_add_install_flatpakref(m_transaction, bytes, &localError);
-        } else {
-            correct = flatpak_transaction_add_install(m_transaction, //
-                                                      m_app->origin().toUtf8().constData(),
-                                                      refName.toUtf8().constData(),
-                                                      nullptr,
-                                                      &localError);
-        }
-
-        if (!correct) {
-            fail(qUtf8Printable(refName), localError);
-            return;
-        }
-    } else if (m_role == Transaction::Role::RemoveRole) {
-        if (!flatpak_transaction_add_uninstall(m_transaction, refName.toUtf8().constData(), &localError)) {
-            m_result = false;
-            m_errorMessage = QString::fromUtf8(localError->message);
-            // We are done so we can set the progress to 100
-            setProgress(100);
-            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to uninstall" << refName << ':' << m_errorMessage;
-            return;
         }
     }
 
-    m_result = flatpak_transaction_run(m_transaction, m_cancellable, &localError);
-    if (!m_result) {
-        if (localError->code == FLATPAK_ERROR_REF_NOT_FOUND) {
-            m_errorMessage = i18n("Could not find '%1' in '%2'; please make sure it's available.", refName, m_app->origin());
-        } else {
-            m_errorMessage = QString::fromUtf8(localError->message);
-        }
+    g_autoptr(GError) localError = nullptr;
+    m_operationSuccess = flatpak_transaction_run(m_transaction, m_cancellable, &localError);
+    if (!m_operationSuccess) {
+        m_errorMessage = QString::fromUtf8(localError->message);
 #if defined(FLATPAK_LIST_UNUSED_REFS)
     } else {
         const auto installation = flatpak_transaction_get_installation(m_transaction);
@@ -309,7 +325,7 @@ void FlatpakTransactionThread::run()
                 const gchar *strRef = flatpak_ref_format_ref_cached(ref);
                 qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "unused ref:" << strRef;
                 if (!flatpak_transaction_add_uninstall(transaction, strRef, &localError)) {
-                    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "failed to uninstall unused ref" << refName << localError->message;
+                    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "failed to uninstall unused ref" << strRef << localError->message;
                     break;
                 }
             }
@@ -319,8 +335,6 @@ void FlatpakTransactionThread::run()
         }
 #endif
     }
-    // We are done so we can set the progress to 100
-    setProgress(100);
 }
 
 int FlatpakTransactionThread::progress() const
@@ -352,12 +366,13 @@ void FlatpakTransactionThread::setSpeed(quint64 speed)
 
 QString FlatpakTransactionThread::errorMessage() const
 {
-    return m_errorMessage;
-}
-
-bool FlatpakTransactionThread::result() const
-{
-    return m_result;
+    QStringList messages;
+    for (const auto &msg : {m_initializationErrorMessage, m_errorMessage}) {
+        if (!msg.isEmpty()) {
+            messages.push_back(msg);
+        }
+    }
+    return messages.join('\n'_L1);
 }
 
 void FlatpakTransactionThread::addErrorMessage(const QString &error)
@@ -380,13 +395,14 @@ FlatpakTransactionThread::Repositories FlatpakTransactionThread::addedRepositori
 
 void FlatpakTransactionThread::fail(const char *refName, GError *error)
 {
-    m_result = false;
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << Q_FUNC_INFO;
+    m_operationSuccess = false;
     m_errorMessage = error
         ? QString::fromUtf8(error->message)
         : i18nc("fallback error message", "An internal error occurred. Please file a report at https://bugs.kde.org/enter_bug.cgi?product=Discover");
     // We are done so we can set the progress to 100
     setProgress(100);
-    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to install" << m_app->flatpakFileType() << refName << ':' << m_errorMessage;
+    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to install" << refName << ':' << m_errorMessage;
 }
 
 bool FlatpakTransactionThread::end_of_lifed_with_rebase(const char *remote,
@@ -396,6 +412,9 @@ bool FlatpakTransactionThread::end_of_lifed_with_rebase(const char *remote,
                                                         const char **previous_ids)
 {
     QMutexLocker lock(&m_proceedMutex);
+
+    // Make sure we are connected to a fronting transaction.
+    setCurrentRef(ref);
 
     enum class Execute { Rebase, Uninstall };
     auto target = Execute::Rebase;
@@ -428,7 +447,9 @@ bool FlatpakTransactionThread::end_of_lifed_with_rebase(const char *remote,
             break;
         }
 
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Waiting for proceed signal";
         m_proceedCondition.wait(&m_proceedMutex);
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Received proceed signal";
     }
 
     if (!m_proceed) {
@@ -462,6 +483,88 @@ void FlatpakTransactionThread::proceed()
     QMutexLocker lock(&m_proceedMutex);
     m_proceed = true;
     m_proceedCondition.wakeAll();
+}
+
+void FlatpakTransactionThread::addJobTransaction(FlatpakJobTransaction *jobTransaction)
+{
+    Q_ASSERT(jobTransaction);
+    const QString ref = jobTransaction->m_app->ref();
+    Q_ASSERT(!m_jobTransactionsByRef.contains(ref));
+    m_jobTransactionsByRef.insert(ref, jobTransaction);
+}
+
+void FlatpakTransactionThread::setCurrentRef(const char *ref_cstr)
+{
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << Q_FUNC_INFO << ref_cstr;
+    Q_ASSERT(ref_cstr);
+
+    const auto ref = QString::fromUtf8(ref_cstr);
+    if (ref.startsWith("runtime/"_L1) && !m_jobTransactionsByRef.contains(ref)) {
+        // Runtimes are implementation details, if we have no frontend transaction simply pretend we still have work
+        // to do on the previous ref (which is supposedly the one that caused this runtime).
+        return;
+    }
+
+    if (m_currentJobTransaction) { // Finalize the previous job
+        setProgress(100);
+        Q_EMIT finished(cancelled(), errorMessage(), addedRepositories(), success());
+        disconnect(static_cast<QObject *>(m_currentJobTransaction));
+    }
+
+    m_errorMessage.clear();
+    m_addedRepositories.clear();
+    m_operationSuccess.reset();
+    m_progress = 0;
+    m_speed = 0;
+
+    Q_ASSERT(m_jobTransactionsByRef.contains(ref));
+
+    auto job = m_jobTransactionsByRef.value(ref);
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Connecting to ref" << ref << job;
+    m_currentJobTransaction = job;
+    connect(this, &FlatpakTransactionThread::finished, job, &FlatpakJobTransaction::finishTransaction);
+    connect(this, &FlatpakTransactionThread::progressChanged, job, &FlatpakJobTransaction::setProgress);
+    connect(this, &FlatpakTransactionThread::speedChanged, job, &FlatpakJobTransaction::setDownloadSpeed);
+    connect(this, &FlatpakTransactionThread::passiveMessage, job, &FlatpakJobTransaction::passiveMessage);
+    connect(this, &FlatpakTransactionThread::webflowStarted, job, &FlatpakJobTransaction::webflowStarted);
+    connect(this, &FlatpakTransactionThread::webflowDone, job, &FlatpakJobTransaction::webflowDone);
+    connect(this, &FlatpakTransactionThread::proceedRequest, job, &FlatpakJobTransaction::proceedRequest);
+}
+
+void FlatpakTransactionThread::operationError(GError *error)
+{
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << Q_FUNC_INFO;
+    m_operationSuccess = false;
+    if (error) {
+        addErrorMessage(QString::fromUtf8(error->message));
+    }
+}
+
+bool FlatpakTransactionThread::success() const
+{
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << Q_FUNC_INFO;
+    // When the operation hasn't explicitly errored out we default to assume that it passed.
+    return m_operationSuccess.value_or(true);
+}
+
+void FlatpakTransactionThread::finishAllJobTransactions()
+{
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Finishing all transactions";
+    for (const auto &jobTransaction : std::as_const(m_jobTransactionsByRef)) {
+        // As jobs get finished they also get deleted. Don't trip over them!
+        if (!jobTransaction) {
+            continue;
+        }
+
+        // Invoke in correct thread obviously. Note that `this` may not be used in the queued lambda because it may be out of scope already!
+        QMetaObject::invokeMethod(
+            jobTransaction,
+            [jobTransaction, cancelled = cancelled(), errorMessage = errorMessage(), addedRepositories = addedRepositories(), success = success()] {
+                jobTransaction->finishTransaction(cancelled, errorMessage, addedRepositories, success);
+            },
+            Qt::QueuedConnection);
+    }
+    m_jobTransactionsByRef.clear();
 }
 
 #include "moc_FlatpakTransactionThread.cpp"
