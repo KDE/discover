@@ -381,7 +381,9 @@ FlatpakTransactionThread::Repositories FlatpakTransactionThread::addedRepositori
 void FlatpakTransactionThread::fail(const char *refName, GError *error)
 {
     m_result = false;
-    m_errorMessage = QString::fromUtf8(error->message);
+    m_errorMessage = error
+        ? QString::fromUtf8(error->message)
+        : i18nc("fallback error message", "An internal error occurred. Please file a report at https://bugs.kde.org/enter_bug.cgi?product=Discover");
     // We are done so we can set the progress to 100
     setProgress(100);
     qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to install" << m_app->flatpakFileType() << refName << ':' << m_errorMessage;
