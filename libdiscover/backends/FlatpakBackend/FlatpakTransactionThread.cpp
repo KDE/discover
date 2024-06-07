@@ -403,7 +403,7 @@ bool FlatpakTransactionThread::end_of_lifed_with_rebase(const char *remote,
         target = Execute::Uninstall;
     }
 
-    if (QString::fromUtf8(rebased_to_ref).startsWith("runtime/"_L1)) {
+    if (QString::fromUtf8(ref).startsWith("runtime/"_L1) || QString::fromUtf8(rebased_to_ref).startsWith("runtime/"_L1)) {
         qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Automatically transitioning runtime";
         m_proceed = true;
     } else {
