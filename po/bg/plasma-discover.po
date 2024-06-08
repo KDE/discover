@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-24 00:40+0000\n"
+"POT-Creation-Date: 2024-06-08 00:40+0000\n"
 "PO-Revision-Date: 2024-05-19 10:11+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 24.02.2\n"
 
-#: discover/DiscoverObject.cpp:173
+#: discover/DiscoverObject.cpp:176
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -26,7 +26,7 @@ msgstr ""
 "%1 не е конфигуриран за инсталиране на приложения чрез Discover-само добавки "
 "за приложение"
 
-#: discover/DiscoverObject.cpp:175
+#: discover/DiscoverObject.cpp:178
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -37,24 +37,33 @@ msgstr ""
 "За да използвате Discover за приложения, инсталирайте предпочитания модул в "
 "<interface>Настройки</interface>, <interface>Липсващ бекенд</interface>."
 
-#: discover/DiscoverObject.cpp:178
+#: discover/DiscoverObject.cpp:181
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Докладвайте този проблем на %1"
 
-#: discover/DiscoverObject.cpp:183
-#, kde-kuit-format
+#: discover/DiscoverObject.cpp:186
+#, fuzzy, kde-kuit-format
+#| msgctxt ""
+#| "@info:usagetip %1 is the distro name; in this case it always contains "
+#| "'Arch Linux'"
+#| msgid ""
+#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
+#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
+#| "archlinux.org/title/"
+#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
+#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
+#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
+#| "packaging for Discover</link>"
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
 msgid ""
 "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-"title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-"archlinux.org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</"
-"link> using the <command>pacman</command> package manager.<nl/><nl/> Review "
-"<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-"packaging for Discover</link>"
+"title/Flatpak#Installation'>Flatpak</link> using the <command>pacman</"
+"command> package manager.<nl/><nl/> Review <link url='https://archlinux.org/"
+"packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 "За да използвате Discover за приложения, инсталирайте <link url='https://"
 "wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> или <link "
@@ -64,17 +73,29 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 пакетиране за "
 "Discover</link>"
 
-#: discover/DiscoverObject.cpp:274
+#: discover/DiscoverObject.cpp:199
+#, kde-kuit-format
+msgctxt "@info:usagetip %1 is the distro name"
+msgid ""
+"Support for managing packages from %1 is incomplete; you may experience any "
+"number of problems. Do not report bugs to KDE. It is highly recommended to "
+"uninstall the <resource>packagekit-qt6</resource> package and use Discover "
+"only to manage Flatpaks, Snaps, and Add-Ons.<para>%1 maintainers recommended "
+"instead using the <command>pacman</command> command-line tool to manage "
+"packages.</para>"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:287
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Неуспешно намиране на категория \"%1\""
 
-#: discover/DiscoverObject.cpp:289
+#: discover/DiscoverObject.cpp:302
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Опитва се отваряне на несъществуващ файл \"%1\""
 
-#: discover/DiscoverObject.cpp:311
+#: discover/DiscoverObject.cpp:324
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -83,17 +104,17 @@ msgstr ""
 "Не може да взаимодейства с ресурси на flatpak без бекенда %1 на flatpak."
 "Моля, първо го инсталирайте."
 
-#: discover/DiscoverObject.cpp:315
+#: discover/DiscoverObject.cpp:328
 #, kde-format
 msgid "Could not open %1"
 msgstr "Не може да се зареди %1"
 
-#: discover/DiscoverObject.cpp:377
+#: discover/DiscoverObject.cpp:390
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Моля, уверете се, че поддръжка за Snap е инсталирана"
 
-#: discover/DiscoverObject.cpp:380
+#: discover/DiscoverObject.cpp:393
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -101,23 +122,23 @@ msgid ""
 msgstr ""
 "Не може да се отвори %1, защото не е намерен в наличните софтуерни хранилища."
 
-#: discover/DiscoverObject.cpp:384
+#: discover/DiscoverObject.cpp:397
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr " Моля, докладвайте този проблем на вашата дистрибуция."
 
-#: discover/DiscoverObject.cpp:387
+#: discover/DiscoverObject.cpp:400
 #, kde-format
 msgid "Report This Issue"
 msgstr "Докладвайте този проблем"
 
-#: discover/DiscoverObject.cpp:449 discover/DiscoverObject.cpp:451
+#: discover/DiscoverObject.cpp:462 discover/DiscoverObject.cpp:464
 #: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:452
+#: discover/DiscoverObject.cpp:465
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

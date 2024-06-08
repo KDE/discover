@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-24 00:40+0000\n"
+"POT-Creation-Date: 2024-06-08 00:40+0000\n"
 "PO-Revision-Date: 2024-05-23 15:06+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 22.04.3\n"
 
-#: discover/DiscoverObject.cpp:173
+#: discover/DiscoverObject.cpp:176
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -27,7 +27,7 @@ msgstr ""
 "%1 er ekki grunnstillt til að setja upp forrit í gegnum Discover—einungis "
 "forritaviðbætur"
 
-#: discover/DiscoverObject.cpp:175
+#: discover/DiscoverObject.cpp:178
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -39,24 +39,33 @@ msgstr ""
 "síðunni <interface>Stillingar</interface>, undir<interface>Bakendar sem "
 "vantar</interface>."
 
-#: discover/DiscoverObject.cpp:178
+#: discover/DiscoverObject.cpp:181
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Tilkynna vandamálið til %1"
 
-#: discover/DiscoverObject.cpp:183
-#, kde-kuit-format
+#: discover/DiscoverObject.cpp:186
+#, fuzzy, kde-kuit-format
+#| msgctxt ""
+#| "@info:usagetip %1 is the distro name; in this case it always contains "
+#| "'Arch Linux'"
+#| msgid ""
+#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
+#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
+#| "archlinux.org/title/"
+#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
+#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
+#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
+#| "packaging for Discover</link>"
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
 msgid ""
 "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-"title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-"archlinux.org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</"
-"link> using the <command>pacman</command> package manager.<nl/><nl/> Review "
-"<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-"packaging for Discover</link>"
+"title/Flatpak#Installation'>Flatpak</link> using the <command>pacman</"
+"command> package manager.<nl/><nl/> Review <link url='https://archlinux.org/"
+"packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 "Til að nota Discover fyrir forrit skaltu setja upp <link url='https://wiki."
 "archlinux.org/title/Flatpak#Installation'>Flatpak</link> eða <link "
@@ -66,17 +75,29 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>pakka fyrir "
 "Discover frá %1</link>"
 
-#: discover/DiscoverObject.cpp:274
+#: discover/DiscoverObject.cpp:199
+#, kde-kuit-format
+msgctxt "@info:usagetip %1 is the distro name"
+msgid ""
+"Support for managing packages from %1 is incomplete; you may experience any "
+"number of problems. Do not report bugs to KDE. It is highly recommended to "
+"uninstall the <resource>packagekit-qt6</resource> package and use Discover "
+"only to manage Flatpaks, Snaps, and Add-Ons.<para>%1 maintainers recommended "
+"instead using the <command>pacman</command> command-line tool to manage "
+"packages.</para>"
+msgstr ""
+
+#: discover/DiscoverObject.cpp:287
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Fann ekki flokk '%1'"
 
-#: discover/DiscoverObject.cpp:289
+#: discover/DiscoverObject.cpp:302
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Reyni að opna skrá '%1' sem er ekki til"
 
-#: discover/DiscoverObject.cpp:311
+#: discover/DiscoverObject.cpp:324
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -85,17 +106,17 @@ msgstr ""
 "Get ekki átt samskipti við flatpak-uppsprettur án flatpak-bakenda %1. Settu "
 "hann upp fyrst."
 
-#: discover/DiscoverObject.cpp:315
+#: discover/DiscoverObject.cpp:328
 #, kde-format
 msgid "Could not open %1"
 msgstr "Gat ekki opnað %1"
 
-#: discover/DiscoverObject.cpp:377
+#: discover/DiscoverObject.cpp:390
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Gakktu úr skugga um að stuðningur við Snap sé uppsettur"
 
-#: discover/DiscoverObject.cpp:380
+#: discover/DiscoverObject.cpp:393
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -103,25 +124,25 @@ msgid ""
 msgstr ""
 "Gat ekki opnað %1 því það fannst ekki í neinum tiltækum hugbúnaðarsöfnum."
 
-#: discover/DiscoverObject.cpp:384
+#: discover/DiscoverObject.cpp:397
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 "Sendu tilkynningu um vandamálið til þeirra sem sjá um pökkun hjá "
 "dreifingaraðila þínum."
 
-#: discover/DiscoverObject.cpp:387
+#: discover/DiscoverObject.cpp:400
 #, kde-format
 msgid "Report This Issue"
 msgstr "Tilkynna vandamálið"
 
-#: discover/DiscoverObject.cpp:449 discover/DiscoverObject.cpp:451
+#: discover/DiscoverObject.cpp:462 discover/DiscoverObject.cpp:464
 #: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:452
+#: discover/DiscoverObject.cpp:465
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
