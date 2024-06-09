@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-30 02:35+0000\n"
-"PO-Revision-Date: 2024-02-18 14:29+0000\n"
+"PO-Revision-Date: 2024-06-08 16:05+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -933,11 +933,10 @@ msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "Nu s-a putut găsi „%1” în „%2”, asigurați-vă că e disponibil."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "Depozitul nu e disponibil"
+msgstr "Înlocuire disponibilă"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-kuit-format
@@ -948,6 +947,8 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
+"<resource>%1</resource> nu mai primește actualizări.<nl/><nl/>Înlocuiți cu "
+"versiunea ce beneficiază de suport oferită de <resource>%2</resource>?"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
@@ -2414,11 +2415,12 @@ msgstr "Se caută o actualizare de sistem"
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"Se descarcă actualizarea de sistem. Aveți răbdare, progresul nu e raportat."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
-msgstr ""
+msgstr "Se actualizează sistemul. Aveți răbdare, progresul nu e raportat."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2426,6 +2428,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"Se actualizează la următoarea versiune majoră. Aveți răbdare, progresul nu e "
+"raportat."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
