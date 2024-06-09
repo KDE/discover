@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-08 00:40+0000\n"
-"PO-Revision-Date: 2024-05-19 05:24+0200\n"
+"PO-Revision-Date: 2024-06-08 08:05+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: discover/DiscoverObject.cpp:176
 #, kde-format
@@ -45,18 +45,7 @@ msgid "Report This Issue to %1"
 msgstr "ამ პრობლემის გადაგზავნა %1-სთვის"
 
 #: discover/DiscoverObject.cpp:186
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -67,12 +56,10 @@ msgid ""
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 "Discover-ის აპებისთვის გამოსაყენებლად, დააყენეთ <link url='https://wiki."
-"archlinux.org/title/Flatpak#Installation'>Flatpak</link> ან <link "
-"url='https://wiki.archlinux.org/title/"
-"KDE#Discover_does_not_show_any_applications'>PackageKit</link> "
-"<command>pacman</command> პაკეტების მმართველის გამოყენებით.<nl/><nl/> "
-"გადახედეთ <link url='https://archlinux.org/packages/extra/x86_64/discover/'>"
-"%1-ის პაკეტს Discover-სთვის</link>"
+"archlinux.org/title/Flatpak#Installation'>Flatpak</link> <command>pacman</"
+"command> პაკეტების მმართველის ბრძანების სტრიქონის ინტერფეისით.<nl/><nl/> "
+"გადაავლეთ თვალი ბმულს <link url='https://archlinux.org/packages/extra/x86_64/"
+"discover/'>%1-ის პაკეტებისთვის Discover-ისთვის</link>"
 
 #: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
@@ -85,6 +72,12 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"%1-დან პაკეტების მართვის მხარდაჭერა დაუსრულებელია და შეიძლება, პრობლემებს "
+"წააწყდეთ. ნუ მისწერთ პრობლემების შესახებ KDE-ს. გირჩევთ, წაშალოთ პაკეტი "
+"<resource>packagekit-qt6</resource> და გამოიყენოთ Discover, რომ მართოთ "
+"Flatpak, Snap და დამატების პაკეტები.<para>%1-ის პროგრამისტები გირჩევენ, "
+"<command>pacman</command>-ის ბრძანების სტრქონის ბრძანებების გამოყენებას "
+"პაკეტების სამართავად.</para>"
 
 #: discover/DiscoverObject.cpp:287
 #, kde-format

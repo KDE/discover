@@ -2,22 +2,23 @@
 # Copyright (C) 2012-2024 This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Orestes Mas <orestes@tsc.upc.edu>, 2012.
 # SPDX-FileCopyrightText: 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
+# Orestes Mas <orestes@tsc.upc.edu>, 2012.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Josep M. Ferrer <txemaq@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-08 00:40+0000\n"
-"PO-Revision-Date: 2024-05-18 08:20+0200\n"
+"PO-Revision-Date: 2024-06-08 10:44+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -49,18 +50,7 @@ msgid "Report This Issue to %1"
 msgstr "Informeu del problema a %1"
 
 #: discover/DiscoverObject.cpp:186
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -71,12 +61,10 @@ msgid ""
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 "Per a utilitzar Discover per a les aplicacions, instal·leu <link "
-"url='https://wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> o "
-"<link url='https://wiki.archlinux.org/title/"
-"KDE#Discover_does_not_show_any_applications'>PackageKit</link> fent servir "
-"el gestor de paquets <command>pacman</command>.<nl/><nl/> Reviseu el <link "
-"url='https://archlinux.org/packages/extra/x86_64/discover/'>sistema de "
-"paquets de %1 per a Discover</link>"
+"url='https://wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> "
+"fent servir el gestor de paquets <command>pacman</command>.<nl/><nl/> "
+"Reviseu el <link url='https://archlinux.org/packages/extra/x86_64/"
+"discover/'>sistema de paquets de %1 per a Discover</link>"
 
 #: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
@@ -89,6 +77,13 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"El suport per a gestionar paquets des de %1 no està complet; podeu "
+"experimentar un nombre indeterminat de problemes. No informeu d'errors a "
+"KDE. És molt recomanable desinstal·lar el paquet <resource>packagekit-qt6</"
+"resource> i utilitzar Discover només per a gestionar Flatpak, Snaps i "
+"complements.<para>En el seu lloc, els mantenidors de %1recomanen utilitzar "
+"l'eina <command>pacman</command> de la línia d'ordres per a gestionar "
+"paquets.</para>"
 
 #: discover/DiscoverObject.cpp:287
 #, kde-format

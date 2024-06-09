@@ -43,18 +43,7 @@ msgid "Report This Issue to %1"
 msgstr "报告此问题给 %1"
 
 #: discover/DiscoverObject.cpp:186
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -64,12 +53,6 @@ msgid ""
 "command> package manager.<nl/><nl/> Review <link url='https://archlinux.org/"
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
-"要使用 Discover 安装应用，请通过 <command>pacman</command> 软件包管理器安装 "
-"<link url='https://wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</"
-"link> 或者 <link url='https://wiki.archlinux.org/title/"
-"KDE#Discover_does_not_show_any_applications'>PackageKit</link><nl/><nl/> 为 "
-"Discover 检查 <link url='https://archlinux.org/packages/extra/x86_64/"
-"discover/'>%1 的打包情况</link>"
 
 #: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
