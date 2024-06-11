@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-04 00:39+0000\n"
+"POT-Creation-Date: 2024-06-11 00:40+0000\n"
 "PO-Revision-Date: 2021-09-26 16:02+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Malayalam <https://kde.smc.org.in/projects/discover/plasma-"
@@ -19,69 +19,69 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Weblate 4.7.2\n"
 
-#: notifier/DiscoverNotifier.cpp:155
+#: notifier/DiscoverNotifier.cpp:167
 #, kde-format
 msgid "View Updates"
 msgstr "അപ്ഡേറ്റുകൾ കാണുക"
 
-#: notifier/DiscoverNotifier.cpp:267
+#: notifier/DiscoverNotifier.cpp:279
 #, kde-format
 msgid "Security updates available"
 msgstr "സുരക്ഷാ അപ്ഡേറ്റുകൾ ലഭ്യമാണ്"
 
-#: notifier/DiscoverNotifier.cpp:269
+#: notifier/DiscoverNotifier.cpp:281
 #, kde-format
 msgid "Updates available"
 msgstr "അപ്ഡേറ്റുകൾ ലഭ്യമാണ്"
 
-#: notifier/DiscoverNotifier.cpp:271
+#: notifier/DiscoverNotifier.cpp:283
 #, kde-format
 msgid "System up to date"
 msgstr "സിസ്റ്റം കാലികമാണ്"
 
-#: notifier/DiscoverNotifier.cpp:273
+#: notifier/DiscoverNotifier.cpp:285
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "കമ്പ്യൂട്ടർ പുനരാരംഭിക്കേണ്ടതുണ്ട്"
 
-#: notifier/DiscoverNotifier.cpp:275
+#: notifier/DiscoverNotifier.cpp:287
 #, kde-format
 msgid "Offline"
 msgstr "ഓഫ്‌ലൈൻ"
 
-#: notifier/DiscoverNotifier.cpp:277
+#: notifier/DiscoverNotifier.cpp:289
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:301
+#: notifier/DiscoverNotifier.cpp:314
 #, kde-format
 msgid "Restart is required"
 msgstr "പുനരാരംഭിക്കേണ്ടത് ആവശ്യമാണ്"
 
-#: notifier/DiscoverNotifier.cpp:302
+#: notifier/DiscoverNotifier.cpp:315
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "അപ്ഡേറ്റുകൾ പ്രാബല്യത്തിൽ വരുന്നതിന് സിസ്റ്റം പുനരാരംഭിക്കേണ്ടതുണ്ട്."
 
-#: notifier/DiscoverNotifier.cpp:307
+#: notifier/DiscoverNotifier.cpp:320
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "പുനരാരംഭിക്കുക"
 
-#: notifier/DiscoverNotifier.cpp:332
+#: notifier/DiscoverNotifier.cpp:345
 #, kde-format
 msgid "Upgrade available"
 msgstr "അപ്ഗ്രേഡ് ലഭ്യമാണ്"
 
-#: notifier/DiscoverNotifier.cpp:333
+#: notifier/DiscoverNotifier.cpp:346
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:336
+#: notifier/DiscoverNotifier.cpp:349
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"

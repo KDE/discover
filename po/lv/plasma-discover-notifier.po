@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-04 00:39+0000\n"
+"POT-Creation-Date: 2024-06-11 00:40+0000\n"
 "PO-Revision-Date: 2024-01-25 12:14+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -18,69 +18,69 @@ msgstr ""
 "2);\n"
 "X-Generator: Lokalize 23.08.4\n"
 
-#: notifier/DiscoverNotifier.cpp:155
+#: notifier/DiscoverNotifier.cpp:167
 #, kde-format
 msgid "View Updates"
 msgstr "Skatīt atjauninājumus"
 
-#: notifier/DiscoverNotifier.cpp:267
+#: notifier/DiscoverNotifier.cpp:279
 #, kde-format
 msgid "Security updates available"
 msgstr "Ir pieejami drošības atjauninājumi"
 
-#: notifier/DiscoverNotifier.cpp:269
+#: notifier/DiscoverNotifier.cpp:281
 #, kde-format
 msgid "Updates available"
 msgstr "Ir pieejami atjauninājumi"
 
-#: notifier/DiscoverNotifier.cpp:271
+#: notifier/DiscoverNotifier.cpp:283
 #, kde-format
 msgid "System up to date"
 msgstr "Sistēma ir atjaunināta"
 
-#: notifier/DiscoverNotifier.cpp:273
+#: notifier/DiscoverNotifier.cpp:285
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Dators ir jāpārstartē"
 
-#: notifier/DiscoverNotifier.cpp:275
+#: notifier/DiscoverNotifier.cpp:287
 #, kde-format
 msgid "Offline"
 msgstr "Bezsaistē"
 
-#: notifier/DiscoverNotifier.cpp:277
+#: notifier/DiscoverNotifier.cpp:289
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Tiek pielietoti nepieskatītie atjauninājumi..."
 
-#: notifier/DiscoverNotifier.cpp:301
+#: notifier/DiscoverNotifier.cpp:314
 #, kde-format
 msgid "Restart is required"
 msgstr "Nepieciešams pārstartēt"
 
-#: notifier/DiscoverNotifier.cpp:302
+#: notifier/DiscoverNotifier.cpp:315
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Sistēma ir jāpārstartē, lai atjauninājumi stātos spēkā."
 
-#: notifier/DiscoverNotifier.cpp:307
+#: notifier/DiscoverNotifier.cpp:320
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Pārstartēt"
 
-#: notifier/DiscoverNotifier.cpp:332
+#: notifier/DiscoverNotifier.cpp:345
 #, kde-format
 msgid "Upgrade available"
 msgstr "Pieejams uzlabojums"
 
-#: notifier/DiscoverNotifier.cpp:333
+#: notifier/DiscoverNotifier.cpp:346
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "Pieejama operētājsistēma „%1“."
 
-#: notifier/DiscoverNotifier.cpp:336
+#: notifier/DiscoverNotifier.cpp:349
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
