@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-30 00:39+0000\n"
-"PO-Revision-Date: 2024-05-17 14:29+0300\n"
+"PO-Revision-Date: 2024-06-08 21:02+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -952,11 +952,10 @@ msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "Не удалось найти «%1» в «%2»: проверьте, что файл доступен."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "Репозиторий недоступен."
+msgstr "Доступна замена"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-kuit-format
@@ -967,6 +966,8 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
+"Обновления пакета <resource>%1</resource> более доступны.<nl/><nl/> Заменить "
+"его пакетом, <resource>%2</resource>, который продолжает поддерживаться?"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
