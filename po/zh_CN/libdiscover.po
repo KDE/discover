@@ -1165,7 +1165,7 @@ msgstr "内存不足"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:20
 #, kde-format
 msgid "No network connection available"
-msgstr "无可用网络连接"
+msgstr "没有可用的网络连接"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:22
 #, kde-format
@@ -1250,7 +1250,7 @@ msgstr "安装进程已取消"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:57
 #, kde-format
 msgid "No Cache available"
-msgstr "无可用缓存"
+msgstr "没有可用的缓存"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:59
 #, kde-format
