@@ -374,6 +374,20 @@ QString info(PackageKit::Transaction::Info info)
         return i18n("Trusted");
     case PackageKit::Transaction::InfoUnavailable:
         return i18n("Unavailable");
+#ifdef QPK_CHECK_VERSION
+#if QPK_CHECK_VERSION(1, 1, 2)
+    case PackageKit::Transaction::InfoCritical:
+        return i18n("Critical");
+    case PackageKit::Transaction::InfoInstall:
+        return i18n("Install");
+    case PackageKit::Transaction::InfoRemove:
+        return i18n("Remove");
+    case PackageKit::Transaction::InfoObsolete:
+        return i18n("Obsolete");
+    case PackageKit::Transaction::InfoDowngrade:
+        return i18n("Downgrade");
+#endif
+#endif
     }
     return {};
 }
