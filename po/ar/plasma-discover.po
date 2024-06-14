@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-08 00:40+0000\n"
-"PO-Revision-Date: 2024-05-25 16:36+0400\n"
+"PO-Revision-Date: 2024-06-13 09:08+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
-"Language-Team: \n"
+"Language-Team: ar\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: discover/DiscoverObject.cpp:176
 #, kde-format
@@ -46,18 +47,7 @@ msgid "Report This Issue to %1"
 msgstr "أبلغ عن هذه المشكلة إلى %1"
 
 #: discover/DiscoverObject.cpp:186
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -68,11 +58,9 @@ msgid ""
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 "لتستخدم المستكشف للتطبيقات؛ ثبت <link url='https://wiki.archlinux.org/title/"
-"Flatpak#Installation'>Flatpak</link> أو <link url='https://wiki.archlinux."
-"org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</link> "
-"باستخدام مدير الحزم <command>pacman</command>.<nl/><nl/> راجع <link "
-"url='https://archlinux.org/packages/extra/x86_64/discover/'>حزم %1 للمستكشف "
-"</link>"
+"Flatpak#Installation'>Flatpak</link> باستخدام مدير الحزم <command>pacman</"
+"command>.<nl/><nl/> راجع <link url='https://archlinux.org/packages/extra/"
+"x86_64/discover/'>حزم %1 للمستكشف </link>"
 
 #: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
@@ -85,6 +73,11 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"دعم إدارة الحزم من %1 غير مكتمل؛ قد تواجه عدة مشاكل. لا تبلغ عن الأخطاء إلى "
+"كيدي. يوصى بشدة بإلغاء تثبيت الحزمة <resource>packagekit-qt6</resource> "
+"واستخدام المستكشف فقط لإدارة Flatpaks وSnaps والوظائف الإضافية.<para>أوصى "
+"مشرفو %1 بدلاً من ذلك باستخدام أداة سطر الأوامر <command>pacman</command> "
+"لإدارة الحزم.</para>"
 
 #: discover/DiscoverObject.cpp:287
 #, kde-format
