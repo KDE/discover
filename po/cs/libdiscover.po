@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-30 02:35+0000\n"
-"PO-Revision-Date: 2024-04-30 15:51+0200\n"
+"PO-Revision-Date: 2024-05-29 11:26+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -905,7 +905,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr ""
+msgstr "Je dostupná náhrada"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-kuit-format
