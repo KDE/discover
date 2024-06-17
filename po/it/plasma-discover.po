@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-08 00:40+0000\n"
-"PO-Revision-Date: 2024-05-18 22:06+0200\n"
+"PO-Revision-Date: 2024-06-09 10:44+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #: discover/DiscoverObject.cpp:176
 #, kde-format
@@ -47,18 +47,7 @@ msgid "Report This Issue to %1"
 msgstr "Segnala questo problema a %1"
 
 #: discover/DiscoverObject.cpp:186
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -69,12 +58,10 @@ msgid ""
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 "Per utilizzare Discover per le applicazioni, installa <link url='https://"
-"wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> o <link "
-"url='https://wiki.archlinux.org/title/"
-"KDE#Discover_does_not_show_any_applications'>PackageKit</link> utilizzando "
-"il gestore dei pacchetti <command>pacman</command>.<nl/><nl/> Esamina il "
-"pacchetto <link url='https://archlinux.org/packages/extra/x86_64/discover/'>"
-"%1 per Discover</link>"
+"wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> utilizzando il "
+"gestore di pacchetti <command>pacman</command>.<nl/><nl/> Rivedi <link "
+"url='https://archlinux.org/packages/extra/x86_64/"
+"discover/'>pacchettizzazione di %1 per Discover</link>"
 
 #: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
@@ -87,6 +74,13 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"Il supporto per la gestione dei pacchetti da %1 è incompleto; potresti "
+"riscontrare un numero qualsiasi di problemi. Non segnalare bug a KDE. "
+"Consigliamo vivamente di disinstallare il pacchetto <resource>packagekit-"
+"qt6</resource> e di utilizzare Discover solo per gestire Flatpak, Snap e "
+"componenti aggiuntivi.<para>I responsabili di %1 consigliano invece di "
+"utilizzare lo strumento da riga di comando <command>pacman</command> per "
+"gestire i pacchetti.</para>"
 
 #: discover/DiscoverObject.cpp:287
 #, kde-format

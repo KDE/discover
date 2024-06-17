@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-30 00:39+0000\n"
-"PO-Revision-Date: 2024-06-05 07:00\n"
+"PO-Revision-Date: 2024-06-13 20:10\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
 "Language: be\n"
@@ -939,7 +939,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr ""
+msgstr "Даступна замена"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-kuit-format
@@ -950,6 +950,8 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
+"<resource>%1</resource> больш не атрымлівае абнаўленні.<nl/><nl/>Замяніць "
+"яго версіяй, якая падтрымліваецца <resource>%2</resource>?"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
@@ -2420,11 +2422,14 @@ msgstr "Правяранне наяўнасці абнаўлення сістэ�
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"Спампоўванне абнаўлення сістэмы. Будзьце цярплівымі, бо ход выканання не "
+"паказваецца."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
+"Абнаўленне сістэмы. Будзьце цярплівымі, бо ход выканання не паказваецца."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2432,6 +2437,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"Абнаўленне да наступнай асноўнай версіі. Будзьце цярплівымі, бо ход "
+"выканання не паказваецца."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-08 00:40+0000\n"
-"PO-Revision-Date: 2024-05-25 13:29+0200\n"
+"PO-Revision-Date: 2024-06-16 10:17+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: discover/DiscoverObject.cpp:176
 #, kde-format
@@ -46,18 +47,7 @@ msgid "Report This Issue to %1"
 msgstr "Zgłoś ten błąd do %1"
 
 #: discover/DiscoverObject.cpp:186
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -68,12 +58,10 @@ msgid ""
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 "Aby móc używać Odkrywcy dla aplikacji, wgraj <link url='https://wiki."
-"archlinux.org/title/Flatpak#Installation'>Flatpak</link> lub <link "
-"url='https://wiki.archlinux.org/title/"
-"KDE#Discover_does_not_show_any_applications'>PackageKit</link>, używając "
-"programu do zarządzania pakietami <command>pacman</command>.<nl/><nl/> Oceń "
-"pakowanie <link url='https://archlinux.org/packages/extra/x86_64/discover/'>"
-"%1 dla Odkrywcy</link>"
+"archlinux.org/title/Flatpak#Installation'>Flatpak</link>, używając programu "
+"do zarządzania pakietami <command>pacman</command>.<nl/><nl/> Oceń pakowanie "
+"<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 dla "
+"Odkrywcy</link>"
 
 #: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
@@ -86,6 +74,11 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"Obsługa pakietów z %1 jest niepełna; stąd możesz napotkać wiele kłopotów. "
+"Nie zgłaszaj ich na KDE. Zalecamy usunięcie pakietu <resource>packagekit-"
+"qt6</resource> i użycie jedyne Discovera do zarządzania Flatpakami, Snapami "
+"oraz Dodatkami.<para>Opiekunowie %1 zamiast tego zalecają używanie narzędzia "
+"<command>pacman</command> z wiersza poleceń.</para>"
 
 #: discover/DiscoverObject.cpp:287
 #, kde-format

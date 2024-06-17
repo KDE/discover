@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-08 00:40+0000\n"
-"PO-Revision-Date: 2024-05-19 17:30+0530\n"
+"PO-Revision-Date: 2024-06-16 19:24+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.1\n"
 
 #: discover/DiscoverObject.cpp:176
 #, kde-format
@@ -44,18 +44,7 @@ msgid "Report This Issue to %1"
 msgstr "%1-க்கு இச்சிக்கலை தெரிவி"
 
 #: discover/DiscoverObject.cpp:186
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -66,11 +55,9 @@ msgid ""
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 "செயலிகளை டிஸ்கவர் மூலம் நிறுவ, <link url='https://wiki.archlinux.org/title/"
-"Flatpak#Installation'>Flatpak</link> அல்லது <link url='https://wiki.archlinux."
-"org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</link> "
-"போன்றவற்றை <command>pacman</command> தொகுப்பு மேலாளியால் நிறுவ‍வும்.<nl/><nl/"
-"><link url='https://archlinux.org/packages/extra/x86_64/"
-"discover/'>டிஸ்கவருக்கு %1 வழங்கும் தொகுப்பை</link> பார்க்கவும்."
+"Flatpak#Installation'>Flatpak</link> தனை <command>pacman</command> தொகுப்பு "
+"மேலாளியால் நிறுவ‍வும்.<nl/><nl/><link url='https://archlinux.org/packages/extra/"
+"x86_64/discover/'>டிஸ்கவருக்கு %1 வழங்கும் தொகுப்பை</link> பார்க்கவும்."
 
 #: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
