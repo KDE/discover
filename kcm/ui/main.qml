@@ -134,14 +134,14 @@ SimpleKCM {
                 leftPadding: offlineUpdatesOption.indicator.width
                 font: Kirigami.Theme.smallFont
             }
-        }
 
-        QQC2.RadioButton {
-            text: i18nc("@option:radio part of the logical sentence 'Apply system updates immediately'", "Immediately")
+            QQC2.RadioButton {
+                text: i18nc("@option:radio part of the logical sentence 'Apply system updates immediately'", "Immediately")
 
-            QQC2.ButtonGroup.group: offlineUpdatesGroup
-            enabled: !kcm.discoverSettings.isUseOfflineUpdatesImmutable
-            checked: !kcm.discoverSettings.useOfflineUpdates
+                QQC2.ButtonGroup.group: offlineUpdatesGroup
+                enabled: !kcm.discoverSettings.isUseOfflineUpdatesImmutable
+                checked: !kcm.discoverSettings.useOfflineUpdates
+            }
         }
 
         SettingStateBinding {
