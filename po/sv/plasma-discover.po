@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-24 00:40+0000\n"
-"PO-Revision-Date: 2024-06-09 13:25+0200\n"
+"PO-Revision-Date: 2024-06-16 19:48+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -23,7 +23,7 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"%1 är inte inställt för att installera applikationer via Discover, bara "
+"%1 är inte inställt för att installera applikationer via Upptäck, bara "
 "applikationstillägg"
 
 #: discover/DiscoverObject.cpp:175
@@ -34,8 +34,8 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
-"För att använda Discover för applikationer, installera modulen du föredrar "
-"på sidan <interface>Inställningar</interface>, under <interface>Saknade "
+"För att använda Upptäck för applikationer, installera modulen du föredrar på "
+"sidan <interface>Inställningar</interface>, under <interface>Saknade "
 "gränssnitt</interface>."
 
 #: discover/DiscoverObject.cpp:178
@@ -57,7 +57,7 @@ msgid ""
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
 "packaging for Discover</link>"
 msgstr ""
-"För att använda Discover för applikationer, installera <link url='https://"
+"För att använda Upptäck för applikationer, installera <link url='https://"
 "wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> eller <link "
 "url='https://wiki.archlinux.org/title/"
 "KDE#Discover_does_not_show_any_applications'>PackageKit</link> med "
@@ -117,7 +117,7 @@ msgstr "Rapportera problemet"
 #: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
-msgstr "Upptäck"
+msgstr "Discover"
 
 #: discover/DiscoverObject.cpp:452
 #, kde-format
@@ -1451,7 +1451,7 @@ msgstr "Tid för senaste uppdatering okänd"
 
 #~ msgid "Could not close Discover because some tasks are still in progress."
 #~ msgstr ""
-#~ "Kunde inte stänga Discover, eftersom vissa uppgifter fortfarande pågår."
+#~ "Kunde inte stänga Upptäck, eftersom vissa uppgifter fortfarande pågår."
 
 #~ msgid "Quit Anyway"
 #~ msgstr "Avsluta ändå"
@@ -1837,17 +1837,17 @@ msgstr "Tid för senaste uppdatering okänd"
 #~ msgstr "Hola"
 
 #~ msgid "Muon Discover"
-#~ msgstr "Muon upptäckt"
+#~ msgstr "Muon Upptäckt"
 
 #~ msgid ""
 #~ "Welcome to\n"
 #~ "Muon Discover!"
 #~ msgstr ""
 #~ "Välkommen till\n"
-#~ "Muon upptäckt"
+#~ "Muon Upptäckt"
 
 #~ msgid "Configure and learn about Muon Discover"
-#~ msgstr "Anpassning och information om Muon upptäckt"
+#~ msgstr "Anpassning och information om Muon Upptäckt"
 
 #~ msgid "points: %1"
 #~ msgstr "poäng: %1"

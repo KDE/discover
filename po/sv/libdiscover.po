@@ -566,7 +566,7 @@ msgid ""
 "the application is installed.</para>"
 msgstr ""
 "<para>Programmet kommer från \"%1\" (tillgängligt på <link>%2</link>). Annan "
-"programvara i arkivet blir också tillgänglig i Discover när programmet "
+"programvara i arkivet blir också tillgänglig i Upptäck när programmet "
 "installeras.</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:454
@@ -1956,7 +1956,7 @@ msgstr[1] ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
-msgstr "Öppna Discover"
+msgstr "Öppna Upptäck"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
 #, kde-format
@@ -2426,7 +2426,7 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "Åtgärd pågår (startad utanför Discover)"
+msgstr "Åtgärd pågår (startad utanför Upptäck)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:411
 #, kde-format
