@@ -158,8 +158,14 @@ DiscoverPage {
 
     Kirigami.CardsListView {
         id: appsView
+        footerPositioning: ListView.InlineFooter
         activeFocusOnTab: true
         currentIndex: -1
+        footer: Item {
+            id: appViewFooter
+            height: appsModel.busy ? Kirigami.Units.gridUnit * 8 : Kirigami.Units.gridUnit
+            width: parent.width
+        }
         onActiveFocusChanged: if (activeFocus && currentIndex === -1) {
             currentIndex = 0;
         }
@@ -254,28 +260,30 @@ DiscoverPage {
             text: i18n("Search")
         }
 
-        footer: ColumnLayout {
+        Item {
+            id: loadingHolder
+            parent: appsView.count === 0 ? appsView : appsView.footerItem
+            anchors.centerIn: parent
             visible: appsModel.busy && appsView.atYEnd
-            opacity: visible ? 0.5 : 0
-            height: visible ? Layout.preferredHeight : 0
-            width: appsView.width
-
-            Item {
-                Layout.preferredHeight: Kirigami.Units.gridUnit
-            }
-            Kirigami.Heading {
-                level: 2
-                Layout.alignment: Qt.AlignCenter
-                text: i18n("Still looking…")
-            }
-            QQC2.BusyIndicator {
-                running: parent.visible
-                Layout.alignment: Qt.AlignCenter
-                Layout.preferredWidth: Kirigami.Units.gridUnit * 4
-                Layout.preferredHeight: Kirigami.Units.gridUnit * 4
-            }
-            Behavior on opacity {
-                PropertyAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad }
+            ColumnLayout {
+                anchors.centerIn: parent
+                opacity: parent.visible ? 0.5 : 0
+                Kirigami.Heading {
+                    id: headingText
+                    Layout.alignment: Qt.AlignCenter
+                    level: 2
+                    text: i18n("Still looking…")
+                }
+                QQC2.BusyIndicator {
+                    id: busyIndicator
+                    Layout.alignment: Qt.AlignCenter
+                    running: parent.visible
+                    Layout.preferredWidth: Kirigami.Units.gridUnit * 4
+                    Layout.preferredHeight: Kirigami.Units.gridUnit * 4
+                }
+                Behavior on opacity {
+                    PropertyAnimation { duration: Kirigami.Units.longDuration; easing.type: Easing.InOutQuad }
+                }
             }
         }
     }
