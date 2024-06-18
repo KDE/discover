@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-30 00:39+0000\n"
+"POT-Creation-Date: 2024-06-18 00:40+0000\n"
 "PO-Revision-Date: 2012-06-13 11:10+0800\n"
 "Last-Translator: HeroP <herophuong93@gmail.com>\n"
 "Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
@@ -49,7 +49,7 @@ msgstr "Xuất bản"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
 #: libdiscover/UpdateModel/UpdateModel.cpp:122
-#: libdiscover/UpdateModel/UpdateModel.cpp:335
+#: libdiscover/UpdateModel/UpdateModel.cpp:342
 #, fuzzy, kde-format
 #| msgctxt "@info license"
 #| msgid "Unknown"
@@ -564,13 +564,13 @@ msgstr ""
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1887
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:815
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1888
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:816
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1992
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1993
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -583,12 +583,12 @@ msgstr ""
 "%2\n"
 "\n"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2113
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2114
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2117
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2118
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -1136,7 +1136,7 @@ msgstr ""
 msgid "Log in information for %1"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:238
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:244
 #, kde-format
 msgid "Cannot launch %1"
 msgstr ""
@@ -1172,12 +1172,12 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:922
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:923
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1009
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1187,7 +1187,7 @@ msgid ""
 "updates, and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1017
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
 #, fuzzy, kde-format
 #| msgctxt "@info:status Package state"
 #| msgid "Upgradeable"
@@ -1195,7 +1195,7 @@ msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Nâng cấp được"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1041
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, fuzzy, kde-format
 #| msgid "Available updates"
@@ -2712,13 +2712,20 @@ msgstr "Ứng dụng"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, fuzzy, kde-format
+#| msgid "Applications"
+msgctxt "@item:inlistbox"
+msgid "Application Support"
+msgstr "Ứng dụng"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:138
+#, fuzzy, kde-format
 #| msgctxt "@item:inlistbox Filters updates in the history view"
 #| msgid "Updates"
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "Bản cập nhật"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:138
+#: libdiscover/UpdateModel/UpdateModel.cpp:139
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"
@@ -2762,12 +2769,6 @@ msgstr ""
 #~| msgid "Applications"
 #~ msgctxt "Category"
 #~ msgid "Applications"
-#~ msgstr "Ứng dụng"
-
-#, fuzzy
-#~| msgid "Applications"
-#~ msgctxt "@item:inlistbox"
-#~ msgid "Application Updates"
 #~ msgstr "Ứng dụng"
 
 #, fuzzy

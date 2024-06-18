@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-30 00:39+0000\n"
+"POT-Creation-Date: 2024-06-18 00:40+0000\n"
 "PO-Revision-Date: 2014-07-06 22:08+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
 #: libdiscover/UpdateModel/UpdateModel.cpp:122
-#: libdiscover/UpdateModel/UpdateModel.cpp:335
+#: libdiscover/UpdateModel/UpdateModel.cpp:342
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section "
@@ -606,13 +606,13 @@ msgstr ""
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1887
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:815
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1888
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:816
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1992
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1993
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -625,12 +625,12 @@ msgstr ""
 "%2\n"
 "\n"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2113
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2114
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2117
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2118
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -1191,7 +1191,7 @@ msgstr ""
 msgid "Log in information for %1"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:238
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:244
 #, kde-format
 msgid "Cannot launch %1"
 msgstr ""
@@ -1231,12 +1231,12 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:922
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:923
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1009
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1246,7 +1246,7 @@ msgid ""
 "updates, and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1017
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
 #| msgid "Upgrade"
@@ -1254,7 +1254,7 @@ msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Opgraderen"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1041
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
@@ -2853,6 +2853,14 @@ msgstr "Steed"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, fuzzy, kde-format
+#| msgctxt "@title:column"
+#| msgid "Location"
+msgctxt "@item:inlistbox"
+msgid "Application Support"
+msgstr "Steed"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:138
+#, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section \"video"
 #| "\""
@@ -2861,7 +2869,7 @@ msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "Video-Programmen"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:138
+#: libdiscover/UpdateModel/UpdateModel.cpp:139
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"

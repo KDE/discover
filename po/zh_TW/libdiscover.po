@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-30 00:39+0000\n"
+"POT-Creation-Date: 2024-06-18 00:40+0000\n"
 "PO-Revision-Date: 2024-05-18 16:21+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -51,7 +51,7 @@ msgstr "公眾領域"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
 #: libdiscover/UpdateModel/UpdateModel.cpp:122
-#: libdiscover/UpdateModel/UpdateModel.cpp:335
+#: libdiscover/UpdateModel/UpdateModel.cpp:342
 #, kde-format
 msgid "Unknown"
 msgstr "未知"
@@ -544,23 +544,23 @@ msgstr "%1 (使用者)"
 msgid "Local bundle"
 msgstr "本機 Bundle"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1887
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:815
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1888
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:816
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正確的 appstream 網址 '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1992
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1993
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "新增來源「%1」失敗：%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2113
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2114
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "沒有 Flatpak 來源。"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2117
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2118
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "載入來源「%1」失敗"
@@ -1092,7 +1092,7 @@ msgstr "KDE Store"
 msgid "Log in information for %1"
 msgstr "%1 的登入資訊"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:238
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:244
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "無法啟動 %1"
@@ -1128,12 +1128,12 @@ msgid ""
 "version."
 msgstr "您的作業系統自 %1 起已不再受支援。請考慮更新到受支援的版本。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:922
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:923
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "無法移除 %1"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1009
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1145,13 +1145,13 @@ msgstr ""
 "<b>%1 現在已可使用。</b>\n"
 "要能更新到這個新版本，請先套用所有待處理更新並重新啟動。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1017
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "現在更新"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1041
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -2536,12 +2536,20 @@ msgid "Applications"
 msgstr "應用程式"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox"
+#| msgid "Application Updates"
+msgctxt "@item:inlistbox"
+msgid "Application Support"
+msgstr "應用程式更新"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "系統軟體"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:138
+#: libdiscover/UpdateModel/UpdateModel.cpp:139
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"
@@ -2616,10 +2624,6 @@ msgstr "附加功能"
 #~ msgctxt "origin (backend name)"
 #~ msgid "%1 (%2)"
 #~ msgstr "%1 (%2)"
-
-#~ msgctxt "@item:inlistbox"
-#~ msgid "Application Updates"
-#~ msgstr "應用程式更新"
 
 #~ msgctxt "@item:inlistbox"
 #~ msgid "System Updates"

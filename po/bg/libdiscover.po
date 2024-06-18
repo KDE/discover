@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-30 00:39+0000\n"
+"POT-Creation-Date: 2024-06-18 00:40+0000\n"
 "PO-Revision-Date: 2024-05-30 19:17+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -43,7 +43,7 @@ msgstr "Публичен домейн"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
 #: libdiscover/UpdateModel/UpdateModel.cpp:122
-#: libdiscover/UpdateModel/UpdateModel.cpp:335
+#: libdiscover/UpdateModel/UpdateModel.cpp:342
 #, kde-format
 msgid "Unknown"
 msgstr "Неизвестно"
@@ -536,23 +536,23 @@ msgstr "%1 (потребител)"
 msgid "Local bundle"
 msgstr "Локален пакет"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1887
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:815
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1888
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:816
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Неправилен URL адрес на потока на приложението \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1992
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1993
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Неуспешно добавяне на източник '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2113
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2114
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Няма източници на Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2117
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2118
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Неуспешно зареждане на източник '%1'"
@@ -1122,7 +1122,7 @@ msgstr "Магазин KDE"
 msgid "Log in information for %1"
 msgstr "Информация за влизане на %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:238
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:244
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Не може да се стартира %1"
@@ -1160,12 +1160,12 @@ msgstr ""
 "Поддръжката на вашата операционна система приключи на %1. Помислете за "
 "обновяване до поддържана версия."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:922
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:923
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Не може да се премахне \"%1\""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1009
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1178,13 +1178,13 @@ msgstr ""
 "За да можете да надградите до тази нова версия, приложетепреди това всички "
 "налични актуализации и рестартирайте системата."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1017
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Надграждане на системата сега"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1041
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -2623,12 +2623,19 @@ msgid "Applications"
 msgstr "Приложения"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
+#, fuzzy, kde-format
+#| msgid "Applications"
+msgctxt "@item:inlistbox"
+msgid "Application Support"
+msgstr "Приложения"
+
+#: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "Системен софтуер"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:138
+#: libdiscover/UpdateModel/UpdateModel.cpp:139
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"
