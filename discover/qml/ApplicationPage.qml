@@ -37,6 +37,8 @@ DiscoverPage {
 
     readonly property bool isOfflineUpgrade: application.packageName === "discover-offline-upgrade"
 
+    readonly property int smallButtonSize: Kirigami.Units.iconSizes.small + (Kirigami.Units.smallSpacing * 2)
+
     ReviewsPage {
         id: reviewsSheet
         parent: appInfo.QQC2.Overlay.overlay
@@ -351,7 +353,9 @@ DiscoverPage {
                                 }
 
                                 // Button to open "What's the risk of proprietary software?" sheet
-                                QQC2.ToolButton {
+                                QQC2.Button {
+                                    Layout.preferredWidth: appInfo.smallButtonSize
+                                    Layout.preferredHeight: appInfo.smallButtonSize
                                     visible: !delegate.modelData.hasFreedom
                                     icon.name: "help-contextual"
                                     onClicked: properietarySoftwareRiskExplanationDialog.open();
@@ -405,7 +409,9 @@ DiscoverPage {
                         }
 
                         // Button to open the content rating details dialog
-                        QQC2.ToolButton {
+                        QQC2.Button {
+                            Layout.preferredWidth: appInfo.smallButtonSize
+                            Layout.preferredHeight: appInfo.smallButtonSize
                             visible: appInfo.application.contentRatingDescription.length > 0
                             icon.name: "help-contextual"
                             text: i18n("See details")
