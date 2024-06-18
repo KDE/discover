@@ -208,7 +208,7 @@
     <p xml:lang="sa">डिस्कवर् इत्यनेन भवान् बहुभ्यः स्रोतेभ्यः तन्त्रांशं प्रबन्धयितुं शक्नोति, यत्र स्वस्य प्रचालन प्रणाली इत्यस्य तन्त्रांश भण्डारः, फ्लैटपैक् भण्डाराः, स्नैप स्टोर, अथवा store.kde.org तः एपइमेजेज अपि सन्ति.</p>
     <p xml:lang="sk">S Discover môžete spravovať softvér z viacerých zdrojov vrátane úložiska softvéru vášho operačného systému, úložiska Flatpak, úložiska Snap alebo dokonca AppImages z obchodu store.kde.org.</p>
     <p xml:lang="sl">S programom Discover lahko upravljate programsko opremo iz več virov, vključno s svojo shrambo programske opreme operacijskega sistema, programske pakete Flatpak, trgovina Snap ali celo programe AppImages iz store.kde.org.</p>
-    <p xml:lang="sv">Man kan hantera programvara från flera olika källor med Discover, inklusive operativsystemets programvaruarkiv, Flatpak-arkiv, Snap-butiken eller till och med programavbilder från store.kde.org.</p>
+    <p xml:lang="sv">Man kan hantera programvara från flera olika källor med Upptäck, inklusive operativsystemets programvaruarkiv, Flatpak-arkiv, Snap-butiken eller till och med programavbilder från store.kde.org.</p>
     <p xml:lang="tg">Ба воситаи Кашфиёт шумо метавонед нармафзорро аз якчанд манбаъ идора намоед, аз он ҷумла тавассути анбори додаҳои нармафзори низоми шумо, анборҳои додаҳои Flatpak, дукони Snap ё ҳатто файлҳои AppImages аз сомонаи store.kde.org.</p>
     <p xml:lang="tr">Keşfet ile işletim sisteminizin yazılım deposu, Flatpak depoları, Snap mağazası ve hatta store.kde.org’dan AppImages dahil olmak üzere birden çok kaynaktan gelen yazılımı yönetebilirsiniz.</p>
     <p xml:lang="uk">За допомогою Discover ви можете керувати програмним забезпеченням із багатьох джерел, зокрема зі сховищ програмного забезпечення вашої операційної системи, зі сховищ Flatpak, із крамниці Snap або навіть із образів AppImage з store.kde.org.</p>
@@ -258,7 +258,7 @@
     <p xml:lang="sa">अन्ते, डिस्कवर् भवन्तं प्लाज्मा तथा च भवतः सर्वेषां प्रिय KDE अनुप्रयोगानाम् कृते ऐड-ऑन् अन्वेष्टुं, संस्थापयितुं, प्रबन्धयितुं च अनुमतिं ददाति!</p>
     <p xml:lang="sk">Konečne aplikácia Discover tiež umožňuje nájsť, nainštalovať a spravovať doplnky pre Plasmu a všetky vaše obľúbené aplikácie prostredia KDE!</p>
     <p xml:lang="sl">Končno Discover vam omogoča iskanje, namestitev in upravljanje dodatkov za Plazma in vse vaše najljubše programe za KDE!</p>
-    <p xml:lang="sv">Slutligen låter Discovery dig söka efter, installera och hantera tilläggsprogram för Plasma och alla favoritprogram i KDE.</p>
+    <p xml:lang="sv">Slutligen låter Upptäck dig söka efter, installera och hantera tilläggsprogram för Plasma och alla favoritprogram i KDE.</p>
     <p xml:lang="tg">Дар охир, Кашфиёт ба шумо барои ёфтан, насб ва идора кардани барномаҳои иловагӣ барои Плазма ва ҳамаи барномаҳои пазируфтаи шумо аз KDE имкон медиҳад!</p>
     <p xml:lang="tr">Son olarak Keşfet; Plasma ve tüm favori KDE uygulamalarınız için eklentiler bulmanıza, kurmanıza ve yönetmenize de olanak tanır!</p>
     <p xml:lang="uk">Нарешті, Discover надає вам змогу шукати, встановлювати додатки до Плазми та усі ваші улюблені програми KDE та керувати ними!</p>
@@ -315,7 +315,7 @@
       <caption xml:lang="sa">प्लाज्मा डिस्कवर्</caption>
       <caption xml:lang="sk">Plasma Discover</caption>
       <caption xml:lang="sl">Plasma Discover</caption>
-      <caption xml:lang="sv">Plasma Discover</caption>
+      <caption xml:lang="sv">Plasma Upptäck</caption>
       <caption xml:lang="ta">பிளாஸ்மா டிஸ்கவர்</caption>
       <caption xml:lang="tg">Кашфиёти Плазма</caption>
       <caption xml:lang="tr">Plasma Keşfet</caption>
