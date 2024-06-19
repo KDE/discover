@@ -27,6 +27,11 @@ AlpineApkReviewsBackend::AlpineApkReviewsBackend(AlpineApkBackend *parent)
 {
 }
 
+Rating AlpineApkReviewsBackend::ratingForApplication(AbstractResource *) const
+{
+    return Rating();
+}
+
 void AlpineApkReviewsBackend::fetchReviews(AbstractResource *app, int page)
 {
     Q_UNUSED(page)

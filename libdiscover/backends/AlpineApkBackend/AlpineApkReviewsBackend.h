@@ -36,7 +36,7 @@ public:
     void logout() override {}
     void registerAndLogin() override {}
 
-    Rating *ratingForApplication(AbstractResource *) const override { return nullptr; }
+    Q_SCRIPTABLE Rating ratingForApplication(AbstractResource *) const override;
     bool hasCredentials() const override { return false; }
     void deleteReview(Review *) override {}
     void fetchReviews(AbstractResource *app, int page = 1) override;
