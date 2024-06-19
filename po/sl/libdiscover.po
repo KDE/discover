@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-18 00:40+0000\n"
-"PO-Revision-Date: 2024-05-18 05:55+0200\n"
+"POT-Creation-Date: 2024-06-19 00:40+0000\n"
+"PO-Revision-Date: 2024-06-18 07:44+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1932,6 +1932,35 @@ msgstr "Vredno zaupanja"
 msgid "Unavailable"
 msgstr "Ni na voljo"
 
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
+#, kde-format
+msgid "Critical"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
+#, fuzzy, kde-format
+#| msgid "Installed"
+msgid "Install"
+msgstr "Nameščeno"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
+#, fuzzy, kde-format
+#| msgid "Remove…"
+msgid "Remove"
+msgstr "Odstranitev …"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
+#, fuzzy, kde-format
+#| msgid "Obsoletes:"
+msgid "Obsolete"
+msgstr "Zastarelo:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
+#, fuzzy, kde-format
+#| msgid "Downgrading"
+msgid "Downgrade"
+msgstr "Obnavljanje prejšnje različice"
+
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
 #, kde-format
 msgid "Failed Offline Update"
@@ -2114,7 +2143,7 @@ msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 "Ni dovolj prostora za izvedbo posodobitve; samo %1 prostora je na voljo."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:591
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2127,12 +2156,12 @@ msgstr ""
 "%1</li></ul><nl/>Če menite, da je to napaka, jo prijavite kot napako pri "
 "pakiranju vaše distribucije."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:588
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Potrdi spremembe"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:589
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2141,13 +2170,13 @@ msgstr ""
 "Posodobitev bo odstranila naslednje pakete:<ul><li>%1</li></ul><br/>zato da "
 "bi namestila:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:725
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:723
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:733
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2157,13 +2186,13 @@ msgstr ""
 "Zahtevana je sprememba nosilca vrste »%1«.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:756
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:766
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "Sprejmi EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:757
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:767
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2173,13 +2202,13 @@ msgstr ""
 "Paket %1 in njegov proizvajalec %2 zahtevata, da sprejmete njihovo licenco:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:874
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:884
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Manjka podpis za %1 in %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:875
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:885
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""
@@ -2627,11 +2656,10 @@ msgid "Applications"
 msgstr "Programi"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "Programi"
+msgstr "Podpora aplikaciji"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format

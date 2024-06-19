@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-18 00:40+0000\n"
+"POT-Creation-Date: 2024-06-19 00:40+0000\n"
 "PO-Revision-Date: 2024-05-20 13:35+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -1926,6 +1926,35 @@ msgstr "Fidinda"
 msgid "Unavailable"
 msgstr "Nedisponebla"
 
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
+#, kde-format
+msgid "Critical"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
+#, fuzzy, kde-format
+#| msgid "Installed"
+msgid "Install"
+msgstr "Instalita"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
+#, fuzzy, kde-format
+#| msgid "Remove…"
+msgid "Remove"
+msgstr "Forigi…"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
+#, fuzzy, kde-format
+#| msgid "Obsoletes:"
+msgid "Obsolete"
+msgstr "Malnoviĝintaj:"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
+#, fuzzy, kde-format
+#| msgid "Downgrading"
+msgid "Downgrade"
+msgstr "Malaltiĝo"
+
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
 #, kde-format
 msgid "Failed Offline Update"
@@ -2096,7 +2125,7 @@ msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 "Ne sufiĉa spaco por plenumi la ĝisdatigon; nur %1 de spaco estas disponebla."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:581
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:591
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2109,12 +2138,12 @@ msgstr ""
 "%1</li></ul><nl/>Se vi kredas, ke tio estas eraro, bonvolu raporti ĝin kiel "
 "cimon al la pakistoj de via distribuo."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:588
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Konfirmi Ŝanĝojn"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:589
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2123,13 +2152,13 @@ msgstr ""
 "La jenaj pakaĵoj estos forigitaj per la ĝisdatigo:<ul><li>%1</li></ul><br/"
 ">por instali:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:715
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:725
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:723
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:733
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2139,13 +2168,13 @@ msgstr ""
 "Media Ŝanĝo de tipo '%1' estas petita.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:756
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:766
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "Akcepti EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:757
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:767
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2155,13 +2184,13 @@ msgstr ""
 "La pako %1 kaj ĝia vendisto %2 postulas ke vi akceptu ilian permesilon:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:874
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:884
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Mankas subskribo por %1 en %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:875
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:885
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""

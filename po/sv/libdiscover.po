@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-18 00:40+0000\n"
-"PO-Revision-Date: 2024-06-16 19:46+0200\n"
+"PO-Revision-Date: 2024-06-18 17:04+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -2611,12 +2611,12 @@ msgid "Applications"
 msgstr "Program"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
-#, fuzzy, kde-format
+#, kde-format
 #| msgctxt "@item:inlistbox"
 #| msgid "Application Updates"
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "Programuppdateringar"
+msgstr "Programsupport"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
@@ -3827,3 +3827,4 @@ msgstr "Tillägg"
 #~ msgctxt "@item:inlistbox PU architecture"
 #~ msgid "Power PC"
 #~ msgstr "Power PC"
+
