@@ -256,20 +256,23 @@ DiscoverPage {
 
         Item {
             id: loadingHolder
-            parent: appsView.count === 0 ? appsView : appsView.footer
             anchors.centerIn: parent
             visible: appsModel.busy && appsView.atYEnd
-            implicitHeight: Kirigami.Units.gridUnit * 10
-            implicitWidth: Kirigami.Units.gridUnit * 10
+            height: appsView.height
+            width: appsView.width
             ColumnLayout {
-                anchors.centerIn: parent
+                anchors.verticalCenter: appsView.count === 0 ? parent.verticalCenter : parent.bottom
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenterOffset: appsView.count === 0 ? 0 : -(headingText.height + busyIndicator.height + Kirigami.Units.gridUnit)
                 opacity: parent.visible ? 0.5 : 0
                 Kirigami.Heading {
+                    id: headingText
                     Layout.alignment: Qt.AlignCenter
                     level: 2
                     text: i18n("Still looking…")
                 }
                 QQC2.BusyIndicator {
+                    id: busyIndicator
                     Layout.alignment: Qt.AlignCenter
                     running: parent.visible
                     Layout.preferredWidth: Kirigami.Units.gridUnit * 4
