@@ -158,8 +158,14 @@ DiscoverPage {
 
     Kirigami.CardsListView {
         id: appsView
+        footerPositioning: ListView.InlineFooter
         activeFocusOnTab: true
         currentIndex: -1
+        footer: Item {
+            id: appViewFooter
+            height: appsModel.busy ? Kirigami.Units.gridUnit * 8 : Kirigami.Units.gridUnit
+            width: parent.width
+        }
         onActiveFocusChanged: if (activeFocus && currentIndex === -1) {
             currentIndex = 0;
         }
@@ -256,14 +262,11 @@ DiscoverPage {
 
         Item {
             id: loadingHolder
+            parent: appsView.count === 0 ? appsView : appsView.footerItem
             anchors.centerIn: parent
             visible: appsModel.busy && appsView.atYEnd
-            height: appsView.height
-            width: appsView.width
             ColumnLayout {
-                anchors.verticalCenter: appsView.count === 0 ? parent.verticalCenter : parent.bottom
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenterOffset: appsView.count === 0 ? 0 : -(headingText.height + busyIndicator.height + Kirigami.Units.gridUnit)
+                anchors.centerIn: parent
                 opacity: parent.visible ? 0.5 : 0
                 Kirigami.Heading {
                     id: headingText
