@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-19 00:40+0000\n"
-"PO-Revision-Date: 2024-05-05 14:44+0530\n"
+"PO-Revision-Date: 2024-06-20 21:53+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -920,11 +920,10 @@ msgstr ""
 "'%2' என்பதில் '%1' என்பதை கண்டுபிடிக்க முடியவில்லை; அது உள்ளதா என்பதை சரிபாருங்கள்."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "களஞ்சியம் கிடைக்கவில்லை"
+msgstr "மாற்று உள்ளது"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-kuit-format
@@ -935,6 +934,8 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
+"<resource>%1</resource> இனிமேல் புதுப்பிப்புகளைப் பெறாது.<nl/><nl/><resource>%2</"
+"resource> வழங்கும் அதன் ஆதரிக்கப்படும் பதிப்பை பதிலாக நிறுவலாமா?"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
@@ -1912,25 +1913,23 @@ msgstr "கிடைக்காத‍து"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "மிக முக்கியமானது"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "Install"
-msgstr "நிறுவியுள்ளவை"
+msgstr "நிறுவு"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "நீக்குகிறது"
+msgstr "நீக்கு"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
 #, fuzzy, kde-format
 #| msgid "Obsoletes:"
 msgid "Obsolete"
-msgstr "வழக்கற்றவை:"
+msgstr "தேவையற்றவை"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
 #, fuzzy, kde-format

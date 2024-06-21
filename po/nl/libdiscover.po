@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-19 00:40+0000\n"
-"PO-Revision-Date: 2024-05-18 10:09+0200\n"
+"PO-Revision-Date: 2024-06-19 10:55+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1938,31 +1938,25 @@ msgstr "Niet beschikbaar"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "Kritiek"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Install"
+#, kde-format
 msgid "Install"
 msgstr "Installeren"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "Verwijderen…"
+msgstr "Verwijderen"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, fuzzy, kde-format
-#| msgid "Obsoletes:"
+#, kde-format
 msgid "Obsolete"
-msgstr "Maakt verouderd:"
+msgstr "Overbodig"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Downgrade"
+#, kde-format
 msgid "Downgrade"
 msgstr "Afwaarderen"
 
@@ -2655,12 +2649,10 @@ msgid "Applications"
 msgstr "Toepassingen"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Updates"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "Updates van toepassingen"
+msgstr "Ondersteuning van toepassingen"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
