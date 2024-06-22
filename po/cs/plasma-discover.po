@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-08 00:40+0000\n"
+"POT-Creation-Date: 2024-06-22 00:40+0000\n"
 "PO-Revision-Date: 2024-05-29 11:26+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -550,7 +550,7 @@ msgstr[1] "Hledat - %1 položky"
 msgstr[2] "Hledat - %1 položek"
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:254
+#: discover/qml/ApplicationsListPage.qml:260
 #, kde-format
 msgid "Search"
 msgstr "Hledat"
@@ -586,24 +586,24 @@ msgstr "Velikost"
 msgid "Release Date"
 msgstr "Datum vydání"
 
-#: discover/qml/ApplicationsListPage.qml:200
+#: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
 msgid "Nothing found"
 msgstr "Nic nenalezeno"
 
-#: discover/qml/ApplicationsListPage.qml:208
+#: discover/qml/ApplicationsListPage.qml:214
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "Hledat ve všech kategoriích"
 
-#: discover/qml/ApplicationsListPage.qml:218
+#: discover/qml/ApplicationsListPage.qml:224
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Hledat \"%1\" na webu"
 
-#: discover/qml/ApplicationsListPage.qml:222
+#: discover/qml/ApplicationsListPage.qml:228
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -611,7 +611,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:233
+#: discover/qml/ApplicationsListPage.qml:239
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -619,13 +619,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "\"%1\" nebylo nalezeno v kategorii \"%2\""
 
-#: discover/qml/ApplicationsListPage.qml:235
+#: discover/qml/ApplicationsListPage.qml:241
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "\"%1\" nebylo v dostupných zdrojích nalezeno"
 
-#: discover/qml/ApplicationsListPage.qml:236
+#: discover/qml/ApplicationsListPage.qml:242
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -634,7 +634,7 @@ msgid ""
 "caution."
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:269
+#: discover/qml/ApplicationsListPage.qml:275
 #, kde-format
 msgid "Still looking…"
 msgstr "Stále hledám…"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-08 00:40+0000\n"
+"POT-Creation-Date: 2024-06-22 00:40+0000\n"
 "PO-Revision-Date: 2023-09-29 19:09+0530\n"
 "Last-Translator: \n"
 "Language-Team: Sanskrit\n"
@@ -614,7 +614,7 @@ msgstr[0] "अन्वेषणम् - %1 द्रव्यम्"
 msgstr[1] "अन्वेषणं - %1 वस्तूनि"
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:254
+#: discover/qml/ApplicationsListPage.qml:260
 #, kde-format
 msgid "Search"
 msgstr "अन्वेषण"
@@ -650,24 +650,24 @@ msgstr "आकारः"
 msgid "Release Date"
 msgstr "अवतरण तिथि"
 
-#: discover/qml/ApplicationsListPage.qml:200
+#: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
 msgid "Nothing found"
 msgstr "किमपि न लब्धम्"
 
-#: discover/qml/ApplicationsListPage.qml:208
+#: discover/qml/ApplicationsListPage.qml:214
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "सर्वेषु वर्गेषु अन्वेष्टुम्"
 
-#: discover/qml/ApplicationsListPage.qml:218
+#: discover/qml/ApplicationsListPage.qml:224
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "\"%1\" इति जालपुटे अन्वेष्टुम् ।"
 
-#: discover/qml/ApplicationsListPage.qml:222
+#: discover/qml/ApplicationsListPage.qml:228
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -675,7 +675,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:233
+#: discover/qml/ApplicationsListPage.qml:239
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -683,13 +683,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "\"%2\" वर्गे \"%1\" न लब्धम्"
 
-#: discover/qml/ApplicationsListPage.qml:235
+#: discover/qml/ApplicationsListPage.qml:241
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "उपलब्धस्रोतेषु \"%1\" न लब्धम्"
 
-#: discover/qml/ApplicationsListPage.qml:236
+#: discover/qml/ApplicationsListPage.qml:242
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -700,7 +700,7 @@ msgstr ""
 "\"%1\" जालपुटे उपलब्धं भवेत् । जालपुटात् प्राप्तं तन्त्रांशं भवतः वितरकेन कार्यक्षमतायाः "
 "स्थिरतायाः वा समीक्षां न कृतम् । सावधानतया प्रयोगं कुर्वन्तु।."
 
-#: discover/qml/ApplicationsListPage.qml:269
+#: discover/qml/ApplicationsListPage.qml:275
 #, kde-format
 msgid "Still looking…"
 msgstr "अद्यापि पश्यन्…"

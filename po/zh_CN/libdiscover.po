@@ -1897,28 +1897,24 @@ msgid "Critical"
 msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "Install"
-msgstr "已安装"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "移除…"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, fuzzy, kde-format
-#| msgid "Obsoletes:"
+#, kde-format
 msgid "Obsolete"
-msgstr "已废弃："
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, fuzzy, kde-format
-#| msgid "Downgrading"
+#, kde-format
 msgid "Downgrade"
-msgstr "正在降级"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
 #, kde-format
@@ -2574,7 +2570,7 @@ msgstr "应用程序"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr ""
+msgstr "应用程序支持"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format

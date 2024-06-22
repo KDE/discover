@@ -2,7 +2,7 @@
 # Copyright (C) 2010-2020 This file is copyright:
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2023 Geraldo Simiao <geraldosimiao@fedoraproject.org>
+# SPDX-FileCopyrightText: 2023, 2024 Geraldo Simiao <geraldosimiao@fedoraproject.org>
 # Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>, 2010.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
 # Marcus Gama <marcus.gama@gmail.com>, 2011, 2012, 2013.
@@ -12,15 +12,15 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-19 00:40+0000\n"
-"PO-Revision-Date: 2024-01-11 20:48-0300\n"
-"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
+"PO-Revision-Date: 2024-06-21 01:32-0300\n"
+"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -943,11 +943,10 @@ msgstr ""
 "disponível."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "O repositório não está disponível"
+msgstr "Substituto disponível"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-kuit-format
@@ -958,6 +957,9 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
+"<resource>%1</resource> não está mais recebendo atualizações.<nl/><nl/"
+">Deseja substituí-lo pela versão suportada fornecida por <resource>%2</"
+"resource>?"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
@@ -1943,29 +1945,25 @@ msgstr "Indisponível"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "Erro crítico"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "Install"
-msgstr "Instalado"
+msgstr "Instalar"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "Remover..."
+msgstr "Remover"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, fuzzy, kde-format
-#| msgid "Obsoletes:"
+#, kde-format
 msgid "Obsolete"
-msgstr "Torna obsoleto:"
+msgstr "Torna obsoleto"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, fuzzy, kde-format
-#| msgid "Downgrading"
+#, kde-format
 msgid "Downgrade"
 msgstr "Voltando à uma versão anterior"
 
@@ -2452,11 +2450,13 @@ msgstr "Verificando por uma atualização do sistema"
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"Baixando atualização do sistema. Seja paciente pois o progresso não é "
+"relatado."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
-msgstr ""
+msgstr "Atualizando o sistema. Seja paciente pois o progresso não é relatado."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2464,6 +2464,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"Atualizando para a próxima versão. Seja paciente pois o progresso não é "
+"relatado."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
@@ -2654,12 +2656,10 @@ msgid "Applications"
 msgstr "Aplicativos"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Updates"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "Atualizações de aplicativos"
+msgstr "Suporte do aplicativo"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format

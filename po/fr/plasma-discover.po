@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-08 00:40+0000\n"
+"POT-Creation-Date: 2024-06-22 00:40+0000\n"
 "PO-Revision-Date: 2024-06-09 09:13+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -617,7 +617,7 @@ msgstr[0] "Rechercher - %1 élément"
 msgstr[1] "Rechercher - %1 éléments"
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:254
+#: discover/qml/ApplicationsListPage.qml:260
 #, kde-format
 msgid "Search"
 msgstr "Rechercher"
@@ -653,24 +653,24 @@ msgstr "Taille"
 msgid "Release Date"
 msgstr "Date de sortie"
 
-#: discover/qml/ApplicationsListPage.qml:200
+#: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
 msgid "Nothing found"
 msgstr "Rien n'a été trouvé"
 
-#: discover/qml/ApplicationsListPage.qml:208
+#: discover/qml/ApplicationsListPage.qml:214
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "Rechercher dans toutes les catégories"
 
-#: discover/qml/ApplicationsListPage.qml:218
+#: discover/qml/ApplicationsListPage.qml:224
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Rechercher « %1 » sur Internet"
 
-#: discover/qml/ApplicationsListPage.qml:222
+#: discover/qml/ApplicationsListPage.qml:228
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -678,7 +678,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:233
+#: discover/qml/ApplicationsListPage.qml:239
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -686,13 +686,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "Il est impossible de trouver « %1 » dans la catégorie « %2 »"
 
-#: discover/qml/ApplicationsListPage.qml:235
+#: discover/qml/ApplicationsListPage.qml:241
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "Il est impossible de trouver « %1 » dans les ressources disponibles."
 
-#: discover/qml/ApplicationsListPage.qml:236
+#: discover/qml/ApplicationsListPage.qml:242
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -705,7 +705,7 @@ msgstr ""
 "distribution concernant ses fonctionnalités et sa stabilité. Veuillez "
 "l'utiliser avec précaution."
 
-#: discover/qml/ApplicationsListPage.qml:269
+#: discover/qml/ApplicationsListPage.qml:275
 #, kde-format
 msgid "Still looking…"
 msgstr "Recherche toujours en cours…"
