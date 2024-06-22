@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-24 00:40+0000\n"
+"POT-Creation-Date: 2024-06-22 02:38+0000\n"
 "PO-Revision-Date: 2022-08-16 17:05+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -602,7 +602,7 @@ msgstr[0] "Axtarış: %1 element"
 msgstr[1] "Axtarış: %1 element"
 
 #: discover/qml/ApplicationsListPage.qml:67
-#: discover/qml/ApplicationsListPage.qml:254
+#: discover/qml/ApplicationsListPage.qml:260
 #, kde-format
 msgid "Search"
 msgstr "Axtarış"
@@ -638,18 +638,18 @@ msgstr "Ölçü"
 msgid "Release Date"
 msgstr "Buraxılış Tarixi"
 
-#: discover/qml/ApplicationsListPage.qml:200
+#: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
 msgid "Nothing found"
 msgstr "Heç nə tapılmadı"
 
-#: discover/qml/ApplicationsListPage.qml:208
+#: discover/qml/ApplicationsListPage.qml:214
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:218
+#: discover/qml/ApplicationsListPage.qml:224
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid "Search the web for \"%1\""
@@ -657,7 +657,7 @@ msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "İnternetdə \"%1\" axtarışı"
 
-#: discover/qml/ApplicationsListPage.qml:222
+#: discover/qml/ApplicationsListPage.qml:228
 #, kde-format
 msgctxt ""
 "If appropriate, localize this URL to be something more relevant to the "
@@ -665,7 +665,7 @@ msgctxt ""
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
-#: discover/qml/ApplicationsListPage.qml:233
+#: discover/qml/ApplicationsListPage.qml:239
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid "\"%1\" was not found in the available sources"
@@ -675,7 +675,7 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "\"%1\", əlçatan mənbələrdə tapılmadı"
 
-#: discover/qml/ApplicationsListPage.qml:235
+#: discover/qml/ApplicationsListPage.qml:241
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid "\"%1\" was not found in the available sources"
@@ -683,7 +683,7 @@ msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "\"%1\", əlçatan mənbələrdə tapılmadı"
 
-#: discover/qml/ApplicationsListPage.qml:236
+#: discover/qml/ApplicationsListPage.qml:242
 #, fuzzy, kde-format
 #| msgctxt "%1 is the name of an application"
 #| msgid ""
@@ -701,7 +701,7 @@ msgstr ""
 "yoxlanılmaya bilər. Belə proqram təminatından istifadə edərkən ehtiyyatlı "
 "olun."
 
-#: discover/qml/ApplicationsListPage.qml:269
+#: discover/qml/ApplicationsListPage.qml:275
 #, kde-format
 msgid "Still looking…"
 msgstr "Hələ də axtarılır..."
