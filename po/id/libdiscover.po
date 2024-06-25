@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-19 00:40+0000\n"
+"POT-Creation-Date: 2024-06-25 00:39+0000\n"
 "PO-Revision-Date: 2023-05-26 07:30+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -541,7 +541,7 @@ msgid "Local bundle"
 msgstr "Bundel lokal"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1888
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:816
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:828
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Url appstream yang rusak '%1'"
@@ -1158,12 +1158,18 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Font"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:322
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:138
+#, kde-format
+msgctxt "@action:button %1 is the distro name"
+msgid "Report This Issue to %1"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:334
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Silakan pastikan Appstream telah disiapkan dengan benar pada sistemmu"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:358
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:370
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1173,12 +1179,12 @@ msgstr ""
 "Operasi sistemmu berakhir dukungan pada %1. Dianjurkan memutakhirkan ke "
 "versi yang didukung."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:923
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Tidak bisa menghapus '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1009
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, fuzzy, kde-format
 #| msgid ""
@@ -1195,20 +1201,28 @@ msgstr ""
 "Agar bisa meningkatkan ke versi baru ini, pastikan untuk menerapkan semua "
 "pembaruan yang tersedia dan kemudian nyalakan ulang."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1030
 #, fuzzy, kde-format
 #| msgid "Upgrade to %1 %2"
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Tingkatkan ke %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1041
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, fuzzy, kde-format
 #| msgid "Repo not available"
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "Repo tidak tersedia"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1179
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The background service (PackageKit) stopped unexpectedly. It may have "
+"crashed."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format

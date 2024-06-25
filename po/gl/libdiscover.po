@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-19 00:40+0000\n"
+"POT-Creation-Date: 2024-06-25 00:39+0000\n"
 "PO-Revision-Date: 2024-06-21 22:06+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -540,7 +540,7 @@ msgid "Local bundle"
 msgstr "Fardo local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1888
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:816
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:828
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL de appstream incorrecto «%1»"
@@ -1152,12 +1152,18 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Fontes"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:322
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:138
+#, kde-format
+msgctxt "@action:button %1 is the distro name"
+msgid "Report This Issue to %1"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:334
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Verifique que Appstream está correctamente configurado."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:358
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:370
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1167,12 +1173,12 @@ msgstr ""
 "A asistencia para o seu sistema operativo rematou o %1. Considere anovar a "
 "unha versión con asistencia."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:923
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Non é posíbel retirar «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1009
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1185,18 +1191,26 @@ msgstr ""
 "Para poder anovar a esta versión, primeiro aplique todas as actualizacións "
 "dispoñíbeis e despois reinicie o sistema."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1030
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Anovar agora"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1041
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 xa está dispoñíbel."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1179
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The background service (PackageKit) stopped unexpectedly. It may have "
+"crashed."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format

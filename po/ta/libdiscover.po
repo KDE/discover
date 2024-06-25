@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-19 00:40+0000\n"
+"POT-Creation-Date: 2024-06-25 00:39+0000\n"
 "PO-Revision-Date: 2024-06-20 21:53+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -537,7 +537,7 @@ msgid "Local bundle"
 msgstr "உள்ளமை தொகுப்பு"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1888
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:816
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:828
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "முறையற்ற appstream முகவரி '%1'"
@@ -1129,12 +1129,18 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "எழுத்துருக்கள்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:322
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:138
+#, kde-format
+msgctxt "@action:button %1 is the distro name"
+msgid "Report This Issue to %1"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:334
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "உங்கள் கணினியில் Appstream சரியாக நிறுவப்பட்டுள்ளதா என பாருங்கள்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:358
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:370
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1143,12 +1149,12 @@ msgid ""
 msgstr ""
 "உங்கள் இயங்குதளத்திற்கான ஆதரவு %1 அன்று நிறைவடைந்த‍து. ஆதரவுள்ள பதிப்பிற்கு மாறுங்கள்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:923
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' என்பதை நீக்க முடியாது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1009
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1161,18 +1167,26 @@ msgstr ""
 "மீதமுள்ள நிரல் புதுப்பிப்புகளை நிறுவி உங்கள் கணினியை மீள்துவக்கியபின் நீங்கள் விரும்பினால் "
 "இப்புதிய பதிப்பை நிறுவலாம்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1030
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "இப்போதே புதுப்பி"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1041
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 இப்போது கிடைக்கிறது"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1179
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The background service (PackageKit) stopped unexpectedly. It may have "
+"crashed."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format

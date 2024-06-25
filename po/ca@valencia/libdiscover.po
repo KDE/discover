@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-19 00:40+0000\n"
+"POT-Creation-Date: 2024-06-25 00:39+0000\n"
 "PO-Revision-Date: 2024-06-19 10:55+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -543,7 +543,7 @@ msgid "Local bundle"
 msgstr "Paquet local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1888
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:816
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:828
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL d'«appstream» amb format incorrecte «%1»"
@@ -1158,12 +1158,18 @@ msgctxt "Category"
 msgid "Fonts"
 msgstr "Fonts"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:322
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:138
+#, kde-format
+msgctxt "@action:button %1 is the distro name"
+msgid "Report This Issue to %1"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:334
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Assegureu-vos que Appstream està ben instal·lat en el sistema"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:358
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:370
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1173,12 +1179,12 @@ msgstr ""
 "El vostre sistema operatiu ha finalitzat el suport %1. Considereu "
 "l'actualització a una versió suportada."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:923
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "No s'ha pogut eliminar «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1009
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1191,18 +1197,26 @@ msgstr ""
 "Per a poder actualitzar a esta versió nova, primer apliqueu totes les "
 "actualitzacions i després reinicieu el sistema."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1018
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1030
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Actualitza ara"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1041
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "Ara està disponible %1."
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1179
+#, kde-format
+msgctxt "@info"
+msgid ""
+"The background service (PackageKit) stopped unexpectedly. It may have "
+"crashed."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
