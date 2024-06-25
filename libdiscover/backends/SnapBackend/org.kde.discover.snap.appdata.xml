@@ -163,7 +163,6 @@
   <icon type="stock">system-software-install</icon>
   <releases>
     <release version="6.1.0" date="2024-06-18"/>
-    <release version="6.1.0" date="2024-06-18"/>
     <release version="6.0.5" date="2024-05-21"/>
   </releases>
 </component>
