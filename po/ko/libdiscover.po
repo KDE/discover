@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-25 00:39+0000\n"
+"POT-Creation-Date: 2024-06-26 00:40+0000\n"
 "PO-Revision-Date: 2024-02-09 20:10+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -913,14 +913,22 @@ msgstr "%3에서 %2에 '%1' 원격 항목 추가 중"
 msgid "Could not find '%1' in '%2'; please make sure it's available."
 msgstr "'%2'에서 '%1'을(를) 찾을 수 없습니다. 존재 여부를 확인하십시오"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:404
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:386
+#, kde-format
+msgctxt "fallback error message"
+msgid ""
+"An internal error occurred. Please file a report at https://bugs.kde.org/"
+"enter_bug.cgi?product=Discover"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, fuzzy, kde-format
 #| msgid "Repo not available"
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "저장소를 사용할 수 없음"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:416
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -928,6 +936,21 @@ msgctxt ""
 msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:422
+#, kde-format
+msgctxt "@title"
+msgid "Automatic Removal"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
+#, kde-kuit-format
+msgctxt ""
+"@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
+msgid ""
+"<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
+"given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
