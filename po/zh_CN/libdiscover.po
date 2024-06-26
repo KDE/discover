@@ -1894,27 +1894,27 @@ msgstr "不可用"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "紧急"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
 #, kde-format
 msgid "Install"
-msgstr ""
+msgstr "安装"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "移除"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
 #, kde-format
 msgid "Obsolete"
-msgstr ""
+msgstr "已过期"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
 #, kde-format
 msgid "Downgrade"
-msgstr ""
+msgstr "降级"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
 #, kde-format
