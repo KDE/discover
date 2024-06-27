@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-26 00:40+0000\n"
-"PO-Revision-Date: 2024-05-25 16:31+0400\n"
+"PO-Revision-Date: 2024-06-26 18:53+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
-"Language-Team: \n"
+"Language-Team: ar\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -932,6 +933,8 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"خطأ داخلي، الرجاء الإبلاغ عنها في  https://bugs.kde.org/enter_bug.cgi?"
+"product=Discover"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, kde-format
@@ -955,24 +958,18 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "إزالة آلية"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
 msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
-"<resource>%1</resource> لم يعد يتلقى التحديثات.<nl/><nl/>هل تريد تبديله إلى "
-"الإصدار المدعوم المقدم من <resource>%2</resource>؟"
+"<resource>%1</resource> لم يعد يتلقى التحديثات.<nl/><p>السبب الموضح هو: "
+"<message>%2</message></p><nl/><p>هل تريد إزالته تلقائيًا؟</p>"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
@@ -1169,7 +1166,7 @@ msgstr "الخطوط"
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr ""
+msgstr "أبلغ عن هذه المشكلة إلى %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:334
 #, kde-format
@@ -1221,7 +1218,7 @@ msgctxt "@info"
 msgid ""
 "The background service (PackageKit) stopped unexpectedly. It may have "
 "crashed."
-msgstr ""
+msgstr "توقفت خدمة الخلفية (PackageKit) بشكل غير متوقع. ربما تحطمت."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1960,33 +1957,27 @@ msgstr "غير متوفّر"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "حرج"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Install"
+#, kde-format
 msgid "Install"
-msgstr "تثبيتها"
+msgstr "ثبّت"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "يزيل..."
+msgstr "أزل"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, fuzzy, kde-format
-#| msgid "Obsoletes:"
+#, kde-format
 msgid "Obsolete"
-msgstr "البائدة:"
+msgstr "بائد"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Downgrade"
+#, kde-format
 msgid "Downgrade"
-msgstr "إنزالها"
+msgstr "عد للسابق"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
 #, kde-format
@@ -2685,12 +2676,10 @@ msgid "Applications"
 msgstr "التّطبيقات"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Updates"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "تحديثات التّطبيقات"
+msgstr "دعم التطبيق"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
