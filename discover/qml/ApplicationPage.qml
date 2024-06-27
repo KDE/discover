@@ -618,7 +618,7 @@ DiscoverPage {
 
                         Purpose.AlternativesView {
                             id: alts
-                            implicitWidth: Kirigami.Units.gridUnit
+                            Layout.fillWidth: true
                             pluginType: "ShareUrl"
                             inputData: {
                                 "urls": [ application.url.toString() ],
