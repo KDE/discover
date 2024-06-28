@@ -915,6 +915,8 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"发生内部错误。请在 https://bugs.kde.org/enter_bug.cgi?product=Discover 网站提"
+"交程序缺陷报告。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, kde-format
@@ -938,7 +940,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "自动移除"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-kuit-format
@@ -948,6 +950,8 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
+"<resource>%1</resource> 已经不会再收到更新。<nl/><p>原因：<message>%2</"
+"message></p><nl/><p>您想要自动移除它吗？</p>"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format

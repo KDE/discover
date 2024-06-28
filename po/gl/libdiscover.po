@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-26 00:40+0000\n"
-"PO-Revision-Date: 2024-06-21 22:06+0200\n"
+"PO-Revision-Date: 2024-06-27 21:08+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.0\n"
+"X-Generator: Lokalize 24.05.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -944,6 +944,8 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"Produciuse un erro interno. Remita un informe de erro desde https://bugs.kde."
+"org/enter_bug.cgi?product=Discover"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, kde-format
@@ -967,24 +969,19 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "Eliminación automática"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
 msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
-"<resource>%1</resource> xa non se actualiza.<nl/><nl/>Quere no seu lugar "
-"usar a versión mantida que fornece <resource>%2</resource>?"
+"<resource>%1</resource> xa non recibe actualizacións.<nl/> <p>A razón "
+"esgrimida foi: <message>%2</message></p><nl/><p>Quere eliminalo "
+"automaticamente?</p>"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
@@ -1187,7 +1184,7 @@ msgstr "Fontes"
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr ""
+msgstr "Informar deste problema a %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:334
 #, kde-format
@@ -1242,6 +1239,8 @@ msgid ""
 "The background service (PackageKit) stopped unexpectedly. It may have "
 "crashed."
 msgstr ""
+"O servizo en segundo plano (PackageKit) detívose de maneira inesperada. Pode "
+"que quebrase."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
