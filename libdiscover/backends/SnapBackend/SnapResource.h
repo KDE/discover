@@ -90,6 +90,9 @@ public:
     quint64 downloadSize() const;
     void updateSizes();
 
+    QUrl homepage() override;
+    QUrl url() const override;
+
     QSharedPointer<QSnapdSnap> snap() const
     {
         return m_snap;
