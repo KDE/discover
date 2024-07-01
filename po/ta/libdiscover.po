@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-26 00:40+0000\n"
-"PO-Revision-Date: 2024-06-20 21:53+0530\n"
+"PO-Revision-Date: 2024-06-30 13:41+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -926,6 +926,8 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"உள்ளக சிக்கல் நேர்ந்தது. தயவுசெய்து https://bugs.kde.org/enter_bug.cgi?"
+"product=Discover என்ற இணைப்பிற்கு சென்று ஓர் பிழையறிக்கையை சமர்ப்பிக்கவும்"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, kde-format
@@ -949,7 +951,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "தானாக நீக்குவது"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, fuzzy, kde-kuit-format
@@ -2640,7 +2642,7 @@ msgstr "செயலிகள்"
 #| msgid "Applications"
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "செயலிகள்"
+msgstr "செயலி ஆதரவு"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
