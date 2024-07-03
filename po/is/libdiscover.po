@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-26 00:40+0000\n"
-"PO-Revision-Date: 2024-05-23 15:08+0000\n"
-"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
-"Language-Team: Icelandic\n"
+"PO-Revision-Date: 2024-06-28 11:29+0000\n"
+"Last-Translator: Gummi <gudmundure@gmail.com>\n"
+"Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.04.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -938,6 +938,8 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"Innri villa kom upp. Sendu endilega villuskýrslu á https://bugs.kde.org/"
+"enter_bug.cgi?product=Discover"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, kde-format
@@ -961,24 +963,19 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "Sjálfvirk fjarlæging"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
 msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
-"<resource>%1</resource> fær ekki lengur neinar uppfærslur.<nl/><nl/>Á að "
-"skipt því út fyrir útgáfuna sem studd er af <resource>%2</resource>?"
+"<resource>%1</resource> fær ekki lengur neinar uppfærslur.<nl/><p>Ástæðan "
+"sem er gefin er: <message>%2</message></p><nl/><p>Fjarlægja það sjálfkrafa?</"
+"p>"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
@@ -1177,7 +1174,7 @@ msgstr "Leturgerðir"
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr ""
+msgstr "Tilkynna vandamálið til %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:334
 #, kde-format
@@ -1232,6 +1229,7 @@ msgid ""
 "The background service (PackageKit) stopped unexpectedly. It may have "
 "crashed."
 msgstr ""
+"Bakgrunnsþjónustan (PackageKit) stöðvaðist óvænt. Hugsanlega hrundi hún."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1972,31 +1970,27 @@ msgstr "Ekki tiltækt"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "Mjög alvarlegt"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "Install"
-msgstr "Uppsett"
+msgstr "Setja upp"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "Fjarlægja…"
+msgstr "Fjarlægja"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, fuzzy, kde-format
-#| msgid "Obsoletes:"
+#, kde-format
 msgid "Obsolete"
-msgstr "Úrelt:"
+msgstr "Úrelt"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, fuzzy, kde-format
-#| msgid "Downgrading"
+#, kde-format
 msgid "Downgrade"
-msgstr "Færi niður um útgáfu"
+msgstr "Færa niður um útgáfu"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
 #, kde-format
@@ -2673,11 +2667,10 @@ msgid "Applications"
 msgstr "Forrit"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "Forrit"
+msgstr "Stuðningur við forrit"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
