@@ -17,11 +17,11 @@ QQC2.Button {
     id: root
 
     required property Discover.AbstractResource resource
+    Discover.Activatable.active: resource.isInstalled /*&& view.count > 0*/
 
     text: i18nd("libdiscover", "Channels…")
 
     onClicked: overlay.open()
-    visible: resource.isInstalled /*&& view.count > 0*/
 
     Kirigami.OverlaySheet {
         id: overlay

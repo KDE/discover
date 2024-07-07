@@ -66,6 +66,7 @@ public:
     {
         return {};
     }
+    QStringList topObjects() const override;
 
 public:
     const QString m_name;

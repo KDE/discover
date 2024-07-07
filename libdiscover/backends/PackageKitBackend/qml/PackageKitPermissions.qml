@@ -14,6 +14,7 @@ ColumnLayout {
     id: root
 
     required property Discover.AbstractResource resource
+    Discover.Activatable.active: true
 
     spacing: Kirigami.Units.smallSpacing
 

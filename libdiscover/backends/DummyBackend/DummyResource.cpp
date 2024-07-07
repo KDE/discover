@@ -219,4 +219,10 @@ QUrl DummyResource::url() const
     return QUrl(QLatin1String("dummy://") + packageName().replace(QLatin1Char(' '), QLatin1Char('.')));
 }
 
+QStringList DummyResource::topObjects() const
+{
+    static QStringList s_objects{QStringLiteral("qrc:/qml/DummyTop.qml")};
+    return s_objects;
+}
+
 #include "moc_DummyResource.cpp"

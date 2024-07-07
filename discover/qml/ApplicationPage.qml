@@ -417,18 +417,18 @@ DiscoverPage {
             // Cancel out parent layout's spacing, making this component effectively zero-sized when empty.
             // When non-empty, the very first top margin is provided by this layout, but bottom margins
             // are implemented by Loaders that have visible loaded items.
-            Layout.topMargin: hasVisibleObjects ? 0 : -pageLayout.spacing
+            Layout.topMargin: hasActiveObjects ? 0 : -pageLayout.spacing
             Layout.bottomMargin: -pageLayout.spacing
 
-            property bool hasVisibleObjects: false
-            visible: hasVisibleObjects
+            property bool hasActiveObjects: false
+            visible: hasActiveObjects
 
             function bindVisibility() {
-                hasVisibleObjects = Qt.binding(() => {
+                hasActiveObjects = Qt.binding(() => {
                     for (let i = 0; i < topObjectsRepeater.count; i++) {
                         const loader = topObjectsRepeater.itemAt(i);
                         const item = loader.item;
-                        if (item?.visible) {
+                        if (item?.Discover.Activatable.active) {
                             return true;
                         }
                     }
@@ -437,7 +437,7 @@ DiscoverPage {
             }
 
             Timer {
-                id: bindVisibilityTimer
+                id: bindActiveTimer
 
                 running: false
                 repeat: false
@@ -452,22 +452,29 @@ DiscoverPage {
                 model: appInfo.application.topObjects
 
                 delegate: Loader {
+                    id: topObject
                     required property string modelData
 
                     Layout.fillWidth: item?.Layout.fillWidth ?? false
                     Layout.topMargin: 0
-                    Layout.bottomMargin: item?.visible ? appInfo.padding : 0
-                    Layout.preferredHeight: item?.visible ? item.implicitHeight : 0
+                    Layout.bottomMargin: item?.Discover.Activatable.active ? appInfo.padding : 0
+                    Layout.preferredHeight: item?.Discover.Activatable.active ? item.implicitHeight : 0
 
                     onModelDataChanged: {
                         setSource(modelData, { resource: Qt.binding(() => appInfo.application) });
                     }
+                    Connections {
+                        target: topObject.item?.Discover.Activatable
+                        function onActiveChanged() {
+                            bindActiveTimer.start();
+                        }
+                    }
                 }
                 onItemAdded: (index, item) => {
-                    bindVisibilityTimer.start();
+                    bindActiveTimer.start();
                 }
                 onItemRemoved: (index, item) => {
-                    bindVisibilityTimer.start();
+                    bindActiveTimer.start();
                 }
             }
         }

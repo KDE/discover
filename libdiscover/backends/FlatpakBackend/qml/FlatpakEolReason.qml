@@ -11,10 +11,10 @@ import org.kde.kirigami as Kirigami
 
 Kirigami.InlineMessage {
     required property Discover.AbstractResource resource
+    Discover.Activatable.active: text.length > 0
 
     Layout.fillWidth: true
     text: resource.eolReason
     height: visible ? implicitHeight : 0
-    visible: text.length > 0
     type: Kirigami.MessageType.Warning
 }
