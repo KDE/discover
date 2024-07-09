@@ -22,15 +22,10 @@ static KAuth::Action createAlpineApkKAuthAction()
     }
 
     // set action description
-    // setDetails deprecated since KF 5.68, use setDetailsV2() with DetailsMap.
-#if KAUTH_VERSION < QT_VERSION_CHECK(5, 68, 0)
-    action.setDetails(i18n("Package management"));
-#else
     static const KAuth::Action::DetailsMap details{
         { KAuth::Action::AuthDetail::DetailMessage, i18n("Package management") }
     };
     action.setDetailsV2(details);
-#endif
 
     // change default timeout to 1 minute, bcause default DBus timeout
     //   of 25 seconds is not enough

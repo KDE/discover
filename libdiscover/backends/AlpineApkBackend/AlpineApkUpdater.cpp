@@ -188,16 +188,8 @@ void AlpineApkUpdater::startCheckForUpdates()
     //     system package manager files
     KAuth::ExecuteJob *reply = ActionFactory::createUpdateAction(db->fakeRoot());
     if (!reply) return;
-    QObject::connect(reply, &KAuth::ExecuteJob::result,
-                     this, &AlpineApkUpdater::handleKAuthUpdateHelperReply);
-#if KCOREADDONS_VERSION < QT_VERSION_CHECK(5,80,0)
-    // qOverload is needed because of conflict with getter named percent()
-    QObject::connect(reply, QOverload<KJob *, unsigned long>::of(&KAuth::ExecuteJob::percent),
-                     this, &AlpineApkUpdater::handleKAuthUpdateHelperProgress);
-#else
-    QObject::connect(reply, &KAuth::ExecuteJob::percentChanged,
-                     this, &AlpineApkUpdater::handleKAuthUpdateHelperProgress);
-#endif
+    QObject::connect(reply, &KAuth::ExecuteJob::result, this, &AlpineApkUpdater::handleKAuthUpdateHelperReply);
+    QObject::connect(reply, &KAuth::ExecuteJob::percentChanged, this, &AlpineApkUpdater::handleKAuthUpdateHelperProgress);
 
     m_progressing = true;
     Q_EMIT progressingChanged(m_progressing);

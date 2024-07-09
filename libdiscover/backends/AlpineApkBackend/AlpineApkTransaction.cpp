@@ -82,12 +82,7 @@ void AlpineApkTransaction::startTransaction()
     });
 
     // get progress reports for this job
-#if KCOREADDONS_VERSION < QT_VERSION_CHECK(5,80,0)
-    QObject::connect(reply, QOverload<KJob*, unsigned long>::of(&KAuth::ExecuteJob::percent), this,
-#else
-    QObject::connect(reply, &KAuth::ExecuteJob::percentChanged, this,
-#endif
-                     [this](KJob *job, unsigned long percent) {
+    QObject::connect(reply, &KAuth::ExecuteJob::percentChanged, this, [this](KJob *job, unsigned long percent) {
         Q_UNUSED(job)
         if (percent >= 40 && role() == InstallRole) {
             setStatus(CommittingStatus);
