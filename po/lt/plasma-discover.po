@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:40+0000\n"
-"PO-Revision-Date: 2024-01-31 19:43+0200\n"
+"PO-Revision-Date: 2024-07-10 02:45+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: discover/DiscoverObject.cpp:176
 #, kde-format
@@ -51,18 +51,7 @@ msgid "Report This Issue to %1"
 msgstr "Pranešti apie šią problemą %1"
 
 #: discover/DiscoverObject.cpp:186
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -73,12 +62,10 @@ msgid ""
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 "Norėdami naudoti Discover programoms, įsidiekite <link url='https://wiki."
-"archlinux.org/title/Flatpak#Installation'>Flatpak</link> ar <link "
-"url='https://wiki.archlinux.org/title/"
-"KDE#Discover_does_not_show_any_applications'>PackageKit</link>, naudodami "
+"archlinux.org/title/Flatpak#Installation'>Flatpak</link> naudodami "
 "<command>pacman</command> paketų tvarkytuvę.<nl/><nl/> Peržiūrėkite <link "
-"url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 teikiamo "
-"Discover pakavimą</link>"
+"url='https://archlinux.org/packages/extra/x86_64/discover/'>Discover "
+"pakavimą, kurį teikia %1</link>"
 
 #: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
@@ -91,6 +78,12 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"Paketų tvarkymo iš %1 palaikymas yra neužbaigtas; galite patirti nežinia "
+"kiek problemų. Nepranešinėkite apie klaidas KDE. Yra primygtinai "
+"rekomenduojama pašalinti <resource>packagekit-qt6</resource> paketą ir "
+"naudoti Discover tik papildinių bei Flatpak ir Snap paketų tvarkymui."
+"<para>Vietoj to, %1 prižiūrėtojai rekomendavo paketų tvarkymui naudoti "
+"<command>pacman</command> komandų eilutės įrankį.</para>"
 
 #: discover/DiscoverObject.cpp:287
 #, kde-format
@@ -532,19 +525,7 @@ msgid "Risks of proprietary software"
 msgstr "Nuosavybinės programinės įrangos rizikos"
 
 #: discover/qml/ApplicationPage.qml:912
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (<link url='%1'>"
@@ -557,31 +538,18 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
-"Šios programos pradinis kodas yra dalinai ar visiškai uždaras viešam "
-"tyrinėjimui ir tobulinimui. Tai reiškia, jog trečiosios šalys ir tokie "
-"naudotojai, kaip jūs, negali patikrinti programos veikimo, saugumo bei "
-"patikimumo ar negali modifikuoti ir platinti jos be aiškaus autorių leidimo."
-"<nl/><nl/>Programa gali būti saugi naudoti arba gali įvairiais būdais veikti "
-"prieš jus – pavyzdžiui, rinkti jūsų asmeninę informaciją, sekti jūsų buvimo "
-"vietą ar persiųsti kažkam kitam jūsų failų turinį. Nėra lengvo būdo, kaip "
-"būti užtikrintiems, todėl šią programą turėtumėte įdiegti tik tuo atveju, "
-"jei visiškai pasitikite jos autoriais (%1).<nl/><nl/>Daugiau galite sužinoti "
-"apsilankę <link url='%2'>%2</link>."
+"Įdiekite šią programą tik tuo atveju, jei visiškai pasitikite jos autoriais "
+"(<link url='%1'>%2</link>).<nl/><nl/>Šios programos pradinis kodas yra "
+"dalinai ar visiškai uždaras viešam tyrinėjimui ir tobulinimui. Tai reiškia, "
+"jog trečiosios šalys ir tokie naudotojai, kaip jūs, negali patikrinti "
+"programos veikimo, saugumo bei patikimumo ar negali modifikuoti ir platinti "
+"jos be aiškaus autorių leidimo.<nl/><nl/>Programa gali būti saugi naudoti "
+"arba gali įvairiais būdais veikti prieš jus – pavyzdžiui, rinkti jūsų "
+"asmeninę informaciją, sekti jūsų buvimo vietą ar persiųsti kažkam kitam jūsų "
+"failų turinį.<nl/><nl/>Daugiau galite sužinoti ties <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:913
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -594,16 +562,15 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Šios programos pradinis kodas yra dalinai ar visiškai uždaras viešam "
-"tyrinėjimui ir tobulinimui. Tai reiškia, jog trečiosios šalys ir tokie "
-"naudotojai, kaip jūs, negali patikrinti programos veikimo, saugumo bei "
+"Įdiekite šią programą tik tuo atveju, jei visiškai pasitikite jos autoriais "
+"(%1).<nl/><nl/>Šios programos pradinis kodas yra dalinai ar visiškai uždaras "
+"viešam tyrinėjimui ir tobulinimui. Tai reiškia, jog trečiosios šalys ir "
+"tokie naudotojai, kaip jūs, negali patikrinti programos veikimo, saugumo bei "
 "patikimumo ar negali modifikuoti ir platinti jos be aiškaus autorių leidimo."
 "<nl/><nl/>Programa gali būti saugi naudoti arba gali įvairiais būdais veikti "
 "prieš jus – pavyzdžiui, rinkti jūsų asmeninę informaciją, sekti jūsų buvimo "
-"vietą ar persiųsti kažkam kitam jūsų failų turinį. Nėra lengvo būdo, kaip "
-"būti užtikrintiems, todėl šią programą turėtumėte įdiegti tik tuo atveju, "
-"jei visiškai pasitikite jos autoriais (%1).<nl/><nl/>Daugiau galite sužinoti "
-"apsilankę <link url='%2'>%2</link>."
+"vietą ar persiųsti kažkam kitam jūsų failų turinį.<nl/><nl/>Daugiau galite "
+"sužinoti ties <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -910,10 +877,9 @@ msgid "Copy to Clipboard"
 msgstr "Kopijuoti į iškarpinę"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
-msgstr "Pateikti naudojimosi informacija"
+msgstr "Pateikti naudojimosi informaciją"
 
 #: discover/qml/Feedback.qml:15
 #, kde-format
@@ -936,8 +902,7 @@ msgid "Configure"
 msgstr "Konfigūruoti"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
 msgstr "Konfigūruoti grįžtamąjį ryšį…"
 
