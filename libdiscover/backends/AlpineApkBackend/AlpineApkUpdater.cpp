@@ -142,6 +142,8 @@ quint64 AlpineApkUpdater::downloadSpeed() const
 void AlpineApkUpdater::cancel()
 {
     qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
+
+    // TODO: Implement cancel
 }
 
 void AlpineApkUpdater::start()
@@ -152,16 +154,8 @@ void AlpineApkUpdater::start()
     KAuth::ExecuteJob *reply = ActionFactory::createUpgradeAction();
     if (!reply) return;
 
-    QObject::connect(reply, &KAuth::ExecuteJob::result,
-                     this, &AlpineApkUpdater::handleKAuthUpgradeHelperReply);
-#if KCOREADDONS_VERSION < QT_VERSION_CHECK(5,80,0)
-    // qOverload is needed because of conflict with getter named percent()
-    QObject::connect(reply, QOverload<KJob *, unsigned long>::of(&KAuth::ExecuteJob::percent),
-                     this, &AlpineApkUpdater::handleKAuthUpgradeHelperProgress);
-#else
-    QObject::connect(reply, &KAuth::ExecuteJob::percentChanged,
-                     this, &AlpineApkUpdater::handleKAuthUpgradeHelperProgress);
-#endif
+    QObject::connect(reply, &KAuth::ExecuteJob::result, this, &AlpineApkUpdater::handleKAuthUpgradeHelperReply);
+    QObject::connect(reply, &KAuth::ExecuteJob::percentChanged, this, &AlpineApkUpdater::handleKAuthUpgradeHelperProgress);
 
     m_progressing = true;
     m_upgradeProgress = 0.0;
@@ -173,6 +167,8 @@ void AlpineApkUpdater::start()
 void AlpineApkUpdater::proceed()
 {
     qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
+
+    // TODO: Implement proceed
 }
 
 int AlpineApkUpdater::updatesCount()

@@ -163,20 +163,9 @@ private:
     QtApk::Changeset m_upgradeable;
     QSet<AbstractResource *> m_allUpdateable;
     QSet<AbstractResource *> m_markedToUpdate;
-//    void resourcesChanged(AbstractResource* res, const QVector<QByteArray>& props);
-//    void refreshUpdateable();
-//    void transactionAdded(Transaction* newTransaction);
-//    void transactionProgressChanged();
-//    void refreshProgress();
-//    QVector<Transaction*> transactions() const;
 
-//    QSet<AbstractResource*> m_upgradeable;
-//    QSet<AbstractResource*> m_pendingResources;
     bool m_progressing = false;
     qreal m_upgradeProgress = 0.0;
-//    QDateTime m_lastUpdate;
-//    QTimer m_timer;
-//    bool m_canCancel = false;
 };
 
 

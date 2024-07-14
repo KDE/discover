@@ -78,11 +78,3 @@ install(
     TARGETS alpineapk_kauth_helper
     DESTINATION ${KAUTH_HELPER_INSTALL_DIR}
 )
-
-# add_library(AlpineApkNotifier MODULE AlpineApkNotifier.cpp)
-
-# target_link_libraries(AlpineApkNotifier Discover::Notifiers)
-
-# set_target_properties(AlpineApkNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
-
-# install(TARGETS AlpineApkNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)
