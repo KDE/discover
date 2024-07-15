@@ -697,28 +697,30 @@ DiscoverPage {
             }
         }
 
-        // "Learn More" section
+        // "External Links" section
         ColumnLayout {
-            id: learnMoreLayout
+            id: externalLinksLayout
+
+            readonly property int visibleButtons: (helpButton.visible ? 1 : 0)
+                                                + (homepageButton.visible ? 1: 0)
+                                                + (donateButton.visible ? 1 : 0)
+                                                + (bugButton.visible ? 1 : 0)
+                                                + (contributeButton.visible ? 1 : 0)
+            visible: visibleButtons > 0
 
             spacing: Kirigami.Units.smallSpacing
-            visible: learnMoreUrlsLayout.visible
 
             Kirigami.Heading {
-                text: i18nc("@title", "Learn More")
+                text: i18nc("@title", "External Links")
                 level: 2
                 type: Kirigami.Heading.Type.Primary
                 wrapMode: Text.Wrap
             }
 
             ColumnLayout {
-                id: learnMoreUrlsLayout
-                readonly property int visibleButtons: (helpButton.visible ? 1 : 0)
-                + (homepageButton.visible ? 1: 0)
                 Layout.fillWidth: true
 
                 spacing: Kirigami.Units.smallSpacing
-                visible: visibleButtons > 0
 
                 ApplicationResourceButton {
                     id: helpButton
@@ -745,40 +747,6 @@ DiscoverPage {
                     subtitle: i18n("Visit the project's website")
                     website: application.homepage.toString()
                 }
-            }
-
-            Kirigami.Separator {
-                Layout.topMargin: appInfo.internalSpacings - learnMoreLayout.spacing
-                Layout.fillWidth: true
-            }
-        }
-
-        // "Get Involved" section
-        ColumnLayout {
-            id: getInvolvedLayout
-
-            spacing: Kirigami.Units.smallSpacing
-            visible: getInvolvedUrlsLayout.visible
-
-            Kirigami.Heading {
-                text: i18n("Get Involved")
-                level: 2
-                type: Kirigami.Heading.Type.Primary
-                wrapMode: Text.Wrap
-            }
-
-            ColumnLayout {
-                id: getInvolvedUrlsLayout
-
-                readonly property int visibleButtons: (donateButton.visible ? 1 : 0)
-                                                    + (bugButton.visible ? 1 : 0)
-                                                    + (contributeButton.visible ? 1 : 0)
-
-                Layout.fillWidth: true
-
-                spacing: Kirigami.Units.smallSpacing
-
-                visible: visibleButtons > 0
 
                 ApplicationResourceButton {
                     id: donateButton
@@ -819,8 +787,9 @@ DiscoverPage {
                     website: application.contributeURL.toString()
                 }
             }
+
             Kirigami.Separator {
-                Layout.topMargin: appInfo.internalSpacings - getInvolvedLayout.spacing
+                Layout.topMargin: appInfo.internalSpacings - externalLinksLayout.spacing
                 Layout.fillWidth: true
             }
         }
