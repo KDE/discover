@@ -67,7 +67,7 @@ class TransferJob;
  * time is 7 days and can be tweaked using
  * setCacheExpirePeriodSecs().
  */
-class AppstreamDataDownloader: public QObject
+class AppstreamDataDownloader : public QObject
 {
     Q_OBJECT
 public:
@@ -88,7 +88,10 @@ public:
      * @return true, if new files were actually downloaded, or
      *         false if files already present in cache are up to date.
      */
-    bool cacheWasUpdated() const { return m_cacheWasUpdated; }
+    bool cacheWasUpdated() const
+    {
+        return m_cacheWasUpdated;
+    }
 
     /**
      * @return cache expire timeout in seconds

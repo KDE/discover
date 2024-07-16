@@ -10,7 +10,8 @@
 #include "AlpineApkAuthActionFactory.h"
 #include "alpineapk_backend_logging.h"
 
-namespace ActionFactory {
+namespace ActionFactory
+{
 
 static KAuth::Action createAlpineApkKAuthAction()
 {
@@ -22,9 +23,7 @@ static KAuth::Action createAlpineApkKAuthAction()
     }
 
     // set action description
-    static const KAuth::Action::DetailsMap details{
-        { KAuth::Action::AuthDetail::DetailMessage, i18n("Package management") }
-    };
+    static const KAuth::Action::DetailsMap details{{KAuth::Action::AuthDetail::DetailMessage, i18n("Package management")}};
     action.setDetailsV2(details);
 
     // change default timeout to 1 minute, bcause default DBus timeout

@@ -4,12 +4,12 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
-#include <QProcess>
 #include <QDebug>
-#include <QLoggingCategory>
-#include <QSocketNotifier>
-#include <QScopedPointer>
 #include <QFile>
+#include <QLoggingCategory>
+#include <QProcess>
+#include <QScopedPointer>
+#include <QSocketNotifier>
 
 #include <KAuth/HelperSupport>
 #include <kauth_version.h>
@@ -24,7 +24,9 @@ Q_LOGGING_CATEGORY(LOG_AUTHHELPER, "org.kde.discover.alpineapkbackend.authhelper
 
 using namespace KAuth;
 
-AlpineApkAuthHelper::AlpineApkAuthHelper() {}
+AlpineApkAuthHelper::AlpineApkAuthHelper()
+{
+}
 
 AlpineApkAuthHelper::~AlpineApkAuthHelper()
 {
@@ -70,16 +72,13 @@ void AlpineApkAuthHelper::setupTransactionPostCreate(QtApk::Transaction *trans)
     m_currentTransaction = trans; // remember current transaction here
 
     // receive progress notifications
-    QObject::connect(trans, &QtApk::Transaction::progressChanged,
-                     this, &AlpineApkAuthHelper::reportProgress);
+    QObject::connect(trans, &QtApk::Transaction::progressChanged, this, &AlpineApkAuthHelper::reportProgress);
 
     // receive error messages
-    QObject::connect(trans, &QtApk::Transaction::errorOccured,
-                     this, &AlpineApkAuthHelper::onTransactionError);
+    QObject::connect(trans, &QtApk::Transaction::errorOccured, this, &AlpineApkAuthHelper::onTransactionError);
 
     // what to do when transaction is complete
-    QObject::connect(trans, &QtApk::Transaction::finished,
-                     this, &AlpineApkAuthHelper::onTransactionFinished);
+    QObject::connect(trans, &QtApk::Transaction::finished, this, &AlpineApkAuthHelper::onTransactionFinished);
 
     if (!m_loop) {
         m_loop = new QEventLoop(this);
@@ -89,22 +88,20 @@ void AlpineApkAuthHelper::setupTransactionPostCreate(QtApk::Transaction *trans)
 void AlpineApkAuthHelper::reportProgress(float percent)
 {
     int p = static_cast<int>(percent);
-    if (p < 0) p = 0;
-    if (p > 100) p = 100;
+    if (p < 0)
+        p = 0;
+    if (p > 100)
+        p = 100;
     HelperSupport::progressStep(p);
 }
 
 void AlpineApkAuthHelper::onTransactionError(const QString &msg)
 {
-    qCWarning(LOG_AUTHHELPER).nospace() << "ERROR occured in transaction \""
-                                        << m_currentTransaction->desc()
-                                        << "\": " << msg;
+    qCWarning(LOG_AUTHHELPER).nospace() << "ERROR occured in transaction \"" << m_currentTransaction->desc() << "\": " << msg;
     // construct error message to use in helper reply
     const QString errMsg = m_currentTransaction->desc() + QLatin1String(" failed: ") + msg;
     m_actionReply.setErrorDescription(errMsg);
-    m_actionReply.setData({
-        { QLatin1String("errorString"), errMsg }
-    });
+    m_actionReply.setData({{QLatin1String("errorString"), errMsg}});
     m_trans_ok = false;
 }
 
@@ -146,7 +143,8 @@ ActionReply AlpineApkAuthHelper::pkgmgmt(const QVariantMap &args)
         // error: unknown pkgAction
         m_actionReply.setError(ActionReply::NoSuchActionError);
         m_actionReply.setErrorDescription(QLatin1String("Please pass a valid \'pkgAction\' argument. "
-                                                        "Action \"%1\" is not recognized.").arg(pkgAction));
+                                                        "Action \"%1\" is not recognized.")
+                                              .arg(pkgAction));
     }
 
     HelperSupport::progressStep(100);
@@ -170,9 +168,7 @@ void AlpineApkAuthHelper::update(const QVariantMap &args)
     if (m_trans_ok) {
         int updatesCount = m_apkdb.upgradeablePackagesCount();
         m_actionReply = ActionReply::SuccessReply();
-        m_actionReply.setData({
-            { QLatin1String("updatesCount"), updatesCount }
-        });
+        m_actionReply.setData({{QLatin1String("updatesCount"), updatesCount}});
     }
 }
 
@@ -261,7 +257,7 @@ void AlpineApkAuthHelper::upgrade(const QVariantMap &args)
         const QVector<QtApk::ChangesetItem> ch = m_lastChangeset.changes();
         QVector<QVariant> chVector;
         QVector<QtApk::Package> pkgVector;
-        for (const QtApk::ChangesetItem &it: ch) {
+        for (const QtApk::ChangesetItem &it : ch) {
             pkgVector << it.newPackage;
         }
         replyData.insert(QLatin1String("changes"), QVariant::fromValue(pkgVector));

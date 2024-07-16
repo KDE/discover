@@ -10,11 +10,11 @@
 #include "resources/AbstractBackendUpdater.h"
 #include "resources/AbstractResourcesBackend.h"
 
-#include <QSet>
 #include <QDateTime>
+#include <QMap>
+#include <QSet>
 #include <QTimer>
 #include <QVariant>
-#include <QMap>
 #include <QVector>
 
 #include <QtApkChangeset.h>
@@ -22,8 +22,9 @@
 class AbstractResourcesBackend;
 class AlpineApkBackend;
 class KJob;
-namespace KAuth {
-    class ExecuteJob;
+namespace KAuth
+{
+class ExecuteJob;
 }
 
 class AlpineApkUpdater : public AbstractBackendUpdater
@@ -53,13 +54,13 @@ public:
      * This method is used to remove resources from the list of packages
      * marked to be upgraded. It will potentially be called before \start.
      */
-    void removeResources(const QList<AbstractResource*> &apps) override;
+    void removeResources(const QList<AbstractResource *> &apps) override;
 
     /**
      * This method is used to add resource to the list of packages marked to be upgraded.
      * It will potentially be called before \start.
      */
-    void addResources(const QList<AbstractResource*> &apps) override;
+    void addResources(const QList<AbstractResource *> &apps) override;
 
     /**
      * @returns the list of updateable resources in the system
@@ -88,7 +89,7 @@ public:
     /**
      * @returns whether @p res is marked for update
      */
-    bool isMarked(AbstractResource* res) const override;
+    bool isMarked(AbstractResource *res) const override;
 
     void fetchChangelog() const override;
 
@@ -133,7 +134,7 @@ Q_SIGNALS:
     void checkForUpdatesFinished();
     void updatesCountChanged(int updatesCount);
     void fetchingUpdatesProgressChanged(int progress);
-    //void cancelTransaction();
+    // void cancelTransaction();
 
 public Q_SLOTS:
     int updatesCount();
@@ -147,12 +148,18 @@ public Q_SLOTS:
     void handleKAuthUpgradeHelperReply(KJob *job);
     void handleKAuthUpgradeHelperProgress(KJob *job, unsigned long percent);
 
-    //void transactionRemoved(Transaction* t);
-    //void cleanup();
+    // void transactionRemoved(Transaction* t);
+    // void cleanup();
 
 public:
-    QVector<QtApk::ChangesetItem> &changes() { return m_upgradeable.changes(); }
-    const QVector<QtApk::ChangesetItem> &changes() const { return m_upgradeable.changes(); }
+    QVector<QtApk::ChangesetItem> &changes()
+    {
+        return m_upgradeable.changes();
+    }
+    const QVector<QtApk::ChangesetItem> &changes() const
+    {
+        return m_upgradeable.changes();
+    }
 
 protected:
     void handleKAuthHelperError(KAuth::ExecuteJob *reply, const QVariantMap &replyData);
@@ -167,6 +174,5 @@ private:
     bool m_progressing = false;
     qreal m_upgradeProgress = 0.0;
 };
-
 
 #endif // ALPINEAPKUPDATER_H

@@ -14,7 +14,8 @@
 #include <KAuth/ActionReply>
 #include <KAuth/ExecuteJob>
 
-namespace ActionFactory {
+namespace ActionFactory
+{
 
 KAuth::ExecuteJob *createUpdateAction(const QString &fakeRoot);
 KAuth::ExecuteJob *createUpgradeAction(bool onlySimulate = false);

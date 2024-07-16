@@ -14,7 +14,7 @@ class AlpineApkResource;
 
 class AlpineApkTransaction : public Transaction
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     AlpineApkTransaction(AlpineApkResource *res, Role role);
     AlpineApkTransaction(AlpineApkResource *res, const AddonList &list, Role role);

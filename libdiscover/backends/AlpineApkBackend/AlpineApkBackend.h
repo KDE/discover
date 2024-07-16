@@ -36,14 +36,26 @@ public:
     AbstractReviewsBackend *reviewsBackend() const override;
     ResultsStream *search(const AbstractResourcesBackend::Filters &filter) override;
     ResultsStream *findResourceByPackageName(const QUrl &search);
-    QHash<QString, AlpineApkResource *> resources() const { return m_resources; }
-    QHash<QString, AlpineApkResource *> *resourcesPtr() { return &m_resources; }
-    bool isValid() const override { return true; } // No external file dependencies that could cause runtime errors
+    QHash<QString, AlpineApkResource *> resources() const
+    {
+        return m_resources;
+    }
+    QHash<QString, AlpineApkResource *> *resourcesPtr()
+    {
+        return &m_resources;
+    }
+    bool isValid() const override
+    {
+        return true;
+    } // No external file dependencies that could cause runtime errors
 
     Transaction *installApplication(AbstractResource *app) override;
     Transaction *installApplication(AbstractResource *app, const AddonList &addons) override;
     Transaction *removeApplication(AbstractResource *app) override;
-    bool isFetching() const override { return m_fetching; }
+    bool isFetching() const override
+    {
+        return m_fetching;
+    }
     int fetchingUpdatesProgress() const override;
     void checkForUpdates() override;
     QString displayName() const override;
@@ -63,7 +75,10 @@ private Q_SLOTS:
     void onAppstreamDataDownloaded();
 
 public:
-    QtApk::Database *apkdb() { return &m_apkdb; }
+    QtApk::Database *apkdb()
+    {
+        return &m_apkdb;
+    }
 
 private:
     QHash<QString, AlpineApkResource *> m_resources;

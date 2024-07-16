@@ -5,9 +5,9 @@
  */
 
 #include "AlpineApkUpdater.h"
-#include "AlpineApkResource.h"
-#include "AlpineApkBackend.h"
 #include "AlpineApkAuthActionFactory.h"
+#include "AlpineApkBackend.h"
+#include "AlpineApkResource.h"
 #include "alpineapk_backend_logging.h"
 #include "utils.h"
 
@@ -152,7 +152,8 @@ void AlpineApkUpdater::start()
 
     // run upgrade with elevated privileges
     KAuth::ExecuteJob *reply = ActionFactory::createUpgradeAction();
-    if (!reply) return;
+    if (!reply)
+        return;
 
     QObject::connect(reply, &KAuth::ExecuteJob::result, this, &AlpineApkUpdater::handleKAuthUpgradeHelperReply);
     QObject::connect(reply, &KAuth::ExecuteJob::percentChanged, this, &AlpineApkUpdater::handleKAuthUpgradeHelperProgress);
@@ -183,7 +184,8 @@ void AlpineApkUpdater::startCheckForUpdates()
     // run updates check with elevated privileges to access
     //     system package manager files
     KAuth::ExecuteJob *reply = ActionFactory::createUpdateAction(db->fakeRoot());
-    if (!reply) return;
+    if (!reply)
+        return;
     QObject::connect(reply, &KAuth::ExecuteJob::result, this, &AlpineApkUpdater::handleKAuthUpdateHelperReply);
     QObject::connect(reply, &KAuth::ExecuteJob::percentChanged, this, &AlpineApkUpdater::handleKAuthUpdateHelperProgress);
 
@@ -244,7 +246,7 @@ void AlpineApkUpdater::handleKAuthUpgradeHelperReply(KJob *job)
             QVector<QtApk::Package> pkgVector = pkgsV.value<QVector<QtApk::Package>>();
             qCDebug(LOG_ALPINEAPK) << "  num changes:" << pkgVector.size();
             for (const QtApk::Package &pkg : pkgVector) {
-                qCDebug(LOG_ALPINEAPK)  << "    " << pkg.name << pkg.version;
+                qCDebug(LOG_ALPINEAPK) << "    " << pkg.name << pkg.version;
             }
         }
     } else {
@@ -255,13 +257,10 @@ void AlpineApkUpdater::handleKAuthUpgradeHelperReply(KJob *job)
     Q_EMIT progressingChanged(m_progressing);
 }
 
-void AlpineApkUpdater::handleKAuthHelperError(
-        KAuth::ExecuteJob *reply,
-        const QVariantMap &replyData)
+void AlpineApkUpdater::handleKAuthHelperError(KAuth::ExecuteJob *reply, const QVariantMap &replyData)
 {
     // error message should be received as part of JSON reply from helper
-    QString message = replyData.value(QLatin1String("errorString"),
-                                            reply->errorString()).toString();
+    QString message = replyData.value(QLatin1String("errorString"), reply->errorString()).toString();
     if (reply->error() == KAuth::ActionReply::Error::AuthorizationDeniedError) {
         qCWarning(LOG_ALPINEAPK) << "updater: KAuth helper returned AuthorizationDeniedError";
         Q_EMIT passiveMessage(i18n("Authorization denied"));
@@ -278,4 +277,3 @@ void AlpineApkUpdater::handleKAuthHelperError(
         Q_EMIT passiveMessage(i18n("Error") + QStringLiteral(":\n") + message);
     }
 }
-

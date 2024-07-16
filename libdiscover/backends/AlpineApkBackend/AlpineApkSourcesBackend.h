@@ -35,7 +35,7 @@ private:
     void loadSources();
     void saveSources();
     void fillModelFromRepos();
-    void onItemChanged(QStandardItem* item);
+    void onItemChanged(QStandardItem *item);
 
     QStandardItemModel *m_sourcesModel = nullptr;
     DiscoverAction *m_refreshAction = nullptr;

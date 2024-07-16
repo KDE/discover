@@ -7,9 +7,9 @@
 #ifndef ALPINEAPKRESOURCE_H
 #define ALPINEAPKRESOURCE_H
 
-#include <resources/AbstractResource.h>
-#include <QtApkPackage.h>
 #include <AppStreamQt/component.h>
+#include <QtApkPackage.h>
+#include <resources/AbstractResource.h>
 
 class AddonList;
 
@@ -18,10 +18,7 @@ class AlpineApkResource : public AbstractResource
     Q_OBJECT
 
 public:
-    explicit AlpineApkResource(const QtApk::Package &apkPkg,
-                               AppStream::Component &component,
-                               AbstractResource::Type typ,
-                               AbstractResourcesBackend *parent);
+    explicit AlpineApkResource(const QtApk::Package &apkPkg, AppStream::Component &component, AbstractResource::Type typ, AbstractResourcesBackend *parent);
 
     QList<PackageState> addonsInformation() override;
     QString section() override;
@@ -41,7 +38,10 @@ public:
     QString comment() override;
     QString name() const override;
     QString packageName() const override;
-    AbstractResource::Type type() const override { return m_type; }
+    AbstractResource::Type type() const override
+    {
+        return m_type;
+    }
     bool canExecute() const override;
     void invokeApplication() const override;
     void fetchChangelog() override;
