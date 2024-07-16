@@ -143,7 +143,7 @@ void AlpineApkBackend::parseAppStreamMetadata()
 
 static AbstractResource::Type toDiscoverResourceType(const AppStream::Component &component)
 {
-    AbstractResource::Type resType = AbstractResource::Type::Technical; // default
+    AbstractResource::Type resType = AbstractResource::Type::System; // default
     // determine resource type here
     switch (component.kind()) {
     case AppStream::Component::KindDesktopApp:
@@ -155,7 +155,7 @@ static AbstractResource::Type toDiscoverResourceType(const AppStream::Component 
         resType = AbstractResource::Type::Addon;
         break;
     default:
-        resType = AbstractResource::Type::Technical;
+        resType = AbstractResource::Type::System;
         break;
     }
     return resType;
