@@ -9,47 +9,67 @@ include:
 # Commented out because they don't support appstreamqt yet, and it's probably fine
 #     - /gitlab-templates/freebsd-qt6.yml
 
-# Specifically for testing the apk backend
-# Synced from: https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/community/discover/APKBUILD
-alpine-ci:
-  image: alpine:edge
-  stage: build
+
+# CI job specifically for apk backend
+#
+# UPDATING:
+# - Update LIBAPK_QT_TAG and LIBAPK_TAG versions as needed.
+# - If the CI job changes (/gitlab-templates/linux-qt6.yml), update the image here to match it.
+# NOTE:
+# - We cannot use root here because it messes with caching for other CI jobs.
+# - We therefore need to build as the default user, and pass flags to install and use the deps from $DEPS_DIR
+apk-ci:
+  extends: suse_tumbleweed_qt67 # Job taken from /gitlab-templates/linux-qt6.yml
+  image:
+    name: invent-registry.kde.org/sysadmin/ci-images/suse-qt67:latest
+  variables:
+    #LIBAPK_QT_TAG: v0.4.6
+    # 0.4.7 should be the first working version but for now pull from git
+    LIBAPK_QT_TAG: 2d449db3fc2cfdfcf87b3f1077dce5e6e42a0dba
+    LIBAPK_TAG: v2.14.4
+    SCDOC_TAG: 1.11.3
+    # Install dependencies to a "tmp" folder
+    DEPS_DIR: /home/user/tmp
   script:
-    - apk update
+    # Build scdoc
+    - git clone https://git.sr.ht/~sircmpwn/scdoc
+    - cd scdoc
+    - git checkout $SCDOC_TAG
+    - make install PREFIX=$DEPS_DIR LDFLAGS="$LDFLAGS"
+    - cd ..
+
+    # Build apk-tools
+    - git clone https://gitlab.alpinelinux.org/alpine/apk-tools.git
+    - cd apk-tools
+    - git checkout $LIBAPK_TAG
+    - PATH="$DEPS_DIR/bin:$PATH" make LUA="no" install PREFIX=$DEPS_DIR DESTDIR=$DEPS_DIR
+    - cd ..
+
+    # Build libapk-qt
+    - git clone https://gitlab.com/postmarketOS/libapk-qt.git
+    - cd libapk-qt
+    - git checkout $LIBAPK_QT_TAG
     - >
-      apk add alpine-sdk \
-              appstream-dev \
-              attica-dev \
-              extra-cmake-modules \
-              karchive-dev \
-              kauth-dev \
-              kcmutils-dev \
-              kconfig-dev \
-              kcoreaddons-dev \
-              kcrash-dev \
-              kdbusaddons-dev \
-              kdeclarative-dev \
-              ki18n-dev \
-              kidletime-dev \
-              kio-dev \
-              kirigami-addons-dev \
-              kirigami-dev \
-              kitemmodels-dev \
-              knewstuff-dev \
-              kstatusnotifieritem-dev \
-              kuserfeedback-dev \
-              kxmlgui-dev \
-              libapk-qt-dev \
-              purpose-dev \
-              qcoro-dev \
-              qt6-qtbase-dev \
-              qt6-qtdeclarative-dev \
-              samurai
-    - >
-      cmake -B build \
+      cmake -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_DISABLE_FIND_PACKAGE_Snapd=ON \
-        -DWITH_KCM=OFF
-    - cmake --build build -- -j 8
+        -DCMAKE_PREFIX_PATH=$DEPS_DIR \
+        -DCMAKE_INSTALL_LIBDIR=$DEPS_DIR/lib \
+        -DCMAKE_INSTALL_INCLUDEDIR=$DEPS_DIR/usr/include \
+        -DLIBAPK_INCLUDE_DIR=$DEPS_DIR/usr/include \
+        -DUSE_QT6=ON
+    - cmake --build build
+    - cmake --install build
+    - cd ..
+
+    # Build Discover
+    - git config --global --add safe.directory $CI_PROJECT_DIR
+    - >
+      python3 -u ci-utilities/run-ci-build.py \
+              --project $CI_PROJECT_NAME \
+              --branch $CI_COMMIT_REF_NAME \
+              --platform Linux/Qt6/Shared \
+              --extra-cmake-args=-DBUILD_WITH_QT6=ON \
+              --extra-cmake-args=-DQT_MAJOR_VERSION=6 \
+              --extra-cmake-args=-DBUILD_AlpineApkBackend=ON \
+              --extra-cmake-args=-DCMAKE_PREFIX_PATH=$DEPS_DIR \
+              --skip-publishing
