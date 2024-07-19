@@ -358,7 +358,7 @@ msgstr "ألعاب تقمّص الأدوار"
 #, kde-format
 msgctxt "Category"
 msgid "Simulation"
-msgstr "المحاكاة"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
@@ -386,7 +386,7 @@ msgstr "حركي"
 #, kde-format
 msgctxt "Category"
 msgid "Emulators"
-msgstr "المحاكاة"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334

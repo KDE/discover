@@ -6,20 +6,21 @@
 # Dimitrios Glentadakis <dglent@gmail.com>, 2012.
 # Dimitris Kardarakos <dimkard@gmail.com>, 2014, 2015, 2016, 2017.
 # SPDX-FileCopyrightText: 2023 George Stefanakis <george.stefanakis@gmail.com>
+# SPDX-FileCopyrightText: 2024 Petros Vidalis <pvidalis@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-22 00:40+0000\n"
-"PO-Revision-Date: 2023-09-07 00:09+0300\n"
-"Last-Translator: George Stefanakis <george.stefanakis@gmail.com>\n"
-"Language-Team: Greek <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2024-07-18 11:49+0300\n"
+"Last-Translator: Petros Vidalis <pvidalis@gmail.com>\n"
+"Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.0\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: discover/DiscoverObject.cpp:176
 #, kde-format
@@ -49,18 +50,7 @@ msgid "Report This Issue to %1"
 msgstr "Αναφορά προβλήματος στο %1"
 
 #: discover/DiscoverObject.cpp:186
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -71,11 +61,9 @@ msgid ""
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 "Για να χρησιμοποιήσετε το Discover για εφαρμογές, εγκαταστήστε το <link "
-"url='https://wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> ή "
-"το <link url='https://wiki.archlinux.org/title/"
-"KDE#Discover_does_not_show_any_applications'>PackageKit</link> "
-"χρησιμοποιώντας τον διαχειριστή πακέτων <command>pacman</command>.<nl/><nl/"
-">Κοιτάξτε το <link url='https://archlinux.org/packages/extra/x86_64/"
+"url='https://wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> "
+"χρησιμοποιώντας το <command>pacman</command> διαχειριστή πακέτων.<nl/><nl/> "
+"Κοιτάξτε το <link url='https://archlinux.org/packages/extra/x86_64/"
 "discover/'>%1 για δημιουργία πακέτων για το Discover.</link>"
 
 #: discover/DiscoverObject.cpp:199
@@ -89,6 +77,13 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"Η υποστήριξη για τη διαχείριση πακέτων από το %1 δεν είναι ολοκληρωμένη. "
+"μπορεί να αντιμετωπίσετε κάποιοαριθμό προβλημάτων. Μην αναφέρετε σφάλματα "
+"στο KDE. Συνιστάται ιδιαίτερα νααπεγκαταστήσετε το πακέτο "
+"<resource>packagekit-qt6</resource> και να χρησιμοποιήστε το Discoverμόνο "
+"για τη διαχείριση Flatpaks, Snaps και Add-Ons.<para>%1 συνιστώνται οι "
+"συντηρητές να χρησιμοποιήσετε το εργαλείο γραμμής εντολών <command>pacman</"
+"command> για διαχείρισηπακέτων.</para>"
 
 #: discover/DiscoverObject.cpp:287
 #, kde-format
@@ -215,10 +210,9 @@ msgid "An application explorer"
 msgstr "Ένας εξερευνητής εφαρμογών"
 
 #: discover/main.cpp:122
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2022 Η ομάδα ανάπτυξης του Plasma"
+msgstr "© 2010-2024 Η ομάδα ανάπτυξης του Plasma"
 
 #: discover/main.cpp:123
 #, kde-format
@@ -249,13 +243,13 @@ msgstr "Πακέτο KNewStuff"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Γιώργος Στεφανάκης"
+msgstr "Γιώργος Στεφανάκης, Πέτρος Βιδάλης"
 
 #: discover/main.cpp:137
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "george.stefanakis@gmail.com"
+msgstr "george.stefanakis@gmail.com,pvidalis@gmail.com"
 
 #: discover/main.cpp:150
 #, kde-format
@@ -463,12 +457,10 @@ msgid "Reviews for %1 are temporarily unavailable"
 msgstr "Οι αξιολογήσεις για το %1 είναι προσωρινά μη διαθέσιμες"
 
 #: discover/qml/ApplicationPage.qml:719
-#, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Εμφάνιση όλων των αξιολογήσεων για %1"
+msgstr "Εμφάνιση όλων των αξιολογήσεων"
 
 #: discover/qml/ApplicationPage.qml:731
 #, kde-format
@@ -535,19 +527,7 @@ msgid "Risks of proprietary software"
 msgstr "Κίνδυνοι του Ιδιοταγούς λογισμικού"
 
 #: discover/qml/ApplicationPage.qml:912
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (<link url='%1'>"
@@ -560,32 +540,20 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
-"Ο πηγαίος κώδικας αυτής της εφαρμογής είναι μερικώς ή εξ ολοκλήρου κλειστός "
-"για επιθεώρηση και βελτίωση από το κοινό. Αυτό σημαίνει ότι τρίτα μέρη και "
-"χρήστες όπως εσείς δεν μπορούν να επαληθεύσουν τη λειτουργία, την ασφάλεια "
-"και την αξιοπιστία της ή να τροποποιήσουν και να αναδιανείμουν χωρίς τη ρητή "
-"άδεια των συγγραφέων.<nl/><nl/>Η εφαρμογή μπορεί να είναι απολύτως ασφαλής "
-"για χρήση ή μπορεί να ενεργεί εναντίον σας σε με διάφορους τρόπους, όπως η "
-"συλλογή των προσωπικών σας πληροφοριών, η παρακολούθηση της θέση σας, ή να "
-"μεταδίδει τα περιεχόμενα των αρχείων σας σε κάποιον άλλο. Υπάρχει δεν "
-"υπάρχει εύκολος τρόπος να είστε σίγουροι, οπότε θα πρέπει να εγκαταστήσετε "
-"αυτή την εφαρμογή μόνο εάν εμπιστεύεστε πλήρως τους δημιουργούς της (%1).<nl/"
-"><nl/>Μπορείτε να μάθετε περισσότερα στη διεύθυνση <link url='%2'>%</link>."
+"Εγκαταστήστε αυτήν την εφαρμογή μόνο εάν εμπιστεύεστε πλήρως τους "
+"δημιουργούς της  (<link url='%1'>%2</link>).<nl/><nl/>Ο πηγαίος κώδικας "
+"αυτής της εφαρμογής είναι εν μέρει ή πλήρως κλειστός στο κοινόεπιθεώρηση και "
+"βελτίωση. Αυτό σημαίνει τρίτα μέρη και χρήστες σαν εσάςδεν μπορεί να "
+"επαληθεύσει τη λειτουργία, την ασφάλεια και την αξιοπιστία του ή να "
+"τροποποιήσει καιαναδιανείμετε το χωρίς ρητή άδεια των συγγραφέων.<nl/><nl/"
+">ΤοΗ εφαρμογή μπορεί να είναι απολύτως ασφαλής στη χρήση ή μπορεί να ενεργεί "
+"εναντίον σαςμε διάφορους τρόπους—όπως η συλλογή των προσωπικών σας "
+"στοιχείων, η παρακολούθησητοποθεσία ή μετάδοση των περιεχομένων των αρχείων "
+"σας σε κάποιον άλλο.<nl/><nl/>Μπορείτε να μάθετε περισσότερα στη διεύθυνση "
+"<link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:913
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -598,17 +566,16 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Ο πηγαίος κώδικας αυτής της εφαρμογής είναι μερικώς ή εξ ολοκλήρου κλειστός "
-"για επιθεώρηση και βελτίωση από το κοινό. Αυτό σημαίνει ότι τρίτα μέρη και "
-"χρήστες όπως εσείς δεν μπορούν να επαληθεύσουν τη λειτουργία, την ασφάλεια "
-"και την αξιοπιστία της ή να τροποποιήσουν και να αναδιανείμουν χωρίς τη ρητή "
-"άδεια των συγγραφέων.<nl/><nl/>Η εφαρμογή μπορεί να είναι απολύτως ασφαλής "
-"για χρήση ή μπορεί να ενεργεί εναντίον σας σε με διάφορους τρόπους, όπως η "
-"συλλογή των προσωπικών σας πληροφοριών, η παρακολούθηση της θέση σας, ή να "
-"μεταδίδει τα περιεχόμενα των αρχείων σας σε κάποιον άλλο. Υπάρχει δεν "
-"υπάρχει εύκολος τρόπος να είστε σίγουροι, οπότε θα πρέπει να εγκαταστήσετε "
-"αυτή την εφαρμογή μόνο εάν εμπιστεύεστε πλήρως τους δημιουργούς της (%1).<nl/"
-"><nl/>Μπορείτε να μάθετε περισσότερα στη διεύθυνση <link url='%2'>%</link>."
+"Εγκαταστήστε αυτήν την εφαρμογή μόνο εάν εμπιστεύεστε πλήρως τους "
+"δημιουργούς της (%1).<nl/><nl/>Ο πηγαίος κώδικας αυτής της εφαρμογής είναι "
+"εν μέρει ή πλήρως κλειστός στο κοινόεπιθεώρηση και βελτίωση. Αυτό σημαίνει "
+"τρίτα μέρη και χρήστες σαν εσάςδεν μπορεί να επαληθεύσει τη λειτουργία, την "
+"ασφάλεια και την αξιοπιστία του ή να τροποποιήσει καιαναδιανείμετε το χωρίς "
+"ρητή άδεια των συγγραφέων.<nl/><nl/>ΤοΗ εφαρμογή μπορεί να είναι απολύτως "
+"ασφαλής στη χρήση ή μπορεί να ενεργεί εναντίον σαςμε διάφορους τρόπους—όπως "
+"η συλλογή των προσωπικών σας στοιχείων, η παρακολούθησητοποθεσία ή μετάδοση "
+"των περιεχομένων των αρχείων σας σε κάποιον άλλο.<nl/><nl/>Μπορείτε να "
+"μάθετε περισσότερα στη διεύθυνση <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -651,7 +618,7 @@ msgstr "Ταξινόμηση: %1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr ""
+msgstr "Συνάφεια"
 
 #: discover/qml/ApplicationsListPage.qml:114
 #, kde-format
@@ -750,7 +717,7 @@ msgstr "Πιο Δημοφιλή"
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
-msgstr ""
+msgstr "Πρόσφατα Δημοσιεύτηκε & Πρόσφατα Ενημερώθηκε"
 
 #: discover/qml/BrowsingPage.qml:153
 #, kde-format
@@ -780,29 +747,28 @@ msgstr "Εργαλεία Ανάπτυξης με την Υψηλότερη Βα�
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
-msgstr ""
+msgstr "Έναρξη"
 
 #: discover/qml/CarouselDelegate.qml:214
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
-msgstr ""
+msgstr "Παύση"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:40
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Overlay"
-msgstr ""
+msgstr "Μετάβαση σε Επικάλυψη"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:42
 #, kde-format
 msgctxt "@action:button"
 msgid "Switch to Full Screen"
-msgstr ""
+msgstr "Εναλλαγή σε πλήρη οθόνη"
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
-#, fuzzy, kde-format
-#| msgid "Close"
+#, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
@@ -812,13 +778,13 @@ msgstr "Κλείσιμο"
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "Προηγούμενο στιγμιότυπο οθόνης"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr ""
+msgstr "Επόμενο Στιγμιότυπο οθόνης"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -906,10 +872,9 @@ msgid "Copy to Clipboard"
 msgstr "Αντιγραφή στο πρόχειρο"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
-msgstr "Υποβολή πληροφοριών χρήστη"
+msgstr "Υποβολή πληροφοριών χρήσης"
 
 #: discover/qml/Feedback.qml:15
 #, kde-format
@@ -932,8 +897,7 @@ msgid "Configure"
 msgstr "Διαμόρφωση"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
 msgstr "Διαμόρφωση σχολίων..."
 
@@ -1149,52 +1113,48 @@ msgstr "Εγκαταστήστε αυτή την εφαρμογή για να γ
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr ""
+msgstr "Το πιο σχετικό"
 
 #: discover/qml/ReviewsPage.qml:155
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr ""
+msgstr "Πρόσφατα"
 
 #: discover/qml/ReviewsPage.qml:162
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "Παιχνίδια με την Υψηλότερη Βαθμολογία"
+msgstr "Υψηλότερες βαθμολογίες"
 
 #: discover/qml/ReviewsStats.qml:53
-#, fuzzy, kde-format
-#| msgid "%1 reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "%1 κριτικές"
+msgstr "%1 αξιολογήσεις"
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #: discover/qml/ReviewsStats.qml:154
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
-msgstr "άγνωστος αναθεωρητής"
+msgstr "Άγνωστος αναθεωρητής"
 
 #: discover/qml/ReviewsStats.qml:175
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "“"
 
 #: discover/qml/ReviewsStats.qml:190
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "„"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format

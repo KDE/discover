@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-26 00:40+0000\n"
-"PO-Revision-Date: 2024-06-08 21:02+0300\n"
+"PO-Revision-Date: 2024-07-18 10:00+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -958,12 +958,14 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"Внутренняя ошибка. Отправьте сообщение об ошибке на https://bugs.kde.org/"
+"enter_bug.cgi?product=Discover"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "Доступна замена"
+msgstr "Замена пакета"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:416
 #, kde-kuit-format
@@ -974,31 +976,27 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
-"Обновления пакета <resource>%1</resource> более доступны.<nl/><nl/> Заменить "
-"его пакетом, <resource>%2</resource>, который продолжает поддерживаться?"
+"Обновления пакета <resource>%1</resource> более не доступны.<nl/><nl/> "
+"Заменить его пакетом <resource>%2</resource>, который продолжает "
+"поддерживаться?"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:422
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "Автоматическое удаление"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
 msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
-"Обновления пакета <resource>%1</resource> более доступны.<nl/><nl/> Заменить "
-"его пакетом, <resource>%2</resource>, который продолжает поддерживаться?"
+"Обновления пакета <resource>%1</resource> более не доступны.<nl/> \n"
+"<p>Причина прекращения поддержки пакета: <message>%2</message></p><nl/> "
+"<p>Удалить пакет</p>?"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
 #, kde-format
