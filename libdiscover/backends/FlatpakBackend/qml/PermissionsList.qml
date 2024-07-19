@@ -18,8 +18,7 @@ ColumnLayout {
     id: root
 
     required property Discover.AbstractResource resource
-
-    visible: list.model.rowCount() > 0
+    Discover.Activatable.active: list.model.rowCount() > 0
     spacing: 0
 
     Kirigami.Heading {

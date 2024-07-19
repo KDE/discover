@@ -15,9 +15,9 @@ QQC2.Button {
     id: root
 
     required property Discover.AbstractResource resource
+    Discover.Activatable.active: resource.isInstalled && view.count > 0
 
     text: i18nd("libdiscover", "Configure permissions…")
-    visible: resource.isInstalled && view.count > 0
 
     onClicked: overlay.open()
 

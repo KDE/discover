@@ -18,6 +18,7 @@ Kirigami.InlineMessage {
 
     // actual subtype: FlatpakResource
     required property Discover.AbstractResource resource
+    Discover.Activatable.active: actions.some(action => action?.visible)
 
     readonly property bool __betaOlderThanStable: actions.some(action => action?.versionCompare < 0)
 
@@ -28,7 +29,6 @@ Kirigami.InlineMessage {
         : i18ndc("libdiscover", "@label %1 is the name of an application", "A more stable version of %1 is available.", resource.name)
 
     height: visible ? implicitHeight : 0
-    visible: actions.some(action => action?.visible)
     type: __betaOlderThanStable ? Kirigami.MessageType.Warning : Kirigami.MessageType.Information
 
     Instantiator {

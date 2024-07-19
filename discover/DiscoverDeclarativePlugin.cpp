@@ -11,6 +11,7 @@
 #include <Category/CategoryModel.h>
 #include <QQmlContext>
 #include <QQmlEngine>
+#include <QQuickItem>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/ReviewsModel.h>
@@ -28,6 +29,51 @@
 #include <resources/ResourcesProxyModel.h>
 #include <resources/ResourcesUpdatesModel.h>
 #include <resources/SourcesModel.h>
+
+class ActivatableType : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(bool active READ active WRITE setActive NOTIFY activeChanged FINAL)
+public:
+    explicit ActivatableType(QQuickItem *parent)
+        : QObject(parent)
+        , m_active(parent->isVisible())
+        , m_theItem(parent)
+    {
+    }
+
+    void setActive(bool active)
+    {
+        if (active == m_active) {
+            return;
+        }
+
+        m_active = active;
+        m_theItem->setVisible(active);
+        Q_EMIT activeChanged();
+    }
+    bool active() const
+    {
+        return m_active;
+    }
+
+    static ActivatableType *qmlAttachedProperties(QObject *object)
+    {
+        auto item = qobject_cast<QQuickItem *>(object);
+        if (!item) {
+            return nullptr;
+        }
+        return new ActivatableType(item);
+    }
+
+Q_SIGNALS:
+    void activeChanged();
+
+private:
+    bool m_active = false;
+    QQuickItem *m_theItem = nullptr;
+};
+QML_DECLARE_TYPEINFO(ActivatableType, QML_HAS_ATTACHED_PROPERTIES)
 
 void DiscoverDeclarativePlugin::registerTypes(const char * /*uri*/)
 {
@@ -52,6 +98,7 @@ void DiscoverDeclarativePlugin::registerTypes(const char * /*uri*/)
     qmlRegisterUncreatableType<Category>("org.kde.discover", 2, 0, "Category", QStringLiteral("should come from CategoryModel"));
     qmlRegisterUncreatableType<AbstractReviewsBackend>("org.kde.discover", 2, 0, "AbstractReviewsBackend", QStringLiteral("should come from the backends"));
     qmlRegisterUncreatableType<AbstractResourcesBackend>("org.kde.discover", 2, 0, "AbstractResourcesBackend", QStringLiteral("should come from the backends"));
+    qmlRegisterUncreatableType<ActivatableType>("org.kde.discover", 2, 0, "Activatable", QStringLiteral("attached"));
 
     qmlRegisterAnonymousType<TransactionModel>("org.kde.discover", 1);
     qmlRegisterAnonymousType<Rating>("org.kde.discover", 1);
@@ -68,4 +115,4 @@ void DiscoverDeclarativePlugin::registerTypes(const char * /*uri*/)
     qmlProtectModule("org.kde.discover", 2);
 }
 
-#include "moc_DiscoverDeclarativePlugin.cpp"
+#include "DiscoverDeclarativePlugin.moc"

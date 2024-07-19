@@ -8,6 +8,7 @@ set(dummy-backend_SRCS
     DummyReviewsBackend.cpp
     DummyTransaction.cpp
     DummySourcesBackend.cpp
+    resources.qrc
 )
 
 kcoreaddons_add_plugin(dummy-backend SOURCES ${dummy-backend_SRCS} INSTALL_NAMESPACE "discover")

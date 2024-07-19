@@ -19,6 +19,7 @@ Kirigami.LinkButton {
 
     // actual subtype: PackageKitResource
     required property Discover.AbstractResource resource
+    Discover.Activatable.active: resource.dependencies.length > 0
 
     property Kirigami.OverlaySheet __overlay
 
@@ -30,8 +31,6 @@ Kirigami.LinkButton {
     }
 
     text: i18nd("libdiscover", "Show Dependencies…")
-
-    visible: resource.dependencies.length > 0
 
     onClicked: __open()
 

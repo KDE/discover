@@ -13,10 +13,10 @@ Kirigami.InlineMessage {
     id: root
 
     required property Discover.AbstractResource resource
+    Discover.Activatable.active: resource.hasData && query.count.number === 0
 
     Layout.fillWidth: true
     text: i18nd("libdiscover", "%1 is not installed but it still has data present.", resource.name)
-    visible: resource.hasData && query.count.number === 0
     height: visible ? implicitHeight : 0
 
     Discover.ResourcesProxyModel {
