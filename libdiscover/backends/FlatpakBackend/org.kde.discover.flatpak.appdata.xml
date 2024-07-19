@@ -12,6 +12,7 @@
   <name xml:lang="cs">Podpůrná vrstva Flatpak</name>
   <name xml:lang="da">Flatpak-motor</name>
   <name xml:lang="de">Flatpak-Backend</name>
+  <name xml:lang="el">Σύστημα υποστήριξης Flatpak </name>
   <name xml:lang="en-GB">Flatpak backend</name>
   <name xml:lang="eo">Flatpak-backend</name>
   <name xml:lang="es">Motor Flatpak</name>
@@ -64,6 +65,7 @@
   <summary xml:lang="cs">Integruje aplikace Flatpaku do Discover</summary>
   <summary xml:lang="da">Integrerer Flatpak-programmer i Discover</summary>
   <summary xml:lang="de">Integriert Flatpak-Anwendungen in Discover</summary>
+  <summary xml:lang="el">Ενσωματώνει εφαρμογές Flatpak στο Discover</summary>
   <summary xml:lang="en-GB">Integrates Flatpak applications into Discover</summary>
   <summary xml:lang="eo">Integras Flatpak-aplikaĵojn en Discover</summary>
   <summary xml:lang="es">Integra aplicaciones Flatpak en Discover</summary>
@@ -120,6 +122,7 @@
   <developer_name xml:lang="cs">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="da">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="de">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="el">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="en-GB">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="eo">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="es">Aleix Pol Gonzalez</developer_name>
