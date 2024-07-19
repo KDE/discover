@@ -6,9 +6,15 @@
 
 #include "SnapResource.h"
 #include "SnapBackend.h"
+#include "libdiscover_snap_debug.h"
+#include <KIO/ApplicationLauncherJob>
+#include <KService>
 #include <KLocalizedString>
 #include <QBuffer>
 #include <QDebug>
+#include <QDBusInterface>
+#include <QFile>
+#include <QFileInfo>
 #include <QImageReader>
 #include <QProcess>
 #include <QStandardItemModel>
@@ -287,9 +293,43 @@ void SnapResource::fetchScreenshots()
     Q_EMIT screenshotsFetched(screenshots);
 }
 
+QString SnapResource::launchableDesktopFile() const
+{
+    QString desktopFile;
+    qCDebug(LIBDISCOVER_SNAP_LOG) << "Snap: " << packageName() << " - " << m_snap->appCount() << " app(s) detected";
+    for (int i = 0; i < m_snap->appCount(); i++) {
+        const auto appName = m_snap->app(i)->name();
+        const auto appDesktopFile = m_snap->app(i)->desktopFile();
+        if (appDesktopFile.isEmpty()) {
+            qCDebug(LIBDISCOVER_SNAP_LOG) << "App " << i << ": " << appName << ": " << "No desktop file, skipping";
+            continue;
+        }
+        if (packageName().compare(appName, Qt::CaseInsensitive) == 0) {
+            qCDebug(LIBDISCOVER_SNAP_LOG) << "App " << i << ": " << appName << ": " << "Main app, stopping search";
+            desktopFile = appDesktopFile;
+            break;
+        }
+        if (desktopFile.isEmpty()) {
+            qCDebug(LIBDISCOVER_SNAP_LOG) << "App " << i << ": " << appName << ": " << "First candidate, keeping for now";
+            desktopFile = appDesktopFile;
+        }
+    }
+    if (desktopFile.isEmpty()) {
+        qCWarning(LIBDISCOVER_SNAP_LOG) << "No desktop file found for this snap, trying expected name for the main app desktop file";
+        desktopFile = packageName() + QLatin1Char('_') + packageName() + QLatin1StringView(".desktop");
+    }
+    return QFileInfo(desktopFile).fileName();
+}
+
 void SnapResource::invokeApplication() const
 {
-    QProcess::startDetached(QStringLiteral("snap"), {QStringLiteral("run"), packageName()});
+    QDBusInterface interface(
+            QStringLiteral("io.snapcraft.Launcher"),
+            QStringLiteral("/io/snapcraft/PrivilegedDesktopLauncher"),
+            QStringLiteral("io.snapcraft.PrivilegedDesktopLauncher"),
+            QDBusConnection::sessionBus()
+    );
+    interface.call(QStringLiteral("OpenDesktopEntry"), launchableDesktopFile());
 }
 
 AbstractResource::Type SnapResource::type() const
@@ -366,7 +406,7 @@ public:
                     // qDebug() << "xxx" << plug->name() << plug->label() << plug->interface() << slot->snap() << "slot:" << slot->name() <<
                     // slot->snap() << slot->interface() << slot->label();
                     item->setCheckable(true);
-                    item->setCheckState(plug->connectionCount() > 0 ? Qt::Checked : Qt::Unchecked);
+                    item->setCheckState(plug->connectedSlotCount() > 0 ? Qt::Checked : Qt::Unchecked);
                     item->setData(plug->name(), PlugNameRole);
                     item->setData(slot->snap(), SlotSnapRole);
                     item->setData(slot->name(), SlotNameRole);
