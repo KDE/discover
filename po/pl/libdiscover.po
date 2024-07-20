@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-20 00:40+0000\n"
 "PO-Revision-Date: 2024-06-29 09:50+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -984,7 +984,7 @@ msgstr ""
 "Nie są już wydawane uaktualnienia do <resource>%1</resource>.<nl/><p>Powodem "
 "jest: <message>%2</message></p><nl/><p>Czy usunąć go?</p>"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -994,7 +994,7 @@ msgstr ""
 "Ta wersja rozwojowa %1 jest przestarzała. Użycie wersji stabilnej jest "
 "wysoce zalecane."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:29
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
@@ -1006,7 +1006,7 @@ msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr "Obejrzyj stabilną wersję na %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:18
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 nie jest wgrany, lecz pozostawił swoje dane."
@@ -1021,15 +1021,15 @@ msgstr "Usuń ustawienia i dane użytkownika"
 msgid "Clearing settings and user data…"
 msgstr "Czyszczenie danych ustawień i użytkownika…"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:22
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:27
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "Uprawnienia dla %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:79
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:19
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:78
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Ustawienia uprawnień…"
@@ -2299,22 +2299,22 @@ msgstr[2] ""
 "Działanie to usunie także następujące pakiety:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "Pokaż zależności..."
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:44
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:43
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "Zależności dla pakietu: %1"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:30
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:31
 #, kde-format
 msgid "Full Access"
 msgstr "Pełny dostęp"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:31
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:32
 #, kde-format
 msgid "Can access everything on the system"
 msgstr "Ma dostęp do wszystkiego na systemie"
@@ -2516,7 +2516,7 @@ msgstr "Działanie w trakcie (rozpoczęte poza Odkrywcą)"
 msgid "Unknown transaction type"
 msgstr "Nieznany rodzaj transakcji"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:21
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, kde-format
 msgid "Channels…"
 msgstr "Kanały…"
@@ -2527,7 +2527,7 @@ msgid "%1 channels"
 msgstr "%1 kanałów"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:43
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:364
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:404
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"

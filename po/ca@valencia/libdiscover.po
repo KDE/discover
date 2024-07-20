@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-20 00:40+0000\n"
 "PO-Revision-Date: 2024-06-26 10:19+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -988,7 +988,7 @@ msgstr ""
 "<resource>%1</resource> ja no rep actualitzacions.<nl/><p>El motiu indicat "
 "és: <message>%2</message></p><nl/><p>Voleu eliminar-lo automàticament?</p>"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -998,7 +998,7 @@ msgstr ""
 "Esta versió de desenvolupament de %1 està obsoleta. Es recomana utilitzar la "
 "versió estable."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:29
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
@@ -1010,7 +1010,7 @@ msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr "Visualitza la versió estable a %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:18
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 no està instal·lada, però encara té dades presents."
@@ -1025,15 +1025,15 @@ msgstr "Suprimix la configuració i les dades d'usuari"
 msgid "Clearing settings and user data…"
 msgstr "Neteja la configuració i les dades d'usuari…"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:22
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:27
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "Permisos de %1"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:79
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:19
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:78
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
 #, kde-format
 msgid "Configure permissions…"
 msgstr "Configura els permisos…"
@@ -2303,22 +2303,22 @@ msgstr[1] ""
 "Esta acció també eliminarà els paquets següents:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "Mostra les dependències…"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:44
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:43
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "Dependències del paquet: %1"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:30
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:31
 #, kde-format
 msgid "Full Access"
 msgstr "Accés complet"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:31
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:32
 #, kde-format
 msgid "Can access everything on the system"
 msgstr "Pot accedir a tot el sistema"
@@ -2531,7 +2531,7 @@ msgstr "L'operació està en curs (s'ha iniciat fora de Discover)"
 msgid "Unknown transaction type"
 msgstr "Tipus de transacció desconeguda"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:21
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, kde-format
 msgid "Channels…"
 msgstr "Canals…"
@@ -2542,7 +2542,7 @@ msgid "%1 channels"
 msgstr "%1 canals"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:43
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:364
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:404
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-26 00:40+0000\n"
+"POT-Creation-Date: 2024-07-20 00:40+0000\n"
 "PO-Revision-Date: 2024-06-26 05:37+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -979,7 +979,7 @@ msgstr ""
 "<resource>%1</resource> განახლებებს აღარ იღებს.<nl/><p>მოწოდებული მიზეზია: "
 "<resource>%2</resource></p><nl/><p>წავშალო ის ავტომატურად?</p>"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:27
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -989,7 +989,7 @@ msgstr ""
 "%1-ის სატესტო ვერსია მოძველებულია. რეკომენდებულია სტაბილური ვერსიის "
 "გამოყენება."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:29
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
@@ -1001,7 +1001,7 @@ msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
 msgstr "%1-ზე სტაბილური ვერსიის ნახვა"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:18
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
 #, kde-format
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 დაყენებული არაა, მაგრამ მისი მონაცემები ჯერ კიდევ ხელმისაწვდომია."
@@ -1016,15 +1016,15 @@ msgstr "პარამეტრებისა და მომხმარე�
 msgid "Clearing settings and user data…"
 msgstr "პარამეტრებისა და მომხმარებლის მონაცემების გასუფთავება…"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:28
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:22
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:27
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
 #, kde-format
 msgctxt "%1 is the name of the application"
 msgid "Permissions for %1"
 msgstr "%1-ის წვდომები"
 
-#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:79
-#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:19
+#: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:78
+#: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
 #, kde-format
 msgid "Configure permissions…"
 msgstr "წვდომების მორგება…"
@@ -2278,22 +2278,22 @@ msgstr[1] ""
 "ეს ქმედება ასევე წაშლის შემდეგ პაკეტებსაც:\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
 #, kde-format
 msgid "Show Dependencies…"
 msgstr "დამოკიდებულებების ჩვენება…"
 
-#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:44
+#: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:43
 #, kde-format
 msgid "Dependencies for package: %1"
 msgstr "დამოკიდებულებები პაკეტისთვის: %1"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:30
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:31
 #, kde-format
 msgid "Full Access"
 msgstr "სრული წვდომა"
 
-#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:31
+#: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:32
 #, kde-format
 msgid "Can access everything on the system"
 msgstr "შეუძლია სისტემაში ყველაფერთან წვდომა"
@@ -2493,7 +2493,7 @@ msgstr "ტრანზაქცია უკვე გაშვებული�
 msgid "Unknown transaction type"
 msgstr "ტრანზაქციის უცნობი ტიპი"
 
-#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:21
+#: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, kde-format
 msgid "Channels…"
 msgstr "არხები…"
@@ -2504,7 +2504,7 @@ msgid "%1 channels"
 msgstr "%1 არხი"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:43
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:364
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:404
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"

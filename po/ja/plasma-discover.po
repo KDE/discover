@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-22 00:40+0000\n"
+"POT-Creation-Date: 2024-07-20 00:40+0000\n"
 "PO-Revision-Date: 2024-02-09 15:37+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -384,141 +384,141 @@ msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr "利用可能な %1 のスクリーンショットはありません"
 
-#: discover/qml/ApplicationPage.qml:554
+#: discover/qml/ApplicationPage.qml:561
 #, kde-format
 msgid "Documentation"
 msgstr "ドキュメンテーション"
 
-#: discover/qml/ApplicationPage.qml:555
+#: discover/qml/ApplicationPage.qml:562
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "プロジェクトの公式ドキュメンテーションを読む"
 
-#: discover/qml/ApplicationPage.qml:571
+#: discover/qml/ApplicationPage.qml:578
 #, kde-format
 msgid "Website"
 msgstr "ウェブサイト"
 
-#: discover/qml/ApplicationPage.qml:572
+#: discover/qml/ApplicationPage.qml:579
 #, kde-format
 msgid "Visit the project's website"
 msgstr "プロジェクトのウェブサイトを訪れる"
 
-#: discover/qml/ApplicationPage.qml:588
+#: discover/qml/ApplicationPage.qml:595
 #, kde-format
 msgid "Addons"
 msgstr "アドオン"
 
-#: discover/qml/ApplicationPage.qml:589
+#: discover/qml/ApplicationPage.qml:596
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "追加の機能をインストールもしくは削除する"
 
-#: discover/qml/ApplicationPage.qml:608
+#: discover/qml/ApplicationPage.qml:615
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "共有"
 
-#: discover/qml/ApplicationPage.qml:609
+#: discover/qml/ApplicationPage.qml:616
 #, kde-format
 msgid "Send a link for this application"
 msgstr "このアプリケーションへのリンクを送信する "
 
-#: discover/qml/ApplicationPage.qml:625
+#: discover/qml/ApplicationPage.qml:632
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "%1 を試してみて！"
 
-#: discover/qml/ApplicationPage.qml:645
+#: discover/qml/ApplicationPage.qml:652
 #, kde-format
 msgid "What's New"
 msgstr "新着情報"
 
-#: discover/qml/ApplicationPage.qml:675
+#: discover/qml/ApplicationPage.qml:682
 #, kde-format
 msgid "Reviews"
 msgstr "レビュー"
 
-#: discover/qml/ApplicationPage.qml:687
+#: discover/qml/ApplicationPage.qml:694
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "%1 のレビューを読み込み中"
 
-#: discover/qml/ApplicationPage.qml:695
+#: discover/qml/ApplicationPage.qml:702
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "%1 のレビューは一時的に利用できません"
 
-#: discover/qml/ApplicationPage.qml:719
+#: discover/qml/ApplicationPage.qml:726
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "レビューをすべて表示"
 
-#: discover/qml/ApplicationPage.qml:731
+#: discover/qml/ApplicationPage.qml:738
 #, kde-format
 msgid "Write a Review"
 msgstr "レビューを書く"
 
-#: discover/qml/ApplicationPage.qml:731
+#: discover/qml/ApplicationPage.qml:738
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "レビューを書くにはこのアプリケーションをインストールしてください"
 
-#: discover/qml/ApplicationPage.qml:743
+#: discover/qml/ApplicationPage.qml:750
 #, kde-format
 msgid "Get Involved"
 msgstr "参加する"
 
-#: discover/qml/ApplicationPage.qml:785
+#: discover/qml/ApplicationPage.qml:792
 #, kde-format
 msgid "Donate"
 msgstr "寄付"
 
-#: discover/qml/ApplicationPage.qml:786
+#: discover/qml/ApplicationPage.qml:793
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "プロジェクトに寄付して開発者を支援する"
 
-#: discover/qml/ApplicationPage.qml:802
+#: discover/qml/ApplicationPage.qml:809
 #, kde-format
 msgid "Report Bug"
 msgstr "バグを報告"
 
-#: discover/qml/ApplicationPage.qml:803
+#: discover/qml/ApplicationPage.qml:810
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "見つけた問題を記録して修正を支援する"
 
-#: discover/qml/ApplicationPage.qml:819
+#: discover/qml/ApplicationPage.qml:826
 #, kde-format
 msgid "Contribute"
 msgstr "貢献"
 
-#: discover/qml/ApplicationPage.qml:820
+#: discover/qml/ApplicationPage.qml:827
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "プログラミング、デザイン、テストもしくは翻訳に参加して開発者を支援する"
 
-#: discover/qml/ApplicationPage.qml:852
+#: discover/qml/ApplicationPage.qml:859
 #, kde-format
 msgid "All Licenses"
 msgstr "すべてのライセンス"
 
-#: discover/qml/ApplicationPage.qml:885
+#: discover/qml/ApplicationPage.qml:892
 #, kde-format
 msgid "Content Rating"
 msgstr "レーティング情報"
 
-#: discover/qml/ApplicationPage.qml:902
+#: discover/qml/ApplicationPage.qml:909
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "プロプライエタリソフトウェアのリスク"
 
-#: discover/qml/ApplicationPage.qml:912
+#: discover/qml/ApplicationPage.qml:919
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -553,7 +553,7 @@ msgstr ""
 "フトウェアの作者 (%1) を完全に信頼する場合のみインストールすることが推奨され"
 "ます。<nl/><nl/><link url='%2'>%2</link> でさらなる情報を得ることができます。"
 
-#: discover/qml/ApplicationPage.qml:913
+#: discover/qml/ApplicationPage.qml:920
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""

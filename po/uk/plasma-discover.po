@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-22 00:40+0000\n"
+"POT-Creation-Date: 2024-07-20 00:40+0000\n"
 "PO-Revision-Date: 2024-06-08 09:42+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
@@ -389,144 +389,144 @@ msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr "Знімки вікон для %1 недоступні"
 
-#: discover/qml/ApplicationPage.qml:554
+#: discover/qml/ApplicationPage.qml:561
 #, kde-format
 msgid "Documentation"
 msgstr "Документація"
 
-#: discover/qml/ApplicationPage.qml:555
+#: discover/qml/ApplicationPage.qml:562
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Ознайомитися із офіційною документацією до проєкту"
 
-#: discover/qml/ApplicationPage.qml:571
+#: discover/qml/ApplicationPage.qml:578
 #, kde-format
 msgid "Website"
 msgstr "Сайт"
 
-#: discover/qml/ApplicationPage.qml:572
+#: discover/qml/ApplicationPage.qml:579
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Відвідати сайт проєкту"
 
-#: discover/qml/ApplicationPage.qml:588
+#: discover/qml/ApplicationPage.qml:595
 #, kde-format
 msgid "Addons"
 msgstr "Додатки"
 
-#: discover/qml/ApplicationPage.qml:589
+#: discover/qml/ApplicationPage.qml:596
 #, kde-format
 msgid "Install or remove additional functionality"
 msgstr "Встановити або вилучити додаткові функціональні можливості"
 
-#: discover/qml/ApplicationPage.qml:608
+#: discover/qml/ApplicationPage.qml:615
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
 msgstr "Оприлюднити"
 
-#: discover/qml/ApplicationPage.qml:609
+#: discover/qml/ApplicationPage.qml:616
 #, kde-format
 msgid "Send a link for this application"
 msgstr "Надіслати посилання на цю програму"
 
-#: discover/qml/ApplicationPage.qml:625
+#: discover/qml/ApplicationPage.qml:632
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Познайомтеся із %1!"
 
-#: discover/qml/ApplicationPage.qml:645
+#: discover/qml/ApplicationPage.qml:652
 #, kde-format
 msgid "What's New"
 msgstr "Що нового?"
 
-#: discover/qml/ApplicationPage.qml:675
+#: discover/qml/ApplicationPage.qml:682
 #, kde-format
 msgid "Reviews"
 msgstr "Рецензії"
 
-#: discover/qml/ApplicationPage.qml:687
+#: discover/qml/ApplicationPage.qml:694
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Завантажуємо рецензії щодо %1"
 
-#: discover/qml/ApplicationPage.qml:695
+#: discover/qml/ApplicationPage.qml:702
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "Рецензії щодо %1 тимчасово недоступні"
 
-#: discover/qml/ApplicationPage.qml:719
+#: discover/qml/ApplicationPage.qml:726
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Показати усі рецензії"
 
-#: discover/qml/ApplicationPage.qml:731
+#: discover/qml/ApplicationPage.qml:738
 #, kde-format
 msgid "Write a Review"
 msgstr "Написати рецензію"
 
-#: discover/qml/ApplicationPage.qml:731
+#: discover/qml/ApplicationPage.qml:738
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Встановіть, щоб написати рецензію"
 
-#: discover/qml/ApplicationPage.qml:743
+#: discover/qml/ApplicationPage.qml:750
 #, kde-format
 msgid "Get Involved"
 msgstr "Участь у команді"
 
-#: discover/qml/ApplicationPage.qml:785
+#: discover/qml/ApplicationPage.qml:792
 #, kde-format
 msgid "Donate"
 msgstr "Підтримати фінансово"
 
-#: discover/qml/ApplicationPage.qml:786
+#: discover/qml/ApplicationPage.qml:793
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 "Підтримати і віддячити розробникам, надавши фінансову підтримку проєкту"
 
-#: discover/qml/ApplicationPage.qml:802
+#: discover/qml/ApplicationPage.qml:809
 #, kde-format
 msgid "Report Bug"
 msgstr "Повідомити про ваду"
 
-#: discover/qml/ApplicationPage.qml:803
+#: discover/qml/ApplicationPage.qml:810
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Створити повідомлення про ваду, яке допоможе поліпшити програму"
 
-#: discover/qml/ApplicationPage.qml:819
+#: discover/qml/ApplicationPage.qml:826
 #, kde-format
 msgid "Contribute"
 msgstr "Візьміть участь"
 
-#: discover/qml/ApplicationPage.qml:820
+#: discover/qml/ApplicationPage.qml:827
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Допоможіть розробникам своїми навичками програмування, дизайну, тестування "
 "або перекладу"
 
-#: discover/qml/ApplicationPage.qml:852
+#: discover/qml/ApplicationPage.qml:859
 #, kde-format
 msgid "All Licenses"
 msgstr "Усі умови ліцензування"
 
-#: discover/qml/ApplicationPage.qml:885
+#: discover/qml/ApplicationPage.qml:892
 #, kde-format
 msgid "Content Rating"
 msgstr "Оцінка вмісту"
 
-#: discover/qml/ApplicationPage.qml:902
+#: discover/qml/ApplicationPage.qml:909
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Ризики, які пов'язано із пропрієтарними програмами"
 
-#: discover/qml/ApplicationPage.qml:912
+#: discover/qml/ApplicationPage.qml:919
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -551,7 +551,7 @@ msgstr ""
 "стороннім особам.<nl/><nl/>Докладніше про це можна дізнатися тут: <link "
 "url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:913
+#: discover/qml/ApplicationPage.qml:920
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
