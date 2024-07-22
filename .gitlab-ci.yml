@@ -29,7 +29,7 @@ apk-ci:
     LIBAPK_TAG: v2.14.4
     SCDOC_TAG: 1.11.3
     # Install dependencies to a "tmp" folder
-    DEPS_DIR: /home/user/tmp
+    DEPS_DIR: $CI_PROJECT_DIR/_install
   script:
     # Build scdoc
     - git clone https://git.sr.ht/~sircmpwn/scdoc
