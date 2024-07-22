@@ -5,7 +5,6 @@
  */
 
 #include "CategoriesReader.h"
-#include "Category.h"
 #include "libdiscover_debug.h"
 #include <QCoreApplication>
 #include <QFile>
@@ -28,13 +27,13 @@ QVector<Category *> CategoriesReader::loadCategoriesFile(AbstractResourcesBacken
         Category::sortCategories(categories);
         return categories;
     }
-    return loadCategoriesPath(path);
+    return loadCategoriesPath(path, Category::Localization::Yes);
 }
 
-QVector<Category *> CategoriesReader::loadCategoriesPath(const QString &path)
+QVector<Category *> CategoriesReader::loadCategoriesPath(const QString &path, Category::Localization localization)
 {
     QVector<Category *> ret;
-    qCDebug(LIBDISCOVER_LOG) << "CategoriesReader: Load categories from file" << path;
+    qCDebug(LIBDISCOVER_LOG) << "CategoriesReader: Load categories from file" << path << "with l10n" << (localization == Category::Localization::Yes);
     QFile menuFile(path);
     if (!menuFile.open(QIODevice::ReadOnly)) {
         qCWarning(LIBDISCOVER_LOG).nospace().noquote() << "CategoriesReader: Couldn't open the categories file " << path << ": " << menuFile.errorString();
@@ -49,7 +48,7 @@ QVector<Category *> CategoriesReader::loadCategoriesPath(const QString &path)
 
         if (xml.isStartElement() && xml.name() == QLatin1String("Menu")) {
             ret << new Category({path}, qApp);
-            ret.last()->parseData(path, &xml);
+            ret.last()->parseData(path, &xml, localization);
         }
     }
 
@@ -58,6 +57,20 @@ QVector<Category *> CategoriesReader::loadCategoriesPath(const QString &path)
             << "CategoriesReader: Error while parsing the categories file " << path << ':' << xml.lineNumber() << ": " << xml.errorString();
     }
 
+    if (const auto optionalString = Category::duplicatedNamesAsStringNested(ret); optionalString) {
+        switch (localization) {
+        case Category::Localization::Force:
+        case Category::Localization::No:
+            Q_ASSERT_X(false, Q_FUNC_INFO, qUtf8Printable(optionalString.value()));
+            break;
+        case Category::Localization::Yes:
+            qCWarning(LIBDISCOVER_LOG) << "Category has duplicates. Reloading without translations!";
+            qDeleteAll(ret);
+            ret = loadCategoriesPath(path, Category::Localization::No);
+            break;
+        }
+    }
     Category::sortCategories(ret);
+
     return ret;
 }
