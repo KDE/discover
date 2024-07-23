@@ -33,7 +33,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-20 00:40+0000\n"
+"POT-Creation-Date: 2024-07-23 00:40+0000\n"
 "PO-Revision-Date: 2024-07-17 12:09+0400\n"
 "Last-Translator: Khayyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -125,6 +125,70 @@ msgstr "Faydaları haqqında məlumat təqdim edərkən xəta: %1"
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Rəy göndərmə zamanı xəta: %1"
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
+#, fuzzy, kde-format
+#| msgid "Packages to remove"
+msgid "Package management"
+msgstr "Paketlərin silinməsi"
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:210
+#, kde-format
+msgid "Loading, please wait..."
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:296
+#, fuzzy, kde-format
+#| msgid "Additional packages: "
+msgctxt "Root category name"
+msgid "Alpine Linux packages"
+msgstr "Əlavə paketlər: "
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:467
+#, kde-format
+msgctxt "Backend plugin display name"
+msgid "Alpine APK"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:266
+#, kde-format
+msgid "Authorization denied"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
+#, kde-format
+msgid "Error: "
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
+#, kde-format
+msgctxt "Adding repo"
+msgid ""
+"Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
+"alpine/edge/testing/"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
+#, kde-format
+msgid "Error: Authorization denied"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:277
+#, kde-format
+msgid "Error"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
+#, kde-format
+msgid "Failed to open APK database!"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
+#, kde-format
+msgid "Failed to get a list of packages to upgrade!"
+msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -2764,9 +2828,6 @@ msgstr "Əlavələr"
 
 #~ msgid "Error while fetching reviews: %1"
 #~ msgstr "Rəylərin alınmasında xəta: %1"
-
-#~ msgid "Packages to remove"
-#~ msgstr "Paketlərin silinməsi"
 
 #~ msgid "%1, released on %2"
 #~ msgstr "%1, %2 buraxılışı"

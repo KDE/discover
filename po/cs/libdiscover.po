@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-20 00:40+0000\n"
+"POT-Creation-Date: 2024-07-23 00:40+0000\n"
 "PO-Revision-Date: 2024-06-26 15:10+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -99,6 +99,68 @@ msgstr ""
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:286
 #, kde-format
 msgid "Error while submitting review: %1"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
+#, kde-format
+msgid "Package management"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:210
+#, kde-format
+msgid "Loading, please wait..."
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:296
+#, kde-format
+msgctxt "Root category name"
+msgid "Alpine Linux packages"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:467
+#, kde-format
+msgctxt "Backend plugin display name"
+msgid "Alpine APK"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:266
+#, kde-format
+msgid "Authorization denied"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
+#, kde-format
+msgid "Error: "
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
+#, kde-format
+msgctxt "Adding repo"
+msgid ""
+"Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
+"alpine/edge/testing/"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
+#, kde-format
+msgid "Error: Authorization denied"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:277
+#, kde-format
+msgid "Error"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
+#, kde-format
+msgid "Failed to open APK database!"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
+#, kde-format
+msgid "Failed to get a list of packages to upgrade!"
 msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4

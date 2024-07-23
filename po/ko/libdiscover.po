@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-20 00:40+0000\n"
+"POT-Creation-Date: 2024-07-23 00:40+0000\n"
 "PO-Revision-Date: 2024-02-09 20:10+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -98,6 +98,71 @@ msgstr "유용성 정보를 제출하는 중 오류 발생: %1"
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "리뷰를 제출하는 중 오류 발생: %1"
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
+#, fuzzy, kde-format
+#| msgid "Software Management"
+msgid "Package management"
+msgstr "소프트웨어 관리"
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:210
+#, kde-format
+msgid "Loading, please wait..."
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:296
+#, fuzzy, kde-format
+#| msgid "Additional packages: "
+msgctxt "Root category name"
+msgid "Alpine Linux packages"
+msgstr "추가 패키지: "
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:467
+#, kde-format
+msgctxt "Backend plugin display name"
+msgid "Alpine APK"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:266
+#, kde-format
+msgid "Authorization denied"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
+#, fuzzy, kde-format
+#| msgid "Error"
+msgid "Error: "
+msgstr "오류"
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
+#, kde-format
+msgctxt "Adding repo"
+msgid ""
+"Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
+"alpine/edge/testing/"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
+#, kde-format
+msgid "Error: Authorization denied"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:277
+#, kde-format
+msgid "Error"
+msgstr "오류"
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
+#, kde-format
+msgid "Failed to open APK database!"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
+#, kde-format
+msgid "Failed to get a list of packages to upgrade!"
+msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -2833,9 +2898,6 @@ msgstr "부가 기능"
 #~ msgid "Change Log:"
 #~ msgstr "변경 기록:"
 
-#~ msgid "Software Management"
-#~ msgstr "소프트웨어 관리"
-
 #~ msgctxt "Category"
 #~ msgid "Science & Engineering"
 #~ msgstr "과학과 공학"
@@ -3435,9 +3497,6 @@ msgstr "부가 기능"
 
 #~ msgid "Something went wrong!"
 #~ msgstr "무언가 잘못되었습니다!"
-
-#~ msgid "Error"
-#~ msgstr "오류"
 
 #~ msgid "There are a couple of transaction messages:"
 #~ msgstr "다음은 트랜잭션 메시지입니다:"

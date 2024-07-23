@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-20 00:40+0000\n"
+"POT-Creation-Date: 2024-07-23 00:40+0000\n"
 "PO-Revision-Date: 2024-06-27 14:47+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -110,6 +110,71 @@ msgstr "Erreur lors de l'envoi de l'utilité : %1"
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Erreur lors de l'envoi de l'avis : %1"
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
+#, fuzzy, kde-format
+#| msgid "Software Management"
+msgid "Package management"
+msgstr "Gestion de logiciels"
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:210
+#, kde-format
+msgid "Loading, please wait..."
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:296
+#, fuzzy, kde-format
+#| msgid "Additional packages: "
+msgctxt "Root category name"
+msgid "Alpine Linux packages"
+msgstr "Paquets additionnels :"
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:467
+#, kde-format
+msgctxt "Backend plugin display name"
+msgid "Alpine APK"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:266
+#, kde-format
+msgid "Authorization denied"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
+#, fuzzy, kde-format
+#| msgid "Error"
+msgid "Error: "
+msgstr "Erreur"
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
+#, kde-format
+msgctxt "Adding repo"
+msgid ""
+"Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
+"alpine/edge/testing/"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
+#, kde-format
+msgid "Error: Authorization denied"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:277
+#, kde-format
+msgid "Error"
+msgstr "Erreur"
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
+#, kde-format
+msgid "Failed to open APK database!"
+msgstr ""
+
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
+#, kde-format
+msgid "Failed to get a list of packages to upgrade!"
+msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -2951,9 +3016,6 @@ msgstr "Modules complémentaires"
 #~ msgid "Change Log:"
 #~ msgstr "Journal des modifications :"
 
-#~ msgid "Software Management"
-#~ msgstr "Gestion de logiciels"
-
 #~ msgctxt "Category"
 #~ msgid "Science & Engineering"
 #~ msgstr "Science et ingénierie"
@@ -3561,9 +3623,6 @@ msgstr "Modules complémentaires"
 
 #~ msgid "Something went wrong!"
 #~ msgstr "Quelque chose s'est mal passé !"
-
-#~ msgid "Error"
-#~ msgstr "Erreur"
 
 #~ msgid "There are a couple of transaction messages:"
 #~ msgstr "Il y a quelques messages de transaction :"
