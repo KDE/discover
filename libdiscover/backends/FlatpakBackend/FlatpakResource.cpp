@@ -226,7 +226,7 @@ QVariant FlatpakResource::icon() const
         ret = QIcon(m_bundledIcon);
     } else if (icons.isEmpty()) {
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
-    } else
+    } else {
         for (const AppStream::Icon &icon : icons) {
             switch (icon.kind()) {
             case AppStream::Icon::KindLocal:
@@ -245,7 +245,8 @@ QVariant FlatpakResource::icon() const
                 } else {
                     ret.addFile(path, icon.size());
                 }
-            } break;
+                break;
+            }
             case AppStream::Icon::KindStock: {
                 if (m_stockIcon) {
                     return QIcon::fromTheme(icon.name());
@@ -263,6 +264,7 @@ QVariant FlatpakResource::icon() const
                 break;
             }
         }
+    }
 
     if (ret.isNull()) {
         ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
