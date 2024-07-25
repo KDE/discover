@@ -1,6 +1,8 @@
 [org.kde.discover.alpineapkbackend.pkgmgmt]
 Name=Package management
+Name[bg]=Управление на пакети
 Name[ca]=Gestió de paquets
+Name[ca@valencia]=Gestió de paquets
 Name[es]=Gestión de paquetes
 Name[eu]=Pakete kudeaketa
 Name[he]=ניהול חבילות
@@ -14,7 +16,9 @@ Name[uk]=Керування пакунками
 Name[x-test]=xxPackage managementxx
 Name[zh_TW]=軟體包管理
 Description=Install/remove/upgrade packages
+Description[bg]=Инсталиране/премахване/актуализация на пакети
 Description[ca]=Instal·la/elimina/actualitza paquets
+Description[ca@valencia]=Instal·la/elimina/actualitza paquets
 Description[es]=Instalar/eliminar/actualizar paquetes
 Description[eu]=Paketeak instalatu/kendu/eguneratu
 Description[he]=התקנת/הסרת/שדרוג חבילות
