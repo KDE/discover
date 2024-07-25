@@ -1035,6 +1035,12 @@ void FlatpakResource::clearUserData()
 
 int FlatpakResource::versionCompare(FlatpakResource *resource) const
 {
+    // This is getting called from QML, we better sanitize the input
+    if (!resource) {
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Cannot compare with a null resource";
+        return -1;
+    }
+
     const QString other = resource->availableVersion();
     return AppStream::Utils::vercmpSimple(availableVersion(), other);
 }

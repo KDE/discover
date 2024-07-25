@@ -42,7 +42,7 @@ Kirigami.InlineMessage {
         delegate: Kirigami.Action {
             required property var model
 
-            readonly property int versionCompare: root.resource.versionCompare(model.application)
+            readonly property int versionCompare: model.application ? root.resource.versionCompare(model.application) : -1
 
             visible: instantiator.active && model.application !== root.resource && model.application.branch !== "beta" && model.application.branch !== "master" && versionCompare !== 0
             text: i18ndc("libdiscover", "@action: button %1 is the name of a Flatpak repo", "View Stable Version on %1", model.displayOrigin)
