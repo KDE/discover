@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-23 00:40+0000\n"
+"POT-Creation-Date: 2024-07-25 00:40+0000\n"
 "PO-Revision-Date: 2024-06-28 11:29+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -621,7 +621,7 @@ msgstr "Engar Flatpak-slóðir tiltækar."
 msgid "Failed to load \"%1\" source"
 msgstr "Mistókst að hlaða slóðinni \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:362
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:364
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -633,71 +633,71 @@ msgstr ""
 "þessu safni verða einnig gerð tiltæk í Discover þegar forritið er sett upp.</"
 "para>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:454
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:456
 #, kde-format
 msgid "Retrieving size information"
 msgstr "Sæki upplýsingar um stærð"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:456
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:458
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Óþekkt"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:512
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:514
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:489
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "Mistókst að ræsa '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:742
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:744
 #, kde-format
 msgid "All Files"
 msgstr "Allar skrár"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:744
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:746
 #, kde-format
 msgid "Home"
 msgstr "Heim"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:746
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:748
 #, kde-format
 msgid "Downloads"
 msgstr "Sóttar skrár"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:748
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:750
 #, kde-format
 msgid "Music"
 msgstr "Tónlist"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
 #, kde-format
 msgid "Network Access"
 msgstr "Netaðgengi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:824
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:826
 #, kde-format
 msgid "Can access the internet"
 msgstr "Getur tengst netinu"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:833
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
 #, kde-format
 msgid "Sound system access"
 msgstr "Aðgengi að hljóðkerfi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:836
 #, kde-format
 msgid "Can play audio"
 msgstr "Getur spilað hljóð"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:982
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:984
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Aðgangur að tengibraut setu"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
@@ -706,53 +706,53 @@ msgstr ""
 "Getur átt samskipti við öll önnur forrit og vinnslur sem eru keyrð á þessum "
 "notandareikningi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:994
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:846
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:996
 #, kde-format
 msgid "System Bus Access"
 msgstr "Aðgangur að tengibraut kerfis"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:845
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:847
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr "Getur átt samskipti við öll önnur forrit og vinnslur í stýrikerfinu"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Aðgangur að fjartengdri innskráningu"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:853
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "Getur hafið fjartengda innskráningu með SSH-samskiptareglunni"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:857
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Aðgangur að snjallkorti"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "Getur tengst og átt samskipti við snjallkort"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
 msgid "Printer Access"
 msgstr "Aðgangur að prentara"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:861
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "Getur tengst og átt samskipti við prentara"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:865
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
 #, kde-format
 msgid "GPG Agent"
 msgstr "GPG-miðlari"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:866
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -761,70 +761,70 @@ msgstr ""
 "Leyfir aðgang að GPG-dulritunarþjónustu, almennt notuð til að undirrita og "
 "lesa undirrituð skjöl"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:872
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "Aðgangur að Bluetooth"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:873
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:875
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "Getur tengst og átt samskipti við Bluetooth-tæki"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:877
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:879
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "Lágmarksaðgangur að stýrikerfi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:878
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:880
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "Getur framkvæmt lágmarkskerfisköll (t.d. ptrace)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:884
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
 #, kde-format
 msgid "Device Access"
 msgstr "Aðgangur að tæki"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:885
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:887
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr "Getur átt samskipti við og stjórnað innbyggðum eða tengdum vélbúnaði"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:889
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:891
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Aðgangur að virkni í kjarna fyrir sýndarvél"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:890
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:892
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr "Leyfir keyrslu gestastýrikerfa í sýndarvél"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:917
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:919
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (skrifvarið)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:920
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:932
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:934
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (getur búið til skrár)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:923
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:941
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (les- og skrifréttindi) "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:950
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:952
 #, kde-format
 msgid "Home Folder Access"
 msgstr "Aðgangur að heimamöppu"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:953
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:955
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -833,7 +833,7 @@ msgstr ""
 "Getur lesið, skrifað og búið til skrár á eftirfarandi stöðum í heimamöppunni "
 "þinni án þess að biðja fyrst um leyfi: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:955
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:957
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -842,7 +842,7 @@ msgstr ""
 "Getur lesið og skrifað í skrár á eftirfarandi stöðum í heimamöppunni þinni "
 "án þess að biðja fyrst um leyfi: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:957
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:959
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -851,7 +851,7 @@ msgstr ""
 "Getur lesið skrár á eftirfarandi stöðum í heimamöppunni þinni án þess að "
 "biðja fyrst um leyfi: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:959
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:961
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -860,12 +860,12 @@ msgstr ""
 "Getur opnað skrár á eftirfarandi stöðum í heimamöppunni þinni án þess að "
 "biðja fyrst um leyfi: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:967
 #, kde-format
 msgid "System Folder Access"
 msgstr "Aðgangur að kerfismöppu"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:967
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:969
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -874,7 +874,7 @@ msgstr ""
 "Getur lesið, skrifað í og búið til kerfisskrár á eftirfarandi stöðum án þess "
 "að biðja fyrst um leyfi: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:969
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -883,7 +883,7 @@ msgstr ""
 "Getur lesið og skrifað í kerfisskrár á eftirfarandi stöðum án þess að biðja "
 "fyrst um leyfi: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
@@ -892,7 +892,7 @@ msgstr ""
 "Getur lesið kerfisskrár á eftirfarandi stöðum án þess að biðja fyrst um "
 "leyfi: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:975
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
@@ -901,7 +901,7 @@ msgstr ""
 "Getur opnað kerfisskrár á eftirfarandi stöðum án þess að biðja fyrst um "
 "leyfi: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:984
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:986
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -910,7 +910,7 @@ msgstr ""
 "Getur átt samskipti við önnur forrit og vinnslur í sömu skjáborðssetu með "
 "því að nota eftirfarandi samskiptareglur: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:996
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:998
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
