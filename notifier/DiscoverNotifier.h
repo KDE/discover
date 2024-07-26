@@ -70,6 +70,7 @@ public:
     }
 
 public Q_SLOTS:
+    void recheckSystemUpdateNeededAndNotifyApp();
     void recheckSystemUpdateNeeded();
     void showDiscover(const QString &xdgActivationToken);
     void showDiscoverUpdates(const QString &xdgActivationToken);
