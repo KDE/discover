@@ -22,6 +22,7 @@
 #include <KIO/CommandLauncherJob>
 
 #include "../libdiscover/utils.h"
+#include "../libdiscover/UpdateModel/RefreshNotifierDBus.h"
 #include "Login1ManagerInterface.h"
 #include "updatessettings.h"
 #include <chrono>
@@ -95,6 +96,14 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
             QTimer::singleShot(20s, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
         }
     });
+
+    // Listen to broadcasts from discover about notification changes.
+    QDBusConnection::sessionBus().connect(QString(),
+                                          RefreshNotifierDBus::path,
+                                          RefreshNotifierDBus::interface,
+                                          RefreshNotifierDBus::notifyNotifier,
+                                          this,
+                                          SLOT(recheckSystemUpdateNeeded()));
 }
 
 DiscoverNotifier::~DiscoverNotifier() = default;
@@ -366,6 +375,12 @@ void DiscoverNotifier::setBusy(bool isBusy)
     m_isBusy = isBusy;
     Q_EMIT busyChanged();
     Q_EMIT stateChanged();
+}
+
+void DiscoverNotifier::recheckSystemUpdateNeededAndNotifyApp()
+{
+    recheckSystemUpdateNeeded();
+    RefreshNotifierDBus::notify(RefreshNotifierDBus::notifyApp);
 }
 
 #include "moc_DiscoverNotifier.cpp"

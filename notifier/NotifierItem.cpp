@@ -42,7 +42,7 @@ void NotifierItem::setupNotifierItem()
     });
 
     auto refreshAction = menu->addAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18n("Refresh…"));
-    connect(refreshAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::recheckSystemUpdateNeeded);
+    connect(refreshAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::recheckSystemUpdateNeededAndNotifyApp);
 
     auto f = [this]() {
         m_item->setTitle(i18n("Restart to apply installed updates"));

@@ -35,6 +35,7 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
 
 
     resources.qrc
+    RefreshNotifier.cpp
 )
 add_executable(Plasma::Discover ALIAS plasma-discover)
 set_target_properties(plasma-discover PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)

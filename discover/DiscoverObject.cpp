@@ -64,6 +64,7 @@
 #include "plasmauserfeedback.h"
 #endif
 #include "PowerManagementInterface.h"
+#include "RefreshNotifier.h"
 #include "discoversettings.h"
 
 using namespace Qt::StringLiterals;
@@ -94,6 +95,8 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
     m_engine->setNetworkAccessManagerFactory(nullptr);
     delete factory;
     m_engine->setNetworkAccessManagerFactory(m_networkAccessManagerFactory.data());
+
+    new RefreshNotifier(this);
 
     const auto uriApp = "org.kde.discover.app";
 
