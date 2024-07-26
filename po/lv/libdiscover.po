@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-25 00:40+0000\n"
+"POT-Creation-Date: 2024-07-26 00:40+0000\n"
 "PO-Revision-Date: 2024-05-27 07:52+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -622,7 +622,7 @@ msgstr "Nav „Flatpak“ pakotņu avotu."
 msgid "Failed to load \"%1\" source"
 msgstr "Neizdevās ielādēt „%1“ avotu"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:364
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:368
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -634,125 +634,125 @@ msgstr ""
 "programmas instalēšanas programmatūras centrā „Discover“ būs pieejama arī "
 "cita programmatūra no šī repozitorija.</para>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:456
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:460
 #, kde-format
 msgid "Retrieving size information"
 msgstr "Tiek iegūt informācija par izmēru"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:458
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:462
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Nezināms"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:514
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:518
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:489
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "Neizdevās palaist „%1“: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:744
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:748
 #, kde-format
 msgid "All Files"
 msgstr "Visas datnes"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:746
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:750
 #, kde-format
 msgid "Home"
 msgstr "Mājas"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:748
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:752
 #, kde-format
 msgid "Downloads"
 msgstr "Lejupielādes"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:750
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:754
 #, kde-format
 msgid "Music"
 msgstr "Mūzika"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:825
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "Network Access"
 msgstr "Tīkla pieeja"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:826
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
 #, kde-format
 msgid "Can access the internet"
 msgstr "Var piekļūt internetam"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Sound system access"
 msgstr "Piekļuve skaņas sistēmai"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:836
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
 #, kde-format
 msgid "Can play audio"
 msgstr "Var atskaņot skaņu"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:984
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:988
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Sesijas kopnes piekļuve"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:845
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr "Var sazināties ar citām programmām un procesiem lietotāja sesijā"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:846
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:996
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1000
 #, kde-format
 msgid "System Bus Access"
 msgstr "Sistēmas kopnes piekļuve"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:847
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr "Var sazināties ar citām programmām un procesiem sistēmā"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Attālinātas ierakstīšanās piekļuve"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:853
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:857
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr ""
 "Var uzsākt attālinātas ierakstīšanās pieprasījumus, izmantojot SSH protokolu"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:857
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:861
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Piekļuve ar viedkarti"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "Var izmantot viedkarti un ar to komunicēt"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:866
 #, kde-format
 msgid "Printer Access"
 msgstr "Piekļuve printerim"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "Var izmantot un komunicēt ar printeriem"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:871
 #, kde-format
 msgid "GPG Agent"
 msgstr "GPG aģents"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:872
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -761,71 +761,71 @@ msgstr ""
 "Ļauj piekļūt GPG kriptogrāfijas pakalpojumiem, kas parasti tiek izmantoti "
 "dokumentu parakstīšanai un parakstīto dokumentu atvēršanai"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:878
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "Piekļuve pie „Bluetooth“"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:875
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:879
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "Var izmantot un komunicēt ar „Bluetooth“ ierīcēm"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:879
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:883
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "Zema līmeņa sistēmas piekļuve"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:880
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:884
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "Var padot zema līmeņa sistēmas komandas (piemēram, ptrace)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:890
 #, kde-format
 msgid "Device Access"
 msgstr "Piekļuve ierīcei"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:887
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:891
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr "Var komunicēt ar iebūvētām vai savienotām ierīcēm un tās kontrolēt"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:891
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Kodolā balstītas virtuālās mašīnas piekļuve"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:892
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:896
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr ""
 "Ļauj palaist citas operētājsistēmas kā viesu sistēmas virtuālās mašīnas"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:919
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:923
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (tikai lasāms)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:934
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:926
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:938
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (var izveidot datnes)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:943
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (lasīt un rakstīt) "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:952
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:956
 #, kde-format
 msgid "Home Folder Access"
 msgstr "Piekļuve mājas mapei"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:955
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:959
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -834,7 +834,7 @@ msgstr ""
 "Var lasīt, rakstīt un izveidot datnes šajās vietās jūsu mājas mapē, neprasot "
 "atļauju: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:957
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:961
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -843,26 +843,26 @@ msgstr ""
 "Var lasīt un rakstīt datnes šajās vietās jūsu mājas mapē, neprasot atļauju: "
 "%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:959
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:963
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
 msgstr "Var lasīt datnes šajās vietās mājas mapē, neprasot atļauju: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:961
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
 "asking permission first: %1"
 msgstr "Var piekļūt datnēm šajās vietās mājas mapē, neprasot atļauju: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:967
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
 msgid "System Folder Access"
 msgstr "Piekļuve sistēmas mapei"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:969
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -871,7 +871,7 @@ msgstr ""
 "Var lasīt, rakstīt un izveidot sistēmas datnes šajās vietās, neprasot "
 "atļauju: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:975
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -879,21 +879,21 @@ msgid ""
 msgstr ""
 "Var lasīt un rakstīt sistēmas datnes šajās vietās, neprasot atļauju: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:977
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
 msgstr "Var lasīt sistēmas datnes šajās vietās, neprasot atļauju: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:975
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:979
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
 msgstr "Var piekļūt sistēmas datnēm šajās vietās, neprasot atļauju: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:986
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:990
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -902,7 +902,7 @@ msgstr ""
 "Var sazināties ar citām programmām un procesiem tajā pašā darbvirsmas "
 "sesijā, izmantojot šos komunikāciju protokolus: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:998
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1002
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
