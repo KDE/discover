@@ -124,7 +124,7 @@ void DiscoverNotifier::showDiscoverUpdates(const QString &xdgActivationToken)
     }
 }
 
-bool DiscoverNotifier::shouldNotifyAboutUpdates() const
+bool DiscoverNotifier::notifyAboutUpdates() const
 {
     if (state() != NormalUpdates && state() != SecurityUpdates) {
         // it's not very helpful to notify that everything is in order
@@ -157,7 +157,7 @@ void DiscoverNotifier::showUpdatesNotification()
         m_updatesAvailableNotification->close();
     }
 
-    if (!shouldNotifyAboutUpdates()) {
+    if (!notifyAboutUpdates()) {
         return;
     }
 
@@ -221,7 +221,7 @@ void DiscoverNotifier::refreshUnattended()
 {
     m_settings->read();
 
-    if (!shouldNotifyAboutUpdates()) {
+    if (!notifyAboutUpdates()) {
         return;
     }
 
@@ -336,7 +336,7 @@ void DiscoverNotifier::foundUpgradeAction(UpgradeAction *action)
 {
     updateStatusNotifier();
 
-    if (!shouldNotifyAboutUpdates()) {
+    if (!notifyAboutUpdates()) {
         return;
     }
 

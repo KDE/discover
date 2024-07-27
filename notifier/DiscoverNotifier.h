@@ -41,8 +41,6 @@ public:
     explicit DiscoverNotifier(QObject *parent = nullptr);
     ~DiscoverNotifier() override;
 
-    bool shouldNotifyAboutUpdates() const;
-
     State state() const;
     QString iconName() const;
     QString message() const;
@@ -89,6 +87,8 @@ private:
     void showRebootNotification();
     void updateStatusNotifier();
     void refreshUnattended();
+
+    bool notifyAboutUpdates() const;
 
     QList<BackendNotifierModule *> m_backends;
     QTimer m_timer;
