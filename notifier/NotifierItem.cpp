@@ -108,6 +108,11 @@ bool NotifierItem::shouldShowStatusNotifier() const
         return false;
     }
 
+    const QDateTime earliestNextNotificationTime = m_notifier.settings()->lastNotificationTime().addSecs(m_notifier.settings()->requiredNotificationInterval());
+    if (earliestNextNotificationTime.isValid() && earliestNextNotificationTime > QDateTime::currentDateTimeUtc()) {
+        return false;
+    }
+
     // Only show the status notifier if there is something to notify about
     // BUG: 413053
     switch (m_notifier.state()) {
