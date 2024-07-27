@@ -109,10 +109,6 @@ bool NotifierItem::shouldShowStatusNotifier() const
     }
 
     const QDateTime earliestNextNotificationTime = m_notifier.settings()->lastNotificationTime().addSecs(m_notifier.settings()->requiredNotificationInterval());
-    if (earliestNextNotificationTime.isValid() && earliestNextNotificationTime > QDateTime::currentDateTimeUtc()) {
-        return false;
-    }
-
     // Only show the status notifier if there is something to notify about
     // BUG: 413053
     switch (m_notifier.state()) {
@@ -120,7 +116,11 @@ bool NotifierItem::shouldShowStatusNotifier() const
     case DiscoverNotifier::RebootRequired:
         return true;
     case DiscoverNotifier::NormalUpdates:
+        // Only show the tray notifier on next notification time
+        // BUG: 466693
+        return earliestNextNotificationTime.isValid() && earliestNextNotificationTime < QDateTime::currentDateTimeUtc();
     case DiscoverNotifier::SecurityUpdates:
+        //...unless it's a security update, which should always be shown if the user wants notifications at all
         return m_notifier.settings()->requiredNotificationInterval() > 0;
     case DiscoverNotifier::Offline:
     case DiscoverNotifier::NoUpdates:
