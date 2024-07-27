@@ -7,7 +7,6 @@
 #include "NotifierItem.h"
 #include "updatessettings.h"
 #include <KLocalizedString>
-#include <QDebug>
 #include <QMenu>
 
 NotifierItem::NotifierItem()
