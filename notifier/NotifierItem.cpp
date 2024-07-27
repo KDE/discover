@@ -116,7 +116,7 @@ bool NotifierItem::shouldShowStatusNotifier() const
     case DiscoverNotifier::RebootRequired:
         return true;
     case DiscoverNotifier::NormalUpdates:
-        // Only show the tray notifier on next notification time
+        // Only show the status notifier on next notification time
         // BUG: 466693
         return earliestNextNotificationTime.isValid() && earliestNextNotificationTime < QDateTime::currentDateTimeUtc();
     case DiscoverNotifier::SecurityUpdates:
