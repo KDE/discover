@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-26 00:40+0000\n"
-"PO-Revision-Date: 2024-06-29 09:50+0200\n"
+"PO-Revision-Date: 2024-07-27 09:32+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -104,40 +104,37 @@ msgid "Error while submitting review: %1"
 msgstr "Błąd przy wysyłaniu oceny: %1"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
-#, fuzzy, kde-format
-#| msgid "Software Management"
+#, kde-format
 msgid "Package management"
-msgstr "Zarządzanie oprogramowaniem"
+msgstr "Zarządzanie pakietami"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:210
 #, kde-format
 msgid "Loading, please wait..."
-msgstr ""
+msgstr "Wczytywanie, proszę czekać..."
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:296
-#, fuzzy, kde-format
-#| msgid "Additional packages: "
+#, kde-format
 msgctxt "Root category name"
 msgid "Alpine Linux packages"
-msgstr "Dodatkowe pakiety: "
+msgstr "Pakiety na Alpine Linux"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:467
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
-msgstr ""
+msgstr "Alpine APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:266
 #, kde-format
 msgid "Authorization denied"
-msgstr ""
+msgstr "Nie udało się uwierzytelnić"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgid "Error: "
-msgstr "Błąd"
+msgstr "Błąd: "
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
 #, kde-format
@@ -146,11 +143,13 @@ msgid ""
 "Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
 "alpine/edge/testing/"
 msgstr ""
+"Wpisz adres URL repozytorium Alpine, na przykład: http://dl-cdn.alpinelinux."
+"org/alpine/edge/testing/"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
 #, kde-format
 msgid "Error: Authorization denied"
-msgstr ""
+msgstr "Błąd: Odmówiono uwierzytelnienia"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:277
@@ -161,12 +160,12 @@ msgstr "Błąd"
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
 #, kde-format
 msgid "Failed to open APK database!"
-msgstr ""
+msgstr "Nie udało się otworzyć bazy danych APK!"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
 #, kde-format
 msgid "Failed to get a list of packages to upgrade!"
-msgstr ""
+msgstr "Nie udało się uzyskać listy pakietów do uaktualnienia!"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
