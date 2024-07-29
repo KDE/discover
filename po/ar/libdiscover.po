@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-27 02:34+0000\n"
-"PO-Revision-Date: 2024-06-26 18:53+0400\n"
+"PO-Revision-Date: 2024-07-28 12:15+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -358,7 +358,7 @@ msgstr "ألعاب تقمّص الأدوار"
 #, kde-format
 msgctxt "Category"
 msgid "Simulation"
-msgstr ""
+msgstr "المحاكيات"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
@@ -386,7 +386,7 @@ msgstr "حركي"
 #, kde-format
 msgctxt "Category"
 msgid "Emulators"
-msgstr ""
+msgstr "المضاهيات"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
@@ -933,6 +933,8 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"خطأ داخلي، الرجاء الإبلاغ عنها في  https://bugs.kde.org/enter_bug.cgi?"
+"product=Discover"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, kde-format
@@ -956,24 +958,18 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "إزالة آلية"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
 msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
-"<resource>%1</resource> لم يعد يتلقى التحديثات.<nl/><nl/>هل تريد تبديله إلى "
-"الإصدار المدعوم المقدم من <resource>%2</resource>؟"
+"<resource>%1</resource> لم يعد يتلقى التحديثات.<nl/><p>السبب الموضح هو: "
+"<message>%2</message></p><nl/><p>هل تريد إزالته تلقائيًا؟</p>"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
