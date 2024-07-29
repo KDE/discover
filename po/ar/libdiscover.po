@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-24 03:09+0000\n"
-"PO-Revision-Date: 2023-02-28 21:04+0400\n"
+"PO-Revision-Date: 2024-07-28 12:15+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -364,7 +364,7 @@ msgstr "ألعاب تقمّص الأدوار"
 #, kde-format
 msgctxt "Category"
 msgid "Simulation"
-msgstr "المحاكاة"
+msgstr "المحاكيات"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
@@ -392,7 +392,7 @@ msgstr "حركي"
 #, kde-format
 msgctxt "Category"
 msgid "Emulators"
-msgstr "المحاكاة"
+msgstr "المضاهيات"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
