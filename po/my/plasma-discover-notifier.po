@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-11 00:40+0000\n"
+"POT-Creation-Date: 2024-07-31 00:42+0000\n"
 "PO-Revision-Date: 2021-09-19 20:01+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -129,32 +129,32 @@ msgstr "အကြောင်းကြားကိရိယာ မပြပါ�
 msgid "hidden"
 msgstr "ဖွက်ထား"
 
-#: notifier/NotifierItem.cpp:22 notifier/NotifierItem.cpp:23
+#: notifier/NotifierItem.cpp:21 notifier/NotifierItem.cpp:22
 #, kde-format
 msgid "Updates"
 msgstr "အပ်ဒိတ်များ"
 
-#: notifier/NotifierItem.cpp:35
+#: notifier/NotifierItem.cpp:34
 #, kde-format
 msgid "Open Discover…"
 msgstr "ဒစ်(စ)ကာဗာ ဖွင့်မည်..."
 
-#: notifier/NotifierItem.cpp:40
+#: notifier/NotifierItem.cpp:39
 #, kde-format
 msgid "See Updates…"
 msgstr "အပ်ဒိတ်များ ကြည့်မည်..."
 
-#: notifier/NotifierItem.cpp:45
+#: notifier/NotifierItem.cpp:44
 #, kde-format
 msgid "Refresh…"
 msgstr "ပြန်ရယူရန်..."
 
-#: notifier/NotifierItem.cpp:49
+#: notifier/NotifierItem.cpp:48
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "စစ်စတမ်ပြန်လည်စတင်ပါ"
 
-#: notifier/NotifierItem.cpp:50
+#: notifier/NotifierItem.cpp:49
 #, kde-format
 msgid "Click to restart the device"
 msgstr "စစ်စတမ်ပြန်စတင်ရန် နှိပ်ပါ"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-11 00:40+0000\n"
+"POT-Creation-Date: 2024-07-31 00:42+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -128,32 +128,32 @@ msgstr "不显示通知"
 msgid "hidden"
 msgstr "隐藏"
 
-#: notifier/NotifierItem.cpp:22 notifier/NotifierItem.cpp:23
+#: notifier/NotifierItem.cpp:21 notifier/NotifierItem.cpp:22
 #, kde-format
 msgid "Updates"
 msgstr "更新"
 
-#: notifier/NotifierItem.cpp:35
+#: notifier/NotifierItem.cpp:34
 #, kde-format
 msgid "Open Discover…"
 msgstr "打开 Discover…"
 
-#: notifier/NotifierItem.cpp:40
+#: notifier/NotifierItem.cpp:39
 #, kde-format
 msgid "See Updates…"
 msgstr "查看…"
 
-#: notifier/NotifierItem.cpp:45
+#: notifier/NotifierItem.cpp:44
 #, kde-format
 msgid "Refresh…"
 msgstr "刷新…"
 
-#: notifier/NotifierItem.cpp:49
+#: notifier/NotifierItem.cpp:48
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "重新启动以使已安装的更新生效"
 
-#: notifier/NotifierItem.cpp:50
+#: notifier/NotifierItem.cpp:49
 #, kde-format
 msgid "Click to restart the device"
 msgstr "点击重新启动设备"

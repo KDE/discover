@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-11 00:40+0000\n"
+"POT-Creation-Date: 2024-07-31 00:42+0000\n"
 "PO-Revision-Date: 2023-12-23 11:56+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmai.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -127,32 +127,32 @@ msgstr "Nie pokazuj powiadomień"
 msgid "hidden"
 msgstr "ukryte"
 
-#: notifier/NotifierItem.cpp:22 notifier/NotifierItem.cpp:23
+#: notifier/NotifierItem.cpp:21 notifier/NotifierItem.cpp:22
 #, kde-format
 msgid "Updates"
 msgstr "Uaktualnienia"
 
-#: notifier/NotifierItem.cpp:35
+#: notifier/NotifierItem.cpp:34
 #, kde-format
 msgid "Open Discover…"
 msgstr "Otwórz Odkrywcę..."
 
-#: notifier/NotifierItem.cpp:40
+#: notifier/NotifierItem.cpp:39
 #, kde-format
 msgid "See Updates…"
 msgstr "Obejrzyj uaktualnienia..."
 
-#: notifier/NotifierItem.cpp:45
+#: notifier/NotifierItem.cpp:44
 #, kde-format
 msgid "Refresh…"
 msgstr "Odśwież..."
 
-#: notifier/NotifierItem.cpp:49
+#: notifier/NotifierItem.cpp:48
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "Uruchom ponownie, aby zastosować wgrane uaktualnienia"
 
-#: notifier/NotifierItem.cpp:50
+#: notifier/NotifierItem.cpp:49
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Naciśnij, aby uruchomić urządzenie ponownie"

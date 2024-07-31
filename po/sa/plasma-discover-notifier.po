@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-11 00:40+0000\n"
+"POT-Creation-Date: 2024-07-31 00:42+0000\n"
 "PO-Revision-Date: 2023-10-01 00:23+0530\n"
 "Last-Translator: \n"
 "Language-Team: Sanskrit\n"
@@ -131,32 +131,32 @@ msgstr "सूचनादाता न दर्शयतु"
 msgid "hidden"
 msgstr "अदृष्ट"
 
-#: notifier/NotifierItem.cpp:22 notifier/NotifierItem.cpp:23
+#: notifier/NotifierItem.cpp:21 notifier/NotifierItem.cpp:22
 #, kde-format
 msgid "Updates"
 msgstr "अद्यतनाः"
 
-#: notifier/NotifierItem.cpp:35
+#: notifier/NotifierItem.cpp:34
 #, kde-format
 msgid "Open Discover…"
 msgstr "डिस्कवरं उद्घाटयन्तु…"
 
-#: notifier/NotifierItem.cpp:40
+#: notifier/NotifierItem.cpp:39
 #, kde-format
 msgid "See Updates…"
 msgstr "अद्यतनं पश्यन्तु…"
 
-#: notifier/NotifierItem.cpp:45
+#: notifier/NotifierItem.cpp:44
 #, kde-format
 msgid "Refresh…"
 msgstr "नवीकरणम्…"
 
-#: notifier/NotifierItem.cpp:49
+#: notifier/NotifierItem.cpp:48
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "संस्थापितानि अद्यतनानि प्रयोक्तुं पुनः आरभत"
 
-#: notifier/NotifierItem.cpp:50
+#: notifier/NotifierItem.cpp:49
 #, kde-format
 msgid "Click to restart the device"
 msgstr "यन्त्रं पुनः आरभ्यतुं नोदनम् कुर्वन्तु"

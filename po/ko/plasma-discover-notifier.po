@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-06-11 00:40+0000\n"
+"POT-Creation-Date: 2024-07-31 00:42+0000\n"
 "PO-Revision-Date: 2024-02-09 20:10+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -127,32 +127,32 @@ msgstr "알림이 표시하지 않기"
 msgid "hidden"
 msgstr "숨김"
 
-#: notifier/NotifierItem.cpp:22 notifier/NotifierItem.cpp:23
+#: notifier/NotifierItem.cpp:21 notifier/NotifierItem.cpp:22
 #, kde-format
 msgid "Updates"
 msgstr "업데이트"
 
-#: notifier/NotifierItem.cpp:35
+#: notifier/NotifierItem.cpp:34
 #, kde-format
 msgid "Open Discover…"
 msgstr "Discover 열기…"
 
-#: notifier/NotifierItem.cpp:40
+#: notifier/NotifierItem.cpp:39
 #, kde-format
 msgid "See Updates…"
 msgstr "업데이트 보기…"
 
-#: notifier/NotifierItem.cpp:45
+#: notifier/NotifierItem.cpp:44
 #, kde-format
 msgid "Refresh…"
 msgstr "새로 고침…"
 
-#: notifier/NotifierItem.cpp:49
+#: notifier/NotifierItem.cpp:48
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "설치한 업데이트를 적용하려면 시스템을 다시 시작해야 함"
 
-#: notifier/NotifierItem.cpp:50
+#: notifier/NotifierItem.cpp:49
 #, kde-format
 msgid "Click to restart the device"
 msgstr "장치를 다시 시작하려면 클릭하십시오"
