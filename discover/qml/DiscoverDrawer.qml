@@ -177,7 +177,7 @@ Kirigami.GlobalDrawer {
             readonly property bool itsMe: window?.leftPage?.category === category
 
             text: category?.name ?? ""
-            icon.name: category?.icon ?? ""
+            icon.name: category?.icon + "-symbolic" ?? ""
             checked: itsMe
             enabled: (currentSearchText.length === 0
                       || (category?.contains(window?.leftPage?.model?.subcategories) ?? false))
