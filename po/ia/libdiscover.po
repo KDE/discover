@@ -1395,7 +1395,7 @@ msgstr "Actualisation non trovate"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
 #, kde-format
 msgid "Cannot install from unsigned repo"
-msgstr "Nonpote installar ex repo non signate"
+msgstr "Non pote installar ex repo non signate"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
 #, kde-format
