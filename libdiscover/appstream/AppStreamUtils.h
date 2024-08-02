@@ -35,9 +35,7 @@ DISCOVERCOMMON_EXPORT QStringList appstreamIds(const QUrl &appstreamUrl);
 /// Helps implement AbstractResource::versionString
 DISCOVERCOMMON_EXPORT QString versionString(const QString &version, const AppStream::Component &appdata);
 
-DISCOVERCOMMON_EXPORT QString contentRatingText(const AppStream::Component &appdata);
 DISCOVERCOMMON_EXPORT QString contentRatingDescription(const AppStream::Component &appdata);
-DISCOVERCOMMON_EXPORT AbstractResource::ContentIntensity contentRatingIntensity(const AppStream::Component &appdata);
 DISCOVERCOMMON_EXPORT uint contentRatingMinimumAge(const AppStream::Component &appdata);
 
 DISCOVERCOMMON_EXPORT AppStream::ComponentBox componentsByCategories(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind);

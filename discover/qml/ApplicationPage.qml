@@ -389,32 +389,22 @@ DiscoverPage {
 
                     // Content Rating
                     QQC2.Label {
-                        visible: appInfo.application.contentRatingText.length > 0
-                        text: i18n("Content Rating:")
+                        text: i18nc("@label The app is suitable for people of the following ages or older", "Ages:")
                         Layout.alignment: Qt.AlignRight
                     }
                     RowLayout {
-                        visible: appInfo.application.contentRatingText.length > 0
                         spacing: Kirigami.Units.smallSpacing
 
                         QQC2.Label {
-                            visible: text.length > 0
-                            text: appInfo.application.contentRatingMinimumAge === 0 ? "" : i18n("Age: %1+", appInfo.application.contentRatingMinimumAge)
+                            text: application.contentRatingMinimumAge === 0
+                                ? i18nc("@item As in, the app is suitable for everyone", "Everyone")
+                                : i18nc("@item %1 is a person's age in number of years",
+                                        "%1+", appInfo.application.contentRatingMinimumAge)
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignTop
                             wrapMode: Text.Wrap
                             maximumLineCount: 3
                             elide: Text.ElideRight
-                        }
-
-                        QQC2.Label {
-                            text: appInfo.application.contentRatingText
-                            wrapMode: Text.Wrap
-                            maximumLineCount: 3
-                            elide: Text.ElideRight
-
-                            readonly property var colors: [ Kirigami.Theme.textColor, Kirigami.Theme.neutralTextColor ]
-                            color: colors[appInfo.application.contentRatingIntensity]
                         }
 
                         // Button to open the content rating details dialog

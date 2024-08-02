@@ -176,64 +176,6 @@ QString AppStreamUtils::contentRatingDescription(const AppStream::Component &app
 #endif
 }
 
-QString AppStreamUtils::contentRatingText(const AppStream::Component &appdata)
-{
-#if ASQ_CHECK_VERSION(0, 15, 6)
-    const auto ratings = appdata.contentRatings();
-    AppStream::ContentRating::RatingValue intensity = AppStream::ContentRating::RatingValueUnknown;
-    for (const auto &r : ratings) {
-        const auto ratingIds = r.ratingIds();
-        for (const auto &id : ratingIds) {
-            intensity = std::max(r.value(id), intensity);
-        }
-    }
-
-    static QStringList texts = {
-        {},
-        i18nc("Open Age Ratings Service (https://hughsie.github.io/oars) description of content suitable for everyone", "All Audiences"),
-        i18nc("Open Age Ratings Service (https://hughsie.github.io/oars) description of content with relatively benign themes only unsuitable for very young "
-              "children, such as minor cartoon violence or mild profanity",
-              "Mild Content"),
-        i18nc("Open Age Ratings Service (https://hughsie.github.io/oars) description of content with some intense themes, such as somewhat realistic "
-              "violence, references to sexuality, or adult profanity",
-              "Moderate Content"),
-        i18nc("Open Age Ratings Service (https://hughsie.github.io/oars) description of mature content that could be quite objectionable or unsuitable for "
-              "young audiences, such as realistic graphic violence, extreme profanity or nudity, or glorification of drug use",
-              "Intense Content"),
-    };
-    return texts[intensity];
-#else
-    Q_UNUSED(appdata);
-    return {};
-#endif
-}
-
-AbstractResource::ContentIntensity AppStreamUtils::contentRatingIntensity(const AppStream::Component &appdata)
-{
-#if ASQ_CHECK_VERSION(0, 15, 6)
-    const auto ratings = appdata.contentRatings();
-    AppStream::ContentRating::RatingValue intensity = AppStream::ContentRating::RatingValueUnknown;
-    for (const auto &r : ratings) {
-        const auto ratingIds = r.ratingIds();
-        for (const auto &id : ratingIds) {
-            intensity = std::max(r.value(id), intensity);
-        }
-    }
-
-    static QVector<AbstractResource::ContentIntensity> intensities = {
-        AbstractResource::Mild,
-        AbstractResource::Mild,
-        AbstractResource::Mild,
-        AbstractResource::Intense,
-        AbstractResource::Intense,
-    };
-    return intensities[intensity];
-#else
-    Q_UNUSED(appdata);
-    return {};
-#endif
-}
-
 uint AppStreamUtils::contentRatingMinimumAge(const AppStream::Component &appdata)
 {
 #if ASQ_CHECK_VERSION(0, 15, 6)

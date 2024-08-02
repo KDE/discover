@@ -1050,16 +1050,6 @@ QString FlatpakResource::contentRatingDescription() const
     return AppStreamUtils::contentRatingDescription(m_appdata);
 }
 
-QString FlatpakResource::contentRatingText() const
-{
-    return AppStreamUtils::contentRatingText(m_appdata);
-}
-
-AbstractResource::ContentIntensity FlatpakResource::contentRatingIntensity() const
-{
-    return AppStreamUtils::contentRatingIntensity(m_appdata);
-}
-
 uint FlatpakResource::contentRatingMinimumAge() const
 {
     return AppStreamUtils::contentRatingMinimumAge(m_appdata);

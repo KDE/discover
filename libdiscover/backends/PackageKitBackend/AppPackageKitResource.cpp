@@ -294,16 +294,6 @@ QString AppPackageKitResource::contentRatingDescription() const
     return AppStreamUtils::contentRatingDescription(m_appdata);
 }
 
-QString AppPackageKitResource::contentRatingText() const
-{
-    return AppStreamUtils::contentRatingText(m_appdata);
-}
-
-AbstractResource::ContentIntensity AppPackageKitResource::contentRatingIntensity() const
-{
-    return AppStreamUtils::contentRatingIntensity(m_appdata);
-}
-
 uint AppPackageKitResource::contentRatingMinimumAge() const
 {
     return AppStreamUtils::contentRatingMinimumAge(m_appdata);

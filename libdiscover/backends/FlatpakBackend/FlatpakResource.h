@@ -201,9 +201,7 @@ public:
         return m_appdata;
     }
 
-    QString contentRatingText() const override;
     QString contentRatingDescription() const override;
-    ContentIntensity contentRatingIntensity() const override;
     uint contentRatingMinimumAge() const override;
 
     QStringList topObjects() const override;

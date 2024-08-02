@@ -284,16 +284,6 @@ QString AbstractResource::contentRatingDescription() const
     return {};
 }
 
-AbstractResource::ContentIntensity AbstractResource::contentRatingIntensity() const
-{
-    return Mild;
-}
-
-QString AbstractResource::contentRatingText() const
-{
-    return {};
-}
-
 uint AbstractResource::contentRatingMinimumAge() const
 {
     return 0;
