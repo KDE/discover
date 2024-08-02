@@ -839,6 +839,7 @@ DiscoverPage {
                 model: appInfo.application.licenses
 
                 delegate: QQC2.ItemDelegate {
+                    background: null
                     id: delegate
 
                     required property var modelData
