@@ -337,6 +337,7 @@ DiscoverPage {
                                 id: delegate
 
                                 required property var modelData
+                                required property int index
 
                                 spacing: 0
 
@@ -350,6 +351,11 @@ DiscoverPage {
                                     maximumLineCount: 3
                                     elide: Text.ElideRight
                                     color: !delegate.modelData.hasFreedom ? Kirigami.Theme.neutralTextColor : (enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor)
+                                }
+                                QQC2.Label {
+                                    readonly property int licensesCount: appInfo.application.licenses.length
+                                    text: i18nc("Separator between license labels e.g. 'GPL-3.0, Proprietary'", ",")
+                                    visible: index <= (licensesCount - 2)
                                 }
 
                                 // Button to open "What's the risk of proprietary software?" sheet
