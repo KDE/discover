@@ -88,6 +88,8 @@ public:
 
     QStringList topObjects() const override;
 
+    QStringList bottomObjects() const override;
+
     virtual QString changelog() const
     {
         return m_changelog;
@@ -148,4 +150,5 @@ private:
     QString m_changelog;
     PackageKitDependencies m_dependencies;
     static const QStringList s_topObjects;
+    static const QStringList s_bottomObjects;
 };
