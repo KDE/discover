@@ -339,23 +339,26 @@ DiscoverPage {
                                 required property var modelData
                                 required property int index
 
-                                spacing: 0
+                                spacing: Kirigami.Units.smallSpacing
 
-                                Kirigami.UrlButton {
-                                    enabled: url !== ""
-                                    text: delegate.modelData.name
-                                    url: delegate.modelData.url
-                                    horizontalAlignment: Text.AlignHCenter
-                                    verticalAlignment: Text.AlignTop
-                                    wrapMode: Text.Wrap
-                                    maximumLineCount: 3
-                                    elide: Text.ElideRight
-                                    color: !delegate.modelData.hasFreedom ? Kirigami.Theme.neutralTextColor : (enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor)
-                                }
-                                QQC2.Label {
-                                    readonly property int licensesCount: appInfo.application.licenses.length
-                                    text: i18nc("Separator between license labels e.g. 'GPL-3.0, Proprietary'", ",")
-                                    visible: index <= (licensesCount - 2)
+                                RowLayout {
+                                    spacing: 0
+                                    Kirigami.UrlButton {
+                                        enabled: url !== ""
+                                        text: delegate.modelData.name
+                                        url: delegate.modelData.url
+                                        horizontalAlignment: Text.AlignHCenter
+                                        verticalAlignment: Text.AlignTop
+                                        wrapMode: Text.Wrap
+                                        maximumLineCount: 3
+                                        elide: Text.ElideRight
+                                        color: !delegate.modelData.hasFreedom ? Kirigami.Theme.neutralTextColor : (enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor)
+                                    }
+                                    QQC2.Label {
+                                        readonly property int licensesCount: appInfo.application.licenses.length
+                                        text: i18nc("Separator between license labels e.g. 'GPL-3.0, Proprietary'", ",")
+                                        visible: index <= (licensesCount - 2)
+                                    }
                                 }
 
                                 // Button to open "What's the risk of proprietary software?" sheet
