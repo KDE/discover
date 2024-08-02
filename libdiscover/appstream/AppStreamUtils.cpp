@@ -90,7 +90,13 @@ QJsonArray AppStreamUtils::licenses(const QString &spdx)
     for (const auto &token : licenses) {
         if (token.size() == 1 && tokens.contains(token.at(0)))
             continue;
-        ret += license(token.mid(1)); // tokenize prefixes with an @ for some reason
+
+        // Sometimes tokenize prefixes with an @ for some reason
+        if (token.startsWith(QStringLiteral("@"))) {
+            ret += license(token.mid(1));
+        } else {
+            ret += license(token);
+        }
     }
     return ret;
 }
