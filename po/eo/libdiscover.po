@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-27 02:34+0000\n"
+"POT-Creation-Date: 2024-08-03 02:34+0000\n"
 "PO-Revision-Date: 2024-05-20 13:35+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -28,17 +28,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "olivermkellogg@gmail.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:103
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #, kde-format
 msgid "Proprietary"
 msgstr "Proprieta"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:105
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #, kde-format
 msgid "Public Domain"
 msgstr "Publika Domeno"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:117
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
@@ -49,7 +49,7 @@ msgstr "Publika Domeno"
 msgid "Unknown"
 msgstr "Nekonata"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:187
+#: libdiscover/appstream/AppStreamUtils.cpp:193
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -57,7 +57,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "Ĉiuj Spektantaroj"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:190
+#: libdiscover/appstream/AppStreamUtils.cpp:196
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -66,7 +66,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr "Milda Enhavo"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:193
+#: libdiscover/appstream/AppStreamUtils.cpp:199
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -75,7 +75,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "Modera Enhavo"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:196
+#: libdiscover/appstream/AppStreamUtils.cpp:202
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "

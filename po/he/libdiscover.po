@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-27 02:34+0000\n"
-"PO-Revision-Date: 2024-05-18 07:18+0300\n"
+"POT-Creation-Date: 2024-08-03 02:34+0000\n"
+"PO-Revision-Date: 2024-08-02 09:38+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -31,17 +31,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-l10n-he@kde.org,omeritzicschwartz@gmail.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:103
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #, kde-format
 msgid "Proprietary"
 msgstr "קנייני"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:105
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #, kde-format
 msgid "Public Domain"
 msgstr "נחלת הכלל"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:117
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
@@ -52,7 +52,7 @@ msgstr "נחלת הכלל"
 msgid "Unknown"
 msgstr "לא ידוע"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:187
+#: libdiscover/appstream/AppStreamUtils.cpp:193
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -60,7 +60,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "כל סוגי הקהל"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:190
+#: libdiscover/appstream/AppStreamUtils.cpp:196
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -69,7 +69,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr "תוכן עדין"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:193
+#: libdiscover/appstream/AppStreamUtils.cpp:199
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -78,7 +78,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "תוכן מתון"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:196
+#: libdiscover/appstream/AppStreamUtils.cpp:202
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -925,6 +925,8 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"אירעה שגיאה פנימית. נא לדווח על תקלה דרך https://bugs.kde.org/enter_bug.cgi?"
+"product=Discover"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, kde-format
@@ -948,24 +950,18 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "הסרה אוטומטית"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
 msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
-"<resource>%1</resource> לא תקבל עוד עדכונים.<nl/><nl/>להחליף אותה בגרסה "
-"הנתמכת שמסופקת על ידי <resource>%2</resource>?"
+"<resource>%1</resource> לא תקבל יותר עדכונים.<nl/><p>הנימוק לכך הוא: "
+"<message>%2</message></p><nl/><p>להסיר אותה אוטומטית?</p>"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
@@ -1936,29 +1932,25 @@ msgstr "לא זמין"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "משמעותי"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "Install"
-msgstr "הותקן"
+msgstr "התקנה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "הסרה…"
+msgstr "הסרה"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, fuzzy, kde-format
-#| msgid "Obsoletes:"
+#, kde-format
 msgid "Obsolete"
-msgstr "מחליפה:"
+msgstr "מיושנת"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, fuzzy, kde-format
-#| msgid "Downgrading"
+#, kde-format
 msgid "Downgrade"
 msgstr "שנמוך"
 

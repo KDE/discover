@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-27 02:34+0000\n"
+"POT-Creation-Date: 2024-08-03 02:34+0000\n"
 "PO-Revision-Date: 2024-07-18 10:00+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -40,17 +40,17 @@ msgstr ""
 "yur.arh@gmail.com,aspotashev@gmail.com,exclusion@gmail.com,kekcuha@gmail.com,"
 "translation-team@basealt.ru,translation-team@basealt.ru"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:103
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #, kde-format
 msgid "Proprietary"
 msgstr "С закрытым кодом"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:105
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #, kde-format
 msgid "Public Domain"
 msgstr "Общественное достояние"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:117
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
@@ -61,7 +61,7 @@ msgstr "Общественное достояние"
 msgid "Unknown"
 msgstr "неизвестная"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:187
+#: libdiscover/appstream/AppStreamUtils.cpp:193
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -69,7 +69,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "Любая аудитория"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:190
+#: libdiscover/appstream/AppStreamUtils.cpp:196
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -78,7 +78,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr "С некоторыми ограничениями"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:193
+#: libdiscover/appstream/AppStreamUtils.cpp:199
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -87,7 +87,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "Со значительными ограничениями"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:196
+#: libdiscover/appstream/AppStreamUtils.cpp:202
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "

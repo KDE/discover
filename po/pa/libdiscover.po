@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-27 02:34+0000\n"
+"POT-Creation-Date: 2024-08-03 02:34+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -27,17 +27,17 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "aalam@punlinux.org"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:103
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #, kde-format
 msgid "Proprietary"
 msgstr "ਪਰੋਪ੍ਰੈਟਰੀ"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:105
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #, kde-format
 msgid "Public Domain"
 msgstr "ਪਬਲਿਕ ਡੋਮੇਨ"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:117
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
@@ -48,7 +48,7 @@ msgstr "ਪਬਲਿਕ ਡੋਮੇਨ"
 msgid "Unknown"
 msgstr "ਅਣਪਛਾਤਾ"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:187
+#: libdiscover/appstream/AppStreamUtils.cpp:193
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -56,7 +56,7 @@ msgctxt ""
 msgid "All Audiences"
 msgstr "ਸਭ ਲੋਕਾਂ ਲਈ"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:190
+#: libdiscover/appstream/AppStreamUtils.cpp:196
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -65,7 +65,7 @@ msgctxt ""
 msgid "Mild Content"
 msgstr "ਰਲਵੀਂ ਸਮੱਗਰੀ"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:193
+#: libdiscover/appstream/AppStreamUtils.cpp:199
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Internet"
@@ -76,7 +76,7 @@ msgctxt ""
 msgid "Moderate Content"
 msgstr "ਇੰਟਰਨੈੱਟ"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:196
+#: libdiscover/appstream/AppStreamUtils.cpp:202
 #, kde-format
 msgctxt ""
 "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
