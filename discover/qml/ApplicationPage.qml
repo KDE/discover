@@ -25,7 +25,7 @@ DiscoverPage {
     required property Discover.AbstractResource application
 
     readonly property int visibleReviews: 3
-    readonly property int internalSpacings: Kirigami.Units.largeSpacing * 2
+    readonly property int internalSpacings: padding * 2
     readonly property bool availableFromOnlySingleSource: !originsMenuAction.visible
 
     // Usually this page is not the top level page, but when we are, isHome being
@@ -540,8 +540,6 @@ DiscoverPage {
 
         // App description section
         ColumnLayout {
-            id: appDescriptionLayout
-
             spacing: Kirigami.Units.smallSpacing
 
             // Short description
@@ -573,17 +571,10 @@ DiscoverPage {
                 textFormat: TextEdit.RichText
                 onLinkActivated: link => Qt.openUrlExternally(link);
             }
-
-            Kirigami.Separator {
-                Layout.topMargin: appInfo.internalSpacings - appDescriptionLayout.spacing
-                Layout.fillWidth: true
-            }
         }
 
         // Changelog section
         ColumnLayout {
-            id: changelogLayout
-
             spacing: Kirigami.Units.smallSpacing
             visible: changelogLabel.visible
 
@@ -612,17 +603,10 @@ DiscoverPage {
                     }
                 }
             }
-
-            Kirigami.Separator {
-                Layout.topMargin: appInfo.internalSpacings - changelogLayout.spacing
-                Layout.fillWidth: true
-            }
         }
 
         // Reviews section
         ColumnLayout {
-            id: reviewsLayout
-
             spacing: Kirigami.Units.smallSpacing
             visible: reviewsSheet.sortModel.count > 0 && !reviewsLoadingPlaceholder.visible && !reviewsError.visible
 
@@ -689,17 +673,10 @@ DiscoverPage {
                     }
                 }
             }
-
-            Kirigami.Separator {
-                Layout.topMargin: appInfo.internalSpacings - reviewsLayout.spacing
-                Layout.fillWidth: true
-            }
         }
 
         // "External Links" section
         ColumnLayout {
-            id: externalLinksLayout
-
             readonly property int visibleButtons: (helpButton.visible ? 1 : 0)
                                                 + (homepageButton.visible ? 1: 0)
                                                 + (donateButton.visible ? 1 : 0)
@@ -785,11 +762,6 @@ DiscoverPage {
                     subtitle: i18n("Help the developers by coding, designing, testing, or translating")
                     website: application.contributeURL.toString()
                 }
-            }
-
-            Kirigami.Separator {
-                Layout.topMargin: appInfo.internalSpacings - externalLinksLayout.spacing
-                Layout.fillWidth: true
             }
         }
 
