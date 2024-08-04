@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-03 00:40+0000\n"
-"PO-Revision-Date: 2024-06-08 12:56+0300\n"
+"POT-Creation-Date: 2024-08-04 00:40+0000\n"
+"PO-Revision-Date: 2024-08-03 13:46+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.07.70\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #: discover/DiscoverObject.cpp:176
 #, kde-format
@@ -304,9 +304,7 @@ msgid "No ratings yet"
 msgstr "Henüz derecelendirme yok"
 
 #: discover/qml/ApplicationPage.qml:68
-#, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "Paylaş"
@@ -315,7 +313,7 @@ msgstr "Paylaş"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
-msgstr ""
+msgstr "Eklentiler"
 
 #: discover/qml/ApplicationPage.qml:92
 #, kde-format
@@ -331,11 +329,10 @@ msgid "%1 - %2"
 msgstr "%1 — %2"
 
 #: discover/qml/ApplicationPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Send a link for this application"
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
-msgstr "Bu uygulama için bir bağlantı gönder"
+msgstr "Uygulamaya Bağlantı Paylaş"
 
 #: discover/qml/ApplicationPage.qml:152
 #, kde-format
@@ -375,7 +372,7 @@ msgstr "Bilinmiyor"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:373
 #, kde-format
@@ -393,26 +390,24 @@ msgstr[1] "Daha fazla…"
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr ""
+msgstr "Yaş:"
 
 #: discover/qml/ApplicationPage.qml:400
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr ""
+msgstr "Herkes"
 
 #: discover/qml/ApplicationPage.qml:402
 #, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr ""
+msgstr "+%1"
 
 #: discover/qml/ApplicationPage.qml:416
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
+#, kde-format
 msgid "See details"
-msgstr "Ayrıntıları gör…"
+msgstr "Ayrıntıları Gör"
 
 #: discover/qml/ApplicationPage.qml:440
 #, kde-format
@@ -420,118 +415,118 @@ msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr "%1 için ekran görüntüleri kullanılamıyor"
 
-#: discover/qml/ApplicationPage.qml:591
+#: discover/qml/ApplicationPage.qml:582
 #, kde-format
 msgid "What's New"
 msgstr "Neler Yeni"
 
-#: discover/qml/ApplicationPage.qml:631
+#: discover/qml/ApplicationPage.qml:615
 #, kde-format
 msgid "Reviews"
 msgstr "İncelemeler"
 
-#: discover/qml/ApplicationPage.qml:642
+#: discover/qml/ApplicationPage.qml:626
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "%1 incelemeleri yükleniyor"
 
-#: discover/qml/ApplicationPage.qml:650
+#: discover/qml/ApplicationPage.qml:634
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "%1 incelemeleri geçici olarak kullanılamıyor"
 
-#: discover/qml/ApplicationPage.qml:672
+#: discover/qml/ApplicationPage.qml:656
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Tüm İncelemeleri Göster"
 
-#: discover/qml/ApplicationPage.qml:684
+#: discover/qml/ApplicationPage.qml:668
 #, kde-format
 msgid "Write a Review"
 msgstr "İnceleme Yaz"
 
-#: discover/qml/ApplicationPage.qml:684
+#: discover/qml/ApplicationPage.qml:668
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "İnceleme Yazmak için Kur"
 
-#: discover/qml/ApplicationPage.qml:713
+#: discover/qml/ApplicationPage.qml:690
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
-msgstr ""
+msgstr "Dış Bağlantılar"
 
-#: discover/qml/ApplicationPage.qml:732
+#: discover/qml/ApplicationPage.qml:709
 #, kde-format
 msgid "Documentation"
 msgstr "Belgelendirme"
 
-#: discover/qml/ApplicationPage.qml:733
+#: discover/qml/ApplicationPage.qml:710
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Projenin resmi belgelendirmesini okuyun"
 
-#: discover/qml/ApplicationPage.qml:745
+#: discover/qml/ApplicationPage.qml:722
 #, kde-format
 msgid "Website"
 msgstr "Web Sitesi"
 
-#: discover/qml/ApplicationPage.qml:746
+#: discover/qml/ApplicationPage.qml:723
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Proje web sitesini ziyaret edin"
 
-#: discover/qml/ApplicationPage.qml:758
+#: discover/qml/ApplicationPage.qml:735
 #, kde-format
 msgid "Donate"
 msgstr "Bağış Yap"
 
-#: discover/qml/ApplicationPage.qml:759
+#: discover/qml/ApplicationPage.qml:736
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 "Projeye bağışta bulunarak geliştiricileri destekleyin ve onlara teşekkür edin"
 
-#: discover/qml/ApplicationPage.qml:771
+#: discover/qml/ApplicationPage.qml:748
 #, kde-format
 msgid "Report Bug"
 msgstr "Hata Bildir"
 
-#: discover/qml/ApplicationPage.qml:772
+#: discover/qml/ApplicationPage.qml:749
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Düzeltilmesine yardımcı olmak için bir hata bildirin"
 
-#: discover/qml/ApplicationPage.qml:784
+#: discover/qml/ApplicationPage.qml:761
 #, kde-format
 msgid "Contribute"
 msgstr "Katkıda Bulun"
 
-#: discover/qml/ApplicationPage.qml:785
+#: discover/qml/ApplicationPage.qml:762
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Geliştiricilere; kod yazarak, tasarım yaparak, sınayarak veya çeviri yaparak "
 "yardımcı olun"
 
-#: discover/qml/ApplicationPage.qml:820
+#: discover/qml/ApplicationPage.qml:792
 #, kde-format
 msgid "All Licenses"
 msgstr "Tüm Lisanslar"
 
-#: discover/qml/ApplicationPage.qml:854
+#: discover/qml/ApplicationPage.qml:826
 #, kde-format
 msgid "Content Rating"
 msgstr "İçerik Derecelendirmesi"
 
-#: discover/qml/ApplicationPage.qml:871
+#: discover/qml/ApplicationPage.qml:843
 #, kde-format
 msgid "Risks of proprietary software"
 msgstr "Tescilli yazılımın riskleri"
 
-#: discover/qml/ApplicationPage.qml:881
+#: discover/qml/ApplicationPage.qml:853
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -556,7 +551,7 @@ msgstr ""
 "başkalarına iletebilir.<nl/><nl/>Daha fazla bilgiyi <link url='%3'>%3</link> "
 "adresinden alabilirsiniz."
 
-#: discover/qml/ApplicationPage.qml:882
+#: discover/qml/ApplicationPage.qml:854
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

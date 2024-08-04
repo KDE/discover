@@ -1018,11 +1018,10 @@ msgstr "清除设置和用户数据…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "%1 的权限"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
@@ -2653,35 +2652,3 @@ msgstr "系统软件"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "插件"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content suitable for everyone"
-#~ msgid "All Audiences"
-#~ msgstr "适合所有受众"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with relatively benign themes only unsuitable for very young "
-#~ "children, such as minor cartoon violence or mild profanity"
-#~ msgid "Mild Content"
-#~ msgstr "包含轻微不雅内容"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with some intense themes, such as somewhat realistic violence, "
-#~ "references to sexuality, or adult profanity"
-#~ msgid "Moderate Content"
-#~ msgstr "包含中等不雅内容"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "mature content that could be quite objectionable or unsuitable for young "
-#~ "audiences, such as realistic graphic violence, extreme profanity or "
-#~ "nudity, or glorification of drug use"
-#~ msgid "Intense Content"
-#~ msgstr "包含强烈不雅内容"
-
-#~ msgctxt "%1 is the name of the application"
-#~ msgid "Permissions for %1"
-#~ msgstr "%1 的权限"
