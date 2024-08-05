@@ -302,7 +302,7 @@ msgstr "分享"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
-msgstr ""
+msgstr "附加组件"
 
 #: discover/qml/ApplicationPage.qml:92
 #, kde-format
@@ -321,7 +321,7 @@ msgstr "%1 - %2"
 #, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
-msgstr ""
+msgstr "分享应用程序链接"
 
 #: discover/qml/ApplicationPage.qml:152
 #, kde-format
@@ -360,7 +360,7 @@ msgstr "未知"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr "，"
 
 #: discover/qml/ApplicationPage.qml:373
 #, kde-format
@@ -377,24 +377,24 @@ msgstr[0] "查看更多…"
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr ""
+msgstr "年龄："
 
 #: discover/qml/ApplicationPage.qml:400
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr ""
+msgstr "全年龄段"
 
 #: discover/qml/ApplicationPage.qml:402
 #, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr ""
+msgstr "%1 岁以上"
 
 #: discover/qml/ApplicationPage.qml:416
 #, kde-format
 msgid "See details"
-msgstr ""
+msgstr "查看详情"
 
 #: discover/qml/ApplicationPage.qml:440
 #, kde-format
@@ -443,7 +443,7 @@ msgstr "安装程序后才能发表评价"
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
-msgstr ""
+msgstr "外部链接"
 
 #: discover/qml/ApplicationPage.qml:709
 #, kde-format
