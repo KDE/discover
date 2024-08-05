@@ -357,7 +357,7 @@ DiscoverPage {
                                     QQC2.Label {
                                         readonly property int licensesCount: appInfo.application.licenses.length
                                         text: i18nc("Separator between license labels e.g. 'GPL-3.0, Proprietary'", ",")
-                                        visible: index <= (licensesCount - 2)
+                                        visible: delegate.index <= (licensesCount - 2)
                                     }
                                 }
 
