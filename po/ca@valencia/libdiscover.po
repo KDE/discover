@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-03 00:40+0000\n"
-"PO-Revision-Date: 2024-07-23 10:15+0200\n"
+"PO-Revision-Date: 2024-08-03 11:35+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1055,11 +1055,10 @@ msgstr "Neteja la configuració i les dades d'usuari…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "Permisos de %1"
+msgstr "Permisos"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
@@ -2757,35 +2756,3 @@ msgstr "Programari del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complements"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content suitable for everyone"
-#~ msgid "All Audiences"
-#~ msgstr "Tot el públic"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with relatively benign themes only unsuitable for very young "
-#~ "children, such as minor cartoon violence or mild profanity"
-#~ msgid "Mild Content"
-#~ msgstr "Contingut lleu"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with some intense themes, such as somewhat realistic violence, "
-#~ "references to sexuality, or adult profanity"
-#~ msgid "Moderate Content"
-#~ msgstr "Contingut moderat"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "mature content that could be quite objectionable or unsuitable for young "
-#~ "audiences, such as realistic graphic violence, extreme profanity or "
-#~ "nudity, or glorification of drug use"
-#~ msgid "Intense Content"
-#~ msgstr "Contingut intens"
-
-#~ msgctxt "%1 is the name of the application"
-#~ msgid "Permissions for %1"
-#~ msgstr "Permisos de %1"

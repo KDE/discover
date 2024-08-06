@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-03 00:40+0000\n"
-"PO-Revision-Date: 2024-07-23 11:54+0200\n"
+"PO-Revision-Date: 2024-08-05 23:47+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -1056,11 +1056,10 @@ msgstr "Ezarpenak eta erabiltzaile-datuak garbitzen..."
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "%1(e)ren baimenak"
+msgstr "Baimenak"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20

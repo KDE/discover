@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-04 00:40+0000\n"
-"PO-Revision-Date: 2024-07-11 12:53+0200\n"
+"PO-Revision-Date: 2024-08-05 23:49+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -305,9 +305,7 @@ msgid "No ratings yet"
 msgstr "Oraindik baloraziorik ez"
 
 #: discover/qml/ApplicationPage.qml:68
-#, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "Partekatu"
@@ -316,7 +314,7 @@ msgstr "Partekatu"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
-msgstr ""
+msgstr "Gehigarriak"
 
 #: discover/qml/ApplicationPage.qml:92
 #, kde-format
@@ -332,11 +330,10 @@ msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Send a link for this application"
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
-msgstr "Bidali aplikazio honetarako esteka bat"
+msgstr "Partekatu aplikaziorako esteka"
 
 #: discover/qml/ApplicationPage.qml:152
 #, kde-format
@@ -376,7 +373,7 @@ msgstr "Ezezaguna"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:373
 #, kde-format
@@ -394,25 +391,22 @@ msgstr[1] "Ikusi gehiago…"
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr ""
+msgstr "Adina:"
 
 #: discover/qml/ApplicationPage.qml:400
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr ""
+msgstr "Edonor"
 
 #: discover/qml/ApplicationPage.qml:402
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr "%1"
+msgstr "%1+"
 
 #: discover/qml/ApplicationPage.qml:416
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
+#, kde-format
 msgid "See details"
 msgstr "Ikusi xehetasunak…"
 
@@ -463,7 +457,7 @@ msgstr "Instalatu aipamen bat idazteko"
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
-msgstr ""
+msgstr "Kanpoko estekak"
 
 #: discover/qml/ApplicationPage.qml:709
 #, kde-format
