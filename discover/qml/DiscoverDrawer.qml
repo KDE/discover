@@ -141,11 +141,6 @@ Kirigami.GlobalDrawer {
         }
     ]
 
-    Discover.ResourcesProxyModel {
-        id: appsModel
-        search: drawer.currentSearchText
-    }
-
     footer: ColumnLayout {
         spacing: 0
         Layout.fillWidth: true
@@ -185,7 +180,7 @@ Kirigami.GlobalDrawer {
             icon.name: category?.icon ?? ""
             checked: itsMe
             enabled: (currentSearchText.length === 0
-                      || (category?.contains(appsModel.subcategories) ?? false))
+                      || (category?.contains(window?.leftPage?.model?.subcategories) ?? false))
 
             onTriggered: {
                 if (!window.leftPage.canNavigate) {
