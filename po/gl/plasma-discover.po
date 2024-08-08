@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-04 00:40+0000\n"
-"PO-Revision-Date: 2024-06-09 10:04+0200\n"
+"PO-Revision-Date: 2024-08-07 21:31+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.0\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: discover/DiscoverObject.cpp:176
 #, kde-format
@@ -307,16 +307,13 @@ msgid "No ratings yet"
 msgstr "Aínda non ten valoracións."
 
 #: discover/qml/ApplicationPage.qml:68
-#, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "Compartir"
 
 #: discover/qml/ApplicationPage.qml:76
-#, fuzzy, kde-format
-#| msgid "Add-ons"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
 msgstr "Complementos"
@@ -335,11 +332,10 @@ msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Send a link for this application"
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
-msgstr "Enviar unha ligazón a esta aplicación"
+msgstr "Compartir unha ligazón á aplicación"
 
 #: discover/qml/ApplicationPage.qml:152
 #, kde-format
@@ -379,7 +375,7 @@ msgstr "Descoñecida"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:373
 #, kde-format
@@ -397,27 +393,24 @@ msgstr[1] "Ver máis…"
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr ""
+msgstr "Idades:"
 
 #: discover/qml/ApplicationPage.qml:400
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr ""
+msgstr "Calquera"
 
 #: discover/qml/ApplicationPage.qml:402
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr "%1"
+msgstr "A partir de %1 anos"
 
 #: discover/qml/ApplicationPage.qml:416
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
+#, kde-format
 msgid "See details"
-msgstr "Ver os detalles…"
+msgstr "Ver os detalles"
 
 #: discover/qml/ApplicationPage.qml:440
 #, kde-format
@@ -466,7 +459,7 @@ msgstr "Instale para escribir unha recensión"
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
-msgstr ""
+msgstr "Ligazóns externas"
 
 #: discover/qml/ApplicationPage.qml:709
 #, kde-format
