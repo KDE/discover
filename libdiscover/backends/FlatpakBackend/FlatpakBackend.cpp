@@ -265,11 +265,7 @@ static std::optional<AppStream::Metadata> metadataFromBytes(GBytes *appstreamGz,
     gconstpointer data = g_bytes_get_data(appstream, &len);
 
     AppStream::Metadata metadata;
-#if ASQ_CHECK_VERSION(0, 16, 0)
     metadata.setFormatStyle(AppStream::Metadata::FormatStyleCatalog);
-#else
-    metadata.setFormatStyle(AppStream::Metadata::FormatStyleCollection);
-#endif
     AppStream::Metadata::MetadataError error = metadata.parse(QString::fromUtf8((char *)data, len), AppStream::Metadata::FormatKindXml);
     if (error != AppStream::Metadata::MetadataErrorNoError) {
         qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to parse appstream metadata: " << error;
@@ -802,23 +798,8 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
     const QString appstreamLocation = path + "/appstream/"_L1 + remoteName + '/'_L1 + QString::fromUtf8(flatpak_get_default_arch()) + "/active"_L1;
 
     AppStream::Pool pool;
-#ifdef APPSTREAM_NEW_POOL_API
     pool.setLoadStdDataLocations(false);
-#if ASQ_CHECK_VERSION(0, 16, 0)
     pool.addExtraDataLocation(appstreamLocation, AppStream::Metadata::FormatStyleCatalog);
-#else
-    pool.addExtraDataLocation(appstreamLocation, AppStream::Metadata::FormatStyleCollection);
-#endif
-#else
-    pool.clearMetadataLocations();
-    pool.addMetadataLocation(appstreamLocation);
-    pool.setFlags(AppStream::Pool::FlagReadCollection);
-    pool.setCacheFlags(AppStream::Pool::CacheFlagUseUser);
-
-    const QString subdir = flatpak_installation_get_id(tempInstallation) + QLatin1Char('/') + remoteName;
-    pool.setCacheLocation(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/flatpak-appstream-temp/" + subdir);
-    QDir().mkpath(pool.cacheLocation());
-#endif
 
     if (!pool.load()) {
         qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "error loading pool" << pool.lastError();
@@ -1100,23 +1081,8 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
     AppStream::Pool *pool = new AppStream::Pool;
     acquireFetching(true);
 
-#ifdef APPSTREAM_NEW_POOL_API
     pool->setLoadStdDataLocations(false);
-#if ASQ_CHECK_VERSION(0, 16, 0)
     pool->addExtraDataLocation(appstreamDirPath, AppStream::Metadata::FormatStyleCatalog);
-#else
-    pool->addExtraDataLocation(appstreamDirPath, AppStream::Metadata::FormatStyleCollection);
-#endif
-#else
-    pool->clearMetadataLocations();
-    pool->addMetadataLocation(appstreamDirPath);
-    pool->setFlags(AppStream::Pool::FlagReadCollection);
-    pool->setCacheFlags(AppStream::Pool::CacheFlagUseUser);
-
-    const QString subdir = flatpak_installation_get_id(source->installation()) + QLatin1Char('/') + source->name();
-    pool->setCacheLocation(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/flatpak-appstream/" + subdir);
-    QDir().mkpath(pool->cacheLocation());
-#endif
 
     const auto loadDone = [this, source, pool](bool result) {
         source->m_pool = pool;
@@ -1727,11 +1693,9 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                             if (!filter.search.isEmpty()) {
                                 return source->m_pool->search(filter.search);
                             }
-#if ASQ_CHECK_VERSION(0, 15, 6)
                             if (filter.category) {
                                 return AppStreamUtils::componentsByCategories(source->m_pool, filter.category, AppStream::Bundle::KindFlatpak);
                             }
-#endif
                             return source->m_pool->components();
                         }();
 
