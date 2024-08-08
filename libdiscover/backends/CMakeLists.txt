@@ -50,7 +50,7 @@ elseif (BUILD_FlatpakBackend)
     message(WARNING "BUILD_FlatpakBackend enabled but Flatpak=${Flatpak_FOUND} or AppStreamQt=${AppStreamQt_FOUND} not found")
 endif()
 
-find_package(Snapd)
+find_package(Snapd 1.65)
 set_package_properties(Snapd PROPERTIES
     DESCRIPTION "Library that exposes Snapd"
     URL "https://www.snapcraft.io"
