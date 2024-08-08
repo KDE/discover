@@ -19,9 +19,7 @@
 #include <QProcess>
 #include <QStandardItemModel>
 
-#ifdef SNAP_MARKDOWN
 #include <Snapd/MarkdownParser>
-#endif
 
 #include <appstream/AppStreamUtils.h>
 #include <utils.h>
@@ -68,11 +66,9 @@ QDebug operator<<(QDebug debug, const QSnapdSlot *slot)
     return debug;
 }
 
-const QStringList SnapResource::s_topObjects({QStringLiteral("qrc:/qml/PermissionsButton.qml")
-#ifdef SNAP_CHANNELS
-                                                  ,
-                                              QStringLiteral("qrc:/qml/ChannelsButton.qml")
-#endif
+const QStringList SnapResource::s_topObjects({
+    QStringLiteral("qrc:/qml/PermissionsButton.qml"),
+    QStringLiteral("qrc:/qml/ChannelsButton.qml"),
 });
 
 SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::State state, SnapBackend *backend)
@@ -166,7 +162,6 @@ QJsonArray SnapResource::licenses()
     return AppStreamUtils::licenses(m_snap->license());
 }
 
-#ifdef SNAP_MARKDOWN
 static QString serialize_node(QSnapdMarkdownNode &node);
 
 static QString serialize_children(QSnapdMarkdownNode &node)
@@ -220,20 +215,15 @@ static QString serialize_node(QSnapdMarkdownNode &node)
         return QString();
     }
 }
-#endif
 
 QString SnapResource::longDescription()
 {
-#ifdef SNAP_MARKDOWN
     QSnapdMarkdownParser parser(QSnapdMarkdownParser::MarkdownVersion0);
     QList<QSnapdMarkdownNode> nodes = parser.parse(m_snap->description());
     QString result;
     for (int i = 0; i < nodes.size(); i++)
         result += serialize_node(nodes[i]);
     return result;
-#else
-    return m_snap->description();
-#endif
 }
 
 QString SnapResource::name() const
@@ -278,18 +268,11 @@ void SnapResource::fetchChangelog()
 void SnapResource::fetchScreenshots()
 {
     Screenshots screenshots;
-#ifdef SNAP_MEDIA
     for (int i = 0, c = m_snap->mediaCount(); i < c; ++i) {
         QScopedPointer<QSnapdMedia> media(m_snap->media(i));
         if (media->type() == QLatin1String("screenshot"))
             screenshots << QUrl(media->url());
     }
-#else
-    for (int i = 0, c = m_snap->screenshotCount(); i < c; ++i) {
-        QScopedPointer<QSnapdScreenshot> screenshot(m_snap->screenshot(i));
-        screenshots << QUrl(screenshot->url());
-    }
-#endif
     Q_EMIT screenshotsFetched(screenshots);
 }
 
@@ -461,11 +444,7 @@ QAbstractItemModel *SnapResource::plugs(QObject *p)
 
 QString SnapResource::appstreamId() const
 {
-    const QStringList ids
-#if defined(SNAP_COMMON_IDS)
-        = m_snap->commonIds()
-#endif
-        ;
+    const QStringList ids = m_snap->commonIds();
     return ids.isEmpty() ? QLatin1String("io.snapcraft.") + m_snap->name() + QLatin1Char('-') + m_snap->id() : ids.first();
 }
 
@@ -476,32 +455,22 @@ QStringList SnapResource::topObjects() const
 
 QString SnapResource::channel() const
 {
-#ifdef SNAP_PUBLISHER
     auto req = client()->getSnap(packageName());
-#else
-    auto req = client()->listOne(packageName());
-#endif
     req->runSync();
     return req->error() ? QString() : req->snap()->trackingChannel();
 }
 
 QString SnapResource::author() const
 {
-#ifdef SNAP_PUBLISHER
     QString author = m_snap->publisherDisplayName();
     if (m_snap->publisherValidation() == QSnapdEnums::PublisherValidationVerified) {
         author += QStringLiteral(" ✅");
     }
-#else
-    QString author;
-#endif
-
     return author;
 }
 
 void SnapResource::setChannel(const QString &channelName)
 {
-#ifdef SNAP_CHANNELS
     Q_ASSERT(isInstalled());
     auto request = client()->switchChannel(m_snap->name(), channelName);
 
@@ -513,7 +482,6 @@ void SnapResource::setChannel(const QString &channelName)
             Q_EMIT channelChanged(newChannel);
         }
     });
-#endif
 }
 
 quint64 SnapResource::installedSize() const
@@ -551,7 +519,6 @@ void SnapResource::refreshSnap()
     request->runAsync();
 }
 
-#ifdef SNAP_CHANNELS
 class Channels : public QObject
 {
     Q_OBJECT
@@ -597,15 +564,9 @@ private:
     SnapResource *const m_res;
 };
 
-#endif
-
 QObject *SnapResource::channels(QObject *parent)
 {
-#ifdef SNAP_CHANNELS
     return new Channels(this, parent);
-#else
-    return nullptr;
-#endif
 }
 
 #include "SnapResource.moc"

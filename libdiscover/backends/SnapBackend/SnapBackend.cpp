@@ -140,16 +140,13 @@ ResultsStream *SnapBackend::search(const AbstractResourcesBackend::Filters &filt
 ResultsStream *SnapBackend::findResourceByPackageName(const QUrl &search)
 {
     Q_ASSERT(!search.host().isEmpty() || !AppStreamUtils::appstreamIds(search).isEmpty());
-    return search.scheme() == QLatin1String("snap") ? populate(m_client.find(QSnapdClient::MatchName, search.host())) :
-#ifdef SNAP_FIND_COMMON_ID
-        search.scheme() == QLatin1String("appstream")
+    return search.scheme() == QLatin1String("snap") ? populate(m_client.find(QSnapdClient::MatchName, search.host()))
+        : search.scheme() == QLatin1String("appstream")
         ? populate(kTransform<QVector<QSnapdFindRequest *>>(AppStreamUtils::appstreamIds(search),
                                                             [this](const QString &id) {
                                                                 return m_client.find(QSnapdClient::MatchCommonId, id);
                                                             }))
-        :
-#endif
-        voidStream();
+        : voidStream();
 }
 
 template<class T>
