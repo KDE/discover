@@ -98,7 +98,7 @@ public:
     {
     }
 
-    void setRequest(const KNSCore::Provider::SearchRequest &request)
+    void setRequest(const KNSCore::SearchRequest &request)
     {
         Q_ASSERT(!m_started);
         m_started = true;
@@ -207,23 +207,20 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
 
     m_engine = new KNSCore::EngineBase(this);
     connect(m_engine, &KNSCore::EngineBase::signalErrorCode, this, &KNSBackend::slotErrorCode);
-    connect(m_engine, &KNSCore::EngineBase::providersChanged, this, [this] {
+    connect(m_engine, &KNSCore::EngineBase::providerAdded, this, [this] {
         setFetching(false);
     });
 
-    connect(m_engine,
-            &KNSCore::EngineBase::signalCategoriesMetadataLoded,
-            this,
-            [categories](const QList<KNSCore::Provider::CategoryMetadata> &categoryMetadatas) {
-                for (const KNSCore::Provider::CategoryMetadata &category : categoryMetadatas) {
-                    for (Category *cat : std::as_const(categories)) {
-                        if (cat->matchesCategoryName(category.name)) {
-                            cat->setName(category.displayName);
-                            break;
-                        }
-                    }
+    connect(m_engine, &KNSCore::EngineBase::signalCategoriesMetadataLoaded, this, [categories](const QList<KNSCore::CategoryMetadata> &categoryMetadatas) {
+        for (const KNSCore::CategoryMetadata &category : categoryMetadatas) {
+            for (Category *cat : std::as_const(categories)) {
+                if (cat->matchesCategoryName(category.name())) {
+                    cat->setName(category.displayName());
+                    break;
                 }
-            });
+            }
+        }
+    });
     m_engine->init(m_name);
 
     if (m_hasApplications) {
@@ -328,12 +325,12 @@ KNSResource *KNSBackend::resourceForEntry(const KNSCore::Entry &entry)
         if (!m_rootCategories.isEmpty()) {
             categories << m_rootCategories.first()->name();
         }
-        const auto cats = m_engine->categoriesMetadata();
-        const int catIndex = kIndexOf(cats, [&entry](const KNSCore::Provider::CategoryMetadata &cat) {
-            return entry.category() == cat.id;
+        const auto cats = m_engine->categoriesMetadata2();
+        const int catIndex = kIndexOf(cats, [&entry](const KNSCore::CategoryMetadata &cat) {
+            return entry.category() == cat.id();
         });
         if (catIndex > -1) {
-            categories << cats.at(catIndex).name;
+            categories << cats.at(catIndex).name();
         }
         if (m_hasApplications) {
             categories << QLatin1String("Application");
@@ -502,8 +499,8 @@ ResultsStream *KNSBackend::search(const AbstractResourcesBackend::Filters &filte
         auto stream = new KNSResultsStream(this, "KNS-installed-"_L1 + name());
         const auto start = [this, stream, filter]() {
             if (m_isValid) {
-                const auto knsFilter = filter.state == AbstractResource::Installed ? KNSCore::Provider::Installed : KNSCore::Provider::Updates;
-                stream->setRequest(KNSCore::Provider::SearchRequest(KNSCore::Provider::Newest, knsFilter, {}, {}, -1, ENGINE_PAGE_SIZE));
+                const auto knsFilter = filter.state == AbstractResource::Installed ? KNSCore::Filter::Installed : KNSCore::Filter::Updates;
+                stream->setRequest(KNSCore::SearchRequest(KNSCore::SortMode::Newest, knsFilter, {}, {}, -1, ENGINE_PAGE_SIZE));
             }
             stream->finish();
         };
@@ -529,7 +526,7 @@ KNSResultsStream *KNSBackend::searchStream(const QString &searchText)
             stream->finish();
             return;
         }
-        KNSCore::Provider::SearchRequest p(KNSCore::Provider::Newest, KNSCore::Provider::None, searchText, {}, 0, ENGINE_PAGE_SIZE);
+        KNSCore::SearchRequest p(KNSCore::SortMode::Newest, KNSCore::Filter::None, searchText, {}, 0, ENGINE_PAGE_SIZE);
         stream->setRequest(p);
     };
     deferredResultStream(stream, start);
@@ -550,7 +547,7 @@ ResultsStream *KNSBackend::findResourceByPackageName(const QUrl &search)
 
     auto stream = new KNSResultsStream(this, QLatin1String("KNS-byname-") + entryid);
     auto start = [entryid, stream]() {
-        KNSCore::Provider::SearchRequest query(KNSCore::Provider::Newest, KNSCore::Provider::ExactEntryId, entryid, {}, 0, ENGINE_PAGE_SIZE);
+        KNSCore::SearchRequest query(KNSCore::SortMode::Newest, KNSCore::Filter::ExactEntryId, entryid, {}, 0, ENGINE_PAGE_SIZE);
         stream->setRequest(query);
     };
     deferredResultStream(stream, start);
