@@ -499,7 +499,7 @@ ResultsStream *KNSBackend::search(const AbstractResourcesBackend::Filters &filte
     if (filter.resourceUrl.scheme() == QLatin1String("kns")) {
         return findResourceByPackageName(filter.resourceUrl);
     } else if (filter.state >= AbstractResource::Installed) {
-        auto stream = new KNSResultsStream(this, QStringLiteral("KNS-installed"));
+        auto stream = new KNSResultsStream(this, "KNS-installed-"_L1 + name());
         const auto start = [this, stream, filter]() {
             if (m_isValid) {
                 const auto knsFilter = filter.state == AbstractResource::Installed ? KNSCore::Provider::Installed : KNSCore::Provider::Updates;
