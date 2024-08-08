@@ -51,10 +51,6 @@ target_link_libraries(flatpak-backend
         libdiscover-backend-flatpak-logging-category
 )
 
-if (AppStreamQt_VERSION VERSION_GREATER 0.14.6)
-    target_compile_definitions(flatpak-backend PRIVATE -DAPPSTREAM_NEW_POOL_API)
-endif()
-
 if (NOT Flatpak_VERSION VERSION_LESS 1.1.2)
     target_compile_definitions(flatpak-backend PRIVATE -DFLATPAK_VERBOSE_PROGRESS -DFLATPAK_LIST_UNUSED_REFS)
 endif()

@@ -255,13 +255,8 @@ QString AppPackageKitResource::versionString()
 
 QDate AppPackageKitResource::releaseDate() const
 {
-#if ASQ_CHECK_VERSION(1, 0, 0)
     if (!m_appdata.releasesPlain().isEmpty()) {
         const auto release = m_appdata.releasesPlain().indexSafe(0).value();
-#else
-    if (!m_appdata.releases().isEmpty()) {
-        const auto release = m_appdata.releases().constFirst();
-#endif
         return release.timestamp().date();
     }
 

@@ -35,20 +35,12 @@ QUrl AppStreamUtils::imageOfKind(const QList<AppStream::Image> &images, AppStrea
 
 QString AppStreamUtils::changelogToHtml(const AppStream::Component &appdata)
 {
-#if ASQ_CHECK_VERSION(1, 0, 0)
     const auto releases = appdata.releasesPlain();
-#else
-    const auto releases = appdata.releases();
-#endif
     if (releases.isEmpty()) {
         return {};
     }
 
-#if ASQ_CHECK_VERSION(1, 0, 0)
     const auto release = releases.indexSafe(0).value();
-#else
-    const auto release = releases.constFirst();
-#endif
     if (release.description().isEmpty())
         return {};
 
@@ -157,7 +149,6 @@ QString AppStreamUtils::versionString(const QString &version, const AppStream::C
 
 QString AppStreamUtils::contentRatingDescription(const AppStream::Component &appdata)
 {
-#if ASQ_CHECK_VERSION(0, 15, 6)
     const auto ratings = appdata.contentRatings();
     QString ret;
     for (const auto &r : ratings) {
@@ -170,25 +161,16 @@ QString AppStreamUtils::contentRatingDescription(const AppStream::Component &app
     }
 
     return ret;
-#else
-    Q_UNUSED(appdata);
-    return {};
-#endif
 }
 
 uint AppStreamUtils::contentRatingMinimumAge(const AppStream::Component &appdata)
 {
-#if ASQ_CHECK_VERSION(0, 15, 6)
     const auto ratings = appdata.contentRatings();
     uint minimumAge = 0;
     for (const auto &r : ratings) {
         minimumAge = std::max(r.minimumAge(), minimumAge);
     }
     return minimumAge;
-#else
-    Q_UNUSED(appdata);
-    return 0;
-#endif
 }
 
 static void kRemoveDuplicates(AppStream::ComponentBox &input, AppStream::Bundle::Kind kind)
