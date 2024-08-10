@@ -543,7 +543,9 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
         *freshResource = true;
     }
 
-    Q_ASSERT(resource->uniqueId() == idForInstalledRef(ref) || resource->uniqueId() == idForInstalledRef(ref, QStringLiteral(".desktop")));
+    Q_ASSERT_X(resource->uniqueId() == idForInstalledRef(ref) || resource->uniqueId() == idForInstalledRef(ref, QStringLiteral(".desktop")),
+               "getAppForInstalledRef",
+               flatpak_ref_format_ref_cached(FLATPAK_REF(ref)));
     return resource;
 }
 
