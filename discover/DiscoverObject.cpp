@@ -20,6 +20,7 @@
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusPendingCall>
+#include <QDBusPendingReply>
 #include <QDesktopServices>
 #include <QFile>
 #include <QGuiApplication>
@@ -641,21 +642,55 @@ void DiscoverObject::copyTextToClipboard(const QString text)
     clipboard->setText(text);
 }
 
-void DiscoverObject::reboot()
+void DiscoverObject::setAboutToPowerOff()
+{
+    for (auto backend : ResourcesModel::global()->backends()) {
+        backend->aboutTo(AbstractResourcesBackend::PowerOff);
+    }
+}
+
+void DiscoverObject::setAboutToReboot()
+{
+    for (auto backend : ResourcesModel::global()->backends()) {
+        backend->aboutTo(AbstractResourcesBackend::Reboot);
+    }
+}
+
+void DiscoverObject::promptReboot()
 {
     auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.LogoutPrompt"),
                                                  QStringLiteral("/LogoutPrompt"),
                                                  QStringLiteral("org.kde.LogoutPrompt"),
-                                                 QStringLiteral("promptReboot"));
+                                                 QStringLiteral("promptAll"));
     QDBusConnection::sessionBus().asyncCall(method);
 }
 
 void DiscoverObject::rebootNow()
 {
+    setAboutToReboot();
     auto method = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.login1"),
                                                  QStringLiteral("/org/freedesktop/login1"),
                                                  QStringLiteral("org.freedesktop.login1.Manager"),
                                                  QStringLiteral("Reboot"));
+    method.setArguments({true /*interactive*/});
+    QDBusConnection::systemBus().asyncCall(method);
+}
+
+void DiscoverObject::shutdownNow()
+{
+    bool shouldRebootFirst = false;
+    for (auto backend : ResourcesModel::global()->backends()) {
+        if (backend->needsRebootForPowerOffAction()) {
+            shouldRebootFirst = true;
+            break;
+        }
+    }
+    setAboutToPowerOff();
+
+    auto method = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.login1"),
+                                                 QStringLiteral("/org/freedesktop/login1"),
+                                                 QStringLiteral("org.freedesktop.login1.Manager"),
+                                                 shouldRebootFirst ? QStringLiteral("Reboot") : QStringLiteral("PowerOff"));
     method.setArguments({true /*interactive*/});
     QDBusConnection::systemBus().asyncCall(method);
 }

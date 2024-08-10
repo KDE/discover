@@ -1198,5 +1198,19 @@ void PackageKitBackend::loadAllPackages()
     m_allPackagesLoaded = true;
 }
 
+void PackageKitBackend::aboutTo(AboutToAction action)
+{
+    PackageKit::Offline::Action packageKitAction;
+    switch (action) {
+    case Reboot:
+        packageKitAction = PackageKit::Offline::ActionReboot;
+        break;
+    case PowerOff:
+        packageKitAction = PackageKit::Offline::ActionPowerOff;
+        break;
+    }
+    m_updater->setOfflineUpdateAction(packageKitAction);
+}
+
 #include "PackageKitBackend.moc"
 #include "moc_PackageKitBackend.cpp"

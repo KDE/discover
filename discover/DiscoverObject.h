@@ -58,8 +58,9 @@ public Q_SLOTS:
     void openMode(const QString &mode);
     void openLocalPackage(const QUrl &localfile);
 
-    void reboot();
+    void promptReboot();
     void rebootNow();
+    void shutdownNow();
 
 private Q_SLOTS:
     void switchApplicationLanguage();
@@ -80,6 +81,8 @@ private:
     void initMainWindow(QQuickWindow *mainWindow);
     bool quitWhenIdle();
     void reconsiderQuit();
+    void setAboutToReboot();
+    void setAboutToPowerOff();
     QQmlApplicationEngine *engine() const
     {
         return m_engine;

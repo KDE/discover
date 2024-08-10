@@ -236,10 +236,29 @@ DiscoverPage {
                     onClicked: { updateModel.uncheckAll(); }
                 }
 
-                QQC2.CheckBox {
-                    id: rebootAtEnd
+                RowLayout {
                     visible: resourcesUpdatesModel.needsReboot && resourcesUpdatesModel.isProgressing
-                    text: i18n("Restart automatically after update has completed");
+                    spacing: Kirigami.units.smallSpacing
+
+                    Layout.fillWidth: true
+
+                    Layout.leftMargin: Kirigami.Units.largeSpacing
+                    Layout.rightMargin: Kirigami.Units.largeSpacing
+
+                    RowLayout {
+                        visible: resourcesUpdatesModel.needsReboot && resourcesUpdatesModel.isProgressing
+                        spacing: Kirigami.units.smallSpacing
+                        Layout.fillWidth: true
+
+                        QQC2.Label {
+                            text: i18nc("@info on the completion of updates, the action that automatically happens after (e.g shutdown)", "On completion, automatically:")
+                        }
+
+                        QQC2.ComboBox {
+                            id: actionAfterUpdateCombo
+                            model: [i18nc("@item:inlistbox placeholder for when no action is selected", "Select an action"), i18nc("@item:inlistbox", "Restart"), i18nc("@item:inlistbox", "Shutdown")]
+                        }
+                    }
                 }
 
                 QQC2.Label {
@@ -279,12 +298,13 @@ DiscoverPage {
         }
 
         Kirigami.Action {
-            id: restartAction
-            icon.name: "system-reboot"
-            text: i18n("Restart Now")
+            id: promptRestartAction
+            icon.name: "system-reboot-update"
+            text: i18nc("@action:button", "Restart to Install Updates Now")
             visible: false
-            onTriggered: app.reboot()
+            onTriggered: app.promptReboot()
         }
+
         Kirigami.LoadingPlaceholder {
             id: statusLabel
             icon.name: {
@@ -434,7 +454,7 @@ DiscoverPage {
                     }
                 }
 
-                RowLayout {
+                ColumnLayout {
                     Layout.fillWidth: true
                     spacing: Kirigami.Units.smallSpacing
                     visible: listItem.model.extended
@@ -511,12 +531,16 @@ DiscoverPage {
         State {
             name: "reboot"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Restart the system to complete the update process") }
-            PropertyChanges { target: statusLabel; helpfulAction: restartAction }
+            PropertyChanges { target: statusLabel; helpfulAction: promptRestartAction }
             PropertyChanges { target: statusLabel; explanation: "" }
             PropertyChanges { target: statusLabel.progressBar; visible: false }
             StateChangeScript {
-                script: if (rebootAtEnd.checked && resourcesUpdatesModel.readyToReboot) {
-                    app.rebootNow()
+                script: if (resourcesUpdatesModel.readyToReboot) {
+                    if (actionAfterUpdateCombo.currentIndex === 1) {
+                        app.rebootNow()
+                    } else if (actionAfterUpdateCombo.currentIndex === 2) {
+                        app.shutdownNow()
+                    }
                 }
             }
         },

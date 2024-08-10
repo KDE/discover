@@ -7,7 +7,9 @@
 #pragma once
 
 #include "PackageKitResource.h"
+
 #include <AppStreamQt/pool.h>
+#include <PackageKit/Offline>
 #include <PackageKit/Transaction>
 #include <QFile>
 #include <QPointer>
@@ -129,6 +131,11 @@ public:
     QStringList globalHints()
     {
         return m_globalHints;
+    }
+    void aboutTo(AboutToAction action) override;
+    bool needsRebootForPowerOffAction() const override
+    {
+        return true;
     }
 
 public Q_SLOTS:

@@ -49,6 +49,7 @@ public:
     void setDistroUpgrade(const AppStream::Release &release);
     void clearDistroUpgrade();
     bool isDistroUpgrade() const;
+    void setOfflineUpdateAction(PackageKit::Offline::Action action);
 
 public Q_SLOTS:
     /// must be implemented if ever isCancelable is true
@@ -106,6 +107,7 @@ private:
     QDateTime m_lastUpdate;
     QMap<PackageKit::Transaction::Info, QStringList> m_packagesModified;
     QVector<std::function<PackageKit::Transaction *()>> m_proceedFunctions;
+    PackageKit::Offline::Action m_offlineUpdateAction = PackageKit::Offline::Action::ActionReboot;
 
     SystemUpgrade *m_upgrade = nullptr;
 };

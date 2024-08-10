@@ -272,7 +272,7 @@ QString DiscoverNotifier::iconName() const
     case NoUpdates:
         return QStringLiteral("update-none");
     case RebootRequired:
-        return QStringLiteral("system-reboot");
+        return QStringLiteral("system-reboot-update");
     case Offline:
         return QStringLiteral("offline");
     case Busy:
@@ -326,18 +326,38 @@ void DiscoverNotifier::showRebootNotification()
                                                        KNotification::Persistent | KNotification::DefaultEvent,
                                                        QStringLiteral("discoverabstractnotifier"));
 
-    auto restartAction = notification->addAction(i18nc("@action:button", "Restart"));
-    connect(restartAction, &KNotificationAction::activated, this, &DiscoverNotifier::reboot);
+    auto restartAction = notification->addAction(i18nc("@action:button", "Update and Restart"));
+    auto shutdownAction = notification->addAction(i18nc("@action:button", "Update and Shut Down"));
+    connect(restartAction, &KNotificationAction::activated, this, &DiscoverNotifier::rebootPrompt);
+    connect(shutdownAction, &KNotificationAction::activated, this, &DiscoverNotifier::shutdownPrompt);
 
     notification->sendEvent();
 }
 
-void DiscoverNotifier::reboot()
+void DiscoverNotifier::rebootPrompt()
 {
     auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.LogoutPrompt"),
                                                  QStringLiteral("/LogoutPrompt"),
                                                  QStringLiteral("org.kde.LogoutPrompt"),
                                                  QStringLiteral("promptReboot"));
+    QDBusConnection::sessionBus().asyncCall(method);
+}
+
+void DiscoverNotifier::shutdownPrompt()
+{
+    auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.LogoutPrompt"),
+                                                 QStringLiteral("/LogoutPrompt"),
+                                                 QStringLiteral("org.kde.LogoutPrompt"),
+                                                 QStringLiteral("promptShutDown"));
+    QDBusConnection::sessionBus().asyncCall(method);
+}
+
+void DiscoverNotifier::promptAll()
+{
+    auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.LogoutPrompt"),
+                                                 QStringLiteral("/LogoutPrompt"),
+                                                 QStringLiteral("org.kde.LogoutPrompt"),
+                                                 QStringLiteral("promptAll"));
     QDBusConnection::sessionBus().asyncCall(method);
 }
 

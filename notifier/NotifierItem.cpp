@@ -23,7 +23,7 @@ void NotifierItem::setupNotifierItem()
 
     connect(m_item, &KStatusNotifierItem::activateRequested, &m_notifier, [this]() {
         if (m_notifier.needsReboot()) {
-            m_notifier.reboot();
+            m_notifier.promptAll();
         } else {
             m_notifier.showDiscoverUpdates(m_item->providedToken());
         }
@@ -44,10 +44,20 @@ void NotifierItem::setupNotifierItem()
     auto refreshAction = menu->addAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18n("Refresh…"));
     connect(refreshAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::recheckSystemUpdateNeededAndNotifyApp);
 
+    if (m_notifier.needsReboot()) {
+        menu->addSeparator();
+
+        auto rebootAction = menu->addAction(QIcon::fromTheme(QStringLiteral("system-reboot-update")), i18n("Install Updates and Restart…"));
+        connect(rebootAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::rebootPrompt);
+
+        auto shutdownAction = menu->addAction(QIcon::fromTheme(QStringLiteral("system-shutdown-update")), i18n("Install Updates and Shut Down…"));
+        connect(shutdownAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::shutdownPrompt);
+    }
+
     auto f = [this]() {
         m_item->setTitle(i18n("Restart to apply installed updates"));
         m_item->setToolTipTitle(i18n("Click to restart the device"));
-        m_item->setIconByName(QStringLiteral("view-refresh"));
+        m_item->setIconByName(QStringLiteral("system-reboot-update"));
     };
     if (m_notifier.needsReboot())
         f();

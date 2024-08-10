@@ -75,7 +75,9 @@ public Q_SLOTS:
     void showDiscover(const QString &xdgActivationToken);
     void showDiscoverUpdates(const QString &xdgActivationToken);
     void showUpdatesNotification();
-    void reboot();
+    void rebootPrompt();
+    void shutdownPrompt();
+    void promptAll();
     void foundUpgradeAction(UpgradeAction *action);
 
 Q_SIGNALS:

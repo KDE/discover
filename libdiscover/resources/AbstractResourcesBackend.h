@@ -239,6 +239,23 @@ public:
      */
     virtual uint fetchingUpdatesProgressWeight() const;
 
+    enum AboutToAction { Reboot, PowerOff };
+
+    /**
+     * Notifies the backend to prepare for a certain power action.
+     * Currently only used in the PackageKit backend.
+     * @param action the action that will occur
+     */
+    virtual void aboutTo(AboutToAction action) {};
+
+    /**
+     * @returns if the backend needs a reboot even when the PowerOff action is chosen,
+     * which would occur if the PowerOff happens after a reboot happens first
+     */
+    virtual bool needsRebootForPowerOffAction() const
+    {
+        return false;
+    }
 public Q_SLOTS:
     /**
      * This gets called when the backend should install an application.

@@ -633,7 +633,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
             m_backend->clear();
             setProgressing(false);
         } else {
-            PackageKit::Daemon::global()->offline()->trigger(PackageKit::Offline::ActionReboot);
+            PackageKit::Daemon::global()->offline()->trigger(m_offlineUpdateAction);
         }
         enableReadyToReboot();
     }
@@ -914,6 +914,14 @@ double PackageKitUpdater::updateSize() const
 quint64 PackageKitUpdater::downloadSpeed() const
 {
     return m_transaction ? m_transaction->speed() : 0;
+}
+
+void PackageKitUpdater::setOfflineUpdateAction(PackageKit::Offline::Action action)
+{
+    m_offlineUpdateAction = action;
+    if (PackageKit::Daemon::global()->offline()->updateTriggered()) {
+        PackageKit::Daemon::global()->offline()->trigger(action);
+    }
 }
 
 #include "PackageKitUpdater.moc"
