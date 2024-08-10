@@ -435,7 +435,7 @@ bool FlatpakTransactionThread::end_of_lifed_with_rebase(const char *remote,
         return false;
     }
 
-    GError *localError = nullptr;
+    g_autoptr(GError) localError = nullptr;
     auto correct = false;
     switch (target) {
     case Execute::Rebase:

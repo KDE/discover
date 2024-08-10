@@ -1000,7 +1000,7 @@ bool FlatpakBackend::loadAppsFromAppstreamData(FlatpakInstallation *flatpakInsta
 {
     Q_ASSERT(flatpakInstallation);
 
-    GError *error = nullptr;
+    g_autoptr(GError) error = nullptr;
     g_autoptr(GPtrArray) remotes = flatpak_installation_list_remotes(flatpakInstallation, m_cancellable, &error);
     if (!remotes) {
         qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "failed to list remotes" << error->message;
@@ -1568,24 +1568,13 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
 
                             const QByteArray parentId(id.constData(), id.lastIndexOf(QLatin1Char('.')));
 
-                            // We need to bruteforce the API as we don't know from here if it's app or runtime 🙄
                             auto parentRef = flatpak_installation_get_installed_ref(installation,
-                                                                                    FLATPAK_REF_KIND_APP,
+                                                                                    flatpak_ref_get_kind(FLATPAK_REF(ref)),
                                                                                     parentId.constData(),
                                                                                     flatpak_ref_get_arch(FLATPAK_REF(ref)),
                                                                                     flatpak_ref_get_branch(FLATPAK_REF(ref)),
                                                                                     cancellable,
                                                                                     &localError);
-                            if (!parentRef) {
-                                g_clear_error(&localError);
-                                parentRef = flatpak_installation_get_installed_ref(installation,
-                                                                                   FLATPAK_REF_KIND_RUNTIME,
-                                                                                   parentId.constData(),
-                                                                                   flatpak_ref_get_arch(FLATPAK_REF(ref)),
-                                                                                   flatpak_ref_get_branch(FLATPAK_REF(ref)),
-                                                                                   cancellable,
-                                                                                   &localError);
-                            }
                             if (parentRef) {
                                 if (auto resource = self->getAppForInstalledRef(installation, parentRef)) {
                                     resource->addRefToUpdate(flatpak_ref_format_ref_cached(FLATPAK_REF(parentRef)));
