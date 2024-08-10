@@ -245,7 +245,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
                 if (installedRef) {
                     auto res = backend->getAppForInstalledRef(installation, installedRef);
                     const auto name = QString::fromUtf8(flatpak_ref_get_name(ref));
-                    const auto refString = QString::fromUtf8(flatpak_ref_format_ref(ref));
+                    const auto refString = QString::fromUtf8(flatpak_ref_format_ref_cached(ref));
                     if (!name.endsWith(QLatin1String(".Locale"))) {
                         if (res) {
                             toRemoveHash[res->name()] << refString;

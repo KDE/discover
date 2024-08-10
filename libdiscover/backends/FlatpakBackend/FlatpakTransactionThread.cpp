@@ -306,7 +306,7 @@ void FlatpakTransactionThread::run()
             auto transaction = flatpak_transaction_new_for_installation(installation, m_cancellable, &localError);
             for (uint i = 0; i < refs->len; i++) {
                 FlatpakRef *ref = FLATPAK_REF(g_ptr_array_index(refs, i));
-                g_autofree gchar *strRef = flatpak_ref_format_ref(ref);
+                const gchar *strRef = flatpak_ref_format_ref_cached(ref);
                 qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "unused ref:" << strRef;
                 if (!flatpak_transaction_add_uninstall(transaction, strRef, &localError)) {
                     qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "failed to uninstall unused ref" << refName << localError->message;
