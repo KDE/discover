@@ -1577,6 +1577,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                                                                                     cancellable,
                                                                                     &localError);
                             if (!parentRef) {
+                                g_clear_error(&localError);
                                 parentRef = flatpak_installation_get_installed_ref(installation,
                                                                                    FLATPAK_REF_KIND_RUNTIME,
                                                                                    parentId.constData(),
