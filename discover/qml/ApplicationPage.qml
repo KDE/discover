@@ -39,6 +39,72 @@ DiscoverPage {
 
     readonly property int smallButtonSize: Kirigami.Units.iconSizes.small + (Kirigami.Units.smallSpacing * 2)
 
+    function colorForLicenseType(licenseType: string): string {
+        switch(licenseType) {
+            case "free":
+                return Kirigami.Theme.positiveTextColor;
+            case "non-free":
+                return Kirigami.Theme.neutralTextColor;
+            case "proprietary":
+                return Kirigami.Theme.negativeTextColor
+            case "unknown":
+            default:
+                return Kirigami.Theme.neutralTextColor;
+        }
+    }
+
+    function explanationForLicenseType(licenseType: string): string {
+        let freeSoftwareUrl = "https://www.gnu.org/philosophy/free-sw.html"
+        let fsfUrl = "https://www.fsf.org/"
+        let osiUrl = "https://opensource.org/"
+        let proprietarySoftwareUrl = "https://www.gnu.org/proprietary"
+        let hasHomepageUrl = application.homepage.toString().length > 0
+
+        switch(licenseType) {
+            case "proprietary":
+                if (hasHomepageUrl) {
+                    return xi18nc("@info", "Only install %1 if you fully trust its authors because it is <strong>proprietary</strong>: Your freedom to use, modify, and redistribute this application is restricted, and its source code is partially or entirely closed to public inspection and improvement. This means third parties and users like you cannot verify its operation, security, and trustworthiness.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways — such as harvesting your personal information, tracking your location, or transmitting the contents of your data to someone else. Only use it if you fully trust its authors. More information may be available on <link url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link url='%3'>%3</link>.",
+                                appInfo.application.name,
+                                appInfo.application.homepage.toString(),
+                                proprietarySoftwareUrl)
+                } else {
+                    return xi18nc("@info", "Only install %1 if you fully trust its authors because it is <strong>proprietary</strong>: Your freedom to use, modify, and redistribute this application is restricted, and its source code is partially or entirely closed to public inspection and improvement. This means third parties and users like you cannot verify its operation, security, and trustworthiness.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways — such as harvesting your personal information, tracking your location, or transmitting the contents of your data to someone else. Only use it if you fully trust its authors. Learn more at <link url='%2'>%2</link>.",
+                                  appInfo.application.name,
+                                  proprietarySoftwareUrl)
+                }
+
+            case "non-free":
+                if (hasHomepageUrl) {
+                    return xi18nc("@info", "%1 uses one or more licenses not certified as “Free Software” by either the <link url='%2'>Free Software Foundation</link> or the <link url='%3'>Open Source Initiative</link>. This means your freedom to use, study, modify, and share it may be restricted in some ways.<nl/><nl/>Make sure to read the license text and understand any restrictions before using the software.<nl/><nl/>If the license does not even grant access to read the source code, make sure you fully trust the authors, as no one else can verify the trustworthiness and security of its code to ensure that it is not acting against you in hidden ways. More information may be available on <link url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link url='%5'>%5</link>.",
+                                appInfo.application.name,
+                                fsfUrl,
+                                osiUrl,
+                                appInfo.application.homepage.toString(),
+                                freeSoftwareUrl);
+                } else {
+                    return xi18nc("@info", "%1 uses one or more licenses not certified as “Free Software” by either the <link url='%2'>Free Software Foundation</link> or the <link url='%3'>Open Source Initiative</link>. This means your freedom to use, study, modify, and share it may be restricted in some ways.<nl/><nl/>Make sure to read the license text and understand any restrictions before using the software.<nl/><nl/>If the license does not even grant access to read the source code, make sure you fully trust the authors, as no one else can verify the trustworthiness and security of its code to ensure that it is not acting against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>.",
+                                  appInfo.application.name,
+                                  fsfUrl,
+                                  osiUrl,
+                                  freeSoftwareUrl);
+                }
+
+            case "unknown":
+                if (hasHomepageUrl) {
+                    return i18nc("@info", "%1 does not indicate under which license it is distributed. You may be able to determine this on <link url='%2>the application's website</link>. Find it there or contact the author if you want to use this application for anything other than private personal use.",
+                                 appInfo.application.name,
+                                 appInfo.application.homepage.toString());
+                } else {
+                    return i18nc("@info", "%1 does not indicate under which license it is distributed. Contact the application's author if you want to use it for anything other than private personal use.",
+                                 appInfo.application.name);
+                }
+
+            case "free":
+            default:
+                return "";
+        }
+    }
+
     ReviewsPage {
         id: reviewsSheet
         parent: appInfo.QQC2.Overlay.overlay
@@ -352,7 +418,7 @@ DiscoverPage {
                                         wrapMode: Text.Wrap
                                         maximumLineCount: 3
                                         elide: Text.ElideRight
-                                        color: !delegate.modelData.hasFreedom ? Kirigami.Theme.neutralTextColor : (enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor)
+                                        color: appInfo.colorForLicenseType(delegate.modelData.licenseType)
                                     }
                                     QQC2.Label {
                                         readonly property int licensesCount: appInfo.application.licenses.length
@@ -361,13 +427,15 @@ DiscoverPage {
                                     }
                                 }
 
-                                // Button to open "What's the risk of proprietary software?" sheet
+                                // Button to open the license details dialog
                                 QQC2.Button {
                                     Layout.preferredWidth: appInfo.smallButtonSize
                                     Layout.preferredHeight: appInfo.smallButtonSize
-                                    visible: !delegate.modelData.hasFreedom
+                                    visible: delegate.modelData.licenseType === "unknown"
+                                          || delegate.modelData.licenseType === "non-free"
+                                          || delegate.modelData.licenseType === "proprietary"
                                     icon.name: "help-contextual"
-                                    onClicked: properietarySoftwareRiskExplanationDialog.open();
+                                    onClicked: licenseDetailsDialog.openWithLicenseType(delegate.modelData.licenseType);
 
                                     QQC2.ToolTip {
                                         text: i18n("What does this mean?")
@@ -811,9 +879,7 @@ DiscoverPage {
                         text: delegate.modelData.name
                         url: delegate.modelData.url
                         horizontalAlignment: Text.AlignLeft
-                        color: !delegate.modelData.hasFreedom
-                            ? Kirigami.Theme.neutralTextColor
-                            : (enabled ? Kirigami.Theme.linkColor : Kirigami.Theme.textColor)
+                        color: appInfo.colorForLicenseType(delegate.modelData.licenseType)
                     }
                 }
             }
@@ -835,23 +901,26 @@ DiscoverPage {
     }
 
     Kirigami.Dialog {
-        id: properietarySoftwareRiskExplanationDialog
+        id: licenseDetailsDialog
+
+        function openWithLicenseType(licenseType: string): void {
+            licenseExplanation.text = appInfo.explanationForLicenseType(licenseType);
+            open();
+        }
+
         parent: appInfo.QQC2.Overlay.overlay
         width: Kirigami.Units.gridUnit * 25
         standardButtons: Kirigami.Dialog.NoButton
 
-        title: i18n("Risks of proprietary software")
+        title: i18nc("@title:window", "License Information")
 
         TextEdit {
-            readonly property string proprietarySoftwareExplanationPage: "https://www.gnu.org/proprietary"
+            id: licenseExplanation
 
             leftPadding: Kirigami.Units.largeSpacing
             rightPadding: Kirigami.Units.largeSpacing
             bottomPadding: Kirigami.Units.largeSpacing
 
-            text: homepageButton.visible
-                ? xi18nc("@info", "Only install this application if you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>Its source code is partially or entirely closed to public inspection and improvement, so third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways—such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else.<nl/><nl/>You can learn more at <link url='%3'>%3</link>.", application.homepage, author.text, proprietarySoftwareExplanationPage)
-                : xi18nc("@info", "Only install this application if you fully trust its authors (%1).<nl/><nl/>This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways—such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>.", author.text, proprietarySoftwareExplanationPage)
             wrapMode: Text.Wrap
             textFormat: TextEdit.RichText
             readOnly: true

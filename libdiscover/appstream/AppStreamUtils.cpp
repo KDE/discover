@@ -97,30 +97,30 @@ QJsonArray AppStreamUtils::licenses(const QString &spdx)
 
 QJsonObject AppStreamUtils::license(const QString &license)
 {
-    bool publicLicense = false;
     QString name = license;
-    if (license.startsWith(QLatin1String("LicenseRef-proprietary"))) {
-        name = i18n("Proprietary");
-    } else if (license == QLatin1String("LicenseRef-public-domain")) {
-        name = i18n("Public Domain");
-        publicLicense = true;
-    }
+    QString url = QString();
+    QString licenseType = QStringLiteral("unknown");
 
     if (license.isEmpty()) {
-        return {
-            {QStringLiteral("name"), i18n("Unknown")},
-            {QStringLiteral("hasFreedom"), true}, // give it the benefit of the doubt
-        };
+        name = i18n("Unknown");
+    } else if (license.startsWith(QLatin1String("LicenseRef-proprietary"), Qt::CaseInsensitive)) {
+        name = i18n("Proprietary");
+        licenseType = QStringLiteral("proprietary");
+    } else if (license.startsWith(QLatin1String("LicenseRef-public-domain"), Qt::CaseInsensitive)
+               || license.contains(QLatin1String("public domain"), Qt::CaseInsensitive)) {
+        name = i18n("Public Domain");
+        licenseType = QStringLiteral("free");
+    } else if (!AppStream::SPDX::isLicenseId(license)) {
+        licenseType = QStringLiteral("non-free");
+    } else {
+        url = AppStream::SPDX::licenseUrl(license);
+        licenseType = AppStream::SPDX::isFreeLicense(license) ? QStringLiteral("free") : QStringLiteral("non-free");
     }
-    if (!AppStream::SPDX::isLicenseId(license))
-        return {
-            {QStringLiteral("name"), name},
-            {QStringLiteral("hasFreedom"), true}, // give it the benefit of the doubt
-        };
+
     return {
         {QStringLiteral("name"), name},
-        {QStringLiteral("url"), {AppStream::SPDX::licenseUrl(license)}},
-        {QStringLiteral("hasFreedom"), AppStream::SPDX::isFreeLicense(license) || publicLicense},
+        {QStringLiteral("url"), {url}},
+        {QStringLiteral("licenseType"), licenseType},
     };
 }
 
