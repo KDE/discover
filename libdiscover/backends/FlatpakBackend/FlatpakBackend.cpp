@@ -60,6 +60,18 @@ DISCOVER_BACKEND_PLUGIN(FlatpakBackend)
 
 using namespace std::chrono_literals;
 using namespace Qt::StringLiterals;
+using namespace Utils;
+
+namespace Utils
+{
+
+QString copyAndFree(char *str)
+{
+    const QString ret = QString::fromUtf8(str);
+    g_free(str);
+    return ret;
+}
+}
 
 class FlatpakSource
 {
@@ -92,7 +104,7 @@ public:
 
     QString url() const
     {
-        return m_remote ? QString::fromUtf8(flatpak_remote_get_url(m_remote)) : QString();
+        return m_remote ? copyAndFree(flatpak_remote_get_url(m_remote)) : QString();
     }
 
     bool isEnabled() const
@@ -123,7 +135,7 @@ public:
 
     QString title() const
     {
-        auto ret = m_remote ? QString::fromUtf8(flatpak_remote_get_title(m_remote)) : QString();
+        auto ret = m_remote ? copyAndFree(flatpak_remote_get_title(m_remote)) : QString();
         if (flatpak_installation_get_is_user(m_installation)) {
             ret = i18nc("user denotes this as user-scoped flatpak repo", "%1 (user)", ret);
         }
@@ -878,7 +890,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     resource->setResourceFile(url);
     resource->setResourceLocation(QUrl(refurl));
     resource->setOrigin(remoteName);
-    resource->setDisplayOrigin(remote ? QString::fromUtf8(flatpak_remote_get_title(remote)) : QString());
+    resource->setDisplayOrigin(remote ? copyAndFree(flatpak_remote_get_title(remote)) : QString());
     resource->setFlatpakName(name);
     resource->setArch(QString::fromUtf8(flatpak_get_default_arch()));
     resource->setBranch(branch);
@@ -1038,7 +1050,7 @@ void FlatpakBackend::unloadRemote(FlatpakInstallation *installation, FlatpakRemo
 {
     acquireFetching(true);
     for (auto it = m_flatpakSources.begin(); it != m_flatpakSources.end();) {
-        if ((*it)->url() == QString::fromUtf8(flatpak_remote_get_url(remote)) && (*it)->installation() == installation) {
+        if ((*it)->url() == copyAndFree(flatpak_remote_get_url(remote)) && (*it)->installation() == installation) {
             qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "unloading remote" << (*it) << remote;
             it = m_flatpakSources.erase(it);
         } else {
@@ -1120,7 +1132,7 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
     m_sources->addRemote(remote, flatpakInstallation);
     const auto matchRemote = [this, flatpakInstallation, remote](const auto &sources) -> QSharedPointer<FlatpakSource> {
         for (auto source : sources) {
-            if (source->url() == QString::fromUtf8(flatpak_remote_get_url(remote)) && source->installation() == flatpakInstallation
+            if (source->url() == copyAndFree(flatpak_remote_get_url(remote)) && source->installation() == flatpakInstallation
                 && source->name() == QString::fromUtf8(flatpak_remote_get_name(remote))) {
                 createPool(source);
                 if (source->remote() != remote) {

@@ -23,6 +23,7 @@
 #include <resources/StoredResultsStream.h>
 
 using namespace Qt::StringLiterals;
+using namespace Utils;
 
 class FlatpakSourceItem : public QStandardItem
 {
@@ -325,8 +326,8 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
         return;
     }
     const QString id = QString::fromUtf8(flatpak_remote_get_name(remote));
-    const QString title = QString::fromUtf8(flatpak_remote_get_title(remote));
-    const QUrl remoteUrl(QString::fromUtf8(flatpak_remote_get_url(remote)));
+    const QString title = copyAndFree(flatpak_remote_get_title(remote));
+    const QUrl remoteUrl(copyAndFree(flatpak_remote_get_url(remote)));
 
     const auto theActions = actions();
     for (const auto &variant : theActions) {
@@ -364,7 +365,7 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     it->setData(prio, PrioRole);
     it->setCheckState(flatpak_remote_get_disabled(remote) ? Qt::Unchecked : Qt::Checked);
 #if FLATPAK_CHECK_VERSION(1, 4, 0)
-    it->setData(QString::fromUtf8(flatpak_remote_get_icon(remote)), IconUrlRole);
+    it->setData(copyAndFree(flatpak_remote_get_icon(remote)), IconUrlRole);
 #endif
     it->setCheckable(true);
     it->setFlatpakInstallation(installation);

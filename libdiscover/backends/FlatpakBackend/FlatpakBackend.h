@@ -30,6 +30,12 @@ namespace AppStream
 class Pool;
 }
 
+namespace Utils
+{
+/// Useful for when libflatpak returns strings that need to be freed
+QString copyAndFree(char *str);
+}
+
 class FlatpakBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
