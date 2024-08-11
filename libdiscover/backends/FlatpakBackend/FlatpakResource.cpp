@@ -83,6 +83,9 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
     m_stockIcon = std::ranges::any_of(icons, [](const AppStream::Icon &icon) {
         return icon.kind() == AppStream::Icon::KindStock && KIconLoader::global()->hasIcon(icon.name());
     });
+    connect(this, &AbstractResource::iconChanged, this, [this] {
+        Q_EMIT backend()->resourcesChanged(this, {"icon"});
+    });
     if (!m_stockIcon && !icons.isEmpty() && !std::ranges::any_of(icons, [](const AppStream::Icon &icon) {
             return icon.kind() == AppStream::Icon::KindLocal || icon.kind() == AppStream::Icon::KindCached;
         })) {

@@ -360,6 +360,9 @@ void UpdateModel::resourceDataChanged(AbstractResource *res, const QVector<QByte
     }
 
     const auto index = indexFromItem(item);
+    if (properties.contains("icon")) {
+        Q_EMIT dataChanged(index, index, {Qt::DecorationRole});
+    }
     if (properties.contains("state")) {
         Q_EMIT dataChanged(index, index, {SizeRole});
     } else if (properties.contains("size")) {
