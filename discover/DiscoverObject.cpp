@@ -103,8 +103,10 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
     qmlRegisterType<OdrsAppsModel>(uriApp, 1, 0, "OdrsAppsModel");
     qmlRegisterType<PowerManagementInterface>(uriApp, 1, 0, "PowerManagementInterface");
 #ifdef WITH_FEEDBACK
-    qmlRegisterSingletonType<PlasmaUserFeedback>(uriApp, 1, 0, "UserFeedbackSettings", [](QQmlEngine *, QJSEngine *) -> QObject * {
-        return new PlasmaUserFeedback(KSharedConfig::openConfig(QStringLiteral("PlasmaUserFeedback"), KConfig::NoGlobals));
+    qmlRegisterSingletonType<PlasmaUserFeedback>(uriApp, 1, 0, "UserFeedbackSettings", [](QQmlEngine *engine, QJSEngine *) -> QObject * {
+        auto r = new PlasmaUserFeedback(KSharedConfig::openConfig(QStringLiteral("PlasmaUserFeedback"), KConfig::NoGlobals));
+        r->setParent(engine);
+        return r;
     });
 #endif
     qmlRegisterSingletonType<DiscoverSettings>(uriApp, 1, 0, "DiscoverSettings", [](QQmlEngine *engine, QJSEngine *) -> QObject * {
