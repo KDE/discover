@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-11 00:41+0000\n"
+"POT-Creation-Date: 2024-08-12 00:40+0000\n"
 "PO-Revision-Date: 2024-08-03 13:46+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -588,7 +588,7 @@ msgstr "Bir Flatpak kaynağı yok."
 msgid "Failed to load \"%1\" source"
 msgstr "“%1” kaynağı yüklenemedi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:432
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:435
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -600,71 +600,71 @@ msgstr ""
 "barındırılır). Uygulama kurulduğunda bu depodaki diğer uygulamalar da Keşfet "
 "üzerinden erişilebilir olacaktır.</para>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:524
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:527
 #, kde-format
 msgid "Retrieving size information"
 msgstr "Boyut bilgisi alınıyor"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:526
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:529
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:582
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:585
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:492
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "“%1” başlatılamadı: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:802
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:805
 #, kde-format
 msgid "All Files"
 msgstr "Tüm Dosyalar"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:804
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:807
 #, kde-format
 msgid "Home"
 msgstr "Ana Klasör"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:806
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:809
 #, kde-format
 msgid "Downloads"
 msgstr "İndirmeler"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:808
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid "Music"
 msgstr "Müzik"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:883
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
 #, kde-format
 msgid "Network Access"
 msgstr "Ağ Erişimi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:884
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:887
 #, kde-format
 msgid "Can access the internet"
 msgstr "İnternete erişebilir"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:893
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:896
 #, kde-format
 msgid "Sound system access"
 msgstr "Ses sistemi erişimi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:894
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
 #, kde-format
 msgid "Can play audio"
 msgstr "Ses çalabilir"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1042
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1045
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Oturum Veri Yolu Erişimi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:899
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:902
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
@@ -673,54 +673,54 @@ msgstr ""
 "Bu kullanıcı hesabında çalışan tüm diğer uygulamalarla ve süreçlerle "
 "iletişim kurabilir"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:904
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1054
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:907
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1057
 #, kde-format
 msgid "System Bus Access"
 msgstr "Sistem Veri Yolu Erişimi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:905
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:908
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
 "Bu sistemde çalışan tüm diğer uygulamalarla ve süreçlerle iletişim kurabilir"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:913
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Uzaktan Oturum Açma Erişimi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:911
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "SSH protokolünü kullanarak uzaktan oturum açma istekleri oluşturabilir"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:915
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:918
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Akıllı Kart Erişimi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:916
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:919
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "Akıllı kartlarla tümleşebilir ve haberleşebilir"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:920
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:923
 #, kde-format
 msgid "Printer Access"
 msgstr "Yazıcı Erişimi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:921
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:924
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "Yazıcılarla tümleşebilir ve haberleşebilir"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:928
 #, kde-format
 msgid "GPG Agent"
 msgstr "GPG Aracısı"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:926
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -729,70 +729,70 @@ msgstr ""
 "Genelde imzalı belgeleri imzalamanızı ve okumanızı sağlayan GPG kriptografi "
 "hizmetine erişmenize izin verir"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:932
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "Bluetooth Erişimi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:936
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "Bluetooth aygıtlarıyla tümleşebilir ve haberleşebilir"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:940
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "Düşük Düzeyli Sistem Erişimi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:938
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:941
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "Düşük düzeyli sistem çağrıları yapabilir (örn. ptrace)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:944
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
 #, kde-format
 msgid "Device Access"
 msgstr "Aygıt Erişimi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:948
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr "Bağlı donanımlarla veya gömülü aygıtlarla haberleşebilir"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:949
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:952
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Çekirdek tabanlı Sanal Makine Erişimi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:950
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:953
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr "Sanal makinelerde başka işletim sistemlerinin çalışmasına izin verir"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:977
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:989
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:980
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:992
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (saltokunur)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:980
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:992
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:983
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:995
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (dosyalar oluşturabilir)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:983
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1001
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:986
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1004
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (okuma ve yazma) "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1010
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1013
 #, kde-format
 msgid "Home Folder Access"
 msgstr "Ana Klasör Erişimi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1013
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1016
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -801,7 +801,7 @@ msgstr ""
 "Önceden izin istemeden ana klasörünüzdeki aşağıdaki konumları okuyabilir, "
 "onlara yazabilir ve onlarda dosya oluşturabilir: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1015
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -810,7 +810,7 @@ msgstr ""
 "Önceden izin istemeden ana klasörünüzdeki aşağıdaki konumlardaki dosyaları "
 "okuyabilir ve onlara dosya yazabilir: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1017
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1020
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -819,7 +819,7 @@ msgstr ""
 "Önceden izin istemeden ana klasörünüzdeki aşağıdaki konumlardaki dosyaları "
 "okuyabilir: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1019
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1022
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -828,12 +828,12 @@ msgstr ""
 "Önceden izin istemeden ana klasörünüzdeki aşağıdaki konumlardaki dosyalara "
 "erişebilir: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1025
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1028
 #, kde-format
 msgid "System Folder Access"
 msgstr "Sistem Klasörü Erişimi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1027
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1030
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -842,7 +842,7 @@ msgstr ""
 "Önceden izin istemeden aşağıdaki konumlardaki sistem dosyalarını okuyabilir, "
 "yazabilir ve sistem dosyaları oluşturabilir: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1029
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1032
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -851,7 +851,7 @@ msgstr ""
 "Önceden izin istemeden aşağıdaki konumlardaki sistem dosyalarını okuyabilir "
 "ve yazabilir: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1031
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1034
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
@@ -860,7 +860,7 @@ msgstr ""
 "Önceden izin istemeden aşağıdaki konumlardaki sistem dosyalarını okuyabilir: "
 "%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1033
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1036
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
@@ -869,7 +869,7 @@ msgstr ""
 "Önceden izin istemeden aşağıdaki konumlardaki sistem dosyalarına erişebilir: "
 "%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1044
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1047
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -878,7 +878,7 @@ msgstr ""
 "Aşağıdaki iletişim protokolünü kullanarak aynı masaüstü oturumundaki "
 "uygulamalar ve süreçlerle haberleşebilir: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1056
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1059
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
