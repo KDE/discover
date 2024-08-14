@@ -68,6 +68,7 @@
 
     <Menu>
       <Name>Graphic Interface Design</Name>
+      <Icon>interface</Icon>
       <Include>
         <And>
           <Category>GUIDesigner</Category>
@@ -136,6 +137,7 @@
     </Include>
     <Menu>
       <Name>Astronomy</Name>
+      <Icon>kstars_stars</Icon>
       <Include>
         <And>
           <Category>Astronomy</Category>
@@ -190,6 +192,7 @@
     </Menu>
     <Menu>
       <Name>Geography</Name>
+      <Icon>globe</Icon>
       <Include>
         <And>
           <Category>Geography</Category>
@@ -218,7 +221,7 @@
     </Menu>
     <Menu>
       <Name>Physics</Name>
-      <Icon>step</Icon>
+      <Icon>applications-education-science</Icon>
       <Include>
         <And>
           <Category>Physics</Category>
@@ -340,6 +343,7 @@
     </Include>
     <Menu>
       <Name>3D</Name>
+      <Icon>draw-cuboid</Icon>
       <Include>
         <And>
           <Category>3DGraphics</Category>
@@ -373,7 +377,7 @@
     </Menu>
     <Menu>
       <Name>Photography</Name>
-      <Icon>image-x-generic</Icon>
+      <Icon>camera-photo</Icon>
       <Include>
         <And>
           <Category>Photography</Category>
@@ -391,7 +395,7 @@
     </Menu>
     <Menu>
       <Name>Scanning and OCR</Name>
-      <Icon>scanner</Icon>
+      <Icon>preferences-devices-scanner</Icon>
       <Include>
         <Or>
           <Category>Scanning</Category>
@@ -431,7 +435,7 @@
     </Menu>
     <Menu>
       <Name>File Sharing</Name>
-      <Icon>ktorrent</Icon>
+      <Icon>document-share</Icon>
       <Include>
         <And>
           <Category>FileTransfer</Category>
@@ -500,7 +504,7 @@
     </Menu>
     <Menu>
       <Name>Video Players</Name>
-      <Icon>emblem-videos-symbolic</Icon>
+      <Icon>applications-multimedia</Icon>
       <Include>
         <And>
           <Or>
