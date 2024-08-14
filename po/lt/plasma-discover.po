@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-04 00:40+0000\n"
-"PO-Revision-Date: 2024-07-10 02:45+0300\n"
+"POT-Creation-Date: 2024-08-14 00:40+0000\n"
+"PO-Revision-Date: 2024-08-13 23:45+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -23,7 +23,7 @@ msgstr ""
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#: discover/DiscoverObject.cpp:176
+#: discover/DiscoverObject.cpp:181
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -32,7 +32,7 @@ msgstr ""
 "%1 nėra sukonfigūruota programų diegimui per Discover – tik programų "
 "papildinių"
 
-#: discover/DiscoverObject.cpp:178
+#: discover/DiscoverObject.cpp:183
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -44,13 +44,13 @@ msgstr ""
 "puslapyje, <interface>Trūkstamų vidinių pusių</interface> sekcijoje "
 "įsidiekite pageidaujamą modulį."
 
-#: discover/DiscoverObject.cpp:181
+#: discover/DiscoverObject.cpp:186
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Pranešti apie šią problemą %1"
 
-#: discover/DiscoverObject.cpp:186
+#: discover/DiscoverObject.cpp:191
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -67,7 +67,7 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>Discover "
 "pakavimą, kurį teikia %1</link>"
 
-#: discover/DiscoverObject.cpp:199
+#: discover/DiscoverObject.cpp:204
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -85,17 +85,17 @@ msgstr ""
 "<para>Vietoj to, %1 prižiūrėtojai rekomendavo paketų tvarkymui naudoti "
 "<command>pacman</command> komandų eilutės įrankį.</para>"
 
-#: discover/DiscoverObject.cpp:287
+#: discover/DiscoverObject.cpp:292
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Nepavyko rasti kategorijos „%1“"
 
-#: discover/DiscoverObject.cpp:302
+#: discover/DiscoverObject.cpp:307
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Bandoma atverti failą, kurio nėra „%1“"
 
-#: discover/DiscoverObject.cpp:324
+#: discover/DiscoverObject.cpp:329
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -104,17 +104,17 @@ msgstr ""
 "Nepavyksta sąveikauti su flatpak ištekliais be flatpak vidinės pusės %1. Iš "
 "pradžių, ją įdiekite."
 
-#: discover/DiscoverObject.cpp:328
+#: discover/DiscoverObject.cpp:333
 #, kde-format
 msgid "Could not open %1"
 msgstr "Nepavyko atverti %1"
 
-#: discover/DiscoverObject.cpp:390
+#: discover/DiscoverObject.cpp:395
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Įsitikinkite, kad Snap yra įdiegta"
 
-#: discover/DiscoverObject.cpp:393
+#: discover/DiscoverObject.cpp:398
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -123,23 +123,23 @@ msgstr ""
 "Nepavyko atverti %1, nes jos nepavyko surasti jokiose prieinamose "
 "programinės įrangos saugyklose."
 
-#: discover/DiscoverObject.cpp:397
+#: discover/DiscoverObject.cpp:402
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Praneškite apie šią problemą savo platinamojo paketo pakuotojams."
 
-#: discover/DiscoverObject.cpp:400
+#: discover/DiscoverObject.cpp:405
 #, kde-format
 msgid "Report This Issue"
 msgstr "Pranešti apie šią problemą"
 
-#: discover/DiscoverObject.cpp:462 discover/DiscoverObject.cpp:464
+#: discover/DiscoverObject.cpp:467 discover/DiscoverObject.cpp:469
 #: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:465
+#: discover/DiscoverObject.cpp:470
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -311,9 +311,7 @@ msgid "No ratings yet"
 msgstr "Kol kas įvertinimų nėra"
 
 #: discover/qml/ApplicationPage.qml:68
-#, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "Bendrinti"
@@ -322,7 +320,7 @@ msgstr "Bendrinti"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
-msgstr ""
+msgstr "Papildiniai"
 
 #: discover/qml/ApplicationPage.qml:92
 #, kde-format
@@ -338,11 +336,10 @@ msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Send a link for this application"
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
-msgstr "Siųsti šios programos nuorodą"
+msgstr "Bendrinti nuorodą į programą"
 
 #: discover/qml/ApplicationPage.qml:152
 #, kde-format
@@ -384,7 +381,7 @@ msgstr "Nežinoma"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:373
 #, kde-format
@@ -404,27 +401,24 @@ msgstr[3] "Rodyti daugiau…"
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr ""
+msgstr "Amžius:"
 
 #: discover/qml/ApplicationPage.qml:400
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr ""
+msgstr "Visiems"
 
 #: discover/qml/ApplicationPage.qml:402
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr "%1"
+msgstr "%1+"
 
 #: discover/qml/ApplicationPage.qml:416
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
+#, kde-format
 msgid "See details"
-msgstr "Rodyti išsamiau…"
+msgstr "Rodyti išsamiau"
 
 #: discover/qml/ApplicationPage.qml:440
 #, kde-format
@@ -473,7 +467,7 @@ msgstr "Įsidiekite, norėdami rašyti apžvalgą"
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
-msgstr ""
+msgstr "Išorinės nuorodos"
 
 #: discover/qml/ApplicationPage.qml:709
 #, kde-format

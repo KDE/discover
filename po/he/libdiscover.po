@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-12 00:40+0000\n"
+"POT-Creation-Date: 2024-08-14 00:40+0000\n"
 "PO-Revision-Date: 2024-08-03 07:10+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -557,34 +557,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "הגדרות מערכת"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:128
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:140
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (משתמש)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:720
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:734
 #, kde-format
 msgid "Local bundle"
 msgstr "מאגד מקומי"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1852
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1856
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:828
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "כתובת appstream‏ ‚%1’ משובשת"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1957
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1961
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "הוספת המקור ‚%1’ נכשלה: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2078
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2082
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "אין מקורות Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2082
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2086
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "טעינת המקור „%1” נכשלה"
@@ -874,41 +874,41 @@ msgid ""
 msgstr ""
 "אפשר לתקשר עם כל היישומים ושירותים המערכת באמצעות פרוטוקולי התקשורת הבאים: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
 msgid "Add Flathub"
 msgstr "הוספת Flathub"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:93
 #, kde-format
 msgid "Apply Changes"
 msgstr "החלת שינויים"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:96
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
 msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
 msgstr "יש להחיל שינויים לעדיפות של מקורות Flatpak בטרם אלו ייכנסו לתוקף."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:100
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:101
 #, kde-format
 msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
 msgstr "מאפשר להתקין בקלות את היישומים שמופיעים תחת https://flathub.org"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:168
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:169
 #, kde-format
 msgid "Could not add the source %1"
 msgstr "לא ניתן היה להוסיף את המקור %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:288
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
 #, kde-format
 msgid "Removing '%1'"
 msgstr "‚%1’ נמחק"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:290
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -916,22 +916,22 @@ msgid ""
 msgstr ""
 "כדי להסיר את המאגר הזה, יש להסיר את היישומים הבאים: <ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:306
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:307
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "הסרת המאגר המרוחק %1 נכשלה: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:310
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:311
 #, kde-format
 msgid "Could not find %1"
 msgstr "לא ניתן היה למצוא את %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:342
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:343
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (משתמש)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:404
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:405
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "נא למלא כתובת מאגר Flatpak מלאה (‎*.flatpakrepo):"

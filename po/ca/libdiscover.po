@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-12 00:40+0000\n"
+"POT-Creation-Date: 2024-08-14 00:40+0000\n"
 "PO-Revision-Date: 2024-08-03 11:35+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -558,34 +558,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "Configuració del sistema"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:128
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:140
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (usuari)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:720
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:734
 #, kde-format
 msgid "Local bundle"
 msgstr "Paquet local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1852
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1856
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:828
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL de l'«appstream» amb format incorrecte «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1957
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1961
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Ha fallat en afegir la font «%1»: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2078
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2082
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "No hi ha cap font de Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2082
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2086
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Ha fallat en carregar la font «%1»"
@@ -893,17 +893,17 @@ msgstr ""
 "Pot comunicar-se amb totes les aplicacions i serveis del sistema utilitzant "
 "els protocols de comunicació següents: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
 msgid "Add Flathub"
 msgstr "Afegeix Flathub"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:93
 #, kde-format
 msgid "Apply Changes"
 msgstr "Aplica els canvis"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:96
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
 msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
@@ -912,7 +912,7 @@ msgstr ""
 "Cal aplicar els canvis a la prioritat de les fonts de Flatpak abans que "
 "tinguin efecte."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:100
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:101
 #, kde-format
 msgid ""
 "Makes it possible to easily install the applications listed in https://"
@@ -921,17 +921,17 @@ msgstr ""
 "Fa possible instal·lar amb facilitat les aplicacions llistades a https://"
 "flathub.org"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:168
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:169
 #, kde-format
 msgid "Could not add the source %1"
 msgstr "No s'ha pogut afegir la font %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:288
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
 #, kde-format
 msgid "Removing '%1'"
 msgstr "S'està eliminant «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:290
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -940,22 +940,22 @@ msgstr ""
 "Per a eliminar aquest repositori, s'han de desinstal·lar les aplicacions "
 "següents:<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:306
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:307
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "Ha fallat en eliminar el repositori remot %1: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:310
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:311
 #, kde-format
 msgid "Could not find %1"
 msgstr "No s'ha pogut trobar %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:342
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:343
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (usuari)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:404
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:405
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Introduïu l'URI d'un repositori Flatpak (*.flatpakrepo):"

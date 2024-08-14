@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-12 00:40+0000\n"
+"POT-Creation-Date: 2024-08-14 00:40+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -578,25 +578,25 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "يېڭىلانمىلار"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:128
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:140
 #, fuzzy, kde-format
 #| msgid "%1 (%2)"
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:720
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:734
 #, kde-format
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1852
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1856
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:828
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1957
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1961
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -609,12 +609,12 @@ msgstr ""
 "%2\n"
 "\n"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2078
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2082
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2082
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2086
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -912,68 +912,68 @@ msgid ""
 "following communication protocols: %1"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
 msgid "Add Flathub"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:93
 #, fuzzy, kde-format
 #| msgctxt "@info Status information, widget title"
 #| msgid "Applying Changes"
 msgid "Apply Changes"
 msgstr "ئۆزگەرتىشلەرنى قوللىنىۋاتىدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:96
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
 msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:100
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:101
 #, kde-format
 msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:168
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:169
 #, kde-format
 msgid "Could not add the source %1"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:288
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
 #| msgid "Removing"
 msgid "Removing '%1'"
 msgstr "ئۆچۈرۈۋاتىدۇ..."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:290
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
 "<ul><li>%1</li></ul>"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:306
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:307
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:310
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:311
 #, kde-format
 msgid "Could not find %1"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:342
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:343
 #, fuzzy, kde-format
 #| msgid "%1 (%2)"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:404
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:405
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr ""

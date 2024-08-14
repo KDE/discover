@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-31 00:42+0000\n"
+"POT-Creation-Date: 2024-08-14 00:40+0000\n"
 "PO-Revision-Date: 2024-05-13 22:47+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -19,70 +19,70 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 24.02.2\n"
 
-#: notifier/DiscoverNotifier.cpp:167
+#: notifier/DiscoverNotifier.cpp:176
 #, kde-format
 msgid "View Updates"
 msgstr "Преглед на актуализациите"
 
-#: notifier/DiscoverNotifier.cpp:279
+#: notifier/DiscoverNotifier.cpp:288
 #, kde-format
 msgid "Security updates available"
 msgstr "Налични актуализации на защитата"
 
-#: notifier/DiscoverNotifier.cpp:281
+#: notifier/DiscoverNotifier.cpp:290
 #, kde-format
 msgid "Updates available"
 msgstr "Налични актуализации"
 
-#: notifier/DiscoverNotifier.cpp:283
+#: notifier/DiscoverNotifier.cpp:292
 #, kde-format
 msgid "System up to date"
 msgstr "Системата е актуална"
 
-#: notifier/DiscoverNotifier.cpp:285
+#: notifier/DiscoverNotifier.cpp:294
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Компютърът трябва да се рестартира"
 
-#: notifier/DiscoverNotifier.cpp:287
+#: notifier/DiscoverNotifier.cpp:296
 #, kde-format
 msgid "Offline"
 msgstr "Офлайн"
 
-#: notifier/DiscoverNotifier.cpp:289
+#: notifier/DiscoverNotifier.cpp:298
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Прилагане на неконтролирани актуализации…"
 
-#: notifier/DiscoverNotifier.cpp:314
+#: notifier/DiscoverNotifier.cpp:323
 #, kde-format
 msgid "Restart is required"
 msgstr "Необходимо е рестартиране"
 
-#: notifier/DiscoverNotifier.cpp:315
+#: notifier/DiscoverNotifier.cpp:324
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr ""
 "Системата трябва да бъде рестартирана, за да влязат в сила актуализациите."
 
-#: notifier/DiscoverNotifier.cpp:320
+#: notifier/DiscoverNotifier.cpp:329
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart"
 msgstr "Рестартиране"
 
-#: notifier/DiscoverNotifier.cpp:345
+#: notifier/DiscoverNotifier.cpp:354
 #, kde-format
 msgid "Upgrade available"
 msgstr "Налице е надграждане"
 
-#: notifier/DiscoverNotifier.cpp:346
+#: notifier/DiscoverNotifier.cpp:355
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 вече е наличен."
 
-#: notifier/DiscoverNotifier.cpp:349
+#: notifier/DiscoverNotifier.cpp:358
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"

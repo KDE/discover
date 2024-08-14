@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-12 00:40+0000\n"
+"POT-Creation-Date: 2024-08-14 00:40+0000\n"
 "PO-Revision-Date: 2024-08-04 17:25+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -554,34 +554,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "கணினி அமைப்புகள்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:128
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:140
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (பயனர்)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:720
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:734
 #, kde-format
 msgid "Local bundle"
 msgstr "உள்ளமை தொகுப்பு"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1852
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1856
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:828
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "முறையற்ற appstream முகவரி '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1957
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1961
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' என்ற மூலத்தை சேர்ப்பதில் சிக்கல்: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2078
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2082
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Flatpak-க்கான மூலம் ஏதுமில்லை."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2082
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2086
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" என்ற மூலத்தை ஏற்றுவது தோல்வியடைந்தது"
@@ -875,17 +875,17 @@ msgstr ""
 "பின்வரும் நேறிமுறைகளின் மூலம் கணினியிலுள்ள அனைத்து செயலிகளையும் சேவைகளையும் "
 "தொடர்புகொள்ளலாம்: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:91
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
 msgid "Add Flathub"
 msgstr "Flathub-ஐ சேர்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:93
 #, kde-format
 msgid "Apply Changes"
 msgstr "மாற்றங்களை செயல்படுத்து"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:96
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
 msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
@@ -893,46 +893,46 @@ msgid ""
 msgstr ""
 "Flatpak மூலங்களின் முன்னிலையை மாற்றியது செயல்படுவதற்கு மாற்றங்களை செயல்படுத்த வேண்டும்."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:100
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:101
 #, kde-format
 msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
 msgstr "https://flathub.org என்ற இணையதளத்திலுள்ள செயலிகளை எளிதில் நிறுவ உதவும்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:168
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:169
 #, kde-format
 msgid "Could not add the source %1"
 msgstr "%1 என்ற மூலத்தை சேர்க்க முடியவில்லை"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:288
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
 #, kde-format
 msgid "Removing '%1'"
 msgstr "'%1' நீக்கப்படுகிறது"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:290
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
 "<ul><li>%1</li></ul>"
 msgstr "இக்களஞ்சியத்தை நீக்க, பின்வரும் செயலிகளையும் நீக்க வேண்டும்: <ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:306
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:307
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "%1 என்ற தொலை களஞ்சியத்தை நீக்குவது தோல்வியடைந்த‍து: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:310
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:311
 #, kde-format
 msgid "Could not find %1"
 msgstr "%1 என்பதை கண்டுபிடிக்க முடியவில்லை"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:342
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:343
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (பயனர்)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:404
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:405
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Flatpak களஞ்சியத்தின் முகவரியை (*.flatpakrepo) உள்ளிடுங்கள்:"
