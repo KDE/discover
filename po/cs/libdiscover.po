@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-14 00:40+0000\n"
-"PO-Revision-Date: 2024-07-23 14:29+0200\n"
+"PO-Revision-Date: 2024-08-06 11:23+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -1005,11 +1005,10 @@ msgstr "Vymazání nastavení a uživatelských dat..."
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "Oprávnění pro %1"
+msgstr "Oprávnění"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
@@ -2616,35 +2615,3 @@ msgstr "Systémový software"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Doplňky"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content suitable for everyone"
-#~ msgid "All Audiences"
-#~ msgstr "Pro všechny"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with relatively benign themes only unsuitable for very young "
-#~ "children, such as minor cartoon violence or mild profanity"
-#~ msgid "Mild Content"
-#~ msgstr "Lehký obsah"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with some intense themes, such as somewhat realistic violence, "
-#~ "references to sexuality, or adult profanity"
-#~ msgid "Moderate Content"
-#~ msgstr "Střední obsah"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "mature content that could be quite objectionable or unsuitable for young "
-#~ "audiences, such as realistic graphic violence, extreme profanity or "
-#~ "nudity, or glorification of drug use"
-#~ msgid "Intense Content"
-#~ msgstr "Intenzivní obsah"
-
-#~ msgctxt "%1 is the name of the application"
-#~ msgid "Permissions for %1"
-#~ msgstr "Oprávnění pro %1"
