@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 00:40+0000\n"
+"POT-Creation-Date: 2024-08-18 00:40+0000\n"
 "PO-Revision-Date: 2024-01-17 23:12+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -67,23 +67,30 @@ msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Tam, kad nuostatos įsigaliotų, sistema turi būti paleista iš naujo."
 
 #: notifier/DiscoverNotifier.cpp:329
+#, fuzzy, kde-format
+#| msgid "Computer needs to restart"
+msgctxt "@action:button"
+msgid "Update and Restart"
+msgstr "Reikia paleisti kompiuterį iš naujo"
+
+#: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
-msgid "Restart"
-msgstr "Paleisti iš naujo"
+msgid "Update and Shut Down"
+msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:354
+#: notifier/DiscoverNotifier.cpp:374
 #, kde-format
 msgid "Upgrade available"
 msgstr "Yra prieinamas naujinimas"
 
-#: notifier/DiscoverNotifier.cpp:355
+#: notifier/DiscoverNotifier.cpp:375
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "Dabar yra prieinama %1."
 
-#: notifier/DiscoverNotifier.cpp:358
+#: notifier/DiscoverNotifier.cpp:378
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
@@ -151,15 +158,29 @@ msgstr "Rodyti atnaujinimus…"
 msgid "Refresh…"
 msgstr "Įkelti iš naujo…"
 
-#: notifier/NotifierItem.cpp:48
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Install Updates and Restart…"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:53
+#, kde-format
+msgid "Install Updates and Shut Down…"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:58
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "Paleiskite iš naujo, kad pritaikytumėte įdiegtus atnaujinimus"
 
-#: notifier/NotifierItem.cpp:49
+#: notifier/NotifierItem.cpp:59
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Spustelėkite, norėdami įrenginį iš naujo"
+
+#~ msgctxt "@action:button"
+#~ msgid "Restart"
+#~ msgstr "Paleisti iš naujo"
 
 #~ msgid "New version: %1"
 #~ msgstr "Nauja versija: %1"

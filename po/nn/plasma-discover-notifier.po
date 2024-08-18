@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 00:40+0000\n"
+"POT-Creation-Date: 2024-08-18 00:40+0000\n"
 "PO-Revision-Date: 2024-03-17 11:17+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -66,23 +66,30 @@ msgstr ""
 "Du må starta datamaskina på nytt for at oppdateringane skal tre i kraft."
 
 #: notifier/DiscoverNotifier.cpp:329
+#, fuzzy, kde-format
+#| msgid "Computer needs to restart"
+msgctxt "@action:button"
+msgid "Update and Restart"
+msgstr "Maskina må startast på nytt"
+
+#: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
-msgid "Restart"
-msgstr "Start på nytt"
+msgid "Update and Shut Down"
+msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:354
+#: notifier/DiscoverNotifier.cpp:374
 #, kde-format
 msgid "Upgrade available"
 msgstr "Oppgradering tilgjengeleg"
 
-#: notifier/DiscoverNotifier.cpp:355
+#: notifier/DiscoverNotifier.cpp:375
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 er no tilgjengeleg."
 
-#: notifier/DiscoverNotifier.cpp:358
+#: notifier/DiscoverNotifier.cpp:378
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
@@ -150,12 +157,26 @@ msgstr "Sjå oppdateringar …"
 msgid "Refresh…"
 msgstr "Last om att …"
 
-#: notifier/NotifierItem.cpp:48
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Install Updates and Restart…"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:53
+#, kde-format
+msgid "Install Updates and Shut Down…"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:58
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "Start på nytt for å ta i bruk oppdateringane"
 
-#: notifier/NotifierItem.cpp:49
+#: notifier/NotifierItem.cpp:59
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Trykk for å starta eininga på nytt"
+
+#~ msgctxt "@action:button"
+#~ msgid "Restart"
+#~ msgstr "Start på nytt"

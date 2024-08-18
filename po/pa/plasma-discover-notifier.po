@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 00:40+0000\n"
+"POT-Creation-Date: 2024-08-18 00:40+0000\n"
 "PO-Revision-Date: 2024-02-10 09:38-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -63,23 +63,30 @@ msgid "The system needs to be restarted for the updates to take effect."
 msgstr "ਅੱਪਡੇਟ ਲਾਗੂ ਕਰਨ ਲਈ ਸਿਸਟਮ ਨੂੰ ਮੁੜ-ਚਾਲੂ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ।"
 
 #: notifier/DiscoverNotifier.cpp:329
+#, fuzzy, kde-format
+#| msgid "Computer needs to restart"
+msgctxt "@action:button"
+msgid "Update and Restart"
+msgstr "ਕੰਪਿਊਟਰ ਨੂੰ ਮੁੜ-ਚਾਲੂ ਕਰਨ ਦੀ ਲੋੜ ਹੈ"
+
+#: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
-msgid "Restart"
-msgstr "ਮੁੜ-ਚਾਲੂ ਕਰੋ"
+msgid "Update and Shut Down"
+msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:354
+#: notifier/DiscoverNotifier.cpp:374
 #, kde-format
 msgid "Upgrade available"
 msgstr "ਅੱਪਗਰੇਡ ਮੌਜੂਦ ਹੈ"
 
-#: notifier/DiscoverNotifier.cpp:355
+#: notifier/DiscoverNotifier.cpp:375
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 ਹੁਣ ਮੌਜੂਦ ਹੈ।"
 
-#: notifier/DiscoverNotifier.cpp:358
+#: notifier/DiscoverNotifier.cpp:378
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
@@ -147,15 +154,29 @@ msgstr "…ਅੱਪਡੇਟ ਵੇਖੋ"
 msgid "Refresh…"
 msgstr "…ਤਾਜ਼ਾ ਕਰੋ"
 
-#: notifier/NotifierItem.cpp:48
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Install Updates and Restart…"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:53
+#, kde-format
+msgid "Install Updates and Shut Down…"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:58
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "ਇੰਸਟਾਲ ਕੀਤੇ ਅੱਪਡੇਟ ਲਾਗੂ ਕਰਨ ਲਈ ਮੁੜ-ਚਾਲੂ ਕਰੋ"
 
-#: notifier/NotifierItem.cpp:49
+#: notifier/NotifierItem.cpp:59
 #, kde-format
 msgid "Click to restart the device"
 msgstr "ਡਿਵਾਈਸ ਨੂੰ ਮੁੜ-ਚਾਲੂ ਕਰਨ ਲਈ ਕਲਿੱਕ ਕਰੋ"
+
+#~ msgctxt "@action:button"
+#~ msgid "Restart"
+#~ msgstr "ਮੁੜ-ਚਾਲੂ ਕਰੋ"
 
 #~ msgid "New version: %1"
 #~ msgstr "ਨਵਾਂ ਵਰਜ਼ਨ: %1"

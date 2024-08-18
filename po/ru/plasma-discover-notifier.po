@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 00:40+0000\n"
+"POT-Creation-Date: 2024-08-18 00:40+0000\n"
 "PO-Revision-Date: 2024-01-27 15:29+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -65,23 +65,30 @@ msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Для применения обновлений требуется перезагрузка системы."
 
 #: notifier/DiscoverNotifier.cpp:329
+#, fuzzy, kde-format
+#| msgid "Computer needs to restart"
+msgctxt "@action:button"
+msgid "Update and Restart"
+msgstr "Требуется перезагрузка компьютера"
+
+#: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
-msgid "Restart"
-msgstr "Перезагрузить"
+msgid "Update and Shut Down"
+msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:354
+#: notifier/DiscoverNotifier.cpp:374
 #, kde-format
 msgid "Upgrade available"
 msgstr "Доступны обновления"
 
-#: notifier/DiscoverNotifier.cpp:355
+#: notifier/DiscoverNotifier.cpp:375
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "Доступна версия %1."
 
-#: notifier/DiscoverNotifier.cpp:358
+#: notifier/DiscoverNotifier.cpp:378
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
@@ -149,15 +156,29 @@ msgstr "Просмотреть обновления..."
 msgid "Refresh…"
 msgstr "Обновить..."
 
-#: notifier/NotifierItem.cpp:48
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Install Updates and Restart…"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:53
+#, kde-format
+msgid "Install Updates and Shut Down…"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:58
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "Для применения обновлений требуется перезагрузка системы"
 
-#: notifier/NotifierItem.cpp:49
+#: notifier/NotifierItem.cpp:59
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Нажмите для перезагрузки"
+
+#~ msgctxt "@action:button"
+#~ msgid "Restart"
+#~ msgstr "Перезагрузить"
 
 #~ msgid "New version: %1"
 #~ msgstr "Новая версия: %1"

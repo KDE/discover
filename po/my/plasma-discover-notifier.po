@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 00:40+0000\n"
+"POT-Creation-Date: 2024-08-18 00:40+0000\n"
 "PO-Revision-Date: 2021-09-19 20:01+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -64,23 +64,30 @@ msgid "The system needs to be restarted for the updates to take effect."
 msgstr "အပ်ဒိတ်များသက်ဝင်စေရန် စစ်စတမ်ပြန်စတင်ရမည်"
 
 #: notifier/DiscoverNotifier.cpp:329
+#, fuzzy, kde-format
+#| msgid "Computer needs to restart"
+msgctxt "@action:button"
+msgid "Update and Restart"
+msgstr "စစ်စတမ်ပြန်စတင်ရန်လိုအပ်သည်"
+
+#: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
-msgid "Restart"
-msgstr "ပြန်စတင်မည်"
+msgid "Update and Shut Down"
+msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:354
+#: notifier/DiscoverNotifier.cpp:374
 #, kde-format
 msgid "Upgrade available"
 msgstr "အပ်ဂရိတ်ရရှိနေပါပြီ"
 
-#: notifier/DiscoverNotifier.cpp:355
+#: notifier/DiscoverNotifier.cpp:375
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:358
+#: notifier/DiscoverNotifier.cpp:378
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
@@ -149,15 +156,29 @@ msgstr "အပ်ဒိတ်များ ကြည့်မည်..."
 msgid "Refresh…"
 msgstr "ပြန်ရယူရန်..."
 
-#: notifier/NotifierItem.cpp:48
+#: notifier/NotifierItem.cpp:50
+#, kde-format
+msgid "Install Updates and Restart…"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:53
+#, kde-format
+msgid "Install Updates and Shut Down…"
+msgstr ""
+
+#: notifier/NotifierItem.cpp:58
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "စစ်စတမ်ပြန်လည်စတင်ပါ"
 
-#: notifier/NotifierItem.cpp:49
+#: notifier/NotifierItem.cpp:59
 #, kde-format
 msgid "Click to restart the device"
 msgstr "စစ်စတမ်ပြန်စတင်ရန် နှိပ်ပါ"
+
+#~ msgctxt "@action:button"
+#~ msgid "Restart"
+#~ msgstr "ပြန်စတင်မည်"
 
 #~ msgid "New version: %1"
 #~ msgstr "ဗားရှင်းအသစ် - %1"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-14 00:40+0000\n"
+"POT-Creation-Date: 2024-08-18 00:40+0000\n"
 "PO-Revision-Date: 2024-08-03 07:26+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: discover/DiscoverObject.cpp:181
+#: discover/DiscoverObject.cpp:182
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -26,7 +26,7 @@ msgid ""
 msgstr ""
 "%1 ne estas agordita por instali aplikaĵojn per nur-Discover aplik-aldonaĵoj"
 
-#: discover/DiscoverObject.cpp:183
+#: discover/DiscoverObject.cpp:184
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -38,13 +38,13 @@ msgstr ""
 "<interface>Agordoj</interface>, sub <interface>Mankantaj Backends</"
 "interface>."
 
-#: discover/DiscoverObject.cpp:186
+#: discover/DiscoverObject.cpp:187
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Raporti Ĉi Temon al %1"
 
-#: discover/DiscoverObject.cpp:191
+#: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -60,7 +60,7 @@ msgstr ""
 "<command>pacman</command>.<nl/><nl/> Konsultu <link url='https://archlinux."
 "org/packages/extra/x86_64/discover/'>Pakado de %1 por Discover</link>"
 
-#: discover/DiscoverObject.cpp:204
+#: discover/DiscoverObject.cpp:205
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -78,17 +78,17 @@ msgstr ""
 "%1 rekomendis anstataŭe uzi la <command>pacman</command> komandlinian ilon "
 "por administri pakaĵojn.</para>"
 
-#: discover/DiscoverObject.cpp:292
+#: discover/DiscoverObject.cpp:293
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Ne eblis trovi kategorion '%1'"
 
-#: discover/DiscoverObject.cpp:307
+#: discover/DiscoverObject.cpp:308
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Provante malfermi neekzistantan dosieron '%1'"
 
-#: discover/DiscoverObject.cpp:329
+#: discover/DiscoverObject.cpp:330
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -97,17 +97,17 @@ msgstr ""
 "Ne povas interagi kun flatpak-resursoj sen la flatpak backend %1. Bonvolu "
 "unue instali ĝin."
 
-#: discover/DiscoverObject.cpp:333
+#: discover/DiscoverObject.cpp:334
 #, kde-format
 msgid "Could not open %1"
 msgstr "Ne eblis malfermi %1"
 
-#: discover/DiscoverObject.cpp:395
+#: discover/DiscoverObject.cpp:396
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Bonvolu certigi, ke Snap-subteno estas instalita"
 
-#: discover/DiscoverObject.cpp:398
+#: discover/DiscoverObject.cpp:399
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -116,23 +116,23 @@ msgstr ""
 "Ne eblis malfermi %1 ĉar ĝi ne estis trovita en iuj disponeblaj programaraj "
 "deponejoj."
 
-#: discover/DiscoverObject.cpp:402
+#: discover/DiscoverObject.cpp:403
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Bonvolu raporti ĉi tiun problemon al la pakistoj de via distribuo."
 
-#: discover/DiscoverObject.cpp:405
+#: discover/DiscoverObject.cpp:406
 #, kde-format
 msgid "Report This Issue"
 msgstr "Raportu Ĉi tiun Temon"
 
-#: discover/DiscoverObject.cpp:467 discover/DiscoverObject.cpp:469
+#: discover/DiscoverObject.cpp:468 discover/DiscoverObject.cpp:470
 #: discover/main.cpp:118
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:470
+#: discover/DiscoverObject.cpp:471
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -282,7 +282,7 @@ msgstr "Aldoni"
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:271
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
-#: discover/qml/UpdatesPage.qml:259 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:278 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "Nuligi"
@@ -1293,32 +1293,56 @@ msgstr "Elekti ĉiujn"
 msgid "Select None"
 msgstr "Elekti Neniun"
 
-#: discover/qml/UpdatesPage.qml:242
+#: discover/qml/UpdatesPage.qml:254
 #, kde-format
-msgid "Restart automatically after update has completed"
-msgstr "Rekomenci aŭtomate post kiam la ĝisdatigo finiĝis"
+msgctxt ""
+"@info on the completion of updates, the action that automatically happens "
+"after (e.g shutdown)"
+msgid "On completion, automatically:"
+msgstr ""
 
-#: discover/qml/UpdatesPage.qml:249
+#: discover/qml/UpdatesPage.qml:259
+#, fuzzy, kde-format
+#| msgid "Select None"
+msgctxt "@item:inlistbox placeholder for when no action is selected"
+msgid "Select an action"
+msgstr "Elekti Neniun"
+
+#: discover/qml/UpdatesPage.qml:259
+#, fuzzy, kde-format
+#| msgid "Restart Now"
+msgctxt "@item:inlistbox"
+msgid "Restart"
+msgstr "Rekomenci Nun"
+
+#: discover/qml/UpdatesPage.qml:259
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Shutdown"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:268
 #, kde-format
 msgid "Total size: %1"
 msgstr "Suma grandeco: %1"
 
-#: discover/qml/UpdatesPage.qml:284
+#: discover/qml/UpdatesPage.qml:303
 #, kde-format
-msgid "Restart Now"
-msgstr "Rekomenci Nun"
+msgctxt "@action:button"
+msgid "Restart to Install Updates Now"
+msgstr ""
 
-#: discover/qml/UpdatesPage.qml:413
+#: discover/qml/UpdatesPage.qml:433
 #, kde-format
 msgid "Installing"
 msgstr "Instalado"
 
-#: discover/qml/UpdatesPage.qml:444
+#: discover/qml/UpdatesPage.qml:464
 #, kde-format
 msgid "Update from:"
 msgstr "Ĝisdatigo de:"
 
-#: discover/qml/UpdatesPage.qml:456
+#: discover/qml/UpdatesPage.qml:476
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1326,44 +1350,47 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:463
+#: discover/qml/UpdatesPage.qml:483
 #, kde-format
 msgid "More Information…"
 msgstr "Pliaj Informoj…"
 
-#: discover/qml/UpdatesPage.qml:491
+#: discover/qml/UpdatesPage.qml:511
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Akiro de ĝisdatigoj…"
 
-#: discover/qml/UpdatesPage.qml:504
+#: discover/qml/UpdatesPage.qml:524
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Ĝisdatigoj"
 
-#: discover/qml/UpdatesPage.qml:513
+#: discover/qml/UpdatesPage.qml:533
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Rekomenci la sistemon por kompletigi la ĝisdatigan procezon"
 
-#: discover/qml/UpdatesPage.qml:525 discover/qml/UpdatesPage.qml:532
-#: discover/qml/UpdatesPage.qml:539
+#: discover/qml/UpdatesPage.qml:549 discover/qml/UpdatesPage.qml:556
+#: discover/qml/UpdatesPage.qml:563
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Ĝisdata"
 
-#: discover/qml/UpdatesPage.qml:546
+#: discover/qml/UpdatesPage.qml:570
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Devus kontroli ĝisdatigojn"
 
-#: discover/qml/UpdatesPage.qml:553
+#: discover/qml/UpdatesPage.qml:577
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tempo de lasta ĝisdatigo nekonata"
+
+#~ msgid "Restart automatically after update has completed"
+#~ msgstr "Rekomenci aŭtomate post kiam la ĝisdatigo finiĝis"
