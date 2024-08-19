@@ -18,5 +18,5 @@ class DISCOVERCOMMON_EXPORT CachedNetworkAccessManager : public QNetworkAccessMa
 public:
     explicit CachedNetworkAccessManager(const QString &path, QObject *parent = nullptr);
 
-    virtual QNetworkReply *createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData = nullptr) override;
+    QNetworkReply *createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData = nullptr) override;
 };
