@@ -2092,7 +2092,7 @@ InlineMessage *FlatpakBackend::explainDysfunction() const
 bool FlatpakBackend::extends(const QString &extends) const
 {
     return std::any_of(m_flatpakSources.constBegin(), m_flatpakSources.constEnd(), [extends](const auto &source) {
-        return source->m_pool && !source->m_pool->lastError().isEmpty() && !source->m_pool->componentsByExtends(extends).isEmpty();
+        return source->m_pool && source->m_pool->lastError().isEmpty() && !source->m_pool->componentsByExtends(extends).isEmpty();
     });
 }
 
