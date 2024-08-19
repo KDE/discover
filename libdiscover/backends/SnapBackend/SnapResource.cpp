@@ -474,13 +474,12 @@ QString SnapResource::author() const
 
 void SnapResource::setChannel(const QString &channelName)
 {
-    if(isInstalled()){
-        Q_ASSERT(isInstalled());
-    }else{
+    if (!isInstalled()) {
         m_channel = channelName;
         Q_EMIT channelChanged(channelName);
         return;
     }
+    Q_ASSERT(isInstalled());
     auto request = client()->switchChannel(m_snap->name(), channelName);
 
     const auto currentChannel = channel();
