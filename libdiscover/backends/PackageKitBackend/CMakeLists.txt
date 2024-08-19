@@ -35,7 +35,7 @@ set(packagekit-backend_SRCS
 )
 
 kcoreaddons_add_plugin(packagekit-backend SOURCES ${packagekit-backend_SRCS} INSTALL_NAMESPACE "discover")
-
+kde_target_enable_exceptions(packagekit-backend PRIVATE)
 target_link_libraries(packagekit-backend
     PRIVATE
         Discover::Common

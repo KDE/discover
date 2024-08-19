@@ -69,6 +69,7 @@ if(TARGET AppStreamQt)
         appstream/AppStreamUtils.cpp
     )
     target_link_libraries(DiscoverCommon PRIVATE Qt::Concurrent AppStreamQt)
+    kde_source_files_enable_exceptions(appstream/AppStreamUtils.cpp)
 endif()
 
 target_link_libraries(DiscoverCommon

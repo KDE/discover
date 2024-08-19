@@ -781,31 +781,35 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         });
     } else {
         return deferredResultStream(u"PackageKitStream-search"_s, [this, filter = filter](PKResultsStream *stream) {
-            AppStream::ComponentBox components(AppStream::ComponentBox::FlagNone);
-            if (!filter.search.isEmpty()) {
-                components = m_appdata->search(filter.search);
-            } else if (filter.category) {
-                components = AppStreamUtils::componentsByCategories(m_appdata.get(), filter.category, AppStream::Bundle::KindUnknown);
-            } else {
-                components = m_appdata->components();
-            }
-
-            QSet<QString> ids;
-            kFilterInPlace<AppStream::ComponentBox>(components, [&ids](const AppStream::Component &component) {
-                if (ids.contains(component.id())) {
-                    return false;
+            auto loadComponents = [](const auto &filter, const auto &appdata) -> QCoro::Task<AppStream::ComponentBox> {
+                AppStream::ComponentBox components(AppStream::ComponentBox::FlagNone);
+                if (!filter.search.isEmpty()) {
+                    components = appdata->search(filter.search);
+                } else if (filter.category) {
+                    components = co_await AppStreamUtils::componentsByCategoriesTask(appdata.get(), filter.category, AppStream::Bundle::KindUnknown);
+                } else {
+                    components = appdata->components();
                 }
-                ids.insert(component.id());
-                return true;
-            });
-            if (!ids.isEmpty()) {
-                const auto resources = kFilter<QVector<StreamResult>>(resultsByComponents(components), [](const StreamResult &res) {
-                    return !qobject_cast<PackageKitResource *>(res.resource)->extendsItself();
+                co_return components;
+            };
+            QCoro::connect(loadComponents(filter, m_appdata), this, [this, stream, filter](auto &&components) {
+                QSet<QString> ids;
+                kFilterInPlace<AppStream::ComponentBox>(components, [&ids](const AppStream::Component &component) {
+                    if (ids.contains(component.id())) {
+                        return false;
+                    }
+                    ids.insert(component.id());
+                    return true;
                 });
-                stream->sendResources(resources, filter.state != AbstractResource::Broken);
-            } else {
-                stream->finish();
-            }
+                if (!ids.isEmpty()) {
+                    const auto resources = kFilter<QVector<StreamResult>>(resultsByComponents(components), [](const StreamResult &res) {
+                        return !qobject_cast<PackageKitResource *>(res.resource)->extendsItself();
+                    });
+                    stream->sendResources(resources, filter.state != AbstractResource::Broken);
+                } else {
+                    stream->finish();
+                }
+            });
         });
     }
 }

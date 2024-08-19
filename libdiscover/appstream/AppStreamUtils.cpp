@@ -14,11 +14,13 @@
 #include <AppStreamQt/version.h>
 #include <Category/Category.h>
 #include <KLocalizedString>
+#include <QCoroTimer>
 #include <QDebug>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QUrlQuery>
 
+using namespace std::chrono_literals;
 using namespace AppStreamUtils;
 
 QUrl AppStreamUtils::imageOfKind(const QList<AppStream::Image> &images, AppStream::Image::Kind kind)
@@ -187,12 +189,19 @@ static void kRemoveDuplicates(AppStream::ComponentBox &input, AppStream::Bundle:
     }
 }
 
-AppStream::ComponentBox AppStreamUtils::componentsByCategories(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind)
+QCoro::Task<AppStream::ComponentBox> AppStreamUtils::componentsByCategoriesTask(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind)
 {
     AppStream::ComponentBox ret(AppStream::ComponentBox::FlagNoChecks);
     for (const auto &categoryName : cat->involvedCategories()) {
+        // Give the eventloop some breathing room by suspending execution for a bit. This in particular should keep the
+        // UI more responsive while we fetch a substantial amount of components on e.g. the all apps view.
+        constexpr auto arbitrarySuspendTime = 64ms;
+        QTimer timer;
+        timer.start(arbitrarySuspendTime);
+        co_await timer;
+
         ret += pool->componentsByCategories({categoryName});
     }
     kRemoveDuplicates(ret, kind);
-    return ret;
+    co_return ret;
 }

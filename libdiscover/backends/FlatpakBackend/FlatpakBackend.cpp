@@ -1693,15 +1693,15 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
 
                     QList<FlatpakResource *> resources;
                     if (source->m_pool) {
-                        const auto components = [&]() {
+                        const auto components = co_await [](const auto &filter, const auto &source) -> QCoro::Task<AppStream::ComponentBox> {
                             if (!filter.search.isEmpty()) {
-                                return source->m_pool->search(filter.search);
+                                co_return source->m_pool->search(filter.search);
                             }
                             if (filter.category) {
-                                return AppStreamUtils::componentsByCategories(source->m_pool, filter.category, AppStream::Bundle::KindFlatpak);
+                                co_return co_await AppStreamUtils::componentsByCategoriesTask(source->m_pool, filter.category, AppStream::Bundle::KindFlatpak);
                             }
-                            return source->m_pool->components();
-                        }();
+                            co_return source->m_pool->components();
+                        }(filter, source);
 
                         resources.reserve(components.size());
                         for (const auto &component : components) {
