@@ -220,7 +220,8 @@ public:
         return m_toUpdate;
     }
 
-    void resolveIcon();
+    [[nodiscard]] bool hasResolvedIcon() const override;
+    void resolveIcon() override;
 
 Q_SIGNALS:
     void hasDataChanged();
@@ -259,7 +260,6 @@ private:
     QVector<QByteArray> m_toUpdate;
     bool m_stockIcon;
     std::optional<QIcon> m_icon;
-    friend class IconResolver;
 };
 
 inline uint qHash(const FlatpakResource::Id &key)

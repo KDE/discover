@@ -272,6 +272,8 @@ public:
      * @returns List of component URLs to display at the bottom of application page.
      */
     virtual QStringList bottomObjects() const;
+    [[nodiscard]] virtual bool hasResolvedIcon() const;
+    virtual void resolveIcon();
 
 public Q_SLOTS:
     virtual void fetchScreenshots();

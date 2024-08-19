@@ -8,6 +8,7 @@
 
 #include "PackageKitBackend.h"
 #include "PackageKitResource.h"
+#include <QIcon>
 
 class AppPackageKitResource : public PackageKitResource
 {
@@ -47,8 +48,11 @@ public:
 
     QString contentRatingDescription() const override;
     uint contentRatingMinimumAge() const override;
+    [[nodiscard]] bool hasResolvedIcon() const override;
+    void resolveIcon() override;
 
 private:
     const AppStream::Component m_appdata;
     mutable QString m_name;
+    std::optional<QIcon> m_icon;
 };

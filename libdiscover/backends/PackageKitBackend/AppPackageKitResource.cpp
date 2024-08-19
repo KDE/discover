@@ -15,6 +15,7 @@
 #include <KIconLoader>
 #include <KLocalizedString>
 #include <KService>
+#include <LazyIconResolver.h>
 #include <PackageKit/Daemon>
 #include <QDebug>
 #include <QFile>
@@ -94,7 +95,12 @@ static QIcon componentIcon(const AppStream::Component &comp)
 
 QVariant AppPackageKitResource::icon() const
 {
-    return componentIcon(m_appdata);
+    if (m_icon.has_value()) {
+        return m_icon.value();
+    }
+
+    LazyIconResolver::instance()->queue(const_cast<AppPackageKitResource *>(this));
+    return u"package-x-generic"_s;
 }
 
 QJsonArray AppPackageKitResource::licenses()
@@ -292,6 +298,17 @@ QString AppPackageKitResource::contentRatingDescription() const
 uint AppPackageKitResource::contentRatingMinimumAge() const
 {
     return AppStreamUtils::contentRatingMinimumAge(m_appdata);
+}
+
+bool AppPackageKitResource::hasResolvedIcon() const
+{
+    return m_icon.has_value();
+}
+
+void AppPackageKitResource::resolveIcon()
+{
+    m_icon = componentIcon(m_appdata);
+    Q_EMIT iconChanged();
 }
 
 #include "moc_AppPackageKitResource.cpp"

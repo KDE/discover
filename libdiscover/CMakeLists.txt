@@ -46,6 +46,7 @@ set(discovercommon_SRCS
     ScreenshotsModel.cpp
     ApplicationAddonsModel.cpp
     CachedNetworkAccessManager.cpp
+    LazyIconResolver.cpp
 
     utils.h
     utilscoro.cpp

@@ -9,6 +9,7 @@
 #include "FlatpakBackend.h"
 #include "FlatpakFetchDataJob.h"
 #include "FlatpakSourcesBackend.h"
+#include "LazyIconResolver.h"
 #include "config-paths.h"
 #include "libdiscover_backend_flatpak_debug.h"
 
@@ -222,61 +223,6 @@ quint64 FlatpakResource::downloadSize() const
     return m_downloadSize;
 }
 
-// Lazy icon resolver using the event loop. Since QIcon doesn't make any thread
-// safety claims we'll want to resolve icons on the main thread, but in a way
-// that doesn't block the UI. The resolver takes care of this by resolving icons
-// with a short delay as well as low event priority.
-class IconResolver : public QObject
-{
-    Q_OBJECT
-    inline constexpr static auto LoopEvent = QEvent::User;
-
-public:
-    using QObject::QObject;
-
-    void queue(FlatpakResource *resource)
-    {
-        if (m_resources.isEmpty()) {
-            QCoreApplication::postEvent(this, new QEvent(LoopEvent), Qt::LowEventPriority);
-        }
-        m_resources.append(QPointer{resource});
-    }
-
-private:
-    void resolve()
-    {
-        if (m_resources.empty()) {
-            return;
-        }
-
-        // We take the last so the most recent request gets resolved first.
-        auto resource = m_resources.takeLast();
-        if (!resource) {
-            return;
-        }
-
-        if (resource->m_icon.has_value()) {
-            return;
-        }
-
-        resource->resolveIcon();
-    }
-
-    void customEvent(QEvent *event) override
-    {
-        if (event->type() == LoopEvent) {
-            resolve();
-            // Schedule a new loop run unconditionally of whether we resolved anything. So long as the queue is not empty.
-            if (!m_resources.isEmpty()) {
-                QCoreApplication::postEvent(this, new QEvent(LoopEvent), Qt::LowEventPriority);
-            }
-        }
-        QObject::customEvent(event);
-    }
-
-    QQueue<QPointer<FlatpakResource>> m_resources;
-};
-
 void FlatpakResource::resolveIcon()
 {
     m_icon = QIcon();
@@ -339,8 +285,7 @@ QVariant FlatpakResource::icon() const
         return m_icon.value();
     }
 
-    static IconResolver resolver;
-    resolver.queue(const_cast<FlatpakResource *>(this));
+    LazyIconResolver::instance()->queue(const_cast<FlatpakResource *>(this));
     return u"package-x-generic"_s;
 }
 
@@ -1130,6 +1075,11 @@ void FlatpakResource::addRefToUpdate(const QByteArray &toUpdate)
 void FlatpakResource::clearToUpdate()
 {
     m_toUpdate.clear();
+}
+
+bool FlatpakResource::hasResolvedIcon() const
+{
+    return m_icon.has_value();
 }
 
 #include "FlatpakResource.moc"

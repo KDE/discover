@@ -299,4 +299,13 @@ QStringList AbstractResource::bottomObjects() const
     return {};
 }
 
+bool AbstractResource::hasResolvedIcon() const
+{
+    return true;
+}
+
+void AbstractResource::resolveIcon()
+{
+}
+
 #include "moc_AbstractResource.cpp"
