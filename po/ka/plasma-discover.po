@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2024-08-03 06:23+0200\n"
+"PO-Revision-Date: 2024-08-18 03:46+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1300,27 +1300,25 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shutdown)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "დასრულებისას ავტომატურად:"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "მონიშვნის მოხსნა"
+msgstr "აირჩიეთ ქმედება"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "ახლა გადატვირთვა"
+msgstr "გადატვირთვა"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shutdown"
-msgstr ""
+msgstr "გამორთვა"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format
@@ -1331,7 +1329,7 @@ msgstr "ჯამური ზომა: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "გადატვირთვა ახლავე განახლებების დასაყენებლად"
 
 #: discover/qml/UpdatesPage.qml:433
 #, kde-format

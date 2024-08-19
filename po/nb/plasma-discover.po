@@ -1414,6 +1414,3 @@ msgstr "Se etter oppdateringer"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for sist oppdatering er ukjent"
-
-#~ msgid "Restart automatically after update has completed"
-#~ msgstr "Start på nytt automatisk etter fullført oppdatering"

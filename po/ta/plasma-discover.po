@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2024-08-04 17:19+0530\n"
+"PO-Revision-Date: 2024-08-18 16:21+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -1292,27 +1292,25 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shutdown)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "முடிந்தபின் தானாக:"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "ஒன்றையும் தேர்ந்தெடுக்க வேண்டாம்"
+msgstr "செயலைத் தேர்ந்தெடுக்கவும்"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "இப்போதே மீள்துவக்கு"
+msgstr "மீள்துவக்கு"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shutdown"
-msgstr ""
+msgstr "கணினியை நிறுத்து"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format
@@ -1323,7 +1321,7 @@ msgstr "மொத்த அளவு: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "புதுப்பிப்புகளை நிறுவ இப்போது மீள்துவக்கு"
 
 #: discover/qml/UpdatesPage.qml:433
 #, kde-format

@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2024-08-03 11:36+0200\n"
+"PO-Revision-Date: 2024-08-18 09:48+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1314,27 +1314,25 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shutdown)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "En finalitzar, automàticament:"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "No seleccionis res"
+msgstr "Seleccioneu una acció"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "Reinicia ara"
+msgstr "Reinicia"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shutdown"
-msgstr ""
+msgstr "Atura"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format
@@ -1345,7 +1343,7 @@ msgstr "Mida total: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "Reinicia ara per a instal·lar les actualitzacions"
 
 #: discover/qml/UpdatesPage.qml:433
 #, kde-format

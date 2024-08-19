@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2024-02-18 17:12+0530\n"
+"PO-Revision-Date: 2024-08-18 16:20+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: notifier/DiscoverNotifier.cpp:176
 #, kde-format
@@ -63,17 +63,16 @@ msgid "The system needs to be restarted for the updates to take effect."
 msgstr "புதுப்பிப்புகள் செயல்பெற கணினியை மீள்துவக்க வேண்டும்."
 
 #: notifier/DiscoverNotifier.cpp:329
-#, fuzzy, kde-format
-#| msgid "Computer needs to restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
-msgstr "கணினியை மீள்துவக்க வேண்டும்"
+msgstr "புதுப்பித்து மீள்துவக்கு"
 
 #: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
-msgstr ""
+msgstr "புதுப்பித்து நிறுத்து"
 
 #: notifier/DiscoverNotifier.cpp:374
 #, kde-format
@@ -157,12 +156,12 @@ msgstr "புதுப்பிப்புகளை தேடு..."
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Install Updates and Restart…"
-msgstr ""
+msgstr "புதுப்பிப்புகளை நிறுவி மீள்துவக்கு…"
 
 #: notifier/NotifierItem.cpp:53
 #, kde-format
 msgid "Install Updates and Shut Down…"
-msgstr ""
+msgstr "புதுப்பிப்புகளை நிறுவி கணினியை நிறுத்து…"
 
 #: notifier/NotifierItem.cpp:58
 #, kde-format

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2024-01-26 10:12+0200\n"
+"PO-Revision-Date: 2024-08-18 08:16+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: notifier/DiscoverNotifier.cpp:176
 #, kde-format
@@ -67,17 +67,16 @@ msgid "The system needs to be restarted for the updates to take effect."
 msgstr "הפעלת המערכת מחדש נחוצה בשביל הכנסת השינויים לתוקף."
 
 #: notifier/DiscoverNotifier.cpp:329
-#, fuzzy, kde-format
-#| msgid "Computer needs to restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
-msgstr "צריך להפעיל את המחשב מחדש"
+msgstr "לעדכן ולהפעיל מחדש"
 
 #: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
-msgstr ""
+msgstr "לעדכן ולכבות"
 
 #: notifier/DiscoverNotifier.cpp:374
 #, kde-format
@@ -161,12 +160,12 @@ msgstr "רענון…"
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Install Updates and Restart…"
-msgstr ""
+msgstr "להתקין עדכונים ולהפעיל מחדש…"
 
 #: notifier/NotifierItem.cpp:53
 #, kde-format
 msgid "Install Updates and Shut Down…"
-msgstr ""
+msgstr "להתקין עדכונים ולכבות…"
 
 #: notifier/NotifierItem.cpp:58
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2024-08-03 10:09+0200\n"
+"PO-Revision-Date: 2024-08-18 13:30+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1310,27 +1310,25 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shutdown)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "Bij voltooien, automatisch:"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "Niets selecteren"
+msgstr "Selecteer een actie"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "Nu herstarten"
+msgstr "Herstarten"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shutdown"
-msgstr ""
+msgstr "Afsluiten"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format
@@ -1341,7 +1339,7 @@ msgstr "Totale grootte: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "Herstarten om elementen voor bijwerken nu te installeren"
 
 #: discover/qml/UpdatesPage.qml:433
 #, kde-format

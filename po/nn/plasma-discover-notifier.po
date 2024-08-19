@@ -176,7 +176,3 @@ msgstr "Start på nytt for å ta i bruk oppdateringane"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Trykk for å starta eininga på nytt"
-
-#~ msgctxt "@action:button"
-#~ msgid "Restart"
-#~ msgstr "Start på nytt"

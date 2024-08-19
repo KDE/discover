@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2023-12-20 07:22+0100\n"
+"PO-Revision-Date: 2024-08-18 06:38+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: notifier/DiscoverNotifier.cpp:176
 #, kde-format
@@ -66,17 +66,16 @@ msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Za učinkovanje posodobitev je treba ponovno zagnati sistem."
 
 #: notifier/DiscoverNotifier.cpp:329
-#, fuzzy, kde-format
-#| msgid "Computer needs to restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
-msgstr "Računalnik je potrebno ponovno zagnati"
+msgstr "Posodobi in ponovno zaženi"
 
 #: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
-msgstr ""
+msgstr "Posodobi in ustavi"
 
 #: notifier/DiscoverNotifier.cpp:374
 #, kde-format
@@ -160,12 +159,12 @@ msgstr "Osveži…"
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Install Updates and Restart…"
-msgstr ""
+msgstr "Namesti posodobitve in ponovno zaženi…"
 
 #: notifier/NotifierItem.cpp:53
 #, kde-format
 msgid "Install Updates and Shut Down…"
-msgstr ""
+msgstr "Namesti posodobitve in ustavi…"
 
 #: notifier/NotifierItem.cpp:58
 #, kde-format

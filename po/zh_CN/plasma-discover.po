@@ -1276,18 +1276,16 @@ msgid "On completion, automatically:"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "全部不选"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "立即重新启动"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
@@ -1365,6 +1363,3 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
-
-#~ msgid "Restart automatically after update has completed"
-#~ msgstr "更新完成后自动重启"
