@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-19 02:29+0000\n"
-"PO-Revision-Date: 2024-02-09 20:11+0100\n"
+"PO-Revision-Date: 2024-08-19 22:24+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: discover/DiscoverObject.cpp:173
 #, kde-format
@@ -491,19 +491,7 @@ msgid "Risks of proprietary software"
 msgstr "독점 소프트웨어 주의점"
 
 #: discover/qml/ApplicationPage.qml:919
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (<link url='%1'>"
@@ -516,30 +504,18 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
-"앱의 소스 코드 중 일부 또는 전부가 외부에서 조사하고 개선할 수 있도록 공개되"
-"어 있지 않습니다. 제3자나 사용자가 해당 앱의 작동, 보안, 신뢰성을 검증할 수 "
-"없으며 작성자의 명시적인 허가 없이 수정하거나 재배포할 수 없음을 의미합니다."
-"<nl/><nl/>앱을 사용하는 데에는 문제가 없을 수도 있으나, 개인 정보를 무단으로 "
-"수집하거나, 위치를 추적하거나, 파일의 내용을 다른 누군가에게 전송하는 식으로 "
-"사용자에게 해를 끼치는 행동을 할 수도 있습니다. 이를 쉽게 검증하는 방법은 없"
-"기 때문에 앱 작성자(%1)를 완전히 신뢰할 수 있는 경우에만 설치하십시오.<nl/"
-"><nl/>더 많은 정보를 확인하려면 <link url='%2'>%2</link> 페이지를 방문하십시"
+"앱 개발자(<link url='%1'>%2</link>)를 완전히 신뢰할 수 있는 경우에만 앱을 설"
+"치하십시오.<nl/><nl/>앱의 소스 코드 중 일부 또는 전부가 외부에서 조사하고 개"
+"선할 수 있도록 공개되어 있지 않습니다. 제3자나 사용자가 해당 앱의 작동, 보"
+"안, 신뢰성을 검증할 수 없으며 작성자의 명시적인 허가 없이 수정하거나 재배포"
+"할 수 없음을 의미합니다.<nl/><nl/>앱을 사용하는 데에는 문제가 없을 수도 있으"
+"나, 개인 정보를 무단으로 수집하거나, 위치를 추적하거나, 파일의 내용을 다른 누"
+"군가에게 전송하는 식으로 사용자에게 해를 끼치는 행동을 할 수도 있습니다.<nl/"
+"><nl/>더 많은 정보를 확인하려면 <link url='%3'>%3</link> 페이지를 방문하십시"
 "오."
 
 #: discover/qml/ApplicationPage.qml:920
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -552,15 +528,14 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
-"앱의 소스 코드 중 일부 또는 전부가 외부에서 조사하고 개선할 수 있도록 공개되"
-"어 있지 않습니다. 제3자나 사용자가 해당 앱의 작동, 보안, 신뢰성을 검증할 수 "
-"없으며 작성자의 명시적인 허가 없이 수정하거나 재배포할 수 없음을 의미합니다."
-"<nl/><nl/>앱을 사용하는 데에는 문제가 없을 수도 있으나, 개인 정보를 무단으로 "
-"수집하거나, 위치를 추적하거나, 파일의 내용을 다른 누군가에게 전송하는 식으로 "
-"사용자에게 해를 끼치는 행동을 할 수도 있습니다. 이를 쉽게 검증하는 방법은 없"
-"기 때문에 앱 작성자(%1)를 완전히 신뢰할 수 있는 경우에만 설치하십시오.<nl/"
-"><nl/>더 많은 정보를 확인하려면 <link url='%2'>%2</link> 페이지를 방문하십시"
-"오."
+"앱 개발자(%1)를 완전히 신뢰할 수 있는 경우에만 앱을 설치하십시오.<nl/><nl/>앱"
+"의 소스 코드 중 일부 또는 전부가 외부에서 조사하고 개선할 수 있도록 공개되어 "
+"있지 않습니다. 제3자나 사용자가 해당 앱의 작동, 보안, 신뢰성을 검증할 수 없으"
+"며 작성자의 명시적인 허가 없이 수정하거나 재배포할 수 없음을 의미합니다.<nl/"
+"><nl/>앱을 사용하는 데에는 문제가 없을 수도 있으나, 개인 정보를 무단으로 수집"
+"하거나, 위치를 추적하거나, 파일의 내용을 다른 누군가에게 전송하는 식으로 사용"
+"자에게 해를 끼치는 행동을 할 수도 있습니다.<nl/><nl/>더 많은 정보를 확인하려"
+"면 <link url='%2'>%2</link> 페이지를 방문하십시오."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -854,8 +829,7 @@ msgid "Copy to Clipboard"
 msgstr "클립보드에 복사"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
 msgstr "사용 정보 제출"
 
@@ -879,8 +853,7 @@ msgid "Configure"
 msgstr "설정"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
 msgstr "피드백 설정…"
 
