@@ -1273,25 +1273,25 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shutdown)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "完成时自动进行操作："
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr ""
+msgstr "选择一个操作"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr ""
+msgstr "重启"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shutdown"
-msgstr ""
+msgstr "关机"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format
@@ -1302,7 +1302,7 @@ msgstr "总体积：%1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "重启以立即安装更新"
 
 #: discover/qml/UpdatesPage.qml:433
 #, kde-format

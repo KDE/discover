@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-14 00:40+0000\n"
-"PO-Revision-Date: 2024-02-09 20:10+0100\n"
+"PO-Revision-Date: 2024-08-19 22:13+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -64,40 +64,37 @@ msgid "Error while submitting review: %1"
 msgstr "리뷰를 제출하는 중 오류 발생: %1"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
-#, fuzzy, kde-format
-#| msgid "Software Management"
+#, kde-format
 msgid "Package management"
-msgstr "소프트웨어 관리"
+msgstr "패키지 관리"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:204
 #, kde-format
 msgid "Loading, please wait..."
-msgstr ""
+msgstr "불러오는 중, 잠시 기다려 주십시오..."
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:290
-#, fuzzy, kde-format
-#| msgid "Additional packages: "
+#, kde-format
 msgctxt "Root category name"
 msgid "Alpine Linux packages"
-msgstr "추가 패키지: "
+msgstr "Alpine 리눅스 패키지"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:461
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
-msgstr ""
+msgstr "Alpine APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:266
 #, kde-format
 msgid "Authorization denied"
-msgstr ""
+msgstr "인증 거부됨"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgid "Error: "
-msgstr "오류"
+msgstr "오류: "
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
 #, kde-format
@@ -106,11 +103,13 @@ msgid ""
 "Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
 "alpine/edge/testing/"
 msgstr ""
+"Alpine 저장소 URL을 입력하십시오. 예: http://dl-cdn.alpinelinux.org/alpine/"
+"edge/testing/"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
 #, kde-format
 msgid "Error: Authorization denied"
-msgstr ""
+msgstr "오류: 인증 거부됨"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:277
@@ -121,12 +120,12 @@ msgstr "오류"
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
 #, kde-format
 msgid "Failed to open APK database!"
-msgstr ""
+msgstr "APK 데이터베이스를 열 수 없습니다!"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
 #, kde-format
 msgid "Failed to get a list of packages to upgrade!"
-msgstr ""
+msgstr "업그레이드할 패키지 목록을 가져올 수 없습니다!"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -949,13 +948,14 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"내부 오류가 발생했습니다. https://bugs.kde.org/enter_bug.cgi?"
+"product=Discover 사이트로 버그를 보고해 주십시오."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "저장소를 사용할 수 없음"
+msgstr "대체 항목 사용 가능"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:416
 #, kde-kuit-format
@@ -966,12 +966,14 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
+"<resource>%1</resource>이(가) 더 이상 업데이트되지 않습니다.<nl/><nl/"
+"><resource>%2</resource>에 있는 지원 중인 버전으로 대체하시겠습니까?"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:422
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "자동 삭제"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-kuit-format
@@ -981,6 +983,9 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
+"<resource>%1</resource>이(가) 더 이상 업데이트되지 않습니다.<nl/><p>이유는 다"
+"음과 같습니다: <message>%2</message></p><nl/><p>자동으로 삭제하시겠습니까?</"
+"p>"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
@@ -1019,11 +1024,10 @@ msgstr "설정과 사용자 데이터 삭제 중…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "%1 권한"
+msgstr "권한"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
@@ -1177,7 +1181,7 @@ msgstr "글꼴"
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr ""
+msgstr "%1에 이 문제 보고"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:334
 #, kde-format
@@ -1232,6 +1236,8 @@ msgid ""
 "The background service (PackageKit) stopped unexpectedly. It may have "
 "crashed."
 msgstr ""
+"백그라운드 서비스(PackageKit)가 예상하지 못하게 중단되었습니다. 충돌했을 수"
+"도 있습니다."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1974,31 +1980,25 @@ msgstr "사용할 수 없음"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "치명적"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Install"
+#, kde-format
 msgid "Install"
 msgstr "설치"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "삭제 중…"
+msgstr "삭제"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, fuzzy, kde-format
-#| msgid "Obsoletes:"
+#, kde-format
 msgid "Obsolete"
-msgstr "오래된 항목:"
+msgstr "오래됨"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Downgrade"
+#, kde-format
 msgid "Downgrade"
 msgstr "다운그레이드"
 
@@ -2460,11 +2460,15 @@ msgstr "시스템 업데이트 확인 중"
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"시스템 업데이트를 다운로드하고 있습니다. 진행 사항이 보고되지 않으므로 잠시 "
+"기다려 주십시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
+"시스템을 업데이트하고 있습니다. 진행 사항이 보고되지 않으므로 잠시 기다려 주"
+"십시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2472,6 +2476,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"다음 주 버전으로 업데이트하고 있습니다. 진행 사항이 보고되지 않으므로 잠시 기"
+"다려 주십시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
@@ -2660,12 +2666,10 @@ msgid "Applications"
 msgstr "앱"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Updates"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "프로그램 업데이트"
+msgstr "앱 지원"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format

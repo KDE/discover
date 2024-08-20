@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2023-12-20 07:31+0100\n"
+"PO-Revision-Date: 2024-08-19 21:47+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -64,17 +64,16 @@ msgid "The system needs to be restarted for the updates to take effect."
 msgstr "La sistemo devas esti rekomencita por ke la ĝisdatigoj ekvalidu."
 
 #: notifier/DiscoverNotifier.cpp:329
-#, fuzzy, kde-format
-#| msgid "Computer needs to restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
-msgstr "Komputilo bezonas rekomenci"
+msgstr "Ĝisdatigi kaj Rekomenci"
 
 #: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
-msgstr ""
+msgstr "Ĝisdatigi kaj Sistemfermi"
 
 #: notifier/DiscoverNotifier.cpp:374
 #, kde-format
@@ -158,12 +157,12 @@ msgstr "Refreŝigi…"
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Install Updates and Restart…"
-msgstr ""
+msgstr "Instali Ĝisdatigojn kaj Rekomenci…"
 
 #: notifier/NotifierItem.cpp:53
 #, kde-format
 msgid "Install Updates and Shut Down…"
-msgstr ""
+msgstr "Instali Ĝisdatigojn kaj Sistemfermi…"
 
 #: notifier/NotifierItem.cpp:58
 #, kde-format
@@ -174,7 +173,3 @@ msgstr "Rekomencu por apliki instalitajn ĝisdatigojn"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Klaku por rekomenci la aparaton"
-
-#~ msgctxt "@action:button"
-#~ msgid "Restart"
-#~ msgstr "Rekomenci"

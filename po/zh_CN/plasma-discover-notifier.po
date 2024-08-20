@@ -66,13 +66,13 @@ msgstr "系统需要重新启动才能使更新生效。"
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
-msgstr ""
+msgstr "更新并重启"
 
 #: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
-msgstr ""
+msgstr "更新并关机"
 
 #: notifier/DiscoverNotifier.cpp:374
 #, kde-format
@@ -157,12 +157,12 @@ msgstr "刷新…"
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Install Updates and Restart…"
-msgstr ""
+msgstr "安装更新并重启…"
 
 #: notifier/NotifierItem.cpp:53
 #, kde-format
 msgid "Install Updates and Shut Down…"
-msgstr ""
+msgstr "安装更新并关机…"
 
 #: notifier/NotifierItem.cpp:58
 #, kde-format

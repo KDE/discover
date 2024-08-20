@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2024-02-09 20:11+0100\n"
+"PO-Revision-Date: 2024-08-19 22:24+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -45,18 +45,7 @@ msgid "Report This Issue to %1"
 msgstr "%1에 이 문제 보고"
 
 #: discover/DiscoverObject.cpp:192
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -68,10 +57,9 @@ msgid ""
 msgstr ""
 "Discover를 통해서 앱을 관리하려면 <command>pacman</command> 패키지 관리자를 "
 "통해서 <link url='https://wiki.archlinux.org/title/"
-"Flatpak#Installation'>Flatpak</link>이나 <link url='https://wiki.archlinux."
-"org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</link>을 설"
-"치하십시오.<nl/><nl/><link url='https://archlinux.org/packages/extra/x86_64/"
-"discover/'>%1의 Discover 패키지 정보</link> 탐색"
+"Flatpak#Installation'>Flatpak</link>을 설치하십시오.<nl/><nl/><link "
+"url='https://archlinux.org/packages/extra/x86_64/discover/'>%1의 Discover 패"
+"키지 정보</link> 탐색"
 
 #: discover/DiscoverObject.cpp:205
 #, kde-kuit-format
@@ -84,6 +72,11 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"%1 패키지 관리 지원은 아직 완전하지 않습니다. 여러 문제가 발생할 수도 있습니"
+"다. KDE에 버그를 보고하지 마십시오. <resource>packagekit-qt6</resource> 패키"
+"지를 삭제하고 Discover를 통해서 Flatpak, Snap, 추가 기능만을 관리하기를 추천"
+"합니다.<para>%1 관리자는 <command>pacman</command> 명령행 도구를 사용하여 패"
+"키지를 관리하기를 추천합니다.</para>"
 
 #: discover/DiscoverObject.cpp:293
 #, kde-format
@@ -305,16 +298,13 @@ msgid "No ratings yet"
 msgstr "별점 없음"
 
 #: discover/qml/ApplicationPage.qml:68
-#, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "공유"
 
 #: discover/qml/ApplicationPage.qml:76
-#, fuzzy, kde-format
-#| msgid "Add-ons"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
 msgstr "추가 기능"
@@ -333,8 +323,7 @@ msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:143
-#, fuzzy, kde-format
-#| msgid "Send a link for this application"
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
 msgstr "이 앱 링크 보내기"
@@ -376,7 +365,7 @@ msgstr "알 수 없음"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:373
 #, kde-format
@@ -393,27 +382,24 @@ msgstr[0] "더 보기…"
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr ""
+msgstr "연령:"
 
 #: discover/qml/ApplicationPage.qml:400
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr ""
+msgstr "전체 이용가"
 
 #: discover/qml/ApplicationPage.qml:402
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr "%1"
+msgstr "%1+"
 
 #: discover/qml/ApplicationPage.qml:416
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
+#, kde-format
 msgid "See details"
-msgstr "자세한 정보 보기…"
+msgstr "자세한 정보 보기"
 
 #: discover/qml/ApplicationPage.qml:440
 #, kde-format
@@ -462,7 +448,7 @@ msgstr "이 앱을 설치한 다음 리뷰를 작성하십시오"
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
-msgstr ""
+msgstr "외부 링크"
 
 #: discover/qml/ApplicationPage.qml:709
 #, kde-format
@@ -530,19 +516,7 @@ msgid "Risks of proprietary software"
 msgstr "독점 소프트웨어 주의점"
 
 #: discover/qml/ApplicationPage.qml:853
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (<link url='%1'>"
@@ -555,30 +529,18 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%3'>%3</link>."
 msgstr ""
-"앱의 소스 코드 중 일부 또는 전부가 외부에서 조사하고 개선할 수 있도록 공개되"
-"어 있지 않습니다. 제3자나 사용자가 해당 앱의 작동, 보안, 신뢰성을 검증할 수 "
-"없으며 작성자의 명시적인 허가 없이 수정하거나 재배포할 수 없음을 의미합니다."
-"<nl/><nl/>앱을 사용하는 데에는 문제가 없을 수도 있으나, 개인 정보를 무단으로 "
-"수집하거나, 위치를 추적하거나, 파일의 내용을 다른 누군가에게 전송하는 식으로 "
-"사용자에게 해를 끼치는 행동을 할 수도 있습니다. 이를 쉽게 검증하는 방법은 없"
-"기 때문에 앱 작성자(%1)를 완전히 신뢰할 수 있는 경우에만 설치하십시오.<nl/"
-"><nl/>더 많은 정보를 확인하려면 <link url='%2'>%2</link> 페이지를 방문하십시"
+"앱 개발자(<link url='%1'>%2</link>)를 완전히 신뢰할 수 있는 경우에만 앱을 설"
+"치하십시오.<nl/><nl/>앱의 소스 코드 중 일부 또는 전부가 외부에서 조사하고 개"
+"선할 수 있도록 공개되어 있지 않습니다. 제3자나 사용자가 해당 앱의 작동, 보"
+"안, 신뢰성을 검증할 수 없으며 작성자의 명시적인 허가 없이 수정하거나 재배포"
+"할 수 없음을 의미합니다.<nl/><nl/>앱을 사용하는 데에는 문제가 없을 수도 있으"
+"나, 개인 정보를 무단으로 수집하거나, 위치를 추적하거나, 파일의 내용을 다른 누"
+"군가에게 전송하는 식으로 사용자에게 해를 끼치는 행동을 할 수도 있습니다.<nl/"
+"><nl/>더 많은 정보를 확인하려면 <link url='%3'>%3</link> 페이지를 방문하십시"
 "오."
 
 #: discover/qml/ApplicationPage.qml:854
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -591,15 +553,14 @@ msgid ""
 "location, or transmitting the contents of your files to someone else.<nl/"
 "><nl/>You can learn more at <link url='%2'>%2</link>."
 msgstr ""
-"앱의 소스 코드 중 일부 또는 전부가 외부에서 조사하고 개선할 수 있도록 공개되"
-"어 있지 않습니다. 제3자나 사용자가 해당 앱의 작동, 보안, 신뢰성을 검증할 수 "
-"없으며 작성자의 명시적인 허가 없이 수정하거나 재배포할 수 없음을 의미합니다."
-"<nl/><nl/>앱을 사용하는 데에는 문제가 없을 수도 있으나, 개인 정보를 무단으로 "
-"수집하거나, 위치를 추적하거나, 파일의 내용을 다른 누군가에게 전송하는 식으로 "
-"사용자에게 해를 끼치는 행동을 할 수도 있습니다. 이를 쉽게 검증하는 방법은 없"
-"기 때문에 앱 작성자(%1)를 완전히 신뢰할 수 있는 경우에만 설치하십시오.<nl/"
-"><nl/>더 많은 정보를 확인하려면 <link url='%2'>%2</link> 페이지를 방문하십시"
-"오."
+"앱 개발자(%1)를 완전히 신뢰할 수 있는 경우에만 앱을 설치하십시오.<nl/><nl/>앱"
+"의 소스 코드 중 일부 또는 전부가 외부에서 조사하고 개선할 수 있도록 공개되어 "
+"있지 않습니다. 제3자나 사용자가 해당 앱의 작동, 보안, 신뢰성을 검증할 수 없으"
+"며 작성자의 명시적인 허가 없이 수정하거나 재배포할 수 없음을 의미합니다.<nl/"
+"><nl/>앱을 사용하는 데에는 문제가 없을 수도 있으나, 개인 정보를 무단으로 수집"
+"하거나, 위치를 추적하거나, 파일의 내용을 다른 누군가에게 전송하는 식으로 사용"
+"자에게 해를 끼치는 행동을 할 수도 있습니다.<nl/><nl/>더 많은 정보를 확인하려"
+"면 <link url='%2'>%2</link> 페이지를 방문하십시오."
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -893,8 +854,7 @@ msgid "Copy to Clipboard"
 msgstr "클립보드에 복사"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
 msgstr "사용 정보 제출"
 
@@ -918,8 +878,7 @@ msgid "Configure"
 msgstr "설정"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
 msgstr "피드백 설정…"
 
