@@ -13,6 +13,7 @@
 #include <AppStreamQt/spdx.h>
 #include <AppStreamQt/version.h>
 #include <Category/Category.h>
+#include <KIconLoader>
 #include <KLocalizedString>
 #include <QCoroTimer>
 #include <QDebug>
@@ -204,4 +205,13 @@ QCoro::Task<AppStream::ComponentBox> AppStreamUtils::componentsByCategoriesTask(
     }
     kRemoveDuplicates(ret, kind);
     co_return ret;
+}
+
+DISCOVERCOMMON_EXPORT bool AppStreamUtils::kIconLoaderHasIcon(const QString &name)
+{
+    static auto icons = [] {
+        auto icons = KIconLoader::global()->queryIcons(-1);
+        return QSet<QString>(icons.cbegin(), icons.cend());
+    }();
+    return icons.contains(name);
 }

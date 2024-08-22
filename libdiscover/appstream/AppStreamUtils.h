@@ -40,4 +40,6 @@ DISCOVERCOMMON_EXPORT QString contentRatingDescription(const AppStream::Componen
 DISCOVERCOMMON_EXPORT uint contentRatingMinimumAge(const AppStream::Component &appdata);
 
 DISCOVERCOMMON_EXPORT QCoro::Task<AppStream::ComponentBox> componentsByCategoriesTask(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind);
+
+DISCOVERCOMMON_EXPORT bool kIconLoaderHasIcon(const QString &name);
 }

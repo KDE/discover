@@ -26,7 +26,6 @@
 #include <KDesktopFile>
 #include <KFormat>
 #include <KIO/ApplicationLauncherJob>
-#include <KIconLoader>
 #include <KLocalizedString>
 
 #include <AppStreamQt/release.h>
@@ -82,7 +81,7 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
     // Start fetching remote icons during initialization
     const auto icons = m_appdata.icons();
     m_stockIcon = std::ranges::any_of(icons, [](const AppStream::Icon &icon) {
-        return icon.kind() == AppStream::Icon::KindStock && KIconLoader::global()->hasIcon(icon.name());
+        return icon.kind() == AppStream::Icon::KindStock && AppStreamUtils::kIconLoaderHasIcon(icon.name());
     });
     connect(this, &AbstractResource::iconChanged, this, [this] {
         Q_EMIT backend()->resourcesChanged(this, {"icon"});

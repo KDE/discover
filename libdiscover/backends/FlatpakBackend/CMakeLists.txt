@@ -43,7 +43,6 @@ target_link_libraries(flatpak-backend
         KF6::CoreAddons
         KF6::ConfigCore
         KF6::KIOGui
-        KF6::IconThemes
         Discover::Common
         AppStreamQt
         PkgConfig::Flatpak

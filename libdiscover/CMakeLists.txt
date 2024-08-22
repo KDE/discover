@@ -68,7 +68,11 @@ if(TARGET AppStreamQt)
         appstream/AppStreamIntegration.cpp
         appstream/AppStreamUtils.cpp
     )
-    target_link_libraries(DiscoverCommon PRIVATE Qt::Concurrent AppStreamQt)
+    target_link_libraries(DiscoverCommon PRIVATE
+        Qt::Concurrent
+        KF6::IconThemes
+        AppStreamQt
+    )
     kde_source_files_enable_exceptions(appstream/AppStreamUtils.cpp)
 endif()
 

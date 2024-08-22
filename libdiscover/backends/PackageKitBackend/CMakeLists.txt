@@ -46,7 +46,6 @@ target_link_libraries(packagekit-backend
         KF6::KIOCore
         KF6::KIOGui
         KF6::Archive
-        KF6::IconThemes
         AppStreamQt
         QCoro::Core
         libdiscover-backend-packagekit-logging-category
