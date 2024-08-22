@@ -317,7 +317,20 @@ void SnapResource::invokeApplication() const
 
 AbstractResource::Type SnapResource::type() const
 {
-    return m_snap->snapType() == QSnapdEnums::SnapTypeApp ? Application : ApplicationSupport;
+    switch (m_snap->snapType()) {
+    case QSnapdEnums::SnapTypeApp:
+        return Application;
+    case QSnapdEnums::SnapTypeCore:
+    case QSnapdEnums::SnapTypeBase:
+        return ApplicationSupport;
+    case QSnapdEnums::SnapTypeGadget:
+    case QSnapdEnums::SnapTypeKernel:
+    case QSnapdEnums::SnapTypeOperatingSystem:
+    case QSnapdEnums::SnapTypeSnapd:
+    case QSnapdEnums::SnapTypeUnknown:
+        return System;
+    }
+    return System;
 }
 
 void SnapResource::setSnap(const QSharedPointer<QSnapdSnap> &snap)
