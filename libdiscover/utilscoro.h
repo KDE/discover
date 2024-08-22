@@ -22,4 +22,5 @@ private:
     std::chrono::milliseconds m_executionDurationLimit;
     std::chrono::milliseconds m_pauseDuration;
     std::chrono::time_point<std::chrono::steady_clock> m_lastStart;
+    QTimer m_timer;
 };
