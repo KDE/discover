@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-21 00:48+0000\n"
-"PO-Revision-Date: 2024-06-09 09:13+0200\n"
+"PO-Revision-Date: 2024-08-19 13:50+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -24,9 +24,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
-"X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
+"X-Environment: kde\n"
+"X-Generator: Lokalize 23.08.5\n"
 "X-Text-Markup: kde4\n"
 
 #: discover/DiscoverObject.cpp:182
@@ -454,16 +454,13 @@ msgid ""
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:134
-#, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "Partager"
 
 #: discover/qml/ApplicationPage.qml:142
-#, fuzzy, kde-format
-#| msgid "Add-ons"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
 msgstr "Modules complémentaires"
@@ -482,11 +479,10 @@ msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:209
-#, fuzzy, kde-format
-#| msgid "Send a link for this application"
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
-msgstr "Envoyer un lien vers l'application"
+msgstr "Partager un lien grâce à l'application"
 
 #: discover/qml/ApplicationPage.qml:218
 #, kde-format
@@ -526,7 +522,7 @@ msgstr "Inconnu"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:441
 #, kde-format
@@ -544,27 +540,24 @@ msgstr[1] "Voir plus d'informations..."
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr ""
+msgstr "Âges :"
 
 #: discover/qml/ApplicationPage.qml:468
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr ""
+msgstr "Tout le monde"
 
 #: discover/qml/ApplicationPage.qml:470
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr "%1"
+msgstr "%1 +"
 
 #: discover/qml/ApplicationPage.qml:484
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
+#, kde-format
 msgid "See details"
-msgstr "Voir plus d'informations..."
+msgstr "Afficher les détails"
 
 #: discover/qml/ApplicationPage.qml:508
 #, kde-format
@@ -613,7 +606,7 @@ msgstr "Installez-le pour donner votre avis"
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
-msgstr ""
+msgstr "Liens externes"
 
 #: discover/qml/ApplicationPage.qml:777
 #, kde-format
@@ -1425,27 +1418,25 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shutdown)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "À la fin, automatiquement :"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "Ne rien sélectionner"
+msgstr "Sélectionner une action"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "Redémarrer maintenant"
+msgstr "Re-démarrer"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shutdown"
-msgstr ""
+msgstr "Éteindre"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format
@@ -1456,7 +1447,7 @@ msgstr "Taille totale : %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "Re-démarrer pour installer les mises à jour maintenant"
 
 #: discover/qml/UpdatesPage.qml:433
 #, kde-format
