@@ -161,6 +161,15 @@ private Q_SLOTS:
         QCOMPARE(res3, res);
     }
 
+    void testExtends()
+    {
+        AbstractResourcesBackend::Filters f;
+        f.resourceUrl = QUrl(QStringLiteral("appstream://org.videolan.VLC"));
+        const auto res = getResources(m_appBackend->search(f));
+        QCOMPARE(res.count(), 1);
+        QVERIFY(m_appBackend->extends(res[0]->appstreamId()));
+    }
+
     /*
         void testCancelInstallation()
         {
