@@ -294,7 +294,7 @@ void SnapResource::invokeApplication() const
 
 AbstractResource::Type SnapResource::type() const
 {
-    return m_snap->snapType() != QSnapdEnums::SnapTypeApp ? Application : Technical;
+    return m_snap->snapType() == QSnapdEnums::SnapTypeApp ? Application : Technical;
 }
 
 void SnapResource::setSnap(const QSharedPointer<QSnapdSnap> &snap)
