@@ -2463,12 +2463,12 @@ msgstr "未知的安装进程类型"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, kde-format
 msgid "Channel: %1"
-msgstr ""
+msgstr "频道：%1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #, kde-format
 msgid "Channels for %1"
-msgstr ""
+msgstr "%1 的频道"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:387

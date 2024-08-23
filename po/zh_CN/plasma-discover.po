@@ -308,6 +308,13 @@ msgid ""
 "available on <link url='%2'>the application's website</link>.<nl/><nl/>Learn "
 "more at <link url='%3'>%3</link>."
 msgstr ""
+"请在安装 %1 之前确保您可以完全信任它的作者，因为它是一款 <strong>专有软件</"
+"strong>：用户在使用、修改、分发这款应用程序时的自由将受到限制，而且它的部分或"
+"者全部源代码不开放给公众进行监督和改进。这意味着第三方机构和用户无法验证其工"
+"作方式、安全性和可靠性。<nl/><nl/>这款应用程序既可能是安全的，也可能暗藏有侵"
+"害您的权益的行为——例如收集您的个人信息、跟踪您的位置、将您的数据传输给其他人"
+"等。请在使用这款程序之前确保可以完全信任其作者。<link url='%2'>该应用程序的网"
+"站</link>可能包含更多信息。<nl/><nl/>详情请见 <link url='%3'>%3</link>。"
 
 #: discover/qml/ApplicationPage.qml:71
 #, kde-kuit-format
@@ -324,6 +331,13 @@ msgid ""
 "else. Only use it if you fully trust its authors. Learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
+"请在安装 %1 之前确保您可以完全信任它的作者，因为它是一款 <strong>专有软件</"
+"strong>：用户在使用、修改、分发这款应用程序时的自由将受到限制，而且它的部分或"
+"者全部源代码不开放给公众进行监督和改进。这意味着第三方机构和用户无法验证其工"
+"作方式、安全性和可靠性。<nl/><nl/>这款应用程序既可能是安全的，也可能暗藏有侵"
+"害您的权益的行为——例如收集您的个人信息、跟踪您的位置、将您的数据传输给其他人"
+"等。请在使用这款程序之前确保可以完全信任其作者。详情请见 <link url='%2'>%2</"
+"link>。"
 
 #: discover/qml/ApplicationPage.qml:78
 #, kde-kuit-format
@@ -341,6 +355,13 @@ msgid ""
 "url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"%1 使用的许可证中至少有一个不符合 <link url='%2'>自由软件基金会</link> 或者 "
+"<link url='%3'>开源软件促进会</link> 对于“自由软件许可证”的定义。这意味着用户"
+"在使用、研究、修改、分享这款程序的自由可能会受到限制。<nl/><nl/>请在使用这款"
+"程序之前认真阅读它的许可证文本以理解可能存在的限制条款。<nl/><nl/>如果程序的"
+"许可证不允许用户查看其源代码，请确保您可以完全信任它的作者——因为其他人无法验"
+"证该程序的安全性和可靠性以防止它侵害用户的权利。<link url='%4'>该应用程序的网"
+"站</link>可能包含更多信息。<nl/><nl/>详情请见 <link url='%5'>%5</link>。"
 
 #: discover/qml/ApplicationPage.qml:85
 #, kde-kuit-format
@@ -356,6 +377,13 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"%1 使用的许可证中至少有一个不符合 <link url='%2'>自由软件基金会</link> 或者 "
+"<link url='%3'>开源软件促进会</link> 对于“自由软件许可证”的定义。这意味着用户"
+"在使用、研究、修改、分享这款程序的自由可能会受到限制。<nl/><nl/>请在使用这款"
+"程序之前认真阅读它的许可证文本以理解可能存在的限制条款。<nl/><nl/>如果程序的"
+"许可证不允许用户查看其源代码，请确保您可以完全信任它的作者——因为其他人无法验"
+"证该程序的安全性和可靠性以防止它侵害用户的权利。<nl/><nl/>详情请见 <link "
+"url='%4'>%4</link>。"
 
 #: discover/qml/ApplicationPage.qml:94
 #, kde-format
@@ -366,6 +394,9 @@ msgid ""
 "there or contact the author if you want to use this application for anything "
 "other than private personal use."
 msgstr ""
+"%1 没有指明它采用了何种许可证进行分发。如果您想要在个人私用之外的用途中使用这"
+"款程序，请访问 <link url='%2>它的网站</link> 或者联系程序作者以确定它的使用条"
+"款。"
 
 #: discover/qml/ApplicationPage.qml:98
 #, kde-format
@@ -375,6 +406,8 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"%1 没有指明它采用了何种许可证进行分发。如果您想要在个人私用之外的用途中使用这"
+"款程序，请联系程序作者以确定它的使用条款。"
 
 #: discover/qml/ApplicationPage.qml:134
 #, kde-format
@@ -593,7 +626,7 @@ msgstr "内容分级"
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr ""
+msgstr "许可证信息"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
