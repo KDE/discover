@@ -251,12 +251,12 @@ DiscoverPage {
                         Layout.fillWidth: true
 
                         QQC2.Label {
-                            text: i18nc("@info on the completion of updates, the action that automatically happens after (e.g shutdown)", "On completion, automatically:")
+                            text: i18nc("@info on the completion of updates, the action that automatically happens after (e.g shut down)", "On completion, automatically:")
                         }
 
                         QQC2.ComboBox {
                             id: actionAfterUpdateCombo
-                            model: [i18nc("@item:inlistbox placeholder for when no action is selected", "Select an action"), i18nc("@item:inlistbox", "Restart"), i18nc("@item:inlistbox", "Shutdown")]
+                            model: [i18nc("@item:inlistbox placeholder for when no action is selected", "Select an action"), i18nc("@item:inlistbox", "Restart"), i18nc("@item:inlistbox", "Shut down")]
                         }
                     }
                 }
