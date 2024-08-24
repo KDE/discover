@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-21 00:48+0000\n"
-"PO-Revision-Date: 2024-08-18 08:17+0300\n"
+"PO-Revision-Date: 2024-08-23 07:13+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -359,14 +359,14 @@ msgid ""
 "else. Only use it if you fully trust its authors. Learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
-"כדאי להתקין את היישום הזה רק אם יש לך אמון מלא ביוצרים שלו (%1)<nl/><nl/>קוד "
-"המקור של היישום הזה סגור לסקירה ושיפור על ידי הציבור באופן חלקי או מלא. "
-"משמעות הדבר היא שגורמי צד־שלישי ומשתמשים כמוך לא יכולים לחקור מה קורה מאחורי "
-"הקלעים ועד כמה הוא מאובטח ומהימן או לשנות ולהפיץ ללא הרשאה מפורשת מהיוצרים."
-"<nl/><nl/>יכול להיות שהיישום בטוח לחלוטין לשימוש או שהוא פועל נגדך במגוון "
-"דרכים–כגון קצירת הפרטים האישיים שלך, מעקב אחר המיקום שלך או העברת תוכן "
-"הקבצים שלך לגורם אחר.<nl/><nl/>אפשר לקרוא עוד בכתובת <link url='%2'>%2</"
-"link>."
+"כדאי להתקין את %1 רק אם יש לך אמון מלא ביוצרים שלו כיוון שהוא "
+"<strong>קנייני</strong>: החופש שלך להשתמש, לשנות ולהפיץ מחדש מוגבלוקוד המקור "
+"של היישום הזה סגור לסקירה ושיפור על ידי הציבור באופן חלקי או מלא. משמעות "
+"הדבר היא שגורמי צד־שלישי ומשתמשים כמוך לא יכולים לחקור מה קורה מאחורי הקלעים "
+"ועד כמה הוא מאובטח ואמין או לשנות ולהפיץ ללא הרשאה מפורשת מהיוצרים.<nl/><nl/"
+">יכול להיות שהיישום בטוח לחלוטין לשימוש או שהוא פועל נגדך במגוון דרכים–כגון "
+"קצירת הפרטים האישיים שלך, מעקב אחר המיקום שלך או העברת תוכן הקבצים שלך לגורם "
+"אחר.<nl/><nl/>אפשר לקרוא עוד בכתובת <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:78
 #, kde-kuit-format
@@ -639,11 +639,10 @@ msgid "Content Rating"
 msgstr "דירוג התוכן"
 
 #: discover/qml/ApplicationPage.qml:915
-#, fuzzy, kde-format
-#| msgid "Submit Usage Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "שליחת פרטי שימוש"
+msgstr "פרטי רישיון"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format

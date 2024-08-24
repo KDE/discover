@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-21 00:48+0000\n"
-"PO-Revision-Date: 2024-08-03 07:10+0300\n"
+"POT-Creation-Date: 2024-08-24 00:40+0000\n"
+"PO-Revision-Date: 2024-08-22 14:28+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -2501,19 +2501,17 @@ msgid "Unknown transaction type"
 msgstr "סוג העברה לא ידוע"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channel: %1"
-msgstr "ערוצים…"
+msgstr "ערוץ: %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channels for %1"
-msgstr "ערוצים…"
+msgstr "ערוצים עבור %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:387
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:400
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"

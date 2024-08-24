@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-21 00:48+0000\n"
-"PO-Revision-Date: 2024-08-04 18:03+0200\n"
+"PO-Revision-Date: 2024-08-19 20:55+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -1385,18 +1385,16 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shutdown)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "Gjer automatisk etter fullføring:"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "Fjern merking"
+msgstr "Vel handling"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
 msgstr "Start på nytt"
@@ -1405,7 +1403,7 @@ msgstr "Start på nytt"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shutdown"
-msgstr ""
+msgstr "Slå av maskina"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format
@@ -1416,7 +1414,7 @@ msgstr "Total storleik: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "Start på nytt for å installera oppdateringar no"
 
 #: discover/qml/UpdatesPage.qml:433
 #, kde-format
@@ -1477,30 +1475,3 @@ msgstr "Skal sjå etter oppdateringar"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for siste oppdatering er ukjend"
-
-#~ msgid "Risks of proprietary software"
-#~ msgstr "Risiko ved proprietær programvare"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Only install this application if you fully trust its authors (<link "
-#~ "url='%1'>%2</link>).<nl/><nl/>Its source code is partially or entirely "
-#~ "closed to public inspection and improvement, so third parties and users "
-#~ "like you cannot verify its operation, security, and trustworthiness, or "
-#~ "modify and redistribute it without the authors' express permission.<nl/"
-#~ "><nl/>The application may be perfectly safe to use, or it may be acting "
-#~ "against you in various ways—such as harvesting your personal information, "
-#~ "tracking your location, or transmitting the contents of your files to "
-#~ "someone else.<nl/><nl/>You can learn more at <link url='%3'>%3</link>."
-#~ msgstr ""
-#~ "Berre installer dette programmet om du stolar fullt og heilt på "
-#~ "utviklarane (<link url='%1'>%2</link>).<nl/><nl/>Kjeldekoden til "
-#~ "programmet er heilt eller delvis lukka for innsyn og forbetring. Dette "
-#~ "medfører at tredje­partar og brukarar som deg ikkje kan stadfesta at "
-#~ "programmet er trygt å bruka og fungerer slik det skal. De kan heller "
-#~ "ikkje gjera endringar i programmet eller vidare­formidla det til andre "
-#~ "utan eksplisitt samtykke frå opphavspersonane.<nl/><nl/>Det kan vera at "
-#~ "programmet er heilt trygt å bruka, men det kan òg vera at det arbeider "
-#~ "mot deg – for eksempel ved å samla inn persondata, spora kor du oppheld "
-#~ "deg eller senda filene dine til andre.<nl/><nl/>Du finn meir informasjon "
-#~ "på <link url='%3'>%3</link>."

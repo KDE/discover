@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-21 00:48+0000\n"
-"PO-Revision-Date: 2024-08-20 08:33+0200\n"
+"PO-Revision-Date: 2024-08-21 14:56+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -581,11 +581,10 @@ msgid "Content Rating"
 msgstr "Hodnocení obsahu"
 
 #: discover/qml/ApplicationPage.qml:915
-#, fuzzy, kde-format
-#| msgid "Submit Usage Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "Odeslat informace o použití"
+msgstr "Informace o licenci"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -1400,6 +1399,3 @@ msgstr "Měli byste zkontrolovat aktualizace"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#~ msgid "Risks of proprietary software"
-#~ msgstr "Rizika proprietárního software"
