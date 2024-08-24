@@ -238,7 +238,7 @@ DiscoverPage {
 
                 RowLayout {
                     visible: resourcesUpdatesModel.needsReboot && resourcesUpdatesModel.isProgressing
-                    spacing: Kirigami.units.smallSpacing
+                    spacing: Kirigami.Units.smallSpacing
 
                     Layout.fillWidth: true
 
@@ -247,7 +247,7 @@ DiscoverPage {
 
                     RowLayout {
                         visible: resourcesUpdatesModel.needsReboot && resourcesUpdatesModel.isProgressing
-                        spacing: Kirigami.units.smallSpacing
+                        spacing: Kirigami.Units.smallSpacing
                         Layout.fillWidth: true
 
                         QQC2.Label {
