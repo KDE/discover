@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-21 00:48+0000\n"
+"POT-Creation-Date: 2024-08-25 00:40+0000\n"
 "PO-Revision-Date: 2024-06-09 11:25+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -1398,7 +1398,7 @@ msgstr "Nu selecta nimic"
 #, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
-"after (e.g shutdown)"
+"after (e.g shut down)"
 msgid "On completion, automatically:"
 msgstr ""
 
@@ -1419,7 +1419,7 @@ msgstr "Repornește acum"
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
-msgid "Shutdown"
+msgid "Shut down"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:268

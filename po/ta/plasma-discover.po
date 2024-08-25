@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-21 00:48+0000\n"
+"POT-Creation-Date: 2024-08-25 00:40+0000\n"
 "PO-Revision-Date: 2024-08-18 16:21+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1365,10 +1365,14 @@ msgid "Select None"
 msgstr "ஒன்றையும் தேர்ந்தெடுக்க வேண்டாம்"
 
 #: discover/qml/UpdatesPage.qml:254
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@info on the completion of updates, the action that automatically happens "
+#| "after (e.g shutdown)"
+#| msgid "On completion, automatically:"
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
-"after (e.g shutdown)"
+"after (e.g shut down)"
 msgid "On completion, automatically:"
 msgstr "முடிந்தபின் தானாக:"
 
@@ -1385,9 +1389,11 @@ msgid "Restart"
 msgstr "மீள்துவக்கு"
 
 #: discover/qml/UpdatesPage.qml:259
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox"
+#| msgid "Shutdown"
 msgctxt "@item:inlistbox"
-msgid "Shutdown"
+msgid "Shut down"
 msgstr "கணினியை நிறுத்து"
 
 #: discover/qml/UpdatesPage.qml:268

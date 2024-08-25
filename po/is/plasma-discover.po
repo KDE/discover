@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-21 00:48+0000\n"
+"POT-Creation-Date: 2024-08-25 00:40+0000\n"
 "PO-Revision-Date: 2024-06-28 11:35+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -1382,7 +1382,7 @@ msgstr "Velja ekkert"
 #, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
-"after (e.g shutdown)"
+"after (e.g shut down)"
 msgid "On completion, automatically:"
 msgstr ""
 
@@ -1403,7 +1403,7 @@ msgstr "Endurræsa núna"
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
-msgid "Shutdown"
+msgid "Shut down"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:268

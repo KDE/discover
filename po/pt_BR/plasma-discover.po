@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-21 00:48+0000\n"
+"POT-Creation-Date: 2024-08-25 00:40+0000\n"
 "PO-Revision-Date: 2024-06-21 01:47-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -1392,7 +1392,7 @@ msgstr "Selecionar nenhum"
 #, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
-"after (e.g shutdown)"
+"after (e.g shut down)"
 msgid "On completion, automatically:"
 msgstr ""
 
@@ -1413,7 +1413,7 @@ msgstr "Reiniciar agora"
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
-msgid "Shutdown"
+msgid "Shut down"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:268

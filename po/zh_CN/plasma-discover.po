@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-21 00:48+0000\n"
+"POT-Creation-Date: 2024-08-25 00:40+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1344,10 +1344,14 @@ msgid "Select None"
 msgstr "全部不选"
 
 #: discover/qml/UpdatesPage.qml:254
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@info on the completion of updates, the action that automatically happens "
+#| "after (e.g shutdown)"
+#| msgid "On completion, automatically:"
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
-"after (e.g shutdown)"
+"after (e.g shut down)"
 msgid "On completion, automatically:"
 msgstr "完成时自动进行操作："
 
@@ -1364,9 +1368,11 @@ msgid "Restart"
 msgstr "重启"
 
 #: discover/qml/UpdatesPage.qml:259
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox"
+#| msgid "Shutdown"
 msgctxt "@item:inlistbox"
-msgid "Shutdown"
+msgid "Shut down"
 msgstr "关机"
 
 #: discover/qml/UpdatesPage.qml:268

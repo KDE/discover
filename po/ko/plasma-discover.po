@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-21 00:48+0000\n"
+"POT-Creation-Date: 2024-08-25 00:40+0000\n"
 "PO-Revision-Date: 2024-08-20 21:42+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1360,10 +1360,14 @@ msgid "Select None"
 msgstr "선택 해제"
 
 #: discover/qml/UpdatesPage.qml:254
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@info on the completion of updates, the action that automatically happens "
+#| "after (e.g shutdown)"
+#| msgid "On completion, automatically:"
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
-"after (e.g shutdown)"
+"after (e.g shut down)"
 msgid "On completion, automatically:"
 msgstr "완료했을 때 자동으로 수행:"
 
@@ -1380,9 +1384,11 @@ msgid "Restart"
 msgstr "다시 시작"
 
 #: discover/qml/UpdatesPage.qml:259
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox"
+#| msgid "Shutdown"
 msgctxt "@item:inlistbox"
-msgid "Shutdown"
+msgid "Shut down"
 msgstr "컴퓨터 끄기"
 
 #: discover/qml/UpdatesPage.qml:268

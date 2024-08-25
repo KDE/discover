@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-21 00:48+0000\n"
-"PO-Revision-Date: 2024-08-10 12:32+0200\n"
+"POT-Creation-Date: 2024-08-25 00:40+0000\n"
+"PO-Revision-Date: 2024-08-24 11:36+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -305,18 +305,7 @@ msgid "No ratings yet"
 msgstr "Nie wystawiono jeszcze żadnej oceny"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is "
@@ -331,30 +320,22 @@ msgid ""
 "available on <link url='%2'>the application's website</link>.<nl/><nl/>Learn "
 "more at <link url='%3'>%3</link>."
 msgstr ""
-"Wgraj tę aplikację tylko wtedy, gdy w pełni ufasz jej autorom (%1).<nl/><nl/"
-">Jej źródłowy jest częściowo lub całkowicie niedostępny tak, że zwykli "
-"użytkownicy nie mogą go ani obejrzeć, ani usprawnić. Oznacza to, że strony "
-"trzecie oraz użytkownicy tacy jak ty nie mogą potwierdzić słuszności jego "
-"działań, poziomu zabezpieczeń, poziomu ufności, ani zmieniać lub wydawać go "
-"bez jednoznacznego pozwolenia jego autora.<nl/><nl/>Aplikacja może być w "
-"pełni bezpieczna w użyciu lub może też działać na twoją szkodę na kilka "
-"sposobów - taki jak np. gromadzenie twoich danych osobowych, śledzenie "
-"twojego położenia lub przesyłania zawartości twoich plików komuś innemu.<nl/"
-"><nl/>Aby dowiedzieć się więcej wejdź na <link url='%2'>%2</link>."
+"Wgraj %1 tylko wtedy, gdy w pełni ufasz jej autorom, bo jest ona "
+"<strong>własnościowa</strong>: Twoje prawo do używania, zmieniania i "
+"rozpowszechniania tej aplikacji jest ograniczone, a jej kod źródłowy jest "
+"częściowo lub całkowicie niedostępny tak, że zwykli użytkownicy nie mogą go "
+"ani obejrzeć, ani usprawnić. Oznacza to, że strony trzecie oraz użytkownicy "
+"tacy jak ty nie mogą potwierdzić słuszności jego działań, poziomu "
+"zabezpieczeń ani ufności.<nl/><nl/>Aplikacja może być w pełni bezpieczna w "
+"użyciu lub może też działać na twoją szkodę na kilka sposobów - taki jak np. "
+"gromadzenie twoich danych osobowych, śledzenie twojego położenia lub "
+"przesyłania zawartości twoich plików komuś innemu. Używaj jej tylko wtedy, "
+"gdy w pełni ufasz jej autorom. Po więcej szczegółów zajrzyj na <link "
+"url='%2'>stronę aplikacji</link>.<nl/><nl/>Dowiedz się więcej na <link "
+"url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is "
@@ -368,16 +349,18 @@ msgid ""
 "else. Only use it if you fully trust its authors. Learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
-"Wgraj tę aplikację tylko wtedy, gdy w pełni ufasz jej autorom (%1).<nl/><nl/"
-">Jej źródłowy jest częściowo lub całkowicie niedostępny tak, że zwykli "
-"użytkownicy nie mogą go ani obejrzeć, ani usprawnić. Oznacza to, że strony "
-"trzecie oraz użytkownicy tacy jak ty nie mogą potwierdzić słuszności jego "
-"działań, poziomu zabezpieczeń, poziomu ufności, ani zmieniać lub wydawać go "
-"bez jednoznacznego pozwolenia jego autora.<nl/><nl/>Aplikacja może być w "
-"pełni bezpieczna w użyciu lub może też działać na twoją szkodę na kilka "
-"sposobów - taki jak np. gromadzenie twoich danych osobowych, śledzenie "
-"twojego położenia lub przesyłania zawartości twoich plików komuś innemu.<nl/"
-"><nl/>Aby dowiedzieć się więcej wejdź na <link url='%2'>%2</link>."
+"Wgraj %1 tylko wtedy, gdy w pełni ufasz jej autorom, bo jest ona "
+"<strong>własnościowa</strong>: Twoje prawo do używania, zmieniania i "
+"rozpowszechniania tej aplikacji jest ograniczone, a jej kod źródłowy jest "
+"częściowo lub całkowicie niedostępny tak, że zwykli użytkownicy nie mogą go "
+"ani obejrzeć, ani usprawnić. Oznacza to, że strony trzecie oraz użytkownicy "
+"tacy jak ty nie mogą potwierdzić słuszności jego działań, poziomu "
+"zabezpieczeń ani ufności.<nl/><nl/>Aplikacja może być w pełni bezpieczna w "
+"użyciu lub może też działać na twoją szkodę na kilka sposobów - taki jak np. "
+"gromadzenie twoich danych osobowych, śledzenie twojego położenia lub "
+"przesyłania zawartości twoich plików komuś innemu. Używaj jej tylko wtedy, "
+"gdy w pełni ufasz jej autorom.<nl/><nl/>Dowiedz się więcej na <link url='%2'>"
+"%2</link>."
 
 #: discover/qml/ApplicationPage.qml:78
 #, kde-kuit-format
@@ -395,6 +378,19 @@ msgid ""
 "url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"%1 używa jednej lub więcej licencji nie zaliczających się do “Wolnego "
+"Oprogramowania” ani przez <link url='%2'>Fundację Wolnego Oprogramowania</"
+"link> ani przez <link url='%3'>Inicjatywę Wolnego Oprogramowania</link>. "
+"Oznacza to, że twoje prawo do jej używania, wnioskowania o sposobie jej "
+"działania oraz udostępnianie może być ograniczone na pewien sposób.<nl/><nl/"
+">Przeczytaj tekst licencji i upewnij się, że rozumiesz ograniczenia, które "
+"ona nakłada, zanim zaczniesz korzystać z tego oprogramowania.<nl/><nl/>Jeśli "
+"licencja nie udostępnia nawet kodu źródłowego do przeczytania, to upewnij "
+"się, że masz pełne zaufanie do jej autorów, ponieważ nikt inny nie jest w "
+"stanie potwierdzić nieszkodliwości oraz bezpieczeństwa jej kodu tak, aby nie "
+"działała ona przeciwko tobie w w ukryty sposób. Po więcej szczegółów, "
+"zajrzyj na <link url='%4'>stronę aplikacji</link>.<nl/><nl/>Dowiedz się "
+"więcej na <link url='%5'>%5</link>."
 
 #: discover/qml/ApplicationPage.qml:85
 #, kde-kuit-format
@@ -410,6 +406,18 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"%1 używa jednej lub więcej licencji nie zaliczających się do “Wolnego "
+"Oprogramowania” ani przez <link url='%2'>Fundację Wolnego Oprogramowania</"
+"link> ani przez <link url='%3'>Inicjatywę Wolnego Oprogramowania</link>. "
+"Oznacza to, że twoje prawo do jej używania, wnioskowania o sposobie jej "
+"działania oraz udostępnianie może być ograniczone na pewien sposób.<nl/><nl/"
+">Przeczytaj tekst licencji i upewnij się, że rozumiesz ograniczenia, które "
+"ona nakłada, zanim zaczniesz korzystać z tego oprogramowania.<nl/><nl/>Jeśli "
+"licencja nie udostępnia nawet kodu źródłowego do przeczytania, to upewnij "
+"się, że masz pełne zaufanie do jej autorów, ponieważ nikt inny nie jest w "
+"stanie potwierdzić nieszkodliwości oraz bezpieczeństwa jej kodu tak, aby nie "
+"działała ona przeciwko tobie w w ukryty sposób.<nl/><nl/>Dowiedz się więcej "
+"na <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
 #, kde-format
@@ -420,6 +428,10 @@ msgid ""
 "there or contact the author if you want to use this application for anything "
 "other than private personal use."
 msgstr ""
+"%1 nie wskazuje na jakiej licencji jest rozpowszechniania. Możliwe, że "
+"będziesz w stanie to ustalić na <link url='%2>stronie aplikacji</link>. "
+"Poszukaj tam lub napisz do jej autora, jeśli chcesz wykorzystać tę aplikację "
+"do czegokolwiek innego niż do własnego użytku."
 
 #: discover/qml/ApplicationPage.qml:98
 #, kde-format
@@ -429,6 +441,9 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"%1 nie wskazuje na jakiej licencji jest rozpowszechniania. Napisz do jej "
+"autora, jeśli chcesz wykorzystać tę aplikację do czegokolwiek innego niż do "
+"własnego użytku."
 
 #: discover/qml/ApplicationPage.qml:134
 #, kde-format
@@ -649,11 +664,10 @@ msgid "Content Rating"
 msgstr "Ocena treści"
 
 #: discover/qml/ApplicationPage.qml:915
-#, fuzzy, kde-format
-#| msgid "Submit Usage Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "Podeślij dane o użytkowaniu"
+msgstr "Szczegóły licencji"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -1383,32 +1397,36 @@ msgid "Select None"
 msgstr "Odznacz wszystkie"
 
 #: discover/qml/UpdatesPage.qml:254
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@info on the completion of updates, the action that automatically happens "
+#| "after (e.g shutdown)"
+#| msgid "On completion, automatically:"
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
-"after (e.g shutdown)"
+"after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "Po zakończeniu, samoczynnie:"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "Odznacz wszystkie"
-
-#: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
-msgctxt "@item:inlistbox"
-msgid "Restart"
-msgstr "Uruchom ponownie teraz"
+msgstr "Wybierz działanie"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
-msgid "Shutdown"
-msgstr ""
+msgid "Restart"
+msgstr "Uruchom ponownie"
+
+#: discover/qml/UpdatesPage.qml:259
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox"
+#| msgid "Shutdown"
+msgctxt "@item:inlistbox"
+msgid "Shut down"
+msgstr "Wyłącz"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format
@@ -1419,7 +1437,7 @@ msgstr "Rozmiar całości: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "Uruchom ponownie teraz, aby wgrać uaktualnienia"
 
 #: discover/qml/UpdatesPage.qml:433
 #, kde-format

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-21 00:48+0000\n"
-"PO-Revision-Date: 2024-08-23 07:13+0300\n"
+"POT-Creation-Date: 2024-08-25 00:40+0000\n"
+"PO-Revision-Date: 2024-08-24 14:04+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -418,6 +418,8 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"%1 לא מציין לאיזה רישיון כפופה ההפצה שלו. נא ליצור קשר עם יוצרי היישום כדי "
+"להשתמש בו למשהו שאינו שימוש אישי ופרטי."
 
 #: discover/qml/ApplicationPage.qml:134
 #, kde-format
@@ -1372,10 +1374,14 @@ msgid "Select None"
 msgstr "לבטל בחירה"
 
 #: discover/qml/UpdatesPage.qml:254
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@info on the completion of updates, the action that automatically happens "
+#| "after (e.g shutdown)"
+#| msgid "On completion, automatically:"
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
-"after (e.g shutdown)"
+"after (e.g shut down)"
 msgid "On completion, automatically:"
 msgstr "לאחר שיושלמו, אוטומטית:"
 
@@ -1392,9 +1398,11 @@ msgid "Restart"
 msgstr "הפעלה מחדש"
 
 #: discover/qml/UpdatesPage.qml:259
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox"
+#| msgid "Shutdown"
 msgctxt "@item:inlistbox"
-msgid "Shutdown"
+msgid "Shut down"
 msgstr "לכבות"
 
 #: discover/qml/UpdatesPage.qml:268
