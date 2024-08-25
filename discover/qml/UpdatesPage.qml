@@ -510,6 +510,7 @@ DiscoverPage {
             name: "fetching"
             PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching updates…") }
             PropertyChanges { target: page; footerProgress: Discover.ResourcesModel.fetchingUpdatesProgress }
+            PropertyChanges { target: page; actions: [ updateAction, refreshAction ] }
             PropertyChanges { target: page; busy: true }
             PropertyChanges { target: updatesView; opacity: 0 }
         },
