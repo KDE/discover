@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2023-02-25 23:55+0100\n"
-"Last-Translator: Jannick Kuhr <opensource@kuhr.org>\n"
+"PO-Revision-Date: 2024-08-20 20:01+0200\n"
+"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -192,7 +192,7 @@ msgstr "Ein Programm, um Anwendungen zu finden"
 #: discover/main.cpp:124
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr "Copyright © 2010-2022 Plasma-Entwicklerteam"
+msgstr "© 2010-2022 Plasma-Entwicklerteam"
 
 #: discover/main.cpp:125
 #, kde-format
@@ -249,7 +249,7 @@ msgstr "Erweiterungen für %1"
 #: discover/qml/AddonsView.qml:50
 #, kde-format
 msgid "More…"
-msgstr "Mehr ..."
+msgstr "Mehr …"
 
 #: discover/qml/AddonsView.qml:59
 #, kde-format
@@ -351,7 +351,7 @@ msgstr "Was bedeutet dies?"
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
-msgstr[0] "Mehr ..."
+msgstr[0] "Mehr …"
 msgstr[1] "Mehr …"
 
 #: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:907
@@ -662,7 +662,7 @@ msgstr ""
 #: discover/qml/ApplicationsListPage.qml:239
 #, kde-format
 msgid "Still looking…"
-msgstr "Suchen ..."
+msgstr "Suchen …"
 
 #: discover/qml/BrowsingPage.qml:62
 #, kde-format
@@ -818,7 +818,7 @@ msgstr "Einrichten"
 #: discover/qml/Feedback.qml:21
 #, kde-format
 msgid "Configure feedback…"
-msgstr "Feedback einrichten ..."
+msgstr "Feedback einrichten …"
 
 #: discover/qml/Feedback.qml:28 discover/qml/SourcesPage.qml:19
 #, kde-format
@@ -837,7 +837,7 @@ msgstr ""
 #: discover/qml/Feedback.qml:58
 #, kde-format
 msgid "Contribute…"
-msgstr "Mitmachen ..."
+msgstr "Mitmachen …"
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
@@ -847,13 +847,13 @@ msgstr "Wir freuen uns auf Ihr Feedback!"
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "Participate…"
-msgstr "Mitmachen ..."
+msgstr "Mitmachen …"
 
 #: discover/qml/InstallApplicationButton.qml:25
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
-msgstr "Wird geladen ..."
+msgstr "Wird geladen …"
 
 #: discover/qml/InstallApplicationButton.qml:28
 #, kde-format
@@ -1024,12 +1024,12 @@ msgstr "Installieren Sie diese Anwendung, um eine Bewertung zu schreiben"
 #: discover/qml/SearchField.qml:24
 #, kde-format
 msgid "Search…"
-msgstr "Suchen ..."
+msgstr "Suchen …"
 
 #: discover/qml/SearchField.qml:24
 #, kde-format
 msgid "Search in '%1'…"
-msgstr "Suchen in „%1“ ..."
+msgstr "Suchen in „%1“ …"
 
 #: discover/qml/SourcesPage.qml:13
 #, kde-format
@@ -1194,13 +1194,13 @@ msgstr "%1 (%2)"
 #: discover/qml/UpdatesPage.qml:449
 #, kde-format
 msgid "More Information…"
-msgstr "Weitere Informationen ..."
+msgstr "Weitere Informationen …"
 
 #: discover/qml/UpdatesPage.qml:477
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
-msgstr "Aktualisierungen werden geholt ..."
+msgstr "Aktualisierungen werden geholt …"
 
 #: discover/qml/UpdatesPage.qml:490
 #, kde-format

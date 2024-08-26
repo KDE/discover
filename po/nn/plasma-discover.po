@@ -25,8 +25,8 @@ msgid ""
 "Discover currently cannot be used to install any apps or perform system "
 "updates because none of its app backends are available."
 msgstr ""
-"Discover kan ikkje no brukast til å installera program eller gjera "
-"system­oppdateringar, då ingen av pakke­motorane er tilgjengelege."
+"Discover kan ikkje no brukast til å installera program eller gjera system­"
+"oppdateringar, då ingen av pakke­motorane er tilgjengelege."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
