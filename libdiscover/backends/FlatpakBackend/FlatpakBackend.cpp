@@ -2027,6 +2027,7 @@ Transaction *FlatpakBackend::removeApplication(AbstractResource *app)
     connect(transaction, &FlatpakJobTransaction::repositoriesAdded, this, &FlatpakBackend::checkRepositories);
     connect(transaction, &FlatpakJobTransaction::statusChanged, this, [this, resource](Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
+            updateAppState(resource);
             updateAppSize(resource);
         }
     });
