@@ -174,7 +174,6 @@ msgstr "En programutforsker"
 
 #: discover/main.cpp:122
 #, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010–2020 Utviklingslaget for Plasma"
 
@@ -422,8 +421,6 @@ msgstr ""
 
 #: discover/qml/ApplicationPage.qml:726
 #, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Vis %1-vurdering"
@@ -491,18 +488,6 @@ msgstr "Risiko ved proprietær programvare"
 
 #: discover/qml/ApplicationPage.qml:919
 #, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (<link url='%1'>"
@@ -528,18 +513,6 @@ msgstr ""
 
 #: discover/qml/ApplicationPage.qml:920
 #, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
 msgctxt "@info"
 msgid ""
 "Only install this application if you fully trust its authors (%1).<nl/><nl/"
@@ -859,7 +832,6 @@ msgstr "Kopier til utklippstavla"
 
 #: discover/qml/Feedback.qml:14
 #, fuzzy, kde-format
-#| msgid "Submit usage information"
 msgid "Submit Usage Information"
 msgstr "Send inn bruksinformasjon"
 
@@ -884,7 +856,6 @@ msgstr "Sett opp"
 
 #: discover/qml/Feedback.qml:23
 #, fuzzy, kde-format
-#| msgid "Configure feedback…"
 msgid "Configure Feedback…"
 msgstr "Sett opp tilbakemeldinger …"
 
@@ -1110,15 +1081,12 @@ msgstr ""
 
 #: discover/qml/ReviewsPage.qml:162
 #, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
 msgstr "Høyest vurderte spill"
 
 #: discover/qml/ReviewsStats.qml:53
 #, fuzzy, kde-format
-#| msgid "Reviews"
 msgctxt "how many reviews"
 msgid "%1 reviews"
 msgstr "Tilbakemeldinger"
@@ -1131,7 +1099,6 @@ msgstr ""
 
 #: discover/qml/ReviewsStats.qml:154
 #, fuzzy, kde-format
-#| msgid "unknown reviewer"
 msgid "Unknown reviewer"
 msgstr "ukjent vurderer"
 
