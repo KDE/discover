@@ -184,7 +184,6 @@ msgstr "En programutforsker"
 
 #: discover/main.cpp:122
 #, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010–2020 Utviklingslaget for Plasma"
 
@@ -289,18 +288,6 @@ msgstr "Ingen karakter ennå"
 
 #: discover/qml/ApplicationPage.qml:66
 #, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is "
@@ -328,18 +315,6 @@ msgstr ""
 
 #: discover/qml/ApplicationPage.qml:71
 #, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is "
@@ -417,8 +392,6 @@ msgstr ""
 
 #: discover/qml/ApplicationPage.qml:134
 #, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "Del"
@@ -444,7 +417,6 @@ msgstr "%1 – %2"
 
 #: discover/qml/ApplicationPage.qml:209
 #, fuzzy, kde-format
-#| msgid "Send a link for this application"
 msgctxt "@title:window"
 msgid "Share Link to Application"
 msgstr "Send en link til dette programmet"
@@ -521,8 +493,6 @@ msgstr ""
 
 #: discover/qml/ApplicationPage.qml:484
 #, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
 msgid "See details"
 msgstr "Vis detaljer …"
 
@@ -555,8 +525,6 @@ msgstr ""
 
 #: discover/qml/ApplicationPage.qml:724
 #, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Vis %1-vurdering"
@@ -640,7 +608,6 @@ msgstr "Aldersgrense"
 
 #: discover/qml/ApplicationPage.qml:915
 #, fuzzy, kde-format
-#| msgid "Submit usage information"
 msgctxt "@title:window"
 msgid "License Information"
 msgstr "Send inn bruksinformasjon"
@@ -941,7 +908,6 @@ msgstr "Kopier til utklippstavla"
 
 #: discover/qml/Feedback.qml:14
 #, fuzzy, kde-format
-#| msgid "Submit usage information"
 msgid "Submit Usage Information"
 msgstr "Send inn bruksinformasjon"
 
@@ -966,7 +932,6 @@ msgstr "Sett opp"
 
 #: discover/qml/Feedback.qml:23
 #, fuzzy, kde-format
-#| msgid "Configure feedback…"
 msgid "Configure Feedback…"
 msgstr "Sett opp tilbakemeldinger …"
 
@@ -1192,15 +1157,12 @@ msgstr ""
 
 #: discover/qml/ReviewsPage.qml:162
 #, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
 msgstr "Høyest vurderte spill"
 
 #: discover/qml/ReviewsStats.qml:53
 #, fuzzy, kde-format
-#| msgid "Reviews"
 msgctxt "how many reviews"
 msgid "%1 reviews"
 msgstr "Tilbakemeldinger"
@@ -1213,7 +1175,6 @@ msgstr ""
 
 #: discover/qml/ReviewsStats.qml:154
 #, fuzzy, kde-format
-#| msgid "unknown reviewer"
 msgid "Unknown reviewer"
 msgstr "ukjent vurderer"
 
@@ -1382,14 +1343,12 @@ msgstr ""
 
 #: discover/qml/UpdatesPage.qml:259
 #, fuzzy, kde-format
-#| msgid "Select None"
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
 msgstr "Fjern valg"
 
 #: discover/qml/UpdatesPage.qml:259
 #, fuzzy, kde-format
-#| msgid "Restart Now"
 msgctxt "@item:inlistbox"
 msgid "Restart"
 msgstr "Start på nytt"

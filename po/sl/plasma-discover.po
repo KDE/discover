@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-25 00:40+0000\n"
-"PO-Revision-Date: 2024-08-21 09:16+0200\n"
+"PO-Revision-Date: 2024-08-25 08:03+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1399,16 +1399,12 @@ msgid "Select None"
 msgstr "Ne izberi ničesar"
 
 #: discover/qml/UpdatesPage.qml:254
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info on the completion of updates, the action that automatically happens "
-#| "after (e.g shutdown)"
-#| msgid "On completion, automatically:"
+#, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr "Po zaključku samodejno:"
+msgstr "Ob zaključku samodejno:"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
@@ -1423,12 +1419,10 @@ msgid "Restart"
 msgstr "Ponovno zaženi"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shutdown"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
-msgstr "Ustavi"
+msgstr "Izklopi računalnik"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format

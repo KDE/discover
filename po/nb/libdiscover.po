@@ -78,7 +78,6 @@ msgstr ""
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:290
 #, fuzzy, kde-format
-#| msgid "Additional packages: "
 msgctxt "Root category name"
 msgid "Alpine Linux packages"
 msgstr "Tilleggspakker"
@@ -606,7 +605,6 @@ msgstr "Henter størrelsesinformasjon"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:474
 #, fuzzy, kde-format
-#| msgid "Unknown"
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Ukjent"
@@ -650,7 +648,6 @@ msgstr "Har tilgang til Internett"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
 #, fuzzy, kde-format
-#| msgid "System Bus Access"
 msgid "Sound system access"
 msgstr "Tilgang til systembussen"
 
@@ -670,9 +667,6 @@ msgstr "Tilgang til øktbussen"
 # 2. "can communicate with other app and process *which are* using the following", i.e. SomeApp can communicate with *other apps that are using* the following protocols".
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:847
 #, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
@@ -691,9 +685,6 @@ msgstr "Tilgang til systembussen"
 # 2. "can communicate with other app and process *which are* using the following", i.e. SomeApp can communicate with *other apps that are using* the following protocols".
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:853
 #, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
 "Kan kommunisere med andre programmer og prosesser i samme brukerøkt via "
@@ -995,7 +986,6 @@ msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, fuzzy, kde-format
-#| msgid "Repo not available"
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "Pakkebrønn ikke tilgjengelig"
@@ -1065,7 +1055,6 @@ msgstr "Slett innstillinger og brukerdata"
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
 #, fuzzy, kde-format
-#| msgid "Permissions for %1"
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
 msgstr "Tilgang for %1"
@@ -1079,7 +1068,6 @@ msgstr "Sett opp tilgang …"
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:471
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, fuzzy, kde-format
-#| msgid "Offline Updates"
 msgid "Firmware Updates"
 msgstr "Oppdateringer frakoblet"
 
@@ -1257,7 +1245,6 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1034
 #, fuzzy, kde-format
-#| msgid "Upgrade to %1 %2"
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Oppgrader til %1 %2"
@@ -1265,7 +1252,6 @@ msgstr "Oppgrader til %1 %2"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1057
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, fuzzy, kde-format
-#| msgid "Repo not available"
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "Pakkebrønn ikke tilgjengelig"
@@ -2023,25 +2009,21 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
 #, fuzzy, kde-format
-#| msgid "Installed"
 msgid "Install"
 msgstr "Installert"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
 #, fuzzy, kde-format
-#| msgid "Remove…"
 msgid "Remove"
 msgstr "Fjern …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
 #, fuzzy, kde-format
-#| msgid "Obsoletes:"
 msgid "Obsolete"
 msgstr "Utdaterer:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
 #, fuzzy, kde-format
-#| msgid "Downgrading"
 msgid "Downgrade"
 msgstr "Nedgraderer"
 
@@ -2541,13 +2523,11 @@ msgstr "Ukjent transaksjonstype"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, fuzzy, kde-format
-#| msgid "Channels…"
 msgid "Channel: %1"
 msgstr "Kanaler …"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #, fuzzy, kde-format
-#| msgid "Channels…"
 msgid "Channels for %1"
 msgstr "Kanaler …"
 
@@ -2723,7 +2703,6 @@ msgstr "Program"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, fuzzy, kde-format
-#| msgid "Applications"
 msgctxt "@item:inlistbox"
 msgid "Application Support"
 msgstr "Programmer"
