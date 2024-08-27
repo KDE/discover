@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-25 00:40+0000\n"
-"PO-Revision-Date: 2024-08-03 14:28+0900\n"
+"PO-Revision-Date: 2024-08-25 03:04+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -295,18 +295,7 @@ msgid "No ratings yet"
 msgstr "目前還沒有評分"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is "
@@ -321,26 +310,16 @@ msgid ""
 "available on <link url='%2'>the application's website</link>.<nl/><nl/>Learn "
 "more at <link url='%3'>%3</link>."
 msgstr ""
-"請只在完全信任其作者（%1）時安裝本應用程式。<nl/><nl/>本應用程式的原始碼一部"
-"分或完全封閉於公開檢視及改善。這代表著第三方與包含您在內的使用者無法檢查它的"
-"動作、安全性與可靠性，作者沒有書面同意時也無法修改它或進行重新發佈。<nl/><nl/"
-">本應用程式可能完全是安全的，也有可能侵犯您的權益 —— 例如不當收集您的個人資"
-"料、記錄您的所在地，或是把您的檔案內容傳給別人。<nl/><nl/>您可以至 <link "
-"url='%2'>%2</link> 了解更多。"
+"請只在完全信任其作者群時才安裝 %1，因為它是<strong>私有軟體</strong>：您使"
+"用、修改與重新發佈本應用程式的自由受到限制，而且它的原始碼部分或者完全是無法"
+"讓公眾查看或是改善的。這代表作者以外的第三方及像您一樣的使用者無法檢查動作、"
+"安全性與可靠性。<nl/><nl/>本應用程式可能完全是安全的，也有可能侵犯您的權益 "
+"—— 例如不當收集您的個人資料、追蹤您的所在地，或是把您的資料傳給別人。請只在完"
+"全信任其作者時才使用它。<link url='%2'>應用程式的網站</link>上可能有其他資訊"
+"可供參考。<nl/><nl/>更多資訊請見 <link url='%3'>%3</link>。"
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is "
@@ -354,12 +333,12 @@ msgid ""
 "else. Only use it if you fully trust its authors. Learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
-"請只在完全信任其作者（%1）時安裝本應用程式。<nl/><nl/>本應用程式的原始碼一部"
-"分或完全封閉於公開檢視及改善。這代表著第三方與包含您在內的使用者無法檢查它的"
-"動作、安全性與可靠性，作者沒有書面同意時也無法修改它或進行重新發佈。<nl/><nl/"
-">本應用程式可能完全是安全的，也有可能侵犯您的權益 —— 例如不當收集您的個人資"
-"料、記錄您的所在地，或是把您的檔案內容傳給別人。<nl/><nl/>您可以至 <link "
-"url='%2'>%2</link> 了解更多。"
+"請只在完全信任其作者群時才安裝 %1，因為它是<strong>私有軟體</strong>：您使"
+"用、修改與重新發佈本應用程式的自由受到限制，而且它的原始碼部分或者完全是無法"
+"讓公眾查看或是改善的。這代表作者以外的第三方及像您一樣的使用者無法檢查動作、"
+"安全性與可靠性。<nl/><nl/>本應用程式可能完全是安全的，也有可能侵犯您的權益 "
+"—— 例如不當收集您的個人資料、追蹤您的所在地，或是把您的資料傳給別人。請只在完"
+"全信任其作者時才使用它。更多資訊請見 <link url='%2'>%2</link>。"
 
 #: discover/qml/ApplicationPage.qml:78
 #, kde-kuit-format
@@ -377,6 +356,14 @@ msgid ""
 "url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"%1 所使用的授權之一並未由<link url='%2'>自由軟體基金會</link>或<link "
+"url='%3'>開放原始碼促進會</link>認證為「自由軟體」。這代表您使用、研究、修改"
+"與分享它的自由可能是以某種形式受限的。<nl/><nl/>請在使用此軟體前確實閱讀授權"
+"條款的文本並瞭解其中的任何限制。<nl/><nl/>如果授權條款連閱讀原始碼的權限都沒"
+"有提供，則請確認您完全信任其作者群，因為在這個情況下除了作者群以外沒有人能夠"
+"檢驗它的原始碼是否可信、安全，或是不會偷偷地侵犯您的權利。<link url='%4'>應用"
+"程式的網站</link>上可能有其他資訊可供參考。<nl/><nl/>更多資訊請見 <link "
+"url='%5'>%5</link>。"
 
 #: discover/qml/ApplicationPage.qml:85
 #, kde-kuit-format
@@ -392,6 +379,13 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"%1 所使用的授權之一並未由<link url='%2'>自由軟體基金會</link>或<link "
+"url='%3'>開放原始碼促進會</link>認證為「自由軟體」。這代表您使用、研究、修改"
+"與分享它的自由可能是以某種形式受限的。<nl/><nl/>請在使用此軟體前確實閱讀授權"
+"條款的文本並瞭解其中的任何限制。<nl/><nl/>如果授權條款連閱讀原始碼的權限都沒"
+"有提供，則請確認您完全信任其作者群，因為在這個情況下除了作者群以外沒有人能夠"
+"檢驗它的原始碼是否可信、安全，或是不會偷偷地侵犯您的權利。<nl/><nl/>更多資訊"
+"請見 <link url='%4'>%4</link>。"
 
 #: discover/qml/ApplicationPage.qml:94
 #, kde-format
@@ -402,6 +396,9 @@ msgid ""
 "there or contact the author if you want to use this application for anything "
 "other than private personal use."
 msgstr ""
+"%1 沒有指定它發佈時所使用的授權條款。您可能可以在<link url='%2>應用程式的網站"
+"</link>上找出它的授權資訊。除了個人私下以外的使用請在它的網站上尋找是否有授"
+"權，或是與應用程式作者聯繫。"
 
 #: discover/qml/ApplicationPage.qml:98
 #, kde-format
@@ -411,6 +408,8 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"%1 沒有指定它發佈時所使用的授權條款。除了個人私下以外的使用請與應用程式作者聯"
+"繫。"
 
 #: discover/qml/ApplicationPage.qml:134
 #, kde-format
@@ -626,11 +625,10 @@ msgid "Content Rating"
 msgstr "內容評級"
 
 #: discover/qml/ApplicationPage.qml:915
-#, fuzzy, kde-format
-#| msgid "Submit Usage Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "提交使用量資訊"
+msgstr "授權資訊"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -1353,27 +1351,25 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "完成時自動進行："
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "全部不選"
+msgstr "選擇動作"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "立刻重新開機"
+msgstr "重新開機"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
-msgstr ""
+msgstr "關機"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format
@@ -1384,7 +1380,7 @@ msgstr "總計大小：%1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "現在重新開機來安裝更新"
 
 #: discover/qml/UpdatesPage.qml:433
 #, kde-format

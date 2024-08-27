@@ -1345,10 +1345,6 @@ msgstr "全部不选"
 
 #: discover/qml/UpdatesPage.qml:254
 #, fuzzy, kde-format
-#| msgctxt ""
-#| "@info on the completion of updates, the action that automatically happens "
-#| "after (e.g shutdown)"
-#| msgid "On completion, automatically:"
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
@@ -1369,8 +1365,6 @@ msgstr "重启"
 
 #: discover/qml/UpdatesPage.qml:259
 #, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shutdown"
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr "关机"
