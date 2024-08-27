@@ -398,8 +398,8 @@ DiscoverPage {
                     }
 
                     Kirigami.Icon {
-                        width: Kirigami.Units.gridUnit * 2
-                        Layout.preferredHeight: width
+                        Layout.preferredWidth: Kirigami.Units.iconSizes.medium
+                        Layout.preferredHeight: Kirigami.Units.iconSizes.medium
                         source: listItem.model.decoration
                         smooth: true
                     }
