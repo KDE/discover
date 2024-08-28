@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.discover as Discover
 
-Kirigami.PromptDialog {
+Kirigami.Dialog {
     id: reviewDialog
 
     required property Discover.AbstractResource application
@@ -16,6 +16,12 @@ Kirigami.PromptDialog {
     readonly property alias review: reviewInput.text
 
     property bool appHasAnyProprietaryLicenses: false
+
+    implicitWidth: Kirigami.Units.gridUnit * 30
+    topPadding: 0
+    leftPadding: Kirigami.Units.largeSpacing
+    rightPadding: Kirigami.Units.largeSpacing
+    bottomPadding: Kirigami.Units.largeSpacing
 
     title: i18n("Reviewing %1", application.name)
 
@@ -31,9 +37,8 @@ Kirigami.PromptDialog {
         }
     ]
 
-    ColumnLayout {
-        Layout.maximumWidth: Kirigami.Units.gridUnit * 30
-        Layout.preferredWidth: Kirigami.Units.gridUnit * 30
+    contentItem: ColumnLayout {
+        Layout.fillWidth: true
 
         spacing: Kirigami.Units.smallSpacing
 
