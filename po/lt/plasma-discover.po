@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:40+0000\n"
+"POT-Creation-Date: 2024-08-28 00:40+0000\n"
 "PO-Revision-Date: 2024-08-13 23:45+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -1142,47 +1142,119 @@ msgstr "Apžvelgiama %1"
 msgid "Submit review"
 msgstr "Pateikti apžvalgą"
 
-#: discover/qml/ReviewDialog.qml:40
+#: discover/qml/ReviewDialog.qml:43
+#, kde-format
+msgid ""
+"If you love %1, tell people what's great about it! Focus on functionality, "
+"usability, and appearance. If the app didn't meet your needs, explain why."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:67
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"If %1 isn't launching, consider reporting this to its packagers in %2 at "
+"<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
+"issue rather than a flaw in the app itself."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:72
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"If %1 isn't launching, consider reporting this its developers at <link "
+"url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
+"rather than a flaw in the app itself."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:77
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"If the app is crashing a lot, consider reporting this to the developers at "
+"<link url='%1'>%1</link> instead."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:80
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"If you're having a problem with the app, consider reporting it to the "
+"developers at <link url='%1'>%1</link> instead, or else describe the problem "
+"here in greater detail."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:115
 #, kde-format
 msgid "Rating:"
 msgstr "Įvertinimas:"
 
-#: discover/qml/ReviewDialog.qml:45
+#: discover/qml/ReviewDialog.qml:120
 #, kde-format
 msgid "Name:"
 msgstr "Pavadinimas:"
 
-#: discover/qml/ReviewDialog.qml:53
+#: discover/qml/ReviewDialog.qml:128
 #, kde-format
 msgid "Title:"
 msgstr "Antraštė:"
 
-#: discover/qml/ReviewDialog.qml:73
+#: discover/qml/ReviewDialog.qml:143
+#, kde-format
+msgctxt ""
+"Words the user might use in an unhelpful sentence saying an app is not "
+"launching. Preserve the commas. If necessary, add more words used for this "
+"in your language and/or shorten to common stems contained by multiple forms "
+"of the words."
+msgid "launch,run,start"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:150
+#, kde-format
+msgctxt ""
+"Words the user might use in an unhelpful sentence saying an app crashes. "
+"Preserve the commas. If necessary, add more words used for this in your "
+"language and/or shorten to common stems contained by multiple forms of the "
+"words"
+msgid "crash,segfault"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:157
+#, kde-format
+msgctxt ""
+"Word the user might use in an unhelpful sentence saying an app isn't very "
+"good. Preserve the commas. If necessary, add more words used for this in "
+"your language and/or shorten to common stems contained by multiple forms of "
+"the words,"
+msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:177
 #, kde-format
 msgid "Enter a rating"
 msgstr "Įveskite įvertinimą"
 
-#: discover/qml/ReviewDialog.qml:76
+#: discover/qml/ReviewDialog.qml:180
 #, kde-format
 msgid "Write the title"
 msgstr "Parašykite antraštę"
 
-#: discover/qml/ReviewDialog.qml:79
+#: discover/qml/ReviewDialog.qml:183
 #, kde-format
 msgid "Write the review"
 msgstr "Parašykite apžvalgą"
 
-#: discover/qml/ReviewDialog.qml:82
+#: discover/qml/ReviewDialog.qml:186
 #, kde-format
 msgid "Keep writing…"
 msgstr "Rašykite toliau…"
 
-#: discover/qml/ReviewDialog.qml:85
+#: discover/qml/ReviewDialog.qml:189
 #, kde-format
 msgid "Too long!"
 msgstr "Pernelyg ilgas!"
 
-#: discover/qml/ReviewDialog.qml:88
+#: discover/qml/ReviewDialog.qml:192
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
@@ -1463,32 +1535,32 @@ msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Gaunami atnaujinimai…"
 
-#: discover/qml/UpdatesPage.qml:524
+#: discover/qml/UpdatesPage.qml:525
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Atnaujinimai"
 
-#: discover/qml/UpdatesPage.qml:533
+#: discover/qml/UpdatesPage.qml:534
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Norėdami užbaigti atnaujinimo procesą, paleiskite sistemą iš naujo"
 
-#: discover/qml/UpdatesPage.qml:549 discover/qml/UpdatesPage.qml:556
-#: discover/qml/UpdatesPage.qml:563
+#: discover/qml/UpdatesPage.qml:550 discover/qml/UpdatesPage.qml:557
+#: discover/qml/UpdatesPage.qml:564
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Atnaujinta"
 
-#: discover/qml/UpdatesPage.qml:570
+#: discover/qml/UpdatesPage.qml:571
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Turėtų būti tikrinama ar yra atnaujinimų"
 
-#: discover/qml/UpdatesPage.qml:577
+#: discover/qml/UpdatesPage.qml:578
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

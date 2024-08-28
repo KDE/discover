@@ -10,15 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-25 00:40+0000\n"
-"PO-Revision-Date: 2024-08-21 10:29+0200\n"
+"POT-Creation-Date: 2024-08-28 00:40+0000\n"
+"PO-Revision-Date: 2024-08-25 14:27+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -1140,47 +1140,119 @@ msgstr "S'està comentant %1"
 msgid "Submit review"
 msgstr "Envia el comentari"
 
-#: discover/qml/ReviewDialog.qml:40
+#: discover/qml/ReviewDialog.qml:43
+#, kde-format
+msgid ""
+"If you love %1, tell people what's great about it! Focus on functionality, "
+"usability, and appearance. If the app didn't meet your needs, explain why."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:67
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"If %1 isn't launching, consider reporting this to its packagers in %2 at "
+"<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
+"issue rather than a flaw in the app itself."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:72
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"If %1 isn't launching, consider reporting this its developers at <link "
+"url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
+"rather than a flaw in the app itself."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:77
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"If the app is crashing a lot, consider reporting this to the developers at "
+"<link url='%1'>%1</link> instead."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:80
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"If you're having a problem with the app, consider reporting it to the "
+"developers at <link url='%1'>%1</link> instead, or else describe the problem "
+"here in greater detail."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:115
 #, kde-format
 msgid "Rating:"
 msgstr "Valoració:"
 
-#: discover/qml/ReviewDialog.qml:45
+#: discover/qml/ReviewDialog.qml:120
 #, kde-format
 msgid "Name:"
 msgstr "Nom:"
 
-#: discover/qml/ReviewDialog.qml:53
+#: discover/qml/ReviewDialog.qml:128
 #, kde-format
 msgid "Title:"
 msgstr "Títol:"
 
-#: discover/qml/ReviewDialog.qml:73
+#: discover/qml/ReviewDialog.qml:143
+#, kde-format
+msgctxt ""
+"Words the user might use in an unhelpful sentence saying an app is not "
+"launching. Preserve the commas. If necessary, add more words used for this "
+"in your language and/or shorten to common stems contained by multiple forms "
+"of the words."
+msgid "launch,run,start"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:150
+#, kde-format
+msgctxt ""
+"Words the user might use in an unhelpful sentence saying an app crashes. "
+"Preserve the commas. If necessary, add more words used for this in your "
+"language and/or shorten to common stems contained by multiple forms of the "
+"words"
+msgid "crash,segfault"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:157
+#, kde-format
+msgctxt ""
+"Word the user might use in an unhelpful sentence saying an app isn't very "
+"good. Preserve the commas. If necessary, add more words used for this in "
+"your language and/or shorten to common stems contained by multiple forms of "
+"the words,"
+msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:177
 #, kde-format
 msgid "Enter a rating"
 msgstr "Introduïu una valoració"
 
-#: discover/qml/ReviewDialog.qml:76
+#: discover/qml/ReviewDialog.qml:180
 #, kde-format
 msgid "Write the title"
 msgstr "Escriviu el títol"
 
-#: discover/qml/ReviewDialog.qml:79
+#: discover/qml/ReviewDialog.qml:183
 #, kde-format
 msgid "Write the review"
 msgstr "Escriviu el comentari"
 
-#: discover/qml/ReviewDialog.qml:82
+#: discover/qml/ReviewDialog.qml:186
 #, kde-format
 msgid "Keep writing…"
 msgstr "Continueu escrivint…"
 
-#: discover/qml/ReviewDialog.qml:85
+#: discover/qml/ReviewDialog.qml:189
 #, kde-format
 msgid "Too long!"
 msgstr "Massa llarg!"
 
-#: discover/qml/ReviewDialog.qml:88
+#: discover/qml/ReviewDialog.qml:192
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
@@ -1396,11 +1468,7 @@ msgid "Select None"
 msgstr "No selecciones res"
 
 #: discover/qml/UpdatesPage.qml:254
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info on the completion of updates, the action that automatically happens "
-#| "after (e.g shutdown)"
-#| msgid "On completion, automatically:"
+#, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
@@ -1420,9 +1488,7 @@ msgid "Restart"
 msgstr "Reinicia"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shutdown"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr "Para"
@@ -1467,32 +1533,32 @@ msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "S'estan recuperant les actualitzacions…"
 
-#: discover/qml/UpdatesPage.qml:524
+#: discover/qml/UpdatesPage.qml:525
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Actualitzacions"
 
-#: discover/qml/UpdatesPage.qml:533
+#: discover/qml/UpdatesPage.qml:534
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Cal reiniciar el sistema per a completar el procés d'actualització"
 
-#: discover/qml/UpdatesPage.qml:549 discover/qml/UpdatesPage.qml:556
-#: discover/qml/UpdatesPage.qml:563
+#: discover/qml/UpdatesPage.qml:550 discover/qml/UpdatesPage.qml:557
+#: discover/qml/UpdatesPage.qml:564
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Última versió"
 
-#: discover/qml/UpdatesPage.qml:570
+#: discover/qml/UpdatesPage.qml:571
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Cal comprovar si hi ha actualitzacions"
 
-#: discover/qml/UpdatesPage.qml:577
+#: discover/qml/UpdatesPage.qml:578
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
