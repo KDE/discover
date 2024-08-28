@@ -454,7 +454,7 @@ DiscoverPage {
                     }
                 }
 
-                ColumnLayout {
+                RowLayout {
                     Layout.fillWidth: true
                     spacing: Kirigami.Units.smallSpacing
                     visible: listItem.model.extended
