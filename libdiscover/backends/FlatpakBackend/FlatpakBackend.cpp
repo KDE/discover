@@ -1110,20 +1110,17 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
         acquireFetching(false);
     };
 
-    // We do not want to block the GUI for very long, so we load appstream pools via queued
-    // invocation both for the actual load and then for the post-load state changes.
-    QMetaObject::invokeMethod(
-        this,
-        [this, pool, loadDone] {
-            auto result = pool->load();
-            QMetaObject::invokeMethod(
-                this,
-                [loadDone, result] {
-                    loadDone(result);
-                },
-                Qt::QueuedConnection);
-        },
-        Qt::QueuedConnection);
+    connect(pool, &AppStream::Pool::loadFinished, this, [this, loadDone](bool success) {
+        // We do not want to block the GUI for very long, so we load appstream pools via queued
+        // invocation for the post-load state changes.
+        QMetaObject::invokeMethod(
+            this,
+            [loadDone, success] {
+                loadDone(success);
+            },
+            Qt::QueuedConnection);
+    });
+    pool->loadAsync();
 }
 
 QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote)

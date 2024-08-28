@@ -313,15 +313,6 @@ void PackageKitBackend::acquireFetching(bool f)
     Q_ASSERT(m_isFetching >= 0);
 }
 
-static bool loadAppStream(AppStream::Pool *appdata)
-{
-    bool correct = appdata->load();
-    if (!correct) {
-        qWarning() << "PackageKitBackend: Could not open the AppStream metadata pool" << appdata->lastError();
-    }
-    return correct;
-}
-
 void PackageKitBackend::reloadPackageList()
 {
     acquireFetching(true);
@@ -375,20 +366,20 @@ void PackageKitBackend::reloadPackageList()
         }
     };
 
-    // We do not want to block the GUI for very long, so we load appstream pools via queued
-    // invocation both for the actual load and then for the post-load state changes.
-    QMetaObject::invokeMethod(
-        this,
-        [this, loadDone] {
-            auto result = loadAppStream(m_appdata.get());
-            QMetaObject::invokeMethod(
-                this,
-                [loadDone, result] {
-                    loadDone(result);
-                },
-                Qt::QueuedConnection);
-        },
-        Qt::QueuedConnection);
+    connect(m_appdata.get(), &AppStream::Pool::loadFinished, this, [this, loadDone](bool success) {
+        if (!success) {
+            qWarning() << "PackageKitBackend: Could not open the AppStream metadata pool" << m_appdata->lastError();
+        }
+        // We do not want to block the GUI for very long, so we load appstream pools via queued
+        // invocation for the post-load state changes.
+        QMetaObject::invokeMethod(
+            this,
+            [loadDone, success] {
+                loadDone(success);
+            },
+            Qt::QueuedConnection);
+    });
+    m_appdata->loadAsync();
 }
 
 AppPackageKitResource *PackageKitBackend::addComponent(const AppStream::Component &component) const
