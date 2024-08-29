@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-28 00:40+0000\n"
+"POT-Creation-Date: 2024-08-29 00:40+0000\n"
 "PO-Revision-Date: 2024-08-21 11:54+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -305,20 +305,35 @@ msgid "No ratings yet"
 msgstr "Oraindik baloraziorik ez"
 
 #: discover/qml/ApplicationPage.qml:66
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Only install %1 if you fully trust its authors because it is "
+#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
+#| "redistribute this application is restricted, and its source code is "
+#| "partially or entirely closed to public inspection and improvement. This "
+#| "means third parties and users like you cannot verify its operation, "
+#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
+#| "safe to use, or it may be acting against you in various ways — such as "
+#| "harvesting your personal information, tracking your location, or "
+#| "transmitting the contents of your data to someone else. Only use it if "
+#| "you fully trust its authors. More information may be available on <link "
+#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
+#| "url='%3'>%3</link>."
 msgctxt "@info"
 msgid ""
-"Only install %1 if you fully trust its authors because it is "
-"<strong>proprietary</strong>: Your freedom to use, modify, and redistribute "
-"this application is restricted, and its source code is partially or entirely "
-"closed to public inspection and improvement. This means third parties and "
-"users like you cannot verify its operation, security, and trustworthiness."
-"<nl/><nl/>The application may be perfectly safe to use, or it may be acting "
-"against you in various ways — such as harvesting your personal information, "
-"tracking your location, or transmitting the contents of your data to someone "
-"else. Only use it if you fully trust its authors. More information may be "
-"available on <link url='%2'>the application's website</link>.<nl/><nl/>Learn "
-"more at <link url='%3'>%3</link>."
+"Only install %1 if you fully trust its authors because it is <emphasis "
+"strong='true'>proprietary</emphasis>: Your freedom to use, modify, and "
+"redistribute this application is restricted, and its source code is "
+"partially or entirely closed to public inspection and improvement. This "
+"means third parties and users like you cannot verify its operation, "
+"security, and trustworthiness.<nl/><nl/>The application may be perfectly "
+"safe to use, or it may be acting against you in various ways — such as "
+"harvesting your personal information, tracking your location, or "
+"transmitting the contents of your data to someone else. Only use it if you "
+"fully trust its authors. More information may be available on <link "
+"url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
+"url='%3'>%3</link>."
 msgstr ""
 "%1 instalatu, haren egileengan konfiantza osoa baduzu bakarrik, "
 "<strong>jabeduna</strong> baita: Aplikazio hau erabiltzeko, aldatzeko, eta "
@@ -334,19 +349,31 @@ msgstr ""
 "egon liteke. <nl/><nl/>Gehiago jakiteko hona jo, <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:71
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Only install %1 if you fully trust its authors because it is "
+#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
+#| "redistribute this application is restricted, and its source code is "
+#| "partially or entirely closed to public inspection and improvement. This "
+#| "means third parties and users like you cannot verify its operation, "
+#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
+#| "safe to use, or it may be acting against you in various ways — such as "
+#| "harvesting your personal information, tracking your location, or "
+#| "transmitting the contents of your data to someone else. Only use it if "
+#| "you fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgctxt "@info"
 msgid ""
-"Only install %1 if you fully trust its authors because it is "
-"<strong>proprietary</strong>: Your freedom to use, modify, and redistribute "
-"this application is restricted, and its source code is partially or entirely "
-"closed to public inspection and improvement. This means third parties and "
-"users like you cannot verify its operation, security, and trustworthiness."
-"<nl/><nl/>The application may be perfectly safe to use, or it may be acting "
-"against you in various ways — such as harvesting your personal information, "
-"tracking your location, or transmitting the contents of your data to someone "
-"else. Only use it if you fully trust its authors. Learn more at <link "
-"url='%2'>%2</link>."
+"Only install %1 if you fully trust its authors because it is <emphasis "
+"strong='true'>proprietary</emphasis>: Your freedom to use, modify, and "
+"redistribute this application is restricted, and its source code is "
+"partially or entirely closed to public inspection and improvement. This "
+"means third parties and users like you cannot verify its operation, "
+"security, and trustworthiness.<nl/><nl/>The application may be perfectly "
+"safe to use, or it may be acting against you in various ways — such as "
+"harvesting your personal information, tracking your location, or "
+"transmitting the contents of your data to someone else. Only use it if you "
+"fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
 "%1 instalatu, haren egileengan konfiantza osoa baduzu bakarrik, "
 "<strong>jabeduna</strong> baita: Aplikazio hau erabiltzeko, aldatzeko, eta "
@@ -1126,24 +1153,24 @@ msgctxt "Keep this string as short as humanly possible"
 msgid "No"
 msgstr "Ez"
 
-#: discover/qml/ReviewDialog.qml:20
+#: discover/qml/ReviewDialog.qml:26
 #, kde-format
 msgid "Reviewing %1"
 msgstr "%«%1»ren gaineko aipamena egiten"
 
-#: discover/qml/ReviewDialog.qml:27
+#: discover/qml/ReviewDialog.qml:33
 #, kde-format
 msgid "Submit review"
 msgstr "Bidali aipamena"
 
-#: discover/qml/ReviewDialog.qml:43
+#: discover/qml/ReviewDialog.qml:48
 #, kde-format
 msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:67
+#: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1152,7 +1179,7 @@ msgid ""
 "issue rather than a flaw in the app itself."
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:72
+#: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1161,7 +1188,7 @@ msgid ""
 "rather than a flaw in the app itself."
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:77
+#: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1169,7 +1196,7 @@ msgid ""
 "<link url='%1'>%1</link> instead."
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:80
+#: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1178,22 +1205,22 @@ msgid ""
 "here in greater detail."
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:115
+#: discover/qml/ReviewDialog.qml:120
 #, kde-format
 msgid "Rating:"
 msgstr "Balorazioa:"
 
-#: discover/qml/ReviewDialog.qml:120
+#: discover/qml/ReviewDialog.qml:125
 #, kde-format
 msgid "Name:"
 msgstr "Izena:"
 
-#: discover/qml/ReviewDialog.qml:128
+#: discover/qml/ReviewDialog.qml:133
 #, kde-format
 msgid "Title:"
 msgstr "Izenburua:"
 
-#: discover/qml/ReviewDialog.qml:143
+#: discover/qml/ReviewDialog.qml:148
 #, kde-format
 msgctxt ""
 "Words the user might use in an unhelpful sentence saying an app is not "
@@ -1203,7 +1230,7 @@ msgctxt ""
 msgid "launch,run,start"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:150
+#: discover/qml/ReviewDialog.qml:155
 #, kde-format
 msgctxt ""
 "Words the user might use in an unhelpful sentence saying an app crashes. "
@@ -1213,7 +1240,7 @@ msgctxt ""
 msgid "crash,segfault"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:157
+#: discover/qml/ReviewDialog.qml:162
 #, kde-format
 msgctxt ""
 "Word the user might use in an unhelpful sentence saying an app isn't very "
@@ -1223,32 +1250,32 @@ msgctxt ""
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:177
+#: discover/qml/ReviewDialog.qml:182
 #, kde-format
 msgid "Enter a rating"
 msgstr "Sartu balorazio bat"
 
-#: discover/qml/ReviewDialog.qml:180
+#: discover/qml/ReviewDialog.qml:185
 #, kde-format
 msgid "Write the title"
 msgstr "Idatzi izenburua"
 
-#: discover/qml/ReviewDialog.qml:183
+#: discover/qml/ReviewDialog.qml:188
 #, kde-format
 msgid "Write the review"
 msgstr "Idatzi aipamena"
 
-#: discover/qml/ReviewDialog.qml:186
+#: discover/qml/ReviewDialog.qml:191
 #, kde-format
 msgid "Keep writing…"
 msgstr "Jarraitu idazten..."
 
-#: discover/qml/ReviewDialog.qml:189
+#: discover/qml/ReviewDialog.qml:194
 #, kde-format
 msgid "Too long!"
 msgstr "Luzeegia!"
 
-#: discover/qml/ReviewDialog.qml:192
+#: discover/qml/ReviewDialog.qml:197
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"

@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# giovanni <g.sora@tiscali.it>, 2017, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2017, 2020, 2021, 2022, 2023, 2024 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2023-12-20 08:39+0100\n"
+"PO-Revision-Date: 2024-08-28 15:46+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: notifier/DiscoverNotifier.cpp:176
 #, kde-format
@@ -63,17 +63,16 @@ msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Le systema necessita esser restartate ut actualisatione ha effecto."
 
 #: notifier/DiscoverNotifier.cpp:329
-#, fuzzy, kde-format
-#| msgid "Computer needs to restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
-msgstr "Computator necessita restartar"
+msgstr "Actualisa e Restarta"
 
 #: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
-msgstr ""
+msgstr "Actualiosa e arresta (shutdown)"
 
 #: notifier/DiscoverNotifier.cpp:374
 #, kde-format
@@ -158,12 +157,12 @@ msgstr "Refresca…"
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Install Updates and Restart…"
-msgstr ""
+msgstr "Installa actualisationes e Restarta ..."
 
 #: notifier/NotifierItem.cpp:53
 #, kde-format
 msgid "Install Updates and Shut Down…"
-msgstr ""
+msgstr "Installa actualisationes e Arresta (shutdown) ..."
 
 #: notifier/NotifierItem.cpp:58
 #, kde-format
