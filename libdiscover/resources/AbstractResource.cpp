@@ -51,12 +51,12 @@ QUrl AbstractResource::contributeURL()
     return {};
 }
 
-void AbstractResource::addMetadata(const QString &key, const QJsonValue &value)
+void AbstractResource::addMetadata(const QLatin1StringView &key, const QJsonValue &value)
 {
     m_metadata.insert(key, value);
 }
 
-QJsonValue AbstractResource::getMetadata(const QString &key)
+QJsonValue AbstractResource::getMetadata(const QLatin1StringView &key)
 {
     return m_metadata.value(key);
 }

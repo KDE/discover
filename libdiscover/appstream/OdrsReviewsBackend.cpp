@@ -60,12 +60,12 @@ OdrsReviewsBackend::~OdrsReviewsBackend()
 void OdrsReviewsBackend::fetchRatings()
 {
     bool fetchRatings = false;
-    const QUrl ratingsUrl(QStringLiteral(APIURL "/ratings"));
-    const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings/ratings"));
+    const QUrl ratingsUrl(QLatin1StringView(APIURL "/ratings"));
+    const QUrl fileUrl = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1StringView("/ratings/ratings"));
     const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
 
     // Create $HOME/.cache/discover/ratings folder
-    cacheDir.mkpath(QStringLiteral("ratings"));
+    cacheDir.mkpath(QLatin1StringView("ratings"));
 
     if (QFileInfo::exists(fileUrl.toLocalFile())) {
         QFileInfo file(fileUrl.toLocalFile());
@@ -113,10 +113,10 @@ static QString osName()
 
 static QString userHash()
 {
-    QString machineId;
-    QFile file(QStringLiteral("/etc/machine-id"));
+    QByteArray machineId;
+    QFile file(QLatin1StringView("/etc/machine-id"));
     if (file.open(QIODevice::ReadOnly)) {
-        machineId = QString::fromUtf8(file.readAll());
+        machineId = file.readAll();
         file.close();
     }
 
@@ -124,8 +124,8 @@ static QString userHash()
         return QString();
     }
 
-    QString salted = QStringLiteral("gnome-software[%1:%2]").arg(KUser().loginName(), machineId);
-    return QString::fromUtf8(QCryptographicHash::hash(salted.toUtf8(), QCryptographicHash::Sha1).toHex());
+    const QByteArray salted = QByteArray("gnome-software[") + KUser().loginName().toUtf8() + ':' + machineId + ']';
+    return QString::fromUtf8(QCryptographicHash::hash(salted, QCryptographicHash::Sha1).toHex());
 }
 
 void OdrsReviewsBackend::fetchReviews(AbstractResource *resource, int page)
@@ -136,22 +136,22 @@ void OdrsReviewsBackend::fetchReviews(AbstractResource *resource, int page)
     Q_UNUSED(page)
     QString version = resource->isInstalled() ? resource->installedVersion() : resource->availableVersion();
     if (version.isEmpty()) {
-        version = QStringLiteral("unknown");
+        version = QLatin1StringView("unknown");
     }
     setFetching(true);
 
     const QJsonDocument document(QJsonObject{
-        {QStringLiteral("app_id"), resource->appstreamId()},
-        {QStringLiteral("distro"), osName()},
-        {QStringLiteral("user_hash"), userHash()},
-        {QStringLiteral("version"), version},
-        {QStringLiteral("locale"), QLocale::system().name()},
-        {QStringLiteral("limit"), -1},
+        {QLatin1StringView("app_id"), resource->appstreamId()},
+        {QLatin1StringView("distro"), osName()},
+        {QLatin1StringView("user_hash"), userHash()},
+        {QLatin1StringView("version"), version},
+        {QLatin1StringView("locale"), QLocale::system().name()},
+        {QLatin1StringView("limit"), -1},
     });
 
     const auto json = document.toJson(QJsonDocument::Compact);
     QNetworkRequest request(QUrl(QStringLiteral(APIURL "/fetch")));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, QLatin1StringView("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, json.size());
     // Store reference to the resource for which we request reviews
     request.setOriginatingObject(resource);
@@ -197,15 +197,15 @@ Rating OdrsReviewsBackend::ratingForApplication(AbstractResource *resource) cons
 void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
 {
     const QJsonDocument document(QJsonObject{
-        {QStringLiteral("app_id"), review->applicationName()},
-        {QStringLiteral("user_skey"), review->getMetadata(QStringLiteral("ODRS::user_skey")).toString()},
-        {QStringLiteral("user_hash"), userHash()},
-        {QStringLiteral("distro"), osName()},
-        {QStringLiteral("review_id"), QJsonValue(double(review->id()))}, // if we really need uint64 we should get it in QJsonValue
+        {QLatin1StringView("app_id"), review->applicationName()},
+        {QLatin1StringView("user_skey"), review->getMetadata(QLatin1StringView("ODRS::user_skey")).toString()},
+        {QLatin1StringView("user_hash"), userHash()},
+        {QLatin1StringView("distro"), osName()},
+        {QLatin1StringView("review_id"), QJsonValue(double(review->id()))}, // if we really need uint64 we should get it in QJsonValue
     });
 
     QNetworkRequest request(QUrl(QStringLiteral(APIURL) + (useful ? QLatin1String("/upvote") : QLatin1String("/downvote"))));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, QLatin1StringView("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
 
     auto reply = nam()->post(request, document.toJson());
@@ -217,7 +217,7 @@ void OdrsReviewsBackend::usefulnessSubmitted()
     const auto reply = qobject_cast<QNetworkReply *>(sender());
     const auto networkError = reply->error();
     if (networkError == QNetworkReply::NoError) {
-        qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Usefulness submitted";
+        qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Usefulness submitted successfully";
     } else {
         qCWarning(LIBDISCOVER_LOG).noquote() << "OdrsReviewsBackend: Failed to submit usefulness:" << reply->errorString();
         Q_EMIT error(i18n("Error while submitting usefulness: %1", reply->errorString()));
@@ -238,29 +238,29 @@ void OdrsReviewsBackend::sendReview(AbstractResource *resource,
 {
     Q_ASSERT(resource);
     QJsonObject map = {
-        {QStringLiteral("app_id"), resource->appstreamId()},
-        {QStringLiteral("user_skey"), resource->getMetadata(QStringLiteral("ODRS::user_skey")).toString()},
-        {QStringLiteral("user_hash"), userHash()},
-        {QStringLiteral("version"), resource->isInstalled() ? resource->installedVersion() : resource->availableVersion()},
-        {QStringLiteral("locale"), QLocale::system().name()},
-        {QStringLiteral("distro"), osName()},
-        {QStringLiteral("user_display"), QJsonValue::fromVariant(userName)},
-        {QStringLiteral("summary"), summary},
-        {QStringLiteral("description"), reviewText},
-        {QStringLiteral("rating"), rating.toInt() * 10},
+        {QLatin1StringView("app_id"), resource->appstreamId()},
+        {QLatin1StringView("user_skey"), resource->getMetadata(QLatin1StringView("ODRS::user_skey")).toString()},
+        {QLatin1StringView("user_hash"), userHash()},
+        {QLatin1StringView("version"), resource->isInstalled() ? resource->installedVersion() : resource->availableVersion()},
+        {QLatin1StringView("locale"), QLocale::system().name()},
+        {QLatin1StringView("distro"), osName()},
+        {QLatin1StringView("user_display"), QJsonValue::fromVariant(userName)},
+        {QLatin1StringView("summary"), summary},
+        {QLatin1StringView("description"), reviewText},
+        {QLatin1StringView("rating"), rating.toInt() * 10},
     };
 
     const QJsonDocument document(map);
 
     const auto accessManager = nam();
     QNetworkRequest request(QUrl(QStringLiteral(APIURL "/submit")));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json; charset=utf-8"));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, QLatin1StringView("application/json; charset=utf-8"));
     request.setHeader(QNetworkRequest::ContentLengthHeader, document.toJson().size());
 
     // Store what we need so we can immediately show our review once it is submitted
     // Use review_id 0 for now as odrs starts numbering from 1 and once reviews are re-downloaded we get correct id
-    map.insert(QStringLiteral("review_id"), 0);
-    resource->addMetadata(QStringLiteral("ODRS::review_map"), map);
+    map.insert(QLatin1StringView("review_id"), 0);
+    resource->addMetadata(QLatin1StringView("ODRS::review_map"), map);
     request.setOriginatingObject(resource);
 
     accessManager->post(request, document.toJson());
@@ -275,7 +275,7 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
         Q_ASSERT(resource);
         qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Review submitted for" << resource;
         if (resource) {
-            const QJsonDocument document({resource->getMetadata(QStringLiteral("ODRS::review_map")).toObject()});
+            const QJsonDocument document({resource->getMetadata(QLatin1StringView("ODRS::review_map")).toObject()});
             parseReviews(document, resource);
         } else {
             qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Failed to submit review: missing object";
@@ -330,7 +330,7 @@ void OdrsReviewsBackend::parseRatings()
         Q_EMIT ratingsReady();
     });
     fw->setFuture(QtConcurrent::run([] {
-        QFile ratingsDocument(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QStringLiteral("/ratings/ratings"));
+        QFile ratingsDocument(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1StringView("/ratings/ratings"));
         if (!ratingsDocument.open(QIODevice::ReadOnly)) {
             qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Could not open file" << ratingsDocument.fileName();
             return QJsonDocument::fromJson({});
@@ -360,8 +360,8 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
             const QJsonObject review = it.toObject();
             if (!review.isEmpty()) {
                 // Same ranking algorythm Gnome Software uses
-                const int usefulFavorable = review.value(QStringLiteral("karma_up")).toInt();
-                const int usefulNegative = review.value(QStringLiteral("karma_down")).toInt();
+                const int usefulFavorable = review.value(QLatin1StringView("karma_up")).toInt();
+                const int usefulNegative = review.value(QLatin1StringView("karma_down")).toInt();
                 const int usefulTotal = usefulFavorable + usefulNegative;
 
                 qreal usefulWilson = 0.0;
@@ -376,14 +376,14 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                 }
 
                 QDateTime dateTime;
-                dateTime.setSecsSinceEpoch(review.value(QStringLiteral("date_created")).toInt());
+                dateTime.setSecsSinceEpoch(review.value(QLatin1StringView("date_created")).toInt());
 
                 // If there is no score or the score is the same, base on the age
                 const auto currentDateTime = QDateTime::currentDateTime();
                 const auto totalDays = static_cast<qreal>(dateTime.daysTo(currentDateTime));
 
                 // use also the longest common subsequence of the version string to compute relevance
-                const auto reviewVersion = review.value(QStringLiteral("version")).toString();
+                const auto reviewVersion = review.value(QLatin1StringView("version")).toString();
                 const auto availableVersion = resource->availableVersion();
                 qreal versionScore = 0;
                 const int minLength = std::min(reviewVersion.length(), availableVersion.length());
@@ -401,16 +401,17 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                 // Very random heuristic which weights usefulness with age and version similarity. Don't penalize usefulness more than 6 months
                 usefulWilson = versionScore + 1.0 / std::max(1.0, totalDays) + usefulWilson / std::clamp(totalDays, 1.0, 93.0);
 
-                ReviewPtr r(new Review(review.value(QStringLiteral("app_id")).toString(),
+                const bool shouldShow = usefulFavorable >= usefulNegative * 2 && review.value(QLatin1StringView("reported")).toInt() < 4;
+                ReviewPtr r(new Review(review.value(QLatin1StringView("app_id")).toString(),
                                        resource->packageName(),
-                                       review.value(QStringLiteral("locale")).toString(),
-                                       review.value(QStringLiteral("summary")).toString(),
-                                       review.value(QStringLiteral("description")).toString(),
-                                       review.value(QStringLiteral("user_display")).toString(),
+                                       review.value(QLatin1StringView("locale")).toString(),
+                                       review.value(QLatin1StringView("summary")).toString(),
+                                       review.value(QLatin1StringView("description")).toString(),
+                                       review.value(QLatin1StringView("user_display")).toString(),
                                        dateTime,
-                                       usefulFavorable >= usefulNegative * 2 || review.value(QStringLiteral("reported")).toInt() > 4,
-                                       review.value(QStringLiteral("review_id")).toInt(),
-                                       review.value(QStringLiteral("rating")).toInt() / 10,
+                                       shouldShow,
+                                       review.value(QLatin1StringView("review_id")).toInt(),
+                                       review.value(QLatin1StringView("rating")).toInt() / 10,
                                        usefulTotal,
                                        usefulFavorable,
                                        usefulWilson,
@@ -419,11 +420,11 @@ void OdrsReviewsBackend::parseReviews(const QJsonDocument &document, AbstractRes
                 if (!r->summary().isEmpty() && !r->reviewText().isEmpty()) {
                     reviewsList.append(r);
                     // Needed for submitting usefulness
-                    r->addMetadata(QStringLiteral("ODRS::user_skey"), review.value(QStringLiteral("user_skey")).toString());
+                    r->addMetadata(QLatin1StringView("ODRS::user_skey"), review.value(QLatin1StringView("user_skey")).toString());
                 }
 
                 // We should get at least user_skey needed for posting reviews
-                resource->addMetadata(QStringLiteral("ODRS::user_skey"), review.value(QStringLiteral("user_skey")).toString());
+                resource->addMetadata(QLatin1StringView("ODRS::user_skey"), review.value(QLatin1StringView("user_skey")).toString());
             }
         }
 
@@ -449,7 +450,7 @@ void OdrsReviewsBackend::emitRatingFetched(AbstractResourcesBackend *backend, co
 QNetworkAccessManager *OdrsReviewsBackend::nam()
 {
     if (!m_delayedNam) {
-        m_delayedNam = new CachedNetworkAccessManager(QStringLiteral("odrs"), this);
+        m_delayedNam = new CachedNetworkAccessManager(QLatin1StringView("odrs"), this);
     }
     return m_delayedNam;
 }

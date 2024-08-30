@@ -112,7 +112,7 @@ static void setWhenAvailable(const QDBusPendingReply<T> &pending, W func, QObjec
 
 QString PackageKitBackend::locateService(const QString &filename)
 {
-    return QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("applications/") + filename);
+    return QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1StringView("applications/") + filename);
 }
 
 Delay::Delay()
@@ -1014,7 +1014,7 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
 void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
 {
     const QString upgradeVersion = release.version();
-    const QString newDistroVersionText = AppStreamIntegration::global()->osRelease()->name() + QStringLiteral(" ") + upgradeVersion;
+    const QString newDistroVersionText = AppStreamIntegration::global()->osRelease()->name() + QLatin1Char(' ') + upgradeVersion;
 
     QString info;
     // Message to display when:

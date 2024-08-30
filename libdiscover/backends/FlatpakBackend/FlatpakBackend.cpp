@@ -750,16 +750,16 @@ QString composeRef(bool isRuntime, const QString &name, const QString &branch)
 
 AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancellable *cancellable)
 {
-    const QString name = settings.value(QStringLiteral("Flatpak Ref/Name")).toString();
-    const QString branch = settings.value(QStringLiteral("Flatpak Ref/Branch")).toString();
-    const QString remoteName = settings.value(QStringLiteral("Flatpak Ref/SuggestRemoteName")).toString();
-    const bool isRuntime = settings.value(QStringLiteral("Flatpak Ref/IsRuntime")).toBool();
+    const QString name = settings.value(QLatin1StringView("Flatpak Ref/Name")).toString();
+    const QString branch = settings.value(QLatin1StringView("Flatpak Ref/Branch")).toString();
+    const QString remoteName = settings.value(QLatin1StringView("Flatpak Ref/SuggestRemoteName")).toString();
+    const bool isRuntime = settings.value(QLatin1StringView("Flatpak Ref/IsRuntime")).toBool();
 
     AppStream::Component asComponent;
-    asComponent.addUrl(AppStream::Component::UrlKindHomepage, settings.value(QStringLiteral("Flatpak Ref/Homepage")).toString());
-    asComponent.setDescription(settings.value(QStringLiteral("Flatpak Ref/Description")).toString());
-    asComponent.setName(settings.value(QStringLiteral("Flatpak Ref/Title")).toString());
-    asComponent.setSummary(settings.value(QStringLiteral("Flatpak Ref/Comment")).toString());
+    asComponent.addUrl(AppStream::Component::UrlKindHomepage, settings.value(QLatin1StringView("Flatpak Ref/Homepage")).toString());
+    asComponent.setDescription(settings.value(QLatin1StringView("Flatpak Ref/Description")).toString());
+    asComponent.setName(settings.value(QLatin1StringView("Flatpak Ref/Title")).toString());
+    asComponent.setSummary(settings.value(QLatin1StringView("Flatpak Ref/Comment")).toString());
     asComponent.setId(name);
 
     AppStream::Bundle b;
@@ -785,8 +785,8 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
     g_autoptr(FlatpakRemote) tempRemote = flatpak_remote_new(remoteName.toUtf8().constData());
     populateRemote(tempRemote,
                    remoteName,
-                   settings.value(QStringLiteral("Flatpak Ref/Url")).toString(),
-                   settings.value(QStringLiteral("Flatpak Ref/GPGKey")).toString());
+                   settings.value(QLatin1StringView("Flatpak Ref/Url")).toString(),
+                   settings.value(QLatin1StringView("Flatpak Ref/GPGKey")).toString());
     if (!flatpak_installation_modify_remote(tempInstallation, tempRemote, cancellable, &localError)) {
         qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "error adding temporary remote" << localError->message;
         return asComponent;
@@ -838,11 +838,11 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
 {
     Q_ASSERT(url.isLocalFile());
     QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
-    const QString refurl = settings.value(QStringLiteral("Flatpak Ref/Url")).toString();
-    const QString name = settings.value(QStringLiteral("Flatpak Ref/Name")).toString();
-    const QString remoteName = settings.value(QStringLiteral("Flatpak Ref/SuggestRemoteName")).toString();
-    const QString branch = settings.value(QStringLiteral("Flatpak Ref/Branch")).toString();
-    const bool isRuntime = settings.value(QStringLiteral("Flatpak Ref/IsRuntime")).toBool();
+    const QString refurl = settings.value(QLatin1StringView("Flatpak Ref/Url")).toString();
+    const QString name = settings.value(QLatin1StringView("Flatpak Ref/Name")).toString();
+    const QString remoteName = settings.value(QLatin1StringView("Flatpak Ref/SuggestRemoteName")).toString();
+    const QString branch = settings.value(QLatin1StringView("Flatpak Ref/Branch")).toString();
+    const bool isRuntime = settings.value(QLatin1StringView("Flatpak Ref/IsRuntime")).toBool();
     g_autoptr(GError) error = nullptr;
 
     // If we already added the remote, just go with it
@@ -877,7 +877,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     }
 
     AppStream::Component asComponent = fetchComponentFromRemote(settings, m_cancellable);
-    const QString iconUrl = settings.value(QStringLiteral("Flatpak Ref/Icon")).toString();
+    const QString iconUrl = settings.value(QLatin1StringView("Flatpak Ref/Icon")).toString();
     if (!iconUrl.isEmpty()) {
         AppStream::Icon icon;
         icon.setKind(AppStream::Icon::KindRemote);
@@ -896,7 +896,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     resource->setBranch(branch);
     resource->setType(isRuntime ? FlatpakResource::Runtime : FlatpakResource::DesktopApp);
 
-    QUrl runtimeUrl = QUrl(settings.value(QStringLiteral("Flatpak Ref/RuntimeRepo")).toString());
+    QUrl runtimeUrl = QUrl(settings.value(QLatin1StringView("Flatpak Ref/RuntimeRepo")).toString());
     auto refSource = QSharedPointer<FlatpakSource>::create(this, preferredInstallation());
     resource->setTemporarySource(refSource);
     m_flatpakSources += refSource;
@@ -950,9 +950,9 @@ void FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url, ResultsStream *st
     Q_ASSERT(url.isLocalFile());
     QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
 
-    const QString gpgKey = settings.value(QStringLiteral("Flatpak Repo/GPGKey")).toString();
-    const QString title = settings.value(QStringLiteral("Flatpak Repo/Title")).toString();
-    const QString repoUrl = settings.value(QStringLiteral("Flatpak Repo/Url")).toString();
+    const QString gpgKey = settings.value(QLatin1StringView("Flatpak Repo/GPGKey")).toString();
+    const QString title = settings.value(QLatin1StringView("Flatpak Repo/Title")).toString();
+    const QString repoUrl = settings.value(QLatin1StringView("Flatpak Repo/Url")).toString();
 
     if (gpgKey.isEmpty() || title.isEmpty() || repoUrl.isEmpty()) {
         return;
@@ -963,13 +963,13 @@ void FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url, ResultsStream *st
     }
 
     AppStream::Component asComponent;
-    asComponent.addUrl(AppStream::Component::UrlKindHomepage, settings.value(QStringLiteral("Flatpak Repo/Homepage")).toString());
-    asComponent.setSummary(settings.value(QStringLiteral("Flatpak Repo/Comment")).toString());
-    asComponent.setDescription(settings.value(QStringLiteral("Flatpak Repo/Description")).toString());
+    asComponent.addUrl(AppStream::Component::UrlKindHomepage, settings.value(QLatin1StringView("Flatpak Repo/Homepage")).toString());
+    asComponent.setSummary(settings.value(QLatin1StringView("Flatpak Repo/Comment")).toString());
+    asComponent.setDescription(settings.value(QLatin1StringView("Flatpak Repo/Description")).toString());
     asComponent.setName(title);
-    asComponent.setId(settings.value(QStringLiteral("Flatpak Repo/Title")).toString());
+    asComponent.setId(settings.value(QLatin1StringView("Flatpak Repo/Title")).toString());
 
-    const QString iconUrl = settings.value(QStringLiteral("Flatpak Repo/Icon")).toString();
+    const QString iconUrl = settings.value(QLatin1StringView("Flatpak Repo/Icon")).toString();
     if (!iconUrl.isEmpty()) {
         AppStream::Icon icon;
         icon.setKind(AppStream::Icon::KindRemote);
@@ -979,10 +979,10 @@ void FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url, ResultsStream *st
 
     auto resource = new FlatpakResource(asComponent, preferredInstallation(), this);
     // Use metadata only for stuff which are not common for all resources
-    resource->addMetadata(QStringLiteral("gpg-key"), gpgKey);
-    resource->addMetadata(QStringLiteral("repo-url"), repoUrl);
-    resource->setBranch(settings.value(QStringLiteral("Flatpak Repo/DefaultBranch")).toString());
-    resource->setFlatpakName(url.fileName().remove(QStringLiteral(".flatpakrepo")));
+    resource->addMetadata(QLatin1StringView("gpg-key"), gpgKey);
+    resource->addMetadata(QLatin1StringView("repo-url"), repoUrl);
+    resource->setBranch(settings.value(QLatin1StringView("Flatpak Repo/DefaultBranch")).toString());
+    resource->setFlatpakName(url.fileName().remove(QLatin1StringView(".flatpakrepo")));
     resource->setType(FlatpakResource::Source);
 
     g_autoptr(FlatpakRemote) repo =
@@ -1236,7 +1236,7 @@ bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource)
         return true;
     }
 
-    const QString path = resource->installPath() + QStringLiteral("/metadata");
+    const QString path = resource->installPath() + QLatin1StringView("/metadata");
 
     if (QFile::exists(path)) {
         return updateAppMetadata(resource, path);
@@ -1958,8 +1958,8 @@ FlatpakRemote *FlatpakBackend::installSource(FlatpakResource *resource)
     auto remote = flatpak_remote_new(resource->flatpakName().toUtf8().constData());
     populateRemote(remote,
                    resource->comment(),
-                   resource->getMetadata(QStringLiteral("repo-url")).toString(),
-                   resource->getMetadata(QStringLiteral("gpg-key")).toString());
+                   resource->getMetadata(QLatin1StringView("repo-url")).toString(),
+                   resource->getMetadata(QLatin1StringView("gpg-key")).toString());
     if (!resource->branch().isEmpty()) {
         flatpak_remote_set_default_branch(remote, resource->branch().toUtf8().constData());
     }

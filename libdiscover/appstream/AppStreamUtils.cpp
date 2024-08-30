@@ -119,9 +119,9 @@ QJsonObject AppStreamUtils::license(const QString &license)
     }
 
     return {
-        {QStringLiteral("name"), name},
-        {QStringLiteral("url"), {url}},
-        {QStringLiteral("licenseType"), licenseType},
+        {QLatin1StringView("name"), name},
+        {QLatin1StringView("url"), {url}},
+        {QLatin1StringView("licenseType"), licenseType},
     };
 }
 

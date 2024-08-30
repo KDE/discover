@@ -204,8 +204,8 @@ public:
 
     virtual QString appstreamId() const;
 
-    void addMetadata(const QString &key, const QJsonValue &value);
-    QJsonValue getMetadata(const QString &key);
+    void addMetadata(const QLatin1StringView &key, const QJsonValue &value);
+    QJsonValue getMetadata(const QLatin1StringView &key);
 
     bool canUpgrade();
     bool isInstalled();
