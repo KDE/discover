@@ -709,7 +709,7 @@ DiscoverPage {
                 Layout.fillWidth: true
                 application: appInfo.application
                 reviewsModel: reviewsModel
-                sortModel: reviewsSheet.sortModel
+                model: reviewsSheet.model
                 visibleReviews: appInfo.visibleReviews
                 compact: appInfo.compact
             }

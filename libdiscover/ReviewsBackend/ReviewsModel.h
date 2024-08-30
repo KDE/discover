@@ -64,6 +64,7 @@ public:
         Depth,
         PackageVersion,
     };
+    Q_ENUM(Roles)
     enum UserChoice {
         None,
         Yes,

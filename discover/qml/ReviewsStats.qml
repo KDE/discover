@@ -19,7 +19,7 @@ BasicAbstractCard {
 
     required property Discover.AbstractResource application
     required property Discover.ReviewsModel reviewsModel
-    required property KItemModels.KSortFilterProxyModel sortModel
+    required property Discover.ReviewsModel model
     required property int visibleReviews
     required property bool compact
 
@@ -96,6 +96,7 @@ BasicAbstractCard {
             Layout.fillWidth: true
             Layout.preferredWidth: Kirigami.Units.gridUnit * 18
             Layout.preferredHeight: Kirigami.Units.gridUnit * 8
+            visible: count > 0
             clip: true
             orientation: ListView.Horizontal
             currentIndex: 0
@@ -112,8 +113,20 @@ BasicAbstractCard {
             highlightMoveDuration: Kirigami.Units.longDuration
             highlightResizeDuration: Kirigami.Units.longDuration
 
+            // Only show reviews here that someone cosidered useful to show
             model: DiscoverApp.PaginateModel {
-                sourceModel: sortModel
+                sourceModel: KItemModels.KSortFilterProxyModel {
+                    id: sortModel
+                    sourceModel: root.model
+                    filterRoleName: "usefulnessFavorable"
+                    filterRowCallback: (sourceRow, sourceParent) => {
+                        const index = sourceModel.index(sourceRow, 0, sourceParent);
+                        const shouldShow = sourceModel.data(index, Discover.ReviewsModel.ShouldShow)
+                        return shouldShow === true && sourceModel.data(index, Discover.ReviewsModel.UsefulnessFavorable) > 0;
+                    }
+                    // need to do it afterwads as direct binding won't work, because at startup sortRoleName will be empty
+                    onSortRoleNameChanged: sortOrder = Qt.DescendingOrder
+                }
                 pageSize: visibleReviews
             }
             delegate: Item {
