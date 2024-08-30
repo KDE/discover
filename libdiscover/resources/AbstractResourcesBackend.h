@@ -246,7 +246,7 @@ public:
      * Currently only used in the PackageKit backend.
      * @param action the action that will occur
      */
-    virtual void aboutTo(AboutToAction action) {};
+    virtual void aboutTo(AboutToAction action) { Q_UNUSED(action); };
 
     /**
      * @returns if the backend needs a reboot even when the PowerOff action is chosen,
