@@ -33,7 +33,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-29 00:40+0000\n"
+"POT-Creation-Date: 2024-08-30 00:40+0000\n"
 "PO-Revision-Date: 2024-07-17 12:09+0400\n"
 "Last-Translator: Khayyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -591,23 +591,23 @@ msgstr "%1 (istifadəçi)"
 msgid "Local bundle"
 msgstr "Yerli paketlər"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1856
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:832
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1853
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:823
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Pozulmuş appstream ünvanı '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1961
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1958
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "\"%1\" mənbəsi əlavə edilə bilmədi: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2082
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2079
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Flatpak mənbələri yoxdur."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2086
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2083
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" yüklənə bilmədi"
@@ -1237,12 +1237,12 @@ msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Problemi burada bildirin: %1"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:334
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:325
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Appstream-in komputerinizdə düzgün quraşdırdığını yoxlayın"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:370
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:361
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1252,12 +1252,12 @@ msgstr ""
 "%1 tarixində sizin əməliyyat sisteminin dəstəklənməsi dayandırılıb. "
 "Dəstəklənən versiyaya yeniləməyi gözdən keçirin."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:939
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:930
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "\"%1\" silinə bilmir"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1025
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1270,20 +1270,20 @@ msgstr ""
 "Bu ən yeni versiyaya yeniləmək üçün, öncə bütün mövcud yenilənmələri tətbiq "
 "edin və sonra sistemi yenidən başladın."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1034
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1025
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Yenilənməni indi başladın"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1057
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1048
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 əlçatan deyil."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1183
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1174
 #, kde-format
 msgctxt "@info"
 msgid ""

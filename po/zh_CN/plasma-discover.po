@@ -293,21 +293,7 @@ msgid "No ratings yet"
 msgstr "尚无评分"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. More information may be available on <link "
-#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
-#| "url='%3'>%3</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -323,28 +309,9 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"请在安装 %1 之前确保您可以完全信任它的作者，因为它是一款 <strong>专有软件</"
-"strong>：用户在使用、修改、分发这款应用程序时的自由将受到限制，而且它的部分或"
-"者全部源代码不开放给公众进行监督和改进。这意味着第三方机构和用户无法验证其工"
-"作方式、安全性和可靠性。<nl/><nl/>这款应用程序既可能是安全的，也可能暗藏有侵"
-"害您的权益的行为——例如收集您的个人信息、跟踪您的位置、将您的数据传输给其他人"
-"等。请在使用这款程序之前确保可以完全信任其作者。<link url='%2'>该应用程序的网"
-"站</link>可能包含更多信息。<nl/><nl/>详情请见 <link url='%3'>%3</link>。"
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. Learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -358,13 +325,6 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"请在安装 %1 之前确保您可以完全信任它的作者，因为它是一款 <strong>专有软件</"
-"strong>：用户在使用、修改、分发这款应用程序时的自由将受到限制，而且它的部分或"
-"者全部源代码不开放给公众进行监督和改进。这意味着第三方机构和用户无法验证其工"
-"作方式、安全性和可靠性。<nl/><nl/>这款应用程序既可能是安全的，也可能暗藏有侵"
-"害您的权益的行为——例如收集您的个人信息、跟踪您的位置、将您的数据传输给其他人"
-"等。请在使用这款程序之前确保可以完全信任其作者。详情请见 <link url='%2'>%2</"
-"link>。"
 
 #: discover/qml/ApplicationPage.qml:78
 #, kde-kuit-format
@@ -1124,6 +1084,8 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"如果您喜欢 %1，请告诉大家您喜欢它的哪些方面，例如功能、易用性和外观等。如果该"
+"应用不能满足您的需求，请解释一下原因。"
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1133,6 +1095,8 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"如果 %1 不能启动，请考虑将情况通过 <link url='%3'>%3</link> 报告给它在 %2 的"
+"打包者，因为这可能是一个可以简单修复的打包问题而不是程序本身的缺陷。"
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1142,6 +1106,8 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"如果 %1 不能启动，请考虑将情况通过 <link url='%2'>%2</link> 报告给它的开发"
+"者，因为这可能是一个可以简单修复的打包问题而不是程序本身的缺陷。"
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1150,6 +1116,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"如果应用经常崩溃，请考虑通过 <link url='%1'>%1</link> 将情况报告给它的开发"
+"者。"
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1159,6 +1127,8 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"如果您在使用该应用是遇到问题，请考虑通过 <link url='%1'>%1</link> 将情况报告"
+"给它的开发者，或者在此详细描述相关情况。"
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1183,7 +1153,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "启动,运行,开始"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1193,7 +1163,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "崩溃,片段故障"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1203,7 +1173,7 @@ msgctxt ""
 "your language and/or shorten to common stems contained by multiple forms of "
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
-msgstr ""
+msgstr "不能工作,难用,垃圾,恶心,讨厌,愚蠢"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
