@@ -367,6 +367,7 @@ void PackageKitBackend::reloadPackageList()
     };
 
     connect(m_appdata.get(), &AppStream::Pool::loadFinished, this, [this, loadDone](bool success) {
+        m_appdataLoaded = true;
         if (!success) {
             qWarning() << "PackageKitBackend: Could not open the AppStream metadata pool" << m_appdata->lastError();
         }
@@ -996,9 +997,16 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
     }
 
     if (!m_updater->isDistroUpgrade() && !PackageKit::Daemon::global()->offline()->upgradeTriggered()) {
-        auto nextRelease = AppStreamIntegration::global()->getDistroUpgrade(m_appdata.get());
-        if (nextRelease) {
-            foundNewMajorVersion(*nextRelease);
+        const auto loadDone = [this] {
+            auto nextRelease = AppStreamIntegration::global()->getDistroUpgrade(m_appdata.get());
+            if (nextRelease) {
+                foundNewMajorVersion(*nextRelease);
+            }
+        };
+        if (m_appdataLoaded) {
+            loadDone();
+        } else {
+            connect(m_appdata.get(), &AppStream::Pool::loadFinished, this, loadDone);
         }
     }
 }

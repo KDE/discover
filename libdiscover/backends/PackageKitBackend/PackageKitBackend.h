@@ -176,6 +176,7 @@ private:
     void foundNewMajorVersion(const AppStream::Release &release);
 
     QScopedPointer<AppStream::Pool> m_appdata;
+    bool m_appdataLoaded = false;
     PackageKitUpdater *m_updater;
     QPointer<PackageKit::Transaction> m_refresher;
     int m_isFetching;
