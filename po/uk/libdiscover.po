@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-30 00:40+0000\n"
+"POT-Creation-Date: 2024-08-31 00:40+0000\n"
 "PO-Revision-Date: 2024-08-21 16:24+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -567,23 +567,23 @@ msgstr "%1 (користувач)"
 msgid "Local bundle"
 msgstr "Локальний пакунок"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1853
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:823
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Помилкове форматування адреси appstream «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1958
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1969
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Не вдалося додати джерело «%1»: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2079
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2091
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Немає джерел Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2083
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2095
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Не вдалося завантажити дані джерела «%1»"
@@ -958,18 +958,12 @@ msgstr "%1 (користувач)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Введіть адресу сховища Flatpak (*.flatpakrepo):"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:33
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:34
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Додаємо віддалене сховище «%1» до %2 з %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:292
-#, kde-format
-msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
-"Не вдалося знайти «%1» у «%2»; будь ласка, переконайтеся у його доступності."
-
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:386
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:402
 #, kde-format
 msgctxt "fallback error message"
 msgid ""
@@ -979,13 +973,13 @@ msgstr ""
 "Сталася внутрішня помилка. Будь ласка, повідомте про ваду за адресою https://"
 "bugs.kde.org/enter_bug.cgi?product=Discover"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:433
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "Є заміна"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:416
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:435
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -997,13 +991,13 @@ msgstr ""
 "<resource>%1</resource> більше не оновлюватиметься.<nl/><nl/>Замінити "
 "підтримуваною версією, яка надається <resource>%2</resource>?"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:422
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:441
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "Автоматичне вилучення"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:443
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
@@ -2761,6 +2755,11 @@ msgstr "Програмне забезпечення системи"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Додатки"
+
+#~ msgid "Could not find '%1' in '%2'; please make sure it's available."
+#~ msgstr ""
+#~ "Не вдалося знайти «%1» у «%2»; будь ласка, переконайтеся у його "
+#~ "доступності."
 
 #~ msgid "%1 channels"
 #~ msgstr "%1 каналів"

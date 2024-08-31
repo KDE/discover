@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-30 00:40+0000\n"
+"POT-Creation-Date: 2024-08-31 00:40+0000\n"
 "PO-Revision-Date: 2024-08-28 15:44+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -566,23 +566,23 @@ msgstr "%1 (usator)"
 msgid "Local bundle"
 msgstr "Fasce local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1853
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:823
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Url de Appstream  '%1' malformate"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1958
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1969
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Falleva a adder '%1':%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2079
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2091
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Il ha nulle fontes de Flatpack"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2083
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2095
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Falleva a cargar fonte '%1'"
@@ -955,19 +955,12 @@ msgstr "%1 (usator)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "inserta un URI de receptaculo de Flatpak (*.flatpakrepo):"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:33
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:34
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Addente remote '%1' in %2 ex %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:292
-#, kde-format
-msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr ""
-"Non poteva trovar '%1' in '%2': pro favor tu assecura te que illo es "
-"disponibile"
-
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:386
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:402
 #, kde-format
 msgctxt "fallback error message"
 msgid ""
@@ -977,13 +970,13 @@ msgstr ""
 "Un error interne occurreva. Profavor tu invia un reporto a https://bugs.kde."
 "org/enter_bug.cgi?product=Discover"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:433
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "Reimplaciamento Disponibile"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:416
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:435
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -996,13 +989,13 @@ msgstr ""
 ">Reimplacia illo con leversion suppoprtate fornite per <resource>%2</"
 "resource>?"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:422
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:441
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "Elimination automatic"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:443
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
@@ -2747,6 +2740,11 @@ msgstr "Software de Systema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Addons(Elementos adjunte)"
+
+#~ msgid "Could not find '%1' in '%2'; please make sure it's available."
+#~ msgstr ""
+#~ "Non poteva trovar '%1' in '%2': pro favor tu assecura te que illo es "
+#~ "disponibile"
 
 #~ msgid "%1 channels"
 #~ msgstr "%1 Canales"

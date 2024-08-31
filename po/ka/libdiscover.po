@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-30 00:40+0000\n"
+"POT-Creation-Date: 2024-08-31 00:40+0000\n"
 "PO-Revision-Date: 2024-08-21 05:23+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -565,23 +565,23 @@ msgstr "%1 (მომხმარებელი)"
 msgid "Local bundle"
 msgstr "ლოკალური პაკეტი"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1853
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:823
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "აღმავლის არასწორი URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1958
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1969
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "წყაროს (%1) დამატების შეცდომა: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2079
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2091
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "FlatPak-ის წყარო არ არსებობს."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2083
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2095
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\"-ის წყაროს ჩატვირთვის შეცდომა"
@@ -952,17 +952,12 @@ msgstr "%1 (მომხმარებელი)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "შეიყვანეთ Flatpak რეპოზიტორიის URI (*.flatpakrepo):"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:33
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:34
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "დაშორებულის '%1' დამატება %2-ში, %3-დან"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:292
-#, kde-format
-msgid "Could not find '%1' in '%2'; please make sure it's available."
-msgstr "'%2'-ში '%1' ვერ ვიპოვე. დარწმუნდით, რომ ის ხელმისაწვდომია."
-
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:386
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:402
 #, kde-format
 msgctxt "fallback error message"
 msgid ""
@@ -972,13 +967,13 @@ msgstr ""
 "აღმოჩენილია შიდა შეცდომა. შეავსეთ ანგარიში ამ შეცდომის შესახებ მისამართზე "
 "https://bugs.kde.org/enter_bug.cgi?product=Discover"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:433
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "ხელმისაწვდომია შემცვლელი"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:416
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:435
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -990,13 +985,13 @@ msgstr ""
 "<resource>%1</resource> განახლებებს აღარ იღებს.<nl/><nl/>ჩავანაცვლო ის "
 "მხარდაჭერილი ვერსიით, რომელსაც მოგაწოდებთ ID <resource>%2</resource>?"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:422
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:441
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "ავტომატური წაშლა"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:443
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
@@ -2714,6 +2709,9 @@ msgstr "სისტემური პროგრამები"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "დამატებები"
+
+#~ msgid "Could not find '%1' in '%2'; please make sure it's available."
+#~ msgstr "'%2'-ში '%1' ვერ ვიპოვე. დარწმუნდით, რომ ის ხელმისაწვდომია."
 
 #~ msgid "%1 channels"
 #~ msgstr "%1 არხი"

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-29 00:40+0000\n"
-"PO-Revision-Date: 2024-08-21 11:54+0200\n"
+"PO-Revision-Date: 2024-08-30 17:43+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -305,21 +305,7 @@ msgid "No ratings yet"
 msgstr "Oraindik baloraziorik ez"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. More information may be available on <link "
-#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
-#| "url='%3'>%3</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -335,33 +321,21 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"%1 instalatu, haren egileengan konfiantza osoa baduzu bakarrik, "
-"<strong>jabeduna</strong> baita: Aplikazio hau erabiltzeko, aldatzeko, eta "
-"birbanatzeko zure eskubidea mugatuta dago, eta bere sorburu kodea ikuskapen "
-"eta hobekuntza publikora zati batean edo osorik itxita dago. Horrek esan "
-"nahi du beste batzuek, eta zure gisako erabiltzaileek ezin dutela bere "
-"funtzionamendua, segurtasuna, eta fidagarritasuna egiaztatu. <nl/><nl/"
-">Aplikazioa erabiltzea segurua izan daiteke, edo zure aurkako hainbat erako "
-"ekintzak egin litzake — zure datu pertsonalak bildu, zure kokapenaren "
+"%1 instalatu, haren egileengan konfiantza osoa baduzu bakarrik, <emphasis "
+"strong='true'>jabeduna</emphasis> baita: Aplikazio hau erabiltzeko, "
+"aldatzeko, eta birbanatzeko zure eskubidea mugatuta dago, eta bere sorburu "
+"kodea ikuskapen eta hobekuntza publikora zati batean edo osorik itxita dago. "
+"Horrek esan nahi du beste batzuek, eta zure gisako erabiltzaileek ezin "
+"dutela bere funtzionamendua, segurtasuna, eta fidagarritasuna egiaztatu.<nl/"
+"><nl/>Aplikazioa erabiltzea segurua izan daiteke, edo zure aurkako hainbat "
+"erako ekintzak egin litzake — zure datu pertsonalak bildu, zure kokapenaren "
 "aztarna jarraitu, edo zure datuen testuingurua beste norbaiti transmititu "
 "gisakoak. Erabili, bakarrik, haren egileengan erabateko konfiantza baduzu. "
 "<link url='%2'>Aplikazioaren webgunean</link> informazio gehiago erabilgarri "
 "egon liteke. <nl/><nl/>Gehiago jakiteko hona jo, <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. Learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -375,14 +349,14 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"%1 instalatu, haren egileengan konfiantza osoa baduzu bakarrik, "
-"<strong>jabeduna</strong> baita: Aplikazio hau erabiltzeko, aldatzeko, eta "
-"birbanatzeko zure eskubidea mugatuta dago, eta bere sorburu kodea ikuskapen "
-"eta hobekuntza publikora zati batean edo osorik itxita dago. Horrek esan "
-"nahi du beste batzuek, eta zure gisako erabiltzaileek ezin dutela bere "
-"funtzionamendua, segurtasuna, eta fidagarritasuna egiaztatu. <nl/><nl/"
-">Aplikazioa erabiltzea segurua izan daiteke, edo zure aurkako hainbat erako "
-"ekintzak egin litzake — zure datu pertsonalak bildu, zure kokapenaren "
+"%1 instalatu, haren egileengan konfiantza osoa baduzu bakarrik, <emphasis "
+"strong='true'>jabeduna</emphasis> baita: Aplikazio hau erabiltzeko, "
+"aldatzeko, eta birbanatzeko zure eskubidea mugatuta dago, eta bere sorburu "
+"kodea ikuskapen eta hobekuntza publikora zati batean edo osorik itxita dago. "
+"Horrek esan nahi du beste batzuek, eta zure gisako erabiltzaileek ezin "
+"dutela bere funtzionamendua, segurtasuna, eta fidagarritasuna egiaztatu.<nl/"
+"><nl/>Aplikazioa erabiltzea segurua izan daiteke, edo zure aurkako hainbat "
+"erako ekintzak egin litzake — zure datu pertsonalak bildu, zure kokapenaren "
 "aztarna jarraitu, edo zure datuen testuingurua beste norbaiti transmititu "
 "gisakoak. Erabili, bakarrik, haren egileengan erabateko konfiantza baduzu. "
 "Gehiago jakiteko hona jo, <link url='%2'>%2</link>."
@@ -1169,6 +1143,9 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"%1 gustuko baduzu, esaiozu jendeari zein diren bere bikaintasunak! "
+"Funtzionaltasunean, erabilgarritasunean, eta itxuran arreta ipini. "
+"Aplikazioak zure beharrak asetzen ez baditu, azaldu zergatik."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1178,6 +1155,10 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"%1 abiatzen ez bada, horren ordez, kontuan hartu, %2(e)ko haren "
+"paketatzaileei <link url='%3'>%3</link>(e)n, horren berri emateko aukera, "
+"aplikazioaren beraren akats bat izan beharrean, erraz konpon daitekeen "
+"paketatze arazo bat izan baitaiteke."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1187,6 +1168,10 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"%1 ez bada abiatzen, horren ordez, kontuan hartu, haren garatzaileei, <link "
+"url='%2'>%2</link>(e)n, horren berri emateko aukera, aplikazioaren beraren "
+"akats bat izan beharrean, erraz konpon daitekeen paketatze arazo bat izan "
+"baitaiteke."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1195,6 +1180,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"Aplikazioa askotan kraskatzen bada, horren ordez, kontuan hartu <link "
+"url='%1'>%1</link>(e)n garatzaileei horren berri emateko aukera."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1204,6 +1191,9 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"Aplikazioarekin arazo bat izaten ari bazara, horren ordez, kontuan hartu,  "
+"garatzaileei, <link url='%1'>%1</link>(e)n, horren berri emateko aukera, edo "
+"bestela, deskribatu arazoa hemen zehaztasun handiz."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1228,7 +1218,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "abiarazi,exekutatu,abiatu"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1238,7 +1228,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "kraskadura,kraskatu,akatsa"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1249,6 +1239,8 @@ msgctxt ""
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
+"ez dabil,ez du funtzionatzen,tentela,tontoa,ergela,kaka,zaborra,txarra,"
+"gorrotoa"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1489,11 +1481,7 @@ msgid "Select None"
 msgstr "Bat ere ez hautatu"
 
 #: discover/qml/UpdatesPage.qml:254
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info on the completion of updates, the action that automatically happens "
-#| "after (e.g shutdown)"
-#| msgid "On completion, automatically:"
+#, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
@@ -1513,9 +1501,7 @@ msgid "Restart"
 msgstr "Berrabiatu"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shutdown"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr "Itzali"
