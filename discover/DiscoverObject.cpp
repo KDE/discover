@@ -516,13 +516,6 @@ void DiscoverObject::initMainWindow(QQuickWindow *mainWindow)
 
     m_mainWindow = std::unique_ptr<QQuickWindow>(mainWindow);
 
-    KConfigGroup window(KSharedConfig::openConfig(), u"Window"_s);
-    if (window.hasKey("geometry"))
-        m_mainWindow->setGeometry(window.readEntry("geometry", QRect()));
-    if (window.hasKey("visibility")) {
-        QWindow::Visibility visibility(QWindow::Visibility(window.readEntry<int>("visibility", QWindow::Windowed)));
-        m_mainWindow->setVisibility(qMax(visibility, QQuickView::AutomaticVisibility));
-    }
     connect(m_mainWindow.get(), &QQuickView::sceneGraphError, this, [](QQuickWindow::SceneGraphError /*error*/, const QString &message) {
         KCrash::setErrorMessage(message);
         qFatal("%s", qPrintable(message));
@@ -551,10 +544,6 @@ bool DiscoverObject::eventFilter(QObject *object, QEvent *event)
         if (!quitWhenIdle()) {
             return true;
         }
-
-        KConfigGroup window(KSharedConfig::openConfig(), u"Window"_s);
-        window.writeEntry("geometry", m_mainWindow->geometry());
-        window.writeEntry<int>("visibility", m_mainWindow->visibility());
     }
     // } else if (event->type() == QEvent::ShortcutOverride) {
     //     qCWarning(DISCOVER_LOG) << "Action conflict" << event;
@@ -693,12 +682,6 @@ void DiscoverObject::shutdownNow()
                                                  shouldRebootFirst ? QStringLiteral("Reboot") : QStringLiteral("PowerOff"));
     method.setArguments({true /*interactive*/});
     QDBusConnection::systemBus().asyncCall(method);
-}
-
-QRect DiscoverObject::initialGeometry() const
-{
-    KConfigGroup window(KSharedConfig::openConfig(), u"Window"_s);
-    return window.readEntry("geometry", QRect());
 }
 
 QString DiscoverObject::describeSources() const

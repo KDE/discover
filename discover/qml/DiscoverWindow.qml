@@ -7,6 +7,7 @@ import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.discover.app as DiscoverApp
 import org.kde.kirigami as Kirigami
+import org.kde.config as KConfig
 
 Kirigami.ApplicationWindow {
     id: window
@@ -23,8 +24,8 @@ Kirigami.ApplicationWindow {
     objectName: "DiscoverMainWindow"
     title: leftPage?.title ?? ""
 
-    width: app.initialGeometry.width >= 10 ? app.initialGeometry.width : Kirigami.Units.gridUnit * 52
-    height: app.initialGeometry.height >= 10 ? app.initialGeometry.height : Math.max(Kirigami.Units.gridUnit * 38, window.globalDrawer.contentHeight)
+    width: Kirigami.Units.gridUnit * 52
+    height: Math.max(Kirigami.Units.gridUnit * 38, window.globalDrawer.contentHeight)
 
     visible: true
 
@@ -38,6 +39,10 @@ Kirigami.ApplicationWindow {
 
     readonly property Item leftPage: window.pageStack.depth > 0 ? window.pageStack.get(0) : null
 
+    KConfig.WindowStateSaver {
+        configGroupName: "Window"
+    }
+    
     Component.onCompleted: {
         if (app.isRoot) {
             messagesSheet.addMessage(i18n("Running as <em>root</em> is discouraged and unnecessary."));

@@ -25,7 +25,6 @@ class DiscoverObject : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool isRoot READ isRoot CONSTANT)
-    Q_PROPERTY(QRect initialGeometry READ initialGeometry CONSTANT)
     Q_PROPERTY(QQuickWindow *mainWindow READ mainWindow CONSTANT)
     Q_PROPERTY(InlineMessage *homePageMessage READ homePageMessage NOTIFY homeMessageChanged)
 
@@ -45,7 +44,6 @@ public:
     QQuickWindow *mainWindow() const;
     void showError(const QString &msg);
     Q_INVOKABLE void copyTextToClipboard(const QString text);
-    QRect initialGeometry() const;
 
     QString describeSources() const;
     Q_SCRIPTABLE void restore();
