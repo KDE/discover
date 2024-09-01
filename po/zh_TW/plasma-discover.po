@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-29 00:40+0000\n"
+"POT-Creation-Date: 2024-09-01 00:40+0000\n"
 "PO-Revision-Date: 2024-08-25 03:04+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -273,7 +273,7 @@ msgstr "新增 %1 軟體庫"
 msgid "Add"
 msgstr "新增"
 
-#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:271
+#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:278 discover/qml/WebflowDialog.qml:41
@@ -862,86 +862,86 @@ msgctxt "@action:button"
 msgid "Next Screenshot"
 msgstr "下一張螢幕截圖"
 
-#: discover/qml/DiscoverWindow.qml:43
+#: discover/qml/DiscoverWindow.qml:48
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "不鼓勵且不必要以 <em>root</em> 身份執行。"
 
-#: discover/qml/DiscoverWindow.qml:58
+#: discover/qml/DiscoverWindow.qml:63
 #, kde-format
 msgid "&Home"
 msgstr "首頁(&H)"
 
-#: discover/qml/DiscoverWindow.qml:68
+#: discover/qml/DiscoverWindow.qml:73
 #, kde-format
 msgid "&Search"
 msgstr "搜尋(&S)"
 
-#: discover/qml/DiscoverWindow.qml:76
+#: discover/qml/DiscoverWindow.qml:81
 #, kde-format
 msgid "&Installed"
 msgstr "已安裝(&I)"
 
-#: discover/qml/DiscoverWindow.qml:87
+#: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "Fetching &updates…"
 msgstr "正在下載更新(&U)…"
 
-#: discover/qml/DiscoverWindow.qml:87
+#: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
 msgstr[0] "更新（%1 項）(&U)"
 
-#: discover/qml/DiscoverWindow.qml:95
+#: discover/qml/DiscoverWindow.qml:100
 #, kde-format
 msgid "&About"
 msgstr "關於(&A)"
 
-#: discover/qml/DiscoverWindow.qml:103
+#: discover/qml/DiscoverWindow.qml:108
 #, kde-format
 msgid "S&ettings"
 msgstr "設定(&E)"
 
-#: discover/qml/DiscoverWindow.qml:156 discover/qml/DiscoverWindow.qml:340
-#: discover/qml/DiscoverWindow.qml:454
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:459
 #, kde-format
 msgid "Error"
 msgstr "錯誤"
 
-#: discover/qml/DiscoverWindow.qml:160
+#: discover/qml/DiscoverWindow.qml:165
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "找不到資源：%1"
 
-#: discover/qml/DiscoverWindow.qml:258 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:263 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
 msgstr "繼續"
 
-#: discover/qml/DiscoverWindow.qml:316
+#: discover/qml/DiscoverWindow.qml:321
 #, kde-format
 msgid "Report this issue"
 msgstr "回報此問題"
 
-#: discover/qml/DiscoverWindow.qml:340
+#: discover/qml/DiscoverWindow.qml:345
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "%2 個錯誤中的第 %1 個"
 
-#: discover/qml/DiscoverWindow.qml:390
+#: discover/qml/DiscoverWindow.qml:395
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "顯示上一個"
 
-#: discover/qml/DiscoverWindow.qml:403
+#: discover/qml/DiscoverWindow.qml:408
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "顯示下一個"
 
-#: discover/qml/DiscoverWindow.qml:419
+#: discover/qml/DiscoverWindow.qml:424
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "複製至剪貼簿"

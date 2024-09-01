@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-29 00:40+0000\n"
-"PO-Revision-Date: 2024-08-30 10:27+0300\n"
+"POT-Creation-Date: 2024-09-01 00:40+0000\n"
+"PO-Revision-Date: 2024-08-31 21:38+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -273,7 +273,7 @@ msgstr "הוספת מאגר %1 חדש"
 msgid "Add"
 msgstr "הוספה"
 
-#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:271
+#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:278 discover/qml/WebflowDialog.qml:41
@@ -298,21 +298,7 @@ msgid "No ratings yet"
 msgstr "אין דירוגים עדיין"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. More information may be available on <link "
-#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
-#| "url='%3'>%3</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -328,9 +314,9 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"כדאי להתקין את %1 רק אם יש לך אמון מלא ביוצרים שלו כיוון שהוא "
-"<strong>קנייני</strong>: החופש שלך להשתמש, לשנות ולהפיץ מחדש מוגבל וקוד "
-"המקור של היישום הזה סגור לסקירה ושיפור על ידי הציבור באופן חלקי או מלא. "
+"כדאי להתקין את %1 רק אם יש לך אמון מלא ביוצרים שלו כיוון שהוא <emphasis "
+"strong='true'>קנייני</emphasis>: החופש שלך להשתמש, לשנות ולהפיץ מחדש מוגבל "
+"וקוד המקור של היישום הזה סגור לסקירה ושיפור על ידי הציבור באופן חלקי או מלא. "
 "המשמעות הישירה של זה היא שמשתמשים כמוך לא יכולים לאמת את אופן הפעילות, אבטחת "
 "המידע והמהימנות.<nl/><nl/>היישום יכול להיות בטוח לחלוטין לשימוש או שהוא פועל "
 "נגדך במגוון דרכים - כגון קצירת הפרטים האישיים שלך, מעקב אחר המקום שלך או "
@@ -339,19 +325,7 @@ msgstr ""
 "נוסף ב־<link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. Learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -365,9 +339,9 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"כדאי להתקין את %1 רק אם יש לך אמון מלא ביוצרים שלו כיוון שהוא "
-"<strong>קנייני</strong>: החופש שלך להשתמש, לשנות ולהפיץ מחדש מוגבל וקוד "
-"המקור של היישום הזה סגור לסקירה ושיפור על ידי הציבור באופן חלקי או מלא. "
+"כדאי להתקין את %1 רק אם יש לך אמון מלא ביוצרים שלו כיוון שהוא <emphasis "
+"strong='true'>קנייני</emphasis>: החופש שלך להשתמש, לשנות ולהפיץ מחדש מוגבל "
+"וקוד המקור של היישום הזה סגור לסקירה ושיפור על ידי הציבור באופן חלקי או מלא. "
 "המשמעות הישירה של זה היא שמשתמשים כמוך לא יכולים לאמת את אופן הפעילות, אבטחת "
 "המידע והמהימנות.<nl/><nl/>היישום יכול להיות בטוח לחלוטין לשימוש או שהוא פועל "
 "נגדך במגוון דרכים - כגון קצירת הפרטים האישיים שלך, מעקב אחר המקום שלך או "
@@ -886,32 +860,32 @@ msgctxt "@action:button"
 msgid "Next Screenshot"
 msgstr "צילום המסך הבא"
 
-#: discover/qml/DiscoverWindow.qml:43
+#: discover/qml/DiscoverWindow.qml:48
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "הרצה כ<em>משתמש־על (root)</em> היא מסוכנת ומיותרת."
 
-#: discover/qml/DiscoverWindow.qml:58
+#: discover/qml/DiscoverWindow.qml:63
 #, kde-format
 msgid "&Home"
 msgstr "דף ה&בית"
 
-#: discover/qml/DiscoverWindow.qml:68
+#: discover/qml/DiscoverWindow.qml:73
 #, kde-format
 msgid "&Search"
 msgstr "&חיפוש"
 
-#: discover/qml/DiscoverWindow.qml:76
+#: discover/qml/DiscoverWindow.qml:81
 #, kde-format
 msgid "&Installed"
 msgstr "מו&תקן"
 
-#: discover/qml/DiscoverWindow.qml:87
+#: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "Fetching &updates…"
 msgstr "מ&שיכת עדכונים…"
 
-#: discover/qml/DiscoverWindow.qml:87
+#: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
@@ -920,55 +894,55 @@ msgstr[1] "&עדכונים (%1)"
 msgstr[2] "&עדכונים (%1)"
 msgstr[3] "&עדכונים (%1)"
 
-#: discover/qml/DiscoverWindow.qml:95
+#: discover/qml/DiscoverWindow.qml:100
 #, kde-format
 msgid "&About"
 msgstr "על &אודות"
 
-#: discover/qml/DiscoverWindow.qml:103
+#: discover/qml/DiscoverWindow.qml:108
 #, kde-format
 msgid "S&ettings"
 msgstr "ה&גדרות"
 
-#: discover/qml/DiscoverWindow.qml:156 discover/qml/DiscoverWindow.qml:340
-#: discover/qml/DiscoverWindow.qml:454
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:459
 #, kde-format
 msgid "Error"
 msgstr "שגיאה"
 
-#: discover/qml/DiscoverWindow.qml:160
+#: discover/qml/DiscoverWindow.qml:165
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "לא ניתן למצוא את המשאב: %1"
 
-#: discover/qml/DiscoverWindow.qml:258 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:263 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
 msgstr "המשך"
 
-#: discover/qml/DiscoverWindow.qml:316
+#: discover/qml/DiscoverWindow.qml:321
 #, kde-format
 msgid "Report this issue"
 msgstr "דיווח על התקלה הזאת"
 
-#: discover/qml/DiscoverWindow.qml:340
+#: discover/qml/DiscoverWindow.qml:345
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "שגיאה %1 מתוך %2"
 
-#: discover/qml/DiscoverWindow.qml:390
+#: discover/qml/DiscoverWindow.qml:395
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "הצגת הקודם"
 
-#: discover/qml/DiscoverWindow.qml:403
+#: discover/qml/DiscoverWindow.qml:408
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "הצגת הבא"
 
-#: discover/qml/DiscoverWindow.qml:419
+#: discover/qml/DiscoverWindow.qml:424
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "העתקה ללוח הגזירים"

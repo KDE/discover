@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-29 00:40+0000\n"
+"POT-Creation-Date: 2024-09-01 00:40+0000\n"
 "PO-Revision-Date: 2020-10-04 16:59+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -263,7 +263,7 @@ msgstr "Tilføj ny %1-softwarekilde"
 msgid "Add"
 msgstr "Tilføj"
 
-#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:271
+#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:278 discover/qml/WebflowDialog.qml:41
@@ -827,36 +827,36 @@ msgctxt "@action:button"
 msgid "Next Screenshot"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:43
+#: discover/qml/DiscoverWindow.qml:48
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "At køre som <em>root</em> frarådes og er unødvendigt."
 
-#: discover/qml/DiscoverWindow.qml:58
+#: discover/qml/DiscoverWindow.qml:63
 #, fuzzy, kde-format
 #| msgid "Home"
 msgid "&Home"
 msgstr "Hjem"
 
-#: discover/qml/DiscoverWindow.qml:68
+#: discover/qml/DiscoverWindow.qml:73
 #, fuzzy, kde-format
 #| msgid "Search"
 msgid "&Search"
 msgstr "Søg"
 
-#: discover/qml/DiscoverWindow.qml:76
+#: discover/qml/DiscoverWindow.qml:81
 #, fuzzy, kde-format
 #| msgid "Installed"
 msgid "&Installed"
 msgstr "Installeret"
 
-#: discover/qml/DiscoverWindow.qml:87
+#: discover/qml/DiscoverWindow.qml:92
 #, fuzzy, kde-format
 #| msgid "Fetching updates..."
 msgid "Fetching &updates…"
 msgstr "Henter opdateringer..."
 
-#: discover/qml/DiscoverWindow.qml:87
+#: discover/qml/DiscoverWindow.qml:92
 #, fuzzy, kde-format
 #| msgctxt "Update section name"
 #| msgid "Update (%1)"
@@ -865,59 +865,59 @@ msgid_plural "&Updates (%1)"
 msgstr[0] "Opdatér (%1)"
 msgstr[1] "Opdatér (%1)"
 
-#: discover/qml/DiscoverWindow.qml:95
+#: discover/qml/DiscoverWindow.qml:100
 #, fuzzy, kde-format
 #| msgid "About"
 msgid "&About"
 msgstr "Om"
 
-#: discover/qml/DiscoverWindow.qml:103
+#: discover/qml/DiscoverWindow.qml:108
 #, fuzzy, kde-format
 #| msgid "Settings"
 msgid "S&ettings"
 msgstr "Indstillinger"
 
-#: discover/qml/DiscoverWindow.qml:156 discover/qml/DiscoverWindow.qml:340
-#: discover/qml/DiscoverWindow.qml:454
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:459
 #, kde-format
 msgid "Error"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:160
+#: discover/qml/DiscoverWindow.qml:165
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "Kan ikke finde ressourcen: %1"
 
-#: discover/qml/DiscoverWindow.qml:258 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:263 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
 msgstr "Fortsæt"
 
-#: discover/qml/DiscoverWindow.qml:316
+#: discover/qml/DiscoverWindow.qml:321
 #, kde-format
 msgid "Report this issue"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:340
+#: discover/qml/DiscoverWindow.qml:345
 #, fuzzy, kde-format
 #| msgid "Votes: %1 out of %2"
 msgid "Error %1 of %2"
 msgstr "Stemmer: %1 ud af %2"
 
-#: discover/qml/DiscoverWindow.qml:390
+#: discover/qml/DiscoverWindow.qml:395
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:403
+#: discover/qml/DiscoverWindow.qml:408
 #, fuzzy, kde-format
 #| msgid "Show contents"
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Vis indhold"
 
-#: discover/qml/DiscoverWindow.qml:419
+#: discover/qml/DiscoverWindow.qml:424
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr ""

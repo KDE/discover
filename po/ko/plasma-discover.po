@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-29 00:40+0000\n"
+"POT-Creation-Date: 2024-09-01 00:40+0000\n"
 "PO-Revision-Date: 2024-08-20 21:42+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -276,7 +276,7 @@ msgstr "새 %1 저장소 추가"
 msgid "Add"
 msgstr "추가"
 
-#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:271
+#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:278 discover/qml/WebflowDialog.qml:41
@@ -846,87 +846,87 @@ msgctxt "@action:button"
 msgid "Next Screenshot"
 msgstr "다음 스크린샷"
 
-#: discover/qml/DiscoverWindow.qml:43
+#: discover/qml/DiscoverWindow.qml:48
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr ""
 "<em>루트</em> 계정으로 실행하는 것은 권장하지 않으며 필요하지 않습니다."
 
-#: discover/qml/DiscoverWindow.qml:58
+#: discover/qml/DiscoverWindow.qml:63
 #, kde-format
 msgid "&Home"
 msgstr "홈(&H)"
 
-#: discover/qml/DiscoverWindow.qml:68
+#: discover/qml/DiscoverWindow.qml:73
 #, kde-format
 msgid "&Search"
 msgstr "찾기(&S)"
 
-#: discover/qml/DiscoverWindow.qml:76
+#: discover/qml/DiscoverWindow.qml:81
 #, kde-format
 msgid "&Installed"
 msgstr "설치됨(&I)"
 
-#: discover/qml/DiscoverWindow.qml:87
+#: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "Fetching &updates…"
 msgstr "업데이트 가져오는 중(&U)…"
 
-#: discover/qml/DiscoverWindow.qml:87
+#: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Update (%1)"
 msgid_plural "&Updates (%1)"
 msgstr[0] "업데이트(%1)(&U)"
 
-#: discover/qml/DiscoverWindow.qml:95
+#: discover/qml/DiscoverWindow.qml:100
 #, kde-format
 msgid "&About"
 msgstr "정보(&A)"
 
-#: discover/qml/DiscoverWindow.qml:103
+#: discover/qml/DiscoverWindow.qml:108
 #, kde-format
 msgid "S&ettings"
 msgstr "설정(&E)"
 
-#: discover/qml/DiscoverWindow.qml:156 discover/qml/DiscoverWindow.qml:340
-#: discover/qml/DiscoverWindow.qml:454
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:459
 #, kde-format
 msgid "Error"
 msgstr "오류"
 
-#: discover/qml/DiscoverWindow.qml:160
+#: discover/qml/DiscoverWindow.qml:165
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "리소스를 찾을 수 없음: %1"
 
-#: discover/qml/DiscoverWindow.qml:258 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:263 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
 msgstr "진행"
 
-#: discover/qml/DiscoverWindow.qml:316
+#: discover/qml/DiscoverWindow.qml:321
 #, kde-format
 msgid "Report this issue"
 msgstr "이 문제 보고"
 
-#: discover/qml/DiscoverWindow.qml:340
+#: discover/qml/DiscoverWindow.qml:345
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "오류: %1/%2"
 
-#: discover/qml/DiscoverWindow.qml:390
+#: discover/qml/DiscoverWindow.qml:395
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "이전 보기"
 
-#: discover/qml/DiscoverWindow.qml:403
+#: discover/qml/DiscoverWindow.qml:408
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "다음 보기"
 
-#: discover/qml/DiscoverWindow.qml:419
+#: discover/qml/DiscoverWindow.qml:424
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "클립보드에 복사"

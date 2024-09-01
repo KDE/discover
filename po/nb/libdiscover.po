@@ -2713,7 +2713,3 @@ msgstr "Systemprogram"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tillegg"
-
-#~ msgid "Could not find '%1' in '%2'; please make sure it's available."
-#~ msgstr ""
-#~ "Kunne ikke finne «%1» i «%2»; forsikre deg om at den er tilgjengelig."
