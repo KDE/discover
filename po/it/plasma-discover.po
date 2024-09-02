@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-01 00:40+0000\n"
-"PO-Revision-Date: 2024-08-26 00:22+0200\n"
+"PO-Revision-Date: 2024-08-29 18:43+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -308,21 +308,7 @@ msgid "No ratings yet"
 msgstr "Ancora nessuna valutazione"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. More information may be available on <link "
-#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
-#| "url='%3'>%3</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -345,26 +331,14 @@ msgstr ""
 "Ciò significa che terze parti e utenti come te non possono verificarne il "
 "funzionamento, la sicurezza e l'affidabilità.<nl/><nl/>L'applicazione "
 "potrebbe essere perfettamente sicura da usare o potrebbe agire contro di te "
-"in vari modi, come raccogliere le tue informazioni personali, tracciare la "
+"in vari modi — come raccogliere le tue informazioni personali, tracciare la "
 "tua posizione o trasmettere il contenuto dei tuoi dati a qualcun altro. "
 "Usala solo se ti fidi completamente dei suoi autori. Ulteriori informazioni "
 "potrebbero essere disponibili sul <link url='%2'>sito web dell'applicazione</"
 "link>.<nl/><nl/>Scopri di più su <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. Learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -385,7 +359,7 @@ msgstr ""
 "Ciò significa che terze parti e utenti come te non possono verificarne il "
 "funzionamento, la sicurezza e l'affidabilità.<nl/><nl/>L'applicazione "
 "potrebbe essere perfettamente sicura da usare o potrebbe agire contro di te "
-"in vari modi, come raccogliere le tue informazioni personali, tracciare la "
+"in vari modi — come raccogliere le tue informazioni personali, tracciare la "
 "tua posizione o trasmettere il contenuto dei tuoi dati a qualcun altro. "
 "Usala solo se ti fidi completamente dei suoi autori. Scopri di più su <link "
 "url='%2'>%2</link>."
@@ -1170,6 +1144,9 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"Se ami %1, dì alla gente cosa lo rende fantastico! Concentrati su "
+"funzionalità, usabilità e aspetto. Se l'applicazione non ha soddisfatto le "
+"tue esigenze, spiega il motivo."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1179,6 +1156,10 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"Se %1 ​​non si avvia, valuta invece la possibilità di segnalarlo ai suoi "
+"creatori di pacchetti in %2 su <link url='%3'>%3</link>, poiché potrebbe "
+"trattarsi di un problema del pacchetto facilmente risolvibile piuttosto che "
+"di un difetto dell'applicazione."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1188,6 +1169,10 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"Se %1 ​​non si avvia, valuta la possibilità di segnalarlo ai suoi sviluppatori "
+"su <link url='%2'>%2</link>, poiché potrebbe trattarsi di un problema di "
+"pacchetto facilmente risolvibile piuttosto che di un difetto "
+"dell'applicazione."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1196,6 +1181,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"Se l'applicazione si arresta spesso in modo anomalo, valuta la possibilità "
+"di segnalarlo agli sviluppatori su <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1205,6 +1192,9 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"Se riscontri un problema con l'applicazione, valuta invece la possibilità di "
+"segnalarlo agli sviluppatori su <link url='%1'>%1</link> oppure descrivi il "
+"problema qui in maggiore dettaglio."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1229,7 +1219,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "avvia, esegui, inizia"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1239,7 +1229,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "crash,arresto anomalo,segfault"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1250,6 +1240,7 @@ msgctxt ""
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
+"non funziona,inutile,stupido,schifoso,spazzatura,schifoso,terribile,odio"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format

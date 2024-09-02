@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-01 00:40+0000\n"
-"PO-Revision-Date: 2024-08-22 16:33+0200\n"
+"PO-Revision-Date: 2024-08-31 09:45+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -326,21 +326,7 @@ msgid "No ratings yet"
 msgstr "Pas encore de note"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. More information may be available on <link "
-#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
-#| "url='%3'>%3</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -362,29 +348,17 @@ msgstr ""
 "restreinte. Son code source est partiellement ou entièrement fermé à la "
 "consultation publique et à des améliorations. Cela signifie que des parties "
 "tierces et des utilisateurs comme vous ne peuvent pas vérifier son "
-"fonctionnement, sa sécurité et sa fiabilité ou la modifier. <nl/><nl/> "
-"L'application peut être parfaitement sûre à utiliser ou peut agir contre "
+"fonctionnement, sa sécurité et sa fiabilité ou la modifier. <nl/><nl/"
+">L'application peut être parfaitement sûre à utiliser ou peut agir contre "
 "vous de multiples façons — comme collecter vos informations personnelles, "
 "suivre votre position ou transmettre le contenu de vos données à une autre "
-"personne. Ne l'utiliser que si vous faire totalement confiance à ses "
+"personne. Ne l'utiliser que si vous faites totalement confiance à ses "
 "auteurs. Des informations plus détaillées pourraient être disponibles sur le "
 "<link url='%2'>site Internet de l'application</link>.<nl/><nl/>Vous pouvez "
 "en apprendre plus sur la page <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. Learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -408,7 +382,7 @@ msgstr ""
 "L'application peut être parfaitement sûre à utiliser ou peut agir contre "
 "vous de multiples façons - comme — comme collecter vos informations "
 "personnelles, suivre votre position ou transmettre le contenu de vos "
-"fichiers à quelqu'un d'autre. Ne l'utiliser que si vous faire totalement "
+"fichiers à une autre personne. Ne l'utiliser que si vous faites totalement "
 "confiance à ses auteurs. Vous pouvez en apprendre plus sur la page <link "
 "url='%2'>%2</link>."
 
@@ -1203,6 +1177,10 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"Si vous aimez l'application %1, dites à tout le monde ce qui est génial à "
+"son sujet ! Veuillez vous concentrer sur les fonctionnalités, l'ergonomie et "
+"l'apparence. Si l'application ne répondait pas à vos besoins, merci de nous "
+"expliquer pourquoi."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1212,6 +1190,10 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"Si l'application %1 ne se lance pas, veuillez plutôt le signaler à l'équipe "
+"d'empaquetage dans %2 à l'adresse <link url='%3'>%3</link>, car il peut "
+"s'agir d'un problème d'empaquetage facilement corrigeable plutôt que d'une "
+"faille dans l'application elle-même."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1221,6 +1203,10 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"Si l'application %1 ne se lance pas, veuillez plutôt le signaler à l'équipe "
+"de développement à l'adresse <link url='%2'>%2</link>, car il peut s'agir "
+"d'un problème d'empaquetage facilement corrigeable plutôt que d'une faille "
+"dans l'application elle-même."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1229,6 +1215,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"Si l'application plante beaucoup, veuillez plutôt le signaler à l'équipe de "
+"développement à l'adresse <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1238,6 +1226,9 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"Si vous rencontrez un problème avec l'application, veuillez plutôt le "
+"signaler à l'équipe de développement à l'adresse <link url='%1'>%1</link> ou "
+"décrire le problème plus en détails ici."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1262,7 +1253,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "lancement, exécution, démarrage"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1272,7 +1263,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "plantage, segfault"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1283,6 +1274,7 @@ msgctxt ""
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
+"ne fonctionne pas, idiot, stupide, zut, poubelle, rageant, terrible, haine"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1527,11 +1519,7 @@ msgid "Select None"
 msgstr "Ne rien sélectionner"
 
 #: discover/qml/UpdatesPage.qml:254
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info on the completion of updates, the action that automatically happens "
-#| "after (e.g shutdown)"
-#| msgid "On completion, automatically:"
+#, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
@@ -1551,9 +1539,7 @@ msgid "Restart"
 msgstr "Re-démarrer"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shutdown"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr "Éteindre"
