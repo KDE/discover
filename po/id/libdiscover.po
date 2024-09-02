@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # wantoyo <wantoyo@yahoo.com>, 2014.
-# Wantoyo <wantoyek@gmail.com>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Wantoyo <wantoyek@gmail.com>
 # Linerly <linerly@protonmail.com>, 2022, 2023.
 #
 # Translators:
@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-03 02:34+0000\n"
-"PO-Revision-Date: 2023-05-26 07:30+0700\n"
+"PO-Revision-Date: 2024-09-01 23:15+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
-"Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
+"Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.0\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -88,10 +88,9 @@ msgid "Intense Content"
 msgstr "Konten Intens"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:171
-#, fuzzy, kde-format
-#| msgid "Internal error: %1"
+#, kde-format
 msgid "Technical error message: %1"
-msgstr "Galat internal: %1"
+msgstr "Pesan galat tekhnis: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:223
 #, kde-format
@@ -579,8 +578,7 @@ msgid "Retrieving size information"
 msgstr "Mengambil informasi ukuran"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:460
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Tidak diketahui"
@@ -623,15 +621,14 @@ msgid "Can access the internet"
 msgstr "Bisa mengakses internet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:837
-#, fuzzy, kde-format
-#| msgid "System Bus Access"
+#, kde-format
 msgid "Sound system access"
-msgstr "Akses Bus Sistem"
+msgstr "Akses sistem suara"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:838
 #, kde-format
 msgid "Can play audio"
-msgstr ""
+msgstr "Bisa putar audio"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:842
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:986
@@ -640,16 +637,13 @@ msgid "Session Bus Access"
 msgstr "Akses Bus Sesi"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:843
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr ""
-"Bisa berkomunikasi dengan aplikasi dan proses lain dalam sesi desktop yang "
-"sama menggunakan protokol komunikasi berikut: %1"
+"Bisa berkomunikasi dengan semua aplikasi dan proses yang berjalan lainnya "
+"dalam akun pengguna ini"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:998
@@ -658,14 +652,9 @@ msgid "System Bus Access"
 msgstr "Akses Bus Sistem"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:849
-#, fuzzy, kde-format
-#| msgid ""
-#| "Can communicate with other applications and processes in the same desktop "
-#| "session using the following communication protocols: %1"
+#, kde-format
 msgid "Can communicate with all other applications and processes on the system"
-msgstr ""
-"Bisa berkomunikasi dengan aplikasi dan proses lain dalam sesi desktop yang "
-"sama menggunakan protokol komunikasi berikut: %1"
+msgstr "Bisa berkomunikasi dengan semua aplikasi dan proses lainnya di sistem"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:854
 #, kde-format
@@ -955,13 +944,14 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"Sebuah galat internal terjadi. Silakan ajukan sebuah laporan di https://bugs."
+"kde.org/enter_bug.cgi?product=Discover"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "Repo tidak tersedia"
+msgstr "Tersedia Penggantian"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:416
 #, kde-kuit-format
@@ -972,12 +962,14 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
+"<resource>%1</resource> tidak lagi menerima pembaruan.<nl/><nl/>Gantilah "
+"dengan versi yang didukung oleh <resource>%2</resource>?"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:422
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "Penghapusan Otomatis"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-kuit-format
@@ -987,6 +979,9 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
+"<resource>%1</resource> tidak lagi menerima pembaruan.<nl/><p>Alasannya "
+"adalah: <message>%2</message></p><nl/><p>Apakah menghapusnya secara otomatis?"
+"</p>"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
@@ -1040,10 +1035,9 @@ msgstr "Atur perizinan..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:471
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "Offline Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "Pembaruan Luring"
+msgstr "Pembaruan Firmware"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1203,35 +1197,29 @@ msgstr "Tidak bisa menghapus '%1'"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1008
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released.</b>\n"
-#| "To be able to upgrade to this new version, make sure to apply all "
-#| "available updates and then restart the system."
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
 "<b>%1 is now available.</b>\n"
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
-"<b>Sebuah versi pokok baru %1 telah dirilis.</b>\n"
-"Agar bisa meningkatkan ke versi baru ini, pastikan untuk menerapkan semua "
-"pembaruan yang tersedia dan kemudian nyalakan ulang."
+"<b>%1 sekarang sudah tersedia.</b>\n"
+"Agar bisa meningkatkan ke versi baru ini, pertama terapkan semua pembaruan "
+"yang tersedia, dan kemudian nyalakan ulang."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1017
-#, fuzzy, kde-format
-#| msgid "Upgrade to %1 %2"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "Tingkatkan ke %1 %2"
+msgstr "Tingkatkan Sekarang"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "Repo tidak tersedia"
+msgstr "%1 sekarang sudah tersedia."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1578,7 +1566,7 @@ msgstr "Kunci diperlukan"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:160
 #, kde-format
 msgid "Unknown error %1."
-msgstr "Galat %1tak diketahui."
+msgstr "Galat %1 tak diketahui."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
 #, kde-format
@@ -1980,31 +1968,27 @@ msgstr "Tidak Tersedia"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "Kritis"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "Install"
-msgstr "Terinstal"
+msgstr "Instal"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "Hapus..."
+msgstr "Hapus"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, fuzzy, kde-format
-#| msgid "Obsoletes:"
+#, kde-format
 msgid "Obsolete"
-msgstr "Usang:"
+msgstr "Usang"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, fuzzy, kde-format
-#| msgid "Downgrading"
+#, kde-format
 msgid "Downgrade"
-msgstr "Menurunkan"
+msgstr "Turunkan Versi"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
 #, kde-format
@@ -2335,7 +2319,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr ""
+msgstr "Mulai Tingkatkan..."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
 #, kde-format
@@ -2450,12 +2434,13 @@ msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
-#, fuzzy, kde-format
-#| msgid "rpm-ostree transaction failed with:"
+#, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
-msgstr "Transaksi rpm-ostree gagal dengan:"
+msgstr ""
+"Transaksi rpm-ostree gagal dengan:\n"
+"%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:242
 #, kde-format
@@ -2481,11 +2466,12 @@ msgstr "Memeriksa pembaruan sistem"
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"Mengunduh pembaruan sistem. Harap bersabar karena progres tidak dilaporkan."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
-msgstr ""
+msgstr "Memperbarui sistem. Harap bersabar karena progres tidak dilaporkan."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
@@ -2493,6 +2479,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"Memperbarui ke versi utama selanjutnya. Harap bersabar karena progres tidak "
+"dilaporkan."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
@@ -2553,7 +2541,7 @@ msgstr "SteamOS: Tidak dapat mengkueri automupd untuk Pembaruan SteamOS..."
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:114
 #, kde-format
