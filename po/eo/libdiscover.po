@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-31 00:40+0000\n"
+"POT-Creation-Date: 2024-09-03 00:40+0000\n"
 "PO-Revision-Date: 2024-08-22 22:54+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -566,7 +566,7 @@ msgid "Local bundle"
 msgstr "Loka pakaĵo"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:823
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:824
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Misformita appstream URL '%1'"
@@ -1211,12 +1211,12 @@ msgid ""
 msgstr ""
 "Via operaciumo ĉesis subtenon je %1. Konsideru ĝisdatigi al subtenata versio."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:930
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:931
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Ne povas forigi '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1229,20 +1229,20 @@ msgstr ""
 "Por povi ĝisdatigi al ĉi tiu nova versio, unue apliku ĉiujn disponeblajn "
 "ĝisdatigojn, tiam rekomencu la sistemon."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1025
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Eldonpromocii Nun"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1048
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 nun estas havebla."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1174
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1182
 #, kde-format
 msgctxt "@info"
 msgid ""

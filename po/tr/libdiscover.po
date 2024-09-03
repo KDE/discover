@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-31 00:40+0000\n"
+"POT-Creation-Date: 2024-09-03 00:40+0000\n"
 "PO-Revision-Date: 2024-08-21 12:07+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -568,7 +568,7 @@ msgid "Local bundle"
 msgstr "Yerel paket"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:823
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:824
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Hatalı oluşturulmuş Appstream URL’si “%1”"
@@ -1218,12 +1218,12 @@ msgstr ""
 "İşletim sisteminiz %1 tarihinde desteği sonlandırdı. Desteklenen bir sürüme "
 "geçmeyi düşünün."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:930
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:931
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "“%1” kaldırılamıyor"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1236,20 +1236,20 @@ msgstr ""
 "Bu yeni sürüme yükseltebilmek için lütfen bekleyen tüm güncellemeleri "
 "uygulayın ve sisteminizi yeniden başlatın."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1025
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Şimdi Yükselt"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1048
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 artık kullanılabilir."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1174
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1182
 #, kde-format
 msgctxt "@info"
 msgid ""

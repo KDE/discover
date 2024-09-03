@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-31 00:40+0000\n"
+"POT-Creation-Date: 2024-09-03 00:40+0000\n"
 "PO-Revision-Date: 2024-08-21 05:23+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -566,7 +566,7 @@ msgid "Local bundle"
 msgstr "ლოკალური პაკეტი"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:823
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:824
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "აღმავლის არასწორი URL '%1'"
@@ -1214,12 +1214,12 @@ msgstr ""
 "თქვენი ოპერაციული სისტემის მხარდაჭერა %1-ზე დასრულდა. სჯობს მხარდაჭერილ "
 "ვერსიამდე განახლდეთ."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:930
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:931
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "%1-ის წაშლის შეცდომა"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1232,20 +1232,20 @@ msgstr ""
 "ამ ვერსიამდე განახლებისთვის დარწმუნდით, რომ ყველა დარჩენილი განახლება "
 "დააყენეთ და გადატვირთეთ სისტემა."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1025
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "განაახლეთ ახლა"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1048
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 ახლა ხელმისაწვდომია."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1174
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1182
 #, kde-format
 msgctxt "@info"
 msgid ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-31 00:40+0000\n"
+"POT-Creation-Date: 2024-09-03 00:40+0000\n"
 "PO-Revision-Date: 2024-07-27 21:52+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -569,7 +569,7 @@ msgid "Local bundle"
 msgstr "Helyi csomag"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:823
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:824
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Hibás appstream URL: „%1”"
@@ -1224,12 +1224,12 @@ msgstr ""
 "Az operációs rendszere befejezte a támogatást ekkor: %1. Fontolja meg a "
 "frissítést egy támogatott verzióra."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:930
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:931
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nem lehet eltávolítani ezt: „%1”"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1242,20 +1242,20 @@ msgstr ""
 "Az új verzióra váltáshoz először telepítsen minden elérhető frissítést, majd "
 "indítsa újra a rendszert."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1025
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Frissítés most"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1048
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "A(z) %1 most már elérhető."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1174
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1182
 #, kde-format
 msgctxt "@info"
 msgid ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-31 00:40+0000\n"
+"POT-Creation-Date: 2024-09-03 00:40+0000\n"
 "PO-Revision-Date: 2024-08-25 20:47+0200\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -568,7 +568,7 @@ msgid "Local bundle"
 msgstr "Lokales Paket"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:823
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:824
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Ungültige Appstream Adresse „%1“"
@@ -1226,12 +1226,12 @@ msgstr ""
 "Die Unterstützung durch Ihr Betriebssystem endete am %1. Bitte erwägen Sie "
 "die Aktualisierung auf eine unterstützte Version."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:930
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:931
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "„%1“ kann nicht entfernt werden"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1016
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1244,20 +1244,20 @@ msgstr ""
 "Wenden Sie alle ausstehenden Aktualisierungen an und starten Sie dann das "
 "System neu, um auf diese neue Version aktualisieren zu können."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1025
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Jetzt aktualisieren"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1048
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 ist jetzt verfügbar."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1174
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1182
 #, kde-format
 msgctxt "@info"
 msgid ""
