@@ -206,6 +206,7 @@ DiscoverPage {
     Kirigami.PromptDialog {
         id: shareSheet
         parent: applicationWindow().overlay
+        implicitWidth: Kirigami.Units.gridUnit * 20
         title: i18nc("@title:window", "Share Link to Application")
         standardButtons: QQC2.Dialog.NoButton
 
