@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-01 00:40+0000\n"
+"POT-Creation-Date: 2024-09-05 00:40+0000\n"
 "PO-Revision-Date: 2024-08-13 23:45+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -295,7 +295,7 @@ msgid "Cancel"
 msgstr "Atsisakyti"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:338
+#: discover/qml/ApplicationPage.qml:339
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -305,7 +305,7 @@ msgstr[2] "%1 įvertinimų"
 msgstr[3] "%1 įvertinimas"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:338
+#: discover/qml/ApplicationPage.qml:339
 #, kde-format
 msgid "No ratings yet"
 msgstr "Kol kas įvertinimų nėra"
@@ -460,34 +460,34 @@ msgstr "Iš %1"
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ApplicationPage.qml:209
+#: discover/qml/ApplicationPage.qml:210
 #, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
 msgstr "Bendrinti nuorodą į programą"
 
-#: discover/qml/ApplicationPage.qml:218
+#: discover/qml/ApplicationPage.qml:219
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Pasižiūrėk %1 programą!"
 
-#: discover/qml/ApplicationPage.qml:317
+#: discover/qml/ApplicationPage.qml:318
 #, kde-format
 msgid "Unknown author"
 msgstr "Nežinomas autorius"
 
-#: discover/qml/ApplicationPage.qml:362
+#: discover/qml/ApplicationPage.qml:363
 #, kde-format
 msgid "Version:"
 msgstr "Versija:"
 
-#: discover/qml/ApplicationPage.qml:374
+#: discover/qml/ApplicationPage.qml:375
 #, kde-format
 msgid "Size:"
 msgstr "Dydis:"
 
-#: discover/qml/ApplicationPage.qml:386
+#: discover/qml/ApplicationPage.qml:387
 #, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
@@ -496,24 +496,24 @@ msgstr[1] "Licencijos:"
 msgstr[2] "Licencijos:"
 msgstr[3] "Licencijos:"
 
-#: discover/qml/ApplicationPage.qml:394
+#: discover/qml/ApplicationPage.qml:395
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Nežinoma"
 
-#: discover/qml/ApplicationPage.qml:425
+#: discover/qml/ApplicationPage.qml:426
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
 msgstr ","
 
-#: discover/qml/ApplicationPage.qml:441
+#: discover/qml/ApplicationPage.qml:442
 #, kde-format
 msgid "What does this mean?"
 msgstr "Ką tai reiškia?"
 
-#: discover/qml/ApplicationPage.qml:450
+#: discover/qml/ApplicationPage.qml:451
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
@@ -522,140 +522,140 @@ msgstr[1] "Rodyti daugiau…"
 msgstr[2] "Rodyti daugiau…"
 msgstr[3] "Rodyti daugiau…"
 
-#: discover/qml/ApplicationPage.qml:460
+#: discover/qml/ApplicationPage.qml:461
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "Amžius:"
 
-#: discover/qml/ApplicationPage.qml:468
+#: discover/qml/ApplicationPage.qml:469
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
 msgstr "Visiems"
 
-#: discover/qml/ApplicationPage.qml:470
+#: discover/qml/ApplicationPage.qml:471
 #, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
 msgstr "%1+"
 
-#: discover/qml/ApplicationPage.qml:484
+#: discover/qml/ApplicationPage.qml:485
 #, kde-format
 msgid "See details"
 msgstr "Rodyti išsamiau"
 
-#: discover/qml/ApplicationPage.qml:508
+#: discover/qml/ApplicationPage.qml:509
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr "Nėra jokių prieinamų %1 ekrano kopijų"
 
-#: discover/qml/ApplicationPage.qml:650
+#: discover/qml/ApplicationPage.qml:651
 #, kde-format
 msgid "What's New"
 msgstr "Kas naujo"
 
-#: discover/qml/ApplicationPage.qml:683
+#: discover/qml/ApplicationPage.qml:684
 #, kde-format
 msgid "Reviews"
 msgstr "Apžvalgos"
 
-#: discover/qml/ApplicationPage.qml:694
+#: discover/qml/ApplicationPage.qml:695
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Įkeliamos %1 apžvalgos"
 
-#: discover/qml/ApplicationPage.qml:702
+#: discover/qml/ApplicationPage.qml:703
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "%1 apžvalgos laikinai neprieinamos"
 
-#: discover/qml/ApplicationPage.qml:724
+#: discover/qml/ApplicationPage.qml:725
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Rodyti visas apžvalgas"
 
-#: discover/qml/ApplicationPage.qml:736
+#: discover/qml/ApplicationPage.qml:737
 #, kde-format
 msgid "Write a Review"
 msgstr "Rašyti apžvalgą"
 
-#: discover/qml/ApplicationPage.qml:736
+#: discover/qml/ApplicationPage.qml:737
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Įsidiekite, norėdami rašyti apžvalgą"
 
-#: discover/qml/ApplicationPage.qml:758
+#: discover/qml/ApplicationPage.qml:759
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr "Išorinės nuorodos"
 
-#: discover/qml/ApplicationPage.qml:777
+#: discover/qml/ApplicationPage.qml:778
 #, kde-format
 msgid "Documentation"
 msgstr "Dokumentacija"
 
-#: discover/qml/ApplicationPage.qml:778
+#: discover/qml/ApplicationPage.qml:779
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Skaityti oficialią projekto dokumentaciją"
 
-#: discover/qml/ApplicationPage.qml:790
+#: discover/qml/ApplicationPage.qml:791
 #, kde-format
 msgid "Website"
 msgstr "Internetinė svetainė"
 
-#: discover/qml/ApplicationPage.qml:791
+#: discover/qml/ApplicationPage.qml:792
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Apsilankyti projekto internetinėje svetainėje"
 
-#: discover/qml/ApplicationPage.qml:803
+#: discover/qml/ApplicationPage.qml:804
 #, kde-format
 msgid "Donate"
 msgstr "Paremti"
 
-#: discover/qml/ApplicationPage.qml:804
+#: discover/qml/ApplicationPage.qml:805
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "Paremti ir padėkoti plėtotojams paaukojant jų projektui lėšų"
 
-#: discover/qml/ApplicationPage.qml:816
+#: discover/qml/ApplicationPage.qml:817
 #, kde-format
 msgid "Report Bug"
 msgstr "Pranešti apie programos klaidą"
 
-#: discover/qml/ApplicationPage.qml:817
+#: discover/qml/ApplicationPage.qml:818
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Registruoti rastą klaidą, kad padėtumėte ją pataisyti"
 
-#: discover/qml/ApplicationPage.qml:829
+#: discover/qml/ApplicationPage.qml:830
 #, kde-format
 msgid "Contribute"
 msgstr "Talkinti"
 
-#: discover/qml/ApplicationPage.qml:830
+#: discover/qml/ApplicationPage.qml:831
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Padėkite plėtotojams rašydami kodą, kurdami dizainą, testuodami ar versdami"
 
-#: discover/qml/ApplicationPage.qml:860
+#: discover/qml/ApplicationPage.qml:861
 #, kde-format
 msgid "All Licenses"
 msgstr "Visos licencijos"
 
-#: discover/qml/ApplicationPage.qml:892
+#: discover/qml/ApplicationPage.qml:893
 #, kde-format
 msgid "Content Rating"
 msgstr "Turinio įvertinimas"
 
-#: discover/qml/ApplicationPage.qml:915
+#: discover/qml/ApplicationPage.qml:916
 #, fuzzy, kde-format
 #| msgid "Submit Usage Information"
 msgctxt "@title:window"

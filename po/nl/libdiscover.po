@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-03 00:40+0000\n"
-"PO-Revision-Date: 2024-08-21 10:30+0200\n"
+"PO-Revision-Date: 2024-04-29 09:56+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -65,37 +65,40 @@ msgid "Error while submitting review: %1"
 msgstr "Fout bij indienen van review: %1"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Software Management"
 msgid "Package management"
-msgstr "Pakketbeheer"
+msgstr "Softwarebeheer"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:204
 #, kde-format
 msgid "Loading, please wait..."
-msgstr "Bezig met laden, even geduld..."
+msgstr ""
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:290
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Additional packages: "
 msgctxt "Root category name"
 msgid "Alpine Linux packages"
-msgstr "Alpine Linux-pakketten"
+msgstr "Extra pakketten: "
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:461
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
-msgstr "Alpine APK"
+msgstr ""
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:266
 #, kde-format
 msgid "Authorization denied"
-msgstr "Autorisatie afgewezen"
+msgstr ""
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
 msgid "Error: "
-msgstr "Fout: "
+msgstr "Fout"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
 #, kde-format
@@ -104,13 +107,11 @@ msgid ""
 "Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
 "alpine/edge/testing/"
 msgstr ""
-"URL van Alpine opslagruimte invoeren, bijvoorbeeld: http://dl-cdn."
-"alpinelinux.org/alpine/edge/testing/"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
 #, kde-format
 msgid "Error: Authorization denied"
-msgstr "Fout: autorisatie afgewezen"
+msgstr ""
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:277
@@ -121,12 +122,12 @@ msgstr "Fout"
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
 #, kde-format
 msgid "Failed to open APK database!"
-msgstr "APK-database openen is mislukt!"
+msgstr ""
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
 #, kde-format
 msgid "Failed to get a list of packages to upgrade!"
-msgstr "Ophalen van een lijst met op te waarderen pakketten is mislukt!"
+msgstr ""
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -968,14 +969,13 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
-"Er deed zich een interne fout voor. Stuur een rapport op https://bugs.kde."
-"org/enter_bug.cgi?product=Discover"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:433
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Repo not available"
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "Vervanging beschikbaar"
+msgstr "Installatiebron niet beschikbaar"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:435
 #, kde-kuit-format
@@ -986,14 +986,12 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
-"<resource>%1</resource> wordt niet langer bijgewerkt.<nl/><nl/>Vervang het "
-"door de ondersteunde versie geleverd door <resource>%2</resource>?"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:441
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr "Automatische verwijdering"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:443
 #, kde-kuit-format
@@ -1003,8 +1001,6 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
-"<resource>%1</resource> wordt niet langer bijgewerkt.<nl/><p>De gegeven "
-"reden is: <message>%2</message></p><nl/><p>Het automatisch verwijderen?</p>"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
@@ -1045,10 +1041,11 @@ msgstr "Instellingen en gebruikersgegevens wissen…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Permissions for %1"
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "Toegangsrechten"
+msgstr "Toegangsrechten voor %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
@@ -1060,7 +1057,7 @@ msgstr "Toegangsrechten configureren…"
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"
-msgstr "Elementen voor bijwerken van firmware"
+msgstr "Updates van firmware"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1203,7 +1200,7 @@ msgstr "Lettertypen"
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr "Dit probleem rapporteren aan %1"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:325
 #, kde-format
@@ -1235,8 +1232,8 @@ msgid ""
 "updates, and then restart the system."
 msgstr ""
 "<b>%1 is nu beschikbaar.</b>\n"
-"Om naar deze nieuwe versie te opwaarderen, pas alle beschikbare elementen "
-"voor bijwerken toe en start uw systeem opnieuw."
+"Om naar deze nieuwe versie te opwaarderen, pas alle beschikbare updates toe "
+"en start uw systeem opnieuw."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
 #, kde-format
@@ -1258,8 +1255,6 @@ msgid ""
 "The background service (PackageKit) stopped unexpectedly. It may have "
 "crashed."
 msgstr ""
-"De achtergrondservice (PackageKit) is onverwacht gestopt. Het kan zijn "
-"gecrasht."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2004,25 +1999,31 @@ msgstr "Niet beschikbaar"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr "Kritiek"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status Requested action"
+#| msgid "Install"
 msgid "Install"
 msgstr "Installeren"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove…"
 msgid "Remove"
-msgstr "Verwijderen"
+msgstr "Verwijderen…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Obsoletes:"
 msgid "Obsolete"
-msgstr "Overbodig"
+msgstr "Maakt verouderd:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status Requested action"
+#| msgid "Downgrade"
 msgid "Downgrade"
 msgstr "Afwaarderen"
 
@@ -2365,8 +2366,7 @@ msgstr "Met opwaarderen beginnen…"
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
-"U hebt nog wachtende elementen voor bijwerken voor de huidige versie. Toch "
-"wordt doorgegaan."
+"U hebt nog wachtende updates voor de huidige versie. Toch wordt doorgegaan."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
 #, kde-format
@@ -2506,7 +2506,7 @@ msgstr "Controleren op bijwerken van het systeem"
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
-"Items voor bijwerken downloaden. Wees geduldig omdat voortgang niet wordt "
+"Systeem update downloaden. Wees geduldig omdat voortgang niet wordt "
 "gerapporteerd."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
@@ -2536,14 +2536,16 @@ msgid "Unknown transaction type"
 msgstr "Onbekend type transactie"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Channels…"
 msgid "Channel: %1"
-msgstr "Kanaal: %1"
+msgstr "Kanalen…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Channels…"
 msgid "Channels for %1"
-msgstr "Kanalen voor %1"
+msgstr "Kanalen…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:400
@@ -2578,8 +2580,7 @@ msgstr ""
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
-msgstr ""
-"SteamOS: kan atomupd niet afvragen op elementen voor bijwerken van SteamOS..."
+msgstr "SteamOS: kan atomupd vragen om updates van SteamOS..."
 
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
@@ -2715,10 +2716,12 @@ msgid "Applications"
 msgstr "Toepassingen"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox"
+#| msgid "Application Updates"
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "Ondersteuning van toepassingen"
+msgstr "Updates van toepassingen"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
@@ -2731,12 +2734,6 @@ msgstr "Systeemsoftware"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Add-ons"
-
-#~ msgid "Could not find '%1' in '%2'; please make sure it's available."
-#~ msgstr "Kon '%1' niet in '%2' vinden; ga na dat het beschikbaar is."
-
-#~ msgid "%1 channels"
-#~ msgstr "%1 kanalen"
 
 #~ msgctxt ""
 #~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
@@ -2766,12 +2763,18 @@ msgstr "Add-ons"
 #~ msgid "Intense Content"
 #~ msgstr "Intense inhoud"
 
+#~ msgid "Could not find '%1' in '%2'; please make sure it's available."
+#~ msgstr "Kon '%1' niet in '%2' vinden; ga na dat het beschikbaar is."
+
 #~ msgctxt "%1 is the name of the application"
 #~ msgid "Permissions for %1"
 #~ msgstr "Toegangsrechten voor %1"
 
+#~ msgid "%1 channels"
+#~ msgstr "%1 kanalen"
+
 #~ msgid "Downloading system update"
-#~ msgstr "Downloaden voor bijwerken van systeem"
+#~ msgstr "Downloaden systeemupdate"
 
 #~ msgid "Updating the system"
 #~ msgstr "Het systeem wordt bijgewerkt"
@@ -2833,8 +2836,8 @@ msgstr "Add-ons"
 #~ "An update has been successfully installed. Reboot your system at your "
 #~ "convenience to start using it."
 #~ msgstr ""
-#~ "Elementen voor bijwerken zijn met succes geïnstalleerd. Start, als u "
-#~ "wilt, uw systeem opnieuw om het te gaan gebruiken."
+#~ "Updates zijn met succes geïnstalleerd. Start, als u wilt, uw systeem "
+#~ "opnieuw om het te gaan gebruiken."
 
 #~ msgid ""
 #~ "The update to %1 %2 has been successfully installed. Reboot your system "
@@ -2918,7 +2921,7 @@ msgstr "Add-ons"
 #~ msgstr "Gebruik"
 
 #~ msgid "Update"
-#~ msgstr "Elementen voor bijwerken"
+#~ msgstr "Updates"
 
 #~ msgid "Not Invokable"
 #~ msgstr "Niet aan te roepen"
@@ -3110,7 +3113,7 @@ msgstr "Add-ons"
 #~ msgstr "Dit bij te werken element is uitgegeven op %1"
 
 #~ msgid "System update available!"
-#~ msgstr "Elementen voor bijwerken van systeem beschikbaar!"
+#~ msgstr "Updates van systeem beschikbaar!"
 
 #~ msgctxt "Notification when a new version of Kubuntu is available"
 #~ msgid "A new version of Kubuntu is available"
