@@ -192,6 +192,10 @@ static void kRemoveDuplicates(AppStream::ComponentBox &input, AppStream::Bundle:
 
 QCoro::Task<AppStream::ComponentBox> AppStreamUtils::componentsByCategoriesTask(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind)
 {
+    if (cat->name() == QLatin1StringView("All Applications")) {
+        co_return pool->componentsByKind(AppStream::Component::KindDesktopApp);
+    }
+
     AppStream::ComponentBox ret(AppStream::ComponentBox::FlagNoChecks);
     for (const auto &categoryName : cat->involvedCategories()) {
         // Give the eventloop some breathing room by suspending execution for a bit. This in particular should keep the
