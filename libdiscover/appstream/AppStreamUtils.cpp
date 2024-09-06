@@ -102,7 +102,7 @@ QJsonObject AppStreamUtils::license(const QString &license)
     QString url = QString();
     QString licenseType = QStringLiteral("unknown");
 
-    if (license.isEmpty()) {
+    if (license.isEmpty() || license.compare(QStringLiteral("unknown"), Qt::CaseInsensitive) == 0) {
         name = i18n("Unknown");
     } else if (license.startsWith(QLatin1String("LicenseRef-proprietary"), Qt::CaseInsensitive)) {
         name = i18n("Proprietary");
