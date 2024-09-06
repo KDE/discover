@@ -91,7 +91,7 @@ DiscoverPage {
 
             case "unknown":
                 if (hasHomepageUrl) {
-                    return i18nc("@info", "%1 does not indicate under which license it is distributed. You may be able to determine this on <link url='%2>the application's website</link>. Find it there or contact the author if you want to use this application for anything other than private personal use.",
+                    return xi18nc("@info", "%1 does not indicate under which license it is distributed. You may be able to determine this on <link url='%2'>the application's website</link>. Find it there or contact the author if you want to use this application for anything other than private personal use.",
                                  appInfo.application.name,
                                  appInfo.application.homepage.toString());
                 } else {
