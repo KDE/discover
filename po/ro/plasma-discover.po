@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-05 00:40+0000\n"
+"POT-Creation-Date: 2024-09-06 00:40+0000\n"
 "PO-Revision-Date: 2024-06-09 11:25+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -1304,18 +1304,18 @@ msgctxt "widest character in the language"
 msgid "M"
 msgstr "M"
 
-#: discover/qml/ReviewsStats.qml:154
+#: discover/qml/ReviewsStats.qml:167
 #, kde-format
 msgid "Unknown reviewer"
 msgstr "Recenzent necunoscut"
 
-#: discover/qml/ReviewsStats.qml:175
+#: discover/qml/ReviewsStats.qml:188
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
 msgstr "„"
 
-#: discover/qml/ReviewsStats.qml:190
+#: discover/qml/ReviewsStats.qml:203
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"

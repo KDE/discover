@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-05 00:40+0000\n"
-"PO-Revision-Date: 2024-08-15 11:01+0400\n"
+"POT-Creation-Date: 2024-09-06 00:40+0000\n"
+"PO-Revision-Date: 2024-09-05 12:34+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -301,18 +301,7 @@ msgid "No ratings yet"
 msgstr "لم يقيم بعد"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -328,27 +317,18 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"ثبت هذا التطبيق إذا كنت تثق في مؤلفيه جيدا (<link url='%1'>%2</link>). شفرة "
-"مصدر هذا التطبيق مغلق جزئيًا أو كليًا للتفتيش والتحسين العام. هذا يعني أن "
-"الجهات الخارجية والمستخدمين مثلك لا يمكنهم التحقق من تشغيله وأمانه "
-"وموثوقيتة، أو تعديله وإعادة توزيعه دون إذن صريح من المؤلفين. <nl/> <nl/> قد "
-"يكون التطبيق آمنًا تمامًا للاستخدام  أو قد يكون  ضدك بطرق مختلفة - مثل جمع "
-"معلوماتك الشخصية أو تتبع موقعك أو نقل محتويات ملفاتك إلى شخص آخر. <nl/> <nl/"
-"> يمكنك معرفة المزيد على <link url = '%2'>%2 </link>. "
+"لا تقم بتثبيت %1 إلا إذا كنت تثق تمامًا في مؤلفيه لأنه <emphasis "
+"strong='true'>ملكي</emphasis>: حريتك في استخدام هذا التطبيق وتعديله وإعادة "
+"توزيعه مقيدة، كما أن كود المصدر الخاص به مغلق جزئيًا أو كليًا أمام التفتيش "
+"العام والتحسين. وهذا يعني أن الأطراف الثالثة والمستخدمين مثلك لا يمكنهم "
+"التحقق من تشغيله وأمانه وموثوقيته.<nl/><nl/>قد يكون التطبيق آمنًا تمامًا "
+"للاستخدام، أو قد يعمل ضدك بطرق مختلفة — مثل جمع معلوماتك الشخصية، أو تتبع "
+"موقعك، أو نقل محتويات بياناتك إلى شخص آخر.استخدمه فقط إذا كنت تثق تمامًا في "
+"مؤلفيه. قد تتوفر المزيد من المعلوماتعلى <link url='%2'>موقع الويب الخاص "
+"بالتطبيق</link>.<nl/><nl/>تعرف على المزيد على <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -362,13 +342,14 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"ثبت هذا التطبيق إذا كنت تثق في مؤلفيه جيدا (<link url='%1'>%2</link>). شفرة "
-"مصدر هذا التطبيق مغلق جزئيًا أو كليًا للتفتيش والتحسين العام. هذا يعني أن "
-"الجهات الخارجية والمستخدمين مثلك لا يمكنهم التحقق من تشغيله وأمانه "
-"وموثوقيتة، أو تعديله وإعادة توزيعه دون إذن صريح من المؤلفين. <nl/> <nl/> قد "
-"يكون التطبيق آمنًا تمامًا للاستخدام  أو قد يكون  ضدك بطرق مختلفة - مثل جمع "
-"معلوماتك الشخصية أو تتبع موقعك أو نقل محتويات ملفاتك إلى شخص آخر. <nl/> <nl/"
-"> يمكنك معرفة المزيد على <link url = '%2'>%2 </link>. "
+"لا تقم بتثبيت %1 إلا إذا كنت تثق تمامًا في مؤلفيه لأنه <emphasis "
+"strong='true'>ملكي</emphasis>: حريتك في استخدام هذا التطبيق وتعديله وإعادة "
+"توزيعه مقيدة، كما أن كود المصدر الخاص به مغلق جزئيًا أو كليًا أمام التفتيش "
+"العام والتحسين. وهذا يعني أن الأطراف الثالثة والمستخدمين مثلك لا يمكنهم "
+"التحقق من تشغيله وأمانه وموثوقيته.<nl/><nl/>قد يكون التطبيق آمنًا تمامًا "
+"للاستخدام، أو قد يعمل ضدك بطرق مختلفة — مثل جمع معلوماتك الشخصية، أو تتبع "
+"موقعك، أو نقل محتويات بياناتك إلى شخص آخر.لا تستخدمه إلا إذا كنت تثق تمامًا "
+"في مؤلفيه. تعرف على المزيد على <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:78
 #, kde-kuit-format
@@ -386,6 +367,15 @@ msgid ""
 "url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"يستخدم %1 ترخيصًا واحدًا أو أكثر غير معتمد باعتباره \"برنامجًا حرًا\" من قبل "
+"<link url='%2'>مؤسسة البرمجيات الحرة</link> أو <link url='%3'>مبادرة المصدر "
+"المفتوح</link>. وهذا يعني أن حريتك في استخدامه ودراسته وتعديله ومشاركته قد "
+"تكون مقيدة ببعض الطرق.<nl/><nl/>تأكد من قراءة نص الترخيص وفهم أي قيود قبل "
+"استخدام البرنامج.<nl/><nl/>إذا لم يمنح الترخيص حق الوصول لقراءة الكود "
+"المصدر، فتأكد من أنك تثق تمامًا في المؤلفين، حيث لا يمكن لأي شخص آخر التحقق "
+"من موثوقية وأمان الكود الخاص به لضمان عدم تصرفه ضدك بطرق خفية. قد تتوفر "
+"المزيد من المعلومات على <link url='%4'>موقع الويب الخاص بالتطبيق</link>.<nl/"
+"><nl/>تعرف على المزيد على <link url='%5'>%5</link>."
 
 #: discover/qml/ApplicationPage.qml:85
 #, kde-kuit-format
@@ -401,6 +391,14 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"يستخدم %1 ترخيصًا واحدًا أو أكثر غير معتمد باعتباره \"برنامجًا حرًا\" من قبل "
+"<link url='%2'>مؤسسة البرمجيات الحرة</link> أو <link url='%3'>مبادرة المصدر "
+"المفتوح</link>. وهذا يعني أن حريتك في استخدامه ودراسته وتعديله ومشاركته قد "
+"تكون مقيدة ببعض الطرق.<nl/><nl/>تأكد من قراءة نص الترخيص وفهم أي قيود قبل "
+"استخدام البرنامج.<nl/><nl/>إذا لم يمنح الترخيص حتى حق الوصول لقراءة الكود "
+"المصدر، فتأكد من أنك تثق تمامًا في المؤلفين، حيث لا يمكن لأي شخص آخر التحقق "
+"من موثوقية وأمان الكود الخاص به لضمان عدم تصرفه ضدك بطرق خفية.<nl/><nl/>تعرف "
+"على المزيد على <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
 #, kde-format
@@ -411,6 +409,10 @@ msgid ""
 "there or contact the author if you want to use this application for anything "
 "other than private personal use."
 msgstr ""
+"لا يشير %1 إلى الترخيص الذي وزع بموجبه. قد تتمكن من تحديد ذلك على <link "
+"url='%2>موقع الويب الخاص بالتطبيق</link>. يمكنك العثور عليه هناك أو الاتصال "
+"بالمؤلف إذا كنت ترغب في استخدام هذا التطبيق لأي غرض آخر غير الاستخدام الشخصي "
+"الخاص."
 
 #: discover/qml/ApplicationPage.qml:98
 #, kde-format
@@ -420,6 +422,8 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"لا يشير %1 إلى الترخيص الذي وزع بموجبه. اتصل بمؤلف التطبيق إذا كنت ترغب في "
+"استخدامه لأي غرض آخر غير الاستخدام الشخصي الخاص."
 
 #: discover/qml/ApplicationPage.qml:134
 #, kde-format
@@ -645,11 +649,10 @@ msgid "Content Rating"
 msgstr "تقييم المحتوى"
 
 #: discover/qml/ApplicationPage.qml:916
-#, fuzzy, kde-format
-#| msgid "Submit Usage Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "أرسل معلومات الاستخدام"
+msgstr "معلومات الرخصة"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -1142,6 +1145,8 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"إذا كنت تحب %1، فأخبر الأشخاص بما يميزه! ركز على الوظائف وسهولة الاستخدام "
+"والمظهر. إذا لم يلب التطبيق احتياجاتك، اشرح السبب."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1151,6 +1156,9 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"ذا لم يتم تشغيل %1، ففكر في الإبلاغ عن هذا إلى حزمه في %2 على <link url='%3'>"
+"%3</link> بدلاً من ذلك، حيث قد تكون مشكلة حزمة قابلة للإصلاح بسهولة بدلاً من "
+"خلل في التطبيق نفسه."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1160,6 +1168,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"إذا لم يتم تشغيل %1، ففكر في الإبلاغ عن هذا الأمر إلى مطوريه على <link "
+"url='%2'>%2</link> بدلاً من ذلك، حيث قد تكون هذه مشكلة في الحزمة يمكن إصلاحها "
+"بسهولة وليس خللًا في التطبيق نفسه."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1168,6 +1179,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"إذا كان التطبيق يتعطل كثيرًا، ففكر في الإبلاغ عن هذا الأمر للمطورين على <link "
+"url='%1'>%1</link> بدلاً من ذلك."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1177,6 +1190,8 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"إذا كنت تواجه مشكلة مع التطبيق، ففكر في الإبلاغ عنها إلى المطورين على <link "
+"url='%1'>%1</link> بدلاً من ذلك، أو قم بوصف المشكلة هنا بمزيد من التفصيل."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1201,7 +1216,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "launch,run,start"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1211,7 +1226,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "crash,segfault"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1221,7 +1236,7 @@ msgctxt ""
 "your language and/or shorten to common stems contained by multiple forms of "
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
-msgstr ""
+msgstr "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1299,18 +1314,18 @@ msgctxt "widest character in the language"
 msgid "M"
 msgstr "س"
 
-#: discover/qml/ReviewsStats.qml:154
+#: discover/qml/ReviewsStats.qml:167
 #, kde-format
 msgid "Unknown reviewer"
 msgstr "مقيّم مجهول"
 
-#: discover/qml/ReviewsStats.qml:175
+#: discover/qml/ReviewsStats.qml:188
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
 msgstr "“"
 
-#: discover/qml/ReviewsStats.qml:190
+#: discover/qml/ReviewsStats.qml:203
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
@@ -1467,27 +1482,25 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "عند الانتهاء، قم آليا بـ:"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "لا تحدد شيء"
+msgstr "اختر إجراء"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "أعِد التشغيل الآن"
+msgstr "أعد التّشغيل"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
-msgstr ""
+msgstr "أطفئ"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format
@@ -1498,7 +1511,7 @@ msgstr "الحجم الكليّ: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "أعد التشغيل لتثبت التحديثات الآن"
 
 #: discover/qml/UpdatesPage.qml:433
 #, kde-format

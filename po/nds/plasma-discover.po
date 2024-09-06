@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-05 00:40+0000\n"
+"POT-Creation-Date: 2024-09-06 00:40+0000\n"
 "PO-Revision-Date: 2014-03-16 09:10+0100\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1267,18 +1267,18 @@ msgctxt "widest character in the language"
 msgid "M"
 msgstr ""
 
-#: discover/qml/ReviewsStats.qml:154
+#: discover/qml/ReviewsStats.qml:167
 #, kde-format
 msgid "Unknown reviewer"
 msgstr ""
 
-#: discover/qml/ReviewsStats.qml:175
+#: discover/qml/ReviewsStats.qml:188
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
 msgstr ""
 
-#: discover/qml/ReviewsStats.qml:190
+#: discover/qml/ReviewsStats.qml:203
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"

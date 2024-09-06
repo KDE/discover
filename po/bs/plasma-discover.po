@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-05 00:40+0000\n"
+"POT-Creation-Date: 2024-09-06 00:40+0000\n"
 "PO-Revision-Date: 2015-02-04 16:18+0000\n"
 "Last-Translator: Nermina Ahmić <nahmic1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -1268,18 +1268,18 @@ msgctxt "widest character in the language"
 msgid "M"
 msgstr ""
 
-#: discover/qml/ReviewsStats.qml:154
+#: discover/qml/ReviewsStats.qml:167
 #, kde-format
 msgid "Unknown reviewer"
 msgstr ""
 
-#: discover/qml/ReviewsStats.qml:175
+#: discover/qml/ReviewsStats.qml:188
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
 msgstr ""
 
-#: discover/qml/ReviewsStats.qml:190
+#: discover/qml/ReviewsStats.qml:203
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"

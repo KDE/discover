@@ -1,21 +1,21 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Freek de Kruijf <freekdekruijf@kde.nl>
 # SPDX-FileCopyrightText: 2024 pieter <pieterkristensen@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-05 00:40+0000\n"
-"PO-Revision-Date: 2024-04-26 20:18+0200\n"
-"Last-Translator: pieter <pieterkristensen@gmail.com>\n"
-"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
+"POT-Creation-Date: 2024-09-06 00:40+0000\n"
+"PO-Revision-Date: 2024-09-05 09:54+0200\n"
+"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: discover/DiscoverObject.cpp:182
@@ -46,18 +46,7 @@ msgid "Report This Issue to %1"
 msgstr "Dit probleem rapporteren aan %1"
 
 #: discover/DiscoverObject.cpp:192
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -68,9 +57,7 @@ msgid ""
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 "Om Ontdekken voor toepassingen te gebruiken, installeer <link url='https://"
-"wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> of <link "
-"url='https://wiki.archlinux.org/title/"
-"KDE#Discover_does_not_show_any_applications'>PackageKit</link> met gebruik "
+"wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</link> met gebruik "
 "van de pakketbeheerder <command>pacman</command>.<nl/><nl/> Bekijk <link "
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>pakketten maken "
 "van %1 voor Ontdekken</link>"
@@ -86,6 +73,13 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"Ondersteuning voor beheer van pakketten uit %1 is onvolledig; u zou een "
+"aantal problemen tegen kunnen komen. Rapporteer geen bugs aan KDE. Het wordt "
+"zeer aanbevolen om de installatie van het pakket <resource>packagekit-qt6</"
+"resource> ongedaan te maken en Ontdekken te gebruiken om alleen Flatpaks, "
+"Snaps en Add-Ons te beheren.<para>%1 onderhouders bevelen in plaats daarvan "
+"aan het opdrachtregelhulpmiddel <command>pacman</command> te gebruiken om "
+"pakketten te beheren.</para>"
 
 #: discover/DiscoverObject.cpp:293
 #, kde-format
@@ -314,19 +308,7 @@ msgid "No ratings yet"
 msgstr "Nog geen waarderingen"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (<link url='%1'>%2</link>).<nl/"
-#| "><nl/>You can learn more at <link url='%3'>%3</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -342,32 +324,21 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"De broncode van deze toepassing is gedeeltelijk of geheel gesloten voor "
-"onderzoek en verbetering door derden. Dat betekent verder niemand de "
-"werking, veiligheid en betrouwbaarheid ervan kan verifiëren of de software "
-"kan modificeren en het opnieuw distribueren zonder de uitdrukkelijke "
-"toestemming van de auteur.<nl/><nl/>De toepassing kan perfect veilig voor "
-"ons zijn of het kan op verschillende manieren tegen u werken - zoals door "
-"persoonlijke informatie te oogsten, uw locatie te volgen of de inhoud van uw "
-"bestanden naar iemand anders versturen. Er is geen gemakkelijke manier om "
-"hier zekerheid over te krijgen. U zou deze toepassing dus alleen moeten "
-"installeren als u de auteurs volledig vertrouwt(<link url='%1'>%2</link>)."
-"<nl/><nl/>U kunt meer te weten komen op <link url='%3'>%3</link>."
+"Installeer %1 alleen als u de auteurs volledig vertrouwt omdat het <emphasis "
+"strong='true'>eigendom</emphasis> is: uw vrijheid om deze toepassing te "
+"gebruiken, te wijzigen of te verspreiden is beperkt en zijn broncode is "
+"gedeeltelijk of geheel gesloten voor publieke inspectie en verbetering. Dat "
+"betekent dat derden en gebruikers zoals u zijn werking, veiligheid en "
+"betrouwbaarheid niet kunnen verifiëren.<nl/><nl/>De toepassing kan perfect "
+"veilig zijn te gebruiken of het kan op verschillende manieren tegen u werken "
+"- zoals door persoonlijke informatie te oogsten, uw locatie te volgen of de "
+"inhoud van uw bestanden naar iemand anders versturen. Gebruik het alleen als "
+"u zijn auteurs volledig vertrouwt. Meer informatie kan beschikbaar zijn op "
+"<link url='%2'>de website van de toepassing</link>.<nl/><nl/>Kom meer te "
+"weten op <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -381,17 +352,17 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"De broncode van deze toepassing is gedeeltelijk of geheel gesloten voor "
-"onderzoek en verbetering door derden. Dat betekent verder niemand de "
-"werking, veiligheid en betrouwbaarheid ervan kan verifiëren of de software "
-"kan modificeren en het opnieuw distribueren zonder de uitdrukkelijke "
-"toestemming van de auteur.<nl/><nl/>De toepassing kan perfect veilig voor "
-"ons zijn of het kan op verschillende manieren tegen u werken - zoals door "
-"persoonlijke informatie te oogsten, uw locatie te volgen of de inhoud van uw "
-"bestanden naar iemand anders versturen. Er is geen gemakkelijke manier om "
-"hier zekerheid over te krijgen. U zou deze toepassing dus alleen moeten "
-"installeren als u zijn auteurs volledig vertrouwt(%1).<nl/><nl/>U kunt meer "
-"te weten komen op <link url='%2'>%2</link>."
+"Installeer %1 alleen als u de auteurs volledig vertrouwt omdat het <emphasis "
+"strong='true'>eigendom</emphasis> is: uw vrijheid om deze toepassing te "
+"gebruiken, te wijzigen of te verspreiden is beperkt en zijn broncode is "
+"gedeeltelijk of geheel gesloten voor publieke inspectie en verbetering. Dat "
+"betekent dat derden en gebruikers zoals u zijn werking, veiligheid en "
+"betrouwbaarheid niet kunnen verifiëren.<nl/><nl/>De toepassing kan perfect "
+"veilig te gebruiken zijn of het kan op verschillende manieren tegen u werken "
+"- zoals door persoonlijke informatie te oogsten, uw locatie te volgen of de "
+"inhoud van uw bestanden naar iemand anders versturen. Gebruik het alleen als "
+"u zijn auteurs volledig vertrouwt. Kom meer te weten op <link url='%2'>%2</"
+"link>."
 
 #: discover/qml/ApplicationPage.qml:78
 #, kde-kuit-format
@@ -409,6 +380,18 @@ msgid ""
 "url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"%1 gebruikt een of meer licenties die niet gecertificeerd zijn als “Vrije "
+"software” door ofwel de <link url='%2'>Free Software Foundation</link> of "
+"het <link url='%3'>Open Source Initiative</link>. Dit betekent dat uw "
+"vrijheid om te gebruiken, te bestuderen, te wijzigen en te delen op bepaalde "
+"manieren beperkt kan zijn.<nl/><nl/>Lees de licentietekst goed door en "
+"begrijp elke beperking alvorens de software te gebruiken.<nl/><nl/>Als de "
+"licentie zelfs geen toegang garandeert om de broncode te lezen, kijk dan of "
+"u de auteurs volledig vertrouwt, omdat niemand anders de betrouwbaarheid en "
+"de veiligheid van de code kan verifiëren om te verzekeren dat het niet tegen "
+"u werkt op een verborgen manier. Meer informatie kan beschikbaar zijn op "
+"<link url='%4'>de website van de toepassing</link>.<nl/><nl/>Kom meer te "
+"weten op <link url='%5'>%5</link>."
 
 #: discover/qml/ApplicationPage.qml:85
 #, kde-kuit-format
@@ -424,6 +407,17 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"%1 gebruikt een of meer licenties die niet gecertificeerd zijn als “Vrije "
+"software” door ofwel de <link url='%2'>Free Software Foundation</link> of "
+"het <link url='%3'>Open Source Initiative</link>. Dit betekent dat uw "
+"vrijheid om te gebruiken, te bestuderen, te wijzigen en te delen op bepaalde "
+"manieren beperkt kan zijn.<nl/><nl/>Lees de licentietekst goed door en "
+"begrijp elke beperking alvorens de software te gebruiken.<nl/><nl/>Als de "
+"licentie zelfs geen toegang garandeert om de broncode te lezen, kijk dan of "
+"u de auteurs volledig vertrouwt, omdat niemand anders de betrouwbaarheid en "
+"de veiligheid van de code kan verifiëren om te verzekeren dat het niet tegen "
+"u werkt op een verborgen manier. Kom meer te weten op <link url='%4'>%4</"
+"link>."
 
 #: discover/qml/ApplicationPage.qml:94
 #, kde-format
@@ -434,6 +428,10 @@ msgid ""
 "there or contact the author if you want to use this application for anything "
 "other than private personal use."
 msgstr ""
+"%1 geeft niet aan onder welke licentie het wordt gedistribueerd. U bent "
+"misschien in staat om dit op <link url='%2>de website van de toepassing</"
+"link> te bepalen. Zoek het daar of neem contact op met de auteur als u deze "
+"toepassing wilt gebruiken voor iets anders dan privé persoonlijk gebruik."
 
 #: discover/qml/ApplicationPage.qml:98
 #, kde-format
@@ -443,18 +441,18 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"%1 geeft niet aan onder welke licentie het wordt gedistribueerd. Neem "
+"contact op met de auteur van deze toepassing als u het wilt gebruiken voor "
+"iets anders dan privé persoonlijk gebruik."
 
 #: discover/qml/ApplicationPage.qml:134
-#, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "Delen"
 
 #: discover/qml/ApplicationPage.qml:142
-#, fuzzy, kde-format
-#| msgid "Add-ons"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
 msgstr "Add-ons"
@@ -473,11 +471,10 @@ msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:210
-#, fuzzy, kde-format
-#| msgid "Send a link for this application"
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
-msgstr "Een koppeling voor deze toepassingen sturen"
+msgstr "Koppeling met toepassing delen"
 
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
@@ -517,7 +514,7 @@ msgstr "Onbekend"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:442
 #, kde-format
@@ -535,27 +532,24 @@ msgstr[1] "Bekijk meer…"
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr ""
+msgstr "Leeftijden:"
 
 #: discover/qml/ApplicationPage.qml:469
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr ""
+msgstr "Iedereen"
 
 #: discover/qml/ApplicationPage.qml:471
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr "%1"
+msgstr "%1+"
 
 #: discover/qml/ApplicationPage.qml:485
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
+#, kde-format
 msgid "See details"
-msgstr "Zie details…"
+msgstr "Zie details"
 
 #: discover/qml/ApplicationPage.qml:509
 #, kde-format
@@ -604,7 +598,7 @@ msgstr "Installeren om een review te schrijven"
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
-msgstr ""
+msgstr "Externe links"
 
 #: discover/qml/ApplicationPage.qml:778
 #, kde-format
@@ -668,11 +662,10 @@ msgid "Content Rating"
 msgstr "Waardering van inhoud"
 
 #: discover/qml/ApplicationPage.qml:916
-#, fuzzy, kde-format
-#| msgid "More Information…"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "Meer informatie…"
+msgstr "Licentie-informatie"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -969,8 +962,7 @@ msgid "Copy to Clipboard"
 msgstr "Naar klembord kopiëren"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
 msgstr "Gebruiksinformatie aanleveren"
 
@@ -995,8 +987,7 @@ msgid "Configure"
 msgstr "Configureren"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
 msgstr "Terugkoppeling configureren…"
 
@@ -1153,6 +1144,9 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"Als u %1 waardeert, vertel anderen wat er zo geweldig aan is! Focus op "
+"functionaliteit, bruikbaarheid en uiterlijk. Als de toepassing niet aan wat "
+"u nodig hebt voldoet, leg uit waarom."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1162,6 +1156,10 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"Als %1 niet wil starten, overweeg dit te rapporteren aan de pakketmakers in "
+"%2 op <link url='%3'>%3</link>, omdat het misschien een gemakkelijk te "
+"repareren probleem met pakket maken is in plaats van een foutje in de "
+"toepassing zelf."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1171,6 +1169,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"Als %1 niet wil starten, overweeg dit te rapporteren aan zijn ontwikkelaars "
+"op <link url='%2'>%</link>, omdat het misschien een gemakkelijk te repareren "
+"probleem met pakket maken is in plaats van een foutje in de toepassing zelf."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1179,6 +1180,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"Als  de toepassing veel crasht, overweeg het te rapporteren aan de "
+"ontwikkelaars op <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1188,6 +1191,9 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"Als u een probleem met de toepassing hebt, overweeg het te rapporteren aan "
+"de ontwikkelaars op <link url='%1'>%1</link> of beschrijf anders het "
+"probleem hier in groter detail."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1212,7 +1218,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "starten,uitvoeren,start"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1222,7 +1228,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "crash,segfault"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1232,7 +1238,7 @@ msgctxt ""
 "your language and/or shorten to common stems contained by multiple forms of "
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
-msgstr ""
+msgstr "werkt niet,dom,troep,waardeloos,verschrikkelijk,haat het"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1310,18 +1316,18 @@ msgctxt "widest character in the language"
 msgid "M"
 msgstr "M"
 
-#: discover/qml/ReviewsStats.qml:154
+#: discover/qml/ReviewsStats.qml:167
 #, kde-format
 msgid "Unknown reviewer"
 msgstr "Onbekende recensent"
 
-#: discover/qml/ReviewsStats.qml:175
+#: discover/qml/ReviewsStats.qml:188
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
 msgstr "“"
 
-#: discover/qml/ReviewsStats.qml:190
+#: discover/qml/ReviewsStats.qml:203
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
@@ -1480,27 +1486,25 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "Bij voltooien, automatisch:"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "Niets selecteren"
+msgstr "Selecteer een actie"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "Nu herstarten"
+msgstr "Herstarten"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
-msgstr ""
+msgstr "Afsluiten"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format
@@ -1511,7 +1515,7 @@ msgstr "Totale grootte: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "Herstarten om elementen voor bijwerken nu te installeren"
 
 #: discover/qml/UpdatesPage.qml:433
 #, kde-format
