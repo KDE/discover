@@ -388,13 +388,31 @@ DiscoverPage {
                         Layout.alignment: Qt.AlignRight
                     }
                     RowLayout {
+                        id: licenseRowLayout
                         spacing: Kirigami.Units.smallSpacing
+
+                        readonly property string infoButtonToolTipText: i18nc("@info:tooltip for button opening license type description", "What does this mean?")
 
                         QQC2.Label {
                             visible : appInfo.application.licenses.length === 0
                             text: i18nc("The app does not provide any licenses", "Unknown")
                             wrapMode: Text.Wrap
                             elide: Text.ElideRight
+                            color: appInfo.colorForLicenseType("unknown")
+                        }
+
+
+                        // Button to open the license details dialog if license is empty
+                        QQC2.Button {
+                            Layout.preferredWidth: appInfo.smallButtonSize
+                            Layout.preferredHeight: appInfo.smallButtonSize
+                            visible : appInfo.application.licenses.length === 0
+                            icon.name: "help-contextual"
+                            onClicked: licenseDetailsDialog.openWithLicenseType("unknown");
+
+                            QQC2.ToolTip {
+                                text: licenseRowLayout.infoButtonToolTipText
+                            }
                         }
 
                         Repeater {
@@ -439,7 +457,7 @@ DiscoverPage {
                                     onClicked: licenseDetailsDialog.openWithLicenseType(delegate.modelData.licenseType);
 
                                     QQC2.ToolTip {
-                                        text: i18n("What does this mean?")
+                                        text: i18n(licenseRowLayout.infoButtonToolTipText)
                                     }
                                 }
                             }
