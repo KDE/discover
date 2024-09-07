@@ -20,6 +20,7 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QUrlQuery>
+#include <QtConcurrentRun>
 
 using namespace std::chrono_literals;
 using namespace AppStreamUtils;
@@ -190,25 +191,31 @@ static void kRemoveDuplicates(AppStream::ComponentBox &input, AppStream::Bundle:
     }
 }
 
-QCoro::Task<AppStream::ComponentBox> AppStreamUtils::componentsByCategoriesTask(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind)
+QFuture<AppStream::ComponentBox> AppStreamUtils::componentsByCategoriesTask(AppStream::ConcurrentPool *pool, Category *cat, AppStream::Bundle::Kind kind)
 {
     if (cat->name() == QLatin1StringView("All Applications")) {
-        co_return pool->componentsByKind(AppStream::Component::KindDesktopApp);
+        return pool->componentsByKind(AppStream::Component::KindDesktopApp);
     }
 
-    AppStream::ComponentBox ret(AppStream::ComponentBox::FlagNoChecks);
-    for (const auto &categoryName : cat->involvedCategories()) {
-        // Give the eventloop some breathing room by suspending execution for a bit. This in particular should keep the
-        // UI more responsive while we fetch a substantial amount of components on e.g. the all apps view.
-        constexpr auto arbitrarySuspendTime = 64ms;
-        QTimer timer;
-        timer.start(arbitrarySuspendTime);
-        co_await timer;
-
-        ret += pool->componentsByCategories({categoryName});
+    const auto categories = cat->involvedCategories();
+    QList<QFuture<AppStream::ComponentBox>> futures;
+    futures.reserve(categories.size());
+    for (const auto &categoryName : categories) {
+        futures += pool->componentsByCategories({categoryName});
     }
-    kRemoveDuplicates(ret, kind);
-    co_return ret;
+
+    if (futures.size() == 1) {
+        return futures.constFirst();
+    }
+
+    return QtConcurrent::run([futures, kind]() -> AppStream::ComponentBox {
+        AppStream::ComponentBox ret(AppStream::ComponentBox::FlagNoChecks);
+        for (const auto &box : futures) {
+            ret += box.result();
+        }
+        kRemoveDuplicates(ret, kind);
+        return ret;
+    });
 }
 
 DISCOVERCOMMON_EXPORT bool AppStreamUtils::kIconLoaderHasIcon(const QString &name)

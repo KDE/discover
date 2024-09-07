@@ -8,7 +8,6 @@
 
 #include "PackageKitResource.h"
 
-#include <AppStreamQt/pool.h>
 #include <PackageKit/Offline>
 #include <PackageKit/Transaction>
 #include <QFile>
@@ -19,6 +18,8 @@
 #include <QThreadPool>
 #include <QTimer>
 #include <QVariantList>
+
+#include <appstream/AppStreamConcurrentPool.h>
 #include <resources/AbstractResourcesBackend.h>
 
 class AppPackageKitResource;
@@ -175,7 +176,7 @@ private:
     void updateProxy();
     void foundNewMajorVersion(const AppStream::Release &release);
 
-    QScopedPointer<AppStream::Pool> m_appdata;
+    QScopedPointer<AppStream::ConcurrentPool> m_appdata;
     bool m_appdataLoaded = false;
     PackageKitUpdater *m_updater;
     QPointer<PackageKit::Transaction> m_refresher;
