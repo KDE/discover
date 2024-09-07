@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-06 00:40+0000\n"
-"PO-Revision-Date: 2024-08-22 13:40+0300\n"
+"PO-Revision-Date: 2024-09-05 16:12+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -306,21 +306,7 @@ msgid "No ratings yet"
 msgstr "Vēl nav vērtējumu"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. More information may be available on <link "
-#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
-#| "url='%3'>%3</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -337,31 +323,19 @@ msgid ""
 "url='%3'>%3</link>."
 msgstr ""
 "Instalējiet „%1“ tikai tad, ja pilnībā uzticaties tās autoriem, jo šī ir "
-"<strong>īpašniekprogrammatūra</strong>. Jūsu brīvības izmantot, mainīt un "
-"izplatīt tālāk šo programmu ir ierobežotas, bet tās pirmkodu ir daļēji vai "
-"pilnībā aizliegts citiem apskatīt un uzlabot. Tas nozīmē, ka trešās puses un "
-"lietotāji kā tu nevar pārliecināties par tās darbību, drošību un uzticamību."
-"<nl/><nl/>Programmu var būt droši lietot, bet tā var arī darboties pret jūsu "
-"interesēm, piemēram, vākt jūsu personas datus, izsekot jūsu atrašanās vietai "
-"vai pārsūtīt jūsu datņu saturu citām personām. Izmantojiet šo programmu "
-"tikai tad, ja pilnībā uzticaties tās autoriem. Vairāk, iespējams, varat "
-"uzzināt <link url='%2'>programmas tīmekļa vietnē</link>.<nl/><nl/>Uzziniet "
-"vairāk <link url='%3'>%3</link>."
+"<emphasis strong='true'>īpašniekprogrammatūra</emphasis>. Jūsu brīvības "
+"izmantot, mainīt un izplatīt tālāk šo programmu ir ierobežotas, bet tās "
+"pirmkodu ir daļēji vai pilnībā aizliegts citiem apskatīt un pilnveidot. Tas "
+"nozīmē, ka trešās puses un lietotāji kā tu nevar pārliecināties par tās "
+"darbību, drošību un uzticamību.<nl/><nl/>Programmu var būt droši lietot, bet "
+"tā var arī darboties pret jūsu interesēm, piemēram, vākt jūsu personas "
+"datus, izsekot jūsu atrašanās vietai vai pārsūtīt jūsu datņu saturu citām "
+"personām. Izmantojiet šo programmu tikai tad, ja pilnībā uzticaties tās "
+"autoriem. Vairāk, iespējams, varat uzzināt <link url='%2'>programmas tīmekļa "
+"vietnē</link>.<nl/><nl/>Uzziniet vairāk <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. Learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -376,15 +350,15 @@ msgid ""
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
 "Instalējiet „%1“ tikai tad, ja pilnībā uzticaties tās autoriem, jo šī ir "
-"<strong>īpašniekprogrammatūra</strong>. Jūsu brīvības izmantot, mainīt un "
-"izplatīt tālāk šo programmu ir ierobežotas, bet tās pirmkodu ir daļēji vai "
-"pilnībā aizliegts citiem apskatīt un uzlabot. Tas nozīmē, ka trešās puses un "
-"lietotāji kā tu nevar pārliecināties par tās darbību, drošību un uzticamību."
-"<nl/><nl/>Programmu var būt droši lietot, bet tā var arī darboties pret jūsu "
-"interesēm, piemēram, vākt jūsu personas datus, izsekot jūsu atrašanās vietai "
-"vai pārsūtīt jūsu datņu saturu citām personām. Izmantojiet šo programmu "
-"tikai tad, ja pilnībā uzticaties tās autoriem. Uzziniet vairāk, ejot uz "
-"<link url='%2'>%2</link>."
+"<emphasis strong='true'>īpašniekprogrammatūra</emphasis>. Jūsu brīvības "
+"izmantot, mainīt un izplatīt tālāk šo programmu ir ierobežotas, bet tās "
+"pirmkodu ir daļēji vai pilnībā aizliegts citiem apskatīt un uzlabot. Tas "
+"nozīmē, ka trešās puses un lietotāji kā tu nevar pārliecināties par tās "
+"darbību, drošību un uzticamību.<nl/><nl/>Programmu var būt droši lietot, bet "
+"tā var arī darboties pret jūsu interesēm, piemēram, vākt jūsu personas "
+"datus, izsekot jūsu atrašanās vietai vai pārsūtīt jūsu datņu saturu citām "
+"personām. Izmantojiet šo programmu tikai tad, ja pilnībā uzticaties tās "
+"autoriem. Uzziniet vairāk, ejot uz <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:78
 #, kde-kuit-format
@@ -1172,6 +1146,9 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"Ja jums patīk „%1“, pastāstiet arī citiem, kas tajā ir labs! Īpaši "
+"pastāstiet par tās funkcionalitāti, lietojamību un izskatu. Ja kaut kas "
+"programmā neatbilda jūsu gaidām, pastāstiet par to vairāk."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1181,6 +1158,9 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"Ja nevarat palaist „%1“, apsveriet atsauksmes vietā par to ziņot pakotņu "
+"veidotājiem „%2“ vietnē (<link url='%3'>%3</link>), jo tā varētu būt viegli "
+"novēršama pakošanas problēma, bet ne kļūda pašā programmā."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1190,6 +1170,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"Ja nevarat palaist „%1“, apsveriet atsauksmes vietā par to ziņot programmas "
+"izstrādātājiem saitē <link url='%2'>%2</link>, jo tā varētu būt viegli "
+"novēršama pakošanas problēma, bet ne kļūda pašā programmā."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1198,6 +1181,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"Ja programma bieži avarē, apsveriet atsauksmes vietā par to ziņot "
+"izstrādātājiem vietnē <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1207,6 +1192,9 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"Ja jums ir problēmas ar programmu, apsveriet atsauksmes vietā par to tiešā "
+"veidā informēt izstrādātājus vietnē <link url='%1'>%1</link>, vai arī rūpīgi "
+"aprakstiet problēmu te."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1231,7 +1219,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "palaist,sākt,ieslēgt,palaiž,sāk,ieslēdz"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1241,7 +1229,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "avarē,uzkaras"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1251,7 +1239,7 @@ msgctxt ""
 "your language and/or shorten to common stems contained by multiple forms of "
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
-msgstr ""
+msgstr "nedarbojas,slikt,mēsls,sūd,briesm,ienīst,stulb"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1494,11 +1482,7 @@ msgid "Select None"
 msgstr "Neatlasīt nevienu"
 
 #: discover/qml/UpdatesPage.qml:254
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info on the completion of updates, the action that automatically happens "
-#| "after (e.g shutdown)"
-#| msgid "On completion, automatically:"
+#, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
@@ -1518,9 +1502,7 @@ msgid "Restart"
 msgstr "Pārstartēt"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shutdown"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr "Izslēgt"
