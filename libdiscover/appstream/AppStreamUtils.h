@@ -10,11 +10,11 @@
 #include <AppStreamQt/image.h>
 #include <AppStreamQt/pool.h>
 #include <QColor>
-#include <QCoroTask>
 #include <QList>
 #include <QUrl>
 #include <resources/AbstractResource.h>
 
+#include "AppStreamConcurrentPool.h"
 #include "discovercommon_export.h"
 
 namespace AppStreamUtils
@@ -39,7 +39,7 @@ DISCOVERCOMMON_EXPORT QString versionString(const QString &version, const AppStr
 DISCOVERCOMMON_EXPORT QString contentRatingDescription(const AppStream::Component &appdata);
 DISCOVERCOMMON_EXPORT uint contentRatingMinimumAge(const AppStream::Component &appdata);
 
-DISCOVERCOMMON_EXPORT QCoro::Task<AppStream::ComponentBox> componentsByCategoriesTask(AppStream::Pool *pool, Category *cat, AppStream::Bundle::Kind kind);
+DISCOVERCOMMON_EXPORT QFuture<AppStream::ComponentBox> componentsByCategoriesTask(AppStream::ConcurrentPool *pool, Category *cat, AppStream::Bundle::Kind kind);
 
 DISCOVERCOMMON_EXPORT bool kIconLoaderHasIcon(const QString &name);
 }
