@@ -135,6 +135,7 @@ private:
     FlatpakRemote *installSource(FlatpakResource *resource);
 
     ResultsStream *deferredResultStream(const QString &streamName, std::function<QCoro::Task<>(ResultsStream *)> callback);
+    ResultsStream *deferredResultStreamNoFinish(const QString &streamName, std::function<QCoro::Task<>(ResultsStream *)> callback);
     // Returned Installation and Ref objects are g_object_ref'ed, caller is responsible for calling g_object_unref.
     QCoro::Task<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> listInstalledRefsForUpdate();
 

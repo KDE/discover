@@ -128,7 +128,7 @@ Delay::Delay()
 
 PackageKitBackend::PackageKitBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
-    , m_appdata(new AppStream::Pool)
+    , m_appdata(new AppStream::ConcurrentPool)
     , m_updater(new PackageKitUpdater(this))
     , m_refresher(nullptr)
     , m_isFetching(0)
@@ -317,7 +317,7 @@ void PackageKitBackend::reloadPackageList()
 {
     acquireFetching(true);
 
-    m_appdata.reset(new AppStream::Pool);
+    m_appdata->reset(new AppStream::Pool, &m_threadPool);
 
     const auto loadDone = [this](bool correct) {
         if (!correct && m_packages.packages.isEmpty()) {
@@ -340,10 +340,10 @@ void PackageKitBackend::reloadPackageList()
         acquireFetching(false);
 
         const auto distroComponents = m_appdata->componentsById(AppStream::SystemInfo::currentDistroComponentId());
-        if (distroComponents.isEmpty()) {
+        if (distroComponents.result().isEmpty()) {
             qWarning() << "PackageKitBackend: No distro component found for" << AppStream::SystemInfo::currentDistroComponentId();
         }
-        for (const AppStream::Component &dc : distroComponents) {
+        for (const AppStream::Component &dc : distroComponents.result()) {
             const auto releases = dc.releasesPlain().entries();
             for (const auto &r : releases) {
                 int cmp = AppStream::Utils::vercmpSimple(r.version(), AppStreamIntegration::global()->osRelease()->versionId());
@@ -366,7 +366,7 @@ void PackageKitBackend::reloadPackageList()
         }
     };
 
-    connect(m_appdata.get(), &AppStream::Pool::loadFinished, this, [this, loadDone](bool success) {
+    connect(m_appdata.get(), &AppStream::ConcurrentPool::loadFinished, this, [this, loadDone](bool success) {
         m_appdataLoaded = true;
         if (!success) {
             qWarning() << "PackageKitBackend: Could not open the AppStream metadata pool" << m_appdata->lastError();
@@ -565,7 +565,7 @@ T PackageKitBackend::resourcesByPackageNames(const W &pkgnames) const
                 if (resource) {
                     ret += resource;
                 } else {
-                    ret += resourcesByComponents<T>(m_appdata->componentsByBundleId(AppStream::Bundle::KindPackage, pkg_name, false));
+                    ret += resourcesByComponents<T>(m_appdata->componentsByBundleId(AppStream::Bundle::KindPackage, pkg_name, false).result());
                 }
             }
         }
@@ -605,10 +605,10 @@ AppStream::ComponentBox PackageKitBackend::componentsById(const QString &id) con
 {
     Q_ASSERT(m_appstreamInitialized);
     auto comps = m_appdata->componentsById(id);
-    if (comps.isEmpty()) {
+    if (comps.result().isEmpty()) {
         comps = m_appdata->componentsByProvided(AppStream::Provided::KindId, id);
     }
-    return comps;
+    return comps.result();
 }
 
 static bool needsResolveFilter(const StreamResult &result)
@@ -703,9 +703,10 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         return findResourceByPackageName(filter.resourceUrl);
     } else if (!filter.extends.isEmpty()) {
         return deferredResultStream(u"PackageKitStream-extends"_s, [this, filter = filter](PKResultsStream *stream) {
-            const auto extendingComponents = m_appdata->componentsByExtends(filter.extends);
-            auto resources = resultsByComponents(extendingComponents);
-            stream->sendResources(resources, filter.state != AbstractResource::Broken);
+            m_appdata->componentsByExtends(filter.extends).then([this, stream, filter](const QFuture<AppStream::ComponentBox> &extendingComponents) {
+                auto resources = resultsByComponents(extendingComponents.result());
+                stream->sendResources(resources, filter.state != AbstractResource::Broken);
+            });
         });
     } else if (filter.state == AbstractResource::Upgradeable) {
         return new ResultsStream(QStringLiteral("PackageKitStream-upgradeable"),
@@ -773,19 +774,20 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         });
     } else {
         return deferredResultStream(u"PackageKitStream-search"_s, [this, filter = filter](PKResultsStream *stream) {
-            auto loadComponents = [](const auto &filter, const auto &appdata) -> QCoro::Task<AppStream::ComponentBox> {
-                AppStream::ComponentBox components(AppStream::ComponentBox::FlagNone);
+            auto loadComponents = [](const auto &filter, const auto &appdata) {
+                QFuture<AppStream::ComponentBox> components;
                 if (!filter.search.isEmpty()) {
                     components = appdata->search(filter.search);
                 } else if (filter.category) {
-                    components = co_await AppStreamUtils::componentsByCategoriesTask(appdata.get(), filter.category, AppStream::Bundle::KindUnknown);
+                    components = AppStreamUtils::componentsByCategoriesTask(appdata.get(), filter.category, AppStream::Bundle::KindUnknown);
                 } else {
                     components = appdata->components();
                 }
-                co_return components;
+                return components;
             };
-            QCoro::connect(loadComponents(filter, m_appdata), this, [this, stream, filter](auto &&components) {
+            loadComponents(filter, m_appdata).then([this, stream, filter](const QFuture<AppStream::ComponentBox> &futureComponents) {
                 QSet<QString> ids;
+                AppStream::ComponentBox components = futureComponents.result();
                 kFilterInPlace<AppStream::ComponentBox>(components, [&ids](const AppStream::Component &component) {
                     if (ids.contains(component.id())) {
                         return false;
@@ -998,7 +1000,7 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
 
     if (!m_updater->isDistroUpgrade() && !PackageKit::Daemon::global()->offline()->upgradeTriggered()) {
         const auto loadDone = [this] {
-            auto nextRelease = AppStreamIntegration::global()->getDistroUpgrade(m_appdata.get());
+            auto nextRelease = AppStreamIntegration::global()->getDistroUpgrade(m_appdata->get());
             if (nextRelease) {
                 foundNewMajorVersion(*nextRelease);
             }
@@ -1006,7 +1008,7 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
         if (m_appdataLoaded) {
             loadDone();
         } else {
-            connect(m_appdata.get(), &AppStream::Pool::loadFinished, this, loadDone);
+            connect(m_appdata.get(), &AppStream::ConcurrentPool::loadFinished, this, loadDone);
         }
     }
 }
@@ -1137,7 +1139,7 @@ AbstractBackendUpdater *PackageKitBackend::backendUpdater() const
 QVector<AbstractResource *> PackageKitBackend::extendedBy(const QString &id) const
 {
     const auto components = m_appdata->componentsByExtends(id);
-    return resourcesByComponents<QVector<AbstractResource *>>(components);
+    return resourcesByComponents<QVector<AbstractResource *>>(components.result());
 }
 
 AbstractReviewsBackend *PackageKitBackend::reviewsBackend() const
@@ -1191,7 +1193,7 @@ void PackageKitBackend::loadAllPackages()
     if (m_allPackagesLoaded) {
         return;
     }
-    const auto components = m_appdata->components();
+    const auto components = m_appdata->components().result();
     for (const auto &component : components) {
         if (!component.packageNames().isEmpty()) {
             addComponent(component);

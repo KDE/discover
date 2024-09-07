@@ -14,6 +14,7 @@
 
 #include <ReviewsBackend/Rating.h>
 #include <Transaction/Transaction.h>
+#include <appstream/AppStreamConcurrentPool.h>
 #include <appstream/AppStreamUtils.h>
 #include <appstream/OdrsReviewsBackend.h>
 #include <resources/SourcesModel.h>
@@ -170,25 +171,25 @@ public:
     AppStream::ComponentBox componentsByName(const QString &name)
     {
         auto components = m_pool->componentsById(name);
-        if (!components.isEmpty()) {
-            return components;
+        if (!components.result().isEmpty()) {
+            return components.result();
         }
 
         components = m_pool->componentsByProvided(AppStream::Provided::KindId, name);
-        return components;
+        return components.result();
     }
 
     AppStream::ComponentBox componentsByFlatpakId(const QString &ref)
     {
-        AppStream::ComponentBox components = m_pool->componentsByBundleId(AppStream::Bundle::KindFlatpak, ref, false);
-        if (!components.isEmpty())
-            return components;
+        auto components = m_pool->componentsByBundleId(AppStream::Bundle::KindFlatpak, ref, false);
+        if (!components.result().isEmpty())
+            return components.result();
 
         components = m_pool->componentsByProvided(AppStream::Provided::KindId, ref.section('/'_L1, 1, 1));
-        return components;
+        return components.result();
     }
 
-    AppStream::Pool *m_pool = nullptr;
+    std::unique_ptr<AppStream::ConcurrentPool> m_pool;
     QHash<FlatpakResource::Id, FlatpakResource *> m_resources;
 
 private:
@@ -1099,7 +1100,8 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
     pool->addExtraDataLocation(appstreamDirPath, AppStream::Metadata::FormatStyleCatalog);
 
     const auto loadDone = [this, source, pool](bool result) {
-        source->m_pool = pool;
+        source->m_pool.reset(new AppStream::ConcurrentPool);
+        source->m_pool->reset(pool, &m_threadPool);
         m_flatpakLoadingSources.removeAll(source);
         if (result) {
             m_flatpakSources += source;
@@ -1478,6 +1480,32 @@ ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, s
     return stream;
 }
 
+ResultsStream *FlatpakBackend::deferredResultStreamNoFinish(const QString &streamName, std::function<QCoro::Task<>(ResultsStream *)> callback)
+{
+    ResultsStream *stream = new ResultsStream(streamName);
+    stream->setParent(this);
+
+    // Don't capture variables into a coroutine lambda, pass them in as arguments instead
+    // See https://devblogs.microsoft.com/oldnewthing/20211103-00/?p=105870
+    [](FlatpakBackend *self, ResultsStream *stream, std::function<QCoro::Task<>(ResultsStream *)> callback) -> QCoro::Task<> {
+        QPointer<ResultsStream> guard = stream;
+        if (self->isFetching()) {
+            co_await qCoro(self, &FlatpakBackend::initialized);
+        } else {
+            co_await QCoro::sleepFor(0ms);
+        }
+        if (guard.isNull()) {
+            co_return;
+        }
+        co_await callback(stream);
+        if (guard.isNull()) {
+            co_return;
+        }
+    }(this, stream, std::move(callback));
+
+    return stream;
+}
+
 #define FLATPAK_BACKEND_GUARD                                                                                                                                  \
     QPointer<ResultsStream> guardStream(stream);                                                                                                               \
     g_autoptr(GCancellable) cancellable = g_object_ref(self->m_cancellable);                                                                                   \
@@ -1495,6 +1523,39 @@ ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, s
 static bool isFlatpakSubRef(const QLatin1String &name)
 {
     return name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".Docs"));
+}
+
+void triage(FlatpakResource *resource, QVector<StreamResult> &prioritary, QVector<StreamResult> &rest, const AbstractResourcesBackend::Filters &filter)
+{
+    const bool matchById = resource->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
+    // Note: FlatpakResource can not have type == System
+    if (resource->type() == AbstractResource::ApplicationSupport && filter.state != AbstractResource::Upgradeable && !matchById) {
+        return;
+    }
+
+    if (resource->state() < filter.state) {
+        return;
+    }
+
+    if (!filter.extends.isEmpty() && !resource->extends().contains(filter.extends)) {
+        return;
+    }
+
+    if (!filter.mimetype.isEmpty() && !resource->mimetypes().contains(filter.mimetype)) {
+        return;
+    }
+
+    if (filter.search.isEmpty() || matchById) {
+        rest += resource;
+    } else if (resource->name().contains(filter.search, Qt::CaseInsensitive)) {
+        prioritary += resource;
+    } else if (resource->comment().contains(filter.search, Qt::CaseInsensitive)) {
+        rest += resource;
+        // trust The search terms provided by appstream are relevant, this makes possible finding "gimp"
+        // since the name() is "GNU Image Manipulation Program"
+    } else if (resource->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
+        rest += resource;
+    }
 }
 
 ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
@@ -1690,90 +1751,62 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
         // Multithreading is nearly impossible for this stream, since child
         // objects are created and interact with this backend object. So the
         // task is split into hunks, interleaved by zero timers.
-        return deferredResultStream(u"FlatpakStream"_s, [this, filter](ResultsStream *stream) -> QCoro::Task<> {
+        return deferredResultStreamNoFinish(u"FlatpakStream"_s, [this, filter](ResultsStream *stream) -> QCoro::Task<> {
             return [](FlatpakBackend *self, ResultsStream *stream, const AbstractResourcesBackend::Filters filter) -> QCoro::Task<> {
                 FLATPAK_BACKEND_GUARD
                 const auto flatpakSources = self->m_flatpakSources;
                 QVector<StreamResult> prioritary, rest;
+                QMap<QSharedPointer<FlatpakSource>, QFuture<AppStream::ComponentBox>> futures;
+                QList<FlatpakResource *> unpooled;
 
                 for (const auto &source : flatpakSources) {
-                    FLATPAK_BACKEND_YIELD;
-
-                    QList<FlatpakResource *> resources;
                     if (source->m_pool) {
-                        const auto components = co_await [](const auto &filter, const auto &source) -> QCoro::Task<AppStream::ComponentBox> {
-                            if (!filter.search.isEmpty()) {
-                                co_return source->m_pool->search(filter.search);
-                            }
-                            if (filter.category) {
-                                co_return co_await AppStreamUtils::componentsByCategoriesTask(source->m_pool, filter.category, AppStream::Bundle::KindFlatpak);
-                            }
-                            co_return source->m_pool->components();
-                        }(filter, source);
-
-                        resources.reserve(components.size());
-                        for (const auto &component : components) {
-                            FLATPAK_BACKEND_YIELD;
-
-                            resources += self->resourceForComponent(component, source);
+                        if (!filter.search.isEmpty()) {
+                            futures.insert(source, source->m_pool->search(filter.search));
+                        } else if (filter.category) {
+                            futures.insert(source,
+                                           AppStreamUtils::componentsByCategoriesTask(source->m_pool.get(), filter.category, AppStream::Bundle::KindFlatpak));
+                        } else {
+                            futures.insert(source, source->m_pool->components());
                         }
                     } else {
-                        resources = source->m_resources.values();
-                    }
-
-                    for (auto resource : std::as_const(resources)) {
-                        FLATPAK_BACKEND_YIELD;
-
-                        const bool matchById = resource->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
-                        // Note: FlatpakResource can not have type == System
-                        if (resource->type() == AbstractResource::ApplicationSupport && filter.state != AbstractResource::Upgradeable && !matchById) {
-                            continue;
-                        }
-
-                        if (resource->state() < filter.state) {
-                            continue;
-                        }
-
-                        if (!filter.extends.isEmpty() && !resource->extends().contains(filter.extends)) {
-                            continue;
-                        }
-
-                        if (!filter.mimetype.isEmpty() && !resource->mimetypes().contains(filter.mimetype)) {
-                            continue;
-                        }
-
-                        if (filter.search.isEmpty() || matchById) {
-                            rest += resource;
-                        } else if (resource->name().contains(filter.search, Qt::CaseInsensitive)) {
-                            prioritary += resource;
-                        } else if (resource->comment().contains(filter.search, Qt::CaseInsensitive)) {
-                            rest += resource;
-                            // trust The search terms provided by appstream are relevant, this makes possible finding "gimp"
-                            // since the name() is "GNU Image Manipulation Program"
-                        } else if (resource->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
-                            rest += resource;
-                        }
+                        unpooled += source->m_resources.values();
                     }
                 }
-                auto f = [self](auto left, auto right) {
-                    return self->flatpakResourceLessThan(left, right);
-                };
-
-                // Even sorting can not be performed in other thread, and it can take a while
-                std::sort(rest.begin(), rest.end(), f);
-
-                FLATPAK_BACKEND_YIELD;
-
-                std::sort(prioritary.begin(), prioritary.end(), f);
-
-                QList<StreamResult> resources;
-                resources.reserve(prioritary.size() + rest.size());
-                resources.append(std::move(prioritary));
-                resources.append(std::move(rest));
-
-                if (!resources.isEmpty()) {
-                    Q_EMIT stream->resourcesFound(resources);
+                using QFS = QFutureWatcher<QList<QFuture<AppStream::ComponentBox>>>;
+                auto *fw = new QFS(stream);
+                fw->setFuture(QtFuture::whenAll(futures.begin(), futures.end()));
+                FLATPAK_BACKEND_YIELD
+                for (auto r : unpooled) {
+                    triage(r, prioritary, rest, filter);
                 }
+                connect(fw, &QFS::finished, stream, [self, futures, stream, _rest = rest, _prioritary = prioritary, filter, fw]() {
+                    QVector<StreamResult> rest(_rest), prioritary(_prioritary);
+                    for (const auto [source, future] : futures.asKeyValueRange()) {
+                        for (const auto &component : future.result()) {
+                            triage(self->resourceForComponent(component, source), prioritary, rest, filter);
+                        }
+                    }
+
+                    auto f = [self](auto left, auto right) {
+                        return self->flatpakResourceLessThan(left, right);
+                    };
+
+                    // Even sorting can not be performed in other thread, and it can take a while
+                    std::sort(rest.begin(), rest.end(), f);
+                    std::sort(prioritary.begin(), prioritary.end(), f);
+
+                    QList<StreamResult> resources;
+                    resources.reserve(prioritary.size() + rest.size());
+                    resources.append(std::move(prioritary));
+                    resources.append(std::move(rest));
+
+                    if (!resources.isEmpty()) {
+                        Q_EMIT stream->resourcesFound(resources);
+                    }
+                    stream->finish();
+                    fw->deleteLater();
+                });
             }(this, stream, filter);
         });
     }
@@ -2103,7 +2136,7 @@ InlineMessage *FlatpakBackend::explainDysfunction() const
 bool FlatpakBackend::extends(const QString &extends) const
 {
     return std::any_of(m_flatpakSources.constBegin(), m_flatpakSources.constEnd(), [extends](const auto &source) {
-        return source->m_pool && source->m_pool->lastError().isEmpty() && !source->m_pool->componentsByExtends(extends).isEmpty();
+        return source->m_pool && source->m_pool->lastError().isEmpty() && !source->m_pool->componentsByExtends(extends).result().isEmpty();
     });
 }
 
