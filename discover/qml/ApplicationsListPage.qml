@@ -144,7 +144,7 @@ DiscoverPage {
             }
             Kirigami.Action {
                 QQC2.ActionGroup.group: sortGroup
-                text: i18n("Release Date")
+                text: i18n("Release date")
                 icon.name: "change-date-symbolic"
                 onTriggered: {
                     DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.ReleaseDateRole

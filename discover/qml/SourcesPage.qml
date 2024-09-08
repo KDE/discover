@@ -107,7 +107,7 @@ DiscoverPage {
                         visible: backendItem.isDefault
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         displayComponent: Kirigami.Heading {
-                            text: i18n("Default source")
+                            text: i18n("Default Source")
                             level: 3
                             font.weight: Font.Bold
                         }
@@ -142,7 +142,7 @@ DiscoverPage {
                         id: makeDefaultAction
                         visible: resourcesBackend && resourcesBackend.hasApplications && !backendItem.isDefault
 
-                        text: i18n("Make default")
+                        text: i18n("Make Default")
                         icon.name: "favorite"
                         onTriggered: Discover.ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
                     }
