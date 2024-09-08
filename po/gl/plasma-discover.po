@@ -205,7 +205,7 @@ msgstr "Un explorador de aplicacións"
 #: discover/main.cpp:122
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© 2010-2024 Equipo de desenvolvemento de Plasma"
+msgstr "© 2010-2024 Equipo desenvolvedor de Plasma"
 
 #: discover/main.cpp:123
 #, kde-format
@@ -623,8 +623,7 @@ msgstr "Doar"
 #: discover/qml/ApplicationPage.qml:805
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
-msgstr ""
-"Apoie e recoñeza ao equipo de desenvolvemento cunha doazón ao seu proxecto"
+msgstr "Apoie e recoñeza ao equipo desenvolvedor cunha doazón ao seu proxecto"
 
 #: discover/qml/ApplicationPage.qml:817
 #, kde-format
@@ -1165,8 +1164,8 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
-"Se %1 non se inicia, considere mellor informar do problema ao equipo de "
-"desenvolvemento en <link url='%2'>%2</link>, xa que pode que se trate dun "
+"Se %1 non se inicia, considere mellor informar do problema ao equipo "
+"desenvolvedor en <link url='%2'>%2</link>, xa que pode que se trate dun "
 "problema de empaquetado fácil de corrixir e non dun fallo da propia "
 "aplicación."
 
@@ -1178,7 +1177,7 @@ msgid ""
 "<link url='%1'>%1</link> instead."
 msgstr ""
 "Se a aplicación quebra con frecuencia, considere mellor informar do problema "
-"ao equipo de desenvolvemento en <link url='%1'>%1</link>."
+"ao equipo desenvolvedor en <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1189,8 +1188,8 @@ msgid ""
 "here in greater detail."
 msgstr ""
 "Se ten un problema coa aplicación, considere mellor informar del ao equipo "
-"de desenvolvemento en <link url='%1'>%1</link>, ou describa o problema aquí "
-"con máis detalles."
+"desenvolvedor en <link url='%1'>%1</link>, ou describa o problema aquí con "
+"máis detalles."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format

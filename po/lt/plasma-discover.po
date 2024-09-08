@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-06 00:40+0000\n"
-"PO-Revision-Date: 2024-08-13 23:45+0300\n"
+"PO-Revision-Date: 2024-09-08 00:08+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -656,11 +656,10 @@ msgid "Content Rating"
 msgstr "Turinio įvertinimas"
 
 #: discover/qml/ApplicationPage.qml:916
-#, fuzzy, kde-format
-#| msgid "Submit Usage Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "Pateikti naudojimosi informaciją"
+msgstr "Informacija apie licenciją"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -1477,24 +1476,22 @@ msgid "On completion, automatically:"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "Nuimti žymėjimą nuo visų"
+msgstr "Pasirinkite veiksmą"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "Paleisti iš naujo dabar"
+msgstr "Paleisti iš naujo"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
-msgstr ""
+msgstr "Išjungti"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format
@@ -1505,7 +1502,7 @@ msgstr "Bendras dydis: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "Paleisti iš naujo, kad dabar būtų įdiegti atnaujinimai"
 
 #: discover/qml/UpdatesPage.qml:433
 #, kde-format

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2024-01-17 23:12+0200\n"
+"PO-Revision-Date: 2024-09-08 00:06+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: notifier/DiscoverNotifier.cpp:176
 #, kde-format
@@ -67,17 +67,16 @@ msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Tam, kad nuostatos įsigaliotų, sistema turi būti paleista iš naujo."
 
 #: notifier/DiscoverNotifier.cpp:329
-#, fuzzy, kde-format
-#| msgid "Computer needs to restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
-msgstr "Reikia paleisti kompiuterį iš naujo"
+msgstr "Atnaujinti ir paleisti iš naujo"
 
 #: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
-msgstr ""
+msgstr "Atnaujinti ir išjungti"
 
 #: notifier/DiscoverNotifier.cpp:374
 #, kde-format
@@ -161,12 +160,12 @@ msgstr "Įkelti iš naujo…"
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Install Updates and Restart…"
-msgstr ""
+msgstr "Įdiegti atnaujinimus ir paleisti iš naujo…"
 
 #: notifier/NotifierItem.cpp:53
 #, kde-format
 msgid "Install Updates and Shut Down…"
-msgstr ""
+msgstr "Įdiegti atnaujinimus ir išjungti…"
 
 #: notifier/NotifierItem.cpp:58
 #, kde-format
