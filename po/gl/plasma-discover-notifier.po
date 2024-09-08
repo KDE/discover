@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 02:43+0000\n"
-"PO-Revision-Date: 2023-06-24 11:28+0200\n"
+"PO-Revision-Date: 2024-08-19 15:43+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -98,7 +98,7 @@ msgstr "Notificador do estado das actualizacións do sistema"
 #: notifier/main.cpp:43
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr "© 2010-2022 Equipo de desenvolvemento de Plasma"
+msgstr "© 2010-2022 Equipo desenvolvedor de Plasma"
 
 #: notifier/main.cpp:47
 #, kde-format

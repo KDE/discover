@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2023-11-16 20:11+0100\n"
+"PO-Revision-Date: 2024-08-29 18:57+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -192,7 +192,7 @@ msgstr "Un explorador de aplicacións"
 #: discover/main.cpp:124
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr "© 2010-2022 Equipo de desenvolvemento de Plasma"
+msgstr "© 2010-2022 Equipo desenvolvedor de Plasma"
 
 #: discover/main.cpp:125
 #, kde-format
@@ -462,8 +462,7 @@ msgstr "Doar"
 #: discover/qml/ApplicationPage.qml:819
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
-msgstr ""
-"Apoie e recoñeza ao equipo de desenvolvemento cunha doazón ao seu proxecto"
+msgstr "Apoie e recoñeza ao equipo desenvolvedor cunha doazón ao seu proxecto"
 
 #: discover/qml/ApplicationPage.qml:835
 #, kde-format
