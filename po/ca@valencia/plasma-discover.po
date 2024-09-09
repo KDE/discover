@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:40+0000\n"
+"POT-Creation-Date: 2024-09-09 00:40+0000\n"
 "PO-Revision-Date: 2024-08-29 09:40+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -424,13 +424,19 @@ msgstr ""
 "url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
-#, kde-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "%1 does not indicate under which license it is distributed. You may be "
+#| "able to determine this on <link url='%2>the application's website</link>. "
+#| "Find it there or contact the author if you want to use this application "
+#| "for anything other than private personal use."
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
-"to determine this on <link url='%2>the application's website</link>. Find it "
-"there or contact the author if you want to use this application for anything "
-"other than private personal use."
+"to determine this on <link url='%2'>the application's website</link>. Find "
+"it there or contact the author if you want to use this application for "
+"anything other than private personal use."
 msgstr ""
 "%1 no indica amb quina llicència es distribuïx. És possible que pugueu "
 "determinar-ho al <link url='%2>lloc web de l'aplicació</link>. Busqueu-ho "
@@ -509,163 +515,165 @@ msgid_plural "Licenses:"
 msgstr[0] "Llicència:"
 msgstr[1] "Llicències:"
 
-#: discover/qml/ApplicationPage.qml:395
+#: discover/qml/ApplicationPage.qml:394
+#, fuzzy, kde-format
+#| msgid "What does this mean?"
+msgctxt "@info:tooltip for button opening license type description"
+msgid "What does this mean?"
+msgstr "Què vol dir açò?"
+
+#: discover/qml/ApplicationPage.qml:398
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Desconeguda"
 
-#: discover/qml/ApplicationPage.qml:426
+#: discover/qml/ApplicationPage.qml:444
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
 msgstr ","
 
-#: discover/qml/ApplicationPage.qml:442
-#, kde-format
-msgid "What does this mean?"
-msgstr "Què vol dir açò?"
-
-#: discover/qml/ApplicationPage.qml:451
+#: discover/qml/ApplicationPage.qml:469
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] "Vegeu-ne més…"
 msgstr[1] "Vegeu-ne més…"
 
-#: discover/qml/ApplicationPage.qml:461
+#: discover/qml/ApplicationPage.qml:479
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "Edats:"
 
-#: discover/qml/ApplicationPage.qml:469
+#: discover/qml/ApplicationPage.qml:487
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
 msgstr "Tothom"
 
-#: discover/qml/ApplicationPage.qml:471
+#: discover/qml/ApplicationPage.qml:489
 #, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
 msgstr "%1+"
 
-#: discover/qml/ApplicationPage.qml:485
+#: discover/qml/ApplicationPage.qml:503
 #, kde-format
 msgid "See details"
 msgstr "Veure els detalls"
 
-#: discover/qml/ApplicationPage.qml:509
+#: discover/qml/ApplicationPage.qml:527
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr "No hi ha captures de pantalla disponibles per a %1"
 
-#: discover/qml/ApplicationPage.qml:651
+#: discover/qml/ApplicationPage.qml:669
 #, kde-format
 msgid "What's New"
 msgstr "Què hi ha de nou"
 
-#: discover/qml/ApplicationPage.qml:684
+#: discover/qml/ApplicationPage.qml:702
 #, kde-format
 msgid "Reviews"
 msgstr "Comentaris"
 
-#: discover/qml/ApplicationPage.qml:695
+#: discover/qml/ApplicationPage.qml:713
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Es carreguen les ressenyes de %1"
 
-#: discover/qml/ApplicationPage.qml:703
+#: discover/qml/ApplicationPage.qml:721
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "Els comentaris per a %1 no estan disponibles temporalment"
 
-#: discover/qml/ApplicationPage.qml:725
+#: discover/qml/ApplicationPage.qml:743
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Mostra tots els comentaris"
 
-#: discover/qml/ApplicationPage.qml:737
+#: discover/qml/ApplicationPage.qml:755
 #, kde-format
 msgid "Write a Review"
 msgstr "Escriviu un comentari"
 
-#: discover/qml/ApplicationPage.qml:737
+#: discover/qml/ApplicationPage.qml:755
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Instal·leu-la per a escriure un comentari"
 
-#: discover/qml/ApplicationPage.qml:759
+#: discover/qml/ApplicationPage.qml:777
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr "Enllaços externs"
 
-#: discover/qml/ApplicationPage.qml:778
+#: discover/qml/ApplicationPage.qml:796
 #, kde-format
 msgid "Documentation"
 msgstr "Documentació"
 
-#: discover/qml/ApplicationPage.qml:779
+#: discover/qml/ApplicationPage.qml:797
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Llegiu la documentació oficial del projecte"
 
-#: discover/qml/ApplicationPage.qml:791
+#: discover/qml/ApplicationPage.qml:809
 #, kde-format
 msgid "Website"
 msgstr "Lloc web"
 
-#: discover/qml/ApplicationPage.qml:792
+#: discover/qml/ApplicationPage.qml:810
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Visiteu el lloc web del projecte"
 
-#: discover/qml/ApplicationPage.qml:804
+#: discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Donate"
 msgstr "Donatius"
 
-#: discover/qml/ApplicationPage.qml:805
+#: discover/qml/ApplicationPage.qml:823
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "Ajudeu i agraïu als desenvolupadors fent una donació al projecte"
 
-#: discover/qml/ApplicationPage.qml:817
+#: discover/qml/ApplicationPage.qml:835
 #, kde-format
 msgid "Report Bug"
 msgstr "Informeu d'un error"
 
-#: discover/qml/ApplicationPage.qml:818
+#: discover/qml/ApplicationPage.qml:836
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Enregistreu una incidència que heu trobat per a ajudar a solucionar-la"
 
-#: discover/qml/ApplicationPage.qml:830
+#: discover/qml/ApplicationPage.qml:848
 #, kde-format
 msgid "Contribute"
 msgstr "Col·laboreu-hi"
 
-#: discover/qml/ApplicationPage.qml:831
+#: discover/qml/ApplicationPage.qml:849
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "Ajudeu els desenvolupadors codificant, dissenyant, provant o traduint"
 
-#: discover/qml/ApplicationPage.qml:861
+#: discover/qml/ApplicationPage.qml:879
 #, kde-format
 msgid "All Licenses"
 msgstr "Totes les llicències"
 
-#: discover/qml/ApplicationPage.qml:893
+#: discover/qml/ApplicationPage.qml:911
 #, kde-format
 msgid "Content Rating"
 msgstr "Valoració del contingut"
 
-#: discover/qml/ApplicationPage.qml:916
+#: discover/qml/ApplicationPage.qml:934
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"
@@ -730,8 +738,9 @@ msgid "Size"
 msgstr "Mida"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, kde-format
-msgid "Release Date"
+#, fuzzy, kde-format
+#| msgid "Release Date"
+msgid "Release date"
 msgstr "Data de publicació"
 
 #: discover/qml/ApplicationsListPage.qml:206
@@ -1352,8 +1361,9 @@ msgid "Settings"
 msgstr "Preferències"
 
 #: discover/qml/SourcesPage.qml:110
-#, kde-format
-msgid "Default source"
+#, fuzzy, kde-format
+#| msgid "Default source"
+msgid "Default Source"
 msgstr "Font predeterminada"
 
 #: discover/qml/SourcesPage.qml:118
@@ -1362,8 +1372,9 @@ msgid "Add Source…"
 msgstr "Afig una font…"
 
 #: discover/qml/SourcesPage.qml:145
-#, kde-format
-msgid "Make default"
+#, fuzzy, kde-format
+#| msgid "Make default"
+msgid "Make Default"
 msgstr "Convertix en el valor predeterminat"
 
 #: discover/qml/SourcesPage.qml:248

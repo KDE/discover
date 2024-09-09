@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-06 00:40+0000\n"
+"POT-Creation-Date: 2024-09-09 00:40+0000\n"
 "PO-Revision-Date: 2020-10-04 16:59+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -352,13 +352,13 @@ msgid ""
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:94
-#, kde-format
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
-"to determine this on <link url='%2>the application's website</link>. Find it "
-"there or contact the author if you want to use this application for anything "
-"other than private personal use."
+"to determine this on <link url='%2'>the application's website</link>. Find "
+"it there or contact the author if you want to use this application for "
+"anything other than private personal use."
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:98
@@ -432,57 +432,58 @@ msgid_plural "Licenses:"
 msgstr[0] "Licens:"
 msgstr[1] "Licens:"
 
-#: discover/qml/ApplicationPage.qml:395
+#: discover/qml/ApplicationPage.qml:394
+#, fuzzy, kde-format
+#| msgid "What's New"
+msgctxt "@info:tooltip for button opening license type description"
+msgid "What does this mean?"
+msgstr "Hvad er nyt"
+
+#: discover/qml/ApplicationPage.qml:398
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:426
+#: discover/qml/ApplicationPage.qml:444
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:442
-#, fuzzy, kde-format
-#| msgid "What's New"
-msgid "What does this mean?"
-msgstr "Hvad er nyt"
-
-#: discover/qml/ApplicationPage.qml:451
+#: discover/qml/ApplicationPage.qml:469
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] ""
 msgstr[1] ""
 
-#: discover/qml/ApplicationPage.qml:461
+#: discover/qml/ApplicationPage.qml:479
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:469
+#: discover/qml/ApplicationPage.qml:487
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:471
+#: discover/qml/ApplicationPage.qml:489
 #, fuzzy, kde-format
 #| msgid "%1"
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
 msgstr "%1"
 
-#: discover/qml/ApplicationPage.qml:485
+#: discover/qml/ApplicationPage.qml:503
 #, fuzzy, kde-format
 #| msgid "Details"
 msgid "See details"
 msgstr "Detaljer"
 
-#: discover/qml/ApplicationPage.qml:509
+#: discover/qml/ApplicationPage.qml:527
 #, fuzzy, kde-format
 #| msgid ""
 #| "\n"
@@ -493,29 +494,29 @@ msgstr ""
 "\n"
 "Også tilgængelig fra %1"
 
-#: discover/qml/ApplicationPage.qml:651
+#: discover/qml/ApplicationPage.qml:669
 #, kde-format
 msgid "What's New"
 msgstr "Hvad er nyt"
 
-#: discover/qml/ApplicationPage.qml:684
+#: discover/qml/ApplicationPage.qml:702
 #, kde-format
 msgid "Reviews"
 msgstr "Anmeldelser"
 
-#: discover/qml/ApplicationPage.qml:695
+#: discover/qml/ApplicationPage.qml:713
 #, fuzzy, kde-format
 #| msgid "Reviews for %1"
 msgid "Loading reviews for %1"
 msgstr "Anmeldelser af %1"
 
-#: discover/qml/ApplicationPage.qml:703
+#: discover/qml/ApplicationPage.qml:721
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:725
+#: discover/qml/ApplicationPage.qml:743
 #, fuzzy, kde-format
 #| msgid "Show %1 Review..."
 #| msgid_plural "Show All %1 Reviews..."
@@ -523,89 +524,89 @@ msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Vis %1 anmeldelse..."
 
-#: discover/qml/ApplicationPage.qml:737
+#: discover/qml/ApplicationPage.qml:755
 #, kde-format
 msgid "Write a Review"
 msgstr "Skriv en anmeldelse"
 
-#: discover/qml/ApplicationPage.qml:737
+#: discover/qml/ApplicationPage.qml:755
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Installér for at skrive en anmeldelse"
 
-#: discover/qml/ApplicationPage.qml:759
+#: discover/qml/ApplicationPage.qml:777
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:778
+#: discover/qml/ApplicationPage.qml:796
 #, fuzzy, kde-format
 #| msgid "Documentation:"
 msgid "Documentation"
 msgstr "Dokumentation:"
 
-#: discover/qml/ApplicationPage.qml:779
+#: discover/qml/ApplicationPage.qml:797
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:791
+#: discover/qml/ApplicationPage.qml:809
 #, kde-format
 msgid "Website"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:792
+#: discover/qml/ApplicationPage.qml:810
 #, fuzzy, kde-format
 #| msgid "Visit the app's website"
 msgid "Visit the project's website"
 msgstr "Besøg programmets webside"
 
-#: discover/qml/ApplicationPage.qml:804
+#: discover/qml/ApplicationPage.qml:822
 #, fuzzy, kde-format
 #| msgid "Donate:"
 msgid "Donate"
 msgstr "Donér:"
 
-#: discover/qml/ApplicationPage.qml:805
+#: discover/qml/ApplicationPage.qml:823
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:817
+#: discover/qml/ApplicationPage.qml:835
 #, kde-format
 msgid "Report Bug"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:818
+#: discover/qml/ApplicationPage.qml:836
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:830
+#: discover/qml/ApplicationPage.qml:848
 #, fuzzy, kde-format
 #| msgid "Contribute..."
 msgid "Contribute"
 msgstr "Bidrag..."
 
-#: discover/qml/ApplicationPage.qml:831
+#: discover/qml/ApplicationPage.qml:849
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:861
+#: discover/qml/ApplicationPage.qml:879
 #, fuzzy, kde-format
 #| msgid "License:"
 msgid "All Licenses"
 msgstr "Licens:"
 
-#: discover/qml/ApplicationPage.qml:893
+#: discover/qml/ApplicationPage.qml:911
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating"
 msgstr "Angiv en vurdering"
 
-#: discover/qml/ApplicationPage.qml:916
+#: discover/qml/ApplicationPage.qml:934
 #, fuzzy, kde-format
 #| msgid "Submit usage information"
 msgctxt "@title:window"
@@ -674,8 +675,9 @@ msgid "Size"
 msgstr "Størrelse"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, kde-format
-msgid "Release Date"
+#, fuzzy, kde-format
+#| msgid "Release Date"
+msgid "Release date"
 msgstr "Udgivelsesdato"
 
 #: discover/qml/ApplicationsListPage.qml:206
@@ -1317,7 +1319,7 @@ msgstr "Indstillinger"
 #: discover/qml/SourcesPage.qml:110
 #, fuzzy, kde-format
 #| msgid "Resources"
-msgid "Default source"
+msgid "Default Source"
 msgstr "Ressourcer"
 
 #: discover/qml/SourcesPage.qml:118
@@ -1327,8 +1329,9 @@ msgid "Add Source…"
 msgstr "Tilføj kilde..."
 
 #: discover/qml/SourcesPage.qml:145
-#, kde-format
-msgid "Make default"
+#, fuzzy, kde-format
+#| msgid "Make default"
+msgid "Make Default"
 msgstr "Gør standard"
 
 #: discover/qml/SourcesPage.qml:248
