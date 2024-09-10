@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:40+0000\n"
-"PO-Revision-Date: 2024-08-30 17:12+0200\n"
+"PO-Revision-Date: 2024-09-09 12:07+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -415,13 +415,7 @@ msgstr ""
 ">Apprende plus a <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2>the application's website</link>. "
-#| "Find it there or contact the author if you want to use this application "
-#| "for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -430,7 +424,7 @@ msgid ""
 "anything other than private personal use."
 msgstr ""
 "%1 non indica sub qual licentia il es distribuite. Tu pote determinar  isto "
-"sur  <link url='%2>le sito web del application</link>. Trova lo illac  o "
+"sur  <link url='%2'>le sito web del application</link>. Trova lo illac  o "
 "continge le autor si tu vole usar iste application per alique  altere que "
 "uso private personal."
 
@@ -505,8 +499,7 @@ msgstr[0] "Licentia:"
 msgstr[1] "Licentias:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Que isto significa?"
@@ -728,8 +721,7 @@ msgid "Size"
 msgstr "Dimension"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Data de revision"
 
@@ -1353,8 +1345,7 @@ msgid "Settings"
 msgstr "Preferentias"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Fonte predefinite"
 
@@ -1364,8 +1355,7 @@ msgid "Add Source…"
 msgstr "Adde fonte..."
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Face predefinite"
 

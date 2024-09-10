@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:40+0000\n"
-"PO-Revision-Date: 2024-08-29 07:00+0200\n"
+"PO-Revision-Date: 2024-09-09 08:22+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -416,13 +416,7 @@ msgstr ""
 "><nl/>Več o tem na <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2>the application's website</link>. "
-#| "Find it there or contact the author if you want to use this application "
-#| "for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -433,7 +427,7 @@ msgstr ""
 "%1 ne navaja, pod katero licenco se distribuira. To boste morda lahko "
 "ugotovili na <link url='%2'>spletnem mestu aplikacije</link>. Poiščite jo "
 "tam ali se obrnite na avtorja, če želite to aplikacijo uporabljati za kar "
-"koli drugega kot za zasebno osebno uporabo."
+"koli drugega kot za zasebno osebno rabo."
 
 #: discover/qml/ApplicationPage.qml:98
 #, kde-format
@@ -509,8 +503,7 @@ msgstr[2] "Licenci:"
 msgstr[3] "Licence:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Kaj to pomeni?"
@@ -740,8 +733,7 @@ msgid "Size"
 msgstr "Velikost"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Datum izdaje"
 
@@ -1363,10 +1355,9 @@ msgid "Settings"
 msgstr "Nastavitve"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
-msgstr "Privzeti viri"
+msgstr "Privzeti vir"
 
 #: discover/qml/SourcesPage.qml:118
 #, kde-format
@@ -1374,10 +1365,9 @@ msgid "Add Source…"
 msgstr "Dodaj vir …"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
-msgstr "Nastavi kot privzeto"
+msgstr "Postavi privzeto"
 
 #: discover/qml/SourcesPage.qml:248
 #, kde-format

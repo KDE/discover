@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:40+0000\n"
-"PO-Revision-Date: 2024-08-29 20:05+0200\n"
+"PO-Revision-Date: 2024-09-09 18:27+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -411,13 +411,7 @@ msgstr ""
 "<link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2>the application's website</link>. "
-#| "Find it there or contact the author if you want to use this application "
-#| "for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -426,7 +420,7 @@ msgid ""
 "anything other than private personal use."
 msgstr ""
 "%1 anger inte under vilken licens det distribueras. Du kanske kan avgöra det "
-"på <link url='%2>programmets webbplats</link>. Hitta den där eller kontakta "
+"på <link url='%2'>programmets webbplats</link>. Hitta den där eller kontakta "
 "tillverkaren om du vill använda programmet för något annat än privat "
 "personligt bruk."
 
@@ -502,8 +496,7 @@ msgstr[0] "Licens:"
 msgstr[1] "Licenser:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Vad betyder det?"
@@ -725,8 +718,7 @@ msgid "Size"
 msgstr "Storlek"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Utgivningsdatum"
 
@@ -1348,8 +1340,7 @@ msgid "Settings"
 msgstr "Inställningar"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Standardkälla"
 
@@ -1359,8 +1350,7 @@ msgid "Add Source…"
 msgstr "Lägg till källa…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Gör till förval"
 

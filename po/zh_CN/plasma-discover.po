@@ -388,13 +388,7 @@ msgstr ""
 "url='%4'>%4</link>。"
 
 #: discover/qml/ApplicationPage.qml:94
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2>the application's website</link>. "
-#| "Find it there or contact the author if you want to use this application "
-#| "for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -402,9 +396,6 @@ msgid ""
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
-"%1 没有指明它采用了何种许可证进行分发。如果您想要在个人私用之外的用途中使用这"
-"款程序，请访问 <link url='%2>它的网站</link> 或者联系程序作者以确定它的使用条"
-"款。"
 
 #: discover/qml/ApplicationPage.qml:98
 #, kde-format
@@ -476,8 +467,7 @@ msgid_plural "Licenses:"
 msgstr[0] "许可证："
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "这是什么意思？"
@@ -694,10 +684,9 @@ msgid "Size"
 msgstr "体积"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
-msgstr "发布日期"
+msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
@@ -1308,10 +1297,9 @@ msgid "Settings"
 msgstr "设置"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
-msgstr "默认来源"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:118
 #, kde-format
@@ -1319,10 +1307,9 @@ msgid "Add Source…"
 msgstr "添加软件来源…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
-msgstr "设为默认"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:248
 #, kde-format

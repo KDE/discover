@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:40+0000\n"
-"PO-Revision-Date: 2024-08-25 03:04+0900\n"
+"PO-Revision-Date: 2024-09-10 02:44+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -295,21 +295,7 @@ msgid "No ratings yet"
 msgstr "目前還沒有評分"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. More information may be available on <link "
-#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
-#| "url='%3'>%3</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -325,28 +311,16 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"請只在完全信任其作者群時才安裝 %1，因為它是<strong>私有軟體</strong>：您使"
-"用、修改與重新發佈本應用程式的自由受到限制，而且它的原始碼部分或者完全是無法"
-"讓公眾查看或是改善的。這代表作者以外的第三方及像您一樣的使用者無法檢查動作、"
-"安全性與可靠性。<nl/><nl/>本應用程式可能完全是安全的，也有可能侵犯您的權益 "
-"—— 例如不當收集您的個人資料、追蹤您的所在地，或是把您的資料傳給別人。請只在完"
-"全信任其作者時才使用它。<link url='%2'>應用程式的網站</link>上可能有其他資訊"
-"可供參考。<nl/><nl/>更多資訊請見 <link url='%3'>%3</link>。"
+"請只在完全信任其作者群時才安裝 %1，因為它是<emphasis strong='true'>私有軟體</"
+"emphasis>：您使用、修改與重新發佈本應用程式的自由受到限制，而且它的原始碼部分"
+"或者完全是無法讓公眾查看或是改善的。這代表作者以外的第三方及像您一樣的使用者"
+"無法檢查動作、安全性與可靠性。<nl/><nl/>本應用程式可能完全是安全的，也有可能"
+"侵犯您的權益 —— 例如不當收集您的個人資料、追蹤您的所在地，或是把您的資料傳給"
+"別人。請只在完全信任其作者時才使用它。<link url='%2'>應用程式的網站</link>上"
+"可能有其他資訊可供參考。<nl/><nl/>更多資訊請見 <link url='%3'>%3</link>。"
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. Learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -360,12 +334,12 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"請只在完全信任其作者群時才安裝 %1，因為它是<strong>私有軟體</strong>：您使"
-"用、修改與重新發佈本應用程式的自由受到限制，而且它的原始碼部分或者完全是無法"
-"讓公眾查看或是改善的。這代表作者以外的第三方及像您一樣的使用者無法檢查動作、"
-"安全性與可靠性。<nl/><nl/>本應用程式可能完全是安全的，也有可能侵犯您的權益 "
-"—— 例如不當收集您的個人資料、追蹤您的所在地，或是把您的資料傳給別人。請只在完"
-"全信任其作者時才使用它。更多資訊請見 <link url='%2'>%2</link>。"
+"請只在完全信任其作者群時才安裝 %1，因為它是<emphasis strong='true'>私有軟體</"
+"emphasis>：您使用、修改與重新發佈本應用程式的自由受到限制，而且它的原始碼部分"
+"或者完全是無法讓公眾查看或是改善的。這代表作者以外的第三方及像您一樣的使用者"
+"無法檢查動作、安全性與可靠性。<nl/><nl/>本應用程式可能完全是安全的，也有可能"
+"侵犯您的權益 —— 例如不當收集您的個人資料、追蹤您的所在地，或是把您的資料傳給"
+"別人。請只在完全信任其作者時才使用它。更多資訊請見 <link url='%2'>%2</link>。"
 
 #: discover/qml/ApplicationPage.qml:78
 #, kde-kuit-format
@@ -415,13 +389,7 @@ msgstr ""
 "請見 <link url='%4'>%4</link>。"
 
 #: discover/qml/ApplicationPage.qml:94
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2>the application's website</link>. "
-#| "Find it there or contact the author if you want to use this application "
-#| "for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -429,8 +397,8 @@ msgid ""
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
-"%1 沒有指定它發佈時所使用的授權條款。您可能可以在<link url='%2>應用程式的網站"
-"</link>上找出它的授權資訊。除了個人私下以外的使用請在它的網站上尋找是否有授"
+"%1 沒有指定它發佈時所使用的授權條款。您可能可以在<link url='%2'>應用程式的網"
+"站</link>上找出它的授權資訊。除了個人私下以外的使用請在它的網站上尋找是否有授"
 "權，或是與應用程式作者聯繫。"
 
 #: discover/qml/ApplicationPage.qml:98
@@ -503,8 +471,7 @@ msgid_plural "Licenses:"
 msgstr[0] "授權條款："
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "這代表什麼？"
@@ -721,10 +688,9 @@ msgid "Size"
 msgstr "大小"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
-msgstr "釋出日期"
+msgstr "發佈日期"
 
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
@@ -1135,6 +1101,8 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"如果您很喜歡 %1，可以告訴別人它好在哪裡！建議聚焦在功能、易用性或外觀上。如果"
+"應用程式不符合您的需求也可以提供解釋。"
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1144,6 +1112,8 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"如果 %1 無法啟動，請考慮改到 <link url='%3'>%3</link> 回報此問題給 %2 當中的"
+"打包者，因為這可能是較容易解決的打包問題而不是應用程式本身的缺陷。"
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1153,6 +1123,8 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"如果 %1 無法啟動，請考慮改到 <link url='%2'>%2</link> 回報此問題給開發者，因"
+"為這可能是較容易解決的打包問題而不是應用程式本身的缺陷。"
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1161,6 +1133,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"如果應用程式一直崩潰，請考慮改至 <link url='%1'>%1</link> 回報此問題給開發"
+"者。"
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1170,6 +1144,8 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"如果您對於應用程式使用上有出現問題，請考慮改為到 <link url='%1'>%1</link> 回"
+"報給它的開發者，或是在此提供更詳細的描述。"
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1194,7 +1170,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "啟動,打開,開啟"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1204,7 +1180,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "崩潰,當機"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1214,7 +1190,7 @@ msgctxt ""
 "your language and/or shorten to common stems contained by multiple forms of "
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
-msgstr ""
+msgstr "爛,根本沒辦法,沒用,垃圾,糟糕"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1325,8 +1301,7 @@ msgid "Settings"
 msgstr "設定"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "預設來源"
 
@@ -1336,10 +1311,9 @@ msgid "Add Source…"
 msgstr "新增來源…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
-msgstr "設為預設值"
+msgstr "設成預設"
 
 #: discover/qml/SourcesPage.qml:248
 #, kde-format

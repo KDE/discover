@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:40+0000\n"
-"PO-Revision-Date: 2024-08-31 21:38+0300\n"
+"PO-Revision-Date: 2024-09-09 19:11+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -398,13 +398,7 @@ msgstr ""
 ">מידע נוסף ניתן למצוא דרך <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2>the application's website</link>. "
-#| "Find it there or contact the author if you want to use this application "
-#| "for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -413,7 +407,7 @@ msgid ""
 "anything other than private personal use."
 msgstr ""
 "%1 לא מציין לאיזה רישיון כפופה ההפצה שלו. אפשר לנסות לקבוע את זה דרך <link "
-"url='%2>אתר היישום</link>. אפשר למצוא את זה שם או ליצור קשר עם היוצרים אם "
+"url='%2'>אתר היישום</link>. אפשר למצוא את זה שם או ליצור קשר עם היוצרים אם "
 "מעניין אותך להשתמש ביישום הזה למטרה שאינה שימוש אישי ופרטי."
 
 #: discover/qml/ApplicationPage.qml:98
@@ -489,8 +483,7 @@ msgstr[2] "רישיונות:"
 msgstr[3] "רישיונות:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "מה הכוונה?"
@@ -719,8 +712,7 @@ msgid "Size"
 msgstr "גודל"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "תאריך שחרור"
 
@@ -1339,8 +1331,7 @@ msgid "Settings"
 msgstr "הגדרות"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "מקור ברירת מחדל"
 
@@ -1350,8 +1341,7 @@ msgid "Add Source…"
 msgstr "הוספת מקור…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "הפיכה לברירת המחדל"
 

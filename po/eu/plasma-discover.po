@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:40+0000\n"
-"PO-Revision-Date: 2024-08-30 17:43+0200\n"
+"PO-Revision-Date: 2024-09-09 20:47+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -416,13 +416,7 @@ msgstr ""
 "ziurtatzeko.<nl/><nl/>Gehiago jakiteko hona jo, <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2>the application's website</link>. "
-#| "Find it there or contact the author if you want to use this application "
-#| "for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -431,7 +425,7 @@ msgid ""
 "anything other than private personal use."
 msgstr ""
 "%1(e) ez du adierazten zein lizentzia pean banatzen den. Baliteke <link "
-"url='%2>aplikazioaren webgunean</link> hori zehaztu ahal izatea. Han aurki "
+"url='%2'>aplikazioaren webgunean</link> hori zehaztu ahal izatea. Han aurki "
 "ezazu edo jar zaitez egilearekin harremanean erabilera propio pribatuaz "
 "harago erabili nahi baduzu."
 
@@ -507,8 +501,7 @@ msgstr[0] "Lizentzia:"
 msgstr[1] "Lizentziak:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Horrek zer esan nahi du?"
@@ -732,8 +725,7 @@ msgid "Size"
 msgstr "Neurria"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Kaleratze data"
 
@@ -1360,8 +1352,7 @@ msgid "Settings"
 msgstr "Ezarpenak"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Sorburu lehenetsia"
 
@@ -1371,8 +1362,7 @@ msgid "Add Source…"
 msgstr "Gehitu sorburua..."
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Lehenetsi"
 

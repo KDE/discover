@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-09 00:40+0000\n"
-"PO-Revision-Date: 2024-08-29 13:48+0300\n"
+"PO-Revision-Date: 2024-09-09 13:52+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -418,13 +418,7 @@ msgstr ""
 "bilgi için: <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2>the application's website</link>. "
-#| "Find it there or contact the author if you want to use this application "
-#| "for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -433,7 +427,7 @@ msgid ""
 "anything other than private personal use."
 msgstr ""
 "%1, hangi lisans altında dağıtıldığını belirtmiyor. Bu bilgi <link "
-"url='%2>uygulamanın web sitesinde</link> belirtilmiş olabilir. Oraya bakın "
+"url='%2'>uygulamanın web sitesinde</link> belirtilmiş olabilir. Oraya bakın "
 "veya bu uygulamayı kişisel kullanımdan başka herhangi bir amaç için "
 "kullanmak istiyorsanız uygulamanın geliştiricisiyle iletişime geçin."
 
@@ -509,8 +503,7 @@ msgstr[0] "Lisans:"
 msgstr[1] "Lisanslar:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Bu ne anlama gelir?"
@@ -734,10 +727,9 @@ msgid "Size"
 msgstr "Boyut"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
-msgstr "Yayın Tarihi"
+msgstr "Yayım tarihi"
 
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
@@ -1357,8 +1349,7 @@ msgid "Settings"
 msgstr "Ayarlar"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Öntanımlı Kaynak"
 
@@ -1368,8 +1359,7 @@ msgid "Add Source…"
 msgstr "Kaynak Ekle…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Öntanımlı Yap"
 
