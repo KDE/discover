@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-06-28 11:35+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -890,8 +890,8 @@ msgstr "&Uppsett"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "Sæki u&ppfærslur..."
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1554,6 +1554,9 @@ msgstr "Ættir að athuga með uppfærslur"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tími síðustu uppfærslu óþekktur"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "Sæki u&ppfærslur..."
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "Áhætta vegna séreignarhugbúnaðar"

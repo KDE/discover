@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2012-06-13 10:17+0800\n"
 "Last-Translator: HeroP <herophuong93@gmail.com>\n"
 "Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
@@ -829,10 +829,9 @@ msgid "&Installed"
 msgstr "Đã cài "
 
 #: discover/qml/DiscoverWindow.qml:92
-#, fuzzy, kde-format
-#| msgid "Update"
-msgid "Fetching &updates…"
-msgstr "Cập nhật"
+#, kde-format
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, fuzzy, kde-format
@@ -1512,6 +1511,11 @@ msgstr ""
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Update"
+#~ msgid "Fetching &updates…"
+#~ msgstr "Cập nhật"
 
 #, fuzzy
 #~| msgid "Rating"

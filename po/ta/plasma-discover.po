@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-09-07 20:19+0200\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -872,8 +872,8 @@ msgstr "&நிறுவியுள்ளவை"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "&புதுப்பிப்புகள் பதிவிறக்கப்படுகின்றன…"
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1544,6 +1544,9 @@ msgstr "புதுப்பிப்புகள் உள்ளனவா எ�
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "கடைசியாக புதுப்பித்த நேரம் தெரியாத‍து"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "&புதுப்பிப்புகள் பதிவிறக்கப்படுகின்றன…"
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "தனியுடைமை மென்பொருட்களால் ஏற்படும் ஆபத்து"

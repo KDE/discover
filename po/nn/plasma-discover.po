@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-08-25 12:12+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -865,8 +865,8 @@ msgstr "&Installerte"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "Hentar &oppdateringar …"
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1530,3 +1530,6 @@ msgstr "Skal sjå etter oppdateringar"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for siste oppdatering er ukjend"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "Hentar &oppdateringar …"

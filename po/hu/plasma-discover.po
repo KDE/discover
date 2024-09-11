@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-05-29 09:04+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -906,8 +906,8 @@ msgstr "&Telepített"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "&Frissítések letöltése…"
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1573,6 +1573,9 @@ msgstr "Frissítések keresése szükséges"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Az utolsó frissítés időpontja ismeretlen"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "&Frissítések letöltése…"
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "A zárt szoftver kockázatai"

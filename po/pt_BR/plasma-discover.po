@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-06-21 01:47-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -898,8 +898,8 @@ msgstr "&Instalado"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "Obtendo &atualizações..."
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1564,6 +1564,9 @@ msgstr "Deve verificar por atualizações"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Hora da última atualização desconhecida"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "Obtendo &atualizações..."
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "Riscos do software proprietário"

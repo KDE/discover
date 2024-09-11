@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-06-09 11:25+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -903,8 +903,8 @@ msgstr "&Instalat"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "Se preiau act&ualizări…"
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1570,6 +1570,9 @@ msgstr "Ar trebui căutate actualizări"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Momentul ultimei actualizări e necunoscut"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "Se preiau act&ualizări…"
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "Riscurile programelor proprietare"

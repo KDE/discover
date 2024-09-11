@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -855,8 +855,8 @@ msgstr "已安装的软件包(&I)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "正在获取更新(&U)…"
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1521,3 +1521,6 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "正在获取更新(&U)…"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-08-20 21:42+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -872,8 +872,8 @@ msgstr "설치됨(&I)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "업데이트 가져오는 중(&U)…"
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1539,6 +1539,9 @@ msgstr "업데이트 확인 여부"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "마지막 업데이트 시간 알 수 없음"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "업데이트 가져오는 중(&U)…"
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "독점 소프트웨어 주의점"

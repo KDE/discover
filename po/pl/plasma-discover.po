@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-08-31 07:01+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -913,8 +913,8 @@ msgstr "&Wgrane"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "Pobieranie uaktualnień..."
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1589,6 +1589,9 @@ msgstr "Należy wyszukać uaktualnień"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Czas ostatniego uaktualnienia jest nieznany"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "Pobieranie uaktualnień..."
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "Zagrożenia związane z oprogramowaniem własnościowym"

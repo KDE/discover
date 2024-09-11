@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-08-29 18:57+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -902,8 +902,8 @@ msgstr "&Instalada"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "Obtendo as act&ualizacións…"
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1586,6 +1586,9 @@ msgstr "Debería comprobar se hai actualizacións."
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Descoñécese a hora da última actualización"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "Obtendo as act&ualizacións…"
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "Riscos do soporte lóxico privativo"

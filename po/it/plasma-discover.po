@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
-"PO-Revision-Date: 2024-08-29 18:43+0200\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
+"PO-Revision-Date: 2024-09-10 06:53+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -420,13 +420,7 @@ msgstr ""
 "di più su <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2>the application's website</link>. "
-#| "Find it there or contact the author if you want to use this application "
-#| "for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -435,9 +429,9 @@ msgid ""
 "anything other than private personal use."
 msgstr ""
 "%1 non indica con quale licenza è distribuito. Potresti essere in grado di "
-"determinarlo sul <link url='%2>sito web dell'applicazione</link>. Trovalo lì "
-"o contatta l'autore se vuoi usare questa applicazione per qualsiasi cosa che "
-"non sia un uso personale privato."
+"determinarlo sul <link url='%2'>sito web dell'applicazione</link>. Trovalo "
+"lì o contatta l'autore se vuoi usare questa applicazione per qualsiasi cosa "
+"che non sia un uso personale privato."
 
 #: discover/qml/ApplicationPage.qml:98
 #, kde-format
@@ -511,8 +505,7 @@ msgstr[0] "Licenza:"
 msgstr[1] "Licenze:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Cosa significa?"
@@ -734,8 +727,7 @@ msgid "Size"
 msgstr "Dimensione"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Data di rilascio"
 
@@ -907,8 +899,8 @@ msgstr "&Installati"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "Rec&upero degli aggiornamenti..."
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1360,8 +1352,7 @@ msgid "Settings"
 msgstr "Impostazioni"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Fonte predefinita"
 
@@ -1371,8 +1362,7 @@ msgid "Add Source…"
 msgstr "Aggiungi fonte…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Rendi predefinito"
 
@@ -1588,6 +1578,9 @@ msgstr "Dovresti controllare gli aggiornamenti"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Ora dell'ultimo aggiornamento sconosciuta"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "Rec&upero degli aggiornamenti..."
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "Rischi del software proprietario"

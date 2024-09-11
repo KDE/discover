@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-09-09 09:10+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -917,8 +917,8 @@ msgstr "&Встановлено"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "&Отримання оновлень…"
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1599,6 +1599,9 @@ msgstr "Слід перевірити на оновлення"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Момент останнього оновлення є невідомим"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "&Отримання оновлень…"
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "Ризики, які пов'язано із пропрієтарними програмами"

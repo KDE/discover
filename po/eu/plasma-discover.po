@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-09-09 20:47+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -898,8 +898,8 @@ msgstr "&Instalatuta"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "Eg&uneratzeak ekartzen..."
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1577,6 +1577,9 @@ msgstr "Eguneratzeak dauden egiaztatu beharko litzateke"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Azken eguneratze ordua ezezaguna"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "Eg&uneratzeak ekartzen..."
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "Software jabedunaren arriskua"

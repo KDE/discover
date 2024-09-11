@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2013-04-01 10:16+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -847,10 +847,9 @@ msgid "&Installed"
 msgstr "प्रतिष्ठापीत केलेले"
 
 #: discover/qml/DiscoverWindow.qml:92
-#, fuzzy, kde-format
-#| msgid "Update"
-msgid "Fetching &updates…"
-msgstr "अद्ययावत करा"
+#, kde-format
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, fuzzy, kde-format
@@ -1535,6 +1534,11 @@ msgstr ""
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Update"
+#~ msgid "Fetching &updates…"
+#~ msgstr "अद्ययावत करा"
 
 #, fuzzy
 #~| msgid "Rating"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-09-05 12:34+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -905,8 +905,8 @@ msgstr "ال&مثبّت"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "&يجلب التّحديثات"
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1583,6 +1583,9 @@ msgstr "يجب التماس التّحديثات"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "وقت أخر تحديث مجهول"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "&يجلب التّحديثات"
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "مخاطر البرامج المملوكة"

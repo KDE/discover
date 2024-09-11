@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-02-09 15:37+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -894,8 +894,8 @@ msgstr "インストール済(&I)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "更新を取得中(&U)..."
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1563,6 +1563,9 @@ msgstr "更新の確認が必要です"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "最後の更新時刻は不明です"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "更新を取得中(&U)..."
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "プロプライエタリソフトウェアのリスク"

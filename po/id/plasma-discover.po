@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-09-02 07:09+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -929,8 +929,8 @@ msgstr "&Terinstal"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "Mengambil &pembaruan..."
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1592,6 +1592,9 @@ msgstr "Seharusnya periksa pembaruan"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Waktu pembaruan yang terakhir tidak diketahui"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "Mengambil &pembaruan..."
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "Risiko Perangkat Lunak Proprietary"

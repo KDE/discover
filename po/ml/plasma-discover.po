@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2019-12-29 20:50+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -835,9 +835,9 @@ msgid "&Installed"
 msgstr "ഇൻസ്റ്റാളുചെയ്‌തു"
 
 #: discover/qml/DiscoverWindow.qml:92
-#, fuzzy, kde-format
-msgid "Fetching &updates…"
-msgstr "അപ്‌ഡേറ്റുകൾ നേടുന്നു..."
+#, kde-format
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, fuzzy, kde-format
@@ -1500,6 +1500,10 @@ msgstr ""
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Fetching &updates…"
+#~ msgstr "അപ്‌ഡേറ്റുകൾ നേടുന്നു..."
 
 #, fuzzy
 #~| msgid "Rating"

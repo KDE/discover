@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2015-02-04 16:18+0000\n"
 "Last-Translator: Nermina Ahmić <nahmic1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -849,10 +849,9 @@ msgid "&Installed"
 msgstr "Instalirano"
 
 #: discover/qml/DiscoverWindow.qml:92
-#, fuzzy, kde-format
-#| msgid "Update"
-msgid "Fetching &updates…"
-msgstr "Ažuriraj"
+#, kde-format
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, fuzzy, kde-format
@@ -1538,6 +1537,11 @@ msgstr ""
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Update"
+#~ msgid "Fetching &updates…"
+#~ msgstr "Ažuriraj"
 
 #, fuzzy
 #~| msgid "Rating"

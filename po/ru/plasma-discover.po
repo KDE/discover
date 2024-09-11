@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2024-08-11 07:31+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -918,8 +918,8 @@ msgstr "&Установленные"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "&Загрузка обновлений..."
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1587,6 +1587,9 @@ msgstr "Требуется проверка наличия обновлений"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Время последнего обновления неизвестно"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "&Загрузка обновлений..."
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "Риск использования проприетарного ПО"

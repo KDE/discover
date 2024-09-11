@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-09 00:40+0000\n"
+"POT-Creation-Date: 2024-09-11 00:40+0000\n"
 "PO-Revision-Date: 2023-02-15 16:05+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -906,8 +906,8 @@ msgstr "&Instalado"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
-msgid "Fetching &updates…"
-msgstr "A obter as act&ualizações…"
+msgid "&Updates (Fetching…)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
 #, fuzzy, kde-format
@@ -1582,6 +1582,9 @@ msgstr "Se deve procurar por actualizações"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Hora da última actualização desconhecida"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "A obter as act&ualizações…"
 
 #~ msgid "Risks of proprietary software"
 #~ msgstr "Riscos do 'software' proprietário"
