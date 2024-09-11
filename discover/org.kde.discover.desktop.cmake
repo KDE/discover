@@ -129,6 +129,15 @@ GenericName[zh_CN]=软件中心
 GenericName[zh_TW]=軟體中心
 Categories=Qt;KDE;System;
 Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
+Keywords[ca]=programa;programari;botiga;repositori;paquet;afegeix;instal·la;desinstal·la;elimina;actualitza;apps;aplicacions;jocs;flatpak;snap;complements;microprogramari;firmware;
+Keywords[he]=program;software;repository;package;install;remove;update;apps;applications;תוכנות;התקנה;הסרה;חבילה;מקורות;יישומים;תכנה;תוכנה;הסרת;אפליקציות;תוספות;משחקים;תוספים;הרחבות;קושחה;snap;flatpak;games;addons;add-ons;firmware;קשחה;חנות;
+Keywords[ia]=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
+Keywords[ka]=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
+Keywords[nl]=programma;software;opslag;opslagruimte;pakket;toevoegen;installeren;installatie ongedaan maken;verwijderen;bijwerken;apps;toepassingen;applicaties;spellen;flatpak;snap;add-ons;firmware;
+Keywords[sl]=program;programska oprema;trgovina;skladišče;paket;dodaj;namesti;odstrani;posodobi;programi;aplikacije;igre;flatpak;snap;dodatno;dodatki;vgrajeno programje;
+Keywords[tr]=program;yazılım;depo;paket;ekle;kur;kaldır;güncelle;uygulama;uygulamalar;oyunlar;flatpak;snap;eklentiler;gömülü yazılım;donanım yazılımı;aygıt yazılımı;cihaz yazılımı;dükkan;mağaza;bakkal;store;shop;
+Keywords[uk]=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;програма;програмне забезпечення;крамниця;магазин;сховище;архів;пакунок;додати;встановити;встановлення;вилучити;вилучення;оновлення;оновити;ігри;флетпак;снеп;снап;додатки;мікропрограма;
+Keywords[x-test]=xxprogramxx;xxsoftwarexx;xxstorexx;xxrepositoryxx;xxpackagexx;xxaddxx;xxinstallxx;xxuninstallxx;xxremovexx;xxupdatexx;xxappsxx;xxapplicationsxx;xxgamesxx;xxflatpakxx;xxsnapxx;xxaddonsxx;xxadd-onsxx;xxfirmwarexx;
 
 [Desktop Action Updates]
 Name=See Available Updates
