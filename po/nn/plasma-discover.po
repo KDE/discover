@@ -1530,6 +1530,3 @@ msgstr "Skal sjå etter oppdateringar"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for siste oppdatering er ukjend"
-
-#~ msgid "Fetching &updates…"
-#~ msgstr "Hentar &oppdateringar …"

@@ -7,21 +7,22 @@
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # Мария Шикунова <translation-team@basealt.ru>, 2022.
 # Alexander Yavorsky <kekcuha@gmail.com>, 2023, 2024.
+# SPDX-FileCopyrightText: 2024 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-03 00:40+0000\n"
-"PO-Revision-Date: 2024-07-18 10:00+0300\n"
-"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
-"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"PO-Revision-Date: 2024-09-10 17:08+0300\n"
+"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
+"Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.08.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -78,7 +79,6 @@ msgstr "Не удалось отправить отзыв: %1"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
 #, fuzzy, kde-format
-#| msgid "Software Management"
 msgid "Package management"
 msgstr "Управление программным обеспечением"
 
@@ -89,7 +89,6 @@ msgstr ""
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:290
 #, fuzzy, kde-format
-#| msgid "Additional packages: "
 msgctxt "Root category name"
 msgid "Alpine Linux packages"
 msgstr "Дополнительные пакеты: "
@@ -108,7 +107,6 @@ msgstr ""
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
 #, fuzzy, kde-format
-#| msgid "Error"
 msgid "Error: "
 msgstr "Ошибка"
 
@@ -1062,7 +1060,6 @@ msgstr "Выполняется очистка настроек и данных �
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
 #, fuzzy, kde-format
-#| msgid "Permissions for %1"
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
 msgstr "Права доступа «%1»"
@@ -2020,31 +2017,25 @@ msgstr "Недоступно"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "Критичный"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Install"
+#, kde-format
 msgid "Install"
 msgstr "Установка"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "Удаление…"
+msgstr "Удаление"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, fuzzy, kde-format
-#| msgid "Obsoletes:"
+#, kde-format
 msgid "Obsolete"
-msgstr "Замещает:"
+msgstr "Замещение"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Downgrade"
+#, kde-format
 msgid "Downgrade"
 msgstr "Снижение версии"
 
@@ -2572,13 +2563,11 @@ msgstr "Неизвестный тип операции"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, fuzzy, kde-format
-#| msgid "Channels…"
 msgid "Channel: %1"
 msgstr "Каналы…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #, fuzzy, kde-format
-#| msgid "Channels…"
 msgid "Channels for %1"
 msgstr "Каналы…"
 
@@ -2753,8 +2742,6 @@ msgstr "Приложения"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Updates"
 msgctxt "@item:inlistbox"
 msgid "Application Support"
 msgstr "Обновления приложений"
@@ -2819,7 +2806,6 @@ msgstr "Дополнения"
 #~ msgstr "Выполняется обновление до следующей значительной версии"
 
 #, fuzzy
-#~| msgid "Upgrade"
 #~ msgid "Upgrade to %1 %2"
 #~ msgstr "Установить"
 

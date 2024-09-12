@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-11 00:40+0000\n"
-"PO-Revision-Date: 2024-09-10 01:30+0200\n"
+"PO-Revision-Date: 2024-09-12 01:48+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -900,7 +900,7 @@ msgstr "&Instalado"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "&Actualizaciones (obteniendo...)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
