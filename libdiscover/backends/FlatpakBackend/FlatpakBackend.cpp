@@ -1936,7 +1936,8 @@ void FlatpakBackend::checkRepositories(const FlatpakJobTransaction::Repositories
     for (const auto &[installationPath, names] : repositories.asKeyValueRange()) {
         auto installation = flatpakInstallationByPath(installationPath);
         for (const auto &name : names) {
-            if (auto remote = flatpak_installation_get_remote_by_name(installation, name.toUtf8().constData(), m_cancellable, &localError)) {
+            if (g_autoptr(FlatpakRemote) remote =
+                    flatpak_installation_get_remote_by_name(installation, name.toUtf8().constData(), m_cancellable, &localError)) {
                 loadRemote(installation, remote);
             } else {
                 qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Could not find remote" << name << "in" << installationPath;
@@ -1949,7 +1950,8 @@ FlatpakRemote *FlatpakBackend::installSource(FlatpakResource *resource)
 {
     g_autoptr(GCancellable) cancellable = g_cancellable_new();
 
-    if (auto remote = flatpak_installation_get_remote_by_name(preferredInstallation(), resource->flatpakName().toUtf8().constData(), cancellable, nullptr)) {
+    if (g_autoptr(FlatpakRemote) remote =
+            flatpak_installation_get_remote_by_name(preferredInstallation(), resource->flatpakName().toUtf8().constData(), cancellable, nullptr)) {
         qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Source" << resource->flatpakName() << "already exists in"
                                                    << flatpak_installation_get_path(preferredInstallation());
         return nullptr;
@@ -1981,7 +1983,7 @@ Transaction *FlatpakBackend::installApplication(AbstractResource *app, const Add
 
     if (resource->resourceType() == FlatpakResource::Source) {
         // Let source backend handle this
-        auto remote = installSource(resource);
+        g_autoptr(FlatpakRemote) remote = installSource(resource);
         if (remote) {
             resource->setState(AbstractResource::Installed);
             auto name = flatpak_remote_get_name(remote);
