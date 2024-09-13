@@ -104,14 +104,6 @@
         ]
     },
     "X-KDE-Keywords": "updates",
-    "X-KDE-Keywords[ca]": "actualitzacions",
-    "X-KDE-Keywords[es]": "actualizaciones",
-    "X-KDE-Keywords[fr]": "mises à jour",
-    "X-KDE-Keywords[it]": "aggiornamenti",
-    "X-KDE-Keywords[nl]": "elementen voor bijwerken",
-    "X-KDE-Keywords[sv]": "uppdateringar",
-    "X-KDE-Keywords[uk]": "оновлення",
-    "X-KDE-Keywords[x-test]": "xxupdatesxx",
     "X-KDE-ParentApp": "kcontrol",
     "X-KDE-System-Settings-Parent-Category": "system-administration"
 }
