@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-11 00:40+0000\n"
-"PO-Revision-Date: 2024-08-31 09:45+0200\n"
+"PO-Revision-Date: 2024-09-10 08:45+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -536,8 +536,7 @@ msgstr[0] "Licences :"
 msgstr[1] "Licences :"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Qu'est-ce que cela signifie ?"
@@ -762,10 +761,9 @@ msgid "Size"
 msgstr "Taille"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
-msgstr "Date de sortie"
+msgstr "Date de publication"
 
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
@@ -1394,8 +1392,7 @@ msgid "Settings"
 msgstr "Configuration"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Source par défaut"
 
@@ -1405,10 +1402,9 @@ msgid "Add Source…"
 msgstr "Ajouter une source…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
-msgstr "Définir comme défaut"
+msgstr "Définir comme configuration par défaut"
 
 #: discover/qml/SourcesPage.qml:248
 #, kde-format
