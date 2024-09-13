@@ -133,6 +133,7 @@ Keywords[ar]=برنامج;برمجيّة;برمجية;مستودع;حزمة;تث
 Keywords[ca]=programa;programari;botiga;repositori;paquet;afegeix;instal·la;desinstal·la;elimina;actualitza;apps;aplicacions;jocs;flatpak;snap;complements;microprogramari;firmware;
 Keywords[es]=programa;software;tienda;repositorio;paquete;añadir;agregar;instalar;desinstalar;eliminar;borrar;actualizar;apps;aplicaciones;juegos;flatpak;snap;complementos;añadidos;firmware;
 Keywords[eu]=programa;softwarea;biltegia;saltokia;gordetegia;paketea;gehitu;instalatu;desinstalatu;kendu;eguneratu;appak;aplikazioak;jokoak;flatpak;snap;gehigarriak;firmwarea;
+Keywords[fr]=programme ; logiciel ; boutique ; dépôt ; paquet ; ajout ; installation ; désinstallation ; suppression ; mise à jour ; application ; applications ; jeux ; flatpak ; snap ; modules externes ; micrologiciel ;
 Keywords[he]=program;software;repository;package;install;remove;update;apps;applications;תוכנות;התקנה;הסרה;חבילה;מקורות;יישומים;תכנה;תוכנה;הסרת;אפליקציות;תוספות;משחקים;תוספים;הרחבות;קושחה;snap;flatpak;games;addons;add-ons;firmware;קשחה;חנות;
 Keywords[ia]=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
 Keywords[ka]=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
