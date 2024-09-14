@@ -114,6 +114,18 @@
         "Name[zh_TW]": "軟體更新"
     },
     "X-KDE-Keywords": "updates,offline,automatic",
+    "X-KDE-Keywords[ca]": "actualitzacions,fora de línia,automàtic",
+    "X-KDE-Keywords[de]": "Aktualisierungen,Automatisch",
+    "X-KDE-Keywords[he]": "עדכונים,בלתי מקוונים,אוטומטי,ללא רשת,שדרוגים",
+    "X-KDE-Keywords[ia]": "updates,offline,automatic",
+    "X-KDE-Keywords[ka]": "updates,offline,automatic,განახლებები,ავტომატურად",
+    "X-KDE-Keywords[nl]": "elementen voor bijwerken,offline,automatisch",
+    "X-KDE-Keywords[ru]": "updates,offline,automatic,обновления,автономный,автоматический",
+    "X-KDE-Keywords[sl]": "posodobitve,brez povezave,samodejno",
+    "X-KDE-Keywords[sv]": "uppdateringar,nerkopplad,automatisk",
+    "X-KDE-Keywords[tr]": "güncelleme,güncelleştirme,çevrimdışı,otomatik,kendiliğinden",
+    "X-KDE-Keywords[uk]": "updates,offline,automatic,оновлення,автономне,автоматичне",
+    "X-KDE-Keywords[x-test]": "xxupdatesxx,xxofflinexx,xxautomaticxx",
     "X-KDE-ParentApp": "kcontrol",
     "X-KDE-System-Settings-Parent-Category": "system-administration",
     "X-KDE-Weight": 30
