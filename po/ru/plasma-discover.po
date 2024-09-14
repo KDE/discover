@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-11 00:40+0000\n"
-"PO-Revision-Date: 2024-09-10 17:19+0300\n"
+"PO-Revision-Date: 2024-09-13 17:07+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -56,7 +56,7 @@ msgid "Report This Issue to %1"
 msgstr "Сообщить об ошибке разработчикам %1"
 
 #: discover/DiscoverObject.cpp:192
-#, fuzzy, kde-kuit-format
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -66,14 +66,12 @@ msgid ""
 "command> package manager.<nl/><nl/> Review <link url='https://archlinux.org/"
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
-"Чтобы использовать Центр программ Discover для управления приложениями, "
-"сначала используйте программу <command>pacman</command> для установки "
-"пакетов <link url='https://wiki.archlinux.org/title/"
-"Flatpak#Installation'>Flatpak</link> или <link url='https://wiki.archlinux."
-"org/title/KDE#Discover_does_not_show_any_applications'>PackageKit</link> ."
-"<nl/><nl/> Изучите более подробную информация о пакете <link url='https://"
-"archlinux.org/packages/extra/x86_64/discover/'>пакете Discover дистрибутива "
-"%1</link>."
+"Чтобы использовать центр программ Discover для установки приложений, сначала "
+"воспользуйтесь диспетчером пакетов <command>pacman</command> для установки "
+"<link url='https://wiki.archlinux.org/title/Flatpak#Installation'>Flatpak</"
+"link>.<nl/><nl/> Ознакомьтесь с дополнительной информацией о <link "
+"url='https://archlinux.org/packages/extra/x86_64/discover/'>пакете %1 для "
+"Discover</link>."
 
 #: discover/DiscoverObject.cpp:205
 #, kde-kuit-format
@@ -323,7 +321,7 @@ msgid "No ratings yet"
 msgstr "Пока нет оценок"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -339,19 +337,22 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"Устанавливайте это приложение только в том случае, если полностью доверяете "
-"его авторам (%1).<nl/><nl/>Исходный код приложения частично или полностью "
-"недоступен для изучения и доработки. Это означает, что никто, кроме "
-"разработчика, не может проверить работу приложения, его безопасность и "
-"надёжность, а также вносить в код изменения и распространять их без "
-"получения явного разрешения автора.<nl/><nl/>Приложение может быть как "
-"полностью безопасным для использования, так и наоборот: может собирать "
+"Устанавливайте приложение %1 только в том случае, если полностью доверяете "
+"его авторам. Так как приложение является <emphasis "
+"strong='true'>проприетарным</emphasis>, это подразумевает как ограничения на "
+"его использование, изменение и распространение, так и частичную или полную "
+"недоступность исходного кода для изучения и доработки. Это означает, что "
+"никто, кроме разработчика, не может проверить работу приложения, его "
+"безопасность и надёжность, а также вносить в код изменения и распространять "
+"их без получения явного разрешения автора.<nl/><nl/>Приложение может быть "
+"как полностью безопасным для использования, так и наоборот: может собирать "
 "личные данные, отслеживать местоположение и передавать ваши файлы третьим "
-"лицам.<nl/><nl/>Дополнительная информация представлена на странице <link "
-"url='%2'>%</link>."
+"лицам. Дополнительные сведения могут быть доступны на <link url='%2'>веб-"
+"сайте приложения</link>.<nl/><nl/>Более подробная информация представлена на "
+"странице <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -365,16 +366,18 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Устанавливайте это приложение только в том случае, если полностью доверяете "
-"его авторам (%1).<nl/><nl/>Исходный код приложения частично или полностью "
-"недоступен для изучения и доработки. Это означает, что никто, кроме "
-"разработчика, не может проверить работу приложения, его безопасность и "
-"надёжность, а также вносить в код изменения и распространять их без "
-"получения явного разрешения автора.<nl/><nl/>Приложение может быть как "
-"полностью безопасным для использования, так и наоборот: может собирать "
+"Устанавливайте приложение %1 только в том случае, если полностью доверяете "
+"его авторам. Так как приложение является <emphasis "
+"strong='true'>проприетарным</emphasis>, это подразумевает как ограничения на "
+"его использование, изменение и распространение, так и частичную или полную "
+"недоступность исходного кода для изучения и доработки. Это означает, что "
+"никто, кроме разработчика, не может проверить работу приложения, его "
+"безопасность и надёжность, а также вносить в код изменения и распространять "
+"их без получения явного разрешения автора.<nl/><nl/>Приложение может быть "
+"как полностью безопасным для использования, так и наоборот: может собирать "
 "личные данные, отслеживать местоположение и передавать ваши файлы третьим "
-"лицам.<nl/><nl/>Дополнительная информация представлена на странице <link "
-"url='%2'>%</link>."
+"лицам. Более подробная информация представлена на странице <link url='%2'>"
+"%2</link>."
 
 #: discover/qml/ApplicationPage.qml:78
 #, kde-kuit-format
@@ -392,6 +395,18 @@ msgid ""
 "url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"Для %1 используется одна или несколько лицензий, не сертифицированных как "
+"«Free Software» («свободное программное обеспечение») ни <link url='%2'>Free "
+"Software Foundation</link>, ни <link url='%3'>Open Source Initiative</link>. "
+"Это означает, что могут присутствовать какие-либо ограничения в плане "
+"использования, изучения, изменения и распространения приложения.<nl/><nl/>До "
+"начала работы с приложением обязательно ознакомьтесь с текстом лицензии и "
+"примите во внимание имеющиеся ограничения.<nl/><nl/>Если лицензия не "
+"позволяет даже изучить исходный код, устанавливайте приложение только в том "
+"случае, если полностью доверяете его авторам, так как только они могут "
+"проверить безопасность и надёжность кода. Дополнительные сведения могут быть "
+"доступны на <link url='%4'>веб-сайте приложения</link>.<nl/><nl/>Более "
+"подробная информация представлена на странице <link url='%5'>%5</link>."
 
 #: discover/qml/ApplicationPage.qml:85
 #, kde-kuit-format
@@ -407,6 +422,17 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"Для %1 используется одна или несколько лицензий, не сертифицированных как "
+"«Free Software» («свободное программное обеспечение») ни <link url='%2'>Free "
+"Software Foundation</link>, ни <link url='%3'>Open Source Initiative</link>. "
+"Это означает, что могут присутствовать какие-либо ограничения в плане "
+"использования, изучения, изменения и распространения приложения.<nl/><nl/>До "
+"начала работы с приложением обязательно ознакомьтесь с текстом лицензии и "
+"примите во внимание имеющиеся ограничения.<nl/><nl/>Если лицензия не "
+"позволяет даже изучить исходный код, устанавливайте приложение только в том "
+"случае, если полностью доверяете его авторам, так как только они могут "
+"проверить безопасность и надёжность кода.<nl/><nl/>Более подробная "
+"информация представлена на странице <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
 #, kde-kuit-format
@@ -417,6 +443,11 @@ msgid ""
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
+"Приложение %1 не предоставляет данных о том, по какой лицензии оно "
+"распространяется. Соответствующая информация может быть доступна на <link "
+"url='%2'>веб-сайте приложения</link>. Найдите лицензию там или свяжитесь с "
+"автором, если требуется задействовать приложение не в целях частного личного "
+"использования."
 
 #: discover/qml/ApplicationPage.qml:98
 #, kde-format
@@ -426,15 +457,18 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"Приложение %1 не предоставляет данных о том, по какой лицензии оно "
+"распространяется. Свяжитесь с автором, если требуется задействовать "
+"приложение не в целях частного личного использования."
 
 #: discover/qml/ApplicationPage.qml:134
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
-msgstr "Опубликовать"
+msgstr "Поделиться"
 
 #: discover/qml/ApplicationPage.qml:142
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
 msgstr "Дополнения"
@@ -453,10 +487,10 @@ msgid "%1 - %2"
 msgstr "%1 — %2"
 
 #: discover/qml/ApplicationPage.qml:210
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
-msgstr "Отправить ссылку на приложение"
+msgstr "Отправка ссылки на приложение"
 
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
@@ -489,7 +523,7 @@ msgstr[2] "Лицензии:"
 msgstr[3] "Лицензия:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Что это значит?"
@@ -528,15 +562,15 @@ msgid "Everyone"
 msgstr "0+"
 
 #: discover/qml/ApplicationPage.qml:489
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr "%1"
+msgstr "%1+"
 
 #: discover/qml/ApplicationPage.qml:503
-#, fuzzy, kde-format
+#, kde-format
 msgid "See details"
-msgstr "Показать подробности…"
+msgstr "Подробности"
 
 #: discover/qml/ApplicationPage.qml:527
 #, kde-format
@@ -651,10 +685,10 @@ msgid "Content Rating"
 msgstr "Оценка содержимого"
 
 #: discover/qml/ApplicationPage.qml:934
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "Отправить статистику использования"
+msgstr "Сведения о лицензии"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -721,9 +755,9 @@ msgid "Size"
 msgstr "По размеру"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
+#, kde-format
 msgid "Release date"
-msgstr "По дате выпуска"
+msgstr "Дата выпуска"
 
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
@@ -896,7 +930,7 @@ msgstr "&Установленные"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "&Обновления (получение…)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1144,6 +1178,10 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"Если вам нравится %1, расскажите о впечатляющих возможностях этой программы "
+"другим! Сделайте акцент на функциональности, удобстве использования и "
+"внешнем виде. Если же программа не оправдала ваших ожиданий, поясните, "
+"почему."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1153,6 +1191,9 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"Если %1 не удаётся запустить, сообщите об этом авторам пакета для %2 по "
+"адресу <link url='%3'>%3</link>, поскольку дело может быть в простой ошибке "
+"при создании пакета, а не в ошибке в самом приложении."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1162,6 +1203,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"Если %1 не удаётся запустить, сообщите об этом разработчикам по адресу <link "
+"url='%2'>%2</link>, поскольку дело может быть в простой ошибке при создании "
+"пакета, а не в ошибке в самом приложении."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1170,6 +1214,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"Если часто происходят сбои приложения, сообщите об этом разработчикам по "
+"адресу <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1179,6 +1225,9 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"Если при работе с приложением возникли проблемы, сообщите об этом "
+"разработчикам по адресу <link url='%1'>%1</link> или более подробно опишите "
+"их здесь."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1203,7 +1252,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "launch,run,start,запустить,выполнить,начать"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1213,7 +1262,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "crash,segfault,сбой,сегфолт,ошибка сегментации"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1224,6 +1273,8 @@ msgctxt ""
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
+"doesn't work,dumb,stupid,crap,junk,suck,terrible,hate,не работает,тупой,"
+"дурацкий,идиотский,дерьмо,говно,дрянь,днище,отстой,ужасный,ненависть"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1334,7 +1385,7 @@ msgid "Settings"
 msgstr "Настройка"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
+#, kde-format
 msgid "Default Source"
 msgstr "Источник по умолчанию"
 
@@ -1344,7 +1395,7 @@ msgid "Add Source…"
 msgstr "Добавить источник..."
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
+#, kde-format
 msgid "Make Default"
 msgstr "Использовать по умолчанию"
 
@@ -1470,25 +1521,25 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "По завершении автоматически:"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "Снять выделение"
+msgstr "Выберите действие"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "Перезагрузить сейчас"
+msgstr "Перезагрузить"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
-msgstr ""
+msgstr "Выключить"
 
 #: discover/qml/UpdatesPage.qml:268
 #, kde-format
@@ -1499,7 +1550,7 @@ msgstr "Общий размер: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "Перезагрузить для установки обновлений сейчас"
 
 #: discover/qml/UpdatesPage.qml:433
 #, kde-format

@@ -441,16 +441,13 @@ msgid ""
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:134
-#, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
-msgstr "Διαμοιρασμός"
+msgstr "Κοινοποίηση"
 
 #: discover/qml/ApplicationPage.qml:142
-#, fuzzy, kde-format
-#| msgid "Add-ons"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
 msgstr "Πρόσθετα"
@@ -469,11 +466,10 @@ msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:210
-#, fuzzy, kde-format
-#| msgid "Send a link for this application"
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
-msgstr "Στείλτε ένα σύνδεσμο για αυτή την εφαρμογή"
+msgstr "Κοινοποίηση σύνδεσμου στην εφαρμογή"
 
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
@@ -520,7 +516,7 @@ msgstr "Άγνωστο"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:469
 #, kde-format
@@ -533,27 +529,24 @@ msgstr[1] "Δείτε περισσότερα..."
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr ""
+msgstr "Ηλικίες:"
 
 #: discover/qml/ApplicationPage.qml:487
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr ""
+msgstr "Όλοι"
 
 #: discover/qml/ApplicationPage.qml:489
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr "%1"
+msgstr "%1+"
 
 #: discover/qml/ApplicationPage.qml:503
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
+#, kde-format
 msgid "See details"
-msgstr "Δείτε λεπτομέρειες..."
+msgstr "Δείτε λεπτομέρειες"
 
 #: discover/qml/ApplicationPage.qml:527
 #, kde-format
@@ -596,13 +589,13 @@ msgstr "Γράψτε μια αξιολόγηση"
 #: discover/qml/ApplicationPage.qml:755
 #, kde-format
 msgid "Install to Write a Review"
-msgstr "Εγκαταστήστε για να γράψετε μια Αξιολόγηση"
+msgstr "Εγκαταστήστε για να γράψετε μια αξιολόγηση"
 
 #: discover/qml/ApplicationPage.qml:777
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
-msgstr ""
+msgstr "Εξωτερικοί σύνδεσμοι"
 
 #: discover/qml/ApplicationPage.qml:796
 #, kde-format
@@ -627,7 +620,7 @@ msgstr "Επισκεφτείτε τον ιστότοπο  του έργου"
 #: discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Donate"
-msgstr "Κάντε μια Δωρεά"
+msgstr "Δωρεά"
 
 #: discover/qml/ApplicationPage.qml:823
 #, kde-format
@@ -742,7 +735,7 @@ msgstr "Ημερομηνία έκδοσης"
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
 msgid "Nothing found"
-msgstr "Δεν βρέθηκε Τίποτα"
+msgstr "Δεν βρέθηκε τίποτα"
 
 #: discover/qml/ApplicationsListPage.qml:214
 #, kde-format
@@ -793,7 +786,7 @@ msgstr ""
 #: discover/qml/ApplicationsListPage.qml:275
 #, kde-format
 msgid "Still looking…"
-msgstr "Ακόμα γίνεται αναζήτηση..."
+msgstr "Ακόμα γίνεται αναζήτηση…"
 
 #: discover/qml/BrowsingPage.qml:20
 #, kde-format
@@ -877,13 +870,13 @@ msgstr "Κλείσιμο"
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr "Προηγούμενο στιγμιότυπο οθόνης"
+msgstr "Προηγούμενο στιγμιότυπο"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr "Επόμενο Στιγμιότυπο οθόνης"
+msgstr "Επόμενο στιγμιότυπο"
 
 #: discover/qml/DiscoverWindow.qml:48
 #, kde-format

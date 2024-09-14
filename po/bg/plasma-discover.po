@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-11 00:40+0000\n"
-"PO-Revision-Date: 2024-08-07 10:00+0200\n"
+"PO-Revision-Date: 2024-09-13 21:32+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -303,18 +303,7 @@ msgid "No ratings yet"
 msgstr "Все още няма оценки"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -330,30 +319,21 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"Инсталирайте това приложение, само ако имате доверие на авторите (%1).<nl/"
-"><nl/>Изходният код на приложението е частично или изцяло затворен за "
-"публично ползване и подобряване. Това означава, че трети страни и "
-"потребители като вас не могат да проверяват неговата работа, сигурност и "
-"надеждност, нито да го променят и да го разпространяват без изричното "
-"разрешение на авторите.<nl/><nl/>Приложението може да е напълно безопасно за "
-"използване или да действа срещу вас по различни начини - като например "
-"събиране на лична информация, проследяване на местонахождението ви или да "
-"предава съдържанието на вашите файлове на някой друг.<nl/><nl/>Можете да да "
-"научите повече на адрес <link url='%2'>%2</link>."
+"Инсталирайте %1 само ако имате пълно доверие на авторите му, защото то е "
+"<emphasis strong='true'>патентовано</emphasis>: Свободата ви да използвате, "
+"променяте и разпространявате това приложение е ограничена, а изходният му "
+"код е частично или изцяло затворен за публична проверка и подобрение. Това "
+"означава, че трети страни и потребители като вас не могат да проверят "
+"неговото функциониране, сигурност и надеждност.<nl/><nl/>Приложението може "
+"да е напълно безопасно за използване или да действа срещу вас по различни "
+"начини - например да събира личната ви информация, да проследява "
+"местоположението ви или да предава съдържанието на данните ви на някой друг. "
+"Използвайте го само ако имате пълно доверие на неговите автори. Повече "
+"информация може да бъде налична на <link url='%2'>уебсайта на приложението</"
+"link>.<nl/><nl/>Изберете повече на <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -367,16 +347,16 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Инсталирайте това приложение, само ако имате доверие на авторите (%1).<nl/"
-"><nl/>Изходният код на приложението е частично или изцяло затворен за "
-"публично ползване и подобряване. Това означава, че трети страни и "
-"потребители като вас не могат да проверяват неговата работа, сигурност и "
-"надеждност, нито да го променят и да го разпространяват без изричното "
-"разрешение на авторите.<nl/><nl/>Приложението може да е напълно безопасно за "
-"използване или да действа срещу вас по различни начини - като например "
-"събиране на лична информация, проследяване на местонахождението ви или да "
-"предава съдържанието на вашите файлове на някой друг.<nl/><nl/>Можете да да "
-"научите повече на адрес <link url='%2'>%2</link>."
+"Инсталирайте %1, само ако имате доверие на авторите.<nl/><nl/>Изходният код "
+"на приложението е частично или изцяло затворен за публично ползване и "
+"подобряване. Това означава, че трети страни и потребители като вас не могат "
+"да проверяват неговата работа, сигурност и надеждност, нито да го променят и "
+"да го разпространяват без изричното разрешение на авторите.<nl/><nl/"
+">Приложението може да е напълно безопасно за използване или да действа срещу "
+"вас по различни начини - като например събиране на лична информация, "
+"проследяване на местонахождението ви или да предава съдържанието на вашите "
+"файлове на някой друг.<nl/><nl/>Можете да да научите повече на адрес <link "
+"url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:78
 #, kde-kuit-format
@@ -394,6 +374,18 @@ msgid ""
 "url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"%1 използва един или повече лицензи, които не са сертифицирани като "
+"„свободен софтуер“ от <link url='%2'>Free Software Foundation</link> или "
+"<link url='%3'>Open Source Initiative</link>. Това означава, че свободата ви "
+"да го използвате, изучавате, променяте и споделяте може да бъде ограничена "
+"по някакъв начин.<nl/><nl/>Не забравяйте да прочетете текста на лиценза и да "
+"разберете всички ограничения, преди да използвате софтуера.<nl/><nl/>Ако "
+"лицензът дори не предоставя достъп за четене на изходния код, уверете се, че "
+"се доверявате напълно на авторите, тъй като никой друг не може да провери "
+"надеждността и сигурността на неговия код, за да гарантира, че той не "
+"действа срещу вас по скрит начин. Повече информация може да бъде налична на "
+"<link url='%4'>уебсайта на приложението</link>.<nl/><nl/>Изберете повече на "
+"<link url='%5'>%5</link>.Translated with DeepL.com (free version)"
 
 #: discover/qml/ApplicationPage.qml:85
 #, kde-kuit-format
@@ -409,6 +401,17 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"%1 използва един или повече лицензи, които не са сертифицирани като "
+"„свободен софтуер“ от <link url='%2'>Free Software Foundation</link> или "
+"<link url='%3'>Open Source Initiative</link>. Това означава, че свободата ви "
+"да го използвате, изучавате, променяте и споделяте може да бъде ограничена "
+"по някои начини.<nl/><nl/>Не забравяйте да прочетете текста на лиценза и да "
+"разберете всички ограничения, преди да използвате софтуера. <nl/><nl/>Ако "
+"лицензът не предоставя дори достъп за четене на изходния код, уверете се, че "
+"се доверявате напълно на авторите, тъй като никой друг не може да провери "
+"надеждността и сигурността на неговия код, за да се увери, че той не действа "
+"срещу вас по скрит начин.<nl/><nl/>Изберете повече на <link url='%4'>%4</"
+"link>.Translated with DeepL.com (free version)"
 
 #: discover/qml/ApplicationPage.qml:94
 #, kde-kuit-format
@@ -419,6 +422,10 @@ msgid ""
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
+"%1 не посочва под какъв лиценз се разпространява. Може да успеете да "
+"определите това на <link url='%2'>уебсайта на приложението</link>. Намерете "
+"го там или се свържете с автора, ако искате да използвате това приложение за "
+"нещо различно от лична употреба."
 
 #: discover/qml/ApplicationPage.qml:98
 #, kde-format
@@ -428,6 +435,8 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"%1 не посочва под какъв лиценз се разпространява. Свържете се с автора на "
+"приложението, ако искате да го използвате за нещо различно от лична употреба."
 
 #: discover/qml/ApplicationPage.qml:134
 #, kde-format
@@ -489,11 +498,10 @@ msgstr[0] "Лиценз:"
 msgstr[1] "Лицензи"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
-msgstr "Какво е това?"
+msgstr "Какво означава това?"
 
 #: discover/qml/ApplicationPage.qml:398
 #, kde-format
@@ -650,11 +658,10 @@ msgid "Content Rating"
 msgstr "Рейтинг на съдържанието"
 
 #: discover/qml/ApplicationPage.qml:934
-#, fuzzy, kde-format
-#| msgid "Submit Usage Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "Изпращане на информация за използването"
+msgstr "Информация за лиценз"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -715,8 +722,7 @@ msgid "Size"
 msgstr "Големина"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Дата на излизане"
 
@@ -889,7 +895,7 @@ msgstr "&Инсталирани"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "&Актуализации (Извличане...)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1324,8 +1330,7 @@ msgid "Settings"
 msgstr "Настройки"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Стандартен източник"
 
@@ -1335,8 +1340,7 @@ msgid "Add Source…"
 msgstr "Добавяне на източник…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Задаване по подразбиране"
 
@@ -1466,18 +1470,16 @@ msgid "On completion, automatically:"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "Избиране нищо"
+msgstr "Избиране на действие"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "Рестартиране сега"
+msgstr "Рестартиране"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
