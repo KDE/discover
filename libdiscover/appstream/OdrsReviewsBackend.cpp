@@ -290,28 +290,12 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
 
 void OdrsReviewsBackend::parseRatings()
 {
-    auto fw = new QFutureWatcher<QJsonDocument>(this);
-    connect(fw, &QFutureWatcher<QJsonDocument>::finished, this, [this, fw] {
-        const auto jsonDocument = fw->result();
+    auto fw = new QFutureWatcher<QHash<QString, Rating>>(this);
+    connect(fw, &QFutureWatcher<QHash<QString, Rating>>::finished, this, [this, fw] {
         fw->deleteLater();
-        const auto jsonObject = jsonDocument.object();
-        m_ratings.reserve(jsonObject.size());
-        for (auto it = jsonObject.begin(); it != jsonObject.end(); it++) {
-            const auto appJsonObject = it.value().toObject();
-
-            const int ratingCount = appJsonObject.value(QLatin1String("total")).toInt();
-            int ratingMap[] = {
-                appJsonObject.value(QLatin1String("star0")).toInt(),
-                appJsonObject.value(QLatin1String("star1")).toInt(),
-                appJsonObject.value(QLatin1String("star2")).toInt(),
-                appJsonObject.value(QLatin1String("star3")).toInt(),
-                appJsonObject.value(QLatin1String("star4")).toInt(),
-                appJsonObject.value(QLatin1String("star5")).toInt(),
-            };
-
-            const auto rating = Rating(it.key(), ratingCount, ratingMap);
-            m_ratings.insert(it.key(), rating);
-
+        m_ratings = fw->result();
+        for (auto it = m_ratings.begin(); it != m_ratings.end(); it++) {
+            const auto rating = it.value();
             const auto finder = [&rating](const Rating &review) {
                 return review.ratingPoints() < rating.ratingPoints();
             };
@@ -333,15 +317,35 @@ void OdrsReviewsBackend::parseRatings()
         QFile ratingsDocument(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1StringView("/ratings/ratings"));
         if (!ratingsDocument.open(QIODevice::ReadOnly)) {
             qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Could not open file" << ratingsDocument.fileName();
-            return QJsonDocument::fromJson({});
+            return QHash<QString, Rating>{};
         }
 
         QJsonParseError error;
-        const auto ret = QJsonDocument::fromJson(ratingsDocument.readAll(), &error);
+        const auto jsonDocument = QJsonDocument::fromJson(ratingsDocument.readAll(), &error);
         if (error.error) {
             qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Error parsing ratings:" << ratingsDocument.errorString() << error.errorString();
         }
-        return ret;
+
+        QHash<QString, Rating> ratings;
+        const auto jsonObject = jsonDocument.object();
+        ratings.reserve(jsonObject.size());
+        for (auto it = jsonObject.begin(); it != jsonObject.end(); it++) {
+            const auto appJsonObject = it.value().toObject();
+
+            const int ratingCount = appJsonObject.value(QLatin1String("total")).toInt();
+            int ratingMap[] = {
+                appJsonObject.value(QLatin1String("star0")).toInt(),
+                appJsonObject.value(QLatin1String("star1")).toInt(),
+                appJsonObject.value(QLatin1String("star2")).toInt(),
+                appJsonObject.value(QLatin1String("star3")).toInt(),
+                appJsonObject.value(QLatin1String("star4")).toInt(),
+                appJsonObject.value(QLatin1String("star5")).toInt(),
+            };
+
+            const auto rating = Rating(it.key(), ratingCount, ratingMap);
+            ratings.insert(it.key(), rating);
+        }
+        return ratings;
     }));
 }
 
