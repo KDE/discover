@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-11 00:40+0000\n"
-"PO-Revision-Date: 2024-08-31 07:01+0200\n"
+"PO-Revision-Date: 2024-09-14 12:44+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -421,13 +421,7 @@ msgstr ""
 "na <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2>the application's website</link>. "
-#| "Find it there or contact the author if you want to use this application "
-#| "for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -436,7 +430,7 @@ msgid ""
 "anything other than private personal use."
 msgstr ""
 "%1 nie wskazuje na jakiej licencji jest rozpowszechniania. Możliwe, że "
-"będziesz w stanie to ustalić na <link url='%2>stronie aplikacji</link>. "
+"będziesz w stanie to ustalić na <link url='%2'>stronie aplikacji</link>. "
 "Poszukaj tam lub napisz do jej autora, jeśli chcesz wykorzystać tę aplikację "
 "do czegokolwiek innego niż do własnego użytku."
 
@@ -513,8 +507,7 @@ msgstr[1] "Licencja:"
 msgstr[2] "Licencja:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Co to oznacza?"
@@ -740,10 +733,9 @@ msgid "Size"
 msgstr "Rozmiar"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
-msgstr "Daty wydania"
+msgstr "Data udostępnienia"
 
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
@@ -914,7 +906,7 @@ msgstr "&Wgrane"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "&Uaktualnienia (Pobieranie…)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1363,8 +1355,7 @@ msgid "Settings"
 msgstr "Ustawienia"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Domyślne źródło"
 
@@ -1374,8 +1365,7 @@ msgid "Add Source…"
 msgstr "Dodaj źródło..."
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Ustaw jako domyślne"
 

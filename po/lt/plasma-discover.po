@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-11 00:40+0000\n"
-"PO-Revision-Date: 2024-09-08 00:08+0300\n"
+"PO-Revision-Date: 2024-09-15 00:32+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -497,8 +497,7 @@ msgstr[2] "Licencijos:"
 msgstr[3] "Licencijos:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Ką tai reiškia?"
@@ -728,8 +727,7 @@ msgid "Size"
 msgstr "Dydis"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Laidos data"
 
@@ -904,7 +902,7 @@ msgstr "Į&diegta"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "Atn&aujinimai (Gaunami…)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1151,6 +1149,9 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"Jeigu jums patinka %1, papasakokite žmonėms, kuo ji nuostabi! Atkreipkite "
+"dėmesį į funkcionalumą, tinkamumą ir išvaizdą. Jei programa nepatenkino jūsų "
+"poreikių, paaiškinkite kodėl."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1169,6 +1170,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"Jei %1 nepasileidžia, vietoj to, apsvarstykite galimybę pranešti apie tai "
+"programos plėtotojams, adresu <link url='%2'>%2</link>, nes tai gali būti "
+"lengvai pataisoma pakavimo problema, o ne klaida pačioje programoje."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1210,7 +1214,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "paleisti,vykdyti,paleisti,įjungti"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1220,7 +1224,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "strigtis,užstrigo,uzstrigo,segfault"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1231,6 +1235,8 @@ msgctxt ""
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
+"neveikia,durna,kvaila,neveikianti,šlamštas,slamstas,šūdas,sudas,buka,"
+"siaubinga,baisi,niekam tikusi,niekinga,nekenčiu,nekenciu"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1341,8 +1347,7 @@ msgid "Settings"
 msgstr "Nuostatos"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Numatytasis šaltinis"
 
@@ -1352,8 +1357,7 @@ msgid "Add Source…"
 msgstr "Pridėti šaltinį…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Paversti numatytąja"
 
@@ -1478,7 +1482,7 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "Užbaigus, automatiškai:"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
