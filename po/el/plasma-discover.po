@@ -500,8 +500,7 @@ msgstr[0] "Άδεια χρήσης:"
 msgstr[1] "Άδειες χρήσης:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Τι σημαίνει αυτό;"
@@ -727,8 +726,7 @@ msgid "Size"
 msgstr "Μέγεθος"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Ημερομηνία έκδοσης"
 
@@ -1336,8 +1334,7 @@ msgid "Settings"
 msgstr "Ρυθμίσεις"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Προκαθορισμένη πηγή"
 
@@ -1347,8 +1344,7 @@ msgid "Add Source…"
 msgstr "Προσθήκη πηγής..."
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Ορισμός ως προεπιλογή"
 
