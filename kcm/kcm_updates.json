@@ -104,8 +104,10 @@
         ]
     },
     "X-KDE-Keywords": "updates",
+    "X-KDE-Keywords[ca@valencia]": "actualitzacions",
     "X-KDE-Keywords[ca]": "actualitzacions",
     "X-KDE-Keywords[de]": "Aktualisierungen",
+    "X-KDE-Keywords[en_GB]": "updates",
     "X-KDE-Keywords[es]": "actualizaciones",
     "X-KDE-Keywords[fr]": "mises à jour",
     "X-KDE-Keywords[gl]": "actualizacións",
