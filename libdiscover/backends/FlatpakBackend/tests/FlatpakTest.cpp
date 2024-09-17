@@ -102,7 +102,7 @@ private Q_SLOTS:
         // NOTE: there will be a stub entry in the model now, don't assume it to be rowCount==0!
 
         AbstractResourcesBackend::Filters f;
-        f.resourceUrl = QUrl(QStringLiteral("https://dl.flathub.org/repo/appstream/com.dosbox.DOSBox.flatpakref"));
+        f.resourceUrl = QUrl(QStringLiteral("https://dl.flathub.org/repo/appstream/io.github.dosbox-staging.flatpakref"));
         const auto res = getResources(m_appBackend->search(f));
         QCOMPARE(res.count(), 1);
 
@@ -110,7 +110,8 @@ private Q_SLOTS:
         QCOMPARE(ourResource->state(), AbstractResource::None);
         QCOMPARE(waitTransaction(m_appBackend->installApplication(ourResource)), Transaction::DoneStatus);
         QCOMPARE(ourResource->state(), AbstractResource::Installed);
-        f.resourceUrl = QUrl(QStringLiteral("flatpak:app/com.dosbox.DOSBox/") + QLatin1StringView(flatpak_get_default_arch()) + QStringLiteral("/stable"));
+        f.resourceUrl =
+            QUrl(QStringLiteral("flatpak:app/io.github.dosbox-staging/") + QLatin1StringView(flatpak_get_default_arch()) + QStringLiteral("/stable"));
         QCOMPARE(getResources(m_appBackend->search(f)).count(), 1);
         QCOMPARE(waitTransaction(m_appBackend->removeApplication(ourResource)), Transaction::DoneStatus);
         QCOMPARE(ourResource->state(), AbstractResource::None);
@@ -119,7 +120,7 @@ private Q_SLOTS:
     void testInstallApp()
     {
         AbstractResourcesBackend::Filters f;
-        f.resourceUrl = QUrl(QStringLiteral("appstream://dosbox.desktop"));
+        f.resourceUrl = QUrl(QStringLiteral("appstream://scr2ppm.desktop"));
         const auto res = getResources(m_appBackend->search(f));
         QCOMPARE(res.count(), 1);
 
@@ -127,7 +128,8 @@ private Q_SLOTS:
         QCOMPARE(ourResource->state(), AbstractResource::None);
         QCOMPARE(waitTransaction(m_appBackend->installApplication(ourResource)), Transaction::DoneStatus);
         QCOMPARE(ourResource->state(), AbstractResource::Installed);
-        f.resourceUrl = QUrl(QStringLiteral("flatpak:app/com.dosbox.DOSBox/") + QLatin1StringView(flatpak_get_default_arch()) + QStringLiteral("/stable"));
+        f.resourceUrl =
+            QUrl(QStringLiteral("flatpak:app/io.github.igorlogius.scr2ppm/") + QLatin1StringView(flatpak_get_default_arch()) + QStringLiteral("/stable"));
         QCOMPARE(getResources(m_appBackend->search(f)).count(), 1);
         QCOMPARE(waitTransaction(m_appBackend->removeApplication(ourResource)), Transaction::DoneStatus);
         QCOMPARE(ourResource->state(), AbstractResource::None);
@@ -136,27 +138,29 @@ private Q_SLOTS:
     void testFlatpakref()
     {
         AbstractResourcesBackend::Filters f;
-        f.resourceUrl = QUrl(QStringLiteral("https://dl.flathub.org/repo/appstream/com.dosbox.DOSBox.flatpakref"));
+        f.resourceUrl = QUrl(QStringLiteral("https://dl.flathub.org/repo/appstream/io.github.igorlogius.scr2ppm.flatpakref"));
         const auto res = getResources(m_appBackend->search(f));
         QCOMPARE(res.count(), 1);
 
-        f.resourceUrl = QUrl(QStringLiteral("appstream://dosbox.desktop"));
+        f.resourceUrl = QUrl(QStringLiteral("appstream://scr2ppm.desktop"));
         const auto res2 = getResources(m_appBackend->search(f));
         QCOMPARE(res2, res);
     }
 
     void testSearches()
     {
+        // We test an item that provides another appstream id, this way we test both
         AbstractResourcesBackend::Filters f;
-        f.resourceUrl = QUrl(QStringLiteral("flatpak:app/com.dosbox.DOSBox/") + QLatin1StringView(flatpak_get_default_arch()) + QStringLiteral("/stable"));
+        f.resourceUrl =
+            QUrl(QStringLiteral("flatpak:app/io.github.igorlogius.scr2ppm/") + QLatin1StringView(flatpak_get_default_arch()) + QStringLiteral("/stable"));
         const auto res = getResources(m_appBackend->search(f));
         QCOMPARE(res.count(), 1);
 
-        f.resourceUrl = QUrl(QStringLiteral("appstream://dosbox.desktop"));
+        f.resourceUrl = QUrl(QStringLiteral("appstream://scr2ppm.desktop"));
         const auto res2 = getResources(m_appBackend->search(f));
         QCOMPARE(res2, res);
 
-        f.resourceUrl = QUrl(QStringLiteral("appstream://com.dosbox.DOSBox"));
+        f.resourceUrl = QUrl(QStringLiteral("appstream://io.github.igorlogius.scr2ppm"));
         const auto res3 = getResources(m_appBackend->search(f));
         QCOMPARE(res3, res);
     }
@@ -210,6 +214,10 @@ private:
         });
         connect(t, &Transaction::statusChanged, t, [t] {
             qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "status" << t->status();
+        });
+        connect(t, &Transaction::proceedRequest, t, [t](const QString &title, const QString &description) {
+            qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "proceed?" << t << title << description;
+            t->proceed();
         });
         while (t && spyInstalled.count() == 0) {
             qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "waiting, currently" << ret << t->progress() << spyInstalled.count() << destructionSpy.count();
