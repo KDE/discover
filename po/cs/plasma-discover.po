@@ -425,11 +425,10 @@ msgstr[1] "Licence:"
 msgstr[2] "Licence:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
-msgstr "Co to znamená?"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:398
 #, kde-format
@@ -651,8 +650,7 @@ msgid "Size"
 msgstr "Velikost"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Datum vydání"
 
@@ -1253,10 +1251,9 @@ msgid "Settings"
 msgstr "Nastavení"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
-msgstr "Výchozí zdroj"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:118
 #, kde-format
@@ -1264,10 +1261,9 @@ msgid "Add Source…"
 msgstr "Přidat zdroj…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
-msgstr "Nastavit jako výchozí"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:248
 #, kde-format
@@ -1477,6 +1473,3 @@ msgstr "Měli byste zkontrolovat aktualizace"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#~ msgid "Fetching &updates…"
-#~ msgstr "Získávají se akt&ualizace…"
