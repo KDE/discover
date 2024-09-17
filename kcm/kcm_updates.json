@@ -119,6 +119,7 @@
     "X-KDE-Keywords[de]": "Aktualisierungen,Automatisch",
     "X-KDE-Keywords[en_GB]": "updates,offline,automatic",
     "X-KDE-Keywords[es]": "actualizaciones,sin conexión,diferido,automática",
+    "X-KDE-Keywords[eu]": "eguneratzeak,lerroz kanpo,lineaz kanpo,automatikoa",
     "X-KDE-Keywords[fr]": "mises à jour, hors ligne, automatique",
     "X-KDE-Keywords[gl]": "actualizacións,sen conexión,desconectada,desconectado,automática,automático,updates,offline,automatic",
     "X-KDE-Keywords[he]": "עדכונים,בלתי מקוונים,אוטומטי,ללא רשת,שדרוגים",
@@ -134,6 +135,7 @@
     "X-KDE-Keywords[tr]": "güncelleme,güncelleştirme,çevrimdışı,otomatik,kendiliğinden",
     "X-KDE-Keywords[uk]": "updates,offline,automatic,оновлення,автономне,автоматичне",
     "X-KDE-Keywords[x-test]": "xxupdatesxx,xxofflinexx,xxautomaticxx",
+    "X-KDE-Keywords[zh_TW]": "更新,線下,離線,自動",
     "X-KDE-ParentApp": "kcontrol",
     "X-KDE-System-Settings-Parent-Category": "system-administration",
     "X-KDE-Weight": 30

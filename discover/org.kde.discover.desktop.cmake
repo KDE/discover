@@ -152,6 +152,7 @@ Keywords[sv]=program;programvara;arkiv;paket;lägg till;installera;avinstallera;
 Keywords[tr]=program;yazılım;depo;paket;ekle;kur;kaldır;güncelle;uygulama;uygulamalar;oyunlar;flatpak;snap;eklentiler;gömülü yazılım;donanım yazılımı;aygıt yazılımı;cihaz yazılımı;dükkan;mağaza;bakkal;store;shop;
 Keywords[uk]=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;програма;програмне забезпечення;крамниця;магазин;сховище;архів;пакунок;додати;встановити;встановлення;вилучити;вилучення;оновлення;оновити;ігри;флетпак;снеп;снап;додатки;мікропрограма;
 Keywords[x-test]=xxprogramxx;xxsoftwarexx;xxstorexx;xxrepositoryxx;xxpackagexx;xxaddxx;xxinstallxx;xxuninstallxx;xxremovexx;xxupdatexx;xxappsxx;xxapplicationsxx;xxgamesxx;xxflatpakxx;xxsnapxx;xxaddonsxx;xxadd-onsxx;xxfirmwarexx;
+Keywords[zh_TW]=program;software;repository;package;install;remove;update;apps;applications;軟體;商店;程式;軟體包;軟體庫;安裝;移除;更新;
 
 [Desktop Action Updates]
 Name=See Available Updates
