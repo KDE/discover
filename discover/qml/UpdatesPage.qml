@@ -188,7 +188,10 @@ DiscoverPage {
     }
 
     footer: ColumnLayout {
-        width: parent.width
+        // NOTE: we need to very aggressively anchor the layout or it will not have suitable dimensions
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
         spacing: 0
 
         QQC2.ScrollView {
