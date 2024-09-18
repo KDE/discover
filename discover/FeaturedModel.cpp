@@ -25,15 +25,19 @@ using namespace Qt::StringLiterals;
 
 Q_GLOBAL_STATIC(QString, featuredCache)
 
-static QString featuredFileName()
+static QUrl featuredURL()
 {
-    // kwriteconfig5 --file discoverrc --group Software --key FeaturedListingFileName featured-5.9.json
-    KConfigGroup grp(KSharedConfig::openConfig(), u"Software"_s);
-    if (grp.hasKey("FeaturedListingFileName")) {
-        return grp.readEntry("FeaturedListingFileName", QString());
+    QString config = QStringLiteral("/usr/share/discover/featuredurlrc");
+    KConfigGroup grp(KSharedConfig::openConfig(config), u"Software"_s);
+    if (grp.hasKey("FeaturedListingURL")) {
+        return grp.readEntry("FeaturedListingURL", QUrl());
     }
+    const auto baseURL = QLatin1StringView("https://autoconfig.kde.org/discover/");
+
     static const bool isMobile = QByteArrayList{"1", "true"}.contains(qgetenv("QT_QUICK_CONTROLS_MOBILE"));
-    return isMobile ? QLatin1String("featured-mobile-5.9.json") : QLatin1String("featured-5.9.json");
+    const QLatin1StringView fileName(isMobile ? "featured-mobile-5.9.json" : "featured-5.9.json");
+
+    return QUrl(baseURL + fileName);
 }
 
 FeaturedModel::FeaturedModel()
@@ -41,11 +45,11 @@ FeaturedModel::FeaturedModel()
     const QString dir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
     QDir().mkpath(dir);
 
-    static const QString fileName = featuredFileName();
+    const static QUrl url = featuredURL();
+    const QString fileName = url.fileName();
     *featuredCache = dir + QLatin1Char('/') + fileName;
-    const QUrl featuredUrl(QStringLiteral("https://autoconfig.kde.org/discover/") + fileName);
     const bool shouldBlock = !QFileInfo::exists(*featuredCache);
-    auto *fetchJob = KIO::storedGet(featuredUrl, KIO::NoReload, KIO::HideProgressInfo);
+    auto *fetchJob = KIO::storedGet(url, KIO::NoReload, KIO::HideProgressInfo);
     if (shouldBlock) {
         acquireFetching(true);
     }

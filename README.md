@@ -19,6 +19,14 @@ If you have an issue with Discover, please [open a support thread on KDE Discuss
 
 The easiest way to make changes and test Discover during development is to [build it with kdesrc-build](https://community.kde.org/Get_Involved/development/Build_software_with_kdesrc-build).
 
+## Vendor Customization
+
+Want to change the apps featured in the Editor's Choice section? Add a configuration file named `/usr/share/discover/featuredurlrc` that points to a JSON file patterned off the default one present at https://autoconfig.kde.org/discover/featured-5.9.json:
+```toml
+[Software]
+FeaturedListingURL="https://your-url-here/file.json"
+```
+
 ## Contributing
 
 Like other projects in the KDE ecosystem, contributions are welcome from all. This repository is managed in [KDE Invent](https://invent.kde.org/plasma/discover), our GitLab instance.
