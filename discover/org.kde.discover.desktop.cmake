@@ -131,6 +131,7 @@ Categories=Qt;KDE;System;
 Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
 Keywords[ar]=برنامج;برمجيّة;برمجية;مستودع;حزمة;تثبيت;إزالة;أرشيف;تحديث;تطبيقات;تطبيق;متجر;
 Keywords[ca]=programa;programari;botiga;repositori;paquet;afegeix;instal·la;desinstal·la;elimina;actualitza;apps;aplicacions;jocs;flatpak;snap;complements;microprogramari;firmware;
+Keywords[ca@valencia]=programa;programari;botiga;repositori;paquet;afig;instal·la;desinstal·la;elimina;actualitza;apps;aplicacions;jocs;flatpak;snap;complements;microprogramari;firmware;
 Keywords[de]=Programm;Software;Laden;Archiv;Paket;Installieren;Deinstallieren;Entfernen;Aktualisieren;Programme;Anwendungen;Spiele;
 Keywords[en_GB]=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
 Keywords[es]=programa;software;tienda;repositorio;paquete;añadir;agregar;instalar;desinstalar;eliminar;borrar;actualizar;apps;aplicaciones;juegos;flatpak;snap;complementos;añadidos;firmware;
