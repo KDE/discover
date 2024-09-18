@@ -75,6 +75,7 @@ add_subdirectory(discover)
 add_subdirectory(exporter)
 add_subdirectory(update)
 
+set(FEATURED_URL "https://autoconfig.kde.org/discover/" CACHE STRING "URL containing the json files to fetch from (featured-5.9.json and featured-5.9-mobile.json).")
 option(WITH_KCM "Build and install the updates KCM" ON)
 if(WITH_KCM)
     add_subdirectory(kcm)

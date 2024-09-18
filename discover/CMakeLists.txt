@@ -37,6 +37,7 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
     resources.qrc
     RefreshNotifier.cpp
 )
+set_source_files_properties(FeaturedModel.cpp PROPERTIES COMPILE_DEFINITIONS -DFEATURED_URL="${FEATURED_URL}")
 add_executable(Plasma::Discover ALIAS plasma-discover)
 set_target_properties(plasma-discover PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 

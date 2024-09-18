@@ -43,7 +43,7 @@ FeaturedModel::FeaturedModel()
 
     static const QString fileName = featuredFileName();
     *featuredCache = dir + QLatin1Char('/') + fileName;
-    const QUrl featuredUrl(QStringLiteral("https://autoconfig.kde.org/discover/") + fileName);
+    const QUrl featuredUrl(QLatin1StringView(FEATURED_URL) + fileName);
     const bool shouldBlock = !QFileInfo::exists(*featuredCache);
     auto *fetchJob = KIO::storedGet(featuredUrl, KIO::NoReload, KIO::HideProgressInfo);
     if (shouldBlock) {
