@@ -1482,11 +1482,10 @@ msgid "Select an action"
 msgstr "Επιλογή κανενός"
 
 #: discover/qml/UpdatesPage.qml:259
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "Επανεκκίνηση τώρα"
+msgstr "Επανεκκίνηση"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format

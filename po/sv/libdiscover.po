@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-03 00:40+0000\n"
+"POT-Creation-Date: 2024-09-18 00:41+0000\n"
 "PO-Revision-Date: 2024-08-21 07:58+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -570,17 +570,17 @@ msgstr "Lokal packe"
 msgid "Malformed appstream url '%1'"
 msgstr "Felaktig webbadress för appstream '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1969
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1971
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Misslyckades lägga till källan '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2091
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2093
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Det finns inga Flatpak-källor."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2095
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2097
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "misslyckades läsa in källan \"%1\""

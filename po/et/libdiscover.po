@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-03 00:40+0000\n"
+"POT-Creation-Date: 2024-09-18 00:41+0000\n"
 "PO-Revision-Date: 2020-10-11 01:23+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -578,7 +578,7 @@ msgstr "Kohalik kimp"
 msgid "Malformed appstream url '%1'"
 msgstr "Vigane appstream'i URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1969
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1971
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
@@ -591,12 +591,12 @@ msgstr ""
 "%1 paketi uuendamine nurjus\n"
 "%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2091
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2093
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2095
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2097
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 package\n"
