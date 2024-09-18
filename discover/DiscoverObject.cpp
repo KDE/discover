@@ -650,7 +650,7 @@ void DiscoverObject::promptReboot()
     auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.LogoutPrompt"),
                                                  QStringLiteral("/LogoutPrompt"),
                                                  QStringLiteral("org.kde.LogoutPrompt"),
-                                                 QStringLiteral("promptAll"));
+                                                 QStringLiteral("promptReboot"));
     QDBusConnection::sessionBus().asyncCall(method);
 }
 
