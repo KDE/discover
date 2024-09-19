@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-11 00:40+0000\n"
+"POT-Creation-Date: 2024-09-19 00:40+0000\n"
 "PO-Revision-Date: 2018-01-06 09:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -270,7 +270,7 @@ msgstr "Dodaci"
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
-#: discover/qml/UpdatesPage.qml:278 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:281 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "Odustani"
@@ -1441,17 +1441,17 @@ msgstr "Ažuriraj sve"
 msgid "Ignore"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:227
+#: discover/qml/UpdatesPage.qml:230
 #, kde-format
 msgid "Select All"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:235
+#: discover/qml/UpdatesPage.qml:238
 #, kde-format
 msgid "Select None"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:254
+#: discover/qml/UpdatesPage.qml:257
 #, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
@@ -1459,48 +1459,48 @@ msgctxt ""
 msgid "On completion, automatically:"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:259
+#: discover/qml/UpdatesPage.qml:262
 #, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:259
+#: discover/qml/UpdatesPage.qml:262
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:259
+#: discover/qml/UpdatesPage.qml:262
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:268
+#: discover/qml/UpdatesPage.qml:271
 #, kde-format
 msgid "Total size: %1"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:303
+#: discover/qml/UpdatesPage.qml:306
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:433
+#: discover/qml/UpdatesPage.qml:436
 #, fuzzy, kde-format
 #| msgid "Install"
 msgid "Installing"
 msgstr "Instaliraj"
 
-#: discover/qml/UpdatesPage.qml:464
+#: discover/qml/UpdatesPage.qml:467
 #, fuzzy, kde-format
 #| msgid "Update All"
 msgid "Update from:"
 msgstr "Ažuriraj sve"
 
-#: discover/qml/UpdatesPage.qml:476
+#: discover/qml/UpdatesPage.qml:479
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1508,13 +1508,13 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:483
+#: discover/qml/UpdatesPage.qml:486
 #, fuzzy, kde-format
 #| msgid "More Information..."
 msgid "More Information…"
 msgstr "Više podataka..."
 
-#: discover/qml/UpdatesPage.qml:511
+#: discover/qml/UpdatesPage.qml:514
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Fetching updates"
@@ -1522,33 +1522,33 @@ msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Dobavljam dopune..."
 
-#: discover/qml/UpdatesPage.qml:525
+#: discover/qml/UpdatesPage.qml:528
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Dopune"
 
-#: discover/qml/UpdatesPage.qml:534
+#: discover/qml/UpdatesPage.qml:537
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:550 discover/qml/UpdatesPage.qml:557
-#: discover/qml/UpdatesPage.qml:564
+#: discover/qml/UpdatesPage.qml:553 discover/qml/UpdatesPage.qml:560
+#: discover/qml/UpdatesPage.qml:567
 #, fuzzy, kde-format
 #| msgid "Updates"
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Dopune"
 
-#: discover/qml/UpdatesPage.qml:571
+#: discover/qml/UpdatesPage.qml:574
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Treba proveriti dopune"
 
-#: discover/qml/UpdatesPage.qml:578
+#: discover/qml/UpdatesPage.qml:581
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
