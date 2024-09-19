@@ -132,6 +132,7 @@ Keywords=program;software;store;repository;package;add;install;uninstall;remove;
 Keywords[ar]=برنامج;برمجيّة;برمجية;مستودع;حزمة;تثبيت;إزالة;أرشيف;تحديث;تطبيقات;تطبيق;متجر;
 Keywords[ca]=programa;programari;botiga;repositori;paquet;afegeix;instal·la;desinstal·la;elimina;actualitza;apps;aplicacions;jocs;flatpak;snap;complements;microprogramari;firmware;
 Keywords[ca@valencia]=programa;programari;botiga;repositori;paquet;afig;instal·la;desinstal·la;elimina;actualitza;apps;aplicacions;jocs;flatpak;snap;complements;microprogramari;firmware;
+Keywords[cs]=program;software;obchod;repozitář;balíček;přidat;instalovat;odinstalovat;odstranit;aktualizovat;programy;aplikace;hry;flatpak;snap;doplňky;addony;firmware;
 Keywords[de]=Programm;Software;Laden;Archiv;Paket;Installieren;Deinstallieren;Entfernen;Aktualisieren;Programme;Anwendungen;Spiele;
 Keywords[en_GB]=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
 Keywords[eo]=programo;programaro;vendejo;deponejo;pakaĵo;aldoni;instali;malinstali;forigi;ĝisdatigi;aplikaĵoj;aplikaĵoj;ludoj;flatpak;snap;aldonaĵoj;aldonaĵoj;firmvaro;
