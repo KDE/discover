@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-11 00:40+0000\n"
+"POT-Creation-Date: 2024-09-19 02:31+0000\n"
 "PO-Revision-Date: 2024-08-24 09:18+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -282,7 +282,7 @@ msgstr "Aldoni"
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
-#: discover/qml/UpdatesPage.qml:278 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:281 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "Nuligi"
@@ -1444,17 +1444,17 @@ msgstr "Ĝisdatigi Ĉion"
 msgid "Ignore"
 msgstr "Ignori"
 
-#: discover/qml/UpdatesPage.qml:227
+#: discover/qml/UpdatesPage.qml:230
 #, kde-format
 msgid "Select All"
 msgstr "Elekti ĉiujn"
 
-#: discover/qml/UpdatesPage.qml:235
+#: discover/qml/UpdatesPage.qml:238
 #, kde-format
 msgid "Select None"
 msgstr "Elekti Neniun"
 
-#: discover/qml/UpdatesPage.qml:254
+#: discover/qml/UpdatesPage.qml:257
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@info on the completion of updates, the action that automatically happens "
@@ -1466,19 +1466,19 @@ msgctxt ""
 msgid "On completion, automatically:"
 msgstr "Je plenumo, aŭtomate:"
 
-#: discover/qml/UpdatesPage.qml:259
+#: discover/qml/UpdatesPage.qml:262
 #, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
 msgstr "Elekti agon"
 
-#: discover/qml/UpdatesPage.qml:259
+#: discover/qml/UpdatesPage.qml:262
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
 msgstr "Rekomenci"
 
-#: discover/qml/UpdatesPage.qml:259
+#: discover/qml/UpdatesPage.qml:262
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox"
 #| msgid "Shutdown"
@@ -1486,28 +1486,28 @@ msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr "Sistemfermi"
 
-#: discover/qml/UpdatesPage.qml:268
+#: discover/qml/UpdatesPage.qml:271
 #, kde-format
 msgid "Total size: %1"
 msgstr "Suma grandeco: %1"
 
-#: discover/qml/UpdatesPage.qml:303
+#: discover/qml/UpdatesPage.qml:306
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
 msgstr "Rekomenci por Instali Ĝisdatigojn Nun"
 
-#: discover/qml/UpdatesPage.qml:433
+#: discover/qml/UpdatesPage.qml:436
 #, kde-format
 msgid "Installing"
 msgstr "Instalado"
 
-#: discover/qml/UpdatesPage.qml:464
+#: discover/qml/UpdatesPage.qml:467
 #, kde-format
 msgid "Update from:"
 msgstr "Ĝisdatigo de:"
 
-#: discover/qml/UpdatesPage.qml:476
+#: discover/qml/UpdatesPage.qml:479
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1515,43 +1515,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:483
+#: discover/qml/UpdatesPage.qml:486
 #, kde-format
 msgid "More Information…"
 msgstr "Pliaj Informoj…"
 
-#: discover/qml/UpdatesPage.qml:511
+#: discover/qml/UpdatesPage.qml:514
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Akiro de ĝisdatigoj…"
 
-#: discover/qml/UpdatesPage.qml:525
+#: discover/qml/UpdatesPage.qml:528
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Ĝisdatigoj"
 
-#: discover/qml/UpdatesPage.qml:534
+#: discover/qml/UpdatesPage.qml:537
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Rekomenci la sistemon por kompletigi la ĝisdatigan procezon"
 
-#: discover/qml/UpdatesPage.qml:550 discover/qml/UpdatesPage.qml:557
-#: discover/qml/UpdatesPage.qml:564
+#: discover/qml/UpdatesPage.qml:553 discover/qml/UpdatesPage.qml:560
+#: discover/qml/UpdatesPage.qml:567
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Ĝisdata"
 
-#: discover/qml/UpdatesPage.qml:571
+#: discover/qml/UpdatesPage.qml:574
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Devus kontroli ĝisdatigojn"
 
-#: discover/qml/UpdatesPage.qml:578
+#: discover/qml/UpdatesPage.qml:581
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
