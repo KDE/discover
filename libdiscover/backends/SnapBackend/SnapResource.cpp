@@ -8,15 +8,16 @@
 #include "SnapBackend.h"
 #include "libdiscover_snap_debug.h"
 #include <KIO/ApplicationLauncherJob>
-#include <KService>
 #include <KLocalizedString>
+#include <KService>
 #include <QBuffer>
-#include <QDebug>
 #include <QDBusInterface>
+#include <QDebug>
 #include <QFile>
 #include <QFileInfo>
 #include <QImageReader>
 #include <QProcess>
+#include <QSettings>
 #include <QStandardItemModel>
 #include <Snapd/MarkdownParser>
 
@@ -113,43 +114,46 @@ quint64 SnapResource::size()
 
 QVariant SnapResource::icon() const
 {
-    if (m_icon.isNull()) {
-        m_icon = [this]() -> QVariant {
-            const auto iconPath = m_snap->icon();
-            if (iconPath.isEmpty())
-                return QStringLiteral("package-x-generic");
+    if (m_state == AbstractResource::Installed) {
+        for (int i = 0; i < m_snap->appCount(); ++i) {
+            const auto app = m_snap->app(i);
 
-            if (!iconPath.startsWith(QLatin1Char('/')))
-                return QUrl(iconPath);
+            if (app->name() == m_snap->name()) {
+                QSettings desktopFile(app->desktopFile(), QSettings::IniFormat);
+                desktopFile.beginGroup("Desktop Entry");
+                const QString iconName = desktopFile.value("Icon").toString();
 
-            auto req = client()->getIcon(packageName());
-            connect(req, &QSnapdGetIconRequest::complete, this, &SnapResource::gotIcon);
-            req->runAsync();
-            return {};
-        }();
-    }
-    return m_icon;
-}
-
-void SnapResource::gotIcon()
-{
-    auto req = qobject_cast<QSnapdGetIconRequest *>(sender());
-    if (req->error()) {
-        qWarning() << "icon error" << req->errorString();
-        return;
+                if (!iconName.isEmpty()) {
+                    return iconName;
+                }
+            }
+        }
     }
 
-    auto icon = req->icon();
+    if (!m_snap->icon().isEmpty() && !m_snap->icon().startsWith(QLatin1Char('/'))) {
+        return QUrl(m_snap->icon());
+    }
+
+    for (int m = 0; m < m_snap->mediaCount(); ++m) {
+        if (m_snap->media(m)->type() == QStringLiteral("icon")) {
+            return QUrl(m_snap->media(m)->url());
+        }
+    }
+
+    QSnapdClient client;
+    auto req = client.getIcon(m_snap->name());
+    req->runSync();
+
+    if (req->error() != QSnapdRequest::NoError) {
+        return QStringLiteral("package-x-generic");
+    }
 
     QBuffer buffer;
-    buffer.setData(icon->data());
+    buffer.setData(req->icon()->data());
     QImageReader reader(&buffer);
+    const auto theIcon = QVariant::fromValue<QImage>(reader.read());
 
-    auto theIcon = QVariant::fromValue<QImage>(reader.read());
-    if (theIcon != m_icon) {
-        m_icon = theIcon;
-        Q_EMIT iconChanged();
-    }
+    return theIcon.isNull() ? QStringLiteral("package-x-generic") : theIcon;
 }
 
 QString SnapResource::installedVersion() const
