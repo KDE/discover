@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2024-05-13 22:47+0200\n"
+"PO-Revision-Date: 2024-09-19 19:44+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #: notifier/DiscoverNotifier.cpp:176
 #, kde-format
@@ -66,17 +66,16 @@ msgstr ""
 "Системата трябва да бъде рестартирана, за да влязат в сила актуализациите."
 
 #: notifier/DiscoverNotifier.cpp:329
-#, fuzzy, kde-format
-#| msgid "Computer needs to restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
-msgstr "Компютърът трябва да се рестартира"
+msgstr "Актуализиране и рестартиране"
 
 #: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
-msgstr ""
+msgstr "Актуализиране и изключване"
 
 #: notifier/DiscoverNotifier.cpp:374
 #, kde-format
@@ -160,12 +159,12 @@ msgstr "Обновяване…"
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Install Updates and Restart…"
-msgstr ""
+msgstr "Инсталиране на актуализации и рестартиране..."
 
 #: notifier/NotifierItem.cpp:53
 #, kde-format
 msgid "Install Updates and Shut Down…"
-msgstr ""
+msgstr "Инсталиране на актуализации и изключване..."
 
 #: notifier/NotifierItem.cpp:58
 #, kde-format

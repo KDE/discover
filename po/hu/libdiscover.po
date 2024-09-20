@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-03 00:40+0000\n"
-"PO-Revision-Date: 2024-07-27 21:52+0200\n"
+"PO-Revision-Date: 2024-09-19 14:42+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -67,40 +67,37 @@ msgid "Error while submitting review: %1"
 msgstr "Hiba történt az értékelés elküldésekor: %1"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
-#, fuzzy, kde-format
-#| msgid "Software Management"
+#, kde-format
 msgid "Package management"
-msgstr "Szoftverkezelés"
+msgstr "Csomagkezelés"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:204
 #, kde-format
 msgid "Loading, please wait..."
-msgstr ""
+msgstr "Betöltés, kis türelmet…"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:290
-#, fuzzy, kde-format
-#| msgid "Additional packages: "
+#, kde-format
 msgctxt "Root category name"
 msgid "Alpine Linux packages"
-msgstr "További csomagok: "
+msgstr "Alpine Linux csomagok"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:461
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
-msgstr ""
+msgstr "Alpine APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:266
 #, kde-format
 msgid "Authorization denied"
-msgstr ""
+msgstr "Felhatalmazás megtagadva"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgid "Error: "
-msgstr "Hiba"
+msgstr "Hiba: "
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
 #, kde-format
@@ -109,11 +106,13 @@ msgid ""
 "Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
 "alpine/edge/testing/"
 msgstr ""
+"Adja meg az Alpine tároló URL-jét, például: http://dl-cdn.alpinelinux.org/"
+"alpine/edge/testing/"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
 #, kde-format
 msgid "Error: Authorization denied"
-msgstr ""
+msgstr "Hiba: felhatalmazás megtagadva"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:277
@@ -124,12 +123,12 @@ msgstr "Hiba"
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
 #, kde-format
 msgid "Failed to open APK database!"
-msgstr ""
+msgstr "Nem sikerült megnyitni az APK adatbázist."
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
 #, kde-format
 msgid "Failed to get a list of packages to upgrade!"
-msgstr ""
+msgstr "Nem sikerült megszerezni a frissítendő csomagok listáját."
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -1045,11 +1044,10 @@ msgstr "Beállítások és felhasználói adatok eltávolítása…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "A(z) %1 jogosultságai"
+msgstr "Jogosultságok"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
@@ -1206,7 +1204,7 @@ msgstr "Betűkészletek"
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr ""
+msgstr "Hiba jelentése a(z) %1 disztribúciónak"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:325
 #, kde-format
@@ -1262,6 +1260,8 @@ msgid ""
 "The background service (PackageKit) stopped unexpectedly. It may have "
 "crashed."
 msgstr ""
+"A háttérszolgáltatás (PackageKit) váratlanul leállt. Valószínűleg "
+"összeomlott."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2536,16 +2536,14 @@ msgid "Unknown transaction type"
 msgstr "Ismeretlen tranzakciótípus"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channel: %1"
-msgstr "Csatornák…"
+msgstr "Csatorna: %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channels for %1"
-msgstr "Csatornák…"
+msgstr "%1 csatornák"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:400
@@ -2715,12 +2713,10 @@ msgid "Applications"
 msgstr "Alkalmazások"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Updates"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "Alkalmazásfrissítések"
+msgstr "Alkalmazástámogatás"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
