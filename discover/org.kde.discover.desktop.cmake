@@ -141,6 +141,7 @@ Keywords[eu]=programa;softwarea;biltegia;saltokia;gordetegia;paketea;gehitu;inst
 Keywords[fr]=programme ; logiciel ; boutique ; dépôt ; paquet ; ajout ; installation ; désinstallation ; suppression ; mise à jour ; application ; applications ; jeux ; flatpak ; snap ; modules externes ; micrologiciel ;
 Keywords[gl]=aplicación;software;soporte lóxico;store;almacén;tenda;repositorio;paquete;empaquetar;engadir;instalar;desinstalar;retirar;actualizar;aplicativos;aplicacións;xogos;videoxogos;flatpak;snap;complementos;engadidos;extensións;firmware;
 Keywords[he]=program;software;repository;package;install;remove;update;apps;applications;תוכנות;התקנה;הסרה;חבילה;מקורות;יישומים;תכנה;תוכנה;הסרת;אפליקציות;תוספות;משחקים;תוספים;הרחבות;קושחה;snap;flatpak;games;addons;add-ons;firmware;קשחה;חנות;
+Keywords[hu]=program;szoftver;áruház;tároló;csomag;hozzáadás;telepítés;eltávolítás;törlés;frissítés;alkalmazások;alkalmazások;játékok;flatpak;snap;bővítmények;kiterjesztések;firmware;
 Keywords[ia]=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
 Keywords[it]=programma;software;store;deposito;pacchetto;aggiungi,installa;disinstalla;rimuovi;aggiorna;app;applicazioni;giochi;flatpak;snap;componenti aggiuntivi;firmware;
 Keywords[ka]=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
