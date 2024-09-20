@@ -2,20 +2,21 @@
 # This file is distributed under the same license as the discover package.
 #
 # SPDX-FileCopyrightText: 2024 Petros Vidalis <pvidalis@gmail.com>
+# SPDX-FileCopyrightText: 2024 Antonis Geralis <capoiosct@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-18 00:40+0000\n"
-"PO-Revision-Date: 2024-07-18 11:26+0300\n"
-"Last-Translator: Petros Vidalis <pvidalis@gmail.com>\n"
+"PO-Revision-Date: 2024-09-19 14:30+0300\n"
+"Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #: kcm/ui/main.qml:40
 #, kde-format
@@ -40,8 +41,8 @@ msgid ""
 "available. Updates for applications will be installed immediately, while "
 "system updates will be installed the next time the computer is restarted."
 msgstr ""
-"Οι ενημερώσεις λογισμικού θα ληφθούν αυτόματα όταν γίνουνδιαθέσιμες. Οι "
-"ενημερώσεις για τις εφαρμογές θα εγκατασταθούν άμεσα, ενώοι ενημερώσεις "
+"Οι ενημερώσεις λογισμικού θα ληφθούν αυτόματα όταν γίνουν διαθέσιμες. Οι "
+"ενημερώσεις για τις εφαρμογές θα εγκατασταθούν άμεσα, ενώ οι ενημερώσεις "
 "συστήματος θα εγκατασταθούν την επόμενη φορά που θα γίνει επανεκκίνηση του "
 "υπολογιστή."
 

@@ -7,20 +7,21 @@
 # Dimitris Kardarakos <dimkard@gmail.com>, 2014, 2015, 2016, 2017.
 # SPDX-FileCopyrightText: 2023 George Stefanakis <george.stefanakis@gmail.com>
 # SPDX-FileCopyrightText: 2024 Petros Vidalis <pvidalis@gmail.com>
+# SPDX-FileCopyrightText: 2024 Antonis Geralis <capoiosct@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-19 00:40+0000\n"
-"PO-Revision-Date: 2024-07-18 11:49+0300\n"
-"Last-Translator: Petros Vidalis <pvidalis@gmail.com>\n"
+"PO-Revision-Date: 2024-09-19 14:33+0300\n"
+"Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -78,12 +79,12 @@ msgid ""
 "packages.</para>"
 msgstr ""
 "Η υποστήριξη για τη διαχείριση πακέτων από το %1 δεν είναι ολοκληρωμένη. "
-"μπορεί να αντιμετωπίσετε κάποιοαριθμό προβλημάτων. Μην αναφέρετε σφάλματα "
-"στο KDE. Συνιστάται ιδιαίτερα νααπεγκαταστήσετε το πακέτο "
-"<resource>packagekit-qt6</resource> και να χρησιμοποιήστε το Discoverμόνο "
+"μπορεί να αντιμετωπίσετε κάποιο αριθμό προβλημάτων. Μην αναφέρετε σφάλματα "
+"στο KDE. Συνιστάται ιδιαίτερα να απεγκαταστήσετε το πακέτο "
+"<resource>packagekit-qt6</resource> και να χρησιμοποιήστε το Discover μόνο "
 "για τη διαχείριση Flatpaks, Snaps και Add-Ons.<para>%1 συνιστώνται οι "
 "συντηρητές να χρησιμοποιήσετε το εργαλείο γραμμής εντολών <command>pacman</"
-"command> για διαχείρισηπακέτων.</para>"
+"command> για διαχείριση πακέτων.</para>"
 
 #: discover/DiscoverObject.cpp:293
 #, kde-format

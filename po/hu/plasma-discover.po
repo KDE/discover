@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-19 00:40+0000\n"
-"PO-Revision-Date: 2024-05-29 09:04+0200\n"
+"PO-Revision-Date: 2024-09-19 20:42+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -48,18 +48,7 @@ msgid "Report This Issue to %1"
 msgstr "Hiba jelentése a(z) %1 disztribúciónak"
 
 #: discover/DiscoverObject.cpp:192
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -70,9 +59,7 @@ msgid ""
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 "A Discover alkalmazásokhoz használatához telepítse a <link url='https://wiki."
-"archlinux.org/title/Flatpak#Installation'>Flatpakot</link> vagy a <link "
-"url='https://wiki.archlinux.org/title/"
-"KDE#Discover_does_not_show_any_applications'>PackageKitet</link> a "
+"archlinux.org/title/Flatpak#Installation'>Flatpakot</link> a "
 "<command>pacman</command> csomagkezelővel.<nl/><nl/>Tekintse át az <link "
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 Discover "
 "csomagját</link>"
@@ -1211,7 +1198,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "indítás,futtatás,indulás"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1221,7 +1208,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "összeomlás,szegmentációs hiba"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1231,7 +1218,7 @@ msgctxt ""
 "your language and/or shorten to common stems contained by multiple forms of "
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
-msgstr ""
+msgstr "nem működik,buta,hülye,szar,szemét,szívás,szörnyű,utálatos"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1342,8 +1329,7 @@ msgid "Settings"
 msgstr "Beállítások"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Alapértelmezett forrás"
 
@@ -1353,8 +1339,7 @@ msgid "Add Source…"
 msgstr "Forrás hozzáadása…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Legyen alapértelmezett"
 
@@ -1481,27 +1466,25 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "Befejezéskor automatikusan:"
 
 #: discover/qml/UpdatesPage.qml:262
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "Kijelölés megszüntetése"
+msgstr "Válasszon egy műveletet"
 
 #: discover/qml/UpdatesPage.qml:262
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "Újraindítás most"
+msgstr "Újraindítás"
 
 #: discover/qml/UpdatesPage.qml:262
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
-msgstr ""
+msgstr "Leállítás"
 
 #: discover/qml/UpdatesPage.qml:271
 #, kde-format
@@ -1512,7 +1495,7 @@ msgstr "Teljes méret: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "Újraindítás most a frissítések telepítéséhez"
 
 #: discover/qml/UpdatesPage.qml:436
 #, kde-format

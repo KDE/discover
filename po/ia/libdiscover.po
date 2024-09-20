@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-18 00:41+0000\n"
-"PO-Revision-Date: 2024-08-28 15:44+0200\n"
+"PO-Revision-Date: 2024-09-19 11:26+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1374,7 +1374,7 @@ msgstr "Non pote remover pacchetto de systema"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:63
 #, kde-format
 msgid "The PackageKit daemon has crashed"
-msgstr "Le demone PackageKit ha beva un crash"
+msgstr "Le demone PackageKit habeva un fracasso"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:65
 #, kde-format

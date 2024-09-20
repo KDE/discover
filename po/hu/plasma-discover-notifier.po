@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Kiszel Kristóf <ulysses@kubuntu.org>, 2015, 2017, 2019.
-# SPDX-FileCopyrightText: 2018, 2020, 2021, 2023 Kristof Kiszel <kiszel.kristof@gmail.com>
+# SPDX-FileCopyrightText: 2018, 2020, 2021, 2023, 2024 Kristof Kiszel <kiszel.kristof@gmail.com>
 # Kristóf Kiszel <ulysses@fsf.hu>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2023-12-22 21:24+0100\n"
+"PO-Revision-Date: 2024-09-19 14:42+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.08.0\n"
 
 #: notifier/DiscoverNotifier.cpp:176
 #, kde-format
@@ -65,17 +65,16 @@ msgid "The system needs to be restarted for the updates to take effect."
 msgstr "A rendszert újra kell indítani a frissítések alkalmazásához."
 
 #: notifier/DiscoverNotifier.cpp:329
-#, fuzzy, kde-format
-#| msgid "Computer needs to restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
-msgstr "A számítógépet újra kell indítani"
+msgstr "Frissítés és újraindítás"
 
 #: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
-msgstr ""
+msgstr "Frissítés és leállítás"
 
 #: notifier/DiscoverNotifier.cpp:374
 #, kde-format
@@ -159,12 +158,12 @@ msgstr "Frissítés…"
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Install Updates and Restart…"
-msgstr ""
+msgstr "Frissítések telepítése és újraindítás…"
 
 #: notifier/NotifierItem.cpp:53
 #, kde-format
 msgid "Install Updates and Shut Down…"
-msgstr ""
+msgstr "Frissítések telepítése és leállítás…"
 
 #: notifier/NotifierItem.cpp:58
 #, kde-format

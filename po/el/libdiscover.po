@@ -8,21 +8,21 @@
 # George Stefanakis <george.stefanakis@gmail.com>, 2023.
 # SPDX-FileCopyrightText: 2024 Theofilos Intzoglou <int.teo@gmail.com>
 # SPDX-FileCopyrightText: 2024 Petros Vidalis <pvidalis@gmail.com>
-# Antonis Geralis <capoiosct@gmail.com>, 2024.
+# SPDX-FileCopyrightText: 2024 Antonis Geralis <capoiosct@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-18 00:41+0000\n"
-"PO-Revision-Date: 2024-08-29 15:47+0300\n"
-"Last-Translator: Αντώνης Γέραλης <capoiosct@gmail.com>\n"
-"Language-Team: Greek <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2024-09-19 14:31+0300\n"
+"Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
+"Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -116,7 +116,7 @@ msgstr ""
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
 #, kde-format
 msgid "Error: Authorization denied"
-msgstr "Σφάλμα: H εξουσιοδότηση απορρίφθηκε"
+msgstr "Σφάλμα: Η εξουσιοδότηση απορρίφθηκε"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:277
@@ -397,7 +397,7 @@ msgstr "Προσομοίωση"
 #, kde-format
 msgctxt "Category"
 msgid "Strategy"
-msgstr "Στατηγική"
+msgstr "Στρατηγική"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:307
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:306
@@ -600,7 +600,7 @@ msgid ""
 "software in this repository will also be made be available in Discover when "
 "the application is installed.</para>"
 msgstr ""
-"<para>Αυτή η εφαρμογή έρχεται απο \"%1\" (Φιλοξενείτε στο <link>%2</link>). "
+"<para>Αυτή η εφαρμογή έρχεται από \"%1\" (Φιλοξενείτε στο <link>%2</link>). "
 "Άλλα λογισμικά σε αυτό το αποθετήριο, θα είναι επίσης διαθέσιμα, στο "
 "Discover όταν εγκατασταθεί αυτή η εφαρμογή.</para>"
 
@@ -2174,7 +2174,7 @@ msgstr "Αναβάθμιση συστήματος"
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "1 Πακέτο θα αναβαθμιστή"
+msgstr[0] "1 Πακέτο θα αναβαθμιστεί"
 msgstr[1] "%1 πακέτα θα αναβαθμιστούν"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
