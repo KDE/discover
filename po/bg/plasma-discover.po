@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-19 02:31+0000\n"
-"PO-Revision-Date: 2024-09-19 19:44+0200\n"
+"PO-Revision-Date: 2024-09-22 12:06+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.07.70\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -1140,6 +1140,9 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"Ако харесвате %1, кажете на хората, какво харесвате в него! Фокусирайте се "
+"върху функционалността, използваемостта и външния вид. Ако приложението не "
+"отговаря на вашите нужди, обяснете защо."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1149,6 +1152,10 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"Ако %1 не се стартира, помислете дали вместо това да съобщите за това на "
+"неговите опаковчици в %2 на адрес <link url='%3'>%3</link>, тъй като това "
+"може да е по-скоро лесно поправим проблем с пакетирането, отколкото "
+"недостатък в самото приложение."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1158,6 +1165,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"Ако %1 не се стартира, по-добре съобщете за това на екипа по пакетирането на "
+"<link url='%2'>%2</link>, тъй като това може да е по-скоро лесно поправим "
+"проблем с пакетирането, отколкото недостатък в самото приложение."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1166,6 +1176,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"Ако приложението се срива често, добре е да докладвате това на "
+"разработчиците на <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1175,6 +1187,8 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"Ако имате проблем с приложението, добре е да го докладвате на разработчиците "
+"на <link url='%1'>%1</link> или опишете проблема тук по-подробно."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1199,7 +1213,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "стартиране,изпълняване"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1209,7 +1223,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "срив, сегментна грешка"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1219,7 +1233,7 @@ msgctxt ""
 "your language and/or shorten to common stems contained by multiple forms of "
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
-msgstr ""
+msgstr "не работи,тъп,глупав,глупости,боклук,гадно,ужасно,мразя"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1467,7 +1481,7 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "При завършване, автоматично:"
 
 #: discover/qml/UpdatesPage.qml:262
 #, kde-format
@@ -1485,7 +1499,7 @@ msgstr "Рестартиране"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
-msgstr ""
+msgstr "Изключване"
 
 #: discover/qml/UpdatesPage.qml:271
 #, kde-format
@@ -1496,7 +1510,7 @@ msgstr "Общ размер: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "Рестартирайте, за да инсталирате актуализациите сега"
 
 #: discover/qml/UpdatesPage.qml:436
 #, kde-format
