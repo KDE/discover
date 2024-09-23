@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-19 00:40+0000\n"
-"PO-Revision-Date: 2024-08-25 12:12+0200\n"
+"PO-Revision-Date: 2024-09-22 16:31+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -469,8 +469,7 @@ msgstr[0] "Lisens:"
 msgstr[1] "Lisensar:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Kva tyder dette?"
@@ -692,8 +691,7 @@ msgid "Size"
 msgstr "Storleik"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Utgjevingsdato"
 
@@ -866,7 +864,7 @@ msgstr "&Installerte"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "&Oppdateringar (hentar …)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -1169,7 +1167,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "køyra,starta"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1179,7 +1177,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "krasj,segfault"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1190,6 +1188,8 @@ msgctxt ""
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
+"verkar ikkje,fungerer ikkje,dumt,dårleg,teit,elendig,ubrukeleg,suger,syg,"
+"forferdeleg,grusom,hatar"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1300,8 +1300,7 @@ msgid "Settings"
 msgstr "Innstillingar"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Standardkjelde"
 
@@ -1311,8 +1310,7 @@ msgid "Add Source…"
 msgstr "Legg til kjelde …"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Gjer til standard"
 
