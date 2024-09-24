@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:41+0000\n"
+"POT-Creation-Date: 2024-09-24 00:40+0000\n"
 "PO-Revision-Date: 2024-08-21 18:30+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -2540,7 +2540,7 @@ msgid "Channels for %1"
 msgstr "Canali per %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:400
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:404
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"

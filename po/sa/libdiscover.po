@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-18 00:41+0000\n"
+"POT-Creation-Date: 2024-09-24 00:40+0000\n"
 "PO-Revision-Date: 2023-10-01 21:56+0530\n"
 "Last-Translator: Shreekant <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <N/A>\n"
@@ -2504,7 +2504,7 @@ msgid "Channels for %1"
 msgstr "चैनल्स्…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:400
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:404
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
