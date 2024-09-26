@@ -332,31 +332,35 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    Kirigami.OverlaySheet {
+    Kirigami.Dialog {
         id: messagesSheet
 
-        property bool copyButtonEnabled: true
+        padding: Kirigami.Units.largeSpacing
+        property bool showTechnicalDetails: false
 
         function addMessage(message: string) {
-            messages.append({ message });
-            app.restore()
+            messages.append({message});
+            app.restore();
         }
 
-        title: messages.count > 1 ? i18n("Error %1 of %2", messagesSheetView.currentIndex + 1, messages.count) : i18n("Error")
+        title: messagesSheet.showTechnicalDetails ? (messages.count > 1 ? i18n("Error %1 of %2", messagesSheetView.currentIndex + 1, messages.count) : i18n("Error")) : i18n("Update Issue")
 
         // No need to add our own ScrollView since OverlaySheet includes
         // one automatically.
         // But we do need to put the label into a Layout of some sort so we
         // can limit the width of the sheet.
         ColumnLayout {
-            Item {
+            QQC2.Label {
+                id: friendlyMessage
+                visible: !messagesSheet.showTechnicalDetails
                 Layout.fillWidth: true
-                Layout.maximumWidth: Kirigami.Units.gridUnit * 20
+                text: i18n("There was an issue during the update or installation process. Please try again later.")
+                wrapMode: Text.WordWrap
             }
 
             StackLayout {
                 id: messagesSheetView
-
+                visible: messagesSheet.showTechnicalDetails
                 Layout.fillWidth: true
                 Layout.bottomMargin: Kirigami.Units.gridUnit
 
@@ -369,7 +373,6 @@ Kirigami.ApplicationWindow {
 
                         onCountChanged: {
                             messagesSheet.visible = (count > 0);
-
                             if (count > 0 && messagesSheetView.currentIndex === -1) {
                                 messagesSheetView.currentIndex = 0;
                             }
@@ -378,62 +381,58 @@ Kirigami.ApplicationWindow {
 
                     delegate: QQC2.Label {
                         required property string message
-
-                        Layout.fillWidth: true
-
                         text: message
                         textFormat: Text.StyledText
                         wrapMode: Text.WordWrap
                     }
                 }
             }
-
-            RowLayout {
-                Layout.fillWidth: true
-
-                QQC2.Button {
-                    text: i18nc("@action:button", "Show Previous")
-                    icon.name: "go-previous"
-                    visible: messages.count > 1
-                    enabled: visible && messagesSheetView.currentIndex > 0
-
-                    onClicked: {
-                        if (messagesSheetView.currentIndex > 0) {
-                            messagesSheetView.currentIndex--;
-                        }
+        }
+        customFooterActions: [
+            Kirigami.Action {
+                text: i18nc("@action:button", "Show Previous")
+                icon.name: "go-previous"
+                visible: messagesSheet.showTechnicalDetails && messages.count > 1
+                enabled: visible && messagesSheetView.currentIndex > 0
+                onTriggered: {
+                    if (messagesSheetView.currentIndex > 0) {
+                        messagesSheetView.currentIndex--;
                     }
                 }
-
-                QQC2.Button {
-                    text: i18nc("@action:button", "Show Next")
-                    icon.name: "go-next"
-                    visible: messages.count > 1
-                    enabled: visible && messagesSheetView.currentIndex < messages.count - 1
-
-                    onClicked: {
-                        if (messagesSheetView.currentIndex < messages.count) {
-                            messagesSheetView.currentIndex++;
-                        }
+            },
+            Kirigami.Action {
+                text: i18nc("@action:button", "Show Next")
+                icon.name: "go-next"
+                visible: messagesSheet.showTechnicalDetails && messages.count > 1
+                enabled: visible && messagesSheetView.currentIndex < messages.count - 1
+                onTriggered: {
+                    if (messagesSheetView.currentIndex < messages.count) {
+                        messagesSheetView.currentIndex++;
                     }
                 }
-
-                Item { Layout.fillWidth: true }
-
-                QQC2.Button {
-                    Layout.alignment: Qt.AlignRight
-                    text: i18n("Copy to Clipboard")
-                    icon.name: "edit-copy"
-
-                    onClicked: {
-                        app.copyTextToClipboard(messages.get(messagesSheetView.currentIndex).message);
-                    }
+            },
+            Kirigami.Action {
+                visible: !messagesSheet.showTechnicalDetails
+                text: i18n("See Technical Details")
+                icon.name: "view-process-system"
+                onTriggered: {
+                    messagesSheet.showTechnicalDetails = true;
+                }
+            },
+            Kirigami.Action {
+                visible: messagesSheet.showTechnicalDetails
+                text: i18n("Copy to Clipboard")
+                icon.name: "edit-copy"
+                onTriggered: {
+                    app.copyTextToClipboard(messages.get(messagesSheetView.currentIndex).message);
                 }
             }
-        }
+        ]
 
-        onVisibleChanged: if(!visible) {
+        onVisibleChanged: if (!visible) {
             messagesSheetView.currentIndex = -1;
             messages.clear();
+            messagesSheet.showTechnicalDetails = false;
         }
     }
 
