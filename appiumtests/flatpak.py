@@ -4,7 +4,6 @@
 # SPDX-FileCopyrightText: 2023 Harald Sitter <sitter@kde.org>
 
 import subprocess
-import time
 import unittest
 from appium import webdriver
 from appium.options.common.base import AppiumOptions
@@ -58,17 +57,14 @@ class FlatpakTest(unittest.TestCase):
         description = self.driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="applicationDescription").text
         self.assertTrue(len(description) > 64) # arbitrary large number
 
-        self.driver.find_element(by=AppiumBy.CLASS_NAME, value="[push button | Install from Flathub (user)]").click()
+        self.driver.find_element(by=AppiumBy.XPATH, value="//*[@name='Install from Flathub (user)' and contains(@accessibility-id, 'ActionToolButton')]").click()
 
-        removeButton = WebDriverWait(self.driver, 120).until(
-            EC.element_to_be_clickable((AppiumBy.CLASS_NAME, "[push button | Remove]"))
-        )
+        removeButton = WebDriverWait(self.driver, 120).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//*[@name='Remove' and contains(@accessibility-id, 'ActionToolButton')]")))
         removeButton.click()
 
         # should find install button again after removal
-        WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((AppiumBy.CLASS_NAME, "[push button | Install from Flathub (user)]"))
-        )
+        WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((AppiumBy.XPATH, "//*[@name='Install from Flathub (user)' and contains(@accessibility-id, 'ActionToolButton')]")))
+
 
 if __name__ == '__main__':
     unittest.main()
