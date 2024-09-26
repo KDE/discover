@@ -87,7 +87,7 @@ Kirigami.OverlaySheet {
 
                     icon.name: closeIcon.hovered ? "window-close" : "window-close-symbolic"
                     text: qsTr("Close", "@action:button close dialog")
-                    onClicked: mouse => page.reject()
+                    onClicked: mouse => page.close()
                     display: QQC2.AbstractButton.IconOnly
                 }
             }
