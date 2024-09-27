@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 02:31+0000\n"
+"POT-Creation-Date: 2024-09-27 02:37+0000\n"
 "PO-Revision-Date: 2024-09-02 07:09+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -949,8 +949,8 @@ msgstr "&Tentang"
 msgid "S&ettings"
 msgstr "P&engaturan"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
-#: discover/qml/DiscoverWindow.qml:459
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:458
 #, kde-format
 msgid "Error"
 msgstr "Galat"
@@ -970,22 +970,40 @@ msgstr "Teruskan"
 msgid "Report this issue"
 msgstr "Laporkan masalah ini"
 
-#: discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:346
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Galat  %1 dari  %2"
 
-#: discover/qml/DiscoverWindow.qml:395
+#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#, kde-format
+msgid "Update Issue"
+msgstr "Masalah Pembaruan"
+
+#: discover/qml/DiscoverWindow.qml:357
+#, fuzzy, kde-format
+#| msgid "There was an issue installing this update. Please try again later."
+msgid ""
+"There was an issue during the update or installation process. Please try "
+"again later."
+msgstr "Ada masalah penginstalan pembaruan ini. Mohon ulangi kembali nanti."
+
+#: discover/qml/DiscoverWindow.qml:393
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Tampilkan Sebelumnya"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:404
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Tampilkan Selanjutnya"
+
+#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#, kde-format
+msgid "See Technical Details"
+msgstr "Lihat Detail Teknis"
 
 #: discover/qml/DiscoverWindow.qml:424
 #, kde-format
@@ -1423,11 +1441,6 @@ msgstr "Pembaruan"
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
-msgid "Update Issue"
-msgstr "Masalah Pembaruan"
-
-#: discover/qml/UpdatesPage.qml:47
-#, kde-format
 msgid "Technical details"
 msgstr "Datail teknis"
 
@@ -1435,11 +1448,6 @@ msgstr "Datail teknis"
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr "Ada masalah penginstalan pembaruan ini. Mohon ulangi kembali nanti."
-
-#: discover/qml/UpdatesPage.qml:69
-#, kde-format
-msgid "See Technical Details"
-msgstr "Lihat Detail Teknis"
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format

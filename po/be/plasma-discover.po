@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 02:31+0000\n"
+"POT-Creation-Date: 2024-09-27 02:37+0000\n"
 "PO-Revision-Date: 2024-06-13 20:10\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -930,8 +930,8 @@ msgstr "&Пра праграму"
 msgid "S&ettings"
 msgstr "&Налады"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
-#: discover/qml/DiscoverWindow.qml:459
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:458
 #, kde-format
 msgid "Error"
 msgstr "Памылка"
@@ -951,22 +951,42 @@ msgstr "Працягнуць"
 msgid "Report this issue"
 msgstr "Паведаміць пра гэтую праблему"
 
-#: discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:346
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Памылка %1 з %2"
 
-#: discover/qml/DiscoverWindow.qml:395
+#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#, kde-format
+msgid "Update Issue"
+msgstr "Праблема з абнаўленнем"
+
+#: discover/qml/DiscoverWindow.qml:357
+#, fuzzy, kde-format
+#| msgid "There was an issue installing this update. Please try again later."
+msgid ""
+"There was an issue during the update or installation process. Please try "
+"again later."
+msgstr ""
+"Падчас усталявання гэтага абнаўлення паўстала праблема. Паўтарыце спробу "
+"пазней."
+
+#: discover/qml/DiscoverWindow.qml:393
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Паказаць папярэдняе"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:404
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Паказаць наступнае"
+
+#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#, kde-format
+msgid "See Technical Details"
+msgstr "Паглядзець тэхнічныя падрабязнасці"
 
 #: discover/qml/DiscoverWindow.qml:424
 #, kde-format
@@ -1404,11 +1424,6 @@ msgstr "Абнаўленні"
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
-msgid "Update Issue"
-msgstr "Праблема з абнаўленнем"
-
-#: discover/qml/UpdatesPage.qml:47
-#, kde-format
 msgid "Technical details"
 msgstr "Тэхнічныя падрабязнасці"
 
@@ -1418,11 +1433,6 @@ msgid "There was an issue installing this update. Please try again later."
 msgstr ""
 "Падчас усталявання гэтага абнаўлення паўстала праблема. Паўтарыце спробу "
 "пазней."
-
-#: discover/qml/UpdatesPage.qml:69
-#, kde-format
-msgid "See Technical Details"
-msgstr "Паглядзець тэхнічныя падрабязнасці"
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format

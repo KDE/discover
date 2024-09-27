@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 02:31+0000\n"
+"POT-Creation-Date: 2024-09-27 02:37+0000\n"
 "PO-Revision-Date: 2024-09-15 00:32+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -923,8 +923,8 @@ msgstr "&Apie"
 msgid "S&ettings"
 msgstr "&Nuostatos"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
-#: discover/qml/DiscoverWindow.qml:459
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:458
 #, kde-format
 msgid "Error"
 msgstr "Klaida"
@@ -944,22 +944,40 @@ msgstr "Tęsti"
 msgid "Report this issue"
 msgstr "Pranešti apie šią problemą"
 
-#: discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:346
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Klaida %1 iš %2"
 
-#: discover/qml/DiscoverWindow.qml:395
+#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#, kde-format
+msgid "Update Issue"
+msgstr "Atnaujinimo problema"
+
+#: discover/qml/DiscoverWindow.qml:357
+#, fuzzy, kde-format
+#| msgid "There was an issue installing this update. Please try again later."
+msgid ""
+"There was an issue during the update or installation process. Please try "
+"again later."
+msgstr "Įdiegiant šį atnaujinimą iškilo problemų. Vėliau bandykite dar kartą."
+
+#: discover/qml/DiscoverWindow.qml:393
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Rodyti ankstesnę"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:404
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Rodyti kitą"
+
+#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#, kde-format
+msgid "See Technical Details"
+msgstr "Rodyti techninę informaciją"
 
 #: discover/qml/DiscoverWindow.qml:424
 #, kde-format
@@ -1403,11 +1421,6 @@ msgstr "Atnaujinimai"
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
-msgid "Update Issue"
-msgstr "Atnaujinimo problema"
-
-#: discover/qml/UpdatesPage.qml:47
-#, kde-format
 msgid "Technical details"
 msgstr "Techninė informacija"
 
@@ -1415,11 +1428,6 @@ msgstr "Techninė informacija"
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr "Įdiegiant šį atnaujinimą iškilo problemų. Vėliau bandykite dar kartą."
-
-#: discover/qml/UpdatesPage.qml:69
-#, kde-format
-msgid "See Technical Details"
-msgstr "Rodyti techninę informaciją"
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format

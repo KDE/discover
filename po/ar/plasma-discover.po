@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 02:31+0000\n"
+"POT-Creation-Date: 2024-09-27 02:37+0000\n"
 "PO-Revision-Date: 2024-09-11 21:26+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -921,8 +921,8 @@ msgstr "&عن"
 msgid "S&ettings"
 msgstr "إ&عدادات"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
-#: discover/qml/DiscoverWindow.qml:459
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:458
 #, kde-format
 msgid "Error"
 msgstr "خطأ"
@@ -942,22 +942,41 @@ msgstr "تابِع"
 msgid "Report this issue"
 msgstr "أبلغ عن هذه المشكلة"
 
-#: discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:346
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "الخطأ %1 من %2"
 
-#: discover/qml/DiscoverWindow.qml:395
+#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#, kde-format
+msgid "Update Issue"
+msgstr "حدث المشكلة"
+
+#: discover/qml/DiscoverWindow.qml:357
+#, fuzzy, kde-format
+#| msgid "There was an issue installing this update. Please try again later."
+msgid ""
+"There was an issue during the update or installation process. Please try "
+"again later."
+msgstr ""
+"حدثت مشكلة أثناء تثبيت هذا التحديث. الرجاء معاودة المحاولة في وقت لاحق."
+
+#: discover/qml/DiscoverWindow.qml:393
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "اعرض السابق"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:404
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "اعرض التالي"
+
+#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#, kde-format
+msgid "See Technical Details"
+msgstr "أظهر التفاصيل التقنية"
 
 #: discover/qml/DiscoverWindow.qml:424
 #, kde-format
@@ -1404,11 +1423,6 @@ msgstr "التّحديثات"
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
-msgid "Update Issue"
-msgstr "حدث المشكلة"
-
-#: discover/qml/UpdatesPage.qml:47
-#, kde-format
 msgid "Technical details"
 msgstr "التفاصيل التقنية"
 
@@ -1417,11 +1431,6 @@ msgstr "التفاصيل التقنية"
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
 "حدثت مشكلة أثناء تثبيت هذا التحديث. الرجاء معاودة المحاولة في وقت لاحق."
-
-#: discover/qml/UpdatesPage.qml:69
-#, kde-format
-msgid "See Technical Details"
-msgstr "أظهر التفاصيل التقنية"
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format

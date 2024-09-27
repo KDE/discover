@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 02:31+0000\n"
+"POT-Creation-Date: 2024-09-27 02:37+0000\n"
 "PO-Revision-Date: 2013-04-01 10:16+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -870,8 +870,8 @@ msgstr ""
 msgid "S&ettings"
 msgstr "सर्वोत्कृष्ट गुणवत्ताश्रेणी"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
-#: discover/qml/DiscoverWindow.qml:459
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:458
 #, kde-format
 msgid "Error"
 msgstr ""
@@ -891,21 +891,39 @@ msgstr ""
 msgid "Report this issue"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:346
 #, kde-format
 msgid "Error %1 of %2"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:395
+#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#, fuzzy, kde-format
+#| msgid "Update"
+msgid "Update Issue"
+msgstr "अद्ययावत करा"
+
+#: discover/qml/DiscoverWindow.qml:357
+#, kde-format
+msgid ""
+"There was an issue during the update or installation process. Please try "
+"again later."
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:393
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:404
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#, kde-format
+msgid "See Technical Details"
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:424
@@ -1359,12 +1377,6 @@ msgid "Updates"
 msgstr "अद्ययावत करा"
 
 #: discover/qml/UpdatesPage.qml:47
-#, fuzzy, kde-format
-#| msgid "Update"
-msgid "Update Issue"
-msgstr "अद्ययावत करा"
-
-#: discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Technical details"
 msgstr ""
@@ -1372,11 +1384,6 @@ msgstr ""
 #: discover/qml/UpdatesPage.qml:63
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
-msgstr ""
-
-#: discover/qml/UpdatesPage.qml:69
-#, kde-format
-msgid "See Technical Details"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:96

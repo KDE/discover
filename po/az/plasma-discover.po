@@ -37,7 +37,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 02:31+0000\n"
+"POT-Creation-Date: 2024-09-27 02:37+0000\n"
 "PO-Revision-Date: 2024-06-10 12:05+0400\n"
 "Last-Translator: Kheyyam Godjayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -949,8 +949,8 @@ msgstr "H&aqqında"
 msgid "S&ettings"
 msgstr "A&yarlar"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
-#: discover/qml/DiscoverWindow.qml:459
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:458
 #, kde-format
 msgid "Error"
 msgstr "Xəta"
@@ -970,22 +970,41 @@ msgstr "Davam etmək"
 msgid "Report this issue"
 msgstr "Bu problemi bildirin"
 
-#: discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:346
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "%2 xətadan %1"
 
-#: discover/qml/DiscoverWindow.qml:395
+#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#, kde-format
+msgid "Update Issue"
+msgstr "Yenilənmə problemi"
+
+#: discover/qml/DiscoverWindow.qml:357
+#, fuzzy, kde-format
+#| msgid "There was an issue installing this update. Please try again later."
+msgid ""
+"There was an issue during the update or installation process. Please try "
+"again later."
+msgstr ""
+"Bu yenilənmənin quraşdırılmasında problem yarandı, Sonra yenidən cəhd edin."
+
+#: discover/qml/DiscoverWindow.qml:393
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Əvvəlkini göstərmək"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:404
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Sonrakını göstərmək"
+
+#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#, kde-format
+msgid "See Technical Details"
+msgstr "Texniki təfərrüatlara baxın"
 
 #: discover/qml/DiscoverWindow.qml:424
 #, kde-format
@@ -1423,11 +1442,6 @@ msgstr "Yeniləmələr"
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
-msgid "Update Issue"
-msgstr "Yenilənmə problemi"
-
-#: discover/qml/UpdatesPage.qml:47
-#, kde-format
 msgid "Technical details"
 msgstr "Texniki təfərrüatlar"
 
@@ -1436,11 +1450,6 @@ msgstr "Texniki təfərrüatlar"
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
 "Bu yenilənmənin quraşdırılmasında problem yarandı, Sonra yenidən cəhd edin."
-
-#: discover/qml/UpdatesPage.qml:69
-#, kde-format
-msgid "See Technical Details"
-msgstr "Texniki təfərrüatlara baxın"
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format

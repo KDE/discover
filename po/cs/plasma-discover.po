@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 02:31+0000\n"
+"POT-Creation-Date: 2024-09-27 02:37+0000\n"
 "PO-Revision-Date: 2024-09-17 15:12+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -840,8 +840,8 @@ msgstr "Informace o &aplikaci"
 msgid "S&ettings"
 msgstr "Nastav&ení"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
-#: discover/qml/DiscoverWindow.qml:459
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:458
 #, kde-format
 msgid "Error"
 msgstr "Chyba"
@@ -861,22 +861,39 @@ msgstr "Pokračovat"
 msgid "Report this issue"
 msgstr "Nahlásit tuto chybu"
 
-#: discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:346
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Chyba %1 z %2"
 
-#: discover/qml/DiscoverWindow.qml:395
+#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#, kde-format
+msgid "Update Issue"
+msgstr "Problém aktualizace"
+
+#: discover/qml/DiscoverWindow.qml:357
+#, kde-format
+msgid ""
+"There was an issue during the update or installation process. Please try "
+"again later."
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:393
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Zobrazit předchozí"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:404
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Zobrazit následující"
+
+#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#, kde-format
+msgid "See Technical Details"
+msgstr "Zobrazit technické podrobnosti"
 
 #: discover/qml/DiscoverWindow.qml:424
 #, kde-format
@@ -1307,11 +1324,6 @@ msgstr "Aktualizace"
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
-msgid "Update Issue"
-msgstr "Problém aktualizace"
-
-#: discover/qml/UpdatesPage.qml:47
-#, kde-format
 msgid "Technical details"
 msgstr "Technické podrobnosti"
 
@@ -1319,11 +1331,6 @@ msgstr "Technické podrobnosti"
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
-
-#: discover/qml/UpdatesPage.qml:69
-#, kde-format
-msgid "See Technical Details"
-msgstr "Zobrazit technické podrobnosti"
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format
