@@ -50,7 +50,7 @@ Kirigami.OverlaySheet {
         implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                                 implicitContentHeight + topPadding + bottomPadding)
 
-        padding: Kirigami.Units.largeSpacing
+        padding: 0
         bottomPadding: verticalPadding + headerSeparator.implicitHeight // add space for bottom separator
 
         contentItem: ColumnLayout {
