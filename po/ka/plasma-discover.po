@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 00:40+0000\n"
+"POT-Creation-Date: 2024-09-27 00:40+0000\n"
 "PO-Revision-Date: 2024-09-11 05:33+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -905,8 +905,8 @@ msgstr "შ&ესახებ"
 msgid "S&ettings"
 msgstr "&პარამეტრები"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
-#: discover/qml/DiscoverWindow.qml:459
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:458
 #, kde-format
 msgid "Error"
 msgstr "შეცდომა"
@@ -926,22 +926,40 @@ msgstr "გაგრძელება"
 msgid "Report this issue"
 msgstr "ამ პრობლემის რეპორტი"
 
-#: discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:346
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "შეცდომა %1 %2-დან"
 
-#: discover/qml/DiscoverWindow.qml:395
+#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#, kde-format
+msgid "Update Issue"
+msgstr "განახლების პრობლემა"
+
+#: discover/qml/DiscoverWindow.qml:357
+#, fuzzy, kde-format
+#| msgid "There was an issue installing this update. Please try again later."
+msgid ""
+"There was an issue during the update or installation process. Please try "
+"again later."
+msgstr "პრობლემა ამ განახლების დაყენებისას. მოგვიანებით სცადეთ."
+
+#: discover/qml/DiscoverWindow.qml:393
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "წინას ჩვენება"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:404
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "შემდეგის ჩვენება"
+
+#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#, kde-format
+msgid "See Technical Details"
+msgstr "იხილეთ ტექნიკური დეტალები"
 
 #: discover/qml/DiscoverWindow.qml:424
 #, kde-format
@@ -1389,11 +1407,6 @@ msgstr "განახლებები"
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
-msgid "Update Issue"
-msgstr "განახლების პრობლემა"
-
-#: discover/qml/UpdatesPage.qml:47
-#, kde-format
 msgid "Technical details"
 msgstr "ტექნიკური დეტალები"
 
@@ -1401,11 +1414,6 @@ msgstr "ტექნიკური დეტალები"
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr "პრობლემა ამ განახლების დაყენებისას. მოგვიანებით სცადეთ."
-
-#: discover/qml/UpdatesPage.qml:69
-#, kde-format
-msgid "See Technical Details"
-msgstr "იხილეთ ტექნიკური დეტალები"
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format

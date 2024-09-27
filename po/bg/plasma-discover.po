@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 00:40+0000\n"
+"POT-Creation-Date: 2024-09-27 00:40+0000\n"
 "PO-Revision-Date: 2024-09-22 12:06+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -914,8 +914,8 @@ msgstr "&Относно"
 msgid "S&ettings"
 msgstr "&Настройки"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
-#: discover/qml/DiscoverWindow.qml:459
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:458
 #, kde-format
 msgid "Error"
 msgstr "Грешка"
@@ -935,22 +935,41 @@ msgstr "Продължаване"
 msgid "Report this issue"
 msgstr "Докладвайте този проблем"
 
-#: discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:346
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Грешка %1 от %2"
 
-#: discover/qml/DiscoverWindow.qml:395
+#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#, kde-format
+msgid "Update Issue"
+msgstr "Проблем с актуализацията"
+
+#: discover/qml/DiscoverWindow.qml:357
+#, fuzzy, kde-format
+#| msgid "There was an issue installing this update. Please try again later."
+msgid ""
+"There was an issue during the update or installation process. Please try "
+"again later."
+msgstr ""
+"Имаше проблем с инсталирането на тази актуализация. Моля, опитайте по-късно."
+
+#: discover/qml/DiscoverWindow.qml:393
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Показване на предишно"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:404
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Показване на следващо"
+
+#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#, kde-format
+msgid "See Technical Details"
+msgstr "Вижте техническите подробности"
 
 #: discover/qml/DiscoverWindow.qml:424
 #, kde-format
@@ -1400,11 +1419,6 @@ msgstr "Обновяване"
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
-msgid "Update Issue"
-msgstr "Проблем с актуализацията"
-
-#: discover/qml/UpdatesPage.qml:47
-#, kde-format
 msgid "Technical details"
 msgstr "Технически подробности"
 
@@ -1413,11 +1427,6 @@ msgstr "Технически подробности"
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
 "Имаше проблем с инсталирането на тази актуализация. Моля, опитайте по-късно."
-
-#: discover/qml/UpdatesPage.qml:69
-#, kde-format
-msgid "See Technical Details"
-msgstr "Вижте техническите подробности"
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format
@@ -1571,51 +1580,3 @@ msgstr "Трябва да проверите за актуализации"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Неизвестно време от последното актуализиране"
-
-#~ msgid "Fetching &updates…"
-#~ msgstr "Извличане на &актуализации…"
-
-#~ msgid "Risks of proprietary software"
-#~ msgstr "Рискове на патентован софтуер"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Only install this application if you fully trust its authors (<link "
-#~ "url='%1'>%2</link>).<nl/><nl/>Its source code is partially or entirely "
-#~ "closed to public inspection and improvement, so third parties and users "
-#~ "like you cannot verify its operation, security, and trustworthiness, or "
-#~ "modify and redistribute it without the authors' express permission.<nl/"
-#~ "><nl/>The application may be perfectly safe to use, or it may be acting "
-#~ "against you in various ways—such as harvesting your personal information, "
-#~ "tracking your location, or transmitting the contents of your files to "
-#~ "someone else.<nl/><nl/>You can learn more at <link url='%3'>%3</link>."
-#~ msgstr ""
-#~ "Инсталирайте това приложение, само ако имате доверие на авторите (<link "
-#~ "url='%1'>%2</link>).<nl/><nl/>Изходният код на приложението е частично "
-#~ "или изцяло затворен за публично ползване и подобряване. Това означава, че "
-#~ "трети страни и потребители като вас не могат да проверяват неговата "
-#~ "работа, сигурност и надеждност, нито да го променят и да го "
-#~ "разпространяват без изричното разрешение на авторите.<nl/><nl/"
-#~ ">Приложението може да е напълно безопасно за използване или да действа "
-#~ "срещу вас по различни начини - като например събиране на лична "
-#~ "информация, проследяване на местонахождението ви или да предава "
-#~ "съдържанието на вашите файлове на някой друг.<nl/><nl/>Можете да да "
-#~ "научите повече на адрес <link url='%3'>%3</link>."
-
-#~ msgid "Restart automatically after update has completed"
-#~ msgstr "Автоматично рестартиране след завършване на актуализацията"
-
-#~ msgid "Content Rating:"
-#~ msgstr "Рейтинг на съдържанието:"
-
-#~ msgid "Age: %1+"
-#~ msgstr "Възраст: %1+"
-
-#~ msgid "Addons"
-#~ msgstr "Добавки"
-
-#~ msgid "Install or remove additional functionality"
-#~ msgstr "Инсталиране или премахване на допълнителни възможности"
-
-#~ msgid "Get Involved"
-#~ msgstr "Включете се"

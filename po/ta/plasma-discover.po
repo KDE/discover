@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 00:40+0000\n"
+"POT-Creation-Date: 2024-09-27 00:40+0000\n"
 "PO-Revision-Date: 2024-09-07 20:19+0200\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -892,8 +892,8 @@ msgstr "&பற்றி"
 msgid "S&ettings"
 msgstr "&அமைப்புகள்"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
-#: discover/qml/DiscoverWindow.qml:459
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:458
 #, kde-format
 msgid "Error"
 msgstr "சிக்கல்"
@@ -913,22 +913,42 @@ msgstr "தொடர்"
 msgid "Report this issue"
 msgstr "இச்சிக்கலை தெரிவி"
 
-#: discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:346
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "%2-இல் %1-வது சிக்கல்"
 
-#: discover/qml/DiscoverWindow.qml:395
+#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#, kde-format
+msgid "Update Issue"
+msgstr "புதுப்பிப்பதில் சிக்கல்"
+
+#: discover/qml/DiscoverWindow.qml:357
+#, fuzzy, kde-format
+#| msgid "There was an issue installing this update. Please try again later."
+msgid ""
+"There was an issue during the update or installation process. Please try "
+"again later."
+msgstr ""
+"இப்புதுப்பிப்பை நிறுவுவதில் சிக்கல் ஏற்பட்டது. சிறிது நேரம் கழித்து மறுபடியும் "
+"முயற்சியுங்கள்."
+
+#: discover/qml/DiscoverWindow.qml:393
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "முந்தையதைக் காட்டு"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:404
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "அடுத்ததைக் காட்டு"
+
+#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#, kde-format
+msgid "See Technical Details"
+msgstr "தொழிற்நுட்ப விவரங்களை காட்டு"
 
 #: discover/qml/DiscoverWindow.qml:424
 #, kde-format
@@ -1366,11 +1386,6 @@ msgstr "புதுப்பிப்புகள்"
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
-msgid "Update Issue"
-msgstr "புதுப்பிப்பதில் சிக்கல்"
-
-#: discover/qml/UpdatesPage.qml:47
-#, kde-format
 msgid "Technical details"
 msgstr "தொழிற்நுட்ப விவரங்கள்"
 
@@ -1380,11 +1395,6 @@ msgid "There was an issue installing this update. Please try again later."
 msgstr ""
 "இப்புதுப்பிப்பை நிறுவுவதில் சிக்கல் ஏற்பட்டது. சிறிது நேரம் கழித்து மறுபடியும் "
 "முயற்சியுங்கள்."
-
-#: discover/qml/UpdatesPage.qml:69
-#, kde-format
-msgid "See Technical Details"
-msgstr "தொழிற்நுட்ப விவரங்களை காட்டு"
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format

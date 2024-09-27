@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 00:40+0000\n"
-"PO-Revision-Date: 2024-09-22 16:31+0200\n"
+"POT-Creation-Date: 2024-09-27 00:40+0000\n"
+"PO-Revision-Date: 2024-09-26 19:08+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -883,8 +883,8 @@ msgstr "&Om"
 msgid "S&ettings"
 msgstr "&Innstillingar"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
-#: discover/qml/DiscoverWindow.qml:459
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:458
 #, kde-format
 msgid "Error"
 msgstr "Feil"
@@ -904,22 +904,41 @@ msgstr "Hald fram"
 msgid "Report this issue"
 msgstr "Meld frå om feilen"
 
-#: discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:346
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Feil %1 av %2"
 
-#: discover/qml/DiscoverWindow.qml:395
+#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#, kde-format
+msgid "Update Issue"
+msgstr "Oppdateringsproblem"
+
+#: discover/qml/DiscoverWindow.qml:357
+#, fuzzy, kde-format
+#| msgid "There was an issue installing this update. Please try again later."
+msgid ""
+"There was an issue during the update or installation process. Please try "
+"again later."
+msgstr ""
+"Det oppstod ein feil ved installering av oppdateringa. Prøv igjen seinare."
+
+#: discover/qml/DiscoverWindow.qml:393
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Vis førre"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:404
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Vis neste"
+
+#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#, kde-format
+msgid "See Technical Details"
+msgstr "Vis tekniske detaljar"
 
 #: discover/qml/DiscoverWindow.qml:424
 #, kde-format
@@ -1134,6 +1153,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"Viss programmet krasjar ofte, vurder å heller melda frå om dette direkte til "
+"utviklarane, via <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1143,6 +1164,9 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"Viss du har problem med programmet, vurder å heller melda frå om dette "
+"direkte til utviklarane, via <link url='%1'>%1</link>, eller skildra "
+"problemet her meir detaljert."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1357,11 +1381,6 @@ msgstr "Oppdateringar"
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
-msgid "Update Issue"
-msgstr "Oppdateringsproblem"
-
-#: discover/qml/UpdatesPage.qml:47
-#, kde-format
 msgid "Technical details"
 msgstr "Tekniske detaljar"
 
@@ -1370,11 +1389,6 @@ msgstr "Tekniske detaljar"
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
 "Det oppstod ein feil ved installering av oppdateringa. Prøv igjen seinare."
-
-#: discover/qml/UpdatesPage.qml:69
-#, kde-format
-msgid "See Technical Details"
-msgstr "Vis tekniske detaljar"
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format

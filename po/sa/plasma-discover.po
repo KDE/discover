@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-19 00:40+0000\n"
+"POT-Creation-Date: 2024-09-27 00:40+0000\n"
 "PO-Revision-Date: 2023-09-29 19:09+0530\n"
 "Last-Translator: \n"
 "Language-Team: Sanskrit\n"
@@ -914,8 +914,8 @@ msgstr "&विषये"
 msgid "S&ettings"
 msgstr "समयोजननि"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:345
-#: discover/qml/DiscoverWindow.qml:459
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:458
 #, kde-format
 msgid "Error"
 msgstr "त्रुटि"
@@ -935,22 +935,40 @@ msgstr "प्रवर्तते"
 msgid "Report this issue"
 msgstr "अस्य विषयस्य प्रतिवेदनं कुर्वन्तु"
 
-#: discover/qml/DiscoverWindow.qml:345
+#: discover/qml/DiscoverWindow.qml:346
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "%2 इत्यस्य %1 त्रुटिः"
 
-#: discover/qml/DiscoverWindow.qml:395
+#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#, kde-format
+msgid "Update Issue"
+msgstr "अद्यतनस्य समस्या"
+
+#: discover/qml/DiscoverWindow.qml:357
+#, fuzzy, kde-format
+#| msgid "There was an issue installing this update. Please try again later."
+msgid ""
+"There was an issue during the update or installation process. Please try "
+"again later."
+msgstr "एतत् अद्यतनं संस्थापयन् एकः समस्या आसीत् । कृपया पश्चात् पुनः प्रयासं कुर्वन्तु।."
+
+#: discover/qml/DiscoverWindow.qml:393
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "पूर्वम् दर्शयतु"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:404
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "अग्रिमम् दर्शयतु"
+
+#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#, kde-format
+msgid "See Technical Details"
+msgstr "तकनीकीविवरणं पश्यन्तु"
 
 #: discover/qml/DiscoverWindow.qml:424
 #, kde-format
@@ -1393,11 +1411,6 @@ msgstr "अद्यतनाः"
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
-msgid "Update Issue"
-msgstr "अद्यतनस्य समस्या"
-
-#: discover/qml/UpdatesPage.qml:47
-#, kde-format
 msgid "Technical details"
 msgstr "तकनीकी विवरण"
 
@@ -1405,11 +1418,6 @@ msgstr "तकनीकी विवरण"
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr "एतत् अद्यतनं संस्थापयन् एकः समस्या आसीत् । कृपया पश्चात् पुनः प्रयासं कुर्वन्तु।."
-
-#: discover/qml/UpdatesPage.qml:69
-#, kde-format
-msgid "See Technical Details"
-msgstr "तकनीकीविवरणं पश्यन्तु"
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format
