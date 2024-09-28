@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 00:40+0000\n"
-"PO-Revision-Date: 2024-09-11 05:33+0200\n"
+"PO-Revision-Date: 2024-09-27 06:24+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -937,12 +937,11 @@ msgid "Update Issue"
 msgstr "განახლების პრობლემა"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
-msgstr "პრობლემა ამ განახლების დაყენებისას. მოგვიანებით სცადეთ."
+msgstr "პრობლემა დაყენების ან განახლების მიმდინარეობისას. მოგვიანებით სცადეთ."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format

@@ -1,10 +1,10 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the discover package.
 #
-# Kira J. Fernandez <kirajfdez@gmail.com>, 2010, 2011, 2012.
+# SPDX-FileCopyrightText: 2010, 2011, 2012 Kira J. Fernandez <kirajfdez@gmail.com>
 # SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
-# Rafael Belmonte <eaglescreen@gmail.com>, 2013.
-# Rocio Gallego <traducciones@rociogallego.com>, 2013, 2014.
+# SPDX-FileCopyrightText: 2013 Rafael Belmonte <eaglescreen@gmail.com>
+# SPDX-FileCopyrightText: 2013, 2014 Rocio Gallego <traducciones@rociogallego.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
