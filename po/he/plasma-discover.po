@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 02:37+0000\n"
-"PO-Revision-Date: 2024-09-12 08:47+0300\n"
+"PO-Revision-Date: 2024-09-27 07:45+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -937,12 +937,11 @@ msgid "Update Issue"
 msgstr "תקלה בעדכון"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
-msgstr "אירעה תקלה בהתקנת העדכון. נא לנסות שוב מאוחר יותר."
+msgstr "אירעה תקלה במהלך ההתקנה או העדכון. נא לנסות שוב מאוחר יותר."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format

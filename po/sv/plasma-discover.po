@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 02:37+0000\n"
-"PO-Revision-Date: 2024-09-11 19:20+0200\n"
+"PO-Revision-Date: 2024-09-27 17:01+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -942,13 +942,13 @@ msgid "Update Issue"
 msgstr "Uppdatera problem"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr ""
-"Ett problem uppstod när uppdateringen skulle installeras. Försök igen senare."
+"Ett problem uppstod under uppdaterings- eller installationsprocessen. Försök "
+"igen senare."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
