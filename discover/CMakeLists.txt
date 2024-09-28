@@ -52,6 +52,7 @@ target_link_libraries(plasma-discover PUBLIC
                                      KF6::StatusNotifierItem
                                      Qt::Widgets
                                      Qt::Quick
+                                     Qt::QuickControls2
                                      Discover::Common
 )
 
