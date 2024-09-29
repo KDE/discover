@@ -32,10 +32,10 @@ public:
     }
 
     struct Installation {
-        explicit Installation(FlatpakNotifier *notifier);
+        explicit Installation(FlatpakNotifier *notifier, FlatpakInstallation *installation);
         ~Installation();
 
-        bool ensureInitialized(std::function<FlatpakInstallation *(GError **error)> func, GCancellable *);
+        bool ensureInitialized(GCancellable *);
 
         FlatpakNotifier *m_notifier;
         bool m_hasUpdates = false;
@@ -46,8 +46,7 @@ public:
     void onFetchUpdatesFinished(Installation *flatpakInstallation, bool hasUpdates);
     void loadRemoteUpdates(Installation *installation);
     void setupFlatpakInstallations();
-    Installation m_user;
-    Installation m_system;
+    QList<Installation> m_installations;
     GCancellable *const m_cancellable;
     bool m_lastHasUpdates = false;
 };
