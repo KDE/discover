@@ -35,7 +35,7 @@ public:
         explicit Installation(FlatpakNotifier *notifier);
         ~Installation();
 
-        bool ensureInitialized(std::function<FlatpakInstallation *()> func, GCancellable *, GError **error);
+        bool ensureInitialized(std::function<FlatpakInstallation *(GError **error)> func, GCancellable *);
 
         FlatpakNotifier *m_notifier;
         bool m_hasUpdates = false;
@@ -45,7 +45,7 @@ public:
 
     void onFetchUpdatesFinished(Installation *flatpakInstallation, bool hasUpdates);
     void loadRemoteUpdates(Installation *installation);
-    bool setupFlatpakInstallations(GError **error);
+    void setupFlatpakInstallations();
     Installation m_user;
     Installation m_system;
     GCancellable *const m_cancellable;
