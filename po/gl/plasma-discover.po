@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 02:37+0000\n"
-"PO-Revision-Date: 2024-09-20 11:13+0200\n"
+"PO-Revision-Date: 2024-09-28 13:06+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -946,14 +946,13 @@ msgid "Update Issue"
 msgstr "Problema de actualización"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr ""
-"Produciuse un problema ao instalar a actualización. Inténteo de novo máis "
-"tarde."
+"Produciuse un problema durante o proceso de actualización ou de instalación. "
+"Inténteo de novo máis tarde."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format

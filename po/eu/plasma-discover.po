@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 02:37+0000\n"
-"PO-Revision-Date: 2024-09-11 22:54+0200\n"
+"PO-Revision-Date: 2024-09-28 07:17+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -950,13 +950,13 @@ msgid "Update Issue"
 msgstr "Eguneratzeko arazoa"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr ""
-"Eguneratze hau instalatzean arazo bat egon da. Saiatu berriz beranduago."
+"Eguneratze edo instalatze prozesuan arazo bat egon da. Mesedez, saiatu "
+"berriz beranduago."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
