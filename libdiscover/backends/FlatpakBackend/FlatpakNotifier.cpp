@@ -62,16 +62,11 @@ FlatpakNotifier::~FlatpakNotifier()
 
 void FlatpakNotifier::recheckSystemUpdateNeeded()
 {
-    g_autoptr(GError) error = nullptr;
+    setupFlatpakInstallations();
 
-    // Load flatpak installation
-    if (!setupFlatpakInstallations(&error)) {
-        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to setup flatpak installations: " << error->message;
-    } else {
-        // Load updates from remote repositories
-        loadRemoteUpdates(&m_system);
-        loadRemoteUpdates(&m_user);
-    }
+    // Load updates from remote repositories
+    loadRemoteUpdates(&m_system);
+    loadRemoteUpdates(&m_user);
 }
 
 void FlatpakNotifier::onFetchUpdatesFinished(Installation *installation, bool hasUpdates)
@@ -124,34 +119,34 @@ bool FlatpakNotifier::hasUpdates()
     return m_system.m_hasUpdates || m_user.m_hasUpdates;
 }
 
-bool FlatpakNotifier::Installation::ensureInitialized(std::function<FlatpakInstallation *()> func, GCancellable *cancellable, GError **error)
+bool FlatpakNotifier::Installation::ensureInitialized(std::function<FlatpakInstallation *(GError **error)> func, GCancellable *cancellable)
 {
     if (!m_installation) {
-        m_installation = func();
-        m_monitor = flatpak_installation_create_monitor(m_installation, cancellable, error);
-        g_signal_connect(m_monitor, "changed", G_CALLBACK(installationChanged), this);
+        g_autoptr(GError) error = nullptr;
+        m_installation = func(&error);
+        if (m_installation) {
+            m_monitor = flatpak_installation_create_monitor(m_installation, cancellable, &error);
+            g_signal_connect(m_monitor, "changed", G_CALLBACK(installationChanged), this);
+        } else {
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to setup flatpak installation: " << error->message;
+        }
     }
     return m_installation && m_monitor;
 }
 
-bool FlatpakNotifier::setupFlatpakInstallations(GError **error)
+void FlatpakNotifier::setupFlatpakInstallations()
 {
-    if (!m_system.ensureInitialized(
-            [this, error] {
-                return flatpak_installation_new_system(m_cancellable, error);
-            },
-            m_cancellable,
-            error))
-        return false;
-    if (!m_user.ensureInitialized(
-            [this, error] {
-                return flatpak_installation_new_user(m_cancellable, error);
-            },
-            m_cancellable,
-            error))
-        return false;
+    m_system.ensureInitialized(
+        [this](GError **error) {
+            return flatpak_installation_new_system(m_cancellable, error);
+        },
+        m_cancellable);
 
-    return true;
+    m_user.ensureInitialized(
+        [this](GError **error) {
+            return flatpak_installation_new_user(m_cancellable, error);
+        },
+        m_cancellable);
 }
 
 #include "moc_FlatpakNotifier.cpp"
