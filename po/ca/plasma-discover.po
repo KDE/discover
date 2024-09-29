@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-27 00:40+0000\n"
+"POT-Creation-Date: 2024-09-29 00:40+0000\n"
 "PO-Revision-Date: 2024-09-27 10:29+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -134,7 +134,7 @@ msgid "Report This Issue"
 msgstr "Informa d'aquest problema"
 
 #: discover/DiscoverObject.cpp:468 discover/DiscoverObject.cpp:470
-#: discover/main.cpp:118
+#: discover/main.cpp:123
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -147,113 +147,113 @@ msgstr ""
 "El Discover es va tancar abans d'acabar determinades tasques, espereu que "
 "finalitzi."
 
-#: discover/main.cpp:34
+#: discover/main.cpp:35
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "Obre directament l'aplicació especificada pel seu URI appstream://."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:36
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr ""
 "Obre amb una cerca per als programes que es poden gestionar amb el tipus "
 "MIME donat."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:37
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "Mostra una llista d'entrades amb una categoria."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:38
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "Obre el Discover en un mode indicat. Els modes es corresponen als botons de "
 "la barra d'eines."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:39
 #, kde-format
 msgid "List all the available modes."
 msgstr "Llista tots els modes disponibles."
 
-#: discover/main.cpp:39
+#: discover/main.cpp:40
 #, kde-format
 msgid "Local package file to install"
 msgstr "Fitxer local de paquet a instal·lar"
 
-#: discover/main.cpp:40
+#: discover/main.cpp:41
 #, kde-format
 msgid "List all the available backends."
 msgstr "Llista tots els dorsals disponibles."
 
-#: discover/main.cpp:41
+#: discover/main.cpp:42
 #, kde-format
 msgid "Search string."
 msgstr "Cadena de la cerca."
 
-#: discover/main.cpp:42
+#: discover/main.cpp:43
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "Llista les opcions disponibles per als comentaris dels usuaris"
 
-#: discover/main.cpp:44
+#: discover/main.cpp:45
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "Implementa l'esquema d'URL «appstream:»"
 
-#: discover/main.cpp:120
+#: discover/main.cpp:125
 #, kde-format
 msgid "An application explorer"
 msgstr "Un explorador d'aplicacions"
 
-#: discover/main.cpp:122
+#: discover/main.cpp:127
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010-2024, L'equip de desenvolupament del Plasma"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:128
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:129
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:130
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Control de qualitat, disseny i usabilitat"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:134
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:130
+#: discover/main.cpp:135
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:137
+#: discover/main.cpp:142
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Orestes Mas"
 
-#: discover/main.cpp:137
+#: discover/main.cpp:142
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "orestes@tsc.upc.edu"
 
-#: discover/main.cpp:150
+#: discover/main.cpp:155
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Dorsals disponibles:\n"
 
-#: discover/main.cpp:203
+#: discover/main.cpp:208
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Modes disponibles:\n"

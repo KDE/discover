@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-27 00:40+0000\n"
+"POT-Creation-Date: 2024-09-29 00:40+0000\n"
 "PO-Revision-Date: 2024-08-20 21:42+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -127,7 +127,7 @@ msgid "Report This Issue"
 msgstr "이 문제 보고"
 
 #: discover/DiscoverObject.cpp:468 discover/DiscoverObject.cpp:470
-#: discover/main.cpp:118
+#: discover/main.cpp:123
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -139,109 +139,109 @@ msgid ""
 msgstr ""
 "일부 작업이 끝나기 전에 Discover가 종료되었습니다. 완료되기까지 기다립니다."
 
-#: discover/main.cpp:34
+#: discover/main.cpp:35
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "지정한 앱을 appstream:// URI로 바로 엽니다."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:36
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr "지정한 MIME 형식을 처리할 수 있는 프로그램 검색 결과를 엽니다."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:37
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "분류별로 항목 목록을 표시합니다."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:38
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr "Discover를 said 모드로 시작합니다. 모드는 도구 모음 단추에 대응합니다."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:39
 #, kde-format
 msgid "List all the available modes."
 msgstr "사용 가능한 모드를 표시합니다."
 
-#: discover/main.cpp:39
+#: discover/main.cpp:40
 #, kde-format
 msgid "Local package file to install"
 msgstr "설치할 로컬 패키지 파일"
 
-#: discover/main.cpp:40
+#: discover/main.cpp:41
 #, kde-format
 msgid "List all the available backends."
 msgstr "사용 가능한 백엔드를 표시합니다."
 
-#: discover/main.cpp:41
+#: discover/main.cpp:42
 #, kde-format
 msgid "Search string."
 msgstr "검색 문자열입니다."
 
-#: discover/main.cpp:42
+#: discover/main.cpp:43
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "사용자 피드백 옵션을 표시합니다"
 
-#: discover/main.cpp:44
+#: discover/main.cpp:45
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "appstream: URL 형식 지원"
 
-#: discover/main.cpp:120
+#: discover/main.cpp:125
 #, kde-format
 msgid "An application explorer"
 msgstr "앱 탐색기"
 
-#: discover/main.cpp:122
+#: discover/main.cpp:127
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010-2024 Plasma Development Team"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:128
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:129
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:130
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "품질 검증, 디자인, 사용 편의성"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:134
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:130
+#: discover/main.cpp:135
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:137
+#: discover/main.cpp:142
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "박신조"
 
-#: discover/main.cpp:137
+#: discover/main.cpp:142
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
-#: discover/main.cpp:150
+#: discover/main.cpp:155
 #, kde-format
 msgid "Available backends:\n"
 msgstr "사용 가능한 백엔드:\n"
 
-#: discover/main.cpp:203
+#: discover/main.cpp:208
 #, kde-format
 msgid "Available modes:\n"
 msgstr "사용 가능한 모드:\n"

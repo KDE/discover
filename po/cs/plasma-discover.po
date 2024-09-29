@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-27 00:40+0000\n"
+"POT-Creation-Date: 2024-09-29 00:40+0000\n"
 "PO-Revision-Date: 2024-09-17 15:12+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -108,7 +108,7 @@ msgid "Report This Issue"
 msgstr "Nahlásit tuto chybu"
 
 #: discover/DiscoverObject.cpp:468 discover/DiscoverObject.cpp:470
-#: discover/main.cpp:118
+#: discover/main.cpp:123
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -119,109 +119,109 @@ msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
 
-#: discover/main.cpp:34
+#: discover/main.cpp:35
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr ""
 
-#: discover/main.cpp:35
+#: discover/main.cpp:36
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr ""
 
-#: discover/main.cpp:36
+#: discover/main.cpp:37
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr ""
 
-#: discover/main.cpp:37
+#: discover/main.cpp:38
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 
-#: discover/main.cpp:38
+#: discover/main.cpp:39
 #, kde-format
 msgid "List all the available modes."
 msgstr "Vypsat všechny dostupné režimy."
 
-#: discover/main.cpp:39
+#: discover/main.cpp:40
 #, kde-format
 msgid "Local package file to install"
 msgstr "Lokální soubor s balíčkem k instalaci"
 
-#: discover/main.cpp:40
+#: discover/main.cpp:41
 #, kde-format
 msgid "List all the available backends."
 msgstr "Vypsat všechny dostupné podpůrné vrstvy."
 
-#: discover/main.cpp:41
+#: discover/main.cpp:42
 #, kde-format
 msgid "Search string."
 msgstr "Řetězec pro hledání."
 
-#: discover/main.cpp:42
+#: discover/main.cpp:43
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "Seznam dostupných voleb pro uživatelskou zpětnou vazbu"
 
-#: discover/main.cpp:44
+#: discover/main.cpp:45
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr ""
 
-#: discover/main.cpp:120
+#: discover/main.cpp:125
 #, kde-format
 msgid "An application explorer"
 msgstr "Prohlížeč aplikací"
 
-#: discover/main.cpp:122
+#: discover/main.cpp:127
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010-2024 Vývojový tým Plasma"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:128
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:129
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:130
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Zajištění kvality, návrh a použitelnost"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:134
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:130
+#: discover/main.cpp:135
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:137
+#: discover/main.cpp:142
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Vít Pelčák"
 
-#: discover/main.cpp:137
+#: discover/main.cpp:142
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vit@pelcak.org"
 
-#: discover/main.cpp:150
+#: discover/main.cpp:155
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Dostupné podpůrné vrstvy:\n"
 
-#: discover/main.cpp:203
+#: discover/main.cpp:208
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Dostupné režimy:\n"

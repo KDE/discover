@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-27 00:40+0000\n"
+"POT-Creation-Date: 2024-09-29 00:40+0000\n"
 "PO-Revision-Date: 2020-10-04 16:59+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -111,7 +111,7 @@ msgid "Report This Issue"
 msgstr ""
 
 #: discover/DiscoverObject.cpp:468 discover/DiscoverObject.cpp:470
-#: discover/main.cpp:118
+#: discover/main.cpp:123
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -122,112 +122,112 @@ msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
 
-#: discover/main.cpp:34
+#: discover/main.cpp:35
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "Åbn det angivne program direkte ved dets appstream://-URI."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:36
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr ""
 "Åbn med en søgning efter programmer som kan håndtere den givne MIME-type."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:37
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "Vis en liste over indgange med en kategori."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:38
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "Åbn Discover i nævnte tilstand. Tilstande svarer til værktøjslinjeknapperne."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:39
 #, kde-format
 msgid "List all the available modes."
 msgstr "Oplist alle tilgængelige tilstande."
 
-#: discover/main.cpp:39
+#: discover/main.cpp:40
 #, kde-format
 msgid "Local package file to install"
 msgstr "Lokal pakkefil der skal installeres"
 
-#: discover/main.cpp:40
+#: discover/main.cpp:41
 #, kde-format
 msgid "List all the available backends."
 msgstr "Oplist alle tilgængelige backends."
 
-#: discover/main.cpp:41
+#: discover/main.cpp:42
 #, kde-format
 msgid "Search string."
 msgstr "Søg efter streng."
 
-#: discover/main.cpp:42
+#: discover/main.cpp:43
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "Oplister de tilgængelige indstillinger for brugerfeedback"
 
-#: discover/main.cpp:44
+#: discover/main.cpp:45
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "Understøtter appstream: URL-skema"
 
-#: discover/main.cpp:120
+#: discover/main.cpp:125
 #, kde-format
 msgid "An application explorer"
 msgstr "Opdagelse af programmer"
 
-#: discover/main.cpp:122
+#: discover/main.cpp:127
 #, fuzzy, kde-format
 #| msgid "© 2010-2020 Plasma Development Team"
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010-2020 Plasma-udviklingsholdet"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:128
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:129
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:130
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Kvalitetssikring, design og brugervenlighed"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:134
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:130
+#: discover/main.cpp:135
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:137
+#: discover/main.cpp:142
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Martin Schlander,scootergrisen"
 
-#: discover/main.cpp:137
+#: discover/main.cpp:142
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "mschlander@opensuse.org,dansk@dansk-gruppen.dk"
 
-#: discover/main.cpp:150
+#: discover/main.cpp:155
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Tilgængelige backends:\n"
 
-#: discover/main.cpp:203
+#: discover/main.cpp:208
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Tilgængelige tilstande:\n"

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-27 00:40+0000\n"
-"PO-Revision-Date: 2024-09-11 22:54+0200\n"
+"POT-Creation-Date: 2024-09-29 00:40+0000\n"
+"PO-Revision-Date: 2024-09-28 07:17+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -131,7 +131,7 @@ msgid "Report This Issue"
 msgstr "Eman arazo honen berri"
 
 #: discover/DiscoverObject.cpp:468 discover/DiscoverObject.cpp:470
-#: discover/main.cpp:118
+#: discover/main.cpp:123
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -142,112 +142,112 @@ msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr "Discover zenbait ataza burutu aurretik itxi da, itxi dadin itxoiten."
 
-#: discover/main.cpp:34
+#: discover/main.cpp:35
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "Ireki zehaztutako aplikazioa zuzenean bere appstream:// URIaren bidez."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:36
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr ""
 "Ireki emandako mime-motarekin lan egin dezaketen programen bilaketa batekin."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:37
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "Bistaratu kategoria bat duen sarrera-zerrenda bat."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:38
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "Ireki Discover esandako moduan. Moduak tresna-barrako botoiei dagozkie."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:39
 #, kde-format
 msgid "List all the available modes."
 msgstr "Zerrendatu modu erabilgarri guztiak."
 
-#: discover/main.cpp:39
+#: discover/main.cpp:40
 #, kde-format
 msgid "Local package file to install"
 msgstr "Instalatu beharreko fitxategi lokala"
 
-#: discover/main.cpp:40
+#: discover/main.cpp:41
 #, kde-format
 msgid "List all the available backends."
 msgstr "Zerrendatu bizkarraldeko erabilgarri guztiak."
 
-#: discover/main.cpp:41
+#: discover/main.cpp:42
 #, kde-format
 msgid "Search string."
 msgstr "Bilatu beharreko katea."
 
-#: discover/main.cpp:42
+#: discover/main.cpp:43
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr ""
 "Erabiltzailearen atzera-elikaduraren aukera erabilgarriak zerrendatzen ditu"
 
-#: discover/main.cpp:44
+#: discover/main.cpp:45
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "«appstream:» url antolaera onartzen du"
 
-#: discover/main.cpp:120
+#: discover/main.cpp:125
 #, kde-format
 msgid "An application explorer"
 msgstr "Aplikazioen esploratzaile bat"
 
-#: discover/main.cpp:122
+#: discover/main.cpp:127
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010-2024 Plasma garapen taldea"
 
-#: discover/main.cpp:123
+#: discover/main.cpp:128
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:129
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:130
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Kalitate-bermatzea, diseinua eta erabilerraztasuna"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:134
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:130
+#: discover/main.cpp:135
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:137
+#: discover/main.cpp:142
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Iñigo Salvador Azurmendi"
 
-#: discover/main.cpp:137
+#: discover/main.cpp:142
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xalba@euskalnet.net"
 
-#: discover/main.cpp:150
+#: discover/main.cpp:155
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Bizkarraldeko erabilgarriak:\n"
 
-#: discover/main.cpp:203
+#: discover/main.cpp:208
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Modu erabilgarriak:\n"
@@ -950,13 +950,13 @@ msgid "Update Issue"
 msgstr "Eguneratzeko arazoa"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr ""
-"Eguneratze hau instalatzean arazo bat egon da. Saiatu berriz beranduago."
+"Eguneratze edo instalatze prozesuan arazo bat egon da. Mesedez, saiatu "
+"berriz beranduago."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
