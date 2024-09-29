@@ -33,18 +33,31 @@ static void installationChanged(GFileMonitor *monitor, GFile *child, GFile *othe
 
 FlatpakNotifier::FlatpakNotifier(QObject *parent)
     : BackendNotifierModule(parent)
-    , m_user(this)
-    , m_system(this)
     , m_cancellable(g_cancellable_new())
 {
     QTimer *dailyCheck = new QTimer(this);
     dailyCheck->setInterval(24h); // refresh at least once every day
     connect(dailyCheck, &QTimer::timeout, this, &FlatpakNotifier::recheckSystemUpdateNeeded);
+
+    g_autoptr(GError) error = nullptr;
+    g_autoptr(GPtrArray) installations = flatpak_get_system_installations(m_cancellable, &error);
+    if (error) {
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to call flatpak_get_system_installations:" << error->message;
+    }
+    for (uint i = 0; installations && i < installations->len; i++) {
+        auto installation = FLATPAK_INSTALLATION(g_ptr_array_index(installations, i));
+        m_installations << Installation(this, installation);
+    }
+
+    if (auto user = flatpak_installation_new_user(m_cancellable, &error)) {
+        m_installations << Installation(this, user);
+    }
 }
 
-FlatpakNotifier::Installation::Installation(FlatpakNotifier *notifier)
+FlatpakNotifier::Installation::Installation(FlatpakNotifier *notifier, FlatpakInstallation *installation)
     : m_notifier(notifier)
 {
+    g_object_ref(installation);
 }
 
 FlatpakNotifier::Installation::~Installation()
@@ -65,8 +78,9 @@ void FlatpakNotifier::recheckSystemUpdateNeeded()
     setupFlatpakInstallations();
 
     // Load updates from remote repositories
-    loadRemoteUpdates(&m_system);
-    loadRemoteUpdates(&m_user);
+    for (auto &installation : m_installations) {
+        loadRemoteUpdates(&installation);
+    }
 }
 
 void FlatpakNotifier::onFetchUpdatesFinished(Installation *installation, bool hasUpdates)
@@ -116,16 +130,17 @@ void FlatpakNotifier::loadRemoteUpdates(Installation *installation)
 
 bool FlatpakNotifier::hasUpdates()
 {
-    return m_system.m_hasUpdates || m_user.m_hasUpdates;
+    return std::ranges::any_of(m_installations, [](const auto &installation) {
+        return installation.m_hasUpdates;
+    });
 }
 
-bool FlatpakNotifier::Installation::ensureInitialized(std::function<FlatpakInstallation *(GError **error)> func, GCancellable *cancellable)
+bool FlatpakNotifier::Installation::ensureInitialized(GCancellable *cancellable)
 {
-    if (!m_installation) {
+    if (!m_monitor) {
         g_autoptr(GError) error = nullptr;
-        m_installation = func(&error);
-        if (m_installation) {
-            m_monitor = flatpak_installation_create_monitor(m_installation, cancellable, &error);
+        m_monitor = flatpak_installation_create_monitor(m_installation, cancellable, &error);
+        if (m_monitor) {
             g_signal_connect(m_monitor, "changed", G_CALLBACK(installationChanged), this);
         } else {
             qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to setup flatpak installation: " << error->message;
@@ -136,17 +151,9 @@ bool FlatpakNotifier::Installation::ensureInitialized(std::function<FlatpakInsta
 
 void FlatpakNotifier::setupFlatpakInstallations()
 {
-    m_system.ensureInitialized(
-        [this](GError **error) {
-            return flatpak_installation_new_system(m_cancellable, error);
-        },
-        m_cancellable);
-
-    m_user.ensureInitialized(
-        [this](GError **error) {
-            return flatpak_installation_new_user(m_cancellable, error);
-        },
-        m_cancellable);
+    for (auto &installation : m_installations) {
+        installation.ensureInitialized(m_cancellable);
+    }
 }
 
 #include "moc_FlatpakNotifier.cpp"
