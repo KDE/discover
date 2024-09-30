@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-29 00:40+0000\n"
-"PO-Revision-Date: 2024-09-19 20:42+0200\n"
+"PO-Revision-Date: 2024-09-29 22:01+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -75,6 +75,11 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"A(z) %1 csomagjai kezelésének támogatása nem teljes; számos problémát "
+"tapasztalhat. Ne jelentsen hibákat a KDE felé. Erősen ajánlott a "
+"<resource>packagekit-qt6</resource> csomag eltávolítása és a Discoverrel "
+"csak Flatpakot, Snapet és bővítményeket kezelni.<para>A(z) %1 karbantartók "
+"inkább a <command>pacman</command> csomagkezelő használatát ajánlják.</para>"
 
 #: discover/DiscoverObject.cpp:293
 #, kde-format
@@ -301,18 +306,7 @@ msgid "No ratings yet"
 msgstr "Nincsenek értékelések"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -328,30 +322,21 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"Csak akkor telepítse ezt az alkalmazást, ha teljesen megbízik a szerzőiben "
-"(%1).<nl/><nl/>Az alkalmazás forráskódja részben vagy teljesen zárt a "
-"nyilvános vizsgálat és fejlesztés előtt. Ez azt jelenti, hogy sem harmadik "
-"felek, sem olyan felhasználók, mint Ön nem ellenőrizhetik a működését, "
-"biztonságát és megbízhatóságát, vagy módosíthatják és terjeszthetik a "
-"szerzők kifejezett engedélye nélkül.<nl/><nl/>Az alkalmazás használata talán "
-"teljesen biztonságos, de az is lehet, hogy az Ön érdekei ellenében "
-"cselekszik — például személyes adatokat gyűjt, követi a tartózkodási helyét, "
-"vagy továbbítja a fájljait valaki másnak.<nl/><nl/>Többet tudhat meg a(z) "
-"<link url='%2'>%2</link> oldalon."
+"Csak akkor telepítse a(z) %1 alkalmazást, ha teljesen megbízik a szerzőiben, "
+"<emphasis strong='true'>zárt</emphasis>: Az Ön szabadsága a felhasználásra, "
+"módosításra és továbbterjesztése korlátozott, és az alkalmazás forráskódja "
+"részben vagy teljesen el van zárva a nyilvános betekintés és javítás elől. "
+"Ez azt jelenti, hogy sem harmadik felek, sem olyan felhasználók, mint Ön nem "
+"ellenőrizhetik a működését, biztonságát és megbízhatóságát<nl/><nl/>Az "
+"alkalmazás használata talán teljesen biztonságos, de az is lehet, hogy az Ön "
+"érdekei ellenében cselekszik — például személyes adatokat gyűjt, követi a "
+"tartózkodási helyét, vagy továbbítja a fájljait valaki másnak. Csak akkor "
+"használja, ha teljesen megbízik a szerzőiben. További információkat találhat "
+"a(z) <link url='%2'>alkalmazás</link> weboldalán.<nl/><nl/>Tudjon meg többet "
+"itt: <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -365,16 +350,17 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Csak akkor telepítse ezt az alkalmazást, ha teljesen megbízik a szerzőiben "
-"(%1).<nl/><nl/>Az alkalmazás forráskódja részben vagy teljesen zárt a "
-"nyilvános vizsgálat és fejlesztés előtt. Ez azt jelenti, hogy sem harmadik "
-"felek, sem olyan felhasználók, mint Ön nem ellenőrizhetik a működését, "
-"biztonságát és megbízhatóságát, vagy módosíthatják és terjeszthetik a "
-"szerzők kifejezett engedélye nélkül.<nl/><nl/>Az alkalmazás használata talán "
-"teljesen biztonságos, de az is lehet, hogy az Ön érdekei ellenében "
-"cselekszik — például személyes adatokat gyűjt, követi a tartózkodási helyét, "
-"vagy továbbítja a fájljait valaki másnak.<nl/><nl/>Többet tudhat meg a(z) "
-"<link url='%2'>%2</link> oldalon."
+"Csak akkor telepítse a(z) %1 alkalmazást, ha teljesen megbízik a szerzőiben, "
+"<emphasis strong='true'>zárt</emphasis>: Az Ön szabadsága a felhasználásra, "
+"módosításra és továbbterjesztése korlátozott, és az alkalmazás forráskódja "
+"részben vagy teljesen el van zárva a nyilvános betekintés és javítás elől. "
+"Ez azt jelenti, hogy sem harmadik felek, sem olyan felhasználók, mint Ön nem "
+"ellenőrizhetik a működését, biztonságát és megbízhatóságát<nl/><nl/>Az "
+"alkalmazás használata talán teljesen biztonságos, de az is lehet, hogy az Ön "
+"érdekei ellenében cselekszik — például személyes adatokat gyűjt, követi a "
+"tartózkodási helyét, vagy továbbítja a fájljait valaki másnak. Csak akkor "
+"használja, ha teljesen megbízik a szerzőiben. Tudjon meg többet itt: <link "
+"url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:78
 #, kde-kuit-format
@@ -392,6 +378,18 @@ msgid ""
 "url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"A(z) %1 egy vagy több olyan licenct használ, amiket sem a <link "
+"url='%2'>Free Software Foundation</link>, sem az <link url='%3'>Open Source "
+"Initiative</link> nem minősített szabad licencnek. Ez azt jelenti, hogy a "
+"felhasználás, tanulmányozás, módosítás és megosztás szabadsága valamilyen "
+"módon korlátozott.<nl/><nl/>Olvassa el alaposan a licenc szövegét és értse "
+"meg a korlátozásokat, mielőtt használná a szoftvert.<nl/><nl/>Ha a licenc "
+"még a forráskód elolvasásához sem biztosít hozzáférést, győződjön meg arról, "
+"hogy teljesen megbízik a szerzőkben, mivel senki más nem tudja ellenőrizni a "
+"forráskód megbízhatóságát és biztonságát, és hogy nem az Ön érdekei "
+"ellenében dolgozik. További információkat találhat <link url='%4'>az "
+"alkalmazás weboldalán</link>.<nl/><nl/>Tudjon meg többet itt: <link url='%5'>"
+"%5</link>."
 
 #: discover/qml/ApplicationPage.qml:85
 #, kde-kuit-format
@@ -407,6 +405,16 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"A(z) %1 egy vagy több olyan licenct használ, amiket sem a <link "
+"url='%2'>Free Software Foundation</link>, sem az <link url='%3'>Open Source "
+"Initiative</link> nem minősített szabad licencnek. Ez azt jelenti, hogy a "
+"felhasználás, tanulmányozás, módosítás és megosztás szabadsága valamilyen "
+"módon korlátozott.<nl/><nl/>Olvassa el alaposan a licenc szövegét és értse "
+"meg a korlátozásokat, mielőtt használná a szoftvert.<nl/><nl/>Ha a licenc "
+"még a forráskód elolvasásához sem biztosít hozzáférést, győződjön meg arról, "
+"hogy teljesen megbízik a szerzőkben, mivel senki más nem tudja ellenőrizni a "
+"forráskód megbízhatóságát és biztonságát, és hogy nem az Ön érdekei "
+"ellenében dolgozik.<nl/><nl/>Tudjon meg többet itt: <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
 #, kde-kuit-format
@@ -417,6 +425,10 @@ msgid ""
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
+"A(z) %1 nem jelzi, hogy milyen licenc alatt terjesztik. Lehet, hogy ezt "
+"<link url='%2'>az alkalmazás weboldalán</link> állapíthatja meg. Keresse "
+"ott, vagy lépjen kapcsolatba a szerzővel, ha ezt az alkalmazást "
+"magánhasználaton kívül másra is használni szeretné."
 
 #: discover/qml/ApplicationPage.qml:98
 #, kde-format
@@ -426,18 +438,18 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"A(z) %1 nem jelzi, hogy milyen licenc alatt terjesztik. Vegye fel a "
+"kapcsolatot az alkalmazás szerzőjével, ha a magánfelhasználáson kívül másra "
+"is szeretné használni."
 
 #: discover/qml/ApplicationPage.qml:134
-#, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "Megosztás"
 
 #: discover/qml/ApplicationPage.qml:142
-#, fuzzy, kde-format
-#| msgid "Add-ons"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
 msgstr "Bővítmények"
@@ -456,11 +468,10 @@ msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:210
-#, fuzzy, kde-format
-#| msgid "Send a link for this application"
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
-msgstr "Hivatkozás küldése ehhez az alkalmazáshoz"
+msgstr "Hivatkozás megosztása ehhez az alkalmazáshoz"
 
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
@@ -491,8 +502,7 @@ msgstr[0] "Licenc:"
 msgstr[1] "Licencek:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Mit jelent ez?"
@@ -507,7 +517,7 @@ msgstr "Ismeretlen"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:469
 #, kde-format
@@ -520,27 +530,24 @@ msgstr[1] "Több…"
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr ""
+msgstr "Korhatár:"
 
 #: discover/qml/ApplicationPage.qml:487
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr ""
+msgstr "Mindenki"
 
 #: discover/qml/ApplicationPage.qml:489
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr "%1"
+msgstr "%1+"
 
 #: discover/qml/ApplicationPage.qml:503
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
+#, kde-format
 msgid "See details"
-msgstr "Több…"
+msgstr "Részletek megtekintése"
 
 #: discover/qml/ApplicationPage.qml:527
 #, kde-format
@@ -589,7 +596,7 @@ msgstr "Telepítse értékelés írásához"
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
-msgstr ""
+msgstr "Külső hivatkozások"
 
 #: discover/qml/ApplicationPage.qml:796
 #, kde-format
@@ -655,11 +662,10 @@ msgid "Content Rating"
 msgstr "Tartalmi besorolás"
 
 #: discover/qml/ApplicationPage.qml:934
-#, fuzzy, kde-format
-#| msgid "Submit Usage Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "Használati statisztikák elküldése"
+msgstr "Licencinformációk"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -720,8 +726,7 @@ msgid "Size"
 msgstr "Méret"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Kiadás ideje"
 
@@ -894,7 +899,7 @@ msgstr "&Telepített"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "Fr&issítések (lekérés…)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -945,13 +950,13 @@ msgid "Update Issue"
 msgstr "Frissítési probléma"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr ""
-"Hiba történt a frissítés telepítése során. Kérjük, próbálkozzon később."
+"Hiba történt a frissítési vagy telepítési folyamat során. Kérjük, "
+"próbálkozzon később."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
@@ -1158,6 +1163,9 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"Ha szereti a(z) %1 alkalmazást, mondja el másoknak, mitől olyan nagyszerű! "
+"Koncentráljon a funkciókra, használhatóságra és megjelenésre. Ha az "
+"alkalmazás nem felel meg az elvárásainak, fejtse ki, miért."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1167,6 +1175,9 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"Ha a(z) %1 nem indul, fontolja meg ennek jelentését a(z) %2 csomagolóinak "
+"a(z) <link url='%3'>%3</link> címen, mivel ez talán egy egy egyszerűen "
+"javítható csomagolási probléma, és nem az alkalmazás hibája."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1176,6 +1187,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"Ha a(z) %1 nem indul, fontolja meg ennek jelentését a fejlesztőknek a(z) "
+"<link url='%2'>%2</link> címen, mivel ez talán egy egy egyszerűen javítható "
+"csomagolási probléma, és nem az alkalmazás hibája."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1184,6 +1198,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"Ha az alkalmazás sokszor összeomlik, jelentse ezt a fejlesztőinek a(z) <link "
+"url='%1'>%1</link> címen inkább."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1193,6 +1209,8 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"Ha problémája van az alkalmazással, fontolja meg, hogy jelentse azt a(z) "
+"<link url='%1'>%1</link> címen, vagy írja le a problémát itt részletesebben."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
