@@ -43,12 +43,12 @@ QString AlpineApkResource::availableVersion() const
     return m_availableVersion;
 }
 
-QStringList AlpineApkResource::categories()
+bool AlpineApkResource::hasCategory(const QString &category) const
 {
     if (hasAppStreamData()) {
-        return m_appsC.categories();
+        return m_appsC.categories().contains(category);
     }
-    return {m_category};
+    return m_category == category;
 }
 
 QString AlpineApkResource::comment()

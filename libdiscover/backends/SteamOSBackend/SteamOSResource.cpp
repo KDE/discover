@@ -40,9 +40,9 @@ QString SteamOSResource::availableVersion() const
     return QStringLiteral("%1 - %2").arg(m_version, m_build);
 }
 
-QStringList SteamOSResource::categories()
+bool SteamOSResource::hasCategory(const QString &category) const
 {
-    return {QStringLiteral("steamos")};
+    return QStringLiteral("steamos") == category;
 }
 
 QString SteamOSResource::comment()

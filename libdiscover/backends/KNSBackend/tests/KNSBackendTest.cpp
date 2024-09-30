@@ -91,7 +91,6 @@ void KNSBackendTest::testRetrieval()
     const auto resources = getAllResources(m_backend);
     for (auto ressource : resources) {
         QVERIFY(!ressource->name().isEmpty());
-        QVERIFY(!ressource->categories().isEmpty());
         QVERIFY(!ressource->origin().isEmpty());
         QVERIFY(!ressource->icon().isNull());
         //     QVERIFY(!ressource->comment().isEmpty());

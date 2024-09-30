@@ -28,7 +28,7 @@ public:
     QUrl bugURL() override;
     QUrl donationURL() override;
     QUrl contributeURL() override;
-    QStringList categories() override;
+    bool hasCategory(const QString &category) const override;
     AbstractResource::State state() override;
     QVariant icon() const override;
     QString comment() override;

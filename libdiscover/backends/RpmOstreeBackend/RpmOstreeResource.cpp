@@ -451,9 +451,9 @@ QList<PackageState> RpmOstreeResource::addonsInformation()
     return QList<PackageState>();
 }
 
-QStringList RpmOstreeResource::categories()
+bool RpmOstreeResource::hasCategory(const QString &category) const
 {
-    return {};
+    return false;
 }
 
 bool RpmOstreeResource::isBooted()

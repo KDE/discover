@@ -237,9 +237,9 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
     Q_EMIT versionsChanged();
 }
 
-QStringList PackageKitResource::categories()
+bool PackageKitResource::hasCategory(const QString & /*category*/) const
 {
-    return {QStringLiteral("Unknown")};
+    return false;
 }
 
 AbstractResource::Type PackageKitResource::type() const

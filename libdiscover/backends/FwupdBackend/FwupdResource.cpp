@@ -36,9 +36,9 @@ QString FwupdResource::availableVersion() const
     return m_availableVersion;
 }
 
-QStringList FwupdResource::categories()
+bool FwupdResource::hasCategory(const QString &category) const
 {
-    return m_categories;
+    return m_categories.contains(category);
 }
 
 QString FwupdResource::comment()

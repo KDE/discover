@@ -65,7 +65,6 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(bool canExecute READ canExecute CONSTANT)
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
     Q_PROPERTY(QString status READ status NOTIFY stateChanged)
-    Q_PROPERTY(QStringList category READ categories CONSTANT)
     Q_PROPERTY(QUrl homepage READ homepage CONSTANT)
     Q_PROPERTY(QUrl helpURL READ helpURL CONSTANT)
     Q_PROPERTY(QUrl bugURL READ bugURL CONSTANT)
@@ -153,7 +152,7 @@ public:
 
     virtual State state() = 0;
 
-    virtual QStringList categories() = 0;
+    virtual bool hasCategory(const QString &category) const = 0;
     ///@returns a URL that points to the app's website
     virtual QUrl homepage();
     ///@returns a URL that points to the app's online documentation

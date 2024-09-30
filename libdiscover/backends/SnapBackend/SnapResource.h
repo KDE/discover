@@ -30,7 +30,7 @@ public:
     QString installedVersion() const override;
     QJsonArray licenses() override;
     quint64 size() override;
-    QStringList categories() override;
+    bool hasCategory(const QString &category) const override;
     AbstractResource::State state() override;
     QVariant icon() const override;
     QString comment() override;

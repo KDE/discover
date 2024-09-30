@@ -107,9 +107,9 @@ QString KNSResource::packageName() const
     return m_entry.uniqueId();
 }
 
-QStringList KNSResource::categories()
+bool KNSResource::hasCategory(const QString &category) const
 {
-    return m_categories;
+    return m_categories.contains(category);
 }
 
 QUrl KNSResource::homepage()

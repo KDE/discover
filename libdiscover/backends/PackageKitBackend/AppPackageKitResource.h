@@ -22,7 +22,7 @@ public:
     QString name() const override;
     QVariant icon() const override;
     QStringList mimetypes() const override;
-    QStringList categories() override;
+    bool hasCategory(const QString &category) const override;
     QString longDescription() override;
     QUrl url() const override;
     QUrl homepage() override;

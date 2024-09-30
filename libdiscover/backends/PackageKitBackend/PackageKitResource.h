@@ -31,7 +31,7 @@ public:
     QString longDescription() override;
     QUrl homepage() override;
     QVariant icon() const override;
-    QStringList categories() override;
+    bool hasCategory(const QString &category) const override;
     QJsonArray licenses() override;
     QString origin() const override;
     QString section() override;

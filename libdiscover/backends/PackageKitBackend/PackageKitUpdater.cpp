@@ -115,7 +115,7 @@ public:
     {
         return Upgradeable;
     }
-    QStringList categories() override
+    bool hasCategory(const QString &category) const override
     {
         return {};
     }

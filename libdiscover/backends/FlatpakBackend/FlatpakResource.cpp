@@ -199,12 +199,11 @@ void FlatpakResource::updateFromAppStream()
     updateFromRef(ref);
 }
 
-QStringList FlatpakResource::categories()
+bool FlatpakResource::hasCategory(const QString &category) const
 {
-    auto cats = m_appdata.categories();
-    if (m_appdata.kind() != AppStream::Component::KindAddon)
-        cats.append(QStringLiteral("Application"));
-    return cats;
+    if (m_appdata.kind() != AppStream::Component::KindAddon && category == QStringLiteral("Application"))
+        return true;
+    return m_appdata.hasCategory(category);
 }
 
 QString FlatpakResource::comment()

@@ -54,14 +54,20 @@ QString DummyResource::availableVersion() const
     return QStringLiteral("3.0");
 }
 
-QStringList DummyResource::categories()
+bool DummyResource::hasCategory(const QString &category) const
 {
-    return {QStringLiteral("dummy"), m_name.endsWith(QLatin1Char('3')) ? QStringLiteral("three") : QStringLiteral("notthree")};
+    if (category == QLatin1StringView("dummy"))
+        return true;
+    if (m_name.endsWith(u'3') && category == QLatin1StringView("three"))
+        return true;
+    else if (!m_name.endsWith(u'3') && category == QLatin1StringView("notthree"))
+        return true;
+    return false;
 }
 
 QString DummyResource::comment()
 {
-    return QStringLiteral("A reasonably short comment ") + name();
+    return QLatin1StringView("A reasonably short comment ") + name();
 }
 
 quint64 DummyResource::size()

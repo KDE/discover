@@ -108,7 +108,7 @@ public:
     QString arch() const;
     QString branch() const;
     bool canExecute() const override;
-    QStringList categories() override;
+    bool hasCategory(const QString &category) const override;
     QString comment() override;
     quint64 downloadSize() const;
     QVariant icon() const override;

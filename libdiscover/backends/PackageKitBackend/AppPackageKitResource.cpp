@@ -114,13 +114,11 @@ QStringList AppPackageKitResource::mimetypes() const
 
 static constexpr auto s_addonKinds = {AppStream::Component::KindAddon, AppStream::Component::KindCodec};
 
-QStringList AppPackageKitResource::categories()
+bool AppPackageKitResource::hasCategory(const QString &category) const
 {
-    auto cats = m_appdata.categories();
-    if (!kContainsValue(s_addonKinds, m_appdata.kind())) {
-        cats.append(QStringLiteral("Application"));
-    }
-    return cats;
+    if (m_appdata.kind() != AppStream::Component::KindAddon && category == QStringLiteral("Application"))
+        return true;
+    return m_appdata.hasCategory(category);
 }
 
 QString AppPackageKitResource::comment()

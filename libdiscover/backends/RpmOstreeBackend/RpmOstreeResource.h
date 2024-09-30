@@ -29,7 +29,7 @@ public:
     QString comment() override;
     QString name() const override;
     Q_SCRIPTABLE QString packageName() const override;
-    QStringList categories() override;
+    bool hasCategory(const QString &category) const override;
     QJsonArray licenses() override;
     QString longDescription() override;
     QList<PackageState> addonsInformation() override;

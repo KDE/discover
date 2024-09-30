@@ -93,9 +93,9 @@ QString SnapResource::availableVersion() const
     return installedVersion();
 }
 
-QStringList SnapResource::categories()
+bool SnapResource::hasCategory(const QString &category) const
 {
-    return {QStringLiteral("Application")};
+    return category == QLatin1StringView("Application");
 }
 
 QString SnapResource::comment()

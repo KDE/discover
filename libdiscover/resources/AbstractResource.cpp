@@ -155,7 +155,7 @@ static bool shouldFilter(AbstractResource *resource, const CategoryFilter &filte
     bool ret = true;
     switch (filter.type) {
     case CategoryFilter::CategoryNameFilter:
-        ret = resource->categories().contains(std::get<QString>(filter.value));
+        ret = resource->hasCategory(std::get<QString>(filter.value));
         break;
     case CategoryFilter::PkgSectionFilter:
         ret = resource->section() == std::get<QString>(filter.value);
