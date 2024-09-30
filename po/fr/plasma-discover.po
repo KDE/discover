@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 02:37+0000\n"
-"PO-Revision-Date: 2024-09-12 09:07+0200\n"
+"PO-Revision-Date: 2024-09-28 09:19+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -982,14 +982,13 @@ msgid "Update Issue"
 msgstr "Problème de mises à jour"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr ""
-"Il y a eu un problème durant l'installation de cette mise à jour. Veuillez "
-"essayer à nouveau plus tard."
+"Il y a eu un problème durant le processus de mise à jour ou d'installation. "
+"Veuillez essayer à nouveau plus tard."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format

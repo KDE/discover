@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 02:37+0000\n"
-"PO-Revision-Date: 2024-09-22 12:06+0200\n"
+"PO-Revision-Date: 2024-09-29 14:35+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -946,13 +946,13 @@ msgid "Update Issue"
 msgstr "Проблем с актуализацията"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr ""
-"Имаше проблем с инсталирането на тази актуализация. Моля, опитайте по-късно."
+"Имаше проблем с инсталирането или с процеса на актуализация. Моля, опитайте "
+"по-късно."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
