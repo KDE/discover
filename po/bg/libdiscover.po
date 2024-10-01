@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-24 00:40+0000\n"
+"POT-Creation-Date: 2024-10-01 00:40+0000\n"
 "PO-Revision-Date: 2024-09-29 14:39+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -585,7 +585,7 @@ msgstr "Няма източници на Flatpak."
 msgid "Failed to load \"%1\" source"
 msgstr "Неуспешно зареждане на източник '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:379
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:378
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -597,71 +597,71 @@ msgstr ""
 "софтуер в това хранилище също ще бъде достъпен в Discover, когато "
 "приложението бъде инсталирано.</para>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:471
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:470
 #, kde-format
 msgid "Retrieving size information"
 msgstr "Извличане на информация за размера"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:473
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:472
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:529
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:528
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:492
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "Неуспешно стартиране на '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:749
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:748
 #, kde-format
 msgid "All Files"
 msgstr "Всички файлове"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:751
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:750
 #, kde-format
 msgid "Home"
 msgstr "Начална страница"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:753
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:752
 #, kde-format
 msgid "Downloads"
 msgstr "Изтегляния"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:755
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:754
 #, kde-format
 msgid "Music"
 msgstr "Музика"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
 msgid "Network Access"
 msgstr "Мрежов достъп"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:831
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
 #, kde-format
 msgid "Can access the internet"
 msgstr "Може да се свързва с интернет"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Sound system access"
 msgstr "Достъп до системния звук"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
 #, kde-format
 msgid "Can play audio"
 msgstr "Може да използва аудиото"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:845
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:989
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:988
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Достъп до сесийния Bus"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:846
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:845
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
@@ -670,53 +670,53 @@ msgstr ""
 "Може да комуникира с всички други приложения и процеси в тази потребителска "
 "сесия"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1001
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1000
 #, kde-format
 msgid "System Bus Access"
 msgstr "Достъп до системния Bus"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr "Може да комуникира с всички други приложения и процеси на системата"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:857
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Отдалечен достъп"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:857
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "Може да инициира заявки за отдалечено влизане чрез протокола SSH"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:861
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Достъп със смарт карта"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:862
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "Може да се интегрира и комуникира със смарт карти"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:866
 #, kde-format
 msgid "Printer Access"
 msgstr "Достъп до принтер"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:867
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "Може да се интегрира и комуникира с принтер"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:872
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:871
 #, kde-format
 msgid "GPG Agent"
 msgstr "Агент GPG"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:873
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:872
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -725,74 +725,74 @@ msgstr ""
 "Позволява достъп до криптографската услуга GPG, която обикновено се използва "
 "за подписване и четене на подписани документи"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:879
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:878
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "Достъп до Bluetooth"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:880
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:879
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "Може да се интегрира и комуникира с Bluetooth устройства"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:884
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:883
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "Системен достъп на ниско ниво"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:885
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:884
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "Може да извършва системни извиквания на ниско ниво (напр. ptrace)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:891
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:890
 #, kde-format
 msgid "Device Access"
 msgstr "Достъп до устройства"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:892
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:891
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
 "Може да комуникира с вградени или свързани хардуерни устройства и да ги "
 "управлява"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:896
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Достъп до Kernel базирани виртуални машини"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:896
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr ""
 "Позволява стартирането на други операционни системи като гости във виртуални "
 "машини"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:924
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:936
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:923
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (само за четене)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:927
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:939
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:926
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:938
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (може да създава файлове)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:930
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:948
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (четене и запис) "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:957
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:956
 #, kde-format
 msgid "Home Folder Access"
 msgstr "Достъп до домашна папка"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:960
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:959
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -801,7 +801,7 @@ msgstr ""
 "Може да чете, записва и създава файлове на следните места в домашната папка, "
 "без да иска разрешение: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:962
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:961
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -810,7 +810,7 @@ msgstr ""
 "Може да чете и записва файлове на следните места в домашната папка, без да "
 "иска първо разрешение: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:964
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:963
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -819,7 +819,7 @@ msgstr ""
 "Може да чете файлове на следните места в домашната папка, без да иска първо "
 "разрешение: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:966
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -828,12 +828,12 @@ msgstr ""
 "Може да има достъп до файлове на следните места в домашната папка, без да "
 "иска първо разрешение: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:972
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
 msgid "System Folder Access"
 msgstr "Достъп до системните папки"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:974
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -842,7 +842,7 @@ msgstr ""
 "Може да чете, записва и създава системни файлове на следните места без да "
 "иска разрешение: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:976
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:975
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -851,7 +851,7 @@ msgstr ""
 "Може да чете и записва системни файлове на следните места без да иска първо "
 "разрешение: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:978
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:977
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
@@ -860,7 +860,7 @@ msgstr ""
 "Може да чете системни файлове на следните места без да иска първо "
 "разрешение: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:980
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:979
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
@@ -869,7 +869,7 @@ msgstr ""
 "Може да има достъп до системни файлове на следните места без да иска първо "
 "разрешение: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:991
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:990
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -878,7 +878,7 @@ msgstr ""
 "Може да комуникира с други приложения и процеси в същата сесия, използвайки "
 "следните комуникационни протоколи: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1003
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1002
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
@@ -1172,7 +1172,7 @@ msgstr "Магазин KDE"
 msgid "Log in information for %1"
 msgstr "Информация за влизане на %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:249
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:247
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Не може да се стартира %1"
