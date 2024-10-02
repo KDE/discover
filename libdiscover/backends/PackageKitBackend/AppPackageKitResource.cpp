@@ -258,8 +258,8 @@ QString AppPackageKitResource::versionString()
 
 QDate AppPackageKitResource::releaseDate() const
 {
-    if (!m_appdata.releasesPlain().isEmpty()) {
-        const auto release = m_appdata.releasesPlain().indexSafe(0).value();
+    if (const auto releases = m_appdata.releasesPlain(); !releases.isEmpty()) {
+        auto release = releases.indexSafe(0).value();
         return release.timestamp().date();
     }
 

@@ -315,10 +315,11 @@ QString AlpineApkResource::sourceIcon() const
 QDate AlpineApkResource::releaseDate() const
 {
     if (hasAppStreamData()) {
-        if (!m_appsC.releasesPlain().isEmpty()) {
-            auto release = m_appsC.releasesPlain().indexSafe(0);
-            if (release)
+        if (const auto releases = m_appsC.releasesPlain(); !releases.isEmpty()) {
+            auto release = releases.indexSafe(0);
+            if (release) {
                 return release->timestamp().date();
+            }
         }
     }
     // just build date is fine, too

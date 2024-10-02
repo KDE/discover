@@ -669,9 +669,11 @@ QUrl FlatpakResource::url() const
 
 QDate FlatpakResource::releaseDate() const
 {
-    if (!m_appdata.releasesPlain().isEmpty()) {
-        auto release = m_appdata.releasesPlain().indexSafe(0).value();
-        return release.timestamp().date();
+    if (const auto releases = m_appdata.releasesPlain(); !releases.isEmpty()) {
+        auto release = releases.indexSafe(0);
+        if (release) {
+            return release->timestamp().date();
+        }
     }
 
     return {};
