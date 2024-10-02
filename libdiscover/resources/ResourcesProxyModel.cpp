@@ -543,6 +543,17 @@ QVariant ResourcesProxyModel::data(const QModelIndex &index, int role) const
     return roleToValue(result, role);
 }
 
+QHash<int, int> ResourcesProxyModel::createRoleToProperty()
+{
+    QHash<int, int> ret;
+    static const QMetaObject *m = &AbstractResource::staticMetaObject;
+    for (const auto &[role, roleText] : ResourcesProxyModel::s_roles.asKeyValueRange()) {
+        int propidx = roleText.isEmpty() ? -1 : m->indexOfProperty(roleText.constData());
+        ret.insert(role, propidx);
+    }
+    return ret;
+}
+
 QVariant ResourcesProxyModel::roleToValue(const StreamResult &result, int role) const
 {
     const auto resource = result.resource;
@@ -589,19 +600,13 @@ QVariant ResourcesProxyModel::roleToValue(const StreamResult &result, int role) 
     case Qt::ToolTipRole:
         return {};
     default: {
-        QByteArray roleText = roleNames().value(role);
-        if (Q_UNLIKELY(roleText.isEmpty())) {
-            qCDebug(LIBDISCOVER_LOG) << "unsupported role" << role;
-            return {};
-        }
-        static const QMetaObject *m = &AbstractResource::staticMetaObject;
-        int propidx = roleText.isEmpty() ? -1 : m->indexOfProperty(roleText.constData());
-
+        static QHash<int, int> s_roleToProperty = createRoleToProperty();
+        const int propidx = s_roleToProperty[role];
         if (Q_UNLIKELY(propidx < 0)) {
-            qCWarning(LIBDISCOVER_LOG) << "unknown role:" << role << roleText;
+            qCWarning(LIBDISCOVER_LOG) << "unknown role:" << role << roleNames()[role];
             return {};
         } else {
-            return m->property(propidx).read(resource);
+            return AbstractResource::staticMetaObject.property(propidx).read(resource);
         }
     }
     }

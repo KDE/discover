@@ -189,6 +189,7 @@ private:
 
     QVector<StreamResult> m_displayedResources;
     static const QHash<int, QByteArray> s_roles;
+    static QHash<int, int> createRoleToProperty();
     ResultsStream *m_currentStream;
     QTimer m_countTimer;
 
