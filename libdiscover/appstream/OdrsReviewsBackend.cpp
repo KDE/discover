@@ -191,7 +191,7 @@ Rating OdrsReviewsBackend::ratingForApplication(AbstractResource *resource) cons
         return {};
     }
 
-    return m_ratings[resource->appstreamId()];
+    return m_current.ratings[resource->appstreamId()];
 }
 
 void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
@@ -290,34 +290,17 @@ void OdrsReviewsBackend::reviewSubmitted(QNetworkReply *reply)
 
 void OdrsReviewsBackend::parseRatings()
 {
-    auto fw = new QFutureWatcher<QHash<QString, Rating>>(this);
-    connect(fw, &QFutureWatcher<QHash<QString, Rating>>::finished, this, [this, fw] {
+    auto fw = new QFutureWatcher<State>(this);
+    connect(fw, &QFutureWatcher<State>::finished, this, [this, fw] {
         fw->deleteLater();
-        m_ratings = fw->result();
-        for (auto it = m_ratings.begin(); it != m_ratings.end(); it++) {
-            const auto rating = it.value();
-            const auto finder = [&rating](const Rating &review) {
-                return review.ratingPoints() < rating.ratingPoints();
-            };
-            const auto topIt = std::find_if(m_top.begin(), m_top.end(), finder);
-            if (topIt == m_top.end()) {
-                if (m_top.size() < 25) {
-                    m_top.append(rating);
-                }
-            } else {
-                m_top.insert(topIt, rating);
-            }
-            if (m_top.size() > 25) {
-                m_top.resize(25);
-            }
-        }
+        m_current = fw->result();
         Q_EMIT ratingsReady();
     });
-    fw->setFuture(QtConcurrent::run([] {
+    fw->setFuture(QtConcurrent::run([]() -> State {
         QFile ratingsDocument(QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1StringView("/ratings/ratings"));
         if (!ratingsDocument.open(QIODevice::ReadOnly)) {
             qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Could not open file" << ratingsDocument.fileName();
-            return QHash<QString, Rating>{};
+            return {};
         }
 
         QJsonParseError error;
@@ -326,9 +309,10 @@ void OdrsReviewsBackend::parseRatings()
             qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Error parsing ratings:" << ratingsDocument.errorString() << error.errorString();
         }
 
-        QHash<QString, Rating> ratings;
+        State state;
         const auto jsonObject = jsonDocument.object();
-        ratings.reserve(jsonObject.size());
+        state.ratings.reserve(jsonObject.size());
+        constexpr uint topSize = 25;
         for (auto it = jsonObject.begin(); it != jsonObject.end(); it++) {
             const auto appJsonObject = it.value().toObject();
 
@@ -343,9 +327,24 @@ void OdrsReviewsBackend::parseRatings()
             };
 
             const auto rating = Rating(it.key(), ratingCount, ratingMap);
-            ratings.insert(it.key(), rating);
+            const auto finder = [&rating](const Rating &review) {
+                return review.ratingPoints() < rating.ratingPoints();
+            };
+            const auto topIt = std::find_if(state.top.begin(), state.top.end(), finder);
+            if (topIt == state.top.end()) {
+                if (state.top.size() < topSize) {
+                    state.top.append(rating);
+                }
+            } else {
+                state.top.insert(topIt, rating);
+            }
+            if (state.top.size() > topSize) {
+                state.top.resize(topSize);
+            }
+
+            state.ratings.insert(it.key(), rating);
         }
-        return ratings;
+        return state;
     }));
 }
 
@@ -445,7 +444,7 @@ void OdrsReviewsBackend::emitRatingFetched(AbstractResourcesBackend *backend, co
 {
     backend->emitRatingsReady();
     for (const auto resource : resources) {
-        if (m_ratings.contains(resource->appstreamId())) {
+        if (m_current.ratings.contains(resource->appstreamId())) {
             Q_EMIT resource->ratingFetched();
         }
     }

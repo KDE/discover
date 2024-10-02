@@ -66,7 +66,7 @@ public:
 
     const QList<Rating> &top() const
     {
-        return m_top;
+        return m_current.top;
     }
 
 private Q_SLOTS:
@@ -90,9 +90,11 @@ private:
     void parseReviews(const QJsonDocument &document, AbstractResource *resource);
 
     QString m_errorMessage;
-    QHash<QString, Rating> m_ratings;
     bool m_isFetching = false;
     CachedNetworkAccessManager *m_delayedNam = nullptr;
 
-    QList<Rating> m_top;
+    struct State {
+        QHash<QString, Rating> ratings;
+        QList<Rating> top;
+    } m_current;
 };
