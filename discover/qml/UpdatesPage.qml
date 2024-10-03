@@ -218,7 +218,7 @@ DiscoverPage {
         QQC2.ToolBar {
             id: footerToolbar
             Layout.fillWidth: true
-            visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || updateModel.hasUpdates
+            visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || (!Discover.ResourcesModel.isFetching && updateModel.hasUpdates)
 
             position: QQC2.ToolBar.Footer
 
