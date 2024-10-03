@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 02:37+0000\n"
-"PO-Revision-Date: 2024-09-17 07:35+0900\n"
+"PO-Revision-Date: 2024-10-02 17:18+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -910,12 +910,11 @@ msgid "Update Issue"
 msgstr "更新時遇到問題"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
-msgstr "安裝更新時遇到問題，請稍後重試"
+msgstr "進行更新或安裝時遇到問題。請稍候再試。"
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
@@ -1341,7 +1340,7 @@ msgstr "增加優先度"
 #: discover/qml/SourcesPage.qml:254
 #, kde-format
 msgid "Failed to increase '%1' preference"
-msgstr "無法增加「%1」設定"
+msgstr "無法增加「%1」優先度"
 
 #: discover/qml/SourcesPage.qml:260
 #, kde-format
@@ -1351,7 +1350,7 @@ msgstr "降低優先度"
 #: discover/qml/SourcesPage.qml:266
 #, kde-format
 msgid "Failed to decrease '%1' preference"
-msgstr "無法移除「%1」設定"
+msgstr "無法移除「%1」優先度"
 
 #: discover/qml/SourcesPage.qml:272
 #, kde-format
@@ -1381,7 +1380,7 @@ msgstr "技術細節"
 #: discover/qml/UpdatesPage.qml:63
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
-msgstr "安裝更新時遇到問題，請稍後重試"
+msgstr "安裝更新時遇到問題，請稍候再試。"
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format
