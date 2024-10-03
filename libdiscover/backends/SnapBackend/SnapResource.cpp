@@ -569,7 +569,7 @@ public:
         for (auto track : s->tracks()) {
             for (const auto &risk : risks) {
                 auto channel = s->matchChannel(track + QLatin1Char('/') + risk);
-                if (!tempChannels.contains(channel->name())){
+                if (channel && !tempChannels.contains(channel->name())) {
                     m_channels << channel;
                     tempChannels << channel->name();
                 }
