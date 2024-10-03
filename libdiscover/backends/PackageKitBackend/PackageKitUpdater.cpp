@@ -115,7 +115,7 @@ public:
     {
         return Upgradeable;
     }
-    bool hasCategory(const QString &category) const override
+    bool hasCategory(const QString & /*category*/) const override
     {
         return {};
     }
