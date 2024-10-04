@@ -102,11 +102,6 @@ public:
         return m_isDeviceLocked;
     }
 
-    bool isOnlyOffline() const
-    {
-        return m_isOnlyOffline;
-    }
-
     bool isLiveUpdatable() const
     {
         return m_isLiveUpdatable;
@@ -146,7 +141,6 @@ private:
 
     QString m_updateURI;
     bool m_isDeviceLocked = false; // True if device is locked!
-    bool m_isOnlyOffline = false; // True if only offline updates
     bool m_isLiveUpdatable = false; // True if device is live updatable
     bool m_needsReboot = false; // True if device needs Reboot
     QString m_origin;
