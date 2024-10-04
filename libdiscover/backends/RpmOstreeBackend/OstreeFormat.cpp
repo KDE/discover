@@ -14,12 +14,16 @@ OstreeFormat::OstreeFormat(Format format, const QString &source)
 
     switch (format) {
     // Using classic ostree image format
-    // Example: fedora:fedora/38/x86_64/kinoite
+    // Examples:
+    // fedora:fedora/38/x86_64/kinoite
+    // fedora/38/x86_64/kinoite
     case Format::Classic: {
         // Get remote and ref from the ostree source
         auto split_ref = source.split(QLatin1Char(':'));
         if (split_ref.length() != 2) {
             // Unknown or invalid format
+            m_remote = QString();
+            m_branch = source;
             return;
         }
         m_remote = split_ref[0];

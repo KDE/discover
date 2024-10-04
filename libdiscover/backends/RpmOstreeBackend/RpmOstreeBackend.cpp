@@ -249,6 +249,14 @@ void RpmOstreeBackend::checkForUpdates()
     if (!m_currentlyBootedDeployment) {
         // Should never happen
         qWarning() << "rpm-ostree-backend: Called checkForUpdates before the backend is done getting deployments. File a bug to your distribution.";
+        setFetching(false);
+        return;
+    }
+
+    if (!m_currentlyBootedDeployment->isClassic() && !m_currentlyBootedDeployment->isOCI()) {
+        // May happen, but there is nothing we can do here
+        qWarning() << "rpm-ostree-backend: Ignoring update checks for unknown ostree format.";
+        setFetching(false);
         return;
     }
 
