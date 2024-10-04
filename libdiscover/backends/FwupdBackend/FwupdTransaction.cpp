@@ -83,10 +83,6 @@ void FwupdTransaction::fwupdInstall(const QString &file)
     FwupdInstallFlags install_flags = FWUPD_INSTALL_FLAG_NONE;
     g_autoptr(GError) error = nullptr;
 
-    /* only offline supported */
-    if (m_app->isOnlyOffline())
-        install_flags = static_cast<FwupdInstallFlags>(install_flags | FWUPD_INSTALL_FLAG_OFFLINE);
-
     if (!fwupd_client_install(m_backend->client, m_app->deviceId().toUtf8().constData(), file.toUtf8().constData(), install_flags, nullptr, &error)) {
         m_backend->handleError(error);
         setStatus(DoneWithErrorStatus);

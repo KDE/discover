@@ -173,7 +173,6 @@ void FwupdResource::setReleaseDetails(FwupdRelease *release)
 void FwupdResource::setDeviceDetails(FwupdDevice *dev)
 {
     m_isLiveUpdatable = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_UPDATABLE);
-    m_isOnlyOffline = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_ONLY_OFFLINE);
     m_needsReboot = fwupd_device_has_flag(dev, FWUPD_DEVICE_FLAG_NEEDS_REBOOT);
 
     if (fwupd_device_get_name(dev)) {
