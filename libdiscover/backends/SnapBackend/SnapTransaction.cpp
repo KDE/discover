@@ -13,8 +13,6 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QProcess>
-#include <QTimer>
-#include <Snapd/Request>
 
 SnapTransaction::SnapTransaction(QSnapdClient *client, SnapResource *app, Role role, AbstractResource::State newState)
     : Transaction(app, app, role)
@@ -113,22 +111,50 @@ void SnapTransaction::setRequest(QSnapdRequest *req)
 
 void SnapTransaction::progressed()
 {
+    Status status = SetupStatus;
     const auto change = m_request->change();
-    int percentage = 0, count = 0;
+    int percentage = 0, downloadTaskPos = 0;
+    qint64 totalProgressDone = 0, progressTotal = 0;
 
-    auto status = SetupStatus;
     for (int i = 0, c = change->taskCount(); i < c; ++i) {
-        ++count;
         auto task = change->task(i);
         if (task->kind() == QLatin1String("download-snap")) {
-            status = task->status() == QLatin1String("doing") || task->status() == QLatin1String("do") ? DownloadingStatus : CommittingStatus;
-        } else if (task->kind() == QLatin1String("clear-snap")) {
+            downloadTaskPos = i;
+        } else if ((task->status() != QLatin1String("Doing") || task->status() == QLatin1String("Do")) && task->kind() != QLatin1String("download-snap")) {
             status = CommittingStatus;
         }
-        percentage += (100 * task->progressDone()) / task->progressTotal();
+        if (!task->progressLabel().isEmpty()) {
+            totalProgressDone += task->progressDone();
+            progressTotal += task->progressTotal();
+        }
     }
-    setProgress(percentage / qMax(count, 1));
+    percentage = (progressTotal > 0) ? (100 * totalProgressDone / progressTotal) : 0;
+    setProgress(percentage);
+    QSnapdTask *downloadTask = change->task(downloadTaskPos);
+    if (downloadTask->status() == QLatin1String("Doing")) {
+        status = DownloadingStatus;
+        setSpeed(downloadTask);
+    }
     setStatus(status);
+}
+
+void SnapTransaction::setSpeed(QSnapdTask *downloadTask)
+{
+    auto totalDownloadDone = downloadTask->progressDone();
+    if (!m_downloadTimer.isValid()) {
+        m_downloadTimer.start();
+        m_lastProgressDone = totalDownloadDone;
+    } else {
+        qint64 elapsed = m_downloadTimer.elapsed();
+        if (elapsed > 0) {
+            qint64 deltaProgress = totalDownloadDone - m_lastProgressDone;
+            qint64 speed = (deltaProgress * 1000) / elapsed;
+            setDownloadSpeed(speed);
+
+            m_downloadTimer.restart();
+            m_lastProgressDone = totalDownloadDone;
+        }
+    }
 }
 
 #include "moc_SnapTransaction.cpp"

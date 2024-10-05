@@ -6,7 +6,9 @@
 
 #pragma once
 
+#include <QElapsedTimer>
 #include <QPointer>
+#include <Snapd/Request>
 #include <Transaction/Transaction.h>
 #include <resources/AbstractResource.h>
 
@@ -29,9 +31,12 @@ private Q_SLOTS:
 private:
     void setRequest(QSnapdRequest *req);
     void progressed();
+    void setSpeed(QSnapdTask *downloadTask);
 
     QSnapdClient *const m_client;
     SnapResource *const m_app;
     QScopedPointer<QSnapdRequest> m_request;
     const AbstractResource::State m_newState;
+    QElapsedTimer m_downloadTimer;
+    qint64 m_lastProgressDone = 0;
 };
