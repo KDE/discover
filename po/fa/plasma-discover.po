@@ -1,0 +1,1588 @@
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the discover package.
+#
+# SPDX-FileCopyrightText: 2024 Alireza <injaneb@dock.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: discover\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-09-27 02:37+0000\n"
+"PO-Revision-Date: 2024-09-16 22:27+0330\n"
+"Last-Translator: Alireza Rashidi <injaneb@dock.com>\n"
+"Language-Team: Persian\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 24.08.1\n"
+
+#: discover/DiscoverObject.cpp:182
+#, kde-format
+msgctxt "@title %1 is the distro name"
+msgid ""
+"%1 is not configured for installing apps through Discover—only app add-ons"
+msgstr ""
+"%1 برای نصب برنامه‌ها از طریق فروشگاه پیکربندی نشده است—تنها افزونه‌های برنامه"
+
+#: discover/DiscoverObject.cpp:184
+#, kde-kuit-format
+msgctxt "@info:usagetip %1 is the distro name"
+msgid ""
+"To use Discover for apps, install your preferred module on the "
+"<interface>Settings</interface> page, under <interface>Missing Backends</"
+"interface>."
+msgstr ""
+"برای بکاربردن فروشگاه برای برنامه‌ها، پیمانه مورد نظرتان را در صفحه "
+"<interface>تنظیمات</interface>، زیر <interface>هسته‌های گمشده</interface> نصب "
+"کنید."
+
+#: discover/DiscoverObject.cpp:187
+#, kde-format
+msgctxt "@action:button %1 is the distro name"
+msgid "Report This Issue to %1"
+msgstr "این مشکل را به %1 گزارش دهید"
+
+#: discover/DiscoverObject.cpp:192
+#, kde-kuit-format
+msgctxt ""
+"@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
+"Linux'"
+msgid ""
+"To use Discover for apps, install <link url='https://wiki.archlinux.org/"
+"title/Flatpak#Installation'>Flatpak</link> using the <command>pacman</"
+"command> package manager.<nl/><nl/> Review <link url='https://archlinux.org/"
+"packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
+msgstr ""
+"برای بکاربردن فروشگاه برای برنامه‌ها، <link url='https://wiki.archlinux.org/"
+"title/فلت‌پک#Installation'>فلت‌پک</link> را با مدیر بسته <command> pacman</"
+"command> نصب کنید.<nl/><nl/> بسته‌بندی %1 برای فروشگاه را بررسی کنید."
+
+#: discover/DiscoverObject.cpp:205
+#, kde-kuit-format
+msgctxt "@info:usagetip %1 is the distro name"
+msgid ""
+"Support for managing packages from %1 is incomplete; you may experience any "
+"number of problems. Do not report bugs to KDE. It is highly recommended to "
+"uninstall the <resource>packagekit-qt6</resource> package and use Discover "
+"only to manage Flatpaks, Snaps, and Add-Ons.<para>%1 maintainers recommended "
+"instead using the <command>pacman</command> command-line tool to manage "
+"packages.</para>"
+msgstr ""
+"پشتیبانی از مدیریت بسته‌ها از %1 ناقص است؛ ممکن است با مشکلاتی مواجه شوید. "
+"لطفاً باگ‌ها را به KDE گزارش ندهید. به شدت توصیه می‌شود که بسته "
+"<resource>packagekit-qt6</resource> را پاک کنید و تنها فروشگاه را برای "
+"مدیریت فلت‌پک، اسنپ و افزونه‌ها بکار ببرید.<para>نگهدارندگان %1 توصیه می‌کنند "
+"که به جای آن از ابزار خط فرمان <command>pacman</command> را برای مدیریت "
+"بسته‌ها بکار ببرید.</para>"
+
+#: discover/DiscoverObject.cpp:293
+#, kde-format
+msgid "Could not find category '%1'"
+msgstr "نمیتوان دسته‌بندی '%1' را پیدا کرد"
+
+#: discover/DiscoverObject.cpp:308
+#, kde-format
+msgid "Trying to open inexisting file '%1'"
+msgstr "در حال تلاش برای باز کردن پرونده ناموجود '%1'"
+
+#: discover/DiscoverObject.cpp:330
+#, kde-format
+msgid ""
+"Cannot interact with flatpak resources without the flatpak backend %1. "
+"Please install it first."
+msgstr ""
+"نمیتوان با منابع فلت‌پک بدون هسته فلت‌پک %1 تعامل کرد. لطفاً ابتدا آن را نصب "
+"کنید."
+
+#: discover/DiscoverObject.cpp:334
+#, kde-format
+msgid "Could not open %1"
+msgstr "نمیتوان %1 را باز کرد"
+
+#: discover/DiscoverObject.cpp:396
+#, kde-format
+msgid "Please make sure Snap support is installed"
+msgstr "لطفاً اطمینان حاصل کنید که پشتیبانی از اسنپ نصب شده است"
+
+#: discover/DiscoverObject.cpp:399
+#, kde-format
+msgid ""
+"Could not open %1 because it was not found in any available software "
+"repositories."
+msgstr "نتوانستم %1 را باز کنم زیرا در هیچ یک از مخازن برنامه‌ی موجود پیدا نشد."
+
+#: discover/DiscoverObject.cpp:403
+#, kde-format
+msgid "Please report this issue to the packagers of your distribution."
+msgstr "لطفاً این مشکل را به بسته‌بندی‌کنندگان توزیع خود گزارش دهید."
+
+#: discover/DiscoverObject.cpp:406
+#, kde-format
+msgid "Report This Issue"
+msgstr "این مشکل را گزارش دهید"
+
+#: discover/DiscoverObject.cpp:468 discover/DiscoverObject.cpp:470
+#: discover/main.cpp:118
+#, kde-format
+msgid "Discover"
+msgstr "فروشگاه برنامه"
+
+#: discover/DiscoverObject.cpp:471
+#, kde-format
+msgid ""
+"Discover was closed before certain tasks were done, waiting for it to finish."
+msgstr "فروشگاه قبل از انجام برخی وظایف بسته شد و منتظر است تا به پایان برسند."
+
+#: discover/main.cpp:34
+#, kde-format
+msgid "Directly open the specified application by its appstream:// URI."
+msgstr "برنامه مشخص شده را مستقیماً با appstream:// URI آن باز کنید."
+
+#: discover/main.cpp:35
+#, kde-format
+msgid "Open with a search for programs that can deal with the given mimetype."
+msgstr ""
+"با یافتن برای برنامه‌هایی که می‌توانند با نوع MIME داده شده کار کنند، باز کنید."
+
+#: discover/main.cpp:36
+#, kde-format
+msgid "Display a list of entries with a category."
+msgstr "فهرستی از ورودی‌ها با یک دسته‌بندی نمایش میدهد."
+
+#: discover/main.cpp:37
+#, kde-format
+msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
+msgstr ""
+"فروشگاه را در حالتی که گفته شده باز کنید. حالت‌ها با دکمه‌های نوار ابزار "
+"هم‌خوانی دارند."
+
+#: discover/main.cpp:38
+#, kde-format
+msgid "List all the available modes."
+msgstr "تمام حالت‌های موجود را فهرست کنید."
+
+#: discover/main.cpp:39
+#, kde-format
+msgid "Local package file to install"
+msgstr "پرونده بسته محلی برای نصب"
+
+#: discover/main.cpp:40
+#, kde-format
+msgid "List all the available backends."
+msgstr "تمام هسته‌های موجود را فهرست کنید."
+
+#: discover/main.cpp:41
+#, kde-format
+msgid "Search string."
+msgstr "یافتن متن."
+
+#: discover/main.cpp:42
+#, kde-format
+msgid "Lists the available options for user feedback"
+msgstr "گزینه‌های موجود برای بازخورد کاربر را فهرست می‌کند"
+
+#: discover/main.cpp:44
+#, kde-format
+msgid "Supports appstream: url scheme"
+msgstr "از طرح URL :appstream پشتیبانی می‌کند"
+
+#: discover/main.cpp:120
+#, kde-format
+msgid "An application explorer"
+msgstr "یک کاوشگر برنامه"
+
+#: discover/main.cpp:122
+#, kde-format
+msgid "© 2010-2024 Plasma Development Team"
+msgstr "© 2010-2024 گروه توسعه پلاسما"
+
+#: discover/main.cpp:123
+#, kde-format
+msgid "Aleix Pol Gonzalez"
+msgstr "Aleix Pol Gonzalez"
+
+#: discover/main.cpp:124
+#, kde-format
+msgid "Nate Graham"
+msgstr "Nate Graham"
+
+#: discover/main.cpp:125
+#, kde-format
+msgid "Quality Assurance, Design and Usability"
+msgstr "تضمین کیفیت، طراحی و کاربرد پذیری"
+
+#: discover/main.cpp:129
+#, kde-format
+msgid "Dan Leinir Turthra Jensen"
+msgstr "Dan Leinir Turthra Jensen"
+
+#: discover/main.cpp:130
+#, kde-format
+msgid "KNewStuff"
+msgstr "KNewStuff"
+
+#: discover/main.cpp:137
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "علیرضا رشیدی"
+
+#: discover/main.cpp:137
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "injaneb@duck.com"
+
+#: discover/main.cpp:150
+#, kde-format
+msgid "Available backends:\n"
+msgstr "هسته‌های موجود:\n"
+
+#: discover/main.cpp:203
+#, kde-format
+msgid "Available modes:\n"
+msgstr "حالت‌های موجود:\n"
+
+#: discover/qml/AddonsView.qml:28 discover/qml/Navigation.qml:58
+#, kde-format
+msgid "Addons for %1"
+msgstr "افزونه‌های %1"
+
+#: discover/qml/AddonsView.qml:80
+#, kde-format
+msgid "More…"
+msgstr "بیشتر…"
+
+#: discover/qml/AddonsView.qml:89
+#, kde-format
+msgid "Apply Changes"
+msgstr "بکارگیری تغییرات"
+
+#: discover/qml/AddonsView.qml:97
+#, kde-format
+msgid "Reset"
+msgstr "بازنشانی"
+
+#: discover/qml/AddSourceDialog.qml:21
+#, kde-format
+msgid "Add New %1 Repository"
+msgstr "مخزن جدید %1 را اضافه کنید"
+
+#: discover/qml/AddSourceDialog.qml:45
+#, kde-format
+msgid "Add"
+msgstr "افزودن"
+
+#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
+#: discover/qml/InstallApplicationButton.qml:46
+#: discover/qml/ProgressView.qml:139 discover/qml/SourcesPage.qml:201
+#: discover/qml/UpdatesPage.qml:281 discover/qml/WebflowDialog.qml:41
+#, kde-format
+msgid "Cancel"
+msgstr "رد کردن"
+
+#: discover/qml/ApplicationDelegate.qml:177
+#: discover/qml/ApplicationPage.qml:339
+#, kde-format
+msgid "%1 rating"
+msgid_plural "%1 ratings"
+msgstr[0] "%1 امتیاز"
+msgstr[1] "%1 امتیاز"
+
+#: discover/qml/ApplicationDelegate.qml:177
+#: discover/qml/ApplicationPage.qml:339
+#, kde-format
+msgid "No ratings yet"
+msgstr "هنوز امتیازی ثبت نشده"
+
+#: discover/qml/ApplicationPage.qml:66
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Only install %1 if you fully trust its authors because it is "
+#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
+#| "redistribute this application is restricted, and its source code is "
+#| "partially or entirely closed to public inspection and improvement. This "
+#| "means third parties and users like you cannot verify its operation, "
+#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
+#| "safe to use, or it may be acting against you in various ways — such as "
+#| "harvesting your personal information, tracking your location, or "
+#| "transmitting the contents of your data to someone else. Only use it if "
+#| "you fully trust its authors. More information may be available on <link "
+#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
+#| "url='%3'>%3</link>."
+msgctxt "@info"
+msgid ""
+"Only install %1 if you fully trust its authors because it is <emphasis "
+"strong='true'>proprietary</emphasis>: Your freedom to use, modify, and "
+"redistribute this application is restricted, and its source code is "
+"partially or entirely closed to public inspection and improvement. This "
+"means third parties and users like you cannot verify its operation, "
+"security, and trustworthiness.<nl/><nl/>The application may be perfectly "
+"safe to use, or it may be acting against you in various ways — such as "
+"harvesting your personal information, tracking your location, or "
+"transmitting the contents of your data to someone else. Only use it if you "
+"fully trust its authors. More information may be available on <link "
+"url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
+"url='%3'>%3</link>."
+msgstr ""
+"تنها زمانی %1 را نصب کنید که به طور کامل به نویسندگان آن اعتماد دارید زیرا "
+"این برنامه <strong>مالکیتی</strong> است: آزادی شما برای بکاربردن، تغییر و "
+"توزیع این برنامه محدود است و کد منبع آن به طور جزئی یا کامل به روی بازبینی و "
+"بهبود عمومی بسته شده. این بدان معناست که اشخاص ثالث و کاربرانی مانند شما "
+"نمیتوانند عملکرد، امنیت و اعتبار آن را تأیید کنند.<nl/><nl/>این برنامه ممکن "
+"است کاملاً ایمن باشد، یا ممکن است به روش های مختلف ضد شما برخورد کند — مانند "
+"جمع‌آوری داده‌ها شخصی شما، ردیابی مکان شما، یا جابه‌جایی داده‌های شما به دیگری. "
+"تنها در صورتی آن را بکار ببرید که به طور کامل به نویسندگان آن اعتماد دارید. "
+"داده‌های بیشتر ممکن است در <link url='%2'>تارنما برنامه</link> موجود باشد.<nl/"
+"><nl/> بیشتر بیاموزید در <link url='%3'>%3</link>."
+
+#: discover/qml/ApplicationPage.qml:71
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Only install %1 if you fully trust its authors because it is "
+#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
+#| "redistribute this application is restricted, and its source code is "
+#| "partially or entirely closed to public inspection and improvement. This "
+#| "means third parties and users like you cannot verify its operation, "
+#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
+#| "safe to use, or it may be acting against you in various ways — such as "
+#| "harvesting your personal information, tracking your location, or "
+#| "transmitting the contents of your data to someone else. Only use it if "
+#| "you fully trust its authors. Learn more at <link url='%2'>%2</link>."
+msgctxt "@info"
+msgid ""
+"Only install %1 if you fully trust its authors because it is <emphasis "
+"strong='true'>proprietary</emphasis>: Your freedom to use, modify, and "
+"redistribute this application is restricted, and its source code is "
+"partially or entirely closed to public inspection and improvement. This "
+"means third parties and users like you cannot verify its operation, "
+"security, and trustworthiness.<nl/><nl/>The application may be perfectly "
+"safe to use, or it may be acting against you in various ways — such as "
+"harvesting your personal information, tracking your location, or "
+"transmitting the contents of your data to someone else. Only use it if you "
+"fully trust its authors. Learn more at <link url='%2'>%2</link>."
+msgstr ""
+"تنها زمانی %1 را نصب کنید که به طور کامل به نویسندگان آن اعتماد دارید زیرا "
+"این برنامه <strong>مالکیتی</strong> است: آزادی شما برای بکاربردن، تغییر و "
+"توزیع این برنامه محدود است و کد منبع آن به طور جزئی یا کامل به روی بازبینی و "
+"بهبود عمومی بسته شده. این بدان معناست که اشخاص ثالث و کاربرانی مانند شما "
+"نمیتوانند عملکرد، امنیت و اعتبار آن را تأیید کنند.<nl/><nl/>این برنامه ممکن "
+"است کاملاً ایمن باشد، یا ممکن است به روش های مختلف ضد شما برخورد کند — مانند "
+"جمع‌آوری داده‌های شخصی شما، ردیابی مکان شما، یا جابه‌جایی داده‌های شما به دیگری. "
+"تنها در صورتی آن را بکار ببرید که به طور کامل به نویسندگان آن اعتماد دارید. "
+"بیشتر بیاموزید در <link url='%2'>%2</link>."
+
+#: discover/qml/ApplicationPage.qml:78
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"%1 uses one or more licenses not certified as “Free Software” by either the "
+"<link url='%2'>Free Software Foundation</link> or the <link url='%3'>Open "
+"Source Initiative</link>. This means your freedom to use, study, modify, and "
+"share it may be restricted in some ways.<nl/><nl/>Make sure to read the "
+"license text and understand any restrictions before using the software.<nl/"
+"><nl/>If the license does not even grant access to read the source code, "
+"make sure you fully trust the authors, as no one else can verify the "
+"trustworthiness and security of its code to ensure that it is not acting "
+"against you in hidden ways. More information may be available on <link "
+"url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
+"url='%5'>%5</link>."
+msgstr ""
+"برنامه %1 از یک یا چند مجوز بکاربردن می‌کند که به عنوان «برنامه آزاد» توسط "
+"هیچ‌یک از <link url='%2'>بنیاد نرم‌افزار آزاد</link> یا <link url='%3'>پیشگام "
+"منبع باز</link> تأیید نشده است. این بدان معناست که آزادی شما برای بهره‌وری، "
+"خواندن، ویرایش و هم‌رسانی آن ممکن است به روش‌هایی محدود شود.<nl/><nl/>مطمئن "
+"شوید که متن مجوز را بخوانید و هرگونه محدودیت را قبل از بکارگیری برنامه درک "
+"کنید.<nl/><nl/>اگر حتی مجوز دسترسی به خواندن کد منبع را نیز نمی‌دهد، مطمئن "
+"شوید که به نویسندگان کاملاً اعتماد دارید، زیرا هیچ‌کس دیگری نمیتواند اعتبار و "
+"امنیت کد آن را تأیید کند تا اطمینان حاصل شود که ضد شما در پشت پرده کاری "
+"نمی‌کند. داده‌ها بیشتر ممکن است در <link url='%4'>تارنما برنامه</link> موجود "
+"باشد.<nl/><nl/>برای داده‌ها بیشتر به <link url='%5'>%5</link> مراجعه کنید."
+
+#: discover/qml/ApplicationPage.qml:85
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"%1 uses one or more licenses not certified as “Free Software” by either the "
+"<link url='%2'>Free Software Foundation</link> or the <link url='%3'>Open "
+"Source Initiative</link>. This means your freedom to use, study, modify, and "
+"share it may be restricted in some ways.<nl/><nl/>Make sure to read the "
+"license text and understand any restrictions before using the software.<nl/"
+"><nl/>If the license does not even grant access to read the source code, "
+"make sure you fully trust the authors, as no one else can verify the "
+"trustworthiness and security of its code to ensure that it is not acting "
+"against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
+msgstr ""
+"برنامه %1 از یک یا چند مجوز بکاربردن می‌کند که به عنوان «برنامه آزاد» توسط "
+"هیچ‌یک از <link url='%2'>بنیاد برنامه آزاد</link> یا <link url='%3'>پیشگام "
+"منبع باز</link> تأیید نشده است. این بدان معناست که آزادی شما برای بهره‌وری، "
+"خواندن، ویرایش و هم‌رسانی آن ممکن است به روش‌هایی محدود شود.<nl/><nl/>مطمئن "
+"شوید که متن مجوز را بخوانید و هرگونه محدودیت را قبل از بکاربردن برنامه درک "
+"کنید.<nl/><nl/>اگر مجوز حتی دسترسی به خواندن کد منبع را نیز نمی‌دهد، مطمئن "
+"شوید که به نویسندگان کاملاً اعتماد دارید، زیرا هیچ‌کس دیگری نمیتواند اعتبار و "
+"امنیت کد آن را تأیید کند تا اطمینان حاصل شود که ضد شما در پشت پرده کاری "
+"نمی‌کند.<nl/><nl/>برای داده‌ها بیشتر به <link url='%4'>%4</link> مراجعه کنید."
+
+#: discover/qml/ApplicationPage.qml:94
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "%1 does not indicate under which license it is distributed. You may be "
+#| "able to determine this on <link url='%2>the application's website</link>. "
+#| "Find it there or contact the author if you want to use this application "
+#| "for anything other than private personal use."
+msgctxt "@info"
+msgid ""
+"%1 does not indicate under which license it is distributed. You may be able "
+"to determine this on <link url='%2'>the application's website</link>. Find "
+"it there or contact the author if you want to use this application for "
+"anything other than private personal use."
+msgstr ""
+"%1 مشخص نمی‌کند که تحت کدام مجوز توزیع می‌شود. شما ممکن است بتوانید این را در "
+"<link url='%2'>تارنما برنامه</link> پیدا کنید. آن را در آنجا بیابید یا اگر "
+"می‌خواهید این برنامه را برای چیزی غیر از بهره‌وری شخصی بکارببرید، با نویسنده "
+"تماس بگیرید."
+
+#: discover/qml/ApplicationPage.qml:98
+#, kde-format
+msgctxt "@info"
+msgid ""
+"%1 does not indicate under which license it is distributed. Contact the "
+"application's author if you want to use it for anything other than private "
+"personal use."
+msgstr ""
+"%1 مشخص نمی‌کند که تحت کدام مجوز توزیع می‌شود. اگر می‌خواهید آن را برای چیزی "
+"غیر از بهره‌وری شخصی بکارببرید، با مالک برنامه تماس بگیرید."
+
+#: discover/qml/ApplicationPage.qml:134
+#, kde-format
+msgctxt "@action:button share a link to this app"
+msgid "Share"
+msgstr "هم‌رسانی"
+
+#: discover/qml/ApplicationPage.qml:142
+#, kde-format
+msgctxt "@action:button"
+msgid "Add-ons"
+msgstr "افزونه‌ها"
+
+#: discover/qml/ApplicationPage.qml:158
+#, kde-format
+msgctxt ""
+"@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
+"\""
+msgid "From %1"
+msgstr "از %1"
+
+#: discover/qml/ApplicationPage.qml:174
+#, kde-format
+msgid "%1 - %2"
+msgstr "%1 - %2"
+
+#: discover/qml/ApplicationPage.qml:210
+#, kde-format
+msgctxt "@title:window"
+msgid "Share Link to Application"
+msgstr "هم‌رسانی پیوند به برنامه"
+
+#: discover/qml/ApplicationPage.qml:219
+#, kde-format
+msgctxt "The subject line for an email. %1 is the name of an application"
+msgid "Check out the %1 app!"
+msgstr "برنامه %1 را بررسی کنید!"
+
+#: discover/qml/ApplicationPage.qml:318
+#, kde-format
+msgid "Unknown author"
+msgstr "نویسنده ناشناخته"
+
+#: discover/qml/ApplicationPage.qml:363
+#, kde-format
+msgid "Version:"
+msgstr "نگارش:"
+
+#: discover/qml/ApplicationPage.qml:375
+#, kde-format
+msgid "Size:"
+msgstr "اندازه:"
+
+#: discover/qml/ApplicationPage.qml:387
+#, kde-format
+msgid "License:"
+msgid_plural "Licenses:"
+msgstr[0] "مجوز:"
+msgstr[1] "مجوزها:"
+
+#: discover/qml/ApplicationPage.qml:394
+#, fuzzy, kde-format
+#| msgid "What does this mean?"
+msgctxt "@info:tooltip for button opening license type description"
+msgid "What does this mean?"
+msgstr "این به چه معناست؟"
+
+#: discover/qml/ApplicationPage.qml:398
+#, kde-format
+msgctxt "The app does not provide any licenses"
+msgid "Unknown"
+msgstr "ناشناخته"
+
+#: discover/qml/ApplicationPage.qml:444
+#, kde-format
+msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
+msgid ","
+msgstr "،"
+
+#: discover/qml/ApplicationPage.qml:469
+#, kde-format
+msgid "See more…"
+msgid_plural "See more…"
+msgstr[0] "موارد بیشتر…"
+msgstr[1] "موارد بیشتر…"
+
+#: discover/qml/ApplicationPage.qml:479
+#, kde-format
+msgctxt "@label The app is suitable for people of the following ages or older"
+msgid "Ages:"
+msgstr "رده‌سنی:"
+
+#: discover/qml/ApplicationPage.qml:487
+#, kde-format
+msgctxt "@item As in, the app is suitable for everyone"
+msgid "Everyone"
+msgstr "همه"
+
+#: discover/qml/ApplicationPage.qml:489
+#, kde-format
+msgctxt "@item %1 is a person's age in number of years"
+msgid "%1+"
+msgstr "%1+"
+
+#: discover/qml/ApplicationPage.qml:503
+#, kde-format
+msgid "See details"
+msgstr "ریزگان را ببینید"
+
+#: discover/qml/ApplicationPage.qml:527
+#, kde-format
+msgctxt "@info placeholder message"
+msgid "Screenshots not available for %1"
+msgstr "نماگرفت ها برای %1 موجود نیستند"
+
+#: discover/qml/ApplicationPage.qml:669
+#, kde-format
+msgid "What's New"
+msgstr "چه خبر"
+
+#: discover/qml/ApplicationPage.qml:702
+#, kde-format
+msgid "Reviews"
+msgstr "دبدگاه‌ها"
+
+#: discover/qml/ApplicationPage.qml:713
+#, kde-format
+msgid "Loading reviews for %1"
+msgstr "در حال بارگذاری دیدگاه‌های %1"
+
+#: discover/qml/ApplicationPage.qml:721
+#, kde-format
+msgctxt "@info placeholder message"
+msgid "Reviews for %1 are temporarily unavailable"
+msgstr "دیدگاه‌های %1 برای مدتی موجود نیستند"
+
+#: discover/qml/ApplicationPage.qml:743
+#, kde-format
+msgctxt "@action:button"
+msgid "Show All Reviews"
+msgstr "نمایش تمام دیدگاه‌ها"
+
+#: discover/qml/ApplicationPage.qml:755
+#, kde-format
+msgid "Write a Review"
+msgstr "نوشتن یک دیدگاه"
+
+#: discover/qml/ApplicationPage.qml:755
+#, kde-format
+msgid "Install to Write a Review"
+msgstr "برای نوشتن یک دیدگاه نصب کنید"
+
+#: discover/qml/ApplicationPage.qml:777
+#, kde-format
+msgctxt "@title"
+msgid "External Links"
+msgstr "پیوند‌های خارجی"
+
+#: discover/qml/ApplicationPage.qml:796
+#, kde-format
+msgid "Documentation"
+msgstr "مستندات"
+
+#: discover/qml/ApplicationPage.qml:797
+#, kde-format
+msgid "Read the project's official documentation"
+msgstr "مستندات رسمی پروژه را بخوانید"
+
+#: discover/qml/ApplicationPage.qml:809
+#, kde-format
+msgid "Website"
+msgstr "تارنما"
+
+#: discover/qml/ApplicationPage.qml:810
+#, kde-format
+msgid "Visit the project's website"
+msgstr "به تارنما پروژه مراجعه کنید"
+
+#: discover/qml/ApplicationPage.qml:822
+#, kde-format
+msgid "Donate"
+msgstr "حمایت"
+
+#: discover/qml/ApplicationPage.qml:823
+#, kde-format
+msgid "Support and thank the developers by donating to their project"
+msgstr ""
+"حامی توسعه‌دهندگان باشید و با حمایت کردن به پروژه آن‌ها از آن‌ها قدردانی کنید"
+
+#: discover/qml/ApplicationPage.qml:835
+#, kde-format
+msgid "Report Bug"
+msgstr "گزارش اشکال"
+
+#: discover/qml/ApplicationPage.qml:836
+#, kde-format
+msgid "Log an issue you found to help get it fixed"
+msgstr "مشکلی که پیدا کرده‌اید را ثبت کنید تا به رفع آن کمک کنید"
+
+#: discover/qml/ApplicationPage.qml:848
+#, kde-format
+msgid "Contribute"
+msgstr "مشارکت"
+
+#: discover/qml/ApplicationPage.qml:849
+#, kde-format
+msgid "Help the developers by coding, designing, testing, or translating"
+msgstr "به توسعه‌دهندگان با کدنویسی، طراحی، بررسی یا ترجمه کمک کنید"
+
+#: discover/qml/ApplicationPage.qml:879
+#, kde-format
+msgid "All Licenses"
+msgstr "تمام مجوزها"
+
+#: discover/qml/ApplicationPage.qml:911
+#, kde-format
+msgid "Content Rating"
+msgstr "رتبه‌بندی محتوا"
+
+#: discover/qml/ApplicationPage.qml:934
+#, kde-format
+msgctxt "@title:window"
+msgid "License Information"
+msgstr "درباره مجوز"
+
+#: discover/qml/ApplicationsListPage.qml:53
+#, kde-format
+msgid "Search: %2 - %3 item"
+msgid_plural "Search: %2 - %3 items"
+msgstr[0] "یافتن: %2 - %3 مورد"
+msgstr[1] "یافتن: %2 - %3 مورد"
+
+#: discover/qml/ApplicationsListPage.qml:55
+#, kde-format
+msgid "Search: %1"
+msgstr "یافتن: %1"
+
+#: discover/qml/ApplicationsListPage.qml:59
+#, kde-format
+msgid "%2 - %1 item"
+msgid_plural "%2 - %1 items"
+msgstr[0] "%2 - %1 مورد"
+msgstr[1] "%2 - %1 مورد"
+
+#: discover/qml/ApplicationsListPage.qml:65
+#, kde-format
+msgid "Search - %1 item"
+msgid_plural "Search - %1 items"
+msgstr[0] "یافتن - %1 مورد"
+msgstr[1] "یافتن - %1 مورد"
+
+#: discover/qml/ApplicationsListPage.qml:67
+#: discover/qml/ApplicationsListPage.qml:260
+#, kde-format
+msgid "Search"
+msgstr "یافتن"
+
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:144
+#, kde-format
+msgid "Sort: %1"
+msgstr "مرتب‌سازی: %1"
+
+#: discover/qml/ApplicationsListPage.qml:103
+#, kde-format
+msgctxt "Search results most relevant to the search query"
+msgid "Relevance"
+msgstr "مرتبط بودن"
+
+#: discover/qml/ApplicationsListPage.qml:114
+#, kde-format
+msgid "Name"
+msgstr "نام"
+
+#: discover/qml/ApplicationsListPage.qml:125 discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "امتیاز"
+
+#: discover/qml/ApplicationsListPage.qml:136
+#, kde-format
+msgid "Size"
+msgstr "اندازه"
+
+#: discover/qml/ApplicationsListPage.qml:147
+#, fuzzy, kde-format
+#| msgid "Release Date"
+msgid "Release date"
+msgstr "تاریخ انتشار"
+
+#: discover/qml/ApplicationsListPage.qml:206
+#, kde-format
+msgid "Nothing found"
+msgstr "هیچ چیز پیدا نشد"
+
+#: discover/qml/ApplicationsListPage.qml:214
+#, kde-format
+msgctxt "@action:button"
+msgid "Search in All Categories"
+msgstr "یافتن در تمام دسته‌بندی‌ها"
+
+#: discover/qml/ApplicationsListPage.qml:224
+#, kde-format
+msgctxt "@action:button %1 is the name of an application"
+msgid "Search the Web for \"%1\""
+msgstr "کاوش در وب برای \"%1\""
+
+#: discover/qml/ApplicationsListPage.qml:228
+#, kde-format
+msgctxt ""
+"If appropriate, localize this URL to be something more relevant to the "
+"language. %1 is the text that will be searched for."
+msgid "https://duckduckgo.com/?q=%1"
+msgstr "https://duckduckgo.com/?q=%1"
+
+#: discover/qml/ApplicationsListPage.qml:239
+#, kde-format
+msgctxt ""
+"@info:placeholder %1 is the name of an application; %2 is the name of a "
+"category of apps or add-ons"
+msgid "\"%1\" was not found in the \"%2\" category"
+msgstr "\"%1\" در دسته‌بندی \"%2\" پیدا نشد"
+
+#: discover/qml/ApplicationsListPage.qml:241
+#, kde-format
+msgctxt "@info:placeholder %1 is the name of an application"
+msgid "\"%1\" was not found in the available sources"
+msgstr "\"%1\" در منابع موجود پیدا نشد"
+
+#: discover/qml/ApplicationsListPage.qml:242
+#, kde-format
+msgctxt "@info:placeholder %1 is the name of an application"
+msgid ""
+"\"%1\" may be available on the web. Software acquired from the web has not "
+"been reviewed by your distributor for functionality or stability. Use with "
+"caution."
+msgstr ""
+"\"%1\" ممکن است در وب موجود باشد. برنامه که از اینترنت به دست آمده، توسط "
+"توزیع‌کننده شما از دید عملکرد یا ثبات بررسی نشده. با احتیاط بکار ببرید."
+
+#: discover/qml/ApplicationsListPage.qml:275
+#, kde-format
+msgid "Still looking…"
+msgstr "هنوز در حال یافتن…"
+
+#: discover/qml/BrowsingPage.qml:20
+#, kde-format
+msgctxt "@title:window the name of a top-level 'home' page"
+msgid "Home"
+msgstr "خانه"
+
+#: discover/qml/BrowsingPage.qml:53
+#, kde-format
+msgid "Unable to load applications"
+msgstr "نمیتوان برنامه‌ها را بارگذاری کرد"
+
+#: discover/qml/BrowsingPage.qml:88
+#, kde-format
+msgctxt "@title:group"
+msgid "Most Popular"
+msgstr "محبوب‌ترین‌ها"
+
+#: discover/qml/BrowsingPage.qml:110
+#, kde-format
+msgctxt "@title:group"
+msgid "Newly Published & Recently Updated"
+msgstr "به تازگی منتشر شده و به‌روز شده"
+
+#: discover/qml/BrowsingPage.qml:153
+#, kde-format
+msgctxt "@title:group"
+msgid "Editor's Choice"
+msgstr "انتخاب سردبیر"
+
+#: discover/qml/BrowsingPage.qml:170
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Games"
+msgstr "بازی‌های با بالاترین امتیاز"
+
+#: discover/qml/BrowsingPage.qml:190 discover/qml/BrowsingPage.qml:221
+#, kde-format
+msgctxt "@action:button"
+msgid "See More"
+msgstr "بیشتر ببینید"
+
+#: discover/qml/BrowsingPage.qml:201
+#, kde-format
+msgctxt "@title:group"
+msgid "Highest-Rated Developer Tools"
+msgstr "ابزارهای توسعه‌دهنده با بالاترین امتیاز"
+
+#: discover/qml/CarouselDelegate.qml:212
+#, kde-format
+msgctxt "@action:button Start playing media"
+msgid "Play"
+msgstr "پخش"
+
+#: discover/qml/CarouselDelegate.qml:214
+#, kde-format
+msgctxt "@action:button Pause any media that is playing"
+msgid "Pause"
+msgstr "مکث"
+
+#: discover/qml/CarouselMaximizedViewContent.qml:40
+#, kde-format
+msgctxt "@action:button"
+msgid "Switch to Overlay"
+msgstr "رفتن به حالت پوششی"
+
+#: discover/qml/CarouselMaximizedViewContent.qml:42
+#, kde-format
+msgctxt "@action:button"
+msgid "Switch to Full Screen"
+msgstr "رفتن به حالت تمام صفحه"
+
+#: discover/qml/CarouselMaximizedViewContent.qml:75
+#, kde-format
+msgctxt ""
+"@action:button Close overlay/window/popup with carousel of screenshots"
+msgid "Close"
+msgstr "بستن"
+
+#: discover/qml/CarouselNavigationButton.qml:56
+#, kde-format
+msgctxt "@action:button"
+msgid "Previous Screenshot"
+msgstr "نماگرفت قبلی"
+
+#: discover/qml/CarouselNavigationButton.qml:56
+#, kde-format
+msgctxt "@action:button"
+msgid "Next Screenshot"
+msgstr "نماگرفت بعدی"
+
+#: discover/qml/DiscoverWindow.qml:48
+#, kde-format
+msgid "Running as <em>root</em> is discouraged and unnecessary."
+msgstr "اجرا به عنوان <em>root</em> توصیه نمی‌شود و لازم نیست."
+
+#: discover/qml/DiscoverWindow.qml:63
+#, kde-format
+msgid "&Home"
+msgstr "&خانه"
+
+#: discover/qml/DiscoverWindow.qml:73
+#, kde-format
+msgid "&Search"
+msgstr "&یافتن"
+
+#: discover/qml/DiscoverWindow.qml:81
+#, kde-format
+msgid "&Installed"
+msgstr "&نصب شده"
+
+#: discover/qml/DiscoverWindow.qml:92
+#, kde-format
+msgid "&Updates (Fetching…)"
+msgstr ""
+
+#: discover/qml/DiscoverWindow.qml:92
+#, kde-format
+msgid "&Update (%1)"
+msgid_plural "&Updates (%1)"
+msgstr[0] "&به‌روزرسانی (%1)"
+msgstr[1] "&به‌روزرسانی (%1)"
+
+#: discover/qml/DiscoverWindow.qml:100
+#, kde-format
+msgid "&About"
+msgstr "&درباره"
+
+#: discover/qml/DiscoverWindow.qml:108
+#, kde-format
+msgid "S&ettings"
+msgstr "ت&نظیمات"
+
+#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:458
+#, kde-format
+msgid "Error"
+msgstr "خطا"
+
+#: discover/qml/DiscoverWindow.qml:165
+#, kde-format
+msgid "Unable to find resource: %1"
+msgstr "نمیتوان منبع را پیدا کرد: %1"
+
+#: discover/qml/DiscoverWindow.qml:263 discover/qml/SourcesPage.qml:195
+#, kde-format
+msgid "Proceed"
+msgstr "ادامه"
+
+#: discover/qml/DiscoverWindow.qml:321
+#, kde-format
+msgid "Report this issue"
+msgstr "این مشکل را گزارش دهید"
+
+#: discover/qml/DiscoverWindow.qml:346
+#, kde-format
+msgid "Error %1 of %2"
+msgstr "خطا %1 از %2"
+
+#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#, kde-format
+msgid "Update Issue"
+msgstr "مشکل به‌روزرسانی"
+
+#: discover/qml/DiscoverWindow.qml:357
+#, fuzzy, kde-format
+#| msgid "There was an issue installing this update. Please try again later."
+msgid ""
+"There was an issue during the update or installation process. Please try "
+"again later."
+msgstr "در نصب این به‌روزرسانی مشکلی پیش آمد. لطفاً بعداً دوباره تلاش کنید."
+
+#: discover/qml/DiscoverWindow.qml:393
+#, kde-format
+msgctxt "@action:button"
+msgid "Show Previous"
+msgstr "نمایش قبلی"
+
+#: discover/qml/DiscoverWindow.qml:404
+#, kde-format
+msgctxt "@action:button"
+msgid "Show Next"
+msgstr "نمایش بعدی"
+
+#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#, kde-format
+msgid "See Technical Details"
+msgstr "مشاهده ریزگان فنی"
+
+#: discover/qml/DiscoverWindow.qml:424
+#, kde-format
+msgid "Copy to Clipboard"
+msgstr "رونوشت در بریده‌دان"
+
+#: discover/qml/Feedback.qml:14
+#, kde-format
+msgid "Submit Usage Information"
+msgstr "ارسال داده‌های بهره‌وری"
+
+#: discover/qml/Feedback.qml:15
+#, kde-format
+msgid ""
+"Sends anonymized usage information to KDE so we can better understand our "
+"users. For more information see https://kde.org/privacypolicy-apps.php."
+msgstr ""
+"داده‌های بهره‌وری ناشناس را به KDE ارسال می‌کند تا بتوانیم کاربران خود را بهتر "
+"درک کنیم. برای فهمیدن بهتر به https://kde.org/privacypolicy-apps.php سر "
+"بزنید."
+
+#: discover/qml/Feedback.qml:19
+#, kde-format
+msgid "Submitting usage information…"
+msgstr "در حال ارسال داده‌های بهره‌وری…"
+
+#: discover/qml/Feedback.qml:19
+#, kde-format
+msgid "Configure"
+msgstr "پیکربندی"
+
+#: discover/qml/Feedback.qml:23
+#, kde-format
+msgid "Configure Feedback…"
+msgstr "پیکربندی بازخورد…"
+
+#: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
+#, kde-format
+msgid "Configure Updates…"
+msgstr "پیکربندی به‌روزرسانی‌ها…"
+
+#: discover/qml/Feedback.qml:58
+#, kde-format
+msgid ""
+"You can help us improving this application by sharing statistics and "
+"participate in surveys."
+msgstr ""
+"شما می‌توانید با هم‌رسانی آمار و شرکت در همه‌پرسی‌ها به بهبود این برنامه کمک "
+"کنید."
+
+#: discover/qml/Feedback.qml:58
+#, kde-format
+msgid "Contribute…"
+msgstr "مشارکت…"
+
+#: discover/qml/Feedback.qml:63
+#, kde-format
+msgid "We are looking for your feedback!"
+msgstr "ما به بازخورد شما نیاز داریم!"
+
+#: discover/qml/Feedback.qml:63
+#, kde-format
+msgid "Participate…"
+msgstr "شرکت کنید…"
+
+#: discover/qml/InstallApplicationButton.qml:24
+#, kde-format
+msgctxt "State being fetched"
+msgid "Loading…"
+msgstr "در حال بارگذاری…"
+
+#: discover/qml/InstallApplicationButton.qml:28
+#, kde-format
+msgctxt "@action:button %1 is the name of a software repository"
+msgid "Install from %1"
+msgstr "نصب از %1"
+
+#: discover/qml/InstallApplicationButton.qml:30
+#, kde-format
+msgctxt "@action:button"
+msgid "Install"
+msgstr "نصب"
+
+#: discover/qml/InstallApplicationButton.qml:32
+#, kde-format
+msgid "Remove"
+msgstr "پاک‌کردن"
+
+#: discover/qml/InstalledPage.qml:14
+#, kde-format
+msgid "Installed"
+msgstr "نصب شده"
+
+#: discover/qml/Navigation.qml:34
+#, kde-format
+msgid "Resources for '%1'"
+msgstr "منابع '%1'"
+
+#: discover/qml/ProgressView.qml:18
+#, kde-format
+msgid "Tasks (%1%)"
+msgstr "کارها (%1%)"
+
+#: discover/qml/ProgressView.qml:18 discover/qml/ProgressView.qml:45
+#, kde-format
+msgid "Tasks"
+msgstr "کارها"
+
+#: discover/qml/ProgressView.qml:113
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed, remaining time"
+msgid "%1 - %2: %3, %4 remaining"
+msgstr "%1 - %2: %3، %4 باقی‌مانده"
+
+#: discover/qml/ProgressView.qml:121
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed"
+msgid "%1 - %2: %3"
+msgstr "%1 - %2: %3"
+
+#: discover/qml/ProgressView.qml:128
+#, kde-format
+msgctxt "TransactioName - TransactionStatus"
+msgid "%1 - %2"
+msgstr "%1 - %2"
+
+#: discover/qml/ReviewDelegate.qml:58
+#, kde-format
+msgid "unknown reviewer"
+msgstr "نویسنده ناشناخته"
+
+#: discover/qml/ReviewDelegate.qml:59
+#, kde-format
+msgid "<b>%1</b> by %2"
+msgstr "<b>%1</b> توسط %2"
+
+#: discover/qml/ReviewDelegate.qml:59
+#, kde-format
+msgid "Comment by %1"
+msgstr "دیدگاه از %1"
+
+#: discover/qml/ReviewDelegate.qml:73
+#, kde-format
+msgid "Version: %1"
+msgstr "نگارش: %1"
+
+#: discover/qml/ReviewDelegate.qml:73
+#, kde-format
+msgid "Version: unknown"
+msgstr "نگارش: ناشناخته"
+
+#: discover/qml/ReviewDelegate.qml:87
+#, kde-format
+msgid "Votes: %1 out of %2"
+msgstr "آرا: %1 از %2"
+
+#: discover/qml/ReviewDelegate.qml:94
+#, kde-format
+msgid "Was this review useful?"
+msgstr "آیا این دیدگاه مفید بود؟"
+
+#: discover/qml/ReviewDelegate.qml:106
+#, kde-format
+msgctxt "Keep this string as short as humanly possible"
+msgid "Yes"
+msgstr "بله"
+
+#: discover/qml/ReviewDelegate.qml:122
+#, kde-format
+msgctxt "Keep this string as short as humanly possible"
+msgid "No"
+msgstr "خیر"
+
+#: discover/qml/ReviewDialog.qml:26
+#, kde-format
+msgid "Reviewing %1"
+msgstr "در حال بررسی %1"
+
+#: discover/qml/ReviewDialog.qml:33
+#, kde-format
+msgid "Submit review"
+msgstr "ارسال دیدگاه"
+
+#: discover/qml/ReviewDialog.qml:48
+#, kde-format
+msgid ""
+"If you love %1, tell people what's great about it! Focus on functionality, "
+"usability, and appearance. If the app didn't meet your needs, explain why."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:72
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"If %1 isn't launching, consider reporting this to its packagers in %2 at "
+"<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
+"issue rather than a flaw in the app itself."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:77
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"If %1 isn't launching, consider reporting this its developers at <link "
+"url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
+"rather than a flaw in the app itself."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:82
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"If the app is crashing a lot, consider reporting this to the developers at "
+"<link url='%1'>%1</link> instead."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:85
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"If you're having a problem with the app, consider reporting it to the "
+"developers at <link url='%1'>%1</link> instead, or else describe the problem "
+"here in greater detail."
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:120
+#, kde-format
+msgid "Rating:"
+msgstr "امتیاز:"
+
+#: discover/qml/ReviewDialog.qml:125
+#, kde-format
+msgid "Name:"
+msgstr "نام:"
+
+#: discover/qml/ReviewDialog.qml:133
+#, kde-format
+msgid "Title:"
+msgstr "عنوان:"
+
+#: discover/qml/ReviewDialog.qml:148
+#, kde-format
+msgctxt ""
+"Words the user might use in an unhelpful sentence saying an app is not "
+"launching. Preserve the commas. If necessary, add more words used for this "
+"in your language and/or shorten to common stems contained by multiple forms "
+"of the words."
+msgid "launch,run,start"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:155
+#, kde-format
+msgctxt ""
+"Words the user might use in an unhelpful sentence saying an app crashes. "
+"Preserve the commas. If necessary, add more words used for this in your "
+"language and/or shorten to common stems contained by multiple forms of the "
+"words"
+msgid "crash,segfault"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:162
+#, kde-format
+msgctxt ""
+"Word the user might use in an unhelpful sentence saying an app isn't very "
+"good. Preserve the commas. If necessary, add more words used for this in "
+"your language and/or shorten to common stems contained by multiple forms of "
+"the words,"
+msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
+msgstr ""
+
+#: discover/qml/ReviewDialog.qml:182
+#, kde-format
+msgid "Enter a rating"
+msgstr "یک امتیاز وارد کنید"
+
+#: discover/qml/ReviewDialog.qml:185
+#, kde-format
+msgid "Write the title"
+msgstr "عنوان را بنویسید"
+
+#: discover/qml/ReviewDialog.qml:188
+#, kde-format
+msgid "Write the review"
+msgstr "دیدگاه را بنویسید"
+
+#: discover/qml/ReviewDialog.qml:191
+#, kde-format
+msgid "Keep writing…"
+msgstr "ادامه دهید…"
+
+#: discover/qml/ReviewDialog.qml:194
+#, kde-format
+msgid "Too long!"
+msgstr "خیلی طولانی است!"
+
+#: discover/qml/ReviewDialog.qml:197
+#, kde-format
+msgctxt "@info:usagetip"
+msgid "Insert a name"
+msgstr "یک نام وارد کنید"
+
+#: discover/qml/ReviewsPage.qml:43
+#, kde-format
+msgid "Reviews for %1"
+msgstr "دیدگاه‌های %1"
+
+#: discover/qml/ReviewsPage.qml:108
+#, kde-format
+msgid "Write a Review…"
+msgstr "نوشتن یک دیدگاه…"
+
+#: discover/qml/ReviewsPage.qml:121
+#, kde-format
+msgid "Install this app to write a review"
+msgstr "این برنامه را نصب کنید تا یک دیدگاه بنویسید"
+
+#: discover/qml/ReviewsPage.qml:148
+#, kde-format
+msgctxt "@label:listbox Most relevant reviews"
+msgid "Most Relevant"
+msgstr "مرتبط ترین"
+
+#: discover/qml/ReviewsPage.qml:155
+#, kde-format
+msgctxt "@label:listbox Most recent reviews"
+msgid "Most Recent"
+msgstr "جدیدترین"
+
+#: discover/qml/ReviewsPage.qml:162
+#, kde-format
+msgctxt "@label:listbox Reviews with the highest ratings"
+msgid "Highest Ratings"
+msgstr "بالاترین امتیازها"
+
+#: discover/qml/ReviewsStats.qml:53
+#, kde-format
+msgctxt "how many reviews"
+msgid "%1 reviews"
+msgstr "%1 دیدگاه"
+
+#: discover/qml/ReviewsStats.qml:76
+#, kde-format
+msgctxt "widest character in the language"
+msgid "M"
+msgstr "M"
+
+#: discover/qml/ReviewsStats.qml:167
+#, kde-format
+msgid "Unknown reviewer"
+msgstr "نویسنده ناشناخته"
+
+#: discover/qml/ReviewsStats.qml:188
+#, kde-format
+msgctxt "Opening upper air quote"
+msgid "“"
+msgstr "“"
+
+#: discover/qml/ReviewsStats.qml:203
+#, kde-format
+msgctxt "Closing lower air quote"
+msgid "„"
+msgstr "„"
+
+#: discover/qml/SearchField.qml:26
+#, kde-format
+msgid "Search…"
+msgstr "یافتن…"
+
+#: discover/qml/SearchField.qml:26
+#, kde-format
+msgid "Search in '%1'…"
+msgstr "یافتن در '%1'…"
+
+#: discover/qml/SourcesPage.qml:18
+#, kde-format
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: discover/qml/SourcesPage.qml:110
+#, fuzzy, kde-format
+#| msgid "Default source"
+msgid "Default Source"
+msgstr "منبع پیش‌فرض"
+
+#: discover/qml/SourcesPage.qml:118
+#, kde-format
+msgid "Add Source…"
+msgstr "افزودن منبع…"
+
+#: discover/qml/SourcesPage.qml:145
+#, fuzzy, kde-format
+#| msgid "Make default"
+msgid "Make Default"
+msgstr "پیش‌فرض‌اش کن"
+
+#: discover/qml/SourcesPage.qml:248
+#, kde-format
+msgid "Increase priority"
+msgstr "افزایش اولویت"
+
+#: discover/qml/SourcesPage.qml:254
+#, kde-format
+msgid "Failed to increase '%1' preference"
+msgstr "افزایش اولویت '%1' ناموفق بود"
+
+#: discover/qml/SourcesPage.qml:260
+#, kde-format
+msgid "Decrease priority"
+msgstr "کاهش اولویت"
+
+#: discover/qml/SourcesPage.qml:266
+#, kde-format
+msgid "Failed to decrease '%1' preference"
+msgstr "کاهش اولویت '%1' ناموفق بود"
+
+#: discover/qml/SourcesPage.qml:272
+#, kde-format
+msgid "Remove repository"
+msgstr "پاک‌کردن مخزن"
+
+#: discover/qml/SourcesPage.qml:283
+#, kde-format
+msgid "Show contents"
+msgstr "نمایش محتوا"
+
+#: discover/qml/SourcesPage.qml:324
+#, kde-format
+msgid "Missing Backends"
+msgstr "هسته‌های گم‌شده"
+
+#: discover/qml/UpdatesPage.qml:14
+#, kde-format
+msgid "Updates"
+msgstr "به‌روزرسانی‌ها"
+
+#: discover/qml/UpdatesPage.qml:47
+#, kde-format
+msgid "Technical details"
+msgstr "ریزگان فنی"
+
+#: discover/qml/UpdatesPage.qml:63
+#, kde-format
+msgid "There was an issue installing this update. Please try again later."
+msgstr "در نصب این به‌روزرسانی مشکلی پیش آمد. لطفاً بعداً دوباره تلاش کنید."
+
+#: discover/qml/UpdatesPage.qml:96
+#, kde-format
+msgctxt "@info %1 is the name of the user's distro/OS"
+msgid ""
+"If the error indicated above looks like a real issue and not a temporary "
+"network error, please report it to %1, not KDE."
+msgstr ""
+"اگر خطایی که در بالا گفته شده شبیه یک مشکل واقعی است تا یک خطای موقتی شبکه، "
+"لطفاً آن را به %1 گزارش دهید، نه به KDE."
+
+#: discover/qml/UpdatesPage.qml:104
+#, kde-format
+msgid "Copy Text"
+msgstr "رونوشت متن"
+
+#: discover/qml/UpdatesPage.qml:108
+#, kde-format
+msgctxt "@info %1 is the name of the user's distro/OS"
+msgid "Error message copied. Remember to report it to %1, not KDE!"
+msgstr ""
+"پیام خطا رونویسی شد. به یاد داشته باشید که آن را به %1 گزارش دهید، نه به KDE!"
+
+#: discover/qml/UpdatesPage.qml:115
+#, kde-format
+msgctxt "@action:button %1 is the name of the user's distro/OS"
+msgid "Report Issue to %1"
+msgstr "گزارش مشکل به %1"
+
+#: discover/qml/UpdatesPage.qml:141
+#, kde-format
+msgctxt "@action:button as in, 'update the selected items' "
+msgid "Update Selected"
+msgstr "به‌روزرسانی انتخاب شده"
+
+#: discover/qml/UpdatesPage.qml:141
+#, kde-format
+msgctxt "@action:button as in, 'update all items'"
+msgid "Update All"
+msgstr "به‌روزرسانی همه"
+
+#: discover/qml/UpdatesPage.qml:180
+#, kde-format
+msgid "Ignore"
+msgstr "نادیده گرفتن"
+
+#: discover/qml/UpdatesPage.qml:230
+#, kde-format
+msgid "Select All"
+msgstr "انتخاب همه"
+
+#: discover/qml/UpdatesPage.qml:238
+#, kde-format
+msgid "Select None"
+msgstr "انتخاب هیچ‌کدام"
+
+#: discover/qml/UpdatesPage.qml:257
+#, kde-format
+msgctxt ""
+"@info on the completion of updates, the action that automatically happens "
+"after (e.g shut down)"
+msgid "On completion, automatically:"
+msgstr "در پایان، به‌طور خودکار:"
+
+#: discover/qml/UpdatesPage.qml:262
+#, kde-format
+msgctxt "@item:inlistbox placeholder for when no action is selected"
+msgid "Select an action"
+msgstr "یک کنش را بگزینید"
+
+#: discover/qml/UpdatesPage.qml:262
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Restart"
+msgstr "راه‌اندازی دوباره"
+
+#: discover/qml/UpdatesPage.qml:262
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Shut down"
+msgstr "خاموش کردن"
+
+#: discover/qml/UpdatesPage.qml:271
+#, kde-format
+msgid "Total size: %1"
+msgstr "حجم کل: %1"
+
+#: discover/qml/UpdatesPage.qml:306
+#, kde-format
+msgctxt "@action:button"
+msgid "Restart to Install Updates Now"
+msgstr "برای نصب به‌روزرسانی‌ها اینک باز راه‌اندازی کنید"
+
+#: discover/qml/UpdatesPage.qml:436
+#, kde-format
+msgid "Installing"
+msgstr "در حال نصب"
+
+#: discover/qml/UpdatesPage.qml:467
+#, kde-format
+msgid "Update from:"
+msgstr "به‌روزرسانی از:"
+
+#: discover/qml/UpdatesPage.qml:479
+#, kde-format
+msgctxt ""
+"%1 is the backend that provides this app, %2 is the specific repository or "
+"address within that backend"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: discover/qml/UpdatesPage.qml:486
+#, kde-format
+msgid "More Information…"
+msgstr "داده‌های بیشتر…"
+
+#: discover/qml/UpdatesPage.qml:514
+#, kde-format
+msgctxt "@info"
+msgid "Fetching updates…"
+msgstr "در حال دریافت به‌روزرسانی‌ها…"
+
+#: discover/qml/UpdatesPage.qml:528
+#, kde-format
+msgctxt "@info"
+msgid "Updates"
+msgstr "به‌روزرسانی‌ها"
+
+#: discover/qml/UpdatesPage.qml:537
+#, kde-format
+msgctxt "@info"
+msgid "Restart the system to complete the update process"
+msgstr "سیستم را برای تکمیل فرآیند به‌روزرسانی باز راه‌اندازی کنید"
+
+#: discover/qml/UpdatesPage.qml:553 discover/qml/UpdatesPage.qml:560
+#: discover/qml/UpdatesPage.qml:567
+#, kde-format
+msgctxt "@info"
+msgid "Up to date"
+msgstr "به‌روز است"
+
+#: discover/qml/UpdatesPage.qml:574
+#, kde-format
+msgctxt "@info"
+msgid "Should check for updates"
+msgstr "باید به‌روزرسانی‌ها را بررسی کند"
+
+#: discover/qml/UpdatesPage.qml:581
+#, kde-format
+msgctxt "@info"
+msgid "Time of last update unknown"
+msgstr "زمان آخرین به‌روزرسانی نامشخص است"
+
+#~ msgid "Fetching &updates…"
+#~ msgstr "در حال دریافت &به‌روزرسانی‌ها…"
