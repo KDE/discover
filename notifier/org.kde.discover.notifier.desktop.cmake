@@ -16,6 +16,7 @@ Name[eo]=Discover
 Name[es]=Discover
 Name[et]=Discover
 Name[eu]=Discover
+Name[fa]=دیسکاور
 Name[fi]=Discover
 Name[fr]=Discover
 Name[gl]=Descubrir
