@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-06 00:40+0000\n"
+"POT-Creation-Date: 2024-10-09 00:41+0000\n"
 "PO-Revision-Date: 2024-08-21 16:24+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -32,9 +32,9 @@ msgstr "yurchor@ukr.net"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:106
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:390
 #: libdiscover/UpdateModel/UpdateModel.cpp:122
 #: libdiscover/UpdateModel/UpdateModel.cpp:342
 #, kde-format
@@ -1233,7 +1233,7 @@ msgid "Cannot remove '%1'"
 msgstr "Не вдалося вилучити «%1»"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:360
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1252,7 +1252,7 @@ msgid "Upgrade Now"
 msgstr "Оновити зараз"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:370
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2366,96 +2366,96 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Операційна система"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree: знайдено декілька придатних до завантаження розгорнутих систем. "
 "Будь ласка, повідомте розробникам про цю ваду."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree: не знайдено придатних до завантаження розгорнутих систем. Будь "
 "ласка, повідомте розробникам про цю ваду."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Почати оновлення…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:513
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "У черзі оновлень є оновлення поточної версії. Продовжуємо попри це."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:516
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Будь ласка, виконайте оновлення до найсвіжішої версії до переходу до "
 "основної версії"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:524
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 "Не вистачає віддаленого сховища для дії з переходу на нову основну версію. "
 "Будь ласка, повідомте розробникам про цю ваду."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:298
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL та інші умови ліцензування"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:308
 #, kde-format
 msgid "Additional packages: "
 msgstr "Додаткові пакунки:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:315
 #, kde-format
 msgid "Additional modules: "
 msgstr "Додаткові модулі:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:322
 #, kde-format
 msgid "Local packages: "
 msgstr "Локальні пакунки:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:329
 #, kde-format
 msgid "Replaced packages:"
 msgstr "Замінені пакунки:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:336
 #, kde-format
 msgid "Removed packages:"
 msgstr "Вилучені пакунки:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "Поточна завантажена версія (пришпилена)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Currently booted version"
 msgstr "Поточна завантажена версія"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "Версія, яку буде використано після перезавантаження"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:404
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "Резервна версія (пришпилена)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:406
 #, kde-format
 msgid "Fallback version"
 msgstr "Резервна версія"

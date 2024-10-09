@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-06 00:40+0000\n"
+"POT-Creation-Date: 2024-10-09 00:41+0000\n"
 "PO-Revision-Date: 2024-06-13 20:10\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -34,9 +34,9 @@ msgstr "nashtlumach@gmail.com"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:106
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:390
 #: libdiscover/UpdateModel/UpdateModel.cpp:122
 #: libdiscover/UpdateModel/UpdateModel.cpp:342
 #, kde-format
@@ -1228,7 +1228,7 @@ msgid "Cannot remove '%1'"
 msgstr "Не ўдалося выдаліць \"%1\""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:360
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1247,7 +1247,7 @@ msgid "Upgrade Now"
 msgstr "Абнавіць зараз"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:370
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2356,96 +2356,96 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Аперацыйная сістэма"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree: знойдзена некалькі загружаных размяшчэнняў. Адпраўце справаздачу "
 "пра хібу."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree: не знойдзена загружаных размяшчэнняў. Адпраўце справаздачу пра "
 "хібу."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Пачаць абнаўленне…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:513
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "У вас ёсць незавершаныя абнаўленні для бягучай версіі. Усё адно працягваецца."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:516
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Перш чым перайсці да новай значнай версіі, трэба абнавіцца да апошняй версіі"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:524
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 "Для выканання аперацыі пераходу не хапае спасылкі. Адпраўце справаздачу пра "
 "хібу."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:298
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL і іншыя ліцэнзіі"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:308
 #, kde-format
 msgid "Additional packages: "
 msgstr "Дадатковыя пакеты: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:315
 #, kde-format
 msgid "Additional modules: "
 msgstr "Дадатковыя модулі: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:322
 #, kde-format
 msgid "Local packages: "
 msgstr "Лакальныя пакеты: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:329
 #, kde-format
 msgid "Replaced packages:"
 msgstr "Замененыя пакеты:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:336
 #, kde-format
 msgid "Removed packages:"
 msgstr "Выдаленыя пакеты:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "Запушчаная версія (замацавана)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Currently booted version"
 msgstr "Запушчаная версія"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "Версія, якая будзе выкарыстоўвацца пасля перазапуску"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:404
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "Запасная версія (замацавана)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:406
 #, kde-format
 msgid "Fallback version"
 msgstr "Запасная версія"

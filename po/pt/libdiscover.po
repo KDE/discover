@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-06 00:40+0000\n"
+"POT-Creation-Date: 2024-10-09 00:41+0000\n"
 "PO-Revision-Date: 2023-01-09 18:43+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -34,9 +34,9 @@ msgstr "zepires@gmail.com"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:106
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:297
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:386
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:390
 #: libdiscover/UpdateModel/UpdateModel.cpp:122
 #: libdiscover/UpdateModel/UpdateModel.cpp:342
 #, kde-format
@@ -1241,7 +1241,7 @@ msgid "Cannot remove '%1'"
 msgstr "Não é possível remover o '%1'"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:360
 #, fuzzy, kde-format
 #| msgid ""
 #| "<b>A new major version of %1 has been released!</b>\n"
@@ -1265,7 +1265,7 @@ msgid "Upgrade Now"
 msgstr "Actualizar para o %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:413
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:370
 #, fuzzy, kde-format
 #| msgid "Repo not available"
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -2369,97 +2369,97 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Sistema Operativo"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:183
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree: Foram detectadas várias instalações. Por favor, comunique um "
 "erro."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree: Não foi detectada nenhuma instalação de arranque. Por favor, "
 "comunique um erro."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:549
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:513
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Tem actualizações pendentes para a versão actual. A prosseguir à mesma."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:552
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:516
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Por favor actualize para a última versão antes de migrar para uma versão "
 "principal"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:560
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:524
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 "Falta a referência remota da operação de avanço. Por favor, comunique este "
 "erro."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:298
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL e outras licenças"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:308
 #, kde-format
 msgid "Additional packages: "
 msgstr "Pacotes adicionais: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:315
 #, kde-format
 msgid "Additional modules: "
 msgstr "Módulos adicionais: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:322
 #, kde-format
 msgid "Local packages: "
 msgstr "Pacotes locais: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:329
 #, kde-format
 msgid "Replaced packages:"
 msgstr "Pacotes substituídos:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:336
 #, kde-format
 msgid "Removed packages:"
 msgstr "Pacotes removidos:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "Versão iniciada no arranque (fixa)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:395
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Currently booted version"
 msgstr "Versão actualmente em uso"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "A versão que será usada após reiniciar"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:404
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "Versão de salvaguarda (fixa)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:406
 #, kde-format
 msgid "Fallback version"
 msgstr "Versão de salvaguarda"
