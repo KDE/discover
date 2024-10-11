@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/discover/plasma-discover.pot\n"
-"X-Crowdin-File-ID: 43165\n"
+"X-Crowdin-File: /kf6-stable/messages/discover/plasma-discover.pot\n"
+"X-Crowdin-File-ID: 50380\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -396,6 +396,9 @@ msgid ""
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
+"%1 没有指明它采用了何种许可证进行分发。如果您想要在个人私用之外的用途中使用这"
+"款程序，请访问 <link url='%2'>它的网站</link> 或者联系程序作者以确定它的使用"
+"条款。"
 
 #: discover/qml/ApplicationPage.qml:98
 #, kde-format
@@ -686,7 +689,7 @@ msgstr "体积"
 #: discover/qml/ApplicationsListPage.qml:147
 #, kde-format
 msgid "Release date"
-msgstr ""
+msgstr "发布日期"
 
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
@@ -856,7 +859,7 @@ msgstr "已安装的软件包(&I)"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "更新(&U) (正在获取…)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -906,12 +909,11 @@ msgid "Update Issue"
 msgstr "更新问题"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
-msgstr "安装此更新时遇到问题。请稍后重试。"
+msgstr "更新或者安装过程中发生了问题。请稍后重试。"
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
@@ -1317,7 +1319,7 @@ msgstr "设置"
 #: discover/qml/SourcesPage.qml:110
 #, kde-format
 msgid "Default Source"
-msgstr ""
+msgstr "默认来源"
 
 #: discover/qml/SourcesPage.qml:118
 #, kde-format
@@ -1327,7 +1329,7 @@ msgstr "添加软件来源…"
 #: discover/qml/SourcesPage.qml:145
 #, kde-format
 msgid "Make Default"
-msgstr ""
+msgstr "设为默认"
 
 #: discover/qml/SourcesPage.qml:248
 #, kde-format
@@ -1529,6 +1531,3 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
-
-#~ msgid "Fetching &updates…"
-#~ msgstr "正在获取更新(&U)…"
