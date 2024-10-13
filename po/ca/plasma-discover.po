@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 02:37+0000\n"
-"PO-Revision-Date: 2024-09-27 10:29+0200\n"
+"PO-Revision-Date: 2024-10-12 21:02+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -80,10 +80,10 @@ msgstr ""
 "El suport per a gestionar paquets des de %1 no està complet; podeu "
 "experimentar un nombre indeterminat de problemes. No informeu d'errors al "
 "KDE. És molt recomanable desinstal·lar el paquet <resource>packagekit-qt6</"
-"resource> i utilitzar el Discover només per gestionar Flatpaks, Snaps i "
+"resource> i utilitzar el Discover només per a gestionar Flatpaks, Snaps i "
 "complements.<para>En el seu lloc, els mantenidors de %1recomanen utilitzar "
-"l'eina <command>pacman</command> de la línia d'ordres per gestionar paquets."
-"</para>"
+"l'eina <command>pacman</command> de la línia d'ordres per a gestionar "
+"paquets.</para>"
 
 #: discover/DiscoverObject.cpp:293
 #, kde-format
@@ -392,10 +392,10 @@ msgstr ""
 "entendre qualsevol restricció abans d'utilitzar el programari.<nl/><nl/>Si "
 "la llicència ni tan sols permet l'accés a llegir el codi font, assegureu-vos "
 "que confieu plenament en els autors, ja que ningú més pot verificar la "
-"fiabilitat i la seguretat del seu codi per assegurar-se que no està actuant "
-"contra vós de manera oculta. Pot haver més informació disponible al <link "
-"url='%4'>lloc web de l'aplicació</link>.<nl/><nl/>Apreneu-ne més a <link "
-"url='%5'>%5</link>."
+"fiabilitat i la seguretat del seu codi per a assegurar-se que no està "
+"actuant contra vós de manera oculta. Pot haver-hi més informació disponible "
+"al <link url='%4'>lloc web de l'aplicació</link>.<nl/><nl/>Apreneu-ne més a "
+"<link url='%5'>%5</link>."
 
 #: discover/qml/ApplicationPage.qml:85
 #, kde-kuit-format
@@ -419,9 +419,9 @@ msgstr ""
 "entendre qualsevol restricció abans d'utilitzar el programari.<nl/><nl/>Si "
 "la llicència ni tan sols permet l'accés a llegir el codi font, assegureu-vos "
 "que confieu plenament en els autors, ja que ningú més pot verificar la "
-"fiabilitat i la seguretat del seu codi per assegurar-se que no està actuant "
-"contra vós de manera oculta.<nl/><nl/>Apreneu-ne més a <link url='%4'>%4</"
-"link>."
+"fiabilitat i la seguretat del seu codi per a assegurar-se que no està "
+"actuant contra vós de manera oculta.<nl/><nl/>Apreneu-ne més a <link "
+"url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
 #, kde-kuit-format
@@ -1169,7 +1169,7 @@ msgid ""
 msgstr ""
 "Si us agrada %1, digueu a la gent com és de genial! Centreu-vos en la "
 "funcionalitat, la usabilitat i l'aparença. Si l'aplicació no s'ajustava a "
-"les vostres necessitats, expliqueu-nos perquè."
+"les vostres necessitats, expliqueu-nos per què."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
