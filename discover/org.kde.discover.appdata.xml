@@ -344,9 +344,9 @@
   </provides>
   <compulsory_for_desktop>KDE</compulsory_for_desktop>
   <releases>
+    <release version="6.2.1" date="2024-10-15"/>
     <release version="6.2.0" date="2024-10-08"/>
     <release version="6.1.5" date="2024-09-10"/>
     <release version="6.1.4" date="2024-08-06"/>
-    <release version="6.1.3" date="2024-07-16"/>
   </releases>
 </component>
