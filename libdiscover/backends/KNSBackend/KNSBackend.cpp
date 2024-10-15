@@ -505,7 +505,6 @@ ResultsStream *KNSBackend::search(const AbstractResourcesBackend::Filters &filte
                 const auto knsFilter = filter.state == AbstractResource::Installed ? KNSCore::Provider::Installed : KNSCore::Provider::Updates;
                 stream->setRequest(KNSCore::Provider::SearchRequest(KNSCore::Provider::Newest, knsFilter, {}, {}, -1, ENGINE_PAGE_SIZE));
             }
-            stream->finish();
         };
         deferredResultStream(stream, start);
         return stream;
