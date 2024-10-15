@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 02:37+0000\n"
-"PO-Revision-Date: 2024-09-11 10:08+0200\n"
+"PO-Revision-Date: 2024-10-12 21:02+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 24.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -393,8 +393,8 @@ msgstr ""
 "la llicència ni tan sols permet l'accés a llegir el codi font, assegureu-vos "
 "que confieu plenament en els autors, ja que ningú més pot verificar la "
 "fiabilitat i la seguretat del seu codi per a assegurar-se que no està "
-"actuant contra vós de manera oculta. Pot haver més informació disponible al "
-"<link url='%4'>lloc web de l'aplicació</link>.<nl/><nl/>Apreneu-ne més a "
+"actuant contra vós de manera oculta. Pot haver-hi més informació disponible "
+"al <link url='%4'>lloc web de l'aplicació</link>.<nl/><nl/>Apreneu-ne més a "
 "<link url='%5'>%5</link>."
 
 #: discover/qml/ApplicationPage.qml:85
@@ -955,14 +955,13 @@ msgid "Update Issue"
 msgstr "Actualitza l'assumpte"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr ""
-"Hi ha hagut un problema en instal·lar esta actualització. Torneu-ho a provar "
-"més tard."
+"Hi ha hagut un problema durant el procés d'actualització o instal·lació. "
+"Torneu-ho a provar més tard."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
@@ -1170,7 +1169,7 @@ msgid ""
 msgstr ""
 "Si vos agrada %1, digueu a la gent com és de genial! Centreu-vos en la "
 "funcionalitat, la usabilitat i l'aparença. Si l'aplicació no s'ajustava a "
-"les vostres necessitats, expliqueu-nos perquè."
+"les vostres necessitats, expliqueu-nos per què."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
