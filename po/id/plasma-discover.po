@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # wantoyo <wantoyo@yahoo.com>, 2014.
 # SPDX-FileCopyrightText: 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Wantoyo <wantoyek@gmail.com>
-# Linerly <linerly@protonmail.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Linerly <linerly@protonmail.com>
 #
 # Translators:
 msgid ""
@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 02:37+0000\n"
-"PO-Revision-Date: 2024-09-02 07:09+0700\n"
-"Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
-"Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
+"PO-Revision-Date: 2024-10-14 17:25+0700\n"
+"Last-Translator: Linerly <linerly@protonmail.com>\n"
+"Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -74,11 +74,11 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
-"Dukungan untuk pengelolaan paket-paket dari %1 tidak lengkap; mungkin Anda  "
-"mengalami beberapa masalah. Jangan melaporkan bug ke KDE. Sangat dianjurkan  "
-"untuk menghapus paket <resource>packagekit-qt6</resource> dan  gunakan "
-"Discover saja untuk mengelola Flatpaks, Snaps, dan Add-Ons.<para>%1 "
-"pemelihara menganjurkan menggunakan alat baris-perintah <command>pacman</"
+"Dukungan untuk pengelolaan paket-paket dari %1 tidak lengkap; Anda dapat "
+"mengalami beberapa masalah. Jangan laporkan kutu ke KDE. Sangat dianjurkan "
+"untuk menghapus paket <resource>packagekit-qt6</resource> dan gunakan "
+"Discover saja untuk mengelola Flatpak, Snap, dan Pernik.<para>Para "
+"pemelihara %1 menganjurkan menggunakan alat baris-perintah <command>pacman</"
 "command> untuk mengelola paket sebagai gantinya.</para>"
 
 #: discover/DiscoverObject.cpp:293
