@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-29 00:40+0000\n"
-"PO-Revision-Date: 2024-09-05 16:12+0300\n"
+"PO-Revision-Date: 2024-10-14 14:43+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -416,13 +416,7 @@ msgstr ""
 "vairāk <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:94
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2>the application's website</link>. "
-#| "Find it there or contact the author if you want to use this application "
-#| "for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -431,7 +425,7 @@ msgid ""
 "anything other than private personal use."
 msgstr ""
 "„%1“ programma nenorāda, ar kādu licenci tiek izplatīta. To, iespējams, "
-"varat uzzināt <link url='%2>programmas tīmekļa vietnē</link>. Ja neatrodat, "
+"varat uzzināt <link url='%2'>programmas tīmekļa vietnē</link>. Ja neatrodat, "
 "sazinieties ar programmas autoru, ja grasāties to izmantot jebkam citam, kas "
 "nav personīga lietošana."
 
@@ -508,8 +502,7 @@ msgstr[1] "Licences:"
 msgstr[2] "Licenču:"
 
 #: discover/qml/ApplicationPage.qml:394
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Ko tas nozīmē?"
@@ -735,8 +728,7 @@ msgid "Size"
 msgstr "Izmērs"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Izlaišanas datums"
 
@@ -909,7 +901,7 @@ msgstr "&Instalētās"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "&Atjauninājumi (iegūst…)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -961,13 +953,12 @@ msgid "Update Issue"
 msgstr "Problēma ar atjauninājumu"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr ""
-"Radās problēma ar šī atjauninājuma instalēšanu. Uzgaidiet un mēģiniet "
+"Radās problēma ar atjaunināšanu vai instalēšanu. Uzgaidiet un mēģiniet "
 "vēlreiz."
 
 #: discover/qml/DiscoverWindow.qml:393
@@ -1379,8 +1370,7 @@ msgid "Settings"
 msgstr "Iestatījumi"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Noklusējuma avots"
 
@@ -1390,8 +1380,7 @@ msgid "Add Source…"
 msgstr "Pievienot avotu…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Padarīt par noklusējuma"
 
@@ -1531,7 +1520,7 @@ msgstr "Izslēgt"
 #: discover/qml/UpdatesPage.qml:271
 #, kde-format
 msgid "Total size: %1"
-msgstr "Kopējais izmērs: %1"
+msgstr "Izmērs kopā: %1"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
