@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # wantoyo <wantoyo@yahoo.com>, 2014.
 # SPDX-FileCopyrightText: 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Wantoyo <wantoyek@gmail.com>
-# Linerly <linerly@protonmail.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Linerly <linerly@protonmail.com>
 #
 # Translators:
 msgid ""
@@ -12,13 +12,13 @@ msgstr ""
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
 "PO-Revision-Date: 2024-09-02 07:09+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
-"Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
+"Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
