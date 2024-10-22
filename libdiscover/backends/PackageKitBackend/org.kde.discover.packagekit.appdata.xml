@@ -170,9 +170,9 @@
   <developer_name xml:lang="zh-TW">Aleix Pol Gonzalez</developer_name>
   <icon type="stock">system-software-install</icon>
   <releases>
+    <release version="6.2.2" date="2024-10-22"/>
     <release version="6.2.1" date="2024-10-15"/>
     <release version="6.2.0" date="2024-10-08"/>
     <release version="6.1.5" date="2024-09-10"/>
-    <release version="6.1.4" date="2024-08-06"/>
   </releases>
 </component>
