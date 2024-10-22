@@ -208,12 +208,7 @@ bool FlatpakResource::hasCategory(const QString &category) const
 
 QString FlatpakResource::comment()
 {
-    const auto summary = m_appdata.summary();
-    if (!summary.isEmpty()) {
-        return summary;
-    }
-
-    return QString();
+    return m_appdata.summary();
 }
 
 quint64 FlatpakResource::downloadSize() const

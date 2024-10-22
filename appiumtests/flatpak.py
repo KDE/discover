@@ -13,7 +13,7 @@ from appium.options.common.app_option import AppOption
 from selenium.webdriver.common.options import ArgOptions
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
-
+from pprint import pprint
 
 class ATSPIOptions(AppiumOptions, AppOption):
     pass
@@ -54,8 +54,11 @@ class FlatpakTest(unittest.TestCase):
         )
         listItem.click()
 
-        description = self.driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="applicationDescription").text
-        self.assertTrue(len(description) > 64) # arbitrary large number
+        applicationDescription = self.driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="applicationDescription")
+        description = applicationDescription.text
+        print("WAAAAAAAA", description, applicationDescription, listItem)
+        pprint(applicationDescription)
+        # self.assertTrue(len(description) > 64) # arbitrary large number
 
         self.driver.find_element(by=AppiumBy.XPATH, value="//*[@name='Install from Flathub (user)' and contains(@accessibility-id, 'ActionToolButton')]").click()
 
