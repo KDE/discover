@@ -60,6 +60,7 @@ std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStre
     QString currentVersion = osRelease()->versionId();
     std::optional<AppStream::Release> nextRelease;
     std::optional<AppStream::Release> developmentRelease;
+    const QDateTime now = QDateTime::currentDateTimeUtc();
     for (const AppStream::Component &dc : distroComponents) {
         const auto releases = dc.releasesPlain().entries();
         for (const auto &r : releases) {
@@ -77,6 +78,11 @@ std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStre
                 if (!(r.kind() == AppStream::Release::KindDevelopment && allowPreRelease)) {
                     continue;
                 }
+            }
+
+            // Skip stable and development releases with a start date in the future if we did not enable pre-releases
+            if (r.timestamp() > now && !allowPreRelease) {
+                continue;
             }
 
             // Look at the potentially new version
