@@ -695,7 +695,7 @@ DiscoverPage {
         // Reviews section
         ColumnLayout {
             spacing: Kirigami.Units.smallSpacing
-            visible: reviewsSheet.sortModel.count > 0 && !reviewsLoadingPlaceholder.visible && !reviewsError.visible
+            visible: reviewsSheet.sortModel.count > 0 || reviewsModel.fetching || reviewsError.hasError
 
             Kirigami.Heading {
                 Layout.fillWidth: true
@@ -716,7 +716,8 @@ DiscoverPage {
             Kirigami.PlaceholderMessage {
                 id: reviewsError
                 Layout.fillWidth: true
-                visible: reviewsModel.backend && reviewsModel.backend.errorMessage.length > 0 && text.length > 0 && reviewsModel.count === 0 && !reviewsLoadingPlaceholder.visible
+                readonly property bool hasError: reviewsModel.backend && reviewsModel.backend.errorMessage.length > 0 && text.length > 0 && reviewsModel.count === 0 && !reviewsLoadingPlaceholder.visible
+                visible: hasError
                 icon.name: "text-unflow"
                 text: i18nc("@info placeholder message", "Reviews for %1 are temporarily unavailable", appInfo.application.name)
                 explanation: reviewsModel.backend ? reviewsModel.backend.errorMessage : ""
