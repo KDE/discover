@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-19 00:41+0000\n"
+"POT-Creation-Date: 2024-10-31 00:41+0000\n"
 "PO-Revision-Date: 2024-09-05 09:49+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -2565,7 +2565,7 @@ msgstr "Toegangsrechten voor %1"
 msgid "Snap"
 msgstr "Snap"
 
-#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:53
+#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
 #, kde-format
 msgid ""
 "This Snap application is not compatible with security sandboxing and will "
@@ -2635,7 +2635,7 @@ msgstr "Controleer uw internetverbinding"
 msgid "Refresh"
 msgstr "Vernieuwen"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:796
+#: libdiscover/resources/ResourcesProxyModel.cpp:800
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

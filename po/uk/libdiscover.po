@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-19 00:41+0000\n"
+"POT-Creation-Date: 2024-10-31 00:41+0000\n"
 "PO-Revision-Date: 2024-08-21 16:24+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -2593,7 +2593,7 @@ msgstr "Права доступу для %1"
 msgid "Snap"
 msgstr "Snap"
 
-#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:53
+#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
 #, kde-format
 msgid ""
 "This Snap application is not compatible with security sandboxing and will "
@@ -2661,7 +2661,7 @@ msgstr "Будь ласка, перевірте працездатність і�
 msgid "Refresh"
 msgstr "Оновити"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:796
+#: libdiscover/resources/ResourcesProxyModel.cpp:800
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

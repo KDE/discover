@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-19 00:41+0000\n"
+"POT-Creation-Date: 2024-10-31 00:41+0000\n"
 "PO-Revision-Date: 2024-02-07 19:19+0200\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2555,7 +2555,7 @@ msgstr "Käyttöoikeudet sovellukselle %1"
 msgid "Snap"
 msgstr "Snap"
 
-#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:53
+#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
 #, kde-format
 msgid ""
 "This Snap application is not compatible with security sandboxing and will "
@@ -2625,7 +2625,7 @@ msgstr "Tarkista verkkoyhteys"
 msgid "Refresh"
 msgstr "Virkistä"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:796
+#: libdiscover/resources/ResourcesProxyModel.cpp:800
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
