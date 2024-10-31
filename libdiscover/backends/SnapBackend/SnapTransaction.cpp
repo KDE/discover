@@ -33,6 +33,10 @@ SnapTransaction::SnapTransaction(QSnapdClient *client, SnapResource *app, Role r
 void SnapTransaction::cancel()
 {
     m_request->cancel();
+    if (m_request->error() != QSnapdRequest::NoError) {
+        Q_EMIT passiveMessage(m_request->errorString());
+    }
+    setStatus(CancelledStatus);
 }
 
 void SnapTransaction::finishTransaction()
@@ -100,6 +104,7 @@ void SnapTransaction::setRequest(QSnapdRequest *req)
 
     setCancellable(true);
     connect(m_request.data(), &QSnapdRequest::progress, this, &SnapTransaction::progressed);
+    connect(m_request.data(), &QSnapdRequest::cancel, this, &SnapTransaction::finishTransaction);
     connect(m_request.data(), &QSnapdRequest::complete, this, &SnapTransaction::finishTransaction);
 
     setStatus(CommittingStatus);
