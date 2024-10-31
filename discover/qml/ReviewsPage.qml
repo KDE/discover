@@ -15,7 +15,7 @@ import org.kde.discover.app as DiscoverApp
 import org.kde.kirigami as Kirigami
 import org.kde.kitemmodels as KItemModels
 
-Kirigami.Dialog {
+Kirigami.OverlaySheet {
     id: page
 
     property Discover.ReviewsModel model
@@ -42,8 +42,7 @@ Kirigami.Dialog {
 
     title: i18n("Reviews for %1", page.resource.name)
 
-    standardButtons: undefined
-    footer.visible: false
+    showCloseButton: false
 
     header: T.Control {
         implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
@@ -51,7 +50,7 @@ Kirigami.Dialog {
         implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                                 implicitContentHeight + topPadding + bottomPadding)
 
-        padding: Kirigami.Units.largeSpacing
+        padding: 0
         bottomPadding: verticalPadding + headerSeparator.implicitHeight // add space for bottom separator
 
         contentItem: ColumnLayout {
@@ -86,10 +85,9 @@ Kirigami.Dialog {
                     Layout.alignment: tallHeader ? Qt.AlignRight | Qt.AlignTop : Qt.AlignRight | Qt.AlignVCenter
                     Layout.topMargin: tallHeader ? Kirigami.Units.largeSpacing : 0
 
-                    visible: page.showCloseButton
                     icon.name: closeIcon.hovered ? "window-close" : "window-close-symbolic"
                     text: qsTr("Close", "@action:button close dialog")
-                    onClicked: mouse => page.reject()
+                    onClicked: mouse => page.close()
                     display: QQC2.AbstractButton.IconOnly
                 }
             }
@@ -177,15 +175,6 @@ Kirigami.Dialog {
                 visible: children.length > 0
 
                 Layout.fillWidth: true
-            }
-        }
-
-        // header background
-        background: Item {
-            Kirigami.Separator {
-                id: headerSeparator
-                width: parent.width
-                anchors.bottom: parent.bottom
             }
         }
     }
