@@ -130,6 +130,7 @@ GenericName[zh_TW]=軟體中心
 Categories=Qt;KDE;System;
 Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
 Keywords[ar]=برنامج;برمجيّة;برمجية;مستودع;حزمة;تثبيت;إزالة;أرشيف;تحديث;تطبيقات;تطبيق;متجر;
+Keywords[be]=праграма;праграмнае забеспячэнне;крама;рэпазіторый;пакет; дадаць;усталяваць; выдаліць; выдаліць; абнавіць;праграмы;праграмы; гульні;flatpak;snap;дапаўненні;дадаткі;прашыўка;
 Keywords[bg]=програма;софтуер;хранилище;пакет;инсталиране;премахване;актуализация;програми;приложения;игри;
 Keywords[ca]=programa;programari;botiga;repositori;paquet;afegeix;instal·la;desinstal·la;elimina;actualitza;apps;aplicacions;jocs;flatpak;snap;complements;microprogramari;firmware;
 Keywords[ca@valencia]=programa;programari;botiga;repositori;paquet;afig;instal·la;desinstal·la;elimina;actualitza;apps;aplicacions;jocs;flatpak;snap;complements;microprogramari;firmware;
