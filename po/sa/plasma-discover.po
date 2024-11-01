@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-29 00:40+0000\n"
+"POT-Creation-Date: 2024-11-01 00:40+0000\n"
 "PO-Revision-Date: 2023-09-29 19:09+0530\n"
 "Last-Translator: \n"
 "Language-Team: Sanskrit\n"
@@ -695,7 +695,7 @@ msgstr[1] "अन्वेषणं - %1 वस्तूनि"
 msgid "Search"
 msgstr "अन्वेषण"
 
-#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:144
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:142
 #, kde-format
 msgid "Sort: %1"
 msgstr "क्रमयन्तु: %1"
@@ -1276,29 +1276,29 @@ msgstr "एकं नाम निवेशयन्तु"
 msgid "Reviews for %1"
 msgstr "%1 कृते समीक्षाः"
 
-#: discover/qml/ReviewsPage.qml:108
+#: discover/qml/ReviewsPage.qml:106
 #, kde-format
 msgid "Write a Review…"
 msgstr "समीक्षां लिखन्तु…"
 
-#: discover/qml/ReviewsPage.qml:121
+#: discover/qml/ReviewsPage.qml:119
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "समीक्षां लिखितुं एतत् अनुप्रयोगं संस्थापयन्तु"
 
-#: discover/qml/ReviewsPage.qml:148
+#: discover/qml/ReviewsPage.qml:146
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
 msgstr ""
 
-#: discover/qml/ReviewsPage.qml:155
+#: discover/qml/ReviewsPage.qml:153
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
 msgstr ""
 
-#: discover/qml/ReviewsPage.qml:162
+#: discover/qml/ReviewsPage.qml:160
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Highest-Rated Games"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-29 00:40+0000\n"
+"POT-Creation-Date: 2024-11-01 00:40+0000\n"
 "PO-Revision-Date: 2024-08-20 21:42+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -671,7 +671,7 @@ msgstr[0] "검색 - 항목 %1개"
 msgid "Search"
 msgstr "검색"
 
-#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:144
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:142
 #, kde-format
 msgid "Sort: %1"
 msgstr "정렬: %1"
@@ -1252,29 +1252,29 @@ msgstr "이름 입력"
 msgid "Reviews for %1"
 msgstr "%1 리뷰"
 
-#: discover/qml/ReviewsPage.qml:108
+#: discover/qml/ReviewsPage.qml:106
 #, kde-format
 msgid "Write a Review…"
 msgstr "리뷰 작성…"
 
-#: discover/qml/ReviewsPage.qml:121
+#: discover/qml/ReviewsPage.qml:119
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "리뷰를 작성하려면 앱을 설치해야 합니다"
 
-#: discover/qml/ReviewsPage.qml:148
+#: discover/qml/ReviewsPage.qml:146
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
 msgstr "관련성 높은 리뷰"
 
-#: discover/qml/ReviewsPage.qml:155
+#: discover/qml/ReviewsPage.qml:153
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
 msgstr "최신 리뷰"
 
-#: discover/qml/ReviewsPage.qml:162
+#: discover/qml/ReviewsPage.qml:160
 #, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"

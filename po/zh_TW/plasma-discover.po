@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-29 00:40+0000\n"
+"POT-Creation-Date: 2024-11-01 00:40+0000\n"
 "PO-Revision-Date: 2024-10-02 17:18+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -661,7 +661,7 @@ msgstr[0] "搜尋 - %1 項"
 msgid "Search"
 msgstr "搜尋"
 
-#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:144
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:142
 #, kde-format
 msgid "Sort: %1"
 msgstr "排序：%1"
@@ -1245,29 +1245,29 @@ msgstr "輸入名稱"
 msgid "Reviews for %1"
 msgstr "%1 的評論"
 
-#: discover/qml/ReviewsPage.qml:108
+#: discover/qml/ReviewsPage.qml:106
 #, kde-format
 msgid "Write a Review…"
 msgstr "撰寫評論…"
 
-#: discover/qml/ReviewsPage.qml:121
+#: discover/qml/ReviewsPage.qml:119
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "安裝這個應用程式來撰寫評論"
 
-#: discover/qml/ReviewsPage.qml:148
+#: discover/qml/ReviewsPage.qml:146
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
 msgstr "最相關"
 
-#: discover/qml/ReviewsPage.qml:155
+#: discover/qml/ReviewsPage.qml:153
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
 msgstr "最近"
 
-#: discover/qml/ReviewsPage.qml:162
+#: discover/qml/ReviewsPage.qml:160
 #, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"

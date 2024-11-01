@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-29 00:40+0000\n"
+"POT-Creation-Date: 2024-11-01 00:40+0000\n"
 "PO-Revision-Date: 2024-09-28 00:05+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -700,7 +700,7 @@ msgstr[1] "Buscar - %1 elementos"
 msgid "Search"
 msgstr "Buscar"
 
-#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:144
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:142
 #, kde-format
 msgid "Sort: %1"
 msgstr "Ordenar: %1"
@@ -1296,29 +1296,29 @@ msgstr "Insertar un nombre"
 msgid "Reviews for %1"
 msgstr "Reseñas para %1"
 
-#: discover/qml/ReviewsPage.qml:108
+#: discover/qml/ReviewsPage.qml:106
 #, kde-format
 msgid "Write a Review…"
 msgstr "Escribir una reseña..."
 
-#: discover/qml/ReviewsPage.qml:121
+#: discover/qml/ReviewsPage.qml:119
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "Instale esta aplicación para escribir una reseña"
 
-#: discover/qml/ReviewsPage.qml:148
+#: discover/qml/ReviewsPage.qml:146
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
 msgstr "Más relevantes"
 
-#: discover/qml/ReviewsPage.qml:155
+#: discover/qml/ReviewsPage.qml:153
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
 msgstr "Más recientes"
 
-#: discover/qml/ReviewsPage.qml:162
+#: discover/qml/ReviewsPage.qml:160
 #, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
