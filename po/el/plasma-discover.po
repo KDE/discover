@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-01 00:40+0000\n"
+"POT-Creation-Date: 2024-11-02 00:41+0000\n"
 "PO-Revision-Date: 2024-09-19 14:33+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -569,99 +569,99 @@ msgstr "Κριτικές"
 msgid "Loading reviews for %1"
 msgstr "Φόρτωση αξιολογήσεων για το %1"
 
-#: discover/qml/ApplicationPage.qml:721
+#: discover/qml/ApplicationPage.qml:722
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "Οι αξιολογήσεις για το %1 είναι προσωρινά μη διαθέσιμες"
 
-#: discover/qml/ApplicationPage.qml:743
+#: discover/qml/ApplicationPage.qml:744
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Εμφάνιση όλων των αξιολογήσεων"
 
-#: discover/qml/ApplicationPage.qml:755
+#: discover/qml/ApplicationPage.qml:756
 #, kde-format
 msgid "Write a Review"
 msgstr "Γράψτε μια αξιολόγηση"
 
-#: discover/qml/ApplicationPage.qml:755
+#: discover/qml/ApplicationPage.qml:756
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Εγκαταστήστε για να γράψετε μια αξιολόγηση"
 
-#: discover/qml/ApplicationPage.qml:777
+#: discover/qml/ApplicationPage.qml:778
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr "Εξωτερικοί σύνδεσμοι"
 
-#: discover/qml/ApplicationPage.qml:796
+#: discover/qml/ApplicationPage.qml:797
 #, kde-format
 msgid "Documentation"
 msgstr "Τεκμηρίωση"
 
-#: discover/qml/ApplicationPage.qml:797
+#: discover/qml/ApplicationPage.qml:798
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Διαβάστε την επίσημη τεκμηρίωση του έργου"
 
-#: discover/qml/ApplicationPage.qml:809
+#: discover/qml/ApplicationPage.qml:810
 #, kde-format
 msgid "Website"
 msgstr "Ιστότοπος"
 
-#: discover/qml/ApplicationPage.qml:810
+#: discover/qml/ApplicationPage.qml:811
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Επισκεφτείτε τον ιστότοπο  του έργου"
 
-#: discover/qml/ApplicationPage.qml:822
+#: discover/qml/ApplicationPage.qml:823
 #, kde-format
 msgid "Donate"
 msgstr "Δωρεά"
 
-#: discover/qml/ApplicationPage.qml:823
+#: discover/qml/ApplicationPage.qml:824
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr ""
 "Υποστηρίξτε και ευχαριστήστε τους προγραμματιστές κάνοντας μια δωρεά στο "
 "έργο τους"
 
-#: discover/qml/ApplicationPage.qml:835
+#: discover/qml/ApplicationPage.qml:836
 #, kde-format
 msgid "Report Bug"
 msgstr "Αναφορά σφάλματος"
 
-#: discover/qml/ApplicationPage.qml:836
+#: discover/qml/ApplicationPage.qml:837
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Αναφέρατε ένα σφάλμα που βρήκατε για να βοηθήσετε να φτιαχτεί"
 
-#: discover/qml/ApplicationPage.qml:848
+#: discover/qml/ApplicationPage.qml:849
 #, kde-format
 msgid "Contribute"
 msgstr "Συνεισφορά"
 
-#: discover/qml/ApplicationPage.qml:849
+#: discover/qml/ApplicationPage.qml:850
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
 "Βοηθήστε τους προγραμματιστές γράφοντας κώδικα, σχεδιάζοντας, δοκιμάζοντας ή "
 "μεταφράζοντας"
 
-#: discover/qml/ApplicationPage.qml:879
+#: discover/qml/ApplicationPage.qml:880
 #, kde-format
 msgid "All Licenses"
 msgstr "Όλες οι Άδειες"
 
-#: discover/qml/ApplicationPage.qml:911
+#: discover/qml/ApplicationPage.qml:912
 #, kde-format
 msgid "Content Rating"
 msgstr "Αξιολόγηση περιεχομένου"
 
-#: discover/qml/ApplicationPage.qml:934
+#: discover/qml/ApplicationPage.qml:935
 #, fuzzy, kde-format
 #| msgid "Submit Usage Information"
 msgctxt "@title:window"
