@@ -23,30 +23,36 @@ DummyReviewsBackend::~DummyReviewsBackend() noexcept
 {
 }
 
-void DummyReviewsBackend::fetchReviews(AbstractResource *resource, int page)
+ReviewsJob *DummyReviewsBackend::fetchReviews(AbstractResource *resource, int page)
 {
+    auto ret = new ReviewsJob;
     if (page >= 5) {
-        return;
+        ret->deleteLater();
+        return ret;
     }
 
-    QVector<ReviewPtr> review;
-    for (int i = 0; i < 33; i++) {
-        review += ReviewPtr(new Review(resource->name(),
-                                       resource->packageName(),
-                                       QStringLiteral("en_US"),
-                                       QStringLiteral("good morning"),
-                                       QStringLiteral("the morning is very good"),
-                                       QStringLiteral("dummy"),
-                                       QDateTime(),
-                                       true,
-                                       page + i,
-                                       i % 5,
-                                       1,
-                                       1,
-                                       3,
-                                       resource->packageName()));
-    }
-    Q_EMIT reviewsReady(resource, review, false);
+    QTimer::singleShot(0, this, [ret, resource, page] {
+        QVector<ReviewPtr> review;
+        for (int i = 0; i < 33; i++) {
+            review += ReviewPtr(new Review(resource->name(),
+                                           resource->packageName(),
+                                           QStringLiteral("en_US"),
+                                           QStringLiteral("good morning"),
+                                           QStringLiteral("the morning is very good"),
+                                           QStringLiteral("dummy"),
+                                           QDateTime(),
+                                           true,
+                                           page + i,
+                                           i % 5,
+                                           1,
+                                           1,
+                                           3,
+                                           resource->packageName()));
+        }
+        Q_EMIT ret->reviewsReady(review, page < 5);
+    });
+
+    return ret;
 }
 
 Rating DummyReviewsBackend::ratingForApplication(AbstractResource *resource) const
@@ -78,13 +84,13 @@ void DummyReviewsBackend::submitUsefulness(Review *review, bool useful)
     review->setUsefulChoice(useful ? ReviewsModel::Yes : ReviewsModel::No);
 }
 
-void DummyReviewsBackend::sendReview(AbstractResource *resource,
-                                     const QString &summary,
-                                     const QString &reviewText,
-                                     const QString &rating,
-                                     const QString &userName)
+ReviewsJob *
+DummyReviewsBackend::sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName)
 {
     qDebug() << "dummy submit review" << resource->name() << summary << reviewText << rating << userName;
+    auto r = new ReviewsJob;
+    r->deleteLater();
+    return r;
 }
 
 bool DummyReviewsBackend::isResourceSupported(AbstractResource *resource) const

@@ -48,7 +48,7 @@ public:
     void deleteReview(Review *) override
     {
     }
-    void fetchReviews(AbstractResource *resource, int page = 1) override;
+    ReviewsJob *fetchReviews(AbstractResource *resource, int page = 1) override;
     bool isFetching() const override
     {
         return m_isFetching;
@@ -71,15 +71,14 @@ public:
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
-    void reviewsFetched();
-    void reviewSubmitted(QNetworkReply *reply);
     void usefulnessSubmitted();
 
 Q_SIGNALS:
     void ratingsReady();
 
 protected:
-    void sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName) override;
+    ReviewsJob *
+    sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName) override;
     QString userName() const override;
 
 private:
@@ -87,11 +86,11 @@ private:
     void setFetching(bool fetching);
     QNetworkAccessManager *nam();
     void parseRatings();
-    void parseReviews(const QJsonDocument &document, AbstractResource *resource);
 
     QString m_errorMessage;
     bool m_isFetching = false;
     CachedNetworkAccessManager *m_delayedNam = nullptr;
+    QHash<QByteArray, ReviewsJob *> m_jobs;
 
     struct State {
         QHash<QString, Rating> ratings;

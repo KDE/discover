@@ -36,7 +36,7 @@ public:
     void deleteReview(Review *) override
     {
     }
-    void fetchReviews(AbstractResource *app, int page = 1) override;
+    ReviewsJob *fetchReviews(AbstractResource *app, int page = 1) override;
     bool isFetching() const override
     {
         return false;
@@ -61,8 +61,11 @@ public:
     }
 
 protected:
-    void sendReview(AbstractResource *, const QString &, const QString &, const QString &, const QString &) override
+    ReviewsJob *sendReview(AbstractResource *, const QString &, const QString &, const QString &, const QString &) override
     {
+        auto ret = new ReviewsJob;
+        ret->deleteLater();
+        return ret;
     }
     QString userName() const override
     {

@@ -40,7 +40,7 @@ public:
     void deleteReview(Review *) override
     {
     }
-    void fetchReviews(AbstractResource *resource, int page = 1) override;
+    ReviewsJob *fetchReviews(AbstractResource *resource, int page = 1) override;
     bool isFetching() const override
     {
         return false;
@@ -58,7 +58,8 @@ Q_SIGNALS:
     void ratingsReady();
 
 protected:
-    void sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName) override;
+    ReviewsJob *
+    sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName) override;
 
 private:
     QHash<AbstractResource *, Rating> m_ratings;

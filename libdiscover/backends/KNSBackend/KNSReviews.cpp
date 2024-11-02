@@ -18,47 +18,6 @@
 #include <attica/providermanager.h>
 #include <resources/AbstractResource.h>
 
-KNSReviews::KNSReviews(KNSBackend *backend)
-    : AbstractReviewsBackend(backend)
-    , m_backend(backend)
-{
-}
-
-Rating KNSReviews::ratingForApplication(AbstractResource *resource) const
-{
-    if (resource) {
-        return resource->rating();
-    }
-    return {};
-}
-
-void KNSReviews::fetchReviews(AbstractResource *resource, int page)
-{
-    const auto job = provider().requestComments(Attica::Comment::ContentComment, resource->packageName(), QStringLiteral("0"), page - 1, 10);
-    if (!job) {
-        Q_EMIT reviewsReady(resource, {}, false);
-        return;
-    }
-    job->setProperty("app", QVariant::fromValue(resource));
-    connect(job, &Attica::BaseJob::finished, this, &KNSReviews::commentsReceived);
-    job->start();
-    acquireFetching(true);
-}
-
-void KNSReviews::acquireFetching(bool fetching)
-{
-    if (fetching) {
-        m_fetching++;
-    } else {
-        m_fetching--;
-    }
-
-    if ((!fetching && m_fetching == 0) || (fetching && m_fetching == 1)) {
-        Q_EMIT fetchingChanged(m_fetching != 0);
-    }
-    Q_ASSERT(m_fetching >= 0);
-}
-
 static QVector<ReviewPtr> createReviewList(AbstractResource *resource, const Attica::Comment::List comments, int depth = 0)
 {
     QVector<ReviewPtr> reviews;
@@ -87,15 +46,51 @@ static QVector<ReviewPtr> createReviewList(AbstractResource *resource, const Att
     return reviews;
 }
 
-void KNSReviews::commentsReceived(Attica::BaseJob *j)
+KNSReviews::KNSReviews(KNSBackend *backend)
+    : AbstractReviewsBackend(backend)
+    , m_backend(backend)
 {
-    acquireFetching(false);
-    const auto job = static_cast<Attica::ListJob<Attica::Comment> *>(j);
+}
 
-    const auto app = job->property("app").value<AbstractResource *>();
-    QVector<ReviewPtr> reviews = createReviewList(app, job->itemList());
+Rating KNSReviews::ratingForApplication(AbstractResource *resource) const
+{
+    if (resource) {
+        return resource->rating();
+    }
+    return {};
+}
 
-    Q_EMIT reviewsReady(app, reviews, !reviews.isEmpty());
+ReviewsJob *KNSReviews::fetchReviews(AbstractResource *resource, int page)
+{
+    const auto job = provider().requestComments(Attica::Comment::ContentComment, resource->packageName(), QStringLiteral("0"), page - 1, 10);
+    if (!job) {
+        auto r = new ReviewsJob;
+        r->deleteLater();
+        return r;
+    }
+    auto reviewJob = new ReviewsJob;
+    connect(job, &Attica::BaseJob::finished, this, [job, resource, reviewJob] {
+        QVector<ReviewPtr> reviews = createReviewList(resource, job->itemList());
+
+        Q_EMIT reviewJob->reviewsReady(reviews, !reviews.isEmpty());
+        reviewJob->deleteLater();
+    });
+    job->start();
+    return reviewJob;
+}
+
+void KNSReviews::acquireFetching(bool fetching)
+{
+    if (fetching) {
+        m_fetching++;
+    } else {
+        m_fetching--;
+    }
+
+    if ((!fetching && m_fetching == 0) || (fetching && m_fetching == 1)) {
+        Q_EMIT fetchingChanged(m_fetching != 0);
+    }
+    Q_ASSERT(m_fetching >= 0);
 }
 
 bool KNSReviews::isFetching() const
@@ -113,13 +108,18 @@ void KNSReviews::deleteReview(Review * /*r*/)
     qWarning() << "cannot delete comments";
 }
 
-void KNSReviews::sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName)
+ReviewsJob *
+KNSReviews::sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName)
 {
     Q_UNUSED(userName);
     provider().voteForContent(resource->packageName(), rating.toUInt() * 20);
     if (!summary.isEmpty()) {
         provider().addNewComment(Attica::Comment::ContentComment, resource->packageName(), QString(), QString(), summary, reviewText);
     }
+
+    auto job = new ReviewsJob;
+    job->deleteLater();
+    return job;
 }
 
 void KNSReviews::submitUsefulness(Review *review, bool useful)

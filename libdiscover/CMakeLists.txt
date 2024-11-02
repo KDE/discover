@@ -65,6 +65,7 @@ add_library(DiscoverCommon ${discovercommon_SRCS})
 if(TARGET AppStreamQt)
     target_sources(DiscoverCommon PRIVATE
         appstream/OdrsReviewsBackend.cpp
+        appstream/OdrsReviewsJob.cpp
         appstream/AppStreamIntegration.cpp
         appstream/AppStreamUtils.cpp
     )

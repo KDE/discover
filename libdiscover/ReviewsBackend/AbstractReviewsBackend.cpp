@@ -37,11 +37,11 @@ QString AbstractReviewsBackend::preferredUserName() const
     }
 }
 
-void AbstractReviewsBackend::submitReview(AbstractResource *resource,
-                                          const QString &summary,
-                                          const QString &reviewText,
-                                          const QString &rating,
-                                          const QString &userName)
+ReviewsJob *AbstractReviewsBackend::submitReview(AbstractResource *resource,
+                                                 const QString &summary,
+                                                 const QString &reviewText,
+                                                 const QString &rating,
+                                                 const QString &userName)
 {
     if (supportsNameChange() && !userName.isEmpty()) {
         auto config = KSharedConfig::openConfig();
@@ -51,7 +51,7 @@ void AbstractReviewsBackend::submitReview(AbstractResource *resource,
 
         Q_EMIT preferredUserNameChanged();
     }
-    sendReview(resource, summary, reviewText, rating, userName);
+    return sendReview(resource, summary, reviewText, rating, userName);
 }
 
 QString AbstractReviewsBackend::errorMessage() const

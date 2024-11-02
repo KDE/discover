@@ -22,7 +22,7 @@ class KNSReviews : public AbstractReviewsBackend
 public:
     explicit KNSReviews(KNSBackend *backend);
 
-    void fetchReviews(AbstractResource *resource, int page = 1) override;
+    ReviewsJob *fetchReviews(AbstractResource *resource, int page = 1) override;
     bool isFetching() const override;
     void flagReview(Review *review, const QString &reason, const QString &text) override;
     void deleteReview(Review *review) override;
@@ -36,11 +36,11 @@ public:
     bool isResourceSupported(AbstractResource *resource) const override;
 
 protected:
-    void sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName) override;
+    ReviewsJob *
+    sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName) override;
     QString userName() const override;
 
 private Q_SLOTS:
-    void commentsReceived(Attica::BaseJob *job);
     void credentialsReceived(const QString &user, const QString &password);
 
 private:

@@ -191,7 +191,6 @@ void ReviewsModel::setResource(AbstractResource *app)
 
         if (m_backend) {
             disconnect(m_backend, &AbstractReviewsBackend::errorMessageChanged, this, &ReviewsModel::restartFetching);
-            disconnect(m_backend, &AbstractReviewsBackend::reviewsReady, this, &ReviewsModel::addReviews);
             disconnect(m_backend, &AbstractReviewsBackend::fetchingChanged, this, &ReviewsModel::fetchingChanged);
             disconnect(m_app, &AbstractResource::versionsChanged, this, &ReviewsModel::restartFetching);
         }
@@ -199,7 +198,6 @@ void ReviewsModel::setResource(AbstractResource *app)
         m_backend = app ? app->backend()->reviewsBackend() : nullptr;
         if (m_backend) {
             connect(m_backend, &AbstractReviewsBackend::errorMessageChanged, this, &ReviewsModel::restartFetching);
-            connect(m_backend, &AbstractReviewsBackend::reviewsReady, this, &ReviewsModel::addReviews);
             connect(m_backend, &AbstractReviewsBackend::fetchingChanged, this, &ReviewsModel::fetchingChanged);
             connect(m_app, &AbstractResource::versionsChanged, this, &ReviewsModel::restartFetching);
 
@@ -221,25 +219,26 @@ void ReviewsModel::restartFetching()
     m_lastPage = 0;
     fetchMore();
     Q_EMIT rowsChanged();
+    Q_EMIT fetchingChanged(m_job);
 }
 
 void ReviewsModel::fetchMore(const QModelIndex &parent)
 {
-    if (!m_backend || !m_app || parent.isValid() || m_backend->isFetching() || !m_canFetchMore) {
+    if (!m_backend || !m_app || parent.isValid() || !m_canFetchMore) {
+        return;
+    }
+
+    if (m_job) {
         return;
     }
 
     m_lastPage++;
-    m_backend->fetchReviews(m_app, m_lastPage);
+    setReviewsJob(m_backend->fetchReviews(m_app, m_lastPage));
     // qCDebug(LIBDISCOVER_LOG) << "fetching reviews... " << m_lastPage;
 }
 
-void ReviewsModel::addReviews(AbstractResource *app, const QVector<ReviewPtr> &reviews, bool canFetchMore)
+void ReviewsModel::addReviews(const QVector<ReviewPtr> &reviews, bool canFetchMore)
 {
-    if (app != m_app) {
-        return;
-    }
-
     m_canFetchMore = canFetchMore;
     qCDebug(LIBDISCOVER_LOG) << "reviews arrived..." << m_lastPage << reviews.size();
 
@@ -288,7 +287,25 @@ StarsCount ReviewsModel::starsCount() const
 
 bool ReviewsModel::isFetching() const
 {
-    return m_backend && m_backend->isFetching();
+    return m_job;
+}
+
+void ReviewsModel::setReviewsJob(ReviewsJob *job)
+{
+    if (job == m_job) {
+        return;
+    }
+
+    if (m_job) {
+        disconnect(m_job, &QObject::destroyed, this, nullptr);
+    }
+    Q_ASSERT(job);
+    connect(job, &ReviewsJob::reviewsReady, this, &ReviewsModel::addReviews);
+    connect(job, &QObject::destroyed, this, [this] {
+        Q_EMIT fetchingChanged(false);
+    });
+    m_job = job;
+    Q_EMIT fetchingChanged(true);
 }
 
 #include "moc_ReviewsModel.cpp"

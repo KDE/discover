@@ -14,6 +14,15 @@
 
 class AbstractResource;
 
+class DISCOVERCOMMON_EXPORT ReviewsJob : public QObject
+{
+    Q_OBJECT
+
+Q_SIGNALS:
+    void reviewsReady(const QVector<ReviewPtr> &reviews, bool canFetchMore);
+    void errorMessage(const QString &message);
+};
+
 class DISCOVERCOMMON_EXPORT AbstractReviewsBackend : public QObject
 {
     Q_OBJECT
@@ -45,20 +54,21 @@ public Q_SLOTS:
     // if the backend supports changing it (that is what the preferredUserName is).
     // If the backend returns true for "supportsNameChange()", then the review dialog won't let them change it,
     // therefore making the user_name here the same as "userName()".
-    void submitReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName);
+    [[nodiscard]] virtual ReviewsJob *
+    submitReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName);
     QString preferredUserName() const;
     virtual void deleteReview(Review *review) = 0;
     virtual void flagReview(Review *review, const QString &reason, const QString &text) = 0;
-    virtual void fetchReviews(AbstractResource *resource, int page = 1) = 0;
+    [[nodiscard]] virtual ReviewsJob *fetchReviews(AbstractResource *resource, int page = 1) = 0;
 
 Q_SIGNALS:
-    void reviewsReady(AbstractResource *resource, const QVector<ReviewPtr> &reviews, bool canFetchMore);
     void error(const QString &message);
     void fetchingChanged(bool fetching);
     void preferredUserNameChanged();
     void errorMessageChanged();
 
 protected:
-    virtual void sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName) = 0;
+    virtual ReviewsJob *
+    sendReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName) = 0;
     virtual QString userName() const = 0;
 };

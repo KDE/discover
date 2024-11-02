@@ -18,9 +18,14 @@ Rating AlpineApkReviewsBackend::ratingForApplication(AbstractResource *) const
     return Rating();
 }
 
-void AlpineApkReviewsBackend::fetchReviews(AbstractResource *app, int page)
+ReviewsJob *AlpineApkReviewsBackend::fetchReviews(AbstractResource *app, int page)
 {
-    Q_UNUSED(page)
+    Q_UNUSED(app);
+    Q_UNUSED(page);
+
+    auto ret = new ReviewsJob;
     static const QVector<ReviewPtr> reviews;
-    Q_EMIT reviewsReady(app, reviews, false);
+    Q_EMIT ret->reviewsReady(reviews, false);
+    ret->deleteLater();
+    return ret;
 }

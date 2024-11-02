@@ -8,9 +8,11 @@
 
 #include "discovercommon_export.h"
 #include <QModelIndex>
+#include <QPointer>
 #include <QSharedPointer>
 
 class Review;
+class ReviewsJob;
 typedef QSharedPointer<Review> ReviewPtr;
 
 class StarsCount
@@ -95,7 +97,7 @@ public Q_SLOTS:
     void markUseful(int row, bool useful);
 
 private Q_SLOTS:
-    void addReviews(AbstractResource *app, const QVector<ReviewPtr> &reviews, bool canFetchMore);
+    void addReviews(const QVector<ReviewPtr> &reviews, bool canFetchMore);
     void restartFetching();
 
 Q_SIGNALS:
@@ -105,6 +107,8 @@ Q_SIGNALS:
     void preferredSortRoleChanged();
 
 private:
+    void setReviewsJob(ReviewsJob *job);
+
     AbstractResource *m_app = nullptr;
     AbstractReviewsBackend *m_backend = nullptr;
     QVector<ReviewPtr> m_reviews;
@@ -112,4 +116,5 @@ private:
     StarsCount m_starsCount;
     int m_lastPage;
     bool m_canFetchMore = true;
+    QPointer<ReviewsJob> m_job;
 };
