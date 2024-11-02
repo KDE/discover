@@ -43,8 +43,6 @@ KNSBackendTest::KNSBackendTest(QObject *parent)
         qWarning() << "couldn't run the test";
         exit(0);
     }
-
-    connect(m_backend->reviewsBackend(), &AbstractReviewsBackend::reviewsReady, this, &KNSBackendTest::reviewsArrived);
 }
 
 QVector<AbstractResource *> KNSBackendTest::getResources(ResultsStream *stream, bool canBeEmpty)
@@ -76,7 +74,7 @@ QVector<AbstractResource *> KNSBackendTest::getAllResources(AbstractResourcesBac
     if (CategoryModel::global()->rootCategories().isEmpty()) {
         CategoryModel::global()->populateCategories();
     }
-    filters.category = CategoryModel::global()->rootCategories().constFirst();
+    filters.category = CategoryModel::global()->rootCategories().constLast();
     return getResources(backend->search(filters));
 }
 
@@ -122,8 +120,8 @@ void KNSBackendTest::testReviews()
     }
 
     auto resource = resources.first();
-    QSignalSpy spy(reviewsBackend, &AbstractReviewsBackend::reviewsReady);
-    reviewsBackend->fetchReviews(resource);
+    auto job = reviewsBackend->fetchReviews(resource);
+    QSignalSpy spy(job, &ReviewsJob::reviewsReady);
     QVERIFY(spy.count() || spy.wait());
 }
 
@@ -136,7 +134,7 @@ void KNSBackendTest::reviewsArrived(AbstractResource *resource, const QVector<Re
 void KNSBackendTest::testResourceByUrl()
 {
     AbstractResourcesBackend::Filters filters;
-    filters.resourceUrl = QUrl(QLatin1String("kns://") + m_backend->name() + QLatin1String("/api.kde-look.org/1136471"));
+    filters.resourceUrl = QUrl(QLatin1String("kns://") + m_backend->name() + QLatin1String("/1136471"));
     const QVector<AbstractResource *> resources = getResources(m_backend->search(filters));
     const QVector<QUrl> urls = kTransform<QVector<QUrl>>(resources, [](AbstractResource *resource) {
         return resource->url();
