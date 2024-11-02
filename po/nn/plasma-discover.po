@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-27 02:37+0000\n"
+"POT-Creation-Date: 2024-11-02 02:32+0000\n"
 "PO-Revision-Date: 2024-09-26 19:08+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -537,96 +537,96 @@ msgstr "Tilbakemeldingar"
 msgid "Loading reviews for %1"
 msgstr "Hentar vurderingar for %1"
 
-#: discover/qml/ApplicationPage.qml:721
+#: discover/qml/ApplicationPage.qml:722
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "Vurderingar for %1 er mellombels utilgjengelege"
 
-#: discover/qml/ApplicationPage.qml:743
+#: discover/qml/ApplicationPage.qml:744
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Vis alle vurderingane"
 
-#: discover/qml/ApplicationPage.qml:755
+#: discover/qml/ApplicationPage.qml:756
 #, kde-format
 msgid "Write a Review"
 msgstr "Skriv ei vurdering"
 
-#: discover/qml/ApplicationPage.qml:755
+#: discover/qml/ApplicationPage.qml:756
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Installer for å skriva ei vurdering"
 
-#: discover/qml/ApplicationPage.qml:777
+#: discover/qml/ApplicationPage.qml:778
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr "Eksterne lenkjer"
 
-#: discover/qml/ApplicationPage.qml:796
+#: discover/qml/ApplicationPage.qml:797
 #, kde-format
 msgid "Documentation"
 msgstr "Dokumentasjon"
 
-#: discover/qml/ApplicationPage.qml:797
+#: discover/qml/ApplicationPage.qml:798
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "Les den offisielle dokumentasjonen til prosjektet"
 
-#: discover/qml/ApplicationPage.qml:809
+#: discover/qml/ApplicationPage.qml:810
 #, kde-format
 msgid "Website"
 msgstr "Heimeside"
 
-#: discover/qml/ApplicationPage.qml:810
+#: discover/qml/ApplicationPage.qml:811
 #, kde-format
 msgid "Visit the project's website"
 msgstr "Besøk heimesida til prosjektet"
 
-#: discover/qml/ApplicationPage.qml:822
+#: discover/qml/ApplicationPage.qml:823
 #, kde-format
 msgid "Donate"
 msgstr "Gje pengegåve"
 
-#: discover/qml/ApplicationPage.qml:823
+#: discover/qml/ApplicationPage.qml:824
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "Støtt og takk utviklarane med ei pengegåve"
 
-#: discover/qml/ApplicationPage.qml:835
+#: discover/qml/ApplicationPage.qml:836
 #, kde-format
 msgid "Report Bug"
 msgstr "Meld frå om feil"
 
-#: discover/qml/ApplicationPage.qml:836
+#: discover/qml/ApplicationPage.qml:837
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "Meld frå om feil du ønskjer retta"
 
-#: discover/qml/ApplicationPage.qml:848
+#: discover/qml/ApplicationPage.qml:849
 #, kde-format
 msgid "Contribute"
 msgstr "Bidra"
 
-#: discover/qml/ApplicationPage.qml:849
+#: discover/qml/ApplicationPage.qml:850
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "Hjelp utviklarane med programmering, design, testing eller omsetjing"
 
-#: discover/qml/ApplicationPage.qml:879
+#: discover/qml/ApplicationPage.qml:880
 #, kde-format
 msgid "All Licenses"
 msgstr "Alle lisensane"
 
 # Er snakk om OARS, altså i praksis aldersgrenser (med info om vald, nakenheit, språkbruk osv.).
-#: discover/qml/ApplicationPage.qml:911
+#: discover/qml/ApplicationPage.qml:912
 #, kde-format
 msgid "Content Rating"
 msgstr "Aldersgrense"
 
-#: discover/qml/ApplicationPage.qml:934
+#: discover/qml/ApplicationPage.qml:935
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"

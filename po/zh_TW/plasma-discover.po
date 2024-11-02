@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-27 02:37+0000\n"
+"POT-Creation-Date: 2024-11-02 02:32+0000\n"
 "PO-Revision-Date: 2024-10-02 17:18+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -538,95 +538,95 @@ msgstr "評論"
 msgid "Loading reviews for %1"
 msgstr "正在載入 %1 的評論"
 
-#: discover/qml/ApplicationPage.qml:721
+#: discover/qml/ApplicationPage.qml:722
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "%1 的評論目前暫時無法使用"
 
-#: discover/qml/ApplicationPage.qml:743
+#: discover/qml/ApplicationPage.qml:744
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "顯示所有評論"
 
-#: discover/qml/ApplicationPage.qml:755
+#: discover/qml/ApplicationPage.qml:756
 #, kde-format
 msgid "Write a Review"
 msgstr "撰寫評論"
 
-#: discover/qml/ApplicationPage.qml:755
+#: discover/qml/ApplicationPage.qml:756
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "安裝以撰寫評論"
 
-#: discover/qml/ApplicationPage.qml:777
+#: discover/qml/ApplicationPage.qml:778
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr "外部連結"
 
-#: discover/qml/ApplicationPage.qml:796
+#: discover/qml/ApplicationPage.qml:797
 #, kde-format
 msgid "Documentation"
 msgstr "說明文件"
 
-#: discover/qml/ApplicationPage.qml:797
+#: discover/qml/ApplicationPage.qml:798
 #, kde-format
 msgid "Read the project's official documentation"
 msgstr "閱讀專案的官方文件"
 
-#: discover/qml/ApplicationPage.qml:809
+#: discover/qml/ApplicationPage.qml:810
 #, kde-format
 msgid "Website"
 msgstr "網站"
 
-#: discover/qml/ApplicationPage.qml:810
+#: discover/qml/ApplicationPage.qml:811
 #, kde-format
 msgid "Visit the project's website"
 msgstr "造訪專案的網站"
 
-#: discover/qml/ApplicationPage.qml:822
+#: discover/qml/ApplicationPage.qml:823
 #, kde-format
 msgid "Donate"
 msgstr "贊助"
 
-#: discover/qml/ApplicationPage.qml:823
+#: discover/qml/ApplicationPage.qml:824
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
 msgstr "贊助專案來向開發者表達支持與感謝"
 
-#: discover/qml/ApplicationPage.qml:835
+#: discover/qml/ApplicationPage.qml:836
 #, kde-format
 msgid "Report Bug"
 msgstr "回報問題"
 
-#: discover/qml/ApplicationPage.qml:836
+#: discover/qml/ApplicationPage.qml:837
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
 msgstr "記錄您找到的問題來幫助它被修復"
 
-#: discover/qml/ApplicationPage.qml:848
+#: discover/qml/ApplicationPage.qml:849
 #, kde-format
 msgid "Contribute"
 msgstr "貢獻"
 
-#: discover/qml/ApplicationPage.qml:849
+#: discover/qml/ApplicationPage.qml:850
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr "透過寫程式、進行設計、測試或是翻譯來幫助開發者們"
 
-#: discover/qml/ApplicationPage.qml:879
+#: discover/qml/ApplicationPage.qml:880
 #, kde-format
 msgid "All Licenses"
 msgstr "所有授權"
 
-#: discover/qml/ApplicationPage.qml:911
+#: discover/qml/ApplicationPage.qml:912
 #, kde-format
 msgid "Content Rating"
 msgstr "內容評級"
 
-#: discover/qml/ApplicationPage.qml:934
+#: discover/qml/ApplicationPage.qml:935
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"
