@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-02 00:41+0000\n"
+"POT-Creation-Date: 2024-11-03 00:40+0000\n"
 "PO-Revision-Date: 2024-08-22 12:16+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -2548,7 +2548,7 @@ msgstr "Atļaujas attiecībā uz %1"
 msgid "Snap"
 msgstr "Snap"
 
-#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:55
+#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:58
 #, kde-format
 msgid ""
 "This Snap application is not compatible with security sandboxing and will "
