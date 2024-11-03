@@ -620,7 +620,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
 
     if (useOfflineUpdates() && exit == PackageKit::Transaction::ExitSuccess) {
         if (m_upgrade->isDistroUpgrade()) {
-            QDBusPendingReply<void> reply = PackageKit::Daemon::global()->offline()->triggerUpgrade(PackageKit::Offline::ActionReboot);
+            QDBusPendingReply<void> reply = PackageKit::Daemon::global()->offline()->triggerUpgrade(m_offlineUpdateAction);
             // Call may fail because of authorization
             reply.waitForFinished();
             if (reply.isError()) {
@@ -921,6 +921,8 @@ void PackageKitUpdater::setOfflineUpdateAction(PackageKit::Offline::Action actio
     m_offlineUpdateAction = action;
     if (PackageKit::Daemon::global()->offline()->updateTriggered()) {
         PackageKit::Daemon::global()->offline()->trigger(action);
+    } else if (PackageKit::Daemon::global()->offline()->upgradeTriggered()) {
+        PackageKit::Daemon::global()->offline()->triggerUpgrade(action);
     }
 }
 
