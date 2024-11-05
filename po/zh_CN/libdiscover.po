@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-03 00:40+0000\n"
+"POT-Creation-Date: 2024-11-05 00:41+0000\n"
 "PO-Revision-Date: 2024-04-23 19:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -613,7 +613,7 @@ msgid "Unknown"
 msgstr "未知"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:528
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:492
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:497
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start '%1': %2"
@@ -862,6 +862,11 @@ msgid ""
 "Can communicate with all applications and system services using the "
 "following communication protocols: %1"
 msgstr "允许使用以下通信协议与所有应用程序和系统服务进行通信：%1"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1091
+#, kde-format
+msgid "App Verified on %1 as shipped by its author %2"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
@@ -2059,32 +2064,37 @@ msgctxt "comma separating package names"
 msgid ", "
 msgstr "，"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:410
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
+#, kde-format
+msgid "Software verified by %1"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
 #, kde-format
 msgid "Obsoletes:"
 msgstr "已废弃："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:411
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:416
 #, kde-format
 msgid "Release Notes:"
 msgstr "发行说明："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:412
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:417
 #, kde-format
 msgid "Update State:"
 msgstr "更新状态："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:413
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:418
 #, kde-format
 msgid "Restart:"
 msgstr "重新启动："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:416
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:421
 #, kde-format
 msgid "Vendor:"
 msgstr "发行者："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:445
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:450
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2485,6 +2495,16 @@ msgstr "%1 的权限"
 #, kde-format
 msgid "Snap"
 msgstr "Snap"
+
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:616
+#, kde-format
+msgid "Verified Publisher on snapcraft.io"
+msgstr ""
+
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:618
+#, kde-format
+msgid "Starred Publisher on snapcraft.io"
+msgstr ""
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:58
 #, kde-format

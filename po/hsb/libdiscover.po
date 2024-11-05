@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-03 00:40+0000\n"
+"POT-Creation-Date: 2024-11-05 00:41+0000\n"
 "PO-Revision-Date: 2021-11-06 11:11+0100\n"
 "Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
 "Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
@@ -608,7 +608,7 @@ msgid "Unknown"
 msgstr "Njeznate"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:528
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:492
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:497
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start '%1': %2"
@@ -859,6 +859,11 @@ msgstr ""
 msgid ""
 "Can communicate with all applications and system services using the "
 "following communication protocols: %1"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1091
+#, kde-format
+msgid "App Verified on %1 as shipped by its author %2"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
@@ -2052,32 +2057,37 @@ msgctxt "comma separating package names"
 msgid ", "
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:410
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
+#, kde-format
+msgid "Software verified by %1"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
 #, kde-format
 msgid "Obsoletes:"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:411
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:416
 #, kde-format
 msgid "Release Notes:"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:412
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:417
 #, kde-format
 msgid "Update State:"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:413
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:418
 #, kde-format
 msgid "Restart:"
 msgstr "Znowa startować:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:416
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:421
 #, kde-format
 msgid "Vendor:"
 msgstr "Fabrikat:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:445
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:450
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2461,6 +2471,16 @@ msgstr ""
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
 msgid "Snap"
+msgstr ""
+
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:616
+#, kde-format
+msgid "Verified Publisher on snapcraft.io"
+msgstr ""
+
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:618
+#, kde-format
+msgid "Starred Publisher on snapcraft.io"
 msgstr ""
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:58
