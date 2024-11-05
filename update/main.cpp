@@ -23,6 +23,11 @@ int main(int argc, char **argv)
     about.setProductName("discover/update");
     KAboutData::setApplicationData(about);
 
+    // Disable quitting on eventloop lockers 🙄
+    // https://bugs.kde.org/show_bug.cgi?id=471941
+    // https://bugs.kde.org/show_bug.cgi?id=471548
+    app.setQuitLockEnabled(false);
+
     KDBusService service(KDBusService::Unique);
 
     DiscoverUpdate exp;
