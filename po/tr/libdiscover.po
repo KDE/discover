@@ -891,6 +891,7 @@ msgstr ""
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
 msgstr ""
+"Uygulama, yazarı %2 tarafından çıkarıldığı üzere %1 üzerinde doğrulandı"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
@@ -2115,7 +2116,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "Yazılım, %1 tarafından doğrulandı"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
 #, kde-format
@@ -2573,12 +2574,12 @@ msgstr "Snap"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:616
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "snapcraft.io üzerinde Doğrulanmış Yayımcı"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:618
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "snapcraft.io Üzerinde Yıldızlı Yayımcı"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:58
 #, kde-format
@@ -2604,7 +2605,7 @@ msgstr "SteamOS"
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
 msgstr ""
-"Yüklemek isteyeceğimiz tüm arka uçları virgül ‘,’ ile ayırarak listeleyin."
+"Yüklemek isteyeceğimiz tüm arka uçları virgül “,” ile ayırarak listeleyin."
 
 #: libdiscover/resources/AbstractResource.cpp:93
 #, kde-format
@@ -2743,82 +2744,3 @@ msgstr "Sistem Yazılımı"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Eklentiler"
-
-#~ msgid "Could not find '%1' in '%2'; please make sure it's available."
-#~ msgstr "“%2” içinde “%1” bulunamadı; kullanılabilir olduğundan emin olun."
-
-#~ msgid "%1 channels"
-#~ msgstr "%1 kanal"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content suitable for everyone"
-#~ msgid "All Audiences"
-#~ msgstr "Her Tür Kitle"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with relatively benign themes only unsuitable for very young "
-#~ "children, such as minor cartoon violence or mild profanity"
-#~ msgid "Mild Content"
-#~ msgstr "Ilımlı İçerik"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with some intense themes, such as somewhat realistic violence, "
-#~ "references to sexuality, or adult profanity"
-#~ msgid "Moderate Content"
-#~ msgstr "Orta Düzeyli İçerik"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "mature content that could be quite objectionable or unsuitable for young "
-#~ "audiences, such as realistic graphic violence, extreme profanity or "
-#~ "nudity, or glorification of drug use"
-#~ msgid "Intense Content"
-#~ msgstr "Ağır Düzeyli İçerik"
-
-#~ msgctxt "%1 is the name of the application"
-#~ msgid "Permissions for %1"
-#~ msgstr "%1 İzinleri"
-
-#~ msgid "Downloading system update"
-#~ msgstr "Sistem güncellemesi indiriliyor"
-
-#~ msgid "Updating the system"
-#~ msgstr "Sistem güncelleniyor"
-
-#~ msgid "Updating to the next major version"
-#~ msgstr "Sonraki majör sürüme güncelleniyor"
-
-#~ msgid "A new major version has been released"
-#~ msgstr "Yeni bir majör sürüm yayımlandı"
-
-#~ msgid ""
-#~ "<b>A new major version of %1 has been released!</b>\n"
-#~ "To be able to update to this new version, make sure to apply all pending "
-#~ "updates and reboot your system."
-#~ msgstr ""
-#~ "<b>%1 uygulamasının yeni majör bir sürümü yayımlandı!</b>\n"
-#~ "Bu yeni sürümü kullanmaya başlamak için lütfen bekleyen tüm "
-#~ "güncellemeleri uygulayın ve sisteminizi yeniden başlatın."
-
-#~ msgid "<b>A new major version has been released!</b>"
-#~ msgstr "<b>Yeni bir majör sürüm yayımlandı!</b>"
-
-#~ msgid "Unknown size"
-#~ msgstr "Bilinmeyen boyut"
-
-#~ msgctxt "@info app size"
-#~ msgid "%1 to download, %2 on disk"
-#~ msgstr "%1 indirilecek, diskte %2 alan kaplayacak"
-
-#~ msgctxt "@info app size"
-#~ msgid "%1 on disk"
-#~ msgstr "diskte kapladığı alan %1"
-
-#~ msgid "Access is granted to the entire Session Bus"
-#~ msgstr "Tüm Oturum Veri Yoluna erişim sağlandı"
-
-#~ msgid "Access is granted to the entire System Bus"
-#~ msgstr "Tüm Sistem Veri Yoluna erişim sağlandı"
