@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-03 00:40+0000\n"
-"PO-Revision-Date: 2024-09-29 14:37+0200\n"
+"PO-Revision-Date: 2024-11-06 23:58+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.07.70\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -568,12 +568,12 @@ msgstr "Локален пакет"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:824
 #, kde-format
 msgid "Malformed appstream url '%1'"
-msgstr "Неправилен URL адрес на потока на приложението \"%1\""
+msgstr "Неправилен URL адрес на потока на приложението „%1“"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1969
 #, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "Неуспешно добавяне на източник '%1': %2"
+msgstr "Неуспешно добавяне на източник „%1“: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2091
 #, kde-format
@@ -593,7 +593,7 @@ msgid ""
 "software in this repository will also be made be available in Discover when "
 "the application is installed.</para>"
 msgstr ""
-"<para> Това приложение идва от \"%1\" (хоствано на <link>%2</link>). Друг "
+"<para> Това приложение идва от „%1“ (хоствано на <link>%2</link>). Друг "
 "софтуер в това хранилище също ще бъде достъпен в Discover, когато "
 "приложението бъде инсталирано.</para>"
 
@@ -613,7 +613,7 @@ msgstr "Неизвестно"
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start '%1': %2"
-msgstr "Неуспешно стартиране на '%1': %2"
+msgstr "Неуспешно стартиране на „%1“: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:749
 #, kde-format
@@ -922,7 +922,7 @@ msgstr "Не може да се добави източникът %1"
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
 #, kde-format
 msgid "Removing '%1'"
-msgstr "Премахване \"%1\""
+msgstr "Премахване „%1“"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:290
 #, kde-format
@@ -956,7 +956,7 @@ msgstr "Въведете адрес на хранилището Flatpak (* .flat
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:34
 #, kde-format
 msgid "Adding remote '%1' in %2 from %3"
-msgstr "Добавяне на отдалечено '%1' в %2 от %3"
+msgstr "Добавяне на отдалечено „%1“ в %2 от %3"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:402
 #, kde-format
@@ -1219,7 +1219,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:931
 #, kde-format
 msgid "Cannot remove '%1'"
-msgstr "Не може да се премахне \"%1\""
+msgstr "Не може да се премахне „%1“"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:403
@@ -1605,12 +1605,12 @@ msgstr "Неизвестна грешка %1."
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
 #, kde-format
 msgid "'%1' was changed and suggests to be restarted."
-msgstr "'%1' беше променен и предлага да бъде рестартиран."
+msgstr "„%1“ беше променен и предлага да бъде рестартиран."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
 #, kde-format
 msgid "A change by '%1' suggests your session to be restarted."
-msgstr "Промяна, извършена от '%1' предлага рестартиране на сесията."
+msgstr "Промяна, извършена от „%1“ предлага рестартиране на сесията."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
 #, kde-format
@@ -1618,7 +1618,7 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
-"'%1' беше обновен от съображения за сигурност и се препоръчва рестартиране "
+"„%1“ беше обновен от съображения за сигурност и се препоръчва рестартиране "
 "на сесията."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
@@ -1627,13 +1627,13 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the system is "
 "recommended."
 msgstr ""
-"'%1' беше обновен от съображения за сигурност и се препоръчва рестартиране "
+"„%1“ беше обновен от съображения за сигурност и се препоръчва рестартиране "
 "на системата."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
 #, kde-format
 msgid "A change by '%1' suggests your system to be restarted."
-msgstr "Промяна, извършена от '%1' предлага рестартиране на системата."
+msgstr "Промяна, извършена от „%1“ предлага рестартиране на системата."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
@@ -2232,7 +2232,7 @@ msgid ""
 "Media Change of type '%1' is requested.\n"
 "%2"
 msgstr ""
-"Изисква се промяна на носителя от типа \"%1\".\n"
+"Изисква се промяна на носителя от типа „%1“.\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:766
