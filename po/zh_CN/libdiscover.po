@@ -866,7 +866,7 @@ msgstr "允许使用以下通信协议与所有应用程序和系统服务进行
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1091
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
-msgstr ""
+msgstr "应用在 %1 上被验证为由其作者 %2 发布"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
@@ -2067,7 +2067,7 @@ msgstr "，"
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "由 %1 验证的软件"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
 #, kde-format
@@ -2499,12 +2499,12 @@ msgstr "Snap"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:616
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "snapcraft.io 的验证发布者"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:618
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "snapcraft.io 的星标发布者"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:58
 #, kde-format
