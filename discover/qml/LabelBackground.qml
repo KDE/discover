@@ -38,7 +38,7 @@ QQC2.Control {
                 left: parent.left
                 bottom: parent.bottom
             }
-            color: Qt.alpha(Kirigami.Theme.highlightColor, 0.5)
+            color: Qt.alpha(Kirigami.Theme.highlightColor, 0.3)
             border.color: Kirigami.Theme.highlightColor
             border.width: 1
             radius: root.padding
@@ -50,6 +50,6 @@ QQC2.Control {
     contentItem: QQC2.Label {
         id: theLabel
         horizontalAlignment: Text.AlignHCenter
-        color: root.inProgress ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
+        color: Kirigami.Theme.textColor
     }
 }
