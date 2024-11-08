@@ -431,7 +431,7 @@ DiscoverPage {
                         }
                     }
 
-                    LabelBackground {
+                    TransactionProgressIndicator {
                         Layout.minimumWidth: Kirigami.Units.gridUnit * 6
                         text: listItem.model.resourceState === 2 ? i18n("Installing") : listItem.model.size
 

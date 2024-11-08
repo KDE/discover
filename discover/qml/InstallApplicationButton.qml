@@ -80,7 +80,7 @@ ConditionalLoader {
             QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
         }
 
-        LabelBackground {
+        TransactionProgressIndicator {
             Layout.fillWidth: true
             text: listener.statusText
             progress: listener.progress / 100

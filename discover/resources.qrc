@@ -34,7 +34,7 @@
     <file>qml/CarouselOverlayMaximizedView.qml</file>
     <file>qml/CarouselFullScreenMaximizedView.qml</file>
     <file>qml/CarouselPageIndicator.qml</file>
-    <file>qml/LabelBackground.qml</file>
+    <file>qml/TransactionProgressIndicator.qml</file>
     <file>qml/DiscoverInlineMessage.qml</file>
     <file>qml/DiscoverPage.qml</file>
     <file>qml/DiscoverWindow.qml</file>
