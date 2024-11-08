@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-05 00:41+0000\n"
-"PO-Revision-Date: 2024-08-22 09:59+0200\n"
+"PO-Revision-Date: 2024-11-06 08:46+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -907,7 +907,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1091
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
-msgstr ""
+msgstr "Application vérifiée le %1 telle que publiée par son auteur %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
@@ -2144,7 +2144,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "Logiciel vérifié par %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
 #, kde-format
@@ -2616,12 +2616,12 @@ msgstr "Snap"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:616
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "Éditeur vérifié sur snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:618
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "Éditeur vedette sur snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:58
 #, kde-format
