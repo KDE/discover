@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-05 00:41+0000\n"
-"PO-Revision-Date: 2024-08-22 12:16+0300\n"
+"PO-Revision-Date: 2024-11-07 16:16+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -879,7 +879,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1091
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
-msgstr ""
+msgstr "Programmu pārbaudīja „%1“, apstiprinot, ka to piedāvā tās autors %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
@@ -2103,7 +2103,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "Programmatūru pārbaudīja „%1“"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
 #, kde-format
@@ -2561,12 +2561,12 @@ msgstr "Snap"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:616
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "Pārbaudīts izplatītājs vietnē „snapcraft.io“"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:618
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "Izcelts kā iecienīts publicētājs vietnē „snapcraft.io“"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:58
 #, kde-format
