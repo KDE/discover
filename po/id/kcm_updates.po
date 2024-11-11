@@ -1,6 +1,6 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the discover package.
-# Wantoyo <wantoyek@gmail.com>, 2021, 2022.
+# SPDX-FileCopyrightText: 2021, 2022, 2024 Wantoyo <wantoyek@gmail.com>
 # Linerly <linerly@protonmail.com>, 2022.
 #
 msgid ""
@@ -10,13 +10,13 @@ msgstr ""
 "POT-Creation-Date: 2022-11-07 00:45+0000\n"
 "PO-Revision-Date: 2022-09-23 07:49+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
-"Language-Team: https://matrix.to/#/#i18n_kde_id:matrix.org\n"
+"Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: kcm/package/contents/ui/main.qml:32
 #, kde-format

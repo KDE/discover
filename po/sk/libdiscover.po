@@ -1,7 +1,7 @@
 # translation of libmuon.po to Slovak
 # Richard Fric <Richard.Fric@kdemail.net>, 2010.
 # Milan Basa <minkob@mail.t-com.sk>, 2011.
-# SPDX-FileCopyrightText: 2013, 2014, 2015, 2016, 2017, 2019, 2021, 2023 Roman Paholík <wizzardsk@gmail.com>
+# SPDX-FileCopyrightText: 2013, 2014, 2015, 2016, 2017, 2019, 2021, 2023, 2024 Roman Paholík <wizzardsk@gmail.com>
 # Mthw <jari_45@hotmail.com>, 2018, 2019.
 # Matej Mrenica <matejm98mthw@gmail.com>, 2019, 2020, 2021, 2022.
 # Dusan Kazik <prescott66@gmail.com>, 2020.
@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-24 03:09+0000\n"
-"PO-Revision-Date: 2023-12-11 19:07+0100\n"
-"Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
+"PO-Revision-Date: 2024-11-10 18:14+0100\n"
+"Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 24.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #, kde-format
@@ -36,11 +36,9 @@ msgid "Proprietary"
 msgstr "Uzavreté"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Publishing"
+#, kde-format
 msgid "Public Domain"
-msgstr "Publikovanie"
+msgstr "Voľne šíriteľné dielo"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:123
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
@@ -537,11 +535,10 @@ msgid "System Settings"
 msgstr "Systémové nastavenia"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:132
-#, fuzzy, kde-format
-#| msgid "%1 (user)"
+#, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
-msgstr "Používateľ"
+msgstr "%1 (používateľ)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:740
 #, kde-format
@@ -618,15 +615,14 @@ msgid "All Files"
 msgstr "Všetky súbory"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:758
-#, fuzzy, kde-format
+#, kde-format
 msgid "Home"
 msgstr "Domov"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:760
-#, fuzzy, kde-format
-#| msgid "Downloading"
+#, kde-format
 msgid "Downloads"
-msgstr "Sťahovania"
+msgstr "Stiahnuté"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:762
 #, kde-format
@@ -743,9 +739,9 @@ msgstr ""
 "a ovládať ich"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
-#, fuzzy, kde-format
+#, kde-format
 msgid "Kernel-based Virtual Machine Access"
-msgstr "Prístup k virtuálnym strojom založeným na jadre"
+msgstr "Prístup k virtuálnemu stroju založenému na jadre"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
 #, kde-format
@@ -877,9 +873,7 @@ msgid "Add Flathub"
 msgstr "Pridať Flathub"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:89
-#, fuzzy, kde-format
-#| msgctxt "@info Status information, widget title"
-#| msgid "Applying Changes"
+#, kde-format
 msgid "Apply Changes"
 msgstr "Aplikovať zmeny"
 
@@ -1095,10 +1089,10 @@ msgid "Wrong KNewStuff URI: %1"
 msgstr "Nesprávna URI KNewStuff: %1"
 
 #: libdiscover/backends/KNSBackend/KNSResource.cpp:168
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "The name of the KDE Store"
 msgid "KDE Store"
-msgstr "KDE Store"
+msgstr "KDE obchod"
 
 #: libdiscover/backends/KNSBackend/KNSReviews.cpp:145
 #, kde-format
@@ -1940,7 +1934,7 @@ msgid "%1<nl/>Please report this error to your distribution."
 msgstr "%1<nl/>Prosím, nahláste túto chybu vašej distribúcii."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:147
-#, fuzzy, kde-format
+#, kde-format
 msgid "Repaired Successfully"
 msgstr "Opravené úspešne"
 
@@ -2363,9 +2357,7 @@ msgid "Channels…"
 msgstr "Kanály…"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox Filters all changes in the history view"
-#| msgid "All changes"
+#, kde-format
 msgid "%1 channels"
 msgstr "%1 kanálov"
 
@@ -2376,7 +2368,7 @@ msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
-#, fuzzy, kde-format
+#, kde-format
 msgid "Switch"
 msgstr "Prepnúť"
 
