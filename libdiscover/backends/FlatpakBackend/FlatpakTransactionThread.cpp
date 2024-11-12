@@ -107,7 +107,11 @@ void operation_done([[maybe_unused]] FlatpakTransaction *transaction,
     qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "NOOP" << commit;
 }
 
-int choose_remote_for_ref([[maybe_unused]] FlatpakTransaction *transaction, const char *for_ref, const char *runtime_ref, const char *const *remotes)
+int choose_remote_for_ref([[maybe_unused]] FlatpakTransaction *transaction,
+                          const char *for_ref,
+                          const char *runtime_ref,
+                          const char *const *remotes,
+                          gpointer user_data)
 {
     const auto remotesCount = g_strv_length(const_cast<char **>(remotes));
     if (LIBDISCOVER_BACKEND_FLATPAK_LOG().isDebugEnabled()) {
@@ -122,7 +126,8 @@ int choose_remote_for_ref([[maybe_unused]] FlatpakTransaction *transaction, cons
     // NOTE: this shouldn't actually happen for us, we always know the remote beforehand. If we fail the assertion here that indicates we have
     // a problem earlier in the workflow producing multiple (unexpected) remotes.
     Q_ASSERT(remotesCount <= 1);
-    return 0;
+
+    return static_cast<FlatpakTransactionThread *>(user_data)->choose_remote_for_ref(for_ref, runtime_ref, remotes, remotesCount);
 }
 
 void end_of_lifed([[maybe_unused]] FlatpakTransaction *transaction, const char *ref, const char *reason, const char *rebase)
@@ -498,10 +503,18 @@ void FlatpakTransactionThread::setCurrentRef(const char *ref_cstr)
     qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << Q_FUNC_INFO << ref_cstr;
     Q_ASSERT(ref_cstr);
 
-    const auto ref = QString::fromUtf8(ref_cstr);
-    if (ref.startsWith("runtime/"_L1) && !m_jobTransactionsByRef.contains(ref)) {
-        // Runtimes are implementation details, if we have no frontend transaction simply pretend we still have work
-        // to do on the previous ref (which is supposedly the one that caused this runtime).
+    const auto optionalRef = refToAppRef(QString::fromUtf8(ref_cstr));
+    if (!optionalRef.has_value()) {
+        // Pretend we still have work to do on the previous ref.
+        return;
+    }
+    const auto &ref = optionalRef.value();
+
+    Q_ASSERT(m_jobTransactionsByRef.contains(ref));
+    auto job = m_jobTransactionsByRef.value(ref);
+
+    if (job == m_currentJobTransaction) {
+        // Still on the same transaction, nothing to do
         return;
     }
 
@@ -517,9 +530,6 @@ void FlatpakTransactionThread::setCurrentRef(const char *ref_cstr)
     m_progress = 0;
     m_speed = 0;
 
-    Q_ASSERT(m_jobTransactionsByRef.contains(ref));
-
-    auto job = m_jobTransactionsByRef.value(ref);
     qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Connecting to ref" << ref << job;
     m_currentJobTransaction = job;
     connect(this, &FlatpakTransactionThread::finished, job, &FlatpakJobTransaction::finishTransaction);
@@ -565,6 +575,31 @@ void FlatpakTransactionThread::finishAllJobTransactions()
             Qt::QueuedConnection);
     }
     m_jobTransactionsByRef.clear();
+}
+
+int FlatpakTransactionThread::choose_remote_for_ref(const char *for_ref,
+                                                    const char *runtime_ref,
+                                                    [[maybe_unused]] const char *const *remotes,
+                                                    [[maybe_unused]] unsigned int remotesCount)
+{
+    m_runtimeToAppRef.insert(QString::fromUtf8(runtime_ref), QString::fromUtf8(for_ref));
+    return 0;
+}
+
+std::optional<QString> FlatpakTransactionThread::refToAppRef(const QString &ref) const
+{
+    const auto isRuntime = ref.startsWith("runtime/"_L1);
+    const auto isExplicitRef = m_jobTransactionsByRef.contains(ref);
+    if (!isRuntime || isExplicitRef) {
+        return ref;
+    }
+
+    if (auto appRef = m_runtimeToAppRef.value(ref); !appRef.isEmpty()) {
+        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Runtime" << ref << "is associated with app" << appRef;
+        return appRef;
+    }
+
+    return {};
 }
 
 #include "moc_FlatpakTransactionThread.cpp"

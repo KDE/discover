@@ -66,6 +66,7 @@ public:
     void addErrorMessage(const QString &error);
     void operationError(GError *error);
     bool end_of_lifed_with_rebase(const char *remote, const char *ref, const char *reason, const char *rebased_to_ref, const char **previous_ids);
+    int choose_remote_for_ref(const char *for_ref, const char *runtime_ref, const char *const *remotes, unsigned int remotesCount);
     void proceed();
 
 Q_SIGNALS: // Signals vastly simplify our live with regards to threading since Qt schedules them into the correct thread
@@ -91,6 +92,7 @@ private:
     Repositories addedRepositories() const;
     [[nodiscard]] bool success() const;
     void finishAllJobTransactions();
+    [[nodiscard]] std::optional<QString> refToAppRef(const QString &ref) const;
 
     static gboolean webflowStart(FlatpakTransaction *transaction, const char *remote, const char *url, GVariant *options, guint id, gpointer user_data);
     static void webflowDoneCallback(FlatpakTransaction *transaction, GVariant *options, guint id, gpointer user_data);
@@ -109,9 +111,12 @@ private:
     bool m_proceed = false;
     // WARNING: Beware that the JobTransaction objects live in another thread! Do not call them directly. Use Signals.
     QHash<QString, QPointer<FlatpakJobTransaction>> m_jobTransactionsByRef;
-    void *m_currentJobTransaction = nullptr; // void so you can't accidentally call into it. Use Signals.
+    void *m_currentJobTransaction = nullptr; // void so you can't accidentally call into it. Use Signals. This is a different thread!
     QString m_initializationErrorMessage;
     std::optional<bool> m_operationSuccess;
+    // Tries to runtimes to app refs when information is available. Notably, calls to choose_remote_for_ref will produce a mapping here.
+    // The intent is to allow tieing runtimes (which we consider internal) to application refs, so we can display them in the UI.
+    QHash<QString, QString> m_runtimeToAppRef;
 
     QVector<int> m_webflows;
 };
