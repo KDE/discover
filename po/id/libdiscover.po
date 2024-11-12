@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-05 00:41+0000\n"
-"PO-Revision-Date: 2024-11-10 17:58+0700\n"
+"PO-Revision-Date: 2024-11-12 06:08+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
 "Language: id\n"
@@ -757,7 +757,7 @@ msgstr "Akses Peranti"
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
-"Bisa berkomunikasi dengan dan mengontrol bawaan atau peranti peranti keras "
+"Bisa berkomunikasi dengan dan mengontrol bawaan atau peranti perangkat keras "
 "yang terkoneksi"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
