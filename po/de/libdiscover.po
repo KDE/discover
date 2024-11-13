@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-05 00:41+0000\n"
+"POT-Creation-Date: 2024-11-13 00:41+0000\n"
 "PO-Revision-Date: 2024-08-25 20:47+0200\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1104,27 +1104,27 @@ msgstr ""
 msgid "Backend %1 took too long to initialize"
 msgstr "Das Backend %1 braucht zu lange zur Initialisierung"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:231
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:228
 #, kde-format
 msgid "Applications"
 msgstr "Anwendungen"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:277
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma-Erweiterungen"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:277
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
 #, kde-format
 msgid "Application Addons"
 msgstr "Erweiterungen für Anwendungen"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:365
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Netzwerkfehler im Backend %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:372
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1133,14 +1133,14 @@ msgstr ""
 "Zu viele Anfragen zum Server für Backend %1. Bitte versuchen Sie es in "
 "einigen Minuten erneut."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:375
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:381
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:386
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:372
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:383
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Ungültiges %1-Backend. Bitte kontaktieren Sie Ihren Distributor."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1153,24 +1153,24 @@ msgstr ""
 "auszuführen, welcher eine genauere Kontrolle erlaubt. Der Fehler lautet:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:412
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "Das Bildschirmfoto für den Eintrag %1 im Backend %2 kann nicht geholt werden"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:419
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Unbehandelter Fehler im Backend %1. Bitte kontaktieren Sie Ihren Distributor."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:424
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:421
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:546
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:543
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Falsche KNewStuff-URI: %1"

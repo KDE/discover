@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-05 00:41+0000\n"
+"POT-Creation-Date: 2024-11-13 00:41+0000\n"
 "PO-Revision-Date: 2024-09-08 00:02+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -1106,27 +1106,27 @@ msgstr ""
 msgid "Backend %1 took too long to initialize"
 msgstr "Per ilgai užtruko inicijuoti vidinę pusę %1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:231
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:228
 #, kde-format
 msgid "Applications"
 msgstr "Programos"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:277
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma papildiniai"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:277
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
 #, kde-format
 msgid "Application Addons"
 msgstr "Programų papildiniai"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:365
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Tinklo klaida vidinėje pusėje %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:372
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1135,14 +1135,14 @@ msgstr ""
 "Į serverį išsiųsta per daug vidinės pusės %1 užklausų. Po kelių minučių, "
 "bandykite dar kartą."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:375
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:381
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:386
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:372
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:383
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Neteisinga %1 vidinė pusė, susisiekite su savo platintoju."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1155,22 +1155,22 @@ msgstr ""
 "Klaida, apie kurią buvo pranešta, buvo:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:412
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Nepavyko gauti ekrano kopijos, skirtos įrašui %1, %2 vidinėje pusėje"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:419
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "Neapdorota %1 vidinės pusės klaida. Susisiekite su savo platintoju."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:424
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:421
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:546
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:543
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Neteisingas KNewStuff URI: %1"

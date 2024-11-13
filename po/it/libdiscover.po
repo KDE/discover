@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-05 00:41+0000\n"
-"PO-Revision-Date: 2024-08-21 18:30+0200\n"
+"POT-Creation-Date: 2024-11-13 00:41+0000\n"
+"PO-Revision-Date: 2024-11-05 16:36+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -891,7 +891,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1091
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
-msgstr ""
+msgstr "Applicazione verificata il %1 come rilasciata dal suo autore %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
@@ -1100,27 +1100,27 @@ msgstr ""
 msgid "Backend %1 took too long to initialize"
 msgstr "Il motore %1 ha richiesto troppo tempo per l'inizializzazione"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:231
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:228
 #, kde-format
 msgid "Applications"
 msgstr "Applicazioni"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:277
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Aggiunte di Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:277
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
 #, kde-format
 msgid "Application Addons"
 msgstr "Aggiunte delle applicazioni"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:365
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Errore di rete nel motore %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:372
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1129,14 +1129,14 @@ msgstr ""
 "Troppe richieste inviate al server per il motore %1. Prova ancora tra pochi "
 "minuti."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:375
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:381
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:386
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:372
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:383
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Motore %1 non valido, contatta il tuo distributore."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:405
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1149,22 +1149,22 @@ msgstr ""
 "più preciso. L'errore segnalato era:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:412
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Impossibile ottenere la schermata per la voce %1 nel motore %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:419
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "Errore non gestito nel motore %1. Contatta il tuo distributore."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:424
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:421
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:546
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:543
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "URI di KNewStuff errato: %1"
@@ -2116,7 +2116,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "Software verificato da %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
 #, kde-format
@@ -2573,12 +2573,12 @@ msgstr "Snap"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:616
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "Editore verificato su snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:618
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "Editore con stella su snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:58
 #, kde-format
