@@ -51,7 +51,6 @@ Kirigami.OverlaySheet {
                                 implicitContentHeight + topPadding + bottomPadding)
 
         padding: 0
-        bottomPadding: verticalPadding + headerSeparator.implicitHeight // add space for bottom separator
 
         contentItem: ColumnLayout {
             spacing: Kirigami.Units.smallSpacing
