@@ -812,7 +812,7 @@ DiscoverPage {
 
                     visible: website.length > 0
 
-                    icon: "documentation"
+                    icon: "documentation-symbolic"
                     title: i18n("Documentation")
                     subtitle: i18n("Read the project's official documentation")
                     website: application.helpURL.toString()
@@ -825,7 +825,7 @@ DiscoverPage {
 
                     visible: website.length > 0
 
-                    icon: "internet-services"
+                    icon: "internet-services-symbolic"
                     title: i18n("Website")
                     subtitle: i18n("Visit the project's website")
                     website: application.homepage.toString()
@@ -838,7 +838,7 @@ DiscoverPage {
 
                     visible: website.length > 0
 
-                    icon: "help-donate"
+                    icon: "help-donate-symbolic"
                     title: i18n("Donate")
                     subtitle: i18n("Support and thank the developers by donating to their project")
                     website: application.donationURL.toString()
@@ -851,7 +851,7 @@ DiscoverPage {
 
                     visible: website.length > 0
 
-                    icon: "tools-report-bug"
+                    icon: "tools-report-bug-symbolic"
                     title: i18n("Report Bug")
                     subtitle: i18n("Log an issue you found to help get it fixed")
                     website: application.bugURL.toString()
@@ -864,7 +864,7 @@ DiscoverPage {
 
                     visible: website.length > 0
 
-                    icon: "project-development"
+                    icon: "project-development-symbolic"
                     title: i18n("Contribute")
                     subtitle: i18n("Help the developers by coding, designing, testing, or translating")
                     website: application.contributeURL.toString()
