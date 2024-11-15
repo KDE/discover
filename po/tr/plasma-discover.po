@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-05 00:41+0000\n"
+"POT-Creation-Date: 2024-11-15 00:41+0000\n"
 "PO-Revision-Date: 2024-09-27 18:03+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -700,7 +700,7 @@ msgstr[1] "Ara — %1 öge"
 msgid "Search"
 msgstr "Ara"
 
-#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:142
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:141
 #, kde-format
 msgid "Sort: %1"
 msgstr "Sırala: %1"
@@ -1295,29 +1295,29 @@ msgstr "Bir ad ekleyin"
 msgid "Reviews for %1"
 msgstr "%1 için incelemeler"
 
-#: discover/qml/ReviewsPage.qml:106
+#: discover/qml/ReviewsPage.qml:105
 #, kde-format
 msgid "Write a Review…"
 msgstr "İnceleme Yaz…"
 
-#: discover/qml/ReviewsPage.qml:119
+#: discover/qml/ReviewsPage.qml:118
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "İnceleme yazmak için bu uygulamayı sisteminize kurun"
 
-#: discover/qml/ReviewsPage.qml:146
+#: discover/qml/ReviewsPage.qml:145
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
 msgstr "En Uygun"
 
-#: discover/qml/ReviewsPage.qml:153
+#: discover/qml/ReviewsPage.qml:152
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
 msgstr "En Yeni"
 
-#: discover/qml/ReviewsPage.qml:160
+#: discover/qml/ReviewsPage.qml:159
 #, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"

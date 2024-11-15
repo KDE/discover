@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-05 00:41+0000\n"
+"POT-Creation-Date: 2024-11-15 00:41+0000\n"
 "PO-Revision-Date: 2014-03-16 09:10+0100\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -642,7 +642,7 @@ msgstr[1] "Söken..."
 msgid "Search"
 msgstr "Söken..."
 
-#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:142
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:141
 #, fuzzy, kde-format
 #| msgid "Search..."
 msgid "Sort: %1"
@@ -1242,30 +1242,30 @@ msgstr ""
 msgid "Reviews for %1"
 msgstr "Beweerten"
 
-#: discover/qml/ReviewsPage.qml:106
+#: discover/qml/ReviewsPage.qml:105
 #, fuzzy, kde-format
 #| msgid "Submit"
 msgid "Write a Review…"
 msgstr "Loosstüern"
 
-#: discover/qml/ReviewsPage.qml:119
+#: discover/qml/ReviewsPage.qml:118
 #, kde-format
 msgid "Install this app to write a review"
 msgstr ""
 
-#: discover/qml/ReviewsPage.qml:146
+#: discover/qml/ReviewsPage.qml:145
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
 msgstr ""
 
-#: discover/qml/ReviewsPage.qml:153
+#: discover/qml/ReviewsPage.qml:152
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
 msgstr ""
 
-#: discover/qml/ReviewsPage.qml:160
+#: discover/qml/ReviewsPage.qml:159
 #, fuzzy, kde-format
 #| msgid "Rating"
 msgctxt "@label:listbox Reviews with the highest ratings"

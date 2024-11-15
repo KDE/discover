@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-05 00:41+0000\n"
+"POT-Creation-Date: 2024-11-15 00:41+0000\n"
 "PO-Revision-Date: 2023-12-05 17:21+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -710,7 +710,7 @@ msgstr[2] "Hľadať - %1 položiek"
 msgid "Search"
 msgstr "Hľadať"
 
-#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:142
+#: discover/qml/ApplicationsListPage.qml:98 discover/qml/ReviewsPage.qml:141
 #, kde-format
 msgid "Sort: %1"
 msgstr "Usporiadať podľa: %1"
@@ -1295,29 +1295,29 @@ msgstr "Vložiť názov"
 msgid "Reviews for %1"
 msgstr "Recenzie pre %1"
 
-#: discover/qml/ReviewsPage.qml:106
+#: discover/qml/ReviewsPage.qml:105
 #, kde-format
 msgid "Write a Review…"
 msgstr "Napísať recenziu..."
 
-#: discover/qml/ReviewsPage.qml:119
+#: discover/qml/ReviewsPage.qml:118
 #, kde-format
 msgid "Install this app to write a review"
 msgstr "Nainštalujte túto aplikáciu, aby ste mohli napísať recenziu"
 
-#: discover/qml/ReviewsPage.qml:146
+#: discover/qml/ReviewsPage.qml:145
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
 msgstr "Najrelevantnejšie"
 
-#: discover/qml/ReviewsPage.qml:153
+#: discover/qml/ReviewsPage.qml:152
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
 msgstr "Najnovšie"
 
-#: discover/qml/ReviewsPage.qml:160
+#: discover/qml/ReviewsPage.qml:159
 #, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
