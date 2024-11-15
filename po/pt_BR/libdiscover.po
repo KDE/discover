@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-03 00:40+0000\n"
-"PO-Revision-Date: 2024-08-03 23:45-0300\n"
+"PO-Revision-Date: 2024-11-14 10:08-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -70,39 +70,37 @@ msgid "Error while submitting review: %1"
 msgstr "Erro ao enviar a análise: %1"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
-#, fuzzy, kde-format
-#| msgid "Packages to remove"
+#, kde-format
 msgid "Package management"
-msgstr "Pacotes a remover"
+msgstr "Gerenciamento de pacotes"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:204
 #, kde-format
 msgid "Loading, please wait..."
-msgstr ""
+msgstr "Carregando, aguarde..."
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:290
-#, fuzzy, kde-format
-#| msgid "Additional packages: "
+#, kde-format
 msgctxt "Root category name"
 msgid "Alpine Linux packages"
-msgstr "Pacotes adicionais: "
+msgstr "Pacotes Alpine linux"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:461
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
-msgstr ""
+msgstr "Alpine APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:266
 #, kde-format
 msgid "Authorization denied"
-msgstr ""
+msgstr "Autorização negada"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
 #, kde-format
 msgid "Error: "
-msgstr ""
+msgstr "Erro:"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
 #, kde-format
@@ -111,27 +109,29 @@ msgid ""
 "Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
 "alpine/edge/testing/"
 msgstr ""
+"Insira a URL do repositório Alpine, por exemplo: http://dl-cdn.alpinelinux."
+"org/alpine/edge/testing/"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
 #, kde-format
 msgid "Error: Authorization denied"
-msgstr ""
+msgstr "Erro: Autorização negada"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:277
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "Erro"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
 #, kde-format
 msgid "Failed to open APK database!"
-msgstr ""
+msgstr "Falha ao abrir o banco de dados APK!"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
 #, kde-format
 msgid "Failed to get a list of packages to upgrade!"
-msgstr ""
+msgstr "Falha ao obter uma lista de pacotes para atualização!"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -1049,11 +1049,10 @@ msgstr "Excluindo dados de usuário e configurações..."
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "Permissões para %1"
+msgstr "Permissões"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
@@ -1210,7 +1209,7 @@ msgstr "Fontes"
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr ""
+msgstr "Reporte este problema para %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:325
 #, kde-format
@@ -1265,6 +1264,8 @@ msgid ""
 "The background service (PackageKit) stopped unexpectedly. It may have "
 "crashed."
 msgstr ""
+"O serviço de segundo plano (PackageKit) parou inesperadamente. Pode ter "
+"travado."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2542,16 +2543,14 @@ msgid "Unknown transaction type"
 msgstr "Tipo de transação desconhecida"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channel: %1"
-msgstr "Canais..."
+msgstr "Canal: %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channels for %1"
-msgstr "Canais..."
+msgstr "Canais para %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:400
