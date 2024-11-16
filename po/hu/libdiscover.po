@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-13 00:41+0000\n"
+"POT-Creation-Date: 2024-11-16 00:41+0000\n"
 "PO-Revision-Date: 2024-09-19 14:42+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -965,7 +965,7 @@ msgstr "Adjon meg egy Flatpak tároló URI-t (*.flatpakrepo)"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "„%1” hozzáadása itt: %2, innen: %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:402
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-format
 msgctxt "fallback error message"
 msgid ""
@@ -975,13 +975,13 @@ msgstr ""
 "Belső hiba történt. Kérjük, küldjön hibajelzést a https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover címen"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:433
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:438
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "Csere érhető el"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:435
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:440
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -993,13 +993,13 @@ msgstr ""
 "A(z) <resource>%1</resource> nem kap többé frissítéseket.<nl/><nl/>Cseréli "
 "a(z) <resource>%2</resource> által biztosított támogatott verzióra?"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:441
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:446
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "Automatikus eltávolítás"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:443
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:448
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
@@ -1166,7 +1166,7 @@ msgstr "Nem kezelt hiba a(z) %1 backendben. Lépjen kapcsolatba a terjesztővel.
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:543
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:542
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Hibás KNewStuff URI: %1"

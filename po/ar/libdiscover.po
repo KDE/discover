@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-13 00:41+0000\n"
+"POT-Creation-Date: 2024-11-16 00:41+0000\n"
 "PO-Revision-Date: 2024-09-05 09:59+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -954,7 +954,7 @@ msgstr "أدخل عنوان مستودع فلاتباك (*.flatpakrepo)"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "يضيف '%1' البعيد في %2 من %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:402
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-format
 msgctxt "fallback error message"
 msgid ""
@@ -964,13 +964,13 @@ msgstr ""
 "خطأ داخلي، الرجاء الإبلاغ عنها في  https://bugs.kde.org/enter_bug.cgi?"
 "product=Discover"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:433
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:438
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "البديل المتوفر"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:435
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:440
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -982,13 +982,13 @@ msgstr ""
 "<resource>%1</resource> لم يعد يتلقى التحديثات.<nl/><nl/>هل تريد تبديله إلى "
 "الإصدار المدعوم المقدم من <resource>%2</resource>؟"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:441
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:446
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "إزالة آلية"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:443
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:448
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
@@ -1151,7 +1151,7 @@ msgstr "خطأ لا يمكن التعامل معه في خلفية %1. راجع 
 msgid "%1: %2"
 msgstr "‏%1:‏ %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:543
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:542
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "معرّف «أشياء جديدة» خطأ: %1"

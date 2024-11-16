@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-13 00:41+0000\n"
+"POT-Creation-Date: 2024-11-16 00:41+0000\n"
 "PO-Revision-Date: 2024-11-06 08:46+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -981,7 +981,7 @@ msgstr "Saisissez une URI de dépôt Flatpak (*.flatpakrepo) :"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Ajoute le distant « %1 » dans %2 depuis %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:402
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-format
 msgctxt "fallback error message"
 msgid ""
@@ -991,13 +991,13 @@ msgstr ""
 "Une erreur interne s'est produite. Veuillez ouvrir un rapport de bogue sur "
 "la pagehttps://bugs.kde.org/enter_bug.cgi?product=Discover"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:433
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:438
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "Version de remplacement disponible"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:435
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:440
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -1010,13 +1010,13 @@ msgstr ""
 "le remplacer par la version prise en charge fournie par <resource>%2</"
 "resource> ?"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:441
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:446
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "Suppression automatique "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:443
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:448
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
@@ -1184,7 +1184,7 @@ msgstr ""
 msgid "%1: %2"
 msgstr "%1 : %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:543
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:542
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Mauvaise URI KNewStuff : %1"

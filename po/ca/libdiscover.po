@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-13 00:41+0000\n"
+"POT-Creation-Date: 2024-11-16 00:41+0000\n"
 "PO-Revision-Date: 2024-11-05 10:09+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -970,7 +970,7 @@ msgstr "Introduïu l'URI d'un repositori Flatpak (*.flatpakrepo):"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "S'afegeix el remot «%1» a %2 des de %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:402
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
 #, kde-format
 msgctxt "fallback error message"
 msgid ""
@@ -980,13 +980,13 @@ msgstr ""
 "S'ha produït un error intern. Ompliu un informe a https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:433
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:438
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "Substitució disponible"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:435
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:440
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -998,13 +998,13 @@ msgstr ""
 "<resource>%1</resource> ja no rep actualitzacions.<nl/><nl/>El substitueixo "
 "per la versió mantinguda proporcionada per <resource>%2</resource>?"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:441
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:446
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "Eliminació automàtica"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:443
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:448
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
@@ -1170,7 +1170,7 @@ msgstr "Error no gestionat al dorsal %1. Contacteu amb el vostre distribuïdor."
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:543
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:542
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "URI incorrecte del KNewStuff: %1"
