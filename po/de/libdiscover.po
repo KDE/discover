@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-16 00:41+0000\n"
-"PO-Revision-Date: 2024-08-25 20:47+0200\n"
+"PO-Revision-Date: 2024-11-11 17:56+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -896,6 +896,8 @@ msgstr ""
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
 msgstr ""
+"Die Übereinstimmung der Anwendung mit der Version des Autors %2 wurde von %1 "
+"festgestellt."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
@@ -2130,7 +2132,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "Von %1 bestätigte Software"
 
 # Die Bedeutung dürfte sein: "Dieses Paket sorgt dafür, dass folgende Pakete veraltet sind". Das ist mWn ein Feld bei apt-Paketen. Wie heißt das konkret bei apt?
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
@@ -2601,12 +2603,12 @@ msgstr "Snap"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:616
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "Verifizierter Herausgeber bei snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:618
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "Beliebter Herausgeber bei snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:58
 #, kde-format
