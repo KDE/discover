@@ -803,7 +803,7 @@ DiscoverPage {
             ColumnLayout {
                 Layout.fillWidth: true
 
-                spacing: Kirigami.Units.smallSpacing
+                spacing: Kirigami.Units.largeSpacing
 
                 ApplicationResourceButton {
                     id: helpButton
@@ -813,9 +813,8 @@ DiscoverPage {
                     visible: website.length > 0
 
                     icon: "documentation-symbolic"
-                    title: i18n("Documentation")
-                    subtitle: i18n("Read the project's official documentation")
                     website: application.helpURL.toString()
+                    linkText: i18nc("@info text of a web URL", "Read the documentation")
                 }
 
                 ApplicationResourceButton {
@@ -826,9 +825,8 @@ DiscoverPage {
                     visible: website.length > 0
 
                     icon: "internet-services-symbolic"
-                    title: i18n("Website")
-                    subtitle: i18n("Visit the project's website")
                     website: application.homepage.toString()
+                    linkText: i18nc("@info text of a web URL", "Visit the project's website")
                 }
 
                 ApplicationResourceButton {
@@ -839,9 +837,8 @@ DiscoverPage {
                     visible: website.length > 0
 
                     icon: "help-donate-symbolic"
-                    title: i18n("Donate")
-                    subtitle: i18n("Support and thank the developers by donating to their project")
                     website: application.donationURL.toString()
+                    linkText: i18nc("@info text of a web URL", "Donate to the project")
                 }
 
                 ApplicationResourceButton {
@@ -852,9 +849,8 @@ DiscoverPage {
                     visible: website.length > 0
 
                     icon: "tools-report-bug-symbolic"
-                    title: i18n("Report Bug")
-                    subtitle: i18n("Log an issue you found to help get it fixed")
                     website: application.bugURL.toString()
+                    linkText: i18nc("@info text of a web URL", "Report a bug")
                 }
 
                 ApplicationResourceButton {
@@ -864,10 +860,9 @@ DiscoverPage {
 
                     visible: website.length > 0
 
-                    icon: "project-development-symbolic"
-                    title: i18n("Contribute")
-                    subtitle: i18n("Help the developers by coding, designing, testing, or translating")
+                    icon: "applications-development-symbolic"
                     website: application.contributeURL.toString()
+                    linkText: i18nc("@info text of a web URL", "Start contributing")
                 }
             }
         }
