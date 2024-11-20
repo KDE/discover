@@ -20,7 +20,7 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
     AbstractAppsModel.cpp
     OdrsAppsModel.cpp
     FeaturedModel.cpp
-    PaginateModel.cpp
+    LimitedRowCountProxyModel.cpp
     UnityLauncher.cpp
     ReadFile.cpp
     PowerManagementInterface.cpp
@@ -29,7 +29,6 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
     DiscoverDeclarativePlugin.h
 
     FeaturedModel.h
-    PaginateModel.h
     UnityLauncher.h
     ReadFile.h
 
