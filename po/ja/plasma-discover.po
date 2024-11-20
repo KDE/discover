@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2024-02-09 15:37+0900\n"
+"PO-Revision-Date: 2024-11-17 21:51+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -1025,7 +1025,7 @@ msgstr "ソースを追加..."
 #: discover/qml/SourcesPage.qml:124
 #, kde-format
 msgid "Make default"
-msgstr "デフォルトに戻す"
+msgstr "デフォルトにする"
 
 #: discover/qml/SourcesPage.qml:210
 #, kde-format
