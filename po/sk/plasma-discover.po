@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-15 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:41+0000\n"
 "PO-Revision-Date: 2023-12-05 17:21+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -608,67 +608,50 @@ msgctxt "@title"
 msgid "External Links"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:816
-#, kde-format
-msgid "Documentation"
-msgstr "Dokumentácia"
-
 #: discover/qml/ApplicationPage.qml:817
-#, kde-format
-msgid "Read the project's official documentation"
+#, fuzzy, kde-format
+#| msgid "Read the project's official documentation"
+msgctxt "@info text of a web URL"
+msgid "Read the documentation"
 msgstr "Čítať oficiálnu dokumentáciu projektu"
 
 #: discover/qml/ApplicationPage.qml:829
-#, kde-format
-msgid "Website"
-msgstr "Webová stránka"
-
-#: discover/qml/ApplicationPage.qml:830
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Visit the project's website"
+msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Navštívte webovú stránku projektu"
 
-#: discover/qml/ApplicationPage.qml:842
+#: discover/qml/ApplicationPage.qml:841
 #, kde-format
-msgid "Donate"
-msgstr "Podporiť"
+msgctxt "@info text of a web URL"
+msgid "Donate to the project"
+msgstr ""
 
-#: discover/qml/ApplicationPage.qml:843
-#, kde-format
-msgid "Support and thank the developers by donating to their project"
-msgstr "Podporiť vývojárov a poďakovať im príspevkom na ich projekt"
-
-#: discover/qml/ApplicationPage.qml:855
-#, kde-format
-msgid "Report Bug"
+#: discover/qml/ApplicationPage.qml:853
+#, fuzzy, kde-format
+#| msgid "Report Bug"
+msgctxt "@info text of a web URL"
+msgid "Report a bug"
 msgstr "Nahlásiť chybu"
 
-#: discover/qml/ApplicationPage.qml:856
+#: discover/qml/ApplicationPage.qml:865
 #, kde-format
-msgid "Log an issue you found to help get it fixed"
-msgstr "Zaznamenať nájdený problém a pomôcť ho opraviť"
+msgctxt "@info text of a web URL"
+msgid "Start contributing"
+msgstr ""
 
-#: discover/qml/ApplicationPage.qml:868
-#, kde-format
-msgid "Contribute"
-msgstr "Prispieť"
-
-#: discover/qml/ApplicationPage.qml:869
-#, kde-format
-msgid "Help the developers by coding, designing, testing, or translating"
-msgstr "Pomôcť vývojárom pri kódovaní, navrhovaní, testovaní alebo prekladaní"
-
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:894
 #, kde-format
 msgid "All Licenses"
 msgstr "Všetky licencie"
 
-#: discover/qml/ApplicationPage.qml:931
+#: discover/qml/ApplicationPage.qml:926
 #, kde-format
 msgid "Content Rating"
 msgstr "Hodnotenie spokojnosti"
 
-#: discover/qml/ApplicationPage.qml:954
+#: discover/qml/ApplicationPage.qml:949
 #, fuzzy, kde-format
 #| msgid "Submit usage information"
 msgctxt "@title:window"
@@ -1588,6 +1571,28 @@ msgstr "Mali by sa skontrolovať aktualizácie"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Čas poslednej aktualizácie je neznámy"
+
+#~ msgid "Documentation"
+#~ msgstr "Dokumentácia"
+
+#~ msgid "Website"
+#~ msgstr "Webová stránka"
+
+#~ msgid "Donate"
+#~ msgstr "Podporiť"
+
+#~ msgid "Support and thank the developers by donating to their project"
+#~ msgstr "Podporiť vývojárov a poďakovať im príspevkom na ich projekt"
+
+#~ msgid "Log an issue you found to help get it fixed"
+#~ msgstr "Zaznamenať nájdený problém a pomôcť ho opraviť"
+
+#~ msgid "Contribute"
+#~ msgstr "Prispieť"
+
+#~ msgid "Help the developers by coding, designing, testing, or translating"
+#~ msgstr ""
+#~ "Pomôcť vývojárom pri kódovaní, navrhovaní, testovaní alebo prekladaní"
 
 #~ msgid "Fetching &updates…"
 #~ msgstr "Získavajú sa aktualizácie..."

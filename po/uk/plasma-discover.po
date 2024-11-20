@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-15 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:41+0000\n"
 "PO-Revision-Date: 2024-09-27 19:16+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -609,70 +609,50 @@ msgctxt "@title"
 msgid "External Links"
 msgstr "Зовнішні посилання"
 
-#: discover/qml/ApplicationPage.qml:816
-#, kde-format
-msgid "Documentation"
-msgstr "Документація"
-
 #: discover/qml/ApplicationPage.qml:817
-#, kde-format
-msgid "Read the project's official documentation"
+#, fuzzy, kde-format
+#| msgid "Read the project's official documentation"
+msgctxt "@info text of a web URL"
+msgid "Read the documentation"
 msgstr "Ознайомитися із офіційною документацією до проєкту"
 
 #: discover/qml/ApplicationPage.qml:829
-#, kde-format
-msgid "Website"
-msgstr "Сайт"
-
-#: discover/qml/ApplicationPage.qml:830
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Visit the project's website"
+msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Відвідати сайт проєкту"
 
-#: discover/qml/ApplicationPage.qml:842
+#: discover/qml/ApplicationPage.qml:841
 #, kde-format
-msgid "Donate"
-msgstr "Підтримати фінансово"
-
-#: discover/qml/ApplicationPage.qml:843
-#, kde-format
-msgid "Support and thank the developers by donating to their project"
+msgctxt "@info text of a web URL"
+msgid "Donate to the project"
 msgstr ""
-"Підтримати і віддячити розробникам, надавши фінансову підтримку проєкту"
 
-#: discover/qml/ApplicationPage.qml:855
-#, kde-format
-msgid "Report Bug"
+#: discover/qml/ApplicationPage.qml:853
+#, fuzzy, kde-format
+#| msgid "Report Bug"
+msgctxt "@info text of a web URL"
+msgid "Report a bug"
 msgstr "Повідомити про ваду"
 
-#: discover/qml/ApplicationPage.qml:856
+#: discover/qml/ApplicationPage.qml:865
 #, kde-format
-msgid "Log an issue you found to help get it fixed"
-msgstr "Створити повідомлення про ваду, яке допоможе поліпшити програму"
-
-#: discover/qml/ApplicationPage.qml:868
-#, kde-format
-msgid "Contribute"
-msgstr "Візьміть участь"
-
-#: discover/qml/ApplicationPage.qml:869
-#, kde-format
-msgid "Help the developers by coding, designing, testing, or translating"
+msgctxt "@info text of a web URL"
+msgid "Start contributing"
 msgstr ""
-"Допоможіть розробникам своїми навичками програмування, дизайну, тестування "
-"або перекладу"
 
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:894
 #, kde-format
 msgid "All Licenses"
 msgstr "Усі умови ліцензування"
 
-#: discover/qml/ApplicationPage.qml:931
+#: discover/qml/ApplicationPage.qml:926
 #, kde-format
 msgid "Content Rating"
 msgstr "Оцінка вмісту"
 
-#: discover/qml/ApplicationPage.qml:954
+#: discover/qml/ApplicationPage.qml:949
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"
@@ -1608,6 +1588,30 @@ msgstr "Слід перевірити на оновлення"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Момент останнього оновлення є невідомим"
+
+#~ msgid "Documentation"
+#~ msgstr "Документація"
+
+#~ msgid "Website"
+#~ msgstr "Сайт"
+
+#~ msgid "Donate"
+#~ msgstr "Підтримати фінансово"
+
+#~ msgid "Support and thank the developers by donating to their project"
+#~ msgstr ""
+#~ "Підтримати і віддячити розробникам, надавши фінансову підтримку проєкту"
+
+#~ msgid "Log an issue you found to help get it fixed"
+#~ msgstr "Створити повідомлення про ваду, яке допоможе поліпшити програму"
+
+#~ msgid "Contribute"
+#~ msgstr "Візьміть участь"
+
+#~ msgid "Help the developers by coding, designing, testing, or translating"
+#~ msgstr ""
+#~ "Допоможіть розробникам своїми навичками програмування, дизайну, "
+#~ "тестування або перекладу"
 
 #~ msgid "Fetching &updates…"
 #~ msgstr "&Отримання оновлень…"

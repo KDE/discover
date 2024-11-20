@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-15 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:41+0000\n"
 "PO-Revision-Date: 2024-10-14 14:43+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -599,68 +599,50 @@ msgctxt "@title"
 msgid "External Links"
 msgstr "Ārējās saites"
 
-#: discover/qml/ApplicationPage.qml:816
-#, kde-format
-msgid "Documentation"
-msgstr "Dokumentācija"
-
 #: discover/qml/ApplicationPage.qml:817
-#, kde-format
-msgid "Read the project's official documentation"
+#, fuzzy, kde-format
+#| msgid "Read the project's official documentation"
+msgctxt "@info text of a web URL"
+msgid "Read the documentation"
 msgstr "Lasiet projekta oficiālo dokumentāciju"
 
 #: discover/qml/ApplicationPage.qml:829
-#, kde-format
-msgid "Website"
-msgstr "Tīmekļa vietne"
-
-#: discover/qml/ApplicationPage.qml:830
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Visit the project's website"
+msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Apmeklējiet projekta vietni"
 
-#: discover/qml/ApplicationPage.qml:842
+#: discover/qml/ApplicationPage.qml:841
 #, kde-format
-msgid "Donate"
-msgstr "Ziedo"
+msgctxt "@info text of a web URL"
+msgid "Donate to the project"
+msgstr ""
 
-#: discover/qml/ApplicationPage.qml:843
-#, kde-format
-msgid "Support and thank the developers by donating to their project"
-msgstr "Atbalsti un pasaki paldies izstrādātājiem, ziedojot projektam"
-
-#: discover/qml/ApplicationPage.qml:855
-#, kde-format
-msgid "Report Bug"
+#: discover/qml/ApplicationPage.qml:853
+#, fuzzy, kde-format
+#| msgid "Report Bug"
+msgctxt "@info text of a web URL"
+msgid "Report a bug"
 msgstr "Ziņot par kļūdu"
 
-#: discover/qml/ApplicationPage.qml:856
+#: discover/qml/ApplicationPage.qml:865
 #, kde-format
-msgid "Log an issue you found to help get it fixed"
-msgstr "Reģistrē atrasto problēmu, lai palīdzētu to novērst"
-
-#: discover/qml/ApplicationPage.qml:868
-#, kde-format
-msgid "Contribute"
-msgstr "Darbojieties līdzi"
-
-#: discover/qml/ApplicationPage.qml:869
-#, kde-format
-msgid "Help the developers by coding, designing, testing, or translating"
+msgctxt "@info text of a web URL"
+msgid "Start contributing"
 msgstr ""
-"Palīdzi izstrādātājiem, programmējot, veidojot dizainu, testējot vai tulkojot"
 
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:894
 #, kde-format
 msgid "All Licenses"
 msgstr "Visas licences"
 
-#: discover/qml/ApplicationPage.qml:931
+#: discover/qml/ApplicationPage.qml:926
 #, kde-format
 msgid "Content Rating"
 msgstr "Satura vērtējums"
 
-#: discover/qml/ApplicationPage.qml:954
+#: discover/qml/ApplicationPage.qml:949
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"
@@ -1587,6 +1569,29 @@ msgstr "Jāpārbauda atjauninājumi"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Pēdējās atjaunināšanas laiks nav zināms"
+
+#~ msgid "Documentation"
+#~ msgstr "Dokumentācija"
+
+#~ msgid "Website"
+#~ msgstr "Tīmekļa vietne"
+
+#~ msgid "Donate"
+#~ msgstr "Ziedo"
+
+#~ msgid "Support and thank the developers by donating to their project"
+#~ msgstr "Atbalsti un pasaki paldies izstrādātājiem, ziedojot projektam"
+
+#~ msgid "Log an issue you found to help get it fixed"
+#~ msgstr "Reģistrē atrasto problēmu, lai palīdzētu to novērst"
+
+#~ msgid "Contribute"
+#~ msgstr "Darbojieties līdzi"
+
+#~ msgid "Help the developers by coding, designing, testing, or translating"
+#~ msgstr ""
+#~ "Palīdzi izstrādātājiem, programmējot, veidojot dizainu, testējot vai "
+#~ "tulkojot"
 
 #~ msgid "Fetching &updates…"
 #~ msgstr "Meklē &atjauninājumus…"

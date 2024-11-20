@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-15 00:41+0000\n"
-"PO-Revision-Date: 2024-02-09 15:37+0900\n"
+"POT-Creation-Date: 2024-11-20 00:41+0000\n"
+"PO-Revision-Date: 2024-11-17 21:51+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -46,18 +46,7 @@ msgid "Report This Issue to %1"
 msgstr "この問題を %1 に報告する"
 
 #: discover/DiscoverObject.cpp:192
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -70,12 +59,9 @@ msgstr ""
 "アプリケーションのインストールに Discover を使用するためには、"
 "<command>pacman</command> を使用して <link url='https://wiki.archlinux.jp/"
 "index.php/Flatpak#.E3.82.A4.E3.83.B3.E3.82.B9.E3.83.88.E3.83.BC.E3.83."
-"AB'>Flatpak</link> や <link url='https://wiki.archlinux.jp/index.php/"
-"KDE#Discover_.E3.81.8C.E3.82.A2.E3.83.97.E3.83.AA.E3.82.B1.E3.83.BC.E3.82.B7."
-"E3.83.A7.E3.83.B3.E3.82.92.E8.A1.A8.E7.A4.BA.E3.81.97.E3.81.AA."
-"E3.81.84'>PackageKit</link> をインストールしてください。<nl/><nl/><link "
-"url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 の Discover "
-"パッケージをレビュー</link>"
+"AB'>Flatpak</link> をインストールしてください。<nl/><nl/><link url='https://"
+"archlinux.org/packages/extra/x86_64/discover/'>%1 の Discover パッケージをレ"
+"ビュー</link>"
 
 #: discover/DiscoverObject.cpp:205
 #, kde-kuit-format
@@ -88,6 +74,12 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"%1 のパッケージを管理するためのサポートは不完全であり、様々な問題が発生する可"
+"能性があります。これらの問題についての KDE への報告はお控えください。"
+"<resource>packagekit-qt6</resource> パッケージをアンインストールして、"
+"Discover を Flatpak, Snap やアドオンの管理のみに使用することを強くおすすめし"
+"ます。<para>%1 のメンテナは <command>pacman</command> を使用したパッケージの"
+"管理を推奨しています。</para>"
 
 #: discover/DiscoverObject.cpp:293
 #, kde-format
@@ -312,19 +304,7 @@ msgid "No ratings yet"
 msgstr "評価はまだありません。"
 
 #: discover/qml/ApplicationPage.qml:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -340,29 +320,20 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"このアプリケーションのソースコードは部分的もしくは全体的に公開されていませ"
-"ん。これは、第三者やあなたのようなユーザがその動作、セキュリティや信頼性を確"
-"認できないこと、作者の許可なしに改造・再配布できないことを意味しています。"
-"<nl/><nl/>そのようなアプリケーションは完全に安全かもしれませんし、あなたが望"
-"まない動作 ― 個人情報の詮索、位置情報の追跡、ファイルの内容の他者への転送な"
-"ど ― をするかもしれません。これらを確認する簡単な方法は存在しないため、このソ"
-"フトウェアの作者 (%1) を完全に信頼する場合のみインストールすることが推奨され"
-"ます。<nl/><nl/><link url='%2'>%2</link> でさらなる情報を得ることができます。"
+"作者を完全に信頼できる場合のみ %1 をインストールしてください。このソフトウェ"
+"アは<emphasis strong='true'>プロプライエタリ</emphasis>です: 利用者がこのアプ"
+"リケーションを使用、改変、再配布する権利は制限されており、ソースコードは部分"
+"的もしくは全体的に公開されていません。これは、第三者やあなたのようなユーザが"
+"その動作、セキュリティや信頼性を確認できないことを意味しています。<nl/><nl/>"
+"このアプリケーションは完全に安全かもしれませんし、あなたが望まない動作 ― 個人"
+"情報の詮索、位置情報の追跡、ファイルの内容の他者への転送など ― をするかもしれ"
+"ません。これらを確認する簡単な方法は存在しないため、このソフトウェアの作者を"
+"完全に信頼する場合のみ使用してください。さらなる情報を <link url='%2'>アプリ"
+"ケーションのウェブサイト</link> で得ることができるかもしれません。<nl/><nl/>"
+"より詳しい情報については、<link url='%3'>%3</link> をご確認ください。"
 
 #: discover/qml/ApplicationPage.qml:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -376,14 +347,16 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"このアプリケーションのソースコードは部分的もしくは全体的に公開されていませ"
-"ん。これは、第三者やあなたのようなユーザがその動作、セキュリティや信頼性を確"
-"認できないこと、作者の許可なしに改造・再配布できないことを意味しています。"
-"<nl/><nl/>そのようなアプリケーションは完全に安全かもしれませんし、あなたが望"
-"まない動作 ― 個人情報の詮索、位置情報の追跡、ファイルの内容の他者への転送な"
-"ど ― をするかもしれません。これらを確認する簡単な方法は存在しないため、このソ"
-"フトウェアの作者 (%1) を完全に信頼する場合のみインストールすることが推奨され"
-"ます。<nl/><nl/><link url='%2'>%2</link> でさらなる情報を得ることができます。"
+"作者を完全に信頼できる場合のみ %1 をインストールしてください。このソフトウェ"
+"アは<emphasis strong='true'>プロプライエタリ</emphasis>です: 利用者がこのアプ"
+"リケーションを使用、改変、再配布する権利は制限されており、ソースコードは部分"
+"的もしくは全体的に公開されていません。これは、第三者やあなたのようなユーザが"
+"その動作、セキュリティや信頼性を確認できないことを意味しています。<nl/><nl/>"
+"このアプリケーションは完全に安全かもしれませんし、あなたが望まない動作 ― 個人"
+"情報の詮索、位置情報の追跡、ファイルの内容の他者への転送など ― をするかもしれ"
+"ません。これらを確認する簡単な方法は存在しないため、このソフトウェアの作者を"
+"完全に信頼する場合のみ使用してください。より詳しい情報については、<link "
+"url='%2'>%2</link> をご確認ください。"
 
 #: discover/qml/ApplicationPage.qml:78
 #, kde-kuit-format
@@ -437,9 +410,7 @@ msgid ""
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:134
-#, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "共有"
@@ -448,7 +419,7 @@ msgstr "共有"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
-msgstr ""
+msgstr "アドオン"
 
 #: discover/qml/ApplicationPage.qml:158
 #, kde-format
@@ -464,11 +435,10 @@ msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:210
-#, fuzzy, kde-format
-#| msgid "Send a link for this application"
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
-msgstr "このアプリケーションへのリンクを送信する "
+msgstr "このアプリケーションへのリンクを送信する"
 
 #: discover/qml/ApplicationPage.qml:219
 #, kde-format
@@ -498,8 +468,7 @@ msgid_plural "Licenses:"
 msgstr[0] "ライセンス:"
 
 #: discover/qml/ApplicationPage.qml:413
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "これはどういう意味？"
@@ -514,7 +483,7 @@ msgstr "不明"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:488
 #, kde-format
@@ -526,26 +495,24 @@ msgstr[0] "さらに見る..."
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr ""
+msgstr "対象年齢:"
 
 #: discover/qml/ApplicationPage.qml:506
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr ""
+msgstr "全年齢"
 
 #: discover/qml/ApplicationPage.qml:508
 #, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr ""
+msgstr "%1+"
 
 #: discover/qml/ApplicationPage.qml:522
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
+#, kde-format
 msgid "See details"
-msgstr "詳細を見る..."
+msgstr "詳細を見る"
 
 #: discover/qml/ApplicationPage.qml:546
 #, kde-format
@@ -594,74 +561,56 @@ msgstr "レビューを書くにはこのアプリケーションをインスト
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
-msgstr ""
-
-#: discover/qml/ApplicationPage.qml:816
-#, kde-format
-msgid "Documentation"
-msgstr "ドキュメンテーション"
+msgstr "外部リンク"
 
 #: discover/qml/ApplicationPage.qml:817
-#, kde-format
-msgid "Read the project's official documentation"
+#, fuzzy, kde-format
+#| msgid "Read the project's official documentation"
+msgctxt "@info text of a web URL"
+msgid "Read the documentation"
 msgstr "プロジェクトの公式ドキュメンテーションを読む"
 
 #: discover/qml/ApplicationPage.qml:829
-#, kde-format
-msgid "Website"
-msgstr "ウェブサイト"
-
-#: discover/qml/ApplicationPage.qml:830
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Visit the project's website"
+msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "プロジェクトのウェブサイトを訪れる"
 
-#: discover/qml/ApplicationPage.qml:842
+#: discover/qml/ApplicationPage.qml:841
 #, kde-format
-msgid "Donate"
-msgstr "寄付"
+msgctxt "@info text of a web URL"
+msgid "Donate to the project"
+msgstr ""
 
-#: discover/qml/ApplicationPage.qml:843
-#, kde-format
-msgid "Support and thank the developers by donating to their project"
-msgstr "プロジェクトに寄付して開発者を支援する"
-
-#: discover/qml/ApplicationPage.qml:855
-#, kde-format
-msgid "Report Bug"
+#: discover/qml/ApplicationPage.qml:853
+#, fuzzy, kde-format
+#| msgid "Report Bug"
+msgctxt "@info text of a web URL"
+msgid "Report a bug"
 msgstr "バグを報告"
 
-#: discover/qml/ApplicationPage.qml:856
+#: discover/qml/ApplicationPage.qml:865
 #, kde-format
-msgid "Log an issue you found to help get it fixed"
-msgstr "見つけた問題を記録して修正を支援する"
+msgctxt "@info text of a web URL"
+msgid "Start contributing"
+msgstr ""
 
-#: discover/qml/ApplicationPage.qml:868
-#, kde-format
-msgid "Contribute"
-msgstr "貢献"
-
-#: discover/qml/ApplicationPage.qml:869
-#, kde-format
-msgid "Help the developers by coding, designing, testing, or translating"
-msgstr "プログラミング、デザイン、テストもしくは翻訳に参加して開発者を支援する"
-
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:894
 #, kde-format
 msgid "All Licenses"
 msgstr "すべてのライセンス"
 
-#: discover/qml/ApplicationPage.qml:931
+#: discover/qml/ApplicationPage.qml:926
 #, kde-format
 msgid "Content Rating"
 msgstr "レーティング情報"
 
-#: discover/qml/ApplicationPage.qml:954
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#: discover/qml/ApplicationPage.qml:949
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "使用状況に関する情報を提出する"
+msgstr "ライセンス情報"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -719,8 +668,7 @@ msgid "Size"
 msgstr "サイズ"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "リリース日"
 
@@ -895,7 +843,7 @@ msgstr "インストール済(&I)"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "更新(&U) (取得中...)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -945,14 +893,13 @@ msgid "Update Issue"
 msgstr "更新の問題"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr ""
-"更新のインストール中にエラーが発生しました。しばらくたってからやり直してくだ"
-"さい。"
+"更新もしくは更新のインストール中にエラーが発生しました。しばらくたってからや"
+"り直してください。"
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
@@ -977,8 +924,7 @@ msgid "Copy to Clipboard"
 msgstr "クリップボードにコピー"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
 msgstr "使用状況に関する情報を提出する"
 
@@ -1003,8 +949,7 @@ msgid "Configure"
 msgstr "設定"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
 msgstr "フィードバックを設定..."
 
@@ -1351,8 +1296,7 @@ msgid "Settings"
 msgstr "設定"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "デフォルトのソース"
 
@@ -1362,10 +1306,9 @@ msgid "Add Source…"
 msgstr "ソースを追加..."
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
-msgstr "デフォルトに戻す"
+msgstr "デフォルトにする"
 
 #: discover/qml/SourcesPage.qml:248
 #, kde-format
@@ -1481,27 +1424,25 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "完了時、自動的に:"
 
 #: discover/qml/UpdatesPage.qml:262
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "すべて選択解除"
+msgstr "アクションを選択"
 
 #: discover/qml/UpdatesPage.qml:262
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "今すぐ再起動"
+msgstr "再起動"
 
 #: discover/qml/UpdatesPage.qml:262
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
-msgstr ""
+msgstr "シャットダウン"
 
 #: discover/qml/UpdatesPage.qml:271
 #, kde-format
@@ -1512,7 +1453,7 @@ msgstr "サイズの合計: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "今すぐ再起動して更新をインストール"
 
 #: discover/qml/UpdatesPage.qml:436
 #, kde-format
@@ -1574,84 +1515,24 @@ msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "最後の更新時刻は不明です"
 
-#~ msgid "Fetching &updates…"
-#~ msgstr "更新を取得中(&U)..."
+#~ msgid "Documentation"
+#~ msgstr "ドキュメンテーション"
 
-#~ msgid "Risks of proprietary software"
-#~ msgstr "プロプライエタリソフトウェアのリスク"
+#~ msgid "Website"
+#~ msgstr "ウェブサイト"
 
-#, fuzzy
-#~| msgctxt "@info"
-#~| msgid ""
-#~| "This application's source code is partially or entirely closed to public "
-#~| "inspection and improvement. That means third parties and users like you "
-#~| "cannot verify its operation, security, and trustworthiness, or modify "
-#~| "and redistribute it without the authors' express permission.<nl/><nl/"
-#~| ">The application may be perfectly safe to use, or it may be acting "
-#~| "against you in various ways—such as harvesting your personal "
-#~| "information, tracking your location, or transmitting the contents of "
-#~| "your files to someone else. There is no easy way to be sure, so you "
-#~| "should only install this application if you fully trust its authors (%1)."
-#~| "<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Only install this application if you fully trust its authors (<link "
-#~ "url='%1'>%2</link>).<nl/><nl/>Its source code is partially or entirely "
-#~ "closed to public inspection and improvement, so third parties and users "
-#~ "like you cannot verify its operation, security, and trustworthiness, or "
-#~ "modify and redistribute it without the authors' express permission.<nl/"
-#~ "><nl/>The application may be perfectly safe to use, or it may be acting "
-#~ "against you in various ways—such as harvesting your personal information, "
-#~ "tracking your location, or transmitting the contents of your files to "
-#~ "someone else.<nl/><nl/>You can learn more at <link url='%3'>%3</link>."
+#~ msgid "Donate"
+#~ msgstr "寄付"
+
+#~ msgid "Support and thank the developers by donating to their project"
+#~ msgstr "プロジェクトに寄付して開発者を支援する"
+
+#~ msgid "Log an issue you found to help get it fixed"
+#~ msgstr "見つけた問題を記録して修正を支援する"
+
+#~ msgid "Contribute"
+#~ msgstr "貢献"
+
+#~ msgid "Help the developers by coding, designing, testing, or translating"
 #~ msgstr ""
-#~ "このアプリケーションのソースコードは部分的もしくは全体的に公開されていませ"
-#~ "ん。これは、第三者やあなたのようなユーザがその動作、セキュリティや信頼性を"
-#~ "確認できないこと、作者の許可なしに改造・再配布できないことを意味していま"
-#~ "す。<nl/><nl/>そのようなアプリケーションは完全に安全かもしれませんし、あな"
-#~ "たが望まない動作 ― 個人情報の詮索、位置情報の追跡、ファイルの内容の他者へ"
-#~ "の転送など ― をするかもしれません。これらを確認する簡単な方法は存在しない"
-#~ "ため、このソフトウェアの作者 (%1) を完全に信頼する場合のみインストールする"
-#~ "ことが推奨されます。<nl/><nl/><link url='%2'>%2</link> でさらなる情報を得"
-#~ "ることができます。"
-
-#~ msgid "Restart automatically after update has completed"
-#~ msgstr "更新が終了した後自動的に再起動する"
-
-#~ msgid "Content Rating:"
-#~ msgstr "レーティング情報:"
-
-#~ msgid "Age: %1+"
-#~ msgstr "対象年齢: %1歳以上"
-
-#~ msgid "Addons"
-#~ msgstr "アドオン"
-
-#~ msgid "Install or remove additional functionality"
-#~ msgstr "追加の機能をインストールもしくは削除する"
-
-#~ msgid "Get Involved"
-#~ msgstr "参加する"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "This application's source code is partially or entirely closed to public "
-#~ "inspection and improvement. That means third parties and users like you "
-#~ "cannot verify its operation, security, and trustworthiness, or modify and "
-#~ "redistribute it without the authors' express permission.<nl/><nl/>The "
-#~ "application may be perfectly safe to use, or it may be acting against you "
-#~ "in various ways—such as harvesting your personal information, tracking "
-#~ "your location, or transmitting the contents of your files to someone "
-#~ "else. There is no easy way to be sure, so you should only install this "
-#~ "application if you fully trust its authors (<link url='%1'>%2</link>).<nl/"
-#~ "><nl/>You can learn more at <link url='%3'>%3</link>."
-#~ msgstr ""
-#~ "このアプリケーションのソースコードは部分的もしくは全体的に公開されていませ"
-#~ "ん。これは、第三者やあなたのようなユーザがその動作、セキュリティや信頼性を"
-#~ "確認できないこと、作者の許可なしに改造・再配布できないことを意味していま"
-#~ "す。<nl/><nl/>そのようなアプリケーションは完全に安全かもしれませんし、あな"
-#~ "たが望まない動作 ― 個人情報の詮索、位置情報の追跡、ファイルの内容の他者へ"
-#~ "の転送など ― をするかもしれません。これらを確認する簡単な方法は存在しない"
-#~ "ため、このソフトウェアの作者 (<link url='%1'>%2</link>) を完全に信頼する場"
-#~ "合のみインストールすることが推奨されます。<link url='%3'>%3</link> でさら"
-#~ "なる情報を得ることができます。"
+#~ "プログラミング、デザイン、テストもしくは翻訳に参加して開発者を支援する"

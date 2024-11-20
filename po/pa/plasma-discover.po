@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-15 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:41+0000\n"
 "PO-Revision-Date: 2024-02-10 09:57-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -528,67 +528,50 @@ msgctxt "@title"
 msgid "External Links"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:816
-#, kde-format
-msgid "Documentation"
-msgstr "ਦਸਤਾਵੇਜ਼"
-
 #: discover/qml/ApplicationPage.qml:817
-#, kde-format
-msgid "Read the project's official documentation"
+#, fuzzy, kde-format
+#| msgid "Read the project's official documentation"
+msgctxt "@info text of a web URL"
+msgid "Read the documentation"
 msgstr "ਪਰੋਜੈਕਟ ਦੇ ਅਧਿਕਾਰਿਤ ਦਸਤਾਵੇਜ਼ ਪੜ੍ਹੋ"
 
 #: discover/qml/ApplicationPage.qml:829
-#, kde-format
-msgid "Website"
-msgstr "ਵੈੱਬਸਾਈਟ"
-
-#: discover/qml/ApplicationPage.qml:830
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Visit the project's website"
+msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "ਪਰੋਜੈਕਟ ਦੀ ਵੈੱਬਸਾਈਟ ਖੋਲ੍ਹੋ"
 
-#: discover/qml/ApplicationPage.qml:842
+#: discover/qml/ApplicationPage.qml:841
 #, kde-format
-msgid "Donate"
-msgstr "ਦਾਨ ਕਰੋ"
-
-#: discover/qml/ApplicationPage.qml:843
-#, kde-format
-msgid "Support and thank the developers by donating to their project"
+msgctxt "@info text of a web URL"
+msgid "Donate to the project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:855
-#, kde-format
-msgid "Report Bug"
+#: discover/qml/ApplicationPage.qml:853
+#, fuzzy, kde-format
+#| msgid "Report Bug"
+msgctxt "@info text of a web URL"
+msgid "Report a bug"
 msgstr "ਬੱਗ ਰਿਪੋਰਟ ਦਿਓ"
 
-#: discover/qml/ApplicationPage.qml:856
+#: discover/qml/ApplicationPage.qml:865
 #, kde-format
-msgid "Log an issue you found to help get it fixed"
+msgctxt "@info text of a web URL"
+msgid "Start contributing"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:868
-#, kde-format
-msgid "Contribute"
-msgstr "ਯੋਗਦਾਨ"
-
-#: discover/qml/ApplicationPage.qml:869
-#, kde-format
-msgid "Help the developers by coding, designing, testing, or translating"
-msgstr "ਕੋਡ ਲਿਖ ਕੇ, ਡਿਜ਼ਾਇਨ, ਟੈਸਟ ਜਾਂ ਅਨੁਵਾਦ ਕਰਕੇ ਡਿਵੈਲਪਰਾਂ ਦੀ ਮਦਦ ਕਰੋ"
-
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:894
 #, kde-format
 msgid "All Licenses"
 msgstr "ਸਭ ਲਸੰਸ"
 
-#: discover/qml/ApplicationPage.qml:931
+#: discover/qml/ApplicationPage.qml:926
 #, kde-format
 msgid "Content Rating"
 msgstr "ਸਮੱਗਰੀ ਰੇਟਿੰਗ"
 
-#: discover/qml/ApplicationPage.qml:954
+#: discover/qml/ApplicationPage.qml:949
 #, fuzzy, kde-format
 #| msgid "Submit usage information"
 msgctxt "@title:window"
@@ -1491,6 +1474,21 @@ msgstr "ਅੱਪਡੇਟ ਲਈ ਜਾਂਚ ਕਰਨੀ ਚਾਹੀਦੀ �
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "ਆਖਰੀ ਅੱਪਡੇਟ ਦਾ ਸਮਾਂ ਪਤਾ ਨਹੀ ਹੈ"
+
+#~ msgid "Documentation"
+#~ msgstr "ਦਸਤਾਵੇਜ਼"
+
+#~ msgid "Website"
+#~ msgstr "ਵੈੱਬਸਾਈਟ"
+
+#~ msgid "Donate"
+#~ msgstr "ਦਾਨ ਕਰੋ"
+
+#~ msgid "Contribute"
+#~ msgstr "ਯੋਗਦਾਨ"
+
+#~ msgid "Help the developers by coding, designing, testing, or translating"
+#~ msgstr "ਕੋਡ ਲਿਖ ਕੇ, ਡਿਜ਼ਾਇਨ, ਟੈਸਟ ਜਾਂ ਅਨੁਵਾਦ ਕਰਕੇ ਡਿਵੈਲਪਰਾਂ ਦੀ ਮਦਦ ਕਰੋ"
 
 #~ msgid "Fetching &updates…"
 #~ msgstr "…ਅੱਪਡੇਟ ਲਏ ਜਾ ਰਹੇ ਹਨ(&u)"

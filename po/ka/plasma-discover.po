@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-15 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:41+0000\n"
 "PO-Revision-Date: 2024-09-27 06:24+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -587,68 +587,50 @@ msgctxt "@title"
 msgid "External Links"
 msgstr "გარე ბმულები"
 
-#: discover/qml/ApplicationPage.qml:816
-#, kde-format
-msgid "Documentation"
-msgstr "დოკუმენტაცია"
-
 #: discover/qml/ApplicationPage.qml:817
-#, kde-format
-msgid "Read the project's official documentation"
+#, fuzzy, kde-format
+#| msgid "Read the project's official documentation"
+msgctxt "@info text of a web URL"
+msgid "Read the documentation"
 msgstr "წაიკითხეთ პროექტის ოფიციალური დოკუმენტაცია"
 
 #: discover/qml/ApplicationPage.qml:829
-#, kde-format
-msgid "Website"
-msgstr "ვებგვერდი"
-
-#: discover/qml/ApplicationPage.qml:830
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Visit the project's website"
+msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "პროექტის ვებგვერდის ნახვა"
 
-#: discover/qml/ApplicationPage.qml:842
+#: discover/qml/ApplicationPage.qml:841
 #, kde-format
-msgid "Donate"
-msgstr "შემოწირულობა"
-
-#: discover/qml/ApplicationPage.qml:843
-#, kde-format
-msgid "Support and thank the developers by donating to their project"
+msgctxt "@info text of a web URL"
+msgid "Donate to the project"
 msgstr ""
-"დაეხმარეთ და გადაუხადეთ პროგრამისტებს მადლობა მათი პროექტების მხარდაჭერით"
 
-#: discover/qml/ApplicationPage.qml:855
-#, kde-format
-msgid "Report Bug"
+#: discover/qml/ApplicationPage.qml:853
+#, fuzzy, kde-format
+#| msgid "Report Bug"
+msgctxt "@info text of a web URL"
+msgid "Report a bug"
 msgstr "შეცდომის ანგარიში"
 
-#: discover/qml/ApplicationPage.qml:856
+#: discover/qml/ApplicationPage.qml:865
 #, kde-format
-msgid "Log an issue you found to help get it fixed"
-msgstr "ჩაიწერეთ ჟურნალში აღმოჩენილი შეცდომა, რათა ის გასწორდეს"
+msgctxt "@info text of a web URL"
+msgid "Start contributing"
+msgstr ""
 
-#: discover/qml/ApplicationPage.qml:868
-#, kde-format
-msgid "Contribute"
-msgstr "შემოწირულობა"
-
-#: discover/qml/ApplicationPage.qml:869
-#, kde-format
-msgid "Help the developers by coding, designing, testing, or translating"
-msgstr "დაეხმარეთ პროგრამისტებს კოდით, დიზაინით, ტესტირებით ან თარგმნით"
-
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:894
 #, kde-format
 msgid "All Licenses"
 msgstr "ყველა ლიცენზია"
 
-#: discover/qml/ApplicationPage.qml:931
+#: discover/qml/ApplicationPage.qml:926
 #, kde-format
 msgid "Content Rating"
 msgstr "შემცველობის შეფასება"
 
-#: discover/qml/ApplicationPage.qml:954
+#: discover/qml/ApplicationPage.qml:949
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"
@@ -1565,6 +1547,28 @@ msgstr "უნდა შემოწმდეს განახლებებ�
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "ბოლო განახლების თარიღი უცნობია"
+
+#~ msgid "Documentation"
+#~ msgstr "დოკუმენტაცია"
+
+#~ msgid "Website"
+#~ msgstr "ვებგვერდი"
+
+#~ msgid "Donate"
+#~ msgstr "შემოწირულობა"
+
+#~ msgid "Support and thank the developers by donating to their project"
+#~ msgstr ""
+#~ "დაეხმარეთ და გადაუხადეთ პროგრამისტებს მადლობა მათი პროექტების მხარდაჭერით"
+
+#~ msgid "Log an issue you found to help get it fixed"
+#~ msgstr "ჩაიწერეთ ჟურნალში აღმოჩენილი შეცდომა, რათა ის გასწორდეს"
+
+#~ msgid "Contribute"
+#~ msgstr "შემოწირულობა"
+
+#~ msgid "Help the developers by coding, designing, testing, or translating"
+#~ msgstr "დაეხმარეთ პროგრამისტებს კოდით, დიზაინით, ტესტირებით ან თარგმნით"
 
 #~ msgid "Fetching &updates…"
 #~ msgstr "&განახლებების გამოთხოვა…"

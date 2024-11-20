@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-15 00:41+0000\n"
+"POT-Creation-Date: 2024-11-20 00:41+0000\n"
 "PO-Revision-Date: 2024-09-14 11:22+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -563,67 +563,50 @@ msgctxt "@title"
 msgid "External Links"
 msgstr "Eksteraj ligiloj"
 
-#: discover/qml/ApplicationPage.qml:816
-#, kde-format
-msgid "Documentation"
-msgstr "Dokumentado"
-
 #: discover/qml/ApplicationPage.qml:817
-#, kde-format
-msgid "Read the project's official documentation"
+#, fuzzy, kde-format
+#| msgid "Read the project's official documentation"
+msgctxt "@info text of a web URL"
+msgid "Read the documentation"
 msgstr "Legi la oficialan dokumentaron de la projekto"
 
 #: discover/qml/ApplicationPage.qml:829
-#, kde-format
-msgid "Website"
-msgstr "Retejo"
-
-#: discover/qml/ApplicationPage.qml:830
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Visit the project's website"
+msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Viziti la retejon de la projekto"
 
-#: discover/qml/ApplicationPage.qml:842
+#: discover/qml/ApplicationPage.qml:841
 #, kde-format
-msgid "Donate"
-msgstr "Doni"
+msgctxt "@info text of a web URL"
+msgid "Donate to the project"
+msgstr ""
 
-#: discover/qml/ApplicationPage.qml:843
-#, kde-format
-msgid "Support and thank the developers by donating to their project"
-msgstr "Subteni kaj danki la programistojn per donacado al ilia projekto"
-
-#: discover/qml/ApplicationPage.qml:855
-#, kde-format
-msgid "Report Bug"
+#: discover/qml/ApplicationPage.qml:853
+#, fuzzy, kde-format
+#| msgid "Report Bug"
+msgctxt "@info text of a web URL"
+msgid "Report a bug"
 msgstr "Raporti Cimon"
 
-#: discover/qml/ApplicationPage.qml:856
+#: discover/qml/ApplicationPage.qml:865
 #, kde-format
-msgid "Log an issue you found to help get it fixed"
-msgstr "Protokolu problemon, kiun vi trovis por helpi ĝin solvi"
+msgctxt "@info text of a web URL"
+msgid "Start contributing"
+msgstr ""
 
-#: discover/qml/ApplicationPage.qml:868
-#, kde-format
-msgid "Contribute"
-msgstr "Kontribuu"
-
-#: discover/qml/ApplicationPage.qml:869
-#, kde-format
-msgid "Help the developers by coding, designing, testing, or translating"
-msgstr "Helpu la programistojn per kodado, desegnado, testado aŭ tradukado"
-
-#: discover/qml/ApplicationPage.qml:899
+#: discover/qml/ApplicationPage.qml:894
 #, kde-format
 msgid "All Licenses"
 msgstr "Ĉiuj Licencoj"
 
-#: discover/qml/ApplicationPage.qml:931
+#: discover/qml/ApplicationPage.qml:926
 #, kde-format
 msgid "Content Rating"
 msgstr "Enhavo Taksado"
 
-#: discover/qml/ApplicationPage.qml:954
+#: discover/qml/ApplicationPage.qml:949
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"
@@ -1528,3 +1511,24 @@ msgstr "Devus kontroli ĝisdatigojn"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tempo de lasta ĝisdatigo nekonata"
+
+#~ msgid "Documentation"
+#~ msgstr "Dokumentado"
+
+#~ msgid "Website"
+#~ msgstr "Retejo"
+
+#~ msgid "Donate"
+#~ msgstr "Doni"
+
+#~ msgid "Support and thank the developers by donating to their project"
+#~ msgstr "Subteni kaj danki la programistojn per donacado al ilia projekto"
+
+#~ msgid "Log an issue you found to help get it fixed"
+#~ msgstr "Protokolu problemon, kiun vi trovis por helpi ĝin solvi"
+
+#~ msgid "Contribute"
+#~ msgstr "Kontribuu"
+
+#~ msgid "Help the developers by coding, designing, testing, or translating"
+#~ msgstr "Helpu la programistojn per kodado, desegnado, testado aŭ tradukado"
