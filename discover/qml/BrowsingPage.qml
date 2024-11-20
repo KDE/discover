@@ -92,7 +92,7 @@ DiscoverPage {
 
         Repeater {
             id: popRep
-            model: DiscoverApp.PaginateModel {
+            model: DiscoverApp.LimitedRowCountProxyModel {
                 pageSize: apps.maximumColumns * 2
                 sourceModel: DiscoverApp.OdrsAppsModel {
                     // filter: FOSS
@@ -133,7 +133,7 @@ DiscoverPage {
                 ].includes(backend.name);
             }
 
-            DiscoverApp.PaginateModel {
+            DiscoverApp.LimitedRowCountProxyModel {
                 pageSize: apps.maximumColumns * 2
                 sourceModel: Discover.ResourcesProxyModel {
                     filteredCategoryName: "All Applications"
@@ -174,7 +174,7 @@ DiscoverPage {
 
         Repeater {
             id: gamesRep
-            model: DiscoverApp.PaginateModel {
+            model: DiscoverApp.LimitedRowCountProxyModel {
                 pageSize: apps.maximumColumns
                 sourceModel: Discover.ResourcesProxyModel {
                     filteredCategoryName: "Games"
@@ -205,7 +205,7 @@ DiscoverPage {
 
         Repeater {
             id: devRep
-            model: DiscoverApp.PaginateModel {
+            model: DiscoverApp.LimitedRowCountProxyModel {
                 pageSize: apps.maximumColumns
                 sourceModel: Discover.ResourcesProxyModel {
                     filteredCategoryName: "Developer Tools"

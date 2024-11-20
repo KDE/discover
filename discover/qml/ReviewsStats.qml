@@ -114,7 +114,7 @@ BasicAbstractCard {
             highlightResizeDuration: Kirigami.Units.longDuration
 
             // Only show reviews here that someone cosidered useful to show
-            model: DiscoverApp.PaginateModel {
+            model: DiscoverApp.LimitedRowCountProxyModel {
                 sourceModel: KItemModels.KSortFilterProxyModel {
                     id: sortModel
                     sourceModel: root.model
