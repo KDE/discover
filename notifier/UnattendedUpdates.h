@@ -15,13 +15,23 @@ class DiscoverNotifier;
 class UnattendedUpdates : public QObject
 {
     Q_OBJECT
+
+    // Wraps a KIdleTime id to ensure it is released whenever necessary.
+    class IdleHandle
+    {
+    public:
+        IdleHandle(const std::chrono::milliseconds &idleTimeout);
+        ~IdleHandle();
+        Q_DISABLE_COPY_MOVE(IdleHandle)
+        int m_id;
+    };
+
 public:
     UnattendedUpdates(DiscoverNotifier *parent);
-    ~UnattendedUpdates() override;
 
 private:
     void checkNewState();
     void triggerUpdate(int timeoutId);
 
-    std::optional<int> m_idleTimeoutId;
+    std::optional<IdleHandle> m_idleTimeoutId;
 };

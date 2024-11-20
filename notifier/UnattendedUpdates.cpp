@@ -22,13 +22,6 @@ UnattendedUpdates::UnattendedUpdates(DiscoverNotifier *parent)
     checkNewState();
 }
 
-UnattendedUpdates::~UnattendedUpdates() noexcept
-{
-    if (m_idleTimeoutId.has_value()) {
-        KIdleTime::instance()->removeIdleTimeout(m_idleTimeoutId.value());
-    }
-}
-
 void UnattendedUpdates::checkNewState()
 {
     using namespace std::chrono_literals;
@@ -45,21 +38,19 @@ void UnattendedUpdates::checkNewState()
     if (doTrigger && !m_idleTimeoutId.has_value()) {
         qDebug() << "waiting for an idle moment";
         // If the system is untouched for 15 minutes, trigger the unattened update
-        m_idleTimeoutId = KIdleTime::instance()->addIdleTimeout(int(std::chrono::milliseconds(15min).count()));
+        m_idleTimeoutId.emplace(std::chrono::milliseconds(15min));
     } else if (!doTrigger && m_idleTimeoutId.has_value()) {
         qDebug() << "nothing to do";
-        KIdleTime::instance()->removeIdleTimeout(m_idleTimeoutId.value());
         m_idleTimeoutId.reset();
     }
 }
 
 void UnattendedUpdates::triggerUpdate(int timeoutId)
 {
-    if (!m_idleTimeoutId.has_value() || timeoutId != m_idleTimeoutId.value()) {
+    if (!m_idleTimeoutId.has_value() || timeoutId != m_idleTimeoutId->m_id) {
         return;
     }
 
-    KIdleTime::instance()->removeIdleTimeout(m_idleTimeoutId.value());
     m_idleTimeoutId.reset();
 
     DiscoverNotifier *notifier = static_cast<DiscoverNotifier *>(parent());
@@ -85,4 +76,12 @@ void UnattendedUpdates::triggerUpdate(int timeoutId)
     qInfo() << "started unattended update" << QDateTime::currentDateTimeUtc();
 }
 
-#include "moc_UnattendedUpdates.cpp"
+UnattendedUpdates::IdleHandle::IdleHandle(const std::chrono::milliseconds &idleTimeout)
+    : m_id(KIdleTime::instance()->addIdleTimeout(int(idleTimeout.count())))
+{
+}
+
+UnattendedUpdates::IdleHandle::~IdleHandle()
+{
+    KIdleTime::instance()->removeIdleTimeout(m_id);
+}
