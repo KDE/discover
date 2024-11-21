@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-20 00:41+0000\n"
-"PO-Revision-Date: 2024-09-27 06:24+0200\n"
+"PO-Revision-Date: 2024-11-20 07:11+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -588,15 +588,13 @@ msgid "External Links"
 msgstr "გარე ბმულები"
 
 #: discover/qml/ApplicationPage.qml:817
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "წაიკითხეთ პროექტის ოფიციალური დოკუმენტაცია"
+msgstr "წაიკითხეთ დოკუმენტაცია"
 
 #: discover/qml/ApplicationPage.qml:829
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "პროექტის ვებგვერდის ნახვა"
@@ -605,20 +603,19 @@ msgstr "პროექტის ვებგვერდის ნახვა"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "პროექტისთვის შეწირვა"
 
 #: discover/qml/ApplicationPage.qml:853
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
-msgstr "შეცდომის ანგარიში"
+msgstr "შეტყობინება შეცდომის შესახებ"
 
 #: discover/qml/ApplicationPage.qml:865
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "წვლილის შეტანის დაწყება"
 
 #: discover/qml/ApplicationPage.qml:894
 #, kde-format
