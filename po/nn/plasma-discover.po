@@ -1525,25 +1525,3 @@ msgstr "Skal sjå etter oppdateringar"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for siste oppdatering er ukjend"
-
-#~ msgid "Documentation"
-#~ msgstr "Dokumentasjon"
-
-#~ msgid "Website"
-#~ msgstr "Heimeside"
-
-#~ msgid "Donate"
-#~ msgstr "Gje pengegåve"
-
-#~ msgid "Support and thank the developers by donating to their project"
-#~ msgstr "Støtt og takk utviklarane med ei pengegåve"
-
-#~ msgid "Log an issue you found to help get it fixed"
-#~ msgstr "Meld frå om feil du ønskjer retta"
-
-#~ msgid "Contribute"
-#~ msgstr "Bidra"
-
-#~ msgid "Help the developers by coding, designing, testing, or translating"
-#~ msgstr ""
-#~ "Hjelp utviklarane med programmering, design, testing eller omsetjing"

@@ -566,15 +566,13 @@ msgid "External Links"
 msgstr "外部链接"
 
 #: discover/qml/ApplicationPage.qml:817
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "查看此项目的官方文档"
+msgstr "阅读文档"
 
 #: discover/qml/ApplicationPage.qml:829
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "访问此项目的网站"
@@ -583,20 +581,19 @@ msgstr "访问此项目的网站"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "捐款支持"
 
 #: discover/qml/ApplicationPage.qml:853
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
-msgstr "报告程序缺陷"
+msgstr "报告问题"
 
 #: discover/qml/ApplicationPage.qml:865
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "参与贡献"
 
 #: discover/qml/ApplicationPage.qml:894
 #, kde-format
@@ -1514,24 +1511,3 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
-
-#~ msgid "Documentation"
-#~ msgstr "文档"
-
-#~ msgid "Website"
-#~ msgstr "网站"
-
-#~ msgid "Donate"
-#~ msgstr "捐款"
-
-#~ msgid "Support and thank the developers by donating to their project"
-#~ msgstr "捐款支持项目存续，以实际行动表达对开发者的感谢之情"
-
-#~ msgid "Log an issue you found to help get it fixed"
-#~ msgstr "记录您遇到的问题，以帮助项目修复程序缺陷"
-
-#~ msgid "Contribute"
-#~ msgstr "参与贡献"
-
-#~ msgid "Help the developers by coding, designing, testing, or translating"
-#~ msgstr "帮助开发团队进行编程、设计、测试、翻译等工作"
