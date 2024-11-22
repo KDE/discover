@@ -1,0 +1,7 @@
+{
+    "KPlugin": {
+        "Description": "Notifies when updates are available",
+        "Name": "Update Notifier"
+    },
+    "X-KDE-Kded-autoload": true
+}

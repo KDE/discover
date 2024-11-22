@@ -83,6 +83,7 @@ endif()
 option(WITH_NOTIFIER "Build and install the notifier plasmoid" ON)
 if(WITH_NOTIFIER)
     add_subdirectory(notifier)
+    add_subdirectory(notifierd)
 endif()
 
 set_package_properties(KF6Attica PROPERTIES

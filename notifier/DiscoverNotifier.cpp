@@ -21,9 +21,8 @@
 #include <KIO/ApplicationLauncherJob>
 #include <KIO/CommandLauncherJob>
 
-#include "../libdiscover/utils.h"
 #include "../libdiscover/UpdateModel/RefreshNotifierDBus.h"
-#include "Login1ManagerInterface.h"
+#include "../libdiscover/utils.h"
 #include "updatessettings.h"
 #include <chrono>
 
@@ -39,28 +38,13 @@ bool isOnline()
 
 DiscoverNotifier::DiscoverNotifier(QObject *parent)
     : QObject(parent)
+    , m_settings(new UpdatesSettings(this))
 {
-    m_settings = new UpdatesSettings(this);
-    m_settingsWatcher = KConfigWatcher::create(m_settings->sharedConfig());
-    QNetworkInformation::loadBackendByFeatures(QNetworkInformation::Feature::Reachability | QNetworkInformation::Feature::TransportMedium);
-    if (auto info = QNetworkInformation::instance()) {
-        connect(info, &QNetworkInformation::reachabilityChanged, this, &DiscoverNotifier::stateChanged);
-        connect(info, &QNetworkInformation::transportMediumChanged, this, &DiscoverNotifier::stateChanged);
-        connect(info, &QNetworkInformation::isBehindCaptivePortalChanged, this, &DiscoverNotifier::stateChanged);
-    } else {
-        qWarning() << "QNetworkInformation has no backend. Is NetworkManager.service running?";
-    }
+    connect(&m_quitTimer, &QTimer::timeout, this, [] {
+        qApp->quit();
+    });
 
     refreshUnattended();
-    connect(m_settingsWatcher.data(), &KConfigWatcher::configChanged, this, [this](const KConfigGroup &group, const QByteArrayList &names) {
-        if (group.config()->name() != m_settings->config()->name() || group.name() != QLatin1String("Global")) {
-            return;
-        }
-        if (names.contains("UseUnattendedUpdates") || names.contains("RequiredNotificationInterval")) {
-            refreshUnattended();
-            Q_EMIT stateChanged();
-        }
-    });
 
     m_backends = BackendNotifierFactory().allBackends();
     for (BackendNotifierModule *module : std::as_const(m_backends)) {
@@ -84,18 +68,7 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
     updateStatusNotifier();
 
     // Only fetch updates after the system is comfortably booted
-    QTimer::singleShot(20s, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
-
-    auto login1 = new OrgFreedesktopLogin1ManagerInterface(QStringLiteral("org.freedesktop.login1"),
-                                                           QStringLiteral("/org/freedesktop/login1"),
-                                                           QDBusConnection::systemBus(),
-                                                           this);
-    connect(login1, &OrgFreedesktopLogin1ManagerInterface::PrepareForSleep, this, [this](bool sleeping) {
-        // if we just woke up and have not checked in the notification interval
-        if (!sleeping && m_lastUpdate.secsTo(QDateTime::currentDateTimeUtc()) > m_settings->requiredNotificationInterval()) {
-            QTimer::singleShot(20s, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
-        }
-    });
+    QTimer::singleShot(0, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
 
     // Listen to broadcasts from discover about notification changes.
     QDBusConnection::sessionBus().connect(QString(),
@@ -151,9 +124,11 @@ bool DiscoverNotifier::notifyAboutUpdates() const
         return false;
     }
 
+#warning it super awkward that the checker function sets as well
     m_settings->setLastNotificationTime(QDateTime::currentDateTimeUtc());
     m_settings->save();
 
+#warning this makes no sense if discover is running wed still need to run unattended updates somehow
     if (QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.discover"))) {
         return false;
     }
@@ -395,6 +370,13 @@ void DiscoverNotifier::setBusy(bool isBusy)
     m_isBusy = isBusy;
     Q_EMIT busyChanged();
     Q_EMIT stateChanged();
+
+#warning state management needs some improvement. the notifier needs to up when it has a notification pending for reboot or a statusnotifier or is busy. in a way itd be tidier if reboot and statusnotifier was a separate dbus activated tool perhaps
+    if (isBusy) {
+        m_quitTimer.stop();
+    } else {
+        m_quitTimer.start(4s);
+    }
 }
 
 void DiscoverNotifier::recheckSystemUpdateNeededAndNotifyApp()
