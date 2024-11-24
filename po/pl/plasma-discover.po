@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2024-02-11 11:12+0100\n"
+"PO-Revision-Date: 2024-11-23 13:17+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -720,7 +720,7 @@ msgstr "&Wgrane"
 #: discover/qml/DiscoverWindow.qml:81
 #, kde-format
 msgid "Fetching &updates…"
-msgstr "Pobieranie uaktualnień..."
+msgstr "Pobieranie &uaktualnień…"
 
 #: discover/qml/DiscoverWindow.qml:81
 #, kde-format
@@ -819,7 +819,7 @@ msgstr "Ustawienia informacji zwrotnej..."
 #: discover/qml/Feedback.qml:28 discover/qml/SourcesPage.qml:19
 #, kde-format
 msgid "Configure Updates…"
-msgstr "Ustawienia uaktualnień..."
+msgstr "Ustawienia uaktualnień…"
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
