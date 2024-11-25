@@ -1064,7 +1064,11 @@ QStringList FlatpakResource::topObjects() const
 
 QStringList FlatpakResource::bottomObjects() const
 {
-    return s_bottomObjects;
+    // Don't need permissions for non-apps; it doesn't make any sense
+    if (isDesktopApp()) {
+        return s_bottomObjects;
+    }
+    return {};
 }
 
 void FlatpakResource::addRefToUpdate(const QByteArray &toUpdate)

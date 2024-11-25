@@ -99,6 +99,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QStringList bottomObjects READ bottomObjects CONSTANT)
     Q_PROPERTY(QString verifiedMessage READ verifiedMessage CONSTANT)
     Q_PROPERTY(QString verifiedIconName READ verifiedIconName CONSTANT)
+    Q_PROPERTY(Type type READ type CONSTANT)
 
     // Resolve circular dependency for QObject* properties in both classes
     Q_MOC_INCLUDE("resources/AbstractResourcesBackend.h")
