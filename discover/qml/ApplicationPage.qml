@@ -37,6 +37,9 @@ DiscoverPage {
 
     readonly property bool isOfflineUpgrade: application.packageName === "discover-offline-upgrade"
 
+    readonly property bool isTechnicalPackage: application.type == Discover.AbstractResource.ApplicationSupport
+                                            || application.type == Discover.AbstractResource.System
+
     readonly property int smallButtonSize: Kirigami.Units.iconSizes.small + (Kirigami.Units.smallSpacing * 2)
 
     function colorForLicenseType(licenseType: string): string {
@@ -133,7 +136,7 @@ DiscoverPage {
         id: shareAction
         text: i18nc("@action:button share a link to this app", "Share")
         icon.name: "document-share"
-        visible: application.url.toString().length > 0 && !appInfo.isOfflineUpgrade
+        visible: application.url.toString().length > 0 && !appInfo.isTechnicalPackage
         onTriggered: shareSheet.open()
     }
 
@@ -325,9 +328,7 @@ DiscoverPage {
 
                         // Rating
                         RowLayout {
-
-                            // Not relevant to the offline upgrade use case
-                            visible: !appInfo.isOfflineUpgrade
+                            visible: !appInfo.isTechnicalPackage
 
                             Rating {
                                 value: appInfo.application.rating.sortableRating
@@ -476,11 +477,13 @@ DiscoverPage {
 
                     // Content Rating
                     QQC2.Label {
-                        text: i18nc("@label The app is suitable for people of the following ages or older", "Ages:")
                         Layout.alignment: Qt.AlignRight
+                        visible: !appInfo.isTechnicalPackage
+                        text: i18nc("@label The app is suitable for people of the following ages or older", "Ages:")
                     }
                     RowLayout {
                         spacing: Kirigami.Units.smallSpacing
+                        visible: !appInfo.isTechnicalPackage
 
                         QQC2.Label {
                             text: application.contentRatingMinimumAge === 0
@@ -543,7 +546,7 @@ DiscoverPage {
             Layout.preferredHeight: Math.round(width / 2) + Math.round((2 + 7/9) * Kirigami.Units.gridUnit)
 
             edgeMargin: appInfo.padding
-            visible: carouselModel.count > 0 && !hasFailed
+            visible: carouselModel.count > 0 && !hasFailed && !appInfo.isTechnicalPackage
 
             carouselModel: Discover.ScreenshotsModel {
                 application: appInfo.application
@@ -695,7 +698,8 @@ DiscoverPage {
         // Reviews section
         ColumnLayout {
             spacing: Kirigami.Units.smallSpacing
-            visible: reviewsSheet.sortModel.count > 0 || reviewsModel.fetching || reviewsError.hasError
+            visible: (reviewsSheet.sortModel.count > 0 || reviewsModel.fetching || reviewsError.hasError)
+                     && !appInfo.isTechnicalPackage
 
             Kirigami.Heading {
                 Layout.fillWidth: true
@@ -770,7 +774,7 @@ DiscoverPage {
                                                 + (donateButton.visible ? 1 : 0)
                                                 + (bugButton.visible ? 1 : 0)
                                                 + (contributeButton.visible ? 1 : 0)
-            visible: visibleButtons > 0
+            visible: visibleButtons > 0 && !appInfo.isTechnicalPackage
 
             spacing: Kirigami.Units.smallSpacing
 
