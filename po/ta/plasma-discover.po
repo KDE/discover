@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-20 00:41+0000\n"
-"PO-Revision-Date: 2024-09-07 20:19+0200\n"
+"PO-Revision-Date: 2024-11-24 17:11+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -476,8 +476,7 @@ msgstr[0] "உரிமம்:"
 msgstr[1] "உரிமங்கள்:"
 
 #: discover/qml/ApplicationPage.qml:413
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "இதன் பொருள் என்ன?"
@@ -574,15 +573,13 @@ msgid "External Links"
 msgstr "வெளி இணைப்புகள்"
 
 #: discover/qml/ApplicationPage.qml:817
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "செயலியின் அதிகாரப்பூர்வ கையேட்டை காட்டும்"
+msgstr "கையேட்டை காட்டு"
 
 #: discover/qml/ApplicationPage.qml:829
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "செயலியின் இணையதளத்தைக் காட்டு"
@@ -591,20 +588,19 @@ msgstr "செயலியின் இணையதளத்தைக் கா�
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "திட்டப்பணிக்கு நன்கொடை அளிப்பது எப்படி"
 
 #: discover/qml/ApplicationPage.qml:853
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
-msgstr "பிழையை தெரிவி"
+msgstr "பிழையை தெரிவிப்பது"
 
 #: discover/qml/ApplicationPage.qml:865
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "பங்களிப்பது"
 
 #: discover/qml/ApplicationPage.qml:894
 #, kde-format
@@ -617,11 +613,10 @@ msgid "Content Rating"
 msgstr "வயதுவரம்பு"
 
 #: discover/qml/ApplicationPage.qml:949
-#, fuzzy, kde-format
-#| msgid "Submit Usage Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "பயன்பாட்டு விவரங்களை சமர்ப்பி"
+msgstr "உரிம விவரங்கள்"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -682,8 +677,7 @@ msgid "Size"
 msgstr "அளவு"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "வெளியிட்ட தேதி"
 
@@ -856,7 +850,7 @@ msgstr "&நிறுவியுள்ளவை"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "&புதுப்பிப்புகள் (பெறப்படுகின்றன…)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -907,14 +901,11 @@ msgid "Update Issue"
 msgstr "புதுப்பிப்பதில் சிக்கல்"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
-msgstr ""
-"இப்புதுப்பிப்பை நிறுவுவதில் சிக்கல் ஏற்பட்டது. சிறிது நேரம் கழித்து மறுபடியும் "
-"முயற்சியுங்கள்."
+msgstr "நிறுவும்போதோ புதுப்பிக்கும்போதோ சிக்கல் நேர்ந்தது. பின்னர் மீண்டும் முயற்சிக்கவும்."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
@@ -1121,6 +1112,9 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"%1 பிடித்திருந்தால், ஏனென்று இங்கு எழுதலாம். எடுத்துக்காட்டாக, தோற்றம் மற்றும் அம்சங்களைப் "
+"பற்றி எழுதலாம். செயலி உங்கள் தேவைக்கேற்ப செயல்படவில்லையெனில், அதைப் பற்றியும் விவரமாக "
+"எழுதவும்."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1130,6 +1124,9 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"%1 துவங்கவே இல்லையெனில், அதை தொகுப்பாக வழங்கும் %2-க்கு தெரிவிப்பது பயனுள்ளதாக "
+"இருக்கலாம் (<link url='%3'>%3</link> எனும் இணைப்பில்). செயலியில் உள்ள பிழையாக "
+"இல்லாமல், தொகுப்பாக்கியதில் ஏற்பட்ட சிக்கலாகக்கூட இருக்கலாம்."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1139,6 +1136,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"%1 துவங்கவே இல்லையெனில், அதன் நிரலாளர்களுக்கு (<link url='%2'>%2</link> எனும் "
+"இணைப்பில்) இதைத் தெரிவிப்பது பயனுள்ளதாக இருக்கலாம். செயலியில் உள்ள பிழையாக இல்லாமல், "
+"தொகுப்பாக்கியதில் ஏற்பட்ட சிக்கலாகக்கூட இருக்கலாம்."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1147,6 +1147,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"இச்செயலி அடிக்கடி முறிவடைகிறதெனில், அதன் நிரலாளர்களுக்கு (<link url='%1'>%1</link> "
+"எனும் இணைப்பில்) இதைத் தெரிவிப்பது பயனுள்ளதாக இருக்கலாம்."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1156,6 +1158,9 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"செயலியைப் பயன்படுத்துவதில் ஏதேனும் சிக்கலிருந்தால், செயலியின் நிரலாளர்களுக்கு (<link "
+"url='%1'>%1</link> எனும் இணைப்பில்) அதை தெரிவிப்பது பயனுள்ளதாக இருக்கலாம். இல்லையேல், "
+"சிக்கலை இங்கு இன்னும் விரிவாக விவரிக்கவும்."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1180,7 +1185,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "launch,run,start,துவக்,துவங்,ஏவு,திற"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1190,7 +1195,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "crash,segfault,முறிவு,சிக்கல்"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1201,6 +1206,8 @@ msgctxt ""
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
+"doesn't work,dumb,stupid,crap,junk,suck,terrible,hate,வேலை செய்யவில்லை,முட்டாள்,"
+"பயனில்லை,குப்பை,மோசம்,கேவலம்,பயனில்லை"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1311,8 +1318,7 @@ msgid "Settings"
 msgstr "அமைப்புகள்"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "இயல்பிருப்பு மூலம்"
 
@@ -1322,8 +1328,7 @@ msgid "Add Source…"
 msgstr "மூலத்தை சேர்…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "இயல்பிருப்பாக்கு"
 
@@ -1436,11 +1441,7 @@ msgid "Select None"
 msgstr "ஒன்றையும் தேர்ந்தெடுக்க வேண்டாம்"
 
 #: discover/qml/UpdatesPage.qml:257
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info on the completion of updates, the action that automatically happens "
-#| "after (e.g shutdown)"
-#| msgid "On completion, automatically:"
+#, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
@@ -1460,9 +1461,7 @@ msgid "Restart"
 msgstr "மீள்துவக்கு"
 
 #: discover/qml/UpdatesPage.qml:262
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shutdown"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr "கணினியை நிறுத்து"

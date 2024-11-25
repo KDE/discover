@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-20 00:41+0000\n"
-"PO-Revision-Date: 2024-09-27 17:03+0200\n"
+"PO-Revision-Date: 2024-11-24 17:44+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -593,15 +593,13 @@ msgid "External Links"
 msgstr "Externa länkar"
 
 #: discover/qml/ApplicationPage.qml:817
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "Läs projektets officiella dokumentation"
+msgstr "Läs dokumentationen"
 
 #: discover/qml/ApplicationPage.qml:829
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Besök projektets webbplats"
@@ -610,20 +608,19 @@ msgstr "Besök projektets webbplats"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "Ge bidrag till projektet"
 
 #: discover/qml/ApplicationPage.qml:853
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
-msgstr "Rapportera fel"
+msgstr "Rapportera ett fel"
 
 #: discover/qml/ApplicationPage.qml:865
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "Börja bidra"
 
 #: discover/qml/ApplicationPage.qml:894
 #, kde-format
