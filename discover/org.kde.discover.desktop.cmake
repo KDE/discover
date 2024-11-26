@@ -58,6 +58,7 @@ Name[uk]=Discover
 Name[x-test]=xxDiscoverxx
 Name[zh_CN]=Discover 软件中心
 Name[zh_TW]=Discover
+Comment=Install and remove apps and add-ons
 MimeType=@DesktopMimeType@
 Exec=@DesktopExec@
 Icon=plasmadiscover
