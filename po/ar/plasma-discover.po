@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-20 00:41+0000\n"
+"POT-Creation-Date: 2024-11-26 00:41+0000\n"
 "PO-Revision-Date: 2024-09-28 17:48+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -283,7 +283,7 @@ msgid "Cancel"
 msgstr "ألغِ"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:358
+#: discover/qml/ApplicationPage.qml:359
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -295,12 +295,12 @@ msgstr[4] "%1 تقييما"
 msgstr[5] "%1 تقييم"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:358
+#: discover/qml/ApplicationPage.qml:359
 #, kde-format
 msgid "No ratings yet"
 msgstr "لم يقيم بعد"
 
-#: discover/qml/ApplicationPage.qml:66
+#: discover/qml/ApplicationPage.qml:69
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -327,7 +327,7 @@ msgstr ""
 "مؤلفيه. قد تتوفر المزيد من المعلوماتعلى <link url='%2'>موقع الويب الخاص "
 "بالتطبيق</link>.<nl/><nl/>تعرف على المزيد على <link url='%3'>%3</link>."
 
-#: discover/qml/ApplicationPage.qml:71
+#: discover/qml/ApplicationPage.qml:74
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -351,7 +351,7 @@ msgstr ""
 "موقعك، أو نقل محتويات بياناتك إلى شخص آخر.لا تستخدمه إلا إذا كنت تثق تمامًا "
 "في مؤلفيه. تعرف على المزيد على <link url='%2'>%2</link>."
 
-#: discover/qml/ApplicationPage.qml:78
+#: discover/qml/ApplicationPage.qml:81
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -377,7 +377,7 @@ msgstr ""
 "المزيد من المعلومات على <link url='%4'>موقع الويب الخاص بالتطبيق</link>.<nl/"
 "><nl/>تعرف على المزيد على <link url='%5'>%5</link>."
 
-#: discover/qml/ApplicationPage.qml:85
+#: discover/qml/ApplicationPage.qml:88
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -400,7 +400,7 @@ msgstr ""
 "من موثوقية وأمان الكود الخاص به لضمان عدم تصرفه ضدك بطرق خفية.<nl/><nl/>تعرف "
 "على المزيد على <link url='%4'>%4</link>."
 
-#: discover/qml/ApplicationPage.qml:94
+#: discover/qml/ApplicationPage.qml:97
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -414,7 +414,7 @@ msgstr ""
 "بالمؤلف إذا كنت ترغب في استخدام هذا التطبيق لأي غرض آخر غير الاستخدام الشخصي "
 "الخاص."
 
-#: discover/qml/ApplicationPage.qml:98
+#: discover/qml/ApplicationPage.qml:101
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -425,19 +425,19 @@ msgstr ""
 "لا يشير %1 إلى الترخيص الذي وزع بموجبه. اتصل بمؤلف التطبيق إذا كنت ترغب في "
 "استخدامه لأي غرض آخر غير الاستخدام الشخصي الخاص."
 
-#: discover/qml/ApplicationPage.qml:134
+#: discover/qml/ApplicationPage.qml:137
 #, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "شارك"
 
-#: discover/qml/ApplicationPage.qml:142
+#: discover/qml/ApplicationPage.qml:145
 #, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
 msgstr "الإضافات"
 
-#: discover/qml/ApplicationPage.qml:158
+#: discover/qml/ApplicationPage.qml:161
 #, kde-format
 msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
@@ -445,39 +445,39 @@ msgctxt ""
 msgid "From %1"
 msgstr "من %1"
 
-#: discover/qml/ApplicationPage.qml:174
+#: discover/qml/ApplicationPage.qml:177
 #, kde-format
 msgid "%1 - %2"
 msgstr "‏%1 -‏ %2"
 
-#: discover/qml/ApplicationPage.qml:210
+#: discover/qml/ApplicationPage.qml:213
 #, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
 msgstr "شارك رابط إلى التطبيق"
 
-#: discover/qml/ApplicationPage.qml:219
+#: discover/qml/ApplicationPage.qml:222
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "ألق نظرة على تطبيق %1!"
 
-#: discover/qml/ApplicationPage.qml:320
+#: discover/qml/ApplicationPage.qml:323
 #, kde-format
 msgid "Unknown author"
 msgstr "مؤلف مجهول"
 
-#: discover/qml/ApplicationPage.qml:382
+#: discover/qml/ApplicationPage.qml:383
 #, kde-format
 msgid "Version:"
 msgstr "الإصدارة:"
 
-#: discover/qml/ApplicationPage.qml:394
+#: discover/qml/ApplicationPage.qml:395
 #, kde-format
 msgid "Size:"
 msgstr "الحجم:"
 
-#: discover/qml/ApplicationPage.qml:406
+#: discover/qml/ApplicationPage.qml:407
 #, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
@@ -488,25 +488,25 @@ msgstr[3] "الرّخص:"
 msgstr[4] "الرّخص:"
 msgstr[5] "الرّخص:"
 
-#: discover/qml/ApplicationPage.qml:413
+#: discover/qml/ApplicationPage.qml:414
 #, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "ماذا يعني هذا؟"
 
-#: discover/qml/ApplicationPage.qml:417
+#: discover/qml/ApplicationPage.qml:418
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "مجهولة"
 
-#: discover/qml/ApplicationPage.qml:463
+#: discover/qml/ApplicationPage.qml:464
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
 msgstr "،"
 
-#: discover/qml/ApplicationPage.qml:488
+#: discover/qml/ApplicationPage.qml:489
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
@@ -517,122 +517,122 @@ msgstr[3] "الكل…"
 msgstr[4] "الكل…"
 msgstr[5] "المزيد…"
 
-#: discover/qml/ApplicationPage.qml:498
+#: discover/qml/ApplicationPage.qml:501
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "العمر:"
 
-#: discover/qml/ApplicationPage.qml:506
+#: discover/qml/ApplicationPage.qml:509
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
 msgstr "الكلّ"
 
-#: discover/qml/ApplicationPage.qml:508
+#: discover/qml/ApplicationPage.qml:511
 #, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
 msgstr "%1+"
 
-#: discover/qml/ApplicationPage.qml:522
+#: discover/qml/ApplicationPage.qml:525
 #, kde-format
 msgid "See details"
 msgstr "أظهر التفاصيل"
 
-#: discover/qml/ApplicationPage.qml:546
+#: discover/qml/ApplicationPage.qml:549
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr "لقطات الشاشة غير متوفرة لـ %1"
 
-#: discover/qml/ApplicationPage.qml:688
+#: discover/qml/ApplicationPage.qml:691
 #, kde-format
 msgid "What's New"
 msgstr "ما الجديد"
 
-#: discover/qml/ApplicationPage.qml:721
+#: discover/qml/ApplicationPage.qml:725
 #, kde-format
 msgid "Reviews"
 msgstr "المراجعات"
 
-#: discover/qml/ApplicationPage.qml:732
+#: discover/qml/ApplicationPage.qml:736
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "تحميل مراجعات %1"
 
-#: discover/qml/ApplicationPage.qml:741
+#: discover/qml/ApplicationPage.qml:745
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "مراجعات %1 غير متوفرة مؤقتاً."
 
-#: discover/qml/ApplicationPage.qml:763
+#: discover/qml/ApplicationPage.qml:767
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "أظهر كل المراجعات"
 
-#: discover/qml/ApplicationPage.qml:775
+#: discover/qml/ApplicationPage.qml:779
 #, kde-format
 msgid "Write a Review"
 msgstr "اكتب مراجعة"
 
-#: discover/qml/ApplicationPage.qml:775
+#: discover/qml/ApplicationPage.qml:779
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "ثبت لتكتب مراجعة"
 
-#: discover/qml/ApplicationPage.qml:797
+#: discover/qml/ApplicationPage.qml:801
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr "الروابط الخارجية"
 
-#: discover/qml/ApplicationPage.qml:817
+#: discover/qml/ApplicationPage.qml:821
 #, fuzzy, kde-format
 #| msgid "Read the project's official documentation"
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
 msgstr "اقرأ التوثيق الرسمي للمشروع"
 
-#: discover/qml/ApplicationPage.qml:829
+#: discover/qml/ApplicationPage.qml:833
 #, fuzzy, kde-format
 #| msgid "Visit the project's website"
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "زر موقع المشروع"
 
-#: discover/qml/ApplicationPage.qml:841
+#: discover/qml/ApplicationPage.qml:845
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:853
+#: discover/qml/ApplicationPage.qml:857
 #, fuzzy, kde-format
 #| msgid "Report Bug"
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "أبلغ عن علّة"
 
-#: discover/qml/ApplicationPage.qml:865
+#: discover/qml/ApplicationPage.qml:869
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:894
+#: discover/qml/ApplicationPage.qml:898
 #, kde-format
 msgid "All Licenses"
 msgstr "جميع الرخص"
 
-#: discover/qml/ApplicationPage.qml:926
+#: discover/qml/ApplicationPage.qml:930
 #, kde-format
 msgid "Content Rating"
 msgstr "تقييم المحتوى"
 
-#: discover/qml/ApplicationPage.qml:949
+#: discover/qml/ApplicationPage.qml:953
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"
