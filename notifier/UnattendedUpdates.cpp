@@ -37,8 +37,12 @@ void UnattendedUpdates::checkNewState()
     const bool doTrigger = notifier->hasUpdates() && !notifier->isBusy();
     if (doTrigger && !m_idleTimeoutId.has_value()) {
         qDebug() << "waiting for an idle moment";
-        // If the system is untouched for 15 minutes, trigger the unattened update
-        m_idleTimeoutId.emplace(std::chrono::milliseconds(15min));
+        // If the system is untouched for 1 minute, trigger the unattended update.
+        // The trick here is that we want to trigger the update, but ideally not when the user is using the computer.
+        // The idle timeout cannot be too long or it won't ever update, but it also shouldn't be none because then
+        // we definitely trigger the update while the user is using the computer. So we arrived at 1 minute.
+        // Should this not work out, a more expansive solution needs inventing (e.g. cgroup constraining of resource use).
+        m_idleTimeoutId.emplace(1min);
     } else if (!doTrigger && m_idleTimeoutId.has_value()) {
         qDebug() << "nothing to do";
         m_idleTimeoutId.reset();
