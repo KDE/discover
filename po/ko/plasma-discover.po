@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-26 00:41+0000\n"
-"PO-Revision-Date: 2024-08-20 21:42+0200\n"
+"PO-Revision-Date: 2024-11-29 01:12+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -479,8 +479,7 @@ msgid_plural "Licenses:"
 msgstr[0] "라이선스:"
 
 #: discover/qml/ApplicationPage.qml:414
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "무엇을 뜻하나요?"
@@ -576,15 +575,13 @@ msgid "External Links"
 msgstr "외부 링크"
 
 #: discover/qml/ApplicationPage.qml:821
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "프로젝트 공식 문서 읽기"
+msgstr "문서 읽기"
 
 #: discover/qml/ApplicationPage.qml:833
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "프로젝트 웹사이트 방문"
@@ -593,11 +590,10 @@ msgstr "프로젝트 웹사이트 방문"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "프로젝트에 기부하기"
 
 #: discover/qml/ApplicationPage.qml:857
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "버그 보고"
@@ -606,7 +602,7 @@ msgstr "버그 보고"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "기여 시작하기"
 
 #: discover/qml/ApplicationPage.qml:898
 #, kde-format
@@ -619,11 +615,10 @@ msgid "Content Rating"
 msgstr "내용 등급"
 
 #: discover/qml/ApplicationPage.qml:953
-#, fuzzy, kde-format
-#| msgid "Submit Usage Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "사용 정보 제출"
+msgstr "라이선스 정보"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -681,10 +676,9 @@ msgid "Size"
 msgstr "크기:"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
-msgstr "출시 날짜"
+msgstr "공개 날짜"
 
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
@@ -856,7 +850,7 @@ msgstr "설치됨(&I)"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "업데이트(가져오는 중…)(&U)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -906,13 +900,11 @@ msgid "Update Issue"
 msgstr "업데이트 문제"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
-msgstr ""
-"이 업데이트를 설치하는 중 문제가 발생했습니다. 나중에 다시 시도하십시오."
+msgstr "업데이트나 설치 중 문제가 발생했습니다. 나중에 다시 시도하십시오."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
@@ -1308,8 +1300,7 @@ msgid "Settings"
 msgstr "설정"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "기본 원본"
 
@@ -1319,8 +1310,7 @@ msgid "Add Source…"
 msgstr "원본 추가…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "기본값으로 설정"
 
@@ -1430,11 +1420,7 @@ msgid "Select None"
 msgstr "선택 해제"
 
 #: discover/qml/UpdatesPage.qml:257
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info on the completion of updates, the action that automatically happens "
-#| "after (e.g shutdown)"
-#| msgid "On completion, automatically:"
+#, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
@@ -1454,9 +1440,7 @@ msgid "Restart"
 msgstr "다시 시작"
 
 #: discover/qml/UpdatesPage.qml:262
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shutdown"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr "컴퓨터 끄기"
