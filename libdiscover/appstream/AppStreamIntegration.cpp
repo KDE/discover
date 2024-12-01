@@ -58,6 +58,13 @@ std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStre
     bool allowDevelopmentRelease = settings.readEntry<bool>("AllowDevelopmentRelease", false);
 
     QString currentVersion = osRelease()->versionId();
+
+    // skip if current version is unknown
+    if (currentVersion.isEmpty()) {
+        qWarning() << "AppStreamIntegration: Cannot detect current distro version for" << distroId;
+        return std::nullopt;
+    }
+
     std::optional<AppStream::Release> nextRelease;
     std::optional<AppStream::Release> developmentRelease;
     const QDateTime now = QDateTime::currentDateTimeUtc();
