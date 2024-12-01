@@ -305,4 +305,7 @@
     <release version="6.2.2" date="2024-10-22"/>
     <release version="6.2.1" date="2024-10-15"/>
   </releases>
+  <custom>
+    <value key="KDE::supporters">rzeczyspisane</value>
+  </custom>
 </component>
