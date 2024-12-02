@@ -3,22 +3,21 @@
 # Author: Lliehu
 # SPDX-FileCopyrightText: 2024 Kimmo Kujansuu <mrkujansuu@gmail.com>
 # SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2022, 2024 Lasse Liehu <lasse.liehu@gmail.com>
-# Tommi Nieminen <translator@legisign.org>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
+# SPDX-FileCopyrightText: 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Tommi Nieminen <translator@legisign.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-25 02:35+0000\n"
-"PO-Revision-Date: 2024-02-26 16:34+0200\n"
-"Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
+"PO-Revision-Date: 2024-10-19 09:50+0300\n"
+"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-POT-Import-Date: 2012-12-01 22:21:39+0000\n"
-"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -46,18 +45,7 @@ msgid "Report This Issue to %1"
 msgstr "Ilmoita ongelmasta: %1"
 
 #: discover/DiscoverObject.cpp:192
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -67,13 +55,11 @@ msgid ""
 "command> package manager.<nl/><nl/> Review <link url='https://archlinux.org/"
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
-"Käyttääksesi Discoveria sovelluksiin asenna <link url='https://wiki."
-"archlinux.org/title/Flatpak#Installation'>Flatpak</link> tai <link "
-"url='https://wiki.archlinux.org/title/"
-"KDE#Discover_does_not_show_any_applications'>PackageKit</link> "
-"<command>pacman</command>-paketinhallinnalla.<nl/><nl/>Tarkastele <link "
-"url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 -jakelun "
-"Discover-paketointia</link>"
+"Käyttääksesi Discoveria sovelluksiin asenna <command>pacman</command>-"
+"paketinhallinnalla<link url='https://wiki.archlinux.org/title/"
+"Flatpak#Installation'>Flatpak</link>.<nl/><nl/>Tarkastele <link url='https://"
+"archlinux.org/packages/extra/x86_64/discover/'>%1 -jakelun Discover-"
+"paketointia</link>"
 
 #: discover/DiscoverObject.cpp:205
 #, kde-kuit-format
@@ -86,6 +72,12 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"Lähteen %1 pakettien hallinnan tuki on epätäydellinen: ongelmia voi olla "
+"odotettavissa. Älä ilmoita niistä KDE:lle. On hyvin suositeltavaa poistaa "
+"<resource>packagekit-qt6</resource>-paketin asennus ja käyttää Discoveria "
+"vain Flatpak-, Snap- ja lisäosahallintaan.<para>%1-ylläpitäjät suosittelevat "
+"käyttämään paketinhallintaan sen sijaan <command>pacman</command>-"
+"komentorivityökalua.</para>"
 
 #: discover/DiscoverObject.cpp:293
 #, kde-format
@@ -310,20 +302,9 @@ msgstr[1] "%1 arvostelua"
 msgid "No ratings yet"
 msgstr "Ei vielä arvosteluja"
 
+# proprietary → ei vapaa, koska sopivaa sanavastinetta ei taida olla?
 #: discover/qml/ApplicationPage.qml:69
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -339,30 +320,20 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"Tämän sovelluksen lähdekoodi on osin tai kokonaan suljettu julkiselta "
-"tarkastelulta ja parannuksilta. Kolmannet osapuolet tai kaltaisesi käyttäjät "
-"eivät näin voi tarkistaa sen toimintaa, tietoturvaa tai luotettavuutta "
-"eivätkä jakaa muokattua koodia ilman tekijöiden lupaa.<nl/><nl/>Sovellus voi "
-"olla täysin turvallinen käyttää tai se voi toimia sinua vastaan eri tavoin "
-"kuten keräämällä henkilökohtaisia tietojasi, jäljittämällä sijaintiasi tai "
-"välittämällä tiedostojesi sisältöä muille. Ei ole helppoa tapaa olla varma, "
-"joten sovellus tulisi asentaa vain, jos luotat täysin sen tekijöihin (%1)."
-"<nl/><nl/>Lisätietoa: <link url='%2'>%2</link>."
+"Asenna %1 vain, jos täysin luotat sen tekijöihin, koska se <emphasis "
+"strong='true'>ei ole vapaa</emphasis>: vapauttasi käyttää, muuttaa ja jakaa "
+"sovellusta on rajattu, ja sen lähdekoodi on osin tai kokonaan suljetta "
+"julkiselta tarkastelulta ja kehitykseltä. Kolmas osapuoli ja laisesi "
+"käyttäjät eivät näin voi vahvistaa sen toimintaa, tietoturvaa tai "
+"luotettavuutta.<nl/><nl/>Sovellus voi olla täysin turvallinen käyttää tai se "
+"voi toimia sinua vastaan eri tavoin kuten keräämällä henkilökohtaisia "
+"tietojasi, jäljittämällä sijaintisi tai välittämällä datasi sisällön "
+"toisaalle. Käytä sitä vain, jos täysin luotat tekijöihin. Lisätietoa saa "
+"<link url='%2'>sovelluksen verkkosivuilta</link>.<nl/><nl/>Lue lisää "
+"osoitteessa <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -376,15 +347,16 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Tämän sovelluksen lähdekoodi on osin tai kokonaan suljettu julkiselta "
-"tarkastelulta ja parannuksilta. Kolmannet osapuolet tai kaltaisesi käyttäjät "
-"eivät näin voi tarkistaa sen toimintaa, tietoturvaa tai luotettavuutta "
-"eivätkä jakaa muokattua koodia ilman tekijöiden lupaa.<nl/><nl/>Sovellus voi "
-"olla täysin turvallinen käyttää tai se voi toimia sinua vastaan eri tavoin "
-"kuten keräämällä henkilökohtaisia tietojasi, jäljittämällä sijaintiasi tai "
-"välittämällä tiedostojesi sisältöä muille. Ei ole helppoa tapaa olla varma, "
-"joten sovellus tulisi asentaa vain, jos luotat täysin sen tekijöihin (%1)."
-"<nl/><nl/>Lisätietoa: <link url='%2'>%2</link>."
+"Asenna %1 vain, jos täysin luotat sen tekijöihin, koska se <emphasis "
+"strong='true'>ei ole vapaa</emphasis>: vapauttasi käyttää, muuttaa ja jakaa "
+"sovellusta on rajattu, ja sen lähdekoodi on osin tai kokonaan suljetta "
+"julkiselta tarkastelulta ja kehitykseltä. Kolmas osapuoli ja laisesi "
+"käyttäjät eivät näin voi vahvistaa sen toimintaa, tietoturvaa tai "
+"luotettavuutta.<nl/><nl/>Sovellus voi olla täysin turvallinen käyttää tai se "
+"voi toimia sinua vastaan eri tavoin kuten keräämällä henkilökohtaisia "
+"tietojasi, jäljittämällä sijaintisi tai välittämällä datasi sisällön "
+"toisaalle. Käytä sitä vain, jos täysin luotat tekijöihin. Lue lisää "
+"osoitteessa <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:81
 #, kde-kuit-format
@@ -402,6 +374,16 @@ msgid ""
 "url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"%1 käyttää yhtä tai useampaa lisenssiä, jota joko <link url='%2'>Free "
+"Software Foundation</link> tai <link url='%3'>Open Source Initiative</link> "
+"ei pidä ”vapaana”. Tämä tarkoittaa, että vapauttasi käyttää, tutkia, muuttaa "
+"tai jakaa sitä voi olla eri tavoin rajoitettu.<nl/><nl/>Lue ennen ohjelman "
+"käyttöä ehdottomasti lisenssin teksti ja ymmärrä käytön rajoitukset.<nl/><nl/"
+">Ellei lisenssi takaa oikeutta edes lähdekoodin lukemiseen, varmista, että "
+"luotat tekijöihin täysin, koska kukaan muu ei voi varmistaa koodin "
+"luotettavuutta ja tietoturvaa tai ettei se toimi etujasi vastaan piilotetuin "
+"tavoin. Lisätietoa löytyy <link url='%4'>sovelluksen verkkosivuilta</link>."
+"<nl/><nl/>Lisätietoa: <link url='%5'>%5</link>."
 
 #: discover/qml/ApplicationPage.qml:88
 #, kde-kuit-format
@@ -417,6 +399,15 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"%1 käyttää yhtä tai useampaa lisenssiä, jota joko <link url='%2'>Free "
+"Software Foundation</link> tai <link url='%3'>Open Source Initiative</link> "
+"ei pidä ”vapaana”. Tämä tarkoittaa, että vapauttasi käyttää, tutkia, muuttaa "
+"tai jakaa sitä voi olla eri tavoin rajoitettu.<nl/><nl/>Lue ennen ohjelman "
+"käyttöä ehdottomasti lisenssin teksti ja ymmärrä käytön rajoitukset.<nl/><nl/"
+">Ellei lisenssi takaa oikeutta edes lähdekoodin lukemiseen, varmista, että "
+"luotat tekijöihin täysin, koska kukaan muu ei voi varmistaa koodin "
+"luotettavuutta ja tietoturvaa tai ettei se toimi etujasi vastaan piilotetuin "
+"tavoin.<nl/><nl/>Lisätietoa: <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:97
 #, kde-kuit-format
@@ -427,6 +418,10 @@ msgid ""
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
+"%1 ei osoita, millä lisenssillä sitä jaetaan. Tämä selviää ehkä <link "
+"url='%2'>sovelluksen verkkosivuilta</link>. Etsi tietoa sieltä tai ota "
+"yhteyttä tekijään, jos haluat käyttää sovellusta muuhun kuin yksityiseen "
+"henkilökohtaiseen käyttöön."
 
 #: discover/qml/ApplicationPage.qml:101
 #, kde-format
@@ -436,18 +431,18 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"%1 ei osoita, millä lisenssillä sitä jaetaan. Ota yhteyttä sovelluksen "
+"tekijään, jos haluat käyttää sitä muuhun kuin yksityiseen henkilökohtaiseen "
+"tarkoitukseen."
 
 #: discover/qml/ApplicationPage.qml:137
-#, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "Jaa"
 
 #: discover/qml/ApplicationPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Add-ons"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
 msgstr "Lisäosat"
@@ -466,11 +461,10 @@ msgid "%1 - %2"
 msgstr "%1 – %2"
 
 #: discover/qml/ApplicationPage.qml:213
-#, fuzzy, kde-format
-#| msgid "Send a link for this application"
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
-msgstr "Lähetä linkki tähän sovellukseen"
+msgstr "Jaa linkki sovellukseen"
 
 #: discover/qml/ApplicationPage.qml:222
 #, kde-format
@@ -501,8 +495,7 @@ msgstr[0] "Lisenssi:"
 msgstr[1] "Lisenssit:"
 
 #: discover/qml/ApplicationPage.qml:395
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Mitä tämä tarkoittaa?"
@@ -517,7 +510,7 @@ msgstr "Tuntematon"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:470
 #, kde-format
@@ -530,27 +523,24 @@ msgstr[1] "Lisää…"
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr ""
+msgstr "Kohderyhmät:"
 
 #: discover/qml/ApplicationPage.qml:490
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr ""
+msgstr "kaikki"
 
 #: discover/qml/ApplicationPage.qml:492
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr "%1"
+msgstr "%1+"
 
 #: discover/qml/ApplicationPage.qml:506
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
+#, kde-format
 msgid "See details"
-msgstr "Näytä tiedot…"
+msgstr "Näytä tiedot"
 
 #: discover/qml/ApplicationPage.qml:530
 #, kde-format
@@ -599,7 +589,7 @@ msgstr "Asenna arvostellaksesi"
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
-msgstr ""
+msgstr "Ulkoiset linkit"
 
 #: discover/qml/ApplicationPage.qml:801
 #, kde-format
@@ -663,11 +653,10 @@ msgid "Content Rating"
 msgstr "Sisältöarvio"
 
 #: discover/qml/ApplicationPage.qml:939
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "Lähetä käyttötiedot"
+msgstr "Lisenssitiedot"
 
 #: discover/qml/ApplicationsListPage.qml:53
 #, kde-format
@@ -728,10 +717,9 @@ msgid "Size"
 msgstr "Koko"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
-msgstr "Julkaisuaika"
+msgstr "Julkaisupäivä"
 
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
@@ -904,7 +892,7 @@ msgstr "&Asennetut"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "&Päivitykset (noudetaan…)"
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
@@ -955,12 +943,12 @@ msgid "Update Issue"
 msgstr "Päivitysongelma"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
-msgstr "Päivityksen asentamisessa esiintyi ongelma. Yritä myöhemmin uudelleen."
+msgstr ""
+"Päivityksessä tai asennuksessa esiintyi ongelma. Yritä myöhemmin uudelleen."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
@@ -985,10 +973,9 @@ msgid "Copy to Clipboard"
 msgstr "Kopioi leikepöydälle"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
-msgstr "Lähetä käyttötiedot"
+msgstr "Lähetä käyttötietoa"
 
 #: discover/qml/Feedback.qml:15
 #, kde-format
@@ -1012,8 +999,7 @@ msgid "Configure"
 msgstr "Asetukset"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
 msgstr "Määritä palauteasetukset…"
 
@@ -1173,6 +1159,9 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"Jos %1 on mieleesi, kerro ihmisille, mikä siinä on hienoa! Keskity "
+"toiminnallisuuteen, käytettävyyteen ja ulkoasuun. Ellei sovellus sovi "
+"tarpeisiisi, selitä, miksi."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1182,6 +1171,9 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"Ellei %1 käynnisty, harkitse ilmoittavasi asiasta sen paketoijille "
+"osoitteessa <link url='%3'>%3</link> (%2), koska ratkaisu voi olla "
+"korjattavissa oleva paketointivirhe sovellusvirheen sijaan."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1191,6 +1183,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"Ellei %1 käynnisty, harkitse ilmoittavasi asiasta sen paketoijille "
+"osoitteessa <link url='%2'>%2</link>, koska ratkaisu voi olla korjattavissa "
+"oleva paketointivirhe sovellusvirheen sijaan."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1199,6 +1194,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"Jos ohjelma kaatuu usein, harkitse ilmoittavasi asiasta sen kehittäjille "
+"osoitteessa <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1208,6 +1205,9 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"Jos kohtaat sovelluksessa ongelmia, harkitse ilmoittavasi niistä "
+"kehittäjille osoitteessa <link url='%1'>%1</link> tai kuvaa ongelmaa "
+"yksityiskohtaisemmin tähän."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1232,7 +1232,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "käynnistä,suorita,aloita,aja"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1242,7 +1242,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "kaatuminen,segfault"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1252,7 +1252,7 @@ msgctxt ""
 "your language and/or shorten to common stems contained by multiple forms of "
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
-msgstr ""
+msgstr "ei toimi,rikki,tyhmä,typerä,roska,paska,haisee,kauhea"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1363,8 +1363,7 @@ msgid "Settings"
 msgstr "Asetukset"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Oletuslähde"
 
@@ -1374,8 +1373,7 @@ msgid "Add Source…"
 msgstr "Lisää lähde…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Aseta oletukseksi"
 
@@ -1490,18 +1488,16 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "Kun valmista:"
 
 #: discover/qml/UpdatesPage.qml:262
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "Poista valinnat"
+msgstr "Valitse toimenpide"
 
 #: discover/qml/UpdatesPage.qml:262
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
 msgstr "Käynnistä uudelleen"
@@ -1510,7 +1506,7 @@ msgstr "Käynnistä uudelleen"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
-msgstr ""
+msgstr "sammuta automaattisesti"
 
 #: discover/qml/UpdatesPage.qml:271
 #, kde-format
@@ -1521,7 +1517,7 @@ msgstr "Koko kaikkiaan: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr ""
+msgstr "käynnistä automaattisesti uudelleen päivitysten asentamiseksi"
 
 #: discover/qml/UpdatesPage.qml:436
 #, kde-format
