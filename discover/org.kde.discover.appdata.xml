@@ -70,6 +70,7 @@
   <summary xml:lang="eu">Aplikazioak eta gehigarriak instalatzea eta kentzea</summary>
   <summary xml:lang="fr">Installer et supprimer des applications et des modules complémentaires</summary>
   <summary xml:lang="he">התקנת והסרת יישומים ותוספים</summary>
+  <summary xml:lang="it">Installa e rimuovi applicazioni e componenti aggiuntivi</summary>
   <summary xml:lang="ka">დააყენეთ და წაშალეთ აპები და დამატებები</summary>
   <summary xml:lang="ko">앱과 추가 기능 설치 및 삭제</summary>
   <summary xml:lang="nl">Installeer en verwijder toepassingen en add-ons</summary>
@@ -81,6 +82,7 @@
   <summary xml:lang="uk">Встановлення і вилучення програм і додатків</summary>
   <summary xml:lang="x-test">xxInstall and remove apps and add-onsxx</summary>
   <summary xml:lang="zh-CN">安装、移除应用程序和附加组件</summary>
+  <summary xml:lang="zh-TW">安裝或移除應用程式與附加功能</summary>
   <description>
     <p>Discover helps you find and install applications, games, and tools. You can search or browse by category, and look at screenshots and read reviews to help you pick the perfect app.</p>
     <p xml:lang="ar">يساعدك المستكشف في العثور على التطبيقات والألعاب والأدوات وتثبيتها. يمكنك البحث أو التصفح حسب الفئة، وإلقاء نظرة على لقطات الشاشة وقراءة المراجعات لمساعدتك في اختيار التطبيق المثالي.</p>
