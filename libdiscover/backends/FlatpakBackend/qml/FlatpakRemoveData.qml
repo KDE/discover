@@ -24,6 +24,13 @@ Kirigami.InlineMessage {
         backendFilter: root.resource.backend
         resourcesUrl: "flatpak:" + root.resource.ref
         stateFilter: Discover.AbstractResource.Installed
+
+        readonly property var p0: Connections {
+            target: root.resource
+            function onStateChanged() {
+                query.invalidateFilter()
+            }
+        }
     }
 
     actions: [
