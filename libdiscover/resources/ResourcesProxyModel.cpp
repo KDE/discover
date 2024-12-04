@@ -683,15 +683,11 @@ void ResourcesProxyModel::sortedInsertion(const QVector<StreamResult> &results)
 void ResourcesProxyModel::refreshResource(AbstractResource *resource, const QVector<QByteArray> &properties)
 {
     const auto row = indexOf(resource);
-    const bool filter = m_filters.shouldFilter(resource);
     if (row < 0) {
-        if (filter) {
-            sortedInsertion({{resource, 0}});
-        }
         return;
     }
 
-    if (!filter) {
+    if (!m_filters.shouldFilter(resource)) {
         beginRemoveRows({}, row, row);
         m_displayedResources.removeAt(row);
         endRemoveRows();
