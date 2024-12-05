@@ -66,6 +66,7 @@ Comment[ca@valencia]=Instal·la i elimina aplicacions i complements
 Comment[es]=Instalar y eliminar aplicaciones y complementos
 Comment[eu]=Aplikazioak eta gehigarriak instalatzea eta kentzea
 Comment[fr]=Installer et supprimer des applications et des modules complémentaires
+Comment[gl]=Instalar e desinstalar aplicacións e complementos.
 Comment[he]=הוספת והסרת יישומים ותוספים
 Comment[it]=Installa e rimuovi applicazioni e componenti aggiuntivi
 Comment[ka]=დააყენეთ და წაშალეთ აპები და დამატებები
