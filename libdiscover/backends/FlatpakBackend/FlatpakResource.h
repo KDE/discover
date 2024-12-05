@@ -232,6 +232,7 @@ Q_SIGNALS:
 private:
     void setEolReason(const QString &reason);
     void loadPermissions();
+    QVector<FlatpakPermission> readPermissions(const QString &file) const;
 
     const AppStream::Component m_appdata;
     FlatpakResource::Id m_id;
