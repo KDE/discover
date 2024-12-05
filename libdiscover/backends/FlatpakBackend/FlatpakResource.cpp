@@ -537,16 +537,9 @@ void FlatpakResource::fetchChangelog()
     if (m_permissions.isEmpty()) {
         loadPermissions();
     }
-    QString newPermissions;
-    auto currentPermissions = readPermissions(installPath() + "/metadata"_L1);
-    for (const auto &permission : std::as_const(m_permissions)) {
-        if (!currentPermissions.contains(permission)) {
-            newPermissions += "<li>"_L1 + permission.brief() + "</li>\n"_L1;
-        }
-    }
     QString changelog = AppStreamUtils::changelogToHtml(m_appdata);
-    if (!newPermissions.isEmpty()) {
-        changelog += "<h3>New Permissions</h3>\n<ul>"_L1 + newPermissions + "</ul>"_L1;
+    if (!m_newPermissions.isEmpty()) {
+        changelog += "<h3>New Permissions</h3>\n<ul>"_L1 + m_newPermissions + "</ul>"_L1;
     }
     Q_EMIT changelogFetched(changelog);
 }
@@ -821,9 +814,18 @@ QString createHtmlList(const QStringList &itemList)
     return str;
 }
 
+bool FlatpakResource::updateNeedsAttention()
+{
+    if (m_permissions.isEmpty()) {
+        loadPermissions();
+    }
+    return !m_newPermissions.isEmpty();
+}
+
 void FlatpakResource::loadPermissions()
 {
-    QByteArray metaDataBytes = FlatpakRunnables::fetchMetadata(this, nullptr);
+    auto b = qobject_cast<FlatpakBackend *>(backend());
+    QByteArray metaDataBytes = FlatpakRunnables::fetchMetadata(this, b->cancellable());
 
     QTemporaryFile f;
     if (!f.open()) {
@@ -832,6 +834,13 @@ void FlatpakResource::loadPermissions()
     f.write(metaDataBytes);
     f.close();
     m_permissions = readPermissions(f.fileName());
+
+    auto currentPermissions = readPermissions(installPath() + "/metadata"_L1);
+    for (const auto &permission : std::as_const(m_permissions)) {
+        if (!currentPermissions.contains(permission)) {
+            m_newPermissions += "<li>"_L1 + i18n("%1: %2", permission.brief(), permission.description()) + "</li>\n"_L1;
+        }
+    }
 }
 
 QVector<FlatpakPermission> FlatpakResource::readPermissions(const QString &file) const

@@ -297,6 +297,11 @@ public:
         return QStringLiteral("checkmark");
     }
 
+    virtual bool updateNeedsAttention()
+    {
+        return false;
+    }
+
 public Q_SLOTS:
     virtual void fetchScreenshots();
     virtual void fetchChangelog() = 0;

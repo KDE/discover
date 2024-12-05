@@ -380,7 +380,12 @@ DiscoverPage {
                 }
             }
 
-            onExtendedChanged: if (extended) {
+            Component.onCompleted: {
+                if (extended) {
+                    updateModel.fetchUpdateDetails(index)
+                }
+            }
+            onExtendedChanged: if (extended && Component.status == Component.Ready) {
                 updateModel.fetchUpdateDetails(index)
             }
 
