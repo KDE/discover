@@ -223,6 +223,7 @@ public:
     [[nodiscard]] bool hasResolvedIcon() const override;
     void resolveIcon() override;
     QString verifiedMessage() const override;
+    bool updateNeedsAttention() override;
 
 Q_SIGNALS:
     void hasDataChanged();
@@ -262,6 +263,7 @@ private:
     QVector<QByteArray> m_toUpdate;
     bool m_stockIcon;
     std::optional<QIcon> m_icon;
+    QString m_newPermissions;
 };
 
 inline uint qHash(const FlatpakResource::Id &key)
