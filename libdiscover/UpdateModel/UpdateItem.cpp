@@ -16,6 +16,7 @@
 UpdateItem::UpdateItem(AbstractResource *app)
     : m_app(app)
 {
+    setExtended(app->updateNeedsAttention());
 }
 
 UpdateItem::~UpdateItem()
