@@ -19,6 +19,11 @@ public:
     QString brief() const;
     QString description() const;
 
+    bool operator==(const FlatpakPermission &other) const
+    {
+        return m_icon == other.m_icon && m_description == other.m_description && m_brief == other.m_brief;
+    }
+
 private:
     QString m_brief;
     QString m_description;
