@@ -42,7 +42,7 @@ Kirigami.ApplicationWindow {
     KConfig.WindowStateSaver {
         configGroupName: "MainWindow"
     }
-    
+
     Component.onCompleted: {
         if (app.isRoot) {
             messagesSheet.addMessage(i18n("Running as <em>root</em> is discouraged and unnecessary."));

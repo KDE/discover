@@ -125,7 +125,9 @@ Kirigami.GlobalDrawer {
 
             // Disable down navigation on the last item so we don't escape the
             // actual list.
-            Keys.onDownPressed: event.accepted = true
+            Keys.onDownPressed: event => {
+                event.accepted = true;
+            }
         },
         ActionListItem {
             action: sourcesAction
