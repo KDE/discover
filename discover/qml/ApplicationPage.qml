@@ -404,7 +404,7 @@ DiscoverPage {
 
                     // Licenses
                     QQC2.Label {
-                        text: i18np("License:", "Licenses:", appInfo.application.licenses.length)
+                        text: appInfo.application.licenses.length === 1 ? i18n("License:") : i18n("Licenses:")
                         Layout.alignment: Qt.AlignRight
                     }
                     RowLayout {
