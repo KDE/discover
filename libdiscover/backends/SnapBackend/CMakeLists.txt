@@ -20,3 +20,10 @@ target_link_libraries(snap-backend
 )
 
 install(FILES org.kde.discover.snap.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+
+ecm_install_icons(
+    ICONS
+        sc-apps-snapdiscover.svg
+    DESTINATION ${KDE_INSTALL_ICONDIR}
+    THEME hicolor
+)

@@ -56,7 +56,7 @@ public:
     void setState(AbstractResource::State state);
     QString sourceIcon() const override
     {
-        return QStringLiteral("snap");
+        return QStringLiteral("snapdiscover");
     }
 
     QDate releaseDate() const override;
