@@ -8,7 +8,6 @@
 #include "SnapBackend.h"
 #include "SnapResource.h"
 #include "libsnapclient/config-paths.h"
-#include "utils.h"
 #include <KLocalizedString>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -23,7 +22,7 @@ SnapTransaction::SnapTransaction(QSnapdClient *client, SnapResource *app, Role r
     if (role == RemoveRole)
         setRequest(m_client->remove(app->packageName()));
     else if (app->state() == AbstractResource::Upgradeable)
-        setRequest(m_client->refresh(app->packageName()));
+        setRequest(m_client->refresh(app->packageName(), app->m_channel));
     else
         setRequest(m_client->install(app->packageName(), app->m_channel));
 }

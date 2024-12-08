@@ -17,7 +17,7 @@ QQC2.Button {
     id: root
 
     required property Discover.AbstractResource resource
-    Discover.Activatable.active: view.count > 0
+    Discover.Activatable.active: view.count > 1
 
     text: i18nd("libdiscover", "Channel: %1", root.resource.channel)
 

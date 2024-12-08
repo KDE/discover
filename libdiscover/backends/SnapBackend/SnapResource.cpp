@@ -20,6 +20,7 @@
 #include <QSettings>
 #include <QStandardItemModel>
 #include <Snapd/MarkdownParser>
+#include <Transaction/TransactionModel.h>
 
 #include <appstream/AppStreamUtils.h>
 #include <utils.h>
@@ -77,7 +78,7 @@ SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::St
     , m_installedSize(0)
     , m_downloadSize(0)
     , m_snap(snap)
-    , m_channel(QStringLiteral("latest/stable"))
+    , m_channel(m_snap->trackingChannel().isNull() ? u"latest/stable"_s : m_snap->trackingChannel())
 {
     setObjectName(snap->name());
 }
@@ -472,11 +473,6 @@ QStringList SnapResource::topObjects() const
 
 QString SnapResource::channel()
 {
-    if (isInstalled()) {
-        auto req = client()->getSnap(packageName());
-        req->runSync();
-        return req->error() ? QString() : req->snap()->trackingChannel();
-    }
     return m_channel;
 }
 
@@ -493,16 +489,10 @@ void SnapResource::setChannel(const QString &channelName)
         return;
     }
     Q_ASSERT(isInstalled());
-    auto request = client()->switchChannel(m_snap->name(), channelName);
-
-    const auto currentChannel = channel();
-    request->runAsync();
-    connect(request, &QSnapdRequest::complete, this, [this, currentChannel]() {
-        const auto newChannel = channel();
-        if (newChannel != currentChannel) {
-            Q_EMIT channelChanged(newChannel);
-        }
-    });
+    m_channel = channelName;
+    Q_EMIT channelChanged(channelName);
+    setState(AbstractResource::Upgradeable);
+    TransactionModel::global()->addTransaction(backend()->installApplication(this));
 }
 
 quint64 SnapResource::installedSize() const
