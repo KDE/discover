@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-26 00:41+0000\n"
-"PO-Revision-Date: 2024-11-09 16:27+0100\n"
+"POT-Creation-Date: 2024-12-09 00:42+0000\n"
+"PO-Revision-Date: 2024-12-08 13:56+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -232,7 +232,7 @@ msgstr "Deseño de interfaces gráficas"
 #, kde-format
 msgctxt "Category"
 msgid "IDEs"
-msgstr "IDEs"
+msgstr "IDE"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:89
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:89
@@ -2120,7 +2120,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
 #, kde-format
 msgid "Software verified by %1"
-msgstr "Aplicación verificada por %1"
+msgstr "Programa verificado por %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
 #, kde-format
@@ -2377,7 +2377,8 @@ msgstr "Comezar a anovación…"
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
-"Ten actualizacións pendentes da versión actual. Procedendo de todos xeitos."
+"Ten actualizacións pendentes da versión actual. Procedendo de todos os "
+"xeitos."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:524
 #, kde-format
@@ -2555,7 +2556,7 @@ msgid "Channels for %1"
 msgstr "Canles de %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:404
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:405
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
@@ -2575,17 +2576,17 @@ msgstr "Permisos de %1"
 msgid "Snap"
 msgstr "Axustar"
 
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:616
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:606
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
 msgstr "Entidade verificada en snapcraft.io"
 
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:618
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:608
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
 msgstr "Entidade favorita en snapcraft.io"
 
-#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:58
+#: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
 #, kde-format
 msgid ""
 "This Snap application is not compatible with security sandboxing and will "
