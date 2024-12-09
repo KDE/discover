@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-25 02:35+0000\n"
-"PO-Revision-Date: 2024-11-14 05:43+0700\n"
+"PO-Revision-Date: 2024-11-25 21:34+0700\n"
 "Last-Translator: Wantoyo <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
 "Language: id\n"
@@ -902,7 +902,7 @@ msgstr "&Terinstal"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr "(Menghela) &Pembaruan..."
+msgstr "Menghela &Pembaruan..."
 
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
