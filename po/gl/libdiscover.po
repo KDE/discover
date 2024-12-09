@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-24 03:09+0000\n"
-"PO-Revision-Date: 2024-02-25 14:50+0100\n"
+"PO-Revision-Date: 2024-12-08 11:04+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -210,7 +210,7 @@ msgstr "Deseño de interfaces gráficas"
 #, kde-format
 msgctxt "Category"
 msgid "IDEs"
-msgstr "IDEs"
+msgstr "IDE"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
@@ -2228,7 +2228,8 @@ msgstr "<b>Publicouse unha nova versión maior!</b>"
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
-"Ten actualizacións pendentes da versión actual. Procedendo de todos xeitos."
+"Ten actualizacións pendentes da versión actual. Procedendo de todos os "
+"xeitos."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:566
 #, kde-format
