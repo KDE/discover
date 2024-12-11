@@ -441,7 +441,7 @@ DiscoverPage {
 
                 QQC2.Frame {
                     Layout.fillWidth: true
-                    implicitHeight: view.contentHeight
+                    implicitHeight: view.implicitHeight
                     visible: listItem.model.extended && listItem.model.changelog.length > 0
                     QQC2.Label {
                         id: view
