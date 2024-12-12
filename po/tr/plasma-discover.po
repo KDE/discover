@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-25 02:35+0000\n"
-"PO-Revision-Date: 2024-09-27 18:03+0300\n"
+"PO-Revision-Date: 2024-12-11 22:38+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 25.03.70\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -1524,7 +1524,7 @@ msgstr "Toplam boyut: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
-msgstr "Kurulum için Yeniden Başlat"
+msgstr "Yeniden Başlat ve Kur"
 
 #: discover/qml/UpdatesPage.qml:436
 #, kde-format
