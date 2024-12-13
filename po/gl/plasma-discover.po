@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-26 00:41+0000\n"
-"PO-Revision-Date: 2024-12-12 19:56+0100\n"
+"PO-Revision-Date: 2024-12-13 09:29+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -1125,7 +1125,7 @@ msgstr "Non"
 #: discover/qml/ReviewDialog.qml:26
 #, kde-format
 msgid "Reviewing %1"
-msgstr "Escribindo unha recensión de %1"
+msgstr "Realizando unha recensión de %1"
 
 #: discover/qml/ReviewDialog.qml:33
 #, kde-format
