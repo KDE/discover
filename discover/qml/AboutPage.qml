@@ -9,5 +9,4 @@ import org.kde.kirigamiaddons.formcard as FormCard
 
 FormCard.AboutPage {
     readonly property bool isHome: true
-    aboutData: discoverAboutData
 }

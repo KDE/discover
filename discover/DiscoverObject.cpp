@@ -134,7 +134,6 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
     plugin->registerTypes(uri);
 
     m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
-    m_engine->rootContext()->setContextProperty(QStringLiteral("discoverAboutData"), QVariant::fromValue(KAboutData::applicationData()));
 
     const auto discoverQmlUri = u"org.kde.discover.qml"_s;
 
