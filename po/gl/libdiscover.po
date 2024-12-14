@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-03 00:40+0000\n"
-"PO-Revision-Date: 2024-12-08 11:04+0100\n"
+"PO-Revision-Date: 2024-12-13 23:04+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -2626,6 +2626,7 @@ msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
 msgstr "%1 → %2%1 → %2%2"
 
+# skip-rule: trasno-check2_reverse
 #: libdiscover/resources/AbstractResourcesBackend.cpp:181
 #, kde-format
 msgid "Please verify Internet connectivity"
