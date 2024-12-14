@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-09 00:42+0000\n"
+"POT-Creation-Date: 2024-12-14 00:52+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -48,20 +48,20 @@ msgstr "ਪਰੋਪ੍ਰੈਟਰੀ"
 msgid "Public Domain"
 msgstr "ਪਬਲਿਕ ਡੋਮੇਨ"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
-#, kde-format
-msgid "Technical error message: %1"
-msgstr "ਤਕਨੀਕੀ ਗਲਤੀ ਸੁਨੇਹਾ: %1"
-
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:206
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "ਵਰਤੋਂਯੋਗਤਾ ਭੇਜਣ ਦੌਰਾਨ ਗਲਤੀ: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
+#: libdiscover/appstream/OdrsReviewsJob.cpp:38
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "ਰੀਵਿਊ ਭੇਜਣ ਦੌਰਾਨ ਗਲਤੀ: %1"
+
+#: libdiscover/appstream/OdrsReviewsJob.cpp:68
+#, kde-format
+msgid "Technical error message: %1"
+msgstr "ਤਕਨੀਕੀ ਗਲਤੀ ਸੁਨੇਹਾ: %1"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
 #, fuzzy, kde-format
@@ -1010,12 +1010,12 @@ msgstr "%1 ਉੱਤੇ ਸਥਿਰ ਵਰਜ਼ਨ ਵੇਖੋ"
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 ਇੰਸਟਾਲ ਨਹੀਂ ਹੈ, ਪਰ ਇਸ ਦਾ ਡਾਟਾ ਹਾਲੇ ਵੀ ਮੌਜੂਦ ਹੈ।"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:32
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:39
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "ਸੈਟਿੰਗਾਂ ਅਤੇ ਵਰਤੋਂਕਾਰ ਡਾਟੇ ਨੂੰ ਹਟਾਓ"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:35
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:42
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "…ਸੈਟਿੰਗਾਂ ਅਤੇ ਵਰਤੋਂਕਾਰ ਡਾਟੇ ਨੂੰ ਮਿਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ"
@@ -2584,7 +2584,7 @@ msgstr "ਇੰਟਰਨੈੱਟ ਕਨੈਕਸ਼ਨ ਦੀ ਜਾਂਚ ਕਰ�
 msgid "Refresh"
 msgstr "ਤਾਜ਼ਾ ਕਰੋ"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:800
+#: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

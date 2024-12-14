@@ -1,23 +1,21 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the discover package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# Shreekant <skkalwar999@gmail.com>, 2023.
+# SPDX-FileCopyrightText: 2023, 2024 Shreekant <skkalwar999@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-09 00:42+0000\n"
-"PO-Revision-Date: 2023-10-01 21:56+0530\n"
-"Last-Translator: Shreekant <skkalwar999@gmail.com>\n"
-"Language-Team: Sanskrit <N/A>\n"
+"POT-Creation-Date: 2024-12-14 00:52+0000\n"
+"PO-Revision-Date: 2024-12-14 01:48+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>2);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Lokalize 24.08.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #, kde-format
@@ -51,30 +49,30 @@ msgstr "स्वामित्वयुक्तः"
 msgid "Public Domain"
 msgstr "सार्वजनिक क्षेत्र"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
-#, kde-format
-msgid "Technical error message: %1"
-msgstr "तकनीकीदोषसन्देशः: %1"
-
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:206
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "उपयोगिता प्रस्तूयमाणे त्रुटिः: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
+#: libdiscover/appstream/OdrsReviewsJob.cpp:38
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "समीक्षां प्रस्तूयन्ते सति त्रुटिः: %1"
 
+#: libdiscover/appstream/OdrsReviewsJob.cpp:68
+#, kde-format
+msgid "Technical error message: %1"
+msgstr "तकनीकीदोषसन्देशः: %1"
+
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
 #, kde-format
 msgid "Package management"
-msgstr ""
+msgstr "संकुल प्रबन्धन"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:204
 #, kde-format
 msgid "Loading, please wait..."
-msgstr ""
+msgstr "लोडिंग्, कृपया प्रतीक्षां कुर्वन्तु..."
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:290
 #, fuzzy, kde-format
@@ -87,18 +85,18 @@ msgstr "अतिरिक्तसङ्कुलाः : "
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
-msgstr ""
+msgstr "अल्पाइन APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:266
 #, kde-format
 msgid "Authorization denied"
-msgstr ""
+msgstr "प्राधिकरणं अङ्गीकृतम्"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
 #, kde-format
 msgid "Error: "
-msgstr ""
+msgstr "त्रुटि: "
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
 #, kde-format
@@ -107,27 +105,29 @@ msgid ""
 "Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
 "alpine/edge/testing/"
 msgstr ""
+"Alpine भण्डारस्य URL प्रविष्टं कुर्वन्तु, उदाहरणार्थं: http://dl-cdn.alpinelinux.org/"
+"alpine/edge/testing/"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
 #, kde-format
 msgid "Error: Authorization denied"
-msgstr ""
+msgstr "त्रुटिः - प्राधिकरणं अङ्गीकृतम्"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:277
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "त्रुटि"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
 #, kde-format
 msgid "Failed to open APK database!"
-msgstr ""
+msgstr "APK आँकडाधारं उद्घाटयितुं असफलम्!"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
 #, kde-format
 msgid "Failed to get a list of packages to upgrade!"
-msgstr ""
+msgstr "उन्नयनार्थं संकुलानाम् सूचीं प्राप्तुं असफलम्!"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -878,7 +878,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1095
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
-msgstr ""
+msgstr "एप्लिकेशनं %1 इत्यत्र सत्यापितं यथा तस्य लेखकेन %2 प्रेषितम्"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
@@ -954,6 +954,8 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"आन्तरिकदोषः अभवत् । कृपया https://bugs.kde.org/enter_bug.cgi?product=Discover "
+"इत्यत्र प्रतिवेदनं दातव्यम्"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:438
 #, fuzzy, kde-format
@@ -971,12 +973,14 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
+"<resource>%1</resource> इदानीं अद्यतनं न प्राप्नोति।<nl/><nl/>तस्य स्थाने <resource>"
+"%2</resource> द्वारा प्रदत्तसमर्थितसंस्करणेन सह स्थापयतु?"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:446
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "स्वचालित निष्कासन"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:448
 #, kde-kuit-format
@@ -986,6 +990,8 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
+"<resource>%1</resource> अद्यतनं न प्राप्नोति।<nl/><p> कारणं दत्तं यत्- १.<message> "
+"%2</message></p><nl/><p> स्वयमेव तत् निष्कासयन्तु ?</p>"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
 #, kde-format
@@ -1014,12 +1020,12 @@ msgstr "%1 इत्यस्मिन् स्थिरसंस्करण�
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 संस्थापितम् नास्ति किन्तु अस्मिन् अद्यापि दत्तांशः उपस्थितः अस्ति ।."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:32
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:39
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "समयोजननी तथा उपयोक्तृदत्तांशं विलोपयन्तु"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:35
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:42
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "समयोजननी तथा उपयोक्तृदत्तांशं स्वच्छं कुर्वन्…"
@@ -1184,7 +1190,7 @@ msgstr "वर्णचित्राः"
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
-msgstr ""
+msgstr "%1 इत्यस्मै एतत् समस्यां प्रतिवेदयन्तु"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:325
 #, kde-format
@@ -1244,7 +1250,7 @@ msgctxt "@info"
 msgid ""
 "The background service (PackageKit) stopped unexpectedly. It may have "
 "crashed."
-msgstr ""
+msgstr "पृष्ठभूमिसेवा (PackageKit) अप्रत्याशितरूपेण स्थगितवती । दुर्घटना अभवत् स्यात्।"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1984,7 +1990,7 @@ msgstr "अनुपलब्धम्"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "गंभीरः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
 #, fuzzy, kde-format
@@ -2096,7 +2102,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "%1 द्वारा सत्यापितं सॉफ्टवेयरम्"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
 #, kde-format
@@ -2341,7 +2347,7 @@ msgstr "rpm-ostree: प्रारंभितः परिनियोजन�
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr ""
+msgstr "उन्नयनं आरभत…"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
 #, kde-format
@@ -2477,19 +2483,19 @@ msgstr "प्रणाली अद्यतनस्य जाँचः"
 #, kde-format
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
-msgstr ""
+msgstr "सिस्टम् अपडेट् डाउनलोड् करणम्। प्रगतिः न ज्ञायते इति कारणेन धैर्यं धारयन्तु।"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
-msgstr ""
+msgstr "प्रणालीं अद्यतनं करणम्। प्रगतिः न ज्ञायते इति कारणेन धैर्यं धारयन्तु।"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
 #, kde-format
 msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
-msgstr ""
+msgstr "अग्रिमप्रमुखसंस्करणं प्रति अद्यतनीकरणम् । प्रगतिः न ज्ञायते इति कारणेन धैर्यं धारयन्तु।"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
 #, kde-format
@@ -2537,12 +2543,12 @@ msgstr "स्नैप्"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:606
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "snapcraft.io इत्यत्र सत्यापितः प्रकाशकः"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:608
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "snapcraft.io इत्यत्र प्रकाशकः अभिनीतः"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
 #, kde-format
@@ -2561,7 +2567,7 @@ msgstr "SteamOS: SteamOS अद्यतनस्य कृते atomupd इत
 #: libdiscover/backends/SteamOSBackend/SteamOSResource.cpp:16
 #, kde-format
 msgid "SteamOS"
-msgstr ""
+msgstr "SteamOS"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:114
 #, kde-format
@@ -2614,7 +2620,7 @@ msgstr "कृपया अन्तर्जालसंपर्कस्य �
 msgid "Refresh"
 msgstr "नवीकरणम्"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:800
+#: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
@@ -2709,82 +2715,3 @@ msgstr "प्रणालि तन्त्रांश्"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "एडोन्स्"
-
-#~ msgid "Could not find '%1' in '%2'; please make sure it's available."
-#~ msgstr "'%2' मध्ये '%1' न प्राप्नोत्; कृपया सुनिश्चितं कुर्वन्तु यत् एतत् उपलब्धम् अस्ति।."
-
-#~ msgid "%1 channels"
-#~ msgstr "%1 चैनल्स्"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content suitable for everyone"
-#~ msgid "All Audiences"
-#~ msgstr "सर्वे प्रेक्षकाः"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with relatively benign themes only unsuitable for very young "
-#~ "children, such as minor cartoon violence or mild profanity"
-#~ msgid "Mild Content"
-#~ msgstr "मृदु सामग्री"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with some intense themes, such as somewhat realistic violence, "
-#~ "references to sexuality, or adult profanity"
-#~ msgid "Moderate Content"
-#~ msgstr "मध्यम सामग्री"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "mature content that could be quite objectionable or unsuitable for young "
-#~ "audiences, such as realistic graphic violence, extreme profanity or "
-#~ "nudity, or glorification of drug use"
-#~ msgid "Intense Content"
-#~ msgstr "तीव्र सामग्री"
-
-#~ msgctxt "%1 is the name of the application"
-#~ msgid "Permissions for %1"
-#~ msgstr "%1 कृते अनुमतिः"
-
-#~ msgid "Downloading system update"
-#~ msgstr "प्रणाली अद्यतनं अवारोपण करणम्"
-
-#~ msgid "Updating the system"
-#~ msgstr "प्रणालीं अद्यतनं करणम्"
-
-#~ msgid "Updating to the next major version"
-#~ msgstr "अग्रिमप्रमुखसंस्करणं प्रति अद्यतनीकरणम्"
-
-#~ msgid "A new major version has been released"
-#~ msgstr "नूतनं प्रमुखं संस्करणं प्रकाशितम् अस्ति"
-
-#~ msgid ""
-#~ "<b>A new major version of %1 has been released!</b>\n"
-#~ "To be able to update to this new version, make sure to apply all pending "
-#~ "updates and reboot your system."
-#~ msgstr ""
-#~ "<b>%1 इत्यस्य नूतनं प्रमुखं संस्करणं प्रकाशितम्!</b>\n"
-#~ "अस्मिन् नूतने संस्करणे अद्यतनं कर्तुं शक्नुवन्तु, सर्वाणि लम्बितानि अद्यतनानि प्रयोक्तुं सुनिश्चितं "
-#~ "कुर्वन्तु तथा च स्वस्य प्रणालीं पुनः आरभ्यताम् ।."
-
-#~ msgid "<b>A new major version has been released!</b>"
-#~ msgstr "<b>नवं प्रमुखं संस्करणं प्रकाशितम्!</b>"
-
-#~ msgid "Unknown size"
-#~ msgstr "अज्ञातः आकारः"
-
-#~ msgctxt "@info app size"
-#~ msgid "%1 to download, %2 on disk"
-#~ msgstr "%1 अवतरणं कर्तुं, %2 डिस्क मध्ये"
-
-#~ msgctxt "@info app size"
-#~ msgid "%1 on disk"
-#~ msgstr "%1 डिस्क मध्ये"
-
-#~ msgid "Access is granted to the entire Session Bus"
-#~ msgstr "सम्पूर्णस्य सत्रबसस्य प्रवेशः प्रदत्तः अस्ति"
-
-#~ msgid "Access is granted to the entire System Bus"
-#~ msgstr "सम्पूर्णं System Bus - मध्ये प्रवेशः प्रदत्तः अस्ति"

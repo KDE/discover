@@ -109,13 +109,3 @@ msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"
 msgid "Immediately"
 msgstr "तत्क्षणमेव"
-
-#~ msgid "Use offline updates:"
-#~ msgstr "वियुक्त अद्यतनस्य उपयोगं कुर्वन्तु:"
-
-#~ msgid ""
-#~ "Offline updates maximize system stability by applying changes while "
-#~ "restarting the system. Using this update mode is strongly recommended."
-#~ msgstr ""
-#~ "वियुक्त-अद्यतनं प्रणालीं पुनः आरभ्य परिवर्तनं प्रयोजयित्वा प्रणालीस्थिरतां अधिकतमं करोति "
-#~ "। एतस्य अद्यतनविधानस्य उपयोगः दृढतया अनुशंसितः अस्ति ।."

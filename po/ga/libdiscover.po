@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-09 00:42+0000\n"
+"POT-Creation-Date: 2024-12-14 00:52+0000\n"
 "PO-Revision-Date: 2011-12-28 12:28-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -56,23 +56,23 @@ msgstr "Dílsithe"
 msgid "Public Domain"
 msgstr "Foilsitheoireacht"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:206
+#, kde-format
+msgid "Error while submitting usefulness: %1"
+msgstr ""
+
+#: libdiscover/appstream/OdrsReviewsJob.cpp:38
+#, kde-format
+msgid "Error while submitting review: %1"
+msgstr ""
+
+#: libdiscover/appstream/OdrsReviewsJob.cpp:68
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section \"web\""
 #| msgid "Internet"
 msgid "Technical error message: %1"
 msgstr "Idirlíon"
-
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
-#, kde-format
-msgid "Error while submitting usefulness: %1"
-msgstr ""
-
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
-#, kde-format
-msgid "Error while submitting review: %1"
-msgstr ""
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
 #, fuzzy, kde-format
@@ -1033,12 +1033,12 @@ msgstr ""
 msgid "%1 is not installed but it still has data present."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:32
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:39
 #, kde-format
 msgid "Delete settings and user data"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:35
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:42
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr ""
@@ -2728,7 +2728,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:800
+#: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

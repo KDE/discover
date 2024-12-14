@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-09 00:42+0000\n"
+"POT-Creation-Date: 2024-12-14 00:52+0000\n"
 "PO-Revision-Date: 2024-04-23 19:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -53,20 +53,20 @@ msgstr "专有软件"
 msgid "Public Domain"
 msgstr "公共领域"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
-#, kde-format
-msgid "Technical error message: %1"
-msgstr "技术错误消息：%1"
-
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:206
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "提交有用时出错：%1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
+#: libdiscover/appstream/OdrsReviewsJob.cpp:38
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "提交评论时出错：%1"
+
+#: libdiscover/appstream/OdrsReviewsJob.cpp:68
+#, kde-format
+msgid "Technical error message: %1"
+msgstr "技术错误消息：%1"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
 #, kde-format
@@ -1006,12 +1006,12 @@ msgstr "查看 %1 上的稳定版本"
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 在本机上没有安装，但它在本机上存有数据。"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:32
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:39
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "删除设置和用户数据"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:35
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:42
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "清除设置和用户数据…"
@@ -2573,7 +2573,7 @@ msgstr "请检查网络连接"
 msgid "Refresh"
 msgstr "刷新"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:800
+#: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

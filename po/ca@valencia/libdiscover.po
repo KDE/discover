@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-09 00:42+0000\n"
+"POT-Creation-Date: 2024-12-14 00:52+0000\n"
 "PO-Revision-Date: 2024-12-09 10:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -52,20 +52,20 @@ msgstr "Propietària"
 msgid "Public Domain"
 msgstr "Domini públic"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:171
-#, kde-format
-msgid "Technical error message: %1"
-msgstr "Missatge tècnic d'error: %1"
-
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:223
+#: libdiscover/appstream/OdrsReviewsBackend.cpp:206
 #, kde-format
 msgid "Error while submitting usefulness: %1"
 msgstr "S'ha produït un error en enviar la utilitat: %1"
 
-#: libdiscover/appstream/OdrsReviewsBackend.cpp:286
+#: libdiscover/appstream/OdrsReviewsJob.cpp:38
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "S'ha produït un error en enviar la revisió: %1"
+
+#: libdiscover/appstream/OdrsReviewsJob.cpp:68
+#, kde-format
+msgid "Technical error message: %1"
+msgstr "Missatge tècnic d'error: %1"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
 #, kde-format
@@ -1043,12 +1043,12 @@ msgstr "Visualitza la versió estable a %1"
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 no està instal·lada, però encara té dades presents."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:32
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:39
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "Suprimix la configuració i les dades d'usuari"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:35
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:42
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "Neteja la configuració i les dades d'usuari…"
@@ -2677,7 +2677,7 @@ msgstr "Comproveu la connectivitat amb Internet"
 msgid "Refresh"
 msgstr "Actualitza la llista"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:800
+#: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
