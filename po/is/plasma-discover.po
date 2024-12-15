@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-26 00:41+0000\n"
+"POT-Creation-Date: 2024-12-15 00:42+0000\n"
 "PO-Revision-Date: 2024-06-28 11:35+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 23.08.5\n"
 
-#: discover/DiscoverObject.cpp:182
+#: discover/DiscoverObject.cpp:181
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -27,7 +27,7 @@ msgstr ""
 "%1 er ekki grunnstillt til að setja upp forrit í gegnum Discover—einungis "
 "forritaviðbætur"
 
-#: discover/DiscoverObject.cpp:184
+#: discover/DiscoverObject.cpp:183
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -39,13 +39,13 @@ msgstr ""
 "síðunni <interface>Stillingar</interface>, undir<interface>Bakendar sem "
 "vantar</interface>."
 
-#: discover/DiscoverObject.cpp:187
+#: discover/DiscoverObject.cpp:186
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Tilkynna vandamálið til %1"
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:191
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -62,7 +62,7 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>pakka fyrir "
 "Discover á %1</link>"
 
-#: discover/DiscoverObject.cpp:205
+#: discover/DiscoverObject.cpp:204
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -80,17 +80,17 @@ msgstr ""
 "<para> Umsjónaraðilar %1 mæla með því í staðinn að nota <command>pacman</"
 "command> á skipanalínunni til að hafa umsjón með pökkum.</para>"
 
-#: discover/DiscoverObject.cpp:293
+#: discover/DiscoverObject.cpp:292
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Fann ekki flokk '%1'"
 
-#: discover/DiscoverObject.cpp:308
+#: discover/DiscoverObject.cpp:307
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Reyni að opna skrá '%1' sem er ekki til"
 
-#: discover/DiscoverObject.cpp:330
+#: discover/DiscoverObject.cpp:329
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -99,17 +99,17 @@ msgstr ""
 "Get ekki átt samskipti við flatpak-uppsprettur án flatpak-bakenda %1. Settu "
 "hann upp fyrst."
 
-#: discover/DiscoverObject.cpp:334
+#: discover/DiscoverObject.cpp:333
 #, kde-format
 msgid "Could not open %1"
 msgstr "Gat ekki opnað %1"
 
-#: discover/DiscoverObject.cpp:396
+#: discover/DiscoverObject.cpp:395
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Gakktu úr skugga um að stuðningur við Snap sé uppsettur"
 
-#: discover/DiscoverObject.cpp:399
+#: discover/DiscoverObject.cpp:398
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -117,25 +117,25 @@ msgid ""
 msgstr ""
 "Gat ekki opnað %1 því það fannst ekki í neinum tiltækum hugbúnaðarsöfnum."
 
-#: discover/DiscoverObject.cpp:403
+#: discover/DiscoverObject.cpp:402
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 "Sendu tilkynningu um vandamálið til þeirra sem sjá um pökkun hjá "
 "dreifingaraðila þínum."
 
-#: discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:405
 #, kde-format
 msgid "Report This Issue"
 msgstr "Tilkynna vandamálið"
 
-#: discover/DiscoverObject.cpp:468 discover/DiscoverObject.cpp:470
+#: discover/DiscoverObject.cpp:467 discover/DiscoverObject.cpp:469
 #: discover/main.cpp:123
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:471
+#: discover/DiscoverObject.cpp:470
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

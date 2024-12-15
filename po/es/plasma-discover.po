@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-26 00:41+0000\n"
+"POT-Creation-Date: 2024-12-15 00:42+0000\n"
 "PO-Revision-Date: 2024-11-20 19:54+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Lokalize 24.08.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: discover/DiscoverObject.cpp:182
+#: discover/DiscoverObject.cpp:181
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -27,7 +27,7 @@ msgstr ""
 "%1 no está configurada para instalar aplicaciones con Discover (solo "
 "complementos de aplicaciones)"
 
-#: discover/DiscoverObject.cpp:184
+#: discover/DiscoverObject.cpp:183
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -39,13 +39,13 @@ msgstr ""
 "página <interface>Preferencias</interface>, en <interface>Motores ausentes</"
 "interface>."
 
-#: discover/DiscoverObject.cpp:187
+#: discover/DiscoverObject.cpp:186
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Notificar este problema a %1"
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:191
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -62,7 +62,7 @@ msgstr ""
 "archlinux.org/packages/extra/x86_64/discover/'>paquete de %1 para Discover</"
 "link>"
 
-#: discover/DiscoverObject.cpp:205
+#: discover/DiscoverObject.cpp:204
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -81,17 +81,17 @@ msgstr ""
 "recomiendan el uso de la herramienta <command>pacman</command> de la línea "
 "de órdenes para la gestión de paquetes.</para>"
 
-#: discover/DiscoverObject.cpp:293
+#: discover/DiscoverObject.cpp:292
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "No se puede encontrar la categoría «%1»"
 
-#: discover/DiscoverObject.cpp:308
+#: discover/DiscoverObject.cpp:307
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Se ha intentado abrir el archivo no existente «%1»"
 
-#: discover/DiscoverObject.cpp:330
+#: discover/DiscoverObject.cpp:329
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -100,17 +100,17 @@ msgstr ""
 "No se puede interactuar con recursos flatpak sin el motor flatpak %1. Por "
 "favor, instálelo antes."
 
-#: discover/DiscoverObject.cpp:334
+#: discover/DiscoverObject.cpp:333
 #, kde-format
 msgid "Could not open %1"
 msgstr "No se ha podido abrir %1"
 
-#: discover/DiscoverObject.cpp:396
+#: discover/DiscoverObject.cpp:395
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Asegúrese de que se ha instalado el soporte para Snap"
 
-#: discover/DiscoverObject.cpp:399
+#: discover/DiscoverObject.cpp:398
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -119,23 +119,23 @@ msgstr ""
 "No se ha podido abrir %1 porque no se ha encontrado en ninguno de los "
 "repositorios de software disponibles."
 
-#: discover/DiscoverObject.cpp:403
+#: discover/DiscoverObject.cpp:402
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Notifique este problema a los empaquetadores de su distribución."
 
-#: discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:405
 #, kde-format
 msgid "Report This Issue"
 msgstr "Notificar este problema"
 
-#: discover/DiscoverObject.cpp:468 discover/DiscoverObject.cpp:470
+#: discover/DiscoverObject.cpp:467 discover/DiscoverObject.cpp:469
 #: discover/main.cpp:123
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:471
+#: discover/DiscoverObject.cpp:470
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-26 00:41+0000\n"
+"POT-Creation-Date: 2024-12-15 00:42+0000\n"
 "PO-Revision-Date: 2024-11-25 21:34+0700\n"
 "Last-Translator: Wantoyo <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 24.08.2\n"
 
-#: discover/DiscoverObject.cpp:182
+#: discover/DiscoverObject.cpp:181
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -29,7 +29,7 @@ msgstr ""
 "%1 belum dikonfigurasi untuk menginstal aplikasi melalui Discover—add-ons "
 "app saja"
 
-#: discover/DiscoverObject.cpp:184
+#: discover/DiscoverObject.cpp:183
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -41,13 +41,13 @@ msgstr ""
 "<interface>Pengaturan</interface>, di bawah <interface>Backend yang Hilang</"
 "interface>."
 
-#: discover/DiscoverObject.cpp:187
+#: discover/DiscoverObject.cpp:186
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Laporkan Masalah Ini ke %1"
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:191
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -63,7 +63,7 @@ msgstr ""
 "<command>pacman</command>.<nl/><nl/> Tinjau <link url='https://archlinux.org/"
 "packages/extra/x86_64/discover/'>pemaketan %1's untuk Discover</link>"
 
-#: discover/DiscoverObject.cpp:205
+#: discover/DiscoverObject.cpp:204
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -81,17 +81,17 @@ msgstr ""
 "pemelihara %1 menganjurkan menggunakan alat baris-perintah <command>pacman</"
 "command> untuk mengelola paket sebagai gantinya.</para>"
 
-#: discover/DiscoverObject.cpp:293
+#: discover/DiscoverObject.cpp:292
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Tidak bisa menemukan kategori '%1'"
 
-#: discover/DiscoverObject.cpp:308
+#: discover/DiscoverObject.cpp:307
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Mencoba untuk membuka file '%1' yang tak ada"
 
-#: discover/DiscoverObject.cpp:330
+#: discover/DiscoverObject.cpp:329
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -100,17 +100,17 @@ msgstr ""
 "Tak bisa berinteraksi dengan sumberdaya flatpak tanpa backend flatpak %1. "
 "Silakan menginstalnya terlebih dahulu."
 
-#: discover/DiscoverObject.cpp:334
+#: discover/DiscoverObject.cpp:333
 #, kde-format
 msgid "Could not open %1"
 msgstr "Tidak bisa membuka %1"
 
-#: discover/DiscoverObject.cpp:396
+#: discover/DiscoverObject.cpp:395
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Mohon pastikan dukungan Snap telah terinstal"
 
-#: discover/DiscoverObject.cpp:399
+#: discover/DiscoverObject.cpp:398
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -119,23 +119,23 @@ msgstr ""
 "Tidak bisa membuka %1 karena tidak ketemu di repositori perangkat lunak "
 "apapun."
 
-#: discover/DiscoverObject.cpp:403
+#: discover/DiscoverObject.cpp:402
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Mohon laporkan masalah ini ke si pemaket distribusimu."
 
-#: discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:405
 #, kde-format
 msgid "Report This Issue"
 msgstr "Laporkan Masalah Ini"
 
-#: discover/DiscoverObject.cpp:468 discover/DiscoverObject.cpp:470
+#: discover/DiscoverObject.cpp:467 discover/DiscoverObject.cpp:469
 #: discover/main.cpp:123
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:471
+#: discover/DiscoverObject.cpp:470
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
