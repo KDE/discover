@@ -12,15 +12,6 @@ if(NOT SeleniumWebDriverATSPI_FOUND AND NOT "$ENV{KDECI_BUILD}" STREQUAL "TRUE")
     return()
 endif()
 
-cmake_host_system_information(RESULT DISTRO_ID QUERY DISTRIB_ID)
-cmake_host_system_information(RESULT DISTRO_ID_LIKE QUERY DISTRIB_ID_LIKE)
-list(PREPEND DISTRO_ID_LIKE ${DISTRO_ID})
-string(FIND "${DISTRO_ID_LIKE}" "alpine" FINDINDEX)
-if(NOT (FINDINDEX EQUAL -1))
-    message(WARNING "Skipping appium tests on alpine")
-    return()
-endif()
-
 add_test(
     NAME appium-flatpak
     COMMAND selenium-webdriver-at-spi-run ${CMAKE_CURRENT_SOURCE_DIR}/flatpak.py
