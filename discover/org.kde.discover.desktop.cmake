@@ -183,6 +183,7 @@ Keywords[nn]=program;programvare;butikk;pakkebrønn;pakke;pakkar;legg til;leggja
 Keywords[pl]=program;oprogramowanie;sklep;repozytorium;archiwum;pakiet;paczka;dodaj;instaluj;zainstaluj;usuń;odinstaluj;uaktualnij;aktualizuj;programy;aplikacje;deb;gry;flatpak;snap;dodatki;oprogramowanie układowe;
 Keywords[pt_BR]=programa;software;loja;repositório;pacote;adicionar;instalar;desinstalar;remover;atualizar;aplicativos;apps;aplicações;jogos;flatpak;snap;complemento;extensão;firmware;
 Keywords[ru]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;программа;приложение;хранилище;репозиторий;пакет;добавить;установка;удаление;deb;игры;расширения;прошивка
+Keywords[sa]=program;software;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
 Keywords[sl]=program;programska oprema;trgovina;skladišče;paket;dodaj;namesti;odstrani;posodobi;programi;aplikacije;igre;flatpak;snap;dodatno;dodatki;vgrajeno programje;
 Keywords[sv]=program;programvara;arkiv;paket;lägg till;installera;avinstallera;ta bort;uppdatera;appar;program;spel;flatpak;snap;tillägg;fast programvara;
 Keywords[ta]=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;மென்பொருள்;பயன்பாடு;செயலி;ஆப்ஸ்;ஆப்சு;நிரல்;கிடங்கு;களஞ்சியம்;தொகுப்பு;சேர்;நிறுவு;நிறுவல்;நீக்கு;புதுப்பி;புதுப்பித்தல்;ஃபலாட்பாக்;ஸ்னாப்;சுனாப்;செருகுநிரல்;துணை நிரல்கள்;துணைநிரல்;சாதனநிரல்;
