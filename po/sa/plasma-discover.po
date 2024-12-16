@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-15 00:42+0000\n"
-"PO-Revision-Date: 2024-12-14 01:52+0530\n"
+"PO-Revision-Date: 2024-12-15 20:43+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -43,18 +43,7 @@ msgid "Report This Issue to %1"
 msgstr "%1 इत्यस्मै एतत् समस्यां प्रतिवेदयन्तु"
 
 #: discover/DiscoverObject.cpp:191
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:usagetip %1 is the distro name; in this case it always contains "
-#| "'Arch Linux'"
-#| msgid ""
-#| "To use Discover for apps, install <link url='https://wiki.archlinux.org/"
-#| "title/Flatpak#Installation'>Flatpak</link> or <link url='https://wiki."
-#| "archlinux.org/title/"
-#| "KDE#Discover_does_not_show_any_applications'>PackageKit</link> using the "
-#| "<command>pacman</command> package manager.<nl/><nl/> Review <link "
-#| "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's "
-#| "packaging for Discover</link>"
+#, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
 "Linux'"
@@ -204,10 +193,9 @@ msgid "An application explorer"
 msgstr "एकः अनुप्रयोगः अन्वेषकः"
 
 #: discover/main.cpp:127
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© २०१०-२०२२ प्लाज्मा विकासदल"
+msgstr "© २०१०-२०२४ प्लाज्मा विकासदल"
 
 #: discover/main.cpp:128
 #, kde-format
@@ -309,19 +297,7 @@ msgid "No ratings yet"
 msgstr "अद्यापि मूल्याङ्कन नास्ति"
 
 #: discover/qml/ApplicationPage.qml:69
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -337,30 +313,20 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"अस्य अनुप्रयोगस्य स्रोतविध्यादेशः सार्वजनिकनिरीक्षणाय सुधाराय च आंशिकरूपेण वा पूर्णतया वा "
-"बन्दः अस्ति । तस्य अर्थः अस्ति यत् भवद्भिः सदृशाः तृतीयपक्षाः उपयोक्तारश्च तस्य संचालनं, "
-"सुरक्षां, विश्वसनीयतां च सत्यापयितुं, अथवा लेखकानां स्पष्टानुमतिं विना परिवर्तनं पुनर्वितरणं च "
-"कर्तुं न शक्नुवन्ति।<nl/><nl/>अनुप्रयोगः उपयोगाय सम्यक् सुरक्षितः भवितुम् अर्हति, अथवा भवेत् "
-"भवतः विरुद्धं विविधरीत्या कार्यं कुर्वन् भवन्तु-यथा भवतः व्यक्तिगतसूचनाः संग्रहणं, भवतः "
-"स्थानस्य अनुसरणं, अथवा भवतः सञ्चिकानां सामग्रीं अन्यस्मै प्रसारयितुं वा। निश्चयं कर्तुं कोऽपि "
-"सुलभः उपायः नास्ति, अतः भवद्भिः केवलं तदा एव एतत् अनुप्रयोगं संस्थापयितव्यं यदा भवान् तस्य "
-"लेखकान् पूर्णतया विश्वसिति (%1).<nl/><nl/> भवन्तः इत्यत्र अधिकं ज्ञातुं शक्नुवन्ति ।<link "
-"url='%2'>%2</link>."
+"केवलं %1 संस्थापयन्तु यदि भवान् तस्य लेखकेषु पूर्णतया विश्वासं करोति यतोहि एतत् <emphasis "
+"strong='true'>स्वामित्वं</emphasis>: अस्य अनुप्रयोगस्य उपयोगाय, परिवर्तनाय, "
+"पुनर्वितरणस्य च भवतः स्वतन्त्रता प्रतिबन्धिता अस्ति, तस्य स्रोतसङ्केतः आंशिकरूपेण वा "
+"सम्पूर्णतया वा निरुद्धः अस्ति सार्वजनिकनिरीक्षणं सुधारणं च यावत्। अस्य अर्थः अस्ति यत् "
+"भवद्भिः सदृशाः तृतीयपक्षाः उपयोक्तारश्च तस्य संचालनं, सुरक्षां, विश्वसनीयतां च सत्यापयितुं न "
+"शक्नुवन्ति।<nl/><nl/>अनुप्रयोगः उपयोगाय सम्यक् सुरक्षितः भवितुम् अर्हति, अथवा भवतः विरुद्धं "
+"विविधरीत्या कार्यं कुर्वन् अस्ति — यथा भवतः फलानां कटनी व्यक्तिगतसूचना, भवतः स्थानस्य "
+"अनुसरणं, अथवा भवतः दत्तांशस्य सामग्रीं अन्यस्मै प्रसारणं वा । केवलं तदा एव तस्य उपयोगं कुर्वन्तु "
+"यदा भवन्तः तस्य लेखकेषु पूर्णतया विश्वासं कुर्वन्ति। अधिकसूचनाः <link url='%2'>अनुप्रयोगस्य "
+"जालपुटे</link> इत्यत्र उपलभ्यन्ते ।<nl/><nl/>अधिकं ज्ञातुं <link url='%3'>%3</link> "
+"इत्यत्र ।"
 
 #: discover/qml/ApplicationPage.qml:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "This application's source code is partially or entirely closed to public "
-#| "inspection and improvement. That means third parties and users like you "
-#| "cannot verify its operation, security, and trustworthiness, or modify and "
-#| "redistribute it without the authors' express permission.<nl/><nl/>The "
-#| "application may be perfectly safe to use, or it may be acting against you "
-#| "in various ways—such as harvesting your personal information, tracking "
-#| "your location, or transmitting the contents of your files to someone "
-#| "else. There is no easy way to be sure, so you should only install this "
-#| "application if you fully trust its authors (%1).<nl/><nl/>You can learn "
-#| "more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -374,15 +340,16 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"अस्य अनुप्रयोगस्य स्रोतविध्यादेशः सार्वजनिकनिरीक्षणाय सुधाराय च आंशिकरूपेण वा पूर्णतया वा "
-"बन्दः अस्ति । तस्य अर्थः अस्ति यत् भवद्भिः सदृशाः तृतीयपक्षाः उपयोक्तारश्च तस्य संचालनं, "
-"सुरक्षां, विश्वसनीयतां च सत्यापयितुं, अथवा लेखकानां स्पष्टानुमतिं विना परिवर्तनं पुनर्वितरणं च "
-"कर्तुं न शक्नुवन्ति।<nl/><nl/>अनुप्रयोगः उपयोगाय सम्यक् सुरक्षितः भवितुम् अर्हति, अथवा भवेत् "
-"भवतः विरुद्धं विविधरीत्या कार्यं कुर्वन् भवन्तु-यथा भवतः व्यक्तिगतसूचनाः संग्रहणं, भवतः "
-"स्थानस्य अनुसरणं, अथवा भवतः सञ्चिकानां सामग्रीं अन्यस्मै प्रसारयितुं वा। निश्चयं कर्तुं कोऽपि "
-"सुलभः उपायः नास्ति, अतः भवद्भिः केवलं तदा एव एतत् अनुप्रयोगं संस्थापयितव्यं यदा भवान् तस्य "
-"लेखकान् पूर्णतया विश्वसिति (%1).<nl/><nl/> भवन्तः इत्यत्र अधिकं ज्ञातुं शक्नुवन्ति ।<link "
-"url='%2'>%2</link>."
+"केवलं %1 संस्थापयन्तु यदि भवान् तस्य लेखकेषु पूर्णतया विश्वासं करोति यतोहि एतत् <emphasis "
+"strong='true'>स्वामित्वं</emphasis>: अस्य अनुप्रयोगस्य उपयोगाय, परिवर्तनाय, "
+"पुनर्वितरणस्य च भवतः स्वतन्त्रता प्रतिबन्धिता अस्ति, तस्य स्रोतसङ्केतः आंशिकरूपेण वा "
+"सम्पूर्णतया वा निरुद्धः अस्ति सार्वजनिकनिरीक्षणं सुधारणं च यावत्। अस्य अर्थः अस्ति यत् "
+"भवद्भिः सदृशाः तृतीयपक्षाः उपयोक्तारश्च तस्य संचालनं, सुरक्षां, विश्वसनीयतां च सत्यापयितुं न "
+"शक्नुवन्ति।<nl/><nl/>अनुप्रयोगः उपयोगाय सम्यक् सुरक्षितः भवेत्, अथवा भवतः विरुद्धं "
+"विविधरीत्या कार्यं कुर्वन् अस्ति — यथा भवतः फलानां कटनी व्यक्तिगतसूचना, भवतः स्थानस्य "
+"अनुसरणं, अथवा भवतः दत्तांशस्य सामग्रीं अन्यस्मै प्रसारणं वा । केवलं तदा एव तस्य उपयोगं कुर्वन्तु "
+"यदा भवन्तः तस्य लेखकेषु पूर्णतया विश्वासं कुर्वन्ति। <link url='%2'>%2</link> इत्यत्र अधिकं "
+"ज्ञातव्यम् ।"
 
 #: discover/qml/ApplicationPage.qml:81
 #, kde-kuit-format
@@ -461,9 +428,7 @@ msgstr ""
 "निजीव्यक्तिगतप्रयोगात् परं किमपि कर्तुं इच्छति तर्हि अनुप्रयोगस्य लेखकेन सह सम्पर्कं कुर्वन्तु।"
 
 #: discover/qml/ApplicationPage.qml:137
-#, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "सझा कर्तुं"
@@ -488,8 +453,7 @@ msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:213
-#, fuzzy, kde-format
-#| msgid "Send a link for this application"
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
 msgstr "अस्य अनुप्रयोगस्य कृते पता प्रेषयन्तु"
@@ -523,8 +487,7 @@ msgstr[0] "अनुज्ञापत्रम् :"
 msgstr[1] "अनुज्ञापत्राणि :"
 
 #: discover/qml/ApplicationPage.qml:414
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "एतस्य किम् अर्थः ?"
@@ -561,18 +524,15 @@ msgid "Everyone"
 msgstr "प्रत्येकं"
 
 #: discover/qml/ApplicationPage.qml:511
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr "%1"
+msgstr "%1+"
 
 #: discover/qml/ApplicationPage.qml:525
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
+#, kde-format
 msgid "See details"
-msgstr "विवरणं पश्यन्तु…"
+msgstr "विवरणं पश्यन्तु"
 
 #: discover/qml/ApplicationPage.qml:549
 #, kde-format
@@ -602,12 +562,10 @@ msgid "Reviews for %1 are temporarily unavailable"
 msgstr "%1 कृते समीक्षाः अस्थायीरूपेण अनुपलब्धाः सन्ति"
 
 #: discover/qml/ApplicationPage.qml:767
-#, fuzzy, kde-format
-#| msgid "Show all %1 Reviews"
-#| msgid_plural "Show all %1 Reviews"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "सर्वाणि %1 समीक्षाः दर्शयतु"
+msgstr "सर्वाणि समीक्षाः दर्शयतु"
 
 #: discover/qml/ApplicationPage.qml:779
 #, kde-format
@@ -626,15 +584,13 @@ msgid "External Links"
 msgstr "बाह्यलिङ्काः"
 
 #: discover/qml/ApplicationPage.qml:821
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "Read the project's official documentation"
+msgstr "दस्तावेजीकरणं पठन्तु"
 
 #: discover/qml/ApplicationPage.qml:833
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "परियोजनायाः जालपुटं पश्यन्तु"
@@ -646,8 +602,7 @@ msgid "Donate to the project"
 msgstr "परियोजनायाः कृते दानं कुर्वन्तु"
 
 #: discover/qml/ApplicationPage.qml:857
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "त्रुटिं प्रतिवेदयतु"
@@ -669,8 +624,7 @@ msgid "Content Rating"
 msgstr "सामग्रीमूल्याङ्कनम्"
 
 #: discover/qml/ApplicationPage.qml:953
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
 msgstr "उपयोगस्य सूचनां प्रस्तौतु"
@@ -734,8 +688,7 @@ msgid "Size"
 msgstr "आकारः"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "अवतरण तिथि"
 
@@ -958,12 +911,13 @@ msgid "Update Issue"
 msgstr "अद्यतनस्य समस्या"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
-msgstr "एतत् अद्यतनं संस्थापयन् एकः समस्या आसीत् । कृपया पश्चात् पुनः प्रयासं कुर्वन्तु।."
+msgstr ""
+"अद्यतनस्य अथवा संस्थापनप्रक्रियायाः समये एकः समस्या आसीत् । कृपया पश्चात् पुनः प्रयासं "
+"कुर्वन्तु।"
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
@@ -988,8 +942,7 @@ msgid "Copy to Clipboard"
 msgstr "अंशफलकं प्रति प्रतिलिख्यताम्"
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
 msgstr "उपयोगस्य सूचनां प्रस्तौतु"
 
@@ -1013,8 +966,7 @@ msgid "Configure"
 msgstr "विन्यस्यताम्"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback…"
+#, kde-format
 msgid "Configure Feedback…"
 msgstr "प्रतिक्रियां विन्यस्यताम्…"
 
@@ -1324,19 +1276,16 @@ msgid "Most Recent"
 msgstr "अत्यन्तं नवीनतमम्"
 
 #: discover/qml/ReviewsPage.qml:159
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Highest-Rated Games"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "उच्चतम-मुल्याङ्कित् क्रीडाः"
+msgstr "सर्वोच्च मूल्याङ्कनम्"
 
 #: discover/qml/ReviewsStats.qml:53
-#, fuzzy, kde-format
-#| msgid "Reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "समीक्षाः"
+msgstr "%1 समीक्षाः"
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
@@ -1345,8 +1294,7 @@ msgid "M"
 msgstr "म"
 
 #: discover/qml/ReviewsStats.qml:167
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
 msgstr "अज्ञात समीक्षकः"
 
@@ -1378,8 +1326,7 @@ msgid "Settings"
 msgstr "समयोजनानि"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "पूर्वनिर्धारित स्रोतः"
 
@@ -1389,8 +1336,7 @@ msgid "Add Source…"
 msgstr "स्रोतः योजयतु…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "पूर्वनिर्धारितं कुरुत"
 
@@ -1507,18 +1453,16 @@ msgid "On completion, automatically:"
 msgstr "समाप्तेः समये स्वयमेव : १."
 
 #: discover/qml/UpdatesPage.qml:262
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "न चिनोतु"
+msgstr "एकं क्रियां चिनुत"
 
 #: discover/qml/UpdatesPage.qml:262
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "इदानीं पुनः आरभत"
+msgstr "पुनः आरभत"
 
 #: discover/qml/UpdatesPage.qml:262
 #, kde-format

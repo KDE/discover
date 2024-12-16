@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-14 00:52+0000\n"
-"PO-Revision-Date: 2024-12-14 01:48+0530\n"
+"PO-Revision-Date: 2024-12-15 20:28+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>2);\n"
-"X-Generator: Lokalize 24.08.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #, kde-format
@@ -75,11 +75,10 @@ msgid "Loading, please wait..."
 msgstr "लोडिंग्, कृपया प्रतीक्षां कुर्वन्तु..."
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:290
-#, fuzzy, kde-format
-#| msgid "Additional packages: "
+#, kde-format
 msgctxt "Root category name"
 msgid "Alpine Linux packages"
-msgstr "अतिरिक्तसङ्कुलाः : "
+msgstr "आल्पाइन् लिनक्स संकुलम्"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:461
 #, kde-format
@@ -604,8 +603,7 @@ msgid "Retrieving size information"
 msgstr "आकारस्य सूचनां प्राप्य"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:472
-#, fuzzy, kde-format
-#| msgid "Unknown"
+#, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "अज्ञात"
@@ -958,11 +956,10 @@ msgstr ""
 "इत्यत्र प्रतिवेदनं दातव्यम्"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:438
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "भण्डारः उपलब्धः नास्ति"
+msgstr "प्रतिस्थापन उपलब्धम्"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:440
 #, kde-kuit-format
@@ -1032,11 +1029,10 @@ msgstr "समयोजननी तथा उपयोक्तृदत्त�
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "%1 कृते अनुमतिः"
+msgstr "अनुमतिः"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
@@ -1046,10 +1042,9 @@ msgstr "अनुमतिः विन्यस्यताम्…"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:471
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "Offline Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "वियुक्त अद्यतनम्"
+msgstr "स्थिरतन्त्रांश अद्यतनम्"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1214,35 +1209,29 @@ msgstr "'%1' अपसारयितुं न शक्यते ।"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
-#, fuzzy, kde-format
-#| msgid ""
-#| "<b>A new major version of %1 has been released.</b>\n"
-#| "To be able to upgrade to this new version, make sure to apply all "
-#| "available updates and then restart the system."
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
 "<b>%1 is now available.</b>\n"
 "To be able to upgrade to this new version, first apply all available "
 "updates, and then restart the system."
 msgstr ""
-"<b>%1 इत्यस्य नूतनं प्रमुखं संस्करणं प्रकाशितम् ।</b>\n"
-"अस्मिन् नूतने संस्करणे उन्नयनं कर्तुं शक्नुवन्तु, सर्वाणि उपलब्धानि अद्यतनं प्रयोक्तुं सुनिश्चितं कुर्वन्तु "
-"ततः प्रणालीं पुनः आरभत ।."
+"<b>%1 इदानीं उपलभ्यते ।</b>\n"
+"अस्मिन् नूतने संस्करणे उन्नयनं कर्तुं शक्नुवन्तु, प्रथमं सर्वाणि उपलब्धानि अद्यतनं प्रयोजयन्तु, ततः "
+"प्रणालीं पुनः आरभत ।"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
-#, fuzzy, kde-format
-#| msgid "Upgrade to %1 %2"
+#, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
-msgstr "%1 %2 मध्ये उन्नयनं कुर्वन्तु"
+msgstr "अधुना उन्नयनं कुर्वन्तु"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:378
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
-msgstr "भण्डारः उपलब्धः नास्ति"
+msgstr "%1 इदानीं उपलभ्यते ।"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1182
 #, kde-format
@@ -1993,26 +1982,22 @@ msgid "Critical"
 msgstr "गंभीरः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "Install"
-msgstr "संस्थापितम्"
+msgstr "सम्प्रकल्पयति"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "निष्कासयतु…"
+msgstr "निष्कासयतु"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, fuzzy, kde-format
-#| msgid "Obsoletes:"
+#, kde-format
 msgid "Obsolete"
-msgstr "अप्रचलिताः :"
+msgstr "अप्रचलिताः"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, fuzzy, kde-format
-#| msgid "Downgrading"
+#, kde-format
 msgid "Downgrade"
 msgstr "अवनतिकरणम्"
 
@@ -2508,16 +2493,14 @@ msgid "Unknown transaction type"
 msgstr "अज्ञातः विनिमयव्यवहारः प्रकारः"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channel: %1"
-msgstr "चैनल्स्…"
+msgstr "चैनल्स: %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channels for %1"
-msgstr "चैनल्स्…"
+msgstr "%1 कृते चैनल्स्"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:405
@@ -2698,11 +2681,10 @@ msgid "Applications"
 msgstr "अनुप्रयोगाः"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "अनुप्रयोगाः"
+msgstr "अनुप्रयोगसमर्थनम्"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format

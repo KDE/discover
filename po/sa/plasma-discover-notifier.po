@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-18 00:40+0000\n"
-"PO-Revision-Date: 2024-12-14 01:48+0530\n"
+"PO-Revision-Date: 2024-12-15 20:37+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>2);\n"
-"X-Generator: Lokalize 24.08.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Bookmarks: -1,-1,15,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
@@ -65,11 +65,10 @@ msgid "The system needs to be restarted for the updates to take effect."
 msgstr "अद्यतनस्य प्रभावाय तन्त्रस्य पुनः आरम्भस्य आवश्यकता वर्तते।."
 
 #: notifier/DiscoverNotifier.cpp:329
-#, fuzzy, kde-format
-#| msgid "Computer needs to restart"
+#, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
-msgstr "सङ्गणकस्य पुनः आरम्भस्य आवश्यकता वर्तते"
+msgstr "अद्यतनं पुनः आरम्भं च कुर्वन्तु"
 
 #: notifier/DiscoverNotifier.cpp:330
 #, kde-format
@@ -105,10 +104,9 @@ msgid "System update status notifier"
 msgstr "तन्त्र अद्यतन स्थिति सूचक"
 
 #: notifier/main.cpp:42
-#, fuzzy, kde-format
-#| msgid "© 2010-2022 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2024 Plasma Development Team"
-msgstr "© २०१०-२०२२ प्लाज्मा विकासदल"
+msgstr "© २०१०-२०२४ प्लाज्मा विकासदल"
 
 #: notifier/main.cpp:46
 #, kde-format
