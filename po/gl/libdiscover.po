@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-03 00:40+0000\n"
-"PO-Revision-Date: 2024-12-15 10:05+0100\n"
+"PO-Revision-Date: 2024-12-16 22:38+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -2349,13 +2349,15 @@ msgstr "Sistema operativo"
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: atopáronse varias implantacións arrincadas. Informe do fallo."
+"rpm-ostree: atopáronse varias implantacións arrincadas. Envíe un informe de "
+"fallo."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:195
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
-"rpm-ostree: Non se atoparon implantacións arrincadas. Informe do fallo."
+"rpm-ostree: Non se atoparon implantacións arrincadas. Envíe un informe de "
+"fallo."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:411
 #, kde-format
@@ -2380,8 +2382,8 @@ msgstr ""
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
-"Falta a referencia remota para a operación de cambio de base. Informe do "
-"fallo."
+"Falta a referencia remota para a operación de cambio de base. Envíe un "
+"informe de fallo."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:294
 #, kde-format
@@ -2448,8 +2450,8 @@ msgstr "Remotos de ostree"
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Erro: non se forneceu unha interface de DBus. Informe do "
-"fallo."
+"rpm-ostree-backend: Erro: non se forneceu unha interface de DBus. Envíe un "
+"informe de fallo."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:58
 #, kde-format
@@ -2458,7 +2460,7 @@ msgid ""
 "invalid format. Please file a bug."
 msgstr ""
 "rpm-ostree-backend: Erro: non é posíbel iniciar a transacción do recurso cun "
-"formato non válido. Informe do fallo."
+"formato non válido. Envíe un informe de fallo."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:78
 #, kde-format
@@ -2466,15 +2468,15 @@ msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
 "rpm-ostree-backend: Erro: non é posíbel cambiar a base a unha referencia "
-"baleira. Informe do fallo."
+"baleira. Envíe un informe de fallo."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Erro: solicitouse unha operación descoñecida. Informe do "
-"fallo."
+"rpm-ostree-backend: Erro: solicitouse unha operación descoñecida. Envíe un "
+"informe de fallo."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
@@ -2490,7 +2492,8 @@ msgstr ""
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Erro: formato de recurso descoñecido. Informe do fallo."
+"rpm-ostree-backend: Erro: formato de recurso descoñecido. Envíe un informe "
+"de fallo."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:364
 #, kde-format
