@@ -50,6 +50,7 @@ target_link_libraries(plasma-discover PUBLIC
                                      KF6::Notifications
                                      KF6::JobWidgets
                                      KF6::StatusNotifierItem
+                                     KF6::I18nQml
                                      Qt::Widgets
                                      Qt::Quick
                                      Qt::QuickControls2
