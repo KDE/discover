@@ -26,6 +26,7 @@ include(ECMQtDeclareLoggingCategory)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
 include(ECMFindQmlModule)
+include(ECMDeprecationSettings)
 
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Widgets Test Network Concurrent DBus Quick QuickControls2)
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG OPTIONAL_COMPONENTS WebView)
@@ -62,6 +63,10 @@ qcoro_enable_coroutines()
 ecm_find_qmlmodule(org.kde.kitemmodels 1.0 REQUIRED)
 
 list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "DISCOVER_BACKEND_PLUGIN")
+
+ecm_set_disabled_deprecation_versions(QT 6.8.1
+    KF 6.9.0
+)
 
 add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS -DQT_NO_URL_CAST_FROM_STRING)
 

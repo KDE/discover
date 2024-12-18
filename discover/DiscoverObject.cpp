@@ -39,6 +39,7 @@
 #include <KConfigGroup>
 #include <KCrash>
 #include <KLocalizedContext>
+#include <KLocalizedQmlContext>
 #include <KLocalizedString>
 #include <KOSRelease>
 #include <KSharedConfig>
@@ -91,7 +92,7 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
     , m_networkAccessManagerFactory(new CachedNetworkAccessManagerFactory)
 {
     setObjectName(QStringLiteral("DiscoverMain"));
-    m_engine->rootContext()->setContextObject(new KLocalizedContext(m_engine));
+    m_engine->rootContext()->setContextObject(new KLocalizedQmlContext(m_engine));
     auto factory = m_engine->networkAccessManagerFactory();
     m_engine->setNetworkAccessManagerFactory(nullptr);
     delete factory;

@@ -29,7 +29,7 @@ KNSTransaction::KNSTransaction(QObject *parent, KNSResource *res, Role role)
         if (role == RemoveRole) {
             knsTransaction = KNSCore::Transaction::uninstall(engine, res->entry());
         } else if (res->entry().status() == KNSCore::Entry::Updateable) {
-            knsTransaction = KNSCore::Transaction::install(engine, res->entry(), -1);
+            knsTransaction = KNSCore::Transaction::installLatest(engine, res->entry());
         } else if (res->linkIds().isEmpty()) {
             qWarning() << "No installable candidates in the KNewStuff entry" << res->entry().name() << "with id" << res->entry().uniqueId() << "on the backend"
                        << res->backend()->name()
@@ -38,7 +38,7 @@ KNSTransaction::KNSTransaction(QObject *parent, KNSResource *res, Role role)
             setStatus(DoneStatus);
             return;
         } else {
-            knsTransaction = KNSCore::Transaction::install(engine, res->entry());
+            knsTransaction = KNSCore::Transaction::installLatest(engine, res->entry());
         }
 
         connect(knsTransaction, &KNSCore::Transaction::signalEntryEvent, this, [this, res](const KNSCore::Entry &entry, KNSCore::Entry::EntryEvent event) {
