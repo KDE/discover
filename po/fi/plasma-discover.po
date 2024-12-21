@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:42+0000\n"
+"POT-Creation-Date: 2024-12-21 00:42+0000\n"
 "PO-Revision-Date: 2024-12-01 14:30+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -19,14 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 23.08.5\n"
 
-#: discover/DiscoverObject.cpp:181
+#: discover/DiscoverObject.cpp:182
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr "%1 ei salli sovellusten asentamista Discoverilla, ainoastaan lisäosien"
 
-#: discover/DiscoverObject.cpp:183
+#: discover/DiscoverObject.cpp:184
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -38,13 +38,13 @@ msgstr ""
 "<interface>Asetukset</interface>-sivun kohdasta <interface>Puuttuvat "
 "taustajärjestelmät</interface>."
 
-#: discover/DiscoverObject.cpp:186
+#: discover/DiscoverObject.cpp:187
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Ilmoita ongelmasta: %1"
 
-#: discover/DiscoverObject.cpp:191
+#: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -61,7 +61,7 @@ msgstr ""
 "archlinux.org/packages/extra/x86_64/discover/'>%1 -jakelun Discover-"
 "paketointia</link>"
 
-#: discover/DiscoverObject.cpp:204
+#: discover/DiscoverObject.cpp:205
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -79,17 +79,17 @@ msgstr ""
 "käyttämään paketinhallintaan sen sijaan <command>pacman</command>-"
 "komentorivityökalua.</para>"
 
-#: discover/DiscoverObject.cpp:292
+#: discover/DiscoverObject.cpp:293
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Luokkaa ”%1” ei löytynyt"
 
-#: discover/DiscoverObject.cpp:307
+#: discover/DiscoverObject.cpp:308
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Yritettiin avata puuttuvaa tiedostoa ”%1”"
 
-#: discover/DiscoverObject.cpp:329
+#: discover/DiscoverObject.cpp:330
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -98,41 +98,41 @@ msgstr ""
 "Flatpak-resursseja ei voi käyttää ilman Flatpak-taustaosaa %1. Asenna se "
 "ensin."
 
-#: discover/DiscoverObject.cpp:333
+#: discover/DiscoverObject.cpp:334
 #, kde-format
 msgid "Could not open %1"
 msgstr "Ei voitu avata: %1"
 
-#: discover/DiscoverObject.cpp:395
+#: discover/DiscoverObject.cpp:396
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Varmista, että Snap-tuki on asennettu"
 
-#: discover/DiscoverObject.cpp:398
+#: discover/DiscoverObject.cpp:399
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr "%1: ei voida avata, koska ei löydy käytössä olevista ohjelmalähteistä."
 
-#: discover/DiscoverObject.cpp:402
+#: discover/DiscoverObject.cpp:403
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Ilmoita jakelusi paketoijille tästä ongelmasta."
 
-#: discover/DiscoverObject.cpp:405
+#: discover/DiscoverObject.cpp:406
 #, kde-format
 msgid "Report This Issue"
 msgstr "Ilmoita ongelmasta"
 
 # HUOM! Tämä on ohjelman nimi!
-#: discover/DiscoverObject.cpp:467 discover/DiscoverObject.cpp:469
+#: discover/DiscoverObject.cpp:468 discover/DiscoverObject.cpp:470
 #: discover/main.cpp:123
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:470
+#: discover/DiscoverObject.cpp:471
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

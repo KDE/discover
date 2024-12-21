@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-15 00:42+0000\n"
-"PO-Revision-Date: 2024-12-15 20:43+0530\n"
+"POT-Creation-Date: 2024-12-21 00:42+0000\n"
+"PO-Revision-Date: 2024-12-20 22:01+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -15,17 +15,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>2);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Lokalize 24.08.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: discover/DiscoverObject.cpp:181
+#: discover/DiscoverObject.cpp:182
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr "%1 डिस्कोवर् मार्गेण एप्स् संस्थापनार्थं विन्यस्तं नास्ति—केवलं एप्-एड्-ऑन्"
 
-#: discover/DiscoverObject.cpp:183
+#: discover/DiscoverObject.cpp:184
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -36,13 +36,13 @@ msgstr ""
 "अनुप्रयोगानाम् कृते डिस्कोवर् इत्यस्य उपयोगाय, <interface>समयोजननि</interface> पृष्ठे, "
 "<interface>पृष्ठभागाः लुप्ताः</interface> इत्यस्य अधः, स्वस्य इष्टमॉड्यूल् संस्थापयन्तु ।."
 
-#: discover/DiscoverObject.cpp:186
+#: discover/DiscoverObject.cpp:187
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "%1 इत्यस्मै एतत् समस्यां प्रतिवेदयन्तु"
 
-#: discover/DiscoverObject.cpp:191
+#: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -60,7 +60,7 @@ msgstr ""
 "command> संकुलप्रबन्धकस्य उपयोगेन ।<nl/><nl/> <link url='https://archlinux.org/"
 "packages/extra/x86_64/discover/'> डिस्कोवर् कृते %1 इत्यस्य पॅकेजिंग् समीक्ष्यताम्</link>"
 
-#: discover/DiscoverObject.cpp:204
+#: discover/DiscoverObject.cpp:205
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -77,17 +77,17 @@ msgstr ""
 "अत्यन्तं अनुशंसितम् ।<para>%1 परिपालकाः <command>pacman</command> इत्यस्य उपयोगेन तस्य "
 "स्थाने अनुशंसन्ति > संकुलप्रबन्धनार्थं आदेशपङ्क्तिसाधनम् ।</para>"
 
-#: discover/DiscoverObject.cpp:292
+#: discover/DiscoverObject.cpp:293
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "'%1' श्रेणीं न लब्धम् ।"
 
-#: discover/DiscoverObject.cpp:307
+#: discover/DiscoverObject.cpp:308
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "अस्तित्वहीनां सञ्चिकां '%1' उद्घाटयितुं प्रयतते।"
 
-#: discover/DiscoverObject.cpp:329
+#: discover/DiscoverObject.cpp:330
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -96,40 +96,40 @@ msgstr ""
 "फ्लैटपैक् पृष्ठभागः %1 विना फ्लैटपैक् संसाधनैः सह अन्तरक्रियां कर्तुं न शक्यते । कृपया प्रथमं "
 "संस्थापयन्तु।."
 
-#: discover/DiscoverObject.cpp:333
+#: discover/DiscoverObject.cpp:334
 #, kde-format
 msgid "Could not open %1"
 msgstr "%1 उद्घाटयितुं न शक्तवान्"
 
-#: discover/DiscoverObject.cpp:395
+#: discover/DiscoverObject.cpp:396
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "कृपया सुनिश्चितं कुर्वन्तु यत् स्नैप समर्थनं संस्थापितम् अस्ति"
 
-#: discover/DiscoverObject.cpp:398
+#: discover/DiscoverObject.cpp:399
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr "%1 उद्घाटयितुं न शक्तवान् यतः एतत् कस्मिन् अपि उपलब्धतन्त्राश्ः-भण्डारे न प्राप्तम् ।."
 
-#: discover/DiscoverObject.cpp:402
+#: discover/DiscoverObject.cpp:403
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "कृपया एतत् विषयं स्वस्य वितरणस्य संकुलकर्तृभ्यः सूचयन्तु ।."
 
-#: discover/DiscoverObject.cpp:405
+#: discover/DiscoverObject.cpp:406
 #, kde-format
 msgid "Report This Issue"
 msgstr "अस्य मुद्देः सूचनां ददातु"
 
-#: discover/DiscoverObject.cpp:467 discover/DiscoverObject.cpp:469
+#: discover/DiscoverObject.cpp:468 discover/DiscoverObject.cpp:470
 #: discover/main.cpp:123
 #, kde-format
 msgid "Discover"
 msgstr "डिस्कोवर्"
 
-#: discover/DiscoverObject.cpp:470
+#: discover/DiscoverObject.cpp:471
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -502,7 +502,7 @@ msgstr "अज्ञात"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ", ९."
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:489
 #, kde-format
@@ -515,7 +515,7 @@ msgstr[1] "अधिकं पश्यन्तु…"
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr "आयुः : १."
+msgstr "आयुः :"
 
 #: discover/qml/ApplicationPage.qml:509
 #, kde-format
@@ -1450,7 +1450,7 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr "समाप्तेः समये स्वयमेव : १."
+msgstr "समाप्तेः समये स्वयमेव :"
 
 #: discover/qml/UpdatesPage.qml:262
 #, kde-format
