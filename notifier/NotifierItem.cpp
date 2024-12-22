@@ -23,7 +23,7 @@ void NotifierItem::setupNotifierItem()
 
     connect(m_item, &KStatusNotifierItem::activateRequested, &m_notifier, [this]() {
         if (m_notifier.needsReboot()) {
-            m_notifier.promptAll();
+            m_notifier.rebootPrompt();
         } else {
             m_notifier.showDiscoverUpdates(m_item->providedToken());
         }
