@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-21 00:42+0000\n"
-"PO-Revision-Date: 2024-10-14 14:43+0300\n"
+"POT-Creation-Date: 2024-12-24 00:41+0000\n"
+"PO-Revision-Date: 2024-12-12 16:04+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -600,28 +600,25 @@ msgid "External Links"
 msgstr "Ārējās saites"
 
 #: discover/qml/ApplicationPage.qml:821
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "Lasiet projekta oficiālo dokumentāciju"
+msgstr "Lasīt dokumentāciju"
 
 #: discover/qml/ApplicationPage.qml:833
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
-msgstr "Apmeklējiet projekta vietni"
+msgstr "Apmeklēt projekta tīmekļa vietni"
 
 #: discover/qml/ApplicationPage.qml:845
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "Ziedot projektam"
 
 #: discover/qml/ApplicationPage.qml:857
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "Ziņot par kļūdu"
@@ -630,7 +627,7 @@ msgstr "Ziņot par kļūdu"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "Piedalīties un palīdzēt"
 
 #: discover/qml/ApplicationPage.qml:898
 #, kde-format
@@ -1510,17 +1507,17 @@ msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
 msgstr "Pārstartēt sistēmu, lai instalētu atjauninājumus"
 
-#: discover/qml/UpdatesPage.qml:436
+#: discover/qml/UpdatesPage.qml:441
 #, kde-format
 msgid "Installing"
 msgstr "Instalē"
 
-#: discover/qml/UpdatesPage.qml:467
+#: discover/qml/UpdatesPage.qml:472
 #, kde-format
 msgid "Update from:"
 msgstr "Atjauninājumu avots:"
 
-#: discover/qml/UpdatesPage.qml:479
+#: discover/qml/UpdatesPage.qml:484
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1528,43 +1525,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:486
+#: discover/qml/UpdatesPage.qml:491
 #, kde-format
 msgid "More Information…"
 msgstr "Vairāk informācijas…"
 
-#: discover/qml/UpdatesPage.qml:514
+#: discover/qml/UpdatesPage.qml:519
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Meklē atjauninājumus…"
 
-#: discover/qml/UpdatesPage.qml:528
+#: discover/qml/UpdatesPage.qml:533
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Atjauninājumi"
 
-#: discover/qml/UpdatesPage.qml:537
+#: discover/qml/UpdatesPage.qml:542
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Lai pabeigtu atjaunināšanu, sistēma ir jāpārstartē"
 
-#: discover/qml/UpdatesPage.qml:553 discover/qml/UpdatesPage.qml:560
-#: discover/qml/UpdatesPage.qml:567
+#: discover/qml/UpdatesPage.qml:558 discover/qml/UpdatesPage.qml:565
+#: discover/qml/UpdatesPage.qml:572
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Atjaunināta"
 
-#: discover/qml/UpdatesPage.qml:574
+#: discover/qml/UpdatesPage.qml:579
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Jāpārbauda atjauninājumi"
 
-#: discover/qml/UpdatesPage.qml:581
+#: discover/qml/UpdatesPage.qml:586
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

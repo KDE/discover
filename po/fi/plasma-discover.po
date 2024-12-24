@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-21 00:42+0000\n"
+"POT-Creation-Date: 2024-12-24 00:41+0000\n"
 "PO-Revision-Date: 2024-12-01 14:30+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1498,17 +1498,17 @@ msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
 msgstr "käynnistä automaattisesti uudelleen päivitysten asentamiseksi"
 
-#: discover/qml/UpdatesPage.qml:436
+#: discover/qml/UpdatesPage.qml:441
 #, kde-format
 msgid "Installing"
 msgstr "Asennetaan"
 
-#: discover/qml/UpdatesPage.qml:467
+#: discover/qml/UpdatesPage.qml:472
 #, kde-format
 msgid "Update from:"
 msgstr "Päivitä lähteestä:"
 
-#: discover/qml/UpdatesPage.qml:479
+#: discover/qml/UpdatesPage.qml:484
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1516,44 +1516,44 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:486
+#: discover/qml/UpdatesPage.qml:491
 #, kde-format
 msgid "More Information…"
 msgstr "Lisätietoa…"
 
-#: discover/qml/UpdatesPage.qml:514
+#: discover/qml/UpdatesPage.qml:519
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Noudetaan päivityksiä…"
 
-#: discover/qml/UpdatesPage.qml:528
+#: discover/qml/UpdatesPage.qml:533
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Päivitykset"
 
-#: discover/qml/UpdatesPage.qml:537
+#: discover/qml/UpdatesPage.qml:542
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Viimeistele päivitys käynnistämällä uudelleen"
 
 # ”Päivitetty, valmiina käyttöön” näyttää paremmalta ja tilaa on hyvin pidemmälle tekstille. Ajan tasalla oli aikaisempi.
-#: discover/qml/UpdatesPage.qml:553 discover/qml/UpdatesPage.qml:560
-#: discover/qml/UpdatesPage.qml:567
+#: discover/qml/UpdatesPage.qml:558 discover/qml/UpdatesPage.qml:565
+#: discover/qml/UpdatesPage.qml:572
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Päivitetty, valmiina käyttöön"
 
-#: discover/qml/UpdatesPage.qml:574
+#: discover/qml/UpdatesPage.qml:579
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Päivitykset tulisi tarkistaa"
 
-#: discover/qml/UpdatesPage.qml:581
+#: discover/qml/UpdatesPage.qml:586
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

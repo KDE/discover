@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-14 00:52+0000\n"
+"POT-Creation-Date: 2024-12-24 00:41+0000\n"
 "PO-Revision-Date: 2024-11-05 08:09+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -618,106 +618,112 @@ msgstr "לא ידוע"
 msgid "Failed to start '%1': %2"
 msgstr "הפעלת ‚%1’ נכשלה: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:750
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:757
 #, kde-format
 msgid "All Files"
 msgstr "כל הקבצים"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:752
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:759
 #, kde-format
 msgid "Home"
 msgstr "בית"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:754
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:761
 #, kde-format
 msgid "Downloads"
 msgstr "הורדות"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:756
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:763
 #, kde-format
 msgid "Music"
 msgstr "מוזיקה"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:831
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:421
+#, kde-format
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
 #, kde-format
 msgid "Network Access"
 msgstr "גישה לרשת"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:832
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
 #, kde-format
 msgid "Can access the internet"
 msgstr "יש גישה לאינטרנט"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
 #, kde-format
 msgid "Sound system access"
 msgstr "גישה למערכת שמע"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:842
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
 #, kde-format
 msgid "Can play audio"
 msgstr "יש אפשרות לנגן שמע"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:846
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:990
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
 #, kde-format
 msgid "Session Bus Access"
 msgstr "גישה לאפיק הפעלה"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:847
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:875
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
 "account"
 msgstr "אפשר לתקשר עם כל שאר היישומים והתהליכים שרצים בחשבון המשתמש הזה"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1002
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:880
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1030
 #, kde-format
 msgid "System Bus Access"
 msgstr "גישה לאפיק המערכת"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:853
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:881
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr "אפשר לתקשר עם כל שאר היישומים והתהליכים במערכת"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
 #, kde-format
 msgid "Remote Login Access"
 msgstr "גישת כניסה מרחוק"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:887
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "אפשר לפתוח בקשות לכניסה מרחוק באמצעות פרוטוקול SSH"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:891
 #, kde-format
 msgid "Smart Card Access"
 msgstr "גישה עם כרטיס חכם"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:892
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "אפשר להשתלב ולתקשר עם כרטיסים חכמים"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:896
 #, kde-format
 msgid "Printer Access"
 msgstr "גישה למדפסת"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "אפשר להשתלב ולתקשר עם מדפסות"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:873
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
 #, kde-format
 msgid "GPG Agent"
 msgstr "סוכן GPG"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:902
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -726,70 +732,70 @@ msgstr ""
 "מאפשר גישה לשירות הקריפטוגרפי GPG, שבדרך כלל משמש לחתימה ולקריאה של מסמכים "
 "חתומים"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:880
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:908
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "גישה לבלוטות׳"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:881
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:909
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "אפשר להשתלב ולתקשר עם התקני בלוטות׳"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:885
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:913
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "גישה למערכת ברמה נמוכה"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "אפשר לבצע קריאות מערכת ברמה נמוכה (למשל: ptrace)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:892
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:920
 #, kde-format
 msgid "Device Access"
 msgstr "גישה להתקנים"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:893
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:921
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr "אפשר לתקשר ולשלוט בהתקני חומרה מובנים או מחוברים"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "גישה למכונה וירטואלית ברמת ליבה"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:926
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr "מאפשר להריץ מערכות הפעלה אחרות כאורחות במכונות וירטואליות"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:953
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (קריאה בלבד)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:928
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:940
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:956
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:968
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (אפשר ליצור קבצים)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:949
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:959
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:977
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (קריאה וכתיבה) "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:958
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:986
 #, kde-format
 msgid "Home Folder Access"
 msgstr "גישה לתיקיית הבית"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:961
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:989
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -798,7 +804,7 @@ msgstr ""
 "אפשר לקרוא, לכתוב וליצור קבצים במקומות הבאים בתיקיית הבית שלך מבלי לבקש "
 "הרשאה קודם: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:963
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:991
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -807,7 +813,7 @@ msgstr ""
 "אפשר לקרוא ולכתוב קבצים במקומות הבאים בתיקיית הבית שלך מבלי לבקש הרשאה קודם: "
 "%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:993
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -815,7 +821,7 @@ msgid ""
 msgstr ""
 "אפשר לקרוא קבצים במקומות הבאים בתיקיית הבית שלך מבלי לבקש הרשאה קודם: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:967
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:995
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -823,12 +829,12 @@ msgid ""
 msgstr ""
 "אפשר לגשת לקבצים במקומות הבאים בתיקיית הבית שלך מבלי לבקשה הרשאה קודם: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1001
 #, kde-format
 msgid "System Folder Access"
 msgstr "גישה לתיקיית המערכת"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:975
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1003
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -836,28 +842,28 @@ msgid ""
 msgstr ""
 "אפשר לקרוא, לכתוב וליצור קובצי מערכת במקומות הבאים מבלי לבקש הרשאה קודם: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:977
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1005
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
 "permission first: %1"
 msgstr "אפשר לקרוא ולכתוב קובצי מערכת במקומות הבאים מבלי לבקש הרשאה קודם: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:979
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1007
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
 msgstr "אפשר לקרוא קובצי מערכת במקומות הבאים מבלי לבקש הרשאה קודם: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:981
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1009
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
 msgstr "אפשר לגשת לקובצי מערכת במקומות הבאים מבלי לבקש הרשאה קודם: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:992
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1020
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -866,7 +872,7 @@ msgstr ""
 "אפשר לתקשר עם יישומים ותהליכים אחרים באותה הפעלת שולחן העבודה באמצעות "
 "פרוטוקולי התקשורת הבאים: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1004
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1032
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
@@ -874,7 +880,7 @@ msgid ""
 msgstr ""
 "אפשר לתקשר עם כל היישומים ושירותים המערכת באמצעות פרוטוקולי התקשורת הבאים: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1095
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1124
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
 msgstr "היישום אומת ב־%1 כפי שהושק על ידי היוצרים שלו %2"
@@ -1134,11 +1140,6 @@ msgstr "לא ניתן למשוך את צילום המסך לרשומה %1 במנ
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "שגיאה לא מטופלת במנגנון %1. נא ליצור קשר עם הפקת ההפצה שלך."
-
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:421
-#, kde-format
-msgid "%1: %2"
-msgstr "%1: %2"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:542
 #, kde-format
