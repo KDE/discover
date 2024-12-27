@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-24 00:41+0000\n"
-"PO-Revision-Date: 2024-09-14 11:22+0200\n"
+"PO-Revision-Date: 2024-12-26 21:43+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -564,15 +564,13 @@ msgid "External Links"
 msgstr "Eksteraj ligiloj"
 
 #: discover/qml/ApplicationPage.qml:821
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "Legi la oficialan dokumentaron de la projekto"
+msgstr "Legi la dokumentaron"
 
 #: discover/qml/ApplicationPage.qml:833
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Viziti la retejon de la projekto"
@@ -581,20 +579,19 @@ msgstr "Viziti la retejon de la projekto"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "Donaci al la projekto"
 
 #: discover/qml/ApplicationPage.qml:857
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
-msgstr "Raporti Cimon"
+msgstr "Raporti cimon"
 
 #: discover/qml/ApplicationPage.qml:869
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "Komenci kontribui"
 
 #: discover/qml/ApplicationPage.qml:898
 #, kde-format
@@ -895,12 +892,12 @@ msgid "Update Issue"
 msgstr "Ĝisdatigi Aferon"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
-msgstr "Estis problemo instalante ĉi tiun ĝisdatigon. Bonvolu reprovi poste."
+msgstr ""
+"Estis problemo dum la ĝisdatiga aŭ instala procezo. Bonvolu reprovi poste."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
@@ -1511,24 +1508,3 @@ msgstr "Devus kontroli ĝisdatigojn"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tempo de lasta ĝisdatigo nekonata"
-
-#~ msgid "Documentation"
-#~ msgstr "Dokumentado"
-
-#~ msgid "Website"
-#~ msgstr "Retejo"
-
-#~ msgid "Donate"
-#~ msgstr "Doni"
-
-#~ msgid "Support and thank the developers by donating to their project"
-#~ msgstr "Subteni kaj danki la programistojn per donacado al ilia projekto"
-
-#~ msgid "Log an issue you found to help get it fixed"
-#~ msgstr "Protokolu problemon, kiun vi trovis por helpi ĝin solvi"
-
-#~ msgid "Contribute"
-#~ msgstr "Kontribuu"
-
-#~ msgid "Help the developers by coding, designing, testing, or translating"
-#~ msgstr "Helpu la programistojn per kodado, desegnado, testado aŭ tradukado"
