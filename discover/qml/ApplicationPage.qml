@@ -812,8 +812,6 @@ DiscoverPage {
                 ApplicationResourceButton {
                     id: helpButton
 
-                    Layout.fillWidth: true
-
                     visible: website.length > 0
 
                     icon: "documentation-symbolic"
@@ -824,7 +822,6 @@ DiscoverPage {
                 ApplicationResourceButton {
                     id: homepageButton
 
-                    Layout.fillWidth: true
 
                     visible: website.length > 0
 
@@ -836,8 +833,6 @@ DiscoverPage {
                 ApplicationResourceButton {
                     id: donateButton
 
-                    Layout.fillWidth: true
-
                     visible: website.length > 0
 
                     icon: "help-donate-symbolic"
@@ -848,8 +843,6 @@ DiscoverPage {
                 ApplicationResourceButton {
                     id: bugButton
 
-                    Layout.fillWidth: true
-
                     visible: website.length > 0
 
                     icon: "tools-report-bug-symbolic"
@@ -859,8 +852,6 @@ DiscoverPage {
 
                 ApplicationResourceButton {
                     id: contributeButton
-
-                    Layout.fillWidth: true
 
                     visible: website.length > 0
 

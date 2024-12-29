@@ -28,7 +28,6 @@ RowLayout {
     }
 
     Kirigami.UrlButton {
-        Layout.fillWidth: true
         visible: root.linkText
         text: root.linkText
         url: root.website
