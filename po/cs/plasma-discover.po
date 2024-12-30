@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-24 00:41+0000\n"
+"POT-Creation-Date: 2024-12-30 00:43+0000\n"
 "PO-Revision-Date: 2024-10-08 14:42+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -522,50 +522,50 @@ msgctxt "@title"
 msgid "External Links"
 msgstr "Externí odkazy"
 
-#: discover/qml/ApplicationPage.qml:821
+#: discover/qml/ApplicationPage.qml:819
 #, fuzzy, kde-format
 #| msgid "Read the project's official documentation"
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
 msgstr "Přečtěte si oficiální dokumentaci projektu"
 
-#: discover/qml/ApplicationPage.qml:833
+#: discover/qml/ApplicationPage.qml:830
 #, fuzzy, kde-format
 #| msgid "Visit the project's website"
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Přejít na stránku projektu"
 
-#: discover/qml/ApplicationPage.qml:845
+#: discover/qml/ApplicationPage.qml:840
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:857
+#: discover/qml/ApplicationPage.qml:850
 #, fuzzy, kde-format
 #| msgid "Report Bug"
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "Nahlásit chybu"
 
-#: discover/qml/ApplicationPage.qml:869
+#: discover/qml/ApplicationPage.qml:860
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:898
+#: discover/qml/ApplicationPage.qml:889
 #, kde-format
 msgid "All Licenses"
 msgstr "Všechny licence"
 
-#: discover/qml/ApplicationPage.qml:930
+#: discover/qml/ApplicationPage.qml:921
 #, kde-format
 msgid "Content Rating"
 msgstr "Hodnocení obsahu"
 
-#: discover/qml/ApplicationPage.qml:953
+#: discover/qml/ApplicationPage.qml:944
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"

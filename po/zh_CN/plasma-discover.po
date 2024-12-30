@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-24 00:41+0000\n"
+"POT-Creation-Date: 2024-12-30 00:43+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -565,47 +565,47 @@ msgctxt "@title"
 msgid "External Links"
 msgstr "外部链接"
 
-#: discover/qml/ApplicationPage.qml:821
+#: discover/qml/ApplicationPage.qml:819
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
 msgstr "阅读文档"
 
-#: discover/qml/ApplicationPage.qml:833
+#: discover/qml/ApplicationPage.qml:830
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "访问此项目的网站"
 
-#: discover/qml/ApplicationPage.qml:845
+#: discover/qml/ApplicationPage.qml:840
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
 msgstr "捐款支持"
 
-#: discover/qml/ApplicationPage.qml:857
+#: discover/qml/ApplicationPage.qml:850
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "报告问题"
 
-#: discover/qml/ApplicationPage.qml:869
+#: discover/qml/ApplicationPage.qml:860
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
 msgstr "参与贡献"
 
-#: discover/qml/ApplicationPage.qml:898
+#: discover/qml/ApplicationPage.qml:889
 #, kde-format
 msgid "All Licenses"
 msgstr "所有许可证"
 
-#: discover/qml/ApplicationPage.qml:930
+#: discover/qml/ApplicationPage.qml:921
 #, kde-format
 msgid "Content Rating"
 msgstr "内容分级"
 
-#: discover/qml/ApplicationPage.qml:953
+#: discover/qml/ApplicationPage.qml:944
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"

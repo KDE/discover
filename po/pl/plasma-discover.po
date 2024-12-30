@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-24 00:41+0000\n"
+"POT-Creation-Date: 2024-12-30 00:43+0000\n"
 "PO-Revision-Date: 2024-11-23 13:17+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -604,47 +604,47 @@ msgctxt "@title"
 msgid "External Links"
 msgstr "Zewnętrzne odnośniki"
 
-#: discover/qml/ApplicationPage.qml:821
+#: discover/qml/ApplicationPage.qml:819
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
 msgstr "Przeczytaj dokumentację"
 
-#: discover/qml/ApplicationPage.qml:833
+#: discover/qml/ApplicationPage.qml:830
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Odwiedź stronę projektu w sieci"
 
-#: discover/qml/ApplicationPage.qml:845
+#: discover/qml/ApplicationPage.qml:840
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
 msgstr "Wpłać na projekt"
 
-#: discover/qml/ApplicationPage.qml:857
+#: discover/qml/ApplicationPage.qml:850
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "Zgłoś błąd"
 
-#: discover/qml/ApplicationPage.qml:869
+#: discover/qml/ApplicationPage.qml:860
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
 msgstr "Zacznij współtworzyć"
 
-#: discover/qml/ApplicationPage.qml:898
+#: discover/qml/ApplicationPage.qml:889
 #, kde-format
 msgid "All Licenses"
 msgstr "Wszystkie licencje"
 
-#: discover/qml/ApplicationPage.qml:930
+#: discover/qml/ApplicationPage.qml:921
 #, kde-format
 msgid "Content Rating"
 msgstr "Ocena treści"
 
-#: discover/qml/ApplicationPage.qml:953
+#: discover/qml/ApplicationPage.qml:944
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"

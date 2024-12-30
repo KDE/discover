@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-24 00:41+0000\n"
-"PO-Revision-Date: 2024-08-22 22:54+0200\n"
+"PO-Revision-Date: 2024-12-29 12:45+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -892,7 +892,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1124
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
-msgstr ""
+msgstr "Apo konfirmita en %1 kiel liverata de ĝia aŭtoro %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
@@ -2107,7 +2107,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "Programaro konfirmita de %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
 #, kde-format
@@ -2564,12 +2564,12 @@ msgstr "Klaki"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:606
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "Konfirmita Eldonisto en snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:608
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "Stelita Eldonisto en snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
 #, kde-format
@@ -2735,7 +2735,3 @@ msgstr "Sistema Programaro"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Aldonaĵoj"
-
-#~ msgid "Could not find '%1' in '%2'; please make sure it's available."
-#~ msgstr ""
-#~ "Ne eblis trovi '%1' en '%2'; bonvolu certigi, ke ĝi estas disponebla."
