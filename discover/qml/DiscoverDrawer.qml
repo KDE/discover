@@ -103,12 +103,16 @@ Kirigami.GlobalDrawer {
                 }
                 drawer.currentSearchText = currentSearchText
             }
+
+            Keys.onDownPressed: featuredActionListItem.forceActiveFocus(Qt.TabFocusReason)
         }
     }
 
     topContent: [
         ActionListItem {
+            id: featuredActionListItem
             action: featuredAction
+            Keys.onUpPressed: searchField.forceActiveFocus(Qt.TabFocusReason)
         },
         ActionListItem {
             action: searchAction
@@ -122,12 +126,6 @@ Kirigami.GlobalDrawer {
             action: updateAction
             visible: enabled && drawer.wideScreen
             stateIconName: Discover.ResourcesModel.updatesCount > 0 ? "emblem-important" : ""
-
-            // Disable down navigation on the last item so we don't escape the
-            // actual list.
-            Keys.onDownPressed: event => {
-                event.accepted = true;
-            }
         },
         ActionListItem {
             action: sourcesAction

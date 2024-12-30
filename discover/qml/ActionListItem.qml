@@ -18,6 +18,7 @@ QQC2.ItemDelegate {
 
     highlighted: checked
     visible: enabled
+    activeFocusOnTab: true
 
     Keys.onEnterPressed: trigger()
     Keys.onReturnPressed: trigger()
