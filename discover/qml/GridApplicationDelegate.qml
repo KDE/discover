@@ -23,6 +23,11 @@ BasicAbstractCard {
     // would resize cells proportionally to their label text length.
     implicitWidth: 0
 
+    activeFocusOnTab: true
+    highlighted: focus
+    Accessible.name: application.name
+    Accessible.role: Accessible.Link
+
     content: RowLayout {
         anchors.fill: parent
         spacing: Kirigami.Units.largeSpacing
