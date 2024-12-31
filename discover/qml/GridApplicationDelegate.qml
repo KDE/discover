@@ -71,4 +71,13 @@ BasicAbstractCard {
     }
 
     onClicked: Navigation.openApplication(root.application)
+    onFocusChanged: {
+        if (focus) {
+            if (y < page.flickable.contentY) {
+                page.flickable.contentY = Math.max(0, y + Math.round(height / 2 - page.flickable.height / 2))
+            } else if ((y + height) > (page.flickable.contentY + page.flickable.height)) {
+                page.flickable.contentY = Math.min(page.flickable.contentHeight - page.flickable.height, y  + Math.round(height / 2 - page.flickable.height / 2))
+            }
+        }
+    }
 }
