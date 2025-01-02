@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-25 02:35+0000\n"
-"PO-Revision-Date: 2024-08-24 09:18+0200\n"
+"PO-Revision-Date: 2024-12-26 21:43+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -302,21 +302,7 @@ msgid "No ratings yet"
 msgstr "Ankoraŭ neniuj taksoj"
 
 #: discover/qml/ApplicationPage.qml:69
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. More information may be available on <link "
-#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
-#| "url='%3'>%3</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -332,32 +318,20 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"Instalu %1 nur se vi plene fidas ĝiajn aŭtorojn ĉar ĝi estas "
-"<strong>proprieta</strong>: Via libereco uzi, modifi kaj redistribui ĉi tiun "
-"aplikaĵon estas limigita, kaj ĝia fontkodo estas parte aŭ tute fermita al "
-"publika inspektado kaj plibonigo. Ĉi tio signifas, ke triaj kaj uzantoj kiel "
-"vi ne povas kontroli ĝian funkciadon, sekurecon kaj fidindecon.<nl/><nl/>La "
-"aplikaĵo povas esti tute sekura por uzi, aŭ ĝi eble agas kontraŭ vi "
-"diversmaniere — kiel rikolti viajn personajn informojn, spuri vian lokon aŭ "
-"transdoni la enhavon de viaj datumoj al iu alia. Uzu ĝin nur se vi plene "
-"fidas ĝiajn aŭtorojn. Pliaj informoj povas esti haveblaj ĉe <link "
-"url='%2'>la retejo de la aplikaĵo</link>. <nl/><nl/>Lernu pli ĉe <link "
-"url='%3'>%3</link>."
+"Instalu %1 nur se vi plene fidas ĝiajn aŭtorojn ĉar ĝi estas <emphasis "
+"strong='true'>proprieta</emphasis>: Via libereco uzi, modifi kaj redistribui "
+"ĉi tiun aplikaĵon estas limigita, kaj ĝia fontkodo estas parte aŭ tute "
+"fermita al publika inspektado kaj plibonigo. Ĉi tio signifas, ke triaj kaj "
+"uzantoj kiel vi ne povas kontroli ĝian funkciadon, sekurecon kaj fidindecon."
+"<nl/><nl/>La aplikaĵo povas esti tute sekura por uzi, aŭ ĝi eble agas "
+"kontraŭ vi diversmaniere — kiel rikolti viajn personajn informojn, spuri "
+"vian lokon aŭ transdoni la enhavon de viaj datumoj al iu alia. Uzu ĝin nur "
+"se vi plene fidas ĝiajn aŭtorojn. Pliaj informoj povas esti haveblaj ĉe "
+"<link url='%2'>la retejo de la aplikaĵo</link>. <nl/><nl/>Eksciu pli ĉe "
+"<link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is "
-#| "<strong>proprietary</strong>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. Learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -371,16 +345,16 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Instalu %1 nur se vi plene fidas ĝiajn aŭtorojn ĉar ĝi estas "
-"<strong>proprieta</strong>: Via libereco uzi, modifi kaj redistribui ĉi tiun "
-"aplikaĵon estas limigita, kaj ĝia fontkodo estas parte aŭ tute fermita al "
-"publika inspektado kaj plibonigo. Ĉi tio signifas, ke triaj kaj uzantoj kiel "
-"vi ne povas kontroli ĝian funkciadon, sekurecon kaj fidindecon, aŭ modifi "
-"kaj redistribui ĝin sen eksplicita permeso de la aŭtoroj.<nl/><nl/>La "
-"aplikaĵo povas esti tute sekura uzi, aŭ ĝi povas agas kontraŭ vi en diversaj "
-"manieroj — kiel ekzemple rikolti viajn personajn informojn, spuri vian lokon "
-"aŭ transdoni la enhavon de viaj dosieroj al iu alia. Uzu ĝin nur se vi plene "
-"fidas ĝiajn aŭtorojn. Eksciu pli ĉe <link url='%2'>%2</link>."
+"Instalu %1 nur se vi plene fidas ĝiajn aŭtorojn ĉar ĝi estas <emphasis "
+"strong='true'>proprieta</emphasis>: Via libereco uzi, modifi kaj redistribui "
+"ĉi tiun aplikaĵon estas limigita, kaj ĝia fontkodo estas parte aŭ tute "
+"fermita al publika inspektado kaj plibonigo. Ĉi tio signifas, ke triaj kaj "
+"uzantoj kiel vi ne povas kontroli ĝian funkciadon, sekurecon kaj fidindecon, "
+"aŭ modifi kaj redistribui ĝin sen eksplicita permeso de la aŭtoroj.<nl/><nl/"
+">La aplikaĵo povas esti tute sekura uzi, aŭ ĝi povas agas kontraŭ vi en "
+"diversaj manieroj — kiel ekzemple rikolti viajn personajn informojn, spuri "
+"vian lokon aŭ transdoni la enhavon de viaj dosieroj al iu alia. Uzu ĝin nur "
+"se vi plene fidas ĝiajn aŭtorojn. Eksciu pli ĉe <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:81
 #, kde-kuit-format
@@ -493,8 +467,7 @@ msgstr[0] "Permesilo:"
 msgstr[1] "Permesiloj:"
 
 #: discover/qml/ApplicationPage.qml:395
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Kion ĉi tio signifas?"
@@ -715,8 +688,7 @@ msgid "Size"
 msgstr "Grandeco"
 
 #: discover/qml/ApplicationsListPage.qml:147
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Eldondato"
 
@@ -940,12 +912,12 @@ msgid "Update Issue"
 msgstr "Ĝisdatigi Aferon"
 
 #: discover/qml/DiscoverWindow.qml:357
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
-msgstr "Estis problemo instalante ĉi tiun ĝisdatigon. Bonvolu reprovi poste."
+msgstr ""
+"Estis problemo dum la ĝisdatiga aŭ instala procezo. Bonvolu reprovi poste."
 
 #: discover/qml/DiscoverWindow.qml:393
 #, kde-format
@@ -1342,10 +1314,9 @@ msgid "Settings"
 msgstr "Agordoj"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
-msgstr "Defaŭlta fonto"
+msgstr "Defaŭlta Fonto"
 
 #: discover/qml/SourcesPage.qml:118
 #, kde-format
@@ -1353,10 +1324,9 @@ msgid "Add Source…"
 msgstr "Aldoni Fonton…"
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
-msgstr "Fari defaŭltan"
+msgstr "Fari Defaŭltan"
 
 #: discover/qml/SourcesPage.qml:248
 #, kde-format
@@ -1463,11 +1433,7 @@ msgid "Select None"
 msgstr "Elekti Neniun"
 
 #: discover/qml/UpdatesPage.qml:257
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info on the completion of updates, the action that automatically happens "
-#| "after (e.g shutdown)"
-#| msgid "On completion, automatically:"
+#, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
@@ -1487,9 +1453,7 @@ msgid "Restart"
 msgstr "Rekomenci"
 
 #: discover/qml/UpdatesPage.qml:262
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shutdown"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr "Sistemfermi"
@@ -1564,6 +1528,3 @@ msgstr "Devus kontroli ĝisdatigojn"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tempo de lasta ĝisdatigo nekonata"
-
-#~ msgid "Fetching &updates…"
-#~ msgstr "Akirante ĝisdatig&ojn…"
