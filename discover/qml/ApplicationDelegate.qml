@@ -35,8 +35,19 @@ BasicAbstractCard {
     Keys.onReturnPressed: trigger()
     onClicked: trigger()
 
+    Kirigami.ImageColors {
+        id: appImageColorExtractor
+        source: application.icon
+    }
+
+    Component.onCompleted: {
+        background.defaultColor = Qt.binding(() => Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, appImageColorExtractor.dominant, 0.1))
+    }
+
     content: Item {
         implicitHeight: Math.max(columnLayout.implicitHeight, resourceIconFrame.implicitHeight)
+
+
 
         Kirigami.Padding {
             id: resourceIconFrame
