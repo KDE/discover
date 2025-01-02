@@ -138,6 +138,7 @@ Keywords[ca@valencia]=programa;programari;botiga;repositori;paquet;afig;instal·
 Keywords[cs]=program;software;obchod;repozitář;balíček;přidat;instalovat;odinstalovat;odstranit;aktualizovat;programy;aplikace;hry;flatpak;snap;doplňky;addony;firmware;
 Keywords[de]=Programm;Software;Laden;Archiv;Paket;Installieren;Deinstallieren;Entfernen;Aktualisieren;Programme;Anwendungen;Spiele;
 Keywords[en_GB]=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;games;flatpak;snap;addons;add-ons;firmware;
+Keywords[eo]=programo;programaro;vendejo;deponejo;pakaĵo;aldoni;instali;malinstali;forigi;ĝisdatigi;aplikaĵoj;aplikaĵoj;ludoj;flatpak;snap;aldonaĵoj;aldonaĵoj;firmvaro;
 Keywords[es]=programa;software;tienda;repositorio;paquete;añadir;agregar;instalar;desinstalar;eliminar;borrar;actualizar;apps;aplicaciones;juegos;flatpak;snap;complementos;añadidos;firmware;
 Keywords[eu]=programa;softwarea;biltegia;saltokia;gordetegia;paketea;gehitu;instalatu;desinstalatu;kendu;eguneratu;appak;aplikazioak;jokoak;flatpak;snap;gehigarriak;firmwarea;
 Keywords[fi]=ohjelma;ohjelmisto;asennuslähde;repositorio;paketti;lisää;asenna;asennus;poista asennus;poista;päivitä;päivitys;sovellus;sovellukset;peli;pelit;flatpak;snap;lisäosa;lisäosat;laiteohjelma;varusohjelma;
