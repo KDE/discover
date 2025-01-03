@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-30 00:43+0000\n"
+"POT-Creation-Date: 2025-01-03 00:42+0000\n"
 "PO-Revision-Date: 2024-11-21 00:06+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -801,13 +801,13 @@ msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Hoogst gewaardeerde spellen"
 
-#: discover/qml/BrowsingPage.qml:190 discover/qml/BrowsingPage.qml:221
+#: discover/qml/BrowsingPage.qml:190 discover/qml/BrowsingPage.qml:230
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Bekijk meer"
 
-#: discover/qml/BrowsingPage.qml:201
+#: discover/qml/BrowsingPage.qml:210
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-30 00:43+0000\n"
+"POT-Creation-Date: 2025-01-03 00:42+0000\n"
 "PO-Revision-Date: 2024-11-17 21:51+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -763,13 +763,13 @@ msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "高く評価されたゲーム"
 
-#: discover/qml/BrowsingPage.qml:190 discover/qml/BrowsingPage.qml:221
+#: discover/qml/BrowsingPage.qml:190 discover/qml/BrowsingPage.qml:230
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "さらに見る"
 
-#: discover/qml/BrowsingPage.qml:201
+#: discover/qml/BrowsingPage.qml:210
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-30 00:43+0000\n"
+"POT-Creation-Date: 2025-01-03 00:42+0000\n"
 "PO-Revision-Date: 2024-12-12 16:04+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -802,13 +802,13 @@ msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Visaugstāk novērtētās spēles"
 
-#: discover/qml/BrowsingPage.qml:190 discover/qml/BrowsingPage.qml:221
+#: discover/qml/BrowsingPage.qml:190 discover/qml/BrowsingPage.qml:230
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Skatīt vairāk"
 
-#: discover/qml/BrowsingPage.qml:201
+#: discover/qml/BrowsingPage.qml:210
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
