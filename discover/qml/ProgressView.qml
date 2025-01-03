@@ -16,6 +16,9 @@ QQC2.ItemDelegate {
             Layout.leftMargin: Kirigami.Units.iconSizes.smallMedium + (LayoutMirroring.enabled ? listItem.rightPadding : listItem.leftPadding)
             Layout.rightMargin: Layout.leftMargin
             text: Discover.TransactionModel.count ? i18n("Tasks (%1%)", Discover.TransactionModel.progress) : i18n("Tasks")
+            wrapMode: Text.Wrap
+            maximumLineCount: 2
+            elide: Text.ElideRight
         }
         QQC2.ProgressBar {
             Layout.fillWidth: true
@@ -103,6 +106,8 @@ QQC2.ItemDelegate {
                             QQC2.Label {
                                 Layout.alignment: Qt.AlignVCenter
                                 Layout.fillWidth: true
+                                wrapMode: Text.Wrap
+                                maximumLineCount: 2
                                 elide: Text.ElideRight
                                 text: {
                                     const tr = delegate.model.transaction;
