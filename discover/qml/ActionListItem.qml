@@ -71,6 +71,12 @@ QQC2.ItemDelegate {
         onActivated: item.trigger()
     }
 
+    onFocusChanged: {
+        if (focus) {
+            drawer.ensureVisible(item)
+        }
+    }
+
     // Using the generic onPressed so individual instances can override
     // behaviour using Keys.on{Up,Down}Pressed
     Keys.onPressed: event => {
