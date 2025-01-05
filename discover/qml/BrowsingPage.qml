@@ -194,11 +194,7 @@ DiscoverPage {
             visible: gamesRep.count > 0 && !featuredModel.isFetching
             onFocusChanged: {
                 if (focus) {
-                    if (y < page.flickable.contentY) {
-                        page.flickable.contentY = Math.max(0, Math.round(y + height / 2 - page.flickable.height / 2))
-                    } else if ((y + height) > (page.flickable.contentY + page.flickable.height)) {
-                        page.flickable.contentY = Math.min(page.flickable.contentHeight - page.flickable.height, y  + Math.round(height / 2 - page.flickable.height / 2))
-                    }
+                    page.ensureVisible(this)
                 }
             }
         }
@@ -234,11 +230,7 @@ DiscoverPage {
             visible: devRep.count > 0 && !featuredModel.isFetching
             onFocusChanged: {
                 if (focus) {
-                    if (y < page.flickable.contentY) {
-                        page.flickable.contentY = Math.max(0, y + Math.round(height / 2 - page.flickable.height / 2))
-                    } else if ((y + height) > (page.flickable.contentY + page.flickable.height)) {
-                        page.flickable.contentY = Math.min(page.flickable.contentHeight - page.flickable.height, y  + Math.round(height / 2 - page.flickable.height / 2))
-                    }
+                    page.ensureVisible(this)
                 }
             }
         }
