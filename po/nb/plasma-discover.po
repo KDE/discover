@@ -452,7 +452,6 @@ msgstr[1] ""
 
 #: discover/qml/ApplicationPage.qml:414
 #, fuzzy, kde-format
-#| msgid "What does this mean?"
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Hva betyr dette?"
@@ -550,14 +549,12 @@ msgstr ""
 
 #: discover/qml/ApplicationPage.qml:819
 #, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
 msgstr "Les den offisielle dokumentasjonen til prosjektet"
 
 #: discover/qml/ApplicationPage.qml:830
 #, fuzzy, kde-format
-#| msgid "Visit the project's website"
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Besøk hjemmesiden til prosjektet"
@@ -570,7 +567,6 @@ msgstr ""
 
 #: discover/qml/ApplicationPage.qml:850
 #, fuzzy, kde-format
-#| msgid "Report Bug"
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "Meld fra om feil"
@@ -657,7 +653,6 @@ msgstr "Størrelse"
 
 #: discover/qml/ApplicationsListPage.qml:147
 #, fuzzy, kde-format
-#| msgid "Release Date"
 msgid "Release date"
 msgstr "Utgivelsesdato"
 
@@ -882,7 +877,6 @@ msgstr "Oppdateringsproblem"
 
 #: discover/qml/DiscoverWindow.qml:357
 #, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
@@ -1284,7 +1278,6 @@ msgstr "Innstillinger"
 
 #: discover/qml/SourcesPage.qml:110
 #, fuzzy, kde-format
-#| msgid "Default source"
 msgid "Default Source"
 msgstr "Standardkilde:"
 
@@ -1295,7 +1288,6 @@ msgstr "Legg til kilde …"
 
 #: discover/qml/SourcesPage.qml:145
 #, fuzzy, kde-format
-#| msgid "Make default"
 msgid "Make Default"
 msgstr "Gjør til  standard"
 

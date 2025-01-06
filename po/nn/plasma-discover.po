@@ -567,14 +567,12 @@ msgstr "Eksterne lenkjer"
 
 #: discover/qml/ApplicationPage.qml:819
 #, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
 msgstr "Les den offisielle dokumentasjonen til prosjektet"
 
 #: discover/qml/ApplicationPage.qml:830
 #, fuzzy, kde-format
-#| msgid "Visit the project's website"
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Besøk heimesida til prosjektet"
@@ -587,7 +585,6 @@ msgstr ""
 
 #: discover/qml/ApplicationPage.qml:850
 #, fuzzy, kde-format
-#| msgid "Report Bug"
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "Meld frå om feil"
@@ -899,7 +896,6 @@ msgstr "Oppdateringsproblem"
 
 #: discover/qml/DiscoverWindow.qml:357
 #, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
