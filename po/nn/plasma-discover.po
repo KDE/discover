@@ -916,7 +916,6 @@ msgstr "Oppdateringsproblem"
 
 #: discover/qml/DiscoverWindow.qml:357
 #, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
