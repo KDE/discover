@@ -81,6 +81,7 @@ DiscoverPage {
         maximumColumnWidth: Kirigami.Units.gridUnit * 6
 
         Kirigami.Heading {
+            id: popHeading
             // Need to undo some the row spacing of the parent layout which looks bad here
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
@@ -98,10 +99,17 @@ DiscoverPage {
                     // filter: FOSS
                 }
             }
-            delegate: GridApplicationDelegate { visible: !featuredModel.isFetching }
+            delegate: GridApplicationDelegate {
+                visible: !featuredModel.isFetching
+                count: popRep.count
+                columns: apps.columns
+                maxUp: 0
+            }
+            property int numberItemsOnLastRow: (count % apps.columns) || apps.columns
         }
 
         Kirigami.Heading {
+            id: recentlyUpdatedHeading
             Layout.topMargin: page.padding
             // Need to undo some the row spacing of the parent layout which looks bad here
             Layout.bottomMargin: -(apps.rowSpacing / 2)
@@ -115,7 +123,13 @@ DiscoverPage {
         Repeater {
             id: recentlyUpdatedRepeater
             model: recentlyUpdatedModelInstantiator.object
-            delegate: GridApplicationDelegate { visible: !featuredModel.isFetching }
+            delegate: GridApplicationDelegate {
+                numberItemsOnPreviousLastRow: ((popHeading.visible && popRep.numberItemsOnLastRow) || 0)
+                visible: !featuredModel.isFetching
+                count: recentlyUpdatedRepeater.count
+                columns: apps.columns
+            }
+            property int numberItemsOnLastRow: (count % apps.columns) || apps.columns
         }
 
         Instantiator {
@@ -145,6 +159,7 @@ DiscoverPage {
         }
 
         Kirigami.Heading {
+            id: featuredHeading
             Layout.topMargin: page.padding
             // Need to undo some the row spacing of the parent layout which looks bad here
             Layout.bottomMargin: -(apps.rowSpacing / 2)
@@ -158,10 +173,18 @@ DiscoverPage {
         Repeater {
             id: featuredRep
             model: featuredModel
-            delegate: GridApplicationDelegate { visible: !featuredModel.isFetching }
+            delegate: GridApplicationDelegate {
+                numberItemsOnPreviousLastRow: ((recentlyUpdatedHeading.visible && recentlyUpdatedRepeater.numberItemsOnLastRow) ||
+                                              (popHeading.visible && popRep.numberItemsOnLastRow) || 0)
+                count: featuredRep.count
+                columns: apps.columns
+                visible: !featuredModel.isFetching
+            }
+            property int numberItemsOnLastRow: (count % apps.columns) || apps.columns
         }
 
         Kirigami.Heading {
+            id: gamesHeading
             Layout.topMargin: page.padding
             // Need to undo some the row spacing of the parent layout which looks bad here
             Layout.bottomMargin: -(apps.rowSpacing / 2)
@@ -183,7 +206,16 @@ DiscoverPage {
                     sortOrder: Qt.DescendingOrder
                 }
             }
-            delegate: GridApplicationDelegate { visible: !featuredModel.isFetching }
+            delegate: GridApplicationDelegate {
+                visible: !featuredModel.isFetching
+                numberItemsOnPreviousLastRow: ((featuredHeading.visible && featuredRep.numberItemsOnLastRow) ||
+                                              (recentlyUpdatedHeading.visible && recentlyUpdatedRepeater.numberItemsOnLastRow ) ||
+                                              (popHeading.visible && popRep.numberItemsOnLastRow) || 0)
+                count: gamesRep.count
+                columns: apps.columns
+                maxDown: 1
+            }
+            property int numberItemsOnLastRow: (count % apps.columns) || apps.columns
         }
 
         QQC2.Button {
@@ -192,6 +224,14 @@ DiscoverPage {
             Layout.columnSpan: apps.columns
             onClicked: Navigation.openCategory(Discover.CategoryModel.findCategoryByName("Games"))
             visible: gamesRep.count > 0 && !featuredModel.isFetching
+            Keys.onUpPressed: {
+                var target = this
+                for (var i = 0; i<gamesRep.numberItemsOnLastRow; i++) {
+                    target = target.nextItemInFocusChain(false)
+                }
+                target.forceActiveFocus(Qt.TabFocusReason)
+            }
+            Keys.onDownPressed: nextItemInFocusChain(true).forceActiveFocus(Qt.TabFocusReason)
             onFocusChanged: {
                 if (focus) {
                     page.ensureVisible(this)
@@ -219,7 +259,18 @@ DiscoverPage {
                     sortOrder: Qt.DescendingOrder
                 }
             }
-            delegate: GridApplicationDelegate { visible: !featuredModel.isFetching }
+            delegate: GridApplicationDelegate {
+                visible: !featuredModel.isFetching
+                numberItemsOnPreviousLastRow: ((gamesHeading.visible && gamesRep.numberItemsOnLastRow) ||
+                                              (featuredHeading.visible && featuredRep.numberItemsOnLastRow) ||
+                                              (recentlyUpdatedHeading.visible && recentlyUpdatedRepeater.numberItemsOnLastRow) ||
+                                              (popHeading.visible && popRep.numberItemsOnLastRow) || 0)
+                count: devRep.count
+                columns: apps.columns
+                maxUp: 1
+                maxDown: 1
+            }
+            property int numberItemsOnLastRow: (count % apps.columns) || apps.columns
         }
 
         QQC2.Button {
@@ -228,6 +279,13 @@ DiscoverPage {
             Layout.columnSpan: apps.columns
             onClicked: Navigation.openCategory(Discover.CategoryModel.findCategoryByName("Developer Tools"))
             visible: devRep.count > 0 && !featuredModel.isFetching
+            Keys.onUpPressed: {
+                var target = this
+                for (var i = 0; i<devRep.numberItemsOnLastRow; i++) {
+                    target = target.nextItemInFocusChain(false)
+                }
+                target.forceActiveFocus(Qt.TabFocusReason)
+            }
             onFocusChanged: {
                 if (focus) {
                     page.ensureVisible(this)

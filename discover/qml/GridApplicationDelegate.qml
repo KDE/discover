@@ -16,6 +16,13 @@ BasicAbstractCard {
     id: root
 
     required property Discover.AbstractResource application
+    required property int index
+    required property int count
+
+    property int numberItemsOnPreviousLastRow: 0
+    property int columns: 2
+    property int maxUp: columns*2
+    property int maxDown: columns*2
 
     showClickFeedback: true
 
@@ -27,6 +34,46 @@ BasicAbstractCard {
     highlighted: focus
     Accessible.name: application.name
     Accessible.role: Accessible.Link
+    Keys.onPressed: (event) => {
+        if (((Qt.application.layoutDirection == Qt.LeftToRight && event.key == Qt.Key_Left) ||
+             (Qt.application.layoutDirection == Qt.RightToLeft && event.key == Qt.Key_Right)) &&
+             (index % columns > 0)){
+            nextItemInFocusChain(false).forceActiveFocus()
+            event.accepted = true
+        } else if (((Qt.application.layoutDirection == Qt.LeftToRight && event.key == Qt.Key_Right) ||
+                   (Qt.application.layoutDirection == Qt.RightToLeft && event.key == Qt.Key_Left))  &&
+                   (index % columns != columns -1) && (index +1 != count)) {
+            nextItemInFocusChain(true).forceActiveFocus()
+            event.accepted = true
+        }
+    }
+    Keys.onUpPressed: {
+        var target = this
+        var extramoves = 0
+        if (index < columns) {
+            extramoves = (index < numberItemsOnPreviousLastRow)
+                         ? numberItemsOnPreviousLastRow - columns
+                         : numberItemsOnPreviousLastRow
+        }
+
+        for (var i = 0; i<Math.min(columns+extramoves,index+maxUp); i++) {
+            target = target.nextItemInFocusChain(false)
+        }
+        target.forceActiveFocus(Qt.TabFocusReason)
+    }
+    Keys.onDownPressed: {
+        var target = this
+        var extramoves = 0
+        if (index + columns >= count) {
+            extramoves = ((index % columns) < (count % columns) )
+                         ? (count % columns) - columns // directly up
+                         : (count % columns) // skip a line
+        }
+        for (var i = 0; i<Math.min(columns+extramoves, count - index + maxDown -1); i++) {
+            target = target.nextItemInFocusChain(true)
+        }
+        target.forceActiveFocus(Qt.TabFocusReason)
+    }
 
     content: RowLayout {
         anchors.fill: parent
