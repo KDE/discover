@@ -658,6 +658,7 @@ DiscoverPage {
             // sense to be selectable
             Kirigami.SelectableLabel {
                 Layout.fillWidth: true
+                Layout.preferredWidth: contentWidth
                 // Not relevant to the offline upgrade use case because we
                 // display the info in the header instead
                 visible: !appInfo.isOfflineUpgrade
@@ -675,6 +676,7 @@ DiscoverPage {
             Kirigami.SelectableLabel {
                 objectName: "applicationDescription" // for appium tests
                 Layout.fillWidth: true
+                Layout.preferredWidth: contentWidth
                 wrapMode: Text.WordWrap
                 text: appInfo.application.longDescription
                 textFormat: TextEdit.RichText
