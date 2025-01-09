@@ -69,6 +69,10 @@ DiscoverPage {
         }
     }
 
+    // To let the content item touch the top and bottom
+    topPadding: 0
+    bottomPadding: 0
+
     signal clearSearch()
 
     Kirigami.Theme.colorSet: Kirigami.Theme.Window
@@ -156,7 +160,7 @@ DiscoverPage {
         }
     ]
 
-    Kirigami.CardsListView {
+    flickable: Kirigami.CardsListView {
         id: appsView
         footerPositioning: ListView.InlineFooter
         activeFocusOnTab: true
