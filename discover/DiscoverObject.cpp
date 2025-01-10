@@ -9,8 +9,8 @@
 #include "DiscoverBackendsFactory.h"
 #include "DiscoverDeclarativePlugin.h"
 #include "FeaturedModel.h"
+#include "LimitedRowCountProxyModel.h"
 #include "OdrsAppsModel.h"
-#include "PaginateModel.h"
 #include "UnityLauncher.h"
 #include <Transaction/TransactionModel.h>
 
@@ -103,7 +103,7 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
     const auto uriApp = "org.kde.discover.app";
 
     qmlRegisterType<UnityLauncher>(uriApp, 1, 0, "UnityLauncher");
-    qmlRegisterType<PaginateModel>(uriApp, 1, 0, "PaginateModel");
+    qmlRegisterType<LimitedRowCountProxyModel>(uriApp, 1, 0, "LimitedRowCountProxyModel");
     qmlRegisterType<FeaturedModel>(uriApp, 1, 0, "FeaturedModel");
     qmlRegisterType<OdrsAppsModel>(uriApp, 1, 0, "OdrsAppsModel");
     qmlRegisterType<PowerManagementInterface>(uriApp, 1, 0, "PowerManagementInterface");
