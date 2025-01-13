@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Marce Villarino <mvillarino@kde-espana.es>, 2013.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015, 2016.
-# SPDX-FileCopyrightText: 2023, 2024 Adrián Chaves (Gallaecio)
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Adrián Chaves (Gallaecio)
 #
 # Miguel Branco, 2012, 2013.
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-10 01:59+0000\n"
-"PO-Revision-Date: 2024-12-13 23:24+0100\n"
+"PO-Revision-Date: 2025-01-12 17:02+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -75,11 +75,11 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
-"A función de xestión de paquetes de %1 está incompleta, pode que experimente "
-"certos problemas. Non informe de fallos a KDE. Recoméndase encarecidamente "
-"desinstalar o paquete <resource>packagekit-qt6</resource> e usar só Discover "
+"A compatibilidade con paquetes de %1 está incompleta, pode que teña "
+"problemas. Non informe de fallos a KDE. Recoméndase encarecidamente "
+"desinstalar o paquete <resource>packagekit-qt6</resource> e usar Discover só "
 "para xestionar paquetes de Flatpak, paquetes de Snap e complementos.<para>O "
-"equipo de mantemento de %1 recomendaron usar mellor a ferramenta da liña de "
+"equipo de mantemento de %1 recomendou usar mellor a ferramenta da liña de "
 "ordes <command>pacman</command> para xestionar paquetes.</para>"
 
 #: discover/DiscoverObject.cpp:293
