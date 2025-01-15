@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-10 09:29+0000\n"
+"POT-Creation-Date: 2025-01-15 00:42+0000\n"
 "PO-Revision-Date: 2024-10-28 19:13\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -791,37 +791,37 @@ msgstr "Каталог праграмы"
 msgid "Unable to load applications"
 msgstr "Не ўдалося загрузіць праграмы"
 
-#: discover/qml/BrowsingPage.qml:88
+#: discover/qml/BrowsingPage.qml:89
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Найбольш папулярныя"
 
-#: discover/qml/BrowsingPage.qml:110
+#: discover/qml/BrowsingPage.qml:118
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "Нядаўна апублікаваныя і нядаўна абноўленыя"
 
-#: discover/qml/BrowsingPage.qml:153
+#: discover/qml/BrowsingPage.qml:168
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Выбар рэдакцыі"
 
-#: discover/qml/BrowsingPage.qml:170
+#: discover/qml/BrowsingPage.qml:193
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Гульні з самым высокім рэйтынгам"
 
-#: discover/qml/BrowsingPage.qml:190 discover/qml/BrowsingPage.qml:230
+#: discover/qml/BrowsingPage.qml:222 discover/qml/BrowsingPage.qml:277
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Паказаць яшчэ"
 
-#: discover/qml/BrowsingPage.qml:210
+#: discover/qml/BrowsingPage.qml:246
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

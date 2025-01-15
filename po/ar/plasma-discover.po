@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-10 09:29+0000\n"
+"POT-Creation-Date: 2025-01-15 00:42+0000\n"
 "PO-Revision-Date: 2024-11-28 07:54+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -776,37 +776,37 @@ msgstr "الصفحة الأولى"
 msgid "Unable to load applications"
 msgstr "لم يتمكن من تحميل التطبيقات"
 
-#: discover/qml/BrowsingPage.qml:88
+#: discover/qml/BrowsingPage.qml:89
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "الأكثر شعبيّة"
 
-#: discover/qml/BrowsingPage.qml:110
+#: discover/qml/BrowsingPage.qml:118
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "المنشور حديثا و المحدث قريبا"
 
-#: discover/qml/BrowsingPage.qml:153
+#: discover/qml/BrowsingPage.qml:168
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "اختيار المحررين"
 
-#: discover/qml/BrowsingPage.qml:170
+#: discover/qml/BrowsingPage.qml:193
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "الألعاب الأعلى تقييماً"
 
-#: discover/qml/BrowsingPage.qml:190 discover/qml/BrowsingPage.qml:230
+#: discover/qml/BrowsingPage.qml:222 discover/qml/BrowsingPage.qml:277
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "المزيد"
 
-#: discover/qml/BrowsingPage.qml:210
+#: discover/qml/BrowsingPage.qml:246
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"

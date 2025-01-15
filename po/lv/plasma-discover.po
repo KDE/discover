@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-10 09:29+0000\n"
+"POT-Creation-Date: 2025-01-15 00:42+0000\n"
 "PO-Revision-Date: 2024-12-12 16:04+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -778,37 +778,37 @@ msgstr "Mājas"
 msgid "Unable to load applications"
 msgstr "Neizdodas ielādēt programmas"
 
-#: discover/qml/BrowsingPage.qml:88
+#: discover/qml/BrowsingPage.qml:89
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Populārākās"
 
-#: discover/qml/BrowsingPage.qml:110
+#: discover/qml/BrowsingPage.qml:118
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "No jauna publicētas un nesen atjauninātas"
 
-#: discover/qml/BrowsingPage.qml:153
+#: discover/qml/BrowsingPage.qml:168
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Redaktora izvēle"
 
-#: discover/qml/BrowsingPage.qml:170
+#: discover/qml/BrowsingPage.qml:193
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Visaugstāk novērtētās spēles"
 
-#: discover/qml/BrowsingPage.qml:190 discover/qml/BrowsingPage.qml:230
+#: discover/qml/BrowsingPage.qml:222 discover/qml/BrowsingPage.qml:277
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Skatīt vairāk"
 
-#: discover/qml/BrowsingPage.qml:210
+#: discover/qml/BrowsingPage.qml:246
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
