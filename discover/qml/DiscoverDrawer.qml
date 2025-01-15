@@ -182,6 +182,7 @@ Kirigami.GlobalDrawer {
             enabled: (currentSearchText.length === 0
                       || (category?.contains(window?.leftPage?.model?.subcategories) ?? false))
 
+            visible: category?.visible
             onTriggered: {
                 if (!window.leftPage.canNavigate) {
                     Navigation.openCategory(category, currentSearchText)

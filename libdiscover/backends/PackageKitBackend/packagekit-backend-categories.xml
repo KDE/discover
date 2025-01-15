@@ -556,6 +556,7 @@
     <Name>Plasma Addons</Name>
     <Icon>plasma</Icon>
     <Addons />
+    <OnlyShowIn>KDE</OnlyShowIn>
 
     <Include>
         <Or>

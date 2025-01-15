@@ -148,6 +148,20 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     setName(fileName);
     setObjectName(knsrc);
 
+    static const QSet<QStringView> knsrcPlasma = {
+        u"aurorae.knsrc",         u"icons.knsrc",        u"kfontinst.knsrc",          u"lookandfeel.knsrc", u"plasma-themes.knsrc",
+        u"plasmoids.knsrc",       u"wallpaper.knsrc",    u"wallpaper-mobile.knsrc",   u"xcursor.knsrc",     u"cgcgtk3.knsrc",
+        u"cgcicon.knsrc",         u"cgctheme.knsrc",     u"kwinswitcher.knsrc",       u"kwineffect.knsrc",  u"kwinscripts.knsrc",
+        u"comic.knsrc",           u"colorschemes.knsrc", u"emoticons.knsrc",          u"plymouth.knsrc",    u"sddmtheme.knsrc",
+        u"wallpaperplugin.knsrc", u"ksplash.knsrc",      u"window-decorations.knsrc",
+    };
+    const bool isPlasmaCategory = knsrcPlasma.contains(fileName);
+    static const bool weAreOnPlasma = qgetenv("XDG_CURRENT_DESKTOP") == "KDE";
+    if (isPlasmaCategory && !weAreOnPlasma) {
+        markInvalid(QStringLiteral("Skipping Plasma categories outside of Plasma."));
+        return;
+    }
+
     const KConfig conf(m_name, KConfig::SimpleConfig);
     const bool hasVersionlessGrp = conf.hasGroup(u"KNewStuff"_s);
     if (!conf.hasGroup(u"KNewStuff3"_s) && !hasVersionlessGrp) {
@@ -251,27 +265,11 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
         }
         m_engine->setTagFilter(tagFilter);
     } else {
-        static const QSet<QString> knsrcPlasma = {
-            QStringLiteral("aurorae.knsrc"),       QStringLiteral("icons.knsrc"),
-            QStringLiteral("kfontinst.knsrc"),     QStringLiteral("lookandfeel.knsrc"),
-            QStringLiteral("plasma-themes.knsrc"), QStringLiteral("plasmoids.knsrc"),
-            QStringLiteral("wallpaper.knsrc"),     QStringLiteral("wallpaper-mobile.knsrc"),
-            QStringLiteral("xcursor.knsrc"),
-
-            QStringLiteral("cgcgtk3.knsrc"),       QStringLiteral("cgcicon.knsrc"),
-            QStringLiteral("cgctheme.knsrc"), // GTK integration
-            QStringLiteral("kwinswitcher.knsrc"),  QStringLiteral("kwineffect.knsrc"),
-            QStringLiteral("kwinscripts.knsrc"), // KWin
-            QStringLiteral("comic.knsrc"),         QStringLiteral("colorschemes.knsrc"),
-            QStringLiteral("emoticons.knsrc"),     QStringLiteral("plymouth.knsrc"),
-            QStringLiteral("sddmtheme.knsrc"),     QStringLiteral("wallpaperplugin.knsrc"),
-            QStringLiteral("ksplash.knsrc"),       QStringLiteral("window-decorations.knsrc"),
-        };
-        const auto iconName = knsrcPlasma.contains(fileName) ? QStringLiteral("plasma") : QStringLiteral("applications-other");
+        const auto iconName = isPlasmaCategory ? QStringLiteral("plasma") : QStringLiteral("applications-other");
         auto actualCategory = new Category(m_displayName, iconName, filter, backendName, categories, true);
         actualCategory->setParent(this);
 
-        const auto topLevelName = knsrcPlasma.contains(fileName) ? i18n("Plasma Addons") : i18n("Application Addons");
+        const auto topLevelName = isPlasmaCategory ? i18n("Plasma Addons") : i18n("Application Addons");
         auto addonsCategory = new Category(topLevelName, iconName, filter, backendName, {actualCategory}, true);
         m_rootCategories = {addonsCategory};
     }

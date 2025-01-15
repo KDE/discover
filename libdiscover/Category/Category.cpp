@@ -109,6 +109,8 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml, Localizatio
             m_isAddons = true;
             m_priority = 5;
             xml->readNext();
+        } else if (xml->name() == QLatin1String("OnlyShowIn")) {
+            m_visible = qEnvironmentVariable("XDG_CURRENT_DESKTOP") == xml->readElementText();
         } else if (xml->name() == QLatin1String("Icon")) {
             m_iconString = xml->readElementText();
         } else if (xml->name() == QLatin1String("Include") || xml->name() == QLatin1String("Categories")) {

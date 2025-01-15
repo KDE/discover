@@ -53,6 +53,7 @@ public:
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(QObject *parent READ parent CONSTANT)
     Q_PROPERTY(QVariantList subcategories READ subCategoriesVariant NOTIFY subCategoriesChanged)
+    Q_PROPERTY(bool visible READ isVisible CONSTANT)
 
     // Whether to apply localization during parsing.
     enum class Localization {
@@ -101,6 +102,17 @@ public:
     }
     bool matchesCategoryName(const QString &name) const;
 
+    /**
+     * @returns whether the category ought to be listed.
+     *
+     * It can be disabled passing <OnlyShowIn> with a vale differing from
+     * XDG_CURRENT_DESKTOP environment variable.
+     */
+    bool isVisible() const
+    {
+        return m_visible;
+    }
+
     Q_SCRIPTABLE bool contains(Category *cat) const;
     Q_SCRIPTABLE bool contains(const QVariantList &cats) const;
 
@@ -131,4 +143,5 @@ private:
     bool m_isAddons = false;
     qint8 m_priority = 0;
     QTimer *m_subCategoriesChanged;
+    bool m_visible = true;
 };
