@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-24 00:41+0000\n"
+"POT-Creation-Date: 2025-01-16 00:42+0000\n"
 "PO-Revision-Date: 2024-02-09 22:21+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -28,7 +28,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ryuichi_ya220@outlook.jp"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:106
+#: libdiscover/appstream/AppStreamUtils.cpp:107
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -39,12 +39,12 @@ msgstr "ryuichi_ya220@outlook.jp"
 msgid "Unknown"
 msgstr "不明"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:108
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #, kde-format
 msgid "Proprietary"
 msgstr "プロプライエタリ"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:112
+#: libdiscover/appstream/AppStreamUtils.cpp:113
 #, kde-format
 msgid "Public Domain"
 msgstr "パブリックドメイン"
@@ -553,34 +553,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "システム設定"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:140
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (ユーザ)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:734
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:735
 #, kde-format
 msgid "Local bundle"
 msgstr "ローカルパッケージ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:824
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1897
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:826
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正な AppStream の URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1971
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2004
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "ソース '%1' の追加に失敗しました: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2093
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2126
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Flatpak のソースがありません"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2097
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "ソース \"%1\" を読み込めませんでした"
@@ -1208,12 +1208,12 @@ msgstr ""
 "あなたのオペレーティングシステムのサポートは %1 に終了しました。サポートされ"
 "ているバージョンへの更新を検討してください。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:931
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:933
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1'を削除できません。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1026
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1226,20 +1226,20 @@ msgstr ""
 "この新しいバージョンに更新する前に、すべての利用可能な更新を適用してシステム"
 "を再起動する必要があります。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1035
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "今すぐ更新"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1058
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:378
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 が利用可能になりました。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1182
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1184
 #, kde-format
 msgctxt "@info"
 msgid ""

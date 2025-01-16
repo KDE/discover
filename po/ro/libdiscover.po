@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-24 00:41+0000\n"
+"POT-Creation-Date: 2025-01-16 00:42+0000\n"
 "PO-Revision-Date: 2024-06-08 16:05+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -28,7 +28,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sergiu@cip.md"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:106
+#: libdiscover/appstream/AppStreamUtils.cpp:107
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -39,12 +39,12 @@ msgstr "sergiu@cip.md"
 msgid "Unknown"
 msgstr "Necunoscut"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:108
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #, kde-format
 msgid "Proprietary"
 msgstr "Proprietar"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:112
+#: libdiscover/appstream/AppStreamUtils.cpp:113
 #, kde-format
 msgid "Public Domain"
 msgstr "Domeniu public"
@@ -555,34 +555,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "Configurări de sistem"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:140
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (utilizator)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:734
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:735
 #, kde-format
 msgid "Local bundle"
 msgstr "Pachet local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:824
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1897
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:826
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL appstream eronat „%1”"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1971
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2004
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Adăugarea sursei „%1” a eșuat: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2093
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2126
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Nu sunt surse Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2097
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Încărcarea sursei „%1” a eșuat"
@@ -1226,12 +1226,12 @@ msgstr ""
 "Sistemul acesta de operare a rămas fără suport pe %1. Luați în calcul "
 "înnoirea la o versiune susținută."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:931
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:933
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nu se poate elimina „%1”"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1026
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1244,20 +1244,20 @@ msgstr ""
 "Pentru a putea înnoi la noua versiune, asigurați-vă că ați aplicat toate "
 "actualizările disponibile, apoi reporniți sistemul."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1035
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Înnoiește acum"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1058
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:378
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 e disponibil acum."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1182
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1184
 #, kde-format
 msgctxt "@info"
 msgid ""

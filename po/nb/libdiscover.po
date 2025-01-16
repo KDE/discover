@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-24 00:41+0000\n"
+"POT-Creation-Date: 2025-01-16 00:42+0000\n"
 "PO-Revision-Date: 2023-02-17 08:42+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -30,7 +30,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "jieriksen@runbox.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:106
+#: libdiscover/appstream/AppStreamUtils.cpp:107
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -41,12 +41,12 @@ msgstr "jieriksen@runbox.com"
 msgid "Unknown"
 msgstr "Ukjent"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:108
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #, kde-format
 msgid "Proprietary"
 msgstr "Proprietær"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:112
+#: libdiscover/appstream/AppStreamUtils.cpp:113
 #, kde-format
 msgid "Public Domain"
 msgstr "Public Domain"
@@ -554,34 +554,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "Systeminnstillinger"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:140
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (bruker)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:734
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:735
 #, kde-format
 msgid "Local bundle"
 msgstr "Lokal samling"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:824
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1897
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:826
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Ugyldig appstream-adresse «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1971
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2004
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Klarte ikke legge til kilde «%1»: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2093
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2126
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Det finnes ingen Flatpak-kilder."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2097
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Klarte ikke laste kilden «%1»"
@@ -1226,12 +1226,12 @@ msgstr ""
 "Operativsystemet ditt avsluttet støtte på %1. Vurder å oppgradere til et "
 "støttet versjon."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:931
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:933
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Kan ikke fjerne «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1026
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
 #, fuzzy, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1244,20 +1244,20 @@ msgstr ""
 "For å kunne oppdatere til den nye versjonen, installer alle utestående "
 "oppdateringer og start systemet på nytt."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1035
 #, fuzzy, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Oppgrader til %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1058
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:378
 #, fuzzy, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "Pakkebrønn ikke tilgjengelig"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1182
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1184
 #, kde-format
 msgctxt "@info"
 msgid ""

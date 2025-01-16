@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-24 00:41+0000\n"
+"POT-Creation-Date: 2025-01-16 00:42+0000\n"
 "PO-Revision-Date: 2024-06-28 11:29+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -28,7 +28,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "gudmundure@gmail.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:106
+#: libdiscover/appstream/AppStreamUtils.cpp:107
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -39,12 +39,12 @@ msgstr "gudmundure@gmail.com"
 msgid "Unknown"
 msgstr "Óþekkt"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:108
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #, kde-format
 msgid "Proprietary"
 msgstr "Einkaleyfisháð"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:112
+#: libdiscover/appstream/AppStreamUtils.cpp:113
 #, kde-format
 msgid "Public Domain"
 msgstr "Opið öllum"
@@ -553,34 +553,34 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "Kerfisstillingar"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:140
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (notandi)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:734
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:735
 #, kde-format
 msgid "Local bundle"
 msgstr "Staðbundinn forritsvöndull"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:824
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1897
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:826
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Gölluð appstream-slóð '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1971
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2004
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Mistókst að bæta við slóð '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2093
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2126
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Engar Flatpak-slóðir tiltækar."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2097
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Mistókst að hlaða slóðinni \"%1\""
@@ -1220,12 +1220,12 @@ msgstr ""
 "Stýrikerfið þitt hætti stuðningi við %1. Þú ættir að íhuga að uppfæra í nýja "
 "studda útgáfu."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:931
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:933
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Get ekki fjarlægt '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1026
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1238,20 +1238,20 @@ msgstr ""
 "Til að hægt sé að uppfæra í nýju útgáfuna skaltu setja upp allar tiltækar "
 "uppfærslur og endurræsa svo tölvuna."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1035
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Uppfæra núna í nýja útgáfu"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1058
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:378
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 er ekki tiltækt."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1182
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1184
 #, kde-format
 msgctxt "@info"
 msgid ""

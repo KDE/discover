@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-24 00:41+0000\n"
+"POT-Creation-Date: 2025-01-16 00:42+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -33,7 +33,7 @@ msgid "Your emails"
 msgstr ""
 
 # >> @item unknown licence
-#: libdiscover/appstream/AppStreamUtils.cpp:106
+#: libdiscover/appstream/AppStreamUtils.cpp:107
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -44,12 +44,12 @@ msgstr ""
 msgid "Unknown"
 msgstr "непозната"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:108
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #, kde-format
 msgid "Proprietary"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:112
+#: libdiscover/appstream/AppStreamUtils.cpp:113
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Publishing"
@@ -570,7 +570,7 @@ msgctxt "Category"
 msgid "System Settings"
 msgstr "Систем и поставке|/|$[својства лок 'Систему и поставкама']"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:140
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, fuzzy, kde-format
 #| msgctxt "description (url)"
 #| msgid "%1 (%2)"
@@ -578,30 +578,30 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:734
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:735
 #, kde-format
 msgid "Local bundle"
 msgstr "Локална свеза"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:824
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1897
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:826
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Лош апстрим УРЛ ‘%1’"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1971
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2004
 #, fuzzy, kde-format
 #| msgid "Could not add the source %1"
 msgid "Failed to add source '%1': %2"
 msgstr "Не могу да додам извор %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2093
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2126
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
 # >! Plurals.
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2097
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 packages\n"
@@ -1222,13 +1222,13 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:931
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:933
 #, fuzzy, kde-format
 #| msgid "Cannot remove system package"
 msgid "Cannot remove '%1'"
 msgstr "Не могу да уклоним системски пакет"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1024
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1026
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1238,14 +1238,14 @@ msgid ""
 "updates, and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1035
 #, fuzzy, kde-format
 #| msgid "Upgradeable"
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "надоградиво"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1056
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1058
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:378
 #, fuzzy, kde-format
 #| msgid "Repo not available"
@@ -1253,7 +1253,7 @@ msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "Ризница није доступна"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1182
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1184
 #, kde-format
 msgctxt "@info"
 msgid ""
