@@ -774,7 +774,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         });
     } else {
         return deferredResultStream(u"PackageKitStream-search"_s, [this, filter = filter](PKResultsStream *stream) {
-            auto loadComponents = [](const auto &filter, const auto &appdata) {
+            auto loadComponents = [](const auto &filter, const auto &appdata) -> QFuture<AppStream::ComponentBox> {
                 QFuture<AppStream::ComponentBox> components;
                 if (!filter.search.isEmpty()) {
                     components = appdata->search(filter.search);
@@ -785,7 +785,12 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
                 }
                 return components;
             };
-            loadComponents(filter, m_appdata).then([this, stream, filter](const QFuture<AppStream::ComponentBox> &futureComponents) {
+
+            auto watcher = new QFutureWatcher<AppStream::ComponentBox>();
+            auto futureComponents = loadComponents(filter, m_appdata);
+            watcher->setFuture(futureComponents);
+            connect(watcher, &QFutureWatcher<AppStream::ComponentBox>::finished, watcher, &QObject::deleteLater);
+            connect(watcher, &QFutureWatcher<AppStream::ComponentBox>::finished, stream, [this, stream, filter, futureComponents]() {
                 QSet<QString> ids;
                 AppStream::ComponentBox components = futureComponents.result();
                 kFilterInPlace<AppStream::ComponentBox>(components, [&ids](const AppStream::Component &component) {
