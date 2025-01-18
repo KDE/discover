@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-16 00:42+0000\n"
+"POT-Creation-Date: 2025-01-18 00:42+0000\n"
 "PO-Revision-Date: 2023-01-09 18:43+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -571,7 +571,7 @@ msgid "Local bundle"
 msgstr "Grupo local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1897
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:826
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:831
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL do AppStream inválido '%1'"
@@ -643,7 +643,7 @@ msgid "Music"
 msgstr "Música"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:421
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:419
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1113,32 +1113,32 @@ msgstr ""
 "Questão não suportada:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:172
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:186
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "A infra-estrutura %1 demorou demasiado tempo na sua inicialização"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:228
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:242
 #, kde-format
 msgid "Applications"
 msgstr "Aplicações"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:272
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Extensões do Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:272
 #, kde-format
 msgid "Application Addons"
 msgstr "Extensões das Aplicações"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:360
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Erro de rede na infra-estrutura %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1147,14 +1147,14 @@ msgstr ""
 "Foram enviados demasiados pedidos ao servidor para a infra-estrutura %1. Por "
 "favor, tente de novo daqui a uns minutos."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:372
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:383
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:370
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:376
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:381
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "A infra-estrutura %1 é inválida; contacte o seu distribuidor."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1167,19 +1167,19 @@ msgstr ""
 "mais rigoroso. O erro devolvido foi:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:412
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:410
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Não foi possível obter a imagem do elemento %1 na infra-estrutura %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:414
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Ocorreu um erro desconhecido na infra-estrutura %1. Contacte o seu "
 "distribuidor."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:542
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:540
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "URI Inválido do KNewStuff: %1"
@@ -1206,13 +1206,13 @@ msgctxt "Category"
 msgid "Plasma Addons"
 msgstr "Extensões do Plasma"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:567
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "Elementos do Plasma"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:579
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:580
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"
@@ -1241,12 +1241,12 @@ msgstr ""
 "O suporte para o seu sistema operativo terminou a %1. Pense em actualizar "
 "para uma versão suportada."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:933
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:938
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Não é possível remover o '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1026
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1031
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
 #, fuzzy, kde-format
 #| msgid ""
@@ -1263,14 +1263,14 @@ msgstr ""
 "Para poder actualizar para esta nova versão, certifique-se que aplica todas "
 "as actualizações pendentes e reinicie o seu sistema."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1035
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
 #, fuzzy, kde-format
 #| msgid "Upgrade to %1 %2"
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Actualizar para o %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1058
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1063
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:378
 #, fuzzy, kde-format
 #| msgid "Repo not available"
@@ -1278,7 +1278,7 @@ msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "O repositório não está disponível"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1184
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1189
 #, kde-format
 msgctxt "@info"
 msgid ""

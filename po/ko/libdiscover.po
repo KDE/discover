@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-16 00:42+0000\n"
+"POT-Creation-Date: 2025-01-18 00:42+0000\n"
 "PO-Revision-Date: 2024-11-29 01:09+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -565,7 +565,7 @@ msgid "Local bundle"
 msgstr "로컬 번들"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1897
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:826
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:831
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "잘못된 AppStream URL '%1'"
@@ -636,7 +636,7 @@ msgid "Music"
 msgstr "음악"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:421
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:419
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1075,32 +1075,32 @@ msgstr ""
 "지원하지 않는 질의:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:172
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:186
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "%1 백엔드 초기화에 시간이 너무 오래 걸림"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:228
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:242
 #, kde-format
 msgid "Applications"
 msgstr "앱"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:272
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma 부가 기능"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:272
 #, kde-format
 msgid "Application Addons"
 msgstr "앱 부가 기능"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:360
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "%1 백엔드 네트워크 오류: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1109,14 +1109,14 @@ msgstr ""
 "%1 백엔드에서 서버에 너무 많은 요청을 보냈습니다. 잠시 후에 다시 시도하십시"
 "오."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:372
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:383
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:370
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:376
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:381
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "%1 백엔드가 잘못되었습니다. 배포판에 문의하십시오."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1128,18 +1128,18 @@ msgstr ""
 "이 작업을 다시 수행할 수 있습니다. 보고된 오류는 다음과 같습니다:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:412
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:410
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "%2 백엔드의 항목 %1의 스크린샷을 가져올 수 없음"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:414
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "%1 백엔드에서 처리할 수 없는 오류가 발생했습니다. 배포판에 문의하십시오."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:542
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:540
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "잘못된 KNewStuff URI: %1"
@@ -1166,13 +1166,13 @@ msgctxt "Category"
 msgid "Plasma Addons"
 msgstr "Plasma 부가 기능"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:567
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "Plasma 위젯"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:579
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:580
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"
@@ -1199,12 +1199,12 @@ msgstr ""
 "운영 체제의 지원이 %1에 끝났습니다. 지원 중인 버전으로 업그레이드하기를 추천"
 "합니다."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:933
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:938
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1'을(를) 삭제할 수 없음"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1026
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1031
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1217,20 +1217,20 @@ msgstr ""
 "새로운 버전으로 업데이트하려면 모든 사용 가능한 업데이트를 적용한 다음 시스템"
 "을 다시 시작하십시오."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1035
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "지금 업그레이드"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1058
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1063
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:378
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1을(를) 사용할 수 있습니다."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1184
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1189
 #, kde-format
 msgctxt "@info"
 msgid ""

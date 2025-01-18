@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-16 00:42+0000\n"
+"POT-Creation-Date: 2025-01-18 00:42+0000\n"
 "PO-Revision-Date: 2024-08-04 17:25+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -566,7 +566,7 @@ msgid "Local bundle"
 msgstr "உள்ளமை தொகுப்பு"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1897
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:826
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:831
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "முறையற்ற appstream முகவரி '%1'"
@@ -637,7 +637,7 @@ msgid "Music"
 msgstr "பாடல்கள்"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:421
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:419
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1082,32 +1082,32 @@ msgstr ""
 "ஆதரிக்கப்படாதக் கேள்வி:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:172
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:186
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "%1 என்ற பின்நிலையை துவக்குவதற்கு நிறைய நேரம் ஆனது"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:228
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:242
 #, kde-format
 msgid "Applications"
 msgstr "செயலிகள்"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:272
 #, kde-format
 msgid "Plasma Addons"
 msgstr "பிளாஸ்மா துணை நிரல்கள்"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:272
 #, kde-format
 msgid "Application Addons"
 msgstr "செயலி துணை நிரல்கள்"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:360
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "%1 பின்நிலையில் சிக்கல்: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1116,14 +1116,14 @@ msgstr ""
 "%1 பின்நிலைக்கான சேவையகத்திற்கு அனுப்ப‍ப்பட்டுள்ள கோரிக்கைகளின் எண்ணிக்கை மிக அதிகமாக "
 "உள்ளது. சில நிமிடங்கள் கழித்து மீண்டும் முயற்சியுங்கள்."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:372
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:383
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:370
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:376
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:381
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "செல்லுபடியாகாத %1 பின்நிலை. உங்கள் இயங்குதள நிறுவனத்தை தொடர்புகொள்ளுங்கள்."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1135,18 +1135,18 @@ msgstr ""
 "இச்செயல்பாட்டை நீங்கள் முயற்சித்து பார்க்கலாம். தெரிவிக்கப்பட்ட சிக்கல்:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:412
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:410
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "%2 பின்நிலையை பயன்படுத்தும் %1 என்பதற்கான திரைப்பிடிப்பை பதிவிறக்க முடியவில்லை"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:414
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "%1 பின்னிலையால் கையாளப்படாத சிக்கல். உங்கள் இயங்குதள பராமரிப்பாளர்களைத் தொடர்பு கொள்ளுங்கள்."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:542
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:540
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "தவறான KNewStuff முகவரி: %1"
@@ -1173,13 +1173,13 @@ msgctxt "Category"
 msgid "Plasma Addons"
 msgstr "பிளாஸ்மா துணை நிரல்கள்"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:567
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "பிளாஸ்மா பிளாஸ்மாய்டுகள்"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:579
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:580
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"
@@ -1205,12 +1205,12 @@ msgid ""
 msgstr ""
 "உங்கள் இயங்குதளத்திற்கான ஆதரவு %1 அன்று நிறைவடைந்த‍து. ஆதரவுள்ள பதிப்பிற்கு மாறுங்கள்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:933
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:938
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' என்பதை நீக்க முடியாது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1026
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1031
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1223,20 +1223,20 @@ msgstr ""
 "மீதமுள்ள நிரல் புதுப்பிப்புகளை நிறுவி உங்கள் கணினியை மீள்துவக்கியபின் நீங்கள் விரும்பினால் "
 "இப்புதிய பதிப்பை நிறுவலாம்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1035
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "இப்போதே புதுப்பி"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1058
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1063
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:378
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 இப்போது கிடைக்கிறது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1184
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1189
 #, kde-format
 msgctxt "@info"
 msgid ""
