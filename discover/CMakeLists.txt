@@ -101,7 +101,7 @@ install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.urlhandler.desktop
 
 # support snap:/ URI
 set(DesktopNoDisplay "true")
-set(DesktopMimeType "x-scheme-handler/snap;")
+set(DesktopMimeType "x-scheme-handler/snap;x-scheme-handler/flatpak+https;")
 set(DesktopExec "plasma-discover %U")
 configure_file(org.kde.discover.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.snap.desktop)
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.snap.desktop DESTINATION ${KDE_INSTALL_APPDIR} )

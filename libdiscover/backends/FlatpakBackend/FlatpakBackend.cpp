@@ -1500,7 +1500,15 @@ static bool isFlatpakSubRef(const QLatin1String &name)
 ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
     const auto fileName = filter.resourceUrl.fileName();
-    if (fileName.endsWith(QLatin1String(".flatpakrepo")) || fileName.endsWith(QLatin1String(".flatpakref")) || fileName.endsWith(QLatin1String(".flatpak"))) {
+    if (filter.resourceUrl.scheme() == QLatin1String("flatpak+https")) {
+        QUrl newUrl = filter.resourceUrl;
+        newUrl.setScheme(QStringLiteral("https"));
+        auto stream = new ResultsStream(QLatin1String("FlatpakStream-http-") + fileName);
+        FlatpakFetchRemoteResourceJob *fetchResourceJob = new FlatpakFetchRemoteResourceJob(newUrl, stream, this);
+        fetchResourceJob->start();
+        return stream;
+    } else if (fileName.endsWith(QLatin1String(".flatpakrepo")) || fileName.endsWith(QLatin1String(".flatpakref"))
+               || fileName.endsWith(QLatin1String(".flatpak"))) {
         auto stream = new ResultsStream(QLatin1String("FlatpakStream-http-") + fileName);
         auto fetchResourceJob = new FlatpakFetchRemoteResourceJob(filter.resourceUrl, stream, this);
         fetchResourceJob->start();
