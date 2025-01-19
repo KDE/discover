@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-24 00:41+0000\n"
+"POT-Creation-Date: 2025-01-19 02:31+0000\n"
 "PO-Revision-Date: 2020-08-25 12:44+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -565,23 +565,23 @@ msgstr "%1 (%2)"
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1864
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1872
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:824
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1971
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1979
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2093
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2101
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2097
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2105
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr ""
