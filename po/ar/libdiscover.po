@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-18 00:42+0000\n"
+"POT-Creation-Date: 2025-01-19 00:42+0000\n"
 "PO-Revision-Date: 2024-11-28 07:54+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -567,23 +567,23 @@ msgstr "‏%1 (المستخدم)"
 msgid "Local bundle"
 msgstr "حزمة محليّة"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1897
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1905
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:831
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "مسار appstream ‏’%1‘ مشوّه"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2004
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2012
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "فشل في إضافة مصدر '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2126
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2134
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "لا يوجد مصادر للفلات باك"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2138
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "فشل تحميل المصدر '%1'"

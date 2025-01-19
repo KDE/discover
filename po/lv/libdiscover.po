@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-18 00:42+0000\n"
+"POT-Creation-Date: 2025-01-19 00:42+0000\n"
 "PO-Revision-Date: 2024-11-07 16:16+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -566,23 +566,23 @@ msgstr "%1 (lietotājs)"
 msgid "Local bundle"
 msgstr "Vietējs komplekts"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1897
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1905
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:831
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Nepareizi noformēta lietotņu plūsmas adrese „%1“"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2004
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2012
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Neizdevās pievienot avotu „%1“: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2126
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2134
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Nav „Flatpak“ pakotņu avotu."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2138
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Neizdevās ielādēt „%1“ avotu"
