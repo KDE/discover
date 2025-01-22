@@ -4,13 +4,13 @@
 # Kristóf Kiszel <ulysses@kubuntu.org>, 2012, 2014, 2015, 2019.
 # Balázs Úr <urbalazs@gmail.com>, 2012, 2013, 2014.
 # Kiszel Kristóf <kiszel.kristof@gmail.com>, 2017, 2020.
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Kristof Kiszel <ulysses@fsf.hu>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-15 00:42+0000\n"
-"PO-Revision-Date: 2024-09-29 22:01+0200\n"
+"PO-Revision-Date: 2025-01-21 21:04+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.0\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -599,37 +599,34 @@ msgid "External Links"
 msgstr "Külső hivatkozások"
 
 #: discover/qml/ApplicationPage.qml:821
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "A projekt hivatalos dokumentációjának olvasása"
+msgstr "Dokumentáció"
 
 #: discover/qml/ApplicationPage.qml:832
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
-msgstr "Az alkalmazás weboldalának meglátogatása"
+msgstr "Projekt weboldala"
 
 #: discover/qml/ApplicationPage.qml:842
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "Adományozás"
 
 #: discover/qml/ApplicationPage.qml:852
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
-msgstr "Hiba bejelentése"
+msgstr "Hibabejelentés"
 
 #: discover/qml/ApplicationPage.qml:862
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "Közreműködés elkezdése"
 
 #: discover/qml/ApplicationPage.qml:891
 #, kde-format
