@@ -71,6 +71,7 @@ Comment[fi]=Asenna ja poista sovelluksia ja lisäosia
 Comment[fr]=Installer et supprimer des applications et des modules complémentaires
 Comment[gl]=Instalar e desinstalar aplicacións e complementos.
 Comment[he]=הוספת והסרת יישומים ותוספים
+Comment[hu]=Alkalmazások és bővítmények telepítése és eltávolítása
 Comment[ia]=Installa e remove apps e add-ons
 Comment[it]=Installa e rimuovi applicazioni e componenti aggiuntivi
 Comment[ka]=დააყენეთ და წაშალეთ აპები და დამატებები
