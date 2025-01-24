@@ -76,6 +76,7 @@ Comment[ia]=Installa e remove apps e add-ons
 Comment[it]=Installa e rimuovi applicazioni e componenti aggiuntivi
 Comment[ka]=დააყენეთ და წაშალეთ აპები და დამატებები
 Comment[ko]=앱과 추가 기능 설치 및 삭제
+Comment[lt]=Įdiegti ir šalinti programas bei papildinius
 Comment[lv]=Instalējiet un noņemiet programmas un pielikumus
 Comment[nl]=Installeer en verwijder toepassingen en add-ons
 Comment[pl]=Wgrywaj i usuwaj aplikacje oraz dodatki do nich
