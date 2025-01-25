@@ -623,6 +623,7 @@ private:
         : ResultsStream(name)
         , backend(backend)
     {
+        Q_ASSERT(QThread::currentThread() == backend->thread());
     }
 
     PKResultsStream(PackageKitBackend *backend, const QString &name, const QVector<StreamResult> &resources)
@@ -649,6 +650,7 @@ public:
         }
 
         Q_ASSERT(resources.size() == QSet(resources.constBegin(), resources.constEnd()).size());
+        Q_ASSERT(QThread::currentThread() == backend->thread());
         const auto toResolve = kFilter<QVector<StreamResult>>(resources, needsResolveFilter);
         if (!toResolve.isEmpty()) {
             auto transaction = backend->resolvePackages(kTransform<QStringList>(toResolve, [](const StreamResult &result) {
@@ -703,7 +705,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         return findResourceByPackageName(filter.resourceUrl);
     } else if (!filter.extends.isEmpty()) {
         return deferredResultStream(u"PackageKitStream-extends"_s, [this, filter = filter](PKResultsStream *stream) {
-            m_appdata->componentsByExtends(filter.extends).then([this, stream, filter](const QFuture<AppStream::ComponentBox> &extendingComponents) {
+            m_appdata->componentsByExtends(filter.extends).then(this, [this, stream, filter](const QFuture<AppStream::ComponentBox> &extendingComponents) {
                 auto resources = resultsByComponents(extendingComponents.result());
                 stream->sendResources(resources, filter.state != AbstractResource::Broken);
             });
