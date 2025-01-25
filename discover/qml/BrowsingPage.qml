@@ -43,7 +43,8 @@ DiscoverPage {
     }
 
     Loader {
-        active: featuredModel.count === 0 && !featuredModel.isFetching
+        active: !featuredModel.isFetching && [featuredModel, popRep, recentlyUpdatedRepeater, gamesRep, devRep].every((model) => model.count === 0)
+
         anchors.centerIn: parent
         width: parent.width - (Kirigami.Units.largeSpacing * 4)
         sourceComponent: Kirigami.PlaceholderMessage {
