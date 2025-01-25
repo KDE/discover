@@ -17,9 +17,19 @@
 
 using namespace Qt::StringLiterals;
 
+QDebug operator<<(QDebug s, const std::shared_ptr<Category> &category)
+{
+    if (category) {
+        s.nospace() << "Category(" << category->name() << ")";
+    } else {
+        s.nospace() << "Category(nullptr)";
+    }
+    return s.space();
+}
+
 namespace
 {
-[[nodiscard]] std::optional<QString> duplicatedNamesAsString(const QList<Category *> &categories)
+[[nodiscard]] std::optional<QString> duplicatedNamesAsString(const QList<std::shared_ptr<Category>> &categories)
 {
     QStringList seen;
     seen.reserve(categories.size());
@@ -44,10 +54,11 @@ namespace
 }
 } // namespace
 
-Category::Category(QSet<QString> pluginName, QObject *parent)
-    : QObject(parent)
+Category::Category(QSet<QString> pluginName, const std::shared_ptr<Category> &parent)
+    : QObject()
     , m_iconString(QStringLiteral("applications-other"))
     , m_plugins(std::move(pluginName))
+    , m_parentCategory(parent)
 {
     // Use a timer so to compress the rootCategoriesChanged signal
     // It generally triggers when KNS is unavailable at large (as explained in bug 454442)
@@ -61,7 +72,7 @@ Category::Category(const QString &name,
                    const QString &iconName,
                    const CategoryFilter &filter,
                    const QSet<QString> &pluginName,
-                   const QVector<Category *> &subCategories,
+                   const QList<std::shared_ptr<Category>> &subCategories,
                    bool isAddons)
     : QObject(nullptr)
     , m_name(name)
@@ -103,7 +114,7 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml, Localizatio
         if (xml->name() == QLatin1String("Name")) {
             setNameMembers(xml->readElementText(), localization);
         } else if (xml->name() == QLatin1String("Menu")) {
-            m_subCategories << new Category(m_plugins, this);
+            m_subCategories << std::make_shared<Category>(m_plugins);
             m_subCategories.last()->parseData(path, xml, localization);
         } else if (xml->name() == QLatin1String("Addons")) {
             m_isAddons = true;
@@ -165,7 +176,7 @@ CategoryFilter Category::parseIncludes(QXmlStreamReader *xml)
     Q_ASSERT(xml->isStartElement());
 
     auto subIncludes = [&]() {
-        QVector<CategoryFilter> filters;
+        QList<CategoryFilter> filters;
 
         Q_ASSERT(xml->isStartElement());
         const QString opening = xml->name().toString();
@@ -238,19 +249,19 @@ void Category::setFilter(const CategoryFilter &filter)
     m_filter = filter;
 }
 
-const QVector<Category *> &Category::subCategories() const
+const QList<std::shared_ptr<Category>> &Category::subCategories() const
 {
     return m_subCategories;
 }
 
-bool Category::categoryLessThan(Category *c1, const Category *c2)
+bool Category::categoryLessThan(const std::shared_ptr<Category> &c1, const std::shared_ptr<Category> &c2)
 {
     return (c1->priority() < c2->priority()) || (c1->priority() == c2->priority() && QString::localeAwareCompare(c1->name(), c2->name()) < 0);
 }
 
-static bool isSorted(const QVector<Category *> &vector)
+static bool isSorted(const QList<std::shared_ptr<Category>> &vector)
 {
-    Category *last = nullptr;
+    std::shared_ptr<Category> last = nullptr;
     for (auto a : vector) {
         if (last && !Category::categoryLessThan(last, a))
             return false;
@@ -259,7 +270,7 @@ static bool isSorted(const QVector<Category *> &vector)
     return true;
 }
 
-void Category::sortCategories(QVector<Category *> &cats)
+void Category::sortCategories(QList<std::shared_ptr<Category>> &cats)
 {
 #if !defined(QT_NO_DEBUG)
     if (const auto duplicatedNames = duplicatedNamesAsString(cats); duplicatedNames.has_value()) {
@@ -282,13 +293,13 @@ QDebug operator<<(QDebug debug, const CategoryFilter &filter)
     if (auto x = std::get_if<QString>(&filter.value)) {
         debug << x;
     } else {
-        debug << std::get<QVector<CategoryFilter>>(filter.value);
+        debug << std::get<QList<CategoryFilter>>(filter.value);
     }
     debug.nospace() << ')';
     return debug;
 }
 
-void Category::addSubcategory(QVector<Category *> &list, Category *newcat)
+void Category::addSubcategory(QList<std::shared_ptr<Category>> &list, const std::shared_ptr<Category> &newcat)
 {
     Q_ASSERT(isSorted(list));
 
@@ -304,11 +315,11 @@ void Category::addSubcategory(QVector<Category *> &list, Category *newcat)
             qCWarning(LIBDISCOVER_LOG) << "the following categories seem to be the same but they're not entirely" << c->icon() << newcat->icon() << "--"
                                        << c->name() << newcat->name() << "--" << c->isAddons() << newcat->isAddons();
         } else {
-            CategoryFilter newFilter = {CategoryFilter::OrFilter, QVector<CategoryFilter>{c->m_filter, newcat->m_filter}};
+            CategoryFilter newFilter = {CategoryFilter::OrFilter, QList<CategoryFilter>{c->m_filter, newcat->m_filter}};
             c->m_filter = newFilter;
             c->m_plugins.unite(newcat->m_plugins);
             const auto subCategories = newcat->subCategories();
-            for (Category *nc : subCategories) {
+            for (const std::shared_ptr<Category> &nc : subCategories) {
                 addSubcategory(c->m_subCategories, nc);
             }
             return;
@@ -319,10 +330,10 @@ void Category::addSubcategory(QVector<Category *> &list, Category *newcat)
     Q_ASSERT(isSorted(list));
 }
 
-void Category::addSubcategory(Category *cat)
+void Category::addSubcategory(const std::shared_ptr<Category> &cat)
 {
     int i = 0;
-    for (Category *subCat : std::as_const(m_subCategories)) {
+    for (const std::shared_ptr<Category> &subCat : std::as_const(m_subCategories)) {
         if (!categoryLessThan(subCat, cat)) {
             break;
         }
@@ -332,12 +343,11 @@ void Category::addSubcategory(Category *cat)
     Q_ASSERT(isSorted(m_subCategories));
 }
 
-bool Category::blacklistPluginsInVector(const QSet<QString> &pluginNames, QVector<Category *> &subCategories)
+bool Category::blacklistPluginsInVector(const QSet<QString> &pluginNames, QList<std::shared_ptr<Category>> &subCategories)
 {
     bool ret = false;
-    for (QVector<Category *>::iterator it = subCategories.begin(); it != subCategories.end();) {
+    for (QList<std::shared_ptr<Category>>::iterator it = subCategories.begin(); it != subCategories.end();) {
         if ((*it)->blacklistPlugins(pluginNames)) {
-            delete *it;
             it = subCategories.erase(it);
             ret = true;
         } else
@@ -360,8 +370,8 @@ bool Category::blacklistPlugins(const QSet<QString> &pluginNames)
 
 QVariantList Category::subCategoriesVariant() const
 {
-    return kTransform<QVariantList>(m_subCategories, [](Category *cat) {
-        return QVariant::fromValue<QObject *>(cat);
+    return kTransform<QVariantList>(m_subCategories, [](const std::shared_ptr<Category> &cat) {
+        return QVariant::fromValue<std::shared_ptr<Category>>(cat);
     });
 }
 
@@ -370,9 +380,9 @@ bool Category::matchesCategoryName(const QString &name) const
     return involvedCategories().contains(name);
 }
 
-bool Category::contains(Category *cat) const
+bool Category::contains(const std::shared_ptr<Category> &cat) const
 {
-    const bool ret = cat == this || (cat && contains(qobject_cast<Category *>(cat->parent())));
+    const bool ret = cat.get() == this || (cat && contains(cat->parentCategory()));
     return ret;
 }
 
@@ -380,7 +390,7 @@ bool Category::contains(const QVariantList &cats) const
 {
     bool ret = false;
     for (const auto &itCat : cats) {
-        if (contains(qobject_cast<Category *>(itCat.value<QObject *>()))) {
+        if (contains(itCat.value<std::shared_ptr<Category>>())) {
             ret = true;
             break;
         }
@@ -395,7 +405,7 @@ static QStringList involvedCategories(const CategoryFilter &f)
         return {std::get<QString>(f.value)};
     case CategoryFilter::OrFilter:
     case CategoryFilter::AndFilter: {
-        const auto filters = std::get<QVector<CategoryFilter>>(f.value);
+        const auto filters = std::get<QList<CategoryFilter>>(f.value);
         QStringList ret;
         ret.reserve(filters.size());
         for (const auto &subFilters : filters) {
@@ -429,11 +439,11 @@ bool CategoryFilter::operator==(const CategoryFilter &other) const
     if (auto x = std::get_if<QString>(&value)) {
         return *x == std::get<QString>(other.value);
     } else {
-        return std::get<QVector<CategoryFilter>>(value) == std::get<QVector<CategoryFilter>>(other.value);
+        return std::get<QList<CategoryFilter>>(value) == std::get<QList<CategoryFilter>>(other.value);
     }
 }
 
-std::optional<QString> Category::duplicatedNamesAsStringNested(const QList<Category *> &categories)
+std::optional<QString> Category::duplicatedNamesAsStringNested(const QList<std::shared_ptr<Category>> &categories)
 {
     // The recursive call chain here is a bit crappy but I can't think of a better way to visit all m_subCategories
     // at unknown depths. It's not too bad. We know this is finite :)

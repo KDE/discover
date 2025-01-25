@@ -143,7 +143,7 @@ public:
     virtual bool isValid() const = 0;
 
     struct Filters {
-        Category *category = nullptr;
+        std::shared_ptr<Category> category = nullptr;
         AbstractResource::State state = AbstractResource::Broken;
         QString mimetype;
         QString search;
@@ -221,7 +221,7 @@ public:
     /**
      * @returns the root category tree
      */
-    virtual QVector<Category *> category() const
+    virtual QList<std::shared_ptr<Category>> category() const
     {
         return {};
     }

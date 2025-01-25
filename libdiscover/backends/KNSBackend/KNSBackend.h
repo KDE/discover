@@ -36,7 +36,7 @@ public:
     ResultsStream *search(const AbstractResourcesBackend::Filters &filter) override;
     ResultsStream *findResourceByPackageName(const QUrl &search);
 
-    QVector<Category *> category() const override
+    QList<std::shared_ptr<Category>> category() const override
     {
         return m_rootCategories;
     }
@@ -100,7 +100,7 @@ private:
     StandardBackendUpdater *const m_updater;
     QStringList m_extends;
     QStringList m_categories;
-    QVector<Category *> m_rootCategories;
+    QList<std::shared_ptr<Category>> m_rootCategories;
     QString m_displayName;
     bool m_initialized = false;
     bool m_hasApplications = false;

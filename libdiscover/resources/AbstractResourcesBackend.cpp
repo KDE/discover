@@ -19,7 +19,7 @@ QDebug operator<<(QDebug debug, const AbstractResourcesBackend::Filters &filters
     QDebugStateSaver saver(debug);
     debug.nospace() << "Filters(";
     if (filters.category)
-        debug.nospace() << "category: " << filters.category << ',';
+        debug.nospace() << "category: " << filters.category.get() << ',';
     if (filters.state)
         debug.nospace() << "state: " << filters.state << ',';
     if (!filters.mimetype.isEmpty())

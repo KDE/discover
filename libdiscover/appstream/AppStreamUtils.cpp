@@ -191,7 +191,8 @@ static void kRemoveDuplicates(AppStream::ComponentBox &input, AppStream::Bundle:
     }
 }
 
-QFuture<AppStream::ComponentBox> AppStreamUtils::componentsByCategoriesTask(AppStream::ConcurrentPool *pool, Category *cat, AppStream::Bundle::Kind kind)
+QFuture<AppStream::ComponentBox>
+AppStreamUtils::componentsByCategoriesTask(AppStream::ConcurrentPool *pool, const std::shared_ptr<Category> &cat, AppStream::Bundle::Kind kind)
 {
     if (cat->name() == QLatin1StringView("All Applications")) {
         return pool->componentsByKind(AppStream::Component::KindDesktopApp);

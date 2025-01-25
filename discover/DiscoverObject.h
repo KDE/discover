@@ -8,6 +8,7 @@
 
 #include <QUrl>
 
+#include "Category/Category.h"
 #include <QQuickView>
 
 class AbstractResource;
@@ -67,7 +68,7 @@ Q_SIGNALS:
     void openSearch(const QString &search);
     void openApplicationInternal(AbstractResource *app);
     void listMimeInternal(const QString &mime);
-    void listCategoryInternal(Category *cat);
+    void listCategoryInternal(const std::shared_ptr<Category> &cat);
 
     void unableToFind(const QString &resid);
     void

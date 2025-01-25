@@ -77,6 +77,8 @@ QML_DECLARE_TYPEINFO(ActivatableType, QML_HAS_ATTACHED_PROPERTIES)
 
 void DiscoverDeclarativePlugin::registerTypes(const char * /*uri*/)
 {
+    qRegisterMetaType<std::shared_ptr<Category>>("std::shared_ptr<Category>");
+
     qmlRegisterType<TransactionListener>("org.kde.discover", 2, 0, "TransactionListener");
     qmlRegisterType<ResourcesUpdatesModel>("org.kde.discover", 2, 0, "ResourcesUpdatesModel");
     qmlRegisterType<ResourcesProxyModel>("org.kde.discover", 2, 0, "ResourcesProxyModel");

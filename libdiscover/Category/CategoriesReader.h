@@ -14,9 +14,9 @@ class AbstractResourcesBackend;
 class DISCOVERCOMMON_EXPORT CategoriesReader
 {
 public:
-    QVector<Category *> loadCategoriesFile(AbstractResourcesBackend *backend);
+    QList<std::shared_ptr<Category>> loadCategoriesFile(AbstractResourcesBackend *backend);
 
 private:
     friend class CategoriesTest;
-    QVector<Category *> loadCategoriesPath(const QString &path, Category::Localization localization);
+    QList<std::shared_ptr<Category>> loadCategoriesPath(const QString &path, Category::Localization localization);
 };

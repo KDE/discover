@@ -336,7 +336,7 @@ void ResourcesProxyModel::setFilteredCategoryName(const QString &categoryName)
     }
 }
 
-void ResourcesProxyModel::setFiltersFromCategory(Category *category)
+void ResourcesProxyModel::setFiltersFromCategory(const std::shared_ptr<Category> &category)
 {
     if (m_filters.category != category) {
         m_filters.category = category;
@@ -350,7 +350,7 @@ void ResourcesProxyModel::fetchSubcategories()
     auto categories = kToSet(m_filters.category ? m_filters.category->subCategories() : CategoryModel::global()->rootCategories());
 
     const int count = rowCount();
-    QSet<Category *> done;
+    QSet<std::shared_ptr<Category>> done;
     for (int i = 0; i < count && !categories.isEmpty(); ++i) {
         const auto resource = m_displayedResources[i].resource;
         const auto found = resource->categoryObjects(kSetToVector(categories));
@@ -358,8 +358,8 @@ void ResourcesProxyModel::fetchSubcategories()
         categories.subtract(found);
     }
 
-    const QVariantList ret = kTransform<QVariantList>(done, [](Category *category) {
-        return QVariant::fromValue<QObject *>(category);
+    const QVariantList ret = kTransform<QVariantList>(done, [](const std::shared_ptr<Category> &category) {
+        return QVariant::fromValue<std::shared_ptr<Category>>(category);
     });
     if (m_subcategories != ret) {
         m_subcategories = ret;
@@ -442,7 +442,7 @@ bool ResourcesProxyModel::orderedLessThan(const StreamResult &left, const Stream
     return false;
 }
 
-Category *ResourcesProxyModel::filteredCategory() const
+std::shared_ptr<Category> ResourcesProxyModel::filteredCategory() const
 {
     return m_filters.category;
 }

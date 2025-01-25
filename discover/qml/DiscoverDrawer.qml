@@ -31,8 +31,9 @@ Kirigami.GlobalDrawer {
 
     function createCategoryActions(categories /*list<Discover.Category>*/) /*list<Kirigami.Action>*/ {
         const ret = []
-        for (const category of categories) {
-            const categoryAction = categoryActionComponent.createObject(drawer, { category })
+        for (const c of categories) {
+            const category = Discover.CategoryModel.get(c)
+            const categoryAction = categoryActionComponent.createObject(drawer, { category: category, categoryPtr: c })
             categoryAction.children = createCategoryActions(category.subcategories)
             ret.push(categoryAction)
         }
@@ -173,6 +174,7 @@ Kirigami.GlobalDrawer {
         id: categoryActionComponent
         Kirigami.Action {
             required property Discover.Category category
+            required property var categoryPtr
 
             readonly property bool itsMe: window?.leftPage?.category === category
 
@@ -185,13 +187,13 @@ Kirigami.GlobalDrawer {
             visible: category?.visible
             onTriggered: {
                 if (!window.leftPage.canNavigate) {
-                    Navigation.openCategory(category, currentSearchText)
+                    Navigation.openCategory(categoryPtr, currentSearchText)
                 } else {
                     if (pageStack.depth > 1) {
                         pageStack.pop()
                     }
                     pageStack.currentIndex = 0
-                    window.leftPage.category = category
+                    window.leftPage.category = categoryPtr
                 }
 
                 if (!drawer.wideScreen && category.subcategories.length === 0) {

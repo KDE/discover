@@ -20,6 +20,7 @@
 
 #include <ReviewsBackend/Rating.h>
 
+#include "Category/Category.h"
 #include "PackageState.h"
 #include "discovercommon_export.h"
 
@@ -230,9 +231,9 @@ public:
      */
     virtual Rating rating() const;
 
-    bool categoryMatches(Category *cat);
+    bool categoryMatches(const std::shared_ptr<Category> &cat);
 
-    QSet<Category *> categoryObjects(const QVector<Category *> &cats) const;
+    QSet<std::shared_ptr<Category>> categoryObjects(const QList<std::shared_ptr<Category>> &cats) const;
 
     /**
      * @returns a url that uniquely identifies the application

@@ -17,21 +17,23 @@ class QTimer;
 class DISCOVERCOMMON_EXPORT CategoryModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QList<Category *> rootCategories READ rootCategories NOTIFY rootCategoriesChanged)
+    Q_PROPERTY(QList<std::shared_ptr<Category>> rootCategories READ rootCategories NOTIFY rootCategoriesChanged)
 public:
     explicit CategoryModel(QObject *parent = nullptr);
 
     static CategoryModel *global();
 
-    Q_SCRIPTABLE Category *findCategoryByName(const QString &name) const;
+    Q_SCRIPTABLE std::shared_ptr<Category> findCategoryByName(const QString &name) const;
     void blacklistPlugin(const QString &name);
-    const QList<Category *> &rootCategories() const;
+    const QList<std::shared_ptr<Category>> &rootCategories() const;
     void populateCategories();
+
+    Q_SCRIPTABLE static QObject *get(const std::shared_ptr<Category> &ptr);
 
 Q_SIGNALS:
     void rootCategoriesChanged();
 
 private:
     QTimer *m_rootCategoriesChanged;
-    QList<Category *> m_rootCategories;
+    QList<std::shared_ptr<Category>> m_rootCategories;
 };

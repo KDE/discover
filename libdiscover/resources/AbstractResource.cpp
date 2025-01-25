@@ -177,21 +177,21 @@ static bool shouldFilter(AbstractResource *resource, const CategoryFilter &filte
         ret = resource->packageName() == std::get<QString>(filter.value);
         break;
     case CategoryFilter::AndFilter: {
-        const auto filters = std::get<QVector<CategoryFilter>>(filter.value);
+        const auto filters = std::get<QList<CategoryFilter>>(filter.value);
         ret = std::all_of(filters.begin(), filters.end(), [resource](const CategoryFilter &filter) {
             return shouldFilter(resource, filter);
         });
         break;
     }
     case CategoryFilter::OrFilter: {
-        const auto filters = std::get<QVector<CategoryFilter>>(filter.value);
+        const auto filters = std::get<QList<CategoryFilter>>(filter.value);
         ret = std::any_of(filters.begin(), filters.end(), [resource](const CategoryFilter &filter) {
             return shouldFilter(resource, filter);
         });
         break;
     }
     case CategoryFilter::NotFilter: {
-        const auto filters = std::get<QVector<CategoryFilter>>(filter.value);
+        const auto filters = std::get<QList<CategoryFilter>>(filter.value);
         ret = !std::any_of(filters.begin(), filters.end(), [resource](const CategoryFilter &filter) {
             return shouldFilter(resource, filter);
         });
@@ -201,14 +201,14 @@ static bool shouldFilter(AbstractResource *resource, const CategoryFilter &filte
     return ret;
 }
 
-bool AbstractResource::categoryMatches(Category *cat)
+bool AbstractResource::categoryMatches(const std::shared_ptr<Category> &cat)
 {
     return shouldFilter(this, cat->filter());
 }
 
-static QSet<Category *> walkCategories(AbstractResource *resource, const QVector<Category *> &categories)
+static QSet<std::shared_ptr<Category>> walkCategories(AbstractResource *resource, const QList<std::shared_ptr<Category>> &categories)
 {
-    QSet<Category *> ret;
+    QSet<std::shared_ptr<Category>> ret;
     for (auto category : categories) {
         if (resource->categoryMatches(category)) {
             const auto subcats = walkCategories(resource, category->subCategories());
@@ -223,7 +223,7 @@ static QSet<Category *> walkCategories(AbstractResource *resource, const QVector
     return ret;
 }
 
-QSet<Category *> AbstractResource::categoryObjects(const QVector<Category *> &categories) const
+QSet<std::shared_ptr<Category>> AbstractResource::categoryObjects(const QList<std::shared_ptr<Category>> &categories) const
 {
     return walkCategories(const_cast<AbstractResource *>(this), categories);
 }

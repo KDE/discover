@@ -9,6 +9,7 @@
 #include "CategoriesReader.h"
 #include "libdiscover_debug.h"
 #include <QCollator>
+#include <QQmlEngine>
 #include <resources/ResourcesModel.h>
 #include <utils.h>
 
@@ -45,18 +46,18 @@ void CategoryModel::populateCategories()
 {
     const auto backends = ResourcesModel::global()->backends();
 
-    QList<Category *> ret;
+    QList<std::shared_ptr<Category>> ret;
     CategoriesReader cr;
     for (const auto backend : backends) {
         if (!backend->isValid())
             continue;
 
-        const QList<Category *> cats = cr.loadCategoriesFile(backend);
+        const QList<std::shared_ptr<Category>> cats = cr.loadCategoriesFile(backend);
 
         if (ret.isEmpty()) {
             ret = cats;
         } else {
-            for (Category *c : cats)
+            for (std::shared_ptr<Category> c : cats)
                 Category::addSubcategory(ret, c);
         }
     }
@@ -66,7 +67,7 @@ void CategoryModel::populateCategories()
     }
 }
 
-const QList<Category *> &CategoryModel::rootCategories() const
+const QList<std::shared_ptr<Category>> &CategoryModel::rootCategories() const
 {
     return m_rootCategories;
 }
@@ -79,14 +80,14 @@ void CategoryModel::blacklistPlugin(const QString &name)
     }
 }
 
-static Category *recFindCategory(Category *root, const QString &name)
+static std::shared_ptr<Category> recFindCategory(std::shared_ptr<Category> root, const QString &name)
 {
     if (root->untranslatedName() == name)
         return root;
     else {
         const auto &subs = root->subCategories();
-        for (Category *c : subs) {
-            Category *ret = recFindCategory(c, name);
+        for (std::shared_ptr<Category> c : subs) {
+            std::shared_ptr<Category> ret = recFindCategory(c, name);
             if (ret)
                 return ret;
         }
@@ -94,10 +95,16 @@ static Category *recFindCategory(Category *root, const QString &name)
     return nullptr;
 }
 
-Category *CategoryModel::findCategoryByName(const QString &name) const
+QObject *CategoryModel::get(const std::shared_ptr<Category> &ptr)
 {
-    for (Category *cat : m_rootCategories) {
-        Category *ret = recFindCategory(cat, name);
+    QQmlEngine::setObjectOwnership(ptr.get(), QQmlEngine::CppOwnership);
+    return ptr.get();
+}
+
+std::shared_ptr<Category> CategoryModel::findCategoryByName(const QString &name) const
+{
+    for (std::shared_ptr<Category> cat : m_rootCategories) {
+        std::shared_ptr<Category> ret = recFindCategory(cat, name);
         if (ret)
             return ret;
     }

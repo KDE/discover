@@ -285,7 +285,7 @@ void DiscoverObject::openCategory(const QString &category)
     showLoadingPage();
     auto action = new OneTimeAction(
         [this, category]() {
-            Category *cat = CategoryModel::global()->findCategoryByName(category);
+            std::shared_ptr<Category> cat = CategoryModel::global()->findCategoryByName(category);
             if (cat) {
                 Q_EMIT listCategoryInternal(cat);
             } else {

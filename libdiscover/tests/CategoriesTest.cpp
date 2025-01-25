@@ -19,7 +19,7 @@ public:
     {
     }
 
-    QVector<Category *> populateCategories()
+    QList<std::shared_ptr<Category>> populateCategories()
     {
         const QVector<QString> categoryFiles = {
             QFINDTESTDATA("../backends/PackageKitBackend/packagekit-backend-categories.xml"),
@@ -27,16 +27,16 @@ public:
             QFINDTESTDATA("../backends/DummyBackend/dummy-backend-categories.xml"),
         };
 
-        QVector<Category *> ret;
+        QList<std::shared_ptr<Category>> ret;
         CategoriesReader reader;
         for (const QString &name : categoryFiles) {
             qDebug() << "doing..." << name;
-            const QVector<Category *> cats = reader.loadCategoriesPath(name, Category::Localization::Force);
+            const QList<std::shared_ptr<Category>> cats = reader.loadCategoriesPath(name, Category::Localization::Force);
 
             if (ret.isEmpty()) {
                 ret = cats;
             } else {
-                for (Category *c : cats)
+                for (const std::shared_ptr<Category> &c : cats)
                     Category::addSubcategory(ret, c);
             }
         }
@@ -50,7 +50,7 @@ private Q_SLOTS:
         auto categories = populateCategories();
         QVERIFY(!categories.isEmpty());
 
-        for (Category *c : categories) {
+        for (const std::shared_ptr<Category> &c : categories) {
             if (c->name() != QLatin1String("Dummy Category"))
                 continue;
 

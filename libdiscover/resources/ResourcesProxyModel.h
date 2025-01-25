@@ -50,7 +50,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QAbstractListModel, pub
     Q_INTERFACES(QQmlParserStatus)
     Q_PROPERTY(Roles sortRole READ sortRole WRITE setSortRole NOTIFY sortRoleChanged)
     Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder NOTIFY sortOrderChanged)
-    Q_PROPERTY(Category *filteredCategory READ filteredCategory WRITE setFiltersFromCategory NOTIFY categoryChanged)
+    Q_PROPERTY(std::shared_ptr<Category> filteredCategory READ filteredCategory WRITE setFiltersFromCategory NOTIFY categoryChanged)
     Q_PROPERTY(QString filteredCategoryName READ filteredCategoryName WRITE setFilteredCategoryName NOTIFY categoryChanged)
     Q_PROPERTY(QString originFilter READ originFilter WRITE setOriginFilter)
     Q_PROPERTY(AbstractResource::State stateFilter READ stateFilter WRITE setStateFilter NOTIFY stateFilterChanged)
@@ -100,7 +100,7 @@ public:
     QString lastSearch() const;
     void setOriginFilter(const QString &origin);
     QString originFilter() const;
-    void setFiltersFromCategory(Category *category);
+    void setFiltersFromCategory(const std::shared_ptr<Category> &category);
     void setStateFilter(AbstractResource::State s);
     AbstractResource::State stateFilter() const;
     void setSortRole(Roles sortRole);
@@ -116,7 +116,7 @@ public:
     void setFilterMinimumState(bool filterMinimumState);
     bool filterMinimumState() const;
 
-    Category *filteredCategory() const;
+    std::shared_ptr<Category> filteredCategory() const;
     QString filteredCategoryName() const;
     void setFilteredCategoryName(const QString &categoryName);
 

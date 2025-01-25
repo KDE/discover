@@ -281,23 +281,23 @@ void AlpineApkBackend::onAppstreamDataDownloaded()
     }
 }
 
-QVector<Category *> AlpineApkBackend::category() const
+QList<std::shared_ptr<Category>> AlpineApkBackend::category() const
 {
     static CategoryFilter s_apkFlt{CategoryFilter::FilterType::CategoryNameFilter, QLatin1String("alpine_packages")};
 
     // Display a single root category
     // we could add more, but Alpine apk does not have this concept
-    static Category *s_rootCat = new Category(i18nc("Root category name", "Alpine Linux packages"), // name
-                                              QStringLiteral("package-x-generic"), // icon name
-                                              s_apkFlt, // const CategoryFilter& filters
-                                              {displayName()}, // pluginName
-                                              {}, // QVector<Category *> subCategories - none
-                                              false // isAddons
-    );
+    static std::shared_ptr<Category> s_rootCat(std::make_shared<Category>(i18nc("Root category name", "Alpine Linux packages"), // name
+                                                                          QStringLiteral("package-x-generic"), // icon name
+                                                                          s_apkFlt, // const CategoryFilter& filters
+                                                                          QSet<QString>{displayName()}, // pluginName
+                                                                          QList<std::shared_ptr<Category>>{}, // subcategories
+                                                                          false // isAddons
+                                                                          ));
 
     return {s_rootCat};
 
-    //    static QVector<Category *> s_cats;
+    //    static QList<std::shared_ptr<Category>> s_cats;
     //    if (s_cats.isEmpty()) {
     //        // fill only once
     //        s_cats << s_rootCat;

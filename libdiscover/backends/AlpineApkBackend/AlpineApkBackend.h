@@ -30,7 +30,7 @@ class AlpineApkBackend : public AbstractResourcesBackend
 public:
     explicit AlpineApkBackend(QObject *parent = nullptr);
 
-    QVector<Category *> category() const override;
+    QList<std::shared_ptr<Category>> category() const override;
     int updatesCount() const override;
     AbstractBackendUpdater *backendUpdater() const override;
     AbstractReviewsBackend *reviewsBackend() const override;

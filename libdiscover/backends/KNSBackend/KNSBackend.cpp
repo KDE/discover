@@ -197,18 +197,28 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     m_hasApplications = group.readEntry<bool>("X-Discover-HasApplications", false);
 
     const QStringList cats = group.readEntry<QStringList>("Categories", QStringList{});
-    QVector<Category *> categories;
+    QList<std::shared_ptr<Category>> categories;
     if (cats.count() > 1) {
         m_categories += cats;
         for (const auto &cat : cats) {
             if (m_hasApplications)
-                categories << new Category(cat, QStringLiteral("applications-other"), {CategoryFilter::CategoryNameFilter, cat}, backendName, {}, true);
+                categories << std::make_shared<Category>(cat,
+                                                         QStringLiteral("applications-other"),
+                                                         CategoryFilter{CategoryFilter::CategoryNameFilter, cat},
+                                                         backendName,
+                                                         QList<std::shared_ptr<Category>>{},
+                                                         true);
             else
-                categories << new Category(cat, QStringLiteral("plasma"), {CategoryFilter::CategoryNameFilter, cat}, backendName, {}, true);
+                categories << std::make_shared<Category>(cat,
+                                                         QStringLiteral("plasma"),
+                                                         CategoryFilter{CategoryFilter::CategoryNameFilter, cat},
+                                                         backendName,
+                                                         QList<std::shared_ptr<Category>>{},
+                                                         true);
         }
     }
 
-    QVector<Category *> topCategories{categories};
+    QList<std::shared_ptr<Category>> topCategories{categories};
     for (const auto &cat : std::as_const(categories)) {
         const QString catName = cat->name().append(QLatin1Char('/'));
         for (const auto &potentialSubCat : std::as_const(categories)) {
@@ -227,7 +237,7 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
 
     connect(m_engine, &KNSCore::EngineBase::signalCategoriesMetadataLoaded, this, [categories](const QList<KNSCore::CategoryMetadata> &categoryMetadatas) {
         for (const KNSCore::CategoryMetadata &category : categoryMetadatas) {
-            for (Category *cat : std::as_const(categories)) {
+            for (const std::shared_ptr<Category> &cat : std::as_const(categories)) {
                 if (cat->matchesCategoryName(category.name())) {
                     cat->setName(category.displayName());
                     break;
@@ -238,14 +248,14 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     m_engine->init(m_name);
 
     if (m_hasApplications) {
-        auto actualCategory = new Category(m_displayName, QStringLiteral("applications-other"), filter, backendName, topCategories, false);
-        auto applicationCategory = new Category(i18n("Applications"), //
-                                                QStringLiteral("applications-internet"),
-                                                filter,
-                                                backendName,
-                                                {actualCategory},
-                                                false);
-        const QVector<CategoryFilter> filters = {{CategoryFilter::CategoryNameFilter, QLatin1String("Application")}, filter};
+        auto actualCategory = std::make_shared<Category>(m_displayName, QStringLiteral("applications-other"), filter, backendName, topCategories, false);
+        std::shared_ptr<Category> applicationCategory = std::make_shared<Category>(i18n("Applications"), //
+                                                                                   QStringLiteral("applications-internet"),
+                                                                                   filter,
+                                                                                   backendName,
+                                                                                   QList<std::shared_ptr<Category>>{actualCategory},
+                                                                                   false);
+        const QList<CategoryFilter> filters = {{CategoryFilter::CategoryNameFilter, QLatin1String("Application")}, filter};
         applicationCategory->setFilter({CategoryFilter::AndFilter, filters});
         m_categories.append(applicationCategory->name());
         m_rootCategories = {applicationCategory};
@@ -266,11 +276,10 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
         m_engine->setTagFilter(tagFilter);
     } else {
         const auto iconName = isPlasmaCategory ? QStringLiteral("plasma") : QStringLiteral("applications-other");
-        auto actualCategory = new Category(m_displayName, iconName, filter, backendName, categories, true);
-        actualCategory->setParent(this);
+        auto actualCategory = std::make_shared<Category>(m_displayName, iconName, filter, backendName, categories, true);
 
         const auto topLevelName = isPlasmaCategory ? i18n("Plasma Addons") : i18n("Application Addons");
-        auto addonsCategory = new Category(topLevelName, iconName, filter, backendName, {actualCategory}, true);
+        auto addonsCategory = std::make_shared<Category>(topLevelName, iconName, filter, backendName, QList<std::shared_ptr<Category>>{actualCategory}, true);
         m_rootCategories = {addonsCategory};
     }
 
@@ -279,7 +288,6 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
 
 KNSBackend::~KNSBackend()
 {
-    qDeleteAll(m_rootCategories);
 }
 
 void KNSBackend::markInvalid(const QString &message)

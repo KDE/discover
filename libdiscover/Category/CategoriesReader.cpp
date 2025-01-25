@@ -14,7 +14,7 @@
 #include <DiscoverBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
 
-QVector<Category *> CategoriesReader::loadCategoriesFile(AbstractResourcesBackend *backend)
+QList<std::shared_ptr<Category>> CategoriesReader::loadCategoriesFile(AbstractResourcesBackend *backend)
 {
     QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
                                           QStringLiteral("libdiscover/categories/") + backend->name() + QStringLiteral("-categories.xml"));
@@ -30,9 +30,9 @@ QVector<Category *> CategoriesReader::loadCategoriesFile(AbstractResourcesBacken
     return loadCategoriesPath(path, Category::Localization::Yes);
 }
 
-QVector<Category *> CategoriesReader::loadCategoriesPath(const QString &path, Category::Localization localization)
+QList<std::shared_ptr<Category>> CategoriesReader::loadCategoriesPath(const QString &path, Category::Localization localization)
 {
-    QVector<Category *> ret;
+    QList<std::shared_ptr<Category>> ret;
     qCDebug(LIBDISCOVER_LOG) << "CategoriesReader: Load categories from file" << path << "with l10n" << (localization == Category::Localization::Yes);
     QFile menuFile(path);
     if (!menuFile.open(QIODevice::ReadOnly)) {
@@ -47,7 +47,7 @@ QVector<Category *> CategoriesReader::loadCategoriesPath(const QString &path, Ca
         xml.readNext();
 
         if (xml.isStartElement() && xml.name() == QLatin1String("Menu")) {
-            ret << new Category({path}, qApp);
+            ret << std::make_shared<Category>(QSet<QString>{path});
             ret.last()->parseData(path, &xml, localization);
         }
     }
@@ -65,7 +65,6 @@ QVector<Category *> CategoriesReader::loadCategoriesPath(const QString &path, Ca
             break;
         case Category::Localization::Yes:
             qCWarning(LIBDISCOVER_LOG) << "Category has duplicates. Reloading without translations!";
-            qDeleteAll(ret);
             ret = loadCategoriesPath(path, Category::Localization::No);
             break;
         }
