@@ -23,6 +23,7 @@ public:
         ThumbnailUrl = Qt::UserRole + 1,
         ScreenshotUrl,
         IsAnimatedRole,
+        ThumbnailSizeRole,
     };
     Q_ENUM(Roles)
 

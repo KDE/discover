@@ -19,13 +19,14 @@ Item {
 
     required property url small_image_url
     required property url large_image_url
+    required property size thumbnailSize
 
     readonly property url smallImageUrlIfNeeded: {
         if (small_image_url.toString() !== ""
             && (!loadLargeImage
                 || !controlRoot.largeImageView
                 || controlRoot.largeImageView.status !== Image.Ready)) {
-            return small_image_url;
+            return thumbnailSize.height >= smallImageLoader.height ? small_image_url : large_image_url;
         }
         return "";
     }

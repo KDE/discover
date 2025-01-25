@@ -14,6 +14,7 @@
 #include <QObject>
 #include <QScopedPointer>
 #include <QSet>
+#include <QSize>
 #include <QStringList>
 #include <QUrl>
 #include <QVector>
@@ -35,16 +36,18 @@ struct Screenshot {
     {
     }
 
-    Screenshot(const QUrl &thumbnail, const QUrl &screenshot, bool isAnimated)
+    Screenshot(const QUrl &thumbnail, const QUrl &screenshot, bool isAnimated, const QSize &thumbnailSize)
         : thumbnail(thumbnail)
         , screenshot(screenshot)
         , isAnimated(isAnimated)
+        , thumbnailSize(thumbnailSize)
     {
     }
 
     QUrl thumbnail;
     QUrl screenshot;
     bool isAnimated = false;
+    QSize thumbnailSize;
 };
 
 using Screenshots = QVector<Screenshot>;

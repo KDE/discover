@@ -191,7 +191,7 @@ static void appendIfValid(Screenshots &list, const QUrl &thumbnail, const QUrl &
     if (thumbnail.isEmpty() || screenshot.isEmpty()) {
         return;
     }
-    list += {thumbnail, screenshot, isAnimated(thumbnail.path())};
+    list += {thumbnail, screenshot, isAnimated(thumbnail.path()), {}};
 }
 
 void KNSResource::fetchScreenshots()
