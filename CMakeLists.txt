@@ -95,7 +95,6 @@ endif()
 add_subdirectory(libdiscover)
 add_subdirectory(discover)
 add_subdirectory(exporter)
-add_subdirectory(update)
 
 option(WITH_KCM "Build and install the updates KCM" ON)
 if(WITH_KCM)
