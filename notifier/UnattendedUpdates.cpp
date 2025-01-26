@@ -14,7 +14,7 @@
 #include <chrono>
 
 UnattendedUpdates::UnattendedUpdates(DiscoverNotifier *parent)
-    : QObject(parent)
+    : QObject()
 {
     connect(parent, &DiscoverNotifier::stateChanged, this, &UnattendedUpdates::checkNewState);
     connect(KIdleTime::instance(), QOverload<int, int>::of(&KIdleTime::timeoutReached), this, &UnattendedUpdates::triggerUpdate);

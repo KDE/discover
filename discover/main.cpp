@@ -28,10 +28,10 @@
 
 #include <QProcessEnvironment>
 
-QCommandLineParser *createParser()
+std::unique_ptr<QCommandLineParser> createParser()
 {
     // clang-format off
-    QCommandLineParser *parser = new QCommandLineParser;
+    auto parser = std::make_unique<QCommandLineParser>();
     parser->addOption(QCommandLineOption(QStringLiteral("application"), i18n("Directly open the specified application by its appstream:// URI."), QStringLiteral("name")));
     parser->addOption(QCommandLineOption(QStringLiteral("mime"), i18n("Open with a search for programs that can deal with the given mimetype."), QStringLiteral("name")));
     parser->addOption(QCommandLineOption(QStringLiteral("category"), i18n("Display a list of entries with a category."), QStringLiteral("name")));
@@ -44,8 +44,8 @@ QCommandLineParser *createParser()
     parser->addOption(QCommandLineOption(QStringLiteral("test"), QStringLiteral("Test file"), QStringLiteral("file.qml")));
     parser->addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme"));
     // clang-format on
-    DiscoverBackendsFactory::setupCommandLine(parser);
-    KAboutData::applicationData().setupCommandLine(parser);
+    DiscoverBackendsFactory::setupCommandLine(parser.get());
+    KAboutData::applicationData().setupCommandLine(parser.get());
     return parser;
 }
 
@@ -145,10 +145,10 @@ int main(int argc, char **argv)
 
     DiscoverObject *discoverObject = nullptr;
     {
-        QScopedPointer<QCommandLineParser> parser(createParser());
+        std::unique_ptr<QCommandLineParser> parser(createParser());
         parser->process(app);
-        about.processCommandLine(parser.data());
-        DiscoverBackendsFactory::processCommandLine(parser.data(), parser->isSet(QStringLiteral("test")));
+        about.processCommandLine(parser.get());
+        DiscoverBackendsFactory::processCommandLine(parser.get(), parser->isSet(QStringLiteral("test")));
         const bool feedback = parser->isSet(QStringLiteral("feedback"));
 
         if (parser->isSet(QStringLiteral("listbackends"))) {
@@ -193,16 +193,16 @@ int main(int argc, char **argv)
                                      if (arguments.isEmpty()) {
                                          return;
                                      }
-                                     QScopedPointer<QCommandLineParser> parser(createParser());
+                                     std::unique_ptr<QCommandLineParser> parser(createParser());
                                      parser->parse(arguments);
-                                     processArgs(parser.data(), discoverObject);
+                                     processArgs(parser.get(), discoverObject);
                                  }
                              });
         }
 
         QObject::connect(&app, &QCoreApplication::aboutToQuit, discoverObject, &DiscoverObject::deleteLater);
 
-        processArgs(parser.data(), discoverObject);
+        processArgs(parser.get(), discoverObject);
 
         if (parser->isSet(QStringLiteral("listmodes"))) {
             QTextStream(stdout) << i18n("Available modes:\n");

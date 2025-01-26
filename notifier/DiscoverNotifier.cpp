@@ -40,7 +40,7 @@ bool isOnline()
 DiscoverNotifier::DiscoverNotifier(QObject *parent)
     : QObject(parent)
 {
-    m_settings = new UpdatesSettings(this);
+    m_settings = std::make_unique<UpdatesSettings>();
     m_settingsWatcher = KConfigWatcher::create(m_settings->sharedConfig());
     QNetworkInformation::loadBackendByFeatures(QNetworkInformation::Feature::Reachability | QNetworkInformation::Feature::TransportMedium);
     if (auto info = QNetworkInformation::instance()) {
@@ -239,10 +239,9 @@ void DiscoverNotifier::refreshUnattended()
         return;
 
     if (enabled) {
-        m_unattended = new UnattendedUpdates(this);
+        m_unattended = std::make_unique<UnattendedUpdates>(this);
     } else {
-        delete m_unattended;
-        m_unattended = nullptr;
+        m_unattended.reset();
     }
 }
 

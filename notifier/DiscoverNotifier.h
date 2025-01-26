@@ -66,7 +66,7 @@ public:
     }
     UpdatesSettings *settings() const
     {
-        return m_settings;
+        return m_settings.get();
     }
 
 public Q_SLOTS:
@@ -100,8 +100,8 @@ private:
     bool m_needsReboot = false;
     bool m_isBusy = false;
     QPointer<KNotification> m_updatesAvailableNotification;
-    UnattendedUpdates *m_unattended = nullptr;
+    std::unique_ptr<UnattendedUpdates> m_unattended;
     KConfigWatcher::Ptr m_settingsWatcher;
     QDateTime m_lastUpdate;
-    UpdatesSettings *m_settings;
+    std::unique_ptr<UpdatesSettings> m_settings;
 };

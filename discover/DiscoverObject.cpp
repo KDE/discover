@@ -89,14 +89,14 @@ static void scheduleShutdownWithErrorCode()
 DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
     : QObject()
     , m_engine(new QQmlApplicationEngine)
-    , m_networkAccessManagerFactory(new CachedNetworkAccessManagerFactory)
+    , m_networkAccessManagerFactory(std::make_unique<CachedNetworkAccessManagerFactory>())
 {
     setObjectName(QStringLiteral("DiscoverMain"));
-    m_engine->rootContext()->setContextObject(new KLocalizedQmlContext(m_engine));
+    m_engine->rootContext()->setContextObject(new KLocalizedQmlContext(m_engine.get()));
     auto factory = m_engine->networkAccessManagerFactory();
     m_engine->setNetworkAccessManagerFactory(nullptr);
     delete factory;
-    m_engine->setNetworkAccessManagerFactory(m_networkAccessManagerFactory.data());
+    m_engine->setNetworkAccessManagerFactory(m_networkAccessManagerFactory.get());
 
     new RefreshNotifier(this);
 
@@ -131,7 +131,7 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
     auto uri = "org.kde.discover";
     DiscoverDeclarativePlugin *plugin = new DiscoverDeclarativePlugin;
     plugin->setParent(this);
-    plugin->initializeEngine(m_engine, uri);
+    plugin->initializeEngine(m_engine.get(), uri);
     plugin->registerTypes(uri);
 
     m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
@@ -146,7 +146,7 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
     }
 
     {
-        QQmlComponent component(m_engine, discoverQmlUri, u"DiscoverWindow"_s);
+        QQmlComponent component(m_engine.get(), discoverQmlUri, u"DiscoverWindow"_s);
         auto object = component.beginCreate(m_engine->rootContext());
         auto window = qobject_cast<QQuickWindow *>(object);
         if (!object || !window) {
@@ -460,9 +460,7 @@ bool DiscoverObject::quitWhenIdle()
     }
 
     if (!m_sni) {
-        auto tracker = new KUiServerV2JobTracker(m_sni);
-
-        m_sni = new KStatusNotifierItem(this);
+        m_sni.reset(new KStatusNotifierItem);
         m_sni->setStatus(KStatusNotifierItem::Active);
         m_sni->setIconByName(QStringLiteral("plasmadiscover"));
         m_sni->setTitle(i18n("Discover"));
@@ -472,13 +470,14 @@ bool DiscoverObject::quitWhenIdle()
         m_sni->setStandardActionsEnabled(false);
 
         connect(TransactionModel::global(), &TransactionModel::countChanged, this, &DiscoverObject::reconsiderQuit);
-        connect(m_sni, &KStatusNotifierItem::activateRequested, this, &DiscoverObject::restore);
+        connect(m_sni.get(), &KStatusNotifierItem::activateRequested, this, &DiscoverObject::restore);
 
         auto job = new TransactionsJob;
         job->setParent(this);
+        auto tracker = new KUiServerV2JobTracker(m_sni.get());
         tracker->registerJob(job);
         job->start();
-        connect(m_sni, &KStatusNotifierItem::activateRequested, job, &TransactionsJob::cancel);
+        connect(m_sni.get(), &KStatusNotifierItem::activateRequested, job, &TransactionsJob::cancel);
 
         m_mainWindow->hide();
     }
@@ -492,11 +491,10 @@ void DiscoverObject::restore()
     }
 
     disconnect(TransactionModel::global(), &TransactionModel::countChanged, this, &DiscoverObject::reconsiderQuit);
-    disconnect(m_sni, &KStatusNotifierItem::activateRequested, this, &DiscoverObject::restore);
+    disconnect(m_sni.get(), &KStatusNotifierItem::activateRequested, this, &DiscoverObject::restore);
 
     m_mainWindow->show();
-    m_sni->deleteLater();
-    m_sni = nullptr;
+    m_sni.reset();
 }
 
 void DiscoverObject::reconsiderQuit()
@@ -505,7 +503,7 @@ void DiscoverObject::reconsiderQuit()
         return;
     }
 
-    m_sni->deleteLater();
+    m_sni.reset();
     // Let the job UI to finalise properly
     QTimer::singleShot(20, qGuiApp, &QCoreApplication::quit);
 }

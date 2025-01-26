@@ -84,13 +84,12 @@ private:
     void setAboutToPowerOff();
     QQmlApplicationEngine *engine() const
     {
-        return m_engine;
+        return m_engine.get();
     }
 
-    QQmlApplicationEngine *const m_engine;
+    std::unique_ptr<QQmlApplicationEngine, QScopedPointerDeleteLater> m_engine;
     std::unique_ptr<QQuickWindow> m_mainWindow;
-
-    QScopedPointer<CachedNetworkAccessManagerFactory> m_networkAccessManagerFactory;
-    KStatusNotifierItem *m_sni = nullptr;
+    std::unique_ptr<CachedNetworkAccessManagerFactory> m_networkAccessManagerFactory;
+    std::unique_ptr<KStatusNotifierItem, QScopedPointerDeleteLater> m_sni;
     std::unique_ptr<InlineMessage> m_homePageMessage;
 };
