@@ -579,6 +579,30 @@ QSharedPointer<FlatpakSource> FlatpakBackend::findSource(FlatpakInstallation *in
     return {};
 }
 
+QSharedPointer<FlatpakSource> FlatpakBackend::findSourceUrl(FlatpakInstallation *installation, const QString &url) const
+{
+    for (const auto &source : m_flatpakSources) {
+        if (!source->remote()) {
+            continue;
+        }
+        g_autofree char *remoteUrl = flatpak_remote_get_url(source->remote());
+        if (source->installation() == installation && QUtf8StringView(remoteUrl) == url) {
+            return source;
+        }
+    }
+    for (const auto &source : m_flatpakLoadingSources) {
+        if (!source->remote()) {
+            continue;
+        }
+        g_autofree char *remoteUrl = flatpak_remote_get_url(source->remote());
+        if (source->installation() == installation && QUtf8StringView(remoteUrl) == url) {
+            return source;
+        }
+    }
+    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Could not find source by url:" << url;
+    return {};
+}
+
 FlatpakResource *FlatpakBackend::getRuntimeForApp(FlatpakResource *resource) const
 {
     FlatpakResource *runtime = nullptr;
@@ -847,34 +871,22 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     g_autoptr(GError) error = nullptr;
 
     // If we already added the remote, just go with it
-    g_autoptr(FlatpakRemote) remote = flatpak_installation_get_remote_by_name(preferredInstallation(), remoteName.toUtf8().constData(), m_cancellable, &error);
-    if (remote) {
-        g_autofree char *remoteUrl = flatpak_remote_get_url(remote);
-        if (remote && QString::fromUtf8(remoteUrl) != refurl) {
-            remote = nullptr;
+    if (auto source = findSourceUrl(preferredInstallation(), refurl)) {
+        const QString ref = composeRef(isRuntime, name, branch);
+        auto searchComponent = [this, stream, source, ref] {
+            auto components = source->componentsByFlatpakId(ref);
+            auto resources = kTransform<QVector<StreamResult>>(components, [this, source](const auto &component) {
+                return resourceForComponent(component, source);
+            });
+            Q_EMIT stream->resourcesFound(resources);
+            stream->finish();
+        };
+        if (source->m_pool) {
+            QTimer::singleShot(0, this, searchComponent);
+        } else {
+            connect(this, &FlatpakBackend::initialized, stream, searchComponent);
         }
-    }
-    if (remote) {
-        Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(remote));
-        m_refreshAppstreamMetadataJobs.insert(remote);
-        if (auto source = integrateRemote(preferredInstallation(), remote)) {
-            const QString ref = composeRef(isRuntime, name, branch);
-            auto searchComponent = [this, stream, source, ref, remote] {
-                Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(remote));
-                auto components = source->componentsByFlatpakId(ref);
-                auto resources = kTransform<QVector<StreamResult>>(components, [this, source](const auto &component) {
-                    return resourceForComponent(component, source);
-                });
-                Q_EMIT stream->resourcesFound(resources);
-                stream->finish();
-            };
-            if (source->m_pool) {
-                QTimer::singleShot(0, this, searchComponent);
-            } else {
-                connect(this, &FlatpakBackend::initialized, stream, searchComponent);
-            }
-            return;
-        }
+        return;
     }
 
     AppStream::Component asComponent = fetchComponentFromRemote(settings, m_cancellable);
@@ -891,7 +903,7 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     resource->setResourceFile(url);
     resource->setResourceLocation(QUrl(refurl));
     resource->setOrigin(remoteName);
-    resource->setDisplayOrigin(remote ? copyAndFree(flatpak_remote_get_title(remote)) : QString());
+    resource->setDisplayOrigin(remoteName);
     resource->setFlatpakName(name);
     resource->setArch(QString::fromUtf8(flatpak_get_default_arch()));
     resource->setBranch(branch);

@@ -127,6 +127,7 @@ private:
     bool updateAppSizeFromRemote(FlatpakResource *resource);
     void updateAppState(FlatpakResource *resource);
     QSharedPointer<FlatpakSource> findSource(FlatpakInstallation *installation, const QString &origin) const;
+    QSharedPointer<FlatpakSource> findSourceUrl(FlatpakInstallation *installation, const QString &url) const;
 
     QVector<StreamResult> resultsByAppstreamName(const QString &name) const;
     void acquireFetching(bool f);
