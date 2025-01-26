@@ -41,6 +41,7 @@ QCommandLineParser *createParser()
     parser->addOption(QCommandLineOption(QStringLiteral("listbackends"), i18n("List all the available backends.")));
     parser->addOption(QCommandLineOption(QStringLiteral("search"), i18n("Search string."), QStringLiteral("text")));
     parser->addOption(QCommandLineOption(QStringLiteral("feedback"), i18n("Lists the available options for user feedback")));
+    parser->addOption(QCommandLineOption(QStringLiteral("headless-update"), i18n("Starts an update automatically, headless")));
     parser->addOption(QCommandLineOption(QStringLiteral("test"), QStringLiteral("Test file"), QStringLiteral("file.qml")));
     parser->addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme"));
     // clang-format on
@@ -67,6 +68,10 @@ void processArgs(QCommandLineParser *parser, DiscoverObject *discoverObject)
 
     if (parser->isSet(QStringLiteral("local-filename"))) {
         discoverObject->openLocalPackage(QUrl::fromUserInput(parser->value(QStringLiteral("local-filename")), QDir::currentPath(), QUrl::AssumeLocalFile));
+    }
+
+    if (parser->isSet(QStringLiteral("headless-update"))) {
+        discoverObject->startHeadlessUpdate();
     }
 
     const auto positionalArguments = parser->positionalArguments();
@@ -150,6 +155,7 @@ int main(int argc, char **argv)
         about.processCommandLine(parser.data());
         DiscoverBackendsFactory::processCommandLine(parser.data(), parser->isSet(QStringLiteral("test")));
         const bool feedback = parser->isSet(QStringLiteral("feedback"));
+        const bool headlessUpdate = parser->isSet(QStringLiteral("headless-update"));
 
         if (parser->isSet(QStringLiteral("listbackends"))) {
             QTextStream(stdout) << i18n("Available backends:\n");
@@ -173,7 +179,7 @@ int main(int argc, char **argv)
             QVariantMap initialProperties;
             if (!options.isEmpty() || !parser->positionalArguments().isEmpty())
                 initialProperties = {{QStringLiteral("currentTopLevel"), QStringLiteral(DISCOVER_BASE_URL "/LoadingPage.qml")}};
-            if (feedback) {
+            if (feedback || headlessUpdate) {
                 initialProperties.insert(QStringLiteral("visible"), false);
             }
             discoverObject = new DiscoverObject(initialProperties);
