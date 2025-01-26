@@ -136,17 +136,43 @@ DiscoverPage {
         backend: resourcesUpdatesModel
     }
 
+    property bool startHeadlessUpdate: false
+    function doStartHeadlessUpdate() {
+        if (updateAction.enabled) {
+            updateAction.trigger()
+            app.quitWhenIdle();
+        } else if (updateAction.hasErrors) {
+            console.warn("Unable to start update")
+            app.restore();
+            startHeadlessUpdate = false;
+        } else {
+            console.warn("Waiting for updates")
+        }
+    }
+    onStartHeadlessUpdateChanged: if (startHeadlessUpdate) {
+        doStartHeadlessUpdate()
+    }
+    readonly property bool readyToUpdate: !resourcesUpdatesModel.isProgressing && !resourcesUpdatesModel.isFetching
+    onReadyToUpdateChanged: {
+        if (readyToUpdate && startHeadlessUpdate) {
+            doStartHeadlessUpdate()
+        }
+    }
+    readonly property alias hasErrors: updateAction.hasErrors
     Kirigami.Action {
         id: updateAction
         text: page.unselected > 0 ? i18nc("@action:button as in, 'update the selected items' ", "Update Selected") : i18nc("@action:button as in, 'update all items'", "Update All")
         visible: updateModel.toUpdateCount
         icon.name: "update-none"
 
-        function anyPageHeaderChildrenVisible() {
-            return page.header.children.some(item => item?.visible && item instanceof Kirigami.InlineMessage);
-        }
+        readonly property bool hasErrors: page.header.children.some(item => item?.visible && item instanceof Kirigami.InlineMessage)
 
-        enabled: !resourcesUpdatesModel.isProgressing && !resourcesUpdatesModel.isFetching && !anyPageHeaderChildrenVisible()
+        enabled: page.readyToUpdate && !hasErrors
+        onEnabledChanged: enabled => {
+            if (enabled) {
+                page.doStartHeadlessUpdate()
+            }
+        }
         onTriggered: resourcesUpdatesModel.updateAll()
     }
 

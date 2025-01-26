@@ -50,12 +50,15 @@ public:
     Q_SCRIPTABLE void restore();
     [[nodiscard]] InlineMessage *homePageMessage() const;
 
+    Q_SCRIPTABLE bool quitWhenIdle();
+
 public Q_SLOTS:
     void openApplication(const QUrl &app);
     void openMimeType(const QString &mime);
     void openCategory(const QString &category);
     void openMode(const QString &mode);
     void openLocalPackage(const QUrl &localfile);
+    void startHeadlessUpdate();
 
     void promptReboot();
     void rebootNow();
@@ -78,7 +81,6 @@ Q_SIGNALS:
 private:
     void showLoadingPage();
     void initMainWindow(QQuickWindow *mainWindow);
-    bool quitWhenIdle();
     void reconsiderQuit();
     void setAboutToReboot();
     void setAboutToPowerOff();

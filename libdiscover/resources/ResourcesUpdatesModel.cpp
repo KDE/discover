@@ -310,6 +310,14 @@ qint64 ResourcesUpdatesModel::secsToLastUpdate() const
 
 void ResourcesUpdatesModel::setTransaction(UpdateTransaction *transaction)
 {
+    if (m_transaction == transaction) {
+        return;
+    }
+
+    if (m_transaction) {
+        disconnect(m_transaction, &UpdateTransaction::finished, this, &ResourcesUpdatesModel::finished);
+        disconnect(m_transaction, &UpdateTransaction::finished, this, &ResourcesUpdatesModel::progressingChanged);
+    }
     m_transaction = transaction;
     connect(transaction, &UpdateTransaction::finished, this, &ResourcesUpdatesModel::finished);
     connect(transaction, &UpdateTransaction::finished, this, &ResourcesUpdatesModel::progressingChanged);

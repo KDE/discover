@@ -68,6 +68,7 @@
 #include "PowerManagementInterface.h"
 #include "RefreshNotifier.h"
 #include "discoversettings.h"
+#include <resources/ResourcesUpdatesModel.h>
 
 using namespace Qt::StringLiterals;
 
@@ -302,6 +303,13 @@ void DiscoverObject::openCategory(const QString &category)
     }
 }
 
+void DiscoverObject::startHeadlessUpdate()
+{
+    openMode(u"update"_s);
+    QQuickItem *updatesPage = m_mainWindow->property("leftPage").value<QQuickItem *>();
+    updatesPage->setProperty("startHeadlessUpdate", true);
+}
+
 void DiscoverObject::openLocalPackage(const QUrl &localfile)
 {
     if (!QFile::exists(localfile.toLocalFile())) {
@@ -486,15 +494,14 @@ bool DiscoverObject::quitWhenIdle()
 
 void DiscoverObject::restore()
 {
-    if (!m_sni || !m_mainWindow) {
-        return;
+    if (m_sni) {
+        disconnect(TransactionModel::global(), &TransactionModel::countChanged, this, &DiscoverObject::reconsiderQuit);
+        disconnect(m_sni.get(), &KStatusNotifierItem::activateRequested, this, &DiscoverObject::restore);
+        m_sni.reset();
     }
-
-    disconnect(TransactionModel::global(), &TransactionModel::countChanged, this, &DiscoverObject::reconsiderQuit);
-    disconnect(m_sni.get(), &KStatusNotifierItem::activateRequested, this, &DiscoverObject::restore);
-
-    m_mainWindow->show();
-    m_sni.reset();
+    if (m_mainWindow) {
+        m_mainWindow->show();
+    }
 }
 
 void DiscoverObject::reconsiderQuit()
