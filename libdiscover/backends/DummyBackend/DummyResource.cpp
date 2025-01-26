@@ -102,8 +102,8 @@ QUrl DummyResource::contributeURL()
 
 QVariant DummyResource::icon() const
 {
-    static const QVector<QVariant> icons = {QStringLiteral("device-notifier"), QStringLiteral("media-floppy"), QStringLiteral("drink-beer")};
-    return icons[type()];
+    static const QVector<QVariant> icons = {QStringLiteral("device-notifier"), QStringLiteral("media-floppy"), QStringLiteral("drink-beer"), QStringLiteral("answer-correct")};
+    return icons[m_type];
 }
 
 QString DummyResource::installedVersion() const
