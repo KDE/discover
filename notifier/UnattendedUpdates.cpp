@@ -64,10 +64,10 @@ void UnattendedUpdates::triggerUpdate(int timeoutId)
 
     auto process = new QProcess(this);
     connect(process, &QProcess::errorOccurred, this, [](QProcess::ProcessError error) {
-        qWarning() << "Error running plasma-discover-update" << error;
+        qWarning() << "Error running plasma-discover" << error;
     });
     connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
-        qDebug() << "Finished running plasma-discover-update" << exitCode << exitStatus;
+        qDebug() << "Finished running plasma-discover" << exitCode << exitStatus;
         DiscoverNotifier *notifier = static_cast<DiscoverNotifier *>(parent());
         process->deleteLater();
         notifier->settings()->setLastUnattendedTrigger(QDateTime::currentDateTimeUtc());
@@ -76,7 +76,7 @@ void UnattendedUpdates::triggerUpdate(int timeoutId)
     });
 
     notifier->setBusy(true);
-    process->start(QStringLiteral("plasma-discover-update"), {QStringLiteral("--offline")});
+    process->start(QStringLiteral("plasma-discover"), {QStringLiteral("--headless-update")});
     qInfo() << "started unattended update" << QDateTime::currentDateTimeUtc();
 }
 
