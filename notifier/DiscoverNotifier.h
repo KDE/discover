@@ -38,7 +38,7 @@ public:
     };
     Q_ENUM(State)
 
-    explicit DiscoverNotifier(QObject *parent = nullptr);
+    explicit DiscoverNotifier(const std::chrono::seconds &checkDelay, QObject *parent = nullptr);
     ~DiscoverNotifier() override;
 
     State state() const;

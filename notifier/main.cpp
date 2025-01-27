@@ -22,6 +22,7 @@
 
 #include "NotifierItem.h"
 
+using namespace std::chrono_literals;
 using namespace Qt::StringLiterals;
 
 int main(int argc, char **argv)
@@ -30,7 +31,7 @@ int main(int argc, char **argv)
     app.setOrganizationDomain(QStringLiteral("kde.org"));
     KCrash::setFlags(KCrash::AutoRestart);
 
-    NotifierItem notifier;
+    std::chrono::seconds checkDelay = 0s;
     bool hide = false;
     KDBusService::StartupOptions startup = {};
     {
@@ -50,6 +51,8 @@ int main(int argc, char **argv)
         QCommandLineParser parser;
         QCommandLineOption replaceOption({QStringLiteral("replace")}, i18n("Replace an existing instance"));
         parser.addOption(replaceOption);
+        QCommandLineOption checkDelayOption({QStringLiteral("check-delay")}, u"Delay checking for updates by N seconds"_s, u"seconds"_s, QStringLiteral("0"));
+        parser.addOption(checkDelayOption);
         QCommandLineOption hideOption({QStringLiteral("hide")}, i18n("Do not show the notifier"), i18n("hidden"), QStringLiteral("false"));
         parser.addOption(hideOption);
         about.setupCommandLine(&parser);
@@ -70,6 +73,10 @@ int main(int argc, char **argv)
         } else {
             hide = group.readEntry<bool>("Hide", false);
         }
+
+        if (parser.isSet(checkDelayOption)) {
+            checkDelay = std::chrono::seconds(parser.value(checkDelayOption).toInt());
+        }
     }
 
     KDBusService service(KDBusService::Unique | startup);
@@ -78,6 +85,7 @@ int main(int argc, char **argv)
     // application when the status notifier is destroyed
     app.setQuitLockEnabled(false);
 
+    NotifierItem notifier(checkDelay);
     notifier.setStatusNotifierEnabled(!hide);
 
     return app.exec();

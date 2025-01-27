@@ -9,7 +9,8 @@
 #include <KLocalizedString>
 #include <QMenu>
 
-NotifierItem::NotifierItem()
+NotifierItem::NotifierItem(const std::chrono::seconds &checkDelay)
+    : m_notifier(checkDelay)
 {
     connect(&m_notifier, &DiscoverNotifier::stateChanged, this, &NotifierItem::refreshStatusNotifierVisibility);
 }
