@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-10 01:59+0000\n"
-"PO-Revision-Date: 2025-01-19 13:36+0100\n"
+"PO-Revision-Date: 2025-01-26 18:52+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -1152,7 +1152,7 @@ msgid ""
 msgstr ""
 "Se %1 non se inicia, considere mellor informar do problema ao equipo de "
 "empaquetado en %2 en <link url='%3'>%3</link>, xa que pode que se trate dun "
-"problema de empaquetado fácil de corrixir e non dun fallo da propia "
+"problema de empaquetado fácil de corrixir e non dun defecto da propia "
 "aplicación."
 
 #: discover/qml/ReviewDialog.qml:77
@@ -1165,7 +1165,7 @@ msgid ""
 msgstr ""
 "Se %1 non se inicia, considere mellor informar do problema ao equipo "
 "desenvolvedor en <link url='%2'>%2</link>, xa que pode que se trate dun "
-"problema de empaquetado fácil de corrixir e non dun fallo da propia "
+"problema de empaquetado fácil de corrixir e non dun defecto da propia "
 "aplicación."
 
 #: discover/qml/ReviewDialog.qml:82
