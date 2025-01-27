@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-19 00:42+0000\n"
+"POT-Creation-Date: 2025-01-27 00:42+0000\n"
 "PO-Revision-Date: 2025-01-20 15:18+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -638,7 +638,7 @@ msgid "Music"
 msgstr "Mūzika"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:419
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:427
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1091,27 +1091,27 @@ msgstr ""
 msgid "Backend %1 took too long to initialize"
 msgstr "Aizmugursistēmas %1 ieslēgšana aizņēma pārāk daudz laika"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:242
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:252
 #, kde-format
 msgid "Applications"
 msgstr "Programmas"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:272
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:281
 #, kde-format
 msgid "Plasma Addons"
 msgstr "„Plasma“ pielikumi"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:272
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:281
 #, kde-format
 msgid "Application Addons"
 msgstr "Programmu pielikumi"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:360
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:368
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Tīkla kļūda aizmugursistēmā %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:375
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1120,14 +1120,14 @@ msgstr ""
 "Serverim saistībā ar aizmigursistēmu %1 ir nosūtīti pārāk daudzi "
 "pieprasījumi. Nogaidiet dažas minūtes un mēģiniet vēlreiz."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:370
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:376
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:381
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:384
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:389
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Nederīga %1 aizmugursistēma, sazinieties ar izplatītāju."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1140,17 +1140,17 @@ msgstr ""
 "kontroli. Attiecīgā kļūda ir:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:410
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:418
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Neizdevās pievienot ekrānattēlu ierakstam %1 aizmugursistēmā %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:414
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:422
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "Kritiska kļūda aizmugursistēmā %1. Sazinieties ar izplatītāju."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:540
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:548
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Nepareiza „KNewStuff“ URI: %1"

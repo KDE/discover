@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-19 00:42+0000\n"
+"POT-Creation-Date: 2025-01-27 00:42+0000\n"
 "PO-Revision-Date: 2023-11-27 18:34+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -641,7 +641,7 @@ msgid "Music"
 msgstr "Hudba"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:419
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:427
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1106,27 +1106,27 @@ msgstr ""
 msgid "Backend %1 took too long to initialize"
 msgstr "Podpornému programu %1 trvala inicializácia príliš dlho"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:242
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:252
 #, kde-format
 msgid "Applications"
 msgstr "Aplikácie"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:272
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:281
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Doplnky Plasmy"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:272
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:281
 #, kde-format
 msgid "Application Addons"
 msgstr "Doplnky aplikácií"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:360
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:368
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Sieťová chyba v podpornom programe %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:375
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1135,14 +1135,14 @@ msgstr ""
 "Bolo odoslaných príliš veľa požiadaviek serveru podporného programu %1. "
 "Prosím, skúste to znovu o pár minút."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:370
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:376
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:381
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:384
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:389
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Neplatný podporný program %1. Kontaktujte svojho distribútora."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1155,20 +1155,20 @@ msgstr ""
 "kontrolu. Nahlásená chyba bola:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:410
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:418
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "Nepodarilo sa získať snímku obrazovky pre položku %1 v podpornom programe %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:414
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:422
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Nespracovateľná chyba v podpornom programe %1. Kontaktujte svojho "
 "distribútora."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:540
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:548
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Nesprávna URI KNewStuff: %1"

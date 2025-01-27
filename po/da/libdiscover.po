@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-19 00:42+0000\n"
+"POT-Creation-Date: 2025-01-27 00:42+0000\n"
 "PO-Revision-Date: 2020-10-04 16:58+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -670,7 +670,7 @@ msgid "Music"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:419
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:427
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1109,27 +1109,27 @@ msgstr ""
 msgid "Backend %1 took too long to initialize"
 msgstr "%1-motoren tog for lang tid at initialisere"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:242
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:252
 #, kde-format
 msgid "Applications"
 msgstr "Programmer"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:272
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:281
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma-tilføjelser"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:272
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:281
 #, kde-format
 msgid "Application Addons"
 msgstr "Programtilføjelser"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:360
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:368
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Netværksfejl i motoren %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:367
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:375
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1138,14 +1138,14 @@ msgstr ""
 "For mange anmodninger sendt til serveren for motoren %1. Prøv igen om et par "
 "minutter."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:370
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:376
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:381
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:384
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:389
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Ugyldig %1-motor, kontakt din distribution."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1154,17 +1154,17 @@ msgid ""
 "%2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:410
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:418
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Kunne ikke hente skærmbillede for indgangen %1 i motoren %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:414
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:422
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "Ukendt fejl i motoren %1. Kontakt din distribution."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:540
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:548
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Forkert KNewStuff-URI: %1"
