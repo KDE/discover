@@ -19,6 +19,8 @@
 #include <QPluginLoader>
 #include <QStandardPaths>
 
+using namespace Qt::StringLiterals;
+
 Q_GLOBAL_STATIC(QStringList, s_requestedBackends)
 static bool s_isFeedback = false;
 
@@ -48,6 +50,11 @@ QVector<AbstractResourcesBackend *> DiscoverBackendsFactory::backend(const QStri
 QVector<AbstractResourcesBackend *> DiscoverBackendsFactory::backendForFile(const QString &libname, const QString &name) const
 {
     QPluginLoader *loader = new QPluginLoader(QLatin1String("discover/") + libname, QCoreApplication::instance());
+
+    if (const auto iid = loader->metaData().value("IID"_L1).toString(); iid != QLatin1StringView(DISCOVER_PLUGIN_IID)) {
+        qCWarning(LIBDISCOVER_LOG) << "Plugin" << libname << "doesn't have the right IID" << iid << "expected" << DISCOVER_PLUGIN_IID;
+        return {};
+    }
 
     // qCDebug(LIBDISCOVER_LOG) << "trying to load plugin:" << loader->fileName();
     AbstractResourcesBackendFactory *f = qobject_cast<AbstractResourcesBackendFactory *>(loader->instance());

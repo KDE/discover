@@ -41,7 +41,7 @@ static const int ENGINE_PAGE_SIZE = 100;
 class KNSBackendFactory : public AbstractResourcesBackendFactory
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.kde.muon.AbstractResourcesBackendFactory")
+    Q_PLUGIN_METADATA(IID DISCOVER_PLUGIN_IID)
     Q_INTERFACES(AbstractResourcesBackendFactory)
 public:
     KNSBackendFactory()

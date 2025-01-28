@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include "DiscoverConfig.h"
 #include "discovernotifiers_export.h"
 #include <QObject>
 
@@ -79,4 +80,4 @@ Q_SIGNALS:
     void foundUpgradeAction(UpgradeAction *action);
 };
 
-Q_DECLARE_INTERFACE(BackendNotifierModule, "org.kde.discover.BackendNotifierModule")
+Q_DECLARE_INTERFACE(BackendNotifierModule, DISCOVER_NOTIFIER_IID)

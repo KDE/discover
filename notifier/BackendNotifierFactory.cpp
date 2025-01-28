@@ -11,6 +11,8 @@
 #include <QDir>
 #include <QPluginLoader>
 
+using namespace Qt::StringLiterals;
+
 BackendNotifierFactory::BackendNotifierFactory() = default;
 
 QList<BackendNotifierModule *> BackendNotifierFactory::allBackends() const
@@ -25,6 +27,13 @@ QList<BackendNotifierModule *> BackendNotifierFactory::allBackends() const
             QString fullPath = dir.absoluteFilePath(file);
             QPluginLoader loader(fullPath);
             loader.load();
+
+            if (const auto iid = loader.metaData().value("IID"_L1).toString(); iid != QLatin1StringView(DISCOVER_NOTIFIER_IID)) {
+                qWarning() << "Plugin" << fullPath << "doesn't have the right IID" << iid << "expected" << DISCOVER_NOTIFIER_IID;
+                ret.removeLast();
+                continue;
+            }
+
             ret += qobject_cast<BackendNotifierModule *>(loader.instance());
             if (ret.last() == nullptr) {
                 qWarning() << "couldn't load" << fullPath << "because" << loader.errorString();
