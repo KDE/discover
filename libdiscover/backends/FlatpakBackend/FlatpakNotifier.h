@@ -14,7 +14,7 @@
 class FlatpakNotifier : public BackendNotifierModule
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.kde.discover.BackendNotifierModule")
+    Q_PLUGIN_METADATA(IID DISCOVER_NOTIFIER_IID)
     Q_INTERFACES(BackendNotifierModule)
 public:
     explicit FlatpakNotifier(QObject *parent = nullptr);

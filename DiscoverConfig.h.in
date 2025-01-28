@@ -1,0 +1,7 @@
+// SPDX-License-Identifier: LGPL-2.0-or-later
+// SPDX-FileCopyrightText: 2025 Harald Sitter <sitter@kde.org>
+
+#pragma once
+
+#cmakedefine DISCOVER_PLUGIN_IID "@DISCOVER_PLUGIN_IID@"
+#cmakedefine DISCOVER_NOTIFIER_IID "@DISCOVER_NOTIFIER_IID@"

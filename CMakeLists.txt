@@ -27,6 +27,7 @@ include(KDEClangFormat)
 include(KDEGitCommitHooks)
 include(ECMFindQmlModule)
 include(ECMDeprecationSettings)
+include(ECMSourceVersionControl)
 
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Widgets Test Network Concurrent DBus Quick QuickControls2)
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG OPTIONAL_COMPONENTS WebView)
@@ -70,7 +71,23 @@ ecm_set_disabled_deprecation_versions(QT 6.8.1
 
 add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS -DQT_NO_URL_CAST_FROM_STRING)
 
+# When building from git use a random iid to prevent loading incompatible plugins
+# from the distro or older git builds.
+set(DISCOVER_PLUGIN_IID ${PROJECT_VERSION})
+set(DISCOVER_NOTIFIER_IID ${PROJECT_VERSION})
+if(ECM_SOURCE_UNDER_VERSION_CONTROL)
+    string(RANDOM LENGTH 16 DISCOVER_PLUGIN_IID)
+    string(RANDOM LENGTH 16 DISCOVER_NOTIFIER_IID)
+endif()
+string(PREPEND DISCOVER_PLUGIN_IID "org.kde.discover.")
+string(APPEND DISCOVER_PLUGIN_IID ".AbstractResourcesBackendFactory")
+
+string(PREPEND DISCOVER_NOTIFIER_IID "org.kde.discover.")
+string(APPEND DISCOVER_NOTIFIER_IID ".BackendNotifierModule")
+
+configure_file(DiscoverConfig.h.in DiscoverConfig.h)
 configure_file(DiscoverVersion.h.in DiscoverVersion.h)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 if(BUILD_TESTING AND CMAKE_SYSTEM_NAME MATCHES "Linux")
     add_subdirectory(appiumtests)

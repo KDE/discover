@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include "DiscoverConfig.h"
+
 #include <QObject>
 #include <QPair>
 #include <QVariantList>
@@ -340,7 +342,7 @@ public:
     class ClassName##Factory : public AbstractResourcesBackendFactory                                                                                          \
     {                                                                                                                                                          \
         Q_OBJECT                                                                                                                                               \
-        Q_PLUGIN_METADATA(IID "org.kde.muon.AbstractResourcesBackendFactory")                                                                                  \
+        Q_PLUGIN_METADATA(IID DISCOVER_PLUGIN_IID)                                                                                                             \
         Q_INTERFACES(AbstractResourcesBackendFactory)                                                                                                          \
     public:                                                                                                                                                    \
         QVector<AbstractResourcesBackend *> newInstance(QObject *parent, const QString &name) const override                                                   \
@@ -351,4 +353,4 @@ public:
         }                                                                                                                                                      \
     };
 
-Q_DECLARE_INTERFACE(AbstractResourcesBackendFactory, "org.kde.muon.AbstractResourcesBackendFactory")
+Q_DECLARE_INTERFACE(AbstractResourcesBackendFactory, DISCOVER_PLUGIN_IID)
