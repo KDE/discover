@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-01-28 00:42+0000\n"
 "PO-Revision-Date: 2024-11-14 09:24-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -25,70 +25,70 @@ msgstr ""
 msgid "View Updates"
 msgstr "Exibir atualizações"
 
-#: notifier/DiscoverNotifier.cpp:288
+#: notifier/DiscoverNotifier.cpp:287
 #, kde-format
 msgid "Security updates available"
 msgstr "Atualizações de segurança disponíveis"
 
-#: notifier/DiscoverNotifier.cpp:290
+#: notifier/DiscoverNotifier.cpp:289
 #, kde-format
 msgid "Updates available"
 msgstr "Atualizações disponíveis"
 
-#: notifier/DiscoverNotifier.cpp:292
+#: notifier/DiscoverNotifier.cpp:291
 #, kde-format
 msgid "System up to date"
 msgstr "Sistema atualizado"
 
-#: notifier/DiscoverNotifier.cpp:294
+#: notifier/DiscoverNotifier.cpp:293
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "O computador necessita ser reiniciado"
 
-#: notifier/DiscoverNotifier.cpp:296
+#: notifier/DiscoverNotifier.cpp:295
 #, kde-format
 msgid "Offline"
 msgstr "Offline"
 
-#: notifier/DiscoverNotifier.cpp:298
+#: notifier/DiscoverNotifier.cpp:297
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Aplicando atualizações autônomas..."
 
-#: notifier/DiscoverNotifier.cpp:323
+#: notifier/DiscoverNotifier.cpp:322
 #, kde-format
 msgid "Restart is required"
 msgstr "A reinicialização é necessária"
 
-#: notifier/DiscoverNotifier.cpp:324
+#: notifier/DiscoverNotifier.cpp:323
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "O sistema necessita ser reiniciado para as atualizações terem efeito."
 
-#: notifier/DiscoverNotifier.cpp:329
+#: notifier/DiscoverNotifier.cpp:328
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "Atualizar e reiniciar o computador"
 
-#: notifier/DiscoverNotifier.cpp:330
+#: notifier/DiscoverNotifier.cpp:329
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr "Atualizar e  desligar o computador"
 
-#: notifier/DiscoverNotifier.cpp:374
+#: notifier/DiscoverNotifier.cpp:373
 #, kde-format
 msgid "Upgrade available"
 msgstr "Atualização disponível"
 
-#: notifier/DiscoverNotifier.cpp:375
+#: notifier/DiscoverNotifier.cpp:374
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 Está disponível agora."
 
-#: notifier/DiscoverNotifier.cpp:378
+#: notifier/DiscoverNotifier.cpp:377
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"

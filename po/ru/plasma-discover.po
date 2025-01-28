@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-15 00:42+0000\n"
+"POT-Creation-Date: 2025-01-28 00:42+0000\n"
 "PO-Revision-Date: 2024-11-17 17:15+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -141,13 +141,13 @@ msgstr "Сообщите об этой ситуации разработчика
 msgid "Report This Issue"
 msgstr "Сообщить об ошибке"
 
-#: discover/DiscoverObject.cpp:468 discover/DiscoverObject.cpp:470
+#: discover/DiscoverObject.cpp:466 discover/DiscoverObject.cpp:468
 #: discover/main.cpp:123
 #, kde-format
 msgid "Discover"
 msgstr "Центр программ Discover"
 
-#: discover/DiscoverObject.cpp:471
+#: discover/DiscoverObject.cpp:469
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

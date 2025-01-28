@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-01-28 00:42+0000\n"
 "PO-Revision-Date: 2024-09-19 14:42+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -24,70 +24,70 @@ msgstr ""
 msgid "View Updates"
 msgstr "Frissítések megtekintése"
 
-#: notifier/DiscoverNotifier.cpp:288
+#: notifier/DiscoverNotifier.cpp:287
 #, kde-format
 msgid "Security updates available"
 msgstr "Biztonsági frissítések érhetők el"
 
-#: notifier/DiscoverNotifier.cpp:290
+#: notifier/DiscoverNotifier.cpp:289
 #, kde-format
 msgid "Updates available"
 msgstr "Frissítések érhetők el"
 
-#: notifier/DiscoverNotifier.cpp:292
+#: notifier/DiscoverNotifier.cpp:291
 #, kde-format
 msgid "System up to date"
 msgstr "A rendszer napra kész"
 
-#: notifier/DiscoverNotifier.cpp:294
+#: notifier/DiscoverNotifier.cpp:293
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "A számítógépet újra kell indítani"
 
-#: notifier/DiscoverNotifier.cpp:296
+#: notifier/DiscoverNotifier.cpp:295
 #, kde-format
 msgid "Offline"
 msgstr "Offline"
 
-#: notifier/DiscoverNotifier.cpp:298
+#: notifier/DiscoverNotifier.cpp:297
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Beavatkozás nélküli frissítések alkalmazása…"
 
-#: notifier/DiscoverNotifier.cpp:323
+#: notifier/DiscoverNotifier.cpp:322
 #, kde-format
 msgid "Restart is required"
 msgstr "Újraindítás szükséges"
 
-#: notifier/DiscoverNotifier.cpp:324
+#: notifier/DiscoverNotifier.cpp:323
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "A rendszert újra kell indítani a frissítések alkalmazásához."
 
-#: notifier/DiscoverNotifier.cpp:329
+#: notifier/DiscoverNotifier.cpp:328
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "Frissítés és újraindítás"
 
-#: notifier/DiscoverNotifier.cpp:330
+#: notifier/DiscoverNotifier.cpp:329
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr "Frissítés és leállítás"
 
-#: notifier/DiscoverNotifier.cpp:374
+#: notifier/DiscoverNotifier.cpp:373
 #, kde-format
 msgid "Upgrade available"
 msgstr "Frissítés érhetők el"
 
-#: notifier/DiscoverNotifier.cpp:375
+#: notifier/DiscoverNotifier.cpp:374
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "A(z) %1 most már elérhető."
 
-#: notifier/DiscoverNotifier.cpp:378
+#: notifier/DiscoverNotifier.cpp:377
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"

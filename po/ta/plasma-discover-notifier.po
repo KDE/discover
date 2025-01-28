@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-01-28 00:42+0000\n"
 "PO-Revision-Date: 2024-08-18 16:20+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -22,70 +22,70 @@ msgstr ""
 msgid "View Updates"
 msgstr "புதுப்பிப்புகளை காட்டு"
 
-#: notifier/DiscoverNotifier.cpp:288
+#: notifier/DiscoverNotifier.cpp:287
 #, kde-format
 msgid "Security updates available"
 msgstr "பாதுகாப்பு புதுப்பிப்புகள் உள்ளன"
 
-#: notifier/DiscoverNotifier.cpp:290
+#: notifier/DiscoverNotifier.cpp:289
 #, kde-format
 msgid "Updates available"
 msgstr "புதுப்பிப்புகள் உள்ளன"
 
-#: notifier/DiscoverNotifier.cpp:292
+#: notifier/DiscoverNotifier.cpp:291
 #, kde-format
 msgid "System up to date"
 msgstr "கணினி புதுப்பித்த நிலையில் உள்ளது"
 
-#: notifier/DiscoverNotifier.cpp:294
+#: notifier/DiscoverNotifier.cpp:293
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "கணினியை மீள்துவக்க வேண்டும்"
 
-#: notifier/DiscoverNotifier.cpp:296
+#: notifier/DiscoverNotifier.cpp:295
 #, kde-format
 msgid "Offline"
 msgstr "கணினியை நிறுத்தும்போது"
 
-#: notifier/DiscoverNotifier.cpp:298
+#: notifier/DiscoverNotifier.cpp:297
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "பின்னணி புதுப்பிப்புகள் நிறுவப்படுகின்றன..."
 
-#: notifier/DiscoverNotifier.cpp:323
+#: notifier/DiscoverNotifier.cpp:322
 #, kde-format
 msgid "Restart is required"
 msgstr "மீள்துவக்க வேண்டும்"
 
-#: notifier/DiscoverNotifier.cpp:324
+#: notifier/DiscoverNotifier.cpp:323
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "புதுப்பிப்புகள் செயல்பெற கணினியை மீள்துவக்க வேண்டும்."
 
-#: notifier/DiscoverNotifier.cpp:329
+#: notifier/DiscoverNotifier.cpp:328
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "புதுப்பித்து மீள்துவக்கு"
 
-#: notifier/DiscoverNotifier.cpp:330
+#: notifier/DiscoverNotifier.cpp:329
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr "புதுப்பித்து நிறுத்து"
 
-#: notifier/DiscoverNotifier.cpp:374
+#: notifier/DiscoverNotifier.cpp:373
 #, kde-format
 msgid "Upgrade available"
 msgstr "புதுப்பிப்பு உள்ளது"
 
-#: notifier/DiscoverNotifier.cpp:375
+#: notifier/DiscoverNotifier.cpp:374
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 இப்போது கிடைக்கிறது."
 
-#: notifier/DiscoverNotifier.cpp:378
+#: notifier/DiscoverNotifier.cpp:377
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
