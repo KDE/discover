@@ -22,6 +22,7 @@ QHash<int, QByteArray> ScreenshotsModel::roleNames() const
     roles.insert(ThumbnailUrl, "small_image_url");
     roles.insert(ScreenshotUrl, "large_image_url");
     roles.insert(IsAnimatedRole, "isAnimated");
+    roles.insert(ThumbnailSizeRole, "thumbnailSize");
     return roles;
 }
 
@@ -79,6 +80,8 @@ QVariant ScreenshotsModel::data(const QModelIndex &index, int role) const
         return m_screenshots[index.row()].screenshot;
     case IsAnimatedRole:
         return m_screenshots[index.row()].isAnimated;
+    case ThumbnailSizeRole:
+        return m_screenshots[index.row()].thumbnailSize;
     }
 
     return QVariant();

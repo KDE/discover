@@ -24,16 +24,14 @@
 using namespace std::chrono_literals;
 using namespace AppStreamUtils;
 
-QUrl AppStreamUtils::imageOfKind(const QList<AppStream::Image> &images, AppStream::Image::Kind kind)
+AppStream::Image AppStreamUtils::imageOfKind(const QList<AppStream::Image> &images, AppStream::Image::Kind kind)
 {
-    QUrl ret;
     for (const AppStream::Image &i : images) {
         if (i.kind() == kind) {
-            ret = i.url();
-            break;
+            return i;
         }
     }
-    return ret;
+    return {};
 }
 
 QString AppStreamUtils::changelogToHtml(const AppStream::Component &appdata)
@@ -59,14 +57,18 @@ Screenshots AppStreamUtils::fetchScreenshots(const AppStream::Component &appdata
     ret.reserve(appdataScreenshots.size());
     for (const AppStream::Screenshot &s : appdataScreenshots) {
         const auto images = s.images();
-        const QUrl thumbnail = AppStreamUtils::imageOfKind(images, AppStream::Image::KindThumbnail);
-        const QUrl full = AppStreamUtils::imageOfKind(images, AppStream::Image::KindSource);
-        if (full.isEmpty()) {
+        const auto thumbnail = AppStreamUtils::imageOfKind(images, AppStream::Image::KindThumbnail);
+        const auto full = AppStreamUtils::imageOfKind(images, AppStream::Image::KindSource);
+        if (full.url().isEmpty()) {
             qWarning() << "AppStreamUtils: Invalid screenshot for" << appdata.name();
         }
         const bool isAnimated = s.mediaKind() == AppStream::Screenshot::MediaKindVideo;
 
-        ret.append(Screenshot{thumbnail.isEmpty() ? full : thumbnail, full, isAnimated});
+        if (thumbnail.url().isEmpty()) {
+            ret.append(Screenshot{full.url(), full.url(), isAnimated, full.size()});
+        } else {
+            ret.append(Screenshot{thumbnail.url(), full.url(), isAnimated, thumbnail.size()});
+        }
     }
     return ret;
 }
