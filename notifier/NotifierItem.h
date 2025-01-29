@@ -14,7 +14,7 @@ class NotifierItem : public QObject
 {
     Q_OBJECT
 public:
-    NotifierItem();
+    NotifierItem(const std::chrono::seconds &checkDelay);
 
     void setupNotifierItem();
     void refresh();

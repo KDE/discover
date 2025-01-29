@@ -37,7 +37,7 @@ bool isOnline()
 }
 } // namespace
 
-DiscoverNotifier::DiscoverNotifier(QObject *parent)
+DiscoverNotifier::DiscoverNotifier(const std::chrono::seconds &checkDelay, QObject *parent)
     : QObject(parent)
 {
     m_settings = new UpdatesSettings(this);
@@ -84,16 +84,16 @@ DiscoverNotifier::DiscoverNotifier(QObject *parent)
     updateStatusNotifier();
 
     // Only fetch updates after the system is comfortably booted
-    QTimer::singleShot(20s, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
+    QTimer::singleShot(checkDelay, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
 
     auto login1 = new OrgFreedesktopLogin1ManagerInterface(QStringLiteral("org.freedesktop.login1"),
                                                            QStringLiteral("/org/freedesktop/login1"),
                                                            QDBusConnection::systemBus(),
                                                            this);
-    connect(login1, &OrgFreedesktopLogin1ManagerInterface::PrepareForSleep, this, [this](bool sleeping) {
+    connect(login1, &OrgFreedesktopLogin1ManagerInterface::PrepareForSleep, this, [this, checkDelay](bool sleeping) {
         // if we just woke up and have not checked in the notification interval
         if (!sleeping && m_lastUpdate.secsTo(QDateTime::currentDateTimeUtc()) > m_settings->requiredNotificationInterval()) {
-            QTimer::singleShot(20s, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
+            QTimer::singleShot(checkDelay, this, &DiscoverNotifier::recheckSystemUpdateNeeded);
         }
     });
 
