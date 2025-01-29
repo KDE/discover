@@ -457,7 +457,7 @@ DiscoverPage {
                                         wrapMode: Text.Wrap
                                         maximumLineCount: 3
                                         elide: Text.ElideRight
-                                        color: appInfo.colorForLicenseType(delegate.modelData.licenseType)
+                                        normalColor: appInfo.colorForLicenseType(delegate.modelData.licenseType)
                                     }
                                     QQC2.Label {
                                         readonly property int licensesCount: appInfo.application.licenses.length
@@ -910,7 +910,7 @@ DiscoverPage {
                         text: delegate.modelData.name
                         url: delegate.modelData.url
                         horizontalAlignment: Text.AlignLeft
-                        color: appInfo.colorForLicenseType(delegate.modelData.licenseType)
+                        normalColor: appInfo.colorForLicenseType(delegate.modelData.licenseType)
                     }
                 }
             }
