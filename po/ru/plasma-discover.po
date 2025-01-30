@@ -7,13 +7,13 @@
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # Alexander Potashev <aspotashev@gmail.com>, 2015, 2016, 2017, 2018, 2019, 2020.
 # Artem Grinev <agrinev98@gmail.com>, 2016.
-# Alexander Yavorsky <kekcuha@gmail.com>, 2024.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-28 00:42+0000\n"
-"PO-Revision-Date: 2024-11-17 17:15+0300\n"
+"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"PO-Revision-Date: 2025-01-29 11:02+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -622,15 +622,13 @@ msgid "External Links"
 msgstr "Внешние ссылки"
 
 #: discover/qml/ApplicationPage.qml:821
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "Ознакомиться с официальной документацией проекта"
+msgstr "Ознакомиться с документацией"
 
 #: discover/qml/ApplicationPage.qml:832
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Посетить веб-сайт проекта"
@@ -639,11 +637,10 @@ msgstr "Посетить веб-сайт проекта"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "Пожертвовать проекту"
 
 #: discover/qml/ApplicationPage.qml:852
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "Сообщить об ошибке"
@@ -652,7 +649,7 @@ msgstr "Сообщить об ошибке"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "Принять участие"
 
 #: discover/qml/ApplicationPage.qml:891
 #, kde-format
@@ -801,54 +798,54 @@ msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
 msgstr "Весь каталог"
 
-#: discover/qml/BrowsingPage.qml:53
+#: discover/qml/BrowsingPage.qml:54
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Не удалось получить список приложений"
 
-#: discover/qml/BrowsingPage.qml:89
+#: discover/qml/BrowsingPage.qml:90
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Самые популярные"
 
-#: discover/qml/BrowsingPage.qml:118
+#: discover/qml/BrowsingPage.qml:119
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "Недавно опубликованные и обновлённые"
 
-#: discover/qml/BrowsingPage.qml:168
+#: discover/qml/BrowsingPage.qml:169
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Выбор редактора"
 
-#: discover/qml/BrowsingPage.qml:193
+#: discover/qml/BrowsingPage.qml:194
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Лучшие игры"
 
-#: discover/qml/BrowsingPage.qml:222 discover/qml/BrowsingPage.qml:277
+#: discover/qml/BrowsingPage.qml:223 discover/qml/BrowsingPage.qml:278
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Дополнительно…"
 
-#: discover/qml/BrowsingPage.qml:246
+#: discover/qml/BrowsingPage.qml:247
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "Лучшие инструменты для разработки"
 
-#: discover/qml/CarouselDelegate.qml:212
+#: discover/qml/CarouselDelegate.qml:213
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
 msgstr "Воспроизвести"
 
-#: discover/qml/CarouselDelegate.qml:214
+#: discover/qml/CarouselDelegate.qml:215
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"

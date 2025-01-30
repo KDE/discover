@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-27 00:42+0000\n"
+"POT-Creation-Date: 2025-01-30 00:42+0000\n"
 "PO-Revision-Date: 2023-11-27 18:34+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -31,7 +31,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "matejm98mthw@gmail.com,prescott66@gmail.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:107
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -42,12 +42,12 @@ msgstr "matejm98mthw@gmail.com,prescott66@gmail.com"
 msgid "Unknown"
 msgstr "Neznáme"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #, kde-format
 msgid "Proprietary"
 msgstr "Uzavreté"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:113
+#: libdiscover/appstream/AppStreamUtils.cpp:115
 #, kde-format
 msgid "Public Domain"
 msgstr "Voľne šíriteľné dielo"

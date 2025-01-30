@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-28 00:42+0000\n"
+"POT-Creation-Date: 2025-01-30 00:42+0000\n"
 "PO-Revision-Date: 2024-11-28 07:54+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -771,54 +771,54 @@ msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
 msgstr "الصفحة الأولى"
 
-#: discover/qml/BrowsingPage.qml:53
+#: discover/qml/BrowsingPage.qml:54
 #, kde-format
 msgid "Unable to load applications"
 msgstr "لم يتمكن من تحميل التطبيقات"
 
-#: discover/qml/BrowsingPage.qml:89
+#: discover/qml/BrowsingPage.qml:90
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "الأكثر شعبيّة"
 
-#: discover/qml/BrowsingPage.qml:118
+#: discover/qml/BrowsingPage.qml:119
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "المنشور حديثا و المحدث قريبا"
 
-#: discover/qml/BrowsingPage.qml:168
+#: discover/qml/BrowsingPage.qml:169
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "اختيار المحررين"
 
-#: discover/qml/BrowsingPage.qml:193
+#: discover/qml/BrowsingPage.qml:194
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "الألعاب الأعلى تقييماً"
 
-#: discover/qml/BrowsingPage.qml:222 discover/qml/BrowsingPage.qml:277
+#: discover/qml/BrowsingPage.qml:223 discover/qml/BrowsingPage.qml:278
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "المزيد"
 
-#: discover/qml/BrowsingPage.qml:246
+#: discover/qml/BrowsingPage.qml:247
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "أدوات المطوّر الأعلى تقييماً"
 
-#: discover/qml/CarouselDelegate.qml:212
+#: discover/qml/CarouselDelegate.qml:213
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
 msgstr "شغّل"
 
-#: discover/qml/CarouselDelegate.qml:214
+#: discover/qml/CarouselDelegate.qml:215
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"

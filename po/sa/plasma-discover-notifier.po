@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-28 00:42+0000\n"
+"POT-Creation-Date: 2025-01-30 00:42+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -93,84 +93,84 @@ msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "उन्नयनं कुर्वन्तु"
 
-#: notifier/main.cpp:38
+#: notifier/main.cpp:39
 #, kde-format
 msgid "Discover Notifier"
 msgstr "डिस्कवर् नोटिफायर्"
 
-#: notifier/main.cpp:40
+#: notifier/main.cpp:41
 #, kde-format
 msgid "System update status notifier"
 msgstr "तन्त्र अद्यतन स्थिति सूचक"
 
-#: notifier/main.cpp:42
+#: notifier/main.cpp:43
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© २०१०-२०२४ प्लाज्मा विकासदल"
 
-#: notifier/main.cpp:46
+#: notifier/main.cpp:47
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "श्रीकान्त् कलवार्"
 
-#: notifier/main.cpp:46
+#: notifier/main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "skkalwar999@gmail.com"
 
-#: notifier/main.cpp:51
+#: notifier/main.cpp:52
 #, kde-format
 msgid "Replace an existing instance"
 msgstr "विद्यमानं दृष्टान्तं प्रतिस्थापयन्तु"
 
-#: notifier/main.cpp:53
+#: notifier/main.cpp:56
 #, kde-format
 msgid "Do not show the notifier"
 msgstr "सूचनादाता न दर्शयतु"
 
-#: notifier/main.cpp:53
+#: notifier/main.cpp:56
 #, kde-format
 msgid "hidden"
 msgstr "अदृष्ट"
 
-#: notifier/NotifierItem.cpp:21 notifier/NotifierItem.cpp:22
+#: notifier/NotifierItem.cpp:22 notifier/NotifierItem.cpp:23
 #, kde-format
 msgid "Updates"
 msgstr "अद्यतनाः"
 
-#: notifier/NotifierItem.cpp:34
+#: notifier/NotifierItem.cpp:35
 #, kde-format
 msgid "Open Discover…"
 msgstr "डिस्कवरं उद्घाटयन्तु…"
 
-#: notifier/NotifierItem.cpp:39
+#: notifier/NotifierItem.cpp:40
 #, kde-format
 msgid "See Updates…"
 msgstr "अद्यतनं पश्यन्तु…"
 
-#: notifier/NotifierItem.cpp:44
+#: notifier/NotifierItem.cpp:45
 #, kde-format
 msgid "Refresh…"
 msgstr "नवीकरणम्…"
 
-#: notifier/NotifierItem.cpp:50
+#: notifier/NotifierItem.cpp:51
 #, kde-format
 msgid "Install Updates and Restart…"
 msgstr "अद्यतनं संस्थाप्य पुनः आरम्भं कुर्वन्तु…"
 
-#: notifier/NotifierItem.cpp:53
+#: notifier/NotifierItem.cpp:54
 #, kde-format
 msgid "Install Updates and Shut Down…"
 msgstr "अपडेट् संस्थाप्य शट् डाउन कुर्वन्तु…"
 
-#: notifier/NotifierItem.cpp:58
+#: notifier/NotifierItem.cpp:59
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "संस्थापितानि अद्यतनानि प्रयोक्तुं पुनः आरभत"
 
-#: notifier/NotifierItem.cpp:59
+#: notifier/NotifierItem.cpp:60
 #, kde-format
 msgid "Click to restart the device"
 msgstr "यन्त्रं पुनः आरभ्यतुं नोदनम् कुर्वन्तु"

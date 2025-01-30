@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-28 00:42+0000\n"
+"POT-Creation-Date: 2025-01-30 00:42+0000\n"
 "PO-Revision-Date: 2024-11-22 18:37+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -765,54 +765,54 @@ msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
 msgstr "Начална  страница"
 
-#: discover/qml/BrowsingPage.qml:53
+#: discover/qml/BrowsingPage.qml:54
 #, kde-format
 msgid "Unable to load applications"
 msgstr "Приложенията не могат да се заредят"
 
-#: discover/qml/BrowsingPage.qml:89
+#: discover/qml/BrowsingPage.qml:90
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "Най-популярни"
 
-#: discover/qml/BrowsingPage.qml:118
+#: discover/qml/BrowsingPage.qml:119
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "Нови и наскоро актуализирани"
 
-#: discover/qml/BrowsingPage.qml:168
+#: discover/qml/BrowsingPage.qml:169
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Избор на редактора"
 
-#: discover/qml/BrowsingPage.qml:193
+#: discover/qml/BrowsingPage.qml:194
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "Най-високо оценени игри"
 
-#: discover/qml/BrowsingPage.qml:222 discover/qml/BrowsingPage.qml:277
+#: discover/qml/BrowsingPage.qml:223 discover/qml/BrowsingPage.qml:278
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "Още"
 
-#: discover/qml/BrowsingPage.qml:246
+#: discover/qml/BrowsingPage.qml:247
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "Най-високо оценени инструменти за разработка"
 
-#: discover/qml/CarouselDelegate.qml:212
+#: discover/qml/CarouselDelegate.qml:213
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
 msgstr "Изпълнение"
 
-#: discover/qml/CarouselDelegate.qml:214
+#: discover/qml/CarouselDelegate.qml:215
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"

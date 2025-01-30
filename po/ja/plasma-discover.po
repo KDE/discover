@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-28 00:42+0000\n"
+"POT-Creation-Date: 2025-01-30 00:42+0000\n"
 "PO-Revision-Date: 2024-11-17 21:51+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -734,54 +734,54 @@ msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
 msgstr "ホーム"
 
-#: discover/qml/BrowsingPage.qml:53
+#: discover/qml/BrowsingPage.qml:54
 #, kde-format
 msgid "Unable to load applications"
 msgstr "アプリケーションを読み込めません"
 
-#: discover/qml/BrowsingPage.qml:89
+#: discover/qml/BrowsingPage.qml:90
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
 msgstr "人気"
 
-#: discover/qml/BrowsingPage.qml:118
+#: discover/qml/BrowsingPage.qml:119
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
 msgstr "最近リリース＆更新"
 
-#: discover/qml/BrowsingPage.qml:168
+#: discover/qml/BrowsingPage.qml:169
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "エディタのおすすめ"
 
-#: discover/qml/BrowsingPage.qml:193
+#: discover/qml/BrowsingPage.qml:194
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
 msgstr "高く評価されたゲーム"
 
-#: discover/qml/BrowsingPage.qml:222 discover/qml/BrowsingPage.qml:277
+#: discover/qml/BrowsingPage.qml:223 discover/qml/BrowsingPage.qml:278
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
 msgstr "さらに見る"
 
-#: discover/qml/BrowsingPage.qml:246
+#: discover/qml/BrowsingPage.qml:247
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "高く評価された開発ツール"
 
-#: discover/qml/CarouselDelegate.qml:212
+#: discover/qml/CarouselDelegate.qml:213
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
 msgstr "再生"
 
-#: discover/qml/CarouselDelegate.qml:214
+#: discover/qml/CarouselDelegate.qml:215
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"
