@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-10 01:59+0000\n"
+"POT-Creation-Date: 2025-01-30 02:33+0000\n"
 "PO-Revision-Date: 2023-12-05 17:21+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -828,13 +828,13 @@ msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "Najvyššie hodnotené nástroje pre vývojárov"
 
-#: discover/qml/CarouselDelegate.qml:212
+#: discover/qml/CarouselDelegate.qml:213
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
 msgstr "Prehrať"
 
-#: discover/qml/CarouselDelegate.qml:214
+#: discover/qml/CarouselDelegate.qml:215
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"

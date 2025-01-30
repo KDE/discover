@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-10 01:59+0000\n"
+"POT-Creation-Date: 2025-01-30 02:33+0000\n"
 "PO-Revision-Date: 2024-02-10 09:57-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -742,13 +742,13 @@ msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "ਸਭ ਤੋਂ ਵੱਧ ਰੇਟ ਕੀਤੇ ਡਿਵੈਲਪਰ ਟੂਲ"
 
-#: discover/qml/CarouselDelegate.qml:212
+#: discover/qml/CarouselDelegate.qml:213
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
 msgstr "ਚਲਾਓ"
 
-#: discover/qml/CarouselDelegate.qml:214
+#: discover/qml/CarouselDelegate.qml:215
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"

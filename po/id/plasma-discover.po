@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-10 01:59+0000\n"
+"POT-Creation-Date: 2025-01-30 02:33+0000\n"
 "PO-Revision-Date: 2024-11-25 21:34+0700\n"
 "Last-Translator: Wantoyo <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -816,13 +816,13 @@ msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
 msgstr "Peralatan Pengembang dengan Nilai Tertinggi"
 
-#: discover/qml/CarouselDelegate.qml:212
+#: discover/qml/CarouselDelegate.qml:213
 #, kde-format
 msgctxt "@action:button Start playing media"
 msgid "Play"
 msgstr "Putar"
 
-#: discover/qml/CarouselDelegate.qml:214
+#: discover/qml/CarouselDelegate.qml:215
 #, kde-format
 msgctxt "@action:button Pause any media that is playing"
 msgid "Pause"

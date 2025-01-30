@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-19 02:31+0000\n"
+"POT-Creation-Date: 2025-01-30 02:33+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -33,7 +33,7 @@ msgid "Your emails"
 msgstr ""
 
 # >> @item unknown licence
-#: libdiscover/appstream/AppStreamUtils.cpp:106
+#: libdiscover/appstream/AppStreamUtils.cpp:108
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -44,12 +44,12 @@ msgstr ""
 msgid "Unknown"
 msgstr "nepoznata"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:108
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #, kde-format
 msgid "Proprietary"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:112
+#: libdiscover/appstream/AppStreamUtils.cpp:114
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Publishing"

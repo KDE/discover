@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-01-30 02:33+0000\n"
 "PO-Revision-Date: 2024-08-20 21:42+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -91,84 +91,84 @@ msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "업그레이드"
 
-#: notifier/main.cpp:38
+#: notifier/main.cpp:39
 #, kde-format
 msgid "Discover Notifier"
 msgstr "Discover 알림이"
 
-#: notifier/main.cpp:40
+#: notifier/main.cpp:41
 #, kde-format
 msgid "System update status notifier"
 msgstr "시스템 업데이트 상태 알림이"
 
-#: notifier/main.cpp:42
+#: notifier/main.cpp:43
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010-2024 Plasma Development Team"
 
-#: notifier/main.cpp:46
+#: notifier/main.cpp:47
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "박신조"
 
-#: notifier/main.cpp:46
+#: notifier/main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
-#: notifier/main.cpp:51
+#: notifier/main.cpp:52
 #, kde-format
 msgid "Replace an existing instance"
 msgstr "실행 중인 인스턴스 대체"
 
-#: notifier/main.cpp:53
+#: notifier/main.cpp:56
 #, kde-format
 msgid "Do not show the notifier"
 msgstr "알림이 표시하지 않기"
 
-#: notifier/main.cpp:53
+#: notifier/main.cpp:56
 #, kde-format
 msgid "hidden"
 msgstr "숨김"
 
-#: notifier/NotifierItem.cpp:21 notifier/NotifierItem.cpp:22
+#: notifier/NotifierItem.cpp:22 notifier/NotifierItem.cpp:23
 #, kde-format
 msgid "Updates"
 msgstr "업데이트"
 
-#: notifier/NotifierItem.cpp:34
+#: notifier/NotifierItem.cpp:35
 #, kde-format
 msgid "Open Discover…"
 msgstr "Discover 열기…"
 
-#: notifier/NotifierItem.cpp:39
+#: notifier/NotifierItem.cpp:40
 #, kde-format
 msgid "See Updates…"
 msgstr "업데이트 보기…"
 
-#: notifier/NotifierItem.cpp:44
+#: notifier/NotifierItem.cpp:45
 #, kde-format
 msgid "Refresh…"
 msgstr "새로 고침…"
 
-#: notifier/NotifierItem.cpp:50
+#: notifier/NotifierItem.cpp:51
 #, kde-format
 msgid "Install Updates and Restart…"
 msgstr "업데이트 설치 후 다시 시작…"
 
-#: notifier/NotifierItem.cpp:53
+#: notifier/NotifierItem.cpp:54
 #, kde-format
 msgid "Install Updates and Shut Down…"
 msgstr "업데이트 설치 후 끄기…"
 
-#: notifier/NotifierItem.cpp:58
+#: notifier/NotifierItem.cpp:59
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "설치한 업데이트를 적용하려면 시스템을 다시 시작해야 함"
 
-#: notifier/NotifierItem.cpp:59
+#: notifier/NotifierItem.cpp:60
 #, kde-format
 msgid "Click to restart the device"
 msgstr "장치를 다시 시작하려면 클릭하십시오"

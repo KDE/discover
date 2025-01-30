@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-18 00:40+0000\n"
+"POT-Creation-Date: 2025-01-30 02:33+0000\n"
 "PO-Revision-Date: 2024-08-19 20:56+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -94,84 +94,84 @@ msgctxt "@action:button"
 msgid "Upgrade"
 msgstr "Oppgrader"
 
-#: notifier/main.cpp:38
+#: notifier/main.cpp:39
 #, kde-format
 msgid "Discover Notifier"
 msgstr "Discover-varslingar"
 
-#: notifier/main.cpp:40
+#: notifier/main.cpp:41
 #, kde-format
 msgid "System update status notifier"
 msgstr "Varsling om systemoppdatering"
 
-#: notifier/main.cpp:42
+#: notifier/main.cpp:43
 #, kde-format
 msgid "© 2010-2024 Plasma Development Team"
 msgstr "© 2010–2024 Utviklingslaget for Plasma"
 
-#: notifier/main.cpp:46
+#: notifier/main.cpp:47
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Karl Ove Hufthammer"
 
-#: notifier/main.cpp:46
+#: notifier/main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "karl@huftis.org"
 
-#: notifier/main.cpp:51
+#: notifier/main.cpp:52
 #, kde-format
 msgid "Replace an existing instance"
 msgstr "Erstatt ein instans som finst frå før"
 
-#: notifier/main.cpp:53
+#: notifier/main.cpp:56
 #, kde-format
 msgid "Do not show the notifier"
 msgstr "Ikkje vis varsling"
 
-#: notifier/main.cpp:53
+#: notifier/main.cpp:56
 #, kde-format
 msgid "hidden"
 msgstr "gøymd"
 
-#: notifier/NotifierItem.cpp:21 notifier/NotifierItem.cpp:22
+#: notifier/NotifierItem.cpp:22 notifier/NotifierItem.cpp:23
 #, kde-format
 msgid "Updates"
 msgstr "Oppdateringar"
 
-#: notifier/NotifierItem.cpp:34
+#: notifier/NotifierItem.cpp:35
 #, kde-format
 msgid "Open Discover…"
 msgstr "Opna Discover …"
 
-#: notifier/NotifierItem.cpp:39
+#: notifier/NotifierItem.cpp:40
 #, kde-format
 msgid "See Updates…"
 msgstr "Sjå oppdateringar …"
 
-#: notifier/NotifierItem.cpp:44
+#: notifier/NotifierItem.cpp:45
 #, kde-format
 msgid "Refresh…"
 msgstr "Last om att …"
 
-#: notifier/NotifierItem.cpp:50
+#: notifier/NotifierItem.cpp:51
 #, kde-format
 msgid "Install Updates and Restart…"
 msgstr "Installer oppdateringar og start på nytt …"
 
-#: notifier/NotifierItem.cpp:53
+#: notifier/NotifierItem.cpp:54
 #, kde-format
 msgid "Install Updates and Shut Down…"
 msgstr "Installer oppdateringar og slå av …"
 
-#: notifier/NotifierItem.cpp:58
+#: notifier/NotifierItem.cpp:59
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "Start på nytt for å ta i bruk oppdateringane"
 
-#: notifier/NotifierItem.cpp:59
+#: notifier/NotifierItem.cpp:60
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Trykk for å starta eininga på nytt"
