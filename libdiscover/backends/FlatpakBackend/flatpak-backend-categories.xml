@@ -26,7 +26,7 @@
     </Menu>
 
     <Menu>
-      <Name>Accessories</Name>
+      <Name>Utilites</Name>
       <Icon>applications-utilities</Icon>
       <Include>
         <And>
@@ -48,7 +48,7 @@
     </Menu>
 
     <Menu>
-      <Name>Developer Tools</Name>
+      <Name>Development</Name>
       <Icon>applications-development</Icon>
       <Include>
         <Or>
@@ -128,7 +128,7 @@
     </Menu>
 
     <Menu>
-      <Name>Science and Engineering</Name>
+      <Name>Science &amp; Math</Name>
       <Icon>applications-science</Icon>
       <Include>
         <Or>
@@ -543,8 +543,8 @@
     </Menu>
 
     <Menu>
-      <Name>System Settings</Name>
-      <Icon>preferences-system</Icon>
+      <Name>System</Name>
+      <Icon>applications-system</Icon>
       <Include>
         <Or>
           <Category>Settings</Category>
