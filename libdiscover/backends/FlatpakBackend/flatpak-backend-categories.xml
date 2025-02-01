@@ -26,7 +26,7 @@
     </Menu>
 
     <Menu>
-      <Name>Utilites</Name>
+      <Name>Utilities</Name>
       <Icon>applications-utilities</Icon>
       <Include>
         <And>
