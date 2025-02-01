@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: CC0-1.0
 
 Dependencies:
-- 'on': ['@all']
-  'require':
+ - 'on': ['@all']
+   'require':
     'frameworks/attica': '@latest-kf6'
     'frameworks/extra-cmake-modules': '@latest-kf6'
     'frameworks/karchive': '@latest-kf6'
@@ -33,9 +33,9 @@ Dependencies:
     'third-party/appstream': '@latest'
 
 RuntimeDependencies:
-- 'on': ['Linux']
-  'require':
+ - 'on': ['Linux']
+   'require':
     'sdk/selenium-webdriver-at-spi': '@latest'
 
 Options:
-  require-passing-tests-on: [ 'Linux', 'FreeBSD']
+ require-passing-tests-on: ['Linux', 'FreeBSD']
