@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 02:33+0000\n"
+"POT-Creation-Date: 2025-02-01 02:33+0000\n"
 "PO-Revision-Date: 2024-11-26 20:48+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 "pan93412@gmail.com, s8321414@gmail.com, brli@chakralinux.org, mail@kisaragi-"
 "hiu.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:108
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -46,12 +46,12 @@ msgstr ""
 msgid "Unknown"
 msgstr "未知"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:110
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #, kde-format
 msgid "Proprietary"
 msgstr "專有軟體"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:114
+#: libdiscover/appstream/AppStreamUtils.cpp:115
 #, kde-format
 msgid "Public Domain"
 msgstr "公眾領域"

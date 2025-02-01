@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 02:33+0000\n"
+"POT-Creation-Date: 2025-02-01 02:33+0000\n"
 "PO-Revision-Date: 2024-08-04 17:25+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -27,7 +27,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Kde-l10n-ta@kde.org"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:108
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -38,12 +38,12 @@ msgstr "Kde-l10n-ta@kde.org"
 msgid "Unknown"
 msgstr "தெரியாதது"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:110
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #, kde-format
 msgid "Proprietary"
 msgstr "தனியுடைமை"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:114
+#: libdiscover/appstream/AppStreamUtils.cpp:115
 #, kde-format
 msgid "Public Domain"
 msgstr "பொதுவுடைமை"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 02:33+0000\n"
+"POT-Creation-Date: 2025-02-01 02:33+0000\n"
 "PO-Revision-Date: 2024-09-19 14:31+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -34,7 +34,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "george.stefanakis@gmail.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:108
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -45,12 +45,12 @@ msgstr "george.stefanakis@gmail.com"
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:110
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #, kde-format
 msgid "Proprietary"
 msgstr "Ιδιοταγές"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:114
+#: libdiscover/appstream/AppStreamUtils.cpp:115
 #, kde-format
 msgid "Public Domain"
 msgstr "Δημόσια χρήση"

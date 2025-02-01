@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 02:33+0000\n"
+"POT-Creation-Date: 2025-02-01 02:33+0000\n"
 "PO-Revision-Date: 2014-07-06 22:08+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -29,7 +29,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:108
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -44,12 +44,12 @@ msgstr ""
 msgid "Unknown"
 msgstr "Nich begäng"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:110
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #, kde-format
 msgid "Proprietary"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:114
+#: libdiscover/appstream/AppStreamUtils.cpp:115
 #, kde-format
 msgid "Public Domain"
 msgstr ""

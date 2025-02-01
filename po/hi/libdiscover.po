@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 02:33+0000\n"
+"POT-Creation-Date: 2025-02-01 02:33+0000\n"
 "PO-Revision-Date: 2022-02-26 11:47+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: Hindi <kde-l10n-hi@kde.org>\n"
@@ -27,7 +27,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "raghu@raghukamath.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:108
+#: libdiscover/appstream/AppStreamUtils.cpp:109
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -38,12 +38,12 @@ msgstr "raghu@raghukamath.com"
 msgid "Unknown"
 msgstr "अज्ञात"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:110
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #, kde-format
 msgid "Proprietary"
 msgstr "मालिकाना"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:114
+#: libdiscover/appstream/AppStreamUtils.cpp:115
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Publishing"
