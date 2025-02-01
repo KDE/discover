@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2023-02-17 08:42+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -30,7 +30,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "jieriksen@runbox.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -41,12 +41,12 @@ msgstr "jieriksen@runbox.com"
 msgid "Unknown"
 msgstr "Ukjent"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, kde-format
 msgid "Proprietary"
 msgstr "Proprietær"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, kde-format
 msgid "Public Domain"
 msgstr "Public Domain"
@@ -194,8 +194,8 @@ msgstr "Alle programmer"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
 #, kde-format
 msgctxt "Category"
-msgid "Accessories"
-msgstr "Tilbehør"
+msgid "Utilites"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -206,10 +206,12 @@ msgstr "Tilgjengelighet"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Web Development"
 msgctxt "Category"
-msgid "Developer Tools"
-msgstr "Utviklerverktøy"
+msgid "Development"
+msgstr "Nettutvikling"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -264,8 +266,8 @@ msgstr "Opplæring"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
 #, kde-format
 msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "Teknikk og vitenskap"
+msgid "Science & Math"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -549,10 +551,12 @@ msgstr "Kontor"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Repair System"
 msgctxt "Category"
-msgid "System Settings"
-msgstr "Systeminnstillinger"
+msgid "System"
+msgstr "Reparer systemet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -2734,3 +2738,19 @@ msgstr "Systemprogram"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tillegg"
+
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "Tilbehør"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "Utviklerverktøy"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "Teknikk og vitenskap"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "Systeminnstillinger"

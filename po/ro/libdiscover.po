@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2024-06-08 16:05+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -28,7 +28,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sergiu@cip.md"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -39,12 +39,12 @@ msgstr "sergiu@cip.md"
 msgid "Unknown"
 msgstr "Necunoscut"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, kde-format
 msgid "Proprietary"
 msgstr "Proprietar"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, kde-format
 msgid "Public Domain"
 msgstr "Domeniu public"
@@ -193,10 +193,14 @@ msgstr "Toate aplicațiile"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"utils"
+#| "\""
+#| msgid "Utilities"
 msgctxt "Category"
-msgid "Accessories"
-msgstr "Accesorii"
+msgid "Utilites"
+msgstr "Utilitare"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -207,10 +211,14 @@ msgstr "Accesibilitate"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"devel"
+#| "\""
+#| msgid "Development"
 msgctxt "Category"
-msgid "Developer Tools"
-msgstr "Unelte pentru dezvoltatori"
+msgid "Development"
+msgstr "Dezvoltare"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -263,10 +271,14 @@ msgstr "Educație"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:131
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section "
+#| "\"science\""
+#| msgid "Science"
 msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "Știință și inginerie"
+msgid "Science & Math"
+msgstr "Știință"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -550,10 +562,12 @@ msgstr "Birou"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Repair System"
 msgctxt "Category"
-msgid "System Settings"
-msgstr "Configurări de sistem"
+msgid "System"
+msgstr "Repară sistemul"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -2763,6 +2777,22 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Suplimente"
 
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "Accesorii"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "Unelte pentru dezvoltatori"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "Știință și inginerie"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "Configurări de sistem"
+
 #~ msgid "Could not find '%1' in '%2'; please make sure it's available."
 #~ msgstr "Nu s-a putut găsi „%1” în „%2”, asigurați-vă că e disponibil."
 
@@ -3599,12 +3629,6 @@ msgstr "Suplimente"
 #~ msgstr "Baze de date"
 
 #~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"devel"
-#~ "\""
-#~ msgid "Development"
-#~ msgstr "Dezvoltare"
-
-#~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section \"doc\""
 #~ msgid "Documentation"
 #~ msgstr "Documentație"
@@ -3806,12 +3830,6 @@ msgstr "Suplimente"
 
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"science\""
-#~ msgid "Science"
-#~ msgstr "Știință"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
 #~ "\"shells\""
 #~ msgid "Shells"
 #~ msgstr "Interpretoare"
@@ -3832,12 +3850,6 @@ msgstr "Suplimente"
 #~ "\""
 #~ msgid "Word Processing"
 #~ msgstr "Procesare de text"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"utils"
-#~ "\""
-#~ msgid "Utilities"
-#~ msgstr "Utilitare"
 
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section \"vcs\""

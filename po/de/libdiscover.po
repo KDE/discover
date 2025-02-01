@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2024-11-11 17:56+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -30,7 +30,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-i18n-de@kde.org,pano_90@gmx.net,bulldog98@kubuntu-de.org"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -41,12 +41,12 @@ msgstr "kde-i18n-de@kde.org,pano_90@gmx.net,bulldog98@kubuntu-de.org"
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, kde-format
 msgid "Proprietary"
 msgstr "Proprietär"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, kde-format
 msgid "Public Domain"
 msgstr "Gemeinfrei"
@@ -194,9 +194,13 @@ msgstr "Alle Anwendungen"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"utils"
+#| "\""
+#| msgid "Utilities"
 msgctxt "Category"
-msgid "Accessories"
+msgid "Utilites"
 msgstr "Dienstprogramme"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
@@ -208,10 +212,14 @@ msgstr "Zugangshilfen"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"devel"
+#| "\""
+#| msgid "Development"
 msgctxt "Category"
-msgid "Developer Tools"
-msgstr "Entwicklungswerkzeuge"
+msgid "Development"
+msgstr "Entwicklung"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -264,10 +272,14 @@ msgstr "Lernprogramme"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:131
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section "
+#| "\"science\""
+#| msgid "Science"
 msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "Wissenschaft und Ingenieurwesen"
+msgid "Science & Math"
+msgstr "Wissenschaft"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -551,10 +563,12 @@ msgstr "Büroprogramme"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Repair System"
 msgctxt "Category"
-msgid "System Settings"
-msgstr "Systemeinstellungen"
+msgid "System"
+msgstr "System aktualisieren"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -2776,6 +2790,22 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Erweiterungen"
 
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "Dienstprogramme"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "Entwicklungswerkzeuge"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "Wissenschaft und Ingenieurwesen"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "Systemeinstellungen"
+
 #~ msgid "Could not find '%1' in '%2'; please make sure it's available."
 #~ msgstr ""
 #~ "„%1” kann nicht in „%2” gefunden werden. Bitte prüfen Sie die "
@@ -3697,12 +3727,6 @@ msgstr "Erweiterungen"
 #~ msgstr "Datenbanken"
 
 #~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"devel"
-#~ "\""
-#~ msgid "Development"
-#~ msgstr "Entwicklung"
-
-#~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section \"doc\""
 #~ msgid "Documentation"
 #~ msgstr "Dokumentation"
@@ -3904,12 +3928,6 @@ msgstr "Erweiterungen"
 
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"science\""
-#~ msgid "Science"
-#~ msgstr "Wissenschaft"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
 #~ "\"shells\""
 #~ msgid "Shells"
 #~ msgstr "Shells"
@@ -3930,12 +3948,6 @@ msgstr "Erweiterungen"
 #~ "\""
 #~ msgid "Word Processing"
 #~ msgstr "Textverarbeitung"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"utils"
-#~ "\""
-#~ msgid "Utilities"
-#~ msgstr "Dienstprogramme"
 
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section \"vcs\""

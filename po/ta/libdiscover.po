@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2024-08-04 17:25+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -27,7 +27,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Kde-l10n-ta@kde.org"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -38,12 +38,12 @@ msgstr "Kde-l10n-ta@kde.org"
 msgid "Unknown"
 msgstr "தெரியாதது"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, kde-format
 msgid "Proprietary"
 msgstr "தனியுடைமை"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, kde-format
 msgid "Public Domain"
 msgstr "பொதுவுடைமை"
@@ -194,8 +194,8 @@ msgstr "அனைத்து செயலிகள்"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
 #, kde-format
 msgctxt "Category"
-msgid "Accessories"
-msgstr "துணைக்கருவிகள்"
+msgid "Utilites"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -206,10 +206,12 @@ msgstr "அணுகல்தன்மை"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Web Development"
 msgctxt "Category"
-msgid "Developer Tools"
-msgstr "நிரலாக்க கருவிகள்"
+msgid "Development"
+msgstr "இணைய உருவாக்கம்"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -264,8 +266,8 @@ msgstr "கல்வி"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
 #, kde-format
 msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "அறிவியல் மற்றும் பொறியியல்"
+msgid "Science & Math"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -549,10 +551,12 @@ msgstr "அலுவலகம்"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Repair System"
 msgctxt "Category"
-msgid "System Settings"
-msgstr "கணினி அமைப்புகள்"
+msgid "System"
+msgstr "கணினியை சரிசெய்"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -2691,6 +2695,22 @@ msgstr "இயங்குதள நிரல்கள்"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "துணை நிரல்கள்"
+
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "துணைக்கருவிகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "நிரலாக்க கருவிகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "அறிவியல் மற்றும் பொறியியல்"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "கணினி அமைப்புகள்"
 
 #~ msgid "Could not find '%1' in '%2'; please make sure it's available."
 #~ msgstr ""

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -33,7 +33,7 @@ msgid "Your emails"
 msgstr ""
 
 # >> @item unknown licence
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -44,12 +44,12 @@ msgstr ""
 msgid "Unknown"
 msgstr "nepoznata"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, kde-format
 msgid "Proprietary"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Publishing"
@@ -203,8 +203,8 @@ msgstr "Programi|/|$[svojstva lok 'Programima']"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
 #, kde-format
 msgctxt "Category"
-msgid "Accessories"
-msgstr "Dopunske alatke|/|$[svojstva lok 'Dopunskim alatkama']"
+msgid "Utilites"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -215,10 +215,12 @@ msgstr "Pristupačnost|/|$[svojstva lok 'Pristupačnosti']"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Web Development"
 msgctxt "Category"
-msgid "Developer Tools"
-msgstr "Programerske alatke|/|$[svojstva lok 'Programerskim alatkama']"
+msgid "Development"
+msgstr "Razvoj za Web|/|$[svojstva lok 'Razvoju za Web']"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -275,10 +277,8 @@ msgstr "Obrazovanje|/|$[svojstva lok 'Obrazovanju']"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
 #, kde-format
 msgctxt "Category"
-msgid "Science and Engineering"
+msgid "Science & Math"
 msgstr ""
-"Prirodne nauke i inženjerstvo|/|$[svojstva lok 'Prirodnim naukama i "
-"inženjerstvu']"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -566,10 +566,12 @@ msgstr "Kancelarija|/|$[svojstva lok 'Kancelariji']"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Failed"
 msgctxt "Category"
-msgid "System Settings"
-msgstr "Sistem i postavke|/|$[svojstva lok 'Sistemu i postavkama']"
+msgid "System"
+msgstr "Propalo."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, fuzzy, kde-format
@@ -2838,6 +2840,24 @@ msgstr "dopune sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Dodaci za Plasmu"
+
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "Dopunske alatke|/|$[svojstva lok 'Dopunskim alatkama']"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "Programerske alatke|/|$[svojstva lok 'Programerskim alatkama']"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr ""
+#~ "Prirodne nauke i inženjerstvo|/|$[svojstva lok 'Prirodnim naukama i "
+#~ "inženjerstvu']"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "Sistem i postavke|/|$[svojstva lok 'Sistemu i postavkama']"
 
 #, fuzzy
 #~| msgctxt "Category"

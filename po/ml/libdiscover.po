@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2021-09-09 13:59+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Malayalam <https://kde.smc.org.in/projects/discover/"
@@ -29,7 +29,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vivekkj2004@gmail.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -40,12 +40,12 @@ msgstr "vivekkj2004@gmail.com"
 msgid "Unknown"
 msgstr "അജ്ഞാതം"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, kde-format
 msgid "Proprietary"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Publishing"
@@ -199,7 +199,7 @@ msgstr "ആപ്ലീക്കേഷനുകൾ"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
 #, kde-format
 msgctxt "Category"
-msgid "Accessories"
+msgid "Utilites"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
@@ -211,10 +211,12 @@ msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Web Development"
 msgctxt "Category"
-msgid "Developer Tools"
-msgstr "ഡെവലപ്പർ ഉപകരണങ്ങൾ"
+msgid "Development"
+msgstr "വെബ് ഡെവലപ്മെന്റ്"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -269,8 +271,8 @@ msgstr "വിദ്യാഭ്യാസം"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
 #, kde-format
 msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "ശാസ്ത്രവും എഞ്ചിനീയറിംഗും"
+msgid "Science & Math"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -554,10 +556,11 @@ msgstr "ഓഫീസ്"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "System upgrade"
 msgctxt "Category"
-msgid "System Settings"
-msgstr "സിസ്റ്റം സജ്ജീകരണങ്ങൾ"
+msgid "System"
+msgstr "സിസ്റ്റം അപ്ഗ്രേഡ്"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, fuzzy, kde-format
@@ -2654,6 +2657,18 @@ msgstr "സിസ്റ്റം അപ്ഗ്രേഡ്"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "ആഡ്ഓണുകൾ"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "ഡെവലപ്പർ ഉപകരണങ്ങൾ"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "ശാസ്ത്രവും എഞ്ചിനീയറിംഗും"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "സിസ്റ്റം സജ്ജീകരണങ്ങൾ"
 
 #, fuzzy
 #~| msgctxt "Category"

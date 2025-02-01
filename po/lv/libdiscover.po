@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2025-01-20 15:18+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -29,7 +29,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "toms.trasuns@posteo.net"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -40,12 +40,12 @@ msgstr "toms.trasuns@posteo.net"
 msgid "Unknown"
 msgstr "Nezināms"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, kde-format
 msgid "Proprietary"
 msgstr "Īpašniekprogrammatūra"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, kde-format
 msgid "Public Domain"
 msgstr "Sabiedrības īpašums"
@@ -195,8 +195,8 @@ msgstr "Visas programmas"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
 #, kde-format
 msgctxt "Category"
-msgid "Accessories"
-msgstr "Aksesuāri"
+msgid "Utilites"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -207,10 +207,12 @@ msgstr "Piekļūstamība"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Web Development"
 msgctxt "Category"
-msgid "Developer Tools"
-msgstr "Rīki izstrādātājiem"
+msgid "Development"
+msgstr "Tīmekļa izstrāde"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -265,8 +267,8 @@ msgstr "Izglītība"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
 #, kde-format
 msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "Zinātne un inženierzinības"
+msgid "Science & Math"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -550,10 +552,12 @@ msgstr "Birojs"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Repair System"
 msgctxt "Category"
-msgid "System Settings"
-msgstr "Sistēmas iestatījumi"
+msgid "System"
+msgstr "Labot sistēmu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -2735,6 +2739,22 @@ msgstr "Sistēmas programmatūra"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Pielikumi"
+
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "Aksesuāri"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "Rīki izstrādātājiem"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "Zinātne un inženierzinības"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "Sistēmas iestatījumi"
 
 #~ msgid "Could not find '%1' in '%2'; please make sure it's available."
 #~ msgstr ""

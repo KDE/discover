@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2024-09-19 14:31+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -34,7 +34,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "george.stefanakis@gmail.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -45,12 +45,12 @@ msgstr "george.stefanakis@gmail.com"
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, kde-format
 msgid "Proprietary"
 msgstr "Ιδιοταγές"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, kde-format
 msgid "Public Domain"
 msgstr "Δημόσια χρήση"
@@ -198,10 +198,14 @@ msgstr "Όλες οι Εφαρμογές"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"utils"
+#| "\""
+#| msgid "Utilities"
 msgctxt "Category"
-msgid "Accessories"
-msgstr "Εξαρτήματα"
+msgid "Utilites"
+msgstr "Βοηθήματα"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -212,10 +216,14 @@ msgstr "Προσβασιμότητα"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"devel"
+#| "\""
+#| msgid "Development"
 msgctxt "Category"
-msgid "Developer Tools"
-msgstr "Εργαλεία προγραμματιστή"
+msgid "Development"
+msgstr "Ανάπτυξη"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -268,10 +276,14 @@ msgstr "Εκπαίδευση"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:131
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section "
+#| "\"science\""
+#| msgid "Science"
 msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "Επιστήμη και Τεχνολογία"
+msgid "Science & Math"
+msgstr "Επιστήμη"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -555,10 +567,12 @@ msgstr "Γραφείο"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Repair System"
 msgctxt "Category"
-msgid "System Settings"
-msgstr "Ρυθμίσεις συστήματος"
+msgid "System"
+msgstr "Επισκευή συστήματος"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -2774,6 +2788,22 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Πρόσθετα"
 
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "Εξαρτήματα"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "Εργαλεία προγραμματιστή"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "Επιστήμη και Τεχνολογία"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "Ρυθμίσεις συστήματος"
+
 #~ msgid "Could not find '%1' in '%2'; please make sure it's available."
 #~ msgstr ""
 #~ "Αδύνατη η εύρεση του '%1 στο %2, παρακαλώ βεβαιωθείτε ότι είναι διαθέσιμο."
@@ -3665,12 +3695,6 @@ msgstr "Πρόσθετα"
 #~ msgstr "Βάσεις δεδομένων"
 
 #~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"devel"
-#~ "\""
-#~ msgid "Development"
-#~ msgstr "Ανάπτυξη"
-
-#~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section \"doc\""
 #~ msgid "Documentation"
 #~ msgstr "Τεκμηρίωση"
@@ -3872,12 +3896,6 @@ msgstr "Πρόσθετα"
 
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"science\""
-#~ msgid "Science"
-#~ msgstr "Επιστήμη"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
 #~ "\"shells\""
 #~ msgid "Shells"
 #~ msgstr "Φλοιοί"
@@ -3898,12 +3916,6 @@ msgstr "Πρόσθετα"
 #~ "\""
 #~ msgid "Word Processing"
 #~ msgstr "Επεξεργασία κειμένου"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"utils"
-#~ "\""
-#~ msgid "Utilities"
-#~ msgstr "Βοηθήματα"
 
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section \"vcs\""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2014-01-31 20:46+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -32,7 +32,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -45,14 +45,14 @@ msgstr ""
 msgid "Unknown"
 msgstr "Nepoznato"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, fuzzy, kde-format
 #| msgctxt "@info license"
 #| msgid "Proprietary"
 msgid "Proprietary"
 msgstr "Vlasništvo"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Publishing"
@@ -213,9 +213,13 @@ msgstr "Programi"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"utils"
+#| "\""
+#| msgid "Utilities"
 msgctxt "Category"
-msgid "Accessories"
+msgid "Utilites"
 msgstr "Alati"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
@@ -227,9 +231,13 @@ msgstr "Pristupačnost"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"devel"
+#| "\""
+#| msgid "Development"
 msgctxt "Category"
-msgid "Developer Tools"
+msgid "Development"
 msgstr "Razvoj"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
@@ -284,11 +292,13 @@ msgstr "Obrazovanje"
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:131
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
 #, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Science & Engineering"
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section "
+#| "\"science\""
+#| msgid "Science"
 msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "Nauka i inženjerstvo"
+msgid "Science & Math"
+msgstr "Nauka"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -582,11 +592,13 @@ msgstr "Ured"
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
 #, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "System & Settings"
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"base"
+#| "\""
+#| msgid "Base System"
 msgctxt "Category"
-msgid "System Settings"
-msgstr "Sistem i postavke"
+msgid "System"
+msgstr "Osnovni sistem"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, fuzzy, kde-format
@@ -2788,6 +2800,28 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr ""
 
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "Alati"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "Razvoj"
+
+#, fuzzy
+#~| msgctxt "Category"
+#~| msgid "Science & Engineering"
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "Nauka i inženjerstvo"
+
+#, fuzzy
+#~| msgctxt "Category"
+#~| msgid "System & Settings"
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "Sistem i postavke"
+
 #, fuzzy
 #~| msgctxt "@item:inlistbox Filters all changes in the history view"
 #~| msgid "All changes"
@@ -3541,12 +3575,6 @@ msgstr ""
 #~ msgstr "Baze podataka"
 
 #~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"devel"
-#~ "\""
-#~ msgid "Development"
-#~ msgstr "Razvoj"
-
-#~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section \"doc\""
 #~ msgid "Documentation"
 #~ msgstr "Dokumentacija"
@@ -3748,12 +3776,6 @@ msgstr ""
 
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"science\""
-#~ msgid "Science"
-#~ msgstr "Nauka"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
 #~ "\"shells\""
 #~ msgid "Shells"
 #~ msgstr "Školjke"
@@ -3774,12 +3796,6 @@ msgstr ""
 #~ "\""
 #~ msgid "Word Processing"
 #~ msgstr "Obrada teksta"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"utils"
-#~ "\""
-#~ msgid "Utilities"
-#~ msgstr "Alati"
 
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section \"vcs\""

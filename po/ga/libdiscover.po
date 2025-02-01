@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2011-12-28 12:28-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -29,7 +29,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -42,14 +42,14 @@ msgstr ""
 msgid "Unknown"
 msgstr "Anaithnid"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, fuzzy, kde-format
 #| msgctxt "@info license"
 #| msgid "Proprietary"
 msgid "Proprietary"
 msgstr "Dílsithe"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Publishing"
@@ -209,10 +209,14 @@ msgstr "Feidhmchláir"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"utils"
+#| "\""
+#| msgid "Utilities"
 msgctxt "Category"
-msgid "Accessories"
-msgstr "Oiriúintí"
+msgid "Utilites"
+msgstr "Uirlisí"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -223,10 +227,14 @@ msgstr "Inrochtaineacht"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"devel"
+#| "\""
+#| msgid "Development"
 msgctxt "Category"
-msgid "Developer Tools"
-msgstr "Uirlisí Forbróra"
+msgid "Development"
+msgstr "Forbairt"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -280,11 +288,13 @@ msgstr "Oideachas"
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:131
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
 #, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Science & Engineering"
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section "
+#| "\"science\""
+#| msgid "Science"
 msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "Eolaíocht agus Innealtóireacht"
+msgid "Science & Math"
+msgstr "Eolaíocht"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -578,11 +588,13 @@ msgstr "Oifig"
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
 #, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "System & Settings"
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"base"
+#| "\""
+#| msgid "Base System"
 msgctxt "Category"
-msgid "System Settings"
-msgstr "Córas agus Socruithe"
+msgid "System"
+msgstr "Bunchóras"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -2838,6 +2850,28 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr ""
 
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "Oiriúintí"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "Uirlisí Forbróra"
+
+#, fuzzy
+#~| msgctxt "Category"
+#~| msgid "Science & Engineering"
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "Eolaíocht agus Innealtóireacht"
+
+#, fuzzy
+#~| msgctxt "Category"
+#~| msgid "System & Settings"
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "Córas agus Socruithe"
+
 #, fuzzy
 #~| msgctxt "@item:inlistbox Filters all changes in the history view"
 #~| msgid "All changes"
@@ -3331,12 +3365,6 @@ msgstr ""
 #~ msgstr "Bunachair shonraí"
 
 #~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"devel"
-#~ "\""
-#~ msgid "Development"
-#~ msgstr "Forbairt"
-
-#~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section \"doc\""
 #~ msgid "Documentation"
 #~ msgstr "Doiciméadú"
@@ -3543,12 +3571,6 @@ msgstr ""
 
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"science\""
-#~ msgid "Science"
-#~ msgstr "Eolaíocht"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
 #~ "\"shells\""
 #~ msgid "Shells"
 #~ msgstr "Blaosca"
@@ -3569,12 +3591,6 @@ msgstr ""
 #~ "\""
 #~ msgid "Word Processing"
 #~ msgstr "Próiseáil Focal"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"utils"
-#~ "\""
-#~ msgid "Utilities"
-#~ msgstr "Uirlisí"
 
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section \"vcs\""

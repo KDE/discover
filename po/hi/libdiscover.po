@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2022-02-26 11:47+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: Hindi <kde-l10n-hi@kde.org>\n"
@@ -27,7 +27,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "raghu@raghukamath.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -38,12 +38,12 @@ msgstr "raghu@raghukamath.com"
 msgid "Unknown"
 msgstr "अज्ञात"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, kde-format
 msgid "Proprietary"
 msgstr "मालिकाना"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, fuzzy, kde-format
 #| msgctxt "Category"
 #| msgid "Publishing"
@@ -195,8 +195,8 @@ msgstr "क्रिया"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
 #, kde-format
 msgctxt "Category"
-msgid "Accessories"
-msgstr "सामग्री"
+msgid "Utilites"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -209,7 +209,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
 #, kde-format
 msgctxt "Category"
-msgid "Developer Tools"
+msgid "Development"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
@@ -265,7 +265,7 @@ msgstr "शिक्षण"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
 #, kde-format
 msgctxt "Category"
-msgid "Science and Engineering"
+msgid "Science & Math"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
@@ -552,7 +552,7 @@ msgstr "कार्यालय"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
 #, kde-format
 msgctxt "Category"
-msgid "System Settings"
+msgid "System"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
@@ -2631,6 +2631,10 @@ msgstr ""
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "ऐड-ऑन"
+
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "सामग्री"
 
 #, fuzzy
 #~| msgctxt "Category"

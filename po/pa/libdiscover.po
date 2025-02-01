@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -27,7 +27,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "aalam@punlinux.org"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -38,12 +38,12 @@ msgstr "aalam@punlinux.org"
 msgid "Unknown"
 msgstr "ਅਣਪਛਾਤਾ"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, kde-format
 msgid "Proprietary"
 msgstr "ਪਰੋਪ੍ਰੈਟਰੀ"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, kde-format
 msgid "Public Domain"
 msgstr "ਪਬਲਿਕ ਡੋਮੇਨ"
@@ -195,10 +195,14 @@ msgstr "ਸਭ ਐਪਲੀਕੇਸ਼ਨਾਂ"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"utils"
+#| "\""
+#| msgid "Utilities"
 msgctxt "Category"
-msgid "Accessories"
-msgstr "ਸਹਾਇਕ"
+msgid "Utilites"
+msgstr "ਸਹੂਲਤਾਂ"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -209,10 +213,14 @@ msgstr "ਅਸੈੱਸਬਿਲਟੀ"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"devel"
+#| "\""
+#| msgid "Development"
 msgctxt "Category"
-msgid "Developer Tools"
-msgstr "ਡਿਵੈਲਪਰ ਟੂਲ"
+msgid "Development"
+msgstr "ਡਿਵੈਲਪਮੈਂਟ"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -265,10 +273,14 @@ msgstr "ਸਿੱਖਿਆ"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:131
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section "
+#| "\"science\""
+#| msgid "Science"
 msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "ਵਿਗਿਆਨ ਅਤੇ ਇੰਜਨਅਰਿੰਗ"
+msgid "Science & Math"
+msgstr "ਵਿਗਿਆਨ"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -552,10 +564,12 @@ msgstr "ਦਫਤਰ"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Repair System"
 msgctxt "Category"
-msgid "System Settings"
-msgstr "ਸਿਸਟਮ ਸੈਟਿੰਗਾਂ"
+msgid "System"
+msgstr "ਸਿਸਟਮ ਰਿਪੇਅਰ ਕਰੋ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -2682,6 +2696,22 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "ਐਡ-ਆਨ"
 
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "ਸਹਾਇਕ"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "ਡਿਵੈਲਪਰ ਟੂਲ"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "ਵਿਗਿਆਨ ਅਤੇ ਇੰਜਨਅਰਿੰਗ"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "ਸਿਸਟਮ ਸੈਟਿੰਗਾਂ"
+
 #~ msgid "Could not find '%1' in '%2'; please make sure it's available."
 #~ msgstr "'%2' ਵਿੱਚ '%1' ਲੱਭਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ; ਯਕੀਨੀ ਬਣਾਓ ਕਿ ਇਹ ਮੌਜੂਦ ਹੈ।"
 
@@ -3219,12 +3249,6 @@ msgstr "ਐਡ-ਆਨ"
 #~ msgstr "ਡਾਟਾਬੇਸ"
 
 #~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"devel"
-#~ "\""
-#~ msgid "Development"
-#~ msgstr "ਡਿਵੈਲਪਮੈਂਟ"
-
-#~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section \"doc\""
 #~ msgid "Documentation"
 #~ msgstr "ਡੌਕੂਮੈਂਟੇਸ਼ਨ"
@@ -3433,12 +3457,6 @@ msgstr "ਐਡ-ਆਨ"
 
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section "
-#~ "\"science\""
-#~ msgid "Science"
-#~ msgstr "ਵਿਗਿਆਨ"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section "
 #~ "\"shells\""
 #~ msgid "Shells"
 #~ msgstr "ਸ਼ੈੱਲ"
@@ -3459,12 +3477,6 @@ msgstr "ਐਡ-ਆਨ"
 #~ "\""
 #~ msgid "Word Processing"
 #~ msgstr "ਵਰਡ ਪਰੋਸੈਸਰ"
-
-#~ msgctxt ""
-#~ "@item:inlistbox Human-readable name for the Debian package section \"utils"
-#~ "\""
-#~ msgid "Utilities"
-#~ msgstr "ਸਹੂਲਤਾਂ"
 
 #~ msgctxt ""
 #~ "@item:inlistbox Human-readable name for the Debian package section \"vcs\""

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2024-11-26 20:48+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 "pan93412@gmail.com, s8321414@gmail.com, brli@chakralinux.org, mail@kisaragi-"
 "hiu.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -46,12 +46,12 @@ msgstr ""
 msgid "Unknown"
 msgstr "未知"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, kde-format
 msgid "Proprietary"
 msgstr "專有軟體"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, kde-format
 msgid "Public Domain"
 msgstr "公眾領域"
@@ -201,8 +201,8 @@ msgstr "所有應用程式"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
 #, kde-format
 msgctxt "Category"
-msgid "Accessories"
-msgstr "附屬應用程式"
+msgid "Utilites"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -213,10 +213,12 @@ msgstr "無障礙輔助"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Web Development"
 msgctxt "Category"
-msgid "Developer Tools"
-msgstr "程式開發工具"
+msgid "Development"
+msgstr "網頁開發"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -271,8 +273,8 @@ msgstr "教育"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
 #, kde-format
 msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "科學與工程"
+msgid "Science & Math"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -556,10 +558,12 @@ msgstr "辦公軟體"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Repair System"
 msgctxt "Category"
-msgid "System Settings"
-msgstr "系統設定"
+msgid "System"
+msgstr "修復系統"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -2662,6 +2666,22 @@ msgstr "系統軟體"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "附加功能"
+
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "附屬應用程式"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "程式開發工具"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "科學與工程"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "系統設定"
 
 #~ msgid "Could not find '%1' in '%2'; please make sure it's available."
 #~ msgstr "在 '%2' 中找不到 '%1'；請確定它真的存在。"

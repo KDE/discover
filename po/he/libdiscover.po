@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 00:42+0000\n"
+"POT-Creation-Date: 2025-02-01 00:42+0000\n"
 "PO-Revision-Date: 2025-01-24 09:27+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -31,7 +31,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-l10n-he@kde.org,omeritzicschwartz@gmail.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:109
+#: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
@@ -42,12 +42,12 @@ msgstr "kde-l10n-he@kde.org,omeritzicschwartz@gmail.com"
 msgid "Unknown"
 msgstr "לא ידוע"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:111
+#: libdiscover/appstream/AppStreamUtils.cpp:112
 #, kde-format
 msgid "Proprietary"
 msgstr "קנייני"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:115
+#: libdiscover/appstream/AppStreamUtils.cpp:116
 #, kde-format
 msgid "Public Domain"
 msgstr "נחלת הכלל"
@@ -197,8 +197,8 @@ msgstr "כל היישומים"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
 #, kde-format
 msgctxt "Category"
-msgid "Accessories"
-msgstr "עזרים"
+msgid "Utilites"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -209,10 +209,12 @@ msgstr "נגישות"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Web Development"
 msgctxt "Category"
-msgid "Developer Tools"
-msgstr "כלי מפתחים"
+msgid "Development"
+msgstr "פיתוח אתרים"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -267,8 +269,8 @@ msgstr "חינוכי"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
 #, kde-format
 msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "מדע והנדסה"
+msgid "Science & Math"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -552,10 +554,12 @@ msgstr "כלי הפקה"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Repair System"
 msgctxt "Category"
-msgid "System Settings"
-msgstr "הגדרות מערכת"
+msgid "System"
+msgstr "תיקון המערכת"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -2709,6 +2713,22 @@ msgstr "תוכנת מערכת"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "תוספים"
+
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "עזרים"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "כלי מפתחים"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "מדע והנדסה"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "הגדרות מערכת"
 
 #~ msgid "Could not find '%1' in '%2'; please make sure it's available."
 #~ msgstr "לא ניתן למצוא את ‚%1’ בתוך ‚%2’, נא לוודא שהוא זמין."
