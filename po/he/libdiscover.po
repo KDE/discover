@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-02 00:43+0000\n"
-"PO-Revision-Date: 2025-02-01 08:49+0200\n"
+"PO-Revision-Date: 2025-02-02 07:52+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -195,9 +195,7 @@ msgstr "כל היישומים"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Utilites"
+#, kde-format
 msgctxt "Category"
 msgid "Utilities"
 msgstr "עזרים"

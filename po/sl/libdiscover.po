@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-02 00:43+0000\n"
-"PO-Revision-Date: 2025-02-01 07:07+0100\n"
+"PO-Revision-Date: 2025-02-02 08:35+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -195,9 +195,7 @@ msgstr "Vsi programi"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Utilites"
+#, kde-format
 msgctxt "Category"
 msgid "Utilities"
 msgstr "Pomožni programi"

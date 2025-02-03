@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-02 00:43+0000\n"
-"PO-Revision-Date: 2025-02-01 09:42+0200\n"
+"PO-Revision-Date: 2025-02-02 09:57+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -194,9 +194,7 @@ msgstr "Всі програми"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Utilites"
+#, kde-format
 msgctxt "Category"
 msgid "Utilities"
 msgstr "Інструменти"
