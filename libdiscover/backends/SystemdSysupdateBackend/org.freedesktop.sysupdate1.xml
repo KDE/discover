@@ -1,0 +1,125 @@
+<!--
+SPDX-FileCopyrightText: None
+SPDX-License-Identifier: CC0-1.0
+
+This API has been manually extracted from GNOME OS with the following commands
+(with two dashes before bus-introspect, some XML parsers don't like two dashes
+in the middle of comments):
+- /usr/lib/systemd/systemd-sysupdated -bus-introspect /org/freedesktop/sysupdate1
+- /usr/lib/systemd/systemd-sysupdated -bus-introspect /org/freedesktop/sysupdate1/job
+- /usr/lib/systemd/systemd-sysupdated -bus-introspect /org/freedesktop/sysupdate1/target
+-->
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+        "https://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+    <interface name="org.freedesktop.DBus.Peer">
+        <method name="Ping"/>
+        <method name="GetMachineId">
+            <arg type="s" name="machine_uuid" direction="out"/>
+        </method>
+    </interface>
+    <interface name="org.freedesktop.DBus.Introspectable">
+        <method name="Introspect">
+            <arg name="xml_data" type="s" direction="out"/>
+        </method>
+    </interface>
+
+    <interface name="org.freedesktop.DBus.Properties">
+        <method name="Get">
+            <arg name="interface_name" direction="in" type="s"/>
+            <arg name="property_name" direction="in" type="s"/>
+            <arg name="value" direction="out" type="v"/>
+        </method>
+        <method name="GetAll">
+            <arg name="interface_name" direction="in" type="s"/>
+            <arg name="props" direction="out" type="a{sv}"/>
+            <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="QVariantMap"/>
+        </method>
+        <method name="Set">
+            <arg name="interface_name" direction="in" type="s"/>
+            <arg name="property_name" direction="in" type="s"/>
+            <arg name="value" direction="in" type="v"/>
+        </method>
+        <signal name="PropertiesChanged">
+            <arg type="s" name="interface_name"/>
+            <arg type="a{sv}" name="changed_properties"/>
+            <annotation name="org.qtproject.QtDBus.QtTypeName.Out1" value="QVariantMap"/>
+            <arg type="as" name="invalidated_properties"/>
+        </signal>
+    </interface>
+
+    <interface name="org.freedesktop.sysupdate1.Manager">
+        <method name="ListTargets">
+            <arg type="a(sso)" name="targets" direction="out"/>
+            <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="Sysupdate::TargetList"/>
+        </method>
+        <method name="ListJobs">
+            <arg type="a(tsuo)" name="jobs" direction="out"/>
+            <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="Sysupdate::JobList"/>
+        </method>
+        <method name="ListAppStream">
+            <arg type="as" name="urls" direction="out"/>
+        </method>
+        <signal name="JobRemoved">
+            <arg type="t" name="id"/>
+            <arg type="o" name="path"/>
+            <arg type="i" name="status"/>
+        </signal>
+    </interface>
+    <interface name="org.freedesktop.sysupdate1.Job">
+        <property name="Id" type="t" access="read">
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
+        </property>
+        <property name="Type" type="s" access="read">
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
+        </property>
+        <property name="Offline" type="b" access="read">
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
+        </property>
+        <property name="Progress" type="u" access="read">
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal"/>
+        </property>
+        <method name="Cancel">
+        </method>
+    </interface>
+    <interface name="org.freedesktop.sysupdate1.Target">
+        <property name="Class" type="s" access="read">
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
+            <annotation name="org.qtproject.QtDBus.PropertyGetter" value="className"/>
+        </property>
+        <property name="Name" type="s" access="read">
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
+        </property>
+        <property name="Path" type="s" access="read">
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"/>
+        </property>
+        <method name="List">
+            <arg type="b" name="offline" direction="in"/>
+            <arg type="as" name="versions" direction="out"/>
+        </method>
+        <method name="Describe">
+            <arg type="s" name="version" direction="in"/>
+            <arg type="b" name="offline" direction="in"/>
+            <arg type="s" name="json" direction="out"/>
+        </method>
+        <method name="CheckNew">
+            <arg type="s" name="new_version" direction="out"/>
+        </method>
+        <method name="Update">
+            <arg type="s" name="new_version" direction="in"/>
+            <arg type="t" name="flags" direction="in"/>
+            <arg type="s" name="new_version" direction="out"/>
+            <arg type="t" name="job_id" direction="out"/>
+            <arg type="o" name="job_path" direction="out"/>
+        </method>
+        <method name="Vacuum">
+            <arg type="u" name="count" direction="out"/>
+        </method>
+        <method name="GetAppStream">
+            <arg type="as" name="appstream" direction="out"/>
+        </method>
+        <method name="GetVersion">
+            <arg type="s" name="version" direction="out"/>
+        </method>
+    </interface>
+</node>

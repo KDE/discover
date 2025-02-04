@@ -56,7 +56,7 @@ endif()
 pkg_check_modules(Ostree IMPORTED_TARGET ostree-1)
 pkg_check_modules(RpmOstree IMPORTED_TARGET rpm-ostree-1)
 
-find_package(QCoro6 REQUIRED COMPONENTS Core)
+find_package(QCoro6 REQUIRED COMPONENTS Core DBus Network)
 
 qcoro_enable_coroutines()
 

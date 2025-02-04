@@ -63,6 +63,11 @@ if (BUILD_SteamOSBackend)
     add_subdirectory(SteamOSBackend)
 endif()
 
+option(BUILD_SystemdSysupdateBackend "Build support for Systemd's SysUpdate." "OFF")
+if (BUILD_SystemdSysupdateBackend)
+    add_subdirectory(SystemdSysupdateBackend)
+endif()
+
 option(BUILD_SnapBackend "Build Snap support." "ON")
 if (BUILD_SnapBackend AND AppStreamQt_FOUND AND Snapd_FOUND)
     add_subdirectory(SnapBackend)
