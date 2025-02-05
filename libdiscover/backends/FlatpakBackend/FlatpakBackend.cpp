@@ -418,24 +418,6 @@ private:
     const QUrl m_url;
 };
 
-FlatpakRemote *FlatpakBackend::getFlatpakRemoteByUrl(const QString &url, FlatpakInstallation *installation) const
-{
-    auto remotes = flatpak_installation_list_remotes(installation, m_cancellable, nullptr);
-    if (!remotes) {
-        return nullptr;
-    }
-
-    const auto comparableUrl = url.toUtf8();
-    for (uint i = 0; i < remotes->len; i++) {
-        auto remote = FLATPAK_REMOTE(g_ptr_array_index(remotes, i));
-
-        if (comparableUrl == flatpak_remote_get_url(remote)) {
-            return remote;
-        }
-    }
-    return nullptr;
-}
-
 FlatpakInstalledRef *FlatpakBackend::getInstalledRefForApp(const FlatpakResource *resource) const
 {
     Q_ASSERT(resource->resourceType() != FlatpakResource::Source);
