@@ -66,6 +66,7 @@ void OdrsReviewsJob::reviewsFetched()
     if (networkError != QNetworkReply::NoError) {
         qCWarning(LIBDISCOVER_LOG) << "OdrsReviewsBackend: Error fetching reviews:" << m_reply->errorString() << data;
         Q_EMIT errorMessage(i18n("Technical error message: %1", m_reply->errorString()));
+        Q_EMIT reviewsReady({}, false);
         deleteLater();
         return;
     }
