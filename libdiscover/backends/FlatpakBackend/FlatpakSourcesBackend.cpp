@@ -64,14 +64,19 @@ public:
                     return;
                 }
 
-                if (requestedDisabled) {
-                    m_backend->unloadRemote(m_installation, m_remote);
-                } else {
-                    m_backend->loadRemote(m_installation, m_remote);
-                }
+                setRemoteLoaded(requestedDisabled);
             }
         }
         QStandardItem::setData(value, role);
+    }
+
+    void setRemoteLoaded(bool loaded)
+    {
+        if (loaded) {
+            m_backend->loadRemote(m_installation, m_remote);
+        } else {
+            m_backend->unloadRemote(m_installation, m_remote);
+        }
     }
 
     FlatpakRemote *remote() const
@@ -297,6 +302,7 @@ bool FlatpakSourcesBackend::removeSource(const QString &id)
 
         g_autoptr(GError) errorRemoveRemote = nullptr;
         if (flatpak_installation_remove_remote(installation, id.toUtf8().constData(), cancellable, &errorRemoveRemote)) {
+            sourceItem->setRemoteLoaded(false);
             m_sources->removeRow(sourceItem->row());
 
             if (m_sources->rowCount() == 0) {

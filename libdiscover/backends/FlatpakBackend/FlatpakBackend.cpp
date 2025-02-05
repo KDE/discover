@@ -2054,16 +2054,17 @@ Transaction *FlatpakBackend::installApplication(AbstractResource *app, const Add
                 auto source = findSource(resource->installation(), resource->origin());
                 if (!source) {
                     // It could mean that it's still integrating after checkRepositories It should update itself
-                    return;
-                }
-                resource->setTemporarySource({});
-                const auto id = resource->uniqueId();
-                source->m_resources.insert(id, resource);
+                    loadAppsFromAppstreamData(resource->installation());
+                } else {
+                    resource->setTemporarySource({});
+                    const auto id = resource->uniqueId();
+                    source->m_resources.insert(id, resource);
 
-                tempSource->m_resources.remove(id);
-                if (tempSource->m_resources.isEmpty()) {
-                    const bool removed = m_flatpakSources.removeAll(tempSource) || m_flatpakLoadingSources.removeAll(tempSource);
-                    Q_ASSERT(removed);
+                    tempSource->m_resources.remove(id);
+                    if (tempSource->m_resources.isEmpty()) {
+                        const bool removed = m_flatpakSources.removeAll(tempSource) || m_flatpakLoadingSources.removeAll(tempSource);
+                        Q_ASSERT(removed);
+                    }
                 }
             }
             updateAppState(resource);
