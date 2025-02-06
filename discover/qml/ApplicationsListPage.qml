@@ -38,13 +38,14 @@ DiscoverPage {
 
     property bool canNavigate: true
     readonly property alias subcategories: appsModel.subcategories
+    readonly property Discover.Category categoryObject: Discover.CategoryModel.get(page.category)
 
     function stripHtml(input) {
         var regex = /(<([^>]+)>)/ig
         return input.replace(regex, "");
     }
 
-    property string name: category?.name ?? ""
+    property string name: categoryObject?.name ?? ""
 
     title: {
         const count = appsModel.count;
@@ -239,16 +240,16 @@ DiscoverPage {
                 visible: appsModel.search.length > 0 && stateFilter !== Discover.AbstractResource.Installed
 
                 icon.name: "edit-none"
-                text: page.category ? i18nc("@info:placeholder %1 is the name of an application; %2 is the name of a category of apps or add-ons",
-                                            "\"%1\" was not found in the \"%2\" category", appsModel.search, page.category.name)
+                text: page.categoryObject ? i18nc("@info:placeholder %1 is the name of an application; %2 is the name of a category of apps or add-ons",
+                                            "\"%1\" was not found in the \"%2\" category", appsModel.search, page.categoryObject.name)
                                     : i18nc("@info:placeholder %1 is the name of an application",
                                             "\"%1\" was not found in the available sources", appsModel.search)
-                explanation: page.category ? "" : i18nc("@info:placeholder %1 is the name of an application", "\"%1\" may be available on the web. Software acquired from the web has not been reviewed by your distributor for functionality or stability. Use with caution.", appsModel.search)
+                explanation: page.categoryObject ? "" : i18nc("@info:placeholder %1 is the name of an application", "\"%1\" may be available on the web. Software acquired from the web has not been reviewed by your distributor for functionality or stability. Use with caution.", appsModel.search)
 
                 // If we're in a category, first direct the user to search globally,
                 // because they might not have realized they were in a category and
                 // therefore the results were limited to just what was in the category
-                helpfulAction: page.category ? searchAllCategoriesAction : searchTheWebAction
+                helpfulAction: page.categoryObject ? searchAllCategoriesAction : searchTheWebAction
             }
         }
 
