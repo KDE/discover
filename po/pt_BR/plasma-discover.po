@@ -7,20 +7,21 @@
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
 # Marcus Gama <marcus.gama@gmail.com>, 2012.
 # Blumen Herzenschein <herzenschein@gmail.com>, 2020, 2021.
+# SPDX-FileCopyrightText: 2025 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-30 00:42+0000\n"
-"PO-Revision-Date: 2024-11-14 10:01-0300\n"
-"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
+"PO-Revision-Date: 2025-02-05 01:30-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #: discover/DiscoverObject.cpp:182
 #, kde-format
@@ -602,15 +603,13 @@ msgid "External Links"
 msgstr "Links externos"
 
 #: discover/qml/ApplicationPage.qml:821
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "Ler a documentação oficial do projeto"
+msgstr "Ler a documentação"
 
 #: discover/qml/ApplicationPage.qml:832
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Visitar o site do projeto"
@@ -619,11 +618,10 @@ msgstr "Visitar o site do projeto"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "Doe ao projeto"
 
 #: discover/qml/ApplicationPage.qml:852
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "Relatar erro"
@@ -632,7 +630,7 @@ msgstr "Relatar erro"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "Comece a contribuir"
 
 #: discover/qml/ApplicationPage.qml:891
 #, kde-format
