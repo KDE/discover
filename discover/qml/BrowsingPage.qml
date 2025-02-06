@@ -254,7 +254,7 @@ DiscoverPage {
             model: DiscoverApp.LimitedRowCountProxyModel {
                 pageSize: apps.maximumColumns
                 sourceModel: Discover.ResourcesProxyModel {
-                    filteredCategoryName: "Developer Tools"
+                    filteredCategoryName: "Development"
                     backendFilter: Discover.ResourcesModel.currentApplicationBackend
                     sortRole: Discover.ResourcesProxyModel.SortableRatingRole
                     sortOrder: Qt.DescendingOrder
@@ -278,7 +278,7 @@ DiscoverPage {
             text: i18nc("@action:button", "See More")
             icon.name: "go-next-view"
             Layout.columnSpan: apps.columns
-            onClicked: Navigation.openCategory(Discover.CategoryModel.findCategoryByName("Developer Tools"))
+            onClicked: Navigation.openCategory(Discover.CategoryModel.findCategoryByName("Development"))
             visible: devRep.count > 0 && !featuredModel.isFetching
             Keys.onUpPressed: {
                 var target = this
