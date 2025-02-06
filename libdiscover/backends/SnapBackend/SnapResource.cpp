@@ -6,7 +6,6 @@
 
 #include "SnapResource.h"
 #include "SnapBackend.h"
-#include "libdiscover_snap_debug.h"
 #include <KIO/ApplicationLauncherJob>
 #include <KLocalizedString>
 #include <KService>
@@ -80,6 +79,15 @@ SnapResource::SnapResource(QSharedPointer<QSnapdSnap> snap, AbstractResource::St
     , m_snap(snap)
     , m_channel(m_snap->trackingChannel().isNull() ? u"latest/stable"_s : m_snap->trackingChannel())
 {
+    if (m_snap->status() == QSnapdEnums::SnapStatusActive) {
+        for (int i = 0; i < m_snap->appCount(); ++i) {
+            auto app = m_snap->app(i);
+            if (!app->desktopFile().isEmpty()) {
+                m_executableDesktop = app->desktopFile();
+                break;
+            }
+        }
+    }
     setObjectName(snap->name());
 }
 
@@ -115,19 +123,12 @@ quint64 SnapResource::size()
 
 QVariant SnapResource::icon() const
 {
-    if (m_state == AbstractResource::Installed) {
-        for (int i = 0; i < m_snap->appCount(); ++i) {
-            const auto app = m_snap->app(i);
-
-            if (app->name() == m_snap->name()) {
-                QSettings desktopFile(app->desktopFile(), QSettings::IniFormat);
-                desktopFile.beginGroup("Desktop Entry");
-                const QString iconName = desktopFile.value("Icon").toString();
-
-                if (!iconName.isEmpty()) {
-                    return iconName;
-                }
-            }
+    if (canExecute()) {
+        QSettings desktopFile(m_executableDesktop, QSettings::IniFormat);
+        desktopFile.beginGroup("Desktop Entry");
+        const QString iconName = desktopFile.value("Icon").toString();
+        if (!iconName.isEmpty()) {
+            return iconName;
         }
     }
 
@@ -281,43 +282,21 @@ void SnapResource::fetchScreenshots()
     Q_EMIT screenshotsFetched(screenshots);
 }
 
-QString SnapResource::launchableDesktopFile() const
+bool SnapResource::canExecute() const
 {
-    QString desktopFile;
-    qCDebug(LIBDISCOVER_SNAP_LOG) << "Snap: " << packageName() << " - " << m_snap->appCount() << " app(s) detected";
-    for (int i = 0; i < m_snap->appCount(); i++) {
-        const auto appName = m_snap->app(i)->name();
-        const auto appDesktopFile = m_snap->app(i)->desktopFile();
-        if (appDesktopFile.isEmpty()) {
-            qCDebug(LIBDISCOVER_SNAP_LOG) << "App " << i << ": " << appName << ": " << "No desktop file, skipping";
-            continue;
-        }
-        if (packageName().compare(appName, Qt::CaseInsensitive) == 0) {
-            qCDebug(LIBDISCOVER_SNAP_LOG) << "App " << i << ": " << appName << ": " << "Main app, stopping search";
-            desktopFile = appDesktopFile;
-            break;
-        }
-        if (desktopFile.isEmpty()) {
-            qCDebug(LIBDISCOVER_SNAP_LOG) << "App " << i << ": " << appName << ": " << "First candidate, keeping for now";
-            desktopFile = appDesktopFile;
-        }
-    }
-    if (desktopFile.isEmpty()) {
-        qCWarning(LIBDISCOVER_SNAP_LOG) << "No desktop file found for this snap, trying expected name for the main app desktop file";
-        desktopFile = packageName() + QLatin1Char('_') + packageName() + QLatin1StringView(".desktop");
-    }
-    return QFileInfo(desktopFile).fileName();
+    return !m_executableDesktop.isEmpty();
 }
 
 void SnapResource::invokeApplication() const
 {
+    QFileInfo file(m_executableDesktop);
     QDBusInterface interface(
             QStringLiteral("io.snapcraft.Launcher"),
             QStringLiteral("/io/snapcraft/PrivilegedDesktopLauncher"),
             QStringLiteral("io.snapcraft.PrivilegedDesktopLauncher"),
             QDBusConnection::sessionBus()
     );
-    interface.call(QStringLiteral("OpenDesktopEntry"), launchableDesktopFile());
+    interface.call(QStringLiteral("OpenDesktopEntry"), file.fileName());
 }
 
 AbstractResource::Type SnapResource::type() const

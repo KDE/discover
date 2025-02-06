@@ -37,26 +37,10 @@ public:
     QString name() const override;
     QString packageName() const override;
     AbstractResource::Type type() const override;
-    bool canExecute() const override
-    {
-        return true;
-    }
+    bool canExecute() const override;
 
     /**
-     * Tries to obtain a launchable desktop file for this snap, in this order:
-     *
-     * 1. Any app with the same name as the snap and a desktop file (the main app)
-     * 2. The first app with a desktop file (the next best app)
-     * 3. The expected desktop file for the main app (<snap_name>_<snap_name>.desktop)
-     *
-     * @return The fileName of the selected launchable desktop file.
-     */
-    QString launchableDesktopFile() const;
-
-    /**
-     * Launches a snap using its desktop file.
-     *
-     * If no desktop file is found, defaults back to `snap run`, which will fail in Ubuntu Core environments.
+     * Launches a snap using its desktop file via DBus.
      */
     void invokeApplication() const override;
 
@@ -113,6 +97,7 @@ public:
     quint64 m_downloadSize;
 
     QSharedPointer<QSnapdSnap> m_snap;
+    QString m_executableDesktop;
     QString m_channel;
     mutable QVariant m_icon;
     static const QStringList s_topObjects;
