@@ -6,6 +6,8 @@
 
 #include "UpdateModel.h"
 
+#include <algorithm>
+
 // Qt includes
 #include "libdiscover_debug.h"
 #include <QFont>
@@ -272,10 +274,10 @@ void UpdateModel::setResources(const QList<AbstractResource *> &resources)
     const auto sortUpdateItems = [&collator](UpdateItem *a, UpdateItem *b) -> bool {
         return collator(a->name(), b->name());
     };
-    std::sort(appItems.begin(), appItems.end(), sortUpdateItems);
-    std::sort(appSupportItems.begin(), appSupportItems.end(), sortUpdateItems);
-    std::sort(systemItems.begin(), systemItems.end(), sortUpdateItems);
-    std::sort(addonItems.begin(), addonItems.end(), sortUpdateItems);
+    std::ranges::sort(appItems, sortUpdateItems);
+    std::ranges::sort(appSupportItems, sortUpdateItems);
+    std::ranges::sort(systemItems, sortUpdateItems);
+    std::ranges::sort(addonItems, sortUpdateItems);
     m_updateItems = (QVector<UpdateItem *>() << appItems << addonItems << appSupportItems << systemItems);
     endResetModel();
 
