@@ -267,8 +267,10 @@ void UpdateModel::setResources(const QList<AbstractResource *> &resources)
             break;
         }
     }
-    const auto sortUpdateItems = [](UpdateItem *a, UpdateItem *b) {
-        return a->name() < b->name();
+
+    QCollator collator;
+    const auto sortUpdateItems = [&collator](UpdateItem *a, UpdateItem *b) -> bool {
+        return collator(a->name(), b->name());
     };
     std::sort(appItems.begin(), appItems.end(), sortUpdateItems);
     std::sort(appSupportItems.begin(), appSupportItems.end(), sortUpdateItems);
