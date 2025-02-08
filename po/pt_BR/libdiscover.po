@@ -2,7 +2,7 @@
 # Copyright (C) 2010-2020 This file is copyright:
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2023, 2024 Geraldo Simiao <geraldosimiao@fedoraproject.org>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Geraldo Simiao <geraldosimiao@fedoraproject.org>
 # Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>, 2010.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
 # Marcus Gama <marcus.gama@gmail.com>, 2011, 2012, 2013.
@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-04 00:41+0000\n"
-"PO-Revision-Date: 2024-11-14 10:08-0300\n"
+"POT-Creation-Date: 2025-02-08 00:41+0000\n"
+"PO-Revision-Date: 2025-02-07 19:48-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -200,7 +200,7 @@ msgstr "Todos os aplicativos"
 #, kde-format
 msgctxt "Category"
 msgid "Utilities"
-msgstr ""
+msgstr "Utilitários"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -211,12 +211,10 @@ msgstr "Acessibilidade"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Web Development"
+#, kde-format
 msgctxt "Category"
 msgid "Development"
-msgstr "Desenvolvimento Web"
+msgstr "Desenvolvimento"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -272,7 +270,7 @@ msgstr "Educação"
 #, kde-format
 msgctxt "Category"
 msgid "Science & Math"
-msgstr ""
+msgstr "Ciências e matemática"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -556,12 +554,10 @@ msgstr "Escritório"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgctxt "Category"
 msgid "System"
-msgstr "Reparar sistema"
+msgstr "Sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -569,28 +565,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (usuário)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:735
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:741
 #, kde-format
 msgid "Local bundle"
 msgstr "Pacote local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1905
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1899
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:833
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL do Appstream mal formada '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2012
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2006
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Falha ao adicionar a fonte '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2134
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2129
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Não há fontes Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2138
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2133
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Falha ao carregar a fonte \"%1\""
@@ -906,19 +902,19 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1124
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
-msgstr ""
+msgstr "Aplicativo verificado em %1 como enviado por seu autor %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
 msgid "Add Flathub"
 msgstr "Adicionar Flathub"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:93
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:98
 #, kde-format
 msgid "Apply Changes"
 msgstr "Aplicar alterações"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:102
 #, kde-format
 msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
@@ -927,24 +923,24 @@ msgstr ""
 "Alterações nas prioridades das fontes Flatpak devem ser aplicadas antes de "
 "terem efeito."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:101
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:106
 #, kde-format
 msgid ""
 "Makes it possible to easily install the applications listed in https://"
 "flathub.org"
 msgstr "Torna possível instalar os aplicativos listados em https://flathub.org"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:169
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:174
 #, kde-format
 msgid "Could not add the source %1"
 msgstr "Não foi possível adicionar a fonte %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:294
 #, kde-format
 msgid "Removing '%1'"
 msgstr "Removendo '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:290
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:295
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -953,22 +949,22 @@ msgstr ""
 "Para remover este repositório, os seguintes aplicativos devem ser "
 "desinstalados:<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:307
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:313
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "Falha ao remover %1 repositório remoto: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:311
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:317
 #, kde-format
 msgid "Could not find %1"
 msgstr "Não foi possível encontrar %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:343
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:349
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (usuário)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:405
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:411
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Digite uma URI de repositório Flatpak URI (*.flatpakrepo)"
@@ -2128,7 +2124,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "Software verificado por %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
 #, kde-format
@@ -2568,7 +2564,7 @@ msgid "Channels for %1"
 msgstr "Canais para %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:405
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:384
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
@@ -2588,15 +2584,15 @@ msgstr "Permissões para %1"
 msgid "Snap"
 msgstr "Snap"
 
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:606
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:585
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "Editor verificado em snapcraft.io"
 
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:608
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:587
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "Editor estrelado em snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
 #, kde-format

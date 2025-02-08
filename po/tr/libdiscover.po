@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-04 00:41+0000\n"
+"POT-Creation-Date: 2025-02-08 00:41+0000\n"
 "PO-Revision-Date: 2025-02-02 12:43+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -562,28 +562,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (kullanıcı)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:735
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:741
 #, kde-format
 msgid "Local bundle"
 msgstr "Yerel paket"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1905
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1899
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:833
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Hatalı oluşturulmuş Appstream URL’si “%1”"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2012
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2006
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "“%1” kaynağı eklenemedi: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2134
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2129
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Bir Flatpak kaynağı yok."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2138
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2133
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "“%1” kaynağı yüklenemedi"
@@ -899,17 +899,17 @@ msgid "App Verified on %1 as shipped by its author %2"
 msgstr ""
 "Uygulama, yazarı %2 tarafından çıkarıldığı üzere %1 üzerinde doğrulandı"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
 msgid "Add Flathub"
 msgstr "Flathub’ı Ekle"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:93
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:98
 #, kde-format
 msgid "Apply Changes"
 msgstr "Değişiklikleri Uygula"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:102
 #, kde-format
 msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
@@ -918,7 +918,7 @@ msgstr ""
 "Flatpak kaynaklarının önceliklerine yapılacak değişikliklerin etkili olması "
 "için onları önce uygulamalısınız."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:101
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:106
 #, kde-format
 msgid ""
 "Makes it possible to easily install the applications listed in https://"
@@ -926,17 +926,17 @@ msgid ""
 msgstr ""
 "https://flathub.org’da listelenen uygulamaları kolayca kurmayı olanaklı kılar"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:169
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:174
 #, kde-format
 msgid "Could not add the source %1"
 msgstr "%1 kaynağı eklenemedi"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:289
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:294
 #, kde-format
 msgid "Removing '%1'"
 msgstr "“%1” kaldırılıyor"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:290
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:295
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -945,22 +945,22 @@ msgstr ""
 "Bu depoyu kaldırmak için aşağıdaki uygulamaların kaldırılması gerekir:"
 "<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:307
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:313
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "%1 uzak deposunu kaldırma başarısız: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:311
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:317
 #, kde-format
 msgid "Could not find %1"
 msgstr "%1 bulunamadı"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:343
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:349
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (kullanıcı)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:405
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:411
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Bir Flatpak deposu URI’si gir (*.flatpakrepo):"
@@ -2552,7 +2552,7 @@ msgid "Channels for %1"
 msgstr "%1 Kanalları"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:405
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:384
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 — %2"
@@ -2572,12 +2572,12 @@ msgstr "%1 İzinleri"
 msgid "Snap"
 msgstr "Snap"
 
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:606
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:585
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
 msgstr "snapcraft.io üzerinde Doğrulanmış Yayımcı"
 
-#: libdiscover/backends/SnapBackend/SnapResource.cpp:608
+#: libdiscover/backends/SnapBackend/SnapResource.cpp:587
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
 msgstr "snapcraft.io Üzerinde Yıldızlı Yayımcı"
