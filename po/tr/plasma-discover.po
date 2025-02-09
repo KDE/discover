@@ -146,17 +146,17 @@ msgstr ""
 #: discover/main.cpp:35
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
-msgstr "appstream:// URI ile belirtilen uygulamayı doğrudan aç."
+msgstr "appstream:// URI ile belirtilen uygulamayı doğrudan açın."
 
 #: discover/main.cpp:36
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
-msgstr "Belirtilen mime türü ile işlem yapabilen bir programla aç."
+msgstr "Belirtilen mime türü ile işlem yapabilen bir programla açın."
 
 #: discover/main.cpp:37
 #, kde-format
 msgid "Display a list of entries with a category."
-msgstr "Bir kategoriye sahip girdi listelerini göster."
+msgstr "Bir kategoriye sahip girdi listelerini görüntüleyin."
 
 #: discover/main.cpp:38
 #, kde-format
@@ -167,7 +167,7 @@ msgstr ""
 #: discover/main.cpp:39
 #, kde-format
 msgid "List all the available modes."
-msgstr "Tüm kullanılabilir kipleri listele."
+msgstr "Tüm kullanılabilir kipleri listeleyin."
 
 #: discover/main.cpp:40
 #, kde-format
@@ -177,7 +177,7 @@ msgstr "Kurulacak yerel paket dosyası"
 #: discover/main.cpp:41
 #, kde-format
 msgid "List all the available backends."
-msgstr "Tüm kullanılabilir arka uçları listele."
+msgstr "Tüm kullanılabilir arka uçları listeleyin."
 
 #: discover/main.cpp:42
 #, kde-format
@@ -197,7 +197,7 @@ msgstr "appstream: url şeması destekleniyor"
 #: discover/main.cpp:125
 #, kde-format
 msgid "An application explorer"
-msgstr "Uygulama kaşifi"
+msgstr "Uygulama kâşifi"
 
 #: discover/main.cpp:127
 #, kde-format
@@ -217,7 +217,7 @@ msgstr "Nate Graham"
 #: discover/main.cpp:130
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
-msgstr "Kalite Güvencesi, Tasarım ve Kullanılabilirlik"
+msgstr "Kalite güvencesi, tasarım ve kullanılabilirlik"
 
 #: discover/main.cpp:134
 #, kde-format
