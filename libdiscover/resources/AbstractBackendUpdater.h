@@ -11,6 +11,7 @@
 
 class QDateTime;
 class AbstractResource;
+class AbstractResourcesBackend;
 
 /**
  * \class AbstractBackendUpdater  AbstractBackendUpdater.h "AbstractBackendUpdater.h"
@@ -129,6 +130,8 @@ public:
     bool isReadyToReboot() const;
     bool needsReboot() const;
 
+    bool isFetching() const;
+
     virtual void setOfflineUpdates(bool useOfflineUpdates);
 
 public Q_SLOTS:
@@ -164,6 +167,8 @@ public Q_SLOTS:
     {
         return m_errorMessage;
     }
+
+    virtual bool isFetchingUpdates() const = 0;
 
 Q_SIGNALS:
     /**
@@ -226,6 +231,9 @@ Q_SIGNALS:
 
     /** emitted when we find a new errorMessage to display */
     void errorMessageChanged();
+
+    /// emitted when the backend is fetching updates
+    void fetchingChanged();
 
 private:
     bool m_needsReboot = false;

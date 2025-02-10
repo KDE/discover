@@ -146,7 +146,7 @@ DiscoverPage {
             return page.header.children.some(item => item?.visible && item instanceof Kirigami.InlineMessage);
         }
 
-        enabled: !resourcesUpdatesModel.isProgressing && !Discover.ResourcesModel.isFetching && !anyPageHeaderChildrenVisible()
+        enabled: !resourcesUpdatesModel.isProgressing && !resourcesUpdatesModel.isFetching && !anyPageHeaderChildrenVisible()
         onTriggered: resourcesUpdatesModel.updateAll()
     }
 
@@ -218,13 +218,13 @@ DiscoverPage {
         QQC2.ToolBar {
             id: footerToolbar
             Layout.fillWidth: true
-            visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || (!Discover.ResourcesModel.isFetching && updateModel.hasUpdates)
+            visible: (updateModel.totalUpdatesCount > 0 && resourcesUpdatesModel.isProgressing) || (!resourcesUpdatesModel.isFetching && updateModel.hasUpdates)
 
             position: QQC2.ToolBar.Footer
 
             contentItem: RowLayout {
                 QQC2.ToolButton {
-                    enabled: page.unselected > 0 && updateAction.enabled && !Discover.ResourcesModel.isFetching
+                    enabled: page.unselected > 0 && updateAction.enabled && !resourcesUpdatesModel.isFetching
                     visible: updateModel.totalUpdatesCount > 1 && !resourcesUpdatesModel.isProgressing
                     icon.name: "edit-select-all"
                     text: i18n("Select All")
@@ -232,7 +232,7 @@ DiscoverPage {
                 }
 
                 QQC2.ToolButton {
-                    enabled: page.unselected !== updateModel.totalUpdatesCount && updateAction.enabled && !Discover.ResourcesModel.isFetching
+                    enabled: page.unselected !== updateModel.totalUpdatesCount && updateAction.enabled && !resourcesUpdatesModel.isFetching
                     visible: updateModel.totalUpdatesCount > 1 && !resourcesUpdatesModel.isProgressing
                     icon.name: "edit-select-none"
                     text: i18n("Select None")
@@ -503,7 +503,7 @@ DiscoverPage {
 
     readonly property alias secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
     state:  ( resourcesUpdatesModel.isProgressing        ? "progressing"
-            : Discover.ResourcesModel.isFetching         ? "fetching"
+            : resourcesUpdatesModel.isFetching           ? "fetching"
             : updateModel.hasUpdates                     ? "has-updates"
             : resourcesUpdatesModel.needsReboot          ? "reboot"
             : secSinceUpdate < 0                         ? "unknown"

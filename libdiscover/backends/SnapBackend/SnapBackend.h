@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include <QPointer>
 #include <QThreadPool>
 #include <QVariantList>
 #include <QVector>
@@ -13,6 +14,7 @@
 #include <functional>
 #include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
+#include <resources/StoredResultsStream.h>
 
 class OdrsReviewsBackend;
 class StandardBackendUpdater;
@@ -39,10 +41,6 @@ public:
     Transaction *installApplication(AbstractResource *app) override;
     Transaction *installApplication(AbstractResource *app, const AddonList &addons) override;
     Transaction *removeApplication(AbstractResource *app) override;
-    bool isFetching() const override
-    {
-        return m_fetching;
-    }
     void checkForUpdates() override;
     bool hasApplications() const override
     {
@@ -53,13 +51,15 @@ public:
         return &m_client;
     }
     void refreshStates();
+    int fetchingUpdatesProgress() const override
+    {
+        return m_updatesFetcher ? 42 : 100;
+    }
 
 Q_SIGNALS:
     void shuttingDown();
 
 private:
-    void setFetching(bool fetching);
-
     template<class T>
     ResultsStream *populateWithFilter(T *snaps, std::function<bool(const QSharedPointer<QSnapdSnap> &)> &filter);
 
@@ -77,7 +77,7 @@ private:
     QSharedPointer<OdrsReviewsBackend> m_reviews;
 
     bool m_valid = true;
-    bool m_fetching = false;
     QSnapdClient m_client;
     QThreadPool m_threadPool;
+    QPointer<StoredResultsStream> m_updatesFetcher;
 };

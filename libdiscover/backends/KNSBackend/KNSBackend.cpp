@@ -310,10 +310,9 @@ void KNSBackend::setFetching(bool f)
 {
     if (m_fetching != f) {
         m_fetching = f;
-        Q_EMIT fetchingChanged();
-
         if (!m_fetching) {
             Q_EMIT initialized();
+            Q_EMIT contentsChanged();
         }
     }
 }
@@ -478,7 +477,7 @@ static ResultsStream *voidStream()
 template<typename T>
 void KNSBackend::deferredResultStream(KNSResultsStream *stream, T start)
 {
-    if (isFetching()) {
+    if (m_fetching) {
         auto startOnce = [stream, start] {
             if (stream->hasStarted()) {
                 return;
@@ -488,7 +487,6 @@ void KNSBackend::deferredResultStream(KNSResultsStream *stream, T start)
 
         // If it's not ready to take queries, wait a bit longer
         connect(this, &KNSBackend::initialized, stream, startOnce, Qt::QueuedConnection);
-        connect(this, &KNSBackend::fetchingChanged, stream, startOnce, Qt::QueuedConnection);
     } else {
         QTimer::singleShot(0, stream, start);
     }
@@ -525,7 +523,7 @@ KNSResultsStream *KNSBackend::searchStream(const QString &searchText)
 {
     auto stream = new KNSResultsStream(this, QLatin1String("KNS-search-") + name());
     auto start = [this, stream, searchText]() {
-        Q_ASSERT(!isFetching());
+        Q_ASSERT(!m_fetching);
         if (!m_isValid) {
             qWarning() << "querying an invalid backend";
             stream->finish();
@@ -557,11 +555,6 @@ ResultsStream *KNSBackend::findResourceByPackageName(const QUrl &search)
     };
     deferredResultStream(stream, start);
     return stream;
-}
-
-bool KNSBackend::isFetching() const
-{
-    return m_fetching;
 }
 
 AbstractBackendUpdater *KNSBackend::backendUpdater() const

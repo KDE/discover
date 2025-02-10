@@ -218,16 +218,6 @@ ResultsStream *SnapBackend::populateJobsWithFilter(const QVector<T *> &jobs, std
     return stream;
 }
 
-void SnapBackend::setFetching(bool fetching)
-{
-    if (m_fetching != fetching) {
-        m_fetching = fetching;
-        Q_EMIT fetchingChanged();
-    } else {
-        qWarning() << "fetching already on state" << fetching;
-    }
-}
-
 AbstractBackendUpdater *SnapBackend::backendUpdater() const
 {
     return m_updater;
@@ -258,8 +248,13 @@ Transaction *SnapBackend::removeApplication(AbstractResource *_app)
 
 void SnapBackend::checkForUpdates()
 {
-    auto ret = new StoredResultsStream({populate(m_client.findRefreshable())});
-    connect(ret, &StoredResultsStream::finishedResources, this, [this](const QVector<StreamResult> &resources) {
+    if (m_updatesFetcher) {
+        qWarning() << "Already fetching updates";
+        return;
+    }
+
+    m_updatesFetcher = new StoredResultsStream({populate(m_client.findRefreshable())});
+    connect(m_updatesFetcher, &StoredResultsStream::finishedResources, this, [this](const QVector<StreamResult> &resources) {
         for (SnapResource *res : std::as_const(m_resources)) {
             bool contained = kContains(resources, [res](const StreamResult &in) {
                 return in.resource == res;
