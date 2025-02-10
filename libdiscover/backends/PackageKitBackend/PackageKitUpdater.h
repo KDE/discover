@@ -43,6 +43,7 @@ public:
     void fetchChangelog() const override;
     double updateSize() const override;
     quint64 downloadSpeed() const override;
+    bool isFetchingUpdates() const override;
 
     void proceed() override;
     void setOfflineUpdates(bool use) override;

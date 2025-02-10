@@ -29,8 +29,11 @@ public:
     Transaction *installApplication(AbstractResource *app) override;
     Transaction *installApplication(AbstractResource *app, const AddonList &addons) override;
     Transaction *removeApplication(AbstractResource *app) override;
+    int fetchingUpdatesProgress() const override
+    {
+        return m_fetchOperationCount > 0 ? 42 : 100;
+    }
 
-    bool isFetching() const override;
     void checkForUpdates() override;
     QString displayName() const override;
 

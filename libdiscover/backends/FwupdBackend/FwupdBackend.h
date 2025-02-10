@@ -61,10 +61,6 @@ public:
     Transaction *installApplication(AbstractResource *app) override;
     Transaction *installApplication(AbstractResource *app, const AddonList &addons) override;
     Transaction *removeApplication(AbstractResource *app) override;
-    bool isFetching() const override
-    {
-        return m_fetching;
-    }
     void checkForUpdates() override;
     QString displayName() const override;
     bool hasApplications() const override;
@@ -74,6 +70,11 @@ public:
     static QString cacheFile(const QString &kind, const QString &baseName);
     void setDevices(GPtrArray *);
     void setRemotes(GPtrArray *);
+
+    int fetchingUpdatesProgress() const override
+    {
+        return m_fetching > 0 ? 42 : 100;
+    }
 
 Q_SIGNALS:
     void initialized();

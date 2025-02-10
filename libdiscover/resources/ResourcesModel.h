@@ -72,8 +72,6 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
     Q_OBJECT
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     Q_PROPERTY(bool hasSecurityUpdates READ hasSecurityUpdates NOTIFY updatesCountChanged)
-    Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
-    Q_PROPERTY(bool isInitializing READ isInitializing NOTIFY allInitialized)
     Q_PROPERTY(AbstractResourcesBackend *currentApplicationBackend READ currentApplicationBackend WRITE setCurrentApplicationBackend NOTIFY
                    currentApplicationBackendChanged)
     Q_PROPERTY(DiscoverAction *updateAction READ updateAction CONSTANT)
@@ -97,7 +95,6 @@ public:
     bool hasSecurityUpdates() const;
 
     bool isBusy() const;
-    bool isFetching() const;
     bool isInitializing() const;
 
     Q_SCRIPTABLE bool isExtended(const QString &id);
@@ -135,7 +132,6 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void fetchingChanged(bool isFetching);
-    void allInitialized();
     void backendsChanged();
     void updatesCountChanged(int updatesCount);
     void backendDataChanged(AbstractResourcesBackend *backend, const QVector<QByteArray> &properties);
@@ -148,7 +144,7 @@ Q_SIGNALS:
     void switchToUpdates();
 
 private Q_SLOTS:
-    void callerFetchingChanged();
+    void callerContentsChanged();
     void updateCaller(const QVector<QByteArray> &properties);
     void registerAllBackends();
 
@@ -160,15 +156,12 @@ private:
     bool addResourcesBackend(AbstractResourcesBackend *backend);
     void registerBackendByName(const QString &name);
     void initApplicationsBackend();
-    void slotFetching();
 
-    bool m_isFetching;
     bool m_isInitializing = true;
     QVector<AbstractResourcesBackend *> m_backends;
-    int m_initializingBackendsCount;
+    bool m_holdBackends = false;
     DiscoverAction *m_updateAction = nullptr;
     AbstractResourcesBackend *m_currentApplicationBackend;
-    QTimer m_allInitializedEmitter;
 
     EmitWhenChanged<int> m_updatesCount;
     EmitWhenChanged<int> m_fetchingUpdatesProgress;

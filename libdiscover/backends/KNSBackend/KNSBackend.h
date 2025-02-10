@@ -32,7 +32,6 @@ public:
     int updatesCount() const override;
     AbstractReviewsBackend *reviewsBackend() const override;
     AbstractBackendUpdater *backendUpdater() const override;
-    bool isFetching() const override;
     ResultsStream *search(const AbstractResourcesBackend::Filters &filter) override;
     ResultsStream *findResourceByPackageName(const QUrl &search);
 
@@ -71,6 +70,11 @@ public:
 
     QString displayName() const override;
     KNSResource *resourceForEntry(const KNSCore::Entry &entry);
+
+    int fetchingUpdatesProgress() const override
+    {
+        return m_fetching > 0 ? 42 : 100;
+    }
 
 Q_SIGNALS:
     void initialized();

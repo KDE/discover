@@ -112,8 +112,10 @@ void SteamOSBackend::acquireFetching(bool f)
         m_fetching--;
     }
 
-    if ((!f && m_fetching == 0) || (f && m_fetching == 1)) {
-        Q_EMIT fetchingChanged();
+    if (!f && m_fetching == 0) {
+        Q_EMIT contentsChanged();
+    } else if (f && m_fetching == 1) {
+        Q_EMIT fetchingUpdatesProgressChanged();
     }
 }
 
@@ -221,11 +223,6 @@ Transaction *SteamOSBackend::removeApplication(AbstractResource *)
 {
     qWarning() << "steamos-backend: Unsupported operation:" << __PRETTY_FUNCTION__;
     return nullptr;
-}
-
-bool SteamOSBackend::isFetching() const
-{
-    return m_fetching > 0;
 }
 
 QString SteamOSBackend::displayName() const

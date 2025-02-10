@@ -49,15 +49,14 @@ public:
     ResultsStream *search(const AbstractResourcesBackend::Filters &search) override;
     ResultsStream *findResourceByPackageName(const QUrl &search);
     bool isValid() const override;
+    int fetchingUpdatesProgress() const override
+    {
+        return m_isFetching > 0 ? 42 : 100;
+    }
 
     Transaction *installApplication(AbstractResource *app) override;
     Transaction *installApplication(AbstractResource *app, const AddonList &addons) override;
     Transaction *removeApplication(AbstractResource *app) override;
-    bool isFetching() const override
-    {
-        // return m_isFetching > 0;
-        return false;
-    }
     void checkForUpdates() override;
     QString displayName() const override;
     bool hasApplications() const override
