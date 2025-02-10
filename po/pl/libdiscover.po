@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-24 03:09+0000\n"
-"PO-Revision-Date: 2024-02-11 11:10+0100\n"
+"PO-Revision-Date: 2025-02-08 15:14+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -576,7 +576,7 @@ msgid ""
 "the application is installed.</para>"
 msgstr ""
 "<para>Ten program pochodzi z \"%1\" (umieszczonego na <link>%2</link>). Inne "
-"oprogramowanie z tego repozytorium także będzie dostępne w Odkrywcy po "
+"oprogramowanie z tego repozytorium także będzie dostępne w Discoverze po "
 "wgraniu tego programu.</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:447
@@ -1904,7 +1904,7 @@ msgstr[2] ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
-msgstr "Otwórz Odkrywcę"
+msgstr "Otwórz Discovera"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
 #, kde-format
@@ -2341,7 +2341,7 @@ msgstr "Uaktualnianie do następnej głównej wersji"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "Działanie w trakcie (rozpoczęte poza Odkrywcą)"
+msgstr "Działanie w trakcie (rozpoczęte poza Discoverem)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
 #, kde-format
