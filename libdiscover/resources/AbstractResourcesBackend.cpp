@@ -77,23 +77,7 @@ void ResultsStream::finish()
 AbstractResourcesBackend::AbstractResourcesBackend(QObject *parent)
     : QObject(parent)
 {
-    QTimer *fetchingChangedTimer = new QTimer(this);
-    fetchingChangedTimer->setInterval(3000);
-    fetchingChangedTimer->setSingleShot(true);
-    connect(fetchingChangedTimer, &QTimer::timeout, this, [this] {
-        qCDebug(LIBDISCOVER_LOG) << "took really long to fetch" << this;
-    });
-
-    connect(this, &AbstractResourcesBackend::fetchingChanged, this, [this, fetchingChangedTimer] {
-        // Q_ASSERT(isFetching() != fetchingChangedTimer->isActive());
-        if (isFetching()) {
-            fetchingChangedTimer->start();
-        } else {
-            fetchingChangedTimer->stop();
-        }
-
-        Q_EMIT fetchingUpdatesProgressChanged();
-    });
+    connect(this, &AbstractResourcesBackend::contentsChanged, this, &AbstractResourcesBackend::fetchingUpdatesProgressChanged);
 }
 
 Transaction *AbstractResourcesBackend::installApplication(AbstractResource *app)
@@ -164,11 +148,6 @@ void AbstractResourcesBackend::Filters::filterJustInCase(QVector<StreamResult> &
 bool AbstractResourcesBackend::extends(const QString & /*id*/) const
 {
     return false;
-}
-
-int AbstractResourcesBackend::fetchingUpdatesProgress() const
-{
-    return isFetching() ? 42 : 100;
 }
 
 uint AbstractResourcesBackend::fetchingUpdatesProgressWeight() const

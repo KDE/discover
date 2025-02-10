@@ -43,8 +43,6 @@ ResourcesModel *ResourcesModel::global()
 
 ResourcesModel::ResourcesModel(QObject *parent)
     : QObject(parent)
-    , m_isFetching(false)
-    , m_initializingBackendsCount(0)
     , m_currentApplicationBackend(nullptr)
     , m_updatesCount(
           0,
@@ -77,23 +75,12 @@ ResourcesModel::ResourcesModel(QObject *parent)
               Q_EMIT fetchingUpdatesProgressChanged(progress);
           })
 {
-    m_allInitializedEmitter.setObjectName(u"allInitializedEmitter"_s);
-    connect(this, &ResourcesModel::allInitialized, this, &ResourcesModel::slotFetching);
     connect(this, &ResourcesModel::backendsChanged, this, &ResourcesModel::initApplicationsBackend);
 }
 
 void ResourcesModel::init(bool load)
 {
     Q_ASSERT(QCoreApplication::instance()->thread() == QThread::currentThread());
-
-    m_allInitializedEmitter.setSingleShot(true);
-    m_allInitializedEmitter.setInterval(0);
-    connect(&m_allInitializedEmitter, &QTimer::timeout, this, [this]() {
-        if (m_initializingBackendsCount == 0) {
-            m_isInitializing = false;
-            Q_EMIT allInitialized();
-        }
-    });
 
     if (load) {
         registerAllBackends();
@@ -149,13 +136,9 @@ bool ResourcesModel::addResourcesBackend(AbstractResourcesBackend *backend)
     }
 
     m_backends += backend;
-    if (!backend->isFetching()) {
-        m_updatesCount.reevaluate();
-    } else {
-        m_initializingBackendsCount++;
-    }
+    m_updatesCount.reevaluate();
 
-    connect(backend, &AbstractResourcesBackend::fetchingChanged, this, &ResourcesModel::callerFetchingChanged);
+    connect(backend, &AbstractResourcesBackend::contentsChanged, this, &ResourcesModel::callerContentsChanged);
     connect(backend, &AbstractResourcesBackend::allDataChanged, this, &ResourcesModel::updateCaller);
     connect(backend, &AbstractResourcesBackend::resourcesChanged, this, &ResourcesModel::resourceDataChanged);
     connect(backend, &AbstractResourcesBackend::updatesCountChanged, this, [this] {
@@ -167,24 +150,13 @@ bool ResourcesModel::addResourcesBackend(AbstractResourcesBackend *backend)
     connect(backend, &AbstractResourcesBackend::resourceRemoved, this, &ResourcesModel::resourceRemoved);
     connect(backend, &AbstractResourcesBackend::passiveMessage, this, &ResourcesModel::passiveMessage);
     connect(backend, &AbstractResourcesBackend::inlineMessageChanged, this, &ResourcesModel::setInlineMessage);
-    connect(backend->backendUpdater(), &AbstractBackendUpdater::progressingChanged, this, &ResourcesModel::slotFetching);
     if (auto reviewsBackend = backend->reviewsBackend()) {
         connect(reviewsBackend, &AbstractReviewsBackend::error, this, &ResourcesModel::passiveMessage, Qt::UniqueConnection);
-    }
-
-    // In case this is in fact the first backend to be added, and also happens to be
-    // pre-filled, we still need for the rest of the backends to be added before trying
-    // to send out the initialized signal. To ensure this happens, schedule it for the
-    // start of the next run of the event loop.
-    if (m_initializingBackendsCount == 0) {
-        m_allInitializedEmitter.start();
-    } else {
-        slotFetching();
     }
     return true;
 }
 
-void ResourcesModel::callerFetchingChanged()
+void ResourcesModel::callerContentsChanged()
 {
     AbstractResourcesBackend *backend = qobject_cast<AbstractResourcesBackend *>(sender());
 
@@ -196,20 +168,7 @@ void ResourcesModel::callerFetchingChanged()
         Q_EMIT backendsChanged();
         CategoryModel::global()->blacklistPlugin(backend->name());
         backend->deleteLater();
-        slotFetching();
         return;
-    }
-
-    if (backend->isFetching()) {
-        m_initializingBackendsCount++;
-        slotFetching();
-    } else {
-        m_initializingBackendsCount--;
-        if (m_initializingBackendsCount == 0) {
-            m_allInitializedEmitter.start();
-        } else {
-            slotFetching();
-        }
     }
 }
 
@@ -250,13 +209,8 @@ void ResourcesModel::removeApplication(AbstractResource *app)
 void ResourcesModel::registerAllBackends()
 {
     DiscoverBackendsFactory f;
-    const auto backends = f.allBackends();
-    if (m_initializingBackendsCount == 0 && backends.isEmpty()) {
-        qCWarning(LIBDISCOVER_LOG) << "Couldn't find any backends";
-        m_allInitializedEmitter.start();
-    } else {
-        addResourcesBackends(backends);
-    }
+    addResourcesBackends(f.allBackends());
+    m_isInitializing = false;
 }
 
 void ResourcesModel::registerBackendByName(const QString &name)
@@ -266,33 +220,9 @@ void ResourcesModel::registerBackendByName(const QString &name)
     addResourcesBackends(backends);
 }
 
-bool ResourcesModel::isFetching() const
-{
-    return m_isFetching;
-}
-
 bool ResourcesModel::isInitializing() const
 {
     return m_isInitializing;
-}
-
-void ResourcesModel::slotFetching()
-{
-    bool newFetching = false;
-    for (const auto backend : std::as_const(m_backends)) {
-        // isFetching should sort of be enough. However, sometimes the backend itself
-        // will still be operating on things, which from a model point of view would
-        // still mean something going on. So, interpret that as fetching as well, for
-        // the purposes of this property.
-        if (backend->isFetching() || (backend->backendUpdater() && backend->backendUpdater()->isProgressing())) {
-            newFetching = true;
-            break;
-        }
-    }
-    if (newFetching != m_isFetching) {
-        m_isFetching = newFetching;
-        Q_EMIT fetchingChanged(m_isFetching);
-    }
 }
 
 bool ResourcesModel::isBusy() const

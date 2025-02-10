@@ -44,11 +44,6 @@ public:
 private Q_SLOTS:
     void init()
     {
-        QVERIFY(m_appBackend);
-        while (m_appBackend->isFetching()) {
-            QSignalSpy spy(m_appBackend, &AbstractResourcesBackend::fetchingChanged);
-            QVERIFY(spy.wait());
-        }
     }
 
     void testInformation()

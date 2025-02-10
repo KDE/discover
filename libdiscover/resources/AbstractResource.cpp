@@ -135,10 +135,6 @@ QString AbstractResource::appstreamId() const
 
 void AbstractResource::reportNewState()
 {
-    if (backend()->isFetching()) {
-        return;
-    }
-
     static const QVector<QByteArray> properties = {
         "state",
         "status",

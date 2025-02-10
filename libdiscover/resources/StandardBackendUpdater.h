@@ -9,6 +9,7 @@
 #include "AbstractResourcesBackend.h"
 #include "discovercommon_export.h"
 #include <QDateTime>
+#include <QPointer>
 #include <QSet>
 #include <QTimer>
 #include <resources/AbstractBackendUpdater.h>
@@ -39,6 +40,7 @@ public:
     int updatesCount() const;
     void cancel() override;
     quint64 downloadSpeed() const override;
+    bool isFetchingUpdates() const override;
 
 Q_SIGNALS:
     void cancelTransaction();

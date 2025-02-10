@@ -924,5 +924,10 @@ void PackageKitUpdater::setOfflineUpdateAction(PackageKit::Offline::Action actio
     }
 }
 
+bool PackageKitUpdater::isFetchingUpdates() const
+{
+    return m_backend->refresher() != nullptr;
+}
+
 #include "PackageKitUpdater.moc"
 #include "moc_PackageKitUpdater.cpp"
