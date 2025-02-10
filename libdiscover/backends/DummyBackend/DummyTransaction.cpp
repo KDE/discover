@@ -35,10 +35,10 @@ void DummyTransaction::iterateTransaction()
 
     if (progress() < 100) {
         setProgress(qBound(0, progress() + QRandomGenerator::global()->bounded(5), 100));
-        QTimer::singleShot(/*KRandom::random()%*/ 100, this, &DummyTransaction::iterateTransaction);
+        QTimer::singleShot(/*KRandom::random()%*/ 10, this, &DummyTransaction::iterateTransaction);
     } else if (status() == DownloadingStatus) {
         setStatus(CommittingStatus);
-        QTimer::singleShot(/*KRandom::random()%*/ 100, this, &DummyTransaction::iterateTransaction);
+        QTimer::singleShot(/*KRandom::random()%*/ 10, this, &DummyTransaction::iterateTransaction);
 #ifdef TEST_PROCEED
     } else if (resource()->name() == "Dummy 101") {
         Q_EMIT proceedRequest(QStringLiteral("yadda yadda"),

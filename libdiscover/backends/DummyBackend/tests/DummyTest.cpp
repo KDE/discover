@@ -97,8 +97,8 @@ void DummyTest::testProxy()
     QVERIFY(pm.isBusy());
     QVERIFY(spy.wait());
     QVERIFY(!pm.isBusy());
-    QCOMPARE(0, pm.rowCount());
-    QCOMPARE(pm.subcategories().count(), 7);
+    QCOMPARE(pm.rowCount(), 0);
+    QCOMPARE(pm.subcategories().count(), 3);
     pm.setSearch(QString());
     QVERIFY(pm.isBusy());
     QVERIFY(spy.wait());
@@ -230,7 +230,8 @@ void DummyTest::testReviewsModel()
     new QAbstractItemModelTester(&m, &m);
     m.setResource(res);
     m.fetchMore();
-
+    QSignalSpy spy(&m, &ReviewsModel::fetchingChanged);
+    QVERIFY(spy.wait());
     QVERIFY(m.rowCount() > 0);
 
     QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0, 0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::None);
@@ -245,7 +246,6 @@ void DummyTest::testReviewsModel()
     m.setResource(res);
     m.fetchMore();
 
-    QSignalSpy spy(&m, &ReviewsModel::rowsChanged);
     QVERIFY(m.rowCount() > 0);
 }
 
