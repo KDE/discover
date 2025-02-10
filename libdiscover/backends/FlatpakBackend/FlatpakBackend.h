@@ -55,7 +55,8 @@ public:
     Transaction *removeApplication(AbstractResource *app) override;
     bool isFetching() const override
     {
-        return m_isFetching > 0;
+        // return m_isFetching > 0;
+        return false;
     }
     void checkForUpdates() override;
     QString displayName() const override;
