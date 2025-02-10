@@ -26,7 +26,7 @@ DiscoverUpdate::~DiscoverUpdate() = default;
 
 void DiscoverUpdate::start()
 {
-    if (m_resourcesUpdatesModel->isProgressing() || ResourcesModel::global()->isFetching() || m_done)
+    if (m_resourcesUpdatesModel->isProgressing() || m_done)
         return;
 
     m_resourcesUpdatesModel->setOfflineUpdates(m_offlineUpdates);

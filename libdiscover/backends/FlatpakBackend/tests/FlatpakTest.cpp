@@ -50,11 +50,6 @@ public:
 private Q_SLOTS:
     void initTestCase()
     {
-        QVERIFY(m_appBackend);
-        while (m_appBackend->isFetching()) {
-            QSignalSpy spy(m_appBackend, &AbstractResourcesBackend::fetchingChanged);
-            QVERIFY(spy.wait());
-        }
     }
 
     void testAddSource()

@@ -36,14 +36,16 @@ public:
     Transaction *installApplication(AbstractResource *app) override;
     Transaction *installApplication(AbstractResource *app, const AddonList &addons) override;
     Transaction *removeApplication(AbstractResource *app) override;
-    bool isFetching() const override
-    {
-        return m_fetching;
-    }
     void checkForUpdates() override;
     QString displayName() const override;
     bool hasApplications() const override;
     InlineMessage *explainDysfunction() const override;
+
+    int fetchingUpdatesProgress() const override
+    {
+        return m_fetching > 0 ? 42 : 100;
+    }
+
 public Q_SLOTS:
     void toggleFetching();
 

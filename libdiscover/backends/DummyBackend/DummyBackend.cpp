@@ -80,9 +80,10 @@ void DummyBackend::toggleFetching()
 {
     m_fetching = !m_fetching;
     // qDebug() << "fetching..." << m_fetching;
-    Q_EMIT fetchingChanged();
-    if (!m_fetching)
+    if (!m_fetching) {
         m_reviews->initialize();
+        Q_EMIT contentsChanged();
+    }
 
     DiscoverAction *celebrate = new DiscoverAction(u"wine"_s, QStringLiteral("To who?"), this);
     connect(celebrate, &DiscoverAction::triggered, this, [this] {
@@ -165,8 +166,10 @@ Transaction *DummyBackend::removeApplication(AbstractResource *app)
 
 void DummyBackend::checkForUpdates()
 {
-    if (m_fetching)
+    if (m_fetching) {
+        qDebug() << "skipping fetch";
         return;
+    }
     toggleFetching();
     populate(QStringLiteral("Moar"));
     QTimer::singleShot(500, this, &DummyBackend::toggleFetching);

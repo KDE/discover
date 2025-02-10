@@ -144,11 +144,13 @@ void ResourcesUpdatesModel::init()
             connect(updater, &AbstractBackendUpdater::needsRebootChanged, this, &ResourcesUpdatesModel::needsRebootChanged);
             connect(updater, &AbstractBackendUpdater::destroyed, this, &ResourcesUpdatesModel::updaterDestroyed);
             connect(updater, &AbstractBackendUpdater::errorMessageChanged, this, &ResourcesUpdatesModel::errorMessagesChanged);
+            connect(updater, &AbstractBackendUpdater::fetchingChanged, this, &ResourcesUpdatesModel::refreshFetching);
             m_updaters += updater;
 
             m_lastIsProgressing |= updater->isProgressing();
         }
     }
+    refreshFetching();
 
     // To enable from command line use:
     // kwriteconfig5 --file discoverrc --group Software --key UseOfflineUpdates true
@@ -327,6 +329,27 @@ bool ResourcesUpdatesModel::needsReboot() const
             return true;
     }
     return false;
+}
+
+void ResourcesUpdatesModel::refreshFetching()
+{
+    bool fetching = false;
+    for (auto updater : std::as_const(m_updaters)) {
+        if (updater->isFetchingUpdates()) {
+            fetching = true;
+            break;
+        }
+    }
+    if (fetching == m_fetching) {
+        return;
+    }
+    m_fetching = fetching;
+    Q_EMIT fetchingChanged();
+}
+
+bool ResourcesUpdatesModel::isFetching() const
+{
+    return m_fetching;
 }
 
 bool ResourcesUpdatesModel::readyToReboot() const

@@ -90,7 +90,6 @@ public:
         return !QFile::exists(QStringLiteral("/run/ostree-booted"));
     }
     QSet<AbstractResource *> upgradeablePackages() const;
-    bool isFetching() const override;
 
     bool isPackageNameUpgradeable(const PackageKitResource *res) const;
     QSet<QString> upgradeablePackageId(const PackageKitResource *res) const;
@@ -137,6 +136,10 @@ public:
     bool needsRebootForPowerOffAction() const override
     {
         return true;
+    }
+    QPointer<PackageKit::Transaction> refresher() const
+    {
+        return m_refresher;
     }
 
 public Q_SLOTS:

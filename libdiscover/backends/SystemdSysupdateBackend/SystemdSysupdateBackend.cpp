@@ -96,11 +96,6 @@ Transaction *SystemdSysupdateBackend::removeApplication(AbstractResource *app)
     return nullptr;
 }
 
-bool SystemdSysupdateBackend::isFetching() const
-{
-    return m_fetchOperationCount > 0;
-}
-
 void SystemdSysupdateBackend::checkForUpdates()
 {
     qCDebug(SYSTEMDSYSUPDATE_LOG) << "Updating systemd-sysupdate backend...";
@@ -109,7 +104,7 @@ void SystemdSysupdateBackend::checkForUpdates()
 
 QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
 {
-    if (isFetching()) {
+    if (m_fetchOperationCount > 0) {
         qCInfo(SYSTEMDSYSUPDATE_LOG) << "Already fetching updates. Skipping...";
         co_return;
     }
@@ -209,14 +204,14 @@ void SystemdSysupdateBackend::beginFetch()
 {
     m_fetchOperationCount++;
     if (m_fetchOperationCount == 1) {
-        Q_EMIT fetchingChanged();
+        Q_EMIT fetchingUpdatesProgressChanged();
     }
 }
 void SystemdSysupdateBackend::endFetch()
 {
     m_fetchOperationCount--;
     if (m_fetchOperationCount == 0) {
-        Q_EMIT fetchingChanged();
+        Q_EMIT contentsChanged();
     }
 }
 

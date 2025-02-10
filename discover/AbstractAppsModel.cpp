@@ -78,14 +78,14 @@ void AbstractAppsModel::refreshCurrentApplicationBackend()
         return;
 
     if (m_backend) {
-        disconnect(m_backend, &AbstractResourcesBackend::fetchingChanged, this, &AbstractAppsModel::refresh);
+        disconnect(m_backend, &AbstractResourcesBackend::contentsChanged, this, &AbstractAppsModel::refresh);
         disconnect(m_backend, &AbstractResourcesBackend::resourceRemoved, this, &AbstractAppsModel::removeResource);
     }
 
     m_backend = backend;
 
     if (backend) {
-        connect(backend, &AbstractResourcesBackend::fetchingChanged, this, &AbstractAppsModel::refresh);
+        connect(backend, &AbstractResourcesBackend::contentsChanged, this, &AbstractAppsModel::refresh);
         connect(backend, &AbstractResourcesBackend::resourceRemoved, this, &AbstractAppsModel::removeResource);
     }
 

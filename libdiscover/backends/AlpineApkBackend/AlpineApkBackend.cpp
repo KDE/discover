@@ -187,7 +187,6 @@ void AlpineApkBackend::reloadAppStreamMetadata()
 {
     // mark us as "Loading..."
     m_fetching = true;
-    Q_EMIT fetchingChanged();
 
     loadAppStreamComponents();
     parseAppStreamMetadata();
@@ -195,7 +194,7 @@ void AlpineApkBackend::reloadAppStreamMetadata()
 
     // mark us as "done loading"
     m_fetching = false;
-    Q_EMIT fetchingChanged();
+    Q_EMIT contentsChanged();
 }
 
 // this function is executed in the background thread
@@ -240,7 +239,7 @@ void AlpineApkBackend::onLoadResourcesFinished()
     qCDebug(LOG_ALPINEAPK) << "backend: resources loaded.";
 
     m_fetching = false;
-    Q_EMIT fetchingChanged();
+    Q_EMIT contentsChanged();
     // ^^ this causes the UI to update "Featured" page and show
     //    to user that we actually have loaded packages data
 
@@ -443,7 +442,6 @@ void AlpineApkBackend::checkForUpdates()
     // update UI
     m_fetching = true;
     m_fetchProgress = 0;
-    Q_EMIT fetchingChanged();
     Q_EMIT fetchingUpdatesProgressChanged();
 }
 
@@ -452,7 +450,7 @@ void AlpineApkBackend::finishCheckForUpdates()
     m_updatesTimeoutTimer->stop(); // stop safety timer
     // update UI
     m_fetching = false;
-    Q_EMIT fetchingChanged();
+    Q_EMIT contentsChanged();
     Q_EMIT fetchingUpdatesProgressChanged();
 }
 

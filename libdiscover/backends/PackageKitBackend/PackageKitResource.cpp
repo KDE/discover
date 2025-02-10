@@ -286,9 +286,7 @@ void PackageKitResource::setDetails(const PackageKit::Details &details)
             Q_EMIT stateChanged();
         }
 
-        if (!backend()->isFetching()) {
-            Q_EMIT backend()->resourcesChanged(this, {"size", "homepage", "license"});
-        }
+        Q_EMIT backend()->resourcesChanged(this, {"size", "homepage", "license"});
 
         if (oldSize != uint(size())) {
             Q_EMIT sizeChanged();

@@ -291,11 +291,6 @@ void PackageKitBackend::updateProxy()
     }
 }
 
-bool PackageKitBackend::isFetching() const
-{
-    return m_isFetching;
-}
-
 void PackageKitBackend::acquireFetching(bool f)
 {
     if (f) {
@@ -304,11 +299,10 @@ void PackageKitBackend::acquireFetching(bool f)
         m_isFetching--;
     }
 
-    if ((!f && m_isFetching == 0) || (f && m_isFetching == 1)) {
-        Q_EMIT fetchingChanged();
-        if (m_isFetching == 0) {
-            Q_EMIT available();
-        }
+    if (!f && m_isFetching == 0) {
+        Q_EMIT contentsChanged();
+        Q_EMIT available();
+        Q_EMIT updatesCountChanged();
     }
     Q_ASSERT(m_isFetching >= 0);
 }
@@ -582,6 +576,7 @@ void PackageKitBackend::checkForUpdates()
 
     if (!m_refresher) {
         acquireFetching(true);
+        Q_EMIT m_updater->fetchingChanged();
         m_updater->clearDistroUpgrade();
         m_refresher = PackageKit::Daemon::refreshCache(false);
         // Limit the cache-age so that we actually download new caches if necessary
@@ -593,6 +588,7 @@ void PackageKitBackend::checkForUpdates()
             m_refresher = nullptr;
             fetchUpdates();
             acquireFetching(false);
+            Q_EMIT m_updater->fetchingChanged();
         });
     } else {
         qWarning() << "PackageKitBackend: Already resetting";
@@ -935,7 +931,6 @@ Transaction *PackageKitBackend::installApplication(AbstractResource *app)
 
 Transaction *PackageKitBackend::removeApplication(AbstractResource *app)
 {
-    Q_ASSERT(!isFetching());
     if (!qobject_cast<PackageKitResource *>(app)) {
         Q_EMIT passiveMessage(i18n("Cannot remove '%1'", app->name()));
         return nullptr;
@@ -945,7 +940,7 @@ Transaction *PackageKitBackend::removeApplication(AbstractResource *app)
 
 QSet<AbstractResource *> PackageKitBackend::upgradeablePackages() const
 {
-    if (isFetching() || !m_packagesToAdd.isEmpty()) {
+    if (!m_packagesToAdd.isEmpty()) {
         return {};
     }
 
@@ -994,14 +989,7 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
     m_updater->setProgressing(false);
 
     includePackagesToAdd();
-    if (isFetching()) {
-        auto a = new OneTimeAction(
-            [this] {
-                Q_EMIT updatesCountChanged();
-            },
-            this);
-        connect(this, &PackageKitBackend::available, a, &OneTimeAction::trigger);
-    } else {
+    if (!m_isFetching) {
         Q_EMIT updatesCountChanged();
     }
 

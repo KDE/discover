@@ -300,7 +300,7 @@ void FwupdBackend::setDevices(GPtrArray *devices)
     addUpdates();
 
     m_fetching = false;
-    Q_EMIT fetchingChanged();
+    Q_EMIT contentsChanged();
     Q_EMIT initialized();
 }
 
@@ -349,7 +349,7 @@ void FwupdBackend::checkForUpdates()
         return;
 
     m_fetching = true;
-    Q_EMIT fetchingChanged();
+    Q_EMIT fetchingUpdatesProgressChanged();
 
     fwupd_client_get_devices_async(client, m_cancellable, fwupd_client_get_devices_cb, this);
     fwupd_client_get_remotes_async(client, m_cancellable, fwupd_client_get_remotes_cb, this);
@@ -387,7 +387,7 @@ ResultsStream *FwupdBackend::search(const AbstractResourcesBackend::Filters &fil
             Q_EMIT stream->resourcesFound(ret);
         stream->finish();
     };
-    if (isFetching()) {
+    if (m_fetching) {
         connect(this, &FwupdBackend::initialized, stream, f);
     } else {
         QTimer::singleShot(0, this, f);

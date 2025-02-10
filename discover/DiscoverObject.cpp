@@ -216,7 +216,7 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
         this);
 
     if (ResourcesModel::global()->backends().isEmpty()) {
-        connect(ResourcesModel::global(), &ResourcesModel::allInitialized, action, &OneTimeAction::trigger);
+        connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, action, &OneTimeAction::trigger);
     } else {
         action->trigger();
     }

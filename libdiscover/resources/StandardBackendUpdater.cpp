@@ -22,9 +22,10 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend *parent)
     , m_progress(0)
     , m_lastUpdate(QDateTime())
 {
-    connect(m_backend, &AbstractResourcesBackend::fetchingChanged, this, &StandardBackendUpdater::refreshUpdateable);
+    connect(m_backend, &AbstractResourcesBackend::contentsChanged, this, &StandardBackendUpdater::refreshUpdateable);
     connect(m_backend, &AbstractResourcesBackend::invalidated, this, &StandardBackendUpdater::refreshUpdateable);
     connect(m_backend, &AbstractResourcesBackend::resourcesChanged, this, &StandardBackendUpdater::resourcesChanged);
+    connect(m_backend, &AbstractResourcesBackend::fetchingUpdatesProgressChanged, this, &StandardBackendUpdater::fetchingChanged);
     connect(m_backend, &AbstractResourcesBackend::resourceRemoved, this, [this](AbstractResource *resource) {
         if (m_upgradeable.remove(resource)) {
             Q_EMIT updatesCountChanged(updatesCount());
@@ -41,8 +42,9 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend *parent)
 
 void StandardBackendUpdater::resourcesChanged(AbstractResource *res, const QVector<QByteArray> &props)
 {
-    if (props.contains("state") && (res->state() == AbstractResource::Upgradeable || m_upgradeable.contains(res)))
+    if (!m_settingUp && props.contains("state") && (res->state() == AbstractResource::Upgradeable || m_upgradeable.contains(res))) {
         m_timer.start();
+    }
 }
 
 bool StandardBackendUpdater::hasUpdates() const
@@ -117,6 +119,11 @@ AbstractBackendUpdater::State toUpdateState(Transaction *t)
     Q_UNREACHABLE();
 }
 
+bool StandardBackendUpdater::isFetchingUpdates() const
+{
+    return m_backend->fetchingUpdatesProgress() != 100 || m_settingUp;
+}
+
 void StandardBackendUpdater::transactionProgressChanged()
 {
     Transaction *t = qobject_cast<Transaction *>(sender());
@@ -163,9 +170,6 @@ void StandardBackendUpdater::refreshProgress()
 
 void StandardBackendUpdater::refreshUpdateable()
 {
-    if (m_backend->isFetching()) {
-        return;
-    }
     if (!m_backend->isValid()) {
         qWarning() << "Invalidated backend, deactivating" << m_backend->name();
         if (m_settingUp) {
@@ -182,6 +186,7 @@ void StandardBackendUpdater::refreshUpdateable()
 
     m_settingUp = true;
     Q_EMIT progressingChanged(true);
+    Q_EMIT fetchingChanged();
     AbstractResourcesBackend::Filters f;
     f.state = AbstractResource::Upgradeable;
     m_upgradeable.clear();
@@ -202,6 +207,7 @@ void StandardBackendUpdater::refreshUpdateable()
         m_settingUp = false;
         Q_EMIT updatesCountChanged(updatesCount());
         Q_EMIT progressingChanged(false);
+        Q_EMIT fetchingChanged();
     });
 }
 

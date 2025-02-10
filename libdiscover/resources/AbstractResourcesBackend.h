@@ -127,7 +127,6 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     Q_PROPERTY(int fetchingUpdatesProgress READ fetchingUpdatesProgress NOTIFY fetchingUpdatesProgressChanged)
     Q_PROPERTY(bool hasSecurityUpdates READ hasSecurityUpdates NOTIFY updatesCountChanged)
-    Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
     Q_PROPERTY(bool hasApplications READ hasApplications CONSTANT)
 
     Q_MOC_INCLUDE("ReviewsBackend/AbstractReviewsBackend.h")
@@ -198,11 +197,6 @@ public:
     }
 
     /**
-     * Tells whether the backend is fetching resources
-     */
-    virtual bool isFetching() const = 0;
-
-    /**
      * @returns the appstream ids that this backend extends
      */
     virtual bool extends(const QString &id) const;
@@ -233,7 +227,7 @@ public:
         return false;
     }
 
-    virtual int fetchingUpdatesProgress() const;
+    virtual int fetchingUpdatesProgress() const = 0;
 
     /**
      * @returns how much this backend should influence the global fetching progress.
@@ -299,7 +293,7 @@ Q_SIGNALS:
     /**
      * Notify of a change in the backend
      */
-    void fetchingChanged();
+    void contentsChanged();
 
     /**
      * This should be emitted when the number of upgradeable packages changed.

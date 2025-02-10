@@ -50,10 +50,8 @@ DummyTest::DummyTest(QObject *parent)
 void DummyTest::initTestCase()
 {
     QVERIFY(m_appBackend);
-    while (m_appBackend->isFetching()) {
-        QSignalSpy spy(m_appBackend, &AbstractResourcesBackend::fetchingChanged);
-        QVERIFY(spy.wait());
-    }
+    QSignalSpy spy(m_appBackend, &AbstractResourcesBackend::contentsChanged);
+    QVERIFY(spy.wait());
 }
 
 QVector<StreamResult> fetchResources(ResultsStream *stream)
@@ -140,7 +138,7 @@ void DummyTest::testFetch()
 
     // fetches updates, adds new things
     m_appBackend->checkForUpdates();
-    QSignalSpy spy(m_model, &ResourcesModel::allInitialized);
+    QSignalSpy spy(m_appBackend, &AbstractResourcesBackend::contentsChanged);
     QVERIFY(spy.wait(80000));
     auto resources2 = fetchResources(m_appBackend->search({}));
     QCOMPARE(m_appBackend->property("startElements").toInt() * 4, resources2.count());

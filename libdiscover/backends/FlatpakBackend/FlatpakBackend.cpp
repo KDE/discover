@@ -157,7 +157,7 @@ public:
         m_resources.insert(resource->uniqueId(), resource);
 
         QObject::connect(resource, &FlatpakResource::sizeChanged, m_backend, [this, resource] {
-            if (!m_backend->m_isFetching > 0) {
+            if (m_backend->m_isFetching == 0) {
                 Q_EMIT m_backend->resourcesChanged(resource, {"size", "sizeDescription"});
             }
         });
@@ -1407,11 +1407,8 @@ void FlatpakBackend::acquireFetching(bool f)
         m_isFetching--;
     }
 
-    if ((!f && m_isFetching == 0) || (f && m_isFetching == 1)) {
-        Q_EMIT fetchingChanged();
-    }
-
-    if (m_isFetching == 0) {
+    if (!f && m_isFetching == 0) {
+        Q_EMIT contentsChanged();
         Q_EMIT initialized();
     }
 }

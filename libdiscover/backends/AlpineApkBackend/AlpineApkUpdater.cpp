@@ -114,6 +114,12 @@ bool AlpineApkUpdater::isProgressing() const
     return m_progressing;
 }
 
+bool AlpineApkUpdater::isFetchingUpdates() const
+{
+    qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO << m_progressing;
+    return m_backend->fetchingUpdatesProgress() != 100;
+}
+
 bool AlpineApkUpdater::isMarked(AbstractResource *res) const
 {
     return m_markedToUpdate.contains(res);

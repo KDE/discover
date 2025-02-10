@@ -32,9 +32,12 @@ public:
     Transaction *installApplication(AbstractResource *app, const AddonList &addons) override;
     Transaction *removeApplication(AbstractResource *app) override;
 
-    bool isFetching() const override;
     void checkForUpdates() override;
     QString displayName() const override;
+    int fetchingUpdatesProgress() const override
+    {
+        return m_fetching > 0 ? 42 : 100;
+    }
 
     static QString service();
     static QString path();

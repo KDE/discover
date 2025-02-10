@@ -20,6 +20,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 {
     Q_OBJECT
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
+    Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
     Q_PROPERTY(QDateTime lastUpdate READ lastUpdate NOTIFY progressingChanged)
     Q_PROPERTY(qint64 secsToLastUpdate READ secsToLastUpdate NOTIFY progressingChanged)
     Q_PROPERTY(Transaction *transaction READ transaction NOTIFY progressingChanged)
@@ -51,6 +52,9 @@ public:
     bool needsReboot() const;
     bool readyToReboot() const;
     bool useUnattendedUpdates() const;
+
+    /// @returns whether any of the aggregated updaters is fetching updates
+    bool isFetching() const;
     QStringList errorMessages() const;
 
 Q_SIGNALS:
@@ -63,6 +67,7 @@ Q_SIGNALS:
     void useUnattendedUpdatesChanged();
     void fetchingUpdatesProgressChanged(int percent);
     void errorMessagesChanged();
+    void fetchingChanged();
 
 public Q_SLOTS:
     void updateAll();
@@ -74,10 +79,12 @@ private Q_SLOTS:
 private:
     void init();
     void setTransaction(UpdateTransaction *transaction);
+    void refreshFetching();
 
     QVector<AbstractBackendUpdater *> m_updaters;
     bool m_lastIsProgressing;
     bool m_offlineUpdates = false;
     QPointer<UpdateTransaction> m_transaction;
     QStringList m_errorMessages;
+    bool m_fetching = true;
 };
