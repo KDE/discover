@@ -157,7 +157,7 @@ public:
         m_resources.insert(resource->uniqueId(), resource);
 
         QObject::connect(resource, &FlatpakResource::sizeChanged, m_backend, [this, resource] {
-            if (!m_backend->isFetching()) {
+            if (!m_backend->m_isFetching > 0) {
                 Q_EMIT m_backend->resourcesChanged(resource, {"size", "sizeDescription"});
             }
         });
@@ -1456,7 +1456,7 @@ ResultsStream *FlatpakBackend::deferredResultStream(const QString &streamName, s
     // See https://devblogs.microsoft.com/oldnewthing/20211103-00/?p=105870
     [](FlatpakBackend *self, ResultsStream *stream, std::function<QCoro::Task<>(ResultsStream *)> callback) -> QCoro::Task<> {
         QPointer<ResultsStream> guard = stream;
-        if (self->isFetching()) {
+        if (self->m_isFetching > 0) {
             co_await qCoro(self, &FlatpakBackend::initialized);
         } else {
             co_await QCoro::sleepFor(0ms);
@@ -1483,7 +1483,7 @@ ResultsStream *FlatpakBackend::deferredResultStreamNoFinish(const QString &strea
     // See https://devblogs.microsoft.com/oldnewthing/20211103-00/?p=105870
     [](FlatpakBackend *self, ResultsStream *stream, std::function<QCoro::Task<>(ResultsStream *)> callback) -> QCoro::Task<> {
         QPointer<ResultsStream> guard = stream;
-        if (self->isFetching()) {
+        if (self->m_isFetching > 0) {
             co_await qCoro(self, &FlatpakBackend::initialized);
         } else {
             co_await QCoro::sleepFor(0ms);
@@ -1917,7 +1917,7 @@ ResultsStream *FlatpakBackend::findResourceByPackageName(const QUrl &url)
                 stream->finish();
             };
 
-            if (isFetching()) {
+            if (m_isFetching > 0) {
                 connect(this, &FlatpakBackend::initialized, stream, f);
             } else {
                 QTimer::singleShot(0, this, f);
