@@ -523,18 +523,16 @@ msgid "External Links"
 msgstr "Externí odkazy"
 
 #: discover/qml/ApplicationPage.qml:821
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "Přečtěte si oficiální dokumentaci projektu"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:832
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
-msgstr "Přejít na stránku projektu"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:842
 #, kde-format
@@ -543,11 +541,10 @@ msgid "Donate to the project"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:852
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
-msgstr "Nahlásit chybu"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:862
 #, kde-format
@@ -1465,15 +1462,3 @@ msgstr "Měli byste zkontrolovat aktualizace"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#~ msgid "Documentation"
-#~ msgstr "Dokumentace"
-
-#~ msgid "Website"
-#~ msgstr "Webová stránka"
-
-#~ msgid "Donate"
-#~ msgstr "Přispět"
-
-#~ msgid "Contribute"
-#~ msgstr "Přispět"

@@ -205,12 +205,10 @@ msgstr "Zpřístupnění"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Web Development"
+#, kde-format
 msgctxt "Category"
 msgid "Development"
-msgstr "Vývoj webu"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -550,12 +548,10 @@ msgstr "Kancelář"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgctxt "Category"
 msgid "System"
-msgstr "Opravit systém"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -2635,19 +2631,3 @@ msgstr "Systémový software"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Doplňky"
-
-#~ msgctxt "Category"
-#~ msgid "Accessories"
-#~ msgstr "Příslušenství"
-
-#~ msgctxt "Category"
-#~ msgid "Developer Tools"
-#~ msgstr "Vývojové nástroje"
-
-#~ msgctxt "Category"
-#~ msgid "Science and Engineering"
-#~ msgstr "Věda a technika"
-
-#~ msgctxt "Category"
-#~ msgid "System Settings"
-#~ msgstr "Nastavení systému"
