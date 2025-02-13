@@ -30,7 +30,7 @@ public Q_SLOTS:
     void reviewsArrived(AbstractResource *r, const QVector<ReviewPtr> &revs);
 
 private:
-    QVector<AbstractResource *> getResources(ResultsStream *stream, bool canBeEmpty = false);
+    QVector<AbstractResource *> getResources(ResultsStream *stream, bool canBeEmpty = false, uint maxElements = 100);
     QVector<AbstractResource *> getAllResources(AbstractResourcesBackend *backend);
     QPointer<AbstractResourcesBackend> m_backend;
     QPointer<AbstractResource> m_resource;

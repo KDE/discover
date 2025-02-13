@@ -45,17 +45,21 @@ KNSBackendTest::KNSBackendTest(QObject *parent)
     }
 }
 
-QVector<AbstractResource *> KNSBackendTest::getResources(ResultsStream *stream, bool canBeEmpty)
+QVector<AbstractResource *> KNSBackendTest::getResources(ResultsStream *stream, bool canBeEmpty, uint maxElements)
 {
     Q_ASSERT(stream);
     Q_ASSERT(stream->objectName() != QLatin1String("KNS-void"));
     QSignalSpy spyResources(stream, &ResultsStream::destroyed);
     QVector<AbstractResource *> resources;
-    connect(stream, &ResultsStream::resourcesFound, this, [&resources, stream](const QVector<StreamResult> &results) {
+    connect(stream, &ResultsStream::resourcesFound, this, [&resources, stream, maxElements](const QVector<StreamResult> &results) {
         resources += kTransform<QVector<AbstractResource *>>(results, [](auto result) {
             return result.resource;
         });
-        Q_EMIT stream->fetchMore();
+        if (resources.size() > maxElements) {
+            stream->finish();
+        } else {
+            Q_EMIT stream->fetchMore();
+        }
     });
     bool waited = spyResources.wait(10000);
     if (!waited) {
@@ -74,7 +78,7 @@ QVector<AbstractResource *> KNSBackendTest::getAllResources(AbstractResourcesBac
     if (CategoryModel::global()->rootCategories().isEmpty()) {
         CategoryModel::global()->populateCategories();
     }
-    filters.category = CategoryModel::global()->rootCategories().constLast();
+    filters.category = m_backend->category().constLast();
     return getResources(backend->search(filters));
 }
 
