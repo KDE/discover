@@ -199,7 +199,7 @@ msgstr "全部应用程序"
 #, kde-format
 msgctxt "Category"
 msgid "Utilities"
-msgstr ""
+msgstr "工具"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -210,12 +210,10 @@ msgstr "无障碍辅助"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Web Development"
+#, kde-format
 msgctxt "Category"
 msgid "Development"
-msgstr "网络开发"
+msgstr "开发"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -271,7 +269,7 @@ msgstr "教育"
 #, kde-format
 msgctxt "Category"
 msgid "Science & Math"
-msgstr ""
+msgstr "科学和数学"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -555,12 +553,10 @@ msgstr "办公"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgctxt "Category"
 msgid "System"
-msgstr "修复系统"
+msgstr "系统"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -2672,19 +2668,3 @@ msgstr "系统软件"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "插件"
-
-#~ msgctxt "Category"
-#~ msgid "Accessories"
-#~ msgstr "系统附件"
-
-#~ msgctxt "Category"
-#~ msgid "Developer Tools"
-#~ msgstr "开发工具"
-
-#~ msgctxt "Category"
-#~ msgid "Science and Engineering"
-#~ msgstr "科学和工程"
-
-#~ msgctxt "Category"
-#~ msgid "System Settings"
-#~ msgstr "系统设置"

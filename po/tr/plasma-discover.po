@@ -649,8 +649,8 @@ msgstr "Lisans Bilgisi"
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Ara: %2 — %3 öge"
-msgstr[1] "Ara: %2 — %3 öge"
+msgstr[0] "Ara: %2 — %3 Öge"
+msgstr[1] "Ara: %2 — %3 Öge"
 
 #: discover/qml/ApplicationsListPage.qml:56
 #, kde-format
@@ -661,15 +661,15 @@ msgstr "Ara: %1"
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%2 — %1 öge"
-msgstr[1] "%2 — %1 öge"
+msgstr[0] "%2 — %1 Öge"
+msgstr[1] "%2 — %1 Öge"
 
 #: discover/qml/ApplicationsListPage.qml:66
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Ara — %1 öge"
-msgstr[1] "Ara — %1 öge"
+msgstr[0] "Ara — %1 Öge"
+msgstr[1] "Ara — %1 Öge"
 
 #: discover/qml/ApplicationsListPage.qml:68
 #: discover/qml/ApplicationsListPage.qml:265
@@ -1484,7 +1484,7 @@ msgstr "Bir eylem seç"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "Yeniden Başlat"
+msgstr "Yeniden başlat"
 
 #: discover/qml/UpdatesPage.qml:262
 #, kde-format
