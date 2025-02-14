@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-08 00:41+0000\n"
+"POT-Creation-Date: 2025-02-14 00:44+0000\n"
 "PO-Revision-Date: 2021-09-09 13:59+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Malayalam <https://kde.smc.org.in/projects/discover/"
@@ -34,8 +34,8 @@ msgstr "vivekkj2004@gmail.com"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:390
-#: libdiscover/UpdateModel/UpdateModel.cpp:122
-#: libdiscover/UpdateModel/UpdateModel.cpp:342
+#: libdiscover/UpdateModel/UpdateModel.cpp:124
+#: libdiscover/UpdateModel/UpdateModel.cpp:346
 #, kde-format
 msgid "Unknown"
 msgstr "അജ്ഞാതം"
@@ -2630,14 +2630,14 @@ msgctxt "@info:status"
 msgid "Cancelled"
 msgstr "റദ്ദാക്കി"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:136
+#: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, fuzzy, kde-format
 #| msgid "Applications"
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "ആപ്ലീക്കേഷനുകൾ"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:137
+#: libdiscover/UpdateModel/UpdateModel.cpp:139
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox"
 #| msgid "Application Updates"
@@ -2645,14 +2645,14 @@ msgctxt "@item:inlistbox"
 msgid "Application Support"
 msgstr "ആപ്ലിക്കേഷൻ അപ്ഡേറ്റുകൾ"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:138
+#: libdiscover/UpdateModel/UpdateModel.cpp:140
 #, fuzzy, kde-format
 #| msgid "System upgrade"
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "സിസ്റ്റം അപ്ഗ്രേഡ്"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:139
+#: libdiscover/UpdateModel/UpdateModel.cpp:141
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"
