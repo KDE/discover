@@ -473,7 +473,7 @@ bool DiscoverObject::quitWhenIdle()
         connect(m_sni.get(), &KStatusNotifierItem::activateRequested, this, &DiscoverObject::restore);
 
         auto job = new TransactionsJob;
-        job->setParent(this);
+        job->setParent(m_sni.get());
         auto tracker = new KUiServerV2JobTracker(m_sni.get());
         tracker->registerJob(job);
         job->start();
