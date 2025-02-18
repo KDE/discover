@@ -117,6 +117,7 @@ int main(int argc, char **argv)
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("plasmadiscover")));
     app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
+    app.setQuitLockEnabled(false);
     KCrash::initialize();
     KLocalizedString::setApplicationDomain("plasma-discover");
     KAboutData about(QStringLiteral("discover"),
