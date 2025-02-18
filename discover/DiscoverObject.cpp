@@ -475,7 +475,7 @@ bool DiscoverObject::quitWhenIdle()
         connect(m_sni, &KStatusNotifierItem::activateRequested, this, &DiscoverObject::restore);
 
         auto job = new TransactionsJob;
-        job->setParent(this);
+        job->setParent(m_sni);
         tracker->registerJob(job);
         job->start();
         connect(m_sni, &KStatusNotifierItem::activateRequested, job, &TransactionsJob::cancel);
