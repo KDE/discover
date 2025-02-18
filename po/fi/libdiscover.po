@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-14 00:44+0000\n"
+"POT-Creation-Date: 2025-02-18 00:41+0000\n"
 "PO-Revision-Date: 2024-12-01 14:30+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2610,7 +2610,7 @@ msgstr "SteamOS: atomupd-kyselyä SteamOS-päivityksistä ei voida suorittaa…"
 msgid "SteamOS"
 msgstr "SteamOS"
 
-#: libdiscover/DiscoverBackendsFactory.cpp:114
+#: libdiscover/DiscoverBackendsFactory.cpp:121
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-14 00:44+0000\n"
+"POT-Creation-Date: 2025-02-18 00:41+0000\n"
 "PO-Revision-Date: 2014-01-31 20:46+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -2646,7 +2646,7 @@ msgstr ""
 msgid "SteamOS"
 msgstr ""
 
-#: libdiscover/DiscoverBackendsFactory.cpp:114
+#: libdiscover/DiscoverBackendsFactory.cpp:121
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."

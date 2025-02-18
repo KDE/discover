@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-14 00:44+0000\n"
+"POT-Creation-Date: 2025-02-18 00:41+0000\n"
 "PO-Revision-Date: 2024-10-28 19:13\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -2613,7 +2613,7 @@ msgstr "SteamOS: не ўдалося запытаць у atomupd абнаўле�
 msgid "SteamOS"
 msgstr "SteamOS"
 
-#: libdiscover/DiscoverBackendsFactory.cpp:114
+#: libdiscover/DiscoverBackendsFactory.cpp:121
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
