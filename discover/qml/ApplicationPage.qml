@@ -449,7 +449,13 @@ DiscoverPage {
                                 RowLayout {
                                     spacing: 0
                                     Kirigami.UrlButton {
-                                        enabled: url !== ""
+                                        // Override some things to keep the right appearance for non-free licenses with no URL.
+                                        readonly property bool hasUrl: url !== ""
+                                        enabled: true
+                                        font.underline: hasUrl
+                                        acceptedButtons: hasUrl ? Qt.LeftButton : Qt.NoButton
+                                        mouseArea.cursorShape: hasUrl ? Qt.PointingHandCursor : undefined
+
                                         text: delegate.modelData.name
                                         url: delegate.modelData.url
                                         horizontalAlignment: Text.AlignHCenter
@@ -906,7 +912,13 @@ DiscoverPage {
                     required property var modelData
 
                     contentItem: Kirigami.UrlButton {
-                        enabled: url !== ""
+                        // Override some things to keep the right appearance for non-free licenses with no URL.
+                        readonly property bool hasUrl: url !== ""
+                        enabled: true
+                        font.underline: hasUrl
+                        acceptedButtons: hasUrl ? Qt.LeftButton : Qt.NoButton
+                        mouseArea.cursorShape: hasUrl ? Qt.PointingHandCursor : undefined
+
                         text: delegate.modelData.name
                         url: delegate.modelData.url
                         horizontalAlignment: Text.AlignLeft
