@@ -867,7 +867,7 @@ QVector<FlatpakPermission> FlatpakResource::readPermissions(const QString &file)
 
     if (sockets.contains("pulseaudio"_L1) || filesystems.contains("xdg-run/pipewire-0"_L1)) {
         brief = i18n("Sound system access");
-        description = i18n("Can play audio");
+        description = i18n("Can play and record audio");
         permissions.append(FlatpakPermission(brief, description, u"audio-speakers-symbolic"_s));
     }
     if (sockets.contains("session-bus"_L1)) {
