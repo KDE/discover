@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-30 02:33+0000\n"
+"POT-Creation-Date: 2025-02-20 02:36+0000\n"
 "PO-Revision-Date: 2024-12-26 21:43+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -478,132 +478,132 @@ msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Nekonata"
 
-#: discover/qml/ApplicationPage.qml:464
+#: discover/qml/ApplicationPage.qml:470
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
 msgstr ","
 
-#: discover/qml/ApplicationPage.qml:489
+#: discover/qml/ApplicationPage.qml:495
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] "Vidi pli…"
 msgstr[1] "Vidi pli…"
 
-#: discover/qml/ApplicationPage.qml:501
+#: discover/qml/ApplicationPage.qml:507
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "Aĝoj"
 
-#: discover/qml/ApplicationPage.qml:509
+#: discover/qml/ApplicationPage.qml:515
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
 msgstr "Ĉiu"
 
-#: discover/qml/ApplicationPage.qml:511
+#: discover/qml/ApplicationPage.qml:517
 #, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
 msgstr "%1+"
 
-#: discover/qml/ApplicationPage.qml:525
+#: discover/qml/ApplicationPage.qml:531
 #, kde-format
 msgid "See details"
 msgstr "Vidi detalojn"
 
-#: discover/qml/ApplicationPage.qml:549
+#: discover/qml/ApplicationPage.qml:555
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr "Ekrankopioj ne haveblas por %1"
 
-#: discover/qml/ApplicationPage.qml:693
+#: discover/qml/ApplicationPage.qml:699
 #, kde-format
 msgid "What's New"
 msgstr "Kio novas"
 
-#: discover/qml/ApplicationPage.qml:727
+#: discover/qml/ApplicationPage.qml:733
 #, kde-format
 msgid "Reviews"
 msgstr "Recenzoj"
 
-#: discover/qml/ApplicationPage.qml:738
+#: discover/qml/ApplicationPage.qml:744
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Ŝargante recenzojn por %1"
 
-#: discover/qml/ApplicationPage.qml:747
+#: discover/qml/ApplicationPage.qml:753
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "Recenzoj por %1 dumtempe ne haveblas"
 
-#: discover/qml/ApplicationPage.qml:769
+#: discover/qml/ApplicationPage.qml:775
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Montri Ĉiujn Recenzojn"
 
-#: discover/qml/ApplicationPage.qml:781
+#: discover/qml/ApplicationPage.qml:787
 #, kde-format
 msgid "Write a Review"
 msgstr "Skribi recenzon"
 
-#: discover/qml/ApplicationPage.qml:781
+#: discover/qml/ApplicationPage.qml:787
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Instali por Skribi Recenzon"
 
-#: discover/qml/ApplicationPage.qml:803
+#: discover/qml/ApplicationPage.qml:809
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr "Eksteraj ligiloj"
 
-#: discover/qml/ApplicationPage.qml:821
+#: discover/qml/ApplicationPage.qml:827
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
 msgstr "Legi la dokumentaron"
 
-#: discover/qml/ApplicationPage.qml:832
+#: discover/qml/ApplicationPage.qml:838
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Viziti la retejon de la projekto"
 
-#: discover/qml/ApplicationPage.qml:842
+#: discover/qml/ApplicationPage.qml:848
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
 msgstr "Donaci al la projekto"
 
-#: discover/qml/ApplicationPage.qml:852
+#: discover/qml/ApplicationPage.qml:858
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "Raporti cimon"
 
-#: discover/qml/ApplicationPage.qml:862
+#: discover/qml/ApplicationPage.qml:868
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
 msgstr "Komenci kontribui"
 
-#: discover/qml/ApplicationPage.qml:891
+#: discover/qml/ApplicationPage.qml:897
 #, kde-format
 msgid "All Licenses"
 msgstr "Ĉiuj Licencoj"
 
-#: discover/qml/ApplicationPage.qml:923
+#: discover/qml/ApplicationPage.qml:935
 #, kde-format
 msgid "Content Rating"
 msgstr "Enhavo Taksado"
 
-#: discover/qml/ApplicationPage.qml:946
+#: discover/qml/ApplicationPage.qml:958
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"
