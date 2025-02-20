@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-18 00:41+0000\n"
+"POT-Creation-Date: 2025-02-20 00:42+0000\n"
 "PO-Revision-Date: 2024-11-29 01:09+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -671,8 +671,9 @@ msgid "Sound system access"
 msgstr "사운드 시스템 접근"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
-#, kde-format
-msgid "Can play audio"
+#, fuzzy, kde-format
+#| msgid "Can play audio"
+msgid "Can play and record audio"
 msgstr "오디오를 재생할 수 있음"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874

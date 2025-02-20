@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-18 00:41+0000\n"
+"POT-Creation-Date: 2025-02-20 00:42+0000\n"
 "PO-Revision-Date: 2013-03-28 16:07+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -691,7 +691,7 @@ msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
 #, kde-format
-msgid "Can play audio"
+msgid "Can play and record audio"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-18 00:41+0000\n"
+"POT-Creation-Date: 2025-02-20 00:42+0000\n"
 "PO-Revision-Date: 2024-11-19 19:41+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -674,8 +674,9 @@ msgid "Sound system access"
 msgstr "Hangrendszer"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
-#, kde-format
-msgid "Can play audio"
+#, fuzzy, kde-format
+#| msgid "Can play audio"
+msgid "Can play and record audio"
 msgstr "Lejátszhat hangot"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
