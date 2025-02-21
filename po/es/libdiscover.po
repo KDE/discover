@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-14 02:46+0000\n"
-"PO-Revision-Date: 2025-02-17 22:54+0100\n"
+"PO-Revision-Date: 2025-02-21 00:01+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -654,7 +654,7 @@ msgstr "Acceso a redes"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
 #, kde-format
 msgid "Can access the internet"
-msgstr "Se puede acceder a internet"
+msgstr "Puede acceder a internet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
 #, kde-format
