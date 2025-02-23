@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-20 00:42+0000\n"
-"PO-Revision-Date: 2025-02-12 07:01+0100\n"
+"PO-Revision-Date: 2025-02-22 21:54+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -658,10 +658,9 @@ msgid "Sound system access"
 msgstr "Sonsistema Aliro"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
-#, fuzzy, kde-format
-#| msgid "Can play audio"
+#, kde-format
 msgid "Can play and record audio"
-msgstr "Eblas ludi aŭdaĵon"
+msgstr "Eblas reprodukti kaj registri aŭdaĵon"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
