@@ -5,20 +5,21 @@
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2015, 2019, 2020.
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2018, 2019, 2020, 2021, 2022, 2024.
 # SPDX-FileCopyrightText: 2023, 2024 Geraldo Simiao <geraldosimiao@fedoraproject.org>
+# SPDX-FileCopyrightText: 2025 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-30 02:33+0000\n"
-"PO-Revision-Date: 2024-11-14 09:24-0300\n"
-"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
+"PO-Revision-Date: 2025-02-27 20:49-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #: notifier/DiscoverNotifier.cpp:176
 #, kde-format
@@ -69,13 +70,13 @@ msgstr "O sistema necessita ser reiniciado para as atualizações terem efeito."
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
-msgstr "Atualizar e reiniciar o computador"
+msgstr "Atualizar e reiniciar"
 
 #: notifier/DiscoverNotifier.cpp:330
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
-msgstr "Atualizar e  desligar o computador"
+msgstr "Atualizar e desligar"
 
 #: notifier/DiscoverNotifier.cpp:374
 #, kde-format
