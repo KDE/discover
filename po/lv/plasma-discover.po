@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-01 00:49+0000\n"
 "PO-Revision-Date: 2025-01-20 15:02+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -201,8 +201,9 @@ msgid "An application explorer"
 msgstr "Programmu pārlūks"
 
 #: discover/main.cpp:127
-#, kde-format
-msgid "© 2010-2024 Plasma Development Team"
+#, fuzzy, kde-format
+#| msgid "© 2010-2024 Plasma Development Team"
+msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010–2022 „Plasma“ izstrādātāju komanda"
 
 #: discover/main.cpp:128

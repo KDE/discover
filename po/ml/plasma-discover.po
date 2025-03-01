@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-01 00:49+0000\n"
 "PO-Revision-Date: 2019-12-29 20:50+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -181,7 +181,7 @@ msgstr "ഒരു ആപ്ലിക്കേഷൻ പരിവേക്ഷക"
 #: discover/main.cpp:127
 #, fuzzy, kde-format
 #| msgid "© 2010-2019 Plasma Development Team"
-msgid "© 2010-2024 Plasma Development Team"
+msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010-2019 പ്ലാസ്മ വികസന ടീം"
 
 #: discover/main.cpp:128

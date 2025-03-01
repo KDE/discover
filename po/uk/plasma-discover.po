@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-01 00:49+0000\n"
 "PO-Revision-Date: 2024-11-20 16:55+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -205,8 +205,9 @@ msgid "An application explorer"
 msgstr "Програма для вивчення сховища програм"
 
 #: discover/main.cpp:127
-#, kde-format
-msgid "© 2010-2024 Plasma Development Team"
+#, fuzzy, kde-format
+#| msgid "© 2010-2024 Plasma Development Team"
+msgid "© 2010-2025 Plasma Development Team"
 msgstr "© Команда розробників Плазми, 2010–2024"
 
 #: discover/main.cpp:128

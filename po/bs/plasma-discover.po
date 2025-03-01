@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-01 00:49+0000\n"
 "PO-Revision-Date: 2015-02-04 16:18+0000\n"
 "Last-Translator: Nermina Ahmić <nahmic1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -187,7 +187,7 @@ msgstr "Otkrivač programa"
 
 #: discover/main.cpp:127
 #, kde-format
-msgid "© 2010-2024 Plasma Development Team"
+msgid "© 2010-2025 Plasma Development Team"
 msgstr ""
 
 #: discover/main.cpp:128

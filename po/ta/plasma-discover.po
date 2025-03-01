@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-01 00:49+0000\n"
 "PO-Revision-Date: 2024-11-24 17:11+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -188,8 +188,9 @@ msgid "An application explorer"
 msgstr "செயலி உலாவி"
 
 #: discover/main.cpp:127
-#, kde-format
-msgid "© 2010-2024 Plasma Development Team"
+#, fuzzy, kde-format
+#| msgid "© 2010-2024 Plasma Development Team"
+msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010-2024 பிளாஸ்மா நிரலாக்க குழு"
 
 #: discover/main.cpp:128

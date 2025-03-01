@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-01 00:49+0000\n"
 "PO-Revision-Date: 2024-11-23 12:09+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -194,8 +194,9 @@ msgid "An application explorer"
 msgstr "An application explorer"
 
 #: discover/main.cpp:127
-#, kde-format
-msgid "© 2010-2024 Plasma Development Team"
+#, fuzzy, kde-format
+#| msgid "© 2010-2024 Plasma Development Team"
+msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010-2024 Plasma Development Team"
 
 #: discover/main.cpp:128

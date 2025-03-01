@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-01 00:49+0000\n"
 "PO-Revision-Date: 2024-11-17 21:51+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -201,8 +201,9 @@ msgid "An application explorer"
 msgstr "アプリケーションエクスプローラ"
 
 #: discover/main.cpp:127
-#, kde-format
-msgid "© 2010-2024 Plasma Development Team"
+#, fuzzy, kde-format
+#| msgid "© 2010-2024 Plasma Development Team"
+msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010-2024 Plasma Development Team"
 
 #: discover/main.cpp:128
