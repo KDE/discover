@@ -69,6 +69,11 @@ ConditionalLoader {
 
     condition: root.isActive
     componentTrue: RowLayout {
+        TransactionProgressIndicator {
+            Layout.fillWidth: true
+            text: listener.statusText
+            progress: listener.progress / 100
+        }
         QQC2.Button {
             Layout.fillHeight: true
             action: root.cancelAction
@@ -78,12 +83,6 @@ ConditionalLoader {
             QQC2.ToolTip.text: text
             QQC2.ToolTip.visible: hovered
             QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-        }
-
-        TransactionProgressIndicator {
-            Layout.fillWidth: true
-            text: listener.statusText
-            progress: listener.progress / 100
         }
     }
 
