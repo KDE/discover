@@ -69,7 +69,7 @@ ConditionalLoader {
 
     condition: root.isActive
     componentTrue: RowLayout {
-        QQC2.ToolButton {
+        QQC2.Button {
             Layout.fillHeight: true
             action: root.cancelAction
 
