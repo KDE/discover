@@ -69,6 +69,7 @@ ConditionalLoader {
 
     condition: root.isActive
     componentTrue: RowLayout {
+        spacing: Kirigami.Units.smallSpacing
         TransactionProgressIndicator {
             Layout.fillWidth: true
             text: listener.statusText
