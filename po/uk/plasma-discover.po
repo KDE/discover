@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024.
+# Yuri Chornoivan <yurchor@ukr.net>, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-01 00:49+0000\n"
-"PO-Revision-Date: 2024-11-20 16:55+0200\n"
+"PO-Revision-Date: 2025-03-01 12:21+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -205,10 +205,9 @@ msgid "An application explorer"
 msgstr "Програма для вивчення сховища програм"
 
 #: discover/main.cpp:127
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© Команда розробників Плазми, 2010–2024"
+msgstr "© Команда розробників Плазми, 2010–2025"
 
 #: discover/main.cpp:128
 #, kde-format

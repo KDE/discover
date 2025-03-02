@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-01 00:49+0000\n"
-"PO-Revision-Date: 2024-11-20 07:11+0100\n"
+"PO-Revision-Date: 2025-03-01 03:15+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -195,10 +195,9 @@ msgid "An application explorer"
 msgstr "აპლიკაციების ბრაუზერი"
 
 #: discover/main.cpp:127
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010-2024 Plasma -ის პროგრამისტების გუნდი"
+msgstr "© 2010-2025 Plasma -ის პროგრამისტების გუნდი"
 
 #: discover/main.cpp:128
 #, kde-format

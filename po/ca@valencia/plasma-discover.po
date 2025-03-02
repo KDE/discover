@@ -1,16 +1,16 @@
 # Translation of plasma-discover.po to Catalan (Valencian)
-# Copyright (C) 2012-2024 This_file_is_part_of_KDE
+# Copyright (C) 2012-2025 This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
 # Orestes Mas <orestes@tsc.upc.edu>, 2012.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Josep M. Ferrer <txemaq@gmail.com>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-01 00:49+0000\n"
-"PO-Revision-Date: 2024-11-20 10:55+0100\n"
+"PO-Revision-Date: 2025-03-01 09:39+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -206,10 +206,9 @@ msgid "An application explorer"
 msgstr "Un explorador d'aplicacions"
 
 #: discover/main.cpp:127
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010-2024, L'equip de desenvolupament de Plasma"
+msgstr "© 2010-2025, L'equip de desenvolupament de Plasma"
 
 #: discover/main.cpp:128
 #, kde-format

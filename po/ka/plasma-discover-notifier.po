@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-01 00:49+0000\n"
-"PO-Revision-Date: 2024-08-18 03:47+0200\n"
+"PO-Revision-Date: 2025-03-01 03:15+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: notifier/DiscoverNotifier.cpp:176
 #, kde-format
@@ -103,10 +103,9 @@ msgid "System update status notifier"
 msgstr "სისტემის განახლების მდგომარეობის გამფრთხილებელი"
 
 #: notifier/main.cpp:43
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010-2024 Plasma -ის პროგრამისტების გუნდი"
+msgstr "© 2010-2025 Plasma -ის პროგრამისტების გუნდი"
 
 #: notifier/main.cpp:47
 #, kde-format

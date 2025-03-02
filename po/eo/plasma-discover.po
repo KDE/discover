@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-01 00:49+0000\n"
-"PO-Revision-Date: 2024-12-26 21:43+0100\n"
+"PO-Revision-Date: 2025-03-01 17:55+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -198,10 +198,9 @@ msgid "An application explorer"
 msgstr "Aplika esploristo"
 
 #: discover/main.cpp:127
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010-2024 Plasma Disvolva Teamo"
+msgstr "© 2010-2025 Plasma Disvolva Teamo"
 
 #: discover/main.cpp:128
 #, kde-format
