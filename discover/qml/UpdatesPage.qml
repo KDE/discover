@@ -385,7 +385,7 @@ DiscoverPage {
                     updateModel.fetchUpdateDetails(index)
                 }
             }
-            onExtendedChanged: if (extended && Component.status == Component.Ready) {
+            onExtendedChanged: if (extended) {
                 updateModel.fetchUpdateDetails(index)
             }
 
