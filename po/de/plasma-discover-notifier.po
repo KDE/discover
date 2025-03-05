@@ -114,7 +114,7 @@ msgstr "© 2010-2024 Plasma-Entwicklerteam"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Deutsches KDE-Übersetzerteam"
+msgstr "Deutsches KDE-Übersetzungsteam"
 
 #: notifier/main.cpp:47
 #, kde-format
