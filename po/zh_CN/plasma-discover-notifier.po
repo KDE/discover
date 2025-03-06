@@ -102,10 +102,9 @@ msgid "System update status notifier"
 msgstr "系统更新状态通知"
 
 #: notifier/main.cpp:43
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010-2024 Plasma Development Team"
+msgstr "© 2010-2025 Plasma Development Team"
 
 #: notifier/main.cpp:47
 #, kde-format

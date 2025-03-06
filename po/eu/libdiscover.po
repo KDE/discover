@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-20 00:42+0000\n"
-"PO-Revision-Date: 2025-02-02 21:26+0100\n"
+"POT-Creation-Date: 2025-03-06 00:42+0000\n"
+"PO-Revision-Date: 2025-03-05 21:32+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -660,16 +660,15 @@ msgid "Sound system access"
 msgstr "Soinu sistemarako sarbidea"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
-#, fuzzy, kde-format
-#| msgid "Can play audio"
+#, kde-format
 msgid "Can play and record audio"
-msgstr "Audioa jo dezake"
+msgstr "Audioa jo eta grabatu dezake"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
 #, kde-format
 msgid "Session Bus Access"
-msgstr "Saioko buserako sarbidea"
+msgstr "Saio-buserako sarbidea"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:875
 #, kde-format
@@ -986,13 +985,13 @@ msgstr ""
 "Barneko errore bat gertatu da. Mesedez, bete txosten bat hemen, https://bugs."
 "kde.org/enter_bug.cgi?product=Discover"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:438
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:445
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "Ordezkoa erabilgarri"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:440
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:447
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -1005,13 +1004,13 @@ msgstr ""
 "><nl/><resource>%2</resource>(e)k eskaintzen duen euskarria duen "
 "bertsioarekin ordeztu?"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:446
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:453
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "Ezabatze automatikoa"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:448
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:455
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"

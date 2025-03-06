@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-20 00:42+0000\n"
+"POT-Creation-Date: 2025-03-06 00:42+0000\n"
 "PO-Revision-Date: 2024-04-23 19:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -952,13 +952,13 @@ msgstr ""
 "发生内部错误。请在 https://bugs.kde.org/enter_bug.cgi?product=Discover 网站提"
 "交程序缺陷报告。"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:438
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:445
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "有可用的替代软件包"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:440
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:447
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -970,13 +970,13 @@ msgstr ""
 "<resource>%1</resource> 已经不会再收到更新。<nl/><nl/>您想要将它替换为 "
 "<resource>%2</resource> 提供的受支持版本吗？"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:446
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:453
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "自动移除"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:448
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:455
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
