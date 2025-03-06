@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-14 02:46+0000\n"
+"POT-Creation-Date: 2025-03-06 02:38+0000\n"
 "PO-Revision-Date: 2025-02-02 16:22+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -962,13 +962,13 @@ msgstr ""
 "உள்ளக சிக்கல் நேர்ந்தது. தயவுசெய்து https://bugs.kde.org/enter_bug.cgi?"
 "product=Discover என்ற இணைப்பிற்கு சென்று ஓர் பிழையறிக்கையை சமர்ப்பிக்கவும்"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:438
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:445
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "மாற்று உள்ளது"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:440
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:447
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -980,13 +980,13 @@ msgstr ""
 "<resource>%1</resource> இனிமேல் புதுப்பிப்புகளைப் பெறாது.<nl/><nl/><resource>%2</"
 "resource> வழங்கும் அதன் ஆதரிக்கப்படும் பதிப்பை பதிலாக நிறுவலாமா?"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:446
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:453
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "தானாக நீக்குவது"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:448
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:455
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"

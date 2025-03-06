@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-14 02:46+0000\n"
+"POT-Creation-Date: 2025-03-06 02:38+0000\n"
 "PO-Revision-Date: 2024-11-05 16:36+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -981,13 +981,13 @@ msgstr ""
 "Si è verificato un errore interno. Invia una segnalazione a https://bugs.kde."
 "org/enter_bug.cgi?product=Discover"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:438
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:445
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "Sostituzione disponibile"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:440
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:447
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -999,13 +999,13 @@ msgstr ""
 "<resource>%1</resource> non riceve più aggiornamenti.<nl/><nl/>Sostituiscilo "
 "con la versione supportata fornita da <resource>%2</resource>?"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:446
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:453
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "Rimozione automatica"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:448
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:455
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
