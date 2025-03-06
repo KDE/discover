@@ -89,7 +89,7 @@ Kirigami.ApplicationWindow {
             ? "update-none"
             : (Discover.ResourcesModel.hasSecurityUpdates ? "update-high" : "update-low")
 
-        text: Discover.ResourcesModel.isFetching ? i18n("&Updates (Fetching…)") : i18np("&Update (%1)", "&Updates (%1)", Discover.ResourcesModel.updatesCount)
+        text: Discover.ResourcesModel.isFetching ? i18n("&Updates (Fetching…)") : i18n("&Updates (%1)", Discover.ResourcesModel.updatesCount)
 
         component: topUpdateComp
         objectName: "update"
