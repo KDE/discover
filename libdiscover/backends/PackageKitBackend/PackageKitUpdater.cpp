@@ -190,8 +190,18 @@ public:
     QString longDescription() override
     {
         QStringList changes;
-        const auto resources = withoutDuplicates();
-        for (auto resource : resources) {
+        auto resources = withoutDuplicates();
+
+        {
+            QCollator collator;
+            collator.setCaseSensitivity(Qt::CaseInsensitive);
+            const auto sortUpdateItems = [&collator](auto *a, auto *b) -> bool {
+                return collator(a->name(), b->name());
+            };
+            std::sort(resources.begin(), resources.end(), sortUpdateItems);
+        }
+
+        for (auto resource : std::as_const(resources)) {
             const auto changelog = resource->changelog();
             if (changelog.isEmpty()) {
                 changes += i18n("<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided", resource->packageName(), resource->availableVersion());
@@ -202,7 +212,6 @@ public:
                                 changelog);
             }
         }
-        changes.sort();
 
         if (isDistroUpgrade()) {
             changes.prepend(m_distroUpgrade->description());
