@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-01 00:49+0000\n"
+"POT-Creation-Date: 2025-03-07 00:43+0000\n"
 "PO-Revision-Date: 2012-06-13 10:17+0800\n"
 "Last-Translator: HeroP <herophuong93@gmail.com>\n"
 "Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
@@ -816,9 +816,8 @@ msgstr ""
 #: discover/qml/DiscoverWindow.qml:92
 #, fuzzy, kde-format
 #| msgid "Update"
-msgid "&Update (%1)"
-msgid_plural "&Updates (%1)"
-msgstr[0] "Cập nhật"
+msgid "&Updates (%1)"
+msgstr "Cập nhật"
 
 #: discover/qml/DiscoverWindow.qml:100
 #, kde-format

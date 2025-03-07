@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-01 00:49+0000\n"
+"POT-Creation-Date: 2025-03-07 00:43+0000\n"
 "PO-Revision-Date: 2025-03-05 19:49+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -843,10 +843,11 @@ msgid "&Updates (Fetching…)"
 msgstr "更新（取得中…）(&U)"
 
 #: discover/qml/DiscoverWindow.qml:92
-#, kde-format
-msgid "&Update (%1)"
-msgid_plural "&Updates (%1)"
-msgstr[0] "更新（%1 項）(&U)"
+#, fuzzy, kde-format
+#| msgid "&Update (%1)"
+#| msgid_plural "&Updates (%1)"
+msgid "&Updates (%1)"
+msgstr "更新（%1 項）(&U)"
 
 #: discover/qml/DiscoverWindow.qml:100
 #, kde-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-01 00:49+0000\n"
+"POT-Creation-Date: 2025-03-07 00:43+0000\n"
 "PO-Revision-Date: 2025-03-01 12:21+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -898,13 +898,11 @@ msgid "&Updates (Fetching…)"
 msgstr "&Оновлення (отримання…)"
 
 #: discover/qml/DiscoverWindow.qml:92
-#, kde-format
-msgid "&Update (%1)"
-msgid_plural "&Updates (%1)"
-msgstr[0] "О&новлення (%1)"
-msgstr[1] "О&новлення (%1)"
-msgstr[2] "О&новлення (%1)"
-msgstr[3] "О&новлення (%1)"
+#, fuzzy, kde-format
+#| msgid "&Update (%1)"
+#| msgid_plural "&Updates (%1)"
+msgid "&Updates (%1)"
+msgstr "О&новлення (%1)"
 
 #: discover/qml/DiscoverWindow.qml:100
 #, kde-format

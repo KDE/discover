@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-01 00:49+0000\n"
+"POT-Creation-Date: 2025-03-07 00:43+0000\n"
 "PO-Revision-Date: 2012-05-14 16:25-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -828,13 +828,8 @@ msgstr ""
 #: discover/qml/DiscoverWindow.qml:92
 #, fuzzy, kde-format
 #| msgid "Update"
-msgid "&Update (%1)"
-msgid_plural "&Updates (%1)"
-msgstr[0] "Nuashonraigh"
-msgstr[1] "Nuashonraigh"
-msgstr[2] "Nuashonraigh"
-msgstr[3] "Nuashonraigh"
-msgstr[4] "Nuashonraigh"
+msgid "&Updates (%1)"
+msgstr "Nuashonraigh"
 
 #: discover/qml/DiscoverWindow.qml:100
 #, kde-format

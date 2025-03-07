@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-01 00:49+0000\n"
+"POT-Creation-Date: 2025-03-07 00:43+0000\n"
 "PO-Revision-Date: 2025-03-02 10:40+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -881,15 +881,11 @@ msgid "&Updates (Fetching…)"
 msgstr "ال&تحديثات (يجلب…)"
 
 #: discover/qml/DiscoverWindow.qml:92
-#, kde-format
-msgid "&Update (%1)"
-msgid_plural "&Updates (%1)"
-msgstr[0] "حدّ&ث (‏%1)"
-msgstr[1] "حدّ&ث (‏%1)"
-msgstr[2] "حدّ&ث (‏%1)"
-msgstr[3] "حدّ&ث (‏%1)"
-msgstr[4] "حدّ&ث (‏%1)"
-msgstr[5] "حدّ&ث (‏%1)"
+#, fuzzy, kde-format
+#| msgid "&Update (%1)"
+#| msgid_plural "&Updates (%1)"
+msgid "&Updates (%1)"
+msgstr "حدّ&ث (‏%1)"
 
 #: discover/qml/DiscoverWindow.qml:100
 #, kde-format

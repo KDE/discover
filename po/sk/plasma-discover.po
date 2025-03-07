@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-01 00:49+0000\n"
+"POT-Creation-Date: 2025-03-07 00:43+0000\n"
 "PO-Revision-Date: 2023-12-05 17:21+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -897,12 +897,11 @@ msgid "&Updates (Fetching…)"
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:92
-#, kde-format
-msgid "&Update (%1)"
-msgid_plural "&Updates (%1)"
-msgstr[0] "Akt&ualizácia (%1)"
-msgstr[1] "Akt&ualizácie (%1)"
-msgstr[2] "Akt&ualizácie (%1)"
+#, fuzzy, kde-format
+#| msgid "&Update (%1)"
+#| msgid_plural "&Updates (%1)"
+msgid "&Updates (%1)"
+msgstr "Akt&ualizácia (%1)"
 
 #: discover/qml/DiscoverWindow.qml:100
 #, kde-format

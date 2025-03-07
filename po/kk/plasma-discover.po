@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-01 00:49+0000\n"
+"POT-Creation-Date: 2025-03-07 00:43+0000\n"
 "PO-Revision-Date: 2013-10-03 05:07+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -827,9 +827,8 @@ msgstr ""
 #: discover/qml/DiscoverWindow.qml:92
 #, fuzzy, kde-format
 #| msgid "Update"
-msgid "&Update (%1)"
-msgid_plural "&Updates (%1)"
-msgstr[0] "Жаңарту"
+msgid "&Updates (%1)"
+msgstr "Жаңарту"
 
 #: discover/qml/DiscoverWindow.qml:100
 #, kde-format

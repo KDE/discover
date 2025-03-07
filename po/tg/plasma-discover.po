@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-01 00:49+0000\n"
+"POT-Creation-Date: 2025-03-07 00:43+0000\n"
 "PO-Revision-Date: 2020-08-27 11:51+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -827,10 +827,8 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgctxt "Update section name"
 #| msgid "Update (%1)"
-msgid "&Update (%1)"
-msgid_plural "&Updates (%1)"
-msgstr[0] "Навсозӣ (%1)"
-msgstr[1] "Навсозӣ (%1)"
+msgid "&Updates (%1)"
+msgstr "Навсозӣ (%1)"
 
 #: discover/qml/DiscoverWindow.qml:100
 #, fuzzy, kde-format

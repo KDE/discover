@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-01 00:49+0000\n"
+"POT-Creation-Date: 2025-03-07 00:43+0000\n"
 "PO-Revision-Date: 2021-10-29 12:52+0200\n"
 "Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
 "Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
@@ -819,12 +819,8 @@ msgstr ""
 #: discover/qml/DiscoverWindow.qml:92
 #, fuzzy, kde-format
 #| msgid "Update All"
-msgid "&Update (%1)"
-msgid_plural "&Updates (%1)"
-msgstr[0] "Wšitko wubrać"
-msgstr[1] "Wšitko wubrać"
-msgstr[2] "Wšitko wubrać"
-msgstr[3] "Wšitko wubrać"
+msgid "&Updates (%1)"
+msgstr "Wšitko wubrać"
 
 #: discover/qml/DiscoverWindow.qml:100
 #, kde-format
