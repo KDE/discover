@@ -297,6 +297,7 @@ void KNSBackend::markInvalid(const QString &message)
     m_isValid = false;
     setFetching(false);
     Q_EMIT initialized();
+    Q_EMIT invalidated();
 }
 
 void KNSBackend::checkForUpdates()
