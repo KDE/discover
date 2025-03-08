@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-07 00:43+0000\n"
-"PO-Revision-Date: 2025-03-01 03:15+0100\n"
+"PO-Revision-Date: 2025-03-07 06:02+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -868,11 +868,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&განახლებები (გამოთხოვა…)"
 
 #: discover/qml/DiscoverWindow.qml:92
-#, fuzzy, kde-format
-#| msgid "&Update (%1)"
-#| msgid_plural "&Updates (%1)"
+#, kde-format
 msgid "&Updates (%1)"
-msgstr "&განახლება (%1)"
+msgstr "&განახლებები (%1)"
 
 #: discover/qml/DiscoverWindow.qml:100
 #, kde-format

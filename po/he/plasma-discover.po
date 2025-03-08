@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-07 00:43+0000\n"
-"PO-Revision-Date: 2025-03-02 07:30+0200\n"
+"PO-Revision-Date: 2025-03-07 10:10+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
-msgstr "%1 לא מוגדר להתקנת יישומים דרך Discover–רק הרחבות ליישומים"
+msgstr "%1 לא מוגדרת להתקנת יישומים דרך Discover–רק הרחבות ליישומים"
 
 #: discover/DiscoverObject.cpp:184
 #, kde-kuit-format
@@ -867,11 +867,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&עדכונים (מתקבלים…)"
 
 #: discover/qml/DiscoverWindow.qml:92
-#, fuzzy, kde-format
-#| msgid "&Update (%1)"
-#| msgid_plural "&Updates (%1)"
+#, kde-format
 msgid "&Updates (%1)"
-msgstr "&עדכון (%1)"
+msgstr "&עדכונים (%1)"
 
 #: discover/qml/DiscoverWindow.qml:100
 #, kde-format
