@@ -112,7 +112,7 @@ Item {
             implicitWidth: controlRoot.activeImage?.implicitWidth ?? 0
             implicitHeight: controlRoot.activeImage?.implicitHeight ?? 0
 
-            layer.enabled: true
+            layer.enabled: GraphicsInfo.api !== GraphicsInfo.Software
             layer.effect: GE.OpacityMask {
                 maskSource: Rectangle {
                     width: content.width
