@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-06 00:42+0000\n"
+"POT-Creation-Date: 2025-03-09 00:42+0000\n"
 "PO-Revision-Date: 2023-11-27 18:34+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -2201,14 +2201,14 @@ msgstr[0] "1 balíku sa zvýši verzia"
 msgstr[1] "%1 balíkom sa zvýši verzia"
 msgstr[2] "%1 balíkom sa zvýši verzia"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:207
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 "<h3>%1</h3>Prechod na novú verziu %2<br/>Nie sú k dispozícii žiadne poznámky "
 "k vydaniu"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:209
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
@@ -2217,17 +2217,17 @@ msgstr ""
 "<h3>%1</h3>Prechod na novú verziu %2<br/>Poznámky k vydaniu:<blockquote>%3</"
 "blockquote>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:235
 #, kde-format
 msgid "Present"
 msgstr "Súčasnosť"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:230
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:239
 #, kde-format
 msgid "Future"
 msgstr "Budúcnosť"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:369
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:378
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
@@ -2235,7 +2235,7 @@ msgstr ""
 "Nie je dostatok miesta na vykonanie aktualizácie; k dispozícii je len %1 "
 "miesta."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:591
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:600
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2248,12 +2248,12 @@ msgstr ""
 "ul><nl/>Ak si myslíte, že ide o chybu, nahláste to prosím ako chybu baličom "
 "vašej distribúcie."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:607
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Potvrdiť zmeny"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:608
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2262,13 +2262,13 @@ msgstr ""
 "Nasledovné balíky budú odstránené pri aktualizácii:<ul><li>%1</li></ul>na "
 "nainštalovanie:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:725
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:734
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:733
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2278,13 +2278,13 @@ msgstr ""
 "Vyžaduje sa zmena média na typ \"%1\".\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:766
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:775
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "Prijať EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:767
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:776
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2294,13 +2294,13 @@ msgstr ""
 "Balík %1 a jeho dodávateľ %2 vyžadujú, aby ste prijali ich licenciu:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:884
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:893
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Chýba podpis balíka %1 v repozitári %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:885
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:894
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""

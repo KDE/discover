@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-06 00:42+0000\n"
+"POT-Creation-Date: 2025-03-09 00:42+0000\n"
 "PO-Revision-Date: 2024-08-25 12:13+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -2169,14 +2169,14 @@ msgid_plural "%1 packages will be upgraded"
 msgstr[0] "1 pakke vert oppgradert"
 msgstr[1] "%1 pakkar vert oppgraderte"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:207
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 "<h3>%1</h3>Oppgrader til ny versjon %2<br/>Ingen versjonsmerknadar er "
 "tilgjengelege"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:209
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
@@ -2185,23 +2185,23 @@ msgstr ""
 "<h3>%1</h3>Oppgrader til ny versjon %2<br/>Versjonsmerknadar:<blockquote>%3</"
 "blockquote>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:235
 #, kde-format
 msgid "Present"
 msgstr "Notid"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:230
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:239
 #, kde-format
 msgid "Future"
 msgstr "Framtid"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:369
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:378
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "Manglar nok ledig diskplass til å oppdatera. Har berre %1 ledig plass."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:591
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:600
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2213,12 +2213,12 @@ msgstr ""
 "system­kritiske programma:<nl/><ul><li>%1</li></ul><nl/>Om du meiner dette er "
 "ein feil, send inn ein feilrapport til distribusjonen din."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:607
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Stadfest endringar"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:608
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2227,13 +2227,13 @@ msgstr ""
 "Desse pakkane vert fjerna av oppdateringa:<ul><li>%1</li></ul><br/>Dette er "
 "for å kunna installera:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:725
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:734
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:733
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2243,13 +2243,13 @@ msgstr ""
 "Må byta medium type «%1».\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:766
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:775
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "Godta EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:767
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:776
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2259,13 +2259,13 @@ msgstr ""
 "Pakken %1 og pakkeleverandøren %2 krev at du godtek lisensavtala:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:884
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:893
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Manglar signatur for %1 i %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:885
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:894
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""

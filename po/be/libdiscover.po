@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-06 00:42+0000\n"
+"POT-Creation-Date: 2025-03-09 00:42+0000\n"
 "PO-Revision-Date: 2024-10-28 19:13\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -2183,12 +2183,12 @@ msgstr[1] "Будзе абноўлена %1 пакеты"
 msgstr[2] "Будзе абноўлена %1 пакетаў"
 msgstr[3] "Будзе абноўлена %1 пакеты"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:197
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:207
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr "<h3>%1</h3>Абнаўленне да новай версіі %2<br/>Нататак няма"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:199
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:209
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
@@ -2197,23 +2197,23 @@ msgstr ""
 "<h3>%1</h3>Абнаўленне да новай версіі %2<br/>Нататкі да выпуску:<blockquote>"
 "%3</blockquote>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:226
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:235
 #, kde-format
 msgid "Present"
 msgstr "Цяперашняя"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:230
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:239
 #, kde-format
 msgid "Future"
 msgstr "Будучая"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:369
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:378
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "Для выканання абнаўлення не хапае месца; даступна толькі %1."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:591
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:600
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2226,12 +2226,12 @@ msgstr ""
 "><ul><li>%1</li></ul><nl/>Калі вы лічыце, што гэта памылка, паведаміце пра "
 "гэта як пра хібу ў службу падтрымкі вашага дыстрыбутыва."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:607
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Пацвердзіць змены"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:608
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2240,13 +2240,13 @@ msgstr ""
 "Пры абнаўленні будуць выдаленыя наступныя пакеты:<ul><li>%1</li></ul><br/>, "
 "каб усталяваць:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:725
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:734
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:733
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2256,13 +2256,13 @@ msgstr ""
 "Трэба змяніць носьбіт тыпу \"%1\".\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:766
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:775
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "Прыняць EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:767
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:776
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2272,13 +2272,13 @@ msgstr ""
 "Для пакета %1 яго стваральнік %2 патрабуе прыняць ліцэнзію:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:884
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:893
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "У %2 няма подпісу для %1"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:885
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:894
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""

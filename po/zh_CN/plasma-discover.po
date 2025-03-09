@@ -842,11 +842,9 @@ msgid "&Updates (Fetching…)"
 msgstr "更新(&U) (正在获取…)"
 
 #: discover/qml/DiscoverWindow.qml:92
-#, fuzzy, kde-format
-#| msgid "&Update (%1)"
-#| msgid_plural "&Updates (%1)"
+#, kde-format
 msgid "&Updates (%1)"
-msgstr "更新(&U) (%1)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:100
 #, kde-format
