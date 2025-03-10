@@ -39,6 +39,7 @@ SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resou
 
         // need to keep a reference to this to be able to cancel
         m_job = new org::freedesktop::sysupdate1::Job(SYSUPDATE1_SERVICE, path.path(), QDBusConnection::systemBus(), this);
+        m_job->setInteractiveAuthorizationAllowed(true); // cancel may require authorization
         setCancellable(true);
 
         // Don't need to keep this around because we're just connecting to some signals (and it'll be deleted by Qt with the parent)
