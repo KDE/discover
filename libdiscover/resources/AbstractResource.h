@@ -330,8 +330,7 @@ Q_SIGNALS:
 private:
     void reportNewState();
 
-    //     TODO: make it std::optional or make QCollatorSortKey()
-    QScopedPointer<QCollatorSortKey> m_collatorKey;
+    std::optional<QCollatorSortKey> m_collatorKey;
     QJsonObject m_metadata;
 };
 
