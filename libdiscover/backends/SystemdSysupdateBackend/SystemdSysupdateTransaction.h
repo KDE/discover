@@ -11,7 +11,7 @@
 #include <sysupdate1.h>
 
 const auto SYSUPDATE1_SERVICE = QStringLiteral("org.freedesktop.sysupdate1");
-typedef QDBusPendingReply<QString, qulonglong, QDBusObjectPath> SystemdSysupdateUpdateReply;
+using SystemdSysupdateUpdateReply = QDBusPendingReply<QString, qulonglong, QDBusObjectPath>;
 
 class SystemdSysupdateTransaction : public Transaction
 {
