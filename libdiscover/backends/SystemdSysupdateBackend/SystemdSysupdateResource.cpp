@@ -150,7 +150,7 @@ void SystemdSysupdateResource::fetchChangelog()
 {
     const auto releaseList = m_component.loadReleases(true).value_or(m_component.releasesPlain());
     const auto targetRelease = availableVersion();
-    for (auto release : releaseList.entries()) {
+    for (const auto &release : releaseList.entries()) {
         if (release.version() == targetRelease) {
             Q_EMIT changelogFetched(release.description());
             break;

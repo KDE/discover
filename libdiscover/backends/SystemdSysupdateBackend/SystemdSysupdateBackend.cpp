@@ -116,7 +116,7 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
 
     beginFetch();
 
-    for (auto resource : m_resources) {
+    for (const auto &resource : m_resources) {
         Q_EMIT resourceRemoved(resource);
     }
     m_resources.clear();
@@ -147,7 +147,7 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
 
         qCDebug(SYSTEMDSYSUPDATE_LOG) << "AppStream:" << appStreamUrls;
         AppStream::Metadata metadata;
-        for (auto url : appStreamUrls) {
+        for (const auto &url : appStreamUrls) {
             const auto reply = co_await m_nam->get(QNetworkRequest(QUrl(url)));
             if (reply->error() != QNetworkReply::NoError) {
                 qCWarning(SYSTEMDSYSUPDATE_LOG) << "Failed to fetch appstream:" << reply->errorString();
