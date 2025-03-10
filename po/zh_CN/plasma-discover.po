@@ -844,7 +844,7 @@ msgstr "更新(&U) (正在获取…)"
 #: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Updates (%1)"
-msgstr ""
+msgstr "更新(&U) (%1)"
 
 #: discover/qml/DiscoverWindow.qml:100
 #, kde-format
