@@ -162,7 +162,7 @@ SystemdSysupdateTransaction *SystemdSysupdateResource::update()
 {
     qCInfo(SYSTEMDSYSUPDATE_LOG) << "Updating target" << name();
     auto toVersion = availableVersion();
-    SystemdSysupdateUpdateReply reply = m_target->Update(toVersion, 0);
+    SystemdSysupdateUpdateReply reply = m_target->Update(toVersion, 0 /* flags - currently unused and expected to be 0 */);
 
     auto transaction = new SystemdSysupdateTransaction(this, reply);
     connect(transaction, &Transaction::statusChanged, this, [this, toVersion](Transaction::Status status) {
