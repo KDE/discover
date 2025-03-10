@@ -96,6 +96,12 @@ public:
         : ResultsStream(objectName)
         , m_backend(backend)
     {
+        // Abort streams when the backend gets invalidated
+        connect(m_backend, &KNSBackend::invalidated, this, &KNSResultsStream::finish);
+
+        if (!m_backend->isValid()) {
+            qWarning() << "Erroneously starting a kns stream with an invalid backend" << m_backend->name();
+        }
     }
 
     void setRequest(const KNSCore::SearchRequest &request)
@@ -291,6 +297,7 @@ void KNSBackend::markInvalid(const QString &message)
     m_isValid = false;
     setFetching(false);
     Q_EMIT initialized();
+    Q_EMIT invalidated();
 }
 
 void KNSBackend::checkForUpdates()

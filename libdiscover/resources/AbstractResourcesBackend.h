@@ -319,6 +319,13 @@ Q_SIGNALS:
     void inlineMessageChanged(const QSharedPointer<InlineMessage> &inlineMessage);
     void fetchingUpdatesProgressChanged();
 
+    /**
+     * isValid will now return false
+     *
+     * A backend cannot become valid in its lifetime.
+     */
+    void invalidated();
+
 private:
     QString m_name;
 };

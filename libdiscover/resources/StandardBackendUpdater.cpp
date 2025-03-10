@@ -23,6 +23,7 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend *parent)
     , m_lastUpdate(QDateTime())
 {
     connect(m_backend, &AbstractResourcesBackend::fetchingChanged, this, &StandardBackendUpdater::refreshUpdateable);
+    connect(m_backend, &AbstractResourcesBackend::invalidated, this, &StandardBackendUpdater::refreshUpdateable);
     connect(m_backend, &AbstractResourcesBackend::resourcesChanged, this, &StandardBackendUpdater::resourcesChanged);
     connect(m_backend, &AbstractResourcesBackend::resourceRemoved, this, [this](AbstractResource *resource) {
         if (m_upgradeable.remove(resource)) {
@@ -162,7 +163,15 @@ void StandardBackendUpdater::refreshProgress()
 
 void StandardBackendUpdater::refreshUpdateable()
 {
-    if (m_backend->isFetching() || !m_backend->isValid()) {
+    if (m_backend->isFetching()) {
+        return;
+    }
+    if (!m_backend->isValid()) {
+        qWarning() << "Invalidated backend, deactivating" << m_backend->name();
+        if (m_settingUp) {
+            m_settingUp = false;
+            Q_EMIT progressingChanged(isProgressing());
+        }
         return;
     }
 
