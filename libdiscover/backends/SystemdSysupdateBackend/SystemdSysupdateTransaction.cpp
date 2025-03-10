@@ -90,5 +90,14 @@ void SystemdSysupdateTransaction::cancel()
         return;
     }
 
-    m_job->Cancel();
+    auto watcher = new QDBusPendingCallWatcher(m_job->Cancel(), this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [](QDBusPendingCallWatcher *watcher) {
+        watcher->deleteLater();
+        if (watcher->isError()) {
+            qWarning(SYSTEMDSYSUPDATE_LOG) << "Failed to cancel job:" << watcher->error().message();
+            return;
+        }
+
+        qDebug(SYSTEMDSYSUPDATE_LOG) << "Job cancelled";
+    });
 }
