@@ -10,7 +10,7 @@
 #include <Transaction/Transaction.h>
 #include <sysupdate1.h>
 
-const auto SYSUPDATE1_SERVICE = QStringLiteral("org.freedesktop.sysupdate1");
+constexpr auto SYSUPDATE1_SERVICE = QLatin1String("org.freedesktop.sysupdate1");
 using SystemdSysupdateUpdateReply = QDBusPendingReply<QString, qulonglong, QDBusObjectPath>;
 
 class SystemdSysupdateTransaction : public Transaction
