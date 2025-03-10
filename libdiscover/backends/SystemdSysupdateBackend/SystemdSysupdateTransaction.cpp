@@ -25,8 +25,10 @@ SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resou
     connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, resource](QDBusPendingCallWatcher *watcher) {
         watcher->deleteLater();
         const SystemdSysupdateUpdateReply reply = *watcher;
+
         if (reply.isError()) {
             qCCritical(SYSTEMDSYSUPDATE_LOG) << "Failed to create job:" << reply.error().message();
+            passiveMessage(reply.error().message());
             setStatus(DoneWithErrorStatus);
             return;
         }
