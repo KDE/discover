@@ -133,6 +133,7 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
         qCDebug(SYSTEMDSYSUPDATE_LOG) << "Target:" << name << targetClass << objectPath.path();
 
         auto target = new org::freedesktop::sysupdate1::Target(SYSUPDATE1_SERVICE, objectPath.path(), QDBusConnection::systemBus(), this);
+        target->setInteractiveAuthorizationAllowed(true); // in case Update() needs authentication
         const auto appStream = co_await target->GetAppStream();
         if (appStream.isError()) {
             qCCritical(SYSTEMDSYSUPDATE_LOG) << "Failed to get appstream for target (" << name << ") :" << appStream.error().message();
