@@ -69,7 +69,9 @@ SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resou
                     }
                 });
 
-        connect(qobject_cast<SystemdSysupdateBackend *>(resource->backend()),
+        auto backend = qobject_cast<SystemdSysupdateBackend *>(resource->backend());
+        Q_ASSERT(backend);
+        connect(backend,
                 &SystemdSysupdateBackend::transactionRemoved,
                 [id, resource, this](qulonglong jobId, const QDBusObjectPath &jobPath, int status) {
                     if (id != jobId) {
