@@ -191,16 +191,9 @@ public:
     QString longDescription() override
     {
         QStringList changes;
-        auto resources = withoutDuplicates();
 
-        {
-            QCollator collator;
-            collator.setCaseSensitivity(Qt::CaseInsensitive);
-            const auto sortUpdateItems = [&collator](auto *a, auto *b) -> bool {
-                return collator(a->name(), b->name());
-            };
-            std::ranges::sort(resources, sortUpdateItems);
-        }
+        auto resources = withoutDuplicates();
+        std::ranges::sort(resources, std::less{}, &PackageKitResource::nameSortKey);
 
         for (auto resource : std::as_const(resources)) {
             const auto changelog = resource->changelog();
