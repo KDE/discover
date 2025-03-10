@@ -23,6 +23,7 @@
 #include <KLocalizedString>
 #include <KSharedConfig>
 
+#include <algorithm>
 #include <optional>
 
 #include "libdiscover_backend_packagekit_debug.h"
@@ -198,7 +199,7 @@ public:
             const auto sortUpdateItems = [&collator](auto *a, auto *b) -> bool {
                 return collator(a->name(), b->name());
             };
-            std::sort(resources.begin(), resources.end(), sortUpdateItems);
+            std::ranges::sort(resources, sortUpdateItems);
         }
 
         for (auto resource : std::as_const(resources)) {
