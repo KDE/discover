@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-09 02:31+0000\n"
+"POT-Creation-Date: 2025-03-10 02:54+0000\n"
 "PO-Revision-Date: 2024-02-09 22:21+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -636,7 +636,7 @@ msgid "Music"
 msgstr "音楽"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:421
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:428
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1084,32 +1084,32 @@ msgstr ""
 "サポートされていないクエスチョン:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:172
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:178
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "バックエンド %1 の初期化がタイムアウトしました。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:228
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:234
 #, kde-format
 msgid "Applications"
 msgstr "アプリケーション"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:280
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma アドオン"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:280
 #, kde-format
 msgid "Application Addons"
 msgstr "アプリケーションのアドオン"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "バックエンド %1 でネットワークエラーが発生しました: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:376
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1118,14 +1118,14 @@ msgstr ""
 "バックエンド %1 のサーバへの要求が多すぎます。数分待ってから再試行してくださ"
 "い。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:372
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:383
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:379
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:385
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:390
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "無効な %1 バックエンドです。供給元に連絡してください。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:409
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1137,18 +1137,18 @@ msgstr ""
 "ログでこの操作を再試行することができます。報告されたエラー:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:412
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:419
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "バックエンド %2 でエントリ %1 のスクリーンショットを取得できませんでした"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:423
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "%1 バックエンドで未知のエラーです。供給元に連絡してください。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:542
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:549
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "不正な KNewStuff URI: %1"

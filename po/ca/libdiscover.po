@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-09 02:31+0000\n"
+"POT-Creation-Date: 2025-03-10 02:54+0000\n"
 "PO-Revision-Date: 2024-12-09 10:30+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -641,7 +641,7 @@ msgid "Music"
 msgstr "Música"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:421
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:428
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1105,32 +1105,32 @@ msgstr ""
 "Qüestió no implementada:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:172
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:178
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "El dorsal %1 ha trigat massa temps a inicialitzar-se"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:228
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:234
 #, kde-format
 msgid "Applications"
 msgstr "Aplicacions"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:280
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Complements del Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:274
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:280
 #, kde-format
 msgid "Application Addons"
 msgstr "Complements d'aplicacions"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:362
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Error de xarxa al dorsal %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:369
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:376
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1139,14 +1139,14 @@ msgstr ""
 "Hi ha massa peticions enviades al servidor pel dorsal %1. Torneu-ho a provar "
 "en uns quants minuts."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:372
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:383
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:379
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:385
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:390
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Dorsal %1 no vàlid, contacteu amb el vostre distribuïdor."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:409
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1159,19 +1159,19 @@ msgstr ""
 "control més estricte. L'error informat ha estat:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:412
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:419
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "No s'ha pogut recuperar la captura de pantalla per a l'entrada %1 al dorsal "
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:416
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:423
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "Error no gestionat al dorsal %1. Contacteu amb el vostre distribuïdor."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:542
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:549
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "URI incorrecte del KNewStuff: %1"
@@ -2769,51 +2769,3 @@ msgstr "Programari del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complements"
-
-#~ msgid "Could not find '%1' in '%2'; please make sure it's available."
-#~ msgstr ""
-#~ "No s'ha pogut trobar «%1» a «%2»; assegureu-vos que està disponible."
-
-#~ msgid "%1 channels"
-#~ msgstr "%1 canals"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content suitable for everyone"
-#~ msgid "All Audiences"
-#~ msgstr "Tot el públic"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with relatively benign themes only unsuitable for very young "
-#~ "children, such as minor cartoon violence or mild profanity"
-#~ msgid "Mild Content"
-#~ msgstr "Contingut lleu"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with some intense themes, such as somewhat realistic violence, "
-#~ "references to sexuality, or adult profanity"
-#~ msgid "Moderate Content"
-#~ msgstr "Contingut moderat"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "mature content that could be quite objectionable or unsuitable for young "
-#~ "audiences, such as realistic graphic violence, extreme profanity or "
-#~ "nudity, or glorification of drug use"
-#~ msgid "Intense Content"
-#~ msgstr "Contingut intens"
-
-#~ msgctxt "%1 is the name of the application"
-#~ msgid "Permissions for %1"
-#~ msgstr "Permisos de %1"
-
-#~ msgid "Downloading system update"
-#~ msgstr "S'està baixant una actualització del sistema"
-
-#~ msgid "Updating the system"
-#~ msgstr "S'està actualitzant el sistema"
-
-#~ msgid "Updating to the next major version"
-#~ msgstr "S'està actualitzant a la versió major següent"
