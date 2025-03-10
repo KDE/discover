@@ -91,8 +91,3 @@ void SystemdSysupdateTransaction::cancel()
 
     m_job->Cancel();
 }
-
-SystemdSysupdateTransaction::~SystemdSysupdateTransaction()
-{
-    qCDebug(SYSTEMDSYSUPDATE_LOG) << "Destroying SystemdSysupdateTransaction" << m_job->path();
-}

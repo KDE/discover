@@ -19,7 +19,6 @@ public:
     SystemdSysupdateTransaction(AbstractResource *resource, SystemdSysupdateUpdateReply &reply);
 
     void cancel() override;
-    ~SystemdSysupdateTransaction() override;
 
 private:
     org::freedesktop::sysupdate1::Job *m_job;
