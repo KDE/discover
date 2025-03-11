@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-09 00:42+0000\n"
+"POT-Creation-Date: 2025-03-11 00:42+0000\n"
 "PO-Revision-Date: 2024-10-28 19:13\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -645,7 +645,7 @@ msgid "Music"
 msgstr "Музыка"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:427
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:434
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1102,32 +1102,32 @@ msgstr ""
 "Пытанне не падтрымліваецца:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:186
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:192
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Рухавік %1 ініцыялізаваўся занадта доўга"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:252
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
 #, kde-format
 msgid "Applications"
 msgstr "Праграмы"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:281
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:287
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Дапаўненні Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:281
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:287
 #, kde-format
 msgid "Application Addons"
 msgstr "Дапаўненні для праграм"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:368
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:375
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Сеткавая памылка рухавіка %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:375
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:382
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1136,14 +1136,14 @@ msgstr ""
 "Для рухавіка %1 адпраўлена занадта шмат запытаў. Паўтарыце спробу праз "
 "некалькі хвілін."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:384
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:389
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:385
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:391
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:396
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Хібны рухавік %1, звярніцеся да прадстаўнікоў свайго дыстрыбутыва."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1156,19 +1156,19 @@ msgstr ""
 "Паведамлена пра памылку:\n"
 " %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:418
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:425
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Не ўдалося атрымаць здымак экрана для запісу %1 у рухавіку %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:422
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:429
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Неапрацаваная памылка ў рухавіку %1. Звярніцеся да прадстаўнікоў свайго "
 "дыстрыбутыва."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:548
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:555
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Няправільны URI-адрас KNewStuff: %1"

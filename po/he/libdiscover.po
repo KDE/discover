@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-09 00:42+0000\n"
+"POT-Creation-Date: 2025-03-11 00:42+0000\n"
 "PO-Revision-Date: 2025-02-22 21:39+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -639,7 +639,7 @@ msgid "Music"
 msgstr "מוזיקה"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:427
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:434
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1079,32 +1079,32 @@ msgstr ""
 "שאלה לא נתמכת:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:186
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:192
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "לקח זמן רב לטעון את המנגנון %1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:252
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
 #, kde-format
 msgid "Applications"
 msgstr "יישומים"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:281
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:287
 #, kde-format
 msgid "Plasma Addons"
 msgstr "תוספי פלזמה"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:281
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:287
 #, kde-format
 msgid "Application Addons"
 msgstr "תוספי יישומים"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:368
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:375
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "שגיאת רשת במנגנון %1:‏ %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:375
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:382
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1112,14 +1112,14 @@ msgid ""
 msgstr ""
 "נשלחו יותר מדי בקשות לשרת עבור המנגנון %1. נא לנסות שוב בעוד מספר דקות."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:378
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:384
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:389
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:385
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:391
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:396
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "מנגנון %1 שגוי, נא ליצור קשר עם מפיק ההפצה שלך."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1131,17 +1131,17 @@ msgstr ""
 "‚קבלת דברים חדשים חמים’, שמעניק גישה אדוקה יותר. השגיאה שדווחה הייתה:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:418
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:425
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "לא ניתן למשוך את צילום המסך לרשומה %1 במנגנון %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:422
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:429
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "שגיאה לא מטופלת במנגנון %1. נא ליצור קשר עם הפקת ההפצה שלך."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:548
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:555
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "כתובת KNewStuff שגויה: %1"
