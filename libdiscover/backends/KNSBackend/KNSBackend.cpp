@@ -20,6 +20,7 @@
 #include <KNSCore/Question>
 #include <KNSCore/QuestionManager>
 #include <KNSCore/ResultsStream>
+#include <KWindowSystem>
 
 // DiscoverCommon includes
 #include "Category/Category.h"
@@ -154,13 +155,30 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     setName(fileName);
     setObjectName(knsrc);
 
-    static const QSet<QStringView> knsrcPlasma = {
-        u"aurorae.knsrc",         u"icons.knsrc",        u"kfontinst.knsrc",          u"lookandfeel.knsrc", u"plasma-themes.knsrc",
-        u"plasmoids.knsrc",       u"wallpaper.knsrc",    u"wallpaper-mobile.knsrc",   u"xcursor.knsrc",     u"cgcgtk3.knsrc",
-        u"cgcicon.knsrc",         u"cgctheme.knsrc",     u"kwinswitcher.knsrc",       u"kwineffect.knsrc",  u"kwinscripts.knsrc",
-        u"comic.knsrc",           u"colorschemes.knsrc", u"emoticons.knsrc",          u"plymouth.knsrc",    u"sddmtheme.knsrc",
-        u"wallpaperplugin.knsrc", u"ksplash.knsrc",      u"window-decorations.knsrc",
-    };
+    static const QSet<QStringView> knsrcPlasma = []() {
+        QSet<QStringView> ret = {
+            u"aurorae.knsrc",       u"icons.knsrc",           u"kfontinst.knsrc", u"lookandfeel.knsrc",
+            u"plasma-themes.knsrc", u"plasmoids.knsrc",       u"wallpaper.knsrc", u"wallpaper-mobile.knsrc",
+            u"xcursor.knsrc",       u"cgcgtk3.knsrc",         u"cgcicon.knsrc",   u"cgctheme.knsrc",
+            u"comic.knsrc",         u"colorschemes.knsrc",    u"emoticons.knsrc", u"plymouth.knsrc",
+            u"sddmtheme.knsrc",     u"wallpaperplugin.knsrc", u"ksplash.knsrc",
+        };
+
+        if (KWindowSystem::isPlatformX11()) {
+            ret.insert(u"kwinswitcher-x11.knsrc");
+            ret.insert(u"kwineffect-x11.knsrc");
+            ret.insert(u"kwinscripts-x11.knsrc");
+            ret.insert(u"window-decorations-x11.knsrc");
+        } else {
+            ret.insert(u"kwinswitcher.knsrc");
+            ret.insert(u"kwineffect.knsrc");
+            ret.insert(u"kwinscripts.knsrc");
+            ret.insert(u"window-decorations.knsrc");
+        }
+
+        return ret;
+    }();
+
     const bool isPlasmaCategory = knsrcPlasma.contains(fileName);
     static const bool weAreOnPlasma = qgetenv("XDG_CURRENT_DESKTOP") == "KDE";
     if (isPlasmaCategory && !weAreOnPlasma) {

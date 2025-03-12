@@ -2,7 +2,7 @@ if(BUILD_TESTING)
     add_subdirectory(tests)
 endif()
 
-set(kns-backend_SRCS 
+set(kns-backend_SRCS
     KNSBackend.cpp
     KNSResource.cpp
     KNSReviews.cpp
@@ -17,5 +17,6 @@ target_link_libraries(kns-backend
     KF6::Attica
     KF6::NewStuffCore
     KF6::WidgetsAddons
+    KF6::WindowSystem
     Qt::Xml
 )
