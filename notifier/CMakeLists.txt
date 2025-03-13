@@ -28,6 +28,14 @@ target_link_libraries(DiscoverNotifier
     Discover::Notifiers
 )
 
+ecm_qt_declare_logging_category(DiscoverNotifier
+    HEADER debug.h
+    IDENTIFIER NOTIFIER
+    CATEGORY_NAME org.kde.plasma.discover.notifier
+    DESCRIPTION "Plasma Discover Notifier"
+    EXPORT DISCOVER
+)
+
 set_target_properties(DiscoverNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 install(TARGETS DiscoverNotifier DESTINATION ${KDE_INSTALL_LIBEXECDIR})
 
