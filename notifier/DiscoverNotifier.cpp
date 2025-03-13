@@ -27,6 +27,8 @@
 #include "updatessettings.h"
 #include <chrono>
 
+#include "debug.h"
+
 using namespace std::chrono_literals;
 
 namespace
@@ -137,10 +139,12 @@ bool DiscoverNotifier::notifyAboutUpdates() const
 {
     if (state() != NormalUpdates && state() != SecurityUpdates) {
         // it's not very helpful to notify that everything is in order
+        qCDebug(NOTIFIER) << "Not notifying about updates, state is" << state();
         return false;
     }
 
     if (m_settings->requiredNotificationInterval() < 0) {
+        qCDebug(NOTIFIER) << "Not notifying about updates, requiredNotificationInterval is" << m_settings->requiredNotificationInterval();
         return false;
     }
 
@@ -148,6 +152,7 @@ bool DiscoverNotifier::notifyAboutUpdates() const
     // kwriteconfig5 --file PlasmaDiscoverUpdates --group Global --key RequiredNotificationInterval 3600
     const QDateTime earliestNextNotificationTime = m_settings->lastNotificationTime().addSecs(m_settings->requiredNotificationInterval());
     if (earliestNextNotificationTime.isValid() && earliestNextNotificationTime > QDateTime::currentDateTimeUtc()) {
+        qCDebug(NOTIFIER) << "Not notifying about updates, earliestNextNotificationTime is" << earliestNextNotificationTime;
         return false;
     }
 
@@ -155,6 +160,7 @@ bool DiscoverNotifier::notifyAboutUpdates() const
     m_settings->save();
 
     if (QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.discover"))) {
+        qCDebug(NOTIFIER) << "Not notifying about updates, discover is running";
         return false;
     }
     return true;
@@ -167,8 +173,10 @@ void DiscoverNotifier::showUpdatesNotification()
     }
 
     if (!notifyAboutUpdates()) {
+        qCDebug(NOTIFIER) << "showUpdatesNotification: not notifying about updates";
         return;
     }
+    qCDebug(NOTIFIER) << "showUpdatesNotification: notifying about updates";
 
     m_updatesAvailableNotification =
         KNotification::event(QStringLiteral("Update"), message(), {}, iconName(), KNotification::CloseOnTimeout, QStringLiteral("discoverabstractnotifier"));
@@ -194,6 +202,8 @@ void DiscoverNotifier::updateStatusNotifier()
     const bool hasUpdates = hasSecurityUpdates || kContains(m_backends, [](BackendNotifierModule *module) {
                                 return module->hasUpdates();
                             });
+
+    qCDebug(NOTIFIER) << "updateStatusNotifier: hasUpdates" << hasUpdates << "hasSecurityUpdates" << hasSecurityUpdates;
 
     if (m_hasUpdates == hasUpdates && m_hasSecurityUpdates == hasSecurityUpdates)
         return;
@@ -231,16 +241,21 @@ void DiscoverNotifier::refreshUnattended()
     m_settings->read();
 
     if (!notifyAboutUpdates()) {
+        qCDebug(NOTIFIER) << "refreshUnattended: not notifying about updates";
         return;
     }
 
+    qCDebug(NOTIFIER) << "refreshUnattended: useUnattendedUpdates" << m_settings->useUnattendedUpdates() << "isOnline" << isOnline() << "isConnectionAdequate"
+                      << isConnectionAdequate();
     const auto enabled = m_settings->useUnattendedUpdates() && isOnline() && isConnectionAdequate();
     if (bool(m_unattended) == enabled)
         return;
 
     if (enabled) {
+        qCDebug(NOTIFIER) << "Enabling unattended updates";
         m_unattended = new UnattendedUpdates(this);
     } else {
+        qCDebug(NOTIFIER) << "Disabling unattended updates";
         delete m_unattended;
         m_unattended = nullptr;
     }
