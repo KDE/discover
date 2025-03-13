@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-13 00:43+0000\n"
 "PO-Revision-Date: 2020-10-11 01:23+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -684,7 +684,7 @@ msgid "Music"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:434
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:452
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1112,39 +1112,39 @@ msgstr "EULA läbivaatamine"
 msgid "Could not enable remote %1: %2"
 msgstr "Allika %1 lisamine nurjus"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:63
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
 msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:192
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:210
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Taustaprogrammi %1 käivitamine läks liiga pikale"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:276
 #, kde-format
 msgid "Applications"
 msgstr "Rakendused"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:287
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:305
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma lisad"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:287
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:305
 #, kde-format
 msgid "Application Addons"
 msgstr "Rakenduste lisad"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:375
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:393
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Võrgutõrge taustaprogrammis %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:382
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1153,14 +1153,14 @@ msgstr ""
 "Taustaprogramm %1 saatis serverile liiga palju päringuid. Palun proovi mõne "
 "minuti pärast uuesti."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:385
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:391
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:396
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:403
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:409
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:414
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Vigane taustaprogramm %1, võta ühendust oma distributsiooni pakkujaga."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:433
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1169,19 +1169,19 @@ msgid ""
 "%2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:425
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:443
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Kirjele %1 taustaprogrammis %2 ei õnnestunud hankida ekraanipilti"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:429
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:447
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Käsitlematu tõrge taustaprogrammis %1. Võta ühendust oma distributsiooni "
 "pakkujaga."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:555
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:573
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Vale KNewStuff'i URI: %1"
@@ -2243,7 +2243,7 @@ msgstr[1] "%2 (pluss %1 sõltuvust)"
 msgid "Repository URL:"
 msgstr "Hoidla URL:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:96
 #, fuzzy, kde-format
 #| msgctxt "@item example: muon installed at 16:00"
 #| msgid "%1 %2 at %3"
@@ -2251,14 +2251,14 @@ msgctxt "distro upgrade: name version"
 msgid "%1 %2"
 msgstr "%1 %2 %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:98
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox"
 #| msgid "System Updates"
 msgid "System upgrade"
 msgstr "Süsteemsed uuendused"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:189
 #, fuzzy, kde-format
 #| msgid "No packages to update"
 msgid "1 package will be upgraded"
@@ -2266,35 +2266,35 @@ msgid_plural "%1 packages will be upgraded"
 msgstr[0] "Pole ühtegi paketti uuendada"
 msgstr[1] "Pole ühtegi paketti uuendada"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:207
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:209
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
 "blockquote>"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:235
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:229
 #, kde-format
 msgid "Present"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:239
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:233
 #, kde-format
 msgid "Future"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:378
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:372
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:600
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:594
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2303,14 +2303,14 @@ msgid ""
 "your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:607
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:601
 #, fuzzy, kde-format
 #| msgctxt "@info:status Package state"
 #| msgid "No Change"
 msgid "Confirm Changes"
 msgstr "Muutusi pole"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:608
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:602
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2319,13 +2319,13 @@ msgstr ""
 "Uuendamisel eemaldatakse järgmised paketid:<ul><li>%1</li></ul><br/>et "
 "paigaldada:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:734
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:728
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:736
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2335,13 +2335,13 @@ msgstr ""
 "Nõutav on andmekandja tüübiga '%1'.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:775
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:769
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "EULA-ga nõustumine"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:776
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:770
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2351,13 +2351,13 @@ msgstr ""
 "Pakett %1 ja selle tootja %2 nõuavad oma litsentsiga nõustumist:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:893
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:887
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%1 allkiri asukohas %2 puudub"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:894
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:888
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""
@@ -2710,12 +2710,12 @@ msgstr "Saadaval"
 msgid "Upgradeable"
 msgstr "Uuendatav"
 
-#: libdiscover/resources/AbstractResource.cpp:244
+#: libdiscover/resources/AbstractResource.cpp:243
 #, kde-format
 msgid "Launch"
 msgstr "Käivita"
 
-#: libdiscover/resources/AbstractResource.cpp:255
+#: libdiscover/resources/AbstractResource.cpp:254
 #, fuzzy, kde-format
 #| msgctxt "@info:label Refers to a software version, Ex: Version 1.2.1:"
 #| msgid "Version %1:"
@@ -2724,7 +2724,7 @@ msgctxt ""
 msgid "Refresh of version %1"
 msgstr "Versioon %1:"
 
-#: libdiscover/resources/AbstractResource.cpp:265
+#: libdiscover/resources/AbstractResource.cpp:264
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"

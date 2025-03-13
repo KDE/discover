@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-11 00:42+0000\n"
+"POT-Creation-Date: 2025-03-13 00:43+0000\n"
 "PO-Revision-Date: 2025-02-21 11:20+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -648,7 +648,7 @@ msgid "Music"
 msgstr "Musique"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:434
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:452
 #, kde-format
 msgid "%1: %2"
 msgstr "%1 : %2"
@@ -1109,7 +1109,7 @@ msgstr "Lire les conditions « EULA »"
 msgid "Could not enable remote %1: %2"
 msgstr "Impossible d'activer le dépôt %1 : %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:63
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -1118,32 +1118,32 @@ msgstr ""
 "Question non prise en charge :\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:192
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:210
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Le moteur %1 prends trop de temps à s'initialiser"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:258
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:276
 #, kde-format
 msgid "Applications"
 msgstr "Applications"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:287
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:305
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Modules Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:287
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:305
 #, kde-format
 msgid "Application Addons"
 msgstr "Modules d'applications"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:375
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:393
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Erreur de réseau dans le moteur %1 : %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:382
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1152,14 +1152,14 @@ msgstr ""
 "Trop de requêtes envoyées vers le serveur pour le moteur %1. Veuillez "
 "essayer à nouveau dans quelques minutes."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:385
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:391
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:396
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:403
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:409
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:414
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Moteur %1 incorrect, veuillez contacter votre distributeur."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:433
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1172,20 +1172,20 @@ msgstr ""
 "plus strict. L'erreur signalée était : \n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:425
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:443
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "Impossible d'atteindre la capture d'écran pour l'élément %1 depuis le moteur "
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:429
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:447
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Erreur non gérée dans le moteur %1. Veuillez contacter votre distributeur."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:555
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:573
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Mauvaise URI KNewStuff : %1"
@@ -2184,32 +2184,32 @@ msgstr[1] "%2 (Plus %1 dépendances)"
 msgid "Repository URL:"
 msgstr "URL du dépôt :"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:96
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:98
 #, kde-format
 msgid "System upgrade"
 msgstr "Mise à jour du système"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:189
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
 msgstr[0] "Un paquet sera mis à jour"
 msgstr[1] "%1 paquets seront mis à jour"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:207
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 "<h3>%1</h3>Mettre à jour vers la nouvelle version %2<br/>Aucune note de "
 "publication n'est fournie."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:209
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
@@ -2218,17 +2218,17 @@ msgstr ""
 "<h3>%1</h3>Mettre à jour vers la nouvelle version %2<br/>Note de "
 "publication : <blockquote>%3</blockquote>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:235
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:229
 #, kde-format
 msgid "Present"
 msgstr "Présent"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:239
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:233
 #, kde-format
 msgid "Future"
 msgstr "Futur"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:378
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:372
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
@@ -2236,7 +2236,7 @@ msgstr ""
 "Espace insuffisant pour réaliser la mise à jour. Il ne reste que %1 d'espace "
 "disponible."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:600
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:594
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2250,12 +2250,12 @@ msgstr ""
 "erreur, veuillez le signaler comme un bogue vers les personnes en charge de "
 "la production des paquets de votre distribution."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:607
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:601
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Confirmer les modifications"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:608
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:602
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2265,13 +2265,13 @@ msgstr ""
 "ul><br/>afin d'installer :\n"
 "<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:734
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:728
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:736
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2281,13 +2281,13 @@ msgstr ""
 "Un changement de média de type « %1 » est nécessaire.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:775
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:769
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "Accepter l'accord de licence"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:776
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:770
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2298,13 +2298,13 @@ msgstr ""
 "licence:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:893
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:887
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Signature manquante pour %1 dans %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:894
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:888
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""
@@ -2669,12 +2669,12 @@ msgstr "Disponible(s)"
 msgid "Upgradeable"
 msgstr "Évolutif(s)"
 
-#: libdiscover/resources/AbstractResource.cpp:244
+#: libdiscover/resources/AbstractResource.cpp:243
 #, kde-format
 msgid "Launch"
 msgstr "Lancer"
 
-#: libdiscover/resources/AbstractResource.cpp:255
+#: libdiscover/resources/AbstractResource.cpp:254
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
@@ -2683,7 +2683,7 @@ msgstr "Mise à jour vers la version %1."
 
 # unreviewed-context
 # unreviewed-context
-#: libdiscover/resources/AbstractResource.cpp:265
+#: libdiscover/resources/AbstractResource.cpp:264
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
