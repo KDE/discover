@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-13 00:43+0000\n"
+"POT-Creation-Date: 2025-03-15 00:43+0000\n"
 "PO-Revision-Date: 2024-04-23 19:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -73,25 +73,25 @@ msgstr "技术错误消息：%1"
 msgid "Package management"
 msgstr "软件包管理"
 
-#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:204
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:203
 #, kde-format
 msgid "Loading, please wait..."
 msgstr "正在加载，请稍候..."
 
-#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:290
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:289
 #, kde-format
 msgctxt "Root category name"
 msgid "Alpine Linux packages"
 msgstr "Alpine Linux 软件包"
 
-#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:461
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:459
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
 msgstr "Alpine APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
-#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:266
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:272
 #, kde-format
 msgid "Authorization denied"
 msgstr "授权被拒绝"
@@ -117,7 +117,7 @@ msgid "Error: Authorization denied"
 msgstr "错误：授权被拒绝"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
-#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:277
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:283
 #, kde-format
 msgid "Error"
 msgstr "错误"
@@ -569,23 +569,23 @@ msgstr "%1 (用户)"
 msgid "Local bundle"
 msgstr "本地包"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1899
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:833
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:829
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "错误的 AppStream URL “%1”"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2006
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2003
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "无法添加来源“%1”：%2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2129
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2126
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "没有 Flatpak 来源。"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2133
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "加载“%1”来源失败"
@@ -613,7 +613,7 @@ msgid "Unknown"
 msgstr "未知"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:528
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:497
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:495
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start '%1': %2"
@@ -640,7 +640,7 @@ msgid "Music"
 msgstr "音乐"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:452
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
 #, kde-format
 msgid "%1: %2"
 msgstr "%1：%2"
@@ -1089,26 +1089,26 @@ msgstr "Plasma 附加组件"
 msgid "Application Addons"
 msgstr "应用程序附加组件"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:393
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:392
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "%1 后端网络错误：%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:400
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr "%1 后端的服务器请求发送过多。请过几分钟之后再试。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:403
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:409
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:414
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:413
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "无效的 %1 后端。请联系您的发行版。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:433
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:432
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1120,17 +1120,17 @@ msgstr ""
 "为：\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:443
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "无法从 %2 后端获取 %1 的屏幕截图"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:447
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:446
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "%1 后端出现无法处理的错误。请联系您的发行版。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:573
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:571
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "错误的 KNewStuff URI：%1"
@@ -1175,12 +1175,12 @@ msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "报告此问题给 %1"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:325
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:319
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "请确保本机系统已正确安装并配置 AppStream"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:361
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:355
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1189,12 +1189,12 @@ msgid ""
 msgstr ""
 "本机安装的操作系统已于 %1 结束支持。请考虑升级到仍受支持的新版操作系统。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:940
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "无法移除“%1”"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1206,20 +1206,20 @@ msgstr ""
 "<b>%1 已经推出，可以升级。</b>\n"
 "如需升级到此新版本，请先安装所有可用更新，然后重新启动您的系统。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1030
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "立即升级"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:378
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 已经推出，可以升级。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1191
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1179
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2053,49 +2053,49 @@ msgstr[0] "成功更新了 %1 个软件包"
 msgid "Unknown Source"
 msgstr "未知来源"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:342
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:340
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:345
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:343
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr "，"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
 #, kde-format
 msgid "Software verified by %1"
 msgstr "由 %1 验证的软件"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:413
 #, kde-format
 msgid "Obsoletes:"
 msgstr "已废弃："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:416
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:414
 #, kde-format
 msgid "Release Notes:"
 msgstr "发行说明："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:417
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
 #, kde-format
 msgid "Update State:"
 msgstr "更新状态："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:418
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:416
 #, kde-format
 msgid "Restart:"
 msgstr "重新启动："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:421
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:419
 #, kde-format
 msgid "Vendor:"
 msgstr "发行者："
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:450
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:448
 #, kde-format
 msgid "%2 (plus %1 dependency)"
 msgid_plural "%2 (plus %1 dependencies)"
@@ -2546,30 +2546,30 @@ msgstr "可用"
 msgid "Upgradeable"
 msgstr "可升级"
 
-#: libdiscover/resources/AbstractResource.cpp:243
+#: libdiscover/resources/AbstractResource.cpp:239
 #, kde-format
 msgid "Launch"
 msgstr "启动"
 
-#: libdiscover/resources/AbstractResource.cpp:254
+#: libdiscover/resources/AbstractResource.cpp:250
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
 msgstr "%1 的更新版本"
 
-#: libdiscover/resources/AbstractResource.cpp:264
+#: libdiscover/resources/AbstractResource.cpp:260
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
 msgstr "%1 → %2%1 → %2%2"
 
-#: libdiscover/resources/AbstractResourcesBackend.cpp:181
+#: libdiscover/resources/AbstractResourcesBackend.cpp:160
 #, kde-format
 msgid "Please verify Internet connectivity"
 msgstr "请检查网络连接"
 
-#: libdiscover/resources/ResourcesModel.cpp:104
+#: libdiscover/resources/ResourcesModel.cpp:91
 #, kde-format
 msgid "Refresh"
 msgstr "刷新"
