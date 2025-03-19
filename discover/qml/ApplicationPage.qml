@@ -108,6 +108,11 @@ DiscoverPage {
         }
     }
 
+    Discover.TransactionListener {
+        id: transactionListener
+        resource: appInfo.application
+    }
+
     ReviewsPage {
         id: reviewsSheet
         parent: appInfo.QQC2.Overlay.overlay
@@ -122,7 +127,7 @@ DiscoverPage {
     actions: [
         addonsAction,
         shareAction,
-        appbutton.isActive ? appbutton.cancelAction : appbutton.action,
+        installRemoveAndProgressAction,
         invokeAction,
         originsMenuAction
     ]
@@ -187,18 +192,20 @@ DiscoverPage {
 
     Kirigami.Action {
         id: invokeAction
-        visible: application.isInstalled && application.canExecute && !appbutton.isActive
+        visible: application.isInstalled && application.canExecute && !transactionListener.isActive
         text: application.executeLabel
         icon.name: "media-playback-start-symbolic"
         onTriggered: application.invokeApplication()
     }
 
-    InstallApplicationButton {
-        id: appbutton
-        Layout.rightMargin: Kirigami.Units.smallSpacing
-        application: appInfo.application
-        visible: false
-        availableFromOnlySingleSource: appInfo.availableFromOnlySingleSource
+    Kirigami.Action {
+        id: installRemoveAndProgressAction
+            displayComponent: InstallApplicationButton {
+            id: appbutton
+            application: appInfo.application
+            availableFromOnlySingleSource: appInfo.availableFromOnlySingleSource
+            flat: true
+        }
     }
 
     Kirigami.ImageColors {
@@ -781,7 +788,10 @@ DiscoverPage {
                 }
 
                 QQC2.Button {
-                    visible: appbutton.isStateAvailable && reviewsModel.backend && !reviewsError.visible && reviewsModel.backend.isResourceSupported(appInfo.application)
+                    visible: transactionListener.resource.state !== Discover.AbstractResource.Broken
+                          && reviewsModel.backend
+                          && !reviewsError.visible
+                          && reviewsModel.backend.isResourceSupported(appInfo.application)
                     enabled: appInfo.application.isInstalled
 
                     text: appInfo.application.isInstalled ? i18n("Write a Review") : i18n("Install to Write a Review")

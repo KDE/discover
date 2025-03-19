@@ -206,6 +206,7 @@ BasicAbstractCard {
                     Layout.alignment: Qt.AlignBottom | Qt.AlignRight
                     visible: !root.compact
                     application: root.application
+                    installOrRemoveButtonDisplayStyle: QQC2.AbstractButton.IconOnly
                 }
             }
         }

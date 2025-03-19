@@ -143,16 +143,20 @@ Kirigami.GlobalDrawer {
     ]
 
     footer: ColumnLayout {
+        readonly property int transactions: Discover.TransactionModel.count
+        readonly property bool currentPageShowsTransactionProgressInline:
+               applicationWindow().pageStack.currentItem instanceof ApplicationPage
+            || applicationWindow().pageStack.currentItem instanceof ApplicationsListPage
+            || applicationWindow().pageStack.currentItem instanceof UpdatesPage
+
         spacing: 0
-        Layout.fillWidth: true
+        visible: transactions > 1 || (transactions === 1 && !currentPageShowsTransactionProgressInline)
 
         Kirigami.Separator {
-            visible: progressView.visible
             Layout.fillWidth: true
         }
 
         ProgressView {
-            id: progressView
             Layout.fillWidth: true
         }
 

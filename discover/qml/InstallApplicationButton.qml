@@ -4,11 +4,15 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.discover as Discover
 
+pragma ComponentBehavior: Bound
+
 ConditionalLoader {
     id: root
 
     property alias application: listener.resource
     property bool availableFromOnlySingleSource: false
+    property bool flat: false
+    property var installOrRemoveButtonDisplayStyle: QQC2.AbstractButton.TextBesideIcon
 
     readonly property alias isActive: listener.isActive
     readonly property bool isStateAvailable: application.state !== Discover.AbstractResource.Broken
@@ -75,10 +79,13 @@ ConditionalLoader {
             text: listener.statusText
             progress: listener.progress / 100
         }
-        QQC2.Button {
+
+        // Cancel button
+        QQC2.ToolButton {
             Layout.fillHeight: true
             action: root.cancelAction
 
+            flat: root.flat
             display: QQC2.AbstractButton.IconOnly
 
             QQC2.ToolTip.text: text
@@ -87,14 +94,20 @@ ConditionalLoader {
         }
     }
 
-    componentFalse: QQC2.Button {
+    // Install/Remove button
+    componentFalse: QQC2.ToolButton {
+        id: installOrRemoveButton
+        readonly property int iconSize: flat ? Kirigami.Units.iconSizes.smallMedium : Kirigami.Units.iconSizes.small
+
         visible: !root.application.isInstalled || root.application.isRemovable
         enabled: root.application.state !== Discover.AbstractResource.Broken
         activeFocusOnTab: false
 
+        display: root.installOrRemoveButtonDisplayStyle
+        flat: root.flat
         text: root.action.text
         icon.name: root.action.icon.name
-        display: QQC2.AbstractButton.IconOnly
+        icon.color: root.action.icon.color
 
         QQC2.ToolTip.text: text
         QQC2.ToolTip.visible: hovered

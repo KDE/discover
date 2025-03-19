@@ -26,8 +26,6 @@ QQC2.ItemDelegate {
         }
     }
 
-    visible: Discover.TransactionModel.count > 0
-
     property Kirigami.OverlaySheet sheetObject
 
     onClicked: {
