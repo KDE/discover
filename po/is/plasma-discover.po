@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-07 00:43+0000\n"
+"POT-Creation-Date: 2025-03-19 00:43+0000\n"
 "PO-Revision-Date: 2024-06-28 11:35+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 23.08.5\n"
 
-#: discover/DiscoverObject.cpp:182
+#: discover/DiscoverObject.cpp:183
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -27,7 +27,7 @@ msgstr ""
 "%1 er ekki grunnstillt til að setja upp forrit í gegnum Discover—einungis "
 "forritaviðbætur"
 
-#: discover/DiscoverObject.cpp:184
+#: discover/DiscoverObject.cpp:185
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -39,13 +39,13 @@ msgstr ""
 "síðunni <interface>Stillingar</interface>, undir<interface>Bakendar sem "
 "vantar</interface>."
 
-#: discover/DiscoverObject.cpp:187
+#: discover/DiscoverObject.cpp:188
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Tilkynna vandamálið til %1"
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:193
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -62,7 +62,7 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>pakka fyrir "
 "Discover á %1</link>"
 
-#: discover/DiscoverObject.cpp:205
+#: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -80,17 +80,17 @@ msgstr ""
 "<para> Umsjónaraðilar %1 mæla með því í staðinn að nota <command>pacman</"
 "command> á skipanalínunni til að hafa umsjón með pökkum.</para>"
 
-#: discover/DiscoverObject.cpp:293
+#: discover/DiscoverObject.cpp:294
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Fann ekki flokk '%1'"
 
-#: discover/DiscoverObject.cpp:308
+#: discover/DiscoverObject.cpp:316
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Reyni að opna skrá '%1' sem er ekki til"
 
-#: discover/DiscoverObject.cpp:330
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -99,17 +99,17 @@ msgstr ""
 "Get ekki átt samskipti við flatpak-uppsprettur án flatpak-bakenda %1. Settu "
 "hann upp fyrst."
 
-#: discover/DiscoverObject.cpp:334
+#: discover/DiscoverObject.cpp:342
 #, kde-format
 msgid "Could not open %1"
 msgstr "Gat ekki opnað %1"
 
-#: discover/DiscoverObject.cpp:396
+#: discover/DiscoverObject.cpp:404
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Gakktu úr skugga um að stuðningur við Snap sé uppsettur"
 
-#: discover/DiscoverObject.cpp:399
+#: discover/DiscoverObject.cpp:407
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -117,25 +117,25 @@ msgid ""
 msgstr ""
 "Gat ekki opnað %1 því það fannst ekki í neinum tiltækum hugbúnaðarsöfnum."
 
-#: discover/DiscoverObject.cpp:403
+#: discover/DiscoverObject.cpp:411
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 "Sendu tilkynningu um vandamálið til þeirra sem sjá um pökkun hjá "
 "dreifingaraðila þínum."
 
-#: discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:414
 #, kde-format
 msgid "Report This Issue"
 msgstr "Tilkynna vandamálið"
 
-#: discover/DiscoverObject.cpp:466 discover/DiscoverObject.cpp:468
-#: discover/main.cpp:123
+#: discover/DiscoverObject.cpp:474 discover/DiscoverObject.cpp:476
+#: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:469
+#: discover/DiscoverObject.cpp:477
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -187,65 +187,70 @@ msgstr "Leita að streng."
 msgid "Lists the available options for user feedback"
 msgstr "Birtir lista yfir tiltæka valkosti fyrir umsagnir notenda"
 
-#: discover/main.cpp:45
+#: discover/main.cpp:44
+#, kde-format
+msgid "Starts an update automatically, headless"
+msgstr ""
+
+#: discover/main.cpp:46
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "Styður appstream: slóðaskema"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:131
 #, kde-format
 msgid "An application explorer"
 msgstr "Forritaskoðari"
 
-#: discover/main.cpp:127
+#: discover/main.cpp:133
 #, fuzzy, kde-format
 #| msgid "© 2010-2024 Plasma Development Team"
 msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010-2024 Plasma þróunarteymið"
 
-#: discover/main.cpp:128
+#: discover/main.cpp:134
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:135
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:130
+#: discover/main.cpp:136
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Gæðaprófun, hönnun og nothæfi"
 
-#: discover/main.cpp:134
+#: discover/main.cpp:140
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:135
+#: discover/main.cpp:141
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:142
+#: discover/main.cpp:148
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Guðmundur Erlingsson"
 
-#: discover/main.cpp:142
+#: discover/main.cpp:148
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "gudmundure@gmail.com"
 
-#: discover/main.cpp:155
+#: discover/main.cpp:162
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Tiltækir bakendar:\n"
 
-#: discover/main.cpp:208
+#: discover/main.cpp:215
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Tiltæk snið:\n"
@@ -283,7 +288,7 @@ msgstr "Bæta við"
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:144 discover/qml/SourcesPage.qml:201
-#: discover/qml/UpdatesPage.qml:281 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:307 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "Hætta við"
@@ -1421,34 +1426,34 @@ msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
 msgstr "Tilkynna vandamálið til %1"
 
-#: discover/qml/UpdatesPage.qml:141
+#: discover/qml/UpdatesPage.qml:164
 #, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "Uppfærsla valin"
 
-#: discover/qml/UpdatesPage.qml:141
+#: discover/qml/UpdatesPage.qml:164
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Uppfæra allt"
 
-#: discover/qml/UpdatesPage.qml:180
+#: discover/qml/UpdatesPage.qml:206
 #, kde-format
 msgid "Ignore"
 msgstr "Hunsa"
 
-#: discover/qml/UpdatesPage.qml:230
+#: discover/qml/UpdatesPage.qml:256
 #, kde-format
 msgid "Select All"
 msgstr "Velja allt"
 
-#: discover/qml/UpdatesPage.qml:238
+#: discover/qml/UpdatesPage.qml:264
 #, kde-format
 msgid "Select None"
 msgstr "Velja ekkert"
 
-#: discover/qml/UpdatesPage.qml:257
+#: discover/qml/UpdatesPage.qml:283
 #, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
@@ -1456,48 +1461,48 @@ msgctxt ""
 msgid "On completion, automatically:"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:262
+#: discover/qml/UpdatesPage.qml:288
 #, fuzzy, kde-format
 #| msgid "Select None"
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
 msgstr "Velja ekkert"
 
-#: discover/qml/UpdatesPage.qml:262
+#: discover/qml/UpdatesPage.qml:288
 #, fuzzy, kde-format
 #| msgid "Restart Now"
 msgctxt "@item:inlistbox"
 msgid "Restart"
 msgstr "Endurræsa núna"
 
-#: discover/qml/UpdatesPage.qml:262
+#: discover/qml/UpdatesPage.qml:288
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:271
+#: discover/qml/UpdatesPage.qml:297
 #, kde-format
 msgid "Total size: %1"
 msgstr "Heildarstærð: %1"
 
-#: discover/qml/UpdatesPage.qml:306
+#: discover/qml/UpdatesPage.qml:332
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:441
+#: discover/qml/UpdatesPage.qml:467
 #, kde-format
 msgid "Installing"
 msgstr "Set upp"
 
-#: discover/qml/UpdatesPage.qml:472
+#: discover/qml/UpdatesPage.qml:498
 #, kde-format
 msgid "Update from:"
 msgstr "Uppfæra frá:"
 
-#: discover/qml/UpdatesPage.qml:484
+#: discover/qml/UpdatesPage.qml:510
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1505,43 +1510,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:491
+#: discover/qml/UpdatesPage.qml:517
 #, kde-format
 msgid "More Information…"
 msgstr "Frekari upplýsingar..."
 
-#: discover/qml/UpdatesPage.qml:519
+#: discover/qml/UpdatesPage.qml:545
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Sæki uppfærslur..."
 
-#: discover/qml/UpdatesPage.qml:533
+#: discover/qml/UpdatesPage.qml:559
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Uppfærslur"
 
-#: discover/qml/UpdatesPage.qml:542
+#: discover/qml/UpdatesPage.qml:568
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Endurræstu tölvuna til að ljúka uppfærslunni"
 
-#: discover/qml/UpdatesPage.qml:558 discover/qml/UpdatesPage.qml:565
-#: discover/qml/UpdatesPage.qml:572
+#: discover/qml/UpdatesPage.qml:584 discover/qml/UpdatesPage.qml:591
+#: discover/qml/UpdatesPage.qml:598
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Allt uppfært"
 
-#: discover/qml/UpdatesPage.qml:579
+#: discover/qml/UpdatesPage.qml:605
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Ættir að athuga með uppfærslur"
 
-#: discover/qml/UpdatesPage.qml:586
+#: discover/qml/UpdatesPage.qml:612
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

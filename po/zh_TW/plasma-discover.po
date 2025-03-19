@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-07 00:43+0000\n"
+"POT-Creation-Date: 2025-03-19 00:43+0000\n"
 "PO-Revision-Date: 2025-03-10 20:19+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -22,14 +22,14 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 24.12.3\n"
 
-#: discover/DiscoverObject.cpp:182
+#: discover/DiscoverObject.cpp:183
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr "%1 並未設定為透過 Discover 安裝應用程式—Discover 只能安裝附加功能"
 
-#: discover/DiscoverObject.cpp:184
+#: discover/DiscoverObject.cpp:185
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -40,13 +40,13 @@ msgstr ""
 "要使用 Discover 安裝應用程式，請在 <interface>設定</interface> 頁面中的 "
 "<interface>缺乏的後端</interface> 底下安裝您所要使用的模組。"
 
-#: discover/DiscoverObject.cpp:187
+#: discover/DiscoverObject.cpp:188
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "回報此問題給 %1"
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:193
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -63,7 +63,7 @@ msgstr ""
 "archlinux.org/packages/extra/x86_64/discover/'>%1 的 Discover 軟體包打包細節"
 "</link>"
 
-#: discover/DiscoverObject.cpp:205
+#: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -80,57 +80,57 @@ msgstr ""
 "%1 的維護者建議使用 <command>pacman</command> 命令列工具來管理軟體包，而不是"
 "使用 Discover。</para>"
 
-#: discover/DiscoverObject.cpp:293
+#: discover/DiscoverObject.cpp:294
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "找不到分類「%1」"
 
-#: discover/DiscoverObject.cpp:308
+#: discover/DiscoverObject.cpp:316
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "試圖開啟不存在的檔案 '%1'"
 
-#: discover/DiscoverObject.cpp:330
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr "無法在無 Flatpak 後端 %1 情況下與 Flatpak 資源互動。請先安裝它。"
 
-#: discover/DiscoverObject.cpp:334
+#: discover/DiscoverObject.cpp:342
 #, kde-format
 msgid "Could not open %1"
 msgstr "無法開啟 %1"
 
-#: discover/DiscoverObject.cpp:396
+#: discover/DiscoverObject.cpp:404
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "請再度確認已安裝 Snap 支援。"
 
-#: discover/DiscoverObject.cpp:399
+#: discover/DiscoverObject.cpp:407
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr "無法開啟 %1，在可用的軟體庫中找不到它。"
 
-#: discover/DiscoverObject.cpp:403
+#: discover/DiscoverObject.cpp:411
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "請向您的發行版的打包者回報此問題。"
 
-#: discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:414
 #, kde-format
 msgid "Report This Issue"
 msgstr "回報此問題"
 
-#: discover/DiscoverObject.cpp:466 discover/DiscoverObject.cpp:468
-#: discover/main.cpp:123
+#: discover/DiscoverObject.cpp:474 discover/DiscoverObject.cpp:476
+#: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:469
+#: discover/DiscoverObject.cpp:477
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -181,64 +181,69 @@ msgstr "搜尋字串。"
 msgid "Lists the available options for user feedback"
 msgstr "列出能用於使用者回饋的選項"
 
-#: discover/main.cpp:45
+#: discover/main.cpp:44
+#, kde-format
+msgid "Starts an update automatically, headless"
+msgstr ""
+
+#: discover/main.cpp:46
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "支援 appstream：網址機制"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:131
 #, kde-format
 msgid "An application explorer"
 msgstr "探索更多應用程式"
 
-#: discover/main.cpp:127
+#: discover/main.cpp:133
 #, kde-format
 msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010-2025 Plasma 開發團隊"
 
-#: discover/main.cpp:128
+#: discover/main.cpp:134
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:135
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:130
+#: discover/main.cpp:136
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "品質保證、設計與可用性"
 
-#: discover/main.cpp:134
+#: discover/main.cpp:140
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:135
+#: discover/main.cpp:141
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:142
+#: discover/main.cpp:148
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "pan93412, Chaoting Liu"
 
-#: discover/main.cpp:142
+#: discover/main.cpp:148
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "pan93412@gmail.com, brli@chakralinux.org"
 
-#: discover/main.cpp:155
+#: discover/main.cpp:162
 #, kde-format
 msgid "Available backends:\n"
 msgstr "可用的後端介面：\n"
 
-#: discover/main.cpp:208
+#: discover/main.cpp:215
 #, kde-format
 msgid "Available modes:\n"
 msgstr "可用的模式：\n"
@@ -276,7 +281,7 @@ msgstr "新增"
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:144 discover/qml/SourcesPage.qml:201
-#: discover/qml/UpdatesPage.qml:281 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:307 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "取消"
@@ -1388,34 +1393,34 @@ msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
 msgstr "回報問題給 %1"
 
-#: discover/qml/UpdatesPage.qml:141
+#: discover/qml/UpdatesPage.qml:164
 #, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "更新選取的"
 
-#: discover/qml/UpdatesPage.qml:141
+#: discover/qml/UpdatesPage.qml:164
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "更新全部"
 
-#: discover/qml/UpdatesPage.qml:180
+#: discover/qml/UpdatesPage.qml:206
 #, kde-format
 msgid "Ignore"
 msgstr "忽略"
 
-#: discover/qml/UpdatesPage.qml:230
+#: discover/qml/UpdatesPage.qml:256
 #, kde-format
 msgid "Select All"
 msgstr "全部選取"
 
-#: discover/qml/UpdatesPage.qml:238
+#: discover/qml/UpdatesPage.qml:264
 #, kde-format
 msgid "Select None"
 msgstr "全部不選"
 
-#: discover/qml/UpdatesPage.qml:257
+#: discover/qml/UpdatesPage.qml:283
 #, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
@@ -1423,46 +1428,46 @@ msgctxt ""
 msgid "On completion, automatically:"
 msgstr "完成時自動進行："
 
-#: discover/qml/UpdatesPage.qml:262
+#: discover/qml/UpdatesPage.qml:288
 #, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
 msgstr "選擇動作"
 
-#: discover/qml/UpdatesPage.qml:262
+#: discover/qml/UpdatesPage.qml:288
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
 msgstr "重新開機"
 
-#: discover/qml/UpdatesPage.qml:262
+#: discover/qml/UpdatesPage.qml:288
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr "關機"
 
-#: discover/qml/UpdatesPage.qml:271
+#: discover/qml/UpdatesPage.qml:297
 #, kde-format
 msgid "Total size: %1"
 msgstr "總計大小：%1"
 
-#: discover/qml/UpdatesPage.qml:306
+#: discover/qml/UpdatesPage.qml:332
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
 msgstr "現在重新開機來安裝更新"
 
-#: discover/qml/UpdatesPage.qml:441
+#: discover/qml/UpdatesPage.qml:467
 #, kde-format
 msgid "Installing"
 msgstr "安裝中…"
 
-#: discover/qml/UpdatesPage.qml:472
+#: discover/qml/UpdatesPage.qml:498
 #, kde-format
 msgid "Update from:"
 msgstr "更新自："
 
-#: discover/qml/UpdatesPage.qml:484
+#: discover/qml/UpdatesPage.qml:510
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1470,43 +1475,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:491
+#: discover/qml/UpdatesPage.qml:517
 #, kde-format
 msgid "More Information…"
 msgstr "更多資訊…"
 
-#: discover/qml/UpdatesPage.qml:519
+#: discover/qml/UpdatesPage.qml:545
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "正在取得更新…"
 
-#: discover/qml/UpdatesPage.qml:533
+#: discover/qml/UpdatesPage.qml:559
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "更新"
 
-#: discover/qml/UpdatesPage.qml:542
+#: discover/qml/UpdatesPage.qml:568
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "重新啟動電腦以完成更新"
 
-#: discover/qml/UpdatesPage.qml:558 discover/qml/UpdatesPage.qml:565
-#: discover/qml/UpdatesPage.qml:572
+#: discover/qml/UpdatesPage.qml:584 discover/qml/UpdatesPage.qml:591
+#: discover/qml/UpdatesPage.qml:598
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "最新"
 
-#: discover/qml/UpdatesPage.qml:579
+#: discover/qml/UpdatesPage.qml:605
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "應該檢查更新"
 
-#: discover/qml/UpdatesPage.qml:586
+#: discover/qml/UpdatesPage.qml:612
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

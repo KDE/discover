@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-07 00:43+0000\n"
+"POT-Creation-Date: 2025-03-19 00:43+0000\n"
 "PO-Revision-Date: 2025-03-08 21:38+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -20,7 +20,7 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Lokalize 23.08.5\n"
 
-#: discover/DiscoverObject.cpp:182
+#: discover/DiscoverObject.cpp:183
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -29,7 +29,7 @@ msgstr ""
 "التوزيعة %1 غير مضبوطة لتثبيت التطبيقات بواسطة المستكشف - فقط ملحقات "
 "التطبيقات"
 
-#: discover/DiscoverObject.cpp:184
+#: discover/DiscoverObject.cpp:185
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -40,13 +40,13 @@ msgstr ""
 "لتستخدم المستكشف ، ثبت وحدتك المفضلة من صفحة<interface>الإعدادات</interface> "
 "تحت <interface>الخلفيات الناقصة</interface>."
 
-#: discover/DiscoverObject.cpp:187
+#: discover/DiscoverObject.cpp:188
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "أبلغ عن هذه المشكلة إلى %1"
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:193
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -62,7 +62,7 @@ msgstr ""
 "command>.<nl/><nl/> راجع <link url='https://archlinux.org/packages/extra/"
 "x86_64/discover/'>حزم %1 للمستكشف </link>"
 
-#: discover/DiscoverObject.cpp:205
+#: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -79,17 +79,17 @@ msgstr ""
 "مشرفو %1 بدلاً من ذلك باستخدام أداة سطر الأوامر <command>pacman</command> "
 "لإدارة الحزم.</para>"
 
-#: discover/DiscoverObject.cpp:293
+#: discover/DiscoverObject.cpp:294
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "تعذّر العثور على الفئة ’%1‘"
 
-#: discover/DiscoverObject.cpp:308
+#: discover/DiscoverObject.cpp:316
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "يحاول فتح ملف غير موجود '%1'"
 
-#: discover/DiscoverObject.cpp:330
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -98,40 +98,40 @@ msgstr ""
 "لا يمكن التفاعل مع موارد فلاتباك بدون الواجهة الخلفية لـ فلاتباك %1.الرجاء "
 "تثبيتها أولاً."
 
-#: discover/DiscoverObject.cpp:334
+#: discover/DiscoverObject.cpp:342
 #, kde-format
 msgid "Could not open %1"
 msgstr "تعذّر فتح %1"
 
-#: discover/DiscoverObject.cpp:396
+#: discover/DiscoverObject.cpp:404
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "يرجى التأكد من تثبيت دعم سناب"
 
-#: discover/DiscoverObject.cpp:399
+#: discover/DiscoverObject.cpp:407
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr "لا يمكن فتح %1 بسبب عدم العثور عليه في أي مستودع تطبيقات."
 
-#: discover/DiscoverObject.cpp:403
+#: discover/DiscoverObject.cpp:411
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "الرجاء الإبلاغ عن هذه المشكلة لمحزمي التطبيقات في توزيعتك."
 
-#: discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:414
 #, kde-format
 msgid "Report This Issue"
 msgstr "أبلغ عن هذه المشكلة"
 
-#: discover/DiscoverObject.cpp:466 discover/DiscoverObject.cpp:468
-#: discover/main.cpp:123
+#: discover/DiscoverObject.cpp:474 discover/DiscoverObject.cpp:476
+#: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "استكشف"
 
-#: discover/DiscoverObject.cpp:469
+#: discover/DiscoverObject.cpp:477
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -182,64 +182,69 @@ msgstr "جملة البحث."
 msgid "Lists the available options for user feedback"
 msgstr "يسرد الخيارات المتاحة لمشاركة بياناتك"
 
-#: discover/main.cpp:45
+#: discover/main.cpp:44
+#, kde-format
+msgid "Starts an update automatically, headless"
+msgstr ""
+
+#: discover/main.cpp:46
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "يدعم مخطّط مسارات appstream:‎"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:131
 #, kde-format
 msgid "An application explorer"
 msgstr "متصفّح للتّطبيقات"
 
-#: discover/main.cpp:127
+#: discover/main.cpp:133
 #, kde-format
 msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010-2025 لفريق تطوير بلازما"
 
-#: discover/main.cpp:128
+#: discover/main.cpp:134
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:135
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:130
+#: discover/main.cpp:136
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "ضمان الجودة و التصميم والاستخدامية"
 
-#: discover/main.cpp:134
+#: discover/main.cpp:140
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:135
+#: discover/main.cpp:141
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:142
+#: discover/main.cpp:148
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "زايد السعيدي"
 
-#: discover/main.cpp:142
+#: discover/main.cpp:148
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "zayed.alsaidi@gmail.com"
 
-#: discover/main.cpp:155
+#: discover/main.cpp:162
 #, kde-format
 msgid "Available backends:\n"
 msgstr "الأسناد المتوفّرة:\n"
 
-#: discover/main.cpp:208
+#: discover/main.cpp:215
 #, kde-format
 msgid "Available modes:\n"
 msgstr "الأوضاع المتوفّرة:\n"
@@ -277,7 +282,7 @@ msgstr "أضف"
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:144 discover/qml/SourcesPage.qml:201
-#: discover/qml/UpdatesPage.qml:281 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:307 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "ألغِ"
@@ -1433,34 +1438,34 @@ msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
 msgstr "أبلغ عن هذه المشكلة إلى %1"
 
-#: discover/qml/UpdatesPage.qml:141
+#: discover/qml/UpdatesPage.qml:164
 #, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "حدّث المحدّد"
 
-#: discover/qml/UpdatesPage.qml:141
+#: discover/qml/UpdatesPage.qml:164
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "حدّث الكلّ"
 
-#: discover/qml/UpdatesPage.qml:180
+#: discover/qml/UpdatesPage.qml:206
 #, kde-format
 msgid "Ignore"
 msgstr "تجاهل"
 
-#: discover/qml/UpdatesPage.qml:230
+#: discover/qml/UpdatesPage.qml:256
 #, kde-format
 msgid "Select All"
 msgstr "حدّد الكلّ"
 
-#: discover/qml/UpdatesPage.qml:238
+#: discover/qml/UpdatesPage.qml:264
 #, kde-format
 msgid "Select None"
 msgstr "لا تحدد شيء"
 
-#: discover/qml/UpdatesPage.qml:257
+#: discover/qml/UpdatesPage.qml:283
 #, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
@@ -1468,46 +1473,46 @@ msgctxt ""
 msgid "On completion, automatically:"
 msgstr "عند الانتهاء، قم آليا بـ:"
 
-#: discover/qml/UpdatesPage.qml:262
+#: discover/qml/UpdatesPage.qml:288
 #, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
 msgstr "اختر إجراء"
 
-#: discover/qml/UpdatesPage.qml:262
+#: discover/qml/UpdatesPage.qml:288
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
 msgstr "أعد التّشغيل"
 
-#: discover/qml/UpdatesPage.qml:262
+#: discover/qml/UpdatesPage.qml:288
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr "أطفئ"
 
-#: discover/qml/UpdatesPage.qml:271
+#: discover/qml/UpdatesPage.qml:297
 #, kde-format
 msgid "Total size: %1"
 msgstr "الحجم الكليّ: %1"
 
-#: discover/qml/UpdatesPage.qml:306
+#: discover/qml/UpdatesPage.qml:332
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
 msgstr "أعد التشغيل لتثبت التحديثات الآن"
 
-#: discover/qml/UpdatesPage.qml:441
+#: discover/qml/UpdatesPage.qml:467
 #, kde-format
 msgid "Installing"
 msgstr "يثبّت"
 
-#: discover/qml/UpdatesPage.qml:472
+#: discover/qml/UpdatesPage.qml:498
 #, kde-format
 msgid "Update from:"
 msgstr "حدّث من:"
 
-#: discover/qml/UpdatesPage.qml:484
+#: discover/qml/UpdatesPage.qml:510
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1515,43 +1520,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "‏%1 (‏%2)"
 
-#: discover/qml/UpdatesPage.qml:491
+#: discover/qml/UpdatesPage.qml:517
 #, kde-format
 msgid "More Information…"
 msgstr "المزيد من المعلومات…"
 
-#: discover/qml/UpdatesPage.qml:519
+#: discover/qml/UpdatesPage.qml:545
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "يجلب التّحديثات..."
 
-#: discover/qml/UpdatesPage.qml:533
+#: discover/qml/UpdatesPage.qml:559
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "التّحديثات"
 
-#: discover/qml/UpdatesPage.qml:542
+#: discover/qml/UpdatesPage.qml:568
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "أعد تشغيل النظام لإكمال عملية التحديث"
 
-#: discover/qml/UpdatesPage.qml:558 discover/qml/UpdatesPage.qml:565
-#: discover/qml/UpdatesPage.qml:572
+#: discover/qml/UpdatesPage.qml:584 discover/qml/UpdatesPage.qml:591
+#: discover/qml/UpdatesPage.qml:598
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "مُحدث"
 
-#: discover/qml/UpdatesPage.qml:579
+#: discover/qml/UpdatesPage.qml:605
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "يجب التماس التّحديثات"
 
-#: discover/qml/UpdatesPage.qml:586
+#: discover/qml/UpdatesPage.qml:612
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

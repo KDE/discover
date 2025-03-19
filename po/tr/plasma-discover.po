@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-07 00:43+0000\n"
+"POT-Creation-Date: 2025-03-19 00:43+0000\n"
 "PO-Revision-Date: 2025-03-07 15:10+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 25.03.70\n"
 
-#: discover/DiscoverObject.cpp:182
+#: discover/DiscoverObject.cpp:183
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -30,7 +30,7 @@ msgstr ""
 "%1, yalnızca Keşfet’e özgü uygulama eklentileriyle uygulama kurmak için "
 "yapılandırılmadı"
 
-#: discover/DiscoverObject.cpp:184
+#: discover/DiscoverObject.cpp:185
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -42,13 +42,13 @@ msgstr ""
 "sayfasında <interface>Eksik Arka Uçlar</interface> altında yeğlediğiniz "
 "modülü kurun."
 
-#: discover/DiscoverObject.cpp:187
+#: discover/DiscoverObject.cpp:188
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Sorunu %1 Topluluğuna Bildir"
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:193
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -65,7 +65,7 @@ msgstr ""
 "org/packages/extra/x86_64/discover/'>%1 sisteminin Keşfet için olan</link> "
 "paketlemesini gözden geçirin."
 
-#: discover/DiscoverObject.cpp:205
+#: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -83,17 +83,17 @@ msgstr ""
 "önerilir. %1 bakımcıları, bunun yerine paket yönetimi için <command>pacman</"
 "command> yazılımını kullanmanızı öneriyorlar."
 
-#: discover/DiscoverObject.cpp:293
+#: discover/DiscoverObject.cpp:294
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "“%1” kategorisi bulunamadı"
 
-#: discover/DiscoverObject.cpp:308
+#: discover/DiscoverObject.cpp:316
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Var olmayan “%1” dosyası açılmaya çalışılıyor"
 
-#: discover/DiscoverObject.cpp:330
+#: discover/DiscoverObject.cpp:338
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -102,17 +102,17 @@ msgstr ""
 "%1 flatpak arka ucu olmadan flatpak kaynaklarıyla etkileşim kurulamıyor. "
 "Lütfen önce kurun."
 
-#: discover/DiscoverObject.cpp:334
+#: discover/DiscoverObject.cpp:342
 #, kde-format
 msgid "Could not open %1"
 msgstr "%1 açılamadı"
 
-#: discover/DiscoverObject.cpp:396
+#: discover/DiscoverObject.cpp:404
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Lütfen Snap desteğinin kurulu olduğundan emin olun"
 
-#: discover/DiscoverObject.cpp:399
+#: discover/DiscoverObject.cpp:407
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -120,23 +120,23 @@ msgid ""
 msgstr ""
 "%1 açılamıyor; çünkü hiçbir kullanılabilir yazılım deposunda bulunamadı."
 
-#: discover/DiscoverObject.cpp:403
+#: discover/DiscoverObject.cpp:411
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Lütfen bu sorunu dağıtımınızın paketleyicilerine bildirin."
 
-#: discover/DiscoverObject.cpp:406
+#: discover/DiscoverObject.cpp:414
 #, kde-format
 msgid "Report This Issue"
 msgstr "Bu Sorunu Bildir"
 
-#: discover/DiscoverObject.cpp:466 discover/DiscoverObject.cpp:468
-#: discover/main.cpp:123
+#: discover/DiscoverObject.cpp:474 discover/DiscoverObject.cpp:476
+#: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Keşfet"
 
-#: discover/DiscoverObject.cpp:469
+#: discover/DiscoverObject.cpp:477
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -189,64 +189,69 @@ msgstr "Arama dizisi."
 msgid "Lists the available options for user feedback"
 msgstr "Kullanıcı geri bildirimi için kullanılabilir seçenekleri listeler"
 
-#: discover/main.cpp:45
+#: discover/main.cpp:44
+#, kde-format
+msgid "Starts an update automatically, headless"
+msgstr ""
+
+#: discover/main.cpp:46
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "appstream: url şeması destekleniyor"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:131
 #, kde-format
 msgid "An application explorer"
 msgstr "Uygulama kâşifi"
 
-#: discover/main.cpp:127
+#: discover/main.cpp:133
 #, kde-format
 msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010–2025 Plasma Geliştirme Takımı"
 
-#: discover/main.cpp:128
+#: discover/main.cpp:134
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:129
+#: discover/main.cpp:135
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:130
+#: discover/main.cpp:136
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Kalite güvencesi, tasarım ve kullanılabilirlik"
 
-#: discover/main.cpp:134
+#: discover/main.cpp:140
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:135
+#: discover/main.cpp:141
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:142
+#: discover/main.cpp:148
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Hasan Kiran, Emir SARI"
 
-#: discover/main.cpp:142
+#: discover/main.cpp:148
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sunder67@hotmail.com, emir_sari@icloud.com"
 
-#: discover/main.cpp:155
+#: discover/main.cpp:162
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Kullanılabilir arka uçlar:\n"
 
-#: discover/main.cpp:208
+#: discover/main.cpp:215
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Kullanılabilir kipler:\n"
@@ -284,7 +289,7 @@ msgstr "Ekle"
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
 #: discover/qml/InstallApplicationButton.qml:46
 #: discover/qml/ProgressView.qml:144 discover/qml/SourcesPage.qml:201
-#: discover/qml/UpdatesPage.qml:281 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:307 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "İptal"
@@ -1437,34 +1442,34 @@ msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
 msgstr "Sorunu %1 Topluluğuna Bildir"
 
-#: discover/qml/UpdatesPage.qml:141
+#: discover/qml/UpdatesPage.qml:164
 #, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "Seçiliyi Güncelle"
 
-#: discover/qml/UpdatesPage.qml:141
+#: discover/qml/UpdatesPage.qml:164
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Tümünü Güncelle"
 
-#: discover/qml/UpdatesPage.qml:180
+#: discover/qml/UpdatesPage.qml:206
 #, kde-format
 msgid "Ignore"
 msgstr "Yok Say"
 
-#: discover/qml/UpdatesPage.qml:230
+#: discover/qml/UpdatesPage.qml:256
 #, kde-format
 msgid "Select All"
 msgstr "Tümünü Seç"
 
-#: discover/qml/UpdatesPage.qml:238
+#: discover/qml/UpdatesPage.qml:264
 #, kde-format
 msgid "Select None"
 msgstr "Seçimleri Kaldır"
 
-#: discover/qml/UpdatesPage.qml:257
+#: discover/qml/UpdatesPage.qml:283
 #, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
@@ -1472,46 +1477,46 @@ msgctxt ""
 msgid "On completion, automatically:"
 msgstr "Tamamlandığında şunu yap:"
 
-#: discover/qml/UpdatesPage.qml:262
+#: discover/qml/UpdatesPage.qml:288
 #, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
 msgstr "Bir eylem seç"
 
-#: discover/qml/UpdatesPage.qml:262
+#: discover/qml/UpdatesPage.qml:288
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
 msgstr "Yeniden başlat"
 
-#: discover/qml/UpdatesPage.qml:262
+#: discover/qml/UpdatesPage.qml:288
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr "Kapat"
 
-#: discover/qml/UpdatesPage.qml:271
+#: discover/qml/UpdatesPage.qml:297
 #, kde-format
 msgid "Total size: %1"
 msgstr "Toplam boyut: %1"
 
-#: discover/qml/UpdatesPage.qml:306
+#: discover/qml/UpdatesPage.qml:332
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
 msgstr "Yeniden Başlat ve Kur"
 
-#: discover/qml/UpdatesPage.qml:441
+#: discover/qml/UpdatesPage.qml:467
 #, kde-format
 msgid "Installing"
 msgstr "Kuruluyor"
 
-#: discover/qml/UpdatesPage.qml:472
+#: discover/qml/UpdatesPage.qml:498
 #, kde-format
 msgid "Update from:"
 msgstr "Güncelleme konumu:"
 
-#: discover/qml/UpdatesPage.qml:484
+#: discover/qml/UpdatesPage.qml:510
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1519,43 +1524,43 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:491
+#: discover/qml/UpdatesPage.qml:517
 #, kde-format
 msgid "More Information…"
 msgstr "Daha Fazla Bilgi…"
 
-#: discover/qml/UpdatesPage.qml:519
+#: discover/qml/UpdatesPage.qml:545
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Güncellemeler alınıyor…"
 
-#: discover/qml/UpdatesPage.qml:533
+#: discover/qml/UpdatesPage.qml:559
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Güncellemeler"
 
-#: discover/qml/UpdatesPage.qml:542
+#: discover/qml/UpdatesPage.qml:568
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr "Güncelleme sürecini tamamlamak için sistemi yeniden başlatın"
 
-#: discover/qml/UpdatesPage.qml:558 discover/qml/UpdatesPage.qml:565
-#: discover/qml/UpdatesPage.qml:572
+#: discover/qml/UpdatesPage.qml:584 discover/qml/UpdatesPage.qml:591
+#: discover/qml/UpdatesPage.qml:598
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Sisteminiz güncel"
 
-#: discover/qml/UpdatesPage.qml:579
+#: discover/qml/UpdatesPage.qml:605
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Güncellemeler denetlenmeli"
 
-#: discover/qml/UpdatesPage.qml:586
+#: discover/qml/UpdatesPage.qml:612
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
