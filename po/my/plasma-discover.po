@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-19 00:43+0000\n"
+"POT-Creation-Date: 2025-03-20 00:43+0000\n"
 "PO-Revision-Date: 2021-09-19 20:01+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -267,22 +267,22 @@ msgid "Add"
 msgstr "ထည့်သွင်းမည်"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
-#: discover/qml/InstallApplicationButton.qml:46
-#: discover/qml/ProgressView.qml:144 discover/qml/SourcesPage.qml:201
+#: discover/qml/InstallApplicationButton.qml:50
+#: discover/qml/ProgressView.qml:142 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:307 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "ပယ်ဖျက်မည်"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:359
+#: discover/qml/ApplicationPage.qml:366
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "အကဲဖြတ်ချက် %1ခု"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:359
+#: discover/qml/ApplicationPage.qml:366
 #, kde-format
 msgid "No ratings yet"
 msgstr "အကဲဖြတ်ချက်မရှိသေးပါ"
@@ -372,19 +372,19 @@ msgid ""
 "personal use."
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:137
+#: discover/qml/ApplicationPage.qml:142
 #, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:145
+#: discover/qml/ApplicationPage.qml:150
 #, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:161
+#: discover/qml/ApplicationPage.qml:166
 #, kde-format
 msgctxt ""
 "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu"
@@ -392,127 +392,127 @@ msgctxt ""
 msgid "From %1"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:177
+#: discover/qml/ApplicationPage.qml:182
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: discover/qml/ApplicationPage.qml:213
+#: discover/qml/ApplicationPage.qml:220
 #, fuzzy, kde-format
 #| msgid "Unable to load applications"
 msgctxt "@title:window"
 msgid "Share Link to Application"
 msgstr "အပ္ပလီကေးရှင်းများ မတင်သွင်းနိုင်ပါ"
 
-#: discover/qml/ApplicationPage.qml:222
+#: discover/qml/ApplicationPage.qml:229
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:323
+#: discover/qml/ApplicationPage.qml:330
 #, kde-format
 msgid "Unknown author"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:383
+#: discover/qml/ApplicationPage.qml:390
 #, fuzzy, kde-format
 #| msgid "Version:"
 msgid "Version:"
 msgstr "ဗားရှင်း -"
 
-#: discover/qml/ApplicationPage.qml:395
+#: discover/qml/ApplicationPage.qml:402
 #, kde-format
 msgid "Size:"
 msgstr "အရွယ်အစား -"
 
-#: discover/qml/ApplicationPage.qml:407
+#: discover/qml/ApplicationPage.qml:414
 #, fuzzy, kde-format
 #| msgid "License:"
 msgid "License:"
 msgid_plural "Licenses:"
 msgstr[0] "လိုင်စင် -"
 
-#: discover/qml/ApplicationPage.qml:414
+#: discover/qml/ApplicationPage.qml:421
 #, fuzzy, kde-format
 #| msgid "What's New"
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "ဘာထူးသလဲ"
 
-#: discover/qml/ApplicationPage.qml:418
+#: discover/qml/ApplicationPage.qml:425
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:470
+#: discover/qml/ApplicationPage.qml:477
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:495
+#: discover/qml/ApplicationPage.qml:502
 #, fuzzy, kde-format
 #| msgid "More…"
 msgid "See more…"
 msgid_plural "See more…"
 msgstr[0] "နောက်ထပ်…"
 
-#: discover/qml/ApplicationPage.qml:507
+#: discover/qml/ApplicationPage.qml:514
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:515
+#: discover/qml/ApplicationPage.qml:522
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:517
+#: discover/qml/ApplicationPage.qml:524
 #, fuzzy, kde-format
 #| msgid "%1"
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
 msgstr "%1"
 
-#: discover/qml/ApplicationPage.qml:531
+#: discover/qml/ApplicationPage.qml:538
 #, fuzzy, kde-format
 #| msgid "More…"
 msgid "See details"
 msgstr "နောက်ထပ်…"
 
-#: discover/qml/ApplicationPage.qml:555
+#: discover/qml/ApplicationPage.qml:562
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:699
+#: discover/qml/ApplicationPage.qml:706
 #, kde-format
 msgid "What's New"
 msgstr "ဘာထူးသလဲ"
 
-#: discover/qml/ApplicationPage.qml:733
+#: discover/qml/ApplicationPage.qml:740
 #, kde-format
 msgid "Reviews"
 msgstr "သုံးသပ်ချက်များ"
 
-#: discover/qml/ApplicationPage.qml:744
+#: discover/qml/ApplicationPage.qml:751
 #, fuzzy, kde-format
 #| msgid "Reviews for %1"
 msgid "Loading reviews for %1"
 msgstr "%1အတွက် သုံးသပ်ချက်များ"
 
-#: discover/qml/ApplicationPage.qml:753
+#: discover/qml/ApplicationPage.qml:760
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:775
+#: discover/qml/ApplicationPage.qml:782
 #, fuzzy, kde-format
 #| msgid "Show %1 Review…"
 #| msgid_plural "Show All %1 Reviews…"
@@ -520,68 +520,68 @@ msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "သုံးသပ်ချက် %1ခု ပြမည်…"
 
-#: discover/qml/ApplicationPage.qml:787
+#: discover/qml/ApplicationPage.qml:797
 #, kde-format
 msgid "Write a Review"
 msgstr "သုံးသပ်ချက်ရေးမည်"
 
-#: discover/qml/ApplicationPage.qml:787
+#: discover/qml/ApplicationPage.qml:797
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "သုံးသပ်ချက်ရေးရန် တပ်ဆင်ပါ"
 
-#: discover/qml/ApplicationPage.qml:809
+#: discover/qml/ApplicationPage.qml:819
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:827
+#: discover/qml/ApplicationPage.qml:837
 #, fuzzy, kde-format
 #| msgid "Documentation:"
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
 msgstr "ဒိုကူမန်တေးရှင်း -"
 
-#: discover/qml/ApplicationPage.qml:838
+#: discover/qml/ApplicationPage.qml:848
 #, fuzzy, kde-format
 #| msgid "Visit the app's website"
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "အပ်၏ဝက်ဘ်ဆိုက်သို့ သွားမည်"
 
-#: discover/qml/ApplicationPage.qml:848
+#: discover/qml/ApplicationPage.qml:858
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:858
+#: discover/qml/ApplicationPage.qml:868
 #, fuzzy, kde-format
 #| msgid "Report a problem"
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "ပြဿနာကို တင်ပြမည်"
 
-#: discover/qml/ApplicationPage.qml:868
+#: discover/qml/ApplicationPage.qml:878
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:897
+#: discover/qml/ApplicationPage.qml:907
 #, fuzzy, kde-format
 #| msgid "License:"
 msgid "All Licenses"
 msgstr "လိုင်စင် -"
 
-#: discover/qml/ApplicationPage.qml:935
+#: discover/qml/ApplicationPage.qml:945
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating"
 msgstr "အကဲဖြတ်ချက် ရေးသွင်းပါ"
 
-#: discover/qml/ApplicationPage.qml:958
+#: discover/qml/ApplicationPage.qml:968
 #, fuzzy, kde-format
 #| msgid "Submit usage information"
 msgctxt "@title:window"
@@ -962,13 +962,13 @@ msgstr "သင့်တုံ့ပြန်ချက်များကို �
 msgid "Participate…"
 msgstr "ပါဝင်ကူညီမည်…"
 
-#: discover/qml/InstallApplicationButton.qml:24
+#: discover/qml/InstallApplicationButton.qml:28
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
 msgstr "တင်သွင်းနေသည်…"
 
-#: discover/qml/InstallApplicationButton.qml:28
+#: discover/qml/InstallApplicationButton.qml:32
 #, fuzzy, kde-format
 #| msgctxt "Install the version of an app that comes from Snap, Flatpak, etc"
 #| msgid "Install from %1"
@@ -976,14 +976,14 @@ msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
 msgstr "%1မှ တပ်ဆင်မည်"
 
-#: discover/qml/InstallApplicationButton.qml:30
+#: discover/qml/InstallApplicationButton.qml:34
 #, fuzzy, kde-format
 #| msgid "Install"
 msgctxt "@action:button"
 msgid "Install"
 msgstr "တပ်ဆင်မည်"
 
-#: discover/qml/InstallApplicationButton.qml:32
+#: discover/qml/InstallApplicationButton.qml:36
 #, kde-format
 msgid "Remove"
 msgstr "ဖယ်ရှားမည်"
@@ -1003,24 +1003,24 @@ msgstr "'%1' အတွက်ရင်းမြစ်များ"
 msgid "Tasks (%1%)"
 msgstr "အလုပ်များ (%1%)"
 
-#: discover/qml/ProgressView.qml:18 discover/qml/ProgressView.qml:48
+#: discover/qml/ProgressView.qml:18 discover/qml/ProgressView.qml:46
 #, kde-format
 msgid "Tasks"
 msgstr "အလုပ်များ"
 
-#: discover/qml/ProgressView.qml:118
+#: discover/qml/ProgressView.qml:116
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3၊ %4 ကျန်"
 
-#: discover/qml/ProgressView.qml:126
+#: discover/qml/ProgressView.qml:124
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:133
+#: discover/qml/ProgressView.qml:131
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
