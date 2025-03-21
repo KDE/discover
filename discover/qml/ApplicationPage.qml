@@ -164,7 +164,7 @@ DiscoverPage {
         id: originsMenuAction
 
         text: i18nc("@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu\"", "From %1", appInfo.application.displayOrigin)
-        visible: children.length > 1
+        visible: children.length > 1 && !transactionListener.isActive
         children: sourcesGroup.actions
     }
 
