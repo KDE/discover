@@ -137,7 +137,10 @@ DiscoverPage {
     }
 
     property bool startHeadlessUpdate: false
-    function doStartHeadlessUpdate() {
+    function considerStartingHeadlessUpdate() {
+        if (!startHeadlessUpdate || !readyToUpdate) {
+            return;
+        }
         if (updateAction.enabled) {
             updateAction.trigger()
             app.quitWhenIdle();
@@ -149,15 +152,9 @@ DiscoverPage {
             console.warn("Waiting for updates")
         }
     }
-    onStartHeadlessUpdateChanged: if (startHeadlessUpdate) {
-        doStartHeadlessUpdate()
-    }
+    onStartHeadlessUpdateChanged: considerStartingHeadlessUpdate()
     readonly property bool readyToUpdate: !resourcesUpdatesModel.isProgressing && !resourcesUpdatesModel.isFetching
-    onReadyToUpdateChanged: {
-        if (readyToUpdate && startHeadlessUpdate) {
-            doStartHeadlessUpdate()
-        }
-    }
+    onReadyToUpdateChanged: considerStartingHeadlessUpdate()
     readonly property alias hasErrors: updateAction.hasErrors
     Kirigami.Action {
         id: updateAction
@@ -169,9 +166,7 @@ DiscoverPage {
 
         enabled: page.readyToUpdate && !hasErrors
         onEnabledChanged: enabled => {
-            if (enabled) {
-                page.doStartHeadlessUpdate()
-            }
+            page.considerStartingHeadlessUpdate()
         }
         onTriggered: resourcesUpdatesModel.updateAll()
     }
