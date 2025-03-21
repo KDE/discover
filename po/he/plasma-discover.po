@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-20 00:43+0000\n"
-"PO-Revision-Date: 2025-03-07 10:10+0200\n"
+"PO-Revision-Date: 2025-03-19 10:52+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -184,7 +184,7 @@ msgstr "הצגת כל האפשרויות הזמינות למשוב משתמש"
 #: discover/main.cpp:44
 #, kde-format
 msgid "Starts an update automatically, headless"
-msgstr ""
+msgstr "התחלת עדכון אוטומטי, בלי תצוגה"
 
 #: discover/main.cpp:46
 #, kde-format

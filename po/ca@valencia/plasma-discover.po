@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-20 00:43+0000\n"
-"PO-Revision-Date: 2025-03-07 09:34+0100\n"
+"PO-Revision-Date: 2025-03-19 08:47+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -198,7 +198,7 @@ msgstr "Llista les opcions disponibles per als comentaris dels usuaris"
 #: discover/main.cpp:44
 #, kde-format
 msgid "Starts an update automatically, headless"
-msgstr ""
+msgstr "Inicia una actualització automàticament, sense interfície gràfica"
 
 #: discover/main.cpp:46
 #, kde-format
