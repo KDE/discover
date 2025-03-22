@@ -226,9 +226,9 @@ void ResourcesUpdatesModel::updateAll()
             return;
         }
 
-        m_transaction = new UpdateTransaction(this, updaters);
-        m_transaction->setStatus(Transaction::SetupStatus);
-        setTransaction(m_transaction);
+        auto transaction = new UpdateTransaction(this, updaters);
+        transaction->setStatus(Transaction::SetupStatus);
+        setTransaction(transaction);
         TransactionModel::global()->addTransaction(m_transaction);
         for (AbstractBackendUpdater *upd : updaters) {
             QMetaObject::invokeMethod(upd, &AbstractBackendUpdater::start, Qt::QueuedConnection);
