@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2017, 2020, 2021, 2022, 2023, 2024 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2017, 2020, 2021, 2022, 2023, 2024, 2025 giovanni <g.sora@tiscali.it>
 # Giovanni Sora <g.sora@kheper.it>, 2017.
 # giovanni <g.sora@tiscali.it>, 2023, 2024.
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-10 02:54+0000\n"
-"PO-Revision-Date: 2024-11-05 14:45+0100\n"
+"PO-Revision-Date: 2025-03-21 18:19+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -978,7 +978,7 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
-"Un error interne occurreva. Profavor tu invia un reporto a https://bugs.kde."
+"Un error interne occurreva. Pro favor tu invia un reporto a https://bugs.kde."
 "org/enter_bug.cgi?product=Discover"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:445
@@ -2228,7 +2228,7 @@ msgid ""
 msgstr ""
 "Iste actualisation non pote esser completate proque illo removerea le "
 "software que es critic al operation de systema:<nl/><ul><li>%1</li></ul><nl/"
-">Si tuu crede que isto es un error, profavor tu reporta lo como un bug al "
+">Si tuu crede que isto es un error, pro favor tu reporta lo como un bug al "
 "impacchettator de tu distribution."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:607
@@ -2313,7 +2313,7 @@ msgid ""
 msgstr ""
 "Iste action non pote esser completate proque illo removerea le software que "
 "es critic al operation de systema:<nl/><ul><li>%1</li></ul><nl/>Si tuu crede "
-"que isto es un error, profavor tu reporta lo como un bug al impacchettator "
+"que isto es un error, pro favor tu reporta lo como un bug al impacchettator "
 "de tu distribution."
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:214
