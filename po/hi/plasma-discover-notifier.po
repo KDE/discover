@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-01 00:49+0000\n"
+"POT-Creation-Date: 2025-03-22 00:42+0000\n"
 "PO-Revision-Date: 2024-12-15 19:32+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Hindi <kde-i18n-doc@kde.org>\n"
@@ -18,76 +18,76 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Generator: Lokalize 24.08.2\n"
 
-#: notifier/DiscoverNotifier.cpp:176
+#: notifier/DiscoverNotifier.cpp:184
 #, kde-format
 msgid "View Updates"
 msgstr "अद्यतन देखें"
 
-#: notifier/DiscoverNotifier.cpp:287
+#: notifier/DiscoverNotifier.cpp:302
 #, kde-format
 msgid "Security updates available"
 msgstr "सुरक्षा अद्यतन उपलब्ध हैं"
 
-#: notifier/DiscoverNotifier.cpp:289
+#: notifier/DiscoverNotifier.cpp:304
 #, kde-format
 msgid "Updates available"
 msgstr "अद्यतन उपलब्ध हैं"
 
-#: notifier/DiscoverNotifier.cpp:291
+#: notifier/DiscoverNotifier.cpp:306
 #, kde-format
 msgid "System up to date"
 msgstr "तंत्र अद्यतित है"
 
-#: notifier/DiscoverNotifier.cpp:293
+#: notifier/DiscoverNotifier.cpp:308
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "कंप्यूटर को पुनरारंभ करने की आवश्यकता है"
 
-#: notifier/DiscoverNotifier.cpp:295
+#: notifier/DiscoverNotifier.cpp:310
 #, kde-format
 msgid "Offline"
 msgstr "ऑफ़लाइन"
 
-#: notifier/DiscoverNotifier.cpp:297
+#: notifier/DiscoverNotifier.cpp:312
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "उपस्थिति निरपेक्ष अद्यतन लागू हो रहें हैं…"
 
-#: notifier/DiscoverNotifier.cpp:322
+#: notifier/DiscoverNotifier.cpp:337
 #, kde-format
 msgid "Restart is required"
 msgstr "पुनरारंभ करना आवश्यक है।"
 
-#: notifier/DiscoverNotifier.cpp:323
+#: notifier/DiscoverNotifier.cpp:338
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "अद्यतनों को प्रभावी करने के लिए तंत्र को पुनरारंभ करना आवश्यक है"
 
-#: notifier/DiscoverNotifier.cpp:328
+#: notifier/DiscoverNotifier.cpp:343
 #, fuzzy, kde-format
 #| msgid "Computer needs to restart"
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "कंप्यूटर को पुनरारंभ करने की आवश्यकता है"
 
-#: notifier/DiscoverNotifier.cpp:329
+#: notifier/DiscoverNotifier.cpp:344
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:373
+#: notifier/DiscoverNotifier.cpp:388
 #, kde-format
 msgid "Upgrade available"
 msgstr "अपग्रेड उपलब्ध"
 
-#: notifier/DiscoverNotifier.cpp:374
+#: notifier/DiscoverNotifier.cpp:389
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:377
+#: notifier/DiscoverNotifier.cpp:392
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"

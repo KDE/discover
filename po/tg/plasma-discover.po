@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-20 00:43+0000\n"
+"POT-Creation-Date: 2025-03-22 00:42+0000\n"
 "PO-Revision-Date: 2020-08-27 11:51+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -268,7 +268,7 @@ msgstr "Илова кардан"
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
 #: discover/qml/InstallApplicationButton.qml:50
 #: discover/qml/ProgressView.qml:142 discover/qml/SourcesPage.qml:201
-#: discover/qml/UpdatesPage.qml:307 discover/qml/WebflowDialog.qml:41
+#: discover/qml/UpdatesPage.qml:302 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
 msgstr "Бекор кардан"
@@ -1391,36 +1391,36 @@ msgctxt "@action:button %1 is the name of the user's distro/OS"
 msgid "Report Issue to %1"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:164
+#: discover/qml/UpdatesPage.qml:161
 #, fuzzy, kde-format
 #| msgid "Update Selected"
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
 msgstr "Навсозӣ инихоб шуд"
 
-#: discover/qml/UpdatesPage.qml:164
+#: discover/qml/UpdatesPage.qml:161
 #, fuzzy, kde-format
 #| msgid "Update All"
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
 msgstr "Ҳамаро навсозӣ кардан"
 
-#: discover/qml/UpdatesPage.qml:206
+#: discover/qml/UpdatesPage.qml:201
 #, kde-format
 msgid "Ignore"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:256
+#: discover/qml/UpdatesPage.qml:251
 #, kde-format
 msgid "Select All"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:264
+#: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgid "Select None"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:283
+#: discover/qml/UpdatesPage.qml:278
 #, kde-format
 msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
@@ -1428,48 +1428,48 @@ msgctxt ""
 msgid "On completion, automatically:"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:288
+#: discover/qml/UpdatesPage.qml:283
 #, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:288
+#: discover/qml/UpdatesPage.qml:283
 #, fuzzy, kde-format
 #| msgid "Restart"
 msgctxt "@item:inlistbox"
 msgid "Restart"
 msgstr "Аз нав оғоз кардан"
 
-#: discover/qml/UpdatesPage.qml:288
+#: discover/qml/UpdatesPage.qml:283
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:297
+#: discover/qml/UpdatesPage.qml:292
 #, kde-format
 msgid "Total size: %1"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:332
+#: discover/qml/UpdatesPage.qml:327
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart to Install Updates Now"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:467
+#: discover/qml/UpdatesPage.qml:462
 #, kde-format
 msgid "Installing"
 msgstr "Дар ҳоли насбкунӣ"
 
-#: discover/qml/UpdatesPage.qml:498
+#: discover/qml/UpdatesPage.qml:493
 #, fuzzy, kde-format
 #| msgid "Update All"
 msgid "Update from:"
 msgstr "Ҳамаро навсозӣ кардан"
 
-#: discover/qml/UpdatesPage.qml:510
+#: discover/qml/UpdatesPage.qml:505
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1477,13 +1477,13 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:517
+#: discover/qml/UpdatesPage.qml:512
 #, fuzzy, kde-format
 #| msgid "More Information..."
 msgid "More Information…"
 msgstr "Маълумоти бештар..."
 
-#: discover/qml/UpdatesPage.qml:545
+#: discover/qml/UpdatesPage.qml:540
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Fetching updates..."
@@ -1491,32 +1491,32 @@ msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Дар ҳоли бозёбии навсозиҳо..."
 
-#: discover/qml/UpdatesPage.qml:559
+#: discover/qml/UpdatesPage.qml:554
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Навсозиҳо"
 
-#: discover/qml/UpdatesPage.qml:568
+#: discover/qml/UpdatesPage.qml:563
 #, kde-format
 msgctxt "@info"
 msgid "Restart the system to complete the update process"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:584 discover/qml/UpdatesPage.qml:591
-#: discover/qml/UpdatesPage.qml:598
+#: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
+#: discover/qml/UpdatesPage.qml:593
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Нав аст"
 
-#: discover/qml/UpdatesPage.qml:605
+#: discover/qml/UpdatesPage.qml:600
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Омодагии навсозиҳо бояд тафтиш карда шавад"
 
-#: discover/qml/UpdatesPage.qml:612
+#: discover/qml/UpdatesPage.qml:607
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
