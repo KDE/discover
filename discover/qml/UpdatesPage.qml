@@ -20,7 +20,7 @@ DiscoverPage {
 
     Discover.ResourcesUpdatesModel {
         id: resourcesUpdatesModel
-        onPassiveMessage: {
+        onPassiveMessage: message => {
             sheet.errorMessage = message;
             sheet.visible = true;
         }
