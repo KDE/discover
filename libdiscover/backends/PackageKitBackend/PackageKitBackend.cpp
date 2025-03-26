@@ -152,7 +152,7 @@ PackageKitBackend::PackageKitBackend(QObject *parent)
     t->start();
 
     connect(&m_details, &Delay::perform, this, &PackageKitBackend::performDetailsFetch);
-    connect(&m_details, &Delay::perform, this, [this](const QSet<QString> &pkgids) {
+    connect(&m_updateDetails, &Delay::perform, this, [this](const QSet<QString> &pkgids) {
         PackageKit::Transaction *t = PackageKit::Daemon::getUpdatesDetails(kSetToList(pkgids));
         connect(t,
                 &PackageKit::Transaction::updateDetail,
