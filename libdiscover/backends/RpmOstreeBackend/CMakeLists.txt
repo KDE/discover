@@ -1,7 +1,10 @@
 set(CMAKE_MODULE_PATH ${ECM_MODULE_DIR})
 
-# find_file(RpmOstreeDBusInterface org.projectatomic.rpmostree1.xml /usr/share/dbus-1/interfaces/)
-set(RpmOstreeDBusInterface org.projectatomic.rpmostree1.xml)
+if(RpmOstree_FOUND)
+    find_file(RpmOstreeDBusInterface org.projectatomic.rpmostree1.xml /usr/share/dbus-1/interfaces/)
+else()
+    set(RpmOstreeDBusInterface org.projectatomic.rpmostree1.xml)
+endif()
 qt_add_dbus_interface(RpmOstreeDBusInterface_SRCS ${RpmOstreeDBusInterface} RpmOstreeDBusInterface)
 
 set(rpm-ostree-backend_SRCS

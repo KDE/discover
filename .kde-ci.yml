@@ -39,3 +39,4 @@ RuntimeDependencies:
 
 Options:
  require-passing-tests-on: ['Linux', 'FreeBSD']
+ cmake-options: -DBUILD_RpmOstreeBackend=ON

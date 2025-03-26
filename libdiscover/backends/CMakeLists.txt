@@ -78,8 +78,8 @@ if (BUILD_FwupdBackend AND TARGET PkgConfig::Fwupd)
     add_subdirectory(FwupdBackend)
 endif()
 
-option(BUILD_RpmOstreeBackend "Build rpm-ostree support." "ON")
-if (BUILD_RpmOstreeBackend AND Ostree_FOUND AND RpmOstree_FOUND)
+option(BUILD_RpmOstreeBackend "Build rpm-ostree support." "${RpmOstree_FOUND}")
+if (BUILD_RpmOstreeBackend AND Ostree_FOUND)
     add_subdirectory(RpmOstreeBackend)
 endif()
 
