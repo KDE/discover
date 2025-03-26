@@ -61,16 +61,41 @@ void SteamOSTest::initTestCase()
     }
 
     // Check both MockServer and dbus interface to Version are working
-    Q_ASSERT(m_server->currentVersion() == TEST_VERSION);
-    Q_ASSERT(m_adaptor->currentVersion() == TEST_VERSION);
+    Q_ASSERT(m_server->currentVersion() == TEST_CURRENT_VERSION);
+    Q_ASSERT(m_adaptor->currentVersion() == TEST_CURRENT_VERSION);
 
     // Check buildid also
-    Q_ASSERT(m_server->currentBuildID() == TEST_BUILDID);
-    Q_ASSERT(m_adaptor->currentBuildID() == TEST_BUILDID);
+    Q_ASSERT(m_server->currentBuildID() == TEST_CURRENT_BUILDID);
+    Q_ASSERT(m_adaptor->currentBuildID() == TEST_CURRENT_BUILDID);
 
     // Check branch next
-    Q_ASSERT(m_server->branch() == TEST_BRANCH);
-    Q_ASSERT(m_adaptor->branch() == TEST_BRANCH);
+    Q_ASSERT(m_server->branch() == TEST_CURRENT_BRANCH);
+    Q_ASSERT(m_adaptor->branch() == TEST_CURRENT_BRANCH);
+
+    // Next test default status
+    Q_ASSERT(m_server->updateStatus() == AU_UPDATE_STATUS_IDLE);
+    Q_ASSERT(m_adaptor->updateStatus() == AU_UPDATE_STATUS_IDLE);
+
+    // Now wait until it's done checking for updates
+    while (m_appBackend->fetchingUpdatesProgress() < 100) {
+        QCoreApplication::processEvents();
+    }
 }
 
+void SteamOSTest::testUpdateInProgress()
+{
+    // Then change it and check change stuck.
+    m_server->setUpdateStatus(AU_UPDATE_STATUS_IN_PROGRESS);
+    Q_ASSERT(m_server->updateStatus() == AU_UPDATE_STATUS_IN_PROGRESS);
+    Q_ASSERT(m_adaptor->updateStatus() == AU_UPDATE_STATUS_IN_PROGRESS);
+
+    // Now check the steamos backend's reaction matches
+    QSignalSpy spyNewTransaction(TransactionModel::global(), &TransactionModel::transactionAdded);
+    m_server->setUpdatesAvailable(true);
+    m_appBackend->checkForUpdates();
+
+    spyNewTransaction.wait(std::chrono::seconds(1));
+
+    QCOMPARE(spyNewTransaction.count(), 1);
+}
 QTEST_GUILESS_MAIN(SteamOSTest)

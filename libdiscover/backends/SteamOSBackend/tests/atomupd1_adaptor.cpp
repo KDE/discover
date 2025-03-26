@@ -26,6 +26,7 @@
 Atomupd1Adaptor::Atomupd1Adaptor(QObject *parent)
     : QDBusAbstractAdaptor(parent)
 {
+    qDBusRegisterMetaType<VariantMapMap>();
     // constructor
     setAutoRelaySignals(true);
 }

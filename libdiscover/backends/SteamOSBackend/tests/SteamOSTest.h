@@ -30,6 +30,8 @@ public:
 private Q_SLOTS:
     void initTestCase();
 
+    void testUpdateInProgress();
+
 private:
     ResourcesModel *m_model;
     AbstractResourcesBackend *m_appBackend;
