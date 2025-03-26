@@ -33,10 +33,6 @@ class RpmOstreeBackend : public AbstractResourcesBackend
 public:
     explicit RpmOstreeBackend(QObject *parent = nullptr);
 
-    /* Convenience function to set the fetching status and emit the
-     * corresponding signal */
-    void setFetching(bool);
-
     int updatesCount() const override;
     AbstractBackendUpdater *backendUpdater() const override;
     AbstractReviewsBackend *reviewsBackend() const override;
@@ -49,7 +45,8 @@ public:
     Transaction *installApplication(AbstractResource *, const AddonList &) override;
     Transaction *removeApplication(AbstractResource *) override;
 
-    bool isFetching() const override;
+    int fetchingUpdatesProgress() const override;
+
     void checkForUpdates() override;
     QString displayName() const override;
     bool hasApplications() const override;

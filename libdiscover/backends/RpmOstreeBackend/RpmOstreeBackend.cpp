@@ -41,9 +41,6 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
         return;
     }
 
-    // Signal that we're fetching ostree deployments
-    setFetching(true);
-
     // List configured remotes and display them in the settings page.
     // We can do this early as this does not depend on the rpm-ostree daemon.
     SourcesModel::global()->addSourcesBackend(new RpmOstreeSourcesBackend(this));
@@ -140,7 +137,6 @@ void RpmOstreeBackend::initializeBackend()
     // Look for a potentially already in-progress rpm-ostree transaction that
     // was started outside of Discover
     if (hasExternalTransaction()) {
-        setFetching(false);
         return;
     }
 
@@ -151,10 +147,6 @@ void RpmOstreeBackend::initializeBackend()
 
 void RpmOstreeBackend::refreshDeployments()
 {
-    // Set fetching in all cases but record the state to decide if we should undo it at the end
-    bool wasFetching = isFetching();
-    setFetching(true);
-
     // Get the path for the curently booted OS DBus interface.
     m_bootedObjectPath = m_interface->booted().path();
 
@@ -193,10 +185,8 @@ void RpmOstreeBackend::refreshDeployments()
     // The number of updates might have changed if we're called after an update
     Q_EMIT updatesCountChanged();
 
-    // Only undo the fetching state if we set it up in this function
-    if (!wasFetching) {
-        setFetching(false);
-    }
+    // Signal that the available resources might have changed
+    Q_EMIT contentsChanged();
 }
 
 void RpmOstreeBackend::transactionStatusChanged(Transaction::Status status)
@@ -206,7 +196,6 @@ void RpmOstreeBackend::transactionStatusChanged(Transaction::Status status)
     case Transaction::Status::DoneWithErrorStatus:
     case Transaction::Status::CancelledStatus:
         m_transaction = nullptr;
-        setFetching(false);
         break;
     default:
         // Ignore all other status changes
@@ -217,6 +206,7 @@ void RpmOstreeBackend::transactionStatusChanged(Transaction::Status status)
 void RpmOstreeBackend::setupTransaction(RpmOstreeTransaction::Operation op, QString arg)
 {
     m_transaction = new RpmOstreeTransaction(this, m_currentlyBootedDeployment, m_interface, op, arg);
+    connect(m_transaction, &RpmOstreeTransaction::progressChanged, this, &RpmOstreeBackend::fetchingUpdatesProgressChanged);
     connect(m_transaction, &RpmOstreeTransaction::statusChanged, this, &RpmOstreeBackend::transactionStatusChanged);
     connect(m_transaction, &RpmOstreeTransaction::deploymentsUpdated, this, &RpmOstreeBackend::refreshDeployments);
     connect(m_transaction, &RpmOstreeTransaction::lookForNextMajorVersion, this, &RpmOstreeBackend::lookForNextMajorVersion);
@@ -249,14 +239,12 @@ void RpmOstreeBackend::checkForUpdates()
     if (!m_currentlyBootedDeployment) {
         // Should never happen
         qWarning() << "rpm-ostree-backend: Called checkForUpdates before the backend is done getting deployments. File a bug to your distribution.";
-        setFetching(false);
         return;
     }
 
     if (!m_currentlyBootedDeployment->isClassic() && !m_currentlyBootedDeployment->isOCI()) {
         // May happen, but there is nothing we can do here
         qWarning() << "rpm-ostree-backend: Ignoring update checks for unknown ostree format.";
-        setFetching(false);
         return;
     }
 
@@ -267,7 +255,6 @@ void RpmOstreeBackend::checkForUpdates()
     }
 
     // We're fetching updates
-    setFetching(true);
 
     setupTransaction(RpmOstreeTransaction::CheckForUpdate);
     connect(m_transaction, &RpmOstreeTransaction::newVersionFound, [this](QString newVersion) {
@@ -560,17 +547,9 @@ AbstractReviewsBackend *RpmOstreeBackend::reviewsBackend() const
     return nullptr;
 }
 
-bool RpmOstreeBackend::isFetching() const
+int RpmOstreeBackend::fetchingUpdatesProgress() const
 {
-    return m_fetching;
-}
-
-void RpmOstreeBackend::setFetching(bool fetching)
-{
-    if (m_fetching != fetching) {
-        m_fetching = fetching;
-        Q_EMIT fetchingChanged();
-    }
+    return m_transaction ? m_transaction->progress() : 100;
 }
 
 #include "RpmOstreeBackend.moc"
