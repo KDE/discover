@@ -9,7 +9,6 @@
  */
 
 #include "atomupd1_adaptor.h"
-#include "mock_server.h"
 #include <QtCore/QByteArray>
 #include <QtCore/QList>
 #include <QtCore/QMap>
@@ -17,6 +16,8 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 #include <QtCore/QVariant>
+
+#include "mock_server.h"
 
 /*
  * Implementation of adaptor class Atomupd1Adaptor
@@ -68,6 +69,12 @@ QString Atomupd1Adaptor::failureMessage() const
 {
     // get the value of property FailureMessage
     return qvariant_cast<QString>(parent()->property("FailureMessage"));
+}
+
+HTTPProxy Atomupd1Adaptor::httpProxy() const
+{
+    // get the value of property HttpProxy
+    return qvariant_cast<HTTPProxy>(parent()->property("HttpProxy"));
 }
 
 QStringList Atomupd1Adaptor::knownBranches() const
@@ -142,10 +149,28 @@ VariantMapMap Atomupd1Adaptor::CheckForUpdates(const QVariantMap &options, Varia
     return static_cast<MockServer *>(parent())->CheckForUpdates(options, updates_available_later);
 }
 
+void Atomupd1Adaptor::DisableHttpProxy()
+{
+    // handle method call com.steampowered.Atomupd1.DisableHttpProxy
+    QMetaObject::invokeMethod(parent(), "DisableHttpProxy");
+}
+
+void Atomupd1Adaptor::EnableHttpProxy(const QString &address, int port, const QVariantMap &options)
+{
+    // handle method call com.steampowered.Atomupd1.EnableHttpProxy
+    QMetaObject::invokeMethod(parent(), "EnableHttpProxy", Q_ARG(QString, address), Q_ARG(int, port), Q_ARG(QVariantMap, options));
+}
+
 void Atomupd1Adaptor::PauseUpdate()
 {
     // handle method call com.steampowered.Atomupd1.PauseUpdate
     QMetaObject::invokeMethod(parent(), "PauseUpdate");
+}
+
+void Atomupd1Adaptor::ReloadConfiguration(const QVariantMap &options)
+{
+    // handle method call com.steampowered.Atomupd1.ReloadConfiguration
+    QMetaObject::invokeMethod(parent(), "ReloadConfiguration", Q_ARG(QVariantMap, options));
 }
 
 void Atomupd1Adaptor::ResumeUpdate()

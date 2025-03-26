@@ -38,7 +38,7 @@
         Version:
 
         The version of this interface implemented by this object.
-        This file documents version 4 of the interface.
+        This file documents version 6 of the interface.
     -->
     <property name="Version" type="u" access="read"/>
 
@@ -128,6 +128,20 @@
     </property>
 
     <!--
+        HttpProxy:
+
+        Tuple that represents the HTTP proxy settings. The content is:
+          - A string (s): The HTTP proxy address
+          - An integer (i): The HTTP proxy port number
+        If no proxy is set, the address is the empty string "" and the port number
+        is zero.
+    -->
+    <property name="HttpProxy" type="(si)" access="read">
+      <annotation name="org.qtproject.QtDBus.QtTypeName" value="HTTPProxy"/>
+      <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+    </property>
+
+    <!--
         FailureCode:
 
         A D-Bus error name like `org.freedesktop.DBus.Failed`, or the empty string
@@ -181,21 +195,10 @@
               Estimated download size, in Bytes, to perform the update.
             </para></listitem>
           </varlistentry>
-          <varlistentry>
-            <term>update_type u</term>
-            <listitem><para>
-              An enum representing the update type.
-              Possible values are:
-              <simplelist>
-                <member>0: MINOR_UPDATE</member>
-                <member>1: MAJOR_UPDATE</member>
-              </simplelist>
-            </para></listitem>
-          </varlistentry>
         </variablelist>
     -->
     <property name="UpdatesAvailable" type="a{sa{sv}}" access="read">
-        <annotation name="org.qtproject.QtDBus.QtTypeName" type="a{sa{sv}}" value="VariantMapMap"/>
+        <annotation name="org.qtproject.QtDBus.QtTypeName" value="VariantMapMap"/>
     </property>
 
     <!--
@@ -223,7 +226,7 @@
         with a system running the version specified in the `requires` key.
     -->
     <property name="UpdatesAvailableLater" type="a{sa{sv}}" access="read">
-        <annotation name="org.qtproject.QtDBus.QtTypeName" type="a{sa{sv}}" value="VariantMapMap"/>
+        <annotation name="org.qtproject.QtDBus.QtTypeName" value="VariantMapMap"/>
     </property>
 
     <!--
@@ -264,6 +267,15 @@
         be chosen.
     -->
     <property name="KnownBranches" type="as" access="read"/>
+
+    <!--
+        ReloadConfiguration:
+          @options: Reserved for future use
+    -->
+    <method name="ReloadConfiguration">
+      <arg type="a{sv}" name="options" direction="in"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.In0" value="QVariantMap"/>
+    </method>
 
     <!--
         SwitchToVariant:
@@ -309,9 +321,9 @@
       <arg type="a{sv}" name="options" direction="in"/>
       <arg type="a{sa{sv}}" name="updates_available" direction="out"/>
       <arg type="a{sa{sv}}" name="updates_available_later" direction="out"/>
-      <annotation name="org.qtproject.QtDBus.QtTypeName.In0" type="a{sv}" value="QVariantMap"/>
-      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" type="a{sa{sv}}" value="VariantMapMap"/>
-      <annotation name="org.qtproject.QtDBus.QtTypeName.Out1" type="a{sa{sv}}" value="VariantMapMap"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.In0" value="QVariantMap"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="VariantMapMap"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out1" value="VariantMapMap"/>
     </method>
 
     <!--
@@ -352,6 +364,29 @@
         Cancel the update that is currently in progress, if any.
     -->
     <method name="CancelUpdate">
+    </method>
+
+    <!--
+        EnableHttpProxy:
+        @address: HTTP proxy address
+        @port: HTTP proxy port number
+        @options: Reserved for future use
+
+        Set the HTTP/HTTPS proxy settings to use when checking and applying system updates.
+    -->
+    <method name="EnableHttpProxy">
+      <arg type="s" name="address" direction="in"/>
+      <arg type="i" name="port" direction="in"/>
+      <arg type="a{sv}" name="options" direction="in"/>
+      <annotation name="org.qtproject.QtDBus.QtTypeName.In2" value="QVariantMap"/>
+    </method>
+
+    <!--
+        DisableHttpProxy:
+
+        Remove the HTTP/HTTPS proxy settings, if any.
+    -->
+    <method name="DisableHttpProxy">
     </method>
 
   </interface>

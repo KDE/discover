@@ -12,11 +12,10 @@
 #ifndef ATOMUPD1_ADAPTOR_H
 #define ATOMUPD1_ADAPTOR_H
 
+#include "../dbushelpers.h"
 #include <QtCore/QObject>
 #include <QtCore/qcontainerfwd.h>
 #include <QtDBus/QtDBus>
-
-#include "dbushelpers.h"
 
 /*
  * Adaptor class for interface com.steampowered.Atomupd1
@@ -46,6 +45,10 @@ class Atomupd1Adaptor : public QDBusAbstractAdaptor
                 "    <property access=\"read\" type=\"s\" name=\"Branch\">\n"
                 "      <annotation value=\"true\" name=\"org.freedesktop.DBus.Property.EmitsChangedSignal\"/>\n"
                 "    </property>\n"
+                "    <property access=\"read\" type=\"(si)\" name=\"HttpProxy\">\n"
+                "      <annotation value=\"HTTPProxy\" name=\"org.qtproject.QtDBus.QtTypeName\"/>\n"
+                "      <annotation value=\"true\" name=\"org.freedesktop.DBus.Property.EmitsChangedSignal\"/>\n"
+                "    </property>\n"
                 "    <property access=\"read\" type=\"s\" name=\"FailureCode\">\n"
                 "      <annotation value=\"true\" name=\"org.freedesktop.DBus.Property.EmitsChangedSignal\"/>\n"
                 "    </property>\n"
@@ -62,6 +65,10 @@ class Atomupd1Adaptor : public QDBusAbstractAdaptor
                 "    <property access=\"read\" type=\"s\" name=\"CurrentBuildID\"/>\n"
                 "    <property access=\"read\" type=\"as\" name=\"KnownVariants\"/>\n"
                 "    <property access=\"read\" type=\"as\" name=\"KnownBranches\"/>\n"
+                "    <method name=\"ReloadConfiguration\">\n"
+                "      <arg direction=\"in\" type=\"a{sv}\" name=\"options\"/>\n"
+                "      <annotation value=\"QVariantMap\" name=\"org.qtproject.QtDBus.QtTypeName.In0\"/>\n"
+                "    </method>\n"
                 "    <method name=\"SwitchToVariant\">\n"
                 "      <arg direction=\"in\" type=\"s\" name=\"variant\"/>\n"
                 "    </method>\n"
@@ -82,6 +89,13 @@ class Atomupd1Adaptor : public QDBusAbstractAdaptor
                 "    <method name=\"PauseUpdate\"/>\n"
                 "    <method name=\"ResumeUpdate\"/>\n"
                 "    <method name=\"CancelUpdate\"/>\n"
+                "    <method name=\"EnableHttpProxy\">\n"
+                "      <arg direction=\"in\" type=\"s\" name=\"address\"/>\n"
+                "      <arg direction=\"in\" type=\"i\" name=\"port\"/>\n"
+                "      <arg direction=\"in\" type=\"a{sv}\" name=\"options\"/>\n"
+                "      <annotation value=\"QVariantMap\" name=\"org.qtproject.QtDBus.QtTypeName.In2\"/>\n"
+                "    </method>\n"
+                "    <method name=\"DisableHttpProxy\"/>\n"
                 "  </interface>\n"
                 "")
 public:
@@ -106,6 +120,9 @@ public: // PROPERTIES
 
     Q_PROPERTY(QString FailureMessage READ failureMessage)
     QString failureMessage() const;
+
+    Q_PROPERTY(HTTPProxy HttpProxy READ httpProxy)
+    HTTPProxy httpProxy() const;
 
     Q_PROPERTY(QStringList KnownBranches READ knownBranches)
     QStringList knownBranches() const;
@@ -140,7 +157,10 @@ public: // PROPERTIES
 public Q_SLOTS: // METHODS
     void CancelUpdate();
     VariantMapMap CheckForUpdates(const QVariantMap &options, VariantMapMap &updates_available_later);
+    void DisableHttpProxy();
+    void EnableHttpProxy(const QString &address, int port, const QVariantMap &options);
     void PauseUpdate();
+    void ReloadConfiguration(const QVariantMap &options);
     void ResumeUpdate();
     void StartUpdate(const QString &id);
     void SwitchToBranch(const QString &branch);
