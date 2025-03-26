@@ -57,6 +57,10 @@ Kirigami.ApplicationWindow {
         source: "Feedback.qml"
     }
 
+    Kirigami.PagePool {
+        id: globalPool
+    }
+
     TopLevelPageData {
         id: featuredAction
         icon.name: "go-home"
@@ -488,7 +492,7 @@ Kirigami.ApplicationWindow {
     onCurrentTopLevelChanged: {
         pageStack.clear();
         if (currentTopLevel) {
-            const pageUrl = Qt.resolvedUrl(currentTopLevel);
+            const pageUrl = globalPool.loadPage(currentTopLevel);
             pageStack.push(pageUrl);
         }
         globalDrawer.forceSearchFieldFocus();
