@@ -197,7 +197,7 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
 
 QString SystemdSysupdateBackend::displayName() const
 {
-    return QStringLiteral("Systemd SysUpdate");
+    return AppStreamIntegration::global()->osRelease()->prettyName();
 }
 
 void SystemdSysupdateBackend::beginFetch()
