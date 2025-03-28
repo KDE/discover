@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# SPDX-FileCopyrightText: 2024 Toms Trasuns <toms.trasuns@posteo.net>
+# SPDX-FileCopyrightText: 2024, 2025 Toms Trasuns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-22 00:42+0000\n"
-"PO-Revision-Date: 2024-08-22 12:17+0300\n"
+"PO-Revision-Date: 2025-03-26 16:44+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: notifier/DiscoverNotifier.cpp:184
 #, kde-format
@@ -103,10 +103,9 @@ msgid "System update status notifier"
 msgstr "Sistēmas atjauninājumu statusa paziņotājs"
 
 #: notifier/main.cpp:43
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010—2024 „Plasma“ izstrādātāju komanda"
+msgstr "© 2010—2025 „Plasma“ izstrādātāju komanda"
 
 #: notifier/main.cpp:47
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-15 00:43+0000\n"
-"PO-Revision-Date: 2025-02-18 18:55+0200\n"
+"PO-Revision-Date: 2025-03-26 16:46+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -659,10 +659,9 @@ msgid "Sound system access"
 msgstr "Piekļuve skaņas sistēmai"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
-#, fuzzy, kde-format
-#| msgid "Can play audio"
+#, kde-format
 msgid "Can play and record audio"
-msgstr "Var atskaņot skaņu"
+msgstr "Var atskaņot un ierakstīt skaņu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
