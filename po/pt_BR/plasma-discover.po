@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-22 00:42+0000\n"
-"PO-Revision-Date: 2025-03-10 00:38-0300\n"
-"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
+"PO-Revision-Date: 2025-03-28 01:41-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -199,7 +199,7 @@ msgstr "Lista as opções disponíveis para os comentários dos usuários"
 #: discover/main.cpp:44
 #, kde-format
 msgid "Starts an update automatically, headless"
-msgstr ""
+msgstr "Inicia uma atualização automaticamente, sem interface gráfica"
 
 #: discover/main.cpp:46
 #, kde-format
