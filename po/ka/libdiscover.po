@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-15 00:43+0000\n"
+"POT-Creation-Date: 2025-03-30 00:43+0000\n"
 "PO-Revision-Date: 2025-02-20 07:35+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1226,7 +1226,7 @@ msgid "Cannot remove '%1'"
 msgstr "%1-ის წაშლის შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:368
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:355
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1245,7 +1245,7 @@ msgid "Upgrade Now"
 msgstr "განაახლეთ ახლა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:378
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2338,34 +2338,34 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "ოპერაციული სისტემა"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:169
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree: ნაპოვნია მრავალჩატვირთვადი გაშლები. შეავსეთ შეცდომის ანგარიში."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:181
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree: ჩატვირთული გაშლა ნაპოვნი არაა. შეავსეთ შეცდომის ანგარიში."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:376
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "ვერსიის აწევის დაწყება…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:508
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "მიმდინარე ვერსიაში განახლებები ჯერ კიდევ მორჩენილია. მაინც ვაგრძელებ."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:524
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:511
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "ძირითად ვერსიაზე გადასვლისთვის საჭიროა უახლეს ვერსიამდე განახლება"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:532
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:519
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
