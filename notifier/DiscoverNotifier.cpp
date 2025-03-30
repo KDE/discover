@@ -244,6 +244,27 @@ bool DiscoverNotifier::isSystemUpdateable() const
     return updateable;
 }
 
+void DiscoverNotifier::startUnattendedUpdates()
+{
+    auto process = new QProcess(this);
+    connect(process, &QProcess::errorOccurred, this, [](QProcess::ProcessError error) {
+        qWarning() << "Error running plasma-discover" << error;
+    });
+    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
+        qDebug() << "Finished running plasma-discover" << exitCode << exitStatus;
+        process->deleteLater();
+        if (exitCode == 0) {
+            settings()->setLastUnattendedTrigger(QDateTime::currentDateTimeUtc());
+        }
+        settings()->save();
+        setBusy(false);
+    });
+
+    setBusy(true);
+    process->start(QStringLiteral("plasma-discover"), {QStringLiteral("--headless-update")});
+    qInfo() << "started unattended update" << QDateTime::currentDateTimeUtc();
+}
+
 void DiscoverNotifier::refreshUnattended()
 {
     m_settings->read();

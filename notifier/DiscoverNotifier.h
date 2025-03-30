@@ -70,6 +70,7 @@ public:
     {
         return m_settings.get();
     }
+    void startUnattendedUpdates();
 
 public Q_SLOTS:
     void recheckSystemUpdateNeededAndNotifyApp();

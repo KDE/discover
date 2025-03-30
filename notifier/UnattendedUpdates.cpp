@@ -62,21 +62,7 @@ void UnattendedUpdates::triggerUpdate(int timeoutId)
         return;
     }
 
-    auto process = new QProcess(this);
-    connect(process, &QProcess::errorOccurred, this, [](QProcess::ProcessError error) {
-        qWarning() << "Error running plasma-discover" << error;
-    });
-    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
-        qDebug() << "Finished running plasma-discover" << exitCode << exitStatus;
-        process->deleteLater();
-        m_notifier->settings()->setLastUnattendedTrigger(QDateTime::currentDateTimeUtc());
-        m_notifier->settings()->save();
-        m_notifier->setBusy(false);
-    });
-
-    m_notifier->setBusy(true);
-    process->start(QStringLiteral("plasma-discover"), {QStringLiteral("--headless-update")});
-    qInfo() << "started unattended update" << QDateTime::currentDateTimeUtc();
+    m_notifier->startUnattendedUpdates();
 }
 
 UnattendedUpdates::IdleHandle::IdleHandle(const std::chrono::milliseconds &idleTimeout)
