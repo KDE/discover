@@ -32,15 +32,20 @@ void NotifierItem::setupNotifierItem()
 
     QMenu *menu = new QMenu;
     connect(m_item, &QObject::destroyed, menu, &QObject::deleteLater);
-    auto discoverAction = menu->addAction(QIcon::fromTheme(QStringLiteral("plasmadiscover")), i18n("Open Discover…"));
+    auto discoverAction = menu->addAction(QIcon::fromTheme(QStringLiteral("plasmadiscover")),
+                                          i18nc("@action:button Opens Discover's main UI to analyze the updates", "Open Discover…"));
     connect(discoverAction, &QAction::triggered, &m_notifier, [this] {
-        m_notifier.showDiscover(m_item->providedToken());
+        // If there's updates open directly on the updates page, otherwise show the main page
+        if (m_notifier.hasUpdates() || m_notifier.hasSecurityUpdates()) {
+            m_notifier.showDiscoverUpdates(m_item->providedToken());
+        } else {
+            m_notifier.showDiscover(m_item->providedToken());
+        }
     });
 
-    auto updatesAction = menu->addAction(QIcon::fromTheme(QStringLiteral("system-software-update")), i18n("See Updates…"));
-    connect(updatesAction, &QAction::triggered, &m_notifier, [this] {
-        m_notifier.showDiscoverUpdates(m_item->providedToken());
-    });
+    auto updatesAction =
+        menu->addAction(QIcon::fromTheme(QStringLiteral("system-software-update")), i18nc("@action:button Starts an update in the background", "Start Update"));
+    connect(updatesAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::startUnattendedUpdates);
 
     auto refreshAction = menu->addAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18n("Refresh…"));
     connect(refreshAction, &QAction::triggered, &m_notifier, &DiscoverNotifier::recheckSystemUpdateNeededAndNotifyApp);
