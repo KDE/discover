@@ -15,6 +15,7 @@
 #include <QList>
 #include <QNetworkReply>
 #include <QtPreprocessorSupport>
+#include <appstream/AppStreamIntegration.h>
 #include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
 
