@@ -34,4 +34,5 @@ private:
     void triggerUpdate(int timeoutId);
 
     std::optional<IdleHandle> m_idleTimeoutId;
+    DiscoverNotifier *const m_notifier;
 };

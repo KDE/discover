@@ -27,6 +27,7 @@ class DiscoverNotifier : public QObject
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
     Q_PROPERTY(bool needsReboot READ needsReboot NOTIFY needsRebootChanged)
     Q_PROPERTY(bool busy READ isBusy NOTIFY busyChanged)
+    Q_PROPERTY(bool isSystemUpdateable READ isSystemUpdateable NOTIFY stateChanged)
 public:
     enum State {
         NoUpdates,
@@ -52,6 +53,7 @@ public:
     {
         return m_hasSecurityUpdates;
     }
+    bool isSystemUpdateable() const;
 
     QStringList loadedModules() const;
     bool needsReboot() const

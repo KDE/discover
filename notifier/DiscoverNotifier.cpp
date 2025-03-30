@@ -236,6 +236,14 @@ static bool isConnectionAdequate()
     }
 }
 
+bool DiscoverNotifier::isSystemUpdateable() const
+{
+    const bool updateable = !m_isBusy && isOnline() && (m_hasSecurityUpdates || m_hasUpdates);
+    qCDebug(NOTIFIER) << "isSystemUpdateable:" << updateable << "isBusy:" << m_isBusy << "isOnline:" << isOnline() << "securityUpdates:" << m_hasSecurityUpdates
+                      << "otherUpdates:" << m_hasUpdates;
+    return updateable;
+}
+
 void DiscoverNotifier::refreshUnattended()
 {
     m_settings->read();

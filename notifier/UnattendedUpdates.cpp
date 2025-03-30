@@ -15,6 +15,7 @@
 
 UnattendedUpdates::UnattendedUpdates(DiscoverNotifier *parent)
     : QObject()
+    , m_notifier(parent)
 {
     connect(parent, &DiscoverNotifier::stateChanged, this, &UnattendedUpdates::checkNewState);
     connect(KIdleTime::instance(), QOverload<int, int>::of(&KIdleTime::timeoutReached), this, &UnattendedUpdates::triggerUpdate);
@@ -25,16 +26,15 @@ UnattendedUpdates::UnattendedUpdates(DiscoverNotifier *parent)
 void UnattendedUpdates::checkNewState()
 {
     using namespace std::chrono_literals;
-    DiscoverNotifier *notifier = static_cast<DiscoverNotifier *>(parent());
 
     // Only allow offline updating every 3h. It should keep some peace to our users, especially on rolling distros
-    const QDateTime updateableTime = notifier->settings()->lastUnattendedTrigger().addSecs(std::chrono::seconds(3h).count());
+    const QDateTime updateableTime = m_notifier->settings()->lastUnattendedTrigger().addSecs(std::chrono::seconds(3h).count());
     if (updateableTime > QDateTime::currentDateTimeUtc()) {
-        qDebug() << "skipping update, already updated on" << notifier->settings()->lastUnattendedTrigger().toString();
+        qDebug() << "skipping update, already updated on" << m_notifier->settings()->lastUnattendedTrigger().toString();
         return;
     }
 
-    const bool doTrigger = notifier->hasUpdates() && !notifier->isBusy();
+    const bool doTrigger = m_notifier->isSystemUpdateable();
     if (doTrigger && !m_idleTimeoutId.has_value()) {
         qDebug() << "waiting for an idle moment";
         // If the system is untouched for 1 minute, trigger the unattended update.
@@ -57,8 +57,8 @@ void UnattendedUpdates::triggerUpdate(int timeoutId)
 
     m_idleTimeoutId.reset();
 
-    DiscoverNotifier *notifier = static_cast<DiscoverNotifier *>(parent());
-    if (!notifier->hasUpdates() || notifier->isBusy()) {
+    if (!m_notifier->isSystemUpdateable()) {
+        qWarning() << "Refusing to start unattended update because of state" << m_notifier->state();
         return;
     }
 
@@ -68,14 +68,13 @@ void UnattendedUpdates::triggerUpdate(int timeoutId)
     });
     connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
         qDebug() << "Finished running plasma-discover" << exitCode << exitStatus;
-        DiscoverNotifier *notifier = static_cast<DiscoverNotifier *>(parent());
         process->deleteLater();
-        notifier->settings()->setLastUnattendedTrigger(QDateTime::currentDateTimeUtc());
-        notifier->settings()->save();
-        notifier->setBusy(false);
+        m_notifier->settings()->setLastUnattendedTrigger(QDateTime::currentDateTimeUtc());
+        m_notifier->settings()->save();
+        m_notifier->setBusy(false);
     });
 
-    notifier->setBusy(true);
+    m_notifier->setBusy(true);
     process->start(QStringLiteral("plasma-discover"), {QStringLiteral("--headless-update")});
     qInfo() << "started unattended update" << QDateTime::currentDateTimeUtc();
 }
