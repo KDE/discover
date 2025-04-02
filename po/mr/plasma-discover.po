@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-02 00:42+0000\n"
 "PO-Revision-Date: 2013-04-01 10:16+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -272,7 +272,7 @@ msgstr ""
 msgid "Add"
 msgstr "एडोन्स"
 
-#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
+#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:280
 #: discover/qml/InstallApplicationButton.qml:50
 #: discover/qml/ProgressView.qml:142 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:302 discover/qml/WebflowDialog.qml:41
@@ -813,103 +813,103 @@ msgstr ""
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:63
+#: discover/qml/DiscoverWindow.qml:67
 #, fuzzy, kde-format
 #| msgid "Homepage"
 msgid "&Home"
 msgstr "मुख्यपान"
 
-#: discover/qml/DiscoverWindow.qml:73
+#: discover/qml/DiscoverWindow.qml:77
 #, fuzzy, kde-format
 #| msgid "Search..."
 msgid "&Search"
 msgstr "शोधा..."
 
-#: discover/qml/DiscoverWindow.qml:81
+#: discover/qml/DiscoverWindow.qml:85
 #, fuzzy, kde-format
 #| msgid "Installed"
 msgid "&Installed"
 msgstr "प्रतिष्ठापीत केलेले"
 
-#: discover/qml/DiscoverWindow.qml:92
+#: discover/qml/DiscoverWindow.qml:96
 #, kde-format
 msgid "&Updates (Fetching…)"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:92
+#: discover/qml/DiscoverWindow.qml:96
 #, fuzzy, kde-format
 #| msgid "Update"
 msgid "&Updates (%1)"
 msgstr "अद्ययावत करा"
 
-#: discover/qml/DiscoverWindow.qml:100
+#: discover/qml/DiscoverWindow.qml:104
 #, kde-format
 msgid "&About"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:108
+#: discover/qml/DiscoverWindow.qml:112
 #, fuzzy, kde-format
 #| msgid "Best Ratings"
 msgid "S&ettings"
 msgstr "सर्वोत्कृष्ट गुणवत्ताश्रेणी"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
-#: discover/qml/DiscoverWindow.qml:458
+#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:462
 #, kde-format
 msgid "Error"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:165
+#: discover/qml/DiscoverWindow.qml:169
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:263 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:267 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:321
+#: discover/qml/DiscoverWindow.qml:325
 #, kde-format
 msgid "Report this issue"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:350
 #, kde-format
 msgid "Error %1 of %2"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:350 discover/qml/UpdatesPage.qml:47
 #, fuzzy, kde-format
 #| msgid "Update"
 msgid "Update Issue"
 msgstr "अद्ययावत करा"
 
-#: discover/qml/DiscoverWindow.qml:357
+#: discover/qml/DiscoverWindow.qml:361
 #, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:393
+#: discover/qml/DiscoverWindow.qml:397
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:404
+#: discover/qml/DiscoverWindow.qml:408
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:420 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:424
+#: discover/qml/DiscoverWindow.qml:428
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-02 00:42+0000\n"
 "PO-Revision-Date: 2025-03-26 16:47+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -287,7 +287,7 @@ msgstr "Pievienot jaunu %1 krātuvi"
 msgid "Add"
 msgstr "Pievienot"
 
-#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
+#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:280
 #: discover/qml/InstallApplicationButton.qml:50
 #: discover/qml/ProgressView.qml:142 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:302 discover/qml/WebflowDialog.qml:41
@@ -867,73 +867,73 @@ msgstr "Nākamais ekrānattēls"
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "Palaišana kā <em>saknes</em> lietotājam nav ieteicama un nepieciešama."
 
-#: discover/qml/DiscoverWindow.qml:63
+#: discover/qml/DiscoverWindow.qml:67
 #, kde-format
 msgid "&Home"
 msgstr "&Mājas"
 
-#: discover/qml/DiscoverWindow.qml:73
+#: discover/qml/DiscoverWindow.qml:77
 #, kde-format
 msgid "&Search"
 msgstr "M&eklēt"
 
-#: discover/qml/DiscoverWindow.qml:81
+#: discover/qml/DiscoverWindow.qml:85
 #, kde-format
 msgid "&Installed"
 msgstr "&Instalētās"
 
-#: discover/qml/DiscoverWindow.qml:92
+#: discover/qml/DiscoverWindow.qml:96
 #, kde-format
 msgid "&Updates (Fetching…)"
 msgstr "&Atjauninājumi (ielādē)"
 
-#: discover/qml/DiscoverWindow.qml:92
+#: discover/qml/DiscoverWindow.qml:96
 #, kde-format
 msgid "&Updates (%1)"
 msgstr "&Atjauninājumi (%1)"
 
-#: discover/qml/DiscoverWindow.qml:100
+#: discover/qml/DiscoverWindow.qml:104
 #, kde-format
 msgid "&About"
 msgstr "&Par"
 
-#: discover/qml/DiscoverWindow.qml:108
+#: discover/qml/DiscoverWindow.qml:112
 #, kde-format
 msgid "S&ettings"
 msgstr "Ie&statījumi"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
-#: discover/qml/DiscoverWindow.qml:458
+#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:462
 #, kde-format
 msgid "Error"
 msgstr "Kļūda"
 
-#: discover/qml/DiscoverWindow.qml:165
+#: discover/qml/DiscoverWindow.qml:169
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "Nevar atrast resursu: %1"
 
-#: discover/qml/DiscoverWindow.qml:263 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:267 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
 msgstr "Turpināt"
 
-#: discover/qml/DiscoverWindow.qml:321
+#: discover/qml/DiscoverWindow.qml:325
 #, kde-format
 msgid "Report this issue"
 msgstr "Ziņot par problēmu"
 
-#: discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:350
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "%1. kļūda no %2"
 
-#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:350 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "Problēma ar atjauninājumu"
 
-#: discover/qml/DiscoverWindow.qml:357
+#: discover/qml/DiscoverWindow.qml:361
 #, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
@@ -942,24 +942,24 @@ msgstr ""
 "Radās problēma ar atjaunināšanu vai instalēšanu. Uzgaidiet un mēģiniet "
 "vēlreiz."
 
-#: discover/qml/DiscoverWindow.qml:393
+#: discover/qml/DiscoverWindow.qml:397
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Rādīt iepriekšējo"
 
-#: discover/qml/DiscoverWindow.qml:404
+#: discover/qml/DiscoverWindow.qml:408
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Rādīt nākamo"
 
-#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:420 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "Skatīt tehnisko informāciju"
 
-#: discover/qml/DiscoverWindow.qml:424
+#: discover/qml/DiscoverWindow.qml:428
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Kopēt uz starpliktuvi"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-02 00:42+0000\n"
 "PO-Revision-Date: 2023-12-05 17:21+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -296,7 +296,7 @@ msgstr "Pridať nový repozitár %1"
 msgid "Add"
 msgstr "Pridať"
 
-#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
+#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:280
 #: discover/qml/InstallApplicationButton.qml:50
 #: discover/qml/ProgressView.qml:142 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:302 discover/qml/WebflowDialog.qml:41
@@ -881,75 +881,75 @@ msgstr "Ďalšia snímka obrazovky"
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "Spustenie s právami <em>správcu</em> nie je odporúčané, ani potrebné."
 
-#: discover/qml/DiscoverWindow.qml:63
+#: discover/qml/DiscoverWindow.qml:67
 #, kde-format
 msgid "&Home"
 msgstr "Domov"
 
-#: discover/qml/DiscoverWindow.qml:73
+#: discover/qml/DiscoverWindow.qml:77
 #, kde-format
 msgid "&Search"
 msgstr "Hľadať"
 
-#: discover/qml/DiscoverWindow.qml:81
+#: discover/qml/DiscoverWindow.qml:85
 #, kde-format
 msgid "&Installed"
 msgstr "Nainštalované"
 
-#: discover/qml/DiscoverWindow.qml:92
+#: discover/qml/DiscoverWindow.qml:96
 #, kde-format
 msgid "&Updates (Fetching…)"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:92
+#: discover/qml/DiscoverWindow.qml:96
 #, fuzzy, kde-format
 #| msgid "&Update (%1)"
 #| msgid_plural "&Updates (%1)"
 msgid "&Updates (%1)"
 msgstr "Akt&ualizácia (%1)"
 
-#: discover/qml/DiscoverWindow.qml:100
+#: discover/qml/DiscoverWindow.qml:104
 #, kde-format
 msgid "&About"
 msgstr "O aplikácii"
 
-#: discover/qml/DiscoverWindow.qml:108
+#: discover/qml/DiscoverWindow.qml:112
 #, kde-format
 msgid "S&ettings"
 msgstr "Nastavenia"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
-#: discover/qml/DiscoverWindow.qml:458
+#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:462
 #, kde-format
 msgid "Error"
 msgstr "Chyba"
 
-#: discover/qml/DiscoverWindow.qml:165
+#: discover/qml/DiscoverWindow.qml:169
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "Nie je možné nájsť prostriedok: %1"
 
-#: discover/qml/DiscoverWindow.qml:263 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:267 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
 msgstr "Pokračovať"
 
-#: discover/qml/DiscoverWindow.qml:321
+#: discover/qml/DiscoverWindow.qml:325
 #, kde-format
 msgid "Report this issue"
 msgstr "Nahlásiť problém"
 
-#: discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:350
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Chyba %1 z %2"
 
-#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:350 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "Problém s aktualizáciou"
 
-#: discover/qml/DiscoverWindow.qml:357
+#: discover/qml/DiscoverWindow.qml:361
 #, fuzzy, kde-format
 #| msgid "There was an issue installing this update. Please try again later."
 msgid ""
@@ -958,24 +958,24 @@ msgid ""
 msgstr ""
 "Pri inštalácii tejto aktualizácie sa vyskytol problém. Skúste neskôr prosím."
 
-#: discover/qml/DiscoverWindow.qml:393
+#: discover/qml/DiscoverWindow.qml:397
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Zobraziť predchádzajúce"
 
-#: discover/qml/DiscoverWindow.qml:404
+#: discover/qml/DiscoverWindow.qml:408
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Zobraziť nasledujúce"
 
-#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:420 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "Zobraziť technické podrobnosti"
 
-#: discover/qml/DiscoverWindow.qml:424
+#: discover/qml/DiscoverWindow.qml:428
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Skopírovať do schránky"

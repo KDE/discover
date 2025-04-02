@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-02 00:42+0000\n"
 "PO-Revision-Date: 2025-03-19 14:37+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -290,7 +290,7 @@ msgstr "Een nieuwe repository %1 toevoegen"
 msgid "Add"
 msgstr "Toevoegen"
 
-#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
+#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:280
 #: discover/qml/InstallApplicationButton.qml:50
 #: discover/qml/ProgressView.qml:142 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:302 discover/qml/WebflowDialog.qml:41
@@ -866,73 +866,73 @@ msgstr "Volgende schermafdruk"
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "Als <em>root</em> uitvoeren is ontmoedigd en niet noodzakelijk."
 
-#: discover/qml/DiscoverWindow.qml:63
+#: discover/qml/DiscoverWindow.qml:67
 #, kde-format
 msgid "&Home"
 msgstr "&Home"
 
-#: discover/qml/DiscoverWindow.qml:73
+#: discover/qml/DiscoverWindow.qml:77
 #, kde-format
 msgid "&Search"
 msgstr "&Zoeken"
 
-#: discover/qml/DiscoverWindow.qml:81
+#: discover/qml/DiscoverWindow.qml:85
 #, kde-format
 msgid "&Installed"
 msgstr "&Geïnstalleerd"
 
-#: discover/qml/DiscoverWindow.qml:92
+#: discover/qml/DiscoverWindow.qml:96
 #, kde-format
 msgid "&Updates (Fetching…)"
 msgstr "Elementen voor &bijwerken (Ophalen…)"
 
-#: discover/qml/DiscoverWindow.qml:92
+#: discover/qml/DiscoverWindow.qml:96
 #, kde-format
 msgid "&Updates (%1)"
 msgstr "&Elementen voor bijwerken (%1)"
 
-#: discover/qml/DiscoverWindow.qml:100
+#: discover/qml/DiscoverWindow.qml:104
 #, kde-format
 msgid "&About"
 msgstr "&Info over"
 
-#: discover/qml/DiscoverWindow.qml:108
+#: discover/qml/DiscoverWindow.qml:112
 #, kde-format
 msgid "S&ettings"
 msgstr "&Instellingen"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
-#: discover/qml/DiscoverWindow.qml:458
+#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:462
 #, kde-format
 msgid "Error"
 msgstr "Fout"
 
-#: discover/qml/DiscoverWindow.qml:165
+#: discover/qml/DiscoverWindow.qml:169
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "Hulpbron '%1' kon niet worden gevonden"
 
-#: discover/qml/DiscoverWindow.qml:263 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:267 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
 msgstr "Verder gaan"
 
-#: discover/qml/DiscoverWindow.qml:321
+#: discover/qml/DiscoverWindow.qml:325
 #, kde-format
 msgid "Report this issue"
 msgstr "Dit probleem rapporteren"
 
-#: discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:350
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Fout %1 van %2"
 
-#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:350 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "Probleem met update"
 
-#: discover/qml/DiscoverWindow.qml:357
+#: discover/qml/DiscoverWindow.qml:361
 #, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
@@ -941,24 +941,24 @@ msgstr ""
 "Er was een probleem tijdens het bijwerken- of installatieproces. Probeer het "
 "later nog eens."
 
-#: discover/qml/DiscoverWindow.qml:393
+#: discover/qml/DiscoverWindow.qml:397
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Vorige tonen"
 
-#: discover/qml/DiscoverWindow.qml:404
+#: discover/qml/DiscoverWindow.qml:408
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Volgende tonen"
 
-#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:420 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "Zie technische details"
 
-#: discover/qml/DiscoverWindow.qml:424
+#: discover/qml/DiscoverWindow.qml:428
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Naar klembord kopiëren"

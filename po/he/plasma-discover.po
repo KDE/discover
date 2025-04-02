@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-02 00:42+0000\n"
 "PO-Revision-Date: 2025-03-19 10:52+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -278,7 +278,7 @@ msgstr "הוספת מאגר %1 חדש"
 msgid "Add"
 msgstr "הוספה"
 
-#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:276
+#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:280
 #: discover/qml/InstallApplicationButton.qml:50
 #: discover/qml/ProgressView.qml:142 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:302 discover/qml/WebflowDialog.qml:41
@@ -851,97 +851,97 @@ msgstr "צילום המסך הבא"
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "הרצה כ<em>משתמש־על (root)</em> היא מסוכנת ומיותרת."
 
-#: discover/qml/DiscoverWindow.qml:63
+#: discover/qml/DiscoverWindow.qml:67
 #, kde-format
 msgid "&Home"
 msgstr "דף ה&בית"
 
-#: discover/qml/DiscoverWindow.qml:73
+#: discover/qml/DiscoverWindow.qml:77
 #, kde-format
 msgid "&Search"
 msgstr "&חיפוש"
 
-#: discover/qml/DiscoverWindow.qml:81
+#: discover/qml/DiscoverWindow.qml:85
 #, kde-format
 msgid "&Installed"
 msgstr "מו&תקן"
 
-#: discover/qml/DiscoverWindow.qml:92
+#: discover/qml/DiscoverWindow.qml:96
 #, kde-format
 msgid "&Updates (Fetching…)"
 msgstr "&עדכונים (מתקבלים…)"
 
-#: discover/qml/DiscoverWindow.qml:92
+#: discover/qml/DiscoverWindow.qml:96
 #, kde-format
 msgid "&Updates (%1)"
 msgstr "&עדכונים (%1)"
 
-#: discover/qml/DiscoverWindow.qml:100
+#: discover/qml/DiscoverWindow.qml:104
 #, kde-format
 msgid "&About"
 msgstr "על &אודות"
 
-#: discover/qml/DiscoverWindow.qml:108
+#: discover/qml/DiscoverWindow.qml:112
 #, kde-format
 msgid "S&ettings"
 msgstr "ה&גדרות"
 
-#: discover/qml/DiscoverWindow.qml:161 discover/qml/DiscoverWindow.qml:346
-#: discover/qml/DiscoverWindow.qml:458
+#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:462
 #, kde-format
 msgid "Error"
 msgstr "שגיאה"
 
-#: discover/qml/DiscoverWindow.qml:165
+#: discover/qml/DiscoverWindow.qml:169
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "לא ניתן למצוא את המשאב: %1"
 
-#: discover/qml/DiscoverWindow.qml:263 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:267 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
 msgstr "המשך"
 
-#: discover/qml/DiscoverWindow.qml:321
+#: discover/qml/DiscoverWindow.qml:325
 #, kde-format
 msgid "Report this issue"
 msgstr "דיווח על התקלה הזאת"
 
-#: discover/qml/DiscoverWindow.qml:346
+#: discover/qml/DiscoverWindow.qml:350
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "שגיאה %1 מתוך %2"
 
-#: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:350 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "תקלה בעדכון"
 
-#: discover/qml/DiscoverWindow.qml:357
+#: discover/qml/DiscoverWindow.qml:361
 #, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr "אירעה תקלה במהלך ההתקנה או העדכון. נא לנסות שוב מאוחר יותר."
 
-#: discover/qml/DiscoverWindow.qml:393
+#: discover/qml/DiscoverWindow.qml:397
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "הצגת הקודם"
 
-#: discover/qml/DiscoverWindow.qml:404
+#: discover/qml/DiscoverWindow.qml:408
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "הצגת הבא"
 
-#: discover/qml/DiscoverWindow.qml:416 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:420 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "הצגת פרטים טכניים"
 
-#: discover/qml/DiscoverWindow.qml:424
+#: discover/qml/DiscoverWindow.qml:428
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "העתקה ללוח הגזירים"
