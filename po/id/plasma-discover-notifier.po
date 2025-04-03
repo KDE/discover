@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-03 00:43+0000\n"
 "PO-Revision-Date: 2024-09-01 22:44+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -23,70 +23,70 @@ msgstr ""
 msgid "View Updates"
 msgstr "Tampilkan Pembaruan"
 
-#: notifier/DiscoverNotifier.cpp:302
+#: notifier/DiscoverNotifier.cpp:310
 #, kde-format
 msgid "Security updates available"
 msgstr "Tersedia pembaruan keamanan"
 
-#: notifier/DiscoverNotifier.cpp:304
+#: notifier/DiscoverNotifier.cpp:312
 #, kde-format
 msgid "Updates available"
 msgstr "Tersedia pembaruan"
 
-#: notifier/DiscoverNotifier.cpp:306
+#: notifier/DiscoverNotifier.cpp:314
 #, kde-format
 msgid "System up to date"
 msgstr "Sistem terbarukan"
 
-#: notifier/DiscoverNotifier.cpp:308
+#: notifier/DiscoverNotifier.cpp:316
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Komputer harus dimulai ulang"
 
-#: notifier/DiscoverNotifier.cpp:310
+#: notifier/DiscoverNotifier.cpp:318
 #, kde-format
 msgid "Offline"
 msgstr "Luring"
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:320
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Menerapkan pembaruan yang tidak diawasi..."
 
-#: notifier/DiscoverNotifier.cpp:337
+#: notifier/DiscoverNotifier.cpp:345
 #, kde-format
 msgid "Restart is required"
 msgstr "Harus dinyalakan ulang"
 
-#: notifier/DiscoverNotifier.cpp:338
+#: notifier/DiscoverNotifier.cpp:346
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Sistem perlu dinyalakan ulang supaya pembaruan berpengaruh."
 
-#: notifier/DiscoverNotifier.cpp:343
+#: notifier/DiscoverNotifier.cpp:351
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "Perbarui dan Nyalakan Ulang"
 
-#: notifier/DiscoverNotifier.cpp:344
+#: notifier/DiscoverNotifier.cpp:352
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr "Perbarui dan Matikan"
 
-#: notifier/DiscoverNotifier.cpp:388
+#: notifier/DiscoverNotifier.cpp:396
 #, kde-format
 msgid "Upgrade available"
 msgstr "Tersedia peningkatan"
 
-#: notifier/DiscoverNotifier.cpp:389
+#: notifier/DiscoverNotifier.cpp:397
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 sekarang sudah tersedia."
 
-#: notifier/DiscoverNotifier.cpp:392
+#: notifier/DiscoverNotifier.cpp:400
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
