@@ -6,7 +6,6 @@ set(steamos-backend_SRCS
     SteamOSTransaction.h
     SteamOSTransaction.cpp
     dbushelpers.h
-    dbushelpers.cpp
 )
 
 set(atomupd1_xml com.steampowered.Atomupd1.xml)
