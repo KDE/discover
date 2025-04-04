@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024 Stefan Asserhäll <stefan.asserhall@gmail.com>
+# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024, 2025 Stefan Asserhäll <stefan.asserhall@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-02 00:42+0000\n"
-"PO-Revision-Date: 2024-11-24 17:44+0100\n"
+"PO-Revision-Date: 2025-04-03 22:32+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: discover/DiscoverObject.cpp:183
 #, kde-format
@@ -191,7 +191,7 @@ msgstr "Lista tillgängliga alternativ för användaråterkoppling"
 #: discover/main.cpp:44
 #, kde-format
 msgid "Starts an update automatically, headless"
-msgstr ""
+msgstr "Startar en uppdatering automatiskt, utan skärm"
 
 #: discover/main.cpp:46
 #, kde-format
@@ -204,10 +204,9 @@ msgid "An application explorer"
 msgstr "En programutforskare"
 
 #: discover/main.cpp:133
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010-2024 Plasma-utvecklingsgruppen"
+msgstr "© 2010-2025 Plasma-utvecklingsgruppen"
 
 #: discover/main.cpp:134
 #, kde-format
@@ -879,11 +878,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&Uppdateringar (hämtar…)"
 
 #: discover/qml/DiscoverWindow.qml:96
-#, fuzzy, kde-format
-#| msgid "&Update (%1)"
-#| msgid_plural "&Updates (%1)"
+#, kde-format
 msgid "&Updates (%1)"
-msgstr "&Uppdatering (%1)"
+msgstr "&Uppdateringar (%1)"
 
 #: discover/qml/DiscoverWindow.qml:104
 #, kde-format

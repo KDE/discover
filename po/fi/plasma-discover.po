@@ -3,13 +3,13 @@
 # Author: Lliehu
 # SPDX-FileCopyrightText: 2024 Kimmo Kujansuu <mrkujansuu@gmail.com>
 # SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2022, 2024 Lasse Liehu <lasse.liehu@gmail.com>
-# SPDX-FileCopyrightText: 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-02 00:42+0000\n"
-"PO-Revision-Date: 2024-12-01 14:30+0200\n"
+"PO-Revision-Date: 2025-03-23 15:59+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -203,10 +203,9 @@ msgid "An application explorer"
 msgstr "Sovellushaku"
 
 #: discover/main.cpp:133
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010-2024 Plasman kehitysryhmä"
+msgstr "© 2010-2025 Plasman kehitysryhmä"
 
 #: discover/main.cpp:134
 #, kde-format
@@ -880,11 +879,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&Päivitykset (noudetaan…)"
 
 #: discover/qml/DiscoverWindow.qml:96
-#, fuzzy, kde-format
-#| msgid "&Update (%1)"
-#| msgid_plural "&Updates (%1)"
+#, kde-format
 msgid "&Updates (%1)"
-msgstr "&Päivitys (%1)"
+msgstr "&Päivitykset (%1)"
 
 #: discover/qml/DiscoverWindow.qml:104
 #, kde-format
