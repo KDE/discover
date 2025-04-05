@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-30 00:43+0000\n"
+"POT-Creation-Date: 2025-04-05 00:43+0000\n"
 "PO-Revision-Date: 2025-03-20 19:37+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -2605,7 +2605,7 @@ msgstr ""
 "Iste application de Snap non es compatibile con le sendbox de securitate e "
 "habera plen accesso a iste computator. Tu installa lo malgrado isto?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:94
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""

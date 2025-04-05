@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-30 00:43+0000\n"
+"POT-Creation-Date: 2025-04-05 00:43+0000\n"
 "PO-Revision-Date: 2025-02-21 07:31+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -2607,7 +2607,7 @@ msgstr ""
 "A aplicación de Snap non é compatíbel co illamento de seguridade e terá "
 "acceso total ao computador. Quere instalala aínda así?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:94
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""

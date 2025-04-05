@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-30 00:43+0000\n"
+"POT-Creation-Date: 2025-04-05 00:43+0000\n"
 "PO-Revision-Date: 2023-02-17 08:42+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -207,8 +207,6 @@ msgstr "Tilgjengelighet"
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
 #, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Web Development"
 msgctxt "Category"
 msgid "Development"
 msgstr "Nettutvikling"
@@ -552,8 +550,6 @@ msgstr "Kontor"
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
 #, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
 msgctxt "Category"
 msgid "System"
 msgstr "Reparer systemet"
@@ -2581,7 +2577,7 @@ msgstr ""
 "Dette Snap-programmet er ikke kompatibelt med sandkasse-sikkerhet, og får "
 "dermed full tilgang til systemet. Installer likevel?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:94
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""

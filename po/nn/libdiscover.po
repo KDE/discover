@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-30 00:43+0000\n"
+"POT-Creation-Date: 2025-04-05 00:43+0000\n"
 "PO-Revision-Date: 2024-08-25 12:13+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -208,8 +208,6 @@ msgstr "Tilgjenge"
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
 #, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Web Development"
 msgctxt "Category"
 msgid "Development"
 msgstr "Nettutvikling"
@@ -553,8 +551,6 @@ msgstr "Kontor"
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
 #, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
 msgctxt "Category"
 msgid "System"
 msgstr "Reparer systemet"
@@ -665,7 +661,6 @@ msgstr "Tilgang til lydsystemet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
 #, fuzzy, kde-format
-#| msgid "Can play audio"
 msgid "Can play and record audio"
 msgstr "Får spela av lyd"
 
@@ -2580,7 +2575,7 @@ msgstr ""
 "Snap-programmet er ikkje kompatibelt med sandkasse-tryggleik, og det får "
 "derfor full tilgang til datamaskina. Vil du likevel installera det?"
 
-#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:75
+#: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:94
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr "SteamOS: Klarte ikkje spørja atomupd om SteamOS-oppdateringar …"

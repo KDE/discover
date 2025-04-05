@@ -106,7 +106,6 @@ msgstr "Varsling om systemoppdatering"
 
 #: notifier/main.cpp:43
 #, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
 msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010–2024 Utviklingslaget for Plasma"
 

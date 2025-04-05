@@ -207,7 +207,6 @@ msgstr "Ein programutforskar"
 
 #: discover/main.cpp:133
 #, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
 msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010–2024 Utviklingslaget for Plasma"
 
@@ -854,8 +853,6 @@ msgstr "&Oppdateringar (hentar …)"
 
 #: discover/qml/DiscoverWindow.qml:96
 #, fuzzy, kde-format
-#| msgid "&Update (%1)"
-#| msgid_plural "&Updates (%1)"
 msgid "&Updates (%1)"
 msgstr "&Oppdatering (%1)"
 
