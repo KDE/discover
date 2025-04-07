@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-03 00:43+0000\n"
+"POT-Creation-Date: 2025-04-07 00:43+0000\n"
 "PO-Revision-Date: 2022-11-15 20:51+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -23,71 +23,71 @@ msgstr ""
 msgid "View Updates"
 msgstr "Vaata uuendusi"
 
-#: notifier/DiscoverNotifier.cpp:310
+#: notifier/DiscoverNotifier.cpp:331
 #, kde-format
 msgid "Security updates available"
 msgstr "Saadaval on turvauuendused"
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:333
 #, kde-format
 msgid "Updates available"
 msgstr "Saadaval on uuendused"
 
-#: notifier/DiscoverNotifier.cpp:314
+#: notifier/DiscoverNotifier.cpp:335
 #, kde-format
 msgid "System up to date"
 msgstr "Süsteem on täiesti ajakohane"
 
-#: notifier/DiscoverNotifier.cpp:316
+#: notifier/DiscoverNotifier.cpp:337
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Arvuti vajab taaskäivitust"
 
-#: notifier/DiscoverNotifier.cpp:318
+#: notifier/DiscoverNotifier.cpp:339
 #, kde-format
 msgid "Offline"
 msgstr "Pole võrgus"
 
-#: notifier/DiscoverNotifier.cpp:320
+#: notifier/DiscoverNotifier.cpp:341
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:345
+#: notifier/DiscoverNotifier.cpp:366
 #, kde-format
 msgid "Restart is required"
 msgstr "Vajalik on taaskäivitus"
 
-#: notifier/DiscoverNotifier.cpp:346
+#: notifier/DiscoverNotifier.cpp:367
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Uuenduste jõustamiseks tuleb süsteem uuesti käivitada."
 
-#: notifier/DiscoverNotifier.cpp:351
+#: notifier/DiscoverNotifier.cpp:372
 #, fuzzy, kde-format
 #| msgid "Computer needs to restart"
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "Arvuti vajab taaskäivitust"
 
-#: notifier/DiscoverNotifier.cpp:352
+#: notifier/DiscoverNotifier.cpp:373
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:396
+#: notifier/DiscoverNotifier.cpp:417
 #, kde-format
 msgid "Upgrade available"
 msgstr "Saadaval on uuendus"
 
-#: notifier/DiscoverNotifier.cpp:397
+#: notifier/DiscoverNotifier.cpp:418
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:400
+#: notifier/DiscoverNotifier.cpp:421
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
@@ -141,40 +141,47 @@ msgstr "peidetud"
 msgid "Updates"
 msgstr "Uuendused"
 
-#: notifier/NotifierItem.cpp:35
-#, kde-format
+#: notifier/NotifierItem.cpp:36
+#, fuzzy, kde-format
+#| msgid "Open Discover…"
+msgctxt "@action:button Opens Discover's main UI to analyze the updates"
 msgid "Open Discover…"
 msgstr "Ava Discover …"
 
-#: notifier/NotifierItem.cpp:40
-#, kde-format
-msgid "See Updates…"
-msgstr "Vaata uuendusi …"
+#: notifier/NotifierItem.cpp:47
+#, fuzzy, kde-format
+#| msgid "Update"
+msgctxt "@action:button Starts an update in the background"
+msgid "Start Update"
+msgstr "Uuenda"
 
-#: notifier/NotifierItem.cpp:45
+#: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Refresh…"
 msgstr "Värskenda …"
 
-#: notifier/NotifierItem.cpp:51
+#: notifier/NotifierItem.cpp:56
 #, kde-format
 msgid "Install Updates and Restart…"
 msgstr ""
 
-#: notifier/NotifierItem.cpp:54
+#: notifier/NotifierItem.cpp:59
 #, kde-format
 msgid "Install Updates and Shut Down…"
 msgstr ""
 
-#: notifier/NotifierItem.cpp:59
+#: notifier/NotifierItem.cpp:64
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "Paigaldatud uuenduste rakendamiseks tuleb arvuti taaskäivitada"
 
-#: notifier/NotifierItem.cpp:60
+#: notifier/NotifierItem.cpp:65
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Taaskäivitamiseks klõpsa siin"
+
+#~ msgid "See Updates…"
+#~ msgstr "Vaata uuendusi …"
 
 #~ msgctxt "@action:button"
 #~ msgid "Restart"
@@ -185,9 +192,6 @@ msgstr "Taaskäivitamiseks klõpsa siin"
 
 #~ msgid "Restart..."
 #~ msgstr "Taaskäivita ..."
-
-#~ msgid "Update"
-#~ msgstr "Uuenda"
 
 #~ msgid "Open Software Center..."
 #~ msgstr "Ava tarkvarakeskus ..."

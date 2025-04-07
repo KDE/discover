@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-03 00:43+0000\n"
+"POT-Creation-Date: 2025-04-07 00:43+0000\n"
 "PO-Revision-Date: 2025-03-03 09:41+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -28,72 +28,72 @@ msgstr ""
 msgid "View Updates"
 msgstr "Afficher les mises à jour"
 
-#: notifier/DiscoverNotifier.cpp:310
+#: notifier/DiscoverNotifier.cpp:331
 #, kde-format
 msgid "Security updates available"
 msgstr "Mises à jour de sécurité disponibles"
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:333
 #, kde-format
 msgid "Updates available"
 msgstr "Mises à jour disponibles"
 
-#: notifier/DiscoverNotifier.cpp:314
+#: notifier/DiscoverNotifier.cpp:335
 #, kde-format
 msgid "System up to date"
 msgstr "Système à jour"
 
-#: notifier/DiscoverNotifier.cpp:316
+#: notifier/DiscoverNotifier.cpp:337
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "L'ordinateur doit redémarrer"
 
-#: notifier/DiscoverNotifier.cpp:318
+#: notifier/DiscoverNotifier.cpp:339
 #, kde-format
 msgid "Offline"
 msgstr "Hors-ligne"
 
-#: notifier/DiscoverNotifier.cpp:320
+#: notifier/DiscoverNotifier.cpp:341
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Applications des mises à jour non prévues..."
 
-#: notifier/DiscoverNotifier.cpp:345
+#: notifier/DiscoverNotifier.cpp:366
 #, kde-format
 msgid "Restart is required"
 msgstr "Un redémarrage est nécessaire"
 
-#: notifier/DiscoverNotifier.cpp:346
+#: notifier/DiscoverNotifier.cpp:367
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr ""
 "Le service a besoin d'être redémarré pour que les mises à jour soient prises "
 "en compte."
 
-#: notifier/DiscoverNotifier.cpp:351
+#: notifier/DiscoverNotifier.cpp:372
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "Mettre à jour et re-démarrer"
 
-#: notifier/DiscoverNotifier.cpp:352
+#: notifier/DiscoverNotifier.cpp:373
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr "Mettre à jour et éteindre"
 
-#: notifier/DiscoverNotifier.cpp:396
+#: notifier/DiscoverNotifier.cpp:417
 #, kde-format
 msgid "Upgrade available"
 msgstr "Mise à niveau disponible"
 
-#: notifier/DiscoverNotifier.cpp:397
+#: notifier/DiscoverNotifier.cpp:418
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 est maintenant disponible."
 
-#: notifier/DiscoverNotifier.cpp:400
+#: notifier/DiscoverNotifier.cpp:421
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
@@ -146,40 +146,47 @@ msgstr "caché"
 msgid "Updates"
 msgstr "Mises à jour"
 
-#: notifier/NotifierItem.cpp:35
-#, kde-format
+#: notifier/NotifierItem.cpp:36
+#, fuzzy, kde-format
+#| msgid "Open Discover…"
+msgctxt "@action:button Opens Discover's main UI to analyze the updates"
 msgid "Open Discover…"
 msgstr "Ouvrir Discover..."
 
-#: notifier/NotifierItem.cpp:40
-#, kde-format
-msgid "See Updates…"
-msgstr "Consulter les mises à jour…"
+#: notifier/NotifierItem.cpp:47
+#, fuzzy, kde-format
+#| msgid "Update"
+msgctxt "@action:button Starts an update in the background"
+msgid "Start Update"
+msgstr "Mettre à jour"
 
-#: notifier/NotifierItem.cpp:45
+#: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Refresh…"
 msgstr "Rafraîchir..."
 
-#: notifier/NotifierItem.cpp:51
+#: notifier/NotifierItem.cpp:56
 #, kde-format
 msgid "Install Updates and Restart…"
 msgstr "Installer les mises à jour et re-démarrer…"
 
-#: notifier/NotifierItem.cpp:54
+#: notifier/NotifierItem.cpp:59
 #, kde-format
 msgid "Install Updates and Shut Down…"
 msgstr "Installer les mises à jour et éteindre..."
 
-#: notifier/NotifierItem.cpp:59
+#: notifier/NotifierItem.cpp:64
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "Ré-démarrer pour appliquer les mises à jour installées"
 
-#: notifier/NotifierItem.cpp:60
+#: notifier/NotifierItem.cpp:65
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Cliquez pour re-démarrer le périphérique"
+
+#~ msgid "See Updates…"
+#~ msgstr "Consulter les mises à jour…"
 
 #~ msgctxt "@action:button"
 #~ msgid "Restart"
@@ -190,9 +197,6 @@ msgstr "Cliquez pour re-démarrer le périphérique"
 
 #~ msgid "Restart..."
 #~ msgstr "Redémarrer..."
-
-#~ msgid "Update"
-#~ msgstr "Mettre à jour"
 
 #~ msgid "Open Software Center..."
 #~ msgstr "Ouvrir la logithèque..."

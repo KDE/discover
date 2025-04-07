@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
 # Jung Hee Lee <daemul72@gmail.com>, 2019.
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-02 00:42+0000\n"
-"PO-Revision-Date: 2024-12-09 23:09+0100\n"
+"PO-Revision-Date: 2025-04-06 21:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -187,7 +187,7 @@ msgstr "사용자 피드백 옵션을 표시합니다"
 #: discover/main.cpp:44
 #, kde-format
 msgid "Starts an update automatically, headless"
-msgstr ""
+msgstr "자동으로 업데이트 시작, 헤드리스"
 
 #: discover/main.cpp:46
 #, kde-format
@@ -200,10 +200,9 @@ msgid "An application explorer"
 msgstr "앱 탐색기"
 
 #: discover/main.cpp:133
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010-2024 Plasma Development Team"
+msgstr "© 2010-2025 Plasma Development Team"
 
 #: discover/main.cpp:134
 #, kde-format
@@ -862,9 +861,7 @@ msgid "&Updates (Fetching…)"
 msgstr "업데이트(가져오는 중…)(&U)"
 
 #: discover/qml/DiscoverWindow.qml:96
-#, fuzzy, kde-format
-#| msgid "&Update (%1)"
-#| msgid_plural "&Updates (%1)"
+#, kde-format
 msgid "&Updates (%1)"
 msgstr "업데이트(%1)(&U)"
 

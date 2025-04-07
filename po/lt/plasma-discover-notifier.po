@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-03 00:43+0000\n"
+"POT-Creation-Date: 2025-04-07 00:43+0000\n"
 "PO-Revision-Date: 2024-09-08 00:06+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -26,70 +26,70 @@ msgstr ""
 msgid "View Updates"
 msgstr "Rodyti atnaujinimus"
 
-#: notifier/DiscoverNotifier.cpp:310
+#: notifier/DiscoverNotifier.cpp:331
 #, kde-format
 msgid "Security updates available"
 msgstr "Yra prieinami saugumo atnaujinimai"
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:333
 #, kde-format
 msgid "Updates available"
 msgstr "Yra prieinami atnaujinimai"
 
-#: notifier/DiscoverNotifier.cpp:314
+#: notifier/DiscoverNotifier.cpp:335
 #, kde-format
 msgid "System up to date"
 msgstr "Sistema pilnai atnaujinta"
 
-#: notifier/DiscoverNotifier.cpp:316
+#: notifier/DiscoverNotifier.cpp:337
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Reikia paleisti kompiuterį iš naujo"
 
-#: notifier/DiscoverNotifier.cpp:318
+#: notifier/DiscoverNotifier.cpp:339
 #, kde-format
 msgid "Offline"
 msgstr "Nėra ryšio"
 
-#: notifier/DiscoverNotifier.cpp:320
+#: notifier/DiscoverNotifier.cpp:341
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Taikomi nestebimieji atnaujinimai…"
 
-#: notifier/DiscoverNotifier.cpp:345
+#: notifier/DiscoverNotifier.cpp:366
 #, kde-format
 msgid "Restart is required"
 msgstr "Reikalingas paleidimas iš naujo"
 
-#: notifier/DiscoverNotifier.cpp:346
+#: notifier/DiscoverNotifier.cpp:367
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Tam, kad nuostatos įsigaliotų, sistema turi būti paleista iš naujo."
 
-#: notifier/DiscoverNotifier.cpp:351
+#: notifier/DiscoverNotifier.cpp:372
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "Atnaujinti ir paleisti iš naujo"
 
-#: notifier/DiscoverNotifier.cpp:352
+#: notifier/DiscoverNotifier.cpp:373
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr "Atnaujinti ir išjungti"
 
-#: notifier/DiscoverNotifier.cpp:396
+#: notifier/DiscoverNotifier.cpp:417
 #, kde-format
 msgid "Upgrade available"
 msgstr "Yra prieinamas naujinimas"
 
-#: notifier/DiscoverNotifier.cpp:397
+#: notifier/DiscoverNotifier.cpp:418
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "Dabar yra prieinama %1."
 
-#: notifier/DiscoverNotifier.cpp:400
+#: notifier/DiscoverNotifier.cpp:421
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
@@ -143,40 +143,47 @@ msgstr "paslėpta"
 msgid "Updates"
 msgstr "Atnaujinimai"
 
-#: notifier/NotifierItem.cpp:35
-#, kde-format
+#: notifier/NotifierItem.cpp:36
+#, fuzzy, kde-format
+#| msgid "Open Discover…"
+msgctxt "@action:button Opens Discover's main UI to analyze the updates"
 msgid "Open Discover…"
 msgstr "Atverti Discover…"
 
-#: notifier/NotifierItem.cpp:40
-#, kde-format
-msgid "See Updates…"
-msgstr "Rodyti atnaujinimus…"
+#: notifier/NotifierItem.cpp:47
+#, fuzzy, kde-format
+#| msgid "Update"
+msgctxt "@action:button Starts an update in the background"
+msgid "Start Update"
+msgstr "Atnaujinti"
 
-#: notifier/NotifierItem.cpp:45
+#: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Refresh…"
 msgstr "Įkelti iš naujo…"
 
-#: notifier/NotifierItem.cpp:51
+#: notifier/NotifierItem.cpp:56
 #, kde-format
 msgid "Install Updates and Restart…"
 msgstr "Įdiegti atnaujinimus ir paleisti iš naujo…"
 
-#: notifier/NotifierItem.cpp:54
+#: notifier/NotifierItem.cpp:59
 #, kde-format
 msgid "Install Updates and Shut Down…"
 msgstr "Įdiegti atnaujinimus ir išjungti…"
 
-#: notifier/NotifierItem.cpp:59
+#: notifier/NotifierItem.cpp:64
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "Paleiskite iš naujo, kad pritaikytumėte įdiegtus atnaujinimus"
 
-#: notifier/NotifierItem.cpp:60
+#: notifier/NotifierItem.cpp:65
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Spustelėkite, norėdami įrenginį iš naujo"
+
+#~ msgid "See Updates…"
+#~ msgstr "Rodyti atnaujinimus…"
 
 #~ msgctxt "@action:button"
 #~ msgid "Restart"
@@ -187,9 +194,6 @@ msgstr "Spustelėkite, norėdami įrenginį iš naujo"
 
 #~ msgid "Restart..."
 #~ msgstr "Paleisti iš naujo..."
-
-#~ msgid "Update"
-#~ msgstr "Atnaujinti"
 
 #~ msgid "Open Software Center..."
 #~ msgstr "Atverti programinės įrangos centrą..."

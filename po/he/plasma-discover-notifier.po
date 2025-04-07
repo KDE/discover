@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-03 00:43+0000\n"
+"POT-Creation-Date: 2025-04-07 00:43+0000\n"
 "PO-Revision-Date: 2025-03-02 07:29+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -26,70 +26,70 @@ msgstr ""
 msgid "View Updates"
 msgstr "הצגת העדכונים"
 
-#: notifier/DiscoverNotifier.cpp:310
+#: notifier/DiscoverNotifier.cpp:331
 #, kde-format
 msgid "Security updates available"
 msgstr "עדכוני אבטחה זמינים"
 
-#: notifier/DiscoverNotifier.cpp:312
+#: notifier/DiscoverNotifier.cpp:333
 #, kde-format
 msgid "Updates available"
 msgstr "עדכונים זמינים"
 
-#: notifier/DiscoverNotifier.cpp:314
+#: notifier/DiscoverNotifier.cpp:335
 #, kde-format
 msgid "System up to date"
 msgstr "המערכת מעודכנת"
 
-#: notifier/DiscoverNotifier.cpp:316
+#: notifier/DiscoverNotifier.cpp:337
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "צריך להפעיל את המחשב מחדש"
 
-#: notifier/DiscoverNotifier.cpp:318
+#: notifier/DiscoverNotifier.cpp:339
 #, kde-format
 msgid "Offline"
 msgstr "מצב לא מקוון"
 
-#: notifier/DiscoverNotifier.cpp:320
+#: notifier/DiscoverNotifier.cpp:341
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "חלים עדכונים ללא התערבות…"
 
-#: notifier/DiscoverNotifier.cpp:345
+#: notifier/DiscoverNotifier.cpp:366
 #, kde-format
 msgid "Restart is required"
 msgstr "נדרשת הפעלה מחדש"
 
-#: notifier/DiscoverNotifier.cpp:346
+#: notifier/DiscoverNotifier.cpp:367
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "הפעלת המערכת מחדש נחוצה בשביל הכנסת השינויים לתוקף."
 
-#: notifier/DiscoverNotifier.cpp:351
+#: notifier/DiscoverNotifier.cpp:372
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "לעדכן ולהפעיל מחדש"
 
-#: notifier/DiscoverNotifier.cpp:352
+#: notifier/DiscoverNotifier.cpp:373
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr "לעדכן ולכבות"
 
-#: notifier/DiscoverNotifier.cpp:396
+#: notifier/DiscoverNotifier.cpp:417
 #, kde-format
 msgid "Upgrade available"
 msgstr "שדרוג זמין"
 
-#: notifier/DiscoverNotifier.cpp:397
+#: notifier/DiscoverNotifier.cpp:418
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 זמינה כעת."
 
-#: notifier/DiscoverNotifier.cpp:400
+#: notifier/DiscoverNotifier.cpp:421
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
@@ -142,40 +142,47 @@ msgstr "מוסתר"
 msgid "Updates"
 msgstr "עדכונים"
 
-#: notifier/NotifierItem.cpp:35
-#, kde-format
+#: notifier/NotifierItem.cpp:36
+#, fuzzy, kde-format
+#| msgid "Open Discover…"
+msgctxt "@action:button Opens Discover's main UI to analyze the updates"
 msgid "Open Discover…"
 msgstr "פתיחת Discover…"
 
-#: notifier/NotifierItem.cpp:40
-#, kde-format
-msgid "See Updates…"
-msgstr "הצגת העדכונים…"
+#: notifier/NotifierItem.cpp:47
+#, fuzzy, kde-format
+#| msgid "Updates"
+msgctxt "@action:button Starts an update in the background"
+msgid "Start Update"
+msgstr "עדכונים"
 
-#: notifier/NotifierItem.cpp:45
+#: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Refresh…"
 msgstr "ריענון…"
 
-#: notifier/NotifierItem.cpp:51
+#: notifier/NotifierItem.cpp:56
 #, kde-format
 msgid "Install Updates and Restart…"
 msgstr "להתקין עדכונים ולהפעיל מחדש…"
 
-#: notifier/NotifierItem.cpp:54
+#: notifier/NotifierItem.cpp:59
 #, kde-format
 msgid "Install Updates and Shut Down…"
 msgstr "להתקין עדכונים ולכבות…"
 
-#: notifier/NotifierItem.cpp:59
+#: notifier/NotifierItem.cpp:64
 #, kde-format
 msgid "Restart to apply installed updates"
 msgstr "יש להפעיל מחדש כדי להחיל את העדכונים הנבחרים"
 
-#: notifier/NotifierItem.cpp:60
+#: notifier/NotifierItem.cpp:65
 #, kde-format
 msgid "Click to restart the device"
 msgstr "לחיצה כאן תפעיל את המכשיר מחדש"
+
+#~ msgid "See Updates…"
+#~ msgstr "הצגת העדכונים…"
 
 #~ msgctxt "@action:button"
 #~ msgid "Restart"
