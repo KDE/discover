@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-07 00:43+0000\n"
-"PO-Revision-Date: 2025-04-03 22:31+0200\n"
+"PO-Revision-Date: 2025-04-07 20:56+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -139,18 +139,16 @@ msgid "Updates"
 msgstr "Uppdateringar"
 
 #: notifier/NotifierItem.cpp:36
-#, fuzzy, kde-format
-#| msgid "Open Discover…"
+#, kde-format
 msgctxt "@action:button Opens Discover's main UI to analyze the updates"
 msgid "Open Discover…"
 msgstr "Öppna Discover…"
 
 #: notifier/NotifierItem.cpp:47
-#, fuzzy, kde-format
-#| msgid "Update"
+#, kde-format
 msgctxt "@action:button Starts an update in the background"
 msgid "Start Update"
-msgstr "Uppdatera"
+msgstr "Starta uppdatering"
 
 #: notifier/NotifierItem.cpp:50
 #, kde-format

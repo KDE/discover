@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-07 00:43+0000\n"
-"PO-Revision-Date: 2025-03-01 10:56+0100\n"
+"PO-Revision-Date: 2025-04-07 19:52+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: notifier/DiscoverNotifier.cpp:184
 #, kde-format
@@ -142,18 +142,16 @@ msgid "Updates"
 msgstr "Actualizaciones"
 
 #: notifier/NotifierItem.cpp:36
-#, fuzzy, kde-format
-#| msgid "Open Discover…"
+#, kde-format
 msgctxt "@action:button Opens Discover's main UI to analyze the updates"
 msgid "Open Discover…"
 msgstr "Abrir Discover…"
 
 #: notifier/NotifierItem.cpp:47
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgctxt "@action:button Starts an update in the background"
 msgid "Start Update"
-msgstr "Actualizaciones"
+msgstr "Iniciar actualización"
 
 #: notifier/NotifierItem.cpp:50
 #, kde-format
@@ -179,6 +177,3 @@ msgstr "Reiniciar para aplicar las actualizaciones instaladas"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Pulse para reiniciar el dispositivo"
-
-#~ msgid "See Updates…"
-#~ msgstr "Ver las actualizaciones…"

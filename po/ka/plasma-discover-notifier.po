@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-07 00:43+0000\n"
-"PO-Revision-Date: 2025-03-01 03:15+0100\n"
+"PO-Revision-Date: 2025-04-07 06:09+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -140,18 +140,16 @@ msgid "Updates"
 msgstr "განახლებები"
 
 #: notifier/NotifierItem.cpp:36
-#, fuzzy, kde-format
-#| msgid "Open Discover…"
+#, kde-format
 msgctxt "@action:button Opens Discover's main UI to analyze the updates"
 msgid "Open Discover…"
-msgstr "Discover-ის …"
+msgstr "Discover-ის გახსნა…"
 
 #: notifier/NotifierItem.cpp:47
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgctxt "@action:button Starts an update in the background"
 msgid "Start Update"
-msgstr "განახლებები"
+msgstr "განახლების დაწყება"
 
 #: notifier/NotifierItem.cpp:50
 #, kde-format

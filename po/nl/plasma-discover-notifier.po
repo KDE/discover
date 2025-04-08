@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-07 00:43+0000\n"
-"PO-Revision-Date: 2025-03-01 17:59+0100\n"
+"PO-Revision-Date: 2025-04-07 12:22+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: notifier/DiscoverNotifier.cpp:184
 #, kde-format
@@ -142,18 +142,16 @@ msgid "Updates"
 msgstr "Updates"
 
 #: notifier/NotifierItem.cpp:36
-#, fuzzy, kde-format
-#| msgid "Open Discover…"
+#, kde-format
 msgctxt "@action:button Opens Discover's main UI to analyze the updates"
 msgid "Open Discover…"
 msgstr "Ontdekken openen…"
 
 #: notifier/NotifierItem.cpp:47
-#, fuzzy, kde-format
-#| msgid "Update"
+#, kde-format
 msgctxt "@action:button Starts an update in the background"
 msgid "Start Update"
-msgstr "Bijwerken"
+msgstr "Bijwerken beginnen"
 
 #: notifier/NotifierItem.cpp:50
 #, kde-format

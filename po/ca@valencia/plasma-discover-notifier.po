@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-07 00:43+0000\n"
-"PO-Revision-Date: 2025-03-01 09:38+0100\n"
+"PO-Revision-Date: 2025-04-07 08:48+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -143,18 +143,16 @@ msgid "Updates"
 msgstr "Actualitzacions"
 
 #: notifier/NotifierItem.cpp:36
-#, fuzzy, kde-format
-#| msgid "Open Discover…"
+#, kde-format
 msgctxt "@action:button Opens Discover's main UI to analyze the updates"
 msgid "Open Discover…"
 msgstr "Obri Discover…"
 
 #: notifier/NotifierItem.cpp:47
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgctxt "@action:button Starts an update in the background"
 msgid "Start Update"
-msgstr "Actualitzacions"
+msgstr "Inicia l'actualització"
 
 #: notifier/NotifierItem.cpp:50
 #, kde-format
@@ -180,6 +178,3 @@ msgstr "Reinicieu per a aplicar les actualitzacions instal·lades"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Feu clic per a reiniciar el dispositiu"
-
-#~ msgid "See Updates…"
-#~ msgstr "Veure les actualitzacions…"
