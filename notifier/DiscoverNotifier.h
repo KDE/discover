@@ -94,7 +94,9 @@ private:
     void updateStatusNotifier();
     void refreshUnattended();
 
+    bool checkTriggerTimes(const QDateTime &lastTriggerTime) const;
     bool notifyAboutUpdates() const;
+    bool proceedUnattended() const;
 
     QList<BackendNotifierModule *> m_backends;
     QTimer m_timer;

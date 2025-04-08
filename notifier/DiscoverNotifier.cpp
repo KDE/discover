@@ -135,24 +135,33 @@ void DiscoverNotifier::showDiscoverUpdates(const QString &xdgActivationToken)
     }
 }
 
-bool DiscoverNotifier::notifyAboutUpdates() const
+bool DiscoverNotifier::checkTriggerTimes(const QDateTime &lastTriggerTime) const
 {
     if (state() != NormalUpdates && state() != SecurityUpdates) {
         // it's not very helpful to notify that everything is in order
-        qCDebug(NOTIFIER) << "Not notifying about updates, state is" << state();
+        qCDebug(NOTIFIER) << "Not triggering, state is" << state();
         return false;
     }
 
     if (m_settings->requiredNotificationInterval() < 0) {
-        qCDebug(NOTIFIER) << "Not notifying about updates, requiredNotificationInterval is" << m_settings->requiredNotificationInterval();
+        qCDebug(NOTIFIER) << "Not triggering, requiredNotificationInterval is" << m_settings->requiredNotificationInterval();
         return false;
     }
 
     // To configure to a random value, execute:
     // kwriteconfig5 --file PlasmaDiscoverUpdates --group Global --key RequiredNotificationInterval 3600
-    const QDateTime earliestNextNotificationTime = m_settings->lastNotificationTime().addSecs(m_settings->requiredNotificationInterval());
-    if (earliestNextNotificationTime.isValid() && earliestNextNotificationTime > QDateTime::currentDateTimeUtc()) {
-        qCDebug(NOTIFIER) << "Not notifying about updates, earliestNextNotificationTime is" << earliestNextNotificationTime;
+    const QDateTime earliestNextTriggerTime = lastTriggerTime.addSecs(m_settings->requiredNotificationInterval());
+    if (earliestNextTriggerTime.isValid() && earliestNextTriggerTime > QDateTime::currentDateTimeUtc()) {
+        qCDebug(NOTIFIER) << "Not triggering, earliestNextTriggerTime is" << earliestNextTriggerTime;
+        return false;
+    }
+
+    return true;
+}
+
+bool DiscoverNotifier::notifyAboutUpdates() const
+{
+    if (!checkTriggerTimes(m_settings->lastNotificationTime())) {
         return false;
     }
 
@@ -161,6 +170,19 @@ bool DiscoverNotifier::notifyAboutUpdates() const
 
     if (QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.discover"))) {
         qCDebug(NOTIFIER) << "Not notifying about updates, discover is running";
+        return false;
+    }
+    return true;
+}
+
+bool DiscoverNotifier::proceedUnattended() const
+{
+    if (!checkTriggerTimes(m_settings->lastUnattendedTrigger())) {
+        return false;
+    }
+
+    if (QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.discover"))) {
+        qCDebug(NOTIFIER) << "Not proceeding with unattended update, discover is running";
         return false;
     }
     return true;
@@ -269,7 +291,7 @@ void DiscoverNotifier::refreshUnattended()
 {
     m_settings->read();
 
-    if (!notifyAboutUpdates()) {
+    if (!proceedUnattended()) {
         qCDebug(NOTIFIER) << "refreshUnattended: not notifying about updates";
         return;
     }
@@ -349,7 +371,7 @@ void DiscoverNotifier::recheckSystemUpdateNeeded()
     for (BackendNotifierModule *module : std::as_const(m_backends))
         module->recheckSystemUpdateNeeded();
 
-    refreshUnattended();
+    QTimer::singleShot(20000, this, &DiscoverNotifier::refreshUnattended);
 }
 
 QStringList DiscoverNotifier::loadedModules() const
