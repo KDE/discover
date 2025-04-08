@@ -7,13 +7,13 @@
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # Мария Шикунова <translation-team@basealt.ru>, 2022.
 # Alexander Yavorsky <kekcuha@gmail.com>, 2023, 2024.
-# SPDX-FileCopyrightText: 2024 Olesya Gerasimenko <translation-team@basealt.ru>
+# SPDX-FileCopyrightText: 2024, 2025 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-10 02:54+0000\n"
-"PO-Revision-Date: 2024-09-13 14:17+0300\n"
+"PO-Revision-Date: 2025-04-07 11:18+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -913,6 +913,8 @@ msgstr ""
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
 msgstr ""
+"Приложение проверено %1 в том виде, в котором оно было предоставлено его "
+"автором, %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:92
 #, kde-format
@@ -2144,7 +2146,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:360
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "Программное обеспечение проверено %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:415
 #, kde-format
@@ -2610,12 +2612,12 @@ msgstr "Snap"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:606
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "Проверенный издатель на snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:608
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "Издатель со звёздочкой на snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
 #, kde-format
