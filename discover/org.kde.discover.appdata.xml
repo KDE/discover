@@ -84,6 +84,7 @@
   <summary xml:lang="nl">Installeer en verwijder toepassingen en add-ons</summary>
   <summary xml:lang="pl">Wgrywaj i usuwaj aplikacje oraz dodatki do nich</summary>
   <summary xml:lang="pt-BR">Instalar e remover programas e complementos</summary>
+  <summary xml:lang="ru">Установка и удаление приложений и дополнений</summary>
   <summary xml:lang="sa">एप्स्, एड्-ऑन् च संस्थाप्य निष्कासयन्तु</summary>
   <summary xml:lang="sl">Namešča in odstranjuje aplikacije in dodatke</summary>
   <summary xml:lang="sv">Installera och ta bort program och tillägg</summary>
@@ -234,7 +235,7 @@
     <p xml:lang="pt">Finalmente, o Discover também lhe permite procurar, instalar e gerir as extensões do Plasma e de todas as suas aplicações favoritas do KDE!</p>
     <p xml:lang="pt-BR">Finalmente, o Discover também lhe permite procurar, instalar e gerenciar as extensões do Plasma e de todos os seus aplicativos favoritos do KDE!</p>
     <p xml:lang="ro">De asemenea, Discover vă ajută să găsiți, instalați și gestionați suplimente pentru Plasma și toate aplicațiile KDE favorite!</p>
-    <p xml:lang="ru">Кроме того, при помощи Discover возможно искать, устанавливать и управлять дополнениями рабочей среды Plasma и приложений KDE.</p>
+    <p xml:lang="ru">Кроме того, с помощью Discover возможно выполнять поиск, установку и управление дополнениями рабочей среды Plasma и приложений KDE.</p>
     <p xml:lang="sa">अन्ते, डिस्कवर् भवन्तं प्लाज्मा तथा च भवतः सर्वेषां प्रिय KDE अनुप्रयोगानाम् कृते ऐड-ऑन् अन्वेष्टुं, संस्थापयितुं, प्रबन्धयितुं च अनुमतिं ददाति!</p>
     <p xml:lang="sk">Konečne aplikácia Discover tiež umožňuje nájsť, nainštalovať a spravovať doplnky pre Plasmu a všetky vaše obľúbené aplikácie prostredia KDE!</p>
     <p xml:lang="sl">Končno Discover vam omogoča iskanje, namestitev in upravljanje dodatkov za Plazma in vse vaše najljubše programe za KDE!</p>
