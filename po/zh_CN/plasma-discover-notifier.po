@@ -149,7 +149,7 @@ msgstr "打开 Discover…"
 #, kde-format
 msgctxt "@action:button Starts an update in the background"
 msgid "Start Update"
-msgstr ""
+msgstr "开始更新"
 
 #: notifier/NotifierItem.cpp:50
 #, kde-format
