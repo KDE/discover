@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-07 00:43+0000\n"
+"POT-Creation-Date: 2025-04-12 00:42+0000\n"
 "PO-Revision-Date: 2025-04-07 06:09+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -18,75 +18,75 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.5\n"
 
-#: notifier/DiscoverNotifier.cpp:184
+#: notifier/DiscoverNotifier.cpp:206
 #, kde-format
 msgid "View Updates"
 msgstr "განახლებების ნახვა"
 
-#: notifier/DiscoverNotifier.cpp:331
+#: notifier/DiscoverNotifier.cpp:353
 #, kde-format
 msgid "Security updates available"
 msgstr "ხელმისაწვდომია უსაფრთხოების განახლებები"
 
-#: notifier/DiscoverNotifier.cpp:333
+#: notifier/DiscoverNotifier.cpp:355
 #, kde-format
 msgid "Updates available"
 msgstr "ხელმისაწვდომია განახლება"
 
-#: notifier/DiscoverNotifier.cpp:335
+#: notifier/DiscoverNotifier.cpp:357
 #, kde-format
 msgid "System up to date"
 msgstr "სისტემა განახლებულია"
 
-#: notifier/DiscoverNotifier.cpp:337
+#: notifier/DiscoverNotifier.cpp:359
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "საჭიროა კომპიუტერის რესტარტი"
 
-#: notifier/DiscoverNotifier.cpp:339
+#: notifier/DiscoverNotifier.cpp:361
 #, kde-format
 msgid "Offline"
 msgstr "გათიშული"
 
-#: notifier/DiscoverNotifier.cpp:341
+#: notifier/DiscoverNotifier.cpp:363
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "განახლებების გადატარება…"
 
-#: notifier/DiscoverNotifier.cpp:366
+#: notifier/DiscoverNotifier.cpp:388
 #, kde-format
 msgid "Restart is required"
 msgstr "საჭიროა რესტარტი"
 
-#: notifier/DiscoverNotifier.cpp:367
+#: notifier/DiscoverNotifier.cpp:389
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "განახლებების ძალაში შესასვლელად საჭიროა მოწყობილობის გადატვირთვა."
 
-#: notifier/DiscoverNotifier.cpp:372
+#: notifier/DiscoverNotifier.cpp:394
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "განახლება და გადატვირთვა"
 
-#: notifier/DiscoverNotifier.cpp:373
+#: notifier/DiscoverNotifier.cpp:395
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr "განახლება და გამორთვა"
 
-#: notifier/DiscoverNotifier.cpp:417
+#: notifier/DiscoverNotifier.cpp:439
 #, kde-format
 msgid "Upgrade available"
 msgstr "განახლება ხელმისაწვდომია"
 
-#: notifier/DiscoverNotifier.cpp:418
+#: notifier/DiscoverNotifier.cpp:440
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 ახლა ხელმისაწვდომია."
 
-#: notifier/DiscoverNotifier.cpp:421
+#: notifier/DiscoverNotifier.cpp:443
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
