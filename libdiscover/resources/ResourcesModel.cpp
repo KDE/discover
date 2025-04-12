@@ -269,6 +269,7 @@ void AggregatedResultsStream::emitResults()
 {
     if (!m_results.isEmpty()) {
         Q_EMIT resourcesFound(m_results);
+        m_allResults << m_results;
         m_results.clear();
     }
     m_delayedEmission.setInterval(m_delayedEmission.interval() + 100);
@@ -277,13 +278,11 @@ void AggregatedResultsStream::emitResults()
 
 void AggregatedResultsStream::resourceDestruction(QObject *obj)
 {
-    for (auto it = m_results.begin(); it != m_results.end(); ++it) {
-        if (obj == it->resource) {
-            it = m_results.erase(it);
-        } else {
-            ++it;
-        }
-    }
+    auto f = [obj](const StreamResult &result) {
+        return obj == result.resource;
+    };
+    m_results.erase(std::remove_if(m_results.begin(), m_results.end(), f));
+    m_allResults.erase(std::remove_if(m_allResults.begin(), m_allResults.end(), f));
 }
 
 void AggregatedResultsStream::streamDestruction(QObject *obj)
@@ -296,7 +295,7 @@ void AggregatedResultsStream::clear()
 {
     if (m_streams.isEmpty()) {
         emitResults();
-        Q_EMIT finished();
+        Q_EMIT finished(m_allResults);
         deleteLater();
     }
 }

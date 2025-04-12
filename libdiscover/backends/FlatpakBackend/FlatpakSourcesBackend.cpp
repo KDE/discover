@@ -20,7 +20,7 @@
 #include <QTemporaryFile>
 #include <glib.h>
 #include <resources/DiscoverAction.h>
-#include <resources/StoredResultsStream.h>
+#include <resources/ResourcesModel.h>
 
 using namespace Qt::StringLiterals;
 using namespace Utils;
@@ -185,9 +185,8 @@ bool FlatpakSourcesBackend::addSource(const QString &id)
     } else {
         AbstractResourcesBackend::Filters filter;
         filter.resourceUrl = flatpakrepoUrl;
-        auto stream = new StoredResultsStream({backend->search(filter)});
-        connect(stream, &StoredResultsStream::finished, this, [addSource, stream]() {
-            const auto res = stream->resources();
+        auto stream = new AggregatedResultsStream({backend->search(filter)});
+        connect(stream, &AggregatedResultsStream::finished, this, [addSource](const QVector<StreamResult> &res) {
             addSource(res.value(0));
         });
     }
