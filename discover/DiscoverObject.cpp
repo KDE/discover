@@ -59,7 +59,6 @@
 #include <QMimeDatabase>
 #include <cmath>
 #include <functional>
-#include <resources/StoredResultsStream.h>
 #include <unistd.h>
 #include <utils.h>
 
@@ -334,8 +333,8 @@ void DiscoverObject::openLocalPackage(const QUrl &localfile)
         [this, localfile]() {
             AbstractResourcesBackend::Filters f;
             f.resourceUrl = localfile;
-            auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
-            connect(stream, &StoredResultsStream::finishedResources, this, [this, localfile](const QVector<StreamResult> &res) {
+            auto stream = new AggregatedResultsStream({ResourcesModel::global()->search(f)});
+            connect(stream, &AggregatedResultsStream::finished, this, [this, localfile](const QVector<StreamResult> &res) {
                 if (res.count() == 1) {
                     Q_EMIT openApplicationInternal(res.first().resource);
                 } else {
@@ -373,8 +372,8 @@ void DiscoverObject::openApplication(const QUrl &url)
         [this, url]() {
             AbstractResourcesBackend::Filters f;
             f.resourceUrl = url;
-            auto stream = new StoredResultsStream({ResourcesModel::global()->search(f)});
-            connect(stream, &StoredResultsStream::finishedResources, this, [this, url](const QVector<StreamResult> &res) {
+            auto stream = new AggregatedResultsStream({ResourcesModel::global()->search(f)});
+            connect(stream, &AggregatedResultsStream::finished, this, [this, url](const QVector<StreamResult> &res) {
                 if (res.count() >= 1) {
                     QPointer<QTimer> timeout = new QTimer(this);
                     timeout->setSingleShot(true);

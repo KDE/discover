@@ -43,7 +43,6 @@ set(discovercommon_SRCS
     resources/AbstractResource.cpp
     resources/AbstractBackendUpdater.cpp
     resources/AbstractSourcesBackend.cpp
-    resources/StoredResultsStream.cpp
     DiscoverBackendsFactory.cpp
     ScreenshotsModel.cpp
     ApplicationAddonsModel.cpp
