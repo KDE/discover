@@ -82,6 +82,7 @@ Transaction *SystemdSysupdateBackend::installApplication(AbstractResource *app)
         return nullptr;
     }
 
+    m_updater->setNeedsReboot(true);
     return resource->update();
 }
 
