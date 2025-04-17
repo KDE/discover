@@ -226,7 +226,7 @@ DiscoverPage {
                 wrapMode: TextEdit.Wrap
 
                 cursorPosition: text.length - 1
-                font.family: "monospace"
+                font: Kirigami.Theme.fixedWidthFont
 
                 Discover.ReadFile {
                     id: log
