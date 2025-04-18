@@ -259,9 +259,14 @@ DiscoverPage {
             GridLayout {
                 id: headerLayout
 
-                readonly property bool stackedMode: appBasicInfoLayout.implicitWidth + columnSpacing + appMetadataLayout.implicitWidth > (pageLayout.width - anchors.leftMargin - anchors.rightMargin)
+                readonly property bool hasMetadata: appMetadataLayout.visible
+                readonly property int effectiveBasicInfoWidth: appBasicInfoLayout.implicitWidth
+                readonly property int effectiveMetadataWidth: hasMetadata ? appMetadataLayout.implicitWidth + columnSpacing : 0
+                readonly property int effectiveSpaceAvailable: pageLayout.width - anchors.leftMargin - anchors.rightMargin
 
-                columns: stackedMode ? 1 : 2
+                readonly property bool stackedMode: hasMetadata && (effectiveBasicInfoWidth + effectiveMetadataWidth > effectiveSpaceAvailable)
+
+                columns: stackedMode || !hasMetadata ? 1 : 2
                 rows: stackedMode ? 2 : 1
                 columnSpacing: 0
                 rowSpacing: appInfo.padding
