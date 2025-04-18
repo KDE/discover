@@ -45,6 +45,7 @@
 #include <KSharedConfig>
 #include <KStatusNotifierItem>
 #include <KUiServerV2JobTracker>
+#include <KUriFilter>
 #include <kcoreaddons_version.h>
 // #include <KSwitchLanguageDialog>
 
@@ -634,6 +635,19 @@ void DiscoverObject::copyTextToClipboard(const QString text)
 {
     QClipboard *clipboard = QGuiApplication::clipboard();
     clipboard->setText(text);
+}
+
+QUrl DiscoverObject::searchUrl(const QString searchText)
+{
+    const QString defaultSearchEngine = QLatin1String("duckduckgo");
+    // FIXME need to get the string for the default search engine somehow, but
+    // KURISearchFilterEngine::defaultSearchEngine() is private
+    // const QString defaultSearchEngine = KURISearchFilterEngine::defaultSearchEngine()
+    KUriFilterData filterData(defaultSearchEngine + QLatin1String(" ") + searchText);
+    if (KUriFilter::self()->filterSearchUri(filterData, KUriFilter::WebShortcutFilter)) {
+        return filterData.uri();
+    }
+    return {};
 }
 
 void DiscoverObject::setAboutToPowerOff()
