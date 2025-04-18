@@ -45,6 +45,7 @@
 #include <KSharedConfig>
 #include <KStatusNotifierItem>
 #include <KUiServerV2JobTracker>
+#include <KUriFilter>
 #include <kcoreaddons_version.h>
 // #include <KSwitchLanguageDialog>
 
@@ -634,6 +635,15 @@ void DiscoverObject::copyTextToClipboard(const QString text)
 {
     QClipboard *clipboard = QGuiApplication::clipboard();
     clipboard->setText(text);
+}
+
+QUrl DiscoverObject::searchUrl(const QString searchText)
+{
+    KUriFilterData filterData(searchText);
+    if (KUriFilter::self()->filterSearchUri(filterData, KUriFilter::NormalTextFilter)) {
+        return filterData.uri();
+    }
+    return {};
 }
 
 void DiscoverObject::setAboutToPowerOff()

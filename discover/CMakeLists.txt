@@ -45,6 +45,7 @@ target_link_libraries(plasma-discover PUBLIC
                                      KF6::I18n
                                      KF6::ConfigGui
                                      KF6::KIOCore
+                                     KF6::KIOGui
                                      KF6::WindowSystem
                                      KF6::Notifications
                                      KF6::JobWidgets

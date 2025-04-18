@@ -230,7 +230,7 @@ DiscoverPage {
                     icon.name: "internet-web-browser"
                     onTriggered: {
                         const searchTerm = encodeURIComponent("Linux " + appsModel.search);
-                        Qt.openUrlExternally(i18nc("If appropriate, localize this URL to be something more relevant to the language. %1 is the text that will be searched for.", "https://duckduckgo.com/?q=%1", searchTerm));
+                        Qt.openUrlExternally(app.searchUrl(searchTerm));
                     }
                 }
 
