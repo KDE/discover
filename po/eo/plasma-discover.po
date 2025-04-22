@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:42+0000\n"
+"POT-Creation-Date: 2025-04-22 00:42+0000\n"
 "PO-Revision-Date: 2025-03-15 10:38+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: discover/DiscoverObject.cpp:183
+#: discover/DiscoverObject.cpp:184
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -26,7 +26,7 @@ msgid ""
 msgstr ""
 "%1 ne estas agordita por instali aplikaĵojn per nur-Discover aplik-aldonaĵoj"
 
-#: discover/DiscoverObject.cpp:185
+#: discover/DiscoverObject.cpp:186
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -38,13 +38,13 @@ msgstr ""
 "<interface>Agordoj</interface>, sub <interface>Mankantaj Backends</"
 "interface>."
 
-#: discover/DiscoverObject.cpp:188
+#: discover/DiscoverObject.cpp:189
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Raporti Ĉi Temon al %1"
 
-#: discover/DiscoverObject.cpp:193
+#: discover/DiscoverObject.cpp:194
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -60,7 +60,7 @@ msgstr ""
 "<command>pacman</command>.<nl/><nl/> Konsultu <link url='https://archlinux."
 "org/packages/extra/x86_64/discover/'>Pakado de %1 por Discover</link>"
 
-#: discover/DiscoverObject.cpp:206
+#: discover/DiscoverObject.cpp:207
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -78,17 +78,17 @@ msgstr ""
 "%1 rekomendis anstataŭe uzi la <command>pacman</command> komandlinian ilon "
 "por administri pakaĵojn.</para>"
 
-#: discover/DiscoverObject.cpp:294
+#: discover/DiscoverObject.cpp:295
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Ne eblis trovi kategorion '%1'"
 
-#: discover/DiscoverObject.cpp:316
+#: discover/DiscoverObject.cpp:317
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Provante malfermi neekzistantan dosieron '%1'"
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:339
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -97,17 +97,17 @@ msgstr ""
 "Ne povas interagi kun flatpak-resursoj sen la flatpak backend %1. Bonvolu "
 "unue instali ĝin."
 
-#: discover/DiscoverObject.cpp:342
+#: discover/DiscoverObject.cpp:343
 #, kde-format
 msgid "Could not open %1"
 msgstr "Ne eblis malfermi %1"
 
-#: discover/DiscoverObject.cpp:404
+#: discover/DiscoverObject.cpp:405
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Bonvolu certigi, ke Snap-subteno estas instalita"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:408
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -116,23 +116,23 @@ msgstr ""
 "Ne eblis malfermi %1 ĉar ĝi ne estis trovita en iuj disponeblaj programaraj "
 "deponejoj."
 
-#: discover/DiscoverObject.cpp:411
+#: discover/DiscoverObject.cpp:412
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Bonvolu raporti ĉi tiun problemon al la pakistoj de via distribuo."
 
-#: discover/DiscoverObject.cpp:414
+#: discover/DiscoverObject.cpp:415
 #, kde-format
 msgid "Report This Issue"
 msgstr "Raportu Ĉi tiun Temon"
 
-#: discover/DiscoverObject.cpp:474 discover/DiscoverObject.cpp:476
+#: discover/DiscoverObject.cpp:475 discover/DiscoverObject.cpp:477
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:477
+#: discover/DiscoverObject.cpp:478
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -693,14 +693,6 @@ msgstr "Serĉi en Ĉiuj Kategorioj"
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Serĉi en la Reto \"%1\""
-
-#: discover/qml/ApplicationsListPage.qml:233
-#, kde-format
-msgctxt ""
-"If appropriate, localize this URL to be something more relevant to the "
-"language. %1 is the text that will be searched for."
-msgid "https://duckduckgo.com/?q=%1"
-msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:244
 #, kde-format
@@ -1511,3 +1503,9 @@ msgstr "Devus kontroli ĝisdatigojn"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tempo de lasta ĝisdatigo nekonata"
+
+#~ msgctxt ""
+#~ "If appropriate, localize this URL to be something more relevant to the "
+#~ "language. %1 is the text that will be searched for."
+#~ msgid "https://duckduckgo.com/?q=%1"
+#~ msgstr "https://duckduckgo.com/?q=%1"

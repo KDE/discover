@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:42+0000\n"
+"POT-Creation-Date: 2025-04-22 00:42+0000\n"
 "PO-Revision-Date: 2023-02-15 16:05+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -25,14 +25,14 @@ msgstr ""
 "X-POFile-SpellExtra: KNewStuff Graham Nate Leinir Snap pacman Arch\n"
 "X-POFile-SpellExtra: PackageKit\n"
 
-#: discover/DiscoverObject.cpp:183
+#: discover/DiscoverObject.cpp:184
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:185
+#: discover/DiscoverObject.cpp:186
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -41,14 +41,14 @@ msgid ""
 "interface>."
 msgstr ""
 
-#: discover/DiscoverObject.cpp:188
+#: discover/DiscoverObject.cpp:189
 #, fuzzy, kde-format
 #| msgid "Report This Issue"
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Comunicar Este Problema"
 
-#: discover/DiscoverObject.cpp:193
+#: discover/DiscoverObject.cpp:194
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -60,7 +60,7 @@ msgid ""
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:206
+#: discover/DiscoverObject.cpp:207
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -72,17 +72,17 @@ msgid ""
 "packages.</para>"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:294
+#: discover/DiscoverObject.cpp:295
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Não foi possível encontrar a categoria '%1'"
 
-#: discover/DiscoverObject.cpp:316
+#: discover/DiscoverObject.cpp:317
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "A tentar abrir o ficheiro inexistente '%1'"
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:339
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -91,17 +91,17 @@ msgstr ""
 "Não é possível interagir com os recursos de Flatpak sem a infra-estrutura de "
 "Flatpak %1. Instale-a primeiro, por favor."
 
-#: discover/DiscoverObject.cpp:342
+#: discover/DiscoverObject.cpp:343
 #, kde-format
 msgid "Could not open %1"
 msgstr "Não foi possível abrir o %1"
 
-#: discover/DiscoverObject.cpp:404
+#: discover/DiscoverObject.cpp:405
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Por favor, certifique-se que o suporte de Snap está instalado"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:408
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -110,25 +110,25 @@ msgstr ""
 "Não foi possível aceder ao %1, porque não foi encontrado nos repositórios de "
 "aplicações disponíveis."
 
-#: discover/DiscoverObject.cpp:411
+#: discover/DiscoverObject.cpp:412
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 "Por favor comunique este problema aos gestores de pacotes da sua "
 "distribuição."
 
-#: discover/DiscoverObject.cpp:414
+#: discover/DiscoverObject.cpp:415
 #, kde-format
 msgid "Report This Issue"
 msgstr "Comunicar Este Problema"
 
-#: discover/DiscoverObject.cpp:474 discover/DiscoverObject.cpp:476
+#: discover/DiscoverObject.cpp:475 discover/DiscoverObject.cpp:477
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:477
+#: discover/DiscoverObject.cpp:478
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -734,14 +734,6 @@ msgstr "Procurar em Todas as Categorias"
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Procurar na Web por \"%1\""
-
-#: discover/qml/ApplicationsListPage.qml:233
-#, kde-format
-msgctxt ""
-"If appropriate, localize this URL to be something more relevant to the "
-"language. %1 is the text that will be searched for."
-msgid "https://duckduckgo.com/?q=%1"
-msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:244
 #, kde-format
@@ -1576,6 +1568,12 @@ msgstr "Se deve procurar por actualizações"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Hora da última actualização desconhecida"
+
+#~ msgctxt ""
+#~ "If appropriate, localize this URL to be something more relevant to the "
+#~ "language. %1 is the text that will be searched for."
+#~ msgid "https://duckduckgo.com/?q=%1"
+#~ msgstr "https://duckduckgo.com/?q=%1"
 
 #~ msgid "Documentation"
 #~ msgstr "Documentação"

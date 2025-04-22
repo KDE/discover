@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:42+0000\n"
+"POT-Creation-Date: 2025-04-22 00:42+0000\n"
 "PO-Revision-Date: 2024-06-28 11:35+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 23.08.5\n"
 
-#: discover/DiscoverObject.cpp:183
+#: discover/DiscoverObject.cpp:184
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -27,7 +27,7 @@ msgstr ""
 "%1 er ekki grunnstillt til að setja upp forrit í gegnum Discover—einungis "
 "forritaviðbætur"
 
-#: discover/DiscoverObject.cpp:185
+#: discover/DiscoverObject.cpp:186
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -39,13 +39,13 @@ msgstr ""
 "síðunni <interface>Stillingar</interface>, undir<interface>Bakendar sem "
 "vantar</interface>."
 
-#: discover/DiscoverObject.cpp:188
+#: discover/DiscoverObject.cpp:189
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Tilkynna vandamálið til %1"
 
-#: discover/DiscoverObject.cpp:193
+#: discover/DiscoverObject.cpp:194
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -62,7 +62,7 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>pakka fyrir "
 "Discover á %1</link>"
 
-#: discover/DiscoverObject.cpp:206
+#: discover/DiscoverObject.cpp:207
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -80,17 +80,17 @@ msgstr ""
 "<para> Umsjónaraðilar %1 mæla með því í staðinn að nota <command>pacman</"
 "command> á skipanalínunni til að hafa umsjón með pökkum.</para>"
 
-#: discover/DiscoverObject.cpp:294
+#: discover/DiscoverObject.cpp:295
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Fann ekki flokk '%1'"
 
-#: discover/DiscoverObject.cpp:316
+#: discover/DiscoverObject.cpp:317
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Reyni að opna skrá '%1' sem er ekki til"
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:339
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -99,17 +99,17 @@ msgstr ""
 "Get ekki átt samskipti við flatpak-uppsprettur án flatpak-bakenda %1. Settu "
 "hann upp fyrst."
 
-#: discover/DiscoverObject.cpp:342
+#: discover/DiscoverObject.cpp:343
 #, kde-format
 msgid "Could not open %1"
 msgstr "Gat ekki opnað %1"
 
-#: discover/DiscoverObject.cpp:404
+#: discover/DiscoverObject.cpp:405
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Gakktu úr skugga um að stuðningur við Snap sé uppsettur"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:408
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -117,25 +117,25 @@ msgid ""
 msgstr ""
 "Gat ekki opnað %1 því það fannst ekki í neinum tiltækum hugbúnaðarsöfnum."
 
-#: discover/DiscoverObject.cpp:411
+#: discover/DiscoverObject.cpp:412
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 "Sendu tilkynningu um vandamálið til þeirra sem sjá um pökkun hjá "
 "dreifingaraðila þínum."
 
-#: discover/DiscoverObject.cpp:414
+#: discover/DiscoverObject.cpp:415
 #, kde-format
 msgid "Report This Issue"
 msgstr "Tilkynna vandamálið"
 
-#: discover/DiscoverObject.cpp:474 discover/DiscoverObject.cpp:476
+#: discover/DiscoverObject.cpp:475 discover/DiscoverObject.cpp:477
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:477
+#: discover/DiscoverObject.cpp:478
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -727,14 +727,6 @@ msgstr "Leita í öllum flokkum"
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Leita á netinu að \"%1\""
-
-#: discover/qml/ApplicationsListPage.qml:233
-#, kde-format
-msgctxt ""
-"If appropriate, localize this URL to be something more relevant to the "
-"language. %1 is the text that will be searched for."
-msgid "https://duckduckgo.com/?q=%1"
-msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:244
 #, kde-format
@@ -1551,6 +1543,12 @@ msgstr "Ættir að athuga með uppfærslur"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tími síðustu uppfærslu óþekktur"
+
+#~ msgctxt ""
+#~ "If appropriate, localize this URL to be something more relevant to the "
+#~ "language. %1 is the text that will be searched for."
+#~ msgid "https://duckduckgo.com/?q=%1"
+#~ msgstr "https://duckduckgo.com/?q=%1"
 
 #~ msgid "Documentation"
 #~ msgstr "Handbækur"

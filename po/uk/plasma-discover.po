@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:42+0000\n"
+"POT-Creation-Date: 2025-04-22 00:42+0000\n"
 "PO-Revision-Date: 2025-03-19 08:49+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 23.04.3\n"
 
-#: discover/DiscoverObject.cpp:183
+#: discover/DiscoverObject.cpp:184
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -29,7 +29,7 @@ msgstr ""
 "%1 не налаштовано для встановлення програм за допомогою призначених лише для "
 "Discover додатків"
 
-#: discover/DiscoverObject.cpp:185
+#: discover/DiscoverObject.cpp:186
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -41,13 +41,13 @@ msgstr ""
 "<interface>Параметри</interface> зі списку <interface>Не вистачає модулів "
 "обробки</interface>."
 
-#: discover/DiscoverObject.cpp:188
+#: discover/DiscoverObject.cpp:189
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Повідомте про цю проблему %1"
 
-#: discover/DiscoverObject.cpp:193
+#: discover/DiscoverObject.cpp:194
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -64,7 +64,7 @@ msgstr ""
 "Ознайомтеся із <link url='https://archlinux.org/packages/extra/x86_64/"
 "discover/'>пакуванням %1 Discover</link>"
 
-#: discover/DiscoverObject.cpp:206
+#: discover/DiscoverObject.cpp:207
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -82,17 +82,17 @@ msgstr ""
 "<para>Супровідники %1 рекомендують замість цього для керування пакунками "
 "скористатися інструментом командного рядка  <command>pacman</command>.</para>"
 
-#: discover/DiscoverObject.cpp:294
+#: discover/DiscoverObject.cpp:295
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Не вдалося знайти категорію «%1»"
 
-#: discover/DiscoverObject.cpp:316
+#: discover/DiscoverObject.cpp:317
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Спроба відкрити файл «%1», якого не існує"
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:339
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -101,17 +101,17 @@ msgstr ""
 "Не можна взаємодіяти з ресурсами flatpak без модуля flatpak %1. Будь ласка, "
 "спочатку встановіть його."
 
-#: discover/DiscoverObject.cpp:342
+#: discover/DiscoverObject.cpp:343
 #, kde-format
 msgid "Could not open %1"
 msgstr "Не вдалося відкрити %1"
 
-#: discover/DiscoverObject.cpp:404
+#: discover/DiscoverObject.cpp:405
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Будь ласка, переконайтеся, що у системі встановлено підтримку Snap"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:408
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -120,24 +120,24 @@ msgstr ""
 "Не вдалося відкрити %1, оскільки пакунок не було знайдено у жодному з "
 "доступних сховищ програм."
 
-#: discover/DiscoverObject.cpp:411
+#: discover/DiscoverObject.cpp:412
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 "Будь ласка, повідомте про цю проблему пакувальникам вашого дистрибутива."
 
-#: discover/DiscoverObject.cpp:414
+#: discover/DiscoverObject.cpp:415
 #, kde-format
 msgid "Report This Issue"
 msgstr "Повідомити про цю проблему"
 
-#: discover/DiscoverObject.cpp:474 discover/DiscoverObject.cpp:476
+#: discover/DiscoverObject.cpp:475 discover/DiscoverObject.cpp:477
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Пошук"
 
-#: discover/DiscoverObject.cpp:477
+#: discover/DiscoverObject.cpp:478
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -745,14 +745,6 @@ msgstr "Шукати в усіх категоріях"
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Шукати «%1» в інтернеті"
-
-#: discover/qml/ApplicationsListPage.qml:233
-#, kde-format
-msgctxt ""
-"If appropriate, localize this URL to be something more relevant to the "
-"language. %1 is the text that will be searched for."
-msgid "https://duckduckgo.com/?q=%1"
-msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:244
 #, kde-format
@@ -1586,6 +1578,12 @@ msgstr "Слід перевірити на оновлення"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Момент останнього оновлення є невідомим"
+
+#~ msgctxt ""
+#~ "If appropriate, localize this URL to be something more relevant to the "
+#~ "language. %1 is the text that will be searched for."
+#~ msgid "https://duckduckgo.com/?q=%1"
+#~ msgstr "https://duckduckgo.com/?q=%1"
 
 #~ msgid "Documentation"
 #~ msgstr "Документація"

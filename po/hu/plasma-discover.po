@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:42+0000\n"
+"POT-Creation-Date: 2025-04-22 00:42+0000\n"
 "PO-Revision-Date: 2025-01-21 21:04+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 24.12.1\n"
 
-#: discover/DiscoverObject.cpp:183
+#: discover/DiscoverObject.cpp:184
 #, kde-format
 msgctxt "@title %1 is the distro name"
 msgid ""
@@ -29,7 +29,7 @@ msgstr ""
 "A(z) %1 nincs beállítva alkalmazások telepítésére Discoverrel - csak "
 "alkalmazások bővítményeire"
 
-#: discover/DiscoverObject.cpp:185
+#: discover/DiscoverObject.cpp:186
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -41,13 +41,13 @@ msgstr ""
 "modult a <interface>Beállítások</interface> oldalon, a <interface>Hiányzó "
 "háttérprogramok</interface> alatt."
 
-#: discover/DiscoverObject.cpp:188
+#: discover/DiscoverObject.cpp:189
 #, kde-format
 msgctxt "@action:button %1 is the distro name"
 msgid "Report This Issue to %1"
 msgstr "Hiba jelentése a(z) %1 disztribúciónak"
 
-#: discover/DiscoverObject.cpp:193
+#: discover/DiscoverObject.cpp:194
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -64,7 +64,7 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 Discover "
 "csomagját</link>"
 
-#: discover/DiscoverObject.cpp:206
+#: discover/DiscoverObject.cpp:207
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -81,17 +81,17 @@ msgstr ""
 "csak Flatpakot, Snapet és bővítményeket kezelni.<para>A(z) %1 karbantartók "
 "inkább a <command>pacman</command> csomagkezelő használatát ajánlják.</para>"
 
-#: discover/DiscoverObject.cpp:294
+#: discover/DiscoverObject.cpp:295
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Nem található kategória: „%1”"
 
-#: discover/DiscoverObject.cpp:316
+#: discover/DiscoverObject.cpp:317
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "A(z) „%1” nem létező fájl megnyitására tett kísérlet"
 
-#: discover/DiscoverObject.cpp:338
+#: discover/DiscoverObject.cpp:339
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -100,17 +100,17 @@ msgstr ""
 "Nem lehet dolgozni Flatpak erőforrásokkal a(z) %1 backend nélkül. Kérjük, "
 "telepítse azt."
 
-#: discover/DiscoverObject.cpp:342
+#: discover/DiscoverObject.cpp:343
 #, kde-format
 msgid "Could not open %1"
 msgstr "A(z) %1 nem nyitható meg"
 
-#: discover/DiscoverObject.cpp:404
+#: discover/DiscoverObject.cpp:405
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Ellenőrizze, hogy a Snap támogatás telepítve van-e"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:408
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -119,23 +119,23 @@ msgstr ""
 "Nem sikerült a(z) %1 megnyitása, mivel nem található meg egyik elérhető "
 "szoftvertárolóban sem."
 
-#: discover/DiscoverObject.cpp:411
+#: discover/DiscoverObject.cpp:412
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Kérjük, jelentse ezt a hibát a disztribúciója csomagolóinak."
 
-#: discover/DiscoverObject.cpp:414
+#: discover/DiscoverObject.cpp:415
 #, kde-format
 msgid "Report This Issue"
 msgstr "Jelentse ezt a hibát"
 
-#: discover/DiscoverObject.cpp:474 discover/DiscoverObject.cpp:476
+#: discover/DiscoverObject.cpp:475 discover/DiscoverObject.cpp:477
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:477
+#: discover/DiscoverObject.cpp:478
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -729,14 +729,6 @@ msgstr "Keresés az összes kategóriában"
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "„%1” keresése az interneten"
-
-#: discover/qml/ApplicationsListPage.qml:233
-#, kde-format
-msgctxt ""
-"If appropriate, localize this URL to be something more relevant to the "
-"language. %1 is the text that will be searched for."
-msgid "https://duckduckgo.com/?q=%1"
-msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:244
 #, kde-format
@@ -1566,6 +1558,12 @@ msgstr "Frissítések keresése szükséges"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Az utolsó frissítés időpontja ismeretlen"
+
+#~ msgctxt ""
+#~ "If appropriate, localize this URL to be something more relevant to the "
+#~ "language. %1 is the text that will be searched for."
+#~ msgid "https://duckduckgo.com/?q=%1"
+#~ msgstr "https://duckduckgo.com/?q=%1"
 
 #~ msgid "Documentation"
 #~ msgstr "Dokumentáció"
