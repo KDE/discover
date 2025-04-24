@@ -324,7 +324,7 @@ DiscoverPage {
         Kirigami.Action {
             id: promptRestartAction
             icon.name: "system-reboot-update"
-            text: i18nc("@action:button", "Restart to Install Updates Now")
+            text: i18nc("@action:button", "Restart and Install Updates")
             visible: false
             onTriggered: app.promptReboot()
         }
@@ -560,9 +560,9 @@ DiscoverPage {
         },
         State {
             name: "reboot"
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "Restart the system to complete the update process") }
+            PropertyChanges { target: page; footerLabel: i18nc("@info", "Updates will be installed after the system is restarted") }
             PropertyChanges { target: statusLabel; helpfulAction: promptRestartAction }
-            PropertyChanges { target: statusLabel; explanation: "" }
+            PropertyChanges { target: statusLabel; explanation: i18nc("@info", "You can keep using the system if you're not ready to restart yet.") }
             PropertyChanges { target: statusLabel.progressBar; visible: false }
             StateChangeScript {
                 script: if (resourcesUpdatesModel.readyToReboot) {
