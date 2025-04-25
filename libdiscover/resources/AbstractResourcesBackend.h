@@ -8,17 +8,18 @@
 
 #include <QObject>
 #include <QPair>
+#include <QPointer>
 #include <QVariantList>
 #include <QVector>
 
 #include "AbstractResource.h"
+#include "Category/Category.h"
 #include "DiscoverAction.h"
 #include "Transaction/AddonList.h"
 
 #include "discovercommon_export.h"
 
 class Transaction;
-class Category;
 class AbstractReviewsBackend;
 class AbstractBackendUpdater;
 
@@ -143,7 +144,7 @@ public:
     virtual bool isValid() const = 0;
 
     struct Filters {
-        Category *category = nullptr;
+        QPointer<Category> category;
         AbstractResource::State state = AbstractResource::Broken;
         QString mimetype;
         QString search;
