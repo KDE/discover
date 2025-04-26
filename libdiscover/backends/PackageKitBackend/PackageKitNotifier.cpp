@@ -42,12 +42,8 @@ PackageKitNotifier::PackageKitNotifier(QObject *parent)
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::transactionListChanged, this, &PackageKitNotifier::transactionListChanged);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::restartScheduled, this, &PackageKitNotifier::nowNeedsReboot);
-    connect(PackageKit::Daemon::global()->offline(), &PackageKit::Offline::changed, this, [this] {
-        auto offline = PackageKit::Daemon::global()->offline();
-        if (offline->updateTriggered() || offline->upgradeTriggered()) {
-            nowNeedsReboot();
-        }
-    });
+    connect(PackageKit::Daemon::global()->offline(), &PackageKit::Offline::changed, this, &PackageKitNotifier::checkNeedsReboot);
+    QTimer::singleShot(100, this, &PackageKitNotifier::checkNeedsReboot);
 
     m_appdata->load();
 
@@ -84,16 +80,6 @@ PackageKitNotifier::PackageKitNotifier(QObject *parent)
     m_recheckTimer->setInterval(200);
     m_recheckTimer->setSingleShot(true);
     connect(m_recheckTimer, &QTimer::timeout, this, &PackageKitNotifier::recheckSystemUpdate);
-
-    QFileSystemWatcher *watcher = new QFileSystemWatcher(this);
-    watcher->addPath(QStringLiteral(PK_OFFLINE_ACTION_FILENAME));
-    connect(watcher, &QFileSystemWatcher::fileChanged, this, &PackageKitNotifier::nowNeedsReboot);
-
-    QTimer::singleShot(100, this, [this]() {
-        if (QFile::exists(QStringLiteral(PK_OFFLINE_ACTION_FILENAME))) {
-            nowNeedsReboot();
-        }
-    });
 }
 
 PackageKitNotifier::~PackageKitNotifier()
@@ -367,6 +353,14 @@ void PackageKitNotifier::transactionListChanged(const QStringList &transactionID
             t->deleteLater();
         });
         m_transactions.insert(transactionID, t);
+    }
+}
+
+void PackageKitNotifier::checkNeedsReboot()
+{
+    auto offline = PackageKit::Daemon::global()->offline();
+    if (offline->triggerAction() != PackageKit::Offline::ActionUnset) {
+        nowNeedsReboot();
     }
 }
 

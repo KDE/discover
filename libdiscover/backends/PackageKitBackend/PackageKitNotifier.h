@@ -39,6 +39,7 @@ private Q_SLOTS:
     void finished(PackageKit::Transaction::Exit exit, uint);
     void onRequireRestart(PackageKit::Transaction::Restart type, const QString &packageID);
     void transactionListChanged(const QStringList &transactionIDs);
+    void checkNeedsReboot();
 
 private:
     void nowNeedsReboot();
