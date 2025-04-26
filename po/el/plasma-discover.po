@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2024-09-19 14:33+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1488,7 +1488,7 @@ msgstr "Συνολικό μέγεθος: %1"
 #: discover/qml/UpdatesPage.qml:327
 #, kde-format
 msgctxt "@action:button"
-msgid "Restart to Install Updates Now"
+msgid "Restart and Install Updates"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:462
@@ -1529,8 +1529,14 @@ msgstr "Ενημερώσεις"
 #: discover/qml/UpdatesPage.qml:563
 #, kde-format
 msgctxt "@info"
-msgid "Restart the system to complete the update process"
-msgstr "Επανεκκινήστε το σύστημα για να ολοκληρωθεί η διαδικασία ενημέρωσης"
+msgid "Updates will be installed after the system is restarted"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:565
+#, kde-format
+msgctxt "@info"
+msgid "You can keep using the system if you're not ready to restart yet."
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
@@ -1550,6 +1556,10 @@ msgstr "Πρέπει να γίνει έλεγχος ενημερώσεων"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Άγνωστος χρόνος τελευταίας ενημέρωσης"
+
+#~ msgctxt "@info"
+#~ msgid "Restart the system to complete the update process"
+#~ msgstr "Επανεκκινήστε το σύστημα για να ολοκληρωθεί η διαδικασία ενημέρωσης"
 
 #~ msgctxt ""
 #~ "If appropriate, localize this URL to be something more relevant to the "

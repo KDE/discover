@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -1474,9 +1474,11 @@ msgid "Total size: %1"
 msgstr "कुलम् आकारः %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Restart to Install Updates Now"
 msgctxt "@action:button"
-msgid "Restart to Install Updates Now"
+msgid "Restart and Install Updates"
 msgstr "अधुना अद्यतनं संस्थापयितुं पुनः आरभत"
 
 #: discover/qml/UpdatesPage.qml:462
@@ -1517,8 +1519,14 @@ msgstr "अद्यतनाः"
 #: discover/qml/UpdatesPage.qml:563
 #, kde-format
 msgctxt "@info"
-msgid "Restart the system to complete the update process"
-msgstr "अद्यतनप्रक्रियायाः समाप्त्यर्थं तन्त्रं पुनः आरभत"
+msgid "Updates will be installed after the system is restarted"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:565
+#, kde-format
+msgctxt "@info"
+msgid "You can keep using the system if you're not ready to restart yet."
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
@@ -1538,6 +1546,10 @@ msgstr "अद्यतनं अन्वेष्टव्यम्"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "अन्तिम-अद्यतनस्य समयः अज्ञातः"
+
+#~ msgctxt "@info"
+#~ msgid "Restart the system to complete the update process"
+#~ msgstr "अद्यतनप्रक्रियायाः समाप्त्यर्थं तन्त्रं पुनः आरभत"
 
 #~ msgctxt ""
 #~ "If appropriate, localize this URL to be something more relevant to the "

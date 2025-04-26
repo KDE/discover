@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2021-09-19 20:01+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -1428,7 +1428,7 @@ msgstr ""
 #: discover/qml/UpdatesPage.qml:327
 #, kde-format
 msgctxt "@action:button"
-msgid "Restart to Install Updates Now"
+msgid "Restart and Install Updates"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:462
@@ -1468,9 +1468,17 @@ msgid "Updates"
 msgstr "အပ်ဒိတ်များ"
 
 #: discover/qml/UpdatesPage.qml:563
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "The updates will be installed the next time the system is restarted"
+msgctxt "@info"
+msgid "Updates will be installed after the system is restarted"
+msgstr "စစ်စတမ်နောက်အခါပြန်စတင်သည့်အခါ အပ်ဒိတ်များကို တပ်ဆင်သွားမည်"
+
+#: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
-msgid "Restart the system to complete the update process"
+msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
@@ -1598,10 +1606,6 @@ msgstr "နောက်ဆုံးအကြိမ်အပ်ဒိတ်တင
 #~ msgctxt "Part of a string like this: '<app name> - <category>'"
 #~ msgid "- %1"
 #~ msgstr "- %1"
-
-#~ msgctxt "@info"
-#~ msgid "The updates will be installed the next time the system is restarted"
-#~ msgstr "စစ်စတမ်နောက်အခါပြန်စတင်သည့်အခါ အပ်ဒိတ်များကို တပ်ဆင်သွားမည်"
 
 #~ msgctxt "@info"
 #~ msgid "The system must be restarted to fully apply the installed updates"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2024-11-23 12:09+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -1479,9 +1479,11 @@ msgid "Total size: %1"
 msgstr "Total size: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Restart to Install Updates Now"
 msgctxt "@action:button"
-msgid "Restart to Install Updates Now"
+msgid "Restart and Install Updates"
 msgstr "Restart to Install Updates Now"
 
 #: discover/qml/UpdatesPage.qml:462
@@ -1520,10 +1522,18 @@ msgid "Updates"
 msgstr "Updates"
 
 #: discover/qml/UpdatesPage.qml:563
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "The updates will be installed the next time the system is restarted"
+msgctxt "@info"
+msgid "Updates will be installed after the system is restarted"
+msgstr "The updates will be installed the next time the system is restarted"
+
+#: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
-msgid "Restart the system to complete the update process"
-msgstr "Restart the system to complete the update process"
+msgid "You can keep using the system if you're not ready to restart yet."
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
@@ -1543,6 +1553,10 @@ msgstr "Should check for updates"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Time of last update unknown"
+
+#~ msgctxt "@info"
+#~ msgid "Restart the system to complete the update process"
+#~ msgstr "Restart the system to complete the update process"
 
 #~ msgctxt ""
 #~ "If appropriate, localize this URL to be something more relevant to the "
@@ -1773,10 +1787,6 @@ msgstr "Time of last update unknown"
 #~ msgctxt "Part of a string like this: '<app name> - <category>'"
 #~ msgid "- %1"
 #~ msgstr "- %1"
-
-#~ msgctxt "@info"
-#~ msgid "The updates will be installed the next time the system is restarted"
-#~ msgstr "The updates will be installed the next time the system is restarted"
 
 #~ msgctxt "@info"
 #~ msgid "The system must be restarted to fully apply the installed updates"

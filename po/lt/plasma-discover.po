@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2024-09-15 00:32+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -1494,9 +1494,11 @@ msgid "Total size: %1"
 msgstr "Bendras dydis: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Restart to Install Updates Now"
 msgctxt "@action:button"
-msgid "Restart to Install Updates Now"
+msgid "Restart and Install Updates"
 msgstr "Paleisti iš naujo, kad dabar būtų įdiegti atnaujinimai"
 
 #: discover/qml/UpdatesPage.qml:462
@@ -1535,10 +1537,18 @@ msgid "Updates"
 msgstr "Atnaujinimai"
 
 #: discover/qml/UpdatesPage.qml:563
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "The updates will be installed the next time the system is restarted"
+msgctxt "@info"
+msgid "Updates will be installed after the system is restarted"
+msgstr "Atnaujinimai bus įdiegti, kai kitą kartą paleisite sistemą iš naujo"
+
+#: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
-msgid "Restart the system to complete the update process"
-msgstr "Norėdami užbaigti atnaujinimo procesą, paleiskite sistemą iš naujo"
+msgid "You can keep using the system if you're not ready to restart yet."
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
@@ -1558,6 +1568,10 @@ msgstr "Turėtų būti tikrinama ar yra atnaujinimų"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Paskutinio atnaujinimo laikas nežinomas"
+
+#~ msgctxt "@info"
+#~ msgid "Restart the system to complete the update process"
+#~ msgstr "Norėdami užbaigti atnaujinimo procesą, paleiskite sistemą iš naujo"
 
 #~ msgctxt ""
 #~ "If appropriate, localize this URL to be something more relevant to the "
@@ -1757,10 +1771,6 @@ msgstr "Paskutinio atnaujinimo laikas nežinomas"
 #~ msgctxt "Part of a string like this: '<app name> - <category>'"
 #~ msgid "- %1"
 #~ msgstr "- %1"
-
-#~ msgctxt "@info"
-#~ msgid "The updates will be installed the next time the system is restarted"
-#~ msgstr "Atnaujinimai bus įdiegti, kai kitą kartą paleisite sistemą iš naujo"
 
 #~ msgctxt "@info"
 #~ msgid "The system must be restarted to fully apply the installed updates"

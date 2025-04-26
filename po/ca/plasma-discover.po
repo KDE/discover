@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2025-03-19 08:47+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1498,9 +1498,11 @@ msgid "Total size: %1"
 msgstr "Mida total: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Restart to Install Updates Now"
 msgctxt "@action:button"
-msgid "Restart to Install Updates Now"
+msgid "Restart and Install Updates"
 msgstr "Reinicia ara per a instal·lar les actualitzacions"
 
 #: discover/qml/UpdatesPage.qml:462
@@ -1541,8 +1543,14 @@ msgstr "Actualitzacions"
 #: discover/qml/UpdatesPage.qml:563
 #, kde-format
 msgctxt "@info"
-msgid "Restart the system to complete the update process"
-msgstr "Cal reiniciar el sistema per a completar el procés d'actualització"
+msgid "Updates will be installed after the system is restarted"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:565
+#, kde-format
+msgctxt "@info"
+msgid "You can keep using the system if you're not ready to restart yet."
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
@@ -1562,6 +1570,10 @@ msgstr "Cal comprovar si hi ha actualitzacions"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Es desconeix l'hora de l'última actualització"
+
+#~ msgctxt "@info"
+#~ msgid "Restart the system to complete the update process"
+#~ msgstr "Cal reiniciar el sistema per a completar el procés d'actualització"
 
 #~ msgctxt ""
 #~ "If appropriate, localize this URL to be something more relevant to the "

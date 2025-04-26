@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2024-11-17 21:51+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1449,9 +1449,11 @@ msgid "Total size: %1"
 msgstr "サイズの合計: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Restart to Install Updates Now"
 msgctxt "@action:button"
-msgid "Restart to Install Updates Now"
+msgid "Restart and Install Updates"
 msgstr "今すぐ再起動して更新をインストール"
 
 #: discover/qml/UpdatesPage.qml:462
@@ -1492,8 +1494,14 @@ msgstr "更新"
 #: discover/qml/UpdatesPage.qml:563
 #, kde-format
 msgctxt "@info"
-msgid "Restart the system to complete the update process"
-msgstr "更新を完了するには再起動が必要です"
+msgid "Updates will be installed after the system is restarted"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:565
+#, kde-format
+msgctxt "@info"
+msgid "You can keep using the system if you're not ready to restart yet."
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
@@ -1513,6 +1521,10 @@ msgstr "更新の確認が必要です"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "最後の更新時刻は不明です"
+
+#~ msgctxt "@info"
+#~ msgid "Restart the system to complete the update process"
+#~ msgstr "更新を完了するには再起動が必要です"
 
 #~ msgctxt ""
 #~ "If appropriate, localize this URL to be something more relevant to the "

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2024-11-25 21:34+0700\n"
 "Last-Translator: Wantoyo <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -1499,9 +1499,11 @@ msgid "Total size: %1"
 msgstr "Ukuran total: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Restart to Install Updates Now"
 msgctxt "@action:button"
-msgid "Restart to Install Updates Now"
+msgid "Restart and Install Updates"
 msgstr "Nyalakan ulang untuk Menginstal Pembaruan Sekarang"
 
 #: discover/qml/UpdatesPage.qml:462
@@ -1542,8 +1544,14 @@ msgstr "Pembaruan"
 #: discover/qml/UpdatesPage.qml:563
 #, kde-format
 msgctxt "@info"
-msgid "Restart the system to complete the update process"
-msgstr "Nyalakan ulang sistem untuk merampungkan proses pembaruan"
+msgid "Updates will be installed after the system is restarted"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:565
+#, kde-format
+msgctxt "@info"
+msgid "You can keep using the system if you're not ready to restart yet."
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
@@ -1563,6 +1571,10 @@ msgstr "Seharusnya periksa pembaruan"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Waktu pembaruan yang terakhir tidak diketahui"
+
+#~ msgctxt "@info"
+#~ msgid "Restart the system to complete the update process"
+#~ msgstr "Nyalakan ulang sistem untuk merampungkan proses pembaruan"
 
 #~ msgctxt ""
 #~ "If appropriate, localize this URL to be something more relevant to the "

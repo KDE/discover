@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2023-12-05 17:21+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -1505,7 +1505,7 @@ msgstr "Celková veľkosť:  %1"
 #: discover/qml/UpdatesPage.qml:327
 #, kde-format
 msgctxt "@action:button"
-msgid "Restart to Install Updates Now"
+msgid "Restart and Install Updates"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:462
@@ -1544,10 +1544,18 @@ msgid "Updates"
 msgstr "Aktualizácie"
 
 #: discover/qml/UpdatesPage.qml:563
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "The updates will be installed the next time the system is restarted"
+msgctxt "@info"
+msgid "Updates will be installed after the system is restarted"
+msgstr "Aktualizácie sa nainštalujú pri ďalšom reštarte systému"
+
+#: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
-msgid "Restart the system to complete the update process"
-msgstr "Reštartujte systém, aby ste dokončili proces aktualizácie"
+msgid "You can keep using the system if you're not ready to restart yet."
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
@@ -1567,6 +1575,10 @@ msgstr "Mali by sa skontrolovať aktualizácie"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Čas poslednej aktualizácie je neznámy"
+
+#~ msgctxt "@info"
+#~ msgid "Restart the system to complete the update process"
+#~ msgstr "Reštartujte systém, aby ste dokončili proces aktualizácie"
 
 #~ msgctxt ""
 #~ "If appropriate, localize this URL to be something more relevant to the "
@@ -1816,10 +1828,6 @@ msgstr "Čas poslednej aktualizácie je neznámy"
 #~ msgctxt "Part of a string like this: '<app name> - <category>'"
 #~ msgid "- %1"
 #~ msgstr "- %1"
-
-#~ msgctxt "@info"
-#~ msgid "The updates will be installed the next time the system is restarted"
-#~ msgstr "Aktualizácie sa nainštalujú pri ďalšom reštarte systému"
 
 #~ msgctxt "@info"
 #~ msgid "The system must be restarted to fully apply the installed updates"

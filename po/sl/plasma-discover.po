@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2025-03-19 07:22+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1498,9 +1498,11 @@ msgid "Total size: %1"
 msgstr "Skupna velikost: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Restart to Install Updates Now"
 msgctxt "@action:button"
-msgid "Restart to Install Updates Now"
+msgid "Restart and Install Updates"
 msgstr "Ponovno zaženi, da bi zdaj namestil posodobitve"
 
 #: discover/qml/UpdatesPage.qml:462
@@ -1541,8 +1543,14 @@ msgstr "Posodobitve"
 #: discover/qml/UpdatesPage.qml:563
 #, kde-format
 msgctxt "@info"
-msgid "Restart the system to complete the update process"
-msgstr "Ponovno zaženite sistem, da bi končali postopek posodobitve"
+msgid "Updates will be installed after the system is restarted"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:565
+#, kde-format
+msgctxt "@info"
+msgid "You can keep using the system if you're not ready to restart yet."
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
@@ -1562,6 +1570,10 @@ msgstr "Preveriti bi morali za posodobitvami"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Čas zadnje posodobitve je neznan"
+
+#~ msgctxt "@info"
+#~ msgid "Restart the system to complete the update process"
+#~ msgstr "Ponovno zaženite sistem, da bi končali postopek posodobitve"
 
 #~ msgctxt ""
 #~ "If appropriate, localize this URL to be something more relevant to the "

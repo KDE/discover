@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2024-12-23 16:18+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1511,9 +1511,11 @@ msgid "Total size: %1"
 msgstr "Gesamtgröße: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Restart to Install Updates Now"
 msgctxt "@action:button"
-msgid "Restart to Install Updates Now"
+msgid "Restart and Install Updates"
 msgstr "Jetzt neu starten zum Installieren der Aktualisierungen"
 
 #: discover/qml/UpdatesPage.qml:462
@@ -1552,10 +1554,18 @@ msgid "Updates"
 msgstr "Aktualisierungen"
 
 #: discover/qml/UpdatesPage.qml:563
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "The updates will be installed the next time the system is restarted"
+msgctxt "@info"
+msgid "Updates will be installed after the system is restarted"
+msgstr "Die Aktualisierungen werden beim nächsten Systemneustart installiert"
+
+#: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
-msgid "Restart the system to complete the update process"
-msgstr "Starten Sie Ihr System neu, um die Aktualisierung abzuschließen"
+msgid "You can keep using the system if you're not ready to restart yet."
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
@@ -1575,6 +1585,10 @@ msgstr "Soll auf Aktualisierungen prüfen"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Zeit der letzten Aktualisierung unbekannt"
+
+#~ msgctxt "@info"
+#~ msgid "Restart the system to complete the update process"
+#~ msgstr "Starten Sie Ihr System neu, um die Aktualisierung abzuschließen"
 
 #~ msgctxt ""
 #~ "If appropriate, localize this URL to be something more relevant to the "
@@ -1833,11 +1847,6 @@ msgstr "Zeit der letzten Aktualisierung unbekannt"
 #~ msgctxt "Part of a string like this: '<app name> - <category>'"
 #~ msgid "- %1"
 #~ msgstr "- %1"
-
-#~ msgctxt "@info"
-#~ msgid "The updates will be installed the next time the system is restarted"
-#~ msgstr ""
-#~ "Die Aktualisierungen werden beim nächsten Systemneustart installiert"
 
 #~ msgctxt "@info"
 #~ msgid "The system must be restarted to fully apply the installed updates"

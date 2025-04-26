@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2025-04-06 21:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1462,9 +1462,11 @@ msgid "Total size: %1"
 msgstr "총 크기: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Restart to Install Updates Now"
 msgctxt "@action:button"
-msgid "Restart to Install Updates Now"
+msgid "Restart and Install Updates"
 msgstr "지금 다시 시작하여 업데이트 설치"
 
 #: discover/qml/UpdatesPage.qml:462
@@ -1505,8 +1507,14 @@ msgstr "업데이트"
 #: discover/qml/UpdatesPage.qml:563
 #, kde-format
 msgctxt "@info"
-msgid "Restart the system to complete the update process"
-msgstr "업데이트 과정을 완료하려면 시스템을 다시 시작해야 합니다"
+msgid "Updates will be installed after the system is restarted"
+msgstr ""
+
+#: discover/qml/UpdatesPage.qml:565
+#, kde-format
+msgctxt "@info"
+msgid "You can keep using the system if you're not ready to restart yet."
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
@@ -1526,6 +1534,10 @@ msgstr "업데이트 확인 여부"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "마지막 업데이트 시간 알 수 없음"
+
+#~ msgctxt "@info"
+#~ msgid "Restart the system to complete the update process"
+#~ msgstr "업데이트 과정을 완료하려면 시스템을 다시 시작해야 합니다"
 
 #~ msgctxt ""
 #~ "If appropriate, localize this URL to be something more relevant to the "

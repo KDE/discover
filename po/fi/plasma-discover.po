@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-22 00:42+0000\n"
+"POT-Creation-Date: 2025-04-26 00:43+0000\n"
 "PO-Revision-Date: 2025-03-23 15:59+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1488,9 +1488,11 @@ msgid "Total size: %1"
 msgstr "Koko kaikkiaan: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Restart to Install Updates Now"
 msgctxt "@action:button"
-msgid "Restart to Install Updates Now"
+msgid "Restart and Install Updates"
 msgstr "käynnistä automaattisesti uudelleen päivitysten asentamiseksi"
 
 #: discover/qml/UpdatesPage.qml:462
@@ -1529,10 +1531,18 @@ msgid "Updates"
 msgstr "Päivitykset"
 
 #: discover/qml/UpdatesPage.qml:563
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "The updates will be installed the next time the system is restarted"
+msgctxt "@info"
+msgid "Updates will be installed after the system is restarted"
+msgstr "Päivitykset asennetaan, kun järjestelmä seuraavan kerran käynnistetään"
+
+#: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
-msgid "Restart the system to complete the update process"
-msgstr "Viimeistele päivitys käynnistämällä uudelleen"
+msgid "You can keep using the system if you're not ready to restart yet."
+msgstr ""
 
 # ”Päivitetty, valmiina käyttöön” näyttää paremmalta ja tilaa on hyvin pidemmälle tekstille. Ajan tasalla oli aikaisempi.
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
@@ -1553,6 +1563,10 @@ msgstr "Päivitykset tulisi tarkistaa"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Viimeisin päivitysaika ei ole tiedossa"
+
+#~ msgctxt "@info"
+#~ msgid "Restart the system to complete the update process"
+#~ msgstr "Viimeistele päivitys käynnistämällä uudelleen"
 
 #~ msgctxt ""
 #~ "If appropriate, localize this URL to be something more relevant to the "
@@ -1800,11 +1814,6 @@ msgstr "Viimeisin päivitysaika ei ole tiedossa"
 #~ msgctxt "Part of a string like this: '<app name> - <category>'"
 #~ msgid "- %1"
 #~ msgstr "– %1"
-
-#~ msgctxt "@info"
-#~ msgid "The updates will be installed the next time the system is restarted"
-#~ msgstr ""
-#~ "Päivitykset asennetaan, kun järjestelmä seuraavan kerran käynnistetään"
 
 #~ msgctxt "@info"
 #~ msgid "The system must be restarted to fully apply the installed updates"
