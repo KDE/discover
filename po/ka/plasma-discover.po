@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-26 00:43+0000\n"
-"PO-Revision-Date: 2025-03-20 03:32+0100\n"
+"PO-Revision-Date: 2025-04-26 04:59+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1475,12 +1475,10 @@ msgid "Total size: %1"
 msgstr "ჯამური ზომა: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "გადატვირთვა ახლავე განახლებების დასაყენებლად"
+msgstr "გადატვირთვა და განახლებების დაყენება"
 
 #: discover/qml/UpdatesPage.qml:462
 #, kde-format
@@ -1521,13 +1519,14 @@ msgstr "განახლებები"
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr ""
+msgstr "განახლებების დაყენება სისტემის გადატვირთვის შემდეგ მოხდება"
 
 #: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"თუ სისტემა გადატვირთვისთვის მზად არაა, მისი გამოყენება ჩვეულებრივ შეგიძლიათ."
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-26 00:43+0000\n"
-"PO-Revision-Date: 2025-03-19 08:49+0200\n"
+"PO-Revision-Date: 2025-04-26 15:41+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1514,12 +1514,10 @@ msgid "Total size: %1"
 msgstr "Загальний розмір: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Перезапустити для встановлення оновлень зараз"
+msgstr "Перезапустити і встановити оновлення"
 
 #: discover/qml/UpdatesPage.qml:462
 #, kde-format
@@ -1557,18 +1555,17 @@ msgid "Updates"
 msgstr "Оновлення"
 
 #: discover/qml/UpdatesPage.qml:563
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "The updates will be installed the next time the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr "Оновлення буде встановлено під час наступного перезапуску системи"
+msgstr "Оновлення буде встановлено після перезапуску системи"
 
 #: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"Ви можете продовжити користуватися системою, якщо не готові її перезапустити."
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593

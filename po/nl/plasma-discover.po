@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-26 00:43+0000\n"
-"PO-Revision-Date: 2025-03-19 14:37+0100\n"
+"PO-Revision-Date: 2025-04-26 16:33+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: discover/DiscoverObject.cpp:184
@@ -24,8 +24,8 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"%1 is niet geconfigureerd voor het installeren van toepassingen met "
-"Discover--gebruik met toepassingen add-ons"
+"%1 is niet geconfigureerd voor het installeren van toepassingen met alleen-"
+"Discover add-ons van toepassingen"
 
 #: discover/DiscoverObject.cpp:186
 #, kde-kuit-format
@@ -1496,12 +1496,10 @@ msgid "Total size: %1"
 msgstr "Totale grootte: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Herstarten om elementen voor bijwerken nu te installeren"
+msgstr "Elementen voor bijwerken installeren en opnieuw starten"
 
 #: discover/qml/UpdatesPage.qml:462
 #, kde-format
@@ -1539,20 +1537,19 @@ msgid "Updates"
 msgstr "Updates"
 
 #: discover/qml/UpdatesPage.qml:563
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "The updates will be installed the next time the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr ""
-"Het bijgewerkte zal geïnstalleerd worden bij de volgende keer dat het "
-"systeem wordt herstart"
+"Het bijgewerkte zal geïnstalleerd worden nadat het systeem wordt herstart"
 
 #: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"U kunt het systeem blijven gebruiken als u nog niet gereed bent te "
+"herstarten."
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593

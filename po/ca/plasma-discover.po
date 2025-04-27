@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-26 00:43+0000\n"
-"PO-Revision-Date: 2025-03-19 08:47+0100\n"
+"PO-Revision-Date: 2025-04-26 09:46+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1498,12 +1498,10 @@ msgid "Total size: %1"
 msgstr "Mida total: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Reinicia ara per a instal·lar les actualitzacions"
+msgstr "Reinicia i instal·la les actualitzacions"
 
 #: discover/qml/UpdatesPage.qml:462
 #, kde-format
@@ -1544,13 +1542,15 @@ msgstr "Actualitzacions"
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr ""
+msgstr "Les actualitzacions s'instal·laran després de reiniciar el sistema"
 
 #: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"Podeu continuar utilitzant el sistema si encara no esteu preparat/da per a "
+"reiniciar."
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
