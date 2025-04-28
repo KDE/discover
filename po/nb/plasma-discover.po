@@ -1491,7 +1491,3 @@ msgstr "Se etter oppdateringer"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for sist oppdatering er ukjent"
-
-#~ msgctxt "@info"
-#~ msgid "Restart the system to complete the update process"
-#~ msgstr "Starte maskinen på nytt for å fullføre oppdateringsprosessen"
