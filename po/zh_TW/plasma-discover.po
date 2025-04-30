@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-26 00:43+0000\n"
-"PO-Revision-Date: 2025-03-24 19:59+0900\n"
+"PO-Revision-Date: 2025-04-30 02:09+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.07.70\n"
 
 #: discover/DiscoverObject.cpp:184
 #, kde-format
@@ -1444,12 +1444,10 @@ msgid "Total size: %1"
 msgstr "總計大小：%1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "現在重新開機來安裝更新"
+msgstr "重新開機並安裝更新"
 
 #: discover/qml/UpdatesPage.qml:462
 #, kde-format
@@ -1487,18 +1485,16 @@ msgid "Updates"
 msgstr "更新"
 
 #: discover/qml/UpdatesPage.qml:563
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "The updates will be installed the next time the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr "以下更新將在系統下次重新啟動後安裝"
+msgstr "更新將在系統重新啟動後安裝"
 
 #: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
-msgstr ""
+msgstr "如果您還沒準備好重新啟動，您可以放心繼續使用系統。"
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593

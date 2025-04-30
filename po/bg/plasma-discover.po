@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-26 00:43+0000\n"
-"PO-Revision-Date: 2025-03-22 16:21+0100\n"
+"PO-Revision-Date: 2025-04-29 22:36+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.03.70\n"
+"X-Generator: Lokalize 25.07.70\n"
 
 #: discover/DiscoverObject.cpp:184
 #, kde-format
@@ -1488,12 +1488,10 @@ msgid "Total size: %1"
 msgstr "Общ размер: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Рестартирайте, за да инсталирате актуализациите сега"
+msgstr "Рестартирайте, за да инсталирате актуализациите"
 
 #: discover/qml/UpdatesPage.qml:462
 #, kde-format
@@ -1534,13 +1532,15 @@ msgstr "Актуализации"
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr ""
+msgstr "Актуализациите ще бъдат инсталирани след рестартиране на системата"
 
 #: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"Можете да продължите да използвате системата, ако все още не сте готови да я "
+"рестартирате."
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
