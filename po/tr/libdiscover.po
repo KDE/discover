@@ -1041,12 +1041,12 @@ msgstr "%1 Üzerinde Kararlı Sürümü Görüntüle"
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
 #, kde-format
 msgid "%1 is not installed but it still has data present."
-msgstr "%1 kurulu değil; ancak hâlâ verisi var."
+msgstr "%1 kurulu değil; ancak hâlâ bilgisayarda verisi var."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:39
 #, kde-format
 msgid "Delete settings and user data"
-msgstr "Ayarları ve kullanıcı verisini sil"
+msgstr "Ayarları ve Veriyi Sil"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:42
 #, kde-format
