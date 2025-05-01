@@ -122,6 +122,7 @@ DiscoverPage {
             preferredSortRole: reviewsSheet.sortRole
         }
         Component.onCompleted: reviewsSheet.sortRole = reviewsModel.preferredSortRole
+        implicitWidth: Math.min(Kirigami.Units.gridUnit * 40, Math.max(Kirigami.Units.gridUnit * 30, appInfo.contentWidth * 0.8))
     }
 
     actions: [

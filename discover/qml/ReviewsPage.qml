@@ -38,8 +38,6 @@ Kirigami.OverlaySheet {
         reviewDialog.open()
     }
 
-    implicitWidth: Math.min(Kirigami.Units.gridUnit * 40, Math.max(Kirigami.Units.gridUnit * 30, parent.width * 0.8))
-
     title: i18n("Reviews for %1", page.resource.name)
 
     showCloseButton: false
