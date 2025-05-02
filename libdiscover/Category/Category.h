@@ -52,7 +52,7 @@ public:
     Q_PROPERTY(QString name READ name NOTIFY nameChanged)
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(QVariantList subcategories READ subCategoriesVariant NOTIFY subCategoriesChanged)
-    Q_PROPERTY(bool visible READ isVisible CONSTANT)
+    Q_PROPERTY(bool visible READ isVisible NOTIFY visibleChanged)
 
     // Whether to apply localization during parsing.
     enum class Localization {
@@ -135,9 +135,20 @@ public:
         return m_parentCategory;
     }
 
+    void hide()
+    {
+        if (m_hide) {
+            return;
+        }
+        m_hide = true;
+        m_visible = false;
+        Q_EMIT visibleChanged();
+    }
+
 Q_SIGNALS:
     void subCategoriesChanged();
     void nameChanged();
+    void visibleChanged();
 
 private:
     // disable the QObject parent business
@@ -155,6 +166,7 @@ private:
     QSet<QString> m_plugins;
     bool m_isAddons = false;
     bool m_isDrivers = false;
+    bool m_hide = false;
     qint8 m_priority = 0;
     QTimer *m_subCategoriesChanged;
     bool m_visible = true;

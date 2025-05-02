@@ -52,6 +52,7 @@
 #include "libdiscover_backend_packagekit_debug.h"
 #include "utils.h"
 #include <Category/Category.h>
+#include <Category/CategoryModel.h>
 #include <resources/ResourcesModel.h>
 
 using namespace std::chrono_literals;
@@ -226,6 +227,22 @@ PackageKitBackend::PackageKitBackend(QObject *parent)
 
     m_globalHints = QStringList() << QStringLiteral("interactive=true") << QStringLiteral("locale=%1").arg(qEnvironmentVariable("LANG"));
     PackageKit::Daemon::global()->setHints(m_globalHints);
+
+    // Hide the drivers category if there's no drivers
+    connect(CategoryModel::global(), &CategoryModel::rootCategoriesChanged, this, [this] {
+        auto driversCategory = CategoryModel::global()->findCategoryByName(QStringLiteral("Hardware Drivers"));
+        AbstractResourcesBackend::Filters filter;
+        filter.category = driversCategory;
+        auto stream = search(filter);
+        connect(stream, &ResultsStream::resourcesFound, stream, [stream] {
+            stream->setProperty("foundDrivers", true);
+        });
+        connect(stream, &ResultsStream::destroyed, stream, [stream, driversCategory] {
+            if (!stream->property("foundDrivers").toBool()) {
+                driversCategory->hide();
+            }
+        });
+    });
 }
 
 PackageKitBackend::~PackageKitBackend()
