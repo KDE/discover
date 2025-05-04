@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-26 00:43+0000\n"
-"PO-Revision-Date: 2025-03-19 18:26+0100\n"
+"PO-Revision-Date: 2025-04-28 09:08+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: discover/DiscoverObject.cpp:184
 #, kde-format
@@ -1497,12 +1497,10 @@ msgid "Total size: %1"
 msgstr "Dimensione totale: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Riavvia per installare gli aggiornamenti ora"
+msgstr "Riavvia e installa gli aggiornamenti"
 
 #: discover/qml/UpdatesPage.qml:462
 #, kde-format
@@ -1540,18 +1538,18 @@ msgid "Updates"
 msgstr "Aggiornamenti"
 
 #: discover/qml/UpdatesPage.qml:563
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "The updates will be installed the next time the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr "Gli aggiornamenti saranno installati al prossimo riavvio del sistema"
+msgstr "Gli aggiornamenti saranno installati dopo il riavvio del sistema"
 
 #: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"Puoi continuare a utilizzare il sistema se non sei ancora pronto a "
+"riavviarlo."
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
