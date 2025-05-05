@@ -215,7 +215,7 @@ msgstr "© 2010-2025 Equipo desenvolvedor de Plasma"
 #: discover/main.cpp:134
 #, kde-format
 msgid "Aleix Pol Gonzalez"
-msgstr "Aleix Pol Gonzalez"
+msgstr "Aleix Pol i Gonzàlez"
 
 #: discover/main.cpp:135
 #, kde-format
