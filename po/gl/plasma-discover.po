@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2025-01-26 18:52+0100\n"
-"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"PO-Revision-Date: 2025-03-19 13:26+0100\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
@@ -197,7 +197,7 @@ msgstr "© 2010-2022 Equipo desenvolvedor de Plasma"
 #: discover/main.cpp:125
 #, kde-format
 msgid "Aleix Pol Gonzalez"
-msgstr "Aleix Pol Gonzalez"
+msgstr "Aleix Pol i Gonzàlez"
 
 #: discover/main.cpp:126
 #, kde-format
