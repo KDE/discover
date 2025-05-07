@@ -1067,7 +1067,7 @@ msgstr "Права доступу"
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
 #, kde-format
 msgid "Configure permissions…"
-msgstr "Налаштовуємо права доступу…"
+msgstr "Налаштувати права доступу…"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:471
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
