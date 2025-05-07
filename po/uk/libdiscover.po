@@ -2395,7 +2395,7 @@ msgstr "Перемкнути"
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr "Налаштовуємо права доступу…"
+msgstr "Налаштувати права доступу…"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
