@@ -1,5 +1,5 @@
 # Spanish translations for plasma-discover-notifier.po package.
-# Copyright (C) 2015-2025 This_file_is_part_of_KDE
+# Copyright (C) 2015-2025 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
 # Automatically generated, 2015.
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-12 00:42+0000\n"
-"PO-Revision-Date: 2025-04-07 19:52+0100\n"
+"PO-Revision-Date: 2025-05-07 18:26+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
