@@ -1,15 +1,15 @@
-# Spanish translations for muon-notifier.po package.
-# Copyright (C) 2015 This_file_is_part_of_KDE
+# Spanish translations for plasma-discover-notifier.po package.
+# Copyright (C) 2015-2025 This file is copyright:
 # This file is distributed under the same license as the discover package.
-#
 # Automatically generated, 2015.
+#
 # SPDX-FileCopyrightText: 2015, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
-"Project-Id-Version: muon-notifier\n"
+"Project-Id-Version: plasma-discover-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-22 02:31+0000\n"
-"PO-Revision-Date: 2025-02-17 22:57+0100\n"
+"PO-Revision-Date: 2025-05-07 18:23+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -175,53 +175,3 @@ msgstr "Reiniciar para aplicar las actualizaciones instaladas"
 #, kde-format
 msgid "Click to restart the device"
 msgstr "Pulse para reiniciar el dispositivo"
-
-#~ msgctxt "@action:button"
-#~ msgid "Restart"
-#~ msgstr "Reiniciar"
-
-#~ msgid "New version: %1"
-#~ msgstr "Nueva versión: %1"
-
-#~ msgid "Restart..."
-#~ msgstr "Reiniciar..."
-
-#~ msgid "Update"
-#~ msgstr "Actualizar"
-
-#~ msgid "Open Software Center..."
-#~ msgstr "Abrir el centro de software..."
-
-#~ msgctxt "First part of '%1, %2'"
-#~ msgid "1 package to update"
-#~ msgid_plural "%1 packages to update"
-#~ msgstr[0] "1 paquete a actualizar"
-#~ msgstr[1] "%1 paquetes a actualizar"
-
-#~ msgctxt "Second part of '%1, %2'"
-#~ msgid "of which 1 is security update"
-#~ msgid_plural "of which %1 are security updates"
-#~ msgstr[0] "de los que 1 es una actualización de seguridad"
-#~ msgstr[1] "de los que %1 son actualizaciones de seguridad"
-
-#~ msgctxt ""
-#~ "%1 is '%1 packages to update' and %2 is 'of which %1 is security updates'"
-#~ msgid "%1, %2"
-#~ msgstr "%1, %2"
-
-#~ msgid "1 package to update"
-#~ msgid_plural "%1 packages to update"
-#~ msgstr[0] "1 paquete a actualizar"
-#~ msgstr[1] "%1 paquetes a actualizar"
-
-#~ msgid "1 security update"
-#~ msgid_plural "%1 security updates"
-#~ msgstr[0] "1 actualización de seguridad"
-#~ msgstr[1] "%1 actualizaciones de seguridad"
-
-#~ msgid "No packages to update"
-#~ msgstr "No hay que actualizar ningún paquete"
-
-#~ msgid "%1 packages to update, of which %2 are security updates"
-#~ msgstr ""
-#~ "%1 paquetes a actualizar, de los que %2 son actualizaciones de seguridad"
