@@ -113,10 +113,8 @@ Kirigami.GlobalDrawer {
         ActionListItem {
             id: featuredActionListItem
             action: featuredAction
+            visible: enabled && drawer.wideScreen
             Keys.onUpPressed: searchField.forceActiveFocus(Qt.TabFocusReason)
-        },
-        ActionListItem {
-            action: searchAction
         },
         ActionListItem {
             action: installedAction
