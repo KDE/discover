@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-26 00:43+0000\n"
-"PO-Revision-Date: 2025-03-20 18:18+0100\n"
+"PO-Revision-Date: 2025-05-09 16:08+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1490,12 +1490,10 @@ msgid "Total size: %1"
 msgstr "Grandor Total: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Restarta per Installar actualisationes nunc"
+msgstr "Restarta e Installa actualisationes"
 
 #: discover/qml/UpdatesPage.qml:462
 #, kde-format
@@ -1533,20 +1531,17 @@ msgid "Updates"
 msgstr "Actualisationes"
 
 #: discover/qml/UpdatesPage.qml:563
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "The updates will be installed the next time the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr ""
-"Le actualisationes essera installate le proxime vice que le systema es "
-"restartate"
+msgstr "Le actualisationes essera installate post que le systema es restartate"
 
 #: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"Tu pote mantener le systema in uso si tu non es ancora preste per restartar."
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
