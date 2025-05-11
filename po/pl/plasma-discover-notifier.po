@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-12 00:42+0000\n"
-"PO-Revision-Date: 2025-03-15 10:05+0100\n"
+"PO-Revision-Date: 2025-05-10 12:03+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -84,7 +84,7 @@ msgstr "Dostępne uaktualnienie"
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
-msgstr "%1 jest teraz dostępny."
+msgstr "%1 jest teraz dostępne."
 
 #: notifier/DiscoverNotifier.cpp:443
 #, kde-format
