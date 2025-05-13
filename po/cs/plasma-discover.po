@@ -180,10 +180,9 @@ msgid "An application explorer"
 msgstr "Prohlížeč aplikací"
 
 #: discover/main.cpp:133
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010-2024 Vývojový tým Plasma"
+msgstr ""
 
 #: discover/main.cpp:134
 #, kde-format
@@ -801,11 +800,9 @@ msgid "&Updates (Fetching…)"
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:96
-#, fuzzy, kde-format
-#| msgid "&Update (%1)"
-#| msgid_plural "&Updates (%1)"
+#, kde-format
 msgid "&Updates (%1)"
-msgstr "Akt&ualizace (%1)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:104
 #, kde-format
@@ -1395,12 +1392,10 @@ msgid "Total size: %1"
 msgstr "Celková velikost: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Restartovat a nainstalovat aktualizace"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:462
 #, kde-format
@@ -1467,13 +1462,3 @@ msgstr "Měli byste zkontrolovat aktualizace"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#~ msgctxt "@info"
-#~ msgid "Restart the system to complete the update process"
-#~ msgstr "Pro dokončení aktualizace restartujte systém"
-
-#~ msgctxt ""
-#~ "If appropriate, localize this URL to be something more relevant to the "
-#~ "language. %1 is the text that will be searched for."
-#~ msgid "https://duckduckgo.com/?q=%1"
-#~ msgstr "https://duckduckgo.com/?q=%1"
