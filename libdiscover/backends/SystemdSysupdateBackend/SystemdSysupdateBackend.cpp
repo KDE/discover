@@ -53,7 +53,10 @@ bool SystemdSysupdateBackend::isValid() const
 
 ResultsStream *SystemdSysupdateBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
-    Q_UNUSED(filter);
+    // We only support updates. All targeted searches are not applicable.
+    if (!filter.resourceUrl.isEmpty()) {
+        return new ResultsStream(QStringLiteral("systemd-sysupdate-empty"), {});
+    }
 
     // Since we'll only ever have a handful of targets, we can just return all of them
     QVector<StreamResult> results;
