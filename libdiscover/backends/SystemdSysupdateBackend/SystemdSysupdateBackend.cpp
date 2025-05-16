@@ -61,6 +61,10 @@ ResultsStream *SystemdSysupdateBackend::search(const AbstractResourcesBackend::F
     // Since we'll only ever have a handful of targets, we can just return all of them
     QVector<StreamResult> results;
     for (const auto &resource : m_resources) {
+        if (resource->state() < filter.state) {
+            continue;
+        }
+
         if (!filter.search.isEmpty() && !resource->name().contains(filter.search, Qt::CaseInsensitive)) {
             continue;
         }
