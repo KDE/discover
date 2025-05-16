@@ -241,6 +241,11 @@ int SteamOSBackend::updatesCount() const
 // give a void stream
 ResultsStream *SteamOSBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
+    // We only support updates. All targeted searches are not applicable.
+    if (!filter.resourceUrl.isEmpty()) {
+        return new ResultsStream(QStringLiteral("SteamOS-empty"), {});
+    }
+
     QVector<StreamResult> res;
     if (m_resource && m_resource->state() >= filter.state) {
         res << StreamResult{m_resource, 0};
