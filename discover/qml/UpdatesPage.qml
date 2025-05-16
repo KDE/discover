@@ -354,6 +354,15 @@ DiscoverPage {
         reuseItems: true
         clip: true
 
+        activeFocusOnTab: true
+        onActiveFocusChanged: {
+            if (activeFocus && currentIndex === -1) {
+                currentIndex = 0
+            }
+        }
+
+        Accessible.role: Accessible.List
+
         model: KItemModels.KSortFilterProxyModel {
             sourceModel: updateModel
             sortRole: Discover.UpdateModel.SectionResourceProgressRole
@@ -382,13 +391,23 @@ DiscoverPage {
             width: updatesView.width
 
             highlighted: false
+            focus: ListView.isCurrentItem
+            activeFocusOnTab: ListView.isCurrentItem
+            checked: itemChecked.checked
+
+            Accessible.name: model.display
+            Accessible.description: model.resource.upgradeText
+            Accessible.role: Accessible.ListItem
 
             onEnabledChanged: if (!enabled) {
                 model.extended = false;
             }
 
-            Keys.onReturnPressed: event => {
+            Keys.onSpacePressed: event => {
                 itemChecked.clicked();
+            }
+            Keys.onReturnPressed: event => {
+                model.extended = !model.extended;
             }
             Keys.onPressed: event => {
                 if (event.key === Qt.Key_Alt) {
@@ -404,10 +423,15 @@ DiscoverPage {
             Component.onCompleted: {
                 if (extended) {
                     updateModel.fetchUpdateDetails(index)
+                    if (ListView.isCurrentItem) {
+                        forceActiveFocus(Qt.OtherFocusReason)
+                    }
                 }
             }
             onExtendedChanged: if (extended) {
                 updateModel.fetchUpdateDetails(index)
+            } else {
+                moreInformationButton.focus = false
             }
 
             contentItem: ColumnLayout {
@@ -422,6 +446,7 @@ DiscoverPage {
                         id: itemChecked
                         Layout.alignment: Qt.AlignVCenter
                         checked: listItem.model.checked === Qt.Checked
+                        activeFocusOnTab: false
                         onClicked: listItem.model.checked = (listItem.model.checked === Qt.Checked ? Qt.Unchecked : Qt.Checked)
                         enabled: !resourcesUpdatesModel.isProgressing
                     }
@@ -508,6 +533,7 @@ DiscoverPage {
                     }
 
                     QQC2.Button {
+                        id: moreInformationButton
                         Layout.alignment: Qt.AlignRight
                         text: i18n("More Information…")
                         enabled: !resourcesUpdatesModel.isProgressing
