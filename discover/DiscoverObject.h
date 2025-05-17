@@ -95,4 +95,6 @@ private:
     std::unique_ptr<CachedNetworkAccessManagerFactory> m_networkAccessManagerFactory;
     std::unique_ptr<KStatusNotifierItem, QScopedPointerDeleteLater> m_sni;
     std::unique_ptr<InlineMessage> m_homePageMessage;
+
+    bool m_isDeleting = false;
 };
