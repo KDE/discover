@@ -534,11 +534,10 @@ ResultsStream *KNSBackend::search(const AbstractResourcesBackend::Filters &filte
         };
         deferredResultStream(stream, start);
         return stream;
-    } else if ((!filter.category && !filter.search.isEmpty()) // Accept global searches
-                                                              // If there /is/ a category, make sure we actually are one of those requested before searching
-               || (filter.category && kContains(m_categories, [&filter](const QString &cat) {
-                       return filter.category->matchesCategoryName(cat);
-                   }))) {
+        // Make sure we actually are one of the requested categories before searching
+    } else if ((filter.category && kContains(m_categories, [&filter](const QString &cat) {
+                    return filter.category->matchesCategoryName(cat);
+                }))) {
         return searchStream(filter.search);
     }
     return voidStream();
