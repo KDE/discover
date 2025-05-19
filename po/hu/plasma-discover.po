@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-26 00:43+0000\n"
-"PO-Revision-Date: 2025-01-21 21:04+0100\n"
+"PO-Revision-Date: 2025-05-18 20:16+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #: discover/DiscoverObject.cpp:184
 #, kde-format
@@ -194,7 +194,7 @@ msgstr "Felsorolja a felhasználói visszajelzés lehetőségeit"
 #: discover/main.cpp:44
 #, kde-format
 msgid "Starts an update automatically, headless"
-msgstr ""
+msgstr "Automatikus frissítést indít a háttérben"
 
 #: discover/main.cpp:46
 #, kde-format
@@ -207,10 +207,9 @@ msgid "An application explorer"
 msgstr "Egy alkalmazásfelfedező"
 
 #: discover/main.cpp:133
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© A Plasma fejlesztői, 2010-2024."
+msgstr "© A Plasma fejlesztői, 2010-2025."
 
 #: discover/main.cpp:134
 #, kde-format
@@ -877,11 +876,9 @@ msgid "&Updates (Fetching…)"
 msgstr "Fr&issítések (lekérés…)"
 
 #: discover/qml/DiscoverWindow.qml:96
-#, fuzzy, kde-format
-#| msgid "&Update (%1)"
-#| msgid_plural "&Updates (%1)"
+#, kde-format
 msgid "&Updates (%1)"
-msgstr "F&rissítés (%1)"
+msgstr "F&rissítések (%1)"
 
 #: discover/qml/DiscoverWindow.qml:104
 #, kde-format
@@ -1494,12 +1491,10 @@ msgid "Total size: %1"
 msgstr "Teljes méret: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Újraindítás most a frissítések telepítéséhez"
+msgstr "Újraindítás és a frissítések telepítése"
 
 #: discover/qml/UpdatesPage.qml:462
 #, kde-format
@@ -1540,13 +1535,14 @@ msgstr "Frissítések"
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr ""
+msgstr "A frissítések a rendszer újraindítása után kerülnek telepítésre"
 
 #: discover/qml/UpdatesPage.qml:565
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"Tovább használhatja a rendszert, ha még nem áll készen az újraindításra."
 
 #: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
 #: discover/qml/UpdatesPage.qml:593
