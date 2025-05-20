@@ -291,7 +291,7 @@ DiscoverPage {
                 // App icon, name, author, and rating
                 RowLayout {
                     id: appBasicInfoLayout
-                    Layout.maximumWidth: headerLayout.implicitWidth
+                    Layout.fillWidth: true
                     Layout.alignment: headerLayout.stackedMode ? Qt.AlignHCenter : Qt.AlignLeft
                     spacing: appInfo.padding
 
