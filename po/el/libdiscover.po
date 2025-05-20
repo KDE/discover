@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-05 00:43+0000\n"
+"POT-Creation-Date: 2025-05-20 00:43+0000\n"
 "PO-Revision-Date: 2024-09-19 14:31+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1192,7 +1192,7 @@ msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Μη διαχειρίσιμο σφάλμα στο %1 backend. Επικοινωνήστε με τον διανομέα σας."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:571
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:570
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Λανθασμένο KNewStuff URI: %1"

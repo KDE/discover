@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-05 00:43+0000\n"
+"POT-Creation-Date: 2025-05-20 00:43+0000\n"
 "PO-Revision-Date: 2024-08-25 12:13+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -1157,7 +1157,7 @@ msgstr "Klarte ikkje henta skjermbilete for oppføringa %1 i motoren %2"
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "Uhandtert feil i %1-motor. Kontakt distributøren din."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:571
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:570
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Feil adresse til KNewStuff: %1"

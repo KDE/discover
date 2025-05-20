@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-05 00:43+0000\n"
+"POT-Creation-Date: 2025-05-20 00:43+0000\n"
 "PO-Revision-Date: 2025-02-20 08:32+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -1171,7 +1171,7 @@ msgstr ""
 "Непридатна до обробки помилка у модулі %1. Повідомте про це розробникам "
 "вашого дистрибутива."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:571
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:570
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Помилкова адреса KNewStuff: %1"

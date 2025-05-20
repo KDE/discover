@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-05 00:43+0000\n"
+"POT-Creation-Date: 2025-05-20 00:43+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -1149,7 +1149,7 @@ msgstr "पृष्ठभागे %2 मध्ये %1 प्रविष्�
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "%1 पृष्ठभागे अनियंत्रितदोषः । स्वस्य वितरकेन सह सम्पर्कं कुर्वन्तु।."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:571
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:570
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "मिथ्या KNewStuff URI: %1"
