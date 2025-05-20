@@ -504,7 +504,7 @@ DiscoverPage {
                         // "See More licenses" link, in case there are a lot of them
                         Kirigami.LinkButton {
                             visible: application.licenses.length > 3
-                            text: i18np("See more…", "See more…", appInfo.application.licenses.length)
+                            text: i18nc("Show all licenses of the package", "See more…")
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignTop
                             elide: Text.ElideRight
