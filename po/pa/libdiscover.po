@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-05 00:43+0000\n"
+"POT-Creation-Date: 2025-05-20 02:37+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -1147,7 +1147,7 @@ msgstr ""
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "%1 ਬੈਕਐਂਡ ਵਿੱਚ ਬਿਨਾਂ-ਨਿਪਟਾਈ ਗਲਤੀ ਹੈ। ਆਪਣੇ ਡਿਸਟਰੀਬਿਊਟਰ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:571
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:570
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "ਗਲਤ KNewStuff URI: %1"
