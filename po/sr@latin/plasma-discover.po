@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-26 00:43+0000\n"
+"POT-Creation-Date: 2025-05-21 00:43+0000\n"
 "PO-Revision-Date: 2018-01-06 09:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -464,12 +464,9 @@ msgstr ""
 
 #: discover/qml/ApplicationPage.qml:507
 #, kde-format
+msgctxt "Show all licenses of the package"
 msgid "See more…"
-msgid_plural "See more…"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:519
 #, kde-format
@@ -1467,19 +1464,19 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:462
+#: discover/qml/UpdatesPage.qml:487
 #, fuzzy, kde-format
 #| msgid "Install"
 msgid "Installing"
 msgstr "Instaliraj"
 
-#: discover/qml/UpdatesPage.qml:493
+#: discover/qml/UpdatesPage.qml:518
 #, fuzzy, kde-format
 #| msgid "Update All"
 msgid "Update from:"
 msgstr "Ažuriraj sve"
 
-#: discover/qml/UpdatesPage.qml:505
+#: discover/qml/UpdatesPage.qml:530
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1487,13 +1484,13 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:512
+#: discover/qml/UpdatesPage.qml:538
 #, fuzzy, kde-format
 #| msgid "More Information..."
 msgid "More Information…"
 msgstr "Više podataka..."
 
-#: discover/qml/UpdatesPage.qml:540
+#: discover/qml/UpdatesPage.qml:566
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Fetching updates"
@@ -1501,39 +1498,39 @@ msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Dobavljam dopune..."
 
-#: discover/qml/UpdatesPage.qml:554
+#: discover/qml/UpdatesPage.qml:580
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Dopune"
 
-#: discover/qml/UpdatesPage.qml:563
+#: discover/qml/UpdatesPage.qml:589
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:565
+#: discover/qml/UpdatesPage.qml:591
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
-#: discover/qml/UpdatesPage.qml:593
+#: discover/qml/UpdatesPage.qml:605 discover/qml/UpdatesPage.qml:612
+#: discover/qml/UpdatesPage.qml:619
 #, fuzzy, kde-format
 #| msgid "Updates"
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Dopune"
 
-#: discover/qml/UpdatesPage.qml:600
+#: discover/qml/UpdatesPage.qml:626
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Treba proveriti dopune"
 
-#: discover/qml/UpdatesPage.qml:607
+#: discover/qml/UpdatesPage.qml:633
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

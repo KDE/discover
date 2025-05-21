@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-26 00:43+0000\n"
+"POT-Creation-Date: 2025-05-21 00:43+0000\n"
 "PO-Revision-Date: 2025-05-18 20:16+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -525,11 +525,12 @@ msgid ","
 msgstr ","
 
 #: discover/qml/ApplicationPage.qml:507
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "See more…"
+#| msgid_plural "See more…"
+msgctxt "Show all licenses of the package"
 msgid "See more…"
-msgid_plural "See more…"
-msgstr[0] "Több…"
-msgstr[1] "Több…"
+msgstr "Több…"
 
 #: discover/qml/ApplicationPage.qml:519
 #, kde-format
@@ -1496,17 +1497,17 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr "Újraindítás és a frissítések telepítése"
 
-#: discover/qml/UpdatesPage.qml:462
+#: discover/qml/UpdatesPage.qml:487
 #, kde-format
 msgid "Installing"
 msgstr "Telepítés"
 
-#: discover/qml/UpdatesPage.qml:493
+#: discover/qml/UpdatesPage.qml:518
 #, kde-format
 msgid "Update from:"
 msgstr "Frissítés innen:"
 
-#: discover/qml/UpdatesPage.qml:505
+#: discover/qml/UpdatesPage.qml:530
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1514,50 +1515,50 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:512
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgid "More Information…"
 msgstr "További információk…"
 
-#: discover/qml/UpdatesPage.qml:540
+#: discover/qml/UpdatesPage.qml:566
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Frissítések letöltése…"
 
-#: discover/qml/UpdatesPage.qml:554
+#: discover/qml/UpdatesPage.qml:580
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Frissítések"
 
-#: discover/qml/UpdatesPage.qml:563
+#: discover/qml/UpdatesPage.qml:589
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "A frissítések a rendszer újraindítása után kerülnek telepítésre"
 
-#: discover/qml/UpdatesPage.qml:565
+#: discover/qml/UpdatesPage.qml:591
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
 "Tovább használhatja a rendszert, ha még nem áll készen az újraindításra."
 
-#: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
-#: discover/qml/UpdatesPage.qml:593
+#: discover/qml/UpdatesPage.qml:605 discover/qml/UpdatesPage.qml:612
+#: discover/qml/UpdatesPage.qml:619
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Naprakész"
 
-#: discover/qml/UpdatesPage.qml:600
+#: discover/qml/UpdatesPage.qml:626
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Frissítések keresése szükséges"
 
-#: discover/qml/UpdatesPage.qml:607
+#: discover/qml/UpdatesPage.qml:633
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

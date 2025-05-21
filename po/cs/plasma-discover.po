@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-26 00:43+0000\n"
+"POT-Creation-Date: 2025-05-21 00:43+0000\n"
 "PO-Revision-Date: 2024-10-08 14:42+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -448,12 +448,12 @@ msgid ","
 msgstr ","
 
 #: discover/qml/ApplicationPage.qml:507
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "See more…"
+#| msgid_plural "See more…"
+msgctxt "Show all licenses of the package"
 msgid "See more…"
-msgid_plural "See more…"
-msgstr[0] "Více…"
-msgstr[1] "Více…"
-msgstr[2] "Více…"
+msgstr "Více…"
 
 #: discover/qml/ApplicationPage.qml:519
 #, kde-format
@@ -1397,17 +1397,17 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:462
+#: discover/qml/UpdatesPage.qml:487
 #, kde-format
 msgid "Installing"
 msgstr "Instaluje se"
 
-#: discover/qml/UpdatesPage.qml:493
+#: discover/qml/UpdatesPage.qml:518
 #, kde-format
 msgid "Update from:"
 msgstr "Aktualizace z:"
 
-#: discover/qml/UpdatesPage.qml:505
+#: discover/qml/UpdatesPage.qml:530
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1415,49 +1415,49 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:512
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgid "More Information…"
 msgstr "Více informací…"
 
-#: discover/qml/UpdatesPage.qml:540
+#: discover/qml/UpdatesPage.qml:566
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Získávají se aktualizace…"
 
-#: discover/qml/UpdatesPage.qml:554
+#: discover/qml/UpdatesPage.qml:580
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Aktualizace"
 
-#: discover/qml/UpdatesPage.qml:563
+#: discover/qml/UpdatesPage.qml:589
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:565
+#: discover/qml/UpdatesPage.qml:591
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
-#: discover/qml/UpdatesPage.qml:593
+#: discover/qml/UpdatesPage.qml:605 discover/qml/UpdatesPage.qml:612
+#: discover/qml/UpdatesPage.qml:619
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Aktuální"
 
-#: discover/qml/UpdatesPage.qml:600
+#: discover/qml/UpdatesPage.qml:626
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Měli byste zkontrolovat aktualizace"
 
-#: discover/qml/UpdatesPage.qml:607
+#: discover/qml/UpdatesPage.qml:633
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
