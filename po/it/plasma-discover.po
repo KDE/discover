@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-26 00:43+0000\n"
+"POT-Creation-Date: 2025-05-22 02:41+0000\n"
 "PO-Revision-Date: 2025-04-28 09:08+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #: discover/DiscoverObject.cpp:184
 #, kde-format
@@ -1502,17 +1502,17 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr "Riavvia e installa gli aggiornamenti"
 
-#: discover/qml/UpdatesPage.qml:462
+#: discover/qml/UpdatesPage.qml:487
 #, kde-format
 msgid "Installing"
 msgstr "Installazione"
 
-#: discover/qml/UpdatesPage.qml:493
+#: discover/qml/UpdatesPage.qml:518
 #, kde-format
 msgid "Update from:"
 msgstr "Aggiorna da:"
 
-#: discover/qml/UpdatesPage.qml:505
+#: discover/qml/UpdatesPage.qml:530
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1520,30 +1520,30 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:512
+#: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgid "More Information…"
 msgstr "Ulteriori informazioni…"
 
-#: discover/qml/UpdatesPage.qml:540
+#: discover/qml/UpdatesPage.qml:566
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Recupero degli aggiornamenti..."
 
-#: discover/qml/UpdatesPage.qml:554
+#: discover/qml/UpdatesPage.qml:580
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Aggiornamenti"
 
-#: discover/qml/UpdatesPage.qml:563
+#: discover/qml/UpdatesPage.qml:589
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "Gli aggiornamenti saranno installati dopo il riavvio del sistema"
 
-#: discover/qml/UpdatesPage.qml:565
+#: discover/qml/UpdatesPage.qml:591
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
@@ -1551,20 +1551,20 @@ msgstr ""
 "Puoi continuare a utilizzare il sistema se non sei ancora pronto a "
 "riavviarlo."
 
-#: discover/qml/UpdatesPage.qml:579 discover/qml/UpdatesPage.qml:586
-#: discover/qml/UpdatesPage.qml:593
+#: discover/qml/UpdatesPage.qml:605 discover/qml/UpdatesPage.qml:612
+#: discover/qml/UpdatesPage.qml:619
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Aggiornato"
 
-#: discover/qml/UpdatesPage.qml:600
+#: discover/qml/UpdatesPage.qml:626
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Dovresti controllare gli aggiornamenti"
 
-#: discover/qml/UpdatesPage.qml:607
+#: discover/qml/UpdatesPage.qml:633
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
