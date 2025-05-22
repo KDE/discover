@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-21 00:43+0000\n"
-"PO-Revision-Date: 2025-04-28 17:39+0400\n"
+"PO-Revision-Date: 2025-05-21 17:37+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -512,12 +512,10 @@ msgid ","
 msgstr "،"
 
 #: discover/qml/ApplicationPage.qml:507
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "See more…"
-msgstr "الكل…"
+msgstr "المزيد…"
 
 #: discover/qml/ApplicationPage.qml:519
 #, kde-format
