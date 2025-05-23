@@ -493,12 +493,10 @@ msgid ","
 msgstr "，"
 
 #: discover/qml/ApplicationPage.qml:507
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "See more…"
-msgstr "查看更多…"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:519
 #, kde-format
