@@ -70,6 +70,9 @@ private:
      * we are running and then initialize the rest of the backend. */
     void initializeBackend();
 
+    /* Then we can fetch the deployments and on the first start, fetch updates*/
+    void initializeBackendFirstStart();
+
     /* Check if a transaction has been started outside of Discover */
     bool hasExternalTransaction();
 

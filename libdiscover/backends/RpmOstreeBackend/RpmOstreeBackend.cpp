@@ -27,6 +27,7 @@ static const QString TransactionConnection = QStringLiteral("discover_transactio
 
 RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
+    , m_registrered(false)
     , m_currentlyBootedDeployment(nullptr)
     , m_transaction(nullptr)
     , m_watcher(new QDBusServiceWatcher(this))
@@ -125,12 +126,17 @@ void RpmOstreeBackend::initializeBackend()
                 // Mark that we are now registered with rpm-ostree and retry
                 // initializing the backend
                 m_registrered = true;
-                initializeBackend();
+                initializeBackendFirstStart();
             }
         });
         return;
     }
 
+    initializeBackendFirstStart();
+}
+
+void RpmOstreeBackend::initializeBackendFirstStart()
+{
     // Fetch existing deployments
     refreshDeployments();
 
