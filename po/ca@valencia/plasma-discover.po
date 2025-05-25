@@ -1110,7 +1110,7 @@ msgstr "Vots: %1 de %2"
 #: discover/qml/ReviewDelegate.qml:94
 #, kde-format
 msgid "Was this review useful?"
-msgstr "Ha estat útil esta ressenya?"
+msgstr "Ha sigut útil esta ressenya?"
 
 #: discover/qml/ReviewDelegate.qml:106
 #, kde-format

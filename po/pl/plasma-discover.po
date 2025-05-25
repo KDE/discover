@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-21 00:43+0000\n"
-"PO-Revision-Date: 2025-03-22 12:39+0100\n"
+"PO-Revision-Date: 2025-05-24 08:33+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -26,8 +26,8 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"%1 nie jest ustawiony do wgrywania aplikacji przez Odkrywcę—tylko dodatki do "
-"aplikacji"
+"%1 nie jest ustawiony do wgrywania aplikacji przez dodatki tylko dla "
+"aplikacji Discovera"
 
 #: discover/DiscoverObject.cpp:186
 #, kde-kuit-format
@@ -37,7 +37,7 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
-"Aby móc używać Odkrywcy dla aplikacji, wgraj swój ulubiony człon na stronie "
+"Aby móc używać Discovera dla aplikacji, wgraj swój ulubiony człon na stronie "
 "<interface>Ustawień</interface> w <interface>Brakujące silniki</interface>."
 
 #: discover/DiscoverObject.cpp:189
@@ -57,11 +57,11 @@ msgid ""
 "command> package manager.<nl/><nl/> Review <link url='https://archlinux.org/"
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
-"Aby móc używać Odkrywcy dla aplikacji, wgraj <link url='https://wiki."
+"Aby móc używać Discovera dla aplikacji, wgraj <link url='https://wiki."
 "archlinux.org/title/Flatpak#Installation'>Flatpak</link>, używając programu "
 "do zarządzania pakietami <command>pacman</command>.<nl/><nl/> Oceń pakowanie "
 "<link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 dla "
-"Odkrywcy</link>"
+"Discovera</link>"
 
 #: discover/DiscoverObject.cpp:207
 #, kde-kuit-format
@@ -131,14 +131,14 @@ msgstr "Zgłoś ten błąd"
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
-msgstr "Odkrywca"
+msgstr "Discover"
 
 #: discover/DiscoverObject.cpp:478
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
-"Zamknięto Odkrywcę zanim skończył swoje zadania, więc oczekuję na ich "
+"Zamknięto Discovera zanim skończył swoje zadania, więc oczekuję na ich "
 "skończenie."
 
 #: discover/main.cpp:35
@@ -161,7 +161,7 @@ msgstr "Wyświetl listę wpisów z kategorią."
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
-"Otwórz Odkrywcę w trybie mówionym. Tryby odpowiadają przyciskom na pasku "
+"Otwórz Discovera w trybie mówionym. Tryby odpowiadają przyciskom na pasku "
 "narzędzi."
 
 #: discover/main.cpp:39
@@ -1496,12 +1496,10 @@ msgid "Total size: %1"
 msgstr "Rozmiar całości: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Uruchom ponownie teraz, aby wgrać uaktualnienia"
+msgstr "Uruchom ponownie i wgraj uaktualnienia"
 
 #: discover/qml/UpdatesPage.qml:487
 #, kde-format
@@ -1524,13 +1522,13 @@ msgstr "%1 (%2)"
 #: discover/qml/UpdatesPage.qml:538
 #, kde-format
 msgid "More Information…"
-msgstr "Więcej szczegółów..."
+msgstr "Więcej szczegółów…"
 
 #: discover/qml/UpdatesPage.qml:566
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
-msgstr "Pobieranie uaktualnień..."
+msgstr "Pobieranie uaktualnień…"
 
 #: discover/qml/UpdatesPage.qml:580
 #, kde-format
@@ -1539,18 +1537,17 @@ msgid "Updates"
 msgstr "Uaktualnienia"
 
 #: discover/qml/UpdatesPage.qml:589
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "The updates will be installed the next time the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr "Uaktualnienia zostaną wgrane przy następnym uruchomieniu systemu"
+msgstr "Uaktualnienia zostaną wgrane po ponownym uruchomieniu systemu"
 
 #: discover/qml/UpdatesPage.qml:591
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"Możesz nadal używać komputera, jeśli nie chcesz go teraz ponownie uruchomić."
 
 #: discover/qml/UpdatesPage.qml:605 discover/qml/UpdatesPage.qml:612
 #: discover/qml/UpdatesPage.qml:619
