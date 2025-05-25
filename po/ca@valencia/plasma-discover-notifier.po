@@ -158,4 +158,4 @@ msgstr "Reinicieu per a aplicar les actualitzacions instal·lades"
 #: notifier/NotifierItem.cpp:65
 #, kde-format
 msgid "Click to restart the device"
-msgstr "Feu clic per a reiniciar el dispositiu"
+msgstr "Cliqueu per a reiniciar el dispositiu"

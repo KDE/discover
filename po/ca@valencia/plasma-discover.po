@@ -475,7 +475,7 @@ msgstr "Informeu d'un error"
 #: discover/qml/ApplicationPage.qml:836
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
-msgstr "Enregistreu una incidència que heu trobat per a ajudar a solucionar-la"
+msgstr "Enregistreu una incidència que heu trobat per ajudar a solucionar-la"
 
 #: discover/qml/ApplicationPage.qml:850
 #, kde-format
@@ -927,7 +927,7 @@ msgstr "Vots: %1 de %2"
 #: discover/qml/ReviewDelegate.qml:102
 #, kde-format
 msgid "Was this review useful?"
-msgstr "Ha estat útil esta ressenya?"
+msgstr "Ha sigut útil esta ressenya?"
 
 #: discover/qml/ReviewDelegate.qml:114
 #, kde-format

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2024-11-23 13:17+0100\n"
+"PO-Revision-Date: 2025-05-24 08:33+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -26,7 +26,7 @@ msgid ""
 "Discover currently cannot be used to install any apps or perform system "
 "updates because none of its app backends are available."
 msgstr ""
-"Odkrywcy obecnie nie jest w stanie wgrać żadnego programu lub wykonać jego "
+"Discover obecnie nie jest w stanie wgrać żadnego programu lub wykonać jego "
 "uaktualnienia, bo żaden z jego silników nie jest dostępny."
 
 #: discover/DiscoverObject.cpp:163
@@ -114,14 +114,14 @@ msgstr "Zgłoś ten błąd ludziom, przygotowującym pakiety w twojej dystrybucj
 #: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
-msgstr "Odkrywca"
+msgstr "Discover"
 
 #: discover/DiscoverObject.cpp:443
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
-"Zamknięto Odkrywcę zanim skończył swoje zadania, więc oczekuję na ich "
+"Zamknięto Discovera zanim skończył swoje zadania, więc oczekuję na ich "
 "skończenie."
 
 #: discover/main.cpp:42
@@ -144,7 +144,7 @@ msgstr "Wyświetl listę wpisów z kategorią."
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
-"Otwórz Odkrywcę w trybie mówionym. Tryby odpowiadają przyciskom na pasku "
+"Otwórz Discovera w trybie mówionym. Tryby odpowiadają przyciskom na pasku "
 "narzędzi."
 
 #: discover/main.cpp:46
@@ -1187,13 +1187,13 @@ msgstr "%1 (%2)"
 #: discover/qml/UpdatesPage.qml:449
 #, kde-format
 msgid "More Information…"
-msgstr "Więcej szczegółów..."
+msgstr "Więcej szczegółów…"
 
 #: discover/qml/UpdatesPage.qml:477
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
-msgstr "Pobieranie uaktualnień..."
+msgstr "Pobieranie uaktualnień…"
 
 #: discover/qml/UpdatesPage.qml:490
 #, kde-format

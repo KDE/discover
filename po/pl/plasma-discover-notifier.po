@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 02:43+0000\n"
-"PO-Revision-Date: 2022-01-08 10:41+0100\n"
+"PO-Revision-Date: 2025-05-24 08:29+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -88,7 +88,7 @@ msgstr "Nowa wersja: %1"
 #: notifier/main.cpp:39
 #, kde-format
 msgid "Discover Notifier"
-msgstr "Powiadomienia Odkrywcy"
+msgstr "Powiadomienia Discovera"
 
 #: notifier/main.cpp:41
 #, kde-format
@@ -135,17 +135,17 @@ msgstr "Uaktualnienia"
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Open Discover…"
-msgstr "Otwórz Odkrywcę..."
+msgstr "Otwórz Discover…"
 
 #: notifier/NotifierItem.cpp:55
 #, kde-format
 msgid "See Updates…"
-msgstr "Obejrzyj uaktualnienia..."
+msgstr "Obejrzyj uaktualnienia…"
 
 #: notifier/NotifierItem.cpp:60
 #, kde-format
 msgid "Refresh…"
-msgstr "Odśwież..."
+msgstr "Odśwież…"
 
 #: notifier/NotifierItem.cpp:64
 #, kde-format
