@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-12 00:42+0000\n"
-"PO-Revision-Date: 2025-05-10 12:03+0200\n"
+"PO-Revision-Date: 2025-05-24 08:29+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -95,7 +95,7 @@ msgstr "Uaktualnienie"
 #: notifier/main.cpp:39
 #, kde-format
 msgid "Discover Notifier"
-msgstr "Powiadomienia Odkrywcy"
+msgstr "Powiadomienia Discovera"
 
 #: notifier/main.cpp:41
 #, kde-format
@@ -140,15 +140,13 @@ msgid "Updates"
 msgstr "Uaktualnienia"
 
 #: notifier/NotifierItem.cpp:36
-#, fuzzy, kde-format
-#| msgid "Open Discover…"
+#, kde-format
 msgctxt "@action:button Opens Discover's main UI to analyze the updates"
 msgid "Open Discover…"
-msgstr "Otwórz Odkrywcę..."
+msgstr "Otwórz Discover…"
 
 #: notifier/NotifierItem.cpp:47
-#, fuzzy, kde-format
-#| msgid "Update"
+#, kde-format
 msgctxt "@action:button Starts an update in the background"
 msgid "Start Update"
 msgstr "Uaktualnij"
@@ -156,7 +154,7 @@ msgstr "Uaktualnij"
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Refresh…"
-msgstr "Odśwież..."
+msgstr "Odśwież…"
 
 #: notifier/NotifierItem.cpp:56
 #, kde-format
