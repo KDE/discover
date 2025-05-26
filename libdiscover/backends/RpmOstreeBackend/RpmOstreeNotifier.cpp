@@ -208,6 +208,7 @@ void RpmOstreeNotifier::checkSystemUpdateClassic()
         // to ever happen.
         if (newVersion.isEmpty()) {
             qInfo() << "rpm-ostree-notifier: Could not find the version for the update available";
+            return;
         }
 
         // Process the string to get just the version "number".
