@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-21 00:43+0000\n"
-"PO-Revision-Date: 2025-03-23 15:59+0200\n"
+"PO-Revision-Date: 2025-05-25 08:31+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -190,7 +190,7 @@ msgstr "Luettelee eri käyttäjäpalautemahdollisuudet"
 #: discover/main.cpp:44
 #, kde-format
 msgid "Starts an update automatically, headless"
-msgstr ""
+msgstr "Aloittaa päivityksen automaattisesti, näytöttä"
 
 #: discover/main.cpp:46
 #, kde-format
@@ -518,12 +518,10 @@ msgid ","
 msgstr ","
 
 #: discover/qml/ApplicationPage.qml:507
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "See more…"
-msgstr "Lisää…"
+msgstr "Näytä lisää…"
 
 #: discover/qml/ApplicationPage.qml:519
 #, kde-format
@@ -1489,12 +1487,10 @@ msgid "Total size: %1"
 msgstr "Koko kaikkiaan: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "käynnistä automaattisesti uudelleen päivitysten asentamiseksi"
+msgstr "Käynnistä uudelleen ja asenna päivitykset"
 
 #: discover/qml/UpdatesPage.qml:487
 #, kde-format
@@ -1532,18 +1528,17 @@ msgid "Updates"
 msgstr "Päivitykset"
 
 #: discover/qml/UpdatesPage.qml:589
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "The updates will be installed the next time the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr "Päivitykset asennetaan, kun järjestelmä seuraavan kerran käynnistetään"
+msgstr "Päivitykset asennetaan, kun järjestelmä käynnistyy uudelleen."
 
 #: discover/qml/UpdatesPage.qml:591
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"Voit jatkaa järjestelmän käyttöä, ellet ole valmis käynnistämään uudelleen."
 
 # ”Päivitetty, valmiina käyttöön” näyttää paremmalta ja tilaa on hyvin pidemmälle tekstille. Ajan tasalla oli aikaisempi.
 #: discover/qml/UpdatesPage.qml:605 discover/qml/UpdatesPage.qml:612

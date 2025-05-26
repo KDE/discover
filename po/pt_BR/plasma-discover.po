@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-21 00:43+0000\n"
-"PO-Revision-Date: 2025-03-28 01:41-0300\n"
+"PO-Revision-Date: 2025-05-25 00:09-0300\n"
 "Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #: discover/DiscoverObject.cpp:184
 #, kde-format
@@ -529,12 +529,10 @@ msgid ","
 msgstr ","
 
 #: discover/qml/ApplicationPage.qml:507
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "See more…"
-msgstr "Veja mais..."
+msgstr "Veja mais…"
 
 #: discover/qml/ApplicationPage.qml:519
 #, kde-format
@@ -1497,12 +1495,10 @@ msgid "Total size: %1"
 msgstr "Tamanho total: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Reinicie para instalar as atualizações agora"
+msgstr "Reiniciar e instalar as atualizações"
 
 #: discover/qml/UpdatesPage.qml:487
 #, kde-format
@@ -1540,19 +1536,17 @@ msgid "Updates"
 msgstr "Atualizações"
 
 #: discover/qml/UpdatesPage.qml:589
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "The updates will be installed the next time the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr ""
-"As atualizações serão instaladas na próxima vez que o sistema for reiniciado"
+msgstr "As atualizações serão instaladas depois que o sistema for reiniciado"
 
 #: discover/qml/UpdatesPage.qml:591
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"Você pode continuar utilizando o sistema caso não deseje reiniciar ainda."
 
 #: discover/qml/UpdatesPage.qml:605 discover/qml/UpdatesPage.qml:612
 #: discover/qml/UpdatesPage.qml:619
