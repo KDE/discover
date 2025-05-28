@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-21 00:43+0000\n"
-"PO-Revision-Date: 2025-05-09 16:08+0200\n"
+"PO-Revision-Date: 2025-05-27 11:24+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -522,9 +522,7 @@ msgid ","
 msgstr ","
 
 #: discover/qml/ApplicationPage.qml:507
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "See more…"
 msgstr "Vide plus…"
