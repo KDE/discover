@@ -171,7 +171,7 @@ void RpmOstreeBackend::refreshDeployments()
             });
             if (m_currentlyBootedDeployment) {
                 qWarning() << "rpm-ostree-backend: We already have a booted deployment. This is a bug.";
-                passiveMessage(i18n("rpm-ostree: Multiple booted deployments found. Please file a bug."));
+                passiveMessage(i18n("rpm-ostree backend: Multiple booted deployments found. Please file a bug."));
                 return;
             }
             m_currentlyBootedDeployment = deployment;
@@ -183,7 +183,7 @@ void RpmOstreeBackend::refreshDeployments()
 
     if (!m_currentlyBootedDeployment) {
         qWarning() << "rpm-ostree-backend: We have not found the booted deployment. This is a bug.";
-        passiveMessage(i18n("rpm-ostree: No booted deployment found. Please file a bug."));
+        passiveMessage(i18n("rpm-ostree backend: No booted deployment found. Please file a bug."));
         return;
     }
 

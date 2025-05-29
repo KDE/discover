@@ -35,7 +35,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
     // able to cancel a running transaction.
     if (interface == nullptr) {
         qWarning() << "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug.";
-        passiveMessage(i18n("rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."));
+        passiveMessage(i18n("rpm-ostree backend: Error: No DBus interface provided. Please file a bug."));
         setStatus(Status::CancelledStatus);
         return;
     }
@@ -55,7 +55,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
         } else {
             // Should never happen
             qWarning() << "rpm-ostree-backend: Error: Can not start a transaction for resource with an invalid format. Please file a bug.";
-            passiveMessage(i18n("rpm-ostree-backend: Error: Can not start a transaction for resource with an invalid format. Please file a bug."));
+            passiveMessage(i18n("rpm-ostree backend: Error: Can not start a transaction for resource with an invalid format. Please file a bug."));
             setStatus(Status::CancelledStatus);
             return;
         }
@@ -75,7 +75,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
         // This should never happen
         if (arg.isEmpty()) {
             qWarning() << "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug.";
-            passiveMessage(i18n("rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."));
+            passiveMessage(i18n("rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."));
             setStatus(Status::CancelledStatus);
             return;
         }
@@ -93,7 +93,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
     default:
         // This should never happen
         qWarning() << "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug.";
-        passiveMessage(i18n("rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."));
+        passiveMessage(i18n("rpm-ostree backend: Error: Unknown operation requested. Please file a bug."));
         setStatus(Status::CancelledStatus);
         return;
     }
@@ -239,7 +239,7 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
         } else {
             // Should never happen
             qWarning() << "rpm-ostree-backend: Error: Unknown resource format. Please file a bug.";
-            passiveMessage(i18n("rpm-ostree-backend: Error: Unknown resource format. Please file a bug."));
+            passiveMessage(i18n("rpm-ostree backend: Error: Unknown resource format. Please file a bug."));
             setStatus(Status::DoneWithErrorStatus);
             return;
         }
