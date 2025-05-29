@@ -460,6 +460,7 @@ QList<PackageState> RpmOstreeResource::addonsInformation()
 
 bool RpmOstreeResource::hasCategory(const QString &category) const
 {
+    Q_UNUSED(category);
     return false;
 }
 
