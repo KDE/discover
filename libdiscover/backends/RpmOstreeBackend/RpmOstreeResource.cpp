@@ -15,19 +15,21 @@
 #include <ostree-repo.h>
 #include <ostree.h>
 
+#include "libdiscover_rpm-ostree_debug.h"
+
 RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *parent)
     : AbstractResource(parent)
     // All available deployments are by definition already installed
     , m_state(AbstractResource::Installed)
 {
 #ifdef QT_DEBUG
-    qDebug() << "rpm-ostree-backend: Creating deployments from:";
+    qCDebug(RPMOSTREE_LOG) << "Creating deployments from:";
     QMapIterator<QString, QVariant> iter(map);
     while (iter.hasNext()) {
         iter.next();
-        qDebug() << "rpm-ostree-backend: " << iter.key() << ": " << iter.value();
+        qCDebug(RPMOSTREE_LOG) << iter.key() << ": " << iter.value();
     }
-    qDebug() << "";
+    qCDebug(RPMOSTREE_LOG) << "";
 #endif
 
     // Get as much as possible from rpm-ostree
@@ -83,7 +85,7 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
         m_ostreeFormat.reset(new OstreeFormat(OstreeFormat::Format::Classic, origin));
         if (!m_ostreeFormat->isValid()) {
             // This should never happen
-            qWarning() << "rpm-ostree-backend: Invalid origin for classic ostree format:" << origin;
+            qCWarning(RPMOSTREE_LOG) << "Invalid origin for classic ostree format:" << origin;
         }
     } else {
         // Then look for OCI container format
@@ -92,12 +94,12 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
             m_ostreeFormat.reset(new OstreeFormat(OstreeFormat::Format::OCI, origin));
             if (!m_ostreeFormat->isValid()) {
                 // This should never happen
-                qWarning() << "rpm-ostree-backend: Invalid reference for OCI container ostree format:" << origin;
+                qCWarning(RPMOSTREE_LOG) << "Invalid reference for OCI container ostree format:" << origin;
             }
         } else {
             // This should never happen
             m_ostreeFormat.reset(new OstreeFormat(OstreeFormat::Format::Unknown, {}));
-            qWarning() << "rpm-ostree-backend: Could not find a valid remote for this deployment:" << m_checksum;
+            qCWarning(RPMOSTREE_LOG) << "Could not find a valid remote for this deployment:" << m_checksum;
         }
     }
 
@@ -116,7 +118,7 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
     m_appstreamid = QStringLiteral("ostree.") + m_appstreamid.replace(QLatin1Char('/'), QLatin1Char('-')).replace(QLatin1Char('_'), QLatin1Char('-'))
         + QLatin1String(".") + m_checksum;
 #ifdef QT_DEBUG
-    qInfo() << "rpm-ostree-backend: Found deployment:" << m_appstreamid;
+    qCInfo(RPMOSTREE_LOG) << "Found deployment:" << m_appstreamid;
 #endif
 
     // Replaced & added packages
@@ -138,7 +140,7 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
 {
     if (!m_ostreeFormat->isValid()) {
         // Only operate on valid origin format
-        qWarning() << "rpm-ostree-backend: Current resource in unknown format. File a bug to your distribution.";
+        qCWarning(RPMOSTREE_LOG) << "Current resource in unknown format. File a bug to your distribution.";
         return false;
     }
 
@@ -149,7 +151,7 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
         // major release and thus we don't need to rebase: it will automatically happen once
         // the latest tag points to a version build with the new major release.
         if (m_ostreeFormat->tag() == QLatin1String("latest")) {
-            qWarning() << "rpm-ostree-backend: Ignoring major version rebase on container origin following the 'latest' tag.";
+            qCWarning(RPMOSTREE_LOG) << "Ignoring major version rebase on container origin following the 'latest' tag.";
             // Hidden environement variable to help debugging rebases, skipping this check
             if (qEnvironmentVariableIntValue("ORG_KDE_DISCOVER_DEVEL") != 0) {
                 return true;
@@ -163,14 +165,14 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
         // the new tag to rebase to. This assumes that container tag names are lowercase.
         QString currentVersion = AppStreamIntegration::global()->osRelease()->versionId();
         m_nextMajorVersionRef = m_ostreeFormat->tag().replace(currentVersion, newMajorVersion.toLower(), Qt::CaseInsensitive);
-        qInfo() << "rpm-ostree-backend: Setting new version to: " << newMajorVersion;
+        qCInfo(RPMOSTREE_LOG) << "Setting new version to: " << newMajorVersion;
         return true;
     }
 
     // Assume we're using the classic format from now on
     if (!m_ostreeFormat->isClassic()) {
         // Only operate on valid origin format
-        qWarning() << "rpm-ostree-backend: Current resource in unknown format. File a bug to your distribution.";
+        qCWarning(RPMOSTREE_LOG) << "Current resource in unknown format. File a bug to your distribution.";
         return false;
     }
 
@@ -178,14 +180,14 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
     g_autoptr(GFile) path = g_file_new_for_path("/ostree/repo");
     g_autoptr(OstreeRepo) repo = ostree_repo_new(path);
     if (repo == NULL) {
-        qWarning() << "rpm-ostree-backend: Could not find ostree repo:" << path;
+        qCWarning(RPMOSTREE_LOG) << "Could not find ostree repo:" << path;
         return false;
     }
 
     g_autoptr(GError) err = NULL;
     gboolean res = ostree_repo_open(repo, NULL, &err);
     if (!res) {
-        qWarning() << "rpm-ostree-backend: Could not open ostree repo:" << path;
+        qCWarning(RPMOSTREE_LOG) << "Could not open ostree repo:" << path;
         return false;
     }
 
@@ -193,7 +195,7 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
     QByteArray rem = m_ostreeFormat->remote().toLocal8Bit();
     res = ostree_repo_remote_list_refs(repo, rem.data(), &refs, NULL, &err);
     if (!res) {
-        qWarning() << "rpm-ostree-backend: Could not get the list of refs for ostree repo:" << path;
+        qCWarning(RPMOSTREE_LOG) << "Could not get the list of refs for ostree repo:" << path;
         return false;
     }
 
@@ -211,14 +213,14 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
         if (ref == newVersionBranch) {
             m_nextMajorVersion = newMajorVersion;
             m_nextMajorVersionRef = newVersionBranch;
-            qInfo() << "rpm-ostree-backend: Setting new version to:" << newMajorVersion << "ostree:" << newVersionBranch;
+            qCInfo(RPMOSTREE_LOG) << "Setting new version to:" << newMajorVersion << "ostree:" << newVersionBranch;
             return true;
         }
     }
 
     // If we reach here, it means that we could not find a matching branch. This
     // is unexpected and we should inform the user.
-    qWarning() << "rpm-ostree-backend: Could not find a remote ref for the new major version in ostree repo";
+    qCWarning(RPMOSTREE_LOG) << "Could not find a remote ref for the new major version in ostree repo";
     return false;
 }
 

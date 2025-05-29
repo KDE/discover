@@ -17,6 +17,8 @@
 #include <KLocalizedString>
 #include <appstream/AppStreamIntegration.h>
 
+#include "libdiscover_rpm-ostree_debug.h"
+
 DISCOVER_BACKEND_PLUGIN(RpmOstreeBackend)
 
 Q_DECLARE_METATYPE(QList<QVariantMap>)
@@ -37,7 +39,7 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
 {
     // Refuse to start on systems not managed by rpm-ostree
     if (!this->isValid()) {
-        qWarning() << "rpm-ostree-backend: Not starting on a system not managed by rpm-ostree";
+        qCWarning(RPMOSTREE_LOG) << "Not starting on a system not managed by rpm-ostree";
         return;
     }
 
@@ -52,10 +54,10 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     m_watcher->setConnection(QDBusConnection::systemBus());
     m_watcher->addWatchedService(DBusServiceName);
     connect(m_watcher, &QDBusServiceWatcher::serviceOwnerChanged, [this](const QString &serviceName, const QString &oldOwner, const QString &newOwner) {
-        qDebug() << "rpm-ostree-backend: Acting on DBus service owner change";
+        qCDebug(RPMOSTREE_LOG) << "Acting on DBus service owner change";
         if (serviceName != DBusServiceName) {
             // This should never happen
-            qWarning() << "rpm-ostree-backend: Got an unexpected event for service:" << serviceName;
+            qCWarning(RPMOSTREE_LOG) << "Got an unexpected event for service:" << serviceName;
         } else if (newOwner.isEmpty()) {
             // Re-activate the service if it goes away unexpectedly
             m_dbusActivationTimer->start();
@@ -64,7 +66,7 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
             initializeBackend();
         } else {
             // This should never happen
-            qWarning() << "rpm-ostree-backend: Got an unexpected event for service:" << serviceName << oldOwner << newOwner;
+            qCWarning(RPMOSTREE_LOG) << "Got an unexpected event for service:" << serviceName << oldOwner << newOwner;
         }
     });
 
@@ -74,13 +76,13 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     m_dbusActivationTimer->setInterval(1000);
     connect(m_dbusActivationTimer, &QTimer::timeout, [this]() {
         QDBusConnection::systemBus().interface()->startService(DBusServiceName);
-        qDebug() << "rpm-ostree-backend: DBus activating rpm-ostree service";
+        qCDebug(RPMOSTREE_LOG) << "DBus activating rpm-ostree service";
     });
 
     // Look for rpm-ostree's DBus interface among registered services
     const auto reply = QDBusConnection::systemBus().interface()->registeredServiceNames();
     if (!reply.isValid()) {
-        qWarning() << "rpm-ostree-backend: Failed to get the list of registered DBus services";
+        qCWarning(RPMOSTREE_LOG) << "Failed to get the list of registered DBus services";
         return;
     }
     const auto registeredServices = reply.value();
@@ -90,7 +92,7 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     } else {
         // Activate the rpm-ostreed daemon via DBus service activation
         QDBusConnection::systemBus().interface()->startService(DBusServiceName);
-        qDebug() << "rpm-ostree-backend: DBus activating rpm-ostree service";
+        qCDebug(RPMOSTREE_LOG) << "DBus activating rpm-ostree service";
     }
 }
 
@@ -103,7 +105,7 @@ void RpmOstreeBackend::initializeBackend()
     // Connect to the main interface
     m_interface = new OrgProjectatomicRpmostree1SysrootInterface(DBusServiceName, SysrootObjectPath, QDBusConnection::systemBus(), this);
     if (!m_interface->isValid()) {
-        qWarning() << "rpm-ostree-backend: Could not connect to rpm-ostree daemon:" << qPrintable(QDBusConnection::systemBus().lastError().message());
+        qCWarning(RPMOSTREE_LOG) << "Could not connect to rpm-ostree daemon:" << qPrintable(QDBusConnection::systemBus().lastError().message());
         m_dbusActivationTimer->start();
         return;
     }
@@ -119,7 +121,7 @@ void RpmOstreeBackend::initializeBackend()
             callWatcher->deleteLater();
             // Wait and retry if we encounter an error
             if (reply.isError()) {
-                qWarning() << "rpm-ostree-backend: Error registering as client:" << qPrintable(QDBusConnection::systemBus().lastError().message());
+                qCWarning(RPMOSTREE_LOG) << "Error registering as client:" << qPrintable(QDBusConnection::systemBus().lastError().message());
                 m_dbusActivationTimer->start();
             } else {
                 // Mark that we are now registered with rpm-ostree and retry
@@ -170,7 +172,7 @@ void RpmOstreeBackend::refreshDeployments()
                 Q_EMIT updatesCountChanged();
             });
             if (m_currentlyBootedDeployment) {
-                qWarning() << "rpm-ostree-backend: We already have a booted deployment. This is a bug.";
+                qCWarning(RPMOSTREE_LOG) << "We already have a booted deployment. This is a bug.";
                 passiveMessage(i18n("rpm-ostree backend: Multiple booted deployments found. Please file a bug."));
                 return;
             }
@@ -182,7 +184,7 @@ void RpmOstreeBackend::refreshDeployments()
     }
 
     if (!m_currentlyBootedDeployment) {
-        qWarning() << "rpm-ostree-backend: We have not found the booted deployment. This is a bug.";
+        qCWarning(RPMOSTREE_LOG) << "We have not found the booted deployment. This is a bug.";
         passiveMessage(i18n("rpm-ostree backend: No booted deployment found. Please file a bug."));
         return;
     }
@@ -221,14 +223,14 @@ bool RpmOstreeBackend::hasExternalTransaction()
 {
     // Do we already know that we have a transaction in progress?
     if (m_transaction) {
-        qInfo() << "rpm-ostree-backend: A transaction is already in progress";
+        qCInfo(RPMOSTREE_LOG) << "A transaction is already in progress";
         return true;
     }
 
     // Is there actualy a transaction in progress we don't know about yet?
     const QString transaction = m_interface->activeTransactionPath();
     if (!transaction.isEmpty()) {
-        qInfo() << "rpm-ostree-backend: Found a transaction in progress";
+        qCInfo(RPMOSTREE_LOG) << "Found a transaction in progress";
         // We don't check that m_currentlyBootedDeployment is != nullptr here as we expect
         // that the backend is initialized when we're called.
         setupTransaction(RpmOstreeTransaction::Unknown);
@@ -243,19 +245,19 @@ void RpmOstreeBackend::checkForUpdates()
 {
     if (!m_currentlyBootedDeployment) {
         // Should never happen
-        qWarning() << "rpm-ostree-backend: Called checkForUpdates before the backend is done getting deployments. File a bug to your distribution.";
+        qCWarning(RPMOSTREE_LOG) << "Called checkForUpdates before the backend is done getting deployments. File a bug to your distribution.";
         return;
     }
 
     if (!m_currentlyBootedDeployment->isClassic() && !m_currentlyBootedDeployment->isOCI()) {
         // May happen, but there is nothing we can do here
-        qWarning() << "rpm-ostree-backend: Ignoring update checks for unknown ostree format.";
+        qCWarning(RPMOSTREE_LOG) << "Ignoring update checks for unknown ostree format.";
         return;
     }
 
     // Do not start a transaction if there is already one in-progress (likely externaly started)
     if (hasExternalTransaction()) {
-        qInfo() << "rpm-ostree-backend: Not checking for updates while a transaction is in progress";
+        qCInfo(RPMOSTREE_LOG) << "Not checking for updates while a transaction is in progress";
         return;
     }
 
@@ -271,7 +273,7 @@ void RpmOstreeBackend::checkForUpdates()
         while (iterator.hasNext()) {
             RpmOstreeResource *deployment = iterator.next();
             if (deployment->version() == newVersion) {
-                qInfo() << "rpm-ostree-backend: Found existing deployment for new version. Skipping.";
+                qCInfo(RPMOSTREE_LOG) << "Found existing deployment for new version. Skipping.";
                 // Let the user know that the update is pending a reboot
                 m_updater->setNeedsReboot(true);
                 if (m_currentlyBootedDeployment->getNextMajorVersion().isEmpty()) {
@@ -297,11 +299,11 @@ void RpmOstreeBackend::checkForUpdates()
 
 void RpmOstreeBackend::lookForNextMajorVersion()
 {
-    qInfo() << "rpm-ostree-backend: Looking for a new major version";
+    qCInfo(RPMOSTREE_LOG) << "Looking for a new major version";
 
     const auto loadDone = [this](bool correct) {
         if (!correct) {
-            qWarning() << "rpm-ostree-backend: Could not open the AppStream metadata pool" << m_appdata->lastError();
+            qCWarning(RPMOSTREE_LOG) << "Could not open the AppStream metadata pool" << m_appdata->lastError();
             return;
         }
 
@@ -316,13 +318,12 @@ void RpmOstreeBackend::lookForNextMajorVersion()
         if (nextRelease) {
             if (!m_currentlyBootedDeployment) {
                 // Should never happen
-                qWarning()
-                    << "rpm-ostree-backend: Called lookForNextMajorVersion before the backend is done getting deployments. File a bug to your distribution.";
+                qCWarning(RPMOSTREE_LOG) << "Called lookForNextMajorVersion before the backend is done getting deployments. File a bug to your distribution.";
                 return;
             }
             // Validate that the branch exists for the version to move to and set it for the resource
             if (!m_currentlyBootedDeployment->setNewMajorVersion(nextRelease->version())) {
-                qInfo() << "rpm-ostree-backend: Not offering new version:" << nextRelease->version();
+                qCInfo(RPMOSTREE_LOG) << "Not offering new version:" << nextRelease->version();
                 return;
             }
             // Offer the newly found major version to rebase to
@@ -330,7 +331,7 @@ void RpmOstreeBackend::lookForNextMajorVersion()
             return;
         }
 
-        qInfo() << "rpm-ostree-backend: No new major version found";
+        qCInfo(RPMOSTREE_LOG) << "No new major version found";
     };
 
     connect(m_appdata.get(), &AppStream::Pool::loadFinished, this, loadDone);
@@ -343,11 +344,11 @@ void RpmOstreeBackend::foundNewMajorVersion(const AppStream::Release &release)
     if (newMajorVersion == QStringLiteral("rawhide")) {
         newMajorVersion = QStringLiteral("Rawhide");
     }
-    qDebug() << "rpm-ostree-backend: Found new release:" << newMajorVersion;
+    qCDebug(RPMOSTREE_LOG) << "Found new release:" << newMajorVersion;
 
     if (!m_currentlyBootedDeployment) {
         // Should never happen
-        qWarning() << "rpm-ostree-backend: Called foundNewMajorVersion before the backend is done getting deployments. File a bug to your distribution.";
+        qCWarning(RPMOSTREE_LOG) << "Called foundNewMajorVersion before the backend is done getting deployments. File a bug to your distribution.";
         return;
     }
     const QString newDistroVersionText = m_currentlyBootedDeployment->packageName() + QStringLiteral(" ") + newMajorVersion;
@@ -380,7 +381,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const AppStream::Release &release)
             deploymentVersion = deploymentVersionSplit.at(0);
         }
         if (deploymentVersion == newMajorVersion) {
-            qInfo() << "rpm-ostree-backend: Found existing deployment for new major version";
+            qCInfo(RPMOSTREE_LOG) << "Found existing deployment for new major version";
             m_updater->setNeedsReboot(true);
             Q_EMIT inlineMessageChanged(nullptr);
             return;
@@ -400,7 +401,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const AppStream::Release &release)
     while (iterator.hasNext()) {
         RpmOstreeResource *deployment = iterator.next();
         if ((deployment->version() == newVersion) || deployment->isPending()) {
-            qInfo() << "rpm-ostree-backend: Found pending or updated deployment for current version";
+            qCInfo(RPMOSTREE_LOG) << "Found pending or updated deployment for current version";
             m_updater->setNeedsReboot(true);
             Q_EMIT inlineMessageChanged(m_rebootBeforeRebaseMessage);
             return;
@@ -412,7 +413,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const AppStream::Release &release)
     // release so let's check if there is an update available for the current
     // version.
     if (m_currentlyBootedDeployment->state() == AbstractResource::Upgradeable) {
-        qInfo() << "rpm-ostree-backend: Found pending update for current version";
+        qCInfo(RPMOSTREE_LOG) << "Found pending update for current version";
         m_updater->setNeedsReboot(true);
         Q_EMIT inlineMessageChanged(m_rebootBeforeRebaseMessage);
         return;
@@ -479,7 +480,7 @@ Transaction *RpmOstreeBackend::installApplication(AbstractResource *app)
     Q_UNUSED(app);
 
     if (!m_currentlyBootedDeployment) {
-        qInfo() << "rpm-ostree-backend: Called installApplication before the backend is done getting deployments";
+        qCInfo(RPMOSTREE_LOG) << "Called installApplication before the backend is done getting deployments";
         return nullptr;
     }
 
@@ -495,24 +496,24 @@ Transaction *RpmOstreeBackend::installApplication(AbstractResource *app)
 Transaction *RpmOstreeBackend::removeApplication(AbstractResource *)
 {
     // TODO: Support removing unbooted & unpinned deployments
-    qWarning() << "rpm-ostree-backend: Unsupported operation:" << __PRETTY_FUNCTION__;
+    qCWarning(RPMOSTREE_LOG) << "Unsupported operation:" << __PRETTY_FUNCTION__;
     return nullptr;
 }
 
 void RpmOstreeBackend::rebaseToNewVersion()
 {
     if (!m_currentlyBootedDeployment) {
-        qInfo() << "rpm-ostree-backend: Called rebaseToNewVersion before the backend is done getting deployments";
+        qCInfo(RPMOSTREE_LOG) << "Called rebaseToNewVersion before the backend is done getting deployments";
         return;
     }
 
     if (m_currentlyBootedDeployment->state() == AbstractResource::Upgradeable) {
         // Hidden environement variable to help debugging this path
         if (qEnvironmentVariableIntValue("DISCOVER_RPM_OSTREE_DEVEL") != 0) {
-            qInfo() << "rpm-ostree-backend: You have pending updates for current version. Proceeding anyway.";
+            qCInfo(RPMOSTREE_LOG) << "You have pending updates for current version. Proceeding anyway.";
             passiveMessage(i18n("You have pending updates for the current version. Proceeding anyway."));
         } else {
-            qInfo() << "rpm-ostree-backend: Refusing to rebase with pending updates for current version";
+            qCInfo(RPMOSTREE_LOG) << "Refusing to rebase with pending updates for current version";
             passiveMessage(i18n("Please update to the latest version before rebasing to a major version"));
             return;
         }
@@ -520,7 +521,7 @@ void RpmOstreeBackend::rebaseToNewVersion()
 
     const QString ref = m_currentlyBootedDeployment->getNextMajorVersionRef();
     if (ref.isEmpty()) {
-        qWarning() << "rpm-ostree-backend: Error: Empty ref to rebase to";
+        qCWarning(RPMOSTREE_LOG) << "Error: Empty ref to rebase to";
         passiveMessage(i18n("Missing remote ref for rebase operation. Please file a bug."));
         return;
     }
