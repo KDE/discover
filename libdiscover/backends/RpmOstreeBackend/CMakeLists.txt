@@ -1,5 +1,3 @@
-set(CMAKE_MODULE_PATH ${ECM_MODULE_DIR})
-
 if(RpmOstree_FOUND)
     find_file(RpmOstreeDBusInterface org.projectatomic.rpmostree1.xml /usr/share/dbus-1/interfaces/)
 else()
