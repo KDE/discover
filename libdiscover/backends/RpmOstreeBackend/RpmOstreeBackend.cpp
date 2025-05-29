@@ -112,6 +112,7 @@ void RpmOstreeBackend::initializeBackend()
 
     // Register ourselves as update driver
     if (!m_registrered) {
+        qCDebug(RPMOSTREE_LOG) << "Registering as update driver";
         QVariantMap options;
         options[QLatin1String("id")] = QVariant{QStringLiteral("discover")};
         auto reply = m_interface->RegisterClient(options);
@@ -127,6 +128,7 @@ void RpmOstreeBackend::initializeBackend()
                 // Mark that we are now registered with rpm-ostree and retry
                 // initializing the backend
                 m_registrered = true;
+                qCDebug(RPMOSTREE_LOG) << "Now registered as update driver";
                 initializeBackendFirstStart();
             }
         });
