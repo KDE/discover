@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-20 02:37+0000\n"
-"PO-Revision-Date: 2025-04-17 18:25+0200\n"
+"POT-Creation-Date: 2025-05-29 02:44+0000\n"
+"PO-Revision-Date: 2025-05-27 08:33+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1231,7 +1231,7 @@ msgid "Cannot remove '%1'"
 msgstr "Impossibile rimuovere «%1»"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:355
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:361
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1250,7 +1250,7 @@ msgid "Upgrade Now"
 msgstr "Aggiorna ora"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2352,35 +2352,35 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Sistema operativo"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:169
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:175
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr "rpm-ostree: trovate più distribuzioni avviate. Segnala un bug."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:181
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:187
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree: nessuna distribuzione avviata trovata. Segnala un bug."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Inizia l'aggiornamento…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:508
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:514
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Hai aggiornamenti in sospeso per la versione attuale. Procedo comunque."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:511
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:517
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Aggiorna all'ultima versione prima del rebase a una versione principale"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:519
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:525
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2649,7 +2649,7 @@ msgstr "Verifica la tua connettività Internet"
 #: libdiscover/resources/ResourcesModel.cpp:91
 #, kde-format
 msgid "Refresh"
-msgstr "Aggiorna"
+msgstr "Controlla"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format
