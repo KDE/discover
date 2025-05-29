@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-20 00:43+0000\n"
+"POT-Creation-Date: 2025-05-29 00:43+0000\n"
 "PO-Revision-Date: 2023-02-17 08:42+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -1232,7 +1232,7 @@ msgid "Cannot remove '%1'"
 msgstr "Kan ikke fjerne «%1»"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:355
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:361
 #, fuzzy, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1251,7 +1251,7 @@ msgid "Upgrade Now"
 msgstr "Oppgrader til %1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
 #, fuzzy, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2349,38 +2349,38 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Operativsystem"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:169
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:175
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree: Flere oppstartede distribusjoner funnet. Send inn en feilrapport."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:181
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:187
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree: Ingen oppstartede distribusjoner funnet. Send inn en feilrapport."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:508
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:514
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Det finnes utestående oppdateringer for den gjeldende versjonen. Fortsetter "
 "likevel."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:511
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:517
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Oppdater til nyeste versjon før du gjør en «rebase» til en hovedversjon"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:519
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:525
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
