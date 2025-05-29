@@ -13,6 +13,8 @@
 #include <ostree-repo.h>
 #include <ostree.h>
 
+#include "libdiscover_rpm-ostree_debug.h"
+
 RpmOstreeSourcesBackend::RpmOstreeSourcesBackend(AbstractResourcesBackend *parent)
     : AbstractSourcesBackend(parent)
     , m_model(new QStandardItemModel(this))
@@ -20,14 +22,14 @@ RpmOstreeSourcesBackend::RpmOstreeSourcesBackend(AbstractResourcesBackend *paren
     g_autoptr(GFile) path = g_file_new_for_path("/ostree/repo");
     g_autoptr(OstreeRepo) repo = ostree_repo_new(path);
     if (repo == NULL) {
-        qInfo() << "rpm-ostree-backend: Could not find ostree repo:" << path;
+        qCInfo(RPMOSTREE_LOG) << "Could not find ostree repo:" << path;
         return;
     }
 
     g_autoptr(GError) err = NULL;
     gboolean res = ostree_repo_open(repo, NULL, &err);
     if (!res) {
-        qInfo() << "rpm-ostree-backend: Could not open ostree repo:" << path;
+        qCInfo(RPMOSTREE_LOG) << "Could not open ostree repo:" << path;
         return;
     }
 
@@ -42,7 +44,7 @@ RpmOstreeSourcesBackend::RpmOstreeSourcesBackend(AbstractResourcesBackend *paren
             remote->setData(QString::fromUtf8(url), Qt::ToolTipRole);
             free(url);
         } else {
-            qWarning() << "rpm-ostree-backend: Could not get the URL for ostree remote:" << remotes[r];
+            qCWarning(RPMOSTREE_LOG) << "Could not get the URL for ostree remote:" << remotes[r];
         }
 
         m_model->appendRow(remote);
