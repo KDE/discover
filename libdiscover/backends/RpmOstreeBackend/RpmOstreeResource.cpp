@@ -165,7 +165,7 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
         // the new tag to rebase to. This assumes that container tag names are lowercase.
         QString currentVersion = AppStreamIntegration::global()->osRelease()->versionId();
         m_nextMajorVersionRef = m_ostreeFormat->tag().replace(currentVersion, newMajorVersion.toLower(), Qt::CaseInsensitive);
-        qCInfo(RPMOSTREE_LOG) << "Setting new version to: " << newMajorVersion;
+        qCDebug(RPMOSTREE_LOG) << "Setting new version to: " << newMajorVersion;
         return true;
     }
 
@@ -213,7 +213,7 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
         if (ref == newVersionBranch) {
             m_nextMajorVersion = newMajorVersion;
             m_nextMajorVersionRef = newVersionBranch;
-            qCInfo(RPMOSTREE_LOG) << "Setting new version to:" << newMajorVersion << "ostree:" << newVersionBranch;
+            qCDebug(RPMOSTREE_LOG) << "Setting new version to:" << newMajorVersion << "ostree:" << newVersionBranch;
             return true;
         }
     }
