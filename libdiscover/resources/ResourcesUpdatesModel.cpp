@@ -168,6 +168,7 @@ void ResourcesUpdatesModel::init()
         if (m_offlineUpdates == group.readEntry<bool>("UseOfflineUpdates", false)) {
             return;
         }
+        m_offlineUpdates = group.readEntry<bool>("UseOfflineUpdates", false);
         Q_EMIT useUnattendedUpdatesChanged();
     });
 
@@ -370,11 +371,6 @@ bool ResourcesUpdatesModel::readyToReboot() const
 bool ResourcesUpdatesModel::useUnattendedUpdates() const
 {
     return m_offlineUpdates;
-}
-
-void ResourcesUpdatesModel::setOfflineUpdates(bool offline)
-{
-    m_offlineUpdates = offline;
 }
 
 QStringList ResourcesUpdatesModel::errorMessages() const
