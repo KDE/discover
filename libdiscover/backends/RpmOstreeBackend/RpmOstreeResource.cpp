@@ -423,6 +423,9 @@ QDate RpmOstreeResource::releaseDate() const
 
 void RpmOstreeResource::setState(AbstractResource::State state)
 {
+    if (m_state == state)
+        return;
+
     m_state = state;
     Q_EMIT stateChanged();
 }
