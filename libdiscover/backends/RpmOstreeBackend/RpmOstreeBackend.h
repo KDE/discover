@@ -109,9 +109,6 @@ private:
     /* We're re-using the standard backend updater logic */
     StandardBackendUpdater *m_updater;
 
-    /* Used when refreshing the list of deployments */
-    bool m_fetching;
-
     /* AppStream pool to be able to the distribution major release versions */
     QScopedPointer<AppStream::Pool> m_appdata;
 

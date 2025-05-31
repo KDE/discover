@@ -33,7 +33,6 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     , m_watcher(new QDBusServiceWatcher(this))
     , m_interface(nullptr)
     , m_updater(new StandardBackendUpdater(this))
-    , m_fetching(false)
     , m_appdata(new AppStream::Pool)
 {
     // Refuse to start on systems not managed by rpm-ostree
