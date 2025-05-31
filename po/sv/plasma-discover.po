@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-22 02:41+0000\n"
-"PO-Revision-Date: 2025-04-03 22:32+0200\n"
+"PO-Revision-Date: 2025-05-30 11:29+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #: discover/DiscoverObject.cpp:184
 #, kde-format
@@ -1486,12 +1486,10 @@ msgid "Total size: %1"
 msgstr "Total storlek: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Starta om för att installera uppdateringar nu"
+msgstr "Starta om och installera uppdateringar"
 
 #: discover/qml/UpdatesPage.qml:487
 #, kde-format
@@ -1529,18 +1527,17 @@ msgid "Updates"
 msgstr "Uppdateringar"
 
 #: discover/qml/UpdatesPage.qml:589
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "The updates will be installed the next time the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr "Uppdateringarna installeras nästa gång systemet startas om"
+msgstr "Uppdateringarna installeras efter systemet har startats om"
 
 #: discover/qml/UpdatesPage.qml:591
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"Du kan fortsätta använda systemet om du inte är redo att starta om ännu."
 
 #: discover/qml/UpdatesPage.qml:605 discover/qml/UpdatesPage.qml:612
 #: discover/qml/UpdatesPage.qml:619
