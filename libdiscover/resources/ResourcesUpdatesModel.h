@@ -35,7 +35,6 @@ public:
 
     Q_SCRIPTABLE void prepare();
 
-    void setOfflineUpdates(bool offline);
     bool isProgressing() const;
     QList<AbstractResource *> toUpdate() const;
     QDateTime lastUpdate() const;

@@ -153,7 +153,7 @@ void ResourcesUpdatesModel::init()
     refreshFetching();
 
     // To enable from command line use:
-    // kwriteconfig5 --file discoverrc --group Software --key UseOfflineUpdates true
+    // kwriteconfig6 --file discoverrc --group Software --key UseOfflineUpdates true
     auto sharedConfig = KSharedConfig::openConfig();
     KConfigGroup group(sharedConfig, u"Software"_s);
     m_offlineUpdates = group.readEntry<bool>("UseOfflineUpdates", false);
@@ -165,9 +165,11 @@ void ResourcesUpdatesModel::init()
             return;
         }
 
-        if (m_offlineUpdates == group.readEntry<bool>("UseOfflineUpdates", false)) {
+        const bool offlineUpdates = group.readEntry<bool>("UseOfflineUpdates", false);
+        if (m_offlineUpdates == offlineUpdates) {
             return;
         }
+        m_offlineUpdates = offlineUpdates;
         Q_EMIT useUnattendedUpdatesChanged();
     });
 
@@ -370,11 +372,6 @@ bool ResourcesUpdatesModel::readyToReboot() const
 bool ResourcesUpdatesModel::useUnattendedUpdates() const
 {
     return m_offlineUpdates;
-}
-
-void ResourcesUpdatesModel::setOfflineUpdates(bool offline)
-{
-    m_offlineUpdates = offline;
 }
 
 QStringList ResourcesUpdatesModel::errorMessages() const
