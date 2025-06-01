@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-21 00:43+0000\n"
-"PO-Revision-Date: 2025-05-24 08:33+0200\n"
+"POT-Creation-Date: 2025-06-01 00:44+0000\n"
+"PO-Revision-Date: 2025-05-31 08:46+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -80,17 +80,17 @@ msgstr ""
 "oraz Dodatkami.<para>Opiekunowie %1 zamiast tego zalecają używanie narzędzia "
 "<command>pacman</command> z wiersza poleceń.</para>"
 
-#: discover/DiscoverObject.cpp:295
+#: discover/DiscoverObject.cpp:296
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Nie można znaleźć kategorii '%1'"
 
-#: discover/DiscoverObject.cpp:317
+#: discover/DiscoverObject.cpp:318
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Próbowano otworzyć nieistniejący plik '%1'"
 
-#: discover/DiscoverObject.cpp:339
+#: discover/DiscoverObject.cpp:340
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -98,17 +98,17 @@ msgid ""
 msgstr ""
 "Nie można obsłużyć zasobu flatpak bez silnika flatpak %1. Wgraj go najpierw."
 
-#: discover/DiscoverObject.cpp:343
+#: discover/DiscoverObject.cpp:344
 #, kde-format
 msgid "Could not open %1"
 msgstr "Nie można otworzyć %1"
 
-#: discover/DiscoverObject.cpp:405
+#: discover/DiscoverObject.cpp:409
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Upewnij się, że wgrana jest obsługa Snap"
 
-#: discover/DiscoverObject.cpp:408
+#: discover/DiscoverObject.cpp:412
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -117,23 +117,23 @@ msgstr ""
 "Nie można otworzyć %1, bo nie znaleziono go w żadnym dostępnym źródle "
 "oprogramowania."
 
-#: discover/DiscoverObject.cpp:412
+#: discover/DiscoverObject.cpp:416
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "Zgłoś ten błąd ludziom, przygotowującym pakiety w twojej dystrybucji."
 
-#: discover/DiscoverObject.cpp:415
+#: discover/DiscoverObject.cpp:419
 #, kde-format
 msgid "Report This Issue"
 msgstr "Zgłoś ten błąd"
 
-#: discover/DiscoverObject.cpp:475 discover/DiscoverObject.cpp:477
+#: discover/DiscoverObject.cpp:479 discover/DiscoverObject.cpp:481
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:478
+#: discover/DiscoverObject.cpp:482
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -530,12 +530,10 @@ msgid ","
 msgstr ","
 
 #: discover/qml/ApplicationPage.qml:507
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "See more…"
-msgstr "Zobacz więcej..."
+msgstr "Zobacz więcej…"
 
 #: discover/qml/ApplicationPage.qml:519
 #, kde-format
