@@ -1,14 +1,14 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# SPDX-FileCopyrightText: 2023, 2024 Guðmundur Erlingsson <gudmundure@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Guðmundur Erlingsson <gudmundure@gmail.com>
 # Sveinn í Felli <sv1@fellsnet.is>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-22 02:41+0000\n"
-"PO-Revision-Date: 2024-06-28 11:35+0000\n"
+"PO-Revision-Date: 2025-06-01 13:34+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
 "Language: is\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: discover/DiscoverObject.cpp:184
 #, kde-format
@@ -190,7 +190,7 @@ msgstr "Birtir lista yfir tiltæka valkosti fyrir umsagnir notenda"
 #: discover/main.cpp:44
 #, kde-format
 msgid "Starts an update automatically, headless"
-msgstr ""
+msgstr "Byrjar uppfærsluna sjálfkrafa, án viðmóts"
 
 #: discover/main.cpp:46
 #, kde-format
@@ -203,10 +203,9 @@ msgid "An application explorer"
 msgstr "Forritaskoðari"
 
 #: discover/main.cpp:133
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010-2024 Plasma þróunarteymið"
+msgstr "© 2010-2025 Plasma þróunarteymið"
 
 #: discover/main.cpp:134
 #, kde-format
@@ -308,18 +307,7 @@ msgid "No ratings yet"
 msgstr "Engar einkunnir ennþá"
 
 #: discover/qml/ApplicationPage.qml:69
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -335,30 +323,21 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"Einungis að setja upp þetta forrit ef þú berð fullt traust til höfunda þess "
-"(%1). <nl/><nl/>Frumkóði þessa forrits er lokaður að hluta til eða að öllu "
-"leyti og hvorki leyfilegt að skoða hann né breyta honum. Það þýðir að þriðju "
-"aðilar og notendur eins og þú geta ekki sannreynt virkni þess, öryggi og "
-"áreiðanleika, eða breytt því og endurdreift án yfirlýsts samþykkis höfunda "
-"þess.<nl/><nl/>Forritið kann að vera fullkomlega öruggt í notkun eða það "
-"kann að vinna gegn þér á einhvern hátt—svo sem með því að safna "
-"persónuupplýsingum þínum, fylgjast með staðsetningu þinni eða senda efni "
-"skráa þinna til annarra aðila. <nl/><nl/>Frekari upplýsingar er að finna á "
-"<link url='%2'>%2</link>."
+"Settu bara upp %1 ef þú berð fullt traust til höfunda þess þar sem það er "
+"<emphasis>séreignarhugbúnaður</emphasis>: Frelsi þitt til að nota, breyta "
+"eða dreifa hugbúnaðinum er takmarkaður  og frumkóði hans er lokaður að hluta "
+"til eða að öllu leyti og hvorki leyfilegt að skoða hann né breyta honum. "
+"Þriðju aðilar og notendur eins og þú geta því ekki sannreynt virkni hans, "
+"öryggi og áreiðanleika.<nl/><nl/>Forritið kann að vera fullkomlega öruggt í "
+"notkun eða það kann að vinna gegn þér á einhvern hátt—svo sem með því að "
+"safna persónuupplýsingum þínum, fylgjast með staðsetningu þinni eða senda "
+"innihald skráa þinna til annarra aðila. Notaðu það bara ef þú berð fullt "
+"traust til höfunda hans. Frekari upplýsingar er að finna á <link "
+"url='%2'>vefsíðu forritsins</link>.<nl/><nl/>Meiri upplýsingar á <link "
+"url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -372,16 +351,16 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Einungis að setja upp þetta forrit ef þú berð fullt traust til höfunda þess "
-"(%1). <nl/><nl/>Frumkóði þessa forrits er lokaður að hluta til eða að öllu "
-"leyti og hvorki leyfilegt að skoða hann né breyta honum. Það þýðir að þriðju "
-"aðilar og notendur eins og þú geta ekki sannreynt virkni þess, öryggi og "
-"áreiðanleika, eða breytt því og endurdreift án yfirlýsts samþykkis höfunda "
-"þess.<nl/><nl/>Forritið kann að vera fullkomlega öruggt í notkun eða það "
-"kann að vinna gegn þér á einhvern hátt—svo sem með því að safna "
-"persónuupplýsingum þínum, fylgjast með staðsetningu þinni eða senda efni "
-"skráa þinna til annarra aðila. <nl/><nl/>Frekari upplýsingar er að finna á "
-"<link url='%2'>%2</link>."
+"Settu bara upp %1 ef þú berð fullt traust til höfunda þess þar sem það er "
+"<emphasis>séreignarhugbúnaður</emphasis>: Frelsi þitt til að nota, breyta "
+"eða dreifa hugbúnaðinum er takmarkaður  og frumkóði hans er lokaður að hluta "
+"til eða að öllu leyti og hvorki leyfilegt að skoða hann né breyta honum. "
+"Þriðju aðilar og notendur eins og þú geta því ekki sannreynt virkni hans , "
+"öryggi og áreiðanleika.<nl/><nl/>Forritið kann að vera fullkomlega öruggt í "
+"notkun eða það kann að vinna gegn þér á einhvern hátt—svo sem með því að "
+"safna persónuupplýsingum þínum, fylgjast með staðsetningu þinni eða senda "
+"innihald skráa þinna til annarra aðila. Notaðu það bara ef þú berð fullt "
+"traust til höfunda hans. Meiri upplýsingar á <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:81
 #, kde-kuit-format
@@ -399,6 +378,18 @@ msgid ""
 "url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"%1 notar eitt eða fleiri leyfi sem ekki eru vottuð sem “Frjáls hugbúnaður” "
+"skv. annað hvort <link url='%2'>Free Software Foundation</link> eða <link "
+"url='%3'>Open Source Initiative</link>. Það þýðir að frelsi þitt til að "
+"nota, skoða, breyta eða deila hugbúnaðinum kann að vera takmarkað að "
+"einhverju leyti.<nl/><nl/>Lestu því leyfistextann vel og kynntu þér allar "
+"takmarkanir hugbúnaðarins áður en þú notar hann.<nl/><nl/>Ef leyfið felur "
+"ekki einu sinni í sér heimild til að lesa frumkóða hans skaltu ganga úr "
+"skugga um að þú treystir höfundum hans að fullu, þar sem enginn annar getur "
+"staðfest traust og öryggi frumkóðans til að tryggja að hann vinni ekki gegn "
+"þér á einhvern dulinn hátt. Hugsanlega er hægt að finna frekari upplýsingar "
+"á <link url='%4'>vefsíðu hugbúnaðarins</link>.<nl/><nl/>Meiri upplýsingar á "
+"<link url='%5'>%5</link>."
 
 #: discover/qml/ApplicationPage.qml:88
 #, kde-kuit-format
@@ -414,6 +405,17 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"%1 notar eitt eða fleiri leyfi sem ekki eru vottuð sem “Frjáls hugbúnaður” "
+"skv. annað hvort <link url='%2'>Free Software Foundation</link> eða <link "
+"url='%3'>Open Source Initiative</link>. Það þýðir að frelsi þitt til að "
+"nota, skoða, breyta eða deila hugbúnaðinum kann að vera takmarkað að "
+"einhverju leyti.<nl/><nl/>Lestu því leyfistextann vel og kynntu þér allar "
+"takmarkanir hugbúnaðarins áður en þú notar hann.<nl/><nl/>Ef leyfið felur "
+"ekki einu sinni í sér heimild til að lesa frumkóða hans skaltu ganga úr "
+"skugga um að þú treystir höfundum hans að fullu, þar sem enginn annar getur "
+"staðfest traust og öryggi frumkóðans til að tryggja að hann vinni ekki gegn "
+"þér á einhvern dulinn hátt. <nl/><nl/>Meiri upplýsingar á <link url='%4'>%4</"
+"link>."
 
 #: discover/qml/ApplicationPage.qml:97
 #, kde-kuit-format
@@ -424,6 +426,10 @@ msgid ""
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
+"%1 gefur ekki upp undir hvaða leyfi það er gefið út. Þú gætir fundið út úr "
+"því á <link url='%2'>heimasíðu hugbúnaðarins</link>. Finndu upplýsingarnar "
+"þar eða hafðu samband við höfundinn ef þú vilt nota hugbúnaðinn í öðrum til "
+"gangi en til eigin persónulegra nota."
 
 #: discover/qml/ApplicationPage.qml:101
 #, kde-format
@@ -433,11 +439,12 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"%1 gefur ekki upp undir hvaða leyfi það er gefið út. Hafðu samband við "
+"höfundinn ef þú vilt nota hugbúnaðinn í öðrum til gangi en til eigin "
+"persónulegra nota."
 
 #: discover/qml/ApplicationPage.qml:142
-#, fuzzy, kde-format
-#| msgctxt "Exports the application's URL to an external service"
-#| msgid "Share"
+#, kde-format
 msgctxt "@action:button share a link to this app"
 msgid "Share"
 msgstr "Deila"
@@ -446,7 +453,7 @@ msgstr "Deila"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
-msgstr ""
+msgstr "Viðbætur"
 
 #: discover/qml/ApplicationPage.qml:166
 #, kde-format
@@ -462,11 +469,10 @@ msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:220
-#, fuzzy, kde-format
-#| msgid "Send a link for this application"
+#, kde-format
 msgctxt "@title:window"
 msgid "Share Link to Application"
-msgstr "Senda tengil á þetta forrit"
+msgstr "Deila tengli á þetta forrit"
 
 #: discover/qml/ApplicationPage.qml:229
 #, kde-format
@@ -497,8 +503,7 @@ msgstr[0] "Notandaleyfi:"
 msgstr[1] "Notandaleyfi:"
 
 #: discover/qml/ApplicationPage.qml:426
-#, fuzzy, kde-format
-#| msgid "What does this mean?"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Hvað þýðir þetta?"
@@ -513,7 +518,7 @@ msgstr "Óþekkt"
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:507
 #, kde-format
@@ -526,27 +531,24 @@ msgstr[1] "Meiri upplýsingar..."
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr ""
+msgstr "Aldurstakmark:"
 
 #: discover/qml/ApplicationPage.qml:527
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr ""
+msgstr "Allir aldurshópar"
 
 #: discover/qml/ApplicationPage.qml:529
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr "%1"
+msgstr "%1+"
 
 #: discover/qml/ApplicationPage.qml:543
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "See details…"
+#, kde-format
 msgid "See details"
-msgstr "Nánar..."
+msgstr "Frekari upplýsingar"
 
 #: discover/qml/ApplicationPage.qml:567
 #, kde-format
@@ -595,18 +597,16 @@ msgstr "Settu forritið upp til að skrifa umsögn"
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
-msgstr ""
+msgstr "Ytri tenglar"
 
 #: discover/qml/ApplicationPage.qml:842
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "Lesa opinberar handbækur fyrir verkefnið"
+msgstr "Lesa handbækurnar"
 
 #: discover/qml/ApplicationPage.qml:853
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Heimsækja vefsvæði verkefnisins"
@@ -615,20 +615,19 @@ msgstr "Heimsækja vefsvæði verkefnisins"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "Styrkja verkefnið fjárhagslega"
 
 #: discover/qml/ApplicationPage.qml:873
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
-msgstr "Senda villuskýrslu"
+msgstr "Senda villutilkynningu"
 
 #: discover/qml/ApplicationPage.qml:883
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "Byrjaðu að gefa af þér"
 
 #: discover/qml/ApplicationPage.qml:912
 #, kde-format
@@ -641,11 +640,10 @@ msgid "Content Rating"
 msgstr "Aldurshæfi efnis"
 
 #: discover/qml/ApplicationPage.qml:973
-#, fuzzy, kde-format
-#| msgid "Submit Usage Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "Senda inn notkunarupplýsingar"
+msgstr "Upplýsingar um notkunarleyfi"
 
 #: discover/qml/ApplicationsListPage.qml:54
 #, kde-format
@@ -706,8 +704,7 @@ msgid "Size"
 msgstr "Stærð"
 
 #: discover/qml/ApplicationsListPage.qml:152
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
 msgstr "Útgáfudagur"
 
@@ -872,14 +869,12 @@ msgstr "&Uppsett"
 #: discover/qml/DiscoverWindow.qml:96
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr ""
+msgstr "&Uppfærslur (sæki…)"
 
 #: discover/qml/DiscoverWindow.qml:96
-#, fuzzy, kde-format
-#| msgid "&Update (%1)"
-#| msgid_plural "&Updates (%1)"
+#, kde-format
 msgid "&Updates (%1)"
-msgstr "&Uppfærsla (%1)"
+msgstr "&Uppfærslur (%1)"
 
 #: discover/qml/DiscoverWindow.qml:104
 #, kde-format
@@ -923,12 +918,12 @@ msgid "Update Issue"
 msgstr "Uppfærsluvandamál"
 
 #: discover/qml/DiscoverWindow.qml:361
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
-msgstr "Upp kom vandamál við uppsetningu uppfærslunnar. Reyndu aftur síðar."
+msgstr ""
+"Upp kom vandamál við uppfærsluna eða uppsetninguna. Reyndu aftur síðar."
 
 #: discover/qml/DiscoverWindow.qml:397
 #, kde-format
@@ -1135,6 +1130,9 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"Ef þú kannt að meta %1 skaltu mæla með því við aðra! Leggðu áherslu á "
+"virkni, notagildi og útlit. Ef forritið uppfyllti ekki kröfur þínar skaltu "
+"útskýra af hverju."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1144,6 +1142,9 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"Ef %1 keyrir ekki skaltu endilega tilkynna það til þess aðila sem sér um "
+"pakkann í %2 á <link url='%3'>%3</link> í staðinn, þar sem hugsanlega er "
+"galli í pakkanum sem er auðvelt að laga frekar en bilun í forritinu sjálfu."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1153,6 +1154,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"Ef %1 keyrir ekki skaltu endilega tilkynna það til forritara þess á <link "
+"url='%2'>%</link> í staðinn, þar sem hugsanlega er galli í pakkanum sem er "
+"auðvelt að laga frekar en bilun í forritinu sjálfu."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1161,6 +1165,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"Ef forritið hrynur ítrekað skaltu endilega tilkynna það til forritara þess á "
+"<link url='%1'>%1</link> í staðinn."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1170,6 +1176,9 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"Ef þú átt í vandræðum með forritið skaltu endilega tilkynna það til "
+"forritara þess á <link url='%1'>%1</link> í staðinn, eða lýsa vandamálinu "
+"hér á ítarlegri hátt."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1194,7 +1203,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "opna,keyra,ræsa"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1204,7 +1213,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "hrun,segfault"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1214,7 +1223,7 @@ msgctxt ""
 "your language and/or shorten to common stems contained by multiple forms of "
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
-msgstr ""
+msgstr "virkar ekki,heimskulegt,heimskt,drasl,skran,sökka,ömurlegt,hata"
 
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
@@ -1325,8 +1334,7 @@ msgid "Settings"
 msgstr "Stillingar"
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Default source"
+#, kde-format
 msgid "Default Source"
 msgstr "Sjálfgefinn upprunastaður"
 
@@ -1336,8 +1344,7 @@ msgid "Add Source…"
 msgstr "Bæta við upprunastað..."
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
 msgstr "Gera sjálfgefið"
 
@@ -1451,27 +1458,25 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr ""
+msgstr "Við lok uppfærslu á sjálfkrafa að:"
 
 #: discover/qml/UpdatesPage.qml:283
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "Velja ekkert"
+msgstr "Velja aðgerð"
 
 #: discover/qml/UpdatesPage.qml:283
-#, fuzzy, kde-format
-#| msgid "Restart Now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "Endurræsa núna"
+msgstr "Endurræsa"
 
 #: discover/qml/UpdatesPage.qml:283
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
-msgstr ""
+msgstr "Slökkva á tölvu"
 
 #: discover/qml/UpdatesPage.qml:292
 #, kde-format
@@ -1482,7 +1487,7 @@ msgstr "Heildarstærð: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr ""
+msgstr "Endurræsa og setja inn uppfærslur"
 
 #: discover/qml/UpdatesPage.qml:487
 #, kde-format
@@ -1523,13 +1528,13 @@ msgstr "Uppfærslur"
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr ""
+msgstr "Uppfærslur verða settar upp þegar tölvan hefur verið endurræst"
 
 #: discover/qml/UpdatesPage.qml:591
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
-msgstr ""
+msgstr "Þú getur haldið áfram að nota tölvuna ef þú vilt ekki endurræsa strax."
 
 #: discover/qml/UpdatesPage.qml:605 discover/qml/UpdatesPage.qml:612
 #: discover/qml/UpdatesPage.qml:619
