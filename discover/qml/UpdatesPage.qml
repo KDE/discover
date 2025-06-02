@@ -396,7 +396,7 @@ DiscoverPage {
             checked: itemChecked.checked
 
             Accessible.name: model.display
-            Accessible.description: model.resource.upgradeText
+            Accessible.description: model.resource?.upgradeText ?? ""
             Accessible.role: Accessible.ListItem
 
             onEnabledChanged: if (!enabled) {
@@ -477,7 +477,7 @@ DiscoverPage {
                         QQC2.Label {
                             Layout.fillWidth: true
                             elide: truncated ? Text.ElideLeft : Text.ElideRight
-                            text: listItem.model.resource.upgradeText
+                            text: listItem.model.resource?.upgradeText ?? ""
                             opacity: listItem.hovered ? 0.8 : 0.6
                         }
                     }
