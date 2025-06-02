@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-29 00:43+0000\n"
+"POT-Creation-Date: 2025-06-02 00:43+0000\n"
 "PO-Revision-Date: 2020-10-04 16:58+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -29,9 +29,9 @@ msgstr "mschlander@opensuse.org"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:390
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:366
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:392
 #: libdiscover/UpdateModel/UpdateModel.cpp:124
 #: libdiscover/UpdateModel/UpdateModel.cpp:346
 #, kde-format
@@ -1243,7 +1243,7 @@ msgid "Cannot remove '%1'"
 msgstr "Kan ikke fjerne systempakke"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:361
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1261,7 +1261,7 @@ msgid "Upgrade Now"
 msgstr "Opgradér"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, fuzzy, kde-format
 #| msgid "Repo not available"
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -2431,17 +2431,18 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Reparér system"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:175
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:178
 #, kde-format
-msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+msgid ""
+"rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:187
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
 #, kde-format
-msgid "rpm-ostree: No booted deployment found. Please file a bug."
+msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
 #| msgid "Upgrade"
@@ -2449,48 +2450,48 @@ msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Opgradér"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:514
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:516
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:517
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:519
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:525
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:298
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:300
 #, kde-format
 msgid "GPL and other licenses"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:308
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:310
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional packages: "
 msgstr "Bekræft yderligere ændringer"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:315
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:317
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Confirm Additional Changes"
 msgid "Additional modules: "
 msgstr "Bekræft yderligere ændringer"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:322
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:324
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Unlock package"
 msgid "Local packages: "
 msgstr "Lås pakken op"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:329
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:331
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox Human-readable name for the Debian package section "
@@ -2499,124 +2500,124 @@ msgstr "Lås pakken op"
 msgid "Replaced packages:"
 msgstr "Metapakker"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:336
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:338
 #, fuzzy, kde-format
 #| msgctxt "@label The parent package that this package comes from"
 #| msgid "Source Package:"
 msgid "Removed packages:"
 msgstr "Kildepakke:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, fuzzy, kde-format
 #| msgid "Current Version:"
 msgid "Currently booted version (pinned)"
 msgstr "Nuværende version:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
 #, fuzzy, kde-format
 #| msgid "Current Version:"
 msgid "Currently booted version"
 msgstr "Nuværende version:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:404
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:404
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:406
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Force Version"
 msgid "Fallback version (pinned)"
 msgstr "Gennemtving version"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:406
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:408
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Force Version"
 msgid "Fallback version"
 msgstr "Gennemtving version"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:76
 #, kde-format
 msgid "ostree remotes"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
 #, kde-format
 msgid ""
-"rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+"rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:58
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
 #, kde-format
 msgid ""
-"rpm-ostree-backend: Error: Can not start a transaction for resource with an "
+"rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:78
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
 #, kde-format
 msgid ""
-"rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
+"rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
 #, kde-format
 msgid ""
-"rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+"rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
 #, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:242
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
 #, kde-format
-msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:364
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
 #, fuzzy, kde-format
 #| msgctxt "@action Checks the Internet for updates"
 #| msgid "Check for Updates"
 msgid "Checking for a system update"
 msgstr "Tjek efter opdateringer"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:398
 #, kde-format
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
 #, kde-format
 msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:411
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
 #, fuzzy, kde-format
 #| msgid "Cannot cancel transaction"
 msgid "Unknown transaction type"
