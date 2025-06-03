@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-02 00:43+0000\n"
-"PO-Revision-Date: 2025-02-20 09:49+0100\n"
+"PO-Revision-Date: 2025-06-02 10:54+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -2362,21 +2362,19 @@ msgid "Operating System"
 msgstr "Sistema operatiu"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:178
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"«rpm-ostree»: S'han trobat diversos desplegaments d'arrencada. Informeu de "
-"l'error."
+"Dorsal «rpm-ostree»: S'han trobat diversos desplegaments d'arrencada. "
+"Informeu de l'error."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
-"«rpm-ostree»: No s'ha trobat cap desplegament d'arrencada. Informeu de "
-"l'error."
+"Dorsal «rpm-ostree»: No s'ha trobat cap desplegament d'arrencada. Informeu "
+"de l'error."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
 #, kde-format
@@ -2463,51 +2461,37 @@ msgstr "Versió alternativa de reserva"
 msgid "ostree remotes"
 msgstr "Remots d'«ostree»"
 
-# skip-rule: kct-backend
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"«rpm-ostree-backend»: Error: No s'ha proporcionat cap interfície del DBus. "
+"Dorsal «rpm-ostree»: Error: No s'ha proporcionat cap interfície del DBus. "
 "Informeu de l'error."
 
-# skip-rule: kct-backend
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"«rpm-ostree-backend»: Error: No s'ha pogut iniciar una transacció per a un "
+"Dorsal «rpm-ostree»: Error: No s'ha pogut iniciar una transacció per a un "
 "recurs amb format no vàlid. Informeu de l'error."
 
-# skip-rule: kct-backend
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"«rpm-ostree-backend»: Error: No s'ha pogut fer «rebase» a una «ref» no "
+"Dorsal «rpm-ostree»: Error: No s'ha pogut fer «rebase» a una «ref» no "
 "vàlida. Informeu de l'error."
 
-# skip-rule: kct-backend
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"«rpm-ostree-backend»: Error: S'ha sol·licitat una operació desconeguda. "
+"Dorsal «rpm-ostree»: Error: S'ha sol·licitat una operació desconeguda. "
 "Informeu de l'error."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
@@ -2520,15 +2504,11 @@ msgstr ""
 "La transacció «rpm-ostree» ha fallat per:\n"
 "%1"
 
-# skip-rule: kct-backend
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"«rpm-ostree-backend»: Error: Format desconegut de recurs. Informeu de "
-"l'error."
+"Dorsal «rpm-ostree»: Error: Format desconegut de recurs. Informeu de l'error."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format

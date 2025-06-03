@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-02 00:43+0000\n"
-"PO-Revision-Date: 2025-02-22 21:39+0200\n"
+"PO-Revision-Date: 2025-06-02 08:29+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2330,17 +2330,15 @@ msgid "Operating System"
 msgstr "מערכת הפעלה"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:178
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
-msgstr "rpm-ostree: נמצאות מספר הטמעות נטענות פעילות. נא לדווח על תקלה."
+msgstr "מנגנון rpm-ostree: נמצאות מספר הטמעות נטענות פעילות. נא לדווח על תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
-msgstr "rpm-ostree: לא נמצאה הטמעה נטענת פעילה. נא לדווח על תקלה."
+msgstr "מנגנון rpm-ostree: לא נמצאה הטמעה נטענת פעילה. נא לדווח על תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
 #, kde-format
@@ -2424,43 +2422,33 @@ msgid "ostree remotes"
 msgstr "מקורות מרוחקים של ostree"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
-msgstr "rpm-ostree-backend: שגיאה: לא סופק ממשק DBus. נא לדווח על תקלה."
+msgstr "מנגנון rpm-ostree: שגיאה: לא סופק ממשק DBus. נא לדווח על תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: שגיאה: אי אפשר להפעיל העברה למשאב במבנה שגוי. נא לדווח "
-"על תקלה."
+"מנגנון rpm-ostree: שגיאה: אי אפשר להפעיל העברה למשאב במבנה שגוי. נא לדווח על "
+"תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: שגיאה: לא ניתן להסב את הבסיס להפנייה ריקה. נא לדווח על "
+"מנגנון rpm-ostree: שגיאה: לא ניתן להסב את הבסיס להפנייה ריקה. נא לדווח על "
 "תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
-msgstr "rpm-ostree-backend: שגיאה: התבקשה פעולה לא ידועה. נא לדווח על תקלה."
+msgstr "מנגנון rpm-ostree: שגיאה: התבקשה פעולה לא ידועה. נא לדווח על תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
@@ -2473,11 +2461,9 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
-msgstr "rpm-ostree-backend: שגיאה: מבנה משאב לא ידוע. נא לדווח על תקלה."
+msgstr "מנגנון rpm-ostree: שגיאה: מבנה משאב לא ידוע. נא לדווח על תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format
