@@ -94,6 +94,8 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
         QDBusConnection::systemBus().interface()->startService(DBusServiceName);
         qCDebug(RPMOSTREE_LOG) << "DBus activating rpm-ostree service";
     }
+
+    connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &AbstractResourcesBackend::updatesCountChanged);
 }
 
 void RpmOstreeBackend::initializeBackend()
@@ -170,9 +172,6 @@ void RpmOstreeBackend::refreshDeployments()
         RpmOstreeResource *deployment = new RpmOstreeResource(d, this);
         m_resources << deployment;
         if (deployment->isBooted()) {
-            connect(deployment, &RpmOstreeResource::stateChanged, [this]() {
-                Q_EMIT updatesCountChanged();
-            });
             if (m_currentlyBootedDeployment) {
                 qCWarning(RPMOSTREE_LOG) << "We already have a booted deployment. This is a bug.";
                 passiveMessage(i18n("rpm-ostree: Multiple booted deployments found. Please file a bug."));
@@ -190,9 +189,6 @@ void RpmOstreeBackend::refreshDeployments()
         passiveMessage(i18n("rpm-ostree: No booted deployment found. Please file a bug."));
         return;
     }
-
-    // The number of updates might have changed if we're called after an update
-    Q_EMIT updatesCountChanged();
 
     // Signal that the available resources might have changed
     Q_EMIT contentsChanged();
@@ -428,14 +424,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const AppStream::Release &release)
 
 int RpmOstreeBackend::updatesCount() const
 {
-    if (!m_currentlyBootedDeployment) {
-        // Not yet initialized
-        return 0;
-    }
-    if (m_currentlyBootedDeployment->state() == AbstractResource::Upgradeable) {
-        return 1;
-    }
-    return 0;
+    return m_updater->updatesCount();
 }
 
 bool RpmOstreeBackend::isValid() const
