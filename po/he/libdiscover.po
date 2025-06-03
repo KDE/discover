@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-29 02:44+0000\n"
+"POT-Creation-Date: 2025-06-03 02:40+0000\n"
 "PO-Revision-Date: 2025-02-22 21:39+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -33,9 +33,9 @@ msgstr "kde-l10n-he@kde.org,omeritzicschwartz@gmail.com"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:110
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:364
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:390
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:366
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:392
 #: libdiscover/UpdateModel/UpdateModel.cpp:124
 #: libdiscover/UpdateModel/UpdateModel.cpp:346
 #, kde-format
@@ -1205,7 +1205,7 @@ msgid "Cannot remove '%1'"
 msgstr "לא ניתן להסיר את ‚%1’"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:361
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1224,7 +1224,7 @@ msgid "Upgrade Now"
 msgstr "שדרוג כעת"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2329,104 +2329,104 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "מערכת הפעלה"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:175
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:178
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr "rpm-ostree: נמצאות מספר הטמעות נטענות פעילות. נא לדווח על תקלה."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:187
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree: לא נמצאה הטמעה נטענת פעילה. נא לדווח על תקלה."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "התחלה בשדרוג…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:514
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:516
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "יש לך עדכונים ממתינים לגרסה הנוכחית. נמשיך בכל מקרה."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:517
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:519
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "נא לעדכן לגרסה האחרונה בטרם הסבת הבסיס לגרסה עיקרית"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:525
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "חסר מקור מרוחק לפעולת הסבת בסיס. נא לדווח על תקלה."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:298
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:300
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL ורישיונות נוספים"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:308
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:310
 #, kde-format
 msgid "Additional packages: "
 msgstr "חבילות נוספות: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:315
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:317
 #, kde-format
 msgid "Additional modules: "
 msgstr "מודולים נוספים: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:322
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:324
 #, kde-format
 msgid "Local packages: "
 msgstr "חבילות מקומיות: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:329
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:331
 #, kde-format
 msgid "Replaced packages:"
 msgstr "חבילות שהוחלפו:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:336
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:338
 #, kde-format
 msgid "Removed packages:"
 msgstr "חבילות שהוסרו:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:397
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "הגרסה שנטענה כרגע (נעוצה)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
 #, kde-format
 msgid "Currently booted version"
 msgstr "הגרסה שנטענה כרגע"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:404
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "הגרסה שתעלה אחרי הפעלה מחדש"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:404
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:406
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "גרסת נסיגה (נעוצה)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:406
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:408
 #, kde-format
 msgid "Fallback version"
 msgstr "גרסת נסיגה"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:74
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:76
 #, kde-format
 msgid "ostree remotes"
 msgstr "מקורות מרוחקים של ostree"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:38
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgstr "rpm-ostree-backend: שגיאה: לא סופק ממשק DBus. נא לדווח על תקלה."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:58
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
@@ -2435,7 +2435,7 @@ msgstr ""
 "rpm-ostree-backend: שגיאה: אי אפשר להפעיל העברה למשאב במבנה שגוי. נא לדווח "
 "על תקלה."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:78
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a bug."
@@ -2443,14 +2443,14 @@ msgstr ""
 "rpm-ostree-backend: שגיאה: לא ניתן להסב את הבסיס להפנייה ריקה. נא לדווח על "
 "תקלה."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:96
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
 #, kde-format
 msgid ""
 "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
 msgstr "rpm-ostree-backend: שגיאה: התבקשה פעולה לא ידועה. נא לדווח על תקלה."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
 #, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
@@ -2459,35 +2459,35 @@ msgstr ""
 "העברה של rpm-ostree נכשלה עם:\n"
 "%1"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:242
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
 #, kde-format
 msgid "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgstr "rpm-ostree-backend: שגיאה: מבנה משאב לא ידוע. נא לדווח על תקלה."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:364
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr "העברות rpm-ostree מבוטלות. פעולה זו עלולה לארוך זמן מה. נא להמתין."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:393
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
 #, kde-format
 msgid "Checking for a system update"
 msgstr "עדכון מערכת נבדק"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:396
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:398
 #, kde-format
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
 "עדכוני מערכת מתקבלים. נא להתאזר בסבלנות כיוון שאין דיווח על תזמון התקדמות."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:399
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr "המערכת מתעדכנת. נא להתאזר בסבלנות כיוון שאין דיווח על תזמון התקדמות."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
 #, kde-format
 msgid ""
 "Updating to the next major version. Please be patient as progress is not "
@@ -2496,12 +2496,12 @@ msgstr ""
 "המערכת מתעדכנת לגרסה העיקרית הבאה. נא להתאזר בסבלנות כיוון שאין דיווח על "
 "תזמון התקדמות."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:405
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr "פעולה מתבצעת (החלה מחוץ ל־Discover)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:411
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "סוג העברה לא ידוע"
