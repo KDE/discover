@@ -28,21 +28,21 @@
 # SPDX-FileCopyrightText: 2024 X əyyam
 # SPDX-FileCopyrightText: 2024 X əyyam
 # SPDX-FileCopyrightText: 2024 X əyyam
-# SPDX-FileCopyrightText: 2024 Kheyyam Godjayev <xxmn77@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025 Kheyyam Godjayev <xxmn77@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-02 00:43+0000\n"
-"PO-Revision-Date: 2024-07-17 12:09+0400\n"
-"Last-Translator: Khayyam <xxmn77@gmail.com>\n"
+"POT-Creation-Date: 2025-06-04 00:44+0000\n"
+"PO-Revision-Date: 2025-06-03 14:12+0400\n"
+"Last-Translator: linux <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
 "Language: az\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -91,39 +91,37 @@ msgid "Technical error message: %1"
 msgstr "Daxili xəta ismarıcı: %1"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
-#, fuzzy, kde-format
-#| msgid "Packages to remove"
+#, kde-format
 msgid "Package management"
-msgstr "Paketlərin silinməsi"
+msgstr "Paket idarəçisi"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:203
 #, kde-format
 msgid "Loading, please wait..."
-msgstr ""
+msgstr "Yüklənir, gözləyin..."
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:289
-#, fuzzy, kde-format
-#| msgid "Additional packages: "
+#, kde-format
 msgctxt "Root category name"
 msgid "Alpine Linux packages"
-msgstr "Əlavə paketlər: "
+msgstr "Alpine Linux paketləri"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:459
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
-msgstr ""
+msgstr "Alpine APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:272
 #, kde-format
 msgid "Authorization denied"
-msgstr ""
+msgstr "Giriş icazəsi qəbul edilmədi"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
 #, kde-format
 msgid "Error: "
-msgstr ""
+msgstr "Xəta: "
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
 #, kde-format
@@ -132,27 +130,29 @@ msgid ""
 "Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
 "alpine/edge/testing/"
 msgstr ""
+"Alpine anbarı URL ünvanını daxil edin, məs.: http://dl-cdn.alpinelinux.org/"
+"alpine/edge/testing/"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
 #, kde-format
 msgid "Error: Authorization denied"
-msgstr ""
+msgstr "Xəta: Giriş icazəsi qəbul edilmədi"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:283
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "Xəta"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
 #, kde-format
 msgid "Failed to open APK database!"
-msgstr ""
+msgstr "APK verilənlər bazasını açmaq mümkün olmadı!"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
 #, kde-format
 msgid "Failed to get a list of packages to upgrade!"
-msgstr ""
+msgstr "Son versiyaya yenilənəcək paketlərin siyahısını almaq mümkün olmadı!"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -221,7 +221,7 @@ msgstr "Bütün tətbiqlər"
 #, kde-format
 msgctxt "Category"
 msgid "Utilities"
-msgstr ""
+msgstr "Vasitələr"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -232,12 +232,10 @@ msgstr "Xüsusi imkanlar"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Web Development"
+#, kde-format
 msgctxt "Category"
 msgid "Development"
-msgstr "Veb Tərtibatı"
+msgstr "Tərtibat"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -293,7 +291,7 @@ msgstr "Təhsil"
 #, kde-format
 msgctxt "Category"
 msgid "Science & Math"
-msgstr ""
+msgstr "Elm və riyaziyyat"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -577,12 +575,10 @@ msgstr "Ofis"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgctxt "Category"
 msgid "System"
-msgstr "Sistemin bərpası"
+msgstr "Sistem"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -688,10 +684,9 @@ msgid "Sound system access"
 msgstr "Səs sisteminə giriş"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
-#, fuzzy, kde-format
-#| msgid "Can play audio"
+#, kde-format
 msgid "Can play and record audio"
-msgstr "Audio səsləndirilə bilər"
+msgstr "Səsi yaza və oxuda bilər"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
@@ -928,6 +923,8 @@ msgstr ""
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
 msgstr ""
+"Tətbiq %1 platformasında müəllifi %2 tərəfindən təqdim olunduğu kimi "
+"doğrulanıb"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
@@ -1085,11 +1082,10 @@ msgstr "Ayarların və istifadəçi verilənlərinin silinməsi"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "%1 üçün icazələr"
+msgstr "İcazələr"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
@@ -1264,7 +1260,7 @@ msgid "Cannot remove '%1'"
 msgstr "\"%1\" silinə bilmir"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1283,7 +1279,7 @@ msgid "Upgrade Now"
 msgstr "Yenilənməni indi başladın"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2384,43 +2380,41 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Əməliyyat Sistemi"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:178
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: Birdən çox öncədən yüklənmiş əməliyyat sistemi nümunəsi tapıldı. "
-"Bu barədə xəta hesabatı göndərin."
+"rpm-ostree backend: Birdən çox öncədən yüklənmiş əməliyyat sistemi nümunəsi "
+"tapıldı. Bu barədə xəta hesabatı göndərin."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
-"rpm-ostree: Heç bir öncədən yüklənmiş əməliyyat sistemi nümunəsi tapılmadı. "
-"Bu barədə xəta hesabatı göndərin."
+"rpm-ostree backend: Heç bir öncədən yüklənmiş əməliyyat sistemi nümunəsi "
+"tapılmadı. Bu barədə xəta hesabatı göndərin."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Yenilənməni başlatmaq..."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:516
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:505
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Sizin hazırkı versiya üçün gözləmədə olan yenilənmələriniz var. İstənilən "
 "halda davam edilsin."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:519
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:508
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Əsas versiyaya keçmədən öncə ən yuxarı versiyaya yenilənməniz xahiş olunur"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:516
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2488,9 +2482,7 @@ msgid "ostree remotes"
 msgstr "serverəki OSTree"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
@@ -2498,10 +2490,7 @@ msgstr ""
 "hesabat göndərin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
@@ -2510,20 +2499,15 @@ msgstr ""
 "başlatmaq mümüknü deyil. Xəta hesabatını bildirin"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Xəta: Boş istinadə əsasən yenidən mümkün deyil. Xəta "
-"hesabatı göndərin."
+"rpm-ostree-backend: Xəta: Boş istinadə əsasən yenidən qurmaq mümkün deyil. "
+"Xəta hesabatı göndərin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
@@ -2541,9 +2525,7 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr "rpm-ostree-backend: Xəta: Naməlum resurs formatı. Xətanı bildirin."
 
@@ -2595,16 +2577,14 @@ msgid "Unknown transaction type"
 msgstr "Naməlum əməliyyat növü"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channel: %1"
-msgstr "Kanallar..."
+msgstr "Kanal %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channels for %1"
-msgstr "Kanallar..."
+msgstr "%1 üçün kanallar"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:384

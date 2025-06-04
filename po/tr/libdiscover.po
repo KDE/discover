@@ -9,16 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-02 00:43+0000\n"
-"PO-Revision-Date: 2025-02-20 09:14+0300\n"
-"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"POT-Creation-Date: 2025-06-04 00:44+0000\n"
+"PO-Revision-Date: 2025-06-03 13:29+0300\n"
+"Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.03.70\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1231,7 +1231,7 @@ msgid "Cannot remove '%1'"
 msgstr "“%1” kaldırılamıyor"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1250,7 +1250,7 @@ msgid "Upgrade Now"
 msgstr "Şimdi Yükselt"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2349,40 +2349,40 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "İşletim Sistemi"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:178
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: Birden çok önyüklenmiş dağıtım bulundu. Lütfen bir hata bildirin."
+"rpm-ostree arka ucu: Birden çok önyüklenmiş dağıtım bulundu. Lütfen bir hata "
+"bildirin."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
-"rpm-ostree: Bir önyüklenmiş dağıtım bulunamadı. Lütfen bir hata bildirin."
+"rpm-ostree arka ucu: Bir önyüklenmiş dağıtım bulunamadı. Lütfen bir hata "
+"bildirin."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Yükseltmeyi Başlat…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:516
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:505
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "Geçerli sürüm için bekleyen güncellemeler var. İşlem sürdürülüyor."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:519
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:508
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Majör bir sürüme yeniden temellendirmeden önce lütfen en son sürüme "
 "güncelleyin"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:516
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2450,46 +2450,36 @@ msgid "ostree remotes"
 msgstr "ostree uzak konumları"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Hata: Bir DBus arayüzü sağlanmadı. Lütfen bir hata kaydı "
-"açın."
+"rpm-ostree arka ucu: Hata: Bir DBus arayüzü sağlanmadı. Lütfen bir hata "
+"kaydı açın."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Hata: Geçersiz biçimli bir özkaynak için bir işlem "
+"rpm-ostree arka ucu: Hata: Geçersiz biçimli bir özkaynak için bir işlem "
 "başlatılamıyor. Lütfen bir hata kaydı açın."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Hata: Boş bir başvuruya yeniden temellenemiyor. Lütfen "
+"rpm-ostree arka ucu: Hata: Boş bir başvuruya yeniden temellenemiyor. Lütfen "
 "bir hata kaydı açın."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Hata: Bilinmeşen işlem istendi. Lütfen bir hata kaydı "
+"rpm-ostree arka ucu: Hata: Bilinmeşen işlem istendi. Lütfen bir hata kaydı "
 "açın."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
@@ -2503,12 +2493,10 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Hata: Bilinmeyen özkaynak biçimi. Lütfen bir hata kaydı "
+"rpm-ostree arka ucu: Hata: Bilinmeyen özkaynak biçimi. Lütfen bir hata kaydı "
 "açın."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
