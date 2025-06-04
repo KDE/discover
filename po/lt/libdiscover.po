@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-03 02:40+0000\n"
+"POT-Creation-Date: 2025-06-04 02:34+0000\n"
 "PO-Revision-Date: 2024-09-08 00:02+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -1252,7 +1252,7 @@ msgid "Cannot remove '%1'"
 msgstr "Nepavyksta pašalinti „%1“"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1272,7 +1272,7 @@ msgid "Upgrade Now"
 msgstr "Naujinti dabar"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2389,38 +2389,38 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Operacinė sistema"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:178
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree: Rasti keli paleisti visuotiniai diegimai. Praneškite apie klaidą."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
 #, kde-format
 msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree: Nerasta jokio paleisto visuotinio diegimo. Praneškite apie "
 "klaidą."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Pradėti naujinimą…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:516
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:505
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "Yra laukiančių atnaujinimų dabartinei versijai. Vis tiek tęsiama."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:519
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:508
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Prieš pakeisdami pagrindą į kitą pagrindinę versiją, atsinaujinkite į "
 "naujausią versiją"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:516
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
