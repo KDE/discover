@@ -226,6 +226,7 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
 
 DiscoverObject::~DiscoverObject()
 {
+    m_isDeleting = true;
     m_engine->deleteLater();
 }
 
@@ -371,6 +372,9 @@ void DiscoverObject::openApplication(const QUrl &url)
                     connect(timeout, &QTimer::timeout, timeout, &QTimer::deleteLater);
 
                     auto openResourceOrWait = [this, res, timeout] {
+                        if (m_isDeleting) {
+                            return false;
+                        }
                         auto idx = kIndexOf(res, [](auto res) {
                             return res.resource->isInstalled();
                         });
