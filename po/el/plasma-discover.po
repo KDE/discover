@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-22 02:41+0000\n"
+"POT-Creation-Date: 2025-06-05 02:36+0000\n"
 "PO-Revision-Date: 2024-09-19 14:33+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -86,17 +86,17 @@ msgstr ""
 "συντηρητές να χρησιμοποιήσετε το εργαλείο γραμμής εντολών <command>pacman</"
 "command> για διαχείριση πακέτων.</para>"
 
-#: discover/DiscoverObject.cpp:295
+#: discover/DiscoverObject.cpp:296
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Αδυναμία εύρεσης της κατηγορίας '%1'"
 
-#: discover/DiscoverObject.cpp:317
+#: discover/DiscoverObject.cpp:318
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Προσπάθεια ανοίγματος ανύπαρκτο αρχείο '%1'"
 
-#: discover/DiscoverObject.cpp:339
+#: discover/DiscoverObject.cpp:340
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -105,17 +105,17 @@ msgstr ""
 "Δεν μπορώ να αλληλεπιδράσω με πηγές flatpak χωρίς flatpak backend %1. "
 "Παρακαλώ, πρώτα, εγκαταστήστε το."
 
-#: discover/DiscoverObject.cpp:343
+#: discover/DiscoverObject.cpp:344
 #, kde-format
 msgid "Could not open %1"
 msgstr "Αδυναμία ανοίγματος του %1"
 
-#: discover/DiscoverObject.cpp:405
+#: discover/DiscoverObject.cpp:409
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Παρακαλώ βεβαιωθείτε ότι η υποστήριξη για Snap είναι εγκατεστημένη"
 
-#: discover/DiscoverObject.cpp:408
+#: discover/DiscoverObject.cpp:412
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -124,25 +124,25 @@ msgstr ""
 "Αδυναμία ανοίγματος του %1 επειδή δεν βρέθηκε σε κανένα διαθέσιμο αποθετήριο "
 "λογισμικών."
 
-#: discover/DiscoverObject.cpp:412
+#: discover/DiscoverObject.cpp:416
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr ""
 "Παρακαλείστε να αναφέρετε αυτό το ζήτημα στους δημιουργούς πακέτων της "
 "διανομής σας."
 
-#: discover/DiscoverObject.cpp:415
+#: discover/DiscoverObject.cpp:419
 #, kde-format
 msgid "Report This Issue"
 msgstr "Αναφορά Αυτού του Προβλήματος"
 
-#: discover/DiscoverObject.cpp:475 discover/DiscoverObject.cpp:477
+#: discover/DiscoverObject.cpp:479 discover/DiscoverObject.cpp:481
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:478
+#: discover/DiscoverObject.cpp:482
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

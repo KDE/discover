@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-22 02:41+0000\n"
+"POT-Creation-Date: 2025-06-05 02:36+0000\n"
 "PO-Revision-Date: 2025-03-09 17:29+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -71,17 +71,17 @@ msgid ""
 "packages.</para>"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:295
+#: discover/DiscoverObject.cpp:296
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "'%1 என்ற பகுப்பை கண்டுபிடிக்க முடியவில்லை"
 
-#: discover/DiscoverObject.cpp:317
+#: discover/DiscoverObject.cpp:318
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "'%1' எனும் இல்லாத கோப்பின் திறப்பு முயற்சிக்கப்பட்டது"
 
-#: discover/DiscoverObject.cpp:339
+#: discover/DiscoverObject.cpp:340
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -90,17 +90,17 @@ msgstr ""
 "%1 எனும் flatpak பின்நிலை இல்லாமல் ஃபலாட்பாக்குகளைக் கையாள முடியாது. அதை முதலில் "
 "நிறுவுங்கள்."
 
-#: discover/DiscoverObject.cpp:343
+#: discover/DiscoverObject.cpp:344
 #, kde-format
 msgid "Could not open %1"
 msgstr "%1 தனை திறக்க முடியவில்லை"
 
-#: discover/DiscoverObject.cpp:405
+#: discover/DiscoverObject.cpp:409
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Snap ஆதரவு நிறுவப்பட்டுள்ளதா என்பதை சரிபாருங்கள்"
 
-#: discover/DiscoverObject.cpp:408
+#: discover/DiscoverObject.cpp:412
 #, kde-format
 msgid ""
 "Could not open %1 because it was not found in any available software "
@@ -108,23 +108,23 @@ msgid ""
 msgstr ""
 "%1 என்பது இயக்கப்பட்டுள்ள நிரல்கிடங்குகளில் கண்டுபிடிக்கப்படாத‍தால் அதைத் திறக்க முடியவில்லை."
 
-#: discover/DiscoverObject.cpp:412
+#: discover/DiscoverObject.cpp:416
 #, kde-format
 msgid "Please report this issue to the packagers of your distribution."
 msgstr "உங்கள் இயக்குதளத்தின் பராமரிப்பாளர்களிடம் இதைத் தெரிவியுங்கள்."
 
-#: discover/DiscoverObject.cpp:415
+#: discover/DiscoverObject.cpp:419
 #, kde-format
 msgid "Report This Issue"
 msgstr "இச்சிக்கலை தெரிவி"
 
-#: discover/DiscoverObject.cpp:475 discover/DiscoverObject.cpp:477
+#: discover/DiscoverObject.cpp:479 discover/DiscoverObject.cpp:481
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "டிஸ்கவர்"
 
-#: discover/DiscoverObject.cpp:478
+#: discover/DiscoverObject.cpp:482
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
