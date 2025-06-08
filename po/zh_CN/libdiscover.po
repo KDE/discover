@@ -2290,17 +2290,15 @@ msgid "Operating System"
 msgstr "操作系统"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
-msgstr "rpm-ostree：发现多个已启动的部署。请提交一个程序缺陷报告。"
+msgstr "rpm-ostree 后端程序：发现多个已启动的部署。请报告此程序缺陷。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
-msgstr "rpm-ostree：未发现已启动的部署。请提交一个程序缺陷报告。"
+msgstr "rpm-ostree 后端程序：没有发现已启动的部署。请报告此程序缺陷。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
@@ -2384,45 +2382,32 @@ msgid "ostree remotes"
 msgstr "ostree 远程服务器"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
-msgstr ""
-"rpm-ostree-backend：错误：没有提供 DBus 接口。请为此提交一个程序缺陷报告。"
+msgstr "rpm-ostree 后端程序：错误：没有提供 DBus 接口。请报告此程序缺陷。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend：错误：无法已无效格式启动资源的安装进程。请为此提交一个程"
-"序缺陷报告。"
+"rpm-ostree 后端程序：错误：无法为格式无效的资源启动软件部署。请报告此程序缺"
+"陷。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend：错误：无法重置到一个空的参照点。请为此提交一个程序缺陷报"
-"告。"
+"rpm-ostree 后端程序：错误：无法基于空引用进行 rebase。请报告此程序缺陷。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
-msgstr ""
-"rpm-ostree-backend：错误：请求了未知的操作。请为此提交一个程序缺陷报告。"
+msgstr "rpm-ostree 后端程序：错误：请求的操作未知。请报告此程序缺陷。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
@@ -2435,11 +2420,9 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
-msgstr "rpm-ostree-backend：错误：未知的资源格式。请为此提交一个程序缺陷报告。"
+msgstr "rpm-ostree 后端程序：错误：未知资源格式。请报告此程序缺陷。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format
