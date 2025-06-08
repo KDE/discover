@@ -115,7 +115,7 @@ private Q_SLOTS:
     void testInstallApp()
     {
         AbstractResourcesBackend::Filters f;
-        f.resourceUrl = QUrl(QStringLiteral("appstream://scr2ppm.desktop"));
+        f.resourceUrl = QUrl(QStringLiteral("appstream://chat.rocket.RocketChat.desktop"));
         const auto res = getResources(m_appBackend->search(f));
         QCOMPARE(res.count(), 1);
 
@@ -133,11 +133,11 @@ private Q_SLOTS:
     void testFlatpakref()
     {
         AbstractResourcesBackend::Filters f;
-        f.resourceUrl = QUrl(QStringLiteral("https://dl.flathub.org/repo/appstream/io.github.igorlogius.scr2ppm.flatpakref"));
+        f.resourceUrl = QUrl(QStringLiteral("https://dl.flathub.org/repo/appstream/chat.rocket.RocketChat.flatpakref"));
         const auto res = getResources(m_appBackend->search(f));
         QCOMPARE(res.count(), 1);
 
-        f.resourceUrl = QUrl(QStringLiteral("appstream://scr2ppm.desktop"));
+        f.resourceUrl = QUrl(QStringLiteral("appstream://chat.rocket.RocketChat"));
         const auto res2 = getResources(m_appBackend->search(f));
         QCOMPARE(res2, res);
     }
@@ -146,16 +146,15 @@ private Q_SLOTS:
     {
         // We test an item that provides another appstream id, this way we test both
         AbstractResourcesBackend::Filters f;
-        f.resourceUrl =
-            QUrl(QStringLiteral("flatpak:app/io.github.igorlogius.scr2ppm/") + QLatin1StringView(flatpak_get_default_arch()) + QStringLiteral("/stable"));
+        f.resourceUrl = QUrl(QStringLiteral("flatpak:app/chat.rocket.RocketChat/") + QLatin1StringView(flatpak_get_default_arch()) + QStringLiteral("/stable"));
         const auto res = getResources(m_appBackend->search(f));
         QCOMPARE(res.count(), 1);
 
-        f.resourceUrl = QUrl(QStringLiteral("appstream://scr2ppm.desktop"));
+        f.resourceUrl = QUrl(QStringLiteral("appstream://chat.rocket.RocketChat.desktop"));
         const auto res2 = getResources(m_appBackend->search(f));
         QCOMPARE(res2, res);
 
-        f.resourceUrl = QUrl(QStringLiteral("appstream://io.github.igorlogius.scr2ppm"));
+        f.resourceUrl = QUrl(QStringLiteral("appstream://chat.rocket.RocketChat"));
         const auto res3 = getResources(m_appBackend->search(f));
         QCOMPARE(res3, res);
     }
