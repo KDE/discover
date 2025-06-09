@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-04 00:44+0000\n"
-"PO-Revision-Date: 2025-03-05 21:32+0100\n"
+"PO-Revision-Date: 2025-06-08 10:20+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2362,21 +2362,19 @@ msgid "Operating System"
 msgstr "Sistema eragilea"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: Abiatutako hedapen anizkoitz aurkitu dira. Mesedez, bete akats-"
-"txosten bat."
+"rpm-ostree bizkarraldekoa: Abiatutako hainbat hedapen aurkitu dira. Mesedez, "
+"akats-txosten bat bidali."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
-"rpm-ostree: Ez da abiatutako hedapenik aurkitu. Mesedez, bete akats-txosten "
-"bat."
+"rpm-ostree bizkarraldekoa: Ez da abiatutako hedapenik aurkitu. Mesedez, "
+"akats-txosten bat bidali."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
@@ -2464,47 +2462,37 @@ msgid "ostree remotes"
 msgstr "«ostree» urrunekoak"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Errorea: Ez da DBus interfazerik eman. Mesedez, bete "
-"akats-txosten bat."
+"rpm-ostree bizkarraldekoa: Errorea: Ez da DBus interfazerik eman. Mesedez, "
+"akats-txosten bat bidali."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Error: Ezin da formatu baliogabea duen baliabide "
-"baterako transakzio bat abiatu. Mesedez, bete akats-txosten bat."
+"rpm-ostree bizkarraldekoa: Error: Ezin da formatu baliogabea duen baliabide "
+"baterako transakzio bat abiatu. Mesedez, akats-txosten bat bidali."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Errorea: Ezin da «rebase» egin hutsik dagoen "
-"erreferentzia batera."
+"rpm-ostree bizkarraldekoa: Errorea: Ezin da «rebase» egin hutsik dagoen "
+"erreferentzia batera. Mesedez, akats-txosten bat bidali."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Errorea: Eragiketa ezezaguna eskatu da. Mesedez, bete "
-"akats-txosten bat."
+"rpm-ostree bizkarraldekoa: Errorea: Eragiketa ezezaguna eskatu da. Mesedez, "
+"akats-txosten bat bidali."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
@@ -2513,17 +2501,15 @@ msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
 msgstr ""
-"«rpm-ostree» transakzioak honekin huts egin du:\n"
+"rpm-ostree transakzioak honekin huts egin du:\n"
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Error: Baliabide-formatu ezezaguna. Mesedez, bete akats-"
-"txosten bat."
+"rpm-ostree bizkarraldekoa: Errorea: Baliabide-formatu ezezaguna. Mesedez, "
+"akats-txosten bat bidali."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format
