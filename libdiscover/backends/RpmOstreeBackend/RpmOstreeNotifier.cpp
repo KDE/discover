@@ -237,6 +237,11 @@ void RpmOstreeNotifier::checkSystemUpdateOCI()
 {
     qCInfo(RPMOSTREE_LOG) << "Checking for system update (OCI format)";
 
+    if (m_ostreeFormat->isLocalOCI()) {
+        qCInfo(RPMOSTREE_LOG) << "Ignoring update checks for local OCI transports";
+        return;
+    }
+
     m_process = new QProcess(this);
     m_stdout = QByteArray();
 
@@ -301,8 +306,6 @@ void RpmOstreeNotifier::checkSystemUpdateOCI()
         checkForPendingDeployment();
     });
 
-    // This will fail on non-remote transports (oci, oci-archive, containers-storage) but that's
-    // OK as we can not check for updates in those cases.
     m_process->start(QStringLiteral("skopeo"),
                      {QStringLiteral("inspect"), QStringLiteral("docker://") + m_ostreeFormat->repo() + QStringLiteral(":") + m_ostreeFormat->tag()});
 }

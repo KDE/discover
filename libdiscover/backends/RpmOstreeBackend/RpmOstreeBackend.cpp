@@ -253,6 +253,11 @@ void RpmOstreeBackend::checkForUpdates()
         return;
     }
 
+    if (m_currentlyBootedDeployment->isLocalOCI()) {
+        qCInfo(RPMOSTREE_LOG) << "Ignoring update checks for local OCI transports";
+        return;
+    }
+
     // Do not start a transaction if there is already one in-progress (likely externaly started)
     if (hasExternalTransaction()) {
         qCInfo(RPMOSTREE_LOG) << "Not checking for updates while a transaction is in progress";
