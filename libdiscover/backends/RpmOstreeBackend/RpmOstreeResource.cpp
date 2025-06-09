@@ -487,6 +487,11 @@ bool RpmOstreeResource::isOCI() const
     return m_ostreeFormat->isValid() && m_ostreeFormat->isOCI();
 }
 
+bool RpmOstreeResource::isLocalOCI() const
+{
+    return m_ostreeFormat->isValid() && m_ostreeFormat->isOCI() && m_ostreeFormat->isLocalOCI();
+}
+
 QString RpmOstreeResource::OCIUrl() const
 {
     // This will fail on non-remote transports (oci, oci-archive, containers-storage) but that's

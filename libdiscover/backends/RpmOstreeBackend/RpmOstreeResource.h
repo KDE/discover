@@ -84,6 +84,9 @@ public:
     /* Returns true only if the deployment is from an OCI based format */
     bool isOCI() const;
 
+    /* Returns true only if the deployment is from a local OCI source */
+    bool isLocalOCI() const;
+
     /* Get the full repo:tag reference, only if it's OCI */
     QString OCIUrl() const;
 

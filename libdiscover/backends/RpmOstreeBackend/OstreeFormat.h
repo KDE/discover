@@ -40,6 +40,7 @@ public:
     bool isValid() const;
     bool isClassic() const;
     bool isOCI() const;
+    bool isLocalOCI() const;
 
     // OCI
     QString repo() const;

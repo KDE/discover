@@ -161,6 +161,25 @@ bool OstreeFormat::isOCI() const
     return m_format == Format::OCI;
 }
 
+// See https://man.archlinux.org/man/containers-transports.5.en
+bool OstreeFormat::isLocalOCI() const
+{
+    if (m_format != Format::OCI) {
+        return false;
+    }
+    auto split = m_transport.split(QLatin1Char(':'));
+    if (split.length() != 3) {
+        qCWarning(RPMOSTREE_LOG) << "Unexpected transport format:" << m_transport;
+        return false;
+    }
+    split.removeFirst();
+    auto t = split.first();
+    qCDebug(RPMOSTREE_LOG) << "Checking transport:" << m_transport << "->" << t;
+    return (t == QLatin1String("containers-storage")) || (t == QLatin1String("dir")) || (t == QLatin1String("docker-archive"))
+        || (t == QLatin1String("docker-daemon")) || (t == QLatin1String("oci")) || (t == QLatin1String("oci-archive")) || (t == QLatin1String("ostree"))
+        || (t == QLatin1String("sif"));
+}
+
 QString OstreeFormat::remote() const
 {
     if (m_format != Format::Classic) {
