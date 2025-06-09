@@ -474,6 +474,10 @@ bool FlatpakTransactionThread::end_of_lifed_with_rebase(const char *remote,
     case Execute::Rebase:
 #if FLATPAK_CHECK_VERSION(1, 15, 0)
         correct = flatpak_transaction_add_rebase_and_uninstall(m_transaction, remote, rebased_to_ref, ref, nullptr, previous_ids, &localError);
+        if (correct) {
+            auto job = m_jobTransactionsByRef.value(QLatin1String(ref));
+            m_jobTransactionsByRef.insert(QLatin1String(rebased_to_ref), job);
+        }
 #else
         correct = flatpak_transaction_add_rebase(m_transaction, remote, rebased_to_ref, nullptr, previous_ids, &localError)
             && flatpak_transaction_add_uninstall(m_transaction, ref, &localError);
