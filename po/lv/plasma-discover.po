@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-01 00:44+0000\n"
-"PO-Revision-Date: 2025-03-26 16:47+0200\n"
+"PO-Revision-Date: 2025-06-07 16:51+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #: discover/DiscoverObject.cpp:184
 #, kde-format
@@ -25,8 +25,8 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"%1 nav konfigurēts programmu instalēšanai caur „Discover“ — tikai programmu "
-"pielikumi"
+"„%1“ distribūcija nav konfigurēta programmu instalēšanai caur „Discover“, "
+"bet tikai programmu pielikumiem"
 
 #: discover/DiscoverObject.cpp:186
 #, kde-kuit-format
@@ -525,9 +525,7 @@ msgid ","
 msgstr ","
 
 #: discover/qml/ApplicationPage.qml:507
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "See more…"
 msgstr "Skatīt vairāk…"
@@ -1496,12 +1494,10 @@ msgid "Total size: %1"
 msgstr "Izmērs kopā: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Pārstartēt sistēmu, lai instalētu atjauninājumus"
+msgstr "Pārstartēt un instalēt atjauninājumus"
 
 #: discover/qml/UpdatesPage.qml:487
 #, kde-format
@@ -1542,13 +1538,13 @@ msgstr "Atjauninājumi"
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr ""
+msgstr "Atjauninājumi tiks instalēti pēc sistēmas pārstartēšanas"
 
 #: discover/qml/UpdatesPage.qml:591
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
-msgstr ""
+msgstr "Varat turpināt lietot sistēmu, ja vēl nevēlaties to pārstartēt."
 
 #: discover/qml/UpdatesPage.qml:605 discover/qml/UpdatesPage.qml:612
 #: discover/qml/UpdatesPage.qml:619

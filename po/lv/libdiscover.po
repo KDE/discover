@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-04 00:44+0000\n"
-"PO-Revision-Date: 2025-03-26 16:46+0200\n"
+"PO-Revision-Date: 2025-06-07 16:49+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2344,17 +2344,19 @@ msgid "Operating System"
 msgstr "Operētājsistēma"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
-msgstr "rpm-ostree: Atrasti vairāki sāknētas instalācijas. Ziņojiet par kļūdu."
+msgstr ""
+"rpm-ostree aizmugursistēma: atrastas vairākas sāknētas instalācijas. "
+"Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
-msgstr "rpm-ostree: Nav atrasti sāknētas instalācijas. Ziņojiet par kļūdu."
+msgstr ""
+"rpm-ostree aizmugursistēma: nav atrastas sāknētas instalācijas. Ziņojiet par "
+"kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
@@ -2441,46 +2443,37 @@ msgid "ostree remotes"
 msgstr "ostree attālinātie"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Kļūda: Nav norādīta „DBus“ saskarne. Ziņojiet par kļūdu."
+"rpm-ostree aizmugursistēma: kļūda: nav sniegta „DBus“ saskarne. Ziņojiet par "
+"kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Kļūda: Neizdodas uzsākt operāciju ar nederīgu resursa "
-"formātu. Ziņojiet par kļūdu."
+"rpm-ostree aizmugursistēma: kļūda: neizdodas uzsākt operāciju ar nederīgu "
+"resursa formātu. Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Kļūda: Neizdodas pāriet uz tukšu atsauci. Ziņojiet par "
-"kļūdu."
+"rpm-ostree aizmugursistēma: kļūda: neizdodas pāriet uz tukšu atsauci. "
+"Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Kļūda: Ir pieprasīta nezināma operācija. Ziņojiet par "
-"kļūdu."
+"rpm-ostree aizmugursistēma: kļūda: ir pieprasīta nezināma operācija. "
+"Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
@@ -2489,16 +2482,15 @@ msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
 msgstr ""
-"rpm-ostree operācija neizdevās, jo:\n"
+"„rpm-ostree“ operācija neizdevās, jo:\n"
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Kļūda. Nezināms resursa formāts. Ziņojiet par kļūdu."
+"rpm-ostree aizmugursistēma: kļūda. nezināms resursa formāts. Ziņojiet par "
+"kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format

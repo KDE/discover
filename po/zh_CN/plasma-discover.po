@@ -979,7 +979,7 @@ msgstr "正在加载…"
 #, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
-msgstr "从 %1 安装"
+msgstr "安装 (来源：%1)"
 
 #: discover/qml/InstallApplicationButton.qml:34
 #, kde-format

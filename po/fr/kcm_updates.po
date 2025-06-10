@@ -5,7 +5,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-06-18 00:40+0000\n"
 "PO-Revision-Date: 2023-10-02 12:55+0200\n"
-"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
+"Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Manuellement"
 #: kcm/ui/main.qml:51
 #, kde-format
 msgid "Automatically"
-msgstr "Ajouter automatiquement"
+msgstr "Automatiquement"
 
 #: kcm/ui/main.qml:58
 #, kde-kuit-format
@@ -58,7 +58,7 @@ msgstr "Fréquence des notifications :"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
-msgstr "Quotidiennement"
+msgstr "Quotidienne"
 
 #: kcm/ui/main.qml:73
 #, kde-format
@@ -70,7 +70,7 @@ msgstr "Hebdomadaire"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
-msgstr "Mensuellement"
+msgstr "Mensuelle"
 
 #: kcm/ui/main.qml:75
 #, kde-format
