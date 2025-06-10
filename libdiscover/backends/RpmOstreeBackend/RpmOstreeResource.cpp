@@ -477,17 +477,17 @@ bool RpmOstreeResource::isPending()
     return m_pending;
 }
 
-bool RpmOstreeResource::isClassic()
+bool RpmOstreeResource::isClassic() const
 {
     return m_ostreeFormat->isValid() && m_ostreeFormat->isClassic();
 }
 
-bool RpmOstreeResource::isOCI()
+bool RpmOstreeResource::isOCI() const
 {
     return m_ostreeFormat->isValid() && m_ostreeFormat->isOCI();
 }
 
-QString RpmOstreeResource::OCIUrl()
+QString RpmOstreeResource::OCIUrl() const
 {
     // This will fail on non-remote transports (oci, oci-archive, containers-storage) but that's
     // OK as we can not check for updates in those cases.

@@ -79,13 +79,13 @@ public:
     Q_SCRIPTABLE bool isPending();
 
     /* Returns true only if the deployment is from a classic Ostree format */
-    bool isClassic();
+    bool isClassic() const;
 
     /* Returns true only if the deployment is from an OCI based format */
-    bool isOCI();
+    bool isOCI() const;
 
     /* Get the full repo:tag reference, only if it's OCI */
-    QString OCIUrl();
+    QString OCIUrl() const;
 
 private:
     QString m_name;
