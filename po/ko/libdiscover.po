@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-04 00:44+0000\n"
-"PO-Revision-Date: 2025-04-06 21:46+0200\n"
+"PO-Revision-Date: 2025-06-11 00:11+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2310,17 +2310,17 @@ msgid "Operating System"
 msgstr "운영 체제"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
-msgstr "rpm-ostree: 여러 부트된 환경이 발견되었습니다. 버그를 보고해 주십시오."
+msgstr ""
+"rpm-ostree 백엔드: 여러 부트된 환경이 발견되었습니다. 버그를 보고해 주십시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
-msgstr "rpm-ostree: 부트된 환경을 찾을 수 없습니다. 버그를 보고해 주십시오."
+msgstr ""
+"rpm-ostree 백엔드: 부트된 환경을 찾을 수 없습니다. 버그를 보고해 주십시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
@@ -2404,47 +2404,37 @@ msgid "ostree remotes"
 msgstr "ostree 원격"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: 오류: D-Bus 인터페이스가 제공되지 않았습니다. 버그를 보고"
+"rpm-ostree 백엔드: 오류: D-Bus 인터페이스가 제공되지 않았습니다. 버그를 보고"
 "해 주십시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: 오류: 형식이 잘못된 리소스에서 트랜잭션을 시작할 수 없습"
-"니다. 버그를 보고해 주십시오."
+"rpm-ostree 백엔드: 오류: 형식이 잘못된 리소스에서 트랜잭션을 시작할 수 없습니"
+"다. 버그를 보고해 주십시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: 오류: 비어 있는 ref로 rebase를 실행할 수 없습니다. 버그"
-"를 보고해 주십시오."
+"rpm-ostree 백엔드: 오류: 비어 있는 ref로 rebase를 실행할 수 없습니다. 버그를 "
+"보고해 주십시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: 오류: 알 수 없는 작업을 요청했습니다. 버그를 보고해 주십"
-"시오."
+"rpm-ostree 백엔드: 오류: 알 수 없는 작업을 요청했습니다. 버그를 보고해 주십시"
+"오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
@@ -2457,12 +2447,10 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: 오류: 알 수 없는 리소스 형식입니다. 버그를 보고해 주십시"
+"rpm-ostree 백엔드: 오류: 알 수 없는 리소스 형식입니다. 버그를 보고해 주십시"
 "오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
