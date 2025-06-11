@@ -2,20 +2,21 @@
 # Burkhard Lück <lueck@hube-lueck.de>, 2015, 2018, 2019, 2020, 2021.
 # Frederik Schwarzer <schwarzer@kde.org>, 2015, 2022, 2023.
 # Frank Steinmetzger <dev@felsenfleischer.de>, 2021.
+# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n@prly.mozmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover-notifier\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-01 02:43+0000\n"
-"PO-Revision-Date: 2024-08-25 20:48+0200\n"
-"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
+"PO-Revision-Date: 2025-05-13 13:09+0200\n"
+"Last-Translator: Philipp Kiemle <l10n@prly.mozmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #: notifier/DiscoverNotifier.cpp:154
 #, kde-format
@@ -50,7 +51,7 @@ msgstr "Offline"
 #: notifier/DiscoverNotifier.cpp:281
 #, kde-format
 msgid "Applying unattended updates…"
-msgstr "Unbeaufsichtigte Aktualisierungen werden angewendet ..."
+msgstr "Unbeaufsichtigte Aktualisierungen werden angewendet …"
 
 #: notifier/DiscoverNotifier.cpp:315
 #, kde-format
@@ -100,7 +101,7 @@ msgstr "Statusbenachrichtigungen für Systemaktualisierungen"
 #: notifier/main.cpp:43
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr "Copyright © 2010-2022 Plasma-Entwicklerteam"
+msgstr "© 2010-2022 Plasma-Entwicklerteam"
 
 #: notifier/main.cpp:47
 #, kde-format
@@ -137,22 +138,22 @@ msgstr "Aktualisierungen"
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Open Discover…"
-msgstr "Discover öffnen ..."
+msgstr "Discover öffnen …"
 
 #: notifier/NotifierItem.cpp:55
 #, kde-format
 msgid "See Updates…"
-msgstr "Aktualisierungen ansehen ..."
+msgstr "Aktualisierungen ansehen …"
 
 #: notifier/NotifierItem.cpp:60
 #, kde-format
 msgid "Refresh…"
-msgstr "Aktualisieren ..."
+msgstr "Aktualisieren …"
 
 #: notifier/NotifierItem.cpp:64
 #, kde-format
 msgid "Restart to apply installed updates"
-msgstr "Neustart um die installierten Aktualisierungen zu verwenden"
+msgstr "Neu starten, um die installierten Aktualisierungen anzuwenden"
 
 #: notifier/NotifierItem.cpp:65
 #, kde-format

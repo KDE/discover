@@ -5,20 +5,21 @@
 # Burkhard Lück <lueck@hube-lueck.de>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
 # Frank Steinmetzger <dev@felsenfleischer.de>, 2021.
 # Jannick Kuhr <opensource@kuhr.org>, 2023.
+# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n@prly.mozmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-24 03:09+0000\n"
-"PO-Revision-Date: 2024-11-11 17:56+0100\n"
-"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
+"PO-Revision-Date: 2025-05-13 12:58+0200\n"
+"Last-Translator: Philipp Kiemle <l10n@prly.mozmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.2\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1554,67 +1555,67 @@ msgstr "Aus Sicherheitsgründen muss das System neu gestartet werden."
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
 #, kde-format
 msgid "Waiting…"
-msgstr "Warten ..."
+msgstr "Warten …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
 #, kde-format
 msgid "Refreshing Cache…"
-msgstr "Zwischenspeicher wird aktualisiert ..."
+msgstr "Zwischenspeicher wird aktualisiert …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
 #, kde-format
 msgid "Setup…"
-msgstr "Einrichtung ..."
+msgstr "Einrichtung …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:214
 #, kde-format
 msgid "Processing…"
-msgstr "Verarbeitung läuft ..."
+msgstr "Verarbeitung läuft …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:216
 #, kde-format
 msgid "Remove…"
-msgstr "Entfernen ..."
+msgstr "Entfernen …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:218
 #, kde-format
 msgid "Downloading…"
-msgstr "Herunterladen ..."
+msgstr "Herunterladen …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:220
 #, kde-format
 msgid "Installing…"
-msgstr "Wird installiert ..."
+msgstr "Wird installiert …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:222
 #, kde-format
 msgid "Updating…"
-msgstr "Aktualisierung ..."
+msgstr "Aktualisierung …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:224
 #, kde-format
 msgid "Cleaning up…"
-msgstr "Aufräumen ..."
+msgstr "Aufräumen …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:227
 #, kde-format
 msgid "Resolving dependencies…"
-msgstr "Abhängigkeiten werden aufgelöst ..."
+msgstr "Abhängigkeiten werden aufgelöst …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:229
 #, kde-format
 msgid "Checking signatures…"
-msgstr "Signaturen werden überprüft ..."
+msgstr "Signaturen werden überprüft …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
 #, kde-format
 msgid "Test committing…"
-msgstr "Einspielen wird getestet ..."
+msgstr "Einspielen wird getestet …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
 #, kde-format
 msgid "Committing…"
-msgstr "Wird eingespielt ..."
+msgstr "Wird eingespielt …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:236
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:362
@@ -1630,17 +1631,17 @@ msgstr "Abgebrochen"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:240
 #, kde-format
 msgid "Waiting for lock…"
-msgstr "Es wird auf Sperre gewartet ..."
+msgstr "Es wird auf Sperre gewartet …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:242
 #, kde-format
 msgid "Waiting for authorization…"
-msgstr "Autorisierung wird erwartet ..."
+msgstr "Autorisierung wird erwartet …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:247
 #, kde-format
 msgid "Copying files…"
-msgstr "Dateien werden kopiert ..."
+msgstr "Dateien werden kopiert …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:250
 #, kde-format
@@ -1655,37 +1656,37 @@ msgstr "Es wird gewartet."
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
 #, kde-format
 msgid "Setting up transaction…"
-msgstr "Einrichten des Vorgangs ..."
+msgstr "Einrichten des Vorgangs …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
 #, kde-format
 msgid "The transaction is currently working…"
-msgstr "Der Vorgang läuft gerade ..."
+msgstr "Der Vorgang läuft gerade …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
 #, kde-format
 msgid "The transaction is currently removing packages…"
-msgstr "Der Vorgang entfernt zurzeit Pakete ..."
+msgstr "Der Vorgang entfernt zurzeit Pakete …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
 #, kde-format
 msgid "The transaction is currently downloading packages…"
-msgstr "Der Vorgang lädt zurzeit Pakete herunter ..."
+msgstr "Der Vorgang lädt zurzeit Pakete herunter …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
 #, kde-format
 msgid "The transactions is currently installing packages…"
-msgstr "Der Vorgang installiert zurzeit Pakete ..."
+msgstr "Der Vorgang installiert zurzeit Pakete …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
 #, kde-format
 msgid "The transaction is currently updating packages…"
-msgstr "Der Vorgang aktualisiert zurzeit Pakete ..."
+msgstr "Der Vorgang aktualisiert zurzeit Pakete …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
 #, kde-format
 msgid "The transaction is currently cleaning up…"
-msgstr "Der Vorgang räumt zurzeit auf ..."
+msgstr "Der Vorgang räumt zurzeit auf …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
 #, kde-format
@@ -1694,25 +1695,24 @@ msgid ""
 "will install…"
 msgstr ""
 "Der Vorgang löst zurzeit die Abhängigkeiten der zu installierenden Pakete "
-"auf ..."
+"auf …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
 #, kde-format
 msgid "The transaction is currently checking the signatures of the packages…"
-msgstr "Der Vorgang überprüft zurzeit die Signaturen der Pakete ..."
+msgstr "Der Vorgang überprüft zurzeit die Signaturen der Pakete …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
 #, kde-format
 msgid ""
 "The transaction is currently testing the commit of this set of packages…"
-msgstr ""
-"Der Vorgang testet zurzeit das Einspielen dieser Gruppe von Paketen ..."
+msgstr "Der Vorgang testet zurzeit das Einspielen dieser Gruppe von Paketen …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
 #, kde-format
 msgid "The transaction is currently committing its set of packages…"
 msgstr ""
-"Der Vorgang spielt zurzeit das Einspielen diese Gruppe von Paketen ein ..."
+"Der Vorgang spielt zurzeit das Einspielen diese Gruppe von Paketen ein …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
 #, kde-format
@@ -1727,22 +1727,22 @@ msgstr "Der Vorgang wurde abgebrochen"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
 #, kde-format
 msgid "The transaction is currently waiting for the lock…"
-msgstr "Der Vorgang wartet zurzeit auf eine Sperre ..."
+msgstr "Der Vorgang wartet zurzeit auf eine Sperre …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
 #, kde-format
 msgid "Waiting for the user to authorize the transaction…"
-msgstr "Es wird darauf gewartet, dass der Benutzer den Vorgang autorisiert ..."
+msgstr "Es wird darauf gewartet, dass der Benutzer den Vorgang autorisiert …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
 #, kde-format
 msgid "The transaction is currently copying files…"
-msgstr "Der Vorgang kopiert zurzeit Dateien ..."
+msgstr "Der Vorgang kopiert zurzeit Dateien …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
 #, kde-format
 msgid "Currently refreshing the repository cache…"
-msgstr "Der Paketquellen-Zwischenspeicher wird aktualisiert ..."
+msgstr "Der Paketquellen-Zwischenspeicher wird aktualisiert …"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
 #, kde-format
@@ -2179,7 +2179,7 @@ msgstr[1] ""
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
 #, kde-format
 msgid "Show Dependencies…"
-msgstr "Abhängigkeiten anzeigen ..."
+msgstr "Abhängigkeiten anzeigen …"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
@@ -2365,7 +2365,7 @@ msgstr "Unbekannter Transaktionstyp"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:15
 #, kde-format
 msgid "Channels…"
-msgstr "Kanäle ..."
+msgstr "Kanäle …"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:23
 #, kde-format
@@ -2386,7 +2386,7 @@ msgstr "Wechseln"
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr "Berechtigungen einrichten ..."
+msgstr "Berechtigungen einrichten …"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
@@ -2411,7 +2411,7 @@ msgstr ""
 #, kde-format
 msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgstr ""
-"SteamOS: atomupd für SteamOS-Aktualisierungen kann nicht abgefragt werden ..."
+"SteamOS: atomupd für SteamOS-Aktualisierungen kann nicht abgefragt werden …"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:112
 #, kde-format
