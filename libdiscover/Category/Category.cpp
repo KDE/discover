@@ -73,17 +73,15 @@ Category::Category(const QString &name,
                    const CategoryFilter &filter,
                    const QSet<QString> &pluginName,
                    const QList<std::shared_ptr<Category>> &subCategories,
-                   bool isAddons,
-                   bool isDrivers)
+                   Type type)
     : QObject(nullptr)
     , m_name(name)
     , m_iconString(iconName)
     , m_filter(filter)
     , m_subCategories(subCategories)
     , m_plugins(pluginName)
-    , m_isAddons(isAddons)
-    , m_isDrivers(isDrivers)
-    , m_priority(isAddons || isDrivers ? 5 : 0)
+    , m_type(type)
+    , m_priority(type == Type::Addon || type == Type::Driver ? 5 : 0)
 {
     setObjectName(m_name);
 
@@ -119,13 +117,13 @@ void Category::parseData(const QString &path, QXmlStreamReader *xml, Localizatio
             m_subCategories << std::make_shared<Category>(m_plugins);
             m_subCategories.last()->parseData(path, xml, localization);
         } else if (xml->name() == QLatin1String("Addons")) {
-            m_isAddons = true;
+            m_type = Type::Addon;
             m_priority = 5;
             xml->readNext();
         } else if (xml->name() == QLatin1String("OnlyShowIn")) {
             m_visible = !m_hide && qEnvironmentVariable("XDG_CURRENT_DESKTOP") == xml->readElementText();
         } else if (xml->name() == QLatin1String("Drivers")) {
-            m_isDrivers = true;
+            m_type = Type::Driver;
             m_priority = 5;
             xml->readNext();
         } else if (xml->name() == QLatin1String("Icon")) {
@@ -319,7 +317,7 @@ void Category::addSubcategory(QList<std::shared_ptr<Category>> &list, const std:
     if (c->name() == newcat->name()) {
         if (c->icon() != newcat->icon() || c->m_priority != newcat->m_priority) {
             qCWarning(LIBDISCOVER_LOG) << "the following categories seem to be the same but they're not entirely" << c->icon() << newcat->icon() << "--"
-                                       << c->name() << newcat->name() << "--" << c->isAddons() << newcat->isAddons();
+                                       << c->name() << newcat->name() << "--" << c->priority() << newcat->priority();
         } else {
             CategoryFilter newFilter = {CategoryFilter::OrFilter, QList<CategoryFilter>{c->m_filter, newcat->m_filter}};
             c->m_filter = newFilter;

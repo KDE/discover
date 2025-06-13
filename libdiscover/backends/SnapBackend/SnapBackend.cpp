@@ -123,7 +123,7 @@ ResultsStream *SnapBackend::search(const AbstractResourcesBackend::Filters &filt
         return voidStream();
     } else if (!filters.resourceUrl.isEmpty()) {
         return findResourceByPackageName(filters.resourceUrl);
-    } else if (filters.category && filters.category->isAddons()) {
+    } else if (filters.category && filters.category->type() == Category::Type::Addon) {
         return voidStream();
     } else if (filters.state >= AbstractResource::Installed || filters.origin == QLatin1String("Snap")) {
         std::function<bool(const QSharedPointer<QSnapdSnap> &)> f = [filters](const QSharedPointer<QSnapdSnap> &s) {

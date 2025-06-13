@@ -61,6 +61,13 @@ public:
         Force, /* < Use localization even when it'd break something (only use this for tests!) */
     };
 
+    // The type of package this category contains.
+    enum class Type {
+        Addon, /* < Category contains Plasma addons */
+        Driver, /* < Category contains hardware drivers */
+        Package, /* < Category contains regular packages */
+    };
+
     explicit Category(QSet<QString> pluginNames, const std::shared_ptr<Category> &parent = {});
 
     Category(const QString &name,
@@ -68,8 +75,7 @@ public:
              const CategoryFilter &filters,
              const QSet<QString> &pluginName,
              const QList<std::shared_ptr<Category>> &subCategories,
-             bool isAddons,
-             bool isDrivers);
+             Type type = Type::Package);
     ~Category() override;
 
     QString name() const;
@@ -92,13 +98,9 @@ public:
     void addSubcategory(const std::shared_ptr<Category> &cat);
     void parseData(const QString &path, QXmlStreamReader *xml, Localization localization);
     bool blacklistPlugins(const QSet<QString> &pluginName);
-    bool isAddons() const
+    Type type() const
     {
-        return m_isAddons;
-    }
-    bool isDrivers() const
-    {
-        return m_isDrivers;
+        return m_type;
     }
     qint8 priority() const
     {
@@ -164,8 +166,7 @@ private:
 
     CategoryFilter parseIncludes(QXmlStreamReader *xml);
     QSet<QString> m_plugins;
-    bool m_isAddons = false;
-    bool m_isDrivers = false;
+    Type m_type;
     bool m_hide = false;
     qint8 m_priority = 0;
     QTimer *m_subCategoriesChanged;

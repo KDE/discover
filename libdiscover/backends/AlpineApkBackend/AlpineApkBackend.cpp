@@ -290,9 +290,7 @@ QList<std::shared_ptr<Category>> AlpineApkBackend::category() const
                                                                           QStringLiteral("package-x-generic"), // icon name
                                                                           s_apkFlt, // const CategoryFilter& filters
                                                                           QSet<QString>{displayName()}, // pluginName
-                                                                          QList<std::shared_ptr<Category>>{}, // subcategories
-                                                                          false, // isAddons
-                                                                          false // isDrivers
+                                                                          QList<std::shared_ptr<Category>>{} // subcategories
                                                                           ));
 
     return {s_rootCat};

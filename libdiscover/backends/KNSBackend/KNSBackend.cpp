@@ -231,16 +231,14 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
                                                          CategoryFilter{CategoryFilter::CategoryNameFilter, cat},
                                                          backendName,
                                                          QList<std::shared_ptr<Category>>{},
-                                                         true,
-                                                         false);
+                                                         Category::Type::Addon);
             else
                 categories << std::make_shared<Category>(cat,
                                                          QStringLiteral("plasma"),
                                                          CategoryFilter{CategoryFilter::CategoryNameFilter, cat},
                                                          backendName,
                                                          QList<std::shared_ptr<Category>>{},
-                                                         true,
-                                                         false);
+                                                         Category::Type::Addon);
         }
     }
 
@@ -274,14 +272,12 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
     m_engine->init(m_name);
 
     if (m_hasApplications) {
-        auto actualCategory = std::make_shared<Category>(m_displayName, QStringLiteral("applications-other"), filter, backendName, topCategories, false, false);
+        auto actualCategory = std::make_shared<Category>(m_displayName, QStringLiteral("applications-other"), filter, backendName, topCategories);
         std::shared_ptr<Category> applicationCategory = std::make_shared<Category>(i18n("Applications"), //
                                                                                    QStringLiteral("applications-internet"),
                                                                                    filter,
                                                                                    backendName,
-                                                                                   QList<std::shared_ptr<Category>>{actualCategory},
-                                                                                   false,
-                                                                                   false);
+                                                                                   QList<std::shared_ptr<Category>>{actualCategory});
         const QList<CategoryFilter> filters = {{CategoryFilter::CategoryNameFilter, QLatin1String("Application")}, filter};
         applicationCategory->setFilter({CategoryFilter::AndFilter, filters});
         m_categories.append(applicationCategory->name());
@@ -303,11 +299,11 @@ KNSBackend::KNSBackend(QObject *parent, const QString &iconName, const QString &
         m_engine->setTagFilter(tagFilter);
     } else {
         const auto iconName = isPlasmaCategory ? QStringLiteral("plasma") : QStringLiteral("applications-other");
-        auto actualCategory = std::make_shared<Category>(m_displayName, iconName, filter, backendName, categories, true, false);
+        auto actualCategory = std::make_shared<Category>(m_displayName, iconName, filter, backendName, categories, Category::Type::Addon);
 
         const auto topLevelName = isPlasmaCategory ? i18n("Plasma Addons") : i18n("Application Addons");
         auto addonsCategory =
-            std::make_shared<Category>(topLevelName, iconName, filter, backendName, QList<std::shared_ptr<Category>>{actualCategory}, true, false);
+            std::make_shared<Category>(topLevelName, iconName, filter, backendName, QList<std::shared_ptr<Category>>{actualCategory}, Category::Type::Addon);
         m_rootCategories = {addonsCategory};
     }
 

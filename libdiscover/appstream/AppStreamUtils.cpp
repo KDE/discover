@@ -205,7 +205,7 @@ AppStreamUtils::componentsByCategoriesTask(AppStream::ConcurrentPool *pool, cons
     const auto categories = cat->involvedCategories();
     QList<QFuture<AppStream::ComponentBox>> futures;
     futures.reserve(categories.size());
-    if (cat->isDrivers()) {
+    if (cat->type() == Category::Type::Driver) {
         futures += pool->componentsByKind(AppStream::Component::KindDriver);
     } else {
         for (const auto &categoryName : categories) {
