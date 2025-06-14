@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-04 00:44+0000\n"
-"PO-Revision-Date: 2025-02-21 11:20+0100\n"
+"PO-Revision-Date: 2025-06-11 11:45+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 25.04.2\n"
 "X-Text-Markup: kde4\n"
 
 #, kde-format
@@ -2385,21 +2385,19 @@ msgid "Operating System"
 msgstr "Système d'exploitation"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree : plusieurs configurations de démarrage ont été trouvées. "
+"Moteur rpm-ostree : plusieurs configurations de démarrage ont été trouvées. "
 "Veuillez rédiger un rapport de bogue."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
-"rpm-ostree : il a été impossible de trouver une configuration de démarrage. "
-"Veuillez rédiger un rapport de bogue."
+"Moteur rpm-ostree : il a été impossible de trouver une configuration de "
+"démarrage. Veuillez rédiger un rapport de bogue."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
@@ -2489,48 +2487,38 @@ msgid "ostree remotes"
 msgstr "commandes distantes de « ostree »"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree : erreur : aucune interface « D-Bus » n'a été fournie. Veuillez "
-"rédiger un rapport de bogue."
+"Moteur rpm-ostree : erreur : aucune interface « D-Bus » n'a été fournie. "
+"Veuillez rédiger un rapport de bogue."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree : erreur : il a été impossible de démarrer une transaction pour "
-"la ressource avec un format non valable. Veuillez remplir un rapport de "
+"Moteur rpm-ostree : erreur : il a été impossible de démarrer une transaction "
+"pour la ressource avec un format non valable. Veuillez remplir un rapport de "
 "bogue."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree : erreur : il a été impossible de faire une reconstruction avec "
-"une référence vide. Veuillez rédiger un rapport de bogue."
+"Moteur rpm-ostree : erreur : il a été impossible de faire une reconstruction "
+"avec une référence vide. Veuillez rédiger un rapport de bogue."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree : une opération inconnue a été demandée. Veuillez rédiger un "
-"rapport de bogue."
+"Moteur rpm-ostree : erreur : une opération inconnue a été demandée. Veuillez "
+"rédiger un rapport de bogue."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
@@ -2543,13 +2531,11 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree : erreur : format inconnu de ressource. Veuillez rédiger un "
-"rapport de bogue."
+"Moteur rpm-ostree : erreur : format inconnu de ressource. Veuillez rédiger "
+"un rapport de bogue."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format
