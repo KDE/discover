@@ -166,6 +166,7 @@ DiscoverPage {
         footerPositioning: ListView.InlineFooter
         activeFocusOnTab: true
         currentIndex: -1
+        focus: true
         footer: Item {
             id: appViewFooter
             height: appsModel.busy ? Kirigami.Units.gridUnit * 8 : Kirigami.Units.gridUnit
