@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-01 00:44+0000\n"
+"POT-Creation-Date: 2025-06-15 00:43+0000\n"
 "PO-Revision-Date: 2023-12-05 17:21+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -693,7 +693,7 @@ msgstr[1] "Hľadať - %1 položky"
 msgstr[2] "Hľadať - %1 položiek"
 
 #: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:265
+#: discover/qml/ApplicationsListPage.qml:266
 #, kde-format
 msgid "Search"
 msgstr "Hľadať"
@@ -730,24 +730,24 @@ msgstr "Veľkosti"
 msgid "Release date"
 msgstr "Dátumu vydania"
 
-#: discover/qml/ApplicationsListPage.qml:211
+#: discover/qml/ApplicationsListPage.qml:212
 #, kde-format
 msgid "Nothing found"
 msgstr "Nič sa nenašlo"
 
-#: discover/qml/ApplicationsListPage.qml:219
+#: discover/qml/ApplicationsListPage.qml:220
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "Hľadať vo všetkých kategóriách"
 
-#: discover/qml/ApplicationsListPage.qml:229
+#: discover/qml/ApplicationsListPage.qml:230
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Hľadať na webe \"%1\""
 
-#: discover/qml/ApplicationsListPage.qml:244
+#: discover/qml/ApplicationsListPage.qml:245
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -755,13 +755,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "\"%1\" nebolo nájdené v kategórii \"%2\""
 
-#: discover/qml/ApplicationsListPage.qml:246
+#: discover/qml/ApplicationsListPage.qml:247
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "\"%1\" nebolo nájdené v dostupných zdrojoch"
 
-#: discover/qml/ApplicationsListPage.qml:247
+#: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -773,7 +773,7 @@ msgstr ""
 "vaším distribútorom z hľadiska funkčnosti alebo stability. Používajte "
 "opatrne."
 
-#: discover/qml/ApplicationsListPage.qml:280
+#: discover/qml/ApplicationsListPage.qml:281
 #, kde-format
 msgid "Still looking…"
 msgstr "Stále hľadám..."

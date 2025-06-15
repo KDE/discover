@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-01 00:44+0000\n"
+"POT-Creation-Date: 2025-06-15 00:43+0000\n"
 "PO-Revision-Date: 2025-05-18 20:16+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -677,7 +677,7 @@ msgstr[0] "Keresés - %1 elem"
 msgstr[1] "Keresés - %1 elem"
 
 #: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:265
+#: discover/qml/ApplicationsListPage.qml:266
 #, kde-format
 msgid "Search"
 msgstr "Keresés"
@@ -713,24 +713,24 @@ msgstr "Méret"
 msgid "Release date"
 msgstr "Kiadás ideje"
 
-#: discover/qml/ApplicationsListPage.qml:211
+#: discover/qml/ApplicationsListPage.qml:212
 #, kde-format
 msgid "Nothing found"
 msgstr "Nincs találat"
 
-#: discover/qml/ApplicationsListPage.qml:219
+#: discover/qml/ApplicationsListPage.qml:220
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "Keresés az összes kategóriában"
 
-#: discover/qml/ApplicationsListPage.qml:229
+#: discover/qml/ApplicationsListPage.qml:230
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "„%1” keresése az interneten"
 
-#: discover/qml/ApplicationsListPage.qml:244
+#: discover/qml/ApplicationsListPage.qml:245
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -738,13 +738,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "A(z) „%1” nem található a(z) „%2” kategóriában"
 
-#: discover/qml/ApplicationsListPage.qml:246
+#: discover/qml/ApplicationsListPage.qml:247
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "A(z) „%1” nem található az elérhető forrásokban"
 
-#: discover/qml/ApplicationsListPage.qml:247
+#: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -756,7 +756,7 @@ msgstr ""
 "ellenőrizte a disztribúciója stabilitás vagy funkcionalitás szempontjából, "
 "ezért használja azokat fokozott óvatossággal."
 
-#: discover/qml/ApplicationsListPage.qml:280
+#: discover/qml/ApplicationsListPage.qml:281
 #, kde-format
 msgid "Still looking…"
 msgstr "Még keressük…"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-01 00:44+0000\n"
+"POT-Creation-Date: 2025-06-15 00:43+0000\n"
 "PO-Revision-Date: 2025-05-21 20:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -676,7 +676,7 @@ msgstr[0] "Ara — %1 Öge"
 msgstr[1] "Ara — %1 Öge"
 
 #: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:265
+#: discover/qml/ApplicationsListPage.qml:266
 #, kde-format
 msgid "Search"
 msgstr "Ara"
@@ -712,24 +712,24 @@ msgstr "Boyut"
 msgid "Release date"
 msgstr "Yayım tarihi"
 
-#: discover/qml/ApplicationsListPage.qml:211
+#: discover/qml/ApplicationsListPage.qml:212
 #, kde-format
 msgid "Nothing found"
 msgstr "Hiçbir şey bulunamadı"
 
-#: discover/qml/ApplicationsListPage.qml:219
+#: discover/qml/ApplicationsListPage.qml:220
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "Tüm Kategorilerde Ara"
 
-#: discover/qml/ApplicationsListPage.qml:229
+#: discover/qml/ApplicationsListPage.qml:230
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "%1 için Web’i Ara"
 
-#: discover/qml/ApplicationsListPage.qml:244
+#: discover/qml/ApplicationsListPage.qml:245
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -737,13 +737,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "“%1”, “%2” kategorisinde bulunamadı"
 
-#: discover/qml/ApplicationsListPage.qml:246
+#: discover/qml/ApplicationsListPage.qml:247
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "“%1”, kullanılabilir kaynaklarda bulunamadı"
 
-#: discover/qml/ApplicationsListPage.qml:247
+#: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -755,7 +755,7 @@ msgstr ""
 "dağıtıcınız tarafından işlevsellik veya kararlılık bakımından "
 "incelenmemiştir. Dikkatli kullanın."
 
-#: discover/qml/ApplicationsListPage.qml:280
+#: discover/qml/ApplicationsListPage.qml:281
 #, kde-format
 msgid "Still looking…"
 msgstr "Aranıyor…"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-01 00:44+0000\n"
+"POT-Creation-Date: 2025-06-15 00:43+0000\n"
 "PO-Revision-Date: 2025-06-11 00:12+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -652,7 +652,7 @@ msgid_plural "Search - %1 items"
 msgstr[0] "검색 - 항목 %1개"
 
 #: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:265
+#: discover/qml/ApplicationsListPage.qml:266
 #, kde-format
 msgid "Search"
 msgstr "검색"
@@ -688,24 +688,24 @@ msgstr "크기:"
 msgid "Release date"
 msgstr "공개 날짜"
 
-#: discover/qml/ApplicationsListPage.qml:211
+#: discover/qml/ApplicationsListPage.qml:212
 #, kde-format
 msgid "Nothing found"
 msgstr "찾을 수 없음"
 
-#: discover/qml/ApplicationsListPage.qml:219
+#: discover/qml/ApplicationsListPage.qml:220
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "모든 분류에서 검색"
 
-#: discover/qml/ApplicationsListPage.qml:229
+#: discover/qml/ApplicationsListPage.qml:230
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "웹에서 \"%1\" 검색"
 
-#: discover/qml/ApplicationsListPage.qml:244
+#: discover/qml/ApplicationsListPage.qml:245
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -713,13 +713,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "\"%2\" 분류에서 \"%1\"을(를) 찾을 수 없음"
 
-#: discover/qml/ApplicationsListPage.qml:246
+#: discover/qml/ApplicationsListPage.qml:247
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "사용 가능한 원본에서 \"%1\"을(를) 찾을 수 없음"
 
-#: discover/qml/ApplicationsListPage.qml:247
+#: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -731,7 +731,7 @@ msgstr ""
 "관리자가 기능 및 안정성을 검증하지 않았을 수도 있습니다. 이 점에 유의하십시"
 "오."
 
-#: discover/qml/ApplicationsListPage.qml:280
+#: discover/qml/ApplicationsListPage.qml:281
 #, kde-format
 msgid "Still looking…"
 msgstr "계속 찾는 중…"

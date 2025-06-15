@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-01 00:44+0000\n"
+"POT-Creation-Date: 2025-06-15 00:43+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -663,7 +663,7 @@ msgstr[0] "अन्वेषणम् - %1 द्रव्यम्"
 msgstr[1] "अन्वेषणं - %1 वस्तूनि"
 
 #: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:265
+#: discover/qml/ApplicationsListPage.qml:266
 #, kde-format
 msgid "Search"
 msgstr "अन्वेषण"
@@ -699,24 +699,24 @@ msgstr "आकारः"
 msgid "Release date"
 msgstr "अवतरण तिथि"
 
-#: discover/qml/ApplicationsListPage.qml:211
+#: discover/qml/ApplicationsListPage.qml:212
 #, kde-format
 msgid "Nothing found"
 msgstr "किमपि न लब्धम्"
 
-#: discover/qml/ApplicationsListPage.qml:219
+#: discover/qml/ApplicationsListPage.qml:220
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "सर्वेषु वर्गेषु अन्वेष्टुम्"
 
-#: discover/qml/ApplicationsListPage.qml:229
+#: discover/qml/ApplicationsListPage.qml:230
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "\"%1\" इति जालपुटे अन्वेष्टुम् ।"
 
-#: discover/qml/ApplicationsListPage.qml:244
+#: discover/qml/ApplicationsListPage.qml:245
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -724,13 +724,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "\"%2\" वर्गे \"%1\" न लब्धम्"
 
-#: discover/qml/ApplicationsListPage.qml:246
+#: discover/qml/ApplicationsListPage.qml:247
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "उपलब्धस्रोतेषु \"%1\" न लब्धम्"
 
-#: discover/qml/ApplicationsListPage.qml:247
+#: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -741,7 +741,7 @@ msgstr ""
 "\"%1\" जालपुटे उपलब्धं भवेत् । जालपुटात् प्राप्तं तन्त्रांशं भवतः वितरकेन कार्यक्षमतायाः "
 "स्थिरतायाः वा समीक्षां न कृतम् । सावधानतया प्रयोगं कुर्वन्तु।."
 
-#: discover/qml/ApplicationsListPage.qml:280
+#: discover/qml/ApplicationsListPage.qml:281
 #, kde-format
 msgid "Still looking…"
 msgstr "अद्यापि पश्यन्…"
