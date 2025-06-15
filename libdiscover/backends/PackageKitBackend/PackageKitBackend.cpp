@@ -231,6 +231,12 @@ PackageKitBackend::PackageKitBackend(QObject *parent)
     // Hide the drivers category if there's no drivers
     connect(CategoryModel::global(), &CategoryModel::rootCategoriesChanged, this, [this] {
         auto driversCategory = CategoryModel::global()->findCategoryByName(QStringLiteral("Hardware Drivers"));
+
+        // Will be null on subsequent runs
+        if (!driversCategory) {
+            return;
+        }
+
         AbstractResourcesBackend::Filters filter;
         filter.category = driversCategory;
         auto stream = search(filter);
