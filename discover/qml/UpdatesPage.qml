@@ -455,6 +455,7 @@ DiscoverPage {
                         Layout.preferredWidth: Kirigami.Units.iconSizes.medium
                         Layout.preferredHeight: Kirigami.Units.iconSizes.medium
                         source: listItem.model.decoration
+                        selected: listItem.down
                         smooth: true
                     }
 
@@ -471,6 +472,7 @@ DiscoverPage {
                             text: listItem.model.display
                             level: 3
                             elide: Text.ElideRight
+                            color: listItem.down ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
                         }
 
                         // Version numbers
@@ -478,15 +480,21 @@ DiscoverPage {
                             Layout.fillWidth: true
                             elide: truncated ? Text.ElideLeft : Text.ElideRight
                             text: listItem.model.resource.upgradeText
-                            opacity: listItem.hovered ? 0.8 : 0.6
+                            opacity: 0.75
+                            color: listItem.down ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
                         }
                     }
 
                     TransactionProgressIndicator {
                         Layout.minimumWidth: Kirigami.Units.gridUnit * 6
+
+                        Kirigami.Theme.colorSet: Kirigami.Theme.View
+                        Kirigami.Theme.inherit: false
+
                         text: listItem.model.resourceState === 2 ? i18n("Installing") : listItem.model.size
 
                         progress: listItem.model.resourceProgress / 100
+                        selected: listItem.down
                     }
                 }
 
@@ -503,6 +511,7 @@ DiscoverPage {
                         text: listItem.model.changelog
                         textFormat: Text.StyledText
                         wrapMode: Text.WordWrap
+                        color: listItem.down ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
                         onLinkActivated: link => Qt.openUrlExternally(link)
 
                     }
@@ -516,12 +525,14 @@ DiscoverPage {
                     QQC2.Label {
                         Layout.leftMargin: Kirigami.Units.gridUnit
                         text: i18n("Update from:")
+                        color: listItem.down ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
                     }
                     // Backend icon
                     Kirigami.Icon {
                         source: listItem.model.resource.sourceIcon
                         implicitWidth: Kirigami.Units.iconSizes.smallMedium
                         implicitHeight: Kirigami.Units.iconSizes.smallMedium
+                        selected: listItem.down
                     }
                     // Backend label and origin/remote
                     QQC2.Label {
@@ -530,6 +541,7 @@ DiscoverPage {
                                 : i18nc("%1 is the backend that provides this app, %2 is the specific repository or address within that backend","%1 (%2)",
                                         listItem.model.resource.backend.displayName, listItem.model.resource.origin)
                         elide: Text.ElideRight
+                        color: listItem.down ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
                     }
 
                     QQC2.Button {
