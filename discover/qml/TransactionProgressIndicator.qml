@@ -17,6 +17,7 @@ QQC2.Control {
 
     property alias text: theLabel.text
     property real progress: 1.0
+    property bool selected: false
 
     readonly property bool inProgress: progress > 0
 
@@ -26,7 +27,7 @@ QQC2.Control {
         visible: root.inProgress
         Rectangle {
             color: Qt.alpha(Kirigami.Theme.textColor, 0.1)
-            border.color: Qt.alpha(Kirigami.Theme.textColor, 0.2)
+            border.color: root.selected ? Qt.alpha(Kirigami.Theme.highlightedTextColor, 0.2) : Qt.alpha(Kirigami.Theme.textColor, 0.2)
             border.width: 1
             anchors.fill: parent
             radius: root.padding
@@ -50,6 +51,6 @@ QQC2.Control {
     contentItem: QQC2.Label {
         id: theLabel
         horizontalAlignment: Text.AlignHCenter
-        color: Kirigami.Theme.textColor
+        color: root.selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
     }
 }
