@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-05 02:36+0000\n"
+"POT-Creation-Date: 2025-06-17 02:36+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1448,17 +1448,17 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr "重启并安装更新"
 
-#: discover/qml/UpdatesPage.qml:487
+#: discover/qml/UpdatesPage.qml:494
 #, kde-format
 msgid "Installing"
 msgstr "正在安装"
 
-#: discover/qml/UpdatesPage.qml:518
+#: discover/qml/UpdatesPage.qml:527
 #, kde-format
 msgid "Update from:"
 msgstr "更新来源："
 
-#: discover/qml/UpdatesPage.qml:530
+#: discover/qml/UpdatesPage.qml:541
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1466,49 +1466,49 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:538
+#: discover/qml/UpdatesPage.qml:550
 #, kde-format
 msgid "More Information…"
 msgstr "更多信息…"
 
-#: discover/qml/UpdatesPage.qml:566
+#: discover/qml/UpdatesPage.qml:578
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "正在获取更新…"
 
-#: discover/qml/UpdatesPage.qml:580
+#: discover/qml/UpdatesPage.qml:592
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "更新"
 
-#: discover/qml/UpdatesPage.qml:589
+#: discover/qml/UpdatesPage.qml:601
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "更新将在下次系统重启时安装"
 
-#: discover/qml/UpdatesPage.qml:591
+#: discover/qml/UpdatesPage.qml:603
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr "如果您还未准备好重启，可以继续使用系统。"
 
-#: discover/qml/UpdatesPage.qml:605 discover/qml/UpdatesPage.qml:612
-#: discover/qml/UpdatesPage.qml:619
+#: discover/qml/UpdatesPage.qml:617 discover/qml/UpdatesPage.qml:624
+#: discover/qml/UpdatesPage.qml:631
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "系统已更新到最新状态"
 
-#: discover/qml/UpdatesPage.qml:626
+#: discover/qml/UpdatesPage.qml:638
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "建议检查更新"
 
-#: discover/qml/UpdatesPage.qml:633
+#: discover/qml/UpdatesPage.qml:645
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
