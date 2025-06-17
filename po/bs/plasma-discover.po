@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-15 00:43+0000\n"
+"POT-Creation-Date: 2025-06-17 00:43+0000\n"
 "PO-Revision-Date: 2015-02-04 16:18+0000\n"
 "Last-Translator: Nermina Ahmić <nahmic1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -1452,19 +1452,19 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:487
+#: discover/qml/UpdatesPage.qml:494
 #, fuzzy, kde-format
 #| msgid "Install"
 msgid "Installing"
 msgstr "Instaliraj"
 
-#: discover/qml/UpdatesPage.qml:518
+#: discover/qml/UpdatesPage.qml:527
 #, fuzzy, kde-format
 #| msgid "Update All"
 msgid "Update from:"
 msgstr "Ažuriraj sve"
 
-#: discover/qml/UpdatesPage.qml:530
+#: discover/qml/UpdatesPage.qml:541
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1472,52 +1472,52 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:538
+#: discover/qml/UpdatesPage.qml:550
 #, kde-format
 msgid "More Information…"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:566
+#: discover/qml/UpdatesPage.qml:578
 #, fuzzy, kde-format
 #| msgid "Update"
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Ažuriraj"
 
-#: discover/qml/UpdatesPage.qml:580
+#: discover/qml/UpdatesPage.qml:592
 #, fuzzy, kde-format
 #| msgid "Update"
 msgctxt "@info"
 msgid "Updates"
 msgstr "Ažuriraj"
 
-#: discover/qml/UpdatesPage.qml:589
+#: discover/qml/UpdatesPage.qml:601
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:591
+#: discover/qml/UpdatesPage.qml:603
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:605 discover/qml/UpdatesPage.qml:612
-#: discover/qml/UpdatesPage.qml:619
+#: discover/qml/UpdatesPage.qml:617 discover/qml/UpdatesPage.qml:624
+#: discover/qml/UpdatesPage.qml:631
 #, fuzzy, kde-format
 #| msgid "Update"
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Ažuriraj"
 
-#: discover/qml/UpdatesPage.qml:626
+#: discover/qml/UpdatesPage.qml:638
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:633
+#: discover/qml/UpdatesPage.qml:645
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

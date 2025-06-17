@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-15 00:43+0000\n"
+"POT-Creation-Date: 2025-06-17 00:43+0000\n"
 "PO-Revision-Date: 2024-11-25 21:34+0700\n"
 "Last-Translator: Wantoyo <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -1507,17 +1507,17 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr "Nyalakan ulang untuk Menginstal Pembaruan Sekarang"
 
-#: discover/qml/UpdatesPage.qml:487
+#: discover/qml/UpdatesPage.qml:494
 #, kde-format
 msgid "Installing"
 msgstr "Menginstal..."
 
-#: discover/qml/UpdatesPage.qml:518
+#: discover/qml/UpdatesPage.qml:527
 #, kde-format
 msgid "Update from:"
 msgstr "Perbarui dari:"
 
-#: discover/qml/UpdatesPage.qml:530
+#: discover/qml/UpdatesPage.qml:541
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1525,49 +1525,49 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:538
+#: discover/qml/UpdatesPage.qml:550
 #, kde-format
 msgid "More Information…"
 msgstr "Informasi Selebihnya..."
 
-#: discover/qml/UpdatesPage.qml:566
+#: discover/qml/UpdatesPage.qml:578
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Menghela pembaruan…"
 
-#: discover/qml/UpdatesPage.qml:580
+#: discover/qml/UpdatesPage.qml:592
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Pembaruan"
 
-#: discover/qml/UpdatesPage.qml:589
+#: discover/qml/UpdatesPage.qml:601
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:591
+#: discover/qml/UpdatesPage.qml:603
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:605 discover/qml/UpdatesPage.qml:612
-#: discover/qml/UpdatesPage.qml:619
+#: discover/qml/UpdatesPage.qml:617 discover/qml/UpdatesPage.qml:624
+#: discover/qml/UpdatesPage.qml:631
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Terbarukan"
 
-#: discover/qml/UpdatesPage.qml:626
+#: discover/qml/UpdatesPage.qml:638
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Seharusnya periksa pembaruan"
 
-#: discover/qml/UpdatesPage.qml:633
+#: discover/qml/UpdatesPage.qml:645
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
