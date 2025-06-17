@@ -313,20 +313,20 @@ DiscoverPage {
         }
 
         footer: ColumnLayout {
-            anchors {
-                right: parent.right
-                left: parent.left
-                margins: Kirigami.Units.smallSpacing
-            }
+            spacing: 0
+            width: ListView.view.width
+
             Kirigami.ListSectionHeader {
+                Layout.fillWidth: true
+
+                visible: back.count > 0
+
                 contentItem: Kirigami.Heading {
-                    Layout.fillWidth: true
                     text: i18n("Missing Backends")
-                    visible: back.count > 0
                     level: 3
                 }
             }
-            spacing: 0
+
             Repeater {
                 id: back
                 model: Discover.ResourcesProxyModel {
@@ -341,6 +341,7 @@ DiscoverPage {
                     required property var model
 
                     Layout.fillWidth: true
+                    background: null
                     hoverEnabled: false
                     down: false
 
