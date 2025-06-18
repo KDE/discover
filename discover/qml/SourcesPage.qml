@@ -71,6 +71,7 @@ DiscoverPage {
             readonly property bool isDefault: Discover.ResourcesModel.currentApplicationBackend === resourcesBackend
 
             width: sourcesView.width
+            text: resourcesBackend.displayName
 
             Connections {
                 target: backendItem.backend
@@ -87,83 +88,48 @@ DiscoverPage {
                 }
             }
 
-            contentItem: RowLayout {
-                spacing: Kirigami.Units.smallSpacing
+            QQC2.Label {
+                text: i18n("Default Source")
+                font.weight: Font.Bold
+            }
 
-                Kirigami.Heading {
-                    text: resourcesBackend.displayName
-                    level: 3
-                    font.weight: backendItem.isDefault ? Font.Bold : Font.Normal
+            QQC2.Button {
+                id: addSourceAction
+                text: i18n("Add Source…")
+                icon.name: "list-add-symbolic"
+                visible: backendItem.backend && backendItem.backend.supportsAdding
+
+                onClicked: {
+                    const addSourceDialog = dialogComponent.createObject(window, {
+                        displayName: backendItem.backend.resourcesBackend.displayName,
+                    })
+                    addSourceDialog.open()
                 }
 
-                Kirigami.ActionToolBar {
-                    id: actionBar
+                Component {
+                    id: dialogComponent
+                    AddSourceDialog {
+                        source: backendItem.backend
 
-                    alignment: Qt.AlignRight
-
-                    Kirigami.Action {
-                        id: isDefaultbackendLabelAction
-
-                        visible: backendItem.isDefault
-                        displayHint: Kirigami.DisplayHint.KeepVisible
-                        displayComponent: Kirigami.Heading {
-                            text: i18n("Default Source")
-                            level: 3
-                            font.weight: Font.Bold
+                        onClosed: {
+                            destroy();
                         }
                     }
+                }
+            }
 
-                    Kirigami.Action {
-                        id: addSourceAction
-                        text: i18n("Add Source…")
-                        icon.name: "list-add"
-                        visible: backendItem.backend && backendItem.backend.supportsAdding
 
-                        onTriggered: {
-                            const addSourceDialog = dialogComponent.createObject(window, {
-                                displayName: backendItem.backend.resourcesBackend.displayName,
-                            })
-                            addSourceDialog.open()
-                        }
-                    }
+            QQC2.Button {
+                id: makeDefaultAction
+                visible: resourcesBackend && resourcesBackend.hasApplications && !backendItem.isDefault
 
-                    Component {
-                        id: dialogComponent
-                        AddSourceDialog {
-                            source: backendItem.backend
+                text: i18n("Make Default")
+                icon.name: "favorite-symbolic"
+                onClicked: Discover.ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
 
-                            onClosed: {
-                                destroy();
-                            }
-                        }
-                    }
-
-                    Kirigami.Action {
-                        id: makeDefaultAction
-                        visible: resourcesBackend && resourcesBackend.hasApplications && !backendItem.isDefault
-
-                        text: i18n("Make Default")
-                        icon.name: "favorite"
-                        onTriggered: Discover.ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
-                    }
-
-                    Component {
-                        id: kirigamiAction
-                        ConvertDiscoverAction {}
-                    }
-
-                    function mergeActions(moreActions) {
-                        const actions = [
-                            isDefaultbackendLabelAction,
-                            makeDefaultAction,
-                            addSourceAction
-                        ]
-                        for (const action of moreActions) {
-                            actions.push(kirigamiAction.createObject(this, { action }))
-                        }
-                        return actions;
-                    }
-                    actions: mergeActions(backendItem.backend.actions)
+                Component {
+                    id: kirigamiAction
+                    ConvertDiscoverAction {}
                 }
             }
         }
@@ -228,86 +194,95 @@ DiscoverPage {
             }
         }
 
-        delegate: Kirigami.SwipeListItem {
+        delegate: QQC2.CheckDelegate {
             id: delegate
 
             required property int index
             required property var model
+            readonly property var idx: sourcesView.model.index(index, 0)
 
-            enabled: model.display.length > 0 && model.enabled
-            highlighted: ListView.isCurrentItem
-            supportsMouseEvents: false
             visible: model.display.indexOf(page.search) >= 0
+            enabled: model.display.length > 0 && model.enabled && sourcesView.model.flags(idx) & Qt.ItemIsUserCheckable
+            highlighted: ListView.isCurrentItem
+            checkState: delegate.model.checkState
+
+            width: ListView.view.width
             height: visible ? implicitHeight : 0
 
-            Keys.onReturnPressed: enabledBox.clicked()
-            Keys.onSpacePressed: enabledBox.clicked()
-            actions: [
-                Kirigami.Action {
-                    icon.name: "go-up"
-                    tooltip: i18n("Increase priority")
-                    enabled: delegate.model.sourcesBackend.firstSourceId !== delegate.model.sourceId
-                    visible: delegate.model.sourcesBackend.canMoveSources
-                    onTriggered: {
-                        const ret = delegate.model.sourcesBackend.moveSource(delegate.model.sourceId, -1)
-                        if (!ret) {
-                            window.showPassiveNotification(i18n("Failed to increase '%1' preference", delegate.model.display))
-                        }
-                    }
-                },
-                Kirigami.Action {
-                    icon.name: "go-down"
-                    tooltip: i18n("Decrease priority")
-                    enabled: delegate.model.sourcesBackend.lastSourceId !== delegate.model.sourceId
-                    visible: delegate.model.sourcesBackend.canMoveSources
-                    onTriggered: {
-                        const ret = delegate.model.sourcesBackend.moveSource(delegate.model.sourceId, +1)
-                        if (!ret) {
-                            window.showPassiveNotification(i18n("Failed to decrease '%1' preference", delegate.model.display))
-                        }
-                    }
-                },
-                Kirigami.Action {
-                    icon.name: "edit-delete"
-                    tooltip: i18n("Remove repository")
-                    visible: delegate.model.sourcesBackend.supportsAdding
-                    onTriggered: {
-                        const backend = delegate.model.sourcesBackend
-                        if (!backend.removeSource(delegate.model.sourceId)) {
-                            console.warn("Failed to remove the source", delegate.model.display)
-                        }
-                    }
-                },
-                Kirigami.Action {
-                    icon.name: delegate.mirrored ? "go-next-symbolic-rtl" : "go-next-symbolic"
-                    tooltip: i18n("Show contents")
-                    visible: delegate.model.sourcesBackend.canFilterSources
-                    onTriggered: {
-                        Navigation.openApplicationListSource(delegate.model.sourceId)
-                    }
-                }
-            ]
+            onToggled: {
+                sourcesView.model.setData(idx, checkState, Qt.CheckStateRole)
+                checkState = Qt.binding(() => delegate.model.checkState)
+            }
+
+            Keys.onReturnPressed: toggle()
 
             contentItem: RowLayout {
                 spacing: Kirigami.Units.smallSpacing
 
-                QQC2.CheckBox {
-                    id: enabledBox
-
-                    readonly property var idx: sourcesView.model.index(index, 0)
-                    readonly property /*Qt::CheckState*/int modelChecked: delegate.model.checkState
-                    checked: modelChecked !== Qt.Unchecked
-                    enabled: sourcesView.model.flags(idx) & Qt.ItemIsUserCheckable
-                    onClicked: {
-                        sourcesView.model.setData(idx, checkState, Qt.CheckStateRole)
-                        checked = Qt.binding(() => (modelChecked !== Qt.Unchecked))
-                    }
-                }
                 QQC2.Label {
                     text: delegate.model.display + (delegate.model.toolTip ? " - <i>" + delegate.model.toolTip + "</i>" : "")
                     elide: Text.ElideRight
                     textFormat: Text.StyledText
                     Layout.fillWidth: true
+                }
+
+                QQC2.Button {
+                    icon.name: "go-up-symbolic"
+                    enabled: delegate.model.sourcesBackend.firstSourceId !== delegate.model.sourceId
+                    visible: delegate.model.sourcesBackend.canMoveSources
+                    onClicked: {
+                        const ret = delegate.model.sourcesBackend.moveSource(delegate.model.sourceId, -1)
+                        if (!ret) {
+                            window.showPassiveNotification(i18n("Failed to increase '%1' preference", delegate.model.display))
+                        }
+                    }
+
+                    QQC2.ToolTip.text: i18n("Increase priority")
+                    QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
+                    QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
+                }
+
+                QQC2.Button {
+                    icon.name: "go-down-symbolic"
+                    enabled: delegate.model.sourcesBackend.lastSourceId !== delegate.model.sourceId
+                    visible: delegate.model.sourcesBackend.canMoveSources
+                    onClicked: {
+                        const ret = delegate.model.sourcesBackend.moveSource(delegate.model.sourceId, +1)
+                        if (!ret) {
+                            window.showPassiveNotification(i18n("Failed to decrease '%1' preference", delegate.model.display))
+                        }
+                    }
+
+                    QQC2.ToolTip.text: i18n("Decrease priority")
+                    QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
+                    QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
+                }
+
+                QQC2.Button {
+                    icon.name: "edit-delete-symbolic"
+                    visible: delegate.model.sourcesBackend.supportsAdding
+                    onClicked: {
+                        const backend = delegate.model.sourcesBackend
+                        if (!backend.removeSource(delegate.model.sourceId)) {
+                            console.warn("Failed to remove the source", delegate.model.display)
+                        }
+                    }
+
+                    QQC2.ToolTip.text: i18n("Remove repository")
+                    QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
+                    QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
+                }
+
+                QQC2.Button {
+                    icon.name: delegate.mirrored ? "go-next-symbolic-rtl" : "go-next-symbolic"
+                    visible: delegate.model.sourcesBackend.canFilterSources
+                    onClicked: {
+                        Navigation.openApplicationListSource(delegate.model.sourceId)
+                    }
+
+                    QQC2.ToolTip.text: i18n("Show contents")
+                    QQC2.ToolTip.visible: Kirigami.Settings.tabletMode ? pressed : hovered
+                    QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
                 }
             }
         }
