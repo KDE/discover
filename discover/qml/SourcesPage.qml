@@ -320,11 +320,7 @@ DiscoverPage {
                 Layout.fillWidth: true
 
                 visible: back.count > 0
-
-                contentItem: Kirigami.Heading {
-                    text: i18n("Missing Backends")
-                    level: 3
-                }
+                text: i18n("Missing Backends")
             }
 
             Repeater {
