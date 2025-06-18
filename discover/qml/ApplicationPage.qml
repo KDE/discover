@@ -292,6 +292,7 @@ DiscoverPage {
                 RowLayout {
                     id: appBasicInfoLayout
                     Layout.fillWidth: true
+                    Layout.maximumWidth: headerLayout.stackedMode ? headerLayout.implicitWidth : -1
                     Layout.alignment: headerLayout.stackedMode ? Qt.AlignHCenter : Qt.AlignLeft
                     spacing: appInfo.padding
 
