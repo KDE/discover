@@ -38,6 +38,7 @@ public:
         switch (role) {
         case Qt::CheckStateRole: {
             auto transaction = PackageKit::Daemon::global()->repoEnable(item->data(AbstractSourcesBackend::IdRole).toString(), value.toInt() == Qt::Checked);
+            item->setData(true, AbstractSourcesBackend::LoadingRole); // prevent the user to double click on it while we apply the change
             connect(transaction, &PackageKit::Transaction::errorCode, m_backend, &PackageKitSourcesBackend::transactionError);
             return true;
         }
@@ -136,6 +137,7 @@ void PackageKitSourcesBackend::addRepositoryDetails(const QString &id, const QSt
         add = true;
     }
     item->setData(id, IdRole);
+    item->setData(false, LoadingRole);
     item->setCheckState(enabled ? Qt::Checked : Qt::Unchecked);
     item->setEnabled(true);
 
@@ -190,6 +192,13 @@ void PackageKitSourcesBackend::transactionError(PackageKit::Transaction::Error e
 {
     Q_EMIT passiveMessage(message);
     qWarning() << "Transaction error: " << error << message << sender();
+
+    for (int i = 0; i < m_sources->rowCount(); i++) {
+        const auto item = m_sources->item(i, 0);
+        if (item->data(LoadingRole).toBool() == true) {
+            item->setData(false, LoadingRole);
+        }
+    }
 }
 
 #include "moc_PackageKitSourcesBackend.cpp"

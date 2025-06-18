@@ -202,7 +202,7 @@ DiscoverPage {
             readonly property var idx: sourcesView.model.index(index, 0)
 
             visible: model.display.indexOf(page.search) >= 0
-            enabled: model.display.length > 0 && model.enabled && sourcesView.model.flags(idx) & Qt.ItemIsUserCheckable
+            enabled: model.display.length > 0 && model.enabled && sourcesView.model.flags(idx) & Qt.ItemIsUserCheckable && (delegate.model.loading === undefined || delegate.model.loading === false)
             highlighted: ListView.isCurrentItem
             checkState: delegate.model.checkState
 
