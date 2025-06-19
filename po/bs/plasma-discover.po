@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-18 02:35+0000\n"
+"POT-Creation-Date: 2025-06-19 02:34+0000\n"
 "PO-Revision-Date: 2015-02-04 16:18+0000\n"
 "Last-Translator: Nermina Ahmić <nahmic1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -282,7 +282,7 @@ msgid "Cancel"
 msgstr "Otkaži"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:371
+#: discover/qml/ApplicationPage.qml:372
 #, fuzzy, kde-format
 #| msgid "Rating"
 msgid "%1 rating"
@@ -292,7 +292,7 @@ msgstr[1] "Rejting"
 msgstr[2] "Rejting"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:371
+#: discover/qml/ApplicationPage.qml:372
 #, kde-format
 msgid "No ratings yet"
 msgstr ""
@@ -419,22 +419,22 @@ msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:335
+#: discover/qml/ApplicationPage.qml:336
 #, kde-format
 msgid "Unknown author"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:395
+#: discover/qml/ApplicationPage.qml:396
 #, kde-format
 msgid "Version:"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:407
+#: discover/qml/ApplicationPage.qml:408
 #, fuzzy, kde-format
 msgid "Size:"
 msgstr "<b>Ukupna veličina:</b> %1<br/>"
 
-#: discover/qml/ApplicationPage.qml:419
+#: discover/qml/ApplicationPage.qml:420
 #, fuzzy, kde-format
 #| msgid "points: %1"
 msgid "License:"
@@ -443,25 +443,25 @@ msgstr[0] "poena: %1"
 msgstr[1] "poena: %1"
 msgstr[2] "poena: %1"
 
-#: discover/qml/ApplicationPage.qml:426
+#: discover/qml/ApplicationPage.qml:427
 #, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:430
+#: discover/qml/ApplicationPage.qml:431
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:482
+#: discover/qml/ApplicationPage.qml:483
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:507
+#: discover/qml/ApplicationPage.qml:508
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
@@ -469,125 +469,125 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: discover/qml/ApplicationPage.qml:519
+#: discover/qml/ApplicationPage.qml:520
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:527
+#: discover/qml/ApplicationPage.qml:528
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:529
+#: discover/qml/ApplicationPage.qml:530
 #, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:543
+#: discover/qml/ApplicationPage.qml:544
 #, kde-format
 msgid "See details"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:567
+#: discover/qml/ApplicationPage.qml:568
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:711
+#: discover/qml/ApplicationPage.qml:712
 #, kde-format
 msgid "What's New"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:745
+#: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Reviews"
 msgstr "Recenzije"
 
-#: discover/qml/ApplicationPage.qml:756
+#: discover/qml/ApplicationPage.qml:757
 #, fuzzy, kde-format
 #| msgid "Rating"
 msgid "Loading reviews for %1"
 msgstr "Rejting"
 
-#: discover/qml/ApplicationPage.qml:765
+#: discover/qml/ApplicationPage.qml:766
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:787
+#: discover/qml/ApplicationPage.qml:788
 #, fuzzy, kde-format
 #| msgid "%1 reviews"
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "%1 recenzija"
 
-#: discover/qml/ApplicationPage.qml:802
+#: discover/qml/ApplicationPage.qml:803
 #, fuzzy, kde-format
 #| msgid "Submit"
 msgid "Write a Review"
 msgstr "Predaj"
 
-#: discover/qml/ApplicationPage.qml:802
+#: discover/qml/ApplicationPage.qml:803
 #, fuzzy, kde-format
 #| msgid "Submit"
 msgid "Install to Write a Review"
 msgstr "Predaj"
 
-#: discover/qml/ApplicationPage.qml:824
+#: discover/qml/ApplicationPage.qml:825
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:842
+#: discover/qml/ApplicationPage.qml:843
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:853
+#: discover/qml/ApplicationPage.qml:854
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:863
+#: discover/qml/ApplicationPage.qml:864
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:873
+#: discover/qml/ApplicationPage.qml:874
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:883
+#: discover/qml/ApplicationPage.qml:884
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:912
+#: discover/qml/ApplicationPage.qml:913
 #, fuzzy, kde-format
 #| msgid "points: %1"
 msgid "All Licenses"
 msgstr "poena: %1"
 
-#: discover/qml/ApplicationPage.qml:950
+#: discover/qml/ApplicationPage.qml:951
 #, fuzzy, kde-format
 #| msgid "Rating"
 msgid "Content Rating"
 msgstr "Rejting"
 
-#: discover/qml/ApplicationPage.qml:973
+#: discover/qml/ApplicationPage.qml:974
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"
@@ -1342,7 +1342,7 @@ msgstr ""
 msgid "Show contents"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:324
+#: discover/qml/SourcesPage.qml:325
 #, kde-format
 msgid "Missing Backends"
 msgstr ""
