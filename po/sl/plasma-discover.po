@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-17 00:43+0000\n"
+"POT-Creation-Date: 2025-06-19 00:44+0000\n"
 "PO-Revision-Date: 2025-05-21 07:16+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -297,7 +297,7 @@ msgid "Cancel"
 msgstr "Prekliči"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:371
+#: discover/qml/ApplicationPage.qml:372
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -307,7 +307,7 @@ msgstr[2] "%1 oceni"
 msgstr[3] "%1 ocene"
 
 #: discover/qml/ApplicationDelegate.qml:177
-#: discover/qml/ApplicationPage.qml:371
+#: discover/qml/ApplicationPage.qml:372
 #, kde-format
 msgid "No ratings yet"
 msgstr "Ni še ocen"
@@ -483,22 +483,22 @@ msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
 msgstr "Preveri %1 app!"
 
-#: discover/qml/ApplicationPage.qml:335
+#: discover/qml/ApplicationPage.qml:336
 #, kde-format
 msgid "Unknown author"
 msgstr "Neznani avtor"
 
-#: discover/qml/ApplicationPage.qml:395
+#: discover/qml/ApplicationPage.qml:396
 #, kde-format
 msgid "Version:"
 msgstr "Različica:"
 
-#: discover/qml/ApplicationPage.qml:407
+#: discover/qml/ApplicationPage.qml:408
 #, kde-format
 msgid "Size:"
 msgstr "Velikost:"
 
-#: discover/qml/ApplicationPage.qml:419
+#: discover/qml/ApplicationPage.qml:420
 #, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
@@ -507,143 +507,143 @@ msgstr[1] "Licenca:"
 msgstr[2] "Licenci:"
 msgstr[3] "Licence:"
 
-#: discover/qml/ApplicationPage.qml:426
+#: discover/qml/ApplicationPage.qml:427
 #, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Kaj to pomeni?"
 
-#: discover/qml/ApplicationPage.qml:430
+#: discover/qml/ApplicationPage.qml:431
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Neznano"
 
-#: discover/qml/ApplicationPage.qml:482
+#: discover/qml/ApplicationPage.qml:483
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
 msgstr ","
 
-#: discover/qml/ApplicationPage.qml:507
+#: discover/qml/ApplicationPage.qml:508
 #, kde-format
 msgctxt "Show all licenses of the package"
 msgid "See more…"
 msgstr "Poglejte več …"
 
-#: discover/qml/ApplicationPage.qml:519
+#: discover/qml/ApplicationPage.qml:520
 #, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "Starosti:"
 
-#: discover/qml/ApplicationPage.qml:527
+#: discover/qml/ApplicationPage.qml:528
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
 msgstr "Vsakdo"
 
-#: discover/qml/ApplicationPage.qml:529
+#: discover/qml/ApplicationPage.qml:530
 #, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
 msgstr "%1+"
 
-#: discover/qml/ApplicationPage.qml:543
+#: discover/qml/ApplicationPage.qml:544
 #, kde-format
 msgid "See details"
 msgstr "Poglejte podrobnosti"
 
-#: discover/qml/ApplicationPage.qml:567
+#: discover/qml/ApplicationPage.qml:568
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Screenshots not available for %1"
 msgstr "Zaslonske slike niso na voljo za %1"
 
-#: discover/qml/ApplicationPage.qml:711
+#: discover/qml/ApplicationPage.qml:712
 #, kde-format
 msgid "What's New"
 msgstr "Kaj je novega"
 
-#: discover/qml/ApplicationPage.qml:745
+#: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Reviews"
 msgstr "Mnenja"
 
-#: discover/qml/ApplicationPage.qml:756
+#: discover/qml/ApplicationPage.qml:757
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Nalaganje ocen za %1"
 
-#: discover/qml/ApplicationPage.qml:765
+#: discover/qml/ApplicationPage.qml:766
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "Mnenja za %1 trenutno niso na voljo"
 
-#: discover/qml/ApplicationPage.qml:787
+#: discover/qml/ApplicationPage.qml:788
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Pokaži vsa mnenja"
 
-#: discover/qml/ApplicationPage.qml:802
+#: discover/qml/ApplicationPage.qml:803
 #, kde-format
 msgid "Write a Review"
 msgstr "Napiši mnenje"
 
-#: discover/qml/ApplicationPage.qml:802
+#: discover/qml/ApplicationPage.qml:803
 #, kde-format
 msgid "Install to Write a Review"
 msgstr "Namestite ta program, zato da napišete mnenje"
 
-#: discover/qml/ApplicationPage.qml:824
+#: discover/qml/ApplicationPage.qml:825
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr "Zunanje povezave"
 
-#: discover/qml/ApplicationPage.qml:842
+#: discover/qml/ApplicationPage.qml:843
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
 msgstr "Preberi dokumentacijo"
 
-#: discover/qml/ApplicationPage.qml:853
+#: discover/qml/ApplicationPage.qml:854
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Obišči spletno stran projekta"
 
-#: discover/qml/ApplicationPage.qml:863
+#: discover/qml/ApplicationPage.qml:864
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
 msgstr "Doniraj projektu"
 
-#: discover/qml/ApplicationPage.qml:873
+#: discover/qml/ApplicationPage.qml:874
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "Poročaj o napaki"
 
-#: discover/qml/ApplicationPage.qml:883
+#: discover/qml/ApplicationPage.qml:884
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
 msgstr "Začni prispevati"
 
-#: discover/qml/ApplicationPage.qml:912
+#: discover/qml/ApplicationPage.qml:913
 #, kde-format
 msgid "All Licenses"
 msgstr "Vse licence"
 
-#: discover/qml/ApplicationPage.qml:950
+#: discover/qml/ApplicationPage.qml:951
 #, kde-format
 msgid "Content Rating"
 msgstr "Ocena vsebine"
 
-#: discover/qml/ApplicationPage.qml:973
+#: discover/qml/ApplicationPage.qml:974
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"
@@ -1387,7 +1387,7 @@ msgstr "Odstrani skladišče"
 msgid "Show contents"
 msgstr "Prikaži vsebino"
 
-#: discover/qml/SourcesPage.qml:324
+#: discover/qml/SourcesPage.qml:323
 #, kde-format
 msgid "Missing Backends"
 msgstr "Manjkajo programi v ozadju"
