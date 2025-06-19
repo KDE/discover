@@ -12,6 +12,7 @@ ConditionalLoader {
     property alias application: listener.resource
     property bool availableFromOnlySingleSource: false
     property bool flat: false
+    property bool buttonActiveFocusOnTab: false
     property var installOrRemoveButtonDisplayStyle: QQC2.AbstractButton.TextBesideIcon
 
     readonly property alias isActive: listener.isActive
@@ -101,7 +102,7 @@ ConditionalLoader {
 
         visible: !root.application.isInstalled || root.application.isRemovable
         enabled: root.application.state !== Discover.AbstractResource.Broken
-        activeFocusOnTab: false
+        activeFocusOnTab: root.buttonActiveFocusOnTab
 
         display: root.installOrRemoveButtonDisplayStyle
         flat: root.flat
