@@ -2749,19 +2749,3 @@ msgstr "Системен софтуер"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Добавки"
-
-#~ msgctxt "Category"
-#~ msgid "Accessories"
-#~ msgstr "Помощни програми"
-
-#~ msgctxt "Category"
-#~ msgid "Developer Tools"
-#~ msgstr "Инструменти за разработка"
-
-#~ msgctxt "Category"
-#~ msgid "Science and Engineering"
-#~ msgstr "Наука и инженерство"
-
-#~ msgctxt "Category"
-#~ msgid "System Settings"
-#~ msgstr "Системни настройки"
