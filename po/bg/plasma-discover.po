@@ -1559,38 +1559,3 @@ msgstr "Трябва да проверите за актуализации"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Неизвестно време от последното актуализиране"
-
-#~ msgctxt "@info"
-#~ msgid "Restart the system to complete the update process"
-#~ msgstr "Рестартирайте системата, за да завършите процеса на актуализация"
-
-#~ msgctxt ""
-#~ "If appropriate, localize this URL to be something more relevant to the "
-#~ "language. %1 is the text that will be searched for."
-#~ msgid "https://duckduckgo.com/?q=%1"
-#~ msgstr "https://duckduckgo.com/?q=%1"
-
-#~ msgid "Documentation"
-#~ msgstr "Документация"
-
-#~ msgid "Website"
-#~ msgstr "Уебсайт"
-
-#~ msgid "Donate"
-#~ msgstr "Дарение"
-
-#~ msgid "Support and thank the developers by donating to their project"
-#~ msgstr ""
-#~ "Помогнете и благодарете на разработчиците като направите дарение за "
-#~ "проекта"
-
-#~ msgid "Log an issue you found to help get it fixed"
-#~ msgstr "Регистрирайте открит проблем, за да помогнете за отстраняването му"
-
-#~ msgid "Contribute"
-#~ msgstr "Дайте вашия принос…"
-
-#~ msgid "Help the developers by coding, designing, testing, or translating"
-#~ msgstr ""
-#~ "Помагайте на разработчиците, като кодирате, проектирате, тествате или "
-#~ "превеждате."
