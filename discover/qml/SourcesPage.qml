@@ -339,6 +339,7 @@ DiscoverPage {
 
                     required property int index
                     required property var model
+                    required property string name
 
                     Layout.fillWidth: true
                     background: null
