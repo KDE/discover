@@ -200,9 +200,10 @@ DiscoverPage {
 
     Kirigami.Action {
         id: installRemoveAndProgressAction
-            displayComponent: InstallApplicationButton {
+        displayComponent: InstallApplicationButton {
             id: appbutton
             application: appInfo.application
+            buttonActiveFocusOnTab: true
             availableFromOnlySingleSource: appInfo.availableFromOnlySingleSource
             flat: true
         }
