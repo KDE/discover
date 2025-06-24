@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-04 00:44+0000\n"
-"PO-Revision-Date: 2025-04-07 11:18+0300\n"
+"PO-Revision-Date: 2025-06-23 16:21+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -205,7 +205,7 @@ msgstr "Все приложения"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Category"
 msgid "Utilities"
 msgstr "Утилиты"
@@ -219,7 +219,7 @@ msgstr "Специальные возможности"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Category"
 msgid "Development"
 msgstr "Разработка"
@@ -275,10 +275,10 @@ msgstr "Образование"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:131
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Category"
 msgid "Science & Math"
-msgstr "Наука"
+msgstr "Наука и математика"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -562,10 +562,10 @@ msgstr "Офис"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Category"
 msgid "System"
-msgstr "Восстановить систему"
+msgstr "Система"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -663,7 +663,7 @@ msgstr "Сетевой доступ"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
 #, kde-format
 msgid "Can access the internet"
-msgstr "Может использовать подключение к интернету"
+msgstr "Возможность использовать подключение к Интернету"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
 #, kde-format
@@ -671,9 +671,9 @@ msgid "Sound system access"
 msgstr "Доступ к подсистеме воспроизведения звуков"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
-#, fuzzy, kde-format
+#, kde-format
 msgid "Can play and record audio"
-msgstr "Разрешено воспроизведение звуков"
+msgstr "Возможность воспроизведения и записи звука"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
@@ -2388,7 +2388,6 @@ msgstr "Операционная система"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
 #, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
@@ -2397,7 +2396,6 @@ msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
 #, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree: Не обнаружена загрузка развёртывания. Сообщите об этой ошибке."
@@ -2490,8 +2488,6 @@ msgstr "удалённые системы ostree"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
 #, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
@@ -2500,9 +2496,6 @@ msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
 #, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
@@ -2512,9 +2505,6 @@ msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
 #, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
@@ -2523,8 +2513,6 @@ msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
 #, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
@@ -2540,8 +2528,6 @@ msgstr "Операция rpm-ostree завершилась ошибкой:%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
 #, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
 "rpm-ostree-backend: Неизвестный формат ресурса. Сообщите об этой ошибке."
@@ -2698,7 +2684,7 @@ msgstr "%1 → %2%1 → %2%2"
 #: libdiscover/resources/AbstractResourcesBackend.cpp:160
 #, kde-format
 msgid "Please verify Internet connectivity"
-msgstr "Проверьте подключение к интернету"
+msgstr "Проверьте подключение к Интернету"
 
 #: libdiscover/resources/ResourcesModel.cpp:91
 #, kde-format
