@@ -3,13 +3,13 @@
 #
 # Alexander Potashev <aspotashev@gmail.com>, 2015, 2016, 2018.
 # SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024 Alexander Yavorsky <kekcuha@gmail.com>
-# SPDX-FileCopyrightText: 2024 Olesya Gerasimenko <translation-team@basealt.ru>
+# SPDX-FileCopyrightText: 2024, 2025 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-12 00:42+0000\n"
-"PO-Revision-Date: 2024-09-13 14:18+0300\n"
+"PO-Revision-Date: 2025-06-23 16:22+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -105,10 +105,9 @@ msgid "System update status notifier"
 msgstr "Уведомления о состоянии системных обновлений"
 
 #: notifier/main.cpp:43
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© Команда разработчиков Plasma, 2010–2024"
+msgstr "© Команда разработчиков Plasma, 2010–2025"
 
 #: notifier/main.cpp:47
 #, kde-format
@@ -143,18 +142,16 @@ msgid "Updates"
 msgstr "Обновления"
 
 #: notifier/NotifierItem.cpp:36
-#, fuzzy, kde-format
-#| msgid "Open Discover…"
+#, kde-format
 msgctxt "@action:button Opens Discover's main UI to analyze the updates"
 msgid "Open Discover…"
-msgstr "Открыть центр программ Discover"
+msgstr "Открыть центр программ Discover…"
 
 #: notifier/NotifierItem.cpp:47
-#, fuzzy, kde-format
-#| msgid "Update"
+#, kde-format
 msgctxt "@action:button Starts an update in the background"
 msgid "Start Update"
-msgstr "Обновить"
+msgstr "Начать обновление"
 
 #: notifier/NotifierItem.cpp:50
 #, kde-format
