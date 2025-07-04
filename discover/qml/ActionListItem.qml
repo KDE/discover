@@ -42,13 +42,14 @@ QQC2.ItemDelegate {
             icon: icon.fromControlsIcon(item.icon)
             title: item.text
             subtitle: item.subtitle
-            selected: item.highlighted
+            selected: item.highlighted || item.pressed
             font: item.font
         }
         Kirigami.Icon {
             Layout.fillHeight: true
             visible: item.stateIconName.length > 0
             source: item.stateIconName
+            selected: item.highlighted || item.pressed
             implicitWidth: Kirigami.Units.iconSizes.sizeForLabels
             implicitHeight: Kirigami.Units.iconSizes.sizeForLabels
         }
