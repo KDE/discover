@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-05 03:22+0000\n"
+"POT-Creation-Date: 2025-07-05 05:54+0000\n"
 "PO-Revision-Date: 2012-06-13 11:10+0800\n"
 "Last-Translator: HeroP <herophuong93@gmail.com>\n"
 "Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
@@ -112,6 +112,450 @@ msgstr ""
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Dummy Category"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
+#, kde-format
+msgctxt "Category"
+msgid "dummy"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
+#, kde-format
+msgctxt "Category"
+msgid "dummy addons"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
+#, kde-format
+msgctxt "Category"
+msgid "dummy 1"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
+#, kde-format
+msgctxt "Category"
+msgid "dummy with stuff"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
+#, kde-format
+msgctxt "Category"
+msgid "dummy 2.1"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
+#, kde-format
+msgctxt "Category"
+msgid "dummy with quite some stuff"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
+#, kde-format
+msgctxt "Category"
+msgid "dummy 3"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
+#, kde-format
+msgctxt "Category"
+msgid "dummy 4"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
+#, fuzzy, kde-format
+#| msgid "Applications"
+msgctxt "Category"
+msgid "All Applications"
+msgstr "Ứng dụng"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
+#, kde-format
+msgctxt "Category"
+msgid "Accessories"
+msgstr "Tiện ích"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
+#, kde-format
+msgctxt "Category"
+msgid "Accessibility"
+msgstr "Hỗ trợ truy cập"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
+#, kde-format
+msgctxt "Category"
+msgid "Developer Tools"
+msgstr "Công cụ phát triển"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
+#, kde-format
+msgctxt "Category"
+msgid "Debugging"
+msgstr "Gỡ lỗi "
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
+#, kde-format
+msgctxt "Category"
+msgid "Graphic Interface Design"
+msgstr "Thiết kế giao diện đồ hoạ"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
+#, kde-format
+msgctxt "Category"
+msgid "IDEs"
+msgstr "IDE"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
+#, kde-format
+msgctxt "Category"
+msgid "Localization"
+msgstr "Bản địa hoá"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
+#, kde-format
+msgctxt "Category"
+msgid "Profiling"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
+#, kde-format
+msgctxt "Category"
+msgid "Web Development"
+msgstr "Phát triển web"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
+#, kde-format
+msgctxt "Category"
+msgid "Education"
+msgstr "Giáo dục"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Science & Engineering"
+msgctxt "Category"
+msgid "Science and Engineering"
+msgstr "Khoa học & Kĩ thuật"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
+#, kde-format
+msgctxt "Category"
+msgid "Astronomy"
+msgstr "Thiên văn học"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
+#, kde-format
+msgctxt "Category"
+msgid "Biology"
+msgstr "Sinh học"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
+#, kde-format
+msgctxt "Category"
+msgid "Chemistry"
+msgstr "Hoá học"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Computer Science & Robotics"
+msgctxt "Category"
+msgid "Computer Science and Robotics"
+msgstr "Khoa học máy tính & Robot"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
+#, kde-format
+msgctxt "Category"
+msgid "Electronics"
+msgstr "Điện tử"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
+#, kde-format
+msgctxt "Category"
+msgid "Engineering"
+msgstr "Kĩ thuật"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
+#, kde-format
+msgctxt "Category"
+msgid "Geography"
+msgstr "Địa lí"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
+#, kde-format
+msgctxt "Category"
+msgid "Geology"
+msgstr "Địa chất"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
+#, kde-format
+msgctxt "Category"
+msgid "Mathematics"
+msgstr "Toán học"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
+#, kde-format
+msgctxt "Category"
+msgid "Physics"
+msgstr "Vật lí"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
+#, kde-format
+msgctxt "Category"
+msgid "Games"
+msgstr "Trò chơi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
+#, kde-format
+msgctxt "Category"
+msgid "Arcade"
+msgstr "Hành động"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Games"
+msgctxt "Category"
+msgid "Board Games"
+msgstr "Trò chơi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Games"
+msgctxt "Category"
+msgid "Card Games"
+msgstr "Trò chơi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
+#, kde-format
+msgctxt "Category"
+msgid "Puzzles"
+msgstr "Tư duy"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
+#, kde-format
+msgctxt "Category"
+msgid "Role Playing"
+msgstr "Nhập vai"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
+#, kde-format
+msgctxt "Category"
+msgid "Simulation"
+msgstr "Giả lập"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
+#, kde-format
+msgctxt "Category"
+msgid "Strategy"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
+#, kde-format
+msgctxt "Category"
+msgid "Sports"
+msgstr "Thể thao"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
+#, fuzzy, kde-format
+#| msgid "Applications"
+msgctxt "Category"
+msgid "Action"
+msgstr "Ứng dụng"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Simulation"
+msgctxt "Category"
+msgid "Emulators"
+msgstr "Giả lập"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
+#, kde-format
+msgctxt "Category"
+msgid "Graphics"
+msgstr "Đồ hoạ"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
+#, kde-format
+msgctxt "Category"
+msgid "3D"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
+#, kde-format
+msgctxt "Category"
+msgid "Drawing"
+msgstr "Vẽ"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Painting & Editing"
+msgctxt "Category"
+msgid "Painting and Editing"
+msgstr "Sơn sửa"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
+#, kde-format
+msgctxt "Category"
+msgid "Photography"
+msgstr "Ảnh"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
+#, kde-format
+msgctxt "Category"
+msgid "Publishing"
+msgstr "Xuất bản"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Scanning & OCR"
+msgctxt "Category"
+msgid "Scanning and OCR"
+msgstr "Quét & OCR"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
+#, kde-format
+msgctxt "Category"
+msgid "Viewers"
+msgstr "Trình xem"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
+#, kde-format
+msgctxt "Category"
+msgid "Internet"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
+#, kde-format
+msgctxt "Category"
+msgid "Chat"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
+#, kde-format
+msgctxt "Category"
+msgid "File Sharing"
+msgstr "Chia sẻ tệp"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
+#, kde-format
+msgctxt "Category"
+msgid "Mail"
+msgstr "Thư"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
+#, kde-format
+msgctxt "Category"
+msgid "Web Browsers"
+msgstr "Trình duyệt web"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
+#, kde-format
+msgctxt "Category"
+msgid "Multimedia"
+msgstr "Đa phương tiện"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
+#, kde-format
+msgctxt "Category"
+msgid "Audio and Video Editors"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
+#, kde-format
+msgctxt "Category"
+msgid "Audio Players"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
+#, kde-format
+msgctxt "Category"
+msgid "Video Players"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
+#, kde-format
+msgctxt "Category"
+msgid "CD and DVD"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
+#, kde-format
+msgctxt "Category"
+msgid "Office"
+msgstr "Văn phòng"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "System & Settings"
+msgctxt "Category"
+msgid "System Settings"
+msgstr "Hệ thống & thiết lập"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:132
 #, kde-format
@@ -664,6 +1108,24 @@ msgstr ""
 #, kde-format
 msgid "Cannot launch %1"
 msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Addons"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Widgets"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
+#, kde-format
+msgctxt "Category"
+msgid "Fonts"
+msgstr "Phông chữ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:303
 #, kde-format
@@ -1815,6 +2277,16 @@ msgstr ""
 msgid "Can access everything on the system"
 msgstr ""
 
+#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"base"
+#| "\""
+#| msgid "Base System"
+msgctxt "Category"
+msgid "Operating System"
+msgstr "Hệ thống cơ sở"
+
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
@@ -2172,223 +2644,6 @@ msgstr "Bản cập nhật"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Applications"
-#~ msgctxt "Category"
-#~ msgid "All Applications"
-#~ msgstr "Ứng dụng"
-
-#~ msgctxt "Category"
-#~ msgid "Accessories"
-#~ msgstr "Tiện ích"
-
-#~ msgctxt "Category"
-#~ msgid "Accessibility"
-#~ msgstr "Hỗ trợ truy cập"
-
-#~ msgctxt "Category"
-#~ msgid "Developer Tools"
-#~ msgstr "Công cụ phát triển"
-
-#~ msgctxt "Category"
-#~ msgid "Debugging"
-#~ msgstr "Gỡ lỗi "
-
-#~ msgctxt "Category"
-#~ msgid "Graphic Interface Design"
-#~ msgstr "Thiết kế giao diện đồ hoạ"
-
-#~ msgctxt "Category"
-#~ msgid "IDEs"
-#~ msgstr "IDE"
-
-#~ msgctxt "Category"
-#~ msgid "Localization"
-#~ msgstr "Bản địa hoá"
-
-#~ msgctxt "Category"
-#~ msgid "Web Development"
-#~ msgstr "Phát triển web"
-
-#~ msgctxt "Category"
-#~ msgid "Education"
-#~ msgstr "Giáo dục"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Science & Engineering"
-#~ msgctxt "Category"
-#~ msgid "Science and Engineering"
-#~ msgstr "Khoa học & Kĩ thuật"
-
-#~ msgctxt "Category"
-#~ msgid "Astronomy"
-#~ msgstr "Thiên văn học"
-
-#~ msgctxt "Category"
-#~ msgid "Biology"
-#~ msgstr "Sinh học"
-
-#~ msgctxt "Category"
-#~ msgid "Chemistry"
-#~ msgstr "Hoá học"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Computer Science & Robotics"
-#~ msgctxt "Category"
-#~ msgid "Computer Science and Robotics"
-#~ msgstr "Khoa học máy tính & Robot"
-
-#~ msgctxt "Category"
-#~ msgid "Electronics"
-#~ msgstr "Điện tử"
-
-#~ msgctxt "Category"
-#~ msgid "Engineering"
-#~ msgstr "Kĩ thuật"
-
-#~ msgctxt "Category"
-#~ msgid "Geography"
-#~ msgstr "Địa lí"
-
-#~ msgctxt "Category"
-#~ msgid "Geology"
-#~ msgstr "Địa chất"
-
-#~ msgctxt "Category"
-#~ msgid "Mathematics"
-#~ msgstr "Toán học"
-
-#~ msgctxt "Category"
-#~ msgid "Physics"
-#~ msgstr "Vật lí"
-
-#~ msgctxt "Category"
-#~ msgid "Games"
-#~ msgstr "Trò chơi"
-
-#~ msgctxt "Category"
-#~ msgid "Arcade"
-#~ msgstr "Hành động"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Games"
-#~ msgctxt "Category"
-#~ msgid "Board Games"
-#~ msgstr "Trò chơi"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Games"
-#~ msgctxt "Category"
-#~ msgid "Card Games"
-#~ msgstr "Trò chơi"
-
-#~ msgctxt "Category"
-#~ msgid "Puzzles"
-#~ msgstr "Tư duy"
-
-#~ msgctxt "Category"
-#~ msgid "Role Playing"
-#~ msgstr "Nhập vai"
-
-#~ msgctxt "Category"
-#~ msgid "Simulation"
-#~ msgstr "Giả lập"
-
-#~ msgctxt "Category"
-#~ msgid "Sports"
-#~ msgstr "Thể thao"
-
-#, fuzzy
-#~| msgid "Applications"
-#~ msgctxt "Category"
-#~ msgid "Action"
-#~ msgstr "Ứng dụng"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Simulation"
-#~ msgctxt "Category"
-#~ msgid "Emulators"
-#~ msgstr "Giả lập"
-
-#~ msgctxt "Category"
-#~ msgid "Graphics"
-#~ msgstr "Đồ hoạ"
-
-#~ msgctxt "Category"
-#~ msgid "Drawing"
-#~ msgstr "Vẽ"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Painting & Editing"
-#~ msgctxt "Category"
-#~ msgid "Painting and Editing"
-#~ msgstr "Sơn sửa"
-
-#~ msgctxt "Category"
-#~ msgid "Photography"
-#~ msgstr "Ảnh"
-
-#~ msgctxt "Category"
-#~ msgid "Publishing"
-#~ msgstr "Xuất bản"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Scanning & OCR"
-#~ msgctxt "Category"
-#~ msgid "Scanning and OCR"
-#~ msgstr "Quét & OCR"
-
-#~ msgctxt "Category"
-#~ msgid "Viewers"
-#~ msgstr "Trình xem"
-
-#~ msgctxt "Category"
-#~ msgid "File Sharing"
-#~ msgstr "Chia sẻ tệp"
-
-#~ msgctxt "Category"
-#~ msgid "Mail"
-#~ msgstr "Thư"
-
-#~ msgctxt "Category"
-#~ msgid "Web Browsers"
-#~ msgstr "Trình duyệt web"
-
-#~ msgctxt "Category"
-#~ msgid "Multimedia"
-#~ msgstr "Đa phương tiện"
-
-#~ msgctxt "Category"
-#~ msgid "Office"
-#~ msgstr "Văn phòng"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "System & Settings"
-#~ msgctxt "Category"
-#~ msgid "System Settings"
-#~ msgstr "Hệ thống & thiết lập"
-
-#~ msgctxt "Category"
-#~ msgid "Fonts"
-#~ msgstr "Phông chữ"
-
-#, fuzzy
-#~| msgctxt ""
-#~| "@item:inlistbox Human-readable name for the Debian package section \"base"
-#~| "\""
-#~| msgid "Base System"
-#~ msgctxt "Category"
-#~ msgid "Operating System"
-#~ msgstr "Hệ thống cơ sở"
 
 #, fuzzy
 #~| msgid "Applications"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-05 03:22+0000\n"
+"POT-Creation-Date: 2025-07-05 05:54+0000\n"
 "PO-Revision-Date: 2023-04-15 13:46+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -116,6 +116,432 @@ msgstr "Не удалось отправить данные о полезнос�
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Не удалось отправить отзыв: %1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Dummy Category"
+msgstr "Тестовая категория"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
+#, kde-format
+msgctxt "Category"
+msgid "dummy"
+msgstr "тест"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
+#, kde-format
+msgctxt "Category"
+msgid "dummy addons"
+msgstr "тестовые расширения"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
+#, kde-format
+msgctxt "Category"
+msgid "dummy 1"
+msgstr "тест 1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
+#, kde-format
+msgctxt "Category"
+msgid "dummy with stuff"
+msgstr "тест с содержимым"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
+#, kde-format
+msgctxt "Category"
+msgid "dummy 2.1"
+msgstr "тест 2.1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
+#, kde-format
+msgctxt "Category"
+msgid "dummy with quite some stuff"
+msgstr "тест со значительным содержимым"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
+#, kde-format
+msgctxt "Category"
+msgid "dummy 3"
+msgstr "тест 3"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
+#, kde-format
+msgctxt "Category"
+msgid "dummy 4"
+msgstr "тест 4"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
+#, kde-format
+msgctxt "Category"
+msgid "All Applications"
+msgstr "Все приложения"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
+#, kde-format
+msgctxt "Category"
+msgid "Accessories"
+msgstr "Инструменты"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
+#, kde-format
+msgctxt "Category"
+msgid "Accessibility"
+msgstr "Специальные возможности"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
+#, kde-format
+msgctxt "Category"
+msgid "Developer Tools"
+msgstr "Инструменты для разработки"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
+#, kde-format
+msgctxt "Category"
+msgid "Debugging"
+msgstr "Отладка"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
+#, kde-format
+msgctxt "Category"
+msgid "Graphic Interface Design"
+msgstr "Построение интерфейсов"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
+#, kde-format
+msgctxt "Category"
+msgid "IDEs"
+msgstr "Среды разработки"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
+#, kde-format
+msgctxt "Category"
+msgid "Localization"
+msgstr "Локализация"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
+#, kde-format
+msgctxt "Category"
+msgid "Profiling"
+msgstr "Средства профилирования"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
+#, kde-format
+msgctxt "Category"
+msgid "Web Development"
+msgstr "Веб-разработка"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
+#, kde-format
+msgctxt "Category"
+msgid "Education"
+msgstr "Образование"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
+#, kde-format
+msgctxt "Category"
+msgid "Science and Engineering"
+msgstr "Научные и инженерные"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
+#, kde-format
+msgctxt "Category"
+msgid "Astronomy"
+msgstr "Астрономия"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
+#, kde-format
+msgctxt "Category"
+msgid "Biology"
+msgstr "Биология"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
+#, kde-format
+msgctxt "Category"
+msgid "Chemistry"
+msgstr "Химия"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
+#, kde-format
+msgctxt "Category"
+msgid "Computer Science and Robotics"
+msgstr "Информационные технологии"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
+#, kde-format
+msgctxt "Category"
+msgid "Electronics"
+msgstr "Электроника"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
+#, kde-format
+msgctxt "Category"
+msgid "Engineering"
+msgstr "Инженерия"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
+#, kde-format
+msgctxt "Category"
+msgid "Geography"
+msgstr "География"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
+#, kde-format
+msgctxt "Category"
+msgid "Geology"
+msgstr "Геология"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
+#, kde-format
+msgctxt "Category"
+msgid "Mathematics"
+msgstr "Математика"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
+#, kde-format
+msgctxt "Category"
+msgid "Physics"
+msgstr "Физика"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
+#, kde-format
+msgctxt "Category"
+msgid "Games"
+msgstr "Игры"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
+#, kde-format
+msgctxt "Category"
+msgid "Arcade"
+msgstr "Аркады"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
+#, kde-format
+msgctxt "Category"
+msgid "Board Games"
+msgstr "Настольные игры"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
+#, kde-format
+msgctxt "Category"
+msgid "Card Games"
+msgstr "Карточные игры"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
+#, kde-format
+msgctxt "Category"
+msgid "Puzzles"
+msgstr "Головоломки"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
+#, kde-format
+msgctxt "Category"
+msgid "Role Playing"
+msgstr "Ролевые игры"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
+#, kde-format
+msgctxt "Category"
+msgid "Simulation"
+msgstr "Симуляторы"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
+#, kde-format
+msgctxt "Category"
+msgid "Strategy"
+msgstr "Стратегические игры"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
+#, kde-format
+msgctxt "Category"
+msgid "Sports"
+msgstr "Спортивные игры"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
+#, kde-format
+msgctxt "Category"
+msgid "Action"
+msgstr "Сюжетные игры"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
+#, kde-format
+msgctxt "Category"
+msgid "Emulators"
+msgstr "Эмуляторы"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
+#, kde-format
+msgctxt "Category"
+msgid "Graphics"
+msgstr "Графические"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
+#, kde-format
+msgctxt "Category"
+msgid "3D"
+msgstr "3D"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
+#, kde-format
+msgctxt "Category"
+msgid "Drawing"
+msgstr "Черчение и рисование"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
+#, kde-format
+msgctxt "Category"
+msgid "Painting and Editing"
+msgstr "Рисование и редактирование"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
+#, kde-format
+msgctxt "Category"
+msgid "Photography"
+msgstr "Фотография"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
+#, kde-format
+msgctxt "Category"
+msgid "Publishing"
+msgstr "Публикация"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
+#, kde-format
+msgctxt "Category"
+msgid "Scanning and OCR"
+msgstr "Сканирование и распознавание"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
+#, kde-format
+msgctxt "Category"
+msgid "Viewers"
+msgstr "Программы просмотра"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
+#, kde-format
+msgctxt "Category"
+msgid "Internet"
+msgstr "Интернет"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
+#, kde-format
+msgctxt "Category"
+msgid "Chat"
+msgstr "Общение"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
+#, kde-format
+msgctxt "Category"
+msgid "File Sharing"
+msgstr "Общий доступ к файлам"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
+#, kde-format
+msgctxt "Category"
+msgid "Mail"
+msgstr "Почта"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
+#, kde-format
+msgctxt "Category"
+msgid "Web Browsers"
+msgstr "Веб-браузеры"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
+#, kde-format
+msgctxt "Category"
+msgid "Multimedia"
+msgstr "Мультимедиа"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
+#, kde-format
+msgctxt "Category"
+msgid "Audio and Video Editors"
+msgstr "Редакторы аудио и видео"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
+#, kde-format
+msgctxt "Category"
+msgid "Audio Players"
+msgstr "Аудиопроигрыватели"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
+#, kde-format
+msgctxt "Category"
+msgid "Video Players"
+msgstr "Видеопроигрыватели"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
+#, kde-format
+msgctxt "Category"
+msgid "CD and DVD"
+msgstr "CD и DVD"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
+#, kde-format
+msgctxt "Category"
+msgid "Office"
+msgstr "Офис"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
+#, kde-format
+msgctxt "Category"
+msgid "System Settings"
+msgstr "Параметры системы"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:132
 #, kde-format
@@ -688,6 +1114,24 @@ msgstr "Данные для входа в %1"
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Не удалось запустить %1"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Addons"
+msgstr "Расширения Plasma"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
+#, kde-format
+msgctxt "Category"
+msgid "Plasma Widgets"
+msgstr "Виджеты Plasma"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
+#, kde-format
+msgctxt "Category"
+msgid "Fonts"
+msgstr "Шрифты"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:303
 #, kde-format
@@ -1766,6 +2210,12 @@ msgstr "Полный доступ"
 msgid "Can access everything on the system"
 msgstr "Доступ ко всей системе"
 
+#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Operating System"
+msgstr "Операционная система"
+
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
@@ -2115,270 +2565,6 @@ msgstr "Системное ПО"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Дополнения"
-
-#~ msgctxt "Category"
-#~ msgid "Dummy Category"
-#~ msgstr "Тестовая категория"
-
-#~ msgctxt "Category"
-#~ msgid "dummy"
-#~ msgstr "тест"
-
-#~ msgctxt "Category"
-#~ msgid "dummy addons"
-#~ msgstr "тестовые расширения"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 1"
-#~ msgstr "тест 1"
-
-#~ msgctxt "Category"
-#~ msgid "dummy with stuff"
-#~ msgstr "тест с содержимым"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 2.1"
-#~ msgstr "тест 2.1"
-
-#~ msgctxt "Category"
-#~ msgid "dummy with quite some stuff"
-#~ msgstr "тест со значительным содержимым"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 3"
-#~ msgstr "тест 3"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 4"
-#~ msgstr "тест 4"
-
-#~ msgctxt "Category"
-#~ msgid "All Applications"
-#~ msgstr "Все приложения"
-
-#~ msgctxt "Category"
-#~ msgid "Accessories"
-#~ msgstr "Инструменты"
-
-#~ msgctxt "Category"
-#~ msgid "Accessibility"
-#~ msgstr "Специальные возможности"
-
-#~ msgctxt "Category"
-#~ msgid "Developer Tools"
-#~ msgstr "Инструменты для разработки"
-
-#~ msgctxt "Category"
-#~ msgid "Debugging"
-#~ msgstr "Отладка"
-
-#~ msgctxt "Category"
-#~ msgid "Graphic Interface Design"
-#~ msgstr "Построение интерфейсов"
-
-#~ msgctxt "Category"
-#~ msgid "IDEs"
-#~ msgstr "Среды разработки"
-
-#~ msgctxt "Category"
-#~ msgid "Localization"
-#~ msgstr "Локализация"
-
-#~ msgctxt "Category"
-#~ msgid "Profiling"
-#~ msgstr "Средства профилирования"
-
-#~ msgctxt "Category"
-#~ msgid "Web Development"
-#~ msgstr "Веб-разработка"
-
-#~ msgctxt "Category"
-#~ msgid "Education"
-#~ msgstr "Образование"
-
-#~ msgctxt "Category"
-#~ msgid "Science and Engineering"
-#~ msgstr "Научные и инженерные"
-
-#~ msgctxt "Category"
-#~ msgid "Astronomy"
-#~ msgstr "Астрономия"
-
-#~ msgctxt "Category"
-#~ msgid "Biology"
-#~ msgstr "Биология"
-
-#~ msgctxt "Category"
-#~ msgid "Chemistry"
-#~ msgstr "Химия"
-
-#~ msgctxt "Category"
-#~ msgid "Computer Science and Robotics"
-#~ msgstr "Информационные технологии"
-
-#~ msgctxt "Category"
-#~ msgid "Electronics"
-#~ msgstr "Электроника"
-
-#~ msgctxt "Category"
-#~ msgid "Engineering"
-#~ msgstr "Инженерия"
-
-#~ msgctxt "Category"
-#~ msgid "Geography"
-#~ msgstr "География"
-
-#~ msgctxt "Category"
-#~ msgid "Geology"
-#~ msgstr "Геология"
-
-#~ msgctxt "Category"
-#~ msgid "Mathematics"
-#~ msgstr "Математика"
-
-#~ msgctxt "Category"
-#~ msgid "Physics"
-#~ msgstr "Физика"
-
-#~ msgctxt "Category"
-#~ msgid "Games"
-#~ msgstr "Игры"
-
-#~ msgctxt "Category"
-#~ msgid "Arcade"
-#~ msgstr "Аркады"
-
-#~ msgctxt "Category"
-#~ msgid "Board Games"
-#~ msgstr "Настольные игры"
-
-#~ msgctxt "Category"
-#~ msgid "Card Games"
-#~ msgstr "Карточные игры"
-
-#~ msgctxt "Category"
-#~ msgid "Puzzles"
-#~ msgstr "Головоломки"
-
-#~ msgctxt "Category"
-#~ msgid "Role Playing"
-#~ msgstr "Ролевые игры"
-
-#~ msgctxt "Category"
-#~ msgid "Simulation"
-#~ msgstr "Симуляторы"
-
-#~ msgctxt "Category"
-#~ msgid "Strategy"
-#~ msgstr "Стратегические игры"
-
-#~ msgctxt "Category"
-#~ msgid "Sports"
-#~ msgstr "Спортивные игры"
-
-#~ msgctxt "Category"
-#~ msgid "Action"
-#~ msgstr "Сюжетные игры"
-
-#~ msgctxt "Category"
-#~ msgid "Emulators"
-#~ msgstr "Эмуляторы"
-
-#~ msgctxt "Category"
-#~ msgid "Graphics"
-#~ msgstr "Графические"
-
-#~ msgctxt "Category"
-#~ msgid "3D"
-#~ msgstr "3D"
-
-#~ msgctxt "Category"
-#~ msgid "Drawing"
-#~ msgstr "Черчение и рисование"
-
-#~ msgctxt "Category"
-#~ msgid "Painting and Editing"
-#~ msgstr "Рисование и редактирование"
-
-#~ msgctxt "Category"
-#~ msgid "Photography"
-#~ msgstr "Фотография"
-
-#~ msgctxt "Category"
-#~ msgid "Publishing"
-#~ msgstr "Публикация"
-
-#~ msgctxt "Category"
-#~ msgid "Scanning and OCR"
-#~ msgstr "Сканирование и распознавание"
-
-#~ msgctxt "Category"
-#~ msgid "Viewers"
-#~ msgstr "Программы просмотра"
-
-#~ msgctxt "Category"
-#~ msgid "Internet"
-#~ msgstr "Интернет"
-
-#~ msgctxt "Category"
-#~ msgid "Chat"
-#~ msgstr "Общение"
-
-#~ msgctxt "Category"
-#~ msgid "File Sharing"
-#~ msgstr "Общий доступ к файлам"
-
-#~ msgctxt "Category"
-#~ msgid "Mail"
-#~ msgstr "Почта"
-
-#~ msgctxt "Category"
-#~ msgid "Web Browsers"
-#~ msgstr "Веб-браузеры"
-
-#~ msgctxt "Category"
-#~ msgid "Multimedia"
-#~ msgstr "Мультимедиа"
-
-#~ msgctxt "Category"
-#~ msgid "Audio and Video Editors"
-#~ msgstr "Редакторы аудио и видео"
-
-#~ msgctxt "Category"
-#~ msgid "Audio Players"
-#~ msgstr "Аудиопроигрыватели"
-
-#~ msgctxt "Category"
-#~ msgid "Video Players"
-#~ msgstr "Видеопроигрыватели"
-
-#~ msgctxt "Category"
-#~ msgid "CD and DVD"
-#~ msgstr "CD и DVD"
-
-#~ msgctxt "Category"
-#~ msgid "Office"
-#~ msgstr "Офис"
-
-#~ msgctxt "Category"
-#~ msgid "System Settings"
-#~ msgstr "Параметры системы"
-
-#~ msgctxt "Category"
-#~ msgid "Plasma Addons"
-#~ msgstr "Расширения Plasma"
-
-#~ msgctxt "Category"
-#~ msgid "Plasma Widgets"
-#~ msgstr "Виджеты Plasma"
-
-#~ msgctxt "Category"
-#~ msgid "Fonts"
-#~ msgstr "Шрифты"
-
-#~ msgctxt "Category"
-#~ msgid "Operating System"
-#~ msgstr "Операционная система"
 
 #~ msgid "Remote: "
 #~ msgstr "Хост: "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-05 03:22+0000\n"
+"POT-Creation-Date: 2025-07-05 05:54+0000\n"
 "PO-Revision-Date: 2014-01-31 20:46+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -119,6 +119,456 @@ msgstr ""
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Dummy Category"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
+#, kde-format
+msgctxt "Category"
+msgid "dummy"
+msgstr "prazno"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "dummy"
+msgctxt "Category"
+msgid "dummy addons"
+msgstr "prazno"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "dummy"
+msgctxt "Category"
+msgid "dummy 1"
+msgstr "prazno"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
+#, kde-format
+msgctxt "Category"
+msgid "dummy with stuff"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "dummy"
+msgctxt "Category"
+msgid "dummy 2.1"
+msgstr "prazno"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
+#, kde-format
+msgctxt "Category"
+msgid "dummy with quite some stuff"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "dummy"
+msgctxt "Category"
+msgid "dummy 3"
+msgstr "prazno"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "dummy"
+msgctxt "Category"
+msgid "dummy 4"
+msgstr "prazno"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
+#, fuzzy, kde-format
+#| msgid "Applications"
+msgctxt "Category"
+msgid "All Applications"
+msgstr "Programi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
+#, kde-format
+msgctxt "Category"
+msgid "Accessories"
+msgstr "Alati"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
+#, kde-format
+msgctxt "Category"
+msgid "Accessibility"
+msgstr "Pristupačnost"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
+#, kde-format
+msgctxt "Category"
+msgid "Developer Tools"
+msgstr "Razvoj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
+#, kde-format
+msgctxt "Category"
+msgid "Debugging"
+msgstr "Traženje grešaka"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
+#, kde-format
+msgctxt "Category"
+msgid "Graphic Interface Design"
+msgstr "Dizajn grafičkoginterfejsa"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
+#, kde-format
+msgctxt "Category"
+msgid "IDEs"
+msgstr "Integrisana razvojna okruženja"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
+#, kde-format
+msgctxt "Category"
+msgid "Localization"
+msgstr "Lokalizacija"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
+#, kde-format
+msgctxt "Category"
+msgid "Profiling"
+msgstr "Profilisanje"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
+#, kde-format
+msgctxt "Category"
+msgid "Web Development"
+msgstr "Web Razvoj"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
+#, kde-format
+msgctxt "Category"
+msgid "Education"
+msgstr "Obrazovanje"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Science & Engineering"
+msgctxt "Category"
+msgid "Science and Engineering"
+msgstr "Nauka i inženjerstvo"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
+#, kde-format
+msgctxt "Category"
+msgid "Astronomy"
+msgstr "Astronomija"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
+#, kde-format
+msgctxt "Category"
+msgid "Biology"
+msgstr "Biologija"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
+#, kde-format
+msgctxt "Category"
+msgid "Chemistry"
+msgstr "Hemija"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Computer Science & Robotics"
+msgctxt "Category"
+msgid "Computer Science and Robotics"
+msgstr "Kompjuterske nauke i robotika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
+#, kde-format
+msgctxt "Category"
+msgid "Electronics"
+msgstr "Elektronika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
+#, kde-format
+msgctxt "Category"
+msgid "Engineering"
+msgstr "Inženjerstvo"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
+#, kde-format
+msgctxt "Category"
+msgid "Geography"
+msgstr "Geografija"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
+#, kde-format
+msgctxt "Category"
+msgid "Geology"
+msgstr "Geologija"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
+#, kde-format
+msgctxt "Category"
+msgid "Mathematics"
+msgstr "Matematika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
+#, kde-format
+msgctxt "Category"
+msgid "Physics"
+msgstr "Fizika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
+#, kde-format
+msgctxt "Category"
+msgid "Games"
+msgstr "Igre"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
+#, kde-format
+msgctxt "Category"
+msgid "Arcade"
+msgstr "Arkadne igre"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
+#, kde-format
+msgctxt "Category"
+msgid "Board Games"
+msgstr "Igre na tabli"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
+#, kde-format
+msgctxt "Category"
+msgid "Card Games"
+msgstr "Igre sa kartama"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
+#, kde-format
+msgctxt "Category"
+msgid "Puzzles"
+msgstr "Igre zagonetki"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
+#, kde-format
+msgctxt "Category"
+msgid "Role Playing"
+msgstr "Igre uloga"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
+#, kde-format
+msgctxt "Category"
+msgid "Simulation"
+msgstr "Simulacije"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
+#, kde-format
+msgctxt "Category"
+msgid "Strategy"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
+#, kde-format
+msgctxt "Category"
+msgid "Sports"
+msgstr "Sportovi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
+#, fuzzy, kde-format
+#| msgid "Applications"
+msgctxt "Category"
+msgid "Action"
+msgstr "Programi"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Simulation"
+msgctxt "Category"
+msgid "Emulators"
+msgstr "Simulacije"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
+#, kde-format
+msgctxt "Category"
+msgid "Graphics"
+msgstr "Grafika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
+#, kde-format
+msgctxt "Category"
+msgid "3D"
+msgstr "3D"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
+#, kde-format
+msgctxt "Category"
+msgid "Drawing"
+msgstr "Crtanje"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Painting & Editing"
+msgctxt "Category"
+msgid "Painting and Editing"
+msgstr "Slikanje i uređivanje"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
+#, kde-format
+msgctxt "Category"
+msgid "Photography"
+msgstr "Fotografija"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
+#, kde-format
+msgctxt "Category"
+msgid "Publishing"
+msgstr "Izdavaštvo"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Scanning & OCR"
+msgctxt "Category"
+msgid "Scanning and OCR"
+msgstr "Skeniranje i OCR slika"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
+#, kde-format
+msgctxt "Category"
+msgid "Viewers"
+msgstr "Preglednici"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
+#, kde-format
+msgctxt "Category"
+msgid "Internet"
+msgstr "Internet"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
+#, kde-format
+msgctxt "Category"
+msgid "Chat"
+msgstr "Ćaskanje"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
+#, kde-format
+msgctxt "Category"
+msgid "File Sharing"
+msgstr "Dijeljenje datoteka"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
+#, kde-format
+msgctxt "Category"
+msgid "Mail"
+msgstr "Elektronska pošta"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
+#, kde-format
+msgctxt "Category"
+msgid "Web Browsers"
+msgstr "Web preglednici"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
+#, kde-format
+msgctxt "Category"
+msgid "Multimedia"
+msgstr "Multimedija"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
+#, kde-format
+msgctxt "Category"
+msgid "Audio and Video Editors"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
+#, kde-format
+msgctxt "Category"
+msgid "Audio Players"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
+#, kde-format
+msgctxt "Category"
+msgid "Video Players"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
+#, kde-format
+msgctxt "Category"
+msgid "CD and DVD"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
+#, kde-format
+msgctxt "Category"
+msgid "Office"
+msgstr "Ured"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "System & Settings"
+msgctxt "Category"
+msgid "System Settings"
+msgstr "Sistem i postavke"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:132
 #, fuzzy, kde-format
@@ -656,6 +1106,28 @@ msgstr ""
 #, kde-format
 msgid "Cannot launch %1"
 msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Plasma Desktop Widgets"
+msgctxt "Category"
+msgid "Plasma Addons"
+msgstr "Grafičke kontrole Plasma površi"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Plasma Desktop Widgets"
+msgctxt "Category"
+msgid "Plasma Widgets"
+msgstr "Grafičke kontrole Plasma površi"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
+#, kde-format
+msgctxt "Category"
+msgid "Fonts"
+msgstr "Fontovi"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:303
 #, kde-format
@@ -1740,6 +2212,16 @@ msgstr ""
 msgid "Can access everything on the system"
 msgstr ""
 
+#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox Human-readable name for the Debian package section \"base"
+#| "\""
+#| msgid "Base System"
+msgctxt "Category"
+msgid "Operating System"
+msgstr "Osnovni sistem"
+
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
@@ -2109,279 +2591,6 @@ msgstr "Video softver"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr ""
-
-#~ msgctxt "Category"
-#~ msgid "dummy"
-#~ msgstr "prazno"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "dummy"
-#~ msgctxt "Category"
-#~ msgid "dummy addons"
-#~ msgstr "prazno"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "dummy"
-#~ msgctxt "Category"
-#~ msgid "dummy 1"
-#~ msgstr "prazno"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "dummy"
-#~ msgctxt "Category"
-#~ msgid "dummy 2.1"
-#~ msgstr "prazno"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "dummy"
-#~ msgctxt "Category"
-#~ msgid "dummy 3"
-#~ msgstr "prazno"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "dummy"
-#~ msgctxt "Category"
-#~ msgid "dummy 4"
-#~ msgstr "prazno"
-
-#, fuzzy
-#~| msgid "Applications"
-#~ msgctxt "Category"
-#~ msgid "All Applications"
-#~ msgstr "Programi"
-
-#~ msgctxt "Category"
-#~ msgid "Accessories"
-#~ msgstr "Alati"
-
-#~ msgctxt "Category"
-#~ msgid "Accessibility"
-#~ msgstr "Pristupačnost"
-
-#~ msgctxt "Category"
-#~ msgid "Developer Tools"
-#~ msgstr "Razvoj"
-
-#~ msgctxt "Category"
-#~ msgid "Debugging"
-#~ msgstr "Traženje grešaka"
-
-#~ msgctxt "Category"
-#~ msgid "Graphic Interface Design"
-#~ msgstr "Dizajn grafičkoginterfejsa"
-
-#~ msgctxt "Category"
-#~ msgid "IDEs"
-#~ msgstr "Integrisana razvojna okruženja"
-
-#~ msgctxt "Category"
-#~ msgid "Localization"
-#~ msgstr "Lokalizacija"
-
-#~ msgctxt "Category"
-#~ msgid "Profiling"
-#~ msgstr "Profilisanje"
-
-#~ msgctxt "Category"
-#~ msgid "Web Development"
-#~ msgstr "Web Razvoj"
-
-#~ msgctxt "Category"
-#~ msgid "Education"
-#~ msgstr "Obrazovanje"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Science & Engineering"
-#~ msgctxt "Category"
-#~ msgid "Science and Engineering"
-#~ msgstr "Nauka i inženjerstvo"
-
-#~ msgctxt "Category"
-#~ msgid "Astronomy"
-#~ msgstr "Astronomija"
-
-#~ msgctxt "Category"
-#~ msgid "Biology"
-#~ msgstr "Biologija"
-
-#~ msgctxt "Category"
-#~ msgid "Chemistry"
-#~ msgstr "Hemija"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Computer Science & Robotics"
-#~ msgctxt "Category"
-#~ msgid "Computer Science and Robotics"
-#~ msgstr "Kompjuterske nauke i robotika"
-
-#~ msgctxt "Category"
-#~ msgid "Electronics"
-#~ msgstr "Elektronika"
-
-#~ msgctxt "Category"
-#~ msgid "Engineering"
-#~ msgstr "Inženjerstvo"
-
-#~ msgctxt "Category"
-#~ msgid "Geography"
-#~ msgstr "Geografija"
-
-#~ msgctxt "Category"
-#~ msgid "Geology"
-#~ msgstr "Geologija"
-
-#~ msgctxt "Category"
-#~ msgid "Mathematics"
-#~ msgstr "Matematika"
-
-#~ msgctxt "Category"
-#~ msgid "Physics"
-#~ msgstr "Fizika"
-
-#~ msgctxt "Category"
-#~ msgid "Games"
-#~ msgstr "Igre"
-
-#~ msgctxt "Category"
-#~ msgid "Arcade"
-#~ msgstr "Arkadne igre"
-
-#~ msgctxt "Category"
-#~ msgid "Board Games"
-#~ msgstr "Igre na tabli"
-
-#~ msgctxt "Category"
-#~ msgid "Card Games"
-#~ msgstr "Igre sa kartama"
-
-#~ msgctxt "Category"
-#~ msgid "Puzzles"
-#~ msgstr "Igre zagonetki"
-
-#~ msgctxt "Category"
-#~ msgid "Role Playing"
-#~ msgstr "Igre uloga"
-
-#~ msgctxt "Category"
-#~ msgid "Simulation"
-#~ msgstr "Simulacije"
-
-#~ msgctxt "Category"
-#~ msgid "Sports"
-#~ msgstr "Sportovi"
-
-#, fuzzy
-#~| msgid "Applications"
-#~ msgctxt "Category"
-#~ msgid "Action"
-#~ msgstr "Programi"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Simulation"
-#~ msgctxt "Category"
-#~ msgid "Emulators"
-#~ msgstr "Simulacije"
-
-#~ msgctxt "Category"
-#~ msgid "Graphics"
-#~ msgstr "Grafika"
-
-#~ msgctxt "Category"
-#~ msgid "3D"
-#~ msgstr "3D"
-
-#~ msgctxt "Category"
-#~ msgid "Drawing"
-#~ msgstr "Crtanje"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Painting & Editing"
-#~ msgctxt "Category"
-#~ msgid "Painting and Editing"
-#~ msgstr "Slikanje i uređivanje"
-
-#~ msgctxt "Category"
-#~ msgid "Photography"
-#~ msgstr "Fotografija"
-
-#~ msgctxt "Category"
-#~ msgid "Publishing"
-#~ msgstr "Izdavaštvo"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Scanning & OCR"
-#~ msgctxt "Category"
-#~ msgid "Scanning and OCR"
-#~ msgstr "Skeniranje i OCR slika"
-
-#~ msgctxt "Category"
-#~ msgid "Viewers"
-#~ msgstr "Preglednici"
-
-#~ msgctxt "Category"
-#~ msgid "Internet"
-#~ msgstr "Internet"
-
-#~ msgctxt "Category"
-#~ msgid "Chat"
-#~ msgstr "Ćaskanje"
-
-#~ msgctxt "Category"
-#~ msgid "File Sharing"
-#~ msgstr "Dijeljenje datoteka"
-
-#~ msgctxt "Category"
-#~ msgid "Mail"
-#~ msgstr "Elektronska pošta"
-
-#~ msgctxt "Category"
-#~ msgid "Web Browsers"
-#~ msgstr "Web preglednici"
-
-#~ msgctxt "Category"
-#~ msgid "Multimedia"
-#~ msgstr "Multimedija"
-
-#~ msgctxt "Category"
-#~ msgid "Office"
-#~ msgstr "Ured"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "System & Settings"
-#~ msgctxt "Category"
-#~ msgid "System Settings"
-#~ msgstr "Sistem i postavke"
-
-#, fuzzy
-#~| msgctxt "Category"
-#~| msgid "Plasma Desktop Widgets"
-#~ msgctxt "Category"
-#~ msgid "Plasma Widgets"
-#~ msgstr "Grafičke kontrole Plasma površi"
-
-#~ msgctxt "Category"
-#~ msgid "Fonts"
-#~ msgstr "Fontovi"
-
-#, fuzzy
-#~| msgctxt ""
-#~| "@item:inlistbox Human-readable name for the Debian package section \"base"
-#~| "\""
-#~| msgid "Base System"
-#~ msgctxt "Category"
-#~ msgid "Operating System"
-#~ msgstr "Osnovni sistem"
 
 #, fuzzy
 #~| msgctxt "@info:status Requested action"

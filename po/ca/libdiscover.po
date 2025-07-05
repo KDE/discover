@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-05 03:22+0000\n"
+"POT-Creation-Date: 2025-07-05 05:54+0000\n"
 "PO-Revision-Date: 2024-05-24 20:54+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -108,6 +108,438 @@ msgstr "Error en enviar la utilitat: %1"
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Error en enviar la revisió: %1"
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
+#, kde-format
+msgctxt "Category"
+msgid "Dummy Category"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
+#, kde-format
+msgctxt "Category"
+msgid "dummy"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
+#, kde-format
+msgctxt "Category"
+msgid "dummy addons"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
+#, kde-format
+msgctxt "Category"
+msgid "dummy 1"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
+#, kde-format
+msgctxt "Category"
+msgid "dummy with stuff"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
+#, kde-format
+msgctxt "Category"
+msgid "dummy 2.1"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
+#, kde-format
+msgctxt "Category"
+msgid "dummy with quite some stuff"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
+#, kde-format
+msgctxt "Category"
+msgid "dummy 3"
+msgstr ""
+
+#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
+#, kde-format
+msgctxt "Category"
+msgid "dummy 4"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
+#, fuzzy, kde-format
+#| msgid "Applications"
+msgctxt "Category"
+msgid "All Applications"
+msgstr "Aplicacions"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
+#, kde-format
+msgctxt "Category"
+msgid "Accessories"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
+#, kde-format
+msgctxt "Category"
+msgid "Accessibility"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
+#, kde-format
+msgctxt "Category"
+msgid "Developer Tools"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
+#, kde-format
+msgctxt "Category"
+msgid "Debugging"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
+#, kde-format
+msgctxt "Category"
+msgid "Graphic Interface Design"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
+#, kde-format
+msgctxt "Category"
+msgid "IDEs"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
+#, kde-format
+msgctxt "Category"
+msgid "Localization"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
+#, kde-format
+msgctxt "Category"
+msgid "Profiling"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
+#, kde-format
+msgctxt "Category"
+msgid "Web Development"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
+#, kde-format
+msgctxt "Category"
+msgid "Education"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
+#, kde-format
+msgctxt "Category"
+msgid "Science and Engineering"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
+#, kde-format
+msgctxt "Category"
+msgid "Astronomy"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
+#, kde-format
+msgctxt "Category"
+msgid "Biology"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
+#, kde-format
+msgctxt "Category"
+msgid "Chemistry"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
+#, kde-format
+msgctxt "Category"
+msgid "Computer Science and Robotics"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
+#, kde-format
+msgctxt "Category"
+msgid "Electronics"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
+#, kde-format
+msgctxt "Category"
+msgid "Engineering"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
+#, kde-format
+msgctxt "Category"
+msgid "Geography"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
+#, kde-format
+msgctxt "Category"
+msgid "Geology"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
+#, kde-format
+msgctxt "Category"
+msgid "Mathematics"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
+#, kde-format
+msgctxt "Category"
+msgid "Physics"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
+#, kde-format
+msgctxt "Category"
+msgid "Games"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
+#, kde-format
+msgctxt "Category"
+msgid "Arcade"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
+#, fuzzy, kde-format
+#| msgctxt "NAME OF TRANSLATORS"
+#| msgid "Your names"
+msgctxt "Category"
+msgid "Board Games"
+msgstr "Josep M. Ferrer"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
+#, kde-format
+msgctxt "Category"
+msgid "Card Games"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
+#, kde-format
+msgctxt "Category"
+msgid "Puzzles"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
+#, kde-format
+msgctxt "Category"
+msgid "Role Playing"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
+#, kde-format
+msgctxt "Category"
+msgid "Simulation"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
+#, kde-format
+msgctxt "Category"
+msgid "Strategy"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
+#, kde-format
+msgctxt "Category"
+msgid "Sports"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
+#, fuzzy, kde-format
+#| msgid "Applications"
+msgctxt "Category"
+msgid "Action"
+msgstr "Aplicacions"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
+#, kde-format
+msgctxt "Category"
+msgid "Emulators"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
+#, kde-format
+msgctxt "Category"
+msgid "Graphics"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
+#, kde-format
+msgctxt "Category"
+msgid "3D"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
+#, kde-format
+msgctxt "Category"
+msgid "Drawing"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
+#, kde-format
+msgctxt "Category"
+msgid "Painting and Editing"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
+#, kde-format
+msgctxt "Category"
+msgid "Photography"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
+#, fuzzy, kde-format
+#| msgid "Public Domain"
+msgctxt "Category"
+msgid "Publishing"
+msgstr "Domini públic"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
+#, kde-format
+msgctxt "Category"
+msgid "Scanning and OCR"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
+#, kde-format
+msgctxt "Category"
+msgid "Viewers"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
+#, fuzzy, kde-format
+#| msgid "Internal error"
+msgctxt "Category"
+msgid "Internet"
+msgstr "Error intern"
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
+#, kde-format
+msgctxt "Category"
+msgid "Chat"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
+#, kde-format
+msgctxt "Category"
+msgid "File Sharing"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
+#, kde-format
+msgctxt "Category"
+msgid "Mail"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
+#, kde-format
+msgctxt "Category"
+msgid "Web Browsers"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
+#, kde-format
+msgctxt "Category"
+msgid "Multimedia"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
+#, kde-format
+msgctxt "Category"
+msgid "Audio and Video Editors"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
+#, kde-format
+msgctxt "Category"
+msgid "Audio Players"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
+#, kde-format
+msgctxt "Category"
+msgid "Video Players"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
+#, kde-format
+msgctxt "Category"
+msgid "CD and DVD"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
+#, kde-format
+msgctxt "Category"
+msgid "Office"
+msgstr ""
+
+#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
+#, kde-format
+msgctxt "Category"
+msgid "System Settings"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:132
 #, kde-format
@@ -676,6 +1108,26 @@ msgstr "Informació d'accés per a %1"
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "No s'ha pogut llançar %1"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
+#, fuzzy, kde-format
+#| msgid "Plasma Addons"
+msgctxt "Category"
+msgid "Plasma Addons"
+msgstr "Complements del Plasma"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
+#, fuzzy, kde-format
+#| msgid "Plasma Addons"
+msgctxt "Category"
+msgid "Plasma Widgets"
+msgstr "Complements del Plasma"
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
+#, kde-format
+msgctxt "Category"
+msgid "Fonts"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:303
 #, kde-format
@@ -1744,6 +2196,14 @@ msgstr "Accés complet"
 msgid "Can access everything on the system"
 msgstr "Pot accedir a tot el sistema"
 
+#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Repair System"
+msgctxt "Category"
+msgid "Operating System"
+msgstr "Repara el sistema"
+
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
@@ -2094,268 +2554,3 @@ msgstr "Programari del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complements"
-
-#~ msgctxt "Category"
-#~ msgid "Dummy Category"
-#~ msgstr "Categoria simulada"
-
-#~ msgctxt "Category"
-#~ msgid "dummy"
-#~ msgstr "simulació"
-
-#~ msgctxt "Category"
-#~ msgid "dummy addons"
-#~ msgstr "complement simulat"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 1"
-#~ msgstr "simulació 1"
-
-#~ msgctxt "Category"
-#~ msgid "dummy with stuff"
-#~ msgstr "simulació amb novetats"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 2.1"
-#~ msgstr "simulació 2.1"
-
-#~ msgctxt "Category"
-#~ msgid "dummy with quite some stuff"
-#~ msgstr "simulació amb algunes novetats"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 3"
-#~ msgstr "simulació 3"
-
-#~ msgctxt "Category"
-#~ msgid "dummy 4"
-#~ msgstr "simulació 4"
-
-#~ msgctxt "Category"
-#~ msgid "All Applications"
-#~ msgstr "Totes les aplicacions"
-
-#~ msgctxt "Category"
-#~ msgid "Accessories"
-#~ msgstr "Accessoris"
-
-#~ msgctxt "Category"
-#~ msgid "Accessibility"
-#~ msgstr "Accessibilitat"
-
-#~ msgctxt "Category"
-#~ msgid "Developer Tools"
-#~ msgstr "Eines de desenvolupament"
-
-#~ msgctxt "Category"
-#~ msgid "Debugging"
-#~ msgstr "Depuració"
-
-#~ msgctxt "Category"
-#~ msgid "Graphic Interface Design"
-#~ msgstr "Disseny d'interfície gràfica"
-
-#~ msgctxt "Category"
-#~ msgid "IDEs"
-#~ msgstr "Entorns integrats de desenvolupament"
-
-#~ msgctxt "Category"
-#~ msgid "Localization"
-#~ msgstr "Traducció"
-
-#~ msgctxt "Category"
-#~ msgid "Profiling"
-#~ msgstr "Anàlisi del rendiment"
-
-#~ msgctxt "Category"
-#~ msgid "Web Development"
-#~ msgstr "Desenvolupament web"
-
-#~ msgctxt "Category"
-#~ msgid "Education"
-#~ msgstr "Educació"
-
-#~ msgctxt "Category"
-#~ msgid "Science and Engineering"
-#~ msgstr "Ciència i enginyeria"
-
-#~ msgctxt "Category"
-#~ msgid "Astronomy"
-#~ msgstr "Astronomia"
-
-#~ msgctxt "Category"
-#~ msgid "Biology"
-#~ msgstr "Biologia"
-
-#~ msgctxt "Category"
-#~ msgid "Chemistry"
-#~ msgstr "Química"
-
-#~ msgctxt "Category"
-#~ msgid "Computer Science and Robotics"
-#~ msgstr "Informàtica i robòtica"
-
-#~ msgctxt "Category"
-#~ msgid "Electronics"
-#~ msgstr "Electrònica"
-
-#~ msgctxt "Category"
-#~ msgid "Engineering"
-#~ msgstr "Enginyeria"
-
-#~ msgctxt "Category"
-#~ msgid "Geography"
-#~ msgstr "Geografia"
-
-#~ msgctxt "Category"
-#~ msgid "Geology"
-#~ msgstr "Geologia"
-
-#~ msgctxt "Category"
-#~ msgid "Mathematics"
-#~ msgstr "Matemàtiques"
-
-#~ msgctxt "Category"
-#~ msgid "Physics"
-#~ msgstr "Física"
-
-#~ msgctxt "Category"
-#~ msgid "Games"
-#~ msgstr "Jocs"
-
-#~ msgctxt "Category"
-#~ msgid "Arcade"
-#~ msgstr "Arcade"
-
-#~ msgctxt "Category"
-#~ msgid "Board Games"
-#~ msgstr "Jocs de taula"
-
-# skip-rule: ff-card
-#~ msgctxt "Category"
-#~ msgid "Card Games"
-#~ msgstr "Jocs de cartes"
-
-#~ msgctxt "Category"
-#~ msgid "Puzzles"
-#~ msgstr "Trencaclosques"
-
-#~ msgctxt "Category"
-#~ msgid "Role Playing"
-#~ msgstr "Jocs de rol"
-
-#~ msgctxt "Category"
-#~ msgid "Simulation"
-#~ msgstr "Simulació"
-
-#~ msgctxt "Category"
-#~ msgid "Strategy"
-#~ msgstr "Estratègia"
-
-#~ msgctxt "Category"
-#~ msgid "Sports"
-#~ msgstr "Esports"
-
-#~ msgctxt "Category"
-#~ msgid "Action"
-#~ msgstr "Acció"
-
-#~ msgctxt "Category"
-#~ msgid "Emulators"
-#~ msgstr "Emuladors"
-
-#~ msgctxt "Category"
-#~ msgid "Graphics"
-#~ msgstr "Gràfics"
-
-#~ msgctxt "Category"
-#~ msgid "3D"
-#~ msgstr "3D"
-
-#~ msgctxt "Category"
-#~ msgid "Drawing"
-#~ msgstr "Dibuix"
-
-#~ msgctxt "Category"
-#~ msgid "Painting and Editing"
-#~ msgstr "Pintura i edició"
-
-#~ msgctxt "Category"
-#~ msgid "Photography"
-#~ msgstr "Fotografia"
-
-#~ msgctxt "Category"
-#~ msgid "Publishing"
-#~ msgstr "Publicació"
-
-#~ msgctxt "Category"
-#~ msgid "Scanning and OCR"
-#~ msgstr "Escaneig i ROC (OCR)"
-
-#~ msgctxt "Category"
-#~ msgid "Viewers"
-#~ msgstr "Visualitzadors"
-
-#~ msgctxt "Category"
-#~ msgid "Internet"
-#~ msgstr "Internet"
-
-#~ msgctxt "Category"
-#~ msgid "Chat"
-#~ msgstr "Xat"
-
-#~ msgctxt "Category"
-#~ msgid "File Sharing"
-#~ msgstr "Compartició de fitxers"
-
-#~ msgctxt "Category"
-#~ msgid "Mail"
-#~ msgstr "Correu"
-
-#~ msgctxt "Category"
-#~ msgid "Web Browsers"
-#~ msgstr "Navegadors web"
-
-#~ msgctxt "Category"
-#~ msgid "Multimedia"
-#~ msgstr "Multimèdia"
-
-#~ msgctxt "Category"
-#~ msgid "Audio and Video Editors"
-#~ msgstr "Editors d'àudio i de vídeo"
-
-#~ msgctxt "Category"
-#~ msgid "Audio Players"
-#~ msgstr "Reproductors d'àudio"
-
-#~ msgctxt "Category"
-#~ msgid "Video Players"
-#~ msgstr "Reproductors de vídeo"
-
-#~ msgctxt "Category"
-#~ msgid "CD and DVD"
-#~ msgstr "CD i DVD"
-
-#~ msgctxt "Category"
-#~ msgid "Office"
-#~ msgstr "Oficina"
-
-#~ msgctxt "Category"
-#~ msgid "System Settings"
-#~ msgstr "Configuració del sistema"
-
-#~ msgctxt "Category"
-#~ msgid "Plasma Addons"
-#~ msgstr "Complements del Plasma"
-
-#~ msgctxt "Category"
-#~ msgid "Plasma Widgets"
-#~ msgstr "Ginys del Plasma"
-
-#~ msgctxt "Category"
-#~ msgid "Fonts"
-#~ msgstr "Tipus de lletra"
-
-#~ msgctxt "Category"
-#~ msgid "Operating System"
-#~ msgstr "Sistema operatiu"
