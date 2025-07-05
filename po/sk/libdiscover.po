@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-24 03:09+0000\n"
+"POT-Creation-Date: 2025-07-05 03:22+0000\n"
 "PO-Revision-Date: 2024-11-10 18:14+0100\n"
 "Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -107,432 +107,6 @@ msgstr "Chyba počas odosielania užitočnosti: %1"
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "Chyba počas odosielania recenzie: %1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
-#, kde-format
-msgctxt "Category"
-msgid "Dummy Category"
-msgstr "Prázdna kategória"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
-#, kde-format
-msgctxt "Category"
-msgid "dummy"
-msgstr "dummy"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
-#, kde-format
-msgctxt "Category"
-msgid "dummy addons"
-msgstr "prázdne doplnky"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
-#, kde-format
-msgctxt "Category"
-msgid "dummy 1"
-msgstr "dummy 1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
-#, kde-format
-msgctxt "Category"
-msgid "dummy with stuff"
-msgstr "dummy s niečím"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
-#, kde-format
-msgctxt "Category"
-msgid "dummy 2.1"
-msgstr "dummy 2.1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
-#, kde-format
-msgctxt "Category"
-msgid "dummy with quite some stuff"
-msgstr "dummy s ešte niečím"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
-#, kde-format
-msgctxt "Category"
-msgid "dummy 3"
-msgstr "dummy 3"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
-#, kde-format
-msgctxt "Category"
-msgid "dummy 4"
-msgstr "dummy 4"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, kde-format
-msgctxt "Category"
-msgid "All Applications"
-msgstr "Všetky aplikácie"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, kde-format
-msgctxt "Category"
-msgid "Accessories"
-msgstr "Príslušenstvo"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
-#, kde-format
-msgctxt "Category"
-msgid "Accessibility"
-msgstr "Prístupnosť"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
-msgctxt "Category"
-msgid "Developer Tools"
-msgstr "Nástroje pre vývojárov"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
-#, kde-format
-msgctxt "Category"
-msgid "Debugging"
-msgstr "Ladenie"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
-#, kde-format
-msgctxt "Category"
-msgid "Graphic Interface Design"
-msgstr "Návrh grafického rozhrania"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
-#, kde-format
-msgctxt "Category"
-msgid "IDEs"
-msgstr "Integrované vývojové prostredia"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
-#, kde-format
-msgctxt "Category"
-msgid "Localization"
-msgstr "Lokalizácia"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
-#, kde-format
-msgctxt "Category"
-msgid "Profiling"
-msgstr "Profilovanie"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
-#, kde-format
-msgctxt "Category"
-msgid "Web Development"
-msgstr "Vývoj webu"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
-#, kde-format
-msgctxt "Category"
-msgid "Education"
-msgstr "Vzdelávanie"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
-#, kde-format
-msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "Veda a strojárstvo"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
-#, kde-format
-msgctxt "Category"
-msgid "Astronomy"
-msgstr "Astronómia"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
-#, kde-format
-msgctxt "Category"
-msgid "Biology"
-msgstr "Biológia"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
-#, kde-format
-msgctxt "Category"
-msgid "Chemistry"
-msgstr "Chémia"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
-#, kde-format
-msgctxt "Category"
-msgid "Computer Science and Robotics"
-msgstr "Počítačová veda a robotika"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
-#, kde-format
-msgctxt "Category"
-msgid "Electronics"
-msgstr "Elektronika"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
-#, kde-format
-msgctxt "Category"
-msgid "Engineering"
-msgstr "Strojárstvo"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
-#, kde-format
-msgctxt "Category"
-msgid "Geography"
-msgstr "Geografia"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
-#, kde-format
-msgctxt "Category"
-msgid "Geology"
-msgstr "Geológia"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
-#, kde-format
-msgctxt "Category"
-msgid "Mathematics"
-msgstr "Matematika"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
-#, kde-format
-msgctxt "Category"
-msgid "Physics"
-msgstr "Fyzika"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
-#, kde-format
-msgctxt "Category"
-msgid "Games"
-msgstr "Hry"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
-#, kde-format
-msgctxt "Category"
-msgid "Arcade"
-msgstr "Arkády"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
-#, kde-format
-msgctxt "Category"
-msgid "Board Games"
-msgstr "Stolové hry"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
-#, kde-format
-msgctxt "Category"
-msgid "Card Games"
-msgstr "Kartové hry"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
-#, kde-format
-msgctxt "Category"
-msgid "Puzzles"
-msgstr "Hlavolamy"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
-#, kde-format
-msgctxt "Category"
-msgid "Role Playing"
-msgstr "RPG"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
-#, kde-format
-msgctxt "Category"
-msgid "Simulation"
-msgstr "Simulátory"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
-#, kde-format
-msgctxt "Category"
-msgid "Strategy"
-msgstr "Stratégie"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
-#, kde-format
-msgctxt "Category"
-msgid "Sports"
-msgstr "Športovanie"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
-#, kde-format
-msgctxt "Category"
-msgid "Action"
-msgstr "Akcia"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
-#, kde-format
-msgctxt "Category"
-msgid "Emulators"
-msgstr "Emulátory"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
-#, kde-format
-msgctxt "Category"
-msgid "Graphics"
-msgstr "Grafika"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
-#, kde-format
-msgctxt "Category"
-msgid "3D"
-msgstr "3D"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
-#, kde-format
-msgctxt "Category"
-msgid "Drawing"
-msgstr "Kreslenie"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
-#, kde-format
-msgctxt "Category"
-msgid "Painting and Editing"
-msgstr "Maľovanie a úprava"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
-#, kde-format
-msgctxt "Category"
-msgid "Photography"
-msgstr "Fotografovanie"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
-#, kde-format
-msgctxt "Category"
-msgid "Publishing"
-msgstr "Publikovanie"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
-#, kde-format
-msgctxt "Category"
-msgid "Scanning and OCR"
-msgstr "Skenovanie a OCR"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
-#, kde-format
-msgctxt "Category"
-msgid "Viewers"
-msgstr "Prehliadače"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
-#, kde-format
-msgctxt "Category"
-msgid "Internet"
-msgstr "Internet"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
-#, kde-format
-msgctxt "Category"
-msgid "Chat"
-msgstr "Rozhovor"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
-#, kde-format
-msgctxt "Category"
-msgid "File Sharing"
-msgstr "Zdieľanie súborov"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
-#, kde-format
-msgctxt "Category"
-msgid "Mail"
-msgstr "Pošta"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
-#, kde-format
-msgctxt "Category"
-msgid "Web Browsers"
-msgstr "Webové prehliadače"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
-#, kde-format
-msgctxt "Category"
-msgid "Multimedia"
-msgstr "Multimédiá"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
-#, kde-format
-msgctxt "Category"
-msgid "Audio and Video Editors"
-msgstr "Editory zvuku a videa"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
-#, kde-format
-msgctxt "Category"
-msgid "Audio Players"
-msgstr "Hudobné prehrávače"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
-#, kde-format
-msgctxt "Category"
-msgid "Video Players"
-msgstr "Video prehrávače"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
-#, kde-format
-msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CD a DVD"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
-#, kde-format
-msgctxt "Category"
-msgid "Office"
-msgstr "Kancelária"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
-#, kde-format
-msgctxt "Category"
-msgid "System Settings"
-msgstr "Systémové nastavenia"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:132
 #, kde-format
@@ -1103,24 +677,6 @@ msgstr "Prihlasovacie informácie pre %1"
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Nedá sa spustiť %1"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
-#, kde-format
-msgctxt "Category"
-msgid "Plasma Addons"
-msgstr "Doplnky Plasmy"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
-#, kde-format
-msgctxt "Category"
-msgid "Plasma Widgets"
-msgstr "Miniaplikácie pre Plasmu"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
-#, kde-format
-msgctxt "Category"
-msgid "Fonts"
-msgstr "Písma"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:303
 #, kde-format
@@ -2194,12 +1750,6 @@ msgstr "Plný prístup"
 msgid "Can access everything on the system"
 msgstr "Má prístup ku všetkému v systéme"
 
-#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
-#, kde-format
-msgctxt "Category"
-msgid "Operating System"
-msgstr "Operačný systém"
-
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
@@ -2540,6 +2090,270 @@ msgstr "Systémový softvér"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Doplnky"
+
+#~ msgctxt "Category"
+#~ msgid "Dummy Category"
+#~ msgstr "Prázdna kategória"
+
+#~ msgctxt "Category"
+#~ msgid "dummy"
+#~ msgstr "dummy"
+
+#~ msgctxt "Category"
+#~ msgid "dummy addons"
+#~ msgstr "prázdne doplnky"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 1"
+#~ msgstr "dummy 1"
+
+#~ msgctxt "Category"
+#~ msgid "dummy with stuff"
+#~ msgstr "dummy s niečím"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 2.1"
+#~ msgstr "dummy 2.1"
+
+#~ msgctxt "Category"
+#~ msgid "dummy with quite some stuff"
+#~ msgstr "dummy s ešte niečím"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 3"
+#~ msgstr "dummy 3"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 4"
+#~ msgstr "dummy 4"
+
+#~ msgctxt "Category"
+#~ msgid "All Applications"
+#~ msgstr "Všetky aplikácie"
+
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "Príslušenstvo"
+
+#~ msgctxt "Category"
+#~ msgid "Accessibility"
+#~ msgstr "Prístupnosť"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "Nástroje pre vývojárov"
+
+#~ msgctxt "Category"
+#~ msgid "Debugging"
+#~ msgstr "Ladenie"
+
+#~ msgctxt "Category"
+#~ msgid "Graphic Interface Design"
+#~ msgstr "Návrh grafického rozhrania"
+
+#~ msgctxt "Category"
+#~ msgid "IDEs"
+#~ msgstr "Integrované vývojové prostredia"
+
+#~ msgctxt "Category"
+#~ msgid "Localization"
+#~ msgstr "Lokalizácia"
+
+#~ msgctxt "Category"
+#~ msgid "Profiling"
+#~ msgstr "Profilovanie"
+
+#~ msgctxt "Category"
+#~ msgid "Web Development"
+#~ msgstr "Vývoj webu"
+
+#~ msgctxt "Category"
+#~ msgid "Education"
+#~ msgstr "Vzdelávanie"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "Veda a strojárstvo"
+
+#~ msgctxt "Category"
+#~ msgid "Astronomy"
+#~ msgstr "Astronómia"
+
+#~ msgctxt "Category"
+#~ msgid "Biology"
+#~ msgstr "Biológia"
+
+#~ msgctxt "Category"
+#~ msgid "Chemistry"
+#~ msgstr "Chémia"
+
+#~ msgctxt "Category"
+#~ msgid "Computer Science and Robotics"
+#~ msgstr "Počítačová veda a robotika"
+
+#~ msgctxt "Category"
+#~ msgid "Electronics"
+#~ msgstr "Elektronika"
+
+#~ msgctxt "Category"
+#~ msgid "Engineering"
+#~ msgstr "Strojárstvo"
+
+#~ msgctxt "Category"
+#~ msgid "Geography"
+#~ msgstr "Geografia"
+
+#~ msgctxt "Category"
+#~ msgid "Geology"
+#~ msgstr "Geológia"
+
+#~ msgctxt "Category"
+#~ msgid "Mathematics"
+#~ msgstr "Matematika"
+
+#~ msgctxt "Category"
+#~ msgid "Physics"
+#~ msgstr "Fyzika"
+
+#~ msgctxt "Category"
+#~ msgid "Games"
+#~ msgstr "Hry"
+
+#~ msgctxt "Category"
+#~ msgid "Arcade"
+#~ msgstr "Arkády"
+
+#~ msgctxt "Category"
+#~ msgid "Board Games"
+#~ msgstr "Stolové hry"
+
+#~ msgctxt "Category"
+#~ msgid "Card Games"
+#~ msgstr "Kartové hry"
+
+#~ msgctxt "Category"
+#~ msgid "Puzzles"
+#~ msgstr "Hlavolamy"
+
+#~ msgctxt "Category"
+#~ msgid "Role Playing"
+#~ msgstr "RPG"
+
+#~ msgctxt "Category"
+#~ msgid "Simulation"
+#~ msgstr "Simulátory"
+
+#~ msgctxt "Category"
+#~ msgid "Strategy"
+#~ msgstr "Stratégie"
+
+#~ msgctxt "Category"
+#~ msgid "Sports"
+#~ msgstr "Športovanie"
+
+#~ msgctxt "Category"
+#~ msgid "Action"
+#~ msgstr "Akcia"
+
+#~ msgctxt "Category"
+#~ msgid "Emulators"
+#~ msgstr "Emulátory"
+
+#~ msgctxt "Category"
+#~ msgid "Graphics"
+#~ msgstr "Grafika"
+
+#~ msgctxt "Category"
+#~ msgid "3D"
+#~ msgstr "3D"
+
+#~ msgctxt "Category"
+#~ msgid "Drawing"
+#~ msgstr "Kreslenie"
+
+#~ msgctxt "Category"
+#~ msgid "Painting and Editing"
+#~ msgstr "Maľovanie a úprava"
+
+#~ msgctxt "Category"
+#~ msgid "Photography"
+#~ msgstr "Fotografovanie"
+
+#~ msgctxt "Category"
+#~ msgid "Publishing"
+#~ msgstr "Publikovanie"
+
+#~ msgctxt "Category"
+#~ msgid "Scanning and OCR"
+#~ msgstr "Skenovanie a OCR"
+
+#~ msgctxt "Category"
+#~ msgid "Viewers"
+#~ msgstr "Prehliadače"
+
+#~ msgctxt "Category"
+#~ msgid "Internet"
+#~ msgstr "Internet"
+
+#~ msgctxt "Category"
+#~ msgid "Chat"
+#~ msgstr "Rozhovor"
+
+#~ msgctxt "Category"
+#~ msgid "File Sharing"
+#~ msgstr "Zdieľanie súborov"
+
+#~ msgctxt "Category"
+#~ msgid "Mail"
+#~ msgstr "Pošta"
+
+#~ msgctxt "Category"
+#~ msgid "Web Browsers"
+#~ msgstr "Webové prehliadače"
+
+#~ msgctxt "Category"
+#~ msgid "Multimedia"
+#~ msgstr "Multimédiá"
+
+#~ msgctxt "Category"
+#~ msgid "Audio and Video Editors"
+#~ msgstr "Editory zvuku a videa"
+
+#~ msgctxt "Category"
+#~ msgid "Audio Players"
+#~ msgstr "Hudobné prehrávače"
+
+#~ msgctxt "Category"
+#~ msgid "Video Players"
+#~ msgstr "Video prehrávače"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CD a DVD"
+
+#~ msgctxt "Category"
+#~ msgid "Office"
+#~ msgstr "Kancelária"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "Systémové nastavenia"
+
+#~ msgctxt "Category"
+#~ msgid "Plasma Addons"
+#~ msgstr "Doplnky Plasmy"
+
+#~ msgctxt "Category"
+#~ msgid "Plasma Widgets"
+#~ msgstr "Miniaplikácie pre Plasmu"
+
+#~ msgctxt "Category"
+#~ msgid "Fonts"
+#~ msgstr "Písma"
+
+#~ msgctxt "Category"
+#~ msgid "Operating System"
+#~ msgstr "Operačný systém"
 
 #~ msgid "Remote: "
 #~ msgstr "Vzdialené:"

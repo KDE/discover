@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-24 03:09+0000\n"
+"POT-Creation-Date: 2025-07-05 03:22+0000\n"
 "PO-Revision-Date: 2024-02-09 22:21+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -105,432 +105,6 @@ msgstr "有用性の投稿中にエラーが発生しました: %1"
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "レビュー投稿中にエラーが発生しました: %1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
-#, kde-format
-msgctxt "Category"
-msgid "Dummy Category"
-msgstr "ダミーカテゴリ"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
-#, kde-format
-msgctxt "Category"
-msgid "dummy"
-msgstr "ダミー"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
-#, kde-format
-msgctxt "Category"
-msgid "dummy addons"
-msgstr "ダミー アドオン"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
-#, kde-format
-msgctxt "Category"
-msgid "dummy 1"
-msgstr "ダミー 1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
-#, kde-format
-msgctxt "Category"
-msgid "dummy with stuff"
-msgstr "ちょっとしたダミー"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
-#, kde-format
-msgctxt "Category"
-msgid "dummy 2.1"
-msgstr "ダミー 2.1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
-#, kde-format
-msgctxt "Category"
-msgid "dummy with quite some stuff"
-msgstr "たくさんのダミー"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
-#, kde-format
-msgctxt "Category"
-msgid "dummy 3"
-msgstr "ダミー 3"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
-#, kde-format
-msgctxt "Category"
-msgid "dummy 4"
-msgstr "ダミー 4"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, kde-format
-msgctxt "Category"
-msgid "All Applications"
-msgstr "すべてのアプリケーション"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, kde-format
-msgctxt "Category"
-msgid "Accessories"
-msgstr "アクセサリ"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
-#, kde-format
-msgctxt "Category"
-msgid "Accessibility"
-msgstr "アクセシビリティ"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
-msgctxt "Category"
-msgid "Developer Tools"
-msgstr "開発用ツール"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
-#, kde-format
-msgctxt "Category"
-msgid "Debugging"
-msgstr "デバッグ"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
-#, kde-format
-msgctxt "Category"
-msgid "Graphic Interface Design"
-msgstr "グラフィックインターフェースデザイン"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
-#, kde-format
-msgctxt "Category"
-msgid "IDEs"
-msgstr "IDE"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
-#, kde-format
-msgctxt "Category"
-msgid "Localization"
-msgstr "ローカライズ"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
-#, kde-format
-msgctxt "Category"
-msgid "Profiling"
-msgstr "分析"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
-#, kde-format
-msgctxt "Category"
-msgid "Web Development"
-msgstr "ウェブ開発"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
-#, kde-format
-msgctxt "Category"
-msgid "Education"
-msgstr "教育"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
-#, kde-format
-msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "科学と工学"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
-#, kde-format
-msgctxt "Category"
-msgid "Astronomy"
-msgstr "天文学"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
-#, kde-format
-msgctxt "Category"
-msgid "Biology"
-msgstr "生物"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
-#, kde-format
-msgctxt "Category"
-msgid "Chemistry"
-msgstr "化学"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
-#, kde-format
-msgctxt "Category"
-msgid "Computer Science and Robotics"
-msgstr "コンピュータとロボット工学"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
-#, kde-format
-msgctxt "Category"
-msgid "Electronics"
-msgstr "電子工学"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
-#, kde-format
-msgctxt "Category"
-msgid "Engineering"
-msgstr "工学"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
-#, kde-format
-msgctxt "Category"
-msgid "Geography"
-msgstr "地理"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
-#, kde-format
-msgctxt "Category"
-msgid "Geology"
-msgstr "地質"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
-#, kde-format
-msgctxt "Category"
-msgid "Mathematics"
-msgstr "数学"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
-#, kde-format
-msgctxt "Category"
-msgid "Physics"
-msgstr "物理"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
-#, kde-format
-msgctxt "Category"
-msgid "Games"
-msgstr "ゲーム"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
-#, kde-format
-msgctxt "Category"
-msgid "Arcade"
-msgstr "アーケードゲーム"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
-#, kde-format
-msgctxt "Category"
-msgid "Board Games"
-msgstr "ボードゲーム"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
-#, kde-format
-msgctxt "Category"
-msgid "Card Games"
-msgstr "トランプゲーム"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
-#, kde-format
-msgctxt "Category"
-msgid "Puzzles"
-msgstr "パズル"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
-#, kde-format
-msgctxt "Category"
-msgid "Role Playing"
-msgstr "RPG"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
-#, kde-format
-msgctxt "Category"
-msgid "Simulation"
-msgstr "シミュレーション"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
-#, kde-format
-msgctxt "Category"
-msgid "Strategy"
-msgstr "戦略ゲーム"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
-#, kde-format
-msgctxt "Category"
-msgid "Sports"
-msgstr "スポーツ"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
-#, kde-format
-msgctxt "Category"
-msgid "Action"
-msgstr "アクション"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
-#, kde-format
-msgctxt "Category"
-msgid "Emulators"
-msgstr "エミュレータ"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
-#, kde-format
-msgctxt "Category"
-msgid "Graphics"
-msgstr "グラフィックス"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
-#, kde-format
-msgctxt "Category"
-msgid "3D"
-msgstr "3D"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
-#, kde-format
-msgctxt "Category"
-msgid "Drawing"
-msgstr "ドローイング"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
-#, kde-format
-msgctxt "Category"
-msgid "Painting and Editing"
-msgstr "絵画と編集"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
-#, kde-format
-msgctxt "Category"
-msgid "Photography"
-msgstr "写真"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
-#, kde-format
-msgctxt "Category"
-msgid "Publishing"
-msgstr "出版"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
-#, kde-format
-msgctxt "Category"
-msgid "Scanning and OCR"
-msgstr "スキャンと OCR"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
-#, kde-format
-msgctxt "Category"
-msgid "Viewers"
-msgstr "ビューア"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
-#, kde-format
-msgctxt "Category"
-msgid "Internet"
-msgstr "インターネット"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
-#, kde-format
-msgctxt "Category"
-msgid "Chat"
-msgstr "チャット"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
-#, kde-format
-msgctxt "Category"
-msgid "File Sharing"
-msgstr "ファイル共有"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
-#, kde-format
-msgctxt "Category"
-msgid "Mail"
-msgstr "メール"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
-#, kde-format
-msgctxt "Category"
-msgid "Web Browsers"
-msgstr "ウェブブラウザ"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
-#, kde-format
-msgctxt "Category"
-msgid "Multimedia"
-msgstr "マルチメディア"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
-#, kde-format
-msgctxt "Category"
-msgid "Audio and Video Editors"
-msgstr "音楽およびビデオの編集"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
-#, kde-format
-msgctxt "Category"
-msgid "Audio Players"
-msgstr "オーディオプレーヤー"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
-#, kde-format
-msgctxt "Category"
-msgid "Video Players"
-msgstr "動画プレーヤー"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
-#, kde-format
-msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CD と DVD"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
-#, kde-format
-msgctxt "Category"
-msgid "Office"
-msgstr "オフィス"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
-#, kde-format
-msgctxt "Category"
-msgid "System Settings"
-msgstr "システム設定"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:132
 #, kde-format
@@ -1086,24 +660,6 @@ msgstr "%1 のログイン情報"
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 を起動できません"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
-#, kde-format
-msgctxt "Category"
-msgid "Plasma Addons"
-msgstr "Plasma アドオン"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
-#, kde-format
-msgctxt "Category"
-msgid "Plasma Widgets"
-msgstr "Plasma ウィジェット"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
-#, kde-format
-msgctxt "Category"
-msgid "Fonts"
-msgstr "フォント"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:303
 #, kde-format
@@ -2155,12 +1711,6 @@ msgstr "フルアクセス"
 msgid "Can access everything on the system"
 msgstr "システム上のすべてのものにアクセス可能"
 
-#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
-#, kde-format
-msgctxt "Category"
-msgid "Operating System"
-msgstr "オペレーティングシステム"
-
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
@@ -2506,3 +2056,267 @@ msgstr "システムソフトウェア"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "アドオン"
+
+#~ msgctxt "Category"
+#~ msgid "Dummy Category"
+#~ msgstr "ダミーカテゴリ"
+
+#~ msgctxt "Category"
+#~ msgid "dummy"
+#~ msgstr "ダミー"
+
+#~ msgctxt "Category"
+#~ msgid "dummy addons"
+#~ msgstr "ダミー アドオン"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 1"
+#~ msgstr "ダミー 1"
+
+#~ msgctxt "Category"
+#~ msgid "dummy with stuff"
+#~ msgstr "ちょっとしたダミー"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 2.1"
+#~ msgstr "ダミー 2.1"
+
+#~ msgctxt "Category"
+#~ msgid "dummy with quite some stuff"
+#~ msgstr "たくさんのダミー"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 3"
+#~ msgstr "ダミー 3"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 4"
+#~ msgstr "ダミー 4"
+
+#~ msgctxt "Category"
+#~ msgid "All Applications"
+#~ msgstr "すべてのアプリケーション"
+
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "アクセサリ"
+
+#~ msgctxt "Category"
+#~ msgid "Accessibility"
+#~ msgstr "アクセシビリティ"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "開発用ツール"
+
+#~ msgctxt "Category"
+#~ msgid "Debugging"
+#~ msgstr "デバッグ"
+
+#~ msgctxt "Category"
+#~ msgid "Graphic Interface Design"
+#~ msgstr "グラフィックインターフェースデザイン"
+
+#~ msgctxt "Category"
+#~ msgid "IDEs"
+#~ msgstr "IDE"
+
+#~ msgctxt "Category"
+#~ msgid "Localization"
+#~ msgstr "ローカライズ"
+
+#~ msgctxt "Category"
+#~ msgid "Profiling"
+#~ msgstr "分析"
+
+#~ msgctxt "Category"
+#~ msgid "Web Development"
+#~ msgstr "ウェブ開発"
+
+#~ msgctxt "Category"
+#~ msgid "Education"
+#~ msgstr "教育"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "科学と工学"
+
+#~ msgctxt "Category"
+#~ msgid "Astronomy"
+#~ msgstr "天文学"
+
+#~ msgctxt "Category"
+#~ msgid "Biology"
+#~ msgstr "生物"
+
+#~ msgctxt "Category"
+#~ msgid "Chemistry"
+#~ msgstr "化学"
+
+#~ msgctxt "Category"
+#~ msgid "Computer Science and Robotics"
+#~ msgstr "コンピュータとロボット工学"
+
+#~ msgctxt "Category"
+#~ msgid "Electronics"
+#~ msgstr "電子工学"
+
+#~ msgctxt "Category"
+#~ msgid "Engineering"
+#~ msgstr "工学"
+
+#~ msgctxt "Category"
+#~ msgid "Geography"
+#~ msgstr "地理"
+
+#~ msgctxt "Category"
+#~ msgid "Geology"
+#~ msgstr "地質"
+
+#~ msgctxt "Category"
+#~ msgid "Mathematics"
+#~ msgstr "数学"
+
+#~ msgctxt "Category"
+#~ msgid "Physics"
+#~ msgstr "物理"
+
+#~ msgctxt "Category"
+#~ msgid "Games"
+#~ msgstr "ゲーム"
+
+#~ msgctxt "Category"
+#~ msgid "Arcade"
+#~ msgstr "アーケードゲーム"
+
+#~ msgctxt "Category"
+#~ msgid "Board Games"
+#~ msgstr "ボードゲーム"
+
+#~ msgctxt "Category"
+#~ msgid "Card Games"
+#~ msgstr "トランプゲーム"
+
+#~ msgctxt "Category"
+#~ msgid "Puzzles"
+#~ msgstr "パズル"
+
+#~ msgctxt "Category"
+#~ msgid "Role Playing"
+#~ msgstr "RPG"
+
+#~ msgctxt "Category"
+#~ msgid "Simulation"
+#~ msgstr "シミュレーション"
+
+#~ msgctxt "Category"
+#~ msgid "Strategy"
+#~ msgstr "戦略ゲーム"
+
+#~ msgctxt "Category"
+#~ msgid "Sports"
+#~ msgstr "スポーツ"
+
+#~ msgctxt "Category"
+#~ msgid "Action"
+#~ msgstr "アクション"
+
+#~ msgctxt "Category"
+#~ msgid "Emulators"
+#~ msgstr "エミュレータ"
+
+#~ msgctxt "Category"
+#~ msgid "Graphics"
+#~ msgstr "グラフィックス"
+
+#~ msgctxt "Category"
+#~ msgid "3D"
+#~ msgstr "3D"
+
+#~ msgctxt "Category"
+#~ msgid "Drawing"
+#~ msgstr "ドローイング"
+
+#~ msgctxt "Category"
+#~ msgid "Painting and Editing"
+#~ msgstr "絵画と編集"
+
+#~ msgctxt "Category"
+#~ msgid "Photography"
+#~ msgstr "写真"
+
+#~ msgctxt "Category"
+#~ msgid "Publishing"
+#~ msgstr "出版"
+
+#~ msgctxt "Category"
+#~ msgid "Scanning and OCR"
+#~ msgstr "スキャンと OCR"
+
+#~ msgctxt "Category"
+#~ msgid "Viewers"
+#~ msgstr "ビューア"
+
+#~ msgctxt "Category"
+#~ msgid "Internet"
+#~ msgstr "インターネット"
+
+#~ msgctxt "Category"
+#~ msgid "Chat"
+#~ msgstr "チャット"
+
+#~ msgctxt "Category"
+#~ msgid "File Sharing"
+#~ msgstr "ファイル共有"
+
+#~ msgctxt "Category"
+#~ msgid "Mail"
+#~ msgstr "メール"
+
+#~ msgctxt "Category"
+#~ msgid "Web Browsers"
+#~ msgstr "ウェブブラウザ"
+
+#~ msgctxt "Category"
+#~ msgid "Multimedia"
+#~ msgstr "マルチメディア"
+
+#~ msgctxt "Category"
+#~ msgid "Audio and Video Editors"
+#~ msgstr "音楽およびビデオの編集"
+
+#~ msgctxt "Category"
+#~ msgid "Audio Players"
+#~ msgstr "オーディオプレーヤー"
+
+#~ msgctxt "Category"
+#~ msgid "Video Players"
+#~ msgstr "動画プレーヤー"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CD と DVD"
+
+#~ msgctxt "Category"
+#~ msgid "Office"
+#~ msgstr "オフィス"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "システム設定"
+
+#~ msgctxt "Category"
+#~ msgid "Plasma Addons"
+#~ msgstr "Plasma アドオン"
+
+#~ msgctxt "Category"
+#~ msgid "Plasma Widgets"
+#~ msgstr "Plasma ウィジェット"
+
+#~ msgctxt "Category"
+#~ msgid "Fonts"
+#~ msgstr "フォント"
+
+#~ msgctxt "Category"
+#~ msgid "Operating System"
+#~ msgstr "オペレーティングシステム"

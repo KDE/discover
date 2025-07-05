@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-24 03:09+0000\n"
+"POT-Creation-Date: 2025-07-05 03:22+0000\n"
 "PO-Revision-Date: 2023-12-29 13:18+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -107,432 +107,6 @@ msgstr "Yararlılık gönderilirken hata: %1"
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "İnceleme gönderilirken hata: %1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
-#, kde-format
-msgctxt "Category"
-msgid "Dummy Category"
-msgstr "Boş Kategori"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
-#, kde-format
-msgctxt "Category"
-msgid "dummy"
-msgstr "boş"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
-#, kde-format
-msgctxt "Category"
-msgid "dummy addons"
-msgstr "boş"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
-#, kde-format
-msgctxt "Category"
-msgid "dummy 1"
-msgstr "boş 1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
-#, kde-format
-msgctxt "Category"
-msgid "dummy with stuff"
-msgstr "içinde ıvır zıvır olan boş"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
-#, kde-format
-msgctxt "Category"
-msgid "dummy 2.1"
-msgstr "boş 2.1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
-#, kde-format
-msgctxt "Category"
-msgid "dummy with quite some stuff"
-msgstr "içinde daha fazla ıvır zıvır olan boş"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
-#, kde-format
-msgctxt "Category"
-msgid "dummy 3"
-msgstr "boş 3"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
-#, kde-format
-msgctxt "Category"
-msgid "dummy 4"
-msgstr "boş 4"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, kde-format
-msgctxt "Category"
-msgid "All Applications"
-msgstr "Tüm Uygulamalar"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, kde-format
-msgctxt "Category"
-msgid "Accessories"
-msgstr "Donatılar"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
-#, kde-format
-msgctxt "Category"
-msgid "Accessibility"
-msgstr "Erişilebilirlik"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
-msgctxt "Category"
-msgid "Developer Tools"
-msgstr "Geliştirici Araçları"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
-#, kde-format
-msgctxt "Category"
-msgid "Debugging"
-msgstr "Hata Ayıklama"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
-#, kde-format
-msgctxt "Category"
-msgid "Graphic Interface Design"
-msgstr "Grafik Arayüz Tasarımı"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
-#, kde-format
-msgctxt "Category"
-msgid "IDEs"
-msgstr "Tümleşik Geliştirme Ortamları"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
-#, kde-format
-msgctxt "Category"
-msgid "Localization"
-msgstr "Yerelleştirme"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
-#, kde-format
-msgctxt "Category"
-msgid "Profiling"
-msgstr "Profilleme"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
-#, kde-format
-msgctxt "Category"
-msgid "Web Development"
-msgstr "Web Geliştirme"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
-#, kde-format
-msgctxt "Category"
-msgid "Education"
-msgstr "Eğitim"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
-#, kde-format
-msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "Bilim ve Mühendislik"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
-#, kde-format
-msgctxt "Category"
-msgid "Astronomy"
-msgstr "Gökbilim"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
-#, kde-format
-msgctxt "Category"
-msgid "Biology"
-msgstr "Biyoloji"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
-#, kde-format
-msgctxt "Category"
-msgid "Chemistry"
-msgstr "Kimya"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
-#, kde-format
-msgctxt "Category"
-msgid "Computer Science and Robotics"
-msgstr "Bilgisayar Bilimleri ve Robotik"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
-#, kde-format
-msgctxt "Category"
-msgid "Electronics"
-msgstr "Elektronik"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
-#, kde-format
-msgctxt "Category"
-msgid "Engineering"
-msgstr "Mühendislik"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
-#, kde-format
-msgctxt "Category"
-msgid "Geography"
-msgstr "Coğrafya"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
-#, kde-format
-msgctxt "Category"
-msgid "Geology"
-msgstr "Jeoloji"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
-#, kde-format
-msgctxt "Category"
-msgid "Mathematics"
-msgstr "Matematik"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
-#, kde-format
-msgctxt "Category"
-msgid "Physics"
-msgstr "Fizik"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
-#, kde-format
-msgctxt "Category"
-msgid "Games"
-msgstr "Oyunlar"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
-#, kde-format
-msgctxt "Category"
-msgid "Arcade"
-msgstr "Oyun Makinesi"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
-#, kde-format
-msgctxt "Category"
-msgid "Board Games"
-msgstr "Masaüstü Oyunları"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
-#, kde-format
-msgctxt "Category"
-msgid "Card Games"
-msgstr "Kart Oyunları"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
-#, kde-format
-msgctxt "Category"
-msgid "Puzzles"
-msgstr "Bulmacalar"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
-#, kde-format
-msgctxt "Category"
-msgid "Role Playing"
-msgstr "Rol Yapma"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
-#, kde-format
-msgctxt "Category"
-msgid "Simulation"
-msgstr "Benzeştirim"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
-#, kde-format
-msgctxt "Category"
-msgid "Strategy"
-msgstr "Strateji"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
-#, kde-format
-msgctxt "Category"
-msgid "Sports"
-msgstr "Spor"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
-#, kde-format
-msgctxt "Category"
-msgid "Action"
-msgstr "Eylem"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
-#, kde-format
-msgctxt "Category"
-msgid "Emulators"
-msgstr "Öykünücüler"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
-#, kde-format
-msgctxt "Category"
-msgid "Graphics"
-msgstr "Grafikler"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
-#, kde-format
-msgctxt "Category"
-msgid "3D"
-msgstr "3B"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
-#, kde-format
-msgctxt "Category"
-msgid "Drawing"
-msgstr "Çizim"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
-#, kde-format
-msgctxt "Category"
-msgid "Painting and Editing"
-msgstr "Boyama ve Kurgu"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
-#, kde-format
-msgctxt "Category"
-msgid "Photography"
-msgstr "Fotoğrafçılık"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
-#, kde-format
-msgctxt "Category"
-msgid "Publishing"
-msgstr "Yayıncılık"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
-#, kde-format
-msgctxt "Category"
-msgid "Scanning and OCR"
-msgstr "Tarama ve OKT"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
-#, kde-format
-msgctxt "Category"
-msgid "Viewers"
-msgstr "Görüntüleyiciler"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
-#, kde-format
-msgctxt "Category"
-msgid "Internet"
-msgstr "İnternet"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
-#, kde-format
-msgctxt "Category"
-msgid "Chat"
-msgstr "Sohbet"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
-#, kde-format
-msgctxt "Category"
-msgid "File Sharing"
-msgstr "Dosya Paylaşımı"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
-#, kde-format
-msgctxt "Category"
-msgid "Mail"
-msgstr "E-posta"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
-#, kde-format
-msgctxt "Category"
-msgid "Web Browsers"
-msgstr "Web Tarayıcıları"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
-#, kde-format
-msgctxt "Category"
-msgid "Multimedia"
-msgstr "Çoklu Ortam"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
-#, kde-format
-msgctxt "Category"
-msgid "Audio and Video Editors"
-msgstr "Ses ve Video Düzenleyiciler"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
-#, kde-format
-msgctxt "Category"
-msgid "Audio Players"
-msgstr "Ses Çalarlar"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
-#, kde-format
-msgctxt "Category"
-msgid "Video Players"
-msgstr "Video Oynatıcılar"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
-#, kde-format
-msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CD ve DVD"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
-#, kde-format
-msgctxt "Category"
-msgid "Office"
-msgstr "Ofis"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
-#, kde-format
-msgctxt "Category"
-msgid "System Settings"
-msgstr "Sistem Ayarları"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:132
 #, kde-format
@@ -1095,24 +669,6 @@ msgstr "%1 için bilgi günlükle"
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 başlatılamıyor"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
-#, kde-format
-msgctxt "Category"
-msgid "Plasma Addons"
-msgstr "Plasma Eklentileri"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
-#, kde-format
-msgctxt "Category"
-msgid "Plasma Widgets"
-msgstr "Plasma Araç Takımları"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
-#, kde-format
-msgctxt "Category"
-msgid "Fonts"
-msgstr "Yazıtipleri"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:303
 #, kde-format
@@ -2176,12 +1732,6 @@ msgstr "Tam Erişim"
 msgid "Can access everything on the system"
 msgstr "Sistemdeki her şeye erişebilir"
 
-#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
-#, kde-format
-msgctxt "Category"
-msgid "Operating System"
-msgstr "İşletim Sistemi"
-
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
@@ -2526,6 +2076,270 @@ msgstr "Sistem Yazılımı"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Eklentiler"
+
+#~ msgctxt "Category"
+#~ msgid "Dummy Category"
+#~ msgstr "Boş Kategori"
+
+#~ msgctxt "Category"
+#~ msgid "dummy"
+#~ msgstr "boş"
+
+#~ msgctxt "Category"
+#~ msgid "dummy addons"
+#~ msgstr "boş"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 1"
+#~ msgstr "boş 1"
+
+#~ msgctxt "Category"
+#~ msgid "dummy with stuff"
+#~ msgstr "içinde ıvır zıvır olan boş"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 2.1"
+#~ msgstr "boş 2.1"
+
+#~ msgctxt "Category"
+#~ msgid "dummy with quite some stuff"
+#~ msgstr "içinde daha fazla ıvır zıvır olan boş"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 3"
+#~ msgstr "boş 3"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 4"
+#~ msgstr "boş 4"
+
+#~ msgctxt "Category"
+#~ msgid "All Applications"
+#~ msgstr "Tüm Uygulamalar"
+
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "Donatılar"
+
+#~ msgctxt "Category"
+#~ msgid "Accessibility"
+#~ msgstr "Erişilebilirlik"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "Geliştirici Araçları"
+
+#~ msgctxt "Category"
+#~ msgid "Debugging"
+#~ msgstr "Hata Ayıklama"
+
+#~ msgctxt "Category"
+#~ msgid "Graphic Interface Design"
+#~ msgstr "Grafik Arayüz Tasarımı"
+
+#~ msgctxt "Category"
+#~ msgid "IDEs"
+#~ msgstr "Tümleşik Geliştirme Ortamları"
+
+#~ msgctxt "Category"
+#~ msgid "Localization"
+#~ msgstr "Yerelleştirme"
+
+#~ msgctxt "Category"
+#~ msgid "Profiling"
+#~ msgstr "Profilleme"
+
+#~ msgctxt "Category"
+#~ msgid "Web Development"
+#~ msgstr "Web Geliştirme"
+
+#~ msgctxt "Category"
+#~ msgid "Education"
+#~ msgstr "Eğitim"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "Bilim ve Mühendislik"
+
+#~ msgctxt "Category"
+#~ msgid "Astronomy"
+#~ msgstr "Gökbilim"
+
+#~ msgctxt "Category"
+#~ msgid "Biology"
+#~ msgstr "Biyoloji"
+
+#~ msgctxt "Category"
+#~ msgid "Chemistry"
+#~ msgstr "Kimya"
+
+#~ msgctxt "Category"
+#~ msgid "Computer Science and Robotics"
+#~ msgstr "Bilgisayar Bilimleri ve Robotik"
+
+#~ msgctxt "Category"
+#~ msgid "Electronics"
+#~ msgstr "Elektronik"
+
+#~ msgctxt "Category"
+#~ msgid "Engineering"
+#~ msgstr "Mühendislik"
+
+#~ msgctxt "Category"
+#~ msgid "Geography"
+#~ msgstr "Coğrafya"
+
+#~ msgctxt "Category"
+#~ msgid "Geology"
+#~ msgstr "Jeoloji"
+
+#~ msgctxt "Category"
+#~ msgid "Mathematics"
+#~ msgstr "Matematik"
+
+#~ msgctxt "Category"
+#~ msgid "Physics"
+#~ msgstr "Fizik"
+
+#~ msgctxt "Category"
+#~ msgid "Games"
+#~ msgstr "Oyunlar"
+
+#~ msgctxt "Category"
+#~ msgid "Arcade"
+#~ msgstr "Oyun Makinesi"
+
+#~ msgctxt "Category"
+#~ msgid "Board Games"
+#~ msgstr "Masaüstü Oyunları"
+
+#~ msgctxt "Category"
+#~ msgid "Card Games"
+#~ msgstr "Kart Oyunları"
+
+#~ msgctxt "Category"
+#~ msgid "Puzzles"
+#~ msgstr "Bulmacalar"
+
+#~ msgctxt "Category"
+#~ msgid "Role Playing"
+#~ msgstr "Rol Yapma"
+
+#~ msgctxt "Category"
+#~ msgid "Simulation"
+#~ msgstr "Benzeştirim"
+
+#~ msgctxt "Category"
+#~ msgid "Strategy"
+#~ msgstr "Strateji"
+
+#~ msgctxt "Category"
+#~ msgid "Sports"
+#~ msgstr "Spor"
+
+#~ msgctxt "Category"
+#~ msgid "Action"
+#~ msgstr "Eylem"
+
+#~ msgctxt "Category"
+#~ msgid "Emulators"
+#~ msgstr "Öykünücüler"
+
+#~ msgctxt "Category"
+#~ msgid "Graphics"
+#~ msgstr "Grafikler"
+
+#~ msgctxt "Category"
+#~ msgid "3D"
+#~ msgstr "3B"
+
+#~ msgctxt "Category"
+#~ msgid "Drawing"
+#~ msgstr "Çizim"
+
+#~ msgctxt "Category"
+#~ msgid "Painting and Editing"
+#~ msgstr "Boyama ve Kurgu"
+
+#~ msgctxt "Category"
+#~ msgid "Photography"
+#~ msgstr "Fotoğrafçılık"
+
+#~ msgctxt "Category"
+#~ msgid "Publishing"
+#~ msgstr "Yayıncılık"
+
+#~ msgctxt "Category"
+#~ msgid "Scanning and OCR"
+#~ msgstr "Tarama ve OKT"
+
+#~ msgctxt "Category"
+#~ msgid "Viewers"
+#~ msgstr "Görüntüleyiciler"
+
+#~ msgctxt "Category"
+#~ msgid "Internet"
+#~ msgstr "İnternet"
+
+#~ msgctxt "Category"
+#~ msgid "Chat"
+#~ msgstr "Sohbet"
+
+#~ msgctxt "Category"
+#~ msgid "File Sharing"
+#~ msgstr "Dosya Paylaşımı"
+
+#~ msgctxt "Category"
+#~ msgid "Mail"
+#~ msgstr "E-posta"
+
+#~ msgctxt "Category"
+#~ msgid "Web Browsers"
+#~ msgstr "Web Tarayıcıları"
+
+#~ msgctxt "Category"
+#~ msgid "Multimedia"
+#~ msgstr "Çoklu Ortam"
+
+#~ msgctxt "Category"
+#~ msgid "Audio and Video Editors"
+#~ msgstr "Ses ve Video Düzenleyiciler"
+
+#~ msgctxt "Category"
+#~ msgid "Audio Players"
+#~ msgstr "Ses Çalarlar"
+
+#~ msgctxt "Category"
+#~ msgid "Video Players"
+#~ msgstr "Video Oynatıcılar"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CD ve DVD"
+
+#~ msgctxt "Category"
+#~ msgid "Office"
+#~ msgstr "Ofis"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "Sistem Ayarları"
+
+#~ msgctxt "Category"
+#~ msgid "Plasma Addons"
+#~ msgstr "Plasma Eklentileri"
+
+#~ msgctxt "Category"
+#~ msgid "Plasma Widgets"
+#~ msgstr "Plasma Araç Takımları"
+
+#~ msgctxt "Category"
+#~ msgid "Fonts"
+#~ msgstr "Yazıtipleri"
+
+#~ msgctxt "Category"
+#~ msgid "Operating System"
+#~ msgstr "İşletim Sistemi"
 
 #~ msgid "<li>%1 (%2): No changelog information</li>\n"
 #~ msgstr "<li>%1 (%2): Değişiklik günlüğü bilgisi yok</li>\n"

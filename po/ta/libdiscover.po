@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-24 03:09+0000\n"
+"POT-Creation-Date: 2025-07-05 03:22+0000\n"
 "PO-Revision-Date: 2023-03-26 12:38+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -106,432 +106,6 @@ msgstr "பயனுள்ளமையை சமர்ப்பிப்பத�
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "விமர்சனத்தை சமர்ப்பிப்பதில் சிக்கல்: %1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
-#, kde-format
-msgctxt "Category"
-msgid "Dummy Category"
-msgstr "போலி பகுப்பு"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
-#, kde-format
-msgctxt "Category"
-msgid "dummy"
-msgstr "போலி"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
-#, kde-format
-msgctxt "Category"
-msgid "dummy addons"
-msgstr "போலி துணை நிரல்கள்"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
-#, kde-format
-msgctxt "Category"
-msgid "dummy 1"
-msgstr "போலி 1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
-#, kde-format
-msgctxt "Category"
-msgid "dummy with stuff"
-msgstr "மேம்பட்ட போலி"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
-#, kde-format
-msgctxt "Category"
-msgid "dummy 2.1"
-msgstr "போலி 2.1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
-#, kde-format
-msgctxt "Category"
-msgid "dummy with quite some stuff"
-msgstr "மேலும் மேம்பட்ட போலி"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
-#, kde-format
-msgctxt "Category"
-msgid "dummy 3"
-msgstr "போலி 3"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
-#, kde-format
-msgctxt "Category"
-msgid "dummy 4"
-msgstr "போலி 4"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, kde-format
-msgctxt "Category"
-msgid "All Applications"
-msgstr "அனைத்து செயலிகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, kde-format
-msgctxt "Category"
-msgid "Accessories"
-msgstr "துணைக்கருவிகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
-#, kde-format
-msgctxt "Category"
-msgid "Accessibility"
-msgstr "அணுகல்தன்மை"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
-msgctxt "Category"
-msgid "Developer Tools"
-msgstr "நிரலாக்க கருவிகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
-#, kde-format
-msgctxt "Category"
-msgid "Debugging"
-msgstr "பிழைநீக்கம்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
-#, kde-format
-msgctxt "Category"
-msgid "Graphic Interface Design"
-msgstr "வரைமுறை இடைமுகப்பு வடிவமைப்பு"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
-#, kde-format
-msgctxt "Category"
-msgid "IDEs"
-msgstr ""
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
-#, kde-format
-msgctxt "Category"
-msgid "Localization"
-msgstr "மொழிபெயர்ப்பு"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
-#, kde-format
-msgctxt "Category"
-msgid "Profiling"
-msgstr ""
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
-#, kde-format
-msgctxt "Category"
-msgid "Web Development"
-msgstr "இணைய உருவாக்கம்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
-#, kde-format
-msgctxt "Category"
-msgid "Education"
-msgstr "கல்வி"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
-#, kde-format
-msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "அறிவியல் மற்றும் பொறியியல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
-#, kde-format
-msgctxt "Category"
-msgid "Astronomy"
-msgstr "வானியல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
-#, kde-format
-msgctxt "Category"
-msgid "Biology"
-msgstr "உயிரியல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
-#, kde-format
-msgctxt "Category"
-msgid "Chemistry"
-msgstr "வேதியியல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
-#, kde-format
-msgctxt "Category"
-msgid "Computer Science and Robotics"
-msgstr "கணினியியல் மற்றும் தானியங்கியியல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
-#, kde-format
-msgctxt "Category"
-msgid "Electronics"
-msgstr "மின்னணுவியல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
-#, kde-format
-msgctxt "Category"
-msgid "Engineering"
-msgstr "பொறியியல் "
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
-#, kde-format
-msgctxt "Category"
-msgid "Geography"
-msgstr "புவியியல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
-#, kde-format
-msgctxt "Category"
-msgid "Geology"
-msgstr "நிலவியல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
-#, kde-format
-msgctxt "Category"
-msgid "Mathematics"
-msgstr "கணிதம்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
-#, kde-format
-msgctxt "Category"
-msgid "Physics"
-msgstr "இயற்பியல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
-#, kde-format
-msgctxt "Category"
-msgid "Games"
-msgstr "விளையாட்டுகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
-#, kde-format
-msgctxt "Category"
-msgid "Arcade"
-msgstr "ஆர்கேட்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
-#, kde-format
-msgctxt "Category"
-msgid "Board Games"
-msgstr "மேசை விளையாட்டுகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
-#, kde-format
-msgctxt "Category"
-msgid "Card Games"
-msgstr "சீட்டு விளையாட்டுகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
-#, kde-format
-msgctxt "Category"
-msgid "Puzzles"
-msgstr "புதிர்கள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
-#, kde-format
-msgctxt "Category"
-msgid "Role Playing"
-msgstr "கதாப்பாத்திர விளையாட்டுகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
-#, kde-format
-msgctxt "Category"
-msgid "Simulation"
-msgstr "ஒப்புருவாக்கம்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
-#, kde-format
-msgctxt "Category"
-msgid "Strategy"
-msgstr "வியூகம்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
-#, kde-format
-msgctxt "Category"
-msgid "Sports"
-msgstr "போட்டி விளையாட்டுகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
-#, kde-format
-msgctxt "Category"
-msgid "Action"
-msgstr "சண்டை"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
-#, kde-format
-msgctxt "Category"
-msgid "Emulators"
-msgstr "போன்மிகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
-#, kde-format
-msgctxt "Category"
-msgid "Graphics"
-msgstr "வரைகலை"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
-#, kde-format
-msgctxt "Category"
-msgid "3D"
-msgstr "3D"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
-#, kde-format
-msgctxt "Category"
-msgid "Drawing"
-msgstr "வரைதல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
-#, kde-format
-msgctxt "Category"
-msgid "Painting and Editing"
-msgstr "வரைதல் மற்றும் திருத்தல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
-#, kde-format
-msgctxt "Category"
-msgid "Photography"
-msgstr "புகைப்படமெடுப்பு"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
-#, kde-format
-msgctxt "Category"
-msgid "Publishing"
-msgstr "பதிப்பித்தல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
-#, kde-format
-msgctxt "Category"
-msgid "Scanning and OCR"
-msgstr "வருடுதலும் OCRஉம்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
-#, kde-format
-msgctxt "Category"
-msgid "Viewers"
-msgstr "காட்டிகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
-#, kde-format
-msgctxt "Category"
-msgid "Internet"
-msgstr "இணையம்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
-#, kde-format
-msgctxt "Category"
-msgid "Chat"
-msgstr "உரையாடல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
-#, kde-format
-msgctxt "Category"
-msgid "File Sharing"
-msgstr "கோப்புகளை பகிர்தல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
-#, kde-format
-msgctxt "Category"
-msgid "Mail"
-msgstr "அஞ்சல்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
-#, kde-format
-msgctxt "Category"
-msgid "Web Browsers"
-msgstr "இணைய உலாவிகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
-#, kde-format
-msgctxt "Category"
-msgid "Multimedia"
-msgstr "பல்லூடகம்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
-#, kde-format
-msgctxt "Category"
-msgid "Audio and Video Editors"
-msgstr "ஒலி மற்றும் நிகழ்பட திருத்திகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
-#, kde-format
-msgctxt "Category"
-msgid "Audio Players"
-msgstr "ஒலி இயக்கிகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
-#, kde-format
-msgctxt "Category"
-msgid "Video Players"
-msgstr "நிகழ்பட இயக்கிகள்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
-#, kde-format
-msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CD மற்றும் DVD"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
-#, kde-format
-msgctxt "Category"
-msgid "Office"
-msgstr "அலுவலகம்"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
-#, kde-format
-msgctxt "Category"
-msgid "System Settings"
-msgstr "கணினி அமைப்புகள்"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:132
 #, kde-format
@@ -1084,24 +658,6 @@ msgstr "%1 என்பதற்கான நுழைவு விவரங்�
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 என்பதை இயக்க முடியவில்லை"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
-#, kde-format
-msgctxt "Category"
-msgid "Plasma Addons"
-msgstr "பிளாஸ்மா துணை நிரல்கள்"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
-#, kde-format
-msgctxt "Category"
-msgid "Plasma Widgets"
-msgstr "பிளாஸ்மா பிளாஸ்மாய்டுகள்"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
-#, kde-format
-msgctxt "Category"
-msgid "Fonts"
-msgstr "எழுத்துருக்கள்"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:303
 #, kde-format
@@ -2157,12 +1713,6 @@ msgstr "முழு அணுகல்"
 msgid "Can access everything on the system"
 msgstr "கணினியிலுள்ள அனைத்தையும் அணுகலாம்"
 
-#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
-#, kde-format
-msgctxt "Category"
-msgid "Operating System"
-msgstr "இயக்குதளம்"
-
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
@@ -2497,6 +2047,262 @@ msgstr "இயங்குதள நிரல்கள்"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "துணை நிரல்கள்"
+
+#~ msgctxt "Category"
+#~ msgid "Dummy Category"
+#~ msgstr "போலி பகுப்பு"
+
+#~ msgctxt "Category"
+#~ msgid "dummy"
+#~ msgstr "போலி"
+
+#~ msgctxt "Category"
+#~ msgid "dummy addons"
+#~ msgstr "போலி துணை நிரல்கள்"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 1"
+#~ msgstr "போலி 1"
+
+#~ msgctxt "Category"
+#~ msgid "dummy with stuff"
+#~ msgstr "மேம்பட்ட போலி"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 2.1"
+#~ msgstr "போலி 2.1"
+
+#~ msgctxt "Category"
+#~ msgid "dummy with quite some stuff"
+#~ msgstr "மேலும் மேம்பட்ட போலி"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 3"
+#~ msgstr "போலி 3"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 4"
+#~ msgstr "போலி 4"
+
+#~ msgctxt "Category"
+#~ msgid "All Applications"
+#~ msgstr "அனைத்து செயலிகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "துணைக்கருவிகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Accessibility"
+#~ msgstr "அணுகல்தன்மை"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "நிரலாக்க கருவிகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Debugging"
+#~ msgstr "பிழைநீக்கம்"
+
+#~ msgctxt "Category"
+#~ msgid "Graphic Interface Design"
+#~ msgstr "வரைமுறை இடைமுகப்பு வடிவமைப்பு"
+
+#~ msgctxt "Category"
+#~ msgid "Localization"
+#~ msgstr "மொழிபெயர்ப்பு"
+
+#~ msgctxt "Category"
+#~ msgid "Web Development"
+#~ msgstr "இணைய உருவாக்கம்"
+
+#~ msgctxt "Category"
+#~ msgid "Education"
+#~ msgstr "கல்வி"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "அறிவியல் மற்றும் பொறியியல்"
+
+#~ msgctxt "Category"
+#~ msgid "Astronomy"
+#~ msgstr "வானியல்"
+
+#~ msgctxt "Category"
+#~ msgid "Biology"
+#~ msgstr "உயிரியல்"
+
+#~ msgctxt "Category"
+#~ msgid "Chemistry"
+#~ msgstr "வேதியியல்"
+
+#~ msgctxt "Category"
+#~ msgid "Computer Science and Robotics"
+#~ msgstr "கணினியியல் மற்றும் தானியங்கியியல்"
+
+#~ msgctxt "Category"
+#~ msgid "Electronics"
+#~ msgstr "மின்னணுவியல்"
+
+#~ msgctxt "Category"
+#~ msgid "Engineering"
+#~ msgstr "பொறியியல் "
+
+#~ msgctxt "Category"
+#~ msgid "Geography"
+#~ msgstr "புவியியல்"
+
+#~ msgctxt "Category"
+#~ msgid "Geology"
+#~ msgstr "நிலவியல்"
+
+#~ msgctxt "Category"
+#~ msgid "Mathematics"
+#~ msgstr "கணிதம்"
+
+#~ msgctxt "Category"
+#~ msgid "Physics"
+#~ msgstr "இயற்பியல்"
+
+#~ msgctxt "Category"
+#~ msgid "Games"
+#~ msgstr "விளையாட்டுகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Arcade"
+#~ msgstr "ஆர்கேட்"
+
+#~ msgctxt "Category"
+#~ msgid "Board Games"
+#~ msgstr "மேசை விளையாட்டுகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Card Games"
+#~ msgstr "சீட்டு விளையாட்டுகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Puzzles"
+#~ msgstr "புதிர்கள்"
+
+#~ msgctxt "Category"
+#~ msgid "Role Playing"
+#~ msgstr "கதாப்பாத்திர விளையாட்டுகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Simulation"
+#~ msgstr "ஒப்புருவாக்கம்"
+
+#~ msgctxt "Category"
+#~ msgid "Strategy"
+#~ msgstr "வியூகம்"
+
+#~ msgctxt "Category"
+#~ msgid "Sports"
+#~ msgstr "போட்டி விளையாட்டுகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Action"
+#~ msgstr "சண்டை"
+
+#~ msgctxt "Category"
+#~ msgid "Emulators"
+#~ msgstr "போன்மிகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Graphics"
+#~ msgstr "வரைகலை"
+
+#~ msgctxt "Category"
+#~ msgid "3D"
+#~ msgstr "3D"
+
+#~ msgctxt "Category"
+#~ msgid "Drawing"
+#~ msgstr "வரைதல்"
+
+#~ msgctxt "Category"
+#~ msgid "Painting and Editing"
+#~ msgstr "வரைதல் மற்றும் திருத்தல்"
+
+#~ msgctxt "Category"
+#~ msgid "Photography"
+#~ msgstr "புகைப்படமெடுப்பு"
+
+#~ msgctxt "Category"
+#~ msgid "Publishing"
+#~ msgstr "பதிப்பித்தல்"
+
+#~ msgctxt "Category"
+#~ msgid "Scanning and OCR"
+#~ msgstr "வருடுதலும் OCRஉம்"
+
+#~ msgctxt "Category"
+#~ msgid "Viewers"
+#~ msgstr "காட்டிகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Internet"
+#~ msgstr "இணையம்"
+
+#~ msgctxt "Category"
+#~ msgid "Chat"
+#~ msgstr "உரையாடல்"
+
+#~ msgctxt "Category"
+#~ msgid "File Sharing"
+#~ msgstr "கோப்புகளை பகிர்தல்"
+
+#~ msgctxt "Category"
+#~ msgid "Mail"
+#~ msgstr "அஞ்சல்"
+
+#~ msgctxt "Category"
+#~ msgid "Web Browsers"
+#~ msgstr "இணைய உலாவிகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Multimedia"
+#~ msgstr "பல்லூடகம்"
+
+#~ msgctxt "Category"
+#~ msgid "Audio and Video Editors"
+#~ msgstr "ஒலி மற்றும் நிகழ்பட திருத்திகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Audio Players"
+#~ msgstr "ஒலி இயக்கிகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Video Players"
+#~ msgstr "நிகழ்பட இயக்கிகள்"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CD மற்றும் DVD"
+
+#~ msgctxt "Category"
+#~ msgid "Office"
+#~ msgstr "அலுவலகம்"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "கணினி அமைப்புகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Plasma Addons"
+#~ msgstr "பிளாஸ்மா துணை நிரல்கள்"
+
+#~ msgctxt "Category"
+#~ msgid "Plasma Widgets"
+#~ msgstr "பிளாஸ்மா பிளாஸ்மாய்டுகள்"
+
+#~ msgctxt "Category"
+#~ msgid "Fonts"
+#~ msgstr "எழுத்துருக்கள்"
+
+#~ msgctxt "Category"
+#~ msgid "Operating System"
+#~ msgstr "இயக்குதளம்"
 
 #~ msgid "<li>%1 (%2): No changelog information</li>\n"
 #~ msgstr "<li>%1 (%2): மாற்றப்பதிவு இல்லை</li>\n"

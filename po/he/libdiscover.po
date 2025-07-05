@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-24 03:09+0000\n"
+"POT-Creation-Date: 2025-07-05 03:22+0000\n"
 "PO-Revision-Date: 2025-06-21 15:45+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -113,433 +113,6 @@ msgstr "שגיאה במהלך שליחת השימושיות: %1"
 #, kde-format
 msgid "Error while submitting review: %1"
 msgstr "שגיאה במהלך שליחת הביקורת: %1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
-#, kde-format
-msgctxt "Category"
-msgid "Dummy Category"
-msgstr "קטגורית דמה"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:11
-#, kde-format
-msgctxt "Category"
-msgid "dummy"
-msgstr "דמה"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:18
-#, kde-format
-msgctxt "Category"
-msgid "dummy addons"
-msgstr "תוספי דמה"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:26
-#, kde-format
-msgctxt "Category"
-msgid "dummy 1"
-msgstr "דמה 1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:33
-#, kde-format
-msgctxt "Category"
-msgid "dummy with stuff"
-msgstr "דמה עם דברים"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:40
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:55
-#, kde-format
-msgctxt "Category"
-msgid "dummy 2.1"
-msgstr "דמה 2.1"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:48
-#, kde-format
-msgctxt "Category"
-msgid "dummy with quite some stuff"
-msgstr "דמה עם כמה דברים"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:64
-#, kde-format
-msgctxt "Category"
-msgid "dummy 3"
-msgstr "דמה 3"
-
-#: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:74
-#, kde-format
-msgctxt "Category"
-msgid "dummy 4"
-msgstr "דמה 4"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:5
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:5
-#, fuzzy, kde-format
-#| msgid "Applications"
-msgctxt "Category"
-msgid "All Applications"
-msgstr "יישומים"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, kde-format
-msgctxt "Category"
-msgid "Accessories"
-msgstr "עזרים"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
-#, kde-format
-msgctxt "Category"
-msgid "Accessibility"
-msgstr "נגישות"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, kde-format
-msgctxt "Category"
-msgid "Developer Tools"
-msgstr "כלי מפתחים"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
-#, kde-format
-msgctxt "Category"
-msgid "Debugging"
-msgstr "ניפוי באגים"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:70
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:70
-#, kde-format
-msgctxt "Category"
-msgid "Graphic Interface Design"
-msgstr "מעצבי ממשק משתמש"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
-#, kde-format
-msgctxt "Category"
-msgid "IDEs"
-msgstr "סביבות פיתוח"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:88
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:88
-#, kde-format
-msgctxt "Category"
-msgid "Localization"
-msgstr "בינאום"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:98
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:98
-#, kde-format
-msgctxt "Category"
-msgid "Profiling"
-msgstr ""
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
-#, kde-format
-msgctxt "Category"
-msgid "Web Development"
-msgstr "פיתוח Web"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:120
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:119
-#, kde-format
-msgctxt "Category"
-msgid "Education"
-msgstr "חינוכי"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:130
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:129
-#, kde-format
-msgctxt "Category"
-msgid "Science and Engineering"
-msgstr "מדע והנדסה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:139
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:138
-#, kde-format
-msgctxt "Category"
-msgid "Astronomy"
-msgstr "אסטרונומיה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:147
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:146
-#, kde-format
-msgctxt "Category"
-msgid "Biology"
-msgstr "ביולוגיה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:155
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:154
-#, kde-format
-msgctxt "Category"
-msgid "Chemistry"
-msgstr "כימיה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:164
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:163
-#, kde-format
-msgctxt "Category"
-msgid "Computer Science and Robotics"
-msgstr "מדעי המחשב ורובוטיקה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:175
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:174
-#, kde-format
-msgctxt "Category"
-msgid "Electronics"
-msgstr "אלקטרוניקה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:184
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:183
-#, kde-format
-msgctxt "Category"
-msgid "Engineering"
-msgstr "הנדסה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:193
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:192
-#, kde-format
-msgctxt "Category"
-msgid "Geography"
-msgstr "גאוגרפיה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:201
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:200
-#, kde-format
-msgctxt "Category"
-msgid "Geology"
-msgstr "גאולוגיה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:210
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:209
-#, kde-format
-msgctxt "Category"
-msgid "Mathematics"
-msgstr "מתמטיקה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:221
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:220
-#, kde-format
-msgctxt "Category"
-msgid "Physics"
-msgstr "פיזיקה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:232
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:231
-#, kde-format
-msgctxt "Category"
-msgid "Games"
-msgstr "משחקים"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:241
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:240
-#, kde-format
-msgctxt "Category"
-msgid "Arcade"
-msgstr "ארקייד"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:250
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:249
-#, kde-format
-msgctxt "Category"
-msgid "Board Games"
-msgstr "משחקי לוח"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:259
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:258
-#, kde-format
-msgctxt "Category"
-msgid "Card Games"
-msgstr "משחקי קלפים"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:268
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:267
-#, kde-format
-msgctxt "Category"
-msgid "Puzzles"
-msgstr "פזלים"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:277
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:276
-#, kde-format
-msgctxt "Category"
-msgid "Role Playing"
-msgstr "משחקי תפקידים"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:286
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:285
-#, kde-format
-msgctxt "Category"
-msgid "Simulation"
-msgstr "סימולציות"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:295
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:294
-#, kde-format
-msgctxt "Category"
-msgid "Strategy"
-msgstr "אסטרטגיה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
-#, kde-format
-msgctxt "Category"
-msgid "Sports"
-msgstr "ספורט"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:313
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:312
-#, kde-format
-msgctxt "Category"
-msgid "Action"
-msgstr "פעולה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:322
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:321
-#, kde-format
-msgctxt "Category"
-msgid "Emulators"
-msgstr "מדמים"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:334
-#, kde-format
-msgctxt "Category"
-msgid "Graphics"
-msgstr "גרפיקה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:342
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
-#, kde-format
-msgctxt "Category"
-msgid "3D"
-msgstr "תלת מימד"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:350
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:350
-#, kde-format
-msgctxt "Category"
-msgid "Drawing"
-msgstr "שירטוט"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
-#, kde-format
-msgctxt "Category"
-msgid "Painting and Editing"
-msgstr "ציור ועריכה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:375
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:375
-#, kde-format
-msgctxt "Category"
-msgid "Photography"
-msgstr "צילום"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:384
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:384
-#, kde-format
-msgctxt "Category"
-msgid "Publishing"
-msgstr "הוצאה לאור"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:393
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:393
-#, kde-format
-msgctxt "Category"
-msgid "Scanning and OCR"
-msgstr "סריקה ותמונה לטקסט (OCR)"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:403
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:403
-#, kde-format
-msgctxt "Category"
-msgid "Viewers"
-msgstr "מציגים"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
-#, kde-format
-msgctxt "Category"
-msgid "Internet"
-msgstr "אינטרנט"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:423
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:423
-#, kde-format
-msgctxt "Category"
-msgid "Chat"
-msgstr "צאטים"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:433
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:433
-#, kde-format
-msgctxt "Category"
-msgid "File Sharing"
-msgstr "שיתוף קבצים"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:442
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:442
-#, kde-format
-msgctxt "Category"
-msgid "Mail"
-msgstr "דואר אלקטרוני"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:451
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:451
-#, kde-format
-msgctxt "Category"
-msgid "Web Browsers"
-msgstr "דפדפני אינטרנט"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:463
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:463
-#, kde-format
-msgctxt "Category"
-msgid "Multimedia"
-msgstr "מולטימדיה"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:472
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:472
-#, kde-format
-msgctxt "Category"
-msgid "Audio and Video Editors"
-msgstr "עורכי שמע ווידאו"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
-#, kde-format
-msgctxt "Category"
-msgid "Audio Players"
-msgstr "נגני שמע"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:502
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:502
-#, kde-format
-msgctxt "Category"
-msgid "Video Players"
-msgstr "נגני שמע"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:520
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:520
-#, kde-format
-msgctxt "Category"
-msgid "CD and DVD"
-msgstr "תקליטורי CD ו־DVD"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:532
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:532
-#, kde-format
-msgctxt "Category"
-msgid "Office"
-msgstr "משרד"
-
-#: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:542
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
-#, kde-format
-msgctxt "Category"
-msgid "System Settings"
-msgstr "הגדרות מערכת"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:132
 #, fuzzy, kde-format
@@ -1090,24 +663,6 @@ msgstr ""
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "לא ניתן להפעיל את %1"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:552
-#, kde-format
-msgctxt "Category"
-msgid "Plasma Addons"
-msgstr "תוספי Plasma"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:563
-#, kde-format
-msgctxt "Category"
-msgid "Plasma Widgets"
-msgstr "יישומוני Plasma"
-
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:575
-#, kde-format
-msgctxt "Category"
-msgid "Fonts"
-msgstr "גופנים"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:303
 #, kde-format
@@ -2174,14 +1729,6 @@ msgstr ""
 msgid "Can access everything on the system"
 msgstr ""
 
-#: libdiscover/backends/RpmOstreeBackend/rpm-ostree-backend-categories.xml:4
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
-msgctxt "Category"
-msgid "Operating System"
-msgstr "תיקון המערכת"
-
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:190
 #, kde-format
 msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
@@ -2526,6 +2073,271 @@ msgstr "עדכוני מערכת"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "תוספים"
+
+#~ msgctxt "Category"
+#~ msgid "Dummy Category"
+#~ msgstr "קטגורית דמה"
+
+#~ msgctxt "Category"
+#~ msgid "dummy"
+#~ msgstr "דמה"
+
+#~ msgctxt "Category"
+#~ msgid "dummy addons"
+#~ msgstr "תוספי דמה"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 1"
+#~ msgstr "דמה 1"
+
+#~ msgctxt "Category"
+#~ msgid "dummy with stuff"
+#~ msgstr "דמה עם דברים"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 2.1"
+#~ msgstr "דמה 2.1"
+
+#~ msgctxt "Category"
+#~ msgid "dummy with quite some stuff"
+#~ msgstr "דמה עם כמה דברים"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 3"
+#~ msgstr "דמה 3"
+
+#~ msgctxt "Category"
+#~ msgid "dummy 4"
+#~ msgstr "דמה 4"
+
+#, fuzzy
+#~| msgid "Applications"
+#~ msgctxt "Category"
+#~ msgid "All Applications"
+#~ msgstr "יישומים"
+
+#~ msgctxt "Category"
+#~ msgid "Accessories"
+#~ msgstr "עזרים"
+
+#~ msgctxt "Category"
+#~ msgid "Accessibility"
+#~ msgstr "נגישות"
+
+#~ msgctxt "Category"
+#~ msgid "Developer Tools"
+#~ msgstr "כלי מפתחים"
+
+#~ msgctxt "Category"
+#~ msgid "Debugging"
+#~ msgstr "ניפוי באגים"
+
+#~ msgctxt "Category"
+#~ msgid "Graphic Interface Design"
+#~ msgstr "מעצבי ממשק משתמש"
+
+#~ msgctxt "Category"
+#~ msgid "IDEs"
+#~ msgstr "סביבות פיתוח"
+
+#~ msgctxt "Category"
+#~ msgid "Localization"
+#~ msgstr "בינאום"
+
+#~ msgctxt "Category"
+#~ msgid "Web Development"
+#~ msgstr "פיתוח Web"
+
+#~ msgctxt "Category"
+#~ msgid "Education"
+#~ msgstr "חינוכי"
+
+#~ msgctxt "Category"
+#~ msgid "Science and Engineering"
+#~ msgstr "מדע והנדסה"
+
+#~ msgctxt "Category"
+#~ msgid "Astronomy"
+#~ msgstr "אסטרונומיה"
+
+#~ msgctxt "Category"
+#~ msgid "Biology"
+#~ msgstr "ביולוגיה"
+
+#~ msgctxt "Category"
+#~ msgid "Chemistry"
+#~ msgstr "כימיה"
+
+#~ msgctxt "Category"
+#~ msgid "Computer Science and Robotics"
+#~ msgstr "מדעי המחשב ורובוטיקה"
+
+#~ msgctxt "Category"
+#~ msgid "Electronics"
+#~ msgstr "אלקטרוניקה"
+
+#~ msgctxt "Category"
+#~ msgid "Engineering"
+#~ msgstr "הנדסה"
+
+#~ msgctxt "Category"
+#~ msgid "Geography"
+#~ msgstr "גאוגרפיה"
+
+#~ msgctxt "Category"
+#~ msgid "Geology"
+#~ msgstr "גאולוגיה"
+
+#~ msgctxt "Category"
+#~ msgid "Mathematics"
+#~ msgstr "מתמטיקה"
+
+#~ msgctxt "Category"
+#~ msgid "Physics"
+#~ msgstr "פיזיקה"
+
+#~ msgctxt "Category"
+#~ msgid "Games"
+#~ msgstr "משחקים"
+
+#~ msgctxt "Category"
+#~ msgid "Arcade"
+#~ msgstr "ארקייד"
+
+#~ msgctxt "Category"
+#~ msgid "Board Games"
+#~ msgstr "משחקי לוח"
+
+#~ msgctxt "Category"
+#~ msgid "Card Games"
+#~ msgstr "משחקי קלפים"
+
+#~ msgctxt "Category"
+#~ msgid "Puzzles"
+#~ msgstr "פזלים"
+
+#~ msgctxt "Category"
+#~ msgid "Role Playing"
+#~ msgstr "משחקי תפקידים"
+
+#~ msgctxt "Category"
+#~ msgid "Simulation"
+#~ msgstr "סימולציות"
+
+#~ msgctxt "Category"
+#~ msgid "Strategy"
+#~ msgstr "אסטרטגיה"
+
+#~ msgctxt "Category"
+#~ msgid "Sports"
+#~ msgstr "ספורט"
+
+#~ msgctxt "Category"
+#~ msgid "Action"
+#~ msgstr "פעולה"
+
+#~ msgctxt "Category"
+#~ msgid "Emulators"
+#~ msgstr "מדמים"
+
+#~ msgctxt "Category"
+#~ msgid "Graphics"
+#~ msgstr "גרפיקה"
+
+#~ msgctxt "Category"
+#~ msgid "3D"
+#~ msgstr "תלת מימד"
+
+#~ msgctxt "Category"
+#~ msgid "Drawing"
+#~ msgstr "שירטוט"
+
+#~ msgctxt "Category"
+#~ msgid "Painting and Editing"
+#~ msgstr "ציור ועריכה"
+
+#~ msgctxt "Category"
+#~ msgid "Photography"
+#~ msgstr "צילום"
+
+#~ msgctxt "Category"
+#~ msgid "Publishing"
+#~ msgstr "הוצאה לאור"
+
+#~ msgctxt "Category"
+#~ msgid "Scanning and OCR"
+#~ msgstr "סריקה ותמונה לטקסט (OCR)"
+
+#~ msgctxt "Category"
+#~ msgid "Viewers"
+#~ msgstr "מציגים"
+
+#~ msgctxt "Category"
+#~ msgid "Internet"
+#~ msgstr "אינטרנט"
+
+#~ msgctxt "Category"
+#~ msgid "Chat"
+#~ msgstr "צאטים"
+
+#~ msgctxt "Category"
+#~ msgid "File Sharing"
+#~ msgstr "שיתוף קבצים"
+
+#~ msgctxt "Category"
+#~ msgid "Mail"
+#~ msgstr "דואר אלקטרוני"
+
+#~ msgctxt "Category"
+#~ msgid "Web Browsers"
+#~ msgstr "דפדפני אינטרנט"
+
+#~ msgctxt "Category"
+#~ msgid "Multimedia"
+#~ msgstr "מולטימדיה"
+
+#~ msgctxt "Category"
+#~ msgid "Audio and Video Editors"
+#~ msgstr "עורכי שמע ווידאו"
+
+#~ msgctxt "Category"
+#~ msgid "Audio Players"
+#~ msgstr "נגני שמע"
+
+#~ msgctxt "Category"
+#~ msgid "Video Players"
+#~ msgstr "נגני שמע"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "תקליטורי CD ו־DVD"
+
+#~ msgctxt "Category"
+#~ msgid "Office"
+#~ msgstr "משרד"
+
+#~ msgctxt "Category"
+#~ msgid "System Settings"
+#~ msgstr "הגדרות מערכת"
+
+#~ msgctxt "Category"
+#~ msgid "Plasma Addons"
+#~ msgstr "תוספי Plasma"
+
+#~ msgctxt "Category"
+#~ msgid "Plasma Widgets"
+#~ msgstr "יישומוני Plasma"
+
+#~ msgctxt "Category"
+#~ msgid "Fonts"
+#~ msgstr "גופנים"
+
+#, fuzzy
+#~| msgctxt "@action:button"
+#~| msgid "Repair System"
+#~ msgctxt "Category"
+#~ msgid "Operating System"
+#~ msgstr "תיקון המערכת"
 
 #, fuzzy
 #~| msgid "%1 (%2)"
