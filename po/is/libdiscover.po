@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-04 00:44+0000\n"
-"PO-Revision-Date: 2025-05-31 12:01+0000\n"
+"PO-Revision-Date: 2025-07-11 18:51+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
 "Language: is\n"
@@ -2342,20 +2342,19 @@ msgid "Operating System"
 msgstr "Stýrikerfi"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: Margar ræstar dreifingar fundust. Sendu endilega inn "
+"rpm-ostree bakendi: Margar ræstar dreifingar fundust. Sendu endilega inn "
 "villuskýrslu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
-"rpm-ostree: Engin ræst dreifing fannst. Sendu endilega inn villuskýrslu."
+"rpm-ostree bakendi: Engin ræst dreifing fannst. Sendu endilega inn "
+"villuskýrslu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
@@ -2441,45 +2440,35 @@ msgid "ostree remotes"
 msgstr "ostree fjartengingar (remotes)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Villa: Ekkert DBus-viðmót í boði. Sendu inn villuskýrslu."
+"rpm-ostree bakendi: Villa: Ekkert DBus-viðmót í boði. Sendu inn villuskýrslu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Villa: Get ekki ræst færslu fyrir tilfang með ógilt "
+"rpm-ostree bakendi: Villa: Get ekki ræst færslu fyrir tilfang með ógilt "
 "snið. Sendu inn villuskýrslu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Villa: Get ekki yfirfært á tóma tilvísun. Sendu inn "
+"rpm-ostree bakendi: Villa: Get ekki yfirfært á tóma tilvísun. Sendu inn "
 "villuskýrslu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Villa: Beðið um óþekkta aðgerð. Sendu inn villuskýrslu."
+"rpm-ostree bakendi: Villa: Beðið um óþekkta aðgerð. Sendu inn villuskýrslu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
@@ -2492,12 +2481,10 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Villa: Óþekkt snið tilfangs. Sendu inn villuskýrslu."
+"rpm-ostree bakendi: Villa: Óþekkt snið tilfangs. Sendu inn villuskýrslu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format

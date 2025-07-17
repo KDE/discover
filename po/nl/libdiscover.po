@@ -265,7 +265,7 @@ msgstr "Onderwijs"
 #, kde-format
 msgctxt "Category"
 msgid "Science & Math"
-msgstr "Wetenschap en wiskunde"
+msgstr "Wetenschap"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -293,7 +293,7 @@ msgstr "Scheikunde"
 #, kde-format
 msgctxt "Category"
 msgid "Computer Science and Robotics"
-msgstr "Computerwetenschap en robotica"
+msgstr "Informatica, robotica"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:177
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:176
@@ -377,7 +377,7 @@ msgstr "Puzzels"
 #, kde-format
 msgctxt "Category"
 msgid "Role Playing"
-msgstr "Rollen spellen"
+msgstr "Rollenspellen"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:289
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:288
