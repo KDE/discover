@@ -875,7 +875,7 @@ msgstr "&Geïnstalleerd"
 #: discover/qml/DiscoverWindow.qml:96
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr "Update & (Ophalen…)"
+msgstr "&Update (Ophalen…)"
 
 #: discover/qml/DiscoverWindow.qml:96
 #, kde-format
