@@ -41,6 +41,17 @@ Kirigami.GlobalDrawer {
     }
     actions: createCategoryActions(Discover.CategoryModel.rootCategories)
 
+    interactiveResizeEnabled: true
+    Component.onCompleted: {
+        if (app.sidebarWidth > 0) {
+            preferredSize = app.sidebarWidth
+        } else {
+            preferredSize =  Kirigami.Units.gridUnit * 14
+        }
+    }
+
+    onPreferredSizeChanged: app.sidebarWidth = preferredSize
+
     padding: 0
     topPadding: undefined
     leftPadding: undefined
@@ -48,9 +59,6 @@ Kirigami.GlobalDrawer {
     bottomPadding: undefined
     verticalPadding: undefined
     horizontalPadding: undefined
-
-    // FIXME: Dirty workaround for 385992
-    width: Kirigami.Units.gridUnit * 14
 
     resetMenuOnTriggered: false
     modal: !drawer.wideScreen

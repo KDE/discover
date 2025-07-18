@@ -713,5 +713,21 @@ InlineMessage *DiscoverObject::homePageMessage() const
     return m_homePageMessage.get();
 }
 
+int DiscoverObject::sidebarWidth() const
+{
+    KConfigGroup grp(KSharedConfig::openStateConfig(), u"MainWindow"_s);
+    return grp.readEntry(u"sidebarWidth"_s, -1);
+}
+
+void DiscoverObject::setSidebarWidth(int width)
+{
+    if (width == sidebarWidth()) {
+        return;
+    }
+    KConfigGroup grp(KSharedConfig::openStateConfig(), u"MainWindow"_s);
+    grp.writeEntry(u"sidebarWidth"_s, width);
+    Q_EMIT sidebarWidthChanged(width);
+}
+
 #include "DiscoverObject.moc"
 #include "moc_DiscoverObject.cpp"

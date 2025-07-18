@@ -28,6 +28,7 @@ class DiscoverObject : public QObject
     Q_PROPERTY(bool isRoot READ isRoot CONSTANT)
     Q_PROPERTY(QQuickWindow *mainWindow READ mainWindow CONSTANT)
     Q_PROPERTY(InlineMessage *homePageMessage READ homePageMessage NOTIFY homeMessageChanged)
+    Q_PROPERTY(int sidebarWidth READ sidebarWidth WRITE setSidebarWidth NOTIFY sidebarWidthChanged)
 
 public:
     explicit DiscoverObject(const QVariantMap &initialProperties);
@@ -50,6 +51,9 @@ public:
     QString describeSources() const;
     Q_SCRIPTABLE void restore();
     [[nodiscard]] InlineMessage *homePageMessage() const;
+
+    int sidebarWidth() const;
+    void setSidebarWidth(int width);
 
     Q_SCRIPTABLE bool quitWhenIdle();
 
@@ -78,6 +82,7 @@ Q_SIGNALS:
     void
     openErrorPage(const QString &errorMessage, const QString &errorExplanation, const QString &buttonText, const QString &buttonIcon, const QString &buttonURL);
     void homeMessageChanged();
+    void sidebarWidthChanged(int width);
 
 private:
     void showLoadingPage();
