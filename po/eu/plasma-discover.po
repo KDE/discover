@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-24 02:35+0000\n"
-"PO-Revision-Date: 2025-07-04 22:03+0200\n"
+"PO-Revision-Date: 2025-07-23 13:57+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #: discover/DiscoverObject.cpp:184
 #, kde-format
@@ -757,7 +757,7 @@ msgstr ""
 #: discover/qml/ApplicationsListPage.qml:281
 #, kde-format
 msgid "Still looking…"
-msgstr "Oraindik bilatzen..."
+msgstr "Oraindik bilatzen…"
 
 #: discover/qml/BrowsingPage.qml:20
 #, kde-format
@@ -873,7 +873,7 @@ msgstr "&Instalatuta"
 #: discover/qml/DiscoverWindow.qml:96
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr "Eg&uneratzeak (Ekartzen...)"
+msgstr "Eg&uneratzeak (Ekartzen…)"
 
 #: discover/qml/DiscoverWindow.qml:96
 #, kde-format
@@ -970,7 +970,7 @@ msgstr ""
 #: discover/qml/Feedback.qml:19
 #, kde-format
 msgid "Submitting usage information…"
-msgstr "Erabileraren gaineko informazioa bidaltzen..."
+msgstr "Erabileraren gaineko informazioa bidaltzen…"
 
 #: discover/qml/Feedback.qml:19
 #, kde-format
@@ -980,12 +980,12 @@ msgstr "Konfiguratu"
 #: discover/qml/Feedback.qml:23
 #, kde-format
 msgid "Configure Feedback…"
-msgstr "Konfiguratu atzeraelikadura..."
+msgstr "Konfiguratu atzeraelikadura…"
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
 #, kde-format
 msgid "Configure Updates…"
-msgstr "Konfiguratu eguneratzeak..."
+msgstr "Konfiguratu eguneratzeak…"
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
@@ -999,7 +999,7 @@ msgstr ""
 #: discover/qml/Feedback.qml:58
 #, kde-format
 msgid "Contribute…"
-msgstr "Lagundu..."
+msgstr "Lagundu…"
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
@@ -1009,13 +1009,13 @@ msgstr "Zure atzeraelikadura jaso nahi genuke!"
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "Participate…"
-msgstr "Parte hartu..."
+msgstr "Parte hartu…"
 
 #: discover/qml/InstallApplicationButton.qml:29
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
-msgstr "Zamatzen..."
+msgstr "Zamatzen…"
 
 #: discover/qml/InstallApplicationButton.qml:33
 #, kde-format
@@ -1252,7 +1252,7 @@ msgstr "Idatzi aipamena"
 #: discover/qml/ReviewDialog.qml:191
 #, kde-format
 msgid "Keep writing…"
-msgstr "Jarraitu idazten..."
+msgstr "Jarraitu idazten…"
 
 #: discover/qml/ReviewDialog.qml:194
 #, kde-format
@@ -1273,7 +1273,7 @@ msgstr "%1(e)ren gaineko aipamenak"
 #: discover/qml/ReviewsPage.qml:105
 #, kde-format
 msgid "Write a Review…"
-msgstr "Idatzi aipamen bat..."
+msgstr "Idatzi aipamen bat…"
 
 #: discover/qml/ReviewsPage.qml:118
 #, kde-format
@@ -1330,12 +1330,12 @@ msgstr "„"
 #: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search…"
-msgstr "Bilatu..."
+msgstr "Bilatu…"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search in '%1'…"
-msgstr "Bilatu «%1»(e)an..."
+msgstr "Bilatu «%1»(e)an…"
 
 #: discover/qml/SourcesPage.qml:18
 #, kde-format
@@ -1350,7 +1350,7 @@ msgstr "Sorburu lehenetsia"
 #: discover/qml/SourcesPage.qml:118
 #, kde-format
 msgid "Add Source…"
-msgstr "Gehitu sorburua..."
+msgstr "Gehitu sorburua…"
 
 #: discover/qml/SourcesPage.qml:145
 #, kde-format
@@ -1520,13 +1520,13 @@ msgstr "%1 (%2)"
 #: discover/qml/UpdatesPage.qml:550
 #, kde-format
 msgid "More Information…"
-msgstr "Informazio gehiago..."
+msgstr "Informazio gehiago…"
 
 #: discover/qml/UpdatesPage.qml:578
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
-msgstr "Eguneratzeak ekartzen..."
+msgstr "Eguneratzeak ekartzen…"
 
 #: discover/qml/UpdatesPage.qml:592
 #, kde-format
