@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-04 02:34+0000\n"
+"POT-Creation-Date: 2025-07-31 02:34+0000\n"
 "PO-Revision-Date: 2025-02-22 21:39+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -997,7 +997,7 @@ msgstr ""
 "<resource>%1</resource> לא תקבל יותר עדכונים.<nl/><p>הנימוק לכך הוא: "
 "<message>%2</message></p><nl/><p>להסיר אותה אוטומטית?</p>"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:30
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -1005,13 +1005,13 @@ msgid ""
 "highly recommended."
 msgstr "גרסת הפיתוח של %1 אינה בתוקף. מומלץ בחום להשתמש בגרסה היציבה."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:29
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:31
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "קיימת גרסה יציבה יותר של %1."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:48
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:50
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
