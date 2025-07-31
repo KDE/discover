@@ -384,7 +384,7 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     const int ourIdx = ids.indexOf(id);
 
     int idx, c;
-    for (c = m_sources->rowCount(), idx = c; idx < c; ++idx) {
+    for (c = m_sources->rowCount(), idx = 0; idx < c; ++idx) {
         const auto compIt = m_sources->item(idx);
         if (prio > compIt->data(PrioRole).toInt()) {
             break;
