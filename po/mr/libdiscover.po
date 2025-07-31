@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-04 00:44+0000\n"
+"POT-Creation-Date: 2025-07-31 00:43+0000\n"
 "PO-Revision-Date: 2013-03-28 16:07+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -1014,7 +1014,7 @@ msgid ""
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:30
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -1022,13 +1022,13 @@ msgid ""
 "highly recommended."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:29
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:31
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:48
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:50
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"

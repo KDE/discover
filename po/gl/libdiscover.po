@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-04 00:44+0000\n"
+"POT-Creation-Date: 2025-07-31 00:43+0000\n"
 "PO-Revision-Date: 2025-06-19 10:32+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -1017,7 +1017,7 @@ msgstr ""
 "esgrimida foi: <message>%2</message></p><nl/><p>Quere eliminalo "
 "automaticamente?</p>"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:30
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -1027,13 +1027,13 @@ msgstr ""
 "A versión de desenvolvemento de %1 está desfasada. Recoméndase usar a "
 "versión estábel."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:29
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:31
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "Hai dispoñíbel unha versión máis estábel de %1."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:48
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:50
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-04 00:44+0000\n"
+"POT-Creation-Date: 2025-07-31 00:43+0000\n"
 "PO-Revision-Date: 2024-06-08 16:05+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -1031,7 +1031,7 @@ msgstr ""
 "<resource>%1</resource> nu mai primește actualizări.<nl/><nl/>Înlocuiți cu "
 "versiunea ce beneficiază de suport oferită de <resource>%2</resource>?"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:30
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -1041,13 +1041,13 @@ msgstr ""
 "Această versiune de dezvoltare a %1 e învechită. Se recomandă folosirea "
 "versiunii stabile."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:29
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:31
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "E disponibilă o versiune mai stabilă a %1."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:48
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:50
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"

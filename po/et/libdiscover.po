@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-04 00:44+0000\n"
+"POT-Creation-Date: 2025-07-31 00:43+0000\n"
 "PO-Revision-Date: 2020-10-11 01:23+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -1031,7 +1031,7 @@ msgid ""
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:30
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -1039,7 +1039,7 @@ msgid ""
 "highly recommended."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:29
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:31
 #, fuzzy, kde-format
 #| msgctxt "Notification when a new version of Kubuntu is available"
 #| msgid "A new version of Kubuntu is available."
@@ -1047,7 +1047,7 @@ msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "Saadaval on Kubuntu uus versioon."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:48
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:50
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Available Version"

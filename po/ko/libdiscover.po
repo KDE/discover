@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-04 00:44+0000\n"
+"POT-Creation-Date: 2025-07-31 00:43+0000\n"
 "PO-Revision-Date: 2025-06-11 00:11+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -993,7 +993,7 @@ msgstr ""
 "음과 같습니다: <message>%2</message></p><nl/><p>자동으로 삭제하시겠습니까?</"
 "p>"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:28
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:30
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid ""
@@ -1001,13 +1001,13 @@ msgid ""
 "highly recommended."
 msgstr "%1의 이 개발 버전은 오래되었습니다. 안정 버전을 사용하기를 추천합니다."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:29
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:31
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
 msgstr "%1의 더 안정적인 버전을 사용할 수 있습니다."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:48
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:50
 #, kde-format
 msgctxt "@action: button %1 is the name of a Flatpak repo"
 msgid "View Stable Version on %1"
