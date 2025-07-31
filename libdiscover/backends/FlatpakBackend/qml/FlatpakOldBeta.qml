@@ -24,6 +24,8 @@ Kirigami.InlineMessage {
 
     Layout.fillWidth: true
 
+    readonly property bool isBeta: resource.branch === "beta" || resource.branch === "master"
+
     text: __betaOlderThanStable
         ? i18ndc("libdiscover", "@label %1 is the name of an application", "This development version of %1 is outdated. Using the stable version is highly recommended.", resource.name)
         : i18ndc("libdiscover", "@label %1 is the name of an application", "A more stable version of %1 is available.", resource.name)
@@ -38,7 +40,7 @@ Kirigami.InlineMessage {
             backendFilter: root.resource.backend
             resourcesUrl: root.resource.url
         }
-        active: root.resource.isDesktopApp
+        active: root.resource.isDesktopApp && root.isBeta
         delegate: Kirigami.Action {
             required property var model
 
