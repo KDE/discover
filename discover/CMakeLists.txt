@@ -100,9 +100,18 @@ set(DesktopExec "plasma-discover %U")
 configure_file(org.kde.discover.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.urlhandler.desktop)
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.urlhandler.desktop DESTINATION ${KDE_INSTALL_APPDIR} )
 
+if(Flatpak_FOUND)
+    # support Flatpak flatpak+https URI
+    set(DesktopNoDisplay "true")
+    set(DesktopMimeType "x-scheme-handler/flatpak+https;")
+    set(DesktopExec "plasma-discover %U")
+    configure_file(org.kde.discover.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.flatpak.desktop)
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.flatpak.desktop DESTINATION ${KDE_INSTALL_APPDIR} )
+endif()
+
 # support snap:/ URI
 set(DesktopNoDisplay "true")
-set(DesktopMimeType "x-scheme-handler/snap;x-scheme-handler/flatpak+https;")
+set(DesktopMimeType "x-scheme-handler/snap;")
 set(DesktopExec "plasma-discover %U")
 configure_file(org.kde.discover.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.snap.desktop)
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.snap.desktop DESTINATION ${KDE_INSTALL_APPDIR} )

@@ -72,7 +72,6 @@ if (Flatpak_VERSION VERSION_LESS 1.10.2)
     target_compile_definitions(FlatpakNotifier PRIVATE -DFLATPAK_EXTERNC_REQUIRED)
 endif()
 
-install(PROGRAMS org.kde.discover-flatpak.desktop DESTINATION ${KDE_INSTALL_APPDIR} )
 install(FILES org.kde.discover.flatpak.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )
 
 ecm_install_icons(
