@@ -10,6 +10,7 @@
 #include "FwupdResource.h"
 #include "FwupdSourcesBackend.h"
 #include "FwupdTransaction.h"
+#include <QtConcurrent/QtConcurrentRun>
 #include <Transaction/Transaction.h>
 #include <resources/SourcesModel.h>
 #include <resources/StandardBackendUpdater.h>
@@ -29,17 +30,27 @@ FwupdBackend::FwupdBackend(QObject *parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_cancellable(g_cancellable_new())
 {
-    g_autoptr(GError) error = nullptr;
-    if (!fwupd_client_connect(client, m_cancellable, &error)) {
-        handleError(error);
-        m_isValid = false;
-        return;
-    }
-    fwupd_client_set_user_agent_for_package(client, "plasma-discover", version.data());
-    connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &FwupdBackend::updatesCountChanged);
+    auto init = [this] {
+        g_autoptr(GError) error = nullptr;
+        if (!fwupd_client_connect(client, m_cancellable, &error)) {
+            handleError(error);
+            return false;
+        }
+        return true;
+    };
+    QtConcurrent::run(init).then(this, [this](bool correct) {
+        if (!correct) {
+            m_isValid = false;
+            Q_EMIT invalidated();
+            return;
+        }
+        fwupd_client_set_user_agent_for_package(client, "plasma-discover", version.data());
+        connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &FwupdBackend::updatesCountChanged);
 
-    SourcesModel::global()->addSourcesBackend(new FwupdSourcesBackend(this));
-    QTimer::singleShot(0, this, &FwupdBackend::checkForUpdates);
+        SourcesModel::global()->addSourcesBackend(new FwupdSourcesBackend(this));
+        QTimer::singleShot(0, this, &FwupdBackend::checkForUpdates);
+        Q_EMIT contentsChanged();
+    });
 }
 
 QMap<GChecksumType, QCryptographicHash::Algorithm> FwupdBackend::gchecksumToQChryptographicHash()
