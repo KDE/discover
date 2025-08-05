@@ -195,7 +195,7 @@ msgstr "Ein Programm, um Anwendungen zu finden"
 #: discover/main.cpp:124
 #, kde-format
 msgid "© 2010-2022 Plasma Development Team"
-msgstr "© 2010–2022 Plasma-Entwicklerteam"
+msgstr "© 2010–2022 Plasma-Entwicklungsteam"
 
 #: discover/main.cpp:125
 #, kde-format

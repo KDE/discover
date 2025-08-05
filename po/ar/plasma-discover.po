@@ -1154,7 +1154,7 @@ msgstr "لا تحدد شيء"
 #: discover/qml/UpdatesPage.qml:236
 #, kde-format
 msgid "Restart automatically after update has completed"
-msgstr "أعد التشغيل آليا بعد انتهاء التحديث"
+msgstr "أعد التشغيل آليّا بعد انتهاء التحديث"
 
 #: discover/qml/UpdatesPage.qml:243
 #, kde-format
