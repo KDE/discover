@@ -185,7 +185,7 @@ msgstr "يسرد الخيارات المتاحة لمشاركة بياناتك"
 #: discover/main.cpp:44
 #, kde-format
 msgid "Starts an update automatically, headless"
-msgstr "يبدأ التحديث تلقائيًا، دون واجهة رسومية"
+msgstr "يبدأ التحديث آليًّا، دون واجهة رسومية"
 
 #: discover/main.cpp:46
 #, kde-format
@@ -1458,7 +1458,7 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr "عند الانتهاء، قم آليا بـ:"
+msgstr "عند الانتهاء، قم آليّا بـ:"
 
 #: discover/qml/UpdatesPage.qml:283
 #, kde-format
