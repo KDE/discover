@@ -108,7 +108,7 @@ msgstr "Statusbenachrichtigungen für Systemaktualisierungen"
 #: notifier/main.cpp:43
 #, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010–2025 Plasma-Entwicklerteam"
+msgstr "© 2010–2025 Plasma-Entwicklungsteam"
 
 #: notifier/main.cpp:47
 #, kde-format
