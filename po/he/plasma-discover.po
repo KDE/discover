@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-24 00:43+0000\n"
-"PO-Revision-Date: 2025-05-21 08:08+0300\n"
+"PO-Revision-Date: 2025-08-06 17:24+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #: discover/DiscoverObject.cpp:184
 #, kde-format
@@ -174,7 +174,7 @@ msgstr "הצגת כל המנגנונים הזמינים."
 #: discover/main.cpp:42
 #, kde-format
 msgid "Search string."
-msgstr "חיפוש מחרוזת."
+msgstr "מחרוזת חיפוש."
 
 #: discover/main.cpp:43
 #, kde-format
@@ -261,7 +261,7 @@ msgstr "עוד…"
 #: discover/qml/AddonsView.qml:89
 #, kde-format
 msgid "Apply Changes"
-msgstr "החלת הגדרות"
+msgstr "החלת שינויים"
 
 #: discover/qml/AddonsView.qml:97
 #, kde-format
@@ -621,7 +621,7 @@ msgstr "כל הרישיונות"
 #: discover/qml/ApplicationPage.qml:952
 #, kde-format
 msgid "Content Rating"
-msgstr "דירוג התוכן"
+msgstr "דירוג תוכן"
 
 #: discover/qml/ApplicationPage.qml:975
 #, kde-format
@@ -984,7 +984,7 @@ msgstr "תרומה…"
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "We are looking for your feedback!"
-msgstr "אנחנו מחכים למשוב שלך!"
+msgstr "אנו מצפים למשוב שלך!"
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
