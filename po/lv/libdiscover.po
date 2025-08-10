@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-31 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2025-06-07 16:49+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -1052,7 +1052,7 @@ msgstr "Atļaujas"
 msgid "Configure permissions…"
 msgstr "Pielāgot atļaujas…"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:471
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:482
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"

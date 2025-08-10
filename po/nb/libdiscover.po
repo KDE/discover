@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-31 00:43+0000\n"
+"POT-Creation-Date: 2025-08-10 00:44+0000\n"
 "PO-Revision-Date: 2023-02-17 08:42+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -1071,7 +1071,7 @@ msgstr "Tilgang for %1"
 msgid "Configure permissions…"
 msgstr "Sett opp tilgang …"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:471
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:482
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, fuzzy, kde-format
 msgid "Firmware Updates"
