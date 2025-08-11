@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-07-05 05:54+0000\n"
-"PO-Revision-Date: 2025-08-05 20:00+0400\n"
+"PO-Revision-Date: 2025-08-10 22:30+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -995,7 +995,7 @@ msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
-"سؤال غير مدعوم:\n"
+"استعلام غير متاح:\n"
 "%1"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:129
@@ -1136,7 +1136,7 @@ msgstr "لا اتّصال شبكة متوفّر"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:22
 #, kde-format
 msgid "Operation not supported"
-msgstr "العمليّة غير مدعومة"
+msgstr "العمليّة غير متاحة"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:25
 #, kde-format
@@ -1436,7 +1436,7 @@ msgstr "تغيّرت قاعدة بيانات الحزم"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:145
 #, kde-format
 msgid "The provided type is not supported"
-msgstr "النّوع الموفّر غير مدعوم"
+msgstr "النّوع الموفّر غير متوافق"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:147
 #, kde-format
