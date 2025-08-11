@@ -28,7 +28,6 @@
 #include <appstream/AppStreamIntegration.h>
 
 #include "libdiscover_backend_packagekit_debug.h"
-#include "pk-offline-private.h"
 
 using namespace std::chrono_literals;
 
@@ -88,25 +87,25 @@ PackageKitNotifier::~PackageKitNotifier()
 
 void PackageKitNotifier::checkOfflineUpdates()
 {
-    if (!QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
+    auto offline = PackageKit::Daemon::global()->offline();
+    // <bool, QStringList, Transaction::Role, qint64, Transaction::Error, QString>
+    auto results = offline->getResults();
+    results.waitForFinished();
+
+    if (results.isError()) {
         return;
     }
-    qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "found offline update results at " << PK_OFFLINE_RESULTS_FILENAME;
 
-    KDesktopFile file(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME));
-    KConfigGroup group(&file, QStringLiteral(PK_OFFLINE_RESULTS_GROUP));
-
-    const bool success = group.readEntry("Success", false);
-    const QString packagesJoined = group.readEntry("Packages");
-    const auto packages = QStringView(packagesJoined).split(QLatin1Char(','));
+    const bool success = results.argumentAt<0>();
+    const auto packages = results.argumentAt<1>();
     const bool isMobile = QByteArrayList{"1", "true"}.contains(qgetenv("QT_QUICK_CONTROLS_MOBILE"));
-    const QString errorCode = group.readEntry("ErrorCode");
-    static QSet<QString> allowedAlreadyInstalled = {
-        QStringLiteral("package-already-installed"),
-        QStringLiteral("all-packages-already-installed"),
+    const auto errorCode = qvariant_cast<PackageKit::Transaction::Error>(results.argumentAt(4));
+    static QSet<PackageKit::Transaction::Error> allowedAlreadyInstalled = {
+        PackageKit::Transaction::ErrorPackageAlreadyInstalled,
+        PackageKit::Transaction::ErrorAllPackagesAlreadyInstalled,
     };
     if (!success && !allowedAlreadyInstalled.contains(errorCode)) {
-        const QString errorDetails = group.readEntry("ErrorDetails");
+        const QString errorDetails = results.argumentAt<5>();
 
         auto *notification = new KNotification(QStringLiteral("OfflineUpdateFailed"), KNotification::Persistent);
         notification->setIconName(QStringLiteral("dialog-error"));
@@ -148,13 +147,6 @@ void PackageKitNotifier::checkOfflineUpdates()
                                          QStringLiteral("discoverabstractnotifier"));
                 }
             });
-
-            // No matter what happened, clean up the results file if it still exists
-            // because at this point, there's nothing anyone can do with it
-            if (QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
-                qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "Removed offline results file";
-                PackageKit::Daemon::global()->offline()->clearResults();
-            }
         });
 
         notification->sendEvent();
@@ -175,7 +167,7 @@ void PackageKitNotifier::checkOfflineUpdates()
 
             notification->sendEvent();
         }
-        PackageKit::Daemon::global()->offline()->clearResults();
+        offline->clearResults();
     }
 }
 

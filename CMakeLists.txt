@@ -36,7 +36,7 @@ find_package(PkgConfig REQUIRED)
 find_package(KF6 ${KF6_MIN_VERSION} REQUIRED Kirigami CoreAddons Config Crash DBusAddons I18n Archive XmlGui KIO KCMUtils IdleTime Notifications Purpose Auth StatusNotifierItem IconThemes)
 find_package(KF6 ${KF6_MIN_VERSION} OPTIONAL_COMPONENTS UserFeedback)
 
-find_package(packagekitqt6 1.0.1 CONFIG)
+find_package(packagekitqt6 1.1.3 CONFIG)
 find_package(AppStreamQt 1.0.4 CONFIG REQUIRED)
 find_package(KF6Attica 5.23 CONFIG)
 find_package(KF6NewStuff 5.53 CONFIG)

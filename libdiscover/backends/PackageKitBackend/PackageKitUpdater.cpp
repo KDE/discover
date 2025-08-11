@@ -27,7 +27,6 @@
 #include <optional>
 
 #include "libdiscover_backend_packagekit_debug.h"
-#include "pk-offline-private.h"
 #include "utils.h"
 
 using namespace Qt::StringLiterals;
@@ -343,7 +342,11 @@ void PackageKitUpdater::prepare()
         return;
     }
 
-    if (QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
+    // <bool, QStringList, Transaction::Role, qint64, Transaction::Error, QString>
+    auto results = offline->getResults();
+    results.waitForFinished();
+
+    if (results.isError() || results.argumentAt<0>() == false) {
         qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "Removed offline results file";
         offline->clearResults();
     }
