@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-10 00:44+0000\n"
+"POT-Creation-Date: 2025-08-12 00:45+0000\n"
 "PO-Revision-Date: 2025-03-09 17:26+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -2005,12 +2005,12 @@ msgstr "தேவையற்றவை"
 msgid "Downgrade"
 msgstr "பழைய பதிப்பை மீட்டமை"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:113
 #, kde-format
 msgid "Failed Offline Update"
 msgstr "தோல்வியடைந்த அமர்வுக்கு-வெளியான-புதுப்பிப்பு"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:128
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:114
 #, kde-format
 msgid ""
 "Failed to update %1 package\n"
@@ -2025,46 +2025,46 @@ msgstr[1] ""
 "%1 நிரல்களை புதுப்பித்தல் தோல்வியடைந்த‍து\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:185
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:171
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "டிஸ்கவரை திற"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:122
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "கணினியை சரிசெய்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:141
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "தோல்வியடைந்த அமர்வுக்கு-வெளியான-புதுப்பிப்பு சரிசெய்யப்படுகிறது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:134
 #, kde-format
 msgid "Repair Failed"
 msgstr "சரிசெய்வது தோல்வியடைந்தது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:149
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr "%1<nl/>இச்சிக்கலை உங்கள் இயங்குதள நிறுவனத்திடம் தெரிவியுங்கள்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:159
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:145
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "வெற்றிகரமாக சரிசெய்யப்பட்டுள்ளது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:181
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:167
 #, kde-format
 msgid "Offline Updates"
 msgstr "அமர்வுக்கு வெளியேயான புதுப்பிகள்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:182
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:168
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
