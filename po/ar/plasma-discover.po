@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2025-08-05 12:04+0400\n"
+"PO-Revision-Date: 2025-08-13 19:32+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -94,7 +94,7 @@ msgstr "تعذّر فتح %1"
 #: discover/DiscoverObject.cpp:372
 #, kde-format
 msgid "Please make sure Snap support is installed"
-msgstr "يرجى التأكد من تثبيت دعم سناب"
+msgstr "يرجى التأكد من تثبيت حزم سناب"
 
 #: discover/DiscoverObject.cpp:374
 #, kde-format
@@ -173,7 +173,7 @@ msgstr "يسرد الخيارات المتاحة لمشاركة بياناتك"
 #: discover/main.cpp:53
 #, kde-format
 msgid "Supports appstream: url scheme"
-msgstr "يدعم مخطّط مسارات appstream:‎"
+msgstr "يوفّر مخطّط عناوين appstream:‎"
 
 #: discover/main.cpp:122
 #, kde-format
@@ -803,7 +803,7 @@ msgid ""
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
 "يرسل معلومات استخدام مجهولة المصدر إلى كِيدِي حتى نتمكن من فهم مستخدمينا بشكل "
-"أفضل. لمزيد من المعلومات ، راجع https://kde.org/privacypolicy-apps.php."
+"أفضل. لمزيد من المعلومات، راجع https://kde.org/privacypolicy-apps.php."
 
 #: discover/qml/Feedback.qml:17
 #, kde-format
@@ -1118,7 +1118,7 @@ msgid ""
 "If you would like to report the update issue to your distribution's "
 "packagers, include this information:"
 msgstr ""
-"إذا ترغب في الإبلاغ عن مشكلة التحديث إلى محزمي توزيعتك ، قم بتضمين هذه "
+"إذا ترغب في الإبلاغ عن مشكلة التحديث إلى محزمي توزيعتك، قم بتضمين هذه "
 "المعلومات:"
 
 #: discover/qml/UpdatesPage.qml:102
