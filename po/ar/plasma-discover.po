@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-24 00:43+0000\n"
-"PO-Revision-Date: 2025-08-09 18:27+0400\n"
+"PO-Revision-Date: 2025-08-13 19:32+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -37,7 +37,7 @@ msgid ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>."
 msgstr ""
-"لتستخدم المستكشف ، ثبت وحدتك المفضلة من صفحة<interface>الإعدادات</interface> "
+"لتستخدم المستكشف، ثبت وحدتك المفضلة من صفحة<interface>الإعدادات</interface> "
 "تحت <interface>الخلفيات الناقصة</interface>."
 
 #: discover/DiscoverObject.cpp:189
@@ -73,10 +73,10 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
-"دعم إدارة الحزم من %1 غير مكتمل؛ قد تواجه عدة مشاكل. لا تبلغ عن الأخطاء إلى "
-"كيدي. يوصى بشدة بإلغاء تثبيت الحزمة <resource>packagekit-qt6</resource> "
-"واستخدام المستكشف فقط لإدارة Flatpaks وSnaps والوظائف الإضافية.<para>أوصى "
-"مشرفو %1 بدلاً من ذلك باستخدام أداة سطر الأوامر <command>pacman</command> "
+"إتاحة إدارة الحزم من %1 غير مكتمل؛ قد تواجه عدة مشاكل. لا تبلغ عن الأخطاء "
+"إلى كيدي. يوصى بشدة بإلغاء تثبيت الحزمة <resource>packagekit-qt6</resource> "
+"واستخدام المستكشف فقط لإدارة حزم فلاتباك وسناب والوظائف الإضافية.<para>أوصى "
+"مشرفو %1 بدلاً من ذلك استخدام أداة سطر الأوامر <command>pacman</command> "
 "لإدارة الحزم.</para>"
 
 #: discover/DiscoverObject.cpp:296
@@ -106,7 +106,7 @@ msgstr "تعذّر فتح %1"
 #: discover/DiscoverObject.cpp:409
 #, kde-format
 msgid "Please make sure Snap support is installed"
-msgstr "يرجى التأكد من تثبيت دعم سناب"
+msgstr "يرجى التأكد من تثبيت حزم سناب"
 
 #: discover/DiscoverObject.cpp:412
 #, kde-format
@@ -190,7 +190,7 @@ msgstr "يبدأ التحديث آليًّا، دون واجهة رسومية"
 #: discover/main.cpp:46
 #, kde-format
 msgid "Supports appstream: url scheme"
-msgstr "يدعم مخطّط مسارات appstream:‎"
+msgstr "يوفّر مخطّط عناوين appstream:‎"
 
 #: discover/main.cpp:131
 #, kde-format
@@ -961,7 +961,7 @@ msgid ""
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
 "يرسل معلومات استخدام مجهولة المصدر إلى كِيدِي حتى نتمكن من فهم مستخدمينا بشكل "
-"أفضل. لمزيد من المعلومات ، راجع https://kde.org/privacypolicy-apps.php."
+"أفضل. لمزيد من المعلومات، راجع https://kde.org/privacypolicy-apps.php."
 
 #: discover/qml/Feedback.qml:19
 #, kde-format
@@ -1417,7 +1417,7 @@ msgstr "انسخ النص"
 #, kde-format
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
-msgstr "رسالة الخطأ نسخت. تذكر أن تبلغ %1 ، وليس كيدي."
+msgstr "رسالة الخطأ نسخت. تذكر أن تبلغ %1، وليس كيدي."
 
 #: discover/qml/UpdatesPage.qml:115
 #, kde-format

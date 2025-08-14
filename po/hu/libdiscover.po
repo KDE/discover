@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-12 00:45+0000\n"
+"POT-Creation-Date: 2025-08-14 00:43+0000\n"
 "PO-Revision-Date: 2025-05-18 20:14+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2036,12 +2036,12 @@ msgstr "Elavult"
 msgid "Downgrade"
 msgstr "Visszalépés alacsonyabb verzióra"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:113
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:112
 #, kde-format
 msgid "Failed Offline Update"
 msgstr "Sikertelen offline frissítés"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:114
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:113
 #, kde-format
 msgid ""
 "Failed to update %1 package\n"
@@ -2056,46 +2056,46 @@ msgstr[1] ""
 "%1 csomag frissítése meghiúsult\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:171
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Discover megnyitása"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:122
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:121
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "Rendszer javítása"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:126
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "Sikertelen offline frissítés javítása"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:134
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:133
 #, kde-format
 msgid "Repair Failed"
 msgstr "A javítás nem sikerült"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:134
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1<nl/>Please report this error to your distribution."
 msgstr "%1<nl/>Kérjük, jelentse ezt a hibát a disztribúciójának."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:145
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Sikeres javítás"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:167
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:159
 #, kde-format
 msgid "Offline Updates"
 msgstr "Offline frissítések"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:168
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:160
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -2161,31 +2161,31 @@ msgstr[1] "%2 (plusz %1 függőség)"
 msgid "Repository URL:"
 msgstr "Tároló:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:96
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:98
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
 #, kde-format
 msgid "System upgrade"
 msgstr "Rendszerfrissítés"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:189
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
 msgstr[0] "1 csomag frissül"
 msgstr[1] "%1 csomag frissül"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:201
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:200
 #, kde-format
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 "<h3>%1</h3>Frissítés az új %2 verzióra<br/>Nincsenek kiadási megjegyzések"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:202
 #, kde-format
 msgid ""
 "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
@@ -2194,23 +2194,23 @@ msgstr ""
 "<h3>%1</h3>Frissítés az új %2 verzióra<br/>Kiadási megjegyzések:<blockquote>"
 "%3</blockquote>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:229
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
 #, kde-format
 msgid "Present"
 msgstr "Jelenlegi"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:233
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:232
 #, kde-format
 msgid "Future"
 msgstr "Jövőbeli"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:372
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:375
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "Nincs elég hely a frissítés végrehajtásához; csak %1 érhető el."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:594
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:597
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2223,12 +2223,12 @@ msgstr ""
 "ul><nl/>Ha úgy gondolja, hogy ez egy hiba, kérjük, jelentse azt a "
 "disztribúciója csomagolójának."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:601
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:604
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Változtatások megerősítése"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:602
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:605
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2237,13 +2237,13 @@ msgstr ""
 "A frissítés az alábbi csomagokat távolítja el:<ul><li>%1</li></ul><br/>az "
 "alábbiak telepítéséhez:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:728
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:731
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:736
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:739
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2253,13 +2253,13 @@ msgstr ""
 "A(z) „%1” típus adathordozó-cseréje szükséges.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:769
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:772
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "EULA elfogadása"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:770
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:773
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2270,13 +2270,13 @@ msgstr ""
 "licencet:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:887
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:890
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "A(z) %1 csomag aláírása hiányzik a(z) %2 tárolóban"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:888
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:891
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""
