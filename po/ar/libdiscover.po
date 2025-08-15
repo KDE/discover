@@ -1297,7 +1297,7 @@ msgstr "لم يُعثر على الحزمة"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:39
 #, kde-format
 msgid "Package is already installed"
-msgstr "الحزمة مثبّتة بالفعل"
+msgstr "الحزمة مثبّتة فعلًا"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:41
 #, kde-format
@@ -1457,7 +1457,7 @@ msgstr "عُثر على حزمة معطوبة"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:103
 #, kde-format
 msgid "All packages already installed"
-msgstr "كلّ الحزم مثبّتة بالفعل"
+msgstr "كلّ الحزم مثبّتة فعلًا"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:105
 #, kde-format
