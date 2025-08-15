@@ -151,7 +151,7 @@
     <p xml:lang="zh-CN">Discover 是 KDE 的软件管理中心，它能帮助您查找并安装所需的应用程序、游戏和工具。您可以通过关键词查找程序，也可以按分类浏览程序。您还可以查看屏幕截图，阅读用户评价，选出最适合自己的应用程序。</p>
     <p xml:lang="zh-TW">利用 Discover 來尋找及安裝應用程式、遊戲及工具。您可以直接搜尋，或者從分類目錄開始瀏覽，預覽螢幕截圖和閱讀評論，以發現最佳的 App。</p>
     <p>With Discover, you can manage software from multiple sources, including your operating system's software repository, Flatpak repos, the Snap store, or even AppImages from store.kde.org.</p>
-    <p xml:lang="ar">باستخدام المستكشف ، يمكنك إدارة البرامج من مصادر متعددة ، بما في ذلك مستودع برامج نظام التشغيل الخاص بك ، ومستودعات Flatpak ، ومتجر Snap ، أو حتى AppImages من store.kde.org.</p>
+    <p xml:lang="ar">باستخدام المستكشف، يمكنك إدارة البرامج من مصادر متعددة، بما في ذلك مستودع برامج نظام التشغيل الخاص بك، ومستودعات Flatpak، ومتجر Snap، أو حتى AppImages من store.kde.org.</p>
     <p xml:lang="az">Discover ilə proqram təminatınızı bir çox mənbədən, o cümlədən əməliyyat sisteminizin proqram təminatı bazasından, Flatpak depolarından, Snap mağazasından və hətta store.kde.org saytından AppImages daxil olmaqla idarə edə bilərsiniz.</p>
     <p xml:lang="bg">С Discover можете да управлявате софтуер от множество източници, включващи хранилището на вашата дистрибуция, Flatpak, Snap, дори и от AppImages на store.kde.org.</p>
     <p xml:lang="ca">Amb el Discover podeu gestionar programari de diverses fonts, incloent-hi el repositori de programari del sistema operatiu, repositoris del Flatpak, la botiga de l'Snap, o també AppImages des de «store.kde.org».</p>
@@ -195,7 +195,7 @@
     <p xml:lang="zh-CN">您可以在 Discover 中管理多个软件来源，包括本机操作系统的软件仓库、Flatpak 软件仓库、Snap 软件商店、store.kde.org 提供的 AppImage 软件包等。</p>
     <p xml:lang="zh-TW">Discover 能幫助您管理各色來源的軟體，無論是系統內建的軟體庫、Flatpak 軟體庫、Snap 商店，甚或是來自 store.kde.org 的 AppImage。</p>
     <p>Finally, Discover also allows you to find, install, and manage add-ons for Plasma and all your favorite KDE apps!</p>
-    <p xml:lang="ar">أخيرًا ، يتيح لك المستكشف أيضًا العثور على الوظائف الإضافية وتثبيتها وإدارتها لبلازما وجميع تطبيقات كِيدِي المفضلة لديك!</p>
+    <p xml:lang="ar">أخيرًا، يتيح لك المستكشف أيضًا العثور على الوظائف الإضافية وتثبيتها وإدارتها لبلازما وجميع تطبيقات كِيدِي المفضلة لديك!</p>
     <p xml:lang="az">Nəhayət, Discover həmçinin Plazma və bütün sevdiyiniz KDE tətbiqlərini tapmaq, quraşdırmaq və idarə etməyə imkan verir!</p>
     <p xml:lang="bg">Накрая, Discover ви позволява също да намирате, инсталирате и управлявате разширения за Plasma и всички ваши любими приложения на KDE.</p>
     <p xml:lang="ca">Finalment, el Discover també permet cercar, instal·lar i gestionar complements per al Plasma i totes les aplicacions preferides del KDE!</p>
