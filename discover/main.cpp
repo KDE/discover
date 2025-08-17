@@ -149,6 +149,8 @@ int main(int argc, char **argv)
 
     KAboutData::setApplicationData(about);
 
+    // FreshCheck fc;
+
     DiscoverObject *discoverObject = nullptr;
     {
         std::unique_ptr<QCommandLineParser> parser(createParser());
