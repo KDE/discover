@@ -170,12 +170,12 @@ Kirigami.GlobalDrawer {
             State {
                 name: "full"
                 when: drawer.wideScreen
-                PropertyChanges { target: drawer; drawerOpen: true }
+                PropertyChanges { drawer.drawerOpen: true }
             },
             State {
                 name: "compact"
                 when: !drawer.wideScreen
-                PropertyChanges { target: drawer; drawerOpen: false }
+                PropertyChanges { drawer.drawerOpen: false }
             }
         ]
     }

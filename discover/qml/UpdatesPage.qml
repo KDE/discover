@@ -575,33 +575,33 @@ DiscoverPage {
     states: [
         State {
             name: "fetching"
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "Fetching updates…") }
-            PropertyChanges { target: page; footerProgress: Discover.ResourcesModel.fetchingUpdatesProgress }
-            PropertyChanges { target: page; actions: [ updateAction, refreshAction ] }
-            PropertyChanges { target: page; busy: true }
-            PropertyChanges { target: updatesView; opacity: 0 }
+            PropertyChanges { page.footerLabel: i18nc("@info", "Fetching updates…") }
+            PropertyChanges { page.footerProgress: Discover.ResourcesModel.fetchingUpdatesProgress }
+            PropertyChanges { page.actions: [ updateAction, refreshAction ] }
+            PropertyChanges { page.busy: true }
+            PropertyChanges { updatesView.opacity: 0 }
         },
         State {
             name: "progressing"
-            PropertyChanges { target: page; supportsRefreshing: false }
-            PropertyChanges { target: page; actions: [cancelUpdateAction] }
-            PropertyChanges { target: statusLabel; visible: false }
+            PropertyChanges { page.supportsRefreshing: false }
+            PropertyChanges { page.actions: [cancelUpdateAction] }
+            PropertyChanges { statusLabel.visible: false }
         },
         State {
             name: "has-updates"
-            PropertyChanges { target: page; title: i18nc("@info", "Updates") }
+            PropertyChanges { page.title: i18nc("@info", "Updates") }
             // On mobile, we want "Update" to be the primary action so it's in
             // the center, but on desktop this feels a bit awkward and it would
             // be better to have "Update" be the right-most action
-            PropertyChanges { target: page; actions: [ updateAction, refreshAction ] }
-            PropertyChanges { target: statusLabel; visible: false }
+            PropertyChanges { page.actions: [ updateAction, refreshAction ] }
+            PropertyChanges { statusLabel.visible: false }
         },
         State {
             name: "reboot"
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "Updates will be installed after the system is restarted") }
-            PropertyChanges { target: statusLabel; helpfulAction: promptRestartAction }
-            PropertyChanges { target: statusLabel; explanation: i18nc("@info", "You can keep using the system if you're not ready to restart yet.") }
-            PropertyChanges { target: statusLabel.progressBar; visible: false }
+            PropertyChanges { page.footerLabel: i18nc("@info", "Updates will be installed after the system is restarted") }
+            PropertyChanges { statusLabel.helpfulAction: promptRestartAction }
+            PropertyChanges { statusLabel.explanation: i18nc("@info", "You can keep using the system if you're not ready to restart yet.") }
+            PropertyChanges { statusLabel.progressBar.visible: false }
             StateChangeScript {
                 script: if (resourcesUpdatesModel.readyToReboot) {
                     if (actionAfterUpdateCombo.currentIndex === 1) {
@@ -614,38 +614,38 @@ DiscoverPage {
         },
         State {
             name: "now-uptodate"
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
-            PropertyChanges { target: page; actions: [refreshAction] }
-            PropertyChanges { target: statusLabel; explanation: "" }
-            PropertyChanges { target: statusLabel.progressBar; visible: false }
+            PropertyChanges { page.footerLabel: i18nc("@info", "Up to date") }
+            PropertyChanges { page.actions: [refreshAction] }
+            PropertyChanges { statusLabel.explanation: "" }
+            PropertyChanges { statusLabel.progressBar.visible: false }
         },
         State {
             name: "uptodate"
-            PropertyChanges { target: page; footerLabel: i18nc("@info", "Up to date") }
-            PropertyChanges { target: page; actions: [refreshAction] }
-            PropertyChanges { target: statusLabel; explanation: "" }
-            PropertyChanges { target: statusLabel.progressBar; visible: false }
+            PropertyChanges { page.footerLabel: i18nc("@info", "Up to date") }
+            PropertyChanges { page.actions: [refreshAction] }
+            PropertyChanges { statusLabel.explanation: "" }
+            PropertyChanges { statusLabel.progressBar.visible: false }
         },
         State {
             name: "medium"
-            PropertyChanges { target: page; title: i18nc("@info", "Up to date") }
-            PropertyChanges { target: page; actions: [refreshAction] }
-            PropertyChanges { target: statusLabel; explanation: "" }
-            PropertyChanges { target: statusLabel.progressBar; visible: false }
+            PropertyChanges { page.title: i18nc("@info", "Up to date") }
+            PropertyChanges { page.actions: [refreshAction] }
+            PropertyChanges { statusLabel.explanation: "" }
+            PropertyChanges { statusLabel.progressBar.visible: false }
         },
         State {
             name: "low"
-            PropertyChanges { target: page; title: i18nc("@info", "Should check for updates") }
-            PropertyChanges { target: page; actions: [refreshAction] }
-            PropertyChanges { target: statusLabel; explanation: "" }
-            PropertyChanges { target: statusLabel.progressBar; visible: false }
+            PropertyChanges { page.title: i18nc("@info", "Should check for updates") }
+            PropertyChanges { page.actions: [refreshAction] }
+            PropertyChanges { statusLabel.explanation: "" }
+            PropertyChanges { statusLabel.progressBar.visible: false }
         },
         State {
             name: "unknown"
-            PropertyChanges { target: page; title: i18nc("@info", "Time of last update unknown") }
-            PropertyChanges { target: page; actions: [refreshAction] }
-            PropertyChanges { target: statusLabel; explanation: "" }
-            PropertyChanges { target: statusLabel.progressBar; visible: false }
+            PropertyChanges { page.title: i18nc("@info", "Time of last update unknown") }
+            PropertyChanges { page.actions: [refreshAction] }
+            PropertyChanges { statusLabel.explanation: "" }
+            PropertyChanges { statusLabel.progressBar.visible: false }
         }
     ]
 }
