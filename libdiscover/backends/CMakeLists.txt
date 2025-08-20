@@ -34,7 +34,9 @@ if (KF6Attica_FOUND AND KF6NewStuff_FOUND AND AppStreamQt_FOUND)
    add_subdirectory(KNSBackend)
 endif()
 
-if (packagekitqt6_FOUND AND AppStreamQt_FOUND)
+
+option(BUILD_PackageKitBackend "Build PackageKit support." "${packagekitqt6_FOUND}")
+if (BUILD_PackageKitBackend AND AppStreamQt_FOUND)
     add_subdirectory(PackageKitBackend)
 endif()
 
