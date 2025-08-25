@@ -76,6 +76,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QObject
                    currentApplicationBackendChanged)
     Q_PROPERTY(DiscoverAction *updateAction READ updateAction CONSTANT)
     Q_PROPERTY(int fetchingUpdatesProgress READ fetchingUpdatesProgress NOTIFY fetchingUpdatesProgressChanged)
+    Q_PROPERTY(QString remainingDescription READ remainingDescription NOTIFY fetchingUpdatesProgressChanged)
     Q_PROPERTY(QString applicationSourceName READ applicationSourceName NOTIFY currentApplicationBackendChanged)
     Q_PROPERTY(InlineMessage *inlineMessage READ inlineMessage NOTIFY inlineMessageChanged)
     Q_PROPERTY(QString distroName READ distroName CONSTANT)
@@ -124,6 +125,7 @@ public:
     {
         return m_inlineMessage.data();
     }
+    QString remainingDescription() const;
 
 public Q_SLOTS:
     void installApplication(AbstractResource *app, const AddonList &addons);
