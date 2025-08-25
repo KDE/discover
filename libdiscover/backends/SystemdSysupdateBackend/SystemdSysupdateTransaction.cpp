@@ -40,12 +40,12 @@ SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resou
         qCDebug(SYSTEMDSYSUPDATE_LOG) << "Created sysupdate1::Job with path " << path;
 
         // need to keep a reference to this to be able to cancel
-        m_job = new org::freedesktop::sysupdate1::Job(SYSUPDATE1_SERVICE, path.path(), QDBusConnection::systemBus(), this);
+        m_job = new org::freedesktop::sysupdate1::Job(SYSUPDATE1_SERVICE, path.path(), SystemdSysupdateBackend::OUR_BUS(), this);
         m_job->setInteractiveAuthorizationAllowed(true); // cancel may require authorization
         setCancellable(true);
 
         // Don't need to keep this around because we're just connecting to some signals (and it'll be deleted by Qt with the parent)
-        auto *properties = new org::freedesktop::DBus::Properties(SYSUPDATE1_SERVICE, path.path(), QDBusConnection::systemBus(), this);
+        auto *properties = new org::freedesktop::DBus::Properties(SYSUPDATE1_SERVICE, path.path(), SystemdSysupdateBackend::OUR_BUS(), this);
         connect(properties,
                 &org::freedesktop::DBus::Properties::PropertiesChanged,
                 this,

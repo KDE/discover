@@ -28,7 +28,7 @@ const auto path = QStringLiteral("/org/freedesktop/sysupdate1");
 SystemdSysupdateBackend::SystemdSysupdateBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
-    , m_manager(new org::freedesktop::sysupdate1::Manager(SYSUPDATE1_SERVICE, path, QDBusConnection::systemBus(), this))
+    , m_manager(new org::freedesktop::sysupdate1::Manager(SYSUPDATE1_SERVICE, path, OUR_BUS(), this))
     , m_nam(new QNetworkAccessManager(this))
 {
     qDBusRegisterMetaType<Sysupdate::Target>();
@@ -46,7 +46,7 @@ int SystemdSysupdateBackend::updatesCount() const
 
 bool SystemdSysupdateBackend::isValid() const
 {
-    auto ping = org::freedesktop::DBus::Peer(SYSUPDATE1_SERVICE, path, QDBusConnection::systemBus()).Ping();
+    auto ping = org::freedesktop::DBus::Peer(SYSUPDATE1_SERVICE, path, OUR_BUS()).Ping();
     ping.waitForFinished();
     return !ping.isError();
 }
@@ -140,14 +140,14 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
     for (const auto &[targetClass, name, objectPath] : targetsReply.value()) {
         qCDebug(SYSTEMDSYSUPDATE_LOG) << "Target:" << name << targetClass << objectPath.path();
 
-        auto target = new org::freedesktop::sysupdate1::Target(SYSUPDATE1_SERVICE, objectPath.path(), QDBusConnection::systemBus(), this);
+        auto target = new org::freedesktop::sysupdate1::Target(SYSUPDATE1_SERVICE, objectPath.path(), OUR_BUS(), this);
         target->setInteractiveAuthorizationAllowed(true); // in case Update() needs authentication
         const auto appStream = co_await target->GetAppStream();
         if (appStream.isError()) {
             qCCritical(SYSTEMDSYSUPDATE_LOG) << "Failed to get appstream for target (" << name << ") :" << appStream.error().message();
             continue;
         }
-        auto appStreamUrls = appStream.value();
+        const auto appStreamUrls = appStream.value();
         if (appStreamUrls.isEmpty()) {
             qCritical(SYSTEMDSYSUPDATE_LOG) << "No appstream URLs found for target:" << name;
             continue;
@@ -226,6 +226,13 @@ void SystemdSysupdateBackend::endFetch()
     if (m_fetchOperationCount == 0) {
         Q_EMIT contentsChanged();
     }
+}
+
+QDBusConnection SystemdSysupdateBackend::OUR_BUS()
+{
+    static const QDBusConnection connection =
+        qEnvironmentVariableIntValue("DISCOVER_TEST_SYSUPDATE") != 0 ? QDBusConnection::sessionBus() : QDBusConnection::systemBus();
+    return connection;
 }
 
 #include "SystemdSysupdateBackend.moc"

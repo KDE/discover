@@ -37,6 +37,8 @@ public:
     void checkForUpdates() override;
     QString displayName() const override;
 
+    static QDBusConnection OUR_BUS();
+
 private:
     void beginFetch();
     void endFetch();
