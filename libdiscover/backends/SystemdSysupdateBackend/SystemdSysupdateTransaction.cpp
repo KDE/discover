@@ -20,6 +20,7 @@ SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resou
 {
     // Can't cancel until we have a job ID
     setCancellable(false);
+    setStatus(DownloadingStatus);
 
     auto watcher = new QDBusPendingCallWatcher(updateCall, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, resource](QDBusPendingCallWatcher *watcher) {
