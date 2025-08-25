@@ -149,16 +149,32 @@ class MockTarget(dbus.service.Object):
 
     @dbus.service.method(TARGET_INTERFACE, in_signature='sb', out_signature='s')
     def Describe(self, version, offline):
-        description = {
-            "version": version,
-            "size": 1024 * 1024 * 100,  # 100MB
-            "changelog": f"Changes in version {version}:\n- Bug fixes\n- Performance improvements",
-            "obsolete": version < self._current_version,
-            "current": version == self._current_version,
-            "available": version in self._available_versions,
-            "installed": version <= self._current_version
-        }
-        return json.dumps(description)
+        description = f"""{
+                "version" : "{version}",
+                "newest" : true,
+                "available" : true,
+                "installed" : true,
+                "obsolete" : false,
+                "protected" : true,
+                "incomplete" : false,
+                "changelogUrls" : [],
+                "contents" : [
+                    {
+                        "type" : "regular-file",
+                        "path" : "/system/kde-linux_202508240429.erofs",
+                        "mtime" : 1756074882866705,
+                        "mode" : 416
+                    },
+                    {
+                        "type" : "regular-file",
+                        "path" : "/boot/EFI/Linux/kde-linux_202508240429.efi",
+                        "mtime" : 1756082194000000,
+                        "mode" : 384
+                    }
+                ]
+            }
+            """
+        return description
 
     @dbus.service.method(TARGET_INTERFACE, out_signature='s')
     def CheckNew(self):
