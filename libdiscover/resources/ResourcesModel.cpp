@@ -390,4 +390,19 @@ void ResourcesModel::setInlineMessage(const QSharedPointer<InlineMessage> &inlin
     Q_EMIT inlineMessageChanged(inlineMessage);
 }
 
+QString ResourcesModel::remainingDescription() const
+{
+    QStringList ret;
+    for (auto backend : std::as_const(m_backends)) {
+        if (backend->fetchingUpdatesProgress() < 100) {
+            ret += i18nc("@info:status %1 is the name of a source of updates", "Refreshing %1", backend->displayName());
+        }
+    }
+    if (ret.isEmpty()) {
+        return {};
+    }
+    ret.removeDuplicates();
+    return ret.join("\n"_L1);
+}
+
 #include "moc_ResourcesModel.cpp"
