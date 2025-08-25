@@ -51,6 +51,7 @@ target_link_libraries(plasma-discover PUBLIC
                                      KF6::JobWidgets
                                      KF6::StatusNotifierItem
                                      KF6::I18nQml
+                                     KirigamiApp
                                      Qt::Widgets
                                      Qt::Quick
                                      Qt::QuickControls2
