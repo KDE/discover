@@ -165,9 +165,9 @@ SystemdSysupdateTransaction *SystemdSysupdateResource::update()
     SystemdSysupdateUpdateReply reply = m_target->Update(toVersion, 0 /* flags - currently unused and expected to be 0 */);
 
     auto transaction = new SystemdSysupdateTransaction(this, reply);
-    connect(transaction, &Transaction::statusChanged, this, [this, toVersion](Transaction::Status status) {
+    connect(transaction, &Transaction::statusChanged, this, [this](Transaction::Status status) {
         if (status == Transaction::DoneStatus) {
-            m_targetInfo.installedVersion = toVersion;
+            m_targetInfo.installedVersion = m_targetInfo.availableVersion;
             Q_EMIT stateChanged();
         }
     });
