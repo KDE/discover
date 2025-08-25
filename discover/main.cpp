@@ -10,14 +10,12 @@
 #include "DiscoverVersion.h"
 #include <DiscoverBackendsFactory.h>
 #include <KAboutData>
-#include <KCrash>
 #include <KDBusService>
 #include <KLocalizedString>
 #include <KWindowSystem>
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QDir>
-#include <QQuickStyle>
 #include <QStandardPaths>
 #include <QSurfaceFormat>
 #include <QTextStream>
@@ -26,6 +24,7 @@
 #include <QtWebView>
 #endif
 
+#include <KirigamiApp>
 #include <QProcessEnvironment>
 
 std::unique_ptr<QCommandLineParser> createParser()
@@ -111,19 +110,11 @@ int main(int argc, char **argv)
     QtWebView::initialize();
 #endif
 
-    auto format = QSurfaceFormat::defaultFormat();
-    format.setOption(QSurfaceFormat::ResetNotification);
-    QSurfaceFormat::setDefaultFormat(format);
+    KirigamiApp::App app(argc, argv);
+    KirigamiApp kapp;
 
-    // Default to org.kde.desktop style unless the user forces another style
-    if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
-        QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
-    }
-    QApplication app(argc, argv);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("plasmadiscover")));
-    app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
     app.setQuitLockEnabled(false);
-    KCrash::initialize();
     KLocalizedString::setApplicationDomain("plasma-discover");
     KAboutData about(QStringLiteral("discover"),
                      i18n("Discover"),

@@ -41,7 +41,7 @@ find_package(AppStreamQt 1.0.4 CONFIG REQUIRED)
 find_package(KF6Attica 5.23 CONFIG)
 find_package(KF6NewStuff 5.53 CONFIG)
 
-find_package(KF6KirigamiAddons REQUIRED)
+find_package(KF6KirigamiAddons 1.9.0 REQUIRED)
 set_package_properties(KF6KirigamiAddons PROPERTIES
     TYPE REQUIRED
     PURPOSE "Provides additional visual components"
