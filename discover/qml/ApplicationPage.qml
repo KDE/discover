@@ -739,8 +739,7 @@ DiscoverPage {
         // Reviews section
         ColumnLayout {
             spacing: Kirigami.Units.smallSpacing
-            visible: (reviewsSheet.sortModel.count > 0 || reviewsModel.fetching || reviewsError.hasError)
-                     && !appInfo.isTechnicalPackage
+            visible: !appInfo.isTechnicalPackage
 
             Kirigami.Heading {
                 Layout.fillWidth: true
@@ -768,13 +767,31 @@ DiscoverPage {
                 explanation: reviewsModel.backend ? reviewsModel.backend.errorMessage : ""
             }
 
+            Kirigami.PlaceholderMessage {
+                Layout.fillWidth: true
+                visible: !reviewsStats.visible && !reviewsLoadingPlaceholder.visible
+                text: i18nc("@Info placeholder message", "No reviews posted yet")
+                explanation: appInfo.application.isInstalled ? "" : i18nc("@info placeholder explanation", "Install to write a review")
+                helpfulAction: Kirigami.Action {
+                    enabled: appInfo.application.isInstalled
+
+                    text: appInfo.application.isInstalled ? i18n("Write a Review") : i18n("Install to Write a Review")
+                    icon.name: "document-edit"
+
+                    onTriggered: {
+                        reviewsSheet.openReviewDialog()
+                    }
+                }
+            }
+
             ReviewsStats {
-                visible: reviewsModel.count > 3
+                id: reviewsStats
+                visible: reviewsModel.count > 0
                 Layout.fillWidth: true
                 application: appInfo.application
                 reviewsModel: reviewsModel
                 model: reviewsSheet.model
-                visibleReviews: appInfo.visibleReviews
+                visibleReviews: Math.min(reviewsModel.count, appInfo.visibleReviews)
                 compact: appInfo.compact
             }
 
@@ -798,6 +815,7 @@ DiscoverPage {
                     visible: transactionListener.resource.state !== Discover.AbstractResource.Broken
                           && reviewsModel.backend
                           && !reviewsError.visible
+                          && reviewsStats.visible
                           && reviewsModel.backend.isResourceSupported(appInfo.application)
                     enabled: appInfo.application.isInstalled
 
