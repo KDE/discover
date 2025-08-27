@@ -215,7 +215,7 @@ Kirigami.ApplicationWindow {
 
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
-                width: parent.width - (Kirigami.Units.largeSpacing * 8)
+                width: parent.width - (Kirigami.Units.gridUnit * 2)
                 visible: page.errorMessage !== ""
                 type: Kirigami.PlaceholderMessage.Type.Actionable // All error messages must be actionable
                 icon.name: "emblem-warning"
