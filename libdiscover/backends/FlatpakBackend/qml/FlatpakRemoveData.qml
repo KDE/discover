@@ -33,6 +33,12 @@ Kirigami.InlineMessage {
         }
     }
 
+    onVisibleChanged: {
+        if (visible) {
+            actions[0].enabled = true
+        }
+    }
+
     actions: [
         Kirigami.Action {
             icon.name: "delete"
