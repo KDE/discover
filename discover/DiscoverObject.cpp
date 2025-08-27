@@ -409,12 +409,13 @@ void DiscoverObject::openApplication(const QUrl &url)
                     showError(i18n("Please make sure Snap support is installed"));
                 } else {
                     const QString errorText = i18n(
-                        "Could not open %1 because it "
-                        "was not found in any available software repositories.",
+                        "The requested application could not be found "
+                        "in any available software repositories");
+                    const QString errorExplanation = xi18nc(
+                        "@info %1 is an additional error reference",
+                        "Please report this issue to the "
+                        "packagers of your distribution.<nl/>(%1)",
                         url.toDisplayString());
-                    const QString errorExplanation = i18n(
-                        "Please report this "
-                        "issue to the packagers of your distribution.");
                     QString buttonIcon = QStringLiteral("tools-report-bug");
                     QString buttonText = i18n("Report This Issue");
                     QString buttonUrl = KOSRelease().bugReportUrl();
