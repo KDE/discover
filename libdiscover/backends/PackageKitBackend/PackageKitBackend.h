@@ -202,5 +202,4 @@ private:
     QPointer<PKResolveTransaction> m_resolveTransaction;
     QStringList m_globalHints;
     bool m_allPackagesLoaded = false;
-    DiscoverAction *m_reportToDistroAction;
 };

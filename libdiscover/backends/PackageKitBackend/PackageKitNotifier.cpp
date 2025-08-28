@@ -131,7 +131,11 @@ void PackageKitNotifier::checkOfflineUpdates()
             connect(trans, &PackageKit::Transaction::errorCode, this, [](PackageKit::Transaction::Error /*error*/, const QString &details) {
                 KNotification::event(QStringLiteral("OfflineUpdateRepairFailed"),
                                      i18n("Repair Failed"),
-                                     xi18nc("@info", "%1<nl/>Please report this error to your distribution.", details),
+                                     xi18nc("@info %1 is an error message and %3 is the name of the operating system",
+                                            "%1<nl/>Please <link url='%2'>report this error to %3</link>.",
+                                            details,
+                                            KOSRelease().bugReportUrl(),
+                                            KOSRelease().name()),
                                      KNotification::Persistent,
                                      QStringLiteral("discoverabstractnotifier"));
             });

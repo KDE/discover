@@ -133,18 +133,7 @@ PackageKitBackend::PackageKitBackend(QObject *parent)
     , m_refresher(nullptr)
     , m_isFetching(0)
     , m_reviews(OdrsReviewsBackend::global())
-    , m_reportToDistroAction(
-          new DiscoverAction(u"tools-report-bug-symbolic"_s,
-                             i18nc("@action:button %1 is the distro name", "Report This Issue to %1", AppStreamIntegration::global()->osRelease()->name()),
-                             this))
 {
-    connect(m_reportToDistroAction, &DiscoverAction::triggered, this, [] {
-        const auto url = QUrl(AppStreamIntegration::global()->osRelease()->bugReportUrl());
-        if (!QDesktopServices::openUrl(url)) {
-            qCWarning(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "Failed to open bug report url" << url;
-        }
-    });
-
     QTimer *t = new QTimer(this);
     connect(t, &QTimer::timeout, this, &PackageKitBackend::checkForUpdates);
     t->setInterval(60 * 60 * 1000);
@@ -1176,8 +1165,10 @@ InlineMessage *PackageKitBackend::explainDysfunction() const
     if (!PackageKit::Daemon::isRunning()) {
         return new InlineMessage(InlineMessage::Error,
                                  u"run-build-prune-symbolic"_s,
-                                 i18nc("@info", "The background service (PackageKit) stopped unexpectedly. It may have crashed."),
-                                 m_reportToDistroAction);
+                                 i18nc("@info %2 is the name of the operating system",
+                                       "The PackageKit background service stopped unexpectedly.<nl/></nl/>Please <link url='%1'>report this issue to %2</link>",
+                                       KOSRelease().bugReportUrl(),
+                                       KOSRelease().name()));
     }
 
     return AbstractResourcesBackend::explainDysfunction();

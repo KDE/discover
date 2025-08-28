@@ -308,6 +308,8 @@ Kirigami.ApplicationWindow {
             // But we do need to put the label into a Layout of some sort so we
             // can limit the width of the sheet.
             ColumnLayout {
+                spacing: Kirigami.Units.largeSpacing
+
                 QQC2.Label {
                     id: messageLabel
 
@@ -318,15 +320,10 @@ Kirigami.ApplicationWindow {
                     wrapMode: Text.WordWrap
                 }
 
-                RowLayout {
-                    Item { Layout.fillWidth: true }
-                    QQC2.Button {
-                        icon.name: "tools-report-bug"
-                        text: i18n("Report this issue")
-                        onClicked: {
-                            Qt.openUrlExternally(Discover.ResourcesModel.distroBugReportUrl())
-                        }
-                    }
+                Kirigami.UrlButton {
+                    Layout.fillWidth: true
+                    text: i18nc("@info %1 is the name of the operating system", "Report this issue to %1", Discover.ResourcesModel.distroName())
+                    url: Discover.ResourcesModel.distroBugReportUrl()
                 }
             }
 

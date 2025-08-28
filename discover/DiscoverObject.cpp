@@ -180,15 +180,13 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
             const QString distroName = osRelease.name();
             const bool isArch = osRelease.id() == u"arch"_s || osRelease.idLike().contains(u"arch"_s);
             if (!found) {
-                QString errorText =
-                    i18nc("@title %1 is the distro name", "%1 is not configured for installing apps through Discover—only app add-ons", distroName);
-                QString errorExplanation = xi18nc("@info:usagetip %1 is the distro name",
+                QString errorText = i18nc("@title %1 is the name", "%1 is not configured for installing apps through Discover—only app add-ons", distroName);
+                QString errorExplanation = xi18nc("@info:usagetip %2 is the name of the operating system",
                                                   "To use Discover for apps, install your preferred module on the <interface>Settings"
-                                                  "</interface> page, under <interface>Missing Backends</interface>.");
-                QString buttonIcon = QStringLiteral("tools-report-bug");
-                QString buttonText = i18nc("@action:button %1 is the distro name", "Report This Issue to %1", distroName);
-                QString buttonUrl = osRelease.bugReportUrl();
-
+                                                  "</interface> page, under <interface>Missing Backends</interface>."
+                                                  "<nl/><nl/>Please <link url='%1'>report this issue to %2.</link>",
+                                                  osRelease.bugReportUrl(),
+                                                  distroName);
                 if (isArch) {
                     errorExplanation = xi18nc("@info:usagetip %1 is the distro name; in this case it always contains 'Arch Linux'",
                                               "To use Discover for apps, install"
@@ -196,12 +194,9 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
                                               " using the <command>pacman</command> package manager.<nl/><nl/>"
                                               " Review <link url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's packaging for Discover</link>",
                                               distroName);
-                    buttonIcon = QString();
-                    buttonText = QString();
-                    buttonUrl = QString();
                 }
 
-                Q_EMIT openErrorPage(errorText, errorExplanation, buttonText, buttonIcon, buttonUrl);
+                Q_EMIT openErrorPage(errorText, errorExplanation, QString(), QString(), QString());
             } else if (hasPackageKit && isArch) {
                 const QString errorText = xi18nc("@info:usagetip %1 is the distro name",
                                                  "Support for managing packages from %1 is incomplete; you may experience any number of problems."
@@ -411,15 +406,13 @@ void DiscoverObject::openApplication(const QUrl &url)
                     const QString errorText = i18n(
                         "The requested application could not be found "
                         "in any available software repositories");
-                    const QString errorExplanation = xi18nc(
-                        "@info %1 is an additional error reference",
-                        "Please report this issue to the "
-                        "packagers of your distribution.<nl/>(%1)",
-                        url.toDisplayString());
-                    QString buttonIcon = QStringLiteral("tools-report-bug");
-                    QString buttonText = i18n("Report This Issue");
-                    QString buttonUrl = KOSRelease().bugReportUrl();
-                    Q_EMIT openErrorPage(errorText, errorExplanation, buttonText, buttonIcon, buttonUrl);
+                    const QString errorExplanation = xi18nc("@info %1 is an additional error reference and %3 is the name of the operating system",
+                                                            "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</link>",
+                                                            url.toDisplayString(),
+                                                            KOSRelease().bugReportUrl(),
+                                                            KOSRelease().name());
+
+                    Q_EMIT openErrorPage(errorText, errorExplanation, QString(), QString(), QString());
                 }
             });
         },
