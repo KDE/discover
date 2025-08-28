@@ -312,14 +312,9 @@ DiscoverPage {
         refreshing = false
     }
 
-    readonly property Item report: ColumnLayout {
+    readonly property Item report: Item {
         parent: page
         anchors.fill: parent
-        anchors.margins: Kirigami.Units.largeSpacing * 2
-        Item {
-            Layout.fillHeight: true
-            width: 1
-        }
 
         Kirigami.Action {
             id: promptRestartAction
@@ -331,6 +326,11 @@ DiscoverPage {
 
         Kirigami.LoadingPlaceholder {
             id: statusLabel
+
+            width: parent.width - Kirigami.Units.gridUnit * 2
+            // Fixed Y location so it doesn't jump around as backends load
+            y: (parent.height / 2) - (Kirigami.Units.gridUnit * 3)
+
             icon.name: {
                 if (page.footerProgress === 0 && page.footerLabel !== "" && !page.busy) {
                     return "update-none"
@@ -341,11 +341,19 @@ DiscoverPage {
             text: page.footerLabel
             determinate: true
             progressBar.value: page.footerProgress
-        }
 
-        Item {
-            Layout.fillHeight: true
-            width: 1
+            QQC2.Label {
+                Layout.fillWidth: true
+
+                visible: text.length > 0
+                opacity: 0.75
+
+                text: Discover.ResourcesModel.remainingDescription
+
+                horizontalAlignment: Qt.AlignHCenter
+                wrapMode: Text.WordWrap
+
+            }
         }
     }
     ListView {
@@ -576,7 +584,6 @@ DiscoverPage {
         State {
             name: "fetching"
             PropertyChanges { page.footerLabel: i18nc("@info", "Fetching updates…") }
-            PropertyChanges { statusLabel.explanation: Discover.ResourcesModel.remainingDescription }
             PropertyChanges { page.footerProgress: Discover.ResourcesModel.fetchingUpdatesProgress }
             PropertyChanges { page.actions: [ updateAction, refreshAction ] }
             PropertyChanges { page.busy: true }
