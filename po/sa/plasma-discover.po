@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-24 00:43+0000\n"
+"POT-Creation-Date: 2025-08-28 00:44+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -107,29 +107,35 @@ msgid "Please make sure Snap support is installed"
 msgstr "कृपया सुनिश्चितं कुर्वन्तु यत् स्नैप समर्थनं संस्थापितम् अस्ति"
 
 #: discover/DiscoverObject.cpp:412
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Could not open %1 because it was not found in any available software "
+#| "repositories."
 msgid ""
-"Could not open %1 because it was not found in any available software "
-"repositories."
+"The requested application could not be found in any available software "
+"repositories"
 msgstr "%1 उद्घाटयितुं न शक्तवान् यतः एतत् कस्मिन् अपि उपलब्धतन्त्राश्ः-भण्डारे न प्राप्तम् ।."
 
 #: discover/DiscoverObject.cpp:416
-#, kde-format
-msgid "Please report this issue to the packagers of your distribution."
+#, fuzzy, kde-kuit-format
+#| msgid "Please report this issue to the packagers of your distribution."
+msgctxt "@info %1 is an additional error reference"
+msgid ""
+"Please report this issue to the packagers of your distribution.<nl/>(%1)"
 msgstr "कृपया एतत् विषयं स्वस्य वितरणस्य संकुलकर्तृभ्यः सूचयन्तु ।."
 
-#: discover/DiscoverObject.cpp:419
+#: discover/DiscoverObject.cpp:420
 #, kde-format
 msgid "Report This Issue"
 msgstr "अस्य मुद्देः सूचनां ददातु"
 
-#: discover/DiscoverObject.cpp:479 discover/DiscoverObject.cpp:481
+#: discover/DiscoverObject.cpp:480 discover/DiscoverObject.cpp:482
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "डिस्कोवर्"
 
-#: discover/DiscoverObject.cpp:482
+#: discover/DiscoverObject.cpp:483
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -552,85 +558,98 @@ msgstr "%1 कृते पटल-चित्रम् उपलब्धं �
 msgid "What's New"
 msgstr "किं नवीनम्"
 
-#: discover/qml/ApplicationPage.qml:747
+#: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Reviews"
 msgstr "समीक्षाः"
 
-#: discover/qml/ApplicationPage.qml:758
+#: discover/qml/ApplicationPage.qml:757
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "%1 कृते समीक्षाः आरोपयति"
 
-#: discover/qml/ApplicationPage.qml:767
+#: discover/qml/ApplicationPage.qml:766
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "%1 कृते समीक्षाः अस्थायीरूपेण अनुपलब्धाः सन्ति"
 
-#: discover/qml/ApplicationPage.qml:789
+#: discover/qml/ApplicationPage.qml:773
+#, kde-format
+msgctxt "@Info placeholder message"
+msgid "No reviews posted yet"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:774
+#, fuzzy, kde-format
+#| msgid "Install to Write a Review"
+msgctxt "@info placeholder explanation"
+msgid "Install to write a review"
+msgstr "यदि भवान् समीक्षां लिखितुम् इच्छति तर्हि संस्थापयतु"
+
+#: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
+#, kde-format
+msgid "Write a Review"
+msgstr "समीक्षां लिखन्तु"
+
+#: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
+#, kde-format
+msgid "Install to Write a Review"
+msgstr "यदि भवान् समीक्षां लिखितुम् इच्छति तर्हि संस्थापयतु"
+
+#: discover/qml/ApplicationPage.qml:806
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "सर्वाणि समीक्षाः दर्शयतु"
 
-#: discover/qml/ApplicationPage.qml:804
-#, kde-format
-msgid "Write a Review"
-msgstr "समीक्षां लिखन्तु"
-
-#: discover/qml/ApplicationPage.qml:804
-#, kde-format
-msgid "Install to Write a Review"
-msgstr "यदि भवान् समीक्षां लिखितुम् इच्छति तर्हि संस्थापयतु"
-
-#: discover/qml/ApplicationPage.qml:826
+#: discover/qml/ApplicationPage.qml:844
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr "बाह्यलिङ्काः"
 
-#: discover/qml/ApplicationPage.qml:844
+#: discover/qml/ApplicationPage.qml:862
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
 msgstr "दस्तावेजीकरणं पठन्तु"
 
-#: discover/qml/ApplicationPage.qml:855
+#: discover/qml/ApplicationPage.qml:873
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "परियोजनायाः जालपुटं पश्यन्तु"
 
-#: discover/qml/ApplicationPage.qml:865
+#: discover/qml/ApplicationPage.qml:883
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
 msgstr "परियोजनायाः कृते दानं कुर्वन्तु"
 
-#: discover/qml/ApplicationPage.qml:875
+#: discover/qml/ApplicationPage.qml:893
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "त्रुटिं प्रतिवेदयतु"
 
-#: discover/qml/ApplicationPage.qml:885
+#: discover/qml/ApplicationPage.qml:903
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
 msgstr "योगदानं दातुं आरभत"
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:932
 #, kde-format
 msgid "All Licenses"
 msgstr "सर्वे अनुज्ञापत्राणि"
 
-#: discover/qml/ApplicationPage.qml:952
+#: discover/qml/ApplicationPage.qml:970
 #, kde-format
 msgid "Content Rating"
 msgstr "सामग्रीमूल्याङ्कनम्"
 
-#: discover/qml/ApplicationPage.qml:975
+#: discover/qml/ApplicationPage.qml:993
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"

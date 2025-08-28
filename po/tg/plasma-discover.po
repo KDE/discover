@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-24 00:43+0000\n"
+"POT-Creation-Date: 2025-08-28 00:44+0000\n"
 "PO-Revision-Date: 2020-08-27 11:51+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -94,27 +94,29 @@ msgstr ""
 #: discover/DiscoverObject.cpp:412
 #, kde-format
 msgid ""
-"Could not open %1 because it was not found in any available software "
-"repositories."
+"The requested application could not be found in any available software "
+"repositories"
 msgstr ""
 
 #: discover/DiscoverObject.cpp:416
-#, kde-format
-msgid "Please report this issue to the packagers of your distribution."
+#, kde-kuit-format
+msgctxt "@info %1 is an additional error reference"
+msgid ""
+"Please report this issue to the packagers of your distribution.<nl/>(%1)"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:419
+#: discover/DiscoverObject.cpp:420
 #, kde-format
 msgid "Report This Issue"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:479 discover/DiscoverObject.cpp:481
+#: discover/DiscoverObject.cpp:480 discover/DiscoverObject.cpp:482
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Кашфиёт"
 
-#: discover/DiscoverObject.cpp:482
+#: discover/DiscoverObject.cpp:483
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -493,93 +495,106 @@ msgstr ""
 msgid "What's New"
 msgstr "Навигариҳо"
 
-#: discover/qml/ApplicationPage.qml:747
+#: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Reviews"
 msgstr "Тақризҳо"
 
-#: discover/qml/ApplicationPage.qml:758
+#: discover/qml/ApplicationPage.qml:757
 #, fuzzy, kde-format
 #| msgid "Reviews"
 msgid "Loading reviews for %1"
 msgstr "Тақризҳо"
 
-#: discover/qml/ApplicationPage.qml:767
+#: discover/qml/ApplicationPage.qml:766
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:789
+#: discover/qml/ApplicationPage.qml:773
+#, kde-format
+msgctxt "@Info placeholder message"
+msgid "No reviews posted yet"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:774
+#, fuzzy, kde-format
+#| msgid "Write a review!"
+msgctxt "@info placeholder explanation"
+msgid "Install to write a review"
+msgstr "Тақризеро нависед!"
+
+#: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
+#, fuzzy, kde-format
+#| msgid "Write a review!"
+msgid "Write a Review"
+msgstr "Тақризеро нависед!"
+
+#: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
+#, fuzzy, kde-format
+#| msgid "Write a review!"
+msgid "Install to Write a Review"
+msgstr "Тақризеро нависед!"
+
+#: discover/qml/ApplicationPage.qml:806
 #, fuzzy, kde-format
 #| msgid "Review..."
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Тақриз..."
 
-#: discover/qml/ApplicationPage.qml:804
-#, fuzzy, kde-format
-#| msgid "Write a review!"
-msgid "Write a Review"
-msgstr "Тақризеро нависед!"
-
-#: discover/qml/ApplicationPage.qml:804
-#, fuzzy, kde-format
-#| msgid "Write a review!"
-msgid "Install to Write a Review"
-msgstr "Тақризеро нависед!"
-
-#: discover/qml/ApplicationPage.qml:826
+#: discover/qml/ApplicationPage.qml:844
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:844
+#: discover/qml/ApplicationPage.qml:862
 #, fuzzy, kde-format
 #| msgid "Documentation:"
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
 msgstr "Ҳуҷҷатнигорӣ:"
 
-#: discover/qml/ApplicationPage.qml:855
+#: discover/qml/ApplicationPage.qml:873
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:865
+#: discover/qml/ApplicationPage.qml:883
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:875
+#: discover/qml/ApplicationPage.qml:893
 #, fuzzy, kde-format
 #| msgid "Report a Problem:"
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "Гузориш дар бораи мушкилӣ:"
 
-#: discover/qml/ApplicationPage.qml:885
+#: discover/qml/ApplicationPage.qml:903
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
 msgstr ""
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:932
 #, fuzzy, kde-format
 #| msgid "License:"
 msgid "All Licenses"
 msgstr "Иҷозатнома:"
 
-#: discover/qml/ApplicationPage.qml:952
+#: discover/qml/ApplicationPage.qml:970
 #, fuzzy, kde-format
 #| msgid "Enter a rating"
 msgid "Content Rating"
 msgstr "Баҳо диҳед"
 
-#: discover/qml/ApplicationPage.qml:975
+#: discover/qml/ApplicationPage.qml:993
 #, fuzzy, kde-format
 #| msgid "Submitting usage information..."
 msgctxt "@title:window"

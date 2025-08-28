@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-24 00:43+0000\n"
+"POT-Creation-Date: 2025-08-28 00:44+0000\n"
 "PO-Revision-Date: 2025-05-21 15:51+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -108,30 +108,36 @@ msgid "Please make sure Snap support is installed"
 msgstr "Моля, уверете се, че поддръжка за Snap е инсталирана"
 
 #: discover/DiscoverObject.cpp:412
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Could not open %1 because it was not found in any available software "
+#| "repositories."
 msgid ""
-"Could not open %1 because it was not found in any available software "
-"repositories."
+"The requested application could not be found in any available software "
+"repositories"
 msgstr ""
 "Не може да се отвори %1, защото не е намерен в наличните софтуерни хранилища."
 
 #: discover/DiscoverObject.cpp:416
-#, kde-format
-msgid "Please report this issue to the packagers of your distribution."
+#, fuzzy, kde-kuit-format
+#| msgid "Please report this issue to the packagers of your distribution."
+msgctxt "@info %1 is an additional error reference"
+msgid ""
+"Please report this issue to the packagers of your distribution.<nl/>(%1)"
 msgstr " Моля, докладвайте този проблем на вашата дистрибуция."
 
-#: discover/DiscoverObject.cpp:419
+#: discover/DiscoverObject.cpp:420
 #, kde-format
 msgid "Report This Issue"
 msgstr "Докладвайте този проблем"
 
-#: discover/DiscoverObject.cpp:479 discover/DiscoverObject.cpp:481
+#: discover/DiscoverObject.cpp:480 discover/DiscoverObject.cpp:482
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:482
+#: discover/DiscoverObject.cpp:483
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -560,85 +566,98 @@ msgstr "Не са налични екранни снимки %1"
 msgid "What's New"
 msgstr "Какво ново"
 
-#: discover/qml/ApplicationPage.qml:747
+#: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Reviews"
 msgstr "Отзиви"
 
-#: discover/qml/ApplicationPage.qml:758
+#: discover/qml/ApplicationPage.qml:757
 #, kde-format
 msgid "Loading reviews for %1"
 msgstr "Зареждане на отзиви за %1"
 
-#: discover/qml/ApplicationPage.qml:767
+#: discover/qml/ApplicationPage.qml:766
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
 msgstr "Временно не са налични отзиви за %1"
 
-#: discover/qml/ApplicationPage.qml:789
+#: discover/qml/ApplicationPage.qml:773
+#, kde-format
+msgctxt "@Info placeholder message"
+msgid "No reviews posted yet"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:774
+#, fuzzy, kde-format
+#| msgid "Install to Write a Review"
+msgctxt "@info placeholder explanation"
+msgid "Install to write a review"
+msgstr "Инсталирайте, за да напишете отзив"
+
+#: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
+#, kde-format
+msgid "Write a Review"
+msgstr "Напишете коментар"
+
+#: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
+#, kde-format
+msgid "Install to Write a Review"
+msgstr "Инсталирайте, за да напишете отзив"
+
+#: discover/qml/ApplicationPage.qml:806
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Показване на всички отзиви"
 
-#: discover/qml/ApplicationPage.qml:804
-#, kde-format
-msgid "Write a Review"
-msgstr "Напишете коментар"
-
-#: discover/qml/ApplicationPage.qml:804
-#, kde-format
-msgid "Install to Write a Review"
-msgstr "Инсталирайте, за да напишете отзив"
-
-#: discover/qml/ApplicationPage.qml:826
+#: discover/qml/ApplicationPage.qml:844
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr "В&ъншни препратки"
 
-#: discover/qml/ApplicationPage.qml:844
+#: discover/qml/ApplicationPage.qml:862
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
 msgstr "Прочетете документацията"
 
-#: discover/qml/ApplicationPage.qml:855
+#: discover/qml/ApplicationPage.qml:873
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Посетете уебсайта на проекта"
 
-#: discover/qml/ApplicationPage.qml:865
+#: discover/qml/ApplicationPage.qml:883
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
 msgstr "Направете дарение за проекта"
 
-#: discover/qml/ApplicationPage.qml:875
+#: discover/qml/ApplicationPage.qml:893
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "Подаване на сигнал за грешка"
 
-#: discover/qml/ApplicationPage.qml:885
+#: discover/qml/ApplicationPage.qml:903
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
 msgstr "Дайте своя принос"
 
-#: discover/qml/ApplicationPage.qml:914
+#: discover/qml/ApplicationPage.qml:932
 #, kde-format
 msgid "All Licenses"
 msgstr "Всички лицензи"
 
-#: discover/qml/ApplicationPage.qml:952
+#: discover/qml/ApplicationPage.qml:970
 #, kde-format
 msgid "Content Rating"
 msgstr "Рейтинг на съдържанието"
 
-#: discover/qml/ApplicationPage.qml:975
+#: discover/qml/ApplicationPage.qml:993
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"
