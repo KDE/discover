@@ -130,8 +130,6 @@ public:
     bool isReadyToReboot() const;
     bool needsReboot() const;
 
-    bool isFetching() const;
-
     virtual void setOfflineUpdates(bool useOfflineUpdates);
 
 public Q_SLOTS:

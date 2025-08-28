@@ -41,9 +41,15 @@ public:
     quint64 downloadSpeed() const override;
     bool isFetchingUpdates() const override;
 
+    bool isSettingUp() const
+    {
+        return m_settingUp;
+    }
+
 Q_SIGNALS:
     void cancelTransaction();
     void updatesCountChanged(int updatesCount);
+    void settingUpChanged();
 
 public Q_SLOTS:
     void transactionRemoved(Transaction *t);
@@ -55,13 +61,14 @@ private:
     void transactionAdded(Transaction *newTransaction);
     void transactionProgressChanged();
     void refreshProgress();
+    void setSettingUp(bool settingUp);
     QVector<Transaction *> transactions() const;
 
     QSet<AbstractResource *> m_toUpgrade;
     QSet<AbstractResource *> m_upgradeable;
     AbstractResourcesBackend *const m_backend;
     QSet<AbstractResource *> m_pendingResources;
-    bool m_settingUp;
+    bool m_settingUp = false;
     qreal m_progress;
     QDateTime m_lastUpdate;
     QTimer m_timer;

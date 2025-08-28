@@ -297,6 +297,7 @@ FlatpakBackend::FlatpakBackend(QObject *parent)
     g_autoptr(GError) error = nullptr;
 
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &FlatpakBackend::updatesCountChanged);
+    connect(m_updater, &StandardBackendUpdater::settingUpChanged, this, &FlatpakBackend::fetchingUpdatesProgressChanged);
 
     // Load flatpak installation
     if (!setupFlatpakInstallations(&error)) {
@@ -1547,6 +1548,11 @@ void triage(FlatpakResource *resource, QVector<StreamResult> &prioritary, QVecto
     } else if (resource->appstreamId().contains(filter.search, Qt::CaseInsensitive)) {
         rest += resource;
     }
+}
+
+int FlatpakBackend::fetchingUpdatesProgress() const
+{
+    return m_updater->isSettingUp() ? 42 : 100;
 }
 
 ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)

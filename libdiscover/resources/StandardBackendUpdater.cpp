@@ -18,7 +18,6 @@
 StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend *parent)
     : AbstractBackendUpdater(parent)
     , m_backend(parent)
-    , m_settingUp(false)
     , m_progress(0)
     , m_lastUpdate(QDateTime())
 {
@@ -54,7 +53,7 @@ bool StandardBackendUpdater::hasUpdates() const
 
 void StandardBackendUpdater::start()
 {
-    m_settingUp = true;
+    setSettingUp(true);
     Q_EMIT progressingChanged(true);
     setProgress(0);
     auto upgradeList = m_toUpgrade.values();
@@ -78,7 +77,7 @@ void StandardBackendUpdater::start()
     if (m_canCancel != couldCancel) {
         Q_EMIT cancelableChanged(m_canCancel);
     }
-    m_settingUp = false;
+    setSettingUp(false);
 
     if (m_pendingResources.isEmpty()) {
         cleanup();
@@ -173,7 +172,7 @@ void StandardBackendUpdater::refreshUpdateable()
     if (!m_backend->isValid()) {
         qWarning() << "Invalidated backend, deactivating" << m_backend->name();
         if (m_settingUp) {
-            m_settingUp = false;
+            setSettingUp(false);
             Q_EMIT progressingChanged(isProgressing());
         }
         return;
@@ -184,7 +183,7 @@ void StandardBackendUpdater::refreshUpdateable()
         return;
     }
 
-    m_settingUp = true;
+    setSettingUp(true);
     Q_EMIT progressingChanged(true);
     Q_EMIT fetchingChanged();
     AbstractResourcesBackend::Filters f;
@@ -204,7 +203,7 @@ void StandardBackendUpdater::refreshUpdateable()
         }
     });
     connect(r, &ResultsStream::destroyed, this, [this]() {
-        m_settingUp = false;
+        setSettingUp(false);
         Q_EMIT updatesCountChanged(updatesCount());
         Q_EMIT progressingChanged(false);
         Q_EMIT fetchingChanged();
@@ -309,6 +308,15 @@ quint64 StandardBackendUpdater::downloadSpeed() const
         ret += t->downloadSpeed();
     }
     return ret;
+}
+
+void StandardBackendUpdater::setSettingUp(bool settingUp)
+{
+    if (m_settingUp == settingUp) {
+        return;
+    }
+    m_settingUp = settingUp;
+    Q_EMIT settingUpChanged();
 }
 
 #include "moc_StandardBackendUpdater.cpp"
