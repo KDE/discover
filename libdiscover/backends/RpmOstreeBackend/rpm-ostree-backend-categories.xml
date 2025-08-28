@@ -2,7 +2,7 @@
 <Menu>
   <Menu>
     <Name>Operating System</Name>
-    <Icon>application-x-rpm</Icon>
+    <Icon>folder-rpm-symbolic</Icon>
     <!--<Image>pkcategories/applicationcrop.jpg</Image>-->
     <Include>
         <Or>

@@ -415,7 +415,7 @@ QString RpmOstreeTransaction::name() const
 
 QVariant RpmOstreeTransaction::icon() const
 {
-    return QStringLiteral("application-x-rpm");
+    return QStringLiteral("folder-rpm-symbolic");
 }
 
 #include "moc_RpmOstreeTransaction.cpp"

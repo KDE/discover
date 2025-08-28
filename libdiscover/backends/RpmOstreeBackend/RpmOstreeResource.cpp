@@ -261,7 +261,7 @@ bool RpmOstreeResource::canExecute() const
 
 QVariant RpmOstreeResource::icon() const
 {
-    return QStringLiteral("application-x-rpm");
+    return QStringLiteral("folder-rpm-symbolic");
 }
 
 QString RpmOstreeResource::installedVersion() const
@@ -434,7 +434,7 @@ void RpmOstreeResource::setState(AbstractResource::State state)
 
 QString RpmOstreeResource::sourceIcon() const
 {
-    return QStringLiteral("application-x-rpm");
+    return QStringLiteral("folder-rpm-symbolic");
 }
 
 QStringList RpmOstreeResource::extends() const
