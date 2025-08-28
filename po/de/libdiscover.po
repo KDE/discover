@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-31 02:34+0000\n"
+"POT-Creation-Date: 2025-08-28 02:49+0000\n"
 "PO-Revision-Date: 2025-07-21 23:13+0200\n"
 "Last-Translator: Philipp Kiemle <l10n@prly.mozmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1051,12 +1051,12 @@ msgstr "Stabile Version auf %1 ansehen"
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 ist nicht installiert, es sind aber noch Daten vorhanden."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:39
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "Einstellungen und Benutzerdaten löschen"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:42
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "Einstellungen und Benutzerdaten werden gelöscht …"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-31 02:34+0000\n"
+"POT-Creation-Date: 2025-08-28 02:49+0000\n"
 "PO-Revision-Date: 2025-02-23 13:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -1037,12 +1037,12 @@ msgstr "Rigardi stabilan version sur %1"
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 ne estas instalita sed ĝi ankoraŭ havas datumojn."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:39
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "Forigi agordojn kaj uzantajn datumojn"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:42
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "Forigante agordojn kaj uzantdatenojn…"

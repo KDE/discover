@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-31 02:34+0000\n"
+"POT-Creation-Date: 2025-08-28 02:49+0000\n"
 "PO-Revision-Date: 2024-04-23 19:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1012,12 +1012,12 @@ msgstr "查看 %1 上的稳定版本"
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 在本机上没有安装，但它在本机上存有数据。"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:39
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "删除设置和用户数据"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:42
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "清除设置和用户数据…"

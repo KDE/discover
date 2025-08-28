@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-31 02:34+0000\n"
+"POT-Creation-Date: 2025-08-28 02:49+0000\n"
 "PO-Revision-Date: 2024-10-28 19:13\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -1045,12 +1045,12 @@ msgstr "Паглядзець стабільную версію на %1"
 msgid "%1 is not installed but it still has data present."
 msgstr "Flatpak %1 не ўсталяваны, але ўсё яшчэ захоўваюцца яго даныя."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:39
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "Выдаліць налады і карыстальніцкія даныя"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:42
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "Ачышчэнне налад і даных карыстальніка…"

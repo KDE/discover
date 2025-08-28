@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-31 02:34+0000\n"
+"POT-Creation-Date: 2025-08-28 02:49+0000\n"
 "PO-Revision-Date: 2025-05-27 08:33+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1044,12 +1044,12 @@ msgstr "Visualizza la versione stabile su %1"
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 non è installato, ma contiene ancora dati."
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:39
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "Elimina impostazioni e dati utente"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:42
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "Cancella impostazioni e dati utente..."

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-07-31 02:34+0000\n"
+"POT-Creation-Date: 2025-08-28 02:49+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -1031,12 +1031,12 @@ msgstr "%1 ਉੱਤੇ ਸਥਿਰ ਵਰਜ਼ਨ ਵੇਖੋ"
 msgid "%1 is not installed but it still has data present."
 msgstr "%1 ਇੰਸਟਾਲ ਨਹੀਂ ਹੈ, ਪਰ ਇਸ ਦਾ ਡਾਟਾ ਹਾਲੇ ਵੀ ਮੌਜੂਦ ਹੈ।"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:39
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Delete settings and user data"
 msgstr "ਸੈਟਿੰਗਾਂ ਅਤੇ ਵਰਤੋਂਕਾਰ ਡਾਟੇ ਨੂੰ ਹਟਾਓ"
 
-#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:42
+#: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
 msgid "Clearing settings and user data…"
 msgstr "…ਸੈਟਿੰਗਾਂ ਅਤੇ ਵਰਤੋਂਕਾਰ ਡਾਟੇ ਨੂੰ ਮਿਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ"

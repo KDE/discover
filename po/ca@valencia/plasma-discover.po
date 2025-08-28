@@ -4,20 +4,20 @@
 #
 # Orestes Mas <orestes@tsc.upc.edu>, 2012.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
-# Josep M. Ferrer <txemaq@gmail.com>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024, 2025.
+# SPDX-FileCopyrightText: 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-24 02:35+0000\n"
-"PO-Revision-Date: 2025-04-26 09:46+0200\n"
+"PO-Revision-Date: 2025-08-20 12:09+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 25.08.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -758,9 +758,9 @@ msgid ""
 "been reviewed by your distributor for functionality or stability. Use with "
 "caution."
 msgstr ""
-"«%1» pot estar disponible al web. El programari adquirit des del web no ha "
-"sigut revisat pel vostre distribuïdor per a la funcionalitat o "
-"l'estabilitat. Utilitzeu-lo amb precaució."
+"«%1» pot estar disponible al web. El programari rebut des del web no l'ha "
+"revisat el vostre distribuïdor per a les funcionalitats ni l'estabilitat. "
+"Utilitzeu-lo amb precaució."
 
 #: discover/qml/ApplicationsListPage.qml:281
 #, kde-format
@@ -794,7 +794,7 @@ msgstr "Novetats publicades i actualitzats recentment"
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr "Seleccioneu l'editor"
+msgstr "Trieu l'editor"
 
 #: discover/qml/BrowsingPage.qml:194
 #, kde-format
@@ -1459,7 +1459,7 @@ msgstr "Ignora"
 #: discover/qml/UpdatesPage.qml:251
 #, kde-format
 msgid "Select All"
-msgstr "Selecciona-ho tot"
+msgstr "Tria-ho tot"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
@@ -1478,7 +1478,7 @@ msgstr "En finalitzar, automàticament:"
 #, kde-format
 msgctxt "@item:inlistbox placeholder for when no action is selected"
 msgid "Select an action"
-msgstr "Seleccioneu una acció"
+msgstr "Trieu una acció"
 
 #: discover/qml/UpdatesPage.qml:283
 #, kde-format
