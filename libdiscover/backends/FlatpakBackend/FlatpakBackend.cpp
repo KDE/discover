@@ -1549,6 +1549,11 @@ void triage(FlatpakResource *resource, QVector<StreamResult> &prioritary, QVecto
     }
 }
 
+int FlatpakBackend::fetchingUpdatesProgress() const
+{
+    return m_updater->isSettingUp() ? 42 : 100;
+}
+
 ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
     const auto fileName = filter.resourceUrl.fileName();

@@ -41,6 +41,11 @@ public:
     quint64 downloadSpeed() const override;
     bool isFetchingUpdates() const override;
 
+    bool isSettingUp() const
+    {
+        return m_settingUp;
+    }
+
 Q_SIGNALS:
     void cancelTransaction();
     void updatesCountChanged(int updatesCount);
