@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-28 00:44+0000\n"
+"POT-Creation-Date: 2025-08-29 00:44+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -17,32 +17,34 @@ msgstr ""
 "X-Crowdin-File: /kf6-trunk/messages/discover/plasma-discover.pot\n"
 "X-Crowdin-File-ID: 43165\n"
 
-#: discover/DiscoverObject.cpp:184
-#, kde-format
-msgctxt "@title %1 is the distro name"
+#: discover/DiscoverObject.cpp:183
+#, fuzzy, kde-format
+#| msgctxt "@title %1 is the distro name"
+#| msgid ""
+#| "%1 is not configured for installing apps through Discover—only app add-ons"
+msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
 "%1 没有配置为通过 Discover 安装应用 — 它只通过 Discover 安装应用的附加组件"
 
-#: discover/DiscoverObject.cpp:186
-#, kde-kuit-format
-msgctxt "@info:usagetip %1 is the distro name"
+#: discover/DiscoverObject.cpp:185
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:usagetip %1 is the distro name"
+#| msgid ""
+#| "To use Discover for apps, install your preferred module on the "
+#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
+#| "interface>."
+msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
-"interface>."
+"interface>.<nl/><nl/>Please <link url='%1'>report this issue to %2.</link>"
 msgstr ""
 "要使用 Discover 安装应用，请在 <interface>设置</interface> 页面的 <interface>"
 "缺失的后端程序</interface> 栏目中安装您首选使用的模块。"
 
-#: discover/DiscoverObject.cpp:189
-#, kde-format
-msgctxt "@action:button %1 is the distro name"
-msgid "Report This Issue to %1"
-msgstr "报告此问题给 %1"
-
-#: discover/DiscoverObject.cpp:194
+#: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -58,7 +60,7 @@ msgstr ""
 "link>。<nl/><nl/> 请检查 Discover 的 <link url='https://archlinux.org/"
 "packages/extra/x86_64/discover/'>%1 的打包情况</link>"
 
-#: discover/DiscoverObject.cpp:207
+#: discover/DiscoverObject.cpp:202
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -75,63 +77,57 @@ msgstr ""
 "人员推荐用户转而使用 <command>pacman</command> 命令行工具来管理软件包。</"
 "para>"
 
-#: discover/DiscoverObject.cpp:296
+#: discover/DiscoverObject.cpp:291
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "找不到“%1”分类"
 
-#: discover/DiscoverObject.cpp:318
+#: discover/DiscoverObject.cpp:313
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "正在尝试打开不存在的文件“%1”"
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:335
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr "缺少 flatpak 后端程序 %1，无法处理 flatpak 资源。请先安装它。"
 
-#: discover/DiscoverObject.cpp:344
+#: discover/DiscoverObject.cpp:339
 #, kde-format
 msgid "Could not open %1"
 msgstr "无法打开 %1"
 
-#: discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:404
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "请确保 Snap 支持已经安装"
 
-#: discover/DiscoverObject.cpp:412
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#: discover/DiscoverObject.cpp:407
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
-msgstr "无法打开 %1，在所有可用的软件仓库中均未发现该软件包。"
+msgstr ""
 
-#: discover/DiscoverObject.cpp:416
-#, fuzzy, kde-kuit-format
-#| msgid "Please report this issue to the packagers of your distribution."
-msgctxt "@info %1 is an additional error reference"
+#: discover/DiscoverObject.cpp:410
+#, kde-kuit-format
+msgctxt ""
+"@info %1 is an additional error reference and %3 is the name of the "
+"operating system"
 msgid ""
-"Please report this issue to the packagers of your distribution.<nl/>(%1)"
-msgstr "请将此问题报告给您使用的发行版的软件打包人员。"
+"(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
+"link>"
+msgstr ""
 
-#: discover/DiscoverObject.cpp:420
-#, kde-format
-msgid "Report This Issue"
-msgstr "报告此问题"
-
-#: discover/DiscoverObject.cpp:480 discover/DiscoverObject.cpp:482
+#: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:483
+#: discover/DiscoverObject.cpp:476
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -561,11 +557,10 @@ msgid "No reviews posted yet"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
-msgstr "安装程序后才能发表评价"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
@@ -872,8 +867,8 @@ msgstr "关于(&A)"
 msgid "S&ettings"
 msgstr "设置(&E)"
 
-#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:350
-#: discover/qml/DiscoverWindow.qml:462
+#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:347
+#: discover/qml/DiscoverWindow.qml:459
 #, kde-format
 msgid "Error"
 msgstr "错误"
@@ -889,45 +884,48 @@ msgid "Proceed"
 msgstr "继续"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, kde-format
-msgid "Report this issue"
-msgstr "报告此问题"
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the distro name"
+#| msgid "Report This Issue to %1"
+msgctxt "@info %1 is the name of the operating system"
+msgid "Report this issue to %1"
+msgstr "报告此问题给 %1"
 
-#: discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:347
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "错误 %1 / %2"
 
-#: discover/qml/DiscoverWindow.qml:350 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:347 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "更新问题"
 
-#: discover/qml/DiscoverWindow.qml:361
+#: discover/qml/DiscoverWindow.qml:358
 #, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr "更新或者安装过程中发生了问题。请稍后重试。"
 
-#: discover/qml/DiscoverWindow.qml:397
+#: discover/qml/DiscoverWindow.qml:394
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "显示上一个"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:405
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "显示下一个"
 
-#: discover/qml/DiscoverWindow.qml:420 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:417 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "查看技术详情"
 
-#: discover/qml/DiscoverWindow.qml:428
+#: discover/qml/DiscoverWindow.qml:425
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "复制到剪贴板"
@@ -1532,3 +1530,9 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
+
+#~ msgid "Report This Issue"
+#~ msgstr "报告此问题"
+
+#~ msgid "Report this issue"
+#~ msgstr "报告此问题"

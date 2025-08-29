@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-28 00:44+0000\n"
+"POT-Creation-Date: 2025-08-29 00:44+0000\n"
 "PO-Revision-Date: 2024-09-19 14:33+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -23,34 +23,36 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 24.08.1\n"
 
-#: discover/DiscoverObject.cpp:184
-#, kde-format
-msgctxt "@title %1 is the distro name"
+#: discover/DiscoverObject.cpp:183
+#, fuzzy, kde-format
+#| msgctxt "@title %1 is the distro name"
+#| msgid ""
+#| "%1 is not configured for installing apps through Discover—only app add-ons"
+msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
 "%1 δεν είναι ρυθμισμένο για εγκατάσταση εφαρμογών μέσο του Discover—μόνο "
 "πρόσθετα εφαρμογών"
 
-#: discover/DiscoverObject.cpp:186
-#, kde-kuit-format
-msgctxt "@info:usagetip %1 is the distro name"
+#: discover/DiscoverObject.cpp:185
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:usagetip %1 is the distro name"
+#| msgid ""
+#| "To use Discover for apps, install your preferred module on the "
+#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
+#| "interface>."
+msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
-"interface>."
+"interface>.<nl/><nl/>Please <link url='%1'>report this issue to %2.</link>"
 msgstr ""
 "Για να χρησιμοποιήσετε το Discover για εφαρμογές, εγκαταστήστε το "
 "προτιμώμενο άρθρωμα στην σελίδα <interface>Ρυθμίσεις</interface>, στο "
 "<interface>Απόντα Backends</interface>."
 
-#: discover/DiscoverObject.cpp:189
-#, kde-format
-msgctxt "@action:button %1 is the distro name"
-msgid "Report This Issue to %1"
-msgstr "Αναφορά προβλήματος στο %1"
-
-#: discover/DiscoverObject.cpp:194
+#: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -67,7 +69,7 @@ msgstr ""
 "Κοιτάξτε το <link url='https://archlinux.org/packages/extra/x86_64/"
 "discover/'>%1 για δημιουργία πακέτων για το Discover.</link>"
 
-#: discover/DiscoverObject.cpp:207
+#: discover/DiscoverObject.cpp:202
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -86,17 +88,17 @@ msgstr ""
 "συντηρητές να χρησιμοποιήσετε το εργαλείο γραμμής εντολών <command>pacman</"
 "command> για διαχείριση πακέτων.</para>"
 
-#: discover/DiscoverObject.cpp:296
+#: discover/DiscoverObject.cpp:291
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Αδυναμία εύρεσης της κατηγορίας '%1'"
 
-#: discover/DiscoverObject.cpp:318
+#: discover/DiscoverObject.cpp:313
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Προσπάθεια ανοίγματος ανύπαρκτο αρχείο '%1'"
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:335
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -105,17 +107,17 @@ msgstr ""
 "Δεν μπορώ να αλληλεπιδράσω με πηγές flatpak χωρίς flatpak backend %1. "
 "Παρακαλώ, πρώτα, εγκαταστήστε το."
 
-#: discover/DiscoverObject.cpp:344
+#: discover/DiscoverObject.cpp:339
 #, kde-format
 msgid "Could not open %1"
 msgstr "Αδυναμία ανοίγματος του %1"
 
-#: discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:404
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Παρακαλώ βεβαιωθείτε ότι η υποστήριξη για Snap είναι εγκατεστημένη"
 
-#: discover/DiscoverObject.cpp:412
+#: discover/DiscoverObject.cpp:407
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not open %1 because it was not found in any available software "
@@ -127,28 +129,23 @@ msgstr ""
 "Αδυναμία ανοίγματος του %1 επειδή δεν βρέθηκε σε κανένα διαθέσιμο αποθετήριο "
 "λογισμικών."
 
-#: discover/DiscoverObject.cpp:416
-#, fuzzy, kde-kuit-format
-#| msgid "Please report this issue to the packagers of your distribution."
-msgctxt "@info %1 is an additional error reference"
+#: discover/DiscoverObject.cpp:410
+#, kde-kuit-format
+msgctxt ""
+"@info %1 is an additional error reference and %3 is the name of the "
+"operating system"
 msgid ""
-"Please report this issue to the packagers of your distribution.<nl/>(%1)"
+"(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
+"link>"
 msgstr ""
-"Παρακαλείστε να αναφέρετε αυτό το ζήτημα στους δημιουργούς πακέτων της "
-"διανομής σας."
 
-#: discover/DiscoverObject.cpp:420
-#, kde-format
-msgid "Report This Issue"
-msgstr "Αναφορά Αυτού του Προβλήματος"
-
-#: discover/DiscoverObject.cpp:480 discover/DiscoverObject.cpp:482
+#: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:483
+#: discover/DiscoverObject.cpp:476
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -915,8 +912,8 @@ msgstr "&Σχετικά"
 msgid "S&ettings"
 msgstr "Ρ&υθμίσεις"
 
-#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:350
-#: discover/qml/DiscoverWindow.qml:462
+#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:347
+#: discover/qml/DiscoverWindow.qml:459
 #, kde-format
 msgid "Error"
 msgstr "Σφάλμα"
@@ -932,21 +929,24 @@ msgid "Proceed"
 msgstr "Συνέχεια"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, kde-format
-msgid "Report this issue"
-msgstr "Αναφέρετε αυτό το πρόβλημα"
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the distro name"
+#| msgid "Report This Issue to %1"
+msgctxt "@info %1 is the name of the operating system"
+msgid "Report this issue to %1"
+msgstr "Αναφορά προβλήματος στο %1"
 
-#: discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:347
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Σφάλμα %1 από %2"
 
-#: discover/qml/DiscoverWindow.qml:350 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:347 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "Πρόβλημα ενημέρωσης"
 
-#: discover/qml/DiscoverWindow.qml:361
+#: discover/qml/DiscoverWindow.qml:358
 #, fuzzy, kde-format
 #| msgid "There was an issue installing this update. Please try again later."
 msgid ""
@@ -956,24 +956,24 @@ msgstr ""
 "Υπήρξε ένα πρόβλημα κατά την εγκατάσταση αυτής της ενημέρωσης. Παρακαλώ "
 "δοκιμάστε αργότερα."
 
-#: discover/qml/DiscoverWindow.qml:397
+#: discover/qml/DiscoverWindow.qml:394
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Εμφάνιση προηγούμενου"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:405
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Εμφάνιση επόμενου"
 
-#: discover/qml/DiscoverWindow.qml:420 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:417 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "Δείτε Τεχνικές Λεπτομέρειες"
 
-#: discover/qml/DiscoverWindow.qml:428
+#: discover/qml/DiscoverWindow.qml:425
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Αντιγραφή στο πρόχειρο"
@@ -1576,6 +1576,21 @@ msgstr "Πρέπει να γίνει έλεγχος ενημερώσεων"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Άγνωστος χρόνος τελευταίας ενημέρωσης"
+
+#, fuzzy
+#~| msgid "Please report this issue to the packagers of your distribution."
+#~ msgctxt "@info %1 is an additional error reference"
+#~ msgid ""
+#~ "Please report this issue to the packagers of your distribution.<nl/>(%1)"
+#~ msgstr ""
+#~ "Παρακαλείστε να αναφέρετε αυτό το ζήτημα στους δημιουργούς πακέτων της "
+#~ "διανομής σας."
+
+#~ msgid "Report This Issue"
+#~ msgstr "Αναφορά Αυτού του Προβλήματος"
+
+#~ msgid "Report this issue"
+#~ msgstr "Αναφέρετε αυτό το πρόβλημα"
 
 #~ msgctxt "@info"
 #~ msgid "Restart the system to complete the update process"

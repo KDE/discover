@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-28 00:44+0000\n"
+"POT-Creation-Date: 2025-08-29 00:44+0000\n"
 "PO-Revision-Date: 2025-06-01 13:36+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -18,34 +18,36 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 24.12.3\n"
 
-#: discover/DiscoverObject.cpp:184
-#, kde-format
-msgctxt "@title %1 is the distro name"
+#: discover/DiscoverObject.cpp:183
+#, fuzzy, kde-format
+#| msgctxt "@title %1 is the distro name"
+#| msgid ""
+#| "%1 is not configured for installing apps through Discover—only app add-ons"
+msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
 "%1 er ekki grunnstillt til að setja upp forrit í gegnum Discover—einungis "
 "forritaviðbætur"
 
-#: discover/DiscoverObject.cpp:186
-#, kde-kuit-format
-msgctxt "@info:usagetip %1 is the distro name"
+#: discover/DiscoverObject.cpp:185
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:usagetip %1 is the distro name"
+#| msgid ""
+#| "To use Discover for apps, install your preferred module on the "
+#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
+#| "interface>."
+msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
-"interface>."
+"interface>.<nl/><nl/>Please <link url='%1'>report this issue to %2.</link>"
 msgstr ""
 "Til að nota Discover fyrir forrit skaltu setja upp eininguna sem þú vilt á "
 "síðunni <interface>Stillingar</interface>, undir<interface>Bakendar sem "
 "vantar</interface>."
 
-#: discover/DiscoverObject.cpp:189
-#, kde-format
-msgctxt "@action:button %1 is the distro name"
-msgid "Report This Issue to %1"
-msgstr "Tilkynna vandamálið til %1"
-
-#: discover/DiscoverObject.cpp:194
+#: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -62,7 +64,7 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>pakka fyrir "
 "Discover á %1</link>"
 
-#: discover/DiscoverObject.cpp:207
+#: discover/DiscoverObject.cpp:202
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -80,17 +82,17 @@ msgstr ""
 "<para> Umsjónaraðilar %1 mæla með því í staðinn að nota <command>pacman</"
 "command> á skipanalínunni til að hafa umsjón með pökkum.</para>"
 
-#: discover/DiscoverObject.cpp:296
+#: discover/DiscoverObject.cpp:291
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Fann ekki flokk '%1'"
 
-#: discover/DiscoverObject.cpp:318
+#: discover/DiscoverObject.cpp:313
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Reyni að opna skrá '%1' sem er ekki til"
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:335
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -99,17 +101,17 @@ msgstr ""
 "Get ekki átt samskipti við flatpak-uppsprettur án flatpak-bakenda %1. Settu "
 "hann upp fyrst."
 
-#: discover/DiscoverObject.cpp:344
+#: discover/DiscoverObject.cpp:339
 #, kde-format
 msgid "Could not open %1"
 msgstr "Gat ekki opnað %1"
 
-#: discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:404
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Gakktu úr skugga um að stuðningur við Snap sé uppsettur"
 
-#: discover/DiscoverObject.cpp:412
+#: discover/DiscoverObject.cpp:407
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not open %1 because it was not found in any available software "
@@ -120,28 +122,23 @@ msgid ""
 msgstr ""
 "Gat ekki opnað %1 því það fannst ekki í neinum tiltækum hugbúnaðarsöfnum."
 
-#: discover/DiscoverObject.cpp:416
-#, fuzzy, kde-kuit-format
-#| msgid "Please report this issue to the packagers of your distribution."
-msgctxt "@info %1 is an additional error reference"
+#: discover/DiscoverObject.cpp:410
+#, kde-kuit-format
+msgctxt ""
+"@info %1 is an additional error reference and %3 is the name of the "
+"operating system"
 msgid ""
-"Please report this issue to the packagers of your distribution.<nl/>(%1)"
+"(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
+"link>"
 msgstr ""
-"Sendu tilkynningu um vandamálið til þeirra sem sjá um pökkun hjá "
-"dreifingaraðila þínum."
 
-#: discover/DiscoverObject.cpp:420
-#, kde-format
-msgid "Report This Issue"
-msgstr "Tilkynna vandamálið"
-
-#: discover/DiscoverObject.cpp:480 discover/DiscoverObject.cpp:482
+#: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:483
+#: discover/DiscoverObject.cpp:476
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -905,8 +902,8 @@ msgstr "Um &hugbúnaðinn"
 msgid "S&ettings"
 msgstr "St&illingar"
 
-#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:350
-#: discover/qml/DiscoverWindow.qml:462
+#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:347
+#: discover/qml/DiscoverWindow.qml:459
 #, kde-format
 msgid "Error"
 msgstr "Villa"
@@ -922,21 +919,24 @@ msgid "Proceed"
 msgstr "Halda áfram"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, kde-format
-msgid "Report this issue"
-msgstr "Tilkynna vandamálið"
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the distro name"
+#| msgid "Report This Issue to %1"
+msgctxt "@info %1 is the name of the operating system"
+msgid "Report this issue to %1"
+msgstr "Tilkynna vandamálið til %1"
 
-#: discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:347
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Villa %1 af %2"
 
-#: discover/qml/DiscoverWindow.qml:350 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:347 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "Uppfærsluvandamál"
 
-#: discover/qml/DiscoverWindow.qml:361
+#: discover/qml/DiscoverWindow.qml:358
 #, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
@@ -944,24 +944,24 @@ msgid ""
 msgstr ""
 "Upp kom vandamál við uppfærsluna eða uppsetninguna. Reyndu aftur síðar."
 
-#: discover/qml/DiscoverWindow.qml:397
+#: discover/qml/DiscoverWindow.qml:394
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Sýna fyrra"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:405
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Sýna næsta"
 
-#: discover/qml/DiscoverWindow.qml:420 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:417 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "Sjá Tæknilegar upplýsingar"
 
-#: discover/qml/DiscoverWindow.qml:428
+#: discover/qml/DiscoverWindow.qml:425
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Afrita á klippispjald"
@@ -1573,6 +1573,21 @@ msgstr "Ættir að athuga með uppfærslur"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tími síðustu uppfærslu óþekktur"
+
+#, fuzzy
+#~| msgid "Please report this issue to the packagers of your distribution."
+#~ msgctxt "@info %1 is an additional error reference"
+#~ msgid ""
+#~ "Please report this issue to the packagers of your distribution.<nl/>(%1)"
+#~ msgstr ""
+#~ "Sendu tilkynningu um vandamálið til þeirra sem sjá um pökkun hjá "
+#~ "dreifingaraðila þínum."
+
+#~ msgid "Report This Issue"
+#~ msgstr "Tilkynna vandamálið"
+
+#~ msgid "Report this issue"
+#~ msgstr "Tilkynna vandamálið"
 
 #~ msgctxt "@info"
 #~ msgid "Restart the system to complete the update process"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-28 00:44+0000\n"
+"POT-Creation-Date: 2025-08-29 00:44+0000\n"
 "PO-Revision-Date: 2024-09-15 00:32+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -23,34 +23,36 @@ msgstr ""
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#: discover/DiscoverObject.cpp:184
-#, kde-format
-msgctxt "@title %1 is the distro name"
+#: discover/DiscoverObject.cpp:183
+#, fuzzy, kde-format
+#| msgctxt "@title %1 is the distro name"
+#| msgid ""
+#| "%1 is not configured for installing apps through Discover—only app add-ons"
+msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
 "%1 nėra sukonfigūruota programų diegimui per Discover – tik programų "
 "papildinių"
 
-#: discover/DiscoverObject.cpp:186
-#, kde-kuit-format
-msgctxt "@info:usagetip %1 is the distro name"
+#: discover/DiscoverObject.cpp:185
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:usagetip %1 is the distro name"
+#| msgid ""
+#| "To use Discover for apps, install your preferred module on the "
+#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
+#| "interface>."
+msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
-"interface>."
+"interface>.<nl/><nl/>Please <link url='%1'>report this issue to %2.</link>"
 msgstr ""
 "Norėdami naudoti Discover programoms, <interface>Nuostatų</interface> "
 "puslapyje, <interface>Trūkstamų vidinių pusių</interface> sekcijoje "
 "įsidiekite pageidaujamą modulį."
 
-#: discover/DiscoverObject.cpp:189
-#, kde-format
-msgctxt "@action:button %1 is the distro name"
-msgid "Report This Issue to %1"
-msgstr "Pranešti apie šią problemą %1"
-
-#: discover/DiscoverObject.cpp:194
+#: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -67,7 +69,7 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>Discover "
 "pakavimą, kurį teikia %1</link>"
 
-#: discover/DiscoverObject.cpp:207
+#: discover/DiscoverObject.cpp:202
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -85,17 +87,17 @@ msgstr ""
 "<para>Vietoj to, %1 prižiūrėtojai rekomendavo paketų tvarkymui naudoti "
 "<command>pacman</command> komandų eilutės įrankį.</para>"
 
-#: discover/DiscoverObject.cpp:296
+#: discover/DiscoverObject.cpp:291
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Nepavyko rasti kategorijos „%1“"
 
-#: discover/DiscoverObject.cpp:318
+#: discover/DiscoverObject.cpp:313
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Bandoma atverti failą, kurio nėra „%1“"
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:335
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -104,17 +106,17 @@ msgstr ""
 "Nepavyksta sąveikauti su flatpak ištekliais be flatpak vidinės pusės %1. Iš "
 "pradžių, ją įdiekite."
 
-#: discover/DiscoverObject.cpp:344
+#: discover/DiscoverObject.cpp:339
 #, kde-format
 msgid "Could not open %1"
 msgstr "Nepavyko atverti %1"
 
-#: discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:404
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Įsitikinkite, kad Snap yra įdiegta"
 
-#: discover/DiscoverObject.cpp:412
+#: discover/DiscoverObject.cpp:407
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not open %1 because it was not found in any available software "
@@ -126,26 +128,23 @@ msgstr ""
 "Nepavyko atverti %1, nes jos nepavyko surasti jokiose prieinamose "
 "programinės įrangos saugyklose."
 
-#: discover/DiscoverObject.cpp:416
-#, fuzzy, kde-kuit-format
-#| msgid "Please report this issue to the packagers of your distribution."
-msgctxt "@info %1 is an additional error reference"
+#: discover/DiscoverObject.cpp:410
+#, kde-kuit-format
+msgctxt ""
+"@info %1 is an additional error reference and %3 is the name of the "
+"operating system"
 msgid ""
-"Please report this issue to the packagers of your distribution.<nl/>(%1)"
-msgstr "Praneškite apie šią problemą savo platinamojo paketo pakuotojams."
+"(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
+"link>"
+msgstr ""
 
-#: discover/DiscoverObject.cpp:420
-#, kde-format
-msgid "Report This Issue"
-msgstr "Pranešti apie šią problemą"
-
-#: discover/DiscoverObject.cpp:480 discover/DiscoverObject.cpp:482
+#: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:483
+#: discover/DiscoverObject.cpp:476
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -919,8 +918,8 @@ msgstr "&Apie"
 msgid "S&ettings"
 msgstr "&Nuostatos"
 
-#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:350
-#: discover/qml/DiscoverWindow.qml:462
+#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:347
+#: discover/qml/DiscoverWindow.qml:459
 #, kde-format
 msgid "Error"
 msgstr "Klaida"
@@ -936,21 +935,24 @@ msgid "Proceed"
 msgstr "Tęsti"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, kde-format
-msgid "Report this issue"
-msgstr "Pranešti apie šią problemą"
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the distro name"
+#| msgid "Report This Issue to %1"
+msgctxt "@info %1 is the name of the operating system"
+msgid "Report this issue to %1"
+msgstr "Pranešti apie šią problemą %1"
 
-#: discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:347
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Klaida %1 iš %2"
 
-#: discover/qml/DiscoverWindow.qml:350 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:347 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "Atnaujinimo problema"
 
-#: discover/qml/DiscoverWindow.qml:361
+#: discover/qml/DiscoverWindow.qml:358
 #, fuzzy, kde-format
 #| msgid "There was an issue installing this update. Please try again later."
 msgid ""
@@ -958,24 +960,24 @@ msgid ""
 "again later."
 msgstr "Įdiegiant šį atnaujinimą iškilo problemų. Vėliau bandykite dar kartą."
 
-#: discover/qml/DiscoverWindow.qml:397
+#: discover/qml/DiscoverWindow.qml:394
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Rodyti ankstesnę"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:405
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Rodyti kitą"
 
-#: discover/qml/DiscoverWindow.qml:420 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:417 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "Rodyti techninę informaciją"
 
-#: discover/qml/DiscoverWindow.qml:428
+#: discover/qml/DiscoverWindow.qml:425
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Kopijuoti į iškarpinę"
@@ -1586,6 +1588,19 @@ msgstr "Turėtų būti tikrinama ar yra atnaujinimų"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Paskutinio atnaujinimo laikas nežinomas"
+
+#, fuzzy
+#~| msgid "Please report this issue to the packagers of your distribution."
+#~ msgctxt "@info %1 is an additional error reference"
+#~ msgid ""
+#~ "Please report this issue to the packagers of your distribution.<nl/>(%1)"
+#~ msgstr "Praneškite apie šią problemą savo platinamojo paketo pakuotojams."
+
+#~ msgid "Report This Issue"
+#~ msgstr "Pranešti apie šią problemą"
+
+#~ msgid "Report this issue"
+#~ msgstr "Pranešti apie šią problemą"
 
 #~ msgctxt "@info"
 #~ msgid "Restart the system to complete the update process"

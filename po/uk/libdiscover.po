@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-28 00:44+0000\n"
+"POT-Creation-Date: 2025-08-29 00:44+0000\n"
 "PO-Revision-Date: 2025-06-02 09:45+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -30,7 +30,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "yurchor@ukr.net"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:110
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:366
@@ -41,12 +41,12 @@ msgstr "yurchor@ukr.net"
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:112
+#: libdiscover/appstream/AppStreamUtils.cpp:113
 #, kde-format
 msgid "Proprietary"
 msgstr "Пропрієтарний"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:116
+#: libdiscover/appstream/AppStreamUtils.cpp:117
 #, kde-format
 msgid "Public Domain"
 msgstr "Суспільне надбання"
@@ -82,7 +82,7 @@ msgctxt "Root category name"
 msgid "Alpine Linux packages"
 msgstr "Пакунки Alpine Linux"
 
-#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:459
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:458
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
@@ -568,7 +568,7 @@ msgid "Local bundle"
 msgstr "Локальний пакунок"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:829
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Помилкове форматування адреси appstream «%1»"
@@ -1114,12 +1114,12 @@ msgstr "Ініціалізація модуля %1 триває надто до�
 msgid "Applications"
 msgstr "Програми"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:305
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Додатки Плазми"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:305
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
 #, kde-format
 msgid "Application Addons"
 msgstr "Додатки програм"
@@ -1187,43 +1187,43 @@ msgstr "Крамниця KDE"
 msgid "Log in information for %1"
 msgstr "Дані щодо входу для %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:247
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:259
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Не вдалося запустити %1"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:556
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:557
+#, kde-format
+msgctxt "Category"
+msgid "Hardware Drivers"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Addons"
 msgstr "Додатки Плазми"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:580
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "Віджети Плазми"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:580
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:592
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"
 msgstr "Шрифти"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:138
-#, kde-format
-msgctxt "@action:button %1 is the distro name"
-msgid "Report This Issue to %1"
-msgstr "Повідомити про цю проблему %1"
-
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:319
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:331
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 "Будь ласка, переконайтеся, що у вашій системі належним чином налаштовано "
 "Appstream"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:355
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:367
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1233,12 +1233,12 @@ msgstr ""
 "Супровід вашої операційної системи припинено %1. Вам варто оновити систему "
 "до супроводжуваної версії."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:947
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Не вдалося вилучити «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1251,28 +1251,26 @@ msgstr ""
 "Щоб мати змогу оновитися до цієї нової версії, спочатку застосуйте усі "
 "оновлення і перезавантажте вашу систему."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1030
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Оновити зараз"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "Випущено %1."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1179
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1192
 #, kde-format
-msgctxt "@info"
+msgctxt "@info %2 is the name of the operating system"
 msgid ""
-"The background service (PackageKit) stopped unexpectedly. It may have "
-"crashed."
+"The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
+"<link url='%1'>report this issue to %2</link>"
 msgstr ""
-"Роботу фонової служби (PackageKit) неочікувано припинено. Ймовірно, вона "
-"завершила роботу аварійно."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2066,7 +2064,7 @@ msgstr[3] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:167
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
@@ -2088,24 +2086,27 @@ msgstr "Не вдалося виконати відновлення автоно
 msgid "Repair Failed"
 msgstr "Невдала спроба відновлення"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:134
-#, kde-kuit-format
-msgctxt "@info"
-msgid "%1<nl/>Please report this error to your distribution."
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "%1<nl/>Please report this error to your distribution."
+msgctxt ""
+"@info %1 is an error message and %3 is the name of the operating system"
+msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
 msgstr ""
 "%1<nl/>Будь ласка, повідомте про цю помилку авторам свого дистрибутива."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Успішно відновлено"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:159
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
 #, kde-format
 msgid "Offline Updates"
 msgstr "Автономні оновлення"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:160
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -2777,6 +2778,18 @@ msgstr "Програмне забезпечення системи"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Додатки"
+
+#~ msgctxt "@action:button %1 is the distro name"
+#~ msgid "Report This Issue to %1"
+#~ msgstr "Повідомити про цю проблему %1"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The background service (PackageKit) stopped unexpectedly. It may have "
+#~ "crashed."
+#~ msgstr ""
+#~ "Роботу фонової служби (PackageKit) неочікувано припинено. Ймовірно, вона "
+#~ "завершила роботу аварійно."
 
 #~ msgctxt "Category"
 #~ msgid "Accessories"

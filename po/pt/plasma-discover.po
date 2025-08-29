@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-28 00:44+0000\n"
+"POT-Creation-Date: 2025-08-29 00:44+0000\n"
 "PO-Revision-Date: 2023-02-15 16:05+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -25,30 +25,31 @@ msgstr ""
 "X-POFile-SpellExtra: KNewStuff Graham Nate Leinir Snap pacman Arch\n"
 "X-POFile-SpellExtra: PackageKit\n"
 
-#: discover/DiscoverObject.cpp:184
+#: discover/DiscoverObject.cpp:183
 #, kde-format
-msgctxt "@title %1 is the distro name"
+msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:186
-#, kde-kuit-format
-msgctxt "@info:usagetip %1 is the distro name"
+#: discover/DiscoverObject.cpp:185
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "You can install some on the Settings page, under the <interface>Missing "
+#| "Backends</interface> section.<nl/><nl/>Also please consider reporting "
+#| "this as a packaging issue to your distribution."
+msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
-"interface>."
+"interface>.<nl/><nl/>Please <link url='%1'>report this issue to %2.</link>"
 msgstr ""
+"Poderá instalar alguns na página de Configuração, sob a secção "
+"<interface>Infra-Estruturas em Falta</interface>.<nl/><nl/>Pense também em "
+"relatar isto como um problema no pacote da sua distribuição."
 
-#: discover/DiscoverObject.cpp:189
-#, fuzzy, kde-format
-#| msgid "Report This Issue"
-msgctxt "@action:button %1 is the distro name"
-msgid "Report This Issue to %1"
-msgstr "Comunicar Este Problema"
-
-#: discover/DiscoverObject.cpp:194
+#: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -60,7 +61,7 @@ msgid ""
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:207
+#: discover/DiscoverObject.cpp:202
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -72,17 +73,17 @@ msgid ""
 "packages.</para>"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:296
+#: discover/DiscoverObject.cpp:291
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Não foi possível encontrar a categoria '%1'"
 
-#: discover/DiscoverObject.cpp:318
+#: discover/DiscoverObject.cpp:313
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "A tentar abrir o ficheiro inexistente '%1'"
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:335
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -91,17 +92,17 @@ msgstr ""
 "Não é possível interagir com os recursos de Flatpak sem a infra-estrutura de "
 "Flatpak %1. Instale-a primeiro, por favor."
 
-#: discover/DiscoverObject.cpp:344
+#: discover/DiscoverObject.cpp:339
 #, kde-format
 msgid "Could not open %1"
 msgstr "Não foi possível abrir o %1"
 
-#: discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:404
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Por favor, certifique-se que o suporte de Snap está instalado"
 
-#: discover/DiscoverObject.cpp:412
+#: discover/DiscoverObject.cpp:407
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not open %1 because it was not found in any available software "
@@ -113,28 +114,23 @@ msgstr ""
 "Não foi possível aceder ao %1, porque não foi encontrado nos repositórios de "
 "aplicações disponíveis."
 
-#: discover/DiscoverObject.cpp:416
-#, fuzzy, kde-kuit-format
-#| msgid "Please report this issue to the packagers of your distribution."
-msgctxt "@info %1 is an additional error reference"
+#: discover/DiscoverObject.cpp:410
+#, kde-kuit-format
+msgctxt ""
+"@info %1 is an additional error reference and %3 is the name of the "
+"operating system"
 msgid ""
-"Please report this issue to the packagers of your distribution.<nl/>(%1)"
+"(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
+"link>"
 msgstr ""
-"Por favor comunique este problema aos gestores de pacotes da sua "
-"distribuição."
 
-#: discover/DiscoverObject.cpp:420
-#, kde-format
-msgid "Report This Issue"
-msgstr "Comunicar Este Problema"
-
-#: discover/DiscoverObject.cpp:480 discover/DiscoverObject.cpp:482
+#: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:483
+#: discover/DiscoverObject.cpp:476
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -924,8 +920,8 @@ msgstr "&Acerca"
 msgid "S&ettings"
 msgstr "&Configuração"
 
-#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:350
-#: discover/qml/DiscoverWindow.qml:462
+#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:347
+#: discover/qml/DiscoverWindow.qml:459
 #, kde-format
 msgid "Error"
 msgstr "Erro"
@@ -941,21 +937,23 @@ msgid "Proceed"
 msgstr "Prosseguir"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, kde-format
-msgid "Report this issue"
-msgstr "Comunicar este problema"
+#, fuzzy, kde-format
+#| msgid "Report This Issue"
+msgctxt "@info %1 is the name of the operating system"
+msgid "Report this issue to %1"
+msgstr "Comunicar Este Problema"
 
-#: discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:347
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Erro %1 de %2"
 
-#: discover/qml/DiscoverWindow.qml:350 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:347 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "Problema na Actualização"
 
-#: discover/qml/DiscoverWindow.qml:361
+#: discover/qml/DiscoverWindow.qml:358
 #, fuzzy, kde-format
 #| msgid "There was an issue installing this update. Please try again later."
 msgid ""
@@ -965,24 +963,24 @@ msgstr ""
 "Ocorreu um problema ao instalar esta actualização. Por favor, tente de novo "
 "mais tarde."
 
-#: discover/qml/DiscoverWindow.qml:397
+#: discover/qml/DiscoverWindow.qml:394
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Mostrar o Anterior"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:405
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Mostrar o Seguinte"
 
-#: discover/qml/DiscoverWindow.qml:420 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:417 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "Ver os Detalhes Técnicos"
 
-#: discover/qml/DiscoverWindow.qml:428
+#: discover/qml/DiscoverWindow.qml:425
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Copiar para a Área de Transferência"
@@ -1595,6 +1593,21 @@ msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Hora da última actualização desconhecida"
 
+#, fuzzy
+#~| msgid "Please report this issue to the packagers of your distribution."
+#~ msgctxt "@info %1 is an additional error reference"
+#~ msgid ""
+#~ "Please report this issue to the packagers of your distribution.<nl/>(%1)"
+#~ msgstr ""
+#~ "Por favor comunique este problema aos gestores de pacotes da sua "
+#~ "distribuição."
+
+#~ msgid "Report This Issue"
+#~ msgstr "Comunicar Este Problema"
+
+#~ msgid "Report this issue"
+#~ msgstr "Comunicar este problema"
+
 #~ msgctxt "@info"
 #~ msgid "Restart the system to complete the update process"
 #~ msgstr "Reiniciar o sistema para terminar o processo de actualização"
@@ -1726,16 +1739,6 @@ msgstr "Hora da última actualização desconhecida"
 #~ "O Discover não consegue de momento ser usado para instalar nenhumas "
 #~ "aplicações, dado que nenhuma das suas infra-estruturas de aplicações "
 #~ "estão disponíveis."
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "You can install some on the Settings page, under the <interface>Missing "
-#~ "Backends</interface> section.<nl/><nl/>Also please consider reporting "
-#~ "this as a packaging issue to your distribution."
-#~ msgstr ""
-#~ "Poderá instalar alguns na página de Configuração, sob a secção "
-#~ "<interface>Infra-Estruturas em Falta</interface>.<nl/><nl/>Pense também "
-#~ "em relatar isto como um problema no pacote da sua distribuição."
 
 #~ msgctxt "@info"
 #~ msgid ""

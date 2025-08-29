@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-28 00:44+0000\n"
+"POT-Creation-Date: 2025-08-29 00:44+0000\n"
 "PO-Revision-Date: 2025-03-20 19:37+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -29,7 +29,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "g.sora@tiscali.it"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:110
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:366
@@ -40,12 +40,12 @@ msgstr "g.sora@tiscali.it"
 msgid "Unknown"
 msgstr "Incognite"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:112
+#: libdiscover/appstream/AppStreamUtils.cpp:113
 #, kde-format
 msgid "Proprietary"
 msgstr "Proprietari"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:116
+#: libdiscover/appstream/AppStreamUtils.cpp:117
 #, kde-format
 msgid "Public Domain"
 msgstr "Dominio Public"
@@ -81,7 +81,7 @@ msgctxt "Root category name"
 msgid "Alpine Linux packages"
 msgstr "Pacchettos de Alpine Linux"
 
-#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:459
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:458
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
@@ -567,7 +567,7 @@ msgid "Local bundle"
 msgstr "Fasce local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:829
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Url de Appstream  '%1' malformate"
@@ -1112,12 +1112,12 @@ msgstr "Retroadministration %1 prendeva troppo tempore per initialisar"
 msgid "Applications"
 msgstr "Applicationes"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:305
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Addons(Elementos adjunte o additiones) de Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:305
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
 #, kde-format
 msgid "Application Addons"
 msgstr "Addons (additiones) de application"
@@ -1185,43 +1185,43 @@ msgstr "KDE Store (Immagazina de KDE)"
 msgid "Log in information for %1"
 msgstr "Information de accesso per %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:247
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:259
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Non pote lancear %1"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:556
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:557
+#, kde-format
+msgctxt "Category"
+msgid "Hardware Drivers"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Addons"
 msgstr "Addons(Elementos adjunte o additiones) de Plasma"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:580
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "Widgets de Plasma"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:580
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:592
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"
 msgstr "Fonts"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:138
-#, kde-format
-msgctxt "@action:button %1 is the distro name"
-msgid "Report This Issue to %1"
-msgstr "Reporta iste question a %1"
-
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:319
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:331
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 "Pro favor tu assecura te qu Appstream es propriemente configurate sur tu "
 "systema"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:355
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:367
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1231,12 +1231,12 @@ msgstr ""
 "Tu systema operative, o operational ,terminava supporto le %1. Tu considera "
 "actualisar a un version supportate."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:947
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Non pote remover '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1249,28 +1249,26 @@ msgstr ""
 "Per poter actualisar a iste nove version, assecura te a applicar omne "
 "actualisationes pendente e post restarta tu systema."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1030
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Actualisa nunc"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 es nunc disponibile."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1179
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1192
 #, kde-format
-msgctxt "@info"
+msgctxt "@info %2 is the name of the operating system"
 msgid ""
-"The background service (PackageKit) stopped unexpectedly. It may have "
-"crashed."
+"The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
+"<link url='%1'>report this issue to %2</link>"
 msgstr ""
-"Le servicio de fundo (PackageKit) stoppava inexpectatemente. Il poterea "
-"esser fracassate."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2063,7 +2061,7 @@ msgstr[1] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:167
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
@@ -2085,23 +2083,26 @@ msgstr "Reparar foras de linea fallite"
 msgid "Repair Failed"
 msgstr "Reparation falleva"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:134
-#, kde-kuit-format
-msgctxt "@info"
-msgid "%1<nl/>Please report this error to your distribution."
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "%1<nl/>Please report this error to your distribution."
+msgctxt ""
+"@info %1 is an error message and %3 is the name of the operating system"
+msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
 msgstr "%1<nl/>Pro favor tu reporta iste error a tu distribution."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Reparate con successo"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:159
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
 #, kde-format
 msgid "Offline Updates"
 msgstr "Actualisationes foras de linea"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:160
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -2776,6 +2777,18 @@ msgstr "Software de Systema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Addons(Elementos adjunte)"
+
+#~ msgctxt "@action:button %1 is the distro name"
+#~ msgid "Report This Issue to %1"
+#~ msgstr "Reporta iste question a %1"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The background service (PackageKit) stopped unexpectedly. It may have "
+#~ "crashed."
+#~ msgstr ""
+#~ "Le servicio de fundo (PackageKit) stoppava inexpectatemente. Il poterea "
+#~ "esser fracassate."
 
 #~ msgctxt "Category"
 #~ msgid "Accessories"

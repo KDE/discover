@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-28 00:44+0000\n"
+"POT-Creation-Date: 2025-08-29 00:44+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -18,31 +18,33 @@ msgstr ""
 "X-Generator: Lokalize 24.08.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: discover/DiscoverObject.cpp:184
-#, kde-format
-msgctxt "@title %1 is the distro name"
+#: discover/DiscoverObject.cpp:183
+#, fuzzy, kde-format
+#| msgctxt "@title %1 is the distro name"
+#| msgid ""
+#| "%1 is not configured for installing apps through Discover—only app add-ons"
+msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr "%1 डिस्कोवर् मार्गेण एप्स् संस्थापनार्थं विन्यस्तं नास्ति—केवलं एप्-एड्-ऑन्"
 
-#: discover/DiscoverObject.cpp:186
-#, kde-kuit-format
-msgctxt "@info:usagetip %1 is the distro name"
+#: discover/DiscoverObject.cpp:185
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:usagetip %1 is the distro name"
+#| msgid ""
+#| "To use Discover for apps, install your preferred module on the "
+#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
+#| "interface>."
+msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
-"interface>."
+"interface>.<nl/><nl/>Please <link url='%1'>report this issue to %2.</link>"
 msgstr ""
 "अनुप्रयोगानाम् कृते डिस्कोवर् इत्यस्य उपयोगाय, <interface>समयोजननि</interface> पृष्ठे, "
 "<interface>पृष्ठभागाः लुप्ताः</interface> इत्यस्य अधः, स्वस्य इष्टमॉड्यूल् संस्थापयन्तु ।."
 
-#: discover/DiscoverObject.cpp:189
-#, kde-format
-msgctxt "@action:button %1 is the distro name"
-msgid "Report This Issue to %1"
-msgstr "%1 इत्यस्मै एतत् समस्यां प्रतिवेदयन्तु"
-
-#: discover/DiscoverObject.cpp:194
+#: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -60,7 +62,7 @@ msgstr ""
 "command> संकुलप्रबन्धकस्य उपयोगेन ।<nl/><nl/> <link url='https://archlinux.org/"
 "packages/extra/x86_64/discover/'> डिस्कोवर् कृते %1 इत्यस्य पॅकेजिंग् समीक्ष्यताम्</link>"
 
-#: discover/DiscoverObject.cpp:207
+#: discover/DiscoverObject.cpp:202
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -77,17 +79,17 @@ msgstr ""
 "अत्यन्तं अनुशंसितम् ।<para>%1 परिपालकाः <command>pacman</command> इत्यस्य उपयोगेन तस्य "
 "स्थाने अनुशंसन्ति > संकुलप्रबन्धनार्थं आदेशपङ्क्तिसाधनम् ।</para>"
 
-#: discover/DiscoverObject.cpp:296
+#: discover/DiscoverObject.cpp:291
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "'%1' श्रेणीं न लब्धम् ।"
 
-#: discover/DiscoverObject.cpp:318
+#: discover/DiscoverObject.cpp:313
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "अस्तित्वहीनां सञ्चिकां '%1' उद्घाटयितुं प्रयतते।"
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:335
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -96,17 +98,17 @@ msgstr ""
 "फ्लैटपैक् पृष्ठभागः %1 विना फ्लैटपैक् संसाधनैः सह अन्तरक्रियां कर्तुं न शक्यते । कृपया प्रथमं "
 "संस्थापयन्तु।."
 
-#: discover/DiscoverObject.cpp:344
+#: discover/DiscoverObject.cpp:339
 #, kde-format
 msgid "Could not open %1"
 msgstr "%1 उद्घाटयितुं न शक्तवान्"
 
-#: discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:404
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "कृपया सुनिश्चितं कुर्वन्तु यत् स्नैप समर्थनं संस्थापितम् अस्ति"
 
-#: discover/DiscoverObject.cpp:412
+#: discover/DiscoverObject.cpp:407
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not open %1 because it was not found in any available software "
@@ -116,26 +118,23 @@ msgid ""
 "repositories"
 msgstr "%1 उद्घाटयितुं न शक्तवान् यतः एतत् कस्मिन् अपि उपलब्धतन्त्राश्ः-भण्डारे न प्राप्तम् ।."
 
-#: discover/DiscoverObject.cpp:416
-#, fuzzy, kde-kuit-format
-#| msgid "Please report this issue to the packagers of your distribution."
-msgctxt "@info %1 is an additional error reference"
+#: discover/DiscoverObject.cpp:410
+#, kde-kuit-format
+msgctxt ""
+"@info %1 is an additional error reference and %3 is the name of the "
+"operating system"
 msgid ""
-"Please report this issue to the packagers of your distribution.<nl/>(%1)"
-msgstr "कृपया एतत् विषयं स्वस्य वितरणस्य संकुलकर्तृभ्यः सूचयन्तु ।."
+"(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
+"link>"
+msgstr ""
 
-#: discover/DiscoverObject.cpp:420
-#, kde-format
-msgid "Report This Issue"
-msgstr "अस्य मुद्देः सूचनां ददातु"
-
-#: discover/DiscoverObject.cpp:480 discover/DiscoverObject.cpp:482
+#: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "डिस्कोवर्"
 
-#: discover/DiscoverObject.cpp:483
+#: discover/DiscoverObject.cpp:476
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -897,8 +896,8 @@ msgstr "&विषये"
 msgid "S&ettings"
 msgstr "समयोजननि"
 
-#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:350
-#: discover/qml/DiscoverWindow.qml:462
+#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:347
+#: discover/qml/DiscoverWindow.qml:459
 #, kde-format
 msgid "Error"
 msgstr "त्रुटि"
@@ -914,21 +913,24 @@ msgid "Proceed"
 msgstr "प्रवर्तते"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, kde-format
-msgid "Report this issue"
-msgstr "अस्य विषयस्य प्रतिवेदनं कुर्वन्तु"
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the distro name"
+#| msgid "Report This Issue to %1"
+msgctxt "@info %1 is the name of the operating system"
+msgid "Report this issue to %1"
+msgstr "%1 इत्यस्मै एतत् समस्यां प्रतिवेदयन्तु"
 
-#: discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:347
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "%2 इत्यस्य %1 त्रुटिः"
 
-#: discover/qml/DiscoverWindow.qml:350 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:347 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "अद्यतनस्य समस्या"
 
-#: discover/qml/DiscoverWindow.qml:361
+#: discover/qml/DiscoverWindow.qml:358
 #, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
@@ -937,24 +939,24 @@ msgstr ""
 "अद्यतनस्य अथवा संस्थापनप्रक्रियायाः समये एकः समस्या आसीत् । कृपया पश्चात् पुनः प्रयासं "
 "कुर्वन्तु।"
 
-#: discover/qml/DiscoverWindow.qml:397
+#: discover/qml/DiscoverWindow.qml:394
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "पूर्वम् दर्शयतु"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:405
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "अग्रिमम् दर्शयतु"
 
-#: discover/qml/DiscoverWindow.qml:420 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:417 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "तकनीकीविवरणं पश्यन्तु"
 
-#: discover/qml/DiscoverWindow.qml:428
+#: discover/qml/DiscoverWindow.qml:425
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "अंशफलकं प्रति प्रतिलिख्यताम्"
@@ -1566,6 +1568,19 @@ msgstr "अद्यतनं अन्वेष्टव्यम्"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "अन्तिम-अद्यतनस्य समयः अज्ञातः"
+
+#, fuzzy
+#~| msgid "Please report this issue to the packagers of your distribution."
+#~ msgctxt "@info %1 is an additional error reference"
+#~ msgid ""
+#~ "Please report this issue to the packagers of your distribution.<nl/>(%1)"
+#~ msgstr "कृपया एतत् विषयं स्वस्य वितरणस्य संकुलकर्तृभ्यः सूचयन्तु ।."
+
+#~ msgid "Report This Issue"
+#~ msgstr "अस्य मुद्देः सूचनां ददातु"
+
+#~ msgid "Report this issue"
+#~ msgstr "अस्य विषयस्य प्रतिवेदनं कुर्वन्तु"
 
 #~ msgctxt "@info"
 #~ msgid "Restart the system to complete the update process"

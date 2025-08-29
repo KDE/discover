@@ -33,7 +33,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-28 00:44+0000\n"
+"POT-Creation-Date: 2025-08-29 00:44+0000\n"
 "PO-Revision-Date: 2025-06-03 14:12+0400\n"
 "Last-Translator: linux <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -54,7 +54,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xxmn77@gmail.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:110
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:366
@@ -65,12 +65,12 @@ msgstr "xxmn77@gmail.com"
 msgid "Unknown"
 msgstr "Naməlum"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:112
+#: libdiscover/appstream/AppStreamUtils.cpp:113
 #, kde-format
 msgid "Proprietary"
 msgstr "Özəl (bağlı kod)"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:116
+#: libdiscover/appstream/AppStreamUtils.cpp:117
 #, kde-format
 msgid "Public Domain"
 msgstr "Ümumi domen"
@@ -106,7 +106,7 @@ msgctxt "Root category name"
 msgid "Alpine Linux packages"
 msgstr "Alpine Linux paketləri"
 
-#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:459
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:458
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
@@ -592,7 +592,7 @@ msgid "Local bundle"
 msgstr "Yerli paketlər"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:829
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Pozulmuş appstream ünvanı '%1'"
@@ -1137,12 +1137,12 @@ msgstr "%1 mexanizminin işlənməsi çox vaxt aparır"
 msgid "Applications"
 msgstr "Tətbiqlər"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:305
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma əlavələri"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:305
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
 #, kde-format
 msgid "Application Addons"
 msgstr "Tətbiq əlavələri"
@@ -1210,41 +1210,41 @@ msgstr "KDE Mağazası"
 msgid "Log in information for %1"
 msgstr "%1 məlumatlarına giriş"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:247
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:259
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 başladıla bilmədi"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:556
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:557
+#, kde-format
+msgctxt "Category"
+msgid "Hardware Drivers"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Addons"
 msgstr "Plasma əlavələri"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:580
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "Plasma qoşmaları"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:580
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:592
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"
 msgstr "Şriftlər"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:138
-#, kde-format
-msgctxt "@action:button %1 is the distro name"
-msgid "Report This Issue to %1"
-msgstr "Problemi burada bildirin: %1"
-
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:319
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:331
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Appstream-in komputerinizdə düzgün quraşdırdığını yoxlayın"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:355
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:367
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1254,12 +1254,12 @@ msgstr ""
 "%1 tarixində sizin əməliyyat sisteminin dəstəklənməsi dayandırılıb. "
 "Dəstəklənən versiyaya yeniləməyi gözdən keçirin."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:947
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "\"%1\" silinə bilmir"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1272,27 +1272,26 @@ msgstr ""
 "Bu ən yeni versiyaya yeniləmək üçün, öncə bütün mövcud yenilənmələri tətbiq "
 "edin və sonra sistemi yenidən başladın."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1030
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Yenilənməni indi başladın"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 əlçatan deyil."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1179
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1192
 #, kde-format
-msgctxt "@info"
+msgctxt "@info %2 is the name of the operating system"
 msgid ""
-"The background service (PackageKit) stopped unexpectedly. It may have "
-"crashed."
+"The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
+"<link url='%1'>report this issue to %2</link>"
 msgstr ""
-"Arxa plan xidməti (PackageKit) göslənilmədən bağlandı. Qəza baş verə bilər."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2079,7 +2078,7 @@ msgstr[1] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:167
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
@@ -2101,23 +2100,26 @@ msgstr "Oflayn yenilınmədəki səhvlər aradan qaldrılır"
 msgid "Repair Failed"
 msgstr "Bərpa etmək alınmadı"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:134
-#, kde-kuit-format
-msgctxt "@info"
-msgid "%1<nl/>Please report this error to your distribution."
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "%1<nl/>Please report this error to your distribution."
+msgctxt ""
+"@info %1 is an error message and %3 is the name of the operating system"
+msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
 msgstr "%1<nl/>Lütfən, bu hesabatı tərtibatçıya göndərin."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Uğurla həll edildi"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:159
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
 #, kde-format
 msgid "Offline Updates"
 msgstr "Müstəqil yenilənmələr"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:160
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -2780,6 +2782,18 @@ msgstr "Sistem Proqram Təminatı"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Əlavələr"
+
+#~ msgctxt "@action:button %1 is the distro name"
+#~ msgid "Report This Issue to %1"
+#~ msgstr "Problemi burada bildirin: %1"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The background service (PackageKit) stopped unexpectedly. It may have "
+#~ "crashed."
+#~ msgstr ""
+#~ "Arxa plan xidməti (PackageKit) göslənilmədən bağlandı. Qəza baş verə "
+#~ "bilər."
 
 #~ msgctxt "Category"
 #~ msgid "Accessories"

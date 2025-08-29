@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-28 00:44+0000\n"
+"POT-Creation-Date: 2025-08-29 00:44+0000\n"
 "PO-Revision-Date: 2025-07-11 18:51+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -28,7 +28,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "gudmundure@gmail.com"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:110
+#: libdiscover/appstream/AppStreamUtils.cpp:111
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:366
@@ -39,12 +39,12 @@ msgstr "gudmundure@gmail.com"
 msgid "Unknown"
 msgstr "Óþekkt"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:112
+#: libdiscover/appstream/AppStreamUtils.cpp:113
 #, kde-format
 msgid "Proprietary"
 msgstr "Einkaleyfisháð"
 
-#: libdiscover/appstream/AppStreamUtils.cpp:116
+#: libdiscover/appstream/AppStreamUtils.cpp:117
 #, kde-format
 msgid "Public Domain"
 msgstr "Opið öllum"
@@ -80,7 +80,7 @@ msgctxt "Root category name"
 msgid "Alpine Linux packages"
 msgstr "Alpine Linux-pakkar"
 
-#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:459
+#: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:458
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
@@ -566,7 +566,7 @@ msgid "Local bundle"
 msgstr "Staðbundinn forritsvöndull"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:829
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Gölluð appstream-slóð '%1'"
@@ -1105,12 +1105,12 @@ msgstr "Það tók of langan tíma að frumstilla %1 bakenda"
 msgid "Applications"
 msgstr "Forrit"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:305
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma-viðbætur"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:305
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
 #, kde-format
 msgid "Application Addons"
 msgstr "Forritaviðbætur"
@@ -1176,41 +1176,41 @@ msgstr "KDE Store"
 msgid "Log in information for %1"
 msgstr "Innskráningarupplýsingar fyrir %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:247
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:259
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Get ekki keyrt %1"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:556
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:557
+#, kde-format
+msgctxt "Category"
+msgid "Hardware Drivers"
+msgstr ""
+
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Addons"
 msgstr "Plasma-viðbætur"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:580
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "Plasma-græjur"
 
-#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:580
+#: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:592
 #, kde-format
 msgctxt "Category"
 msgid "Fonts"
 msgstr "Leturgerðir"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:138
-#, kde-format
-msgctxt "@action:button %1 is the distro name"
-msgid "Report This Issue to %1"
-msgstr "Tilkynna vandamálið til %1"
-
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:319
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:331
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Gakktu úr skugga um að Appstream sé rétt sett upp í tölvunni"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:355
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:367
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1220,12 +1220,12 @@ msgstr ""
 "Stýrikerfið þitt hætti stuðningi við %1. Þú ættir að íhuga að uppfæra í nýja "
 "studda útgáfu."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:935
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:947
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Get ekki fjarlægt '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1021
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1238,27 +1238,26 @@ msgstr ""
 "Til að hægt sé að uppfæra í nýju útgáfuna skaltu setja upp allar tiltækar "
 "uppfærslur og endurræsa svo tölvuna."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1030
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Uppfæra núna í nýja útgáfu"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1053
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 er ekki tiltækt."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1179
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1192
 #, kde-format
-msgctxt "@info"
+msgctxt "@info %2 is the name of the operating system"
 msgid ""
-"The background service (PackageKit) stopped unexpectedly. It may have "
-"crashed."
+"The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
+"<link url='%1'>report this issue to %2</link>"
 msgstr ""
-"Bakgrunnsþjónustan (PackageKit) stöðvaðist óvænt. Hugsanlega hrundi hún."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2042,7 +2041,7 @@ msgstr[1] ""
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:167
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
@@ -2064,23 +2063,26 @@ msgstr "Lagfæri uppfærslur utan nets sem mistókust"
 msgid "Repair Failed"
 msgstr "Viðgerð mistókst"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:134
-#, kde-kuit-format
-msgctxt "@info"
-msgid "%1<nl/>Please report this error to your distribution."
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "%1<nl/>Please report this error to your distribution."
+msgctxt ""
+"@info %1 is an error message and %3 is the name of the operating system"
+msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
 msgstr "%1<nl/>Tilkynntu þessa villu til dreifingaraðila þíns."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Viðgerð tókst"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:159
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
 #, kde-format
 msgid "Offline Updates"
 msgstr "Uppfærslur utan nets"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:160
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -2729,6 +2731,17 @@ msgstr "Kerfishugbúnaður"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Viðbætur"
+
+#~ msgctxt "@action:button %1 is the distro name"
+#~ msgid "Report This Issue to %1"
+#~ msgstr "Tilkynna vandamálið til %1"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The background service (PackageKit) stopped unexpectedly. It may have "
+#~ "crashed."
+#~ msgstr ""
+#~ "Bakgrunnsþjónustan (PackageKit) stöðvaðist óvænt. Hugsanlega hrundi hún."
 
 #~ msgctxt "Category"
 #~ msgid "Accessories"

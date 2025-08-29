@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-28 00:44+0000\n"
-"PO-Revision-Date: 2025-07-23 13:57+0200\n"
+"POT-Creation-Date: 2025-08-29 00:44+0000\n"
+"PO-Revision-Date: 2025-08-28 10:22+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,36 +18,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.08.0\n"
 
-#: discover/DiscoverObject.cpp:184
-#, kde-format
-msgctxt "@title %1 is the distro name"
+#: discover/DiscoverObject.cpp:183
+#, fuzzy, kde-format
+#| msgctxt "@title %1 is the distro name"
+#| msgid ""
+#| "%1 is not configured for installing apps through Discover—only app add-ons"
+msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
 "%1 ez dago «Discover»en bidez aplikazioak instalatzeko konfiguratuta—"
 "aplikazioen gehigarrietarako besterik ez"
 
-#: discover/DiscoverObject.cpp:186
-#, kde-kuit-format
-msgctxt "@info:usagetip %1 is the distro name"
+#: discover/DiscoverObject.cpp:185
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:usagetip %1 is the distro name"
+#| msgid ""
+#| "To use Discover for apps, install your preferred module on the "
+#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
+#| "interface>."
+msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
-"interface>."
+"interface>.<nl/><nl/>Please <link url='%1'>report this issue to %2.</link>"
 msgstr ""
 "Discover, aplikazioetarako erabiltzeko, instalatu zure gogoko modulua "
 "<interface>Falta diren bizkarraldekoak</interface> barruan dagoen "
 "<interface>Ezarpenak</interface> orrian."
 
-#: discover/DiscoverObject.cpp:189
-#, kde-format
-msgctxt "@action:button %1 is the distro name"
-msgid "Report This Issue to %1"
-msgstr "Eman arazo honen berri %1(e)ri"
-
-#: discover/DiscoverObject.cpp:194
+#: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -64,7 +66,7 @@ msgstr ""
 "archlinux.org/packages/extra/x86_64/discover/'>%1 Discover-rerako "
 "paketatzea</link>"
 
-#: discover/DiscoverObject.cpp:207
+#: discover/DiscoverObject.cpp:202
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -82,17 +84,17 @@ msgstr ""
 "garatzaileek, paketeak kudeatzeko komando-lerroko <command>pacman</command> "
 "tresna erabiltzea gomendatzen dute.</para>"
 
-#: discover/DiscoverObject.cpp:296
+#: discover/DiscoverObject.cpp:291
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Ez da aurkitu kategoria: '%1'"
 
-#: discover/DiscoverObject.cpp:318
+#: discover/DiscoverObject.cpp:313
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Existitzen ez den '%1' fitxategia irekitzea saiatzen"
 
-#: discover/DiscoverObject.cpp:340
+#: discover/DiscoverObject.cpp:335
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -101,48 +103,41 @@ msgstr ""
 "Ezin da «flatpak» baliabideekin elkarreraginean aritu %1 «flatpak» "
 "bizkarraldekorik gabe. Aurrena hura instalatu."
 
-#: discover/DiscoverObject.cpp:344
+#: discover/DiscoverObject.cpp:339
 #, kde-format
 msgid "Could not open %1"
 msgstr "Ezin da %1 ireki"
 
-#: discover/DiscoverObject.cpp:409
+#: discover/DiscoverObject.cpp:404
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Mesedez, ziurtatu Snap euskarria instalatuta dagoela"
 
-#: discover/DiscoverObject.cpp:412
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#: discover/DiscoverObject.cpp:407
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
 msgstr ""
-"Ezin izan du %1 ireki, eskuragarri dauden software gordetegietan ez delako "
-"aurkitu."
+"Eskatutako aplikazioa ezin izan du aurkitu erabilgarri dauden gordetegietan."
 
-#: discover/DiscoverObject.cpp:416
-#, fuzzy, kde-kuit-format
-#| msgid "Please report this issue to the packagers of your distribution."
-msgctxt "@info %1 is an additional error reference"
+#: discover/DiscoverObject.cpp:410
+#, kde-kuit-format
+msgctxt ""
+"@info %1 is an additional error reference and %3 is the name of the "
+"operating system"
 msgid ""
-"Please report this issue to the packagers of your distribution.<nl/>(%1)"
-msgstr "Mesedez, eman arazo honen berri zure banaketaren paketatzaileei."
+"(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
+"link>"
+msgstr ""
 
-#: discover/DiscoverObject.cpp:420
-#, kde-format
-msgid "Report This Issue"
-msgstr "Eman arazo honen berri"
-
-#: discover/DiscoverObject.cpp:480 discover/DiscoverObject.cpp:482
+#: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:483
+#: discover/DiscoverObject.cpp:476
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -572,47 +567,46 @@ msgstr "Zer berri"
 #: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Reviews"
-msgstr "Aipamenak"
+msgstr "Iruzkinak"
 
 #: discover/qml/ApplicationPage.qml:757
 #, kde-format
 msgid "Loading reviews for %1"
-msgstr "«%1»ren gaineko aipamenak zamatzen"
+msgstr "%1(e)ren gaineko iruzkinak zamatzen"
 
 #: discover/qml/ApplicationPage.qml:766
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr "%1(e)n gaineko aipamenak aldi baterako ezin dira erabili"
+msgstr "%1(e)n gaineko iruzkinak aldi baterako ezin dira erabili"
 
 #: discover/qml/ApplicationPage.qml:773
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "Oraindik ez da iruzkinik argitaratu"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
-msgstr "Instalatu aipamen bat idazteko"
+msgstr "Instalatu iruzkin bat idazteko"
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Write a Review"
-msgstr "Idatzi aipamen bat"
+msgstr "Idatzi iruzkin bat"
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Install to Write a Review"
-msgstr "Instalatu aipamen bat idazteko"
+msgstr "Instalatu iruzkin bat idazteko"
 
 #: discover/qml/ApplicationPage.qml:806
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Erakutsi aipamen guztiak"
+msgstr "Erakutsi iruzkin guztiak"
 
 #: discover/qml/ApplicationPage.qml:844
 #, kde-format
@@ -908,8 +902,8 @@ msgstr "Honi &buruz"
 msgid "S&ettings"
 msgstr "&Ezarpenak"
 
-#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:350
-#: discover/qml/DiscoverWindow.qml:462
+#: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:347
+#: discover/qml/DiscoverWindow.qml:459
 #, kde-format
 msgid "Error"
 msgstr "Errorea"
@@ -925,21 +919,24 @@ msgid "Proceed"
 msgstr "Jarraitu"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, kde-format
-msgid "Report this issue"
-msgstr "Eman arazo honen berri"
+#, fuzzy, kde-format
+#| msgctxt "@action:button %1 is the distro name"
+#| msgid "Report This Issue to %1"
+msgctxt "@info %1 is the name of the operating system"
+msgid "Report this issue to %1"
+msgstr "Eman arazo honen berri %1(e)ri"
 
-#: discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:347
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Errorea %1 / %2"
 
-#: discover/qml/DiscoverWindow.qml:350 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:347 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "Eguneratzeko arazoa"
 
-#: discover/qml/DiscoverWindow.qml:361
+#: discover/qml/DiscoverWindow.qml:358
 #, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
@@ -948,24 +945,24 @@ msgstr ""
 "Eguneratze edo instalatze prozesuan arazo bat egon da. Mesedez, saiatu "
 "berriz beranduago."
 
-#: discover/qml/DiscoverWindow.qml:397
+#: discover/qml/DiscoverWindow.qml:394
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Erakutsi aurrekoa"
 
-#: discover/qml/DiscoverWindow.qml:408
+#: discover/qml/DiscoverWindow.qml:405
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Erakutsi hurrengoa"
 
-#: discover/qml/DiscoverWindow.qml:420 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:417 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "Ikusi xehetasun teknikoak"
 
-#: discover/qml/DiscoverWindow.qml:428
+#: discover/qml/DiscoverWindow.qml:425
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Kopiatu arbelera"
@@ -1093,7 +1090,7 @@ msgstr "%1 - %2"
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
 msgid "unknown reviewer"
-msgstr "Aipamen emaile ezezaguna"
+msgstr "Iruzkingile ezezaguna"
 
 #: discover/qml/ReviewDelegate.qml:59
 #, kde-format
@@ -1123,7 +1120,7 @@ msgstr "Bozkak: %1 / %2"
 #: discover/qml/ReviewDelegate.qml:94
 #, kde-format
 msgid "Was this review useful?"
-msgstr "Aipamen hau baliagarria izan da?"
+msgstr "Iruzkin hau baliagarria izan da?"
 
 #: discover/qml/ReviewDelegate.qml:106
 #, kde-format
@@ -1140,12 +1137,12 @@ msgstr "Ez"
 #: discover/qml/ReviewDialog.qml:26
 #, kde-format
 msgid "Reviewing %1"
-msgstr "%«%1»ren gaineko aipamena egiten"
+msgstr "%1(e)ren gaineko iruzkina egiten"
 
 #: discover/qml/ReviewDialog.qml:33
 #, kde-format
 msgid "Submit review"
-msgstr "Bidali aipamena"
+msgstr "Bidali iruzkina"
 
 #: discover/qml/ReviewDialog.qml:48
 #, kde-format
@@ -1265,7 +1262,7 @@ msgstr "Idatzi izenburua"
 #: discover/qml/ReviewDialog.qml:188
 #, kde-format
 msgid "Write the review"
-msgstr "Idatzi aipamena"
+msgstr "Idatzi iruzkina"
 
 #: discover/qml/ReviewDialog.qml:191
 #, kde-format
@@ -1286,17 +1283,17 @@ msgstr "Sartu izen bat"
 #: discover/qml/ReviewsPage.qml:43
 #, kde-format
 msgid "Reviews for %1"
-msgstr "%1(e)ren gaineko aipamenak"
+msgstr "%1(e)ren gaineko iruzkinak"
 
 #: discover/qml/ReviewsPage.qml:105
 #, kde-format
 msgid "Write a Review…"
-msgstr "Idatzi aipamen bat…"
+msgstr "Idatzi iruzkin bat…"
 
 #: discover/qml/ReviewsPage.qml:118
 #, kde-format
 msgid "Install this app to write a review"
-msgstr "Instalatu aplikazio hori, aipamen bat idazteko"
+msgstr "Instalatu aplikazio hori, iruzkin bat idazteko"
 
 #: discover/qml/ReviewsPage.qml:145
 #, kde-format
@@ -1314,13 +1311,13 @@ msgstr "Berriena"
 #, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "Kalifikazio altuenak"
+msgstr "Balorazio altuenak"
 
 #: discover/qml/ReviewsStats.qml:53
 #, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "%1 aipamen"
+msgstr "%1 iruzkin"
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
@@ -1331,7 +1328,7 @@ msgstr "M"
 #: discover/qml/ReviewsStats.qml:167
 #, kde-format
 msgid "Unknown reviewer"
-msgstr "Aipamen egile ezezaguna"
+msgstr "Iruzkingile ezezaguna"
 
 #: discover/qml/ReviewsStats.qml:188
 #, kde-format
@@ -1583,6 +1580,19 @@ msgstr "Eguneratzeak dauden egiaztatu beharko litzateke"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Azken eguneratze ordua ezezaguna"
+
+#~| msgid "Please report this issue to the packagers of your distribution."
+#~ msgctxt "@info %1 is an additional error reference"
+#~ msgid ""
+#~ "Please report this issue to the packagers of your distribution.<nl/>(%1)"
+#~ msgstr ""
+#~ "Mesedez, eman arazo honen berri zure banaketaren paketatzaileei.<nl/>(%1)"
+
+#~ msgid "Report This Issue"
+#~ msgstr "Eman arazo honen berri"
+
+#~ msgid "Report this issue"
+#~ msgstr "Eman arazo honen berri"
 
 #~ msgctxt "@info"
 #~ msgid "Restart the system to complete the update process"
