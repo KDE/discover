@@ -132,7 +132,7 @@ Kirigami.GlobalDrawer {
             objectName: "updateButton"
             action: updateAction
             visible: enabled && drawer.wideScreen
-            stateIconName: Discover.ResourcesModel.updatesCount > 0 ? "emblem-important" : ""
+            stateIconName: Discover.ResourcesModel.fetchingUpdatesProgress < 100 ? "view-refresh" : Discover.ResourcesModel.updatesCount > 0 ? "emblem-important" : ""
         },
         ActionListItem {
             action: sourcesAction
