@@ -23,7 +23,6 @@ msgctxt "@title %1 is the distro name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"%1 没有配置为通过 Discover 安装应用 — 它只通过 Discover 安装应用的附加组件"
 
 #: discover/DiscoverObject.cpp:186
 #, kde-kuit-format

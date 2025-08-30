@@ -1310,12 +1310,12 @@ msgstr "创建线程失败"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:53
 #, kde-format
 msgid "Transaction failure"
-msgstr "安装进程失败"
+msgstr "软件管理事务失败"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:55
 #, kde-format
 msgid "Transaction canceled"
-msgstr "安装进程已取消"
+msgstr "软件管理事务已取消"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:57
 #, kde-format
@@ -1345,7 +1345,7 @@ msgstr "初始化失败"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:67
 #, kde-format
 msgid "Failed to finalize transaction"
-msgstr "无法完成安装进程"
+msgstr "无法完成软件管理事务"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:69
 #, kde-format
@@ -1355,7 +1355,7 @@ msgstr "解析配置失败"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:71
 #, kde-format
 msgid "Cannot cancel transaction"
-msgstr "无法取消安装进程"
+msgstr "无法取消软件管理事务"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:73
 #, kde-format
@@ -1562,7 +1562,7 @@ msgstr "已取消的优先级"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:153
 #, kde-format
 msgid "Unfinished transaction"
-msgstr "未完成的安装进程"
+msgstr "未完成的软件管理事务"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:155
 #, kde-format
@@ -1732,85 +1732,85 @@ msgstr "程序正在等待处理。"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
 #, kde-format
 msgid "Setting up transaction…"
-msgstr "正在准备安装进程…"
+msgstr "正在准备软件管理事务…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
 #, kde-format
 msgid "The transaction is currently working…"
-msgstr "安装进程正在工作…"
+msgstr "软件管理事务正在进行…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
 #, kde-format
 msgid "The transaction is currently removing packages…"
-msgstr "安装进程正在移除软件包…"
+msgstr "软件管理事务正在移除软件包…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
 #, kde-format
 msgid "The transaction is currently downloading packages…"
-msgstr "安装进程正在下载软件包…"
+msgstr "软件管理事务正在下载软件包…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
 #, kde-format
 msgid "The transactions is currently installing packages…"
-msgstr "安装进程正在安装软件包…"
+msgstr "软件管理事务正在安装软件包…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
 #, kde-format
 msgid "The transaction is currently updating packages…"
-msgstr "安装进程正在更新软件包…"
+msgstr "软件管理事务正在更新软件包…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
 #, kde-format
 msgid "The transaction is currently cleaning up…"
-msgstr "安装进程正在清理…"
+msgstr "软件管理事务正在清理…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
 #, kde-format
 msgid ""
 "The transaction is currently resolving the dependencies of the packages it "
 "will install…"
-msgstr "安装进程正在处理将要安装软件包的依赖关系…"
+msgstr "软件管理事务正在处理将要安装软件包的依赖关系…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
 #, kde-format
 msgid "The transaction is currently checking the signatures of the packages…"
-msgstr "安装进程正在校验软件包的签名…"
+msgstr "软件管理事务正在校验软件包的签名…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
 #, kde-format
 msgid ""
 "The transaction is currently testing the commit of this set of packages…"
-msgstr "安装进程正在测试软件包的提交…"
+msgstr "软件管理事务正在测试软件包的提交…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
 #, kde-format
 msgid "The transaction is currently committing its set of packages…"
-msgstr "安装进程正在提交软件包…"
+msgstr "软件管理事务正在提交软件包…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
 #, kde-format
 msgid "The transaction has finished!"
-msgstr "安装进程已完成！"
+msgstr "软件管理事务已完成"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:286
 #, kde-format
 msgid "The transaction was canceled"
-msgstr "安装进程已取消"
+msgstr "软件管理事务已取消"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
 #, kde-format
 msgid "The transaction is currently waiting for the lock…"
-msgstr "安装进程正在等待锁定…"
+msgstr "软件管理事务正在等待锁定…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
 #, kde-format
 msgid "Waiting for the user to authorize the transaction…"
-msgstr "正在等待用户对安装进程进行授权…"
+msgstr "正在等待用户对软件管理事务进行授权…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
 #, kde-format
 msgid "The transaction is currently copying files…"
-msgstr "安装进程正在复制文件…"
+msgstr "软件管理事务正在复制文件…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
 #, kde-format
@@ -2393,8 +2393,8 @@ msgid ""
 "rpm-ostree-backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend：错误：无法已无效格式启动资源的安装进程。请为此提交一个程"
-"序缺陷报告。"
+"rpm-ostree-backend：错误：无法为格式无效的资源启动软件管理事务。请为此提交一"
+"个程序缺陷报告。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
 #, kde-format
@@ -2418,7 +2418,7 @@ msgid ""
 "rpm-ostree transaction failed with:\n"
 "%1"
 msgstr ""
-"rpm-ostree 安装进程失败：\n"
+"rpm-ostree 软件管理事务失败：\n"
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
@@ -2430,7 +2430,7 @@ msgstr "rpm-ostree-backend：错误：未知的资源格式。请为此提交一
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
-msgstr "正在取消 rpm-ostree 的安装进程。这可能需要一些时间。请稍候。"
+msgstr "正在取消 rpm-ostree 的软件管理事务。这可能需要一些时间。请稍候。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
 #, kde-format
@@ -2464,7 +2464,7 @@ msgstr "操作正在进行中 (在 Discover 外部启动)"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
 #, kde-format
 msgid "Unknown transaction type"
-msgstr "未知的安装进程类型"
+msgstr "未知的软件管理事务类型"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, kde-format

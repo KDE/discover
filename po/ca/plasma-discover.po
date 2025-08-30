@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-24 02:35+0000\n"
-"PO-Revision-Date: 2025-08-28 09:28+0200\n"
+"PO-Revision-Date: 2025-08-29 09:27+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1128,12 +1128,12 @@ msgstr "No"
 #: discover/qml/ReviewDialog.qml:26
 #, kde-format
 msgid "Reviewing %1"
-msgstr "S'està comentant %1"
+msgstr "S'està fent la ressenya de %1"
 
 #: discover/qml/ReviewDialog.qml:33
 #, kde-format
 msgid "Submit review"
-msgstr "Envia el comentari"
+msgstr "Envia la ressenya"
 
 #: discover/qml/ReviewDialog.qml:48
 #, kde-format
@@ -1249,7 +1249,7 @@ msgstr "Escriviu el títol"
 #: discover/qml/ReviewDialog.qml:188
 #, kde-format
 msgid "Write the review"
-msgstr "Escriviu el comentari"
+msgstr "Escriviu la ressenya"
 
 #: discover/qml/ReviewDialog.qml:191
 #, kde-format
@@ -1304,7 +1304,7 @@ msgstr "Valoració més alta"
 #, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "%1 comentaris"
+msgstr "%1 ressenyes"
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
