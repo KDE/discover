@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-29 00:44+0000\n"
-"PO-Revision-Date: 2025-05-30 21:16+0200\n"
+"PO-Revision-Date: 2025-08-29 07:42+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,13 +15,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
@@ -30,12 +27,7 @@ msgstr ""
 "applikationstillägg"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -44,7 +36,8 @@ msgid ""
 msgstr ""
 "För att använda Upptäck för applikationer, installera modulen du föredrar på "
 "sidan <interface>Inställningar</interface>, under <interface>Saknade "
-"gränssnitt</interface>."
+"gränssnitt</interface>.<nl/><nl/><link url='%1'>Rapportera problemet till %2."
+"</link>"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -111,15 +104,12 @@ msgid "Please make sure Snap support is installed"
 msgstr "Säkerställ att stöd för Snap är installerat"
 
 #: discover/DiscoverObject.cpp:407
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
 msgstr ""
-"Kunde inte öppna %1 eftersom det inte hittades i något tillgängligt "
+"Det begärda programmet kunde inte hittas i något tillgängligt "
 "programvaruarkiv."
 
 #: discover/DiscoverObject.cpp:410
@@ -131,6 +121,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(Ingen post för %1)<nl/><nl/><link url='%2'>Rapportera problemet till %3.</"
+"link>"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
@@ -583,11 +575,10 @@ msgstr "Omdömen för %1 är tillfälligt otillgängliga"
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "Inga omdömen inskickade ännu"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
 msgstr "Installera för att skriva ett omdöme"
@@ -918,12 +909,10 @@ msgid "Proceed"
 msgstr "Fortsätt"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
-msgstr "Rapportera felet till %1"
+msgstr "Rapportera problemet till %1"
 
 #: discover/qml/DiscoverWindow.qml:347
 #, kde-format

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-29 00:44+0000\n"
-"PO-Revision-Date: 2025-08-28 09:28+0200\n"
+"PO-Revision-Date: 2025-08-29 09:27+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -22,10 +22,7 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
@@ -34,12 +31,7 @@ msgstr ""
 "només aplicacions i complements"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -48,7 +40,8 @@ msgid ""
 msgstr ""
 "Per a utilitzar el Discover per a les aplicacions, instal·leu el mòdul "
 "preferit a la pàgina <interface>Configuració</interface>, sota "
-"<interface>Dorsals que manquen</interface>."
+"<interface>Dorsals que manquen</interface>.<nl/><nl/><link url='%1'>Informeu "
+"d'aquest problema a %2.</link>"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -133,6 +126,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(Cap entrada per a %1)<nl/><nl/><link url='%2'>Informeu d'aquest problema a "
+"%3.</link>"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
@@ -927,12 +922,10 @@ msgid "Proceed"
 msgstr "Continua"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
-msgstr "Informa del problema a %1"
+msgstr "Informa d'aquest problema a %1"
 
 #: discover/qml/DiscoverWindow.qml:347
 #, kde-format
@@ -1144,12 +1137,12 @@ msgstr "No"
 #: discover/qml/ReviewDialog.qml:26
 #, kde-format
 msgid "Reviewing %1"
-msgstr "S'està comentant %1"
+msgstr "S'està fent la ressenya de %1"
 
 #: discover/qml/ReviewDialog.qml:33
 #, kde-format
 msgid "Submit review"
-msgstr "Envia el comentari"
+msgstr "Envia la ressenya"
 
 #: discover/qml/ReviewDialog.qml:48
 #, kde-format
@@ -1265,7 +1258,7 @@ msgstr "Escriviu el títol"
 #: discover/qml/ReviewDialog.qml:188
 #, kde-format
 msgid "Write the review"
-msgstr "Escriviu el comentari"
+msgstr "Escriviu la ressenya"
 
 #: discover/qml/ReviewDialog.qml:191
 #, kde-format
@@ -1320,7 +1313,7 @@ msgstr "Valoració més alta"
 #, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "%1 comentaris"
+msgstr "%1 ressenyes"
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format

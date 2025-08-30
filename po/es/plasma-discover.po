@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-29 00:44+0000\n"
-"PO-Revision-Date: 2025-08-28 11:56+0100\n"
+"PO-Revision-Date: 2025-08-29 04:00+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -21,10 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
@@ -33,12 +30,7 @@ msgstr ""
 "complementos de aplicaciones)"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -47,7 +39,7 @@ msgid ""
 msgstr ""
 "Para usar Discover para aplicaciones, instale el módulo que prefiera en la "
 "página <interface>Preferencias</interface>, en <interface>Motores ausentes</"
-"interface>."
+"interface>.<nl/><nl/><link url='%1'>Informe de este problema a %2</link>."
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -132,6 +124,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(No hay ninguna entrada para %1)<nl/><nl/><link url='%2'>Informe de este "
+"problema a %3</link>."
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
@@ -923,12 +917,10 @@ msgid "Proceed"
 msgstr "Continuar"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
-msgstr "Notificar este problema a %1"
+msgstr "Informar de este problema a %1"
 
 #: discover/qml/DiscoverWindow.qml:347
 #, kde-format
@@ -1582,16 +1574,3 @@ msgstr "Se deben comprobar las actualizaciones"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tiempo desconocido desde la última actualización"
-
-#~| msgid "Please report this issue to the packagers of your distribution."
-#~ msgctxt "@info %1 is an additional error reference"
-#~ msgid ""
-#~ "Please report this issue to the packagers of your distribution.<nl/>(%1)"
-#~ msgstr ""
-#~ "Notifique este problema a los empaquetadores de su distribución.<nl/>(%1)"
-
-#~ msgid "Report This Issue"
-#~ msgstr "Notificar este problema"
-
-#~ msgid "Report this issue"
-#~ msgstr "Notificar este problema"

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-29 00:44+0000\n"
-"PO-Revision-Date: 2025-08-06 17:24+0300\n"
+"PO-Revision-Date: 2025-08-29 08:20+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -19,25 +19,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr "%1 לא מוגדרת להתקנת יישומים דרך Discover–רק הרחבות ליישומים"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -46,6 +38,7 @@ msgid ""
 msgstr ""
 "כדי להשתמש ב־Discover ליישומים, יש להתקין את המודול המועדף עליך דרך עמוד "
 "ה<interface>הגדרות</interface>, תחת <interface>מנגנונים חסרים</interface>."
+"<nl/><nl/>נא <link url='%1'>נא לדווח על התקלה הזאת ל־%2.</link>"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -110,14 +103,12 @@ msgid "Please make sure Snap support is installed"
 msgstr "נא לוודא שמותקנת תמיכה ב־Snap"
 
 #: discover/DiscoverObject.cpp:407
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
-msgstr "לא ניתן לפתוח את %1 כיוון שלא נמצא באף אחד ממאגרי התוכנה הזמינים."
+msgstr ""
+"לא ניתן לפתוח את היישום המבוקש כיוון שלא נמצא באף אחד ממאגרי התוכנה הזמינים"
 
 #: discover/DiscoverObject.cpp:410
 #, kde-kuit-format
@@ -128,6 +119,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(אין רשומה עבור %1)<nl/><nl/>נא <link url='%2'>לדווח על התקלה הזאת ל־%3.</"
+"link>"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
@@ -570,11 +563,10 @@ msgstr "הביקורות על %1 לא זמינות כרגע"
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "עדיין לא פורסמו ביקורות"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
 msgstr "יש להתקין כדי לכתוב ביקורת"
@@ -910,12 +902,10 @@ msgid "Proceed"
 msgstr "המשך"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
-msgstr "דיווח על התקלה הזאת אל %1"
+msgstr "דיווח על התקלה הזאת ל־%1"
 
 #: discover/qml/DiscoverWindow.qml:347
 #, kde-format

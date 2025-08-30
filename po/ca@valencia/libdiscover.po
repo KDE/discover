@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-29 00:44+0000\n"
-"PO-Revision-Date: 2025-07-23 21:04+0200\n"
+"PO-Revision-Date: 2025-08-29 09:19+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1199,7 +1199,7 @@ msgstr "No s'ha pogut iniciar %1"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "Controladors de maquinari"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
@@ -1272,6 +1272,8 @@ msgid ""
 "The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
 "<link url='%1'>report this issue to %2</link>"
 msgstr ""
+"El servei en segon pla de PackageKit s'ha parat inesperadament.<nl/></nl/"
+"><link url='%1'>Informeu d'este problema a %2</link>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2083,13 +2085,11 @@ msgid "Repair Failed"
 msgstr "Ha fallat la reparació"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "%1<nl/>Informeu-ho a la vostra distribució."
+msgstr "%1<nl/><link url='%2'>Informeu d'este error a %3</link>."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
 #, kde-format
@@ -2768,15 +2768,3 @@ msgstr "Programari del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complements"
-
-#~ msgctxt "@action:button %1 is the distro name"
-#~ msgid "Report This Issue to %1"
-#~ msgstr "Informeu del problema a %1"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "The background service (PackageKit) stopped unexpectedly. It may have "
-#~ "crashed."
-#~ msgstr ""
-#~ "El servei en segon pla (PackageKit) s'ha parat de manera inesperada. "
-#~ "Potser ha fallat."

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-29 00:44+0000\n"
-"PO-Revision-Date: 2025-08-28 10:22+0200\n"
+"PO-Revision-Date: 2025-08-29 19:51+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -21,24 +21,16 @@ msgstr ""
 "X-Generator: Lokalize 25.08.0\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"%1 ez dago «Discover»en bidez aplikazioak instalatzeko konfiguratuta—"
+"%1 ez dago Discoveren bidez aplikazioak instalatzeko konfiguratuta—"
 "aplikazioen gehigarrietarako besterik ez"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -46,8 +38,9 @@ msgid ""
 "interface>.<nl/><nl/>Please <link url='%1'>report this issue to %2.</link>"
 msgstr ""
 "Discover, aplikazioetarako erabiltzeko, instalatu zure gogoko modulua "
-"<interface>Falta diren bizkarraldekoak</interface> barruan dagoen "
-"<interface>Ezarpenak</interface> orrian."
+"<interface>Ezarpenak</interface> orrialdeko <interface>Falta diren "
+"bizkarraldekoak</interface> barruan.<nl/><nl/>Mesedez, <link url='%1'>eman "
+"arazo honen berri %2(e)ri.</link>"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -130,6 +123,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(Ez dago %1(e)rako sarrerarik)<nl/><nl/>Mesedez, <link url='%2'>eman arazo "
+"honen berri %3(e)ri.</link>"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
@@ -919,9 +914,7 @@ msgid "Proceed"
 msgstr "Jarraitu"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
 msgstr "Eman arazo honen berri %1(e)ri"

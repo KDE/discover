@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-29 00:44+0000\n"
-"PO-Revision-Date: 2025-05-21 14:45+0200\n"
+"PO-Revision-Date: 2025-08-29 09:01+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: discover/DiscoverObject.cpp:183
 #, fuzzy, kde-format
@@ -114,16 +114,13 @@ msgid "Please make sure Snap support is installed"
 msgstr "Assicurati che il supporto Snap sia installato"
 
 #: discover/DiscoverObject.cpp:407
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
 msgstr ""
-"Impossibile aprire %1 poiché non è stato trovato in alcun deposito di "
-"software disponibile."
+"L'applicazione richiesta non è stata trovata in nessuno dei depositi "
+"software disponibili."
 
 #: discover/DiscoverObject.cpp:410
 #, kde-kuit-format
@@ -592,11 +589,10 @@ msgstr "Le recensioni per %1 sono temporaneamente non disponibili"
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "Nessuna recensione ancora pubblicata"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
 msgstr "Installa per scrivere una recensione"

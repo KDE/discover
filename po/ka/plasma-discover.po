@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-29 00:44+0000\n"
-"PO-Revision-Date: 2025-08-28 06:00+0200\n"
+"PO-Revision-Date: 2025-08-29 05:42+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -19,10 +19,7 @@ msgstr ""
 "X-Generator: Poedit 3.7\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
@@ -30,12 +27,7 @@ msgstr ""
 "%1 აპების Discover-ით დასაყენებლად მორგებული არაა, - მხოლოდ აპის დამატებების"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -44,7 +36,8 @@ msgid ""
 msgstr ""
 "Discover-ის აპებისთვის აღმოსაჩენად დააყენეთ სასურველი მოდული "
 "<interface>მორგების</interface> გვერდზე, <interface>ნაკლული უკანაბოლოების</"
-"interface> ქვეშ."
+"interface> ქვეშ.<nl/><nl/><link url='%1'>შეატყობინეთ ამ პრობლემის შესახებ %2-"
+"ს.</link>"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -127,6 +120,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(%1-სთვის ჩანაწერი არ არსებობს)<nl/><nl/><link url='%2'>მიწერეთ ამ შეცდომის "
+"შესახებ %3-ს.</link>"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
@@ -910,9 +905,7 @@ msgid "Proceed"
 msgstr "გაგრძელება"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
 msgstr "ამ პრობლემის გადაგზავნა %1-სთვის"
