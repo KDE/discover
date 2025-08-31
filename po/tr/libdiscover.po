@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-29 00:44+0000\n"
-"PO-Revision-Date: 2025-06-03 13:29+0300\n"
+"PO-Revision-Date: 2025-08-30 18:38+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1189,7 +1189,7 @@ msgstr "%1 başlatılamıyor"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "Donanım Sürücüleri"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
@@ -1263,6 +1263,8 @@ msgid ""
 "The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
 "<link url='%1'>report this issue to %2</link>"
 msgstr ""
+"PackageKit arka plan hizmeti beklenmedik bir biçimde durdu.<nl/></nl/>Lütfen "
+"bu sorunu <link url='%1'>%2 yayımcısına bildirin</link>."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2073,13 +2075,11 @@ msgid "Repair Failed"
 msgstr "Onarım Başarısız"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "%1<nl/>Lütfen bu hatayı dağıtımınıza bildirin."
+msgstr "%1<nl/>Lütfen bu hatayı <link url='%2'>%3 yayımcısına bildirin</link>."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
 #, kde-format

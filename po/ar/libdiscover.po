@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-29 00:44+0000\n"
-"PO-Revision-Date: 2025-08-20 21:31+0400\n"
+"PO-Revision-Date: 2025-08-30 09:31+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1177,7 +1177,7 @@ msgstr "تعذر بدء %1"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "مشغلات العتاد"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
@@ -1248,6 +1248,8 @@ msgid ""
 "The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
 "<link url='%1'>report this issue to %2</link>"
 msgstr ""
+" توقفت خدمة الخلفية (PackageKit) بشكل غير متوقع..<nl/></nl/>الرجاء <link "
+"url='%1'>الإبلاغ عن هذه المشكلة إلى %2</link>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2064,13 +2066,11 @@ msgid "Repair Failed"
 msgstr "الإصلاح فشل"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "‏%1<nl/>الرجاء الإبلاغ عن هذا الخطأ لتوزيعتك."
+msgstr "%1<nl/>الرجاء <link url='%2'>الإبلاغ عن هذا الخطأ إلى %3</link>."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
 #, kde-format

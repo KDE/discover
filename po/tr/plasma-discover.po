@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-29 00:44+0000\n"
-"PO-Revision-Date: 2025-05-21 20:19+0300\n"
+"PO-Revision-Date: 2025-08-30 18:37+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,27 +19,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"%1, yalnızca Keşfet’e özgü uygulama eklentileriyle uygulama kurmak için "
-"yapılandırılmadı"
+"%1, Keşfet üzerinden uygulama kurmak için yapılandırılmamış; yalnızca "
+"uygulama eklentileri kullanılabilir."
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -48,7 +40,8 @@ msgid ""
 msgstr ""
 "Uygulamalar için Keşfet’i kullanmak üzere, <interface>Ayarlar</interface> "
 "sayfasında <interface>Eksik Arka Uçlar</interface> altında yeğlediğiniz "
-"modülü kurun."
+"modülü kurun.<nl/><nl/>Lütfen bu sorunu <link url='%1'>%2 yayımcısına "
+"bildirin.</link>"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -115,15 +108,12 @@ msgid "Please make sure Snap support is installed"
 msgstr "Lütfen Snap desteğinin kurulu olduğundan emin olun"
 
 #: discover/DiscoverObject.cpp:407
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
 msgstr ""
-"%1 açılamıyor; çünkü hiçbir kullanılabilir yazılım deposunda bulunamadı."
+"İstenen uygulama, herhangi bir kullanılabilir uygulama deposunda bulunamıyor."
 
 #: discover/DiscoverObject.cpp:410
 #, kde-kuit-format
@@ -134,6 +124,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(%1 için girdi yok)<nl/><nl/>Lütfen bu sorunu <link url='%2'>%3 yayımcısına "
+"bildirin.</link>"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
@@ -590,14 +582,13 @@ msgstr "%1 incelemeleri geçici olarak kullanılamıyor"
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "Henüz bir inceleme yayımlanmamış"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
-msgstr "İnceleme Yazmak için Kur"
+msgstr "İnceleme yazmak için uygulamayı kurun"
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
@@ -925,12 +916,10 @@ msgid "Proceed"
 msgstr "Sürdür"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
-msgstr "Sorunu %1 Topluluğuna Bildir"
+msgstr "Sorunu %1 topluluğuna bildirin"
 
 #: discover/qml/DiscoverWindow.qml:347
 #, kde-format
