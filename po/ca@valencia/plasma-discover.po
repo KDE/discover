@@ -673,7 +673,7 @@ msgstr "Més popular"
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr "Seleccioneu l'editor"
+msgstr "Trieu l'editor"
 
 #: discover/qml/BrowsingPage.qml:133
 #, kde-format
@@ -1136,7 +1136,7 @@ msgstr "Ignora"
 #: discover/qml/UpdatesPage.qml:221
 #, kde-format
 msgid "Select All"
-msgstr "Selecciona-ho tot"
+msgstr "Tria-ho tot"
 
 #: discover/qml/UpdatesPage.qml:229
 #, kde-format
