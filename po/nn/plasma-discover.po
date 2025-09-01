@@ -1546,16 +1546,3 @@ msgstr "Skal sjå etter oppdateringar"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for siste oppdatering er ukjend"
-
-#, fuzzy
-#~| msgid "Please report this issue to the packagers of your distribution."
-#~ msgctxt "@info %1 is an additional error reference"
-#~ msgid ""
-#~ "Please report this issue to the packagers of your distribution.<nl/>(%1)"
-#~ msgstr "Meld frå om denne feilen til pakkarane av distribusjonen din."
-
-#~ msgid "Report This Issue"
-#~ msgstr "Meld frå om feilen"
-
-#~ msgid "Report this issue"
-#~ msgstr "Meld frå om feilen"
