@@ -1136,7 +1136,7 @@ msgstr "Ignora"
 #: discover/qml/UpdatesPage.qml:221
 #, kde-format
 msgid "Select All"
-msgstr "Tria-ho tot"
+msgstr "Selecciona-ho tot"
 
 #: discover/qml/UpdatesPage.qml:229
 #, kde-format
