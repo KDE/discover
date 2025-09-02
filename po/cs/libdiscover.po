@@ -2004,13 +2004,11 @@ msgid "Repair Failed"
 msgstr "Oprava selhala"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "%1<nl/>Prosím nahlaste tuto chybu svojí distribuci."
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
 #, kde-format
@@ -2635,7 +2633,3 @@ msgstr "Systémový software"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Doplňky"
-
-#~ msgctxt "@action:button %1 is the distro name"
-#~ msgid "Report This Issue to %1"
-#~ msgstr "Nahlaste tento problém na %1"

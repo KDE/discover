@@ -504,11 +504,10 @@ msgid "No reviews posted yet"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
-msgstr "Napište hodnocení..."
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
@@ -836,12 +835,10 @@ msgid "Proceed"
 msgstr "Pokračovat"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
-msgstr "Nahlaste tento problém na %1"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:347
 #, kde-format
@@ -1470,16 +1467,3 @@ msgstr "Měli byste zkontrolovat aktualizace"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Please report this issue to the packagers of your distribution."
-#~ msgctxt "@info %1 is an additional error reference"
-#~ msgid ""
-#~ "Please report this issue to the packagers of your distribution.<nl/>(%1)"
-#~ msgstr "Prosím nahlaste tuto chybu správcům vaší distribuce."
-
-#~ msgid "Report This Issue"
-#~ msgstr "Nahlásit tuto chybu"
-
-#~ msgid "Report this issue"
-#~ msgstr "Nahlásit tuto chybu"
