@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-29 00:44+0000\n"
+"POT-Creation-Date: 2025-09-05 00:43+0000\n"
 "PO-Revision-Date: 2025-03-09 17:26+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -559,28 +559,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (பயனர்)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:741
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:742
 #, kde-format
 msgid "Local bundle"
 msgstr "உள்ளமை தொகுப்பு"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1902
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "முறையற்ற appstream முகவரி '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2003
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2009
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' என்ற மூலத்தை சேர்ப்பதில் சிக்கல்: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2126
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2132
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Flatpak-க்கான மூலம் ஏதுமில்லை."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2136
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" என்ற மூலத்தை ஏற்றுவது தோல்வியடைந்தது"
@@ -2599,6 +2599,15 @@ msgstr "இணைய இணைப்பை சரிபார்க்கவு�
 #, kde-format
 msgid "Refresh"
 msgstr "புதுப்பி"
+
+#: libdiscover/resources/ResourcesModel.cpp:398
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
+#| msgid "Refresh of version %1"
+msgctxt "@info:status %1 is the name of a source of updates"
+msgid "Refreshing %1"
+msgstr "%1 பதிப்பின் புதுப்பிப்பு"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format

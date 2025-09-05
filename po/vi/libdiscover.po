@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-29 00:44+0000\n"
+"POT-Creation-Date: 2025-09-05 00:43+0000\n"
 "PO-Revision-Date: 2012-06-13 11:10+0800\n"
 "Last-Translator: HeroP <herophuong93@gmail.com>\n"
 "Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
@@ -589,18 +589,18 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:741
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:742
 #, kde-format
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1902
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2003
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2009
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -613,12 +613,12 @@ msgstr ""
 "%2\n"
 "\n"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2126
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2132
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2136
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid ""
@@ -2740,6 +2740,14 @@ msgstr ""
 #, kde-format
 msgid "Refresh"
 msgstr ""
+
+#: libdiscover/resources/ResourcesModel.cpp:398
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Packages Could Not be Found"
+msgctxt "@info:status %1 is the name of a source of updates"
+msgid "Refreshing %1"
+msgstr "Không thể tìm thấy gói"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format

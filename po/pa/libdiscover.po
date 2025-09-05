@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-29 00:44+0000\n"
+"POT-Creation-Date: 2025-09-05 00:43+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -577,28 +577,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (ਵਰਤੋਂਕਾਰ)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:741
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:742
 #, kde-format
 msgid "Local bundle"
 msgstr "ਲੋਕਲ ਬੰਡਲ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1902
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2003
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2009
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' ਸਰੋਤ ਜੋੜਨ ਲਈ ਅਸਫ਼ਲ: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2126
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2132
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "ਕੋਈ ਫਲੈਟਪੈਕ ਸਰੋਤ ਨਹੀਂ ਹੈ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2136
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\" ਸਰੋਤ ਲੋਡ ਕਰਨ ਲਈ ਫੇਲ੍ਹ"
@@ -2615,6 +2615,15 @@ msgstr "ਇੰਟਰਨੈੱਟ ਕਨੈਕਸ਼ਨ ਦੀ ਜਾਂਚ ਕਰ�
 #, kde-format
 msgid "Refresh"
 msgstr "ਤਾਜ਼ਾ ਕਰੋ"
+
+#: libdiscover/resources/ResourcesModel.cpp:398
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
+#| msgid "Refresh of version %1"
+msgctxt "@info:status %1 is the name of a source of updates"
+msgid "Refreshing %1"
+msgstr "ਵਰਜ਼ਨ %1 ਲਈ ਤਾਜ਼ਾ ਕਰੋ"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format

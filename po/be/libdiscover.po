@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-29 00:44+0000\n"
+"POT-Creation-Date: 2025-09-05 00:43+0000\n"
 "PO-Revision-Date: 2024-10-28 19:13\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -568,28 +568,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (карыстальнік)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:741
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:742
 #, kde-format
 msgid "Local bundle"
 msgstr "Лакальны пакет"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1896
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1902
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Памылковы url-адрас \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2003
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2009
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Не ўдалося дадаць крыніцу \"%1\": %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2126
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2132
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Крыніц Flatpak няма."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2136
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Не ўдалося загрузіць крыніцу \"%1\""
@@ -2680,6 +2680,15 @@ msgstr "Праверце злучэнне з інтэрнэтам"
 #, kde-format
 msgid "Refresh"
 msgstr "Абнавіць"
+
+#: libdiscover/resources/ResourcesModel.cpp:398
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
+#| msgid "Refresh of version %1"
+msgctxt "@info:status %1 is the name of a source of updates"
+msgid "Refreshing %1"
+msgstr "Абнаўленне версіі %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format

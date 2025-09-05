@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-29 00:44+0000\n"
+"POT-Creation-Date: 2025-09-05 00:43+0000\n"
 "PO-Revision-Date: 2025-08-29 04:00+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -1502,23 +1502,23 @@ msgstr "Apagar"
 msgid "Total size: %1"
 msgstr "Tamaño total: %1"
 
-#: discover/qml/UpdatesPage.qml:327
+#: discover/qml/UpdatesPage.qml:322
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr "Reiniciar e instalar las actualizaciones"
 
-#: discover/qml/UpdatesPage.qml:494
+#: discover/qml/UpdatesPage.qml:502
 #, kde-format
 msgid "Installing"
 msgstr "Instalando"
 
-#: discover/qml/UpdatesPage.qml:527
+#: discover/qml/UpdatesPage.qml:535
 #, kde-format
 msgid "Update from:"
 msgstr "Actualizar desde:"
 
-#: discover/qml/UpdatesPage.qml:541
+#: discover/qml/UpdatesPage.qml:549
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1526,50 +1526,50 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:550
+#: discover/qml/UpdatesPage.qml:558
 #, kde-format
 msgid "More Information…"
 msgstr "Más información…"
 
-#: discover/qml/UpdatesPage.qml:578
+#: discover/qml/UpdatesPage.qml:586
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Obteniendo actualizaciones…"
 
-#: discover/qml/UpdatesPage.qml:592
+#: discover/qml/UpdatesPage.qml:600
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Actualizaciones"
 
-#: discover/qml/UpdatesPage.qml:601
+#: discover/qml/UpdatesPage.qml:609
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "Las actualizaciones se instalarán tras reiniciar el sistema"
 
-#: discover/qml/UpdatesPage.qml:603
+#: discover/qml/UpdatesPage.qml:611
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
 "Puede seguir usando el sistema si todavía no está preparado para reiniciar."
 
-#: discover/qml/UpdatesPage.qml:617 discover/qml/UpdatesPage.qml:624
-#: discover/qml/UpdatesPage.qml:631
+#: discover/qml/UpdatesPage.qml:625 discover/qml/UpdatesPage.qml:632
+#: discover/qml/UpdatesPage.qml:639
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Actualizado"
 
-#: discover/qml/UpdatesPage.qml:638
+#: discover/qml/UpdatesPage.qml:646
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Se deben comprobar las actualizaciones"
 
-#: discover/qml/UpdatesPage.qml:645
+#: discover/qml/UpdatesPage.qml:653
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

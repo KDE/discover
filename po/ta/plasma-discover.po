@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-08-29 00:44+0000\n"
+"POT-Creation-Date: 2025-09-05 00:43+0000\n"
 "PO-Revision-Date: 2025-03-09 17:29+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1488,7 +1488,7 @@ msgstr "கணினியை நிறுத்து"
 msgid "Total size: %1"
 msgstr "மொத்த அளவு: %1"
 
-#: discover/qml/UpdatesPage.qml:327
+#: discover/qml/UpdatesPage.qml:322
 #, fuzzy, kde-format
 #| msgctxt "@action:button"
 #| msgid "Restart to Install Updates Now"
@@ -1496,17 +1496,17 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr "புதுப்பிப்புகளை நிறுவ இப்போது மீள்துவக்கு"
 
-#: discover/qml/UpdatesPage.qml:494
+#: discover/qml/UpdatesPage.qml:502
 #, kde-format
 msgid "Installing"
 msgstr "நிறுவப்படுகிறது"
 
-#: discover/qml/UpdatesPage.qml:527
+#: discover/qml/UpdatesPage.qml:535
 #, kde-format
 msgid "Update from:"
 msgstr "இங்கிருந்து புதுப்பி:"
 
-#: discover/qml/UpdatesPage.qml:541
+#: discover/qml/UpdatesPage.qml:549
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1514,24 +1514,24 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:550
+#: discover/qml/UpdatesPage.qml:558
 #, kde-format
 msgid "More Information…"
 msgstr "மேலும் விவரங்கள்…"
 
-#: discover/qml/UpdatesPage.qml:578
+#: discover/qml/UpdatesPage.qml:586
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "புதுப்பிப்புகளின் பட்டியல் பதிவிறக்கப்படுகிறது…"
 
-#: discover/qml/UpdatesPage.qml:592
+#: discover/qml/UpdatesPage.qml:600
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "புதுப்பிப்புகள்"
 
-#: discover/qml/UpdatesPage.qml:601
+#: discover/qml/UpdatesPage.qml:609
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "The updates will be installed the next time the system is restarted"
@@ -1539,26 +1539,26 @@ msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "அடுத்த முறை கணினி மீள்துவக்கப்படும்போது இப்புதுப்பிப்புகள் நிறுவப்படும்"
 
-#: discover/qml/UpdatesPage.qml:603
+#: discover/qml/UpdatesPage.qml:611
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:617 discover/qml/UpdatesPage.qml:624
-#: discover/qml/UpdatesPage.qml:631
+#: discover/qml/UpdatesPage.qml:625 discover/qml/UpdatesPage.qml:632
+#: discover/qml/UpdatesPage.qml:639
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "புதுப்பிப்புகள் இல்லை"
 
-#: discover/qml/UpdatesPage.qml:638
+#: discover/qml/UpdatesPage.qml:646
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "புதுப்பிப்புகள் உள்ளனவா என்று பார்க்க வேண்டும்"
 
-#: discover/qml/UpdatesPage.qml:645
+#: discover/qml/UpdatesPage.qml:653
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
