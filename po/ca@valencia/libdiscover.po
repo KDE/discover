@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-05 00:43+0000\n"
-"PO-Revision-Date: 2025-08-29 09:19+0200\n"
+"PO-Revision-Date: 2025-09-05 09:21+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2675,13 +2675,10 @@ msgid "Refresh"
 msgstr "Actualitza la llista"
 
 #: libdiscover/resources/ResourcesModel.cpp:398
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "Actualitza la versió %1"
+msgstr "S'està actualitzant %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-05 00:43+0000\n"
-"PO-Revision-Date: 2025-08-29 20:20+0900\n"
+"PO-Revision-Date: 2025-09-05 17:09+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -2573,13 +2573,10 @@ msgid "Refresh"
 msgstr "重新整理"
 
 #: libdiscover/resources/ResourcesModel.cpp:398
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "版本 %1 的修訂版"
+msgstr "正在重新整理 %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format
