@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-05 00:43+0000\n"
-"PO-Revision-Date: 2024-09-08 00:02+0300\n"
+"PO-Revision-Date: 2025-09-06 14:06+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -197,14 +197,10 @@ msgstr "Visos programos"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"utils"
-#| "\""
-#| msgid "Utilities"
+#, kde-format
 msgctxt "Category"
 msgid "Utilities"
-msgstr "Pagalbininkai"
+msgstr "Paslaugų programos"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -215,11 +211,7 @@ msgstr "Prieinamumas"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"devel"
-#| "\""
-#| msgid "Development"
+#, kde-format
 msgctxt "Category"
 msgid "Development"
 msgstr "Programavimas"
@@ -275,14 +267,10 @@ msgstr "Švietimas"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:131
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"science\""
-#| msgid "Science"
+#, kde-format
 msgctxt "Category"
 msgid "Science & Math"
-msgstr "Mokslas"
+msgstr "Mokslas ir matematika"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -566,12 +554,10 @@ msgstr "Biuras"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgctxt "Category"
 msgid "System"
-msgstr "Pataisyti sistemą"
+msgstr "Sistema"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -677,10 +663,9 @@ msgid "Sound system access"
 msgstr "Prieiga prie garso sistemos"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
-#, fuzzy, kde-format
-#| msgid "Can play audio"
+#, kde-format
 msgid "Can play and record audio"
-msgstr "Gali atkurti garso įrašus"
+msgstr "Gali atkurti ir įrašinėti garso įrašus"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
@@ -920,7 +905,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1124
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
-msgstr ""
+msgstr "Programa patikrinta ties %1 kaip pristatoma jos autoriaus %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
@@ -1211,7 +1196,7 @@ msgstr "Nepavyksta paleisti %1"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "Aparatinės įrangos tvarkyklės"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
@@ -1285,6 +1270,8 @@ msgid ""
 "The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
 "<link url='%1'>report this issue to %2</link>"
 msgstr ""
+"PackageKit foninė tarnyba netikėtai sustojo.<nl/></nl/><link "
+"url='%1'>Praneškite apie šią klaidą %2</link>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2099,13 +2086,11 @@ msgid "Repair Failed"
 msgstr "Pataisymas nepavyko"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "%1<nl/>Praneškite apie šią klaidą savo platinamojo paketo atstovams."
+msgstr "%1<nl/><link url='%2'>Praneškite apie šią klaidą %3</link>."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
 #, kde-format
@@ -2146,7 +2131,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "Programinę įrangą patikrino %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:413
 #, kde-format
@@ -2391,20 +2376,19 @@ msgid "Operating System"
 msgstr "Operacinė sistema"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: Rasti keli paleisti visuotiniai diegimai. Praneškite apie klaidą."
+"rpm-ostree vidinė pusė: Rasti keli paleisti visuotiniai diegimai. Praneškite "
+"apie klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
-"rpm-ostree: Nerasta jokio paleisto visuotinio diegimo. Praneškite apie "
-"klaidą."
+"rpm-ostree vidinė pusė: Nerasta jokio paleisto visuotinio diegimo. "
+"Praneškite apie klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
@@ -2491,47 +2475,37 @@ msgid "ostree remotes"
 msgstr "ostree nuotolinės saugyklos"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Klaida: Nepateikta jokios DBus sąsajos. Praneškite apie "
-"klaidą."
+"rpm-ostree vidinė pusė: Klaida: Nepateikta jokios DBus sąsajos. Praneškite "
+"apie klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Klaida: Nepavyksta pradėti operacijos neteisingo formato "
-"ištekliui. Praneškite apie klaidą."
+"rpm-ostree vidinė pusė: Klaida: Nepavyksta pradėti operacijos neteisingo "
+"formato ištekliui. Praneškite apie klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Klaida: Negalima iš naujo pakeisti pagrindo į tuščią "
+"rpm-ostree vidinė pusė: Klaida: Negalima iš naujo pakeisti pagrindo į tuščią "
 "nurodymą. Praneškite apie klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Klaida: Paprašyta nežinomos operacijos. Praneškite apie "
-"klaidą."
+"rpm-ostree vidinė pusė: Klaida: Paprašyta nežinomos operacijos. Praneškite "
+"apie klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
@@ -2544,13 +2518,11 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Klaida: Nežinomas ištekliaus formatas. Praneškite apie "
-"klaidą."
+"rpm-ostree vidinė pusė: Klaida: Nežinomas ištekliaus formatas. Praneškite "
+"apie klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format
@@ -2630,12 +2602,12 @@ msgstr "Snap"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:585
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "Patikrintas leidėjas snapcraft.io svetainėje"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:587
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "Žvaigždute pažymėtas leidėjas snapcraft.io svetainėje"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
 #, kde-format
@@ -2708,13 +2680,10 @@ msgid "Refresh"
 msgstr "Įkelti iš naujo"
 
 #: libdiscover/resources/ResourcesModel.cpp:398
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "%1 versijos papildymas"
+msgstr "Įkeliama iš naujo %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format
