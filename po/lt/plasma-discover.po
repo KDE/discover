@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-24 02:35+0000\n"
-"PO-Revision-Date: 2024-09-15 00:32+0300\n"
+"PO-Revision-Date: 2025-09-06 18:10+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #: discover/DiscoverObject.cpp:184
 #, kde-format
@@ -197,7 +197,7 @@ msgstr "Išvardija prieinamas naudotojo grįžtamojo ryšio parinktis"
 #: discover/main.cpp:44
 #, kde-format
 msgid "Starts an update automatically, headless"
-msgstr ""
+msgstr "Automatiškai pradeda atnaujinimą, be naudotojo sąsajos"
 
 #: discover/main.cpp:46
 #, kde-format
@@ -210,10 +210,9 @@ msgid "An application explorer"
 msgstr "Programų paieškos įrankis"
 
 #: discover/main.cpp:133
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010-2024 Plasma plėtojimo komanda"
+msgstr "© 2010–2025 Plasma plėtojimo komanda"
 
 #: discover/main.cpp:134
 #, kde-format
@@ -317,18 +316,7 @@ msgid "No ratings yet"
 msgstr "Kol kas įvertinimų nėra"
 
 #: discover/qml/ApplicationPage.qml:69
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -344,29 +332,21 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"Įdiekite šią programą tik tuo atveju, jei visiškai pasitikite jos autoriais "
-"(%1).<nl/><nl/>Šios programos pradinis kodas yra dalinai ar visiškai uždaras "
-"viešam tyrinėjimui ir tobulinimui. Tai reiškia, jog trečiosios šalys ir "
-"tokie naudotojai, kaip jūs, negali patikrinti programos veikimo, saugumo bei "
-"patikimumo ar negali modifikuoti ir platinti jos be aiškaus autorių leidimo."
-"<nl/><nl/>Programa gali būti saugi naudoti arba gali įvairiais būdais veikti "
-"prieš jus – pavyzdžiui, rinkti jūsų asmeninę informaciją, sekti jūsų buvimo "
-"vietą ar persiųsti kažkam kitam jūsų failų turinį.<nl/><nl/>Daugiau galite "
-"sužinoti ties <link url='%2'>%2</link>."
+"Įdiekite %1 programą tik tuo atveju, jei visiškai pasitikite jos autoriais, "
+"nes ji yra <emphasis strong='true'>nuosavybinė</emphasis>: Jūsų laisvė "
+"naudoti, modifikuoti ar iš naujo platinti šią programą yra apribota, o jos "
+"pradinis kodas yra dalinai arba visiškai uždaras viešam tyrinėjimui ir "
+"tobulinimui. Tai reiškia, jog trečiosios šalys ir tokie naudotojai, kaip "
+"jūs, negali patikrinti programos veikimo, saugumo bei patikimumo.<nl/><nl/"
+">Programa gali būti saugi naudoti arba gali įvairiais būdais veikti prieš "
+"jus – pavyzdžiui, rinkti jūsų asmeninę informaciją, sekti jūsų buvimo vietą "
+"ar persiųsti kažkam kitam jūsų duomenų turinį. Naudokite ją tik tuo atveju, "
+"jei visiškai pasitikite jos autoriais. Daugiau informacijos gali būti "
+"prieinama <link url='%2'>programos internetinėje svetainėje</link>.<nl/><nl/"
+">Sužinokite daugiau ties <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -380,15 +360,17 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Įdiekite šią programą tik tuo atveju, jei visiškai pasitikite jos autoriais "
-"(%1).<nl/><nl/>Šios programos pradinis kodas yra dalinai ar visiškai uždaras "
-"viešam tyrinėjimui ir tobulinimui. Tai reiškia, jog trečiosios šalys ir "
-"tokie naudotojai, kaip jūs, negali patikrinti programos veikimo, saugumo bei "
-"patikimumo ar negali modifikuoti ir platinti jos be aiškaus autorių leidimo."
-"<nl/><nl/>Programa gali būti saugi naudoti arba gali įvairiais būdais veikti "
-"prieš jus – pavyzdžiui, rinkti jūsų asmeninę informaciją, sekti jūsų buvimo "
-"vietą ar persiųsti kažkam kitam jūsų failų turinį.<nl/><nl/>Daugiau galite "
-"sužinoti ties <link url='%2'>%2</link>."
+"Įdiekite %1 programą tik tuo atveju, jei visiškai pasitikite jos autoriais, "
+"nes ji yra <emphasis strong='true'>nuosavybinė</emphasis>: Jūsų laisvė "
+"naudoti, modifikuoti ar iš naujo platinti šią programą yra apribota, o jos "
+"pradinis kodas yra dalinai arba visiškai uždaras viešam tyrinėjimui ir "
+"tobulinimui. Tai reiškia, jog trečiosios šalys ir tokie naudotojai, kaip "
+"jūs, negali patikrinti programos veikimo, saugumo bei patikimumo.<nl/><nl/"
+">Programa gali būti saugi naudoti arba gali įvairiais būdais veikti prieš "
+"jus – pavyzdžiui, rinkti jūsų asmeninę informaciją, sekti jūsų buvimo vietą "
+"ar persiųsti kažkam kitam jūsų duomenų turinį. Naudokite ją tik tuo atveju, "
+"jei visiškai pasitikite jos autoriais. Daugiau sužinoti galite ties <link "
+"url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:81
 #, kde-kuit-format
@@ -406,6 +388,19 @@ msgid ""
 "url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"%1 naudoja vieną ar daugiau licencijų, kurias nei <link url='%2'>Free "
+"Software Foundation</link>, nei <link url='%3'>Open Source Initiative</link> "
+"nepripažįsta kaip „Laisvąją programinę įrangą“. Tai reiškia, jog gali būti, "
+"kad jūsų laisvė naudoti, tyrinėti, modifikuoti ir dalintis šia programine "
+"įranga yra tam tikrais būdais apribota.<nl/><nl/>Įsitikinkite, kad, prieš "
+"naudodamiesi programine įranga, perskaitysite licencijos tekstą ir suprasite "
+"visus apribojimus.<nl/><nl/>Jeigu licencija net nesuteikia prieigos skaityti "
+"pradinį kodą, įsitikinkite, kad visiškai pasitikite programinės įrangos "
+"autoriais, nes niekas kitas negali patikrinti jos kodo patikimumo ir "
+"saugumo, kad būtų užtikrinta, jog ji slaptais būdais nesiekia jums pakenkti. "
+"Daugiau informacijos gali būti prieinama <link url='%4'>programos "
+"internetinėje svetainėje</link>.<nl/><nl/>Sužinokite daugiau ties <link "
+"url='%5'>%5</link>."
 
 #: discover/qml/ApplicationPage.qml:88
 #, kde-kuit-format
@@ -421,6 +416,17 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"%1 naudoja vieną ar daugiau licencijų, kurias nei <link url='%2'>Free "
+"Software Foundation</link>, nei <link url='%3'>Open Source Initiative</link> "
+"nepripažįsta kaip „Laisvąją programinę įrangą“. Tai reiškia, jog gali būti, "
+"kad jūsų laisvė naudoti, tyrinėti, modifikuoti ir dalintis šia programine "
+"įranga yra tam tikrais būdais apribota.<nl/><nl/>Įsitikinkite, kad, prieš "
+"naudodamiesi programine įranga, perskaitysite licencijos tekstą ir suprasite "
+"visus apribojimus.<nl/><nl/>Jeigu licencija net nesuteikia prieigos skaityti "
+"pradinį kodą, įsitikinkite, kad visiškai pasitikite programinės įrangos "
+"autoriais, nes niekas kitas negali patikrinti jos kodo patikimumo ir "
+"saugumo, kad būtų užtikrinta, jog ji slaptais būdais nesiekia jums pakenkti."
+"<nl/><nl/>Sužinokite daugiau ties <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:97
 #, kde-kuit-format
@@ -431,6 +437,10 @@ msgid ""
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
+"%1 nenurodo pagal kurią licenciją yra platinama. Gali būti, kad galėsite tai "
+"nustatyti <link url='%2'>programos internetinėje svetainėje</link>. Raskite "
+"informaciją ten, arba susisiekite su programos autoriumi, jei norite naudoti "
+"šią programą kažkokiems kitiems tikslams, nei tik asmeniniam naudojimui."
 
 #: discover/qml/ApplicationPage.qml:101
 #, kde-format
@@ -440,6 +450,9 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"%1 nenurodo pagal kurią licenciją yra platinama. Susisiekite su programos "
+"autoriumi, jei norite naudoti šią programą kažkokiems kitiems tikslams, nei "
+"tik asmeniniam naudojimui."
 
 #: discover/qml/ApplicationPage.qml:142
 #, kde-format
@@ -602,15 +615,13 @@ msgid "External Links"
 msgstr "Išorinės nuorodos"
 
 #: discover/qml/ApplicationPage.qml:844
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "Skaityti oficialią projekto dokumentaciją"
+msgstr "Skaityti dokumentaciją"
 
 #: discover/qml/ApplicationPage.qml:855
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Apsilankyti projekto internetinėje svetainėje"
@@ -619,20 +630,19 @@ msgstr "Apsilankyti projekto internetinėje svetainėje"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "Paremti projektą"
 
 #: discover/qml/ApplicationPage.qml:875
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
-msgstr "Pranešti apie programos klaidą"
+msgstr "Pranešti apie klaidą"
 
 #: discover/qml/ApplicationPage.qml:885
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "Pradėti talkinti"
 
 #: discover/qml/ApplicationPage.qml:914
 #, kde-format
@@ -885,11 +895,9 @@ msgid "&Updates (Fetching…)"
 msgstr "Atn&aujinimai (Gaunami…)"
 
 #: discover/qml/DiscoverWindow.qml:96
-#, fuzzy, kde-format
-#| msgid "&Update (%1)"
-#| msgid_plural "&Updates (%1)"
+#, kde-format
 msgid "&Updates (%1)"
-msgstr "Atna&ujinimas (%1)"
+msgstr "Atna&ujinimai (%1)"
 
 #: discover/qml/DiscoverWindow.qml:104
 #, kde-format
@@ -933,12 +941,13 @@ msgid "Update Issue"
 msgstr "Atnaujinimo problema"
 
 #: discover/qml/DiscoverWindow.qml:361
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
-msgstr "Įdiegiant šį atnaujinimą iškilo problemų. Vėliau bandykite dar kartą."
+msgstr ""
+"Atnaujinimo ar diegimo proceso metu iškilo problemų. Vėliau bandykite dar "
+"kartą."
 
 #: discover/qml/DiscoverWindow.qml:397
 #, kde-format
@@ -1157,6 +1166,10 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"Jei %1 nepasileidžia, vietoj to, apsvarstykite galimybę pranešti apie tai "
+"programos pakuotojams, esantiems %2 adresu <link url='%3'>%3</link>, nes tai "
+"gali būti lengvai ištaisoma pakavimo problema, o ne defektas pačioje "
+"programoje."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1177,6 +1190,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"Jei programa dažnai užstringa, vietoj to, apsvarstykite galimybę pranešti "
+"apie tai plėtotojams adresu <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1186,6 +1201,9 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"Jei iškilo problemų su programa, vietoj to, apsvarstykite galimybę pranešti "
+"apie problemą plėtotojams adresu <link url='%1'>%1</link>, arba priešingu "
+"atveju išsamiau aprašykite čia problemą."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1494,12 +1512,10 @@ msgid "Total size: %1"
 msgstr "Bendras dydis: %1"
 
 #: discover/qml/UpdatesPage.qml:327
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Paleisti iš naujo, kad dabar būtų įdiegti atnaujinimai"
+msgstr "Paleisti iš naujo ir įdiegti atnaujinimus"
 
 #: discover/qml/UpdatesPage.qml:494
 #, kde-format
@@ -1537,18 +1553,18 @@ msgid "Updates"
 msgstr "Atnaujinimai"
 
 #: discover/qml/UpdatesPage.qml:601
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "The updates will be installed the next time the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr "Atnaujinimai bus įdiegti, kai kitą kartą paleisite sistemą iš naujo"
+msgstr "Atnaujinimai bus įdiegti po to, kai sistema bus paleista iš naujo"
 
 #: discover/qml/UpdatesPage.qml:603
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"Galite ir toliau naudotis sistema, jei dar nesate pasiruošę paleisti iš "
+"naujo."
 
 #: discover/qml/UpdatesPage.qml:617 discover/qml/UpdatesPage.qml:624
 #: discover/qml/UpdatesPage.qml:631
