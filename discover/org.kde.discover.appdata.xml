@@ -58,7 +58,6 @@
   <name xml:lang="tg">Кашфиёт</name>
   <name xml:lang="tr">Keşfet</name>
   <name xml:lang="uk">Discover</name>
-  <name xml:lang="x-test">xxDiscoverxx</name>
   <name xml:lang="zh-CN">Discover 软件管理中心</name>
   <name xml:lang="zh-TW">Discover</name>
   <summary>Install and remove apps and add-ons</summary>
@@ -93,7 +92,6 @@
   <summary xml:lang="ta">செயலிகளையும் துணைநிரல்களையும் நிறுவி நீக்கலாம்</summary>
   <summary xml:lang="tr">Uygulamalar ve eklentiler kurun veya kaldırın</summary>
   <summary xml:lang="uk">Встановлення і вилучення програм і додатків</summary>
-  <summary xml:lang="x-test">xxInstall and remove apps and add-onsxx</summary>
   <summary xml:lang="zh-CN">安装、移除应用程序和附加组件</summary>
   <summary xml:lang="zh-TW">安裝或移除應用程式與附加功能</summary>
   <description>
@@ -145,7 +143,6 @@
     <p xml:lang="tg">Кашфиёт ба шумо барои ёфтан ва насб кардани барномаҳо, бозиҳо ва абзорҳо кумак мерасонад. Шумо метавонед барномаҳоро аз рӯи навъ ҷустуҷӯ карда, аз назар гузаронед, аксҳои барномаҳоро бинед ва барои кумак ҳангоми интихоб намудани барномаҳои беҳтарин тақризҳоро хонед.</p>
     <p xml:lang="tr">Keşfet; uygulamaları, oyunları ve araçları bulmanıza ve kurmanıza yardımcı olur. Kategoriye göre arama yapabilir veya göz atabilirsiniz. Mükemmel uygulamayı seçmenize yardımcı olacak ekran görüntülerine de bakabilir ve yorumları okuyabilirsiniz.</p>
     <p xml:lang="uk">Discover допоможе вам знайти і встановити програми, ігри та інструменти. Ви можете виконувати пошук або навігацію за категоріями, переглядати знімки вікон і читати рецензії, щоб вибрати ту програму, яка пасує вам найкраще.</p>
-    <p xml:lang="x-test">xxDiscover helps you find and install applications, games, and tools. You can search or browse by category, and look at screenshots and read reviews to help you pick the perfect app.xx</p>
     <p xml:lang="zh-CN">Discover 是 KDE 的软件管理中心，它能帮助您查找并安装所需的应用程序、游戏和工具。您可以通过关键词查找程序，也可以按分类浏览程序。您还可以查看屏幕截图，阅读用户评价，选出最适合自己的应用程序。</p>
     <p xml:lang="zh-TW">利用 Discover 來尋找及安裝應用程式、遊戲及工具。您可以直接搜尋，或者從分類目錄開始瀏覽，預覽螢幕截圖和閱讀評論，以發現最佳的 App。</p>
     <p>With Discover, you can manage software from multiple sources, including your operating system's software repository, Flatpak repos, the Snap store, or even AppImages from store.kde.org.</p>
@@ -194,7 +191,6 @@
     <p xml:lang="tg">Ба воситаи Кашфиёт шумо метавонед нармафзорро аз якчанд манбаъ идора намоед, аз он ҷумла тавассути анбори додаҳои нармафзори низоми шумо, анборҳои додаҳои Flatpak, дукони Snap ё ҳатто файлҳои AppImages аз сомонаи store.kde.org.</p>
     <p xml:lang="tr">Keşfet ile işletim sisteminizin yazılım deposu, Flatpak depoları, Snap mağazası ve hatta store.kde.org’dan AppImages dahil olmak üzere birden çok kaynaktan gelen yazılımı yönetebilirsiniz.</p>
     <p xml:lang="uk">За допомогою Discover ви можете керувати програмним забезпеченням із багатьох джерел, зокрема зі сховищ програмного забезпечення вашої операційної системи, зі сховищ Flatpak, із крамниці Snap або навіть із образів AppImage з store.kde.org.</p>
-    <p xml:lang="x-test">xxWith Discover, you can manage software from multiple sources, including your operating system's software repository, Flatpak repos, the Snap store, or even AppImages from store.kde.org.xx</p>
     <p xml:lang="zh-CN">您可以在 Discover 中管理多个软件来源，包括本机操作系统的软件仓库、Flatpak 软件仓库、Snap 软件商店、store.kde.org 提供的 AppImage 软件包等。</p>
     <p xml:lang="zh-TW">Discover 能幫助您管理各色來源的軟體，無論是系統內建的軟體庫、Flatpak 軟體庫、Snap 商店，甚或是來自 store.kde.org 的 AppImage。</p>
     <p>Finally, Discover also allows you to find, install, and manage add-ons for Plasma and all your favorite KDE apps!</p>
@@ -245,7 +241,6 @@
     <p xml:lang="tg">Дар охир, Кашфиёт ба шумо барои ёфтан, насб ва идора кардани барномаҳои иловагӣ барои Плазма ва ҳамаи барномаҳои пазируфтаи шумо аз KDE имкон медиҳад!</p>
     <p xml:lang="tr">Son olarak Keşfet; Plasma ve tüm favori KDE uygulamalarınız için eklentiler bulmanıza, kurmanıza ve yönetmenize de olanak tanır!</p>
     <p xml:lang="uk">Нарешті, Discover надає вам змогу шукати, встановлювати додатки до Плазми та усі ваші улюблені програми KDE та керувати ними!</p>
-    <p xml:lang="x-test">xxFinally, Discover also allows you to find, install, and manage add-ons for Plasma and all your favorite KDE apps!xx</p>
     <p xml:lang="zh-CN">不仅如此，Discover 还能查找、安装和管理 Plasma 附加组件以及您喜爱的 KDE 应用程序！</p>
     <p xml:lang="zh-TW">最後，Discover 也能協助您搜尋、安裝與管理 Plasma 的外掛程式及你所有喜歡的 KDE 應用程式！</p>
   </description>
@@ -304,7 +299,6 @@
       <caption xml:lang="tg">Кашфиёти Плазма</caption>
       <caption xml:lang="tr">Plasma Keşfet</caption>
       <caption xml:lang="uk">Discover у Плазмі</caption>
-      <caption xml:lang="x-test">xxPlasma Discoverxx</caption>
       <caption xml:lang="zh-CN">Plasma Discover</caption>
       <caption xml:lang="zh-TW">Plasma Discover</caption>
       <image>https://cdn.kde.org/screenshots/plasma-discover/plasma-discover.png</image>
