@@ -43,7 +43,6 @@
         "Description[ta]": "மென்பொருள் புதுப்பிப்புகளின் நடத்தையை அமையுங்கள்",
         "Description[tr]": "Yazılım güncelleme davranışını yapılandır",
         "Description[uk]": "Налаштовування поведінки при оновленні програм",
-        "Description[x-test]": "xxConfigure software update behaviorxx",
         "Description[zh_CN]": "配置软件更新行为",
         "Description[zh_TW]": "設定軟體更新行為",
         "FormFactors": [
@@ -98,7 +97,6 @@
         "Name[tg]": "Навсозии нармафзор",
         "Name[tr]": "Yazılım Güncelleme",
         "Name[uk]": "Оновлення програм",
-        "Name[x-test]": "xxSoftware Updatexx",
         "Name[zh_CN]": "软件更新",
         "Name[zh_TW]": "軟體更新",
         "ServiceTypes": [
@@ -130,7 +128,6 @@
     "X-KDE-Keywords[sl]": "posodobitve",
     "X-KDE-Keywords[sv]": "uppdateringar",
     "X-KDE-Keywords[uk]": "оновлення",
-    "X-KDE-Keywords[x-test]": "xxupdatesxx",
     "X-KDE-ParentApp": "kcontrol",
     "X-KDE-System-Settings-Parent-Category": "system-administration"
 }
