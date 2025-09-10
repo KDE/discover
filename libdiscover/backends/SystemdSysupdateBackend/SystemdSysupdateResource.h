@@ -54,4 +54,5 @@ private:
     AppStream::Component m_component;
     Sysupdate::TargetInfo m_targetInfo;
     org::freedesktop::sysupdate1::Target *m_target;
+    quint64 m_size = 0;
 };

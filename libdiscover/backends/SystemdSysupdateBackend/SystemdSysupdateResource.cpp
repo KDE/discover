@@ -11,6 +11,9 @@
 #include <libdiscover_systemdsysupdate_debug.h>
 #include <sysupdate1.h>
 
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+
 #define SYSTEMDSYSUPDATE_LOG LIBDISCOVER_BACKEND_SYSTEMDSYSUPDATE_LOG
 
 SystemdSysupdateResource::SystemdSysupdateResource(AbstractResourcesBackend *parent,
@@ -85,7 +88,25 @@ quint64 SystemdSysupdateResource::size()
 {
     // TODO implement once sysupdate offers size querying
     // https://github.com/systemd/systemd/issues/34710
-    return 0;
+
+    static QNetworkAccessManager networkyBuddy;
+    auto updateSizeReply = networkyBuddy.get(QNetworkRequest{QUrl(QStringLiteral("http://localhost:3129/v1/updatesize?version=%1").arg(availableVersion()))});
+    connect(updateSizeReply, &QNetworkReply::finished, this, [this, updateSizeReply]() {
+        if (updateSizeReply->error() != QNetworkReply::NoError) {
+            qWarning() << "error!" << updateSizeReply->error();
+            return;
+        }
+        auto sizeString = updateSizeReply->readAll().trimmed();
+        bool ok = false;
+        m_size = sizeString.toUInt(&ok);
+        if (!ok) {
+            qWarning() << "Failed to parse reply into uint" << sizeString;
+        } else {
+            Q_EMIT sizeChanged();
+        }
+    });
+
+    return m_size;
 }
 
 QJsonArray SystemdSysupdateResource::licenses()
