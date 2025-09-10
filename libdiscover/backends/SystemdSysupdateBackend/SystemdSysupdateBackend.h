@@ -39,6 +39,11 @@ public:
         return 55;
     }
 
+    QNetworkAccessManager *networkAccess() const
+    {
+        return m_nam;
+    }
+
     void checkForUpdates() override;
     QString displayName() const override;
 
