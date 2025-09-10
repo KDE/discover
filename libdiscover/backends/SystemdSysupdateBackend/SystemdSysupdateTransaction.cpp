@@ -106,4 +106,5 @@ void SystemdSysupdateTransaction::cancel()
 
         qDebug(SYSTEMDSYSUPDATE_LOG) << "Job cancelled";
     });
+    setStatus(CancelledStatus);
 }
