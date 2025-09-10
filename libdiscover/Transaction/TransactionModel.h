@@ -27,7 +27,9 @@ public:
         StatusTextRole,
         ResourceRole,
         TransactionRole,
+        VisibleRole,
     };
+    Q_ENUM(Roles)
 
     explicit TransactionModel(QObject *parent = nullptr);
     static TransactionModel *global();

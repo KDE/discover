@@ -5,6 +5,7 @@ import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.kirigami as Kirigami
+import org.kde.kitemmodels as KItemModels
 
 QQC2.ItemDelegate {
     id: listItem
@@ -58,7 +59,14 @@ QQC2.ItemDelegate {
                     id: listenerComp
                     Discover.TransactionListener {}
                 }
-                model: Discover.TransactionModel
+                model: KItemModels.KSortFilterProxyModel {
+                    sourceModel: Discover.TransactionModel
+                    filterRoleName: "visible"
+                    filterRowCallback: (sourceRow, sourceParent) => {
+                        const index = sourceModel.index(sourceRow, 0, sourceParent);
+                        return sourceModel.data(index, Discover.TransactionModel.VisibleRole) === true;
+                    }
+                }
 
                 Connections {
                     target: Discover.TransactionModel

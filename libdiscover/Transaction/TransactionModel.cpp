@@ -40,6 +40,7 @@ QHash<int, QByteArray> TransactionModel::roleNames() const
     roles[StatusTextRole] = "statusText";
     roles[ResourceRole] = "resource";
     roles[TransactionRole] = "transaction";
+    roles[VisibleRole] = "visible";
     return roles;
 }
 
@@ -100,6 +101,8 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
         return QVariant::fromValue<QObject *>(transaction);
     case ResourceRole:
         return QVariant::fromValue<QObject *>(transaction->resource());
+    case VisibleRole:
+        return transaction->isVisible();
     }
 
     return QVariant();
