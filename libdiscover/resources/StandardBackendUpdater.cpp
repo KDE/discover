@@ -70,6 +70,12 @@ void StandardBackendUpdater::start()
         connect(t, &Transaction::downloadSpeedChanged, this, [this]() {
             Q_EMIT downloadSpeedChanged(downloadSpeed());
         });
+        connect(t, &Transaction::cancellableChanged, this, [this, t]() {
+            if (!m_canCancel && t->isCancellable()) {
+                m_canCancel = true;
+                Q_EMIT cancelableChanged(m_canCancel);
+            }
+        });
         connect(this, &StandardBackendUpdater::cancelTransaction, t, &Transaction::cancel);
         TransactionModel::global()->addTransaction(t);
         m_canCancel |= t->isCancellable();
