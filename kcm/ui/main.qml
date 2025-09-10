@@ -118,7 +118,7 @@ SimpleKCM {
             spacing: 0
             Kirigami.FormData.label: i18n("Apply system updates:")
             Kirigami.FormData.buddyFor: offlineUpdatesOption
-            visible: !kcm.isRpmOstree
+            visible: !kcm.mandatoryRebootAfterUpdate
             enabled: !kcm.discoverSettings.isUseOfflineUpdatesImmutable
 
             QQC2.RadioButton {

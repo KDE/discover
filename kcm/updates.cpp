@@ -38,9 +38,9 @@ DiscoverSettings *Updates::discoverSettings() const
     return m_discoverData->settings();
 }
 
-bool Updates::isRpmOstree() const
+bool Updates::mandatoryRebootAfterUpdate() const
 {
-    return QFile::exists(QStringLiteral("/run/ostree-booted"));
+    return UPDATE_NEEDS_REBOOT;
 }
 
 #include "moc_updates.cpp"
