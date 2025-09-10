@@ -87,6 +87,7 @@ QQC2.ItemDelegate {
                     highlighted: false
                     hoverEnabled: false
                     down: false
+                    visible: model.transaction.visible
 
                     contentItem: ColumnLayout {
                         spacing: Kirigami.Units.smallSpacing
