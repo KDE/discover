@@ -345,8 +345,11 @@ void PackageKitUpdater::prepare()
     // <bool, QStringList, Transaction::Role, qint64, Transaction::Error, QString>
     auto results = offline->getResults();
     results.waitForFinished();
-
+#if QPK_CHECK_VERSION(1, 1, 4)
+    if (results.isError() || !results.success()) {
+#else
     if (results.isError() || results.argumentAt<0>() == false) {
+#endif
         qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "Removed offline results file";
         offline->clearResults();
     }

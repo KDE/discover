@@ -96,16 +96,26 @@ void PackageKitNotifier::checkOfflineUpdates()
         return;
     }
 
+    const bool isMobile = QByteArrayList{"1", "true"}.contains(qgetenv("QT_QUICK_CONTROLS_MOBILE"));
+#if QPK_CHECK_VERSION(1, 1, 4)
+    const bool success = results.success();
+    const auto packages = results.packageIds();
+    const auto errorCode = results.error();
+#else
     const bool success = results.argumentAt<0>();
     const auto packages = results.argumentAt<1>();
-    const bool isMobile = QByteArrayList{"1", "true"}.contains(qgetenv("QT_QUICK_CONTROLS_MOBILE"));
     const auto errorCode = qvariant_cast<PackageKit::Transaction::Error>(results.argumentAt(4));
+#endif
     static QSet<PackageKit::Transaction::Error> allowedAlreadyInstalled = {
         PackageKit::Transaction::ErrorPackageAlreadyInstalled,
         PackageKit::Transaction::ErrorAllPackagesAlreadyInstalled,
     };
     if (!success && !allowedAlreadyInstalled.contains(errorCode)) {
+#if QPK_CHECK_VERSION(1, 1, 4)
+        const QString errorDetails = results.errorDescription();
+#else
         const QString errorDetails = results.argumentAt<5>();
+#endif
 
         auto *notification = new KNotification(QStringLiteral("OfflineUpdateFailed"), KNotification::Persistent);
         notification->setIconName(QStringLiteral("dialog-error"));
