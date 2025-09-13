@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-05 00:43+0000\n"
-"PO-Revision-Date: 2025-05-25 08:31+0300\n"
+"PO-Revision-Date: 2025-09-04 10:16+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -17,25 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
+# Kömpelö, mutta tarkoituksena välttää joutua taivuttamaan %1:tä
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
-msgstr "%1 ei salli sovellusten asentamista Discoverilla, ainoastaan lisäosien"
+msgstr ""
+"Asetus ei salli, että %1 asentaa vain Discoverissa olevan sovelluksen "
+"lisäosia"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -44,7 +39,8 @@ msgid ""
 msgstr ""
 "Käyttääksesi Discoveria sovelluksiin asenna haluamasi moduuli "
 "<interface>Asetukset</interface>-sivun kohdasta <interface>Puuttuvat "
-"taustajärjestelmät</interface>."
+"taustajärjestelmät</interface>.<nl/><nl/><link url='%1'>Ilmoita ongelmasta: "
+"%2.</link>"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -111,14 +107,11 @@ msgid "Please make sure Snap support is installed"
 msgstr "Varmista, että Snap-tuki on asennettu"
 
 #: discover/DiscoverObject.cpp:407
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
-msgstr "%1: ei voida avata, koska ei löydy käytössä olevista ohjelmalähteistä."
+msgstr "Pyydettyä sovellusta ei löytynyt käytössä olevista ohjelmalähteistä"
 
 #: discover/DiscoverObject.cpp:410
 #, kde-kuit-format
@@ -129,6 +122,7 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(Ei tietuetta: %1)<nl/><nl/><link url='%2'>Ilmoita ongelmasta: %3.</link>"
 
 # HUOM! Tämä on ohjelman nimi!
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
@@ -582,11 +576,10 @@ msgstr "%1: arviot eivät tilapäisesti ole käytettävissä"
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "Ei vielä lähetettyjä arvosteluja"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
 msgstr "Asenna arvostellaksesi"
@@ -919,9 +912,7 @@ msgid "Proceed"
 msgstr "Jatka"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
 msgstr "Ilmoita ongelmasta: %1"

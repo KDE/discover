@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-05 00:43+0000\n"
-"PO-Revision-Date: 2025-07-11 09:54+0300\n"
+"PO-Revision-Date: 2025-09-04 10:13+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1190,7 +1190,7 @@ msgstr "Ei voida käynnistää: %1"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "Laiteajurit"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
@@ -1263,6 +1263,8 @@ msgid ""
 "The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
 "<link url='%1'>report this issue to %2</link>"
 msgstr ""
+"PackageKit-taustapalvelu pysähtyi odottamatta.<nl/><nl/><link "
+"url='%1'>Ilmoita ongelmasta: %2</link>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2071,13 +2073,11 @@ msgid "Repair Failed"
 msgstr "Korjaus epäonnistui"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "%1<nl/>Ilmoita tästä virheestä jakelusi ylläpidolle."
+msgstr "%1<nl/><link url='%2'>Ilmoita virheestä: %3</link>."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
 #, kde-format
