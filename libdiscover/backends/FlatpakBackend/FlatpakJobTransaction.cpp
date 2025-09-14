@@ -122,7 +122,7 @@ FlatpakJobTransaction::FlatpakJobTransaction(FlatpakResource *app, Role role)
 {
     setCancellable(true);
 
-    setStatus(CommittingStatus);
+    setStatus(QueuedStatus);
     FlatpakTransactionsMerger::instance()->schedule(this);
 }
 

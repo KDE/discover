@@ -39,6 +39,13 @@ void FlatpakTransactionThread::progress_changed_cb(FlatpakTransactionProgress *p
 {
     auto obj = static_cast<FlatpakTransactionThread *>(user_data);
 
+    if (flatpak_transaction_progress_get_is_estimating(progress)) {
+        Q_EMIT obj->statusChanged(Transaction::SetupStatus);
+        return;
+    }
+    // We do not know if downloading or installing, but downloading generally takes longer
+    Q_EMIT obj->statusChanged(Transaction::DownloadingStatus);
+
     g_autolist(GObject) ops = flatpak_transaction_get_operations(obj->m_transaction);
     g_autoptr(FlatpakTransactionOperation) op = flatpak_transaction_get_current_operation(obj->m_transaction);
     const int idx = g_list_index(ops, op);
@@ -550,6 +557,7 @@ void FlatpakTransactionThread::setCurrentRef(const char *ref_cstr)
     connect(this, &FlatpakTransactionThread::webflowStarted, job, &FlatpakJobTransaction::webflowStarted);
     connect(this, &FlatpakTransactionThread::webflowDone, job, &FlatpakJobTransaction::webflowDone);
     connect(this, &FlatpakTransactionThread::proceedRequest, job, &FlatpakJobTransaction::proceedRequest);
+    connect(this, &FlatpakTransactionThread::statusChanged, job, &FlatpakJobTransaction::setStatus);
 }
 
 void FlatpakTransactionThread::operationError(GError *error)

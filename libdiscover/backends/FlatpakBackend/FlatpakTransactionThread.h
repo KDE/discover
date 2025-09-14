@@ -77,6 +77,7 @@ Q_SIGNALS: // Signals vastly simplify our live with regards to threading since Q
     void webflowDone(int id);
     void finished(bool cancelled, const QString &errorMessage, const FlatpakTransactionThread::Repositories &addedRepositories, bool success);
     void proceedRequest(const QString &title, const QString &description);
+    void statusChanged(Transaction::Status status);
 
 private:
     static gboolean
