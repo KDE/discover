@@ -271,11 +271,16 @@ void RpmOstreeNotifier::checkSystemUpdateOCI()
             return;
         }
 
-        // Get the version stored in .Labels.version
-        const QString newVersion = jsonDocument.object().value(QLatin1String("Labels")).toObject().value(QLatin1String("version")).toString();
+        // Get the version stored in 'org.opencontainers.image.version' label
+        QString newVersion =
+            jsonDocument.object().value(QLatin1String("Labels")).toObject().value(QLatin1String("org.opencontainers.image.version")).toString();
         if (newVersion.isEmpty()) {
-            qCInfo(RPMOSTREE_LOG) << "Could not get the version from the container labels";
-            return;
+            // Check the 'version' label for compatibility with older rpm-ostree releases (< v2024.03)
+            newVersion = jsonDocument.object().value(QLatin1String("Labels")).toObject().value(QLatin1String("version")).toString();
+            if (newVersion.isEmpty()) {
+                qCWarning(RPMOSTREE_LOG) << "Could not get the version from the container labels";
+                return;
+            }
         }
 
         QVersionNumber newVersionNumber = QVersionNumber::fromString(newVersion);
