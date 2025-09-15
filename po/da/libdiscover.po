@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-05 00:43+0000\n"
+"POT-Creation-Date: 2025-09-15 00:43+0000\n"
 "PO-Revision-Date: 2020-10-04 16:58+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -2108,13 +2108,13 @@ msgstr "Forældede:"
 msgid "Downgrade"
 msgstr "Nedgradér"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:112
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:122
 #, fuzzy, kde-format
 #| msgid "Offline Updates"
 msgid "Failed Offline Update"
 msgstr "Offline opdateringer"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:113
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:123
 #, kde-format
 msgid ""
 "Failed to update %1 package\n"
@@ -2129,31 +2129,31 @@ msgstr[1] ""
 "Kunne ikke opdatere %1 pakker\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:167
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:126
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Åbn Discover"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:121
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "Reparér system"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:126
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
 #, fuzzy, kde-format
 #| msgid "Offline Updates"
 msgid "Repairing failed offline update"
 msgstr "Offline opdateringer"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:133
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
 #, kde-format
 msgid "Repair Failed"
 msgstr "Reparation mislykkedes"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:145
 #, fuzzy, kde-kuit-format
 #| msgid "Please report to your distribution: %1"
 msgctxt ""
@@ -2161,17 +2161,17 @@ msgctxt ""
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
 msgstr "Rapportér venligst dette til din distribution: %1"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:158
 #, kde-format
 msgid "Repaired Successfully"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:173
 #, kde-format
 msgid "Offline Updates"
 msgstr "Offline opdateringer"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:174
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -2284,13 +2284,13 @@ msgstr ""
 msgid "Future"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:375
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:378
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:597
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:600
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2299,14 +2299,14 @@ msgid ""
 "your distribution."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:604
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:607
 #, fuzzy, kde-format
 #| msgctxt "@info:status Package state"
 #| msgid "No Change"
 msgid "Confirm Changes"
 msgstr "Ingen ændring"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:605
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:608
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2315,13 +2315,13 @@ msgstr ""
 "Følgende pakker vil blive fjernet af opdateringen:<ul><li>%1</li></ul><br/"
 ">for at installere:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:731
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:734
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:739
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2331,13 +2331,13 @@ msgstr ""
 "Anmodning om medieskift af typen \"%1\".\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:772
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:775
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "Acceptér EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:773
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:776
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2347,13 +2347,13 @@ msgstr ""
 "Pakken %1 og dens leverandør %2 kræver at du accepterer deres licensaftale:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:890
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:893
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Mangler signatur for %1 i %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:891
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:894
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""

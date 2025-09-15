@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-05 00:43+0000\n"
+"POT-Creation-Date: 2025-09-15 00:43+0000\n"
 "PO-Revision-Date: 2025-09-05 17:09+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1989,12 +1989,12 @@ msgstr "廢棄"
 msgid "Downgrade"
 msgstr "降級"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:112
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:122
 #, kde-format
 msgid "Failed Offline Update"
 msgstr "失敗的離線更新"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:113
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:123
 #, kde-format
 msgid ""
 "Failed to update %1 package\n"
@@ -2006,47 +2006,47 @@ msgstr[0] ""
 "無法更新 %1 個軟體包\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:167
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:126
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:177
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "開啟 Discover"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:121
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "修復系統"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:126
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "正在修復失敗的離線更新"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:133
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:143
 #, kde-format
 msgid "Repair Failed"
 msgstr "修復失敗"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:135
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:145
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
 msgstr "%1<nl/>請<link url='%2'>回報此錯誤給 %3。</link>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:148
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:158
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "修復成功"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:173
 #, kde-format
 msgid "Offline Updates"
 msgstr "離線更新"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:174
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -2149,13 +2149,13 @@ msgstr "現在"
 msgid "Future"
 msgstr "未來"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:375
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:378
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "空間不夠進行更新；只剩 %1 的空間可用。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:597
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:600
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2166,12 +2166,12 @@ msgstr ""
 "無法進行這個更新，因為它會移除以下對系統運行至關重要的軟體：<nl/><ul><li>%1</"
 "li></ul><nl/>如果您認為這是一個錯誤，請向您的發行版的打包者進行問題回報。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:604
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:607
 #, kde-format
 msgid "Confirm Changes"
 msgstr "確認變更"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:605
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:608
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2180,13 +2180,13 @@ msgstr ""
 "以下軟體包將會因為更新而移除：<ul><li>%1</li></ul><br/>將會安裝：<ul><li>%2</"
 "li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:731
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:734
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1：<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:739
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:742
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2196,13 +2196,13 @@ msgstr ""
 "要求變更型態 %1 的媒體：\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:772
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:775
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "接受 EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:773
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:776
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2212,13 +2212,13 @@ msgstr ""
 "軟體包 %1 的提供廠商 %2 要求您接受他們的授權條款：\n"
 "%3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:890
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:893
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "在 %2 中缺少對 %1 的簽名"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:891
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:894
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""
