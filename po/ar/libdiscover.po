@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-30 09:31+0400\n"
+"PO-Revision-Date: 2025-09-15 12:24+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -2649,13 +2649,10 @@ msgid "Refresh"
 msgstr "حدّث"
 
 #: libdiscover/resources/ResourcesModel.cpp:398
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "تحديث للإصدارة %1"
+msgstr "تحديث %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format
