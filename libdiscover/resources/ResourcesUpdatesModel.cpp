@@ -29,6 +29,7 @@ public:
         : Transaction(nullptr, nullptr, Transaction::InstallRole)
         , m_allUpdaters(updaters)
     {
+        setVisible(false);
         bool cancelable = false;
         for (auto updater : std::as_const(m_allUpdaters)) {
             connect(updater, &AbstractBackendUpdater::progressingChanged, this, &UpdateTransaction::slotProgressingChanged);

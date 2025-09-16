@@ -65,7 +65,6 @@ void StandardBackendUpdater::start()
     for (AbstractResource *res : std::as_const(upgradeList)) {
         m_pendingResources += res;
         auto t = m_backend->installApplication(res);
-        t->setVisible(false);
         t->setProperty("updater", QVariant::fromValue<QObject *>(this));
         connect(t, &Transaction::downloadSpeedChanged, this, [this]() {
             Q_EMIT downloadSpeedChanged(downloadSpeed());
