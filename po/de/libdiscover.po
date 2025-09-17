@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-15 00:43+0000\n"
+"POT-Creation-Date: 2025-09-17 00:44+0000\n"
 "PO-Revision-Date: 2025-07-21 23:13+0200\n"
 "Last-Translator: Philipp Kiemle <l10n@prly.mozmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -978,7 +978,7 @@ msgstr "Geben Sie die URI eines Flatpak-Repository (*.flatpakrepo) ein:"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Paketquelle „%1“ in %2 von %3 wird hinzugefügt"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, kde-format
 msgctxt "fallback error message"
 msgid ""
@@ -988,13 +988,13 @@ msgstr ""
 "Ein interner Fehler ist aufgetreten. Bitte senden Sie einen ausführlichen "
 "Problembericht an https://bugs.kde.org/enter_bug.cgi?product=Discover"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:445
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:452
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "Ersatz verfügbar"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:447
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:454
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -1006,13 +1006,13 @@ msgstr ""
 "<resource>%1</resource> erhält keine Aktualisierungen mehr.<nl/><nl/>Möchten "
 "Sie es durch die unterstützte Version von <resource>%2</resource> ersetzen?"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:453
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:460
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "Automatisches Entfernen"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:455
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:462
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"

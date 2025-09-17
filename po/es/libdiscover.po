@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-15 00:43+0000\n"
+"POT-Creation-Date: 2025-09-17 00:44+0000\n"
 "PO-Revision-Date: 2025-09-06 01:19+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -975,7 +975,7 @@ msgstr "Introduzca la URI del repositorio Flatpak (*.flatpakrepo):"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Añadiendo «%1» remoto en %2 desde %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, kde-format
 msgctxt "fallback error message"
 msgid ""
@@ -985,13 +985,13 @@ msgstr ""
 "Ha ocurrido un error interno. Rellene un informe de error en https://bugs."
 "kde.org/enter_bug.cgi?product=Discover"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:445
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:452
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "Sustitución disponible"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:447
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:454
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -1004,13 +1004,13 @@ msgstr ""
 ">¿Desea sustituirla con la versión mantenida que proporciona <resource>%2</"
 "resource>?"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:453
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:460
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "Eliminación automática"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:455
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:462
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"

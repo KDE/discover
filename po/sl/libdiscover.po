@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-15 00:43+0000\n"
+"POT-Creation-Date: 2025-09-17 00:44+0000\n"
 "PO-Revision-Date: 2025-09-05 07:10+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -971,7 +971,7 @@ msgstr "Vnesite URI skladišča Flatpak (*.flatpakrepo):"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Dodajanje oddaljenega »%1« v %2 iz %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, kde-format
 msgctxt "fallback error message"
 msgid ""
@@ -981,13 +981,13 @@ msgstr ""
 "Prišlo je do notranje napake. Prosimo izpolnite poročilo na https://bugs.kde."
 "org/enter_bug.cgi?product=Discover"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:445
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:452
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "Nadomestek na voljo"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:447
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:454
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -999,13 +999,13 @@ msgstr ""
 "<resource>%1</resource> več ne dobiva posodobitev.<nl/><nl/>Naj ga "
 "nadomestim s podprto različico, ki ga zagotavlja <resource>%2</resource>?"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:453
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:460
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "Samodejno odstranitev"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:455
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:462
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"

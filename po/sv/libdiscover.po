@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-15 00:43+0000\n"
+"POT-Creation-Date: 2025-09-17 00:44+0000\n"
 "PO-Revision-Date: 2025-09-08 18:04+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -967,7 +967,7 @@ msgstr "Ange webbadress för ett Flatpak-arkiv (*.flatpakrepo):"
 msgid "Adding remote '%1' in %2 from %3"
 msgstr "Lägger till fjärrplats '%1' i %2 från %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:407
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:414
 #, kde-format
 msgctxt "fallback error message"
 msgid ""
@@ -977,13 +977,13 @@ msgstr ""
 "Ett internt fel uppstod: Skicka gärna in en felrapport på https://bugs.kde."
 "org/enter_bug.cgi?product=Discover."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:445
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:452
 #, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "Ersättning tillgänglig"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:447
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:454
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -995,13 +995,13 @@ msgstr ""
 "<resource>%1</resource> får inte längre uppdateringar.<nl/><nl/>Ska den "
 "ersättas med versionen som stöds tillhandahållen av <resource>%2</resource>?"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:453
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:460
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr "Automatisk borttagning"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:455
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:462
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
