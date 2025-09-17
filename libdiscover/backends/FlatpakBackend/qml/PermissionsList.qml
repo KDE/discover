@@ -63,7 +63,7 @@ ColumnLayout {
             onClicked: {
                 if (root.resource.isInstalled) {
                     // TODO: Not only open KCM on the app's page, but also focus on relevant permission row
-                    KCMUtils.KCMLauncher.openSystemSettings("kcm_flatpak", [root.resource.ref]);
+                    KCMUtils.KCMLauncher.openSystemSettings("kcm_app-permissions", [root.resource.ref]);
                 }
             }
         }
@@ -76,7 +76,7 @@ ColumnLayout {
         text: i18nd("libdiscover", "Configure permissions…")
         icon.name: "configure"
         onClicked: {
-            KCMUtils.KCMLauncher.openSystemSettings("kcm_flatpak", [root.resource.ref]);
+            KCMUtils.KCMLauncher.openSystemSettings("kcm_app-permissions", [root.resource.ref]);
         }
     }
 }
