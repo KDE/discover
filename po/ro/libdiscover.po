@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-17 00:44+0000\n"
+"POT-Creation-Date: 2025-09-19 00:43+0000\n"
 "PO-Revision-Date: 2024-06-08 16:05+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -2714,7 +2714,7 @@ msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr "%1+"
 
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:111
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:112
 #, kde-format
 msgid "Updates"
 msgstr "Actualizări"
@@ -2725,55 +2725,55 @@ msgctxt "@label Download rate"
 msgid "%1/s"
 msgstr "%1/s"
 
-#: libdiscover/Transaction/TransactionModel.cpp:76
+#: libdiscover/Transaction/TransactionModel.cpp:77
 #, kde-format
 msgctxt "@info:status"
 msgid "Starting"
 msgstr "Se pornește"
 
-#: libdiscover/Transaction/TransactionModel.cpp:78
+#: libdiscover/Transaction/TransactionModel.cpp:79
 #, kde-format
 msgctxt "@info:status"
 msgid "Waiting"
 msgstr "Se așteaptă"
 
-#: libdiscover/Transaction/TransactionModel.cpp:80
+#: libdiscover/Transaction/TransactionModel.cpp:81
 #, kde-format
 msgctxt "@info:status"
 msgid "Downloading"
 msgstr "Se descarcă"
 
-#: libdiscover/Transaction/TransactionModel.cpp:84
+#: libdiscover/Transaction/TransactionModel.cpp:85
 #, kde-format
 msgctxt "@info:status"
 msgid "Installing"
 msgstr "Se instalează"
 
-#: libdiscover/Transaction/TransactionModel.cpp:86
+#: libdiscover/Transaction/TransactionModel.cpp:87
 #, kde-format
 msgctxt "@info:status"
 msgid "Removing"
 msgstr "Se elimină"
 
-#: libdiscover/Transaction/TransactionModel.cpp:88
+#: libdiscover/Transaction/TransactionModel.cpp:89
 #, kde-format
 msgctxt "@info:status"
 msgid "Changing Addons"
 msgstr "Se modifică suplimentele"
 
-#: libdiscover/Transaction/TransactionModel.cpp:92
+#: libdiscover/Transaction/TransactionModel.cpp:93
 #, kde-format
 msgctxt "@info:status"
 msgid "Done"
 msgstr "Gata"
 
-#: libdiscover/Transaction/TransactionModel.cpp:94
+#: libdiscover/Transaction/TransactionModel.cpp:95
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
 msgstr "Eșuat"
 
-#: libdiscover/Transaction/TransactionModel.cpp:96
+#: libdiscover/Transaction/TransactionModel.cpp:97
 #, kde-format
 msgctxt "@info:status"
 msgid "Cancelled"

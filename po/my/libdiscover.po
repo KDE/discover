@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-17 00:44+0000\n"
+"POT-Creation-Date: 2025-09-19 00:43+0000\n"
 "PO-Revision-Date: 2021-09-27 23:44+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -2597,7 +2597,7 @@ msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr ""
 
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:111
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:112
 #, kde-format
 msgid "Updates"
 msgstr "အပ်ဒိတ်များ"
@@ -2608,55 +2608,55 @@ msgctxt "@label Download rate"
 msgid "%1/s"
 msgstr "%1/စက္ကန့်"
 
-#: libdiscover/Transaction/TransactionModel.cpp:76
+#: libdiscover/Transaction/TransactionModel.cpp:77
 #, kde-format
 msgctxt "@info:status"
 msgid "Starting"
 msgstr "စတင်နေသည်"
 
-#: libdiscover/Transaction/TransactionModel.cpp:78
+#: libdiscover/Transaction/TransactionModel.cpp:79
 #, kde-format
 msgctxt "@info:status"
 msgid "Waiting"
 msgstr "စောင့်ဆိုင်းနေသည်"
 
-#: libdiscover/Transaction/TransactionModel.cpp:80
+#: libdiscover/Transaction/TransactionModel.cpp:81
 #, kde-format
 msgctxt "@info:status"
 msgid "Downloading"
 msgstr "ဒေါင်းလုတ်ဆွဲနေသည်"
 
-#: libdiscover/Transaction/TransactionModel.cpp:84
+#: libdiscover/Transaction/TransactionModel.cpp:85
 #, kde-format
 msgctxt "@info:status"
 msgid "Installing"
 msgstr "တပ်ဆင်နေသည်"
 
-#: libdiscover/Transaction/TransactionModel.cpp:86
+#: libdiscover/Transaction/TransactionModel.cpp:87
 #, kde-format
 msgctxt "@info:status"
 msgid "Removing"
 msgstr "ဖယ်ရှားနေသည်"
 
-#: libdiscover/Transaction/TransactionModel.cpp:88
+#: libdiscover/Transaction/TransactionModel.cpp:89
 #, kde-format
 msgctxt "@info:status"
 msgid "Changing Addons"
 msgstr "အက်အွန်များ ပြောင်းနေသည်။"
 
-#: libdiscover/Transaction/TransactionModel.cpp:92
+#: libdiscover/Transaction/TransactionModel.cpp:93
 #, kde-format
 msgctxt "@info:status"
 msgid "Done"
 msgstr "ပြီးပြီ"
 
-#: libdiscover/Transaction/TransactionModel.cpp:94
+#: libdiscover/Transaction/TransactionModel.cpp:95
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
 msgstr "ကျရှုံးခဲ့သည်"
 
-#: libdiscover/Transaction/TransactionModel.cpp:96
+#: libdiscover/Transaction/TransactionModel.cpp:97
 #, kde-format
 msgctxt "@info:status"
 msgid "Cancelled"

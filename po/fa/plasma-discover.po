@@ -1,22 +1,21 @@
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) 2025 This file is copyright:
+# This file is distributed under the same license as the discover package.
 #
-# Marek Laane <bald@smail.ee>, 2012, 2013, 2014, 2016, 2019, 2020.
-# Mihkel Tõnnov <mihhkel@gmail.com>, 2020.
+# SPDX-FileCopyrightText: 2025 Sohrab Behdani <behdanisohrab@proton.me>
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-19 00:43+0000\n"
-"PO-Revision-Date: 2020-10-11 01:25+0200\n"
-"Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
-"Language-Team: Estonian <>\n"
-"Language: et\n"
+"POT-Creation-Date: 2025-09-05 00:43+0000\n"
+"PO-Revision-Date: 2025-09-18 15:14+0330\n"
+"Last-Translator: Sohrab Behdani <behdanisohrab@proton.me>\n"
+"Language-Team: fa\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.08.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #: discover/DiscoverObject.cpp:183
 #, kde-format
@@ -61,7 +60,7 @@ msgstr ""
 #: discover/DiscoverObject.cpp:291
 #, kde-format
 msgid "Could not find category '%1'"
-msgstr "Kategooriat \"%1\" ei leitud"
+msgstr ""
 
 #: discover/DiscoverObject.cpp:313
 #, kde-format
@@ -74,14 +73,11 @@ msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr ""
-"Flatpaki ressurssidega ei saa midagi ette võtta ilma flatpaki "
-"taustaprogrammita %1. Palun paigalda see."
 
 #: discover/DiscoverObject.cpp:339
-#, fuzzy, kde-format
-#| msgid "Couldn't open %1"
+#, kde-format
 msgid "Could not open %1"
-msgstr "%1 avamine nurjus"
+msgstr ""
 
 #: discover/DiscoverObject.cpp:404
 #, kde-format
@@ -109,7 +105,7 @@ msgstr ""
 #: discover/main.cpp:129
 #, kde-format
 msgid "Discover"
-msgstr "Discover"
+msgstr ""
 
 #: discover/DiscoverObject.cpp:476
 #, kde-format
@@ -120,49 +116,47 @@ msgstr ""
 #: discover/main.cpp:35
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
-msgstr "Määratud rakenduse otsene avamine appstream:// URI järgi."
+msgstr ""
 
 #: discover/main.cpp:36
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
-msgstr "Määratud MIME tüüpi käidelda suutvate programmide otsingu avamine."
+msgstr ""
 
 #: discover/main.cpp:37
 #, kde-format
 msgid "Display a list of entries with a category."
-msgstr "Kirjete loendi kuvamine kategooriatega."
+msgstr ""
 
 #: discover/main.cpp:38
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
-"Discoveri avamine määratud režiimis. Režiimid vastavad tööriistariba "
-"nuppudele."
 
 #: discover/main.cpp:39
 #, kde-format
 msgid "List all the available modes."
-msgstr "Kõigi saadaolevate režiimide loetlemine."
+msgstr ""
 
 #: discover/main.cpp:40
 #, kde-format
 msgid "Local package file to install"
-msgstr "Paigaldatav kohalik paketifail"
+msgstr ""
 
 #: discover/main.cpp:41
 #, kde-format
 msgid "List all the available backends."
-msgstr "Kõigi saadaolevate taustaprogrammide loetlemine."
+msgstr ""
 
 #: discover/main.cpp:42
 #, kde-format
 msgid "Search string."
-msgstr "Stringi otsimine."
+msgstr ""
 
 #: discover/main.cpp:43
 #, kde-format
 msgid "Lists the available options for user feedback"
-msgstr "Kasutaja tagasiside saadaolevate valikute loend"
+msgstr ""
 
 #: discover/main.cpp:44
 #, kde-format
@@ -172,71 +166,69 @@ msgstr ""
 #: discover/main.cpp:46
 #, kde-format
 msgid "Supports appstream: url scheme"
-msgstr "Appstreami URL-i skeemi toetus"
+msgstr ""
 
 #: discover/main.cpp:131
 #, kde-format
 msgid "An application explorer"
-msgstr "Rakendusteuurija"
+msgstr ""
 
 #: discover/main.cpp:133
-#, fuzzy, kde-format
-#| msgid "© 2010-2020 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010-2020: Plasma arendusmeeskond"
+msgstr ""
 
 #: discover/main.cpp:134
 #, kde-format
 msgid "Aleix Pol Gonzalez"
-msgstr "Aleix Pol Gonzalez"
+msgstr ""
 
 #: discover/main.cpp:135
 #, kde-format
 msgid "Nate Graham"
-msgstr "Nate Graham"
+msgstr ""
 
 #: discover/main.cpp:136
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
-msgstr "Kvaliteedikontroll, disain ja kasutatavus"
+msgstr ""
 
 #: discover/main.cpp:140
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
-msgstr "Dan Leinir Turthra Jensen"
+msgstr ""
 
 #: discover/main.cpp:141
 #, kde-format
 msgid "KNewStuff"
-msgstr "KNewStuff"
+msgstr ""
 
 #: discover/main.cpp:148
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Marek Laane"
+msgstr ""
 
 #: discover/main.cpp:148
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "qiilaq69@gmail.com"
+msgstr ""
 
 #: discover/main.cpp:162
 #, kde-format
 msgid "Available backends:\n"
-msgstr "Saadaolevad taustaprogrammid:\n"
+msgstr ""
 
 #: discover/main.cpp:215
 #, kde-format
 msgid "Available modes:\n"
-msgstr "Saadaolevad režiimid:\n"
+msgstr ""
 
 #: discover/qml/AddonsView.qml:28 discover/qml/Navigation.qml:58
-#, fuzzy, kde-format
-#| msgid "Addons"
+#, kde-format
 msgid "Addons for %1"
-msgstr "Lisad"
+msgstr ""
 
 #: discover/qml/AddonsView.qml:80
 #, kde-format
@@ -246,44 +238,44 @@ msgstr ""
 #: discover/qml/AddonsView.qml:89
 #, kde-format
 msgid "Apply Changes"
-msgstr "Rakenda muudatused"
+msgstr ""
 
 #: discover/qml/AddonsView.qml:97
 #, kde-format
 msgid "Reset"
-msgstr "Lähtesta"
+msgstr ""
 
 #: discover/qml/AddSourceDialog.qml:21
 #, kde-format
 msgid "Add New %1 Repository"
-msgstr "Uue %1 hoidla lisamine"
+msgstr ""
 
 #: discover/qml/AddSourceDialog.qml:45
 #, kde-format
 msgid "Add"
-msgstr "Lisa"
+msgstr ""
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:280
 #: discover/qml/InstallApplicationButton.qml:51
-#: discover/qml/ProgressView.qml:150 discover/qml/SourcesPage.qml:201
+#: discover/qml/ProgressView.qml:142 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:302 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
-msgstr "Loobu"
+msgstr ""
 
 #: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:373
 #, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
-msgstr[0] "%1 hinnang"
-msgstr[1] "%1 hinnangut"
+msgstr[0] ""
+msgstr[1] ""
 
 #: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:373
 #, kde-format
 msgid "No ratings yet"
-msgstr "Hinnang veel puudub"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:69
 #, kde-kuit-format
@@ -377,11 +369,10 @@ msgid "Share"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:150
-#, fuzzy, kde-format
-#| msgid "Add-ons"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add-ons"
-msgstr "Lisandid"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:166
 #, kde-format
@@ -394,7 +385,7 @@ msgstr ""
 #: discover/qml/ApplicationPage.qml:182
 #, kde-format
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:221
 #, kde-format
@@ -414,30 +405,27 @@ msgid "Unknown author"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:397
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgid "Version:"
-msgstr "Versioon:"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:409
 #, kde-format
 msgid "Size:"
-msgstr "Suurus:"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:421
-#, fuzzy, kde-format
-#| msgid "License:"
+#, kde-format
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "Litsents:"
-msgstr[1] "Litsents:"
+msgstr[0] ""
+msgstr[1] ""
 
 #: discover/qml/ApplicationPage.qml:428
-#, fuzzy, kde-format
-#| msgid "What's New"
+#, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
-msgstr "Mida on uut"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:432
 #, kde-format
@@ -470,17 +458,15 @@ msgid "Everyone"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:531
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr "%1"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:545
-#, fuzzy, kde-format
-#| msgid "Details"
+#, kde-format
 msgid "See details"
-msgstr "Üksikasjad"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:569
 #, kde-format
@@ -491,18 +477,17 @@ msgstr ""
 #: discover/qml/ApplicationPage.qml:713
 #, kde-format
 msgid "What's New"
-msgstr "Mida on uut"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Reviews"
-msgstr "Arvustused"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:757
-#, fuzzy, kde-format
-#| msgid "Reviews for %1"
+#, kde-format
 msgid "Loading reviews for %1"
-msgstr "%1 arvustused"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:766
 #, kde-format
@@ -517,29 +502,26 @@ msgid "No reviews posted yet"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
-msgstr "Paigalda ja kirjuta arvustus"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Write a Review"
-msgstr "Kirjuta arvustus"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Install to Write a Review"
-msgstr "Paigalda ja kirjuta arvustus"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:806
-#, fuzzy, kde-format
-#| msgid "Show %1 Review..."
-#| msgid_plural "Show All %1 Reviews..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Näita %1 arvustust ..."
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:844
 #, kde-format
@@ -548,18 +530,16 @@ msgid "External Links"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:862
-#, fuzzy, kde-format
-#| msgid "Documentation:"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "Dokumentatsioon:"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:873
-#, fuzzy, kde-format
-#| msgid "Visit the app's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
-msgstr "Rakenduse kodulehekülje külastamine"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:883
 #, kde-format
@@ -568,11 +548,10 @@ msgid "Donate to the project"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:893
-#, fuzzy, kde-format
-#| msgid "Report a problem"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
-msgstr "Veast teatamine"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:903
 #, kde-format
@@ -581,63 +560,58 @@ msgid "Start contributing"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:932
-#, fuzzy, kde-format
-#| msgid "License:"
+#, kde-format
 msgid "All Licenses"
-msgstr "Litsents:"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:970
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating"
-msgstr "Anna hinnang"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:993
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgctxt "@title:window"
 msgid "License Information"
-msgstr "Kasutusteabe edastamine"
+msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:54
-#, fuzzy, kde-format
-#| msgid "Search: %1 + %2"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Otsing: %1 + %2"
-msgstr[1] "Otsing: %1 + %2"
+msgstr[0] ""
+msgstr[1] ""
 
 #: discover/qml/ApplicationsListPage.qml:56
 #, kde-format
 msgid "Search: %1"
-msgstr "Otsing: %1"
+msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:60
-#, fuzzy, kde-format
-#| msgid "%1 - %2"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 - %2"
-msgstr[1] "%1 - %2"
+msgstr[0] ""
+msgstr[1] ""
 
 #: discover/qml/ApplicationsListPage.qml:66
-#, fuzzy, kde-format
-#| msgid "Search: %1"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Otsing: %1"
-msgstr[1] "Otsing: %1"
+msgstr[0] ""
+msgstr[1] ""
 
 #: discover/qml/ApplicationsListPage.qml:68
 #: discover/qml/ApplicationsListPage.qml:266
 #, kde-format
 msgid "Search"
-msgstr "Otsing"
+msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:103 discover/qml/ReviewsPage.qml:141
+#: discover/qml/ApplicationsListPage.qml:103
+#: discover/qml/ReviewsPage.qml:141
 #, kde-format
 msgid "Sort: %1"
-msgstr "Sortimise alus: %1"
+msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:108
 #, kde-format
@@ -648,29 +622,28 @@ msgstr ""
 #: discover/qml/ApplicationsListPage.qml:119
 #, kde-format
 msgid "Name"
-msgstr "Nimi"
+msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:130 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:130
+#: discover/qml/Rating.qml:119
 #, kde-format
 msgid "Rating"
-msgstr "Hinnang"
+msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:141
 #, kde-format
 msgid "Size"
-msgstr "Suurus"
+msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:152
-#, fuzzy, kde-format
-#| msgid "Release Date"
+#, kde-format
 msgid "Release date"
-msgstr "Väljalaskeaeg"
+msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:212
-#, fuzzy, kde-format
-#| msgid "Sorry, nothing found"
+#, kde-format
 msgid "Nothing found"
-msgstr "Andestust, midagi ei leitud"
+msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:220
 #, kde-format
@@ -679,11 +652,10 @@ msgid "Search in All Categories"
 msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:230
-#, fuzzy, kde-format
-#| msgid "Specify the new source for %1"
+#, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
-msgstr "%1 uue allika määramine"
+msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:245
 #, kde-format
@@ -709,17 +681,15 @@ msgid ""
 msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:281
-#, fuzzy, kde-format
-#| msgid "Still looking..."
+#, kde-format
 msgid "Still looking…"
-msgstr "Veel otsitakse ..."
+msgstr ""
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Home"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "Kodu"
+msgstr ""
 
 #: discover/qml/BrowsingPage.qml:54
 #, kde-format
@@ -727,11 +697,10 @@ msgid "Unable to load applications"
 msgstr ""
 
 #: discover/qml/BrowsingPage.qml:90
-#, fuzzy, kde-format
-#| msgid "Most Popular"
+#, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr "Kõige populaarsem"
+msgstr ""
 
 #: discover/qml/BrowsingPage.qml:119
 #, kde-format
@@ -788,12 +757,11 @@ msgid "Switch to Full Screen"
 msgstr ""
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
-#, fuzzy, kde-format
-#| msgid "Close"
+#, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
-msgstr "Sulge"
+msgstr ""
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
@@ -811,26 +779,21 @@ msgstr ""
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr ""
-"Käivitamine administraatorina (<em>root</em>) on äärmiselt ebasoovitatav ja "
-"tarbetu."
 
 #: discover/qml/DiscoverWindow.qml:67
-#, fuzzy, kde-format
-#| msgid "Home"
+#, kde-format
 msgid "&Home"
-msgstr "Kodu"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:77
-#, fuzzy, kde-format
-#| msgid "Search"
+#, kde-format
 msgid "&Search"
-msgstr "Otsing"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:85
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "&Installed"
-msgstr "Paigaldatud"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:96
 #, kde-format
@@ -838,23 +801,19 @@ msgid "&Updates (Fetching…)"
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:96
-#, fuzzy, kde-format
-#| msgctxt "Update section name"
-#| msgid "Update (%1)"
+#, kde-format
 msgid "&Updates (%1)"
-msgstr "Uuendused (%1)"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:104
-#, fuzzy, kde-format
-#| msgid "About"
+#, kde-format
 msgid "&About"
-msgstr "Teave"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:112
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgid "S&ettings"
-msgstr "Seadistused"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:165 discover/qml/DiscoverWindow.qml:347
 #: discover/qml/DiscoverWindow.qml:459
@@ -865,12 +824,12 @@ msgstr ""
 #: discover/qml/DiscoverWindow.qml:169
 #, kde-format
 msgid "Unable to find resource: %1"
-msgstr "Ressurssi ei leitud: %1"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:267 discover/qml/SourcesPage.qml:195
 #, kde-format
 msgid "Proceed"
-msgstr "Edasi"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:325
 #, kde-format
@@ -879,15 +838,14 @@ msgid "Report this issue to %1"
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:347
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "Hääli: %1 / %2"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:347 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
-msgstr "Uuenda"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:358
 #, kde-format
@@ -903,17 +861,15 @@ msgid "Show Previous"
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:405
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "Sisu näitamine"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:417 discover/qml/UpdatesPage.qml:69
-#, fuzzy, kde-format
-#| msgid "Show technical packages"
+#, kde-format
 msgid "See Technical Details"
-msgstr "Tehniliste pakettide näitamine"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:425
 #, kde-format
@@ -921,10 +877,9 @@ msgid "Copy to Clipboard"
 msgstr ""
 
 #: discover/qml/Feedback.qml:14
-#, fuzzy, kde-format
-#| msgid "Submit usage information"
+#, kde-format
 msgid "Submit Usage Information"
-msgstr "Kasutusteabe edastamine"
+msgstr ""
 
 #: discover/qml/Feedback.qml:15
 #, kde-format
@@ -932,32 +887,26 @@ msgid ""
 "Sends anonymized usage information to KDE so we can better understand our "
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
-"Anonüümseks muudetud kasutusteabe saatmine KDE-le, et me mõistaksime "
-"paremini oma kasutajaid. Täpsemat teavet leiab aadressilt https://kde.org/"
-"privacypolicy-apps.php."
 
 #: discover/qml/Feedback.qml:19
-#, fuzzy, kde-format
-#| msgid "Submitting usage information..."
+#, kde-format
 msgid "Submitting usage information…"
-msgstr "Kasutusteabe edastamine ..."
+msgstr ""
 
 #: discover/qml/Feedback.qml:19
 #, kde-format
 msgid "Configure"
-msgstr "Seadista "
+msgstr ""
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure feedback..."
+#, kde-format
 msgid "Configure Feedback…"
-msgstr "Seadista tagasisidet ..."
+msgstr ""
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
-#, fuzzy, kde-format
-#| msgid "Configure feedback..."
+#, kde-format
 msgid "Configure Updates…"
-msgstr "Seadista tagasisidet ..."
+msgstr ""
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
@@ -965,124 +914,112 @@ msgid ""
 "You can help us improving this application by sharing statistics and "
 "participate in surveys."
 msgstr ""
-"Sa võid aidata meil rakendust paremaks muuta, kui jagad meiega statistikat "
-"ja osaled uuringutes."
 
 #: discover/qml/Feedback.qml:58
-#, fuzzy, kde-format
-#| msgid "Contribute..."
+#, kde-format
 msgid "Contribute…"
-msgstr "Panusta ..."
+msgstr ""
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "We are looking for your feedback!"
-msgstr "Me ootame sinu tagasisidet!"
+msgstr ""
 
 #: discover/qml/Feedback.qml:63
-#, fuzzy, kde-format
-#| msgid "Participate..."
+#, kde-format
 msgid "Participate…"
-msgstr "Osale ..."
+msgstr ""
 
 #: discover/qml/InstallApplicationButton.qml:29
-#, fuzzy, kde-format
-#| msgid "Loading..."
+#, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
-msgstr "Laadimine..."
+msgstr ""
 
 #: discover/qml/InstallApplicationButton.qml:33
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
-msgstr "Paigalda"
+msgstr ""
 
 #: discover/qml/InstallApplicationButton.qml:35
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
-msgstr "Paigalda"
+msgstr ""
 
 #: discover/qml/InstallApplicationButton.qml:37
 #, kde-format
 msgid "Remove"
-msgstr "Eemalda"
+msgstr ""
 
 #: discover/qml/InstalledPage.qml:14
 #, kde-format
 msgid "Installed"
-msgstr "Paigaldatud"
+msgstr ""
 
 #: discover/qml/Navigation.qml:34
 #, kde-format
 msgid "Resources for '%1'"
-msgstr "\"%1\" ressursid"
+msgstr ""
 
-#: discover/qml/ProgressView.qml:19
+#: discover/qml/ProgressView.qml:18
 #, kde-format
 msgid "Tasks (%1%)"
-msgstr "Edenemine (%1%)"
+msgstr ""
 
-#: discover/qml/ProgressView.qml:19 discover/qml/ProgressView.qml:47
+#: discover/qml/ProgressView.qml:18 discover/qml/ProgressView.qml:46
 #, kde-format
 msgid "Tasks"
-msgstr "Ülesanded"
+msgstr ""
 
-#: discover/qml/ProgressView.qml:124
-#, fuzzy, kde-format
-#| msgctxt "TransactioName - TransactionStatus"
-#| msgid "%1 - %2: %3"
+#: discover/qml/ProgressView.qml:116
+#, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
-msgstr "%1 - %2: %3"
+msgstr ""
 
-#: discover/qml/ProgressView.qml:132
-#, fuzzy, kde-format
-#| msgctxt "TransactioName - TransactionStatus"
-#| msgid "%1 - %2: %3"
+#: discover/qml/ProgressView.qml:124
+#, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
-msgstr "%1 - %2: %3"
+msgstr ""
 
-#: discover/qml/ProgressView.qml:139
+#: discover/qml/ProgressView.qml:131
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr ""
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
 msgid "unknown reviewer"
-msgstr "tundmatu arvustaja"
+msgstr ""
 
 #: discover/qml/ReviewDelegate.qml:59
 #, kde-format
 msgid "<b>%1</b> by %2"
-msgstr "<b>%1</b>, autor %2"
+msgstr ""
 
 #: discover/qml/ReviewDelegate.qml:59
 #, kde-format
 msgid "Comment by %1"
-msgstr "%1 kommentaar"
+msgstr ""
 
 #: discover/qml/ReviewDelegate.qml:73
 #, kde-format
 msgid "Version: %1"
-msgstr "Versioon: %1"
+msgstr ""
 
 #: discover/qml/ReviewDelegate.qml:73
-#, fuzzy, kde-format
-#| msgid "Version: %1"
+#, kde-format
 msgid "Version: unknown"
-msgstr "Versioon: %1"
+msgstr ""
 
 #: discover/qml/ReviewDelegate.qml:87
 #, kde-format
 msgid "Votes: %1 out of %2"
-msgstr "Hääli: %1 / %2"
+msgstr ""
 
 #: discover/qml/ReviewDelegate.qml:94
 #, kde-format
@@ -1093,23 +1030,23 @@ msgstr ""
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "Yes"
-msgstr "Jah"
+msgstr ""
 
 #: discover/qml/ReviewDelegate.qml:122
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "No"
-msgstr "Ei"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:26
 #, kde-format
 msgid "Reviewing %1"
-msgstr "%1 arvustus"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:33
 #, kde-format
 msgid "Submit review"
-msgstr "Saada arvustus"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:48
 #, kde-format
@@ -1156,17 +1093,17 @@ msgstr ""
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
 msgid "Rating:"
-msgstr "Hinnang:"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:125
 #, kde-format
 msgid "Name:"
-msgstr "Nimi:"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:133
 #, kde-format
 msgid "Title:"
-msgstr "Pealkiri:"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:148
 #, kde-format
@@ -1201,28 +1138,27 @@ msgstr ""
 #: discover/qml/ReviewDialog.qml:182
 #, kde-format
 msgid "Enter a rating"
-msgstr "Anna hinnang"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:185
 #, kde-format
 msgid "Write the title"
-msgstr "Kirjuta pealkiri"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:188
 #, kde-format
 msgid "Write the review"
-msgstr "Kirjuta arvustus"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:191
-#, fuzzy, kde-format
-#| msgid "Keep writing..."
+#, kde-format
 msgid "Keep writing…"
-msgstr "Kirjuta aga edasi ..."
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:194
 #, kde-format
 msgid "Too long!"
-msgstr "Liiga pikk!"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:197
 #, kde-format
@@ -1233,18 +1169,17 @@ msgstr ""
 #: discover/qml/ReviewsPage.qml:43
 #, kde-format
 msgid "Reviews for %1"
-msgstr "%1 arvustused"
+msgstr ""
 
 #: discover/qml/ReviewsPage.qml:105
-#, fuzzy, kde-format
-#| msgid "Write a Review"
+#, kde-format
 msgid "Write a Review…"
-msgstr "Kirjuta arvustus"
+msgstr ""
 
 #: discover/qml/ReviewsPage.qml:118
 #, kde-format
 msgid "Install this app to write a review"
-msgstr "Paigalda see rakendus, et arvustus kirjutada"
+msgstr ""
 
 #: discover/qml/ReviewsPage.qml:145
 #, kde-format
@@ -1259,18 +1194,16 @@ msgid "Most Recent"
 msgstr ""
 
 #: discover/qml/ReviewsPage.qml:159
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "Anna hinnang"
+msgstr ""
 
 #: discover/qml/ReviewsStats.qml:53
-#, fuzzy, kde-format
-#| msgid "%1 reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "%1 arvustust"
+msgstr ""
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
@@ -1279,10 +1212,9 @@ msgid "M"
 msgstr ""
 
 #: discover/qml/ReviewsStats.qml:167
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgid "Unknown reviewer"
-msgstr "tundmatu arvustaja"
+msgstr ""
 
 #: discover/qml/ReviewsStats.qml:188
 #, kde-format
@@ -1297,79 +1229,74 @@ msgid "„"
 msgstr ""
 
 #: discover/qml/SearchField.qml:26
-#, fuzzy, kde-format
-#| msgid "Search"
+#, kde-format
 msgid "Search…"
-msgstr "Otsing"
+msgstr ""
 
 #: discover/qml/SearchField.qml:26
-#, fuzzy, kde-format
-#| msgid "Search in '%1'..."
+#, kde-format
 msgid "Search in '%1'…"
-msgstr "Otsi kategoorias \"%1\"..."
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:18
 #, kde-format
 msgid "Settings"
-msgstr "Seadistused"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Resources"
+#, kde-format
 msgid "Default Source"
-msgstr "Ressursid"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:118
-#, fuzzy, kde-format
-#| msgid "Add Source..."
+#, kde-format
 msgid "Add Source…"
-msgstr "Lisa allikas ..."
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:145
-#, fuzzy, kde-format
-#| msgid "Make default"
+#, kde-format
 msgid "Make Default"
-msgstr "Vaikimisi"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:248
 #, kde-format
 msgid "Increase priority"
-msgstr "Suurenda prioriteeti"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:254
 #, kde-format
 msgid "Failed to increase '%1' preference"
-msgstr "\"%1\" eelistuse suurendamine nurjus"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:260
 #, kde-format
 msgid "Decrease priority"
-msgstr "Vähenda prioriteeti"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:266
 #, kde-format
 msgid "Failed to decrease '%1' preference"
-msgstr "\"%1\" eelistuse vähendamine nurjus"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:272
 #, kde-format
 msgid "Remove repository"
-msgstr "Eemalda hoidla"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:283
 #, kde-format
 msgid "Show contents"
-msgstr "Sisu näitamine"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:323
 #, kde-format
 msgid "Missing Backends"
-msgstr "Puuduvad taustaprogrammid"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:14
 #, kde-format
 msgid "Updates"
-msgstr "Uuendused"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
@@ -1407,18 +1334,16 @@ msgid "Report Issue to %1"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:161
-#, fuzzy, kde-format
-#| msgid "Update Selected"
+#, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
-msgstr "Uuenda valitud"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:161
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
-msgstr "Uuenda kõik"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:201
 #, kde-format
@@ -1450,11 +1375,10 @@ msgid "Select an action"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:283
-#, fuzzy, kde-format
-#| msgid "Restart"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "Taaskäivita"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:283
 #, kde-format
@@ -1463,10 +1387,9 @@ msgid "Shut down"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:292
-#, fuzzy, kde-format
-#| msgid "Total Size: "
+#, kde-format
 msgid "Total size: %1"
-msgstr "Kogusuurus: "
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:322
 #, kde-format
@@ -1477,42 +1400,37 @@ msgstr ""
 #: discover/qml/UpdatesPage.qml:502
 #, kde-format
 msgid "Installing"
-msgstr "Paigaldamine"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:535
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgid "Update from:"
-msgstr "Uuenda kõik"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:549
-#, fuzzy, kde-format
-#| msgid "%1 (%2)"
+#, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
 "address within that backend"
 msgid "%1 (%2)"
-msgstr "%1 (%2)"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:558
-#, fuzzy, kde-format
-#| msgid "More Information..."
+#, kde-format
 msgid "More Information…"
-msgstr "Rohkem teavet ..."
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:586
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Fetching updates..."
+#, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
-msgstr "Uuenduste tõmbamine ..."
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:600
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
-msgstr "Uuendused"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:609
 #, kde-format
@@ -1531,528 +1449,16 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
-msgstr "Värske"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:646
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
-msgstr "Tuleks kontrollida uuendusi"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:653
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Donate:"
-#~ msgid "Donate"
-#~ msgstr "Annetus:"
-
-#, fuzzy
-#~| msgid "Contribute..."
-#~ msgid "Contribute"
-#~ msgstr "Panusta ..."
-
-#, fuzzy
-#~| msgid "Fetching updates..."
-#~ msgid "Fetching &updates…"
-#~ msgstr "Uuenduste tõmbamine ..."
-
-#, fuzzy
-#~| msgid "Enter a rating"
-#~ msgid "Content Rating:"
-#~ msgstr "Anna hinnang"
-
-#~ msgid "Addons"
-#~ msgstr "Lisad"
-
-#, fuzzy
-#~| msgid "Get involved:"
-#~ msgid "Get Involved"
-#~ msgstr "Kaasalöömine:"
-
-#~ msgid "Compact Mode (auto/compact/full)."
-#~ msgstr "Kompaktne režiim (automaatne/kompaktne/täielik)."
-
-#, fuzzy
-#~| msgid "Up to date"
-#~ msgid "&Up to date"
-#~ msgstr "Värske"
-
-#~ msgid "Sources"
-#~ msgstr "Allikad"
-
-#~ msgid "Featured"
-#~ msgstr "Esile tõstetud"
-
-#, fuzzy
-#~| msgctxt "@info"
-#~| msgid "No updates are available"
-#~ msgid "Updates are available"
-#~ msgstr "Uuendusi pole"
-
-#, fuzzy
-#~| msgid "Show all"
-#~ msgctxt "Short for 'show updates'"
-#~ msgid "Show"
-#~ msgstr "Näita kõiki"
-
-#, fuzzy
-#~| msgid "More..."
-#~ msgid "Show more..."
-#~ msgstr "Rohkem..."
-
-#, fuzzy
-#~| msgid "Could not close Discover, there are tasks that need to be done."
-#~ msgid "Could not close Discover because some tasks are still in progress."
-#~ msgstr "Discoverit ei saa sulgeda, enne peavad tööd tehtud olema."
-
-#~ msgid "Quit Anyway"
-#~ msgstr "Välju ikkagi"
-
-#, fuzzy
-#~| msgid "Loading..."
-#~ msgid "Loading…"
-#~ msgstr "Laadimine..."
-
-#~ msgid "Return to the Featured page"
-#~ msgstr "Tagasi esiletõstetute leheküljele"
-
-#~ msgid "Category:"
-#~ msgstr "Kategooria:"
-
-#~ msgid "Author:"
-#~ msgstr "Autor:"
-
-#~ msgid "Source:"
-#~ msgstr "Allikas:"
-
-#~ msgid "See full license terms"
-#~ msgstr "Vaata täielikku litsentsilepingut"
-
-#~ msgid "Read the user guide"
-#~ msgstr "Kasutaja käsiraamatu lugemine"
-
-#~ msgid "Make a donation"
-#~ msgstr "Annetuse tegemine"
-
-#~ msgid "%1 (Default)"
-#~ msgstr "%1 (vaikimisi)"
-
-#, fuzzy
-#~| msgid "Extensions..."
-#~ msgid "Extensions…"
-#~ msgstr "Laiendid..."
-
-#, fuzzy
-#~| msgctxt "@info"
-#~| msgid ""
-#~| "Unable to load applications.<nl/>Please verify Internet connectivity."
-#~ msgid "Please verify Internet connectivity"
-#~ msgstr "Rakenduste laadimine nurjus.<nl/>Palun kontrolli internetiühendust."
-
-#~ msgid "All updates selected (%1)"
-#~ msgstr "Kõik uuendused valitud (%1)"
-
-#~ msgid "%1/%2 update selected (%3)"
-#~ msgid_plural "%1/%2 updates selected (%3)"
-#~ msgstr[0] "%1/%2 uuendust valitud (%3)"
-#~ msgstr[1] "%1/%2 uuendust valitud (%3)"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgctxt "Part of a string like this: '<app name> - <category>'"
-#~ msgid "- %1"
-#~ msgstr "- %1"
-
-#, fuzzy
-#~| msgctxt "@info"
-#~| msgid "The system requires a restart to apply updates"
-#~ msgctxt "@info"
-#~ msgid "The system must be restarted to fully apply the installed updates"
-#~ msgstr "Süsteem nõuab uuenduste rakendamiseks taaskäivitust"
-
-#~ msgid "%1, released on %2"
-#~ msgstr "%1, väljalaskeaeg %2"
-
-#, fuzzy
-#~| msgid "Loading..."
-#~ msgctxt "State being fetched"
-#~ msgid "Loading..."
-#~ msgstr "Laadimine..."
-
-#~ msgid "Write a Review..."
-#~ msgstr "Kirjuta arvustus ..."
-
-#~ msgid "Search..."
-#~ msgstr "Otsi..."
-
-#~ msgctxt "@info"
-#~ msgid "It is unknown when the last check for updates was"
-#~ msgstr "Pole teada, millal viimati uuenduste olemasolu kontrolliti"
-
-#~ msgid "No application back-ends found, please report to your distribution."
-#~ msgstr ""
-#~ "Ühtegi rakenduse taustaprogrammi ei leitud, palun anna sellest teada oma "
-#~ "distributsioonile."
-
-#~ msgid "Sorry..."
-#~ msgstr "Andestust ..."
-
-#~ msgid "Useful?"
-#~ msgstr "Kas see on kasulik?"
-
-#~ msgid "Update to version %1"
-#~ msgstr "Uuendamine versioonile %1"
-
-#~ msgctxt "Do not translate or alter \\x9C"
-#~ msgid "%1 → %2%1 → %2%2"
-#~ msgstr "%1 → %2%1 → %2%2"
-
-#~ msgid "Delete the origin"
-#~ msgstr "Algupära kustutamine"
-
-#~ msgid "Write a review!"
-#~ msgstr "Kirjuta arvustus!"
-
-#~ msgid "Be the first to write a review!"
-#~ msgstr "Ole esimene arvustuse kirjutaja!"
-
-#~ msgid "Install and be the first to write a review!"
-#~ msgstr "Paigalda ja ole esimene, kes selle kohta arvustuse kirjutab!"
-
-#~ msgid "Jonathan Thomas"
-#~ msgstr "Jonathan Thomas"
-
-#~ msgid "Discard"
-#~ msgstr "Unusta"
-
-#~ msgid "Hide"
-#~ msgstr "Peida"
-
-#~ msgid "Homepage:"
-#~ msgstr "Kodulehekülg:"
-
-#~ msgid "User Guide:"
-#~ msgstr "Kasutusjuhised:"
-
-#~ msgid "Failed to remove the source '%1'"
-#~ msgstr "Allia '%1' eemaldamine nurjus"
-
-#~ msgid "Fetching Updates..."
-#~ msgstr "Uuenduste tõmbamine ..."
-
-#~ msgctxt "@info"
-#~ msgid "Fetching Updates..."
-#~ msgstr "Uuenduste tõmbamine ..."
-
-#~ msgctxt "@info"
-#~ msgid "Up to Date"
-#~ msgstr "Värske"
-
-#~ msgid "<em>Tell us about this review!</em>"
-#~ msgstr "<em>Hinda seda arvustust!</em>"
-
-#~ msgid "<em>%1 out of %2 people found this review useful</em>"
-#~ msgstr "<em>%2 inimesest %1 pidas(id) seda arvustust kasulikuks</em>"
-
-#~ msgid ""
-#~ "<em>Useful? <a href='true'><b>Yes</b></a>/<a href='false'>No</a></em>"
-#~ msgstr ""
-#~ "<em>Kas see oli kasulik? <a href='true'><b>Jah</b></a>/<a "
-#~ "href='false'>Ei</a></em>"
-
-#~ msgid ""
-#~ "<em>Useful? <a href='true'>Yes</a>/<a href='false'><b>No</b></a></em>"
-#~ msgstr ""
-#~ "<em>Kas see oli kasulik? <a href='true'>Jah</a>/<a href='false'><b>Ei</"
-#~ "b></a></em>"
-
-#~ msgid "<em>Useful? <a href='true'>Yes</a>/<a href='false'>No</a></em>"
-#~ msgstr ""
-#~ "<em>Kas see oli kasulik? <a href='true'>Jah</a>/<a href='false'>Ei</a></"
-#~ "em>"
-
-#~ msgctxt "@info"
-#~ msgid "Submission name:<nl/>%1"
-#~ msgstr "Nimi:<nl/>%1"
-
-#~ msgid "Review:"
-#~ msgstr "Arvustus:"
-
-#~ msgid "Review..."
-#~ msgstr "Arvustus ..."
-
-#, fuzzy
-#~| msgctxt "@info"
-#~| msgid "Should check for updates"
-#~ msgid "Checking for updates..."
-#~ msgstr "Tuleks kontrollida uuendusi"
-
-#~ msgid "No Updates"
-#~ msgstr "Uuendusi pole"
-
-#, fuzzy
-#~| msgctxt "@info"
-#~| msgid "Updating..."
-#~ msgctxt "@info"
-#~ msgid "Fetching..."
-#~ msgstr "Uuendamine..."
-
-#, fuzzy
-#~| msgctxt "@info"
-#~| msgid "Should check for updates"
-#~ msgctxt "@info"
-#~ msgid "Checking for updates..."
-#~ msgstr "Tuleks kontrollida uuendusi"
-
-#~ msgctxt "@info"
-#~ msgid "Updating..."
-#~ msgstr "Uuendamine..."
-
-#~ msgctxt "@info"
-#~ msgid "The system is up to date"
-#~ msgstr "Süsteem on täiesti värske"
-
-#~ msgctxt "@info"
-#~ msgid "No updates"
-#~ msgstr "Uuendusi pole"
-
-#~ msgid "updates not selected"
-#~ msgstr "uuendust valimata"
-
-#, fuzzy
-#~| msgid "Help..."
-#~ msgid "Help"
-#~ msgstr "Abi..."
-
-#, fuzzy
-#~| msgctxt "@info"
-#~| msgid "Should check for updates"
-#~ msgctxt "@info"
-#~ msgid "Looking for updates"
-#~ msgstr "Tuleks kontrollida uuendusi"
-
-#~ msgid "Summary:"
-#~ msgstr "Kokkuvõte:"
-
-#~ msgid "Back"
-#~ msgstr "Tagasi"
-
-#~ msgid "Launch"
-#~ msgstr "Käivita"
-
-#~ msgid "Accept"
-#~ msgstr "Nõus"
-
-#~ msgid "Browse the origin's resources"
-#~ msgstr "Algupära ressursside sirvimine"
-
-#~ msgid "Description"
-#~ msgstr "Kirjeldus"
-
-#, fuzzy
-#~| msgid "An application explorer"
-#~ msgid "Application Sources"
-#~ msgstr "Avastusretk rakenduste seas"
-
-#~ msgid "Open"
-#~ msgstr "Ava"
-
-#, fuzzy
-#~| msgid "Description"
-#~ msgid "Close Description"
-#~ msgstr "Kirjeldus"
-
-#~ msgid "Got it"
-#~ msgstr "Selge"
-
-#, fuzzy
-#~| msgid "%1 (%2)"
-#~ msgid "Origin: %1 (%2)"
-#~ msgstr "%1 (%2)"
-
-#~ msgid "Malformed url '%1'"
-#~ msgstr "Vigane URL \"%1\""
-
-#~ msgid "Unrecognized url: %1"
-#~ msgstr "Tundmatu URL: %1"
-
-#~ msgctxt "@info"
-#~ msgid "Loading..."
-#~ msgstr "Laadimine..."
-
-#~ msgid ""
-#~ "Discover\n"
-#~ "all the possibilities!"
-#~ msgstr ""
-#~ "Avasta\n"
-#~ "kõik võimalused!"
-
-#~ msgid ""
-#~ "<p style='margin: 0 0 0 0'><b>%1</b> by %2</p><p style='margin: 0 0 0 0'>"
-#~ "%3</p><p style='margin: 0 0 0 0'>%4</p>"
-#~ msgstr ""
-#~ "<p style='margin: 0 0 0 0'><b>%1</b>, autor: %2</p><p style='margin: 0 0 "
-#~ "0 0'>%3</p><p style='margin: 0 0 0 0'>%4</p>"
-
-#~ msgid "Popularity"
-#~ msgstr "Menu"
-
-#~ msgid "Buzz"
-#~ msgstr "Kõmu"
-
-#~ msgid "Origin"
-#~ msgstr "Algupära"
-
-#~ msgid "List"
-#~ msgstr "Nimekiri"
-
-#~ msgid "Grid"
-#~ msgstr "Võrgustik"
-
-#~ msgid "All"
-#~ msgstr "Kõik"
-
-#~ msgid "%1 item"
-#~ msgid_plural "%1 items"
-#~ msgstr[0] "%1 element"
-#~ msgstr[1] "%1 elementi"
-
-#~ msgid "items installed"
-#~ msgstr "elementi paigaldatud"
-
-#~ msgid "%1 job pending..."
-#~ msgid_plural "%1 jobs pending..."
-#~ msgstr[0] "%1 töö ootel ..."
-#~ msgstr[1] "%1 tööd ootel ..."
-
-#~ msgid "Resources requested but unable to find: %1"
-#~ msgstr "Nõuti ressursse, aga neid ei leitud: %1"
-
-#~ msgid "System Update"
-#~ msgstr "Süsteemi uuendamine"
-
-#~ msgctxt "@info"
-#~ msgid "Last checked %1 ago."
-#~ msgstr "Viimati kontrolliti %1 tagasi."
-
-#~ msgctxt "@info"
-#~ msgid "The last check for updates was over a week ago."
-#~ msgstr "Vimati kontrolliti uuenduste olemasolu üle nädala tagasi."
-
-#~ msgctxt "@info"
-#~ msgid "Please click <em>Check for Updates</em> to check."
-#~ msgstr "Kontrollimiseks klõpsa palun <em>Otsi uuendusi</em>."
-
-#~ msgid "Advanced..."
-#~ msgstr "Muu..."
-
-#~ msgid ""
-#~ "Found some errors while setting up the GUI, the application can't proceed."
-#~ msgstr ""
-#~ "Graafilise kasutajaliidese loomisel tekkisid mõned tõrked, rakendust ei "
-#~ "saa kasutada."
-
-#~ msgid "Initialization error"
-#~ msgstr "Initsialiseerimisviga"
-
-#~ msgid "Muon Discover"
-#~ msgstr "Muoni avastusretk"
-
-#~ msgid ""
-#~ "Welcome to\n"
-#~ "Muon Discover!"
-#~ msgstr ""
-#~ "Tere tulemast\n"
-#~ "Muoni avastusretkele!"
-
-#~ msgid "Configure and learn about Muon Discover"
-#~ msgstr "Muoni avastusretke seadistamine ja tundmaõppimine"
-
-#~ msgid "points: %1"
-#~ msgstr "punktid: %1"
-
-#~ msgid "Installed (%1 update)"
-#~ msgid_plural "Installed (%1 updates)"
-#~ msgstr[0] "Paigaldatud (%1 uuendus)"
-#~ msgstr[1] "Paigaldatud (%1 uuendust)"
-
-#~ msgid "Menu"
-#~ msgstr "Menüü"
-
-#, fuzzy
-#~| msgid "Origin"
-#~ msgid "Origin enabled"
-#~ msgstr "Algupära"
-
-#~ msgid "©2010-2012 Jonathan Thomas"
-#~ msgstr "©2010-2012: Jonathan Thomas"
-
-#~ msgid ""
-#~ "List all the backends we'll want to have loaded, separated by coma ','."
-#~ msgstr ""
-#~ "Kõigi saadaolevate taustaprogrammide loetlemine, mida me soovime laadida, "
-#~ "eraldatuna komadega."
-
-#~ msgid ""
-#~ "<sourceline> - The apt repository source line to add. This is one of:\n"
-#~ msgstr ""
-#~ "<sourceline> - lisatav apt-hoidla lähterida. See on üks järgmistest:\n"
-
-#~ msgid "%1 (Binary)"
-#~ msgstr "%1 (binaar)"
-
-#~ msgid "%1. %2"
-#~ msgstr "%1. %2"
-
-#~ msgid "Popularity Contest"
-#~ msgstr "Menukaimad"
-
-#~ msgid "<qt>%1<br/><em>%2</em></qt>"
-#~ msgstr "<qt>%1<br/><em>%2</em></qt>"
-
-#~ msgid "Apply"
-#~ msgstr "Rakenda"
-
-#~ msgid "Overview"
-#~ msgstr "Ülevaade"
-
-#~ msgid "<b>Reviews:</b>"
-#~ msgstr "<b>Arvustused:</b>"
-
-#~ msgid "<b>%1</b> by %2<p/>%3<br/>%4"
-#~ msgstr "<b>%1</b> hindajalt %2<p/>%3<br/>%4"
-
-#~ msgid "Adding Origins..."
-#~ msgstr "Algupära lisamine..."
-
-#~ msgid "Removing Origins..."
-#~ msgstr "Algupära eemaldamine..."
-
-#~ msgid "Ok"
-#~ msgstr "OK"
-
-#~ msgid "%1. <em>%2</em>"
-#~ msgstr "%1. <em>%2</em>"
-
-#~ msgid "Login"
-#~ msgstr "Logi sisse"
-
-#~ msgid "Register"
-#~ msgstr "Registreeri"
-
-#~ msgid "Logout"
-#~ msgstr "Logi välja"
-
-#~ msgid "Signed in as <em>%1</em>"
-#~ msgstr "Sisse logitud kasutajana <em>%1</em>"
-
-#~ msgid "Sign in is required"
-#~ msgstr "Vajalik on sisselogimine"
-
-#~ msgid "Upgrade"
-#~ msgstr "Uuenda"

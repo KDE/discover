@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-17 00:44+0000\n"
+"POT-Creation-Date: 2025-09-19 00:43+0000\n"
 "PO-Revision-Date: 2014-07-06 22:08+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -2896,7 +2896,7 @@ msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr ""
 
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:111
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:112
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox Filters updates in the history view"
 #| msgid "Updates"
@@ -2909,19 +2909,19 @@ msgctxt "@label Download rate"
 msgid "%1/s"
 msgstr ""
 
-#: libdiscover/Transaction/TransactionModel.cpp:76
+#: libdiscover/Transaction/TransactionModel.cpp:77
 #, kde-format
 msgctxt "@info:status"
 msgid "Starting"
 msgstr ""
 
-#: libdiscover/Transaction/TransactionModel.cpp:78
+#: libdiscover/Transaction/TransactionModel.cpp:79
 #, kde-format
 msgctxt "@info:status"
 msgid "Waiting"
 msgstr ""
 
-#: libdiscover/Transaction/TransactionModel.cpp:80
+#: libdiscover/Transaction/TransactionModel.cpp:81
 #, fuzzy, kde-format
 #| msgctxt "@label Label preceding the package's download size"
 #| msgid "Download Size:"
@@ -2929,7 +2929,7 @@ msgctxt "@info:status"
 msgid "Downloading"
 msgstr "Daalladengrött:"
 
-#: libdiscover/Transaction/TransactionModel.cpp:84
+#: libdiscover/Transaction/TransactionModel.cpp:85
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
 #| msgid "Install"
@@ -2937,7 +2937,7 @@ msgctxt "@info:status"
 msgid "Installing"
 msgstr "Installeren"
 
-#: libdiscover/Transaction/TransactionModel.cpp:86
+#: libdiscover/Transaction/TransactionModel.cpp:87
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
 #| msgid "Remove"
@@ -2945,13 +2945,13 @@ msgctxt "@info:status"
 msgid "Removing"
 msgstr "Wegmaken"
 
-#: libdiscover/Transaction/TransactionModel.cpp:88
+#: libdiscover/Transaction/TransactionModel.cpp:89
 #, kde-format
 msgctxt "@info:status"
 msgid "Changing Addons"
 msgstr ""
 
-#: libdiscover/Transaction/TransactionModel.cpp:92
+#: libdiscover/Transaction/TransactionModel.cpp:93
 #, fuzzy, kde-format
 #| msgctxt "@info:status Progress text when done"
 #| msgid "Done"
@@ -2959,13 +2959,13 @@ msgctxt "@info:status"
 msgid "Done"
 msgstr "Afslaten"
 
-#: libdiscover/Transaction/TransactionModel.cpp:94
+#: libdiscover/Transaction/TransactionModel.cpp:95
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
 msgstr ""
 
-#: libdiscover/Transaction/TransactionModel.cpp:96
+#: libdiscover/Transaction/TransactionModel.cpp:97
 #, fuzzy, kde-format
 #| msgctxt "@action:button Cancels the download"
 #| msgid "Cancel"
