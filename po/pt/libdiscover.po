@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-17 00:44+0000\n"
+"POT-Creation-Date: 2025-09-19 02:38+0000\n"
 "PO-Revision-Date: 2023-01-09 18:43+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -2715,7 +2715,7 @@ msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr "%1+"
 
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:111
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:112
 #, kde-format
 msgid "Updates"
 msgstr "Actualizações"
