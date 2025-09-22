@@ -5,21 +5,21 @@
 # Jeff Huang <s8321414@gmail.com>, 2016, 2017, 2020.
 # pan93412 <pan93412@gmail.com>, 2018, 2019, 2020.
 # Chaoting Liu <brli@chakralinux.org>, 2021.
-# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
+# SPDX-FileCopyrightText: 2022, 2025 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2022-07-02 20:23+0900\n"
+"PO-Revision-Date: 2025-09-22 06:23+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
-"Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.04.2\n"
+"X-Generator: Lokalize 25.07.70\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -73,7 +73,7 @@ msgstr "找不到分類「%1」"
 #: discover/DiscoverObject.cpp:284
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "試圖開啟不存在的檔案 '%1'"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -297,7 +297,7 @@ msgstr "未知的作者"
 #: discover/qml/ApplicationPage.qml:220
 #, kde-format
 msgid "Could not access the screenshots"
-msgstr ""
+msgstr "無法存取螢幕截圖"
 
 #: discover/qml/ApplicationPage.qml:279
 #, kde-format
@@ -339,23 +339,20 @@ msgid_plural "See more…"
 msgstr[0] "更多…"
 
 #: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:907
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgid "Content Rating"
-msgstr "輸入一個評分"
+msgstr "內容評級"
 
 #: discover/qml/ApplicationPage.qml:445
 #, kde-format
 msgid "Age: %1+"
-msgstr ""
+msgstr "年齡層：%1+"
 
 #: discover/qml/ApplicationPage.qml:469
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr "更多…"
+msgstr "檢視詳細資料…"
 
 #: discover/qml/ApplicationPage.qml:586
 #, kde-format
@@ -391,19 +388,18 @@ msgstr "安裝或移除額外功能"
 #, kde-format
 msgctxt "Exports the application's URL to an external service"
 msgid "Share"
-msgstr ""
+msgstr "分享"
 
 #: discover/qml/ApplicationPage.qml:641
-#, fuzzy, kde-format
-#| msgid "Unable to load applications"
+#, kde-format
 msgid "Send a link for this application"
-msgstr "無法載入應用程式"
+msgstr "傳送這個應用程式的連結"
 
 #: discover/qml/ApplicationPage.qml:657
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "來看 %1 這個應用程式吧！"
 
 #: discover/qml/ApplicationPage.qml:677
 #, kde-format
@@ -411,10 +407,9 @@ msgid "What's New"
 msgstr "發掘新鮮事"
 
 #: discover/qml/ApplicationPage.qml:708
-#, fuzzy, kde-format
-#| msgid "Reviews for %1"
+#, kde-format
 msgid "Loading reviews for %1"
-msgstr "%1 的評論"
+msgstr "正在載入 %1 的評論"
 
 #: discover/qml/ApplicationPage.qml:714
 #, kde-format
@@ -463,15 +458,14 @@ msgid "Log an issue you found to help get it fixed"
 msgstr "記錄您找到的問題來幫助它被修復"
 
 #: discover/qml/ApplicationPage.qml:850
-#, fuzzy, kde-format
-#| msgid "Contribute…"
+#, kde-format
 msgid "Contribute"
-msgstr "貢獻…"
+msgstr "貢獻"
 
 #: discover/qml/ApplicationPage.qml:851
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
-msgstr ""
+msgstr "透過寫程式、進行設計、測試或是翻譯來幫助開發者們"
 
 #: discover/qml/ApplicationPage.qml:876
 #, kde-format
@@ -529,11 +523,10 @@ msgstr ""
 "程式。<nl/><nl/>您可以至 <link url='%2'>%2</link> 了解更多。"
 
 #: discover/qml/ApplicationsListPage.qml:52
-#, fuzzy, kde-format
-#| msgid "Search: %1 - %2 items"
+#, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "搜尋：%1 - %2 項"
+msgstr[0] "搜尋：%2 - %3 項"
 
 #: discover/qml/ApplicationsListPage.qml:54
 #, kde-format
@@ -541,18 +534,16 @@ msgid "Search: %1"
 msgstr "搜尋：%1"
 
 #: discover/qml/ApplicationsListPage.qml:58
-#, fuzzy, kde-format
-#| msgid "%1 - %2 items"
+#, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%1 - %2 項"
+msgstr[0] "%2 - %1 項"
 
 #: discover/qml/ApplicationsListPage.qml:64
-#, fuzzy, kde-format
-#| msgid "Search - %1 items"
+#, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "搜尋：%1 項"
+msgstr[0] "搜尋 - %1 項"
 
 #: discover/qml/ApplicationsListPage.qml:66
 #: discover/qml/ApplicationsListPage.qml:224
@@ -589,12 +580,10 @@ msgstr "找不到東西"
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
-msgstr ""
+msgstr "在所有分類中搜尋"
 
 #: discover/qml/ApplicationsListPage.qml:188
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "Search the web for \"%1\""
+#, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "在網路上搜尋 %1"
@@ -608,37 +597,28 @@ msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:203
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
 "category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
-msgstr "可用的來源中找不到 %1"
+msgstr "「%2」分類裡找不到 %1"
 
 #: discover/qml/ApplicationsListPage.qml:205
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid "\"%1\" was not found in the available sources"
+#, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "可用的來源中找不到 %1"
 
 #: discover/qml/ApplicationsListPage.qml:206
-#, fuzzy, kde-format
-#| msgctxt "%1 is the name of an application"
-#| msgid ""
-#| "\"%1\" may be available on the web. Software acquired from the web has "
-#| "not been reviewed by your distributor for functionality or stability. Use "
-#| "with caution."
+#, kde-format
 msgctxt "@info:placeholder%1 is the name of an application"
 msgid ""
 "\"%1\" may be available on the web. Software acquired from the web has not "
 "been reviewed by your distributor for functionality or stability. Use with "
 "caution."
 msgstr ""
-"網路上其他來源可能有提供 %1，網路上下載的軟體未經過發行者查核其功能和穩定性，"
+"網路上其他來源可能有提供 %1。網路上下載的軟體未經過發行者查核其功能和穩定性，"
 "請小心使用。"
 
 #: discover/qml/ApplicationsListPage.qml:239
@@ -655,33 +635,31 @@ msgstr "無法載入應用程式"
 #, kde-format
 msgctxt "@title:group"
 msgid "Most Popular"
-msgstr ""
+msgstr "最受歡迎"
 
 #: discover/qml/BrowsingPage.qml:119
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor's Choice"
-msgstr ""
+msgstr "編輯精選"
 
 #: discover/qml/BrowsingPage.qml:133
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr ""
+msgstr "評價最高的遊戲"
 
 #: discover/qml/BrowsingPage.qml:152 discover/qml/BrowsingPage.qml:181
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr "更多…"
+msgstr "檢視更多"
 
 #: discover/qml/BrowsingPage.qml:162
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr ""
+msgstr "評價最高的開發者工具"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
@@ -751,23 +729,21 @@ msgid "Report this issue"
 msgstr "回報此問題"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgid "Error %1 of %2"
-msgstr "投票：%2 中之 %1"
+msgstr "%2 個錯誤中的第 %1 個"
 
 #: discover/qml/DiscoverWindow.qml:370
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
-msgstr ""
+msgstr "顯示上一個"
 
 #: discover/qml/DiscoverWindow.qml:383
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
-msgstr "顯示內容"
+msgstr "顯示下一個"
 
 #: discover/qml/DiscoverWindow.qml:399 discover/qml/UpdatesPage.qml:98
 #, kde-format
@@ -985,7 +961,7 @@ msgstr "太長了！"
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr ""
+msgstr "輸入名稱"
 
 #: discover/qml/ReviewsPage.qml:42
 #, kde-format
@@ -1117,7 +1093,7 @@ msgstr "全部更新"
 #: discover/qml/UpdatesPage.qml:175
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "忽略"
 
 #: discover/qml/UpdatesPage.qml:221
 #, kde-format
