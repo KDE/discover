@@ -25,6 +25,7 @@
 #include <QProcess>
 #include <QStandardPaths>
 #include <QUrlQuery>
+#include <appstream/AppStreamIntegration.h>
 #include <appstream/AppStreamUtils.h>
 
 using namespace Qt::StringLiterals;
@@ -80,7 +81,7 @@ static QIcon componentIcon(const AppStream::Component &comp)
             ret.addFile(icon.url().toLocalFile(), icon.size());
             break;
         case AppStream::Icon::KindStock: {
-            if (AppStreamUtils::kIconLoaderHasIcon(icon.name())) {
+            if (AppStreamIntegration::global()->kIconLoaderHasIcon(icon.name()) == AppStreamIntegration::IconState::Present) {
                 return QIcon::fromTheme(icon.name());
             }
             break;

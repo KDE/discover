@@ -14,7 +14,6 @@
 #include <AppStreamQt/spdx.h>
 #include <AppStreamQt/version.h>
 #include <Category/Category.h>
-#include <KIconLoader>
 #include <KLocalizedString>
 #include <QCoroTimer>
 #include <QDebug>
@@ -225,21 +224,4 @@ AppStreamUtils::componentsByCategoriesTask(AppStream::ConcurrentPool *pool, cons
         kRemoveDuplicates(ret, kind);
         return ret;
     });
-}
-
-DISCOVERCOMMON_EXPORT bool AppStreamUtils::kIconLoaderHasIcon(const QString &name)
-{
-    static auto icons = [] {
-#if (KICONTHEMES_VERSION >= QT_VERSION_CHECK(6, 11, 0))
-        auto icons = KIconLoader::global()->queryIcons();
-#else
-        const auto groups = QMetaEnum::fromType<KIconLoader::Group>();
-        QStringList icons;
-        for (int i = 0; i < groups.keyCount(); ++i) {
-            icons.append(KIconLoader::global()->queryIcons(groups.value(i)));
-        }
-#endif
-        return QSet<QString>(icons.cbegin(), icons.cend());
-    }();
-    return icons.contains(name);
 }

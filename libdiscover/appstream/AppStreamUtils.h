@@ -41,6 +41,4 @@ DISCOVERCOMMON_EXPORT uint contentRatingMinimumAge(const AppStream::Component &a
 
 DISCOVERCOMMON_EXPORT QFuture<AppStream::ComponentBox>
 componentsByCategoriesTask(AppStream::ConcurrentPool *pool, const std::shared_ptr<Category> &cat, AppStream::Bundle::Kind kind);
-
-DISCOVERCOMMON_EXPORT bool kIconLoaderHasIcon(const QString &name);
 }

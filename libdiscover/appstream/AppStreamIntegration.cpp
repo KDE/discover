@@ -10,8 +10,10 @@
 #include <AppStreamQt/utils.h>
 #include <AppStreamQt/version.h>
 #include <KConfigGroup>
+#include <KIconLoader>
 #include <KSharedConfig>
 #include <QDebug>
+#include <QtConcurrentRun>
 
 using namespace Qt::StringLiterals;
 
@@ -119,6 +121,24 @@ std::optional<AppStream::Release> AppStreamIntegration::getDistroUpgrade(AppStre
     }
 
     return nextRelease;
+}
+
+AppStreamIntegration::IconState AppStreamIntegration::kIconLoaderHasIcon(const QString &name)
+{
+    if (!m_iconFetchStarted) {
+        m_iconFetchStarted = true;
+        m_icons = QtConcurrent::run([]() -> QSet<QString> {
+            const auto icons = KIconLoader::global()->queryIcons();
+            return QSet<QString>(icons.cbegin(), icons.cend());
+        });
+        m_icons.then(this, [this](auto /*x*/) {
+            Q_EMIT iconsChanged();
+        });
+    }
+    if (m_icons.isFinished()) {
+        return m_icons.result().contains(name) ? IconState::Present : IconState::NotPresent;
+    }
+    return IconState::Pending;
 }
 
 #include "moc_AppStreamIntegration.cpp"
