@@ -87,9 +87,15 @@ public:
     {
         m_jobs << job;
         connect(job, &FlatpakRefreshAppstreamMetadataJob::progressChanged, this, &ProgressCollector::progressChanged);
-        connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this, job] {
-            m_jobs.removeAll(job);
-            Q_EMIT progressChanged();
+        connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this] {
+            if (std::ranges::all_of(m_jobs, [](FlatpakRefreshAppstreamMetadataJob *j) {
+                    return j->isFinished();
+                })) {
+                m_backend->loadLocalUpdates();
+                qDeleteAll(m_jobs);
+                m_jobs.clear();
+                Q_EMIT progressChanged();
+            }
         });
         Q_EMIT progressChanged();
     }
@@ -1102,16 +1108,6 @@ void FlatpakBackend::metadataRefreshed(FlatpakRemote *remote)
 {
     const bool removed = m_refreshAppstreamMetadataJobs.remove(remote);
     Q_ASSERT(removed);
-    if (m_refreshAppstreamMetadataJobs.isEmpty()) {
-        for (auto installation : std::as_const(m_installations)) {
-            // Load local updates, comparing current and latest commit
-            loadLocalUpdates(installation);
-
-            if (g_cancellable_is_cancelled(m_cancellable)) {
-                break;
-            }
-        }
-    }
 }
 
 void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
@@ -1198,6 +1194,17 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
     return source;
 }
 
+void FlatpakBackend::loadLocalUpdates()
+{
+    acquireFetching(true);
+    for (auto installation : std::as_const(m_installations)) {
+        if (g_cancellable_is_cancelled(m_cancellable)) {
+            break;
+        }
+        loadLocalUpdates(installation);
+    }
+    acquireFetching(false);
+}
 void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
 {
     g_autoptr(GError) localError = nullptr;
@@ -1207,7 +1214,7 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
         return;
     }
 
-    for (uint i = 0; i < refs->len; i++) {
+    for (uint i = 0; i < refs->len && !g_cancellable_is_cancelled(m_cancellable); i++) {
         FlatpakInstalledRef *ref = FLATPAK_INSTALLED_REF(g_ptr_array_index(refs, i));
 
         const gchar *latestCommit = flatpak_installed_ref_get_latest_commit(ref);

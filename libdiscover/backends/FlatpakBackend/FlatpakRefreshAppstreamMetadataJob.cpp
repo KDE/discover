@@ -14,7 +14,6 @@ FlatpakRefreshAppstreamMetadataJob::FlatpakRefreshAppstreamMetadataJob(FlatpakIn
     , m_installation(g_object_ref(installation))
     , m_remote(g_object_ref(remote))
 {
-    connect(this, &FlatpakRefreshAppstreamMetadataJob::finished, this, &QObject::deleteLater);
 }
 
 FlatpakRefreshAppstreamMetadataJob::~FlatpakRefreshAppstreamMetadataJob()
