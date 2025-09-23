@@ -72,6 +72,8 @@ public:
     }
     void startUnattendedUpdates();
 
+    QDateTime lastNotificationTime() const;
+
 public Q_SLOTS:
     void recheckSystemUpdateNeededAndNotifyApp();
     void recheckSystemUpdateNeeded();
@@ -95,7 +97,7 @@ private:
     void refreshUnattended();
 
     bool checkTriggerTimes(const QDateTime &lastTriggerTime) const;
-    bool notifyAboutUpdates() const;
+    bool notifyAboutUpdates();
     bool proceedUnattended() const;
 
     QList<BackendNotifierModule *> m_backends;
@@ -109,4 +111,5 @@ private:
     KConfigWatcher::Ptr m_settingsWatcher;
     QDateTime m_lastUpdate;
     std::unique_ptr<UpdatesSettings> m_settings;
+    KConfig m_stateConfig;
 };
