@@ -1128,5 +1128,4 @@ QString FlatpakResource::verifiedMessage() const
     return {};
 }
 
-#include "FlatpakResource.moc"
 #include "moc_FlatpakResource.cpp"

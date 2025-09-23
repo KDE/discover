@@ -115,6 +115,7 @@ private:
 
     void loadAppsFromAppstreamData();
     bool loadAppsFromAppstreamData(FlatpakInstallation *flatpakInstallation);
+    void loadLocalUpdates();
     void loadLocalUpdates(FlatpakInstallation *flatpakInstallation);
     bool setupFlatpakInstallations(GError **error);
     void updateAppInstalledMetadata(FlatpakInstalledRef *installedRef, FlatpakResource *resource);
