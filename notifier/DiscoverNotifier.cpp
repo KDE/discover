@@ -30,6 +30,7 @@
 #include "debug.h"
 
 using namespace std::chrono_literals;
+using namespace Qt::Literals;
 
 namespace
 {
@@ -41,9 +42,15 @@ bool isOnline()
 
 DiscoverNotifier::DiscoverNotifier(const std::chrono::seconds &checkDelay, QObject *parent)
     : QObject(parent)
+    , m_stateConfig(u"discovernotifierstaterc"_s, KConfig::SimpleConfig, QStandardPaths::GenericStateLocation)
 {
     m_settings = std::make_unique<UpdatesSettings>();
     m_settingsWatcher = KConfigWatcher::create(m_settings->sharedConfig());
+
+    KConfigGroup stateGroup = m_stateConfig.group(u"Global"_s);
+    settings()->config()->group(u"Global"_s).moveValuesTo({"LastNotificationTime"}, stateGroup);
+    settings()->save();
+
     QNetworkInformation::loadBackendByFeatures(QNetworkInformation::Feature::Reachability | QNetworkInformation::Feature::TransportMedium);
     if (auto info = QNetworkInformation::instance()) {
         connect(info, &QNetworkInformation::reachabilityChanged, this, &DiscoverNotifier::stateChanged);
@@ -159,14 +166,19 @@ bool DiscoverNotifier::checkTriggerTimes(const QDateTime &lastTriggerTime) const
     return true;
 }
 
-bool DiscoverNotifier::notifyAboutUpdates() const
+QDateTime DiscoverNotifier::lastNotificationTime() const
 {
-    if (!checkTriggerTimes(m_settings->lastNotificationTime())) {
+    return m_stateConfig.group(u"Global"_s).readEntry("LastNotificationTime", QDateTime());
+}
+
+bool DiscoverNotifier::notifyAboutUpdates()
+{
+    if (!checkTriggerTimes(lastNotificationTime())) {
         return false;
     }
 
-    m_settings->setLastNotificationTime(QDateTime::currentDateTimeUtc());
-    m_settings->save();
+    m_stateConfig.group(u"Global"_s).writeEntry("LastNotificationTime", QDateTime::currentDateTimeUtc());
+    m_stateConfig.sync();
 
     if (QDBusConnection::sessionBus().interface()->isServiceRegistered(QStringLiteral("org.kde.discover"))) {
         qCDebug(NOTIFIER) << "Not notifying about updates, discover is running";
