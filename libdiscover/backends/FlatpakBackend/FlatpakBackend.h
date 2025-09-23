@@ -18,6 +18,7 @@
 
 #include <QCoroTask>
 
+#include "FlatpakRefreshAppstreamMetadataJob.h"
 #include "flatpak-helper.h"
 
 class FlatpakSourcesBackend;
@@ -108,7 +109,7 @@ private:
     {
         return m_installations.constFirst();
     }
-    QSharedPointer<FlatpakSource> integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote);
+    QSharedPointer<FlatpakSource> integrateRemote(GLibHolder<FlatpakInstallation> flatpakInstallation, GLibHolder<FlatpakRemote> remote);
     FlatpakResource *getRuntimeForApp(FlatpakResource *resource) const;
     FlatpakResource *resourceForComponent(const AppStream::Component &component, const QSharedPointer<FlatpakSource> &source) const;
     void checkRepositories(const QMap<QString, QStringList> &repositories);

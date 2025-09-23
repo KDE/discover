@@ -1158,17 +1158,17 @@ void FlatpakBackend::createPool(QSharedPointer<FlatpakSource> source)
     pool->loadAsync();
 }
 
-QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallation *flatpakInstallation, FlatpakRemote *remote)
+QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(GLibHolder<FlatpakInstallation> flatpakInstallation, GLibHolder<FlatpakRemote> remote)
 {
-    Q_ASSERT(m_refreshAppstreamMetadataJobs.contains(remote));
-    m_sources->addRemote(remote, flatpakInstallation);
+    Q_ASSERT(m_refreshAppstreamMetadataJobs.contains(remote.get()));
+    m_sources->addRemote(remote.get(), flatpakInstallation.get());
     const auto matchRemote = [this, flatpakInstallation, remote](const auto &sources) -> QSharedPointer<FlatpakSource> {
         for (auto source : sources) {
-            if (source->url() == copyAndFree(flatpak_remote_get_url(remote)) && source->installation() == flatpakInstallation
-                && source->name() == QString::fromUtf8(flatpak_remote_get_name(remote))) {
+            if (source->url() == copyAndFree(flatpak_remote_get_url(remote.get())) && source->installation() == flatpakInstallation.get()
+                && source->name() == QString::fromUtf8(flatpak_remote_get_name(remote.get()))) {
                 createPool(source);
-                if (source->remote() != remote) {
-                    m_refreshAppstreamMetadataJobs.remove(remote);
+                if (source->remote() != remote.get()) {
+                    m_refreshAppstreamMetadataJobs.remove(remote.get());
                 }
                 return source;
             }
@@ -1182,10 +1182,10 @@ QSharedPointer<FlatpakSource> FlatpakBackend::integrateRemote(FlatpakInstallatio
         return source;
     }
 
-    auto source = QSharedPointer<FlatpakSource>::create(this, flatpakInstallation, remote);
-    if (!source->isEnabled() || flatpak_remote_get_noenumerate(remote)) {
+    auto source = QSharedPointer<FlatpakSource>::create(this, flatpakInstallation.get(), remote.get());
+    if (!source->isEnabled() || flatpak_remote_get_noenumerate(remote.get())) {
         m_flatpakSources += source;
-        metadataRefreshed(remote);
+        metadataRefreshed(remote.get());
         return source;
     }
 
@@ -2158,7 +2158,7 @@ void FlatpakBackend::checkForRemoteUpdates(FlatpakInstallation *installation, Fl
     const bool needsIntegration = m_refreshAppstreamMetadataJobs.contains(remote);
     if (flatpak_remote_get_disabled(remote) || flatpak_remote_get_noenumerate(remote)) {
         if (needsIntegration) {
-            integrateRemote(installation, remote);
+            integrateRemote(GLibHolder<FlatpakInstallation>(installation), GLibHolder<FlatpakRemote>(remote));
         }
         return;
     }
