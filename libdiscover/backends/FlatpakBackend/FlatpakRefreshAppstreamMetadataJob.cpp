@@ -11,16 +11,14 @@
 FlatpakRefreshAppstreamMetadataJob::FlatpakRefreshAppstreamMetadataJob(FlatpakInstallation *installation, FlatpakRemote *remote)
     : QThread()
     , m_cancellable(g_cancellable_new())
-    , m_installation(g_object_ref(installation))
-    , m_remote(g_object_ref(remote))
+    , m_installation(installation)
+    , m_remote(remote)
 {
 }
 
 FlatpakRefreshAppstreamMetadataJob::~FlatpakRefreshAppstreamMetadataJob()
 {
     g_object_unref(m_cancellable);
-    g_object_unref(m_installation);
-    g_object_unref(m_remote);
 }
 
 void FlatpakRefreshAppstreamMetadataJob::cancel()
@@ -43,8 +41,8 @@ void FlatpakRefreshAppstreamMetadataJob::run()
     g_autoptr(GError) localError = nullptr;
 
     gboolean changed = false;
-    if (!flatpak_installation_update_appstream_full_sync(m_installation,
-                                                         flatpak_remote_get_name(m_remote),
+    if (!flatpak_installation_update_appstream_full_sync(m_installation.get(),
+                                                         flatpak_remote_get_name(m_remote.get()),
                                                          nullptr,
                                                          &FlatpakRefreshAppstreamMetadataJob::updateCallback,
                                                          this,
@@ -53,7 +51,7 @@ void FlatpakRefreshAppstreamMetadataJob::run()
                                                          &localError)) {
         const QString error = localError ? QString::fromUtf8(localError->message) : QStringLiteral("<no error>");
         qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG).nospace()
-            << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote) << ": " << error;
+            << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote.get()) << ": " << error;
     }
     Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote);
 }

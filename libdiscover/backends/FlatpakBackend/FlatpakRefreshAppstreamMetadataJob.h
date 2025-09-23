@@ -10,6 +10,41 @@
 #include "flatpak-helper.h"
 #include <QThread>
 
+template<typename T>
+class GLibHolder
+{
+public:
+    GLibHolder(T *object)
+        : m_object(object)
+    {
+        g_object_ref(object);
+    }
+
+    ~GLibHolder()
+    {
+        g_object_unref(m_object);
+    }
+
+    GLibHolder(const GLibHolder &other)
+        : GLibHolder(other.m_object)
+    {
+    }
+
+    GLibHolder(GLibHolder &&other)
+        : m_object(other.m_object)
+    {
+        other.m_object = nullptr;
+    }
+
+    T *get() const
+    {
+        return m_object;
+    }
+
+private:
+    T *m_object = nullptr;
+};
+
 class FlatpakRefreshAppstreamMetadataJob : public QThread
 {
     Q_OBJECT
@@ -31,14 +66,15 @@ public:
 
 Q_SIGNALS:
     void progressChanged();
-    void jobRefreshAppstreamMetadataFinished(FlatpakInstallation *installation, FlatpakRemote *remote);
+    void jobRefreshAppstreamMetadataFinished(GLibHolder<FlatpakInstallation> installation, GLibHolder<FlatpakRemote> remote);
 
 private:
     static void updateCallback(const char *status, guint progress, gboolean estimating, gpointer user_data);
 
     GCancellable *m_cancellable;
-    FlatpakInstallation *m_installation;
-    FlatpakRemote *m_remote;
+    GLibHolder<FlatpakInstallation> m_installation;
+    GLibHolder<FlatpakRemote> m_remote;
     QAtomicInt m_progress = 0;
     QAtomicInt m_estimating = true;
+    QAtomicInt m_hasChanged = false;
 };
