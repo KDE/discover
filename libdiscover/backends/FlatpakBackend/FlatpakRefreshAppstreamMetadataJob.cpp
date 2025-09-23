@@ -53,7 +53,8 @@ void FlatpakRefreshAppstreamMetadataJob::run()
         qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG).nospace()
             << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote.get()) << ": " << error;
     }
-    Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote);
+    m_hasChanged = changed;
+    Q_EMIT jobRefreshAppstreamMetadataFinished(m_installation, m_remote, changed);
 }
 
 #include "moc_FlatpakRefreshAppstreamMetadataJob.cpp"

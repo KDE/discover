@@ -63,10 +63,14 @@ public:
     {
         return m_progress;
     }
+    bool hasChanged() const
+    {
+        return m_hasChanged != 0;
+    }
 
 Q_SIGNALS:
     void progressChanged();
-    void jobRefreshAppstreamMetadataFinished(GLibHolder<FlatpakInstallation> installation, GLibHolder<FlatpakRemote> remote);
+    void jobRefreshAppstreamMetadataFinished(GLibHolder<FlatpakInstallation> installation, GLibHolder<FlatpakRemote> remote, bool changed);
 
 private:
     static void updateCallback(const char *status, guint progress, gboolean estimating, gpointer user_data);

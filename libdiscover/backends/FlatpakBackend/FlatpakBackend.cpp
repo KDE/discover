@@ -87,11 +87,15 @@ public:
     {
         m_jobs << job;
         connect(job, &FlatpakRefreshAppstreamMetadataJob::progressChanged, this, &ProgressCollector::progressChanged);
-        connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this] {
+        connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this]() {
             if (std::ranges::all_of(m_jobs, [](FlatpakRefreshAppstreamMetadataJob *j) {
                     return j->isFinished();
                 })) {
-                m_backend->loadLocalUpdates();
+                if (std::ranges::any_of(m_jobs, [](FlatpakRefreshAppstreamMetadataJob *j) -> bool {
+                        return j->hasChanged();
+                    })) {
+                    m_backend->loadLocalUpdates();
+                }
                 qDeleteAll(m_jobs);
                 m_jobs.clear();
                 Q_EMIT progressChanged();
