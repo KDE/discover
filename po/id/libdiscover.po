@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-19 00:43+0000\n"
+"POT-Creation-Date: 2025-09-23 00:44+0000\n"
 "PO-Revision-Date: 2024-11-12 06:08+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -2624,7 +2624,7 @@ msgstr "SteamOS: Tidak dapat mengkueri automupd untuk Pembaruan SteamOS..."
 msgid "SteamOS"
 msgstr "SteamOS"
 
-#: libdiscover/DiscoverBackendsFactory.cpp:121
+#: libdiscover/DiscoverBackendsFactory.cpp:120
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
