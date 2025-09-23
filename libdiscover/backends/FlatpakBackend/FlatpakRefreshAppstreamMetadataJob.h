@@ -20,11 +20,25 @@ public:
     void cancel();
     void run() override;
 
+    bool isEstimating() const
+    {
+        return m_estimating != 0;
+    }
+    uint progress() const
+    {
+        return m_progress;
+    }
+
 Q_SIGNALS:
+    void progressChanged();
     void jobRefreshAppstreamMetadataFinished(FlatpakInstallation *installation, FlatpakRemote *remote);
 
 private:
+    static void updateCallback(const char *status, guint progress, gboolean estimating, gpointer user_data);
+
     GCancellable *m_cancellable;
     FlatpakInstallation *m_installation;
     FlatpakRemote *m_remote;
+    QAtomicInt m_progress = 0;
+    QAtomicInt m_estimating = true;
 };

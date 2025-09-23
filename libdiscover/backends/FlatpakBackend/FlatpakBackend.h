@@ -34,6 +34,7 @@ namespace Utils
 {
 /// Useful for when libflatpak returns strings that need to be freed
 QString copyAndFree(char *str);
+class ProgressCollector;
 }
 
 class FlatpakBackend : public AbstractResourcesBackend
@@ -149,4 +150,7 @@ private:
     QVector<QSharedPointer<FlatpakSource>> m_flatpakLoadingSources;
     QSharedPointer<FlatpakSource> m_localSource;
     QTimer *const m_checkForUpdatesTimer;
+
+    friend class Utils::ProgressCollector;
+    Utils::ProgressCollector *const m_collector;
 };

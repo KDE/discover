@@ -29,24 +29,29 @@ void FlatpakRefreshAppstreamMetadataJob::cancel()
     g_cancellable_cancel(m_cancellable);
 }
 
+void FlatpakRefreshAppstreamMetadataJob::updateCallback(const char *status, guint progress, gboolean estimating, gpointer user_data)
+{
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "updating metadata..." << status;
+
+    auto self = static_cast<FlatpakRefreshAppstreamMetadataJob *>(user_data);
+    self->m_progress = progress;
+    self->m_estimating = estimating;
+    Q_EMIT self->progressChanged();
+}
+
 void FlatpakRefreshAppstreamMetadataJob::run()
 {
     g_autoptr(GError) localError = nullptr;
 
-#if FLATPAK_CHECK_VERSION(0, 9, 4)
-    // With Flatpak 0.9.4 we can use flatpak_installation_update_appstream_full_sync() providing progress reporting which we don't use at this moment, but
-    // still better to use newer function in case the previous one gets deprecated
+    gboolean changed = false;
     if (!flatpak_installation_update_appstream_full_sync(m_installation,
                                                          flatpak_remote_get_name(m_remote),
                                                          nullptr,
-                                                         nullptr,
-                                                         nullptr,
-                                                         nullptr,
+                                                         &FlatpakRefreshAppstreamMetadataJob::updateCallback,
+                                                         this,
+                                                         &changed,
                                                          m_cancellable,
                                                          &localError)) {
-#else
-    if (!flatpak_installation_update_appstream_sync(m_installation, flatpak_remote_get_name(m_remote), nullptr, nullptr, m_cancellable, &localError)) {
-#endif
         const QString error = localError ? QString::fromUtf8(localError->message) : QStringLiteral("<no error>");
         qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG).nospace()
             << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote) << ": " << error;
