@@ -72,6 +72,47 @@ QString copyAndFree(char *str)
     g_free(str);
     return ret;
 }
+
+class ProgressCollector : public QObject
+{
+    Q_OBJECT
+public:
+    ProgressCollector(FlatpakBackend *backend)
+        : m_backend(backend)
+    {
+        connect(m_backend->m_updater, &StandardBackendUpdater::settingUpChanged, this, &ProgressCollector::progressChanged);
+    }
+
+    void add(FlatpakRefreshAppstreamMetadataJob *job)
+    {
+        m_jobs << job;
+        connect(job, &FlatpakRefreshAppstreamMetadataJob::progressChanged, this, &ProgressCollector::progressChanged);
+        connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this, job] {
+            m_jobs.removeAll(job);
+            Q_EMIT progressChanged();
+        });
+        Q_EMIT progressChanged();
+    }
+
+    uint progress() const
+    {
+        if (!m_jobs.isEmpty()) {
+            uint sum = 0;
+            for (auto job : m_jobs) {
+                sum += job->progress();
+            }
+            return sum / m_jobs.count();
+        }
+        return m_backend->m_updater->isSettingUp() ? 42 : 100;
+    }
+
+Q_SIGNALS:
+    void progressChanged();
+
+private:
+    FlatpakBackend *const m_backend;
+    QList<FlatpakRefreshAppstreamMetadataJob *> m_jobs;
+};
 }
 
 class FlatpakSource
@@ -293,11 +334,12 @@ FlatpakBackend::FlatpakBackend(QObject *parent)
     , m_reviews(OdrsReviewsBackend::global())
     , m_cancellable(g_cancellable_new())
     , m_checkForUpdatesTimer(new QTimer(this))
+    , m_collector(new Utils::ProgressCollector(this))
 {
     g_autoptr(GError) error = nullptr;
 
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &FlatpakBackend::updatesCountChanged);
-    connect(m_updater, &StandardBackendUpdater::settingUpChanged, this, &FlatpakBackend::fetchingUpdatesProgressChanged);
+    connect(m_collector, &Utils::ProgressCollector::progressChanged, this, &FlatpakBackend::fetchingUpdatesProgressChanged);
 
     // Load flatpak installation
     if (!setupFlatpakInstallations(&error)) {
@@ -1556,7 +1598,7 @@ void triage(FlatpakResource *resource,
 
 int FlatpakBackend::fetchingUpdatesProgress() const
 {
-    return m_updater->isSettingUp() ? 42 : 100;
+    return m_collector->progress();
 }
 
 ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &filter)
@@ -1924,6 +1966,7 @@ ResultsStream *FlatpakBackend::findResourceByPackageName(const QUrl &url)
                 stream->finish();
             };
 
+            qDebug() << "is fetchingo" << m_isFetching;
             if (m_isFetching > 0) {
                 connect(this, &FlatpakBackend::initialized, stream, f);
             } else {
@@ -2121,6 +2164,7 @@ void FlatpakBackend::checkForRemoteUpdates(FlatpakInstallation *installation, Fl
         acquireFetching(false);
     });
 
+    m_collector->add(job);
     acquireFetching(true);
     job->start();
 }
