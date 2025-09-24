@@ -1977,7 +1977,6 @@ ResultsStream *FlatpakBackend::findResourceByPackageName(const QUrl &url)
                 stream->finish();
             };
 
-            qDebug() << "is fetchingo" << m_isFetching;
             if (m_isFetching > 0) {
                 connect(this, &FlatpakBackend::initialized, stream, f);
             } else {
