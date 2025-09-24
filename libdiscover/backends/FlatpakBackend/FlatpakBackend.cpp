@@ -103,22 +103,24 @@ public:
         });
     }
 
-    uint progress() const
+    uint progress()
     {
         if (!m_jobs.isEmpty()) {
             uint sum = 0;
-            for (auto job : m_jobs) {
+            for (auto job : std::as_const(m_jobs)) {
                 sum += job->progress();
             }
-            return sum / m_jobs.count();
+            m_lastProgress = std::max<uint>(m_lastProgress, sum / m_jobs.count());
+            return m_lastProgress;
         }
-        return m_backend->m_updater->isSettingUp() ? 42 : 100;
+        return m_backend->m_updater->isSettingUp() ? m_lastProgress : 100;
     }
 
 Q_SIGNALS:
     void progressChanged();
 
 private:
+    uint m_lastProgress = 5;
     FlatpakBackend *const m_backend;
     QList<FlatpakRefreshAppstreamMetadataJob *> m_jobs;
 };
