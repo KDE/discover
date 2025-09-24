@@ -18,6 +18,7 @@
 #include <QDirIterator>
 #include <QPluginLoader>
 #include <QStandardPaths>
+#include <chrono>
 
 using namespace Qt::StringLiterals;
 
@@ -62,10 +63,16 @@ QVector<AbstractResourcesBackend *> DiscoverBackendsFactory::backendForFile(cons
         qCWarning(LIBDISCOVER_LOG) << "error loading" << libname << loader->errorString() << loader->metaData();
         return {};
     }
+    QElapsedTimer backendInitTime;
+    backendInitTime.start();
     auto instances = f->newInstance(QCoreApplication::instance(), name);
     if (instances.isEmpty()) {
         qCWarning(LIBDISCOVER_LOG) << "Couldn't find the backend: " << libname << "among" << allBackendNames(false, true);
         return instances;
+    }
+
+    if (backendInitTime.elapsed() > 20) {
+        qDebug() << "Took" << backendInitTime.elapsed() << "ms to initialise" << name << instances.size();
     }
 
     return instances;
