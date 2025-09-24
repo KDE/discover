@@ -1,13 +1,14 @@
 # SPDX-FileCopyrightText: 2022, 2023, 2024 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2022, 2023.
+# SPDX-FileCopyrightText: 2025 Yuma Kakei <yumasansansan@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2024-11-17 21:51+0900\n"
-"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
+"PO-Revision-Date: 2025-09-21 14:44+0900\n"
+"Last-Translator: Yuma Kakei <yumasansansan@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -219,13 +220,13 @@ msgstr "KNewStuff"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Ryuichi Yamada"
+msgstr "Ryuichi Yamada,Yuma Kakei"
 
 #: discover/main.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "ryuichi_ya220@outlook.jp"
+msgstr "ryuichi_ya220@outlook.jp,yumasansansan@gmail.com"
 
 #: discover/main.cpp:152
 #, kde-format
