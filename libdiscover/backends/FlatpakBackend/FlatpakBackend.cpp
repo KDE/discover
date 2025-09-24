@@ -219,17 +219,6 @@ public:
         return m_remote;
     }
 
-    AppStream::ComponentBox componentsByName(const QString &name)
-    {
-        auto components = m_pool->componentsById(name);
-        if (!components.result().isEmpty()) {
-            return components.result();
-        }
-
-        components = m_pool->componentsByProvided(AppStream::Provided::KindId, name);
-        return components.result();
-    }
-
     AppStream::ComponentBox componentsByFlatpakId(const QString &ref)
     {
         auto components = m_pool->componentsByBundleId(AppStream::Bundle::KindFlatpak, ref, false);
@@ -1933,24 +1922,6 @@ bool FlatpakBackend::isTracked(FlatpakResource *resource) const
     });
 }
 
-QVector<StreamResult> FlatpakBackend::resultsByAppstreamName(const QString &name) const
-{
-    QVector<StreamResult> resources;
-    for (const auto &source : m_flatpakSources) {
-        if (source->m_pool) {
-            auto components = source->componentsByName(name);
-            resources << kTransform<QVector<StreamResult>>(components, [this, source](const AppStream::Component &comp) -> StreamResult {
-                return {resourceForComponent(comp, source), comp.sortScore()};
-            });
-        }
-    }
-    auto f = [this](auto left, auto right) {
-        return flatpakResourceLessThan(left, right);
-    };
-    std::sort(resources.begin(), resources.end(), f);
-    return resources;
-}
-
 ResultsStream *FlatpakBackend::findResourceByPackageName(const QUrl &url)
 {
     if (url.scheme() == QLatin1String("appstream")) {
@@ -1960,21 +1931,44 @@ ResultsStream *FlatpakBackend::findResourceByPackageName(const QUrl &url)
         } else {
             auto stream = new ResultsStream(QStringLiteral("FlatpakStream-AppStreamUrl"));
             auto f = [this, stream, appstreamIds] {
-                std::set<AbstractResource *> resources;
-                QVector<StreamResult> resourcesVector;
-                for (const auto &appstreamId : appstreamIds) {
-                    const auto resourcesFound = resultsByAppstreamName(appstreamId);
-                    for (auto result : resourcesFound) {
-                        auto [x, inserted] = resources.insert(result.resource);
-                        if (inserted) {
-                            resourcesVector.append(result);
+                const auto pools = kTransform<QList<AppStream::ConcurrentPool *>>(m_flatpakSources, [](const auto &x) {
+                    return x->m_pool.get();
+                });
+                AppStream::ConcurrentPool::componentsByNames(&m_threadPool, pools, appstreamIds)
+                    .then(this, [this, stream](const QMap<AppStream::ConcurrentPool *, QList<AppStream::Component>> &componentsList) {
+                        QList<StreamResult> resourcesFound;
+                        std::set<AbstractResource *> resources;
+                        QVector<StreamResult> resourcesVector;
+                        auto sorter = [this](auto left, auto right) {
+                            return flatpakResourceLessThan(left, right);
+                        };
+
+                        for (const auto &[pool, components] : componentsList.asKeyValueRange()) {
+                            if (!pool) {
+                                continue;
+                            }
+                            const auto sourceIt = std::ranges::find_if(m_flatpakSources, [pool](const QSharedPointer<FlatpakSource> &s) -> bool {
+                                return s->m_pool.get() == pool;
+                            });
+                            Q_ASSERT(sourceIt != m_flatpakSources.end());
+                            const QSharedPointer<FlatpakSource> source = *sourceIt;
+                            resourcesFound << kTransform<QVector<StreamResult>>(components, [this, source](const AppStream::Component &comp) -> StreamResult {
+                                return {resourceForComponent(comp, source), comp.sortScore()};
+                            });
                         }
-                    }
-                }
-                if (!resourcesVector.isEmpty()) {
-                    Q_EMIT stream->resourcesFound(resourcesVector);
-                }
-                stream->finish();
+                        std::sort(resourcesFound.begin(), resourcesFound.end(), sorter);
+                        for (auto result : resourcesFound) {
+                            auto [x, inserted] = resources.insert(result.resource);
+                            if (inserted) {
+                                resourcesVector.append(result);
+                            }
+                        }
+
+                        if (!resourcesVector.isEmpty()) {
+                            Q_EMIT stream->resourcesFound(resourcesVector);
+                        }
+                        stream->finish();
+                    });
             };
 
             if (m_isFetching > 0) {

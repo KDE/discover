@@ -50,6 +50,10 @@ public:
 
     QFuture<ComponentBox> componentsByBundleId(Bundle::Kind kind, const QString &bundleId, bool matchPrefix);
 
+    /// convenience method
+    static QFuture<QMap<ConcurrentPool *, QList<Component>>>
+    componentsByNames(QThreadPool *pool, const QList<ConcurrentPool *> &pools, const QStringList &names);
+
     QString lastError();
     void loadAsync();
 

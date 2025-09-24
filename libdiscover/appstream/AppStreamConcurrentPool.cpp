@@ -6,6 +6,8 @@
 
 #include "AppStreamConcurrentPool.h"
 
+#include <QDebug>
+#include <QtConcurrentMap>
 #include <QtConcurrentRun>
 
 using namespace AppStream;
@@ -93,10 +95,38 @@ QFuture<ComponentBox> ConcurrentPool::componentsByExtends(const QString &extende
         return m_pool->componentsByExtends(extendedId);
     });
 }
+
 QFuture<ComponentBox> ConcurrentPool::componentsByBundleId(Bundle::Kind kind, const QString &bundleId, bool matchPrefix)
 {
     return QtConcurrent::run(m_threadPool.get(), [this, kind, bundleId, matchPrefix] {
         QMutexLocker lock(&m_mutex);
         return m_pool->componentsByBundleId(kind, bundleId, matchPrefix);
     });
+}
+
+QFuture<QMap<ConcurrentPool *, QList<Component>>>
+ConcurrentPool::componentsByNames(QThreadPool *threadPool, const QList<ConcurrentPool *> &pools, const QStringList &names)
+{
+    return QtConcurrent::mappedReduced(
+        threadPool,
+        pools,
+        [names](ConcurrentPool *pool) -> std::pair<ConcurrentPool *, QList<Component>> {
+            if (!pool) {
+                return {};
+            }
+            QMutexLocker lock(&pool->m_mutex);
+            QList<Component> ret;
+            for (const QString &name : names) {
+                ComponentBox components = pool->m_pool->componentsById(name);
+                if (!components.isEmpty()) {
+                    ret += components.toList();
+                    break;
+                }
+                ret += pool->m_pool->componentsByProvided(AppStream::Provided::KindId, name).toList();
+            }
+            return {pool, ret};
+        },
+        [](QMap<ConcurrentPool *, QList<Component>> &acc, const std::pair<ConcurrentPool *, QList<Component>> &next) {
+            acc.insert(next.first, next.second);
+        });
 }
