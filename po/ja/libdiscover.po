@@ -1,13 +1,14 @@
 # SPDX-FileCopyrightText: 2023, 2024 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2023.
+# SPDX-FileCopyrightText: 2025 Yuma Kakei <yumasansansan@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-19 02:38+0000\n"
-"PO-Revision-Date: 2024-02-09 22:21+0900\n"
-"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
+"PO-Revision-Date: 2025-09-21 14:49+0900\n"
+"Last-Translator: Yuma Kakei <yumasansansan@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -16,17 +17,17 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Ryuichi Yamada"
+msgstr "Ryuichi Yamada,Yuma Kakei"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "ryuichi_ya220@outlook.jp"
+msgstr "ryuichi_ya220@outlook.jp,yumasansansan@gmail.com"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:111
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
@@ -67,36 +68,35 @@ msgstr "技術的な内部エラーメッセージ: %1"
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
 #, kde-format
 msgid "Package management"
-msgstr ""
+msgstr "パッケージ管理"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:203
 #, kde-format
 msgid "Loading, please wait..."
-msgstr ""
+msgstr "ロードしています。しばらくお待ちください..."
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:289
-#, fuzzy, kde-format
-#| msgid "Additional packages: "
+#, kde-format
 msgctxt "Root category name"
 msgid "Alpine Linux packages"
-msgstr "追加のパッケージ: "
+msgstr "Alpine Linux のパッケージ"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:458
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
-msgstr ""
+msgstr "Alpine APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:272
 #, kde-format
 msgid "Authorization denied"
-msgstr ""
+msgstr "認証が拒否されました"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
 #, kde-format
 msgid "Error: "
-msgstr ""
+msgstr "エラー:"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
 #, kde-format
@@ -105,27 +105,29 @@ msgid ""
 "Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
 "alpine/edge/testing/"
 msgstr ""
+"Alpine リポジトリの URL を入力してください。(例: http://dl-cdn.alpinelinux."
+"org/alpine/edge/testing/)"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
 #, kde-format
 msgid "Error: Authorization denied"
-msgstr ""
+msgstr "エラー: 認証が拒否されました"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:283
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "エラー"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
 #, kde-format
 msgid "Failed to open APK database!"
-msgstr ""
+msgstr "APK データベースを開けませんでした！"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
 #, kde-format
 msgid "Failed to get a list of packages to upgrade!"
-msgstr ""
+msgstr "アップグレードするパッケージのリストを取得できませんでした！"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -194,7 +196,7 @@ msgstr "すべてのアプリケーション"
 #, kde-format
 msgctxt "Category"
 msgid "Utilities"
-msgstr ""
+msgstr "ユーティリティ"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -205,12 +207,10 @@ msgstr "アクセシビリティ"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Web Development"
+#, kde-format
 msgctxt "Category"
 msgid "Development"
-msgstr "ウェブ開発"
+msgstr "開発"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -266,7 +266,7 @@ msgstr "教育"
 #, kde-format
 msgctxt "Category"
 msgid "Science & Math"
-msgstr ""
+msgstr "サイエンス & 数学"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -550,12 +550,10 @@ msgstr "オフィス"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgctxt "Category"
 msgid "System"
-msgstr "システムの修復"
+msgstr "システム"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
 #, kde-format
@@ -661,10 +659,9 @@ msgid "Sound system access"
 msgstr "サウンドシステムへのアクセス"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
-#, fuzzy, kde-format
-#| msgid "Can play audio"
+#, kde-format
 msgid "Can play and record audio"
-msgstr "音声を再生できます"
+msgstr "音声を再生・録音できます"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
@@ -971,6 +968,8 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"内部エラーが発生しました。https://bugs.kde.org/enter_bug.cgi?"
+"product=Discover にレポートを提出してください。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:452
 #, fuzzy, kde-format
@@ -988,12 +987,15 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
+"<resource>%1</resource> はもう更新を受け取ることができません。<nl/><nl/> "
+"<resource>%2</resource> により提供される、サポート対象バージョンに置き換えま"
+"すか？"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:460
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "自動削除"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:462
 #, kde-kuit-format
@@ -1003,6 +1005,8 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
+"<resource>%1</resource> はもう更新を受け取ることができません。<nl/> <p>理由: "
+"<message>%2</message></p><nl/> <p>自動で削除しますか？</p>"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:30
 #, kde-format
@@ -1043,11 +1047,10 @@ msgstr "設定とユーザのデータを削除しています..."
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "%1 の権限"
+msgstr "権限"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
@@ -1178,7 +1181,7 @@ msgstr "%1 を起動できません"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "ハードウェアドライバー"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
@@ -1251,6 +1254,8 @@ msgid ""
 "The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
 "<link url='%1'>report this issue to %2</link>"
 msgstr ""
+"PackageKit バックグラウンドサービスが予期せず停止しました。<nl/></nl/> <link "
+"url='%1'>この問題を %2 に報告</link> してください。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1994,31 +1999,27 @@ msgstr "利用できません"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "重大"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "Install"
-msgstr "インストール済"
+msgstr "インストール"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "削除します..."
+msgstr "削除"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, fuzzy, kde-format
-#| msgid "Obsoletes:"
+#, kde-format
 msgid "Obsolete"
-msgstr "廃止予定:"
+msgstr "廃止予定"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, fuzzy, kde-format
-#| msgid "Downgrading"
+#, kde-format
 msgid "Downgrade"
-msgstr "ダウングレード中"
+msgstr "ダウングレード"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:122
 #, kde-format
@@ -2061,13 +2062,11 @@ msgid "Repair Failed"
 msgstr "修復に失敗しました"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:145
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "%1<nl/>このエラーをディストリビューションの配布元に報告してください。"
+msgstr "%1<nl/><link url='%2'>このエラーを %3 に報告</link> してください。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:158
 #, kde-format
@@ -2105,7 +2104,7 @@ msgstr "，"
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "%1 によって検証されたソフトウェア"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:413
 #, kde-format
@@ -2332,21 +2331,19 @@ msgid "Operating System"
 msgstr "オペレーティングシステム"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: 複数の起動されたデプロイメントが見つかりました。バグとして報告し"
-"てください。"
+"rpm-ostree backend: 複数の起動されたデプロイメントが見つかりました。バグとし"
+"て報告してください。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
-"rpm-ostree: 起動されたデプロイメントが見つかりませんでした。バグとして報告し"
-"てください。"
+"rpm-ostree backend: 起動されたデプロイメントが見つかりませんでした。バグとし"
+"て報告してください。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
@@ -2431,46 +2428,36 @@ msgid "ostree remotes"
 msgstr "ostree リモート"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: エラー: DBus インターフェースが提供されていません 。バグ"
+"rpm-ostree backend: エラー: DBus インターフェースが提供されていません 。バグ"
 "として報告してください。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: エラー: リソースのフォーマットが無効なため、トランザク"
+"rpm-ostree backend: エラー: リソースのフォーマットが無効なため、トランザク"
 "ションを開始できません。バグとして報告してください。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: エラー: 空の参照にリベースすることはできません。バグとし"
+"rpm-ostree backend: エラー: 空の参照にリベースすることはできません。バグとし"
 "て報告してください。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: エラー: 不明な操作が要求されました。バグとして報告してく"
+"rpm-ostree backend: エラー: 不明な操作が要求されました。バグとして報告してく"
 "ださい。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
@@ -2484,12 +2471,10 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: エラー: 不明なリソースフォーマットです。バグとして報告し"
+"rpm-ostree backend: エラー: 不明なリソースフォーマットです。バグとして報告し"
 "てください。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
@@ -2510,11 +2495,15 @@ msgstr "更新を確認中"
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
+"システム更新をダウンロードしています。進捗状況は表示されませんので、しばらく"
+"お待ちください。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
+"システムを更新しています。進捗状況は表示されませんので、しばらくお待ちくださ"
+"い。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
 #, kde-format
@@ -2522,6 +2511,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"次のメジャーバージョンへ更新しています。進捗状況は表示されませんので、しばら"
+"くお待ちください。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
 #, kde-format
@@ -2534,16 +2525,14 @@ msgid "Unknown transaction type"
 msgstr "不明のトランザクションタイプ"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channel: %1"
-msgstr "チャンネル…"
+msgstr "チャンネル: %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channels for %1"
-msgstr "チャンネル…"
+msgstr "%1 のチャンネル"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:384
@@ -2569,12 +2558,12 @@ msgstr "Snap"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:585
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "snapcraft.io の検証済み発行元"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:587
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "snapcraft.io の星付き発行元"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
 #, kde-format
@@ -2734,11 +2723,10 @@ msgid "Applications"
 msgstr "アプリケーション"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:139
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "アプリケーション"
+msgstr "アプリケーションサポート"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:140
 #, kde-format
@@ -2751,68 +2739,3 @@ msgstr "システムソフトウェア"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "アドオン"
-
-#~ msgctxt "Category"
-#~ msgid "Accessories"
-#~ msgstr "アクセサリ"
-
-#~ msgctxt "Category"
-#~ msgid "Developer Tools"
-#~ msgstr "開発用ツール"
-
-#~ msgctxt "Category"
-#~ msgid "Science and Engineering"
-#~ msgstr "科学と工学"
-
-#~ msgctxt "Category"
-#~ msgid "System Settings"
-#~ msgstr "システム設定"
-
-#~ msgid "Could not find '%1' in '%2'; please make sure it's available."
-#~ msgstr ""
-#~ "'%1' を '%2' の中に見つけられませんでした。利用可能であるか確認してくださ"
-#~ "い。"
-
-#~ msgid "%1 channels"
-#~ msgstr "%1 チャンネル"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content suitable for everyone"
-#~ msgid "All Audiences"
-#~ msgstr "全年齢対象"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with relatively benign themes only unsuitable for very young "
-#~ "children, such as minor cartoon violence or mild profanity"
-#~ msgid "Mild Content"
-#~ msgstr "少し刺激的なコンテンツ"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "content with some intense themes, such as somewhat realistic violence, "
-#~ "references to sexuality, or adult profanity"
-#~ msgid "Moderate Content"
-#~ msgstr "刺激的なコンテンツ"
-
-#~ msgctxt ""
-#~ "Open Age Ratings Service (https://hughsie.github.io/oars) description of "
-#~ "mature content that could be quite objectionable or unsuitable for young "
-#~ "audiences, such as realistic graphic violence, extreme profanity or "
-#~ "nudity, or glorification of drug use"
-#~ msgid "Intense Content"
-#~ msgstr "とても刺激的なコンテンツ"
-
-#~ msgctxt "%1 is the name of the application"
-#~ msgid "Permissions for %1"
-#~ msgstr "%1 の権限"
-
-#~ msgid "Downloading system update"
-#~ msgstr "システム更新をダウンロード中"
-
-#~ msgid "Updating the system"
-#~ msgstr "システムを更新中"
-
-#~ msgid "Updating to the next major version"
-#~ msgstr "次のメジャーバージョンに更新中"
