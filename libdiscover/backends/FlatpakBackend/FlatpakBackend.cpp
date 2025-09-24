@@ -120,7 +120,7 @@ Q_SIGNALS:
     void progressChanged();
 
 private:
-    uint m_lastProgress = 5;
+    uint m_lastProgress = 0;
     FlatpakBackend *const m_backend;
     QList<FlatpakRefreshAppstreamMetadataJob *> m_jobs;
 };
