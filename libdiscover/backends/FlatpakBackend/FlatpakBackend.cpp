@@ -85,6 +85,7 @@ public:
 
     void add(FlatpakRefreshAppstreamMetadataJob *job)
     {
+        m_lastProgress = 0;
         m_jobs << job;
         connect(job, &FlatpakRefreshAppstreamMetadataJob::progressChanged, this, &ProgressCollector::progressChanged);
         connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, this, [this]() {
@@ -104,22 +105,25 @@ public:
         Q_EMIT progressChanged();
     }
 
-    uint progress() const
+    uint progress()
     {
         if (!m_jobs.isEmpty()) {
             uint sum = 0;
-            for (auto job : m_jobs) {
+            for (auto job : std::as_const(m_jobs)) {
                 sum += job->progress();
             }
-            return sum / m_jobs.count();
+            static constexpr uint s_almostPercentage = 95; // We can't give 100% because we still have to process the updates locally and it's not trivial
+            m_lastProgress = std::min<uint>(s_almostPercentage, std::max<uint>(m_lastProgress, sum / m_jobs.count()));
+            return m_lastProgress;
         }
-        return m_backend->m_updater->isSettingUp() ? 42 : 100;
+        return m_backend->m_updater->isSettingUp() ? m_lastProgress : 100;
     }
 
 Q_SIGNALS:
     void progressChanged();
 
 private:
+    uint m_lastProgress = 0;
     FlatpakBackend *const m_backend;
     QList<FlatpakRefreshAppstreamMetadataJob *> m_jobs;
 };
