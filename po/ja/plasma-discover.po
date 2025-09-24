@@ -1,13 +1,14 @@
 # SPDX-FileCopyrightText: 2022, 2023, 2024 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2022, 2023.
+# SPDX-FileCopyrightText: 2025 Yuma Kakei <yumasansansan@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-19 00:43+0000\n"
-"PO-Revision-Date: 2024-11-17 21:51+0900\n"
-"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
+"PO-Revision-Date: 2025-09-21 14:44+0900\n"
+"Last-Translator: Yuma Kakei <yumasansansan@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -16,13 +17,10 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
@@ -31,12 +29,7 @@ msgstr ""
 "いません。現在、アプリケーションのアドオンのみインストールできます。"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -45,7 +38,8 @@ msgid ""
 msgstr ""
 "Discover をアプリケーションのインストールのために使用するには、<interface>設"
 "定</interface>ページの<interface>欠けているバックエンド</interface>でお好みの"
-"モジュールをインストールしてください。"
+"モジュールをインストールしてください。<nl/><nl/> <link url='%1'>この問題を "
+"%2 に報告</link> してください。"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -113,16 +107,13 @@ msgid "Please make sure Snap support is installed"
 msgstr "Snap サポートがインストールされていることを確認してください"
 
 #: discover/DiscoverObject.cpp:407
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
 msgstr ""
-"利用可能なソフトウェアリポジトリに見つからなかったため、%1 を開けませんでし"
-"た。"
+"要求されたアプリケーションは、利用可能なソフトウェアリポジトリに見つかりませ"
+"んでした。"
 
 #: discover/DiscoverObject.cpp:410
 #, kde-kuit-format
@@ -133,6 +124,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(%1 の項目はありません)<nl/><nl/> <link url='%2'>この問題を %3 に報告</link> "
+"してください。"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
@@ -210,10 +203,9 @@ msgid "An application explorer"
 msgstr "アプリケーションエクスプローラ"
 
 #: discover/main.cpp:133
-#, fuzzy, kde-format
-#| msgid "© 2010-2024 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2025 Plasma Development Team"
-msgstr "© 2010-2024 Plasma Development Team"
+msgstr "© 2010-2025 Plasma Development Team"
 
 #: discover/main.cpp:134
 #, kde-format
@@ -244,13 +236,13 @@ msgstr "KNewStuff"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Ryuichi Yamada"
+msgstr "Ryuichi Yamada,Yuma Kakei"
 
 #: discover/main.cpp:148
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "ryuichi_ya220@outlook.jp"
+msgstr "ryuichi_ya220@outlook.jp,yumasansansan@gmail.com"
 
 #: discover/main.cpp:162
 #, kde-format
@@ -384,6 +376,16 @@ msgid ""
 "url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"%1 は、<link url='%2'>Free Software Foundation</link> または <link "
+"url='%3'>Open Source Initiative</link> のいずれからも「フリーソフトウェア」と"
+"して認定されていないライセンスを1つ以上使用しています。そのため、使用、研究、"
+"修正、共有の自由が何らかの形で制限される可能性があります。<nl/><nl/> ソフト"
+"ウェアを使用する前に、必ずライセンス条文を読み、制限事項を理解してください。"
+"<nl/><nl/>ソースコードの閲覧すら許可しないライセンスの場合、作者を完全に信頼"
+"できることを確認してください。コードの信頼性やセキュリティを検証できるのは作"
+"者のみであり、目に見えない形で利用者に不利益をもたらさない保証はありません。"
+"詳細は <link url='%4'>アプリケーションのウェブサイト</link> でご確認くださ"
+"い。<nl/><nl/>詳しくは <link url='%5'>%5</link> をご覧ください。"
 
 #: discover/qml/ApplicationPage.qml:88
 #, kde-kuit-format
@@ -399,6 +401,15 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"%1 は、<link url='%2'>Free Software Foundation</link> または <link "
+"url='%3'>Open Source Initiative</link> のいずれからも「フリーソフトウェア」と"
+"して認定されていないライセンスを1つ以上使用しています。そのため、使用、研究、"
+"修正、共有の自由が何らかの形で制限される可能性があります。<nl/><nl/>ソフト"
+"ウェアを使用する前に、必ずライセンス条文を読み、制限事項を理解してください。"
+"<nl/><nl/>ソースコードの閲覧すら許可しないライセンスの場合、作者を完全に信頼"
+"できることを確認してください。コードの信頼性やセキュリティを検証できるのは作"
+"者のみであり、目に見えない形で利用者に不利益をもたらさない保証はありません。"
+"<nl/><nl/>詳しくは <link url='%4'>%4</link> をご覧ください。"
 
 #: discover/qml/ApplicationPage.qml:97
 #, kde-kuit-format
@@ -409,6 +420,10 @@ msgid ""
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
+"%1 は、どのライセンスで配布されているのかを示していません。<link url='%2'>ア"
+"プリケーションのウェブサイト</link> で確認できる可能性があります。個人利用以"
+"外の目的でこのアプリケーションを使用する場合は、そのウェブサイトで確認する"
+"か、作者に連絡してください。"
 
 #: discover/qml/ApplicationPage.qml:101
 #, kde-format
@@ -418,6 +433,9 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"%1 は、どのライセンスで配布されているのかを示していません。個人利用以外の目的"
+"でこのアプリケーションを使用する場合は、アプリケーションの作者に連絡してくだ"
+"さい。"
 
 #: discover/qml/ApplicationPage.qml:142
 #, kde-format
@@ -496,9 +514,7 @@ msgid ","
 msgstr ","
 
 #: discover/qml/ApplicationPage.qml:509
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "See more…"
 msgstr "さらに見る..."
@@ -557,11 +573,10 @@ msgstr "%1 のレビューは一時的に利用できません"
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "まだレビューが投稿されていません"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
 msgstr "レビューを書くにはこのアプリケーションをインストールしてください"
@@ -589,15 +604,13 @@ msgid "External Links"
 msgstr "外部リンク"
 
 #: discover/qml/ApplicationPage.qml:862
-#, fuzzy, kde-format
-#| msgid "Read the project's official documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "プロジェクトの公式ドキュメンテーションを読む"
+msgstr "ドキュメンテーションを読む"
 
 #: discover/qml/ApplicationPage.qml:873
-#, fuzzy, kde-format
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "プロジェクトのウェブサイトを訪れる"
@@ -606,11 +619,10 @@ msgstr "プロジェクトのウェブサイトを訪れる"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "プロジェクトに寄付する"
 
 #: discover/qml/ApplicationPage.qml:893
-#, fuzzy, kde-format
-#| msgid "Report Bug"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "バグを報告"
@@ -619,7 +631,7 @@ msgstr "バグを報告"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "貢献を始める"
 
 #: discover/qml/ApplicationPage.qml:932
 #, kde-format
@@ -863,9 +875,7 @@ msgid "&Updates (Fetching…)"
 msgstr "更新(&U) (取得中...)"
 
 #: discover/qml/DiscoverWindow.qml:96
-#, fuzzy, kde-format
-#| msgid "&Update (%1)"
-#| msgid_plural "&Updates (%1)"
+#, kde-format
 msgid "&Updates (%1)"
 msgstr "%1 件の更新(&U)"
 
@@ -896,9 +906,7 @@ msgid "Proceed"
 msgstr "進む"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
 msgstr "この問題を %1 に報告する"
@@ -1127,6 +1135,9 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"%1 が気に入ったら、素晴らしい点をみんなに伝えましょう！機能性、使いやすさ、見"
+"た目に焦点を 当ててください。もしアプリがニーズに合わなかったら、その理由を説"
+"明してください。"
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1136,6 +1147,9 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"%1 が起動しない場合、%2 のパッケージ提供者へ <link url='%3'>%3</link> から報"
+"告することを検討してください。アプリそのものの不具合ではなく、簡単に修正可能"
+"なパッケージングの問題である可能性があります。"
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1145,6 +1159,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"%1 が起動しない場合、開発者へ <link url='%2'>%2</link> から報告することを検討"
+"してください。アプリそのものの不具合ではなく、簡単に修正可能な パッケージング"
+"の問題である可能性があります。"
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1153,6 +1170,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"アプリが頻繁にクラッシュする場合は、開発者へ <link url='%1'>%1</link> から報"
+"告することを検討してください。"
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1162,6 +1181,8 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"アプリに問題が発生した場合は、開発者へ <link url='%1'>%1</link> から報告する"
+"ことを検討するか、こちらで問題をより詳細に説明してください。"
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1471,12 +1492,10 @@ msgid "Total size: %1"
 msgstr "サイズの合計: %1"
 
 #: discover/qml/UpdatesPage.qml:322
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "今すぐ再起動して更新をインストール"
+msgstr "再起動して更新をインストール"
 
 #: discover/qml/UpdatesPage.qml:502
 #, kde-format
@@ -1517,13 +1536,13 @@ msgstr "更新"
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr ""
+msgstr "システムの再起動後に更新はインストールされます"
 
 #: discover/qml/UpdatesPage.qml:611
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
-msgstr ""
+msgstr "再起動の準備ができていない場合、システムを使い続けることができます。"
 
 #: discover/qml/UpdatesPage.qml:625 discover/qml/UpdatesPage.qml:632
 #: discover/qml/UpdatesPage.qml:639
@@ -1543,49 +1562,3 @@ msgstr "更新の確認が必要です"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "最後の更新時刻は不明です"
-
-#, fuzzy
-#~| msgid "Please report this issue to the packagers of your distribution."
-#~ msgctxt "@info %1 is an additional error reference"
-#~ msgid ""
-#~ "Please report this issue to the packagers of your distribution.<nl/>(%1)"
-#~ msgstr ""
-#~ "この問題をお使いのディストリビューションのパッケージャに報告してください。"
-
-#~ msgid "Report This Issue"
-#~ msgstr "この問題を報告する"
-
-#~ msgid "Report this issue"
-#~ msgstr "この問題を報告する"
-
-#~ msgctxt "@info"
-#~ msgid "Restart the system to complete the update process"
-#~ msgstr "更新を完了するには再起動が必要です"
-
-#~ msgctxt ""
-#~ "If appropriate, localize this URL to be something more relevant to the "
-#~ "language. %1 is the text that will be searched for."
-#~ msgid "https://duckduckgo.com/?q=%1"
-#~ msgstr "https://duckduckgo.com/?q=%1"
-
-#~ msgid "Documentation"
-#~ msgstr "ドキュメンテーション"
-
-#~ msgid "Website"
-#~ msgstr "ウェブサイト"
-
-#~ msgid "Donate"
-#~ msgstr "寄付"
-
-#~ msgid "Support and thank the developers by donating to their project"
-#~ msgstr "プロジェクトに寄付して開発者を支援する"
-
-#~ msgid "Log an issue you found to help get it fixed"
-#~ msgstr "見つけた問題を記録して修正を支援する"
-
-#~ msgid "Contribute"
-#~ msgstr "貢献"
-
-#~ msgid "Help the developers by coding, designing, testing, or translating"
-#~ msgstr ""
-#~ "プログラミング、デザイン、テストもしくは翻訳に参加して開発者を支援する"
