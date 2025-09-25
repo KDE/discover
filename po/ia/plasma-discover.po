@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-19 00:43+0000\n"
-"PO-Revision-Date: 2025-05-27 11:24+0200\n"
+"POT-Creation-Date: 2025-09-25 00:43+0000\n"
+"PO-Revision-Date: 2025-09-24 17:22+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -18,10 +18,7 @@ msgstr ""
 "X-Generator: Lokalize 23.08.5\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
@@ -30,12 +27,7 @@ msgstr ""
 "app"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -44,7 +36,8 @@ msgid ""
 msgstr ""
 "Per usar Discover per apps, installa tu modulo preferite in le pagina "
 "<interface>Preferentias</interface> , sub <interface>Retro-administrationes "
-"mancante</interface>."
+"mancante</interface>.<nl></nl>Pro favor <link url='%1'> tu reporta iste "
+"question a %2.</link>"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -110,15 +103,12 @@ msgid "Please make sure Snap support is installed"
 msgstr "Pro favor assecura te  que le supporto de Snap es installate"
 
 #: discover/DiscoverObject.cpp:407
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
 msgstr ""
-"Non poteva aperir %1 proque non esseva trovate in ulle repositorios "
+"Le application requirite non poteva esser trovate in ulle repositorios "
 "disponibile de software."
 
 #: discover/DiscoverObject.cpp:410
@@ -130,9 +120,11 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(Nulle entrata per %1)<nl/><nl/>Pro favor <link url='%2'> reporta iste "
+"question a %3.</link>"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
-#: discover/main.cpp:129
+#: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Discover (Discoperi)"
@@ -145,118 +137,118 @@ msgstr ""
 "Discoveresseva claudite ante que alcun cargas esseva facite, attendente que "
 "illo termina."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:34
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "Aperi directemente al application pecificate per su appstream://URI."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:35
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr ""
 "Aperi con un cerca de programmas que pote tractar con le date typo mime."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:36
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "Monstra un lista de entratas con un categorias."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:37
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "Aperi Discover in un modo dicto. Modos corresponde al buttones de barra de "
 "instrumento."
 
-#: discover/main.cpp:39
+#: discover/main.cpp:38
 #, kde-format
 msgid "List all the available modes."
 msgstr "Lista omne modos disponibile."
 
-#: discover/main.cpp:40
+#: discover/main.cpp:39
 #, kde-format
 msgid "Local package file to install"
 msgstr "File de pacchetto local de installar"
 
-#: discover/main.cpp:41
+#: discover/main.cpp:40
 #, kde-format
 msgid "List all the available backends."
 msgstr "Lista tote le retro-administrationes disponibile."
 
-#: discover/main.cpp:42
+#: discover/main.cpp:41
 #, kde-format
 msgid "Search string."
 msgstr "Cerca catena."
 
-#: discover/main.cpp:43
+#: discover/main.cpp:42
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "Lista le optiones disponibile per responsa al usator"
 
-#: discover/main.cpp:44
+#: discover/main.cpp:43
 #, kde-format
 msgid "Starts an update automatically, headless"
 msgstr "Starta un actualisation automaticamente, insensate"
 
-#: discover/main.cpp:46
+#: discover/main.cpp:45
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "Supporta appstream: url schema"
 
-#: discover/main.cpp:131
+#: discover/main.cpp:122
 #, kde-format
 msgid "An application explorer"
 msgstr "Un explrator de application"
 
-#: discover/main.cpp:133
+#: discover/main.cpp:124
 #, kde-format
 msgid "© 2010-2025 Plasma Development Team"
 msgstr ""
 "© 2010-2025 Plasma Development Team -Equipa de disveloppamento de Plasma"
 
-#: discover/main.cpp:134
+#: discover/main.cpp:125
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:135
+#: discover/main.cpp:126
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:136
+#: discover/main.cpp:127
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Assicuration de qualitate, Designo e Usabilitate"
 
-#: discover/main.cpp:140
+#: discover/main.cpp:131
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:141
+#: discover/main.cpp:132
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:148
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Giovanni Sora"
 
-#: discover/main.cpp:148
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "g.sora@tiscali.it"
 
-#: discover/main.cpp:162
+#: discover/main.cpp:153
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Retro administrationes disponibile:\n"
 
-#: discover/main.cpp:215
+#: discover/main.cpp:206
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Modos disponibile:\n"
@@ -584,11 +576,10 @@ msgstr "Recensiones per %1  es temporaneemente non disponibile."
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "Nulle evalutation totevia inviate in post"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
 msgstr "Installa per scriber un revision"
@@ -919,9 +910,7 @@ msgid "Proceed"
 msgstr "Procede"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
 msgstr "Reporta iste question a %1"

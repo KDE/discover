@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-19 00:43+0000\n"
+"POT-Creation-Date: 2025-09-25 00:43+0000\n"
 "PO-Revision-Date: 2025-06-27 15:33+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -135,7 +135,7 @@ msgid ""
 msgstr ""
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
-#: discover/main.cpp:129
+#: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -148,116 +148,116 @@ msgstr ""
 "Discover tika aizvērts pirms noteiktu uzdevumu veikšanas, gaida to "
 "pabeigšanu."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:34
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr ""
 "Tiešā veidā atvērt noteiktu programmu, izmantojot tās appstream:// URI."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:35
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr ""
 "Atvērt ar meklēšanas programmām, kas spēj apstrādāt attiecīgu MIME tipu."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:36
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "Parādīt ierakstu sarakstu ar kategoriju."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:37
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr "Atvērt „Discover“ minētajā režīmā. Režīmi atbilst rīkjoslas pogām."
 
-#: discover/main.cpp:39
+#: discover/main.cpp:38
 #, kde-format
 msgid "List all the available modes."
 msgstr "Norādīt visus pieejamos režīmus."
 
-#: discover/main.cpp:40
+#: discover/main.cpp:39
 #, kde-format
 msgid "Local package file to install"
 msgstr "Instalējamā lokālā pakotnes datne"
 
-#: discover/main.cpp:41
+#: discover/main.cpp:40
 #, kde-format
 msgid "List all the available backends."
 msgstr "Visu pieejamo aizmugursistēmu saraksts."
 
-#: discover/main.cpp:42
+#: discover/main.cpp:41
 #, kde-format
 msgid "Search string."
 msgstr "Meklēšanas teksts."
 
-#: discover/main.cpp:43
+#: discover/main.cpp:42
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "Uzskaita pieejamās iespējas lietotāju atsauksmēm"
 
-#: discover/main.cpp:44
+#: discover/main.cpp:43
 #, kde-format
 msgid "Starts an update automatically, headless"
 msgstr "Sāk atjauninājumu automātiski un bez saskarnes"
 
-#: discover/main.cpp:46
+#: discover/main.cpp:45
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "Atbalsta appstream: url shēmu"
 
-#: discover/main.cpp:131
+#: discover/main.cpp:122
 #, kde-format
 msgid "An application explorer"
 msgstr "Programmu pārlūks"
 
-#: discover/main.cpp:133
+#: discover/main.cpp:124
 #, kde-format
 msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010—2025 „Plasma“ izstrādātāju komanda"
 
-#: discover/main.cpp:134
+#: discover/main.cpp:125
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:135
+#: discover/main.cpp:126
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:136
+#: discover/main.cpp:127
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Kvalitātes nodrošināšana, dizains un lietojamība"
 
-#: discover/main.cpp:140
+#: discover/main.cpp:131
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:141
+#: discover/main.cpp:132
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:148
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Toms Trasūns"
 
-#: discover/main.cpp:148
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "toms.trasuns@posteo.net"
 
-#: discover/main.cpp:162
+#: discover/main.cpp:153
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Pieejamās aizmugursistēmas:\n"
 
-#: discover/main.cpp:215
+#: discover/main.cpp:206
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Pieejamie režīmi:\n"
