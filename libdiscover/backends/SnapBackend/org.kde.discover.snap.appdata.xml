@@ -18,6 +18,7 @@
   <name xml:lang="es">Motor Snap</name>
   <name xml:lang="et">Snapi taustaprogramm</name>
   <name xml:lang="eu">Snap bizkarraldekoa</name>
+  <name xml:lang="fa">پشته اسنپ</name>
   <name xml:lang="fi">Snap-taustaosa</name>
   <name xml:lang="fr">Moteur « Snap »</name>
   <name xml:lang="gl">Motor de Snap</name>
@@ -69,6 +70,7 @@
   <summary xml:lang="es">Integra aplicaciones Snap en Discover</summary>
   <summary xml:lang="et">Snapi rakenduste lõimimine Discoverisse</summary>
   <summary xml:lang="eu">Snap aplikazioak Discover-ren integratzen ditu</summary>
+  <summary xml:lang="fa">پشتیبانی از اسنپ را به دیسکاور می‌افزاید</summary>
   <summary xml:lang="fi">Yhdistää Snap-sovellukset Discoveriin</summary>
   <summary xml:lang="fr">Intègre les applications « Snap » au sein de Discover</summary>
   <summary xml:lang="gl">Integra aplicacións de Snap con Discover</summary>
@@ -124,6 +126,7 @@
   <developer_name xml:lang="es">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="et">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="eu">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="fa">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fi">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="fr">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="gl">Aleix Pol i Gonzàlez</developer_name>
