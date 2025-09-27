@@ -5,6 +5,8 @@
 
 #include "OstreeFormat.h"
 
+#include "libdiscover_rpm-ostree_debug.h"
+
 OstreeFormat::OstreeFormat(Format format, const QString &source)
     : m_format(Format::Unknown)
 {
@@ -30,6 +32,7 @@ OstreeFormat::OstreeFormat(Format format, const QString &source)
         m_branch = split_ref[1];
         // Set the format now that we have a valid remote and ref
         m_format = OstreeFormat::Classic;
+        qCDebug(RPMOSTREE_LOG) << "Parsed ostree: remote:" << m_remote << "branch:" << m_branch;
         break;
     }
 
@@ -105,6 +108,7 @@ OstreeFormat::OstreeFormat(Format format, const QString &source)
 
         // Set the format now that we have a valid repo and tag
         m_format = OstreeFormat::OCI;
+        qCDebug(RPMOSTREE_LOG) << "Parsed OCI: transport:" << m_transport << "repo:" << m_remote << "tag:" << m_branch;
         break;
     }
 
