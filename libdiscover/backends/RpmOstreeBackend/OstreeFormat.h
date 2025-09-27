@@ -41,10 +41,12 @@ public:
     bool isClassic() const;
     bool isOCI() const;
 
+    // OCI
     QString repo() const;
     QString tag() const;
-
     QString transport() const;
+
+    // Classic ostree
     QString remote() const;
     QString ref() const;
 
