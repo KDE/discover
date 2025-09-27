@@ -133,7 +133,7 @@ bool OstreeFormat::parseTransport(QStringList *split)
         split->first() = split->first().remove(0, 2);
     } else if (split->first() == QLatin1String("registry") || split->first() == QLatin1String("oci") || split->first() == QLatin1String("oci-archive")
                || split->first() == QLatin1String("containers-storage") || split->first() == QLatin1String("dir")) {
-        m_transport = split->first() + QLatin1Char(':');
+        m_transport += split->first() + QLatin1Char(':');
         split->removeFirst();
     } else {
         // No known/valid transport found
