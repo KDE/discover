@@ -157,6 +157,7 @@ private:
     bool addResourcesBackend(AbstractResourcesBackend *backend);
     void registerBackendByName(const QString &name);
     void initApplicationsBackend();
+    void destroyObject();
 
     bool m_isInitializing = true;
     QVector<AbstractResourcesBackend *> m_backends;
@@ -169,4 +170,5 @@ private:
     QSharedPointer<InlineMessage> m_inlineMessage;
 
     static ResourcesModel *s_self;
+    static bool s_quitting;
 };

@@ -31,14 +31,27 @@
 using namespace Qt::StringLiterals;
 
 ResourcesModel *ResourcesModel::s_self = nullptr;
+bool ResourcesModel::s_quitting = false;
 
 ResourcesModel *ResourcesModel::global()
 {
     if (!s_self) {
         s_self = new ResourcesModel;
-        s_self->init(true);
+        Q_ASSERT(!s_quitting);
+        if (!s_quitting) {
+            s_self->init(true);
+        } else {
+            // Only should happen if the singleton is instantiated after aboutToQuit
+            QTimer::singleShot(0, s_self, &ResourcesModel::destroyObject);
+        }
     }
     return s_self;
+}
+
+void ResourcesModel::destroyObject()
+{
+    s_quitting = true;
+    deleteLater();
 }
 
 ResourcesModel::ResourcesModel(QObject *parent)
