@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-12 00:42+0000\n"
+"POT-Creation-Date: 2025-09-28 00:45+0000\n"
 "PO-Revision-Date: 2023-02-11 10:24+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -20,75 +20,75 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: notifier/DiscoverNotifier.cpp:206
+#: notifier/DiscoverNotifier.cpp:218
 #, kde-format
 msgid "View Updates"
 msgstr "Vis oppdateringer"
 
-#: notifier/DiscoverNotifier.cpp:353
+#: notifier/DiscoverNotifier.cpp:365
 #, kde-format
 msgid "Security updates available"
 msgstr "Sikkerhetsoppdateringer tilgjengelig"
 
-#: notifier/DiscoverNotifier.cpp:355
+#: notifier/DiscoverNotifier.cpp:367
 #, kde-format
 msgid "Updates available"
 msgstr "Oppdateringer tilgjengelige"
 
-#: notifier/DiscoverNotifier.cpp:357
+#: notifier/DiscoverNotifier.cpp:369
 #, kde-format
 msgid "System up to date"
 msgstr "Systemet er oppdatert"
 
-#: notifier/DiscoverNotifier.cpp:359
+#: notifier/DiscoverNotifier.cpp:371
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Maskinen må startes på nytt"
 
-#: notifier/DiscoverNotifier.cpp:361
+#: notifier/DiscoverNotifier.cpp:373
 #, kde-format
 msgid "Offline"
 msgstr "Frakoblet"
 
-#: notifier/DiscoverNotifier.cpp:363
+#: notifier/DiscoverNotifier.cpp:375
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Tar i bruk oppdateringer som ikke krever tilsyn …"
 
-#: notifier/DiscoverNotifier.cpp:388
+#: notifier/DiscoverNotifier.cpp:400
 #, kde-format
 msgid "Restart is required"
 msgstr "Du må starte maskinen på nytt"
 
-#: notifier/DiscoverNotifier.cpp:389
+#: notifier/DiscoverNotifier.cpp:401
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Tjenesten må startes på nytt for å tre i kraft."
 
-#: notifier/DiscoverNotifier.cpp:394
+#: notifier/DiscoverNotifier.cpp:406
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "Maskinen må startes på nytt"
 
-#: notifier/DiscoverNotifier.cpp:395
+#: notifier/DiscoverNotifier.cpp:407
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:439
+#: notifier/DiscoverNotifier.cpp:451
 #, kde-format
 msgid "Upgrade available"
 msgstr "Oppgradering tilgjengelig"
 
-#: notifier/DiscoverNotifier.cpp:440
+#: notifier/DiscoverNotifier.cpp:452
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:443
+#: notifier/DiscoverNotifier.cpp:455
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"

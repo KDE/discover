@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-12 00:42+0000\n"
+"POT-Creation-Date: 2025-09-28 00:45+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -19,75 +19,75 @@ msgstr ""
 "X-Poedit-Bookmarks: -1,-1,15,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: notifier/DiscoverNotifier.cpp:206
+#: notifier/DiscoverNotifier.cpp:218
 #, kde-format
 msgid "View Updates"
 msgstr "अद्यतनं पश्यन्तु"
 
-#: notifier/DiscoverNotifier.cpp:353
+#: notifier/DiscoverNotifier.cpp:365
 #, kde-format
 msgid "Security updates available"
 msgstr "सुरक्षा अद्यतनं उपलब्धम्"
 
-#: notifier/DiscoverNotifier.cpp:355
+#: notifier/DiscoverNotifier.cpp:367
 #, kde-format
 msgid "Updates available"
 msgstr "अद्यतनं उपलब्धम्"
 
-#: notifier/DiscoverNotifier.cpp:357
+#: notifier/DiscoverNotifier.cpp:369
 #, kde-format
 msgid "System up to date"
 msgstr "तन्त्रं अद्यतनम् अस्ति"
 
-#: notifier/DiscoverNotifier.cpp:359
+#: notifier/DiscoverNotifier.cpp:371
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "सङ्गणकस्य पुनः आरम्भस्य आवश्यकता वर्तते"
 
-#: notifier/DiscoverNotifier.cpp:361
+#: notifier/DiscoverNotifier.cpp:373
 #, kde-format
 msgid "Offline"
 msgstr "वियुक्त"
 
-#: notifier/DiscoverNotifier.cpp:363
+#: notifier/DiscoverNotifier.cpp:375
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "अप्रयुक्तानि अद्यतनं प्रयोजयन्…"
 
-#: notifier/DiscoverNotifier.cpp:388
+#: notifier/DiscoverNotifier.cpp:400
 #, kde-format
 msgid "Restart is required"
 msgstr "पुनर्प्रारम्भः आवश्यकः अस्ति"
 
-#: notifier/DiscoverNotifier.cpp:389
+#: notifier/DiscoverNotifier.cpp:401
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "अद्यतनस्य प्रभावाय तन्त्रस्य पुनः आरम्भस्य आवश्यकता वर्तते।."
 
-#: notifier/DiscoverNotifier.cpp:394
+#: notifier/DiscoverNotifier.cpp:406
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "अद्यतनं पुनः आरम्भं च कुर्वन्तु"
 
-#: notifier/DiscoverNotifier.cpp:395
+#: notifier/DiscoverNotifier.cpp:407
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr "अद्यतनं कुर्वन्तु तथा शट् डाउन कुर्वन्तु"
 
-#: notifier/DiscoverNotifier.cpp:439
+#: notifier/DiscoverNotifier.cpp:451
 #, kde-format
 msgid "Upgrade available"
 msgstr "उन्नयनं उपलब्धम्"
 
-#: notifier/DiscoverNotifier.cpp:440
+#: notifier/DiscoverNotifier.cpp:452
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 इदानीं उपलभ्यते ।."
 
-#: notifier/DiscoverNotifier.cpp:443
+#: notifier/DiscoverNotifier.cpp:455
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"
