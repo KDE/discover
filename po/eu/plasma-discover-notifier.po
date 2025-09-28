@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-12 00:42+0000\n"
+"POT-Creation-Date: 2025-09-28 02:48+0000\n"
 "PO-Revision-Date: 2025-04-14 22:51+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -20,75 +20,75 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 24.12.3\n"
 
-#: notifier/DiscoverNotifier.cpp:206
+#: notifier/DiscoverNotifier.cpp:218
 #, kde-format
 msgid "View Updates"
 msgstr "Ikusi eguneratzeak"
 
-#: notifier/DiscoverNotifier.cpp:353
+#: notifier/DiscoverNotifier.cpp:365
 #, kde-format
 msgid "Security updates available"
 msgstr "Segurtasun eguneratzeak erabilgarri"
 
-#: notifier/DiscoverNotifier.cpp:355
+#: notifier/DiscoverNotifier.cpp:367
 #, kde-format
 msgid "Updates available"
 msgstr "Eguneratzeak erabilgarri"
 
-#: notifier/DiscoverNotifier.cpp:357
+#: notifier/DiscoverNotifier.cpp:369
 #, kde-format
 msgid "System up to date"
 msgstr "Sistema eguneratuta dago"
 
-#: notifier/DiscoverNotifier.cpp:359
+#: notifier/DiscoverNotifier.cpp:371
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Ordenagailua berrabiatu beharra dago"
 
-#: notifier/DiscoverNotifier.cpp:361
+#: notifier/DiscoverNotifier.cpp:373
 #, kde-format
 msgid "Offline"
 msgstr "Lerroz kanpo"
 
-#: notifier/DiscoverNotifier.cpp:363
+#: notifier/DiscoverNotifier.cpp:375
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr "Arretarik gabeko eguneratzeak ezartzen..."
 
-#: notifier/DiscoverNotifier.cpp:388
+#: notifier/DiscoverNotifier.cpp:400
 #, kde-format
 msgid "Restart is required"
 msgstr "Berrabiatu beharra dago"
 
-#: notifier/DiscoverNotifier.cpp:389
+#: notifier/DiscoverNotifier.cpp:401
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr "Sistemak berrabiatu beharra du eguneratzeak indarrean jartzeko."
 
-#: notifier/DiscoverNotifier.cpp:394
+#: notifier/DiscoverNotifier.cpp:406
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "Eguneratu eta berrabiatu"
 
-#: notifier/DiscoverNotifier.cpp:395
+#: notifier/DiscoverNotifier.cpp:407
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr "Eguneratu eta itzali"
 
-#: notifier/DiscoverNotifier.cpp:439
+#: notifier/DiscoverNotifier.cpp:451
 #, kde-format
 msgid "Upgrade available"
 msgstr "Bertsio-berritzea erabilgarri"
 
-#: notifier/DiscoverNotifier.cpp:440
+#: notifier/DiscoverNotifier.cpp:452
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1, orain, erabilgarri dago."
 
-#: notifier/DiscoverNotifier.cpp:443
+#: notifier/DiscoverNotifier.cpp:455
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"

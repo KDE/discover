@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-12 00:42+0000\n"
+"POT-Creation-Date: 2025-09-28 02:48+0000\n"
 "PO-Revision-Date: 2024-08-20 08:34+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -18,77 +18,77 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Lokalize 24.05.2\n"
 
-#: notifier/DiscoverNotifier.cpp:206
+#: notifier/DiscoverNotifier.cpp:218
 #, kde-format
 msgid "View Updates"
 msgstr "Prohlédnout aktualizace"
 
-#: notifier/DiscoverNotifier.cpp:353
+#: notifier/DiscoverNotifier.cpp:365
 #, kde-format
 msgid "Security updates available"
 msgstr "Jsou dostupné bezpečnostní aktualizace"
 
-#: notifier/DiscoverNotifier.cpp:355
+#: notifier/DiscoverNotifier.cpp:367
 #, kde-format
 msgid "Updates available"
 msgstr "Jsou dostupné aktualizace"
 
-#: notifier/DiscoverNotifier.cpp:357
+#: notifier/DiscoverNotifier.cpp:369
 #, kde-format
 msgid "System up to date"
 msgstr "Systém je aktuální"
 
-#: notifier/DiscoverNotifier.cpp:359
+#: notifier/DiscoverNotifier.cpp:371
 #, kde-format
 msgid "Computer needs to restart"
 msgstr "Je potřeba restartovat počítač"
 
-#: notifier/DiscoverNotifier.cpp:361
+#: notifier/DiscoverNotifier.cpp:373
 #, kde-format
 msgid "Offline"
 msgstr "Odpojen"
 
-#: notifier/DiscoverNotifier.cpp:363
+#: notifier/DiscoverNotifier.cpp:375
 #, kde-format
 msgid "Applying unattended updates…"
 msgstr ""
 
-#: notifier/DiscoverNotifier.cpp:388
+#: notifier/DiscoverNotifier.cpp:400
 #, kde-format
 msgid "Restart is required"
 msgstr "Je vyžadován restart"
 
-#: notifier/DiscoverNotifier.cpp:389
+#: notifier/DiscoverNotifier.cpp:401
 #, kde-format
 msgid "The system needs to be restarted for the updates to take effect."
 msgstr ""
 "K provedení změn bude potřeba restartovat počítač po dokončení této "
 "aktualizace."
 
-#: notifier/DiscoverNotifier.cpp:394
+#: notifier/DiscoverNotifier.cpp:406
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Restart"
 msgstr "Aktualizovat a restartovat"
 
-#: notifier/DiscoverNotifier.cpp:395
+#: notifier/DiscoverNotifier.cpp:407
 #, kde-format
 msgctxt "@action:button"
 msgid "Update and Shut Down"
 msgstr "Aktualizovat a vypnout"
 
-#: notifier/DiscoverNotifier.cpp:439
+#: notifier/DiscoverNotifier.cpp:451
 #, kde-format
 msgid "Upgrade available"
 msgstr "Dostupná aktualizace distribuce"
 
-#: notifier/DiscoverNotifier.cpp:440
+#: notifier/DiscoverNotifier.cpp:452
 #, kde-format
 msgctxt "A new distro release (name and version) is available for upgrade"
 msgid "%1 is now available."
 msgstr "%1 je nyní dostupný."
 
-#: notifier/DiscoverNotifier.cpp:443
+#: notifier/DiscoverNotifier.cpp:455
 #, kde-format
 msgctxt "@action:button"
 msgid "Upgrade"

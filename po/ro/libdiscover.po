@@ -115,7 +115,8 @@ msgstr ""
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:283
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Error"
 msgid "Error"
 msgstr "Eroare"
 
