@@ -1517,7 +1517,11 @@ static bool isFlatpakSubRef(const QLatin1String &name)
     return name.endsWith(QLatin1String(".Debug")) || name.endsWith(QLatin1String(".Locale")) || name.endsWith(QLatin1String(".Docs"));
 }
 
-void triage(FlatpakResource *resource, QVector<StreamResult> &prioritary, QVector<StreamResult> &rest, const AbstractResourcesBackend::Filters &filter)
+void triage(FlatpakResource *resource,
+            QVector<StreamResult> &prioritary,
+            QVector<StreamResult> &rest,
+            const AbstractResourcesBackend::Filters &filter,
+            bool filtered)
 {
     const bool matchById = resource->appstreamId().compare(filter.search, Qt::CaseInsensitive) == 0;
     // Note: FlatpakResource can not have type == System
@@ -1541,7 +1545,7 @@ void triage(FlatpakResource *resource, QVector<StreamResult> &prioritary, QVecto
         rest += resource;
     } else if (resource->name().contains(filter.search, Qt::CaseInsensitive)) {
         prioritary += resource;
-    } else if (resource->comment().contains(filter.search, Qt::CaseInsensitive)) {
+    } else if (filtered || resource->comment().contains(filter.search, Qt::CaseInsensitive)) {
         rest += resource;
         // trust The search terms provided by appstream are relevant, this makes possible finding "gimp"
         // since the name() is "GNU Image Manipulation Program"
@@ -1783,13 +1787,13 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 fw->setFuture(QtFuture::whenAll(futures.begin(), futures.end()));
                 FLATPAK_BACKEND_YIELD
                 for (auto r : unpooled) {
-                    triage(r, prioritary, rest, filter);
+                    triage(r, prioritary, rest, filter, false);
                 }
                 connect(fw, &QFS::finished, stream, [self, futures, stream, _rest = rest, _prioritary = prioritary, filter, fw]() {
                     QVector<StreamResult> rest(_rest), prioritary(_prioritary);
                     for (const auto [source, future] : futures.asKeyValueRange()) {
                         for (const auto &component : future.result()) {
-                            triage(self->resourceForComponent(component, source), prioritary, rest, filter);
+                            triage(self->resourceForComponent(component, source), prioritary, rest, filter, true);
                         }
                     }
 
