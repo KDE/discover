@@ -10,6 +10,7 @@
 #include "DiscoverVersion.h"
 #include <DiscoverBackendsFactory.h>
 #include <KAboutData>
+#include <KConfig>
 #include <KDBusService>
 #include <KLocalizedString>
 #include <KWindowSystem>
@@ -139,6 +140,12 @@ int main(int argc, char **argv)
     about.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
 
     KAboutData::setApplicationData(about);
+
+    {
+        // clean up old window geometry data
+        KConfig config;
+        config.deleteGroup(QStringLiteral("Window"));
+    }
 
     DiscoverObject *discoverObject = nullptr;
     {
