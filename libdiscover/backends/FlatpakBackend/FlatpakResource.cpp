@@ -747,8 +747,7 @@ QString FlatpakResource::versionString()
     } else {
         version = m_id.branch;
     }
-
-    return AppStreamUtils::versionString(version, m_appdata);
+    return version;
 }
 
 QString translateSymbolicName(const QStringView &name)

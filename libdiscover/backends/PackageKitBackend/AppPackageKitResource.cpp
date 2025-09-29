@@ -264,8 +264,7 @@ void AppPackageKitResource::invokeApplication() const
 
 QString AppPackageKitResource::versionString()
 {
-    const QString version = isInstalled() ? installedVersion() : availableVersion();
-    return AppStreamUtils::versionString(version, m_appdata);
+    return isInstalled() ? installedVersion() : availableVersion();
 }
 
 QDate AppPackageKitResource::releaseDate() const

@@ -33,9 +33,6 @@ DISCOVERCOMMON_EXPORT QJsonObject license(const QString &spdxId);
 
 DISCOVERCOMMON_EXPORT QStringList appstreamIds(const QUrl &appstreamUrl);
 
-/// Helps implement AbstractResource::versionString
-DISCOVERCOMMON_EXPORT QString versionString(const QString &version, const AppStream::Component &appdata);
-
 DISCOVERCOMMON_EXPORT QString contentRatingDescription(const AppStream::Component &appdata);
 DISCOVERCOMMON_EXPORT uint contentRatingMinimumAge(const AppStream::Component &appdata);
 

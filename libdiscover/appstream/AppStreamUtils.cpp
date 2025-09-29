@@ -144,17 +144,6 @@ QStringList AppStreamUtils::appstreamIds(const QUrl &appstreamUrl)
     return ret;
 }
 
-QString AppStreamUtils::versionString(const QString &version, const AppStream::Component &appdata)
-{
-    Q_UNUSED(appdata);
-
-    if (version.isEmpty()) {
-        return {};
-    }
-
-    return version;
-}
-
 QString AppStreamUtils::contentRatingDescription(const AppStream::Component &appdata)
 {
     const auto ratings = appdata.contentRatings();
