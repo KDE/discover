@@ -174,7 +174,7 @@ Rating OdrsReviewsBackend::ratingForApplication(AbstractResource *resource) cons
         return {};
     }
 
-    return m_current.ratings[resource->appstreamId()];
+    return m_current.ratings[resource->appstreamId().toLower()];
 }
 
 void OdrsReviewsBackend::submitUsefulness(Review *review, bool useful)
@@ -274,6 +274,7 @@ void OdrsReviewsBackend::parseRatings()
         constexpr uint topSize = 25;
         for (auto it = jsonObject.begin(); it != jsonObject.end(); it++) {
             const auto appJsonObject = it.value().toObject();
+            const auto packageName = it.key().toLower();
 
             const int ratingCount = appJsonObject.value(QLatin1String("total")).toInt();
             int ratingMap[] = {
@@ -285,7 +286,7 @@ void OdrsReviewsBackend::parseRatings()
                 appJsonObject.value(QLatin1String("star5")).toInt(),
             };
 
-            const auto rating = Rating(it.key(), ratingCount, ratingMap);
+            const auto rating = Rating(packageName, ratingCount, ratingMap);
             const auto finder = [&rating](const Rating &review) {
                 return review.ratingPoints() < rating.ratingPoints();
             };
@@ -301,7 +302,7 @@ void OdrsReviewsBackend::parseRatings()
                 state.top.resize(topSize);
             }
 
-            state.ratings.insert(it.key(), rating);
+            state.ratings.insert(packageName, rating);
         }
         return state;
     }));
