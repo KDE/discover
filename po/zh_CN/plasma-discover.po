@@ -18,10 +18,7 @@ msgstr ""
 "X-Crowdin-File-ID: 43165\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
@@ -29,12 +26,7 @@ msgstr ""
 "%1 没有配置为通过 Discover 安装应用 — 它只通过 Discover 安装应用的附加组件"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -42,7 +34,8 @@ msgid ""
 "interface>.<nl/><nl/>Please <link url='%1'>report this issue to %2.</link>"
 msgstr ""
 "要使用 Discover 安装应用，请在 <interface>设置</interface> 页面的 <interface>"
-"缺失的后端程序</interface> 栏目中安装您首选使用的模块。"
+"缺失的后端程序</interface> 栏目中安装您首选使用的模块。<nl/><nl/>请将此问题 "
+"<link url='%1'>报告给 %2。</link>"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -109,7 +102,7 @@ msgstr "请确保 Snap 支持已经安装"
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
-msgstr ""
+msgstr "请求的应用程序在所有可用的软件仓库中均未找到。"
 
 #: discover/DiscoverObject.cpp:410
 #, kde-kuit-format
@@ -119,7 +112,7 @@ msgctxt ""
 msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
-msgstr ""
+msgstr "(%1 没有条目)<nl/><nl/>请将此问题 <link url='%2'>报告给 %3。</link>"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:120
@@ -554,13 +547,13 @@ msgstr "%1 的评论暂时不可用"
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "目前还没有评论"
 
 #: discover/qml/ApplicationPage.qml:774
 #, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
-msgstr ""
+msgstr "安装程序后才能发表评论"
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
@@ -884,9 +877,7 @@ msgid "Proceed"
 msgstr "继续"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
 msgstr "报告此问题给 %1"
@@ -1530,9 +1521,3 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
-
-#~ msgid "Report This Issue"
-#~ msgstr "报告此问题"
-
-#~ msgid "Report this issue"
-#~ msgstr "报告此问题"
