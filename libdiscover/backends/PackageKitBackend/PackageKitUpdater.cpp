@@ -26,6 +26,9 @@
 #include <algorithm>
 #include <optional>
 
+#if !QPK_CHECK_VERSION(1, 1, 4)
+#include "pk-offline-private.h"
+#endif
 #include "libdiscover_backend_packagekit_debug.h"
 #include "utils.h"
 
@@ -342,13 +345,12 @@ void PackageKitUpdater::prepare()
         return;
     }
 
-    // <bool, QStringList, Transaction::Role, qint64, Transaction::Error, QString>
+#if QPK_CHECK_VERSION(1, 1, 4)
     auto results = offline->getResults();
     results.waitForFinished();
-#if QPK_CHECK_VERSION(1, 1, 4)
     if (results.isError() || !results.success()) {
 #else
-    if (results.isError() || results.argumentAt<0>() == false) {
+    if (QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
 #endif
         qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "Removed offline results file";
         offline->clearResults();
