@@ -80,7 +80,7 @@ public:
 
     QString name() const;
     // You should never attempt to change the name of anything that is not a leaf category
-    // as the results could be potentially detremental to the function of the category filters
+    // as the results could be potentially detrimental to the function of the category filters
     void setName(const QString &name);
     QString icon() const;
     void setFilter(const CategoryFilter &filter);

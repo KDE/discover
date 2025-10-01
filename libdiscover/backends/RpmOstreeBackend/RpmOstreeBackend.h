@@ -65,7 +65,7 @@ public Q_SLOTS:
     void transactionStatusChanged(Transaction::Status status);
 
 private:
-    /* Once rpm-ostree has effectively stated, registrer ourselves as update
+    /* Once rpm-ostree has effectively started, register ourselves as update
      * driver to the rpm-ostreed daemon to make sure that it does not exit while
      * we are running and then initialize the rest of the backend. */
     void initializeBackend();
@@ -82,7 +82,7 @@ private:
     /* Called when a new major version is found to setup user facing actions */
     void foundNewMajorVersion(const AppStream::Release &release);
 
-    /* Set to true once we've successfully registrered with rpm-ostree */
+    /* Set to true once we've successfully registered with rpm-ostree */
     bool m_registrered;
 
     /* The list of available deployments */
@@ -106,7 +106,7 @@ private:
     /* Qt bindings to the main rpm-ostree DBus interface */
     OrgProjectatomicRpmostree1SysrootInterface *m_interface;
 
-    /* We're re-using the standard backend updater logic */
+    /* We're reusing the standard backend updater logic */
     StandardBackendUpdater *m_updater;
 
     /* AppStream pool to be able to the distribution major release versions */

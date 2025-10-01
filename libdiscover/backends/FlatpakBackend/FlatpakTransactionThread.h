@@ -116,7 +116,7 @@ private:
     QString m_initializationErrorMessage;
     std::optional<bool> m_operationSuccess;
     // Tries to runtimes to app refs when information is available. Notably, calls to choose_remote_for_ref will produce a mapping here.
-    // The intent is to allow tieing runtimes (which we consider internal) to application refs, so we can display them in the UI.
+    // The intent is to allow tying runtimes (which we consider internal) to application refs, so we can display them in the UI.
     QHash<QString, QString> m_runtimeToAppRef;
 
     QVector<int> m_webflows;

@@ -61,7 +61,7 @@ private:
      * only notify once about an update for a given version. */
     QString m_updateVersion;
 
-    /* Check if we already have a pending deployment for the version avaialbe
+    /* Check if we already have a pending deployment for the version availalbe
      * for update */
     void checkForPendingDeployment();
 
@@ -74,6 +74,6 @@ private:
     /* Watcher to trigger a reboot check when deployments are modified */
     QFileSystemWatcher *m_watcher;
 
-    /* Timer triggerred by the above watcher to wait for things to settle down before re-doing a deployment check */
+    /* Timer triggered by the above watcher to wait for things to settle down before re-doing a deployment check */
     QTimer *m_timer;
 };

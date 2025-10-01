@@ -53,7 +53,7 @@ public:
     QString name() const override;
     QVariant icon() const override;
 
-    /* Efectively start the transaction when calling an rpm-ostree command */
+    /* Effectively start the transaction when calling an rpm-ostree command */
     void start();
 
 Q_SIGNALS:

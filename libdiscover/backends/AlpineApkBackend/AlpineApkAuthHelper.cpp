@@ -97,7 +97,7 @@ void AlpineApkAuthHelper::reportProgress(float percent)
 
 void AlpineApkAuthHelper::onTransactionError(const QString &msg)
 {
-    qCWarning(LOG_AUTHHELPER).nospace() << "ERROR occured in transaction \"" << m_currentTransaction->desc() << "\": " << msg;
+    qCWarning(LOG_AUTHHELPER).nospace() << "ERROR occurred in transaction \"" << m_currentTransaction->desc() << "\": " << msg;
     // construct error message to use in helper reply
     const QString errMsg = m_currentTransaction->desc() + QLatin1String(" failed: ") + msg;
     m_actionReply.setErrorDescription(errMsg);

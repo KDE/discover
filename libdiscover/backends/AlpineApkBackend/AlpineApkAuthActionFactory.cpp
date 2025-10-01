@@ -26,7 +26,7 @@ static KAuth::Action createAlpineApkKAuthAction()
     static const KAuth::Action::DetailsMap details{{KAuth::Action::AuthDetail::DetailMessage, i18n("Package management")}};
     action.setDetailsV2(details);
 
-    // change default timeout to 1 minute, bcause default DBus timeout
+    // change default timeout to 1 minute, because default DBus timeout
     //   of 25 seconds is not enough
     action.setTimeout(1 * 60 * 1000);
 

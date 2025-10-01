@@ -15,7 +15,7 @@ KirigamiComponents.FloatingButton {
 
     /*
      * This property controls whether opacity and translation should be animated.
-     * Note that any cuurently running animations can not be stopped.
+     * Note that any currently running animations can not be stopped.
      */
     required property bool animated
 

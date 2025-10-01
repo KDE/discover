@@ -149,7 +149,7 @@ QUrl FwupdResource::url() const
 
 QString FwupdResource::executeLabel() const
 {
-    return QStringLiteral("Not Invokable");
+    return QStringLiteral("Not Invocable");
 }
 
 void FwupdResource::setReleaseDetails(FwupdRelease *release)

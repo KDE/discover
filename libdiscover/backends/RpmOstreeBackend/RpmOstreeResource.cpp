@@ -152,7 +152,7 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
         // the latest tag points to a version build with the new major release.
         if (m_ostreeFormat->tag() == QLatin1String("latest")) {
             qCWarning(RPMOSTREE_LOG) << "Ignoring major version rebase on container origin following the 'latest' tag.";
-            // Hidden environement variable to help debugging rebases, skipping this check
+            // Hidden environment variable to help debugging rebases, skipping this check
             if (qEnvironmentVariableIntValue("ORG_KDE_DISCOVER_DEVEL") != 0) {
                 return true;
             }
@@ -204,7 +204,7 @@ bool RpmOstreeResource::setNewMajorVersion(const QString &newMajorVersion)
     QString currentVersion = AppStreamIntegration::global()->osRelease()->versionId();
     QString newVersionBranch = m_ostreeFormat->ref().replace(currentVersion, newMajorVersion.toLower(), Qt::CaseInsensitive);
 
-    // Iterate over the remote refs to verify that the new verions has a branch available
+    // Iterate over the remote refs to verify that the new version has a branch available
     GHashTableIter iter;
     gpointer key, value;
     g_hash_table_iter_init(&iter, refs);

@@ -87,7 +87,7 @@ void OdrsReviewsJob::parseReviews(const QJsonDocument &document)
     for (const auto &it : reviews) {
         const QJsonObject review = it.toObject();
         if (!review.isEmpty()) {
-            // Same ranking algorythm Gnome Software uses
+            // Same ranking algorithm Gnome Software uses
             const int usefulFavorable = review.value(QLatin1StringView("karma_up")).toInt();
             const int usefulNegative = review.value(QLatin1StringView("karma_down")).toInt();
             const int usefulTotal = usefulFavorable + usefulNegative;

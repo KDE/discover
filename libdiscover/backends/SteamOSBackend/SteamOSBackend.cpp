@@ -149,7 +149,7 @@ bool SteamOSBackend::fetchExistingTransaction()
         return true;
     }
 
-    // Is there actualy a transaction in progress we don't know about yet?
+    // Is there actually a transaction in progress we don't know about yet?
     uint status = m_interface->updateStatus();
     if (status != Idle) {
         qInfo() << "steamos-backend: Found a transaction in progress";

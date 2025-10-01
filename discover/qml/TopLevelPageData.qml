@@ -12,7 +12,7 @@ Kirigami.Action {
     checked: window.currentTopLevel === component
 
     onToggled: {
-        // Since there is no achitecture in place to act as a controller for
+        // Since there is no architecture in place to act as a controller for
         // any of this navigation, exclusive top-level actions have to ensure
         // they can not be unchecked by clicking a second time.
         if (!checked) {

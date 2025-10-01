@@ -1072,7 +1072,7 @@ void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
         return;
     }
 
-    // No updates pending or avaiable. We are good to offer the upgrade to the
+    // No updates pending or available. We are good to offer the upgrade to the
     // next major version!
     Q_EMIT inlineMessageChanged(majorUpgradeAvailableMessage);
 }

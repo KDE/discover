@@ -41,7 +41,7 @@ RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
     m_timer->setInterval(10000);
     connect(m_timer, &QTimer::timeout, this, &RpmOstreeNotifier::checkForPendingDeployment);
 
-    // Find all ostree managed system installations available. There is usualy only one but
+    // Find all ostree managed system installations available. There is usually only one but
     // doing that dynamically here avoids hardcoding a specific value or doing a DBus call.
     QDirIterator it(QStringLiteral("/ostree/deploy/"), QDir::AllDirs | QDir::NoDotAndDotDot);
     while (it.hasNext()) {

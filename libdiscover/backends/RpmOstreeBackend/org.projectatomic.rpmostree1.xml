@@ -589,7 +589,7 @@
 
       <!--
          transfer data, format is:
-         (bytes transfered, bytes/s)
+         (bytes transferred, bytes/s)
       -->
       <arg name="transfer" type="(tt)" direction="out"/>
       <annotation name="org.qtproject.QtDBus.QtTypeName.Out5" value="QVariantList"/>

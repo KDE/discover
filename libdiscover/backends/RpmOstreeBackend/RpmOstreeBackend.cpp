@@ -87,7 +87,7 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
     }
     const auto registeredServices = reply.value();
     if (registeredServices.contains(DBusServiceName)) {
-        // rpm-ostree daemon is running, let's intialize the backend
+        // rpm-ostree daemon is running, let's initialize the backend
         initializeBackend();
     } else {
         // Activate the rpm-ostreed daemon via DBus service activation
@@ -158,7 +158,7 @@ void RpmOstreeBackend::initializeBackendFirstStart()
 
 void RpmOstreeBackend::refreshDeployments()
 {
-    // Get the path for the curently booted OS DBus interface.
+    // Get the path for the currently booted OS DBus interface.
     m_bootedObjectPath = m_interface->booted().path();
 
     // Reset the list of deployments
@@ -225,7 +225,7 @@ bool RpmOstreeBackend::hasExternalTransaction()
         return true;
     }
 
-    // Is there actualy a transaction in progress we don't know about yet?
+    // Is there actually a transaction in progress we don't know about yet?
     const QString transaction = m_interface->activeTransactionPath();
     if (!transaction.isEmpty()) {
         qCInfo(RPMOSTREE_LOG) << "Found a transaction in progress";
@@ -253,7 +253,7 @@ void RpmOstreeBackend::checkForUpdates()
         return;
     }
 
-    // Do not start a transaction if there is already one in-progress (likely externaly started)
+    // Do not start a transaction if there is already one in-progress (likely externally started)
     if (hasExternalTransaction()) {
         qCInfo(RPMOSTREE_LOG) << "Not checking for updates while a transaction is in progress";
         return;
@@ -386,7 +386,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const AppStream::Release &release)
         }
     }
 
-    // Hidden environement variable to help debugging rebases, skipping the checks below
+    // Hidden environment variable to help debugging rebases, skipping the checks below
     if (qEnvironmentVariableIntValue("DISCOVER_RPM_OSTREE_DEVEL") != 0) {
         Q_EMIT inlineMessageChanged(m_rebaseAvailableMessage);
         return;
@@ -417,7 +417,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const AppStream::Release &release)
         return;
     }
 
-    // No updates pending or avaiable. We are good to offer the rebase to the
+    // No updates pending or available. We are good to offer the rebase to the
     // next major version!
     Q_EMIT inlineMessageChanged(m_rebaseAvailableMessage);
 }
@@ -499,7 +499,7 @@ void RpmOstreeBackend::rebaseToNewVersion()
     }
 
     if (m_currentlyBootedDeployment->state() == AbstractResource::Upgradeable) {
-        // Hidden environement variable to help debugging this path
+        // Hidden environment variable to help debugging this path
         if (qEnvironmentVariableIntValue("DISCOVER_RPM_OSTREE_DEVEL") != 0) {
             qCInfo(RPMOSTREE_LOG) << "You have pending updates for current version. Proceeding anyway.";
             passiveMessage(i18n("You have pending updates for the current version. Proceeding anyway."));

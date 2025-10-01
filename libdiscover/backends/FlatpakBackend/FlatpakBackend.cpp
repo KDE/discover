@@ -1594,7 +1594,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 const auto refBranch = flatpak_ref_get_branch(ref);
 
                 // need to issue the search of installed refs too
-                // it can happpen that a ref is present because it's installed but not part of the appstream metadata anymore
+                // it can happen that a ref is present because it's installed but not part of the appstream metadata anymore
                 for (auto installation : std::as_const(installations)) {
                     g_autoptr(GError) localError = nullptr;
                     g_autoptr(FlatpakInstalledRef) installedRef =
