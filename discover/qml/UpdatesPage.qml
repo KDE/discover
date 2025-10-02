@@ -587,6 +587,7 @@ DiscoverPage {
             PropertyChanges { page.footerProgress: Discover.ResourcesModel.fetchingUpdatesProgress }
             PropertyChanges { page.actions: [ updateAction, refreshAction ] }
             PropertyChanges { page.busy: true }
+            PropertyChanges { statusLabel.progressBar.visible: true }
             PropertyChanges { updatesView.opacity: 0 }
         },
         State {
