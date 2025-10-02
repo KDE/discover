@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-25 00:43+0000\n"
+"POT-Creation-Date: 2025-10-02 00:43+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -129,7 +129,7 @@ msgid ""
 msgstr ""
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
-#: discover/main.cpp:120
+#: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "डिस्कोवर्"
@@ -140,117 +140,117 @@ msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr "कतिपयकार्यं कर्तुं पूर्वं डिस्कवरः निरुद्धः आसीत्, तस्य समाप्तिम् प्रतीक्षते स्म ।."
 
-#: discover/main.cpp:34
+#: discover/main.cpp:35
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "निर्दिष्टं अनुप्रयोगं प्रत्यक्षतया तस्य appstream:// URI द्वारा उद्घाटयन्तु।."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:36
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr ""
 "दत्तस्य अनुकरणप्रकारस्य निवारणं कर्तुं शक्नुवन्ति इति कार्यक्रमानां अन्वेषणेन उद्घाटयन्तु ।."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:37
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "श्रेणीसहितं प्रविष्टीनां सूचीं प्रदर्शयन्तु ।."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:38
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "उक्तविधाने डिस्कोवर् उद्घाटयन्तु। पद्धति साधनपट्टिका गण्डाः इत्यस्य अनुरूपाः भवन्ति ।."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:39
 #, kde-format
 msgid "List all the available modes."
 msgstr "सर्वाणि उपलब्धविधानानि सूचीबद्धानि कुर्वन्तु।."
 
-#: discover/main.cpp:39
+#: discover/main.cpp:40
 #, kde-format
 msgid "Local package file to install"
 msgstr "संस्थापयितुं स्थानीयसंकुलसञ्चिका"
 
-#: discover/main.cpp:40
+#: discover/main.cpp:41
 #, kde-format
 msgid "List all the available backends."
 msgstr "उपलब्धानि सर्वाणि पृष्ठभागाः सूचीबद्धं कुर्वन्तु ।."
 
-#: discover/main.cpp:41
+#: discover/main.cpp:42
 #, kde-format
 msgid "Search string."
 msgstr "अन्वेषण अक्षरावलि।."
 
-#: discover/main.cpp:42
+#: discover/main.cpp:43
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "उपयोक्तृप्रतिक्रियायाः कृते उपलब्धविकल्पान् सूचीबद्धं करोति"
 
-#: discover/main.cpp:43
+#: discover/main.cpp:44
 #, kde-format
 msgid "Starts an update automatically, headless"
 msgstr ""
 
-#: discover/main.cpp:45
+#: discover/main.cpp:46
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "appstream: url योजना समर्थयति"
 
-#: discover/main.cpp:122
+#: discover/main.cpp:123
 #, kde-format
 msgid "An application explorer"
 msgstr "एकः अनुप्रयोगः अन्वेषकः"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:125
 #, fuzzy, kde-format
 #| msgid "© 2010-2024 Plasma Development Team"
 msgid "© 2010-2025 Plasma Development Team"
 msgstr "© २०१०-२०२४ प्लाज्मा विकासदल"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:126
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "अलेक्स् पोल् गोन्जालेज्"
 
-#: discover/main.cpp:126
+#: discover/main.cpp:127
 #, kde-format
 msgid "Nate Graham"
 msgstr "नेट् ग्राहम्"
 
-#: discover/main.cpp:127
+#: discover/main.cpp:128
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "गुणवत्ता आश्वासन, परिकल्पना तथा उपयोगिता"
 
-#: discover/main.cpp:131
+#: discover/main.cpp:132
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "दान लेनिर् तुर्थ्रा जेन्सेन्"
 
-#: discover/main.cpp:132
+#: discover/main.cpp:133
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:139
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "श्रीकान्त् कलवार्"
 
-#: discover/main.cpp:139
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "skkalwar999@gmail.com"
 
-#: discover/main.cpp:153
+#: discover/main.cpp:160
 #, kde-format
 msgid "Available backends:\n"
 msgstr "उपलब्धाः पृष्ठभागाः :\n"
 
-#: discover/main.cpp:206
+#: discover/main.cpp:213
 #, kde-format
 msgid "Available modes:\n"
 msgstr "उपलब्धविधानानि :\n"

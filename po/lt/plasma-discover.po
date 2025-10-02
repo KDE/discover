@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-25 00:43+0000\n"
+"POT-Creation-Date: 2025-10-02 00:43+0000\n"
 "PO-Revision-Date: 2025-09-06 18:07+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -131,7 +131,7 @@ msgstr ""
 "%3.</link>"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
-#: discover/main.cpp:120
+#: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -144,116 +144,116 @@ msgstr ""
 "Discover buvo užverta dar neatlikus iki galo tam tikrų užduočių, laukiama, "
 "kol jos bus užbaigtos."
 
-#: discover/main.cpp:34
+#: discover/main.cpp:35
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr "Tiesiogiai atverti nurodytą programą pagal jos appstream:// URI."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:36
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr "Atverti naudojant programų, galinčių apdoroti šį MIME tipą, paiešką."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:37
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "Rodyti kategorijos įrašų sąrašą."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:38
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "Atverti „Discover“ nusakytoje veiksenoje. Veiksenos derinasi prie įrankių "
 "juostos mygtukų."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:39
 #, kde-format
 msgid "List all the available modes."
 msgstr "Išvardyti visas prieinamas veiksenas."
 
-#: discover/main.cpp:39
+#: discover/main.cpp:40
 #, kde-format
 msgid "Local package file to install"
 msgstr "Vietinis paketas, kurį įdiegti"
 
-#: discover/main.cpp:40
+#: discover/main.cpp:41
 #, kde-format
 msgid "List all the available backends."
 msgstr "Rodyti visas prieinamas vidines puses."
 
-#: discover/main.cpp:41
+#: discover/main.cpp:42
 #, kde-format
 msgid "Search string."
 msgstr "Paieškos eilutė."
 
-#: discover/main.cpp:42
+#: discover/main.cpp:43
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "Išvardija prieinamas naudotojo grįžtamojo ryšio parinktis"
 
-#: discover/main.cpp:43
+#: discover/main.cpp:44
 #, kde-format
 msgid "Starts an update automatically, headless"
 msgstr "Automatiškai pradeda atnaujinimą, be naudotojo sąsajos"
 
-#: discover/main.cpp:45
+#: discover/main.cpp:46
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "Palaiko appstream: url schemą"
 
-#: discover/main.cpp:122
+#: discover/main.cpp:123
 #, kde-format
 msgid "An application explorer"
 msgstr "Programų paieškos įrankis"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:125
 #, kde-format
 msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010–2025 Plasma plėtojimo komanda"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:126
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:126
+#: discover/main.cpp:127
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:127
+#: discover/main.cpp:128
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Kokybės užtikrinimas, dizainas ir tinkamumas"
 
-#: discover/main.cpp:131
+#: discover/main.cpp:132
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:132
+#: discover/main.cpp:133
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:139
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Moo"
 
-#: discover/main.cpp:139
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "<>"
 
-#: discover/main.cpp:153
+#: discover/main.cpp:160
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Prieinamos vidinės pusės:\n"
 
-#: discover/main.cpp:206
+#: discover/main.cpp:213
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Prieinamos veiksenos:\n"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-25 00:43+0000\n"
+"POT-Creation-Date: 2025-10-02 00:43+0000\n"
 "PO-Revision-Date: 2024-06-09 11:25+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -134,7 +134,7 @@ msgid ""
 msgstr ""
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
-#: discover/main.cpp:120
+#: discover/main.cpp:121
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
@@ -147,118 +147,118 @@ msgstr ""
 "Discover a fost închis înainte ca anumite sarcini să fie gata, se așteaptă "
 "încheierea acestora."
 
-#: discover/main.cpp:34
+#: discover/main.cpp:35
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr ""
 "Deschide aplicația specificată direct, conform URI-ului său appstream://."
 
-#: discover/main.cpp:35
+#: discover/main.cpp:36
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr "Deschide cu căutarea după programe care se descurcă cu tipul MIME dat."
 
-#: discover/main.cpp:36
+#: discover/main.cpp:37
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr "Afișează o listă de înregistrări cu o categorie."
 
-#: discover/main.cpp:37
+#: discover/main.cpp:38
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 "Deschide „Discover” într-un regim dat. Regimurile corespund butoanelor de pe "
 "bara de unelte."
 
-#: discover/main.cpp:38
+#: discover/main.cpp:39
 #, kde-format
 msgid "List all the available modes."
 msgstr "Enumeră toate regimurile disponibile."
 
-#: discover/main.cpp:39
+#: discover/main.cpp:40
 #, kde-format
 msgid "Local package file to install"
 msgstr "Fișier cu pachet local de instalat"
 
-#: discover/main.cpp:40
+#: discover/main.cpp:41
 #, kde-format
 msgid "List all the available backends."
 msgstr "Enumeră toate platformele disponibile."
 
-#: discover/main.cpp:41
+#: discover/main.cpp:42
 #, kde-format
 msgid "Search string."
 msgstr "Șir de căutat."
 
-#: discover/main.cpp:42
+#: discover/main.cpp:43
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr "Enumeră opțiunile disponibile pentru reacții din partea utilizatorului"
 
-#: discover/main.cpp:43
+#: discover/main.cpp:44
 #, kde-format
 msgid "Starts an update automatically, headless"
 msgstr ""
 
-#: discover/main.cpp:45
+#: discover/main.cpp:46
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr "Susține schema de URL appstream:"
 
-#: discover/main.cpp:122
+#: discover/main.cpp:123
 #, kde-format
 msgid "An application explorer"
 msgstr "Explorator de aplicații"
 
-#: discover/main.cpp:124
+#: discover/main.cpp:125
 #, fuzzy, kde-format
 #| msgid "© 2010-2024 Plasma Development Team"
 msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010-2024 Echipa de dezvoltatori Plasma"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:126
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "Aleix Pol Gonzalez"
 
-#: discover/main.cpp:126
+#: discover/main.cpp:127
 #, kde-format
 msgid "Nate Graham"
 msgstr "Nate Graham"
 
-#: discover/main.cpp:127
+#: discover/main.cpp:128
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "Asigurarea calității, proiectare și ușurință în utilizare"
 
-#: discover/main.cpp:131
+#: discover/main.cpp:132
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr "Dan Leinir Turthra Jensen"
 
-#: discover/main.cpp:132
+#: discover/main.cpp:133
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:139
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Sergiu Bivol"
 
-#: discover/main.cpp:139
+#: discover/main.cpp:140
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sergiu@cip.md"
 
-#: discover/main.cpp:153
+#: discover/main.cpp:160
 #, kde-format
 msgid "Available backends:\n"
 msgstr "Platforme disponibile:\n"
 
-#: discover/main.cpp:206
+#: discover/main.cpp:213
 #, kde-format
 msgid "Available modes:\n"
 msgstr "Regimuri disponibile:\n"
