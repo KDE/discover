@@ -2146,7 +2146,10 @@ void FlatpakBackend::checkForUpdates()
     disconnect(this, &FlatpakBackend::initialized, m_checkForUpdatesTimer, qOverload<>(&QTimer::start));
     for (const auto &source : std::as_const(m_flatpakSources)) {
         if (source->remote()) {
-            Q_ASSERT(!m_refreshAppstreamMetadataJobs.contains(source->remote()));
+            if (m_refreshAppstreamMetadataJobs.contains(source->remote())) {
+                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Already checking for updates" << source->name();
+                continue;
+            }
             m_refreshAppstreamMetadataJobs.insert(source->remote());
             checkForRemoteUpdates(source->installation(), source->remote());
         }
