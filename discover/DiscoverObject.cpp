@@ -462,7 +462,7 @@ public:
 
 bool DiscoverObject::quitWhenIdle()
 {
-    if (!ResourcesModel::global()->isBusy()) {
+    if (!isBusy()) {
         return true;
     }
 
@@ -503,9 +503,14 @@ void DiscoverObject::restore()
     }
 }
 
+bool DiscoverObject::isBusy() const
+{
+    return TransactionModel::global()->rowCount() > 0;
+}
+
 void DiscoverObject::reconsiderQuit()
 {
-    if (ResourcesModel::global()->isBusy()) {
+    if (isBusy()) {
         return;
     }
 

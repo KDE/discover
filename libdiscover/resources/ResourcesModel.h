@@ -95,7 +95,6 @@ public:
     }
     bool hasSecurityUpdates() const;
 
-    bool isBusy() const;
     bool isInitializing() const;
 
     Q_SCRIPTABLE bool isExtended(const QString &id);

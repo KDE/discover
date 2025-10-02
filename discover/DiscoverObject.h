@@ -85,6 +85,7 @@ Q_SIGNALS:
     void sidebarWidthChanged(int width);
 
 private:
+    bool isBusy() const;
     void showLoadingPage();
     void initMainWindow(QQuickWindow *mainWindow);
     void reconsiderQuit();

@@ -225,11 +225,6 @@ bool ResourcesModel::isInitializing() const
     return m_isInitializing;
 }
 
-bool ResourcesModel::isBusy() const
-{
-    return TransactionModel::global()->rowCount() > 0;
-}
-
 bool ResourcesModel::isExtended(const QString &id)
 {
     return std::any_of(m_backends.constBegin(), m_backends.constEnd(), [&](AbstractResourcesBackend *backend) {
