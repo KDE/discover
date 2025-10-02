@@ -155,7 +155,6 @@ void StandardBackendUpdater::transactionRemoved(Transaction *t)
             }
         }
     }
-    refreshUpdateable();
 }
 
 void StandardBackendUpdater::refreshProgress()
@@ -188,6 +187,7 @@ void StandardBackendUpdater::refreshUpdateable()
         return;
     }
 
+    m_timer.stop();
     setSettingUp(true);
     Q_EMIT progressingChanged(true);
     Q_EMIT fetchingChanged();
@@ -258,9 +258,9 @@ void StandardBackendUpdater::cleanup()
 {
     m_lastUpdate = QDateTime::currentDateTime();
     m_toUpgrade.clear();
+    Q_EMIT progressingChanged(false);
 
     refreshUpdateable();
-    Q_EMIT progressingChanged(false);
 }
 
 QList<AbstractResource *> StandardBackendUpdater::toUpdate() const
