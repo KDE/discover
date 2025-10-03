@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-01 02:43+0000\n"
+"POT-Creation-Date: 2025-10-03 02:41+0000\n"
 "PO-Revision-Date: 2025-09-15 12:24+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -2648,7 +2648,7 @@ msgstr "رجاء تأكد من الاتصال بالإنترنت"
 msgid "Refresh"
 msgstr "حدّث"
 
-#: libdiscover/resources/ResourcesModel.cpp:398
+#: libdiscover/resources/ResourcesModel.cpp:393
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
