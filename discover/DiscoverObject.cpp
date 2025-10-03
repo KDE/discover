@@ -676,12 +676,11 @@ void DiscoverObject::promptReboot()
 void DiscoverObject::rebootNow()
 {
     setAboutToReboot();
-    auto method = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.login1"),
-                                                 QStringLiteral("/org/freedesktop/login1"),
-                                                 QStringLiteral("org.freedesktop.login1.Manager"),
-                                                 QStringLiteral("Reboot"));
-    method.setArguments({true /*interactive*/});
-    QDBusConnection::systemBus().asyncCall(method);
+    auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.Shutdown"),
+                                                 QStringLiteral("/Shutdown"),
+                                                 QStringLiteral("org.kde.Shutdown"),
+                                                 QStringLiteral("logoutAndReboot"));
+    QDBusConnection::sessionBus().asyncCall(method);
 }
 
 void DiscoverObject::shutdownNow()
@@ -695,12 +694,11 @@ void DiscoverObject::shutdownNow()
     }
     setAboutToPowerOff();
 
-    auto method = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.login1"),
-                                                 QStringLiteral("/org/freedesktop/login1"),
-                                                 QStringLiteral("org.freedesktop.login1.Manager"),
-                                                 shouldRebootFirst ? QStringLiteral("Reboot") : QStringLiteral("PowerOff"));
-    method.setArguments({true /*interactive*/});
-    QDBusConnection::systemBus().asyncCall(method);
+    auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.Shutdown"),
+                                                 QStringLiteral("/Shutdown"),
+                                                 QStringLiteral("org.kde.Shutdown"),
+                                                 shouldRebootFirst ? QStringLiteral("logoutAndReboot") : QStringLiteral("logoutAndShutdown"));
+    QDBusConnection::sessionBus().asyncCall(method);
 }
 
 QString DiscoverObject::describeSources() const
