@@ -663,8 +663,13 @@ void DiscoverObject::setAboutToReboot()
     }
 }
 
+Q_GLOBAL_STATIC_WITH_ARGS(const bool, s_weAreOnPlasma, (qgetenv("XDG_CURRENT_DESKTOP") == "KDE"))
+
 void DiscoverObject::promptReboot()
 {
+    if (!s_weAreOnPlasma) {
+        qCWarning(DISCOVER_LOG) << "Cannot prompt for reboot outside of Plasma";
+    }
     auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.LogoutPrompt"),
                                                  QStringLiteral("/LogoutPrompt"),
                                                  QStringLiteral("org.kde.LogoutPrompt"),
@@ -675,10 +680,20 @@ void DiscoverObject::promptReboot()
 void DiscoverObject::rebootNow()
 {
     setAboutToReboot();
-    auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.Shutdown"),
-                                                 QStringLiteral("/Shutdown"),
-                                                 QStringLiteral("org.kde.Shutdown"),
-                                                 QStringLiteral("logoutAndReboot"));
+
+    QDBusMessage method;
+    if (s_weAreOnPlasma) {
+        method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.Shutdown"),
+                                                QStringLiteral("/Shutdown"),
+                                                QStringLiteral("org.kde.Shutdown"),
+                                                QStringLiteral("logoutAndReboot"));
+    } else {
+        method = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.login1"),
+                                                QStringLiteral("/org/freedesktop/login1"),
+                                                QStringLiteral("org.freedesktop.login1.Manager"),
+                                                QStringLiteral("Reboot"));
+        method.setArguments({true /*interactive*/});
+    }
     QDBusConnection::sessionBus().asyncCall(method);
 }
 
@@ -693,10 +708,19 @@ void DiscoverObject::shutdownNow()
     }
     setAboutToPowerOff();
 
-    auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.Shutdown"),
-                                                 QStringLiteral("/Shutdown"),
-                                                 QStringLiteral("org.kde.Shutdown"),
-                                                 shouldRebootFirst ? QStringLiteral("logoutAndReboot") : QStringLiteral("logoutAndShutdown"));
+    QDBusMessage method;
+    if (s_weAreOnPlasma) {
+        auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.Shutdown"),
+                                                     QStringLiteral("/Shutdown"),
+                                                     QStringLiteral("org.kde.Shutdown"),
+                                                     shouldRebootFirst ? QStringLiteral("logoutAndReboot") : QStringLiteral("logoutAndShutdown"));
+    } else {
+        method = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.login1"),
+                                                QStringLiteral("/org/freedesktop/login1"),
+                                                QStringLiteral("org.freedesktop.login1.Manager"),
+                                                shouldRebootFirst ? QStringLiteral("Reboot") : QStringLiteral("PowerOff"));
+        method.setArguments({true /*interactive*/});
+    }
     QDBusConnection::sessionBus().asyncCall(method);
 }
 
