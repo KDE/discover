@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-01 00:46+0000\n"
+"POT-Creation-Date: 2025-10-03 00:45+0000\n"
 "PO-Revision-Date: 2025-03-09 17:26+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -2595,12 +2595,12 @@ msgstr "%1 → %2%1 → %2%2"
 msgid "Please verify Internet connectivity"
 msgstr "இணைய இணைப்பை சரிபார்க்கவும்"
 
-#: libdiscover/resources/ResourcesModel.cpp:91
+#: libdiscover/resources/ResourcesModel.cpp:104
 #, kde-format
 msgid "Refresh"
 msgstr "புதுப்பி"
 
-#: libdiscover/resources/ResourcesModel.cpp:398
+#: libdiscover/resources/ResourcesModel.cpp:406
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"

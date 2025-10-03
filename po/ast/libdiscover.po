@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-01 00:46+0000\n"
+"POT-Creation-Date: 2025-10-03 00:45+0000\n"
 "PO-Revision-Date: 2024-03-16 22:29+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: Assamese <alministradores@softastur.org>\n"
@@ -2522,12 +2522,12 @@ msgstr ""
 msgid "Please verify Internet connectivity"
 msgstr ""
 
-#: libdiscover/resources/ResourcesModel.cpp:91
+#: libdiscover/resources/ResourcesModel.cpp:104
 #, kde-format
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesModel.cpp:398
+#: libdiscover/resources/ResourcesModel.cpp:406
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"

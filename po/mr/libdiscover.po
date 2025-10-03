@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-01 00:46+0000\n"
+"POT-Creation-Date: 2025-10-03 00:45+0000\n"
 "PO-Revision-Date: 2013-03-28 16:07+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -2686,12 +2686,12 @@ msgstr ""
 msgid "Please verify Internet connectivity"
 msgstr ""
 
-#: libdiscover/resources/ResourcesModel.cpp:91
+#: libdiscover/resources/ResourcesModel.cpp:104
 #, kde-format
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesModel.cpp:398
+#: libdiscover/resources/ResourcesModel.cpp:406
 #, fuzzy, kde-format
 #| msgctxt "@info:label Refers to a software version, Ex: Version 1.2.1:"
 #| msgid "Version %1:"
