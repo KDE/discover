@@ -89,8 +89,6 @@ private:
     void showLoadingPage();
     void initMainWindow(QQuickWindow *mainWindow);
     void reconsiderQuit();
-    void setAboutToReboot();
-    void setAboutToPowerOff();
     QQmlApplicationEngine *engine() const
     {
         return m_engine.get();

@@ -649,20 +649,6 @@ QUrl DiscoverObject::searchUrl(const QString searchText)
     return {};
 }
 
-void DiscoverObject::setAboutToPowerOff()
-{
-    for (auto backend : ResourcesModel::global()->backends()) {
-        backend->aboutTo(AbstractResourcesBackend::PowerOff);
-    }
-}
-
-void DiscoverObject::setAboutToReboot()
-{
-    for (auto backend : ResourcesModel::global()->backends()) {
-        backend->aboutTo(AbstractResourcesBackend::Reboot);
-    }
-}
-
 Q_GLOBAL_STATIC_WITH_ARGS(const bool, s_weAreOnPlasma, (qgetenv("XDG_CURRENT_DESKTOP") == "KDE"))
 
 void DiscoverObject::promptReboot()
@@ -679,7 +665,10 @@ void DiscoverObject::promptReboot()
 
 void DiscoverObject::rebootNow()
 {
-    setAboutToReboot();
+    const auto backends = ResourcesModel::global()->backends();
+    for (auto backend : backends) {
+        backend->aboutTo(AbstractResourcesBackend::Reboot);
+    }
 
     QDBusMessage method;
     if (s_weAreOnPlasma) {
@@ -700,13 +689,17 @@ void DiscoverObject::rebootNow()
 void DiscoverObject::shutdownNow()
 {
     bool shouldRebootFirst = false;
-    for (auto backend : ResourcesModel::global()->backends()) {
+    const auto backends = ResourcesModel::global()->backends();
+    for (auto backend : backends) {
         if (backend->needsRebootForPowerOffAction()) {
             shouldRebootFirst = true;
             break;
         }
     }
-    setAboutToPowerOff();
+
+    for (auto backend : backends) {
+        backend->aboutTo(AbstractResourcesBackend::PowerOff);
+    }
 
     QDBusMessage method;
     if (s_weAreOnPlasma) {
