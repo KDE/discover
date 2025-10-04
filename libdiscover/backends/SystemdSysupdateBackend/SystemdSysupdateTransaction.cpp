@@ -12,8 +12,8 @@
 
 #define SYSTEMDSYSUPDATE_LOG LIBDISCOVER_BACKEND_SYSTEMDSYSUPDATE_LOG
 
-const auto PROGRESS_PROPERTY_NAME = QStringLiteral("Progress");
-const QString SYSUPDATE_JOB_INTERFACE_NAME = QLatin1String(org::freedesktop::sysupdate1::Job::staticInterfaceName());
+constexpr QLatin1StringView PROGRESS_PROPERTY_NAME("Progress");
+const QLatin1StringView SYSUPDATE_JOB_INTERFACE_NAME = QLatin1String(org::freedesktop::sysupdate1::Job::staticInterfaceName());
 
 SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resource, SystemdSysupdateUpdateReply &updateCall)
     : Transaction(resource, resource, InstallRole)
@@ -34,7 +34,6 @@ SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resou
             return;
         }
 
-        auto version = reply.argumentAt<0>();
         auto id = reply.argumentAt<1>();
         auto path = reply.argumentAt<2>();
 

@@ -249,7 +249,7 @@ void DummyTest::testReviewsModel()
 
 void DummyTest::testUpdateModel()
 {
-    const auto backend = m_model->backends().first();
+    const auto backend = m_model->backends().constFirst();
 
     ResourcesUpdatesModel ruModel;
     new QAbstractItemModelTester(&ruModel, &ruModel);

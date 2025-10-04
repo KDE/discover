@@ -166,7 +166,7 @@ public:
             ret += res->licenses();
         }
         kRemoveDuplicates(ret, [](const QJsonValueRef &val) -> QString {
-            return val.toObject()[QLatin1String("name")].toString();
+            return val.toObject().value(QLatin1String("name")).toString();
         });
         return ret;
     }

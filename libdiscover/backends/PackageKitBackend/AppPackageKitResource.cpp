@@ -71,7 +71,6 @@ static QIcon componentIcon(const AppStream::Component &comp)
     QIcon ret;
     const auto icons = comp.icons();
     for (const AppStream::Icon &icon : icons) {
-        QStringList stock;
         switch (icon.kind()) {
         case AppStream::Icon::KindLocal:
             ret.addFile(icon.url().toLocalFile(), icon.size());

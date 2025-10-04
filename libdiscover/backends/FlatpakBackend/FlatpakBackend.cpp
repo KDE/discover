@@ -1277,7 +1277,7 @@ bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource, const QString 
 bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource, const QByteArray &data)
 {
     // We just find the runtime with a regex, QSettings only can read from disk (and so does KConfig)
-    const QRegularExpression rx(QStringLiteral("runtime=(.*)"));
+    static const QRegularExpression rx(QStringLiteral("runtime=(.*)"));
     const auto match = rx.match(QString::fromUtf8(data));
     if (!match.isValid()) {
         return false;

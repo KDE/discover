@@ -20,6 +20,7 @@ public:
     PackageState(QString packageName, QString name, QString description, bool installed);
     PackageState(const QString &name, const QString &description, bool installed);
     PackageState(const PackageState &ps);
+    PackageState &operator=(const PackageState &) = default;
 
     QString packageName() const;
     QString name() const;
