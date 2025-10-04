@@ -42,7 +42,7 @@ public:
 
     ~FlatpakTransactionsMerger() override
     {
-        for (const auto &thread : m_activeThreads) {
+        for (const auto &thread : std::as_const(m_activeThreads)) {
             thread->cancel();
             if (FlatpakThreadPool::instance()->tryTake(thread)) { // immediately delete if the runnable hasn't started yet
                 delete thread;

@@ -1606,7 +1606,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                     }
                 }
                 if (filter.state < AbstractResource::Installed) {
-                    for (const auto &source : self->m_flatpakSources) {
+                    for (const auto &source : std::as_const(self->m_flatpakSources)) {
                         if (source->m_pool) {
                             auto components = source->componentsByFlatpakId(filter.resourceUrl.path());
                             resources.append(kTransform<QVector<StreamResult>>(components, [self, source](const AppStream::Component &comp) {
@@ -1786,7 +1786,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                 auto *fw = new QFS(stream);
                 fw->setFuture(QtFuture::whenAll(futures.begin(), futures.end()));
                 FLATPAK_BACKEND_YIELD
-                for (auto r : unpooled) {
+                for (auto r : std::as_const(unpooled)) {
                     triage(r, prioritary, rest, filter, false);
                 }
                 connect(fw, &QFS::finished, stream, [self, futures, stream, _rest = rest, _prioritary = prioritary, filter, fw]() {

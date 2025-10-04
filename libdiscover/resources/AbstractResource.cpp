@@ -204,7 +204,7 @@ bool AbstractResource::categoryMatches(const std::shared_ptr<Category> &cat)
 static QSet<std::shared_ptr<Category>> walkCategories(AbstractResource *resource, const QList<std::shared_ptr<Category>> &categories)
 {
     QSet<std::shared_ptr<Category>> ret;
-    for (auto category : categories) {
+    for (const auto &category : categories) {
         if (resource->categoryMatches(category)) {
             const auto subcats = walkCategories(resource, category->subCategories());
             if (subcats.isEmpty()) {

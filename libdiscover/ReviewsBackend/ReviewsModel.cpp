@@ -243,7 +243,7 @@ void ReviewsModel::addReviews(const QVector<ReviewPtr> &reviews, bool canFetchMo
     qCDebug(LIBDISCOVER_LOG) << "reviews arrived..." << m_lastPage << reviews.size();
 
     if (!reviews.isEmpty()) {
-        for (ReviewPtr review : reviews) {
+        for (const ReviewPtr &review : reviews) {
             m_starsCount.addRating(review->rating());
         }
         beginInsertRows(QModelIndex(), rowCount(), rowCount() + reviews.size() - 1);

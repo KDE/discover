@@ -57,7 +57,7 @@ void CategoryModel::populateCategories()
         if (ret.isEmpty()) {
             ret = cats;
         } else {
-            for (std::shared_ptr<Category> c : cats)
+            for (const std::shared_ptr<Category> &c : cats)
                 Category::addSubcategory(ret, c);
         }
     }
@@ -86,7 +86,7 @@ static std::shared_ptr<Category> recFindCategory(std::shared_ptr<Category> root,
         return root;
     else {
         const auto &subs = root->subCategories();
-        for (std::shared_ptr<Category> c : subs) {
+        for (const std::shared_ptr<Category> &c : subs) {
             std::shared_ptr<Category> ret = recFindCategory(c, name);
             if (ret)
                 return ret;
@@ -103,7 +103,7 @@ QObject *CategoryModel::get(const std::shared_ptr<Category> &ptr)
 
 std::shared_ptr<Category> CategoryModel::findCategoryByName(const QString &name) const
 {
-    for (std::shared_ptr<Category> cat : m_rootCategories) {
+    for (const std::shared_ptr<Category> &cat : m_rootCategories) {
         std::shared_ptr<Category> ret = recFindCategory(cat, name);
         if (ret)
             return ret;

@@ -60,7 +60,7 @@ ResultsStream *SystemdSysupdateBackend::search(const AbstractResourcesBackend::F
 
     // Since we'll only ever have a handful of targets, we can just return all of them
     QVector<StreamResult> results;
-    for (const auto &resource : m_resources) {
+    for (const auto &resource : std::as_const(m_resources)) {
         if (resource->state() < filter.state) {
             continue;
         }
@@ -137,7 +137,8 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
 
     // TODO: Make this parallel once QCoro2 is released
     // https://github.com/qcoro/qcoro/issues/250
-    for (const auto &[targetClass, name, objectPath] : targetsReply.value()) {
+    const auto targets = targetsReply.value();
+    for (const auto &[targetClass, name, objectPath] : targets) {
         qCDebug(SYSTEMDSYSUPDATE_LOG) << "Target:" << name << targetClass << objectPath.path();
 
         auto target = new org::freedesktop::sysupdate1::Target(SYSUPDATE1_SERVICE, objectPath.path(), OUR_BUS(), this);

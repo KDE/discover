@@ -266,7 +266,7 @@ bool Category::categoryLessThan(const std::shared_ptr<Category> &c1, const std::
 static bool isSorted(const QList<std::shared_ptr<Category>> &vector)
 {
     std::shared_ptr<Category> last = nullptr;
-    for (auto a : vector) {
+    for (const auto &a : vector) {
         if (last && !Category::categoryLessThan(last, a))
             return false;
         last = a;
@@ -282,7 +282,7 @@ void Category::sortCategories(QList<std::shared_ptr<Category>> &cats)
     }
 #endif
     std::sort(cats.begin(), cats.end(), &categoryLessThan);
-    for (auto cat : cats) {
+    for (const auto &cat : cats) {
         sortCategories(cat->m_subCategories);
     }
     Q_ASSERT(isSorted(cats));

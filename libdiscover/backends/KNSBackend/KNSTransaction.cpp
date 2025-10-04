@@ -95,7 +95,7 @@ void KNSTransaction::anEntryChanged(const KNSCore::Entry &entry)
 
 void KNSTransaction::cancel()
 {
-    for (auto q : m_questions) {
+    for (auto q : std::as_const(m_questions)) {
         q->setResponse(KNSCore::Question::CancelResponse);
     }
     setStatus(CancelledStatus);
