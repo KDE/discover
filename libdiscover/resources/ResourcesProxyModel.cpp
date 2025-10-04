@@ -42,33 +42,21 @@ const QHash<int, QByteArray> ResourcesProxyModel::s_roles = {{NameRole, "name"},
                                                              {SizeRole, "size"},
                                                              {ReleaseDateRole, "releaseDate"}};
 
-int levenshteinDistance(const QString &source, const QString &target)
+int levenshteinDistance(QStringView source, QStringView target)
 {
-    if (source == target) {
+    if (source.compare(target, Qt::CaseInsensitive) == 0) {
         return 0;
     }
 
-    // Do a case insensitive version of it
-    const QString &sourceUp = source.toUpper();
-    const QString &targetUp = target.toUpper();
+    const int sourceCount = source.size();
+    const int targetCount = target.size();
 
-    if (sourceUp == targetUp) {
-        return 0;
-    }
-
-    const int sourceCount = sourceUp.size();
-    const int targetCount = targetUp.size();
-
-    if (sourceUp.isEmpty()) {
+    if (source.isEmpty()) {
         return targetCount;
     }
 
-    if (targetUp.isEmpty()) {
+    if (target.isEmpty()) {
         return sourceCount;
-    }
-
-    if (sourceCount > targetCount) {
-        return levenshteinDistance(targetUp, sourceUp);
     }
 
     QVector<int> column;
@@ -82,7 +70,8 @@ int levenshteinDistance(const QString &source, const QString &target)
     for (int i = 0; i < sourceCount; i++) {
         column[0] = i + 1;
         for (int j = 0; j < targetCount; j++) {
-            column[j + 1] = std::min({1 + column.at(j), 1 + previousColumn.at(1 + j), previousColumn.at(j) + ((sourceUp.at(i) == targetUp.at(j)) ? 0 : 1)});
+            column[j + 1] =
+                std::min({1 + column.at(j), 1 + previousColumn.at(1 + j), previousColumn.at(j) + ((source.at(i).toUpper() == target.at(j).toUpper()) ? 0 : 1)});
         }
         column.swap(previousColumn);
     }
@@ -580,7 +569,9 @@ QVariant ResourcesProxyModel::roleToValue(const StreamResult &result, int role) 
         qreal rating = roleToValue(result, SortableRatingRole).value<qreal>();
 
         qreal reverseDistance = 0;
-        for (const QString &word : resource->name().split(QLatin1Char(' '))) {
+        const QString name = resource->name();
+        const auto words = QStringView(name).split(QLatin1Char(' '));
+        for (QStringView word : words) {
             const qreal maxLength = std::max(word.length(), m_filters.search.length());
             reverseDistance =
                 std::max(reverseDistance, (maxLength - std::min(reverseDistance, qreal(levenshteinDistance(word, m_filters.search)))) / maxLength * 10.0);
