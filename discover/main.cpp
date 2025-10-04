@@ -22,7 +22,7 @@
 #include <QTextStream>
 #include <QWindow>
 #if WITH_QTWEBVIEW
-#include <QtWebView>
+#include <qtwebviewfunctions.h>
 #endif
 
 #include <KirigamiApp>
