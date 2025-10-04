@@ -29,7 +29,7 @@ SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resou
 
         if (reply.isError()) {
             qCCritical(SYSTEMDSYSUPDATE_LOG) << "Failed to create job:" << reply.error().message();
-            passiveMessage(reply.error().message());
+            Q_EMIT passiveMessage(reply.error().message());
             setStatus(DoneWithErrorStatus);
             return;
         }

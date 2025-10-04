@@ -61,7 +61,7 @@ public:
                         transaction->addQuestion(question);
                         return;
                     default:
-                        transaction->passiveMessage(i18n("Unsupported question:\n%1", question->question()));
+                        Q_EMIT transaction->passiveMessage(i18n("Unsupported question:\n%1", question->question()));
                         question->setResponse(KNSCore::Question::InvalidResponse);
                         transaction->setStatus(Transaction::CancelledStatus);
                         break;

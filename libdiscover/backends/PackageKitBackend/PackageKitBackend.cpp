@@ -1059,7 +1059,7 @@ void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
             getUpdatesFinished(e, x);
         });
         Q_EMIT inlineMessageChanged({});
-        ResourcesModel::global()->switchToUpdates();
+        Q_EMIT ResourcesModel::global()->switchToUpdates();
     });
 
     info = i18nc("@info:status %1 is a new major version of the user's distro", "%1 is now available.", newDistroVersionText);

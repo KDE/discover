@@ -33,6 +33,7 @@ class DISCOVERCOMMON_EXPORT AbstractReviewsBackend : public QObject
 public:
     explicit AbstractReviewsBackend(QObject *parent = nullptr);
 
+    QString preferredUserName() const;
 
     Q_SCRIPTABLE virtual Rating ratingForApplication(AbstractResource *resource) const = 0;
     Q_INVOKABLE virtual QString errorMessage() const;
@@ -54,7 +55,6 @@ public Q_SLOTS:
     // therefore making the user_name here the same as "userName()".
     [[nodiscard]] virtual ReviewsJob *
     submitReview(AbstractResource *resource, const QString &summary, const QString &reviewText, const QString &rating, const QString &userName);
-    QString preferredUserName() const;
     virtual void deleteReview(Review *review) = 0;
     virtual void flagReview(Review *review, const QString &reason, const QString &text) = 0;
     [[nodiscard]] virtual ReviewsJob *fetchReviews(AbstractResource *resource, int page = 1) = 0;

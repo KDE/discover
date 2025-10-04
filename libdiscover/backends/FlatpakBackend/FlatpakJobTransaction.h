@@ -34,7 +34,7 @@ public Q_SLOTS:
     void finishTransaction(bool cancelled, const QString &errorMessage, const FlatpakTransactionThread::Repositories &addedRepositories, bool success);
 
 Q_SIGNALS:
-    void repositoriesAdded(const Repositories &repositories);
+    void repositoriesAdded(const FlatpakJobTransaction::Repositories &repositories);
 
 public:
     QPointer<FlatpakResource> m_app;

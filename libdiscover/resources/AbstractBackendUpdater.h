@@ -130,7 +130,14 @@ public:
     bool isReadyToReboot() const;
     bool needsReboot() const;
 
+    void setErrorMessage(const QString &errorMessage);
+    QString errorMessage() const
+    {
+        return m_errorMessage;
+    }
+
     virtual void setOfflineUpdates(bool useOfflineUpdates);
+    virtual bool isFetchingUpdates() const = 0;
 
 public Q_SLOTS:
     /**
@@ -159,14 +166,6 @@ public Q_SLOTS:
     virtual void proceed()
     {
     }
-
-    void setErrorMessage(const QString &errorMessage);
-    QString errorMessage() const
-    {
-        return m_errorMessage;
-    }
-
-    virtual bool isFetchingUpdates() const = 0;
 
 Q_SIGNALS:
     /**
