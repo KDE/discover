@@ -116,7 +116,6 @@ void KNSBackendTest::testReviews()
 {
     const auto resources = getAllResources(m_backend);
     auto reviewsBackend = m_backend->reviewsBackend();
-    QVERIFY(!reviewsBackend->hasCredentials());
     for (auto resource : resources) {
         auto rating = reviewsBackend->ratingForApplication(resource);
         QCOMPARE(rating.packageName(), resource->packageName());

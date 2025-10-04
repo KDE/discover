@@ -155,11 +155,6 @@ void KNSReviews::credentialsReceived(const QString &user, const QString &passwor
     }
 }
 
-bool KNSReviews::hasCredentials() const
-{
-    return provider().hasCredentials();
-}
-
 QString KNSReviews::userName() const
 {
     QString user, password;

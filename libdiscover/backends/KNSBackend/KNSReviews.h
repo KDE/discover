@@ -31,7 +31,6 @@ public:
     void registerAndLogin() override;
     void login() override;
     Rating ratingForApplication(AbstractResource *resource) const override;
-    bool hasCredentials() const override;
 
     bool isResourceSupported(AbstractResource *resource) const override;
 

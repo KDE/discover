@@ -33,10 +33,6 @@ public:
     }
 
     Rating ratingForApplication(AbstractResource *resource) const override;
-    bool hasCredentials() const override
-    {
-        return false;
-    }
     void deleteReview(Review *) override
     {
     }

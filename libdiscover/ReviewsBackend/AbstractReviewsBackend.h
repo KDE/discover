@@ -28,13 +28,11 @@ class DISCOVERCOMMON_EXPORT AbstractReviewsBackend : public QObject
     Q_OBJECT
     Q_PROPERTY(bool isReviewable READ isReviewable CONSTANT)
     Q_PROPERTY(bool supportsNameChange READ supportsNameChange CONSTANT)
-    Q_PROPERTY(bool hasCredentials READ hasCredentials)
     Q_PROPERTY(QString preferredUserName READ preferredUserName NOTIFY preferredUserNameChanged)
     Q_PROPERTY(QString errorMessage READ errorMessage NOTIFY errorMessageChanged)
 public:
     explicit AbstractReviewsBackend(QObject *parent = nullptr);
 
-    virtual bool hasCredentials() const = 0;
 
     Q_SCRIPTABLE virtual Rating ratingForApplication(AbstractResource *resource) const = 0;
     Q_INVOKABLE virtual QString errorMessage() const;
