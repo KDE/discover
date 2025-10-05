@@ -185,7 +185,7 @@ static void kRemoveDuplicates(QList<T> &input)
 class ElapsedDebug : private QElapsedTimer
 {
 public:
-    ElapsedDebug(const QString &name = QStringLiteral("<unnamed>"))
+    explicit ElapsedDebug(const QString &name = QStringLiteral("<unnamed>"))
         : m_name(name)
     {
         start();

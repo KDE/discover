@@ -14,7 +14,7 @@
 class FlatpakPermission
 {
 public:
-    FlatpakPermission(QString brief, QString description, QString icon);
+    FlatpakPermission(const QString &brief, const QString &description, const QString &icon);
     QString icon() const;
     QString brief() const;
     QString description() const;
@@ -33,7 +33,7 @@ private:
 class FlatpakPermissionsModel : public QAbstractListModel
 {
 public:
-    FlatpakPermissionsModel(QVector<FlatpakPermission> permissions);
+    FlatpakPermissionsModel(const QVector<FlatpakPermission> &permissions);
 
     enum Roles {
         BriefRole = Qt::UserRole + 1,

@@ -22,7 +22,7 @@
 class PKSourcesModel : public QStandardItemModel
 {
 public:
-    PKSourcesModel(PackageKitSourcesBackend *backend)
+    explicit PKSourcesModel(PackageKitSourcesBackend *backend)
         : QStandardItemModel(backend)
         , m_backend(backend)
     {

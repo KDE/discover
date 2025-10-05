@@ -112,7 +112,7 @@ void PackageKitDependencies::refresh()
     start();
 }
 
-void PackageKitDependencies::onJobFinished(QList<PackageKitDependency> dependencies)
+void PackageKitDependencies::onJobFinished(const QList<PackageKitDependency> &dependencies)
 {
     Q_ASSERT(m_state.has_value());
     Q_ASSERT(std::holds_alternative<Job>(m_state.value()));

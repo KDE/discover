@@ -8,7 +8,7 @@
 
 #include <KLocalizedString>
 
-FlatpakPermission::FlatpakPermission(QString brief, QString description, QString icon)
+FlatpakPermission::FlatpakPermission(const QString &brief, const QString &description, const QString &icon)
     : m_brief(brief)
     , m_description(description)
     , m_icon(icon)
@@ -30,7 +30,7 @@ QString FlatpakPermission::description() const
     return m_description;
 }
 
-FlatpakPermissionsModel::FlatpakPermissionsModel(QVector<FlatpakPermission> permissions)
+FlatpakPermissionsModel::FlatpakPermissionsModel(const QVector<FlatpakPermission> &permissions)
     : QAbstractListModel()
     , m_permissions(permissions)
 {

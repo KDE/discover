@@ -74,7 +74,7 @@ class SystemUpgrade : public AbstractResource
 {
     Q_OBJECT
 public:
-    SystemUpgrade(PackageKitBackend *backend)
+    explicit SystemUpgrade(PackageKitBackend *backend)
         : AbstractResource(backend)
         , m_backend(backend)
         , m_updateSizeTimer(new QTimer(this))

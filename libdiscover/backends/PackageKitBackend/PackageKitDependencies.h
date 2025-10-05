@@ -70,7 +70,7 @@ Q_SIGNALS:
     void dependenciesChanged();
 
 private Q_SLOTS:
-    void onJobFinished(QList<PackageKitDependency> dependencies);
+    void onJobFinished(const QList<PackageKitDependency> &dependencies);
 
 private:
     using Job = QPointer<PackageKitFetchDependenciesJob>;

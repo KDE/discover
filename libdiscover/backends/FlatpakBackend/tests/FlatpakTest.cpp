@@ -36,7 +36,7 @@ public:
         return nullptr;
     }
 
-    FlatpakTest(QObject *parent = nullptr)
+    explicit FlatpakTest(QObject *parent = nullptr)
         : QObject(parent)
     {
         QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-flatpak-test")).removeRecursively();

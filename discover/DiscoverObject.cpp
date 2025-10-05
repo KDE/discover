@@ -634,13 +634,13 @@ void DiscoverObject::showError(const QString &msg)
     });
 }
 
-void DiscoverObject::copyTextToClipboard(const QString text)
+void DiscoverObject::copyTextToClipboard(const QString &text)
 {
     QClipboard *clipboard = QGuiApplication::clipboard();
     clipboard->setText(text);
 }
 
-QUrl DiscoverObject::searchUrl(const QString searchText)
+QUrl DiscoverObject::searchUrl(const QString &searchText)
 {
     KUriFilterData filterData(searchText);
     if (KUriFilter::self()->filterSearchUri(filterData, KUriFilter::NormalTextFilter)) {
