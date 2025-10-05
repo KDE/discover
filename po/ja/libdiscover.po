@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-03 02:41+0000\n"
+"POT-Creation-Date: 2025-10-05 02:29+0000\n"
 "PO-Revision-Date: 2025-09-21 14:49+0900\n"
 "Last-Translator: Yuma Kakei <yumasansansan@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -31,9 +31,9 @@ msgstr "ryuichi_ya220@outlook.jp,yumasansansan@gmail.com"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:111
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:366
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:392
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #: libdiscover/UpdateModel/UpdateModel.cpp:124
 #: libdiscover/UpdateModel/UpdateModel.cpp:346
 #, kde-format
@@ -1222,7 +1222,7 @@ msgid "Cannot remove '%1'"
 msgstr "'%1'を削除できません。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:364
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1241,7 +1241,7 @@ msgid "Upgrade Now"
 msgstr "今すぐ更新"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:374
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2345,79 +2345,79 @@ msgstr ""
 "rpm-ostree backend: 起動されたデプロイメントが見つかりませんでした。バグとし"
 "て報告してください。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:372
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "アップグレードを開始..."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:505
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:510
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "現在のバージョン向けの更新がありますが、続行します。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:508
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:513
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "メジャーバージョンをリベースする前に最新の状態に更新してください"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:516
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 "リベース操作のためのリモート参照が欠けています。バグとして報告してください。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:300
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL とその他のライセンス"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:310
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
 #, kde-format
 msgid "Additional packages: "
 msgstr "追加のパッケージ: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:317
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
 #, kde-format
 msgid "Additional modules: "
 msgstr "追加のモジュール: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:324
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
 #, kde-format
 msgid "Local packages: "
 msgstr "ローカルのパッケージ:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:331
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, kde-format
 msgid "Replaced packages:"
 msgstr "置き換えられたパッケージ:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:338
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:339
 #, kde-format
 msgid "Removed packages:"
 msgstr "削除されたパッケージ:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "現在起動しているバージョン (ピン止めされています)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Currently booted version"
 msgstr "現在起動しているバージョン"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:404
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:405
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "再起動後に使われるバージョン"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:406
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:407
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "フォールバック (ピン止めされています)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:408
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:409
 #, kde-format
 msgid "Fallback version"
 msgstr "フォールバック"

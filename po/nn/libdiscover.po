@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-03 02:41+0000\n"
+"POT-Creation-Date: 2025-10-05 02:29+0000\n"
 "PO-Revision-Date: 2024-08-25 12:13+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -31,9 +31,9 @@ msgstr "karl@huftis.org"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:111
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:303
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:366
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:392
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #: libdiscover/UpdateModel/UpdateModel.cpp:124
 #: libdiscover/UpdateModel/UpdateModel.cpp:346
 #, kde-format
@@ -1223,7 +1223,7 @@ msgid "Cannot remove '%1'"
 msgstr "Kan ikkje fjerna «%1»"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:364
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1242,7 +1242,7 @@ msgid "Upgrade Now"
 msgstr "Oppgrader no"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:374
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2354,83 +2354,83 @@ msgstr ""
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree: Fann ingen starta deployment. Meld dette inn som ein feil."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:372
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Start oppgradering …"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:505
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:510
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Det finst ikkje-installerte oppdateringar for den gjeldande versjonen. Held "
 "likevel fram."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:508
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:513
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Installer dei nyaste oppdateringane før du går over til den siste "
 "hovudversjonen"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:516
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 "Manglar fjernreferanse for rebaserings­operasjon. Meld dette inn som ein feil."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:300
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL og andre lisensar"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:310
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
 #, kde-format
 msgid "Additional packages: "
 msgstr "Tilleggspakkar: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:317
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
 #, kde-format
 msgid "Additional modules: "
 msgstr "Tilleggsmodular: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:324
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
 #, kde-format
 msgid "Local packages: "
 msgstr "Lokale pakkar: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:331
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
 #, kde-format
 msgid "Replaced packages:"
 msgstr "Utbytte pakkar:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:338
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:339
 #, kde-format
 msgid "Removed packages:"
 msgstr "Fjerna pakkar:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "Starta versjon (festa)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
 #, kde-format
 msgid "Currently booted version"
 msgstr "Starta versjon"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:404
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:405
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "Versjon brukt etter omstart"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:406
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:407
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "Reserveversjon (festa)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:408
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:409
 #, kde-format
 msgid "Fallback version"
 msgstr "Reserveversjon"
