@@ -33,7 +33,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-05 00:41+0000\n"
+"POT-Creation-Date: 2025-10-06 00:43+0000\n"
 "PO-Revision-Date: 2025-06-03 14:12+0400\n"
 "Last-Translator: linux <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -1210,7 +1210,7 @@ msgstr "KDE Mağazası"
 msgid "Log in information for %1"
 msgstr "%1 məlumatlarına giriş"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:259
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 başladıla bilmədi"
@@ -2697,7 +2697,7 @@ msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
 msgstr "%1 versiyasının yenilənməsi"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:796
+#: libdiscover/resources/ResourcesProxyModel.cpp:787
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

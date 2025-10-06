@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-05 00:41+0000\n"
+"POT-Creation-Date: 2025-10-06 00:43+0000\n"
 "PO-Revision-Date: 2025-09-26 01:05+0330\n"
 "Last-Translator: Sohrab Behdani <behdanisohrab@proton.me>\n"
 "Language-Team: fa\n"
@@ -1167,7 +1167,7 @@ msgstr "فروشگاه کی‌دی‌ای"
 msgid "Log in information for %1"
 msgstr "اطلاعات ورود به %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:259
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "نمی‌توان %1 را راه‌اندازی کرد"
@@ -2630,7 +2630,7 @@ msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
 msgstr "در حال تازه‌سازی %1"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:796
+#: libdiscover/resources/ResourcesProxyModel.cpp:787
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-05 00:41+0000\n"
+"POT-Creation-Date: 2025-10-06 00:43+0000\n"
 "PO-Revision-Date: 2025-09-06 01:19+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -1189,7 +1189,7 @@ msgstr "KDE Store"
 msgid "Log in information for %1"
 msgstr "Información de inicio de sesión para %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:259
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "No se ha podido lanzar %1"
@@ -2679,7 +2679,7 @@ msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
 msgstr "Refrescando %1"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:796
+#: libdiscover/resources/ResourcesProxyModel.cpp:787
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

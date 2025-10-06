@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-05 00:41+0000\n"
+"POT-Creation-Date: 2025-10-06 00:43+0000\n"
 "PO-Revision-Date: 2024-09-19 14:31+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1208,7 +1208,7 @@ msgstr "Κατάστημα KDE"
 msgid "Log in information for %1"
 msgstr "Πληροφορίες σύνδεσης για %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:259
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Αδυναμία εκτέλεσης %1"
@@ -2719,7 +2719,7 @@ msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
 msgstr "Ανανέωση της έκδοσης %1"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:796
+#: libdiscover/resources/ResourcesProxyModel.cpp:787
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-05 00:41+0000\n"
+"POT-Creation-Date: 2025-10-06 00:43+0000\n"
 "PO-Revision-Date: 2025-06-23 16:21+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -1202,7 +1202,7 @@ msgstr "KDE Store"
 msgid "Log in information for %1"
 msgstr "Данные для входа в %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:259
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Не удалось запустить %1"
@@ -2701,7 +2701,7 @@ msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
 msgstr "Обновление версии %1"
 
-#: libdiscover/resources/ResourcesProxyModel.cpp:796
+#: libdiscover/resources/ResourcesProxyModel.cpp:787
 #, kde-format
 msgctxt "an approximation number, like 3000+"
 msgid "%1+"
