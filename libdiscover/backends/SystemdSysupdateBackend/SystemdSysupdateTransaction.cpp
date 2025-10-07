@@ -28,7 +28,6 @@ SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resou
         const SystemdSysupdateUpdateReply reply = *watcher;
 
         if (reply.isError()) {
-            qCCritical(SYSTEMDSYSUPDATE_LOG) << "Failed to create job:" << reply.error().message();
             Q_EMIT passiveMessage(reply.error().message());
             setStatus(DoneWithErrorStatus);
             return;
@@ -96,10 +95,11 @@ void SystemdSysupdateTransaction::cancel()
     }
 
     auto watcher = new QDBusPendingCallWatcher(m_job->Cancel(), this);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [](QDBusPendingCallWatcher *watcher) {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
         watcher->deleteLater();
         if (watcher->isError()) {
             qWarning(SYSTEMDSYSUPDATE_LOG) << "Failed to cancel job:" << watcher->error().message();
+            Q_EMIT passiveMessage(watcher->error().message());
             return;
         }
 

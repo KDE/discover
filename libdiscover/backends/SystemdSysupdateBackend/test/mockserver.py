@@ -28,6 +28,8 @@ MANAGER_INTERFACE = "org.freedesktop.sysupdate1.Manager"
 TARGET_INTERFACE = "org.freedesktop.sysupdate1.Target"
 JOB_INTERFACE = "org.freedesktop.sysupdate1.Job"
 
+FAILURE_WRONGURL = False
+
 class MockJob(dbus.service.Object):
     def __init__(self, bus, path, job_id, manager, job_type="update", offline=False):
         super().__init__(bus, path)
@@ -200,9 +202,14 @@ class MockTarget(dbus.service.Object):
 
     @dbus.service.method(TARGET_INTERFACE, out_signature='as')
     def GetAppStream(self):
-        return [
-            "https://invent.kde.org/kde-linux/kde-linux/-/raw/master/org.kde.linux.metainfo.xml"
-        ]
+        if FAILURE_WRONGURL:
+            return [
+                "https://banana.kde.org/maybe.xml"
+            ]
+        else:
+            return [
+                "https://invent.kde.org/kde-linux/kde-linux/-/raw/master/org.kde.linux.metainfo.xml"
+            ]
 
     @dbus.service.method(TARGET_INTERFACE, out_signature='s')
     def GetVersion(self):
