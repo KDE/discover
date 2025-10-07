@@ -10,6 +10,7 @@
 #include "libdiscover_systemdsysupdate_debug.h"
 
 #include <AppStreamQt/metadata.h>
+#include <KLocalizedString>
 #include <QCoro/QCoroDBusPendingReply>
 #include <QCoro/QCoroNetworkReply>
 #include <QList>
@@ -145,12 +146,12 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
         target->setInteractiveAuthorizationAllowed(true); // in case Update() needs authentication
         const auto appStream = co_await target->GetAppStream();
         if (appStream.isError()) {
-            qCCritical(SYSTEMDSYSUPDATE_LOG) << "Failed to get appstream for target (" << name << ") :" << appStream.error().message();
+            Q_EMIT passiveMessage(i18n("Failed to get appstream for %1. Error: %2", name, appStream.error().message()));
             continue;
         }
         const auto appStreamUrls = appStream.value();
         if (appStreamUrls.isEmpty()) {
-            qCritical(SYSTEMDSYSUPDATE_LOG) << "No appstream URLs found for target:" << name;
+            Q_EMIT passiveMessage(i18n("No appstream URLs found for target: %1", name));
             continue;
         }
 
@@ -160,6 +161,8 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
             const auto reply = co_await m_nam->get(QNetworkRequest(QUrl(url)));
             if (reply->error() != QNetworkReply::NoError) {
                 qCWarning(SYSTEMDSYSUPDATE_LOG) << "Failed to fetch appstream:" << reply->errorString();
+                Q_EMIT passiveMessage(
+                    i18n("Failed to fetch the updates from <a href='%1'>%1</a>. Error: %2", reply->url().toDisplayString(), reply->errorString()));
                 continue;
             }
 
@@ -170,6 +173,7 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
             auto error = metadata.parse(data, format);
             if (error != AppStream::Metadata::MetadataErrorNoError) {
                 qCCritical(SYSTEMDSYSUPDATE_LOG) << "Failed to parse appstream metadata for target:" << name << ": " << error << " - " << metadata.lastError();
+                Q_EMIT passiveMessage(i18n("Failed to parse update metadata %1", metadata.lastError()));
                 continue;
             } else {
                 qCDebug(SYSTEMDSYSUPDATE_LOG) << "Successfully parsed appstream metadata for target:" << name;
@@ -178,7 +182,7 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
 
         auto components = metadata.components();
         if (components.isEmpty()) {
-            qCCritical(SYSTEMDSYSUPDATE_LOG) << "No components found in appstream metadata for target:" << name;
+            Q_EMIT passiveMessage(i18n("No components found in appstream metadata for target: %1", name));
             continue;
         }
 
