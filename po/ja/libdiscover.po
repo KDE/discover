@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-06 00:43+0000\n"
+"POT-Creation-Date: 2025-10-08 00:44+0000\n"
 "PO-Revision-Date: 2025-09-21 14:49+0900\n"
 "Last-Translator: Yuma Kakei <yumasansansan@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -555,34 +555,34 @@ msgctxt "Category"
 msgid "System"
 msgstr "システム"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:196
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (ユーザ)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:742
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:787
 #, kde-format
 msgid "Local bundle"
 msgstr "ローカルパッケージ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1906
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1934
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正な AppStream の URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2013
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2064
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "ソース '%1' の追加に失敗しました: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2136
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2191
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Flatpak のソースがありません"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2140
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2195
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "ソース \"%1\" を読み込めませんでした"
@@ -2586,7 +2586,7 @@ msgstr ""
 msgid "SteamOS"
 msgstr "SteamOS"
 
-#: libdiscover/DiscoverBackendsFactory.cpp:120
+#: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."

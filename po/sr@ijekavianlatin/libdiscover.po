@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-06 00:43+0000\n"
+"POT-Creation-Date: 2025-10-08 00:44+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -573,7 +573,7 @@ msgctxt "Category"
 msgid "System"
 msgstr "Propalo."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:196
 #, fuzzy, kde-format
 #| msgctxt "description (url)"
 #| msgid "%1 (%2)"
@@ -581,30 +581,30 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:742
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:787
 #, kde-format
 msgid "Local bundle"
 msgstr "Lokalna sveza"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1906
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1934
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Loš apstrim URL ‘%1’"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2013
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2064
 #, fuzzy, kde-format
 #| msgid "Could not add the source %1"
 msgid "Failed to add source '%1': %2"
 msgstr "Ne mogu da dodam izvor %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2136
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2191
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
 # >! Plurals.
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2140
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2195
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 packages\n"
@@ -2691,7 +2691,7 @@ msgstr ""
 msgid "SteamOS"
 msgstr ""
 
-#: libdiscover/DiscoverBackendsFactory.cpp:120
+#: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."

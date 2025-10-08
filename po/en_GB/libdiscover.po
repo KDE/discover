@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-06 00:43+0000\n"
+"POT-Creation-Date: 2025-10-08 00:44+0000\n"
 "PO-Revision-Date: 2024-11-08 14:57+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -568,34 +568,34 @@ msgctxt "Category"
 msgid "System"
 msgstr "Repair System"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:141
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:196
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (user)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:742
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:787
 #, kde-format
 msgid "Local bundle"
 msgstr "Local bundle"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1906
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1934
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Malformed appstream URL '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2013
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2064
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Failed to add source '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2136
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2191
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "There are no Flatpak sources."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2140
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2195
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Failed to load \"%1\" source"
@@ -2617,7 +2617,7 @@ msgstr "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgid "SteamOS"
 msgstr "SteamOS"
 
-#: libdiscover/DiscoverBackendsFactory.cpp:120
+#: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
 msgid ""
 "List all the backends we'll want to have loaded, separated by comma ','."
