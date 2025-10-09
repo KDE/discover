@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-08 00:44+0000\n"
-"PO-Revision-Date: 2025-06-11 00:11+0200\n"
+"PO-Revision-Date: 2025-10-09 00:10+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -1164,7 +1164,7 @@ msgstr "%1을(를) 실행할 수 없음"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "하드웨어 드라이버"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
@@ -1237,6 +1237,8 @@ msgid ""
 "The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
 "<link url='%1'>report this issue to %2</link>"
 msgstr ""
+"PackageKit 백그라운드 서비스가 예상하지 못하게 정지되었습니다.<nl/></nl/"
+"><link url='%1'>%2에 문제를 보고해 주십시오</link>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2042,13 +2044,11 @@ msgid "Repair Failed"
 msgstr "복구 실패"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "%1<nl/>이 오류를 배포판에 보고해 주십시오."
+msgstr "%1<nl/>이 오류를 <link url='%2'>%3</link>에 보고해 주십시오."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:168
 #, kde-format
@@ -2609,13 +2609,10 @@ msgid "Refresh"
 msgstr "새로 고침"
 
 #: libdiscover/resources/ResourcesModel.cpp:406
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "버전 %1의 리프레시"
+msgstr "%1 새로 고치는 중"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:787
 #, kde-format
