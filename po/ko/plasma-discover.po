@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-05 00:43+0000\n"
-"PO-Revision-Date: 2025-06-11 00:12+0200\n"
+"PO-Revision-Date: 2025-10-09 00:11+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -19,10 +19,7 @@ msgstr ""
 "X-Generator: Lokalize 24.12.3\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
@@ -31,12 +28,7 @@ msgstr ""
 "만 사용 가능)"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -45,6 +37,7 @@ msgid ""
 msgstr ""
 "Discover를 통해서 앱을 관리하려면 <interface>설정</interface> 페이지의 "
 "<interface>존재하지 않는 백엔드</interface>에서 선호하는 모듈을 설치하십시오."
+"<nl/><nl/><link url='%1'>%2에 이 오류를 보고해 주십시오.</link>"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -110,16 +103,11 @@ msgid "Please make sure Snap support is installed"
 msgstr "Snap 지원 설치 상태를 확인하십시오."
 
 #: discover/DiscoverObject.cpp:407
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
-msgstr ""
-"%1을(를) 열 수 없습니다. 사용 가능한 소프트웨어 저장소에서 찾을 수 없었습니"
-"다."
+msgstr "요청한 앱을 모든 사용 가능한 소프트웨어 저장소에서 찾을 수 없음"
 
 #: discover/DiscoverObject.cpp:410
 #, kde-kuit-format
@@ -130,6 +118,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(%1에 대한 항목 없음)<nl/><nl/><link url='%2'>%3에 이 오류를 보고해 주십시오."
+"</link>"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
@@ -569,14 +559,13 @@ msgstr "%1의 리뷰를 임시로 사용할 수 없음"
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "게시된 리뷰 없음"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
-msgstr "이 앱을 설치한 다음 리뷰를 작성하십시오"
+msgstr "리뷰를 작성하려면 설치하십시오"
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
@@ -902,9 +891,7 @@ msgid "Proceed"
 msgstr "진행"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
 msgstr "%1에 이 문제 보고"
