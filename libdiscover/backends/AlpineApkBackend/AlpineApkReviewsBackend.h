@@ -29,10 +29,6 @@ public:
     }
 
     Q_SCRIPTABLE Rating ratingForApplication(AbstractResource *) const override;
-    bool hasCredentials() const override
-    {
-        return false;
-    }
     void deleteReview(Review *) override
     {
     }
