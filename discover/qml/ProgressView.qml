@@ -11,16 +11,18 @@ QQC2.ItemDelegate {
     id: listItem
 
     contentItem: ColumnLayout {
+        spacing: 0
+
         QQC2.Label {
             id: label
             Layout.fillWidth: true
-            Layout.leftMargin: Kirigami.Units.iconSizes.smallMedium + (LayoutMirroring.enabled ? listItem.rightPadding : listItem.leftPadding)
-            Layout.rightMargin: Layout.leftMargin
             text: Discover.TransactionModel.count ? i18n("Tasks (%1%)", Discover.TransactionModel.progress) : i18n("Tasks")
             wrapMode: Text.Wrap
             maximumLineCount: 2
             elide: Text.ElideRight
+            color: listItem.pressed || listItem.down ? Kirigami.Theme.highlightedTextColor: Kirigami.Theme.textColor
         }
+
         QQC2.ProgressBar {
             Layout.fillWidth: true
             value: Discover.TransactionModel.progress / 100
