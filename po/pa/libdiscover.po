@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-08 00:44+0000\n"
+"POT-Creation-Date: 2025-10-12 00:43+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -2566,6 +2566,30 @@ msgstr "SteamOS: ਸਟੀਮਓ.ਐਸ. ਅੱਪਡੇਟ ਲਈ atomupd ਕ�
 #, kde-format
 msgid "SteamOS"
 msgstr "ਸਟੀਮ-ਓ.ਐਸ."
+
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:149
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
+msgstr ""
+
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
+#, kde-format
+msgctxt "@info:status"
+msgid "No appstream URLs found for target “%1”"
+msgstr ""
+
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:176
+#, kde-format
+msgctxt "@info:status"
+msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
+msgstr ""
+
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:185
+#, kde-format
+msgctxt "@info:status"
+msgid "No components found in appstream metadata for target “%1”"
+msgstr ""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
