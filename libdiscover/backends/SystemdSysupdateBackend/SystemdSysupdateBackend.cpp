@@ -161,8 +161,10 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
             const auto reply = co_await m_nam->get(QNetworkRequest(QUrl(url)));
             if (reply->error() != QNetworkReply::NoError) {
                 qCWarning(SYSTEMDSYSUPDATE_LOG) << "Failed to fetch appstream:" << reply->errorString();
-                Q_EMIT passiveMessage(
-                    xi18nc("@info"status", "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/></nl/>Error message: %2", reply->url().toDisplayString(), reply->errorString()));
+                Q_EMIT passiveMessage(xi18nc("@info:status",
+                                             "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/></nl/>Error message: %2",
+                                             reply->url().toDisplayString(),
+                                             reply->errorString()));
                 continue;
             }
 
