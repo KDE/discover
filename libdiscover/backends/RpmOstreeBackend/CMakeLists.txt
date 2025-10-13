@@ -21,7 +21,6 @@ set(rpm-ostree-backend_SRCS
     OstreeFormat.cpp
     RpmOstreeResource.cpp
     RpmOstreeBackend.cpp
-    RpmOstreeSourcesBackend.cpp
     RpmOstreeTransaction.cpp
 )
 

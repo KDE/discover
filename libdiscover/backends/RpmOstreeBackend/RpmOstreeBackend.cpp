@@ -6,7 +6,6 @@
  */
 
 #include "RpmOstreeBackend.h"
-#include "RpmOstreeSourcesBackend.h"
 
 #include "Category/Category.h"
 #include "Transaction/TransactionModel.h"
@@ -42,10 +41,6 @@ RpmOstreeBackend::RpmOstreeBackend(QObject *parent)
         qCWarning(RPMOSTREE_LOG) << "Not starting on a system not managed by rpm-ostree";
         return;
     }
-
-    // List configured remotes and display them in the settings page.
-    // We can do this early as this does not depend on the rpm-ostree daemon.
-    SourcesModel::global()->addSourcesBackend(new RpmOstreeSourcesBackend(this));
 
     // Register DBus types
     qDBusRegisterMetaType<QList<QVariantMap>>();
