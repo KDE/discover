@@ -432,10 +432,21 @@ bool RpmOstreeBackend::isValid() const
     return QFile::exists(QStringLiteral("/run/ostree-booted"));
 }
 
+// We only support updating the operating system with this backend. We notably
+// don't support installing applications (i.e. package layering).
 ResultsStream *RpmOstreeBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
+    qCDebug(RPMOSTREE_LOG) << "search: with filter:" << filter;
+
     // Skip the search if we're looking into a Category, but not the "Operating System" category
     if (filter.category && filter.category->untranslatedName() != QLatin1String("Operating System")) {
+        qCDebug(RPMOSTREE_LOG) << "search: skipping, non OS category";
+        return new ResultsStream(QStringLiteral("rpm-ostree-empty"), {});
+    }
+
+    // Skip the search if we're looking at the page for a specific application
+    if (filter.resourceUrl.scheme() == QLatin1String("appstream")) {
+        qCDebug(RPMOSTREE_LOG) << "search: skipping, appstream";
         return new ResultsStream(QStringLiteral("rpm-ostree-empty"), {});
     }
 
@@ -458,6 +469,7 @@ ResultsStream *RpmOstreeBackend::search(const AbstractResourcesBackend::Filters 
         // Add the ressources to the search filter
         res << r;
     }
+    qCDebug(RPMOSTREE_LOG) << "search: found deployments" << res;
     return new ResultsStream(QStringLiteral("rpm-ostree"), res);
 }
 
