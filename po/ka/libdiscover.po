@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-12 00:43+0000\n"
-"PO-Revision-Date: 2025-09-05 08:44+0200\n"
+"PO-Revision-Date: 2025-10-12 03:29+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2597,24 +2597,26 @@ msgstr "SteamOS"
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgstr ""
+"ვერ მივიღე appstream-ის მონაცემები \"%1\"-სთვის.<nl/><nl/>შეცდომის "
+"შეტყობინება: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "სამიზნისთვის \"%1\" appstream-ის ბმულები აღმოჩენილი არაა"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:176
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
-msgstr ""
+msgstr "მეტამონაცემების განახლება ჩავარდა.<nl/><nl/>შეცდომის შეტყობინება: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:185
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
-msgstr ""
+msgstr "სამიზნისთვის \"%1\" appstream-ის კომპონენტები აღმოჩენილი არაა"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-12 00:43+0000\n"
-"PO-Revision-Date: 2025-09-05 16:10+0200\n"
+"PO-Revision-Date: 2025-10-12 17:59+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2614,24 +2614,26 @@ msgstr "SteamOS"
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgstr ""
+"Verkrijgen van appstream gegevens voor “%1” is mislukt.<nl/><nl/"
+">Foutbericht: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "Geen appstream URL's voor doel “%1” gevonden"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:176
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
-msgstr ""
+msgstr "Ontleden van update metagegevens is mislukt.<nl/></nl/>Foutbericht: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:185
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
-msgstr ""
+msgstr "Geen componenten gevonden in appstream metagegevens voor doel “%1”"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format

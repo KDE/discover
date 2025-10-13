@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-12 00:43+0000\n"
-"PO-Revision-Date: 2025-09-05 09:06+0300\n"
+"PO-Revision-Date: 2025-10-12 16:02+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2639,24 +2639,28 @@ msgstr "SteamOS"
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgstr ""
+"Не вдалося отримати дані appstream для «%1».<nl/><nl/>Повідомлення про "
+"помилку: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "Не знайдено адрес appstream для цілі «%1»"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:176
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
 msgstr ""
+"Не вдалося обробити метадані оновлення.<nl/></nl/>Повідомлення про помилку: "
+"%1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:185
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
-msgstr ""
+msgstr "Не знайдено компонентів у метаданих appstream для цілі «%1»"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
