@@ -450,7 +450,8 @@ ResultsStream *RpmOstreeBackend::search(const AbstractResourcesBackend::Filters 
         }
         // Skip if the search field is not empty and neither the name, description or version matches
         if (!keyword.isEmpty()) {
-            if (!r->name().contains(keyword) && !r->longDescription().contains(keyword) && !r->installedVersion().contains(keyword)) {
+            if (!r->name().contains(keyword, Qt::CaseInsensitive) && !r->longDescription().contains(keyword, Qt::CaseInsensitive)
+                && !r->installedVersion().contains(keyword, Qt::CaseInsensitive)) {
                 continue;
             }
         }
