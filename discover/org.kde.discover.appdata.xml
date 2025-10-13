@@ -322,6 +322,6 @@
     <release version="6.4.1" date="2025-06-24"/>
   </releases>
   <custom>
-    <value key="KDE::supporters">rzeczyspisane;Ulrich Palecek;[@ddjivan.bsky.social](https://bsky.app/profile/ddjivan.bsky.social);Andreas Zautner;FinnedMercury91</value>
+    <value key="KDE::supporters">.</value>
   </custom>
 </component>
