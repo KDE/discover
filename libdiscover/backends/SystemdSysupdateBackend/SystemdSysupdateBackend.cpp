@@ -162,7 +162,7 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
             if (reply->error() != QNetworkReply::NoError) {
                 qCWarning(SYSTEMDSYSUPDATE_LOG) << "Failed to fetch appstream:" << reply->errorString();
                 Q_EMIT passiveMessage(xi18nc("@info:status",
-                                             "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/></nl/>Error message: %2",
+                                             "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error message: %2",
                                              reply->url().toDisplayString(),
                                              reply->errorString()));
                 continue;
@@ -175,7 +175,7 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
             auto error = metadata.parse(data, format);
             if (error != AppStream::Metadata::MetadataErrorNoError) {
                 qCCritical(SYSTEMDSYSUPDATE_LOG) << "Failed to parse appstream metadata for target:" << name << ": " << error << " - " << metadata.lastError();
-                Q_EMIT passiveMessage(xi18nc("@info:status", "Failed to parse update metadata.<nl/></nl/>Error message: %1", metadata.lastError()));
+                Q_EMIT passiveMessage(xi18nc("@info:status", "Failed to parse update metadata.<nl/><nl/>Error message: %1", metadata.lastError()));
                 continue;
             } else {
                 qCDebug(SYSTEMDSYSUPDATE_LOG) << "Successfully parsed appstream metadata for target:" << name;
