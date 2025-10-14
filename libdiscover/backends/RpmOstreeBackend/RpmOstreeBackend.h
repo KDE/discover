@@ -79,6 +79,9 @@ private:
     /* Helper to setup a Transaction and connect all signals/slots */
     void setupTransaction(RpmOstreeTransaction::Operation op, QString arg = {});
 
+    /* Helper to clear the Transaction once completed */
+    void setTransaction();
+
     /* Called when a new major version is found to setup user facing actions */
     void foundNewMajorVersion(const AppStream::Release &release);
 
