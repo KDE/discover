@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-09-05 00:43+0000\n"
+"POT-Creation-Date: 2025-10-14 02:37+0000\n"
 "PO-Revision-Date: 2012-06-13 10:17+0800\n"
 "Last-Translator: HeroP <herophuong93@gmail.com>\n"
 "Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
@@ -261,7 +261,7 @@ msgstr "Phần mở rộng"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:280
 #: discover/qml/InstallApplicationButton.qml:51
-#: discover/qml/ProgressView.qml:142 discover/qml/SourcesPage.qml:201
+#: discover/qml/ProgressView.qml:144 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:302 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -993,24 +993,24 @@ msgstr ""
 msgid "Tasks (%1%)"
 msgstr "Cập nhật"
 
-#: discover/qml/ProgressView.qml:18 discover/qml/ProgressView.qml:46
+#: discover/qml/ProgressView.qml:18 discover/qml/ProgressView.qml:48
 #, kde-format
 msgid "Tasks"
 msgstr ""
 
-#: discover/qml/ProgressView.qml:116
+#: discover/qml/ProgressView.qml:118
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr ""
 
-#: discover/qml/ProgressView.qml:124
+#: discover/qml/ProgressView.qml:126
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr ""
 
-#: discover/qml/ProgressView.qml:131
+#: discover/qml/ProgressView.qml:133
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
