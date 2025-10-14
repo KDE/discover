@@ -195,7 +195,7 @@ void RpmOstreeBackend::transactionStatusChanged(Transaction::Status status)
     case Transaction::Status::DoneStatus:
     case Transaction::Status::DoneWithErrorStatus:
     case Transaction::Status::CancelledStatus:
-        m_transaction = nullptr;
+        setTransaction();
         break;
     default:
         // Ignore all other status changes
@@ -210,6 +210,12 @@ void RpmOstreeBackend::setupTransaction(RpmOstreeTransaction::Operation op, QStr
     connect(m_transaction, &RpmOstreeTransaction::statusChanged, this, &RpmOstreeBackend::transactionStatusChanged);
     connect(m_transaction, &RpmOstreeTransaction::deploymentsUpdated, this, &RpmOstreeBackend::refreshDeployments);
     connect(m_transaction, &RpmOstreeTransaction::lookForNextMajorVersion, this, &RpmOstreeBackend::lookForNextMajorVersion);
+}
+
+void RpmOstreeBackend::setTransaction()
+{
+    m_transaction = nullptr;
+    Q_EMIT fetchingUpdatesProgressChanged();
 }
 
 bool RpmOstreeBackend::hasExternalTransaction()
