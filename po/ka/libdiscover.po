@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-12 00:43+0000\n"
+"POT-Creation-Date: 2025-10-14 00:43+0000\n"
 "PO-Revision-Date: 2025-10-12 03:29+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -2606,13 +2606,27 @@ msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
 msgstr "სამიზნისთვის \"%1\" appstream-ის ბმულები აღმოჩენილი არაა"
 
-#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:176
-#, kde-format
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgctxt "@info:status"
-msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
+msgid ""
+"Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
+"message: %2"
+msgstr ""
+"ვერ მივიღე appstream-ის მონაცემები \"%1\"-სთვის.<nl/><nl/>შეცდომის "
+"შეტყობინება: %2"
+
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
+msgctxt "@info:status"
+msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
 msgstr "მეტამონაცემების განახლება ჩავარდა.<nl/><nl/>შეცდომის შეტყობინება: %1"
 
-#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:185
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"

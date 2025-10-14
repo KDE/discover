@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-12 00:43+0000\n"
+"POT-Creation-Date: 2025-10-14 00:43+0000\n"
 "PO-Revision-Date: 2025-10-12 09:07+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2630,15 +2630,29 @@ msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
 msgstr "Ni najdenega URL pretoka za cilj “%1”"
 
-#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:176
-#, kde-format
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgctxt "@info:status"
-msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
+msgid ""
+"Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
+"message: %2"
+msgstr ""
+"Pridobivanje podatkov pretoka aplikacije za “%1” ni uspelo.<nl/><nl/"
+">Sporočilo o napaki: %2"
+
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
+msgctxt "@info:status"
+msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
 msgstr ""
 "Razčlenitev metapodatkov posodobitve ni uspela.<nl/></nl/>Sporočilo o "
 "napaki: %1"
 
-#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:185
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"

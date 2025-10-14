@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-12 00:43+0000\n"
-"PO-Revision-Date: 2025-09-05 13:05+0300\n"
+"POT-Creation-Date: 2025-10-14 00:43+0000\n"
+"PO-Revision-Date: 2025-10-12 08:58+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2444,7 +2444,7 @@ msgstr ""
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"מנגנון rpm-ostree: שגיאה: לא ניתן להסב את הבסיס להפנייה ריקה. נא לדווח על "
+"מנגנון rpm-ostree: שגיאה: לא ניתן להסב את הבסיס להפניה ריקה. נא לדווח על "
 "תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
@@ -2574,25 +2574,37 @@ msgstr "SteamOS"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
-msgstr ""
+msgstr "משיכת נתוני AppStream עבור „%1” נכשלה.<nl/><nl/>הודעת השגיאה: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "לא נמצאו כתובות AppStream עבור היעד „%1”"
 
-#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:176
-#, kde-format
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgctxt "@info:status"
-msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
-msgstr ""
+msgid ""
+"Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
+"message: %2"
+msgstr "משיכת נתוני AppStream עבור „%1” נכשלה.<nl/><nl/>הודעת השגיאה: %2"
 
-#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:185
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
+msgctxt "@info:status"
+msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
+msgstr "פענוח נתוני־על של עדכון נכשל.<nl/></nl/>הודעת שגיאה: %1"
+
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
-msgstr ""
+msgstr "לא נמצאו רכיבים בנתוני העל של היעד „%1”"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-12 00:43+0000\n"
+"POT-Creation-Date: 2025-10-14 00:43+0000\n"
 "PO-Revision-Date: 2025-10-12 07:27-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -2630,14 +2630,27 @@ msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
 msgstr "Nenhum URL de appstream encontrado para o destino “%1”"
 
-#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:176
-#, kde-format
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgctxt "@info:status"
-msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
+msgid ""
+"Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
+"message: %2"
+msgstr ""
+"Falha ao obter dados do appstream para “%1”.<nl/><nl/>Mensagem de erro: %2"
+
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
+msgctxt "@info:status"
+msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
 msgstr ""
 "Falha ao analisar metadados de atualização.<nl/></nl/>Mensagem de erro: %1"
 
-#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:185
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
