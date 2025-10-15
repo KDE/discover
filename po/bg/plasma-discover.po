@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-14 00:43+0000\n"
-"PO-Revision-Date: 2025-09-03 20:06+0200\n"
+"PO-Revision-Date: 2025-10-14 22:27+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -1043,7 +1043,7 @@ msgstr "Премахване"
 #: discover/qml/InstalledPage.qml:14
 #, kde-format
 msgid "Installed"
-msgstr "Инсталиран"
+msgstr "Инсталирани"
 
 #: discover/qml/Navigation.qml:34
 #, kde-format

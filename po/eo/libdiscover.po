@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:43+0000\n"
+"POT-Creation-Date: 2025-10-15 00:44+0000\n"
 "PO-Revision-Date: 2025-02-23 13:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -1223,7 +1223,7 @@ msgid "Cannot remove '%1'"
 msgstr "Ne povas forigi '%1'"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:364
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1242,7 +1242,7 @@ msgid "Upgrade Now"
 msgstr "Eldonpromocii Nun"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:374
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2343,7 +2343,7 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Operaciumo"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:172
 #, fuzzy, kde-format
 #| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgid ""
@@ -2352,31 +2352,31 @@ msgstr ""
 "rpm-ostree: Multoblaj ekfunkciigitaj deplojoj trovitaj. Bonvolu registri "
 "cimon."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:184
 #, fuzzy, kde-format
 #| msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree: Neniu startita deplojo trovita. Bonvolu registri cimon."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:372
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Komenci Eldonpromocion…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:510
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:518
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Vi havas pritraktatajn ĝisdatigojn por la nuna versio. Procedante ĉiuokaze."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:513
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Bonvolu ĝisdatigi al la plej nova versio antaŭ ol rebazi al grava versio"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:529
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "Mankas fora ref por rebaza operacio. Bonvolu registri cimon."
@@ -2435,11 +2435,6 @@ msgstr "Rezerva versio (alpinglita)"
 #, kde-format
 msgid "Fallback version"
 msgstr "Rezerva versio"
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:76
-#, kde-format
-msgid "ostree remotes"
-msgstr "ostree remotes"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
 #, fuzzy, kde-format
@@ -2794,6 +2789,9 @@ msgstr "Sistema Programaro"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Aldonaĵoj"
+
+#~ msgid "ostree remotes"
+#~ msgstr "ostree remotes"
 
 #~ msgctxt "@action:button %1 is the distro name"
 #~ msgid "Report This Issue to %1"

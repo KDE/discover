@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:43+0000\n"
-"PO-Revision-Date: 2025-09-06 16:00+0200\n"
+"POT-Creation-Date: 2025-10-15 00:44+0000\n"
+"PO-Revision-Date: 2025-10-14 22:28+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -1228,7 +1228,7 @@ msgid "Cannot remove '%1'"
 msgstr "Не може да се премахне „%1“"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:364
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1247,7 +1247,7 @@ msgid "Upgrade Now"
 msgstr "Надграждане на системата сега"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:374
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -1886,12 +1886,12 @@ msgstr "Тестване"
 #: libdiscover/resources/AbstractResource.cpp:97
 #, kde-format
 msgid "Installed"
-msgstr "Инсталиран"
+msgstr "Инсталирани"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:330
 #, kde-format
 msgid "Not Installed"
-msgstr "Инсталиран"
+msgstr "Неинсталиран"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:332
 #, kde-format
@@ -2350,7 +2350,7 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Операционна система"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:172
 #, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
@@ -2358,32 +2358,32 @@ msgstr ""
 "rpm-ostree backend: Открити са няколко стартирани варианти. Моля, подайте "
 "сигнал за грешка."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:184
 #, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree backend: Не са открити стартирани варианти. Моля, подайте сигнал "
 "за грешка."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:372
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Започване на надграждане на системата…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:510
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:518
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "Имате чакащи актуализации за текущата версия. Продължаваме все пак."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:513
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Моля, актуализирайте до най-новата версия, преди да преминете към основна "
 "версия."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:529
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2444,11 +2444,6 @@ msgstr "Резервна версия за възстановяване"
 #, kde-format
 msgid "Fallback version"
 msgstr "Резервна версия за възстановяване"
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:76
-#, kde-format
-msgid "ostree remotes"
-msgstr "ostree отдалечено"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
 #, kde-format
@@ -2613,12 +2608,14 @@ msgstr "SteamOS"
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgstr ""
+"Неуспешно получаване на данни от потока от приложения за „%1“.<nl/><nl/"
+">Съобщение за грешка: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "Не са намерени URL адреси на appstream за целта „%1“"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
 #, kde-kuit-format
@@ -2627,18 +2624,22 @@ msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
 msgstr ""
+"Неуспешно извличане на актуализации от <a href='%1'>%1</a>.<nl/><nl/"
+">Съобщение за грешка: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
 msgstr ""
+"Неуспешно анализиране на метаданните за актуализация.<nl/><nl/>Съобщение за "
+"грешка: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
-msgstr ""
+msgstr "Не са намерени компоненти в метаданните на appstream за целта „%1“"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
@@ -2791,6 +2792,9 @@ msgstr "Системен софтуер"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Добавки"
+
+#~ msgid "ostree remotes"
+#~ msgstr "ostree отдалечено"
 
 #~ msgctxt "@action:button %1 is the distro name"
 #~ msgid "Report This Issue to %1"

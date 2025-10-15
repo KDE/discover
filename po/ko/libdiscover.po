@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:43+0000\n"
+"POT-Creation-Date: 2025-10-15 00:44+0000\n"
 "PO-Revision-Date: 2025-10-09 00:10+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1205,7 +1205,7 @@ msgid "Cannot remove '%1'"
 msgstr "'%1'을(를) 삭제할 수 없음"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:364
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1224,7 +1224,7 @@ msgid "Upgrade Now"
 msgstr "지금 업그레이드"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:374
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2310,36 +2310,36 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "운영 체제"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:172
 #, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree 백엔드: 여러 부트된 환경이 발견되었습니다. 버그를 보고해 주십시오."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:184
 #, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree 백엔드: 부트된 환경을 찾을 수 없습니다. 버그를 보고해 주십시오."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:372
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "업그레이드 시작…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:510
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:518
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "현재 버전의 업데이트가 대기 중입니다. 그래도 계속 진행합니다."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:513
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "새 버전으로 전환하기 전 최신 버전으로 업데이트하십시오"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:529
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "rebase 작업에 원격 참조가 없습니다. 버그를 보고해 주십시오."
@@ -2398,11 +2398,6 @@ msgstr "폴백 버전(고정됨)"
 #, kde-format
 msgid "Fallback version"
 msgstr "폴백 버전"
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:76
-#, kde-format
-msgid "ostree remotes"
-msgstr "ostree 원격"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
 #, kde-format
@@ -2740,6 +2735,9 @@ msgstr "시스템 소프트웨어"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "부가 기능"
+
+#~ msgid "ostree remotes"
+#~ msgstr "ostree 원격"
 
 #~ msgctxt "@action:button %1 is the distro name"
 #~ msgid "Report This Issue to %1"

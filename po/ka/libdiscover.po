@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:43+0000\n"
-"PO-Revision-Date: 2025-10-12 03:29+0200\n"
+"POT-Creation-Date: 2025-10-15 00:44+0000\n"
+"PO-Revision-Date: 2025-10-14 06:15+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1226,7 +1226,7 @@ msgid "Cannot remove '%1'"
 msgstr "%1-ის წაშლის შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:364
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1245,7 +1245,7 @@ msgid "Upgrade Now"
 msgstr "განაახლეთ ახლა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:374
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2339,7 +2339,7 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "ოპერაციული სისტემა"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:172
 #, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
@@ -2347,30 +2347,30 @@ msgstr ""
 "უკანაბოლო rpm-ostree: ნაპოვნია მრავალჩატვირთვადი გაშლები. შეავსეთ შეცდომის "
 "ანგარიში."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:184
 #, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
 "უკანაბოლო rpm-ostree: ჩატვირთული გაშლა ნაპოვნი არაა. შეავსეთ შეცდომის "
 "ანგარიში."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:372
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "ვერსიის აწევის დაწყება…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:510
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:518
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "მიმდინარე ვერსიაში განახლებები ჯერ კიდევ მორჩენილია. მაინც ვაგრძელებ."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:513
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "ძირითად ვერსიაზე გადასვლისთვის საჭიროა უახლეს ვერსიამდე განახლება"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:529
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2431,11 +2431,6 @@ msgstr "შეცდომის შემთხვევაში გადა�
 #, kde-format
 msgid "Fallback version"
 msgstr "შეცდომის შემთხვევაში გადასართველი ვერსია"
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:76
-#, kde-format
-msgid "ostree remotes"
-msgstr "ostree -ის დაშორებულები"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
 #, kde-format
@@ -2607,24 +2602,20 @@ msgid "No appstream URLs found for target “%1”"
 msgstr "სამიზნისთვის \"%1\" appstream-ის ბმულები აღმოჩენილი არაა"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
 msgstr ""
-"ვერ მივიღე appstream-ის მონაცემები \"%1\"-სთვის.<nl/><nl/>შეცდომის "
-"შეტყობინება: %2"
+"ჩავარდა განახლებების მიღება ბმულიდან <a href='%1'>%1</a>.<nl/><nl/>შეცდომა: "
+"%2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
-msgstr "მეტამონაცემების განახლება ჩავარდა.<nl/><nl/>შეცდომის შეტყობინება: %1"
+msgstr "განახლების მეტამონაცემების დამუშავება ჩავარდა.<nl/><nl/>შეცდომა: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
@@ -2781,6 +2772,9 @@ msgstr "სისტემური პროგრამები"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "დამატებები"
+
+#~ msgid "ostree remotes"
+#~ msgstr "ostree -ის დაშორებულები"
 
 #~ msgctxt "@action:button %1 is the distro name"
 #~ msgid "Report This Issue to %1"

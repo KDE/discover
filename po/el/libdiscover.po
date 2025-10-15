@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:43+0000\n"
+"POT-Creation-Date: 2025-10-15 00:44+0000\n"
 "PO-Revision-Date: 2024-09-19 14:31+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1258,7 +1258,7 @@ msgid "Cannot remove '%1'"
 msgstr "Αδυναμία αφαίρεσης '%1'"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:364
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1278,7 +1278,7 @@ msgid "Upgrade Now"
 msgstr "Αναβάθμιση Τώρα"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:374
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2383,7 +2383,7 @@ msgctxt "Category"
 msgid "Operating System"
 msgstr "Λειτουργικό σύστημα"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:177
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:172
 #, fuzzy, kde-format
 #| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
 msgid ""
@@ -2392,7 +2392,7 @@ msgstr ""
 "rpm-ostree: Βρέθηκαν πολλαπλά εκκινήσιμα deployments. Παρακαλώ υποβάλετε ένα "
 "σφάλμα."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:189
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:184
 #, fuzzy, kde-format
 #| msgid "rpm-ostree: No booted deployment found. Please file a bug."
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
@@ -2400,26 +2400,26 @@ msgstr ""
 "rpm-ostree: Δεν βρέθηκε εκκινήσιμη εγκατάσταση. Παρακαλώ καταθέστε ένα "
 "σφάλμα."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:372
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Έναρξη Αναβάθμισης..."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:510
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:518
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Έχετε εκκρεμείς ενημερώσεις για την τρέχουσα έκδοση. Προχωράω ούτως ή άλλως."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:513
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Ενημερώστε στην πιο πρόσφατη έκδοση πριν από την μετάβαση σε μια μεγάλη "
 "έκδοση."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:529
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2480,11 +2480,6 @@ msgstr "Έκδοση εφεδρείας ( καρφιτσωμένη)"
 #, kde-format
 msgid "Fallback version"
 msgstr "Έκδοση εφεδρείας"
-
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeSourcesBackend.cpp:76
-#, kde-format
-msgid "ostree remotes"
-msgstr "ostree απομακρυσμένα"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
 #, fuzzy, kde-format
@@ -2845,6 +2840,9 @@ msgstr "Λογισμικό συστήματος"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Πρόσθετα"
+
+#~ msgid "ostree remotes"
+#~ msgstr "ostree απομακρυσμένα"
 
 #~ msgctxt "@action:button %1 is the distro name"
 #~ msgid "Report This Issue to %1"
