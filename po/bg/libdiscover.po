@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-05 02:29+0000\n"
-"PO-Revision-Date: 2025-09-06 16:00+0200\n"
+"PO-Revision-Date: 2025-10-14 22:49+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -1886,12 +1886,12 @@ msgstr "Тестване"
 #: libdiscover/resources/AbstractResource.cpp:97
 #, kde-format
 msgid "Installed"
-msgstr "Инсталиран"
+msgstr "Инсталирани"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:330
 #, kde-format
 msgid "Not Installed"
-msgstr "Инсталиран"
+msgstr "Неинсталирани"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:332
 #, kde-format
