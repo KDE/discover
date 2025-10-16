@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-15 00:44+0000\n"
+"POT-Creation-Date: 2025-10-16 00:43+0000\n"
 "PO-Revision-Date: 2023-01-09 18:43+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -1082,7 +1082,7 @@ msgstr "Permissões do %1"
 msgid "Configure permissions…"
 msgstr "Configurar as permissões…"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:482
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:486
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, fuzzy, kde-format
 #| msgid "Offline Updates"

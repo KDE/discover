@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-15 00:44+0000\n"
-"PO-Revision-Date: 2025-10-13 22:35+0200\n"
+"POT-Creation-Date: 2025-10-16 00:43+0000\n"
+"PO-Revision-Date: 2025-10-15 21:05+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -1062,7 +1062,7 @@ msgstr "Rättigheter"
 msgid "Configure permissions…"
 msgstr "Anpassa rättigheter…"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:482
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:486
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"
@@ -2611,24 +2611,20 @@ msgid "No appstream URLs found for target “%1”"
 msgstr "Inga appstream-webbadresser hittades för målet \"%1\""
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
 msgstr ""
-"Misslyckades hämta appstream-data för \"%1\".<nl/><nl/>Felmeddelande: %2"
+"Misslyckades hämta uppdateringar från <a href='%1'>%1</a>.<nl/><nl/"
+">Felmeddelande: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Failed to parse update metadata.<nl/></nl/>Error message: %1"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
-msgstr ""
-"Misslyckades tolka uppdatering av metadata:<nl/></nl/>Felmeddelande: %1"
+msgstr "Misslyckades tolka uppdaterad metadata:<nl/><nl/>Felmeddelande: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format

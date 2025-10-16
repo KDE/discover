@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-15 00:44+0000\n"
-"PO-Revision-Date: 2025-05-18 20:14+0200\n"
+"POT-Creation-Date: 2025-10-16 00:43+0000\n"
+"PO-Revision-Date: 2025-10-15 20:35+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1067,7 +1067,7 @@ msgstr "Jogosultságok"
 msgid "Configure permissions…"
 msgstr "Jogosultságok beállítása…"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:482
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:486
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"
@@ -1193,7 +1193,7 @@ msgstr "Nem lehet elindítani ezt: %1"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "Illesztőprogramok"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
@@ -1267,6 +1267,8 @@ msgid ""
 "The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
 "<link url='%1'>report this issue to %2</link>"
 msgstr ""
+"A PackageKit háttérszolgáltatás váratlanul leállt.<nl/></nl/>Jelentse <link "
+"url='%1'>ezt a hibát a(z) %2 operációs rendszernek</link>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2078,13 +2080,13 @@ msgid "Repair Failed"
 msgstr "A javítás nem sikerült"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "%1<nl/>Kérjük, jelentse ezt a hibát a disztribúciójának."
+msgstr ""
+"%1<nl/>Jelentse <link url='%2'>ezt a hibát a(z) %3 operációs rendszernek</"
+"link>."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:168
 #, kde-format
@@ -2357,19 +2359,18 @@ msgid "Operating System"
 msgstr "Operációs rendszer"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:172
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: Több betöltött környezet található. Küldjön hibabejelentést."
+"rpm-ostree modul: Több betöltött környezet található. Küldjön "
+"hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:184
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
-"rpm-ostree: Nem található betöltött környezet. Küldjön hibabejelentést."
+"rpm-ostree modul: Nem található betöltött környezet. Küldjön hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
 #, kde-format
@@ -2452,46 +2453,36 @@ msgid "Fallback version"
 msgstr "Tartalék verzió"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Hiba: Nincs megadva DBus interfész. Küldjön "
+"rpm-ostree modul: Hiba: Nincs megadva DBus interfész. Küldjön "
 "hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Hiba: Nem lehet elindítani egy tranzakcióz érvénytelen "
+"rpm-ostree modul: Hiba: Nem lehet elindítani egy tranzakciót érvénytelen "
 "formátumú erőforráshoz. Küldjön hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Hiba: Nem lehet újraalapozni (rebase) üres hivatkozásra. "
+"rpm-ostree modul: Hiba: Nem lehet újraalapozni (rebase) üres hivatkozásra. "
 "Küldjön hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Hiba: Ismeretlen művelet kérve. Küldjön hibabejelentést."
+"rpm-ostree modul: Hiba: Ismeretlen művelet kérve. Küldjön hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
@@ -2504,12 +2495,10 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Hiba: Ismeretlen erőforrásformátum. Küldjön "
+"rpm-ostree modul: Hiba: Ismeretlen erőforrás-formátum. Küldjön "
 "hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
@@ -2701,13 +2690,10 @@ msgid "Refresh"
 msgstr "Frissítés"
 
 #: libdiscover/resources/ResourcesModel.cpp:406
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "A(z) %1 verzió frissítése"
+msgstr "%1 frissítése"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:787
 #, kde-format

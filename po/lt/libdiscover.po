@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-15 00:44+0000\n"
-"PO-Revision-Date: 2025-09-06 14:06+0300\n"
+"POT-Creation-Date: 2025-10-16 00:43+0000\n"
+"PO-Revision-Date: 2025-10-15 13:16+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -1073,7 +1073,7 @@ msgstr "Leidimai"
 msgid "Configure permissions…"
 msgstr "Konfigūruoti leidimus…"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:482
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:486
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"
@@ -2628,12 +2628,14 @@ msgstr "SteamOS"
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgstr ""
+"Nepavyko gauti appstream duomenų, skirtų „%1“.<nl/><nl/>Klaidos pranešimas: "
+"%2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "Nerasta jokių appstream URL, skirtų paskirties elementui „%1“"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
 #, kde-kuit-format
@@ -2642,18 +2644,23 @@ msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
 msgstr ""
+"Nepavyko gauti atnaujinimų iš <a href='%1'>%1</a>.<nl/><nl/>Klaidos "
+"pranešimas: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
 msgstr ""
+"Nepavyko išnagrinėti atnaujinimo metaduomenų.<nl/><nl/>Klaidos pranešimas: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
 msgstr ""
+"Nerasta jokių komponentų appstream metaduomenyse, skirtuose paskirties "
+"elementui „%1“"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
