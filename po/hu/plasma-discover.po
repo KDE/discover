@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-14 02:37+0000\n"
-"PO-Revision-Date: 2025-05-18 20:16+0200\n"
+"PO-Revision-Date: 2025-10-15 20:38+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -18,13 +18,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
@@ -33,12 +30,7 @@ msgstr ""
 "alkalmazások bővítményeire"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -47,7 +39,8 @@ msgid ""
 msgstr ""
 "A Discover használatához alkalmazásokhoz telepítse az Ön által preferált "
 "modult a <interface>Beállítások</interface> oldalon, a <interface>Hiányzó "
-"háttérprogramok</interface> alatt."
+"háttérprogramok</interface> alatt.<nl/><nl/>Jelentse <link url='%1'>ezt a "
+"hibát a(z) %2 operációs rendszernek</link>."
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -113,16 +106,12 @@ msgid "Please make sure Snap support is installed"
 msgstr "Ellenőrizze, hogy a Snap támogatás telepítve van-e"
 
 #: discover/DiscoverObject.cpp:407
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
 msgstr ""
-"Nem sikerült a(z) %1 megnyitása, mivel nem található meg egyik elérhető "
-"szoftvertárolóban sem."
+"A kért alkalmazás nem található meg egyik elérhető szoftvertárolóban sem"
 
 #: discover/DiscoverObject.cpp:410
 #, kde-kuit-format
@@ -133,6 +122,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(Nincs bejegyzés ehhez: %1)<nl/><nl/>Jelentse <link url='%2'>ezt a hibát "
+"a(z) %3 operációs rendszernek</link>"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
@@ -530,9 +521,7 @@ msgid ","
 msgstr ","
 
 #: discover/qml/ApplicationPage.qml:509
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "See more…"
 msgstr "Több…"
@@ -591,11 +580,10 @@ msgstr "A(z) %1 értékelései átmenetileg nem érhetők el"
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "Nincsenek értékelések"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
 msgstr "Telepítse értékelés írásához"
@@ -926,12 +914,10 @@ msgid "Proceed"
 msgstr "Folytatás"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
-msgstr "Hiba jelentése a(z) %1 disztribúciónak"
+msgstr "Hiba jelentése ide: %1"
 
 #: discover/qml/DiscoverWindow.qml:347
 #, kde-format
