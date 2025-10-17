@@ -10,15 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-15 00:44+0000\n"
-"PO-Revision-Date: 2025-09-06 01:19+0100\n"
+"POT-Creation-Date: 2025-10-17 00:43+0000\n"
+"PO-Revision-Date: 2025-10-15 18:31+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -1072,7 +1072,7 @@ msgstr "Permisos"
 msgid "Configure permissions…"
 msgstr "Configurar permisos…"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:482
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:486
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"
@@ -1240,7 +1240,7 @@ msgid "Cannot remove '%1'"
 msgstr "No se puede eliminar «%1»"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1259,7 +1259,7 @@ msgid "Upgrade Now"
 msgstr "Renovar ahora"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2381,25 +2381,25 @@ msgstr ""
 "Motor rpm-ostree: No se ha encontrado ninguna instancia en uso. Notifique el "
 "fallo."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Iniciar renovación…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:518
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:524
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Tiene actualizaciones pendientes para la versión actual. Continuando de "
 "todas formas."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "Actualice a la última versión antes de cambiar a una versión mayor"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:529
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:535
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
@@ -2622,12 +2622,14 @@ msgstr "SteamOS"
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgstr ""
+"No se han podido obtener datos de «appstream» para «%1».<nl/><nl/>Mensaje de "
+"error: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "No se han encontrado URL de «appstream» para el destino «%1»"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
 #, kde-kuit-format
@@ -2636,18 +2638,24 @@ msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
 msgstr ""
+"Ha fallado la obtención de actualizaciones de <a href='%1'>%1</a>.<nl/><nl/"
+">Mensaje de error: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
 msgstr ""
+"Ha fallado el análisis de los metadatos de actualización.<nl/><nl/>Mensaje "
+"de error: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
 msgstr ""
+"No se han encontrado componentes en los datos «appstream» para el destino "
+"«%1»"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
@@ -2800,6 +2808,3 @@ msgstr "Software del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complementos"
-
-#~ msgid "ostree remotes"
-#~ msgstr "Remotos de ostree"
