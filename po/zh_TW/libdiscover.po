@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-16 02:37+0000\n"
+"POT-Creation-Date: 2025-10-17 03:17+0000\n"
 "PO-Revision-Date: 2025-09-05 17:09+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1196,7 +1196,7 @@ msgid "Cannot remove '%1'"
 msgstr "無法移除 %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:359
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1214,7 +1214,7 @@ msgid "Upgrade Now"
 msgstr "現在更新"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:369
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2303,23 +2303,23 @@ msgstr "rpm-ostree 後端: 找到了多個已開機的部署。請回報問題�
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree 後端: 未找到已開機的部署。請回報問題。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:367
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "開始更新…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:518
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:524
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "您在目前版本尚有待處理的更新。處理仍將繼續。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "請更新到最新版本再重定基底到大版本"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:529
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:535
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "缺乏重定基底操作用的遠端 ref。請回報問題。"
