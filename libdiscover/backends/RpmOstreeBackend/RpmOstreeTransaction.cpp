@@ -53,7 +53,7 @@ RpmOstreeTransaction::RpmOstreeTransaction(QObject *parent,
             m_prog = QStringLiteral("skopeo");
             // This will fail on non-remote transports (oci, oci-archive, containers-storage) but
             // that's OK as we can not check for updates in those cases.
-            m_args.append({QStringLiteral("inspect"), m_resource->OCIUrl()});
+            m_args.append({QStringLiteral("inspect"), QStringLiteral("--no-tags"), m_resource->OCIUrl()});
         } else {
             // Should never happen
             qCWarning(RPMOSTREE_LOG) << "Error: Can not start a transaction for resource with an invalid format. Please file a bug.";

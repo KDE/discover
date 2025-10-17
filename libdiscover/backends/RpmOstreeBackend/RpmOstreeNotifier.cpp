@@ -307,7 +307,9 @@ void RpmOstreeNotifier::checkSystemUpdateOCI()
     });
 
     m_process->start(QStringLiteral("skopeo"),
-                     {QStringLiteral("inspect"), QStringLiteral("docker://") + m_ostreeFormat->repo() + QStringLiteral(":") + m_ostreeFormat->tag()});
+                     {QStringLiteral("inspect"),
+                      QStringLiteral("--no-tags"),
+                      QStringLiteral("docker://") + m_ostreeFormat->repo() + QStringLiteral(":") + m_ostreeFormat->tag()});
 }
 
 void RpmOstreeNotifier::checkForPendingDeployment()
