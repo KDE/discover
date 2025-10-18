@@ -710,10 +710,10 @@ void DiscoverObject::shutdownNow()
 
     QDBusMessage method;
     if (s_weAreOnPlasma) {
-        auto method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.Shutdown"),
-                                                     QStringLiteral("/Shutdown"),
-                                                     QStringLiteral("org.kde.Shutdown"),
-                                                     shouldRebootFirst ? QStringLiteral("logoutAndReboot") : QStringLiteral("logoutAndShutdown"));
+        method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.Shutdown"),
+                                                QStringLiteral("/Shutdown"),
+                                                QStringLiteral("org.kde.Shutdown"),
+                                                shouldRebootFirst ? QStringLiteral("logoutAndReboot") : QStringLiteral("logoutAndShutdown"));
     } else {
         method = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.login1"),
                                                 QStringLiteral("/org/freedesktop/login1"),
