@@ -2,8 +2,8 @@
 # Copyright (C) 2012-2025 This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Orestes Mas <orestes@tsc.upc.edu>, 2012.
-# Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2012 Orestes Mas <orestes@tsc.upc.edu>
+# SPDX-FileCopyrightText: 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Antoni Bella Pérez <antonibella5@yahoo.com>
 # SPDX-FileCopyrightText: 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
