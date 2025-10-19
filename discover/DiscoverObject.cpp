@@ -682,7 +682,7 @@ void DiscoverObject::rebootNow()
     setAboutToReboot();
 
     QDBusMessage method;
-    if (s_weAreOnPlasma) {
+    if (*s_weAreOnPlasma) {
         method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.Shutdown"),
                                                 QStringLiteral("/Shutdown"),
                                                 QStringLiteral("org.kde.Shutdown"),
@@ -709,7 +709,7 @@ void DiscoverObject::shutdownNow()
     setAboutToPowerOff();
 
     QDBusMessage method;
-    if (s_weAreOnPlasma) {
+    if (*s_weAreOnPlasma) {
         method = QDBusMessage::createMethodCall(QStringLiteral("org.kde.Shutdown"),
                                                 QStringLiteral("/Shutdown"),
                                                 QStringLiteral("org.kde.Shutdown"),
