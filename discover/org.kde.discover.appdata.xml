@@ -4,6 +4,9 @@
   <launchable type="desktop-id">org.kde.discover.desktop</launchable>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
+  <developer id="kde.org">
+    <name translate="no">KDE</name>
+  </developer>
   <name>Discover</name>
   <name xml:lang="ar">المستكشف</name>
   <name xml:lang="ast">Discover</name>
@@ -324,4 +327,5 @@
   <custom>
     <value key="KDE::supporters">.</value>
   </custom>
+  <content_rating type="oars-1.1"/>
 </component>
