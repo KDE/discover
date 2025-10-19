@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-17 00:43+0000\n"
-"PO-Revision-Date: 2025-09-04 10:13+0300\n"
+"PO-Revision-Date: 2025-10-15 20:59+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -2602,12 +2602,14 @@ msgstr "SteamOS"
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgstr ""
+"Kohteen ”%1” sovellusvirran tietojen nouto epäonnistui.<nl/><nl/"
+">Virheviesti: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "Kohteelle ”%1” ei löytynyt sovellusvirran verkko-osoitteita"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
 #, kde-kuit-format
@@ -2627,7 +2629,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
-msgstr ""
+msgstr "Kohteelle ”%1” ei löytynyt osia sovellusvirran metatiedoista"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
@@ -2681,13 +2683,10 @@ msgid "Refresh"
 msgstr "Virkistä"
 
 #: libdiscover/resources/ResourcesModel.cpp:406
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "Version %1 päivitys"
+msgstr "Virkistetään: %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:787
 #, kde-format
