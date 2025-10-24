@@ -37,7 +37,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:43+0000\n"
+"POT-Creation-Date: 2025-10-24 00:43+0000\n"
 "PO-Revision-Date: 2024-06-10 12:05+0400\n"
 "Last-Translator: Kheyyam Godjayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -727,61 +727,61 @@ msgstr[0] "Axtarış - %1 element"
 msgstr[1] "Axtarış - %1 element"
 
 #: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:266
+#: discover/qml/ApplicationsListPage.qml:262
 #, kde-format
 msgid "Search"
 msgstr "Axtarış"
 
-#: discover/qml/ApplicationsListPage.qml:103 discover/qml/ReviewsPage.qml:141
+#: discover/qml/ApplicationsListPage.qml:99 discover/qml/ReviewsPage.qml:141
 #, kde-format
 msgid "Sort: %1"
 msgstr "Çeşidləmək: %1"
 
-#: discover/qml/ApplicationsListPage.qml:108
+#: discover/qml/ApplicationsListPage.qml:104
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
 msgstr "Uyğunluq"
 
-#: discover/qml/ApplicationsListPage.qml:119
+#: discover/qml/ApplicationsListPage.qml:115
 #, kde-format
 msgid "Name"
 msgstr "Adı"
 
-#: discover/qml/ApplicationsListPage.qml:130 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
 #, kde-format
 msgid "Rating"
 msgstr "Reytinq"
 
-#: discover/qml/ApplicationsListPage.qml:141
+#: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
 msgid "Size"
 msgstr "Ölçü"
 
-#: discover/qml/ApplicationsListPage.qml:152
+#: discover/qml/ApplicationsListPage.qml:148
 #, fuzzy, kde-format
 #| msgid "Release Date"
 msgid "Release date"
 msgstr "Buraxılış tarixi"
 
-#: discover/qml/ApplicationsListPage.qml:212
+#: discover/qml/ApplicationsListPage.qml:208
 #, kde-format
 msgid "Nothing found"
 msgstr "Heç nə tapılmadı"
 
-#: discover/qml/ApplicationsListPage.qml:220
+#: discover/qml/ApplicationsListPage.qml:216
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "Bütün kateqoriyaldarda axtarmaq"
 
-#: discover/qml/ApplicationsListPage.qml:230
+#: discover/qml/ApplicationsListPage.qml:226
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "İnternetdə \"%1\" üçün axtarış"
 
-#: discover/qml/ApplicationsListPage.qml:245
+#: discover/qml/ApplicationsListPage.qml:241
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -789,13 +789,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "\"%1\", \"%2\" kateqoriyasında tapılmadı"
 
-#: discover/qml/ApplicationsListPage.qml:247
+#: discover/qml/ApplicationsListPage.qml:243
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "\"%1\" mövcud mənbələrdə tapılmadı"
 
-#: discover/qml/ApplicationsListPage.qml:248
+#: discover/qml/ApplicationsListPage.qml:244
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -808,7 +808,7 @@ msgstr ""
 "yoxlanılmaya bilər. Bu mənbədən alınmış proqram təminatından istifadə "
 "edərkən ehtiyyatlı olun."
 
-#: discover/qml/ApplicationsListPage.qml:281
+#: discover/qml/ApplicationsListPage.qml:277
 #, kde-format
 msgid "Still looking…"
 msgstr "Axtarış davam edir..."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:43+0000\n"
+"POT-Creation-Date: 2025-10-24 00:43+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -647,60 +647,60 @@ msgid_plural "Search - %1 items"
 msgstr[0] "搜索 - %1 个项目"
 
 #: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:266
+#: discover/qml/ApplicationsListPage.qml:262
 #, kde-format
 msgid "Search"
 msgstr "搜索"
 
-#: discover/qml/ApplicationsListPage.qml:103 discover/qml/ReviewsPage.qml:141
+#: discover/qml/ApplicationsListPage.qml:99 discover/qml/ReviewsPage.qml:141
 #, kde-format
 msgid "Sort: %1"
 msgstr "排序：%1"
 
-#: discover/qml/ApplicationsListPage.qml:108
+#: discover/qml/ApplicationsListPage.qml:104
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
 msgstr "相关性"
 
-#: discover/qml/ApplicationsListPage.qml:119
+#: discover/qml/ApplicationsListPage.qml:115
 #, kde-format
 msgid "Name"
 msgstr "名称"
 
-#: discover/qml/ApplicationsListPage.qml:130 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
 #, kde-format
 msgid "Rating"
 msgstr "评分"
 
-#: discover/qml/ApplicationsListPage.qml:141
+#: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
 msgid "Size"
 msgstr "体积"
 
-#: discover/qml/ApplicationsListPage.qml:152
+#: discover/qml/ApplicationsListPage.qml:148
 #, kde-format
 msgid "Release date"
 msgstr "发布日期"
 
-#: discover/qml/ApplicationsListPage.qml:212
+#: discover/qml/ApplicationsListPage.qml:208
 #, kde-format
 msgid "Nothing found"
 msgstr "未找到任何内容"
 
-#: discover/qml/ApplicationsListPage.qml:220
+#: discover/qml/ApplicationsListPage.qml:216
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "在所有分类中搜索"
 
-#: discover/qml/ApplicationsListPage.qml:230
+#: discover/qml/ApplicationsListPage.qml:226
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "在互联网上搜索“%1”"
 
-#: discover/qml/ApplicationsListPage.qml:245
+#: discover/qml/ApplicationsListPage.qml:241
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -708,13 +708,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "在“%2”分类中没有找到“%1”"
 
-#: discover/qml/ApplicationsListPage.qml:247
+#: discover/qml/ApplicationsListPage.qml:243
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "无法在可用来源中找到“%1”"
 
-#: discover/qml/ApplicationsListPage.qml:248
+#: discover/qml/ApplicationsListPage.qml:244
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -725,7 +725,7 @@ msgstr ""
 "您或许可以通过互联网下载“%1”。请注意：从互联网获取的软件没有经过本机系统分发"
 "组织的审核，无法保证在本机系统中运行时的功能和稳定性。请谨慎操作。"
 
-#: discover/qml/ApplicationsListPage.qml:281
+#: discover/qml/ApplicationsListPage.qml:277
 #, kde-format
 msgid "Still looking…"
 msgstr "正在查找…"

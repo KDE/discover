@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-14 00:43+0000\n"
+"POT-Creation-Date: 2025-10-24 00:43+0000\n"
 "PO-Revision-Date: 2025-10-05 12:35+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -672,60 +672,60 @@ msgstr[2] "חיפוש - %1 פריטים"
 msgstr[3] "חיפוש - %1 פריטים"
 
 #: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:266
+#: discover/qml/ApplicationsListPage.qml:262
 #, kde-format
 msgid "Search"
 msgstr "חיפוש"
 
-#: discover/qml/ApplicationsListPage.qml:103 discover/qml/ReviewsPage.qml:141
+#: discover/qml/ApplicationsListPage.qml:99 discover/qml/ReviewsPage.qml:141
 #, kde-format
 msgid "Sort: %1"
 msgstr "מיון לפי: %1"
 
-#: discover/qml/ApplicationsListPage.qml:108
+#: discover/qml/ApplicationsListPage.qml:104
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
 msgstr "רלוונטיות"
 
-#: discover/qml/ApplicationsListPage.qml:119
+#: discover/qml/ApplicationsListPage.qml:115
 #, kde-format
 msgid "Name"
 msgstr "שם"
 
-#: discover/qml/ApplicationsListPage.qml:130 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
 #, kde-format
 msgid "Rating"
 msgstr "דירוג"
 
-#: discover/qml/ApplicationsListPage.qml:141
+#: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
 msgid "Size"
 msgstr "גודל"
 
-#: discover/qml/ApplicationsListPage.qml:152
+#: discover/qml/ApplicationsListPage.qml:148
 #, kde-format
 msgid "Release date"
 msgstr "תאריך שחרור"
 
-#: discover/qml/ApplicationsListPage.qml:212
+#: discover/qml/ApplicationsListPage.qml:208
 #, kde-format
 msgid "Nothing found"
 msgstr "לא נמצא כלום"
 
-#: discover/qml/ApplicationsListPage.qml:220
+#: discover/qml/ApplicationsListPage.qml:216
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "חיפוש בכל הקטגוריות"
 
-#: discover/qml/ApplicationsListPage.qml:230
+#: discover/qml/ApplicationsListPage.qml:226
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "חיפוש באינטרנט אחר „%1”"
 
-#: discover/qml/ApplicationsListPage.qml:245
+#: discover/qml/ApplicationsListPage.qml:241
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -733,13 +733,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "„%1” לא נמצא בקטגוריה „%2”"
 
-#: discover/qml/ApplicationsListPage.qml:247
+#: discover/qml/ApplicationsListPage.qml:243
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "„%1” לא נמצא במקורות הזמינים"
 
-#: discover/qml/ApplicationsListPage.qml:248
+#: discover/qml/ApplicationsListPage.qml:244
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -750,7 +750,7 @@ msgstr ""
 "אפשר להוריד את „%1” מהאינטרנט. עם זאת, תוכנות שמגיעות ישירות מאתרים לא נבדקו "
 "על ידי המפיץ שלך כדי לוודא אם יש להן יכולות או שהן יציבות. יש להשתמש בזהירות."
 
-#: discover/qml/ApplicationsListPage.qml:281
+#: discover/qml/ApplicationsListPage.qml:277
 #, kde-format
 msgid "Still looking…"
 msgstr "עדיין בחיפוש…"
