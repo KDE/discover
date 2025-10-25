@@ -18,7 +18,6 @@
 #include <QCommandLineParser>
 #include <QDir>
 #include <QStandardPaths>
-#include <QSurfaceFormat>
 #include <QTextStream>
 #include <QWindow>
 #if WITH_QTWEBVIEW
