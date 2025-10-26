@@ -62,6 +62,7 @@ Comment[ar]=ثبت وأزل الحزم والملحقات
 Comment[bg]=Инсталиране и премахване на приложения и приставки
 Comment[ca]=Instal·la i elimina aplicacions i complements
 Comment[ca@valencia]=Instal·la i elimina aplicacions i complements
+Comment[cs]=Instaluje a odebírá aplikace či doplňky
 Comment[de]=Anwendungen und Erweiterungen installieren und entfernen
 Comment[eo]=Instali kaj forigi apojn kaj kromaĵojn
 Comment[es]=Instalar y eliminar aplicaciones y complementos
