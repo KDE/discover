@@ -511,6 +511,7 @@ bool DiscoverObject::isBusy() const
 void DiscoverObject::reconsiderQuit()
 {
     if (isBusy()) {
+        qWarning() << "cannot quit yet, transactions running:" << TransactionModel::global()->transactions();
         return;
     }
 
