@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-17 00:43+0000\n"
-"PO-Revision-Date: 2025-09-06 05:29+0200\n"
+"PO-Revision-Date: 2025-10-25 09:35+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2615,12 +2615,14 @@ msgstr "SteamOS"
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgstr ""
+"Nie udało się uzyskać danych strumienia aplikacji dla “%1”.<nl/><nl/>Opis "
+"błędu: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "Nie znaleziono adresu URL strumienia aplikacji dla celu \"%1\""
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
 #, kde-kuit-format
@@ -2629,18 +2631,23 @@ msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
 msgstr ""
+"Nie udało się pobrać uaktualnień z <a href='%1'>%1</a>.<nl/><nl/>Opis błędu: "
+"%2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
 msgstr ""
+"Nie udało się przetworzyć metadanych uaktualnień.<nl/><nl/>Opis błędu: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
 msgstr ""
+"Nie znaleziono żadnych składników w metadanych strumienia aplikacji dla celu "
+"\"%1\""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format

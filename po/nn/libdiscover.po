@@ -2782,6 +2782,3 @@ msgstr "Systemprogram"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tillegg"
-
-#~ msgid "ostree remotes"
-#~ msgstr "OSTree-fjernkjelder"
