@@ -2659,7 +2659,7 @@ msgstr "Vernieuwen"
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "%1 wordt vernieuwd"
+msgstr "%1 updates zoeken"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format
