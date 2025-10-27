@@ -119,15 +119,23 @@ static constexpr auto s_addonKinds = {AppStream::Component::KindAddon, AppStream
 
 bool AppPackageKitResource::hasCategory(const QString &category) const
 {
-    if (m_appdata.kind() != AppStream::Component::KindAddon && category == QStringLiteral("Application"))
+    if (m_appdata.kind() != AppStream::Component::KindAddon && category == QLatin1StringView("Application"))
         return true;
-    if (m_appdata.kind() == AppStream::Component::KindDriver && category == QStringLiteral("Drivers")) {
-        const auto mods = m_appdata.provided(AppStream::Provided::KindModalias).items();
-        auto sys = AppStream::SystemInfo();
-        for (const auto &mod : mods) {
-            if (sys.hasDeviceMatchingModalias(mod)) {
-                return true;
+    if (category == QLatin1StringView("Drivers")) {
+        switch (m_appdata.kind()) {
+        case AppStream::Component::KindDriver: {
+            const auto mods = m_appdata.provided(AppStream::Provided::KindModalias).items();
+            auto sys = AppStream::SystemInfo();
+            for (const auto &mod : mods) {
+                if (sys.hasDeviceMatchingModalias(mod)) {
+                    return true;
+                }
             }
+        } break;
+        case AppStream::Component::KindFirmware:
+            return true;
+        default:
+            return false;
         }
     }
     return m_appdata.hasCategory(category);
