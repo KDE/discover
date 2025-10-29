@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-24 00:43+0000\n"
-"PO-Revision-Date: 2025-10-19 12:29+0200\n"
+"PO-Revision-Date: 2025-10-28 16:32+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -1459,12 +1459,12 @@ msgstr "Пренебрегване"
 #: discover/qml/UpdatesPage.qml:251
 #, kde-format
 msgid "Select All"
-msgstr "Избиране всичко"
+msgstr "Избиране на всичко"
 
 #: discover/qml/UpdatesPage.qml:259
 #, kde-format
 msgid "Select None"
-msgstr "Избиране нищо"
+msgstr "Да не се избира нищо"
 
 #: discover/qml/UpdatesPage.qml:278
 #, kde-format
