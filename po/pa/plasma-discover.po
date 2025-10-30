@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-24 00:43+0000\n"
+"POT-Creation-Date: 2025-10-30 00:43+0000\n"
 "PO-Revision-Date: 2024-02-10 09:57-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -110,7 +110,7 @@ msgid ""
 msgstr ""
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
-#: discover/main.cpp:121
+#: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "ਡਿਸਕਵਰ"
@@ -121,115 +121,115 @@ msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
 
-#: discover/main.cpp:35
+#: discover/main.cpp:34
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr ""
 
-#: discover/main.cpp:36
+#: discover/main.cpp:35
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr ""
 
-#: discover/main.cpp:37
+#: discover/main.cpp:36
 #, kde-format
 msgid "Display a list of entries with a category."
 msgstr ""
 
-#: discover/main.cpp:38
+#: discover/main.cpp:37
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
 
-#: discover/main.cpp:39
+#: discover/main.cpp:38
 #, kde-format
 msgid "List all the available modes."
 msgstr "ਸਾਰੇ ਉਪਲਬਧ ਢੰਗਾਂ ਦੀ ਸੂਚੀ ਹੈ।"
 
-#: discover/main.cpp:40
+#: discover/main.cpp:39
 #, kde-format
 msgid "Local package file to install"
 msgstr "ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਲੋਕਲ ਪੈਕੇਜ ਫਾਇਲ"
 
-#: discover/main.cpp:41
+#: discover/main.cpp:40
 #, kde-format
 msgid "List all the available backends."
 msgstr "ਸਾਰੇ ਉਪਲਬਧ ਬੈਕਐਂਡਾਂ ਦੀ ਸੂਚੀ ਹੈ।"
 
-#: discover/main.cpp:42
+#: discover/main.cpp:41
 #, kde-format
 msgid "Search string."
 msgstr "ਖੋਜ ਸਤਰ।"
 
-#: discover/main.cpp:43
+#: discover/main.cpp:42
 #, kde-format
 msgid "Lists the available options for user feedback"
 msgstr ""
 
-#: discover/main.cpp:44
+#: discover/main.cpp:43
 #, kde-format
 msgid "Starts an update automatically, headless"
 msgstr ""
 
-#: discover/main.cpp:46
+#: discover/main.cpp:45
 #, kde-format
 msgid "Supports appstream: url scheme"
 msgstr ""
 
-#: discover/main.cpp:123
+#: discover/main.cpp:122
 #, kde-format
 msgid "An application explorer"
 msgstr "ਐਪਲੀਕੇਸ਼ਨ ਲੱਭਣ ਦਾ ਸਾਧਨ"
 
-#: discover/main.cpp:125
+#: discover/main.cpp:124
 #, fuzzy, kde-format
 #| msgid "© 2010-2024 Plasma Development Team"
 msgid "© 2010-2025 Plasma Development Team"
 msgstr "© 2010-2024 ਪਲਾਜ਼ਮ ਡਿਵੈਲਪਮੈਂਟ ਟੀਮ"
 
-#: discover/main.cpp:126
+#: discover/main.cpp:125
 #, kde-format
 msgid "Aleix Pol Gonzalez"
 msgstr "ਐਲਿਕਸ ਪੋਲ ਗੋਨਜ਼ਾਵੇਜ"
 
-#: discover/main.cpp:127
+#: discover/main.cpp:126
 #, kde-format
 msgid "Nate Graham"
 msgstr "ਨੇਟ ਗਰਾਹਮ"
 
-#: discover/main.cpp:128
+#: discover/main.cpp:127
 #, kde-format
 msgid "Quality Assurance, Design and Usability"
 msgstr "ਕੁਆਲਟੀ ਜਾਂਚ, ਡਿਜ਼ਾਇਨ ਅਤੇ ਵਰਤੋਂਯੋਗਤਾ"
 
-#: discover/main.cpp:132
+#: discover/main.cpp:131
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
 msgstr ""
 
-#: discover/main.cpp:133
+#: discover/main.cpp:132
 #, kde-format
 msgid "KNewStuff"
 msgstr "KNewStuff"
 
-#: discover/main.cpp:140
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "ਅ.ਸ.ਆਲਮ. ੨੦੨੧"
 
-#: discover/main.cpp:140
+#: discover/main.cpp:139
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "aalam@punlinux.org"
 
-#: discover/main.cpp:160
+#: discover/main.cpp:159
 #, kde-format
 msgid "Available backends:\n"
 msgstr "ਮੌਜੂਦ ਬੈਕਐਂਡ:\n"
 
-#: discover/main.cpp:213
+#: discover/main.cpp:212
 #, kde-format
 msgid "Available modes:\n"
 msgstr "ਮੌਜੂਦ ਮੋਡ:\n"
