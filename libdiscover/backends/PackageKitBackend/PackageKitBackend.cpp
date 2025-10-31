@@ -393,8 +393,6 @@ AppPackageKitResource *PackageKitBackend::addComponent(const AppStream::Componen
 {
     const QStringList pkgNames = component.packageNames();
     Q_ASSERT(!pkgNames.isEmpty());
-    Q_ASSERT(component.kind() != AppStream::Component::KindFirmware);
-
     auto appId = makeAppId(component.id());
     auto resource = qobject_cast<AppPackageKitResource *>(m_packages.packages.value(appId));
     if (!resource) {
