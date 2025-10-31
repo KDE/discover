@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-17 03:17+0000\n"
+"POT-Creation-Date: 2025-10-31 02:37+0000\n"
 "PO-Revision-Date: 2025-03-09 17:26+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -565,7 +565,7 @@ msgid "Local bundle"
 msgstr "உள்ளமை தொகுப்பு"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1906
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:839
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "முறையற்ற appstream முகவரி '%1'"
@@ -1161,7 +1161,7 @@ msgstr "கே.டீ.யீ. களஞ்சியம்"
 msgid "Log in information for %1"
 msgstr "%1 என்பதற்கான நுழைவு விவரங்கள்"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:259
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:267
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 என்பதை இயக்க முடியவில்லை"
@@ -1204,12 +1204,12 @@ msgid ""
 msgstr ""
 "உங்கள் இயங்குதளத்திற்கான ஆதரவு %1 அன்று நிறைவடைந்த‍து. ஆதரவுள்ள பதிப்பிற்கு மாறுங்கள்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:947
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' என்பதை நீக்க முடியாது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1031
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1222,20 +1222,20 @@ msgstr ""
 "மீதமுள்ள நிரல் புதுப்பிப்புகளை நிறுவி உங்கள் கணினியை மீள்துவக்கியபின் நீங்கள் விரும்பினால் "
 "இப்புதிய பதிப்பை நிறுவலாம்."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "இப்போதே புதுப்பி"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1063
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 இப்போது கிடைக்கிறது"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1192
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1190
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""

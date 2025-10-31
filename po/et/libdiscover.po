@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-17 03:17+0000\n"
+"POT-Creation-Date: 2025-10-31 02:37+0000\n"
 "PO-Revision-Date: 2020-10-11 01:23+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -587,7 +587,7 @@ msgid "Local bundle"
 msgstr "Kohalik kimp"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1906
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:839
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Vigane appstream'i URL '%1'"
@@ -1197,7 +1197,7 @@ msgstr ""
 msgid "Log in information for %1"
 msgstr "%1 sisselogimisteave"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:259
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:267
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 käivitamine nurjus"
@@ -1241,13 +1241,13 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:947
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
 #, fuzzy, kde-format
 #| msgid "Cannot remove system package"
 msgid "Cannot remove '%1'"
 msgstr "Süsteemset paketti ei saa eemaldada"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1031
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1257,7 +1257,7 @@ msgid ""
 "updates, and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
 #| msgid "Upgrade"
@@ -1265,7 +1265,7 @@ msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Uuendamine"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1063
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
 #, fuzzy, kde-format
 #| msgid "Repo not available"
@@ -1273,7 +1273,7 @@ msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "Hoidlat pole saadaval"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1192
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1190
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""
