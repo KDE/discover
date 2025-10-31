@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-30 00:43+0000\n"
+"POT-Creation-Date: 2025-10-31 00:43+0000\n"
 "PO-Revision-Date: 2024-02-10 09:57-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -1465,32 +1465,32 @@ msgctxt "@info"
 msgid "Updates"
 msgstr "ਅੱਪਡੇਟ"
 
-#: discover/qml/UpdatesPage.qml:610
+#: discover/qml/UpdatesPage.qml:611
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:612
+#: discover/qml/UpdatesPage.qml:613
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:626 discover/qml/UpdatesPage.qml:633
-#: discover/qml/UpdatesPage.qml:640
+#: discover/qml/UpdatesPage.qml:627 discover/qml/UpdatesPage.qml:634
+#: discover/qml/UpdatesPage.qml:641
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "ਅੱਪ ਟੂ ਡੇਟ"
 
-#: discover/qml/UpdatesPage.qml:647
+#: discover/qml/UpdatesPage.qml:648
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "ਅੱਪਡੇਟ ਲਈ ਜਾਂਚ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ"
 
-#: discover/qml/UpdatesPage.qml:654
+#: discover/qml/UpdatesPage.qml:655
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

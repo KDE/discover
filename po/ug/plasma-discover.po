@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-30 00:43+0000\n"
+"POT-Creation-Date: 2025-10-31 00:43+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
@@ -1481,33 +1481,33 @@ msgctxt "@info"
 msgid "Updates"
 msgstr "يېڭىلا"
 
-#: discover/qml/UpdatesPage.qml:610
+#: discover/qml/UpdatesPage.qml:611
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:612
+#: discover/qml/UpdatesPage.qml:613
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:626 discover/qml/UpdatesPage.qml:633
-#: discover/qml/UpdatesPage.qml:640
+#: discover/qml/UpdatesPage.qml:627 discover/qml/UpdatesPage.qml:634
+#: discover/qml/UpdatesPage.qml:641
 #, fuzzy, kde-format
 #| msgid "Update"
 msgctxt "@info"
 msgid "Up to date"
 msgstr "يېڭىلا"
 
-#: discover/qml/UpdatesPage.qml:647
+#: discover/qml/UpdatesPage.qml:648
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:654
+#: discover/qml/UpdatesPage.qml:655
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

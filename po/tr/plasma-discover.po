@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-30 00:43+0000\n"
+"POT-Creation-Date: 2025-10-31 00:43+0000\n"
 "PO-Revision-Date: 2025-08-30 18:37+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1542,13 +1542,13 @@ msgctxt "@info"
 msgid "Updates"
 msgstr "Güncellemeler"
 
-#: discover/qml/UpdatesPage.qml:610
+#: discover/qml/UpdatesPage.qml:611
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "Güncellemeler sistem yeniden başlatıldıktan sonra kurulacak."
 
-#: discover/qml/UpdatesPage.qml:612
+#: discover/qml/UpdatesPage.qml:613
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
@@ -1556,20 +1556,20 @@ msgstr ""
 "Henüz yeniden başlatmaya hazır değilseniz sisteminizi kullanmayı "
 "sürdürebilirsiniz."
 
-#: discover/qml/UpdatesPage.qml:626 discover/qml/UpdatesPage.qml:633
-#: discover/qml/UpdatesPage.qml:640
+#: discover/qml/UpdatesPage.qml:627 discover/qml/UpdatesPage.qml:634
+#: discover/qml/UpdatesPage.qml:641
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Sisteminiz güncel"
 
-#: discover/qml/UpdatesPage.qml:647
+#: discover/qml/UpdatesPage.qml:648
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Güncellemeler denetlenmeli"
 
-#: discover/qml/UpdatesPage.qml:654
+#: discover/qml/UpdatesPage.qml:655
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

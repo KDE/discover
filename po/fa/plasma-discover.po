@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-30 00:43+0000\n"
+"POT-Creation-Date: 2025-10-31 00:43+0000\n"
 "PO-Revision-Date: 2025-09-19 22:14+0330\n"
 "Last-Translator: Sohrab Behdani <behdanisohrab@proton.me>\n"
 "Language-Team: fa\n"
@@ -1518,33 +1518,33 @@ msgctxt "@info"
 msgid "Updates"
 msgstr "به‌روزرسانی‌ها"
 
-#: discover/qml/UpdatesPage.qml:610
+#: discover/qml/UpdatesPage.qml:611
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "به‌روزرسانی‌ها پس از باز راه‌اندازی سامانه نصب خواهند شد"
 
-#: discover/qml/UpdatesPage.qml:612
+#: discover/qml/UpdatesPage.qml:613
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
 "اگر هنوز آماده باز راه‌اندازی نیستید، می‌توانید به کار با سامانه ادامه دهید."
 
-#: discover/qml/UpdatesPage.qml:626 discover/qml/UpdatesPage.qml:633
-#: discover/qml/UpdatesPage.qml:640
+#: discover/qml/UpdatesPage.qml:627 discover/qml/UpdatesPage.qml:634
+#: discover/qml/UpdatesPage.qml:641
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "به‌روز"
 
-#: discover/qml/UpdatesPage.qml:647
+#: discover/qml/UpdatesPage.qml:648
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "باید برای به‌روزرسانی‌ها بررسی شود"
 
-#: discover/qml/UpdatesPage.qml:654
+#: discover/qml/UpdatesPage.qml:655
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
