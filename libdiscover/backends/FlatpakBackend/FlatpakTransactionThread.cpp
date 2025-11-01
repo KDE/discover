@@ -332,6 +332,11 @@ void FlatpakTransactionThread::run()
             g_autoptr(GError) localError = nullptr;
             qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "found unused refs:" << refs->len;
             auto transaction = flatpak_transaction_new_for_installation(installation, m_cancellable, &localError);
+            if (!transaction) {
+                m_errorMessage = QString::fromUtf8(localError->message);
+                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not create transaction" << localError->message;
+                return;
+            }
             for (uint i = 0; i < refs->len; i++) {
                 FlatpakRef *ref = FLATPAK_REF(g_ptr_array_index(refs, i));
                 const gchar *strRef = flatpak_ref_format_ref_cached(ref);
