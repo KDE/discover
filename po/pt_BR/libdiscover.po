@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-17 00:43+0000\n"
+"POT-Creation-Date: 2025-11-01 00:47+0000\n"
 "PO-Revision-Date: 2025-10-14 08:38-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -572,7 +572,7 @@ msgid "Local bundle"
 msgstr "Pacote local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1934
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:839
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL do Appstream mal formada '%1'"
@@ -1189,7 +1189,7 @@ msgstr "KDE Store"
 msgid "Log in information for %1"
 msgstr "Informações de autenticação para %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:266
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Não foi possível iniciar %1"
@@ -1233,12 +1233,12 @@ msgstr ""
 "O suporte do seu sistema operacional encerrou em %1. Considere atualizar "
 "para uma versão suportada."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:947
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Não foi possível remover '%1'"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1031
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1251,20 +1251,20 @@ msgstr ""
 "Para poder atualizar para esta nova versão, primeiramente aplique todas as "
 "atualizações disponíveis e, em seguida, reinicie o sistema."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Atualizar agora"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1063
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 está disponível agora."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1192
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1190
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""

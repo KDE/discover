@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-17 00:43+0000\n"
+"POT-Creation-Date: 2025-11-01 00:47+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -583,7 +583,7 @@ msgid "Local bundle"
 msgstr "ਲੋਕਲ ਬੰਡਲ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1934
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:841
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:839
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr ""
@@ -1163,7 +1163,7 @@ msgstr "KDE ਸਟੋਰ"
 msgid "Log in information for %1"
 msgstr "%1 ਲਈ ਲਾਗਇਨ ਜਾਣਕਾਰੀ"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:266
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 ਨੂੰ ਚਲਾ ਨਹੀਂ ਸਕਦੇ"
@@ -1206,12 +1206,12 @@ msgid ""
 msgstr ""
 "ਤੁਹਾਡੇ ਓਪਰੇਟਿੰਗ ਸਿਸਟਮ ਲਈ ਸਹਿਯੋਗ %1 ਨੂੰ ਖਤਮ ਹੋਈ ਹੈ। ਸਹਾਇਕ ਵਰਜ਼ਨ ਲਈ ਅੱਪਗਰੇਡ ਬਾਰੇ ਵਿਚਾਰ ਕਰੋ।"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:947
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1' ਨੂੰ ਹਟਾ ਨਹੀਂ ਸਕਦੇ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1033
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1031
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1224,20 +1224,20 @@ msgstr ""
 "ਇਸ ਨਵੇਂ ਵਰਜ਼ਨ ਲਈ ਅੱਪਗਰੇਡ ਕਰਨ ਦੇ ਯੋਗ ਹੋਣ ਲਈ, ਪਹਿਲਾਂ ਸਾਰੇ ਅੱਪਡੇਟ ਲਾਗੂ ਕਰੋ ਅਤੇ ਸਿਸਟਮ ਨੂੰ ਮੁੜ-ਚਾਲੂ "
 "ਕਰੋ।"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "ਹੁਣੇ ਅੱਪਗਰੇਡ ਕਰੋ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1065
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1063
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 ਹੁਣ ਮੌਜੂਦ ਹੈ।"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1192
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1190
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""
