@@ -91,6 +91,10 @@ public:
     {
         return m_cancellable;
     }
+    bool isFetching() const
+    {
+        return m_isFetching != 0;
+    }
 
 private Q_SLOTS:
     void onFetchMetadataFinished(FlatpakResource *resource, const QByteArray &metadata);
