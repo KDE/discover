@@ -210,12 +210,6 @@ public:
 
         Q_ASSERT(!m_resources.contains(resource->uniqueId()) || m_resources.value(resource->uniqueId()) == resource);
         m_resources.insert(resource->uniqueId(), resource);
-
-        QObject::connect(resource, &FlatpakResource::sizeChanged, m_backend, [this, resource] {
-            if (m_backend->m_isFetching == 0) {
-                Q_EMIT m_backend->resourcesChanged(resource, {"size", "sizeDescription"});
-            }
-        });
     }
 
     FlatpakRemote *remote() const
