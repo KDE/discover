@@ -16,7 +16,7 @@
 #include "libdiscover_steamos_debug.h"
 
 SteamOSTransaction::SteamOSTransaction(SteamOSResource *app, Transaction::Role role, ComSteampoweredAtomupd1Interface *interface)
-    : Transaction(app->backend(), app, role, {})
+    : Transaction(app, role, {})
     , m_app(app)
     , m_interface(interface)
 {

@@ -16,7 +16,7 @@ constexpr QLatin1StringView PROGRESS_PROPERTY_NAME("Progress");
 const QLatin1StringView SYSUPDATE_JOB_INTERFACE_NAME = QLatin1String(org::freedesktop::sysupdate1::Job::staticInterfaceName());
 
 SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resource, SystemdSysupdateUpdateReply &updateCall)
-    : Transaction(resource, resource, InstallRole)
+    : Transaction(resource, InstallRole)
 {
     // Can't cancel until we have a job ID
     setCancellable(false);

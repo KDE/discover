@@ -11,7 +11,7 @@
 #include <resources/AbstractBackendUpdater.h>
 
 FwupdTransaction::FwupdTransaction(FwupdResource *app, FwupdBackend *backend)
-    : Transaction(backend, app, Transaction::InstallRole, {})
+    : Transaction(app, Transaction::InstallRole, {})
     , m_app(app)
     , m_backend(backend)
     , m_cancellable(g_cancellable_new())

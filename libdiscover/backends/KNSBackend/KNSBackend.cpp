@@ -470,13 +470,13 @@ void KNSBackend::slotEntryEvent(const KNSCore::Entry &entry, KNSCore::Entry::Ent
 Transaction *KNSBackend::removeApplication(AbstractResource *app)
 {
     auto res = qobject_cast<KNSResource *>(app);
-    return new KNSTransaction(this, res, Transaction::RemoveRole);
+    return new KNSTransaction(res, Transaction::RemoveRole);
 }
 
 Transaction *KNSBackend::installApplication(AbstractResource *app)
 {
     auto res = qobject_cast<KNSResource *>(app);
-    return new KNSTransaction(this, res, Transaction::InstallRole);
+    return new KNSTransaction(res, Transaction::InstallRole);
 }
 
 Transaction *KNSBackend::installApplication(AbstractResource *app, const AddonList & /*addons*/)
