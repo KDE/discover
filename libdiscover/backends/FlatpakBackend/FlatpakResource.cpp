@@ -564,13 +564,26 @@ void FlatpakResource::setBundledIcon(const QPixmap &pixmap)
     m_bundledIcon = pixmap;
 }
 
+void FlatpakResource::reportSizeChange()
+{
+    Q_EMIT sizeChanged();
+
+    if (!qobject_cast<FlatpakBackend *>(backend())->isFetching()) {
+        static const QVector<QByteArray> properties = {
+            "size",
+            "sizeDescription",
+        };
+        Q_EMIT backend()->resourcesChanged(this, properties);
+    }
+}
+
 void FlatpakResource::setDownloadSize(quint64 size)
 {
     m_downloadSize = size;
 
     setPropertyState(DownloadSize, AlreadyKnown);
 
-    Q_EMIT sizeChanged();
+    reportSizeChange();
 }
 
 void FlatpakResource::setFlatpakFileType(FlatpakFileType fileType)
@@ -594,7 +607,7 @@ void FlatpakResource::setInstalledSize(quint64 size)
 
     setPropertyState(InstalledSize, AlreadyKnown);
 
-    Q_EMIT sizeChanged();
+    reportSizeChange();
 }
 
 void FlatpakResource::setOrigin(const QString &origin)
