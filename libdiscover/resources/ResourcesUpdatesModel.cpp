@@ -26,7 +26,7 @@ class UpdateTransaction : public Transaction
     Q_OBJECT
 public:
     UpdateTransaction(ResourcesUpdatesModel * /*parent*/, const QVector<AbstractBackendUpdater *> &updaters)
-        : Transaction(nullptr, nullptr, Transaction::InstallRole)
+        : Transaction(nullptr, Transaction::InstallRole)
         , m_allUpdaters(updaters)
     {
         setVisible(false);
