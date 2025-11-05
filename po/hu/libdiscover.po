@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-31 02:37+0000\n"
+"POT-Creation-Date: 2025-11-05 02:47+0000\n"
 "PO-Revision-Date: 2025-10-15 20:35+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -562,28 +562,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (felhasználói)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:742
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:736
 #, kde-format
 msgid "Local bundle"
 msgstr "Helyi csomag"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1906
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1900
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:839
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Hibás appstream URL: „%1”"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2013
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2007
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "A(z) „%1” forrás hozzáadása sikertelen: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2136
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Nincsenek Flatpak források."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2140
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2134
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "A(z) „%1” forrás betöltése sikertelen"
@@ -618,59 +618,59 @@ msgstr "Ismeretlen"
 msgid "Failed to start '%1': %2"
 msgstr "A(z) „%1” indítása sikertelen: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:757
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:770
 #, kde-format
 msgid "All Files"
 msgstr "Minden fájl"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:759
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:772
 #, kde-format
 msgid "Home"
 msgstr "Saját mappa"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:761
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:774
 #, kde-format
 msgid "Downloads"
 msgstr "Letöltések"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:763
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:776
 #, kde-format
 msgid "Music"
 msgstr "Zene"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:854
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:872
 #, kde-format
 msgid "Network Access"
 msgstr "Hálózat"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:873
 #, kde-format
 msgid "Can access the internet"
 msgstr "Hozzáférhet az internethez"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:882
 #, kde-format
 msgid "Sound system access"
 msgstr "Hangrendszer"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:883
 #, kde-format
 msgid "Can play and record audio"
 msgstr "Lejátszhat és rögzíthet hangot"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:887
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1031
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Munkamenet"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:875
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:888
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
@@ -679,54 +679,54 @@ msgstr ""
 "Kommunikálhat a felhasználói fiók által futtatott egyéb alkalmazásokkal és "
 "folyamatokkal"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:880
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1030
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:893
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1043
 #, kde-format
 msgid "System Bus Access"
 msgstr "Rendszer"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:881
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:894
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
 "Kommunikálhat a rendszeren futtatott egyéb alkalmazásokkal és folyamatokkal"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:899
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Távoli bejelentkezés"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:887
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:900
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "Távoli bejelentkezési kérést kezdeményezhet az SSH protokollal"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:891
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:904
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Intelligens kártya"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:892
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:905
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "Integrálható és kommunikálhat intelligens kártyákkal"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:896
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:909
 #, kde-format
 msgid "Printer Access"
 msgstr "Nyomtató"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "Integrálható és kommunikálhat nyomtatókkal"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
 #, kde-format
 msgid "GPG Agent"
 msgstr "GPG ügynök"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:902
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:915
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -735,72 +735,72 @@ msgstr ""
 "Hozzáférhet a GPG titkosítási szolgáltatáshoz, amelyet általában aláíráshoz "
 "és aláírt dokumentumok olvasásához használnak"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:908
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:921
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "Bluetooth"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:909
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "Integrálható és kommunikálhat Bluetooth eszközökkel"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:913
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:926
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "Rendszerhívások"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:927
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "Hozzáférhet az alacsony szintű rendszerhívásokhoz (például ptrace)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:920
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
 #, kde-format
 msgid "Device Access"
 msgstr "Eszközök"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:921
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:934
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
 "Kommunikálhat beépített vagy csatlakoztatott hardvereszközökkel és "
 "vezérelheti azokat"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:938
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Kernel-alapú virtuális gépek"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:926
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:939
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr "Futtathat vendégként más operációs renszereket virtuális számítógépen"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:953
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:966
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:978
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (csak olvasható)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:956
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:968
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:969
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:981
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (létrehozhat fájlokat)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:959
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:977
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:972
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:990
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (írható és olvasható)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:986
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:999
 #, kde-format
 msgid "Home Folder Access"
 msgstr "Saját mappa"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:989
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1002
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -809,7 +809,7 @@ msgstr ""
 "Olvashat, írhat és létrehozhat fájlokat a következő helyeken a saját "
 "mappájában jogosultság kérése nélkül: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:991
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1004
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -818,7 +818,7 @@ msgstr ""
 "Olvashat és írhat és fájlokat a következő helyeken a saját mappájában "
 "jogosultság kérése nélkül: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:993
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1006
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -827,7 +827,7 @@ msgstr ""
 "Olvashat fájlokat a következő helyeken a saját mappájában jogosultság kérése "
 "nélkül: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:995
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1008
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -836,12 +836,12 @@ msgstr ""
 "Hozzáférhet fájlokhoz a következő helyeken a saját mappájában jogosultság "
 "kérése nélkül: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1001
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1014
 #, kde-format
 msgid "System Folder Access"
 msgstr "Rendszermappa"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1003
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1016
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -850,7 +850,7 @@ msgstr ""
 "Olvashat, írhat és létrehozhat rendszerfájlokat a következő helyeken  "
 "jogosultság kérése nélkül: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1005
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -859,7 +859,7 @@ msgstr ""
 "Olvashat és írhat rendszerfájlokat a következő helyeken  jogosultság kérése "
 "nélkül: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1007
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1020
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
@@ -867,7 +867,7 @@ msgid ""
 msgstr ""
 "Olvashat rendszerfájlokat a következő helyeken  jogosultság kérése nélkül: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1009
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1022
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
@@ -876,7 +876,7 @@ msgstr ""
 "Hozzáférhet rendszerfájlokhoz a következő helyeken  jogosultság kérése "
 "nélkül: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1020
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1033
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -885,7 +885,7 @@ msgstr ""
 "Kommunikálhat egyéb alkalmazásokkal és folyamatokkal a munkameneten belül a "
 "következő kommunikációs protokollok használatával: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1032
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1045
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
@@ -894,7 +894,7 @@ msgstr ""
 "Kommunikálhat minden alkalmazással és rendszerfolyamattal a következő "
 "kommunikációs protokollok használatával: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1124
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1137
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
 msgstr ""

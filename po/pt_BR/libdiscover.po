@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-31 02:37+0000\n"
+"POT-Creation-Date: 2025-11-05 02:47+0000\n"
 "PO-Revision-Date: 2025-09-05 05:31-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -566,28 +566,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (usuário)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:742
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:736
 #, kde-format
 msgid "Local bundle"
 msgstr "Pacote local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1906
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1900
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:839
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL do Appstream mal formada '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2013
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2007
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Falha ao adicionar a fonte '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2136
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2130
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Não há fontes Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2140
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2134
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Falha ao carregar a fonte \"%1\""
@@ -622,59 +622,59 @@ msgstr "Desconhecido"
 msgid "Failed to start '%1': %2"
 msgstr "Falha ao iniciar '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:757
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:770
 #, kde-format
 msgid "All Files"
 msgstr "Todos os arquivos"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:759
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:772
 #, kde-format
 msgid "Home"
 msgstr "Início"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:761
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:774
 #, kde-format
 msgid "Downloads"
 msgstr "Downloads"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:763
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:776
 #, kde-format
 msgid "Music"
 msgstr "Música"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:841
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:854
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:872
 #, kde-format
 msgid "Network Access"
 msgstr "Acesso à rede"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:860
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:873
 #, kde-format
 msgid "Can access the internet"
 msgstr "Pode acessar a Internet"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:882
 #, kde-format
 msgid "Sound system access"
 msgstr "Acesso ao som do sistema"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:883
 #, kde-format
 msgid "Can play and record audio"
 msgstr "Pode reproduzir e gravar áudio"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:887
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1031
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Acesso ao Bus da sessão"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:875
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:888
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
@@ -683,53 +683,53 @@ msgstr ""
 "Pode se comunicar com outros aplicativos e processos rodando nessa conta de "
 "usuário"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:880
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1030
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:893
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1043
 #, kde-format
 msgid "System Bus Access"
 msgstr "Acesso ao Bus do sistema"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:881
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:894
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr "Pode se comunicar com outros aplicativos e processos do sistema"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:899
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Login de acesso remoto"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:887
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:900
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "Pode iniciar solicitações de login remoto usando o protocolo SSH"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:891
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:904
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Acesso por Smart Card"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:892
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:905
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "Pode integrar e comunicar com smart cards"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:896
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:909
 #, kde-format
 msgid "Printer Access"
 msgstr "Acesso à impressora"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "Pode integrar e comunicar com impressoras"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
 #, kde-format
 msgid "GPG Agent"
 msgstr "Agente GPG"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:902
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:915
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -738,74 +738,74 @@ msgstr ""
 "Permite acesso ao serviço de criptografia GPG, geralmente usado para assinar "
 "e ler documentos assinados"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:908
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:921
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "Acesso ao Bluetooth"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:909
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "Pode integrar e comunicar com dispositivos Bluetooth"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:913
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:926
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "Acesso de baixo nível ao sistema"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:927
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "Permite fazer chamadas de sistema de baixo nível (por exemplo ptrace)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:920
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
 #, kde-format
 msgid "Device Access"
 msgstr "Acesso ao dispositivo"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:921
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:934
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
 "Pode se comunicar e controlar dispositivos de hardware integrados ou "
 "conectados"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:938
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Acesso à máquina virtual baseada em kernel"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:926
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:939
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr ""
 "Permite executar outros sistemas operacionais como convidados em máquinas "
 "virtuais"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:953
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:966
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:978
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (somente leitura)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:956
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:968
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:969
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:981
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (pode criar arquivos)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:959
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:977
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:972
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:990
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (leitura e escrita)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:986
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:999
 #, kde-format
 msgid "Home Folder Access"
 msgstr "Acesso à pasta do usuário"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:989
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1002
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -814,7 +814,7 @@ msgstr ""
 "Pode ler, gravar e criar arquivos nos seguintes locais da sua pasta inicial "
 "sem pedir permissão primeiro: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:991
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1004
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -823,7 +823,7 @@ msgstr ""
 "Pode ler e gravar arquivos nos seguintes locais da pasta inicial sem pedir "
 "permissão primeiro: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:993
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1006
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -832,7 +832,7 @@ msgstr ""
 "Pode ler arquivos nos seguintes locais da sua pasta inicial sem pedir "
 "permissão primeiro: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:995
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1008
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -841,12 +841,12 @@ msgstr ""
 "Pode acessar arquivos nos seguintes locais da sua pasta inicial sem "
 "solicitar permissão primeiro: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1001
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1014
 #, kde-format
 msgid "System Folder Access"
 msgstr "Acesso à raiz do sistema"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1003
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1016
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -855,7 +855,7 @@ msgstr ""
 "Pode ler, gravar e criar arquivos do sistema nos seguintes locais sem "
 "solicitar permissão primeiro: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1005
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -864,7 +864,7 @@ msgstr ""
 "Pode ler e gravar arquivos do sistema nos seguintes locais sem pedir "
 "permissão primeiro: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1007
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1020
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
@@ -873,7 +873,7 @@ msgstr ""
 "Pode ler arquivos do sistema nos seguintes locais sem solicitar permissão "
 "primeiro: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1009
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1022
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
@@ -882,7 +882,7 @@ msgstr ""
 "Pode acessar arquivos do sistema nos seguintes locais sem solicitar "
 "permissão primeiro: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1020
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1033
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -891,7 +891,7 @@ msgstr ""
 "Pode se comunicar com outros aplicativos e processos na mesma sessão da área "
 "de trabalho usando os seguintes protocolos de comunicação: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1032
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1045
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
@@ -900,7 +900,7 @@ msgstr ""
 "Pode se comunicar com todos os aplicativos e serviços do sistema usando os "
 "seguintes protocolos de comunicação: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1124
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1137
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
 msgstr "Aplicativo verificado em %1 como enviado por seu autor %2"
