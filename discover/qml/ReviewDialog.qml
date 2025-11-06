@@ -177,6 +177,7 @@ Kirigami.Dialog {
         QQC2.Label {
             id: instructionalLabel
             Layout.fillWidth: true
+            horizontalAlignment: Text.AlignRight
             text: {
                 if (rating < 2) {
                     return i18n("Enter a rating");
