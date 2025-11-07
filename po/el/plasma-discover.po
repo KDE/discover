@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-31 00:43+0000\n"
+"POT-Creation-Date: 2025-11-07 00:44+0000\n"
 "PO-Revision-Date: 2024-09-19 14:33+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1242,32 +1242,32 @@ msgctxt ""
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:182
+#: discover/qml/ReviewDialog.qml:183
 #, kde-format
 msgid "Enter a rating"
 msgstr "Εισαγωγή αξιολόγησης"
 
-#: discover/qml/ReviewDialog.qml:185
+#: discover/qml/ReviewDialog.qml:186
 #, kde-format
 msgid "Write the title"
 msgstr "Γράψτε τον τίτλο"
 
-#: discover/qml/ReviewDialog.qml:188
+#: discover/qml/ReviewDialog.qml:189
 #, kde-format
 msgid "Write the review"
 msgstr "Γράψτε την αξιολόγηση"
 
-#: discover/qml/ReviewDialog.qml:191
+#: discover/qml/ReviewDialog.qml:192
 #, kde-format
 msgid "Keep writing…"
 msgstr "Συνεχίστε να γράφετε..."
 
-#: discover/qml/ReviewDialog.qml:194
+#: discover/qml/ReviewDialog.qml:195
 #, kde-format
 msgid "Too long!"
 msgstr "Πολύ μεγάλο!"
 
-#: discover/qml/ReviewDialog.qml:197
+#: discover/qml/ReviewDialog.qml:198
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"

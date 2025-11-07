@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-31 00:43+0000\n"
+"POT-Creation-Date: 2025-11-07 00:44+0000\n"
 "PO-Revision-Date: 2025-08-29 19:51+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1242,32 +1242,32 @@ msgstr ""
 "ez dabil,ez du funtzionatzen,tentela,tontoa,ergela,kaka,zaborra,txarra,"
 "gorrotoa"
 
-#: discover/qml/ReviewDialog.qml:182
+#: discover/qml/ReviewDialog.qml:183
 #, kde-format
 msgid "Enter a rating"
 msgstr "Sartu balorazio bat"
 
-#: discover/qml/ReviewDialog.qml:185
+#: discover/qml/ReviewDialog.qml:186
 #, kde-format
 msgid "Write the title"
 msgstr "Idatzi izenburua"
 
-#: discover/qml/ReviewDialog.qml:188
+#: discover/qml/ReviewDialog.qml:189
 #, kde-format
 msgid "Write the review"
 msgstr "Idatzi iruzkina"
 
-#: discover/qml/ReviewDialog.qml:191
+#: discover/qml/ReviewDialog.qml:192
 #, kde-format
 msgid "Keep writing…"
 msgstr "Jarraitu idazten…"
 
-#: discover/qml/ReviewDialog.qml:194
+#: discover/qml/ReviewDialog.qml:195
 #, kde-format
 msgid "Too long!"
 msgstr "Luzeegia!"
 
-#: discover/qml/ReviewDialog.qml:197
+#: discover/qml/ReviewDialog.qml:198
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"

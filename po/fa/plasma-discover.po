@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-31 00:43+0000\n"
+"POT-Creation-Date: 2025-11-07 00:44+0000\n"
 "PO-Revision-Date: 2025-09-19 22:14+0330\n"
 "Last-Translator: Sohrab Behdani <behdanisohrab@proton.me>\n"
 "Language-Team: fa\n"
@@ -1218,32 +1218,32 @@ msgctxt ""
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr "کار ن,احمقانه,کند,زباله,بی‌ارزش,ارزش ندا,مضخرف,آشغال,نمی‌ارزه,نمیازره,"
 
-#: discover/qml/ReviewDialog.qml:182
+#: discover/qml/ReviewDialog.qml:183
 #, kde-format
 msgid "Enter a rating"
 msgstr "وارد کردن امتیاز"
 
-#: discover/qml/ReviewDialog.qml:185
+#: discover/qml/ReviewDialog.qml:186
 #, kde-format
 msgid "Write the title"
 msgstr "نوشتن عنوان"
 
-#: discover/qml/ReviewDialog.qml:188
+#: discover/qml/ReviewDialog.qml:189
 #, kde-format
 msgid "Write the review"
 msgstr "نوشتن دیدگاه"
 
-#: discover/qml/ReviewDialog.qml:191
+#: discover/qml/ReviewDialog.qml:192
 #, kde-format
 msgid "Keep writing…"
 msgstr "ادامه نوشتن…"
 
-#: discover/qml/ReviewDialog.qml:194
+#: discover/qml/ReviewDialog.qml:195
 #, kde-format
 msgid "Too long!"
 msgstr "بیش از حد طولانی!"
 
-#: discover/qml/ReviewDialog.qml:197
+#: discover/qml/ReviewDialog.qml:198
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-31 00:43+0000\n"
+"POT-Creation-Date: 2025-11-07 00:44+0000\n"
 "PO-Revision-Date: 2018-01-06 09:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -1195,34 +1195,34 @@ msgctxt ""
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:182
+#: discover/qml/ReviewDialog.qml:183
 #, kde-format
 msgid "Enter a rating"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:185
+#: discover/qml/ReviewDialog.qml:186
 #, kde-format
 msgid "Write the title"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:188
+#: discover/qml/ReviewDialog.qml:189
 #, kde-format
 msgid "Write the review"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:191
+#: discover/qml/ReviewDialog.qml:192
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Updating..."
 msgid "Keep writing…"
 msgstr "Ažuriram..."
 
-#: discover/qml/ReviewDialog.qml:194
+#: discover/qml/ReviewDialog.qml:195
 #, kde-format
 msgid "Too long!"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:197
+#: discover/qml/ReviewDialog.qml:198
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"

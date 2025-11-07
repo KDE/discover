@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-31 00:43+0000\n"
+"POT-Creation-Date: 2025-11-07 00:44+0000\n"
 "PO-Revision-Date: 2023-02-24 14:56+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -1175,32 +1175,32 @@ msgctxt ""
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
 
-#: discover/qml/ReviewDialog.qml:182
+#: discover/qml/ReviewDialog.qml:183
 #, kde-format
 msgid "Enter a rating"
 msgstr "Skriv inn vurdering"
 
-#: discover/qml/ReviewDialog.qml:185
+#: discover/qml/ReviewDialog.qml:186
 #, kde-format
 msgid "Write the title"
 msgstr "Skriv tittel"
 
-#: discover/qml/ReviewDialog.qml:188
+#: discover/qml/ReviewDialog.qml:189
 #, kde-format
 msgid "Write the review"
 msgstr "Skriv vurderinger"
 
-#: discover/qml/ReviewDialog.qml:191
+#: discover/qml/ReviewDialog.qml:192
 #, kde-format
 msgid "Keep writing…"
 msgstr "Skriv videre …"
 
-#: discover/qml/ReviewDialog.qml:194
+#: discover/qml/ReviewDialog.qml:195
 #, kde-format
 msgid "Too long!"
 msgstr "For lang!"
 
-#: discover/qml/ReviewDialog.qml:197
+#: discover/qml/ReviewDialog.qml:198
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
