@@ -2670,6 +2670,3 @@ msgstr "系统软件"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "插件"
-
-#~ msgid "ostree remotes"
-#~ msgstr "ostree 远程服务器"
