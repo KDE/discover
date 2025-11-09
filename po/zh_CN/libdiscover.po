@@ -2525,13 +2525,13 @@ msgstr "SteamOS"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
-msgstr ""
+msgstr "获取“%1”的 appstream 数据失败。<nl/><nl/>错误消息：%2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "没有找到目标“%1”的 appstream URL"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
 #, kde-kuit-format
@@ -2539,19 +2539,19 @@ msgctxt "@info:status"
 msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
-msgstr ""
+msgstr "获取来自 <a href='%1'>%1</a> 的更新失败。<nl/><nl/>错误消息：%2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
-msgstr ""
+msgstr "解析更新元数据失败。<nl/><nl/>错误消息：%1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
-msgstr ""
+msgstr "没有在“%1”的 appstream 元数据中找到组件"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
@@ -2702,6 +2702,3 @@ msgstr "系统软件"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "插件"
-
-#~ msgid "ostree remotes"
-#~ msgstr "ostree 远程服务器"

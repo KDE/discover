@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-07 00:44+0000\n"
-"PO-Revision-Date: 2025-06-27 15:33+0300\n"
-"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"PO-Revision-Date: 2025-11-07 17:54+0200\n"
+"Last-Translator: Toms Trasūns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
@@ -17,36 +17,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"„%1“ distribūcija nav konfigurēta programmu instalēšanai caur „Discover“, "
+"„%1“ operētājsistēma nav konfigurēta programmu instalēšanai caur „Discover“, "
 "bet tikai programmu pielikumiem"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>.<nl/><nl/>Please <link url='%1'>report this issue to %2.</link>"
 msgstr ""
-"Lai programmām izmantotu „Discover“, instalējiet vēlamo moduli "
+"Lai izmantotu „Discover“ programmu instalēšanai, instalējiet vēlamo moduli "
 "<interface>Iestatījumi</interface> lapā sadaļā <interface>Trūkstošās "
-"aizmugursistēmas</interface>."
+"aizmugursistēmas</interface>.<nl/><nl/>Lūdzu, <link url='%1'>ziņojiet par šo "
+"problēmu „%2“ izstrādātājiem.</link>"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -113,16 +106,11 @@ msgid "Please make sure Snap support is installed"
 msgstr "Pārliecinieties, ka ir instalēts „Snap“ atbalsts"
 
 #: discover/DiscoverObject.cpp:407
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
-msgstr ""
-"Neizdodas atvērt „%1“, jo tas nav atrasts pieejamajās programmatūras "
-"krātuvēs."
+msgstr "Pieprasīto programmu neizdevās atrast nevienā programmatūras krātuvē."
 
 #: discover/DiscoverObject.cpp:410
 #, kde-kuit-format
@@ -133,6 +121,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(Nav atrasts ieraksts priekš %1)<nl/><nl/>Lūdzu, <link url='%2'>ziņojiet par "
+"šo problēmu „%3“ veidotājiem.</link>"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:120
@@ -589,14 +579,13 @@ msgstr "„%1“ atsauksmes īslaicīgi nav pieejamas"
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "Atsauksmju vēl nav"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
-msgstr "Ieinstalējiet, lai rakstītu atsauksmi"
+msgstr "Lai rakstītu atsauksmi, programmu ieinstalējiet"
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
@@ -927,12 +916,10 @@ msgid "Proceed"
 msgstr "Turpināt"
 
 #: discover/qml/DiscoverWindow.qml:325
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
-msgstr "Ziņot par šo problēmu %1"
+msgstr "Ziņot par kļūdu „%1“ veidotājiem"
 
 #: discover/qml/DiscoverWindow.qml:347
 #, kde-format
