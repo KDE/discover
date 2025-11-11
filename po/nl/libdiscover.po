@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-10 02:44+0000\n"
-"PO-Revision-Date: 2025-09-05 16:10+0200\n"
+"PO-Revision-Date: 2025-11-11 00:30+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
-"Language-Team: \n"
+"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -979,6 +979,8 @@ msgid ""
 "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
+"Kan transactie voor '%1' niet aanmaken:<nl/>%2<nl/><nl/>Rapporteer dit aan "
+"<a href='%3'>%3</a>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
