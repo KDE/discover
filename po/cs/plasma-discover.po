@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023, 2024 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023, 2024, 2025 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-25 02:23+0000\n"
-"PO-Revision-Date: 2023-06-23 11:27+0200\n"
+"PO-Revision-Date: 2025-11-10 11:49+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -23,6 +23,8 @@ msgid ""
 "Discover currently cannot be used to install any apps or perform system "
 "updates because none of its app backends are available."
 msgstr ""
+"Discover nyní nelze použít k instalaci aplikací ani k provádění systémových "
+"aktualizací, protože nejsou k dispozici žádné aplikační podpůrné vrstvy."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
@@ -32,6 +34,9 @@ msgid ""
 "Backends</interface> section.<nl/><nl/>Also please consider reporting this "
 "as a packaging issue to your distribution."
 msgstr ""
+"Některé můžete nainstalovat na stránce Nastavení, v sekci "
+"<interface>Chybějící podpůrné vrstvy</interface>.<nl/><nl/>Zvažte prosím "
+"také nahlášení tohoto problému jako chyby balíčkování vaší distribuci."
 
 #: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
 #: discover/qml/UpdatesPage.qml:107
@@ -49,6 +54,11 @@ msgid ""
 "managing software because the PackageKit backend is not well-integrated on "
 "Arch Linux."
 msgstr ""
+"Volitelné závislosti potřebné k aktivaci aplikačních podpůrných vrstev "
+"můžete nainstalovat pomocí programu <command>pacman</command>.<nl/><nl/"
+">Upozorňujeme, že vývojáři Arch Linuxu doporučují používat pro správu "
+"softwaru <command>pacman</command>, protože podpůrná vrstva PackageKit není "
+"v Arch Linuxu dobře integrována."
 
 #: discover/DiscoverObject.cpp:181
 #, kde-format
@@ -71,6 +81,8 @@ msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr ""
+"Nelze pracovat se zdroji Flatpak bez podpůrné vrstvy Flatpak %1. Prosím, "
+"nejprve ji nainstalujte."
 
 #: discover/DiscoverObject.cpp:310
 #, kde-format
@@ -88,6 +100,8 @@ msgid ""
 "Could not open %1 because it was not found in any available software "
 "repositories."
 msgstr ""
+"Nelze otevřít %1, protože nebyl nalezen v žádném dostupném softwarovém "
+"repozitáři."
 
 #: discover/DiscoverObject.cpp:377
 #, kde-format
@@ -105,26 +119,32 @@ msgstr "Discover"
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
+"Discover byl zavřen před dokončením určitých úkolů, čeká se na jejich "
+"dokončení."
 
 #: discover/main.cpp:42
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
-msgstr ""
+msgstr "Přímo otevře zadanou aplikaci pomocí URI appstream://."
 
 #: discover/main.cpp:43
 #, kde-format
 msgid "Open with a search for programs that can deal with the given mimetype."
 msgstr ""
+"Otevře s vyhledáváním programů, které umí pracovat se zadaným typem souboru "
+"(MIME)."
 
 #: discover/main.cpp:44
 #, kde-format
 msgid "Display a list of entries with a category."
-msgstr ""
+msgstr "Zobrazí seznam položek v kategorii."
 
 #: discover/main.cpp:45
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
+"Otevře Discover v daném režimu. Režimy odpovídají tlačítkům na panelu "
+"nástrojů."
 
 #: discover/main.cpp:46
 #, kde-format
@@ -134,7 +154,7 @@ msgstr "Vypsat všechny dostupné režimy."
 #: discover/main.cpp:47
 #, kde-format
 msgid "Compact Mode (auto/compact/full)."
-msgstr ""
+msgstr "Kompaktní režim (automatický/kompaktní/úplný)."
 
 #: discover/main.cpp:48
 #, kde-format
@@ -159,7 +179,7 @@ msgstr "Seznam dostupných voleb pro uživatelskou zpětnou vazbu"
 #: discover/main.cpp:53
 #, kde-format
 msgid "Supports appstream: url scheme"
-msgstr ""
+msgstr "Podporuje schéma appstream: url"
 
 #: discover/main.cpp:122
 #, kde-format
@@ -305,7 +325,7 @@ msgstr "Velikost"
 #: discover/qml/ApplicationPage.qml:333
 #, kde-format
 msgid "Distributed by"
-msgstr ""
+msgstr "Distribuováno"
 
 #: discover/qml/ApplicationPage.qml:360
 #, kde-format
@@ -395,7 +415,7 @@ msgstr "Poslat odkaz pro tuto aplikaci"
 #, kde-format
 msgctxt "The subject line for an email. %1 is the name of an application"
 msgid "Check out the %1 app!"
-msgstr ""
+msgstr "Vyzkoušej aplikaci %1!"
 
 #: discover/qml/ApplicationPage.qml:677
 #, kde-format
@@ -428,7 +448,7 @@ msgstr "Napište hodnocení..."
 #: discover/qml/ApplicationPage.qml:764
 #, kde-format
 msgid "Install to Write a Review"
-msgstr ""
+msgstr "Nainstalujte, abyste mohli napsat recenzi."
 
 #: discover/qml/ApplicationPage.qml:776
 #, kde-format
@@ -443,7 +463,7 @@ msgstr "Přispět"
 #: discover/qml/ApplicationPage.qml:819
 #, kde-format
 msgid "Support and thank the developers by donating to their project"
-msgstr ""
+msgstr "Podpořte a poděkujte vývojářům příspěvkem na jejich projekt"
 
 #: discover/qml/ApplicationPage.qml:835
 #, kde-format
@@ -453,7 +473,7 @@ msgstr "Nahlásit chybu"
 #: discover/qml/ApplicationPage.qml:836
 #, kde-format
 msgid "Log an issue you found to help get it fixed"
-msgstr ""
+msgstr "Nahlaste problém, který jste našli, a pomozte tím k jeho vyřešení"
 
 #: discover/qml/ApplicationPage.qml:850
 #, kde-format
@@ -464,6 +484,7 @@ msgstr "Přispět"
 #, kde-format
 msgid "Help the developers by coding, designing, testing, or translating"
 msgstr ""
+"Pomozte vývojářům programováním, návrhem rozhraní, testováním nebo překladem"
 
 #: discover/qml/ApplicationPage.qml:876
 #, kde-format
@@ -490,6 +511,16 @@ msgid ""
 "you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
 "learn more at <link url='%3'>%3</link>."
 msgstr ""
+"Zdrojový kód této aplikace je částečně nebo zcela uzavřen pro veřejnou "
+"kontrolu a vylepšování. To znamená, že třetí strany a uživatelé jako vy "
+"nemohou ověřit její provoz, zabezpečení a důvěryhodnost, ani ji upravovat a "
+"dále distribuovat bez výslovného souhlasu autorů.<nl/><nl/>Aplikace může být "
+"naprosto bezpečná, nebo může proti vám jednat různými způsoby — například "
+"shromažďovat vaše osobní údaje, sledovat vaši polohu nebo přenášet obsah "
+"vašich souborů někomu jinému. Není jednoduché si být jistý, proto byste tuto "
+"aplikaci měli instalovat pouze v případě, že plně důvěřujete jejím autorům "
+"(<link url='%1'>%2</link>).<nl/><nl/>Více informací naleznete na <link "
+"url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:930
 #, kde-kuit-format
@@ -506,6 +537,15 @@ msgid ""
 "you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
 "url='%2'>%2</link>."
 msgstr ""
+"Zdrojový kód této aplikace je částečně nebo zcela uzavřen pro veřejnou "
+"kontrolu a vylepšování. To znamená, že třetí strany a uživatelé jako vy "
+"nemohou ověřit její provoz, zabezpečení a důvěryhodnost, ani ji upravovat a "
+"dále distribuovat bez výslovného souhlasu autorů.<nl/><nl/>Aplikace může být "
+"naprosto bezpečná, nebo může proti vám jednat různými způsoby — například "
+"shromažďovat vaše osobní údaje, sledovat vaši polohu nebo přenášet obsah "
+"vašich souborů někomu jinému. Není jednoduché si být jistý, proto byste tuto "
+"aplikaci měli instalovat pouze v případě, že plně důvěřujete jejím autorům "
+"(%1).<nl/><nl/>Více informací naleznete na <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:52
 #, kde-format
@@ -609,6 +649,9 @@ msgid ""
 "been reviewed by your distributor for functionality or stability. Use with "
 "caution."
 msgstr ""
+"\"%1\" může být dostupné na webu. Software stažený z webu nebyl vaším "
+"distributorem ověřen z hlediska funkčnosti nebo stability. Používejte s "
+"opatrností."
 
 #: discover/qml/ApplicationsListPage.qml:239
 #, kde-format
@@ -653,7 +696,7 @@ msgstr "Nejlépe hodnocené Vývojové nástroje"
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
-msgstr ""
+msgstr "Spouštění jako <em>root</em> se nedoporučuje a není nutné."
 
 #: discover/qml/DiscoverWindow.qml:56
 #, kde-format
@@ -750,6 +793,9 @@ msgid ""
 "Sends anonymized usage information to KDE so we can better understand our "
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
+"Odesílá anonymizované informace o použití do KDE, abychom lépe porozuměli "
+"našim uživatelům. Více informací naleznete na https://kde.org/privacypolicy-"
+"apps.php."
 
 #: discover/qml/Feedback.qml:17
 #, kde-format
@@ -777,6 +823,8 @@ msgid ""
 "You can help us improving this application by sharing statistics and "
 "participate in surveys."
 msgstr ""
+"Můžete nám pomoci vylepšit tuto aplikaci sdílením statistik a účastí v "
+"průzkumech."
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
@@ -786,7 +834,7 @@ msgstr "Přispívejte…"
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "We are looking for your feedback!"
-msgstr ""
+msgstr "Těšíme se na vaši zpětnou vazbu!"
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
@@ -880,7 +928,7 @@ msgstr "Hlasy: %1 z %2"
 #: discover/qml/ReviewDelegate.qml:102
 #, kde-format
 msgid "Was this review useful?"
-msgstr ""
+msgstr "Byla tato recenze užitečná?"
 
 #: discover/qml/ReviewDelegate.qml:114
 #, kde-format
@@ -963,7 +1011,7 @@ msgstr "Napište hodnocení...…"
 #: discover/qml/ReviewsPage.qml:58
 #, kde-format
 msgid "Install this app to write a review"
-msgstr ""
+msgstr "Nainstalujte tuto aplikaci, abyste mohli napsat recenzi"
 
 #: discover/qml/SearchField.qml:24
 #, kde-format
@@ -1049,6 +1097,8 @@ msgstr "Technické podrobnosti"
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
+"Při instalaci této aktualizace došlo k chybě. Prosím, zkuste to později "
+"znovu."
 
 #: discover/qml/UpdatesPage.qml:67
 #, kde-format
@@ -1061,11 +1111,13 @@ msgid ""
 "If you would like to report the update issue to your distribution's "
 "packagers, include this information:"
 msgstr ""
+"Pokud chcete nahlásit problém s aktualizací správcům balíčků vaší "
+"distribuce, zahrňte tyto informace:"
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
 msgid "Error message copied to clipboard"
-msgstr ""
+msgstr "Chybová zpráva zkopírována do schránky"
 
 #: discover/qml/UpdatesPage.qml:134
 #, kde-format
@@ -1170,4 +1222,4 @@ msgstr "Měli byste zkontrolovat aktualizace"
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
-msgstr ""
+msgstr "Čas poslední aktualizace neznám"
