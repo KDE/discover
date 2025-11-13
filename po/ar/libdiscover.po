@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-11 00:43+0000\n"
-"PO-Revision-Date: 2025-10-15 21:29+0400\n"
+"PO-Revision-Date: 2025-11-12 18:53+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -967,6 +967,8 @@ msgid ""
 "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
+"تعذر إنشاء معاملة لـ '%1':<nl/>%2<nl/><nl/>الرجاء الإبلاغ عن هذا إلى <a "
+"href='%3'>%3</a>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
