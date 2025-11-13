@@ -238,16 +238,17 @@ FwupdResource *FwupdBackend::createApp(FwupdDevice *device)
 void FwupdBackend::handleError(GError *perror)
 {
     // TODO: localise the error message
-    if (perror && !g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE)
-        && !g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO)
+    if (perror && !g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE) && !g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO)) {
+        const QString msg = QString::fromUtf8(perror->message);
         // "Systemd service is masked" error, which is not really an error, but has no clean GError string,
         // so we have to compare codes and strings. Thankfully it's unlocalized!
-        && !(perror->code == 3 && QString::fromUtf8(perror->message).contains(QStringLiteral("unit is masked")))) {
-        const QString msg = QString::fromUtf8(perror->message);
-        QTimer::singleShot(0, this, [this, msg]() {
-            Q_EMIT passiveMessage(msg);
-        });
-        qWarning() << "Fwupd Error" << perror->code << perror->message;
+        if (!(perror->code == 3 && msg.contains(QLatin1String("unit is masked")))
+            && !((perror->code == 2 || perror->code == 10) && msg != QLatin1String("The name org.freedesktop.fwupd was not provided by any .service files"))) {
+            QTimer::singleShot(0, this, [this, msg]() {
+                Q_EMIT passiveMessage(msg);
+            });
+            qWarning() << "Fwupd Error" << perror->code << perror->message;
+        }
     }
     // else
     //     qDebug() << "Fwupd skipped" << perror->code << perror->message;
