@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-10 02:44+0000\n"
-"PO-Revision-Date: 2025-09-05 17:09+0900\n"
+"PO-Revision-Date: 2025-11-13 22:12+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -613,7 +613,7 @@ msgstr "正在取得大小資訊"
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
-msgstr "Unknown"
+msgstr "未知"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:528
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:495
@@ -951,6 +951,8 @@ msgid ""
 "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
+"無法為 '%1' 建立作業階段：<nl/>%2<nl/><nl/>請將此問題回報給 <a href='%3'>%3</"
+"a>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
