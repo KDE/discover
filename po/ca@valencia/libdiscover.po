@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-10 02:44+0000\n"
-"PO-Revision-Date: 2025-09-05 09:21+0200\n"
+"PO-Revision-Date: 2025-11-10 11:42+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -984,6 +984,8 @@ msgid ""
 "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
+"No s'ha pogut crear una transacció per a «%1»:<nl/>%2<nl/><nl/>Informeu-ho a "
+"<a href='%3'>%3</a>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
