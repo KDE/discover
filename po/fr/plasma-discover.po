@@ -152,7 +152,7 @@ msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
 "Discover a été fermé avant que certaines tâches ne soient terminées. En "
-"attende que ces dernières se terminent."
+"attente que ces dernières se terminent."
 
 #: discover/main.cpp:35
 #, kde-format
