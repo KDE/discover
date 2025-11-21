@@ -2764,16 +2764,3 @@ msgstr "Системен софтуер"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Добавки"
-
-#~ msgid "ostree remotes"
-#~ msgstr "ostree отдалечено"
-
-#~ msgctxt "@action:button %1 is the distro name"
-#~ msgid "Report This Issue to %1"
-#~ msgstr "Докладвайте този проблем на %1"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "The background service (PackageKit) stopped unexpectedly. It may have "
-#~ "crashed."
-#~ msgstr "Демонът PackageKit се срина неочаквано."
