@@ -108,8 +108,7 @@ void FlatpakNotifier::loadRemoteUpdates(const std::shared_ptr<Installation> &ins
         onFetchUpdatesFinished(installation, fw->result());
         fw->deleteLater();
     });
-    fw->setFuture(QtConcurrent::run([installation]() -> bool {
-        g_autoptr(GCancellable) cancellable = g_cancellable_new();
+    fw->setFuture(QtConcurrent::run([installation, cancellable = m_cancellable]() -> bool {
         g_autoptr(GError) localError = nullptr;
         g_autoptr(GPtrArray) fetchedUpdates = flatpak_installation_list_installed_refs_for_update(installation->m_installation, cancellable, &localError);
         bool hasUpdates = false;
