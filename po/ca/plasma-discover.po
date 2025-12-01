@@ -1579,27 +1579,3 @@ msgstr "Cal comprovar si hi ha actualitzacions"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Es desconeix l'hora de l'última actualització"
-
-#~| msgid "Please report this issue to the packagers of your distribution."
-#~ msgctxt "@info %1 is an additional error reference"
-#~ msgid ""
-#~ "Please report this issue to the packagers of your distribution.<nl/>(%1)"
-#~ msgstr ""
-#~ "Informeu d'aquest problema als empaquetadors de la vostra distribució.<nl/"
-#~ ">(%1)"
-
-#~ msgid "Report This Issue"
-#~ msgstr "Informa d'aquest problema"
-
-#~ msgid "Report this issue"
-#~ msgstr "Informa d'un problema"
-
-#~ msgctxt "@info"
-#~ msgid "Restart the system to complete the update process"
-#~ msgstr "Cal reiniciar el sistema per a completar el procés d'actualització"
-
-#~ msgctxt ""
-#~ "If appropriate, localize this URL to be something more relevant to the "
-#~ "language. %1 is the text that will be searched for."
-#~ msgid "https://duckduckgo.com/?q=%1"
-#~ msgstr "https://duckduckgo.com/?q=%1"
