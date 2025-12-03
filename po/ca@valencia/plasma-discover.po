@@ -1418,8 +1418,8 @@ msgstr "Detalls tècnics"
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
-"Hi ha hagut un problema en instal·lar esta actualització. Torneu-ho a provar "
-"més tard."
+"Hi ha hagut un problema mentre s'instal·lava esta actualització. Torneu-ho a "
+"provar més tard."
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format
