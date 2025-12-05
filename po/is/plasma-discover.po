@@ -2,27 +2,24 @@
 # This file is distributed under the same license as the discover package.
 #
 # SPDX-FileCopyrightText: 2023, 2024, 2025 Guðmundur Erlingsson <gudmundure@gmail.com>
-# Sveinn í Felli <sv1@fellsnet.is>, 2024.
+# SPDX-FileCopyrightText: 2024, 2025 Sveinn í Felli <sv1@fellsnet.is>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-28 02:34+0000\n"
-"PO-Revision-Date: 2025-06-01 13:36+0000\n"
-"Last-Translator: Gummi <gudmundure@gmail.com>\n"
-"Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2025-12-04 10:48+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
+"Language-Team: Icelandic\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: discover/DiscoverObject.cpp:183
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
@@ -31,12 +28,7 @@ msgstr ""
 "forritaviðbætur"
 
 #: discover/DiscoverObject.cpp:185
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -45,7 +37,7 @@ msgid ""
 msgstr ""
 "Til að nota Discover fyrir forrit skaltu setja upp eininguna sem þú vilt á "
 "síðunni <interface>Stillingar</interface>, undir<interface>Bakendar sem "
-"vantar</interface>."
+"vantar</interface>.<nl/><nl/><link url='%1'>Tilkynntu þetta til %2.</link>"
 
 #: discover/DiscoverObject.cpp:192
 #, kde-kuit-format
@@ -112,15 +104,11 @@ msgid "Please make sure Snap support is installed"
 msgstr "Gakktu úr skugga um að stuðningur við Snap sé uppsettur"
 
 #: discover/DiscoverObject.cpp:407
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
-msgstr ""
-"Gat ekki opnað %1 því það fannst ekki í neinum tiltækum hugbúnaðarsöfnum."
+msgstr "Umbeðið forrit fannst ekki í neinum tiltækum hugbúnaðarsöfnum"
 
 #: discover/DiscoverObject.cpp:410
 #, kde-kuit-format
@@ -131,6 +119,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(Engin færsla fyrir %1)<nl/><nl/><link url='%2'>Tilkynntu þetta til %1$s%3.</"
+"link>"
 
 #: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
 #: discover/main.cpp:129
@@ -584,11 +574,10 @@ msgstr "Umsagnir fyrir %1 eru tímabundið ekki í boði"
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "Engar umsagnir ennþá"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
 msgstr "Settu forritið upp til að skrifa umsögn"
@@ -919,12 +908,10 @@ msgid "Proceed"
 msgstr "Halda áfram"
 
 #: discover/qml/DiscoverWindow.qml:324
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
-msgstr "Tilkynna vandamálið til %1"
+msgstr "Tilkynntu vandamálið til %1"
 
 #: discover/qml/DiscoverWindow.qml:346
 #, kde-format
