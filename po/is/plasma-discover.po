@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-28 02:34+0000\n"
-"PO-Revision-Date: 2025-12-04 10:48+0000\n"
+"PO-Revision-Date: 2025-12-05 15:55+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -654,8 +654,8 @@ msgstr "Upplýsingar um notkunarleyfi"
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Leita: %2 - %3 hlutur"
-msgstr[1] "Leita: %2 - %3 hlutir"
+msgstr[0] "Leita: %2 - %3 atriði"
+msgstr[1] "Leita: %2 - %3 atriði"
 
 #: discover/qml/ApplicationsListPage.qml:56
 #, kde-format
@@ -666,15 +666,15 @@ msgstr "Leita: %1"
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%2 - %1 hlutur"
-msgstr[1] "%2 - %1 hlutir"
+msgstr[0] "%2 - %1 atriði"
+msgstr[1] "%2 - %1 atriði"
 
 #: discover/qml/ApplicationsListPage.qml:66
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Leita - %1 hlutur"
-msgstr[1] "Leita - %1 hlutir"
+msgstr[0] "Leita - %1 atriði"
+msgstr[1] "Leita - %1 atriði"
 
 #: discover/qml/ApplicationsListPage.qml:68
 #: discover/qml/ApplicationsListPage.qml:266
