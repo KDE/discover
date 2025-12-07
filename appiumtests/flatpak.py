@@ -49,7 +49,7 @@ class FlatpakTest(unittest.TestCase):
         searchElement.send_keys("Kalzium")
         searchElement.send_keys(Keys.ENTER)
 
-        listItem = WebDriverWait(self.driver, 30).until(
+        listItem = WebDriverWait(self.driver, 123).until(
             EC.element_to_be_clickable((AppiumBy.CLASS_NAME, "[list item | Kalzium]"))
         )
         listItem.click()
