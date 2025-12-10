@@ -975,6 +975,8 @@ msgid ""
 "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
+"Pro '%1' nelze vytvořit přenos:<nl/>%2<nl/><nl/>Prosím, nahlaste to na <a "
+"href='%3'>%3</a>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
