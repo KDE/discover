@@ -33,7 +33,7 @@ QQC2.ItemDelegate {
     }
 
     property string subtitle
-    property string stateIconName
+    property var stateObject
 
     contentItem: RowLayout {
         spacing: Kirigami.Units.largeSpacing
@@ -45,13 +45,12 @@ QQC2.ItemDelegate {
             selected: item.highlighted || item.pressed
             font: item.font
         }
-        Kirigami.Icon {
-            Layout.fillHeight: true
-            visible: item.stateIconName.length > 0
-            source: item.stateIconName
-            selected: item.highlighted || item.pressed
-            implicitWidth: Kirigami.Units.iconSizes.sizeForLabels
-            implicitHeight: Kirigami.Units.iconSizes.sizeForLabels
+        Loader {
+            id: stateLoader
+            Layout.alignment: Qt.AlignVCenter
+            sourceComponent: item.stateObject
+            active: item.stateObject !== null
+            visible: active
         }
     }
 

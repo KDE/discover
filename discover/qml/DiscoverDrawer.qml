@@ -130,7 +130,56 @@ Kirigami.GlobalDrawer {
             objectName: "updateButton"
             action: updateAction
             visible: enabled && drawer.wideScreen
-            stateIconName: Discover.ResourcesModel.fetchingUpdatesProgress < 100 ? "view-refresh" : Discover.ResourcesModel.updatesCount > 0 ? "emblem-important" : ""
+
+            stateObject: Discover.ResourcesModel.fetchingUpdatesProgress < 100 ? updatesIcon : updatesCountLabel
+
+            Component {
+                id: updatesIcon
+
+                Kirigami.Icon {
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    source: "view-refresh"
+                    implicitWidth: Kirigami.Units.iconSizes.sizeForLabels
+                    implicitHeight: Kirigami.Units.iconSizes.sizeForLabels
+                }
+            }
+
+            Component {
+                id: updatesCountLabel
+
+                Rectangle {
+                    anchors.centerIn: parent
+                    implicitWidth: Math.max(Kirigami.Units.gridUnit * 1.5, badgeLabel.implicitWidth + Kirigami.Units.smallSpacing * 1.5)
+                    implicitHeight: badgeLabel.implicitHeight
+                    visible: Discover.ResourcesModel.updatesCount > 0
+
+                    color: Kirigami.Theme.neutralTextColor
+
+                    radius: height / 4
+                    border.width: 1
+                    border.color: Kirigami.Theme.backgroundColor
+
+                    HoverHandler { id: hoverHandler }
+
+                    QQC2.ToolTip.text: Discover.ResourcesModel.hasSecurityUpdates
+                        ? i18n("Security updates available")
+                        : i18n("Updates available")
+
+                    QQC2.ToolTip.visible: hoverHandler.hovered
+
+                    QQC2.Label {
+                        id: badgeLabel
+                        anchors.fill: parent
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+
+                        text: Discover.ResourcesModel.updatesCount
+                        color: "black"
+                        font: Kirigami.Theme.defaultFont
+                    }
+                }
+            }
         },
         ActionListItem {
             action: sourcesAction
