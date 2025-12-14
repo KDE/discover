@@ -1,3 +1,11 @@
+/*
+ *   SPDX-FileCopyrightText: 2012-2025 Aleix Pol Gonzalez <aleixpol@kde.org>
+ *   SPDX-FileCopyrightText: 2022 Nate Graham <nate@kde.org>
+ *   SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
+ *
+ *   SPDX-License-Identifier: LGPL-2.0-or-later
+ */
+
 pragma ComponentBehavior: Bound
 
 import QtQuick
@@ -63,6 +71,8 @@ QQC2.ItemDelegate {
                 }
                 model: KItemModels.KSortFilterProxyModel {
                     sourceModel: Discover.TransactionModel
+                    sortRoleName: "status"
+                    sortOrder: Qt.DescendingOrder
                     filterRoleName: "visible"
                     filterRowCallback: (sourceRow, sourceParent) => {
                         const index = sourceModel.index(sourceRow, 0, sourceParent);
