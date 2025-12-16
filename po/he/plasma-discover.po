@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-15 00:43+0000\n"
-"PO-Revision-Date: 2025-10-05 12:35+0300\n"
+"PO-Revision-Date: 2025-12-15 04:45+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #: discover/DiscoverObject.cpp:183
 #, kde-format
@@ -846,14 +846,14 @@ msgid "Next Screenshot"
 msgstr "צילום המסך הבא"
 
 #: discover/qml/DiscoverDrawer.qml:166
-#, fuzzy, kde-format
+#, kde-format
 msgid "Security updates available"
-msgstr "אין עדכונים זמינים."
+msgstr "יש עדכוני אבטחה"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
+#, kde-format
 msgid "Updates available"
-msgstr "אין עדכונים זמינים."
+msgstr "יש עדכונים"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -881,10 +881,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&עדכונים (מתקבלים…)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "עדכונים"
+msgstr "&עדכונים"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format

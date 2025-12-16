@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-29 05:42+0200\n"
+"PO-Revision-Date: 2025-12-15 03:28+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 
 #: discover/DiscoverObject.cpp:183
 #, kde-format
@@ -849,16 +849,14 @@ msgid "Next Screenshot"
 msgstr "შემდეგი ეკრანის ანაბეჭდი"
 
 #: discover/qml/DiscoverDrawer.qml:166
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Security updates available"
-msgstr "ხელმისაწვდომია განახლებები"
+msgstr "ხელმისაწვდომია უსაფრთოხების განახლებები"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Updates available"
-msgstr "ხელმისაწვდომია განახლებები"
+msgstr "ხელმისაწვდომი განახლებები"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -886,10 +884,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&განახლებები (გამოთხოვა…)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "განახლებები"
+msgstr "განა&ხლებები"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format
