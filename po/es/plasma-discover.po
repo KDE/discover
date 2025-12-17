@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-29 04:00+0100\n"
+"PO-Revision-Date: 2025-12-15 03:36+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.08.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: discover/DiscoverObject.cpp:183
@@ -863,14 +863,12 @@ msgstr "Captura de pantalla siguiente"
 #: discover/qml/DiscoverDrawer.qml:166
 #, kde-format
 msgid "Security updates available"
-msgstr ""
+msgstr "Hay actualizaciones de seguridad disponibles"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgctxt "@action:button as in, 'update all items'"
-#| msgid "Update All"
+#, kde-format
 msgid "Updates available"
-msgstr "Actualizar todo"
+msgstr "Hay actualizaciones disponibles"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -898,10 +896,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&Actualizaciones (obteniendo…)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "Actualizaciones"
+msgstr "&Actualizaciones"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format
@@ -1587,6 +1584,3 @@ msgstr "Se deben comprobar las actualizaciones"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tiempo desconocido desde la última actualización"
-
-#~ msgid "&Updates (%1)"
-#~ msgstr "Act&ualizaciones (%1)"

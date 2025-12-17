@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-15 00:43+0000\n"
-"PO-Revision-Date: 2025-10-28 16:32+0100\n"
+"PO-Revision-Date: 2025-12-16 21:50+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -858,14 +858,12 @@ msgstr "Следваща екранна снимка"
 #: discover/qml/DiscoverDrawer.qml:166
 #, kde-format
 msgid "Security updates available"
-msgstr ""
+msgstr "Налични актуализации за сигурност"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgctxt "@action:button as in, 'update all items'"
-#| msgid "Update All"
+#, kde-format
 msgid "Updates available"
-msgstr "Актуализиране всички"
+msgstr "Налични актуализации"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -893,10 +891,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&Актуализации (Извличане...)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "Обновяване"
+msgstr "&Актуализации"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format

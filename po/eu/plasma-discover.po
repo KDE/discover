@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-29 19:51+0200\n"
+"PO-Revision-Date: 2025-12-16 19:55+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #: discover/DiscoverObject.cpp:183
 #, kde-format
@@ -857,16 +857,14 @@ msgid "Next Screenshot"
 msgstr "Hurrengo pantaila-argazkia"
 
 #: discover/qml/DiscoverDrawer.qml:166
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Security updates available"
-msgstr "Eguneratzeak eskuragarri daude"
+msgstr "Segurtasun eguneratzeak erabilgarri"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Updates available"
-msgstr "Eguneratzeak eskuragarri daude"
+msgstr "Eguneratzeak erabilgarri"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -895,10 +893,9 @@ msgid "&Updates (Fetching…)"
 msgstr "Eg&uneratzeak (Ekartzen…)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "Eguneratzeak"
+msgstr "Eg&uneratzeak"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-15 00:43+0000\n"
-"PO-Revision-Date: 2025-09-04 19:56+0200\n"
+"PO-Revision-Date: 2025-12-15 10:38+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -868,14 +868,12 @@ msgstr "Captura de pantalla següent"
 #: discover/qml/DiscoverDrawer.qml:166
 #, kde-format
 msgid "Security updates available"
-msgstr ""
+msgstr "Actualitzacions de seguretat disponibles"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgctxt "@action:button as in, 'update all items'"
-#| msgid "Update All"
+#, kde-format
 msgid "Updates available"
-msgstr "Actualitza-ho tot"
+msgstr "Actualitzacions disponibles"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -903,10 +901,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&Actualitzacions (Obtenció…)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "Actualitzacions"
+msgstr "&Actualitzacions"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format
@@ -1431,8 +1428,8 @@ msgstr "Detalls tècnics"
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
 msgstr ""
-"Hi ha hagut un problema en instal·lar esta actualització. Torneu-ho a provar "
-"més tard."
+"Hi ha hagut un problema mentre s'instal·lava esta actualització. Torneu-ho a "
+"provar més tard."
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format
@@ -1592,6 +1589,3 @@ msgstr "Cal comprovar si hi ha actualitzacions"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Es desconeix l'hora de l'última actualització"
-
-#~ msgid "&Updates (%1)"
-#~ msgstr "Act&ualitzacions (%1)"
