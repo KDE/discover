@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-30 20:29+0200\n"
+"PO-Revision-Date: 2025-12-17 09:50+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.12.0\n"
 "X-Text-Markup: kde4\n"
 
 #: discover/DiscoverObject.cpp:183
@@ -886,14 +886,12 @@ msgid "Next Screenshot"
 msgstr "Copie d'écran suivante"
 
 #: discover/qml/DiscoverDrawer.qml:166
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Security updates available"
-msgstr "Des mises à jour sont disponibles"
+msgstr "Des mises à jour de sécurité sont disponibles."
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Updates available"
 msgstr "Des mises à jour sont disponibles"
 
@@ -925,10 +923,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&Mises à jour (Recherche en cours...)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "Mises à jour"
+msgstr "Mises à jo&ur"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format
