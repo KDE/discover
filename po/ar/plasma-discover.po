@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-30 11:58+0400\n"
+"PO-Revision-Date: 2025-12-18 10:14+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -857,14 +857,12 @@ msgid "Next Screenshot"
 msgstr "لقطة شاشة التالية"
 
 #: discover/qml/DiscoverDrawer.qml:166
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Security updates available"
-msgstr "تتوفّر تحديثات"
+msgstr "تتوفّر تحديثات أمنيّة"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Updates available"
 msgstr "تتوفّر تحديثات"
 
@@ -894,10 +892,9 @@ msgid "&Updates (Fetching…)"
 msgstr "ال&تحديثات (يجلب…)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "التّحديثات"
+msgstr "ال&تحديثات"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format

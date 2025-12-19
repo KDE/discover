@@ -1559,7 +1559,3 @@ msgstr "Skal sjå etter oppdateringar"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for siste oppdatering er ukjend"
-
-#, fuzzy
-#~ msgid "&Updates (%1)"
-#~ msgstr "&Oppdatering (%1)"
