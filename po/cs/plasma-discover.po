@@ -862,14 +862,12 @@ msgstr "Následující snímek obrazovky"
 #: discover/qml/DiscoverDrawer.qml:166
 #, kde-format
 msgid "Security updates available"
-msgstr ""
+msgstr "Jsou dostupné bezpečnostní aktualizace"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgctxt "@action:button as in, 'update all items'"
-#| msgid "Update All"
+#, kde-format
 msgid "Updates available"
-msgstr "Aktualizovat vše"
+msgstr "Jsou dostupné aktualizace"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -897,10 +895,9 @@ msgid "&Updates (Fetching…)"
 msgstr "Akt&ualizace (stahování…)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "Aktualizace"
+msgstr "Akt&ualizace"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format
@@ -1585,6 +1582,3 @@ msgstr "Měli byste zkontrolovat aktualizace"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Čas poslední aktualizace neznám"
-
-#~ msgid "&Updates (%1)"
-#~ msgstr "Akt&ualizace (%1)"
