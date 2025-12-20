@@ -35,6 +35,7 @@ Dependencies:
 RuntimeDependencies:
  - 'on': ['Linux']
    'require':
+    'frameworks/qqc2-desktop-style': '@same'
     'sdk/selenium-webdriver-at-spi': '@same'
 
 Options:
