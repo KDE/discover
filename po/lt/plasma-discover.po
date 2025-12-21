@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-15 00:43+0000\n"
-"PO-Revision-Date: 2025-09-06 18:07+0300\n"
+"PO-Revision-Date: 2025-12-20 18:26+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
 #: discover/DiscoverObject.cpp:183
 #, kde-format
@@ -874,14 +874,12 @@ msgid "Next Screenshot"
 msgstr "Kita ekrano kopija"
 
 #: discover/qml/DiscoverDrawer.qml:166
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Security updates available"
-msgstr "Yra prieinami atnaujinimai"
+msgstr "Yra prieinami saugumo atnaujinimai"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Updates available"
 msgstr "Yra prieinami atnaujinimai"
 
@@ -913,10 +911,9 @@ msgid "&Updates (Fetching…)"
 msgstr "Atn&aujinimai (Gaunami…)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "Atnaujinimai"
+msgstr "Atna&ujinimai"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format

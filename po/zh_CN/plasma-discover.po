@@ -823,14 +823,12 @@ msgstr "下一张屏幕截图"
 #: discover/qml/DiscoverDrawer.qml:166
 #, kde-format
 msgid "Security updates available"
-msgstr ""
+msgstr "系统有可以安装的安全更新"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgctxt "@action:button as in, 'update all items'"
-#| msgid "Update All"
+#, kde-format
 msgid "Updates available"
-msgstr "全部更新"
+msgstr "系统有可以安装的更新"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -858,10 +856,9 @@ msgid "&Updates (Fetching…)"
 msgstr "更新(&U) (正在获取…)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "更新"
+msgstr "更新(&U)"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format
@@ -1534,6 +1531,3 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
-
-#~ msgid "&Updates (%1)"
-#~ msgstr "更新(&U) (%1)"
