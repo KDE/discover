@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-15 00:43+0000\n"
-"PO-Revision-Date: 2025-08-30 09:21+0200\n"
+"PO-Revision-Date: 2025-12-18 09:29+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #: discover/DiscoverObject.cpp:183
 #, kde-format
@@ -862,16 +862,14 @@ msgid "Next Screenshot"
 msgstr "Schermata successiva"
 
 #: discover/qml/DiscoverDrawer.qml:166
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Security updates available"
-msgstr "Sono disponibili aggiornamenti"
+msgstr "Sono disponibili aggiornamenti di sicurezza"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Updates available"
-msgstr "Sono disponibili aggiornamenti"
+msgstr "Aggiornamenti disponibili"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -899,10 +897,9 @@ msgid "&Updates (Fetching…)"
 msgstr "Aggiornamenti (Rec&upero...)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "Aggiornamenti"
+msgstr "&Aggiornamenti"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format
