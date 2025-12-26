@@ -2,20 +2,22 @@
 # Copyright (C) 2012 This_file_is_part_of_KDE
 # This file is distributed under the same license as the muon-discover package.
 # Kevin Scannell <kscanne@gmail.com>, 2012.
+# SPDX-FileCopyrightText: 2025 Charlotte <altronic25@protonmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-28 02:34+0000\n"
-"PO-Revision-Date: 2012-05-14 16:25-0500\n"
-"Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
-"Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
+"PO-Revision-Date: 2025-12-25 01:32+0000\n"
+"Last-Translator: Charlotte <altronic25@protonmail.com>\n"
+"Language-Team: Irish\n"
 "Language: ga\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n < 11 ? "
 "3 : 4\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #: discover/DiscoverObject.cpp:183
 #, kde-format
@@ -77,7 +79,7 @@ msgstr ""
 #: discover/DiscoverObject.cpp:339
 #, kde-format
 msgid "Could not open %1"
-msgstr ""
+msgstr "Níorbh fhéidir %1 a oscail"
 
 #: discover/DiscoverObject.cpp:404
 #, kde-format
@@ -186,7 +188,7 @@ msgstr "Aleix Pol Gonzalez"
 #: discover/main.cpp:135
 #, kde-format
 msgid "Nate Graham"
-msgstr ""
+msgstr "Nate Graham"
 
 #: discover/main.cpp:136
 #, kde-format
@@ -196,24 +198,24 @@ msgstr ""
 #: discover/main.cpp:140
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
-msgstr ""
+msgstr "Dan Leinir Turthra Jensen"
 
 #: discover/main.cpp:141
 #, kde-format
 msgid "KNewStuff"
-msgstr ""
+msgstr "KNewStuff"
 
 #: discover/main.cpp:148
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Charlotte"
 
 #: discover/main.cpp:148
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "altronic25@protonmail.com"
 
 #: discover/main.cpp:162
 #, kde-format
@@ -233,7 +235,7 @@ msgstr ""
 #: discover/qml/AddonsView.qml:80
 #, kde-format
 msgid "More…"
-msgstr ""
+msgstr "Tuilleadh..."
 
 #: discover/qml/AddonsView.qml:89
 #, kde-format
@@ -389,7 +391,7 @@ msgstr ""
 #: discover/qml/ApplicationPage.qml:182
 #, kde-format
 msgid "%1 - %2"
-msgstr ""
+msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:221
 #, kde-format
@@ -444,7 +446,7 @@ msgstr ""
 #, kde-format
 msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 msgid ","
-msgstr ""
+msgstr ","
 
 #: discover/qml/ApplicationPage.qml:509
 #, kde-format
@@ -746,7 +748,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "See More"
-msgstr ""
+msgstr "Níos Mó a Fheic"
 
 #: discover/qml/BrowsingPage.qml:247
 #, kde-format
@@ -834,7 +836,7 @@ msgstr "Nuashonraigh"
 #: discover/qml/DiscoverWindow.qml:103
 #, kde-format
 msgid "&About"
-msgstr ""
+msgstr "&Madir le"
 
 #: discover/qml/DiscoverWindow.qml:111
 #, fuzzy, kde-format
@@ -846,7 +848,7 @@ msgstr "Na Rátálacha Is Fearr"
 #: discover/qml/DiscoverWindow.qml:458
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "Earráid"
 
 #: discover/qml/DiscoverWindow.qml:168
 #, kde-format
@@ -867,7 +869,7 @@ msgstr ""
 #: discover/qml/DiscoverWindow.qml:346
 #, kde-format
 msgid "Error %1 of %2"
-msgstr ""
+msgstr "Earráid %1 as %2"
 
 #: discover/qml/DiscoverWindow.qml:346 discover/qml/UpdatesPage.qml:47
 #, fuzzy, kde-format
@@ -1017,13 +1019,13 @@ msgstr ""
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
-msgstr ""
+msgstr "%1 - %2: %3"
 
 #: discover/qml/ProgressView.qml:133
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
-msgstr ""
+msgstr "%1 - %2"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
@@ -1059,19 +1061,19 @@ msgstr ""
 #: discover/qml/ReviewDelegate.qml:94
 #, kde-format
 msgid "Was this review useful?"
-msgstr ""
+msgstr "Bhí an athbhreithnigh áisiúil?"
 
 #: discover/qml/ReviewDelegate.qml:106
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "Yes"
-msgstr ""
+msgstr "Tá"
 
 #: discover/qml/ReviewDelegate.qml:122
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "No"
-msgstr ""
+msgstr "Níl"
 
 #: discover/qml/ReviewDialog.qml:26
 #, fuzzy, kde-format
@@ -1254,7 +1256,7 @@ msgstr "Anótálacha"
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #: discover/qml/ReviewsStats.qml:167
 #, kde-format
@@ -1265,23 +1267,23 @@ msgstr ""
 #, kde-format
 msgctxt "Opening upper air quote"
 msgid "“"
-msgstr ""
+msgstr "“"
 
 #: discover/qml/ReviewsStats.qml:203
 #, kde-format
 msgctxt "Closing lower air quote"
 msgid "„"
-msgstr ""
+msgstr "„"
 
 #: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search…"
-msgstr ""
+msgstr "Cuardaigh..."
 
 #: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search in '%1'…"
-msgstr ""
+msgstr "Cuardaigh i '%1'..."
 
 #: discover/qml/SourcesPage.qml:18
 #, fuzzy, kde-format
@@ -1466,7 +1468,7 @@ msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
 "address within that backend"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:559
 #, kde-format
