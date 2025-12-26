@@ -13,15 +13,15 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-15 00:43+0000\n"
-"PO-Revision-Date: 2025-12-15 06:22-0300\n"
-"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
+"PO-Revision-Date: 2025-12-25 02:29-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #: discover/DiscoverObject.cpp:183
 #, kde-format
@@ -1158,7 +1158,7 @@ msgid ""
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
 "Se você ama %1, diga às pessoas o que há de bom nele! Foque na "
-"funcionalidade,usabilidade e aparência. Se o aplicativo não atendeu às suas "
+"funcionalidade, usabilidade e aparência. Se o aplicativo não atendeu às suas "
 "necessidades, explique o porquê."
 
 #: discover/qml/ReviewDialog.qml:72
