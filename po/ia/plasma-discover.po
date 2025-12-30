@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-15 00:43+0000\n"
-"PO-Revision-Date: 2025-09-24 17:22+0200\n"
+"PO-Revision-Date: 2025-12-29 18:03+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -198,7 +198,7 @@ msgstr "Supporta appstream: url schema"
 #: discover/main.cpp:122
 #, kde-format
 msgid "An application explorer"
-msgstr "Un explrator de application"
+msgstr "Un explorator de application"
 
 #: discover/main.cpp:124
 #, kde-format
@@ -854,16 +854,14 @@ msgid "Next Screenshot"
 msgstr "Proxime Instantanee de schermo"
 
 #: discover/qml/DiscoverDrawer.qml:166
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Security updates available"
-msgstr "Actualisationes es disponibile"
+msgstr "Actualisationes de securitate disponibile"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Updates available"
-msgstr "Actualisationes es disponibile"
+msgstr "Actualisationes disponibile"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -891,10 +889,9 @@ msgid "&Updates (Fetching…)"
 msgstr "Act&ualisationes (Reportante ...)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "Actualisationes"
+msgstr "Act&ualisationes"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format
