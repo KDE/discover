@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:41+0000\n"
-"PO-Revision-Date: 2025-03-20 19:37+0100\n"
+"PO-Revision-Date: 2025-12-29 17:10+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -978,6 +978,8 @@ msgid ""
 "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
+"Non pote crear transaction per '%1':<nl/>%2<nl/><nl/>Pro favor reporta isto "
+"a <a href='%3'>%3</a>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
@@ -1202,7 +1204,7 @@ msgstr "Non pote lancear %1"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "Hardware Drivers"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:568
 #, kde-format
@@ -1277,6 +1279,8 @@ msgid ""
 "The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
 "<link url='%1'>report this issue to %2</link>"
 msgstr ""
+"Le servicio de fundo PackageKit stoppava inexpectatemente. <nl/></nl>Pro "
+"favor <link url=''%1' > reporta iste problema a %2</link>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2092,13 +2096,11 @@ msgid "Repair Failed"
 msgstr "Reparation falleva"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "%1<nl/>Pro favor tu reporta iste error a tu distribution."
+msgstr "%1<nl/>Pro favor <link url='%2'>  tu reporta iste error a %3</link>."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:168
 #, kde-format
@@ -2372,18 +2374,19 @@ msgid "Operating System"
 msgstr "Systema operative o operational"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:172
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: Trovate un Multiple booted deployments .Pro favor invia un bug."
+"rpm-ostree retro administration: Trovate un Multiple booted deployments .Pro "
+"favor invia un bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:184
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
-msgstr "rpm-ostree: Trovate nulle booted deployments .Pro favor invia un bug."
+msgstr ""
+"rpm-ostree retroadministration: Trovate nulle booted deployments .Pro favor "
+"invia un bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, kde-format
@@ -2466,47 +2469,37 @@ msgid "Fallback version"
 msgstr "Version de reserva"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Error: nulle interfacie de DBus fornite .Pro favor invia "
-"un bug."
+"rpm-ostree backend (retroadministration): Error: nulle interfacie de DBus "
+"fornite .Pro favor invia un bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Error: Non pote initiar un transaction per ressource con "
-"un formato invalide. Pro favor tu invia un bug."
+"rpm-ostree backend (retroadministration): Error: Non pote initiar un "
+"transaction per ressource con un formato invalide. Pro favor tu invia un bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Error: Non pote facer le cambio de base sur ref.vacue."
-"Pro favor invia un bug."
+"rpm-ostree backend (retroadministration): Error: Non pote facer le cambio de "
+"base sur ref.vacue.Pro favor invia un bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Error: operation incognite requirite.Pro favor invia un "
-"bug."
+"rpm-ostree backend (retroadministration): Error: operation incognite "
+"requirite.Pro favor invia un bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
@@ -2519,13 +2512,11 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Error: Formato de ressource incognite .Pro favor invia "
-"un bug."
+"rpm-ostree backend (retroadministration): Error: Formato de ressource "
+"incognite .Pro favor invia un bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format
@@ -2687,13 +2678,10 @@ msgid "Refresh"
 msgstr "Refresca"
 
 #: libdiscover/resources/ResourcesModel.cpp:393
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "Refresca de version %1"
+msgstr "Refrescante %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:796
 #, kde-format
