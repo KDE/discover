@@ -5,10 +5,9 @@ include:
   - project: sysadmin/ci-utilities
     file:
       - /gitlab-templates/linux-qt6.yml
-      - /gitlab-templates/alpine-qt6.yml # For the apk backend
-
-# Commented out because they don't support appstreamqt yet, and it's probably fine
-#     - /gitlab-templates/freebsd-qt6.yml
+      - /gitlab-templates/alpine-qt6.yml  # For the apk backend
+      # Commented out because they don't support appstreamqt yet, and it's probably fine
+      # - /gitlab-templates/freebsd-qt6.yml
       - /gitlab-templates/xml-lint.yml
       - /gitlab-templates/yaml-lint.yml
       - /gitlab-templates/qml-lint.yml
