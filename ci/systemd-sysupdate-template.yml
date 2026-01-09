@@ -28,13 +28,23 @@ include:
     # Build systemd from git
     - git clone --depth=1 ${SYSTEMD_GIT_URL} ${SYSTEMD_BUILD_DIR}
     - cd ${SYSTEMD_BUILD_DIR}
-    - meson setup build --prefix=${SYSTEMD_INSTALL_PREFIX} --buildtype=debugoptimized -Dsysupdate=true -Dukify=disabled -Dbootloader=disabled -Defi=disabled -Dtests=false
+    - |
+      meson setup build \
+        --prefix=${SYSTEMD_INSTALL_PREFIX} \
+        --buildtype=debugoptimized \
+        -Dsysupdate=true \
+        -Dukify=disabled \
+        -Dbootloader=disabled \
+        -Defi=disabled \
+        -Dtests=false
     - ninja -C build systemd-sysupdated systemd-sysupdate
     - DESTDIR=/tmp/systemd-install ninja -C build install
     - cd ${CI_PROJECT_DIR}
     # Update environment
     - export PATH="/tmp/systemd-install${SYSTEMD_INSTALL_PREFIX}/bin:$PATH"
-    - export LD_LIBRARY_PATH="/tmp/systemd-install${SYSTEMD_INSTALL_PREFIX}/lib:/tmp/systemd-install${SYSTEMD_INSTALL_PREFIX}/lib64:$LD_LIBRARY_PATH"
+    - |
+      export LD_LIBRARY_PATH="/tmp/systemd-install${SYSTEMD_INSTALL_PREFIX}/lib:\
+      /tmp/systemd-install${SYSTEMD_INSTALL_PREFIX}/lib64:$LD_LIBRARY_PATH"
   artifacts:
     when: always
     paths:

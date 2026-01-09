@@ -25,39 +25,39 @@ test_systemd_tooling:
       allow_failure: true
   script:
     - echo "=== Testing systemd-nspawn and mkosi availability ==="
-    
+
     # Check systemd version
     - echo "Checking systemd version..."
     - systemctl --version || echo "systemd not available"
-    
+
     # Check if systemd-nspawn is available
     - echo "Checking systemd-nspawn..."
     - which systemd-nspawn || echo "systemd-nspawn not found"
     - systemd-nspawn --version || echo "systemd-nspawn execution failed"
-    
+
     # Check if mkosi is available
     - echo "Checking mkosi..."
     - which mkosi || echo "mkosi not found"
-    
+
     # Try to install mkosi if not available
     - |
       if ! which mkosi; then
         echo "Attempting to install mkosi..."
         zypper --non-interactive install mkosi || pip3 install mkosi || echo "Failed to install mkosi"
       fi
-    
+
     # Check mkosi version if available
     - mkosi --version || echo "mkosi not available after installation attempt"
-    
+
     # Check kernel capabilities needed for containers
     - echo "Checking kernel capabilities..."
     - cat /proc/sys/kernel/unprivileged_userns_clone || echo "unprivileged_userns_clone not available"
     - ls -la /sys/fs/cgroup/ || echo "cgroup fs not accessible"
-    
+
     # Check if we can create namespaces
     - echo "Testing namespace creation..."
     - unshare --user --pid --fork echo "User and PID namespace test successful" || echo "Namespace creation failed"
-    
+
     # Try a simple systemd-nspawn test if available
     - |
       if which systemd-nspawn; then
@@ -65,17 +65,18 @@ test_systemd_tooling:
         # Create a minimal directory structure
         mkdir -p /tmp/test-container/usr/bin
         # Try to run a minimal nspawn (this might fail due to permissions)
-        systemd-nspawn -D /tmp/test-container --pipe echo "nspawn test" || echo "systemd-nspawn test failed (might need privileged mode)"
+        systemd-nspawn -D /tmp/test-container --pipe echo "nspawn test" || \
+          echo "systemd-nspawn test failed (might need privileged mode)"
       fi
-    
+
     # Check if we're running in a container ourselves
     - echo "Checking if we're in a container..."
     - systemd-detect-virt || echo "systemd-detect-virt not available"
-    
+
     # Check available capabilities
     - echo "Checking capabilities..."
     - capsh --print || getpcaps $$ || echo "Cannot check capabilities"
-    
+
     # Summary
     - echo "=== Summary ==="
     - echo "If mkosi and systemd-nspawn are available and working, we can proceed with building systemd from git."
@@ -113,11 +114,11 @@ test_systemd_sysupdate_backend:
     - zypper --non-interactive install -y mkosi || pip3 install mkosi || echo "mkosi installation failed"
   script:
     - echo "=== Building systemd from git master ==="
-    
+
     # Clone systemd
     - git clone --depth=1 ${SYSTEMD_GIT_URL} ${SYSTEMD_BUILD_DIR}
     - cd ${SYSTEMD_BUILD_DIR}
-    
+
     # Configure and build systemd
     - |
       meson setup build \
@@ -128,29 +129,29 @@ test_systemd_sysupdate_backend:
         -Dbootloader=false \
         -Defi=false \
         || echo "Meson setup failed"
-    
+
     - ninja -C build systemd-sysupdated systemd-sysupdate || echo "Build failed"
-    
+
     # Install systemd binaries to a temporary location
     - DESTDIR=/tmp/systemd-install ninja -C build install || echo "Install failed"
-    
+
     # Go back to discover source
     - cd ${CI_PROJECT_DIR}
-    
+
     # Clone ci-utilities if not already done
     - git clone https://invent.kde.org/sysadmin/ci-utilities.git --depth=1 || true
     - git clone https://invent.kde.org/sysadmin/repo-metadata.git ci-utilities/repo-metadata/ --depth=1 || true
-    
+
     # Set up environment to use the newly built systemd
     - export PATH="/tmp/systemd-install/usr/local/bin:$PATH"
     - export LD_LIBRARY_PATH="/tmp/systemd-install/usr/local/lib:$LD_LIBRARY_PATH"
-    
+
     # Start the mock systemd-sysupdate D-Bus service for testing
     - echo "Starting mock systemd-sysupdate service..."
     - python3 libdiscover/backends/SystemdSysupdateBackend/test/mockserver.py &
     - MOCK_SERVER_PID=$!
     - sleep 2  # Give the mock server time to start
-    
+
     # Build discover with systemd-sysupdate backend enabled
     - echo "Building Discover with SystemdSysupdateBackend..."
     - python3 -u ci-utilities/run-ci-build.py \
@@ -160,15 +161,15 @@ test_systemd_sysupdate_backend:
         --extra-cmake-args=-DBUILD_WITH_QT6=ON \
         --extra-cmake-args=-DQT_MAJOR_VERSION=6 \
         --extra-cmake-args=-DBUILD_SystemdSysupdateBackend=ON
-    
+
     # Run tests
     - echo "Running tests..."
     - cd build
     - ctest --output-on-failure -R systemd || echo "Tests failed or not found"
-    
+
     # Clean up mock server
     - kill ${MOCK_SERVER_PID} || true
-    
+
   after_script:
     - ci-utilities/run-collect-crashes.py || true
   artifacts:
