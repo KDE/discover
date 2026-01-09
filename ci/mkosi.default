@@ -1,0 +1,62 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# SPDX-FileCopyrightText: 2026 KDE Community
+
+# mkosi configuration for building a systemd VM image for CI testing
+# This creates a minimal bootable image with latest systemd
+
+[Distribution]
+Distribution=opensuse
+Release=tumbleweed
+
+[Output]
+ImageId=kde-discover-systemd-test
+ImageVersion=1.0
+Format=disk
+# Can also use: directory, tar, cpio
+OutputDirectory=mkosi.output
+
+[Content]
+# Build systemd from git
+BuildSources=systemd:https://github.com/systemd/systemd.git
+
+# Base packages
+Packages=
+    git
+    gcc
+    gcc-c++
+    make
+    cmake
+    ninja
+    meson
+    python3
+    python3-jinja2
+    python3-pyelftools
+    gperf
+    # systemd dependencies
+    libcap-devel
+    libmount-devel
+    libkmod-devel
+    libblkid-devel
+    libacl-devel
+    libcryptsetup-devel
+    libgcrypt-devel
+    liblz4-devel
+    libzstd-devel
+    libxkbcommon-devel
+    libcurl-devel
+    libgnutls-devel
+    # D-Bus
+    dbus-1
+    dbus-1-devel
+    dbus-1-python3
+    # Container tools
+    systemd-container
+    # Qt basics
+    qt6-base-devel
+
+# Enable systemd services
+WithNetwork=yes
+
+[Validation]
+# Run basic validation
+SecureBoot=no

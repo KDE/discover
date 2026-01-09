@@ -1,0 +1,79 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# SPDX-FileCopyrightText: 2026 KDE Community
+
+# Dockerfile for building a CI image with latest systemd for testing
+# the SystemdSysupdateBackend in Discover
+
+FROM opensuse/tumbleweed:latest
+
+LABEL maintainer="KDE Discover Team"
+LABEL description="CI image with latest systemd from git for testing systemd-sysupdate backend"
+
+# Install base dependencies
+RUN zypper --non-interactive refresh && \
+    zypper --non-interactive update && \
+    zypper --non-interactive install -y \
+    # Base tools
+    git wget curl tar gzip unzip \
+    # Compiler toolchain
+    gcc gcc-c++ make cmake ninja meson \
+    # Python
+    python3 python3-pip python3-devel python3-jinja2 python3-pyelftools \
+    # systemd build dependencies
+    gperf libcap-devel libmount-devel libkmod-devel libblkid-devel \
+    libacl-devel libcryptsetup-devel libgcrypt-devel liblz4-devel \
+    libzstd-devel libxkbcommon-devel libcurl-devel libgnutls-devel \
+    libopenssl-devel pam-devel libfdisk-devel \
+    # Container tools
+    systemd-container \
+    # D-Bus
+    dbus-1 dbus-1-devel dbus-1-python3 \
+    # Qt and KDE dependencies (base set, extend as needed)
+    qt6-base-devel qt6-declarative-devel \
+    kf6-kcoreaddons-devel kf6-kconfig-devel \
+    # Cleanup
+    && zypper clean -a
+
+# Install mkosi
+RUN pip3 install --break-system-packages mkosi
+
+# Clone and build systemd from git master
+ENV SYSTEMD_GIT_URL=https://github.com/systemd/systemd.git
+ENV SYSTEMD_BUILD_DIR=/opt/systemd
+ENV SYSTEMD_INSTALL_PREFIX=/usr/local
+
+RUN git clone --depth=1 ${SYSTEMD_GIT_URL} ${SYSTEMD_BUILD_DIR} && \
+    cd ${SYSTEMD_BUILD_DIR} && \
+    meson setup build \
+        --prefix=${SYSTEMD_INSTALL_PREFIX} \
+        --buildtype=debugoptimized \
+        -Dsysupdate=true \
+        -Dmode=release \
+        -Dukify=disabled \
+        -Dbootloader=disabled \
+        -Defi=disabled \
+        -Dtests=false \
+        -Dinstall-tests=false && \
+    ninja -C build && \
+    ninja -C build install && \
+    ldconfig && \
+    # Cleanup build directory to save space
+    rm -rf ${SYSTEMD_BUILD_DIR}/build/.ninja* ${SYSTEMD_BUILD_DIR}/build/*.a
+
+# Set environment variables for the installed systemd
+ENV PATH="${SYSTEMD_INSTALL_PREFIX}/bin:${PATH}"
+ENV LD_LIBRARY_PATH="${SYSTEMD_INSTALL_PREFIX}/lib:${SYSTEMD_INSTALL_PREFIX}/lib64:${LD_LIBRARY_PATH}"
+ENV PKG_CONFIG_PATH="${SYSTEMD_INSTALL_PREFIX}/lib/pkgconfig:${SYSTEMD_INSTALL_PREFIX}/lib64/pkgconfig:${PKG_CONFIG_PATH}"
+
+# Verify installation
+RUN systemd-sysupdate --version && \
+    echo "systemd-sysupdate installed successfully"
+
+# Create a non-root user for CI (optional, depending on KDE CI requirements)
+# RUN useradd -m -s /bin/bash ci-user
+# USER ci-user
+
+WORKDIR /workspace
+
+# Default command
+CMD ["/bin/bash"]

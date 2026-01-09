@@ -1,0 +1,66 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# SPDX-FileCopyrightText: 2026 KDE Community
+
+# GitLab CI template for testing with systemd-sysupdate
+# This template can be contributed to sysadmin/ci-utilities if the approach works
+
+include:
+  - /gitlab-templates/blocks/workflow.yml
+  - /gitlab-templates/blocks/ci-linux-base.yml
+
+# Base job for systemd-sysupdate testing
+.systemd_sysupdate_base:
+  extends:
+    - .ci_linux_base
+  stage: build
+  variables:
+    SYSTEMD_GIT_URL: "https://github.com/systemd/systemd.git"
+    SYSTEMD_BUILD_DIR: "/tmp/systemd-build"
+    SYSTEMD_INSTALL_PREFIX: "/usr/local"
+  before_script:
+    - !reference [.ci_linux_base, before_script]
+    # Install systemd build dependencies
+    - zypper --non-interactive install -y meson ninja git gcc g++ python3 python3-jinja2 gperf
+    - zypper --non-interactive install -y libcap-devel libmount-devel libkmod-devel libblkid-devel
+    - zypper --non-interactive install -y libacl-devel libcryptsetup-devel libgcrypt-devel liblz4-devel
+    - zypper --non-interactive install -y libzstd-devel libxkbcommon-devel libcurl-devel libgnutls-devel
+    - zypper --non-interactive install -y python3-pyelftools || true
+    # Build systemd from git
+    - git clone --depth=1 ${SYSTEMD_GIT_URL} ${SYSTEMD_BUILD_DIR}
+    - cd ${SYSTEMD_BUILD_DIR}
+    - meson setup build --prefix=${SYSTEMD_INSTALL_PREFIX} --buildtype=debugoptimized -Dsysupdate=true -Dukify=disabled -Dbootloader=disabled -Defi=disabled -Dtests=false
+    - ninja -C build systemd-sysupdated systemd-sysupdate
+    - DESTDIR=/tmp/systemd-install ninja -C build install
+    - cd ${CI_PROJECT_DIR}
+    # Update environment
+    - export PATH="/tmp/systemd-install${SYSTEMD_INSTALL_PREFIX}/bin:$PATH"
+    - export LD_LIBRARY_PATH="/tmp/systemd-install${SYSTEMD_INSTALL_PREFIX}/lib:/tmp/systemd-install${SYSTEMD_INSTALL_PREFIX}/lib64:$LD_LIBRARY_PATH"
+  artifacts:
+    when: always
+    paths:
+      - "build/Testing/"
+      - "*.log"
+    reports:
+      junit: JUnitTestResults.xml
+    expire_in: 1 week
+
+# Job using custom pre-built image (if available)
+.systemd_sysupdate_prebuilt:
+  extends:
+    - .ci_linux_base
+  stage: build
+  # Replace with actual registry path once image is built and pushed
+  image: invent-registry.kde.org/kde-discover-systemd-ci:latest
+  tags:
+    - Linux  # or VM depending on requirements
+  variables:
+    # systemd is already installed in the image
+    SYSTEMD_INSTALLED: "true"
+  artifacts:
+    when: always
+    paths:
+      - "build/Testing/"
+      - "*.log"
+    reports:
+      junit: JUnitTestResults.xml
+    expire_in: 1 week
