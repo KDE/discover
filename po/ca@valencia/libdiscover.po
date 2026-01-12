@@ -97,17 +97,17 @@ msgstr "Contingut intens"
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:174
 #, kde-format
 msgid "Error while fetching reviews: %1"
-msgstr "S'ha produït un error en recuperar les revisions: %1"
+msgstr "S'ha produït un error mentre es recuperaven les revisions: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:226
 #, kde-format
 msgid "Error while submitting usefulness: %1"
-msgstr "S'ha produït un error en enviar la utilitat: %1"
+msgstr "S'ha produït un error mentre s'enviava la utilitat: %1"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:283
 #, kde-format
 msgid "Error while submitting review: %1"
-msgstr "S'ha produït un error en enviar la revisió: %1"
+msgstr "S'ha produït un error mentre s'enviava la revisió: %1"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -555,7 +555,7 @@ msgstr "URL d'«appstream» amb format incorrecte «%1»"
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1813
 #, kde-format
 msgid "Failed to add source '%1': %2"
-msgstr "No s'ha pogut afegir la font «%1»: %2"
+msgstr "Ha fallat mentre s'afegia la font «%1»: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1934
 #, kde-format
@@ -565,7 +565,7 @@ msgstr "No hi ha cap font de Flatpak."
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1938
 #, kde-format
 msgid "Failed to load \"%1\" source"
-msgstr "No s'ha pogut carregar la font «%1»"
+msgstr "Ha fallat mentre es carregava la font «%1»"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:364
 #, kde-kuit-format
@@ -918,7 +918,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
-msgstr "No s'ha pogut eliminar el repositori remot %1: %2"
+msgstr "Ha fallat mentre s'eliminava el repositori remot %1: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:301
 #, kde-format
@@ -1222,7 +1222,7 @@ msgstr "El filtre no és vàlid"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:51
 #, kde-format
 msgid "Failed while creating a thread"
-msgstr "No s'ha pogut crear un fil"
+msgstr "Ha fallat mentre es creava un fil"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:53
 #, kde-format
@@ -1888,7 +1888,7 @@ msgstr "No disponible"
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:115
 #, kde-format
 msgid "Failed Offline Update"
-msgstr "No s'ha pogut actualitzar sense connexió"
+msgstr "Ha fallat mentre s'actualitzava sense connexió"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:116
 #, kde-format
@@ -1899,10 +1899,10 @@ msgid_plural ""
 "Failed to update %1 packages\n"
 "%2"
 msgstr[0] ""
-"No s'ha pogut actualitzar %1 paquet\n"
+"Ha fallat mentre s'actualitzava %1 paquet\n"
 "%2"
 msgstr[1] ""
-"No s'han pogut actualitzar %1 paquets\n"
+"Ha fallat mentre s'actualitzaven %1 paquets\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
