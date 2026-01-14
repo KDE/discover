@@ -331,7 +331,7 @@
         </Include>
       </Menu>
       <Menu>
-        <Name>Launcher</Name>
+        <Name>Launchers</Name>
         <Icon>applications-games</Icon>
         <Include>
           <And>
