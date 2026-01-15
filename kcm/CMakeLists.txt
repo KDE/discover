@@ -26,8 +26,8 @@ target_link_libraries(kcm_updates PRIVATE
     KF6::KCMUtilsQuick
 )
 
-if (BUILD_SteamOSBackend)
-    target_compile_definitions(kcm_updates PRIVATE WITH_STEAMOS_BACKEND)
+if (BUILD_HoloBackend)
+    target_compile_definitions(kcm_updates PRIVATE WITH_HOLO_BACKEND)
 endif()
 
 if (BUILD_RpmOstreeBackend)
