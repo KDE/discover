@@ -18,6 +18,7 @@ class DISCOVERCOMMON_EXPORT Rating
     Q_PROPERTY(float rating READ rating CONSTANT)
     Q_PROPERTY(int ratingPoints READ ratingPoints CONSTANT)
     Q_PROPERTY(quint64 ratingCount READ ratingCount CONSTANT)
+    Q_PROPERTY(QList<int> starCounts READ starCounts CONSTANT)
 public:
     Rating()
     {
@@ -34,10 +35,13 @@ public:
     // Returns a dampened rating calculated with the Wilson Score Interval algorithm
     double sortableRating() const;
 
+    QList<int> starCounts() const;
+
 private:
     QString m_packageName;
     quint64 m_ratingCount = 0;
     float m_rating = 0;
     int m_ratingPoints = 0;
     double m_sortableRating = 0;
+    QList<int> m_starCounts = {};
 };
