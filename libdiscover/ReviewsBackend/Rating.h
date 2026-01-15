@@ -18,7 +18,7 @@ class DISCOVERCOMMON_EXPORT Rating
     Q_PROPERTY(float rating READ rating CONSTANT)
     Q_PROPERTY(int ratingPoints READ ratingPoints CONSTANT)
     Q_PROPERTY(quint64 ratingCount READ ratingCount CONSTANT)
-    Q_PROPERTY(QList<int> starCounts READ starCounts CONSTANT)
+    Q_PROPERTY(std::vector<int> starCounts READ starCounts CONSTANT)
 public:
     Rating()
     {
@@ -35,7 +35,14 @@ public:
     // Returns a dampened rating calculated with the Wilson Score Interval algorithm
     double sortableRating() const;
 
-    QList<int> starCounts() const;
+    // Returns std::vector<int> where:
+    // - m_starCounts[0] returns total count for "star0" ratings
+    // - m_starCounts[1] returns total count for "star1" ratings
+    // - And so on.
+    // The range of ratings is 0 to 5.
+    // "star0" ratings seem to be completely unused (one can inspect the ratings file)
+    // and can be ignored.
+    std::vector<int> starCounts() const;
 
 private:
     QString m_packageName;
@@ -43,5 +50,5 @@ private:
     float m_rating = 0;
     int m_ratingPoints = 0;
     double m_sortableRating = 0;
-    QList<int> m_starCounts = {};
+    std::vector<int> m_starCounts;
 };
