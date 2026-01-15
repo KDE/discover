@@ -53,7 +53,7 @@ BasicAbstractCard {
             text: i18nc("how many reviews", "%1 reviews", root.application.rating.ratingCount)
         }
         Repeater {
-            model: ["five", "four", "three", "two", "one"]
+            model: [5, 4, 3, 2, 1]
             delegate: RowLayout {
                 id: delegate
 
@@ -66,7 +66,7 @@ BasicAbstractCard {
                 Layout.column: 1
                 QQC2.Label {
                     id: numberLabel
-                    text: 5 - delegate.index
+                    text: modelData
                     Layout.preferredWidth: Math.ceil(Math.max(implicitWidth, numberMetrics.width))
                     Layout.alignment: Qt.AlignCenter
                     horizontalAlignment: Text.AlignHCenter
@@ -80,7 +80,7 @@ BasicAbstractCard {
                     Layout.fillWidth: true
                     from: 0
                     to: 1
-                    value: reviewsModel.starsCount[delegate.modelData] / reviewsModel.count
+                    value: root.application.rating.starCounts[modelData] / root.application.rating.ratingCount
                     // This is to make the progressbar right margin from the card edge exactly the same as the top one
                     rightInset: topInset - Math.round((height - topInset - bottomInset) / 2) + Math.round((parent.height - height) / 2)
                 }
