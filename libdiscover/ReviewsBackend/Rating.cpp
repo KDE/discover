@@ -91,7 +91,7 @@ double dampenedRating(int ratings[6], double power = 0.1)
 Rating::Rating(const QString &packageName, quint64 ratingCount, int data[6])
     : m_packageName(packageName)
     , m_ratingCount(ratingCount)
-    // TODO consider storing data[] and present in UI
+    // We ignore star0 ratings
     , m_rating(((data[1] //
                  + (data[2] * 2) //
                  + (data[3] * 3) //
@@ -149,7 +149,7 @@ double Rating::sortableRating() const
     return m_sortableRating;
 }
 
-QList<int> Rating::starCounts() const
+std::vector<int> Rating::starCounts() const
 {
     return m_starCounts;
 }
