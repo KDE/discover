@@ -499,7 +499,7 @@ void DiscoverObject::restore()
         m_sni.reset();
     }
     if (m_mainWindow) {
-        m_mainWindow->alert(0);
+        m_mainWindow->show();
     }
 }
 
