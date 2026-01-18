@@ -420,11 +420,10 @@ msgstr "模拟器"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:333
-#, fuzzy, kde-format
-#| msgid "Launch"
+#, kde-format
 msgctxt "Category"
 msgid "Launchers"
-msgstr "启动"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:343
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342

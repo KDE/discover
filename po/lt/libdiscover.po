@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-16 00:45+0000\n"
-"PO-Revision-Date: 2025-12-20 18:28+0200\n"
+"PO-Revision-Date: 2026-01-17 23:56+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -421,18 +421,17 @@ msgstr "Emuliatoriai"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:333
-#, fuzzy, kde-format
-#| msgid "Launch"
+#, kde-format
 msgctxt "Category"
 msgid "Launchers"
-msgstr "Paleisti"
+msgstr "Paleidyklės"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:343
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
 #, kde-format
 msgctxt "Category"
 msgid "Tools"
-msgstr ""
+msgstr "Įrankiai"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:355
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:355
