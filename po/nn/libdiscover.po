@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-16 00:45+0000\n"
-"PO-Revision-Date: 2024-08-25 12:13+0200\n"
+"PO-Revision-Date: 2026-01-19 18:40+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 25.12.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -2680,12 +2680,13 @@ msgstr "Oppgraderbar"
 msgid "Launch"
 msgstr "Start"
 
+# Pakken er bygd på nytt, men det er ikkje ein ny versjon av programmet, så det er snakk om ei oppfrisking, ikkje ei oppdatering.
 #: libdiscover/resources/AbstractResource.cpp:250
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "Oppdater versjon %1"
+msgstr "Oppfrisking av versjon %1"
 
 #: libdiscover/resources/AbstractResource.cpp:260
 #, kde-format
@@ -2704,13 +2705,10 @@ msgid "Refresh"
 msgstr "Last om att"
 
 #: libdiscover/resources/ResourcesModel.cpp:406
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "Oppdater versjon %1"
+msgstr "Oppdaterer %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:787
 #, kde-format
