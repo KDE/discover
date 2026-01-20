@@ -14,7 +14,7 @@ class HoloResource : public AbstractResource
 {
     Q_OBJECT
 public:
-    explicit HoloResource(const QString &version, const QString &build, quint64 size, const QString &currentVersion, AbstractResourcesBackend *parent);
+    explicit HoloResource(const QString &version, const QString &name, const QString &build, quint64 size, const QString &currentVersion, AbstractResourcesBackend *parent);
 
     QString appstreamId() const override;
     QList<PackageState> addonsInformation() override;

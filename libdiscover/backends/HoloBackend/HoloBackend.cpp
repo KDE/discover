@@ -16,6 +16,7 @@
 #include <KAboutData>
 #include <KConfigGroup>
 #include <KLocalizedString>
+#include <KOSRelease>
 #include <KPluginFactory>
 #include <KSharedConfig>
 
@@ -58,7 +59,23 @@ HoloBackend::HoloBackend(QObject *parent)
     , m_testing(false)
 {
     qDBusRegisterMetaType<VariantMapMap>();
+    const KOSRelease os;
+    QString label = os.prettyName();
 
+    // NOTE: Some translations have localised renditions of the core OS
+    // names (Holo and SteamOS).
+    // Arabic and Punjabi are current examples of this:
+    // NOTE: we explicitly check for these two names instead of just passing
+    // label so that the i18n framework knows they can be translated:
+    if (label == QStringLiteral("SteamOS"))
+        m_label = i18n("SteamOS");
+    else if (label == QStringLiteral("Holo"))
+        m_label = i18n("Holo");
+    else
+        m_label = label;
+
+    // Honour the old test mode variable so we don't trigger real updates
+    // on old test setups
     if (qEnvironmentVariableIsSet("HOLO_TEST_MODE") ||
         qEnvironmentVariableIsSet("STEAMOS_TEST_MODE")) {
         const QString path = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-holo-test");
@@ -92,7 +109,8 @@ HoloBackend::HoloBackend(QObject *parent)
         qCDebug(LIBDISCOVER_BACKEND_HOLO_LOG) << "holo-backend: Unable to query atomupd for Holo Updates...";
         // Should never happen, since trying to open the interface above starts
         // it, but if this plugin is on non holo devices we should show something
-        Q_EMIT passiveMessage(i18n("Holo: Unable to query atomupd for Holo Updates..."));
+        Q_EMIT passiveMessage(i18nc("%1 is the pretty name of the distro e.g. Holo or SteamOS",
+                                    "Holo: Unable to query atomupd for %1 Updates...", m_label));
     }
 }
 
@@ -103,6 +121,7 @@ void HoloBackend::hasUpdateChanged(bool hasUpdate)
         if (!m_resource) {
             qCDebug(LIBDISCOVER_BACKEND_HOLO_LOG) << "holo-backend: Creating new HoloResource with build id: " << m_updateBuildID;
             m_resource = new HoloResource(m_updateVersion,
+                                          m_label,
                                           m_updateBuildID,
                                           m_updateSize,
                                           QStringLiteral("%1 - %2").arg(m_currentVersion).arg(m_currentBuildID),
@@ -161,7 +180,7 @@ bool HoloBackend::fetchExistingTransaction()
         m_currentVersion = m_interface->currentVersion();
         m_currentBuildID = m_interface->currentBuildID();
         m_resource =
-            new HoloResource(m_updateVersion, m_updateBuildID, m_updateSize, QStringLiteral("[%1] - %2").arg(m_currentVersion).arg(m_currentBuildID), this);
+            new HoloResource(m_updateVersion, m_label, m_updateBuildID, m_updateSize, QStringLiteral("[%1] - %2").arg(m_currentVersion).arg(m_currentBuildID), this);
         setupTransaction(m_resource);
         TransactionModel::global()->addTransaction(m_transaction);
         return true;

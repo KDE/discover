@@ -11,9 +11,9 @@
 #include <QTimer>
 #include <Transaction/AddonList.h>
 
-HoloResource::HoloResource(const QString &version, const QString &build, quint64 size, const QString &currentVersion, AbstractResourcesBackend *parent)
+HoloResource::HoloResource(const QString &version, const QString &name, const QString &build, quint64 size, const QString &currentVersion, AbstractResourcesBackend *parent)
     : AbstractResource(parent)
-    , m_name(i18n("Holo"))
+    , m_name(name)
     , m_build(build)
     , m_version(version)
     , m_currentVersion(currentVersion)
