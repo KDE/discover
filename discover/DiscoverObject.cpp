@@ -497,7 +497,14 @@ void DiscoverObject::restore()
         disconnect(TransactionModel::global(), &TransactionModel::countChanged, this, &DiscoverObject::reconsiderQuit);
         disconnect(m_sni.get(), &KStatusNotifierItem::activateRequested, this, &DiscoverObject::restore);
         m_sni.reset();
+        // Set window to topmost one when using SNI
+        if (m_mainWindow) {
+            m_mainWindow->show();
+            m_mainWindow->raise();
+            return;
+        }
     }
+    // Otherwise, just alert the user
     if (m_mainWindow) {
         m_mainWindow->alert(0);
     }
