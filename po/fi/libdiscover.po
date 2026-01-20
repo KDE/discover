@@ -1,7 +1,7 @@
 # Finnish messages for libmuon.
 # Copyright © 2011, 2012 This_file_is_part_of_KDE
 # This file is distributed under the same license as the extragear_sysadmin package.
-# SPDX-FileCopyrightText: 2011, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2011, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Tommi Nieminen <translator@legisign.org>
 # Jorma Karvonen <karvonen.jorma@gmail.com>, 2011.
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2022, 2024 Lasse Liehu <lasse.liehu@gmail.com>
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2012.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-13 00:45+0000\n"
-"PO-Revision-Date: 2025-10-15 20:59+0300\n"
+"PO-Revision-Date: 2026-01-12 14:44+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -977,6 +977,8 @@ msgid ""
 "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
+"Ei voitu luoda toimenpidettä: ”%1”:<nl/>%2<nl/><nl/>Ilmoita tästä "
+"osoitteeseen <a href='%3'>%3</a>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
@@ -2627,12 +2629,14 @@ msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
 msgstr ""
+"Päivitysten noutaminen lähteestä <a href='%1'>%1</a> epäonnistui.<nl/><nl/"
+">Virheviesti: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
-msgstr ""
+msgstr "Päivitysmetatiedon jäsennys epäonnistui.<nl/><nl/>Virheviesti: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
