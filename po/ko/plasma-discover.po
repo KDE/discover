@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-15 00:43+0000\n"
+"POT-Creation-Date: 2026-01-21 00:46+0000\n"
 "PO-Revision-Date: 2025-10-09 00:11+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -195,8 +195,9 @@ msgid "An application explorer"
 msgstr "앱 탐색기"
 
 #: discover/main.cpp:124
-#, kde-format
-msgid "© 2010-2025 Plasma Development Team"
+#, fuzzy, kde-format
+#| msgid "© 2010-2025 Plasma Development Team"
+msgid "© 2010-2026 Plasma Development Team"
 msgstr "© 2010-2025 Plasma Development Team"
 
 #: discover/main.cpp:125
