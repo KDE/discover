@@ -54,40 +54,35 @@ RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
     });
 
     qCInfo(RPMOSTREE_LOG) << "Looking for ostree format";
-    m_process = new QProcess(this);
-    m_stdout = QByteArray();
+
+    QProcess process;
 
     // Display stderr
-    connect(m_process, &QProcess::readyReadStandardError, [this]() {
-        qCWarning(RPMOSTREE_LOG) << "rpm-ostree (error):" << m_process->readAllStandardError();
+    connect(&process, &QProcess::readyReadStandardError, this, [&process] {
+        qCWarning(RPMOSTREE_LOG) << "rpm-ostree (error):" << process.readAllStandardError();
     });
 
-    // Store stdout to process as JSON
-    connect(m_process, &QProcess::readyReadStandardOutput, [this]() {
-        m_stdout += m_process->readAllStandardOutput();
-    });
+    process.start(QStringLiteral("rpm-ostree"), {QStringLiteral("status"), QStringLiteral("--json")});
+    process.waitForFinished();
 
     // Process command result
-    connect(m_process, &QProcess::finished, [this](int exitCode, QProcess::ExitStatus exitStatus) {
-        m_process->deleteLater();
-        m_process = nullptr;
-        if (exitStatus != QProcess::NormalExit) {
-            qCWarning(RPMOSTREE_LOG) << "Failed to check for existing deployments";
-            return;
-        }
-        if (exitCode != 0) {
-            // Unexpected error
-            qCWarning(RPMOSTREE_LOG) << "Failed to check for existing deployments. Exit code:" << exitCode;
-            return;
-        }
+    if (process.exitStatus() != QProcess::NormalExit) {
+        qCWarning(RPMOSTREE_LOG) << "Failed to check for existing deployments";
+        return;
+    }
+    if (process.exitCode() != 0) {
+        // Unexpected error
+        qCWarning(RPMOSTREE_LOG) << "Failed to check for existing deployments. Exit code:" << process.exitCode();
+        return;
+    }
 
         // Parse stdout as JSON and look at the currently booted deployments to figure out
         // the format used by ostree
-        const QJsonDocument jsonDocument = QJsonDocument::fromJson(m_stdout);
-        if (!jsonDocument.isObject()) {
-            qCWarning(RPMOSTREE_LOG) << "Could not parse 'rpm-ostree status' output as JSON";
-            return;
-        }
+    const QJsonDocument jsonDocument = QJsonDocument::fromJson(process.readAllStandardOutput());
+    if (!jsonDocument.isObject()) {
+        qCWarning(RPMOSTREE_LOG) << "Could not parse 'rpm-ostree status' output as JSON";
+        return;
+    }
         const QJsonArray deployments = jsonDocument.object().value(QLatin1String("deployments")).toArray();
         if (deployments.isEmpty()) {
             qCWarning(RPMOSTREE_LOG) << "Could not find the deployments in 'rpm-ostree status' JSON output";
@@ -129,10 +124,6 @@ RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
                 m_version = deployment.toObject()[QLatin1String("version")].toString();
             }
         }
-    });
-
-    m_process->start(QStringLiteral("rpm-ostree"), {QStringLiteral("status"), QStringLiteral("--json")});
-    m_process->waitForFinished();
 }
 
 bool RpmOstreeNotifier::isValid() const
@@ -160,25 +151,16 @@ void RpmOstreeNotifier::checkSystemUpdateClassic()
 {
     qCInfo(RPMOSTREE_LOG) << "Checking for system update (classic format)";
 
-    m_process = new QProcess(this);
-    m_stdout = QByteArray();
+    auto process = new QProcess;
 
     // Display stderr
-    connect(m_process, &QProcess::readyReadStandardError, [this]() {
-        qCWarning(RPMOSTREE_LOG) << "rpm-ostree (error):" << m_process->readAllStandardError();
-    });
-
-    // Display and store stdout
-    connect(m_process, &QProcess::readyReadStandardOutput, [this]() {
-        QByteArray message = m_process->readAllStandardOutput();
-        qCInfo(RPMOSTREE_LOG) << "rpm-ostree:" << message;
-        m_stdout += message;
+    connect(process, &QProcess::readyReadStandardError, this, [this, process]() {
+        qCWarning(RPMOSTREE_LOG) << "rpm-ostree (error):" << process->readAllStandardError();
     });
 
     // Process command result
-    connect(m_process, &QProcess::finished, [this](int exitCode, QProcess::ExitStatus exitStatus) {
-        m_process->deleteLater();
-        m_process = nullptr;
+    connect(process, &QProcess::finished, this, [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
+        process->deleteLater();
         if (exitStatus != QProcess::NormalExit) {
             qCWarning(RPMOSTREE_LOG) << "Failed to check for system update";
             return;
@@ -197,7 +179,7 @@ void RpmOstreeNotifier::checkSystemUpdateClassic()
         // deployment for the new version. First, look for the new version
         // string in rpm-ostree stdout
         QString newVersion, line;
-        QString output = QString::fromUtf8(m_stdout);
+        QString output = QString::fromUtf8(process->readAllStandardOutput());
         QTextStream stream(&output);
         while (stream.readLineInto(&line)) {
             if (line.contains(QLatin1String("Version: "))) {
@@ -230,7 +212,7 @@ void RpmOstreeNotifier::checkSystemUpdateClassic()
         checkForPendingDeployment();
     });
 
-    m_process->start(QStringLiteral("rpm-ostree"), {QStringLiteral("update"), QStringLiteral("--check")});
+    process->start(QStringLiteral("rpm-ostree"), {QStringLiteral("update"), QStringLiteral("--check")});
 }
 
 void RpmOstreeNotifier::checkSystemUpdateOCI()
@@ -242,23 +224,15 @@ void RpmOstreeNotifier::checkSystemUpdateOCI()
         return;
     }
 
-    m_process = new QProcess(this);
-    m_stdout = QByteArray();
+    auto process = new QProcess;
 
     // Display stderr
-    connect(m_process, &QProcess::readyReadStandardError, [this]() {
-        qCWarning(RPMOSTREE_LOG) << "skopeo (error):" << m_process->readAllStandardError();
-    });
-
-    // Store stdout to process as JSON
-    connect(m_process, &QProcess::readyReadStandardOutput, [this]() {
-        m_stdout += m_process->readAllStandardOutput();
+    connect(process, &QProcess::readyReadStandardError, this, [this, process]() {
+        qCWarning(RPMOSTREE_LOG) << "skopeo (error):" << process->readAllStandardError();
     });
 
     // Process command result
-    connect(m_process, &QProcess::finished, [this](int exitCode, QProcess::ExitStatus exitStatus) {
-        m_process->deleteLater();
-        m_process = nullptr;
+    connect(process, &QProcess::finished, this, [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
         if (exitStatus != QProcess::NormalExit) {
             qCWarning(RPMOSTREE_LOG) << "Failed to check for updates via skopeo";
             return;
@@ -270,7 +244,7 @@ void RpmOstreeNotifier::checkSystemUpdateOCI()
         }
 
         // Parse stdout as JSON and look at the container image labels for the version
-        const QJsonDocument jsonDocument = QJsonDocument::fromJson(m_stdout);
+        const QJsonDocument jsonDocument = QJsonDocument::fromJson(process->readAllStandardOutput());
         if (!jsonDocument.isObject()) {
             qCWarning(RPMOSTREE_LOG) << "Could not parse 'rpm-ostree status' output as JSON";
             return;
@@ -306,34 +280,26 @@ void RpmOstreeNotifier::checkSystemUpdateOCI()
         checkForPendingDeployment();
     });
 
-    m_process->start(QStringLiteral("skopeo"),
-                     {QStringLiteral("inspect"),
-                      QStringLiteral("--no-tags"),
-                      QStringLiteral("docker://") + m_ostreeFormat->repo() + QStringLiteral(":") + m_ostreeFormat->tag()});
+    process->start(QStringLiteral("skopeo"),
+                   {QStringLiteral("inspect"),
+                    QStringLiteral("--no-tags"),
+                    QStringLiteral("docker://") + m_ostreeFormat->repo() + QStringLiteral(":") + m_ostreeFormat->tag()});
 }
 
 void RpmOstreeNotifier::checkForPendingDeployment()
 {
     qCInfo(RPMOSTREE_LOG) << "Looking at existing deployments";
-    m_process = new QProcess(this);
-    m_stdout = QByteArray();
+    auto process = new QProcess;
 
     // Display stderr
-    connect(m_process, &QProcess::readyReadStandardError, [this]() {
-        QByteArray message = m_process->readAllStandardError();
+    connect(process, &QProcess::readyReadStandardError, this, [this, process]() {
+        QByteArray message = process->readAllStandardError();
         qCWarning(RPMOSTREE_LOG) << "rpm-ostree (error):" << message;
     });
 
-    // Store stdout to process as JSON
-    connect(m_process, &QProcess::readyReadStandardOutput, [this]() {
-        QByteArray message = m_process->readAllStandardOutput();
-        m_stdout += message;
-    });
-
     // Process command result
-    connect(m_process, &QProcess::finished, [this](int exitCode, QProcess::ExitStatus exitStatus) {
-        m_process->deleteLater();
-        m_process = nullptr;
+    connect(process, &QProcess::finished, this, [this, process](int exitCode, QProcess::ExitStatus exitStatus) {
+        process->deleteLater();
         if (exitStatus != QProcess::NormalExit) {
             qCWarning(RPMOSTREE_LOG) << "Failed to check for existing deployments";
             return;
@@ -346,7 +312,7 @@ void RpmOstreeNotifier::checkForPendingDeployment()
 
         // Parse stdout as JSON and look at the deployments for a pending
         // deployment for the new version.
-        const QJsonDocument jsonDocument = QJsonDocument::fromJson(m_stdout);
+        const QJsonDocument jsonDocument = QJsonDocument::fromJson(process->readAllStandardOutput());
         if (!jsonDocument.isObject()) {
             qCWarning(RPMOSTREE_LOG) << "Could not parse 'rpm-ostree status' output as JSON";
             return;
@@ -385,7 +351,7 @@ void RpmOstreeNotifier::checkForPendingDeployment()
         // TODO: Look for security updates fixed by this new deployment
     });
 
-    m_process->start(QStringLiteral("rpm-ostree"), {QStringLiteral("status"), QStringLiteral("--json")});
+    process->start(QStringLiteral("rpm-ostree"), {QStringLiteral("status"), QStringLiteral("--json")});
 }
 
 bool RpmOstreeNotifier::hasSecurityUpdates()
