@@ -73,6 +73,20 @@
 
 using namespace Qt::StringLiterals;
 
+namespace
+{
+template<typename Out, typename In>
+Out to_unsigned(In in)
+{
+    static_assert(std::is_signed_v<In>, "In must be signed");
+    static_assert(std::is_unsigned_v<Out>, "Out must be unsigned");
+    Q_ASSERT(in >= 0);
+    auto out = static_cast<Out>(in);
+    Q_ASSERT(std::cmp_equal(in, out));
+    return out;
+}
+} // namespace
+
 class CachedNetworkAccessManagerFactory : public QQmlNetworkAccessManagerFactory
 {
     virtual QNetworkAccessManager *create(QObject *parent) override
@@ -432,12 +446,12 @@ public:
     {
         // no-op, this is just observing
 
-        setTotalAmount(Items, TransactionModel::global()->rowCount());
-        setPercent(TransactionModel::global()->progress());
+        setTotalAmount(Items, to_unsigned<qulonglong>(TransactionModel::global()->rowCount()));
+        setPercent(to_unsigned<unsigned long>(TransactionModel::global()->progress()));
         connect(TransactionModel::global(), &TransactionModel::lastTransactionFinished, this, &TransactionsJob::emitResult);
         connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &TransactionsJob::refreshInfo);
         connect(TransactionModel::global(), &TransactionModel::progressChanged, this, [this] {
-            setPercent(TransactionModel::global()->progress());
+            setPercent(to_unsigned<unsigned long>(TransactionModel::global()->progress()));
         });
         refreshInfo();
     }
@@ -448,7 +462,13 @@ public:
             return;
         }
 
-        setProcessedAmount(Items, totalAmount(Items) - TransactionModel::global()->rowCount() + 1);
+        const auto oldAmount = totalAmount(Items);
+        // In an ideal world we'd not do subtractions on unsigned values. Instead +1 in the hopes of being >0 :(
+        const auto newAmount = oldAmount - to_unsigned<qulonglong>(TransactionModel::global()->rowCount()) + 1;
+        // Ending up with a greater number is undefined behavior from an API POV so it shouldn't happen.
+        Q_ASSERT(newAmount <= oldAmount);
+
+        setProcessedAmount(Items, newAmount);
         auto firstTransaction = TransactionModel::global()->transactions().constFirst();
         Q_EMIT description(this, firstTransaction->name());
     }
