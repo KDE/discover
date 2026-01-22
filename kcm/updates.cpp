@@ -42,7 +42,6 @@ bool Updates::mandatoryRebootAfterUpdate() const
 {
 #if defined(WITH_SYSUPDATE_BACKEND) || defined(WITH_STEAMOS_BACKEND)
     return true;
-    return true;
 #elif defined WITH_OSTREE_BACKEND
     return QFile::exists(QStringLiteral("/run/ostree-booted"));
 #else
