@@ -104,6 +104,7 @@ AbstractBackendUpdater::State toUpdateState(Transaction *t)
     switch (t->status()) {
     case Transaction::SetupStatus:
     case Transaction::QueuedStatus:
+    case Transaction::CancelledStatus:
         return AbstractBackendUpdater::None;
     case Transaction::DownloadingStatus:
         return AbstractBackendUpdater::Downloading;
@@ -111,7 +112,6 @@ AbstractBackendUpdater::State toUpdateState(Transaction *t)
         return AbstractBackendUpdater::Installing;
     case Transaction::DoneStatus:
     case Transaction::DoneWithErrorStatus:
-    case Transaction::CancelledStatus:
         return AbstractBackendUpdater::Done;
     }
     Q_UNREACHABLE();
