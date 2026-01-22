@@ -823,12 +823,11 @@ AbstractBackendUpdater::State toUpdateState(PackageKit::Transaction::Status t)
     case PackageKit::Transaction::StatusCommit:
         return AbstractBackendUpdater::Installing;
     case PackageKit::Transaction::StatusFinished:
-    case PackageKit::Transaction::StatusCancel:
         return AbstractBackendUpdater::Done;
-    default:
-        qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "unknown packagekit status" << t;
+    case PackageKit::Transaction::StatusCancel:
         return AbstractBackendUpdater::None;
     }
+    qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "unknown packagekit status" << t;
     Q_UNREACHABLE();
 }
 
