@@ -4,14 +4,14 @@
 # SPDX-FileCopyrightText: 2023 Jannick Kuhr <opensource@kuhr.org>
 # SPDX-FileCopyrightText: 2025 Flori G <Renner03@protonmail.com>
 # SPDX-FileCopyrightText: 2025 Alois Spitzbart <spitz234@hotmail.com>
-# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n.daphipz@fastmail.de>
+# SPDX-FileCopyrightText: 2025, 2026 Philipp Kiemle <l10n.daphipz@fastmail.de>
 # SPDX-FileCopyrightText: 2025 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:18+0000\n"
-"PO-Revision-Date: 2025-07-21 23:22+0200\n"
+"PO-Revision-Date: 2026-01-19 01:39+0100\n"
 "Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -305,7 +305,7 @@ msgstr "Paketquellen"
 #: discover/qml/ApplicationPage.qml:73
 #, kde-format
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr "%1 – %2"
 
 #: discover/qml/ApplicationPage.qml:185
 #, kde-format
@@ -564,8 +564,8 @@ msgstr ""
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Suche: %2 - %3 Eintrag"
-msgstr[1] "Suche: %2 - %3 Einträge"
+msgstr[0] "Suche: %2 – %3 Eintrag"
+msgstr[1] "Suche: %2 – %3 Einträge"
 
 #: discover/qml/ApplicationsListPage.qml:54
 #, kde-format
@@ -576,15 +576,15 @@ msgstr "Suche : %1"
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%2 - %1 Eintrag"
-msgstr[1] "%2 - %1 Einträge"
+msgstr[0] "%2 – %1 Eintrag"
+msgstr[1] "%2 – %1 Einträge"
 
 #: discover/qml/ApplicationsListPage.qml:64
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Suche - %1 Eintrag"
-msgstr[1] "Suche - %1 Einträge"
+msgstr[0] "Suche – %1 Eintrag"
+msgstr[1] "Suche – %1 Einträge"
 
 #: discover/qml/ApplicationsListPage.qml:66
 #: discover/qml/ApplicationsListPage.qml:224
@@ -893,19 +893,19 @@ msgstr "Aufgaben"
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
-msgstr "%1 - %2: %3, %4 verbleibend"
+msgstr "%1 – %2: %3, %4 verbleibend"
 
 #: discover/qml/ProgressView.qml:98
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
-msgstr "%1 - %2: %3"
+msgstr "%1 – %2: %3"
 
 #: discover/qml/ProgressView.qml:99
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr "%1 – %2"
 
 #: discover/qml/ReviewDelegate.qml:61
 #, kde-format
