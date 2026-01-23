@@ -450,11 +450,11 @@ public:
         setPercent(to_unsigned<unsigned long>(TransactionModel::global()->progress()));
         connect(TransactionModel::global(), &TransactionModel::lastTransactionFinished, this, &TransactionsJob::emitResult);
         connect(TransactionModel::global(), &TransactionModel::transactionAdded, this, &TransactionsJob::onTransactionAdded);
-        connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &TransactionsJob::refreshInfo);
+        connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &TransactionsJob::onTransactionRemoved);
         connect(TransactionModel::global(), &TransactionModel::progressChanged, this, [this] {
             setPercent(to_unsigned<unsigned long>(TransactionModel::global()->progress()));
         });
-        refreshInfo(nullptr);
+        updateDescription();
     }
 
     void onTransactionAdded()
@@ -466,25 +466,26 @@ public:
         setTotalAmount(Items, newAmount);
     }
 
-    void refreshInfo(Transaction *transaction)
+    void onTransactionRemoved()
     {
-        if (TransactionModel::global()->rowCount() == 0) {
-            return;
+        const auto oldAmount = totalAmount(Items);
+        // In an ideal world we'd not do subtractions on unsigned values as they could underflow. Unfortunately we deal
+        // with 64bit unsigned here, so doing a safe subtraction is difficult. Be assertive instead.
+        Q_ASSERT(oldAmount > 0);
+        // We get called with a single transaction. Subtract exactly one! Do not query the model again to avoid
+        // unexpectedly increasing the amount implicitly.
+        const auto newAmount = oldAmount - 1;
+        setProcessedAmount(Items, newAmount);
+
+        updateDescription();
+    }
+
+    void updateDescription()
+    {
+        if (TransactionModel::global()->rowCount() > 0) {
+            auto firstTransaction = TransactionModel::global()->transactions().constFirst();
+            Q_EMIT description(this, firstTransaction->name());
         }
-
-        if (transaction) {
-            const auto oldAmount = totalAmount(Items);
-            // In an ideal world we'd not do subtractions on unsigned values as they could underflow. Unfortunately we deal
-            // with 64bit unsigned here, so doing a safe subtraction is difficult. Be assertive instead.
-            Q_ASSERT(oldAmount > 0);
-            // We get called with a single transaction. Subtract exactly one! Do not query the model again to avoid
-            // unexpectedly increasing the amount implicitly.
-            const auto newAmount = oldAmount - 1;
-            setProcessedAmount(Items, newAmount);
-        } // else it was called by start() and we are not touching the processed amount.
-
-        auto firstTransaction = TransactionModel::global()->transactions().constFirst();
-        Q_EMIT description(this, firstTransaction->name());
     }
 
     void cancel()
