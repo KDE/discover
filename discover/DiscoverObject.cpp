@@ -449,11 +449,21 @@ public:
         setTotalAmount(Items, to_unsigned<qulonglong>(TransactionModel::global()->rowCount()));
         setPercent(to_unsigned<unsigned long>(TransactionModel::global()->progress()));
         connect(TransactionModel::global(), &TransactionModel::lastTransactionFinished, this, &TransactionsJob::emitResult);
+        connect(TransactionModel::global(), &TransactionModel::transactionAdded, this, &TransactionsJob::onTransactionAdded);
         connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &TransactionsJob::refreshInfo);
         connect(TransactionModel::global(), &TransactionModel::progressChanged, this, [this] {
             setPercent(to_unsigned<unsigned long>(TransactionModel::global()->progress()));
         });
         refreshInfo(nullptr);
+    }
+
+    void onTransactionAdded()
+    {
+        const auto oldAmount = totalAmount(Items);
+        // Very unlikely to happen but let's be safe. We don't want to overflow.
+        Q_ASSERT(oldAmount < std::numeric_limits<qulonglong>::max());
+        const auto newAmount = oldAmount + 1;
+        setTotalAmount(Items, newAmount);
     }
 
     void refreshInfo(Transaction *transaction)
