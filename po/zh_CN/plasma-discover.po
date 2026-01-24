@@ -189,7 +189,7 @@ msgstr "应用程序浏览与安装管理程序"
 #: discover/main.cpp:124
 #, kde-format
 msgid "© 2010-2026 Plasma Development Team"
-msgstr ""
+msgstr "© 2010-2026 Plasma Development Team"
 
 #: discover/main.cpp:125
 #, kde-format
