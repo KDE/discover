@@ -40,3 +40,4 @@ RuntimeDependencies:
 Options:
  require-passing-tests-on: ['Linux', 'FreeBSD']
  cmake-options: -DBUILD_RpmOstreeBackend=ON -DBUILD_HoloBackend=ON
+ enable-lsan: True
