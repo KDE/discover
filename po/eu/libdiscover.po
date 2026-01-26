@@ -1,7 +1,7 @@
 # Translation for libdiscover.po to Euskara/Basque (eu).
 # Copyright (C) 2017-2025 This file is copyright:
 # This file is distributed under the same license as the discover package.
-# SPDX-FileCopyrightText: 2023, 2024, 2025 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
 #
 # Translators:
 # Iñigo Salvador Azurmendi <xalba@ni.eus>, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-24 02:39+0000\n"
-"PO-Revision-Date: 2025-12-08 19:13+0100\n"
+"PO-Revision-Date: 2026-01-25 13:29+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2631,14 +2631,13 @@ msgstr "SteamOS"
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgstr ""
-"\"%1\"(e)tik appstream datuak jasotzea huts egin du.<nl/><nl/>Errore-mezua: "
-"%2"
+"“%1”(e)tik appstream datuak jasotzea huts egin du.<nl/><nl/>Errore-mezua: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr "Ez da \"%1\" jomugarako appstream URLrik aurkitu"
+msgstr "Ez da “%1” jomugarako appstream URLrik aurkitu"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
 #, kde-kuit-format
@@ -2662,7 +2661,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
-msgstr "Appstream metadatuetan ez da \"%1\" jomugaren osagairik aurkitu"
+msgstr "Appstream metadatuetan ez da “%1” jomugaren osagairik aurkitu"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
