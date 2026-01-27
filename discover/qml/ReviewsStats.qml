@@ -45,7 +45,7 @@ BasicAbstractCard {
         Rating {
             id: globalRating
             Layout.alignment: Qt.AlignCenter
-            value: root.application.rating.sortableRating
+            value: root.application.rating.rating
             precision: Rating.Precision.HalfStar
         }
         QQC2.Label {
