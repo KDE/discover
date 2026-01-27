@@ -40,12 +40,12 @@ BasicAbstractCard {
             minimumPointSize: 10
             font.pointSize: 70
             fontSizeMode: Text.Fit
-            text: (Math.min(10, root.application.rating.sortableRating) / 2.0).toFixed(1)
+            text: (Math.min(10, root.application.rating.rating) / 2.0).toFixed(1)
         }
         Rating {
             id: globalRating
             Layout.alignment: Qt.AlignCenter
-            value: root.application.rating.sortableRating
+            value: root.application.rating.rating
             precision: Rating.Precision.HalfStar
         }
         QQC2.Label {
