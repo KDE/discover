@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-21 00:46+0000\n"
+"POT-Creation-Date: 2026-01-27 00:45+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Crowdin-File: /kf6-trunk/messages/discover/plasma-discover.pot\n"
 "X-Crowdin-File-ID: 43165\n"
 
-#: discover/DiscoverObject.cpp:183
+#: discover/DiscoverObject.cpp:197
 #, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "%1 没有配置为通过 Discover 安装应用 — 它只通过 Discover 安装应用的附加组件"
 
-#: discover/DiscoverObject.cpp:185
+#: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
@@ -37,7 +37,7 @@ msgstr ""
 "缺失的后端程序</interface> 栏目中安装您首选使用的模块。<nl/><nl/>请将此问题 "
 "<link url='%1'>报告给 %2。</link>"
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -53,7 +53,7 @@ msgstr ""
 "link>。<nl/><nl/> 请检查 Discover 的 <link url='https://archlinux.org/"
 "packages/extra/x86_64/discover/'>%1 的打包情况</link>"
 
-#: discover/DiscoverObject.cpp:202
+#: discover/DiscoverObject.cpp:216
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -70,41 +70,41 @@ msgstr ""
 "人员推荐用户转而使用 <command>pacman</command> 命令行工具来管理软件包。</"
 "para>"
 
-#: discover/DiscoverObject.cpp:291
+#: discover/DiscoverObject.cpp:305
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "找不到“%1”分类"
 
-#: discover/DiscoverObject.cpp:313
+#: discover/DiscoverObject.cpp:327
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "正在尝试打开不存在的文件“%1”"
 
-#: discover/DiscoverObject.cpp:335
+#: discover/DiscoverObject.cpp:349
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr "缺少 flatpak 后端程序 %1，无法处理 flatpak 资源。请先安装它。"
 
-#: discover/DiscoverObject.cpp:339
+#: discover/DiscoverObject.cpp:353
 #, kde-format
 msgid "Could not open %1"
 msgstr "无法打开 %1"
 
-#: discover/DiscoverObject.cpp:404
+#: discover/DiscoverObject.cpp:418
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "请确保 Snap 支持已经安装"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:421
 #, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
 msgstr "请求的应用程序在所有可用的软件仓库中均未找到。"
 
-#: discover/DiscoverObject.cpp:410
+#: discover/DiscoverObject.cpp:424
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an additional error reference and %3 is the name of the "
@@ -114,13 +114,13 @@ msgid ""
 "link>"
 msgstr "(%1 没有条目)<nl/><nl/>请将此问题 <link url='%2'>报告给 %3。</link>"
 
-#: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
+#: discover/DiscoverObject.cpp:508 discover/DiscoverObject.cpp:510
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:476
+#: discover/DiscoverObject.cpp:511
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

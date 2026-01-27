@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-21 00:46+0000\n"
+"POT-Creation-Date: 2026-01-27 00:45+0000\n"
 "PO-Revision-Date: 2024-09-26 19:08+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: discover/DiscoverObject.cpp:183
+#: discover/DiscoverObject.cpp:197
 #, fuzzy, kde-format
 #| msgctxt "@title %1 is the distro name"
 #| msgid ""
@@ -31,7 +31,7 @@ msgstr ""
 "%1 er ikkje sett opp for installering av program via Discover, berre for "
 "programtillegg"
 
-#: discover/DiscoverObject.cpp:185
+#: discover/DiscoverObject.cpp:199
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info:usagetip %1 is the distro name"
 #| msgid ""
@@ -48,7 +48,7 @@ msgstr ""
 "pakkemotor via <interface>Innstillingar</interface>-sida (under "
 "<interface>Manglande pakkemotorar</interface>)."
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -65,7 +65,7 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1-pakkar for "
 "Discover</link>"
 
-#: discover/DiscoverObject.cpp:202
+#: discover/DiscoverObject.cpp:216
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -83,18 +83,18 @@ msgstr ""
 "vedlikehaldarane tilrår å bruka kommando­linje­programmet <command>pacman</"
 "command> for å handsama pakkar i staden for.</para>"
 
-#: discover/DiscoverObject.cpp:291
+#: discover/DiscoverObject.cpp:305
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Fann ikkje kategorien «%1»"
 
 # skip-rule: eksistera
-#: discover/DiscoverObject.cpp:313
+#: discover/DiscoverObject.cpp:327
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Prøver å opna den ikkje-eksisterande fila «%1»"
 
-#: discover/DiscoverObject.cpp:335
+#: discover/DiscoverObject.cpp:349
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -103,17 +103,17 @@ msgstr ""
 "Kan ikkje bruka Flatpak-ressursar med mindre Flatpak-motoren %1 er "
 "tilgjengeleg. Installer han først."
 
-#: discover/DiscoverObject.cpp:339
+#: discover/DiscoverObject.cpp:353
 #, kde-format
 msgid "Could not open %1"
 msgstr "Klarte ikkje opna %1"
 
-#: discover/DiscoverObject.cpp:404
+#: discover/DiscoverObject.cpp:418
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Kontroller at Snap-støtte er installert"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:421
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not open %1 because it was not found in any available software "
@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Klarte ikkje opna %1, då programmet ikkje finst i nokon av pakkebrønnane."
 
-#: discover/DiscoverObject.cpp:410
+#: discover/DiscoverObject.cpp:424
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an additional error reference and %3 is the name of the "
@@ -135,13 +135,13 @@ msgid ""
 msgstr ""
 
 # Namnet på programmet, som eg til slutt har funne ut at ikkje bør omsetjast. – KOH
-#: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
+#: discover/DiscoverObject.cpp:508 discover/DiscoverObject.cpp:510
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:476
+#: discover/DiscoverObject.cpp:511
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

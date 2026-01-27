@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-21 00:46+0000\n"
+"POT-Creation-Date: 2026-01-27 00:45+0000\n"
 "PO-Revision-Date: 2026-01-21 09:46+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
-#: discover/DiscoverObject.cpp:183
+#: discover/DiscoverObject.cpp:197
 #, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
@@ -30,7 +30,7 @@ msgstr ""
 "%1 no està configurat per a instal·lar aplicacions mitjançant el Discover, "
 "només aplicacions i complements"
 
-#: discover/DiscoverObject.cpp:185
+#: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
@@ -43,7 +43,7 @@ msgstr ""
 "<interface>Dorsals que manquen</interface>.<nl/><nl/><link url='%1'>Informeu "
 "d'aquest problema a %2.</link>"
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -60,7 +60,7 @@ msgstr ""
 "Reviseu el <link url='https://archlinux.org/packages/extra/x86_64/"
 "discover/'>sistema de paquets de %1 per al Discover</link>"
 
-#: discover/DiscoverObject.cpp:202
+#: discover/DiscoverObject.cpp:216
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -79,17 +79,17 @@ msgstr ""
 "l'eina <command>pacman</command> de la línia d'ordres per a gestionar "
 "paquets.</para>"
 
-#: discover/DiscoverObject.cpp:291
+#: discover/DiscoverObject.cpp:305
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "No s'ha pogut trobar la categoria «%1»"
 
-#: discover/DiscoverObject.cpp:313
+#: discover/DiscoverObject.cpp:327
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Esteu intentant obrir el fitxer inexistent «%1»"
 
-#: discover/DiscoverObject.cpp:335
+#: discover/DiscoverObject.cpp:349
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -98,17 +98,17 @@ msgstr ""
 "No es pot interactuar amb els recursos del Flatpak sense el dorsal del "
 "«flatpak» %1. Si us plau, primer instal·leu-lo."
 
-#: discover/DiscoverObject.cpp:339
+#: discover/DiscoverObject.cpp:353
 #, kde-format
 msgid "Could not open %1"
 msgstr "No s'ha pogut obrir %1"
 
-#: discover/DiscoverObject.cpp:404
+#: discover/DiscoverObject.cpp:418
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Assegureu-vos que està instal·lat el suport de Snap"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:421
 #, kde-format
 msgid ""
 "The requested application could not be found in any available software "
@@ -117,7 +117,7 @@ msgstr ""
 "No s'ha pogut trobar l'aplicació sol·licitada en cap repositori de "
 "programari disponible"
 
-#: discover/DiscoverObject.cpp:410
+#: discover/DiscoverObject.cpp:424
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an additional error reference and %3 is the name of the "
@@ -129,13 +129,13 @@ msgstr ""
 "(Cap entrada per a %1)<nl/><nl/><link url='%2'>Informeu d'aquest problema a "
 "%3.</link>"
 
-#: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
+#: discover/DiscoverObject.cpp:508 discover/DiscoverObject.cpp:510
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:476
+#: discover/DiscoverObject.cpp:511
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

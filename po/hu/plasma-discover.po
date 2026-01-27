@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-21 00:46+0000\n"
+"POT-Creation-Date: 2026-01-27 00:45+0000\n"
 "PO-Revision-Date: 2025-10-15 20:38+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 25.08.2\n"
 
-#: discover/DiscoverObject.cpp:183
+#: discover/DiscoverObject.cpp:197
 #, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
@@ -29,7 +29,7 @@ msgstr ""
 "A(z) %1 nincs beállítva alkalmazások telepítésére Discoverrel - csak "
 "alkalmazások bővítményeire"
 
-#: discover/DiscoverObject.cpp:185
+#: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
@@ -42,7 +42,7 @@ msgstr ""
 "háttérprogramok</interface> alatt.<nl/><nl/>Jelentse <link url='%1'>ezt a "
 "hibát a(z) %2 operációs rendszernek</link>."
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -59,7 +59,7 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 Discover "
 "csomagját</link>"
 
-#: discover/DiscoverObject.cpp:202
+#: discover/DiscoverObject.cpp:216
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -76,17 +76,17 @@ msgstr ""
 "csak Flatpakot, Snapet és bővítményeket kezelni.<para>A(z) %1 karbantartók "
 "inkább a <command>pacman</command> csomagkezelő használatát ajánlják.</para>"
 
-#: discover/DiscoverObject.cpp:291
+#: discover/DiscoverObject.cpp:305
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Nem található kategória: „%1”"
 
-#: discover/DiscoverObject.cpp:313
+#: discover/DiscoverObject.cpp:327
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "A(z) „%1” nem létező fájl megnyitására tett kísérlet"
 
-#: discover/DiscoverObject.cpp:335
+#: discover/DiscoverObject.cpp:349
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -95,17 +95,17 @@ msgstr ""
 "Nem lehet dolgozni Flatpak erőforrásokkal a(z) %1 backend nélkül. Kérjük, "
 "telepítse azt."
 
-#: discover/DiscoverObject.cpp:339
+#: discover/DiscoverObject.cpp:353
 #, kde-format
 msgid "Could not open %1"
 msgstr "A(z) %1 nem nyitható meg"
 
-#: discover/DiscoverObject.cpp:404
+#: discover/DiscoverObject.cpp:418
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Ellenőrizze, hogy a Snap támogatás telepítve van-e"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:421
 #, kde-format
 msgid ""
 "The requested application could not be found in any available software "
@@ -113,7 +113,7 @@ msgid ""
 msgstr ""
 "A kért alkalmazás nem található meg egyik elérhető szoftvertárolóban sem"
 
-#: discover/DiscoverObject.cpp:410
+#: discover/DiscoverObject.cpp:424
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an additional error reference and %3 is the name of the "
@@ -125,13 +125,13 @@ msgstr ""
 "(Nincs bejegyzés ehhez: %1)<nl/><nl/>Jelentse <link url='%2'>ezt a hibát "
 "a(z) %3 operációs rendszernek</link>"
 
-#: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
+#: discover/DiscoverObject.cpp:508 discover/DiscoverObject.cpp:510
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:476
+#: discover/DiscoverObject.cpp:511
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

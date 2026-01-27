@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-21 00:46+0000\n"
+"POT-Creation-Date: 2026-01-27 00:45+0000\n"
 "PO-Revision-Date: 2025-09-19 22:14+0330\n"
 "Last-Translator: Sohrab Behdani <behdanisohrab@proton.me>\n"
 "Language-Team: fa\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 25.08.1\n"
 
-#: discover/DiscoverObject.cpp:183
+#: discover/DiscoverObject.cpp:197
 #, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
@@ -27,7 +27,7 @@ msgstr ""
 "%1 برای نصب برنامه‌ها با فروشگاه پیکربندی نشده(تنها میتواند افزونه برنامه‌ها "
 "را نصب کند)"
 
-#: discover/DiscoverObject.cpp:185
+#: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
@@ -39,7 +39,7 @@ msgstr ""
 "<interface>تنظیمات</interface>، زیر <interface>پشتوانه‌های گم‌شده</interface> "
 "نصب کنید.<nl/><nl/>لطفاً <link url='%1'>این مشکل را به %2 گزارش دهید.</link>"
 
-#: discover/DiscoverObject.cpp:192
+#: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -56,7 +56,7 @@ msgstr ""
 "دیدگاه کنید <link url='https://archlinux.org/packages/extra/x86_64/"
 "discover/'>.</link>"
 
-#: discover/DiscoverObject.cpp:202
+#: discover/DiscoverObject.cpp:216
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -74,17 +74,17 @@ msgstr ""
 "کار با ابزار خط فرمانی <command>pacman</command> را برای مدیریت بسته‌ها "
 "پیشنهاد می‌کنند.</para>"
 
-#: discover/DiscoverObject.cpp:291
+#: discover/DiscoverObject.cpp:305
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "نمی‌توان دسته '%1' را یافت"
 
-#: discover/DiscoverObject.cpp:313
+#: discover/DiscoverObject.cpp:327
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "تلاش برای بازکردن پرونده ناموجود '%1'"
 
-#: discover/DiscoverObject.cpp:335
+#: discover/DiscoverObject.cpp:349
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -93,24 +93,24 @@ msgstr ""
 "نمی‌توان بدون پشتوانه فلت‌پک %1 با منابع فلت‌پک تعامل داشت. ابتدا آن را نصب "
 "کنید."
 
-#: discover/DiscoverObject.cpp:339
+#: discover/DiscoverObject.cpp:353
 #, kde-format
 msgid "Could not open %1"
 msgstr "نمی‌توان %1 را باز کرد"
 
-#: discover/DiscoverObject.cpp:404
+#: discover/DiscoverObject.cpp:418
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "اطمینان حاصل کنید که پشتیبانی اسنپ نصب شده است"
 
-#: discover/DiscoverObject.cpp:407
+#: discover/DiscoverObject.cpp:421
 #, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
 msgstr "برنامه درخواستی در هیچ مخزن نرم‌افزار در دسترسی یافت نشد"
 
-#: discover/DiscoverObject.cpp:410
+#: discover/DiscoverObject.cpp:424
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an additional error reference and %3 is the name of the "
@@ -122,13 +122,13 @@ msgstr ""
 "(بدون ورودی برای %1)<nl/><nl/>لطفاً <link url='%2'>این مشکل را به %3 گزارش "
 "دهید.</link>"
 
-#: discover/DiscoverObject.cpp:473 discover/DiscoverObject.cpp:475
+#: discover/DiscoverObject.cpp:508 discover/DiscoverObject.cpp:510
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "فروشگاه نرم‌افزار"
 
-#: discover/DiscoverObject.cpp:476
+#: discover/DiscoverObject.cpp:511
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

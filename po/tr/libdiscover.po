@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-24 00:44+0000\n"
-"PO-Revision-Date: 2026-01-16 22:45+0300\n"
+"PO-Revision-Date: 2026-01-26 17:10+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1123,14 +1123,13 @@ msgstr "SteamOS"
 #: libdiscover/backends/HoloBackend/HoloBackend.cpp:73
 #, kde-format
 msgid "Holo"
-msgstr ""
+msgstr "Holo"
 
 #: libdiscover/backends/HoloBackend/HoloBackend.cpp:113
-#, fuzzy, kde-format
-#| msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+#, kde-format
 msgctxt "%1 is the pretty name of the distro e.g. Holo or SteamOS"
 msgid "Holo: Unable to query atomupd for %1 Updates..."
-msgstr "SteamOS: SteamOS güncellemeleri için atomupd ile iletişim kurulamıyor…"
+msgstr "Holo: %1 güncellemeleri için atomupd ile iletişim kurulamıyor…"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
