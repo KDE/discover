@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Sergiu Bivol <sergiu@cip.md>, 2011, 2012, 2013, 2014, 2020, 2021, 2022, 2023, 2024.
+# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2020, 2021, 2022, 2023, 2024, 2026 Sergiu Bivol <sergiu@cip.md>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-24 02:39+0000\n"
-"PO-Revision-Date: 2024-06-08 16:05+0100\n"
+"PO-Revision-Date: 2026-01-29 01:49+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -65,40 +65,37 @@ msgid "Technical error message: %1"
 msgstr "Mesaj tehnic de eroare: %1"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
-#, fuzzy, kde-format
-#| msgid "PackageKit Backend"
+#, kde-format
 msgid "Package management"
-msgstr "Suport PackageKit"
+msgstr "Gestiunea pachetelor"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:203
 #, kde-format
 msgid "Loading, please wait..."
-msgstr ""
+msgstr "Se încarcă, așteptați…"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:289
-#, fuzzy, kde-format
-#| msgid "Additional packages: "
+#, kde-format
 msgctxt "Root category name"
 msgid "Alpine Linux packages"
-msgstr "Pachete suplimentare: "
+msgstr "Pachete Alpine Linux"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:458
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
-msgstr ""
+msgstr "Alpine APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:272
 #, kde-format
 msgid "Authorization denied"
-msgstr ""
+msgstr "Autorizare refuzată"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgid "Error: "
-msgstr "Eroare"
+msgstr "Eroare: "
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
 #, kde-format
@@ -107,28 +104,29 @@ msgid ""
 "Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
 "alpine/edge/testing/"
 msgstr ""
+"Introduceți URL-ul depozitului Alpine, de exemplu: http://dl-cdn.alpinelinux."
+"org/alpine/edge/testing/"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
 #, kde-format
 msgid "Error: Authorization denied"
-msgstr ""
+msgstr "Eroare: Autorizare refuzată"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:283
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgid "Error"
 msgstr "Eroare"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
 #, kde-format
 msgid "Failed to open APK database!"
-msgstr ""
+msgstr "Deschiderea bazei de date APK a eșuat!"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
 #, kde-format
 msgid "Failed to get a list of packages to upgrade!"
-msgstr ""
+msgstr "Nu s-a putut obține lista cu pachete de înnoit!"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -194,11 +192,7 @@ msgstr "Toate aplicațiile"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"utils"
-#| "\""
-#| msgid "Utilities"
+#, kde-format
 msgctxt "Category"
 msgid "Utilities"
 msgstr "Utilitare"
@@ -212,11 +206,7 @@ msgstr "Accesibilitate"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"devel"
-#| "\""
-#| msgid "Development"
+#, kde-format
 msgctxt "Category"
 msgid "Development"
 msgstr "Dezvoltare"
@@ -272,14 +262,10 @@ msgstr "Educație"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:131
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"science\""
-#| msgid "Science"
+#, kde-format
 msgctxt "Category"
 msgid "Science & Math"
-msgstr "Știință"
+msgstr "Știință și matematică"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -563,12 +549,10 @@ msgstr "Birou"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgctxt "Category"
 msgid "System"
-msgstr "Repară sistemul"
+msgstr "Sistem"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:196
 #, kde-format
@@ -674,10 +658,9 @@ msgid "Sound system access"
 msgstr "Acces la sistemul de sunet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:882
-#, fuzzy, kde-format
-#| msgid "Can play audio"
+#, kde-format
 msgid "Can play and record audio"
-msgstr "Poate reda sunete"
+msgstr "Poate reda și înregistra sunete"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1030
@@ -1021,7 +1004,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "Eliminare automată"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, fuzzy, kde-kuit-format
@@ -1079,11 +1062,10 @@ msgstr "Se șterg configurările și datele utilizatorului…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "Permisiuni pentru %1"
+msgstr "Permisiuni"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
@@ -1222,7 +1204,7 @@ msgstr "Fonturi"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "Driver-e pentru echipament"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:579
 #, kde-format
@@ -2031,33 +2013,27 @@ msgstr "Indisponibil"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "Critic"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Install"
+#, kde-format
 msgid "Install"
-msgstr "Instalează"
+msgstr "Instalare"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "Elimină…"
+msgstr "Eliminare"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, fuzzy, kde-format
-#| msgid "Obsoletes:"
+#, kde-format
 msgid "Obsolete"
-msgstr "Învechește:"
+msgstr "Învechire"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Downgrade"
+#, kde-format
 msgid "Downgrade"
-msgstr "Retrogradează"
+msgstr "Retrogradare"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:132
 #, kde-format
@@ -2106,13 +2082,12 @@ msgid "Repair Failed"
 msgstr "Repararea a eșuat"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "%1<nl/>Raportați această eroare distribuției."
+msgstr ""
+"%1<nl/>Vă rugăm să <link url='%2'>raportați această eroare la %3</link>."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:168
 #, kde-format
@@ -2152,7 +2127,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "Program verificat de %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:413
 #, kde-format
@@ -2592,16 +2567,14 @@ msgid "Unknown transaction type"
 msgstr "Tip de tranzacție necunoscut"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channel: %1"
-msgstr "Canale…"
+msgstr "Canal: %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channels for %1"
-msgstr "Canale…"
+msgstr "Canale pentru %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:384
@@ -2627,12 +2600,12 @@ msgstr "Snap"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:585
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "Editor verificat pe snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:587
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "Editor apreciat pe snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
 #, kde-format
@@ -2706,7 +2679,7 @@ msgstr "Disponibil"
 #: libdiscover/resources/AbstractResource.cpp:99
 #, kde-format
 msgid "Upgradeable"
-msgstr "Actualizabil"
+msgstr "De înnoit"
 
 #: libdiscover/resources/AbstractResource.cpp:239
 #, kde-format
@@ -2737,13 +2710,10 @@ msgid "Refresh"
 msgstr "Reîmprospătează"
 
 #: libdiscover/resources/ResourcesModel.cpp:406
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "Împrospătare a versiunii %1"
+msgstr "Se împrospătează %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:787
 #, kde-format
@@ -2823,12 +2793,10 @@ msgid "Applications"
 msgstr "Aplicații"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Updates"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "Actualizări de aplicații"
+msgstr "Suport pentru aplicații"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:140
 #, kde-format

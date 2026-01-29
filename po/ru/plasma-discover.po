@@ -1574,7 +1574,7 @@ msgstr "Дополнительная информация..."
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
-msgstr "Загрузка обновлений..."
+msgstr "Проверка наличия обновлений…"
 
 #: discover/qml/UpdatesPage.qml:602
 #, kde-format

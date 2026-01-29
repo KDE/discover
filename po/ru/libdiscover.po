@@ -2741,7 +2741,7 @@ msgstr "Обновить список"
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "Обновление %1"
+msgstr "Проверка наличия обновлений: %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:787
 #, kde-format
