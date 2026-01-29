@@ -32,6 +32,12 @@ QQC2.ItemDelegate {
         }
     }
 
+    onClicked: {
+        if (typeof drawer !== "undefined" && !drawer.wideScreen) {
+            drawer.close()
+        }
+    }
+
     property string subtitle
     property var stateObject
 
