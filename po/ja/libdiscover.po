@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2023, 2024 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
+# SPDX-FileCopyrightText: 2023, 2024, 2026 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2023.
 # SPDX-FileCopyrightText: 2025 Yuma Kakei <yumasansansan@gmail.com>
@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-24 02:39+0000\n"
-"PO-Revision-Date: 2025-09-21 14:49+0900\n"
-"Last-Translator: Yuma Kakei <yumasansansan@gmail.com>\n"
+"PO-Revision-Date: 2026-01-26 21:17+0900\n"
+"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -889,7 +889,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1136
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
-msgstr ""
+msgstr "%1 で作者 %2 によって配布されていることが認証済みのアプリケーション"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
@@ -1196,7 +1196,7 @@ msgstr "フォント"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr "ハードウェアドライバー"
+msgstr "ハードウェアドライバ"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:579
 #, kde-format
@@ -2609,6 +2609,8 @@ msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
 msgstr ""
+"<a href='%1'>%1</a> から更新を取得することができませんでした。<nl/><nl/>エ"
+"ラーメッセージ: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
 #, kde-kuit-format
@@ -2673,13 +2675,10 @@ msgid "Refresh"
 msgstr "再読み込み"
 
 #: libdiscover/resources/ResourcesModel.cpp:406
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "バージョン %1 の更新"
+msgstr "%1 を更新中"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:787
 #, kde-format
@@ -2775,6 +2774,3 @@ msgstr "システムソフトウェア"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "アドオン"
-
-#~ msgid "ostree remotes"
-#~ msgstr "ostree リモート"
