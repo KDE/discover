@@ -578,9 +578,27 @@ FlatpakResource *FlatpakBackend::getAppForInstalledRef(FlatpakInstallation *inst
         *freshResource = true;
     }
 
-    Q_ASSERT_X(resource->uniqueId() == idForInstalledRef(ref) || resource->uniqueId() == idForInstalledRef(ref, QStringLiteral(".desktop")),
-               "getAppForInstalledRef",
-               flatpak_ref_format_ref_cached(FLATPAK_REF(ref)));
+    Q_ASSERT_X(
+        [&] {
+            if (resource->uniqueId() == idForInstalledRef(ref) || resource->uniqueId() == idForInstalledRef(ref, QStringLiteral(".desktop"))) {
+                return true;
+            }
+            // When an app changes appstream ID we may have the old installed but resolve the regular ids will not match.
+            // What we need to do is collect all possible IDs for the component and see if any matches.
+            QStringList cidIds = {cid.id()};
+            const auto provided = cid.provided();
+            for (const auto &provide : provided) {
+                if (provide.kind() == AppStream::Provided::KindId) {
+                    cidIds += provide.items();
+                }
+            }
+            return std::ranges::any_of(cidIds, [&resource](const QString &cidId) {
+                const auto id = resource->uniqueId().id;
+                return id == cidId || id == cidId + ".desktop"_L1;
+            });
+        }(),
+        "getAppForInstalledRef",
+        flatpak_ref_format_ref_cached(FLATPAK_REF(ref)));
     return resource;
 }
 
