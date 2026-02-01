@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Alexander Yavorsky <kekcuha@gmail.com>
+# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Alexander Yavorsky <kekcuha@gmail.com>
 # Yuri Efremov <yur.arh@gmail.com>, 2010, 2011, 2012, 2013, 2014.
 # Alexander Potashev <aspotashev@gmail.com>, 2010, 2011, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
@@ -13,16 +13,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-24 00:44+0000\n"
-"PO-Revision-Date: 2026-01-19 10:03+0300\n"
-"Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
-"Language-Team: Basealt Translation Team\n"
+"PO-Revision-Date: 2026-01-31 11:09+0300\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.12.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -429,17 +429,17 @@ msgstr "Эмуляторы"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:333
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Category"
 msgid "Launchers"
-msgstr "Запустить"
+msgstr "Панели запуска"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:343
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
 #, kde-format
 msgctxt "Category"
 msgid "Tools"
-msgstr ""
+msgstr "Инструменты"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:355
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:355
@@ -1142,15 +1142,13 @@ msgstr "SteamOS"
 #: libdiscover/backends/HoloBackend/HoloBackend.cpp:73
 #, kde-format
 msgid "Holo"
-msgstr ""
+msgstr "Holo"
 
 #: libdiscover/backends/HoloBackend/HoloBackend.cpp:113
-#, fuzzy, kde-format
-#| msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+#, kde-format
 msgctxt "%1 is the pretty name of the distro e.g. Holo or SteamOS"
 msgid "Holo: Unable to query atomupd for %1 Updates..."
-msgstr ""
-"SteamOS: Не удалось получить данные о наличии обновлений SteamOS от atomupd…"
+msgstr "Holo: Не удалось получить данные от atomupd о наличии обновлений %1…"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
