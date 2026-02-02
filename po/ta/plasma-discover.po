@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Kishore G <kishore96@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025, 2026 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-28 02:43+0000\n"
-"PO-Revision-Date: 2025-03-09 17:29+0530\n"
+"PO-Revision-Date: 2026-02-01 18:59+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,27 +15,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: discover/DiscoverObject.cpp:197
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"டிஸ்கவர் மூலம் செயலிகளை நிறுவுமாறு %1 அமைக்கபடவில்லை—செயலிகளுக்கான துணைநிரல்கள் "
-"மட்டுமே"
+"டிஸ்கவர் மூலம் செயலிகளை நிறுவுமாறு %1 அமைக்கபடவில்லை—செயலிகளுக்கான துணைநிரல்களை "
+"மட்டுமே நிறுவ முடியும்."
 
 #: discover/DiscoverObject.cpp:199
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -44,6 +36,7 @@ msgid ""
 msgstr ""
 "டிஸ்கவர் மூலம் செயலிகளை நிறுவ, <interface>அமைப்புகள்</interface> பக்கத்திலுள்ள "
 "<interface>இல்லாத பின்நிலைகள்</interface> பகுதியில் நீங்கள் விரும்பும் கூறை நிறுவ‍வும்."
+"nl/><nl/>இந்த சிக்கலை %2-க்கு <link url='%1'>தெரிவிக்கவும்</link>."
 
 #: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
@@ -103,15 +96,11 @@ msgid "Please make sure Snap support is installed"
 msgstr "Snap ஆதரவு நிறுவப்பட்டுள்ளதா என்பதை சரிபாருங்கள்"
 
 #: discover/DiscoverObject.cpp:421
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
-msgstr ""
-"%1 என்பது இயக்கப்பட்டுள்ள நிரல்கிடங்குகளில் கண்டுபிடிக்கப்படாத‍தால் அதைத் திறக்க முடியவில்லை."
+msgstr "கோரிய செயலியை இயக்கப்பட்டுள்ள நிரல்கிடங்குகளில் கண்டுபிடிக்க முடியவில்லை."
 
 #: discover/DiscoverObject.cpp:424
 #, kde-kuit-format
@@ -122,6 +111,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(%1 என்பதற்கு எந்த பதிவும் இல்லை)<nl/><nl/>இதை %3-க்கு <link url='%2'>தெரிவிக்கவும்</"
+"link>."
 
 #: discover/DiscoverObject.cpp:508 discover/DiscoverObject.cpp:510
 #: discover/main.cpp:120
@@ -185,7 +176,7 @@ msgstr "பயனர் பின்னூட்டத்துக்கு உ�
 #: discover/main.cpp:43
 #, kde-format
 msgid "Starts an update automatically, headless"
-msgstr ""
+msgstr "வரைகலை இடைமுகப்பு இல்லாமல் தானியக்க புதுப்பிப்பைத் துவக்கும்"
 
 #: discover/main.cpp:45
 #, kde-format
@@ -504,9 +495,7 @@ msgid ","
 msgstr ","
 
 #: discover/qml/ApplicationPage.qml:509
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "See more…"
 msgstr "மேலும் காட்டு…"
@@ -565,11 +554,10 @@ msgstr "%1 என்பதற்கான விமர்சனங்கள் �
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "எந்த விமர்சனமும் இல்லை"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
 msgstr "விமர்சனம் எழுத நிறுவ‍வும்"
@@ -844,14 +832,12 @@ msgid "Next Screenshot"
 msgstr "அடுத்த திரைப்பிடிப்பு"
 
 #: discover/qml/DiscoverDrawer.qml:166
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Security updates available"
-msgstr "புதுப்பிப்புகள் உள்ளன"
+msgstr "பாதுகாப்பு புதுப்பிப்புகள் உள்ளன"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgid "Updates are available"
+#, kde-format
 msgid "Updates available"
 msgstr "புதுப்பிப்புகள் உள்ளன"
 
@@ -881,8 +867,7 @@ msgid "&Updates (Fetching…)"
 msgstr "&புதுப்பிப்புகள் (பெறப்படுகின்றன…)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
 msgstr "புதுப்பிப்புகள்"
 
@@ -913,12 +898,10 @@ msgid "Proceed"
 msgstr "தொடர்"
 
 #: discover/qml/DiscoverWindow.qml:326
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
-msgstr "%1-க்கு இச்சிக்கலை தெரிவி"
+msgstr "%1-க்கு இச்சிக்கலை தெரிவிக்கவும்"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
@@ -1502,12 +1485,10 @@ msgid "Total size: %1"
 msgstr "மொத்த அளவு: %1"
 
 #: discover/qml/UpdatesPage.qml:323
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "புதுப்பிப்புகளை நிறுவ இப்போது மீள்துவக்கு"
+msgstr "மீள்துவக்கி புதுப்பிப்புகளை நிறுவு"
 
 #: discover/qml/UpdatesPage.qml:503
 #, kde-format
@@ -1545,18 +1526,16 @@ msgid "Updates"
 msgstr "புதுப்பிப்புகள்"
 
 #: discover/qml/UpdatesPage.qml:612
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "The updates will be installed the next time the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr "அடுத்த முறை கணினி மீள்துவக்கப்படும்போது இப்புதுப்பிப்புகள் நிறுவப்படும்"
+msgstr "கணினி மீள்துவக்கப்படும்போது இப்புதுப்பிப்புகள் நிறுவப்படும்"
 
 #: discover/qml/UpdatesPage.qml:614
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
-msgstr ""
+msgstr "உடனே மீள்துவக்க வேண்டுமென்று அவசியமில்லை."
 
 #: discover/qml/UpdatesPage.qml:628 discover/qml/UpdatesPage.qml:635
 #: discover/qml/UpdatesPage.qml:642
