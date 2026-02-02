@@ -164,7 +164,7 @@ BasicAbstractCard {
 
                         Rating {
                             Layout.alignment: Qt.AlignVCenter
-                            value: root.application.rating.sortableRating
+                            value: root.application.rating.rating
                             starSize: root.compact ? description.font.pointSize : head.font.pointSize
                             precision: Rating.Precision.HalfStar
                             padding: 0
