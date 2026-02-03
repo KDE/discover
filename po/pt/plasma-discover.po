@@ -1,16 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# SPDX-FileCopyrightText: 2026 César A. P. Cláudio <cesarapclaudio@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-27 00:45+0000\n"
-"PO-Revision-Date: 2023-02-15 16:05+0000\n"
-"Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
-"Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
+"POT-Creation-Date: 2026-02-03 00:48+0000\n"
+"PO-Revision-Date: 2026-02-02 22:50+0000\n"
+"Last-Translator: César A. P. Cláudio <cesarapclaudio@gmail.com>\n"
+"Language-Team: pt\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,6 +23,7 @@ msgstr ""
 "X-POFile-IgnoreConsistency: Discover\n"
 "X-POFile-SpellExtra: KNewStuff Graham Nate Leinir Snap pacman Arch\n"
 "X-POFile-SpellExtra: PackageKit\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: discover/DiscoverObject.cpp:197
 #, kde-format
@@ -31,23 +31,21 @@ msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
+"%1 não está configurado para instalar aplicações através do Discover—apenas "
+"extensões de aplicações"
 
 #: discover/DiscoverObject.cpp:199
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "You can install some on the Settings page, under the <interface>Missing "
-#| "Backends</interface> section.<nl/><nl/>Also please consider reporting "
-#| "this as a packaging issue to your distribution."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>.<nl/><nl/>Please <link url='%1'>report this issue to %2.</link>"
 msgstr ""
-"Poderá instalar alguns na página de Configuração, sob a secção "
-"<interface>Infra-Estruturas em Falta</interface>.<nl/><nl/>Pense também em "
-"relatar isto como um problema no pacote da sua distribuição."
+"Para utilizar o Discover para aplicações, instale o seu módulo preferencial "
+"na página <interface>Definições</interface>, em <interface>Infraestruturas "
+"em falta</interface>.<nl/><nl/>Por favor, <link url='%1'>comunique este "
+"problema a %2.</link>"
 
 #: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
@@ -60,6 +58,11 @@ msgid ""
 "command> package manager.<nl/><nl/> Review <link url='https://archlinux.org/"
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
+"Para utilizar o Discover para aplicações, instale o <link url='https://wiki."
+"archlinux.org/title/Flatpak#Installation'>Flatpak</link> através do gestor "
+"de pacotes <command>pacman</command>. Reveja o <link url='https://archlinux."
+"org/packages/extra/x86_64/discover/'>Criação de pacotes do %1 para o "
+"Discover</link>"
 
 #: discover/DiscoverObject.cpp:216
 #, kde-kuit-format
@@ -72,6 +75,12 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"O suporte para gerir pacotes de %1 está incompleto; poderá experienciar "
+"vários problemas. Não reporte erros ao KDE. Recomenda-se vivamente que "
+"desinstale o pacote <resource>packagekit-qt6</resource> e utilize o Discover "
+"apenas para gerir Flatpaks, Snaps e Suplementos. <para>Os responsáveis de "
+"manutenção de %1 recomendam, em alternativa, a utilização da ferramenta de "
+"linha de comandos <command>pacman</command> para gerir pacotes.</para>"
 
 #: discover/DiscoverObject.cpp:305
 #, kde-format
@@ -89,8 +98,8 @@ msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr ""
-"Não é possível interagir com os recursos de Flatpak sem a infra-estrutura de "
-"Flatpak %1. Instale-a primeiro, por favor."
+"Não é possível interagir com recursos Flatpak sem a infraestrutura flatpak "
+"%1. Por favor, instale-a primeiro."
 
 #: discover/DiscoverObject.cpp:353
 #, kde-format
@@ -100,19 +109,16 @@ msgstr "Não foi possível abrir o %1"
 #: discover/DiscoverObject.cpp:418
 #, kde-format
 msgid "Please make sure Snap support is installed"
-msgstr "Por favor, certifique-se que o suporte de Snap está instalado"
+msgstr "Por favor, certifique-se de que o suporte para Snap está instalado"
 
 #: discover/DiscoverObject.cpp:421
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
 msgstr ""
-"Não foi possível aceder ao %1, porque não foi encontrado nos repositórios de "
-"aplicações disponíveis."
+"A aplicação solicitada não foi encontrada em nenhum dos repositórios "
+"disponíveis"
 
 #: discover/DiscoverObject.cpp:424
 #, kde-kuit-format
@@ -123,6 +129,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(Sem entrada para %1)<nl/><nl/>Por favor, <link url='%2'>reporte este "
+"problema a %3.</link>"
 
 #: discover/DiscoverObject.cpp:508 discover/DiscoverObject.cpp:510
 #: discover/main.cpp:120
@@ -135,15 +143,15 @@ msgstr "Discover"
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
 msgstr ""
-"O Discover foi fechado antes que algumas tarefas terminem - à espera que ele "
-"finalize."
+"O Discover foi fechado antes de certas tarefas serem concluídas, a aguardar "
+"que termine."
 
 #: discover/main.cpp:34
 #, kde-format
 msgid "Directly open the specified application by its appstream:// URI."
 msgstr ""
-"Abre directamente a aplicação indicada de acordo com o seu URI do "
-"appstream://."
+"Abrir diretamente a aplicação especificada através do respetivo URI "
+"'appstream://'."
 
 #: discover/main.cpp:35
 #, kde-format
@@ -161,28 +169,28 @@ msgstr "Mostrar uma lista de elementos com uma dada categoria."
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
-"Abre o Discover num modo seguro. Os modos correspondem aos botões da barra "
-"de ferramentas."
+"Abrir o Discover num determinado modo. Os modos correspondem aos botões da "
+"barra de ferramentas."
 
 #: discover/main.cpp:38
 #, kde-format
 msgid "List all the available modes."
-msgstr "Mostra todos os modos disponíveis."
+msgstr "Listar todos os modos disponíveis."
 
 #: discover/main.cpp:39
 #, kde-format
 msgid "Local package file to install"
-msgstr "O ficheiro local do pacote a instalar"
+msgstr "Ficheiro local do pacote a instalar"
 
 #: discover/main.cpp:40
 #, kde-format
 msgid "List all the available backends."
-msgstr "Mostra todas as infra-estruturas disponíveis."
+msgstr "Listar todas as infraestruturas disponíveis."
 
 #: discover/main.cpp:41
 #, kde-format
 msgid "Search string."
-msgstr "Procurar pelo texto."
+msgstr "Procurar por texto."
 
 #: discover/main.cpp:42
 #, kde-format
@@ -1537,17 +1545,18 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:503
+#: discover/qml/UpdatesPage.qml:514
 #, kde-format
 msgid "Installing"
 msgstr "A Instalar"
 
-#: discover/qml/UpdatesPage.qml:536
+#: discover/qml/UpdatesPage.qml:530
 #, kde-format
-msgid "Update from:"
-msgstr "Actualizar de:"
+msgctxt "@info This update is from the following source"
+msgid "From:"
+msgstr ""
 
-#: discover/qml/UpdatesPage.qml:550
+#: discover/qml/UpdatesPage.qml:547
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1556,52 +1565,57 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:559
-#, kde-format
-msgid "More Information…"
+#, fuzzy, kde-format
+#| msgid "More Information…"
+msgctxt "@action:button minimize the length of this label"
+msgid "More Info…"
 msgstr "Mais Informações…"
 
-#: discover/qml/UpdatesPage.qml:587
+#: discover/qml/UpdatesPage.qml:607
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "A obter as actualizações…"
 
-#: discover/qml/UpdatesPage.qml:602
+#: discover/qml/UpdatesPage.qml:622
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Actualizações"
 
-#: discover/qml/UpdatesPage.qml:612
+#: discover/qml/UpdatesPage.qml:632
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:614
+#: discover/qml/UpdatesPage.qml:634
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:628 discover/qml/UpdatesPage.qml:635
-#: discover/qml/UpdatesPage.qml:642
+#: discover/qml/UpdatesPage.qml:648 discover/qml/UpdatesPage.qml:655
+#: discover/qml/UpdatesPage.qml:662
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Actualizado"
 
-#: discover/qml/UpdatesPage.qml:649
+#: discover/qml/UpdatesPage.qml:669
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Se deve procurar por actualizações"
 
-#: discover/qml/UpdatesPage.qml:656
+#: discover/qml/UpdatesPage.qml:676
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Hora da última actualização desconhecida"
+
+#~ msgid "Update from:"
+#~ msgstr "Actualizar de:"
 
 #, fuzzy
 #~| msgctxt "Update section name"

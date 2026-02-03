@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-27 00:45+0000\n"
+"POT-Creation-Date: 2026-02-03 00:48+0000\n"
 "PO-Revision-Date: 2026-01-21 08:53+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1494,17 +1494,22 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr "הפעלה מחדש והתקנת עדכונים"
 
-#: discover/qml/UpdatesPage.qml:503
+#: discover/qml/UpdatesPage.qml:514
 #, kde-format
 msgid "Installing"
 msgstr "בהתקנה"
 
-#: discover/qml/UpdatesPage.qml:536
-#, kde-format
-msgid "Update from:"
-msgstr "עדכון מתוך:"
+#: discover/qml/UpdatesPage.qml:530
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
+#| "\"Ubuntu\""
+#| msgid "From %1"
+msgctxt "@info This update is from the following source"
+msgid "From:"
+msgstr "מ־%1"
 
-#: discover/qml/UpdatesPage.qml:550
+#: discover/qml/UpdatesPage.qml:547
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1513,52 +1518,57 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:559
-#, kde-format
-msgid "More Information…"
+#, fuzzy, kde-format
+#| msgid "More Information…"
+msgctxt "@action:button minimize the length of this label"
+msgid "More Info…"
 msgstr "מידע נוסף…"
 
-#: discover/qml/UpdatesPage.qml:587
+#: discover/qml/UpdatesPage.qml:607
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "העדכונים מתקבלים…"
 
-#: discover/qml/UpdatesPage.qml:602
+#: discover/qml/UpdatesPage.qml:622
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "עדכונים"
 
-#: discover/qml/UpdatesPage.qml:612
+#: discover/qml/UpdatesPage.qml:632
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "עדכונים יותקנו לאחר הפעלת המחשב מחדש"
 
-#: discover/qml/UpdatesPage.qml:614
+#: discover/qml/UpdatesPage.qml:634
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr "אפשר להמשיך להשתמש במערכת אם טרם סיימת להתכונן להפעלתה מחדש."
 
-#: discover/qml/UpdatesPage.qml:628 discover/qml/UpdatesPage.qml:635
-#: discover/qml/UpdatesPage.qml:642
+#: discover/qml/UpdatesPage.qml:648 discover/qml/UpdatesPage.qml:655
+#: discover/qml/UpdatesPage.qml:662
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "עדכני"
 
-#: discover/qml/UpdatesPage.qml:649
+#: discover/qml/UpdatesPage.qml:669
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "צריך לבדוק אם יש עדכונים"
 
-#: discover/qml/UpdatesPage.qml:656
+#: discover/qml/UpdatesPage.qml:676
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "מועד העדכון האחרון לא ידוע"
+
+#~ msgid "Update from:"
+#~ msgstr "עדכון מתוך:"
 
 #~ msgid "&Updates (%1)"
 #~ msgstr "&עדכונים (%1)"

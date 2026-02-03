@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-27 00:45+0000\n"
+"POT-Creation-Date: 2026-02-03 00:48+0000\n"
 "PO-Revision-Date: 2025-11-07 17:54+0200\n"
 "Last-Translator: Toms Trasūns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -1521,17 +1521,22 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr "Pārstartēt un instalēt atjauninājumus"
 
-#: discover/qml/UpdatesPage.qml:503
+#: discover/qml/UpdatesPage.qml:514
 #, kde-format
 msgid "Installing"
 msgstr "Instalē"
 
-#: discover/qml/UpdatesPage.qml:536
-#, kde-format
-msgid "Update from:"
-msgstr "Atjauninājumu avots:"
+#: discover/qml/UpdatesPage.qml:530
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
+#| "\"Ubuntu\""
+#| msgid "From %1"
+msgctxt "@info This update is from the following source"
+msgid "From:"
+msgstr "No „%1“"
 
-#: discover/qml/UpdatesPage.qml:550
+#: discover/qml/UpdatesPage.qml:547
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1540,52 +1545,57 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:559
-#, kde-format
-msgid "More Information…"
+#, fuzzy, kde-format
+#| msgid "More Information…"
+msgctxt "@action:button minimize the length of this label"
+msgid "More Info…"
 msgstr "Vairāk informācijas…"
 
-#: discover/qml/UpdatesPage.qml:587
+#: discover/qml/UpdatesPage.qml:607
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Meklē atjauninājumus…"
 
-#: discover/qml/UpdatesPage.qml:602
+#: discover/qml/UpdatesPage.qml:622
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Atjauninājumi"
 
-#: discover/qml/UpdatesPage.qml:612
+#: discover/qml/UpdatesPage.qml:632
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "Atjauninājumi tiks instalēti pēc sistēmas pārstartēšanas"
 
-#: discover/qml/UpdatesPage.qml:614
+#: discover/qml/UpdatesPage.qml:634
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr "Varat turpināt lietot sistēmu, ja vēl nevēlaties to pārstartēt."
 
-#: discover/qml/UpdatesPage.qml:628 discover/qml/UpdatesPage.qml:635
-#: discover/qml/UpdatesPage.qml:642
+#: discover/qml/UpdatesPage.qml:648 discover/qml/UpdatesPage.qml:655
+#: discover/qml/UpdatesPage.qml:662
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Atjaunināta"
 
-#: discover/qml/UpdatesPage.qml:649
+#: discover/qml/UpdatesPage.qml:669
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Jāpārbauda atjauninājumi"
 
-#: discover/qml/UpdatesPage.qml:656
+#: discover/qml/UpdatesPage.qml:676
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Pēdējās atjaunināšanas laiks nav zināms"
+
+#~ msgid "Update from:"
+#~ msgstr "Atjauninājumu avots:"
 
 #~ msgid "&Updates (%1)"
 #~ msgstr "&Atjauninājumi (%1)"
