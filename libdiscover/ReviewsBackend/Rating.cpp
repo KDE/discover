@@ -149,7 +149,7 @@ double Rating::sortableRating() const
     return m_sortableRating;
 }
 
-std::vector<int> Rating::starCounts() const
+const std::vector<int> &Rating::starCounts() const
 {
     return m_starCounts;
 }

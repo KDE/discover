@@ -42,7 +42,7 @@ public:
     // The range of ratings is 0 to 5.
     // "star0" ratings seem to be completely unused (one can inspect the ratings file)
     // and can be ignored.
-    std::vector<int> starCounts() const;
+    const std::vector<int> &starCounts() const;
 
 private:
     QString m_packageName;
