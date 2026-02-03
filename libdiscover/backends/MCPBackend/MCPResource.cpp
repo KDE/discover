@@ -355,7 +355,11 @@ QJsonObject MCPResource::toJson() const
     QJsonObject transportObj;
     if (m_transport == TransportType::Stdio) {
         transportObj[u"command"_s] = m_command;
-        transportObj[u"args"_s] = QJsonArray::fromStringList(m_args);
+        QJsonArray argsArray;
+        for (const QString &arg : m_args) {
+            argsArray.append(arg);
+        }
+        transportObj[u"args"_s] = argsArray;
     } else if (m_transport == TransportType::SSE) {
         transportObj[u"url"_s] = m_sseUrl;
     }
@@ -386,10 +390,17 @@ QJsonObject MCPResource::toJson() const
     }
     obj[u"source"_s] = sourceObj;
 
-    obj[u"categories"_s] = QJsonArray::fromStringList(m_categories);
-    obj[u"capabilities"_s] = QJsonArray::fromStringList(m_capabilities);
-    obj[u"permissions"_s] = QJsonArray::fromStringList(m_permissions);
-    obj[u"tools"_s] = QJsonArray::fromStringList(m_tools);
+    // Convert QStringLists to QJsonArrays manually for Qt compatibility
+    QJsonArray categoriesArray, capabilitiesArray, permissionsArray, toolsArray;
+    for (const QString &cat : m_categories) categoriesArray.append(cat);
+    for (const QString &cap : m_capabilities) capabilitiesArray.append(cap);
+    for (const QString &perm : m_permissions) permissionsArray.append(perm);
+    for (const QString &tool : m_tools) toolsArray.append(tool);
+
+    obj[u"categories"_s] = categoriesArray;
+    obj[u"capabilities"_s] = capabilitiesArray;
+    obj[u"permissions"_s] = permissionsArray;
+    obj[u"tools"_s] = toolsArray;
 
     return obj;
 }

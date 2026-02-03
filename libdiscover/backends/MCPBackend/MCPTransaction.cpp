@@ -7,10 +7,13 @@
 #include "MCPTransaction.h"
 #include "MCPResource.h"
 
+#include <QDateTime>
 #include <QDebug>
 #include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QJsonDocument>
+#include <QJsonObject>
 #include <QStandardPaths>
 
 using namespace Qt::StringLiterals;
