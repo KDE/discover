@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    SPDX-FileCopyrightText: 2025 Yakup Atahanov
+    SPDX-License-Identifier: CC0-1.0
+-->
+<Menu>
+  <Menu>
+    <Name>MCP Servers</Name>
+    <Icon>network-server</Icon>
+    <Categories>
+      <Category>mcp</Category>
+    </Categories>
+
+    <Menu>
+      <Name>Databases</Name>
+      <Icon>server-database</Icon>
+      <Include>
+        <Category>mcp-database</Category>
+      </Include>
+    </Menu>
+
+    <Menu>
+      <Name>File Systems</Name>
+      <Icon>folder</Icon>
+      <Include>
+        <Category>mcp-filesystem</Category>
+      </Include>
+    </Menu>
+
+    <Menu>
+      <Name>Web &amp; APIs</Name>
+      <Icon>internet-services</Icon>
+      <Include>
+        <Category>mcp-web</Category>
+      </Include>
+    </Menu>
+
+    <Menu>
+      <Name>Search</Name>
+      <Icon>search</Icon>
+      <Include>
+        <Category>mcp-search</Category>
+      </Include>
+    </Menu>
+
+    <Menu>
+      <Name>Development</Name>
+      <Icon>applications-development</Icon>
+      <Include>
+        <Category>mcp-development</Category>
+      </Include>
+    </Menu>
+
+    <Menu>
+      <Name>AI Services</Name>
+      <Icon>preferences-system-network-server</Icon>
+      <Include>
+        <Category>mcp-ai</Category>
+      </Include>
+    </Menu>
+
+    <Menu>
+      <Name>Shell &amp; System</Name>
+      <Icon>utilities-terminal</Icon>
+      <Include>
+        <Category>mcp-shell</Category>
+      </Include>
+    </Menu>
+
+    <Menu>
+      <Name>Communication</Name>
+      <Icon>internet-mail</Icon>
+      <Include>
+        <Category>mcp-communication</Category>
+      </Include>
+    </Menu>
+
+    <Menu>
+      <Name>Media</Name>
+      <Icon>applications-multimedia</Icon>
+      <Include>
+        <Category>mcp-media</Category>
+      </Include>
+    </Menu>
+
+    <Menu>
+      <Name>Productivity</Name>
+      <Icon>applications-office</Icon>
+      <Include>
+        <Category>mcp-productivity</Category>
+      </Include>
+    </Menu>
+
+  </Menu>
+</Menu>

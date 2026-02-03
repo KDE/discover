@@ -1,0 +1,25 @@
+{
+  "id": "org.anthropic.mcp.filesystem",
+  "name": "Filesystem Server",
+  "summary": "Read and write access to local filesystem",
+  "description": "The Filesystem MCP server provides tools for reading, writing, and managing files on the local filesystem.",
+  "version": "1.2.0",
+  "author": "Anthropic",
+  "homepage": "https://github.com/anthropics/mcp-servers",
+  "icon": "folder",
+  "type": "stdio",
+  "transport": {
+    "command": "mcp-server-filesystem",
+    "args": ["--root", "/home"]
+  },
+  "source": {
+    "type": "npm",
+    "package": "@anthropic/mcp-server-filesystem"
+  },
+  "categories": ["mcp-filesystem", "mcp"],
+  "capabilities": ["read", "write", "list", "search"],
+  "permissions": ["filesystem:read", "filesystem:write"],
+  "tools": ["read_file", "write_file", "list_directory", "search_files"],
+  "installedVersion": "1.2.0",
+  "installedDate": "2025-02-03T12:00:00Z"
+}

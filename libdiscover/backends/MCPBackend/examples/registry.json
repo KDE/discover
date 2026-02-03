@@ -1,0 +1,207 @@
+{
+  "version": "1.0",
+  "updated": "2025-02-03T00:00:00Z",
+  "servers": [
+    {
+      "id": "org.anthropic.mcp.filesystem",
+      "name": "Filesystem Server",
+      "summary": "Read and write access to local filesystem",
+      "description": "The Filesystem MCP server provides tools for reading, writing, and managing files on the local filesystem. It supports operations like listing directories, reading file contents, creating files, and more.\n\nThis server is essential for any LLM-based workflow that needs to interact with local files.",
+      "version": "1.2.0",
+      "author": "Anthropic",
+      "homepage": "https://github.com/anthropics/mcp-servers",
+      "bugUrl": "https://github.com/anthropics/mcp-servers/issues",
+      "icon": "folder",
+      "type": "stdio",
+      "transport": {
+        "command": "mcp-server-filesystem",
+        "args": ["--root", "/home"]
+      },
+      "source": {
+        "type": "npm",
+        "package": "@anthropic/mcp-server-filesystem"
+      },
+      "categories": ["mcp-filesystem", "mcp"],
+      "capabilities": ["read", "write", "list", "search"],
+      "permissions": ["filesystem:read", "filesystem:write"],
+      "tools": [
+        {"name": "read_file", "description": "Read contents of a file"},
+        {"name": "write_file", "description": "Write content to a file"},
+        {"name": "list_directory", "description": "List files in a directory"},
+        {"name": "search_files", "description": "Search for files matching a pattern"}
+      ],
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      },
+      "releaseDate": "2025-01-15",
+      "size": 1048576
+    },
+    {
+      "id": "com.github.mcp.server",
+      "name": "GitHub Server",
+      "summary": "Interact with GitHub repositories, issues, and pull requests",
+      "description": "The GitHub MCP server provides comprehensive access to GitHub's API, allowing LLMs to interact with repositories, manage issues and pull requests, review code, and more.\n\nRequires a GitHub personal access token for authentication.",
+      "version": "2.1.0",
+      "author": "GitHub Community",
+      "homepage": "https://github.com/github/mcp-github",
+      "bugUrl": "https://github.com/github/mcp-github/issues",
+      "icon": "git",
+      "type": "stdio",
+      "transport": {
+        "command": "mcp-github",
+        "args": []
+      },
+      "source": {
+        "type": "npm",
+        "package": "@github/mcp-server"
+      },
+      "categories": ["mcp-development", "mcp-web", "mcp"],
+      "capabilities": ["repos", "issues", "pull_requests", "code_review"],
+      "permissions": ["network:github.com"],
+      "tools": [
+        {"name": "list_repos", "description": "List repositories for a user/org"},
+        {"name": "get_file", "description": "Get file contents from a repo"},
+        {"name": "create_issue", "description": "Create a new issue"},
+        {"name": "create_pr", "description": "Create a pull request"},
+        {"name": "review_pr", "description": "Review a pull request"}
+      ],
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      },
+      "releaseDate": "2025-01-20",
+      "size": 2097152
+    },
+    {
+      "id": "com.brave.mcp.search",
+      "name": "Brave Search",
+      "summary": "Web search powered by Brave Search API",
+      "description": "The Brave Search MCP server provides web search capabilities using the Brave Search API. It allows LLMs to search the web for current information, news, and more.\n\nRequires a Brave Search API key.",
+      "version": "1.0.5",
+      "author": "Brave Software",
+      "homepage": "https://search.brave.com/",
+      "icon": "search",
+      "type": "stdio",
+      "transport": {
+        "command": "mcp-brave-search",
+        "args": []
+      },
+      "source": {
+        "type": "npm",
+        "package": "@anthropic/mcp-server-brave-search"
+      },
+      "categories": ["mcp-search", "mcp-web", "mcp"],
+      "capabilities": ["web_search", "news_search"],
+      "permissions": ["network:api.search.brave.com"],
+      "tools": [
+        {"name": "web_search", "description": "Search the web"},
+        {"name": "news_search", "description": "Search for news articles"}
+      ],
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      },
+      "releaseDate": "2025-01-10",
+      "size": 524288
+    },
+    {
+      "id": "io.postgres.mcp",
+      "name": "PostgreSQL Server",
+      "summary": "Query and manage PostgreSQL databases",
+      "description": "The PostgreSQL MCP server allows LLMs to interact with PostgreSQL databases. It supports querying, schema inspection, and data manipulation.\n\nConnection details are configured via environment variables or configuration file.",
+      "version": "1.3.0",
+      "author": "MCP Community",
+      "homepage": "https://github.com/mcp-community/mcp-postgres",
+      "icon": "server-database",
+      "type": "stdio",
+      "transport": {
+        "command": "mcp-postgres",
+        "args": []
+      },
+      "source": {
+        "type": "pip",
+        "package": "mcp-postgres"
+      },
+      "categories": ["mcp-database", "mcp"],
+      "capabilities": ["query", "schema", "write"],
+      "permissions": ["database:postgres"],
+      "tools": [
+        {"name": "query", "description": "Execute a SQL query"},
+        {"name": "list_tables", "description": "List tables in the database"},
+        {"name": "describe_table", "description": "Get table schema"},
+        {"name": "insert", "description": "Insert rows into a table"}
+      ],
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://opensource.org/licenses/Apache-2.0"
+      },
+      "releaseDate": "2025-01-25",
+      "size": 1572864
+    },
+    {
+      "id": "org.jarvis.shell-mcp",
+      "name": "Shell MCP",
+      "summary": "Execute shell commands securely",
+      "description": "The Shell MCP server from Project JARVIS provides secure shell command execution capabilities. It includes safety features like command whitelisting and sandboxing.\n\nDesigned for integration with the JARVIS orchestration layer.",
+      "version": "1.0.0",
+      "author": "Yakup Atahanov",
+      "homepage": "https://github.com/YakupAtahanov/Project-JARVIS",
+      "bugUrl": "https://github.com/YakupAtahanov/Project-JARVIS/issues",
+      "icon": "utilities-terminal",
+      "type": "stdio",
+      "transport": {
+        "command": "shell-mcp",
+        "args": ["--safe-mode"]
+      },
+      "source": {
+        "type": "pip",
+        "package": "jarvis-shell-mcp"
+      },
+      "categories": ["mcp-shell", "mcp"],
+      "capabilities": ["execute", "script"],
+      "permissions": ["shell:execute"],
+      "tools": [
+        {"name": "execute", "description": "Execute a shell command"},
+        {"name": "run_script", "description": "Run a shell script"}
+      ],
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      },
+      "releaseDate": "2025-02-01",
+      "size": 262144
+    },
+    {
+      "id": "com.example.remote-api",
+      "name": "Remote API Server (SSE)",
+      "summary": "Example SSE-based remote MCP server",
+      "description": "This is an example of a remote MCP server that uses Server-Sent Events (SSE) for communication. It demonstrates how to connect to cloud-hosted MCP servers.",
+      "version": "1.0.0",
+      "author": "Example Inc",
+      "homepage": "https://example.com/mcp",
+      "icon": "network-server",
+      "type": "sse",
+      "transport": {
+        "url": "https://api.example.com/mcp/sse",
+        "auth": "api_key"
+      },
+      "source": {
+        "type": "binary",
+        "url": ""
+      },
+      "categories": ["mcp-web", "mcp-ai", "mcp"],
+      "capabilities": ["remote", "cloud"],
+      "permissions": ["network:api.example.com"],
+      "tools": [
+        {"name": "remote_tool", "description": "A remote tool example"}
+      ],
+      "license": {
+        "name": "Proprietary",
+        "url": "https://example.com/license"
+      },
+      "releaseDate": "2025-01-30",
+      "size": 0
+    }
+  ]
+}

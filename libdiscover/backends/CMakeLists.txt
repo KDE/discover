@@ -97,3 +97,8 @@ option(BUILD_AlpineApkBackend "Build Alpine APK support." "ON")
 if(BUILD_AlpineApkBackend AND ApkQt_FOUND)
     add_subdirectory(AlpineApkBackend)
 endif()
+
+option(BUILD_MCPBackend "Build MCP (Model Context Protocol) server support." "ON")
+if(BUILD_MCPBackend)
+    add_subdirectory(MCPBackend)
+endif()
