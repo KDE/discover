@@ -28,12 +28,16 @@ class QNetworkReply;
  * - /usr/share/mcp/installed/ (system-wide)
  * - ~/.local/share/mcp/installed/ (user-specific)
  *
- * The registry catalog is fetched from configurable online sources.
+ * Registry sources are configured in:
+ * - ~/.config/mcp/sources.list (user)
+ * - /etc/mcp/sources.list (system)
+ *
+ * Each line in sources.list is a URL to a registry JSON file.
  */
 class MCPBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
-    Q_PROPERTY(QString registryUrl READ registryUrl WRITE setRegistryUrl NOTIFY registryUrlChanged)
+    Q_PROPERTY(QStringList registrySources READ registrySources NOTIFY registrySourcesChanged)
 
 public:
     explicit MCPBackend(QObject *parent = nullptr);
@@ -51,26 +55,30 @@ public:
     Transaction *installApplication(AbstractResource *app) override;
     Transaction *removeApplication(AbstractResource *app) override;
     void checkForUpdates() override;
-    bool hasApplications() const override { return true; }
+    bool hasApplications() const override { return !m_resources.isEmpty(); }
     InlineMessage *explainDysfunction() const override;
 
     // MCP-specific methods
-    QString registryUrl() const { return m_registryUrl; }
-    void setRegistryUrl(const QString &url);
+    QStringList registrySources() const { return m_registrySources; }
+    void addRegistrySource(const QString &url);
+    void removeRegistrySource(const QString &url);
 
     // Get resource by ID
     MCPResource *resourceById(const QString &id) const;
 
 Q_SIGNALS:
-    void registryUrlChanged();
+    void registrySourcesChanged();
 
 private Q_SLOTS:
     void onRegistryFetched(QNetworkReply *reply);
 
 private:
+    void loadSourcesConfig();
+    void saveSourcesConfig();
     void loadInstalledServers();
-    void loadRegistryCatalog();
-    void fetchOnlineRegistry();
+    void loadCachedRegistries();
+    void fetchOnlineRegistries();
+    void fetchNextRegistry();
     void parseRegistryData(const QJsonArray &servers);
     void addResource(MCPResource *resource);
     MCPResource *createResourceFromJson(const QJsonObject &data);
@@ -79,10 +87,8 @@ private:
     StandardBackendUpdater *m_updater;
     QNetworkAccessManager *m_networkManager;
 
-    QString m_registryUrl;
+    QStringList m_registrySources;
+    int m_currentFetchIndex = 0;
     bool m_fetching = false;
     int m_fetchProgress = 100;
-
-    // Default registry URL - could be configured
-    static constexpr const char *DEFAULT_REGISTRY_URL = "https://raw.githubusercontent.com/YakupAtahanov/mcp-registry/main/registry.json";
 };

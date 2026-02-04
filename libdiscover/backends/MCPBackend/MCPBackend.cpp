@@ -24,6 +24,7 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QStandardPaths>
+#include <QTextStream>
 #include <QTimer>
 
 DISCOVER_BACKEND_PLUGIN(MCPBackend)
@@ -34,21 +35,25 @@ MCPBackend::MCPBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_networkManager(new QNetworkAccessManager(this))
-    , m_registryUrl(QString::fromLatin1(DEFAULT_REGISTRY_URL))
 {
     connect(m_networkManager, &QNetworkAccessManager::finished,
             this, &MCPBackend::onRegistryFetched);
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged,
             this, &MCPBackend::updatesCountChanged);
 
+    // Load registry sources from config
+    loadSourcesConfig();
+
     // Load installed servers first
     loadInstalledServers();
 
     // Load any cached registry data
-    loadRegistryCatalog();
+    loadCachedRegistries();
 
-    // Fetch fresh registry data in the background
-    QTimer::singleShot(1000, this, &MCPBackend::fetchOnlineRegistry);
+    // Fetch fresh registry data in the background (if sources configured)
+    if (!m_registrySources.isEmpty()) {
+        QTimer::singleShot(1000, this, &MCPBackend::fetchOnlineRegistries);
+    }
 }
 
 MCPBackend::~MCPBackend()
@@ -78,7 +83,6 @@ AbstractBackendUpdater *MCPBackend::backendUpdater() const
 
 AbstractReviewsBackend *MCPBackend::reviewsBackend() const
 {
-    // No reviews backend for now
     return nullptr;
 }
 
@@ -108,16 +112,13 @@ ResultsStream *MCPBackend::search(const AbstractResourcesBackend::Filters &filte
 
         // Category filter
         if (filter.category) {
-            // Check if the resource matches any of the category's include filters
             bool categoryMatch = false;
             const auto categoryName = filter.category->name().toLower();
 
-            // Check direct category match
             if (resource->hasCategory(categoryName)) {
                 categoryMatch = true;
             }
 
-            // Also check for "mcp" category
             if (categoryName == u"mcp servers"_s || categoryName == u"mcp"_s) {
                 categoryMatch = true;
             }
@@ -171,37 +172,42 @@ Transaction *MCPBackend::removeApplication(AbstractResource *app)
 
 void MCPBackend::checkForUpdates()
 {
-    if (m_fetching) {
+    if (m_fetching || m_registrySources.isEmpty()) {
         return;
     }
 
     m_fetching = true;
     m_fetchProgress = 0;
+    m_currentFetchIndex = 0;
     Q_EMIT fetchingUpdatesProgressChanged();
 
-    fetchOnlineRegistry();
+    fetchOnlineRegistries();
 }
 
 InlineMessage *MCPBackend::explainDysfunction() const
 {
-    if (m_resources.isEmpty()) {
-        return new InlineMessage(
-            InlineMessage::Warning,
-            u"dialog-warning"_s,
-            i18n("No MCP servers available. Check your internet connection or registry URL.")
-        );
-    }
+    // Don't report dysfunction - just silently have no content if no sources
+    // This prevents blocking other backends
     return nullptr;
 }
 
-void MCPBackend::setRegistryUrl(const QString &url)
+void MCPBackend::addRegistrySource(const QString &url)
 {
-    if (m_registryUrl != url) {
-        m_registryUrl = url;
-        Q_EMIT registryUrlChanged();
+    if (!m_registrySources.contains(url)) {
+        m_registrySources.append(url);
+        saveSourcesConfig();
+        Q_EMIT registrySourcesChanged();
 
-        // Refetch with new URL
-        fetchOnlineRegistry();
+        // Fetch from the new source
+        fetchOnlineRegistries();
+    }
+}
+
+void MCPBackend::removeRegistrySource(const QString &url)
+{
+    if (m_registrySources.removeOne(url)) {
+        saveSourcesConfig();
+        Q_EMIT registrySourcesChanged();
     }
 }
 
@@ -210,13 +216,66 @@ MCPResource *MCPBackend::resourceById(const QString &id) const
     return m_resources.value(id);
 }
 
+void MCPBackend::loadSourcesConfig()
+{
+    m_registrySources.clear();
+
+    // Load from user config first
+    const QString userConfigDir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+    const QString userSourcesPath = userConfigDir + u"/mcp/sources.list"_s;
+
+    // Then system config
+    const QStringList configDirs = {
+        userSourcesPath,
+        u"/etc/mcp/sources.list"_s
+    };
+
+    for (const QString &configPath : configDirs) {
+        QFile file(configPath);
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QTextStream stream(&file);
+            while (!stream.atEnd()) {
+                QString line = stream.readLine().trimmed();
+                // Skip empty lines and comments
+                if (line.isEmpty() || line.startsWith(u'#')) {
+                    continue;
+                }
+                if (!m_registrySources.contains(line)) {
+                    m_registrySources.append(line);
+                }
+            }
+            file.close();
+        }
+    }
+
+    qDebug() << "Loaded" << m_registrySources.count() << "MCP registry sources";
+}
+
+void MCPBackend::saveSourcesConfig()
+{
+    const QString userConfigDir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+    const QString mcpConfigDir = userConfigDir + u"/mcp"_s;
+    const QString sourcesPath = mcpConfigDir + u"/sources.list"_s;
+
+    QDir().mkpath(mcpConfigDir);
+
+    QFile file(sourcesPath);
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QTextStream stream(&file);
+        stream << "# MCP Registry Sources\n";
+        stream << "# Each line is a URL to a registry JSON file\n\n";
+        for (const QString &source : m_registrySources) {
+            stream << source << "\n";
+        }
+        file.close();
+    }
+}
+
 void MCPBackend::loadInstalledServers()
 {
-    // Check user-specific installation directory
     const QString userDataDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
     const QString userMcpDir = userDataDir + u"/mcp/installed"_s;
 
-    // Check system-wide installation directory
     const QStringList systemDirs = QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
 
     QStringList searchDirs;
@@ -256,33 +315,59 @@ void MCPBackend::loadInstalledServers()
     qDebug() << "Loaded" << m_resources.count() << "installed MCP servers";
 }
 
-void MCPBackend::loadRegistryCatalog()
+void MCPBackend::loadCachedRegistries()
 {
-    // Load cached registry from disk
     const QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
-    const QString cachePath = cacheDir + u"/mcp-registry.json"_s;
+    const QDir dir(cacheDir + u"/mcp-registries"_s);
 
-    QFile cacheFile(cachePath);
-    if (cacheFile.open(QIODevice::ReadOnly)) {
-        const QJsonDocument doc = QJsonDocument::fromJson(cacheFile.readAll());
-        cacheFile.close();
+    if (!dir.exists()) {
+        return;
+    }
 
-        if (doc.isObject()) {
-            const QJsonArray servers = doc.object()[u"servers"_s].toArray();
-            parseRegistryData(servers);
+    const QStringList cacheFiles = dir.entryList({u"*.json"_s}, QDir::Files);
+    for (const QString &cacheFile : cacheFiles) {
+        QFile file(dir.absoluteFilePath(cacheFile));
+        if (file.open(QIODevice::ReadOnly)) {
+            const QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+            file.close();
+
+            if (doc.isObject()) {
+                const QJsonArray servers = doc.object()[u"servers"_s].toArray();
+                parseRegistryData(servers);
+            }
         }
     }
 }
 
-void MCPBackend::fetchOnlineRegistry()
+void MCPBackend::fetchOnlineRegistries()
 {
-    if (m_registryUrl.isEmpty()) {
+    if (m_registrySources.isEmpty()) {
+        m_fetching = false;
+        m_fetchProgress = 100;
+        Q_EMIT fetchingUpdatesProgressChanged();
         return;
     }
 
-    qDebug() << "Fetching MCP registry from:" << m_registryUrl;
+    m_currentFetchIndex = 0;
+    m_fetching = true;
+    fetchNextRegistry();
+}
 
-    const QUrl url(m_registryUrl);
+void MCPBackend::fetchNextRegistry()
+{
+    if (m_currentFetchIndex >= m_registrySources.count()) {
+        // Done fetching all registries
+        m_fetching = false;
+        m_fetchProgress = 100;
+        Q_EMIT fetchingUpdatesProgressChanged();
+        Q_EMIT contentsChanged();
+        return;
+    }
+
+    const QString &sourceUrl = m_registrySources.at(m_currentFetchIndex);
+    qDebug() << "Fetching MCP registry:" << sourceUrl;
+
+    const QUrl url(sourceUrl);
     QNetworkRequest request(url);
     request.setAttribute(QNetworkRequest::RedirectPolicyAttribute,
                         QNetworkRequest::NoLessSafeRedirectPolicy);
@@ -290,7 +375,9 @@ void MCPBackend::fetchOnlineRegistry()
                      u"KDE Discover MCP Backend/1.0"_s);
 
     m_networkManager->get(request);
-    m_fetchProgress = 30;
+
+    // Update progress
+    m_fetchProgress = (m_currentFetchIndex * 100) / m_registrySources.count();
     Q_EMIT fetchingUpdatesProgressChanged();
 }
 
@@ -298,49 +385,41 @@ void MCPBackend::onRegistryFetched(QNetworkReply *reply)
 {
     reply->deleteLater();
 
-    m_fetchProgress = 70;
-    Q_EMIT fetchingUpdatesProgressChanged();
+    const QString sourceUrl = reply->url().toString();
 
-    if (reply->error() != QNetworkReply::NoError) {
-        qWarning() << "Failed to fetch MCP registry:" << reply->errorString();
-        m_fetching = false;
-        m_fetchProgress = 100;
-        Q_EMIT fetchingUpdatesProgressChanged();
-        return;
+    if (reply->error() == QNetworkReply::NoError) {
+        const QByteArray data = reply->readAll();
+        const QJsonDocument doc = QJsonDocument::fromJson(data);
+
+        if (doc.isObject()) {
+            // Cache the registry data
+            const QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+            const QString registryCacheDir = cacheDir + u"/mcp-registries"_s;
+            QDir().mkpath(registryCacheDir);
+
+            // Use URL hash as filename
+            const QString cacheFileName = QString::number(qHash(sourceUrl)) + u".json"_s;
+            const QString cachePath = registryCacheDir + u"/"_s + cacheFileName;
+
+            QFile cacheFile(cachePath);
+            if (cacheFile.open(QIODevice::WriteOnly)) {
+                cacheFile.write(data);
+                cacheFile.close();
+            }
+
+            // Parse the registry
+            const QJsonArray servers = doc.object()[u"servers"_s].toArray();
+            parseRegistryData(servers);
+
+            qDebug() << "Loaded" << servers.count() << "MCP servers from" << sourceUrl;
+        }
+    } else {
+        qWarning() << "Failed to fetch MCP registry" << sourceUrl << ":" << reply->errorString();
     }
 
-    const QByteArray data = reply->readAll();
-    const QJsonDocument doc = QJsonDocument::fromJson(data);
-
-    if (!doc.isObject()) {
-        qWarning() << "Invalid MCP registry format";
-        m_fetching = false;
-        m_fetchProgress = 100;
-        Q_EMIT fetchingUpdatesProgressChanged();
-        return;
-    }
-
-    // Cache the registry data
-    const QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
-    QDir().mkpath(cacheDir);
-    const QString cachePath = cacheDir + u"/mcp-registry.json"_s;
-
-    QFile cacheFile(cachePath);
-    if (cacheFile.open(QIODevice::WriteOnly)) {
-        cacheFile.write(data);
-        cacheFile.close();
-    }
-
-    // Parse the registry
-    const QJsonArray servers = doc.object()[u"servers"_s].toArray();
-    parseRegistryData(servers);
-
-    m_fetching = false;
-    m_fetchProgress = 100;
-    Q_EMIT fetchingUpdatesProgressChanged();
-    Q_EMIT contentsChanged();
-
-    qDebug() << "Loaded" << servers.count() << "MCP servers from registry";
+    // Fetch next registry
+    m_currentFetchIndex++;
+    fetchNextRegistry();
 }
 
 void MCPBackend::parseRegistryData(const QJsonArray &servers)
@@ -353,7 +432,6 @@ void MCPBackend::parseRegistryData(const QJsonArray &servers)
         const QJsonObject serverObj = serverValue.toObject();
         const QString id = serverObj[u"id"_s].toString();
 
-        // Check if we already have this resource (installed)
         MCPResource *existing = m_resources.value(id);
         if (existing) {
             // Check for updates
@@ -365,7 +443,6 @@ void MCPBackend::parseRegistryData(const QJsonArray &servers)
             continue;
         }
 
-        // Create new resource
         MCPResource *resource = createResourceFromJson(serverObj);
         if (resource) {
             addResource(resource);
@@ -377,7 +454,6 @@ void MCPBackend::addResource(MCPResource *resource)
 {
     const QString id = resource->packageName();
     if (m_resources.contains(id)) {
-        // Resource already exists, don't overwrite
         delete resource;
         return;
     }
