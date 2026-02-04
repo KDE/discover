@@ -282,7 +282,8 @@ void MCPBackend::fetchOnlineRegistry()
 
     qDebug() << "Fetching MCP registry from:" << m_registryUrl;
 
-    QNetworkRequest request(QUrl(m_registryUrl));
+    const QUrl url(m_registryUrl);
+    QNetworkRequest request(url);
     request.setAttribute(QNetworkRequest::RedirectPolicyAttribute,
                         QNetworkRequest::NoLessSafeRedirectPolicy);
     request.setHeader(QNetworkRequest::UserAgentHeader,

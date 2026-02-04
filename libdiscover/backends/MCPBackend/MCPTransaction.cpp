@@ -5,6 +5,7 @@
  */
 
 #include "MCPTransaction.h"
+#include "MCPBackend.h"
 #include "MCPResource.h"
 
 #include <QDateTime>
