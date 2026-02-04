@@ -7,14 +7,14 @@
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
 # SPDX-FileCopyrightText: 2012, 2025, 2026 Marcus Gama <marcus.gama@gmail.com>
 # Blumen Herzenschein <herzenschein@gmail.com>, 2020, 2021.
-# SPDX-FileCopyrightText: 2025 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
+# SPDX-FileCopyrightText: 2025, 2026 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-03 00:48+0000\n"
-"PO-Revision-Date: 2026-01-21 06:42-0300\n"
-"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
+"PO-Revision-Date: 2026-02-03 00:50-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -1526,14 +1526,10 @@ msgid "Installing"
 msgstr "Instalando"
 
 #: discover/qml/UpdatesPage.qml:530
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-#| "\"Ubuntu\""
-#| msgid "From %1"
+#, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "De %1"
+msgstr "De:"
 
 #: discover/qml/UpdatesPage.qml:547
 #, kde-format
@@ -1544,8 +1540,7 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:559
-#, fuzzy, kde-format
-#| msgid "More Information…"
+#, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "Mais informações…"

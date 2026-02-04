@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-03 00:48+0000\n"
-"PO-Revision-Date: 2026-01-22 01:25+0100\n"
+"PO-Revision-Date: 2026-02-03 22:55+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1524,14 +1524,10 @@ msgid "Installing"
 msgstr "Instalando"
 
 #: discover/qml/UpdatesPage.qml:530
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-#| "\"Ubuntu\""
-#| msgid "From %1"
+#, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "De %1"
+msgstr "De:"
 
 #: discover/qml/UpdatesPage.qml:547
 #, kde-format
@@ -1542,8 +1538,7 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:559
-#, fuzzy, kde-format
-#| msgid "More Information…"
+#, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "Más información…"
@@ -1591,6 +1586,3 @@ msgstr "Se deben comprobar las actualizaciones"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tiempo desconocido desde la última actualización"
-
-#~ msgid "Update from:"
-#~ msgstr "Actualizar desde:"

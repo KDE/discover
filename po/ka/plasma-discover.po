@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-03 00:48+0000\n"
-"PO-Revision-Date: 2026-01-21 04:37+0100\n"
+"PO-Revision-Date: 2026-02-03 05:28+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1506,14 +1506,10 @@ msgid "Installing"
 msgstr "დაყენება"
 
 #: discover/qml/UpdatesPage.qml:530
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-#| "\"Ubuntu\""
-#| msgid "From %1"
+#, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "%1-დან"
+msgstr "საიდან:"
 
 #: discover/qml/UpdatesPage.qml:547
 #, kde-format
@@ -1524,8 +1520,7 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:559
-#, fuzzy, kde-format
-#| msgid "More Information…"
+#, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "მეტი ინფორმაცია…"
