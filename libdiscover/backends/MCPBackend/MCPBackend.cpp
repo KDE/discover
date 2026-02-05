@@ -7,14 +7,15 @@
 #include "MCPBackend.h"
 #include "MCPResource.h"
 #include "MCPTransaction.h"
+#include "libdiscover_backend_mcp_debug.h"
 
 #include <resources/StandardBackendUpdater.h>
 #include <Transaction/Transaction.h>
+#include <Category/Category.h>
 
 #include <KLocalizedString>
 #include <KPluginFactory>
 
-#include <QDebug>
 #include <QDir>
 #include <QFile>
 #include <QJsonArray>
@@ -36,10 +37,15 @@ MCPBackend::MCPBackend(QObject *parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_networkManager(new QNetworkAccessManager(this))
 {
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Initializing MCP backend";
+
     connect(m_networkManager, &QNetworkAccessManager::finished,
             this, &MCPBackend::onRegistryFetched);
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged,
             this, &MCPBackend::updatesCountChanged);
+
+    // Set up categories for UI navigation
+    setupCategories();
 
     // Load registry sources from config
     loadSourcesConfig();
@@ -54,6 +60,10 @@ MCPBackend::MCPBackend(QObject *parent)
     if (!m_registrySources.isEmpty()) {
         QTimer::singleShot(1000, this, &MCPBackend::fetchOnlineRegistries);
     }
+
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Initialization complete,"
+        << m_resources.count() << "resources loaded,"
+        << m_registrySources.count() << "registry sources configured";
 }
 
 MCPBackend::~MCPBackend()
@@ -216,6 +226,37 @@ MCPResource *MCPBackend::resourceById(const QString &id) const
     return m_resources.value(id);
 }
 
+void MCPBackend::setupCategories()
+{
+    const QSet<QString> backendName = {name()};
+
+    // Create an OR filter matching all MCP category names
+    QList<CategoryFilter> mcpFilters;
+    const QStringList mcpCategoryNames = {
+        u"mcp"_s, u"mcp-database"_s, u"mcp-filesystem"_s,
+        u"mcp-web"_s, u"mcp-search"_s, u"mcp-development"_s,
+        u"mcp-ai"_s, u"mcp-shell"_s, u"mcp-communication"_s,
+        u"mcp-media"_s, u"mcp-productivity"_s
+    };
+    for (const QString &catName : mcpCategoryNames) {
+        mcpFilters.append({CategoryFilter::CategoryNameFilter, catName});
+    }
+    CategoryFilter mcpFilter;
+    mcpFilter.type = CategoryFilter::OrFilter;
+    mcpFilter.value = mcpFilters;
+
+    auto mcpCategory = std::make_shared<Category>(
+        i18n("MCP Servers"),
+        QStringLiteral("network-server"),
+        mcpFilter,
+        backendName,
+        QList<std::shared_ptr<Category>>{});
+
+    m_rootCategories = {mcpCategory};
+
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Categories set up with" << mcpCategoryNames.count() << "filter categories";
+}
+
 void MCPBackend::loadSourcesConfig()
 {
     m_registrySources.clear();
@@ -248,7 +289,7 @@ void MCPBackend::loadSourcesConfig()
         }
     }
 
-    qDebug() << "Loaded" << m_registrySources.count() << "MCP registry sources";
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Loaded" << m_registrySources.count() << "registry sources";
 }
 
 void MCPBackend::saveSourcesConfig()
@@ -312,7 +353,7 @@ void MCPBackend::loadInstalledServers()
         }
     }
 
-    qDebug() << "Loaded" << m_resources.count() << "installed MCP servers";
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Loaded" << m_resources.count() << "installed servers";
 }
 
 void MCPBackend::loadCachedRegistries()
@@ -365,7 +406,7 @@ void MCPBackend::fetchNextRegistry()
     }
 
     const QString &sourceUrl = m_registrySources.at(m_currentFetchIndex);
-    qDebug() << "Fetching MCP registry:" << sourceUrl;
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Fetching registry:" << sourceUrl;
 
     const QUrl url(sourceUrl);
     QNetworkRequest request(url);
@@ -411,10 +452,10 @@ void MCPBackend::onRegistryFetched(QNetworkReply *reply)
             const QJsonArray servers = doc.object()[u"servers"_s].toArray();
             parseRegistryData(servers);
 
-            qDebug() << "Loaded" << servers.count() << "MCP servers from" << sourceUrl;
+            qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Loaded" << servers.count() << "servers from" << sourceUrl;
         }
     } else {
-        qWarning() << "Failed to fetch MCP registry" << sourceUrl << ":" << reply->errorString();
+        qCWarning(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Failed to fetch registry" << sourceUrl << ":" << reply->errorString();
     }
 
     // Fetch next registry

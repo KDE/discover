@@ -7,6 +7,7 @@
 #pragma once
 
 #include <resources/AbstractResourcesBackend.h>
+#include <Category/Category.h>
 #include <QHash>
 #include <QJsonArray>
 
@@ -55,7 +56,8 @@ public:
     Transaction *installApplication(AbstractResource *app) override;
     Transaction *removeApplication(AbstractResource *app) override;
     void checkForUpdates() override;
-    bool hasApplications() const override { return !m_resources.isEmpty(); }
+    bool hasApplications() const override { return true; }
+    QList<std::shared_ptr<Category>> category() const override { return m_rootCategories; }
     InlineMessage *explainDysfunction() const override;
 
     // MCP-specific methods
@@ -82,8 +84,10 @@ private:
     void parseRegistryData(const QJsonArray &servers);
     void addResource(MCPResource *resource);
     MCPResource *createResourceFromJson(const QJsonObject &data);
+    void setupCategories();
 
     QHash<QString, MCPResource *> m_resources;
+    QList<std::shared_ptr<Category>> m_rootCategories;
     StandardBackendUpdater *m_updater;
     QNetworkAccessManager *m_networkManager;
 

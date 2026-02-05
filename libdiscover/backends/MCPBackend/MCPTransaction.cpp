@@ -7,9 +7,9 @@
 #include "MCPTransaction.h"
 #include "MCPBackend.h"
 #include "MCPResource.h"
+#include "libdiscover_backend_mcp_debug.h"
 
 #include <QDateTime>
-#include <QDebug>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -136,7 +136,7 @@ void MCPTransaction::installNpmPackage()
     QStringList args;
     args << u"install"_s << u"-g"_s << package;
 
-    qDebug() << "Installing npm package:" << package;
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPTransaction: Installing npm package:" << package;
     m_process->start(u"npm"_s, args);
 }
 
@@ -159,7 +159,7 @@ void MCPTransaction::installPipPackage()
     QStringList args;
     args << u"install"_s << u"--user"_s << package;
 
-    qDebug() << "Installing pip package:" << package;
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPTransaction: Installing pip package:" << package;
     m_process->start(u"pip"_s, args);
 }
 
@@ -203,7 +203,7 @@ void MCPTransaction::installContainer()
     QStringList args;
     args << u"pull"_s << image;
 
-    qDebug() << "Pulling container image:" << image;
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPTransaction: Pulling container image:" << image;
     m_process->start(u"podman"_s, args);
 }
 
@@ -219,7 +219,7 @@ void MCPTransaction::removeNpmPackage()
     QStringList args;
     args << u"uninstall"_s << u"-g"_s << package;
 
-    qDebug() << "Removing npm package:" << package;
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPTransaction: Removing npm package:" << package;
     m_process->start(u"npm"_s, args);
 }
 
@@ -235,7 +235,7 @@ void MCPTransaction::removePipPackage()
     QStringList args;
     args << u"uninstall"_s << u"-y"_s << package;
 
-    qDebug() << "Removing pip package:" << package;
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPTransaction: Removing pip package:" << package;
     m_process->start(u"pip"_s, args);
 }
 
@@ -258,7 +258,7 @@ void MCPTransaction::removeContainer()
     QStringList args;
     args << u"rmi"_s << image;
 
-    qDebug() << "Removing container image:" << image;
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPTransaction: Removing container image:" << image;
     m_process->start(u"podman"_s, args);
 }
 
@@ -348,9 +348,9 @@ void MCPTransaction::writeManifest()
         file.write(doc.toJson(QJsonDocument::Indented));
         file.close();
 
-        qDebug() << "Wrote manifest to:" << manifestPath;
+        qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPTransaction: Wrote manifest to:" << manifestPath;
     } else {
-        qWarning() << "Failed to write manifest:" << manifestPath;
+        qCWarning(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPTransaction: Failed to write manifest:" << manifestPath;
     }
 }
 
@@ -359,7 +359,7 @@ void MCPTransaction::removeManifest()
     const QString manifestPath = m_resource->manifestPath();
     if (QFile::exists(manifestPath)) {
         QFile::remove(manifestPath);
-        qDebug() << "Removed manifest:" << manifestPath;
+        qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPTransaction: Removed manifest:" << manifestPath;
     }
 }
 
