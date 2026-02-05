@@ -9,22 +9,30 @@
   <!-- Extend the Development category with MCP Servers -->
   <Menu>
     <Name>Development</Name>
+    <Icon>applications-development</Icon>
+    <Include>
+      <Or>
+        <Category>Development</Category>
+      </Or>
+    </Include>
 
     <Menu>
       <Name>MCP Servers</Name>
       <Icon>network-server</Icon>
       <Include>
-        <Category>mcp</Category>
-        <Category>mcp-database</Category>
-        <Category>mcp-filesystem</Category>
-        <Category>mcp-web</Category>
-        <Category>mcp-search</Category>
-        <Category>mcp-development</Category>
-        <Category>mcp-ai</Category>
-        <Category>mcp-shell</Category>
-        <Category>mcp-communication</Category>
-        <Category>mcp-media</Category>
-        <Category>mcp-productivity</Category>
+        <Or>
+          <Category>mcp</Category>
+          <Category>mcp-database</Category>
+          <Category>mcp-filesystem</Category>
+          <Category>mcp-web</Category>
+          <Category>mcp-search</Category>
+          <Category>mcp-development</Category>
+          <Category>mcp-ai</Category>
+          <Category>mcp-shell</Category>
+          <Category>mcp-communication</Category>
+          <Category>mcp-media</Category>
+          <Category>mcp-productivity</Category>
+        </Or>
       </Include>
     </Menu>
 

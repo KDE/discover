@@ -16,12 +16,13 @@
 
 QList<std::shared_ptr<Category>> CategoriesReader::loadCategoriesFile(AbstractResourcesBackend *backend)
 {
-    QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation,
-                                          QStringLiteral("libdiscover/categories/") + backend->name() + QStringLiteral("-categories.xml"));
+    const QString fileName = QStringLiteral("libdiscover/categories/") + backend->name() + QStringLiteral("-categories.xml");
+    QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, fileName);
+    qCDebug(LIBDISCOVER_LOG) << "CategoriesReader: Looking for categories file for backend" << backend->name() << "at" << fileName << "found:" << path;
     if (path.isEmpty()) {
         auto categories = backend->category();
         if (categories.isEmpty()) {
-            qCDebug(LIBDISCOVER_LOG) << "CategoriesReader: Couldn't find a category for" << backend->name();
+            qCDebug(LIBDISCOVER_LOG) << "CategoriesReader: Couldn't find a category for" << backend->name() << "- XML file not found and backend->category() returned empty";
         }
 
         Category::sortCategories(categories);

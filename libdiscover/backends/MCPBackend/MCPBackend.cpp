@@ -44,9 +44,6 @@ MCPBackend::MCPBackend(QObject *parent)
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged,
             this, &MCPBackend::updatesCountChanged);
 
-    // Set up categories for UI navigation
-    setupCategories();
-
     // Load registry sources from config
     loadSourcesConfig();
 
@@ -224,37 +221,6 @@ void MCPBackend::removeRegistrySource(const QString &url)
 MCPResource *MCPBackend::resourceById(const QString &id) const
 {
     return m_resources.value(id);
-}
-
-void MCPBackend::setupCategories()
-{
-    const QSet<QString> backendName = {name()};
-
-    // Create an OR filter matching all MCP category names
-    QList<CategoryFilter> mcpFilters;
-    const QStringList mcpCategoryNames = {
-        u"mcp"_s, u"mcp-database"_s, u"mcp-filesystem"_s,
-        u"mcp-web"_s, u"mcp-search"_s, u"mcp-development"_s,
-        u"mcp-ai"_s, u"mcp-shell"_s, u"mcp-communication"_s,
-        u"mcp-media"_s, u"mcp-productivity"_s
-    };
-    for (const QString &catName : mcpCategoryNames) {
-        mcpFilters.append({CategoryFilter::CategoryNameFilter, catName});
-    }
-    CategoryFilter mcpFilter;
-    mcpFilter.type = CategoryFilter::OrFilter;
-    mcpFilter.value = mcpFilters;
-
-    auto mcpCategory = std::make_shared<Category>(
-        i18n("MCP Servers"),
-        QStringLiteral("network-server"),
-        mcpFilter,
-        backendName,
-        QList<std::shared_ptr<Category>>{});
-
-    m_rootCategories = {mcpCategory};
-
-    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Categories set up with" << mcpCategoryNames.count() << "filter categories";
 }
 
 void MCPBackend::loadSourcesConfig()
