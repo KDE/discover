@@ -2854,7 +2854,7 @@ msgstr "Extensões"
 
 #~ msgctxt "Category"
 #~ msgid "System Settings"
-#~ msgstr "Configuração do Sistema"
+#~ msgstr "Definições do Sistema"
 
 #~ msgid "Could not find '%1' in '%2'; please make sure it's available."
 #~ msgstr ""
