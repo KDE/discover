@@ -789,6 +789,7 @@ void PackageKitUpdater::setProgressing(bool progressing)
     if (m_isProgressing != progressing) {
         m_isProgressing = progressing;
         Q_EMIT progressingChanged(m_isProgressing);
+        Q_EMIT fetchingChanged();
     }
 }
 
