@@ -7,6 +7,7 @@
 #pragma once
 
 #include <Transaction/Transaction.h>
+#include <QMap>
 #include <QProcess>
 
 class MCPResource;
@@ -29,6 +30,11 @@ public:
 
     void cancel() override;
     void proceed() override;
+
+    void setConfiguration(const QMap<QString, QString> &values);
+
+Q_SIGNALS:
+    void configRequest(MCPResource *resource);
 
 private Q_SLOTS:
     void onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
@@ -57,4 +63,6 @@ private:
     QString m_outputBuffer;
     QString m_errorBuffer;
     bool m_cancelled = false;
+    QMap<QString, QString> m_configValues;
+    bool m_waitingForConfig = false;
 };

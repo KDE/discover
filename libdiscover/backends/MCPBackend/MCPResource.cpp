@@ -8,6 +8,8 @@
 #include "MCPBackend.h"
 
 #include <QDesktopServices>
+#include <QDir>
+#include <QFileInfo>
 #include <QJsonArray>
 #include <QStandardPaths>
 
@@ -127,6 +129,25 @@ void MCPResource::parseJsonData(const QJsonObject &data)
 
     // Parse changelog
     m_changelog = data[u"changelog"_s].toString();
+
+    // Parse required properties
+    const auto propsArray = data[u"requiredProperties"_s].toArray();
+    for (const auto &prop : propsArray) {
+        const auto propObj = prop.toObject();
+        RequiredProperty propDef;
+        propDef.key = propObj[u"key"_s].toString();
+        propDef.label = propObj[u"label"_s].toString();
+        propDef.description = propObj[u"description"_s].toString();
+        propDef.sensitive = propObj[u"sensitive"_s].toBool(false);
+        propDef.required = propObj[u"required"_s].toBool(true);
+        m_requiredProperties.append(propDef);
+    }
+
+    // Load existing property values from config object (for installed servers)
+    const auto configObj = data[u"config"_s].toObject();
+    for (auto it = configObj.begin(); it != configObj.end(); ++it) {
+        m_propertyValues[it.key()] = it.value().toString();
+    }
 }
 
 QString MCPResource::packageName() const
@@ -402,15 +423,95 @@ QJsonObject MCPResource::toJson() const
     obj[u"permissions"_s] = permissionsArray;
     obj[u"tools"_s] = toolsArray;
 
+    // Include required properties definition
+    if (!m_requiredProperties.isEmpty()) {
+        QJsonArray propsArray;
+        for (const auto &prop : m_requiredProperties) {
+            QJsonObject propObj;
+            propObj[u"key"_s] = prop.key;
+            propObj[u"label"_s] = prop.label;
+            propObj[u"description"_s] = prop.description;
+            propObj[u"sensitive"_s] = prop.sensitive;
+            propObj[u"required"_s] = prop.required;
+            propsArray.append(propObj);
+        }
+        obj[u"requiredProperties"_s] = propsArray;
+    }
+
+    // Include configuration values
+    if (!m_propertyValues.isEmpty()) {
+        QJsonObject configObj;
+        for (auto it = m_propertyValues.begin(); it != m_propertyValues.end(); ++it) {
+            configObj[it.key()] = it.value();
+        }
+        obj[u"config"_s] = configObj;
+    }
+
     return obj;
 }
 
 QString MCPResource::manifestPath() const
 {
-    // Installed server manifests go to /usr/share/mcp/installed/
-    // or ~/.local/share/mcp/installed/ for user installs
-    const QString dataDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
-    return dataDir + u"/mcp/installed/"_s + m_id + u".json"_s;
+    // Installed server manifests go to /usr/share/mcp/installed/ (system-wide)
+    // or ~/.local/share/mcp/installed/ (user-specific)
+
+    // Try system directory first
+    const QString systemDirPath = u"/usr/share/mcp/installed/"_s;
+    const QDir systemDir(systemDirPath);
+
+    // Check if directory exists and is writable, or if parent (/usr/share) is writable (root)
+    if (systemDir.exists()) {
+        QFileInfo dirInfo(systemDirPath);
+        if (dirInfo.isWritable()) {
+            return systemDirPath + m_id + u".json"_s;
+        }
+    }
+    // Also check if /usr/share is writable (running as root)
+    QFileInfo usrShareInfo(u"/usr/share"_s);
+    if (usrShareInfo.isWritable()) {
+        return systemDirPath + m_id + u".json"_s;
+    }
+
+    // Fall back to user directory
+    const QString userDataDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
+    return userDataDir + u"/mcp/installed/"_s + m_id + u".json"_s;
+}
+
+void MCPResource::setPropertyValue(const QString &key, const QString &value)
+{
+    if (m_propertyValues.value(key) != value) {
+        m_propertyValues[key] = value;
+        Q_EMIT propertyValuesChanged();
+    }
+}
+
+QString MCPResource::propertyValue(const QString &key) const
+{
+    return m_propertyValues.value(key);
+}
+
+QVariantList MCPResource::requiredPropertiesQml() const
+{
+    QVariantList result;
+    for (const auto &prop : m_requiredProperties) {
+        QVariantMap propMap;
+        propMap[u"key"_s] = prop.key;
+        propMap[u"label"_s] = prop.label;
+        propMap[u"description"_s] = prop.description;
+        propMap[u"sensitive"_s] = prop.sensitive;
+        propMap[u"required"_s] = prop.required;
+        result.append(propMap);
+    }
+    return result;
+}
+
+QVariantMap MCPResource::propertyValuesQml() const
+{
+    QVariantMap result;
+    for (auto it = m_propertyValues.begin(); it != m_propertyValues.end(); ++it) {
+        result[it.key()] = it.value();
+    }
+    return result;
 }
 
 #include "moc_MCPResource.cpp"

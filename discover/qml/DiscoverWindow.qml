@@ -299,6 +299,11 @@ Kirigami.ApplicationWindow {
     }
 
     Component {
+        id: mcpConfigDialog
+        MCPConfigDialog {}
+    }
+
+    Component {
         id: distroErrorMessageDialog
         Kirigami.OverlaySheet {
             id: sheet
@@ -472,6 +477,12 @@ Kirigami.ApplicationWindow {
                     sheet.open()
                 }
                 component.destroy();
+            }
+
+            function onConfigRequest(resource) {
+                const dialog = mcpConfigDialog.createObject(window, { transaction, resource })
+                dialog.open()
+                app.restore()
             }
         }
     }

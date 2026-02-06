@@ -8,8 +8,22 @@
 
 #include <resources/AbstractResource.h>
 #include <QJsonObject>
+#include <QMap>
 
 class MCPBackend;
+
+/**
+ * \struct RequiredProperty
+ *
+ * \brief Represents a required configuration property for an MCP server.
+ */
+struct RequiredProperty {
+    QString key;            ///< Property key/identifier
+    QString label;          ///< Display label for the property
+    QString description;    ///< Description/help text
+    bool sensitive = false; ///< Whether the value should be hidden (password-like)
+    bool required = true;   ///< Whether the property is required
+};
 
 /**
  * \class MCPResource MCPResource.h
@@ -26,6 +40,8 @@ class MCPResource : public AbstractResource
     Q_PROPERTY(QString transportType READ transportType CONSTANT)
     Q_PROPERTY(QStringList capabilities READ capabilities CONSTANT)
     Q_PROPERTY(QStringList permissions READ permissions CONSTANT)
+    Q_PROPERTY(QVariantList requiredProperties READ requiredPropertiesQml CONSTANT)
+    Q_PROPERTY(QVariantMap propertyValues READ propertyValuesQml NOTIFY propertyValuesChanged)
 
 public:
     /**
@@ -101,6 +117,19 @@ public:
     // Get the manifest path for installed servers
     QString manifestPath() const;
 
+    // Configuration properties
+    QList<RequiredProperty> requiredProperties() const { return m_requiredProperties; }
+    QMap<QString, QString> propertyValues() const { return m_propertyValues; }
+    void setPropertyValue(const QString &key, const QString &value);
+    QString propertyValue(const QString &key) const;
+
+    // QML-compatible getters
+    QVariantList requiredPropertiesQml() const;
+    QVariantMap propertyValuesQml() const;
+
+Q_SIGNALS:
+    void propertyValuesChanged();
+
 private:
     void parseJsonData(const QJsonObject &data);
 
@@ -139,6 +168,10 @@ private:
     QStringList m_permissions;
     QStringList m_tools;
     Screenshots m_screenshots;
+
+    // Configuration properties
+    QList<RequiredProperty> m_requiredProperties;
+    QMap<QString, QString> m_propertyValues;
 
     State m_state = State::None;
 };

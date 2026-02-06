@@ -202,6 +202,61 @@
       },
       "releaseDate": "2025-01-30",
       "size": 0
+    },
+    {
+      "id": "com.example.test-config",
+      "name": "Test Config Server",
+      "summary": "Test server with required configuration",
+      "description": "A test MCP server that requires configuration properties such as API keys and endpoint URLs. This server demonstrates the configuration dialog functionality in KDE Discover.",
+      "version": "1.0.0",
+      "author": "Test Author",
+      "homepage": "https://example.com/test-config",
+      "bugUrl": "https://example.com/test-config/issues",
+      "icon": "configure",
+      "type": "stdio",
+      "transport": {
+        "command": "test-config-server",
+        "args": []
+      },
+      "source": {
+        "type": "npm",
+        "package": "@test/mcp-server"
+      },
+      "categories": ["mcp-development", "mcp"],
+      "capabilities": ["test", "config"],
+      "permissions": ["network:api.example.com"],
+      "tools": [
+        {"name": "test_tool", "description": "A test tool that uses configuration"}
+      ],
+      "requiredProperties": [
+        {
+          "key": "api_key",
+          "label": "API Key",
+          "description": "Your API key for authentication. You can obtain this from your account settings.",
+          "sensitive": true,
+          "required": true
+        },
+        {
+          "key": "endpoint_url",
+          "label": "Endpoint URL",
+          "description": "The API endpoint URL where the server should connect.",
+          "sensitive": false,
+          "required": true
+        },
+        {
+          "key": "timeout",
+          "label": "Timeout (seconds)",
+          "description": "Request timeout in seconds (optional).",
+          "sensitive": false,
+          "required": false
+        }
+      ],
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      },
+      "releaseDate": "2025-02-04",
+      "size": 131072
     }
   ]
 }
