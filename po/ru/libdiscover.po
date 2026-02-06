@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-24 00:44+0000\n"
+"POT-Creation-Date: 2026-02-06 00:46+0000\n"
 "PO-Revision-Date: 2026-01-31 11:09+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -2756,7 +2756,7 @@ msgstr "Проверьте подключение к Интернету"
 msgid "Refresh"
 msgstr "Обновить список"
 
-#: libdiscover/resources/ResourcesModel.cpp:406
+#: libdiscover/resources/ResourcesModel.cpp:405
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-24 00:44+0000\n"
+"POT-Creation-Date: 2026-02-06 00:46+0000\n"
 "PO-Revision-Date: 2026-02-02 21:34+0000\n"
 "Last-Translator: César A. P. Cláudio <cesarapclaudio@gmail.com>\n"
 "Language-Team: pt\n"
@@ -208,7 +208,7 @@ msgstr "Utilitários"
 #, kde-format
 msgctxt "Category"
 msgid "Accessibility"
-msgstr "Facilidade de Acesso"
+msgstr "Acessibilidade"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
@@ -2736,7 +2736,7 @@ msgstr "Por favor, verifique a ligação à Internet"
 msgid "Refresh"
 msgstr "Procurar atualizações"
 
-#: libdiscover/resources/ResourcesModel.cpp:406
+#: libdiscover/resources/ResourcesModel.cpp:405
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"

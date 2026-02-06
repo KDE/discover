@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-24 00:44+0000\n"
+"POT-Creation-Date: 2026-02-06 00:46+0000\n"
 "PO-Revision-Date: 2024-09-19 14:31+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2768,7 +2768,7 @@ msgstr "Παρακαλώ βεβαιωθείτε ότι έχετε σύνδεση
 msgid "Refresh"
 msgstr "Ανανέωση"
 
-#: libdiscover/resources/ResourcesModel.cpp:406
+#: libdiscover/resources/ResourcesModel.cpp:405
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"

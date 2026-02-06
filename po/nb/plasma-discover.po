@@ -1517,6 +1517,3 @@ msgstr "Se etter oppdateringer"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for sist oppdatering er ukjent"
-
-#~ msgid "Update from:"
-#~ msgstr "Oppdater fra:"

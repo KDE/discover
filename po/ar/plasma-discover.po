@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-05 00:45+0000\n"
-"PO-Revision-Date: 2026-01-24 11:43+0400\n"
+"PO-Revision-Date: 2026-02-05 11:09+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1515,14 +1515,10 @@ msgid "Installing"
 msgstr "يثبّت"
 
 #: discover/qml/UpdatesPage.qml:530
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-#| "\"Ubuntu\""
-#| msgid "From %1"
+#, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "من %1"
+msgstr "من:"
 
 #: discover/qml/UpdatesPage.qml:547
 #, kde-format
@@ -1533,11 +1529,10 @@ msgid "%1 (%2)"
 msgstr "‏%1 (‏%2)"
 
 #: discover/qml/UpdatesPage.qml:559
-#, fuzzy, kde-format
-#| msgid "More Information…"
+#, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
-msgstr "المزيد من المعلومات…"
+msgstr "معلومات أكثر…"
 
 #: discover/qml/UpdatesPage.qml:607
 #, kde-format
