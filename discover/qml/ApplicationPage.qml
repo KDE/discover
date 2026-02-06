@@ -132,6 +132,23 @@ DiscoverPage {
         originsMenuAction
     ]
 
+    Connections {
+        target: application
+        function onConfigurationRequested() {
+            const component = Qt.createComponent("MCPConfigDialog.qml");
+            if (component.status === Component.Ready) {
+                const dialog = component.createObject(appInfo, {
+                    resource: application,
+                    isReconfiguration: true
+                });
+                dialog.open();
+            } else {
+                console.error("Failed to load MCPConfigDialog:", component.errorString());
+            }
+            component.destroy();
+        }
+    }
+
     QQC2.ActionGroup {
         id: sourcesGroup
         exclusive: true
@@ -824,6 +841,100 @@ DiscoverPage {
 
                     onClicked: {
                         reviewsSheet.openReviewDialog()
+                    }
+                }
+            }
+        }
+
+        // Configuration section (for MCP servers)
+        ColumnLayout {
+            id: configSection
+            
+            readonly property string backendName: application && application.backend ? application.backend.name : "unknown"
+            readonly property bool isMCPBackend: configSection.backendName === "mcp-backend"
+            readonly property var requiredProps: {
+                if (!application) return [];
+                if (!configSection.isMCPBackend) return [];
+                try {
+                    return application.requiredProperties || [];
+                } catch(e) {
+                    return [];
+                }
+            }
+            readonly property bool hasConfigProperties: configSection.isMCPBackend && configSection.requiredProps && configSection.requiredProps.length > 0
+            
+            visible: configSection.hasConfigProperties
+
+            spacing: Kirigami.Units.smallSpacing
+
+            Kirigami.Heading {
+                text: i18nc("@title", "Configuration")
+                level: 2
+                type: Kirigami.Heading.Type.Primary
+                wrapMode: Text.Wrap
+                visible: configSection.hasConfigProperties
+            }
+
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: Kirigami.Units.smallSpacing
+
+                Repeater {
+                    model: application.requiredProperties || []
+
+                    delegate: ColumnLayout {
+                        required property var modelData
+
+                        Layout.fillWidth: true
+                        spacing: Kirigami.Units.tinySpacing
+
+                        RowLayout {
+                            Layout.fillWidth: true
+
+                            QQC2.Label {
+                                text: modelData.label + ":"
+                                font.weight: Font.Medium
+                            }
+
+                            QQC2.Label {
+                                Layout.fillWidth: true
+                                text: {
+                                    const values = application.propertyValues || {};
+                                    const value = values[modelData.key] || "";
+                                    if (value.length === 0) {
+                                        return i18n("<empty>");
+                                    }
+                                    if (modelData.sensitive) {
+                                        // Mask sensitive values, show last 4 characters
+                                        if (value.length <= 4) {
+                                            return "•".repeat(value.length);
+                                        }
+                                        return "•".repeat(Math.max(0, value.length - 4)) + value.slice(-4);
+                                    }
+                                    return value;
+                                }
+                                wrapMode: Text.Wrap
+                                elide: Text.ElideRight
+                            }
+                        }
+
+                        QQC2.Label {
+                            Layout.fillWidth: true
+                            visible: modelData.description && modelData.description.length > 0
+                            text: modelData.description
+                            wrapMode: Text.Wrap
+                            font: Kirigami.Theme.smallFont
+                            opacity: 0.7
+                        }
+                    }
+                }
+
+                QQC2.Button {
+                    Layout.alignment: Qt.AlignLeft
+                    text: i18n("Configure…")
+                    icon.name: "configure"
+                    onClicked: {
+                        application.requestConfiguration();
                     }
                 }
             }

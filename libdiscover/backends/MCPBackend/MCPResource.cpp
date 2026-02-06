@@ -9,8 +9,10 @@
 
 #include <QDesktopServices>
 #include <QDir>
+#include <QFile>
 #include <QFileInfo>
 #include <QJsonArray>
+#include <QJsonDocument>
 #include <QStandardPaths>
 
 using namespace Qt::StringLiterals;
@@ -227,25 +229,25 @@ QString MCPResource::longDescription()
 
     // Append tools information if available
     if (!m_tools.isEmpty()) {
-        desc += u"\n\n**Available Tools:**\n"_s;
+        desc += u"<br/><br/><b>Available Tools:</b><br/>"_s;
         for (const auto &tool : m_tools) {
-            desc += u"- "_s + tool + u"\n"_s;
+            desc += u"• "_s + QString(tool).toHtmlEscaped() + u"<br/>"_s;
         }
     }
 
     // Append capabilities
     if (!m_capabilities.isEmpty()) {
-        desc += u"\n**Capabilities:**\n"_s;
+        desc += u"<br/><b>Capabilities:</b><br/>"_s;
         for (const auto &cap : m_capabilities) {
-            desc += u"- "_s + cap + u"\n"_s;
+            desc += u"• "_s + QString(cap).toHtmlEscaped() + u"<br/>"_s;
         }
     }
 
     // Append permissions required
     if (!m_permissions.isEmpty()) {
-        desc += u"\n**Required Permissions:**\n"_s;
+        desc += u"<br/><b>Required Permissions:</b><br/>"_s;
         for (const auto &perm : m_permissions) {
-            desc += u"- "_s + perm + u"\n"_s;
+            desc += u"• "_s + QString(perm).toHtmlEscaped() + u"<br/>"_s;
         }
     }
 
@@ -512,6 +514,73 @@ QVariantMap MCPResource::propertyValuesQml() const
         result[it.key()] = it.value();
     }
     return result;
+}
+
+void MCPResource::updateConfiguration(const QVariantMap &values)
+{
+    bool changed = false;
+    for (auto it = values.begin(); it != values.end(); ++it) {
+        const QString key = it.key();
+        const QString value = it.value().toString();
+        if (m_propertyValues.value(key) != value) {
+            m_propertyValues[key] = value;
+            changed = true;
+        }
+    }
+    if (changed) {
+        Q_EMIT propertyValuesChanged();
+        saveConfigurationToManifest();
+    }
+}
+
+bool MCPResource::saveConfigurationToManifest()
+{
+    if (m_state != State::Installed && m_state != State::Upgradeable) {
+        return false;
+    }
+
+    const QString manifestPath = this->manifestPath();
+    const QDir dir = QFileInfo(manifestPath).absoluteDir();
+
+    if (!dir.exists()) {
+        dir.mkpath(u"."_s);
+    }
+
+    QFile file(manifestPath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        return false;
+    }
+
+    QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+    file.close();
+
+    if (!doc.isObject()) {
+        return false;
+    }
+
+    QJsonObject manifest = doc.object();
+    
+    // Update config object
+    QJsonObject configObj;
+    for (auto it = m_propertyValues.begin(); it != m_propertyValues.end(); ++it) {
+        configObj[it.key()] = it.value();
+    }
+    manifest[u"config"_s] = configObj;
+
+    // Write back
+    if (file.open(QIODevice::WriteOnly)) {
+        const QJsonDocument updatedDoc(manifest);
+        file.write(updatedDoc.toJson(QJsonDocument::Indented));
+        file.close();
+        return true;
+    }
+
+    return false;
+}
+
+void MCPResource::requestConfiguration()
+{
+    Q_EMIT configurationRequested();
 }
 
 #include "moc_MCPResource.cpp"

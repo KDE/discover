@@ -9,6 +9,7 @@
 #include <resources/AbstractResource.h>
 #include <QJsonObject>
 #include <QMap>
+#include <QVariantMap>
 
 class MCPBackend;
 
@@ -122,6 +123,9 @@ public:
     QMap<QString, QString> propertyValues() const { return m_propertyValues; }
     void setPropertyValue(const QString &key, const QString &value);
     QString propertyValue(const QString &key) const;
+    Q_INVOKABLE void updateConfiguration(const QVariantMap &values);
+    bool saveConfigurationToManifest();
+    Q_INVOKABLE void requestConfiguration();
 
     // QML-compatible getters
     QVariantList requiredPropertiesQml() const;
@@ -129,6 +133,7 @@ public:
 
 Q_SIGNALS:
     void propertyValuesChanged();
+    void configurationRequested();
 
 private:
     void parseJsonData(const QJsonObject &data);

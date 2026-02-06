@@ -17,6 +17,7 @@ Kirigami.OverlaySheet {
     property Discover.AbstractResource resource
 
     property bool acted: false
+    property bool isReconfiguration: false
     property var propertyValues: ({})
 
     title: i18n("Configure %1", resource ? resource.name : "")
@@ -161,7 +162,9 @@ Kirigami.OverlaySheet {
             text: i18n("Cancel")
             icon.name: "dialog-cancel"
             onClicked: {
-                transaction.cancel()
+                if (transaction) {
+                    transaction.cancel()
+                }
                 sheet.acted = true
                 sheet.close()
             }
@@ -194,7 +197,15 @@ Kirigami.OverlaySheet {
                 for (const key in propertyValues) {
                     configMap[key] = propertyValues[key]
                 }
-                transaction.setConfiguration(configMap)
+                
+                if (isReconfiguration) {
+                    // Update configuration directly on resource
+                    resource.updateConfiguration(configMap);
+                } else {
+                    // During installation, use transaction
+                    transaction.setConfiguration(configMap);
+                }
+                
                 sheet.acted = true
                 sheet.close()
             }
@@ -205,7 +216,7 @@ Kirigami.OverlaySheet {
 
     onVisibleChanged: if (!visible) {
         sheet.destroy(1000)
-        if (!sheet.acted) {
+        if (!sheet.acted && transaction) {
             transaction.cancel()
         }
     }

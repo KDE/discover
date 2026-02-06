@@ -1,0 +1,22 @@
+{
+  "name": "@test/mcp-server",
+  "version": "1.0.0",
+  "description": "Test MCP server with configuration properties for KDE Discover",
+  "main": "index.js",
+  "bin": {
+    "test-config-server": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "mcp",
+    "test",
+    "config"
+  ],
+  "author": "Test Author",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0"
+  }
+}
