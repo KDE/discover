@@ -1,15 +1,15 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# SPDX-FileCopyrightText: 2024, 2025 Toms Trasuns <toms.trasuns@posteo.net>
+# SPDX-FileCopyrightText: 2024, 2025, 2026 Toms Trasuns <toms.trasuns@posteo.net>
 # Māris Nartišs <maris.kde@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-05 00:45+0000\n"
-"PO-Revision-Date: 2025-11-07 17:54+0200\n"
-"Last-Translator: Toms Trasūns <toms.trasuns@posteo.net>\n"
+"PO-Revision-Date: 2026-02-06 14:30+0200\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 25.08.2\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: discover/DiscoverObject.cpp:197
 #, kde-format
@@ -201,10 +201,9 @@ msgid "An application explorer"
 msgstr "Programmu pārlūks"
 
 #: discover/main.cpp:124
-#, fuzzy, kde-format
-#| msgid "© 2010-2025 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2026 Plasma Development Team"
-msgstr "© 2010—2025 „Plasma“ izstrādātāju komanda"
+msgstr "© 2010—2026 „Plasma“ izstrādātāju komanda"
 
 #: discover/main.cpp:125
 #, kde-format
@@ -863,14 +862,12 @@ msgstr "Nākamais ekrānattēls"
 #: discover/qml/DiscoverDrawer.qml:166
 #, kde-format
 msgid "Security updates available"
-msgstr ""
+msgstr "Ir pieejami drošības atjauninājumi"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgctxt "@action:button as in, 'update all items'"
-#| msgid "Update All"
+#, kde-format
 msgid "Updates available"
-msgstr "Atjaunināt visu"
+msgstr "Ir pieejami atjauninājumi"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -898,10 +895,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&Atjauninājumi (ielādē)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "Atjauninājumi"
+msgstr "&Atjauninājumi"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format
@@ -1527,14 +1523,10 @@ msgid "Installing"
 msgstr "Instalē"
 
 #: discover/qml/UpdatesPage.qml:530
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-#| "\"Ubuntu\""
-#| msgid "From %1"
+#, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "No „%1“"
+msgstr "No:"
 
 #: discover/qml/UpdatesPage.qml:547
 #, kde-format
@@ -1545,8 +1537,7 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:559
-#, fuzzy, kde-format
-#| msgid "More Information…"
+#, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "Vairāk informācijas…"
