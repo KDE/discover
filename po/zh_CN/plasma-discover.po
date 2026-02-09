@@ -1475,7 +1475,7 @@ msgstr "正在安装"
 #, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr ""
+msgstr "来源："
 
 #: discover/qml/UpdatesPage.qml:547
 #, kde-format
@@ -1489,7 +1489,7 @@ msgstr "%1 (%2)"
 #, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
-msgstr ""
+msgstr "更多信息…"
 
 #: discover/qml/UpdatesPage.qml:607
 #, kde-format
