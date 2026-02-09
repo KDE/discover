@@ -178,6 +178,7 @@ private:
     AppPackageKitResource *addComponent(const AppStream::Component &component) const;
     void updateProxy();
     void foundNewMajorVersion(const AppStream::Release &release);
+    void setRefresher(PackageKit::Transaction *refresh);
 
     QScopedPointer<AppStream::ConcurrentPool> m_appdata;
     bool m_appdataLoaded = false;
