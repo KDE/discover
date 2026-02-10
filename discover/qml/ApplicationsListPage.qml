@@ -123,7 +123,7 @@ DiscoverPage {
             }
             Kirigami.Action {
                 QQC2.ActionGroup.group: sortGroup
-                text: i18n("Rating")
+                text: i18n("Popularity")
                 icon.name: "rating"
                 onTriggered: {
                     DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.SortableRatingRole
