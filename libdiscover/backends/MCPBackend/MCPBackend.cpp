@@ -229,9 +229,48 @@ MCPResource *MCPBackend::resourceById(const QString &id) const
     return m_resources.value(id);
 }
 
+void MCPBackend::bootstrapUserConfig()
+{
+    const QString userConfigDir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+    const QString mcpConfigDir = userConfigDir + u"/mcp"_s;
+    const QString sourcesPath = mcpConfigDir + u"/sources.list"_s;
+    const QString configPath = mcpConfigDir + u"/config.json"_s;
+
+    // Create ~/.config/mcp/ if it doesn't exist
+    QDir().mkpath(mcpConfigDir);
+
+    // Create sources.list with default registry if it doesn't exist
+    if (!QFile::exists(sourcesPath)) {
+        QFile file(sourcesPath);
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream stream(&file);
+            stream << "# MCP Registry Sources\n";
+            stream << "# Each line is a URL to a registry JSON file.\n";
+            stream << "# Add your own registries below, or remove the default.\n\n";
+            stream << "# Default MCP server registry\n";
+            stream << defaultRegistryUrl() << "\n";
+            file.close();
+            qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Created default sources.list at" << sourcesPath;
+        }
+    }
+
+    // Create config.json if it doesn't exist (ready for parameter storage)
+    if (!QFile::exists(configPath)) {
+        QFile file(configPath);
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            file.write("{\n  \"servers\": {}\n}\n");
+            file.close();
+            qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Created default config.json at" << configPath;
+        }
+    }
+}
+
 void MCPBackend::loadSourcesConfig()
 {
     m_registrySources.clear();
+
+    // Ensure user config directory and defaults exist on first run
+    bootstrapUserConfig();
 
     // Load from user config first
     const QString userConfigDir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
@@ -259,6 +298,12 @@ void MCPBackend::loadSourcesConfig()
             }
             file.close();
         }
+    }
+
+    // Always ensure the default registry is present
+    const QString defaultUrl = defaultRegistryUrl();
+    if (!m_registrySources.contains(defaultUrl)) {
+        m_registrySources.prepend(defaultUrl);
     }
 
     qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Loaded" << m_registrySources.count() << "registry sources";
@@ -307,6 +352,11 @@ QString MCPBackend::serverInstallDir(const QString &serverId)
 QString MCPBackend::serverManifestPath(const QString &serverId)
 {
     return serverInstallDir(serverId) + u"/manifest.json"_s;
+}
+
+QString MCPBackend::defaultRegistryUrl()
+{
+    return u"https://raw.githubusercontent.com/YakupAtahanov/mcp-registry/refs/heads/main/registry.json"_s;
 }
 
 bool MCPBackend::writeServerManifest(const QString &serverId, const QJsonObject &manifest)

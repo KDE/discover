@@ -83,6 +83,9 @@ public:
     static QString serverInstallDir(const QString &serverId);
     static QString serverManifestPath(const QString &serverId);
 
+    /// Default registry URL (always included)
+    static QString defaultRegistryUrl();
+
 Q_SIGNALS:
     void registrySourcesChanged();
 
@@ -90,6 +93,7 @@ private Q_SLOTS:
     void onRegistryFetched(QNetworkReply *reply);
 
 private:
+    void bootstrapUserConfig();
     void loadSourcesConfig();
     void saveSourcesConfig();
     void loadInstalledServers();
