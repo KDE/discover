@@ -78,7 +78,7 @@ void MCPTransaction::setConfiguration(const QMap<QString, QString> &values)
     m_configValues = values;
     // Store configuration values in the resource
     for (auto it = values.begin(); it != values.end(); ++it) {
-        m_resource->setPropertyValue(it.key(), it.value());
+        m_resource->setParameterValue(it.key(), it.value());
     }
     // Continue with installation
     proceed();
@@ -86,22 +86,12 @@ void MCPTransaction::setConfiguration(const QMap<QString, QString> &values)
 
 void MCPTransaction::startInstallation()
 {
-    // Check if resource has required properties that need configuration
-    if (!m_resource->requiredProperties().isEmpty()) {
-        // Check if we have all required values
-        bool needsConfig = false;
-        for (const auto &prop : m_resource->requiredProperties()) {
-            if (prop.required && m_resource->propertyValue(prop.key).isEmpty()) {
-                needsConfig = true;
-                break;
-            }
-        }
-        if (needsConfig) {
-            setStatus(SetupStatus);
-            m_waitingForConfig = true;
-            Q_EMIT configRequest(m_resource);
-            return;
-        }
+    // Check if any required parameters still need configuration
+    if (m_resource->hasUnconfiguredRequiredParameters()) {
+        setStatus(SetupStatus);
+        m_waitingForConfig = true;
+        Q_EMIT configRequest(m_resource);
+        return;
     }
 
     setStatus(DownloadingStatus);

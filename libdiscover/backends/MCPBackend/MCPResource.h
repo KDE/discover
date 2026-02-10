@@ -14,16 +14,20 @@
 class MCPBackend;
 
 /**
- * \struct RequiredProperty
+ * \struct MCPParameter
  *
- * \brief Represents a required configuration property for an MCP server.
+ * \brief Represents a configuration parameter for an MCP server.
+ *
+ * Parameters are split into two lists on the resource: requiredParameters
+ * (must be filled before install) and optionalParameters (pre-filled with
+ * defaults, editable post-install).
  */
-struct RequiredProperty {
-    QString key;            ///< Property key/identifier
-    QString label;          ///< Display label for the property
-    QString description;    ///< Description/help text
-    bool sensitive = false; ///< Whether the value should be hidden (password-like)
-    bool required = true;   ///< Whether the property is required
+struct MCPParameter {
+    QString key;              ///< Parameter key/identifier
+    QString label;            ///< Display label for the parameter
+    QString description;      ///< Description/help text
+    QString defaultValue;     ///< Default value (mainly useful for optional parameters)
+    bool sensitive = false;   ///< Whether the value should be hidden (password-like)
 };
 
 /**
@@ -41,8 +45,9 @@ class MCPResource : public AbstractResource
     Q_PROPERTY(QString transportType READ transportType CONSTANT)
     Q_PROPERTY(QStringList capabilities READ capabilities CONSTANT)
     Q_PROPERTY(QStringList permissions READ permissions CONSTANT)
-    Q_PROPERTY(QVariantList requiredProperties READ requiredPropertiesQml CONSTANT)
-    Q_PROPERTY(QVariantMap propertyValues READ propertyValuesQml NOTIFY propertyValuesChanged)
+    Q_PROPERTY(QVariantList requiredParameters READ requiredParametersQml CONSTANT)
+    Q_PROPERTY(QVariantList optionalParameters READ optionalParametersQml CONSTANT)
+    Q_PROPERTY(QVariantMap parameterValues READ parameterValuesQml NOTIFY parameterValuesChanged)
 
 public:
     /**
@@ -115,11 +120,13 @@ public:
     // Get the raw JSON data for this server
     QJsonObject toJson() const;
 
-    // Configuration properties
-    QList<RequiredProperty> requiredProperties() const { return m_requiredProperties; }
-    QMap<QString, QString> propertyValues() const { return m_propertyValues; }
-    void setPropertyValue(const QString &key, const QString &value);
-    QString propertyValue(const QString &key) const;
+    // Configuration parameters
+    QList<MCPParameter> requiredParameters() const { return m_requiredParameters; }
+    QList<MCPParameter> optionalParameters() const { return m_optionalParameters; }
+    bool hasUnconfiguredRequiredParameters() const;
+    QMap<QString, QString> parameterValues() const { return m_parameterValues; }
+    void setParameterValue(const QString &key, const QString &value);
+    QString parameterValue(const QString &key) const;
     Q_INVOKABLE void updateConfiguration(const QVariantMap &values);
     Q_INVOKABLE void requestConfiguration();
 
@@ -131,11 +138,12 @@ public:
     static QString userConfigFilePath();
 
     // QML-compatible getters
-    QVariantList requiredPropertiesQml() const;
-    QVariantMap propertyValuesQml() const;
+    QVariantList requiredParametersQml() const;
+    QVariantList optionalParametersQml() const;
+    QVariantMap parameterValuesQml() const;
 
 Q_SIGNALS:
-    void propertyValuesChanged();
+    void parameterValuesChanged();
     void configurationRequested();
 
 private:
@@ -177,9 +185,10 @@ private:
     QStringList m_tools;
     Screenshots m_screenshots;
 
-    // Configuration properties
-    QList<RequiredProperty> m_requiredProperties;
-    QMap<QString, QString> m_propertyValues;
+    // Configuration parameters
+    QList<MCPParameter> m_requiredParameters;
+    QList<MCPParameter> m_optionalParameters;
+    QMap<QString, QString> m_parameterValues;
 
     State m_state = State::None;
 };

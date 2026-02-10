@@ -82,7 +82,8 @@ Each object in the `servers` array describes one MCP server.
 | `capabilities`       | array  | What the server can do (freeform strings for display).          |
 | `permissions`        | array  | Permissions the server requires (freeform strings for display). |
 | `tools`              | array  | Tools provided (strings or `{"name": ..., "description": ...}`).|
-| `requiredProperties` | array  | Configuration fields the user must fill in (see below).         |
+| `requiredParameters` | array  | Parameters the user must fill in before install (see below).    |
+| `optionalParameters` | array  | Optional parameters with defaults, editable post-install.       |
 | `license`            | object | `{"name": "MIT", "url": "https://..."}`.                       |
 | `releaseDate`        | string | ISO 8601 date string (`"2025-01-15"`).                          |
 | `size`               | number | Approximate size in bytes (for display).                        |
@@ -151,13 +152,13 @@ The `source` object tells Discover how to install a server.
 }
 ```
 
-| Source Type  | Fields                          | What Discover Does                       |
-|--------------|---------------------------------|------------------------------------------|
-| `npm`        | `package` (npm package name)    | `pkexec npm install -g <package>`        |
-| `pip`        | `package` (PyPI package name)   | `pkexec pip install <package>`           |
-| `binary`     | `url` (download URL)            | Downloads and installs the binary        |
-| `container`  | `package` (image name)          | `pkexec podman pull <image>`             |
-| `git`        | `url` (git repo URL)            | Clones and sets up the repo              |
+| Source Type  | Fields                          | What Discover Does                                          |
+|--------------|---------------------------------|-------------------------------------------------------------|
+| `npm`        | `package` (npm package name)    | `npm install --prefix /usr/share/mcp/installed/{id} <pkg>`  |
+| `pip`        | `package` (PyPI package name)   | `pip install --prefix /usr/share/mcp/installed/{id} <pkg>`  |
+| `binary`     | `url` (download URL)            | Downloads binary to `installed/{id}/`                       |
+| `container`  | `package` (image name)          | `pkexec podman pull <image>`                                |
+| `git`        | `url` (git repo URL)            | Clones repo to `installed/{id}/`                            |
 
 For SSE servers that have no local installation, you still need a `source` block. Use:
 
@@ -168,38 +169,58 @@ For SSE servers that have no local installation, you still need a `source` block
 }
 ```
 
-## Required Properties (User Configuration)
+## Configuration Parameters
 
-If your server needs user-provided configuration (API keys, endpoints, etc.), declare them with `requiredProperties`. Discover will show a configuration dialog before installation.
+Servers can declare configuration parameters in two separate lists:
+
+- **`requiredParameters`** — must be filled before installation. Discover shows a configuration dialog if any are empty.
+- **`optionalParameters`** — pre-filled with defaults. Shown in an "Advanced" section or editable post-install.
+
+The placement in the list determines whether it's required or optional — no `required` flag needed.
+
+### Required Parameters
 
 ```json
-"requiredProperties": [
+"requiredParameters": [
   {
     "key": "api_key",
     "label": "API Key",
     "description": "Your API key from https://example.com/settings",
-    "sensitive": true,
-    "required": true
+    "sensitive": true
+  }
+]
+```
+
+### Optional Parameters
+
+```json
+"optionalParameters": [
+  {
+    "key": "timeout",
+    "label": "Timeout (seconds)",
+    "description": "Request timeout in seconds",
+    "default": "30"
   },
   {
     "key": "endpoint",
     "label": "Endpoint URL",
-    "description": "API endpoint (optional, defaults to production)",
-    "sensitive": false,
-    "required": false
+    "description": "API endpoint (defaults to production)",
+    "default": "https://api.example.com/v1"
   }
 ]
 ```
+
+### Parameter Fields
 
 | Field         | Type    | Description                                                |
 |---------------|---------|------------------------------------------------------------|
 | `key`         | string  | Internal identifier. Used as the key in config storage.    |
 | `label`       | string  | Label shown in the configuration dialog.                   |
 | `description` | string  | Help text shown below the input field.                     |
+| `default`     | string  | Default value. Pre-filled in the UI (mainly for optional). |
 | `sensitive`   | boolean | If `true`, field is shown as a password input.             |
-| `required`    | boolean | If `true`, user must fill this in before installing.       |
 
-User-provided values are stored in `~/.config/mcp/config.json` (never in the system `mcp.json`), keeping sensitive data separate from the system catalogue.
+User-provided values are stored in `~/.config/mcp/config.json` (never in the system manifest), keeping sensitive data separate from the system catalogue. Optional parameter defaults are applied automatically if the user doesn't override them.
 
 ## Categories
 
@@ -290,13 +311,12 @@ Here is a complete minimal registry with one stdio server and one SSE server:
         "url": ""
       },
       "categories": ["mcp", "mcp-web"],
-      "requiredProperties": [
+      "requiredParameters": [
         {
           "key": "api_key",
           "label": "API Key",
           "description": "Get your key at https://yourorg.com/settings",
-          "sensitive": true,
-          "required": true
+          "sensitive": true
         }
       ]
     }
@@ -316,7 +336,7 @@ Here is a complete minimal registry with one stdio server and one SSE server:
 
 When a user clicks Install on your server:
 
-1. If `requiredProperties` exist, a configuration dialog is shown.
+1. If `requiredParameters` exist and any are unconfigured, a configuration dialog is shown.
 2. The user authenticates via polkit (system password prompt).
 3. The appropriate install command runs with elevated privileges into an isolated directory:
    - npm: `pkexec sh -c "mkdir -p /usr/share/mcp/installed/{id} && npm install --prefix /usr/share/mcp/installed/{id} <package>"`

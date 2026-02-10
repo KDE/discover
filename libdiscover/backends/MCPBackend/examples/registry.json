@@ -228,27 +228,25 @@
       "tools": [
         {"name": "test_tool", "description": "A test tool that uses configuration"}
       ],
-      "requiredProperties": [
+      "requiredParameters": [
         {
           "key": "api_key",
           "label": "API Key",
           "description": "Your API key for authentication. You can obtain this from your account settings.",
-          "sensitive": true,
-          "required": true
+          "sensitive": true
         },
         {
           "key": "endpoint_url",
           "label": "Endpoint URL",
-          "description": "The API endpoint URL where the server should connect.",
-          "sensitive": false,
-          "required": true
-        },
+          "description": "The API endpoint URL where the server should connect."
+        }
+      ],
+      "optionalParameters": [
         {
           "key": "timeout",
           "label": "Timeout (seconds)",
-          "description": "Request timeout in seconds (optional).",
-          "sensitive": false,
-          "required": false
+          "description": "Request timeout in seconds.",
+          "default": "30"
         }
       ],
       "license": {

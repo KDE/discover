@@ -132,23 +132,43 @@ void MCPResource::parseJsonData(const QJsonObject &data)
     // Parse changelog
     m_changelog = data[u"changelog"_s].toString();
 
-    // Parse required properties
-    const auto propsArray = data[u"requiredProperties"_s].toArray();
-    for (const auto &prop : propsArray) {
-        const auto propObj = prop.toObject();
-        RequiredProperty propDef;
-        propDef.key = propObj[u"key"_s].toString();
-        propDef.label = propObj[u"label"_s].toString();
-        propDef.description = propObj[u"description"_s].toString();
-        propDef.sensitive = propObj[u"sensitive"_s].toBool(false);
-        propDef.required = propObj[u"required"_s].toBool(true);
-        m_requiredProperties.append(propDef);
+    // Parse required parameters
+    const auto reqArray = data[u"requiredParameters"_s].toArray();
+    for (const auto &param : reqArray) {
+        const auto paramObj = param.toObject();
+        MCPParameter paramDef;
+        paramDef.key = paramObj[u"key"_s].toString();
+        paramDef.label = paramObj[u"label"_s].toString();
+        paramDef.description = paramObj[u"description"_s].toString();
+        paramDef.defaultValue = paramObj[u"default"_s].toString();
+        paramDef.sensitive = paramObj[u"sensitive"_s].toBool(false);
+        m_requiredParameters.append(paramDef);
     }
 
-    // Load existing property values from config object (for installed servers)
+    // Parse optional parameters
+    const auto optArray = data[u"optionalParameters"_s].toArray();
+    for (const auto &param : optArray) {
+        const auto paramObj = param.toObject();
+        MCPParameter paramDef;
+        paramDef.key = paramObj[u"key"_s].toString();
+        paramDef.label = paramObj[u"label"_s].toString();
+        paramDef.description = paramObj[u"description"_s].toString();
+        paramDef.defaultValue = paramObj[u"default"_s].toString();
+        paramDef.sensitive = paramObj[u"sensitive"_s].toBool(false);
+        m_optionalParameters.append(paramDef);
+    }
+
+    // Pre-fill parameter values with defaults from optional parameters
+    for (const auto &param : m_optionalParameters) {
+        if (!param.defaultValue.isEmpty() && !m_parameterValues.contains(param.key)) {
+            m_parameterValues[param.key] = param.defaultValue;
+        }
+    }
+
+    // Load existing parameter values from config object (for installed servers)
     const auto configObj = data[u"config"_s].toObject();
     for (auto it = configObj.begin(); it != configObj.end(); ++it) {
-        m_propertyValues[it.key()] = it.value().toString();
+        m_parameterValues[it.key()] = it.value().toString();
     }
 }
 
@@ -425,25 +445,44 @@ QJsonObject MCPResource::toJson() const
     obj[u"permissions"_s] = permissionsArray;
     obj[u"tools"_s] = toolsArray;
 
-    // Include required properties definition
-    if (!m_requiredProperties.isEmpty()) {
-        QJsonArray propsArray;
-        for (const auto &prop : m_requiredProperties) {
-            QJsonObject propObj;
-            propObj[u"key"_s] = prop.key;
-            propObj[u"label"_s] = prop.label;
-            propObj[u"description"_s] = prop.description;
-            propObj[u"sensitive"_s] = prop.sensitive;
-            propObj[u"required"_s] = prop.required;
-            propsArray.append(propObj);
+    // Include required parameters
+    if (!m_requiredParameters.isEmpty()) {
+        QJsonArray paramsArray;
+        for (const auto &param : m_requiredParameters) {
+            QJsonObject paramObj;
+            paramObj[u"key"_s] = param.key;
+            paramObj[u"label"_s] = param.label;
+            paramObj[u"description"_s] = param.description;
+            if (!param.defaultValue.isEmpty()) {
+                paramObj[u"default"_s] = param.defaultValue;
+            }
+            paramObj[u"sensitive"_s] = param.sensitive;
+            paramsArray.append(paramObj);
         }
-        obj[u"requiredProperties"_s] = propsArray;
+        obj[u"requiredParameters"_s] = paramsArray;
+    }
+
+    // Include optional parameters
+    if (!m_optionalParameters.isEmpty()) {
+        QJsonArray paramsArray;
+        for (const auto &param : m_optionalParameters) {
+            QJsonObject paramObj;
+            paramObj[u"key"_s] = param.key;
+            paramObj[u"label"_s] = param.label;
+            paramObj[u"description"_s] = param.description;
+            if (!param.defaultValue.isEmpty()) {
+                paramObj[u"default"_s] = param.defaultValue;
+            }
+            paramObj[u"sensitive"_s] = param.sensitive;
+            paramsArray.append(paramObj);
+        }
+        obj[u"optionalParameters"_s] = paramsArray;
     }
 
     // Include configuration values
-    if (!m_propertyValues.isEmpty()) {
+    if (!m_parameterValues.isEmpty()) {
         QJsonObject configObj;
-        for (auto it = m_propertyValues.begin(); it != m_propertyValues.end(); ++it) {
+        for (auto it = m_parameterValues.begin(); it != m_parameterValues.end(); ++it) {
             configObj[it.key()] = it.value();
         }
         obj[u"config"_s] = configObj;
@@ -479,7 +518,7 @@ void MCPResource::loadUserConfiguration()
     const QJsonObject serverConfig = servers[m_id].toObject();
 
     for (auto it = serverConfig.begin(); it != serverConfig.end(); ++it) {
-        m_propertyValues[it.key()] = it.value().toString();
+        m_parameterValues[it.key()] = it.value().toString();
     }
 }
 
@@ -508,7 +547,7 @@ bool MCPResource::saveUserConfiguration()
     // Update the servers.<id> section
     QJsonObject servers = root[u"servers"_s].toObject();
     QJsonObject serverConfig;
-    for (auto it = m_propertyValues.begin(); it != m_propertyValues.end(); ++it) {
+    for (auto it = m_parameterValues.begin(); it != m_parameterValues.end(); ++it) {
         serverConfig[it.key()] = it.value();
     }
     servers[m_id] = serverConfig;
@@ -530,38 +569,63 @@ bool MCPResource::saveUserConfiguration()
     return QFile::rename(tempPath, configPath);
 }
 
-void MCPResource::setPropertyValue(const QString &key, const QString &value)
+void MCPResource::setParameterValue(const QString &key, const QString &value)
 {
-    if (m_propertyValues.value(key) != value) {
-        m_propertyValues[key] = value;
-        Q_EMIT propertyValuesChanged();
+    if (m_parameterValues.value(key) != value) {
+        m_parameterValues[key] = value;
+        Q_EMIT parameterValuesChanged();
     }
 }
 
-QString MCPResource::propertyValue(const QString &key) const
+QString MCPResource::parameterValue(const QString &key) const
 {
-    return m_propertyValues.value(key);
+    return m_parameterValues.value(key);
 }
 
-QVariantList MCPResource::requiredPropertiesQml() const
+bool MCPResource::hasUnconfiguredRequiredParameters() const
+{
+    for (const auto &param : m_requiredParameters) {
+        if (m_parameterValues.value(param.key).isEmpty()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+QVariantList MCPResource::requiredParametersQml() const
 {
     QVariantList result;
-    for (const auto &prop : m_requiredProperties) {
-        QVariantMap propMap;
-        propMap[u"key"_s] = prop.key;
-        propMap[u"label"_s] = prop.label;
-        propMap[u"description"_s] = prop.description;
-        propMap[u"sensitive"_s] = prop.sensitive;
-        propMap[u"required"_s] = prop.required;
-        result.append(propMap);
+    for (const auto &param : m_requiredParameters) {
+        QVariantMap paramMap;
+        paramMap[u"key"_s] = param.key;
+        paramMap[u"label"_s] = param.label;
+        paramMap[u"description"_s] = param.description;
+        paramMap[u"default"_s] = param.defaultValue;
+        paramMap[u"sensitive"_s] = param.sensitive;
+        result.append(paramMap);
     }
     return result;
 }
 
-QVariantMap MCPResource::propertyValuesQml() const
+QVariantList MCPResource::optionalParametersQml() const
+{
+    QVariantList result;
+    for (const auto &param : m_optionalParameters) {
+        QVariantMap paramMap;
+        paramMap[u"key"_s] = param.key;
+        paramMap[u"label"_s] = param.label;
+        paramMap[u"description"_s] = param.description;
+        paramMap[u"default"_s] = param.defaultValue;
+        paramMap[u"sensitive"_s] = param.sensitive;
+        result.append(paramMap);
+    }
+    return result;
+}
+
+QVariantMap MCPResource::parameterValuesQml() const
 {
     QVariantMap result;
-    for (auto it = m_propertyValues.begin(); it != m_propertyValues.end(); ++it) {
+    for (auto it = m_parameterValues.begin(); it != m_parameterValues.end(); ++it) {
         result[it.key()] = it.value();
     }
     return result;
@@ -573,13 +637,13 @@ void MCPResource::updateConfiguration(const QVariantMap &values)
     for (auto it = values.begin(); it != values.end(); ++it) {
         const QString key = it.key();
         const QString value = it.value().toString();
-        if (m_propertyValues.value(key) != value) {
-            m_propertyValues[key] = value;
+        if (m_parameterValues.value(key) != value) {
+            m_parameterValues[key] = value;
             changed = true;
         }
     }
     if (changed) {
-        Q_EMIT propertyValuesChanged();
+        Q_EMIT parameterValuesChanged();
         saveUserConfiguration();
     }
 }
