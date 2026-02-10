@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-06 00:46+0000\n"
+"POT-Creation-Date: 2026-02-10 00:45+0000\n"
 "PO-Revision-Date: 2026-01-26 21:17+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -582,7 +582,7 @@ msgid "Local bundle"
 msgstr "ローカルパッケージ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1933
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:839
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "不正な AppStream の URL '%1'"
@@ -1259,12 +1259,12 @@ msgstr ""
 "あなたのオペレーティングシステムのサポートは %1 に終了しました。サポートされ"
 "ているバージョンへの更新を検討してください。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "'%1'を削除できません。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1031
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1277,20 +1277,20 @@ msgstr ""
 "この新しいバージョンに更新する前に、すべての利用可能な更新を適用してシステム"
 "を再起動する必要があります。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "今すぐ更新"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1063
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 が利用可能になりました。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1190
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1200
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""
@@ -2291,13 +2291,13 @@ msgstr ""
 "パッケージ %1 とそのベンダー %2 の使用許諾契約に同意する必要があります:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:894
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:895
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%2 に %1 の署名がありません。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:895
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:896
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""

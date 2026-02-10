@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-06 00:46+0000\n"
+"POT-Creation-Date: 2026-02-10 00:45+0000\n"
 "PO-Revision-Date: 2025-11-13 21:00+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -583,7 +583,7 @@ msgid "Local bundle"
 msgstr "Helyi csomag"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1933
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:839
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Hibás appstream URL: „%1”"
@@ -1270,12 +1270,12 @@ msgstr ""
 "Az operációs rendszere befejezte a támogatást ekkor: %1. Fontolja meg a "
 "frissítést egy támogatott verzióra."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nem lehet eltávolítani ezt: „%1”"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1031
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1288,20 +1288,20 @@ msgstr ""
 "Az új verzióra váltáshoz először telepítsen minden elérhető frissítést, majd "
 "indítsa újra a rendszert."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Frissítés most"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1063
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "A(z) %1 most már elérhető."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1190
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1200
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""
@@ -2314,13 +2314,13 @@ msgstr ""
 "licencet:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:894
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:895
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "A(z) %1 csomag aláírása hiányzik a(z) %2 tárolóban"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:895
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:896
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""

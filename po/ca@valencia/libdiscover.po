@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-06 00:46+0000\n"
+"POT-Creation-Date: 2026-02-10 00:45+0000\n"
 "PO-Revision-Date: 2026-01-24 09:54+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -584,7 +584,7 @@ msgid "Local bundle"
 msgstr "Paquet local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1933
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:839
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL d'«appstream» amb format incorrecte «%1»"
@@ -1276,12 +1276,12 @@ msgstr ""
 "El vostre sistema operatiu ha finalitzat el suport %1. Considereu "
 "l'actualització a una versió suportada."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "No s'ha pogut eliminar «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1031
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1294,20 +1294,20 @@ msgstr ""
 "Per a poder actualitzar a esta versió nova, primer apliqueu totes les "
 "actualitzacions i després reinicieu el sistema."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Actualitza ara"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1063
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "Ara està disponible %1."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1190
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1200
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""
@@ -2321,13 +2321,13 @@ msgstr ""
 "llicència:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:894
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:895
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Falta la signatura per a %1 a %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:895
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:896
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""

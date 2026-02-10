@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-05 00:45+0000\n"
-"PO-Revision-Date: 2026-01-29 01:40+0000\n"
+"PO-Revision-Date: 2026-02-09 15:25+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -308,18 +308,7 @@ msgid "No ratings yet"
 msgstr "Nicio evaluare deocamdată"
 
 #: discover/qml/ApplicationPage.qml:69
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -335,30 +324,22 @@ msgid ""
 "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
-"Instalați această aplicație doar dacă aveți încredere deplină în autorii săi "
-"(%1).<nl/><nl/> Codul-sursă al acestei aplicații e închis parțial sau în "
-"totalitate inspecției și îmbunătățirii de către public. Aceasta înseamnă că "
-"terțe părți și utilizatori ca dumneavoastră nu-i pot verifica operarea, "
-"securitatea și credibilitatea, sau să modifice și să redistribuie aplicația "
-"fără permisiunea expresă a autorilor.<nl/><nl/>Aplicația poate fi pe deplin "
-"sigură în utilizare, sau poate acționa împotriva dumneavoastră pe diferite "
-"căi – cum ar fi colectarea informațiilor personale, urmărirea amplasării, "
-"sau transmiterea conținutului fișierelor dumneavoastră altcuiva.<nl/><nl/"
-">Puteți afla mai multe la <link url='%2'>%2</link>."
+"Instalați %1 doar dacă aveți încredere deplină în autorii săi deoarece e "
+"<emphasis strong='true'>proprietară</emphasis>: libertatea dumneavoastră de "
+"a folosi, modifica și redistribui această aplicație e îngrădită, iar codul-"
+"sursă al acesteia e închis, parțial sau în totalitate, inspecției și "
+"îmbunătățirii de către public. Aceasta înseamnă că terțe părți și "
+"utilizatori ca dumneavoastră nu-i pot verifica operarea, securitatea și "
+"credibilitatea.<nl/><nl/>Aplicația poate fi pe deplin sigură în utilizare, "
+"sau poate acționa împotriva dumneavoastră pe diferite căi – cum ar fi "
+"colectarea informațiilor personale, urmărirea amplasării, sau transmiterea "
+"conținutului fișierelor dumneavoastră altcuiva. Folosiți-o doar dacă aveți "
+"încredere deplină în autorii acesteia. S-ar putea să găsiți mai multe "
+"informații pe <link url='%2'>saitul aplicației</link>.<nl/><nl/>Puteți afla "
+"mai multe la <link url='%3'>%</link>."
 
 #: discover/qml/ApplicationPage.qml:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install this application if you fully trust its authors (%1).<nl/"
-#| "><nl/>This application's source code is partially or entirely closed to "
-#| "public inspection and improvement. That means third parties and users "
-#| "like you cannot verify its operation, security, and trustworthiness, or "
-#| "modify and redistribute it without the authors' express permission.<nl/"
-#| "><nl/>The application may be perfectly safe to use, or it may be acting "
-#| "against you in various ways—such as harvesting your personal information, "
-#| "tracking your location, or transmitting the contents of your files to "
-#| "someone else.<nl/><nl/>You can learn more at <link url='%2'>%2</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -372,16 +353,18 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Instalați această aplicație doar dacă aveți încredere deplină în autorii săi "
-"(%1).<nl/><nl/> Codul-sursă al acestei aplicații e închis parțial sau în "
-"totalitate inspecției și îmbunătățirii de către public. Aceasta înseamnă că "
-"terțe părți și utilizatori ca dumneavoastră nu-i pot verifica operarea, "
-"securitatea și credibilitatea, sau să modifice și să redistribuie aplicația "
-"fără permisiunea expresă a autorilor.<nl/><nl/>Aplicația poate fi pe deplin "
-"sigură în utilizare, sau poate acționa împotriva dumneavoastră pe diferite "
-"căi – cum ar fi colectarea informațiilor personale, urmărirea amplasării, "
-"sau transmiterea conținutului fișierelor dumneavoastră altcuiva.<nl/><nl/"
-">Puteți afla mai multe la <link url='%2'>%2</link>."
+"Instalați %1 doar dacă aveți încredere deplină în autorii săi deoarece e "
+"<emphasis strong='true'>proprietară</emphasis>: libertatea dumneavoastră de "
+"a folosi, modifica și redistribui această aplicație e îngrădită, iar codul-"
+"sursă al acesteia e închis, parțial sau în totalitate, inspecției și "
+"îmbunătățirii de către public. Aceasta înseamnă că terțe părți și "
+"utilizatori ca dumneavoastră nu-i pot verifica operarea, securitatea și "
+"credibilitatea.<nl/><nl/>Aplicația poate fi pe deplin sigură în utilizare, "
+"sau poate acționa împotriva dumneavoastră pe diferite căi – cum ar fi "
+"colectarea informațiilor personale, urmărirea amplasării, sau transmiterea "
+"conținutului fișierelor dumneavoastră altcuiva. Folosiți-o doar dacă aveți "
+"încredere deplină în autorii acesteia. Puteți afla mai multe la <link "
+"url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:81
 #, kde-kuit-format
@@ -399,6 +382,19 @@ msgid ""
 "url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"%1 folosește una sau mai multe licențe ce nu sunt clasificate ca „Program "
+"Liber” de către <link url='%2'>Free Software Foundation</link> sau <link "
+"url='%3'>Open Source Initiative</link>. Aceasta înseamnă că libertatea "
+"dumneavoastră de a folosi, studia, modifica și partaja programul poate fi "
+"îngrădită în vreun fel. More information may be available on <link "
+"url='%5'>the application's website</link>.<nl/><nl/>Asigurați-vă că ați "
+"citit textul licenței și că înțelegeți orice restricții înainte de a folosi "
+"programul.<nl/><nl/>Dacă licența nu permite nici măcar accesul la codul-"
+"sursă, asigurați-vă că aveți încredere deplină în autori, întrucât nimeni "
+"altcineva nu poate verifica credibilitatea și securitatea codului acesteia "
+"pentru a vă asigura că nu lucrează împotriva dumneavoastră pe ascuns. S-ar "
+"putea să găsiți mai multe informații pe <link url='%4'>saitul aplicației</"
+"link>.<nl/><nl/>Aflați mai multe la <link url='%'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:88
 #, kde-kuit-format
@@ -414,6 +410,17 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"%1 folosește una sau mai multe licențe ce nu sunt clasificate ca „Program "
+"Liber” de către <link url='%2'>Free Software Foundation</link> sau <link "
+"url='%3'>Open Source Initiative</link>. Aceasta înseamnă că libertatea "
+"dumneavoastră de a folosi, studia, modifica și partaja programul poate fi "
+"îngrădită în vreun fel.<nl/><nl/>Asigurați-vă că ați citit textul licenței "
+"și că înțelegeți orice restricții înainte de a folosi programul.<nl/><nl/"
+">Dacă licența nu permite nici măcar accesul la codul-sursă, asigurați-vă că "
+"aveți încredere deplină în autori, întrucât nimeni altcineva nu poate "
+"verifica credibilitatea și securitatea codului acesteia pentru a vă asigura "
+"că nu lucrează împotriva dumneavoastră pe ascuns.<nl/><nl/>Aflați mai multe "
+"la <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:97
 #, kde-kuit-format
@@ -424,6 +431,10 @@ msgid ""
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
+"%1 nu indică licența cu care e distribuită. E posibil să puteți determina "
+"aceasta pe <link url='%2'>saitul aplicației</link>. Dacă nu o găsiți acolo, "
+"contactați autorul aplicației dacă vreți s-o folosiți în alte scopuri decât "
+"cele personale."
 
 #: discover/qml/ApplicationPage.qml:101
 #, kde-format
@@ -433,6 +444,8 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"%1 nu indică licența cu care e distribuită. Contactați autorul aplicației "
+"dacă vreți s-o folosiți în alte scopuri decât cele personale."
 
 #: discover/qml/ApplicationPage.qml:142
 #, kde-format
@@ -1160,6 +1173,9 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"Dacă %1 nu pornește, încercați să raportați aceasta împachetatorilor din %2 "
+"la <link url='%3'>%3</link> deoarece ar putea fi vorba de o problemă ușor "
+"rezolvabilă cu împachetarea și nu un defect al aplicației."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1169,6 +1185,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"Dacă %1 nu pornește, încercați să raportați aceasta dezvoltatorilor la <link "
+"url='%2'>%2</link> deoarece ar putea fi vorba de o problemă ușor rezolvabilă "
+"cu împachetarea și nu un defect al aplicației."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1177,6 +1196,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to the developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"Dacă aplicația se prăbușește des, încercați să raportați aceasta "
+"dezvoltatorilor la <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1186,6 +1207,9 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"Dacă întâmpinați vreo problemă cu aplicația, încercați să o raportați "
+"dezvoltatorilor la <link url='%1'>%1</link>, sau descrieți problema aici în "
+"mai multe detalii."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1210,7 +1234,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "pornește,lansează,rulează,merge"
 
 #: discover/qml/ReviewDialog.qml:155
 #, kde-format
@@ -1220,7 +1244,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "prăbușire,prăbușit,crăpat"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1231,6 +1255,7 @@ msgctxt ""
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
+"nu lucrează,prost,proastă,tâmpit,tîmpit,tâmpită,gunoi,nașpa,rahat,urăsc"
 
 #: discover/qml/ReviewDialog.qml:183
 #, kde-format
@@ -1504,14 +1529,10 @@ msgid "Installing"
 msgstr "Se instalează"
 
 #: discover/qml/UpdatesPage.qml:530
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-#| "\"Ubuntu\""
-#| msgid "From %1"
+#, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "De la %1"
+msgstr "De la:"
 
 #: discover/qml/UpdatesPage.qml:547
 #, kde-format
@@ -1522,11 +1543,10 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:559
-#, fuzzy, kde-format
-#| msgid "More Information…"
+#, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
-msgstr "Informații suplimentare…"
+msgstr "Mai multe…"
 
 #: discover/qml/UpdatesPage.qml:607
 #, kde-format

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-06 00:46+0000\n"
+"POT-Creation-Date: 2026-02-10 00:45+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -600,7 +600,7 @@ msgid "Local bundle"
 msgstr "Локална свеза"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1933
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:839
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Лош апстрим УРЛ ‘%1’"
@@ -1263,13 +1263,13 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, fuzzy, kde-format
 #| msgid "Cannot remove system package"
 msgid "Cannot remove '%1'"
 msgstr "Не могу да уклоним системски пакет"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1031
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1279,14 +1279,14 @@ msgid ""
 "updates, and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
 #, fuzzy, kde-format
 #| msgid "Upgradeable"
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "надоградиво"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1063
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
 #, fuzzy, kde-format
 #| msgid "Repo not available"
@@ -1294,7 +1294,7 @@ msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "Ризница није доступна"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1190
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1200
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""
@@ -2403,13 +2403,13 @@ msgstr ""
 "Пакет %1 и његов издавач %2 траже да прихватите следећу лиценцу:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:894
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:895
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Недостаје потпис за %1 у %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:895
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:896
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""

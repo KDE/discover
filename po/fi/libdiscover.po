@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-06 00:46+0000\n"
+"POT-Creation-Date: 2026-02-10 00:45+0000\n"
 "PO-Revision-Date: 2026-01-12 14:44+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -588,7 +588,7 @@ msgid "Local bundle"
 msgstr "Paikallinen nippu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1933
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:839
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Virheellinen appstream-osoite ”%1”"
@@ -1268,12 +1268,12 @@ msgstr ""
 "Käyttöjärjestelmäsi tuki päättyi %1. Harkitse päivittämistä tuettuun "
 "versioon."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Ei voida poistaa: ”%1”"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1031
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1286,20 +1286,20 @@ msgstr ""
 "Voidaksesi päivittää uuteen versioon asenna kaikki odottavat päivitykset ja "
 "käynnistä järjestelmä uudelleen."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Päivitä nyt"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1063
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 on nyt saatavilla."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1190
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1200
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""
@@ -2306,13 +2306,13 @@ msgstr ""
 "Paketti %1 ja sen toimittaja %2 vaativat, että hyväksyt heidän lisenssinsä:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:894
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:895
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Puuttuva allekirjoitus: %1 kohteessa %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:895
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:896
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""

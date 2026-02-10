@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-06 00:46+0000\n"
-"PO-Revision-Date: 2026-01-29 01:49+0000\n"
+"POT-Creation-Date: 2026-02-10 00:45+0000\n"
+"PO-Revision-Date: 2026-02-09 15:02+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -580,7 +580,7 @@ msgid "Local bundle"
 msgstr "Pachet local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1933
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:839
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL appstream eronat „%1”"
@@ -909,6 +909,8 @@ msgstr ""
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
 msgstr ""
+"Aplicație verificată pe %1 după cum e distribuită de către autorul acesteia "
+"%2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
@@ -987,6 +989,8 @@ msgid ""
 "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
+"Nu se poate crea tranzacția pentru „%1”:<nl/>%2<nl/><nl/>Raportați aceasta "
+"la <a href='%3'>%3</a>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
@@ -995,6 +999,8 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"A intervenit o eroare internă. Raportați aceasta la https://bugs.kde.org/"
+"enter_bug.cgi?product=Discover"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:462
 #, kde-format
@@ -1021,21 +1027,15 @@ msgid "Automatic Removal"
 msgstr "Eliminare automată"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
 msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
-"<resource>%1</resource> nu mai primește actualizări.<nl/><nl/>Înlocuiți cu "
-"versiunea ce beneficiază de suport oferită de <resource>%2</resource>?"
+"<resource>%1</resource> nu mai primește actualizări.<nl/><p>Motivul oferit "
+"este: <message>%2</message></p><nl/><p>Îl eliminați automat?</p>"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:30
 #, kde-format
@@ -1123,11 +1123,10 @@ msgid "Holo"
 msgstr "Holo"
 
 #: libdiscover/backends/HoloBackend/HoloBackend.cpp:113
-#, fuzzy, kde-format
-#| msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+#, kde-format
 msgctxt "%1 is the pretty name of the distro e.g. Holo or SteamOS"
 msgid "Holo: Unable to query atomupd for %1 Updates..."
-msgstr "SteamOS: Nu se poate interoga atomupd pentru actualizări SteamOS…"
+msgstr "Holo: Nu se poate interoga „atomupd” pentru actualizări %1…"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
@@ -1264,12 +1263,12 @@ msgstr ""
 "Sistemul acesta de operare a rămas fără suport pe %1. Luați în calcul "
 "înnoirea la o versiune susținută."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:945
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, kde-format
 msgid "Cannot remove '%1'"
 msgstr "Nu se poate elimina „%1”"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1031
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1282,26 +1281,28 @@ msgstr ""
 "Pentru a putea înnoi la noua versiune, asigurați-vă că ați aplicat toate "
 "actualizările disponibile, apoi reporniți sistemul."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1040
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
 #, kde-format
 msgctxt "@action: button"
 msgid "Upgrade Now"
 msgstr "Înnoiește acum"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1063
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 e disponibil acum."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1190
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1200
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""
 "The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
 "<link url='%1'>report this issue to %2</link>"
 msgstr ""
+"Serviciul de fundal PackageKit s-a oprit pe neașteptate.<nl/></nl/>Vă rugăm "
+"să <link url='%1'>raportați această problemă la %2</link>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2308,13 +2309,13 @@ msgstr ""
 "Pachetul %1 și vânzătorul acestuia %2 vă cer să le acceptați licența:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:894
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:895
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Lipsește semnătura pentru %1 în %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:895
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:896
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""
@@ -2397,21 +2398,19 @@ msgid "Operating System"
 msgstr "Sistem de operare"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:172
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: Au fost găsite multiple implementări demarate. Raportați un "
-"defect."
+"Platforma rpm-ostree: Au fost găsite multiple implementări demarate. "
+"Raportați un defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:184
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
-"rpm-ostree: Nu a fost găsită nicio implementare demarată. Raportați un "
-"defect."
+"Platforma rpm-ostree: Nu a fost găsită nicio implementare demarată. "
+"Raportați un defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, kde-format
@@ -2495,46 +2494,37 @@ msgid "Fallback version"
 msgstr "Versiunea de rezervă"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Eroare: Nu a fost furnizată nicio interfață DBus. "
+"Platforma rpm-ostree: Eroare: Nu a fost furnizată nicio interfață DBus. "
 "Raportați un defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Eroare: Nu se poate porni tranzacția pentru resursă cu "
+"Platforma rpm-ostree: Eroare: Nu se poate porni tranzacția pentru resursă cu "
 "format nevalid. Raportați un defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Eroare: Nu se poate schimba baza la o referință goală. "
+"Platforma rpm-ostree: Eroare: Nu se poate schimba baza la o referință goală. "
 "Raportați un defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Eroare: Operație necunoscută cerută. Raportați un defect."
+"Platforma rpm-ostree: Eroare: Operație necunoscută cerută. Raportați un "
+"defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
@@ -2547,12 +2537,10 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Eroare: Format de resursă necunoscut. Raportați un "
+"Platforma rpm-ostree: Eroare: Format de resursă necunoscut. Raportați un "
 "defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
@@ -2652,12 +2640,13 @@ msgstr ""
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgstr ""
+"Obținerea datelor appstream pentru „%1” a eșuat.<nl/><nl/>Mesajul erorii: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "Nu a fost găsit niciun URL appstream pentru ținta „%1”"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
 #, kde-kuit-format
@@ -2666,18 +2655,21 @@ msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
 msgstr ""
+"Obținerea actualizărilor de la <a href='%1'>%1</a> a eșuat.<nl/><nl/>Mesajul "
+"erorii: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
 msgstr ""
+"Parcurgerea metadatelor actualizării a eșuat.<nl/><nl/>Mesajul erorii: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
-msgstr ""
+msgstr "Nu au fost găsite componente în metadatele appstream pentru ținta „%1”"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
