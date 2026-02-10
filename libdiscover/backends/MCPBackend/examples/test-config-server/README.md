@@ -27,8 +27,8 @@ chmod +x index.js
 3. Test locally:
 ```bash
 # Create a test manifest file
-mkdir -p ~/.local/share/mcp/installed/
-cat > ~/.local/share/mcp/installed/com.example.test-config.json << EOF
+mkdir -p ~/.local/share/mcp/installed/com.example.test-config/
+cat > ~/.local/share/mcp/installed/com.example.test-config/manifest.json << EOF
 {
   "id": "com.example.test-config",
   "name": "Test Config Server",
@@ -85,8 +85,8 @@ The server provides two tools:
 ## Manifest File Location
 
 The server looks for configuration in these locations (in order):
-1. `/usr/share/mcp/installed/com.example.test-config.json` (system-wide)
-2. `~/.local/share/mcp/installed/com.example.test-config.json` (user-specific)
+1. `/usr/share/mcp/installed/com.example.test-config/manifest.json` (system-wide)
+2. `~/.local/share/mcp/installed/com.example.test-config/manifest.json` (user-specific)
 
 ## Debugging
 

@@ -24,15 +24,17 @@ class QNetworkReply;
  * through KDE Discover. It integrates with Project JARVIS's SuperMCP
  * orchestration layer by providing a system-wide MCP server registry.
  *
- * MCP servers are stored in:
- * - /usr/share/mcp/installed/ (system-wide)
- * - ~/.local/share/mcp/installed/ (user-specific)
+ * System-managed storage (requires privilege escalation via pkexec):
+ * - /usr/share/mcp/installed/{id}/           (per-server directory with files and manifest)
+ * - /usr/share/mcp/installed/{id}/manifest.json  (server metadata, source of truth)
+ * - /usr/share/mcp/mcp.json                  (index of all installed servers, kept in sync)
  *
- * Registry sources are configured in:
- * - ~/.config/mcp/sources.list (user)
- * - /etc/mcp/sources.list (system)
+ * User-managed storage (no privilege escalation needed):
+ * - ~/.config/mcp/config.json          (user-specific config: API keys, etc.)
+ * - ~/.config/mcp/sources.list         (registry source URLs)
  *
- * Each line in sources.list is a URL to a registry JSON file.
+ * Registry sources (system-wide, optional):
+ * - /etc/mcp/sources.list
  */
 class MCPBackend : public AbstractResourcesBackend
 {
@@ -66,6 +68,21 @@ public:
     // Get resource by ID
     MCPResource *resourceById(const QString &id) const;
 
+    /// Add an entry to the system mcp.json (requires pkexec)
+    bool addServerToMcpJson(const QJsonObject &serverData);
+    /// Remove an entry from the system mcp.json (requires pkexec)
+    bool removeServerFromMcpJson(const QString &serverId);
+
+    /// Write per-server manifest to installed/{id}/manifest.json (requires pkexec)
+    bool writeServerManifest(const QString &serverId, const QJsonObject &manifest);
+
+    /// System paths
+    static QString systemMcpDir();
+    static QString systemMcpJsonPath();
+    static QString systemInstalledDir();
+    static QString serverInstallDir(const QString &serverId);
+    static QString serverManifestPath(const QString &serverId);
+
 Q_SIGNALS:
     void registrySourcesChanged();
 
@@ -76,12 +93,16 @@ private:
     void loadSourcesConfig();
     void saveSourcesConfig();
     void loadInstalledServers();
+    void loadMcpJson();
     void loadCachedRegistries();
     void fetchOnlineRegistries();
     void fetchNextRegistry();
     void parseRegistryData(const QJsonArray &servers);
     void addResource(MCPResource *resource);
     MCPResource *createResourceFromJson(const QJsonObject &data);
+
+    /// Execute a privileged write operation via pkexec
+    bool privilegedWriteFile(const QString &filePath, const QByteArray &content);
 
     QHash<QString, MCPResource *> m_resources;
     StandardBackendUpdater *m_updater;

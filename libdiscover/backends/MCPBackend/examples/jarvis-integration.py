@@ -5,9 +5,9 @@ JARVIS SuperMCP Integration Example
 This script demonstrates how Project JARVIS's SuperMCP orchestration layer
 can discover and use MCP servers installed via KDE Discover.
 
-The servers are installed to:
-- /usr/share/mcp/installed/ (system-wide)
-- ~/.local/share/mcp/installed/ (user-specific)
+Each server is installed in an isolated directory with its own manifest:
+- /usr/share/mcp/installed/{id}/manifest.json  (system-wide)
+- ~/.local/share/mcp/installed/{id}/manifest.json  (user-specific)
 """
 
 import json
@@ -40,6 +40,10 @@ def discover_installed_servers() -> Dict[str, dict]:
     """
     Discover all installed MCP servers from the system registry.
 
+    Each server lives in its own directory: installed/{id}/manifest.json
+    The manifest contains all metadata plus an 'installedCommand' field
+    in the transport section that points to the resolved binary path.
+
     Returns a dictionary mapping server IDs to their configuration.
     """
     servers = {}
@@ -48,7 +52,15 @@ def discover_installed_servers() -> Dict[str, dict]:
         if not mcp_dir.exists():
             continue
 
-        for manifest_path in mcp_dir.glob('*.json'):
+        # Each subdirectory is a server; manifest.json lives inside it
+        for server_dir in mcp_dir.iterdir():
+            if not server_dir.is_dir():
+                continue
+
+            manifest_path = server_dir / 'manifest.json'
+            if not manifest_path.exists():
+                continue
+
             try:
                 with open(manifest_path, 'r') as f:
                     manifest = json.load(f)
@@ -69,13 +81,17 @@ def get_server_config(server: dict) -> dict:
     Convert a server manifest to a configuration suitable for MCP clients.
 
     This format is compatible with Claude Code and other MCP clients.
+    Uses 'installedCommand' (the resolved full path) when available,
+    falling back to the original 'command' name.
     """
     transport = server.get('transport', {})
     server_type = server.get('type', 'stdio')
 
     if server_type == 'stdio':
+        # Prefer the resolved installedCommand path over the bare command name
+        command = transport.get('installedCommand', transport.get('command'))
         return {
-            'command': transport.get('command'),
+            'command': command,
             'args': transport.get('args', []),
         }
     elif server_type == 'sse':

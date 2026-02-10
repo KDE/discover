@@ -452,31 +452,82 @@ QJsonObject MCPResource::toJson() const
     return obj;
 }
 
-QString MCPResource::manifestPath() const
+QString MCPResource::userConfigFilePath()
 {
-    // Installed server manifests go to /usr/share/mcp/installed/ (system-wide)
-    // or ~/.local/share/mcp/installed/ (user-specific)
+    const QString userConfigDir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+    return userConfigDir + u"/mcp/config.json"_s;
+}
 
-    // Try system directory first
-    const QString systemDirPath = u"/usr/share/mcp/installed/"_s;
-    const QDir systemDir(systemDirPath);
+void MCPResource::loadUserConfiguration()
+{
+    const QString configPath = userConfigFilePath();
+    QFile file(configPath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        return;
+    }
 
-    // Check if directory exists and is writable, or if parent (/usr/share) is writable (root)
-    if (systemDir.exists()) {
-        QFileInfo dirInfo(systemDirPath);
-        if (dirInfo.isWritable()) {
-            return systemDirPath + m_id + u".json"_s;
+    const QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+    file.close();
+
+    if (!doc.isObject()) {
+        return;
+    }
+
+    // config.json structure: { "servers": { "<server-id>": { "key": "value", ... } } }
+    const QJsonObject root = doc.object();
+    const QJsonObject servers = root[u"servers"_s].toObject();
+    const QJsonObject serverConfig = servers[m_id].toObject();
+
+    for (auto it = serverConfig.begin(); it != serverConfig.end(); ++it) {
+        m_propertyValues[it.key()] = it.value().toString();
+    }
+}
+
+bool MCPResource::saveUserConfiguration()
+{
+    const QString configPath = userConfigFilePath();
+    const QDir dir = QFileInfo(configPath).absoluteDir();
+
+    if (!dir.exists()) {
+        dir.mkpath(u"."_s);
+    }
+
+    // Read existing config.json (or start fresh)
+    QJsonObject root;
+    {
+        QFile file(configPath);
+        if (file.open(QIODevice::ReadOnly)) {
+            const QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+            file.close();
+            if (doc.isObject()) {
+                root = doc.object();
+            }
         }
     }
-    // Also check if /usr/share is writable (running as root)
-    QFileInfo usrShareInfo(u"/usr/share"_s);
-    if (usrShareInfo.isWritable()) {
-        return systemDirPath + m_id + u".json"_s;
+
+    // Update the servers.<id> section
+    QJsonObject servers = root[u"servers"_s].toObject();
+    QJsonObject serverConfig;
+    for (auto it = m_propertyValues.begin(); it != m_propertyValues.end(); ++it) {
+        serverConfig[it.key()] = it.value();
+    }
+    servers[m_id] = serverConfig;
+    root[u"servers"_s] = servers;
+
+    // Write atomically: write to temp file, then rename
+    const QString tempPath = configPath + u".tmp"_s;
+    QFile tempFile(tempPath);
+    if (!tempFile.open(QIODevice::WriteOnly)) {
+        return false;
     }
 
-    // Fall back to user directory
-    const QString userDataDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
-    return userDataDir + u"/mcp/installed/"_s + m_id + u".json"_s;
+    const QJsonDocument updatedDoc(root);
+    tempFile.write(updatedDoc.toJson(QJsonDocument::Indented));
+    tempFile.close();
+
+    // Remove old file and rename temp
+    QFile::remove(configPath);
+    return QFile::rename(tempPath, configPath);
 }
 
 void MCPResource::setPropertyValue(const QString &key, const QString &value)
@@ -529,53 +580,8 @@ void MCPResource::updateConfiguration(const QVariantMap &values)
     }
     if (changed) {
         Q_EMIT propertyValuesChanged();
-        saveConfigurationToManifest();
+        saveUserConfiguration();
     }
-}
-
-bool MCPResource::saveConfigurationToManifest()
-{
-    if (m_state != State::Installed && m_state != State::Upgradeable) {
-        return false;
-    }
-
-    const QString manifestPath = this->manifestPath();
-    const QDir dir = QFileInfo(manifestPath).absoluteDir();
-
-    if (!dir.exists()) {
-        dir.mkpath(u"."_s);
-    }
-
-    QFile file(manifestPath);
-    if (!file.open(QIODevice::ReadOnly)) {
-        return false;
-    }
-
-    QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
-    file.close();
-
-    if (!doc.isObject()) {
-        return false;
-    }
-
-    QJsonObject manifest = doc.object();
-    
-    // Update config object
-    QJsonObject configObj;
-    for (auto it = m_propertyValues.begin(); it != m_propertyValues.end(); ++it) {
-        configObj[it.key()] = it.value();
-    }
-    manifest[u"config"_s] = configObj;
-
-    // Write back
-    if (file.open(QIODevice::WriteOnly)) {
-        const QJsonDocument updatedDoc(manifest);
-        file.write(updatedDoc.toJson(QJsonDocument::Indented));
-        file.close();
-        return true;
-    }
-
-    return false;
 }
 
 void MCPResource::requestConfiguration()

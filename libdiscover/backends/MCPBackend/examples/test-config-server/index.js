@@ -7,8 +7,8 @@
  * configured through KDE Discover are used by an MCP server.
  * 
  * The server reads its configuration from the manifest file created by Discover:
- * - /usr/share/mcp/installed/com.example.test-config.json (system-wide)
- * - ~/.local/share/mcp/installed/com.example.test-config.json (user-specific)
+ * - /usr/share/mcp/installed/com.example.test-config/manifest.json (system-wide)
+ * - ~/.local/share/mcp/installed/com.example.test-config/manifest.json (user-specific)
  */
 
 const { Server } = require("@modelcontextprotocol/sdk/server/index.js");
@@ -33,8 +33,8 @@ let config = {
  */
 function loadConfig() {
   const possiblePaths = [
-    "/usr/share/mcp/installed/com.example.test-config.json",
-    path.join(os.homedir(), ".local/share/mcp/installed/com.example.test-config.json")
+    "/usr/share/mcp/installed/com.example.test-config/manifest.json",
+    path.join(os.homedir(), ".local/share/mcp/installed/com.example.test-config/manifest.json")
   ];
 
   for (const configPath of possiblePaths) {

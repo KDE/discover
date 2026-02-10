@@ -13,8 +13,8 @@ const os = require("os");
 
 function loadConfig() {
   const possiblePaths = [
-    "/usr/share/mcp/installed/com.example.test-config.json",
-    path.join(os.homedir(), ".local/share/mcp/installed/com.example.test-config.json")
+    "/usr/share/mcp/installed/com.example.test-config/manifest.json",
+    path.join(os.homedir(), ".local/share/mcp/installed/com.example.test-config/manifest.json")
   ];
 
   console.log("Testing configuration loading...\n");
@@ -53,8 +53,8 @@ function loadConfig() {
   
   console.log("\n❌ No manifest file found in any location.");
   console.log("\nTo create a test manifest, run:");
-  console.log(`mkdir -p ~/.local/share/mcp/installed/`);
-  console.log(`cat > ~/.local/share/mcp/installed/com.example.test-config.json << 'EOF'`);
+  console.log(`mkdir -p ~/.local/share/mcp/installed/com.example.test-config/`);
+  console.log(`cat > ~/.local/share/mcp/installed/com.example.test-config/manifest.json << 'EOF'`);
   console.log(`{`);
   console.log(`  "id": "com.example.test-config",`);
   console.log(`  "name": "Test Config Server",`);

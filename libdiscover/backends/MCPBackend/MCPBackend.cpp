@@ -16,14 +16,17 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
+#include <QDateTime>
 #include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QProcess>
 #include <QStandardPaths>
 #include <QTextStream>
 #include <QTimer>
@@ -47,8 +50,11 @@ MCPBackend::MCPBackend(QObject *parent)
     // Load registry sources from config
     loadSourcesConfig();
 
-    // Load installed servers first
+    // Load installed servers from installed/{id}/manifest.json files (primary source of truth)
     loadInstalledServers();
+
+    // Also load from mcp.json as fallback for older installations
+    loadMcpJson();
 
     // Load any cached registry data
     loadCachedRegistries();
@@ -278,48 +284,231 @@ void MCPBackend::saveSourcesConfig()
     }
 }
 
+QString MCPBackend::systemMcpDir()
+{
+    return u"/usr/share/mcp"_s;
+}
+
+QString MCPBackend::systemMcpJsonPath()
+{
+    return systemMcpDir() + u"/mcp.json"_s;
+}
+
+QString MCPBackend::systemInstalledDir()
+{
+    return systemMcpDir() + u"/installed"_s;
+}
+
+QString MCPBackend::serverInstallDir(const QString &serverId)
+{
+    return systemInstalledDir() + u"/"_s + serverId;
+}
+
+QString MCPBackend::serverManifestPath(const QString &serverId)
+{
+    return serverInstallDir(serverId) + u"/manifest.json"_s;
+}
+
+bool MCPBackend::writeServerManifest(const QString &serverId, const QJsonObject &manifest)
+{
+    const QString manifestPath = serverManifestPath(serverId);
+    const QJsonDocument doc(manifest);
+    return privilegedWriteFile(manifestPath, doc.toJson(QJsonDocument::Indented));
+}
+
 void MCPBackend::loadInstalledServers()
 {
-    const QString userDataDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
-    const QString userMcpDir = userDataDir + u"/mcp/installed"_s;
-
-    const QStringList systemDirs = QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
-
-    QStringList searchDirs;
-    searchDirs << userMcpDir;
-    for (const QString &dir : systemDirs) {
-        searchDirs << dir + u"/mcp/installed"_s;
+    const QDir installedDir(systemInstalledDir());
+    if (!installedDir.exists()) {
+        qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: No installed directory at" << systemInstalledDir();
+        return;
     }
 
-    for (const QString &dirPath : searchDirs) {
-        const QDir dir(dirPath);
-        if (!dir.exists()) {
+    const QStringList serverDirs = installedDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+    int count = 0;
+    for (const QString &dirName : serverDirs) {
+        const QString manifestPath = serverManifestPath(dirName);
+        QFile file(manifestPath);
+        if (!file.open(QIODevice::ReadOnly)) {
+            qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: No manifest.json in" << dirName;
             continue;
         }
 
-        const QStringList manifests = dir.entryList({u"*.json"_s}, QDir::Files);
-        for (const QString &manifest : manifests) {
-            const QString filePath = dir.absoluteFilePath(manifest);
-            QFile file(filePath);
+        const QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+        file.close();
 
-            if (file.open(QIODevice::ReadOnly)) {
-                const QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
-                file.close();
+        if (!doc.isObject()) {
+            qCWarning(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Invalid manifest.json in" << dirName;
+            continue;
+        }
 
-                if (doc.isObject()) {
-                    MCPResource *resource = createResourceFromJson(doc.object());
-                    if (resource) {
-                        resource->setState(AbstractResource::Installed);
-                        const QString installedVersion = doc.object()[u"installedVersion"_s].toString();
-                        resource->setInstalledVersion(installedVersion);
-                        addResource(resource);
-                    }
-                }
+        const QJsonObject serverObj = doc.object();
+        MCPResource *resource = createResourceFromJson(serverObj);
+        if (resource) {
+            resource->setState(AbstractResource::Installed);
+            const QString installedVersion = serverObj[u"installedVersion"_s].toString();
+            resource->setInstalledVersion(installedVersion);
+            resource->loadUserConfiguration();
+            addResource(resource);
+            ++count;
+        }
+    }
+
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Loaded" << count
+        << "installed servers from" << systemInstalledDir();
+}
+
+void MCPBackend::loadMcpJson()
+{
+    const QString mcpJsonPath = systemMcpJsonPath();
+    QFile file(mcpJsonPath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: No mcp.json found at" << mcpJsonPath;
+        return;
+    }
+
+    const QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+    file.close();
+
+    if (!doc.isObject()) {
+        qCWarning(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Invalid mcp.json format";
+        return;
+    }
+
+    const QJsonObject root = doc.object();
+    const QJsonArray servers = root[u"servers"_s].toArray();
+
+    for (const QJsonValue &serverValue : servers) {
+        if (!serverValue.isObject()) {
+            continue;
+        }
+
+        const QJsonObject serverObj = serverValue.toObject();
+        MCPResource *resource = createResourceFromJson(serverObj);
+        if (resource) {
+            resource->setState(AbstractResource::Installed);
+            const QString installedVersion = serverObj[u"installedVersion"_s].toString();
+            resource->setInstalledVersion(installedVersion);
+
+            // Load user-specific configuration (API keys, etc.) from ~/.config/mcp/config.json
+            resource->loadUserConfiguration();
+
+            addResource(resource);
+        }
+    }
+
+    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Loaded" << m_resources.count()
+        << "installed servers from" << mcpJsonPath;
+}
+
+bool MCPBackend::privilegedWriteFile(const QString &filePath, const QByteArray &content)
+{
+    // Write content to a temporary file first, then use pkexec to move it into place
+    const QString tempPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation)
+        + u"/mcp-write-"_s + QString::number(QDateTime::currentMSecsSinceEpoch()) + u".tmp"_s;
+
+    // Write to temp file (user-writable location)
+    QFile tempFile(tempPath);
+    if (!tempFile.open(QIODevice::WriteOnly)) {
+        qCWarning(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Failed to write temp file:" << tempPath;
+        return false;
+    }
+    tempFile.write(content);
+    tempFile.close();
+
+    // Ensure parent directory exists via pkexec
+    const QString parentDir = QFileInfo(filePath).absolutePath();
+    QProcess mkdirProcess;
+    mkdirProcess.start(u"pkexec"_s, {u"mkdir"_s, u"-p"_s, parentDir});
+    mkdirProcess.waitForFinished(30000);
+
+    // Use pkexec to copy temp file to the target (atomic: cp then set permissions)
+    QProcess cpProcess;
+    cpProcess.start(u"pkexec"_s, {u"cp"_s, u"--no-preserve=mode"_s, tempPath, filePath});
+    cpProcess.waitForFinished(30000);
+
+    // Clean up temp file
+    QFile::remove(tempPath);
+
+    if (cpProcess.exitCode() != 0) {
+        qCWarning(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: pkexec cp failed:"
+            << cpProcess.readAllStandardError();
+        return false;
+    }
+
+    return true;
+}
+
+bool MCPBackend::addServerToMcpJson(const QJsonObject &serverData)
+{
+    // Read existing mcp.json
+    QJsonObject root;
+    QJsonArray servers;
+    {
+        QFile file(systemMcpJsonPath());
+        if (file.open(QIODevice::ReadOnly)) {
+            const QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+            file.close();
+            if (doc.isObject()) {
+                root = doc.object();
+                servers = root[u"servers"_s].toArray();
             }
         }
     }
 
-    qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Loaded" << m_resources.count() << "installed servers";
+    // Remove existing entry with same ID if present (for upgrades)
+    const QString serverId = serverData[u"id"_s].toString();
+    for (int i = 0; i < servers.count(); ++i) {
+        if (servers[i].toObject()[u"id"_s].toString() == serverId) {
+            servers.removeAt(i);
+            break;
+        }
+    }
+
+    // Add the new server entry
+    servers.append(serverData);
+    root[u"servers"_s] = servers;
+
+    const QJsonDocument doc(root);
+    return privilegedWriteFile(systemMcpJsonPath(), doc.toJson(QJsonDocument::Indented));
+}
+
+bool MCPBackend::removeServerFromMcpJson(const QString &serverId)
+{
+    // Read existing mcp.json
+    QJsonObject root;
+    QJsonArray servers;
+    {
+        QFile file(systemMcpJsonPath());
+        if (file.open(QIODevice::ReadOnly)) {
+            const QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+            file.close();
+            if (doc.isObject()) {
+                root = doc.object();
+                servers = root[u"servers"_s].toArray();
+            }
+        }
+    }
+
+    // Find and remove the server entry
+    bool found = false;
+    for (int i = 0; i < servers.count(); ++i) {
+        if (servers[i].toObject()[u"id"_s].toString() == serverId) {
+            servers.removeAt(i);
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        qCWarning(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Server not found in mcp.json:" << serverId;
+        return false;
+    }
+
+    root[u"servers"_s] = servers;
+
+    const QJsonDocument doc(root);
+    return privilegedWriteFile(systemMcpJsonPath(), doc.toJson(QJsonDocument::Indented));
 }
 
 void MCPBackend::loadCachedRegistries()

@@ -1,4 +1,6 @@
 {
+  "_comment": "Example per-server manifest.json stored at /usr/share/mcp/installed/{id}/manifest.json",
+
   "id": "org.anthropic.mcp.filesystem",
   "name": "Filesystem Server",
   "summary": "Read and write access to local filesystem",
@@ -10,7 +12,8 @@
   "type": "stdio",
   "transport": {
     "command": "mcp-server-filesystem",
-    "args": ["--root", "/home"]
+    "args": ["--root", "/home"],
+    "installedCommand": "/usr/share/mcp/installed/org.anthropic.mcp.filesystem/node_modules/.bin/mcp-server-filesystem"
   },
   "source": {
     "type": "npm",

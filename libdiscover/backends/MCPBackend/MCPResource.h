@@ -115,17 +115,20 @@ public:
     // Get the raw JSON data for this server
     QJsonObject toJson() const;
 
-    // Get the manifest path for installed servers
-    QString manifestPath() const;
-
     // Configuration properties
     QList<RequiredProperty> requiredProperties() const { return m_requiredProperties; }
     QMap<QString, QString> propertyValues() const { return m_propertyValues; }
     void setPropertyValue(const QString &key, const QString &value);
     QString propertyValue(const QString &key) const;
     Q_INVOKABLE void updateConfiguration(const QVariantMap &values);
-    bool saveConfigurationToManifest();
     Q_INVOKABLE void requestConfiguration();
+
+    /// Save user-specific configuration (API keys, etc.) to ~/.config/mcp/config.json
+    bool saveUserConfiguration();
+    /// Load user-specific configuration from ~/.config/mcp/config.json
+    void loadUserConfiguration();
+    /// Path to user config file: ~/.config/mcp/config.json
+    static QString userConfigFilePath();
 
     // QML-compatible getters
     QVariantList requiredPropertiesQml() const;
