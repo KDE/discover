@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 00:45+0000\n"
+"POT-Creation-Date: 2026-02-11 00:46+0000\n"
 "PO-Revision-Date: 2014-03-16 09:10+0100\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -650,10 +650,10 @@ msgstr ""
 msgid "Name"
 msgstr "Naam"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:126
 #, kde-format
-msgid "Rating"
-msgstr "Beweerten"
+msgid "Popularity"
+msgstr "Möögde"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, fuzzy, kde-format
@@ -1043,6 +1043,11 @@ msgstr ""
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr ""
+
+#: discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "Beweerten"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
@@ -1737,9 +1742,6 @@ msgstr ""
 #~ msgstr ""
 #~ "<p style='margin: 0 0 0 0'><b>%1</b> vun %2</p><p style='margin: 0 0 0 0'>"
 #~ "%3</p><p style='margin: 0 0 0 0'>%4</p>"
-
-#~ msgid "Popularity"
-#~ msgstr "Möögde"
 
 #~ msgid "Origin"
 #~ msgstr "Born"

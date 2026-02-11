@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 00:45+0000\n"
+"POT-Creation-Date: 2026-02-11 00:46+0000\n"
 "PO-Revision-Date: 2026-01-12 14:40+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -701,10 +701,10 @@ msgstr "Asiaankuuluvuus"
 msgid "Name"
 msgstr "Nimi"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:126
 #, kde-format
-msgid "Rating"
-msgstr "Arvostelu"
+msgid "Popularity"
+msgstr "Suosio"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -1090,6 +1090,11 @@ msgstr "%1 – %2: %3"
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "%1 – %2"
+
+#: discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "Arvostelu"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
@@ -2111,9 +2116,6 @@ msgstr "Viimeisin päivitysaika ei ole tiedossa"
 
 #~ msgid "Details"
 #~ msgstr "Tiedot"
-
-#~ msgid "Popularity"
-#~ msgstr "Suosio"
 
 #~ msgid "Buzz"
 #~ msgstr "Kuhina"

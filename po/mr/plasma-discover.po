@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 00:45+0000\n"
+"POT-Creation-Date: 2026-02-11 00:46+0000\n"
 "PO-Revision-Date: 2013-04-01 10:16+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -650,10 +650,10 @@ msgstr ""
 msgid "Name"
 msgstr "नाव"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:126
 #, kde-format
-msgid "Rating"
-msgstr "गुणवत्ताश्रेणी"
+msgid "Popularity"
+msgstr "लोकप्रियता"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, fuzzy, kde-format
@@ -1044,6 +1044,11 @@ msgstr ""
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr ""
+
+#: discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "गुणवत्ताश्रेणी"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
@@ -1736,9 +1741,6 @@ msgstr ""
 #~ msgstr ""
 #~ "<p style='margin: 0 0 0 0'><b>%1</b> by %2</p><p style='margin: 0 0 0 0'>"
 #~ "%3</p><p style='margin: 0 0 0 0'>%4</p>"
-
-#~ msgid "Popularity"
-#~ msgstr "लोकप्रियता"
 
 #~ msgid "Buzz"
 #~ msgstr "बोलले जाणारे"

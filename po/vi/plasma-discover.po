@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 00:45+0000\n"
+"POT-Creation-Date: 2026-02-11 00:46+0000\n"
 "PO-Revision-Date: 2012-06-13 10:17+0800\n"
 "Last-Translator: HeroP <herophuong93@gmail.com>\n"
 "Language-Team: Vietnamese <kde-i18n-vi@kde.org>\n"
@@ -638,10 +638,10 @@ msgstr ""
 msgid "Name"
 msgstr "Tên"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:126
 #, kde-format
-msgid "Rating"
-msgstr "Đánh giá"
+msgid "Popularity"
+msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, fuzzy, kde-format
@@ -1026,6 +1026,11 @@ msgstr ""
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr ""
+
+#: discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "Đánh giá"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format

@@ -1458,7 +1458,7 @@ msgstr "Não foi possível obter o bloqueio exclusivo"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:75
 #, kde-format
 msgid "No packages to update"
-msgstr "Não há pacotes para atualizar"
+msgstr "Nenhum pacote para atualizar"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:77
 #, kde-format
@@ -1538,7 +1538,7 @@ msgstr "Ficheiro não encontrado"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:107
 #, kde-format
 msgid "No more mirrors available"
-msgstr "Não há mais servidores-espelho disponíveis"
+msgstr "Não existem mais servidores-espelho disponíveis"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
 #, kde-format

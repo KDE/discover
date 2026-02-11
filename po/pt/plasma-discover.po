@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 00:45+0000\n"
+"POT-Creation-Date: 2026-02-11 00:46+0000\n"
 "PO-Revision-Date: 2026-02-03 22:30+0000\n"
 "Last-Translator: César A. P. Cláudio <cesarapclaudio@gmail.com>\n"
 "Language-Team: pt\n"
@@ -714,10 +714,12 @@ msgstr "Relevância"
 msgid "Name"
 msgstr "Nome"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
-#, kde-format
-msgid "Rating"
-msgstr "Classificação"
+#: discover/qml/ApplicationsListPage.qml:126
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Most Popular"
+msgid "Popularity"
+msgstr "Mais populares"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -1099,6 +1101,11 @@ msgstr "%1 - %2: %3"
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "%1 - %2"
+
+#: discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "Classificação"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
@@ -1587,7 +1594,7 @@ msgstr "Atualizado"
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
-msgstr "Deve verificar se há atualizações"
+msgstr "Deve verificar se existem atualizações"
 
 #: discover/qml/UpdatesPage.qml:676
 #, kde-format

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 00:45+0000\n"
+"POT-Creation-Date: 2026-02-11 00:46+0000\n"
 "PO-Revision-Date: 2025-10-15 20:38+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -705,10 +705,10 @@ msgstr "Relevancia"
 msgid "Name"
 msgstr "Név"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:126
 #, kde-format
-msgid "Rating"
-msgstr "Értékelés"
+msgid "Popularity"
+msgstr "Népszerűség"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -1093,6 +1093,11 @@ msgstr "%1 - %2: %3"
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "%1 - %2"
+
+#: discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "Értékelés"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
@@ -2050,9 +2055,6 @@ msgstr "Az utolsó frissítés időpontja ismeretlen"
 #~ msgstr ""
 #~ "<p style='margin: 0 0 0 0'><b>%1</b> - %2</p><p style='margin: 0 0 0 0'>"
 #~ "%3</p><p style='margin: 0 0 0 0'>%4</p>"
-
-#~ msgid "Popularity"
-#~ msgstr "Népszerűség"
 
 #~ msgid "Buzz"
 #~ msgstr "Kulcsszó"

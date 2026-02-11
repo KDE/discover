@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 00:45+0000\n"
+"POT-Creation-Date: 2026-02-11 00:46+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
@@ -635,11 +635,10 @@ msgstr ""
 msgid "Name"
 msgstr "ئاتى"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
-#, fuzzy, kde-format
-#| msgid "Rating:"
-msgid "Rating"
-msgstr "باھالاش:"
+#: discover/qml/ApplicationsListPage.qml:126
+#, kde-format
+msgid "Popularity"
+msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, fuzzy, kde-format
@@ -1028,6 +1027,12 @@ msgstr ""
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr ""
+
+#: discover/qml/Rating.qml:119
+#, fuzzy, kde-format
+#| msgid "Rating:"
+msgid "Rating"
+msgstr "باھالاش:"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
