@@ -707,11 +707,9 @@ msgid "Name"
 msgstr "Ad"
 
 #: discover/qml/ApplicationsListPage.qml:126
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Most Popular"
+#, kde-format
 msgid "Popularity"
-msgstr "En Popüler"
+msgstr "Popülerlik"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -1593,57 +1591,3 @@ msgstr "Güncellemeler denetlenmeli"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Son güncelleme zamanı bilinmiyor"
-
-#~ msgid "Update from:"
-#~ msgstr "Güncelleme konumu:"
-
-#~ msgid "&Updates (%1)"
-#~ msgstr "Gün&cellemeler (%1)"
-
-#, fuzzy
-#~| msgid "Please report this issue to the packagers of your distribution."
-#~ msgctxt "@info %1 is an additional error reference"
-#~ msgid ""
-#~ "Please report this issue to the packagers of your distribution.<nl/>(%1)"
-#~ msgstr "Lütfen bu sorunu dağıtımınızın paketleyicilerine bildirin."
-
-#~ msgid "Report This Issue"
-#~ msgstr "Bu Sorunu Bildir"
-
-#~ msgid "Report this issue"
-#~ msgstr "Bu Sorunu Bildir"
-
-#~ msgctxt "@info"
-#~ msgid "Restart the system to complete the update process"
-#~ msgstr "Güncelleme sürecini tamamlamak için sistemi yeniden başlatın"
-
-#~ msgctxt ""
-#~ "If appropriate, localize this URL to be something more relevant to the "
-#~ "language. %1 is the text that will be searched for."
-#~ msgid "https://duckduckgo.com/?q=%1"
-#~ msgstr "https://duckduckgo.com/?q=%1"
-
-#~ msgid "Documentation"
-#~ msgstr "Belgelendirme"
-
-#~ msgid "Website"
-#~ msgstr "Web Sitesi"
-
-#~ msgid "Donate"
-#~ msgstr "Bağış Yap"
-
-#~ msgid "Support and thank the developers by donating to their project"
-#~ msgstr ""
-#~ "Projeye bağışta bulunarak geliştiricileri destekleyin ve onlara teşekkür "
-#~ "edin"
-
-#~ msgid "Log an issue you found to help get it fixed"
-#~ msgstr "Düzeltilmesine yardımcı olmak için bir hata bildirin"
-
-#~ msgid "Contribute"
-#~ msgstr "Katkıda Bulun"
-
-#~ msgid "Help the developers by coding, designing, testing, or translating"
-#~ msgstr ""
-#~ "Geliştiricilere; kod yazarak, tasarım yaparak, sınayarak veya çeviri "
-#~ "yaparak yardımcı olun"
