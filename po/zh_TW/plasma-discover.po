@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-11 00:46+0000\n"
-"PO-Revision-Date: 2026-01-23 05:04+0900\n"
+"PO-Revision-Date: 2026-02-12 15:53+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 25.11.70\n"
+"X-Generator: Lokalize 26.03.70\n"
 
 #: discover/DiscoverObject.cpp:197
 #, kde-format
@@ -670,11 +670,9 @@ msgid "Name"
 msgstr "名稱"
 
 #: discover/qml/ApplicationsListPage.qml:126
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Most Popular"
+#, kde-format
 msgid "Popularity"
-msgstr "最受歡迎"
+msgstr "人氣"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -1480,14 +1478,10 @@ msgid "Installing"
 msgstr "安裝中…"
 
 #: discover/qml/UpdatesPage.qml:530
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-#| "\"Ubuntu\""
-#| msgid "From %1"
+#, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "來自 %1"
+msgstr "來自："
 
 #: discover/qml/UpdatesPage.qml:547
 #, kde-format
@@ -1498,8 +1492,7 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:559
-#, fuzzy, kde-format
-#| msgid "More Information…"
+#, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "更多資訊…"
