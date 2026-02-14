@@ -671,7 +671,7 @@ msgstr "名称"
 #: discover/qml/ApplicationsListPage.qml:126
 #, kde-format
 msgid "Popularity"
-msgstr ""
+msgstr "人气"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
