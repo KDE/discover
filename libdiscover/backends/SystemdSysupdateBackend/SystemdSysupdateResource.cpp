@@ -98,7 +98,7 @@ quint64 SystemdSysupdateResource::size()
     auto updateSizeReply = networkAccess->get(QNetworkRequest{QUrl(QStringLiteral("http://localhost:3129/v1/updatesize?version=%1").arg(availableVersion()))});
     connect(updateSizeReply, &QNetworkReply::finished, this, [this, updateSizeReply]() {
         if (updateSizeReply->error() != QNetworkReply::NoError) {
-            qWarning() << "error!" << updateSizeReply->error();
+            qWarning() << "Update size retrieval error!" << updateSizeReply->error();
             return;
         }
         auto sizeString = updateSizeReply->readAll().trimmed();
