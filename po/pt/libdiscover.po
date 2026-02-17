@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-10 00:45+0000\n"
+"POT-Creation-Date: 2026-02-17 00:47+0000\n"
 "PO-Revision-Date: 2026-02-02 21:34+0000\n"
 "Last-Translator: César A. P. Cláudio <cesarapclaudio@gmail.com>\n"
 "Language-Team: pt\n"
@@ -580,28 +580,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (utilizador)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:781
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:799
 #, kde-format
 msgid "Local bundle"
 msgstr "Recursos de pacote local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1933
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1951
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "URL de AppStream inválido '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2063
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2081
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Falha ao adicionar a fonte '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2190
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2208
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Não existem fontes de Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2194
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2212
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Falha ao carregar a fonte \"%1\""

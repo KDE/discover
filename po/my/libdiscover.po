@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-10 00:45+0000\n"
+"POT-Creation-Date: 2026-02-17 00:47+0000\n"
 "PO-Revision-Date: 2021-09-27 23:44+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -584,29 +584,29 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (အသုံးပြုသူ)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:781
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:799
 #, kde-format
 msgid "Local bundle"
 msgstr "စက်တွင်းအထုပ်"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1933
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1951
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "ပုံပျက်-အပ်စထရင်း-ယူအာအယ်လ် '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2063
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2081
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to add source '%1': %2"
 msgstr "'%1' ကို မစတင်နိုင်ခဲ့ပါ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2190
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2208
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2194
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2212
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1'"
 msgid "Failed to load \"%1\" source"

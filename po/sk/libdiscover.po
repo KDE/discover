@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-10 00:45+0000\n"
+"POT-Creation-Date: 2026-02-17 00:47+0000\n"
 "PO-Revision-Date: 2023-11-27 18:34+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -593,28 +593,28 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (používateľ)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:781
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:799
 #, kde-format
 msgid "Local bundle"
 msgstr "Miestny balík"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1933
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1951
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Neplatné appstream url '%1'"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2063
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2081
 #, kde-format
 msgid "Failed to add source '%1': %2"
 msgstr "Nepodarilo sa pridať zdroj '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2190
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2208
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Neexistujú žiadne zdroje Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2194
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2212
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Nepodarilo sa načítať zdroj '%1'"
