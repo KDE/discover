@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 02:40+0000\n"
+"POT-Creation-Date: 2026-02-19 02:48+0000\n"
 "PO-Revision-Date: 2025-09-19 22:14+0330\n"
 "Last-Translator: Sohrab Behdani <behdanisohrab@proton.me>\n"
 "Language-Team: fa\n"
@@ -690,10 +690,12 @@ msgstr "مرتبط"
 msgid "Name"
 msgstr "نام"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
-#, kde-format
-msgid "Rating"
-msgstr "امتیاز"
+#: discover/qml/ApplicationsListPage.qml:126
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Most Popular"
+msgid "Popularity"
+msgstr "محبوب‌ترین"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -1073,6 +1075,11 @@ msgstr "%1 - %2: %3"
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "%1 - %2"
+
+#: discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "امتیاز"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format

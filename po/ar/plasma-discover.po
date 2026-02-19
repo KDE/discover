@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 02:40+0000\n"
+"POT-Creation-Date: 2026-02-19 02:48+0000\n"
 "PO-Revision-Date: 2026-01-18 19:09+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -704,10 +704,10 @@ msgstr "الصلة"
 msgid "Name"
 msgstr "الاسم"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:126
 #, kde-format
-msgid "Rating"
-msgstr "التّقييم"
+msgid "Popularity"
+msgstr "الشعبيّة"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -1087,6 +1087,11 @@ msgstr "%1 - %2: %3"
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "‏%1 -‏ %2"
+
+#: discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "التّقييم"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
@@ -2007,9 +2012,6 @@ msgstr "وقت أخر تحديث مجهول"
 #~ msgstr ""
 #~ "<p style='margin: 0 0 0 0'><b>%1</b> ذلك ما قاله %2</p><p style='margin: "
 #~ "0 0 0 0'>%3</p><p style='margin: 0 0 0 0'>%4</p>"
-
-#~ msgid "Popularity"
-#~ msgstr "الشعبيّة"
 
 #~ msgid "Buzz"
 #~ msgstr "الضّجّة"

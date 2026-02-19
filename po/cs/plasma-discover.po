@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 02:40+0000\n"
+"POT-Creation-Date: 2026-02-19 02:48+0000\n"
 "PO-Revision-Date: 2025-11-10 11:49+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -706,10 +706,12 @@ msgstr "Relevance"
 msgid "Name"
 msgstr "Název"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
-#, kde-format
-msgid "Rating"
-msgstr "Hodnocení"
+#: discover/qml/ApplicationsListPage.qml:126
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Most Popular"
+msgid "Popularity"
+msgstr "Nejoblíbenější"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -1091,6 +1093,11 @@ msgstr "%1 - %2: %3"
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "%1 - %2"
+
+#: discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "Hodnocení"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format

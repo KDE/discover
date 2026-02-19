@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 02:40+0000\n"
+"POT-Creation-Date: 2026-02-19 02:48+0000\n"
 "PO-Revision-Date: 2025-08-20 23:07+0200\n"
 "Last-Translator: Rasmus Rosendahl-Kaa <Rasmus@Rosendahl-kaa.name>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -649,10 +649,10 @@ msgstr "Relevans"
 msgid "Name"
 msgstr "Navn"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:126
 #, kde-format
-msgid "Rating"
-msgstr "Karakter"
+msgid "Popularity"
+msgstr "Popularitet"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -1037,6 +1037,11 @@ msgstr "%1 - %2: %3"
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "%1 - %2"
+
+#: discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "Karakter"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
@@ -1883,9 +1888,6 @@ msgstr "Tidspunkt for sidste opdatering ukendt"
 #~ msgstr ""
 #~ "<p style='margin: 0 0 0 0'><b>%1</b> af %2</p><p style='margin: 0 0 0 0'>"
 #~ "%3</p><p style='margin: 0 0 0 0'>%4</p>"
-
-#~ msgid "Popularity"
-#~ msgstr "Popularitet"
 
 #~ msgid "Buzz"
 #~ msgstr "Omtale"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 02:40+0000\n"
+"POT-Creation-Date: 2026-02-19 02:48+0000\n"
 "PO-Revision-Date: 2013-10-03 05:07+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -644,10 +644,10 @@ msgstr ""
 msgid "Name"
 msgstr "Атауы"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:126
 #, kde-format
-msgid "Rating"
-msgstr "Ұпайы"
+msgid "Popularity"
+msgstr "Әйгілігі"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, fuzzy, kde-format
@@ -1038,6 +1038,11 @@ msgstr ""
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr ""
+
+#: discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "Ұпайы"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
@@ -1720,9 +1725,6 @@ msgstr ""
 #~ msgstr ""
 #~ "<p style='margin: 0 0 0 0'><b>%1</b> by %2</p><p style='margin: 0 0 0 0'>"
 #~ "%3</p><p style='margin: 0 0 0 0'>%4</p>"
-
-#~ msgid "Popularity"
-#~ msgstr "Әйгілігі"
 
 #~ msgid "Buzz"
 #~ msgstr "Атының шуы"

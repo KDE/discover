@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 02:40+0000\n"
+"POT-Creation-Date: 2026-02-19 02:48+0000\n"
 "PO-Revision-Date: 2026-01-28 16:37+0100\n"
 "Last-Translator: Lucia Mrenica <lucia.mrenica@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -721,10 +721,10 @@ msgstr "Relevancia"
 msgid "Name"
 msgstr "Názvu"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:126
 #, kde-format
-msgid "Rating"
-msgstr "Hodnotenia"
+msgid "Popularity"
+msgstr "Obľúbenosť"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -1109,6 +1109,11 @@ msgstr "%1 - %2: %3"
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "%1 - %2"
+
+#: discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "Hodnotenia"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
@@ -2090,9 +2095,6 @@ msgstr "Čas poslednej aktualizácie je neznámy"
 
 #~ msgid "Details"
 #~ msgstr "Detaily"
-
-#~ msgid "Popularity"
-#~ msgstr "Obľúbenosť"
 
 #~ msgid "Buzz"
 #~ msgstr "Buzz"

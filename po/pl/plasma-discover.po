@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-05 02:40+0000\n"
+"POT-Creation-Date: 2026-02-19 02:48+0000\n"
 "PO-Revision-Date: 2025-12-24 16:19+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -713,10 +713,10 @@ msgstr "Trafność"
 msgid "Name"
 msgstr "Nazwy"
 
-#: discover/qml/ApplicationsListPage.qml:126 discover/qml/Rating.qml:119
+#: discover/qml/ApplicationsListPage.qml:126
 #, kde-format
-msgid "Rating"
-msgstr "Oceny"
+msgid "Popularity"
+msgstr "Popularność"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -1097,6 +1097,11 @@ msgstr "%1 - %2: %3"
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
 msgstr "%1 - %2"
+
+#: discover/qml/Rating.qml:119
+#, kde-format
+msgid "Rating"
+msgstr "Oceny"
 
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
@@ -2085,9 +2090,6 @@ msgstr "Czas ostatniego uaktualnienia jest nieznany"
 
 #~ msgid "Details"
 #~ msgstr "Szczegóły"
-
-#~ msgid "Popularity"
-#~ msgstr "Popularność"
 
 #~ msgid "Buzz"
 #~ msgstr "Zamieszanie"
