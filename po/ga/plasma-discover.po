@@ -266,15 +266,11 @@ msgstr "Cealaigh"
 
 #: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:373
-#, fuzzy, kde-format
-#| msgid "Rating"
+#, kde-format
 msgid "%1 rating"
 msgid_plural "%1 ratings"
-msgstr[0] "Rátáil"
-msgstr[1] "Rátáil"
-msgstr[2] "Rátáil"
-msgstr[3] "Rátáil"
-msgstr[4] "Rátáil"
+msgstr[0] ""
+msgstr[1] ""
 
 #: discover/qml/ApplicationDelegate.qml:177
 #: discover/qml/ApplicationPage.qml:373
@@ -425,9 +421,6 @@ msgid "License:"
 msgid_plural "Licenses:"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: discover/qml/ApplicationPage.qml:428
 #, kde-format
@@ -493,10 +486,9 @@ msgid "Reviews"
 msgstr "Anótálacha"
 
 #: discover/qml/ApplicationPage.qml:757
-#, fuzzy, kde-format
-#| msgid "Rating"
+#, kde-format
 msgid "Loading reviews for %1"
-msgstr "Rátáil"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:766
 #, kde-format
@@ -511,30 +503,26 @@ msgid "No reviews posted yet"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Submit"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
-msgstr "Seol"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
-#, fuzzy, kde-format
-#| msgid "Submit"
+#, kde-format
 msgid "Write a Review"
-msgstr "Seol"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
-#, fuzzy, kde-format
-#| msgid "Submit"
+#, kde-format
 msgid "Install to Write a Review"
-msgstr "Seol"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:806
-#, fuzzy, kde-format
-#| msgid "Review"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Athbhreithnigh"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:844
 #, kde-format
@@ -578,10 +566,9 @@ msgid "All Licenses"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:970
-#, fuzzy, kde-format
-#| msgid "Rating"
+#, kde-format
 msgid "Content Rating"
-msgstr "Rátáil"
+msgstr ""
 
 #: discover/qml/ApplicationPage.qml:993
 #, kde-format
@@ -595,9 +582,6 @@ msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: discover/qml/ApplicationsListPage.qml:56
 #, kde-format
@@ -610,9 +594,6 @@ msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: discover/qml/ApplicationsListPage.qml:66
 #, kde-format
@@ -620,9 +601,6 @@ msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: discover/qml/ApplicationsListPage.qml:68
 #: discover/qml/ApplicationsListPage.qml:262
@@ -702,17 +680,15 @@ msgid ""
 msgstr ""
 
 #: discover/qml/ApplicationsListPage.qml:277
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgid "Still looking…"
-msgstr "Suiteáil"
+msgstr ""
 
 #: discover/qml/BrowsingPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Homepage"
+#, kde-format
 msgctxt "@title:window the name of a top-level 'home' page"
 msgid "Home"
-msgstr "Leathanach Baile"
+msgstr ""
 
 #: discover/qml/BrowsingPage.qml:54
 #, kde-format
@@ -780,12 +756,11 @@ msgid "Switch to Full Screen"
 msgstr ""
 
 #: discover/qml/CarouselMaximizedViewContent.qml:75
-#, fuzzy, kde-format
-#| msgid "Close"
+#, kde-format
 msgctxt ""
 "@action:button Close overlay/window/popup with carousel of screenshots"
 msgid "Close"
-msgstr "Dún"
+msgstr ""
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
@@ -805,10 +780,9 @@ msgid "Security updates available"
 msgstr ""
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgid "Updates available"
-msgstr "Nuashonraigh Uile"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -816,10 +790,9 @@ msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:66
-#, fuzzy, kde-format
-#| msgid "Homepage"
+#, kde-format
 msgid "&Home"
-msgstr "Leathanach Baile"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:76
 #, kde-format
@@ -827,10 +800,9 @@ msgid "&Search"
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:84
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgid "&Installed"
-msgstr "Suiteáilte"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:96
 #, kde-format
@@ -838,10 +810,9 @@ msgid "&Updates (Fetching…)"
 msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Update"
+#, kde-format
 msgid "&Updates"
-msgstr "Nuashonraigh"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format
@@ -849,10 +820,9 @@ msgid "&About"
 msgstr "&Madir le"
 
 #: discover/qml/DiscoverWindow.qml:113
-#, fuzzy, kde-format
-#| msgid "Best Ratings"
+#, kde-format
 msgid "S&ettings"
-msgstr "Na Rátálacha Is Fearr"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:166 discover/qml/DiscoverWindow.qml:348
 #: discover/qml/DiscoverWindow.qml:460
@@ -882,10 +852,9 @@ msgid "Error %1 of %2"
 msgstr "Earráid %1 as %2"
 
 #: discover/qml/DiscoverWindow.qml:348 discover/qml/UpdatesPage.qml:47
-#, fuzzy, kde-format
-#| msgid "Update"
+#, kde-format
 msgid "Update Issue"
-msgstr "Nuashonraigh"
+msgstr ""
 
 #: discover/qml/DiscoverWindow.qml:359
 #, kde-format
@@ -939,16 +908,14 @@ msgid "Configure"
 msgstr ""
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Update"
+#, kde-format
 msgid "Configure Feedback…"
-msgstr "Nuashonraigh"
+msgstr ""
 
 #: discover/qml/Feedback.qml:30 discover/qml/SourcesPage.qml:22
-#, fuzzy, kde-format
-#| msgid "Update"
+#, kde-format
 msgid "Configure Updates…"
-msgstr "Nuashonraigh"
+msgstr ""
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
@@ -973,25 +940,22 @@ msgid "Participate…"
 msgstr ""
 
 #: discover/qml/InstallApplicationButton.qml:29
-#, fuzzy, kde-format
-#| msgid "Loading..."
+#, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
-msgstr "Á Luchtú..."
+msgstr ""
 
 #: discover/qml/InstallApplicationButton.qml:33
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button %1 is the name of a software repository"
 msgid "Install from %1"
-msgstr "Suiteáil"
+msgstr ""
 
 #: discover/qml/InstallApplicationButton.qml:35
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button"
 msgid "Install"
-msgstr "Suiteáil"
+msgstr ""
 
 #: discover/qml/InstallApplicationButton.qml:37
 #, kde-format
@@ -1009,10 +973,9 @@ msgid "Resources for '%1'"
 msgstr ""
 
 #: discover/qml/ProgressView.qml:20
-#, fuzzy, kde-format
-#| msgid "Update"
+#, kde-format
 msgid "Tasks (%1%)"
-msgstr "Nuashonraigh"
+msgstr ""
 
 #: discover/qml/ProgressView.qml:20 discover/qml/ProgressView.qml:50
 #, kde-format
@@ -1048,10 +1011,9 @@ msgid "unknown reviewer"
 msgstr ""
 
 #: discover/qml/ReviewDelegate.qml:59
-#, fuzzy, kde-format
-#| msgid "<b>%1</b><br/>%2"
+#, kde-format
 msgid "<b>%1</b> by %2"
-msgstr "<b>%1</b><br/>%2"
+msgstr ""
 
 #: discover/qml/ReviewDelegate.qml:59
 #, kde-format
@@ -1091,16 +1053,14 @@ msgid "No"
 msgstr "Níl"
 
 #: discover/qml/ReviewDialog.qml:26
-#, fuzzy, kde-format
-#| msgid "Review"
+#, kde-format
 msgid "Reviewing %1"
-msgstr "Athbhreithnigh"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:33
-#, fuzzy, kde-format
-#| msgid "Submit"
+#, kde-format
 msgid "Submit review"
-msgstr "Seol"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:48
 #, kde-format
@@ -1150,10 +1110,9 @@ msgid "Rating:"
 msgstr "Rátáil:"
 
 #: discover/qml/ReviewDialog.qml:125
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "Name:"
-msgstr "Ainm"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:133
 #, kde-format
@@ -1196,22 +1155,19 @@ msgid "Enter a rating"
 msgstr ""
 
 #: discover/qml/ReviewDialog.qml:186
-#, fuzzy, kde-format
-#| msgid "Submit"
+#, kde-format
 msgid "Write the title"
-msgstr "Seol"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:189
-#, fuzzy, kde-format
-#| msgid "Submit"
+#, kde-format
 msgid "Write the review"
-msgstr "Seol"
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:192
-#, fuzzy, kde-format
-#| msgid "Loading..."
+#, kde-format
 msgid "Keep writing…"
-msgstr "Á Luchtú..."
+msgstr ""
 
 #: discover/qml/ReviewDialog.qml:195
 #, kde-format
@@ -1225,16 +1181,14 @@ msgid "Insert a name"
 msgstr ""
 
 #: discover/qml/ReviewsPage.qml:43
-#, fuzzy, kde-format
-#| msgid "Rating"
+#, kde-format
 msgid "Reviews for %1"
-msgstr "Rátáil"
+msgstr ""
 
 #: discover/qml/ReviewsPage.qml:105
-#, fuzzy, kde-format
-#| msgid "Submit"
+#, kde-format
 msgid "Write a Review…"
-msgstr "Seol"
+msgstr ""
 
 #: discover/qml/ReviewsPage.qml:118
 #, kde-format
@@ -1254,18 +1208,16 @@ msgid "Most Recent"
 msgstr ""
 
 #: discover/qml/ReviewsPage.qml:159
-#, fuzzy, kde-format
-#| msgid "Rating"
+#, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "Rátáil"
+msgstr ""
 
 #: discover/qml/ReviewsStats.qml:53
-#, fuzzy, kde-format
-#| msgid "Reviews"
+#, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "Anótálacha"
+msgstr ""
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
@@ -1301,22 +1253,19 @@ msgid "Search in '%1'…"
 msgstr "Cuardaigh i '%1'..."
 
 #: discover/qml/SourcesPage.qml:18
-#, fuzzy, kde-format
-#| msgid "Best Ratings"
+#, kde-format
 msgid "Settings"
-msgstr "Na Rátálacha Is Fearr"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:110
-#, fuzzy, kde-format
-#| msgid "Sources"
+#, kde-format
 msgid "Default Source"
-msgstr "Foinsí"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:118
-#, fuzzy, kde-format
-#| msgid "Add Source"
+#, kde-format
 msgid "Add Source…"
-msgstr "Cuir Foinse Leis"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:145
 #, kde-format
@@ -1359,10 +1308,9 @@ msgid "Missing Backends"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:14
-#, fuzzy, kde-format
-#| msgid "Update"
+#, kde-format
 msgid "Updates"
-msgstr "Nuashonraigh"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
@@ -1400,18 +1348,16 @@ msgid "Report Issue to %1"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:162
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgctxt "@action:button as in, 'update the selected items' "
 msgid "Update Selected"
-msgstr "Nuashonraigh Uile"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:162
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
-msgstr "Nuashonraigh Uile"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:202
 #, kde-format
@@ -1466,16 +1412,14 @@ msgid "Restart and Install Updates"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:503
-#, fuzzy, kde-format
-#| msgid "Install"
+#, kde-format
 msgid "Installing"
-msgstr "Suiteáil"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:536
-#, fuzzy, kde-format
-#| msgid "Update All"
+#, kde-format
 msgid "Update from:"
-msgstr "Nuashonraigh Uile"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:550
 #, kde-format
@@ -1491,18 +1435,16 @@ msgid "More Information…"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:587
-#, fuzzy, kde-format
-#| msgid "Update"
+#, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
-msgstr "Nuashonraigh"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:602
-#, fuzzy, kde-format
-#| msgid "Update"
+#, kde-format
 msgctxt "@info"
 msgid "Updates"
-msgstr "Nuashonraigh"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:612
 #, kde-format
@@ -1518,11 +1460,10 @@ msgstr ""
 
 #: discover/qml/UpdatesPage.qml:628 discover/qml/UpdatesPage.qml:635
 #: discover/qml/UpdatesPage.qml:642
-#, fuzzy, kde-format
-#| msgid "Update"
+#, kde-format
 msgctxt "@info"
 msgid "Up to date"
-msgstr "Nuashonraigh"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:649
 #, kde-format
@@ -1535,211 +1476,3 @@ msgstr ""
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Update"
-#~ msgid "&Updates (%1)"
-#~ msgstr "Nuashonraigh"
-
-#, fuzzy
-#~| msgid "Update"
-#~ msgid "Fetching &updates…"
-#~ msgstr "Nuashonraigh"
-
-#, fuzzy
-#~| msgid "Rating"
-#~ msgid "Content Rating:"
-#~ msgstr "Rátáil"
-
-#, fuzzy
-#~| msgid "Update"
-#~ msgid "&Up to date"
-#~ msgstr "Nuashonraigh"
-
-#, fuzzy
-#~| msgid "Sources"
-#~ msgid "Sources"
-#~ msgstr "Foinsí"
-
-#, fuzzy
-#~| msgid "Loading..."
-#~ msgid "Loading…"
-#~ msgstr "Á Luchtú..."
-
-#, fuzzy
-#~| msgid "Sources"
-#~ msgid "Source:"
-#~ msgstr "Foinsí"
-
-#, fuzzy
-#~| msgid "Update All"
-#~ msgid "All updates selected (%1)"
-#~ msgstr "Nuashonraigh Uile"
-
-#, fuzzy
-#~| msgid "Update All"
-#~ msgid "%1/%2 update selected (%3)"
-#~ msgid_plural "%1/%2 updates selected (%3)"
-#~ msgstr[0] "Nuashonraigh Uile"
-#~ msgstr[1] "Nuashonraigh Uile"
-#~ msgstr[2] "Nuashonraigh Uile"
-#~ msgstr[3] "Nuashonraigh Uile"
-#~ msgstr[4] "Nuashonraigh Uile"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#, fuzzy
-#~| msgid "Loading..."
-#~ msgctxt "State being fetched"
-#~ msgid "Loading..."
-#~ msgstr "Á Luchtú..."
-
-#, fuzzy
-#~| msgid "Submit"
-#~ msgid "Write a Review..."
-#~ msgstr "Seol"
-
-#, fuzzy
-#~| msgid "Submit"
-#~ msgid "Write a review!"
-#~ msgstr "Seol"
-
-#~ msgid "Jonathan Thomas"
-#~ msgstr "Jonathan Thomas"
-
-#~ msgid "Discard"
-#~ msgstr "Ná Sábháil"
-
-#, fuzzy
-#~| msgid "Homepage"
-#~ msgid "Homepage:"
-#~ msgstr "Leathanach Baile"
-
-#, fuzzy
-#~| msgid "Update"
-#~ msgid "Fetching Updates..."
-#~ msgstr "Nuashonraigh"
-
-#, fuzzy
-#~| msgid "Update"
-#~ msgctxt "@info"
-#~ msgid "Fetching Updates..."
-#~ msgstr "Nuashonraigh"
-
-#, fuzzy
-#~| msgid "Review"
-#~ msgid "Review:"
-#~ msgstr "Athbhreithnigh"
-
-#, fuzzy
-#~| msgid "Review"
-#~ msgid "Review..."
-#~ msgstr "Athbhreithnigh"
-
-#, fuzzy
-#~| msgid "Update"
-#~ msgid "Checking for updates..."
-#~ msgstr "Nuashonraigh"
-
-#, fuzzy
-#~| msgid "Update"
-#~ msgid "No Updates"
-#~ msgstr "Nuashonraigh"
-
-#, fuzzy
-#~| msgid "Loading..."
-#~ msgctxt "@info"
-#~ msgid "Fetching..."
-#~ msgstr "Á Luchtú..."
-
-#, fuzzy
-#~| msgid "Update"
-#~ msgctxt "@info"
-#~ msgid "Checking for updates..."
-#~ msgstr "Nuashonraigh"
-
-#, fuzzy
-#~| msgid "Loading..."
-#~ msgctxt "@info"
-#~ msgid "Updating..."
-#~ msgstr "Á Luchtú..."
-
-#, fuzzy
-#~| msgid "Update"
-#~ msgctxt "@info"
-#~ msgid "No updates"
-#~ msgstr "Nuashonraigh"
-
-#, fuzzy
-#~| msgid "Update"
-#~ msgctxt "@info"
-#~ msgid "Looking for updates"
-#~ msgstr "Nuashonraigh"
-
-#~ msgid "Summary:"
-#~ msgstr "Achoimre:"
-
-#~ msgid "Launch"
-#~ msgstr "Tosaigh"
-
-#, fuzzy
-#~| msgid "Loading..."
-#~ msgctxt "@info"
-#~ msgid "Loading..."
-#~ msgstr "Á Luchtú..."
-
-#~ msgid "Origin"
-#~ msgstr "Bunphointe"
-
-#, fuzzy
-#~| msgid "Installed"
-#~ msgid "items installed"
-#~ msgstr "Suiteáilte"
-
-#, fuzzy
-#~| msgid "Update"
-#~ msgid "System Update"
-#~ msgstr "Nuashonraigh"
-
-#, fuzzy
-#~| msgid "Installed"
-#~ msgid "Installed (%1 update)"
-#~ msgid_plural "Installed (%1 updates)"
-#~ msgstr[0] "Suiteáilte"
-#~ msgstr[1] "Suiteáilte"
-#~ msgstr[2] "Suiteáilte"
-#~ msgstr[3] "Suiteáilte"
-#~ msgstr[4] "Suiteáilte"
-
-#, fuzzy
-#~| msgid "Origin"
-#~ msgid "Origin enabled"
-#~ msgstr "Bunphointe"
-
-#~ msgid "©2010-2012 Jonathan Thomas"
-#~ msgstr "©2010-2012 Jonathan Thomas"
-
-#~ msgid "%1. %2"
-#~ msgstr "%1. %2"
-
-#~ msgid "Apply"
-#~ msgstr "Cuir i bhFeidhm"
-
-#~ msgid "Overview"
-#~ msgstr "Foramharc"
-
-#~ msgid "Ok"
-#~ msgstr "OK"
-
-#~ msgid "Login"
-#~ msgstr "Logáil isteach"
-
-#~ msgid "Register"
-#~ msgstr "Cláraigh"
-
-#~ msgid "Logout"
-#~ msgstr "Logáil Amach"
-
-#~ msgid "Upgrade"
-#~ msgstr "Uasghrádú"
