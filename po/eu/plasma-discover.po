@@ -1,16 +1,16 @@
 # Translation for plasma-discover.po to Euskara/Basque (eu).
-# Copyright (C) 2017-2025 This file is copyright:
+# Copyright (C) 2017-2026 This file is copyright:
 # This file is distributed under the same license as the discover package.
 # SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-11 00:46+0000\n"
-"PO-Revision-Date: 2026-01-25 13:28+0100\n"
+"PO-Revision-Date: 2026-02-19 21:40+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #: discover/DiscoverObject.cpp:197
 #, kde-format
@@ -26,8 +26,8 @@ msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
 msgstr ""
-"%1 ez dago Discoveren bidez aplikazioak instalatzeko konfiguratuta—"
-"aplikazioen gehigarrietarako besterik ez"
+"%1 ez dago Discoverren bidez aplikazioak instalatzeko konfiguratuta—"
+"aplikazio gehigarrietarako bakarrik"
 
 #: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
@@ -202,10 +202,9 @@ msgid "An application explorer"
 msgstr "Aplikazioen esploratzaile bat"
 
 #: discover/main.cpp:124
-#, fuzzy, kde-format
-#| msgid "© 2010-2025 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2026 Plasma Development Team"
-msgstr "© 2010-2025 Plasma Garapen Taldea"
+msgstr "© 2010-2026 Plasma Garapen Taldea"
 
 #: discover/main.cpp:125
 #, kde-format
@@ -705,11 +704,9 @@ msgid "Name"
 msgstr "Izena"
 
 #: discover/qml/ApplicationsListPage.qml:126
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Most Popular"
+#, kde-format
 msgid "Popularity"
-msgstr "Ezagunena"
+msgstr "Ospea"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -1531,14 +1528,10 @@ msgid "Installing"
 msgstr "Instalatzen"
 
 #: discover/qml/UpdatesPage.qml:530
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-#| "\"Ubuntu\""
-#| msgid "From %1"
+#, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "%1(e)tik"
+msgstr "Nondik:"
 
 #: discover/qml/UpdatesPage.qml:547
 #, kde-format
@@ -1549,8 +1542,7 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:559
-#, fuzzy, kde-format
-#| msgid "More Information…"
+#, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "Informazio gehiago…"

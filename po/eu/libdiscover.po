@@ -1,16 +1,16 @@
 # Translation for libdiscover.po to Euskara/Basque (eu).
-# Copyright (C) 2017-2025 This file is copyright:
+# Copyright (C) 2017-2026 This file is copyright:
 # This file is distributed under the same license as the discover package.
 # SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-17 00:47+0000\n"
-"PO-Revision-Date: 2026-01-25 13:29+0100\n"
+"PO-Revision-Date: 2026-02-19 21:37+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -418,18 +418,17 @@ msgstr "Emulatzaileak"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:333
-#, fuzzy, kde-format
-#| msgid "Launch"
+#, kde-format
 msgctxt "Category"
 msgid "Launchers"
-msgstr "Abiarazi"
+msgstr "Abiarazleak"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:343
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
 #, kde-format
 msgctxt "Category"
 msgid "Tools"
-msgstr ""
+msgstr "Tresnak"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:355
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:355
@@ -1130,14 +1129,13 @@ msgstr "SteamOS"
 #: libdiscover/backends/HoloBackend/HoloBackend.cpp:73
 #, kde-format
 msgid "Holo"
-msgstr ""
+msgstr "Holo"
 
 #: libdiscover/backends/HoloBackend/HoloBackend.cpp:113
-#, fuzzy, kde-format
-#| msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+#, kde-format
 msgctxt "%1 is the pretty name of the distro e.g. Holo or SteamOS"
 msgid "Holo: Unable to query atomupd for %1 Updates..."
-msgstr "SteamOS: Ez da SteamOSetik «atomupd» itauntzeko gai"
+msgstr "Holo: Ez da %1 eguneraketetarako atomupd itauntzeko gai…"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
