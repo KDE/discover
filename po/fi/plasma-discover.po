@@ -701,7 +701,8 @@ msgid "Name"
 msgstr "Nimi"
 
 #: discover/qml/ApplicationsListPage.qml:126
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Popularity"
 msgid "Popularity"
 msgstr "Suosio"
 
