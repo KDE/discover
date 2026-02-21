@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-11 00:46+0000\n"
-"PO-Revision-Date: 2026-02-11 12:57+0100\n"
+"PO-Revision-Date: 2026-02-17 18:43+0100\n"
 "Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -718,10 +718,9 @@ msgid "Name"
 msgstr "Name"
 
 #: discover/qml/ApplicationsListPage.qml:126
-#, fuzzy, kde-format
-#| msgid "Popularity"
+#, kde-format
 msgid "Popularity"
-msgstr "Popularität"
+msgstr "Beliebtheit"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
