@@ -108,7 +108,7 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
     , m_networkAccessManagerFactory(std::make_unique<CachedNetworkAccessManagerFactory>())
 {
     setObjectName(QStringLiteral("DiscoverMain"));
-    m_engine->rootContext()->setContextObject(new KLocalizedQmlContext(m_engine.get()));
+    KLocalization::setupLocalizedContext(m_engine.get());
     auto factory = m_engine->networkAccessManagerFactory();
     m_engine->setNetworkAccessManagerFactory(nullptr);
     delete factory;

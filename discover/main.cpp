@@ -24,7 +24,7 @@
 #include <qtwebviewfunctions.h>
 #endif
 
-#include <KirigamiApp>
+#include <KirigamiAppDefaults>
 #include <QProcessEnvironment>
 
 std::unique_ptr<QCommandLineParser> createParser()
@@ -110,8 +110,8 @@ int main(int argc, char **argv)
     QtWebView::initialize();
 #endif
 
-    KirigamiApp::App app(argc, argv);
-    KirigamiApp kapp;
+    QApplication app(argc, argv);
+    KirigamiAppDefaults::apply(&app);
 
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("plasmadiscover")));
     app.setQuitLockEnabled(false);
