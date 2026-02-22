@@ -707,11 +707,9 @@ msgid "Name"
 msgstr "Název"
 
 #: discover/qml/ApplicationsListPage.qml:126
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Most Popular"
+#, kde-format
 msgid "Popularity"
-msgstr "Nejoblíbenější"
+msgstr "Popularita"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
