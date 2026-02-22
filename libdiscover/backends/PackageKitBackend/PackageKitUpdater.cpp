@@ -814,22 +814,54 @@ void PackageKitUpdater::lastUpdateTimeReceived(QDBusPendingCallWatcher *w)
 AbstractBackendUpdater::State toUpdateState(PackageKit::Transaction::Status t)
 {
     switch (t) {
-    case PackageKit::Transaction::StatusUnknown:
+    case PackageKit::Transaction::StatusWait:
+    case PackageKit::Transaction::StatusSetup:
+    case PackageKit::Transaction::StatusQuery:
+    case PackageKit::Transaction::StatusInfo:
+    case PackageKit::Transaction::StatusRefreshCache:
     case PackageKit::Transaction::StatusDownload:
+    case PackageKit::Transaction::StatusDownloadRepository:
+    case PackageKit::Transaction::StatusDownloadPackagelist:
+    case PackageKit::Transaction::StatusDownloadFilelist:
+    case PackageKit::Transaction::StatusDownloadChangelog:
+    case PackageKit::Transaction::StatusDownloadGroup:
+    case PackageKit::Transaction::StatusDownloadUpdateinfo:
+    case PackageKit::Transaction::StatusLoadingCache:
+    case PackageKit::Transaction::StatusWaitingForLock:
+    case PackageKit::Transaction::StatusWaitingForAuth:
         return AbstractBackendUpdater::Downloading;
+
+    case PackageKit::Transaction::StatusRunning:
+    case PackageKit::Transaction::StatusInstall:
+    case PackageKit::Transaction::StatusUpdate:
+    case PackageKit::Transaction::StatusRemove:
+    case PackageKit::Transaction::StatusCleanup:
+    case PackageKit::Transaction::StatusObsolete:
     case PackageKit::Transaction::StatusDepResolve:
     case PackageKit::Transaction::StatusSigCheck:
     case PackageKit::Transaction::StatusTestCommit:
-    case PackageKit::Transaction::StatusInstall:
     case PackageKit::Transaction::StatusCommit:
+    case PackageKit::Transaction::StatusRepackaging:
+    case PackageKit::Transaction::StatusScanApplications:
+    case PackageKit::Transaction::StatusGeneratePackageList:
+    case PackageKit::Transaction::StatusScanProcessList:
+    case PackageKit::Transaction::StatusCheckExecutableFiles:
+    case PackageKit::Transaction::StatusCheckLibraries:
+    case PackageKit::Transaction::StatusCopyFiles:
+    case PackageKit::Transaction::StatusRunHook:
         return AbstractBackendUpdater::Installing;
+
     case PackageKit::Transaction::StatusFinished:
         return AbstractBackendUpdater::Done;
+
+    case PackageKit::Transaction::StatusUnknown:
     case PackageKit::Transaction::StatusCancel:
+    case PackageKit::Transaction::StatusRequest:
         return AbstractBackendUpdater::None;
     }
+
     qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "unknown packagekit status" << t;
-    Q_UNREACHABLE();
+    return AbstractBackendUpdater::None;
 }
 
 void PackageKitUpdater::itemProgress(const QString &itemID, PackageKit::Transaction::Status status, uint percentage)
