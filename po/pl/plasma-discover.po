@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
 # Kris Zadra <x-men@mixbox.pl>, 2013.
 #
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-11 00:46+0000\n"
-"PO-Revision-Date: 2025-12-24 16:19+0100\n"
+"PO-Revision-Date: 2026-02-21 08:16+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -202,10 +202,9 @@ msgid "An application explorer"
 msgstr "Przeglądarka programów"
 
 #: discover/main.cpp:124
-#, fuzzy, kde-format
-#| msgid "© 2010-2025 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2026 Plasma Development Team"
-msgstr "© 2010-2025 Zespół programistów Plazmy"
+msgstr "© 2010-2026 Zespół programistów Plazmy"
 
 #: discover/main.cpp:125
 #, kde-format
@@ -717,7 +716,7 @@ msgstr "Nazwy"
 #: discover/qml/ApplicationsListPage.qml:126
 #, kde-format
 msgid "Popularity"
-msgstr "Popularność"
+msgstr "Najpopularniejsze"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -1531,14 +1530,10 @@ msgid "Installing"
 msgstr "Wgrywanie"
 
 #: discover/qml/UpdatesPage.qml:530
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-#| "\"Ubuntu\""
-#| msgid "From %1"
+#, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "Od %1"
+msgstr "Od:"
 
 #: discover/qml/UpdatesPage.qml:547
 #, kde-format
@@ -1549,8 +1544,7 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:559
-#, fuzzy, kde-format
-#| msgid "More Information…"
+#, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "Więcej szczegółów…"
