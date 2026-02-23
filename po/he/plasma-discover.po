@@ -4,13 +4,13 @@
 # Elkana Bardugo <ttv200@gmail.com>, 2016.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata.
 # Omer I.S. <omeritzicschwartz@gmail.com>, 2020.
-# SPDX-FileCopyrightText: 2023, 2024, 2025 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-19 02:48+0000\n"
-"PO-Revision-Date: 2025-12-15 04:45+0200\n"
+"PO-Revision-Date: 2026-02-22 08:54+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: discover/DiscoverObject.cpp:197
 #, kde-format
@@ -694,11 +694,9 @@ msgid "Name"
 msgstr "שם"
 
 #: discover/qml/ApplicationsListPage.qml:126
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Most Popular"
+#, kde-format
 msgid "Popularity"
-msgstr "הכי נפוץ"
+msgstr "פופולריות"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
