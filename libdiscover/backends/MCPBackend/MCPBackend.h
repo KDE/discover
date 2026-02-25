@@ -21,8 +21,8 @@ class QNetworkReply;
  * \brief Backend for MCP (Model Context Protocol) server management.
  *
  * This backend allows users to discover, install, and manage MCP servers
- * through KDE Discover. It integrates with Project JARVIS's SuperMCP
- * orchestration layer by providing a system-wide MCP server registry.
+ * through KDE Discover. It provides a system-wide MCP server registry
+ * and per-user configuration of server parameters (API keys, etc.).
  *
  * System-managed storage (requires privilege escalation via pkexec):
  * - /usr/share/mcp/installed/{id}/           (per-server directory with files and manifest)

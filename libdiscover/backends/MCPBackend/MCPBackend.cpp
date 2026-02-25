@@ -239,16 +239,14 @@ void MCPBackend::bootstrapUserConfig()
     // Create ~/.config/mcp/ if it doesn't exist
     QDir().mkpath(mcpConfigDir);
 
-    // Create sources.list with default registry if it doesn't exist
+    // Create an empty sources.list with instructions if it doesn't exist
     if (!QFile::exists(sourcesPath)) {
         QFile file(sourcesPath);
         if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QTextStream stream(&file);
             stream << "# MCP Registry Sources\n";
             stream << "# Each line is a URL to a registry JSON file.\n";
-            stream << "# Add your own registries below, or remove the default.\n\n";
-            stream << "# Default MCP server registry\n";
-            stream << defaultRegistryUrl() << "\n";
+            stream << "# Add the URLs of MCP server registries you want to use below.\n";
             file.close();
             qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Created default sources.list at" << sourcesPath;
         }
@@ -298,12 +296,6 @@ void MCPBackend::loadSourcesConfig()
             }
             file.close();
         }
-    }
-
-    // Always ensure the default registry is present
-    const QString defaultUrl = defaultRegistryUrl();
-    if (!m_registrySources.contains(defaultUrl)) {
-        m_registrySources.prepend(defaultUrl);
     }
 
     qCDebug(LIBDISCOVER_BACKEND_MCP_LOG) << "MCPBackend: Loaded" << m_registrySources.count() << "registry sources";
@@ -356,7 +348,9 @@ QString MCPBackend::serverManifestPath(const QString &serverId)
 
 QString MCPBackend::defaultRegistryUrl()
 {
-    return u"https://raw.githubusercontent.com/YakupAtahanov/mcp-registry/refs/heads/main/registry.json"_s;
+    // No default registry is shipped; users configure sources via
+    // ~/.config/mcp/sources.list or /etc/mcp/sources.list.
+    return {};
 }
 
 bool MCPBackend::writeServerManifest(const QString &serverId, const QJsonObject &manifest)

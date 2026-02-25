@@ -9,6 +9,8 @@
 #include "MCPResource.h"
 #include "libdiscover_backend_mcp_debug.h"
 
+#include <KLocalizedString>
+
 #include <QDateTime>
 #include <QDir>
 #include <QFile>
@@ -331,16 +333,16 @@ void MCPTransaction::onProcessError(QProcess::ProcessError error)
     QString errorMsg;
     switch (error) {
     case QProcess::FailedToStart:
-        errorMsg = u"Failed to start process. Is the package manager installed?"_s;
+        errorMsg = i18n("Failed to start process. Is the package manager installed?");
         break;
     case QProcess::Crashed:
-        errorMsg = u"Process crashed"_s;
+        errorMsg = i18n("Process crashed");
         break;
     case QProcess::Timedout:
-        errorMsg = u"Process timed out"_s;
+        errorMsg = i18n("Process timed out");
         break;
     default:
-        errorMsg = u"Unknown process error"_s;
+        errorMsg = i18n("Unknown process error");
         break;
     }
 
