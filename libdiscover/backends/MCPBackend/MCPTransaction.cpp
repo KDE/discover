@@ -155,7 +155,7 @@ void MCPTransaction::installNpmPackage()
     const QString package = json[u"source"_s].toObject()[u"package"_s].toString();
 
     if (package.isEmpty()) {
-        finishTransaction(false, u"No npm package specified"_s);
+        finishTransaction(false, i18n("No npm package specified"));
         return;
     }
 
@@ -179,7 +179,7 @@ void MCPTransaction::installPipPackage()
     const QString package = json[u"source"_s].toObject()[u"package"_s].toString();
 
     if (package.isEmpty()) {
-        finishTransaction(false, u"No pip package specified"_s);
+        finishTransaction(false, i18n("No pip package specified"));
         return;
     }
 
@@ -206,7 +206,7 @@ void MCPTransaction::installBinary()
     }
 
     if (url.isEmpty()) {
-        finishTransaction(false, u"No download URL specified for binary"_s);
+        finishTransaction(false, i18n("No download URL specified for binary"));
         return;
     }
 
@@ -230,7 +230,7 @@ void MCPTransaction::installContainer()
     const QString image = json[u"source"_s].toObject()[u"package"_s].toString();
 
     if (image.isEmpty()) {
-        finishTransaction(false, u"No container image specified"_s);
+        finishTransaction(false, i18n("No container image specified"));
         return;
     }
 
@@ -306,7 +306,7 @@ void MCPTransaction::onProcessFinished(int exitCode, QProcess::ExitStatus exitSt
 
     if (exitStatus == QProcess::CrashExit || exitCode != 0) {
         QString errorMsg = m_errorBuffer.isEmpty()
-            ? u"Process failed with exit code %1"_s.arg(exitCode)
+            ? i18n("Process failed with exit code %1", exitCode)
             : m_errorBuffer;
         finishTransaction(false, errorMsg);
         return;
