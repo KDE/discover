@@ -140,14 +140,14 @@
       "size": 1572864
     },
     {
-      "id": "org.jarvis.shell-mcp",
+      "id": "io.example.shell-mcp",
       "name": "Shell MCP",
       "summary": "Execute shell commands securely",
-      "description": "The Shell MCP server from Project JARVIS provides secure shell command execution capabilities. It includes safety features like command whitelisting and sandboxing.\n\nDesigned for integration with the JARVIS orchestration layer.",
+      "description": "An example MCP server that provides shell command execution capabilities with safety features like command whitelisting and sandboxing.",
       "version": "1.0.0",
-      "author": "Yakup Atahanov",
-      "homepage": "https://github.com/YakupAtahanov/Project-JARVIS",
-      "bugUrl": "https://github.com/YakupAtahanov/Project-JARVIS/issues",
+      "author": "Example Author",
+      "homepage": "https://example.com/shell-mcp",
+      "bugUrl": "https://example.com/shell-mcp/issues",
       "icon": "utilities-terminal",
       "type": "stdio",
       "transport": {
@@ -156,7 +156,7 @@
       },
       "source": {
         "type": "pip",
-        "package": "jarvis-shell-mcp"
+        "package": "shell-mcp"
       },
       "categories": ["mcp-shell", "mcp"],
       "capabilities": ["execute", "script"],

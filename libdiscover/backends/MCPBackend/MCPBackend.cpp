@@ -302,7 +302,7 @@ void MCPBackend::loadSourcesConfig()
 
     // Always ensure the default registry is present
     const QString defaultUrl = defaultRegistryUrl();
-    if (!m_registrySources.contains(defaultUrl)) {
+    if (!defaultUrl.isEmpty() && !m_registrySources.contains(defaultUrl)) {
         m_registrySources.prepend(defaultUrl);
     }
 
