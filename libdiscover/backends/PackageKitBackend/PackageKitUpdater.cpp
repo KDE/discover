@@ -867,9 +867,10 @@ AbstractBackendUpdater::State toUpdateState(PackageKit::Transaction::Status t)
 void PackageKitUpdater::itemProgress(const QString &itemID, PackageKit::Transaction::Status status, uint percentage)
 {
     const auto resources = packagesForPackageId({itemID});
+    const auto updaterState = toUpdateState(status);
 
     for (auto resource : resources) {
-        Q_EMIT resourceProgressed(resource, percentage, toUpdateState(status));
+        Q_EMIT resourceProgressed(resource, percentage, updaterState);
     }
 }
 
