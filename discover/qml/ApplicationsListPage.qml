@@ -124,6 +124,17 @@ DiscoverPage {
             Kirigami.Action {
                 QQC2.ActionGroup.group: sortGroup
                 text: i18n("Popularity")
+                icon.name: "love-symbolic"
+                onTriggered: {
+                    DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.RatingCountRole
+                    appsModel.tempSortRole = -1
+                }
+                checkable: true
+                checked: appsModel.sortRole === Discover.ResourcesProxyModel.RatingCountRole
+            }
+            Kirigami.Action {
+                QQC2.ActionGroup.group: sortGroup
+                text: i18nc("@item:inmenu sort by highest-rated apps", "Rating")
                 icon.name: "rating"
                 onTriggered: {
                     DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.SortableRatingRole

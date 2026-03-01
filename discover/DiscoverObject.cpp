@@ -10,7 +10,6 @@
 #include "DiscoverDeclarativePlugin.h"
 #include "FeaturedModel.h"
 #include "LimitedRowCountProxyModel.h"
-#include "OdrsAppsModel.h"
 #include "UnityLauncher.h"
 #include <Transaction/TransactionModel.h>
 
@@ -121,7 +120,6 @@ DiscoverObject::DiscoverObject(const QVariantMap &initialProperties)
     qmlRegisterType<UnityLauncher>(uriApp, 1, 0, "UnityLauncher");
     qmlRegisterType<LimitedRowCountProxyModel>(uriApp, 1, 0, "LimitedRowCountProxyModel");
     qmlRegisterType<FeaturedModel>(uriApp, 1, 0, "FeaturedModel");
-    qmlRegisterType<OdrsAppsModel>(uriApp, 1, 0, "OdrsAppsModel");
     qmlRegisterType<PowerManagementInterface>(uriApp, 1, 0, "PowerManagementInterface");
 #ifdef WITH_FEEDBACK
     qmlRegisterSingletonType<PlasmaUserFeedback>(uriApp, 1, 0, "UserFeedbackSettings", [](QQmlEngine *engine, QJSEngine *) -> QObject * {

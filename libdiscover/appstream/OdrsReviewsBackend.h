@@ -60,11 +60,6 @@ public:
         return m_errorMessage;
     }
 
-    const QList<Rating> &top() const
-    {
-        return m_current.top;
-    }
-
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
     void usefulnessSubmitted();
@@ -90,6 +85,5 @@ private:
 
     struct State {
         QHash<QString, Rating> ratings;
-        QList<Rating> top;
     } m_current;
 };

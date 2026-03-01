@@ -96,8 +96,11 @@ DiscoverPage {
             id: popRep
             model: DiscoverApp.LimitedRowCountProxyModel {
                 pageSize: apps.maximumColumns * 2
-                sourceModel: DiscoverApp.OdrsAppsModel {
-                    // filter: FOSS
+                sourceModel: Discover.ResourcesProxyModel {
+                    filteredCategoryName: "All Applications"
+                    backendFilter: Discover.ResourcesModel.currentApplicationBackend
+                    sortRole: Discover.ResourcesProxyModel.RatingCountRole
+                    sortOrder: Qt.DescendingOrder
                 }
             }
             delegate: GridApplicationDelegate {
