@@ -271,7 +271,6 @@ void OdrsReviewsBackend::parseRatings()
         State state;
         const auto jsonObject = jsonDocument.object();
         state.ratings.reserve(jsonObject.size());
-        constexpr uint topSize = 25;
         for (auto it = jsonObject.begin(); it != jsonObject.end(); it++) {
             const auto appJsonObject = it.value().toObject();
             const auto packageName = it.key().toLower();
@@ -290,17 +289,6 @@ void OdrsReviewsBackend::parseRatings()
             const auto finder = [&rating](const Rating &review) {
                 return review.ratingPoints() < rating.ratingPoints();
             };
-            const auto topIt = std::find_if(state.top.begin(), state.top.end(), finder);
-            if (topIt == state.top.end()) {
-                if (state.top.size() < topSize) {
-                    state.top.append(rating);
-                }
-            } else {
-                state.top.insert(topIt, rating);
-            }
-            if (state.top.size() > topSize) {
-                state.top.resize(topSize);
-            }
 
             state.ratings.insert(packageName, rating);
         }

@@ -25,7 +25,6 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
     DiscoverDeclarativePlugin.cpp
 
     AbstractAppsModel.cpp
-    OdrsAppsModel.cpp
     FeaturedModel.cpp
     LimitedRowCountProxyModel.cpp
     UnityLauncher.cpp
