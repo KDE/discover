@@ -221,8 +221,10 @@ DiscoverPage {
 
         QQC2.Button {
             text: i18nc("@action:button", "See More")
-            icon.name: "go-next-view"
+            icon.name: Qt.application.layoutDirection === Qt.LeftToRight ? "go-next-symbolic" : "go-next-rtl-symbolic"
             Layout.columnSpan: apps.columns
+            // Nicer to have the arrow on the side it's pointing to
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.LeftToRight
             onClicked: Navigation.openCategory(Discover.CategoryModel.findCategoryByName("Games"))
             visible: gamesRep.count > 0 && !featuredModel.isFetching
             Keys.onUpPressed: {
@@ -276,8 +278,10 @@ DiscoverPage {
 
         QQC2.Button {
             text: i18nc("@action:button", "See More")
-            icon.name: "go-next-view"
+            icon.name: Qt.application.layoutDirection === Qt.LeftToRight ? "go-next-symbolic" : "go-next-rtl-symbolic"
             Layout.columnSpan: apps.columns
+            // Nicer to have the arrow on the side it's pointing to
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.LeftToRight
             onClicked: Navigation.openCategory(Discover.CategoryModel.findCategoryByName("Development"))
             visible: devRep.count > 0 && !featuredModel.isFetching
             Keys.onUpPressed: {
