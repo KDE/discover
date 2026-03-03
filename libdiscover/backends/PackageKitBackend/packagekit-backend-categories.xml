@@ -573,7 +573,7 @@
 
   <Menu>
     <Name>Fonts</Name>
-    <Icon>preferences-desktop-font-installer</Icon>
+    <Icon>font</Icon>
     <Fonts />
     <Include>
       <And>
