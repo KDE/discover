@@ -64,8 +64,8 @@ ecm_find_qmlmodule(org.kde.kitemmodels 1.0 REQUIRED)
 
 list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "DISCOVER_BACKEND_PLUGIN")
 
-ecm_set_disabled_deprecation_versions(QT 6.8.1
-    KF 6.9.0
+ecm_set_disabled_deprecation_versions(QT 6.11.0
+    KF 6.23.0
 )
 
 add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS -DQT_NO_URL_CAST_FROM_STRING)
