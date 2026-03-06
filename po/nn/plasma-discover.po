@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-03 00:48+0000\n"
-"PO-Revision-Date: 2024-09-26 19:08+0200\n"
+"PO-Revision-Date: 2026-03-05 20:28+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 26.03.70\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -211,9 +211,9 @@ msgid "An application explorer"
 msgstr "Ein programutforskar"
 
 #: discover/main.cpp:124
-#, fuzzy, kde-format
+#, kde-format
 msgid "© 2010-2026 Plasma Development Team"
-msgstr "© 2010–2024 Utviklingslaget for Plasma"
+msgstr "© 2010–2026 Utviklingslaget for Plasma"
 
 #: discover/main.cpp:125
 #, kde-format
@@ -497,9 +497,7 @@ msgid ","
 msgstr ","
 
 #: discover/qml/ApplicationPage.qml:509
-#, fuzzy, kde-format
-#| msgid "See more…"
-#| msgid_plural "See more…"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "See more…"
 msgstr "Vis fleire …"
@@ -558,11 +556,10 @@ msgstr "Vurderingar for %1 er mellombels utilgjengelege"
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr ""
+msgstr "Ingen vurderingar er lagde inn"
 
 #: discover/qml/ApplicationPage.qml:774
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
 msgstr "Installer for å skriva ei vurdering"
@@ -596,7 +593,7 @@ msgid "Read the documentation"
 msgstr "Les den offisielle dokumentasjonen til prosjektet"
 
 #: discover/qml/ApplicationPage.qml:873
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project's website"
 msgstr "Besøk heimesida til prosjektet"
@@ -605,10 +602,10 @@ msgstr "Besøk heimesida til prosjektet"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
-msgstr ""
+msgstr "Gje pengegåve til prosjektet"
 
 #: discover/qml/ApplicationPage.qml:893
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "Meld frå om feil"
@@ -685,11 +682,9 @@ msgid "Name"
 msgstr "Namn"
 
 #: discover/qml/ApplicationsListPage.qml:126
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Most Popular"
+#, kde-format
 msgid "Popularity"
-msgstr "Mest populære"
+msgstr "Popularitet"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -842,14 +837,12 @@ msgstr "Neste skjermbilete"
 #: discover/qml/DiscoverDrawer.qml:166
 #, kde-format
 msgid "Security updates available"
-msgstr ""
+msgstr "Tryggleiksoppdateringar er tilgjengelege"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgctxt "@action:button as in, 'update all items'"
-#| msgid "Update All"
+#, kde-format
 msgid "Updates available"
-msgstr "Oppdater alle"
+msgstr "Oppdateringar er tilgjengelege"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -877,10 +870,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&Oppdateringar (hentar …)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "Oppdateringar"
+msgstr "&Oppdateringar"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format
@@ -909,9 +901,7 @@ msgid "Proceed"
 msgstr "Hald fram"
 
 #: discover/qml/DiscoverWindow.qml:326
-#, fuzzy, kde-format
-#| msgctxt "@action:button %1 is the distro name"
-#| msgid "Report This Issue to %1"
+#, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
 msgstr "Meld frå om feilen til %1"
