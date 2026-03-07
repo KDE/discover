@@ -159,7 +159,7 @@ BasicAbstractCard {
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignBottom
                         visible: root.showRating
-                        opacity: 0.6
+                        opacity: 0.75
                         spacing: Kirigami.Units.largeSpacing
 
                         Rating {
@@ -193,7 +193,7 @@ BasicAbstractCard {
                         visible: !root.compact && root.showSize
                         text: visible ? root.application.sizeDescription : ""
                         horizontalAlignment: Text.AlignRight
-                        opacity: 0.6;
+                        opacity: 0.75
                         font: Kirigami.Theme.smallFont
                         elide: Text.ElideRight
                         maximumLineCount: 1

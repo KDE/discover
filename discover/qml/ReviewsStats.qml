@@ -163,7 +163,7 @@ BasicAbstractCard {
                     }
                     QQC2.Label {
                         Layout.alignment: Qt.AlignCenter
-                        opacity: 0.8
+                        opacity: 0.75
                         text: delegate.reviewer || i18n("Unknown reviewer")
                     }
                 }

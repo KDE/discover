@@ -109,7 +109,7 @@ BasicAbstractCard {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignTop
                 maximumLineCount: head.lineCount === 1 ? 3 : 2
-                opacity: 0.6
+                opacity: 0.75
                 wrapMode: Text.Wrap
 
                 text: root.application.comment
