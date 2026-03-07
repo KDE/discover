@@ -75,6 +75,9 @@ BasicAbstractCard {
         target.forceActiveFocus(Qt.TabFocusReason)
     }
 
+    QQC2.ToolTip.text: "<b>" + appName.text + "</b><br/>" + appDescription.text
+    QQC2.ToolTip.visible: (hovered || activeFocus) && (appName.truncated || appDescription.truncated)
+
     content: RowLayout {
         spacing: Kirigami.Units.largeSpacing
 
@@ -93,23 +96,26 @@ BasicAbstractCard {
             spacing: 0
 
             Kirigami.Heading {
-                id: head
+                id: appName
                 level: 2
                 type: Kirigami.Heading.Type.Primary
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignBottom
                 wrapMode: Text.Wrap
                 maximumLineCount: 2
+                elide: Text.ElideRight
 
                 text: root.application.name
             }
 
             QQC2.Label {
+                id: appDescription
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignTop
-                maximumLineCount: head.lineCount === 1 ? 3 : 2
+                maximumLineCount: appName.lineCount === 1 ? 3 : 2
                 opacity: 0.75
                 wrapMode: Text.Wrap
+                elide: Text.ElideRight
 
                 text: root.application.comment
             }
