@@ -7,14 +7,14 @@
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020.
 # SPDX-FileCopyrightText: 2012, 2025, 2026 Marcus Gama <marcus.gama@gmail.com>
 # Blumen Herzenschein <herzenschein@gmail.com>, 2020, 2021.
-# SPDX-FileCopyrightText: 2025 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
+# SPDX-FileCopyrightText: 2025, 2026 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-03 02:57+0000\n"
-"PO-Revision-Date: 2026-02-19 07:48-0300\n"
-"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
+"PO-Revision-Date: 2026-03-06 16:08-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -74,11 +74,11 @@ msgid ""
 "packages.</para>"
 msgstr ""
 "O suporte para gerenciamento de pacotes de %1 está incompleto; você pode "
-"enfrentar vários problemas. Não reporte bugs ao KDE. É altamente "
-"recomendável desinstalar o pacote <resource>packagekit-qt6</resource> e usar "
-"o Discover apenas para gerenciar Flatpaks, Snaps e Add-Ons.<para>%1 "
-"mantenedores recomendam usar o <command>pacman</command > ferramenta de "
-"linha de comando para gerenciar pacotes.</para>"
+"enfrentar vários problemas. Não reporte bugs à KDE. É altamente recomendável "
+"desinstalar o pacote <resource>packagekit-qt6</resource> e usar o Discover "
+"apenas para gerenciar Flatpaks, Snaps e Add-Ons.<para>%1 mantenedores "
+"recomendam usar o <command>pacman</command > ferramenta de linha de comando "
+"para gerenciar pacotes.</para>"
 
 #: discover/DiscoverObject.cpp:305
 #, kde-format
@@ -985,7 +985,7 @@ msgid ""
 "Sends anonymized usage information to KDE so we can better understand our "
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
-"Envia informações de uso anônimas para o KDE, para entendermos melhor os "
+"Envia informações de uso anônimas para a KDE, para entendermos melhor os "
 "nossos usuários. Para mais informações, consulte https://kde.org/"
 "privacypolicy-apps.php."
 
@@ -1441,7 +1441,7 @@ msgid ""
 "network error, please report it to %1, not KDE."
 msgstr ""
 "Se o erro indicado acima parece ser um problema real e não um erro "
-"temporário de rede, por favor, relate-o para %1, não para o KDE."
+"temporário de rede, por favor, relate-o para %1, não para a KDE."
 
 #: discover/qml/UpdatesPage.qml:104
 #, kde-format
@@ -1453,7 +1453,7 @@ msgstr "Copiar o texto"
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr ""
-"Mensagem de erro copiada. Lembre-se de relatá-la para %1, não para o KDE!"
+"Mensagem de erro copiada. Lembre-se de relatá-la para %1, não para a KDE!"
 
 #: discover/qml/UpdatesPage.qml:115
 #, kde-format
