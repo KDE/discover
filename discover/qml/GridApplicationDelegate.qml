@@ -76,7 +76,6 @@ BasicAbstractCard {
     }
 
     content: RowLayout {
-        anchors.fill: parent
         spacing: Kirigami.Units.largeSpacing
 
         Kirigami.Icon {
