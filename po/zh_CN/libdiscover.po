@@ -465,7 +465,7 @@ msgstr "出版"
 #, kde-format
 msgctxt "Category"
 msgid "Scanning and OCR"
-msgstr "扫描和文字识别"
+msgstr "扫描和文本识别"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:407
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:407

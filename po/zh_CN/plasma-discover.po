@@ -1230,7 +1230,7 @@ msgstr "请输入更多内容…"
 #: discover/qml/ReviewDialog.qml:195
 #, kde-format
 msgid "Too long!"
-msgstr "文字过长！"
+msgstr "文本过长！"
 
 #: discover/qml/ReviewDialog.qml:198
 #, kde-format
