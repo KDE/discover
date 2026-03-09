@@ -1545,12 +1545,12 @@ msgstr "لم يُعثر على التّحديث"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:121
 #, kde-format
 msgid "Cannot install from unsigned repo"
-msgstr "لا يمكن التّثبيت من مستودع غير موقّع"
+msgstr "لا يمكن التّثبيت من مستودع غير موقع"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:123
 #, kde-format
 msgid "Cannot update from unsigned repo"
-msgstr "لا يمكن التّحديث من مستودع غير موقّع"
+msgstr "لا يمكن التّحديث من مستودع غير موقع"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:125
 #, kde-format
