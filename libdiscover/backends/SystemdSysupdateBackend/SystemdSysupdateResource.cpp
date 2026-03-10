@@ -201,3 +201,5 @@ SystemdSysupdateTransaction *SystemdSysupdateResource::update()
 
     return transaction;
 }
+
+#include "moc_SystemdSysupdateResource.cpp"
