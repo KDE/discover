@@ -236,8 +236,8 @@ Kirigami.GlobalDrawer {
         Kirigami.Action {
             required property Discover.Category category
             required property var categoryPtr
-
-            readonly property bool itsMe: window?.leftPage?.category === category
+            readonly property var windowCategory: window?.leftPage?.category
+            readonly property bool itsMe: (windowCategory && category) ? category.contains(windowCategory) : false
 
             text: category?.name ?? ""
             icon.name: category?.icon + "-symbolic" ?? ""
