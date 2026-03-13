@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the discover package.
 #
 # SPDX-FileCopyrightText: 2023, 2024, 2025 Guðmundur Erlingsson <gudmundure@gmail.com>
-# SPDX-FileCopyrightText: 2024, 2025 Sveinn í Felli <sv1@fellsnet.is>
+# SPDX-FileCopyrightText: 2024, 2025, 2026 Sveinn í Felli <sv1@fellsnet.is>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-03 02:57+0000\n"
-"PO-Revision-Date: 2025-12-05 15:55+0000\n"
+"PO-Revision-Date: 2026-03-12 08:38+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -699,11 +699,9 @@ msgid "Name"
 msgstr "Heiti"
 
 #: discover/qml/ApplicationsListPage.qml:126
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Most Popular"
+#, kde-format
 msgid "Popularity"
-msgstr "Vinsælast"
+msgstr "Vinsældir"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
@@ -856,14 +854,12 @@ msgstr "Næsta skjámynd"
 #: discover/qml/DiscoverDrawer.qml:166
 #, kde-format
 msgid "Security updates available"
-msgstr ""
+msgstr "Öryggisuppfærslur í boði"
 
 #: discover/qml/DiscoverDrawer.qml:167
-#, fuzzy, kde-format
-#| msgctxt "@action:button as in, 'update all items'"
-#| msgid "Update All"
+#, kde-format
 msgid "Updates available"
-msgstr "Uppfæra allt"
+msgstr "Uppfærslur eru tiltækar"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -891,10 +887,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&Uppfærslur (sæki…)"
 
 #: discover/qml/DiscoverWindow.qml:97
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "Uppfærslur"
+msgstr "&Uppfærslur"
 
 #: discover/qml/DiscoverWindow.qml:105
 #, kde-format
