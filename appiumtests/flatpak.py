@@ -47,7 +47,8 @@ class FlatpakTest(unittest.TestCase):
         self.assertTrue(searchFocused)
 
         searchElement.send_keys("Kalzium")
-        searchElement.send_keys(Keys.ENTER)
+        searchElement.send_keys("\U0000E007")
+
 
         listItem = WebDriverWait(self.driver, 200).until(
             EC.element_to_be_clickable((AppiumBy.CLASS_NAME, "[list item | Kalzium]"))
