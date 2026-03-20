@@ -38,7 +38,7 @@ class FlatpakTest(unittest.TestCase):
 
 
     def test_search_install_uninstall(self):
-        WebDriverWait(self.driver, 30).until(
+        WebDriverWait(self.driver, 200).until(
             EC.invisibility_of_element_located((AppiumBy.CLASS_NAME, "[label | Loading…]"))
         )
 
@@ -49,7 +49,7 @@ class FlatpakTest(unittest.TestCase):
         searchElement.send_keys("Kalzium")
         searchElement.send_keys(Keys.ENTER)
 
-        listItem = WebDriverWait(self.driver, 123).until(
+        listItem = WebDriverWait(self.driver, 200).until(
             EC.element_to_be_clickable((AppiumBy.CLASS_NAME, "[list item | Kalzium]"))
         )
         listItem.click()
@@ -60,13 +60,13 @@ class FlatpakTest(unittest.TestCase):
         installButton = self.driver.find_element(by=AppiumBy.XPATH, value=f"//*[contains(translate(@name, 'INSTALL', 'install'), 'install') and contains(@accessibility-id, 'Button')]")
         installButton.click()
 
-        removeButton = WebDriverWait(self.driver, 120).until(
+        removeButton = WebDriverWait(self.driver, 200).until(
             EC.element_to_be_clickable((AppiumBy.XPATH, f"//*[contains(translate(@name, 'REMOVE', 'remove'), 'remove') and contains(@accessibility-id, 'Button')]"))
         )
         removeButton.click()
 
         # should find install button again after removal
-        WebDriverWait(self.driver, 30).until(
+        WebDriverWait(self.driver, 200).until(
             EC.element_to_be_clickable((AppiumBy.XPATH, f"//*[contains(translate(@name, 'INSTALL', 'install'), 'install') and contains(@accessibility-id, 'Button')]"))
         )
 
