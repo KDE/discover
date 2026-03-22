@@ -32,8 +32,11 @@
 #include <QNetworkRequest>
 #include <QStandardPaths>
 
+#include "AppStreamUtils.h"
 #include <QFutureWatcher>
 #include <QtConcurrentRun>
+#include <qelapsedtimer.h>
+#include <utils.h>
 
 // #define APIURL "http://127.0.0.1:5000/1.0/reviews/api"
 #define APIURL "https://odrs.gnome.org/1.0/reviews/api"
@@ -271,7 +274,6 @@ void OdrsReviewsBackend::parseRatings()
         State state;
         const auto jsonObject = jsonDocument.object();
         state.ratings.reserve(jsonObject.size());
-        constexpr uint topSize = 25;
         for (auto it = jsonObject.begin(); it != jsonObject.end(); it++) {
             const auto appJsonObject = it.value().toObject();
             const auto packageName = it.key().toLower();
@@ -287,43 +289,61 @@ void OdrsReviewsBackend::parseRatings()
             };
 
             const auto rating = Rating(packageName, ratingCount, ratingMap);
-            const auto finder = [&rating](const Rating &review) {
-                return review.ratingCount() < rating.ratingCount();
-            };
-            const auto topIt = std::find_if(state.top.begin(), state.top.end(), finder);
-            if (topIt == state.top.end()) {
-                if (state.top.size() < topSize) {
-                    state.top.append(rating);
-                }
-            } else {
-                state.top.insert(topIt, rating);
-            }
-            if (state.top.size() > topSize) {
-                state.top.resize(topSize);
-            }
-
             state.ratings.insert(packageName, rating);
         }
-
-        // Filter out non-apps, to match behavior of lists backed by ResourcesProxyModel
-        AppStream::Pool appstreamData;
-        appstreamData.load();
-
-        QMutableListIterator<Rating> iterator(state.top);
-        while (iterator.hasNext()) {
-            const auto components = appstreamData.componentsById(iterator.next().packageName());
-
-            for (const auto &component : components) {
-                const bool isDesktopApp = component.kind() == AppStream::Component::KindDesktopApp;
-                const bool isLaunchable = component.launchable(AppStream::Launchable::KindDesktopId).entries().count() > 0;
-                if (!isDesktopApp || !isLaunchable) {
-                    iterator.remove();
-                }
-            }
-        }
-
+        state.top = calculateTop(state.ratings, {}, 25);
         return state;
     }));
+}
+
+QList<Rating> OdrsReviewsBackend::calculateTop(const QHash<QString, Rating> &ratings, const std::shared_ptr<Category> &category, uint topSize)
+{
+    QElapsedTimer elapsed;
+    elapsed.start();
+    static AppStream::Pool appstreamData;
+    if (appstreamData.isEmpty())
+        appstreamData.load();
+
+    // Filter out non-apps, to match behavior of lists backed by ResourcesProxyModel. Also filter by category if provided
+    const auto isCandidate = [&category](const Rating &rating) {
+        const auto components = appstreamData.componentsById(rating.packageName());
+        for (const auto &component : components) {
+            const bool isLaunchableApp =
+                component.kind() == AppStream::Component::KindDesktopApp && !component.launchable(AppStream::Launchable::KindDesktopId).entries().isEmpty();
+            if (isLaunchableApp && (!category || AppStreamUtils::componentMatchesCategory(component, category))) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+    QList<Rating> top;
+    top.reserve(topSize);
+    for (const Rating &rating : ratings) {
+        const auto finder = [&rating](const Rating &review) {
+            return review.ratingCount() < rating.ratingCount();
+        };
+
+        const auto topIt = std::find_if(top.begin(), top.end(), finder);
+        if (topIt == top.end()) {
+            if (top.size() < topSize) {
+                if (isCandidate(rating)) {
+                    top.append(rating);
+                }
+            }
+        } else if (isCandidate(rating)) {
+            top.insert(topIt, rating);
+        }
+        if (top.size() > topSize) {
+            top.resize(topSize);
+        }
+    }
+    return top;
+}
+
+QFuture<QList<Rating>> OdrsReviewsBackend::topCategory(const std::shared_ptr<Category> &category, uint pageSize) const
+{
+    return QtConcurrent::run(calculateTop, m_current.ratings, category, pageSize);
 }
 
 bool OdrsReviewsBackend::isResourceSupported(AbstractResource *resource) const
