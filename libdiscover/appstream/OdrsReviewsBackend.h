@@ -10,6 +10,7 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/ReviewsModel.h>
 
+#include <QFuture>
 #include <QJsonDocument>
 #include <QMap>
 #include <QNetworkReply>
@@ -17,6 +18,7 @@
 class KJob;
 class AbstractResourcesBackend;
 class CachedNetworkAccessManager;
+class Category;
 
 class DISCOVERCOMMON_EXPORT OdrsReviewsBackend : public AbstractReviewsBackend
 {
@@ -65,6 +67,8 @@ public:
         return m_current.top;
     }
 
+    QFuture<QList<Rating>> topCategory(const std::shared_ptr<Category> &category, uint pageSize) const;
+
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
     void usefulnessSubmitted();
@@ -82,6 +86,7 @@ private:
     void setFetching(bool fetching);
     QNetworkAccessManager *nam();
     void parseRatings();
+    static QList<Rating> calculateTop(const QList<Rating> &ratings, const std::shared_ptr<Category> &category, uint topSize);
 
     QString m_errorMessage;
     bool m_isFetching = false;
@@ -91,5 +96,6 @@ private:
     struct State {
         QHash<QString, Rating> ratings;
         QList<Rating> top;
+        QList<Rating> sortedAppRatings;
     } m_current;
 };

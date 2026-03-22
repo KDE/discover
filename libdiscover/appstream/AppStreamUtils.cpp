@@ -192,14 +192,14 @@ AppStreamUtils::componentsByCategoriesTask(AppStream::ConcurrentPool *pool, cons
         return pool->componentsByKind(AppStream::Component::KindDesktopApp);
     }
 
-    const auto categories = cat->involvedCategories();
     QList<QFuture<AppStream::ComponentBox>> futures;
-    futures.reserve(categories.size());
     if (cat->type() == Category::Type::Driver) {
         futures += pool->componentsByKind(AppStream::Component::KindDriver);
     } else if (cat->type() == Category::Type::Font) {
         futures += pool->componentsByKind(AppStream::Component::KindFont);
     } else {
+        const auto categories = cat->involvedCategories();
+        futures.reserve(categories.size());
         for (const auto &categoryName : categories) {
             futures += pool->componentsByCategories({categoryName});
         }
@@ -217,6 +217,26 @@ AppStreamUtils::componentsByCategoriesTask(AppStream::ConcurrentPool *pool, cons
         kRemoveDuplicates(ret, kind);
         return ret;
     });
+}
+
+bool AppStreamUtils::componentMatchesCategory(const AppStream::Component &component, const std::shared_ptr<Category> &cat)
+{
+    if (cat->name() == QLatin1StringView("All Applications")) {
+        return component.kind() == AppStream::Component::KindDesktopApp;
+    }
+    if (cat->type() == Category::Type::Driver) {
+        return component.kind() == AppStream::Component::KindDriver;
+    } else if (cat->type() == Category::Type::Font) {
+        return component.kind() == AppStream::Component::KindFont;
+    } else {
+        const auto categories = component.categories();
+        for (const auto &categoryName : categories) {
+            if (cat->matchesCategoryName(categoryName)) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 DISCOVERCOMMON_EXPORT bool AppStreamUtils::kIconLoaderHasIcon(const QString &name)

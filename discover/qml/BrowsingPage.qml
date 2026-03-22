@@ -106,7 +106,7 @@ DiscoverPage {
                 columns: apps.columns
                 maxUp: 0
             }
-            property int numberItemsOnLastRow: (count % apps.columns) || apps.columns
+            readonly property int numberItemsOnLastRow: (count % apps.columns) || apps.columns
         }
 
         QQC2.Button {
@@ -220,14 +220,9 @@ DiscoverPage {
 
         Repeater {
             id: gamesRep
-            model: DiscoverApp.LimitedRowCountProxyModel {
+            model: DiscoverApp.OdrsCategoryModel {
                 pageSize: apps.maximumColumns
-                sourceModel: Discover.ResourcesProxyModel {
-                    filteredCategoryName: "Games"
-                    backendFilter: Discover.ResourcesModel.currentApplicationBackend
-                    sortRole: Discover.ResourcesProxyModel.SortableRatingRole
-                    sortOrder: Qt.DescendingOrder
-                }
+                filteredCategoryName: "Games"
             }
             delegate: GridApplicationDelegate {
                 visible: !featuredModel.isFetching
@@ -275,14 +270,9 @@ DiscoverPage {
 
         Repeater {
             id: devRep
-            model: DiscoverApp.LimitedRowCountProxyModel {
+            model: DiscoverApp.OdrsCategoryModel {
                 pageSize: apps.maximumColumns
-                sourceModel: Discover.ResourcesProxyModel {
-                    filteredCategoryName: "Development"
-                    backendFilter: Discover.ResourcesModel.currentApplicationBackend
-                    sortRole: Discover.ResourcesProxyModel.SortableRatingRole
-                    sortOrder: Qt.DescendingOrder
-                }
+                filteredCategoryName: "Development"
             }
             delegate: GridApplicationDelegate {
                 visible: !featuredModel.isFetching
