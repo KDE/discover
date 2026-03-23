@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-03 02:57+0000\n"
-"PO-Revision-Date: 2026-02-19 21:39+0100\n"
+"PO-Revision-Date: 2026-03-22 09:35+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: discover/DiscoverObject.cpp:197
 #, kde-format
@@ -562,46 +562,46 @@ msgstr "Zer berri"
 #: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Reviews"
-msgstr "Iruzkinak"
+msgstr "Iritziak"
 
 #: discover/qml/ApplicationPage.qml:757
 #, kde-format
 msgid "Loading reviews for %1"
-msgstr "%1(e)ren gaineko iruzkinak zamatzen"
+msgstr "%1(e)ri buruzko iritziak zamatzen"
 
 #: discover/qml/ApplicationPage.qml:766
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr "%1(e)n gaineko iruzkinak aldi baterako ezin dira erabili"
+msgstr "%1(r)i buruzko iritziak aldi baterako ez daude erabilgarri"
 
 #: discover/qml/ApplicationPage.qml:773
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr "Oraindik ez da iruzkinik argitaratu"
+msgstr "Oraindik ez da iritzirik argitaratu"
 
 #: discover/qml/ApplicationPage.qml:774
 #, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
-msgstr "Instalatu iruzkin bat idazteko"
+msgstr "Instalatu iritzia idazteko"
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Write a Review"
-msgstr "Idatzi iruzkin bat"
+msgstr "Idatzi iritzia"
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Install to Write a Review"
-msgstr "Instalatu iruzkin bat idazteko"
+msgstr "Instalatu iritzia idazteko"
 
 #: discover/qml/ApplicationPage.qml:806
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Erakutsi iruzkin guztiak"
+msgstr "Erakutsi iritzi guztiak"
 
 #: discover/qml/ApplicationPage.qml:844
 #, kde-format
@@ -973,7 +973,7 @@ msgstr "Kopiatu arbelera"
 #: discover/qml/Feedback.qml:14
 #, kde-format
 msgid "Submit Usage Information"
-msgstr "Bidali erabileraren gaineko informazioa"
+msgstr "Bidali erabilerari buruzko informazioa"
 
 #: discover/qml/Feedback.qml:15
 #, kde-format
@@ -981,14 +981,14 @@ msgid ""
 "Sends anonymized usage information to KDE so we can better understand our "
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
-"Anonimo bilakatutako erabileraren gaineko informazioa bidaltzen du KDEra "
-"gure erabiltzaileak hobeto ulertze aldera. Informazio zabalagoa hemen, "
-"https://kde.org/privacypolicy-apps.php."
+"Anonimo bilakatutako erabilerari buruzko informazioa bidaltzen du KDEra gure "
+"erabiltzaileak hobeto ulertze aldera. Informazio zabalagoa hemen, https://"
+"kde.org/privacypolicy-apps.php."
 
 #: discover/qml/Feedback.qml:19
 #, kde-format
 msgid "Submitting usage information…"
-msgstr "Erabileraren gaineko informazioa bidaltzen…"
+msgstr "Erabilerari buruzko informazioa bidaltzen…"
 
 #: discover/qml/Feedback.qml:19
 #, kde-format
@@ -1098,7 +1098,7 @@ msgstr "Balorazioa"
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
 msgid "unknown reviewer"
-msgstr "Iruzkingile ezezaguna"
+msgstr "Iritzi emaile ezezaguna"
 
 #: discover/qml/ReviewDelegate.qml:59
 #, kde-format
@@ -1108,7 +1108,7 @@ msgstr "<b>%1</b> egilea %2"
 #: discover/qml/ReviewDelegate.qml:59
 #, kde-format
 msgid "Comment by %1"
-msgstr "Iruzkina %1(e)k"
+msgstr "%1(e)ren iritzia"
 
 #: discover/qml/ReviewDelegate.qml:73
 #, kde-format
@@ -1128,7 +1128,7 @@ msgstr "Bozkak: %1 / %2"
 #: discover/qml/ReviewDelegate.qml:94
 #, kde-format
 msgid "Was this review useful?"
-msgstr "Iruzkin hau baliagarria izan da?"
+msgstr "Iritzi hau baliagarria izan da?"
 
 #: discover/qml/ReviewDelegate.qml:106
 #, kde-format
@@ -1145,12 +1145,12 @@ msgstr "Ez"
 #: discover/qml/ReviewDialog.qml:26
 #, kde-format
 msgid "Reviewing %1"
-msgstr "%1(e)ren gaineko iruzkina egiten"
+msgstr "%1(e)ri buruzko iritzia"
 
 #: discover/qml/ReviewDialog.qml:33
 #, kde-format
 msgid "Submit review"
-msgstr "Bidali iruzkina"
+msgstr "Bidali iritzia"
 
 #: discover/qml/ReviewDialog.qml:48
 #, kde-format
@@ -1270,7 +1270,7 @@ msgstr "Idatzi izenburua"
 #: discover/qml/ReviewDialog.qml:189
 #, kde-format
 msgid "Write the review"
-msgstr "Idatzi iruzkina"
+msgstr "Idatzi iritzia"
 
 #: discover/qml/ReviewDialog.qml:192
 #, kde-format
@@ -1291,17 +1291,17 @@ msgstr "Sartu izen bat"
 #: discover/qml/ReviewsPage.qml:43
 #, kde-format
 msgid "Reviews for %1"
-msgstr "%1(e)ren gaineko iruzkinak"
+msgstr "%1(e)ri buruzko iritziak"
 
 #: discover/qml/ReviewsPage.qml:105
 #, kde-format
 msgid "Write a Review…"
-msgstr "Idatzi iruzkin bat…"
+msgstr "Idatzi iritzia…"
 
 #: discover/qml/ReviewsPage.qml:118
 #, kde-format
 msgid "Install this app to write a review"
-msgstr "Instalatu aplikazio hori, iruzkin bat idazteko"
+msgstr "Instalatu aplikazio hau, iritzi bat idazteko"
 
 #: discover/qml/ReviewsPage.qml:145
 #, kde-format
@@ -1325,7 +1325,7 @@ msgstr "Balorazio altuenak"
 #, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "%1 iruzkin"
+msgstr "%1 iritzi"
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
@@ -1336,7 +1336,7 @@ msgstr "M"
 #: discover/qml/ReviewsStats.qml:167
 #, kde-format
 msgid "Unknown reviewer"
-msgstr "Iruzkingile ezezaguna"
+msgstr "Iritzi emaile ezezaguna"
 
 #: discover/qml/ReviewsStats.qml:188
 #, kde-format
