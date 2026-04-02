@@ -648,7 +648,7 @@ msgstr "Prístup k zbernici sedení"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Access is granted to the entire Session Bus"
-msgstr ""
+msgstr "Prístup je udelený k celej relačnej zbernici"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:969
@@ -659,7 +659,7 @@ msgstr "Prístup k systémovej zbernici"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:824
 #, kde-format
 msgid "Access is granted to the entire System Bus"
-msgstr ""
+msgstr "Prístup je udelený k celej systémovej zbernici"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
@@ -2219,17 +2219,19 @@ msgid ""
 "To be able to update to this new version, make sure to apply all pending "
 "updates and reboot your system."
 msgstr ""
+"<b>Bola vydaná nová hlavná verzia %1!</b>\n"
+"Aby ste mohli aktualizovať na túto novú verziu, uistite sa, že ste "
+"aplikovali všetky čakajúce aktualizácie a reštartovali systém."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:425
 #, fuzzy, kde-format
-#| msgid "Upgrade"
 msgid "Upgrade to %1 %2"
 msgstr "Aktualizovať"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:427
 #, kde-format
 msgid "<b>A new major version has been released!</b>"
-msgstr ""
+msgstr "<b>Bola vydaná nová hlavná verzia!</b>"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:563
 #, kde-format
@@ -2309,8 +2311,7 @@ msgstr "ostree vzdialené"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:158
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:181
-#, fuzzy, kde-format
-#| msgid "Current rpm-ostree transaction in progress:"
+#, kde-format
 msgid "rpm-ostree transaction failed with:"
 msgstr "Aktuálna prebiehajúca transakcia rpm-ostree:"
 
@@ -2614,7 +2615,7 @@ msgstr "Doplnky"
 #~ msgid "View Updates"
 #~ msgstr "Zobraziť aktualizácie"
 
-#, fuzzy
+#
 #~| msgid "Please restart the computer to finish the update"
 #~ msgid "Please restart the device to finish the update"
 #~ msgstr "Prosím, reštartujte počítač na dokončenie aktualizácie"
@@ -2649,12 +2650,12 @@ msgstr "Doplnky"
 #~ msgid "FWUPD ERROR AC POWER REQUIRED"
 #~ msgstr "CHYBA FWUPD: Vyžadované napájanie zo siete"
 
-#, fuzzy
+#
 #~| msgid "PackageKit restart required"
 #~ msgid "Restart is required"
 #~ msgstr "Vyžaduje sa reštart PackageKit"
 
-#, fuzzy
+#
 #~| msgid "PackageKit restart required"
 #~ msgid "Session restart is required"
 #~ msgstr "Vyžaduje sa reštart PackageKit"
