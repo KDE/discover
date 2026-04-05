@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-03 02:57+0000\n"
-"PO-Revision-Date: 2026-02-21 08:16+0100\n"
+"PO-Revision-Date: 2026-04-04 19:16+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -706,7 +706,7 @@ msgstr "Uszereguj wg: %1"
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
-msgstr "Trafność"
+msgstr "Trafności"
 
 #: discover/qml/ApplicationsListPage.qml:115
 #, kde-format
@@ -716,17 +716,17 @@ msgstr "Nazwy"
 #: discover/qml/ApplicationsListPage.qml:126
 #, kde-format
 msgid "Popularity"
-msgstr "Najpopularniejsze"
+msgstr "Popularności"
 
 #: discover/qml/ApplicationsListPage.qml:137
 #, kde-format
 msgid "Size"
-msgstr "Rozmiar"
+msgstr "Rozmiarze"
 
 #: discover/qml/ApplicationsListPage.qml:148
 #, kde-format
 msgid "Release date"
-msgstr "Data udostępnienia"
+msgstr "Daty wydania"
 
 #: discover/qml/ApplicationsListPage.qml:208
 #, kde-format
@@ -1493,7 +1493,7 @@ msgctxt ""
 "@info on the completion of updates, the action that automatically happens "
 "after (e.g shut down)"
 msgid "On completion, automatically:"
-msgstr "Po zakończeniu, samoczynnie:"
+msgstr "Po ukończeniu, samoczynnie:"
 
 #: discover/qml/UpdatesPage.qml:284
 #, kde-format
