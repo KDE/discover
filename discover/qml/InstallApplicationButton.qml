@@ -10,10 +10,11 @@ ConditionalLoader {
     id: root
 
     property alias application: listener.resource
-    property bool availableFromOnlySingleSource: false
-    property bool flat: false
+    property bool flatCancelButton: false
     property bool buttonActiveFocusOnTab: false
     property var installOrRemoveButtonDisplayStyle: QQC2.AbstractButton.TextBesideIcon
+    property bool emphasizeInstallOrRemoveButton: false
+
 
     readonly property alias isActive: listener.isActive
     readonly property bool isStateAvailable: application.state !== Discover.AbstractResource.Broken
@@ -29,10 +30,7 @@ ConditionalLoader {
                 return i18nc("State being fetched", "Loading…")
             }
             if (!root.application.isInstalled) {
-                if (root.availableFromOnlySingleSource) {
-                    return i18nc("@action:button %1 is the name of a software repository", "Install from %1", root.application.displayOrigin);
-                }
-                return i18nc("@action:button", "Install");
+                return i18nc("@action:button %1 is the name of a software repository", "Install from %1", root.application.displayOrigin);
             }
             return i18n("Remove");
         }
@@ -86,7 +84,7 @@ ConditionalLoader {
             Layout.fillHeight: true
             action: root.cancelAction
 
-            flat: root.flat
+            flat: root.flatCancelButton
             display: QQC2.AbstractButton.IconOnly
 
             QQC2.ToolTip.text: text
@@ -96,7 +94,7 @@ ConditionalLoader {
     }
 
     // Install/Remove button
-    componentFalse: QQC2.ToolButton {
+    componentFalse: QQC2.Button {
         id: installOrRemoveButton
         readonly property int iconSize: flat ? Kirigami.Units.iconSizes.smallMedium : Kirigami.Units.iconSizes.small
 
@@ -105,7 +103,6 @@ ConditionalLoader {
         activeFocusOnTab: root.buttonActiveFocusOnTab
 
         display: root.installOrRemoveButtonDisplayStyle
-        flat: root.flat
         text: root.action.text
         icon.name: root.action.icon.name
         icon.color: root.action.icon.color

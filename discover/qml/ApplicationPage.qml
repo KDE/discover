@@ -26,7 +26,6 @@ DiscoverPage {
 
     readonly property int visibleReviews: 3
     readonly property int internalSpacings: padding * 2
-    readonly property bool availableFromOnlySingleSource: !originsMenuAction.visible
 
     // Usually this page is not the top level page, but when we are, isHome being
     // true will ensure that the search field suggests we are searching in the list
@@ -127,8 +126,8 @@ DiscoverPage {
     actions: [
         addonsAction,
         shareAction,
-        installRemoveAndProgressAction,
         invokeAction,
+        installRemoveAndProgressAction,
         originsMenuAction
     ]
 
@@ -163,7 +162,7 @@ DiscoverPage {
     Kirigami.Action {
         id: originsMenuAction
 
-        text: i18nc("@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu\"", "From %1", appInfo.application.displayOrigin)
+        tooltip: i18nc("@info:tooltip", "Choose source")
         visible: children.length > 1 && !transactionListener.isActive
         children: sourcesGroup.actions
     }
@@ -204,8 +203,7 @@ DiscoverPage {
             id: appbutton
             application: appInfo.application
             buttonActiveFocusOnTab: true
-            availableFromOnlySingleSource: appInfo.availableFromOnlySingleSource
-            flat: true
+            flatCancelButton: true
         }
     }
 
