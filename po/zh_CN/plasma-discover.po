@@ -1452,13 +1452,13 @@ msgstr "选择一个操作"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Restart"
-msgstr "重启"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:284
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Shut down"
-msgstr "关机"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:293
 #, kde-format
