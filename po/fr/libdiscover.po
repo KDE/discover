@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-28 02:46+0000\n"
+"POT-Creation-Date: 2026-04-08 02:42+0000\n"
 "PO-Revision-Date: 2025-11-11 17:45+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -615,6 +615,7 @@ msgid "Retrieving size information"
 msgstr "Collecte des informations sur la taille"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:472
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:419
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
@@ -2467,6 +2468,21 @@ msgstr "Paquets remplacés :"
 #, kde-format
 msgid "Removed packages:"
 msgstr "Paquets supprimés :"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
+#, kde-format
+msgctxt "@label OS updater message"
+msgid ""
+"<br/>This version is pinned and won't be automatically removed on updates."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:391
+#, kde-format
+msgctxt "@label OS vendor"
+msgid "Fedora Project"
+msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format

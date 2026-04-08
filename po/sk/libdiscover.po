@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-28 02:46+0000\n"
+"POT-Creation-Date: 2026-04-08 02:42+0000\n"
 "PO-Revision-Date: 2023-11-27 18:34+0100\n"
 "Last-Translator: Ferdinand Galko <galko.ferdinand@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -68,40 +68,37 @@ msgid "Technical error message: %1"
 msgstr "Technická chybová správa: %1"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkAuthActionFactory.cpp:26
-#, fuzzy, kde-format
-#| msgid "Software Management"
+#, kde-format
 msgid "Package management"
 msgstr "Správa softvéru"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:203
 #, kde-format
 msgid "Loading, please wait..."
-msgstr ""
+msgstr "Načítava sa, počkajte..."
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:289
-#, fuzzy, kde-format
-#| msgid "Additional packages: "
+#, kde-format
 msgctxt "Root category name"
 msgid "Alpine Linux packages"
-msgstr "Dodatočné balíky: "
+msgstr "Balíčky Alpine Linux"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkBackend.cpp:458
 #, kde-format
 msgctxt "Backend plugin display name"
 msgid "Alpine APK"
-msgstr ""
+msgstr "Alpine APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:272
 #, kde-format
 msgid "Authorization denied"
-msgstr ""
+msgstr "Autorizácia odmietnutá"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:100
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgid "Error: "
-msgstr "Chyba"
+msgstr "Chyba: "
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:133
 #, kde-format
@@ -110,11 +107,13 @@ msgid ""
 "Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
 "alpine/edge/testing/"
 msgstr ""
+"Zadajte URL repozitára Alpine, napríklad: http://dl-cdn.alpinelinux.org/"
+"alpine/edge/testing/"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
 #, kde-format
 msgid "Error: Authorization denied"
-msgstr ""
+msgstr "Chyba: Autorizácia odmietnutá"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:283
@@ -125,12 +124,12 @@ msgstr "Chyba"
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
 #, kde-format
 msgid "Failed to open APK database!"
-msgstr ""
+msgstr "Nepodarilo sa otvoriť databázu APK!"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
 #, kde-format
 msgid "Failed to get a list of packages to upgrade!"
-msgstr ""
+msgstr "Nepodarilo sa získať zoznam balíčkov na aktualizáciu!"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -196,11 +195,7 @@ msgstr "Všetky aplikácie"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"utils"
-#| "\""
-#| msgid "Utilities"
+#, kde-format
 msgctxt "Category"
 msgid "Utilities"
 msgstr "Nástroje"
@@ -214,11 +209,7 @@ msgstr "Prístupnosť"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"devel"
-#| "\""
-#| msgid "Development"
+#, kde-format
 msgctxt "Category"
 msgid "Development"
 msgstr "Vývoj"
@@ -274,14 +265,10 @@ msgstr "Vzdelávanie"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:131
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"science\""
-#| msgid "Science"
+#, kde-format
 msgctxt "Category"
 msgid "Science & Math"
-msgstr "Veda"
+msgstr "Veda a matematika"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -565,12 +552,10 @@ msgstr "Kancelária"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgctxt "Category"
 msgid "System"
-msgstr "Opraviť systém"
+msgstr "Systém"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:196
 #, kde-format
@@ -622,6 +607,7 @@ msgid "Retrieving size information"
 msgstr "Získavajú sa informácie o veľkosti"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:472
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:419
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
@@ -676,8 +662,7 @@ msgid "Sound system access"
 msgstr "Prístup k zvukovému systému"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:882
-#, fuzzy, kde-format
-#| msgid "Can play audio"
+#, kde-format
 msgid "Can play and record audio"
 msgstr "Môže prehrávať zvuk"
 
@@ -917,7 +902,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1136
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
-msgstr ""
+msgstr "Aplikácia overená dňa %1 ako dodaná jej autorom %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
@@ -997,6 +982,8 @@ msgid ""
 "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
+"Nie je možné vytvoriť transakciu pre „%1“:<nl/>%2<nl/><nl/>Prosím, nahláste "
+"to na <a href='%3'>%3</a>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
@@ -1005,13 +992,14 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
+"Vyskytla sa interná chyba. Prosím, nahláste to na https://bugs.kde.org/"
+"enter_bug.cgi?product=Discover"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:462
-#, fuzzy, kde-format
-#| msgid "Repo not available"
+#, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
-msgstr "Repozitár nie je dostupný"
+msgstr "Náhrada dostupná"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
 #, kde-kuit-format
@@ -1022,12 +1010,14 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
 "with the supported version provided by <resource>%2</resource>?"
 msgstr ""
+"<resource>%1</resource> už nedostáva aktualizácie.<nl/><nl/>Nahradiť ho "
+"podporovanou verziou od <resource>%2</resource>?"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:470
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
-msgstr ""
+msgstr "Automatické odstránenie"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-kuit-format
@@ -1037,6 +1027,8 @@ msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><p>The reason "
 "given is: <message>%2</message></p><nl/><p>Automatically remove it?</p>"
 msgstr ""
+"<resource>%1</resource> už nedostáva aktualizácie.<nl/><p>Uvedený dôvod: "
+"<message>%2</message></p><nl/><p>Automaticky ho odstrániť?</p>"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:30
 #, kde-format
@@ -1077,11 +1069,10 @@ msgstr "Vymazávanie nastavení a používateľských údajov..."
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "Oprávnenia pre %1"
+msgstr "Oprávnenia"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
@@ -1091,10 +1082,9 @@ msgstr "Konfigurovať oprávnenia..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:486
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
-#, fuzzy, kde-format
-#| msgid "View Updates"
+#, kde-format
 msgid "Firmware Updates"
-msgstr "Zobraziť aktualizácie"
+msgstr "Aktualizácie firmvéru"
 
 #: libdiscover/backends/FwupdBackend/FwupdSourcesBackend.cpp:38
 #, kde-format
@@ -1223,7 +1213,7 @@ msgstr "Písma"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "Ovládače hardvéru"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:579
 #, kde-format
@@ -1289,6 +1279,8 @@ msgid ""
 "The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
 "<link url='%1'>report this issue to %2</link>"
 msgstr ""
+"Služba PackageKit na pozadí sa neočakávane zastavila.<nl/></nl/>Prosím, "
+"<link url='%1'>nahláste tento problém na %2</link>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -2033,31 +2025,25 @@ msgstr "Nedostupné"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:380
 #, kde-format
 msgid "Critical"
-msgstr ""
+msgstr "Kritické"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Install"
+#, kde-format
 msgid "Install"
 msgstr "Nainštalovať"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:384
-#, fuzzy, kde-format
-#| msgid "Remove…"
+#, kde-format
 msgid "Remove"
-msgstr "Odstrániť…"
+msgstr "Odstrániť"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:386
-#, fuzzy, kde-format
-#| msgid "Obsoletes:"
+#, kde-format
 msgid "Obsolete"
-msgstr "Zastarané:"
+msgstr "Zastarané"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:388
-#, fuzzy, kde-format
-#| msgctxt "@info:status Requested action"
-#| msgid "Downgrade"
+#, kde-format
 msgid "Downgrade"
 msgstr "Downgradovať"
 
@@ -2108,13 +2094,11 @@ msgid "Repair Failed"
 msgstr "Oprava zlyhala"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "%1<nl/>Prosím, nahláste túto chybu vašej distribúcii."
+msgstr "%1<nl/>Please <link url='%2'>report this error to %3</link>."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:168
 #, kde-format
@@ -2154,7 +2138,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "Softvér overený %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:413
 #, kde-format
@@ -2395,16 +2379,14 @@ msgid "Operating System"
 msgstr "Operačný systém"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:172
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
 "rpm-ostree: Nájdených viacero spustených nasadení. Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:184
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
 "rpm-ostree: Nenašlo sa žiadne spustené nasadenie. Prosím, nahláste chybu."
@@ -2461,6 +2443,21 @@ msgstr "Nahradené balíky:"
 msgid "Removed packages:"
 msgstr "Odstránené balíky:"
 
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
+#, kde-format
+msgctxt "@label OS updater message"
+msgid ""
+"<br/>This version is pinned and won't be automatically removed on updates."
+msgstr ""
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:391
+#, kde-format
+msgctxt "@label OS vendor"
+msgid "Fedora Project"
+msgstr ""
+
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Currently booted version (pinned)"
@@ -2487,9 +2484,7 @@ msgid "Fallback version"
 msgstr "Núdzová verzia"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
@@ -2497,10 +2492,7 @@ msgstr ""
 "Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
@@ -2509,10 +2501,7 @@ msgstr ""
 "neplatným formátom. Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
@@ -2520,9 +2509,7 @@ msgstr ""
 "Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
@@ -2540,9 +2527,7 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
 "rpm-ostree-backend: Chyba: Neznámy formát zdroja. Prosím, nahláste chybu."
@@ -2563,12 +2548,12 @@ msgstr "Kontrolovanie aktualizácie systému"
 #, kde-format
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
-msgstr ""
+msgstr "Sťahuje sa systémová aktualizácia. Počkajte, postup sa neoznamuje."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
-msgstr ""
+msgstr "Aktualizuje sa systém. Počkajte, postup sa neoznamuje."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
 #, kde-format
@@ -2576,6 +2561,8 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
+"Aktualizácia na ďalšiu hlavnú verziu. Prosím, buďte trpezliví, pretože "
+"priebeh sa nehlási."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
 #, kde-format
@@ -2588,16 +2575,14 @@ msgid "Unknown transaction type"
 msgstr "Neznámy typ transakcie"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channel: %1"
-msgstr "Kanály…"
+msgstr "Kanál: %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channels for %1"
-msgstr "Kanály…"
+msgstr "Kanály pre %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:384
@@ -2623,12 +2608,12 @@ msgstr "Snap"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:585
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "Overený vydavateľ na snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:587
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "Hviezdičkový vydavateľ na snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
 #, kde-format
@@ -2653,13 +2638,13 @@ msgstr "SteamOS"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
-msgstr ""
+msgstr "Zlyhalo získanie appstream dát pre „%1“.<nl/><nl/>Chybová správa: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "Neboli nájdené žiadne appstream URL pre cieľ „%1“"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
 #, kde-kuit-format
@@ -2668,18 +2653,21 @@ msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
 msgstr ""
+"Nepodarilo sa načítať aktualizácie z <a href='%1'>%1</a>.<nl/><nl/>Chybová "
+"správa: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
 msgstr ""
+"Nepodarilo sa spracovať metadáta aktualizácie.<nl/><nl/>Chybová správa: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
-msgstr ""
+msgstr "Neboli nájdené žiadne komponenty v appstream metadátach pre cieľ „%1“"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
@@ -2733,13 +2721,10 @@ msgid "Refresh"
 msgstr "Obnoviť"
 
 #: libdiscover/resources/ResourcesModel.cpp:405
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "Obnovenie verzie %1"
+msgstr "Obnovuje sa %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:787
 #, kde-format
@@ -2819,12 +2804,10 @@ msgid "Applications"
 msgstr "Aplikácie"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:139
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Updates"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Application Support"
-msgstr "Aktualizácie aplikácií"
+msgstr "Podpora aplikácií"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:140
 #, kde-format
@@ -3016,7 +2999,6 @@ msgstr "Doplnky"
 #~ msgstr "Táto aplikácia vyžaduje zakázané bezpečnostné obmedzenia."
 
 #, fuzzy
-#~| msgid "Please restart the computer to finish the update"
 #~ msgid "Please restart the device to finish the update"
 #~ msgstr "Prosím, reštartujte počítač na dokončenie aktualizácie"
 
@@ -3051,12 +3033,10 @@ msgstr "Doplnky"
 #~ msgstr "CHYBA FWUPD: Vyžadované napájanie zo siete"
 
 #, fuzzy
-#~| msgid "PackageKit restart required"
 #~ msgid "Restart is required"
 #~ msgstr "Vyžaduje sa reštart PackageKit"
 
 #, fuzzy
-#~| msgid "PackageKit restart required"
 #~ msgid "Session restart is required"
 #~ msgstr "Vyžaduje sa reštart PackageKit"
 
