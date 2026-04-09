@@ -14,6 +14,7 @@ ConditionalLoader {
     property bool flat: false
     property bool buttonActiveFocusOnTab: false
     property var installOrRemoveButtonDisplayStyle: QQC2.AbstractButton.TextBesideIcon
+    property bool hideInvokeButton: true
 
     readonly property alias isActive: listener.isActive
     readonly property bool isStateAvailable: application.state !== Discover.AbstractResource.Broken
@@ -90,30 +91,49 @@ ConditionalLoader {
             display: QQC2.AbstractButton.IconOnly
 
             QQC2.ToolTip.text: text
-            QQC2.ToolTip.visible: hovered
+            QQC2.ToolTip.visible: hovered || activeFocus
             QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
         }
     }
 
-    // Install/Remove button
-    componentFalse: QQC2.ToolButton {
-        id: installOrRemoveButton
-        readonly property int iconSize: flat ? Kirigami.Units.iconSizes.smallMedium : Kirigami.Units.iconSizes.small
+    componentFalse: RowLayout {
+        spacing: Kirigami.Units.smallSpacing
 
-        visible: !root.application.isInstalled || root.application.isRemovable
-        enabled: root.application.state !== Discover.AbstractResource.Broken
-        activeFocusOnTab: root.buttonActiveFocusOnTab
+        // Install/Remove button
+        QQC2.ToolButton {
+            id: installOrRemoveButton
+            readonly property int iconSize: flat ? Kirigami.Units.iconSizes.smallMedium : Kirigami.Units.iconSizes.small
 
-        display: root.installOrRemoveButtonDisplayStyle
-        flat: root.flat
-        text: root.action.text
-        icon.name: root.action.icon.name
-        icon.color: root.action.icon.color
+            visible: !root.application.isInstalled || root.application.isRemovable
+            enabled: root.application.state !== Discover.AbstractResource.Broken
+            activeFocusOnTab: root.buttonActiveFocusOnTab
 
-        QQC2.ToolTip.text: text
-        QQC2.ToolTip.visible: hovered
-        QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+            display: root.installOrRemoveButtonDisplayStyle
+            flat: root.flat
+            text: root.action.text
+            icon.name: root.action.icon.name
+            icon.color: root.action.icon.color
 
-        onClicked: root.click()
+            QQC2.ToolTip.text: text
+            QQC2.ToolTip.visible: hovered || activeFocus
+            QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+
+            onClicked: root.click()
+        }
+
+        QQC2.ToolButton {
+            id: invokeButton
+            visible: !root.hideInvokeButton && root.application.isInstalled && root.application.canExecute && !listener.isActive
+            text: root.application.executeLabel
+            icon.name: "media-playback-start-symbolic"
+            onClicked: root.application.invokeApplication()
+
+            flat: root.flat
+            display: QQC2.AbstractButton.IconOnly
+
+            QQC2.ToolTip.text: text
+            QQC2.ToolTip.visible: hovered || activeFocus
+            QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+        }
     }
 }

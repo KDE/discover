@@ -127,8 +127,6 @@ DiscoverPage {
     actions: [
         addonsAction,
         shareAction,
-        installRemoveAndProgressAction,
-        invokeAction,
         originsMenuAction
     ]
 
@@ -190,25 +188,6 @@ DiscoverPage {
         }
     }
 
-    Kirigami.Action {
-        id: invokeAction
-        visible: application.isInstalled && application.canExecute && !transactionListener.isActive
-        text: application.executeLabel
-        icon.name: "media-playback-start-symbolic"
-        onTriggered: application.invokeApplication()
-    }
-
-    Kirigami.Action {
-        id: installRemoveAndProgressAction
-        displayComponent: InstallApplicationButton {
-            id: appbutton
-            application: appInfo.application
-            buttonActiveFocusOnTab: true
-            availableFromOnlySingleSource: appInfo.availableFromOnlySingleSource
-            flat: true
-        }
-    }
-
     Kirigami.ImageColors {
         id: appImageColorExtractor
         source: appInfo.application.icon
@@ -250,128 +229,130 @@ DiscoverPage {
         }
         spacing: appInfo.internalSpacings
 
-        // Colored header with app icon, name, and metadata
-        Rectangle {
-            Layout.fillWidth: true
-
-            // Undo page paddings so that the header touches the edges. We don't
-            // want it to actually be in the header: area since then it wouldn't
-            // scroll away, which we do want.
+        ApplicationPageStickyHeader {
+            id: stickyHeader
             Layout.topMargin: -appInfo.topPadding
-            Layout.leftMargin: -appInfo.leftPadding
-            Layout.rightMargin: -appInfo.rightPadding
 
-            implicitHeight: headerLayout.implicitHeight + (headerLayout.anchors.topMargin * 2)
+            scrollablePage: appInfo
             color: Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, appImageColorExtractor.dominant, 0.1)
 
-            GridLayout {
-                id: headerLayout
+            fullComponent: GridLayout {
+                id: stickyHeaderFullComponent
 
                 readonly property bool hasMetadata: appMetadataLayout.visible
                 readonly property int effectiveBasicInfoWidth: appBasicInfoLayout.implicitWidth
                 readonly property int effectiveMetadataWidth: hasMetadata ? appMetadataLayout.implicitWidth + columnSpacing : 0
-                readonly property int effectiveSpaceAvailable: pageLayout.width - anchors.leftMargin - anchors.rightMargin
 
-                readonly property bool stackedMode: hasMetadata && (effectiveBasicInfoWidth + effectiveMetadataWidth > effectiveSpaceAvailable)
+                readonly property bool stackedMode: hasMetadata && (effectiveBasicInfoWidth + effectiveMetadataWidth > width)
+                readonly property bool collapsedMode: height > implicitHeight
 
                 columns: stackedMode || !hasMetadata ? 1 : 2
                 rows: stackedMode ? 2 : 1
-                columnSpacing: 0
+                columnSpacing: appInfo.padding
                 rowSpacing: appInfo.padding
 
-                anchors {
-                    top: parent.top
-                    topMargin: appInfo.padding
-                    left: parent.left
-                    leftMargin: appInfo.padding
-                    right: parent.right
-                    rightMargin: appInfo.padding
-                }
-
-
                 // App icon, name, author, and rating
-                RowLayout {
-                    id: appBasicInfoLayout
-                    Layout.fillWidth: true
-                    Layout.maximumWidth: headerLayout.stackedMode ? headerLayout.implicitWidth : -1
-                    Layout.alignment: headerLayout.stackedMode ? Qt.AlignHCenter : Qt.AlignLeft
-                    spacing: appInfo.padding
+                ColumnLayout {
+                    Layout.fillWidth: !stickyHeaderFullComponent.stackedMode
+                    Layout.maximumWidth: stickyHeaderFullComponent.stackedMode ? stickyHeaderFullComponent.width : -1
+                    Layout.alignment: stickyHeaderFullComponent.stackedMode ? Qt.AlignHCenter : Qt.AlignLeft
 
-                    // App icon
-                    Kirigami.Icon {
-                        implicitWidth: Kirigami.Units.iconSizes.huge
-                        implicitHeight: Kirigami.Units.iconSizes.huge
-                        source: appInfo.application.icon
-                    }
+                    spacing: Kirigami.Units.largeSpacing
 
-                    // App name, author, and rating
-                    ColumnLayout {
+                    RowLayout {
+                        id: appBasicInfoLayout
+                        spacing: appInfo.padding
 
-                        spacing: 0
-
-                        // App name
-                        Kirigami.Heading {
-                            Layout.fillWidth: true
-                            text: appInfo.application.name
-                            type: Kirigami.Heading.Type.Primary
-                            wrapMode: Text.Wrap
-                            maximumLineCount: 5
-                            elide: Text.ElideRight
+                        // App icon
+                        Kirigami.Icon {
+                            implicitWidth: Kirigami.Units.iconSizes.huge
+                            implicitHeight: Kirigami.Units.iconSizes.huge
+                            source: appInfo.application.icon
                         }
 
-                        // Author (for apps) or upgrade info (for offline upgrades). Verification check
-                        RowLayout {
-                            Layout.fillWidth: true
+                        // App name, author, and rating
+                        ColumnLayout {
+                            spacing: 0
 
-                            QQC2.Label {
-                                id: author
-
-                                visible: text.length > 0
-
-                                text: {
-                                    if (appInfo.isOfflineUpgrade) {
-                                        return appInfo.application.upgradeText.length > 0 ? appInfo.application.upgradeText : "";
-                                    } else if (appInfo.application.author.length > 0) {
-                                        return appInfo.application.author;
-                                    } else {
-                                        return i18n("Unknown author");
-                                    }
-                                }
+                            // App name
+                            Kirigami.Heading {
+                                text: appInfo.application.name
+                                type: Kirigami.Heading.Type.Primary
                                 wrapMode: Text.Wrap
                                 maximumLineCount: 5
                                 elide: Text.ElideRight
                             }
 
-                            Kirigami.Icon {
-                                visible: verifiedTooltip.QQC2.ToolTip.text.length > 0
-                                source: appInfo.application.verifiedIconName
-                                Layout.maximumHeight: author.contentHeight
-                                Layout.fillHeight: true
+                            // Author (for apps) or upgrade info (for offline upgrades). Verification check
+                            RowLayout {
 
-                                QQC2.Control {
-                                    id: verifiedTooltip
-                                    anchors.fill: parent
+                                QQC2.Label {
+                                    id: author
 
-                                    QQC2.ToolTip.text: appInfo.application.verifiedMessage
-                                    QQC2.ToolTip.visible: (Kirigami.Settings.tabletMode ? pressed : hovered) && QQC2.ToolTip.text !== ""
-                                    QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
+                                    visible: text.length > 0
+
+                                    text: {
+                                        if (appInfo.isOfflineUpgrade) {
+                                            return appInfo.application.upgradeText.length > 0 ? appInfo.application.upgradeText : "";
+                                        } else if (appInfo.application.author.length > 0) {
+                                            return appInfo.application.author;
+                                        } else {
+                                            return i18n("Unknown author");
+                                        }
+                                    }
+                                    wrapMode: Text.Wrap
+                                    maximumLineCount: 5
+                                    elide: Text.ElideRight
+                                }
+
+                                Kirigami.Icon {
+                                    visible: verifiedTooltip.QQC2.ToolTip.text.length > 0
+                                    source: appInfo.application.verifiedIconName
+                                    Layout.maximumHeight: author.contentHeight
+                                    Layout.fillHeight: true
+
+                                    QQC2.Control {
+                                        id: verifiedTooltip
+                                        anchors.fill: parent
+
+                                        QQC2.ToolTip.text: appInfo.application.verifiedMessage
+                                        QQC2.ToolTip.visible: (Kirigami.Settings.tabletMode ? pressed : hovered) && QQC2.ToolTip.text !== ""
+                                        QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
+                                    }
+                                }
+                            }
+
+                            // Rating
+                            RowLayout {
+                                visible: !appInfo.isTechnicalPackage
+
+                                Rating {
+                                    value: appInfo.application.rating.rating
+                                    starSize: author.font.pointSize
+                                    precision: Rating.Precision.HalfStar
+                                }
+
+                                QQC2.Label {
+                                    text: appInfo.application.rating ? i18np("%1 rating", "%1 ratings", appInfo.application.rating.ratingCount) : i18n("No ratings yet")
                                 }
                             }
                         }
+                    }
 
-                        // Rating
-                        RowLayout {
-                            visible: !appInfo.isTechnicalPackage
+                    RowLayout {
+                        spacing: appInfo.padding
 
-                            Rating {
-                                value: appInfo.application.rating.rating
-                                starSize: author.font.pointSize
-                                precision: Rating.Precision.HalfStar
-                            }
+                        Item {
+                            implicitWidth: Kirigami.Units.iconSizes.huge
+                        }
 
-                            QQC2.Label {
-                                text: appInfo.application.rating ? i18np("%1 rating", "%1 ratings", appInfo.application.rating.ratingCount) : i18n("No ratings yet")
-                            }
+                        // Install button
+                        InstallApplicationButton {
+                            application: appInfo.application
+                            buttonActiveFocusOnTab: true
+                            availableFromOnlySingleSource: appInfo.availableFromOnlySingleSource
+                            hideInvokeButton: false
+                            flat: false
                         }
                     }
                 }
@@ -382,7 +363,7 @@ DiscoverPage {
                 GridLayout {
                     id: appMetadataLayout
 
-                    Layout.alignment: headerLayout.stackedMode ? Qt.AlignHCenter : Qt.AlignRight
+                    Layout.alignment: stickyHeaderFullComponent.stackedMode ? Qt.AlignHCenter : Qt.AlignRight
 
                     columns: 2
                     rows: Math.ceil(appMetadataLayout.visibleChildren.count / 2)
@@ -500,8 +481,8 @@ DiscoverPage {
                                     Layout.preferredWidth: appInfo.smallButtonSize
                                     Layout.preferredHeight: appInfo.smallButtonSize
                                     visible: delegate.modelData.licenseType === "unknown"
-                                          || delegate.modelData.licenseType === "non-free"
-                                          || delegate.modelData.licenseType === "proprietary"
+                                    || delegate.modelData.licenseType === "non-free"
+                                    || delegate.modelData.licenseType === "proprietary"
                                     icon.name: "help-contextual"
                                     onClicked: licenseDetailsDialog.openWithLicenseType(delegate.modelData.licenseType);
 
@@ -535,9 +516,9 @@ DiscoverPage {
 
                         QQC2.Label {
                             text: application.contentRatingMinimumAge === 0
-                                ? i18nc("@item As in, the app is suitable for everyone", "Everyone")
-                                : i18nc("@item %1 is a person's age in number of years",
-                                        "%1+", appInfo.application.contentRatingMinimumAge)
+                            ? i18nc("@item As in, the app is suitable for everyone", "Everyone")
+                            : i18nc("@item %1 is a person's age in number of years",
+                                    "%1+", appInfo.application.contentRatingMinimumAge)
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignTop
                             wrapMode: Text.Wrap
@@ -563,9 +544,51 @@ DiscoverPage {
                 }
             }
 
-            Kirigami.Separator {
-                width: parent.width
-                anchors.top: parent.bottom
+            stickyComponent: RowLayout {
+                spacing: Kirigami.Units.largeSpacing
+
+                Kirigami.Icon {
+                    implicitWidth: Kirigami.Units.iconSizes.medium
+                    implicitHeight: Kirigami.Units.iconSizes.medium
+                    source: appInfo.application.icon
+                }
+
+                Kirigami.TitleSubtitle {
+                    Layout.fillWidth: true
+                    title: appInfo.application.name
+                    font.weight: Font.DemiBold
+                    subtitle: {
+                        if (appInfo.isOfflineUpgrade) {
+                            return appInfo.application.upgradeText.length > 0 ? appInfo.application.upgradeText : "";
+                        } else if (appInfo.application.author.length > 0) {
+                            return appInfo.application.author;
+                        } else {
+                            return i18n("Unknown author");
+                        }
+                    }
+                    subtitleFont.weight: Font.Normal
+                    elide: Text.ElideRight
+                }
+
+                InstallApplicationButton {
+                    application: appInfo.application
+                    buttonActiveFocusOnTab: true
+                    availableFromOnlySingleSource: appInfo.availableFromOnlySingleSource
+                    hideInvokeButton: false
+                    flat: false
+                }
+
+                QQC2.ToolButton {
+                    text: i18n("Scroll to top")
+                    icon.name: "go-top-symbolic"
+                    display: QQC2.AbstractButton.IconOnly
+
+                    QQC2.ToolTip.text: text
+                    QQC2.ToolTip.visible: hovered || activeFocus
+                    QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+
+                    onClicked: appInfo.ensureVisible(stickyHeader, 0, -stickyHeader.height)
+                }
             }
         }
 
