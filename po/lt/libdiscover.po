@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-08 02:42+0000\n"
-"PO-Revision-Date: 2025-12-20 18:28+0200\n"
+"PO-Revision-Date: 2026-04-11 00:49+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -2462,6 +2462,8 @@ msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won't be automatically removed on updates."
 msgstr ""
+"<br/>Ši versija yra prisegta ir atnaujinimų metu nebus automatiškai "
+"pašalinta."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
@@ -2469,7 +2471,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label OS vendor"
 msgid "Fedora Project"
-msgstr ""
+msgstr "„Fedora Project“"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
@@ -2637,7 +2639,7 @@ msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this computer. Install it anyway?"
 msgstr ""
-"Ši Snap programa yra nesuderinama su saugumo smėliadėže ir turės pilną "
+"Ši Snap programa yra nesuderinama su saugumo smėliadėže ir turės visą "
 "prieigą prie šio kompiuterio. Ar vis tiek ją įdiegti?"
 
 #: libdiscover/backends/SteamOSBackend/SteamOSBackend.cpp:94

@@ -2370,7 +2370,7 @@ msgstr "已移除软件包："
 msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won't be automatically removed on updates."
-msgstr ""
+msgstr "<br/>此版本已被固定，不会在更新时被自动移除。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
@@ -2378,7 +2378,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label OS vendor"
 msgid "Fedora Project"
-msgstr ""
+msgstr "Fedora 项目"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format

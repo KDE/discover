@@ -4,13 +4,13 @@
 # Elkana Bardugo <ttv200@gmail.com>, 2016.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata.
 # Omer I.S. <omeritzicschwartz@gmail.com>, 2020.
-# SPDX-FileCopyrightText: 2023, 2024, 2025 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-08 02:42+0000\n"
-"PO-Revision-Date: 2025-11-11 08:51+0200\n"
+"PO-Revision-Date: 2026-04-09 08:46+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2411,7 +2411,7 @@ msgstr "חבילות שהוסרו:"
 msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won't be automatically removed on updates."
-msgstr ""
+msgstr "<br/>הגרסה הזאת נעוצה ולא תוסר אוטומטית עם עדכונים"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
@@ -2419,7 +2419,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label OS vendor"
 msgid "Fedora Project"
-msgstr ""
+msgstr "מיזם פדורה"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
