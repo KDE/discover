@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:18+0000\n"
-"PO-Revision-Date: 2026-04-04 19:16+0200\n"
+"PO-Revision-Date: 2026-04-11 10:00+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -247,7 +247,7 @@ msgstr "Dodatki do %1"
 #: discover/qml/AddonsView.qml:50
 #, kde-format
 msgid "More…"
-msgstr "Więcej..."
+msgstr "Więcej…"
 
 #: discover/qml/AddonsView.qml:59
 #, kde-format
@@ -351,9 +351,9 @@ msgstr "Co to oznacza?"
 #, kde-format
 msgid "See more…"
 msgid_plural "See more…"
-msgstr[0] "Zobacz więcej..."
-msgstr[1] "Zobacz więcej..."
-msgstr[2] "Zobacz więcej..."
+msgstr[0] "Zobacz więcej…"
+msgstr[1] "Zobacz więcej…"
+msgstr[2] "Zobacz więcej…"
 
 #: discover/qml/ApplicationPage.qml:435 discover/qml/ApplicationPage.qml:907
 #, kde-format
@@ -369,7 +369,7 @@ msgstr "Wiek: %1+"
 #, kde-format
 msgctxt "@action"
 msgid "See details…"
-msgstr "Zobacz więcej..."
+msgstr "Zobacz więcej…"
 
 #: discover/qml/ApplicationPage.qml:586
 #, kde-format
@@ -710,7 +710,7 @@ msgstr "&Strona domowa"
 #: discover/qml/DiscoverWindow.qml:66
 #, kde-format
 msgid "&Search"
-msgstr "&Szukaj"
+msgstr "Po&szukaj"
 
 #: discover/qml/DiscoverWindow.qml:74
 #, kde-format
@@ -849,7 +849,7 @@ msgstr "Weź udział..."
 #, kde-format
 msgctxt "State being fetched"
 msgid "Loading…"
-msgstr "Wczytywanie..."
+msgstr "Wczytywanie…"
 
 #: discover/qml/InstallApplicationButton.qml:28
 #, kde-format
@@ -1020,7 +1020,7 @@ msgstr "Aby móc wyrazić swoją opinię, najpierw wgraj tę aplikację"
 #: discover/qml/SearchField.qml:24
 #, kde-format
 msgid "Search…"
-msgstr "Szukaj..."
+msgstr "Poszukaj…"
 
 #: discover/qml/SearchField.qml:24
 #, kde-format
