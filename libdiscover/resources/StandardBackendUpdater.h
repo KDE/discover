@@ -8,6 +8,7 @@
 
 #include "AbstractResourcesBackend.h"
 #include "discovercommon_export.h"
+#include <EmitWhenChanged.h>
 #include <QDateTime>
 #include <QSet>
 #include <QTimer>
@@ -74,4 +75,5 @@ private:
     QTimer m_timer;
     bool m_canCancel = false;
     bool m_anyTransactionFailed = false;
+    EmitWhenChanged<bool> m_isFetchingUpdates;
 };
