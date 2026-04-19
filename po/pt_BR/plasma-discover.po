@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-03 02:57+0000\n"
-"PO-Revision-Date: 2026-03-06 16:08-0300\n"
+"PO-Revision-Date: 2026-04-17 02:55-0300\n"
 "Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: discover/DiscoverObject.cpp:197
 #, kde-format
@@ -568,46 +568,46 @@ msgstr "O que há de novo"
 #: discover/qml/ApplicationPage.qml:746
 #, kde-format
 msgid "Reviews"
-msgstr "Análises"
+msgstr "Avaliações"
 
 #: discover/qml/ApplicationPage.qml:757
 #, kde-format
 msgid "Loading reviews for %1"
-msgstr "Carregando análises de %1"
+msgstr "Carregando avaliações de %1"
 
 #: discover/qml/ApplicationPage.qml:766
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr "As análises para %1 estão temporariamente indisponíveis"
+msgstr "As avaliações para %1 estão temporariamente indisponíveis"
 
 #: discover/qml/ApplicationPage.qml:773
 #, kde-format
 msgctxt "@Info placeholder message"
 msgid "No reviews posted yet"
-msgstr "Nenhuma análise publicada ainda"
+msgstr "Nenhuma avaliação publicada ainda"
 
 #: discover/qml/ApplicationPage.qml:774
 #, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
-msgstr "Instale este aplicativo para escrever uma análise"
+msgstr "Instale este aplicativo para escrever uma avaliação"
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Write a Review"
-msgstr "Escreva uma análise"
+msgstr "Escreva uma avaliação"
 
 #: discover/qml/ApplicationPage.qml:778 discover/qml/ApplicationPage.qml:822
 #, kde-format
 msgid "Install to Write a Review"
-msgstr "Instale este aplicativo para escrever uma análise"
+msgstr "Instale este aplicativo para escrever uma avaliação"
 
 #: discover/qml/ApplicationPage.qml:806
 #, kde-format
 msgctxt "@action:button"
 msgid "Show All Reviews"
-msgstr "Mostrar todas as análises"
+msgstr "Mostrar todas as avaliações"
 
 #: discover/qml/ApplicationPage.qml:844
 #, kde-format
@@ -805,7 +805,7 @@ msgstr "Escolha do editor"
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr "Jogos melhores avaliados"
+msgstr "Jogos mais bem avaliados"
 
 #: discover/qml/BrowsingPage.qml:223 discover/qml/BrowsingPage.qml:280
 #, kde-format
@@ -817,7 +817,7 @@ msgstr "Veja mais"
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr "Ferramentas de desenvolvimento melhores avaliadas"
+msgstr "Ferramentas de desenvolvimento mais bem avaliadas"
 
 #: discover/qml/CarouselDelegate.qml:213
 #, kde-format
@@ -1102,7 +1102,7 @@ msgstr "Avaliação"
 #: discover/qml/ReviewDelegate.qml:58
 #, kde-format
 msgid "unknown reviewer"
-msgstr "analista desconhecido"
+msgstr "avaliador desconhecido"
 
 #: discover/qml/ReviewDelegate.qml:59
 #, kde-format
@@ -1132,7 +1132,7 @@ msgstr "Votos: %1 em %2"
 #: discover/qml/ReviewDelegate.qml:94
 #, kde-format
 msgid "Was this review useful?"
-msgstr "Esta análise foi útil?"
+msgstr "Esta avaliação foi útil?"
 
 #: discover/qml/ReviewDelegate.qml:106
 #, kde-format
@@ -1149,12 +1149,12 @@ msgstr "Não"
 #: discover/qml/ReviewDialog.qml:26
 #, kde-format
 msgid "Reviewing %1"
-msgstr "Analisando %1"
+msgstr "Avaliando %1"
 
 #: discover/qml/ReviewDialog.qml:33
 #, kde-format
 msgid "Submit review"
-msgstr "Enviar análise"
+msgstr "Enviar avaliação"
 
 #: discover/qml/ReviewDialog.qml:48
 #, kde-format
@@ -1245,7 +1245,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr "falha, falha de segmentação,crash"
+msgstr "crash,falha de segmentação"
 
 #: discover/qml/ReviewDialog.qml:162
 #, kde-format
@@ -1272,7 +1272,7 @@ msgstr "Escreva o título"
 #: discover/qml/ReviewDialog.qml:189
 #, kde-format
 msgid "Write the review"
-msgstr "Escreva a análise"
+msgstr "Escreva a avaliação"
 
 #: discover/qml/ReviewDialog.qml:192
 #, kde-format
@@ -1288,22 +1288,22 @@ msgstr "Muito longo!"
 #, kde-format
 msgctxt "@info:usagetip"
 msgid "Insert a name"
-msgstr "Inserir um nome"
+msgstr "Insira um nome"
 
 #: discover/qml/ReviewsPage.qml:43
 #, kde-format
 msgid "Reviews for %1"
-msgstr "Análises de %1"
+msgstr "Avaliações de %1"
 
 #: discover/qml/ReviewsPage.qml:105
 #, kde-format
 msgid "Write a Review…"
-msgstr "Escreva uma análise…"
+msgstr "Escreva uma avaliação…"
 
 #: discover/qml/ReviewsPage.qml:118
 #, kde-format
 msgid "Install this app to write a review"
-msgstr "Instale este aplicativo para escrever uma análise"
+msgstr "Instale este aplicativo para escrever uma avaliação"
 
 #: discover/qml/ReviewsPage.qml:145
 #, kde-format
@@ -1327,7 +1327,7 @@ msgstr "Melhores avaliações"
 #, kde-format
 msgctxt "how many reviews"
 msgid "%1 reviews"
-msgstr "%1 análises"
+msgstr "%1 avaliações"
 
 #: discover/qml/ReviewsStats.qml:76
 #, kde-format
@@ -1338,7 +1338,7 @@ msgstr "M"
 #: discover/qml/ReviewsStats.qml:167
 #, kde-format
 msgid "Unknown reviewer"
-msgstr "Analista desconhecido"
+msgstr "Avaliador desconhecido"
 
 #: discover/qml/ReviewsStats.qml:188
 #, kde-format
