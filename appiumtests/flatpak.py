@@ -27,9 +27,14 @@ class FlatpakTest(unittest.TestCase):
 
         options = ATSPIOptions()
         options.app = "plasma-discover --backends flatpak-backend"
+        # selenium-webdriver-at-spi derives its application startup timeout
+        # from the implicit wait value. ARM CI can take longer than the
+        # default 10 seconds to expose Discover on the a11y bus.
+        options.set_capability("timeouts", {"implicit": 15000})
         self.driver = webdriver.Remote(
             command_executor='http://127.0.0.1:4723',
             options=options)
+        self.driver.implicitly_wait(5)
 
 
     def tearDown(self):
