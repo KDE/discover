@@ -1,0 +1,250 @@
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
+import org.kde.kirigami as Kirigami
+import org.kde.discover as Discover
+
+pragma ComponentBehavior: Bound
+
+
+RowLayout {
+    id: root
+
+    property alias application: listener.resource
+    property bool availableFromOnlySingleSource: false
+
+    readonly property alias isActive: listener.isActive
+    readonly property alias isCancellable: listener.isCancellable
+    readonly property bool isStateAvailable: application.state !== Discover.AbstractResource.Broken
+
+    Discover.TransactionListener {
+        id: listener
+    }
+
+    states: [
+        State {
+            name: "loading"
+            when: application.state === Discover.AbstractResource.Broken
+        },
+        State {
+            name: "transaction"
+            when: listener.isActive
+        },
+        State {
+            name: "uninstalled"
+            when: !root.application.isInstalled
+        },
+        State {
+            name: "installed"
+            when: root.application.isInstalled
+        }
+    ]
+
+    enabled: isStateAvailable
+
+    QQC2.DelayButton {
+        id: primaryButton
+
+        checkable: listener.isActive
+        delay: listener.isActive ? 1000000 : 0
+        progress: listener.isActive ? listener.progress / 100 : 0
+
+        icon.source: {
+            if (!root.isStateAvailable || listener.isActive) {
+                return "";
+            }
+
+            if (!root.application.isInstalled) {
+                return "download-symbolic"
+            }
+
+            return "media-playback-start-symbolic"
+        }
+
+        icon.color: !root.application.isInstalled ? Kirigami.Theme.positiveTextColor
+                                                  : Kirigami.Theme.backgroundColor
+
+        text: {
+            if (!root.isStateAvailable) {
+                return i18nc("State being fetched", "Loading…");
+            }
+
+            if (listener.isActive) {
+                return listener.statusText;
+            }
+
+            if (!root.application.isInstalled) {
+                if (root.availableFromOnlySingleSource) {
+                    return i18nc("@action:button %1 is the name of a software repository", "Install from %1", root.application.displayOrigin);
+                } else {
+                    return i18nc("@action:button", "Install");
+                }
+            }
+
+            return i18n("Launch…");
+        }
+
+        /*
+        contentItem: RowLayout {
+            spacing: 0
+
+            Kirigami.Icon {
+                icon: primaryButton.icon
+            }
+
+            Text {
+                text: primaryButton.text
+            }
+        }
+        */
+
+        onClicked: {
+            if (!listener.isActive) {
+                if (root.application.isInstalled) {
+                    root.application.invokeApplication();
+                } else {
+                    Discover.ResourcesModel.installApplication(root.application);
+                }
+            }
+        }
+    }
+
+    QQC2.ToolButton {
+
+    }
+}
+
+/*
+ConditionalLoader {
+    id: root
+
+    property alias application: listener.resource
+    property bool availableFromOnlySingleSource: false
+    property bool flat: false
+    property bool buttonActiveFocusOnTab: false
+    property var installOrRemoveButtonDisplayStyle: QQC2.AbstractButton.TextBesideIcon
+    property bool hideInvokeButton: true
+
+    readonly property alias isActive: listener.isActive
+    readonly property bool isStateAvailable: application.state !== Discover.AbstractResource.Broken
+    readonly property alias listener: listener
+
+    Discover.TransactionListener {
+        id: listener
+    }
+
+    readonly property Kirigami.Action action: Kirigami.Action {
+        text: {
+            if (!root.isStateAvailable) {
+                return i18nc("State being fetched", "Loading…")
+            }
+            if (!root.application.isInstalled) {
+                if (root.availableFromOnlySingleSource) {
+                    return i18nc("@action:button %1 is the name of a software repository", "Install from %1", root.application.displayOrigin);
+                }
+                return i18nc("@action:button", "Install");
+            }
+            return i18n("Remove");
+        }
+        icon {
+            name: root.application.isInstalled ? "edit-delete" : "download"
+            color: !root.isActive && enabled
+                ? (root.application.isInstalled ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.positiveTextColor)
+                : Kirigami.Theme.backgroundColor
+        }
+        visible: !root.isActive && (!root.application.isInstalled || root.application.isRemovable)
+        enabled: !root.isActive && root.isStateAvailable
+        onTriggered: root.click()
+    }
+
+    readonly property Kirigami.Action cancelAction: Kirigami.Action {
+        text: i18n("Cancel")
+        icon.name: "dialog-cancel"
+        enabled: listener.isCancellable
+        tooltip: listener.statusText
+        onTriggered: {
+            listener.cancel()
+            enabled = false
+        }
+        visible: root.isActive
+        onVisibleChanged: enabled = true
+    }
+
+    function click() {
+        if (!isActive) {
+            if (root.application.isInstalled) {
+                Discover.ResourcesModel.removeApplication(root.application);
+            } else {
+                Discover.ResourcesModel.installApplication(root.application);
+            }
+        } else {
+            console.warn("trying to un/install but resource still active", root.application.name);
+        }
+    }
+
+    condition: root.isActive
+    componentTrue: RowLayout {
+        spacing: Kirigami.Units.smallSpacing
+        TransactionProgressIndicator {
+            Layout.fillWidth: true
+            text: listener.statusText
+            progress: listener.progress / 100
+        }
+
+        // Cancel button
+        QQC2.ToolButton {
+            Layout.fillHeight: true
+            action: root.cancelAction
+
+            flat: root.flat
+            display: QQC2.AbstractButton.IconOnly
+
+            QQC2.ToolTip.text: text
+            QQC2.ToolTip.visible: hovered || activeFocus
+            QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+        }
+    }
+
+    componentFalse: RowLayout {
+        spacing: Kirigami.Units.smallSpacing
+
+        // Install/Remove button
+        QQC2.ToolButton {
+            id: installOrRemoveButton
+            readonly property int iconSize: flat ? Kirigami.Units.iconSizes.smallMedium : Kirigami.Units.iconSizes.small
+
+            visible: !root.application.isInstalled || root.application.isRemovable
+            enabled: root.application.state !== Discover.AbstractResource.Broken
+            activeFocusOnTab: root.buttonActiveFocusOnTab
+
+            display: root.installOrRemoveButtonDisplayStyle
+            flat: root.flat
+            text: root.action.text
+            icon.name: root.action.icon.name
+            icon.color: root.action.icon.color
+
+            QQC2.ToolTip.text: text
+            QQC2.ToolTip.visible: hovered || activeFocus
+            QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+
+            onClicked: root.click()
+        }
+
+        QQC2.ToolButton {
+            id: invokeButton
+            visible: !root.hideInvokeButton && root.application.isInstalled && root.application.canExecute && !listener.isActive
+            text: root.application.executeLabel
+            icon.name: "media-playback-start-symbolic"
+            onClicked: root.application.invokeApplication()
+
+            flat: root.flat
+            display: QQC2.AbstractButton.IconOnly
+
+            QQC2.ToolTip.text: text
+            QQC2.ToolTip.visible: hovered || activeFocus
+            QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+        }
+    }
+}
+
+*/

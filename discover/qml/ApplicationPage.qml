@@ -347,12 +347,12 @@ DiscoverPage {
                         }
 
                         // Install button
-                        InstallApplicationButton {
+                        ApplicationPageInstallButton {
                             application: appInfo.application
-                            buttonActiveFocusOnTab: true
+                            //buttonActiveFocusOnTab: true
                             availableFromOnlySingleSource: appInfo.availableFromOnlySingleSource
-                            hideInvokeButton: false
-                            flat: false
+                            //hideInvokeButton: false
+                            //flat: false
                         }
                     }
                 }
@@ -570,12 +570,12 @@ DiscoverPage {
                     elide: Text.ElideRight
                 }
 
-                InstallApplicationButton {
+                ApplicationPageInstallButton {
                     application: appInfo.application
-                    buttonActiveFocusOnTab: true
+                    //buttonActiveFocusOnTab: true
                     availableFromOnlySingleSource: appInfo.availableFromOnlySingleSource
-                    hideInvokeButton: false
-                    flat: false
+                    //hideInvokeButton: false
+                    //flat: false
                 }
 
                 QQC2.ToolButton {
