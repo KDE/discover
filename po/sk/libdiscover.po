@@ -2423,7 +2423,7 @@ msgstr "Dostupné"
 #: libdiscover/resources/AbstractResource.cpp:105
 #, kde-format
 msgid "Upgradeable"
-msgstr "Inovavateľné"
+msgstr "Inovovateľné"
 
 #: libdiscover/resources/AbstractResource.cpp:242
 #, kde-format
