@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-08 02:42+0000\n"
-"PO-Revision-Date: 2026-01-19 18:40+0100\n"
+"PO-Revision-Date: 2026-04-27 22:15+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 26.04.0\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -196,7 +196,7 @@ msgstr "Alle program"
 #, kde-format
 msgctxt "Category"
 msgid "Utilities"
-msgstr ""
+msgstr "Verktøy"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -207,10 +207,10 @@ msgstr "Tilgjenge"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Category"
 msgid "Development"
-msgstr "Nettutvikling"
+msgstr "Utvikling"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:60
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:60
@@ -266,7 +266,7 @@ msgstr "Opplæring"
 #, kde-format
 msgctxt "Category"
 msgid "Science & Math"
-msgstr ""
+msgstr "Vitskap og matematikk"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -550,10 +550,10 @@ msgstr "Kontor"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:546
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:546
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Category"
 msgid "System"
-msgstr "Reparer systemet"
+msgstr "System"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:196
 #, kde-format
@@ -661,9 +661,9 @@ msgid "Sound system access"
 msgstr "Tilgang til lydsystemet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:882
-#, fuzzy, kde-format
+#, kde-format
 msgid "Can play and record audio"
-msgstr "Får spela av lyd"
+msgstr "Får spela av og ta opp lyd"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1030
@@ -892,6 +892,7 @@ msgstr ""
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
 msgstr ""
+"Programmet er stadfesta på %1 at det er distribuert av opphavspersonen %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:97
 #, kde-format
@@ -1198,7 +1199,7 @@ msgstr "Skrifter"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "Maskinvare­drivarar"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:579
 #, kde-format
@@ -2119,7 +2120,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:358
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "Programvare stadfesta av %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:413
 #, kde-format
@@ -2433,7 +2434,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label OS vendor"
 msgid "Fedora Project"
-msgstr ""
+msgstr "Fedora-prosjektet"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
@@ -2596,12 +2597,12 @@ msgstr "Snap"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:585
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "Stadfesta utgjevar på snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:587
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "Stjernemerkt utgjevar på snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
 #, kde-format
