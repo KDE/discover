@@ -21,7 +21,6 @@ QQC2.ToolButton {
             wrapMode: Text.Wrap
             maximumLineCount: 2
             elide: Text.ElideRight
-            color: listItem.pressed || listItem.down ? Kirigami.Theme.highlightedTextColor: Kirigami.Theme.textColor
         }
 
         QQC2.ProgressBar {
