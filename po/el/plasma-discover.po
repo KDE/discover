@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-03 02:57+0000\n"
+"POT-Creation-Date: 2026-04-29 02:47+0000\n"
 "PO-Revision-Date: 2024-09-19 14:33+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -303,7 +303,7 @@ msgstr "Προσθήκη"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:281
 #: discover/qml/InstallApplicationButton.qml:51
-#: discover/qml/ProgressView.qml:153 discover/qml/SourcesPage.qml:201
+#: discover/qml/ProgressView.qml:152 discover/qml/SourcesPage.qml:201
 #: discover/qml/UpdatesPage.qml:303 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -1088,24 +1088,24 @@ msgstr "Πόροι για το '%1'"
 msgid "Tasks (%1%)"
 msgstr "Εργασίες (%1%)"
 
-#: discover/qml/ProgressView.qml:20 discover/qml/ProgressView.qml:50
+#: discover/qml/ProgressView.qml:20 discover/qml/ProgressView.qml:49
 #, kde-format
 msgid "Tasks"
 msgstr "Εργασίες"
 
-#: discover/qml/ProgressView.qml:127
+#: discover/qml/ProgressView.qml:126
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3, %4 απομένει"
 
-#: discover/qml/ProgressView.qml:135
+#: discover/qml/ProgressView.qml:134
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:142
+#: discover/qml/ProgressView.qml:141
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
