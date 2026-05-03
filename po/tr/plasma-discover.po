@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-29 02:47+0000\n"
-"PO-Revision-Date: 2026-03-10 14:11+0300\n"
+"PO-Revision-Date: 2026-05-02 18:54+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: discover/DiscoverObject.cpp:197
 #, kde-format
@@ -867,7 +867,7 @@ msgstr "Güvenlik güncellemeleri kullanılabilir"
 #: discover/qml/DiscoverDrawer.qml:167
 #, kde-format
 msgid "Updates available"
-msgstr "Güncellemeler kullanılabilir"
+msgstr "Kullanılabilir güncelleştirmeler var"
 
 #: discover/qml/DiscoverWindow.qml:47
 #, kde-format
@@ -1561,7 +1561,7 @@ msgstr "Güncellemeler"
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr "Güncellemeler sistem yeniden başlatıldıktan sonra kurulacak."
+msgstr "Güncellemeler sistem yeniden başlatıldıktan sonra kurulacak"
 
 #: discover/qml/UpdatesPage.qml:614
 #, kde-format
