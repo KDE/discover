@@ -294,11 +294,11 @@ DiscoverPage {
                 QQC2.CheckBox {
                     id: enabledBox
 
-                    readonly property var idx: sourcesView.model.index(index, 0)
+                    readonly property var idx: index !== -1 ? sourcesView.model.index(index, 0) : null
                     readonly property /*Qt::CheckState*/int modelChecked: delegate.model.checkState
                     checked: modelChecked !== Qt.Unchecked
-                    enabled: sourcesView.model.flags(idx) & Qt.ItemIsUserCheckable
-                    onClicked: {
+                    enabled: idx && sourcesView.model.flags(idx) & Qt.ItemIsUserCheckable
+                    onClicked: if (idx) {
                         sourcesView.model.setData(idx, checkState, Qt.CheckStateRole)
                         checked = Qt.binding(() => (modelChecked !== Qt.Unchecked))
                     }
