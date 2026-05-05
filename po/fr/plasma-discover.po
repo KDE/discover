@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-29 02:47+0000\n"
-"PO-Revision-Date: 2025-12-17 09:50+0100\n"
+"PO-Revision-Date: 2026-05-03 16:35+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -877,13 +877,13 @@ msgstr "Fermer"
 #, kde-format
 msgctxt "@action:button"
 msgid "Previous Screenshot"
-msgstr "Copie d'écran précédente"
+msgstr "Capture d'écran précédente"
 
 #: discover/qml/CarouselNavigationButton.qml:56
 #, kde-format
 msgctxt "@action:button"
 msgid "Next Screenshot"
-msgstr "Copie d'écran suivante"
+msgstr "Capture d'écran suivante"
 
 #: discover/qml/DiscoverDrawer.qml:166
 #, kde-format
