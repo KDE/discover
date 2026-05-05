@@ -302,6 +302,9 @@ DiscoverPage {
                         sourcesView.model.setData(idx, checkState, Qt.CheckStateRole)
                         checked = Qt.binding(() => (modelChecked !== Qt.Unchecked))
                     }
+                    QQC2.ToolTip.text: i18nc("@info:tooltip", "Enable this source")
+                    QQC2.ToolTip.visible: hovered
+                    QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
                 }
                 QQC2.Label {
                     text: delegate.model.display + (delegate.model.toolTip ? " - <i>" + delegate.model.toolTip + "</i>" : "")
