@@ -1140,4 +1140,9 @@ QString FlatpakResource::verifiedMessage() const
     return {};
 }
 
+QString FlatpakResource::disambiguatedOrigin() const
+{
+    return origin() + (flatpak_installation_get_is_user(m_installation) ? u"-user"_s : u"-system"_s);
+}
+
 #include "moc_FlatpakResource.cpp"

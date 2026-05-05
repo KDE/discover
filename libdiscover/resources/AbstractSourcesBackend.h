@@ -32,6 +32,7 @@ public:
 
     enum Roles {
         IdRole = Qt::UserRole,
+        DisambiguatedIdRole,
         LastRole,
     };
     Q_ENUM(Roles)

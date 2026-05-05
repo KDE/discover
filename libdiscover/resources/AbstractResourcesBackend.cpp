@@ -108,7 +108,7 @@ bool AbstractResourcesBackend::Filters::shouldFilter(AbstractResource *resource)
         return false;
     }
 
-    if (!origin.isEmpty() && resource->origin() != origin) {
+    if (!origin.isEmpty() && resource->disambiguatedOrigin() != origin) {
         return false;
     }
 

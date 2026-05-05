@@ -333,6 +333,8 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     }
     const QString id = QString::fromUtf8(flatpak_remote_get_name(remote));
     const QString title = copyAndFree(flatpak_remote_get_title(remote));
+    const QString disambiguatedId =
+        QString::fromUtf8(flatpak_remote_get_name(remote)) + (flatpak_installation_get_is_user(installation) ? u"-user"_s : u"-system"_s);
     const QUrl remoteUrl(copyAndFree(flatpak_remote_get_url(remote)));
 
     const auto theActions = actions();
@@ -368,6 +370,7 @@ void FlatpakSourcesBackend::addRemote(FlatpakRemote *remote, FlatpakInstallation
     it->setData(remoteUrl.isLocalFile() ? remoteUrl.toLocalFile() : remoteUrl.host(), Qt::ToolTipRole);
     it->setData(remoteUrl, Qt::StatusTipRole);
     it->setData(id, IdRole);
+    it->setData(disambiguatedId, DisambiguatedIdRole);
     it->setData(prio, PrioRole);
     it->setCheckState(flatpak_remote_get_disabled(remote) ? Qt::Unchecked : Qt::Checked);
 #if FLATPAK_CHECK_VERSION(1, 4, 0)
