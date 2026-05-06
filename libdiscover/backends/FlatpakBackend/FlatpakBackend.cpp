@@ -1503,7 +1503,7 @@ bool FlatpakBackend::flatpakResourceLessThan(AbstractResource *left, AbstractRes
         return left->isInstalled();
     }
     if (left->origin() != right->origin()) {
-        return m_sources->originIndex(left->origin()) < m_sources->originIndex(right->origin());
+        return m_sources->originIndex(left->disambiguatedOrigin()) < m_sources->originIndex(right->disambiguatedOrigin());
     }
 
     const auto leftPoints = left->rating().ratingPoints();

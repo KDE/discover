@@ -701,7 +701,7 @@ QDate FlatpakResource::releaseDate() const
 
 QString FlatpakResource::sourceIcon() const
 {
-    const auto sourceItem = backend()->sources()->sourceById(origin());
+    const auto sourceItem = backend()->sources()->sourceByDisambiguatedId(disambiguatedOrigin());
     if (!sourceItem) {
         qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Could not find source " << origin();
         return QStringLiteral("flatpak-discover");

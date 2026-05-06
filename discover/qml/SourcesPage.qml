@@ -246,10 +246,10 @@ DiscoverPage {
                 Kirigami.Action {
                     icon.name: "go-up"
                     tooltip: i18n("Increase priority")
-                    enabled: delegate.model.sourcesBackend.firstSourceId !== delegate.model.sourceId
+                    enabled: delegate.model.sourcesBackend.firstDisambiguatedSourceId !== delegate.model.disambiguatedSourceId
                     visible: delegate.model.sourcesBackend.canMoveSources
                     onTriggered: {
-                        const ret = delegate.model.sourcesBackend.moveSource(delegate.model.sourceId, -1)
+                        const ret = delegate.model.sourcesBackend.moveSource(delegate.model.disambiguatedSourceId, -1)
                         if (!ret) {
                             window.showPassiveNotification(i18n("Failed to increase '%1' preference", delegate.model.display))
                         }
@@ -258,10 +258,10 @@ DiscoverPage {
                 Kirigami.Action {
                     icon.name: "go-down"
                     tooltip: i18n("Decrease priority")
-                    enabled: delegate.model.sourcesBackend.lastSourceId !== delegate.model.sourceId
+                    enabled: delegate.model.sourcesBackend.lastDisambiguatedSourceId !== delegate.model.disambiguatedSourceId
                     visible: delegate.model.sourcesBackend.canMoveSources
                     onTriggered: {
-                        const ret = delegate.model.sourcesBackend.moveSource(delegate.model.sourceId, +1)
+                        const ret = delegate.model.sourcesBackend.moveSource(delegate.model.disambiguatedSourceId, +1)
                         if (!ret) {
                             window.showPassiveNotification(i18n("Failed to decrease '%1' preference", delegate.model.display))
                         }
@@ -273,7 +273,7 @@ DiscoverPage {
                     visible: delegate.model.sourcesBackend.supportsAdding
                     onTriggered: {
                         const backend = delegate.model.sourcesBackend
-                        if (!backend.removeSource(delegate.model.sourceId)) {
+                        if (!backend.removeSource(delegate.model.disambiguatedSourceId)) {
                             console.warn("Failed to remove the source", delegate.model.display)
                         }
                     }
