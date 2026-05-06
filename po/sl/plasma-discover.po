@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-05 00:45+0000\n"
-"PO-Revision-Date: 2026-04-29 09:39+0200\n"
+"PO-Revision-Date: 2026-05-05 07:06+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1049,6 +1049,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"Lahko pomagate KDE-ju izboljšati Discover tako, da anonimno delite "
+"informacije o tem, kako ga uporabljate."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1506,7 +1508,7 @@ msgstr "Posodobi vse"
 #, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
-msgstr "čakajoča posodobitev bo nameščena ob ponovnem zagonu sistema"
+msgstr "čakajoča posodobitev bo nameščena ob ponovnem zagonu sistema."
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format

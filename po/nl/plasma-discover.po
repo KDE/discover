@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-05 00:45+0000\n"
-"PO-Revision-Date: 2026-04-29 10:24+0200\n"
+"PO-Revision-Date: 2026-05-05 14:49+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1047,6 +1047,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"U kunt KDE helpen Ontdekken te verbeteren door anonieme informatie te delen "
+"over hoe u het gebruikt."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format

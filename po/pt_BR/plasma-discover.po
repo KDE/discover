@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-05 00:45+0000\n"
-"PO-Revision-Date: 2026-04-29 07:00-0300\n"
+"PO-Revision-Date: 2026-05-05 07:50-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -1048,6 +1048,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"Você pode ajudar o KDE a melhorar o Discover compartilhando informações "
+"anônimas sobre como você o utiliza."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
