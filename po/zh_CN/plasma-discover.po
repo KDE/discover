@@ -290,7 +290,7 @@ msgstr[0] "%1 个评分"
 #: discover/qml/ApplicationPage.qml:373
 #, kde-format
 msgid "No ratings yet"
-msgstr "尚无评分"
+msgstr "暂无评分"
 
 #: discover/qml/ApplicationPage.qml:69
 #, kde-kuit-format
