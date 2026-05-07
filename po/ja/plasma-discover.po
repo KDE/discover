@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-05 00:45+0000\n"
+"POT-Creation-Date: 2026-05-07 00:46+0000\n"
 "PO-Revision-Date: 2025-09-21 14:44+0900\n"
 "Last-Translator: Yuma Kakei <yumasansansan@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1445,7 +1445,14 @@ msgstr "リポジトリを削除"
 msgid "Show contents"
 msgstr "内容を表示"
 
-#: discover/qml/SourcesPage.qml:323
+#: discover/qml/SourcesPage.qml:305
+#, fuzzy, kde-format
+#| msgid "Unable to find resource: %1"
+msgctxt "@info:tooltip"
+msgid "Enable this source"
+msgstr "リソースが見つかりません: %1"
+
+#: discover/qml/SourcesPage.qml:326
 #, kde-format
 msgid "Missing Backends"
 msgstr "欠けているバックエンド"

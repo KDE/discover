@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-29 00:47+0000\n"
+"POT-Creation-Date: 2026-05-07 00:46+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -587,7 +587,7 @@ msgctxt "Category"
 msgid "System"
 msgstr "Propalo."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:200
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:208
 #, fuzzy, kde-format
 #| msgctxt "description (url)"
 #| msgid "%1 (%2)"
@@ -595,30 +595,30 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:803
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:811
 #, kde-format
 msgid "Local bundle"
 msgstr "Lokalna sveza"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1955
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1963
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
 #, kde-format
 msgid "Malformed appstream url '%1'"
 msgstr "Loš apstrim URL ‘%1’"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2085
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2093
 #, fuzzy, kde-format
 #| msgid "Could not add the source %1"
 msgid "Failed to add source '%1': %2"
 msgstr "Ne mogu da dodam izvor %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2212
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2220
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
 # >! Plurals.
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2216
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2224
 #, fuzzy, kde-format
 #| msgid ""
 #| "Failed to update %1 packages\n"
@@ -972,7 +972,7 @@ msgstr ""
 msgid "Could not find %1"
 msgstr "Ne mogu da dodam izvor %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:349
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:351
 #, fuzzy, kde-format
 #| msgctxt "description (url)"
 #| msgid "%1 (%2)"
@@ -980,7 +980,7 @@ msgid "%1 (user)"
 msgstr "%1 (%2)"
 
 # >> @item
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:411
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:414
 #, fuzzy, kde-format
 #| msgid "Flatpak repository URI (*.flatpakrepo)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"

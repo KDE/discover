@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-05 00:45+0000\n"
+"POT-Creation-Date: 2026-05-07 00:46+0000\n"
 "PO-Revision-Date: 2026-04-26 23:04+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1407,7 +1407,14 @@ msgstr "저장소 삭제"
 msgid "Show contents"
 msgstr "내용 보기"
 
-#: discover/qml/SourcesPage.qml:323
+#: discover/qml/SourcesPage.qml:305
+#, fuzzy, kde-format
+#| msgid "Unable to find resource: %1"
+msgctxt "@info:tooltip"
+msgid "Enable this source"
+msgstr "리소스를 찾을 수 없음: %1"
+
+#: discover/qml/SourcesPage.qml:326
 #, kde-format
 msgid "Missing Backends"
 msgstr "사용할 수 없는 백엔드"

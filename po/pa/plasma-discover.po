@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-05 00:45+0000\n"
+"POT-Creation-Date: 2026-05-07 00:46+0000\n"
 "PO-Revision-Date: 2024-02-10 09:57-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -1375,7 +1375,14 @@ msgstr "ਰਿਪੋਰਜ਼ਟਰੀ ਹਟਾਓ"
 msgid "Show contents"
 msgstr "ਸਮੱਗਰੀ ਵੇਖਾਓ"
 
-#: discover/qml/SourcesPage.qml:323
+#: discover/qml/SourcesPage.qml:305
+#, fuzzy, kde-format
+#| msgid "Unable to find resource: %1"
+msgctxt "@info:tooltip"
+msgid "Enable this source"
+msgstr "ਸਰੋਤ ਲੱਭਣ ਲਈ ਅਸਮਰੱਥ: %1"
+
+#: discover/qml/SourcesPage.qml:326
 #, kde-format
 msgid "Missing Backends"
 msgstr "ਗੁੰਮ ਬੈਕਐਂਡ"

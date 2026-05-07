@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-05 00:45+0000\n"
+"POT-Creation-Date: 2026-05-07 00:46+0000\n"
 "PO-Revision-Date: 2015-02-04 16:18+0000\n"
 "Last-Translator: Nermina Ahmić <nahmic1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -1400,7 +1400,13 @@ msgstr ""
 msgid "Show contents"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:323
+#: discover/qml/SourcesPage.qml:305
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Enable this source"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:326
 #, kde-format
 msgid "Missing Backends"
 msgstr ""

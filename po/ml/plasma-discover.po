@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-05 00:45+0000\n"
+"POT-Creation-Date: 2026-05-07 00:46+0000\n"
 "PO-Revision-Date: 2019-12-29 20:50+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc."
@@ -1371,7 +1371,13 @@ msgstr ""
 msgid "Show contents"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:323
+#: discover/qml/SourcesPage.qml:305
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Enable this source"
+msgstr ""
+
+#: discover/qml/SourcesPage.qml:326
 #, kde-format
 msgid "Missing Backends"
 msgstr ""

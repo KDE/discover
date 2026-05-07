@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-05 00:45+0000\n"
-"PO-Revision-Date: 2026-04-13 18:37+0000\n"
+"POT-Creation-Date: 2026-05-07 00:46+0000\n"
+"PO-Revision-Date: 2026-05-06 10:37+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -574,16 +574,13 @@ msgstr "Upplýsingar um notkunarleyfi"
 
 #: discover/qml/ApplicationPageFullComponent.qml:114
 #: discover/qml/ApplicationPageStickyComponent.qml:46
-#, fuzzy, kde-format
-#| msgid "Unknown author"
+#, kde-format
 msgctxt "As in 'this app is made by an unknown author'"
 msgid "Unknown author"
 msgstr "Óþekktur höfundur"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "%1 rating"
-#| msgid_plural "%1 ratings"
+#, kde-format
 msgctxt "@info as in the number of ratings an application has"
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -591,15 +588,13 @@ msgstr[0] "%1 einkunn"
 msgstr[1] "%1 einkunnir"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgctxt "@info"
 msgid "No ratings yet"
 msgstr "Engar einkunnir ennþá"
 
 #: discover/qml/ApplicationPageFullComponent.qml:196
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgctxt "@info"
 msgid "Version:"
 msgstr "Útgáfa:"
@@ -610,14 +605,12 @@ msgid "Size:"
 msgstr "Stærð:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:239
-#, fuzzy, kde-format
-#| msgid "License:"
-#| msgid_plural "Licenses:"
+#, kde-format
 msgctxt "@info"
 msgid "License:"
 msgid_plural "Licenses:"
-msgstr[0] "Notandaleyfi:"
-msgstr[1] "Notandaleyfi:"
+msgstr[0] "Notkunarleyfi:"
+msgstr[1] "Notkunarleyfi:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:258
 #, kde-format
@@ -633,20 +626,16 @@ msgid "What does this mean?"
 msgstr "Hvað þýðir þetta?"
 
 #: discover/qml/ApplicationPageFullComponent.qml:345
-#, fuzzy, kde-format
-#| msgid "All Licenses"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "All licenses…"
-msgstr "Öll notandaleyfi"
+msgstr "Öll notkunarleyfi…"
 
 #: discover/qml/ApplicationPageFullComponent.qml:358
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#, kde-format
 msgctxt "@info The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr "Aldurstakmark:"
+msgstr "Aldur:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:377
 #, kde-format
@@ -661,8 +650,7 @@ msgid "%1+"
 msgstr "%1+"
 
 #: discover/qml/ApplicationPageFullComponent.qml:388
-#, fuzzy, kde-format
-#| msgid "See details"
+#, kde-format
 msgctxt "@action:button See content rating details"
 msgid "See details"
 msgstr "Frekari upplýsingar"
@@ -671,7 +659,7 @@ msgstr "Frekari upplýsingar"
 #, kde-format
 msgctxt "@action:button"
 msgid "Scroll to top"
-msgstr ""
+msgstr "Skruna efst"
 
 #: discover/qml/ApplicationsListPage.qml:54
 #, kde-format
@@ -957,7 +945,7 @@ msgstr "Tilkynntu vandamálið til %1"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
-msgstr ""
+msgstr "Discover er ótengt"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
@@ -1440,7 +1428,14 @@ msgstr "Fjarlægja hugbúnaðarsafn"
 msgid "Show contents"
 msgstr "Sýna innihald"
 
-#: discover/qml/SourcesPage.qml:323
+#: discover/qml/SourcesPage.qml:305
+#, fuzzy, kde-format
+#| msgid "Unable to find resource: %1"
+msgctxt "@info:tooltip"
+msgid "Enable this source"
+msgstr "Fann ekki tilfang: %1"
+
+#: discover/qml/SourcesPage.qml:326
 #, kde-format
 msgid "Missing Backends"
 msgstr "Bakendar sem vantar"
