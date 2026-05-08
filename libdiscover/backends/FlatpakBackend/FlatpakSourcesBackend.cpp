@@ -61,6 +61,7 @@ public:
                 g_autoptr(GError) error = nullptr;
                 if (!flatpak_installation_modify_remote(m_installation, m_remote, nullptr, &error)) {
                     qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "set disabled failed" << error->message;
+                    flatpak_remote_set_disabled(m_remote, disabled);
                     return;
                 }
 
