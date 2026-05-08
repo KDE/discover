@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:46+0000\n"
-"PO-Revision-Date: 2026-04-30 20:42+0300\n"
+"PO-Revision-Date: 2026-05-07 19:56+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -1061,6 +1061,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"Galite padėti KDE tobulinti programą Discover bendrindami anoniminę "
+"informaciją apie tai, kaip naudojatės programa."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1458,11 +1460,10 @@ msgid "Show contents"
 msgstr "Rodyti turinį"
 
 #: discover/qml/SourcesPage.qml:305
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "Nepavyko rasti ištekliaus: %1"
+msgstr "Įjungti šį šaltinį"
 
 #: discover/qml/SourcesPage.qml:326
 #, kde-format

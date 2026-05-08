@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:46+0000\n"
-"PO-Revision-Date: 2026-05-05 14:49+0200\n"
+"PO-Revision-Date: 2026-05-07 17:26+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1444,11 +1444,10 @@ msgid "Show contents"
 msgstr "Inhoud tonen"
 
 #: discover/qml/SourcesPage.qml:305
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "Hulpbron '%1' kon niet worden gevonden"
+msgstr "Deze bron inschakelen"
 
 #: discover/qml/SourcesPage.qml:326
 #, kde-format

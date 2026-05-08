@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:46+0000\n"
-"PO-Revision-Date: 2026-05-05 08:29+0300\n"
+"PO-Revision-Date: 2026-05-07 08:26+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1422,11 +1422,10 @@ msgid "Show contents"
 msgstr "הצגת תוכן"
 
 #: discover/qml/SourcesPage.qml:305
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "לא ניתן למצוא את המשאב: %1"
+msgstr "הפעלת המקור הזה"
 
 #: discover/qml/SourcesPage.qml:326
 #, kde-format
