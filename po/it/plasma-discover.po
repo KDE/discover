@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:46+0000\n"
-"PO-Revision-Date: 2026-04-30 09:21+0200\n"
+"PO-Revision-Date: 2026-05-07 14:02+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1047,6 +1047,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"Puoi aiutare KDE a migliorare Discover condividendo informazioni anonime su "
+"come lo utilizzi."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1444,11 +1446,10 @@ msgid "Show contents"
 msgstr "Mostra i contenuti"
 
 #: discover/qml/SourcesPage.qml:305
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "Impossibile trovare la risorsa: %1"
+msgstr "Abilita questa fonte"
 
 #: discover/qml/SourcesPage.qml:326
 #, kde-format

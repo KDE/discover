@@ -914,14 +914,14 @@ msgstr "报告此问题给 %1"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
-msgstr ""
+msgstr "Discover 处于离线状态"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
 msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
-msgstr ""
+msgstr "请连接到网络以安装应用程序并升级系统。"
 
 #: discover/qml/DiscoverWindow.qml:365
 #, kde-format
@@ -1001,7 +1001,7 @@ msgstr "配置更新…"
 msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
-msgstr ""
+msgstr "您可以通过分享匿名信息来帮助 KDE 改进 Discover 软件中心。"
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1392,11 +1392,10 @@ msgid "Show contents"
 msgstr "显示内容"
 
 #: discover/qml/SourcesPage.qml:305
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "无法找到资源：%1"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:326
 #, kde-format
@@ -1461,7 +1460,7 @@ msgstr "全部更新"
 #, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
-msgstr ""
+msgstr "系统重启时将安装更新。"
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format

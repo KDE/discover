@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:46+0000\n"
-"PO-Revision-Date: 2026-05-05 09:02+0200\n"
+"PO-Revision-Date: 2026-05-07 09:43+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1448,11 +1448,10 @@ msgid "Show contents"
 msgstr "Mostra el contingut"
 
 #: discover/qml/SourcesPage.qml:305
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "No s'ha pogut trobar el recurs: %1"
+msgstr "Activa esta font"
 
 #: discover/qml/SourcesPage.qml:326
 #, kde-format
