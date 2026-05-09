@@ -17,7 +17,9 @@ QQC2.ToolButton {
         QQC2.Label {
             id: label
             Layout.fillWidth: true
-            text: Discover.TransactionModel.count ? i18n("Tasks (%1%)", Discover.TransactionModel.progress) : i18n("Tasks")
+            text: Discover.TransactionModel.hasActiveTransactions
+                ? i18n("Tasks (%1%)", Discover.TransactionModel.progress)
+                : i18n("Tasks")
             wrapMode: Text.Wrap
             maximumLineCount: 2
             elide: Text.ElideRight
@@ -25,6 +27,7 @@ QQC2.ToolButton {
 
         QQC2.ProgressBar {
             Layout.fillWidth: true
+            indeterminate: Discover.TransactionModel.count > 0 && !Discover.TransactionModel.hasActiveTransactions
             value: Discover.TransactionModel.progress / 100
         }
     }

@@ -28,6 +28,7 @@ TransactionModel::TransactionModel(QObject *parent)
     connect(this, &QAbstractItemModel::rowsInserted, this, &TransactionModel::countChanged);
     connect(this, &QAbstractItemModel::rowsRemoved, this, &TransactionModel::countChanged);
     connect(this, &TransactionModel::countChanged, this, &TransactionModel::progressChanged);
+    connect(this, &TransactionModel::countChanged, this, &TransactionModel::activeTransactionsChanged);
 }
 
 QHash<int, QByteArray> TransactionModel::roleNames() const
@@ -159,6 +160,7 @@ void TransactionModel::addTransaction(Transaction *transaction)
 
     connect(transaction, &Transaction::statusChanged, this, [this, transaction]() {
         transactionChanged(transaction, StatusTextRole);
+        Q_EMIT activeTransactionsChanged();
     });
     connect(transaction, &Transaction::cancellableChanged, this, [this, transaction]() {
         transactionChanged(transaction, CancellableRole);
@@ -214,6 +216,13 @@ int TransactionModel::progress() const
         }
     }
     return count == 0 ? 0 : sum / count;
+}
+
+bool TransactionModel::hasActiveTransactions() const
+{
+    return std::any_of(m_transactions.constBegin(), m_transactions.constEnd(), [](const auto transaction) {
+        return transaction->isActive() && transaction->isVisible();
+    });
 }
 
 QString TransactionModel::mainTransactionText() const
