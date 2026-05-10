@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2012-2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
 # Kris Zadra <x-men@mixbox.pl>, 2013.
 #
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:18+0000\n"
-"PO-Revision-Date: 2026-04-11 10:00+0200\n"
+"PO-Revision-Date: 2026-05-09 17:01+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 25.08.2\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
@@ -321,7 +321,7 @@ msgstr "Wersja"
 #: discover/qml/ApplicationsListPage.qml:108
 #, kde-format
 msgid "Size"
-msgstr "Rozmiarze"
+msgstr "Rozmiaru"
 
 #: discover/qml/ApplicationPage.qml:333
 #, kde-format
@@ -479,7 +479,7 @@ msgstr "Zgłoś napotkany błąd, aby pomóc w jego naprawie"
 #: discover/qml/ApplicationPage.qml:850
 #, kde-format
 msgid "Contribute"
-msgstr "Współtwórz"
+msgstr "Zacznij współtworzyć"
 
 #: discover/qml/ApplicationPage.qml:851
 #, kde-format
@@ -555,14 +555,14 @@ msgstr ""
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Znaleziono %2 - %3 raz"
-msgstr[1] "Znaleziono %2 - %3 razy"
-msgstr[2] "Znaleziono %2 - %3 razy"
+msgstr[0] "Szukanie: %2 - %3 raz"
+msgstr[1] "Szukanie: %2 - %3 razy"
+msgstr[2] "Szukanie: %2 - %3 razy"
 
 #: discover/qml/ApplicationsListPage.qml:54
 #, kde-format
 msgid "Search: %1"
-msgstr "Szukaj: %1"
+msgstr "Poszukaj: %1"
 
 #: discover/qml/ApplicationsListPage.qml:58
 #, kde-format
@@ -576,15 +576,15 @@ msgstr[2] "%2 - %1 rzeczy"
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Szukaj - %1 rzeczy"
-msgstr[1] "Szukaj - %1 rzeczy"
-msgstr[2] "Szukaj - %1 rzeczy"
+msgstr[0] "Poszukaj - %1 rzeczy"
+msgstr[1] "Poszukaj - %1 rzeczy"
+msgstr[2] "Poszukaj - %1 rzeczy"
 
 #: discover/qml/ApplicationsListPage.qml:66
 #: discover/qml/ApplicationsListPage.qml:224
 #, kde-format
 msgid "Search"
-msgstr "Szukaj"
+msgstr "Poszukaj"
 
 #: discover/qml/ApplicationsListPage.qml:87
 #, kde-format
@@ -660,7 +660,7 @@ msgstr ""
 #: discover/qml/ApplicationsListPage.qml:239
 #, kde-format
 msgid "Still looking…"
-msgstr "Nadal szukam..."
+msgstr "Nadal szukam…"
 
 #: discover/qml/BrowsingPage.qml:62
 #, kde-format
@@ -833,7 +833,7 @@ msgstr ""
 #: discover/qml/Feedback.qml:58
 #, kde-format
 msgid "Contribute…"
-msgstr "Współtwórz..."
+msgstr "Zacznij współtworzyć…"
 
 #: discover/qml/Feedback.qml:63
 #, kde-format
@@ -843,7 +843,7 @@ msgstr "Czekamy na twoją informację zwrotną!"
 #: discover/qml/Feedback.qml:63
 #, kde-format
 msgid "Participate…"
-msgstr "Weź udział..."
+msgstr "Weź udział…"
 
 #: discover/qml/InstallApplicationButton.qml:25
 #, kde-format
@@ -989,7 +989,7 @@ msgstr "Wyraź swoją opinię"
 #: discover/qml/ReviewDialog.qml:70
 #, kde-format
 msgid "Keep writing…"
-msgstr "Pisz dalej..."
+msgstr "Pisz dalej…"
 
 #: discover/qml/ReviewDialog.qml:71
 #, kde-format
@@ -1010,7 +1010,7 @@ msgstr "Opinie na temat %1"
 #: discover/qml/ReviewsPage.qml:53
 #, kde-format
 msgid "Write a Review…"
-msgstr "Wyraź swoją opinię..."
+msgstr "Wyraź swoją opinię…"
 
 #: discover/qml/ReviewsPage.qml:58
 #, kde-format
@@ -1025,7 +1025,7 @@ msgstr "Poszukaj…"
 #: discover/qml/SearchField.qml:24
 #, kde-format
 msgid "Search in '%1'…"
-msgstr "Szukaj w '%1'..."
+msgstr "Poszukaj w '%1'…"
 
 #: discover/qml/SourcesPage.qml:13
 #, kde-format
@@ -1040,7 +1040,7 @@ msgstr "Domyślne źródło"
 #: discover/qml/SourcesPage.qml:100
 #, kde-format
 msgid "Add Source…"
-msgstr "Dodaj źródło..."
+msgstr "Dodaj źródło…"
 
 #: discover/qml/SourcesPage.qml:124
 #, kde-format
