@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2012-2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
 # Kris Zadra <x-men@mixbox.pl>, 2013.
 #
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:46+0000\n"
-"PO-Revision-Date: 2026-04-18 14:20+0200\n"
+"PO-Revision-Date: 2026-05-09 17:01+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 25.08.2\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #: discover/DiscoverObject.cpp:197
 #, kde-format
@@ -645,20 +645,16 @@ msgid "What does this mean?"
 msgstr "Co to oznacza?"
 
 #: discover/qml/ApplicationPageFullComponent.qml:345
-#, fuzzy, kde-format
-#| msgid "All Licenses"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "All licenses…"
-msgstr "Wszystkie licencje"
+msgstr "Wszystkie licencje…"
 
 #: discover/qml/ApplicationPageFullComponent.qml:358
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#, kde-format
 msgctxt "@info The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr "Wiek:"
+msgstr "Ograniczenia wiekowe:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:377
 #, kde-format
@@ -673,8 +669,7 @@ msgid "%1+"
 msgstr "%1+"
 
 #: discover/qml/ApplicationPageFullComponent.qml:388
-#, fuzzy, kde-format
-#| msgid "See details"
+#, kde-format
 msgctxt "@action:button See content rating details"
 msgid "See details"
 msgstr "Obejrzyj szczegóły"
@@ -683,20 +678,20 @@ msgstr "Obejrzyj szczegóły"
 #, kde-format
 msgctxt "@action:button"
 msgid "Scroll to top"
-msgstr ""
+msgstr "Przewiń na górę"
 
 #: discover/qml/ApplicationsListPage.qml:54
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Znaleziono %2 - %3 raz"
-msgstr[1] "Znaleziono %2 - %3 razy"
-msgstr[2] "Znaleziono %2 - %3 razy"
+msgstr[0] "Szukanie: %2 - %3 raz"
+msgstr[1] "Szukanie: %2 - %3 razy"
+msgstr[2] "Szukanie: %2 - %3 razy"
 
 #: discover/qml/ApplicationsListPage.qml:56
 #, kde-format
 msgid "Search: %1"
-msgstr "Szukaj: %1"
+msgstr "Poszukaj: %1"
 
 #: discover/qml/ApplicationsListPage.qml:60
 #, kde-format
@@ -710,15 +705,15 @@ msgstr[2] "%2 - %1 rzeczy"
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Szukaj - %1 rzeczy"
-msgstr[1] "Szukaj - %1 rzeczy"
-msgstr[2] "Szukaj - %1 rzeczy"
+msgstr[0] "Poszukaj - %1 rzeczy"
+msgstr[1] "Poszukaj - %1 rzeczy"
+msgstr[2] "Poszukaj - %1 rzeczy"
 
 #: discover/qml/ApplicationsListPage.qml:68
 #: discover/qml/ApplicationsListPage.qml:272
 #, kde-format
 msgid "Search"
-msgstr "Szukaj"
+msgstr "Poszukaj"
 
 #: discover/qml/ApplicationsListPage.qml:99 discover/qml/ReviewsPage.qml:141
 #, kde-format
@@ -745,12 +740,12 @@ msgstr "Liczby opinii"
 #, kde-format
 msgctxt "@item:inmenu sort by highest-rated apps"
 msgid "Rating"
-msgstr "Ocenach"
+msgstr "Oceny"
 
 #: discover/qml/ApplicationsListPage.qml:148
 #, kde-format
 msgid "Size"
-msgstr "Rozmiarze"
+msgstr "Rozmiaru"
 
 #: discover/qml/ApplicationsListPage.qml:159
 #, kde-format
@@ -803,7 +798,7 @@ msgstr ""
 #: discover/qml/ApplicationsListPage.qml:287
 #, kde-format
 msgid "Still looking…"
-msgstr "Nadal szukam..."
+msgstr "Nadal szukam…"
 
 #: discover/qml/BrowsingPage.qml:20
 #, kde-format
@@ -972,14 +967,14 @@ msgstr "Zgłoś ten błąd na %1"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
-msgstr ""
+msgstr "Discover jest odłączony od sieci"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
 msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
-msgstr ""
+msgstr "Podłącz się do sieci, aby móc wgrywać aplikacje i uaktualniać system."
 
 #: discover/qml/DiscoverWindow.qml:365
 #, kde-format
@@ -1062,11 +1057,13 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"Możesz pomóc KDE ulepszyć Discovera udostępniając anonimowe dane z jego "
+"użytkowania."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
 msgid "Contribute…"
-msgstr "Współtwórz..."
+msgstr "Zacznij współtworzyć…"
 
 #: discover/qml/Feedback.qml:65
 #, kde-format
@@ -1076,7 +1073,7 @@ msgstr "Czekamy na twoją informację zwrotną!"
 #: discover/qml/Feedback.qml:65
 #, kde-format
 msgid "Participate…"
-msgstr "Weź udział..."
+msgstr "Weź udział…"
 
 #: discover/qml/InstallApplicationButton.qml:29
 #, kde-format
@@ -1319,7 +1316,7 @@ msgstr "Wyraź swoją opinię"
 #: discover/qml/ReviewDialog.qml:202
 #, kde-format
 msgid "Keep writing…"
-msgstr "Pisz dalej..."
+msgstr "Pisz dalej…"
 
 #: discover/qml/ReviewDialog.qml:205
 #, kde-format
@@ -1340,7 +1337,7 @@ msgstr "Opinie na temat %1"
 #: discover/qml/ReviewsPage.qml:105
 #, kde-format
 msgid "Write a Review…"
-msgstr "Wyraź swoją opinię..."
+msgstr "Wyraź swoją opinię…"
 
 #: discover/qml/ReviewsPage.qml:118
 #, kde-format
@@ -1402,7 +1399,7 @@ msgstr "Poszukaj…"
 #: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search in '%1'…"
-msgstr "Szukaj w '%1'..."
+msgstr "Poszukaj w '%1'…"
 
 #: discover/qml/SourcesPage.qml:18
 #, kde-format
@@ -1417,7 +1414,7 @@ msgstr "Domyślne źródło"
 #: discover/qml/SourcesPage.qml:118
 #, kde-format
 msgid "Add Source…"
-msgstr "Dodaj źródło..."
+msgstr "Dodaj źródło…"
 
 #: discover/qml/SourcesPage.qml:145
 #, kde-format
@@ -1455,11 +1452,10 @@ msgid "Show contents"
 msgstr "Pokaż zawartość"
 
 #: discover/qml/SourcesPage.qml:305
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "Nie można znaleźć zasobu: %1"
+msgstr "Włącz to źródło"
 
 #: discover/qml/SourcesPage.qml:326
 #, kde-format
@@ -1521,12 +1517,11 @@ msgid "Update All"
 msgstr "Uaktualnij wszystkie"
 
 #: discover/qml/UpdatesPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Updates will be installed after the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
-msgstr "Uaktualnienia zostaną wgrane po ponownym uruchomieniu systemu"
+msgstr ""
+"Oczekujące uaktualnienia zostaną wgrane po ponownym uruchomieniu systemu."
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format
