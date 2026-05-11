@@ -3,20 +3,21 @@
 #
 # SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Freek de Kruijf <freekdekruijf@kde.nl>
 # SPDX-FileCopyrightText: 2021, 2025 Luc Castermans <luc.castermans@gmail.com>
+# SPDX-FileCopyrightText: 2026 pieter <pieterkristensen@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-10 00:45+0000\n"
-"PO-Revision-Date: 2026-04-09 13:35+0200\n"
-"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2026-05-09 15:24+0200\n"
+"Last-Translator: pieter <pieterkristensen@gmail.com>\n"
+"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2661,16 +2662,14 @@ msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
 msgstr ""
-"Ophalen van elementen voor bijwerken van <a href='%1'>%1</a>.<nl/><nl/"
-">Foutbericht: %2"
+"Kon updates niet ophalen van van <a href='%1'>%1</a>.<nl/><nl/>Foutbericht: "
+"%2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
-msgstr ""
-"Ontleden van metagegevens van elementen voor bijwerken is mislukt.<nl/><nl/"
-">Foutbericht: %1"
+msgstr "Ontleden van metagegevens van update mislukt.<nl/><nl/>Foutbericht: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format

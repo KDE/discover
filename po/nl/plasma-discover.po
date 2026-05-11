@@ -2,20 +2,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # SPDX-FileCopyrightText: 2012-2026 Freek de Kruijf <freekdekruijf@kde.nl>
-# SPDX-FileCopyrightText: 2024 pieter <pieterkristensen@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2026 pieter <pieterkristensen@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:46+0000\n"
-"PO-Revision-Date: 2026-05-07 17:26+0200\n"
-"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2026-05-09 15:32+0200\n"
+"Last-Translator: pieter <pieterkristensen@gmail.com>\n"
+"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Lokalize 26.04.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: discover/DiscoverObject.cpp:197
@@ -911,12 +911,12 @@ msgstr "&Geïnstalleerd"
 #: discover/qml/DiscoverWindow.qml:101
 #, kde-format
 msgid "&Updates (Fetching…)"
-msgstr "&Update (Ophalen…)"
+msgstr "&Updates (ophalen…)"
 
 #: discover/qml/DiscoverWindow.qml:102
 #, kde-format
 msgid "&Updates"
-msgstr "&Elementen voor bijwerken"
+msgstr "&Updates"
 
 #: discover/qml/DiscoverWindow.qml:110
 #, kde-format
@@ -1516,8 +1516,8 @@ msgstr "Alles bijwerken"
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
 msgstr ""
-"Een openstaand element voor bijwerken wordt geïnstalleerd wanneer het "
-"systeem opnieuw wordt opgestart."
+"Een openstaande update wordt geïnstalleerd wanneer het systeem opnieuw wordt "
+"opgestart."
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format

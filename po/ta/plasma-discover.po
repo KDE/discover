@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025, 2026 Kishore G <kishore96@gmail.com>
+# SPDX-FileCopyrightText: 2021-2026 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:46+0000\n"
-"PO-Revision-Date: 2026-04-12 20:18+0530\n"
+"PO-Revision-Date: 2026-05-10 16:28+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #: discover/DiscoverObject.cpp:197
 #, kde-format
@@ -533,16 +533,13 @@ msgstr "உரிம விவரங்கள்"
 
 #: discover/qml/ApplicationPageFullComponent.qml:114
 #: discover/qml/ApplicationPageStickyComponent.qml:46
-#, fuzzy, kde-format
-#| msgid "Unknown author"
+#, kde-format
 msgctxt "As in 'this app is made by an unknown author'"
 msgid "Unknown author"
 msgstr "தெரியாத நிரலாளர்"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "%1 rating"
-#| msgid_plural "%1 ratings"
+#, kde-format
 msgctxt "@info as in the number of ratings an application has"
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -550,15 +547,13 @@ msgstr[0] "%1 மதிப்பீடு"
 msgstr[1] "%1 மதிப்பீடுகள்"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgctxt "@info"
 msgid "No ratings yet"
-msgstr "மதிப்பீடுகள் எதுவும் இல்லை"
+msgstr "யாரும் மதிப்பீட்டை வழங்கவில்லை"
 
 #: discover/qml/ApplicationPageFullComponent.qml:196
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgctxt "@info"
 msgid "Version:"
 msgstr "பதிப்பு:"
@@ -569,9 +564,7 @@ msgid "Size:"
 msgstr "அளவு:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:239
-#, fuzzy, kde-format
-#| msgid "License:"
-#| msgid_plural "Licenses:"
+#, kde-format
 msgctxt "@info"
 msgid "License:"
 msgid_plural "Licenses:"
@@ -592,20 +585,16 @@ msgid "What does this mean?"
 msgstr "இதன் பொருள் என்ன?"
 
 #: discover/qml/ApplicationPageFullComponent.qml:345
-#, fuzzy, kde-format
-#| msgid "All Licenses"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "All licenses…"
-msgstr "அனைத்து உரிமங்கள்"
+msgstr "அனைத்து உரிமங்கள்…"
 
 #: discover/qml/ApplicationPageFullComponent.qml:358
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#, kde-format
 msgctxt "@info The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr "இவ்வயதுகளுக்கானது:"
+msgstr "இவ்வயதினருக்கானது:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:377
 #, kde-format
@@ -620,8 +609,7 @@ msgid "%1+"
 msgstr "%1+"
 
 #: discover/qml/ApplicationPageFullComponent.qml:388
-#, fuzzy, kde-format
-#| msgid "See details"
+#, kde-format
 msgctxt "@action:button See content rating details"
 msgid "See details"
 msgstr "விவரங்களைக் காட்டு"
@@ -630,7 +618,7 @@ msgstr "விவரங்களைக் காட்டு"
 #, kde-format
 msgctxt "@action:button"
 msgid "Scroll to top"
-msgstr ""
+msgstr "முதல் வரிக்கு செல்"
 
 #: discover/qml/ApplicationsListPage.qml:54
 #, kde-format
@@ -916,14 +904,14 @@ msgstr "%1-க்கு இச்சிக்கலை தெரிவிக்�
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
-msgstr ""
+msgstr "டிஸ்கவர் தொடர்பற்று உள்ளது"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
 msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
-msgstr ""
+msgstr "நிரல்களை நிறுவவும் இயங்குதளத்தைப் புதுப்பிக்கவும் இணையத்தில் இணையவும்."
 
 #: discover/qml/DiscoverWindow.qml:365
 #, kde-format
@@ -1401,11 +1389,10 @@ msgid "Show contents"
 msgstr "உள்ளடக்கத்தை காட்டு"
 
 #: discover/qml/SourcesPage.qml:305
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "இதை கண்டுபிடிக்க முடியவில்லை: %1"
+msgstr "இந்த களஞ்சியத்தை இயக்கு"
 
 #: discover/qml/SourcesPage.qml:326
 #, kde-format
@@ -1471,12 +1458,10 @@ msgid "Update All"
 msgstr "அனைத்தையும் புதுப்பி"
 
 #: discover/qml/UpdatesPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Updates will be installed after the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
-msgstr "கணினி மீள்துவக்கப்படும்போது இப்புதுப்பிப்புகள் நிறுவப்படும்"
+msgstr "கணினி மீள்துவக்கப்படும்போது புதுப்பிப்பு நிறுவப்படும்"
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format

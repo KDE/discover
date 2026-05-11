@@ -1395,7 +1395,7 @@ msgstr "显示内容"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr ""
+msgstr "启用此来源"
 
 #: discover/qml/SourcesPage.qml:326
 #, kde-format
