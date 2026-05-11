@@ -306,7 +306,7 @@ DiscoverPage {
             id: loadingHolder
             parent: appsView.count === 0 ? appsView : appsView.footerItem
             anchors.fill: parent
-            visible: appsModel.busy && appsView.atYEnd
+            visible: appsModel.busy && (appsView.count === 0 || appsView.atYEnd)
             ColumnLayout {
                 anchors.centerIn: parent
                 opacity: parent.visible ? 0.5 : 0
