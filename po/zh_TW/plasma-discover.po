@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:46+0000\n"
-"PO-Revision-Date: 2026-04-17 19:45+0900\n"
+"PO-Revision-Date: 2026-05-12 04:06+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -550,31 +550,26 @@ msgstr "授權資訊"
 
 #: discover/qml/ApplicationPageFullComponent.qml:114
 #: discover/qml/ApplicationPageStickyComponent.qml:46
-#, fuzzy, kde-format
-#| msgid "Unknown author"
+#, kde-format
 msgctxt "As in 'this app is made by an unknown author'"
 msgid "Unknown author"
 msgstr "未知的作者"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "%1 rating"
-#| msgid_plural "%1 ratings"
+#, kde-format
 msgctxt "@info as in the number of ratings an application has"
 msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "%1 個評分"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgctxt "@info"
 msgid "No ratings yet"
 msgstr "目前還沒有評分"
 
 #: discover/qml/ApplicationPageFullComponent.qml:196
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgctxt "@info"
 msgid "Version:"
 msgstr "版本："
@@ -585,9 +580,7 @@ msgid "Size:"
 msgstr "大小："
 
 #: discover/qml/ApplicationPageFullComponent.qml:239
-#, fuzzy, kde-format
-#| msgid "License:"
-#| msgid_plural "Licenses:"
+#, kde-format
 msgctxt "@info"
 msgid "License:"
 msgid_plural "Licenses:"
@@ -607,17 +600,13 @@ msgid "What does this mean?"
 msgstr "這代表什麼？"
 
 #: discover/qml/ApplicationPageFullComponent.qml:345
-#, fuzzy, kde-format
-#| msgid "All Licenses"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "All licenses…"
-msgstr "所有授權"
+msgstr "所有授權…"
 
 #: discover/qml/ApplicationPageFullComponent.qml:358
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#, kde-format
 msgctxt "@info The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "年齡："
@@ -635,8 +624,7 @@ msgid "%1+"
 msgstr "%1+"
 
 #: discover/qml/ApplicationPageFullComponent.qml:388
-#, fuzzy, kde-format
-#| msgid "See details"
+#, kde-format
 msgctxt "@action:button See content rating details"
 msgid "See details"
 msgstr "檢視詳細資料"
@@ -645,7 +633,7 @@ msgstr "檢視詳細資料"
 #, kde-format
 msgctxt "@action:button"
 msgid "Scroll to top"
-msgstr ""
+msgstr "捲動至頂端"
 
 #: discover/qml/ApplicationsListPage.qml:54
 #, kde-format
@@ -927,14 +915,14 @@ msgstr "回報此問題給 %1"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
-msgstr ""
+msgstr "Discover 已離線"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
 msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
-msgstr ""
+msgstr "請連線到網路來安裝應用程式或更新系統。"
 
 #: discover/qml/DiscoverWindow.qml:365
 #, kde-format
@@ -1014,7 +1002,7 @@ msgstr "設定更新…"
 msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
-msgstr ""
+msgstr "您可以分享匿名使用資訊給 KDE 來幫助我們改善 Discover。"
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1405,11 +1393,10 @@ msgid "Show contents"
 msgstr "顯示內容"
 
 #: discover/qml/SourcesPage.qml:305
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "找不到資源：%1"
+msgstr "啟用此來源"
 
 #: discover/qml/SourcesPage.qml:326
 #, kde-format
@@ -1471,12 +1458,10 @@ msgid "Update All"
 msgstr "更新全部"
 
 #: discover/qml/UpdatesPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Updates will be installed after the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
-msgstr "更新將在系統重新啟動後安裝"
+msgstr "目前有待處理的更新，將在系統重新啟動時安裝"
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format
