@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-07 00:46+0000\n"
+"POT-Creation-Date: 2026-05-13 00:47+0000\n"
 "PO-Revision-Date: 2026-03-05 20:28+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: discover/DiscoverObject.cpp:197
+#: discover/DiscoverObject.cpp:198
 #, fuzzy, kde-format
 #| msgctxt "@title %1 is the distro name"
 #| msgid ""
@@ -31,7 +31,7 @@ msgstr ""
 "%1 er ikkje sett opp for installering av program via Discover, berre for "
 "programtillegg"
 
-#: discover/DiscoverObject.cpp:199
+#: discover/DiscoverObject.cpp:200
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info:usagetip %1 is the distro name"
 #| msgid ""
@@ -48,7 +48,7 @@ msgstr ""
 "pakkemotor via <interface>Innstillingar</interface>-sida (under "
 "<interface>Manglande pakkemotorar</interface>)."
 
-#: discover/DiscoverObject.cpp:206
+#: discover/DiscoverObject.cpp:207
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -65,7 +65,7 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1-pakkar for "
 "Discover</link>"
 
-#: discover/DiscoverObject.cpp:216
+#: discover/DiscoverObject.cpp:217
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -83,18 +83,18 @@ msgstr ""
 "vedlikehaldarane tilrår å bruka kommando­linje­programmet <command>pacman</"
 "command> for å handsama pakkar i staden for.</para>"
 
-#: discover/DiscoverObject.cpp:305
+#: discover/DiscoverObject.cpp:306
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Fann ikkje kategorien «%1»"
 
 # skip-rule: eksistera
-#: discover/DiscoverObject.cpp:327
+#: discover/DiscoverObject.cpp:328
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Prøver å opna den ikkje-eksisterande fila «%1»"
 
-#: discover/DiscoverObject.cpp:349
+#: discover/DiscoverObject.cpp:350
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -103,17 +103,17 @@ msgstr ""
 "Kan ikkje bruka Flatpak-ressursar med mindre Flatpak-motoren %1 er "
 "tilgjengeleg. Installer han først."
 
-#: discover/DiscoverObject.cpp:353
+#: discover/DiscoverObject.cpp:354
 #, kde-format
 msgid "Could not open %1"
 msgstr "Klarte ikkje opna %1"
 
-#: discover/DiscoverObject.cpp:418
+#: discover/DiscoverObject.cpp:419
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Kontroller at Snap-støtte er installert"
 
-#: discover/DiscoverObject.cpp:421
+#: discover/DiscoverObject.cpp:422
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not open %1 because it was not found in any available software "
@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Klarte ikkje opna %1, då programmet ikkje finst i nokon av pakkebrønnane."
 
-#: discover/DiscoverObject.cpp:424
+#: discover/DiscoverObject.cpp:425
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an additional error reference and %3 is the name of the "
@@ -135,13 +135,13 @@ msgid ""
 msgstr ""
 
 # Namnet på programmet, som eg til slutt har funne ut at ikkje bør omsetjast. – KOH
-#: discover/DiscoverObject.cpp:508 discover/DiscoverObject.cpp:510
+#: discover/DiscoverObject.cpp:509 discover/DiscoverObject.cpp:511
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:511
+#: discover/DiscoverObject.cpp:512
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
@@ -657,95 +657,101 @@ msgctxt "@action:button"
 msgid "Scroll to top"
 msgstr ""
 
-#: discover/qml/ApplicationsListPage.qml:54
+#: discover/qml/ApplicationsListPage.qml:57
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
 msgstr[0] "Søk: %2 – %3 element"
 msgstr[1] "Søk: %2 – %3 element"
 
-#: discover/qml/ApplicationsListPage.qml:56
+#: discover/qml/ApplicationsListPage.qml:59
 #, kde-format
 msgid "Search: %1"
 msgstr "Søk: %1"
 
-#: discover/qml/ApplicationsListPage.qml:60
+#: discover/qml/ApplicationsListPage.qml:63
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
 msgstr[0] "%2 – %1 element"
 msgstr[1] "%2 – %1 element"
 
-#: discover/qml/ApplicationsListPage.qml:66
+#: discover/qml/ApplicationsListPage.qml:69
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
 msgstr[0] "Søk – %1 element"
 msgstr[1] "Søk – %1 element"
 
-#: discover/qml/ApplicationsListPage.qml:68
-#: discover/qml/ApplicationsListPage.qml:272
+#: discover/qml/ApplicationsListPage.qml:71
+#: discover/qml/ApplicationsListPage.qml:302
 #, kde-format
 msgid "Search"
 msgstr "Søk"
 
-#: discover/qml/ApplicationsListPage.qml:99 discover/qml/ReviewsPage.qml:141
+#: discover/qml/ApplicationsListPage.qml:102 discover/qml/ReviewsPage.qml:141
 #, kde-format
 msgid "Sort: %1"
 msgstr "Sortering: %1"
 
-#: discover/qml/ApplicationsListPage.qml:104
+#: discover/qml/ApplicationsListPage.qml:107
 #, kde-format
 msgctxt "Search results most relevant to the search query"
 msgid "Relevance"
 msgstr "Relevans"
 
-#: discover/qml/ApplicationsListPage.qml:115
+#: discover/qml/ApplicationsListPage.qml:118
 #, kde-format
 msgid "Name"
 msgstr "Namn"
 
-#: discover/qml/ApplicationsListPage.qml:126
+#: discover/qml/ApplicationsListPage.qml:129
 #, fuzzy, kde-format
 #| msgid "Submit review"
 msgid "Number of reviews"
 msgstr "Send inn vurdering"
 
-#: discover/qml/ApplicationsListPage.qml:137
+#: discover/qml/ApplicationsListPage.qml:140
 #, fuzzy, kde-format
 #| msgid "Rating"
 msgctxt "@item:inmenu sort by highest-rated apps"
 msgid "Rating"
 msgstr "Karakter"
 
-#: discover/qml/ApplicationsListPage.qml:148
+#: discover/qml/ApplicationsListPage.qml:151
 #, kde-format
 msgid "Size"
 msgstr "Storleik"
 
-#: discover/qml/ApplicationsListPage.qml:159
+#: discover/qml/ApplicationsListPage.qml:162
 #, kde-format
 msgid "Release date"
 msgstr "Utgjevingsdato"
 
-#: discover/qml/ApplicationsListPage.qml:218
+#: discover/qml/ApplicationsListPage.qml:178
+#, kde-format
+msgctxt "@info"
+msgid "Group by Type"
+msgstr ""
+
+#: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
 msgid "Nothing found"
 msgstr "Fann ingenting"
 
-#: discover/qml/ApplicationsListPage.qml:226
+#: discover/qml/ApplicationsListPage.qml:256
 #, kde-format
 msgctxt "@action:button"
 msgid "Search in All Categories"
 msgstr "Søk i alle kategoriane"
 
-#: discover/qml/ApplicationsListPage.qml:236
+#: discover/qml/ApplicationsListPage.qml:266
 #, kde-format
 msgctxt "@action:button %1 is the name of an application"
 msgid "Search the Web for \"%1\""
 msgstr "Søk på nettet etter «%1»"
 
-#: discover/qml/ApplicationsListPage.qml:251
+#: discover/qml/ApplicationsListPage.qml:281
 #, kde-format
 msgctxt ""
 "@info:placeholder %1 is the name of an application; %2 is the name of a "
@@ -753,13 +759,13 @@ msgctxt ""
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "Fann ikkje «%1» i kategorien «%2»"
 
-#: discover/qml/ApplicationsListPage.qml:253
+#: discover/qml/ApplicationsListPage.qml:283
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid "\"%1\" was not found in the available sources"
 msgstr "Fann ikkje «%1» i dei tilgjengelege kjeldene"
 
-#: discover/qml/ApplicationsListPage.qml:254
+#: discover/qml/ApplicationsListPage.qml:284
 #, kde-format
 msgctxt "@info:placeholder %1 is the name of an application"
 msgid ""
@@ -771,7 +777,7 @@ msgstr ""
 "stabiliteten på eller funksjonane til program som vert lasta ned frå nettet. "
 "Ver derfor varsam."
 
-#: discover/qml/ApplicationsListPage.qml:287
+#: discover/qml/ApplicationsListPage.qml:317
 #, kde-format
 msgid "Still looking…"
 msgstr "Leitar framleis …"
