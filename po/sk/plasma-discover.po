@@ -744,7 +744,7 @@ msgstr "Dátum vydania"
 #, kde-format
 msgctxt "@info"
 msgid "Group by Type"
-msgstr ""
+msgstr "Zoskupiť podľa typu"
 
 #: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
