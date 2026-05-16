@@ -2648,25 +2648,25 @@ msgstr "正在刷新 %1"
 #, kde-format
 msgctxt "@label"
 msgid "Applications"
-msgstr ""
+msgstr "应用程序"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:563
 #, kde-format
 msgctxt "@label"
 msgid "Addons"
-msgstr ""
+msgstr "附加组件"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:565
 #, kde-format
 msgctxt "@label"
 msgid "Application Support"
-msgstr ""
+msgstr "应用程序支持"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:567
 #, kde-format
 msgctxt "@label"
 msgid "System"
-msgstr ""
+msgstr "系统"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:807
 #, kde-format

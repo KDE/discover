@@ -704,7 +704,7 @@ msgstr "发布日期"
 #, kde-format
 msgctxt "@info"
 msgid "Group by Type"
-msgstr ""
+msgstr "按类型分组"
 
 #: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
