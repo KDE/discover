@@ -7,6 +7,7 @@ import org.kde.discover as Discover
 import org.kde.kcmutils as KCMUtils
 import org.kde.kirigami as Kirigami
 import org.kde.kirigami.delegates as KD
+import org.kde.kitemmodels as KItemModels
 
 DiscoverPage {
     id: page
@@ -54,7 +55,12 @@ DiscoverPage {
 
     ListView {
         id: sourcesView
-        model: Discover.SourcesModel
+        model: KItemModels.KSortFilterProxyModel {
+            sourceModel: Discover.SourcesModel
+            filterString: page.search
+            filterCaseSensitivity: Qt.CaseInsensitive
+        }
+
         Component.onCompleted: Qt.callLater(Discover.SourcesModel.showingNow)
         currentIndex: -1
         pixelAligned: true
@@ -237,8 +243,6 @@ DiscoverPage {
             enabled: model.display.length > 0 && model.enabled
             highlighted: ListView.isCurrentItem
             supportsMouseEvents: false
-            visible: model.display.indexOf(page.search) >= 0
-            height: visible ? implicitHeight : 0
 
             Keys.onReturnPressed: enabledBox.clicked()
             Keys.onSpacePressed: enabledBox.clicked()
