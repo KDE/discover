@@ -26,6 +26,8 @@
 #include <KDesktopFile>
 #include <KFormat>
 #include <KIO/ApplicationLauncherJob>
+#include <KIO/CopyJob> // for KIO::trash
+#include <KIO/JobUiDelegate>
 #include <KLocalizedString>
 
 #include <AppStreamQt/release.h>
@@ -1070,10 +1072,16 @@ void FlatpakResource::clearUserData()
         return;
     }
 
-    if (!QDir(location).removeRecursively()) {
-        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to remove location" << location;
-    }
-    Q_EMIT hasDataChanged();
+    auto *trashJob = KIO::trash(QUrl::fromLocalFile(location));
+    connect(trashJob, &KJob::result, this, [this, location](KJob *job) {
+        if (job->error()) {
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to trash" << location;
+        } else {
+            Q_EMIT hasDataChanged();
+        }
+    });
+    trashJob->uiDelegate()->setAutoErrorHandlingEnabled(true);
+    trashJob->start();
 }
 
 int FlatpakResource::versionCompare(FlatpakResource *resource) const
