@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-13 00:47+0000\n"
-"PO-Revision-Date: 2026-04-13 13:23+0100\n"
+"PO-Revision-Date: 2026-05-17 13:57+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -583,16 +583,13 @@ msgstr "Informații despre licență"
 
 #: discover/qml/ApplicationPageFullComponent.qml:114
 #: discover/qml/ApplicationPageStickyComponent.qml:46
-#, fuzzy, kde-format
-#| msgid "Unknown author"
+#, kde-format
 msgctxt "As in 'this app is made by an unknown author'"
 msgid "Unknown author"
 msgstr "Autor necunoscut"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "%1 rating"
-#| msgid_plural "%1 ratings"
+#, kde-format
 msgctxt "@info as in the number of ratings an application has"
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -601,15 +598,13 @@ msgstr[1] "%1 evaluări"
 msgstr[2] "%1 de evaluări"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgctxt "@info"
 msgid "No ratings yet"
 msgstr "Nicio evaluare deocamdată"
 
 #: discover/qml/ApplicationPageFullComponent.qml:196
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgctxt "@info"
 msgid "Version:"
 msgstr "Versiune:"
@@ -620,9 +615,7 @@ msgid "Size:"
 msgstr "Dimensiune:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:239
-#, fuzzy, kde-format
-#| msgid "License:"
-#| msgid_plural "Licenses:"
+#, kde-format
 msgctxt "@info"
 msgid "License:"
 msgid_plural "Licenses:"
@@ -644,17 +637,13 @@ msgid "What does this mean?"
 msgstr "Ce înseamnă aceasta?"
 
 #: discover/qml/ApplicationPageFullComponent.qml:345
-#, fuzzy, kde-format
-#| msgid "All Licenses"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "All licenses…"
-msgstr "Toate licențele"
+msgstr "Toate licențele…"
 
 #: discover/qml/ApplicationPageFullComponent.qml:358
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#, kde-format
 msgctxt "@info The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "Vârste:"
@@ -672,8 +661,7 @@ msgid "%1+"
 msgstr "%1+"
 
 #: discover/qml/ApplicationPageFullComponent.qml:388
-#, fuzzy, kde-format
-#| msgid "See details"
+#, kde-format
 msgctxt "@action:button See content rating details"
 msgid "See details"
 msgstr "Vezi detalii"
@@ -682,7 +670,7 @@ msgstr "Vezi detalii"
 #, kde-format
 msgctxt "@action:button"
 msgid "Scroll to top"
-msgstr ""
+msgstr "Derulează la început"
 
 #: discover/qml/ApplicationsListPage.qml:57
 #, kde-format
@@ -760,7 +748,7 @@ msgstr "Data lansării"
 #, kde-format
 msgctxt "@info"
 msgid "Group by Type"
-msgstr ""
+msgstr "Grupează după tip"
 
 #: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
@@ -977,7 +965,7 @@ msgstr "Raportați această problemă la %1"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
-msgstr ""
+msgstr "Discover nu are conexiune"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
@@ -985,6 +973,7 @@ msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
 msgstr ""
+"Conectați-vă la o rețea pentru a instala aplicații și a actualiza sistemul."
 
 #: discover/qml/DiscoverWindow.qml:365
 #, kde-format
@@ -1068,6 +1057,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"Puteți ajuta KDE să îmbunătățească Discover partajând informații anonime "
+"despre cum îl folosiți."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1463,11 +1454,10 @@ msgid "Show contents"
 msgstr "Arată conținutul"
 
 #: discover/qml/SourcesPage.qml:305
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "Nu s-a putut găsi resursa: %1"
+msgstr "Activează această sursă"
 
 #: discover/qml/SourcesPage.qml:326
 #, kde-format
@@ -1531,12 +1521,10 @@ msgid "Update All"
 msgstr "Actualizează tot"
 
 #: discover/qml/UpdatesPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Updates will be installed after the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
-msgstr "Actualizările vor fi instalate după repornirea sistemului"
+msgstr "O actualizare în așteptare va fi instalată la repornirea sistemului."
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format
