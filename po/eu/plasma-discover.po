@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-13 00:47+0000\n"
-"PO-Revision-Date: 2026-04-19 14:57+0200\n"
+"PO-Revision-Date: 2026-05-17 12:39+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #: discover/DiscoverObject.cpp:198
 #, kde-format
@@ -579,32 +579,27 @@ msgstr "Lizentziaren informazioa"
 
 #: discover/qml/ApplicationPageFullComponent.qml:114
 #: discover/qml/ApplicationPageStickyComponent.qml:46
-#, fuzzy, kde-format
-#| msgid "Unknown author"
+#, kde-format
 msgctxt "As in 'this app is made by an unknown author'"
 msgid "Unknown author"
 msgstr "Egile ezezaguna"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "%1 rating"
-#| msgid_plural "%1 ratings"
+#, kde-format
 msgctxt "@info as in the number of ratings an application has"
 msgid "%1 rating"
 msgid_plural "%1 ratings"
-msgstr[0] "%1 balorazioa"
-msgstr[1] "%1 balorazioa"
+msgstr[0] "balorazio %1"
+msgstr[1] "%1 balorazio"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgctxt "@info"
 msgid "No ratings yet"
 msgstr "Oraindik baloraziorik ez"
 
 #: discover/qml/ApplicationPageFullComponent.qml:196
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgctxt "@info"
 msgid "Version:"
 msgstr "Bertsioa:"
@@ -615,9 +610,7 @@ msgid "Size:"
 msgstr "Neurria:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:239
-#, fuzzy, kde-format
-#| msgid "License:"
-#| msgid_plural "Licenses:"
+#, kde-format
 msgctxt "@info"
 msgid "License:"
 msgid_plural "Licenses:"
@@ -638,17 +631,13 @@ msgid "What does this mean?"
 msgstr "Horrek zer esan nahi du?"
 
 #: discover/qml/ApplicationPageFullComponent.qml:345
-#, fuzzy, kde-format
-#| msgid "All Licenses"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "All licenses…"
-msgstr "Lizentzia guztiak"
+msgstr "Lizentzia guztiak…"
 
 #: discover/qml/ApplicationPageFullComponent.qml:358
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#, kde-format
 msgctxt "@info The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "Adina:"
@@ -657,7 +646,7 @@ msgstr "Adina:"
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
-msgstr "Edonor"
+msgstr "Guztientzat"
 
 #: discover/qml/ApplicationPageFullComponent.qml:379
 #, kde-format
@@ -666,17 +655,16 @@ msgid "%1+"
 msgstr "%1+"
 
 #: discover/qml/ApplicationPageFullComponent.qml:388
-#, fuzzy, kde-format
-#| msgid "See details"
+#, kde-format
 msgctxt "@action:button See content rating details"
 msgid "See details"
-msgstr "Ikusi xehetasunak…"
+msgstr "Ikusi xehetasunak"
 
 #: discover/qml/ApplicationPageStickyComponent.qml:60
 #, kde-format
 msgctxt "@action:button"
 msgid "Scroll to top"
-msgstr ""
+msgstr "Kiribildu goraino"
 
 #: discover/qml/ApplicationsListPage.qml:57
 #, kde-format
@@ -751,7 +739,7 @@ msgstr "Kaleratze data"
 #, kde-format
 msgctxt "@info"
 msgid "Group by Type"
-msgstr ""
+msgstr "Taldekatu motaren arabera"
 
 #: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
@@ -969,7 +957,7 @@ msgstr "Eman arazo honen berri %1(e)ri"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
-msgstr ""
+msgstr "Discover lerroz kanpo dago"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
@@ -977,6 +965,8 @@ msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
 msgstr ""
+"Mesedez, konektatu sare batera aplikazioak instalatzeko eta sistema "
+"eguneratzeko."
 
 #: discover/qml/DiscoverWindow.qml:365
 #, kde-format
@@ -1060,6 +1050,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"KDEri Discover hobetzen lagun diezaiokezu haren erabilerari buruzko "
+"informazio anonimoa partekatuz."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1458,11 +1450,10 @@ msgid "Show contents"
 msgstr "Erakutsi edukia"
 
 #: discover/qml/SourcesPage.qml:305
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "Ezin da aurkitu baliabidea: %1"
+msgstr "Gaitu sorburu hau"
 
 #: discover/qml/SourcesPage.qml:326
 #, kde-format
@@ -1525,12 +1516,10 @@ msgid "Update All"
 msgstr "Dena eguneratu"
 
 #: discover/qml/UpdatesPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Updates will be installed after the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
-msgstr "Eguneratzeak sistema berrabiatu ondoren instalatuko dira"
+msgstr "Egiteko dagoen eguneratze bat sistema berrabiaraztean instalatuko da."
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format
