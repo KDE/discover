@@ -194,6 +194,7 @@ Kirigami.Padding {
                 id: appVersionLabel
                 Layout.alignment: Qt.AlignRight | Qt.AlignTop
                 text: i18nc("@info", "Version:")
+                visible: fullComponent.application.versionString.length > 0
             }
 
             QQC2.Label {
@@ -203,6 +204,7 @@ Kirigami.Padding {
                 maximumLineCount: 2
                 elide: Text.ElideRight
                 text: fullComponent.application.versionString
+                visible: fullComponent.application.versionString.length > 0
             }
 
             // Size
@@ -210,12 +212,13 @@ Kirigami.Padding {
                 id: appSizeLabel
                 Layout.alignment: Qt.AlignRight | Qt.AlignTop
                 text: i18n("Size:")
+                visible: fullComponent.application.sizeDescription.length > 0
             }
 
             QQC2.BusyIndicator {
                 implicitWidth: Kirigami.Units.iconSizes.sizeForLabels
                 implicitHeight: Kirigami.Units.iconSizes.sizeForLabels
-                visible: !appSize.visible
+                visible: !appSize.visible && fullComponent.application.sizeDescription.length > 0
                 running: visible
             }
 
@@ -227,7 +230,7 @@ Kirigami.Padding {
                 wrapMode: Text.Wrap
                 maximumLineCount: 2
                 elide: Text.ElideRight
-                visible: fullComponent.application.size != 0
+                visible: fullComponent.application.size != 0 && fullComponent.application.sizeDescription.length > 0
 
                 text: fullComponent.application.sizeDescription
             }

@@ -291,6 +291,9 @@ QVariant FlatpakResource::icon() const
 
 QString FlatpakResource::installedVersion() const
 {
+    if (resourceType() == FlatpakResource::Source) {
+        return {};
+    }
     g_autoptr(FlatpakInstalledRef) ref = backend()->getInstalledRefForApp(this);
     if (ref) {
         const char *appdataVersion = flatpak_installed_ref_get_appdata_version(ref);
@@ -467,6 +470,10 @@ quint64 FlatpakResource::size()
 
 QString FlatpakResource::sizeDescription()
 {
+    if (resourceType() == FlatpakResource::Source) {
+        setInstalledSize(1);
+        return {};
+    }
     if (propertyState(InstalledSize) == NotKnownYet || propertyState(InstalledSize) == Fetching) {
         backend()->updateAppSize(this);
         return QStringLiteral("🗘");
