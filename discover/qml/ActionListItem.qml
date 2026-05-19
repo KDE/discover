@@ -23,6 +23,8 @@ QQC2.ItemDelegate {
     Keys.onEnterPressed: trigger()
     Keys.onReturnPressed: trigger()
 
+    Accessible.onPressAction: trigger()
+
     function trigger() {
         if (enabled) {
             if (typeof drawer !== "undefined") {
