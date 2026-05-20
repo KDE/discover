@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-13 00:47+0000\n"
+"POT-Creation-Date: 2026-05-20 00:46+0000\n"
 "PO-Revision-Date: 2026-04-26 23:04+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -278,7 +278,7 @@ msgstr "추가"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:286
 #: discover/qml/InstallApplicationButton.qml:51
-#: discover/qml/ProgressView.qml:152 discover/qml/SourcesPage.qml:201
+#: discover/qml/ProgressView.qml:155 discover/qml/SourcesPage.qml:207
 #: discover/qml/UpdatesPage.qml:316 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -919,7 +919,7 @@ msgstr "오류"
 msgid "Unable to find resource: %1"
 msgstr "리소스를 찾을 수 없음: %1"
 
-#: discover/qml/DiscoverWindow.qml:273 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:273 discover/qml/SourcesPage.qml:201
 #, kde-format
 msgid "Proceed"
 msgstr "진행"
@@ -1011,7 +1011,7 @@ msgstr "설정"
 msgid "Configure Feedback…"
 msgstr "피드백 설정…"
 
-#: discover/qml/Feedback.qml:31 discover/qml/SourcesPage.qml:22
+#: discover/qml/Feedback.qml:31 discover/qml/SourcesPage.qml:23
 #, kde-format
 msgid "Configure Updates…"
 msgstr "업데이트 설정…"
@@ -1071,29 +1071,29 @@ msgstr "설치됨"
 msgid "Resources for '%1'"
 msgstr "'%1'의 리소스"
 
-#: discover/qml/ProgressView.qml:20
+#: discover/qml/ProgressView.qml:21
 #, kde-format
 msgid "Tasks (%1%)"
 msgstr "작업(%1%)"
 
-#: discover/qml/ProgressView.qml:20 discover/qml/ProgressView.qml:49
+#: discover/qml/ProgressView.qml:22 discover/qml/ProgressView.qml:52
 #, kde-format
 msgid "Tasks"
 msgstr "작업"
 
-#: discover/qml/ProgressView.qml:126
+#: discover/qml/ProgressView.qml:129
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3, %4 남음"
 
-#: discover/qml/ProgressView.qml:134
+#: discover/qml/ProgressView.qml:137
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:141
+#: discover/qml/ProgressView.qml:144
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
@@ -1363,64 +1363,64 @@ msgstr "검색…"
 msgid "Search in '%1'…"
 msgstr "'%1'에서 검색…"
 
-#: discover/qml/SourcesPage.qml:18
+#: discover/qml/SourcesPage.qml:19
 #, kde-format
 msgid "Settings"
 msgstr "설정"
 
-#: discover/qml/SourcesPage.qml:110
+#: discover/qml/SourcesPage.qml:116
 #, kde-format
 msgid "Default Source"
 msgstr "기본 원본"
 
-#: discover/qml/SourcesPage.qml:118
+#: discover/qml/SourcesPage.qml:124
 #, kde-format
 msgid "Add Source…"
 msgstr "원본 추가…"
 
-#: discover/qml/SourcesPage.qml:145
+#: discover/qml/SourcesPage.qml:151
 #, kde-format
 msgid "Make Default"
 msgstr "기본값으로 설정"
 
-#: discover/qml/SourcesPage.qml:248
+#: discover/qml/SourcesPage.qml:252
 #, kde-format
 msgid "Increase priority"
 msgstr "우선 순위 증가"
 
-#: discover/qml/SourcesPage.qml:254
+#: discover/qml/SourcesPage.qml:258
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "'%1' 선호도를 증가시킬 수 없음"
 
-#: discover/qml/SourcesPage.qml:260
+#: discover/qml/SourcesPage.qml:264
 #, kde-format
 msgid "Decrease priority"
 msgstr "우선 순위 감소"
 
-#: discover/qml/SourcesPage.qml:266
+#: discover/qml/SourcesPage.qml:270
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "'%1' 선호도를 감소시킬 수 없음"
 
-#: discover/qml/SourcesPage.qml:272
+#: discover/qml/SourcesPage.qml:276
 #, kde-format
 msgid "Remove repository"
 msgstr "저장소 삭제"
 
-#: discover/qml/SourcesPage.qml:283
+#: discover/qml/SourcesPage.qml:287
 #, kde-format
 msgid "Show contents"
 msgstr "내용 보기"
 
-#: discover/qml/SourcesPage.qml:305
+#: discover/qml/SourcesPage.qml:309
 #, fuzzy, kde-format
 #| msgid "Unable to find resource: %1"
 msgctxt "@info:tooltip"
 msgid "Enable this source"
 msgstr "리소스를 찾을 수 없음: %1"
 
-#: discover/qml/SourcesPage.qml:326
+#: discover/qml/SourcesPage.qml:330
 #, kde-format
 msgid "Missing Backends"
 msgstr "사용할 수 없는 백엔드"

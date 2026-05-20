@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-13 00:47+0000\n"
+"POT-Creation-Date: 2026-05-20 00:46+0000\n"
 "PO-Revision-Date: 2015-02-04 16:18+0000\n"
 "Last-Translator: Nermina Ahmić <nahmic1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -269,7 +269,7 @@ msgstr "Dodaci"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:286
 #: discover/qml/InstallApplicationButton.qml:51
-#: discover/qml/ProgressView.qml:152 discover/qml/SourcesPage.qml:201
+#: discover/qml/ProgressView.qml:155 discover/qml/SourcesPage.qml:207
 #: discover/qml/UpdatesPage.qml:316 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -903,7 +903,7 @@ msgstr ""
 msgid "Unable to find resource: %1"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:273 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:273 discover/qml/SourcesPage.qml:201
 #, kde-format
 msgid "Proceed"
 msgstr ""
@@ -995,7 +995,7 @@ msgstr ""
 msgid "Configure Feedback…"
 msgstr "Ažuriraj"
 
-#: discover/qml/Feedback.qml:31 discover/qml/SourcesPage.qml:22
+#: discover/qml/Feedback.qml:31 discover/qml/SourcesPage.qml:23
 #, fuzzy, kde-format
 #| msgid "Update"
 msgid "Configure Updates…"
@@ -1059,30 +1059,30 @@ msgstr "Instalirano"
 msgid "Resources for '%1'"
 msgstr ""
 
-#: discover/qml/ProgressView.qml:20
+#: discover/qml/ProgressView.qml:21
 #, fuzzy, kde-format
 #| msgid "Update"
 msgid "Tasks (%1%)"
 msgstr "Ažuriraj"
 
-#: discover/qml/ProgressView.qml:20 discover/qml/ProgressView.qml:49
+#: discover/qml/ProgressView.qml:22 discover/qml/ProgressView.qml:52
 #, kde-format
 msgid "Tasks"
 msgstr ""
 
-#: discover/qml/ProgressView.qml:126
+#: discover/qml/ProgressView.qml:129
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr ""
 
-#: discover/qml/ProgressView.qml:134
+#: discover/qml/ProgressView.qml:137
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr ""
 
-#: discover/qml/ProgressView.qml:141
+#: discover/qml/ProgressView.qml:144
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
@@ -1353,66 +1353,66 @@ msgstr "Traži..."
 msgid "Search in '%1'…"
 msgstr "Tražim u  '%1'..."
 
-#: discover/qml/SourcesPage.qml:18
+#: discover/qml/SourcesPage.qml:19
 #, fuzzy, kde-format
 #| msgid "Best Ratings"
 msgid "Settings"
 msgstr "Najbolji plasmani"
 
-#: discover/qml/SourcesPage.qml:110
+#: discover/qml/SourcesPage.qml:116
 #, fuzzy, kde-format
 #| msgid "Sources"
 msgid "Default Source"
 msgstr "Izvori"
 
-#: discover/qml/SourcesPage.qml:118
+#: discover/qml/SourcesPage.qml:124
 #, fuzzy, kde-format
 #| msgid "Add Source"
 msgid "Add Source…"
 msgstr "Dodaj izvor"
 
-#: discover/qml/SourcesPage.qml:145
+#: discover/qml/SourcesPage.qml:151
 #, kde-format
 msgid "Make Default"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:248
+#: discover/qml/SourcesPage.qml:252
 #, kde-format
 msgid "Increase priority"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:254
+#: discover/qml/SourcesPage.qml:258
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:260
+#: discover/qml/SourcesPage.qml:264
 #, kde-format
 msgid "Decrease priority"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:266
+#: discover/qml/SourcesPage.qml:270
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:272
+#: discover/qml/SourcesPage.qml:276
 #, kde-format
 msgid "Remove repository"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:283
+#: discover/qml/SourcesPage.qml:287
 #, kde-format
 msgid "Show contents"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:305
+#: discover/qml/SourcesPage.qml:309
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:326
+#: discover/qml/SourcesPage.qml:330
 #, kde-format
 msgid "Missing Backends"
 msgstr ""

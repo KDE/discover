@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-13 00:47+0000\n"
+"POT-Creation-Date: 2026-05-20 00:46+0000\n"
 "PO-Revision-Date: 2026-04-15 13:22-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -600,7 +600,7 @@ msgstr "ھېچقانداق Flatpak مەنبەسى يوق."
 msgid "Failed to load \"%1\" source"
 msgstr "«%1» مەنبەنى يۈكلىيەلمىدى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:378
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:380
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -612,73 +612,73 @@ msgstr ""
 "پىروگرامما ئورنىتىلغاندىن كېيىن، شۇ خەزىنەدىكى باشقا يۇمشاق دېتاللارنىمۇ "
 "Discover دا ئىشلەتكىلى بولىدۇ.</para>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:472
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:474
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:419
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "يوچۇن"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:528
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:530
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:467
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start '%1': %2"
 msgstr "«%1» نى قوزغىتالمىدى: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:769
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:771
 #, kde-format
 msgid "All Files"
 msgstr "بارلىق ھۆججەت"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:771
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:773
 #, kde-format
 msgid "Home"
 msgstr "باش بەت"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:773
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:775
 #, kde-format
 msgid "Downloads"
 msgstr "چۈشۈرۈلمە"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:775
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:777
 #, kde-format
 msgid "Music"
 msgstr "نەغمە"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:853
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:855
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:871
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:873
 #, kde-format
 msgid "Network Access"
 msgstr "تور زىيارەت ئىجازىتى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:872
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:874
 #, kde-format
 msgid "Can access the internet"
 msgstr "ئىنتېرنېتنى زىيارەت قىلالايدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:881
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:883
 #, kde-format
 msgid "Sound system access"
 msgstr "ئاۋاز سىستېما زىيارەت ئىجازىتى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:882
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:884
 #, kde-format
 msgid "Can play and record audio"
 msgstr "ئۈن ياڭرىتىپ ۋە خاتىرىلىيەلەيدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1030
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:888
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1032
 #, kde-format
 msgid "Session Bus Access"
 msgstr "جەريانچاق باش لىنىيەسى زىيارەت ئىجازىتى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:887
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:889
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
@@ -687,53 +687,53 @@ msgstr ""
 "بۇ ھېسابتا ئىجرا قىلىنىدىغان بارلىق باشقا پىروگرامما ۋە جەريان بىلەن ئالاقە "
 "قىلالايدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:892
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1042
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:894
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1044
 #, kde-format
 msgid "System Bus Access"
 msgstr "سىستېما باش لىنىيەسى زىيارەت ئىجازىتى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:893
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr "سىستېمىدىكى بارلىق باشقا پىروگرامما ۋە جەريان بىلەن ئالاقە قىلالايدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:900
 #, kde-format
 msgid "Remote Login Access"
 msgstr "يىراقتىن تىزىمغا كىرىش زىيارەت ئىجازىتى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:899
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "SSH كېلىشىمى ئارقىلىق يىراقتىن تىزىمغا كىرىش ئىلتىماسىنى قوزغىتالايدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:903
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:905
 #, kde-format
 msgid "Smart Card Access"
 msgstr "ئىدراكلىق كارتا زىيارەت ئىجازىتى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:904
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:906
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "ئىدراكلىق كارتىنى توپلاشتۇرۇپ ۋە ئالاقە قىلالايدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:908
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "Printer Access"
 msgstr "باسقۇ زىيارىتى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:909
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:911
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "باسقۇنى توپلاشتۇرۇپ ۋە ئالاقە قىلالايدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:913
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:915
 #, kde-format
 msgid "GPG Agent"
 msgstr "GPG ۋاكالەتچىسى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:916
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -742,74 +742,74 @@ msgstr ""
 "GPG شىفىرلاش مۇلازىمىتىنى زىيارەت قىلىشقا يول قويىدۇ، ئادەتتە ئىمزا قويۇش ۋە "
 "ئىمزالىق پۈتۈكنى ئوقۇشقا ئىشلىتىلىدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:920
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "كۆكچىش زىيارىتى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:921
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:923
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "كۆكچىش ئۈسكۈنىسىنى توپلاشتۇرۇپ ۋە ئالاقە قىلالايدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:925
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:927
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "تۆۋەن دەرىجىلىك سىستېما زىيارىتى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:926
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:928
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "تۆۋەن دەرىجىلىك سىستېما چاقىرىشنى ئىجرا قىلالايدۇ (مەسىلەن، ptrace)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:932
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:934
 #, kde-format
 msgid "Device Access"
 msgstr "ئۈسكۈنە زىيارىتى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
 "ئىچكى ياكى باغلانغان سىرتقى ئۈسكۈنىلەر بىلەن ئالاقە قىلىپ ۋە ئۇلارنى "
 "تىزگىنلىيەلەيدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:937
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:939
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "يادرو ئاساسىدىكى مەۋھۇم ماشىنا زىيارىتى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:938
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:940
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr ""
 "مەۋھۇم ماشىنىدا مېھمان سالاھىيىتىدە باشقا مەشغۇلات سىستېمىسىنى ئىجرا قىلىشقا "
 "يول قويىدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:977
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:967
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:979
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (ئوقۇشقىلا بولىدۇ)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:968
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:980
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:970
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:982
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (ھۆججەت قۇرالايدۇ)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:989
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:973
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:991
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (ئوقۇش ۋە يېزىش) "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:998
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1000
 #, kde-format
 msgid "Home Folder Access"
 msgstr "باش قىسقۇچ زىيارىتى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1001
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1003
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -818,7 +818,7 @@ msgstr ""
 "تۆۋەندىكى ئورۇندىكى باش قىسقۇچتا ئىجازەت سورىماي ھۆججەتنى ئوقۇپ، يېزىپ ۋە "
 "ھۆججەت قۇرالايدۇ: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1003
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1005
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -827,7 +827,7 @@ msgstr ""
 "تۆۋەندىكى ئورۇندىكى باش قىسقۇچتا ئىجازەت سورىماي ھۆججەتكە ئوقۇپ ۋە "
 "يازالايدۇ: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1005
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1007
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -835,7 +835,7 @@ msgid ""
 msgstr ""
 "تۆۋەندىكى ئورۇندىكى باش قىسقۇچتا ئىجازەت سورىماي ھۆججەتنى ئوقۇيالايدۇ: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1007
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1009
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -844,12 +844,12 @@ msgstr ""
 "تۆۋەندىكى ئورۇندىكى باش قىسقۇچتا ئىجازەت سورىماي ھۆججەتنى زىيارەت قىلالايدۇ: "
 "%1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1013
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1015
 #, kde-format
 msgid "System Folder Access"
 msgstr "سىستېما قىسقۇچ زىيارەت ئىجازىتى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1015
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1017
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -858,7 +858,7 @@ msgstr ""
 "تۆۋەندىكى ئورۇندا ئىجازەت سورىماي سىستېما ھۆججەتنى ئوقۇپ، يېزىپ ۋە "
 "قۇرالايدۇ: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1017
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1019
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -866,14 +866,14 @@ msgid ""
 msgstr ""
 "تۆۋەندىكى ئورۇندا ئىجازەت سورىماي سىستېما ھۆججەتنى ئوقۇپ، يازالايدۇ: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1019
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1021
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
 msgstr "تۆۋەندىكى ئورۇندا ئىجازەت سورىماي سىستېما ھۆججەتنى ئوقۇيالايدۇ: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1021
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1023
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
@@ -881,7 +881,7 @@ msgid ""
 msgstr ""
 "تۆۋەندىكى ئورۇندا ئىجازەت سورىماي سىستېما ھۆججەتنى زىيارەت قىلالايدۇ: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1032
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1034
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -890,7 +890,7 @@ msgstr ""
 "تۆۋەندىكى ئالاقە كېلىشىمى ئارقىلىق باشقا پىروگرامما ۋە جەريان بىلەن ئوخشاش "
 "ئۈستەلئۈستى جەريانچاقتا ئالاقە قىلالايدۇ: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1044
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1046
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
@@ -899,7 +899,7 @@ msgstr ""
 "تۆۋەندىكى ئالاقە كېلىشىمى ئارقىلىق بارلىق پىروگرامما ۋە سىستېما مۇلازىمىتى "
 "بىلەن ئالاقە قىلالايدۇ: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1136
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1144
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
 msgstr "ئەپنى %2 يازغۇچى تارقاتقاندەك %1 دا دەلىللەندى"
@@ -1052,14 +1052,15 @@ msgid "View Stable Version on %1"
 msgstr "%1 دىكى مۇقىم نەشرىنى كۆرسەت"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
-#, kde-format
-msgid "%1 is not installed but it still has data present."
+#, fuzzy, kde-format
+#| msgid "%1 is not installed but it still has data present."
+msgid "%1 is not installed but it still has user data and settings present."
 msgstr "%1 ئورنىتىلمىدى ئەمما سانلىق مەلۇماتى مەۋجۇت."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
-msgid "Delete settings and user data"
-msgstr "تەڭشەك ۋە ئىشلەتكۈچى سانلىق مەلۇماتىنى ئۆچۈر"
+msgid "Move to Trash"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
@@ -2762,55 +2763,55 @@ msgctxt "@label Download rate"
 msgid "%1/s"
 msgstr "%1/s"
 
-#: libdiscover/Transaction/TransactionModel.cpp:77
+#: libdiscover/Transaction/TransactionModel.cpp:78
 #, kde-format
 msgctxt "@info:status"
 msgid "Starting"
 msgstr "باشلاۋاتىدۇ"
 
-#: libdiscover/Transaction/TransactionModel.cpp:79
+#: libdiscover/Transaction/TransactionModel.cpp:80
 #, kde-format
 msgctxt "@info:status"
 msgid "Waiting"
 msgstr "كۈتۈۋاتىدۇ"
 
-#: libdiscover/Transaction/TransactionModel.cpp:81
+#: libdiscover/Transaction/TransactionModel.cpp:82
 #, kde-format
 msgctxt "@info:status"
 msgid "Downloading"
 msgstr "چۈشۈرۈۋاتىدۇ"
 
-#: libdiscover/Transaction/TransactionModel.cpp:85
+#: libdiscover/Transaction/TransactionModel.cpp:86
 #, kde-format
 msgctxt "@info:status"
 msgid "Installing"
 msgstr "ئورنىتىۋاتىدۇ"
 
-#: libdiscover/Transaction/TransactionModel.cpp:87
+#: libdiscover/Transaction/TransactionModel.cpp:88
 #, kde-format
 msgctxt "@info:status"
 msgid "Removing"
 msgstr "چىقىرىۋېتىۋاتىدۇ"
 
-#: libdiscover/Transaction/TransactionModel.cpp:89
+#: libdiscover/Transaction/TransactionModel.cpp:90
 #, kde-format
 msgctxt "@info:status"
 msgid "Changing Addons"
 msgstr "قوشۇلمىنى ئۆزگەرتىۋاتىدۇ"
 
-#: libdiscover/Transaction/TransactionModel.cpp:93
+#: libdiscover/Transaction/TransactionModel.cpp:94
 #, kde-format
 msgctxt "@info:status"
 msgid "Done"
 msgstr "تامام"
 
-#: libdiscover/Transaction/TransactionModel.cpp:95
+#: libdiscover/Transaction/TransactionModel.cpp:96
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
 msgstr "مەغلۇپ بولدى"
 
-#: libdiscover/Transaction/TransactionModel.cpp:97
+#: libdiscover/Transaction/TransactionModel.cpp:98
 #, kde-format
 msgctxt "@info:status"
 msgid "Cancelled"
@@ -2839,6 +2840,9 @@ msgstr "سىستېما يۇمشاق دېتالى"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "قوشۇلما"
+
+#~ msgid "Delete settings and user data"
+#~ msgstr "تەڭشەك ۋە ئىشلەتكۈچى سانلىق مەلۇماتىنى ئۆچۈر"
 
 #~ msgid "Retrieving size information"
 #~ msgstr "چوڭلۇق ئۇچۇرىغا ئېرىشىۋاتىدۇ"

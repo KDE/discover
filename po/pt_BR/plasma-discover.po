@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-13 00:47+0000\n"
+"POT-Creation-Date: 2026-05-20 00:46+0000\n"
 "PO-Revision-Date: 2026-05-17 07:46-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -292,7 +292,7 @@ msgstr "Adicionar"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:286
 #: discover/qml/InstallApplicationButton.qml:51
-#: discover/qml/ProgressView.qml:152 discover/qml/SourcesPage.qml:201
+#: discover/qml/ProgressView.qml:155 discover/qml/SourcesPage.qml:207
 #: discover/qml/UpdatesPage.qml:316 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -947,7 +947,7 @@ msgstr "Erro"
 msgid "Unable to find resource: %1"
 msgstr "Não foi possível encontrar o recurso: %1"
 
-#: discover/qml/DiscoverWindow.qml:273 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:273 discover/qml/SourcesPage.qml:201
 #, kde-format
 msgid "Proceed"
 msgstr "Prosseguir"
@@ -1043,7 +1043,7 @@ msgstr "Configurar"
 msgid "Configure Feedback…"
 msgstr "Configurar sugestões…"
 
-#: discover/qml/Feedback.qml:31 discover/qml/SourcesPage.qml:22
+#: discover/qml/Feedback.qml:31 discover/qml/SourcesPage.qml:23
 #, kde-format
 msgid "Configure Updates…"
 msgstr "Configurar atualizações…"
@@ -1105,29 +1105,29 @@ msgstr "Instalado"
 msgid "Resources for '%1'"
 msgstr "Recursos de '%1'"
 
-#: discover/qml/ProgressView.qml:20
+#: discover/qml/ProgressView.qml:21
 #, kde-format
 msgid "Tasks (%1%)"
 msgstr "Tarefas (%1%)"
 
-#: discover/qml/ProgressView.qml:20 discover/qml/ProgressView.qml:49
+#: discover/qml/ProgressView.qml:22 discover/qml/ProgressView.qml:52
 #, kde-format
 msgid "Tasks"
 msgstr "Tarefas"
 
-#: discover/qml/ProgressView.qml:126
+#: discover/qml/ProgressView.qml:129
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3, %4 restantes"
 
-#: discover/qml/ProgressView.qml:134
+#: discover/qml/ProgressView.qml:137
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:141
+#: discover/qml/ProgressView.qml:144
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
@@ -1401,63 +1401,63 @@ msgstr "Pesquisar…"
 msgid "Search in '%1'…"
 msgstr "Pesquisar em '%1'…"
 
-#: discover/qml/SourcesPage.qml:18
+#: discover/qml/SourcesPage.qml:19
 #, kde-format
 msgid "Settings"
 msgstr "Configurações"
 
-#: discover/qml/SourcesPage.qml:110
+#: discover/qml/SourcesPage.qml:116
 #, kde-format
 msgid "Default Source"
 msgstr "Fonte padrão"
 
-#: discover/qml/SourcesPage.qml:118
+#: discover/qml/SourcesPage.qml:124
 #, kde-format
 msgid "Add Source…"
 msgstr "Adicionar fonte…"
 
-#: discover/qml/SourcesPage.qml:145
+#: discover/qml/SourcesPage.qml:151
 #, kde-format
 msgid "Make Default"
 msgstr "Tornar padrão"
 
-#: discover/qml/SourcesPage.qml:248
+#: discover/qml/SourcesPage.qml:252
 #, kde-format
 msgid "Increase priority"
 msgstr "Aumentar prioridade"
 
-#: discover/qml/SourcesPage.qml:254
+#: discover/qml/SourcesPage.qml:258
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "Falha ao aumentar a preferência de '%1'"
 
-#: discover/qml/SourcesPage.qml:260
+#: discover/qml/SourcesPage.qml:264
 #, kde-format
 msgid "Decrease priority"
 msgstr "Diminuir prioridade"
 
-#: discover/qml/SourcesPage.qml:266
+#: discover/qml/SourcesPage.qml:270
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "Falha ao diminuir a preferência de '%1'"
 
-#: discover/qml/SourcesPage.qml:272
+#: discover/qml/SourcesPage.qml:276
 #, kde-format
 msgid "Remove repository"
 msgstr "Remover repositório"
 
-#: discover/qml/SourcesPage.qml:283
+#: discover/qml/SourcesPage.qml:287
 #, kde-format
 msgid "Show contents"
 msgstr "Mostrar conteúdos"
 
-#: discover/qml/SourcesPage.qml:305
+#: discover/qml/SourcesPage.qml:309
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
 msgstr "Ativar esta fonte"
 
-#: discover/qml/SourcesPage.qml:326
+#: discover/qml/SourcesPage.qml:330
 #, kde-format
 msgid "Missing Backends"
 msgstr "Infraestruturas faltantes"

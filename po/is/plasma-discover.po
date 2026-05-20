@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-13 00:47+0000\n"
+"POT-Creation-Date: 2026-05-20 00:46+0000\n"
 "PO-Revision-Date: 2026-05-06 10:37+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -279,7 +279,7 @@ msgstr "Bæta við"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:286
 #: discover/qml/InstallApplicationButton.qml:51
-#: discover/qml/ProgressView.qml:152 discover/qml/SourcesPage.qml:201
+#: discover/qml/ProgressView.qml:155 discover/qml/SourcesPage.qml:207
 #: discover/qml/UpdatesPage.qml:316 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -936,7 +936,7 @@ msgstr "Villa"
 msgid "Unable to find resource: %1"
 msgstr "Fann ekki tilfang: %1"
 
-#: discover/qml/DiscoverWindow.qml:273 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:273 discover/qml/SourcesPage.qml:201
 #, kde-format
 msgid "Proceed"
 msgstr "Halda áfram"
@@ -1030,7 +1030,7 @@ msgstr "Grunnstilla"
 msgid "Configure Feedback…"
 msgstr "Grunnstilla umsagnir…"
 
-#: discover/qml/Feedback.qml:31 discover/qml/SourcesPage.qml:22
+#: discover/qml/Feedback.qml:31 discover/qml/SourcesPage.qml:23
 #, kde-format
 msgid "Configure Updates…"
 msgstr "Grunnstilla uppfærslur..."
@@ -1090,29 +1090,29 @@ msgstr "Uppsett"
 msgid "Resources for '%1'"
 msgstr "Tilföng fyrir '%1'"
 
-#: discover/qml/ProgressView.qml:20
+#: discover/qml/ProgressView.qml:21
 #, kde-format
 msgid "Tasks (%1%)"
 msgstr "Verk (%1%)"
 
-#: discover/qml/ProgressView.qml:20 discover/qml/ProgressView.qml:49
+#: discover/qml/ProgressView.qml:22 discover/qml/ProgressView.qml:52
 #, kde-format
 msgid "Tasks"
 msgstr "Verk"
 
-#: discover/qml/ProgressView.qml:126
+#: discover/qml/ProgressView.qml:129
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3, %4 eftir"
 
-#: discover/qml/ProgressView.qml:134
+#: discover/qml/ProgressView.qml:137
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:141
+#: discover/qml/ProgressView.qml:144
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
@@ -1384,64 +1384,64 @@ msgstr "Leita…"
 msgid "Search in '%1'…"
 msgstr "Leita í '%1'..."
 
-#: discover/qml/SourcesPage.qml:18
+#: discover/qml/SourcesPage.qml:19
 #, kde-format
 msgid "Settings"
 msgstr "Stillingar"
 
-#: discover/qml/SourcesPage.qml:110
+#: discover/qml/SourcesPage.qml:116
 #, kde-format
 msgid "Default Source"
 msgstr "Sjálfgefinn upprunastaður"
 
-#: discover/qml/SourcesPage.qml:118
+#: discover/qml/SourcesPage.qml:124
 #, kde-format
 msgid "Add Source…"
 msgstr "Bæta við upprunastað..."
 
-#: discover/qml/SourcesPage.qml:145
+#: discover/qml/SourcesPage.qml:151
 #, kde-format
 msgid "Make Default"
 msgstr "Gera sjálfgefið"
 
-#: discover/qml/SourcesPage.qml:248
+#: discover/qml/SourcesPage.qml:252
 #, kde-format
 msgid "Increase priority"
 msgstr "Hækka forgang"
 
-#: discover/qml/SourcesPage.qml:254
+#: discover/qml/SourcesPage.qml:258
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "Mistókst að hækka '%1' kjörstillingu"
 
-#: discover/qml/SourcesPage.qml:260
+#: discover/qml/SourcesPage.qml:264
 #, kde-format
 msgid "Decrease priority"
 msgstr "Lækka forgang"
 
-#: discover/qml/SourcesPage.qml:266
+#: discover/qml/SourcesPage.qml:270
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "Mistókst að lækka '%1' kjörstillingu"
 
-#: discover/qml/SourcesPage.qml:272
+#: discover/qml/SourcesPage.qml:276
 #, kde-format
 msgid "Remove repository"
 msgstr "Fjarlægja hugbúnaðarsafn"
 
-#: discover/qml/SourcesPage.qml:283
+#: discover/qml/SourcesPage.qml:287
 #, kde-format
 msgid "Show contents"
 msgstr "Sýna innihald"
 
-#: discover/qml/SourcesPage.qml:305
+#: discover/qml/SourcesPage.qml:309
 #, fuzzy, kde-format
 #| msgid "Unable to find resource: %1"
 msgctxt "@info:tooltip"
 msgid "Enable this source"
 msgstr "Fann ekki tilfang: %1"
 
-#: discover/qml/SourcesPage.qml:326
+#: discover/qml/SourcesPage.qml:330
 #, kde-format
 msgid "Missing Backends"
 msgstr "Bakendar sem vantar"

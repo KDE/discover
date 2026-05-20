@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-13 00:47+0000\n"
+"POT-Creation-Date: 2026-05-20 00:46+0000\n"
 "PO-Revision-Date: 2021-09-19 20:01+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -262,7 +262,7 @@ msgstr "ထည့်သွင်းမည်"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:286
 #: discover/qml/InstallApplicationButton.qml:51
-#: discover/qml/ProgressView.qml:152 discover/qml/SourcesPage.qml:201
+#: discover/qml/ProgressView.qml:155 discover/qml/SourcesPage.qml:207
 #: discover/qml/UpdatesPage.qml:316 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -891,7 +891,7 @@ msgstr "အမှား"
 msgid "Unable to find resource: %1"
 msgstr "ရင်းမြစ်ကိုမရှာနိုင်ခဲ့ပါ - %1"
 
-#: discover/qml/DiscoverWindow.qml:273 discover/qml/SourcesPage.qml:195
+#: discover/qml/DiscoverWindow.qml:273 discover/qml/SourcesPage.qml:201
 #, kde-format
 msgid "Proceed"
 msgstr "ဆက်လုပ်မည်"
@@ -987,7 +987,7 @@ msgstr "ပြင်ဆင်မည်"
 msgid "Configure Feedback…"
 msgstr "တုံ့ပြန်ချက်ပြင်ဆင်မည်…"
 
-#: discover/qml/Feedback.qml:31 discover/qml/SourcesPage.qml:22
+#: discover/qml/Feedback.qml:31 discover/qml/SourcesPage.qml:23
 #, fuzzy, kde-format
 #| msgid "Configure feedback…"
 msgid "Configure Updates…"
@@ -1051,29 +1051,29 @@ msgstr "တပ်ဆင်ပြီး"
 msgid "Resources for '%1'"
 msgstr "'%1' အတွက်ရင်းမြစ်များ"
 
-#: discover/qml/ProgressView.qml:20
+#: discover/qml/ProgressView.qml:21
 #, kde-format
 msgid "Tasks (%1%)"
 msgstr "အလုပ်များ (%1%)"
 
-#: discover/qml/ProgressView.qml:20 discover/qml/ProgressView.qml:49
+#: discover/qml/ProgressView.qml:22 discover/qml/ProgressView.qml:52
 #, kde-format
 msgid "Tasks"
 msgstr "အလုပ်များ"
 
-#: discover/qml/ProgressView.qml:126
+#: discover/qml/ProgressView.qml:129
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
 msgstr "%1 - %2: %3၊ %4 ကျန်"
 
-#: discover/qml/ProgressView.qml:134
+#: discover/qml/ProgressView.qml:137
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
 msgstr "%1 - %2: %3"
 
-#: discover/qml/ProgressView.qml:141
+#: discover/qml/ProgressView.qml:144
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
@@ -1334,65 +1334,65 @@ msgstr "ရှာဖွေမည်…"
 msgid "Search in '%1'…"
 msgstr "'%1'တွင်ရှာဖွေမည်…"
 
-#: discover/qml/SourcesPage.qml:18
+#: discover/qml/SourcesPage.qml:19
 #, kde-format
 msgid "Settings"
 msgstr "ဆက်တင်များ"
 
-#: discover/qml/SourcesPage.qml:110
+#: discover/qml/SourcesPage.qml:116
 #, kde-format
 msgid "Default Source"
 msgstr ""
 
-#: discover/qml/SourcesPage.qml:118
+#: discover/qml/SourcesPage.qml:124
 #, kde-format
 msgid "Add Source…"
 msgstr "ပရိုဂရမ်ဇစ်မြစ် ထည့်သွင်းမည်…"
 
-#: discover/qml/SourcesPage.qml:145
+#: discover/qml/SourcesPage.qml:151
 #, fuzzy, kde-format
 #| msgid "Make default"
 msgid "Make Default"
 msgstr "မူလသတ်မှတ်ချက်အဖြစ်မှတ်မည်"
 
-#: discover/qml/SourcesPage.qml:248
+#: discover/qml/SourcesPage.qml:252
 #, kde-format
 msgid "Increase priority"
 msgstr "ဦးစားပေး-အဆင့် တိုးမည်"
 
-#: discover/qml/SourcesPage.qml:254
+#: discover/qml/SourcesPage.qml:258
 #, kde-format
 msgid "Failed to increase '%1' preference"
 msgstr "'%1' နှစ်သက်-သတ်မှတ်ချက်ကို မတိုးနိုင်ခဲ့ပါ"
 
-#: discover/qml/SourcesPage.qml:260
+#: discover/qml/SourcesPage.qml:264
 #, kde-format
 msgid "Decrease priority"
 msgstr "ဦးစားပေး-အဆင့် လျော့မည်"
 
-#: discover/qml/SourcesPage.qml:266
+#: discover/qml/SourcesPage.qml:270
 #, kde-format
 msgid "Failed to decrease '%1' preference"
 msgstr "'%1' နှစ်သက်-သတ်မှတ်ချက်ကို မလျော့နိုင်ခဲ့ပါ"
 
-#: discover/qml/SourcesPage.qml:272
+#: discover/qml/SourcesPage.qml:276
 #, kde-format
 msgid "Remove repository"
 msgstr "ရီပိုစစ်တိုရီကို ဖယ်ရှားမည်"
 
-#: discover/qml/SourcesPage.qml:283
+#: discover/qml/SourcesPage.qml:287
 #, kde-format
 msgid "Show contents"
 msgstr "ပါဝင်အကြောင်းအရာများ ပြမည်"
 
-#: discover/qml/SourcesPage.qml:305
+#: discover/qml/SourcesPage.qml:309
 #, fuzzy, kde-format
 #| msgid "Unable to find resource: %1"
 msgctxt "@info:tooltip"
 msgid "Enable this source"
 msgstr "ရင်းမြစ်ကိုမရှာနိုင်ခဲ့ပါ - %1"
 
-#: discover/qml/SourcesPage.qml:326
+#: discover/qml/SourcesPage.qml:330
 #, kde-format
 msgid "Missing Backends"
 msgstr "အုတ်မြစ်ပရိုဂရမ်များ မရှိပါ"
