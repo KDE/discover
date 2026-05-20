@@ -74,7 +74,6 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
     case StatusTextRole:
         switch (transaction->status()) {
         case Transaction::SetupStatus:
-            return i18nc("@info:status", "Starting");
         case Transaction::QueuedStatus:
             return i18nc("@info:status", "Waiting");
         case Transaction::DownloadingStatus:
