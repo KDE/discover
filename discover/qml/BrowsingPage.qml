@@ -132,6 +132,30 @@ DiscoverPage {
         }
 
         Kirigami.Heading {
+            id: featuredHeading
+            Layout.topMargin: page.padding
+            // Need to undo some the row spacing of the parent layout which looks bad here
+            Layout.bottomMargin: -(apps.rowSpacing / 2)
+            Layout.columnSpan: apps.columns
+            Layout.fillWidth: true
+            text: i18nc("@title:group", "Editor's Choice")
+            wrapMode: Text.Wrap
+            visible: featuredRep.count > 0 && !featuredModel.isFetching
+        }
+
+        Repeater {
+            id: featuredRep
+            model: featuredModel
+            delegate: GridApplicationDelegate {
+                numberItemsOnPreviousLastRow: ((popHeading.visible && popRep.numberItemsOnLastRow) || 0)
+                count: featuredRep.count
+                columns: apps.columns
+                visible: !featuredModel.isFetching
+            }
+            property int numberItemsOnLastRow: (count % apps.columns) || apps.columns
+        }
+
+        Kirigami.Heading {
             id: recentlyUpdatedHeading
             Layout.topMargin: page.padding
             // Need to undo some the row spacing of the parent layout which looks bad here
@@ -147,7 +171,8 @@ DiscoverPage {
             id: recentlyUpdatedRepeater
             model: recentlyUpdatedModelInstantiator.object
             delegate: GridApplicationDelegate {
-                numberItemsOnPreviousLastRow: ((popHeading.visible && popRep.numberItemsOnLastRow) || 0)
+                numberItemsOnPreviousLastRow: ((featuredHeading.visible && featuredRep.numberItemsOnLastRow) ||
+                                              (popHeading.visible && popRep.numberItemsOnLastRow) || 0)
                 visible: !featuredModel.isFetching
                 count: recentlyUpdatedRepeater.count
                 columns: apps.columns
@@ -182,31 +207,6 @@ DiscoverPage {
         }
 
         Kirigami.Heading {
-            id: featuredHeading
-            Layout.topMargin: page.padding
-            // Need to undo some the row spacing of the parent layout which looks bad here
-            Layout.bottomMargin: -(apps.rowSpacing / 2)
-            Layout.columnSpan: apps.columns
-            Layout.fillWidth: true
-            text: i18nc("@title:group", "Editor's Choice")
-            wrapMode: Text.Wrap
-            visible: featuredRep.count > 0 && !featuredModel.isFetching
-        }
-
-        Repeater {
-            id: featuredRep
-            model: featuredModel
-            delegate: GridApplicationDelegate {
-                numberItemsOnPreviousLastRow: ((recentlyUpdatedHeading.visible && recentlyUpdatedRepeater.numberItemsOnLastRow) ||
-                                              (popHeading.visible && popRep.numberItemsOnLastRow) || 0)
-                count: featuredRep.count
-                columns: apps.columns
-                visible: !featuredModel.isFetching
-            }
-            property int numberItemsOnLastRow: (count % apps.columns) || apps.columns
-        }
-
-        Kirigami.Heading {
             id: gamesHeading
             Layout.topMargin: page.padding
             // Need to undo some the row spacing of the parent layout which looks bad here
@@ -231,8 +231,8 @@ DiscoverPage {
             }
             delegate: GridApplicationDelegate {
                 visible: !featuredModel.isFetching
-                numberItemsOnPreviousLastRow: ((featuredHeading.visible && featuredRep.numberItemsOnLastRow) ||
-                                              (recentlyUpdatedHeading.visible && recentlyUpdatedRepeater.numberItemsOnLastRow ) ||
+                numberItemsOnPreviousLastRow: ((recentlyUpdatedHeading.visible && recentlyUpdatedRepeater.numberItemsOnLastRow ) ||
+                                              (featuredHeading.visible && featuredRep.numberItemsOnLastRow) ||
                                               (popHeading.visible && popRep.numberItemsOnLastRow) || 0)
                 count: gamesRep.count
                 columns: apps.columns
@@ -287,8 +287,8 @@ DiscoverPage {
             delegate: GridApplicationDelegate {
                 visible: !featuredModel.isFetching
                 numberItemsOnPreviousLastRow: ((gamesHeading.visible && gamesRep.numberItemsOnLastRow) ||
-                                              (featuredHeading.visible && featuredRep.numberItemsOnLastRow) ||
                                               (recentlyUpdatedHeading.visible && recentlyUpdatedRepeater.numberItemsOnLastRow) ||
+                                              (featuredHeading.visible && featuredRep.numberItemsOnLastRow) ||
                                               (popHeading.visible && popRep.numberItemsOnLastRow) || 0)
                 count: devRep.count
                 columns: apps.columns
