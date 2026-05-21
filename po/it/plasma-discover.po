@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-20 00:46+0000\n"
+"POT-Creation-Date: 2026-05-21 00:46+0000\n"
 "PO-Revision-Date: 2026-05-13 14:42+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -821,14 +821,14 @@ msgstr "Vedi altro"
 #: discover/qml/BrowsingPage.qml:141
 #, kde-format
 msgctxt "@title:group"
-msgid "Newly Published & Recently Updated"
-msgstr "Appena pubblicati e aggiornati di recente"
-
-#: discover/qml/BrowsingPage.qml:191
-#, kde-format
-msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Scelta dell'editore"
+
+#: discover/qml/BrowsingPage.qml:165
+#, kde-format
+msgctxt "@title:group"
+msgid "Newly Published & Recently Updated"
+msgstr "Appena pubblicati e aggiornati di recente"
 
 #: discover/qml/BrowsingPage.qml:216
 #, kde-format

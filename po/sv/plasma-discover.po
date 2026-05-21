@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-20 00:46+0000\n"
+"POT-Creation-Date: 2026-05-21 00:46+0000\n"
 "PO-Revision-Date: 2026-01-22 17:09+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -827,14 +827,14 @@ msgstr "Se mer"
 #: discover/qml/BrowsingPage.qml:141
 #, kde-format
 msgctxt "@title:group"
-msgid "Newly Published & Recently Updated"
-msgstr "Nypublicerade och nyligen uppdaterade"
-
-#: discover/qml/BrowsingPage.qml:191
-#, kde-format
-msgctxt "@title:group"
 msgid "Editor's Choice"
 msgstr "Redaktörens val"
+
+#: discover/qml/BrowsingPage.qml:165
+#, kde-format
+msgctxt "@title:group"
+msgid "Newly Published & Recently Updated"
+msgstr "Nypublicerade och nyligen uppdaterade"
 
 #: discover/qml/BrowsingPage.qml:216
 #, kde-format

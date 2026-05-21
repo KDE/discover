@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-20 00:46+0000\n"
+"POT-Creation-Date: 2026-05-21 00:46+0000\n"
 "PO-Revision-Date: 2023-02-17 08:42+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -2766,55 +2766,49 @@ msgctxt "@label Download rate"
 msgid "%1/s"
 msgstr "%1/s"
 
-#: libdiscover/Transaction/TransactionModel.cpp:78
-#, kde-format
-msgctxt "@info:status"
-msgid "Starting"
-msgstr "Starter"
-
-#: libdiscover/Transaction/TransactionModel.cpp:80
+#: libdiscover/Transaction/TransactionModel.cpp:79
 #, kde-format
 msgctxt "@info:status"
 msgid "Waiting"
 msgstr "Venter"
 
-#: libdiscover/Transaction/TransactionModel.cpp:82
+#: libdiscover/Transaction/TransactionModel.cpp:81
 #, kde-format
 msgctxt "@info:status"
 msgid "Downloading"
 msgstr "Laster ned"
 
-#: libdiscover/Transaction/TransactionModel.cpp:86
+#: libdiscover/Transaction/TransactionModel.cpp:85
 #, kde-format
 msgctxt "@info:status"
 msgid "Installing"
 msgstr "Installerer"
 
-#: libdiscover/Transaction/TransactionModel.cpp:88
+#: libdiscover/Transaction/TransactionModel.cpp:87
 #, kde-format
 msgctxt "@info:status"
 msgid "Removing"
 msgstr "Fjerner"
 
-#: libdiscover/Transaction/TransactionModel.cpp:90
+#: libdiscover/Transaction/TransactionModel.cpp:89
 #, kde-format
 msgctxt "@info:status"
 msgid "Changing Addons"
 msgstr "Endrer tillegg"
 
-#: libdiscover/Transaction/TransactionModel.cpp:94
+#: libdiscover/Transaction/TransactionModel.cpp:93
 #, kde-format
 msgctxt "@info:status"
 msgid "Done"
 msgstr "Ferdig"
 
-#: libdiscover/Transaction/TransactionModel.cpp:96
+#: libdiscover/Transaction/TransactionModel.cpp:95
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
 msgstr "Mislyktes"
 
-#: libdiscover/Transaction/TransactionModel.cpp:98
+#: libdiscover/Transaction/TransactionModel.cpp:97
 #, kde-format
 msgctxt "@info:status"
 msgid "Cancelled"
@@ -2844,5 +2838,6 @@ msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tillegg"
 
-#~ msgid "Delete settings and user data"
-#~ msgstr "Slett innstillinger og brukerdata"
+#~ msgctxt "@info:status"
+#~ msgid "Starting"
+#~ msgstr "Starter"

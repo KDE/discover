@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-20 00:46+0000\n"
+"POT-Creation-Date: 2026-05-21 00:46+0000\n"
 "PO-Revision-Date: 2024-12-15 15:57+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -733,13 +733,13 @@ msgstr ""
 #: discover/qml/BrowsingPage.qml:141
 #, kde-format
 msgctxt "@title:group"
-msgid "Newly Published & Recently Updated"
+msgid "Editor's Choice"
 msgstr ""
 
-#: discover/qml/BrowsingPage.qml:191
+#: discover/qml/BrowsingPage.qml:165
 #, kde-format
 msgctxt "@title:group"
-msgid "Editor's Choice"
+msgid "Newly Published & Recently Updated"
 msgstr ""
 
 #: discover/qml/BrowsingPage.qml:216

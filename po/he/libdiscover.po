@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-20 00:46+0000\n"
-"PO-Revision-Date: 2026-05-13 21:20+0300\n"
+"POT-Creation-Date: 2026-05-21 00:46+0000\n"
+"PO-Revision-Date: 2026-05-20 12:50+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1038,15 +1038,14 @@ msgid "View Stable Version on %1"
 msgstr "הצגת הגרסה היציבה של %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
-#, fuzzy, kde-format
-#| msgid "%1 is not installed but it still has data present."
+#, kde-format
 msgid "%1 is not installed but it still has user data and settings present."
-msgstr "%1 לא מותקנת במערכת שלך אך הנתונים שלה עדיין קיימים."
+msgstr "%1 לא מותקנת במערכת שלך אך נתוני המשתמש וההגדרות שלה עדיין קיימים."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "העברה לאשפה"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
@@ -2727,55 +2726,49 @@ msgctxt "@label Download rate"
 msgid "%1/s"
 msgstr "%1 לשנ׳"
 
-#: libdiscover/Transaction/TransactionModel.cpp:78
-#, kde-format
-msgctxt "@info:status"
-msgid "Starting"
-msgstr "מתחיל"
-
-#: libdiscover/Transaction/TransactionModel.cpp:80
+#: libdiscover/Transaction/TransactionModel.cpp:79
 #, kde-format
 msgctxt "@info:status"
 msgid "Waiting"
 msgstr "בהמתנה"
 
-#: libdiscover/Transaction/TransactionModel.cpp:82
+#: libdiscover/Transaction/TransactionModel.cpp:81
 #, kde-format
 msgctxt "@info:status"
 msgid "Downloading"
 msgstr "בהורדה"
 
-#: libdiscover/Transaction/TransactionModel.cpp:86
+#: libdiscover/Transaction/TransactionModel.cpp:85
 #, kde-format
 msgctxt "@info:status"
 msgid "Installing"
 msgstr "בהתקנה"
 
-#: libdiscover/Transaction/TransactionModel.cpp:88
+#: libdiscover/Transaction/TransactionModel.cpp:87
 #, kde-format
 msgctxt "@info:status"
 msgid "Removing"
 msgstr "בהסרה"
 
-#: libdiscover/Transaction/TransactionModel.cpp:90
+#: libdiscover/Transaction/TransactionModel.cpp:89
 #, kde-format
 msgctxt "@info:status"
 msgid "Changing Addons"
 msgstr "החלפת תוספים"
 
-#: libdiscover/Transaction/TransactionModel.cpp:94
+#: libdiscover/Transaction/TransactionModel.cpp:93
 #, kde-format
 msgctxt "@info:status"
 msgid "Done"
 msgstr "בוצע"
 
-#: libdiscover/Transaction/TransactionModel.cpp:96
+#: libdiscover/Transaction/TransactionModel.cpp:95
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
 msgstr "נכשל"
 
-#: libdiscover/Transaction/TransactionModel.cpp:98
+#: libdiscover/Transaction/TransactionModel.cpp:97
 #, kde-format
 msgctxt "@info:status"
 msgid "Cancelled"
@@ -2804,6 +2797,10 @@ msgstr "תוכנת מערכת"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "תוספים"
+
+#~ msgctxt "@info:status"
+#~ msgid "Starting"
+#~ msgstr "מתחיל"
 
 #~ msgid "Delete settings and user data"
 #~ msgstr "מחיקת הגדרות ונתוני משתמש"

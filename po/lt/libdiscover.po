@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-20 00:46+0000\n"
+"POT-Creation-Date: 2026-05-21 00:46+0000\n"
 "PO-Revision-Date: 2026-04-11 00:45+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -2803,55 +2803,49 @@ msgctxt "@label Download rate"
 msgid "%1/s"
 msgstr "%1/sek."
 
-#: libdiscover/Transaction/TransactionModel.cpp:78
-#, kde-format
-msgctxt "@info:status"
-msgid "Starting"
-msgstr "Pradedama"
-
-#: libdiscover/Transaction/TransactionModel.cpp:80
+#: libdiscover/Transaction/TransactionModel.cpp:79
 #, kde-format
 msgctxt "@info:status"
 msgid "Waiting"
 msgstr "Laukiama"
 
-#: libdiscover/Transaction/TransactionModel.cpp:82
+#: libdiscover/Transaction/TransactionModel.cpp:81
 #, kde-format
 msgctxt "@info:status"
 msgid "Downloading"
 msgstr "Atsiunčiama"
 
-#: libdiscover/Transaction/TransactionModel.cpp:86
+#: libdiscover/Transaction/TransactionModel.cpp:85
 #, kde-format
 msgctxt "@info:status"
 msgid "Installing"
 msgstr "Įdiegiama"
 
-#: libdiscover/Transaction/TransactionModel.cpp:88
+#: libdiscover/Transaction/TransactionModel.cpp:87
 #, kde-format
 msgctxt "@info:status"
 msgid "Removing"
 msgstr "Šalinama"
 
-#: libdiscover/Transaction/TransactionModel.cpp:90
+#: libdiscover/Transaction/TransactionModel.cpp:89
 #, kde-format
 msgctxt "@info:status"
 msgid "Changing Addons"
 msgstr "Keičiami papildiniai"
 
-#: libdiscover/Transaction/TransactionModel.cpp:94
+#: libdiscover/Transaction/TransactionModel.cpp:93
 #, kde-format
 msgctxt "@info:status"
 msgid "Done"
 msgstr "Atlikta"
 
-#: libdiscover/Transaction/TransactionModel.cpp:96
+#: libdiscover/Transaction/TransactionModel.cpp:95
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
 msgstr "Nepavyko"
 
-#: libdiscover/Transaction/TransactionModel.cpp:98
+#: libdiscover/Transaction/TransactionModel.cpp:97
 #, kde-format
 msgctxt "@info:status"
 msgid "Cancelled"
@@ -2880,6 +2874,10 @@ msgstr "Sistemos programinė įranga"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Papildiniai"
+
+#~ msgctxt "@info:status"
+#~ msgid "Starting"
+#~ msgstr "Pradedama"
 
 #~ msgid "Delete settings and user data"
 #~ msgstr "Ištrinti nuostatas ir naudotojo duomenis"
