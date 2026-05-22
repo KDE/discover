@@ -26,7 +26,7 @@ Kirigami.ApplicationWindow {
     title: leftPage?.title ?? ""
 
     width: Kirigami.Units.gridUnit * 52
-    height: Math.max(Kirigami.Units.gridUnit * 39, window.globalDrawer.contentHeight)
+    height: Kirigami.Units.gridUnit * 39
 
     visible: true
 
