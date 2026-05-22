@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-21 00:46+0000\n"
-"PO-Revision-Date: 2026-04-15 13:23-0400\n"
+"POT-Creation-Date: 2026-05-22 00:45+0000\n"
+"PO-Revision-Date: 2026-05-19 10:09-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -295,10 +295,9 @@ msgid "Cancel"
 msgstr "ۋاز كەچ"
 
 #: discover/qml/ApplicationDelegate.qml:160
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgid "No ratings"
-msgstr "تېخى باھالاش ئۇچۇرى يوق"
+msgstr "باھالاش يوق"
 
 #: discover/qml/ApplicationPage.qml:67
 #, kde-kuit-format
@@ -563,7 +562,7 @@ msgstr "قۇرۇلۇشقا ئىئانە قىلىش"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
-msgstr "كەمتۈك مەلۇم قىلىش"
+msgstr "كەمتۈك مەلۇم قىل"
 
 #: discover/qml/ApplicationPage.qml:626
 #, kde-format
@@ -589,93 +588,81 @@ msgstr "ئىجازەتنامە ئۇچۇرى"
 
 #: discover/qml/ApplicationPageFullComponent.qml:114
 #: discover/qml/ApplicationPageStickyComponent.qml:46
-#, fuzzy, kde-format
-#| msgid "Unknown author"
+#, kde-format
 msgctxt "As in 'this app is made by an unknown author'"
 msgid "Unknown author"
 msgstr "نامەلۇم يازغۇچى"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "%1 rating"
-#| msgid_plural "%1 ratings"
+#, kde-format
 msgctxt "@info as in the number of ratings an application has"
 msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "%1 باھالاش"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgctxt "@info"
 msgid "No ratings yet"
 msgstr "تېخى باھالاش ئۇچۇرى يوق"
 
 #: discover/qml/ApplicationPageFullComponent.qml:196
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgctxt "@info"
 msgid "Version:"
 msgstr "نەشرى:"
 
-#: discover/qml/ApplicationPageFullComponent.qml:212
+#: discover/qml/ApplicationPageFullComponent.qml:214
 #, kde-format
 msgid "Size:"
 msgstr "چوڭلۇقى:"
 
-#: discover/qml/ApplicationPageFullComponent.qml:239
-#, fuzzy, kde-format
-#| msgid "License:"
-#| msgid_plural "Licenses:"
+#: discover/qml/ApplicationPageFullComponent.qml:242
+#, kde-format
 msgctxt "@info"
 msgid "License:"
 msgid_plural "Licenses:"
 msgstr[0] "ئىجازەتنامە:"
 
-#: discover/qml/ApplicationPageFullComponent.qml:258
+#: discover/qml/ApplicationPageFullComponent.qml:261
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "يوچۇن"
 
-#: discover/qml/ApplicationPageFullComponent.qml:265
-#: discover/qml/ApplicationPageFullComponent.qml:322
+#: discover/qml/ApplicationPageFullComponent.qml:268
+#: discover/qml/ApplicationPageFullComponent.qml:325
 #, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "بۇنىڭ مەنىسى نېمە؟"
 
-#: discover/qml/ApplicationPageFullComponent.qml:345
-#, fuzzy, kde-format
-#| msgid "All Licenses"
+#: discover/qml/ApplicationPageFullComponent.qml:348
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "All licenses…"
-msgstr "ھەممە ئىجازەتنامە"
+msgstr "ھەممە ئىجازەتنامە…"
 
-#: discover/qml/ApplicationPageFullComponent.qml:358
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#: discover/qml/ApplicationPageFullComponent.qml:361
+#, kde-format
 msgctxt "@info The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "يېشى:"
 
-#: discover/qml/ApplicationPageFullComponent.qml:377
+#: discover/qml/ApplicationPageFullComponent.qml:380
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
 msgstr "ھەممەيلەن"
 
-#: discover/qml/ApplicationPageFullComponent.qml:379
+#: discover/qml/ApplicationPageFullComponent.qml:382
 #, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
 msgstr "%1+"
 
-#: discover/qml/ApplicationPageFullComponent.qml:388
-#, fuzzy, kde-format
-#| msgid "See details"
+#: discover/qml/ApplicationPageFullComponent.qml:391
+#, kde-format
 msgctxt "@action:button See content rating details"
 msgid "See details"
 msgstr "تەپسىلاتىنى كۆرسەت"
@@ -684,7 +671,7 @@ msgstr "تەپسىلاتىنى كۆرسەت"
 #, kde-format
 msgctxt "@action:button"
 msgid "Scroll to top"
-msgstr ""
+msgstr "چوققىغا سىيرىل"
 
 #: discover/qml/ApplicationsListPage.qml:57
 #, kde-format
@@ -974,14 +961,14 @@ msgstr "بۇ مەسىلىنى %1 غا مەلۇم قىل"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
-msgstr ""
+msgstr "Discover تورسىز"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
 msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
-msgstr ""
+msgstr "پىروگرامما ئورنىتىش ۋە سىستېما يېڭىلاش ئۈچۈن تورغا باغلىنىڭ."
 
 #: discover/qml/DiscoverWindow.qml:365
 #, kde-format
@@ -1529,12 +1516,10 @@ msgid "Update All"
 msgstr "ھەممىنى يېڭىلا"
 
 #: discover/qml/UpdatesPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Updates will be installed after the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
-msgstr "سىستېما قايتا قوزغىتىلغاندىن كېيىن يېڭىلانما ئورنىتىلىدۇ"
+msgstr "سىستېمىنى قايتا قوزغاتقاندىن كېيىن كۈتۈۋاتقان يېڭىلاش ئورنىتىلىدۇ."
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format
@@ -1552,35 +1537,25 @@ msgid "Select None"
 msgstr "ھەممىنى تاللىما"
 
 #: discover/qml/UpdatesPage.qml:287
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info on the completion of updates, the action that automatically happens "
-#| "after (e.g shut down)"
-#| msgid "After completing:"
+#, kde-format
 msgctxt "@info After updates complete, shut down/restart/quit"
 msgid "After updates complete:"
-msgstr "تاماملانغاندىن كېيىن:"
+msgstr "يېڭىلاش تاماملانغاندىن كېيىن:"
 
 #: discover/qml/UpdatesPage.qml:293
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Do nothing"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, do nothing"
 msgid "Do nothing"
 msgstr "ھېچقانداق قىلما"
 
 #: discover/qml/UpdatesPage.qml:294
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Restart"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, restart"
 msgid "Restart"
 msgstr "قايتا قوزغات"
 
 #: discover/qml/UpdatesPage.qml:295
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shut down"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, shut down"
 msgid "Shut down"
 msgstr "تاقا"
@@ -1589,7 +1564,7 @@ msgstr "تاقا"
 #, kde-format
 msgctxt "@item:inlistbox after updates complete, quit"
 msgid "Quit"
-msgstr ""
+msgstr "چىكىن"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1611,7 +1586,7 @@ msgstr "ئورنىتىۋاتىدۇ"
 #, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "مەنبە:"
+msgstr "ئەۋەتكۈچى:"
 
 #: discover/qml/UpdatesPage.qml:560
 #, kde-format
@@ -1678,6 +1653,10 @@ msgstr "ئاخىرقى يېڭىلاش ۋاقتى نامەلۇم"
 #~ msgstr ""
 #~ "ئىستاتىستىكا ئۇچۇرىنى ھەمبەھىرلەش ۋە راي سىناشقا قاتنىشىش ئارقىلىق بۇ "
 #~ "پىروگراممىنى ياخشىلىشىمىزغا ياردەم قىلالايسىز."
+
+#~ msgctxt "@action:button"
+#~ msgid "Reboot now"
+#~ msgstr "ھازىر قايتا قوزغات"
 
 #~ msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
 #~ msgid ","
