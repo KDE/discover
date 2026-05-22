@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-13 00:47+0000\n"
+"POT-Creation-Date: 2026-05-22 02:47+0000\n"
 "PO-Revision-Date: 2024-10-28 19:13\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -628,12 +628,12 @@ msgctxt "@info"
 msgid "Version:"
 msgstr "Версія:"
 
-#: discover/qml/ApplicationPageFullComponent.qml:212
+#: discover/qml/ApplicationPageFullComponent.qml:214
 #, kde-format
 msgid "Size:"
 msgstr "Памер:"
 
-#: discover/qml/ApplicationPageFullComponent.qml:239
+#: discover/qml/ApplicationPageFullComponent.qml:242
 #, fuzzy, kde-format
 #| msgid "License:"
 #| msgid_plural "Licenses:"
@@ -645,27 +645,27 @@ msgstr[1] "Ліцэнзіі:"
 msgstr[2] "Ліцэнзіі:"
 msgstr[3] "Ліцэнзіі:"
 
-#: discover/qml/ApplicationPageFullComponent.qml:258
+#: discover/qml/ApplicationPageFullComponent.qml:261
 #, kde-format
 msgctxt "The app does not provide any licenses"
 msgid "Unknown"
 msgstr "Невядома"
 
-#: discover/qml/ApplicationPageFullComponent.qml:265
-#: discover/qml/ApplicationPageFullComponent.qml:322
+#: discover/qml/ApplicationPageFullComponent.qml:268
+#: discover/qml/ApplicationPageFullComponent.qml:325
 #, kde-format
 msgctxt "@info:tooltip for button opening license type description"
 msgid "What does this mean?"
 msgstr "Што гэта азначае?"
 
-#: discover/qml/ApplicationPageFullComponent.qml:345
+#: discover/qml/ApplicationPageFullComponent.qml:348
 #, fuzzy, kde-format
 #| msgid "All Licenses"
 msgctxt "Show all licenses of the package"
 msgid "All licenses…"
 msgstr "Усе ліцэнзіі"
 
-#: discover/qml/ApplicationPageFullComponent.qml:358
+#: discover/qml/ApplicationPageFullComponent.qml:361
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@label The app is suitable for people of the following ages or older"
@@ -674,19 +674,19 @@ msgctxt "@info The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "Узрост:"
 
-#: discover/qml/ApplicationPageFullComponent.qml:377
+#: discover/qml/ApplicationPageFullComponent.qml:380
 #, kde-format
 msgctxt "@item As in, the app is suitable for everyone"
 msgid "Everyone"
 msgstr "Усе"
 
-#: discover/qml/ApplicationPageFullComponent.qml:379
+#: discover/qml/ApplicationPageFullComponent.qml:382
 #, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
 msgstr "%1+"
 
-#: discover/qml/ApplicationPageFullComponent.qml:388
+#: discover/qml/ApplicationPageFullComponent.qml:391
 #, fuzzy, kde-format
 #| msgid "See details"
 msgctxt "@action:button See content rating details"
