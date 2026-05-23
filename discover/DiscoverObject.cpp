@@ -458,8 +458,11 @@ public:
         updateDescription();
     }
 
-    void onTransactionAdded()
+    void onTransactionAdded(Transaction *newTransaction)
     {
+        if (!newTransaction->isVisible()) {
+            return;
+        }
         const auto oldAmount = totalAmount(Items);
         // Very unlikely to happen but let's be safe. We don't want to overflow.
         Q_ASSERT(oldAmount < std::numeric_limits<qulonglong>::max());
@@ -467,8 +470,11 @@ public:
         setTotalAmount(Items, newAmount);
     }
 
-    void onTransactionRemoved()
+    void onTransactionRemoved(Transaction *transaction)
     {
+        if (!transaction->isVisible()) {
+            return;
+        }
         const auto oldAmount = totalAmount(Items);
         // In an ideal world we'd not do subtractions on unsigned values as they could underflow. Unfortunately we deal
         // with 64bit unsigned here, so doing a safe subtraction is difficult. Be assertive instead.
