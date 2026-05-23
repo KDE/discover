@@ -2756,7 +2756,3 @@ msgstr "系统软件"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "插件"
-
-#~ msgctxt "@info:status"
-#~ msgid "Starting"
-#~ msgstr "正在准备开始"
