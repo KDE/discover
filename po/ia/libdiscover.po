@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 00:45+0000\n"
-"PO-Revision-Date: 2026-05-13 12:04+0200\n"
+"POT-Creation-Date: 2026-05-23 00:46+0000\n"
+"PO-Revision-Date: 2026-05-22 11:59+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1061,15 +1061,15 @@ msgid "View Stable Version on %1"
 msgstr "Vide Version Stable sur %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
-#, fuzzy, kde-format
-#| msgid "%1 is not installed but it still has data present."
+#, kde-format
 msgid "%1 is not installed but it still has user data and settings present."
-msgstr "%1 non es installate ma ha ancoira datos presente."
+msgstr ""
+"%1 non es installate ma ha ancora datos de usator e preferentias presente."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "Move a corbe"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
@@ -2742,7 +2742,7 @@ msgstr "Pro favor tu verifica le connexion de Internet"
 msgid "Refresh"
 msgstr "Refresca"
 
-#: libdiscover/resources/ResourcesModel.cpp:405
+#: libdiscover/resources/ResourcesModel.cpp:401
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
