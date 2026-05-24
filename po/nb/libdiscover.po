@@ -2837,7 +2837,3 @@ msgstr "Systemprogram"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tillegg"
-
-#~ msgctxt "@info:status"
-#~ msgid "Starting"
-#~ msgstr "Starter"
