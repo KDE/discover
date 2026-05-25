@@ -566,6 +566,8 @@ QVariant ResourcesProxyModel::roleToValue(const StreamResult &result, int role) 
         case AbstractResource::Type::System:
             return i18nc("@label", "System");
         }
+        Q_UNREACHABLE();
+        break;
     }
     case ApplicationRole:
         return QVariant::fromValue<QObject *>(resource);
