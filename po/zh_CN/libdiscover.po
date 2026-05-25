@@ -1029,12 +1029,12 @@ msgstr "查看 %1 上的稳定版本"
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
 #, kde-format
 msgid "%1 is not installed but it still has user data and settings present."
-msgstr ""
+msgstr "%1 在本机上没有安装，但它在本机上存有用户数据与设置预设。"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "移动到回收站"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format

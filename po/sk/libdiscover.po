@@ -1062,15 +1062,15 @@ msgid "View Stable Version on %1"
 msgstr "Zobraziť stabilnú verziu na %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
-#, fuzzy, kde-format
-#| msgid "%1 is not installed but it still has data present."
+#, kde-format
 msgid "%1 is not installed but it still has user data and settings present."
-msgstr "%1 nie je nainštalované, ale stále obsahuje dáta."
+msgstr ""
+"%1 nie je nainštalované, ale stále obsahuje používateľské dáta a nastavenia."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "Presunúť do koša"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
