@@ -69,6 +69,7 @@ private:
     QSet<AbstractResource *> m_upgradeable;
     AbstractResourcesBackend *const m_backend;
     QSet<AbstractResource *> m_pendingResources;
+    bool m_hasBeenPopulated = false;
     bool m_settingUp = false;
     qreal m_progress;
     QDateTime m_lastUpdate;

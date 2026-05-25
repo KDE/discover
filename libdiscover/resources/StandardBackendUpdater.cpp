@@ -21,9 +21,9 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend *parent)
     , m_progress(0)
     , m_lastUpdate(QDateTime())
     , m_isFetchingUpdates(
-          false,
+          true,
           [this] {
-              return m_backend->fetchingUpdatesProgress() != 100 || m_settingUp;
+              return m_backend->fetchingUpdatesProgress() != 100 || m_settingUp || !m_hasBeenPopulated;
           },
           [this](bool) {
               Q_EMIT fetchingChanged();
@@ -326,6 +326,9 @@ quint64 StandardBackendUpdater::downloadSpeed() const
 
 void StandardBackendUpdater::setSettingUp(bool settingUp)
 {
+    if (!settingUp) {
+        m_hasBeenPopulated = true;
+    }
     if (m_settingUp == settingUp) {
         return;
     }
