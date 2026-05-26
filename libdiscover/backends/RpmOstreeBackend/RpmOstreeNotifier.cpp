@@ -44,8 +44,8 @@ RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
     // deployment is made available and instead wait a bit to let things settle down.
     m_timer = new QTimer(this);
     m_timer->setSingleShot(true);
-    // Wait 10 seconds for all rpm-ostree operations to complete
-    m_timer->setInterval(10000);
+    // Wait 60 seconds for all rpm-ostree operations to complete
+    m_timer->setInterval(60000);
     connect(m_timer, &QTimer::timeout, this, &RpmOstreeNotifier::checkForPendingDeployment);
 
     qCInfo(RPMOSTREE_LOG) << "Looking for ostree format";
