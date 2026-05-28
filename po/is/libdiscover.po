@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-23 00:46+0000\n"
+"POT-Creation-Date: 2026-05-28 00:45+0000\n"
 "PO-Revision-Date: 2026-04-15 10:06+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -1002,13 +1002,20 @@ msgid "Replacement Available"
 msgstr "Annar hugbúnaður er þegar til staðar"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt ""
+#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
+#| "though)"
+#| msgid ""
+#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
+#| "it with the supported version provided by <resource>%2</resource>?"
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
 msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
-"with the supported version provided by <resource>%2</resource>?"
+"with the supported version provided by <resource>%2</resource>?<nl/><nl/"
+">Your settings and data will be transferred to the new application."
 msgstr ""
 "<resource>%1</resource> fær ekki lengur neinar uppfærslur.<nl/><nl/>Á að "
 "skipt því út fyrir útgáfuna sem studd er af <resource>%2</resource>?"
@@ -2411,6 +2418,13 @@ msgstr ""
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 "Fjartengd tilvísun fyrir yfirfærsluaðgerð vantar. Sendu inn villuskýrslu."
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Operating System"
+msgid "Operating System"
+msgstr "Stýrikerfi"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #, kde-format

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-23 00:46+0000\n"
+"POT-Creation-Date: 2026-05-28 00:45+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -1007,7 +1007,8 @@ msgctxt ""
 "though)"
 msgid ""
 "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace it "
-"with the supported version provided by <resource>%2</resource>?"
+"with the supported version provided by <resource>%2</resource>?<nl/><nl/"
+">Your settings and data will be transferred to the new application."
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:470
@@ -2388,6 +2389,13 @@ msgstr "ਵੱਡੇ ਵਰਜ਼ਨ ਲਈ ਰੀ-ਬੇਸ ਕਰਨ ਤੋਂ �
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "ਰੀ-ਬੇਸ ਓਪਰੇਸ਼ਨ ਲਈ ਰਿਮੋਟ ref ਗੁੰਮ ਹੈ। ਬੱਗ ਬਾਰੇ ਰਿਪੋਰਟ ਕਰੋ।"
+
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
+#, fuzzy, kde-format
+#| msgctxt "Category"
+#| msgid "Operating System"
+msgid "Operating System"
+msgstr "ਓਪਰੇਟਿੰਗ ਸਿਸਟਮ"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #, kde-format
