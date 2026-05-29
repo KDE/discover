@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-28 00:45+0000\n"
-"PO-Revision-Date: 2026-05-20 08:41+0200\n"
+"PO-Revision-Date: 2026-05-28 06:49+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1008,13 +1008,7 @@ msgid "Replacement Available"
 msgstr "Nadomestek na voljo"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1023,8 +1017,9 @@ msgid ""
 "with the supported version provided by <resource>%2</resource>?<nl/><nl/"
 ">Your settings and data will be transferred to the new application."
 msgstr ""
-"<resource>%1</resource> več ne dobiva posodobitev.<nl/><nl/>Naj ga "
-"nadomestim s podprto različico, ki ga zagotavlja <resource>%2</resource>?"
+"<resource>%1</resource> ne prejema več posodobitev.<nl/><nl/>Naj jo zamenjam "
+"s podprto različico, ki jo ponuja <resource>%2</resource>?<nl/><nl/>Vaše "
+"nastavitve in podatki bodo preneseni v novo aplikacijo."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:470
 #, kde-format
@@ -2440,9 +2435,7 @@ msgstr ""
 "Manjka oddaljeni sklic za operacijo spremembe osnove. Poročajte o napaki."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "Operacijski sistem"
 

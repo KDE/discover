@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-28 00:45+0000\n"
-"PO-Revision-Date: 2026-05-21 12:02+0200\n"
+"PO-Revision-Date: 2026-05-28 11:39+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -1006,13 +1006,7 @@ msgid "Replacement Available"
 msgstr "Je dostupná náhrada"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1022,7 +1016,8 @@ msgid ""
 ">Your settings and data will be transferred to the new application."
 msgstr ""
 "<resource>%1</resource> již nedostává aktualizace.<nl/><nl/>Chcete jej "
-"nahradit podporovanou verzí <resource>%2</resource>?"
+"nahradit podporovanou verzí od <resource>%2</resource>?<nl/><nl/>Vaše "
+"nastavení a data budou přenesena do nové aplikace."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:470
 #, kde-format
@@ -2433,9 +2428,7 @@ msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "Chybí vzdálený zdroj pro operaci ‚rebase’. Prosím nahlaste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "Operační systém"
 

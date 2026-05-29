@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-28 00:45+0000\n"
-"PO-Revision-Date: 2026-05-20 04:39+0200\n"
+"PO-Revision-Date: 2026-05-28 04:20+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1005,13 +1005,7 @@ msgid "Replacement Available"
 msgstr "ხელმისაწვდომია შემცვლელი"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1021,7 +1015,8 @@ msgid ""
 ">Your settings and data will be transferred to the new application."
 msgstr ""
 "<resource>%1</resource> განახლებებს აღარ იღებს.<nl/><nl/>ჩავანაცვლო ის "
-"მხარდაჭერილი ვერსიით, რომელსაც მოგაწოდებთ ID <resource>%2</resource>?"
+"მხარდაჭერილი ვერსიით, რომელსაც მოგაწოდებთ ID <resource>%2</resource>?<nl/"
+"><nl/>თქვენი პარამეტრები და მონაცემები ახალ აპლიკაციას გადაეცემა."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:470
 #, kde-format
@@ -2417,9 +2412,7 @@ msgstr ""
 "შეცდომის ანგარიში."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "ოპერაციული სისტემა"
 

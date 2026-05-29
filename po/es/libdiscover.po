@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-28 00:45+0000\n"
-"PO-Revision-Date: 2026-05-20 20:01+0100\n"
+"PO-Revision-Date: 2026-05-28 15:10+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1012,13 +1012,7 @@ msgid "Replacement Available"
 msgstr "Sustitución disponible"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1029,7 +1023,8 @@ msgid ""
 msgstr ""
 "<resource>%1</resource> ha dejado de recibir actualizaciones.<nl/><nl/"
 ">¿Desea sustituirla con la versión mantenida que proporciona <resource>%2</"
-"resource>?"
+"resource>?<nl/><nl/>Sus ajustes y sus datos se transferirán a la nueva "
+"aplicación."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:470
 #, kde-format
@@ -2448,9 +2443,7 @@ msgstr ""
 "notifique este fallo."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "Sistema operativo"
 
@@ -2879,7 +2872,3 @@ msgstr "Software del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complementos"
-
-#~ msgctxt "@info:status"
-#~ msgid "Starting"
-#~ msgstr "Empezando"

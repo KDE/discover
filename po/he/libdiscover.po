@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-28 00:45+0000\n"
-"PO-Revision-Date: 2026-05-20 12:50+0300\n"
+"PO-Revision-Date: 2026-05-28 08:35+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -989,13 +989,7 @@ msgid "Replacement Available"
 msgstr "החלפה זמינה"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1005,7 +999,8 @@ msgid ""
 ">Your settings and data will be transferred to the new application."
 msgstr ""
 "<resource>%1</resource> לא תקבל עוד עדכונים.<nl/><nl/>להחליף אותה בגרסה "
-"הנתמכת שמסופקת על ידי <resource>%2</resource>?"
+"הנתמכת שמסופקת על ידי <resource>%2</resource>?<nl/><nl/>ההגדרות והנתונים שלך "
+"יעברו ליישום החדש."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:470
 #, kde-format
@@ -2400,9 +2395,7 @@ msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "חסר מקור מרוחק לפעולת הסבת בסיס. נא לדווח על תקלה."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "מערכת הפעלה"
 

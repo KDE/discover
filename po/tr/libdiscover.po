@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-28 00:45+0000\n"
-"PO-Revision-Date: 2026-05-20 19:35+0300\n"
+"PO-Revision-Date: 2026-05-28 15:01+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1007,13 +1007,7 @@ msgid "Replacement Available"
 msgstr "Alternatif Kullanılabilir"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1024,7 +1018,7 @@ msgid ""
 msgstr ""
 "<resource>%1</resource> artık güncellemeler almıyor.<nl/><nl/>Onu, <resource>"
 "%2</resource> tarafından sağlanan desteklenen sürümle değiştirmek ister "
-"misiniz?"
+"misiniz?<nl/><nl/>Ayarlarınız ve veriniz yeni uygulamaya aktarılacaktır."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:470
 #, kde-format
@@ -2429,9 +2423,7 @@ msgstr ""
 "olarak bildirin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "İşletim Sistemi"
 

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-28 00:45+0000\n"
-"PO-Revision-Date: 2026-05-20 11:31+0200\n"
+"PO-Revision-Date: 2026-05-28 12:41+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1010,13 +1010,7 @@ msgid "Replacement Available"
 msgstr "Vervanging beschikbaar"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1026,7 +1020,9 @@ msgid ""
 ">Your settings and data will be transferred to the new application."
 msgstr ""
 "<resource>%1</resource> wordt niet langer bijgewerkt.<nl/><nl/>Vervang het "
-"door de ondersteunde versie geleverd door <resource>%2</resource>?"
+"door de ondersteunde versie geleverd door <resource>%2</resource>?<nl/><nl/"
+">Uw instellingen en gegevens zullen overgebracht worden naar de nieuw "
+"toepassing."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:470
 #, kde-format
@@ -2435,9 +2431,7 @@ msgstr ""
 "Rapporteer een bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "Besturingssysteem"
 
