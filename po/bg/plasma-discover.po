@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Mincho Kondarev <mkondarev@yahoo.de>
+# SPDX-FileCopyrightText: 2022-2026 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-22 02:47+0000\n"
-"PO-Revision-Date: 2026-04-03 01:25+0200\n"
+"PO-Revision-Date: 2026-05-28 19:29+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.03.70\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #: discover/DiscoverObject.cpp:198
 #, kde-format
@@ -292,10 +292,9 @@ msgid "Cancel"
 msgstr "Отказ"
 
 #: discover/qml/ApplicationDelegate.qml:160
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgid "No ratings"
-msgstr "Все още няма оценки"
+msgstr "Няма оценки"
 
 #: discover/qml/ApplicationPage.qml:67
 #, kde-kuit-format
@@ -579,32 +578,27 @@ msgstr "Информация за лиценз"
 
 #: discover/qml/ApplicationPageFullComponent.qml:114
 #: discover/qml/ApplicationPageStickyComponent.qml:46
-#, fuzzy, kde-format
-#| msgid "Unknown author"
+#, kde-format
 msgctxt "As in 'this app is made by an unknown author'"
 msgid "Unknown author"
-msgstr "Неизвестен автори"
+msgstr "Неизвестен автор"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "%1 rating"
-#| msgid_plural "%1 ratings"
+#, kde-format
 msgctxt "@info as in the number of ratings an application has"
 msgid "%1 rating"
 msgid_plural "%1 ratings"
-msgstr[0] "%1 рейтинг"
+msgstr[0] "%1 оценка"
 msgstr[1] "%1 оценки"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgctxt "@info"
 msgid "No ratings yet"
 msgstr "Все още няма оценки"
 
 #: discover/qml/ApplicationPageFullComponent.qml:196
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgctxt "@info"
 msgid "Version:"
 msgstr "Версия:"
@@ -615,14 +609,12 @@ msgid "Size:"
 msgstr "Размер:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:242
-#, fuzzy, kde-format
-#| msgid "License:"
-#| msgid_plural "Licenses:"
+#, kde-format
 msgctxt "@info"
 msgid "License:"
 msgid_plural "Licenses:"
 msgstr[0] "Лиценз:"
-msgstr[1] "Лицензи"
+msgstr[1] "Лицензи:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:261
 #, kde-format
@@ -638,17 +630,13 @@ msgid "What does this mean?"
 msgstr "Какво означава това?"
 
 #: discover/qml/ApplicationPageFullComponent.qml:348
-#, fuzzy, kde-format
-#| msgid "All Licenses"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "All licenses…"
-msgstr "Всички лицензи"
+msgstr "Всички лицензи…"
 
 #: discover/qml/ApplicationPageFullComponent.qml:361
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#, kde-format
 msgctxt "@info The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "Възраст:"
@@ -666,8 +654,7 @@ msgid "%1+"
 msgstr "%1+"
 
 #: discover/qml/ApplicationPageFullComponent.qml:391
-#, fuzzy, kde-format
-#| msgid "See details"
+#, kde-format
 msgctxt "@action:button See content rating details"
 msgid "See details"
 msgstr "Подробности"
@@ -676,7 +663,7 @@ msgstr "Подробности"
 #, kde-format
 msgctxt "@action:button"
 msgid "Scroll to top"
-msgstr ""
+msgstr "Превъртане до горе"
 
 #: discover/qml/ApplicationsListPage.qml:57
 #, kde-format
@@ -751,7 +738,7 @@ msgstr "Дата на излизане"
 #, kde-format
 msgctxt "@info"
 msgid "Group by Type"
-msgstr ""
+msgstr "Групиране по вид"
 
 #: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
@@ -968,7 +955,7 @@ msgstr "Докладвайте този проблем на %1"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
-msgstr ""
+msgstr "Discover е офлайн"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
@@ -976,6 +963,8 @@ msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
 msgstr ""
+"Моля, свържете се към мрежа, за да инсталирате приложения и да обновите "
+"системата."
 
 #: discover/qml/DiscoverWindow.qml:365
 #, kde-format
@@ -1059,6 +1048,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"Можете да помогнете на KDE да подобри Discover, като споделите анонимна "
+"информация за това, как го използвате."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1453,11 +1444,10 @@ msgid "Show contents"
 msgstr "Показване на съдържанието"
 
 #: discover/qml/SourcesPage.qml:305
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "Не може да се намери ресурс: %1"
+msgstr "Включване на тази източник"
 
 #: discover/qml/SourcesPage.qml:326
 #, kde-format
@@ -1522,9 +1512,7 @@ msgid "Update All"
 msgstr "Актуализиране всички"
 
 #: discover/qml/UpdatesPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Updates will be installed after the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
 msgstr "Актуализациите ще бъдат инсталирани след рестартиране на системата"
@@ -1545,35 +1533,25 @@ msgid "Select None"
 msgstr "Да не се избира нищо"
 
 #: discover/qml/UpdatesPage.qml:287
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info on the completion of updates, the action that automatically happens "
-#| "after (e.g shut down)"
-#| msgid "After completing:"
+#, kde-format
 msgctxt "@info After updates complete, shut down/restart/quit"
 msgid "After updates complete:"
 msgstr "След завършване на актуализацията:"
 
 #: discover/qml/UpdatesPage.qml:293
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Do nothing"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, do nothing"
 msgid "Do nothing"
 msgstr "Без действие"
 
 #: discover/qml/UpdatesPage.qml:294
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Restart"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, restart"
 msgid "Restart"
 msgstr "Рестартиране"
 
 #: discover/qml/UpdatesPage.qml:295
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shut down"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, shut down"
 msgid "Shut down"
 msgstr "Изключване"
@@ -1582,7 +1560,7 @@ msgstr "Изключване"
 #, kde-format
 msgctxt "@item:inlistbox after updates complete, quit"
 msgid "Quit"
-msgstr ""
+msgstr "Изход"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1664,37 +1642,3 @@ msgstr "Трябва да проверите за актуализации"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Неизвестно време от последното актуализиране"
-
-#~ msgid ""
-#~ "You can help us improving this application by sharing statistics and "
-#~ "participate in surveys."
-#~ msgstr ""
-#~ "Можете да ни помогнете да подобрим това приложение, като споделяте "
-#~ "статистически данни и участвате в анкети."
-
-#~ msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
-#~ msgid ","
-#~ msgstr ","
-
-#~ msgctxt "Show all licenses of the package"
-#~ msgid "See more…"
-#~ msgstr "Още…"
-
-#~ msgctxt ""
-#~ "@info on the completion of updates, the action that automatically happens "
-#~ "after (e.g shut down)"
-#~ msgid "On completion, automatically:"
-#~ msgstr "При завършване, автоматично:"
-
-#~ msgctxt "@item:inlistbox placeholder for when no action is selected"
-#~ msgid "Select an action"
-#~ msgstr "Избиране на действие"
-
-#~ msgid "Popularity"
-#~ msgstr "Популярност"
-
-#~ msgid "Update from:"
-#~ msgstr "Актуализиране от:"
-
-#~ msgid "&Updates (%1)"
-#~ msgstr "Актуа&лизации (%1)"
