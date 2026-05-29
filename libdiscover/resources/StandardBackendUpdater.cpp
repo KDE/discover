@@ -125,7 +125,7 @@ AbstractBackendUpdater::State toUpdateState(Transaction *t)
 
 bool StandardBackendUpdater::isFetchingUpdates() const
 {
-    return m_backend->fetchingUpdatesProgress() != 100 || m_settingUp;
+    return m_backend->fetchingUpdatesProgress() != 100 || m_settingUp || !m_hasBeenPopulated;
 }
 
 void StandardBackendUpdater::transactionProgressChanged()
@@ -317,6 +317,9 @@ quint64 StandardBackendUpdater::downloadSpeed() const
 
 void StandardBackendUpdater::setSettingUp(bool settingUp)
 {
+    if (!settingUp) {
+        m_hasBeenPopulated = true;
+    }
     if (m_settingUp == settingUp) {
         return;
     }
