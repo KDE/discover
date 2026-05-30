@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2026 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2022, 2023.
 # SPDX-FileCopyrightText: 2025 Yuma Kakei <yumasansansan@gmail.com>
@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-22 00:45+0000\n"
-"PO-Revision-Date: 2025-09-21 14:44+0900\n"
-"Last-Translator: Yuma Kakei <yumasansansan@gmail.com>\n"
+"PO-Revision-Date: 2026-05-24 18:40+0900\n"
+"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: discover/DiscoverObject.cpp:198
 #, kde-format
@@ -203,10 +203,9 @@ msgid "An application explorer"
 msgstr "アプリケーションエクスプローラ"
 
 #: discover/main.cpp:124
-#, fuzzy, kde-format
-#| msgid "© 2010-2025 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2026 Plasma Development Team"
-msgstr "© 2010-2025 Plasma Development Team"
+msgstr "© 2010-2026 Plasma Development Team"
 
 #: discover/main.cpp:125
 #, kde-format
@@ -294,10 +293,9 @@ msgid "Cancel"
 msgstr "キャンセル"
 
 #: discover/qml/ApplicationDelegate.qml:160
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgid "No ratings"
-msgstr "評価はまだありません。"
+msgstr "評価なし"
 
 #: discover/qml/ApplicationPage.qml:67
 #, kde-kuit-format
@@ -577,31 +575,26 @@ msgstr "ライセンス情報"
 
 #: discover/qml/ApplicationPageFullComponent.qml:114
 #: discover/qml/ApplicationPageStickyComponent.qml:46
-#, fuzzy, kde-format
-#| msgid "Unknown author"
+#, kde-format
 msgctxt "As in 'this app is made by an unknown author'"
 msgid "Unknown author"
 msgstr "作者不明"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "%1 rating"
-#| msgid_plural "%1 ratings"
+#, kde-format
 msgctxt "@info as in the number of ratings an application has"
 msgid "%1 rating"
 msgid_plural "%1 ratings"
 msgstr[0] "%1 の評価"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgctxt "@info"
 msgid "No ratings yet"
 msgstr "評価はまだありません。"
 
 #: discover/qml/ApplicationPageFullComponent.qml:196
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgctxt "@info"
 msgid "Version:"
 msgstr "バージョン:"
@@ -612,9 +605,7 @@ msgid "Size:"
 msgstr "サイズ:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:242
-#, fuzzy, kde-format
-#| msgid "License:"
-#| msgid_plural "Licenses:"
+#, kde-format
 msgctxt "@info"
 msgid "License:"
 msgid_plural "Licenses:"
@@ -634,17 +625,13 @@ msgid "What does this mean?"
 msgstr "これはどういう意味？"
 
 #: discover/qml/ApplicationPageFullComponent.qml:348
-#, fuzzy, kde-format
-#| msgid "All Licenses"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "All licenses…"
-msgstr "すべてのライセンス"
+msgstr "すべてのライセンス..."
 
 #: discover/qml/ApplicationPageFullComponent.qml:361
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#, kde-format
 msgctxt "@info The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "対象年齢:"
@@ -662,8 +649,7 @@ msgid "%1+"
 msgstr "%1+"
 
 #: discover/qml/ApplicationPageFullComponent.qml:391
-#, fuzzy, kde-format
-#| msgid "See details"
+#, kde-format
 msgctxt "@action:button See content rating details"
 msgid "See details"
 msgstr "詳細を見る"
@@ -672,7 +658,7 @@ msgstr "詳細を見る"
 #, kde-format
 msgctxt "@action:button"
 msgid "Scroll to top"
-msgstr ""
+msgstr "最上部までスクロール"
 
 #: discover/qml/ApplicationsListPage.qml:57
 #, kde-format
@@ -720,14 +706,12 @@ msgid "Name"
 msgstr "名前"
 
 #: discover/qml/ApplicationsListPage.qml:129
-#, fuzzy, kde-format
-#| msgid "Submit review"
+#, kde-format
 msgid "Number of reviews"
-msgstr "レビューを送信"
+msgstr "レビューの数"
 
 #: discover/qml/ApplicationsListPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Rating"
+#, kde-format
 msgctxt "@item:inmenu sort by highest-rated apps"
 msgid "Rating"
 msgstr "評価"
@@ -746,7 +730,7 @@ msgstr "リリース日"
 #, kde-format
 msgctxt "@info"
 msgid "Group by Type"
-msgstr ""
+msgstr "タイプでグループ化"
 
 #: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
@@ -890,14 +874,12 @@ msgstr "次のスクリーンショット"
 #: discover/qml/DiscoverDrawer.qml:161
 #, kde-format
 msgid "Security updates available"
-msgstr ""
+msgstr "セキュリティの更新が利用可能です"
 
 #: discover/qml/DiscoverDrawer.qml:162
-#, fuzzy, kde-format
-#| msgctxt "@action:button as in, 'update all items'"
-#| msgid "Update All"
+#, kde-format
 msgid "Updates available"
-msgstr "すべて更新"
+msgstr "更新が利用可能です"
 
 #: discover/qml/DiscoverWindow.qml:48
 #, kde-format
@@ -927,10 +909,9 @@ msgid "&Updates (Fetching…)"
 msgstr "更新(&U) (取得中...)"
 
 #: discover/qml/DiscoverWindow.qml:102
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "更新"
+msgstr "更新(&U)"
 
 #: discover/qml/DiscoverWindow.qml:110
 #, kde-format
@@ -968,7 +949,7 @@ msgstr "この問題を %1 に報告する"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
-msgstr ""
+msgstr "Discover はオフラインです"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
@@ -976,6 +957,8 @@ msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
 msgstr ""
+"アプリケーションをインストールしたりシステムを更新したりするにはネットワーク"
+"に接続してください。"
 
 #: discover/qml/DiscoverWindow.qml:365
 #, kde-format
@@ -1059,6 +1042,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"使用状況に関する匿名の情報を共有していただくことで、KDE による Discover の改"
+"善に協力できます。"
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1452,11 +1437,10 @@ msgid "Show contents"
 msgstr "内容を表示"
 
 #: discover/qml/SourcesPage.qml:309
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "リソースが見つかりません: %1"
+msgstr "このソースを有効化"
 
 #: discover/qml/SourcesPage.qml:330
 #, kde-format
@@ -1522,12 +1506,10 @@ msgid "Update All"
 msgstr "すべて更新"
 
 #: discover/qml/UpdatesPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Updates will be installed after the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
-msgstr "システムの再起動後に更新はインストールされます"
+msgstr "保留中の更新はシステムの再起動時にインストールされます"
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format
@@ -1548,26 +1530,22 @@ msgstr "すべて選択解除"
 #, kde-format
 msgctxt "@info After updates complete, shut down/restart/quit"
 msgid "After updates complete:"
-msgstr ""
+msgstr "更新が完了した後:"
 
 #: discover/qml/UpdatesPage.qml:293
 #, kde-format
 msgctxt "@item:inlistbox after updates complete, do nothing"
 msgid "Do nothing"
-msgstr ""
+msgstr "何もしない"
 
 #: discover/qml/UpdatesPage.qml:294
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Restart"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, restart"
 msgid "Restart"
 msgstr "再起動"
 
 #: discover/qml/UpdatesPage.qml:295
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shut down"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, shut down"
 msgid "Shut down"
 msgstr "シャットダウン"
@@ -1576,7 +1554,7 @@ msgstr "シャットダウン"
 #, kde-format
 msgctxt "@item:inlistbox after updates complete, quit"
 msgid "Quit"
-msgstr ""
+msgstr "終了"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1595,14 +1573,10 @@ msgid "Installing"
 msgstr "インストール中"
 
 #: discover/qml/UpdatesPage.qml:543
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-#| "\"Ubuntu\""
-#| msgid "From %1"
+#, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "%1 から"
+msgstr "ソース:"
 
 #: discover/qml/UpdatesPage.qml:560
 #, kde-format
@@ -1613,8 +1587,7 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:572
-#, fuzzy, kde-format
-#| msgid "More Information…"
+#, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "詳細情報..."
@@ -1661,40 +1634,3 @@ msgstr "更新の確認が必要です"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "最後の更新時刻は不明です"
-
-#~ msgid ""
-#~ "You can help us improving this application by sharing statistics and "
-#~ "participate in surveys."
-#~ msgstr ""
-#~ "統計を共有したり、調査に参加したりすることでこのアプリケーションの改善に協"
-#~ "力できます。"
-
-#~ msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
-#~ msgid ","
-#~ msgstr ","
-
-#~ msgctxt "Show all licenses of the package"
-#~ msgid "See more…"
-#~ msgstr "さらに見る..."
-
-#~ msgctxt ""
-#~ "@info on the completion of updates, the action that automatically happens "
-#~ "after (e.g shut down)"
-#~ msgid "On completion, automatically:"
-#~ msgstr "完了時、自動的に:"
-
-#~ msgctxt "@item:inlistbox placeholder for when no action is selected"
-#~ msgid "Select an action"
-#~ msgstr "アクションを選択"
-
-#, fuzzy
-#~| msgctxt "@title:group"
-#~| msgid "Most Popular"
-#~ msgid "Popularity"
-#~ msgstr "人気"
-
-#~ msgid "Update from:"
-#~ msgstr "更新の配信元:"
-
-#~ msgid "&Updates (%1)"
-#~ msgstr "%1 件の更新(&U)"
