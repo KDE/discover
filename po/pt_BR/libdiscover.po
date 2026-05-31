@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-30 00:47+0000\n"
-"PO-Revision-Date: 2026-05-28 06:19-0300\n"
+"PO-Revision-Date: 2026-05-30 06:32-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -1012,14 +1012,7 @@ msgid "Replacement Available"
 msgstr "Substituto disponível"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?<nl/"
-#| "><nl/>Your settings and data will be transferred to the new application."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1033,8 +1026,10 @@ msgid ""
 msgstr ""
 "<resource>%1</resource> não está mais recebendo atualizações.<nl/><nl/"
 ">Deseja substituí-lo pela versão suportada fornecida por <resource>%2</"
-"resource>?<nl/><nl/>Suas configurações e dados serão transferidos para o "
-"novo aplicativo."
+"resource>?<nl/><nl/>Suas configurações e dados serão transferidas "
+"automaticamente para o novo aplicativo.<nl/><nl/>Se o aplicativo antigo "
+"estiver no seu painel ou nos favoritos do Lançador de Aplicativos, você "
+"precisará removê-lo e adicionar o novo manualmente."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format

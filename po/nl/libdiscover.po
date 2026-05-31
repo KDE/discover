@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-30 00:47+0000\n"
-"PO-Revision-Date: 2026-05-28 12:41+0200\n"
+"PO-Revision-Date: 2026-05-30 11:45+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1010,14 +1010,7 @@ msgid "Replacement Available"
 msgstr "Vervanging beschikbaar"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?<nl/"
-#| "><nl/>Your settings and data will be transferred to the new application."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1031,8 +1024,10 @@ msgid ""
 msgstr ""
 "<resource>%1</resource> wordt niet langer bijgewerkt.<nl/><nl/>Vervang het "
 "door de ondersteunde versie geleverd door <resource>%2</resource>?<nl/><nl/"
-">Uw instellingen en gegevens zullen overgebracht worden naar de nieuw "
-"toepassing."
+">Uw instellingen en gegevens zullen automatisch overgebracht worden naar de "
+"nieuw toepassing.<nl/><nl/>Als de oude toepassing in uw paneel of favorieten "
+"van de programmastarter staat, zal het nodig zijn om het te verwijderen en "
+"handmatig de nieuwe daar toe te voegen."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format

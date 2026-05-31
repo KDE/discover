@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-22 00:45+0000\n"
-"PO-Revision-Date: 2026-05-13 19:19+0200\n"
+"PO-Revision-Date: 2026-05-30 11:13+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 26.04.1\n"
+"X-Generator: Poedit 3.9\n"
 
 #: discover/DiscoverObject.cpp:198
 #, kde-format
@@ -102,7 +102,7 @@ msgstr "Nelze otevřít %1"
 #: discover/DiscoverObject.cpp:419
 #, kde-format
 msgid "Please make sure Snap support is installed"
-msgstr "Prosím zkontrolujte, zda je Snap správně nainstalován."
+msgstr "Prosím zkontrolujte, zda je Snap správně nainstalován"
 
 #: discover/DiscoverObject.cpp:422
 #, kde-format
@@ -506,17 +506,17 @@ msgstr "Zatím nebyly zveřejněny žádné recenze"
 #, kde-format
 msgctxt "@info placeholder explanation"
 msgid "Install to write a review"
-msgstr "Nainstalujte, abyste mohli napsat recenzi."
+msgstr "Nainstalujte, abyste mohli napsat recenzi"
 
 #: discover/qml/ApplicationPage.qml:501 discover/qml/ApplicationPage.qml:545
 #, kde-format
 msgid "Write a Review"
-msgstr "Napište hodnocení..."
+msgstr "Napište hodnocení"
 
 #: discover/qml/ApplicationPage.qml:501 discover/qml/ApplicationPage.qml:545
 #, kde-format
 msgid "Install to Write a Review"
-msgstr "Nainstalujte, abyste mohli napsat recenzi."
+msgstr "Nainstalujte, abyste mohli napsat recenzi"
 
 #: discover/qml/ApplicationPage.qml:529
 #, kde-format
@@ -1045,7 +1045,7 @@ msgstr "Nastavit zpětnou vazbu…"
 #: discover/qml/Feedback.qml:31 discover/qml/SourcesPage.qml:23
 #, kde-format
 msgid "Configure Updates…"
-msgstr "Nastavit aktualizace..."
+msgstr "Nastavit aktualizace…"
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1282,7 +1282,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr "havárie,segfault,kolabuje,spadne,spadla,spadlo,padá"
+msgstr "havárie,segfault"
 
 #: discover/qml/ReviewDialog.qml:171
 #, kde-format
@@ -1318,7 +1318,7 @@ msgstr "Pokračujte ve psaní…"
 #: discover/qml/ReviewDialog.qml:205
 #, kde-format
 msgid "Too long!"
-msgstr "Příliš dlouhé"
+msgstr "Příliš dlouhé!"
 
 #: discover/qml/ReviewDialog.qml:208
 #, kde-format

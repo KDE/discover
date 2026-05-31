@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-30 00:47+0000\n"
-"PO-Revision-Date: 2026-05-28 15:01+0300\n"
+"PO-Revision-Date: 2026-05-30 19:17+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1007,14 +1007,7 @@ msgid "Replacement Available"
 msgstr "Alternatif Kullanılabilir"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?<nl/"
-#| "><nl/>Your settings and data will be transferred to the new application."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1028,7 +1021,9 @@ msgid ""
 msgstr ""
 "<resource>%1</resource> artık güncellemeler almıyor.<nl/><nl/>Onu, <resource>"
 "%2</resource> tarafından sağlanan desteklenen sürümle değiştirmek ister "
-"misiniz?<nl/><nl/>Ayarlarınız ve veriniz yeni uygulamaya aktarılacaktır."
+"misiniz?<nl/><nl/>Ayarlarınız ve veriniz yeni uygulamaya aktarılacaktır.<nl/"
+"><nl/>Eski uygulama panelinizde veya Uygulama Başlatıcısı favorilerinizde "
+"bulunuyorsa onu kaldırmanız ve yenisini elle eklemeniz gerekecektir."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format

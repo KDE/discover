@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-30 00:47+0000\n"
-"PO-Revision-Date: 2026-05-28 09:11+0200\n"
+"PO-Revision-Date: 2026-05-30 09:10+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1013,14 +1013,7 @@ msgid "Replacement Available"
 msgstr "Substitució disponible"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?<nl/"
-#| "><nl/>Your settings and data will be transferred to the new application."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1034,7 +1027,9 @@ msgid ""
 msgstr ""
 "<resource>%1</resource> ja no rep actualitzacions.<nl/><nl/>El substitueixo "
 "per la versió mantinguda proporcionada per <resource>%2</resource>?<nl/><nl/"
-">La vostra configuració i dades es transferiran a l'aplicació nova."
+">La vostra configuració i dades es transferiran a l'aplicació nova.<nl/><nl/"
+">Si l'aplicació antiga és al plafó o als preferits del llançador "
+"d'aplicacions, haureu d'eliminar-la i afegir-hi manualment la nova."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
