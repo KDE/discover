@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-22 02:47+0000\n"
-"PO-Revision-Date: 2026-05-13 19:19+0200\n"
+"PO-Revision-Date: 2026-05-30 11:10+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 26.04.1\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -123,12 +123,12 @@ msgstr "Chyba"
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:39
 #, kde-format
 msgid "Failed to open APK database!"
-msgstr "Selhalo otevírání databáze APK."
+msgstr "Selhalo otevírání databáze APK!"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
 #, kde-format
 msgid "Failed to get a list of packages to upgrade!"
-msgstr "Selhalo získání seznamu balíčků pro aktualizaci."
+msgstr "Selhalo získání seznamu balíčků pro aktualizaci!"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -708,7 +708,7 @@ msgstr "Přístup ke vzdálenému přihlášení"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:906
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
-msgstr "Může iniciovat požadavky na vzdálené přihlášení pomocí protokolu SSH."
+msgstr "Může iniciovat požadavky na vzdálené přihlášení pomocí protokolu SSH"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
@@ -1069,7 +1069,7 @@ msgstr "Smazat nastavení a uživatelská data"
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
 msgid "Clearing settings and user data…"
-msgstr "Vymazání nastavení a uživatelských dat..."
+msgstr "Vymazání nastavení a uživatelských dat…"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:26
 #: libdiscover/backends/PackageKitBackend/qml/PackageKitPermissions.qml:23
@@ -1713,7 +1713,7 @@ msgstr "Čeká se…"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
 #, kde-format
 msgid "Refreshing Cache…"
-msgstr "Obnovuji mezipaměť..."
+msgstr "Obnovuji mezipaměť…"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
 #, kde-format
@@ -2210,7 +2210,7 @@ msgstr[2] "%1 balíčků bude aktualizováno"
 msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
 msgstr ""
 "<h3>%1</h3>Aktualizace na novou verzi %2<br/>K dispozici nejsou žádné "
-"informace o vydání."
+"informace o vydání"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
 #, kde-format
@@ -2361,7 +2361,7 @@ msgstr[2] ""
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
 #, kde-format
 msgid "Show Dependencies…"
-msgstr "Zobrazit závislosti..."
+msgstr "Zobrazit závislosti…"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:43
 #, kde-format
@@ -2403,7 +2403,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
-msgstr "Zahájit aktualizaci..."
+msgstr "Zahájit aktualizaci…"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:524
 #, kde-format
@@ -2416,7 +2416,7 @@ msgstr ""
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Před operací ‚rebase’ na novou hlavní verzi, proveďte prosím aktualizaci na "
-"nejnovější dostupnou verzi."
+"nejnovější dostupnou verzi"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:535
 #, kde-format
