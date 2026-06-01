@@ -1011,14 +1011,7 @@ msgid "Replacement Available"
 msgstr "Náhrada dostupná"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?<nl/"
-#| "><nl/>Your settings and data will be transferred to the new application."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1032,7 +1025,9 @@ msgid ""
 msgstr ""
 "<resource>%1</resource> už nedostáva aktualizácie.<nl/><nl/>Nahradiť ho "
 "podporovanou verziou od <resource>%2</resource>?<nl/><nl/>Vaše nastavenia a "
-"údaje sa prenesú do novej aplikácie."
+"údaje sa automaticky prenesú do novej aplikácie.<nl/><nl/>Ak je stará "
+"aplikácia vo vašom paneli alebo medzi obľúbenými položkami v spúšťači "
+"aplikácií, budete ju musieť odstrániť a ručne tam pridať novú."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
