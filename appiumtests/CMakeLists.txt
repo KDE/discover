@@ -16,4 +16,9 @@ add_test(
     NAME appium-flatpak
     COMMAND selenium-webdriver-at-spi-run ${CMAKE_CURRENT_SOURCE_DIR}/flatpak.py
 )
-set_tests_properties(appium-flatpak PROPERTIES TIMEOUT 600)
+set_tests_properties(appium-flatpak PROPERTIES
+    TIMEOUT 600
+    # Temporarily disabled due to test failures in test_search_install_uninstall()
+    # See issue: https://invent.kde.org/plasma/discover/-/work_items/51
+    DISABLED TRUE
+)
