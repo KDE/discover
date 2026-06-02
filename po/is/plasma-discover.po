@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-22 00:45+0000\n"
-"PO-Revision-Date: 2026-05-06 10:37+0000\n"
+"PO-Revision-Date: 2026-06-01 12:33+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -734,7 +734,7 @@ msgstr "Útgáfudagur"
 #, kde-format
 msgctxt "@info"
 msgid "Group by Type"
-msgstr ""
+msgstr "Hópa eftir tegund"
 
 #: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
@@ -959,6 +959,7 @@ msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
 msgstr ""
+"Þú þarf að tengjast við netkerfi til að setja upp forrit og uppfæra kerfið."
 
 #: discover/qml/DiscoverWindow.qml:365
 #, kde-format
@@ -1041,6 +1042,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"Hjálpaðu KDE við að bæta Discover-forritið með því að deila nafnlaust með "
+"okkur hvernig þú notar það."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1435,11 +1438,10 @@ msgid "Show contents"
 msgstr "Sýna innihald"
 
 #: discover/qml/SourcesPage.qml:309
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "Fann ekki tilfang: %1"
+msgstr "Virkja þessi upptök"
 
 #: discover/qml/SourcesPage.qml:330
 #, kde-format
@@ -1501,12 +1503,10 @@ msgid "Update All"
 msgstr "Uppfæra allt"
 
 #: discover/qml/UpdatesPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Updates will be installed after the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
-msgstr "Uppfærslur verða settar upp þegar tölvan hefur verið endurræst"
+msgstr "Uppfærsla í bið verður sett upp þegar tölvan hefur verið endurræst"
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format

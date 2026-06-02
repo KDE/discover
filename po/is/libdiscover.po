@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-30 00:47+0000\n"
-"PO-Revision-Date: 2026-04-15 10:06+0000\n"
+"PO-Revision-Date: 2026-06-01 18:19+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -1002,13 +1002,7 @@ msgid "Replacement Available"
 msgstr "Annar hugbúnaður er þegar til staðar"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1021,7 +1015,11 @@ msgid ""
 "there."
 msgstr ""
 "<resource>%1</resource> fær ekki lengur neinar uppfærslur.<nl/><nl/>Á að "
-"skipt því út fyrir útgáfuna sem studd er af <resource>%2</resource>?"
+"skipt því út fyrir útgáfuna sem studd er af <resource>%2</resource>?<nl/><nl/"
+">Stillingar þínar og gögn verða flutt sjálfkrafa yfir í nýja forritið.<nl/"
+"><nl/>Ef gamla forritið er í kerfisstikunni eða eftirlætum "
+"forritaræsisgræjunnar, þá þarftu að fjarlægja þær færslur og bæta nýja "
+"forritinu handvirkt við þar."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -1064,15 +1062,16 @@ msgid "View Stable Version on %1"
 msgstr "Skoða stöðuga útgáfu á %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
-#, fuzzy, kde-format
-#| msgid "%1 is not installed but it still has data present."
+#, kde-format
 msgid "%1 is not installed but it still has user data and settings present."
-msgstr "%1 er ekki uppsett en gögn sem tengjast því eru samt til staðar."
+msgstr ""
+"%1 er ekki uppsett en notendagögn og stillingar sem því tengjast eru samt "
+"til staðar."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "Setja í ruslið"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
@@ -2423,9 +2422,7 @@ msgstr ""
 "Fjartengd tilvísun fyrir yfirfærsluaðgerð vantar. Sendu inn villuskýrslu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "Stýrikerfi"
 
@@ -2728,32 +2725,25 @@ msgid "Refreshing %1"
 msgstr "Endurles %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:561
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@label"
 msgid "Applications"
 msgstr "Forrit"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:563
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Addons"
+#, kde-format
 msgctxt "@label"
 msgid "Addons"
 msgstr "Viðbætur"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:565
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Support"
+#, kde-format
 msgctxt "@label"
 msgid "Application Support"
 msgstr "Stuðningur við forrit"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:567
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "System"
+#, kde-format
 msgctxt "@label"
 msgid "System"
 msgstr "Kerfi"

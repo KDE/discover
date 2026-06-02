@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-22 00:45+0000\n"
-"PO-Revision-Date: 2026-05-19 10:09-0400\n"
+"PO-Revision-Date: 2026-05-29 17:23-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -1448,11 +1448,10 @@ msgid "Show contents"
 msgstr "مەزمۇننى كۆرسەت"
 
 #: discover/qml/SourcesPage.qml:309
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "مەنبەنى تاپالمىدى: %1"
+msgstr ""
 
 #: discover/qml/SourcesPage.qml:330
 #, kde-format
@@ -1586,7 +1585,7 @@ msgstr "ئورنىتىۋاتىدۇ"
 #, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "ئەۋەتكۈچى:"
+msgstr "كىمدىن:"
 
 #: discover/qml/UpdatesPage.qml:560
 #, kde-format

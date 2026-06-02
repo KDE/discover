@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-30 00:47+0000\n"
-"PO-Revision-Date: 2026-05-19 10:04-0400\n"
+"PO-Revision-Date: 2026-05-29 17:22-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
@@ -938,7 +938,7 @@ msgstr "%1 مەنبەنى قوشالمايدۇ"
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid "Removing '%1'"
-msgstr "«%1» چىقىرىۋېتىۋاتىدۇ…"
+msgstr "«%1» چىقىرىۋېتىۋاتىدۇ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
 #, kde-format
@@ -1001,13 +1001,7 @@ msgid "Replacement Available"
 msgstr "ئالماشتۇرغىلى بولىدىغىنى بار"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1019,8 +1013,6 @@ msgid ""
 "Launcher favorites, you will need to remove it and manually add the new one "
 "there."
 msgstr ""
-"<resource>%1</resource> ئەمدى يېڭىلاشنى تاپشۇرۇۋالمايدۇ.<nl/><nl/>ئۇنى "
-"<resource>%2</resource> تەمىنلىگەن قوللايدىغان نەشرىگە ئالماشتۇرامسىز؟"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -1062,15 +1054,14 @@ msgid "View Stable Version on %1"
 msgstr "%1 دىكى مۇقىم نەشرىنى كۆرسەت"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
-#, fuzzy, kde-format
-#| msgid "%1 is not installed but it still has data present."
+#, kde-format
 msgid "%1 is not installed but it still has user data and settings present."
-msgstr "%1 ئورنىتىلمىدى ئەمما سانلىق مەلۇماتى مەۋجۇت."
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "ئەخلەتخانىغا يۆتكە"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
@@ -2733,32 +2724,25 @@ msgid "Refreshing %1"
 msgstr "%1 نى يېڭىلاۋاتىدۇ"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:561
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@label"
 msgid "Applications"
 msgstr "پىروگرامما"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:563
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Addons"
+#, kde-format
 msgctxt "@label"
 msgid "Addons"
 msgstr "قوشۇلما"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:565
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Support"
+#, kde-format
 msgctxt "@label"
 msgid "Application Support"
 msgstr "پىروگرامما قوللاش"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:567
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "System"
+#, kde-format
 msgctxt "@label"
 msgid "System"
 msgstr "سىستېما"
@@ -2851,6 +2835,16 @@ msgstr "سىستېما يۇمشاق دېتالى"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "قوشۇلما"
+
+#~ msgctxt ""
+#~ "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
+#~ "though)"
+#~ msgid ""
+#~ "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
+#~ "it with the supported version provided by <resource>%2</resource>?"
+#~ msgstr ""
+#~ "<resource>%1</resource> ئەمدى يېڭىلاشنى تاپشۇرۇۋالمايدۇ.<nl/><nl/>ئۇنى "
+#~ "<resource>%2</resource> تەمىنلىگەن قوللايدىغان نەشرىگە ئالماشتۇرامسىز؟"
 
 #~ msgid "Delete settings and user data"
 #~ msgstr "تەڭشەك ۋە ئىشلەتكۈچى سانلىق مەلۇماتىنى ئۆچۈر"
