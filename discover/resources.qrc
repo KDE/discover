@@ -7,6 +7,7 @@
     <file>qml/ApplicationPageStickyHeader.qml</file>
     <file>qml/ApplicationPageFullComponent.qml</file>
     <file>qml/ApplicationPageStickyComponent.qml</file>
+    <file>qml/ApplicationPageInstallButton.qml</file>
     <file>qml/ApplicationResourceButton.qml</file>
     <file>qml/BasicAbstractCard.qml</file>
     <file>qml/ReviewsPage.qml</file>

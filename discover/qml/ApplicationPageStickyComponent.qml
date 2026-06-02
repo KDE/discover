@@ -48,12 +48,18 @@ Kirigami.Padding {
             }
         }
 
+        ApplicationPageInstallButton {
+            application: stickyComponent.application
+        }
+
+        /*
         InstallApplicationButton {
             application: stickyComponent.application
             buttonActiveFocusOnTab: true
             availableFromOnlySingleSource: stickyComponent.availableFromOnlySingleSource
             hideInvokeButton: false
         }
+        */
 
         QQC2.Button {
             icon.name: "go-top-symbolic"
