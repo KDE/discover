@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-30 00:47+0000\n"
-"PO-Revision-Date: 2026-05-21 16:51+0300\n"
+"PO-Revision-Date: 2026-06-02 14:48+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1014,13 +1014,7 @@ msgid "Replacement Available"
 msgstr "Prieinamas pakaitalas"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1033,7 +1027,11 @@ msgid ""
 "there."
 msgstr ""
 "<resource>%1</resource> daugiau nebegauna atnaujinimų.<nl/><nl/>Ar pakeisti "
-"jį palaikoma versija, kurią teikia <resource>%2</resource>?"
+"jį palaikoma versija, kurią teikia <resource>%2</resource>?<nl/><nl/>Jūsų "
+"nuostatos ir duomenys bus automatiškai perkelti į naują programą.<nl/><nl/"
+">Jeigu sena programa yra skydelyje ar programų paleidyklės mėgstamų programų "
+"skiltyje, tada turite ją pašalinti ir rankiniu būdu ten pridėti naują "
+"programą."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -2454,9 +2452,7 @@ msgstr ""
 "Nurodymo operacijai trūksta nutolinės saugyklos. Praneškite apie klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "Operacinė sistema"
 
