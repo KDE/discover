@@ -52,6 +52,7 @@
   <name xml:lang="ta">PackageKit பின்நிலை</name>
   <name xml:lang="tg">Коркардкунандаи PackageKit</name>
   <name xml:lang="tr">PackageKit arka ucu</name>
+  <name xml:lang="ug">PackageKit ئارقا ئۇچى</name>
   <name xml:lang="uk">Модуль PackageKit</name>
   <name xml:lang="zh-CN">PackageKit 后端程序</name>
   <name xml:lang="zh-TW">PackageKit 後端</name>
@@ -162,6 +163,7 @@
   <developer_name xml:lang="ta">அலெயிக்சு போல் கொன்ஸாலெசு</developer_name>
   <developer_name xml:lang="tg">Алейкс Пол Гонзалес (Aleix Pol Gonzalez)</developer_name>
   <developer_name xml:lang="tr">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ug">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="zh-CN">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="zh-TW">Aleix Pol Gonzalez</developer_name>
