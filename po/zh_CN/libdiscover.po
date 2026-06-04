@@ -978,14 +978,7 @@ msgid "Replacement Available"
 msgstr "有可用的替代软件包"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?<nl/"
-#| "><nl/>Your settings and data will be transferred to the new application."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -997,9 +990,6 @@ msgid ""
 "Launcher favorites, you will need to remove it and manually add the new one "
 "there."
 msgstr ""
-"<resource>%1</resource> 已经停止更新。<nl/><nl/>是否替换为 <resource>%2</"
-"resource> 提供的受支持版本？<nl/><nl/>您的设置和数据将被转移到新版应用程序"
-"中。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
