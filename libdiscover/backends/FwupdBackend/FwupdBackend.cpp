@@ -245,11 +245,8 @@ FwupdResource *FwupdBackend::createApp(FwupdDevice *device)
 void FwupdBackend::handleError(GError *perror)
 {
     // TODO: localise the error message
-    if (perror && !g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE)
-        && !g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO)
-        // "Systemd service is masked" error, which is not really an error, but has no clean GError string,
-        // so we have to compare codes and strings. Thankfully it's unlocalized!
-        && !(perror->code == 3 && QString::fromUtf8(perror->message).contains(QStringLiteral("unit is masked")))) {
+    if (perror && !g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_INVALID_FILE) && !g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_NOT_SUPPORTED)
+        && !g_error_matches(perror, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO)) {
         const QString msg = QString::fromUtf8(perror->message);
         QTimer::singleShot(0, this, [this, msg]() {
             Q_EMIT passiveMessage(msg);
