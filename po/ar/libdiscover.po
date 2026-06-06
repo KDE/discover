@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-30 00:47+0000\n"
-"PO-Revision-Date: 2026-05-21 11:35+0400\n"
+"PO-Revision-Date: 2026-06-05 11:51+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -997,13 +997,7 @@ msgid "Replacement Available"
 msgstr "البديل المتوفر"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1015,8 +1009,11 @@ msgid ""
 "Launcher favorites, you will need to remove it and manually add the new one "
 "there."
 msgstr ""
-"<resource>%1</resource> لم يعد يتلقى التحديثات.<nl/><nl/>هل تريد تبديله إلى "
-"الإصدار المدعوم المقدم من <resource>%2</resource>؟"
+"<resource>%1</resource> لم يعد يتلقى التحديثات.<nl/><nl/>هل تريد استبداله "
+"بالإصدار المعتمد المقدم من <resource>%2</resource>؟<nl/><nl/>ستُنقل إعداداتك "
+"وبياناتك آليًا إلى التطبيق الجديد.<nl/><nl/>إذا كان التطبيق القديم موجودًا في "
+"لوحة التحكم أو قائمة المفضلة في مشغل التطبيقات، فستحتاج إلى إزالته وإضافة "
+"التطبيق الجديد يدويًا إلى هناك."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -2433,9 +2430,7 @@ msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "ينقص إحالة بعيدة إلى عملية إعادة تأسيس النظام. الرجاء أبلغ عنها."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "نظام التشغيل"
 
