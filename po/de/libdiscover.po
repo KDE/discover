@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-30 00:47+0000\n"
-"PO-Revision-Date: 2026-05-23 21:52+0200\n"
+"PO-Revision-Date: 2026-06-05 11:21+0200\n"
 "Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -1017,13 +1017,7 @@ msgid "Replacement Available"
 msgstr "Ersatz verfügbar"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1036,7 +1030,12 @@ msgid ""
 "there."
 msgstr ""
 "<resource>%1</resource> erhält keine Aktualisierungen mehr.<nl/><nl/>Möchten "
-"Sie es durch die unterstützte Version von <resource>%2</resource> ersetzen?"
+"Sie es durch die unterstützte Version, die von <resource>%2</resource> "
+"bereitgestellt wird, ersetzen?<nl/><nl/>Ihre Einstellungen und Daten werden "
+"automatisch zur neuen Anwendung überführt.<nl/><nl/>Wenn Sie eine "
+"Verknüpfung zur alten Anwendung in Ihrer Kontrollleiste oder in den "
+"Favoriten des Anwendungsstarters haben, müssen Sie diese Verknüpfung manuell "
+"entfernen und durch eine Verknüpfung zur neuen Anwendung ersetzen."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -2459,9 +2458,7 @@ msgstr ""
 "einen Fehlerbericht."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "Betriebssystem"
 

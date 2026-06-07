@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-30 00:47+0000\n"
-"PO-Revision-Date: 2026-05-25 18:33+0200\n"
+"PO-Revision-Date: 2026-06-06 11:50+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -984,13 +984,7 @@ msgid "Replacement Available"
 msgstr "대체 항목 사용 가능"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1002,8 +996,11 @@ msgid ""
 "Launcher favorites, you will need to remove it and manually add the new one "
 "there."
 msgstr ""
-"<resource>%1</resource>이(가) 더 이상 업데이트되지 않습니다.<nl/><nl/"
-"><resource>%2</resource>에 있는 지원 중인 버전으로 대체하시겠습니까?"
+"<resource>%1</resource>에서 더 이상 업데이트를 받을 수 없습니다.<nl/><nl/"
+"><resource>%2</resource>에서 제공하는 지원 중인 버전으로 교체하시겠습니까?"
+"<nl/><nl/>사용 중인 설정과 데이터는 새 앱으로 자동으로 이전됩니다.<nl/><nl/>"
+"기존 앱이 패널이나 앱 실행기 책갈피에 등록되어 있었다면 수동으로 삭제 후 다"
+"시 등록해야 합니다."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -2386,9 +2383,7 @@ msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "rebase 작업에 원격 참조가 없습니다. 버그를 보고해 주십시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "운영 체제"
 
