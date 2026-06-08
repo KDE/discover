@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-30 00:47+0000\n"
-"PO-Revision-Date: 2026-05-21 00:32+0900\n"
+"PO-Revision-Date: 2026-06-07 16:08+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -981,13 +981,7 @@ msgid "Replacement Available"
 msgstr "有可用的替換品"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1000,7 +994,9 @@ msgid ""
 "there."
 msgstr ""
 "<resource>%1</resource> 已不再接收更新。<nl/><nl/><resource>%2</resource> 提"
-"供受支援的版本，要改用它嗎？"
+"供受支援的版本，要改用它嗎？<nl/><nl/>您的設定與資料會自動移轉給新的應用程"
+"式。<nl/><nl/>如果舊的應用程式在您的面板上或是已在應用程式啟動器裡加入最愛，"
+"您會需要將它移除然後再自己加入新的應用程式。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -2366,9 +2362,7 @@ msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "缺乏重定基底操作用的遠端 ref。請回報問題。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "作業系統"
 
