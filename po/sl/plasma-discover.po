@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 00:45+0000\n"
+"POT-Creation-Date: 2026-06-09 00:45+0000\n"
 "PO-Revision-Date: 2026-05-13 06:59+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -128,13 +128,13 @@ msgstr ""
 "(Ni vnosa za %1)<nl/><nl/>Prosimo, <link url='%2'>prijavite to težavo na%3.</"
 "link>"
 
-#: discover/DiscoverObject.cpp:509 discover/DiscoverObject.cpp:511
+#: discover/DiscoverObject.cpp:515 discover/DiscoverObject.cpp:517
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:512
+#: discover/DiscoverObject.cpp:518
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

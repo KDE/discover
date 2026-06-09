@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 00:45+0000\n"
+"POT-Creation-Date: 2026-06-09 00:45+0000\n"
 "PO-Revision-Date: 2021-09-19 20:01+0630\n"
 "Last-Translator: ဇေယျာလွင် <lw1nzayar@yandex.com>\n"
 "Language-Team: Burmese <kde-i18n-doc@kde.org>\n"
@@ -103,13 +103,13 @@ msgid ""
 "link>"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:509 discover/DiscoverObject.cpp:511
+#: discover/DiscoverObject.cpp:515 discover/DiscoverObject.cpp:517
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "ဒစ်(စ)ကာဗာ"
 
-#: discover/DiscoverObject.cpp:512
+#: discover/DiscoverObject.cpp:518
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

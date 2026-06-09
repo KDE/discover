@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 00:45+0000\n"
+"POT-Creation-Date: 2026-06-09 00:45+0000\n"
 "PO-Revision-Date: 2026-03-05 20:28+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
@@ -135,13 +135,13 @@ msgid ""
 msgstr ""
 
 # Namnet på programmet, som eg til slutt har funne ut at ikkje bør omsetjast. – KOH
-#: discover/DiscoverObject.cpp:509 discover/DiscoverObject.cpp:511
+#: discover/DiscoverObject.cpp:515 discover/DiscoverObject.cpp:517
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:512
+#: discover/DiscoverObject.cpp:518
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

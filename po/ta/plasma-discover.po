@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 00:45+0000\n"
+"POT-Creation-Date: 2026-06-09 00:45+0000\n"
 "PO-Revision-Date: 2026-05-10 16:28+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -114,13 +114,13 @@ msgstr ""
 "(%1 என்பதற்கு எந்த பதிவும் இல்லை)<nl/><nl/>இதை %3-க்கு <link url='%2'>தெரிவிக்கவும்</"
 "link>."
 
-#: discover/DiscoverObject.cpp:509 discover/DiscoverObject.cpp:511
+#: discover/DiscoverObject.cpp:515 discover/DiscoverObject.cpp:517
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "டிஸ்கவர்"
 
-#: discover/DiscoverObject.cpp:512
+#: discover/DiscoverObject.cpp:518
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

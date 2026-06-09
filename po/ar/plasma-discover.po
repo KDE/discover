@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 00:45+0000\n"
+"POT-Creation-Date: 2026-06-09 00:45+0000\n"
 "PO-Revision-Date: 2026-05-21 11:34+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -122,13 +122,13 @@ msgstr ""
 "(لا يوجد إدخال لـ %1)<nl/><nl/>يرجى <link url='%2'>الإبلاغ عن هذه المشكلة "
 "إلى %3.</link>"
 
-#: discover/DiscoverObject.cpp:509 discover/DiscoverObject.cpp:511
+#: discover/DiscoverObject.cpp:515 discover/DiscoverObject.cpp:517
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "استكشف"
 
-#: discover/DiscoverObject.cpp:512
+#: discover/DiscoverObject.cpp:518
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
