@@ -1,7 +1,7 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Artur Chłond <eugenewolfe@o2.pl>, 2011.
-# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2011-2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
 # Ignacy Kajdan <ignacy.kajdan@gmail.com>, 2021.
 #
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-22 02:47+0000\n"
-"PO-Revision-Date: 2026-04-11 07:22+0200\n"
+"PO-Revision-Date: 2026-06-13 17:18+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 25.08.2\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2743,32 +2743,25 @@ msgid "Refreshing %1"
 msgstr "Odświeżanie %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:561
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@label"
 msgid "Applications"
-msgstr "Programy"
+msgstr "Aplikacje"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:563
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Addons"
+#, kde-format
 msgctxt "@label"
 msgid "Addons"
 msgstr "Dodatki"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:565
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Support"
+#, kde-format
 msgctxt "@label"
 msgid "Application Support"
 msgstr "Obsługa aplikacji"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:567
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "System"
+#, kde-format
 msgctxt "@label"
 msgid "System"
 msgstr "System"
@@ -2842,7 +2835,7 @@ msgstr "Porzucona"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
-msgstr "Programy"
+msgstr "Aplikacje"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:138
 #, kde-format
