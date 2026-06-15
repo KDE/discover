@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-09 00:45+0000\n"
-"PO-Revision-Date: 2026-05-28 18:06+0200\n"
+"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"PO-Revision-Date: 2026-05-30 21:19+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1008,14 +1008,7 @@ msgid "Replacement Available"
 msgstr "Sostituzione disponibile"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?<nl/"
-#| "><nl/>Your settings and data will be transferred to the new application."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1030,6 +1023,9 @@ msgstr ""
 "<resource>%1</resource> non riceve più aggiornamenti.<nl/><nl/>Sostituiscilo "
 "con la versione supportata fornita da <resource>%2</resource>?<nl/><nl/>Le "
 "tue impostazioni e i tuoi dati saranno trasferiti alla nuova applicazione."
+"<nl/><nl/>Se la vecchia applicazione è presente nel pannello o nei preferiti "
+"di Avviatore applicazioni, dovrai rimuoverla e aggiungere manualmente la "
+"nuova."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -1100,7 +1096,7 @@ msgstr "Permessi"
 msgid "Configure permissions…"
 msgstr "Configura i permessi..."
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:493
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:490
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"
