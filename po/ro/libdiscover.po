@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-15 00:45+0000\n"
-"PO-Revision-Date: 2026-05-17 13:45+0100\n"
+"PO-Revision-Date: 2026-06-15 14:47+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -1005,13 +1005,7 @@ msgid "Replacement Available"
 msgstr "Înlocuire disponibilă"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1023,8 +1017,12 @@ msgid ""
 "Launcher favorites, you will need to remove it and manually add the new one "
 "there."
 msgstr ""
-"<resource>%1</resource> nu mai primește actualizări.<nl/><nl/>Înlocuiți cu "
-"versiunea ce beneficiază de suport oferită de <resource>%2</resource>?"
+"<resource>%1</resource> nu mai primește actualizări.<nl/><nl/>O înlocuiți cu "
+"versiunea susținută ce e oferită de către <resource>%2</resource>?<nl/><nl/"
+">Configurările și datele dumneavoastră vor fi transferate automat la noua "
+"aplicație.<nl/><nl/>Dacă vechea aplicație se află pe panou sau în favoritele "
+"lansatorului de aplicații, va trebui să o eliminați și să o adăugați manual "
+"pe cea nouă în loc."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -1066,15 +1064,16 @@ msgid "View Stable Version on %1"
 msgstr "Vezi versiunea stabilă pe %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
-#, fuzzy, kde-format
-#| msgid "%1 is not installed but it still has data present."
+#, kde-format
 msgid "%1 is not installed but it still has user data and settings present."
-msgstr "%1 nu e instalat dar încă mai are date prezente."
+msgstr ""
+"%1 nu e instalat dar încă mai are date și configurări ale utilizatorului "
+"prezente."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "Mută la gunoi"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
@@ -2438,9 +2437,7 @@ msgstr ""
 "un defect."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "Sistem de operare"
 
