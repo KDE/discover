@@ -1642,37 +1642,3 @@ msgstr "Трябва да проверите за актуализации"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Неизвестно време от последното актуализиране"
-
-#~ msgid ""
-#~ "You can help us improving this application by sharing statistics and "
-#~ "participate in surveys."
-#~ msgstr ""
-#~ "Можете да ни помогнете да подобрим това приложение, като споделяте "
-#~ "статистически данни и участвате в анкети."
-
-#~ msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
-#~ msgid ","
-#~ msgstr ","
-
-#~ msgctxt "Show all licenses of the package"
-#~ msgid "See more…"
-#~ msgstr "Още…"
-
-#~ msgctxt ""
-#~ "@info on the completion of updates, the action that automatically happens "
-#~ "after (e.g shut down)"
-#~ msgid "On completion, automatically:"
-#~ msgstr "При завършване, автоматично:"
-
-#~ msgctxt "@item:inlistbox placeholder for when no action is selected"
-#~ msgid "Select an action"
-#~ msgstr "Избиране на действие"
-
-#~ msgid "Popularity"
-#~ msgstr "Популярност"
-
-#~ msgid "Update from:"
-#~ msgstr "Актуализиране от:"
-
-#~ msgid "&Updates (%1)"
-#~ msgstr "Актуа&лизации (%1)"
