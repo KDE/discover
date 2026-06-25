@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-15 00:45+0000\n"
-"PO-Revision-Date: 2026-05-17 12:29+0200\n"
+"PO-Revision-Date: 2026-06-24 13:27+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.04.1\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1012,13 +1012,7 @@ msgid "Replacement Available"
 msgstr "Ordezkoa erabilgarri"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1030,9 +1024,12 @@ msgid ""
 "Launcher favorites, you will need to remove it and manually add the new one "
 "there."
 msgstr ""
-"<resource>%1</resource>(e)k ez du aurrerantzean eguneratzerik  izango.<nl/"
+"<resource>%1</resource>(e)k ez du aurrerantzean eguneratzerik jasoko.<nl/"
 "><nl/><resource>%2</resource>(e)k eskaintzen duen euskarria duen "
-"bertsioarekin ordeztu?"
+"bertsioarekin ordeztu?<nl/><nl/>Zure ezarpenak eta datuak automatikoki "
+"transferituko dira aplikaziora.<nl/><nl/>Aplikazio zaharra zure panelean edo "
+"aplikazio-abiarazleko gogokoetan badago, hura kendu eta berria eskuz gehitu "
+"beharko duzu."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -1075,15 +1072,16 @@ msgid "View Stable Version on %1"
 msgstr "Ikusi %1(e)ko bertsio berria"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
-#, fuzzy, kde-format
-#| msgid "%1 is not installed but it still has data present."
+#, kde-format
 msgid "%1 is not installed but it still has user data and settings present."
-msgstr "%1 ez dago instalatuta baina oraindik badago haren daturik."
+msgstr ""
+"%1 ez dago instalatuta, baina oraindik erabiltzailearen datuak eta ezarpenak "
+"ditu."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "Eraman zakarrontzira"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
@@ -2444,9 +2442,7 @@ msgstr ""
 "txosten bat."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "Sistema eragilea"
 
