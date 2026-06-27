@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-15 00:45+0000\n"
-"PO-Revision-Date: 2026-05-22 11:59+0200\n"
+"PO-Revision-Date: 2026-06-26 17:57+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1008,13 +1008,7 @@ msgid "Replacement Available"
 msgstr "Reimplaciamento Disponibile"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1026,9 +1020,12 @@ msgid ""
 "Launcher favorites, you will need to remove it and manually add the new one "
 "there."
 msgstr ""
-"<resource>%1</resource> non es plus recipente actualisationes.<nl/><nl/"
-">Reimplacia illo con leversion suppoprtate fornite per <resource>%2</"
-"resource>?"
+"<resource>%1</resource> non recipe plus actualisationes.<nl/><nl/>Reimplacia "
+"lo  con le version supportate fornite per <resource>%2</resource>?<nl/><nl/> "
+"Tu configurationes e datos essera transferite automaticamente al nove "
+"application.<nl/><nl/> Si le ancian application es in tu pannello o in le "
+"favoritos del Lanciator de Applicationes,  tu debera remover lo e adder "
+"manualmente le nove version illac."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -2445,9 +2442,7 @@ msgstr ""
 "Remote ref mancante per le operation de rebase. Pro favor invia un bug."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "Systema operative o operational"
 
