@@ -83,6 +83,7 @@ Comment[ko]=앱과 추가 기능 설치 및 삭제
 Comment[lt]=Įdiegti ir šalinti programas bei papildinius
 Comment[lv]=Instalējiet un noņemiet programmas un pielikumus
 Comment[nl]=Installeer en verwijder toepassingen en add-ons
+Comment[nn]=Installer og fjern program og programtillegg
 Comment[pl]=Wgrywaj i usuwaj aplikacje oraz dodatki do nich
 Comment[pt]=Instalar e remover aplicações e extensões
 Comment[pt_BR]=Instalar e remover programas e complementos
