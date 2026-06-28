@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-09 00:45+0000\n"
-"PO-Revision-Date: 2026-03-05 20:28+0100\n"
+"PO-Revision-Date: 2026-06-27 12:08+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -14,16 +14,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.03.70\n"
+"X-Generator: Lokalize 26.07.70\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
 #: discover/DiscoverObject.cpp:198
-#, fuzzy, kde-format
-#| msgctxt "@title %1 is the distro name"
-#| msgid ""
-#| "%1 is not configured for installing apps through Discover—only app add-ons"
+#, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
 "%1 is not configured for installing apps through Discover—only app add-ons"
@@ -32,12 +29,7 @@ msgstr ""
 "programtillegg"
 
 #: discover/DiscoverObject.cpp:200
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:usagetip %1 is the distro name"
-#| msgid ""
-#| "To use Discover for apps, install your preferred module on the "
-#| "<interface>Settings</interface> page, under <interface>Missing Backends</"
-#| "interface>."
+#, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
 "To use Discover for apps, install your preferred module on the "
@@ -46,7 +38,8 @@ msgid ""
 msgstr ""
 "For å bruka Discover for å installera program må du først installera ein "
 "pakkemotor via <interface>Innstillingar</interface>-sida (under "
-"<interface>Manglande pakkemotorar</interface>)."
+"<interface>Manglande pakkemotorar</interface>).<nl/><nl/><link url='%1'>Meld "
+"frå om problemet til %2.</link>"
 
 #: discover/DiscoverObject.cpp:207
 #, kde-kuit-format
@@ -301,10 +294,9 @@ msgid "Cancel"
 msgstr "Avbryt"
 
 #: discover/qml/ApplicationDelegate.qml:160
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgid "No ratings"
-msgstr "Ingen karakterar enno"
+msgstr "Ingen karakterar"
 
 #: discover/qml/ApplicationPage.qml:67
 #, fuzzy, kde-kuit-format
@@ -510,10 +502,10 @@ msgid "External Links"
 msgstr "Eksterne lenkjer"
 
 #: discover/qml/ApplicationPage.qml:585
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the documentation"
-msgstr "Les den offisielle dokumentasjonen til prosjektet"
+msgstr "Les hjelpeteksten"
 
 #: discover/qml/ApplicationPage.qml:596
 #, kde-format
@@ -537,7 +529,7 @@ msgstr "Meld frå om feil"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
-msgstr ""
+msgstr "Bidra sjølv"
 
 #: discover/qml/ApplicationPage.qml:655
 #, kde-format
@@ -558,16 +550,13 @@ msgstr "Lisensinformasjon"
 
 #: discover/qml/ApplicationPageFullComponent.qml:114
 #: discover/qml/ApplicationPageStickyComponent.qml:46
-#, fuzzy, kde-format
-#| msgid "Unknown author"
+#, kde-format
 msgctxt "As in 'this app is made by an unknown author'"
 msgid "Unknown author"
 msgstr "Ukjend opphavsperson"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "%1 rating"
-#| msgid_plural "%1 ratings"
+#, kde-format
 msgctxt "@info as in the number of ratings an application has"
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -575,15 +564,13 @@ msgstr[0] "%1 karakter"
 msgstr[1] "%1 karakterar"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgctxt "@info"
 msgid "No ratings yet"
 msgstr "Ingen karakterar enno"
 
 #: discover/qml/ApplicationPageFullComponent.qml:196
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgctxt "@info"
 msgid "Version:"
 msgstr "Versjon:"
@@ -594,9 +581,7 @@ msgid "Size:"
 msgstr "Storleik:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:242
-#, fuzzy, kde-format
-#| msgid "License:"
-#| msgid_plural "Licenses:"
+#, kde-format
 msgctxt "@info"
 msgid "License:"
 msgid_plural "Licenses:"
@@ -617,20 +602,16 @@ msgid "What does this mean?"
 msgstr "Kva tyder dette?"
 
 #: discover/qml/ApplicationPageFullComponent.qml:348
-#, fuzzy, kde-format
-#| msgid "All Licenses"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "All licenses…"
-msgstr "Alle lisensane"
+msgstr "Alle lisensane …"
 
 #: discover/qml/ApplicationPageFullComponent.qml:361
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#, kde-format
 msgctxt "@info The app is suitable for people of the following ages or older"
 msgid "Ages:"
-msgstr "Alder:"
+msgstr "Aldrar:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:380
 #, kde-format
@@ -645,8 +626,7 @@ msgid "%1+"
 msgstr "%1+"
 
 #: discover/qml/ApplicationPageFullComponent.qml:391
-#, fuzzy, kde-format
-#| msgid "See details"
+#, kde-format
 msgctxt "@action:button See content rating details"
 msgid "See details"
 msgstr "Vis detaljar"
@@ -655,7 +635,7 @@ msgstr "Vis detaljar"
 #, kde-format
 msgctxt "@action:button"
 msgid "Scroll to top"
-msgstr ""
+msgstr "Rull til toppen"
 
 #: discover/qml/ApplicationsListPage.qml:57
 #, kde-format
@@ -706,14 +686,12 @@ msgid "Name"
 msgstr "Namn"
 
 #: discover/qml/ApplicationsListPage.qml:129
-#, fuzzy, kde-format
-#| msgid "Submit review"
+#, kde-format
 msgid "Number of reviews"
-msgstr "Send inn vurdering"
+msgstr "Talet på omtalar"
 
 #: discover/qml/ApplicationsListPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Rating"
+#, kde-format
 msgctxt "@item:inmenu sort by highest-rated apps"
 msgid "Rating"
 msgstr "Karakter"
@@ -732,7 +710,7 @@ msgstr "Utgjevingsdato"
 #, kde-format
 msgctxt "@info"
 msgid "Group by Type"
-msgstr ""
+msgstr "Grupper etter type"
 
 #: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
@@ -949,7 +927,7 @@ msgstr "Meld frå om feilen til %1"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
-msgstr ""
+msgstr "Disover er fråkopla"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
@@ -1519,26 +1497,22 @@ msgstr "Fjern merking"
 #, kde-format
 msgctxt "@info After updates complete, shut down/restart/quit"
 msgid "After updates complete:"
-msgstr ""
+msgstr "Etter oppdatering:"
 
 #: discover/qml/UpdatesPage.qml:293
 #, kde-format
 msgctxt "@item:inlistbox after updates complete, do nothing"
 msgid "Do nothing"
-msgstr ""
+msgstr "Ikkje gjer noko"
 
 #: discover/qml/UpdatesPage.qml:294
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Restart"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, restart"
 msgid "Restart"
 msgstr "Start på nytt"
 
 #: discover/qml/UpdatesPage.qml:295
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shut down"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, shut down"
 msgid "Shut down"
 msgstr "Slå av maskina"
@@ -1547,7 +1521,7 @@ msgstr "Slå av maskina"
 #, kde-format
 msgctxt "@item:inlistbox after updates complete, quit"
 msgid "Quit"
-msgstr ""
+msgstr "Avslutt"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1555,12 +1529,10 @@ msgid "Total size: %1"
 msgstr "Total storleik: %1"
 
 #: discover/qml/UpdatesPage.qml:336
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Restart to Install Updates Now"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "Start på nytt for å installera oppdateringar no"
+msgstr "Start på nytt og installer oppdateringane"
 
 #: discover/qml/UpdatesPage.qml:527
 #, kde-format
@@ -1568,14 +1540,10 @@ msgid "Installing"
 msgstr "Installerer"
 
 #: discover/qml/UpdatesPage.qml:543
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-#| "\"Ubuntu\""
-#| msgid "From %1"
+#, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "Frå %1"
+msgstr "Frå:"
 
 #: discover/qml/UpdatesPage.qml:560
 #, kde-format
@@ -1586,8 +1554,7 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:572
-#, fuzzy, kde-format
-#| msgid "More Information…"
+#, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "Meir informasjon …"
@@ -1608,13 +1575,15 @@ msgstr "Oppdateringar"
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
-msgstr ""
+msgstr "Oppdateringane vert installerte neste gong maskina vert starta på nytt"
 
 #: discover/qml/UpdatesPage.qml:672
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you're not ready to restart yet."
 msgstr ""
+"Du kan halda fram med å bruka systemet dersom du ikkje ønskjer å starta på "
+"nytt enno."
 
 #: discover/qml/UpdatesPage.qml:677 discover/qml/UpdatesPage.qml:684
 #: discover/qml/UpdatesPage.qml:691

@@ -1,21 +1,21 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# SPDX-FileCopyrightText: 2025 Sohrab Behdani <behdanisohrab@proton.me>
+# SPDX-FileCopyrightText: 2025-2026 Sohrab Behdani <behdanisohrab@proton.me>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-15 00:45+0000\n"
-"PO-Revision-Date: 2025-09-26 01:05+0330\n"
+"PO-Revision-Date: 2026-06-27 13:16+0330\n"
 "Last-Translator: Sohrab Behdani <behdanisohrab@proton.me>\n"
-"Language-Team: fa\n"
+"Language-Team: Persian < kde-i18n-fa@kde.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -229,7 +229,7 @@ msgstr "طراحی رابط گرافیکی"
 #, kde-format
 msgctxt "Category"
 msgid "IDEs"
-msgstr "IDEs"
+msgstr "محیط‌های توسعهٔ یکپارچه"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:89
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:89
@@ -475,7 +475,7 @@ msgstr "انتشار"
 #, kde-format
 msgctxt "Category"
 msgid "Scanning and OCR"
-msgstr "پویش و OCR"
+msgstr "پویش و بازشناسی نوری نویسه‌ها"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:425
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:425

@@ -1,22 +1,22 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# SPDX-FileCopyrightText: 2025 Sohrab Behdani <behdanisohrab@proton.me>
+# SPDX-FileCopyrightText: 2025-2026 Sohrab Behdani <behdanisohrab@proton.me>
 # SPDX-FileCopyrightText: 2025 Alireza Rashidi <injaneb@dock.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-09 00:45+0000\n"
-"PO-Revision-Date: 2025-09-19 22:14+0330\n"
+"PO-Revision-Date: 2026-06-27 13:14+0330\n"
 "Last-Translator: Sohrab Behdani <behdanisohrab@proton.me>\n"
-"Language-Team: fa\n"
+"Language-Team: Persian < kde-i18n-fa@kde.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #: discover/DiscoverObject.cpp:198
 #, kde-format
@@ -197,10 +197,9 @@ msgid "An application explorer"
 msgstr "کاوشگر برنامه"
 
 #: discover/main.cpp:124
-#, fuzzy, kde-format
-#| msgid "© 2010-2025 Plasma Development Team"
+#, kde-format
 msgid "© 2010-2026 Plasma Development Team"
-msgstr "© ۲۰۱۰-۲۰۲۵ گروه توسعه پلاسما"
+msgstr "© ۲۰۱۰-۲۰۲۶ گروه توسعه پلاسما"
 
 #: discover/main.cpp:125
 #, kde-format
@@ -288,10 +287,9 @@ msgid "Cancel"
 msgstr "رد کردن"
 
 #: discover/qml/ApplicationDelegate.qml:160
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgid "No ratings"
-msgstr "هنوز امتیازی داده نشده"
+msgstr "بدون امتیاز"
 
 #: discover/qml/ApplicationPage.qml:67
 #, kde-kuit-format
@@ -568,16 +566,13 @@ msgstr "درباره مجوز"
 
 #: discover/qml/ApplicationPageFullComponent.qml:114
 #: discover/qml/ApplicationPageStickyComponent.qml:46
-#, fuzzy, kde-format
-#| msgid "Unknown author"
+#, kde-format
 msgctxt "As in 'this app is made by an unknown author'"
 msgid "Unknown author"
-msgstr "نویسنده ناشناخته"
+msgstr "نویسنده ناشناس"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "%1 rating"
-#| msgid_plural "%1 ratings"
+#, kde-format
 msgctxt "@info as in the number of ratings an application has"
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -585,15 +580,13 @@ msgstr[0] "%1 امتیاز"
 msgstr[1] "%1 امتیاز"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgctxt "@info"
 msgid "No ratings yet"
 msgstr "هنوز امتیازی داده نشده"
 
 #: discover/qml/ApplicationPageFullComponent.qml:196
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgctxt "@info"
 msgid "Version:"
 msgstr "نگارش:"
@@ -604,9 +597,7 @@ msgid "Size:"
 msgstr "اندازه:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:242
-#, fuzzy, kde-format
-#| msgid "License:"
-#| msgid_plural "Licenses:"
+#, kde-format
 msgctxt "@info"
 msgid "License:"
 msgid_plural "Licenses:"
@@ -627,17 +618,13 @@ msgid "What does this mean?"
 msgstr "این به چه معناست؟"
 
 #: discover/qml/ApplicationPageFullComponent.qml:348
-#, fuzzy, kde-format
-#| msgid "All Licenses"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "All licenses…"
-msgstr "همه مجوزها"
+msgstr "همه مجوزها..."
 
 #: discover/qml/ApplicationPageFullComponent.qml:361
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#, kde-format
 msgctxt "@info The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "رده سنی:"
@@ -655,8 +642,7 @@ msgid "%1+"
 msgstr "%1+"
 
 #: discover/qml/ApplicationPageFullComponent.qml:391
-#, fuzzy, kde-format
-#| msgid "See details"
+#, kde-format
 msgctxt "@action:button See content rating details"
 msgid "See details"
 msgstr "مشاهده جزئیات"
@@ -665,7 +651,7 @@ msgstr "مشاهده جزئیات"
 #, kde-format
 msgctxt "@action:button"
 msgid "Scroll to top"
-msgstr ""
+msgstr "رفتن به بالا"
 
 #: discover/qml/ApplicationsListPage.qml:57
 #, kde-format
@@ -716,14 +702,12 @@ msgid "Name"
 msgstr "نام"
 
 #: discover/qml/ApplicationsListPage.qml:129
-#, fuzzy, kde-format
-#| msgid "Submit review"
+#, kde-format
 msgid "Number of reviews"
-msgstr "فرستادن دیدگاه"
+msgstr "تعداد دیدگاه‌ها"
 
 #: discover/qml/ApplicationsListPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Rating"
+#, kde-format
 msgctxt "@item:inmenu sort by highest-rated apps"
 msgid "Rating"
 msgstr "امتیاز"
@@ -742,7 +726,7 @@ msgstr "تاریخ انتشار"
 #, kde-format
 msgctxt "@info"
 msgid "Group by Type"
-msgstr ""
+msgstr "گروه‌بندی بر اساس نوع"
 
 #: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
@@ -885,14 +869,12 @@ msgstr "نماگرفت بعدی"
 #: discover/qml/DiscoverDrawer.qml:161
 #, kde-format
 msgid "Security updates available"
-msgstr ""
+msgstr "به‌روزرسانی‌های امنیتی موجود هستند"
 
 #: discover/qml/DiscoverDrawer.qml:162
-#, fuzzy, kde-format
-#| msgctxt "@action:button as in, 'update all items'"
-#| msgid "Update All"
+#, kde-format
 msgid "Updates available"
-msgstr "به‌روزرسانی همه"
+msgstr "به‌روزرسانی موجود است"
 
 #: discover/qml/DiscoverWindow.qml:48
 #, kde-format
@@ -920,10 +902,9 @@ msgid "&Updates (Fetching…)"
 msgstr "&به‌روزرسانی‌ها (در حال دریافت…)"
 
 #: discover/qml/DiscoverWindow.qml:102
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgid "&Updates"
-msgstr "به‌روزرسانی‌ها"
+msgstr "&به‌روزرسانی‌ها"
 
 #: discover/qml/DiscoverWindow.qml:110
 #, kde-format
@@ -961,14 +942,14 @@ msgstr "گزارش این مشکل به %1"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
-msgstr ""
+msgstr "دیسکاور برخط نیست"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
 msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
-msgstr ""
+msgstr "برای نصب برنامه‌ها و به‌روزرسانی سامانه، لطفاً به اینترنت متصل شوید."
 
 #: discover/qml/DiscoverWindow.qml:365
 #, kde-format
@@ -1049,6 +1030,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"شما می‌توانید با به‌اشتراک‌گذاری اطلاعات ناشناس دربارهٔ شیوهٔ استفاده‌تان از "
+"دیسکاور، به کی‌دی‌ای در بهبود آن کمک کنید."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1442,11 +1425,10 @@ msgid "Show contents"
 msgstr "نمایش محتویات"
 
 #: discover/qml/SourcesPage.qml:309
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "نمی‌توان منبع را پیدا کرد: %1"
+msgstr "فعال کردن این منبع"
 
 #: discover/qml/SourcesPage.qml:330
 #, kde-format
@@ -1509,12 +1491,10 @@ msgid "Update All"
 msgstr "به‌روزرسانی همه"
 
 #: discover/qml/UpdatesPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Updates will be installed after the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
-msgstr "به‌روزرسانی‌ها پس از باز راه‌اندازی سامانه نصب خواهند شد"
+msgstr "به‌روزرسانی‌ها پس از باز راه‌اندازی سامانه نصب خواهند شد."
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format
@@ -1535,26 +1515,22 @@ msgstr "انتخاب هیچ"
 #, kde-format
 msgctxt "@info After updates complete, shut down/restart/quit"
 msgid "After updates complete:"
-msgstr ""
+msgstr "بعد از تکمیل به‌روزرسانی:"
 
 #: discover/qml/UpdatesPage.qml:293
 #, kde-format
 msgctxt "@item:inlistbox after updates complete, do nothing"
 msgid "Do nothing"
-msgstr ""
+msgstr "هیچ کاری نکن"
 
 #: discover/qml/UpdatesPage.qml:294
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Restart"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, restart"
 msgid "Restart"
 msgstr "باز راه‌اندازی"
 
 #: discover/qml/UpdatesPage.qml:295
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shut down"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, shut down"
 msgid "Shut down"
 msgstr "خاموش کردن"
@@ -1563,7 +1539,7 @@ msgstr "خاموش کردن"
 #, kde-format
 msgctxt "@item:inlistbox after updates complete, quit"
 msgid "Quit"
-msgstr ""
+msgstr "خروج"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1582,14 +1558,10 @@ msgid "Installing"
 msgstr "در حال نصب"
 
 #: discover/qml/UpdatesPage.qml:543
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
-#| "\"Ubuntu\""
-#| msgid "From %1"
+#, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "از %1"
+msgstr "از:"
 
 #: discover/qml/UpdatesPage.qml:560
 #, kde-format
@@ -1600,11 +1572,10 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:572
-#, fuzzy, kde-format
-#| msgid "More Information…"
+#, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
-msgstr "اطلاعات بیشتر…"
+msgstr "اطلاعات بیشتر:"
 
 #: discover/qml/UpdatesPage.qml:645
 #, kde-format
