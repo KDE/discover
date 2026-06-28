@@ -2863,7 +2863,3 @@ msgstr "Programari del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complements"
-
-#~ msgctxt "@info:status"
-#~ msgid "Starting"
-#~ msgstr "Iniciant"

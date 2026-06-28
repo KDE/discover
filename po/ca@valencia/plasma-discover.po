@@ -330,7 +330,7 @@ msgstr ""
 "la vostra ubicació, o transmetre el contingut dels vostres fitxers a algú "
 "altre. No hi ha cap manera fàcil d'estar segur, així que només hauríeu "
 "d'instal·lar esta aplicació si confieu plenament en els seus autors. Pot "
-"haver-hi més informació disponible al <link url='%2'>lloc web de "
+"haver-hi més informació disponible en el <link url='%2'>lloc web de "
 "l'aplicació</link>.<nl/><nl/>Apreneu-ne més a <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:72
@@ -386,8 +386,8 @@ msgstr ""
 "que confieu plenament en els autors, ja que ningú més pot verificar la "
 "fiabilitat i la seguretat del seu codi per a assegurar-se que no està "
 "actuant contra vós de manera oculta. Pot haver-hi més informació disponible "
-"al <link url='%4'>lloc web de l'aplicació</link>.<nl/><nl/>Apreneu-ne més a "
-"<link url='%5'>%5</link>."
+"en el <link url='%4'>lloc web de l'aplicació</link>.<nl/><nl/>Apreneu-ne més "
+"a <link url='%5'>%5</link>."
 
 #: discover/qml/ApplicationPage.qml:86
 #, kde-kuit-format
