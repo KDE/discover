@@ -2369,7 +2369,7 @@ msgstr "%1 canals"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:354
 #, kde-format
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr "%1 – %2"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:34
 #, kde-format

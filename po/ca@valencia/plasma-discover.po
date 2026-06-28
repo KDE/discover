@@ -303,7 +303,7 @@ msgstr "Fonts"
 #: discover/qml/ApplicationPage.qml:73
 #, kde-format
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr "%1 – %2"
 
 #: discover/qml/ApplicationPage.qml:185
 #, kde-format
@@ -554,8 +554,8 @@ msgstr ""
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Busca: %2 - %3 element"
-msgstr[1] "Busca: %2 - %3 elements"
+msgstr[0] "Busca: %2 – %3 element"
+msgstr[1] "Busca: %2 – %3 elements"
 
 #: discover/qml/ApplicationsListPage.qml:54
 #, kde-format
@@ -566,15 +566,15 @@ msgstr "Busca: %1"
 #, kde-format
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
-msgstr[0] "%2 - %1 element"
-msgstr[1] "%2 - %1 elements"
+msgstr[0] "%2 – %1 element"
+msgstr[1] "%2 – %1 elements"
 
 #: discover/qml/ApplicationsListPage.qml:64
 #, kde-format
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
-msgstr[0] "Busca - %1 element"
-msgstr[1] "Busca - %1 elements"
+msgstr[0] "Busca – %1 element"
+msgstr[1] "Busca – %1 elements"
 
 #: discover/qml/ApplicationsListPage.qml:66
 #: discover/qml/ApplicationsListPage.qml:224
@@ -880,19 +880,19 @@ msgstr "Tasques"
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1 - %2: %3, %4 remaining"
-msgstr "%1 - %2: %3, falta %4"
+msgstr "%1 – %2: %3, falta %4"
 
 #: discover/qml/ProgressView.qml:98
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1 - %2: %3"
-msgstr "%1 - %2: %3"
+msgstr "%1 – %2: %3"
 
 #: discover/qml/ProgressView.qml:99
 #, kde-format
 msgctxt "TransactioName - TransactionStatus"
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr "%1 – %2"
 
 #: discover/qml/ReviewDelegate.qml:61
 #, kde-format
@@ -1020,7 +1020,7 @@ msgstr "Busca…"
 #: discover/qml/SearchField.qml:24
 #, kde-format
 msgid "Search in '%1'…"
-msgstr "Busca a «%1»…"
+msgstr "Busca en «%1»…"
 
 #: discover/qml/SourcesPage.qml:13
 #, kde-format
