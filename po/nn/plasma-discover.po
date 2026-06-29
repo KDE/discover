@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-22 02:47+0000\n"
-"PO-Revision-Date: 2026-06-27 12:08+0200\n"
+"PO-Revision-Date: 2026-06-28 11:47+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -1403,11 +1403,10 @@ msgid "Show contents"
 msgstr "Vis innhald"
 
 #: discover/qml/SourcesPage.qml:305
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "Finn ikkje ressurs: %1"
+msgstr "Gjer kjelda verksam"
 
 # Sjå tilsvarande feilmeldingar.
 #: discover/qml/SourcesPage.qml:326
@@ -1476,7 +1475,7 @@ msgstr "Oppdater alle"
 #, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
-msgstr ""
+msgstr "Ei oppdatering vert installert når maskina vert starta på nytt."
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format
