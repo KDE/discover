@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-15 00:45+0000\n"
-"PO-Revision-Date: 2026-06-27 11:29+0200\n"
+"PO-Revision-Date: 2026-06-28 11:48+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -1069,7 +1069,7 @@ msgstr "%1 er ikkje installert, men har likevel data lagra."
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "Flytt til papirkorga"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
@@ -1125,11 +1125,10 @@ msgid "Holo"
 msgstr "Holo"
 
 #: libdiscover/backends/HoloBackend/HoloBackend.cpp:113
-#, fuzzy, kde-format
-#| msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+#, kde-format
 msgctxt "%1 is the pretty name of the distro e.g. Holo or SteamOS"
 msgid "Holo: Unable to query atomupd for %1 Updates..."
-msgstr "SteamOS: Klarte ikkje spørja atomupd om SteamOS-oppdateringar …"
+msgstr "Holo: Klarte ikkje spørja atomupd om %1-oppdateringar …"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
@@ -2112,13 +2111,11 @@ msgid "Repair Failed"
 msgstr "Mislukka reparering"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "%1<nl/>Meld frå om denne feilen til distribusjonen din."
+msgstr "%1<nl/><link url='%2'>Meld frå om feilen til %3.</link>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:168
 #, kde-format
@@ -2462,6 +2459,8 @@ msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won't be automatically removed on updates."
 msgstr ""
+"<br/>Denne versjonen er låst og vert ikkje automatisk fjerna ved "
+"oppdateringar."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
