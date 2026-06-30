@@ -7,9 +7,9 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-09 00:45+0000\n"
-"PO-Revision-Date: 2026-02-03 22:30+0000\n"
+"PO-Revision-Date: 2026-06-29 22:18+0100\n"
 "Last-Translator: César A. P. Cláudio <cesarapclaudio@gmail.com>\n"
-"Language-Team: pt\n"
+"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-POFile-IgnoreConsistency: Discover\n"
 "X-POFile-SpellExtra: KNewStuff Graham Nate Leinir Snap pacman Arch\n"
 "X-POFile-SpellExtra: PackageKit\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #: discover/DiscoverObject.cpp:198
 #, kde-format
@@ -303,10 +303,9 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: discover/qml/ApplicationDelegate.qml:160
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgid "No ratings"
-msgstr "Ainda sem classificações"
+msgstr "Sem classificações"
 
 #: discover/qml/ApplicationPage.qml:67
 #, kde-kuit-format
@@ -591,16 +590,13 @@ msgstr "Informações sobre a licença"
 
 #: discover/qml/ApplicationPageFullComponent.qml:114
 #: discover/qml/ApplicationPageStickyComponent.qml:46
-#, fuzzy, kde-format
-#| msgid "Unknown author"
+#, kde-format
 msgctxt "As in 'this app is made by an unknown author'"
 msgid "Unknown author"
 msgstr "Autor desconhecido"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "%1 rating"
-#| msgid_plural "%1 ratings"
+#, kde-format
 msgctxt "@info as in the number of ratings an application has"
 msgid "%1 rating"
 msgid_plural "%1 ratings"
@@ -608,15 +604,13 @@ msgstr[0] "%1 classificação"
 msgstr[1] "%1 classificações"
 
 #: discover/qml/ApplicationPageFullComponent.qml:148
-#, fuzzy, kde-format
-#| msgid "No ratings yet"
+#, kde-format
 msgctxt "@info"
 msgid "No ratings yet"
 msgstr "Ainda sem classificações"
 
 #: discover/qml/ApplicationPageFullComponent.qml:196
-#, fuzzy, kde-format
-#| msgid "Version:"
+#, kde-format
 msgctxt "@info"
 msgid "Version:"
 msgstr "Versão:"
@@ -627,9 +621,7 @@ msgid "Size:"
 msgstr "Tamanho:"
 
 #: discover/qml/ApplicationPageFullComponent.qml:242
-#, fuzzy, kde-format
-#| msgid "License:"
-#| msgid_plural "Licenses:"
+#, kde-format
 msgctxt "@info"
 msgid "License:"
 msgid_plural "Licenses:"
@@ -650,17 +642,13 @@ msgid "What does this mean?"
 msgstr "O que é que isto significa?"
 
 #: discover/qml/ApplicationPageFullComponent.qml:348
-#, fuzzy, kde-format
-#| msgid "All Licenses"
+#, kde-format
 msgctxt "Show all licenses of the package"
 msgid "All licenses…"
-msgstr "Todas as licenças"
+msgstr "Todas as licenças..."
 
 #: discover/qml/ApplicationPageFullComponent.qml:361
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#, kde-format
 msgctxt "@info The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "Idades:"
@@ -678,8 +666,7 @@ msgid "%1+"
 msgstr "%1+"
 
 #: discover/qml/ApplicationPageFullComponent.qml:391
-#, fuzzy, kde-format
-#| msgid "See details"
+#, kde-format
 msgctxt "@action:button See content rating details"
 msgid "See details"
 msgstr "Ver detalhes"
@@ -688,7 +675,7 @@ msgstr "Ver detalhes"
 #, kde-format
 msgctxt "@action:button"
 msgid "Scroll to top"
-msgstr ""
+msgstr "Deslocar para o topo"
 
 #: discover/qml/ApplicationsListPage.qml:57
 #, kde-format
@@ -725,7 +712,7 @@ msgstr "Pesquisar"
 #: discover/qml/ApplicationsListPage.qml:102 discover/qml/ReviewsPage.qml:141
 #, kde-format
 msgid "Sort: %1"
-msgstr "Ordenar: %1"
+msgstr "Ordenar por: %1"
 
 #: discover/qml/ApplicationsListPage.qml:107
 #, kde-format
@@ -739,14 +726,12 @@ msgid "Name"
 msgstr "Nome"
 
 #: discover/qml/ApplicationsListPage.qml:129
-#, fuzzy, kde-format
-#| msgid "Submit review"
+#, kde-format
 msgid "Number of reviews"
-msgstr "Enviar crítica"
+msgstr "Número de avaliações"
 
 #: discover/qml/ApplicationsListPage.qml:140
-#, fuzzy, kde-format
-#| msgid "Rating"
+#, kde-format
 msgctxt "@item:inmenu sort by highest-rated apps"
 msgid "Rating"
 msgstr "Classificação"
@@ -765,7 +750,7 @@ msgstr "Data de lançamento"
 #, kde-format
 msgctxt "@info"
 msgid "Group by Type"
-msgstr ""
+msgstr "Agrupar por Tipo"
 
 #: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
@@ -982,7 +967,7 @@ msgstr "Comunicar este problema a %1"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
-msgstr ""
+msgstr "O Discover está offline"
 
 #: discover/qml/DiscoverWindow.qml:348
 #, kde-format
@@ -990,6 +975,8 @@ msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
 msgstr ""
+"Por favor, ligue-se a uma rede para instalar aplicações e atualizar o "
+"sistema."
 
 #: discover/qml/DiscoverWindow.qml:365
 #, kde-format
@@ -1073,6 +1060,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"Pode ajudar a melhorar o Discover ao partilhar informações anónimas sobre "
+"como o utiliza."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1469,11 +1458,10 @@ msgid "Show contents"
 msgstr "Mostrar conteúdo"
 
 #: discover/qml/SourcesPage.qml:309
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr "Não foi possível encontrar o recurso: %1"
+msgstr "Ativar esta origem"
 
 #: discover/qml/SourcesPage.qml:330
 #, kde-format
@@ -1536,12 +1524,10 @@ msgid "Update All"
 msgstr "Atualizar todos"
 
 #: discover/qml/UpdatesPage.qml:189
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Updates will be installed after the system is restarted"
+#, kde-format
 msgctxt "@info"
 msgid "A pending update will be installed when restarting the system."
-msgstr "As atualizações serão instaladas após o reinício do sistema"
+msgstr "Uma atualização pendente será instalada ao reiniciar o sistema."
 
 #: discover/qml/UpdatesPage.qml:210
 #, kde-format
@@ -1562,35 +1548,31 @@ msgstr "Não selecionar nenhum"
 #, kde-format
 msgctxt "@info After updates complete, shut down/restart/quit"
 msgid "After updates complete:"
-msgstr ""
+msgstr "Após a conclusão das atualizações:"
 
 #: discover/qml/UpdatesPage.qml:293
 #, kde-format
 msgctxt "@item:inlistbox after updates complete, do nothing"
 msgid "Do nothing"
-msgstr ""
+msgstr "Não fazer nada"
 
 #: discover/qml/UpdatesPage.qml:294
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Restart"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, restart"
 msgid "Restart"
-msgstr "Reiniciar"
+msgstr "Reiniciar sistema"
 
 #: discover/qml/UpdatesPage.qml:295
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Shut down"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, shut down"
 msgid "Shut down"
-msgstr "Encerrar"
+msgstr "Encerrar sistema"
 
 #: discover/qml/UpdatesPage.qml:296
 #, kde-format
 msgctxt "@item:inlistbox after updates complete, quit"
 msgid "Quit"
-msgstr ""
+msgstr "Sair da aplicação"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format

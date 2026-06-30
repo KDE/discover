@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2024-11-12 06:08+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -556,8 +556,8 @@ msgstr "Pemutar Video"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CD dan DVD"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2885,6 +2885,10 @@ msgstr "Perangkat Lunak Sistem"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Pernik"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CD dan DVD"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

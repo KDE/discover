@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2021-09-09 13:59+0000\n"
 "Last-Translator: Subin Siby <subins2000@gmail.com>\n"
 "Language-Team: Malayalam <https://kde.smc.org.in/projects/discover/"
@@ -559,8 +559,8 @@ msgstr "വീഡിയോ പ്ലെയറുകൾ"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "സിഡിയും ഡിവിഡിയും"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2761,6 +2761,10 @@ msgstr "സിസ്റ്റം അപ്ഗ്രേഡ്"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "ആഡ്ഓണുകൾ"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "സിഡിയും ഡിവിഡിയും"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

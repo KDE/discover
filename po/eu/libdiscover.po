@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2026-06-24 13:27+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -553,8 +553,8 @@ msgstr "Bideo jotzaileak"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CD eta DVD"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2871,6 +2871,10 @@ msgstr "Sistemaren softwarea"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Gehigarriak"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CD eta DVD"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

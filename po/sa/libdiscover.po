@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -555,8 +555,8 @@ msgstr "दृश्यवादकाः"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CD च DVD"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2839,6 +2839,10 @@ msgstr "प्रणालि तन्त्रांश्"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "एडोन्स्"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CD च DVD"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2026-05-30 06:32-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -557,8 +557,8 @@ msgstr "Reprodutores de vídeo"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CD e DVD"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2865,6 +2865,10 @@ msgstr "Softwares do sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Extensões"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CD e DVD"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

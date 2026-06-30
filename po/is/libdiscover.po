@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2026-06-01 18:19+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -551,8 +551,8 @@ msgstr "Myndspilarar"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "Geisladiskar (CD og DVD)"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2836,6 +2836,10 @@ msgstr "Kerfishugbúnaður"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Viðbætur"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "Geisladiskar (CD og DVD)"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

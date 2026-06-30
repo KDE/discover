@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2026-05-30 09:56+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -553,8 +553,8 @@ msgstr "Програвачі відео"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "КД і DVD"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2882,6 +2882,10 @@ msgstr "Програмне забезпечення системи"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Додатки"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "КД і DVD"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

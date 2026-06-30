@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2020-10-04 16:58+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -569,8 +569,8 @@ msgstr "Videoafspillere"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "Cd og dvd"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2939,6 +2939,10 @@ msgstr "Video-software"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tilføjelser"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "Cd og dvd"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

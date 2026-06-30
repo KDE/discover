@@ -6,10 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
-"PO-Revision-Date: 2026-06-27 13:16+0330\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
+"PO-Revision-Date: 2026-06-29 12:05+0330\n"
 "Last-Translator: Sohrab Behdani <behdanisohrab@proton.me>\n"
-"Language-Team: Persian < kde-i18n-fa@kde.org>\n"
+"Language-Team: fa\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -415,18 +415,17 @@ msgstr "شبیه‌سازها"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:333
-#, fuzzy, kde-format
-#| msgid "Launch"
+#, kde-format
 msgctxt "Category"
 msgid "Launchers"
-msgstr "راه‌اندازی"
+msgstr "راه‌اندازها"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:343
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
 #, kde-format
 msgctxt "Category"
 msgid "Tools"
-msgstr ""
+msgstr "ابزارها"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:355
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:355
@@ -551,8 +550,8 @@ msgstr "پخش‌کننده‌های تصویری"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "سی‌دی و دی‌وی‌دی"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -977,6 +976,8 @@ msgid ""
 "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
+"ایجاد تراکنش برای «%1» ممکن نیست:<nl/>%2<nl/><nl/>لطفاً این مشکل را به <a "
+"href='%3'>%3</a> گزارش کنید."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
@@ -995,13 +996,7 @@ msgid "Replacement Available"
 msgstr "جایگزین در دسترس"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1013,8 +1008,11 @@ msgid ""
 "Launcher favorites, you will need to remove it and manually add the new one "
 "there."
 msgstr ""
-"<resource>%1</resource> دیگر به‌روزرسانی دریافت نمی‌کند.<nl/><nl/>آیا آن را با "
-"نگارش پشتیبانی‌شده که به‌دست <resource>%2</resource>  فراهم‌شده جایگزین کنیم؟"
+"%1 دیگر به‌روزرسانی دریافت نمی‌کند. آیا می‌خواهید آن را با نسخهٔ پشتیبانی‌شده‌ای "
+"که %2 ارائه می‌کند جایگزین کنید؟<nl/><nl/>تنظیمات و داده‌های شما به‌طور خودکار "
+"به برنامهٔ جدید منتقل خواهند شد. اگر برنامهٔ قدیمی در تابلو یا موارد دلخواهِ "
+"راه‌انداز برنامه‌ها قرار دارد، باید آن را حذف کرده و برنامهٔ جدید را به‌صورت "
+"دستی دوباره به آنجا اضافه کنید."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -1056,15 +1054,14 @@ msgid "View Stable Version on %1"
 msgstr "دیدن نگارش پایدار در %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
-#, fuzzy, kde-format
-#| msgid "%1 is not installed but it still has data present."
+#, kde-format
 msgid "%1 is not installed but it still has user data and settings present."
-msgstr "%1 نصب نشده اما هنوز داده‌هایی دارد."
+msgstr "%1 نصب نیست، اما داده‌ها و تنظیمات کاربر آن همچنان وجود دارند."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "انتقال به زباله‌دان"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
@@ -1117,14 +1114,13 @@ msgstr "SteamOS"
 #: libdiscover/backends/HoloBackend/HoloBackend.cpp:73
 #, kde-format
 msgid "Holo"
-msgstr ""
+msgstr "Holo"
 
 #: libdiscover/backends/HoloBackend/HoloBackend.cpp:113
-#, fuzzy, kde-format
-#| msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
+#, kde-format
 msgctxt "%1 is the pretty name of the distro e.g. Holo or SteamOS"
 msgid "Holo: Unable to query atomupd for %1 Updates..."
-msgstr "SteamOS: نمی‌توان atomupd را برای به‌روزرسانی‌های SteamOS پرس‌وجو کرد..."
+msgstr "Holo: پرس‌وجوی atomupd برای به‌روزرسانی‌های %1 ناموفق بود..."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
@@ -2408,9 +2404,7 @@ msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "ارجاع از راه دور برای بازپایه‌گذاری گم‌شده. لطفاً این اشکال را بفرستید."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "سامانه عامل"
 
@@ -2450,6 +2444,7 @@ msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won't be automatically removed on updates."
 msgstr ""
+"<br/>این نسخه سنجاق شده است و هنگام به‌روزرسانی‌ها به‌طور خودکار حذف نخواهد شد."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
@@ -2457,7 +2452,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label OS vendor"
 msgid "Fedora Project"
-msgstr ""
+msgstr "پروژهٔ فدورا"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
@@ -2615,28 +2610,25 @@ msgid "Starred Publisher on snapcraft.io"
 msgstr "ناشر ستاره‌دار در snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
-#, fuzzy, kde-format
-#| msgid ""
-#| "This Snap application is not compatible with security sandboxing and will "
-#| "have full access to this computer. Install it anyway?"
+#, kde-format
 msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this system. Install it anyway?"
 msgstr ""
-"این برنامه اسنپ با جعبه شنی امنیتی سازگار نیست و دسترسی کامل به این رایانه "
-"خواهد داشت. با این حال نصب کنیم؟"
+"این برنامهٔ اسنپ با ایزوله‌سازی امنیتی سازگار نیست و به کل این سامانه دسترسی "
+"کامل خواهد داشت. با این حال نصب شود؟"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:149
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
-msgstr ""
+msgstr "دریافت داده‌های AppStream برای «%1» ناموفق بود.<nl/><nl/>پیام خطا: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "هیچ نشانی AppStream برای هدف «%1» یافت نشد."
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
 #, kde-kuit-format
@@ -2645,18 +2637,19 @@ msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
 msgstr ""
+"دریافت به‌روزرسانی‌ها از <a href='%1'>%1</a> ناموفق بود.<nl/><nl/>پیام خطا: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
-msgstr ""
+msgstr "تجزیهٔ فرادادهٔ به‌روزرسانی ناموفق بود.<nl/><nl/>پیام خطا: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
-msgstr ""
+msgstr "هیچ مؤلفه‌ای در فرادادهٔ AppStream برای هدف «%1» یافت نشد."
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
 #, kde-format
@@ -2714,32 +2707,25 @@ msgid "Refreshing %1"
 msgstr "در حال تازه‌سازی %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:561
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@label"
 msgid "Applications"
 msgstr "برنامه‌ها"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:563
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Addons"
+#, kde-format
 msgctxt "@label"
 msgid "Addons"
 msgstr "افزونه‌ها"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:565
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Support"
+#, kde-format
 msgctxt "@label"
 msgid "Application Support"
 msgstr "پشتیبانی برنامه"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:567
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "System"
+#, kde-format
 msgctxt "@label"
 msgid "System"
 msgstr "سامانه"
@@ -2832,6 +2818,10 @@ msgstr "نرم‌افزار سامانه"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "افزونه‌ها"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "سی‌دی و دی‌وی‌دی"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

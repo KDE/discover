@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2025-06-19 10:32+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -554,8 +554,8 @@ msgstr "Reprodutores de vídeo"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CD e DVD"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2882,6 +2882,10 @@ msgstr "Soporte lóxico do sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complementos"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CD e DVD"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

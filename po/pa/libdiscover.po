@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -567,8 +567,8 @@ msgstr "ਵੀਡੀਓ ਪਲੇਅਰ"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "ਸੀਡੀ ਤੇ ਡੀਵੀਡੀ"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2820,6 +2820,10 @@ msgstr "ਸਿਸਟਮ ਸਾਫਟਵੇਅਰ"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "ਐਡ-ਆਨ"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "ਸੀਡੀ ਤੇ ਡੀਵੀਡੀ"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2026-02-26 10:39+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -558,8 +558,8 @@ msgstr "Videosoittimet"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CD ja DVD"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2865,6 +2865,10 @@ msgstr "Järjestelmäohjelmisto"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Lisäosat"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CD ja DVD"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

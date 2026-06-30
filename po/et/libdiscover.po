@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2020-10-11 01:23+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -570,8 +570,8 @@ msgstr "Videomängijad"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CD ja DVD"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2950,6 +2950,10 @@ msgstr "Videotarkvara"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Lisad"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CD ja DVD"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

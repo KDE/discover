@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2013-03-28 16:07+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -581,7 +581,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
+msgid "Disc Burning"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554

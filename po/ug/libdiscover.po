@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2026-05-29 17:22-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -551,8 +551,8 @@ msgstr "سىن  قويغۇچ"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CD ۋە DVD"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2835,6 +2835,10 @@ msgstr "سىستېما يۇمشاق دېتالى"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "قوشۇلما"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CD ۋە DVD"
 
 #~ msgctxt ""
 #~ "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "

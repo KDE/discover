@@ -3,10 +3,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
-"PO-Revision-Date: 2026-02-02 21:34+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
+"PO-Revision-Date: 2026-06-29 22:16+0100\n"
 "Last-Translator: César A. P. Cláudio <cesarapclaudio@gmail.com>\n"
-"Language-Team: pt\n"
+"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-POFile-IgnoreConsistency: Snap\n"
 "X-POFile-SpellExtra: Cards smart card ptrace SteamOS atomupd\n"
 "X-POFile-IgnoreConsistency: Broken\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -557,8 +557,8 @@ msgstr "Leitores de Vídeo"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CD e DVD"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -1015,13 +1015,7 @@ msgid "Replacement Available"
 msgstr "Substituto disponível"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1033,8 +1027,12 @@ msgid ""
 "Launcher favorites, you will need to remove it and manually add the new one "
 "there."
 msgstr ""
-"<resource>%1</resource> deixou de receber atualizações.<nl/><nl/> Substituí-"
-"lo pela versão suportada fornecida por <resource>%2</resource>?"
+"<resource>%1</resource> deixou de receber atualizações.<nl/><nl/>Substituí-"
+"lo pela versão suportada fornecida por <resource>%2</resource>?<nl/><nl/>As "
+"suas definições e dados serão automaticamente transferidos para a nova "
+"aplicação.<nl/><nl/>Se a aplicação antiga estiver no painel ou nos favoritos "
+"do Lançador de Aplicações, terá de a remover e adicionar manualmente a nova "
+"lá."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -1076,15 +1074,16 @@ msgid "View Stable Version on %1"
 msgstr "Ver versão estável em %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
-#, fuzzy, kde-format
-#| msgid "%1 is not installed but it still has data present."
+#, kde-format
 msgid "%1 is not installed but it still has user data and settings present."
-msgstr "O %1 não está instalado mas ainda tem dados presentes."
+msgstr ""
+"%1 não está instalado, mas ainda tem dados e definições de utilizador "
+"presentes."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "Enviar para o Lixo"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
@@ -2118,7 +2117,7 @@ msgid "Open Discover"
 msgstr "Abrir o Discover"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:141
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "Reparar sistema"
@@ -2126,12 +2125,14 @@ msgstr "Reparar sistema"
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:146
 #, kde-format
 msgid "Repairing failed offline update"
-msgstr "A reparar a atualização sem ligação à rede falhada"
+msgstr ""
+"A ferramenta de reparação não conseguiu efetuar a atualização sem ligação à "
+"rede"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:153
 #, kde-format
 msgid "Repair Failed"
-msgstr "Reparação falhou"
+msgstr "A reparação falhou"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:155
 #, kde-kuit-format
@@ -2447,9 +2448,7 @@ msgstr ""
 "erro."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "Sistema Operativo"
 
@@ -2489,6 +2488,8 @@ msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won't be automatically removed on updates."
 msgstr ""
+"<br/>Esta versão está afixada e não será removida automaticamente nas "
+"atualizações."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
@@ -2496,7 +2497,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label OS vendor"
 msgid "Fedora Project"
-msgstr ""
+msgstr "Projeto Fedora"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
@@ -2662,16 +2663,13 @@ msgid "Starred Publisher on snapcraft.io"
 msgstr "Editor destacado no snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
-#, fuzzy, kde-format
-#| msgid ""
-#| "This Snap application is not compatible with security sandboxing and will "
-#| "have full access to this computer. Install it anyway?"
+#, kde-format
 msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this system. Install it anyway?"
 msgstr ""
-"Esta aplicação Snap não é compatível com isolamento de segurança e terá "
-"acesso total a este computador. Instalá-la mesmo assim?"
+"Esta aplicação Snap não é compatível com a sandbox de segurança e terá "
+"acesso total a este sistema. Instalar mesmo assim?"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:149
 #, kde-kuit-format
@@ -2768,32 +2766,25 @@ msgid "Refreshing %1"
 msgstr "A procurar atualizações em %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:561
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@label"
 msgid "Applications"
 msgstr "Aplicações"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:563
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Addons"
+#, kde-format
 msgctxt "@label"
 msgid "Addons"
 msgstr "Extensões"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:565
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Support"
+#, kde-format
 msgctxt "@label"
 msgid "Application Support"
 msgstr "Suporte de aplicações"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:567
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "System"
+#, kde-format
 msgctxt "@label"
 msgid "System"
 msgstr "Sistema"
@@ -2886,6 +2877,10 @@ msgstr "Aplicações de Sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Extensões"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CD e DVD"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"

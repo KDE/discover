@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-15 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:45+0000\n"
 "PO-Revision-Date: 2021-11-06 11:11+0100\n"
 "Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
 "Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
@@ -553,8 +553,8 @@ msgstr "Wothrawanje widejow"
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:542
 #, kde-format
 msgctxt "Category"
-msgid "CD and DVD"
-msgstr "CDje a DVDje"
+msgid "Disc Burning"
+msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -2751,6 +2751,10 @@ msgstr "Zlěpšenje systema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Dodawki"
+
+#~ msgctxt "Category"
+#~ msgid "CD and DVD"
+#~ msgstr "CDje a DVDje"
 
 #~ msgctxt "@info:status"
 #~ msgid "Starting"
