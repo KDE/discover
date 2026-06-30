@@ -2074,6 +2074,7 @@ FlatpakRemote *FlatpakBackend::installSource(FlatpakResource *resource)
 
     if (g_autoptr(FlatpakRemote) remote =
             flatpak_installation_get_remote_by_name(preferredInstallation(), resource->flatpakName().toUtf8().constData(), cancellable, nullptr)) {
+        Q_EMIT passiveMessage(i18n("Source '%1' already exists", resource->flatpakName()));
         qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Source" << resource->flatpakName() << "already exists in"
                                                    << flatpak_installation_get_path(preferredInstallation());
         return nullptr;
