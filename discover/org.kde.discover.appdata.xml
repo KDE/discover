@@ -327,10 +327,10 @@
   </provides>
   <compulsory_for_desktop>KDE</compulsory_for_desktop>
   <releases>
+    <release version="6.7.2" date="2026-06-30"/>
     <release version="6.7.1" date="2026-06-23"/>
     <release version="6.7.0" date="2026-06-16"/>
     <release version="6.6.5" date="2026-05-12"/>
-    <release version="6.6.4" date="2026-04-06"/>
   </releases>
   <content_rating type="oars-1.1"/>
 </component>
