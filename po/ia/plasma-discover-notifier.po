@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# giovanni <g.sora@tiscali.it>, 2017, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2017, 2020, 2021, 2022, 2026 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:18+0000\n"
-"PO-Revision-Date: 2022-01-24 13:00+0100\n"
+"PO-Revision-Date: 2026-06-30 15:27+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: notifier/DiscoverNotifier.cpp:154
 #, kde-format
 msgid "View Updates"
-msgstr "Actualisationes de vista"
+msgstr "Vide Actualisationes "
 
 #: notifier/DiscoverNotifier.cpp:271
 #, kde-format
