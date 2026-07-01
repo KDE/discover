@@ -2848,7 +2848,3 @@ msgstr "Systemprogram"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tillegg"
-
-#~ msgctxt "Category"
-#~ msgid "CD and DVD"
-#~ msgstr "CD og DVD"
