@@ -1,5 +1,5 @@
 # Translation of plasma-discover.po to Catalan
-# Copyright (C) 2012-2023 This_file_is_part_of_KDE
+# Copyright (C) 2012-2026 This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
 # SPDX-FileCopyrightText: 2012 Orestes Mas <orestes@tsc.upc.edu>
@@ -1652,65 +1652,3 @@ msgstr "Cal comprovar si hi ha actualitzacions"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Es desconeix l'hora de l'última actualització"
-
-#~ msgid ""
-#~ "You can help us improving this application by sharing statistics and "
-#~ "participate in surveys."
-#~ msgstr ""
-#~ "Podeu ajudar-nos a millorar aquesta aplicació compartint estadístiques i "
-#~ "participant en les enquestes."
-
-#~ msgctxt "@action:button"
-#~ msgid "Reboot now"
-#~ msgstr "Reinicia ara"
-
-#~ msgctxt "Separator between license labels e.g. 'GPL-3.0, Proprietary'"
-#~ msgid ","
-#~ msgstr ","
-
-#~ msgctxt "Show all licenses of the package"
-#~ msgid "See more…"
-#~ msgstr "Vegeu-ne més…"
-
-#~ msgctxt ""
-#~ "@info on the completion of updates, the action that automatically happens "
-#~ "after (e.g shut down)"
-#~ msgid "On completion, automatically:"
-#~ msgstr "En finalitzar, automàticament:"
-
-#~ msgctxt "@item:inlistbox placeholder for when no action is selected"
-#~ msgid "Select an action"
-#~ msgstr "Seleccioneu una acció"
-
-#~ msgid "Popularity"
-#~ msgstr "Popularitat"
-
-#~ msgid "Update from:"
-#~ msgstr "Actualitza des de:"
-
-#~ msgid "&Updates (%1)"
-#~ msgstr "Act&ualitzacions (%1)"
-
-#~| msgid "Please report this issue to the packagers of your distribution."
-#~ msgctxt "@info %1 is an additional error reference"
-#~ msgid ""
-#~ "Please report this issue to the packagers of your distribution.<nl/>(%1)"
-#~ msgstr ""
-#~ "Informeu d'aquest problema als empaquetadors de la vostra distribució.<nl/"
-#~ ">(%1)"
-
-#~ msgid "Report This Issue"
-#~ msgstr "Informa d'aquest problema"
-
-#~ msgid "Report this issue"
-#~ msgstr "Informa d'un problema"
-
-#~ msgctxt "@info"
-#~ msgid "Restart the system to complete the update process"
-#~ msgstr "Cal reiniciar el sistema per a completar el procés d'actualització"
-
-#~ msgctxt ""
-#~ "If appropriate, localize this URL to be something more relevant to the "
-#~ "language. %1 is the text that will be searched for."
-#~ msgid "https://duckduckgo.com/?q=%1"
-#~ msgstr "https://duckduckgo.com/?q=%1"
