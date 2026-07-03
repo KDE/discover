@@ -2860,30 +2860,3 @@ msgstr "Programari del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complements"
-
-#~ msgctxt "@info:status"
-#~ msgid "Starting"
-#~ msgstr "Iniciant"
-
-#~ msgid "Retrieving size information"
-#~ msgstr "S'està recuperant la informació de la mida"
-
-#~ msgid "%2 (plus %1 dependency)"
-#~ msgid_plural "%2 (plus %1 dependencies)"
-#~ msgstr[0] "%2 (més %1 dependència)"
-#~ msgstr[1] "%2 (més %1 dependències)"
-
-#~ msgid "ostree remotes"
-#~ msgstr "Remots d'«ostree»"
-
-#~ msgctxt "@action:button %1 is the distro name"
-#~ msgid "Report This Issue to %1"
-#~ msgstr "Informa del problema a %1"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "The background service (PackageKit) stopped unexpectedly. It may have "
-#~ "crashed."
-#~ msgstr ""
-#~ "El servei en segon pla (PackageKit) s'ha aturat de manera inesperada. "
-#~ "Potser ha fallat."

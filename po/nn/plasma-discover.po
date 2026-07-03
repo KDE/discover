@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-22 02:47+0000\n"
-"PO-Revision-Date: 2026-06-28 11:47+0200\n"
+"PO-Revision-Date: 2026-07-02 20:54+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -107,15 +107,12 @@ msgid "Please make sure Snap support is installed"
 msgstr "Kontroller at Snap-støtte er installert"
 
 #: discover/DiscoverObject.cpp:422
-#, fuzzy, kde-format
-#| msgid ""
-#| "Could not open %1 because it was not found in any available software "
-#| "repositories."
+#, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
 msgstr ""
-"Klarte ikkje opna %1, då programmet ikkje finst i nokon av pakkebrønnane."
+"Fann ikkje det søkte programmet i nokon av dei tilgjengelege pakkebrønnane"
 
 #: discover/DiscoverObject.cpp:425
 #, kde-kuit-format
@@ -126,6 +123,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(Manglar oppføring for %1)<nl/><nl/><link url='%2'>Meld frå om feilen til %3."
+"</link>"
 
 # Namnet på programmet, som eg til slutt har funne ut at ikkje bør omsetjast. – KOH
 #: discover/DiscoverObject.cpp:509 discover/DiscoverObject.cpp:511
@@ -190,7 +189,7 @@ msgstr "Vis tilgjengelege val for tilbakemeldingar"
 #: discover/main.cpp:43
 #, kde-format
 msgid "Starts an update automatically, headless"
-msgstr ""
+msgstr "Startar oppdatering automatisk, utan bruk av skjerm"
 
 # skip-rule: url
 #: discover/main.cpp:45
@@ -934,7 +933,7 @@ msgstr "Disover er fråkopla"
 msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
-msgstr ""
+msgstr "Kopla til eit nettverk for å installera program og oppdatera systemet."
 
 #: discover/qml/DiscoverWindow.qml:365
 #, kde-format
@@ -947,12 +946,12 @@ msgid "Update Issue"
 msgstr "Oppdateringsproblem"
 
 #: discover/qml/DiscoverWindow.qml:376
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr ""
-"Det oppstod ein feil ved installering av oppdateringa. Prøv igjen seinare."
+"Det oppstod ein feil ved installeringa/oppdateringa. Prøv igjen seinare."
 
 #: discover/qml/DiscoverWindow.qml:412
 #, kde-format
@@ -1016,6 +1015,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"Du kan hjelpa KDE å forbetra Discover ved å dela anonym informasjon om "
+"korleis du brukar programmet."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1161,6 +1162,9 @@ msgid ""
 "If you love %1, tell people what's great about it! Focus on functionality, "
 "usability, and appearance. If the app didn't meet your needs, explain why."
 msgstr ""
+"Viss du likar %1, skriv kva du synest er så bra med det! Fokuser på kva "
+"funksjonar som finst i programmet, kor enkelt det er å bruka og korleis det "
+"ser ut. Viss du synest programmet ikkje held mål, forklar korfor."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format

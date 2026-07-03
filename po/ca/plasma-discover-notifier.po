@@ -178,9 +178,3 @@ msgstr "Reinicieu per a aplicar les actualitzacions instal·lades"
 #, kde-format
 msgid "Click to restart the system"
 msgstr "Feu clic per a reiniciar el sistema"
-
-#~ msgid "Computer needs to restart"
-#~ msgstr "Cal reiniciar l'ordinador"
-
-#~ msgid "See Updates…"
-#~ msgstr "Veure les actualitzacions…"
