@@ -2767,7 +2767,3 @@ msgstr "系统软件"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "插件"
-
-#~ msgctxt "Category"
-#~ msgid "CD and DVD"
-#~ msgstr "CD 和 DVD"
