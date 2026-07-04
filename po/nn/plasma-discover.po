@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-09 00:45+0000\n"
-"PO-Revision-Date: 2026-07-02 20:54+0200\n"
+"PO-Revision-Date: 2026-07-03 19:37+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -401,6 +401,9 @@ msgid ""
 "application's author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"Programvara %1 oppgjev ikkje kva lisens ho vert distribuert under. Ta "
+"kontakt med utviklaren dersom du ønskjer å bruka ho til anna enn personleg "
+"bruk."
 
 #: discover/qml/ApplicationPage.qml:138
 #, kde-format
@@ -1174,6 +1177,9 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"Viss %1 ikkje vert starta, vurder å heller melda dette som ein feil til "
+"pakkarane i %2 på <link url='%3'>%3</link>, då det kan skuldast ein pakke­"
+"feil som er enkel å løysa, ikkje ein feil i sjølve programmet."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1183,6 +1189,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"Viss %1 ikkje vert starta, vurder å heller melda dette som ein feil "
+"utviklarane på <link url='%2'>%2</link>, då det kan skuldast ein pakke­feil "
+"som er enkel å løysa, ikkje ein feil i sjølve programmet."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
