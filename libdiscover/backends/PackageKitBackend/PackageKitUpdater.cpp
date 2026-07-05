@@ -345,13 +345,7 @@ void PackageKitUpdater::prepare()
         return;
     }
 
-#if QPK_CHECK_VERSION(1, 1, 4)
-    auto results = offline->getResults();
-    results.waitForFinished();
-    if (results.isError() || !results.success()) {
-#else
     if (QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
-#endif
         qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "Removed offline results file";
         offline->clearResults();
     }
