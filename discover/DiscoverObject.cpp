@@ -505,6 +505,13 @@ public:
 bool DiscoverObject::quitWhenIdle()
 {
     if (!isBusy()) {
+        // When wanting to quit, sometimes the window is closed, but
+        // DiscoverObject is not destroyed and the application remains open in a
+        // zombie state, making Discover unusable without killing the process.
+        //
+        // We know here we're meant to close, so, let's make sure we close:
+        QTimer::singleShot(20, qGuiApp, &QCoreApplication::quit);
+
         return true;
     }
 
