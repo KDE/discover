@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-22 02:47+0000\n"
-"PO-Revision-Date: 2026-07-04 10:30+0200\n"
+"PO-Revision-Date: 2026-07-05 17:35+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -1279,6 +1279,8 @@ msgctxt ""
 msgid "crash,segfault"
 msgstr "krasj,segfault"
 
+# «grusom» er strengt tatt berre eit bokmålsord, men folk kan jo bruka det for det.
+# skip-rule: bokmålsord
 #: discover/qml/ReviewDialog.qml:171
 #, kde-format
 msgctxt ""
