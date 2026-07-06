@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-05 00:45+0000\n"
-"PO-Revision-Date: 2026-07-01 05:14+0200\n"
+"PO-Revision-Date: 2026-07-05 06:37+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -588,7 +588,7 @@ msgstr "აღმავლის არასწორი URL '%1'"
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2077
 #, kde-format
 msgid "Source '%1' already exists"
-msgstr ""
+msgstr "წყარო '%1' უკვე არსებობს"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2094
 #, kde-format

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-05 00:45+0000\n"
-"PO-Revision-Date: 2026-06-30 20:02+0300\n"
+"PO-Revision-Date: 2026-07-05 12:51+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -590,7 +590,7 @@ msgstr "Помилкове форматування адреси appstream «%1�
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2077
 #, kde-format
 msgid "Source '%1' already exists"
-msgstr ""
+msgstr "Запис джерела «%1» вже існує"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2094
 #, kde-format

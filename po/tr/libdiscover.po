@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-05 00:45+0000\n"
-"PO-Revision-Date: 2026-07-01 19:40+0300\n"
+"PO-Revision-Date: 2026-07-05 19:01+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -590,7 +590,7 @@ msgstr "Hatalı oluşturulmuş Appstream URL’si “%1”"
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2077
 #, kde-format
 msgid "Source '%1' already exists"
-msgstr ""
+msgstr "Kaynak “%1” hâlihazırda var"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2094
 #, kde-format
