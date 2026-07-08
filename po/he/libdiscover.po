@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-05 00:45+0000\n"
-"PO-Revision-Date: 2026-06-30 09:05+0300\n"
+"PO-Revision-Date: 2026-07-07 09:08+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -591,7 +591,7 @@ msgstr "כתובת appstream‏ ‚%1’ משובשת"
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2077
 #, kde-format
 msgid "Source '%1' already exists"
-msgstr ""
+msgstr "המקור ‚%1’ כבר קיים"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2094
 #, kde-format

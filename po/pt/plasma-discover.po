@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-09 00:45+0000\n"
-"PO-Revision-Date: 2026-06-29 22:18+0100\n"
+"PO-Revision-Date: 2026-07-07 21:57+0100\n"
 "Last-Translator: César A. P. Cláudio <cesarapclaudio@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "Language: pt\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-POFile-IgnoreConsistency: Discover\n"
 "X-POFile-SpellExtra: KNewStuff Graham Nate Leinir Snap pacman Arch\n"
 "X-POFile-SpellExtra: PackageKit\n"
-"X-Generator: Lokalize 26.04.2\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #: discover/DiscoverObject.cpp:198
 #, kde-format
@@ -1521,7 +1521,7 @@ msgstr "Atualizar selecionados"
 #, kde-format
 msgctxt "@action:button as in, 'update all items'"
 msgid "Update All"
-msgstr "Atualizar todos"
+msgstr "Atualizar tudo"
 
 #: discover/qml/UpdatesPage.qml:189
 #, kde-format
