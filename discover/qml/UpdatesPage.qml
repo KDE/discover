@@ -669,7 +669,7 @@ DiscoverPage {
             PropertyChanges { page.actions: [refreshAction] }
             PropertyChanges { page.footerLabel: i18nc("@info", "Updates will be installed after the system is restarted") }
             PropertyChanges { statusLabel.helpfulAction: promptRestartAction }
-            PropertyChanges { statusLabel.explanation: i18nc("@info", "You can keep using the system if you're not ready to restart yet.") }
+            PropertyChanges { statusLabel.explanation: i18nc("@info", "You can keep using the system if you’re not ready to restart yet.") }
             PropertyChanges { statusLabel.progressBar.visible: false }
         },
         State {

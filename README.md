@@ -21,7 +21,7 @@ The easiest way to make changes and test Discover during development is to [buil
 
 ## Vendor Customization
 
-Want to change the apps featured in the Editor's Choice section? Add a configuration file named `/usr/share/discover/featuredurlrc` that points to a JSON file patterned off the default one present at https://autoconfig.kde.org/discover/featured-5.9.json:
+Want to change the apps featured in the Editor’s Choice section? Add a configuration file named `/usr/share/discover/featuredurlrc` that points to a JSON file patterned off the default one present at https://autoconfig.kde.org/discover/featured-5.9.json:
 ```toml
 [Software]
 FeaturedListingURL="https://your-url-here/file.json"
@@ -34,7 +34,7 @@ Like other projects in the KDE ecosystem, contributions are welcome from all. Th
 * Want to contribute code? See the [GitLab wiki page](https://community.kde.org/Infrastructure/GitLab) for a tutorial on how to send a merge request.
 * Reporting a bug? Please submit it on the [KDE Bugtracking System](https://bugs.kde.org/enter_bug.cgi?format=guided&product=Discover). Please do not use the Issues
   tab to report bugs.
-* Is there a part of Discover that's not translated? See the [Getting Involved in Translation wiki page](https://community.kde.org/Get_Involved/translation) to see how
+* Is there a part of Discover that’s not translated? See the [Getting Involved in Translation wiki page](https://community.kde.org/Get_Involved/translation) to see how
   you can help translate!
 
 If you get stuck or need help with anything at all, head over to the [KDE New Contributors room](https://go.kde.org/matrix/#/#kde-welcome:kde.org) on Matrix. For questions about Discover, please ask in the [Plasma Discover room](https://go.kde.org/matrix/#/#plasma-discover:kde.org). See [Matrix](https://community.kde.org/Matrix) for more details.

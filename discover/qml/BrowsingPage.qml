@@ -138,7 +138,7 @@ DiscoverPage {
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
             Layout.fillWidth: true
-            text: i18nc("@title:group", "Editor's Choice")
+            text: i18nc("@title:group", "Editor’s Choice")
             wrapMode: Text.Wrap
             visible: featuredRep.count > 0 && !featuredModel.isFetching
         }
