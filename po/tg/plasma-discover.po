@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-09 00:45+0000\n"
+"POT-Creation-Date: 2026-07-14 00:45+0000\n"
 "PO-Revision-Date: 2020-08-27 11:51+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -192,7 +192,7 @@ msgstr ""
 
 #: discover/main.cpp:127
 #, kde-format
-msgid "Quality Assurance, Design and Usability"
+msgid "Quality Assurance, Design, and Usability"
 msgstr ""
 
 #: discover/main.cpp:131
@@ -287,7 +287,7 @@ msgid ""
 "harvesting your personal information, tracking your location, or "
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. More information may be available on <link "
-"url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
+"url='%2'>the application’s website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
 
@@ -320,7 +320,7 @@ msgid ""
 "make sure you fully trust the authors, as no one else can verify the "
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways. More information may be available on <link "
-"url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
+"url='%4'>the application’s website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
 
@@ -344,7 +344,7 @@ msgstr ""
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
-"to determine this on <link url='%2'>the application's website</link>. Find "
+"to determine this on <link url='%2'>the application’s website</link>. Find "
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
@@ -354,7 +354,7 @@ msgstr ""
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. Contact the "
-"application's author if you want to use it for anything other than private "
+"application’s author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
 
@@ -402,8 +402,9 @@ msgid "Screenshots not available for %1"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:436
-#, kde-format
-msgid "What's New"
+#, fuzzy, kde-format
+#| msgid "What's New"
+msgid "What’s New"
 msgstr "Навигариҳо"
 
 #: discover/qml/ApplicationPage.qml:469
@@ -471,7 +472,7 @@ msgstr "Ҳуҷҷатнигорӣ:"
 #: discover/qml/ApplicationPage.qml:596
 #, kde-format
 msgctxt "@info text of a web URL"
-msgid "Visit the project's website"
+msgid "Visit the project’s website"
 msgstr ""
 
 #: discover/qml/ApplicationPage.qml:606
@@ -766,7 +767,7 @@ msgstr ""
 #: discover/qml/BrowsingPage.qml:141
 #, kde-format
 msgctxt "@title:group"
-msgid "Editor's Choice"
+msgid "Editor’s Choice"
 msgstr ""
 
 #: discover/qml/BrowsingPage.qml:165
@@ -1054,8 +1055,9 @@ msgid "Installed"
 msgstr "Насбшуда"
 
 #: discover/qml/Navigation.qml:36
-#, kde-format
-msgid "Resources for '%1'"
+#, fuzzy, kde-format
+#| msgid "Resources for '%1'"
+msgid "Resources for “%1”"
 msgstr "Манбаъҳо барои '%1'"
 
 #: discover/qml/ProgressView.qml:21
@@ -1157,15 +1159,15 @@ msgstr "Пешниҳод кардани тақриз"
 #: discover/qml/ReviewDialog.qml:48
 #, kde-format
 msgid ""
-"If you love %1, tell people what's great about it! Focus on functionality, "
-"usability, and appearance. If the app didn't meet your needs, explain why."
+"If you love %1, tell people what’s great about it! Focus on functionality, "
+"usability, and appearance. If the app didn’t meet your needs, explain why."
 msgstr ""
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"If %1 isn't launching, consider reporting this to its packagers in %2 at "
+"If %1 isn’t launching, consider reporting this to its packagers in %2 at "
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
@@ -1174,7 +1176,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"If %1 isn't launching, consider reporting this its developers at <link "
+"If %1 isn’t launching, consider reporting this to its developers at <link "
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
@@ -1183,7 +1185,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"If the app is crashing a lot, consider reporting this to the developers at "
+"If the app is crashing a lot, consider reporting this to its developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
 
@@ -1191,7 +1193,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"If you're having a problem with the app, consider reporting it to the "
+"If you’re having a problem with the app, consider reporting this to its "
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
@@ -1234,7 +1236,7 @@ msgstr ""
 #: discover/qml/ReviewDialog.qml:171
 #, kde-format
 msgctxt ""
-"Word the user might use in an unhelpful sentence saying an app isn't very "
+"Words the user might use in an unhelpful sentence saying an app isn't very "
 "good. Preserve the commas. If necessary, add more words used for this in "
 "your language and/or shorten to common stems contained by multiple forms of "
 "the words,"
@@ -1350,7 +1352,7 @@ msgstr "Ҷустуҷӯ"
 #: discover/qml/SearchField.qml:26
 #, fuzzy, kde-format
 #| msgid "Search in '%1'..."
-msgid "Search in '%1'…"
+msgid "Search in “%1”…"
 msgstr "Ҷустуҷӯ дар '%1'..."
 
 #: discover/qml/SourcesPage.qml:19
@@ -1382,7 +1384,7 @@ msgstr ""
 
 #: discover/qml/SourcesPage.qml:258
 #, kde-format
-msgid "Failed to increase '%1' preference"
+msgid "Failed to increase “%1” preference"
 msgstr ""
 
 #: discover/qml/SourcesPage.qml:264
@@ -1392,7 +1394,7 @@ msgstr ""
 
 #: discover/qml/SourcesPage.qml:270
 #, kde-format
-msgid "Failed to decrease '%1' preference"
+msgid "Failed to decrease “%1” preference"
 msgstr ""
 
 #: discover/qml/SourcesPage.qml:276
@@ -1583,7 +1585,7 @@ msgstr ""
 #: discover/qml/UpdatesPage.qml:672
 #, kde-format
 msgctxt "@info"
-msgid "You can keep using the system if you're not ready to restart yet."
+msgid "You can keep using the system if you’re not ready to restart yet."
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:677 discover/qml/UpdatesPage.qml:684

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-05 00:45+0000\n"
+"POT-Creation-Date: 2026-07-14 00:45+0000\n"
 "PO-Revision-Date: 2017-12-31 22:42+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -601,19 +601,20 @@ msgstr "Локална свеза"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1963
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
-#, kde-format
-msgid "Malformed appstream url '%1'"
+#, fuzzy, kde-format
+#| msgid "Malformed appstream url '%1'"
+msgid "Malformed appstream url “%1”"
 msgstr "Лош апстрим УРЛ ‘%1’"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2077
 #, kde-format
-msgid "Source '%1' already exists"
+msgid "Source “%1” already exists"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2094
 #, fuzzy, kde-format
 #| msgid "Could not add the source %1"
-msgid "Failed to add source '%1': %2"
+msgid "Failed to add source “%1”: %2"
 msgstr "Не могу да додам извор %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2221
@@ -659,7 +660,7 @@ msgstr "непозната"
 #| msgid ""
 #| "Failed to update %1 packages\n"
 #| "%2"
-msgid "Failed to start '%1': %2"
+msgid "Failed to start “%1”: %2"
 msgstr ""
 "Не могу да ажурирам %1 пакета.\n"
 "%2|/|Не могу да ажурирам %1 $[множ ^1 пакет пакета пакета].\n"
@@ -955,7 +956,7 @@ msgstr "Не могу да додам извор %1"
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
 #| msgid "Removing"
-msgid "Removing '%1'"
+msgid "Removing “%1”"
 msgstr "Уклањам..."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
@@ -992,14 +993,14 @@ msgstr "УРИ флатпак ризнице (*.flatpakrepo)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:35
 #, kde-format
-msgid "Adding remote '%1' in %2 from %3"
+msgid "Adding remote “%1” in %2 from %3"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:338
 #, kde-format
 msgctxt "@info:status"
 msgid ""
-"Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to <a "
+"Cannot create transaction for “%1”:<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
 
@@ -1271,7 +1272,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, fuzzy, kde-format
 #| msgid "Cannot remove system package"
-msgid "Cannot remove '%1'"
+msgid "Cannot remove “%1”"
 msgstr "Не могу да уклоним системски пакет"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
@@ -1658,28 +1659,36 @@ msgid "Unknown error %1."
 msgstr "Непозната грешка %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
-#, kde-format
-msgid "'%1' was changed and suggests to be restarted."
+#, fuzzy, kde-format
+#| msgid "'%1' was changed and suggests to be restarted."
+msgid "“%1” was changed and suggests to be restarted."
 msgstr "„%1“ је измењен и предлаже поновно покретање."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
-#, kde-format
-msgid "A change by '%1' suggests your session to be restarted."
+#, fuzzy, kde-format
+#| msgid "A change by '%1' suggests your session to be restarted."
+msgid "A change by “%1” suggests your session to be restarted."
 msgstr "Измена од „%1“ предлаже поновно покретање сесије."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "'%1' was updated for security reasons, a restart of the session is "
+#| "recommended."
 msgid ""
-"'%1' was updated for security reasons, a restart of the session is "
+"“%1” was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
 "„%1“ је ажуриран из безбедносних разлога, препоручује се поновно покретање "
 "сесије."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "'%1' was updated for security reasons, a restart of the system is "
+#| "recommended."
 msgid ""
-"'%1' was updated for security reasons, a restart of the system is "
+"“%1” was updated for security reasons, a restart of the system is "
 "recommended."
 msgstr ""
 "„%1“ је ажуриран из безбедносних разлога, препоручује се поновно покретање "
@@ -1689,7 +1698,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
 #, fuzzy, kde-format
 #| msgid "A change by '%1' suggests your system to be rebooted."
-msgid "A change by '%1' suggests your system to be restarted."
+msgid "A change by “%1” suggests your system to be restarted."
 msgstr "Измена од „%1“ предлаже поновно покретање система."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
@@ -2345,7 +2354,7 @@ msgstr ""
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
-"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
@@ -2375,9 +2384,12 @@ msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Media Change of type '%1' is requested.\n"
+#| "%2"
 msgid ""
-"Media Change of type '%1' is requested.\n"
+"Media Change of type “%1” is requested.\n"
 "%2"
 msgstr ""
 "Потребна измена медијума типа „%1“.\n"
@@ -2429,7 +2441,7 @@ msgstr ""
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
-"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
@@ -2568,7 +2580,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label OS updater message"
 msgid ""
-"<br/>This version is pinned and won't be automatically removed on updates."
+"<br/>This version is pinned and won’t be automatically removed on updates."
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
@@ -2765,9 +2777,11 @@ msgid "No components found in appstream metadata for target “%1”"
 msgstr ""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "List all the backends we'll want to have loaded, separated by comma ','."
 msgid ""
-"List all the backends we'll want to have loaded, separated by comma ','."
+"List all the backends we’ll want to have loaded, separated by comma “,”."
 msgstr "Набраја све позадине које треба учитати, раздвојене запетама."
 
 #: libdiscover/resources/AbstractResource.cpp:93

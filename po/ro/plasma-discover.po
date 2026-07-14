@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-09 00:45+0000\n"
+"POT-Creation-Date: 2026-07-14 00:45+0000\n"
 "PO-Revision-Date: 2026-05-17 13:57+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -218,8 +218,9 @@ msgid "Nate Graham"
 msgstr "Nate Graham"
 
 #: discover/main.cpp:127
-#, kde-format
-msgid "Quality Assurance, Design and Usability"
+#, fuzzy, kde-format
+#| msgid "Quality Assurance, Design and Usability"
+msgid "Quality Assurance, Design, and Usability"
 msgstr "Asigurarea calității, proiectare și ușurință în utilizare"
 
 #: discover/main.cpp:131
@@ -298,7 +299,21 @@ msgid "No ratings"
 msgstr "Nicio evaluare"
 
 #: discover/qml/ApplicationPage.qml:67
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Only install %1 if you fully trust its authors because it is <emphasis "
+#| "strong='true'>proprietary</emphasis>: Your freedom to use, modify, and "
+#| "redistribute this application is restricted, and its source code is "
+#| "partially or entirely closed to public inspection and improvement. This "
+#| "means third parties and users like you cannot verify its operation, "
+#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
+#| "safe to use, or it may be acting against you in various ways — such as "
+#| "harvesting your personal information, tracking your location, or "
+#| "transmitting the contents of your data to someone else. Only use it if "
+#| "you fully trust its authors. More information may be available on <link "
+#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
+#| "url='%3'>%3</link>."
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -311,7 +326,7 @@ msgid ""
 "harvesting your personal information, tracking your location, or "
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. More information may be available on <link "
-"url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
+"url='%2'>the application’s website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
 "Instalați %1 doar dacă aveți încredere deplină în autorii săi deoarece e "
@@ -357,7 +372,20 @@ msgstr ""
 "url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:79
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "%1 uses one or more licenses not certified as “Free Software” by either "
+#| "the <link url='%2'>Free Software Foundation</link> or the <link "
+#| "url='%3'>Open Source Initiative</link>. This means your freedom to use, "
+#| "study, modify, and share it may be restricted in some ways.<nl/><nl/>Make "
+#| "sure to read the license text and understand any restrictions before "
+#| "using the software.<nl/><nl/>If the license does not even grant access to "
+#| "read the source code, make sure you fully trust the authors, as no one "
+#| "else can verify the trustworthiness and security of its code to ensure "
+#| "that it is not acting against you in hidden ways. More information may be "
+#| "available on <link url='%4'>the application's website</link>.<nl/><nl/"
+#| ">Learn more at <link url='%5'>%5</link>."
 msgctxt "@info"
 msgid ""
 "%1 uses one or more licenses not certified as “Free Software” by either the "
@@ -369,7 +397,7 @@ msgid ""
 "make sure you fully trust the authors, as no one else can verify the "
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways. More information may be available on <link "
-"url='%4'>the application's website</link>.<nl/><nl/>Learn more at <link "
+"url='%4'>the application’s website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
 "%1 folosește una sau mai multe licențe ce nu sunt clasificate ca „Program "
@@ -413,11 +441,17 @@ msgstr ""
 "la <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:95
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "%1 does not indicate under which license it is distributed. You may be "
+#| "able to determine this on <link url='%2'>the application's website</"
+#| "link>. Find it there or contact the author if you want to use this "
+#| "application for anything other than private personal use."
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
-"to determine this on <link url='%2'>the application's website</link>. Find "
+"to determine this on <link url='%2'>the application’s website</link>. Find "
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
@@ -427,11 +461,16 @@ msgstr ""
 "cele personale."
 
 #: discover/qml/ApplicationPage.qml:99
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid ""
+#| "%1 does not indicate under which license it is distributed. Contact the "
+#| "application's author if you want to use it for anything other than "
+#| "private personal use."
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. Contact the "
-"application's author if you want to use it for anything other than private "
+"application’s author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
 "%1 nu indică licența cu care e distribuită. Contactați autorul aplicației "
@@ -481,8 +520,9 @@ msgid "Screenshots not available for %1"
 msgstr "Capturile de ecran nu sunt disponibile pentru %1"
 
 #: discover/qml/ApplicationPage.qml:436
-#, kde-format
-msgid "What's New"
+#, fuzzy, kde-format
+#| msgid "What's New"
+msgid "What’s New"
 msgstr "Ce-i nou"
 
 #: discover/qml/ApplicationPage.qml:469
@@ -542,9 +582,11 @@ msgid "Read the documentation"
 msgstr "Citiți documentația"
 
 #: discover/qml/ApplicationPage.qml:596
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info text of a web URL"
+#| msgid "Visit the project's website"
 msgctxt "@info text of a web URL"
-msgid "Visit the project's website"
+msgid "Visit the project’s website"
 msgstr "Vizitați pagina proiectului"
 
 #: discover/qml/ApplicationPage.qml:606
@@ -823,9 +865,11 @@ msgid "See More"
 msgstr "Vezi mai multe"
 
 #: discover/qml/BrowsingPage.qml:141
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Editor's Choice"
 msgctxt "@title:group"
-msgid "Editor's Choice"
+msgid "Editor’s Choice"
 msgstr "Alegerea redacției"
 
 #: discover/qml/BrowsingPage.qml:165
@@ -1104,8 +1148,9 @@ msgid "Installed"
 msgstr "Instalat"
 
 #: discover/qml/Navigation.qml:36
-#, kde-format
-msgid "Resources for '%1'"
+#, fuzzy, kde-format
+#| msgid "Resources for '%1'"
+msgid "Resources for “%1”"
 msgstr "Resurse pentru „%1”"
 
 #: discover/qml/ProgressView.qml:21
@@ -1199,20 +1244,29 @@ msgid "Submit review"
 msgstr "Trimite recenzia"
 
 #: discover/qml/ReviewDialog.qml:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "If you love %1, tell people what's great about it! Focus on "
+#| "functionality, usability, and appearance. If the app didn't meet your "
+#| "needs, explain why."
 msgid ""
-"If you love %1, tell people what's great about it! Focus on functionality, "
-"usability, and appearance. If the app didn't meet your needs, explain why."
+"If you love %1, tell people what’s great about it! Focus on functionality, "
+"usability, and appearance. If the app didn’t meet your needs, explain why."
 msgstr ""
 "Dacă vă place %1, spuneți oamenilor despre aceasta! Concentrați-vă pe "
 "funcționalitate, utilitate și aspect. Dacă aplicația nu v-a satisfăcut "
 "cerințele, explicați de ce."
 
 #: discover/qml/ReviewDialog.qml:72
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "If %1 isn't launching, consider reporting this to its packagers in %2 at "
+#| "<link url='%3'>%3</link> instead, as it may be an easily fixable "
+#| "packaging issue rather than a flaw in the app itself."
 msgctxt "@info"
 msgid ""
-"If %1 isn't launching, consider reporting this to its packagers in %2 at "
+"If %1 isn’t launching, consider reporting this to its packagers in %2 at "
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
@@ -1221,10 +1275,15 @@ msgstr ""
 "rezolvabilă cu împachetarea și nu un defect al aplicației."
 
 #: discover/qml/ReviewDialog.qml:77
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "If %1 isn't launching, consider reporting this its developers at <link "
+#| "url='%2'>%2</link> instead, as it may be an easily fixable packaging "
+#| "issue rather than a flaw in the app itself."
 msgctxt "@info"
 msgid ""
-"If %1 isn't launching, consider reporting this its developers at <link "
+"If %1 isn’t launching, consider reporting this to its developers at <link "
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
@@ -1233,20 +1292,29 @@ msgstr ""
 "cu împachetarea și nu un defect al aplicației."
 
 #: discover/qml/ReviewDialog.qml:82
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "If the app is crashing a lot, consider reporting this to the developers "
+#| "at <link url='%1'>%1</link> instead."
 msgctxt "@info"
 msgid ""
-"If the app is crashing a lot, consider reporting this to the developers at "
+"If the app is crashing a lot, consider reporting this to its developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
 "Dacă aplicația se prăbușește des, încercați să raportați aceasta "
 "dezvoltatorilor la <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "If you're having a problem with the app, consider reporting it to the "
+#| "developers at <link url='%1'>%1</link> instead, or else describe the "
+#| "problem here in greater detail."
 msgctxt "@info"
 msgid ""
-"If you're having a problem with the app, consider reporting it to the "
+"If you’re having a problem with the app, consider reporting this to its "
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
@@ -1290,9 +1358,15 @@ msgid "crash,segfault"
 msgstr "prăbușire,prăbușit,crăpat"
 
 #: discover/qml/ReviewDialog.qml:171
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "Word the user might use in an unhelpful sentence saying an app isn't very "
+#| "good. Preserve the commas. If necessary, add more words used for this in "
+#| "your language and/or shorten to common stems contained by multiple forms "
+#| "of the words,"
+#| msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgctxt ""
-"Word the user might use in an unhelpful sentence saying an app isn't very "
+"Words the user might use in an unhelpful sentence saying an app isn't very "
 "good. Preserve the commas. If necessary, add more words used for this in "
 "your language and/or shorten to common stems contained by multiple forms of "
 "the words,"
@@ -1399,8 +1473,9 @@ msgid "Search…"
 msgstr "Caută…"
 
 #: discover/qml/SearchField.qml:26
-#, kde-format
-msgid "Search in '%1'…"
+#, fuzzy, kde-format
+#| msgid "Search in '%1'…"
+msgid "Search in “%1”…"
 msgstr "Caută în „%1”…"
 
 #: discover/qml/SourcesPage.qml:19
@@ -1429,8 +1504,9 @@ msgid "Increase priority"
 msgstr "Crește prioritatea"
 
 #: discover/qml/SourcesPage.qml:258
-#, kde-format
-msgid "Failed to increase '%1' preference"
+#, fuzzy, kde-format
+#| msgid "Failed to increase '%1' preference"
+msgid "Failed to increase “%1” preference"
 msgstr "Creșterea preferinței pentru „%1” a eșuat"
 
 #: discover/qml/SourcesPage.qml:264
@@ -1439,8 +1515,9 @@ msgid "Decrease priority"
 msgstr "Descrește prioritatea"
 
 #: discover/qml/SourcesPage.qml:270
-#, kde-format
-msgid "Failed to decrease '%1' preference"
+#, fuzzy, kde-format
+#| msgid "Failed to decrease '%1' preference"
+msgid "Failed to decrease “%1” preference"
 msgstr "Descreșterea preferinței pentru „%1” a eșuat"
 
 #: discover/qml/SourcesPage.qml:276
@@ -1626,9 +1703,11 @@ msgid "Updates will be installed after the system is restarted"
 msgstr "Actualizările vor fi instalate după repornirea sistemului"
 
 #: discover/qml/UpdatesPage.qml:672
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "You can keep using the system if you're not ready to restart yet."
 msgctxt "@info"
-msgid "You can keep using the system if you're not ready to restart yet."
+msgid "You can keep using the system if you’re not ready to restart yet."
 msgstr ""
 "Puteți continua să folosiți sistemul dacă nu sunteți gata de a-l reporni."
 

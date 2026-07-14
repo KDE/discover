@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-05 00:45+0000\n"
+"POT-Creation-Date: 2026-07-14 00:45+0000\n"
 "PO-Revision-Date: 2026-05-29 17:22-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -581,18 +581,20 @@ msgstr "يەرلىك بوغچا"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1963
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
-#, kde-format
-msgid "Malformed appstream url '%1'"
+#, fuzzy, kde-format
+#| msgid "Malformed appstream url '%1'"
+msgid "Malformed appstream url “%1”"
 msgstr "خاتا appstream تور ئادرېسى «%1»"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2077
 #, kde-format
-msgid "Source '%1' already exists"
+msgid "Source “%1” already exists"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2094
-#, kde-format
-msgid "Failed to add source '%1': %2"
+#, fuzzy, kde-format
+#| msgid "Failed to add source '%1': %2"
+msgid "Failed to add source “%1”: %2"
 msgstr "«%1» مەنبەنى قوشالمىدى: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2221
@@ -627,8 +629,9 @@ msgstr "يوچۇن"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:537
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:467
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
-#, kde-format
-msgid "Failed to start '%1': %2"
+#, fuzzy, kde-format
+#| msgid "Failed to start '%1': %2"
+msgid "Failed to start “%1”: %2"
 msgstr "«%1» نى قوزغىتالمىدى: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:778
@@ -941,8 +944,9 @@ msgid "Could not add the source %1"
 msgstr "%1 مەنبەنى قوشالمايدۇ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
-#, kde-format
-msgid "Removing '%1'"
+#, fuzzy, kde-format
+#| msgid "Removing '%1'"
+msgid "Removing “%1”"
 msgstr "«%1» چىقىرىۋېتىۋاتىدۇ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
@@ -975,15 +979,20 @@ msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Flatpak خەزىنە URI (*.flatpakrepo) كىرگۈزۈلىدۇ:"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:35
-#, kde-format
-msgid "Adding remote '%1' in %2 from %3"
+#, fuzzy, kde-format
+#| msgid "Adding remote '%1' in %2 from %3"
+msgid "Adding remote “%1” in %2 from %3"
 msgstr "%2 غا %3 دىن يىراقتىكى «%1» نى قوشۇۋاتىدۇ"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:338
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid ""
+#| "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to "
+#| "<a href='%3'>%3</a>"
 msgctxt "@info:status"
 msgid ""
-"Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to <a "
+"Cannot create transaction for “%1”:<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
 "«%1» ئۈچۈن ئالماشتۇرۇش قۇرالمايدۇ: <nl/>%2<nl/><nl/>بۇنى <a href='%3'>%3</a> "
@@ -1264,8 +1273,9 @@ msgstr ""
 "يۈكسەلدۈرۈشنى ئويلىشىڭ."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
-#, kde-format
-msgid "Cannot remove '%1'"
+#, fuzzy, kde-format
+#| msgid "Cannot remove '%1'"
+msgid "Cannot remove “%1”"
 msgstr "«%1» نى چىقىرىۋېتەلمەيدۇ"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
@@ -1652,36 +1662,45 @@ msgid "Unknown error %1."
 msgstr "يوچۇن خاتالىق %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
-#, kde-format
-msgid "'%1' was changed and suggests to be restarted."
+#, fuzzy, kde-format
+#| msgid "'%1' was changed and suggests to be restarted."
+msgid "“%1” was changed and suggests to be restarted."
 msgstr "«%1» ئۆزگەرگەن قايتا قوزغىتىش تەۋسىيە قىلىنىدۇ."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
-#, kde-format
-msgid "A change by '%1' suggests your session to be restarted."
+#, fuzzy, kde-format
+#| msgid "A change by '%1' suggests your session to be restarted."
+msgid "A change by “%1” suggests your session to be restarted."
 msgstr "«%1» نىڭ ئۆزگىرىشى جەريانچاقنى قايتا قوزغىتىش تەكلىپى بەردى."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "'%1' was updated for security reasons, a restart of the session is "
+#| "recommended."
 msgid ""
-"'%1' was updated for security reasons, a restart of the session is "
+"“%1” was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
 "بىخەتەرلىك سەۋەبىدىن «%1» يېڭىلانغان، جەريانچاقنى قايتا قوزغىتىش تەۋسىيە "
 "قىلىنىدۇ."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "'%1' was updated for security reasons, a restart of the system is "
+#| "recommended."
 msgid ""
-"'%1' was updated for security reasons, a restart of the system is "
+"“%1” was updated for security reasons, a restart of the system is "
 "recommended."
 msgstr ""
 "بىخەتەرلىك سەۋەبىدىن «%1» يېڭىلانغان، سىستېمىنى قايتا قوزغىتىش تەۋسىيە "
 "قىلىنىدۇ."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
-#, kde-format
-msgid "A change by '%1' suggests your system to be restarted."
+#, fuzzy, kde-format
+#| msgid "A change by '%1' suggests your system to be restarted."
+msgid "A change by “%1” suggests your system to be restarted."
 msgstr "«%1» نىڭ ئۆزگىرىشى سىستېمىنى قايتا قوزغىتىش تەكلىپى بەردى."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
@@ -2234,10 +2253,15 @@ msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "يېڭىلاشقا يېتەرلىك بوشلۇق يوق؛ پەقەت %1 بوشلۇقنى ئىشلەتكىلى بولىدۇ."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:602
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This update cannot be completed as it would remove the following software "
+#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
+#| ">If you believe this is an error, please report it as a bug to the "
+#| "packagers of your distribution."
 msgid ""
 "This update cannot be completed as it would remove the following software "
-"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
@@ -2268,9 +2292,12 @@ msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Media Change of type '%1' is requested.\n"
+#| "%2"
 msgid ""
-"Media Change of type '%1' is requested.\n"
+"Media Change of type “%1” is requested.\n"
 "%2"
 msgstr ""
 "تۈرى «%1» نى ئۆزگەرتىشنى ئىلتىماس قىلغان ۋاسىتە.\n"
@@ -2320,10 +2347,15 @@ msgstr ""
 "ۋاقىت تامغا: %4\n"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This action cannot be completed as it would remove the following software "
+#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
+#| ">If you believe this is an error, please report it as a bug to the "
+#| "packagers of your distribution."
 msgid ""
 "This action cannot be completed as it would remove the following software "
-"which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/>If "
+"which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
@@ -2455,10 +2487,13 @@ msgid "Removed packages:"
 msgstr "چىقىرىۋەتكەن بوغچا:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label OS updater message"
+#| msgid ""
+#| "<br/>This version is pinned and won't be automatically removed on updates."
 msgctxt "@label OS updater message"
 msgid ""
-"<br/>This version is pinned and won't be automatically removed on updates."
+"<br/>This version is pinned and won’t be automatically removed on updates."
 msgstr "<br/>بۇ نەشرى مىخلاندى ۋە ئۆزلۈكىدىن يېڭىلانغاندا چىقىرىۋېتىلمەيدۇ."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
@@ -2672,9 +2707,11 @@ msgid "No components found in appstream metadata for target “%1”"
 msgstr "«%1» نىشاننىڭ ئەپ تەپسىلىي ئۇچۇرىدىكى ھېچقانداق بۆلەكنى تاپالمىدى"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "List all the backends we'll want to have loaded, separated by comma ','."
 msgid ""
-"List all the backends we'll want to have loaded, separated by comma ','."
+"List all the backends we’ll want to have loaded, separated by comma “,”."
 msgstr ""
 "«,» پەش بىلەن ئايرىلغان، يۈكلىمەكچى بولغان بارلىق ئارقا ئۇچ تىزىمىنى "
 "كۆرسىتىدۇ."
