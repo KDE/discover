@@ -90,7 +90,8 @@ BasicAbstractCard {
 
             // "Non-default backend" badge
             Loader {
-                anchors.bottom: parent.bottom
+                anchors.top: root.showSize ? parent.top : undefined
+                anchors.bottom: root.showSize ? undefined : parent.bottom
                 anchors.right: parent.right
                 active: root.appIsFromNonDefaultBackend
                 visible: active
