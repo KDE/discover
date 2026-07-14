@@ -65,6 +65,7 @@ BasicAbstractCard {
 
                 // App Icon
                 Kirigami.Icon {
+                    Layout.alignment: Qt.AlignHCenter
                     implicitWidth: root.appIconSize
                     implicitHeight: root.appIconSize
                     source: root.application.icon
