@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 02:47+0000\n"
+"POT-Creation-Date: 2026-07-15 02:39+0000\n"
 "PO-Revision-Date: 2025-09-19 22:14+0330\n"
 "Last-Translator: Sohrab Behdani <behdanisohrab@proton.me>\n"
 "Language-Team: fa\n"
@@ -287,7 +287,7 @@ msgstr "افزودن"
 msgid "Cancel"
 msgstr "رد کردن"
 
-#: discover/qml/ApplicationDelegate.qml:160
+#: discover/qml/ApplicationDelegate.qml:162
 #, fuzzy, kde-format
 #| msgid "No ratings yet"
 msgid "No ratings"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 02:47+0000\n"
+"POT-Creation-Date: 2026-07-15 02:39+0000\n"
 "PO-Revision-Date: 2024-02-10 09:57-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -272,7 +272,7 @@ msgstr "ਜੋੜੋ"
 msgid "Cancel"
 msgstr "ਰੱਦ ਕਰੋ"
 
-#: discover/qml/ApplicationDelegate.qml:160
+#: discover/qml/ApplicationDelegate.qml:162
 #, fuzzy, kde-format
 #| msgid "No ratings yet"
 msgid "No ratings"

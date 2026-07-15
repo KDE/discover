@@ -37,7 +37,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 02:47+0000\n"
+"POT-Creation-Date: 2026-07-15 02:39+0000\n"
 "PO-Revision-Date: 2024-06-10 12:05+0400\n"
 "Last-Translator: Kheyyam Godjayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -332,7 +332,7 @@ msgstr "Əlavə etmək"
 msgid "Cancel"
 msgstr "İmtina"
 
-#: discover/qml/ApplicationDelegate.qml:160
+#: discover/qml/ApplicationDelegate.qml:162
 #, fuzzy, kde-format
 #| msgid "No ratings yet"
 msgid "No ratings"

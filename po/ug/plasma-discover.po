@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 02:47+0000\n"
+"POT-Creation-Date: 2026-07-15 02:39+0000\n"
 "PO-Revision-Date: 2026-04-15 13:23-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
@@ -294,7 +294,7 @@ msgstr "قوش"
 msgid "Cancel"
 msgstr "ۋاز كەچ"
 
-#: discover/qml/ApplicationDelegate.qml:160
+#: discover/qml/ApplicationDelegate.qml:162
 #, fuzzy, kde-format
 #| msgid "No ratings yet"
 msgid "No ratings"
