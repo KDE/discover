@@ -34,7 +34,6 @@
 #include <QCoroCore>
 #include <QDesktopServices>
 #include <QDir>
-#include <QDirIterator>
 #include <QEvent>
 #include <QFileInfo>
 #include <QFutureWatcher>
@@ -189,13 +188,12 @@ quint64 FlatpakResource::downloadSize() const
 
 void FlatpakResource::resolveIcon()
 {
-    m_icon = QIcon();
     const auto icons = m_appdata.icons();
 
-    m_stockIcon = std::ranges::any_of(icons, [](const AppStream::Icon &icon) {
+    const bool hasStockIcon = std::ranges::any_of(icons, [](const AppStream::Icon &icon) {
         return icon.kind() == AppStream::Icon::KindStock && AppStreamUtils::kIconLoaderHasIcon(icon.name());
     });
-    if (!m_remoteIconFetchInitiated && !m_stockIcon && !icons.isEmpty() && !std::ranges::any_of(icons, [](const AppStream::Icon &icon) {
+    if (!m_remoteIconFetchInitiated && !hasStockIcon && !icons.isEmpty() && !std::ranges::any_of(icons, [](const AppStream::Icon &icon) {
             return icon.kind() == AppStream::Icon::KindLocal || icon.kind() == AppStream::Icon::KindCached;
         })) {
         m_remoteIconFetchInitiated = true;
@@ -230,50 +228,20 @@ void FlatpakResource::resolveIcon()
 
     if (!m_bundledIcon.isNull()) {
         m_icon = QIcon(m_bundledIcon);
-    } else if (icons.isEmpty()) {
-        m_icon = QIcon::fromTheme(QStringLiteral("package-x-generic"));
     } else {
-        for (const AppStream::Icon &icon : icons) {
-            switch (icon.kind()) {
-            case AppStream::Icon::KindLocal:
-            case AppStream::Icon::KindCached: {
-                const QString path = icon.url().toLocalFile();
-                if (QDir::isRelativePath(path)) {
-                    const QString appstreamLocation =
-                        installationPath() + "/appstream/"_L1 + origin() + '/'_L1 + QString::fromUtf8(flatpak_get_default_arch()) + "/active/icons/"_L1;
-                    QDirIterator dit(appstreamLocation, QDirIterator::Subdirectories);
-                    while (dit.hasNext()) {
-                        const auto currentPath = dit.next();
-                        if (dit.fileName() == path) {
-                            m_icon->addFile(currentPath, icon.size());
-                        }
-                    }
-                } else {
-                    m_icon->addFile(path, icon.size());
-                }
-                break;
+        m_icon = AppStreamUtils::iconForComponent(m_appdata, m_iconPath);
+        for (const auto &icon : icons) {
+            if (icon.kind() != AppStream::Icon::KindRemote) {
+                continue;
             }
-            case AppStream::Icon::KindStock: {
-                if (m_stockIcon) {
-                    m_icon = QIcon::fromTheme(icon.name());
-                }
-                break;
-            }
-            case AppStream::Icon::KindRemote: {
-                const QString fileName = iconCachePath(icon);
-                if (QFileInfo::exists(fileName)) {
-                    m_icon->addFile(fileName, icon.size());
-                }
-                break;
-            }
-            case AppStream::Icon::KindUnknown:
-                break;
+            const QString fileName = iconCachePath(icon);
+            if (QFileInfo::exists(fileName)) {
+                m_icon->addFile(fileName, icon.size());
             }
         }
-    }
-
-    if (m_icon->isNull()) {
-        m_icon = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+        if (m_icon->isNull()) {
+            m_icon = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+        }
     }
 
     Q_EMIT iconChanged();

@@ -263,7 +263,6 @@ private:
     static const QStringList s_topObjects;
     static const QStringList s_bottomObjects;
     QVector<QByteArray> m_toUpdate;
-    bool m_stockIcon = false;
     bool m_remoteIconFetchInitiated = false;
     std::optional<QIcon> m_icon;
     QString m_newPermissions;
