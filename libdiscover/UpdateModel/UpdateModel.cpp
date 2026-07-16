@@ -248,6 +248,16 @@ void UpdateModel::setResources(const QList<AbstractResource *> &resources)
         }
     }
     m_resources = resources;
+    for (auto resource : std::as_const(resources)) {
+        connect(
+            resource,
+            &QObject::destroyed,
+            this,
+            [this, resource] {
+                m_resources.removeAll(resource);
+            },
+            Qt::UniqueConnection);
+    }
 
     beginResetModel();
     qDeleteAll(m_updateItems);
