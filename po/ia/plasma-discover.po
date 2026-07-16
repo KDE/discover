@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-15 00:47+0000\n"
-"PO-Revision-Date: 2026-05-13 12:04+0200\n"
+"PO-Revision-Date: 2026-07-15 18:53+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1349,13 +1349,7 @@ msgid "crash,segfault"
 msgstr "crash,segfault"
 
 #: discover/qml/ReviewDialog.qml:171
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "Word the user might use in an unhelpful sentence saying an app isn't very "
-#| "good. Preserve the commas. If necessary, add more words used for this in "
-#| "your language and/or shorten to common stems contained by multiple forms "
-#| "of the words,"
-#| msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
+#, kde-format
 msgctxt ""
 "Words the user might use in an unhelpful sentence saying an app isn't very "
 "good. Preserve the commas. If necessary, add more words used for this in "

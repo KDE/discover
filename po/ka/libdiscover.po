@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-14 00:45+0000\n"
-"PO-Revision-Date: 2026-07-05 06:37+0200\n"
+"PO-Revision-Date: 2026-07-15 06:09+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -581,22 +581,19 @@ msgstr "ლოკალური პაკეტი"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1963
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
-#, fuzzy, kde-format
-#| msgid "Malformed appstream url '%1'"
+#, kde-format
 msgid "Malformed appstream url “%1”"
-msgstr "აღმავლის არასწორი URL '%1'"
+msgstr "appstream-ის არასწორი URL \"%1\""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2077
-#, fuzzy, kde-format
-#| msgid "Source '%1' already exists"
+#, kde-format
 msgid "Source “%1” already exists"
-msgstr "წყარო '%1' უკვე არსებობს"
+msgstr "წყარო \"%1\" უკვე არსებობს"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2094
-#, fuzzy, kde-format
-#| msgid "Failed to add source '%1': %2"
+#, kde-format
 msgid "Failed to add source “%1”: %2"
-msgstr "წყაროს (%1) დამატების შეცდომა: %2"
+msgstr "წყაროს \"%1\" დამატების შეცდომა: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2221
 #, kde-format
@@ -630,8 +627,7 @@ msgstr "უცნობი"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:537
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:467
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1': %2"
+#, kde-format
 msgid "Failed to start “%1”: %2"
 msgstr "\"%1\"-ის გაშვების შეცდომა: %2"
 
@@ -946,13 +942,12 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:175
 #, kde-format
 msgid "Could not add the source %1"
-msgstr "წყაროს (%1) დამატების შეცდომა"
+msgstr "წყაროს \"%1\" დამატება შეუძლებელია"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
-#, fuzzy, kde-format
-#| msgid "Removing '%1'"
+#, kde-format
 msgid "Removing “%1”"
-msgstr "'%1'-ის წაშლა"
+msgstr "\"%1\"-ის წაშლა"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
 #, kde-format
@@ -984,24 +979,19 @@ msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "შეიყვანეთ Flatpak რეპოზიტორიის URI (*.flatpakrepo):"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:35
-#, fuzzy, kde-format
-#| msgid "Adding remote '%1' in %2 from %3"
+#, kde-format
 msgid "Adding remote “%1” in %2 from %3"
-msgstr "დაშორებულის '%1' დამატება %2-ში, %3-დან"
+msgstr "დაშორებულის \"%1\" დამატება %2-ში, %3-დან"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:338
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid ""
-#| "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to "
-#| "<a href='%3'>%3</a>"
+#, kde-format
 msgctxt "@info:status"
 msgid ""
 "Cannot create transaction for “%1”:<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
-"ვერ შევქმენი ტრანზაქცია '%1'-ისთვის:<nl/>%2<nl/><nl/>მოგვწერეთ ამის შესახებ "
-"აქ <a href='%3'>%3</a>"
+"ვერ შევქმენი ტრანზაქცია \"%1\"-ისთვის:<nl/>%2<nl/><nl/>მოგვწერეთ ამის "
+"შესახებ აქ <a href='%3'>%3</a>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
@@ -1282,10 +1272,9 @@ msgstr ""
 "ვერსიამდე განახლდეთ."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
-#, fuzzy, kde-format
-#| msgid "Cannot remove '%1'"
+#, kde-format
 msgid "Cannot remove “%1”"
-msgstr "%1-ის წაშლის შეცდომა"
+msgstr "\"%1\"-ის წაშლის შეცდომა"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
@@ -1671,43 +1660,34 @@ msgid "Unknown error %1."
 msgstr "უცნობი შეცდომა %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
-#, fuzzy, kde-format
-#| msgid "'%1' was changed and suggests to be restarted."
+#, kde-format
 msgid "“%1” was changed and suggests to be restarted."
-msgstr "'%1' შეიცვალა და რეკომენდებულია, გადატვირთოთ ის."
+msgstr "\"%1\" შეიცვალა და რეკომენდებულია, გადატვირთოთ ის."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
-#, fuzzy, kde-format
-#| msgid "A change by '%1' suggests your session to be restarted."
+#, kde-format
 msgid "A change by “%1” suggests your session to be restarted."
 msgstr ""
-"'%1'-ის ცვლილებები ეხება თქვენს სესიას და რეკომენდებულია, გადატვირთოთ ის."
+"\"%1\"-ის ცვლილებები ეხება თქვენს სესიას და რეკომენდებულია, გადატვირთოთ ის."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
-#, fuzzy, kde-format
-#| msgid ""
-#| "'%1' was updated for security reasons, a restart of the session is "
-#| "recommended."
+#, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the session is "
 "recommended."
-msgstr "'%1' განახლდა უსაფრთხოების გამო. სასურველია გადატვირთოთ სესია."
+msgstr "\"%1\" განახლდა უსაფრთხოების გამო. სასურველია, გადატვირთოთ სესია."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
-#, fuzzy, kde-format
-#| msgid ""
-#| "'%1' was updated for security reasons, a restart of the system is "
-#| "recommended."
+#, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the system is "
 "recommended."
-msgstr "'%1' განახლდა უსაფრთხოების გამო. სასურველია გადატვირთოთ სისტემა."
+msgstr "\"%1\" განახლდა უსაფრთხოების გამო. სასურველია, გადატვირთოთ სისტემა."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
-#, fuzzy, kde-format
-#| msgid "A change by '%1' suggests your system to be restarted."
+#, kde-format
 msgid "A change by “%1” suggests your system to be restarted."
-msgstr "'%1'-ის ცვლილება მიუთითებს, რომ სჯობს, გადატვირთოთ სისტემა."
+msgstr "\"%1\"-ის ცვლილება მიუთითებს, რომ სჯობს, გადატვირთოთ სისტემა."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
@@ -2263,12 +2243,7 @@ msgstr ""
 "განახლებისთვის საკმარისი ადგილი არ არის. ხელმისაწვდომია მხოლოდ %1 ადგილი."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:602
-#, fuzzy, kde-format
-#| msgid ""
-#| "This update cannot be completed as it would remove the following software "
-#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
-#| ">If you believe this is an error, please report it as a bug to the "
-#| "packagers of your distribution."
+#, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
 "which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
@@ -2300,15 +2275,12 @@ msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
-#, fuzzy, kde-format
-#| msgid ""
-#| "Media Change of type '%1' is requested.\n"
-#| "%2"
+#, kde-format
 msgid ""
 "Media Change of type “%1” is requested.\n"
 "%2"
 msgstr ""
-"მოთხოვილია '%1' მედიის ცვლილება.\n"
+"მოთხოვილია მედიის, ტიპით \"%1\"ცვლილება.\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:777
@@ -2354,12 +2326,7 @@ msgstr ""
 "დროის შტამპი: %4\n"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
-#, fuzzy, kde-format
-#| msgid ""
-#| "This action cannot be completed as it would remove the following software "
-#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
-#| ">If you believe this is an error, please report it as a bug to the "
-#| "packagers of your distribution."
+#, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
 "which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
@@ -2490,10 +2457,7 @@ msgid "Removed packages:"
 msgstr "წაშლილი პაკეტები:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@label OS updater message"
-#| msgid ""
-#| "<br/>This version is pinned and won't be automatically removed on updates."
+#, kde-format
 msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won’t be automatically removed on updates."
@@ -2714,12 +2678,10 @@ msgid "No components found in appstream metadata for target “%1”"
 msgstr "სამიზნისთვის \"%1\" appstream-ის კომპონენტები აღმოჩენილი არაა"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
-#, fuzzy, kde-format
-#| msgid ""
-#| "List all the backends we'll want to have loaded, separated by comma ','."
+#, kde-format
 msgid ""
 "List all the backends we’ll want to have loaded, separated by comma “,”."
-msgstr "ჩასატვირთი უკანაბოლოების სია, მძიმით (',') გამოყოფილი."
+msgstr "ჩასატვირთი უკანაბოლოების სია, მძიმით \",\" გამოყოფილი."
 
 #: libdiscover/resources/AbstractResource.cpp:93
 #, kde-format
