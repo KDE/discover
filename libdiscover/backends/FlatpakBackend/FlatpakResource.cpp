@@ -80,45 +80,9 @@ FlatpakResource::FlatpakResource(const AppStream::Component &component, FlatpakI
 {
     setObjectName(packageName());
 
-    // Start fetching remote icons during initialization
-    const auto icons = m_appdata.icons();
-    m_stockIcon = std::ranges::any_of(icons, [](const AppStream::Icon &icon) {
-        return icon.kind() == AppStream::Icon::KindStock && AppStreamUtils::kIconLoaderHasIcon(icon.name());
-    });
     connect(this, &AbstractResource::iconChanged, this, [this] {
         Q_EMIT backend()->resourcesChanged(this, {"icon"});
     });
-    if (!m_stockIcon && !icons.isEmpty() && !std::ranges::any_of(icons, [](const AppStream::Icon &icon) {
-            return icon.kind() == AppStream::Icon::KindLocal || icon.kind() == AppStream::Icon::KindCached;
-        })) {
-        for (const auto &icon : icons) {
-            if (icon.kind() != AppStream::Icon::KindRemote) {
-                continue;
-            }
-            const QString fileName = iconCachePath(icon);
-            if (!QFileInfo::exists(fileName)) {
-                const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
-                // Create $HOME/.cache/discover/icons folder
-                cacheDir.mkdir(QStringLiteral("icons"));
-                auto reply = manager->get(QNetworkRequest(icon.url()));
-                connect(reply, &QNetworkReply::finished, this, [this, icon, fileName, reply] {
-                    if (reply->error() == QNetworkReply::NoError) {
-                        QByteArray iconData = reply->readAll();
-                        QFile file(fileName);
-                        if (file.open(QIODevice::WriteOnly)) {
-                            file.write(iconData);
-                        } else {
-                            qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not find icon for" << packageName() << reply->url();
-                            QIcon::fromTheme(QStringLiteral("package-x-generic")).pixmap(32, 32).toImage().save(fileName);
-                        }
-                        file.close();
-                        Q_EMIT iconChanged();
-                        reply->deleteLater();
-                    }
-                });
-            }
-        }
-    }
 
     connect(this, &FlatpakResource::stateChanged, this, &FlatpakResource::hasDataChanged);
 }
@@ -227,6 +191,42 @@ void FlatpakResource::resolveIcon()
 {
     m_icon = QIcon();
     const auto icons = m_appdata.icons();
+
+    m_stockIcon = std::ranges::any_of(icons, [](const AppStream::Icon &icon) {
+        return icon.kind() == AppStream::Icon::KindStock && AppStreamUtils::kIconLoaderHasIcon(icon.name());
+    });
+    if (!m_remoteIconFetchInitiated && !m_stockIcon && !icons.isEmpty() && !std::ranges::any_of(icons, [](const AppStream::Icon &icon) {
+            return icon.kind() == AppStream::Icon::KindLocal || icon.kind() == AppStream::Icon::KindCached;
+        })) {
+        m_remoteIconFetchInitiated = true;
+        for (const auto &icon : icons) {
+            if (icon.kind() != AppStream::Icon::KindRemote) {
+                continue;
+            }
+            const QString fileName = iconCachePath(icon);
+            if (!QFileInfo::exists(fileName)) {
+                const QDir cacheDir(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
+                // Create $HOME/.cache/discover/icons folder
+                cacheDir.mkdir(QStringLiteral("icons"));
+                auto reply = manager->get(QNetworkRequest(icon.url()));
+                connect(reply, &QNetworkReply::finished, this, [this, icon, fileName, reply] {
+                    if (reply->error() == QNetworkReply::NoError) {
+                        QByteArray iconData = reply->readAll();
+                        QFile file(fileName);
+                        if (file.open(QIODevice::WriteOnly)) {
+                            file.write(iconData);
+                        } else {
+                            qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not find icon for" << packageName() << reply->url();
+                            QIcon::fromTheme(QStringLiteral("package-x-generic")).pixmap(32, 32).toImage().save(fileName);
+                        }
+                        file.close();
+                        Q_EMIT iconChanged();
+                        reply->deleteLater();
+                    }
+                });
+            }
+        }
+    }
 
     if (!m_bundledIcon.isNull()) {
         m_icon = QIcon(m_bundledIcon);
