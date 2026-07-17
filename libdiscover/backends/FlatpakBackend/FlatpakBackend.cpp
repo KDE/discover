@@ -218,7 +218,7 @@ public:
     void addResource(FlatpakResource *resource)
     {
         Q_ASSERT(!resource->packageName().isEmpty());
-        m_backend->updateAppState(resource);
+        resource->updateAppState();
 
         Q_ASSERT(!m_resources.contains(resource->uniqueId()) || m_resources.value(resource->uniqueId()) == resource);
         m_resources.insert(resource->uniqueId(), resource);
@@ -469,23 +469,6 @@ private:
     ResultsStream *const m_stream;
     const QUrl m_url;
 };
-
-FlatpakInstalledRef *FlatpakBackend::getInstalledRefForApp(const FlatpakResource *resource) const
-{
-    Q_ASSERT(resource->resourceType() != FlatpakResource::Source);
-    g_autoptr(GError) localError = nullptr;
-
-    const auto type = resource->resourceType() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME;
-
-    auto ref = flatpak_installation_get_installed_ref(resource->installation(),
-                                                      type,
-                                                      resource->flatpakName().toUtf8().constData(),
-                                                      resource->arch().toUtf8().constData(),
-                                                      resource->branch().toUtf8().constData(),
-                                                      m_cancellable,
-                                                      &localError);
-    return ref;
-}
 
 static QString refToBundleId(FlatpakRef *ref)
 {
@@ -781,7 +764,7 @@ void FlatpakBackend::addAppFromFlatpakBundle(const QUrl &url, ResultsStream *str
     }
 
     auto resource = new FlatpakResource(asComponent, preferredInstallation(), this);
-    if (!updateAppMetadata(resource, metadataContent)) {
+    if (!resource->updateAppMetadata(metadataContent)) {
         delete resource;
         qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to update metadata from app bundle";
         return;
@@ -973,9 +956,9 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
             const auto metadata = fw->result();
             // Even when we failed to fetch information about runtime we still want to show the application
             if (metadata.isEmpty()) {
-                onFetchMetadataFinished(resource, metadata);
+                resource->onFetchMetadataFinished(metadata);
             } else {
-                updateAppMetadata(resource, metadata);
+                resource->updateAppMetadata(metadata);
 
                 auto runtime = getRuntimeForApp(resource);
                 if (!runtime || (runtime && !runtime->isInstalled())) {
@@ -1253,7 +1236,7 @@ void FlatpakBackend::loadLocalUpdates(FlatpakInstallation *flatpakInstallation)
         auto resource = getAppForInstalledRef(flatpakInstallation, ref);
         if (resource) {
             resource->setState(AbstractResource::Upgradeable);
-            updateAppSize(resource);
+            resource->updateAppSize();
         }
         Q_ASSERT(!resource->temporarySource());
     }
@@ -1284,190 +1267,6 @@ bool FlatpakBackend::setupFlatpakInstallations(GError **error)
     }
 
     return !m_installations.isEmpty();
-}
-
-void FlatpakBackend::updateAppInstalledMetadata(FlatpakInstalledRef *installedRef, FlatpakResource *resource)
-{
-    // Update the rest
-    resource->updateFromRef(FLATPAK_REF(installedRef));
-    resource->setInstalledSize(flatpak_installed_ref_get_installed_size(installedRef));
-    resource->setOrigin(QString::fromUtf8(flatpak_installed_ref_get_origin(installedRef)));
-    if (resource->state() < AbstractResource::Installed) {
-        resource->setState(AbstractResource::Installed);
-    }
-}
-
-bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource)
-{
-    if (resource->resourceType() != FlatpakResource::DesktopApp) {
-        return true;
-    }
-
-    const QString path = resource->installPath() + QLatin1StringView("/metadata");
-
-    if (QFile::exists(path)) {
-        return updateAppMetadata(resource, path);
-    } else {
-        auto fw = new QFutureWatcher<QByteArray>(this);
-        connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, resource, fw]() {
-            const auto metadata = fw->result();
-            if (!metadata.isEmpty()) {
-                onFetchMetadataFinished(resource, metadata);
-            }
-            fw->deleteLater();
-        });
-        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, resource, m_cancellable));
-
-        // Return false to indicate we cannot continue (right now used only in updateAppSize())
-        return false;
-    }
-}
-
-void FlatpakBackend::onFetchMetadataFinished(FlatpakResource *resource, const QByteArray &metadata)
-{
-    updateAppMetadata(resource, metadata);
-
-    // Right now we attempt to update metadata for calculating the size so call updateSizeFromRemote()
-    // as it's what we want. In future if there are other reason to update metadata we will need to somehow
-    // distinguish between these calls
-    updateAppSizeFromRemote(resource);
-}
-
-bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource, const QString &path)
-{
-    // Parse the temporary file
-    QSettings setting(path, QSettings::NativeFormat);
-    setting.beginGroup(QLatin1String("Application"));
-    // Set the runtime in form of name/arch/version which can be later easily parsed
-    resource->setRuntime(setting.value(QLatin1String("runtime")).toString());
-    // TODO get more information?
-    return true;
-}
-
-bool FlatpakBackend::updateAppMetadata(FlatpakResource *resource, const QByteArray &data)
-{
-    // We just find the runtime with a regex, QSettings only can read from disk (and so does KConfig)
-    static const QRegularExpression rx(QStringLiteral("runtime=(.*)"));
-    const auto match = rx.match(QString::fromUtf8(data));
-    if (!match.isValid()) {
-        return false;
-    }
-
-    resource->setRuntime(match.captured(1));
-    return true;
-}
-
-bool FlatpakBackend::updateAppSize(FlatpakResource *resource)
-{
-    // Check if the size is already set, we should also distinguish between download and installed size,
-    // right now it doesn't matter whether we get size for installed or not installed app, but if we
-    // start making difference then for not installed app check download and install size separately
-
-    if (resource->state() == AbstractResource::Installed) {
-        // The size appears to be already set (from updateAppInstalledMetadata() apparently)
-        if (resource->installedSize() > 0) {
-            return true;
-        }
-    } else {
-        if (resource->installedSize() > 0 && resource->downloadSize() > 0) {
-            return true;
-        }
-    }
-
-    // Check if we know the needed runtime which is needed for calculating the size
-    if (resource->runtime().isEmpty()) {
-        if (!updateAppMetadata(resource)) {
-            return false;
-        }
-    }
-
-    return updateAppSizeFromRemote(resource);
-}
-
-bool FlatpakBackend::updateAppSizeFromRemote(FlatpakResource *resource)
-{
-    // Calculate the runtime size
-    if (resource->state() == AbstractResource::None && resource->resourceType() == FlatpakResource::DesktopApp) {
-        auto runtime = getRuntimeForApp(resource);
-        if (runtime) {
-            // Re-check runtime state if case a new one was created
-            updateAppState(runtime);
-
-            if (!runtime->isInstalled()) {
-                if (!updateAppSize(runtime)) {
-                    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get runtime size needed for total size of" << resource->name();
-                    return false;
-                }
-                // Set required download size to include runtime size even now, in case we fail to
-                // get the app size (e.g. when installing bundles where download size is 0)
-                resource->setDownloadSize(runtime->downloadSize());
-            }
-        }
-    }
-
-    if (resource->state() == AbstractResource::Installed) {
-        g_autoptr(FlatpakInstalledRef) ref = nullptr;
-        ref = getInstalledRefForApp(resource);
-        if (!ref) {
-            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get installed size of" << resource->name();
-            return false;
-        }
-        resource->setInstalledSize(flatpak_installed_ref_get_installed_size(ref));
-    } else if (resource->resourceType() != FlatpakResource::Source) {
-        if (resource->origin().isEmpty()) {
-            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get size of" << resource->name() << " because of missing origin";
-            return false;
-        }
-
-        if (resource->propertyState(FlatpakResource::DownloadSize) == FlatpakResource::Fetching) {
-            return true;
-        }
-
-        auto futureWatcher = new QFutureWatcher<FlatpakRemoteRef *>(this);
-        connect(futureWatcher, &QFutureWatcher<FlatpakRemoteRef *>::finished, this, [this, resource, futureWatcher]() {
-            g_autoptr(FlatpakRemoteRef) remoteRef = futureWatcher->result();
-            if (remoteRef) {
-                onFetchSizeFinished(resource, flatpak_remote_ref_get_download_size(remoteRef), flatpak_remote_ref_get_installed_size(remoteRef));
-            } else {
-                resource->setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::UnknownOrFailed);
-                resource->setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::UnknownOrFailed);
-            }
-            futureWatcher->deleteLater();
-        });
-        resource->setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::Fetching);
-        resource->setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::Fetching);
-
-        futureWatcher->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::findRemoteRef, resource, m_cancellable));
-    }
-
-    return true;
-}
-
-void FlatpakBackend::onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize)
-{
-    FlatpakResource *runtime = nullptr;
-    if (resource->state() == AbstractResource::None && resource->resourceType() == FlatpakResource::DesktopApp) {
-        runtime = getRuntimeForApp(resource);
-    }
-
-    if (runtime && !runtime->isInstalled()) {
-        resource->setDownloadSize(runtime->downloadSize() + downloadSize);
-    } else {
-        resource->setDownloadSize(downloadSize);
-    }
-    resource->setInstalledSize(installedSize);
-}
-
-void FlatpakBackend::updateAppState(FlatpakResource *resource)
-{
-    g_autoptr(FlatpakInstalledRef) ref = getInstalledRefForApp(resource);
-    if (ref) {
-        // If the app is installed, we can set information about commit, arch etc.
-        updateAppInstalledMetadata(ref, resource);
-    } else {
-        // TODO check if the app is actually still available
-        resource->setState(AbstractResource::None);
-    }
 }
 
 void FlatpakBackend::acquireFetching(bool f)
@@ -1757,7 +1556,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                         auto resource = self->getAppForInstalledRef(installation, ref, &fresh);
                         if (resource) {
                             resource->setState(AbstractResource::Upgradeable, !fresh);
-                            self->updateAppSize(resource);
+                            resource->updateAppSize();
                             if (resource->resourceType() == FlatpakResource::Runtime) {
                                 resources.prepend(resource);
                             } else {
@@ -2137,7 +1936,7 @@ Transaction *FlatpakBackend::installApplication(AbstractResource *app, const Add
                     }
                 }
             }
-            updateAppState(resource);
+            resource->updateAppState();
         }
     });
     return transaction;
@@ -2164,8 +1963,8 @@ Transaction *FlatpakBackend::removeApplication(AbstractResource *app)
     connect(transaction, &FlatpakJobTransaction::repositoriesAdded, this, &FlatpakBackend::checkRepositories);
     connect(transaction, &FlatpakJobTransaction::statusChanged, this, [this, resource](Transaction::Status status) {
         if (status == Transaction::Status::DoneStatus) {
-            updateAppState(resource);
-            updateAppSize(resource);
+            resource->updateAppState();
+            resource->updateAppSize();
         }
     });
     return transaction;

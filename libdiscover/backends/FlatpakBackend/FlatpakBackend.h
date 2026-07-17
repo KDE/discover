@@ -79,8 +79,6 @@ public:
         return m_sources;
     }
 
-    bool updateAppSize(FlatpakResource *resource);
-    FlatpakInstalledRef *getInstalledRefForApp(const FlatpakResource *resource) const;
     void loadRemote(FlatpakInstallation *installation, FlatpakRemote *remote);
     void unloadRemote(FlatpakInstallation *installation, FlatpakRemote *remote);
 
@@ -101,9 +99,7 @@ public:
         return m_isFetching != 0;
     }
 
-private Q_SLOTS:
-    void onFetchMetadataFinished(FlatpakResource *resource, const QByteArray &metadata);
-    void onFetchSizeFinished(FlatpakResource *resource, guint64 downloadSize, guint64 installedSize);
+    FlatpakResource *getRuntimeForApp(FlatpakResource *resource) const;
 
 Q_SIGNALS: // for tests
     void initialized();
@@ -119,7 +115,6 @@ private:
         return m_installations.constFirst();
     }
     QSharedPointer<FlatpakSource> integrateRemote(GLibHolder<FlatpakInstallation> flatpakInstallation, GLibHolder<FlatpakRemote> remote);
-    FlatpakResource *getRuntimeForApp(FlatpakResource *resource) const;
     FlatpakResource *resourceForComponent(const AppStream::Component &component, const QSharedPointer<FlatpakSource> &source) const;
     void checkRepositories(const QMap<QString, QStringList> &repositories);
 
@@ -128,12 +123,6 @@ private:
     void loadLocalUpdates();
     void loadLocalUpdates(FlatpakInstallation *flatpakInstallation);
     bool setupFlatpakInstallations(GError **error);
-    void updateAppInstalledMetadata(FlatpakInstalledRef *installedRef, FlatpakResource *resource);
-    bool updateAppMetadata(FlatpakResource *resource);
-    bool updateAppMetadata(FlatpakResource *resource, const QByteArray &data);
-    bool updateAppMetadata(FlatpakResource *resource, const QString &path);
-    bool updateAppSizeFromRemote(FlatpakResource *resource);
-    void updateAppState(FlatpakResource *resource);
     QSharedPointer<FlatpakSource> findSource(FlatpakInstallation *installation, const QString &origin) const;
     QSharedPointer<FlatpakSource> findSourceUrl(FlatpakInstallation *installation, const QString &url) const;
 

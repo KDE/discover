@@ -44,6 +44,7 @@
 #include <QNetworkRequest>
 #include <QProcess>
 #include <QQueue>
+#include <QSettings>
 #include <QStringList>
 #include <QTemporaryFile>
 #include <QTimer>
@@ -294,7 +295,7 @@ QString FlatpakResource::installedVersion() const
     if (resourceType() == FlatpakResource::Source) {
         return {};
     }
-    g_autoptr(FlatpakInstalledRef) ref = backend()->getInstalledRefForApp(this);
+    g_autoptr(FlatpakInstalledRef) ref = installedRef();
     if (ref) {
         const char *appdataVersion = flatpak_installed_ref_get_appdata_version(ref);
 
@@ -475,7 +476,7 @@ QString FlatpakResource::sizeDescription()
         return {};
     }
     if (propertyState(InstalledSize) == NotKnownYet || propertyState(InstalledSize) == Fetching) {
-        backend()->updateAppSize(this);
+        updateAppSize();
         return QStringLiteral("🗘");
     } else if (propertyState(InstalledSize) == UnknownOrFailed) {
         return i18nc("@label app size", "Unknown");
@@ -759,7 +760,7 @@ QString FlatpakResource::versionString()
         return {};
     }
     if (isInstalled()) {
-        auto ref = backend()->getInstalledRefForApp(this);
+        auto ref = installedRef();
         if (ref) {
             version = QString::fromUtf8(flatpak_installed_ref_get_appdata_version(ref));
         }
@@ -833,6 +834,206 @@ QString createHtmlList(const QStringList &itemList)
     }
     str += QStringLiteral("</ul>");
     return str;
+}
+
+FlatpakInstalledRef *FlatpakResource::installedRef() const
+{
+    Q_ASSERT(resourceType() != FlatpakResource::Source);
+    g_autoptr(GError) localError = nullptr;
+
+    const auto type = resourceType() == FlatpakResource::DesktopApp ? FLATPAK_REF_KIND_APP : FLATPAK_REF_KIND_RUNTIME;
+
+    auto b = qobject_cast<FlatpakBackend *>(backend());
+    return flatpak_installation_get_installed_ref(installation(),
+                                                  type,
+                                                  flatpakName().toUtf8().constData(),
+                                                  arch().toUtf8().constData(),
+                                                  branch().toUtf8().constData(),
+                                                  b->cancellable(),
+                                                  &localError);
+}
+
+void FlatpakResource::updateAppState()
+{
+    g_autoptr(FlatpakInstalledRef) ref = installedRef();
+    if (ref) {
+        // If the app is installed, we can set information about commit, arch etc.
+        updateAppInstalledMetadata(ref);
+    } else {
+        // TODO check if the app is actually still available
+        setState(AbstractResource::None);
+    }
+}
+
+void FlatpakResource::updateAppInstalledMetadata(FlatpakInstalledRef *installedRef)
+{
+    // Update the rest
+    updateFromRef(FLATPAK_REF(installedRef));
+    setInstalledSize(flatpak_installed_ref_get_installed_size(installedRef));
+    setOrigin(QString::fromUtf8(flatpak_installed_ref_get_origin(installedRef)));
+    if (state() < AbstractResource::Installed) {
+        setState(AbstractResource::Installed);
+    }
+}
+
+bool FlatpakResource::updateAppMetadata()
+{
+    if (resourceType() != FlatpakResource::DesktopApp) {
+        return true;
+    }
+
+    const QString path = installPath() + QLatin1StringView("/metadata");
+
+    if (QFile::exists(path)) {
+        return updateAppMetadata(path);
+    } else {
+        auto fw = new QFutureWatcher<QByteArray>(this);
+        connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, fw]() {
+            const auto metadata = fw->result();
+            if (!metadata.isEmpty()) {
+                onFetchMetadataFinished(metadata);
+            }
+            fw->deleteLater();
+        });
+        fw->setFuture(QtConcurrent::run(backend()->threadPool(), &FlatpakRunnables::fetchMetadata, this, backend()->cancellable()));
+
+        // Return false to indicate we cannot continue (right now used only in updateAppSize())
+        return false;
+    }
+}
+
+void FlatpakResource::onFetchMetadataFinished(const QByteArray &metadata)
+{
+    updateAppMetadata(metadata);
+
+    // Right now we attempt to update metadata for calculating the size so call updateSizeFromRemote()
+    // as it's what we want. In future if there are other reason to update metadata we will need to somehow
+    // distinguish between these calls
+    updateAppSizeFromRemote();
+}
+
+bool FlatpakResource::updateAppMetadata(const QString &path)
+{
+    // Parse the temporary file
+    QSettings setting(path, QSettings::NativeFormat);
+    setting.beginGroup(QLatin1String("Application"));
+    // Set the runtime in form of name/arch/version which can be later easily parsed
+    setRuntime(setting.value(QLatin1String("runtime")).toString());
+    // TODO get more information?
+    return true;
+}
+
+bool FlatpakResource::updateAppMetadata(const QByteArray &data)
+{
+    // We just find the runtime with a regex, QSettings only can read from disk (and so does KConfig)
+    static const QRegularExpression rx(QStringLiteral("runtime=(.*)"));
+    const auto match = rx.match(QString::fromUtf8(data));
+    if (!match.isValid()) {
+        return false;
+    }
+
+    setRuntime(match.captured(1));
+    return true;
+}
+
+bool FlatpakResource::updateAppSize()
+{
+    // Check if the size is already set, we should also distinguish between download and installed size,
+    // right now it doesn't matter whether we get size for installed or not installed app, but if we
+    // start making difference then for not installed app check download and install size separately
+
+    if (state() == AbstractResource::Installed) {
+        // The size appears to be already set (from updateAppInstalledMetadata() apparently)
+        if (installedSize() > 0) {
+            return true;
+        }
+    } else {
+        if (installedSize() > 0 && downloadSize() > 0) {
+            return true;
+        }
+    }
+
+    // Check if we know the needed runtime which is needed for calculating the size
+    if (runtime().isEmpty()) {
+        if (!updateAppMetadata()) {
+            return false;
+        }
+    }
+
+    return updateAppSizeFromRemote();
+}
+
+bool FlatpakResource::updateAppSizeFromRemote()
+{
+    // Calculate the runtime size
+    if (state() == AbstractResource::None && resourceType() == FlatpakResource::DesktopApp) {
+        auto runtime = backend()->getRuntimeForApp(this);
+        if (runtime) {
+            // Re-check runtime state if case a new one was created
+            runtime->updateAppState();
+
+            if (!runtime->isInstalled()) {
+                if (!runtime->updateAppSize()) {
+                    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get runtime size needed for total size of" << name();
+                    return false;
+                }
+                // Set required download size to include runtime size even now, in case we fail to
+                // get the app size (e.g. when installing bundles where download size is 0)
+                setDownloadSize(runtime->downloadSize());
+            }
+        }
+    }
+
+    if (state() == AbstractResource::Installed) {
+        g_autoptr(FlatpakInstalledRef) ref = installedRef();
+        if (!ref) {
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get installed size of" << name();
+            return false;
+        }
+        setInstalledSize(flatpak_installed_ref_get_installed_size(ref));
+    } else if (resourceType() != FlatpakResource::Source) {
+        if (origin().isEmpty()) {
+            qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to get size of" << name() << " because of missing origin";
+            return false;
+        }
+
+        if (propertyState(FlatpakResource::DownloadSize) == FlatpakResource::Fetching) {
+            return true;
+        }
+
+        auto futureWatcher = new QFutureWatcher<FlatpakRemoteRef *>(this);
+        connect(futureWatcher, &QFutureWatcher<FlatpakRemoteRef *>::finished, this, [this, futureWatcher]() {
+            g_autoptr(FlatpakRemoteRef) remoteRef = futureWatcher->result();
+            if (remoteRef) {
+                onFetchSizeFinished(flatpak_remote_ref_get_download_size(remoteRef), flatpak_remote_ref_get_installed_size(remoteRef));
+            } else {
+                setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::UnknownOrFailed);
+                setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::UnknownOrFailed);
+            }
+            futureWatcher->deleteLater();
+        });
+        setPropertyState(FlatpakResource::DownloadSize, FlatpakResource::Fetching);
+        setPropertyState(FlatpakResource::InstalledSize, FlatpakResource::Fetching);
+
+        futureWatcher->setFuture(QtConcurrent::run(backend()->threadPool(), &FlatpakRunnables::findRemoteRef, this, backend()->cancellable()));
+    }
+
+    return true;
+}
+
+void FlatpakResource::onFetchSizeFinished(guint64 downloadSize, guint64 installedSize)
+{
+    FlatpakResource *runtime = nullptr;
+    if (state() == AbstractResource::None && resourceType() == FlatpakResource::DesktopApp) {
+        runtime = backend()->getRuntimeForApp(this);
+    }
+
+    if (runtime && !runtime->isInstalled()) {
+        setDownloadSize(runtime->downloadSize() + downloadSize);
+    } else {
+        setDownloadSize(downloadSize);
+    }
+    setInstalledSize(installedSize);
 }
 
 bool FlatpakResource::updateNeedsAttention()

@@ -140,7 +140,7 @@ void FlatpakJobTransaction::cancel()
 
 void FlatpakJobTransaction::finishTransaction(bool cancelled, const QString &errorMessage, const FlatpakTransactionThread::Repositories &addedRepositories, bool success)
 {
-    if (static_cast<FlatpakBackend *>(m_app->backend())->getInstalledRefForApp(m_app)) {
+    if (m_app->installedRef()) {
         m_app->setState(AbstractResource::Installed);
     } else {
         m_app->setState(AbstractResource::None);

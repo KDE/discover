@@ -175,6 +175,15 @@ public:
         m_resourceLocation = location;
     }
 
+    FlatpakInstalledRef *installedRef() const;
+    void updateAppState();
+    void updateAppInstalledMetadata(FlatpakInstalledRef *installedRef);
+    bool updateAppSize();
+    bool updateAppMetadata();
+    bool updateAppMetadata(const QByteArray &data);
+    bool updateAppMetadata(const QString &path);
+    bool updateAppSizeFromRemote();
+
     void updateFromRef(FlatpakRef *ref);
     QString ref() const;
     QString sourceIcon() const override;
@@ -225,6 +234,10 @@ public:
     void resolveIcon() override;
     QString verifiedMessage() const override;
     bool updateNeedsAttention() override;
+
+public Q_SLOTS:
+    void onFetchMetadataFinished(const QByteArray &metadata);
+    void onFetchSizeFinished(guint64 downloadSize, guint64 installedSize);
 
 Q_SIGNALS:
     void hasDataChanged();
