@@ -1896,7 +1896,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
     }
 }
 
-QCoro::Task<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> FlatpakBackend::listInstalledRefsForUpdate()
+QFuture<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> FlatpakBackend::listInstalledRefsForUpdate()
 {
     g_autoptr(GCancellable) cancellable = g_object_ref(m_cancellable);
 
@@ -1907,7 +1907,7 @@ QCoro::Task<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> FlatpakB
         g_object_ref(installation);
     };
 
-    co_return co_await QtConcurrent::run(
+    return QtConcurrent::run(
         &m_threadPool,
         [](GCancellable *cancellable, QList<FlatpakInstallation *> installations) {
             QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;

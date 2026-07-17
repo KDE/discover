@@ -17,6 +17,7 @@
 #include <AppStreamQt/component.h>
 
 #include <QCoroTask>
+#include <QFuture>
 
 #include "FlatpakRefreshAppstreamMetadataJob.h"
 #include "flatpak-helper.h"
@@ -145,7 +146,7 @@ private:
     ResultsStream *deferredResultStream(const QString &streamName, std::function<QCoro::Task<>(ResultsStream *)> callback);
     ResultsStream *deferredResultStreamNoFinish(const QString &streamName, std::function<QCoro::Task<>(ResultsStream *)> callback);
     // Returned Installation and Ref objects are g_object_ref'ed, caller is responsible for calling g_object_unref.
-    QCoro::Task<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> listInstalledRefsForUpdate();
+    QFuture<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> listInstalledRefsForUpdate();
 
     StandardBackendUpdater *m_updater;
     FlatpakSourcesBackend *m_sources = nullptr;
