@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 02:47+0000\n"
+"POT-Creation-Date: 2026-07-17 02:42+0000\n"
 "PO-Revision-Date: 2026-07-05 17:35+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
@@ -35,7 +35,7 @@ msgstr "karl@huftis.org"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #: libdiscover/UpdateModel/UpdateModel.cpp:123
-#: libdiscover/UpdateModel/UpdateModel.cpp:362
+#: libdiscover/UpdateModel/UpdateModel.cpp:372
 #, kde-format
 msgid "Unknown"
 msgstr "Ukjend"

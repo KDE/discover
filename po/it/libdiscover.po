@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 02:47+0000\n"
+"POT-Creation-Date: 2026-07-17 02:42+0000\n"
 "PO-Revision-Date: 2026-05-13 14:43+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -35,7 +35,7 @@ msgstr "smart2128vr@gmail.com"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #: libdiscover/UpdateModel/UpdateModel.cpp:123
-#: libdiscover/UpdateModel/UpdateModel.cpp:362
+#: libdiscover/UpdateModel/UpdateModel.cpp:372
 #, kde-format
 msgid "Unknown"
 msgstr "Sconosciuta"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 02:47+0000\n"
+"POT-Creation-Date: 2026-07-17 02:42+0000\n"
 "PO-Revision-Date: 2026-05-17 13:45+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -34,7 +34,7 @@ msgstr "sergiu@cip.md"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #: libdiscover/UpdateModel/UpdateModel.cpp:123
-#: libdiscover/UpdateModel/UpdateModel.cpp:362
+#: libdiscover/UpdateModel/UpdateModel.cpp:372
 #, kde-format
 msgid "Unknown"
 msgstr "Necunoscut"

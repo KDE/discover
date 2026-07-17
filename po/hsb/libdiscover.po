@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 02:47+0000\n"
+"POT-Creation-Date: 2026-07-17 02:42+0000\n"
 "PO-Revision-Date: 2021-11-06 11:11+0100\n"
 "Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
 "Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
@@ -33,7 +33,7 @@ msgstr "ewerner@uni-leipzig.de"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #: libdiscover/UpdateModel/UpdateModel.cpp:123
-#: libdiscover/UpdateModel/UpdateModel.cpp:362
+#: libdiscover/UpdateModel/UpdateModel.cpp:372
 #, kde-format
 msgid "Unknown"
 msgstr "Njeznate"

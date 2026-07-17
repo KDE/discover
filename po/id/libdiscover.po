@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 02:47+0000\n"
+"POT-Creation-Date: 2026-07-17 02:42+0000\n"
 "PO-Revision-Date: 2024-11-12 06:08+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -36,7 +36,7 @@ msgstr "wantoyek@gmail.com,linerly@protonmail.com"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #: libdiscover/UpdateModel/UpdateModel.cpp:123
-#: libdiscover/UpdateModel/UpdateModel.cpp:362
+#: libdiscover/UpdateModel/UpdateModel.cpp:372
 #, kde-format
 msgid "Unknown"
 msgstr "Tidak diketahui"

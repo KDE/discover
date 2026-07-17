@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-22 02:47+0000\n"
-"PO-Revision-Date: 2026-07-15 18:50+0400\n"
+"POT-Creation-Date: 2026-07-17 02:42+0000\n"
+"PO-Revision-Date: 2026-07-16 10:05+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -36,7 +36,7 @@ msgstr "zayed.alsaidi@gmail.com"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #: libdiscover/UpdateModel/UpdateModel.cpp:123
-#: libdiscover/UpdateModel/UpdateModel.cpp:362
+#: libdiscover/UpdateModel/UpdateModel.cpp:372
 #, kde-format
 msgid "Unknown"
 msgstr "مجهول"
@@ -2704,7 +2704,7 @@ msgstr "رجاء تأكد من الاتصال بالإنترنت"
 #: libdiscover/resources/ResourcesModel.cpp:104
 #, kde-format
 msgid "Refresh"
-msgstr "حدّث"
+msgstr "تحقَّق"
 
 #: libdiscover/resources/ResourcesModel.cpp:405
 #, kde-format
