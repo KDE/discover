@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-14 00:45+0000\n"
-"PO-Revision-Date: 2026-07-15 18:53+0200\n"
+"POT-Creation-Date: 2026-07-17 00:45+0000\n"
+"PO-Revision-Date: 2026-07-16 12:20+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -35,7 +35,7 @@ msgstr "g.sora@tiscali.it"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #: libdiscover/UpdateModel/UpdateModel.cpp:123
-#: libdiscover/UpdateModel/UpdateModel.cpp:362
+#: libdiscover/UpdateModel/UpdateModel.cpp:372
 #, kde-format
 msgid "Unknown"
 msgstr "Incognite"
@@ -582,21 +582,19 @@ msgstr "Fasce local"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1963
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
-#, fuzzy, kde-format
-#| msgid "Malformed appstream url '%1'"
+#, kde-format
 msgid "Malformed appstream url “%1”"
-msgstr "Url de Appstream  '%1' malformate"
+msgstr "Url de Appstream “%1” malformate"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2077
 #, kde-format
 msgid "Source “%1” already exists"
-msgstr ""
+msgstr "Fonte “%1” jam existe"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2094
-#, fuzzy, kde-format
-#| msgid "Failed to add source '%1': %2"
+#, kde-format
 msgid "Failed to add source “%1”: %2"
-msgstr "Falleva a adder '%1':%2"
+msgstr "Falleva a adder fonte “%1”: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2221
 #, kde-format
@@ -630,10 +628,9 @@ msgstr "Incognite"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:537
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:467
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1': %2"
+#, kde-format
 msgid "Failed to start “%1”: %2"
-msgstr "Falleva a initiar '%1': %2"
+msgstr "Falleva a initiar “%1”: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:778
 #, kde-format
@@ -951,10 +948,9 @@ msgid "Could not add the source %1"
 msgstr "Non pote adder le fonte %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
-#, fuzzy, kde-format
-#| msgid "Removing '%1'"
+#, kde-format
 msgid "Removing “%1”"
-msgstr "Removente"
+msgstr "Removente “%1”"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
 #, kde-format
@@ -986,23 +982,18 @@ msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "inserta un URI de receptaculo de Flatpak (*.flatpakrepo):"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:35
-#, fuzzy, kde-format
-#| msgid "Adding remote '%1' in %2 from %3"
+#, kde-format
 msgid "Adding remote “%1” in %2 from %3"
-msgstr "Addente remote '%1' in %2 ex %3"
+msgstr "Addente remote “%1” in %2 ex %3"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:338
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid ""
-#| "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to "
-#| "<a href='%3'>%3</a>"
+#, kde-format
 msgctxt "@info:status"
 msgid ""
 "Cannot create transaction for “%1”:<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
-"Non pote crear transaction per '%1':<nl/>%2<nl/><nl/>Pro favor reporta isto "
+"Non pote crear transaction per “%1”:<nl/>%2<nl/><nl/>Pro favor reporta isto "
 "a <a href='%3'>%3</a>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
@@ -1291,10 +1282,9 @@ msgstr ""
 "actualisar a un version supportate."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
-#, fuzzy, kde-format
-#| msgid "Cannot remove '%1'"
+#, kde-format
 msgid "Cannot remove “%1”"
-msgstr "Non pote remover '%1'"
+msgstr "Non pote remover “%1”"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
@@ -1680,46 +1670,37 @@ msgid "Unknown error %1."
 msgstr "Error Incognite %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
-#, fuzzy, kde-format
-#| msgid "'%1' was changed and suggests to be restarted."
+#, kde-format
 msgid "“%1” was changed and suggests to be restarted."
-msgstr "'%1' esseva cambiate e suggereva esser reinitiate."
+msgstr "“%1” esseva cambiate e suggere esser reinitiate."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
-#, fuzzy, kde-format
-#| msgid "A change by '%1' suggests your session to be restarted."
+#, kde-format
 msgid "A change by “%1” suggests your session to be restarted."
-msgstr "Un cambiamento per '%1' suggere que tu session essera reinitiate."
+msgstr "Un cambiamento per “%1” suggere que tu session essera reinitiate."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
-#, fuzzy, kde-format
-#| msgid ""
-#| "'%1' was updated for security reasons, a restart of the session is "
-#| "recommended."
+#, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
-"'%1' esseva actualisate per rtiones de securitate, un reinitio del session "
+"“%1” esseva actualisate per rationes de securitate, un reinitio del session "
 "es recommendate."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
-#, fuzzy, kde-format
-#| msgid ""
-#| "'%1' was updated for security reasons, a restart of the system is "
-#| "recommended."
+#, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the system is "
 "recommended."
 msgstr ""
-"'%1' esseva actualisate per rtiones de securitate, un reinitio del systema "
+"“%1” esseva actualisate per rationes de securitate, un reinitio del systema "
 "es recommendate."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
-#, fuzzy, kde-format
-#| msgid "A change by '%1' suggests your system to be restarted."
+#, kde-format
 msgid "A change by “%1” suggests your system to be restarted."
-msgstr "Un cambiamento per '%1' suggere que tu systema essera reinitiate."
+msgstr "Un cambiamento per “%1” suggere que tu systema essera reinitiate."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
@@ -2282,12 +2263,7 @@ msgstr ""
 "spatiodisponibile."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:602
-#, fuzzy, kde-format
-#| msgid ""
-#| "This update cannot be completed as it would remove the following software "
-#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
-#| ">If you believe this is an error, please report it as a bug to the "
-#| "packagers of your distribution."
+#, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
 "which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
@@ -2297,7 +2273,7 @@ msgstr ""
 "Iste actualisation non pote esser completate proque illo removerea le "
 "software que es critic al operation de systema:<nl/><ul><li>%1</li></ul><nl/"
 ">Si tu crede que isto es un error, pro favor tu reporta lo como un bug al "
-"impacchettator de tu distribution."
+"impacchettatores de tu distribution."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:609
 #, kde-format
@@ -2321,15 +2297,12 @@ msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
-#, fuzzy, kde-format
-#| msgid ""
-#| "Media Change of type '%1' is requested.\n"
-#| "%2"
+#, kde-format
 msgid ""
 "Media Change of type “%1” is requested.\n"
 "%2"
 msgstr ""
-"Cambio de Multimedia de typo '%1' es requirite.\n"
+"Cambio de Multimedia de typo “%1” es requirite.\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:777
@@ -2375,12 +2348,7 @@ msgstr ""
 "Marca de tempore: %4\n"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
-#, fuzzy, kde-format
-#| msgid ""
-#| "This action cannot be completed as it would remove the following software "
-#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
-#| ">If you believe this is an error, please report it as a bug to the "
-#| "packagers of your distribution."
+#, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
 "which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
@@ -2389,8 +2357,8 @@ msgid ""
 msgstr ""
 "Iste action non pote esser completate proque illo removerea le software que "
 "es critic al operation de systema:<nl/><ul><li>%1</li></ul><nl/>Si tuu crede "
-"que isto es un error, pro favor tu reporta lo como un bug al impacchettator "
-"de tu distribution."
+"que isto es un error, pro favor tu reporta lo como un bug al "
+"impacchettatores de tu distribution."
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:214
 #, kde-format
@@ -2514,10 +2482,7 @@ msgid "Removed packages:"
 msgstr "Pacchettos Removite:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@label OS updater message"
-#| msgid ""
-#| "<br/>This version is pinned and won't be automatically removed on updates."
+#, kde-format
 msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won’t be automatically removed on updates."
@@ -2744,14 +2709,12 @@ msgstr ""
 "Necun componente de metadatos de appstream trovate per objectivo \"%1\""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
-#, fuzzy, kde-format
-#| msgid ""
-#| "List all the backends we'll want to have loaded, separated by comma ','."
+#, kde-format
 msgid ""
 "List all the backends we’ll want to have loaded, separated by comma “,”."
 msgstr ""
 "Lista omne le retroadministrationes (backends) que nos volera haber cargate. "
-"separate per virgula ','."
+"separate per virgula “,”."
 
 #: libdiscover/resources/AbstractResource.cpp:93
 #, kde-format
