@@ -1242,7 +1242,7 @@ msgctxt ""
 "your language and/or shorten to common stems contained by multiple forms of "
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
-msgstr ""
+msgstr "不能工作,难用,垃圾,恶心,讨厌,愚蠢"
 
 #: discover/qml/ReviewDialog.qml:193
 #, kde-format
