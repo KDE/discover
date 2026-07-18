@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:18+0000\n"
-"PO-Revision-Date: 2026-02-19 08:14+0400\n"
+"PO-Revision-Date: 2026-07-17 11:06+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1089,7 +1089,7 @@ msgstr "الخلفيات الناقصة"
 #: discover/qml/UpdatesPage.qml:12
 #, kde-format
 msgid "Updates"
-msgstr "التّحديثات"
+msgstr "التحديثات"
 
 #: discover/qml/UpdatesPage.qml:45
 #, kde-format
@@ -1203,7 +1203,7 @@ msgstr "يجلب التّحديثات..."
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
-msgstr "التّحديثات"
+msgstr "التحديثات"
 
 #: discover/qml/UpdatesPage.qml:500
 #, kde-format
