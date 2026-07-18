@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-15 00:47+0000\n"
-"PO-Revision-Date: 2026-07-15 18:55+0400\n"
+"PO-Revision-Date: 2026-07-17 11:06+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1453,7 +1453,7 @@ msgstr "الخلفيات الناقصة"
 #: discover/qml/UpdatesPage.qml:14
 #, kde-format
 msgid "Updates"
-msgstr "التّحديثات"
+msgstr "التحديثات"
 
 #: discover/qml/UpdatesPage.qml:47
 #, kde-format
@@ -1565,7 +1565,7 @@ msgstr "الحجم الكليّ: %1"
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart and Install Updates"
-msgstr "أعد التشغيل وتثبّت التحديثات"
+msgstr "أعد التشغيل وثبّت التحديثات"
 
 #: discover/qml/UpdatesPage.qml:527
 #, kde-format
@@ -1602,7 +1602,7 @@ msgstr "يجلب التّحديثات..."
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
-msgstr "التّحديثات"
+msgstr "التحديثات"
 
 #: discover/qml/UpdatesPage.qml:670
 #, kde-format

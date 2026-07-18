@@ -587,17 +587,17 @@ msgstr "本地包"
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
 #, kde-format
 msgid "Malformed appstream url “%1”"
-msgstr ""
+msgstr "错误的 AppStream URL“%1”"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2077
 #, kde-format
 msgid "Source “%1” already exists"
-msgstr ""
+msgstr "来源“%1”已存在"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2094
 #, kde-format
 msgid "Failed to add source “%1”: %2"
-msgstr ""
+msgstr "无法添加来源“%1”：%2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2221
 #, kde-format
@@ -632,7 +632,7 @@ msgstr "未知"
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start “%1”: %2"
-msgstr ""
+msgstr "启动“%1”失败：%2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:778
 #, kde-format
@@ -921,7 +921,7 @@ msgstr "无法添加源 %1"
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid "Removing “%1”"
-msgstr ""
+msgstr "正在移除“%1”"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
 #, kde-format
@@ -955,7 +955,7 @@ msgstr "请输入 Flatpak 仓库 URI (*.flatpakrepo)："
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:35
 #, kde-format
 msgid "Adding remote “%1” in %2 from %3"
-msgstr ""
+msgstr "在“%2”中添加来自“%3”的远程“%1”"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:338
 #, kde-format
@@ -964,6 +964,7 @@ msgid ""
 "Cannot create transaction for “%1”:<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
+"无法为“%1“创建事务：<nl/>%2<nl/><nl/>请报告此问题到 <a href='%3'>%3</a>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
@@ -1238,7 +1239,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
 #, kde-format
 msgid "Cannot remove “%1”"
-msgstr ""
+msgstr "无法移除“%1”"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
@@ -1625,31 +1626,31 @@ msgstr "未知错误 %1。"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
 #, kde-format
 msgid "“%1” was changed and suggests to be restarted."
-msgstr ""
+msgstr "“%1”已被更改，建议重新启动。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
 #, kde-format
 msgid "A change by “%1” suggests your session to be restarted."
-msgstr ""
+msgstr "“%1”的更改建议您重新启动会话。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
 #, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the session is "
 "recommended."
-msgstr ""
+msgstr "“%1”已更新以修复安全问题，建议重新启动会话。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
 #, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the system is "
 "recommended."
-msgstr ""
+msgstr "“%1”已更新以修复安全问题，建议重新启动系统。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
 #, kde-format
 msgid "A change by “%1” suggests your system to be restarted."
-msgstr ""
+msgstr "来自“%1”的变更提示您重启系统。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
@@ -2202,6 +2203,9 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"此更新无法完成，因为它会移除对系统运行至关重要的下列软件：<nl/><ul><li>%1</"
+"li></ul><nl/>如果您认为这是一个错误，请将它作为一个程序缺陷报告给发行版的打包"
+"人员。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:609
 #, kde-format
@@ -2229,6 +2233,8 @@ msgid ""
 "Media Change of type “%1” is requested.\n"
 "%2"
 msgstr ""
+"需要更换类型“%1”的安装介质。\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:777
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
@@ -2280,6 +2286,9 @@ msgid ""
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
+"此操作无法完成，因为它会移除对系统运行至关重要的下列软件：<nl/><ul><li>%1</"
+"li></ul><nl/>如果您认为这是一个错误，请将它作为一个程序缺陷报告给发行版的打包"
+"人员。"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:214
 #, kde-format
@@ -2396,7 +2405,7 @@ msgstr "已移除软件包："
 msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won’t be automatically removed on updates."
-msgstr ""
+msgstr "<br/>此版本已被固定，不会在更新时被自动移除。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
@@ -2600,7 +2609,7 @@ msgstr "没有在“%1”的 appstream 元数据中找到组件"
 #, kde-format
 msgid ""
 "List all the backends we’ll want to have loaded, separated by comma “,”."
-msgstr ""
+msgstr "列出所有需要加载的后端程序，以半角逗号“,”分隔。"
 
 #: libdiscover/resources/AbstractResource.cpp:93
 #, kde-format
