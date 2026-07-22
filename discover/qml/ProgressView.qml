@@ -82,6 +82,11 @@ QQC2.ToolButton {
                         return sourceModel.data(index, Discover.TransactionModel.VisibleRole) === true;
                     }
                 }
+                section.property: "statusText"
+                section.delegate: Kirigami.ListSectionHeader {
+                    required property string section
+                    text: section
+                }
 
                 Connections {
                     target: Discover.TransactionModel
@@ -136,24 +141,16 @@ QQC2.ToolButton {
 
                                     if (li.isActive && tr.remainingTime > 0) {
                                         return i18nc(
-                                            "TransactioName - TransactionStatus: speed, remaining time", "%1 - %2: %3, %4 remaining",
+                                            "TransactioName - TransactionStatus: speed, remaining time", "%1: %2, %3 remaining",
                                             tr.name,
-                                            li.statusText,
                                             tr.downloadSpeedString,
                                             tr.remainingTime
                                         );
                                     } else if (li.isActive && tr.downloadSpeed > 0) {
                                         return i18nc(
-                                            "TransactioName - TransactionStatus: speed", "%1 - %2: %3",
+                                            "TransactioName - TransactionStatus: speed", "%1: %2",
                                             tr.name,
-                                            li.statusText,
                                             tr.downloadSpeedString
-                                        );
-                                    } else if (li.isActive) {
-                                        return i18nc(
-                                            "TransactioName - TransactionStatus", "%1 - %2",
-                                            tr.name,
-                                            li.statusText
                                         );
                                     } else {
                                         return tr.name;
