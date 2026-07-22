@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-15 00:47+0000\n"
-"PO-Revision-Date: 2026-05-21 16:48+0300\n"
+"PO-Revision-Date: 2026-07-21 23:34+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #: discover/DiscoverObject.cpp:198
 #, kde-format
@@ -222,8 +222,7 @@ msgid "Nate Graham"
 msgstr "Nate Graham"
 
 #: discover/main.cpp:127
-#, fuzzy, kde-format
-#| msgid "Quality Assurance, Design and Usability"
+#, kde-format
 msgid "Quality Assurance, Design, and Usability"
 msgstr "Kokybės užtikrinimas, dizainas ir tinkamumas"
 
@@ -303,21 +302,7 @@ msgid "No ratings"
 msgstr "Nėra įvertinimų"
 
 #: discover/qml/ApplicationPage.qml:67
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is <emphasis "
-#| "strong='true'>proprietary</emphasis>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. More information may be available on <link "
-#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
-#| "url='%3'>%3</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -344,7 +329,7 @@ msgstr ""
 "ar persiųsti kažkam kitam jūsų duomenų turinį. Naudokite ją tik tuo atveju, "
 "jei visiškai pasitikite jos autoriais. Daugiau informacijos gali būti "
 "prieinama <link url='%2'>programos internetinėje svetainėje</link>.<nl/><nl/"
-">Sužinokite daugiau ties <link url='%3'>%3</link>."
+">Sužinokite daugiau adresu <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:72
 #, kde-kuit-format
@@ -374,20 +359,7 @@ msgstr ""
 "url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:79
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 uses one or more licenses not certified as “Free Software” by either "
-#| "the <link url='%2'>Free Software Foundation</link> or the <link "
-#| "url='%3'>Open Source Initiative</link>. This means your freedom to use, "
-#| "study, modify, and share it may be restricted in some ways.<nl/><nl/>Make "
-#| "sure to read the license text and understand any restrictions before "
-#| "using the software.<nl/><nl/>If the license does not even grant access to "
-#| "read the source code, make sure you fully trust the authors, as no one "
-#| "else can verify the trustworthiness and security of its code to ensure "
-#| "that it is not acting against you in hidden ways. More information may be "
-#| "available on <link url='%4'>the application's website</link>.<nl/><nl/"
-#| ">Learn more at <link url='%5'>%5</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 uses one or more licenses not certified as “Free Software” by either the "
@@ -413,7 +385,7 @@ msgstr ""
 "autoriais, nes niekas kitas negali patikrinti jos kodo patikimumo ir "
 "saugumo, kad būtų užtikrinta, jog ji slaptais būdais nesiekia jums pakenkti. "
 "Daugiau informacijos gali būti prieinama <link url='%4'>programos "
-"internetinėje svetainėje</link>.<nl/><nl/>Sužinokite daugiau ties <link "
+"internetinėje svetainėje</link>.<nl/><nl/>Sužinokite daugiau adresu <link "
 "url='%5'>%5</link>."
 
 #: discover/qml/ApplicationPage.qml:86
@@ -443,13 +415,7 @@ msgstr ""
 "<nl/><nl/>Sužinokite daugiau ties <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:95
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2'>the application's website</"
-#| "link>. Find it there or contact the author if you want to use this "
-#| "application for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -459,16 +425,11 @@ msgid ""
 msgstr ""
 "%1 nenurodo pagal kurią licenciją yra platinama. Gali būti, kad galėsite tai "
 "nustatyti <link url='%2'>programos internetinėje svetainėje</link>. Raskite "
-"informaciją ten, arba susisiekite su programos autoriumi, jei norite naudoti "
+"informaciją ten arba susisiekite su programos autoriumi, jei norite naudoti "
 "šią programą kažkokiems kitiems tikslams, nei tik asmeniniam naudojimui."
 
 #: discover/qml/ApplicationPage.qml:99
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. Contact the "
-#| "application's author if you want to use it for anything other than "
-#| "private personal use."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. Contact the "
@@ -523,8 +484,7 @@ msgid "Screenshots not available for %1"
 msgstr "Nėra jokių prieinamų %1 ekrano kopijų"
 
 #: discover/qml/ApplicationPage.qml:436
-#, fuzzy, kde-format
-#| msgid "What's New"
+#, kde-format
 msgid "What’s New"
 msgstr "Kas naujo"
 
@@ -585,9 +545,7 @@ msgid "Read the documentation"
 msgstr "Skaityti dokumentaciją"
 
 #: discover/qml/ApplicationPage.qml:596
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project’s website"
 msgstr "Apsilankyti projekto internetinėje svetainėje"
@@ -873,9 +831,7 @@ msgid "See More"
 msgstr "Rodyti daugiau"
 
 #: discover/qml/BrowsingPage.qml:141
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Editor's Choice"
+#, kde-format
 msgctxt "@title:group"
 msgid "Editor’s Choice"
 msgstr "Redaktoriaus pasirinkimas"
@@ -1158,8 +1114,7 @@ msgid "Installed"
 msgstr "Įdiegta"
 
 #: discover/qml/Navigation.qml:36
-#, fuzzy, kde-format
-#| msgid "Resources for '%1'"
+#, kde-format
 msgid "Resources for “%1”"
 msgstr "„%1“ ištekliai"
 
@@ -1254,11 +1209,7 @@ msgid "Submit review"
 msgstr "Pateikti apžvalgą"
 
 #: discover/qml/ReviewDialog.qml:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "If you love %1, tell people what's great about it! Focus on "
-#| "functionality, usability, and appearance. If the app didn't meet your "
-#| "needs, explain why."
+#, kde-format
 msgid ""
 "If you love %1, tell people what’s great about it! Focus on functionality, "
 "usability, and appearance. If the app didn’t meet your needs, explain why."
@@ -1268,12 +1219,7 @@ msgstr ""
 "poreikių, paaiškinkite kodėl."
 
 #: discover/qml/ReviewDialog.qml:72
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "If %1 isn't launching, consider reporting this to its packagers in %2 at "
-#| "<link url='%3'>%3</link> instead, as it may be an easily fixable "
-#| "packaging issue rather than a flaw in the app itself."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "If %1 isn’t launching, consider reporting this to its packagers in %2 at "
@@ -1281,17 +1227,12 @@ msgid ""
 "issue rather than a flaw in the app itself."
 msgstr ""
 "Jei %1 nepasileidžia, vietoj to, apsvarstykite galimybę pranešti apie tai "
-"programos pakuotojams, esantiems %2 adresu <link url='%3'>%3</link>, nes tai "
-"gali būti lengvai ištaisoma pakavimo problema, o ne defektas pačioje "
+"programos pakuotojams, esantiems %2, adresu <link url='%3'>%3</link>, nes "
+"tai gali būti lengvai išsprendžiama pakavimo problema, o ne klaida pačioje "
 "programoje."
 
 #: discover/qml/ReviewDialog.qml:77
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "If %1 isn't launching, consider reporting this its developers at <link "
-#| "url='%2'>%2</link> instead, as it may be an easily fixable packaging "
-#| "issue rather than a flaw in the app itself."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "If %1 isn’t launching, consider reporting this to its developers at <link "
@@ -1299,30 +1240,21 @@ msgid ""
 "rather than a flaw in the app itself."
 msgstr ""
 "Jei %1 nepasileidžia, vietoj to, apsvarstykite galimybę pranešti apie tai "
-"programos plėtotojams, adresu <link url='%2'>%2</link>, nes tai gali būti "
-"lengvai pataisoma pakavimo problema, o ne klaida pačioje programoje."
+"programos plėtotojams adresu <link url='%2'>%2</link>, nes tai gali būti "
+"lengvai išsprendžiama pakavimo problema, o ne klaida pačioje programoje."
 
 #: discover/qml/ReviewDialog.qml:82
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "If the app is crashing a lot, consider reporting this to the developers "
-#| "at <link url='%1'>%1</link> instead."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "If the app is crashing a lot, consider reporting this to its developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
 "Jei programa dažnai užstringa, vietoj to, apsvarstykite galimybę pranešti "
-"apie tai plėtotojams adresu <link url='%1'>%1</link>."
+"apie tai jos plėtotojams adresu <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "If you're having a problem with the app, consider reporting it to the "
-#| "developers at <link url='%1'>%1</link> instead, or else describe the "
-#| "problem here in greater detail."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "If you’re having a problem with the app, consider reporting this to its "
@@ -1330,8 +1262,8 @@ msgid ""
 "here in greater detail."
 msgstr ""
 "Jei iškilo problemų su programa, vietoj to, apsvarstykite galimybę pranešti "
-"apie problemą plėtotojams adresu <link url='%1'>%1</link>, arba priešingu "
-"atveju išsamiau aprašykite čia problemą."
+"apie problemą jos plėtotojams adresu <link url='%1'>%1</link>, arba "
+"priešingu atveju, išsamiau aprašykite čia problemą."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1369,13 +1301,7 @@ msgid "crash,segfault"
 msgstr "strigtis,užstrigo,uzstrigo,segfault"
 
 #: discover/qml/ReviewDialog.qml:171
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "Word the user might use in an unhelpful sentence saying an app isn't very "
-#| "good. Preserve the commas. If necessary, add more words used for this in "
-#| "your language and/or shorten to common stems contained by multiple forms "
-#| "of the words,"
-#| msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
+#, kde-format
 msgctxt ""
 "Words the user might use in an unhelpful sentence saying an app isn't very "
 "good. Preserve the commas. If necessary, add more words used for this in "
@@ -1383,8 +1309,9 @@ msgctxt ""
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
-"neveikia,durna,kvaila,neveikianti,šlamštas,slamstas,šūdas,sudas,buka,"
-"siaubinga,baisi,niekam tikusi,niekinga,nekenčiu,nekenciu"
+"neveikia,durna,kvaila,neveikianti,šlamštas,slamstas,šūdas,sudas,šūdina,"
+"sudina,buka,siaubinga,apgailėtina,apgailetina,baisi,niekam tikusi,niekinga,"
+"nekenčiu,nekenciu"
 
 #: discover/qml/ReviewDialog.qml:193
 #, kde-format
@@ -1485,8 +1412,7 @@ msgid "Search…"
 msgstr "Ieškoti…"
 
 #: discover/qml/SearchField.qml:26
-#, fuzzy, kde-format
-#| msgid "Search in '%1'…"
+#, kde-format
 msgid "Search in “%1”…"
 msgstr "Ieškoti kategorijoje „%1“…"
 
@@ -1516,8 +1442,7 @@ msgid "Increase priority"
 msgstr "Padidinti prioritetą"
 
 #: discover/qml/SourcesPage.qml:258
-#, fuzzy, kde-format
-#| msgid "Failed to increase '%1' preference"
+#, kde-format
 msgid "Failed to increase “%1” preference"
 msgstr "Nepavyko padidinti \"%1\" nuostatos"
 
@@ -1527,8 +1452,7 @@ msgid "Decrease priority"
 msgstr "Sumažinti prioritetą"
 
 #: discover/qml/SourcesPage.qml:270
-#, fuzzy, kde-format
-#| msgid "Failed to decrease '%1' preference"
+#, kde-format
 msgid "Failed to decrease “%1” preference"
 msgstr "Nepavyko sumažinti \"%1\" nuostatos"
 
@@ -1714,9 +1638,7 @@ msgid "Updates will be installed after the system is restarted"
 msgstr "Atnaujinimai bus įdiegti po to, kai sistema bus paleista iš naujo"
 
 #: discover/qml/UpdatesPage.qml:672
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "You can keep using the system if you're not ready to restart yet."
+#, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you’re not ready to restart yet."
 msgstr ""

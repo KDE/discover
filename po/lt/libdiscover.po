@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 00:45+0000\n"
-"PO-Revision-Date: 2026-07-08 13:12+0300\n"
+"PO-Revision-Date: 2026-07-21 22:12+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -586,20 +586,17 @@ msgstr "Vietinis paketas"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1963
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
-#, fuzzy, kde-format
-#| msgid "Malformed appstream url '%1'"
+#, kde-format
 msgid "Malformed appstream url “%1”"
 msgstr "Netaisyklingas appstream url „%1“"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2077
-#, fuzzy, kde-format
-#| msgid "Source '%1' already exists"
+#, kde-format
 msgid "Source “%1” already exists"
 msgstr "Šaltinis „%1“ jau yra"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2094
-#, fuzzy, kde-format
-#| msgid "Failed to add source '%1': %2"
+#, kde-format
 msgid "Failed to add source “%1”: %2"
 msgstr "Nepavyko pridėti šaltinio „%1“: %2"
 
@@ -635,8 +632,7 @@ msgstr "Nežinomas"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:537
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:467
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1': %2"
+#, kde-format
 msgid "Failed to start “%1”: %2"
 msgstr "Nepavyko paleisti „%1“: %2"
 
@@ -958,10 +954,9 @@ msgid "Could not add the source %1"
 msgstr "Nepavyko pridėti šaltinio %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
-#, fuzzy, kde-format
-#| msgid "Removing '%1'"
+#, kde-format
 msgid "Removing “%1”"
-msgstr "Šalinama \"%1\""
+msgstr "Šalinama „%1“"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
 #, kde-format
@@ -993,17 +988,12 @@ msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Įveskite Flatpak saugyklos URI (*.flatpakrepo):"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:35
-#, fuzzy, kde-format
-#| msgid "Adding remote '%1' in %2 from %3"
+#, kde-format
 msgid "Adding remote “%1” in %2 from %3"
-msgstr "Pridedama nuotolinė saugykla \"%1\", ties %2 iš %3"
+msgstr "Pridedama nuotolinė saugykla „%1“, ties %2 iš %3"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:338
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid ""
-#| "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to "
-#| "<a href='%3'>%3</a>"
+#, kde-format
 msgctxt "@info:status"
 msgid ""
 "Cannot create transaction for “%1”:<nl/>%2<nl/><nl/>Please report this to <a "
@@ -1293,8 +1283,7 @@ msgstr ""
 "galimybę atnaujinti į palaikomą versiją."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
-#, fuzzy, kde-format
-#| msgid "Cannot remove '%1'"
+#, kde-format
 msgid "Cannot remove “%1”"
 msgstr "Nepavyksta pašalinti „%1“"
 
@@ -1683,22 +1672,17 @@ msgid "Unknown error %1."
 msgstr "Nežinoma klaida %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
-#, fuzzy, kde-format
-#| msgid "'%1' was changed and suggests to be restarted."
+#, kde-format
 msgid "“%1” was changed and suggests to be restarted."
 msgstr "„%1“ buvo pakeistas ir siūlo, kad būtų paleistas iš naujo."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
-#, fuzzy, kde-format
-#| msgid "A change by '%1' suggests your session to be restarted."
+#, kde-format
 msgid "A change by “%1” suggests your session to be restarted."
 msgstr "„%1“ atliktas pakeitimas siūlo, kad paleistumėte seansą iš naujo."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
-#, fuzzy, kde-format
-#| msgid ""
-#| "'%1' was updated for security reasons, a restart of the session is "
-#| "recommended."
+#, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the session is "
 "recommended."
@@ -1707,10 +1691,7 @@ msgstr ""
 "seansą iš naujo."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
-#, fuzzy, kde-format
-#| msgid ""
-#| "'%1' was updated for security reasons, a restart of the system is "
-#| "recommended."
+#, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the system is "
 "recommended."
@@ -1719,8 +1700,7 @@ msgstr ""
 "kompiuterį iš naujo."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
-#, fuzzy, kde-format
-#| msgid "A change by '%1' suggests your system to be restarted."
+#, kde-format
 msgid "A change by “%1” suggests your system to be restarted."
 msgstr "„%1“ atliktas pakeitimas siūlo, kad paleistumėte kompiuterį iš naujo."
 
@@ -2288,12 +2268,7 @@ msgstr ""
 "%1 laisvos vietos."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:602
-#, fuzzy, kde-format
-#| msgid ""
-#| "This update cannot be completed as it would remove the following software "
-#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
-#| ">If you believe this is an error, please report it as a bug to the "
-#| "packagers of your distribution."
+#, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
 "which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
@@ -2327,15 +2302,12 @@ msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
-#, fuzzy, kde-format
-#| msgid ""
-#| "Media Change of type '%1' is requested.\n"
-#| "%2"
+#, kde-format
 msgid ""
 "Media Change of type “%1” is requested.\n"
 "%2"
 msgstr ""
-"Užklaustas \"%1\" tipo laikmenos pakeitimas.\n"
+"Prašoma „%1“ tipo laikmenos pakeitimo.\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:777
@@ -2381,12 +2353,7 @@ msgstr ""
 "Laiko žyma: %4\n"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
-#, fuzzy, kde-format
-#| msgid ""
-#| "This action cannot be completed as it would remove the following software "
-#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
-#| ">If you believe this is an error, please report it as a bug to the "
-#| "packagers of your distribution."
+#, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
 "which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
@@ -2525,10 +2492,7 @@ msgid "Removed packages:"
 msgstr "Pašalinti paketai:"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@label OS updater message"
-#| msgid ""
-#| "<br/>This version is pinned and won't be automatically removed on updates."
+#, kde-format
 msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won’t be automatically removed on updates."
@@ -2753,9 +2717,7 @@ msgstr ""
 "elementui „%1“"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
-#, fuzzy, kde-format
-#| msgid ""
-#| "List all the backends we'll want to have loaded, separated by comma ','."
+#, kde-format
 msgid ""
 "List all the backends we’ll want to have loaded, separated by comma “,”."
 msgstr ""
