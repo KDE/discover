@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-17 00:45+0000\n"
+"POT-Creation-Date: 2026-07-23 00:45+0000\n"
 "PO-Revision-Date: 2026-07-14 08:54+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -36,7 +36,7 @@ msgstr "yurchor@ukr.net"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #: libdiscover/UpdateModel/UpdateModel.cpp:123
-#: libdiscover/UpdateModel/UpdateModel.cpp:372
+#: libdiscover/UpdateModel/UpdateModel.cpp:370
 #, kde-format
 msgid "Unknown"
 msgstr "Невідомий"

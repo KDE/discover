@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-17 00:45+0000\n"
+"POT-Creation-Date: 2026-07-23 00:45+0000\n"
 "PO-Revision-Date: 2026-06-01 18:19+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -34,7 +34,7 @@ msgstr "gudmundure@gmail.com, sv1@fellsnet.is"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #: libdiscover/UpdateModel/UpdateModel.cpp:123
-#: libdiscover/UpdateModel/UpdateModel.cpp:372
+#: libdiscover/UpdateModel/UpdateModel.cpp:370
 #, kde-format
 msgid "Unknown"
 msgstr "Óþekkt"

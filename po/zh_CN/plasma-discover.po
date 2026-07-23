@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-15 00:47+0000\n"
+"POT-Creation-Date: 2026-07-23 00:45+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -273,7 +273,7 @@ msgstr "添加"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:286
 #: discover/qml/InstallApplicationButton.qml:51
-#: discover/qml/ProgressView.qml:155 discover/qml/SourcesPage.qml:207
+#: discover/qml/ProgressView.qml:162 discover/qml/SourcesPage.qml:207
 #: discover/qml/UpdatesPage.qml:316 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -1057,33 +1057,29 @@ msgstr "已安装的软件包"
 msgid "Resources for “%1”"
 msgstr "“%1”的资源"
 
-#: discover/qml/ProgressView.qml:21
+#: discover/qml/ProgressView.qml:29
 #, kde-format
 msgid "Tasks (%1%)"
 msgstr "任务 (%1%)"
 
-#: discover/qml/ProgressView.qml:22 discover/qml/ProgressView.qml:52
+#: discover/qml/ProgressView.qml:30 discover/qml/ProgressView.qml:60
 #, kde-format
 msgid "Tasks"
 msgstr "任务"
 
-#: discover/qml/ProgressView.qml:129
-#, kde-format
+#: discover/qml/ProgressView.qml:144
+#, fuzzy, kde-format
+#| msgctxt "TransactioName - TransactionStatus: speed, remaining time"
+#| msgid "%1 - %2: %3, %4 remaining"
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
-msgid "%1 - %2: %3, %4 remaining"
+msgid "%1: %2, %3 remaining"
 msgstr "%1 - %2：%3，剩余 %4"
 
-#: discover/qml/ProgressView.qml:137
+#: discover/qml/ProgressView.qml:151
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
-msgid "%1 - %2: %3"
-msgstr "%1 - %2: %3"
-
-#: discover/qml/ProgressView.qml:144
-#, kde-format
-msgctxt "TransactioName - TransactionStatus"
-msgid "%1 - %2"
-msgstr "%1 - %2"
+msgid "%1: %2"
+msgstr ""
 
 #: discover/qml/Rating.qml:119
 #, kde-format
@@ -1591,3 +1587,11 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
+
+#~ msgctxt "TransactioName - TransactionStatus: speed"
+#~ msgid "%1 - %2: %3"
+#~ msgstr "%1 - %2: %3"
+
+#~ msgctxt "TransactioName - TransactionStatus"
+#~ msgid "%1 - %2"
+#~ msgstr "%1 - %2"

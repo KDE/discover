@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-15 00:47+0000\n"
+"POT-Creation-Date: 2026-07-23 00:45+0000\n"
 "PO-Revision-Date: 2018-01-06 09:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -268,7 +268,7 @@ msgstr "Dodaci"
 
 #: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:286
 #: discover/qml/InstallApplicationButton.qml:51
-#: discover/qml/ProgressView.qml:155 discover/qml/SourcesPage.qml:207
+#: discover/qml/ProgressView.qml:162 discover/qml/SourcesPage.qml:207
 #: discover/qml/UpdatesPage.qml:316 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -1073,32 +1073,26 @@ msgstr "Instalirano"
 msgid "Resources for “%1”"
 msgstr "Resursi za „%1“"
 
-#: discover/qml/ProgressView.qml:21
+#: discover/qml/ProgressView.qml:29
 #, kde-format
 msgid "Tasks (%1%)"
 msgstr "Zadaci (%1%)"
 
-#: discover/qml/ProgressView.qml:22 discover/qml/ProgressView.qml:52
+#: discover/qml/ProgressView.qml:30 discover/qml/ProgressView.qml:60
 #, kde-format
 msgid "Tasks"
 msgstr "Zadaci"
 
-#: discover/qml/ProgressView.qml:129
-#, kde-format
-msgctxt "TransactioName - TransactionStatus: speed, remaining time"
-msgid "%1 - %2: %3, %4 remaining"
-msgstr ""
-
-#: discover/qml/ProgressView.qml:137
-#, kde-format
-msgctxt "TransactioName - TransactionStatus: speed"
-msgid "%1 - %2: %3"
-msgstr ""
-
 #: discover/qml/ProgressView.qml:144
 #, kde-format
-msgctxt "TransactioName - TransactionStatus"
-msgid "%1 - %2"
+msgctxt "TransactioName - TransactionStatus: speed, remaining time"
+msgid "%1: %2, %3 remaining"
+msgstr ""
+
+#: discover/qml/ProgressView.qml:151
+#, kde-format
+msgctxt "TransactioName - TransactionStatus: speed"
+msgid "%1: %2"
 msgstr ""
 
 #: discover/qml/Rating.qml:119

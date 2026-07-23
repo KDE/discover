@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-17 00:45+0000\n"
+"POT-Creation-Date: 2026-07-23 00:45+0000\n"
 "PO-Revision-Date: 2026-02-06 14:30+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -35,7 +35,7 @@ msgstr "toms.trasuns@posteo.net"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
 #: libdiscover/UpdateModel/UpdateModel.cpp:123
-#: libdiscover/UpdateModel/UpdateModel.cpp:372
+#: libdiscover/UpdateModel/UpdateModel.cpp:370
 #, kde-format
 msgid "Unknown"
 msgstr "Nezināms"
