@@ -85,6 +85,7 @@ QQC2.ToolButton {
                 section.property: "statusText"
                 section.delegate: Kirigami.ListSectionHeader {
                     required property string section
+                    width: tasksView.width
                     text: section
                 }
 
