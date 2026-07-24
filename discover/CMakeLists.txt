@@ -134,3 +134,4 @@ endif()
 
 install(FILES plasmadiscoverui.rc DESTINATION ${KDE_INSTALL_KXMLGUIDIR}/plasmadiscover)
 install(FILES org.kde.discover.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR} )
+install(FILES discoversettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})

@@ -37,3 +37,6 @@ endif()
 if (BUILD_SystemdSysupdateBackend)
     target_compile_definitions(kcm_updates PRIVATE WITH_SYSUPDATE_BACKEND)
 endif()
+
+install(FILES discoversettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR} RENAME discoversettings-kcm.kcfg)
+install(FILES updatessettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR} RENAME discover-updates.kcfg)
