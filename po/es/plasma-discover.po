@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-23 00:45+0000\n"
-"PO-Revision-Date: 2026-07-14 17:24+0100\n"
+"PO-Revision-Date: 2026-07-23 11:50+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1114,18 +1114,16 @@ msgid "Tasks"
 msgstr "Tareas"
 
 #: discover/qml/ProgressView.qml:144
-#, fuzzy, kde-format
-#| msgctxt "TransactioName - TransactionStatus: speed, remaining time"
-#| msgid "%1 - %2: %3, %4 remaining"
+#, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1: %2, %3 remaining"
-msgstr "%1 - %2: %3, %4 restante"
+msgstr "%1: %2, %3 restante"
 
 #: discover/qml/ProgressView.qml:151
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: discover/qml/Rating.qml:119
 #, kde-format
@@ -1641,11 +1639,3 @@ msgstr "Se deben comprobar las actualizaciones"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tiempo desconocido desde la última actualización"
-
-#~ msgctxt "TransactioName - TransactionStatus: speed"
-#~ msgid "%1 - %2: %3"
-#~ msgstr "%1 - %2: %3"
-
-#~ msgctxt "TransactioName - TransactionStatus"
-#~ msgid "%1 - %2"
-#~ msgstr "%1 - %2"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-23 00:45+0000\n"
-"PO-Revision-Date: 2026-07-15 06:08+0200\n"
+"PO-Revision-Date: 2026-07-23 06:09+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1100,18 +1100,16 @@ msgid "Tasks"
 msgstr "ამოცანები"
 
 #: discover/qml/ProgressView.qml:144
-#, fuzzy, kde-format
-#| msgctxt "TransactioName - TransactionStatus: speed, remaining time"
-#| msgid "%1 - %2: %3, %4 remaining"
+#, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1: %2, %3 remaining"
-msgstr "%1 - %2: %3, %4 დარჩენილია"
+msgstr "%1: %2, %3 დარჩენილია"
 
 #: discover/qml/ProgressView.qml:151
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: discover/qml/Rating.qml:119
 #, kde-format

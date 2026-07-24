@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-23 00:45+0000\n"
-"PO-Revision-Date: 2026-05-28 19:29+0200\n"
+"PO-Revision-Date: 2026-07-23 20:12+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.04.1\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #: discover/DiscoverObject.cpp:198
 #, kde-format
@@ -217,8 +217,7 @@ msgid "Nate Graham"
 msgstr "Nate Graham"
 
 #: discover/main.cpp:127
-#, fuzzy, kde-format
-#| msgid "Quality Assurance, Design and Usability"
+#, kde-format
 msgid "Quality Assurance, Design, and Usability"
 msgstr "Осигуряване на качество, дизайн и използваемост"
 
@@ -298,21 +297,7 @@ msgid "No ratings"
 msgstr "Няма оценки"
 
 #: discover/qml/ApplicationPage.qml:67
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is <emphasis "
-#| "strong='true'>proprietary</emphasis>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. More information may be available on <link "
-#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
-#| "url='%3'>%3</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -368,20 +353,7 @@ msgstr ""
 "url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:79
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 uses one or more licenses not certified as “Free Software” by either "
-#| "the <link url='%2'>Free Software Foundation</link> or the <link "
-#| "url='%3'>Open Source Initiative</link>. This means your freedom to use, "
-#| "study, modify, and share it may be restricted in some ways.<nl/><nl/>Make "
-#| "sure to read the license text and understand any restrictions before "
-#| "using the software.<nl/><nl/>If the license does not even grant access to "
-#| "read the source code, make sure you fully trust the authors, as no one "
-#| "else can verify the trustworthiness and security of its code to ensure "
-#| "that it is not acting against you in hidden ways. More information may be "
-#| "available on <link url='%4'>the application's website</link>.<nl/><nl/"
-#| ">Learn more at <link url='%5'>%5</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 uses one or more licenses not certified as “Free Software” by either the "
@@ -407,7 +379,7 @@ msgstr ""
 "надеждността и сигурността на неговия код, за да гарантира, че той не "
 "действа срещу вас по скрит начин. Повече информация може да бъде налична на "
 "<link url='%4'>уебсайта на приложението</link>.<nl/><nl/>Изберете повече на "
-"<link url='%5'>%5</link>.Translated with DeepL.com (free version)"
+"<link url='%5'>%5</link>"
 
 #: discover/qml/ApplicationPage.qml:86
 #, kde-kuit-format
@@ -433,16 +405,10 @@ msgstr ""
 "се доверявате напълно на авторите, тъй като никой друг не може да провери "
 "надеждността и сигурността на неговия код, за да се увери, че той не действа "
 "срещу вас по скрит начин.<nl/><nl/>Изберете повече на <link url='%4'>%4</"
-"link>.Translated with DeepL.com (free version)"
+"link>."
 
 #: discover/qml/ApplicationPage.qml:95
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2'>the application's website</"
-#| "link>. Find it there or contact the author if you want to use this "
-#| "application for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -456,12 +422,7 @@ msgstr ""
 "нещо различно от лична употреба."
 
 #: discover/qml/ApplicationPage.qml:99
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. Contact the "
-#| "application's author if you want to use it for anything other than "
-#| "private personal use."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. Contact the "
@@ -515,8 +476,7 @@ msgid "Screenshots not available for %1"
 msgstr "Не са налични екранни снимки %1"
 
 #: discover/qml/ApplicationPage.qml:436
-#, fuzzy, kde-format
-#| msgid "What's New"
+#, kde-format
 msgid "What’s New"
 msgstr "Какво ново"
 
@@ -577,9 +537,7 @@ msgid "Read the documentation"
 msgstr "Прочетете документацията"
 
 #: discover/qml/ApplicationPage.qml:596
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project’s website"
 msgstr "Посетете уебсайта на проекта"
@@ -855,9 +813,7 @@ msgid "See More"
 msgstr "Още"
 
 #: discover/qml/BrowsingPage.qml:141
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Editor's Choice"
+#, kde-format
 msgctxt "@title:group"
 msgid "Editor’s Choice"
 msgstr "Избор на редактора"
@@ -1139,8 +1095,7 @@ msgid "Installed"
 msgstr "Инсталирани"
 
 #: discover/qml/Navigation.qml:36
-#, fuzzy, kde-format
-#| msgid "Resources for '%1'"
+#, kde-format
 msgid "Resources for “%1”"
 msgstr "Ресурси за „%1“"
 
@@ -1155,18 +1110,16 @@ msgid "Tasks"
 msgstr "Задачи"
 
 #: discover/qml/ProgressView.qml:144
-#, fuzzy, kde-format
-#| msgctxt "TransactioName - TransactionStatus: speed, remaining time"
-#| msgid "%1 - %2: %3, %4 remaining"
+#, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1: %2, %3 remaining"
-msgstr "%1 - %2: %3, %4 остават"
+msgstr "%1: %2, %3 остават"
 
 #: discover/qml/ProgressView.qml:151
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: discover/qml/Rating.qml:119
 #, kde-format
@@ -1231,11 +1184,7 @@ msgid "Submit review"
 msgstr "Изпращане на рецензия"
 
 #: discover/qml/ReviewDialog.qml:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "If you love %1, tell people what's great about it! Focus on "
-#| "functionality, usability, and appearance. If the app didn't meet your "
-#| "needs, explain why."
+#, kde-format
 msgid ""
 "If you love %1, tell people what’s great about it! Focus on functionality, "
 "usability, and appearance. If the app didn’t meet your needs, explain why."
@@ -1245,12 +1194,7 @@ msgstr ""
 "отговаря на вашите нужди, обяснете защо."
 
 #: discover/qml/ReviewDialog.qml:72
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "If %1 isn't launching, consider reporting this to its packagers in %2 at "
-#| "<link url='%3'>%3</link> instead, as it may be an easily fixable "
-#| "packaging issue rather than a flaw in the app itself."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "If %1 isn’t launching, consider reporting this to its packagers in %2 at "
@@ -1263,12 +1207,7 @@ msgstr ""
 "недостатък в самото приложение."
 
 #: discover/qml/ReviewDialog.qml:77
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "If %1 isn't launching, consider reporting this its developers at <link "
-#| "url='%2'>%2</link> instead, as it may be an easily fixable packaging "
-#| "issue rather than a flaw in the app itself."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "If %1 isn’t launching, consider reporting this to its developers at <link "
@@ -1280,11 +1219,7 @@ msgstr ""
 "проблем с пакетирането, отколкото недостатък в самото приложение."
 
 #: discover/qml/ReviewDialog.qml:82
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "If the app is crashing a lot, consider reporting this to the developers "
-#| "at <link url='%1'>%1</link> instead."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "If the app is crashing a lot, consider reporting this to its developers at "
@@ -1294,12 +1229,7 @@ msgstr ""
 "разработчиците на <link url='%1'>%1</link>."
 
 #: discover/qml/ReviewDialog.qml:85
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "If you're having a problem with the app, consider reporting it to the "
-#| "developers at <link url='%1'>%1</link> instead, or else describe the "
-#| "problem here in greater detail."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "If you’re having a problem with the app, consider reporting this to its "
@@ -1345,13 +1275,7 @@ msgid "crash,segfault"
 msgstr "срив, сегментна грешка"
 
 #: discover/qml/ReviewDialog.qml:171
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "Word the user might use in an unhelpful sentence saying an app isn't very "
-#| "good. Preserve the commas. If necessary, add more words used for this in "
-#| "your language and/or shorten to common stems contained by multiple forms "
-#| "of the words,"
-#| msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
+#, kde-format
 msgctxt ""
 "Words the user might use in an unhelpful sentence saying an app isn't very "
 "good. Preserve the commas. If necessary, add more words used for this in "
@@ -1459,8 +1383,7 @@ msgid "Search…"
 msgstr "Търсене…"
 
 #: discover/qml/SearchField.qml:26
-#, fuzzy, kde-format
-#| msgid "Search in '%1'…"
+#, kde-format
 msgid "Search in “%1”…"
 msgstr "Търсене в „%1“…"
 
@@ -1490,8 +1413,7 @@ msgid "Increase priority"
 msgstr "Увеличаване приоритета"
 
 #: discover/qml/SourcesPage.qml:258
-#, fuzzy, kde-format
-#| msgid "Failed to increase '%1' preference"
+#, kde-format
 msgid "Failed to increase “%1” preference"
 msgstr "Неуспешно увеличаване на предпочитанието „%1“"
 
@@ -1501,8 +1423,7 @@ msgid "Decrease priority"
 msgstr "Намаляване приоритета"
 
 #: discover/qml/SourcesPage.qml:270
-#, fuzzy, kde-format
-#| msgid "Failed to decrease '%1' preference"
+#, kde-format
 msgid "Failed to decrease “%1” preference"
 msgstr "Неуспешно намаляване на предпочитанието „%1“"
 
@@ -1690,9 +1611,7 @@ msgid "Updates will be installed after the system is restarted"
 msgstr "Актуализациите ще бъдат инсталирани след рестартиране на системата"
 
 #: discover/qml/UpdatesPage.qml:672
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "You can keep using the system if you're not ready to restart yet."
+#, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you’re not ready to restart yet."
 msgstr ""
