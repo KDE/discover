@@ -39,8 +39,11 @@ Kirigami.ApplicationWindow {
     
     readonly property Item leftPage: window.pageStack.depth > 0 ? window.pageStack.get(0) : null
 
-    KConfig.WindowStateSaver {
-        configGroupName: "MainWindow"
+    Loader {
+        sourceComponent: KConfig.WindowStateSaver {
+            configGroupName: "MainWindow"
+        }
+        active: window.visible
     }
 
     Component.onCompleted: {
