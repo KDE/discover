@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-23 00:45+0000\n"
+"POT-Creation-Date: 2026-07-25 00:46+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -286,9 +286,9 @@ msgstr "नूतनं %1 भण्डारं योजयन्तु"
 msgid "Add"
 msgstr "योजयतु"
 
-#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:286
+#: discover/qml/AddSourceDialog.qml:50 discover/qml/DiscoverWindow.qml:289
 #: discover/qml/InstallApplicationButton.qml:51
-#: discover/qml/ProgressView.qml:162 discover/qml/SourcesPage.qml:207
+#: discover/qml/ProgressView.qml:163 discover/qml/SourcesPage.qml:207
 #: discover/qml/UpdatesPage.qml:316 discover/qml/WebflowDialog.qml:41
 #, kde-format
 msgid "Cancel"
@@ -947,64 +947,64 @@ msgstr ""
 msgid "Updates available"
 msgstr "सर्वं अद्यतनं कुर्वन्तु"
 
-#: discover/qml/DiscoverWindow.qml:48
+#: discover/qml/DiscoverWindow.qml:51
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "<em>मूल</em>रूपेण धावनं निरुत्साहितं अनावश्यकं च ।."
 
-#: discover/qml/DiscoverWindow.qml:71
+#: discover/qml/DiscoverWindow.qml:74
 #, kde-format
 msgid "&Home"
 msgstr "&गृहम्‌"
 
-#: discover/qml/DiscoverWindow.qml:81
+#: discover/qml/DiscoverWindow.qml:84
 #, kde-format
 msgid "&Search"
 msgstr "&अन्वेषण"
 
-#: discover/qml/DiscoverWindow.qml:89
+#: discover/qml/DiscoverWindow.qml:92
 #, kde-format
 msgid "&Installed"
 msgstr "&स्थापित्"
 
-#: discover/qml/DiscoverWindow.qml:101
+#: discover/qml/DiscoverWindow.qml:104
 #, kde-format
 msgid "&Updates (Fetching…)"
 msgstr "&Updates (आनयति…)"
 
-#: discover/qml/DiscoverWindow.qml:102
+#: discover/qml/DiscoverWindow.qml:105
 #, fuzzy, kde-format
 #| msgid "Updates"
 msgid "&Updates"
 msgstr "अद्यतनाः"
 
-#: discover/qml/DiscoverWindow.qml:110
+#: discover/qml/DiscoverWindow.qml:113
 #, kde-format
 msgid "&About"
 msgstr "&विषये"
 
-#: discover/qml/DiscoverWindow.qml:118
+#: discover/qml/DiscoverWindow.qml:121
 #, kde-format
 msgid "S&ettings"
 msgstr "समयोजननि"
 
-#: discover/qml/DiscoverWindow.qml:171 discover/qml/DiscoverWindow.qml:365
-#: discover/qml/DiscoverWindow.qml:477
+#: discover/qml/DiscoverWindow.qml:174 discover/qml/DiscoverWindow.qml:368
+#: discover/qml/DiscoverWindow.qml:480
 #, kde-format
 msgid "Error"
 msgstr "त्रुटि"
 
-#: discover/qml/DiscoverWindow.qml:175
+#: discover/qml/DiscoverWindow.qml:178
 #, kde-format
 msgid "Unable to find resource: %1"
 msgstr "संसाधनं अन्वेष्टुं असमर्थः: %1"
 
-#: discover/qml/DiscoverWindow.qml:273 discover/qml/SourcesPage.qml:201
+#: discover/qml/DiscoverWindow.qml:276 discover/qml/SourcesPage.qml:201
 #, kde-format
 msgid "Proceed"
 msgstr "प्रवर्तते"
 
-#: discover/qml/DiscoverWindow.qml:331
+#: discover/qml/DiscoverWindow.qml:334
 #, fuzzy, kde-format
 #| msgctxt "@action:button %1 is the distro name"
 #| msgid "Report This Issue to %1"
@@ -1012,30 +1012,30 @@ msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
 msgstr "%1 इत्यस्मै एतत् समस्यां प्रतिवेदयन्तु"
 
-#: discover/qml/DiscoverWindow.qml:347
+#: discover/qml/DiscoverWindow.qml:350
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:348
+#: discover/qml/DiscoverWindow.qml:351
 #, kde-format
 msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
 msgstr ""
 
-#: discover/qml/DiscoverWindow.qml:365
+#: discover/qml/DiscoverWindow.qml:368
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "%2 इत्यस्य %1 त्रुटिः"
 
-#: discover/qml/DiscoverWindow.qml:365 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:368 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "अद्यतनस्य समस्या"
 
-#: discover/qml/DiscoverWindow.qml:376
+#: discover/qml/DiscoverWindow.qml:379
 #, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
@@ -1044,24 +1044,24 @@ msgstr ""
 "अद्यतनस्य अथवा संस्थापनप्रक्रियायाः समये एकः समस्या आसीत् । कृपया पश्चात् पुनः प्रयासं "
 "कुर्वन्तु।"
 
-#: discover/qml/DiscoverWindow.qml:412
+#: discover/qml/DiscoverWindow.qml:415
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "पूर्वम् दर्शयतु"
 
-#: discover/qml/DiscoverWindow.qml:423
+#: discover/qml/DiscoverWindow.qml:426
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "अग्रिमम् दर्शयतु"
 
-#: discover/qml/DiscoverWindow.qml:435 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:438 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "तकनीकीविवरणं पश्यन्तु"
 
-#: discover/qml/DiscoverWindow.qml:443
+#: discover/qml/DiscoverWindow.qml:446
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "अंशफलकं प्रति प्रतिलिख्यताम्"
@@ -1166,7 +1166,7 @@ msgstr "कार्याणि (%1%)"
 msgid "Tasks"
 msgstr "कार्याणि"
 
-#: discover/qml/ProgressView.qml:144
+#: discover/qml/ProgressView.qml:145
 #, fuzzy, kde-format
 #| msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 #| msgid "%1 - %2: %3, %4 remaining"
@@ -1174,7 +1174,7 @@ msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1: %2, %3 remaining"
 msgstr "%1 - %2: %3, %4 शेषः"
 
-#: discover/qml/ProgressView.qml:151
+#: discover/qml/ProgressView.qml:152
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1: %2"
