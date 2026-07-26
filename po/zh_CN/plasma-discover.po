@@ -1068,12 +1068,10 @@ msgid "Tasks"
 msgstr "任务"
 
 #: discover/qml/ProgressView.qml:145
-#, fuzzy, kde-format
-#| msgctxt "TransactioName - TransactionStatus: speed, remaining time"
-#| msgid "%1 - %2: %3, %4 remaining"
+#, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1: %2, %3 remaining"
-msgstr "%1 - %2：%3，剩余 %4"
+msgstr ""
 
 #: discover/qml/ProgressView.qml:152
 #, kde-format
@@ -1587,11 +1585,3 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
-
-#~ msgctxt "TransactioName - TransactionStatus: speed"
-#~ msgid "%1 - %2: %3"
-#~ msgstr "%1 - %2: %3"
-
-#~ msgctxt "TransactioName - TransactionStatus"
-#~ msgid "%1 - %2"
-#~ msgstr "%1 - %2"

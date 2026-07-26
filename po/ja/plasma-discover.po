@@ -2,13 +2,14 @@
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2022, 2023.
 # SPDX-FileCopyrightText: 2025 Yuma Kakei <yumasansansan@gmail.com>
+# SPDX-FileCopyrightText: 2026 Mint <5602mint@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-25 00:46+0000\n"
-"PO-Revision-Date: 2026-05-24 18:40+0900\n"
-"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
+"PO-Revision-Date: 2026-07-23 17:15+0900\n"
+"Last-Translator: Mint <5602mint@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #: discover/DiscoverObject.cpp:198
 #, kde-format
@@ -1678,9 +1679,7 @@ msgid "Updates will be installed after the system is restarted"
 msgstr "システムの再起動後に更新はインストールされます"
 
 #: discover/qml/UpdatesPage.qml:672
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "You can keep using the system if you're not ready to restart yet."
+#, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you’re not ready to restart yet."
 msgstr "再起動の準備ができていない場合、システムを使い続けることができます。"
@@ -1703,11 +1702,3 @@ msgstr "更新の確認が必要です"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "最後の更新時刻は不明です"
-
-#~ msgctxt "TransactioName - TransactionStatus: speed"
-#~ msgid "%1 - %2: %3"
-#~ msgstr "%1 - %2: %3"
-
-#~ msgctxt "TransactioName - TransactionStatus"
-#~ msgid "%1 - %2"
-#~ msgstr "%1 - %2"
