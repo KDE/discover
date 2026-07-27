@@ -27,8 +27,8 @@ Q_GLOBAL_STATIC(QString, featuredCache)
 
 static QUrl featuredURL()
 {
-    QString config = QStringLiteral("/usr/share/discover/featuredurlrc");
-    KConfigGroup grp(KSharedConfig::openConfig(config), u"Software"_s);
+    KConfig config(u"discover/featuredurlrc"_s, KConfig::NoGlobals, QStandardPaths::GenericDataLocation);
+    KConfigGroup grp(&config, u"Software"_s);
     if (grp.hasKey("FeaturedListingURL")) {
         return grp.readEntry("FeaturedListingURL", QUrl());
     }
