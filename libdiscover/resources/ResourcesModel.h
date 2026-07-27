@@ -121,7 +121,6 @@ Q_SIGNALS:
     void switchToUpdates();
 
 private Q_SLOTS:
-    void callerContentsChanged();
     void updateCaller(const QVector<QByteArray> &properties);
     void registerAllBackends();
 

@@ -147,10 +147,18 @@ bool ResourcesModel::addResourcesBackend(AbstractResourcesBackend *backend)
         return false;
     }
 
+    connect(backend, &AbstractResourcesBackend::invalidated, this, [backend, this]() {
+        CategoryModel::global()->blacklistPlugin(backend->name());
+        m_backends.removeAll(backend);
+        backend->deleteLater();
+        m_updatesCount.reevaluate();
+        qCWarning(LIBDISCOVER_LOG) << "Discarding invalid backend" << backend->name();
+        Q_EMIT backendsChanged();
+    });
+
     m_backends += backend;
     m_updatesCount.reevaluate();
 
-    connect(backend, &AbstractResourcesBackend::contentsChanged, this, &ResourcesModel::callerContentsChanged);
     connect(backend, &AbstractResourcesBackend::allDataChanged, this, &ResourcesModel::updateCaller);
     connect(backend, &AbstractResourcesBackend::resourcesChanged, this, &ResourcesModel::resourceDataChanged);
     connect(backend, &AbstractResourcesBackend::updatesCountChanged, &m_updatesCount, &EmitWhenChanged<int>::reevaluate);
@@ -162,22 +170,6 @@ bool ResourcesModel::addResourcesBackend(AbstractResourcesBackend *backend)
         connect(reviewsBackend, &AbstractReviewsBackend::error, this, &ResourcesModel::passiveMessage, Qt::UniqueConnection);
     }
     return true;
-}
-
-void ResourcesModel::callerContentsChanged()
-{
-    AbstractResourcesBackend *backend = qobject_cast<AbstractResourcesBackend *>(sender());
-
-    if (!backend->isValid()) {
-        qCWarning(LIBDISCOVER_LOG) << "Discarding invalid backend" << backend->name();
-        int idx = m_backends.indexOf(backend);
-        Q_ASSERT(idx >= 0);
-        m_backends.removeAt(idx);
-        Q_EMIT backendsChanged();
-        CategoryModel::global()->blacklistPlugin(backend->name());
-        backend->deleteLater();
-        return;
-    }
 }
 
 void ResourcesModel::updateCaller(const QVector<QByteArray> &properties)
