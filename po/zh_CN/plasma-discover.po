@@ -1071,13 +1071,13 @@ msgstr "任务"
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1: %2, %3 remaining"
-msgstr ""
+msgstr "%1：%2，剩余 %3"
 
 #: discover/qml/ProgressView.qml:152
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1: %2"
-msgstr ""
+msgstr "%1：%2"
 
 #: discover/qml/Rating.qml:119
 #, kde-format
