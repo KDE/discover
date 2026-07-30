@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-25 00:46+0000\n"
-"PO-Revision-Date: 2026-07-16 12:20+0200\n"
+"PO-Revision-Date: 2026-07-29 11:16+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1268,7 +1268,7 @@ msgstr "Widgets de Plasma"
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
-"Pro favor tu assecura te qu Appstream es propriemente configurate sur tu "
+"Pro favor tu assecura te que Appstream es propriemente configurate sur tu "
 "systema"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:367
