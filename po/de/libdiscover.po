@@ -109,7 +109,7 @@ msgid ""
 "Enter Alpine repository URL, for example: http://dl-cdn.alpinelinux.org/"
 "alpine/edge/testing/"
 msgstr ""
-"Bitte geben Sie die Adresse der Alpine-Paketquelle ein (z. B. http://dl-cdn."
+"Bitte geben Sie die Adresse der Alpine-Paketquelle ein (z. B. http://dl-cdn."
 "alpinelinux.org/alpine/edge/testing/)"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:77
