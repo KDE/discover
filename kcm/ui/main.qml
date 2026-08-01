@@ -42,6 +42,11 @@ SimpleKCM {
 
             QQC2.ButtonGroup.group: autoUpdatesGroup
             checked: !kcm.updatesSettings.useUnattendedUpdates
+
+            SettingStateBinding {
+                configObject: kcm.updatesSettings
+                settingName: "useUnattendedUpdates"
+            }
         }
         RowLayout {
             spacing: Kirigami.Units.smallSpacing
@@ -52,17 +57,16 @@ SimpleKCM {
 
                 QQC2.ButtonGroup.group: autoUpdatesGroup
                 checked: kcm.updatesSettings.useUnattendedUpdates
+
+                SettingStateBinding {
+                    configObject: kcm.updatesSettings
+                    settingName: "useUnattendedUpdates"
+                }
             }
 
             Kirigami.ContextualHelpButton {
                 toolTipText: xi18nc("@info", "Software updates will be downloaded automatically when they become available. Updates for applications will be installed immediately, while updates for the system will be installed the next time it’s restarted.")
             }
-        }
-
-        SettingStateBinding {
-            configObject: kcm.updatesSettings
-            settingName: "useUnattendedUpdates"
-            target: automaticallyRadio
         }
 
         QQC2.ComboBox {
@@ -103,8 +107,7 @@ SimpleKCM {
             onActivated: index => {
                 kcm.updatesSettings.requiredNotificationInterval = options[index]
             }
-            SettingStateProxy {
-                id: settingState
+            SettingStateBinding {
                 configObject: kcm.updatesSettings
                 settingName: "requiredNotificationInterval"
             }
@@ -127,6 +130,11 @@ SimpleKCM {
 
                 QQC2.ButtonGroup.group: offlineUpdatesGroup
                 checked: kcm.discoverSettings.useOfflineUpdates
+
+                SettingStateBinding {
+                    configObject: kcm.discoverSettings
+                    settingName: "useOfflineUpdates"
+                }
             }
 
             QQC2.Label {
@@ -141,13 +149,12 @@ SimpleKCM {
                 QQC2.ButtonGroup.group: offlineUpdatesGroup
                 enabled: !kcm.discoverSettings.isUseOfflineUpdatesImmutable
                 checked: !kcm.discoverSettings.useOfflineUpdates
-            }
-        }
 
-        SettingStateBinding {
-            configObject: kcm.discoverSettings
-            settingName: "useOfflineUpdates"
-            target: offlineUpdatesOption
+                SettingStateBinding {
+                    configObject: kcm.discoverSettings
+                    settingName: "useOfflineUpdates"
+                }
+            }
         }
     }
 }
