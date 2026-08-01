@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-25 00:46+0000\n"
-"PO-Revision-Date: 2026-07-23 21:20+0300\n"
+"PO-Revision-Date: 2026-07-31 19:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1322,7 +1322,7 @@ msgstr "Bir ad ekleyin"
 #: discover/qml/ReviewsPage.qml:43
 #, kde-format
 msgid "Reviews for %1"
-msgstr "%1 için incelemeler"
+msgstr "%1 İncelemeleri"
 
 #: discover/qml/ReviewsPage.qml:105
 #, kde-format
