@@ -228,7 +228,7 @@ Kirigami.GlobalDrawer {
             icon.name: category?.icon + "-symbolic" ?? ""
             checked: itsMe
             enabled: (currentSearchText.length === 0
-                      || (category?.contains(window?.leftPage?.model?.subcategories) ?? false))
+                      || (category?.contains(window?.leftPage?.model?.subcategories ?? []) ?? false))
 
             visible: category?.visible
             onTriggered: {
