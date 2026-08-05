@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-04 00:46+0000\n"
+"POT-Creation-Date: 2026-08-05 00:48+0000\n"
 "PO-Revision-Date: 2021-06-27 20:38+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -49,49 +49,49 @@ msgstr ""
 "अद्यतन तुरंत संस्थापित किए जाएंगे, जबकि अगली बार कंप्यूटर के पुनरारंभ होने पर तंत्र अपडेट "
 "संस्थापित हो जाएंगे।"
 
-#: kcm/ui/main.qml:73
+#: kcm/ui/main.qml:74
 #, fuzzy, kde-format
 #| msgid "Update software:"
 msgctxt "@title:group"
 msgid "Update frequency:"
 msgstr "सॉफ्टवेयर अद्यतन :"
 
-#: kcm/ui/main.qml:73
+#: kcm/ui/main.qml:74
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
 msgstr ""
 
-#: kcm/ui/main.qml:76
+#: kcm/ui/main.qml:79
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
 msgstr ""
 
-#: kcm/ui/main.qml:77
+#: kcm/ui/main.qml:80
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
 msgstr ""
 
-#: kcm/ui/main.qml:78
+#: kcm/ui/main.qml:81
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
 msgstr ""
 
-#: kcm/ui/main.qml:79
+#: kcm/ui/main.qml:82
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
 msgstr ""
 
-#: kcm/ui/main.qml:122
+#: kcm/ui/main.qml:120
 #, kde-format
 msgid "Apply system updates:"
 msgstr ""
 
-#: kcm/ui/main.qml:129
+#: kcm/ui/main.qml:127
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates after "
@@ -99,7 +99,7 @@ msgctxt ""
 msgid "After rebooting"
 msgstr ""
 
-#: kcm/ui/main.qml:141
+#: kcm/ui/main.qml:139
 #, kde-format
 msgctxt ""
 "@label The thing being recommended is to use the 'apply updates when "
@@ -107,7 +107,7 @@ msgctxt ""
 msgid "Recommended to maximize system stability"
 msgstr ""
 
-#: kcm/ui/main.qml:147
+#: kcm/ui/main.qml:145
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"

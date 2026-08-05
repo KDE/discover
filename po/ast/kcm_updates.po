@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-04 00:46+0000\n"
+"POT-Creation-Date: 2026-08-05 00:48+0000\n"
 "PO-Revision-Date: 2024-03-20 10:41+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: Asturian <alministradores@softastur.org>\n"
@@ -50,48 +50,48 @@ msgstr ""
 "mentanto que los anovamientos del sistema instálense la proxima vegada que "
 "se reanicie l'ordenador."
 
-#: kcm/ui/main.qml:73
+#: kcm/ui/main.qml:74
 #, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
 msgstr "Frecuencia del anovamientu"
 
-#: kcm/ui/main.qml:73
+#: kcm/ui/main.qml:74
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
 msgstr "Frecuencia de los avisos:"
 
-#: kcm/ui/main.qml:76
+#: kcm/ui/main.qml:79
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
 msgstr "Caldía"
 
-#: kcm/ui/main.qml:77
+#: kcm/ui/main.qml:80
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
 msgstr "Selmanalmente"
 
-#: kcm/ui/main.qml:78
+#: kcm/ui/main.qml:81
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
 msgstr "Mensualmente"
 
-#: kcm/ui/main.qml:79
+#: kcm/ui/main.qml:82
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
 msgstr "Enxamás"
 
-#: kcm/ui/main.qml:122
+#: kcm/ui/main.qml:120
 #, kde-format
 msgid "Apply system updates:"
 msgstr "Aplicar los anovamientos del sistema:"
 
-#: kcm/ui/main.qml:129
+#: kcm/ui/main.qml:127
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates after "
@@ -99,7 +99,7 @@ msgctxt ""
 msgid "After rebooting"
 msgstr "Dempués de reaniciar"
 
-#: kcm/ui/main.qml:141
+#: kcm/ui/main.qml:139
 #, kde-format
 msgctxt ""
 "@label The thing being recommended is to use the 'apply updates when "
@@ -107,7 +107,7 @@ msgctxt ""
 msgid "Recommended to maximize system stability"
 msgstr "Aconséyase pa maximizar la estabilidá del sistema"
 
-#: kcm/ui/main.qml:147
+#: kcm/ui/main.qml:145
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"

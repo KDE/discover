@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-04 00:46+0000\n"
+"POT-Creation-Date: 2026-08-05 00:48+0000\n"
 "PO-Revision-Date: 2026-04-02 08:47+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -44,48 +44,48 @@ msgstr ""
 "עדכוני התוכנה ירדו אוטומטית כשאלה זמינים. עדכונים ליישומים יותקנו מיידית, "
 "בעוד שעדכוני מערכת יותקנו עם ההפעלה הבאה מחדש."
 
-#: kcm/ui/main.qml:73
+#: kcm/ui/main.qml:74
 #, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
 msgstr "תדירות עדכון:"
 
-#: kcm/ui/main.qml:73
+#: kcm/ui/main.qml:74
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
 msgstr "תדירות התראות:"
 
-#: kcm/ui/main.qml:76
+#: kcm/ui/main.qml:79
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
 msgstr "יומית"
 
-#: kcm/ui/main.qml:77
+#: kcm/ui/main.qml:80
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
 msgstr "שבועית"
 
-#: kcm/ui/main.qml:78
+#: kcm/ui/main.qml:81
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
 msgstr "חודשית"
 
-#: kcm/ui/main.qml:79
+#: kcm/ui/main.qml:82
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
 msgstr "אף פעם לא"
 
-#: kcm/ui/main.qml:122
+#: kcm/ui/main.qml:120
 #, kde-format
 msgid "Apply system updates:"
 msgstr "החלת עדכוני מערכת:"
 
-#: kcm/ui/main.qml:129
+#: kcm/ui/main.qml:127
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates after "
@@ -93,7 +93,7 @@ msgctxt ""
 msgid "After rebooting"
 msgstr "לאחר הפעלה מחדש"
 
-#: kcm/ui/main.qml:141
+#: kcm/ui/main.qml:139
 #, kde-format
 msgctxt ""
 "@label The thing being recommended is to use the 'apply updates when "
@@ -101,7 +101,7 @@ msgctxt ""
 msgid "Recommended to maximize system stability"
 msgstr "מומלץ כדי לשפר את יציבות המערכת"
 
-#: kcm/ui/main.qml:147
+#: kcm/ui/main.qml:145
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"

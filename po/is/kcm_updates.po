@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-04 00:46+0000\n"
+"POT-Creation-Date: 2026-08-05 00:48+0000\n"
 "PO-Revision-Date: 2026-04-13 18:37+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -45,48 +45,48 @@ msgstr ""
 "Uppfærslur á forritum verða settar upp strax en kerfisuppfærslur verða "
 "settar upp næst þegar tölvan er endurræst."
 
-#: kcm/ui/main.qml:73
+#: kcm/ui/main.qml:74
 #, kde-format
 msgctxt "@title:group"
 msgid "Update frequency:"
 msgstr "Uppfærslutíðni:"
 
-#: kcm/ui/main.qml:73
+#: kcm/ui/main.qml:74
 #, kde-format
 msgctxt "@title:group"
 msgid "Notification frequency:"
 msgstr "Tilkynningatíðni:"
 
-#: kcm/ui/main.qml:76
+#: kcm/ui/main.qml:79
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Daily"
 msgstr "Daglega"
 
-#: kcm/ui/main.qml:77
+#: kcm/ui/main.qml:80
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Weekly"
 msgstr "Vikulega"
 
-#: kcm/ui/main.qml:78
+#: kcm/ui/main.qml:81
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monthly"
 msgstr "Mánaðarlega"
 
-#: kcm/ui/main.qml:79
+#: kcm/ui/main.qml:82
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Never"
 msgstr "Aldrei"
 
-#: kcm/ui/main.qml:122
+#: kcm/ui/main.qml:120
 #, kde-format
 msgid "Apply system updates:"
 msgstr "Setja upp kerfisuppfærslur:"
 
-#: kcm/ui/main.qml:129
+#: kcm/ui/main.qml:127
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates after "
@@ -94,7 +94,7 @@ msgctxt ""
 msgid "After rebooting"
 msgstr "Eftir endurræsingu"
 
-#: kcm/ui/main.qml:141
+#: kcm/ui/main.qml:139
 #, kde-format
 msgctxt ""
 "@label The thing being recommended is to use the 'apply updates when "
@@ -102,7 +102,7 @@ msgctxt ""
 msgid "Recommended to maximize system stability"
 msgstr "Ráðlegt til að hámarka stöðugleika stýrikerfisins"
 
-#: kcm/ui/main.qml:147
+#: kcm/ui/main.qml:145
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"
