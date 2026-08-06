@@ -155,6 +155,11 @@ void RpmOstreeNotifier::recheckSystemUpdateNeeded()
         return;
     }
 
+    if (!m_ostreeFormat) {
+        qCInfo(RPMOSTREE_LOG) << "Checking for system updates too early";
+        return;
+    }
+
     qCInfo(RPMOSTREE_LOG) << "Checking for system update";
     if (m_ostreeFormat->isClassic()) {
         checkSystemUpdateClassic();
