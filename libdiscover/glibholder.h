@@ -1,5 +1,5 @@
 /*
- *   SPDX-FileCopyrightText: 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+ *   SPDX-FileCopyrightText: 2013-2026 Aleix Pol Gonzalez <aleixpol@kde.org>
  *
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
@@ -10,15 +10,19 @@ template<typename T>
 class GLibHolder
 {
 public:
-    GLibHolder(T *object)
+    GLibHolder(T *object = nullptr)
         : m_object(object)
     {
-        g_object_ref(object);
+        if (object) {
+            g_object_ref(object);
+        }
     }
 
     ~GLibHolder()
     {
-        g_object_unref(m_object);
+        if (m_object) {
+            g_object_unref(m_object);
+        }
     }
 
     GLibHolder(const GLibHolder &other)
@@ -35,6 +39,26 @@ public:
     T *get() const
     {
         return m_object;
+    }
+
+    T **ref()
+    {
+        return &m_object;
+    }
+
+    void adopt(T *ptr)
+    {
+        if (ptr == m_object)
+            return;
+        if (m_object) {
+            g_object_unref(m_object);
+        }
+        m_object = ptr;
+    }
+
+    operator bool() const
+    {
+        return m_object != nullptr;
     }
 
 private:

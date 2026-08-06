@@ -10,6 +10,7 @@
 #include "flatpak-helper.h"
 #include "glibholder.h"
 #include <QThread>
+#include <glibholder.h>
 
 class FlatpakRefreshAppstreamMetadataJob : public QThread
 {
