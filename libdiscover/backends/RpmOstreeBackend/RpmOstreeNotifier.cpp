@@ -189,6 +189,10 @@ void RpmOstreeNotifier::checkSystemUpdateClassic()
 
     // Process command result
     connect(m_process, &QProcess::finished, this, [this](int exitCode, QProcess::ExitStatus exitStatus) {
+        if (sender() != m_process) {
+            // If we issued it twice, let's only trust the last one.
+            return;
+        }
         m_process->deleteLater();
         m_process = nullptr;
         if (exitStatus != QProcess::NormalExit) {
