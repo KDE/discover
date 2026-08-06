@@ -103,7 +103,9 @@ SnapBackend::SnapBackend(QObject *parent)
 SnapBackend::~SnapBackend()
 {
     Q_EMIT shuttingDown();
-    m_threadPool.waitForDone(1000);
+    if (!m_threadPool.waitForDone(1000)) {
+        qWarning() << "Snap requests did not stop during backend shutdown";
+    }
     m_threadPool.clear();
 }
 
@@ -174,9 +176,11 @@ template<class T>
 ResultsStream *SnapBackend::populateJobsWithFilter(const QVector<T *> &jobs, std::function<bool(const QSharedPointer<QSnapdSnap> &s)> &filter)
 {
     auto stream = new ResultsStream(QStringLiteral("Snap-populate"));
-    auto future = QtConcurrent::run(&m_threadPool, [this, jobs]() {
+    for (auto job : jobs) {
+        connect(this, &SnapBackend::shuttingDown, job, &T::cancel);
+    }
+    auto future = QtConcurrent::run(&m_threadPool, [jobs]() {
         for (auto job : jobs) {
-            connect(this, &SnapBackend::shuttingDown, job, &T::cancel);
             job->runSync();
         }
     });
