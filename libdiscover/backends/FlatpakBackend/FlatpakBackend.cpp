@@ -43,6 +43,7 @@
 #include <QFutureWatcher>
 #include <QNetworkAccessManager>
 #include <QSettings>
+#include <QTemporaryDir>
 #include <QTemporaryFile>
 #include <QTextStream>
 #include <QThread>
@@ -829,91 +830,41 @@ QString composeRef(bool isRuntime, const QString &name, const QString &branch)
     return (isRuntime ? "runtime/"_L1 : "app/"_L1) + name + '/'_L1 + QString::fromUtf8(flatpak_get_default_arch()) + '/'_L1 + branch;
 }
 
-AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancellable *cancellable)
+struct TemporaryRemote {
+    QTemporaryDir directory{QDir::tempPath() + "/discover-flatpak-temporary-XXXXXX"_L1};
+    GLibHolder<FlatpakInstallation> installation = nullptr;
+    GLibHolder<FlatpakRemote> remote = nullptr;
+};
+
+std::shared_ptr<TemporaryRemote> createTemporaryRemote(const QSettings &settings, GCancellable *cancellable)
 {
-    const QString name = settings.value(QLatin1StringView("Flatpak Ref/Name")).toString();
-    const QString branch = settings.value(QLatin1StringView("Flatpak Ref/Branch")).toString();
     const QString remoteName = settings.value(QLatin1StringView("Flatpak Ref/SuggestRemoteName")).toString();
-    const bool isRuntime = settings.value(QLatin1StringView("Flatpak Ref/IsRuntime")).toBool();
-
-    AppStream::Component asComponent;
-    asComponent.addUrl(AppStream::Component::UrlKindHomepage, settings.value(QLatin1StringView("Flatpak Ref/Homepage")).toString());
-    asComponent.setDescription(settings.value(QLatin1StringView("Flatpak Ref/Description")).toString());
-    asComponent.setName(settings.value(QLatin1StringView("Flatpak Ref/Title")).toString());
-    asComponent.setSummary(settings.value(QLatin1StringView("Flatpak Ref/Comment")).toString());
-    asComponent.setId(name);
-
-    AppStream::Bundle b;
-    b.setKind(AppStream::Bundle::KindFlatpak);
-    b.setId(composeRef(isRuntime, asComponent.name(), branch));
-    asComponent.addBundle(b);
 
     // We are going to create a temporary installation and add the remote to it.
     // There we will fetch the appstream metadata and then delete that temporary installation.
 
+    auto ret = std::make_shared<TemporaryRemote>();
+
     g_autoptr(GError) localError = nullptr;
-    const QString path = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QLatin1String("/discover-flatpak-temporary-") + remoteName;
+    const QString path = ret->directory.path();
     qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Creating temporary installation" << path;
     g_autoptr(GFile) file = g_file_new_for_path(QFile::encodeName(path).constData());
-    g_autoptr(FlatpakInstallation) tempInstallation = flatpak_installation_new_for_path(file, true, cancellable, &localError);
-    if (!tempInstallation) {
-        return asComponent;
+    ret->installation.adopt(flatpak_installation_new_for_path(file, true, cancellable, &localError));
+    if (!ret->installation) {
+        return ret;
     }
-    auto x = qScopeGuard([path] {
-        QDir(path).removeRecursively();
-    });
 
-    g_autoptr(FlatpakRemote) tempRemote = flatpak_remote_new(remoteName.toUtf8().constData());
-    populateRemote(tempRemote,
+    ret->remote.adopt(flatpak_remote_new(remoteName.toUtf8().constData()));
+    populateRemote(ret->remote.get(),
                    remoteName,
                    settings.value(QLatin1StringView("Flatpak Ref/Url")).toString(),
                    settings.value(QLatin1StringView("Flatpak Ref/GPGKey")).toString());
-    if (!flatpak_installation_modify_remote(tempInstallation, tempRemote, cancellable, &localError)) {
+    if (!flatpak_installation_modify_remote(ret->installation.get(), ret->remote.get(), cancellable, &localError)) {
         qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "error adding temporary remote" << localError->message;
-        return asComponent;
+        ret->remote.adopt(nullptr);
     }
 
-    auto cb = [](const char *status, guint progress, gboolean /*estimating*/, gpointer /*user_data*/) {
-        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Progress..." << status << progress;
-    };
-
-    gboolean changed;
-    if (!flatpak_installation_update_appstream_full_sync(tempInstallation,
-                                                         remoteName.toUtf8().constData(),
-                                                         nullptr,
-                                                         cb,
-                                                         nullptr,
-                                                         &changed,
-                                                         cancellable,
-                                                         &localError)) {
-        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "error fetching appstream" << localError->message;
-        return asComponent;
-    }
-    Q_ASSERT(changed);
-    const QString appstreamLocation = path + "/appstream/"_L1 + remoteName + '/'_L1 + QString::fromUtf8(flatpak_get_default_arch()) + "/active"_L1;
-
-    AppStream::Pool pool;
-    pool.setLoadStdDataLocations(false);
-    pool.addExtraDataLocation(appstreamLocation, AppStream::Metadata::FormatStyleCatalog);
-
-    if (!pool.load()) {
-        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "error loading pool" << pool.lastError();
-        return asComponent;
-    }
-
-    // TODO optimise, this lookup should happen in libappstream
-    auto comps = pool.components();
-    kFilterInPlace<AppStream::ComponentBox>(comps, [name, branch](const AppStream::Component &component) {
-        const QString id = component.bundle(AppStream::Bundle::KindFlatpak).id();
-        // app/app.getspace.Space/x86_64/stable
-        const auto parts = QStringView(id).split('/'_L1);
-        return parts.value(1) == name && (branch.isEmpty() || parts.value(3) == branch);
-    });
-    if (comps.isEmpty()) {
-        qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not find" << name << "in" << remoteName;
-        return asComponent;
-    }
-    return *comps.indexSafe(0);
+    return ret;
 }
 
 void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream)
@@ -925,7 +876,6 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
     const QString remoteName = settings.value(QLatin1StringView("Flatpak Ref/SuggestRemoteName")).toString();
     const QString branch = settings.value(QLatin1StringView("Flatpak Ref/Branch")).toString();
     const bool isRuntime = settings.value(QLatin1StringView("Flatpak Ref/IsRuntime")).toBool();
-    g_autoptr(GError) error = nullptr;
 
     // If we already added the remote, just go with it
     if (auto source = findSourceUrl(preferredInstallation(), refurl)) {
@@ -939,77 +889,142 @@ void FlatpakBackend::addAppFromFlatpakRef(const QUrl &url, ResultsStream *stream
             stream->finish();
         };
         if (source->m_pool) {
-            QTimer::singleShot(0, this, searchComponent);
+            QTimer::singleShot(0, stream, searchComponent);
         } else {
             connect(this, &FlatpakBackend::initialized, stream, searchComponent);
         }
         return;
     }
 
-    AppStream::Component asComponent = fetchComponentFromRemote(settings, m_cancellable);
-    const QString iconUrl = settings.value(QLatin1StringView("Flatpak Ref/Icon")).toString();
-    if (!iconUrl.isEmpty()) {
-        AppStream::Icon icon;
-        icon.setKind(AppStream::Icon::KindRemote);
-        icon.setUrl(QUrl(iconUrl));
-        asComponent.addIcon(icon);
-    }
+    auto tempRemote = createTemporaryRemote(settings, m_cancellable);
+    const auto finishLoading = [this, refurl, stream, url, tempRemote] {
+        QSettings settings(url.toLocalFile(), QSettings::NativeFormat);
+        const QString name = settings.value(QLatin1StringView("Flatpak Ref/Name")).toString();
+        const QString branch = settings.value(QLatin1StringView("Flatpak Ref/Branch")).toString();
+        const QString remoteName = settings.value(QLatin1StringView("Flatpak Ref/SuggestRemoteName")).toString();
+        const bool isRuntime = settings.value(QLatin1StringView("Flatpak Ref/IsRuntime")).toBool();
+        std::optional<AppStream::Component> asComponent;
+        if (tempRemote->remote) {
+            const QString path = tempRemote->directory.path();
+            const QString appstreamLocation = path + "/appstream/"_L1 + remoteName + '/'_L1 + QString::fromUtf8(flatpak_get_default_arch()) + "/active"_L1;
 
-    auto resource = new FlatpakResource(asComponent, preferredInstallation(), this);
-    resource->setFlatpakFileType(FlatpakResource::FileFlatpakRef);
-    resource->setResourceFile(url);
-    resource->setResourceLocation(QUrl(refurl));
-    resource->setOrigin(remoteName);
-    resource->setDisplayOrigin(remoteName);
-    resource->setFlatpakName(name);
-    resource->setArch(QString::fromUtf8(flatpak_get_default_arch()));
-    resource->setBranch(branch);
-    resource->setType(isRuntime ? FlatpakResource::Runtime : FlatpakResource::DesktopApp);
-
-    QUrl runtimeUrl = QUrl(settings.value(QLatin1StringView("Flatpak Ref/RuntimeRepo")).toString());
-    auto refSource = QSharedPointer<FlatpakSource>::create(this, preferredInstallation());
-    resource->setTemporarySource(refSource);
-    m_flatpakSources += refSource;
-    if (!runtimeUrl.isEmpty()) {
-        // We need to fetch metadata to find information about required runtime
-        auto fw = new QFutureWatcher<QByteArray>(this);
-        connect(fw, &QFutureWatcher<QByteArray>::finished, this, [this, resource, fw, runtimeUrl, stream, refSource]() {
-            fw->deleteLater();
-            const auto metadata = fw->result();
-            // Even when we failed to fetch information about runtime we still want to show the application
-            if (metadata.isEmpty()) {
-                onFetchMetadataFinished(resource, metadata);
+            AppStream::Pool pool;
+            pool.setLoadStdDataLocations(false);
+            pool.addExtraDataLocation(appstreamLocation, AppStream::Metadata::FormatStyleCatalog);
+            if (pool.load()) {
+                // TODO optimise, this lookup should happen in libappstream
+                auto comps = pool.components();
+                kFilterInPlace<AppStream::ComponentBox>(comps, [name, branch](const AppStream::Component &component) {
+                    const QString id = component.bundle(AppStream::Bundle::KindFlatpak).id();
+                    // app/app.getspace.Space/x86_64/stable
+                    const auto parts = QStringView(id).split('/'_L1);
+                    return parts.value(1) == name && (branch.isEmpty() || parts.value(3) == branch);
+                });
+                asComponent = comps.indexSafe(0);
+                if (!asComponent) {
+                    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not find" << name << "in" << remoteName;
+                }
             } else {
-                updateAppMetadata(resource, metadata);
+                qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "error loading pool" << pool.lastError();
+            }
+        }
 
-                auto runtime = getRuntimeForApp(resource);
-                if (!runtime || (runtime && !runtime->isInstalled())) {
-                    auto repoStream = new ResultsStream(QLatin1String("FlatpakStream-searchrepo-") + runtimeUrl.toString());
-                    connect(repoStream, &ResultsStream::resourcesFound, this, [this, resource, stream, refSource](const QVector<StreamResult> &resources) {
-                        for (auto res : resources) {
-                            installApplication(res.resource);
-                        }
-                        refSource->addResource(resource);
-                        Q_EMIT stream->resourcesFound({resource});
-                        stream->finish();
-                    });
+        if (!asComponent) {
+            asComponent.emplace();
+            asComponent->addUrl(AppStream::Component::UrlKindHomepage, settings.value(QLatin1StringView("Flatpak Ref/Homepage")).toString());
+            asComponent->setDescription(settings.value(QLatin1StringView("Flatpak Ref/Description")).toString());
+            asComponent->setName(settings.value(QLatin1StringView("Flatpak Ref/Title")).toString());
+            asComponent->setSummary(settings.value(QLatin1StringView("Flatpak Ref/Comment")).toString());
+            asComponent->setId(name);
 
-                    auto fetchRemoteResource = new FlatpakFetchRemoteResourceJob(runtimeUrl, repoStream, this);
-                    fetchRemoteResource->start();
-                    return;
+            AppStream::Bundle b;
+            b.setKind(AppStream::Bundle::KindFlatpak);
+            b.setId(composeRef(isRuntime, asComponent->name(), branch));
+            asComponent->addBundle(b);
+        }
+
+        const QString iconUrl = settings.value(QLatin1StringView("Flatpak Ref/Icon")).toString();
+        if (!iconUrl.isEmpty()) {
+            AppStream::Icon icon;
+            icon.setKind(AppStream::Icon::KindRemote);
+            icon.setUrl(QUrl(iconUrl));
+            asComponent->addIcon(icon);
+        }
+
+        auto resource = new FlatpakResource(*asComponent, preferredInstallation(), this);
+        resource->setFlatpakFileType(FlatpakResource::FileFlatpakRef);
+        resource->setResourceFile(url);
+        resource->setResourceLocation(QUrl(refurl));
+        resource->setOrigin(remoteName);
+        resource->setDisplayOrigin(remoteName);
+        resource->setFlatpakName(name);
+        resource->setArch(QString::fromUtf8(flatpak_get_default_arch()));
+        resource->setBranch(branch);
+        resource->setType(isRuntime ? FlatpakResource::Runtime : FlatpakResource::DesktopApp);
+
+        QUrl runtimeUrl = QUrl(settings.value(QLatin1StringView("Flatpak Ref/RuntimeRepo")).toString());
+        auto refSource = QSharedPointer<FlatpakSource>::create(this, preferredInstallation());
+        resource->setTemporarySource(refSource);
+        m_flatpakSources += refSource;
+        if (!runtimeUrl.isEmpty()) {
+            // We need to fetch metadata to find information about required runtime
+            auto fw = new QFutureWatcher<QByteArray>(this);
+            connect(fw, &QFutureWatcher<QByteArray>::finished, stream, [this, resource, fw] {
+                const auto metadata = fw->result();
+                if (metadata.isEmpty()) {
+                    onFetchMetadataFinished(resource, metadata);
                 } else {
+                    updateAppMetadata(resource, metadata);
+                }
+            });
+            connect(fw, &QFutureWatcher<QByteArray>::finished, stream, [this, resource, fw, runtimeUrl, stream, refSource] {
+                if (!fw->result().isEmpty()) {
+                    auto runtime = getRuntimeForApp(resource);
+                    if (!runtime || !runtime->isInstalled()) {
+                        auto repoStream = new ResultsStream(QLatin1String("FlatpakStream-searchrepo-") + runtimeUrl.toString());
+                        repoStream->setParent(this);
+                        connect(repoStream, &ResultsStream::resourcesFound, stream, [this, resource, refSource](const QVector<StreamResult> &resources) {
+                            for (auto res : resources) {
+                                installApplication(res.resource);
+                            }
+                            refSource->addResource(resource);
+                        });
+                        connect(repoStream, &ResultsStream::resourcesFound, stream, [stream, resource] {
+                            Q_EMIT stream->resourcesFound({resource});
+                            stream->finish();
+                        });
+
+                        auto fetchRemoteResource = new FlatpakFetchRemoteResourceJob(runtimeUrl, repoStream, this);
+                        fetchRemoteResource->start();
+                        return;
+                    }
                     refSource->addResource(resource);
                 }
-            }
+                Q_EMIT stream->resourcesFound({resource});
+                stream->finish();
+            });
+            connect(fw, &QFutureWatcher<QByteArray>::finished, fw, &QObject::deleteLater);
+            fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, resource, m_cancellable));
+        } else {
+            refSource->addResource(resource);
             Q_EMIT stream->resourcesFound({resource});
             stream->finish();
-        });
-        fw->setFuture(QtConcurrent::run(&m_threadPool, &FlatpakRunnables::fetchMetadata, resource, m_cancellable));
-    } else {
-        refSource->addResource(resource);
-        Q_EMIT stream->resourcesFound({resource});
-        stream->finish();
+        }
+    };
+
+    if (!tempRemote->remote) {
+        qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to load" << url << refurl;
+        finishLoading();
+        return;
     }
+    auto job = new FlatpakRefreshAppstreamMetadataJob(tempRemote->installation.get(), tempRemote->remote.get());
+    // The worker needs the installation directory even if the stream disconnects first.
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::finished, job, [job, tempRemote] {
+        job->deleteLater();
+    });
+    connect(stream, &QObject::destroyed, job, &FlatpakRefreshAppstreamMetadataJob::cancel);
+    connect(job, &FlatpakRefreshAppstreamMetadataJob::jobRefreshAppstreamMetadataFinished, stream, finishLoading);
+    job->start();
 }
 
 void FlatpakBackend::addSourceFromFlatpakRepo(const QUrl &url, ResultsStream *stream)
