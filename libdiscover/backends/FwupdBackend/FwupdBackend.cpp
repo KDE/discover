@@ -23,6 +23,8 @@
 #include <KSharedConfig>
 #include <QCoreApplication>
 
+#include <glibholder.h>
+
 DISCOVER_BACKEND_PLUGIN(FwupdBackend)
 
 FwupdBackend::FwupdBackend(QObject *parent)
@@ -31,16 +33,16 @@ FwupdBackend::FwupdBackend(QObject *parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_cancellable(g_cancellable_new())
 {
-    auto init = [this] {
-        g_autoptr(GError) error = nullptr;
-        if (!fwupd_client_connect(client, m_cancellable, &error)) {
-            handleError(error);
-            return false;
+    auto init = [this]() -> GLibHolder<GError> {
+        GLibHolder<GError> error;
+        if (!fwupd_client_connect(client, m_cancellable, error.ref())) {
+            qWarning() << "Fwupd Error: failed to connect";
         }
-        return true;
+        return error;
     };
-    QtConcurrent::run(init).then(this, [this](bool correct) {
-        if (!correct) {
+    QtConcurrent::run(init).then(this, [this](GLibHolder<GError> &&error) {
+        if (error) {
+            handleError(error.get());
             m_isValid = false;
             Q_EMIT invalidated();
             return;
