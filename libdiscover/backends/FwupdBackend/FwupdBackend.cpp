@@ -307,7 +307,7 @@ void FwupdBackend::setDevices(GPtrArray *devices)
         auto res = new FwupdResource(device, this);
         for (uint i = 0; releases && i < releases->len; ++i) {
             FwupdRelease *release = (FwupdRelease *)g_ptr_array_index(releases, i);
-            if (res->installedVersion().toUtf8() == fwupd_release_get_version(release)) {
+            if (res->installedVersion() == QUtf8StringView(fwupd_release_get_version(release))) {
                 res->setReleaseDetails(release);
                 break;
             }
