@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:18+0000\n"
-"PO-Revision-Date: 2026-06-13 17:18+0200\n"
+"PO-Revision-Date: 2026-08-08 12:23+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -1764,7 +1764,7 @@ msgstr "Wgrany"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:330
 #, kde-format
 msgid "Not Installed"
-msgstr "Niezainstalowane "
+msgstr "Niezainstalowane"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:332
 #, kde-format
@@ -2087,7 +2087,9 @@ msgstr "%1:<nl/><nl/>%2"
 msgid ""
 "Media Change of type '%1' is requested.\n"
 "%2"
-msgstr "Wymagana zmiana nośnika rodzaju '%1'.\\ %2"
+msgstr ""
+"Wymagana zmiana nośnika rodzaju '%1'.\n"
+"%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:655
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:289
