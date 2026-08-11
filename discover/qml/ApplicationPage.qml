@@ -559,6 +559,10 @@ DiscoverPage {
                                                 + (donateButton.visible ? 1 : 0)
                                                 + (bugButton.visible ? 1 : 0)
                                                 + (contributeButton.visible ? 1 : 0)
+                                                + (faqButton.visible ? 1 : 0)
+                                                + (translateButton.visible ? 1 : 0)
+                                                + (contactButton.visible ? 1 : 0)
+                                                + (vcsBrowserButton.visible ? 1 : 0)
             visible: visibleButtons > 0 && !appInfo.isTechnicalPackage
 
             spacing: Kirigami.Units.smallSpacing
@@ -576,18 +580,29 @@ DiscoverPage {
                 spacing: Kirigami.Units.largeSpacing
 
                 ApplicationResourceButton {
+                    id: faqButton
+
+                    visible: website.length > 0
+
+                    icon: "question-symbolic"
+                    website: application.faqURL.toString()
+                    linkText: i18nc("@info text of a web URL", "Read the FAQ")
+                }
+
+                ApplicationResourceButton {
                     id: helpButton
 
                     visible: website.length > 0
 
                     icon: "documentation-symbolic"
                     website: application.helpURL.toString()
-                    linkText: i18nc("@info text of a web URL", "Read the documentation")
+                    linkText: i18nc("@info text of a web URL", faqButton.visible
+                        ? "Read the full documentation"
+                        : "Read the documentation")
                 }
 
                 ApplicationResourceButton {
                     id: homepageButton
-
 
                     visible: website.length > 0
 
@@ -624,6 +639,36 @@ DiscoverPage {
                     icon: "applications-development-symbolic"
                     website: application.contributeURL.toString()
                     linkText: i18nc("@info text of a web URL", "Start contributing")
+                }
+
+                ApplicationResourceButton {
+                    id: translateButton
+
+                    visible: website.length > 0
+
+                    icon: "translate-symbolic"
+                    website: application.translateURL.toString()
+                    linkText: i18nc("@info text of a web URL", "Help with translations")
+                }
+
+                ApplicationResourceButton {
+                    id: contactButton
+
+                    visible: website.length > 0
+
+                    icon: "mail-message-new-symbolic"
+                    website: application.contactURL.toString()
+                    linkText: i18nc("@info text of a web URL", "Contact the developers")
+                }
+
+                ApplicationResourceButton {
+                    id: vcsBrowserButton
+
+                    visible: website.length > 0
+
+                    icon: "folder-git-symbolic"
+                    website: application.vcsBrowserURL.toString()
+                    linkText: i18nc("@info text of a web URL", "Browse the source code")
                 }
             }
         }

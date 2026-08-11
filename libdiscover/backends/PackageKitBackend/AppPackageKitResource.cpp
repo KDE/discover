@@ -171,6 +171,26 @@ QUrl AppPackageKitResource::contributeURL()
     return m_appdata.url(AppStream::Component::UrlKindContribute);
 }
 
+QUrl AppPackageKitResource::faqURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindFaq);
+}
+
+QUrl AppPackageKitResource::translateURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindTranslate);
+}
+
+QUrl AppPackageKitResource::contactURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindContact);
+}
+
+QUrl AppPackageKitResource::vcsBrowserURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindVcsBrowser);
+}
+
 AbstractResource::Type AppPackageKitResource::type() const
 {
     static QString desktop = QString::fromUtf8(qgetenv("XDG_CURRENT_DESKTOP"));

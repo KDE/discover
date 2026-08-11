@@ -120,6 +120,10 @@ public:
     QUrl bugURL() override;
     QUrl donationURL() override;
     QUrl contributeURL() override;
+    QUrl faqURL() override;
+    QUrl translateURL() override;
+    QUrl contactURL() override;
+    QUrl vcsBrowserURL() override;
     FlatpakFileType flatpakFileType() const;
     QString flatpakName() const;
     QJsonArray licenses() override;

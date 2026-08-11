@@ -51,6 +51,26 @@ QUrl AbstractResource::contributeURL()
     return {};
 }
 
+QUrl AbstractResource::faqURL()
+{
+    return {};
+}
+
+QUrl AbstractResource::translateURL()
+{
+    return {};
+}
+
+QUrl AbstractResource::contactURL()
+{
+    return {};
+}
+
+QUrl AbstractResource::vcsBrowserURL()
+{
+    return {};
+}
+
 void AbstractResource::addMetadata(const QLatin1StringView &key, const QJsonValue &value)
 {
     m_metadata.insert(key, value);

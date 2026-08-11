@@ -315,6 +315,26 @@ QUrl FlatpakResource::contributeURL()
     return m_appdata.url(AppStream::Component::UrlKindContribute);
 }
 
+QUrl FlatpakResource::faqURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindFaq);
+}
+
+QUrl FlatpakResource::translateURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindTranslate);
+}
+
+QUrl FlatpakResource::contactURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindContact);
+}
+
+QUrl FlatpakResource::vcsBrowserURL()
+{
+    return m_appdata.url(AppStream::Component::UrlKindVcsBrowser);
+}
+
 FlatpakResource::FlatpakFileType FlatpakResource::flatpakFileType() const
 {
     return m_flatpakFileType;
