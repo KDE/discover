@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-25 00:46+0000\n"
-"PO-Revision-Date: 2026-07-16 10:05+0400\n"
+"POT-Creation-Date: 2026-08-11 00:47+0000\n"
+"PO-Revision-Date: 2026-08-10 17:50+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1079,13 +1079,13 @@ msgstr "يمسح الإعدادات وبيانات المستخدم…"
 #, kde-format
 msgctxt "Permission to access system resources and hardware devices"
 msgid "Permissions"
-msgstr "التّصاريح"
+msgstr "الأذون"
 
 #: libdiscover/backends/FlatpakBackend/qml/PermissionsList.qml:76
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:20
 #, kde-format
 msgid "Configure permissions…"
-msgstr "اضبط الصلاحيات…"
+msgstr "اضبط الأذون…"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:490
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
@@ -2616,7 +2616,7 @@ msgstr "بدّل"
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:28
 #, kde-format
 msgid "Permissions for %1"
-msgstr "صلاحيات لـ %1"
+msgstr "أذون لـ %1"
 
 #: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
 #, kde-format
@@ -2723,7 +2723,7 @@ msgstr "رجاء تأكد من الاتصال بالإنترنت"
 msgid "Refresh"
 msgstr "تحقَّق"
 
-#: libdiscover/resources/ResourcesModel.cpp:401
+#: libdiscover/resources/ResourcesModel.cpp:393
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"

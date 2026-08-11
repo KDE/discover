@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-25 00:46+0000\n"
+"POT-Creation-Date: 2026-08-11 00:47+0000\n"
 "PO-Revision-Date: 2026-05-29 17:22-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -2759,7 +2759,7 @@ msgstr "ئىنتېرنېت باغلىنىشىنى تەكشۈرۈڭ"
 msgid "Refresh"
 msgstr "يېڭىلا"
 
-#: libdiscover/resources/ResourcesModel.cpp:401
+#: libdiscover/resources/ResourcesModel.cpp:393
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-25 00:46+0000\n"
-"PO-Revision-Date: 2026-07-17 11:06+0400\n"
+"PO-Revision-Date: 2026-08-10 12:51+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1108,18 +1108,16 @@ msgid "Tasks"
 msgstr "المهامّ"
 
 #: discover/qml/ProgressView.qml:145
-#, fuzzy, kde-format
-#| msgctxt "TransactioName - TransactionStatus: speed, remaining time"
-#| msgid "%1 - %2: %3, %4 remaining"
+#, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1: %2, %3 remaining"
-msgstr "%1 - %2: %3، %4 بقي"
+msgstr "%1: %2، بقي %3"
 
 #: discover/qml/ProgressView.qml:152
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: discover/qml/Rating.qml:119
 #, kde-format

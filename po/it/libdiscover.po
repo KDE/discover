@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-25 00:46+0000\n"
+"POT-Creation-Date: 2026-08-11 00:47+0000\n"
 "PO-Revision-Date: 2026-07-15 09:10+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -2746,7 +2746,7 @@ msgstr "Verifica la tua connettività Internet"
 msgid "Refresh"
 msgstr "Controlla"
 
-#: libdiscover/resources/ResourcesModel.cpp:401
+#: libdiscover/resources/ResourcesModel.cpp:393
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
