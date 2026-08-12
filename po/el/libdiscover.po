@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-11 00:47+0000\n"
+"POT-Creation-Date: 2026-08-12 00:48+0000\n"
 "PO-Revision-Date: 2024-09-19 14:31+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -628,7 +628,7 @@ msgstr "Δεν υπάρχουν πηγές Flatpak."
 msgid "Failed to load \"%1\" source"
 msgstr "Αποτυχία φόρτωσης πηγής \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:351
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:371
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -640,14 +640,14 @@ msgstr ""
 "Άλλα λογισμικά σε αυτό το αποθετήριο, θα είναι επίσης διαθέσιμα, στο "
 "Discover όταν εγκατασταθεί αυτή η εφαρμογή.</para>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:449
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:469
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:419
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:505
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:525
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:467
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, fuzzy, kde-format
@@ -655,60 +655,60 @@ msgstr "Άγνωστο"
 msgid "Failed to start “%1”: %2"
 msgstr "Αποτυχία εκκίνησης '%1': %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:746
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:766
 #, kde-format
 msgid "All Files"
 msgstr "Όλα τα αρχεία"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:748
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:768
 #, kde-format
 msgid "Home"
 msgstr "Αρχική"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:750
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:770
 #, kde-format
 msgid "Downloads"
 msgstr "Λήψεις"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:752
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:772
 #, kde-format
 msgid "Music"
 msgstr "Μουσική"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Network Access"
 msgstr "Δικτυακή πρόσβαση"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:849
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
 #, kde-format
 msgid "Can access the internet"
 msgstr "Έχει πρόσβαση στο διαδίκτυο"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:878
 #, kde-format
 msgid "Sound system access"
 msgstr "Πρόσβαση στο σύστημα ήχου"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:879
 #, fuzzy, kde-format
 #| msgid "Can play audio"
 msgid "Can play and record audio"
 msgstr "Μπορεί να αναπαράγει ήχο"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1007
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:883
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1027
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Πρόσβαση δίαυλου συνεδρίας"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:884
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
@@ -717,56 +717,56 @@ msgstr ""
 "Μπορεί να επικοινωνεί με όλες τις άλλες εφαρμογές και διεργασίες που "
 "εκτελούνται από αυτό το λογαριασμό χρήστη"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1019
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:889
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1039
 #, kde-format
 msgid "System Bus Access"
 msgstr "Πρόσβαση διαύλου συστήματος"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:890
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr ""
 "Μπορεί να επικοινωνεί με όλες τις άλλες εφαρμογές και διεργασίες στο σύστημα"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:875
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Απομακρυσμένη πρόσβαση"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:876
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:896
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr ""
 "Μπορεί να εκκινήσει απομακρυσμένο αίτημα εισόδου με την χρήση του "
 "πρωτοκόλλου SSH"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:880
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:900
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Πρόσβαση με έξυπνη κάρτα"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:881
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "Μπορεί να ενσωματώσει και να επικοινωνήσει με έξυπνες κάρτες "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:885
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:905
 #, kde-format
 msgid "Printer Access"
 msgstr "Πρόσβαση στον εκτυπωτή"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:906
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "Μπορεί να ενσωματώσει και να επικοινωνήσει με εκτυπωτές "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:890
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "GPG Agent"
 msgstr "Πράκτορας GPG"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:891
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:911
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -775,74 +775,74 @@ msgstr ""
 "Επιτρέπει την πρόσβαση στην υπηρεσία κρυπτογράφησης GPG, γενικά "
 "χρησιμοποιείται για την υπογραφή και την ανάγνωση υπογεγραμμένων εγγράφων"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:917
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "Πρόσβαση στο Bluetooth"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:918
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "Μπορεί να ενσωματώσει και να επικοινωνήσει με συσκευές Bluetooth"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:902
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "Χαμηλού επιπέδου πρόσβαση στο σύστημα"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:903
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:923
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "Μπορεί να κάνει χαμηλού-επιπέδου κλήσεις συστήματος (π.χ. ptrace)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:909
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
 #, kde-format
 msgid "Device Access"
 msgstr "Πρόσβαση σε Συσκευή"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:930
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
 "Μπορεί να επικοινωνεί και να ελέγχει ενσωματωμένες ή συνδεδεμένες συσκευές "
 "υλικού"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:934
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Πρόσβαση σε εικονική μηχανή βασισμένη στον πυρήνα"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:915
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr ""
 "Επιτρέπει την εκτέλεση άλλων λειτουργικών συστημάτων ως φιλοξενούμενων σε "
 "εικονικές μηχανές"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:942
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:954
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:962
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:974
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (Για ανάγνωση μόνο)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:957
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:977
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (μπορεί να δημιουργήσει αρχεία)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:948
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:966
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:968
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:986
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (Ανάγνωση & εγγραφή) "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:975
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:995
 #, kde-format
 msgid "Home Folder Access"
 msgstr "Πρόσβαση στον Προσωπικό Φάκελο"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:978
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:998
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -851,7 +851,7 @@ msgstr ""
 "Μπορεί να διαβάσει, να γράψει και να δημιουργήσει αρχεία στις ακόλουθες "
 "θέσεις, στον προσωπικό σας φάκελο, χωρίς να ζητήσει πρώτα άδεια: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:980
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1000
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -860,7 +860,7 @@ msgstr ""
 "Μπορεί να διαβάσει και να γράψει αρχεία στις ακόλουθες θέσεις, στον "
 "προσωπικό σας φάκελο, χωρίς να ζητήσει πρώτα άδεια: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:982
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1002
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -869,7 +869,7 @@ msgstr ""
 "Μπορεί να διαβάσει αρχεία στις ακόλουθες θέσεις, στον προσωπικό σας φάκελο, "
 "χωρίς να ζητήσει πρώτα άδεια: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:984
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1004
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -878,12 +878,12 @@ msgstr ""
 "Έχει πρόσβαση σε αρχεία στις ακόλουθες θέσεις, στον προσωπικό σας φάκελο, "
 "χωρίς να ζητάει πρώτα άδεια: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:990
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1010
 #, kde-format
 msgid "System Folder Access"
 msgstr "Πρόσβαση στους φακέλους συστήματος"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:992
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1012
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -892,7 +892,7 @@ msgstr ""
 "Μπορεί να διαβάσει, να γράψει και να δημιουργήσει αρχεία συστήματος, στις "
 "παρακάτω θέσεις, χωρίς να ζητήσει, πρώτα άδεια: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:994
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1014
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -901,7 +901,7 @@ msgstr ""
 "Μπορεί να διαβάσει και να γράψει αρχεία συστήματος, στις παρακάτω θέσεις, "
 "χωρίς να ζητήσει, πρώτα άδεια: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:996
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1016
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
@@ -910,7 +910,7 @@ msgstr ""
 "Μπορεί να διαβάσει αρχεία συστήματος, στις παρακάτω θέσεις, χωρίς να "
 "ζητήσει, πρώτα άδεια: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:998
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
@@ -919,7 +919,7 @@ msgstr ""
 "Έχει πρόσβαση σε αρχεία συστήματος, στις παρακάτω θέσεις, χωρίς να ζητήσει, "
 "πρώτα άδεια: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1009
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1029
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -928,7 +928,7 @@ msgstr ""
 "Μπορεί να επικοινωνεί με άλλες εφαρμογές και διεργασίες στην ίδια συνεδρία "
 "χρησιμοποιώντας τα ακόλουθα πρωτόκολλα επικοινωνίας: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1021
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1041
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
@@ -937,7 +937,7 @@ msgstr ""
 "Μπορεί να επικοινωνεί με όλες τις εφαρμογές και τις υπηρεσίες του συστήματος "
 "χρησιμοποιώντας το τα ακόλουθα πρωτόκολλα επικοινωνίας: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1119
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1139
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
 msgstr ""
@@ -1267,7 +1267,7 @@ msgstr "Κατάστημα KDE"
 msgid "Log in information for %1"
 msgstr "Πληροφορίες σύνδεσης για %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:236
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:256
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Αδυναμία εκτέλεσης %1"
@@ -1983,7 +1983,7 @@ msgid "Testing"
 msgstr "Σε δοκιμή"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
-#: libdiscover/resources/AbstractResource.cpp:97
+#: libdiscover/resources/AbstractResource.cpp:117
 #, kde-format
 msgid "Installed"
 msgstr "Εγκαταστάθηκε"
@@ -2785,34 +2785,34 @@ msgstr ""
 "Εμφάνιση όλων των backends που θα θέλαμε να φορτωθούν, χωρισμένα με κόμμα "
 "','."
 
-#: libdiscover/resources/AbstractResource.cpp:93
+#: libdiscover/resources/AbstractResource.cpp:113
 #, kde-format
 msgid "Broken"
 msgstr "Κατεστραμμένο"
 
-#: libdiscover/resources/AbstractResource.cpp:95
+#: libdiscover/resources/AbstractResource.cpp:115
 #, kde-format
 msgid "Available"
 msgstr "Διαθέσιμο"
 
-#: libdiscover/resources/AbstractResource.cpp:99
+#: libdiscover/resources/AbstractResource.cpp:119
 #, kde-format
 msgid "Upgradeable"
 msgstr "Αναβαθμίσιμο"
 
-#: libdiscover/resources/AbstractResource.cpp:239
+#: libdiscover/resources/AbstractResource.cpp:259
 #, kde-format
 msgid "Launch"
 msgstr "Εκκίνηση"
 
-#: libdiscover/resources/AbstractResource.cpp:250
+#: libdiscover/resources/AbstractResource.cpp:270
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
 msgstr "Ανανέωση της έκδοσης %1"
 
-#: libdiscover/resources/AbstractResource.cpp:260
+#: libdiscover/resources/AbstractResource.cpp:280
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-25 00:46+0000\n"
+"POT-Creation-Date: 2026-08-12 00:48+0000\n"
 "PO-Revision-Date: 2026-07-31 19:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -528,53 +528,79 @@ msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "Tüm İncelemeleri Göster"
 
-#: discover/qml/ApplicationPage.qml:567
+#: discover/qml/ApplicationPage.qml:571
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr "Dış Bağlantılar"
 
-#: discover/qml/ApplicationPage.qml:585
+#: discover/qml/ApplicationPage.qml:589
 #, kde-format
 msgctxt "@info text of a web URL"
-msgid "Read the documentation"
+msgid "Read the FAQ"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:600
+#, fuzzy, kde-format
+#| msgctxt "@info text of a web URL"
+#| msgid "Read the documentation"
+msgctxt "@info text of a web URL"
+msgid "Read the full documentation"
 msgstr "Belgelendirmeyi oku"
 
-#: discover/qml/ApplicationPage.qml:596
+#: discover/qml/ApplicationPage.qml:611
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project’s website"
 msgstr "Projenin web sitesini ziyaret et"
 
-#: discover/qml/ApplicationPage.qml:606
+#: discover/qml/ApplicationPage.qml:621
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
 msgstr "Projeye bağış yap"
 
-#: discover/qml/ApplicationPage.qml:616
+#: discover/qml/ApplicationPage.qml:631
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "Hata bildir"
 
-#: discover/qml/ApplicationPage.qml:626
+#: discover/qml/ApplicationPage.qml:641
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
 msgstr "Katkıda bulunmaya başla"
 
-#: discover/qml/ApplicationPage.qml:655
+#: discover/qml/ApplicationPage.qml:651
+#, kde-format
+msgctxt "@info text of a web URL"
+msgid "Help with translations"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:661
+#, kde-format
+msgctxt "@info text of a web URL"
+msgid "Contact the developers"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:671
+#, kde-format
+msgctxt "@info text of a web URL"
+msgid "Browse the source code"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:700
 #, kde-format
 msgid "All Licenses"
 msgstr "Tüm Lisanslar"
 
-#: discover/qml/ApplicationPage.qml:693
+#: discover/qml/ApplicationPage.qml:738
 #, kde-format
 msgid "Content Rating"
 msgstr "İçerik Derecelendirmesi"
 
-#: discover/qml/ApplicationPage.qml:716
+#: discover/qml/ApplicationPage.qml:761
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"

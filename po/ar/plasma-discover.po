@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-25 00:46+0000\n"
+"POT-Creation-Date: 2026-08-12 00:48+0000\n"
 "PO-Revision-Date: 2026-08-10 12:51+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -71,7 +71,7 @@ msgstr ""
 "إتاحة إدارة الحزم من %1 غير مكتمل؛ قد تواجه عدة مشاكل. لا تبلغ عن الأخطاء "
 "إلى كيدي. يوصى بشدة بإلغاء تثبيت الحزمة <resource>packagekit-qt6</resource> "
 "واستخدام المستكشف فقط لإدارة حزم فلاتباك وسناب والوظائف الإضافية.<para>أوصى "
-"مشرفو %1 بدلاً من ذلك استخدام أداة سطر الأوامر <command>pacman</command> "
+"مشرفو %1 بدلًا من ذلك استخدام أداة سطر الأوامر <command>pacman</command> "
 "لإدارة الحزم.</para>"
 
 #: discover/DiscoverObject.cpp:306
@@ -91,7 +91,7 @@ msgid ""
 "Please install it first."
 msgstr ""
 "لا يمكن التفاعل مع موارد فلاتباك دون الواجهة الخلفية لـ فلاتباك %1.الرجاء "
-"تثبيتها أولاً."
+"تثبيتها أولًا."
 
 #: discover/DiscoverObject.cpp:354
 #, kde-format
@@ -476,7 +476,7 @@ msgstr "تحميل مراجعات %1"
 #, kde-format
 msgctxt "@info placeholder message"
 msgid "Reviews for %1 are temporarily unavailable"
-msgstr "مراجعات %1 غير متوفرة مؤقتاً."
+msgstr "مراجعات %1 غير متوفرة مؤقتًا."
 
 #: discover/qml/ApplicationPage.qml:496
 #, kde-format
@@ -506,53 +506,80 @@ msgctxt "@action:button"
 msgid "Show All Reviews"
 msgstr "أظهر كل المراجعات"
 
-#: discover/qml/ApplicationPage.qml:567
+#: discover/qml/ApplicationPage.qml:571
 #, kde-format
 msgctxt "@title"
 msgid "External Links"
 msgstr "الروابط الخارجية"
 
-#: discover/qml/ApplicationPage.qml:585
+#: discover/qml/ApplicationPage.qml:589
 #, kde-format
 msgctxt "@info text of a web URL"
-msgid "Read the documentation"
+msgid "Read the FAQ"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:600
+#, fuzzy, kde-format
+#| msgctxt "@info text of a web URL"
+#| msgid "Read the documentation"
+msgctxt "@info text of a web URL"
+msgid "Read the full documentation"
 msgstr "اقرأ التوثيق الرسمي للمشروع"
 
-#: discover/qml/ApplicationPage.qml:596
+#: discover/qml/ApplicationPage.qml:611
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project’s website"
 msgstr "زر موقع المشروع"
 
-#: discover/qml/ApplicationPage.qml:606
+#: discover/qml/ApplicationPage.qml:621
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Donate to the project"
 msgstr "تبرّع للمشروع"
 
-#: discover/qml/ApplicationPage.qml:616
+#: discover/qml/ApplicationPage.qml:631
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Report a bug"
 msgstr "أبلغ عن علّة"
 
-#: discover/qml/ApplicationPage.qml:626
+#: discover/qml/ApplicationPage.qml:641
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Start contributing"
 msgstr "ابدأ المساهمة"
 
-#: discover/qml/ApplicationPage.qml:655
+#: discover/qml/ApplicationPage.qml:651
+#, kde-format
+msgctxt "@info text of a web URL"
+msgid "Help with translations"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:661
+#, kde-format
+msgctxt "@info text of a web URL"
+msgid "Contact the developers"
+msgstr ""
+
+#: discover/qml/ApplicationPage.qml:671
+#, fuzzy, kde-format
+#| msgid "Browse the origin's resources"
+msgctxt "@info text of a web URL"
+msgid "Browse the source code"
+msgstr "تصفّح موارد الأصل"
+
+#: discover/qml/ApplicationPage.qml:700
 #, kde-format
 msgid "All Licenses"
 msgstr "جميع الرخص"
 
-#: discover/qml/ApplicationPage.qml:693
+#: discover/qml/ApplicationPage.qml:738
 #, kde-format
 msgid "Content Rating"
 msgstr "تقييم المحتوى"
 
-#: discover/qml/ApplicationPage.qml:716
+#: discover/qml/ApplicationPage.qml:761
 #, kde-format
 msgctxt "@title:window"
 msgid "License Information"
@@ -663,7 +690,7 @@ msgstr[0] "البحث عن: %2 - %3 عنصر"
 msgstr[1] "البحث عن: %2 ‏- عنصر واحد"
 msgstr[2] "البحث عن: %2 ‏- عنصرين"
 msgstr[3] "البحث عن: %2 ‏- %3 عناصر"
-msgstr[4] "البحث عن: %2 ‏- %3 عنصراً"
+msgstr[4] "البحث عن: %2 ‏- %3 عنصرًا"
 msgstr[5] "البحث عن: %2 ‏- %3 عنصر"
 
 #: discover/qml/ApplicationsListPage.qml:59
@@ -679,7 +706,7 @@ msgstr[0] "%2 -  0 عنصر"
 msgstr[1] "%2 - عنصر واحد"
 msgstr[2] "%2 - عنصرين"
 msgstr[3] "%2 - %1 عناصر"
-msgstr[4] "%2 - %1 عنصراً"
+msgstr[4] "%2 - %1 عنصرًا"
 msgstr[5] "%2 - %1 عنصر"
 
 #: discover/qml/ApplicationsListPage.qml:69
@@ -690,7 +717,7 @@ msgstr[0] "البحث عن - ‏0"
 msgstr[1] "البحث عن - ‏عنصر واحد"
 msgstr[2] "البحث عن - ‏عنصرين"
 msgstr[3] "البحث عن - ‏%1 عناصر"
-msgstr[4] "البحث عن - ‏%1 عنصراً"
+msgstr[4] "البحث عن - ‏%1 عنصرًا"
 msgstr[5] "البحث عن - ‏%1 عنصر"
 
 #: discover/qml/ApplicationsListPage.qml:71
@@ -823,19 +850,19 @@ msgstr "اختيار المحررين"
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
-msgstr "الجديدة نشراً والأخيرة تحديثاً"
+msgstr "الجديدة نشرًا والأخيرة تحديثًا"
 
 #: discover/qml/BrowsingPage.qml:216
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr "الألعاب الأعلى تقييماً"
+msgstr "الألعاب الأعلى تقييمًا"
 
 #: discover/qml/BrowsingPage.qml:271
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr "أدوات المطوّر الأعلى تقييماً"
+msgstr "أدوات المطوّر الأعلى تقييمًا"
 
 #: discover/qml/CarouselDelegate.qml:213
 #, kde-format
@@ -1199,7 +1226,7 @@ msgid ""
 "issue rather than a flaw in the app itself."
 msgstr ""
 "ذا لم يعمل %1، فكر في الإبلاغ عن هذا إلى حزمه في %2 على <link url='%3'>%3</"
-"link> بدلاً من ذلك، حيث قد تكون مشكلة حزمة قابلة للإصلاح بسهولة بدلاً من خلل "
+"link> بدلًا من ذلك، حيث قد تكون مشكلة حزمة قابلة للإصلاح بسهولة بدلًا من خلل "
 "في التطبيق نفسه."
 
 #: discover/qml/ReviewDialog.qml:77
@@ -1211,7 +1238,7 @@ msgid ""
 "rather than a flaw in the app itself."
 msgstr ""
 "إذا لم يعمل %1، فكّر في الإبلاغ عن هذا الأمر إلى مطوريه على <link url='%2'>"
-"%2</link> بدلاً من ذلك، حيث قد تكون هذه مشكلة في الحزمة يمكن إصلاحها بسهولة "
+"%2</link> بدلًا من ذلك، حيث قد تكون هذه مشكلة في الحزمة يمكن إصلاحها بسهولة "
 "وليس خللًا في التطبيق نفسه."
 
 #: discover/qml/ReviewDialog.qml:82
@@ -1222,7 +1249,7 @@ msgid ""
 "<link url='%1'>%1</link> instead."
 msgstr ""
 "إذا كان التطبيق يتعطل كثيرًا، ففكر في الإبلاغ عن هذا الأمر للمطورين على <link "
-"url='%1'>%1</link> بدلاً من ذلك."
+"url='%1'>%1</link> بدلًا من ذلك."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1233,7 +1260,7 @@ msgid ""
 "here in greater detail."
 msgstr ""
 "إذا كنت تواجه مشكلة مع التطبيق، ففكر في الإبلاغ عنها إلى المطورين على <link "
-"url='%1'>%1</link> بدلاً من ذلك، أو صِف المشكلة هنا بمزيد من التفصيل."
+"url='%1'>%1</link> بدلًا من ذلك، أو صِف المشكلة هنا بمزيد من التفصيل."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1342,7 +1369,7 @@ msgstr "الأحدث"
 #, kde-format
 msgctxt "@label:listbox Reviews with the highest ratings"
 msgid "Highest Ratings"
-msgstr "الأعلى تقييماً"
+msgstr "الأعلى تقييمًا"
 
 #: discover/qml/ReviewsStats.qml:53
 #, kde-format
@@ -2072,9 +2099,6 @@ msgstr "وقت أخر تحديث مجهول"
 
 #~ msgid "Accept"
 #~ msgstr "اقبل"
-
-#~ msgid "Browse the origin's resources"
-#~ msgstr "تصفّح موارد الأصل"
 
 #~ msgid "Description"
 #~ msgstr "الوصف"

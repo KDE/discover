@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-11 00:47+0000\n"
+"POT-Creation-Date: 2026-08-12 00:48+0000\n"
 "PO-Revision-Date: 2026-07-14 11:43+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -607,7 +607,7 @@ msgstr "Neexistují žádné Flatpak zdroje."
 msgid "Failed to load \"%1\" source"
 msgstr "Selhalo načtení zdroje \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:351
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:371
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -619,73 +619,73 @@ msgstr ""
 "software v tomto repozitáři bude dostupný v programu Discover, jakmile bude "
 "tato aplikace nainstalována.</para>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:449
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:469
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:419
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:505
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:525
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:467
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, kde-format
 msgid "Failed to start “%1”: %2"
 msgstr "Nelze spustit “%1”: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:746
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:766
 #, kde-format
 msgid "All Files"
 msgstr "Všechny soubory"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:748
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:768
 #, kde-format
 msgid "Home"
 msgstr "Domů"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:750
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:770
 #, kde-format
 msgid "Downloads"
 msgstr "Stahování"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:752
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:772
 #, kde-format
 msgid "Music"
 msgstr "Hudba"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:850
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Network Access"
 msgstr "Síťové spojení"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:849
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
 #, kde-format
 msgid "Can access the internet"
 msgstr "Může přistupovat k internetu"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:858
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:878
 #, kde-format
 msgid "Sound system access"
 msgstr "Přístup ke zvukovému systému"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:859
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:879
 #, kde-format
 msgid "Can play and record audio"
 msgstr "Může přehrávat a nahrávat zvuk"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1007
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:883
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1027
 #, kde-format
 msgid "Session Bus Access"
 msgstr "Přístup ke sběrnici sezení"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:864
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:884
 #, kde-format
 msgid ""
 "Can communicate with all other applications and processes run in this user "
@@ -694,53 +694,53 @@ msgstr ""
 "Může komunikovat se všemi ostatními aplikacemi a procesy, které běží pod "
 "účtem tohoto uživatele"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1019
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:889
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1039
 #, kde-format
 msgid "System Bus Access"
 msgstr "Přístup ke sběrnici systému"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:870
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:890
 #, kde-format
 msgid "Can communicate with all other applications and processes on the system"
 msgstr "Může komunikovat se všemi ostatními aplikacemi a procesy v systému"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:875
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
 #, kde-format
 msgid "Remote Login Access"
 msgstr "Přístup ke vzdálenému přihlášení"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:876
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:896
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
 msgstr "Může iniciovat požadavky na vzdálené přihlášení pomocí protokolu SSH"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:880
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:900
 #, kde-format
 msgid "Smart Card Access"
 msgstr "Přístup k čipové kartě"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:881
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:901
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
 msgstr "Může se propojit a komunikovat s čipovými kartami"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:885
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:905
 #, kde-format
 msgid "Printer Access"
 msgstr "Přístup k tiskárně"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:886
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:906
 #, kde-format
 msgid "Can integrate and communicate with printers"
 msgstr "Může se propojit a komunikovat s tiskárnami"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:890
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
 #, kde-format
 msgid "GPG Agent"
 msgstr "Agent GPG"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:891
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:911
 #, kde-format
 msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
@@ -749,73 +749,73 @@ msgstr ""
 "Umožňuje přístup ke kryptografické službě GPG, která se obecně používá k "
 "podepisování a čtení podepsaných dokumentů"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:897
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:917
 #, kde-format
 msgid "Bluetooth Access"
 msgstr "Přístup k Bluetooth"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:898
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:918
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
 msgstr "Může se propojit a komunikovat se zařízeními Bluetooth"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:902
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:922
 #, kde-format
 msgid "Low-Level System Access"
 msgstr "Nízkoúrovňový přístup k systému"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:903
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:923
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
 msgstr "Může provádět nízkoúrovňová systémová volání (např. ptrace)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:909
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:929
 #, kde-format
 msgid "Device Access"
 msgstr "Přístup k zařízení"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:910
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:930
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
 "Může komunikovat a ovládat vestavěná nebo připojená hardwarová zařízení"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:914
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:934
 #, kde-format
 msgid "Kernel-based Virtual Machine Access"
 msgstr "Přístup k virtualizaci KVM"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:915
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
 msgstr ""
 "Může provozovat další operační systémy jako hostované instance ve "
 "virtuálních strojích"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:942
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:954
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:962
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:974
 #, kde-format
 msgid "%1 (read-only)"
 msgstr "%1 (pouze pro čtení)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:957
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:965
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:977
 #, kde-format
 msgid "%1 (can create files)"
 msgstr "%1 (může vytvářet soubory)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:948
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:966
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:968
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:986
 #, kde-format
 msgid "%1 (read & write) "
 msgstr "%1 (čtení a zápis) "
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:975
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:995
 #, kde-format
 msgid "Home Folder Access"
 msgstr "Přístup k domovské složce"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:978
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:998
 #, kde-format
 msgid ""
 "Can read, write, and create files in the following locations in your home "
@@ -824,7 +824,7 @@ msgstr ""
 "Může bez předchozího povolení číst, upravovat a vytvářet soubory v "
 "následujících místech ve vaší domovské složce: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:980
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1000
 #, kde-format
 msgid ""
 "Can read and write files in the following locations in your home folder "
@@ -833,7 +833,7 @@ msgstr ""
 "Může bez předchozího povolení číst a zapisovat soubory v následujících "
 "místech ve vaší domovské složce: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:982
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1002
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
@@ -842,7 +842,7 @@ msgstr ""
 "Může bez předchozího povolení číst soubory v následujících místech ve vaší "
 "domovské složce: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:984
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1004
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
@@ -851,12 +851,12 @@ msgstr ""
 "Může bez předchozího povolení přistupovat k souborům v následujících místech "
 "ve vaší domovské složce: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:990
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1010
 #, kde-format
 msgid "System Folder Access"
 msgstr "Přístup k systémovým složkám"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:992
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1012
 #, kde-format
 msgid ""
 "Can read, write, and create system files in the following locations without "
@@ -865,7 +865,7 @@ msgstr ""
 "Může bez předchozího povolení číst, zapisovat a vytvářet systémové soubory v "
 "následujících místech: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:994
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1014
 #, kde-format
 msgid ""
 "Can read and write system files in the following locations without asking "
@@ -874,7 +874,7 @@ msgstr ""
 "Může bez předchozího povolení číst a upravovat systémové soubory v "
 "následujících místech: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:996
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1016
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
@@ -883,7 +883,7 @@ msgstr ""
 "Může bez předchozího povolení číst systémové soubory v následujících "
 "místech: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:998
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1018
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
@@ -892,7 +892,7 @@ msgstr ""
 "Může bez předchozího povolení přistupovat k systémovým souborům v "
 "následujících místech: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1009
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1029
 #, kde-format
 msgid ""
 "Can communicate with other applications and processes in the same desktop "
@@ -901,7 +901,7 @@ msgstr ""
 "Může komunikovat s ostatními aplikacemi a procesy ve stejném sezením "
 "pracovní plochy pomocí následujících komunikačních protokolů: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1021
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1041
 #, kde-format
 msgid ""
 "Can communicate with all applications and system services using the "
@@ -910,7 +910,7 @@ msgstr ""
 "Může komunikovat se všemi aplikacemi a systémovými službami pomocí "
 "následujících komunikačních protokolů: %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1119
+#: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1139
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
 msgstr "Aplikace ověřena na %1 jako dodaná jejím autorem %2"
@@ -1228,7 +1228,7 @@ msgstr "Obchod KDE"
 msgid "Log in information for %1"
 msgstr "Přihlašovací údaje pro %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:236
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:256
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Nelze spustit %1"
@@ -1932,7 +1932,7 @@ msgid "Testing"
 msgstr "Testovací"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:328
-#: libdiscover/resources/AbstractResource.cpp:97
+#: libdiscover/resources/AbstractResource.cpp:117
 #, kde-format
 msgid "Installed"
 msgstr "Nainstalováno"
@@ -2703,34 +2703,34 @@ msgstr ""
 "Zobrazit všechny podpůrné vrstvy oddělené čárkou “,”, které mají být "
 "načteny”."
 
-#: libdiscover/resources/AbstractResource.cpp:93
+#: libdiscover/resources/AbstractResource.cpp:113
 #, kde-format
 msgid "Broken"
 msgstr "Poškozené"
 
-#: libdiscover/resources/AbstractResource.cpp:95
+#: libdiscover/resources/AbstractResource.cpp:115
 #, kde-format
 msgid "Available"
 msgstr "Dostupné"
 
-#: libdiscover/resources/AbstractResource.cpp:99
+#: libdiscover/resources/AbstractResource.cpp:119
 #, kde-format
 msgid "Upgradeable"
 msgstr "Aktualizovatelné"
 
-#: libdiscover/resources/AbstractResource.cpp:239
+#: libdiscover/resources/AbstractResource.cpp:259
 #, kde-format
 msgid "Launch"
 msgstr "Spustit"
 
-#: libdiscover/resources/AbstractResource.cpp:250
+#: libdiscover/resources/AbstractResource.cpp:270
 #, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
 msgstr "Aktualizace verze %1"
 
-#: libdiscover/resources/AbstractResource.cpp:260
+#: libdiscover/resources/AbstractResource.cpp:280
 #, kde-format
 msgctxt "Do not translate or alter \\u009C"
 msgid "%1 → %2%1 → %2%2"
