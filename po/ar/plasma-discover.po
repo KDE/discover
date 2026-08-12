@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:18+0000\n"
-"PO-Revision-Date: 2026-07-17 11:06+0400\n"
+"PO-Revision-Date: 2026-08-10 12:51+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -84,7 +84,7 @@ msgid ""
 "Please install it first."
 msgstr ""
 "لا يمكن التفاعل مع موارد فلاتباك دون الواجهة الخلفية لـ فلاتباك %1.الرجاء "
-"تثبيتها أولاً."
+"تثبيتها أولًا."
 
 #: discover/DiscoverObject.cpp:310
 #, kde-format
@@ -556,7 +556,7 @@ msgstr[0] "البحث عن: %2 - %3 عنصر"
 msgstr[1] "البحث عن: %2 ‏- عنصر واحد"
 msgstr[2] "البحث عن: %2 ‏- عنصرين"
 msgstr[3] "البحث عن: %2 ‏- %3 عناصر"
-msgstr[4] "البحث عن: %2 ‏- %3 عنصراً"
+msgstr[4] "البحث عن: %2 ‏- %3 عنصرًا"
 msgstr[5] "البحث عن: %2 ‏- %3 عنصر"
 
 #: discover/qml/ApplicationsListPage.qml:54
@@ -572,7 +572,7 @@ msgstr[0] "%2 -  0 عنصر"
 msgstr[1] "%2 - عنصر واحد"
 msgstr[2] "%2 - عنصرين"
 msgstr[3] "%2 - %1 عناصر"
-msgstr[4] "%2 - %1 عنصراً"
+msgstr[4] "%2 - %1 عنصرًا"
 msgstr[5] "%2 - %1 عنصر"
 
 #: discover/qml/ApplicationsListPage.qml:64
@@ -583,7 +583,7 @@ msgstr[0] "البحث عن - ‏0"
 msgstr[1] "البحث عن - ‏عنصر واحد"
 msgstr[2] "البحث عن - ‏عنصرين"
 msgstr[3] "البحث عن - ‏%1 عناصر"
-msgstr[4] "البحث عن - ‏%1 عنصراً"
+msgstr[4] "البحث عن - ‏%1 عنصرًا"
 msgstr[5] "البحث عن - ‏%1 عنصر"
 
 #: discover/qml/ApplicationsListPage.qml:66
@@ -688,7 +688,7 @@ msgstr "اختيار المحررين"
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Games"
-msgstr "الألعاب الأعلى تقييماً"
+msgstr "الألعاب الأعلى تقييمًا"
 
 #: discover/qml/BrowsingPage.qml:152 discover/qml/BrowsingPage.qml:181
 #, kde-format
@@ -700,7 +700,7 @@ msgstr "المزيد"
 #, kde-format
 msgctxt "@title:group"
 msgid "Highest-Rated Developer Tools"
-msgstr "أدوات المطوّر الأعلى تقييماً"
+msgstr "أدوات المطوّر الأعلى تقييمًا"
 
 #: discover/qml/DiscoverWindow.qml:43
 #, kde-format
