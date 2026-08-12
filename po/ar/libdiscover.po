@@ -813,7 +813,7 @@ msgid ""
 "folder without asking permission first: %1"
 msgstr ""
 "يمكنه قراءة الملفات والكتابة فيها وإنشاؤها في المواقع التالية في مجلد المنزل "
-"دون طلب الإذن أولاً: %1"
+"دون طلب الإذن أولًا: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1010
 #, kde-format
@@ -822,7 +822,7 @@ msgid ""
 "without asking permission first: %1"
 msgstr ""
 "يمكنه قراءة الملفات والكتابة فيها في المواقع التالية في مجلد المنزل دون طلب "
-"الإذن أولاً: %1"
+"الإذن أولًا: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1012
 #, kde-format
@@ -830,7 +830,7 @@ msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
 msgstr ""
-"يمكنه قراءة الملفات في المواقع التالية في مجلد المنزل دون طلب الإذن أولاً: %1"
+"يمكنه قراءة الملفات في المواقع التالية في مجلد المنزل دون طلب الإذن أولًا: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1014
 #, kde-format
@@ -839,7 +839,7 @@ msgid ""
 "asking permission first: %1"
 msgstr ""
 "يمكنه الوصول إلى الملفات في المواقع التالية في مجلد المنزل دون طلب الإذن "
-"أولاً: %1"
+"أولًا: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1020
 #, kde-format
@@ -853,7 +853,7 @@ msgid ""
 "asking permission first: %1"
 msgstr ""
 "يمكنه قراءة ملفات النظام والكتابة فيها وإنشاؤها في المواقع التالية دون طلب "
-"الإذن أولاً: %1"
+"الإذن أولًا: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1024
 #, kde-format
@@ -862,14 +862,14 @@ msgid ""
 "permission first: %1"
 msgstr ""
 "يمكنه قراءة ملفات النظام والكتابة فيها في المواقع التالية دون طلب الإذن "
-"أولاً: %1"
+"أولًا: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1026
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
-msgstr "يمكنه قراءة ملفات النظام في المواقع التالية دون طلب الإذن أولاً: %1"
+msgstr "يمكنه قراءة ملفات النظام في المواقع التالية دون طلب الإذن أولًا: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1028
 #, kde-format
@@ -877,7 +877,7 @@ msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
 msgstr ""
-"يمكنه الوصول إلى ملفات النظام في المواقع التالية دون طلب الإذن أولاً: %1"
+"يمكنه الوصول إلى ملفات النظام في المواقع التالية دون طلب الإذن أولًا: %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1039
 #, kde-format
@@ -1039,7 +1039,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr "يتوفّر إصدارة أكثر استقراراً من %1"
+msgstr "يتوفّر إصدارة أكثر استقرارًا من %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:50
 #, kde-format
