@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-12 00:48+0000\n"
-"PO-Revision-Date: 2026-07-23 08:54+0200\n"
+"PO-Revision-Date: 2026-08-12 16:53+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -531,15 +531,13 @@ msgstr "Externa länkar"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the FAQ"
-msgstr ""
+msgstr "Läs svar på vanliga frågor"
 
 #: discover/qml/ApplicationPage.qml:600
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Read the documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the full documentation"
-msgstr "Läs dokumentationen"
+msgstr "Läs den fullständiga dokumentationen"
 
 #: discover/qml/ApplicationPage.qml:611
 #, kde-format
@@ -569,20 +567,19 @@ msgstr "Börja bidra"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Help with translations"
-msgstr ""
+msgstr "Hjälp till med översättningar"
 
 #: discover/qml/ApplicationPage.qml:661
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Contact the developers"
-msgstr ""
+msgstr "Kontakta utvecklarna"
 
 #: discover/qml/ApplicationPage.qml:671
-#, fuzzy, kde-format
-#| msgid "Browse the origin's resources"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Browse the source code"
-msgstr "Bläddra i ursprungets resurser"
+msgstr "Bläddra i källkoden"
 
 #: discover/qml/ApplicationPage.qml:700
 #, kde-format

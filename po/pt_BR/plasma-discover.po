@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-12 00:48+0000\n"
-"PO-Revision-Date: 2026-07-22 23:25-0300\n"
-"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
+"PO-Revision-Date: 2026-08-12 06:06-0300\n"
+"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -541,15 +541,13 @@ msgstr "Links externos"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the FAQ"
-msgstr ""
+msgstr "Ler a FAQ"
 
 #: discover/qml/ApplicationPage.qml:600
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Read the documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the full documentation"
-msgstr "Ler a documentação"
+msgstr "Ler a documentação completa"
 
 #: discover/qml/ApplicationPage.qml:611
 #, kde-format
@@ -579,19 +577,19 @@ msgstr "Comece a contribuir"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Help with translations"
-msgstr ""
+msgstr "Ajudar com as traduções"
 
 #: discover/qml/ApplicationPage.qml:661
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Contact the developers"
-msgstr ""
+msgstr "Contactar desenvolvedores"
 
 #: discover/qml/ApplicationPage.qml:671
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Browse the source code"
-msgstr ""
+msgstr "Navegar pelo código-fonte"
 
 #: discover/qml/ApplicationPage.qml:700
 #, kde-format

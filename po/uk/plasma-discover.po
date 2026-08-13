@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-12 00:48+0000\n"
-"PO-Revision-Date: 2026-07-23 10:57+0300\n"
+"PO-Revision-Date: 2026-08-12 10:08+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -540,15 +540,13 @@ msgstr "Зовнішні посилання"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the FAQ"
-msgstr ""
+msgstr "Ознайомитися із поширеними питаннями та відповідями на них"
 
 #: discover/qml/ApplicationPage.qml:600
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Read the documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the full documentation"
-msgstr "Ознайомитися із документацією"
+msgstr "Ознайомитися із повною документацією"
 
 #: discover/qml/ApplicationPage.qml:611
 #, kde-format
@@ -578,20 +576,19 @@ msgstr "Долучитися як учасник"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Help with translations"
-msgstr ""
+msgstr "Допомога з перекладами"
 
 #: discover/qml/ApplicationPage.qml:661
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Contact the developers"
-msgstr ""
+msgstr "Зв'язатися із розробниками"
 
 #: discover/qml/ApplicationPage.qml:671
-#, fuzzy, kde-format
-#| msgid "Browse the origin's resources"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Browse the source code"
-msgstr "Переглянути ресурси походження"
+msgstr "Переглянути початковий код"
 
 #: discover/qml/ApplicationPage.qml:700
 #, kde-format
