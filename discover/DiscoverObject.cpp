@@ -564,6 +564,7 @@ void DiscoverObject::reconsiderQuit()
     }
 
     m_sni.reset();
+    QCoreApplication::setQuitLockEnabled(true);
     // Let the job UI to finalise properly
     QTimer::singleShot(20, qGuiApp, &QCoreApplication::quit);
 }
@@ -602,6 +603,7 @@ bool DiscoverObject::eventFilter(QObject *object, QEvent *event)
         if (!quitWhenIdle()) {
             return true;
         }
+        QCoreApplication::setQuitLockEnabled(true);
     }
     // } else if (event->type() == QEvent::ShortcutOverride) {
     //     qCWarning(DISCOVER_LOG) << "Action conflict" << event;
