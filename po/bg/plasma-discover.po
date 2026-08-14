@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-29 02:43+0000\n"
-"PO-Revision-Date: 2026-05-28 19:29+0200\n"
+"PO-Revision-Date: 2026-07-23 20:12+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.04.1\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #: discover/DiscoverObject.cpp:198
 #, kde-format
@@ -405,7 +405,7 @@ msgstr ""
 "се доверявате напълно на авторите, тъй като никой друг не може да провери "
 "надеждността и сигурността на неговия код, за да се увери, че той не действа "
 "срещу вас по скрит начин.<nl/><nl/>Изберете повече на <link url='%4'>%4</"
-"link>.Translated with DeepL.com (free version)"
+"link>."
 
 #: discover/qml/ApplicationPage.qml:95
 #, kde-kuit-format
