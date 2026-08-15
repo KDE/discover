@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-12 00:48+0000\n"
-"PO-Revision-Date: 2026-07-24 21:32+0300\n"
+"PO-Revision-Date: 2026-08-14 17:04+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -542,15 +542,13 @@ msgstr "Išorinės nuorodos"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the FAQ"
-msgstr ""
+msgstr "Skaityti DUK"
 
 #: discover/qml/ApplicationPage.qml:600
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Read the documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the full documentation"
-msgstr "Skaityti dokumentaciją"
+msgstr "Skaityti visą dokumentaciją"
 
 #: discover/qml/ApplicationPage.qml:611
 #, kde-format
@@ -580,20 +578,19 @@ msgstr "Pradėti talkinti"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Help with translations"
-msgstr ""
+msgstr "Padėti versti"
 
 #: discover/qml/ApplicationPage.qml:661
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Contact the developers"
-msgstr ""
+msgstr "Susisiekti su plėtotojais"
 
 #: discover/qml/ApplicationPage.qml:671
-#, fuzzy, kde-format
-#| msgid "Browse the origin's resources"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Browse the source code"
-msgstr "Naršyti kilmės šaltinius"
+msgstr "Naršyti pradinį kodą"
 
 #: discover/qml/ApplicationPage.qml:700
 #, kde-format
