@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="addon">
+    <id>org.kde.discover.appstreampreview</id>
+    <extends>org.kde.discover.desktop</extends>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-2.0+</project_license>
+    <name>AppStream preview backend</name>
+    <developer id="org.kde">
+        <name>KDE</name>
+    </developer>
+    <summary>Preview AppStream files in Discover</summary>
+    <url type="homepage">https://apps.kde.org/discover</url>
+    <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=Discover</url>
+    <url type="donation">https://www.kde.org/community/donations/?app=discover&amp;source=appdata</url>
+    <url type="vcs-browser">https://commits.kde.org/discover</url>
+    <url type="contribute">https://community.kde.org/Get_Involved</url>
+    <icon type="stock">system-software-install</icon>
+    <releases>
+        <release version="6.4.3" date="2025-07-15"/>
+    </releases>
+</component>
