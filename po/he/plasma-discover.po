@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-12 00:48+0000\n"
+"POT-Creation-Date: 2026-08-18 00:46+0000\n"
 "PO-Revision-Date: 2026-08-12 08:48+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1176,7 +1176,7 @@ msgctxt "Keep this string as short as humanly possible"
 msgid "Yes"
 msgstr "כן"
 
-#: discover/qml/ReviewDelegate.qml:122
+#: discover/qml/ReviewDelegate.qml:123
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "No"

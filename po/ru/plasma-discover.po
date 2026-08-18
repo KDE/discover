@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-12 00:48+0000\n"
+"POT-Creation-Date: 2026-08-18 00:46+0000\n"
 "PO-Revision-Date: 2026-06-18 19:43+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -1269,7 +1269,7 @@ msgctxt "Keep this string as short as humanly possible"
 msgid "Yes"
 msgstr "Да"
 
-#: discover/qml/ReviewDelegate.qml:122
+#: discover/qml/ReviewDelegate.qml:123
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "No"

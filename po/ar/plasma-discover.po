@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-12 00:48+0000\n"
-"PO-Revision-Date: 2026-08-10 12:51+0400\n"
+"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"PO-Revision-Date: 2026-08-17 20:06+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -516,15 +516,13 @@ msgstr "الروابط الخارجية"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the FAQ"
-msgstr ""
+msgstr "اقرأ الأسئلة الشائعة"
 
 #: discover/qml/ApplicationPage.qml:600
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Read the documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the full documentation"
-msgstr "اقرأ التوثيق الرسمي للمشروع"
+msgstr "اقرأ التوثيق الكامل"
 
 #: discover/qml/ApplicationPage.qml:611
 #, kde-format
@@ -554,20 +552,19 @@ msgstr "ابدأ المساهمة"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Help with translations"
-msgstr ""
+msgstr "المساعدة بالتّرجمة"
 
 #: discover/qml/ApplicationPage.qml:661
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Contact the developers"
-msgstr ""
+msgstr "تواصل مع المطورين"
 
 #: discover/qml/ApplicationPage.qml:671
-#, fuzzy, kde-format
-#| msgid "Browse the origin's resources"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Browse the source code"
-msgstr "تصفّح موارد الأصل"
+msgstr "تصفح الشفرة المصدرية"
 
 #: discover/qml/ApplicationPage.qml:700
 #, kde-format
@@ -1192,7 +1189,7 @@ msgctxt "Keep this string as short as humanly possible"
 msgid "Yes"
 msgstr "نعم"
 
-#: discover/qml/ReviewDelegate.qml:122
+#: discover/qml/ReviewDelegate.qml:123
 #, kde-format
 msgctxt "Keep this string as short as humanly possible"
 msgid "No"
