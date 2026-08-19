@@ -19,6 +19,7 @@ AppStreamPreviewBackend::AppStreamPreviewBackend(QObject *parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(OdrsReviewsBackend::global())
 {
+    m_updater->start();
 }
 
 ResultsStream *AppStreamPreviewBackend::search(const AbstractResourcesBackend::Filters &filter)
