@@ -1,14 +1,14 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 Toms Trasuns <toms.trasuns@posteo.net>
+# SPDX-FileCopyrightText: 2023-2026 Toms Trasuns <toms.trasuns@posteo.net>
 # Māris Nartišs <maris.kde@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-18 00:46+0000\n"
-"PO-Revision-Date: 2026-02-06 14:30+0200\n"
+"PO-Revision-Date: 2026-08-17 19:56+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -559,7 +559,7 @@ msgstr "Video atskaņotāji"
 #, kde-format
 msgctxt "Category"
 msgid "Disc Burning"
-msgstr ""
+msgstr "Disku ierakstīšana"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -588,19 +588,17 @@ msgstr "Vietējs komplekts"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1963
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
-#, fuzzy, kde-format
-#| msgid "Malformed appstream url '%1'"
+#, kde-format
 msgid "Malformed appstream url “%1”"
 msgstr "Nepareizi noformēta lietotņu plūsmas adrese „%1“"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2077
 #, kde-format
 msgid "Source “%1” already exists"
-msgstr ""
+msgstr "Avots „%1“ jau pastāv"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2094
-#, fuzzy, kde-format
-#| msgid "Failed to add source '%1': %2"
+#, kde-format
 msgid "Failed to add source “%1”: %2"
 msgstr "Neizdevās pievienot avotu „%1“: %2"
 
@@ -623,7 +621,7 @@ msgid ""
 "the application is installed.</para>"
 msgstr ""
 "<para>Šīs programmas izcelsme ir „%1“ (mitināta <link>%2</link>). Pēc "
-"programmas instalēšanas programmatūras centrā „Discover“ būs pieejama arī "
+"programmas instalēšanas „Discover“ programmatūras centrā būs pieejama arī "
 "cita programmatūra no šī repozitorija.</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:469
@@ -636,8 +634,7 @@ msgstr "Nezināms"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:525
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:467
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1': %2"
+#, kde-format
 msgid "Failed to start “%1”: %2"
 msgstr "Neizdevās palaist „%1“: %2"
 
@@ -670,7 +667,7 @@ msgstr "%1: %2"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
 msgid "Network Access"
-msgstr "Tīkla pieeja"
+msgstr "Tīkla piekļuve"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
 #, kde-format
@@ -944,8 +941,7 @@ msgid "Could not add the source %1"
 msgstr "Neizdevās pievienot avotu %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
-#, fuzzy, kde-format
-#| msgid "Removing '%1'"
+#, kde-format
 msgid "Removing “%1”"
 msgstr "Tiek noņemta „%1“"
 
@@ -978,24 +974,19 @@ msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Ievadiet „Flatpak“ repozitorija URI (*.flatpakrepo):"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:35
-#, fuzzy, kde-format
-#| msgid "Adding remote '%1' in %2 from %3"
+#, kde-format
 msgid "Adding remote “%1” in %2 from %3"
-msgstr "Tiek pievienots attālināts „%1“ uz %2 no %3"
+msgstr "Tiek pievienots attāls „%1“ uz „%2“ no „%3“"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:338
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid ""
-#| "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to "
-#| "<a href='%3'>%3</a>"
+#, kde-format
 msgctxt "@info:status"
 msgid ""
 "Cannot create transaction for “%1”:<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
-"Neizdodas izveidot „%1“ transakciju:<nl/>%2<nl/><nl/>Ziņojiet par kļūdu uz "
-"<a href='%3'>%3</a>"
+"Neizdodas izveidot „%1“ transakciju:<nl/>%2<nl/><nl/>Ziņojiet par kļūdu <a "
+"href='%3'>%3</a> vietnē"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
@@ -1004,8 +995,8 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
-"Notika iekšēja kļūda. Lūdzu, iesniedziet kļūdas ziņojumu https://bugs.kde."
-"org/enter_bug.cgi?product=Discover"
+"Notika iekšēja kļūda. Lūdzu, iesniedziet kļūdas ziņojumu „https://bugs.kde."
+"org/enter_bug.cgi?product=Discover“"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:462
 #, kde-format
@@ -1014,13 +1005,7 @@ msgid "Replacement Available"
 msgstr "Pieejams aizstājējs"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1033,7 +1018,11 @@ msgid ""
 "there."
 msgstr ""
 "„<resource>%1</resource>“ vairs nesaņem atjauninājumus.<nl/><nl/>Vai to "
-"aizvietot ar atbalstītu versiju, ko nodrošina „<resource>%2</resource>“?"
+"aizvietot ar atbalstītu versiju, ko nodrošina „<resource>%2</resource>“?<nl/"
+"><nl/>Jūsu iestatījumi un dati tiks automātiski pārsūtīti uz jauno "
+"lietojumprogrammu.<nl/><nl/>Ja vecā lietojumprogramma atrodas panelī vai "
+"starp programmu palaidēja izlases vienumiem, tā būs manuāli jānoņem un "
+"jāpievieno jaunā."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -1066,7 +1055,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label %1 is the name of an application"
 msgid "A more stable version of %1 is available."
-msgstr "Ir pieejama „%1“ stabilāka versija."
+msgstr "Ir pieejama „%1“ lietojumprogrammas stabilāka versija."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakOldBeta.qml:50
 #, kde-format
@@ -1075,15 +1064,14 @@ msgid "View Stable Version on %1"
 msgstr "Skatiet stabilo versiju „%1“"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
-#, fuzzy, kde-format
-#| msgid "%1 is not installed but it still has data present."
+#, kde-format
 msgid "%1 is not installed but it still has user data and settings present."
-msgstr "„%1“ vairs nav instalēts, bet ierīcē ir saglabāti tās dati."
+msgstr "„%1“ vairs nav instalēta, bet ierīcē ir saglabāti tās dati."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "Pārvietot uz atkritni"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
@@ -1279,8 +1267,7 @@ msgstr ""
 "atbalstītu versiju."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
-#, fuzzy, kde-format
-#| msgid "Cannot remove '%1'"
+#, kde-format
 msgid "Cannot remove “%1”"
 msgstr "Neizdodas noņemt „%1“"
 
@@ -1668,51 +1655,42 @@ msgid "Unknown error %1."
 msgstr "Nezināma kļūda %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
-#, fuzzy, kde-format
-#| msgid "'%1' was changed and suggests to be restarted."
+#, kde-format
 msgid "“%1” was changed and suggests to be restarted."
 msgstr "„%1“ izmaiņu dēļ ir ieteicams to pārstartēt."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
-#, fuzzy, kde-format
-#| msgid "A change by '%1' suggests your session to be restarted."
+#, kde-format
 msgid "A change by “%1” suggests your session to be restarted."
 msgstr "„%1“ izmaiņu dēļ ieteicams pārstartēt sesiju."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
-#, fuzzy, kde-format
-#| msgid ""
-#| "'%1' was updated for security reasons, a restart of the session is "
-#| "recommended."
+#, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
-"„%1“ tika atjaunināts drošības iemeslu dēļ, tāpēc ieteicams pārstartēt "
+"„%1“ tika atjaunināta drošības iemeslu dēļ, tāpēc ieteicams pārstartēt "
 "sesiju."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
-#, fuzzy, kde-format
-#| msgid ""
-#| "'%1' was updated for security reasons, a restart of the system is "
-#| "recommended."
+#, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the system is "
 "recommended."
 msgstr ""
-"„%1“ tika atjaunināts drošības iemeslu dēļ, tāpēc ieteicams pārstartēt "
+"„%1“ tika atjaunināta drošības iemeslu dēļ, tāpēc ieteicams pārstartēt "
 "sistēmu."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
-#, fuzzy, kde-format
-#| msgid "A change by '%1' suggests your system to be restarted."
+#, kde-format
 msgid "A change by “%1” suggests your system to be restarted."
 msgstr "„%1“ izmaiņu dēļ ieteicams pārstartēt sistēmu."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
 msgid "The application will have to be restarted."
-msgstr "Programma būs jāpārstartē."
+msgstr "Lietojumprogramma būs jāpārstartē."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:190
 #, kde-format
@@ -2268,19 +2246,14 @@ msgstr ""
 "Atjauninājumam nepietiek brīvas vietas. Pieejams tikai %1 brīvas vietas."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:602
-#, fuzzy, kde-format
-#| msgid ""
-#| "This update cannot be completed as it would remove the following software "
-#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
-#| ">If you believe this is an error, please report it as a bug to the "
-#| "packagers of your distribution."
+#, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
 "which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
 "you believe this is an error, please report it as a bug to the packagers of "
 "your distribution."
 msgstr ""
-"Atjauninājumu nav iespējams veikt, jo tā rezultātā tiktu noņemta šī "
+"Nav iespējams atjaunināt, jo darbības rezultātā tiktu noņemta šī "
 "programmatūra, kas ir kritiska sistēmas darbībai:<nl/><ul><li>%1</li></"
 "ul><nl/>Ja, jūsuprāt, tā ir kļūda, sazinieties ar sava distributīva pakotņu "
 "pārziņiem."
@@ -2307,10 +2280,7 @@ msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
-#, fuzzy, kde-format
-#| msgid ""
-#| "Media Change of type '%1' is requested.\n"
-#| "%2"
+#, kde-format
 msgid ""
 "Media Change of type “%1” is requested.\n"
 "%2"
@@ -2361,12 +2331,7 @@ msgstr ""
 "Laika zīme: %4\n"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
-#, fuzzy, kde-format
-#| msgid ""
-#| "This action cannot be completed as it would remove the following software "
-#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
-#| ">If you believe this is an error, please report it as a bug to the "
-#| "packagers of your distribution."
+#, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
 "which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
@@ -2467,9 +2432,7 @@ msgstr ""
 "Trūkst attālinātas atsauces bāzes nomaiņas operācijai. Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "Operētājsistēma"
 
@@ -2509,6 +2472,8 @@ msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won’t be automatically removed on updates."
 msgstr ""
+"<br/>Šī versija ir piesprausta un atjauninājumu laikā netiks automātiski "
+"noņemta."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
@@ -2516,7 +2481,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label OS vendor"
 msgid "Fedora Project"
-msgstr ""
+msgstr "Fedora Project"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
@@ -2678,16 +2643,13 @@ msgid "Starred Publisher on snapcraft.io"
 msgstr "Izcelts kā iecienīts publicētājs vietnē „snapcraft.io“"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
-#, fuzzy, kde-format
-#| msgid ""
-#| "This Snap application is not compatible with security sandboxing and will "
-#| "have full access to this computer. Install it anyway?"
+#, kde-format
 msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this system. Install it anyway?"
 msgstr ""
-"Šī „Snap“ programma nav saderīga ar drošības smilšu kasti un tai būs pilna "
-"pieeja šim datoram. Vai to tik un tā instalēt?"
+"Šī „Snap“ lietojumprogramma nav saderīga ar drošības smilšu kasti un tai būs "
+"pilna piekļuve šim datoram. Vai to tik un tā instalēt?"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:149
 #, kde-kuit-format
@@ -2725,29 +2687,27 @@ msgid "No components found in appstream metadata for target “%1”"
 msgstr "Mērķim „%1“ nav atrasti komponenti „appstream“ metadatos"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:127
-#, fuzzy, kde-format
-#| msgid ""
-#| "List all the backends we'll want to have loaded, separated by comma ','."
+#, kde-format
 msgid ""
 "List all the backends we’ll want to have loaded, separated by comma “,”."
 msgstr ""
-"Uzskaitīt visas aizmugursistēmas, kuras vēlaties ielādēt, tās atdalot ar "
+"Uzskaitiet visas aizmugursistēmas, kuras vēlaties ielādēt, tās atdalot ar "
 "komatu „,“."
 
 #: libdiscover/resources/AbstractResource.cpp:113
 #, kde-format
 msgid "Broken"
-msgstr "Nefunkcionējošs"
+msgstr "Nefunkcionējoša"
 
 #: libdiscover/resources/AbstractResource.cpp:115
 #, kde-format
 msgid "Available"
-msgstr "Pieejams"
+msgstr "Pieejama"
 
 #: libdiscover/resources/AbstractResource.cpp:119
 #, kde-format
 msgid "Upgradeable"
-msgstr "Uzlabojams"
+msgstr "Uzlabojama"
 
 #: libdiscover/resources/AbstractResource.cpp:259
 #, kde-format
@@ -2784,32 +2744,25 @@ msgid "Refreshing %1"
 msgstr "Pārlādē „%1“"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:561
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@label"
 msgid "Applications"
 msgstr "Programmas"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:563
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Addons"
+#, kde-format
 msgctxt "@label"
 msgid "Addons"
 msgstr "Pielikumi"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:565
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Support"
+#, kde-format
 msgctxt "@label"
 msgid "Application Support"
 msgstr "Programmu atbalsts"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:567
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "System"
+#, kde-format
 msgctxt "@label"
 msgid "System"
 msgstr "Sistēma"
