@@ -231,8 +231,8 @@ void RpmOstreeNotifier::checkSystemUpdateClassic()
 
         // Process the string to get just the version "number".
         newVersion = newVersion.trimmed();
-        newVersion.remove(0, QStringLiteral("Version: ").length());
-        newVersion.remove(newVersion.size() - QStringLiteral(" (XXXX-XX-XXTXX:XX:XXZ)").length(), newVersion.size() - 1);
+        newVersion.remove(0, QLatin1StringView("Version: ").length());
+        newVersion.remove(newVersion.size() - QLatin1StringView(" (XXXX-XX-XXTXX:XX:XXZ)").length(), newVersion.size() - 1);
         qCInfo(RPMOSTREE_LOG) << "Found new version:" << newVersion;
 
         // Have we already notified the user about this update?
