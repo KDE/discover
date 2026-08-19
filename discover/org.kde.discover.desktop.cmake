@@ -224,6 +224,7 @@ Name[bg]=Преглед на наличие актуализации
 Name[ca]=Mostra les actualitzacions disponibles
 Name[ca@valencia]=Mostra les actualitzacions disponibles
 Name[cs]=Zobrazit dostupné aktualizace
+Name[da]=Se tilgængelige opdateringer
 Name[de]=Zeigt verfügbare Aktualisierungen
 Name[el]=Προβολή Διαθέσιμων Ενημερώσεων
 Name[en_GB]=See Available Updates
