@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-18 00:46+0000\n"
-"PO-Revision-Date: 2026-08-12 08:52+0300\n"
+"PO-Revision-Date: 2026-08-18 19:46+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -538,13 +538,13 @@ msgstr "Dış Bağlantılar"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the FAQ"
-msgstr "Sıkça sorulan soruları okuyun"
+msgstr "Sıkça sorulan soruları oku"
 
 #: discover/qml/ApplicationPage.qml:600
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the full documentation"
-msgstr "Belgelendirmeyi okuyun"
+msgstr "Belgelendirmeyi oku"
 
 #: discover/qml/ApplicationPage.qml:611
 #, kde-format
@@ -574,19 +574,19 @@ msgstr "Katkıda bulunmaya başla"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Help with translations"
-msgstr "Çevirilere yardım edin"
+msgstr "Çevirilere yardım et"
 
 #: discover/qml/ApplicationPage.qml:661
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Contact the developers"
-msgstr "Geliştiricilerle iletişime geçin"
+msgstr "Geliştiricilerle iletişime geç"
 
 #: discover/qml/ApplicationPage.qml:671
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Browse the source code"
-msgstr "Kaynak koduna bakın"
+msgstr "Kaynak koduna bak"
 
 #: discover/qml/ApplicationPage.qml:700
 #, kde-format

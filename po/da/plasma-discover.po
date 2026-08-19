@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-18 00:46+0000\n"
-"PO-Revision-Date: 2025-08-20 23:07+0200\n"
-"Last-Translator: Rasmus Rosendahl-Kaa <Rasmus@Rosendahl-kaa.name>\n"
-"Language-Team: Danish <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2026-08-18 16:13+0200\n"
+"Last-Translator: Øjvind Fritjof Arnfred <fritjofarnfred@protonmail.com>\n"
+"Language-Team: Danish <kde-i18n-da@kde.org>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,6 +58,11 @@ msgid ""
 "command> package manager.<nl/><nl/> Review <link url='https://archlinux.org/"
 "packages/extra/x86_64/discover/'>%1's packaging for Discover</link>"
 msgstr ""
+"For at bruge Discover til apps, skal du installere <link url='https://wiki."
+"archlinux.org/title/Flatpak#Installation'>Flatpak</link> med the "
+"<command>pacman</command> pakkehåndteringen.<nl/><nl/> Kontrollér <link "
+"url='https://archlinux.org/packages/extra/x86_64/discover/'>%1's indpakning "
+"til Discover</link>"
 
 #: discover/DiscoverObject.cpp:217
 #, kde-kuit-format
@@ -70,6 +75,12 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"Understøttelsen for håndering af pakker fra %1 er ufærdig; du kan opleve "
+"flere forskellige problemer. Rapportér ikke fejl til KDE. Det er stærkt "
+"anbefalet at afinstallere <resource>qt6</resource> pakke-sættet og kun "
+"benytte discover til håndtering af Flatpaks, Snaps og tilføjelsesprogrammer."
+"<para>%1 udviklere anbefaleder i stedet at bruge kommandolinje-værktøjet "
+"<command>pacman</command> til at håndtere pakker med.</para>"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
@@ -79,7 +90,7 @@ msgstr "Kunne ikke finde kategorien \"%1\""
 #: discover/DiscoverObject.cpp:328
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
-msgstr ""
+msgstr "Forsøger at åbne ikke-eksisterende fil '%1'"
 
 #: discover/DiscoverObject.cpp:350
 #, kde-format
@@ -121,6 +132,8 @@ msgid ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report this issue to %3.</"
 "link>"
 msgstr ""
+"(ingen registrering af %1)<nl/><nl/><link url='%2'>Rapporter</link>venligst "
+"dette problem til %3."
 
 #: discover/DiscoverObject.cpp:515 discover/DiscoverObject.cpp:517
 #: discover/main.cpp:120
@@ -297,7 +310,7 @@ msgid "No ratings"
 msgstr "Ingen vurdering endnu"
 
 #: discover/qml/ApplicationPage.qml:67
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -313,9 +326,22 @@ msgid ""
 "url='%2'>the application’s website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
+"Installér kun %1 hvis du stoler på ophavsfolkene, for det er <emphasis "
+"strong='true'>proprietær software</emphasis>: Din frihed til at bruge, ændre "
+"og videredele denne applikation er begrænset, og kildekoden er helt eller "
+"delvist lukket for offentlig granskning og forbedring. Dette betyder at "
+"tredjeparter og brugere som dig, ikke kan verificere hvordan det fungerer, "
+"om det er sikkert og hvor troværdigt det er.<nl/><nl/> Applikationen kan "
+"være helt tryg at benytte, eller det kan være at den handler imod dine "
+"interesser på forskellige måder - som eksempelvis ved at høste dine "
+"personlige informationer, spore din placering eller sende dine data til "
+"steder du ikke ønsker. Brug derfor kun dette program, hvis du stoler heltpå "
+"dets ophavsfolk. Flere informationer kan findes på <link "
+"url='%2'>programmets hjemmeside</link>.<nl/></nl/>Lær mere på <link url='%3'>"
+"%3</link>."
 
 #: discover/qml/ApplicationPage.qml:72
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -329,9 +355,20 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
+"Installér kun %1 hvis du stoler på ophavsfolkene, for det er <emphasis "
+"strong='true'>proprietær software</emphasis>: Din frihed til at bruge, ændre "
+"og videredele denne applikation er begrænset, og kildekoden er helt eller "
+"delvist lukket for offentlig granskning og forbedring. Dette betyder at "
+"tredjeparter og brugere som dig, ikke kan verificere hvordan det fungerer, "
+"om det er sikkert og hvor troværdigt det er.<nl/><nl/> Det kan være at "
+"applikationen er helt tryg at benytte, eller det kan være at den handler "
+"imod dine interesser på forskellige måder - som eksempelvis ved at høste "
+"dine personlige informationer, spore din placering eller sender dine data "
+"til steder du ikke ønsker. Brug derfor kun dette program, hvis du stoler "
+"fuldt ud på dets ophavsfolk. Lær mere på <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationPage.qml:79
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 uses one or more licenses not certified as “Free Software” by either the "
@@ -346,9 +383,21 @@ msgid ""
 "url='%4'>the application’s website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"%1 bruger een eller flere licenser der ikke er klassificeret som “fri "
+"software” af enten <link url='%2'>Free Software Foundation</link> eller af "
+"<link url='%3'>Open Source Initiative</link>. Det betyder at din frihed til "
+"at bruge, undersøge ændre og dele det muligvis er begrænset på en eller "
+"anden måde.<nl/><nl/>Sørg for at læse licensteksten og forstå hvilke "
+"eventuelle restriktioner, du pålægges, før du benytter programmet. <nl/><nl/"
+">Hvis licensen ikke engang giver adgang til kildekoden, skal du være sikker "
+"på at du stoler på folkene bag, da ingen andre kan bekræfte programkodens "
+"integritet og sikkerhed, og udtale sig om hvorvidt det ikke handler imod dig "
+"på skjulte måder. Mere information kan være tilgængelig på <link "
+"url='%4'>programmets hjemmeside</link>.<nl/><nl/>Lær mere på <link url='%5'>"
+"%5</link>."
 
 #: discover/qml/ApplicationPage.qml:86
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 uses one or more licenses not certified as “Free Software” by either the "
@@ -361,6 +410,16 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"%1 bruger een eller flere licenser der ikke er klassificeret som “fri "
+"software” af enten <link url='%2'>Free Software Foundation</link> eller af "
+"<link url='%3'>Open Source Initiative</link>. Det betyder at din frihed til "
+"at bruge, undersøge ændre og dele det muligvis er begrænset på en eller "
+"anden måde.<nl/><nl/>Sørg for at læse licensteksten og forstå hvilke "
+"eventuelle restriktioner, du pålægges, før du benytter programmet. <nl/><nl/"
+">Hvis licensen ikke engang giver adgang til kildekoden, skal du være sikker "
+"på at du stoler på folkene bag, da ingen andre kan bekræfte programkodens "
+"integritet og sikkerhed, og udtale sig om hvorvidt det ikke handler imod dig "
+"på skjulte måder.<nl/><nl/>Lær mere på <link url='%4'>%4</link>."
 
 #: discover/qml/ApplicationPage.qml:95
 #, kde-kuit-format
