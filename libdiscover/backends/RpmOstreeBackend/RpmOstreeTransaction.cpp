@@ -203,8 +203,8 @@ void RpmOstreeTransaction::processCommand(int exitCode, QProcess::ExitStatus exi
             // If we found a new version then offer it as an update
             if (!newVersion.isEmpty()) {
                 newVersion = newVersion.trimmed();
-                newVersion.remove(0, QStringLiteral("Version: ").length());
-                newVersion.remove(newVersion.size() - QStringLiteral(" (XXXX-XX-XXTXX:XX:XXZ)").length(), newVersion.size() - 1);
+                newVersion.remove(0, QLatin1StringView("Version: ").length());
+                newVersion.remove(newVersion.size() - QLatin1StringView(" (XXXX-XX-XXTXX:XX:XXZ)").length(), newVersion.size() - 1);
                 qCInfo(RPMOSTREE_LOG) << "Found new version:" << newVersion;
                 Q_EMIT newVersionFound(newVersion);
             }
