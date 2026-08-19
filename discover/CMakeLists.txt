@@ -135,7 +135,7 @@ endif()
 # Support local AppStream files
 set(DesktopNoDisplay "true")
 set(DesktopMimeType "application/x-freedesktop-appstream-component")
-set(DesktopExec "plasma-discover %U")
+set(DesktopExec "plasma-discover --backends appstream-preview %U")
 configure_file(org.kde.discover.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.appstreampreview.desktop)
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/org.kde.discover.appstreampreview.desktop DESTINATION ${KDE_INSTALL_APPDIR} )
 
