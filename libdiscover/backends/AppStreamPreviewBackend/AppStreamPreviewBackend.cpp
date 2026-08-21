@@ -16,10 +16,9 @@ DISCOVER_BACKEND_PLUGIN(AppStreamPreviewBackend)
 
 AppStreamPreviewBackend::AppStreamPreviewBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
-    , m_updater(new StandardBackendUpdater(this))
+    , m_updater(new AppStreamPreviewBackendUpdater(this))
     , m_reviews(OdrsReviewsBackend::global())
 {
-    m_updater->start();
 }
 
 ResultsStream *AppStreamPreviewBackend::search(const AbstractResourcesBackend::Filters &filter)

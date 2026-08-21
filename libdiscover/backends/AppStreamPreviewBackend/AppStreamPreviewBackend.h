@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include "AppStreamPreviewBackendUpdater.h"
 #include <appstream/OdrsReviewsBackend.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/StandardBackendUpdater.h>
@@ -29,6 +30,6 @@ public:
     void checkForUpdates() override;
 
 private:
-    StandardBackendUpdater *m_updater;
+    AppStreamPreviewBackendUpdater *m_updater;
     QSharedPointer<OdrsReviewsBackend> m_reviews;
 };

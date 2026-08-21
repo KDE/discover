@@ -1,5 +1,6 @@
 set(appstream-preview-backend_SRCS
     AppStreamPreviewBackend.cpp
+    AppStreamPreviewBackendUpdater.cpp
     AppStreamPreviewResource.cpp
     resources.qrc
 )
