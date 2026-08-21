@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-18 00:46+0000\n"
-"PO-Revision-Date: 2026-07-24 13:46+0200\n"
+"PO-Revision-Date: 2026-08-18 14:37+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -540,15 +540,13 @@ msgstr "Collegamenti esterni"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the FAQ"
-msgstr ""
+msgstr "Leggi le domande frequenti"
 
 #: discover/qml/ApplicationPage.qml:600
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Read the documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the full documentation"
-msgstr "Leggi la documentazione"
+msgstr "Leggi la documentazione completa"
 
 #: discover/qml/ApplicationPage.qml:611
 #, kde-format
@@ -578,20 +576,19 @@ msgstr "Inizia a contribuire"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Help with translations"
-msgstr ""
+msgstr "Aiuta con le traduzioni"
 
 #: discover/qml/ApplicationPage.qml:661
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Contact the developers"
-msgstr ""
+msgstr "Contatta gli sviluppatori"
 
 #: discover/qml/ApplicationPage.qml:671
-#, fuzzy, kde-format
-#| msgid "Browse the origin's resources"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Browse the source code"
-msgstr "Sfoglia le risorse dell'origine"
+msgstr "Sfoglia il codice sorgente"
 
 #: discover/qml/ApplicationPage.qml:700
 #, kde-format
