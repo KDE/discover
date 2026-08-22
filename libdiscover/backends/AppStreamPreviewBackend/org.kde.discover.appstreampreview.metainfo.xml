@@ -9,7 +9,9 @@
   <name xml:lang="ca">Dorsal de vista prèvia d'AppStream</name>
   <name xml:lang="ca-valencia">Dorsal de vista prèvia d'AppStream</name>
   <name xml:lang="es">Motor de vista previa AppStream</name>
+  <name xml:lang="fr">Moteur d'aperçu de fichier « AppStream »</name>
   <name xml:lang="he">מנגנון לתצוגה מקדימה של AppStream</name>
+  <name xml:lang="it">Motore di anteprima AppStream</name>
   <name xml:lang="ka">AppStream-ის გადახედვის უკანაბოლო</name>
   <name xml:lang="nl">AppStream-voorbeeld-backend</name>
   <name xml:lang="pt-BR">Backend de pré-visualização do AppStream</name>
@@ -24,7 +26,9 @@
   <summary xml:lang="ca">Vista prèvia de fitxers AppStream al Discover</summary>
   <summary xml:lang="ca-valencia">Vista prèvia de fitxers AppStream en Discover</summary>
   <summary xml:lang="es">Vista previa de archivos AppStream en Discover</summary>
+  <summary xml:lang="fr">Afficher un aperçu des fichiers « AppStream » dans Discover</summary>
   <summary xml:lang="he">תצוגה מקדימה של קובצי AppStream ב־Discover</summary>
+  <summary xml:lang="it">Anteprima dei file AppStream in Discover</summary>
   <summary xml:lang="ka">გადახედეთ AppStream-ის ფაილებს Discover-ში</summary>
   <summary xml:lang="nl">Voorbeeld AppStream-bestanden in Ontdekken</summary>
   <summary xml:lang="pt-BR">Pré-visualização de arquivos do AppStream no Discover.</summary>
