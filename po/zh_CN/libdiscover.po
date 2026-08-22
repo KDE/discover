@@ -136,7 +136,7 @@ msgstr "获取用于升级的软件包列表失败！"
 #, kde-format
 msgctxt "@info"
 msgid "This is a preview of an AppStream file"
-msgstr ""
+msgstr "这是一个 AppStream 文件的预览"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
