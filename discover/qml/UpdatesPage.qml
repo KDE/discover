@@ -293,7 +293,7 @@ DiscoverPage {
                                 i18nc("@item:inlistbox after updates complete, do nothing", "Do nothing"),
                                 i18nc("@item:inlistbox after updates complete, restart", "Restart"),
                                 i18nc("@item:inlistbox after updates complete, shut down", "Shut down"),
-                                i18nc("@item:inlistbox after updates complete, quit", "Quit")
+                                i18nc("@item:inlistbox after updates complete, quit Discover", "Quit Discover")
                             ]
                         }
                     }
