@@ -264,6 +264,7 @@ void SnapBackend::checkForUpdates()
                 res->updateSizes();
             }
         }
+        Q_EMIT contentsChanged();
     });
 }
 
