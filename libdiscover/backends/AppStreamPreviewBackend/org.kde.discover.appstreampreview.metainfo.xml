@@ -9,6 +9,7 @@
   <name xml:lang="ca">Dorsal de vista prèvia d'AppStream</name>
   <name xml:lang="ca-valencia">Dorsal de vista prèvia d'AppStream</name>
   <name xml:lang="es">Motor de vista previa AppStream</name>
+  <name xml:lang="eu">Hau AppStream fitxategi baten aurreikuspegia da</name>
   <name xml:lang="fr">Moteur d'aperçu de fichier « AppStream »</name>
   <name xml:lang="he">מנגנון לתצוגה מקדימה של AppStream</name>
   <name xml:lang="it">Motore di anteprima AppStream</name>
@@ -18,6 +19,7 @@
   <name xml:lang="sl">Zaledje predogleda AppStream</name>
   <name xml:lang="tr">AppStream Önizleme Arka Ucu</name>
   <name xml:lang="uk">Модуль попереднього перегляду AppStream</name>
+  <name xml:lang="zh-CN">AppStream 预览后端程序</name>
   <developer id="org.kde">
     <name>KDE</name>
   </developer>
@@ -26,6 +28,7 @@
   <summary xml:lang="ca">Vista prèvia de fitxers AppStream al Discover</summary>
   <summary xml:lang="ca-valencia">Vista prèvia de fitxers AppStream en Discover</summary>
   <summary xml:lang="es">Vista previa de archivos AppStream en Discover</summary>
+  <summary xml:lang="eu">AppStream fitxategien aurreikuspegia Discoverren</summary>
   <summary xml:lang="fr">Afficher un aperçu des fichiers « AppStream » dans Discover</summary>
   <summary xml:lang="he">תצוגה מקדימה של קובצי AppStream ב־Discover</summary>
   <summary xml:lang="it">Anteprima dei file AppStream in Discover</summary>
@@ -35,6 +38,7 @@
   <summary xml:lang="sl">Zaledje predogleda AppStream v Discoverju</summary>
   <summary xml:lang="tr">AppStream dosyalarını Keşfet ile önizleyin</summary>
   <summary xml:lang="uk">Попередній перегляд файлів AppStream у Discover</summary>
+  <summary xml:lang="zh-CN">在 Discover 中预览 AppStream 文件</summary>
   <url type="homepage">https://apps.kde.org/discover</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=Discover</url>
   <url type="donation">https://www.kde.org/community/donations/?app=discover&amp;source=appdata</url>
