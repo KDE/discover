@@ -37,7 +37,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2024-06-10 12:05+0400\n"
 "Last-Translator: Kheyyam Godjayev <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -1636,10 +1636,11 @@ msgid "Shut down"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Discover"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format

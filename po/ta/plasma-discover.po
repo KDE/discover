@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2026-05-10 16:28+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -1584,10 +1584,11 @@ msgid "Shut down"
 msgstr "கணினியை நிறுத்து"
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr "வெளியேறு"
+#, fuzzy, kde-format
+#| msgid "Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "டிஸ்கவர்"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1669,6 +1670,10 @@ msgstr "புதுப்பிப்புகள் உள்ளனவா எ�
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "கடைசியாக புதுப்பித்த நேரம் தெரியாத‍து"
+
+#~ msgctxt "@item:inlistbox after updates complete, quit"
+#~ msgid "Quit"
+#~ msgstr "வெளியேறு"
 
 #~ msgctxt "TransactioName - TransactionStatus: speed"
 #~ msgid "%1 - %2: %3"

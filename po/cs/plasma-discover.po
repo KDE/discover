@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2026-08-12 11:27+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -1579,10 +1579,11 @@ msgid "Shut down"
 msgstr "Vypnout"
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr "Ukončit"
+#, fuzzy, kde-format
+#| msgid "Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Discover"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1663,6 +1664,10 @@ msgstr "Měli byste zkontrolovat aktualizace"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Čas poslední aktualizace neznám"
+
+#~ msgctxt "@item:inlistbox after updates complete, quit"
+#~ msgid "Quit"
+#~ msgstr "Ukončit"
 
 #~ msgctxt "TransactioName - TransactionStatus: speed"
 #~ msgid "%1 - %2: %3"

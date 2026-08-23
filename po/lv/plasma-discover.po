@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2026-08-18 22:28+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -1580,10 +1580,11 @@ msgid "Shut down"
 msgstr "Izslēgt"
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr "Iziet"
+#, fuzzy, kde-format
+#| msgid "Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Discover"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1663,6 +1664,10 @@ msgstr "Jāpārbauda atjauninājumi"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Pēdējās atjaunināšanas laiks nav zināms"
+
+#~ msgctxt "@item:inlistbox after updates complete, quit"
+#~ msgid "Quit"
+#~ msgstr "Iziet"
 
 #~ msgctxt "TransactioName - TransactionStatus: speed"
 #~ msgid "%1 - %2: %3"

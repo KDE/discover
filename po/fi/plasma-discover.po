@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2026-02-26 10:40+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1675,11 +1675,14 @@ msgctxt "@item:inlistbox after updates complete, shut down"
 msgid "Shut down"
 msgstr "sammuta automaattisesti"
 
+# pmap: =:gen=Muon Discoverin:
+# pmap: =:elat=Muon Discoverista:
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Muon Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Muon Discover"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -2378,11 +2381,6 @@ msgstr "Viimeisin päivitysaika ei ole tiedossa"
 
 #~ msgid "Hola"
 #~ msgstr "Hola"
-
-# pmap: =:gen=Muon Discoverin:
-# pmap: =:elat=Muon Discoverista:
-#~ msgid "Muon Discover"
-#~ msgstr "Muon Discover"
 
 #~ msgid ""
 #~ "Welcome to\n"

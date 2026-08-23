@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2026-06-18 21:46+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1660,10 +1660,11 @@ msgid "Shut down"
 msgstr "Leállítás"
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr "Kilépés"
+#, fuzzy, kde-format
+#| msgid "Muon Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Muon Discover"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1746,6 +1747,10 @@ msgstr "Frissítések keresése szükséges"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Az utolsó frissítés időpontja ismeretlen"
+
+#~ msgctxt "@item:inlistbox after updates complete, quit"
+#~ msgid "Quit"
+#~ msgstr "Kilépés"
 
 #~ msgctxt "TransactioName - TransactionStatus: speed"
 #~ msgid "%1 - %2: %3"
@@ -2269,9 +2274,6 @@ msgstr "Az utolsó frissítés időpontja ismeretlen"
 
 #~ msgid "Initialization error"
 #~ msgstr "Inicializálási hiba"
-
-#~ msgid "Muon Discover"
-#~ msgstr "Muon Discover"
 
 #~ msgid ""
 #~ "Welcome to\n"

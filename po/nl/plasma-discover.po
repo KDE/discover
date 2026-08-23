@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2026-08-12 10:23+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1583,10 +1583,11 @@ msgid "Shut down"
 msgstr "Afsluiten"
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr "Afsluiten"
+#, fuzzy, kde-format
+#| msgid "Muon Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Muon-zoeken"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1669,6 +1670,10 @@ msgstr "Zou moeten controleren op updates"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tijd van de laatste update is onbekend"
+
+#~ msgctxt "@item:inlistbox after updates complete, quit"
+#~ msgid "Quit"
+#~ msgstr "Afsluiten"
 
 #~ msgctxt "TransactioName - TransactionStatus: speed"
 #~ msgid "%1 - %2: %3"
@@ -2237,9 +2242,6 @@ msgstr "Tijd van de laatste update is onbekend"
 
 #~ msgid "Hola"
 #~ msgstr "Hola"
-
-#~ msgid "Muon Discover"
-#~ msgstr "Muon-zoeken"
 
 #~ msgid ""
 #~ "Welcome to\n"

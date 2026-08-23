@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2026-08-18 14:37+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1582,10 +1582,11 @@ msgid "Shut down"
 msgstr "Spegni"
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr "Esci"
+#, fuzzy, kde-format
+#| msgid "Muon Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Muon Discover"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1667,6 +1668,10 @@ msgstr "Dovresti controllare gli aggiornamenti"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Ora dell'ultimo aggiornamento sconosciuta"
+
+#~ msgctxt "@item:inlistbox after updates complete, quit"
+#~ msgid "Quit"
+#~ msgstr "Esci"
 
 #~ msgctxt "TransactioName - TransactionStatus: speed"
 #~ msgid "%1 - %2: %3"
@@ -2268,9 +2273,6 @@ msgstr "Ora dell'ultimo aggiornamento sconosciuta"
 
 #~ msgid "Initialization error"
 #~ msgstr "Errore di inizializzazione"
-
-#~ msgid "Muon Discover"
-#~ msgstr "Muon Discover"
 
 #~ msgid ""
 #~ "Welcome to\n"

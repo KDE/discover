@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2026-08-12 16:53+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -1571,10 +1571,11 @@ msgid "Shut down"
 msgstr "Stäng av"
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr "Avsluta"
+#, fuzzy, kde-format
+#| msgid "Muon Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Muon Upptäckt"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1655,6 +1656,10 @@ msgstr "Bör kontrollera uppdateringar"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid för senaste uppdatering okänd"
+
+#~ msgctxt "@item:inlistbox after updates complete, quit"
+#~ msgid "Quit"
+#~ msgstr "Avsluta"
 
 #~ msgctxt "TransactioName - TransactionStatus: speed"
 #~ msgid "%1 - %2: %3"
@@ -2263,9 +2268,6 @@ msgstr "Tid för senaste uppdatering okänd"
 
 #~ msgid "Hola"
 #~ msgstr "Hola"
-
-#~ msgid "Muon Discover"
-#~ msgstr "Muon Upptäckt"
 
 #~ msgid ""
 #~ "Welcome to\n"

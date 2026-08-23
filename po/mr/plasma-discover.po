@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2013-04-01 10:16+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -1536,10 +1536,11 @@ msgid "Shut down"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Muon Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "म्युओन डिस्कव्हर"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1850,9 +1851,6 @@ msgstr ""
 
 #~ msgid "Initialization error"
 #~ msgstr "प्रारंभ करताना त्रुटी"
-
-#~ msgid "Muon Discover"
-#~ msgstr "म्युओन डिस्कव्हर"
 
 #~ msgid ""
 #~ "Welcome to\n"

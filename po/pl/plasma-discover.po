@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2026-08-08 11:53+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -1583,10 +1583,11 @@ msgid "Shut down"
 msgstr "Wyłącz"
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr "Zakończ"
+#, fuzzy, kde-format
+#| msgid "Muon Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Odkrywca Muon"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1667,6 +1668,10 @@ msgstr "Należy wyszukać uaktualnień"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Czas ostatniego uaktualnienia jest nieznany"
+
+#~ msgctxt "@item:inlistbox after updates complete, quit"
+#~ msgid "Quit"
+#~ msgstr "Zakończ"
 
 #~ msgctxt "TransactioName - TransactionStatus: speed"
 #~ msgid "%1 - %2: %3"
@@ -2271,9 +2276,6 @@ msgstr "Czas ostatniego uaktualnienia jest nieznany"
 
 #~ msgid "Hola"
 #~ msgstr "Hola"
-
-#~ msgid "Muon Discover"
-#~ msgstr "Odkrywca Muon"
 
 #~ msgid ""
 #~ "Welcome to\n"

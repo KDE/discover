@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2025-12-25 01:32+0000\n"
 "Last-Translator: Charlotte <altronic25@protonmail.com>\n"
 "Language-Team: Irish\n"
@@ -1478,8 +1478,8 @@ msgstr ""
 
 #: discover/qml/UpdatesPage.qml:296
 #, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:306

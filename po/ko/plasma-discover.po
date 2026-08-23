@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2026-05-25 18:34+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1620,10 +1620,11 @@ msgid "Shut down"
 msgstr "컴퓨터 끄기"
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr "끝내기"
+#, fuzzy, kde-format
+#| msgid "Muon Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Muon 발견"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1705,6 +1706,10 @@ msgstr "업데이트 확인 여부"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "마지막 업데이트 시간 알 수 없음"
+
+#~ msgctxt "@item:inlistbox after updates complete, quit"
+#~ msgid "Quit"
+#~ msgstr "끝내기"
 
 #~ msgctxt "TransactioName - TransactionStatus: speed"
 #~ msgid "%1 - %2: %3"
@@ -2266,9 +2271,6 @@ msgstr "마지막 업데이트 시간 알 수 없음"
 
 #~ msgid "Initialization error"
 #~ msgstr "초기화 오류"
-
-#~ msgid "Muon Discover"
-#~ msgstr "Muon 발견"
 
 #~ msgid ""
 #~ "Welcome to\n"

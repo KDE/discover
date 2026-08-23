@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2024-09-19 14:33+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1611,10 +1611,11 @@ msgid "Shut down"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Muon Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Muon Discover"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -2217,9 +2218,6 @@ msgstr "Άγνωστος χρόνος τελευταίας ενημέρωσης"
 
 #~ msgid "Initialization error"
 #~ msgstr "Σφάλμα αρχικοποίησης"
-
-#~ msgid "Muon Discover"
-#~ msgstr "Muon Discover"
 
 #~ msgid ""
 #~ "Welcome to\n"

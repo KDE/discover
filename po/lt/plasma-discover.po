@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2026-08-14 17:04+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -1596,10 +1596,11 @@ msgid "Shut down"
 msgstr "Išjungti"
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr "Išjungti Discover"
+#, fuzzy, kde-format
+#| msgid "Muon Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Muon Discover"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1681,6 +1682,10 @@ msgstr "Turėtų būti tikrinama ar yra atnaujinimų"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Paskutinio atnaujinimo laikas nežinomas"
+
+#~ msgctxt "@item:inlistbox after updates complete, quit"
+#~ msgid "Quit"
+#~ msgstr "Išjungti Discover"
 
 #~ msgctxt "TransactioName - TransactionStatus: speed"
 #~ msgid "%1 - %2: %3"
@@ -2184,9 +2189,6 @@ msgstr "Paskutinio atnaujinimo laikas nežinomas"
 
 #~ msgid "Initialization error"
 #~ msgstr "Inicializacijos klaida"
-
-#~ msgid "Muon Discover"
-#~ msgstr "Muon Discover"
 
 #~ msgid ""
 #~ "Welcome to\n"

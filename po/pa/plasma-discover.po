@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2026-07-27 08:55-0500\n"
 "Last-Translator: A S Alam <aman@punlinux.org>\n"
 "Language-Team: pa\n"
@@ -1477,10 +1477,11 @@ msgid "Shut down"
 msgstr "ਬੰਦ ਕਰੋ"
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr "ਬਾਹਰ"
+#, fuzzy, kde-format
+#| msgid "Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "ਡਿਸਕਵਰ"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1560,6 +1561,10 @@ msgstr "ਅੱਪਡੇਟ ਲਈ ਜਾਂਚ ਕਰਨੀ ਚਾਹੀਦੀ �
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "ਆਖਰੀ ਅੱਪਡੇਟ ਦਾ ਸਮਾਂ ਪਤਾ ਨਹੀ ਹੈ"
+
+#~ msgctxt "@item:inlistbox after updates complete, quit"
+#~ msgid "Quit"
+#~ msgstr "ਬਾਹਰ"
 
 #~ msgctxt "TransactioName - TransactionStatus: speed"
 #~ msgid "%1 - %2: %3"

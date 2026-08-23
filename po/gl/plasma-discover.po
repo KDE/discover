@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2025-05-22 13:02+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -1701,10 +1701,11 @@ msgid "Shut down"
 msgstr "Apagar"
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Muon Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Descubridor do Muon"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -2368,9 +2369,6 @@ msgstr "Descoñécese a hora da última actualización"
 
 #~ msgid "Hola"
 #~ msgstr "Ola"
-
-#~ msgid "Muon Discover"
-#~ msgstr "Descubridor do Muon"
 
 #~ msgid ""
 #~ "Welcome to\n"

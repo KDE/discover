@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bosnianuniversetranslation\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-18 00:46+0000\n"
+"POT-Creation-Date: 2026-08-23 00:46+0000\n"
 "PO-Revision-Date: 2015-02-04 16:18+0000\n"
 "Last-Translator: Nermina Ahmić <nahmic1@etf.unsa.ba>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -1537,10 +1537,11 @@ msgid "Shut down"
 msgstr ""
 
 #: discover/qml/UpdatesPage.qml:296
-#, kde-format
-msgctxt "@item:inlistbox after updates complete, quit"
-msgid "Quit"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Muon Discover"
+msgctxt "@item:inlistbox after updates complete, quit Discover"
+msgid "Quit Discover"
+msgstr "Muon Otkrivač"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1849,9 +1850,6 @@ msgstr ""
 
 #~ msgid "Initialization error"
 #~ msgstr "Greška inicijalizacije"
-
-#~ msgid "Muon Discover"
-#~ msgstr "Muon Otkrivač"
 
 #~ msgid ""
 #~ "Welcome to\n"
