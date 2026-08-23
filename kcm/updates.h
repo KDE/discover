@@ -12,6 +12,10 @@
 #include <discoversettings.h>
 #include <updatessettings.h>
 
+#ifdef WITH_SYSUPDATE_BACKEND
+#include "imageversions.h"
+#endif
+
 class UpdatesData;
 class DiscoverData;
 
@@ -21,6 +25,11 @@ class Updates : public KQuickManagedConfigModule
     Q_PROPERTY(UpdatesSettings *updatesSettings READ updatesSettings CONSTANT)
     Q_PROPERTY(DiscoverSettings *discoverSettings READ discoverSettings CONSTANT)
     Q_PROPERTY(bool mandatoryRebootAfterUpdate READ mandatoryRebootAfterUpdate CONSTANT)
+
+#ifdef WITH_SYSUPDATE_BACKEND
+    /// Null on systems that aren't updated by systemd-sysupdate.
+    Q_PROPERTY(ImageVersions *imageVersions READ imageVersions CONSTANT)
+#endif
 
 public:
     explicit Updates(QObject *parent, const KPluginMetaData &data);
@@ -33,7 +42,22 @@ public:
      * because it's mandatory at times.*/
     bool mandatoryRebootAfterUpdate() const;
 
+#ifdef WITH_SYSUPDATE_BACKEND
+    ImageVersions *imageVersions() const;
+
+    void load() override;
+    void save() override;
+    void defaults() override;
+#endif
+
 private:
+#ifdef WITH_SYSUPDATE_BACKEND
+    bool isSaveNeeded() const override;
+    bool isDefaults() const override;
+
+    ImageVersions *const m_imageVersions;
+#endif
+
     UpdatesData *const m_data;
     DiscoverData *const m_discoverData;
 };

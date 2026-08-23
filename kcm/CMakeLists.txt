@@ -36,6 +36,24 @@ endif()
 
 if (BUILD_SystemdSysupdateBackend)
     target_compile_definitions(kcm_updates PRIVATE WITH_SYSUPDATE_BACKEND)
+
+    add_library(discover_sysupdate_config STATIC transferconfig.cpp transferconfig.h)
+    set_target_properties(discover_sysupdate_config PROPERTIES POSITION_INDEPENDENT_CODE ON)
+    target_include_directories(discover_sysupdate_config PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+    target_link_libraries(discover_sysupdate_config PUBLIC Qt::Core KF6::CoreAddons)
+
+    target_sources(kcm_updates PRIVATE
+        imageversions.cpp
+        imageversions.h
+    )
+
+    target_link_libraries(kcm_updates PRIVATE
+        Qt::DBus
+        KF6::AuthCore
+        discover_sysupdate_config
+    )
+
+    add_subdirectory(helper)
 endif()
 
 install(FILES discoversettings.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR} RENAME discoversettings-kcm.kcfg)

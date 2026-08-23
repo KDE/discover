@@ -97,6 +97,9 @@ add_subdirectory(exporter)
 
 option(WITH_KCM "Build and install the updates KCM" ON)
 if(WITH_KCM)
+    if(BUILD_SystemdSysupdateBackend)
+        find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS Auth)
+    endif()
     add_subdirectory(kcm)
 endif()
 

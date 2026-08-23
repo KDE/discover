@@ -1,0 +1,10 @@
+[Domain]
+Name=Software Update
+Icon=system-software-update
+URL=https://invent.kde.org/plasma/discover
+
+[org.kde.discover.sysupdate.save]
+Name=Change which system versions are kept
+Description=Administrator authorization is required to change which system versions are kept
+Policy=auth_admin
+Persistence=session
