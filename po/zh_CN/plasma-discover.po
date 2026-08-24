@@ -1526,11 +1526,10 @@ msgid "Shut down"
 msgstr "关机"
 
 #: discover/qml/UpdatesPage.qml:296
-#, fuzzy, kde-format
-#| msgid "Discover"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, quit Discover"
 msgid "Quit Discover"
-msgstr "Discover"
+msgstr ""
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1610,7 +1609,3 @@ msgstr "建议检查更新"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
-
-#~ msgctxt "@item:inlistbox after updates complete, quit"
-#~ msgid "Quit"
-#~ msgstr "退出"

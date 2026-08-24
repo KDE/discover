@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-23 00:46+0000\n"
-"PO-Revision-Date: 2026-08-12 10:08+0300\n"
+"PO-Revision-Date: 2026-08-23 13:29+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1596,11 +1596,10 @@ msgid "Shut down"
 msgstr "Вимкнути"
 
 #: discover/qml/UpdatesPage.qml:296
-#, fuzzy, kde-format
-#| msgid "Muon Discover"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, quit Discover"
 msgid "Quit Discover"
-msgstr "Шукач Muon"
+msgstr "Вийти з Discover"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
