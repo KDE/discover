@@ -1529,7 +1529,7 @@ msgstr "关机"
 #, kde-format
 msgctxt "@item:inlistbox after updates complete, quit Discover"
 msgid "Quit Discover"
-msgstr ""
+msgstr "退出 Discover"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format

@@ -1595,7 +1595,3 @@ msgstr "Se etter oppdateringer"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "Tid for sist oppdatering er ukjent"
-
-#~ msgctxt "@item:inlistbox after updates complete, quit"
-#~ msgid "Quit"
-#~ msgstr "Avslutt"
