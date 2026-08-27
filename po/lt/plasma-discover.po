@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-23 00:46+0000\n"
-"PO-Revision-Date: 2026-08-14 17:04+0300\n"
+"PO-Revision-Date: 2026-08-26 12:10+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -1596,11 +1596,10 @@ msgid "Shut down"
 msgstr "Išjungti"
 
 #: discover/qml/UpdatesPage.qml:296
-#, fuzzy, kde-format
-#| msgid "Muon Discover"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, quit Discover"
 msgid "Quit Discover"
-msgstr "Muon Discover"
+msgstr "Išjungti Discover"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
