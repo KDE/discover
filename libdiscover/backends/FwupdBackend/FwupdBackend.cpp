@@ -114,6 +114,7 @@ void FwupdBackend::addUpdates()
         return;
     }
 
+    bool needsReboot = false;
     for (uint i = 0; i < devices->len && !g_cancellable_is_cancelled(m_cancellable); i++) {
         FwupdDevice *device = (FwupdDevice *)g_ptr_array_index(devices, i);
 
@@ -126,14 +127,11 @@ void FwupdBackend::addUpdates()
         if (!fwupd_device_has_flag(device, FWUPD_DEVICE_FLAG_UPDATABLE))
             continue;
 
+        needsReboot |= fwupd_device_get_update_state(device) == FWUPD_UPDATE_STATE_NEEDS_REBOOT;
+
         g_autoptr(GError) error2 = nullptr;
         g_autoptr(GPtrArray) rels = fwupd_client_get_upgrades(client, fwupd_device_get_id(device), m_cancellable, &error2);
         if (rels) {
-            if ((fwupd_device_get_flags(device) & FWUPD_DEVICE_FLAG_NEEDS_REBOOT) && fwupd_device_get_update_state(device) == FWUPD_UPDATE_STATE_SUCCESS) {
-                m_updater->setNeedsReboot(true);
-                continue;
-            }
-
             fwupd_device_add_release(device, (FwupdRelease *)g_ptr_array_index(rels, 0));
             auto res = createApp(device);
             if (!res) {
@@ -170,6 +168,7 @@ void FwupdBackend::addUpdates()
             }
         }
     }
+    m_updater->setNeedsReboot(needsReboot);
 }
 
 QByteArray FwupdBackend::getChecksum(const QString &filename, QCryptographicHash::Algorithm hashAlgorithm)
