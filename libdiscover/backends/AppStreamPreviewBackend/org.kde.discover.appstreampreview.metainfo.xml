@@ -15,6 +15,7 @@
   <name xml:lang="it">Motore di anteprima AppStream</name>
   <name xml:lang="ka">AppStream-ის გადახედვის უკანაბოლო</name>
   <name xml:lang="nl">AppStream-voorbeeld-backend</name>
+  <name xml:lang="pl">Silnik podglądu AppStream</name>
   <name xml:lang="pt-BR">Backend de pré-visualização do AppStream</name>
   <name xml:lang="sl">Zaledje predogleda AppStream</name>
   <name xml:lang="tr">AppStream Önizleme Arka Ucu</name>
@@ -34,6 +35,7 @@
   <summary xml:lang="it">Anteprima dei file AppStream in Discover</summary>
   <summary xml:lang="ka">გადახედეთ AppStream-ის ფაილებს Discover-ში</summary>
   <summary xml:lang="nl">Voorbeeld AppStream-bestanden in Ontdekken</summary>
+  <summary xml:lang="pl">Podgląd plików AppStream w Discoverze</summary>
   <summary xml:lang="pt-BR">Pré-visualização de arquivos do AppStream no Discover.</summary>
   <summary xml:lang="sl">Zaledje predogleda AppStream v Discoverju</summary>
   <summary xml:lang="tr">AppStream dosyalarını Keşfet ile önizleyin</summary>
