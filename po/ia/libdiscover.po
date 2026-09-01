@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-20 00:47+0000\n"
-"PO-Revision-Date: 2026-07-29 11:16+0200\n"
+"POT-Creation-Date: 2026-09-01 00:47+0000\n"
+"PO-Revision-Date: 2026-08-31 12:40+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -133,7 +133,7 @@ msgstr "Il fallve a obtener il lista de pacchettos de actualisar!"
 #, kde-format
 msgctxt "@info"
 msgid "This is a preview of an AppStream file"
-msgstr ""
+msgstr "Istoes le vista preliminarde un file de AppStream"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -1107,7 +1107,7 @@ msgstr "Permissiones"
 msgid "Configure permissions…"
 msgstr "Configura permissiones..."
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:490
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:489
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"
