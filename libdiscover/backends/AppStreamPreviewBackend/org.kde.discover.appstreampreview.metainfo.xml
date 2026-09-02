@@ -12,6 +12,7 @@
   <name xml:lang="eu">Hau AppStream fitxategi baten aurreikuspegia da</name>
   <name xml:lang="fr">Moteur d'aperçu de fichier « AppStream »</name>
   <name xml:lang="he">מנגנון לתצוגה מקדימה של AppStream</name>
+  <name xml:lang="ia">Retro-Administration de vista preliminar de AppStream</name>
   <name xml:lang="it">Motore di anteprima AppStream</name>
   <name xml:lang="ka">AppStream-ის გადახედვის უკანაბოლო</name>
   <name xml:lang="nl">AppStream-voorbeeld-backend</name>
@@ -32,6 +33,7 @@
   <summary xml:lang="eu">AppStream fitxategien aurreikuspegia Discoverren</summary>
   <summary xml:lang="fr">Afficher un aperçu des fichiers « AppStream » dans Discover</summary>
   <summary xml:lang="he">תצוגה מקדימה של קובצי AppStream ב־Discover</summary>
+  <summary xml:lang="ia">Files de AppStream de Vista preliminar in Discover</summary>
   <summary xml:lang="it">Anteprima dei file AppStream in Discover</summary>
   <summary xml:lang="ka">გადახედეთ AppStream-ის ფაილებს Discover-ში</summary>
   <summary xml:lang="nl">Voorbeeld AppStream-bestanden in Ontdekken</summary>
