@@ -254,6 +254,10 @@ void FwupdBackend::handleError(GError *perror)
     }
     // else
     //     qDebug() << "Fwupd skipped" << perror->code << perror->message;
+
+    m_fetching = false;
+    Q_EMIT fetchingUpdatesProgressChanged();
+    Q_EMIT contentsChanged();
 }
 
 QString FwupdBackend::cacheFile(const QString &kind, const QString &basename)
