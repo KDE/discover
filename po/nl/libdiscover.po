@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-01 00:47+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2026-08-19 13:47+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -955,12 +955,12 @@ msgstr ""
 msgid "Could not add the source %1"
 msgstr "Kon de bron %1 niet toevoegen"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:296
 #, kde-format
 msgid "Removing “%1”"
 msgstr "Verwijderen van “%1”"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -969,22 +969,22 @@ msgstr ""
 "Om deze installatiebron te verwijderen moeten de volgende toepassingen "
 "verwijderd worden:<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:316
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:315
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "Verwijderen van %1 installatiebron op afstand is mislukt: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:320
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:319
 #, kde-format
 msgid "Could not find %1"
 msgstr "Kon %1 niet vinden"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:354
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:353
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (gebruiker)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:417
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:416
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Flatpak opslagruimte URI (*.flatpakrepo) invoeren:"
@@ -2643,7 +2643,7 @@ msgstr "Omschakelen"
 msgid "Permissions for %1"
 msgstr "Toegangsrechten voor %1"
 
-#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:42
 #, kde-format
 msgid "Snap"
 msgstr "Snap"
@@ -2754,7 +2754,7 @@ msgstr "Controleer uw internetverbinding"
 msgid "Refresh"
 msgstr "Vernieuwen"
 
-#: libdiscover/resources/ResourcesModel.cpp:393
+#: libdiscover/resources/ResourcesModel.cpp:392
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"

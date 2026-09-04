@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-01 00:47+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2026-05-29 17:22-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -949,13 +949,13 @@ msgstr "https://flathub.org دىكى پىروگراممىنى ئورنىتىشن
 msgid "Could not add the source %1"
 msgstr "%1 مەنبەنى قوشالمايدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:296
 #, fuzzy, kde-format
 #| msgid "Removing '%1'"
 msgid "Removing “%1”"
 msgstr "«%1» چىقىرىۋېتىۋاتىدۇ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -964,22 +964,22 @@ msgstr ""
 "بۇ خەزىنەنى چىقىرىۋېتىشتە، تۆۋەندىكى پىروگرامما سۆكۈۋېتىلىشى كېرەك: <ul><li>"
 "%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:316
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:315
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "يىراقتىكى خەزىنە %1 نى چىقىرىۋېتەلمىدى: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:320
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:319
 #, kde-format
 msgid "Could not find %1"
 msgstr "%1 نى تاپالمىدى"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:354
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:353
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (ئىشلەتكۈچى)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:417
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:416
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Flatpak خەزىنە URI (*.flatpakrepo) كىرگۈزۈلىدۇ:"
@@ -2654,7 +2654,7 @@ msgstr "ئۈزچات"
 msgid "Permissions for %1"
 msgstr "%1 نىڭ ئىجازىتى"
 
-#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:42
 #, kde-format
 msgid "Snap"
 msgstr "قادا"
@@ -2765,7 +2765,7 @@ msgstr "ئىنتېرنېت باغلىنىشىنى تەكشۈرۈڭ"
 msgid "Refresh"
 msgstr "يېڭىلا"
 
-#: libdiscover/resources/ResourcesModel.cpp:393
+#: libdiscover/resources/ResourcesModel.cpp:392
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"

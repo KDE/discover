@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-01 00:47+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2014-07-06 22:08+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1031,36 +1031,36 @@ msgstr ""
 msgid "Could not add the source %1"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:296
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
 #| msgid "Remove"
 msgid "Removing “%1”"
 msgstr "Wegmaken"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
 "<ul><li>%1</li></ul>"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:316
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:315
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:320
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:319
 #, kde-format
 msgid "Could not find %1"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:354
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:353
 #, kde-format
 msgid "%1 (user)"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:417
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:416
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr ""
@@ -2860,7 +2860,7 @@ msgstr ""
 msgid "Permissions for %1"
 msgstr ""
 
-#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:42
 #, kde-format
 msgid "Snap"
 msgstr ""
@@ -2966,7 +2966,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesModel.cpp:393
+#: libdiscover/resources/ResourcesModel.cpp:392
 #, fuzzy, kde-format
 #| msgctxt "@label Label preceding the package version"
 #| msgid "Version:"

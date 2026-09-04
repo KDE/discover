@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-01 00:47+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2026-08-19 12:42+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -959,12 +959,12 @@ msgstr "Leidžia lengvai įdiegti https://flathub.org išvardytas programas"
 msgid "Could not add the source %1"
 msgstr "Nepavyko pridėti šaltinio %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:296
 #, kde-format
 msgid "Removing “%1”"
 msgstr "Šalinama „%1“"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -973,22 +973,22 @@ msgstr ""
 "Norint pašalinti šią saugyklą, privalo būti pašalintos šios programos:"
 "<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:316
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:315
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "Nepavyko pašalinti %1 nuotolinės saugyklos: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:320
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:319
 #, kde-format
 msgid "Could not find %1"
 msgstr "Nepavyko rasti %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:354
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:353
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (naudotojas)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:417
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:416
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Įveskite Flatpak saugyklos URI (*.flatpakrepo):"
@@ -2659,7 +2659,7 @@ msgstr "Perjungti"
 msgid "Permissions for %1"
 msgstr "%1 leidimai"
 
-#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:42
 #, kde-format
 msgid "Snap"
 msgstr "Snap"
@@ -2773,7 +2773,7 @@ msgstr "Patikrinkite interneto ryšio jungiamumą"
 msgid "Refresh"
 msgstr "Įkelti iš naujo"
 
-#: libdiscover/resources/ResourcesModel.cpp:393
+#: libdiscover/resources/ResourcesModel.cpp:392
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"

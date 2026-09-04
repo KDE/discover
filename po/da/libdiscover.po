@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-01 00:47+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2020-10-04 16:58+0200\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -974,13 +974,13 @@ msgstr ""
 msgid "Could not add the source %1"
 msgstr "Kunne ikke tilføje kilden %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:296
 #, fuzzy, kde-format
 #| msgid "Removing '%1'"
 msgid "Removing “%1”"
 msgstr "Fjerner \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -989,23 +989,23 @@ msgstr ""
 "For at fjerne denne softwarekilde, skal de følgende programmer afinstalleres:"
 "<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:316
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:315
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "Kunne ikke fjerne %1 ekstern softwarekilde: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:320
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:319
 #, kde-format
 msgid "Could not find %1"
 msgstr "Kunne ikke finde %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:354
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:353
 #, fuzzy, kde-format
 #| msgid "%1 (%2)"
 msgid "%1 (user)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:417
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:416
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Angiv URI til Flatpak-softwarekilde (*.flatpakrepo):"
@@ -2726,7 +2726,7 @@ msgstr ""
 msgid "Permissions for %1"
 msgstr ""
 
-#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:42
 #, kde-format
 msgid "Snap"
 msgstr "Snap"
@@ -2832,7 +2832,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: libdiscover/resources/ResourcesModel.cpp:393
+#: libdiscover/resources/ResourcesModel.cpp:392
 #, fuzzy, kde-format
 #| msgid "New version: %1"
 msgctxt "@info:status %1 is the name of a source of updates"

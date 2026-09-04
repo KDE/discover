@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-01 00:47+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2026-02-01 19:00+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -939,35 +939,35 @@ msgstr "https://flathub.org என்ற இணையதளத்திலுள
 msgid "Could not add the source %1"
 msgstr "%1 என்ற மூலத்தை சேர்க்க முடியவில்லை"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:296
 #, fuzzy, kde-format
 #| msgid "Removing '%1'"
 msgid "Removing “%1”"
 msgstr "'%1' நீக்கப்படுகிறது"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
 "<ul><li>%1</li></ul>"
 msgstr "இக்களஞ்சியத்தை நீக்க, பின்வரும் செயலிகளையும் நீக்க வேண்டும்: <ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:316
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:315
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "%1 என்ற தொலை களஞ்சியத்தை நீக்குவது தோல்வியடைந்த‍து: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:320
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:319
 #, kde-format
 msgid "Could not find %1"
 msgstr "%1 என்பதை கண்டுபிடிக்க முடியவில்லை"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:354
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:353
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (பயனர்)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:417
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:416
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Flatpak களஞ்சியத்தின் முகவரியை (*.flatpakrepo) உள்ளிடுங்கள்:"
@@ -2612,7 +2612,7 @@ msgstr "மாறு"
 msgid "Permissions for %1"
 msgstr "%1-க்கான அனுமதிகள்"
 
-#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:42
 #, kde-format
 msgid "Snap"
 msgstr ""
@@ -2715,7 +2715,7 @@ msgstr "இணைய இணைப்பை சரிபார்க்கவு�
 msgid "Refresh"
 msgstr "புதுப்பி"
 
-#: libdiscover/resources/ResourcesModel.cpp:393
+#: libdiscover/resources/ResourcesModel.cpp:392
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"

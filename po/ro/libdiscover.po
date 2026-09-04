@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-01 00:47+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2026-06-15 14:47+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -953,13 +953,13 @@ msgstr "Face posibilă instalarea aplicațiilor de la https://flathub.org"
 msgid "Could not add the source %1"
 msgstr "Nu se poate adăuga sursa %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:296
 #, fuzzy, kde-format
 #| msgid "Removing '%1'"
 msgid "Removing “%1”"
 msgstr "Se elimină „%1”"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -968,22 +968,22 @@ msgstr ""
 "Pentru a elimina acest depozit, trebuiesc dezinstalate următoarele aplicații:"
 "<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:316
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:315
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "Nu s-a putut elimina depozitul distant %1: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:320
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:319
 #, kde-format
 msgid "Could not find %1"
 msgstr "Nu s-a putut găsi %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:354
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:353
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (utilizator)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:417
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:416
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Introduceți un URI de depozit Flatpak (*.flatpakrepo):"
@@ -2676,7 +2676,7 @@ msgstr "Schimbă"
 msgid "Permissions for %1"
 msgstr "Permisiuni pentru %1"
 
-#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:42
 #, kde-format
 msgid "Snap"
 msgstr "Snap"
@@ -2789,7 +2789,7 @@ msgstr "Verificați conexiunea la Internet"
 msgid "Refresh"
 msgstr "Reîmprospătează"
 
-#: libdiscover/resources/ResourcesModel.cpp:393
+#: libdiscover/resources/ResourcesModel.cpp:392
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"

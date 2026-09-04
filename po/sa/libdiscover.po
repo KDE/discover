@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-01 00:47+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -944,13 +944,13 @@ msgstr "https://flathub.org इत्यत्र सूचीकृतानि
 msgid "Could not add the source %1"
 msgstr "%1 स्रोतः योजयितुं न शक्तवान्"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:296
 #, fuzzy, kde-format
 #| msgid "Removing '%1'"
 msgid "Removing “%1”"
 msgstr "'%1' अपसारयन्"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -958,22 +958,22 @@ msgid ""
 msgstr ""
 "एतत् भण्डारं निष्कासयितुं निम्नलिखित-अनुप्रयोगानाम् अस्थापनं करणीयम्:<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:316
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:315
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "%1 दूरस्थं भण्डारं निष्कासयितुं असफलम्: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:320
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:319
 #, kde-format
 msgid "Could not find %1"
 msgstr "%1 न लब्धम्"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:354
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:353
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (उपयोक्ता)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:417
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:416
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "एकं फ्लैटपैक् भण्डारं URI (*.flatpakrepo) प्रविष्टं कुर्वन्तु:"
@@ -2640,7 +2640,7 @@ msgstr "परिवर्ततु"
 msgid "Permissions for %1"
 msgstr "%1 कृते अनुमतिः"
 
-#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:42
 #, kde-format
 msgid "Snap"
 msgstr "स्नैप्"
@@ -2752,7 +2752,7 @@ msgstr "कृपया अन्तर्जालसंपर्कस्य �
 msgid "Refresh"
 msgstr "नवीकरणम्"
 
-#: libdiscover/resources/ResourcesModel.cpp:393
+#: libdiscover/resources/ResourcesModel.cpp:392
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"

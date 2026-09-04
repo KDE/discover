@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-01 00:47+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2024-10-28 19:13\n"
 "Last-Translator: Zmicier <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian\n"
@@ -959,13 +959,13 @@ msgstr "Дае магчымасць лёгка ўсталёўваць прагр
 msgid "Could not add the source %1"
 msgstr "Не ўдалося дадаць крыніцу \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:296
 #, fuzzy, kde-format
 #| msgid "Removing '%1'"
 msgid "Removing “%1”"
 msgstr "Выдаленне \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -974,22 +974,22 @@ msgstr ""
 "Каб выдаліць гэты рэпазіторый, спачатку трэба выдаліць наступныя праграмы:"
 "<ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:316
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:315
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "Не ўдалося выдаліць адлеглы рэпазіторый %1: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:320
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:319
 #, kde-format
 msgid "Could not find %1"
 msgstr "Не ўдалося знайсці %1"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:354
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:353
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (карыстальнік)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:417
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:416
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Увядзіце URI-адрас рэпазіторыя Flatpak (*.flatpakrepo):"
@@ -2693,7 +2693,7 @@ msgstr "Пераключыць"
 msgid "Permissions for %1"
 msgstr "Правы доступу для \"%1\""
 
-#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:42
 #, kde-format
 msgid "Snap"
 msgstr "Snap"
@@ -2803,7 +2803,7 @@ msgstr "Праверце злучэнне з інтэрнэтам"
 msgid "Refresh"
 msgstr "Абнавіць"
 
-#: libdiscover/resources/ResourcesModel.cpp:393
+#: libdiscover/resources/ResourcesModel.cpp:392
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"

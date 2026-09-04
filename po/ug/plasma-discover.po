@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-23 00:46+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2026-05-29 17:23-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.9\n"
 
-#: discover/DiscoverObject.cpp:198
+#: discover/DiscoverObject.cpp:197
 #, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
@@ -27,7 +27,7 @@ msgstr ""
 "%1 پىروگراممىنى Discover ئارقىلىق ئورنىتىشقا سەپلەنمىگەن — ئۇ پەقەت "
 "قوشۇلمىنىلا Discover ئارقىلىق ئورنىتىدۇ"
 
-#: discover/DiscoverObject.cpp:200
+#: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
@@ -39,7 +39,7 @@ msgstr ""
 "بېتىدىكى <interface>ئارقا ئۇچ كەم</interface> دىن مايىللىقتىكى بۆلەكنى "
 "ئورنىتىڭ.<nl/><nl/><link url='%1'>بۇ مەسىلىنى %2 غا مەلۇم قىلىڭ.</link>"
 
-#: discover/DiscoverObject.cpp:207
+#: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -56,7 +56,7 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'>%1 نىڭ  Discover "
 "بوغچىسى</link> نى تەكشۈرۈڭ"
 
-#: discover/DiscoverObject.cpp:217
+#: discover/DiscoverObject.cpp:216
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -74,17 +74,17 @@ msgstr ""
 "تەۋسىيە قىلىمىز.<para>%1 ئاسرىغۇچىلىرى ئىشلەتكۈچىلەرنىڭ <command>pacman</"
 "command> بۇيرۇق قۇرى قورالى ئارقىلىق بوغچا باشقۇرۇشىنى تەۋسىيە قىلىدۇ.</para>"
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:305
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "«%1» سەھىپىنى تاپالمىدى"
 
-#: discover/DiscoverObject.cpp:328
+#: discover/DiscoverObject.cpp:327
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "«%1» مەۋجۇت بولمىغان ھۆججەتنى ئېچىشنى سىناۋاتىدۇ"
 
-#: discover/DiscoverObject.cpp:350
+#: discover/DiscoverObject.cpp:349
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -93,17 +93,17 @@ msgstr ""
 "flatpak ئارقا ئۇچ پىروگراممىسى %1 كەم، flatpak مەنبەسى بىلەن "
 "تەسىرلىشەلمەيدۇ. ئالدى بىلەن ئۇنى ئورنىتىڭ."
 
-#: discover/DiscoverObject.cpp:354
+#: discover/DiscoverObject.cpp:353
 #, kde-format
 msgid "Could not open %1"
 msgstr "%1 نى ئاچالمىدى"
 
-#: discover/DiscoverObject.cpp:419
+#: discover/DiscoverObject.cpp:418
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Snap قوللاشنىڭ ئورنىتىلغانلىقىنى جەزملەڭ"
 
-#: discover/DiscoverObject.cpp:422
+#: discover/DiscoverObject.cpp:421
 #, kde-format
 msgid ""
 "The requested application could not be found in any available software "
@@ -112,7 +112,7 @@ msgstr ""
 "ئىلتىماس قىلىنغان پىروگراممىنى ئىشلەتكىلى بولىدىغان بارلىق يۇمشاق دېتال "
 "خەزىنەدىن تاپالمىدى"
 
-#: discover/DiscoverObject.cpp:425
+#: discover/DiscoverObject.cpp:424
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an additional error reference and %3 is the name of the "
@@ -124,13 +124,13 @@ msgstr ""
 "(%1 نىڭ تۈرى يوق)<nl/><nl/><link url='%2'>بۇ مەسىلىنى %3 غا مەلۇم قىلىڭ.</"
 "link>"
 
-#: discover/DiscoverObject.cpp:515 discover/DiscoverObject.cpp:517
+#: discover/DiscoverObject.cpp:514 discover/DiscoverObject.cpp:516
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:518
+#: discover/DiscoverObject.cpp:517
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-23 00:46+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2026-05-10 16:28+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 26.04.1\n"
 
-#: discover/DiscoverObject.cpp:198
+#: discover/DiscoverObject.cpp:197
 #, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
@@ -26,7 +26,7 @@ msgstr ""
 "டிஸ்கவர் மூலம் செயலிகளை நிறுவுமாறு %1 அமைக்கபடவில்லை—செயலிகளுக்கான துணைநிரல்களை "
 "மட்டுமே நிறுவ முடியும்."
 
-#: discover/DiscoverObject.cpp:200
+#: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
@@ -38,7 +38,7 @@ msgstr ""
 "<interface>இல்லாத பின்நிலைகள்</interface> பகுதியில் நீங்கள் விரும்பும் கூறை நிறுவ‍வும்."
 "nl/><nl/>இந்த சிக்கலை %2-க்கு <link url='%1'>தெரிவிக்கவும்</link>."
 
-#: discover/DiscoverObject.cpp:207
+#: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -54,7 +54,7 @@ msgstr ""
 "மேலாளியால் நிறுவ‍வும்.<nl/><nl/><link url='https://archlinux.org/packages/extra/"
 "x86_64/discover/'>டிஸ்கவருக்கு %1 வழங்கும் தொகுப்பை</link> பார்க்கவும்."
 
-#: discover/DiscoverObject.cpp:217
+#: discover/DiscoverObject.cpp:216
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -66,17 +66,17 @@ msgid ""
 "packages.</para>"
 msgstr ""
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:305
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "'%1 என்ற பகுப்பை கண்டுபிடிக்க முடியவில்லை"
 
-#: discover/DiscoverObject.cpp:328
+#: discover/DiscoverObject.cpp:327
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "'%1' எனும் இல்லாத கோப்பின் திறப்பு முயற்சிக்கப்பட்டது"
 
-#: discover/DiscoverObject.cpp:350
+#: discover/DiscoverObject.cpp:349
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -85,24 +85,24 @@ msgstr ""
 "%1 எனும் flatpak பின்நிலை இல்லாமல் ஃபலாட்பாக்குகளைக் கையாள முடியாது. அதை முதலில் "
 "நிறுவுங்கள்."
 
-#: discover/DiscoverObject.cpp:354
+#: discover/DiscoverObject.cpp:353
 #, kde-format
 msgid "Could not open %1"
 msgstr "%1 தனை திறக்க முடியவில்லை"
 
-#: discover/DiscoverObject.cpp:419
+#: discover/DiscoverObject.cpp:418
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Snap ஆதரவு நிறுவப்பட்டுள்ளதா என்பதை சரிபாருங்கள்"
 
-#: discover/DiscoverObject.cpp:422
+#: discover/DiscoverObject.cpp:421
 #, kde-format
 msgid ""
 "The requested application could not be found in any available software "
 "repositories"
 msgstr "கோரிய செயலியை இயக்கப்பட்டுள்ள நிரல்கிடங்குகளில் கண்டுபிடிக்க முடியவில்லை."
 
-#: discover/DiscoverObject.cpp:425
+#: discover/DiscoverObject.cpp:424
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an additional error reference and %3 is the name of the "
@@ -114,13 +114,13 @@ msgstr ""
 "(%1 என்பதற்கு எந்த பதிவும் இல்லை)<nl/><nl/>இதை %3-க்கு <link url='%2'>தெரிவிக்கவும்</"
 "link>."
 
-#: discover/DiscoverObject.cpp:515 discover/DiscoverObject.cpp:517
+#: discover/DiscoverObject.cpp:514 discover/DiscoverObject.cpp:516
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "டிஸ்கவர்"
 
-#: discover/DiscoverObject.cpp:518
+#: discover/DiscoverObject.cpp:517
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

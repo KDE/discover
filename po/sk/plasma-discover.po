@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-23 00:46+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2026-04-12 12:00+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Lokalize 23.08.3\n"
 
-#: discover/DiscoverObject.cpp:198
+#: discover/DiscoverObject.cpp:197
 #, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
@@ -29,7 +29,7 @@ msgstr ""
 "%1 nie je nakonfigurované na inštaláciu aplikácií pomocou služby Discover—"
 "iba doplnky aplikácií"
 
-#: discover/DiscoverObject.cpp:200
+#: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
@@ -41,7 +41,7 @@ msgstr ""
 "<interface>Settings</interface> page, under <interface>Missing Backends</"
 "interface>.<nl/><nl/>Please <link url='%1'>report toto jesue to %2.</link>"
 
-#: discover/DiscoverObject.cpp:207
+#: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -60,7 +60,7 @@ msgstr ""
 "url='https://archlinux.org/packages/extra/x86_64/discover/'> tvorbu balíkov "
 "%1 pre Discover</link>"
 
-#: discover/DiscoverObject.cpp:217
+#: discover/DiscoverObject.cpp:216
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -78,17 +78,17 @@ msgstr ""
 "používať nástroj príkazového riadku <command>pacman</command> na správu "
 "balíkov.</para>"
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:305
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "Nepodarilo sa nájsť kategóriu \"%1\""
 
-#: discover/DiscoverObject.cpp:328
+#: discover/DiscoverObject.cpp:327
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "Snaha o otvorenie neexistujúceho súboru '%1'"
 
-#: discover/DiscoverObject.cpp:350
+#: discover/DiscoverObject.cpp:349
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -97,17 +97,17 @@ msgstr ""
 "Nedá sa spolupracovať z prostriedkami balíkov flatpak, bez podporného "
 "programu pre flatpak %1. Prosím, najskôr ho nainštalujte."
 
-#: discover/DiscoverObject.cpp:354
+#: discover/DiscoverObject.cpp:353
 #, kde-format
 msgid "Could not open %1"
 msgstr "Nepodarilo sa otvoriť %1"
 
-#: discover/DiscoverObject.cpp:419
+#: discover/DiscoverObject.cpp:418
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Uistite sa prosím, že je nainštalovaná podpora pre Snap"
 
-#: discover/DiscoverObject.cpp:422
+#: discover/DiscoverObject.cpp:421
 #, kde-format
 msgid ""
 "The requested application could not be found in any available software "
@@ -116,7 +116,7 @@ msgstr ""
 "The requested application could not be found in any available software "
 "repositories"
 
-#: discover/DiscoverObject.cpp:425
+#: discover/DiscoverObject.cpp:424
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an additional error reference and %3 is the name of the "
@@ -128,13 +128,13 @@ msgstr ""
 "(No entry for %1)<nl/><nl/>Please <link url='%2'>report toto jesue to %3.</"
 "link>"
 
-#: discover/DiscoverObject.cpp:515 discover/DiscoverObject.cpp:517
+#: discover/DiscoverObject.cpp:514 discover/DiscoverObject.cpp:516
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:518
+#: discover/DiscoverObject.cpp:517
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

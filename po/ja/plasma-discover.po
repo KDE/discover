@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-23 00:46+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2026-07-23 17:15+0900\n"
 "Last-Translator: Mint <5602mint@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Text-Markup: kde4\n"
 "X-Generator: Lokalize 26.04.3\n"
 
-#: discover/DiscoverObject.cpp:198
+#: discover/DiscoverObject.cpp:197
 #, kde-format
 msgctxt "@title %1 is the name"
 msgid ""
@@ -29,7 +29,7 @@ msgstr ""
 "%1 は Discover を使用してアプリケーションをインストールできるように設定されて"
 "いません。現在、アプリケーションのアドオンのみインストールできます。"
 
-#: discover/DiscoverObject.cpp:200
+#: discover/DiscoverObject.cpp:199
 #, kde-kuit-format
 msgctxt "@info:usagetip %2 is the name of the operating system"
 msgid ""
@@ -42,7 +42,7 @@ msgstr ""
 "モジュールをインストールしてください。<nl/><nl/> <link url='%1'>この問題を "
 "%2 に報告</link> してください。"
 
-#: discover/DiscoverObject.cpp:207
+#: discover/DiscoverObject.cpp:206
 #, kde-kuit-format
 msgctxt ""
 "@info:usagetip %1 is the distro name; in this case it always contains 'Arch "
@@ -60,7 +60,7 @@ msgstr ""
 "archlinux.org/packages/extra/x86_64/discover/'>%1 の Discover パッケージをレ"
 "ビュー</link>"
 
-#: discover/DiscoverObject.cpp:217
+#: discover/DiscoverObject.cpp:216
 #, kde-kuit-format
 msgctxt "@info:usagetip %1 is the distro name"
 msgid ""
@@ -78,17 +78,17 @@ msgstr ""
 "ます。<para>%1 のメンテナは <command>pacman</command> を使用したパッケージの"
 "管理を推奨しています。</para>"
 
-#: discover/DiscoverObject.cpp:306
+#: discover/DiscoverObject.cpp:305
 #, kde-format
 msgid "Could not find category '%1'"
 msgstr "カテゴリ '%1' が見つかりませんでした。"
 
-#: discover/DiscoverObject.cpp:328
+#: discover/DiscoverObject.cpp:327
 #, kde-format
 msgid "Trying to open inexisting file '%1'"
 msgstr "存在しないファイル '%1' を開こうとしています"
 
-#: discover/DiscoverObject.cpp:350
+#: discover/DiscoverObject.cpp:349
 #, kde-format
 msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
@@ -97,17 +97,17 @@ msgstr ""
 "flatpak バックエンドの %1 がないと、flatpak リソースと対話できません。最初に"
 "インストールしてください。"
 
-#: discover/DiscoverObject.cpp:354
+#: discover/DiscoverObject.cpp:353
 #, kde-format
 msgid "Could not open %1"
 msgstr "%1 を開けませんでした。"
 
-#: discover/DiscoverObject.cpp:419
+#: discover/DiscoverObject.cpp:418
 #, kde-format
 msgid "Please make sure Snap support is installed"
 msgstr "Snap サポートがインストールされていることを確認してください"
 
-#: discover/DiscoverObject.cpp:422
+#: discover/DiscoverObject.cpp:421
 #, kde-format
 msgid ""
 "The requested application could not be found in any available software "
@@ -116,7 +116,7 @@ msgstr ""
 "要求されたアプリケーションは、利用可能なソフトウェアリポジトリに見つかりませ"
 "んでした。"
 
-#: discover/DiscoverObject.cpp:425
+#: discover/DiscoverObject.cpp:424
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an additional error reference and %3 is the name of the "
@@ -128,13 +128,13 @@ msgstr ""
 "(%1 の項目はありません)<nl/><nl/> <link url='%2'>この問題を %3 に報告</link> "
 "してください。"
 
-#: discover/DiscoverObject.cpp:515 discover/DiscoverObject.cpp:517
+#: discover/DiscoverObject.cpp:514 discover/DiscoverObject.cpp:516
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:518
+#: discover/DiscoverObject.cpp:517
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

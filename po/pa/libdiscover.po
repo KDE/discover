@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-01 00:47+0000\n"
+"POT-Creation-Date: 2026-09-04 00:46+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -952,13 +952,13 @@ msgstr "https://flathub.org ਵਿੱਚ ਮੌਜੂਦ ਐਪਲੀਕੇਸ਼�
 msgid "Could not add the source %1"
 msgstr "%1 ਸਰੋਤ ਜੋੜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:296
 #, fuzzy, kde-format
 #| msgid "Removing '%1'"
 msgid "Removing “%1”"
 msgstr "'%1' ਨੂੰ ਹਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:298
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
 msgid ""
 "To remove this repository, the following applications must be uninstalled:"
@@ -966,22 +966,22 @@ msgid ""
 msgstr ""
 "ਇਹ ਰਿਪੋਜ਼ਟਰੀ ਹਟਾਉਣ ਲਈ ਅੱਗੇ ਦਿੱਤੀਆਂ ਐਪਲੀਕੇਸ਼ਨਾਂ ਹਟਾਉਣੀਆਂ ਜ਼ਰੂਰੀ ਹਨ: <ul><li>%1</li></ul>"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:316
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:315
 #, kde-format
 msgid "Failed to remove %1 remote repository: %2"
 msgstr "%1 ਰਿਮੋਟ ਰਿਪੋਜ਼ਟਰੀ ਹਟਾਉਣ ਲਈ ਅਸਫ਼ਲ: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:320
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:319
 #, kde-format
 msgid "Could not find %1"
 msgstr "%1 ਲੱਭਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:354
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:353
 #, kde-format
 msgid "%1 (user)"
 msgstr "%1 (ਵਰਤੋਂਕਾਰ)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:417
+#: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:416
 #, kde-format
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "ਫਲੈਟਪੈਕ ਰਿਪੋਜ਼ਟਰੀ URI ਦਿਓ (*.flatpakrepo):"
@@ -2614,7 +2614,7 @@ msgstr "ਬਲੋ"
 msgid "Permissions for %1"
 msgstr "%1 ਲਈ ਇਜਾਜ਼ਤਾਂ"
 
-#: libdiscover/backends/SnapBackend/SnapBackend.cpp:43
+#: libdiscover/backends/SnapBackend/SnapBackend.cpp:42
 #, kde-format
 msgid "Snap"
 msgstr "ਸਨੈਪ"
@@ -2717,7 +2717,7 @@ msgstr "ਇੰਟਰਨੈੱਟ ਕਨੈਕਸ਼ਨ ਦੀ ਜਾਂਚ ਕਰ�
 msgid "Refresh"
 msgstr "ਤਾਜ਼ਾ ਕਰੋ"
 
-#: libdiscover/resources/ResourcesModel.cpp:393
+#: libdiscover/resources/ResourcesModel.cpp:392
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
