@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-04 00:46+0000\n"
+"POT-Creation-Date: 2026-09-05 00:47+0000\n"
 "PO-Revision-Date: 2026-08-19 12:42+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -1113,7 +1113,7 @@ msgstr "Leidimai"
 msgid "Configure permissions…"
 msgstr "Konfigūruoti leidimus…"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:489
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:493
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"
