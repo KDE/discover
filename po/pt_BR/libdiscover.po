@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-03 03:28+0000\n"
+"POT-Creation-Date: 2026-09-05 02:45+0000\n"
 "PO-Revision-Date: 2026-08-29 14:54-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -1092,7 +1092,7 @@ msgstr "Permissões"
 msgid "Configure permissions…"
 msgstr "Configurar permissões…"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:492
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:496
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"

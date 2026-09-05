@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-03 03:28+0000\n"
+"POT-Creation-Date: 2026-09-05 02:45+0000\n"
 "PO-Revision-Date: 2024-02-10 10:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -1074,7 +1074,7 @@ msgstr "%1 ਲਈ ਇਜਾਜ਼ਤਾਂ"
 msgid "Configure permissions…"
 msgstr "…ਇਜਾਜ਼ਤਾਂ ਦੀ ਸੰਰਚਨਾ"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:492
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:496
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"
