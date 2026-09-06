@@ -669,7 +669,7 @@ QString FlatpakResource::installationPath(FlatpakInstallation *flatpakInstallati
 
 QUrl FlatpakResource::url() const
 {
-    if (!m_resourceFile.isEmpty()) {
+    if (appstreamId().isEmpty() && !m_resourceFile.isEmpty()) {
         return m_resourceFile;
     }
 
