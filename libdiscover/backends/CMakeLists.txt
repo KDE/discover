@@ -57,6 +57,11 @@ elseif (BUILD_FlatpakBackend)
     message(WARNING "BUILD_FlatpakBackend enabled but Flatpak=${Flatpak_FOUND} or AppStreamQt=${AppStreamQt_FOUND} not found")
 endif()
 
+option(BUILD_AppImageHubBackend "Build AppImageHub support." "ON")
+if (BUILD_AppImageHubBackend)
+    add_subdirectory(AppImageHubBackend)
+endif()
+
 find_package(Snapd 1.65)
 set_package_properties(Snapd PROPERTIES
     DESCRIPTION "Library that exposes Snapd"
