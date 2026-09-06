@@ -28,7 +28,7 @@ Dependencies:
     'frameworks/purpose': 'Frameworks/6.24'
     'frameworks/kstatusnotifieritem': 'Frameworks/6.24'
     'frameworks/kuserfeedback': 'Frameworks/6.24'
-    'libraries/kirigami-addons': 'v1.11.0'
+    'libraries/kirigami-addons': 'stable/1.11'
     'third-party/packagekit-qt': '@latest'
     'third-party/appstream': '@latest'
 
