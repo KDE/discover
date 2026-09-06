@@ -238,9 +238,14 @@ QStringList AppPackageKitResource::extends() const
 
 QString AppPackageKitResource::changelog() const
 {
-    const QString pkChangelog = PackageKitResource::changelog();
-    const QString appChangelog = AppStreamUtils::changelogToMarkdown(m_appdata);
-    return pkChangelog + u"\n\n"_s + appChangelog;
+    const auto packageChangelog = PackageKitResource::changelog();
+    const auto appstreamChangelog = AppStreamUtils::changelogToMarkdown(m_appdata);
+    if (packageChangelog.isEmpty()) {
+        return appstreamChangelog;
+    } else if (appstreamChangelog.isEmpty()) {
+        return packageChangelog;
+    }
+    return packageChangelog + u"\n\n"_s + appstreamChangelog;
 }
 
 bool AppPackageKitResource::canExecute() const

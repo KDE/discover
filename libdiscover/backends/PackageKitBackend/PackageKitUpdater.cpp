@@ -199,13 +199,13 @@ public:
 
         for (auto resource : std::as_const(resources)) {
             const auto changelog = resource->changelog();
+            // upgradeText() can return a string containing \\u009C meant for QML text handling
+            // we only need the first full variant for plain HTML text
+            const auto upgradeText = resource->upgradeText().section(QChar(0x009C), 0, 0);
             if (changelog.isEmpty()) {
-                changes += i18n("<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided", resource->packageName(), resource->availableVersion());
+                changes += i18n("<h3>%1</h3>%2", resource->packageName(), upgradeText);
             } else {
-                changes += i18n("<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</blockquote>",
-                                resource->packageName(),
-                                resource->availableVersion(),
-                                changelog);
+                changes += i18n("<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>", resource->packageName(), upgradeText, changelog);
             }
         }
 
