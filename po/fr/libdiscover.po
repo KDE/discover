@@ -2751,7 +2751,7 @@ msgstr "Lancer"
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "Mise à jour vers la version %1."
+msgstr "Mise à jour depuis la version %1."
 
 # unreviewed-context
 # unreviewed-context
