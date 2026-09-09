@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:18+0000\n"
-"PO-Revision-Date: 2025-12-16 22:13+0100\n"
+"PO-Revision-Date: 2026-04-03 10:40+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -152,7 +152,7 @@ msgstr "Consulter les mises à jour…"
 #: notifier/NotifierItem.cpp:60
 #, kde-format
 msgid "Refresh…"
-msgstr "Rafraîchir..."
+msgstr "Rafraichir..."
 
 #: notifier/NotifierItem.cpp:64
 #, kde-format

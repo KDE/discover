@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:18+0000\n"
-"PO-Revision-Date: 2026-01-19 01:33+0100\n"
+"PO-Revision-Date: 2026-09-07 20:51+0200\n"
 "Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.04.1\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1495,16 +1495,15 @@ msgstr "Sperre erforderlich"
 msgid "Unknown error %1."
 msgstr "Unbekannter Fehler %1."
 
-# Es empfiehlt nur, sich selbst neuzustarten. Der deutsche Text suggeriert ein wenig einen Rechnerneustart.
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
 #, kde-format
 msgid "'%1' was changed and suggests to be restarted."
-msgstr "„%1“ wurde geändert und empfiehlt den Neustart."
+msgstr "„%1“ wurde geändert und empfiehlt, es neu zu starten."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
 #, kde-format
 msgid "A change by '%1' suggests your session to be restarted."
-msgstr "Eine Änderung durch „%1“ empfiehlt den neuen Start der Sitzung."
+msgstr "Eine Änderung durch „%1“ empfiehlt, Ihre Sitzung neu zu starten."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
 #, kde-format
@@ -1512,7 +1511,7 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
-"„%1“ wurde aus Sicherheitsgründen aktualisiert, ein neuer Start der Sitzung "
+"„%1“ wurde aus Sicherheitsgründen aktualisiert, ein Neustart der Sitzung "
 "wird empfohlen."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
@@ -1521,13 +1520,13 @@ msgid ""
 "'%1' was updated for security reasons, a restart of the system is "
 "recommended."
 msgstr ""
-"„%1“ wurde aus Sicherheitsgründen aktualisiert, ein neuer Start des Systems "
+"„%1“ wurde aus Sicherheitsgründen aktualisiert, ein Neustart des Systems "
 "wird empfohlen."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
 #, kde-format
 msgid "A change by '%1' suggests your system to be restarted."
-msgstr "Eine Änderung durch „%1“ empfiehlt den neuen Start des Rechners."
+msgstr "Eine Änderung durch „%1“ empfiehlt, Ihr System neu zu starten."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
@@ -2447,7 +2446,7 @@ msgstr "Starten"
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "Aktualisierung von Version %1"
+msgstr "Neuveröffentlichung der Version %1"
 
 #: libdiscover/resources/AbstractResource.cpp:261
 #, kde-format
