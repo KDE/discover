@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-08 00:47+0000\n"
-"PO-Revision-Date: 2026-08-18 08:13+0200\n"
+"PO-Revision-Date: 2026-09-08 05:13+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2710,15 +2710,12 @@ msgid "Launch"
 msgstr "გაშვება"
 
 #: libdiscover/resources/AbstractResource.cpp:270
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here. An app or runtime got updated "
 "without changing the user-facing version number %1"
 msgid "Refresh of version %1"
-msgstr "%1-ის ვერსიის განახლება"
+msgstr "ვერსიის %1 რეგენერაცია"
 
 #: libdiscover/resources/AbstractResource.cpp:280
 #, kde-format
