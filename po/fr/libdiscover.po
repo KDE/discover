@@ -2751,7 +2751,7 @@ msgstr "Lancer"
 msgctxt ""
 "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
 msgid "Refresh of version %1"
-msgstr "Mise à jour depuis la version %1."
+msgstr "Rafraichissement de la version %1."
 
 # unreviewed-context
 # unreviewed-context
@@ -2769,13 +2769,13 @@ msgstr "Veuillez vérifier votre connexion sur Internet."
 #: libdiscover/resources/ResourcesModel.cpp:104
 #, kde-format
 msgid "Refresh"
-msgstr "Rafraîchir"
+msgstr "Rafraichir"
 
 #: libdiscover/resources/ResourcesModel.cpp:405
 #, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "Rafraîchissement de %1 en cours"
+msgstr "Rafraichissement de %1 en cours"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:561
 #, kde-format
