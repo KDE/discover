@@ -8,6 +8,7 @@
   <name xml:lang="ar">خلفية لمعاينة AppStream</name>
   <name xml:lang="ca">Dorsal de vista prèvia d'AppStream</name>
   <name xml:lang="ca-valencia">Dorsal de vista prèvia d'AppStream</name>
+  <name xml:lang="de">AppStream-Vorschau-Backend</name>
   <name xml:lang="es">Motor de vista previa AppStream</name>
   <name xml:lang="eu">Hau AppStream fitxategi baten aurreikuspegia da</name>
   <name xml:lang="fr">Moteur d'aperçu de fichier « AppStream »</name>
@@ -29,6 +30,7 @@
   <summary xml:lang="ar">معاينة ملفات AppStream في المستكشف</summary>
   <summary xml:lang="ca">Vista prèvia de fitxers AppStream al Discover</summary>
   <summary xml:lang="ca-valencia">Vista prèvia de fitxers AppStream en Discover</summary>
+  <summary xml:lang="de">Vorschau von AppStream-Dateien in Discover ansehen</summary>
   <summary xml:lang="es">Vista previa de archivos AppStream en Discover</summary>
   <summary xml:lang="eu">AppStream fitxategien aurreikuspegia Discoverren</summary>
   <summary xml:lang="fr">Afficher un aperçu des fichiers « AppStream » dans Discover</summary>
