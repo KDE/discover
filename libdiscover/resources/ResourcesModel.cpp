@@ -281,8 +281,8 @@ void AggregatedResultsStream::resourceDestruction(QObject *obj)
     auto f = [obj](const StreamResult &result) {
         return obj == result.resource;
     };
-    m_results.erase(std::remove_if(m_results.begin(), m_results.end(), f));
-    m_allResults.erase(std::remove_if(m_allResults.begin(), m_allResults.end(), f));
+    m_results.removeIf(f);
+    m_allResults.removeIf(f);
 }
 
 void AggregatedResultsStream::streamDestruction(QObject *obj)
