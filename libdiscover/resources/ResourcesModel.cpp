@@ -289,13 +289,11 @@ void AggregatedResultsStream::emitResults()
 
 void AggregatedResultsStream::resourceDestruction(QObject *obj)
 {
-    for (auto it = m_results.begin(); it != m_results.end(); ++it) {
-        if (obj == it->resource) {
-            it = m_results.erase(it);
-        } else {
-            ++it;
-        }
-    }
+    auto f = [obj](const StreamResult &result) {
+        return obj == result.resource;
+    };
+    m_results.removeIf(f);
+    m_allResults.removeIf(f);
 }
 
 void AggregatedResultsStream::streamDestruction(QObject *obj)
