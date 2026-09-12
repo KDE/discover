@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-10 00:48+0000\n"
-"PO-Revision-Date: 2026-09-07 20:51+0200\n"
+"PO-Revision-Date: 2026-09-08 20:27+0200\n"
 "Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -2760,15 +2760,12 @@ msgid "Launch"
 msgstr "Starten"
 
 #: libdiscover/resources/AbstractResource.cpp:270
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here. An app or runtime got updated "
 "without changing the user-facing version number %1"
 msgid "Refresh of version %1"
-msgstr "Aktualisierung von Version %1"
+msgstr "Neuveröffentlichung der Version %1"
 
 #: libdiscover/resources/AbstractResource.cpp:280
 #, kde-format
