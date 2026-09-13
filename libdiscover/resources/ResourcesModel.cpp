@@ -293,7 +293,6 @@ void AggregatedResultsStream::resourceDestruction(QObject *obj)
         return obj == result.resource;
     };
     m_results.removeIf(f);
-    m_allResults.removeIf(f);
 }
 
 void AggregatedResultsStream::streamDestruction(QObject *obj)
