@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-04 00:46+0000\n"
-"PO-Revision-Date: 2026-04-12 12:00+0200\n"
-"Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
+"PO-Revision-Date: 2026-09-14 20:10+0200\n"
+"Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
@@ -1577,11 +1577,10 @@ msgid "Shut down"
 msgstr "Vypnúť"
 
 #: discover/qml/UpdatesPage.qml:296
-#, fuzzy, kde-format
-#| msgid "Muon Discover"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, quit Discover"
 msgid "Quit Discover"
-msgstr "Muon Discover"
+msgstr "Ukončiť Discover"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
