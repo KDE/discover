@@ -17,7 +17,7 @@ If you have an issue with Discover, please [open a support thread on KDE Discuss
 
 ## Building
 
-The easiest way to make changes and test Discover during development is to [build it with kde-builder](https://community.kde.org/Get_Involved/development).
+The easiest way to make changes and test Discover during development is to [build it with kde-builder](https://develop.kde.org/docs/getting-started/building).
 
 ## Vendor Customization
 
