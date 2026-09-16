@@ -72,7 +72,7 @@ QVector<AbstractResourcesBackend *> DiscoverBackendsFactory::backendForFile(cons
     }
 
     if (backendInitTime.elapsed() > 20) {
-        qDebug() << "Took" << backendInitTime.elapsed() << "ms to initialise" << name << instances.size();
+        qDebug() << "Took" << backendInitTime.elapsed() << "ms to initialize" << name << instances.size();
     }
 
     return instances;

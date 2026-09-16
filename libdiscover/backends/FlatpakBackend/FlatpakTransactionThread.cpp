@@ -241,7 +241,7 @@ FlatpakTransactionThread::~FlatpakTransactionThread()
 
 void FlatpakTransactionThread::cancel()
 {
-    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "cancelling transaction thread";
+    qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "canceling transaction thread";
     QMutexLocker lock(&m_proceedMutex);
     m_proceed = false;
     m_proceedCondition.wakeAll();

@@ -1912,7 +1912,7 @@ QCoro::Task<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> FlatpakB
         [](GCancellable *cancellable, QList<FlatpakInstallation *> installations) {
             QHash<FlatpakInstallation *, QVector<FlatpakInstalledRef *>> ret;
             if (g_cancellable_is_cancelled(cancellable)) {
-                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Job cancelled";
+                qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Job canceled";
                 return ret;
             }
 
@@ -1924,7 +1924,7 @@ QCoro::Task<QHash<FlatpakInstallation *, QList<FlatpakInstalledRef *>>> FlatpakB
                     continue;
                 }
                 if (g_cancellable_is_cancelled(cancellable)) {
-                    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Job cancelled";
+                    qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Job canceled";
                     ret.clear();
                     break;
                 }

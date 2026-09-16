@@ -27,7 +27,7 @@ DISCOVER_BACKEND_PLUGIN(DummyBackend)
 
 using namespace Qt::StringLiterals;
 
-// Use KJob to track initialisation to match how KNS would
+// Use KJob to track initialization to match how KNS would
 // It helps to identify issues when Discover closes
 class DummyBackendInitializationJob : public KJob
 {

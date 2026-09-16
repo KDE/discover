@@ -55,7 +55,7 @@ public:
         DoneStatus,
         /// Transaction is done, but there was an error during transaction
         DoneWithErrorStatus,
-        /// Transaction was cancelled
+        /// Transaction was canceled
         CancelledStatus,
     };
     Q_ENUM(Status)
