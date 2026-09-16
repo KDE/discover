@@ -2,7 +2,7 @@
 <Menu>
 
     <Menu>
-      <Name>All Applications</Name>
+      <Name>All Apps</Name>
       <Icon>applications-all</Icon>
       <Top />
       <Include>

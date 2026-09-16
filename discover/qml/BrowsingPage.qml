@@ -115,7 +115,7 @@ DiscoverPage {
             Layout.columnSpan: apps.columns
             // Nicer to have the arrow on the side it's pointing to
             LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.LeftToRight
-            onClicked: Navigation.openCategory(Discover.CategoryModel.findCategoryByName("All Applications"))
+            onClicked: Navigation.openCategory(Discover.CategoryModel.findCategoryByName("All Apps"))
             visible: popRep.count > 0 && !featuredModel.isFetching
             Keys.onUpPressed: {
                 var target = this
@@ -198,7 +198,7 @@ DiscoverPage {
             DiscoverApp.LimitedRowCountProxyModel {
                 pageSize: apps.maximumColumns * 2
                 sourceModel: Discover.ResourcesProxyModel {
-                    filteredCategoryName: "All Applications"
+                    filteredCategoryName: "All Apps"
                     backendFilter: Discover.ResourcesModel.currentApplicationBackend
                     sortRole: Discover.ResourcesProxyModel.ReleaseDateRole
                     sortOrder: Qt.DescendingOrder
