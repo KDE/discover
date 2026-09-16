@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-04 00:46+0000\n"
-"PO-Revision-Date: 2026-08-04 06:50+0900\n"
+"PO-Revision-Date: 2026-09-15 17:34+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -506,15 +506,13 @@ msgstr "外部連結"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the FAQ"
-msgstr ""
+msgstr "閱讀常見問題"
 
 #: discover/qml/ApplicationPage.qml:600
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Read the documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the full documentation"
-msgstr "閱讀說明文件"
+msgstr "閱讀完整說明文件"
 
 #: discover/qml/ApplicationPage.qml:611
 #, kde-format
@@ -544,19 +542,19 @@ msgstr "開始貢獻"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Help with translations"
-msgstr ""
+msgstr "幫助翻譯"
 
 #: discover/qml/ApplicationPage.qml:661
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Contact the developers"
-msgstr ""
+msgstr "聯繫開發者"
 
 #: discover/qml/ApplicationPage.qml:671
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Browse the source code"
-msgstr ""
+msgstr "瀏覽原始碼"
 
 #: discover/qml/ApplicationPage.qml:700
 #, kde-format
@@ -1529,11 +1527,10 @@ msgid "Shut down"
 msgstr "關機"
 
 #: discover/qml/UpdatesPage.qml:296
-#, fuzzy, kde-format
-#| msgid "Discover"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, quit Discover"
 msgid "Quit Discover"
-msgstr "Discover"
+msgstr "離開 Discover"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
