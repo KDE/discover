@@ -62,6 +62,12 @@ qcoro_enable_coroutines()
 
 ecm_find_qmlmodule(org.kde.kitemmodels 1.0 REQUIRED)
 
+option(DISCOVER_IS_QML_STYLE_ORG_KDE_DESKTOP "Require the org.kde.desktop QtQuick Controls style module" ON)
+
+if(DISCOVER_IS_QML_STYLE_ORG_KDE_DESKTOP)
+    ecm_find_qmlmodule(org.kde.desktop REQUIRED)
+endif()
+
 list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "DISCOVER_BACKEND_PLUGIN")
 
 ecm_set_disabled_deprecation_versions(QT 6.8.1
