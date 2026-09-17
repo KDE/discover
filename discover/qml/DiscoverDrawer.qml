@@ -127,6 +127,7 @@ Kirigami.GlobalDrawer {
             visible: enabled && drawer.wideScreen
         },
         ActionListItem {
+            id: updateItem
             objectName: "updateButton"
             action: updateAction
             visible: enabled && drawer.wideScreen
@@ -142,6 +143,7 @@ Kirigami.GlobalDrawer {
                     source: "view-refresh"
                     implicitWidth: Kirigami.Units.iconSizes.sizeForLabels
                     implicitHeight: Kirigami.Units.iconSizes.sizeForLabels
+                    selected: updateItem.highlighted || updateItem.pressed
                 }
             }
 
