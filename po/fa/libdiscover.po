@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-10 00:48+0000\n"
+"POT-Creation-Date: 2026-09-17 00:45+0000\n"
 "PO-Revision-Date: 2026-06-29 12:05+0330\n"
 "Last-Translator: Sohrab Behdani <behdanisohrab@proton.me>\n"
 "Language-Team: fa\n"
@@ -2572,9 +2572,10 @@ msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr "پشتوانه rpm-ostree: خطا: فرمت منبع ناشناخته. لطفاً اشکال ارسال کنید."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
-#, kde-format
-msgid ""
-"Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr "لغو تراکنش rpm-ostree. این ممکن است مدتی طول بکشد. لطفاً صبر کنید."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
@@ -2842,10 +2843,11 @@ msgid "Failed"
 msgstr "شکست‌خورد"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Canceled"
 msgctxt "@info:status"
-msgid "Cancelled"
-msgstr "رد شده"
+msgid "Canceled"
+msgstr "رد شد"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, kde-format
@@ -2870,6 +2872,10 @@ msgstr "نرم‌افزار سامانه"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "افزونه‌ها"
+
+#~ msgctxt "@info:status"
+#~ msgid "Cancelled"
+#~ msgstr "رد شده"
 
 #~ msgctxt "Category"
 #~ msgid "CD and DVD"

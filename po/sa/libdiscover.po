@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-10 00:48+0000\n"
+"POT-Creation-Date: 2026-09-17 00:45+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -2575,9 +2575,10 @@ msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr "rpm-ostree-backend: त्रुटिः : अज्ञातसंसाधनस्वरूपम्। कृपया दोषं दातव्यम् ।."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
-#, kde-format
-msgid ""
-"Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 "rpm-ostree विनिमयव्यवहारं रद्दं कुर्वन्। एतत् किञ्चित् समयं गृह्णीयात् । कृपया प्रतीक्ष्यताम्।."
 
@@ -2856,9 +2857,10 @@ msgid "Failed"
 msgstr "असफलः अभवत्"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Canceled"
 msgctxt "@info:status"
-msgid "Cancelled"
+msgid "Canceled"
 msgstr "रद्दीकृतम्"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
@@ -2884,6 +2886,10 @@ msgstr "प्रणालि तन्त्रांश्"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "एडोन्स्"
+
+#~ msgctxt "@info:status"
+#~ msgid "Cancelled"
+#~ msgstr "रद्दीकृतम्"
 
 #~ msgctxt "Category"
 #~ msgid "CD and DVD"

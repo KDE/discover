@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-04 00:46+0000\n"
+"POT-Creation-Date: 2026-09-17 00:45+0000\n"
 "PO-Revision-Date: 2026-06-01 12:33+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -945,12 +945,12 @@ msgctxt "@action:button"
 msgid "Next Screenshot"
 msgstr "Næsta skjámynd"
 
-#: discover/qml/DiscoverDrawer.qml:161
+#: discover/qml/DiscoverDrawer.qml:163
 #, kde-format
 msgid "Security updates available"
 msgstr "Öryggisuppfærslur í boði"
 
-#: discover/qml/DiscoverDrawer.qml:162
+#: discover/qml/DiscoverDrawer.qml:164
 #, kde-format
 msgid "Updates available"
 msgstr "Uppfærslur eru tiltækar"

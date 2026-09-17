@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-10 00:48+0000\n"
+"POT-Creation-Date: 2026-09-17 00:45+0000\n"
 "PO-Revision-Date: 2026-09-14 20:10+0200\n"
 "Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -2576,9 +2576,10 @@ msgstr ""
 "rpm-ostree-backend: Chyba: Neznámy formát zdroja. Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
-#, kde-format
-msgid ""
-"Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 "Rušenie transakcie rpm-ostree. Môže to trvať určitý čas. Počkajte, prosím."
 
@@ -2844,9 +2845,10 @@ msgid "Failed"
 msgstr "Zlyhalo"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Canceled"
 msgctxt "@info:status"
-msgid "Cancelled"
+msgid "Canceled"
 msgstr "Zrušené"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
@@ -2872,6 +2874,10 @@ msgstr "Systémový softvér"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Doplnky"
+
+#~ msgctxt "@info:status"
+#~ msgid "Cancelled"
+#~ msgstr "Zrušené"
 
 #~ msgctxt "Category"
 #~ msgid "CD and DVD"

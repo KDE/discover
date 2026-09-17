@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-10 00:48+0000\n"
+"POT-Creation-Date: 2026-09-17 00:45+0000\n"
 "PO-Revision-Date: 2026-02-01 19:00+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -2549,8 +2549,7 @@ msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format
-msgid ""
-"Cancelling rpm-ostree transaction. This may take some time. Please wait."
+msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
@@ -2819,10 +2818,11 @@ msgid "Failed"
 msgstr "தோல்வியடைந்தது"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Canceled"
 msgctxt "@info:status"
-msgid "Cancelled"
-msgstr "ரத்துசெய்யப்பட்டுள்ளது"
+msgid "Canceled"
+msgstr "ரத்து செய்யப்பட்டுள்ளது"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, kde-format
@@ -2847,6 +2847,10 @@ msgstr "இயங்குதள நிரல்கள்"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "துணை நிரல்கள்"
+
+#~ msgctxt "@info:status"
+#~ msgid "Cancelled"
+#~ msgstr "ரத்துசெய்யப்பட்டுள்ளது"
 
 #~ msgctxt "Category"
 #~ msgid "CD and DVD"

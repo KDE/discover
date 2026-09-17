@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-04 00:46+0000\n"
+"POT-Creation-Date: 2026-09-17 00:45+0000\n"
 "PO-Revision-Date: 2026-05-10 16:28+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -880,12 +880,12 @@ msgctxt "@action:button"
 msgid "Next Screenshot"
 msgstr "அடுத்த திரைப்பிடிப்பு"
 
-#: discover/qml/DiscoverDrawer.qml:161
+#: discover/qml/DiscoverDrawer.qml:163
 #, kde-format
 msgid "Security updates available"
 msgstr "பாதுகாப்பு புதுப்பிப்புகள் உள்ளன"
 
-#: discover/qml/DiscoverDrawer.qml:162
+#: discover/qml/DiscoverDrawer.qml:164
 #, kde-format
 msgid "Updates available"
 msgstr "புதுப்பிப்புகள் உள்ளன"

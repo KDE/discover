@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-10 00:48+0000\n"
+"POT-Creation-Date: 2026-09-17 00:45+0000\n"
 "PO-Revision-Date: 2026-06-01 18:19+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -2591,9 +2591,10 @@ msgstr ""
 "rpm-ostree bakendi: Villa: Óþekkt snið tilfangs. Sendu inn villuskýrslu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
-#, kde-format
-msgid ""
-"Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr "Hætt við rpm-ostree færslu. Þetta gæti tekið smástund. Hinkraðu við."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
@@ -2860,9 +2861,10 @@ msgid "Failed"
 msgstr "Mistókst"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Canceled"
 msgctxt "@info:status"
-msgid "Cancelled"
+msgid "Canceled"
 msgstr "Hætt við"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
@@ -2888,6 +2890,10 @@ msgstr "Kerfishugbúnaður"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Viðbætur"
+
+#~ msgctxt "@info:status"
+#~ msgid "Cancelled"
+#~ msgstr "Hætt við"
 
 #~ msgctxt "Category"
 #~ msgid "CD and DVD"

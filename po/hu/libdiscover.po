@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-10 00:48+0000\n"
+"POT-Creation-Date: 2026-09-17 00:45+0000\n"
 "PO-Revision-Date: 2026-06-18 22:23+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2612,9 +2612,10 @@ msgstr ""
 "hibabejelentést."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
-#, kde-format
-msgid ""
-"Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 "Az rpm-ostree tranzakció megszakítása. Ez némi időbe telhet. Kérjük, várjon."
 
@@ -2890,9 +2891,10 @@ msgid "Failed"
 msgstr "Sikertelen"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Canceled"
 msgctxt "@info:status"
-msgid "Cancelled"
+msgid "Canceled"
 msgstr "Megszakítva"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
@@ -2918,6 +2920,10 @@ msgstr "Rendszerszoftver"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Bővítmények"
+
+#~ msgctxt "@info:status"
+#~ msgid "Cancelled"
+#~ msgstr "Megszakítva"
 
 #~ msgctxt "Category"
 #~ msgid "CD and DVD"

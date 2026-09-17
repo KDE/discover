@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-10 00:48+0000\n"
+"POT-Creation-Date: 2026-09-17 00:45+0000\n"
 "PO-Revision-Date: 2026-09-15 17:39+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -2488,9 +2488,10 @@ msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr "rpm-ostree 後端: 錯誤：未知的資源格式。請回報問題。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
-#, kde-format
-msgid ""
-"Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr "正在取消 rpm-ostree 作業。這可能會花一些時間。請稍候。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
@@ -2748,9 +2749,10 @@ msgid "Failed"
 msgstr "已失敗"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Canceled"
 msgctxt "@info:status"
-msgid "Cancelled"
+msgid "Canceled"
 msgstr "已取消"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
@@ -2776,6 +2778,10 @@ msgstr "系統軟體"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "附加功能"
+
+#~ msgctxt "@info:status"
+#~ msgid "Cancelled"
+#~ msgstr "已取消"
 
 #~ msgctxt "Category"
 #~ msgid "CD and DVD"

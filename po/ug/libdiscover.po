@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-10 00:48+0000\n"
+"POT-Creation-Date: 2026-09-17 00:45+0000\n"
 "PO-Revision-Date: 2026-05-29 17:22-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -2582,9 +2582,10 @@ msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr "rpm-ostree ئارقا ئۇچى: يوچۇن مەنبە پىچىمى. كەمتۈك مەلۇم قىلىڭ."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
-#, kde-format
-msgid ""
-"Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 "rpm-ostree بېجىرىدىغان ئىشنى قالدۇرۇۋېتىۋاتىدۇ. بۇنىڭغا بىر ئاز ۋاقىت كېتىشى "
 "مۇمكىن. سەل كۈتۈڭ."
@@ -2859,10 +2860,11 @@ msgid "Failed"
 msgstr "مەغلۇپ بولدى"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Canceled"
 msgctxt "@info:status"
-msgid "Cancelled"
-msgstr "ئەمەلدىن قالدۇرۇلدى"
+msgid "Canceled"
+msgstr "ۋاز كەچتى"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, kde-format
@@ -2887,6 +2889,10 @@ msgstr "سىستېما يۇمشاق دېتالى"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "قوشۇلما"
+
+#~ msgctxt "@info:status"
+#~ msgid "Cancelled"
+#~ msgstr "ئەمەلدىن قالدۇرۇلدى"
 
 #~ msgctxt "Category"
 #~ msgid "CD and DVD"

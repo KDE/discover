@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-10 00:48+0000\n"
+"POT-Creation-Date: 2026-09-17 00:45+0000\n"
 "PO-Revision-Date: 2026-09-08 20:27+0200\n"
 "Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -2596,9 +2596,10 @@ msgstr ""
 "einen Fehlerbericht."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
-#, kde-format
-msgid ""
-"Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 "Die rpm-ostree-Transaktion wird abgebrochen. Dies kann eine Weile dauern. "
 "Bitte warten."
@@ -2873,9 +2874,10 @@ msgid "Failed"
 msgstr "Fehlgeschlagen"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Canceled"
 msgctxt "@info:status"
-msgid "Cancelled"
+msgid "Canceled"
 msgstr "Abgebrochen"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
@@ -2901,6 +2903,10 @@ msgstr "System-Software"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Erweiterungen"
+
+#~ msgctxt "@info:status"
+#~ msgid "Cancelled"
+#~ msgstr "Abgebrochen"
 
 #~ msgctxt "Category"
 #~ msgid "CD and DVD"

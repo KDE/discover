@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-10 00:48+0000\n"
+"POT-Creation-Date: 2026-09-17 00:45+0000\n"
 "PO-Revision-Date: 2014-07-06 22:08+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -2791,8 +2791,7 @@ msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
 #, kde-format
-msgid ""
-"Cancelling rpm-ostree transaction. This may take some time. Please wait."
+msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
@@ -3081,7 +3080,7 @@ msgstr ""
 #| msgctxt "@action:button Cancels the download"
 #| msgid "Cancel"
 msgctxt "@info:status"
-msgid "Cancelled"
+msgid "Canceled"
 msgstr "Afbreken"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
@@ -3115,6 +3114,13 @@ msgstr "Video-Programmen"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr ""
+
+#, fuzzy
+#~| msgctxt "@action:button Cancels the download"
+#~| msgid "Cancel"
+#~ msgctxt "@info:status"
+#~ msgid "Cancelled"
+#~ msgstr "Afbreken"
 
 #, fuzzy
 #~| msgctxt ""

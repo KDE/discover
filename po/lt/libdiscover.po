@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-10 00:48+0000\n"
+"POT-Creation-Date: 2026-09-17 00:45+0000\n"
 "PO-Revision-Date: 2026-09-10 14:02+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -2590,9 +2590,10 @@ msgstr ""
 "apie klaidą."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
-#, kde-format
-msgid ""
-"Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 "Atsisakoma rpm-ostree operacijos. Tai gali šiek tiek užtrukti. Palaukite."
 
@@ -2864,9 +2865,10 @@ msgid "Failed"
 msgstr "Nepavyko"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Canceled"
 msgctxt "@info:status"
-msgid "Cancelled"
+msgid "Canceled"
 msgstr "Atsisakyta"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
@@ -2892,6 +2894,10 @@ msgstr "Sistemos programinė įranga"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Papildiniai"
+
+#~ msgctxt "@info:status"
+#~ msgid "Cancelled"
+#~ msgstr "Atsisakyta"
 
 #~ msgctxt "Category"
 #~ msgid "CD and DVD"
