@@ -23,6 +23,7 @@
   <name xml:lang="tr">AppStream Önizleme Arka Ucu</name>
   <name xml:lang="uk">Модуль попереднього перегляду AppStream</name>
   <name xml:lang="zh-CN">AppStream 预览后端程序</name>
+  <name xml:lang="zh-TW">AppStream 預覽後端介面</name>
   <developer id="org.kde">
     <name>KDE</name>
   </developer>
@@ -45,6 +46,7 @@
   <summary xml:lang="tr">AppStream dosyalarını Keşfet ile önizleyin</summary>
   <summary xml:lang="uk">Попередній перегляд файлів AppStream у Discover</summary>
   <summary xml:lang="zh-CN">在 Discover 中预览 AppStream 文件</summary>
+  <summary xml:lang="zh-TW">在 Discover 預覽 AppStream 檔案</summary>
   <url type="homepage">https://apps.kde.org/discover</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=Discover</url>
   <url type="donation">https://www.kde.org/community/donations/?app=discover&amp;source=appdata</url>
