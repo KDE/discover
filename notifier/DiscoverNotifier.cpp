@@ -446,11 +446,11 @@ void DiscoverNotifier::foundUpgradeAction(UpgradeAction *action)
 
     KNotification *notification = new KNotification(QStringLiteral("DistUpgrade"), KNotification::Persistent);
     notification->setIconName(QStringLiteral("system-software-update"));
-    notification->setTitle(i18n("Upgrade available"));
+    notification->setTitle(i18nc("A new distro release is available for upgrade", "Upgrade available"));
     notification->setText(i18nc("A new distro release (name and version) is available for upgrade", "%1 is now available.", action->description()));
     notification->setComponentName(QStringLiteral("discoverabstractnotifier"));
 
-    auto upgradeAction = notification->addAction(i18nc("@action:button", "Upgrade"));
+    auto upgradeAction = notification->addAction(i18nc("@action:button Upgrade to new distro release", "Upgrade"));
     connect(upgradeAction, &KNotificationAction::activated, this, [action] {
         action->trigger();
     });
