@@ -55,7 +55,6 @@ Name[sv]=Upptäck
 Name[ta]=டிஸ்கவர்
 Name[tg]=Кашфиёт
 Name[tr]=Keşfet
-Name[ug]=Discover
 Name[uk]=Discover
 Name[zh_CN]=Discover 软件中心
 Name[zh_TW]=Discover
