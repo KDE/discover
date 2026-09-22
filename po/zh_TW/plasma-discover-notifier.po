@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-23 00:45+0000\n"
+"POT-Creation-Date: 2026-09-22 00:46+0000\n"
 "PO-Revision-Date: 2026-04-08 23:40+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -79,7 +79,9 @@ msgid "Update and Shut Down"
 msgstr "更新並關機"
 
 #: notifier/DiscoverNotifier.cpp:449
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Upgrade available"
+msgctxt "A new distro release is available for upgrade"
 msgid "Upgrade available"
 msgstr "有可用的更新"
 
@@ -90,8 +92,10 @@ msgid "%1 is now available."
 msgstr "%1 現已可用。"
 
 #: notifier/DiscoverNotifier.cpp:453
-#, kde-format
-msgctxt "@action:button"
+#, fuzzy, kde-format
+#| msgctxt "@action:button"
+#| msgid "Upgrade"
+msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade"
 msgstr "升級"
 
