@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-17 00:45+0000\n"
-"PO-Revision-Date: 2026-09-06 20:03+0200\n"
+"PO-Revision-Date: 2026-09-22 21:55+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -2598,13 +2598,9 @@ msgstr ""
 "rpm-ostree-backend: Неизвестный формат ресурса. Сообщите об этой ошибке."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
-#, fuzzy, kde-format
-#| msgid ""
-#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, kde-format
 msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
-msgstr ""
-"Выполняется отмена выполняемой операции rpm-ostree. Это может занять "
-"некоторое время."
+msgstr "Отмена операции rpm-ostree. Это может занять некоторое время."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
 #, kde-format
@@ -2761,15 +2757,12 @@ msgid "Launch"
 msgstr "Запустить"
 
 #: libdiscover/resources/AbstractResource.cpp:270
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here. An app or runtime got updated "
 "without changing the user-facing version number %1"
 msgid "Refresh of version %1"
-msgstr "Обновление версии %1"
+msgstr "Обновление сборки версии %1"
 
 #: libdiscover/resources/AbstractResource.cpp:280
 #, kde-format
@@ -2877,11 +2870,10 @@ msgid "Failed"
 msgstr "Произошла ошибка"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, fuzzy, kde-format
-#| msgid "Canceled"
+#, kde-format
 msgctxt "@info:status"
 msgid "Canceled"
-msgstr "Отменено."
+msgstr "Отменено"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:137
 #, kde-format
