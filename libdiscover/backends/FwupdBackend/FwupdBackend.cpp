@@ -137,20 +137,20 @@ void FwupdBackend::addUpdates()
             if (!res) {
                 qWarning() << "Fwupd Error: Cannot Create App From Device" << fwupd_device_get_name(device);
             } else {
-                QString longdescription;
+                QStringList descriptions;
                 for (uint j = 0; j < rels->len; j++) {
                     FwupdRelease *release = (FwupdRelease *)g_ptr_array_index(rels, j);
-                    if (!fwupd_release_get_description(release))
+
+                    const QString description = QString::fromUtf8(fwupd_release_get_description(release));
+                    if (description.isEmpty()) {
                         continue;
-                    if (rels->len > 1) {
-                        longdescription += QStringLiteral("Version %1\n").arg(QString::fromUtf8(fwupd_release_get_version(release)));
                     }
-                    longdescription += QString::fromUtf8(fwupd_release_get_description(release));
-                    if (rels->len > 1) {
-                        longdescription += QLatin1Char('\n');
-                    }
+
+                    const QString version = i18n("Version %1", QString::fromUtf8(fwupd_release_get_version(release)));
+
+                    descriptions << ((rels->len == 1) ? description : QStringLiteral("### %1  <br/>\n\n%2").arg(version).arg(description));
                 }
-                res->setDescription(longdescription);
+                res->setDescription(descriptions.join(QStringLiteral("\n\n")));
 
                 // Make sure to set the installed version of the current thing so
                 // they can both be shown in the update page UI

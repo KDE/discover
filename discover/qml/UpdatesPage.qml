@@ -577,7 +577,7 @@ DiscoverPage {
                 QQC2.Frame {
                     Layout.fillWidth: true
                     Layout.leftMargin: delegateLayout.extraContentLeadingMargin
-                    implicitHeight: view.implicitHeight
+                    implicitHeight: view.implicitHeight + topPadding + bottomPadding
                     visible: listItem.model.extended && listItem.model.changelog.length > 0
                     QQC2.Label {
                         id: view
@@ -586,11 +586,10 @@ DiscoverPage {
                             left: parent.left
                         }
                         text: listItem.model.changelog
-                        textFormat: Text.StyledText
+                        textFormat: Text.MarkdownText
                         wrapMode: Text.WordWrap
                         color: listItem.down ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
                         onLinkActivated: link => Qt.openUrlExternally(link)
-
                     }
                 }
             }
