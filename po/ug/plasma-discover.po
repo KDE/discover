@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-17 00:45+0000\n"
-"PO-Revision-Date: 2026-09-23 06:56+0900\n"
+"POT-Creation-Date: 2026-09-26 00:46+0000\n"
+"PO-Revision-Date: 2026-09-24 19:29-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -67,6 +67,12 @@ msgid ""
 "instead using the <command>pacman</command> command-line tool to manage "
 "packages.</para>"
 msgstr ""
+"%1 ئارقىلىق يۇمشاق دېتال بوغچىسىنى ئورنىتىش ئىقتىدارىنىڭ قوللاش بۆلىكى تولۇق "
+"ئەمەس؛ شۇڭا بىر قىسىم مەسىلىگە يولۇقۇشىڭىز مۇمكىن. KDE غا كەمتۈك مەلۇم "
+"قىلماڭ. <resource>packagekit-qt6</resource> نى سۆكۈۋېتىپ ئۇنىڭ ئورنىغا "
+"Discover ئارقىلىق  Flatpaks، Snaps ۋە قوشۇلمىنى باشقۇرۇشىڭىزنى كۈچلۈك "
+"تەۋسىيە قىلىمىز.<para>%1 ئاسرىغۇچىلىرى ئىشلەتكۈچىلەرنىڭ <command>pacman</"
+"command> بۇيرۇق قۇرى قورالى ئارقىلىق بوغچا باشقۇرۇشىنى تەۋسىيە قىلىدۇ.</para>"
 
 #: discover/DiscoverObject.cpp:305
 #, kde-format
@@ -84,6 +90,8 @@ msgid ""
 "Cannot interact with flatpak resources without the flatpak backend %1. "
 "Please install it first."
 msgstr ""
+"flatpak ئارقا ئۇچ پىروگراممىسى %1 كەم، flatpak مەنبەسى بىلەن "
+"تەسىرلىشەلمەيدۇ. ئالدى بىلەن ئۇنى ئورنىتىڭ."
 
 #: discover/DiscoverObject.cpp:353
 #, kde-format
@@ -120,7 +128,7 @@ msgstr ""
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
-msgstr ""
+msgstr "Discover"
 
 #: discover/DiscoverObject.cpp:517
 #, kde-format
@@ -151,6 +159,8 @@ msgstr "بىر سەھىپىنىڭ تۈر تىزىمىنى كۆرسىتىدۇ."
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
 msgstr ""
+"بەلگىلەنگەن ھالەتتە Discover نى ئاچىدۇ. ھالەت بىلەن قورال بالداق توپچە "
+"ماسلىشىدۇ."
 
 #: discover/main.cpp:38
 #, kde-format
@@ -202,27 +212,27 @@ msgstr "© 2010-2026 Plasma ئىجادىيەت قوشۇنى"
 #: discover/main.cpp:125
 #, kde-format
 msgid "Aleix Pol Gonzalez"
-msgstr ""
+msgstr "Aleix Pol Gonzalez"
 
 #: discover/main.cpp:126
 #, kde-format
 msgid "Nate Graham"
-msgstr ""
+msgstr "Nate Graham"
 
 #: discover/main.cpp:127
 #, kde-format
 msgid "Quality Assurance, Design, and Usability"
-msgstr ""
+msgstr "يۇمشاق دېتال سۈپەت كاپالىتى، لايىھە ۋە ئىشلىتىش قولايلىقى"
 
 #: discover/main.cpp:131
 #, kde-format
 msgid "Dan Leinir Turthra Jensen"
-msgstr ""
+msgstr "Dan Leinir Turthra Jensen"
 
 #: discover/main.cpp:132
 #, kde-format
 msgid "KNewStuff"
-msgstr ""
+msgstr "KNewStuff"
 
 #: discover/main.cpp:139
 #, kde-format
@@ -306,6 +316,19 @@ msgid ""
 "url='%2'>the application’s website</link>.<nl/><nl/>Learn more at <link "
 "url='%3'>%3</link>."
 msgstr ""
+"ئەگەر ئۇنىڭ يازغۇچىسىغا تولۇق ئىشەنسىڭىز %1 نى ئورنىتىڭ، چۈنكى ئۇ <emphasis "
+"strong='true'>خۇسۇسىي يۇمشاق دېتال</emphasis>: ئىشلەتكۈچىنىڭ بۇ يۇمشاق "
+"دېتالنى ئىشلىتىش، ئۆزگەرتىش ۋە تارقىتىشى ئەركىنلىكى چەكلىمىگە ئۇچرايدۇ، "
+"ئۇنىڭ ئۈستىگە يۇمشاق دېتالنىڭ بىر قىسىم ياكى ھەممە ئەسلى كودى كۆپچىلىكنىڭ "
+"نازارىتى ۋە ياخشىلىشى ئۈچۈن ئېچىۋېتىلمىگەن. بۇ ئۈچىنچى تەرەپ ۋە "
+"ئىشلەتكۈچىنىڭ يۇمشاق دېتالنىڭ ئىشلەش ئۇسۇلى، بىخەتەرلىكى ۋە ئىشەنچلىكلىكىنى "
+"دەلىللىيەلمەيدۇ.<nl/><nl/>بۇ يۇمشاق دېتال پىروگراممىسى ئىشلىتىشكە بىخەتەر "
+"بولۇشى مۇمكىن ياكى ھوقۇقىڭىزغا دەخلى تەرز قىلىدىغان قىلمىشى بولۇشى مۇمكىن — "
+"مەسىلەن، شەخسىي ئۇچۇر توپلاش، ئورنىڭىزنى ئىزلاش، ئۇچۇرىڭىزنى باشقىلارغا "
+"يوللاش قاتارلىق. ئەگەر سىز يازغۇچىغا تولۇق ئىشەنگەندىلا ئاندىن بۇ يۇمشاق "
+"دېتال پىروگراممىسىنى ئىشلىتىڭ. تېخىمۇ كۆپ ئۇچۇر <link url='%2'>يۇمشاق دېتال "
+"پىروگراممىسىنىڭ تور بېكىتى</link> دە بولۇشى مۇمكىن.<nl/><nl/>تەپسىلاتىنى "
+"<link url='%3'>%3</link> دىن كۆرۈڭ."
 
 #: discover/qml/ApplicationPage.qml:72
 #, kde-kuit-format
@@ -322,6 +345,17 @@ msgid ""
 "transmitting the contents of your data to someone else. Only use it if you "
 "fully trust its authors. Learn more at <link url='%2'>%2</link>."
 msgstr ""
+"ئەگەر ئۇنىڭ يازغۇچىسىغا تولۇق ئىشەنسىڭىز %1 نى ئورنىتىڭ، چۈنكى ئۇ <emphasis "
+"strong='true'>خۇسۇسىي يۇمشاق دېتال</emphasis>: ئىشلەتكۈچىنىڭ بۇ يۇمشاق "
+"دېتالنى ئىشلىتىش، ئۆزگەرتىش ۋە تارقىتىشى ئەركىنلىكى چەكلىمىگە ئۇچرايدۇ، "
+"ئۇنىڭ ئۈستىگە يۇمشاق دېتالنىڭ بىر قىسىم ياكى ھەممە ئەسلى كودى كۆپچىلىكنىڭ "
+"نازارىتى ۋە ياخشىلىشى ئۈچۈن ئېچىۋېتىلمىگەن. بۇ ئۈچىنچى تەرەپ ۋە "
+"ئىشلەتكۈچىنىڭ يۇمشاق دېتالنىڭ ئىشلەش ئۇسۇلى، بىخەتەرلىكى ۋە ئىشەنچلىكلىكىنى "
+"دەلىللىيەلمەيدۇ.<nl/><nl/>بۇ يۇمشاق دېتال پىروگراممىسى ئىشلىتىشكە بىخەتەر "
+"بولۇشى مۇمكىن ياكى ھوقۇقىڭىزغا دەخلى تەرز قىلىدىغان قىلمىشى بولۇشى مۇمكىن — "
+"مەسىلەن، شەخسىي ئۇچۇر توپلاش، ئورنىڭىزنى ئىزلاش، ئۇچۇرىڭىزنى باشقىلارغا "
+"يوللاش قاتارلىق. ئەگەر سىز يازغۇچىغا تولۇق ئىشەنگەندىلا ئاندىن بۇ يۇمشاق "
+"دېتال پىروگرممىسىنى ئىشلىتىڭ. تەپسىلاتىنى <link url='%2'>%2</link> دىن كۆرۈڭ."
 
 #: discover/qml/ApplicationPage.qml:79
 #, kde-kuit-format
@@ -339,6 +373,20 @@ msgid ""
 "url='%4'>the application’s website</link>.<nl/><nl/>Learn more at <link "
 "url='%5'>%5</link>."
 msgstr ""
+"%1 نىڭ ئىشلىتىش ئىجازەتنامىسىدە <link url='%2'>ئەركىن يۇمشاق دېتال ۋەخپىسى</"
+"link> ياكى <link url='%3'>ئوچۇق كودلۇق يۇمشاق دېتال ئىلگىرى سۈرۈش جەمئىيىتى "
+"Initiative</link> نىڭ «ئەركىن يۇمشاق دېتال» ئېنىقلىمىسىدىكى كەم دېگەندە  "
+"بىرىگە ماس كەلمەيدىغان ماددا بار. ئىشلەتكۈچىنىڭ بۇ يۇمشاق دېتالنى ئىشلىتىش، "
+"تەتقىق قىلىش، ئۆزگەرتىش، ھەمبەھىرلەش ئەركىنلىكى چەكلىمىگە ئۇچرايدىغانلىقىدىن "
+"دېرەك بېرىدۇ.<nl/><nl/>بۇ يۇمشاق دېتال پىروگراممىسىنى ئىشلىتىشتىن ئىلگىرى "
+"ئىجازەتنامە تېكىستىنى ئەستايىدىللىق بىلەن ئوقۇپ مۇمكىنچىلىكى بار چەكلىمە "
+"ماددىلىرىنى چۈشىنىڭ.<nl/><nl/>ئەگەر پىروگراممىنىڭ ئىجازەتنامىسى "
+"ئىشلەتكۈچىنىڭ ئۇنىڭ ئەسلى كودىنى كۆرۈشكە يول قويمىسا، ئۇنىڭ يازغۇچىسىغا "
+"تولۇق ئىشىنىدىغانلىقىڭىزنى جەزملەڭ، چۈنكى ئىشلەتكۈچىنىڭ ھوقۇقىنىڭ دەخلى "
+"تەرزگە ئۇچرىماسلىقى ئۈچۈن باشقىلار ئۇ پىروگراممىنىڭ بىخەتەرلىكى ۋە "
+"ئىشەنچلىكلىكىنى دەلىللىيەلمەيدۇ. تېخىمۇ كۆپ ئۇچۇر <link url='%4'>يۇمشاق "
+"دېتال پىروگراممىسىنىڭ تور بېكىتى</link> دە بولۇشى مۇمكىن.<nl/><nl/"
+">تەپسىلاتىنى <link url='%5'>%5</link> دىن كۆرۈڭ."
 
 #: discover/qml/ApplicationPage.qml:86
 #, kde-kuit-format
@@ -354,6 +402,19 @@ msgid ""
 "trustworthiness and security of its code to ensure that it is not acting "
 "against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>."
 msgstr ""
+"%1 نىڭ ئىشلىتىش ئىجازەتنامىسىدە <link url='%2'>ئەركىن يۇمشاق دېتال ۋەخپىسى</"
+"link> ياكى <link url='%3'>ئوچۇق كودلۇق يۇمشاق دېتال ئىلگىرى سۈرۈش جەمئىيىتى "
+"Initiative</link> نىڭ «ئەركىن يۇمشاق دېتال» ئېنىقلىمىسىدىكى كەم دېگەندە  "
+"بىرىگە ماس كەلمەيدىغان ماددا بار. ئىشلەتكۈچىنىڭ بۇ يۇمشاق دېتالنى ئىشلىتىش، "
+"تەتقىق قىلىش، ئۆزگەرتىش، ھەمبەھىرلەش ئەركىنلىكى چەكلىمىگە ئۇچرايدىغانلىقىدىن "
+"دېرەك بېرىدۇ.<nl/><nl/>بۇ يۇمشاق دېتال پىروگراممىسىنى ئىشلىتىشتىن ئىلگىرى "
+"ئىجازەتنامە تېكىستىنى ئەستايىدىللىق بىلەن ئوقۇپ مۇمكىنچىلىكى بار چەكلىمە "
+"ماددىلىرىنى چۈشىنىڭ.<nl/><nl/>ئەگەر پىروگراممىنىڭ ئىجازەتنامىسى "
+"ئىشلەتكۈچىنىڭ ئۇنىڭ ئەسلى كودىنى كۆرۈشكە يول قويمىسا، ئۇنىڭ يازغۇچىسىغا "
+"تولۇق ئىشىنىدىغانلىقىڭىزنى جەزملەڭ، چۈنكى ئىشلەتكۈچىنىڭ ھوقۇقىنىڭ دەخلى "
+"تەرزگە ئۇچرىماسلىقى ئۈچۈن باشقىلار ئۇ پىروگراممىنىڭ بىخەتەرلىكى ۋە "
+"ئىشەنچلىكلىكىنى دەلىللىيەلمەيدۇ.<nl/><nl/>تەپسىلاتىنى <link url='%4'>%4</"
+"link> دىن كۆرۈڭ."
 
 #: discover/qml/ApplicationPage.qml:95
 #, kde-kuit-format
@@ -364,6 +425,10 @@ msgid ""
 "it there or contact the author if you want to use this application for "
 "anything other than private personal use."
 msgstr ""
+"%1 قانداق ئىجازەتنامە بويىچە تارقىتىلغانلىقى ئېنىق ئەمەس. ئەگەر بۇ "
+"پىروگراممىنى شەخسىي ئىشىڭىزدىن باشقا ئىشقا ئىشلەتمەكچى بولسىڭىز <link "
+"url='%2'>پىروگراممىنىڭ تور بېكىتى</link> نى زىيارەت قىلىپ ياكى پىروگراممىنىڭ "
+"يازغۇچىسى بىلەن ئالاقىلىشىپ ئىشلىتىش ئىجازەتنامىسىنىڭ تەپسىلاتىنى ئىگىلەڭ."
 
 #: discover/qml/ApplicationPage.qml:99
 #, kde-format
@@ -373,6 +438,9 @@ msgid ""
 "application’s author if you want to use it for anything other than private "
 "personal use."
 msgstr ""
+"%1 قانداق ئىجازەتنامە بويىچە تارقىتىلغانلىقى ئېنىق ئەمەس.  ئەگەر بۇ "
+"پىروگراممىنى شەخسىي ئىشىڭىزدىن باشقا ئىشقا ئىشلەتمەكچى بولسىڭىز "
+"پىروگراممىنىڭ يازغۇچىسى بىلەن ئالاقىلىشىڭ."
 
 #: discover/qml/ApplicationPage.qml:138
 #, kde-format
@@ -397,7 +465,7 @@ msgstr "ئەۋەتكۈچى %1"
 #: discover/qml/ApplicationPage.qml:208
 #, kde-format
 msgid "%1 - %2"
-msgstr ""
+msgstr "%1 - %2"
 
 #: discover/qml/ApplicationPage.qml:228
 #, kde-format
@@ -420,7 +488,7 @@ msgstr "%1 نىڭ ئېكران كەسمىسىنى ئىشلەتكىلى بولم�
 #: discover/qml/ApplicationPage.qml:436
 #, kde-format
 msgid "What’s New"
-msgstr ""
+msgstr "نېمە يېڭىلىق بار"
 
 #: discover/qml/ApplicationPage.qml:469
 #, kde-format
@@ -476,19 +544,19 @@ msgstr "سىرتقى ئۇلانما"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the FAQ"
-msgstr ""
+msgstr "كۆپ سورالغان سوئالنى ئوقۇيدۇ"
 
 #: discover/qml/ApplicationPage.qml:600
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the full documentation"
-msgstr ""
+msgstr "تولۇق قوللانمىنى ئوقۇيدۇ"
 
 #: discover/qml/ApplicationPage.qml:611
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project’s website"
-msgstr ""
+msgstr "قۇرۇلۇشنىڭ تور بېكىتىنى زىيارەت قىلىدۇ"
 
 #: discover/qml/ApplicationPage.qml:621
 #, kde-format
@@ -518,13 +586,13 @@ msgstr "تەرجىمىگە ياردەملەشكۈچى"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Contact the developers"
-msgstr ""
+msgstr "ئىجادكار بىلەن ئالاقە قىلىدۇ"
 
 #: discover/qml/ApplicationPage.qml:671
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Browse the source code"
-msgstr ""
+msgstr "مەنبە كودىغا كۆز يۈگۈرتىدۇ"
 
 #: discover/qml/ApplicationPage.qml:700
 #, kde-format
@@ -615,7 +683,7 @@ msgstr "ھەممەيلەن"
 #, kde-format
 msgctxt "@item %1 is a person's age in number of years"
 msgid "%1+"
-msgstr ""
+msgstr "%1+"
 
 #: discover/qml/ApplicationPageFullComponent.qml:391
 #, kde-format
@@ -699,7 +767,7 @@ msgstr "تارقاتقان ۋاقتى"
 #, kde-format
 msgctxt "@info"
 msgid "Group by Type"
-msgstr ""
+msgstr "تۈرى بويىچە گۇرۇپپىلا"
 
 #: discover/qml/ApplicationsListPage.qml:248
 #, kde-format
@@ -740,6 +808,10 @@ msgid ""
 "been reviewed by your distributor for functionality or stability. Use with "
 "caution."
 msgstr ""
+"«%1» توردا بولۇشى مۇمكىن. توردىن چۈشۈرگەن يۇمشاق دېتال مەزكۇر سىستېمىنى "
+"تارقاتقۇچىنىڭ تەكشۈرۈشىدىن ئۆتمىگەن، مەزكۇر سىستېمىدا ئىجرا قىلغاندىن "
+"كېيىنكى ئىقتىدارى ۋە مۇقىملىقىغا كاپالەتلىك قىلالمايدۇ. ئېھتىيات بىلەن "
+"ئىشلىتىڭ."
 
 #: discover/qml/ApplicationsListPage.qml:317
 #, kde-format
@@ -774,7 +846,7 @@ msgstr "تەپسىلاتى"
 #, kde-format
 msgctxt "@title:group"
 msgid "Editor’s Choice"
-msgstr ""
+msgstr "تەھرىر تاللىغان"
 
 #: discover/qml/BrowsingPage.qml:165
 #, kde-format
@@ -938,6 +1010,7 @@ msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr ""
+"يېڭىلاش ياكى ئورنىتىش جەريانىدا مەسىلە كۆرۈلگەن. سەل تۇرۇپ قايتا سىناڭ."
 
 #: discover/qml/DiscoverWindow.qml:415
 #, kde-format
@@ -972,6 +1045,9 @@ msgid ""
 "Sends anonymized usage information to KDE so we can better understand our "
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
+"ئاتسىزلاشتۇرۇلغان ئىشلىتىش ئۇچۇرىنى KDE غا يوللاپ، ئىشلەتكۈچىلەرنىڭ "
+"ئېھتىياجىنى چۈشىنىشىمىزگە ياردەم بېرىدۇ. تېخىمۇ كۆپ ئۇچۇرنى https://kde.org/"
+"privacypolicy-apps.php دىن كۆرۈڭ."
 
 #: discover/qml/Feedback.qml:20
 #, kde-format
@@ -999,6 +1075,8 @@ msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
 "you use it."
 msgstr ""
+"Discover نى قانداق ئىشلىتىش ھەققىدىكى ئاتسىز ئۇچۇرنى ھەمبەھىرلەپ KDE نىڭ "
+"ئۇنى ياخشىلىشىغا ياردەم بېرەلەيسىز."
 
 #: discover/qml/Feedback.qml:60
 #, kde-format
@@ -1046,7 +1124,7 @@ msgstr "ئورنىتىلغان"
 #: discover/qml/Navigation.qml:36
 #, kde-format
 msgid "Resources for “%1”"
-msgstr ""
+msgstr "«%1» نىڭ مەنبەسى"
 
 #: discover/qml/ProgressView.qml:29
 #, kde-format
@@ -1062,13 +1140,13 @@ msgstr "ۋەزىپە"
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1: %2, %3 remaining"
-msgstr ""
+msgstr "%1: %2، %3 قالدى"
 
 #: discover/qml/ProgressView.qml:152
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: discover/qml/Rating.qml:119
 #, kde-format
@@ -1138,6 +1216,9 @@ msgid ""
 "If you love %1, tell people what’s great about it! Focus on functionality, "
 "usability, and appearance. If the app didn’t meet your needs, explain why."
 msgstr ""
+"ئەگەر %1 نى ياقتۇرسىڭىز، ئۇنىڭ قايسى تەرەپلىرىنى ياقتۇرىدىغانلىقىڭىزنى "
+"باشقىلارغا بىلدۈرۈڭ! مەسىلەن، ئىقتىدار، ئىشلىتىش قولايلىقى ۋە قىياپىتى. "
+"ئەگەر پىروگرامما كۈتكىنىڭىزدەك بولمىسا سەۋەبىنى بايان قىلىڭ."
 
 #: discover/qml/ReviewDialog.qml:72
 #, kde-kuit-format
@@ -1147,6 +1228,10 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"ئەگەر %1 نى قوزغاتقىلى بولمىسا، مەسىلىنى <link url='%3'>%2</link> ئارقىلىق "
+"ئۇنى بوغچىلىغۇچى %3 غا مەلۇم قىلىشنى ئويلىشىڭ، چۈنكى بۇ پىروگراممىنىڭ "
+"كەمتۈكلۈكى ئەمەس بەلكى ئاسانلا ئوڭشىغىلى بولىدىغان بوغچىلاش مەسىلىسى بولۇشى "
+"مۇمكىن."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1156,6 +1241,9 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"ئەگەر %1 نى قوزغاتقىلى بولمىسا، مەسىلىنى <link url='%2'>%2</link> ئارقىلىق "
+"ئۇنىڭ ئىجادكارىغا مەلۇم قىلىشنى ئويلىشىڭ، چۈنكى بۇ پىروگراممىنىڭ كەمتۈكلۈكى "
+"ئەمەس بەلكى ئاسانلا ئوڭشىغىلى بولىدىغان بوغچىلاش مەسىلىسى بولۇشى مۇمكىن."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
@@ -1164,6 +1252,8 @@ msgid ""
 "If the app is crashing a lot, consider reporting this to its developers at "
 "<link url='%1'>%1</link> instead."
 msgstr ""
+"ئەگەر پىروگرامما كۆپ قېتىم يىمىرىلسە، مەسىلىنى <link url='%1'>%1</link> "
+"ئارقىلىق ئۇنىڭ ئىجادكارىغا مەلۇم قىلىشنى ئويلىشىڭ."
 
 #: discover/qml/ReviewDialog.qml:85
 #, kde-kuit-format
@@ -1173,6 +1263,9 @@ msgid ""
 "developers at <link url='%1'>%1</link> instead, or else describe the problem "
 "here in greater detail."
 msgstr ""
+"ئەگەر پىروگراممىدا مەسىلە كۆرۈلسە، مەسىلىنى <link url='%1'>%1</link> "
+"ئارقىلىق ئۇنىڭ ئىجادكارىغا مەلۇم قىلىشنى ئويلىشىڭ ياكى بۇ جايدا مەسىلىنىڭ "
+"تەپسىلاتىنى بايان قىلىڭ."
 
 #: discover/qml/ReviewDialog.qml:120
 #, kde-format
@@ -1295,7 +1388,7 @@ msgstr "%1 باھالاش"
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #: discover/qml/ReviewsStats.qml:167
 #, kde-format
@@ -1322,7 +1415,7 @@ msgstr "ئىزدە…"
 #: discover/qml/SearchField.qml:26
 #, kde-format
 msgid "Search in “%1”…"
-msgstr ""
+msgstr "«%1»‎‏ دىن ئىزدە…"
 
 #: discover/qml/SourcesPage.qml:19
 #, kde-format
@@ -1352,7 +1445,7 @@ msgstr "ئالدىنلىقىنى ئۆستۈر"
 #: discover/qml/SourcesPage.qml:258
 #, kde-format
 msgid "Failed to increase “%1” preference"
-msgstr ""
+msgstr "«%1» نىڭ مايىللىقىنى ئۆستۈرەلمىدى"
 
 #: discover/qml/SourcesPage.qml:264
 #, kde-format
@@ -1362,7 +1455,7 @@ msgstr "ئالدىنلىقىنى كېمەيت"
 #: discover/qml/SourcesPage.qml:270
 #, kde-format
 msgid "Failed to decrease “%1” preference"
-msgstr ""
+msgstr "«%1» نىڭ مايىللىقىنى كېمەيتەلمىدى"
 
 #: discover/qml/SourcesPage.qml:276
 #, kde-format
@@ -1378,7 +1471,7 @@ msgstr "مەزمۇننى كۆرسەت"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Enable this source"
-msgstr ""
+msgstr "بۇ مەنبەنى قوزغات"
 
 #: discover/qml/SourcesPage.qml:330
 #, kde-format
@@ -1398,7 +1491,7 @@ msgstr "تېخنىكىلىق تەپسىلات"
 #: discover/qml/UpdatesPage.qml:63
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
-msgstr ""
+msgstr "بۇ يېڭىلاشنى ئورنىتىۋاتقاندا مەسىلە كۆرۈلگەن. سەل تۇرۇپ قايتا سىناڭ."
 
 #: discover/qml/UpdatesPage.qml:96
 #, kde-format
@@ -1421,6 +1514,7 @@ msgstr "تېكىست كۆچۈر"
 msgctxt "@info %1 is the name of the user's distro/OS"
 msgid "Error message copied. Remember to report it to %1, not KDE!"
 msgstr ""
+"خاتالىق ئۇچۇرى كۆچۈرۈلدى. KDE غا ئەمەس بەلكى %1 غا مەلۇم قىلىشنى ئۇنتۇماڭ!"
 
 #: discover/qml/UpdatesPage.qml:115
 #, kde-format
@@ -1489,7 +1583,7 @@ msgstr "تاقا"
 #, kde-format
 msgctxt "@item:inlistbox after updates complete, quit Discover"
 msgid "Quit Discover"
-msgstr ""
+msgstr "Discover دىن چېكىن"
 
 #: discover/qml/UpdatesPage.qml:306
 #, kde-format
@@ -1511,7 +1605,7 @@ msgstr "ئورنىتىۋاتىدۇ"
 #, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
-msgstr "كىمدىن:"
+msgstr "نەدىن:"
 
 #: discover/qml/UpdatesPage.qml:560
 #, kde-format
@@ -1519,7 +1613,7 @@ msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
 "address within that backend"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: discover/qml/UpdatesPage.qml:572
 #, kde-format
@@ -1527,44 +1621,46 @@ msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "تەپسىلاتى…"
 
-#: discover/qml/UpdatesPage.qml:645
+#: discover/qml/UpdatesPage.qml:644
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "يېڭىلانمىغا ئېرىشىۋاتىدۇ…"
 
-#: discover/qml/UpdatesPage.qml:660
+#: discover/qml/UpdatesPage.qml:659
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "يېڭىلانما"
 
-#: discover/qml/UpdatesPage.qml:670
+#: discover/qml/UpdatesPage.qml:669
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "سىستېما قايتا قوزغىتىلغاندىن كېيىن يېڭىلانما ئورنىتىلىدۇ"
 
-#: discover/qml/UpdatesPage.qml:672
+#: discover/qml/UpdatesPage.qml:671
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you’re not ready to restart yet."
 msgstr ""
+"ئەگەر قايتا قوزغىتىشقا تېخى ھازىرلانمىغان بولسىڭىز سىستېما ئىشلىتىشنى "
+"داۋاملاشتۇرسىڭىز بولىدۇ."
 
-#: discover/qml/UpdatesPage.qml:677 discover/qml/UpdatesPage.qml:684
-#: discover/qml/UpdatesPage.qml:691
+#: discover/qml/UpdatesPage.qml:676 discover/qml/UpdatesPage.qml:683
+#: discover/qml/UpdatesPage.qml:690
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "ئەڭ يېڭى"
 
-#: discover/qml/UpdatesPage.qml:698
+#: discover/qml/UpdatesPage.qml:697
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "يېڭىلانمىنى تەكشۈرۈش زۆرۈر"
 
-#: discover/qml/UpdatesPage.qml:705
+#: discover/qml/UpdatesPage.qml:704
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

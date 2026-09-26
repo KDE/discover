@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-17 00:45+0000\n"
+"POT-Creation-Date: 2026-09-26 00:46+0000\n"
 "PO-Revision-Date: 2026-09-21 15:31+0200\n"
 "Last-Translator: Shinjo Park <peremen@gmail.com>\n"
 "Language-Team: Korean\n"
@@ -1585,44 +1585,44 @@ msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "자세한 정보…"
 
-#: discover/qml/UpdatesPage.qml:645
+#: discover/qml/UpdatesPage.qml:644
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "업데이트 가져오는 중…"
 
-#: discover/qml/UpdatesPage.qml:660
+#: discover/qml/UpdatesPage.qml:659
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "업데이트"
 
-#: discover/qml/UpdatesPage.qml:670
+#: discover/qml/UpdatesPage.qml:669
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "시스템을 다시 시작한 후 업데이트가 설치됨"
 
-#: discover/qml/UpdatesPage.qml:672
+#: discover/qml/UpdatesPage.qml:671
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you’re not ready to restart yet."
 msgstr "다시 시작할 준비가 되지 않았다면 시스템을 계속 사용할 수 있습니다."
 
-#: discover/qml/UpdatesPage.qml:677 discover/qml/UpdatesPage.qml:684
-#: discover/qml/UpdatesPage.qml:691
+#: discover/qml/UpdatesPage.qml:676 discover/qml/UpdatesPage.qml:683
+#: discover/qml/UpdatesPage.qml:690
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "최신 상태"
 
-#: discover/qml/UpdatesPage.qml:698
+#: discover/qml/UpdatesPage.qml:697
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "업데이트 확인 여부"
 
-#: discover/qml/UpdatesPage.qml:705
+#: discover/qml/UpdatesPage.qml:704
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

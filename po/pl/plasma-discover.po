@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-17 00:45+0000\n"
+"POT-Creation-Date: 2026-09-26 00:46+0000\n"
 "PO-Revision-Date: 2026-08-29 16:44+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -1621,45 +1621,45 @@ msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "Więcej szczegółów…"
 
-#: discover/qml/UpdatesPage.qml:645
+#: discover/qml/UpdatesPage.qml:644
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Pobieranie uaktualnień…"
 
-#: discover/qml/UpdatesPage.qml:660
+#: discover/qml/UpdatesPage.qml:659
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Uaktualnienia"
 
-#: discover/qml/UpdatesPage.qml:670
+#: discover/qml/UpdatesPage.qml:669
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "Uaktualnienia zostaną wgrane po ponownym uruchomieniu systemu"
 
-#: discover/qml/UpdatesPage.qml:672
+#: discover/qml/UpdatesPage.qml:671
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you’re not ready to restart yet."
 msgstr ""
 "Możesz nadal używać komputera, jeśli nie chcesz go teraz ponownie uruchomić."
 
-#: discover/qml/UpdatesPage.qml:677 discover/qml/UpdatesPage.qml:684
-#: discover/qml/UpdatesPage.qml:691
+#: discover/qml/UpdatesPage.qml:676 discover/qml/UpdatesPage.qml:683
+#: discover/qml/UpdatesPage.qml:690
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "System aktualny"
 
-#: discover/qml/UpdatesPage.qml:698
+#: discover/qml/UpdatesPage.qml:697
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Należy wyszukać uaktualnień"
 
-#: discover/qml/UpdatesPage.qml:705
+#: discover/qml/UpdatesPage.qml:704
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

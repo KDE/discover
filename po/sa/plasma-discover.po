@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-17 00:45+0000\n"
+"POT-Creation-Date: 2026-09-26 00:46+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -1718,44 +1718,44 @@ msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "अधिकविवरणम्…"
 
-#: discover/qml/UpdatesPage.qml:645
+#: discover/qml/UpdatesPage.qml:644
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "अद्यतनं आनयन्…"
 
-#: discover/qml/UpdatesPage.qml:660
+#: discover/qml/UpdatesPage.qml:659
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "अद्यतनाः"
 
-#: discover/qml/UpdatesPage.qml:670
+#: discover/qml/UpdatesPage.qml:669
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:672
+#: discover/qml/UpdatesPage.qml:671
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you’re not ready to restart yet."
 msgstr ""
 
-#: discover/qml/UpdatesPage.qml:677 discover/qml/UpdatesPage.qml:684
-#: discover/qml/UpdatesPage.qml:691
+#: discover/qml/UpdatesPage.qml:676 discover/qml/UpdatesPage.qml:683
+#: discover/qml/UpdatesPage.qml:690
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "अद्यतनम्"
 
-#: discover/qml/UpdatesPage.qml:698
+#: discover/qml/UpdatesPage.qml:697
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "अद्यतनं अन्वेष्टव्यम्"
 
-#: discover/qml/UpdatesPage.qml:705
+#: discover/qml/UpdatesPage.qml:704
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"
