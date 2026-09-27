@@ -803,5 +803,4 @@ void DiscoverObject::setSidebarWidth(int width)
     Q_EMIT sidebarWidthChanged(width);
 }
 
-#include "DiscoverObject.moc"
 #include "moc_DiscoverObject.cpp"
