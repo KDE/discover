@@ -108,6 +108,7 @@
   <summary xml:lang="ta">ஃபலாட்பாக் செயலிகளை டிஸ்கவருக்குள் ஒருங்கிணைக்கும்</summary>
   <summary xml:lang="tg">Барномаҳои Flatpak-ро ба барномаи Кашфиёт дарунсохт мекунад</summary>
   <summary xml:lang="tr">Flatpak uygulamalarını Keşfet ile bütünleştirir</summary>
+  <summary xml:lang="ug">Flatpak پىروگراممىسىنى Discover غا توپلاشتۇرىدۇ</summary>
   <summary xml:lang="uk">Інтеграція програм Flatpak з Discover</summary>
   <summary xml:lang="zh-CN">为 Discover 提供 Flatpak 应用程序的集成功能</summary>
   <summary xml:lang="zh-TW">將 Flatpak 應用程式整合進 Discover 商店</summary>
@@ -166,6 +167,7 @@
   <developer_name xml:lang="ta">அலேயிக்சு போல் கொன்ஸாலெசு</developer_name>
   <developer_name xml:lang="tg">Алейкс Пол Гонзалес (Aleix Pol Gonzalez)</developer_name>
   <developer_name xml:lang="tr">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="ug">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="uk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="zh-CN">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="zh-TW">Aleix Pol Gonzalez</developer_name>
