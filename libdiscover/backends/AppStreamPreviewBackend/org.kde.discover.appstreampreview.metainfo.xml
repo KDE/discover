@@ -18,6 +18,7 @@
   <name xml:lang="ka">AppStream-ის გადახედვის უკანაბოლო</name>
   <name xml:lang="ko">AppStream 미리 보기 백엔드</name>
   <name xml:lang="nl">AppStream-voorbeeld-backend</name>
+  <name xml:lang="nn">Motor for AppStream-førehandsvising</name>
   <name xml:lang="pl">Silnik podglądu AppStream</name>
   <name xml:lang="pt-BR">Backend de pré-visualização do AppStream</name>
   <name xml:lang="sl">Zaledje predogleda AppStream</name>
@@ -42,6 +43,7 @@
   <summary xml:lang="ka">გადახედეთ AppStream-ის ფაილებს Discover-ში</summary>
   <summary xml:lang="ko">Discover에서 AppStream 파일 미리 보기</summary>
   <summary xml:lang="nl">Voorbeeld AppStream-bestanden in Ontdekken</summary>
+  <summary xml:lang="nn">Førehandsvising av AppStream-filer i Discover</summary>
   <summary xml:lang="pl">Podgląd plików AppStream w Discoverze</summary>
   <summary xml:lang="pt-BR">Pré-visualização de arquivos do AppStream no Discover.</summary>
   <summary xml:lang="sl">Zaledje predogleda AppStream v Discoverju</summary>
