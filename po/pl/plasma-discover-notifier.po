@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2015, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2015, 2018-2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-22 00:46+0000\n"
-"PO-Revision-Date: 2026-04-04 19:14+0200\n"
+"PO-Revision-Date: 2026-09-27 21:08+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 25.08.2\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #: notifier/DiscoverNotifier.cpp:218
 #, kde-format
@@ -76,8 +76,7 @@ msgid "Update and Shut Down"
 msgstr "Uaktualnij i wyłącz"
 
 #: notifier/DiscoverNotifier.cpp:449
-#, fuzzy, kde-format
-#| msgid "Upgrade available"
+#, kde-format
 msgctxt "A new distro release is available for upgrade"
 msgid "Upgrade available"
 msgstr "Dostępne uaktualnienie"
@@ -89,12 +88,10 @@ msgid "%1 is now available."
 msgstr "%1 jest teraz dostępne."
 
 #: notifier/DiscoverNotifier.cpp:453
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade"
-msgstr "Uaktualnienie"
+msgstr "Uaktualnij"
 
 #: notifier/main.cpp:39
 #, kde-format

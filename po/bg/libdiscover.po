@@ -641,7 +641,7 @@ msgstr "Неуспешно стартиране на „%1“: %2"
 #| msgctxt "Permission to access system resources and hardware devices"
 #| msgid "Permissions"
 msgid "New Permissions"
-msgstr "Права"
+msgstr "Нови разрешения"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:766
 #, kde-format
@@ -1115,7 +1115,7 @@ msgstr "Настройване на правата…"
 #, fuzzy, kde-format
 #| msgid "Permissions for %1"
 msgid "Version %1"
-msgstr "Права за %1"
+msgstr "Версия %1"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:493
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116

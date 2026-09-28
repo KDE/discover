@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-26 00:46+0000\n"
-"PO-Revision-Date: 2026-08-29 16:44+0200\n"
+"PO-Revision-Date: 2026-09-27 21:10+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 26.04.2\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #: discover/DiscoverObject.cpp:197
 #, kde-format
@@ -701,9 +701,9 @@ msgstr "Przewiń na górę"
 #, kde-format
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
-msgstr[0] "Szukanie: %2 - %3 raz"
-msgstr[1] "Szukanie: %2 - %3 razy"
-msgstr[2] "Szukanie: %2 - %3 razy"
+msgstr[0] "Znaleziono %2 - %3 raz"
+msgstr[1] "Znaleziono %2 - %3 razy"
+msgstr[2] "Znaleziono %2 - %3 razy"
 
 #: discover/qml/ApplicationsListPage.qml:59
 #, kde-format
@@ -1365,13 +1365,13 @@ msgstr "Aby móc wyrazić swoją opinię, najpierw wgraj tę aplikację"
 #, kde-format
 msgctxt "@label:listbox Most relevant reviews"
 msgid "Most Relevant"
-msgstr "Najbardziej odpowiednie"
+msgstr "Najodpowiedniejsze"
 
 #: discover/qml/ReviewsPage.qml:152
 #, kde-format
 msgctxt "@label:listbox Most recent reviews"
 msgid "Most Recent"
-msgstr "Ostatnio odtwarzane"
+msgstr "Najświeższe"
 
 #: discover/qml/ReviewsPage.qml:159
 #, kde-format
