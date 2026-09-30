@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-26 00:46+0000\n"
+"POT-Creation-Date: 2026-09-30 00:47+0000\n"
 "PO-Revision-Date: 2026-08-23 08:31+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -950,8 +950,8 @@ msgstr "&Om"
 msgid "S&ettings"
 msgstr "In&ställningar"
 
-#: discover/qml/DiscoverWindow.qml:174 discover/qml/DiscoverWindow.qml:368
-#: discover/qml/DiscoverWindow.qml:480
+#: discover/qml/DiscoverWindow.qml:174 discover/qml/DiscoverWindow.qml:369
+#: discover/qml/DiscoverWindow.qml:481
 #, kde-format
 msgid "Error"
 msgstr "Fel"
@@ -966,19 +966,19 @@ msgstr "Kan inte hitta resurs: %1"
 msgid "Proceed"
 msgstr "Fortsätt"
 
-#: discover/qml/DiscoverWindow.qml:334
+#: discover/qml/DiscoverWindow.qml:335
 #, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
 msgstr "Rapportera problemet till %1"
 
-#: discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:351
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
 msgstr "Upptäck är nerkopplat"
 
-#: discover/qml/DiscoverWindow.qml:351
+#: discover/qml/DiscoverWindow.qml:352
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -986,17 +986,17 @@ msgid ""
 msgstr ""
 "Anslut till ett nätverk för att installera program och uppdatera systemet."
 
-#: discover/qml/DiscoverWindow.qml:368
+#: discover/qml/DiscoverWindow.qml:369
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "Fel %1 av %2"
 
-#: discover/qml/DiscoverWindow.qml:368 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:369 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "Uppdatera problem"
 
-#: discover/qml/DiscoverWindow.qml:379
+#: discover/qml/DiscoverWindow.qml:380
 #, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
@@ -1005,24 +1005,24 @@ msgstr ""
 "Ett problem uppstod under uppdaterings- eller installationsprocessen. Försök "
 "igen senare."
 
-#: discover/qml/DiscoverWindow.qml:415
+#: discover/qml/DiscoverWindow.qml:416
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "Visa föregående"
 
-#: discover/qml/DiscoverWindow.qml:426
+#: discover/qml/DiscoverWindow.qml:427
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "Visa nästa"
 
-#: discover/qml/DiscoverWindow.qml:438 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:439 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "Visa teknisk detaljinformation"
 
-#: discover/qml/DiscoverWindow.qml:446
+#: discover/qml/DiscoverWindow.qml:447
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "Kopiera till klippbordet"

@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-26 00:46+0000\n"
-"PO-Revision-Date: 2026-09-18 08:57+0200\n"
+"PO-Revision-Date: 2026-09-28 08:50+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.1\n"
 "X-Text-Markup: kde4\n"
 
 #, kde-format
@@ -649,11 +649,9 @@ msgid "Failed to start “%1”: %2"
 msgstr "Impossible de démarrer « %1 » : %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:539
-#, fuzzy, kde-format
-#| msgctxt "Permission to access system resources and hardware devices"
-#| msgid "Permissions"
+#, kde-format
 msgid "New Permissions"
-msgstr "Permissions"
+msgstr "Nouveaux droits d'accès"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:766
 #, kde-format
@@ -1133,10 +1131,9 @@ msgid "Configure permissions…"
 msgstr "Configurer les permissions..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:149
-#, fuzzy, kde-format
-#| msgid "Version: "
+#, kde-format
 msgid "Version %1"
-msgstr "Version : "
+msgstr "Version %1"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:493
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116

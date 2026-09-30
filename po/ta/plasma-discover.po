@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-26 00:46+0000\n"
+"POT-Creation-Date: 2026-09-30 00:47+0000\n"
 "PO-Revision-Date: 2026-05-10 16:28+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -930,8 +930,8 @@ msgstr "&பற்றி"
 msgid "S&ettings"
 msgstr "&அமைப்புகள்"
 
-#: discover/qml/DiscoverWindow.qml:174 discover/qml/DiscoverWindow.qml:368
-#: discover/qml/DiscoverWindow.qml:480
+#: discover/qml/DiscoverWindow.qml:174 discover/qml/DiscoverWindow.qml:369
+#: discover/qml/DiscoverWindow.qml:481
 #, kde-format
 msgid "Error"
 msgstr "சிக்கல்"
@@ -946,60 +946,60 @@ msgstr "இதை கண்டுபிடிக்க முடியவில�
 msgid "Proceed"
 msgstr "தொடர்"
 
-#: discover/qml/DiscoverWindow.qml:334
+#: discover/qml/DiscoverWindow.qml:335
 #, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
 msgstr "%1-க்கு இச்சிக்கலை தெரிவிக்கவும்"
 
-#: discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:351
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
 msgstr "டிஸ்கவர் தொடர்பற்று உள்ளது"
 
-#: discover/qml/DiscoverWindow.qml:351
+#: discover/qml/DiscoverWindow.qml:352
 #, kde-format
 msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
 msgstr "நிரல்களை நிறுவவும் இயங்குதளத்தைப் புதுப்பிக்கவும் இணையத்தில் இணையவும்."
 
-#: discover/qml/DiscoverWindow.qml:368
+#: discover/qml/DiscoverWindow.qml:369
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "%2-இல் %1-வது சிக்கல்"
 
-#: discover/qml/DiscoverWindow.qml:368 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:369 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "புதுப்பிப்பதில் சிக்கல்"
 
-#: discover/qml/DiscoverWindow.qml:379
+#: discover/qml/DiscoverWindow.qml:380
 #, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
 "again later."
 msgstr "நிறுவும்போதோ புதுப்பிக்கும்போதோ சிக்கல் நேர்ந்தது. பின்னர் மீண்டும் முயற்சிக்கவும்."
 
-#: discover/qml/DiscoverWindow.qml:415
+#: discover/qml/DiscoverWindow.qml:416
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "முந்தையதைக் காட்டு"
 
-#: discover/qml/DiscoverWindow.qml:426
+#: discover/qml/DiscoverWindow.qml:427
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "அடுத்ததைக் காட்டு"
 
-#: discover/qml/DiscoverWindow.qml:438 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:439 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "தொழிற்நுட்ப விவரங்களை காட்டு"
 
-#: discover/qml/DiscoverWindow.qml:446
+#: discover/qml/DiscoverWindow.qml:447
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "பிடிப்புப்பலகைக்கு நகலெடு"

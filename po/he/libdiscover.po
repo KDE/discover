@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-26 00:46+0000\n"
-"PO-Revision-Date: 2026-09-17 08:36+0300\n"
+"PO-Revision-Date: 2026-09-27 09:16+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -640,11 +640,9 @@ msgid "Failed to start “%1”: %2"
 msgstr "הפעלת „%1” נכשלה: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:539
-#, fuzzy, kde-format
-#| msgctxt "Permission to access system resources and hardware devices"
-#| msgid "Permissions"
+#, kde-format
 msgid "New Permissions"
-msgstr "הרשאות"
+msgstr "הרשאות חדשות"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:766
 #, kde-format
@@ -1090,10 +1088,9 @@ msgid "Configure permissions…"
 msgstr "הגדרת הרשאות…"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:149
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgid "Version %1"
-msgstr "הרשאות עבור %1"
+msgstr "גרסה %1"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:493
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116

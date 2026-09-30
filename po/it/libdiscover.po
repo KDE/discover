@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-26 00:46+0000\n"
-"PO-Revision-Date: 2026-09-17 11:35+0200\n"
+"PO-Revision-Date: 2026-09-27 22:43+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -639,11 +639,9 @@ msgid "Failed to start “%1”: %2"
 msgstr "Avvio di «%1» non riuscito: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:539
-#, fuzzy, kde-format
-#| msgctxt "Permission to access system resources and hardware devices"
-#| msgid "Permissions"
+#, kde-format
 msgid "New Permissions"
-msgstr "Permessi"
+msgstr "Nuovi permessi"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:766
 #, kde-format
@@ -1115,10 +1113,9 @@ msgid "Configure permissions…"
 msgstr "Configura i permessi..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:149
-#, fuzzy, kde-format
-#| msgid "Version: "
+#, kde-format
 msgid "Version %1"
-msgstr "Versione: "
+msgstr "Versione %1"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:493
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116

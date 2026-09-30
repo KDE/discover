@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-26 00:46+0000\n"
+"POT-Creation-Date: 2026-09-30 00:47+0000\n"
 "PO-Revision-Date: 2026-09-24 19:29-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
@@ -959,8 +959,8 @@ msgstr "ھەققىدە(&A)"
 msgid "S&ettings"
 msgstr "تەڭشەش(&E)"
 
-#: discover/qml/DiscoverWindow.qml:174 discover/qml/DiscoverWindow.qml:368
-#: discover/qml/DiscoverWindow.qml:480
+#: discover/qml/DiscoverWindow.qml:174 discover/qml/DiscoverWindow.qml:369
+#: discover/qml/DiscoverWindow.qml:481
 #, kde-format
 msgid "Error"
 msgstr "خاتالىق"
@@ -975,36 +975,36 @@ msgstr "مەنبەنى تاپالمىدى: %1"
 msgid "Proceed"
 msgstr "داۋاملاشتۇر"
 
-#: discover/qml/DiscoverWindow.qml:334
+#: discover/qml/DiscoverWindow.qml:335
 #, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
 msgstr "بۇ مەسىلىنى %1 غا مەلۇم قىل"
 
-#: discover/qml/DiscoverWindow.qml:350
+#: discover/qml/DiscoverWindow.qml:351
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Discover is Offline"
 msgstr "Discover تورسىز"
 
-#: discover/qml/DiscoverWindow.qml:351
+#: discover/qml/DiscoverWindow.qml:352
 #, kde-format
 msgctxt "@info"
 msgid ""
 "Please connect to a network to install applications and update the system."
 msgstr "پىروگرامما ئورنىتىش ۋە سىستېما يېڭىلاش ئۈچۈن تورغا باغلىنىڭ."
 
-#: discover/qml/DiscoverWindow.qml:368
+#: discover/qml/DiscoverWindow.qml:369
 #, kde-format
 msgid "Error %1 of %2"
 msgstr "خاتالىق %1 / %2"
 
-#: discover/qml/DiscoverWindow.qml:368 discover/qml/UpdatesPage.qml:47
+#: discover/qml/DiscoverWindow.qml:369 discover/qml/UpdatesPage.qml:47
 #, kde-format
 msgid "Update Issue"
 msgstr "يېڭىلاش مەسىلىسى"
 
-#: discover/qml/DiscoverWindow.qml:379
+#: discover/qml/DiscoverWindow.qml:380
 #, kde-format
 msgid ""
 "There was an issue during the update or installation process. Please try "
@@ -1012,24 +1012,24 @@ msgid ""
 msgstr ""
 "يېڭىلاش ياكى ئورنىتىش جەريانىدا مەسىلە كۆرۈلگەن. سەل تۇرۇپ قايتا سىناڭ."
 
-#: discover/qml/DiscoverWindow.qml:415
+#: discover/qml/DiscoverWindow.qml:416
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Previous"
 msgstr "ئالدىنقىنى كۆرسەت"
 
-#: discover/qml/DiscoverWindow.qml:426
+#: discover/qml/DiscoverWindow.qml:427
 #, kde-format
 msgctxt "@action:button"
 msgid "Show Next"
 msgstr "كېيىنكىنى كۆرسەت"
 
-#: discover/qml/DiscoverWindow.qml:438 discover/qml/UpdatesPage.qml:69
+#: discover/qml/DiscoverWindow.qml:439 discover/qml/UpdatesPage.qml:69
 #, kde-format
 msgid "See Technical Details"
 msgstr "تېخنىكىلىق تەپسىلاتنى كۆرسەت"
 
-#: discover/qml/DiscoverWindow.qml:446
+#: discover/qml/DiscoverWindow.qml:447
 #, kde-format
 msgid "Copy to Clipboard"
 msgstr "چاپلاش تاختىسىغا كۆچۈر"
