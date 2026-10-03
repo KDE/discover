@@ -97,7 +97,7 @@ public:
         if (isDistroUpgrade()) {
             return i18nc("distro upgrade: name version", "%1 %2", AppStreamIntegration::global()->osRelease()->name(), m_distroUpgrade->version());
         }
-        return i18n("System upgrade");
+        return i18nc("Distro upgrade, not just a package update", "System upgrade");
     }
     QString comment() override
     {
