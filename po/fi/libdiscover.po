@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-26 00:46+0000\n"
-"PO-Revision-Date: 2026-02-26 10:39+0200\n"
+"PO-Revision-Date: 2026-08-26 12:03+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -139,7 +139,7 @@ msgstr "Päivitettävien pakettien luettelon noutaminen epäonnistui!"
 #, kde-format
 msgctxt "@info"
 msgid "This is a preview of an AppStream file"
-msgstr ""
+msgstr "Tämä on AppStream-tiedoston esikatselu"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -565,7 +565,7 @@ msgstr "Videosoittimet"
 #, kde-format
 msgctxt "Category"
 msgid "Disc Burning"
-msgstr ""
+msgstr "Levyn poltto"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -594,19 +594,17 @@ msgstr "Paikallinen nippu"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1963
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
-#, fuzzy, kde-format
-#| msgid "Malformed appstream url '%1'"
+#, kde-format
 msgid "Malformed appstream url “%1”"
 msgstr "Virheellinen appstream-osoite ”%1”"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2077
 #, kde-format
 msgid "Source “%1” already exists"
-msgstr ""
+msgstr "Lähde ”%1” on jo olemassa"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2094
-#, fuzzy, kde-format
-#| msgid "Failed to add source '%1': %2"
+#, kde-format
 msgid "Failed to add source “%1”: %2"
 msgstr "Lähteen ”%1” lisääminen epäonnistui: %2"
 
@@ -642,10 +640,9 @@ msgstr "Tuntematon"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:525
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:439
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1': %2"
+#, kde-format
 msgid "Failed to start “%1”: %2"
-msgstr "Käynnistys epäonnistui: ”%1”: ”%2”"
+msgstr "Käynnistäminen epäonnistui: ”%1”: ”%2”"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:539
 #, fuzzy, kde-format
@@ -962,8 +959,7 @@ msgid "Could not add the source %1"
 msgstr "Ei voitu lisätä lähdettä %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:296
-#, fuzzy, kde-format
-#| msgid "Removing '%1'"
+#, kde-format
 msgid "Removing “%1”"
 msgstr "Poistetaan ”%1”"
 
@@ -997,18 +993,14 @@ msgstr "%1 (käyttäjä)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Anna Flatpak-pakettilähteen URI (*.flatpakrepo):"
 
+# *** TARKISTA: Kaikki %1, %2, %3 ovat epäselviä
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:35
-#, fuzzy, kde-format
-#| msgid "Adding remote '%1' in %2 from %3"
+#, kde-format
 msgid "Adding remote “%1” in %2 from %3"
-msgstr "Lisätään pakettilähde ”%1” osoitteesta %2, jota %3 ehdotti"
+msgstr "Lisätään etälähde ”%1” kohteeseen %2 osoitteesta %3"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:338
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid ""
-#| "Cannot create transaction for '%1':<nl/>%2<nl/><nl/>Please report this to "
-#| "<a href='%3'>%3</a>"
+#, kde-format
 msgctxt "@info:status"
 msgid ""
 "Cannot create transaction for “%1”:<nl/>%2<nl/><nl/>Please report this to <a "
@@ -1034,13 +1026,7 @@ msgid "Replacement Available"
 msgstr "Korvaaja saatavilla"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1053,7 +1039,10 @@ msgid ""
 "there."
 msgstr ""
 "<resource>%1</resource> ei saa enää päivityksiä.<nl/><nl/>Korvataanko se "
-"tuetulla versiolla, jonka tarjoaa <resource>%2</resource>?"
+"tuetulla versiolla, jonka tarjoaa <resource>%2</resource>?<nl/><nl/"
+">Asetukset ja data siirtyvät uuteen sovellukseen automaattisesti.<nl/><nl/"
+">Jos vanha sovellus on paneelissa tai sovelluskäynnistimen suosikeissa, se "
+"pitää poistaa ja lisätä uusi sinne itse."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -1095,15 +1084,16 @@ msgid "View Stable Version on %1"
 msgstr "Näytä vakaa versio lähteestä %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
-#, fuzzy, kde-format
-#| msgid "%1 is not installed but it still has data present."
+#, kde-format
 msgid "%1 is not installed but it still has user data and settings present."
-msgstr "Sovellusta %1 ei ole asennettu, mutta sen tietoja on yhä jäljellä."
+msgstr ""
+"Sovellusta %1 ei ole asennettu, mutta sen asetuksia ja tietoja on yhä "
+"jäljellä."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "Siirrä roskakoriin"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
@@ -1307,8 +1297,7 @@ msgstr ""
 "versioon."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
-#, fuzzy, kde-format
-#| msgid "Cannot remove '%1'"
+#, kde-format
 msgid "Cannot remove “%1”"
 msgstr "Ei voida poistaa: ”%1”"
 
@@ -1696,43 +1685,34 @@ msgid "Unknown error %1."
 msgstr "Tuntematon virhe %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
-#, fuzzy, kde-format
-#| msgid "'%1' was changed and suggests to be restarted."
+#, kde-format
 msgid "“%1” was changed and suggests to be restarted."
-msgstr "”%1” on muuttunut ja se tulisi käynnistää uudelleen."
+msgstr "”%1” on muuttunut ja tulisi käynnistää uudelleen."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
-#, fuzzy, kde-format
-#| msgid "A change by '%1' suggests your session to be restarted."
+#, kde-format
 msgid "A change by “%1” suggests your session to be restarted."
 msgstr "Ohjelman ”%1” tekemä muutos ehdottaa uudelleenkirjautumista."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
-#, fuzzy, kde-format
-#| msgid ""
-#| "'%1' was updated for security reasons, a restart of the session is "
-#| "recommended."
+#, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
-"”%1” päivitettiin turvallisuussyistä. Uudelleenkirjautumista suositellaan."
+"”%1” päivitettiin turvallisuussyistä: uudelleenkirjautumista suositellaan."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
-#, fuzzy, kde-format
-#| msgid ""
-#| "'%1' was updated for security reasons, a restart of the system is "
-#| "recommended."
+#, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the system is "
 "recommended."
 msgstr ""
-"”%1” päivitettiin turvallisuussyistä. Järjestelmän uudelleenkäynnistystä "
+"”%1” päivitettiin turvallisuussyistä: järjestelmän uudelleenkäynnistystä "
 "suositellaan."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
-#, fuzzy, kde-format
-#| msgid "A change by '%1' suggests your system to be restarted."
+#, kde-format
 msgid "A change by “%1” suggests your system to be restarted."
 msgstr ""
 "Ohjelman ”%1” tekemä muutos ehdottaa järjestelmän uudelleenkäynnistämistä."
@@ -2288,12 +2268,7 @@ msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "Tila ei riitä päivitykseen: vain %1 on käytettävissä."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:602
-#, fuzzy, kde-format
-#| msgid ""
-#| "This update cannot be completed as it would remove the following software "
-#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
-#| ">If you believe this is an error, please report it as a bug to the "
-#| "packagers of your distribution."
+#, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
 "which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
@@ -2328,10 +2303,7 @@ msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
-#, fuzzy, kde-format
-#| msgid ""
-#| "Media Change of type '%1' is requested.\n"
-#| "%2"
+#, kde-format
 msgid ""
 "Media Change of type “%1” is requested.\n"
 "%2"
@@ -2382,12 +2354,7 @@ msgstr ""
 "Aikaleima: %4\n"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
-#, fuzzy, kde-format
-#| msgid ""
-#| "This action cannot be completed as it would remove the following software "
-#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
-#| ">If you believe this is an error, please report it as a bug to the "
-#| "packagers of your distribution."
+#, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
 "which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
@@ -2485,9 +2452,7 @@ msgstr ""
 "Uudelleenpohjaustoimenpiteeltä puuttuu etäviite. Ilmoita ohjelmavirheestä."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
 msgstr "Käyttöjärjestelmä"
 
@@ -2527,6 +2492,8 @@ msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won’t be automatically removed on updates."
 msgstr ""
+"<br/>Tämä versio on kiinnitetty, eikä sitä päivitettäessä automaattisesti "
+"poisteta."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
@@ -2534,7 +2501,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label OS vendor"
 msgid "Fedora Project"
-msgstr ""
+msgstr "Fedora-projekti"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
@@ -2699,10 +2666,7 @@ msgid "Starred Publisher on snapcraft.io"
 msgstr "Tähden saanut julkaisija snapcraft.io:ssa"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
-#, fuzzy, kde-format
-#| msgid ""
-#| "This Snap application is not compatible with security sandboxing and will "
-#| "have full access to this computer. Install it anyway?"
+#, kde-format
 msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this system. Install it anyway?"
@@ -2747,14 +2711,10 @@ msgid "No components found in appstream metadata for target “%1”"
 msgstr "Kohteelle ”%1” ei löytynyt osia sovellusvirran metatiedoista"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
-#, fuzzy, kde-format
-#| msgid ""
-#| "List all the backends we'll want to have loaded, separated by comma ','."
+#, kde-format
 msgid ""
 "List all the backends we’ll want to have loaded, separated by comma “,”."
-msgstr ""
-"Luettele kaikki taustajärjestelmät, jotka halutaan ladattavan (pilkuin "
-"eroteltuna)."
+msgstr "Luettele kaikki ladattavat taustajärjestelmät pilkuin ”,” erotettuna."
 
 #: libdiscover/resources/AbstractResource.cpp:113
 #, kde-format
@@ -2810,32 +2770,25 @@ msgid "Refreshing %1"
 msgstr "Virkistetään: %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:561
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@label"
 msgid "Applications"
 msgstr "Sovellukset"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:563
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Addons"
+#, kde-format
 msgctxt "@label"
 msgid "Addons"
 msgstr "Lisäosat"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:565
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Support"
+#, kde-format
 msgctxt "@label"
 msgid "Application Support"
 msgstr "Sovellustuki"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:567
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "System"
+#, kde-format
 msgctxt "@label"
 msgid "System"
 msgstr "Järjestelmä"
