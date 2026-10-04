@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-30 02:44+0000\n"
-"PO-Revision-Date: 2026-08-30 11:42+0200\n"
+"PO-Revision-Date: 2026-10-03 12:13+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #: discover/DiscoverObject.cpp:197
 #, kde-format
@@ -847,7 +847,7 @@ msgstr "Argitaratzaileak aukeratua"
 #, kde-format
 msgctxt "@title:group"
 msgid "Newly Published & Recently Updated"
-msgstr "Berriki argitaratua eta berriki eguneratua"
+msgstr "Argitaratu berria eta berriki eguneratua"
 
 #: discover/qml/BrowsingPage.qml:216
 #, kde-format
