@@ -89,7 +89,7 @@ msgstr "Новая версия: %1"
 #: notifier/main.cpp:39
 #, kde-format
 msgid "Discover Notifier"
-msgstr "Уведомления центра программ Discover"
+msgstr "Уведомления центра приложений Discover"
 
 #: notifier/main.cpp:41
 #, kde-format
@@ -136,7 +136,7 @@ msgstr "Обновления"
 #: notifier/NotifierItem.cpp:50
 #, kde-format
 msgid "Open Discover…"
-msgstr "Открыть центр программ Discover"
+msgstr "Открыть центр приложений Discover"
 
 #: notifier/NotifierItem.cpp:55
 #, kde-format

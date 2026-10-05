@@ -32,7 +32,7 @@ msgid ""
 "Discover currently cannot be used to install any apps or perform system "
 "updates because none of its app backends are available."
 msgstr ""
-"Центр программ Discover не может быть использован для управления "
+"Центр приложений Discover не может быть использован для управления "
 "приложениями или для установки обновлений, так как не установлено ни одного "
 "модуля для работы с пакетами."
 
@@ -124,7 +124,7 @@ msgstr "Сообщите об этой ситуации разработчика
 #: discover/main.cpp:120 discover/qml/BrowsingPage.qml:20
 #, kde-format
 msgid "Discover"
-msgstr "Центр программ Discover"
+msgstr "Центр приложений Discover"
 
 #: discover/DiscoverObject.cpp:443
 #, kde-format
