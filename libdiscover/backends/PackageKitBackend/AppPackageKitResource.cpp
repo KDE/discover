@@ -195,7 +195,7 @@ AbstractResource::Type AppPackageKitResource::type() const
 {
     static QString desktop = QString::fromUtf8(qgetenv("XDG_CURRENT_DESKTOP"));
     const auto desktops = m_appdata.compulsoryForDesktops();
-    if (kContainsValue(s_addonKinds, m_appdata.kind())) {
+    if (std::ranges::find(s_addonKinds, m_appdata.kind()) != s_addonKinds.end()) {
         return Addon;
     } else if (desktops.isEmpty() || !desktops.contains(desktop)) {
         return Application;

@@ -359,7 +359,7 @@ QString PackageKitResource::verifiedMessage() const
 
 bool PackageKitResource::containsPackageId(const QString &pkgid) const
 {
-    return kContains(m_packages, [pkgid](const auto &x) {
+    return std::ranges::any_of(m_packages, [pkgid](const auto &x) {
         return x.archPkgIds.contains(pkgid) || x.nonarchPkgIds.contains(pkgid);
     });
 }

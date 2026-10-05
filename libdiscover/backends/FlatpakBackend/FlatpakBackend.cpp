@@ -1741,7 +1741,7 @@ ResultsStream *FlatpakBackend::search(const AbstractResourcesBackend::Filters &f
                             if (parentRef) {
                                 if (auto resource = self->getAppForInstalledRef(installation, parentRef)) {
                                     resource->addRefToUpdate(flatpak_ref_format_ref_cached(FLATPAK_REF(parentRef)));
-                                    if (!kContains(refs, [&parentId](auto ref) {
+                                    if (!std::ranges::any_of(refs, [&parentId](auto ref) {
                                             return parentId == flatpak_ref_get_name(FLATPAK_REF(ref));
                                         })) {
                                         resources.append(resource);

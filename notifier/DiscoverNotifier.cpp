@@ -230,10 +230,10 @@ void DiscoverNotifier::showUpdatesNotification()
 
 void DiscoverNotifier::updateStatusNotifier()
 {
-    const bool hasSecurityUpdates = kContains(m_backends, [](BackendNotifierModule *module) {
+    const bool hasSecurityUpdates = std::ranges::any_of(m_backends, [](BackendNotifierModule *module) {
         return module->hasSecurityUpdates();
     });
-    const bool hasUpdates = hasSecurityUpdates || kContains(m_backends, [](BackendNotifierModule *module) {
+    const bool hasUpdates = hasSecurityUpdates || std::ranges::any_of(m_backends, [](BackendNotifierModule *module) {
                                 return module->hasUpdates();
                             });
 

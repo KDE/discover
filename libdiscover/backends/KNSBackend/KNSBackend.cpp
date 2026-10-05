@@ -535,7 +535,7 @@ ResultsStream *KNSBackend::search(const AbstractResourcesBackend::Filters &filte
         deferredResultStream(stream, start);
         return stream;
         // Make sure we actually are one of the requested categories before searching
-    } else if ((filter.category && kContains(m_categories, [&filter](const QString &cat) {
+    } else if ((filter.category && std::ranges::any_of(m_categories, [&filter](const QString &cat) {
                     return filter.category->matchesCategoryName(cat);
                 }))) {
         return searchStream(filter.search);

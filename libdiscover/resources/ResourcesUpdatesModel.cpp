@@ -37,7 +37,7 @@ public:
             connect(updater, &AbstractBackendUpdater::proceedRequest, this, &UpdateTransaction::processProceedRequest);
             connect(updater, &AbstractBackendUpdater::distroErrorMessage, this, &UpdateTransaction::distroErrorMessage);
             connect(updater, &AbstractBackendUpdater::cancelableChanged, this, [this](bool) {
-                setCancellable(kContains(m_allUpdaters, [](AbstractBackendUpdater *updater) {
+                setCancellable(std::ranges::any_of(m_allUpdaters, [](AbstractBackendUpdater *updater) {
                     return updater->isCancelable() && updater->isProgressing();
                 }));
             });
@@ -367,7 +367,7 @@ bool ResourcesUpdatesModel::isFetching() const
 
 bool ResourcesUpdatesModel::readyToReboot() const
 {
-    return kContains(m_updaters, [](AbstractBackendUpdater *updater) {
+    return std::ranges::any_of(m_updaters, [](AbstractBackendUpdater *updater) {
         return !updater->needsReboot() || updater->isReadyToReboot();
     });
 }
