@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-26 00:46+0000\n"
+"POT-Creation-Date: 2026-10-06 00:49+0000\n"
 "PO-Revision-Date: 2013-03-28 16:07+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -1295,7 +1295,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
 #, fuzzy, kde-format
 #| msgid "Upgradeable"
-msgctxt "@action: button"
+msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "अद्ययावत करण्यायोग्य"
 
@@ -2293,6 +2293,7 @@ msgstr "%3 येथे %2 %1 "
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:100
 #, kde-format
+msgctxt "Major system upgrade upgrade, not a smaller security update"
 msgid "System upgrade"
 msgstr ""
 
@@ -2467,7 +2468,7 @@ msgstr ""
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, fuzzy, kde-format
 #| msgid "Upgradeable"
-msgctxt "@action: button"
+msgctxt "@action:button Perform a distro upgrade, not just a package update"
 msgid "Begin Upgrade…"
 msgstr "अद्ययावत करण्यायोग्य"
 
