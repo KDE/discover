@@ -142,6 +142,7 @@ DiscoverPage {
             return;
         }
         if (updateAction.enabled) {
+            resourcesUpdatesModel.prepare();
             updateAction.trigger()
             app.quitWhenIdle();
             startHeadlessUpdate = false;
