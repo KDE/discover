@@ -342,6 +342,7 @@ DiscoverPage {
             id: statusLabel
 
             width: parent.width - Kirigami.Units.gridUnit * 2
+            anchors.horizontalCenter: parent.horizontalCenter
             // Fixed Y location so it doesn't jump around as backends load
             y: (parent.height / 2) - (Kirigami.Units.gridUnit * 3)
 
