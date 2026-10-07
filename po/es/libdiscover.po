@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-10 00:48+0000\n"
-"PO-Revision-Date: 2026-09-08 11:26+0100\n"
+"PO-Revision-Date: 2026-10-06 12:20+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -129,8 +129,7 @@ msgstr "No se ha podido abrir la base de datos de APK."
 #: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:44
 #, kde-format
 msgid "Failed to get a list of packages to upgrade!"
-msgstr ""
-"No se ha podido obtener la lista de los paquetes que se deben actualizar."
+msgstr "No se ha podido obtener la lista de los paquetes que se deben renovar."
 
 #: libdiscover/backends/AppStreamPreviewBackend/qml/AppStreamPreviewMessage.qml:16
 #, kde-format
@@ -1308,7 +1307,7 @@ msgid ""
 "updates, and then restart the system."
 msgstr ""
 "<b>Ya está disponible %1.</b>\n"
-"Para poder actualizar a esta versión, aplique primero todas las "
+"Para poder renovar el software a esta versión, aplique primero todas las "
 "actualizaciones disponibles y reinicie el sistema."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
