@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-06 00:49+0000\n"
-"PO-Revision-Date: 2026-09-26 19:51+0300\n"
+"PO-Revision-Date: 2026-10-06 19:44+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1309,9 +1309,7 @@ msgstr ""
 "uygulayın ve sisteminizi yeniden başlatın."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Upgrade Now"
+#, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "Şimdi Yükselt"
@@ -2224,8 +2222,7 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:100
-#, fuzzy, kde-format
-#| msgid "System upgrade"
+#, kde-format
 msgctxt "Major system upgrade upgrade, not a smaller security update"
 msgid "System upgrade"
 msgstr "Sistem yükseltmesi"
@@ -2234,7 +2231,7 @@ msgstr "Sistem yükseltmesi"
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
-msgstr[0] "%1 paket yükseltilecek"
+msgstr[0] "1 paket yükseltilecek"
 msgstr[1] "%1 paket yükseltilecek"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
@@ -2332,7 +2329,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
-msgstr "%2 içinde %1 eksik imzası"
+msgstr "%2 içinde %1 için eksik imza"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:929
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
@@ -2348,7 +2345,7 @@ msgid ""
 msgstr ""
 "Aşağıdaki anahtara güveniyor musunuz?\n"
 "\n"
-"Url: %1\n"
+"URL: %1\n"
 "Kullanıcı: %2\n"
 "Anahtar: %3\n"
 "Parmak izi: %4\n"
@@ -2428,9 +2425,7 @@ msgstr ""
 "bildirin."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Begin Upgrade…"
+#, kde-format
 msgctxt "@action:button Perform a distro upgrade, not just a package update"
 msgid "Begin Upgrade…"
 msgstr "Yükseltmeyi Başlat…"
