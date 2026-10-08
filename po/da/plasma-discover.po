@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-30 00:47+0000\n"
+"POT-Creation-Date: 2026-10-08 00:47+0000\n"
 "PO-Revision-Date: 2026-08-18 16:13+0200\n"
 "Last-Translator: Øjvind Fritjof Arnfred <fritjofarnfred@protonmail.com>\n"
 "Language-Team: Danish <kde-i18n-da@kde.org>\n"
@@ -1625,12 +1625,12 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr "Genstart og installer opdateringer"
 
-#: discover/qml/UpdatesPage.qml:527
+#: discover/qml/UpdatesPage.qml:528
 #, kde-format
 msgid "Installing"
 msgstr "Installerer"
 
-#: discover/qml/UpdatesPage.qml:543
+#: discover/qml/UpdatesPage.qml:544
 #, fuzzy, kde-format
 #| msgctxt ""
 #| "@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or "
@@ -1640,7 +1640,7 @@ msgctxt "@info This update is from the following source"
 msgid "From:"
 msgstr "Fra %1"
 
-#: discover/qml/UpdatesPage.qml:560
+#: discover/qml/UpdatesPage.qml:561
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1648,32 +1648,32 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:572
+#: discover/qml/UpdatesPage.qml:573
 #, fuzzy, kde-format
 #| msgid "More Information…"
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "Mere information…"
 
-#: discover/qml/UpdatesPage.qml:644
+#: discover/qml/UpdatesPage.qml:645
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Henter opdateringer…"
 
-#: discover/qml/UpdatesPage.qml:659
+#: discover/qml/UpdatesPage.qml:660
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Opdateringer"
 
-#: discover/qml/UpdatesPage.qml:669
+#: discover/qml/UpdatesPage.qml:670
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "Opdateringer vil blive installeret efter systemet har genstartet"
 
-#: discover/qml/UpdatesPage.qml:671
+#: discover/qml/UpdatesPage.qml:672
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "You can keep using the system if you're not ready to restart yet."
@@ -1682,20 +1682,20 @@ msgid "You can keep using the system if you’re not ready to restart yet."
 msgstr ""
 "Du kan fortsat bruge systemet, hvis du ikke er klar til at genstarte endnu."
 
-#: discover/qml/UpdatesPage.qml:676 discover/qml/UpdatesPage.qml:683
-#: discover/qml/UpdatesPage.qml:690
+#: discover/qml/UpdatesPage.qml:677 discover/qml/UpdatesPage.qml:684
+#: discover/qml/UpdatesPage.qml:691
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Opdateret"
 
-#: discover/qml/UpdatesPage.qml:697
+#: discover/qml/UpdatesPage.qml:698
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Skal søge efter opdateringer"
 
-#: discover/qml/UpdatesPage.qml:704
+#: discover/qml/UpdatesPage.qml:705
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

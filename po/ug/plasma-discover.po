@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-30 00:47+0000\n"
+"POT-Creation-Date: 2026-10-08 00:47+0000\n"
 "PO-Revision-Date: 2026-10-03 19:43-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
@@ -1596,18 +1596,18 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr "قايتا قوزغات ۋە يېڭىلانما ئورنات"
 
-#: discover/qml/UpdatesPage.qml:527
+#: discover/qml/UpdatesPage.qml:528
 #, kde-format
 msgid "Installing"
 msgstr "ئورنىتىۋاتىدۇ"
 
-#: discover/qml/UpdatesPage.qml:543
+#: discover/qml/UpdatesPage.qml:544
 #, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
 msgstr "نەدىن:"
 
-#: discover/qml/UpdatesPage.qml:560
+#: discover/qml/UpdatesPage.qml:561
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1615,31 +1615,31 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:572
+#: discover/qml/UpdatesPage.qml:573
 #, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "تەپسىلاتى…"
 
-#: discover/qml/UpdatesPage.qml:644
+#: discover/qml/UpdatesPage.qml:645
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "يېڭىلانمىغا ئېرىشىۋاتىدۇ…"
 
-#: discover/qml/UpdatesPage.qml:659
+#: discover/qml/UpdatesPage.qml:660
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "يېڭىلانما"
 
-#: discover/qml/UpdatesPage.qml:669
+#: discover/qml/UpdatesPage.qml:670
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "سىستېما قايتا قوزغىتىلغاندىن كېيىن يېڭىلانما ئورنىتىلىدۇ"
 
-#: discover/qml/UpdatesPage.qml:671
+#: discover/qml/UpdatesPage.qml:672
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you’re not ready to restart yet."
@@ -1647,20 +1647,20 @@ msgstr ""
 "ئەگەر قايتا قوزغىتىشقا تېخى ھازىرلانمىغان بولسىڭىز سىستېما ئىشلىتىشنى "
 "داۋاملاشتۇرسىڭىز بولىدۇ."
 
-#: discover/qml/UpdatesPage.qml:676 discover/qml/UpdatesPage.qml:683
-#: discover/qml/UpdatesPage.qml:690
+#: discover/qml/UpdatesPage.qml:677 discover/qml/UpdatesPage.qml:684
+#: discover/qml/UpdatesPage.qml:691
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "ئەڭ يېڭى"
 
-#: discover/qml/UpdatesPage.qml:697
+#: discover/qml/UpdatesPage.qml:698
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "يېڭىلانمىنى تەكشۈرۈش زۆرۈر"
 
-#: discover/qml/UpdatesPage.qml:704
+#: discover/qml/UpdatesPage.qml:705
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

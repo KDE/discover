@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-30 00:47+0000\n"
+"POT-Creation-Date: 2026-10-08 00:47+0000\n"
 "PO-Revision-Date: 2026-08-23 08:40+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1596,18 +1596,18 @@ msgctxt "@action:button"
 msgid "Restart and Install Updates"
 msgstr "Ponovno zaženi in namesti posodobitve"
 
-#: discover/qml/UpdatesPage.qml:527
+#: discover/qml/UpdatesPage.qml:528
 #, kde-format
 msgid "Installing"
 msgstr "Nameščanje"
 
-#: discover/qml/UpdatesPage.qml:543
+#: discover/qml/UpdatesPage.qml:544
 #, kde-format
 msgctxt "@info This update is from the following source"
 msgid "From:"
 msgstr "Iz:"
 
-#: discover/qml/UpdatesPage.qml:560
+#: discover/qml/UpdatesPage.qml:561
 #, kde-format
 msgctxt ""
 "%1 is the backend that provides this app, %2 is the specific repository or "
@@ -1615,31 +1615,31 @@ msgctxt ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: discover/qml/UpdatesPage.qml:572
+#: discover/qml/UpdatesPage.qml:573
 #, kde-format
 msgctxt "@action:button minimize the length of this label"
 msgid "More Info…"
 msgstr "Več informacij…"
 
-#: discover/qml/UpdatesPage.qml:644
+#: discover/qml/UpdatesPage.qml:645
 #, kde-format
 msgctxt "@info"
 msgid "Fetching updates…"
 msgstr "Pridobivanje posodobitev …"
 
-#: discover/qml/UpdatesPage.qml:659
+#: discover/qml/UpdatesPage.qml:660
 #, kde-format
 msgctxt "@info"
 msgid "Updates"
 msgstr "Posodobitve"
 
-#: discover/qml/UpdatesPage.qml:669
+#: discover/qml/UpdatesPage.qml:670
 #, kde-format
 msgctxt "@info"
 msgid "Updates will be installed after the system is restarted"
 msgstr "Posodobitve bodo nameščene po ponovnem zagonu sistema"
 
-#: discover/qml/UpdatesPage.qml:671
+#: discover/qml/UpdatesPage.qml:672
 #, kde-format
 msgctxt "@info"
 msgid "You can keep using the system if you’re not ready to restart yet."
@@ -1647,20 +1647,20 @@ msgstr ""
 "Sistem lahko še naprej uporabljate, če še niste pripravljeni na ponovni "
 "zagon."
 
-#: discover/qml/UpdatesPage.qml:676 discover/qml/UpdatesPage.qml:683
-#: discover/qml/UpdatesPage.qml:690
+#: discover/qml/UpdatesPage.qml:677 discover/qml/UpdatesPage.qml:684
+#: discover/qml/UpdatesPage.qml:691
 #, kde-format
 msgctxt "@info"
 msgid "Up to date"
 msgstr "Posodobljeno"
 
-#: discover/qml/UpdatesPage.qml:697
+#: discover/qml/UpdatesPage.qml:698
 #, kde-format
 msgctxt "@info"
 msgid "Should check for updates"
 msgstr "Preveriti bi morali za posodobitvami"
 
-#: discover/qml/UpdatesPage.qml:704
+#: discover/qml/UpdatesPage.qml:705
 #, kde-format
 msgctxt "@info"
 msgid "Time of last update unknown"

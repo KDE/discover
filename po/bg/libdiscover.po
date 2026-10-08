@@ -1314,7 +1314,7 @@ msgstr ""
 #| msgid "Upgrade Now"
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
-msgstr "Надграждане на системата сега"
+msgstr "Актуализиране сега"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
@@ -2228,7 +2228,7 @@ msgstr "%1 %2"
 #| msgid "System upgrade"
 msgctxt "Major system upgrade upgrade, not a smaller security update"
 msgid "System upgrade"
-msgstr "Надграждане на системата"
+msgstr "Системна актуализация"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:191
 #, kde-format
@@ -2436,7 +2436,7 @@ msgstr ""
 #| msgid "Begin Upgrade…"
 msgctxt "@action:button Perform a distro upgrade, not just a package update"
 msgid "Begin Upgrade…"
-msgstr "Започване на надграждане на системата…"
+msgstr "Започване на обновяване…"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:524
 #, kde-format
