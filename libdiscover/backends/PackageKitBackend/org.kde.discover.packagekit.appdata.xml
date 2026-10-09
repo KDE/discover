@@ -49,6 +49,10 @@
   <name xml:lang="sa">पैकेजकिट् पृष्ठान्त्</name>
   <name xml:lang="sk">Podporný program pre PackageKit</name>
   <name xml:lang="sl">Zaledje PackageKit</name>
+  <name xml:lang="sr">Позадина Пакиџ‑кита</name>
+  <name xml:lang="sr-Latn">Pozadina PackageKita</name>
+  <name xml:lang="sr-ijekavian">Позадина Пакиџ‑кита</name>
+  <name xml:lang="sr-ijekavianlatin">Pozadina PackageKita</name>
   <name xml:lang="sv">Gränssnitt för PackageKit</name>
   <name xml:lang="ta">PackageKit பின்நிலை</name>
   <name xml:lang="tg">Коркардкунандаи PackageKit</name>
@@ -104,6 +108,10 @@
   <summary xml:lang="sa">डिस्कवर् इत्यस्मिन् वितरण-अनुप्रयोगानाम् एकीकरणं करोति</summary>
   <summary xml:lang="sk">Integruje aplikácie z distribúcie do aplikácie Discover</summary>
   <summary xml:lang="sl">V Discover vgradi programe distribucije</summary>
+  <summary xml:lang="sr">Уклапа програме дистрибуције у Oткривач</summary>
+  <summary xml:lang="sr-Latn">Uklapa programe distribucije u Otkrivač</summary>
+  <summary xml:lang="sr-ijekavian">Уклапа програме дистрибуције у Oткривач</summary>
+  <summary xml:lang="sr-ijekavianlatin">Uklapa programe distribucije u Otkrivač</summary>
   <summary xml:lang="sv">Integrerar distributionsprogram i Upptäck</summary>
   <summary xml:lang="ta">இயக்குதள செயலிகளை டிஸ்கவருக்குள் ஒருங்கிணைக்கும்</summary>
   <summary xml:lang="tg">Барномаҳои низоми амалкунандаро ба барномаи Кашфиёт дарунсохт мекунад.</summary>
@@ -162,6 +170,10 @@
   <developer_name xml:lang="sa">अलेक्स पोल गोन्जालेज</developer_name>
   <developer_name xml:lang="sk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sl">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="sr">Алекс Пол Гонзалез</developer_name>
+  <developer_name xml:lang="sr-Latn">Aleks Pol Gonzalez</developer_name>
+  <developer_name xml:lang="sr-ijekavian">Алекс Пол Гонзалез</developer_name>
+  <developer_name xml:lang="sr-ijekavianlatin">Aleks Pol Gonzalez</developer_name>
   <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ta">அலெயிக்சு போல் கொன்ஸாலெசு</developer_name>
   <developer_name xml:lang="tg">Алейкс Пол Гонзалес (Aleix Pol Gonzalez)</developer_name>

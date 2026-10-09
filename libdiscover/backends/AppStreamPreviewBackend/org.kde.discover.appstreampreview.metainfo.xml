@@ -24,6 +24,10 @@
   <name xml:lang="pl">Silnik podglądu AppStream</name>
   <name xml:lang="pt-BR">Backend de pré-visualização do AppStream</name>
   <name xml:lang="sl">Zaledje predogleda AppStream</name>
+  <name xml:lang="sr">Позадина за преглед апстрим фајлова</name>
+  <name xml:lang="sr-Latn">Pozadina za pregled apstrim fajlova</name>
+  <name xml:lang="sr-ijekavian">Позадина за преглед апстрим фајлова</name>
+  <name xml:lang="sr-ijekavianlatin">Pozadina za pregled apstrim fajlova</name>
   <name xml:lang="ta">AppStream முன்தோற்ற பின்நிலை</name>
   <name xml:lang="tr">AppStream Önizleme Arka Ucu</name>
   <name xml:lang="uk">Модуль попереднього перегляду AppStream</name>
@@ -52,6 +56,10 @@
   <summary xml:lang="pl">Podgląd plików AppStream w Discoverze</summary>
   <summary xml:lang="pt-BR">Pré-visualização de arquivos do AppStream no Discover.</summary>
   <summary xml:lang="sl">Zaledje predogleda AppStream v Discoverju</summary>
+  <summary xml:lang="sr">Преглед апстрим фајлова у Oткривачу</summary>
+  <summary xml:lang="sr-Latn">Pregled apstrim fajlova u Otkrivaču</summary>
+  <summary xml:lang="sr-ijekavian">Преглед апстрим фајлова у Oткривачу</summary>
+  <summary xml:lang="sr-ijekavianlatin">Pregled apstrim fajlova u Otkrivaču</summary>
   <summary xml:lang="ta">AppStream கோப்புகளின் மன்னோட்டங்களை டிஸ்கவரில் காட்டும்</summary>
   <summary xml:lang="tr">AppStream dosyalarını Keşfet ile önizleyin</summary>
   <summary xml:lang="uk">Попередній перегляд файлів AppStream у Discover</summary>

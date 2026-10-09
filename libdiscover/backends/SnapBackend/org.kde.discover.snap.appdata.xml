@@ -49,6 +49,10 @@
   <name xml:lang="sa">स्नैप् पृष्ठान्त्</name>
   <name xml:lang="sk">Podporný program pre Snap</name>
   <name xml:lang="sl">Zaledje Snap</name>
+  <name xml:lang="sr">Позадина снапа</name>
+  <name xml:lang="sr-Latn">Pozadina snapa</name>
+  <name xml:lang="sr-ijekavian">Позадина снапа</name>
+  <name xml:lang="sr-ijekavianlatin">Pozadina snapa</name>
   <name xml:lang="sv">Gränssnitt för Snap</name>
   <name xml:lang="tg">Коркардкунандаи Часпиш</name>
   <name xml:lang="tr">Snap arka ucu</name>
@@ -102,6 +106,10 @@
   <summary xml:lang="sa">डिस्कवर् इत्यस्मिन् स्नैप् अनुप्रयोगानाम् एकीकरणं करोति</summary>
   <summary xml:lang="sk">Integruje aplikácie Snap do aplikácie Discover</summary>
   <summary xml:lang="sl">V Discover vgradi programe Snap</summary>
+  <summary xml:lang="sr">Уклапа снап програме у Oткривач</summary>
+  <summary xml:lang="sr-Latn">Uklapa snap programe u Otkrivač</summary>
+  <summary xml:lang="sr-ijekavian">Уклапа снап програме у Oткривач</summary>
+  <summary xml:lang="sr-ijekavianlatin">Uklapa snap programe u Otkrivač</summary>
   <summary xml:lang="sv">Integrerar Snap-program i Upptäck</summary>
   <summary xml:lang="tg">Барномаҳои Часпишро ба барномаи Кашфиёт дарунсохт мекунад</summary>
   <summary xml:lang="tr">Snap uygulamalarını Keşfet ile bütünleştirir</summary>
@@ -159,6 +167,10 @@
   <developer_name xml:lang="sa">अलेक्स् पोल् गोन्जालेज्</developer_name>
   <developer_name xml:lang="sk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sl">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="sr">Алекс Пол Гонзалез</developer_name>
+  <developer_name xml:lang="sr-Latn">Aleks Pol Gonzalez</developer_name>
+  <developer_name xml:lang="sr-ijekavian">Алекс Пол Гонзалез</developer_name>
+  <developer_name xml:lang="sr-ijekavianlatin">Aleks Pol Gonzalez</developer_name>
   <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ta">அலெயிக்சு போல் கொன்ஸாலெசு</developer_name>
   <developer_name xml:lang="tg">Алейкс Пол Гонзалес (Aleix Pol Gonzalez)</developer_name>
