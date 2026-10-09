@@ -49,6 +49,10 @@
   <name xml:lang="sa">सपाटपैक् पृष्ठान्त्</name>
   <name xml:lang="sk">Podporný program pre Flatpak</name>
   <name xml:lang="sl">Zaledje Flatpak</name>
+  <name xml:lang="sr">Позадина флатпака</name>
+  <name xml:lang="sr-Latn">Pozadina Flatpaka</name>
+  <name xml:lang="sr-ijekavian">Позадина флатпака</name>
+  <name xml:lang="sr-ijekavianlatin">Pozadina Flatpaka</name>
   <name xml:lang="sv">Gränssnitt för Flatpak</name>
   <name xml:lang="ta">ஃபலாட்பாக் பின்நிலை</name>
   <name xml:lang="tg">Коркардкунандаи Flatpak</name>
@@ -104,6 +108,10 @@
   <summary xml:lang="sa">डिस्कवर् इत्यस्मिन् सपाटपैक् अनुप्रयोगानाम् एकीकरणं करोति</summary>
   <summary xml:lang="sk">Integruje aplikácie Flatpad do aplikácie Discover</summary>
   <summary xml:lang="sl">V Discover vgradi programe Flatpack</summary>
+  <summary xml:lang="sr">Уклапа флатпак програме у Oткривач</summary>
+  <summary xml:lang="sr-Latn">Uklapa Flatpak programe u Otkrivač</summary>
+  <summary xml:lang="sr-ijekavian">Уклапа флатпак програме у Oткривач</summary>
+  <summary xml:lang="sr-ijekavianlatin">Uklapa Flatpak programe u Otkrivač</summary>
   <summary xml:lang="sv">Integrerar Flatpak-program i Upptäck</summary>
   <summary xml:lang="ta">ஃபலாட்பாக் செயலிகளை டிஸ்கவருக்குள் ஒருங்கிணைக்கும்</summary>
   <summary xml:lang="tg">Барномаҳои Flatpak-ро ба барномаи Кашфиёт дарунсохт мекунад</summary>
@@ -163,6 +171,10 @@
   <developer_name xml:lang="sa">अलेक्स् पोल् गोन्जालेज्</developer_name>
   <developer_name xml:lang="sk">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="sl">Aleix Pol Gonzalez</developer_name>
+  <developer_name xml:lang="sr">Алекс Пол Гонзалез</developer_name>
+  <developer_name xml:lang="sr-Latn">Aleks Pol Gonzalez</developer_name>
+  <developer_name xml:lang="sr-ijekavian">Алекс Пол Гонзалез</developer_name>
+  <developer_name xml:lang="sr-ijekavianlatin">Aleks Pol Gonzalez</developer_name>
   <developer_name xml:lang="sv">Aleix Pol Gonzalez</developer_name>
   <developer_name xml:lang="ta">அலேயிக்சு போல் கொன்ஸாலெசு</developer_name>
   <developer_name xml:lang="tg">Алейкс Пол Гонзалес (Aleix Pol Gonzalez)</developer_name>
