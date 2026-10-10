@@ -112,6 +112,7 @@ Type=Application
 X-DocPath=plasma-discover/index.html
 InitialPreference=5
 NoDisplay=@DesktopNoDisplay@
+@DesktopAliasFor@
 Actions=Updates;
 SingleMainWindow=true
 GenericName=Software Center
