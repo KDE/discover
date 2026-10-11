@@ -23,6 +23,7 @@
   <name xml:lang="nn">Motor for AppStream-førehandsvising</name>
   <name xml:lang="pl">Silnik podglądu AppStream</name>
   <name xml:lang="pt-BR">Backend de pré-visualização do AppStream</name>
+  <name xml:lang="ru">Модуль поддержки предварительного просмотра AppStream</name>
   <name xml:lang="sl">Zaledje predogleda AppStream</name>
   <name xml:lang="sr">Позадина за преглед апстрим фајлова</name>
   <name xml:lang="sr-Latn">Pozadina za pregled apstrim fajlova</name>
@@ -55,6 +56,7 @@
   <summary xml:lang="nn">Førehandsvising av AppStream-filer i Discover</summary>
   <summary xml:lang="pl">Podgląd plików AppStream w Discoverze</summary>
   <summary xml:lang="pt-BR">Pré-visualização de arquivos do AppStream no Discover.</summary>
+  <summary xml:lang="ru">Просмотр файлов AppStream в Discover</summary>
   <summary xml:lang="sl">Zaledje predogleda AppStream v Discoverju</summary>
   <summary xml:lang="sr">Преглед апстрим фајлова у Oткривачу</summary>
   <summary xml:lang="sr-Latn">Pregled apstrim fajlova u Otkrivaču</summary>
