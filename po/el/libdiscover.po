@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2024-09-19 14:31+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1287,7 +1287,7 @@ msgstr "Κατάστημα KDE"
 msgid "Log in information for %1"
 msgstr "Πληροφορίες σύνδεσης για %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Αδυναμία εκτέλεσης %1"
@@ -2291,18 +2291,17 @@ msgid_plural "%1 packages will be upgraded"
 msgstr[0] "1 Πακέτο θα αναβαθμιστεί"
 msgstr[1] "%1 πακέτα θα αναβαθμιστούν"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+msgid "<h3>%1</h3>%2"
 msgstr ""
-"<h3>%1</h3>Αναβαθμίστε στη νέα έκδοση %2<br/>Δεν παρέχονται σημειώσεις "
-"έκδοσης"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>Αναβαθμίστε στη νέα έκδοση %2<br/>Σημειώσεις έκδοση:<blockquote>"
 "%3</blockquote>"
@@ -2988,6 +2987,11 @@ msgstr "Λογισμικό συστήματος"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Πρόσθετα"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr ""
+#~ "<h3>%1</h3>Αναβαθμίστε στη νέα έκδοση %2<br/>Δεν παρέχονται σημειώσεις "
+#~ "έκδοσης"
 
 #~ msgctxt "@info:status"
 #~ msgid "Cancelled"

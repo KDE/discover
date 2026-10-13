@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2026-09-27 21:38+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
@@ -1241,7 +1241,7 @@ msgstr "KDE-nettbutikken"
 msgid "Log in information for %1"
 msgstr "Innloggingsinformasjon for %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Klarar ikkje starta %1"
@@ -2232,18 +2232,17 @@ msgid_plural "%1 packages will be upgraded"
 msgstr[0] "1 pakke vert oppgradert"
 msgstr[1] "%1 pakkar vert oppgraderte"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+msgid "<h3>%1</h3>%2"
 msgstr ""
-"<h3>%1</h3>Oppgrader til ny versjon %2<br/>Ingen versjonsmerknadar er "
-"tilgjengelege"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>Oppgrader til ny versjon %2<br/>Versjonsmerknadar:<blockquote>%3</"
 "blockquote>"
@@ -2867,3 +2866,8 @@ msgstr "Systemprogram"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tillegg"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr ""
+#~ "<h3>%1</h3>Oppgrader til ny versjon %2<br/>Ingen versjonsmerknadar er "
+#~ "tilgjengelege"

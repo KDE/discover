@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2026-10-06 10:58+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1250,7 +1250,7 @@ msgstr "KDE Store"
 msgid "Log in information for %1"
 msgstr "Aanmeldinformatie voor %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Kan %1 niet starten"
@@ -2239,18 +2239,17 @@ msgid_plural "%1 packages will be upgraded"
 msgstr[0] "1 pakket zal opgewaardeerd worden"
 msgstr[1] "%1 pakketten zullen opgewaardeerd worden"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+msgid "<h3>%1</h3>%2"
 msgstr ""
-"<h3>%1</h3>Opwaarderen naar een nieuwe versie %2<br/>Geen uitgavenotities "
-"geleverd"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>Opwaarderen naar een nieuwe versie %2<br/>Uitgavenotities:"
 "<blockquote>%3</blockquote>"
@@ -2883,6 +2882,11 @@ msgstr "Systeemsoftware"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Add-ons"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr ""
+#~ "<h3>%1</h3>Opwaarderen naar een nieuwe versie %2<br/>Geen uitgavenotities "
+#~ "geleverd"
 
 #~ msgctxt "@info:status"
 #~ msgid "Cancelled"

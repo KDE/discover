@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2026-02-01 19:00+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -1235,7 +1235,7 @@ msgstr "கே.டீ.யீ. களஞ்சியம்"
 msgid "Log in information for %1"
 msgstr "%1 என்பதற்கான நுழைவு விவரங்கள்"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 என்பதை இயக்க முடியவில்லை"
@@ -2231,16 +2231,17 @@ msgid_plural "%1 packages will be upgraded"
 msgstr[0] "1 தொகுப்பு புதுப்பிக்கப்படும்"
 msgstr[1] "%1 தொகுப்புகள் புதுப்பிக்கப்படும்"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-msgstr "<h3>%1</h3>புதிய பதிப்பான %2<br/>வெளியீட்டுக் குறிப்புகள் இல்லை"
+msgid "<h3>%1</h3>%2"
+msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>புதிய பதிப்பான %2<br/>வெளியீட்டுக் குறிப்புகள்:<blockquote>%3</"
 "blockquote>"
@@ -2866,6 +2867,9 @@ msgstr "இயங்குதள நிரல்கள்"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "துணை நிரல்கள்"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr "<h3>%1</h3>புதிய பதிப்பான %2<br/>வெளியீட்டுக் குறிப்புகள் இல்லை"
 
 #~ msgctxt "@info:status"
 #~ msgid "Cancelled"

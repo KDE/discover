@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2026-10-06 10:30+0200\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -1254,7 +1254,7 @@ msgstr "Radnja KDE‑a"
 msgid "Log in information for %1"
 msgstr "Prijavni podaci za %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Ne mogu da pokrenem %1"
@@ -2257,16 +2257,17 @@ msgstr[1] "%1 paketa će biti nadograđena"
 msgstr[2] "%1 paketa će biti nadograđeno"
 msgstr[3] "Jedan paket će biti nadograđen"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-msgstr "<h3>%1</h3>Nadogradnja na novo izdanje %2<br/>Nema beleški o izdanju"
+msgid "<h3>%1</h3>%2"
+msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>Nadogradnja na novo izdanje %2<br/>Beleške o izdanju:<blockquote>"
 "%3</blockquote>"
@@ -2886,3 +2887,7 @@ msgstr "Sistemski softver"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Dodaci"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr ""
+#~ "<h3>%1</h3>Nadogradnja na novo izdanje %2<br/>Nema beleški o izdanju"

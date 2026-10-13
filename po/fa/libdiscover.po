@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2026-06-29 12:05+0330\n"
 "Last-Translator: Sohrab Behdani <behdanisohrab@proton.me>\n"
 "Language-Team: fa\n"
@@ -1243,7 +1243,7 @@ msgstr "فروشگاه کی‌دی‌ای"
 msgid "Log in information for %1"
 msgstr "اطلاعات ورود به %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "نمی‌توان %1 را راه‌اندازی کرد"
@@ -2239,17 +2239,17 @@ msgid_plural "%1 packages will be upgraded"
 msgstr[0] "۱ بسته به‌روزرسانی خواهد شد"
 msgstr[1] "%1 بسته به‌روزرسانی خواهد شد"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+msgid "<h3>%1</h3>%2"
 msgstr ""
-"<h3>%1</h3>به‌روزرسانی به نگارش جدید %2<br/>هیچ یادداشت انتشاری فراهم نشده"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>به‌روزرسانی به نگارش جدید %2<br/>یادداشت‌های انتشار: <blockquote>"
 "%3</blockquote>"
@@ -2891,6 +2891,10 @@ msgstr "نرم‌افزار سامانه"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "افزونه‌ها"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr ""
+#~ "<h3>%1</h3>به‌روزرسانی به نگارش جدید %2<br/>هیچ یادداشت انتشاری فراهم نشده"
 
 #~ msgctxt "@info:status"
 #~ msgid "Cancelled"

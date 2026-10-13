@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2026-09-27 09:16+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1220,7 +1220,7 @@ msgstr "חנות KDE"
 msgid "Log in information for %1"
 msgstr "פרטי כניסה של %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "לא ניתן להפעיל את %1"
@@ -2214,16 +2214,17 @@ msgstr[1] "שתי חבילות תשודרגנה"
 msgstr[2] "%1 חבילות תשודרגנה"
 msgstr[3] "%1 חבילות תשודרגנה"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-msgstr "<h3>%1</h3>שדרוג לגרסה %2 החדשה<br/>לא סופקו הערות למהדורה"
+msgid "<h3>%1</h3>%2"
+msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>שדרוג לגרסה %2 החדשה<br/>הערות מהדורה:<blockquote>%3</blockquote>"
 
@@ -2835,6 +2836,9 @@ msgstr "תוכנת מערכת"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "תוספים"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr "<h3>%1</h3>שדרוג לגרסה %2 החדשה<br/>לא סופקו הערות למהדורה"
 
 #~ msgctxt "@info:status"
 #~ msgid "Cancelled"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE Frameworks 5 Applications\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2024-11-12 06:08+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -1262,7 +1262,7 @@ msgstr "KDE Store"
 msgid "Log in information for %1"
 msgstr "Log informasi untuk %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Tak bisa meluncurkan %1"
@@ -2268,18 +2268,17 @@ msgid_plural "%1 packages will be upgraded"
 msgstr[0] "1 paket akan ditingkatkan"
 msgstr[1] "%1 paket akan ditingkatkan"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+msgid "<h3>%1</h3>%2"
 msgstr ""
-"<h3>%1</h3>Tingkatkan ke versi yang baru %2<br/> Tidak ada catatan rilis "
-"yang disediakan"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>Tingkatkan ke versi yang baru %2<br/>Catatan rilis:<blockquote>"
 "%3</blockquote>"
@@ -2951,6 +2950,11 @@ msgstr "Perangkat Lunak Sistem"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Pernik"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr ""
+#~ "<h3>%1</h3>Tingkatkan ke versi yang baru %2<br/> Tidak ada catatan rilis "
+#~ "yang disediakan"
 
 #~ msgctxt "@info:status"
 #~ msgid "Cancelled"

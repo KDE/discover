@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2026-10-06 13:27+0200\n"
 "Last-Translator: Libor Filipek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -1245,7 +1245,7 @@ msgstr "Obchod KDE"
 msgid "Log in information for %1"
 msgstr "Přihlašovací údaje pro %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Nelze spustit %1"
@@ -2237,18 +2237,17 @@ msgstr[0] "1 balíček bude aktualizován"
 msgstr[1] "%1 balíčky budou aktualizovány"
 msgstr[2] "%1 balíčků bude aktualizováno"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+msgid "<h3>%1</h3>%2"
 msgstr ""
-"<h3>%1</h3>Aktualizace na novou verzi %2<br/>K dispozici nejsou žádné "
-"informace o vydání"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>Aktualizace na novou verzi %2<br/>Informace o vydání:<blockquote>"
 "%3</blockquote>"
@@ -2881,6 +2880,11 @@ msgstr "Systémový software"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Doplňky"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr ""
+#~ "<h3>%1</h3>Aktualizace na novou verzi %2<br/>K dispozici nejsou žádné "
+#~ "informace o vydání"
 
 #~ msgctxt "@info:status"
 #~ msgid "Cancelled"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -1241,7 +1241,7 @@ msgstr "केडीई भण्डार"
 msgid "Log in information for %1"
 msgstr "%1 कृते प्रवेशसूचना"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 प्रारम्भं कर्तुं न शक्यते"
@@ -2238,16 +2238,17 @@ msgid_plural "%1 packages will be upgraded"
 msgstr[0] "१ संकुलं उन्नयनं भविष्यति"
 msgstr[1] "%1 संकुल उन्नयनं भविष्यति"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-msgstr "<h3>%1</h3>नूतनसंस्करणं %2 मध्ये उन्नयनं कुर्वन्तु<br/>प्रकाशनटिप्पणी न प्रदत्ता"
+msgid "<h3>%1</h3>%2"
+msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>नूतनसंस्करणं %2 मध्ये उन्नयनं कुर्वन्तु<br/>प्रकाशन टिप्पणियाँ:<blockquote>%3</"
 "blockquote>"
@@ -2905,6 +2906,9 @@ msgstr "प्रणालि तन्त्रांश्"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "एडोन्स्"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr "<h3>%1</h3>नूतनसंस्करणं %2 मध्ये उन्नयनं कुर्वन्तु<br/>प्रकाशनटिप्पणी न प्रदत्ता"
 
 #~ msgctxt "@info:status"
 #~ msgid "Cancelled"

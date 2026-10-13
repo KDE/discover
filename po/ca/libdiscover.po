@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2026-10-06 09:40+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1254,7 +1254,7 @@ msgstr "KDE Store"
 msgid "Log in information for %1"
 msgstr "Informació d'accés per a %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "No s'ha pogut llançar %1"
@@ -2245,18 +2245,17 @@ msgid_plural "%1 packages will be upgraded"
 msgstr[0] "S'actualitzarà 1 paquet"
 msgstr[1] "S'actualitzaran %1 paquets"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+msgid "<h3>%1</h3>%2"
 msgstr ""
-"<h3>%1</h3>Actualització a la versió nova %2<br/>No s'han proporcionat notes "
-"de llançament"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>Actualització a la versió nova %2<br/>Notes de llançament:"
 "<blockquote>%3</blockquote>"
@@ -2896,6 +2895,11 @@ msgstr "Programari del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complements"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr ""
+#~ "<h3>%1</h3>Actualització a la versió nova %2<br/>No s'han proporcionat "
+#~ "notes de llançament"
 
 #~ msgctxt "@info:status"
 #~ msgid "Cancelled"

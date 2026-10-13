@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2026-09-24 19:27-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -1242,7 +1242,7 @@ msgstr "KDE دۇكىنى"
 msgid "Log in information for %1"
 msgstr "%1 نىڭ تىزىمغا كىرىش ئۇچۇرى"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "%1 نى قوزغىتالمايدۇ"
@@ -2229,18 +2229,17 @@ msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
 msgstr[0] "%1 بوغچا يۈكسەلدۈرۈلىدۇ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+msgid "<h3>%1</h3>%2"
 msgstr ""
-"<h3>%1</h3>يېڭى نەشرى %2 گە يۈكسەلدۈرىدۇ<br/>ھېچقانداق تارقىتىش چۈشەندۈرۈشى "
-"تەمىنلەنمىگەن"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>يېڭى نەشرى %2 گە يۈكسەلدۈرىدۇ<br/>تارقىتىش چۈشەندۈرۈشى: "
 "<blockquote>%3</blockquote>"
@@ -2871,6 +2870,11 @@ msgstr "سىستېما يۇمشاق دېتالى"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "قوشۇلما"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr ""
+#~ "<h3>%1</h3>يېڭى نەشرى %2 گە يۈكسەلدۈرىدۇ<br/>ھېچقانداق تارقىتىش "
+#~ "چۈشەندۈرۈشى تەمىنلەنمىگەن"
 
 #~ msgctxt "@info:status"
 #~ msgid "Cancelled"

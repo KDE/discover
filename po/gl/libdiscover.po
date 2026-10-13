@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2025-06-19 10:32+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -1263,7 +1263,7 @@ msgstr "Tenda de KDE"
 msgid "Log in information for %1"
 msgstr "Información de acceso para %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Non é posíbel iniciar %1"
@@ -2264,18 +2264,17 @@ msgid_plural "%1 packages will be upgraded"
 msgstr[0] "Anovarase 1 paquete"
 msgstr[1] "Anovaranse %1 paquetes"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+msgid "<h3>%1</h3>%2"
 msgstr ""
-"<h3>%1</h3>Anovación á versión %2.<br/>Non se forneceron notas de "
-"publicación."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>Anovación á versión %2.<br/>Notas de publicación:<blockquote>%3</"
 "blockquote>"
@@ -2948,6 +2947,11 @@ msgstr "Soporte lóxico do sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complementos"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr ""
+#~ "<h3>%1</h3>Anovación á versión %2.<br/>Non se forneceron notas de "
+#~ "publicación."
 
 #~ msgctxt "@info:status"
 #~ msgid "Cancelled"

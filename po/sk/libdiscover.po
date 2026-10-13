@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-06 00:49+0000\n"
+"POT-Creation-Date: 2026-10-13 00:47+0000\n"
 "PO-Revision-Date: 2026-09-14 20:10+0200\n"
 "Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <opensuse-translation@opensuse.org>\n"
@@ -1254,7 +1254,7 @@ msgstr "KDE Store"
 msgid "Log in information for %1"
 msgstr "Prihlasovacie informácie pre %1"
 
-#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:258
+#: libdiscover/backends/PackageKitBackend/AppPackageKitResource.cpp:263
 #, kde-format
 msgid "Cannot launch %1"
 msgstr "Nedá sa spustiť %1"
@@ -2250,18 +2250,17 @@ msgstr[0] "1 balíku sa zvýši verzia"
 msgstr[1] "%1 balíkom sa zvýši verzia"
 msgstr[2] "%1 balíkom sa zvýši verzia"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
-msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+msgid "<h3>%1</h3>%2"
 msgstr ""
-"<h3>%1</h3>Prechod na novú verziu %2<br/>Nie sú k dispozícii žiadne poznámky "
-"k vydaniu"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, kde-format
-msgid ""
-"<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-"blockquote>"
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
+#, fuzzy, kde-format
+#| msgid ""
+#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
+#| "blockquote>"
+msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
 msgstr ""
 "<h3>%1</h3>Prechod na novú verziu %2<br/>Poznámky k vydaniu:<blockquote>%3</"
 "blockquote>"
@@ -2893,6 +2892,11 @@ msgstr "Systémový softvér"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Doplnky"
+
+#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
+#~ msgstr ""
+#~ "<h3>%1</h3>Prechod na novú verziu %2<br/>Nie sú k dispozícii žiadne "
+#~ "poznámky k vydaniu"
 
 #~ msgctxt "@info:status"
 #~ msgid "Cancelled"
