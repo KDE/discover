@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-13 00:47+0000\n"
-"PO-Revision-Date: 2026-10-06 12:20+0100\n"
+"PO-Revision-Date: 2026-10-13 23:33+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 26.08.1\n"
+"X-Generator: Lokalize 26.08.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -2253,17 +2253,12 @@ msgstr[1] "Se renovarán %1 paquetes"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
 msgid "<h3>%1</h3>%2"
-msgstr ""
+msgstr "<h3>%1</h3>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-#| "blockquote>"
+#, kde-format
 msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
-msgstr ""
-"<h3>%1</h3>Renovación a la nueva versión %2<br/>Notas de la versión:"
-"<blockquote>%3</blockquote>"
+msgstr "<h3>%1</h3>%2<br/>Notas de la versión:<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:231
 #, kde-format
@@ -2899,8 +2894,3 @@ msgstr "Software del sistema"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Complementos"
-
-#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-#~ msgstr ""
-#~ "<h3>%1</h3>Renovación a la nueva versión %2<br/>No se han proporcionado "
-#~ "notas de la versión"

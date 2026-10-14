@@ -2907,8 +2907,3 @@ msgstr "Systemprogram"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Tillegg"
-
-#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-#~ msgstr ""
-#~ "<h3>%1</h3>Oppgrader til ny versjon %2<br/>Ingen versjonsmerknader er "
-#~ "tilgjengelige"

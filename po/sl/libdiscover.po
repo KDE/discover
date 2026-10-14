@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-13 00:47+0000\n"
-"PO-Revision-Date: 2026-10-06 10:41+0200\n"
+"PO-Revision-Date: 2026-10-13 07:18+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -2246,17 +2246,12 @@ msgstr[3] "%1 paketi bodo nadgrajeni"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
 msgid "<h3>%1</h3>%2"
-msgstr ""
+msgstr "<h3>%1</h3>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-#| "blockquote>"
+#, kde-format
 msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
-msgstr ""
-"<h3>%1</h3>Nadgradi na novo različico %2<br/>Opombe ob izdaji:<blockquote>"
-"%3</blockquote>"
+msgstr "<h3>%1</h3>%2<br/>Opombe ob izdaji:<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:231
 #, kde-format
