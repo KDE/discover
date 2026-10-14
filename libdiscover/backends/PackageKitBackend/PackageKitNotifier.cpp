@@ -420,4 +420,11 @@ void PackageKitNotifier::onRequireRestart(PackageKit::Transaction::Restart type,
                                                 << "is required for package" << packageID;
 }
 
+QDateTime PackageKitNotifier::lastUpdate() const
+{
+    auto transaction = PackageKit::Daemon::global()->getTimeSinceAction(PackageKit::Transaction::RoleUpdatePackages);
+    transaction.waitForFinished();
+    return QDateTime::currentDateTime().addSecs(-int(transaction.value()));
+}
+
 #include "moc_PackageKitNotifier.cpp"

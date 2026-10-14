@@ -33,6 +33,8 @@ public:
     }
     void checkDistroUpgrade();
 
+    QDateTime lastUpdate() const override;
+
 private Q_SLOTS:
     void package(PackageKit::Transaction::Info info, const QString &packageID, const QString &summary);
     void finished(PackageKit::Transaction::Exit exit, uint);

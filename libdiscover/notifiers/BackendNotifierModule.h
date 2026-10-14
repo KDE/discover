@@ -8,6 +8,7 @@
 
 #include "DiscoverConfig.h"
 #include "discovernotifiers_export.h"
+#include <QDateTime>
 #include <QObject>
 
 class DISCOVERNOTIFIERS_EXPORT UpgradeAction : public QObject
@@ -65,6 +66,8 @@ public:
 
     /** @returns whether the system changed in a way that needs to be rebooted. */
     virtual bool needsReboot() const = 0;
+
+    virtual QDateTime lastUpdate() const;
 
 Q_SIGNALS:
     /**

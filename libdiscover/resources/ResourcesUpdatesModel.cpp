@@ -326,6 +326,9 @@ void ResourcesUpdatesModel::setTransaction(UpdateTransaction *transaction)
     m_transaction = transaction;
     connect(transaction, &UpdateTransaction::finished, this, &ResourcesUpdatesModel::finished);
     connect(transaction, &UpdateTransaction::finished, this, &ResourcesUpdatesModel::progressingChanged);
+    connect(transaction, &UpdateTransaction::finished, this, []() {
+        KSharedConfig::openStateConfig(u"discovernotifierstaterc"_s)->group(u"General"_s).writeEntry(u"lastUpdate"_s, QDateTime::currentDateTime());
+    });
 
     Q_EMIT progressingChanged();
 }
