@@ -27,6 +27,8 @@
 #include <AppStreamQt/release.h>
 #include <appstream/AppStreamIntegration.h>
 
+#include <limits>
+
 #include "libdiscover_backend_packagekit_debug.h"
 
 #ifdef HAVE_MALLOC_TRIM
@@ -418,6 +420,22 @@ void PackageKitNotifier::onRequireRestart(PackageKit::Transaction::Restart type,
     transaction->setProperty("requireRestart", qMax<int>(transaction->property("requireRestart").toInt(), type));
     qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "RESTART" << QMetaEnum::fromType<PackageKit::Transaction::Restart>().valueToKey(type)
                                                 << "is required for package" << packageID;
+}
+
+QDateTime PackageKitNotifier::lastUpdate() const
+{
+    auto transaction = PackageKit::Daemon::global()->getTimeSinceAction(PackageKit::Transaction::RoleUpdatePackages);
+    transaction.waitForFinished();
+
+    if (transaction.isError()) {
+        return BackendNotifierModule::lastUpdate();
+    }
+
+    const auto value = transaction.value();
+    if (value == std::numeric_limits<uint>::max()) {
+        return BackendNotifierModule::lastUpdate();
+    }
+    return QDateTime::currentDateTime().addSecs(-qint64(value));
 }
 
 #include "moc_PackageKitNotifier.cpp"

@@ -6,11 +6,21 @@
 
 #include "BackendNotifierModule.h"
 
+#include <KConfigGroup>
+#include <KSharedConfig>
+
+using namespace Qt::StringLiterals;
+
 BackendNotifierModule::BackendNotifierModule(QObject *parent)
     : QObject(parent)
 {
 }
 
 BackendNotifierModule::~BackendNotifierModule() = default;
+
+QDateTime BackendNotifierModule::lastUpdate() const
+{
+    return KSharedConfig::openStateConfig(u"discovernotifierstaterc"_s)->group(u"Global"_s).readEntry(u"LastUpdateTime"_s, QDateTime());
+}
 
 #include "moc_BackendNotifierModule.cpp"
