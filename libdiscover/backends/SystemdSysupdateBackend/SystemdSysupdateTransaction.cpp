@@ -44,6 +44,9 @@ SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resou
             return;
         }
 
+        // Once acquire call succeeded, we monitor the job and have to report the errors that comes in there instead.
+        m_reportErrorFromDone = true;
+
         const auto path = reply.argumentAt<2>();
 
         qCInfo(SYSTEMDSYSUPDATE_LOG) << "Created sysupdate1::Job with path " << path << "for Acquire";
@@ -112,6 +115,10 @@ void SystemdSysupdateTransaction::acquireDone(qulonglong jobId, const QDBusObjec
             qCInfo(SYSTEMDSYSUPDATE_LOG) << "Created sysupdate1::Job with path " << path << "for Install";
         });
     } else {
+        if (m_reportErrorFromDone && status < 0) {
+            // FIXME strerror
+            Q_EMIT passiveMessage(QStringLiteral("strerror %1").arg(-status));
+        }
         setStatus(DoneWithErrorStatus);
         deleteLater();
     }
