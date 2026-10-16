@@ -13,6 +13,8 @@
 #include <KLocalizedString>
 #include <QCoro/QCoroDBusPendingReply>
 #include <QCoro/QCoroNetworkReply>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QList>
 #include <QNetworkReply>
 #include <QtPreprocessorSupport>
@@ -210,7 +212,24 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
             continue;
         }
 
-        m_resources << new SystemdSysupdateResource(this, component, {installedVersion, availableVersion}, target);
+        bool partial = false;
+
+        // Check whether the new available version might be only partially downloaded and needs to be vacuumed.
+        const QString describeString = co_await target->Describe(availableVersion, 0 /*flags*/);
+        if (!describeString.isEmpty()) {
+            QJsonParseError error;
+            const QJsonObject describeJson = QJsonDocument::fromJson(describeString.toUtf8(), &error).object();
+            if (error.error != QJsonParseError::NoError) {
+                qCWarning(SYSTEMDSYSUPDATE_LOG) << "Failed to parse Describe string to json" << error.errorString();
+            } else {
+                if (describeJson.value(QLatin1StringView{"partial"}).toBool()) {
+                    qCInfo(SYSTEMDSYSUPDATE_LOG) << "New version only partially downloaded, have to download again";
+                    partial = true;
+                }
+            }
+        }
+
+        m_resources << new SystemdSysupdateResource(this, component, {installedVersion, availableVersion, partial}, target);
     }
 
     endFetch();

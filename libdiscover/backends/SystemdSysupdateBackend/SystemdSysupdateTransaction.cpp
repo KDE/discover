@@ -12,6 +12,8 @@
 
 #include <KSafeStringError>
 
+#include <errno.h>
+
 #define SYSTEMDSYSUPDATE_LOG LIBDISCOVER_BACKEND_SYSTEMDSYSUPDATE_LOG
 
 constexpr QLatin1StringView PROGRESS_PROPERTY_NAME("Progress");
@@ -34,6 +36,12 @@ SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resou
     auto backend = qobject_cast<SystemdSysupdateBackend *>(m_resource->backend());
     Q_ASSERT(backend);
     connect(backend, &SystemdSysupdateBackend::transactionRemoved, this, &SystemdSysupdateTransaction::acquireDone);
+
+    acquire();
+}
+
+void SystemdSysupdateTransaction::acquire()
+{
     auto acquireCall = m_target->Acquire(TO_VERSION, FLAGS);
     auto watcher = new QDBusPendingCallWatcher(acquireCall, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
@@ -41,6 +49,11 @@ SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resou
         const SystemdSysupdateUpdateReply reply = *watcher;
 
         if (reply.isError()) {
+            // Handled in acquireDone.
+            if (!m_vacuumed && reply.error().name() == QLatin1StringView{"System.Error.EUCLEAN"}) {
+                return;
+            }
+
             Q_EMIT passiveMessage(reply.error().message());
             setStatus(DoneWithErrorStatus);
             return;
@@ -91,6 +104,33 @@ void SystemdSysupdateTransaction::acquireDone(qulonglong jobId, const QDBusObjec
 {
     Q_UNUSED(jobId);
     qCInfo(SYSTEMDSYSUPDATE_LOG) << "Acquire job" << jobPath.path() << "for target" << m_resource->name() << "finished with status" << status;
+
+    if (status == -EUCLEAN && !m_vacuumed) {
+        qCInfo(SYSTEMDSYSUPDATE_LOG) << "Trying vacuum";
+        auto call = m_target->Vacuum();
+        auto watcher = new QDBusPendingCallWatcher(call, this);
+        connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
+            watcher->deleteLater();
+
+            const SystemdSysupdateVacuumReply reply = *watcher;
+            if (reply.isError()) {
+                if (reply.error().type() == QDBusError::AccessDenied) {
+                    setStatus(CancelledStatus);
+                } else {
+                    Q_EMIT passiveMessage(reply.error().message());
+                    setStatus(DoneWithErrorStatus);
+                }
+                deleteLater();
+                return;
+            }
+
+            qCDebug(SYSTEMDSYSUPDATE_LOG) << "Vacuum finished, trying again to acquire";
+            m_vacuumed = true;
+            acquire();
+        });
+        return;
+    }
+
     auto backend = qobject_cast<SystemdSysupdateBackend *>(m_resource->backend());
     Q_ASSERT(backend);
     disconnect(backend, &SystemdSysupdateBackend::transactionRemoved, this, &SystemdSysupdateTransaction::acquireDone);
