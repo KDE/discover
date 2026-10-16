@@ -159,6 +159,7 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
         AppStream::Metadata metadata;
         for (const auto &url : appStreamUrls) {
             const auto reply = co_await m_nam->get(QNetworkRequest(QUrl(url)));
+            reply->deleteLater();
             if (reply->error() != QNetworkReply::NoError) {
                 qCWarning(SYSTEMDSYSUPDATE_LOG) << "Failed to fetch appstream:" << reply->errorString();
                 Q_EMIT passiveMessage(xi18nc("@info:status",

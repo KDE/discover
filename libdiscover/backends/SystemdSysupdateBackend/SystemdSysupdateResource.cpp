@@ -97,6 +97,7 @@ quint64 SystemdSysupdateResource::size()
     const auto networkAccess = static_cast<SystemdSysupdateBackend *>(backend())->networkAccess();
     auto updateSizeReply = networkAccess->get(QNetworkRequest{QUrl(QStringLiteral("http://localhost:3129/v1/updatesize?version=%1").arg(availableVersion()))});
     connect(updateSizeReply, &QNetworkReply::finished, this, [this, updateSizeReply]() {
+        updateSizeReply->deleteLater();
         if (updateSizeReply->error() != QNetworkReply::NoError) {
             qWarning() << "Update size retrieval error!" << updateSizeReply->error();
             return;
