@@ -10,6 +10,8 @@
 
 #include <QCoroDBusPendingReply>
 
+#include <KSafeStringError>
+
 #define SYSTEMDSYSUPDATE_LOG LIBDISCOVER_BACKEND_SYSTEMDSYSUPDATE_LOG
 
 constexpr QLatin1StringView PROGRESS_PROPERTY_NAME("Progress");
@@ -43,6 +45,9 @@ SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resou
             setStatus(DoneWithErrorStatus);
             return;
         }
+
+        // Once acquire call succeeded, we monitor the job and have to report the errors that comes in there instead.
+        m_reportErrorFromDone = true;
 
         const auto path = reply.argumentAt<2>();
 
@@ -112,6 +117,9 @@ void SystemdSysupdateTransaction::acquireDone(qulonglong jobId, const QDBusObjec
             qCInfo(SYSTEMDSYSUPDATE_LOG) << "Created sysupdate1::Job with path " << path << "for Install";
         });
     } else {
+        if (m_reportErrorFromDone && status < 0) {
+            Q_EMIT passiveMessage(KSafeStringError::strerrorQString(-status));
+        }
         setStatus(DoneWithErrorStatus);
         deleteLater();
     }

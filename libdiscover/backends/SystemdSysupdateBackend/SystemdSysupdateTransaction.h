@@ -30,4 +30,5 @@ private:
     const AbstractResource *m_resource;
     org::freedesktop::sysupdate1::Target *m_target;
     org::freedesktop::sysupdate1::Job *m_job;
+    bool m_reportErrorFromDone = false;
 };
