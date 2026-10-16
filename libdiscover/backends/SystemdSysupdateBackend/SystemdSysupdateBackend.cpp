@@ -197,13 +197,13 @@ QCoro::Task<> SystemdSysupdateBackend::checkForUpdatesAsync()
         qCDebug(SYSTEMDSYSUPDATE_LOG) << "Component:" << component.name() << component.summary() << component.description();
 
         QString installedVersion = co_await target->GetVersion();
-        QString availableVersion = co_await target->CheckNew();
-        qCDebug(SYSTEMDSYSUPDATE_LOG) << "Installed version:" << installedVersion << "Available version:" << availableVersion;
-
         if (installedVersion.isEmpty()) {
             qCWarning(SYSTEMDSYSUPDATE_LOG) << "Failed to get installed version for target:" << name;
             continue;
         }
+
+        QString availableVersion = co_await target->CheckNew();
+        qCDebug(SYSTEMDSYSUPDATE_LOG) << "Installed version:" << installedVersion << "Available version:" << availableVersion;
 
         if (availableVersion.isEmpty()) {
             qCInfo(SYSTEMDSYSUPDATE_LOG) << "No new version available for target:" << name;
