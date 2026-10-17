@@ -7,32 +7,33 @@
 # Dimitris Kardarakos <dimkard@gmail.com>, 2014, 2015, 2016, 2017.
 # George Stefanakis <george.stefanakis@gmail.com>, 2023.
 # SPDX-FileCopyrightText: 2024 Theofilos Intzoglou <int.teo@gmail.com>
-# SPDX-FileCopyrightText: 2024 Petros Vidalis <pvidalis@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2026 Petros Vidalis <pvidalis@gmail.com>
 # SPDX-FileCopyrightText: 2024 Antonis Geralis <capoiosct@gmail.com>
+# SPDX-FileCopyrightText: 2026 Λευτέρης Τ. <tripoleft@protonmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-13 00:47+0000\n"
-"PO-Revision-Date: 2024-09-19 14:31+0300\n"
-"Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
+"PO-Revision-Date: 2026-10-16 15:27+0300\n"
+"Last-Translator: Petros Vidalis <pvidalis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Γιώργος Στεφανάκης"
+msgstr "Γιώργος Στεφανάκης, Λευτέρης Τ."
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "george.stefanakis@gmail.com"
+msgstr "george.stefanakis@gmail.com, tripoleft@protonmail.com"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:135
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
@@ -48,12 +49,12 @@ msgstr "Άγνωστο"
 #: libdiscover/appstream/AppStreamUtils.cpp:137
 #, kde-format
 msgid "Proprietary"
-msgstr "Ιδιοταγές"
+msgstr "Ιδιόκτητο"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:141
 #, kde-format
 msgid "Public Domain"
-msgstr "Δημόσια χρήση"
+msgstr "Κοινό Κτήμα"
 
 #: libdiscover/appstream/OdrsReviewsBackend.cpp:206
 #, kde-format
@@ -138,7 +139,7 @@ msgstr "Αποτυχία λήψης λίστας πακέτων προς ανα�
 #, kde-format
 msgctxt "@info"
 msgid "This is a preview of an AppStream file"
-msgstr ""
+msgstr "Αυτό είναι μια προεπισκόπηση ενός αρχείου AppStream"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -204,14 +205,10 @@ msgstr "Όλες οι Εφαρμογές"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:29
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:29
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"utils"
-#| "\""
-#| msgid "Utilities"
+#, kde-format
 msgctxt "Category"
 msgid "Utilities"
-msgstr "Βοηθήματα"
+msgstr "Εργαλεία"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:40
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:40
@@ -222,11 +219,7 @@ msgstr "Προσβασιμότητα"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:51
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:51
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section \"devel"
-#| "\""
-#| msgid "Development"
+#, kde-format
 msgctxt "Category"
 msgid "Development"
 msgstr "Ανάπτυξη"
@@ -282,14 +275,10 @@ msgstr "Εκπαίδευση"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:131
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:130
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@item:inlistbox Human-readable name for the Debian package section "
-#| "\"science\""
-#| msgid "Science"
+#, kde-format
 msgctxt "Category"
 msgid "Science & Math"
-msgstr "Επιστήμη"
+msgstr "Επιστήμη & Μαθηματικά"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:140
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:139
@@ -317,7 +306,7 @@ msgstr "Χημεία"
 #, kde-format
 msgctxt "Category"
 msgid "Computer Science and Robotics"
-msgstr "Πληροφορική και Ρομποτική"
+msgstr "Επιστήμη Υπολογιστών και Ρομποτική"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:177
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:176
@@ -331,7 +320,7 @@ msgstr "Ηλεκτρονικά"
 #, kde-format
 msgctxt "Category"
 msgid "Engineering"
-msgstr "Τεχνολογία"
+msgstr "Μηχανική"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:195
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:194
@@ -440,18 +429,17 @@ msgstr "Εξομοιωτές"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:334
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:333
-#, fuzzy, kde-format
-#| msgid "Launch"
+#, kde-format
 msgctxt "Category"
 msgid "Launchers"
-msgstr "Εκκίνηση"
+msgstr "Εκκινητές"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:343
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:342
 #, kde-format
 msgctxt "Category"
 msgid "Tools"
-msgstr ""
+msgstr "Εργαλεία"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:355
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:355
@@ -465,7 +453,7 @@ msgstr "Γραφικά"
 #, kde-format
 msgctxt "Category"
 msgid "3D"
-msgstr "Τρισδιάστατα"
+msgstr "3D"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:372
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:372
@@ -528,7 +516,7 @@ msgstr "Συνομιλία"
 #, kde-format
 msgctxt "Category"
 msgid "File Sharing"
-msgstr "Διαμοιρασμός αρχείων"
+msgstr "Κοινοποίηση αρχείων"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:464
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:464
@@ -577,7 +565,7 @@ msgstr "Αναπαραγωγείς βίντεο"
 #, kde-format
 msgctxt "Category"
 msgid "Disc Burning"
-msgstr ""
+msgstr "Εγγραφή δίσκου"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:554
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:554
@@ -588,12 +576,10 @@ msgstr "Γραφείο"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:564
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:564
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgctxt "Category"
 msgid "System"
-msgstr "Επισκευή συστήματος"
+msgstr "Σύστημα"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:208
 #, kde-format
@@ -608,21 +594,19 @@ msgstr "Τοπικό πακέτο"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1963
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
-#, fuzzy, kde-format
-#| msgid "Malformed appstream url '%1'"
+#, kde-format
 msgid "Malformed appstream url “%1”"
-msgstr "Κακοδιατυπωμένο appstream url '%1'"
+msgstr "Κακοδιατυπωμένο appstream url \"%1\""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2077
 #, kde-format
 msgid "Source “%1” already exists"
-msgstr ""
+msgstr "Η πηγή \"%1\" υπάρχει ήδη"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2094
-#, fuzzy, kde-format
-#| msgid "Failed to add source '%1': %2"
+#, kde-format
 msgid "Failed to add source “%1”: %2"
-msgstr "Αποτυχία προσθήκης πηγής '%1': %2"
+msgstr "Αποτυχία προσθήκης πηγής '%1\": %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2221
 #, kde-format
@@ -643,8 +627,8 @@ msgid ""
 "the application is installed.</para>"
 msgstr ""
 "<para>Αυτή η εφαρμογή έρχεται από \"%1\" (Φιλοξενείτε στο <link>%2</link>). "
-"Άλλα λογισμικά σε αυτό το αποθετήριο, θα είναι επίσης διαθέσιμα, στο "
-"Discover όταν εγκατασταθεί αυτή η εφαρμογή.</para>"
+"Άλλα λογισμικά σε αυτό το αποθετήριο, θα είναι επίσης διαθέσιμα, στην "
+"Ανακάλυψη όταν εγκατασταθεί αυτή η εφαρμογή.</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:469
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:419
@@ -656,17 +640,14 @@ msgstr "Άγνωστο"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:525
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:439
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
-#, fuzzy, kde-format
-#| msgid "Failed to start '%1': %2"
+#, kde-format
 msgid "Failed to start “%1”: %2"
-msgstr "Αποτυχία εκκίνησης '%1': %2"
+msgstr "Αποτυχία εκκίνησης \"%1\": %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:539
-#, fuzzy, kde-format
-#| msgctxt "Permission to access system resources and hardware devices"
-#| msgid "Permissions"
+#, kde-format
 msgid "New Permissions"
-msgstr "Δικαιώματα"
+msgstr "Νέα Δικαιώματα"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:766
 #, kde-format
@@ -710,10 +691,9 @@ msgid "Sound system access"
 msgstr "Πρόσβαση στο σύστημα ήχου"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:878
-#, fuzzy, kde-format
-#| msgid "Can play audio"
+#, kde-format
 msgid "Can play and record audio"
-msgstr "Μπορεί να αναπαράγει ήχο"
+msgstr "Μπορεί να αναπαράγει και να καταγράφει ήχο"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:882
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1026
@@ -745,7 +725,7 @@ msgstr ""
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:894
 #, kde-format
 msgid "Remote Login Access"
-msgstr "Απομακρυσμένη πρόσβαση"
+msgstr "Απομακρυσμένη πρόσβαση σύνδεσης"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:895
 #, kde-format
@@ -767,7 +747,7 @@ msgstr "Μπορεί να ενσωματώσει και να επικοινων�
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:904
 #, kde-format
 msgid "Printer Access"
-msgstr "Πρόσβαση στον εκτυπωτή"
+msgstr "Πρόσβαση σε εκτυπωτή"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:905
 #, kde-format
@@ -954,6 +934,7 @@ msgstr ""
 #, kde-format
 msgid "App Verified on %1 as shipped by its author %2"
 msgstr ""
+"Η εφαρμογή επαληθεύτηκε στις %1 όπως κυκλοφόρησε από τον δημιουργό του %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:98
 #, kde-format
@@ -963,7 +944,7 @@ msgstr "Προσθήκη Flathub"
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:99
 #, kde-format
 msgid "Apply Changes"
-msgstr "Εφαρμογή αλλαγών"
+msgstr "Εφαρμογή Αλλαγών"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:103
 #, kde-format
@@ -971,8 +952,8 @@ msgid ""
 "Changes to the priority of Flatpak sources must be applied before they will "
 "take effect."
 msgstr ""
-"Αλλαγές στην προτεραιότητα των πηγών Flatpak θα πρέπει πρώτα να εφαρμοστούν "
-"για να τεθούν σε λειτουργία."
+"Οι αλλαγές στην προτεραιότητα των πηγών Flatpak θα πρέπει πρώτα να "
+"εφαρμοστούν για να τεθούν σε λειτουργία."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:107
 #, kde-format
@@ -988,10 +969,9 @@ msgid "Could not add the source %1"
 msgstr "Αδυναμία προσθήκης της πηγής %1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:296
-#, fuzzy, kde-format
-#| msgid "Removing '%1'"
+#, kde-format
 msgid "Removing “%1”"
-msgstr "Αφαίρεση '%1'"
+msgstr "Αφαιρείται \"%1\""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
@@ -1023,10 +1003,9 @@ msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Δώστε το URI ενός αποθετηρίου Flatpak (*.flatpakrepo):"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:35
-#, fuzzy, kde-format
-#| msgid "Adding remote '%1' in %2 from %3"
+#, kde-format
 msgid "Adding remote “%1” in %2 from %3"
-msgstr "Προσθήκη απομακρυσμένου %1 στο %2 από %3"
+msgstr "Προσθήκη απομακρυσμένου \"%1\" στο %2 από %3"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:338
 #, kde-format
@@ -1035,6 +1014,8 @@ msgid ""
 "Cannot create transaction for “%1”:<nl/>%2<nl/><nl/>Please report this to <a "
 "href='%3'>%3</a>"
 msgstr ""
+"Δεν ήταν δυνατή η δημιουργία συναλλαγής για \"%1\":<nl/>%2<nl/><nl/"
+">Παρακαλούμε αναφέρετέ το στο <a href='%3'>%3</a>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
 #, kde-format
@@ -1043,7 +1024,7 @@ msgid ""
 "An internal error occurred. Please file a report at https://bugs.kde.org/"
 "enter_bug.cgi?product=Discover"
 msgstr ""
-"Ένα εσωτερικό σφάλμα προέκυψε. Παρακαλούμε καταθέστε αναφορά στο https://"
+"Προέκυψε ένα εσωτερικό σφάλμα. Παρακαλούμε καταθέστε αναφορά στο https://"
 "bugs.kde.org/enter_bug.cgi?product=Discover"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:462
@@ -1053,13 +1034,7 @@ msgid "Replacement Available"
 msgstr "Διαθέσιμη Αντικατάσταση"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
-#| "though)"
-#| msgid ""
-#| "<resource>%1</resource> is no longer receiving updates.<nl/><nl/>Replace "
-#| "it with the supported version provided by <resource>%2</resource>?"
+#, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
 "though)"
@@ -1072,8 +1047,11 @@ msgid ""
 "there."
 msgstr ""
 "Το <resource>%1</resource> δεν λαμβάνει πλέον ενημερώσεις.<nl/><nl/>Θέλετε "
-"να το αντικαταστήσετε με την υποστηριζόμενη έκδοση που παρέχεται από το "
-"<resource>%2</resource>;"
+"να το αντικαταστήσετε με υποστηριζόμενη έκδοση που παρέχεται από το "
+"<resource>%2</resource>;<nl/><nl/>Οι ρυθμίσεις και τα δεδομένα σας "
+"μεταφέρονται αυτόματα στην νέα εφαρμογή.<nl/><nl/>Αν η παλιά εφαρμογή σου "
+"είναι στο πανέλ σου ή στα αγαπημένα του Εκκινητή Εφαρμογών, θα χρειαστεί να "
+"την αφαιρέσετε και να προσθέσετε ξανά."
 
 #: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
 #, kde-format
@@ -1116,15 +1094,16 @@ msgid "View Stable Version on %1"
 msgstr "Προβολή Σταθερής Έκδοσης στο %1"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:19
-#, fuzzy, kde-format
-#| msgid "%1 is not installed but it still has data present."
+#, kde-format
 msgid "%1 is not installed but it still has user data and settings present."
-msgstr "%1 δεν έχει εγκατασταθεί, αλλά εξακολουθεί να έχει δεδομένα."
+msgstr ""
+"%1 δεν έχει εγκατασταθεί, αλλά εξακολουθεί να έχει δεδομένα χρήστη και "
+"ρυθμίσεις."
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:45
 #, kde-format
 msgid "Move to Trash"
-msgstr ""
+msgstr "Μετακίνηση στα Απορρίμματα"
 
 #: libdiscover/backends/FlatpakBackend/qml/FlatpakRemoveData.qml:48
 #, kde-format
@@ -1145,11 +1124,9 @@ msgid "Configure permissions…"
 msgstr "Ρύθμιση δικαιωμάτων..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:149
-#, fuzzy, kde-format
-#| msgctxt "@label Column label"
-#| msgid "Version"
+#, kde-format
 msgid "Version %1"
-msgstr "Έκδοση"
+msgstr "Έκδοση %1"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:493
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
@@ -1184,16 +1161,14 @@ msgstr "SteamOS"
 #: libdiscover/backends/HoloBackend/HoloBackend.cpp:73
 #, kde-format
 msgid "Holo"
-msgstr ""
+msgstr "Holo"
 
 #: libdiscover/backends/HoloBackend/HoloBackend.cpp:113
 #, fuzzy, kde-format
 #| msgid "SteamOS: Unable to query atomupd for SteamOS Updates..."
 msgctxt "%1 is the pretty name of the distro e.g. Holo or SteamOS"
 msgid "Holo: Unable to query atomupd for %1 Updates..."
-msgstr ""
-"SteamOS: Δεν είναι δυνατή η υποβολή ερωτήματος στο atomupd για ενημερώσεις "
-"SteamOS..."
+msgstr "Holo: Αδυναμία ελέγχου για ενημερώσεις του %1 μέσω του atomupd..."
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
 #, kde-format
@@ -1303,7 +1278,7 @@ msgstr "Γραμματοσειρές"
 #, kde-format
 msgctxt "Category"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "Οδηγοί Υλικού"
 
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:597
 #, kde-format
@@ -1315,7 +1290,7 @@ msgstr "Πρόσθετα Plasma"
 #, kde-format
 msgctxt "Category"
 msgid "Plasma Widgets"
-msgstr "Γραφικά συστατικά Plasma"
+msgstr "Γραφικά στοιχεία Plasma"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:331
 #, kde-format
@@ -1333,10 +1308,9 @@ msgstr ""
 "ενδεχόμενο αναβάθμισης σε υποστηριζόμενη έκδοση."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
-#, fuzzy, kde-format
-#| msgid "Cannot remove '%1'"
+#, kde-format
 msgid "Cannot remove “%1”"
-msgstr "Αδυναμία αφαίρεσης '%1'"
+msgstr "Αδυναμία αφαίρεσης \"%1\""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
@@ -1349,13 +1323,11 @@ msgid ""
 msgstr ""
 "<b>Το %1 είναι πλέον διαθέσιμο.</b>\n"
 "Για να μπορέσετε να αναβαθμίσετε σε αυτή τη νέα έκδοση, βεβαιωθείτε ότι "
-"έχετε εφαρμόσει όλες τις διαθέσιμες ενημερώσεις και, στη συνέχεια, "
+"έχετε εφαρμόσει όλες τις διαθέσιμες ενημερώσεις και στη συνέχεια, "
 "επανεκκινήστε το σύστημα."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Upgrade Now"
+#, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "Αναβάθμιση Τώρα"
@@ -1374,6 +1346,8 @@ msgid ""
 "The PackageKit background service stopped unexpectedly.<nl/></nl/>Please "
 "<link url='%1'>report this issue to %2</link>"
 msgstr ""
+"Η υπηρεσία παρασκηνίου PackageKit διακόπηκε απότομα.<nl/></nl/>Παρακαλούμε "
+"<link url='%1'>αναφέρετε το σφάλμα στο %2</link>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:18
 #, kde-format
@@ -1468,7 +1442,7 @@ msgstr "Ακύρωση συναλλαγής"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:57
 #, kde-format
 msgid "No Cache available"
-msgstr "Μη διαθέσιμη λανθάνουσα μνήμη"
+msgstr "Μη διαθέσιμη προσωρινή μνήμη"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:59
 #, kde-format
@@ -1598,7 +1572,7 @@ msgstr "Δεν υπάρχουν άλλοι διαθέσιμοι εναλλακτ
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:109
 #, kde-format
 msgid "No distro upgrade data"
-msgstr "Δεν υπάρχουν δεδομένα αναβάθμισης διανομής"
+msgstr "Χωρίς δεδομένα αναβάθμισης διανομής"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:111
 #, kde-format
@@ -1723,46 +1697,37 @@ msgid "Unknown error %1."
 msgstr "Άγνωστο σφάλμα %1."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:169
-#, fuzzy, kde-format
-#| msgid "'%1' was changed and suggests to be restarted."
+#, kde-format
 msgid "“%1” was changed and suggests to be restarted."
-msgstr "το '%1' άλλαξε και συνίσταται η επανεκκίνησή του."
+msgstr "το \"%1\" άλλαξε και συνίσταται η επανεκκίνησή του."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:171
-#, fuzzy, kde-format
-#| msgid "A change by '%1' suggests your session to be restarted."
+#, kde-format
 msgid "A change by “%1” suggests your session to be restarted."
-msgstr "Μια αλλαγή από το '%1' συνιστά την επανεκκίνηση της συνεδρίας σας."
+msgstr "Μια αλλαγή από το \"%1\" συνιστά την επανεκκίνηση της συνεδρίας σας."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:173
-#, fuzzy, kde-format
-#| msgid ""
-#| "'%1' was updated for security reasons, a restart of the session is "
-#| "recommended."
+#, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the session is "
 "recommended."
 msgstr ""
-"Το '%1' ενημερώθηκε για λόγους ασφαλείας, συνίσταται η επανεκκίνηση της "
+"Το \"%1\" ενημερώθηκε για λόγους ασφαλείας, συνίσταται η επανεκκίνηση της "
 "συνεδρίας."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:175
-#, fuzzy, kde-format
-#| msgid ""
-#| "'%1' was updated for security reasons, a restart of the system is "
-#| "recommended."
+#, kde-format
 msgid ""
 "“%1” was updated for security reasons, a restart of the system is "
 "recommended."
 msgstr ""
-"Το '%1' ενημερώθηκε για λόγους ασφαλείας, συνίσταται η επανεκκίνηση του "
+"Το \"%1\" ενημερώθηκε για λόγους ασφαλείας, συνίσταται η επανεκκίνηση του "
 "συστήματος."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:180
-#, fuzzy, kde-format
-#| msgid "A change by '%1' suggests your system to be restarted."
+#, kde-format
 msgid "A change by “%1” suggests your system to be restarted."
-msgstr "Μια αλλαγή από το '%1' συνιστά την επανεκκίνηση του συστήματός σας."
+msgstr "Μια αλλαγή από το \"%1\" συνιστά την επανεκκίνηση του συστήματός σας."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:188
 #, kde-format
@@ -1792,7 +1757,7 @@ msgstr "Για λόγους ασφαλείας, το σύστημα πρέπει
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
 #, kde-format
 msgid "Waiting…"
-msgstr "Αναμονή.."
+msgstr "Αναμονή..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
 #, kde-format
@@ -2048,7 +2013,7 @@ msgstr "Ασφάλεια"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:344
 #, kde-format
 msgid "Blocked"
-msgstr "Σε φραγή"
+msgstr "Αποκλείστηκε"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:346
 #, kde-format
@@ -2058,17 +2023,17 @@ msgstr "Γίνεται λήψη"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:348
 #, kde-format
 msgid "Updating"
-msgstr "Ενημέρωση"
+msgstr "Ενημερώνεται"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:350
 #, kde-format
 msgid "Installing"
-msgstr "Εγκατάσταση"
+msgstr "Εγκαθίσταται"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:352
 #, kde-format
 msgid "Removing"
-msgstr "Αφαίρεση"
+msgstr "Αφαιρείται"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:354
 #, kde-format
@@ -2078,7 +2043,7 @@ msgstr "Εκκαθάριση"
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:356
 #, kde-format
 msgid "Obsoleting"
-msgstr "Ξεπερασμένα:"
+msgstr "Ξεπερασμένα"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:358
 #, kde-format
@@ -2164,10 +2129,10 @@ msgid_plural ""
 "Failed to update %1 packages\n"
 "%2"
 msgstr[0] ""
-"Αποτυχία ενημέρωσης πακέτου %1:\n"
+"Αποτυχία ενημέρωσης %1 πακέτου:\n"
 "%2"
 msgstr[1] ""
-"Αποτυχία ενημέρωσης πακέτων %1:\n"
+"Αποτυχία ενημέρωσης %1 πακέτων:\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:137
@@ -2175,7 +2140,7 @@ msgstr[1] ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
-msgstr "Άνοιγμα Discover"
+msgstr "Άνοιγμα Ανακάλυψης"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:142
 #, kde-format
@@ -2194,13 +2159,12 @@ msgid "Repair Failed"
 msgstr "Αποτυχία Επισκευής"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:156
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "%1<nl/>Please report this error to your distribution."
+#, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
-msgstr "%1<nl/>Παρακαλούμε αναφέρετε αυτό το σφάλμα στη διανομή σας."
+msgstr ""
+"%1<nl/>Παρακαλούμε <link url='%2'>αναφέρετε αυτό το σφάλμα στο %3</link>."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:169
 #, kde-format
@@ -2216,8 +2180,8 @@ msgstr "Ενημερώσεις χωρίς σύνδεση"
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
-msgstr[0] "Επιτυχημένη ενημέρωση πακέτου %1"
-msgstr[1] "Επιτυχημένη ενημέρωση πακέτου %1"
+msgstr[0] "Επιτυχημένη ενημέρωση %1 πακέτου"
+msgstr[1] "Επιτυχημένη ενημέρωση %1 πακέτων"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:192
 #, kde-format
@@ -2239,7 +2203,7 @@ msgstr ", "
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:357
 #, kde-format
 msgid "Software verified by %1"
-msgstr ""
+msgstr "Λογισμικό επαληθεύτηκε από %1"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:385
 #, kde-format
@@ -2278,8 +2242,7 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:100
-#, fuzzy, kde-format
-#| msgid "System upgrade"
+#, kde-format
 msgctxt "Major system upgrade upgrade, not a smaller security update"
 msgid "System upgrade"
 msgstr "Αναβάθμιση συστήματος"
@@ -2294,17 +2257,12 @@ msgstr[1] "%1 πακέτα θα αναβαθμιστούν"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
 msgid "<h3>%1</h3>%2"
-msgstr ""
+msgstr "<h3>%1</h3>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-#| "blockquote>"
+#, kde-format
 msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
-msgstr ""
-"<h3>%1</h3>Αναβαθμίστε στη νέα έκδοση %2<br/>Σημειώσεις έκδοση:<blockquote>"
-"%3</blockquote>"
+msgstr "<h3>%1</h3>%2<br/>Σημειώσεις κυκλοφορίας:<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:231
 #, kde-format
@@ -2321,16 +2279,11 @@ msgstr "Μελλοντική"
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
-"Δεν υπάρχει αρκετά διαθέσιμος χώρος για την ενημέρωση, μόνο %1 χώρου είναι "
+"Δεν υπάρχει αρκετός διαθέσιμος χώρος για την ενημέρωση, μόνο %1 χώρου είναι "
 "διαθέσιμος."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:602
-#, fuzzy, kde-format
-#| msgid ""
-#| "This update cannot be completed as it would remove the following software "
-#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
-#| ">If you believe this is an error, please report it as a bug to the "
-#| "packagers of your distribution."
+#, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
 "which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
@@ -2345,7 +2298,7 @@ msgstr ""
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:609
 #, kde-format
 msgid "Confirm Changes"
-msgstr "Επιβεβαίωση αλλαγών"
+msgstr "Επιβεβαίωση Αλλαγών"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:610
 #, kde-format
@@ -2364,15 +2317,12 @@ msgstr "%1:<nl/><nl/>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
-#, fuzzy, kde-format
-#| msgid ""
-#| "Media Change of type '%1' is requested.\n"
-#| "%2"
+#, kde-format
 msgid ""
 "Media Change of type “%1” is requested.\n"
 "%2"
 msgstr ""
-"Ζητήθηκε αλλαγή μέσου τύπου '%1'.\n"
+"Ζητήθηκε αλλαγή μέσου τύπου \"%1\".\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:777
@@ -2419,12 +2369,7 @@ msgstr ""
 "Χρονοσφραγίδα: %4\n"
 
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
-#, fuzzy, kde-format
-#| msgid ""
-#| "This action cannot be completed as it would remove the following software "
-#| "which is critical to the system's operation:<nl/><ul><li>%1</li></ul><nl/"
-#| ">If you believe this is an error, please report it as a bug to the "
-#| "packagers of your distribution."
+#, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
 "which is critical to the system’s operation:<nl/><ul><li>%1</li></ul><nl/>If "
@@ -2450,10 +2395,10 @@ msgid_plural ""
 "This action will also remove the following packages:\n"
 "%2"
 msgstr[0] ""
-"Αυτή η ενέργεια θα αφαιρέσει, επίσης, το ακόλουθο πακέτο:\n"
+"Αυτή η ενέργεια θα αφαιρέσει επίσης, το ακόλουθο πακέτο:\n"
 "%2"
 msgstr[1] ""
-"Αυτή η ενέργεια θα αφαιρέσει, επίσης, τα ακόλουθα πακέτα:\n"
+"Αυτή η ενέργεια θα αφαιρέσει επίσης, τα ακόλουθα πακέτα:\n"
 "%2"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:33
@@ -2483,26 +2428,22 @@ msgid "Operating System"
 msgstr "Λειτουργικό σύστημα"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:172
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: Multiple booted deployments found. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Multiple booted deployments found. Please file a bug."
 msgstr ""
-"rpm-ostree: Βρέθηκαν πολλαπλά εκκινήσιμα deployments. Παρακαλώ υποβάλετε ένα "
-"σφάλμα."
+"rpm-ostree backend: Βρέθηκαν πολλαπλά εκκινήσιμα deployments. Παρακαλώ "
+"υποβάλετε ένα σφάλμα."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:184
-#, fuzzy, kde-format
-#| msgid "rpm-ostree: No booted deployment found. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr ""
-"rpm-ostree: Δεν βρέθηκε εκκινήσιμη εγκατάσταση. Παρακαλώ καταθέστε ένα "
-"σφάλμα."
+"rpm-ostree backend: Δεν βρέθηκε εκκινήσιμη εγκατάσταση. Παρακαλώ καταθέστε "
+"ένα σφάλμα."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Begin Upgrade…"
+#, kde-format
 msgctxt "@action:button Perform a distro upgrade, not just a package update"
 msgid "Begin Upgrade…"
 msgstr "Έναρξη Αναβάθμισης..."
@@ -2511,7 +2452,7 @@ msgstr "Έναρξη Αναβάθμισης..."
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
-"Έχετε εκκρεμείς ενημερώσεις για την τρέχουσα έκδοση. Προχωράω ούτως ή άλλως."
+"Έχετε εκκρεμείς ενημερώσεις για την τρέχουσα έκδοση. Συνέχεια ούτως ή άλλως."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
 #, kde-format
@@ -2528,11 +2469,9 @@ msgstr ""
 "καταθέστε ένα σφάλμα."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
-#, fuzzy, kde-format
-#| msgctxt "Category"
-#| msgid "Operating System"
+#, kde-format
 msgid "Operating System"
-msgstr "Λειτουργικό σύστημα"
+msgstr "Λειτουργικό Σύστημα"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
 #, kde-format
@@ -2570,6 +2509,8 @@ msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won’t be automatically removed on updates."
 msgstr ""
+"<br/>Αυτή η έκδοση έχει καρφιτσωθεί και δεν θα αφαιρεθεί αυτόματα με τις "
+"ενημερώσεις."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
@@ -2577,7 +2518,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label OS vendor"
 msgid "Fedora Project"
-msgstr ""
+msgstr "Έργο Fedora"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
@@ -2597,7 +2538,7 @@ msgstr "Η έκδοση που θα χρησιμοποιηθεί μετά την
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:407
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr "Έκδοση εφεδρείας ( καρφιτσωμένη)"
+msgstr "Έκδοση εφεδρείας (καρφιτσωμένη)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:409
 #, kde-format
@@ -2605,46 +2546,36 @@ msgid "Fallback version"
 msgstr "Έκδοση εφεδρείας"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Σφάλμα: Δεν παρέχεται διεπαφή DBus. Παρακαλώ καταθέστε "
+"rpm-ostree backend: Σφάλμα: Δεν παρέχεται διεπαφή DBus. Παρακαλώ καταθέστε "
 "ένα σφάλμα."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
-#| "an invalid format. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Σφάλμα: Δεν μπορώ να ξεκινήσω μια συναλλαγή με "
-"λανθασμένη μορφή πόρου. Παρακαλώ καταθέστε ένα σφάλμα."
+"rpm-ostree backend: Σφάλμα: Αδυναμία εκκίνησης μιας συναλλαγής με λανθασμένη "
+"μορφή πόρου. Παρακαλώ καταθέστε ένα σφάλμα."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
-#| "bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Σφάλμα: Δεν μπορώ να βασιστώ σε άδειο ref. Παρακαλώ "
-"καταθέστε ένα σφάλμα."
+"rpm-ostree backend: Σφάλμα: Δεν μπορεί να γίνει rebase σε άδειο ref. "
+"Παρακαλώ καταθέστε ένα σφάλμα."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
+#, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Σφάλμα: Άγνωστη ζητούμενη λειτουργία. Παρακαλούμε "
+"rpm-ostree backend: Σφάλμα: Άγνωστη ζητούμενη λειτουργία. Παρακαλούμε "
 "καταθέστε ένα σφάλμα."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
@@ -2658,18 +2589,14 @@ msgstr ""
 "%1"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
-#, fuzzy, kde-format
-#| msgid ""
-#| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
+#, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree-backend: Σφάλμα: Άγνωστη μορφή πόρου. Παρακαλούμε καταθέστε ένα "
+"rpm-ostree backend: Σφάλμα: Άγνωστη μορφή πόρου. Παρακαλούμε καταθέστε ένα "
 "σφάλμα."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
-#, fuzzy, kde-format
-#| msgid ""
-#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, kde-format
 msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 "Γίνεται ακύρωση συναλλαγής rpm-ostree. Αυτό μπορεί να πάρει λίγο χρόνο. "
@@ -2685,14 +2612,14 @@ msgstr "Έλεγχος για ενημέρωση συστήματος"
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr ""
-"Λήψη ενημέρωσης συστήματος. Παρακαλούμε περιμένετε καθώς η πρόοδος δεν "
-"αναφέρεται."
+"Γίνεται λήψη ενημέρωσης συστήματος. Παρακαλούμε περιμένετε καθώς η πρόοδος "
+"δεν αναφέρεται."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
-"Ενημέρωση του συστήματος. Παρακαλούμε περιμένετε καθώς η πρόοδος δεν "
+"Ενημερώνεται το σύστημα. Παρακαλούμε περιμένετε καθώς η πρόοδος δεν "
 "αναφέρεται."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
@@ -2701,13 +2628,13 @@ msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr ""
-"Ενημέρωση στην επόμενη μεγάλη έκδοση. Παρακαλούμε περιμένετε καθώς η πρόοδος "
-"δεν αναφέρεται."
+"Γίνεται ενημέρωση στην επόμενη μεγάλη έκδοση. Παρακαλούμε περιμένετε καθώς η "
+"πρόοδος δεν αναφέρεται."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
-msgstr "Λειτουργία σε εξέλιξη (ξεκίνησε έξω από το Discover)"
+msgstr "Λειτουργία σε εξέλιξη (ξεκίνησε έξω από την Ανακάλυψη)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
 #, kde-format
@@ -2715,16 +2642,14 @@ msgid "Unknown transaction type"
 msgstr "Άγνωστος τύπος συναλλαγής"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channel: %1"
-msgstr "Κανάλια…"
+msgstr "Κανάλι: %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
-#, fuzzy, kde-format
-#| msgid "Channels…"
+#, kde-format
 msgid "Channels for %1"
-msgstr "Κανάλια…"
+msgstr "Κανάλια για %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:45
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:384
@@ -2750,36 +2675,33 @@ msgstr "Snap"
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:579
 #, kde-format
 msgid "Verified Publisher on snapcraft.io"
-msgstr ""
+msgstr "Επαληθευμένος Εκδότης στο snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapResource.cpp:581
 #, kde-format
 msgid "Starred Publisher on snapcraft.io"
-msgstr ""
+msgstr "Αγαπημένος Εκδότης στο snapcraft.io"
 
 #: libdiscover/backends/SnapBackend/SnapTransaction.cpp:57
-#, fuzzy, kde-format
-#| msgid ""
-#| "This Snap application is not compatible with security sandboxing and will "
-#| "have full access to this computer. Install it anyway?"
+#, kde-format
 msgid ""
 "This Snap application is not compatible with security sandboxing and will "
 "have full access to this system. Install it anyway?"
 msgstr ""
 "Αυτή η εφαρμογή Snap δεν είναι συμβατή με ασφαλές sandboxing και θα έχει "
-"πλήρη πρόσβαση στον υπολογιστή σας. Να εγκατασταθεί ούτως ή άλλως;"
+"πλήρη πρόσβαση στο σύστημά σας. Να εγκατασταθεί ούτως ή άλλως;"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:149
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
-msgstr ""
+msgstr "Αποτυχία απόκτησης δεδομένων για \"%1\".<nl/><nl/>Μήνυμα σφάλματος: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
-msgstr ""
+msgstr "Δε βρέθηκαν URLs για στόχο \"%1\""
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
 #, kde-kuit-format
@@ -2788,28 +2710,29 @@ msgid ""
 "Failed to fetch the updates from <a href='%1'>%1</a>.<nl/><nl/>Error "
 "message: %2"
 msgstr ""
+"Αποτυχία ανάκτησης ενημερώσεων από <a href='%1'>%1</a>.<nl/><nl/>Μήνυμα "
+"Σφάλματος: %2"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
 msgstr ""
+"Αποτυχία ανάλυσης μεταδεδομένων ενημέρωσης. <nl/><nl/>Μήνυμα σφάλματος: %1"
 
 #: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
-msgstr ""
+msgstr "Δε βρέθηκαν συστατικά στα μεταδεδομένα του appstream για στόχο \"%1\""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
-#, fuzzy, kde-format
-#| msgid ""
-#| "List all the backends we'll want to have loaded, separated by comma ','."
+#, kde-format
 msgid ""
 "List all the backends we’ll want to have loaded, separated by comma “,”."
 msgstr ""
-"Εμφάνιση όλων των backends που θα θέλαμε να φορτωθούν, χωρισμένα με κόμμα "
-"','."
+"Εμφάνιση όλων των backends που θα θέλαμε να φορτωθούν, χωρισμένα με κόμμα \","
+"\"."
 
 #: libdiscover/resources/AbstractResource.cpp:113
 #, kde-format
@@ -2832,10 +2755,7 @@ msgid "Launch"
 msgstr "Εκκίνηση"
 
 #: libdiscover/resources/AbstractResource.cpp:270
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here. An app or runtime got updated "
 "without changing the user-facing version number %1"
@@ -2851,7 +2771,7 @@ msgstr "%1 → %2%1 → %2%2"
 #: libdiscover/resources/AbstractResourcesBackend.cpp:160
 #, kde-format
 msgid "Please verify Internet connectivity"
-msgstr "Παρακαλώ βεβαιωθείτε ότι έχετε σύνδεση στο διαδίκτυο"
+msgstr "Παρακαλώ επιβεβαιώστε τη σύνδεση στο διαδίκτυο"
 
 #: libdiscover/resources/ResourcesModel.cpp:104
 #, kde-format
@@ -2859,44 +2779,34 @@ msgid "Refresh"
 msgstr "Ανανέωση"
 
 #: libdiscover/resources/ResourcesModel.cpp:392
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt "@info:status %1 is the name of a source of updates"
 msgid "Refreshing %1"
-msgstr "Ανανέωση της έκδοσης %1"
+msgstr "Ανανεώνεται %1"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:561
-#, fuzzy, kde-format
-#| msgid "Applications"
+#, kde-format
 msgctxt "@label"
 msgid "Applications"
 msgstr "Εφαρμογές"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:563
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Addons"
+#, kde-format
 msgctxt "@label"
 msgid "Addons"
 msgstr "Πρόσθετα"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:565
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Application Support"
+#, kde-format
 msgctxt "@label"
 msgid "Application Support"
 msgstr "Υποστήριξη Εφαρμογών"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:567
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Repair System"
+#, kde-format
 msgctxt "@label"
 msgid "System"
-msgstr "Επισκευή συστήματος"
+msgstr "Σύστημα"
 
 #: libdiscover/resources/ResourcesProxyModel.cpp:809
 #, kde-format
@@ -2913,7 +2823,7 @@ msgstr "Ενημερώσεις"
 #, kde-format
 msgctxt "@label Download rate"
 msgid "%1/s"
-msgstr "%1/s"
+msgstr "%1/δλ"
 
 #: libdiscover/Transaction/TransactionModel.cpp:79
 #, kde-format
@@ -2955,11 +2865,10 @@ msgstr "Ολοκληρώθηκε"
 #, kde-format
 msgctxt "@info:status"
 msgid "Failed"
-msgstr "Αποτυχία"
+msgstr "Απέτυχε"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, fuzzy, kde-format
-#| msgid "Canceled"
+#, kde-format
 msgctxt "@info:status"
 msgid "Canceled"
 msgstr "Ακυρώθηκε"
@@ -2980,7 +2889,7 @@ msgstr "Υποστήριξη Εφαρμογών"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
-msgstr "Λογισμικό συστήματος"
+msgstr "Λογισμικό Συστήματος"
 
 #: libdiscover/UpdateModel/UpdateModel.cpp:140
 #, kde-format
