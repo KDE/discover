@@ -6,22 +6,22 @@
 # Dimitrios Glentadakis <dglent@gmail.com>, 2012.
 # Dimitris Kardarakos <dimkard@gmail.com>, 2014, 2015, 2016, 2017.
 # SPDX-FileCopyrightText: 2023 George Stefanakis <george.stefanakis@gmail.com>
-# SPDX-FileCopyrightText: 2024 Petros Vidalis <pvidalis@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2026 Petros Vidalis <pvidalis@gmail.com>
 # SPDX-FileCopyrightText: 2024 Antonis Geralis <capoiosct@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-09 03:00+0000\n"
-"PO-Revision-Date: 2024-09-19 14:33+0300\n"
-"Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
+"PO-Revision-Date: 2026-10-16 15:34+0300\n"
+"Last-Translator: Petros Vidalis <pvidalis@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: discover/DiscoverObject.cpp:197
 #, fuzzy, kde-format
@@ -1264,6 +1264,10 @@ msgid ""
 "<link url='%3'>%3</link> instead, as it may be an easily fixable packaging "
 "issue rather than a flaw in the app itself."
 msgstr ""
+"Αν το %1 δεν εκκινείται, δοκιμάστε να αναφέρετε το πρόβλημα στους υπεύθυνους "
+"για τη δημιουργία των πακέτων του στο %2, μέσω του <link url='%3'>%3</link>, "
+"καθώς ενδέχεται να πρόκειται για ένα πρόβλημα στη δημιουργία του πακέτου που "
+"διορθώνεται εύκολα, και όχι για κάποιο σφάλμα της ίδιας της εφαρμογής."
 
 #: discover/qml/ReviewDialog.qml:77
 #, kde-kuit-format
@@ -1273,6 +1277,10 @@ msgid ""
 "url='%2'>%2</link> instead, as it may be an easily fixable packaging issue "
 "rather than a flaw in the app itself."
 msgstr ""
+"Αν το %1 δεν εκκινείται, εξετάστε το ενδεχόμενο να αναφέρετε το πρόβλημα "
+"στους προγραμματιστές του, μέσω του <link url='%2'>%2</link>, καθώς μπορεί "
+"να οφείλεται σε κάποιο πρόβλημα του πακέτου που διορθώνεται εύκολα και όχι "
+"σε σφάλμα της ίδιας της εφαρμογής."
 
 #: discover/qml/ReviewDialog.qml:82
 #, kde-kuit-format
