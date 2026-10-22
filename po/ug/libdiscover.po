@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-19 00:48+0000\n"
+"POT-Creation-Date: 2026-10-22 00:51+0000\n"
 "PO-Revision-Date: 2026-09-24 19:27-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -2665,20 +2665,20 @@ msgstr ""
 "بۇ Snap پىروگرامما بىخەتەر قۇم قۇتا بىلەن ماسلاشمايدۇ ۋە سىستېمىنى تولۇق "
 "زىيارەت ئىجازىتىگە ئىگە بولىدۇ. ئۇنى ئورنىتىۋېرەمدۇ؟"
 
-#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:149
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:151
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to get appstream data for “%1”.<nl/><nl/>Error message: %2"
 msgstr ""
 "«%1» نىڭ ئەپ ئېقىم سانلىق مەلۇماتىغا ئېرىشەلمىدى.<nl/><nl/>خاتالىق ئۇچۇرى: %2"
 
-#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:154
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:156
 #, kde-format
 msgctxt "@info:status"
 msgid "No appstream URLs found for target “%1”"
 msgstr "«%1» نىشاننىڭ ھېچقانداق ئەپ ئېقىم تور ئادرېسىنى تاپالمىدى"
 
-#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:165
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:168
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
@@ -2687,17 +2687,23 @@ msgid ""
 msgstr ""
 "<a href='%1'>%1</a> دىن يېڭىلانمىغا ئېرىشەلمىدى.<nl/><nl/>خاتالىق ئۇچۇرى: %2"
 
-#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:178
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:181
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to parse update metadata.<nl/><nl/>Error message: %1"
 msgstr "يېڭىلانما تەپسىلىي ئۇچۇرىنى يېشەلمىدى.<nl/><nl/>خاتالىق ئۇچۇرى: %1"
 
-#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:187
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateBackend.cpp:190
 #, kde-format
 msgctxt "@info:status"
 msgid "No components found in appstream metadata for target “%1”"
 msgstr "«%1» نىشاننىڭ ئەپ تەپسىلىي ئۇچۇرىدىكى ھېچقانداق بۆلەكنى تاپالمىدى"
+
+#: libdiscover/backends/SystemdSysupdateBackend/SystemdSysupdateResource.cpp:148
+#, kde-format
+msgctxt "Upgrade status: A system update that has to be downloaded again"
+msgid "Previous installation was incomplete, trying again"
+msgstr ""
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format
