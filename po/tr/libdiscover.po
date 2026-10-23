@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-22 00:51+0000\n"
-"PO-Revision-Date: 2026-10-13 19:03+0300\n"
+"PO-Revision-Date: 2026-10-22 19:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2703,7 +2703,7 @@ msgstr "“%1” hedefi için appstream üst verisinde bulunan bileşen yok"
 #, kde-format
 msgctxt "Upgrade status: A system update that has to be downloaded again"
 msgid "Previous installation was incomplete, trying again"
-msgstr ""
+msgstr "Bir önceki yükseltme tamamlanmadı; yeniden deneniyor"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format

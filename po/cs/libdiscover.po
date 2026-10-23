@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-22 00:51+0000\n"
-"PO-Revision-Date: 2026-10-13 12:18+0200\n"
+"PO-Revision-Date: 2026-10-22 12:22+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -2709,7 +2709,7 @@ msgstr "V appstream metadatech nebyly nalezeny žádné komponenty pro cíl „%
 #, kde-format
 msgctxt "Upgrade status: A system update that has to be downloaded again"
 msgid "Previous installation was incomplete, trying again"
-msgstr ""
+msgstr "Předchozí instalace nebyla dokončena, opakování"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format

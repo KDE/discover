@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-22 00:51+0000\n"
-"PO-Revision-Date: 2026-10-13 23:33+0100\n"
+"PO-Revision-Date: 2026-10-22 17:22+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -2728,7 +2728,7 @@ msgstr ""
 #, kde-format
 msgctxt "Upgrade status: A system update that has to be downloaded again"
 msgid "Previous installation was incomplete, trying again"
-msgstr ""
+msgstr "La última instalación quedó incompleta; se vuelve a intentar"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format

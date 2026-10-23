@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-22 00:51+0000\n"
-"PO-Revision-Date: 2026-10-13 23:10+0200\n"
+"PO-Revision-Date: 2026-10-22 05:22+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -2741,7 +2741,7 @@ msgstr "В метаданных AppStream не найдены компонент
 #, kde-format
 msgctxt "Upgrade status: A system update that has to be downloaded again"
 msgid "Previous installation was incomplete, trying again"
-msgstr ""
+msgstr "Предыдущая установка не завершена, повторная попытка"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format

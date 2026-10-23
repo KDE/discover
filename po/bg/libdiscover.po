@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-22 00:51+0000\n"
-"PO-Revision-Date: 2026-10-19 15:13+0200\n"
+"PO-Revision-Date: 2026-10-22 21:38+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -2712,6 +2712,7 @@ msgstr "Не са намерени компоненти в метаданнит�
 msgctxt "Upgrade status: A system update that has to be downloaded again"
 msgid "Previous installation was incomplete, trying again"
 msgstr ""
+"Предишната инсталация беше незавършена, извършва се нов опит за инсталиране"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format

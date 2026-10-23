@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-22 00:51+0000\n"
-"PO-Revision-Date: 2026-10-13 13:33+0300\n"
+"PO-Revision-Date: 2026-10-22 13:47+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2735,7 +2735,7 @@ msgstr "Не знайдено компонентів у метаданих appst
 #, kde-format
 msgctxt "Upgrade status: A system update that has to be downloaded again"
 msgid "Previous installation was incomplete, trying again"
-msgstr ""
+msgstr "Попередню дію зі встановлення не було завершено, повторюємо спробу"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format

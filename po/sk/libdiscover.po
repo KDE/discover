@@ -641,11 +641,9 @@ msgid "Failed to start “%1”: %2"
 msgstr "Nepodarilo sa spustiť '%1': %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:539
-#, fuzzy, kde-format
-#| msgctxt "Permission to access system resources and hardware devices"
-#| msgid "Permissions"
+#, kde-format
 msgid "New Permissions"
-msgstr "Oprávnenia"
+msgstr "Nové oprávnenia"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:766
 #, kde-format
@@ -1116,10 +1114,9 @@ msgid "Configure permissions…"
 msgstr "Konfigurovať oprávnenia..."
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:149
-#, fuzzy, kde-format
-#| msgid "Version: "
+#, kde-format
 msgid "Version %1"
-msgstr "Verzia:"
+msgstr "Verzia %1"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:493
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
@@ -1317,9 +1314,7 @@ msgstr ""
 "aktualizácie a potom reštartujte systém."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Upgrade Now"
+#, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "Prejsť na vyššiu verziu teraz"
@@ -2236,8 +2231,7 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:100
-#, fuzzy, kde-format
-#| msgid "System upgrade"
+#, kde-format
 msgctxt "Major system upgrade upgrade, not a smaller security update"
 msgid "System upgrade"
 msgstr "Systémová inovácia"
@@ -2253,17 +2247,12 @@ msgstr[2] "%1 balíkom sa zvýši verzia"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
 msgid "<h3>%1</h3>%2"
-msgstr ""
+msgstr "<h3>%1</h3>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-#| "blockquote>"
+#, kde-format
 msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
-msgstr ""
-"<h3>%1</h3>Prechod na novú verziu %2<br/>Poznámky k vydaniu:<blockquote>%3</"
-"blockquote>"
+msgstr "<h3>%1</h3>%2<br/>Poznámky k vydaniu:<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:231
 #, kde-format
@@ -2444,9 +2433,7 @@ msgstr ""
 "rpm-ostree: Nenašlo sa žiadne spustené nasadenie. Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Begin Upgrade…"
+#, kde-format
 msgctxt "@action:button Perform a distro upgrade, not just a package update"
 msgid "Begin Upgrade…"
 msgstr "Začať prechod na vyššiu verziu..."
@@ -2594,12 +2581,10 @@ msgstr ""
 "rpm-ostree-backend: Chyba: Neznámy formát zdroja. Prosím, nahláste chybu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
-#, fuzzy, kde-format
-#| msgid ""
-#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, kde-format
 msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
-"Rušenie transakcie rpm-ostree. Môže to trvať určitý čas. Počkajte, prosím."
+"Ruší sa transakcia rpm-ostree. Môže to trvať určitý čas. Počkajte, prosím."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
 #, kde-format
@@ -2725,7 +2710,7 @@ msgstr "Neboli nájdené žiadne komponenty v appstream metadátach pre cieľ �
 #, kde-format
 msgctxt "Upgrade status: A system update that has to be downloaded again"
 msgid "Previous installation was incomplete, trying again"
-msgstr ""
+msgstr "Predchádzajúca inštalácia nebola dokončená, skúša sa znova"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format
@@ -2869,8 +2854,7 @@ msgid "Failed"
 msgstr "Zlyhalo"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, fuzzy, kde-format
-#| msgid "Canceled"
+#, kde-format
 msgctxt "@info:status"
 msgid "Canceled"
 msgstr "Zrušené"
