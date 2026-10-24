@@ -22,6 +22,7 @@
 #include <KPluginFactory>
 #include <KSharedConfig>
 #include <QCoreApplication>
+#include <memory>
 
 DISCOVER_BACKEND_PLUGIN(FwupdBackend)
 
@@ -31,16 +32,14 @@ FwupdBackend::FwupdBackend(QObject *parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_cancellable(g_cancellable_new())
 {
-    auto init = [this] {
-        g_autoptr(GError) error = nullptr;
-        if (!fwupd_client_connect(m_client.get(), m_cancellable.get(), &error)) {
-            handleError(error);
-            return false;
-        }
-        return true;
+    auto init = [client = m_client, cancellable = m_cancellable] {
+        GError *error = nullptr;
+        const bool correct = fwupd_client_connect(client.get(), cancellable.get(), &error);
+        return std::make_pair(correct, std::shared_ptr<GError>(error, g_error_free));
     };
-    QtConcurrent::run(init).then(this, [this](bool correct) {
-        if (!correct) {
+    QtConcurrent::run(init).then(this, [this](const std::pair<bool, std::shared_ptr<GError>> &result) {
+        if (!result.first) {
+            handleError(result.second.get());
             m_isValid = false;
             Q_EMIT invalidated();
             return;
