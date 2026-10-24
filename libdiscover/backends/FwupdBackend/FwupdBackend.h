@@ -64,7 +64,7 @@ public:
     void checkForUpdates() override;
     QString displayName() const override;
     bool hasApplications() const override;
-    FwupdClient *client;
+    FwupdClient *m_client;
     void handleError(GError *perror);
 
     static QString cacheFile(const QString &kind, const QString &baseName);

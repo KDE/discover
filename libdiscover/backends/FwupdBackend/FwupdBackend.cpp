@@ -27,13 +27,13 @@ DISCOVER_BACKEND_PLUGIN(FwupdBackend)
 
 FwupdBackend::FwupdBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
-    , client(fwupd_client_new())
+    , m_client(fwupd_client_new())
     , m_updater(new StandardBackendUpdater(this))
     , m_cancellable(g_cancellable_new())
 {
     auto init = [this] {
         g_autoptr(GError) error = nullptr;
-        if (!fwupd_client_connect(client, m_cancellable, &error)) {
+        if (!fwupd_client_connect(m_client, m_cancellable, &error)) {
             handleError(error);
             return false;
         }
@@ -45,7 +45,7 @@ FwupdBackend::FwupdBackend(QObject *parent)
             Q_EMIT invalidated();
             return;
         }
-        fwupd_client_set_user_agent_for_package(client, "plasma-discover", version.data());
+        fwupd_client_set_user_agent_for_package(m_client, "plasma-discover", version.data());
         connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &FwupdBackend::updatesCountChanged);
         connect(TransactionModel::global(), &TransactionModel::lastTransactionFinished, this, &FwupdBackend::checkForUpdates);
 
@@ -72,7 +72,7 @@ FwupdBackend::~FwupdBackend()
     g_cancellable_cancel(m_cancellable);
     g_object_unref(m_cancellable);
 
-    g_object_unref(client);
+    g_object_unref(m_client);
 }
 
 void FwupdBackend::addResource(FwupdResource *res)
@@ -104,7 +104,7 @@ FwupdResource *FwupdBackend::createRelease(FwupdDevice *device)
 void FwupdBackend::addUpdates()
 {
     g_autoptr(GError) error = nullptr;
-    g_autoptr(GPtrArray) devices = fwupd_client_get_devices(client, m_cancellable, &error);
+    g_autoptr(GPtrArray) devices = fwupd_client_get_devices(m_client, m_cancellable, &error);
 
     if (!devices) {
         if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOTHING_TO_DO))
@@ -130,7 +130,7 @@ void FwupdBackend::addUpdates()
         needsReboot |= fwupd_device_get_update_state(device) == FWUPD_UPDATE_STATE_NEEDS_REBOOT;
 
         g_autoptr(GError) error2 = nullptr;
-        g_autoptr(GPtrArray) rels = fwupd_client_get_upgrades(client, fwupd_device_get_id(device), m_cancellable, &error2);
+        g_autoptr(GPtrArray) rels = fwupd_client_get_upgrades(m_client, fwupd_device_get_id(device), m_cancellable, &error2);
         if (rels) {
             fwupd_device_add_release(device, (FwupdRelease *)g_ptr_array_index(rels, 0));
             auto res = createApp(device);
@@ -277,7 +277,7 @@ static void fwupd_client_get_devices_cb(GObject * /*source*/, GAsyncResult *res,
 {
     FwupdBackend *helper = (FwupdBackend *)user_data;
     g_autoptr(GError) error = nullptr;
-    auto array = fwupd_client_get_devices_finish(helper->client, res, &error);
+    auto array = fwupd_client_get_devices_finish(helper->m_client, res, &error);
     if (!error)
         helper->setDevices(array);
     else
@@ -293,7 +293,7 @@ void FwupdBackend::setDevices(GPtrArray *devices)
             continue;
 
         g_autoptr(GError) error = nullptr;
-        g_autoptr(GPtrArray) releases = fwupd_client_get_releases(client, fwupd_device_get_id(device), m_cancellable, &error);
+        g_autoptr(GPtrArray) releases = fwupd_client_get_releases(m_client, fwupd_device_get_id(device), m_cancellable, &error);
 
         if (error) {
             if (g_error_matches(error, FWUPD_ERROR, FWUPD_ERROR_NOT_SUPPORTED)) {
@@ -330,7 +330,7 @@ static void fwupd_client_get_remotes_cb(GObject * /*source*/, GAsyncResult *res,
 {
     FwupdBackend *helper = (FwupdBackend *)user_data;
     g_autoptr(GError) error = nullptr;
-    auto array = fwupd_client_get_remotes_finish(helper->client, res, &error);
+    auto array = fwupd_client_get_remotes_finish(helper->m_client, res, &error);
     if (!error)
         helper->setRemotes(array);
     else
@@ -341,7 +341,7 @@ static void fwupd_client_refresh_remote_cb(GObject * /*source*/, GAsyncResult *r
 {
     FwupdBackend *helper = (FwupdBackend *)user_data;
     g_autoptr(GError) error = nullptr;
-    const bool successful = fwupd_client_refresh_remote_finish(helper->client, res, &error);
+    const bool successful = fwupd_client_refresh_remote_finish(helper->m_client, res, &error);
     if (!successful)
         helper->handleError(error);
 }
@@ -358,7 +358,7 @@ void FwupdBackend::setRemotes(GPtrArray *remotes)
         }
 
 #if FWUPD_CHECK_VERSION(2, 0, 0)
-        fwupd_client_refresh_remote_async(client, remote, FWUPD_CLIENT_DOWNLOAD_FLAG_NONE, m_cancellable, fwupd_client_refresh_remote_cb, this);
+        fwupd_client_refresh_remote_async(m_client, remote, FWUPD_CLIENT_DOWNLOAD_FLAG_NONE, m_cancellable, fwupd_client_refresh_remote_cb, this);
 #else
         fwupd_client_refresh_remote2_async(client, remote, FWUPD_CLIENT_DOWNLOAD_FLAG_NONE, m_cancellable, fwupd_client_refresh_remote_cb, this);
 #endif
@@ -373,8 +373,8 @@ void FwupdBackend::checkForUpdates()
     m_fetching = true;
     Q_EMIT fetchingUpdatesProgressChanged();
 
-    fwupd_client_get_devices_async(client, m_cancellable, fwupd_client_get_devices_cb, this);
-    fwupd_client_get_remotes_async(client, m_cancellable, fwupd_client_get_remotes_cb, this);
+    fwupd_client_get_devices_async(m_client, m_cancellable, fwupd_client_get_devices_cb, this);
+    fwupd_client_get_remotes_async(m_client, m_cancellable, fwupd_client_get_remotes_cb, this);
 }
 
 int FwupdBackend::updatesCount() const
@@ -467,7 +467,7 @@ ResultsStream *FwupdBackend::resourceForFile(const QUrl &path)
 
     if (type.isValid() && type.inherits(QStringLiteral("application/vnd.ms-cab-compressed"))) {
         g_autofree gchar *filename = fileName.toUtf8().data();
-        g_autoptr(GPtrArray) devices = fwupd_client_get_details(client, filename, nullptr, &error);
+        g_autoptr(GPtrArray) devices = fwupd_client_get_details(m_client, filename, nullptr, &error);
 
         if (devices) {
             FwupdDevice *device = (FwupdDevice *)g_ptr_array_index(devices, 0);
