@@ -32,6 +32,9 @@ public:
     bool hasUpdates() override;
     bool needsReboot() const override;
 
+Q_SIGNALS:
+    void checkingPendingDeployment();
+
 private:
     /* Only run this code if we are on an rpm-ostree managed system */
     bool isValid() const;
@@ -49,13 +52,6 @@ private:
 
     /* Store the version of the currently booted deployment */
     QString m_version;
-
-    /* Tracks the rpm-ostree command used to check for updates or to look at the
-     * status. */
-    QProcess *m_process;
-
-    /* Store standard output from rpm-ostree command line calls */
-    QByteArray m_stdout;
 
     /* The update version that we've already found in a previous check. Used to
      * only notify once about an update for a given version. */
