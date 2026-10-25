@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-22 00:51+0000\n"
-"PO-Revision-Date: 2026-10-14 10:16+0200\n"
+"PO-Revision-Date: 2026-10-23 09:14+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -2753,6 +2753,7 @@ msgstr ""
 msgctxt "Upgrade status: A system update that has to be downloaded again"
 msgid "Previous installation was incomplete, trying again"
 msgstr ""
+"L'installation précédente était incomplète. Veuillez essayer à nouveau."
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format
