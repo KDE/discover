@@ -20,7 +20,7 @@ const QString TO_VERSION;
 const int FLAGS = 0;
 
 SystemdSysupdateTransaction::SystemdSysupdateTransaction(AbstractResource *resource, org::freedesktop::sysupdate1::Target *target)
-    : Transaction(resource, resource, InstallRole)
+    : Transaction(resource, InstallRole)
     , m_resource(resource)
     , m_target(target)
 {

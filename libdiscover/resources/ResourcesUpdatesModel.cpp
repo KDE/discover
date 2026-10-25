@@ -26,7 +26,7 @@ class UpdateTransaction : public Transaction
     Q_OBJECT
 public:
     UpdateTransaction(ResourcesUpdatesModel * /*parent*/, const QVector<AbstractBackendUpdater *> &updaters)
-        : Transaction(nullptr, nullptr, Transaction::InstallRole, {}, false /*not visible*/)
+        : Transaction(nullptr, Transaction::InstallRole, {}, false /*not visible*/)
         , m_allUpdaters(updaters)
     {
         bool cancelable = false;
