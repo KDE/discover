@@ -205,7 +205,7 @@ void RpmOstreeBackend::transactionStatusChanged(Transaction::Status status)
 
 void RpmOstreeBackend::setupTransaction(RpmOstreeTransaction::Operation op, QString arg)
 {
-    m_transaction = new RpmOstreeTransaction(this, m_currentlyBootedDeployment, m_interface, op, arg);
+    m_transaction = new RpmOstreeTransaction(m_currentlyBootedDeployment, m_interface, op, arg);
     connect(m_transaction, &RpmOstreeTransaction::progressChanged, this, &RpmOstreeBackend::fetchingUpdatesProgressChanged);
     connect(m_transaction, &RpmOstreeTransaction::statusChanged, this, &RpmOstreeBackend::transactionStatusChanged);
     connect(m_transaction, &RpmOstreeTransaction::deploymentsUpdated, this, &RpmOstreeBackend::refreshDeployments);
