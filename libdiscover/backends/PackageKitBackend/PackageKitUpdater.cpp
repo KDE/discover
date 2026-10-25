@@ -26,9 +26,6 @@
 #include <algorithm>
 #include <optional>
 
-#if !QPK_CHECK_VERSION(1, 1, 4)
-#include "pk-offline-private.h"
-#endif
 #include "libdiscover_backend_packagekit_debug.h"
 #include "utils.h"
 
@@ -345,13 +342,9 @@ void PackageKitUpdater::prepare()
         return;
     }
 
-#if QPK_CHECK_VERSION(1, 1, 4)
     auto results = offline->getResults();
     results.waitForFinished();
     if (results.isError() || !results.success()) {
-#else
-    if (QFile::exists(QStringLiteral(PK_OFFLINE_RESULTS_FILENAME))) {
-#endif
         qCDebug(LIBDISCOVER_BACKEND_PACKAGEKIT_LOG) << "Removed offline results file";
         offline->clearResults();
     }
@@ -547,19 +540,11 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
 
     if (!cancel && simulate) {
         auto toremoveOrig = m_packagesModified.value(PackageKit::Transaction::InfoRemoving);
-#ifdef QPK_CHECK_VERSION
-#if QPK_CHECK_VERSION(1, 1, 2)
         toremoveOrig += m_packagesModified.value(PackageKit::Transaction::InfoRemove);
-#endif
-#endif
         auto toremove = toremoveOrig;
         auto toinstall = QStringList() << m_packagesModified.value(PackageKit::Transaction::InfoInstalling)
                                        << m_packagesModified.value(PackageKit::Transaction::InfoUpdating);
-#ifdef QPK_CHECK_VERSION
-#if QPK_CHECK_VERSION(1, 1, 2)
         toinstall << m_packagesModified.value(PackageKit::Transaction::InfoInstall);
-#endif
-#endif
 
         // some backends will treat upgrades as removal + install, which makes for terrible error messages.
         for (auto it = toremove.begin(), itEnd = toremove.end(); it != itEnd;) {
