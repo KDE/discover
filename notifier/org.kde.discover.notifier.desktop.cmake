@@ -62,5 +62,6 @@ Exec=@DesktopExec@ --check-delay 20
 Icon=system-software-update
 Type=Application
 NoDisplay=true
+X-KDE-AliasFor=org.kde.discover
 X-KDE-autostart-phase=1
 OnlyShowIn=KDE
