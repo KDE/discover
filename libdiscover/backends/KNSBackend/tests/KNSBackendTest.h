@@ -25,6 +25,7 @@ private Q_SLOTS:
     void testReviews();
     void testResourceByUrl();
     void testResourceByUrlResourcesModel();
+    void testOrphanedEntryDoesNotInvalidateBackend();
 
 public Q_SLOTS:
     void reviewsArrived(AbstractResource *r, const QVector<ReviewPtr> &revs);

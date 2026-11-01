@@ -397,6 +397,10 @@ void KNSBackend::slotErrorCode(const KNSCore::ErrorCode::ErrorCode &errorCode, c
         if (metadata.toInt() == 200) {
             // Too many requests, try again in a couple of minutes - perhaps we can simply postpone it automatically, and give a message?
             error = i18n("Too many requests sent to the server for backend %1. Please try again in a few minutes.", m_displayName);
+        } else if (metadata.toInt() == 999) {
+            // A stale local registry entry can refer to content that was removed from the store.
+            // Ignore that entry instead of disabling the whole backend.
+            return;
         } else {
             // Unknown API error, usually something critical, mark as invalid and cry a lot
             error = i18n("Invalid %1 backend, contact your distributor.", m_displayName);

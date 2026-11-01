@@ -170,4 +170,16 @@ void KNSBackendTest::testResourceByUrlResourcesModel()
     QCOMPARE(urls.count(), 0);
 }
 
+void KNSBackendTest::testOrphanedEntryDoesNotInvalidateBackend()
+{
+    auto backend = qobject_cast<KNSBackend *>(m_backend.data());
+    QVERIFY(backend);
+
+    QSignalSpy invalidatedSpy(backend, &AbstractResourcesBackend::invalidated);
+    backend->slotErrorCode(KNSCore::ErrorCode::OcsError, QStringLiteral("unknown request"), 999);
+
+    QVERIFY(backend->isValid());
+    QCOMPARE(invalidatedSpy.count(), 0);
+}
+
 #include "moc_KNSBackendTest.cpp"
