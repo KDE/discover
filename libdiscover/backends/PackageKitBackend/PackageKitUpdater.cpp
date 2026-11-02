@@ -518,6 +518,7 @@ void PackageKitUpdater::start()
 {
     Q_ASSERT(!isProgressing());
 
+    m_lastUpdateSucceeded = false;
     setupTransaction(PackageKit::Transaction::TransactionFlagSimulate);
     setProgressing(true);
 
@@ -534,6 +535,9 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
     }
     const bool cancel = exit == PackageKit::Transaction::ExitCancelled;
     const bool simulate = m_transaction->transactionFlags() & PackageKit::Transaction::TransactionFlagSimulate;
+    if (!simulate) {
+        m_lastUpdateSucceeded = exit == PackageKit::Transaction::ExitSuccess;
+    }
 
     disconnect(m_transaction, nullptr, this, nullptr);
     m_transaction = nullptr;
@@ -620,6 +624,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
             // Call may fail because of authorization
             reply.waitForFinished();
             if (reply.isError()) {
+                m_lastUpdateSucceeded = false;
                 Q_EMIT resourceProgressed(m_upgrade, 0, None);
                 setNeedsReboot(false);
                 setProgressing(false);
@@ -701,6 +706,11 @@ bool PackageKitUpdater::isCancelable() const
 bool PackageKitUpdater::isProgressing() const
 {
     return m_isProgressing;
+}
+
+bool PackageKitUpdater::lastUpdateSucceeded() const
+{
+    return m_lastUpdateSucceeded;
 }
 
 void PackageKitUpdater::cancel()

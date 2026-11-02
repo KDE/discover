@@ -41,6 +41,7 @@ public:
     void cancel() override;
     quint64 downloadSpeed() const override;
     bool isFetchingUpdates() const override;
+    bool lastUpdateSucceeded() const override;
 
     bool isSettingUp() const
     {

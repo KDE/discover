@@ -73,6 +73,7 @@ public:
     void startUnattendedUpdates();
 
     QDateTime lastNotificationTime() const;
+    QDateTime lastUpdateTime() const;
 
 public Q_SLOTS:
     void recheckSystemUpdateNeededAndNotifyApp();

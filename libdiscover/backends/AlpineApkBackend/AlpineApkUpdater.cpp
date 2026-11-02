@@ -156,6 +156,8 @@ void AlpineApkUpdater::start()
 {
     qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
 
+    m_lastUpdateSucceeded = false;
+
     // run upgrade with elevated privileges
     KAuth::ExecuteJob *reply = ActionFactory::createUpgradeAction();
     if (!reply)
@@ -176,6 +178,11 @@ void AlpineApkUpdater::proceed()
     qCDebug(LOG_ALPINEAPK) << Q_FUNC_INFO;
 
     // TODO: Implement proceed
+}
+
+bool AlpineApkUpdater::lastUpdateSucceeded() const
+{
+    return m_lastUpdateSucceeded;
 }
 
 int AlpineApkUpdater::updatesCount()
@@ -244,6 +251,7 @@ void AlpineApkUpdater::handleKAuthUpgradeHelperReply(KJob *job)
 {
     KAuth::ExecuteJob *reply = static_cast<KAuth::ExecuteJob *>(job);
     const QVariantMap &replyData = reply->data();
+    m_lastUpdateSucceeded = reply->error() == 0;
     if (reply->error() == 0) {
         QVariant pkgsV = replyData.value(QLatin1String("changes"));
         bool onlySimulate = replyData.value(QLatin1String("onlySimulate"), false).toBool();

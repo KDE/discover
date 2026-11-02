@@ -132,7 +132,7 @@ bool NotifierItem::shouldShowStatusNotifier() const
     case DiscoverNotifier::NormalUpdates: {
         // Only show the status notifier on next notification time
         // BUG: 466693
-        const QDateTime earliestNextNotificationTime = m_notifier.lastNotificationTime().addSecs(m_notifier.settings()->requiredNotificationInterval());
+        const QDateTime earliestNextNotificationTime = m_notifier.lastUpdateTime().addSecs(m_notifier.settings()->requiredNotificationInterval());
 
         return m_notifier.settings()->requiredNotificationInterval() > 0 &&
             !(earliestNextNotificationTime.isValid() && earliestNextNotificationTime > QDateTime::currentDateTimeUtc());

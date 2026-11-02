@@ -478,4 +478,16 @@ void DiscoverNotifier::recheckSystemUpdateNeededAndNotifyApp()
     RefreshNotifierDBus::notify(RefreshNotifierDBus::notifyApp);
 }
 
+QDateTime DiscoverNotifier::lastUpdateTime() const
+{
+    QDateTime ret;
+    for (const auto backend : m_backends) {
+        QDateTime current = backend->lastUpdate();
+        if (!ret.isValid() || (current.isValid() && current > ret)) {
+            ret = current;
+        }
+    }
+    return ret;
+}
+
 #include "moc_DiscoverNotifier.cpp"

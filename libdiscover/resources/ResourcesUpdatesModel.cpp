@@ -84,6 +84,13 @@ public:
         }
     }
 
+    bool updateSucceeded() const
+    {
+        return std::ranges::all_of(m_allUpdaters, [](auto updater) {
+            return updater->lastUpdateSucceeded();
+        });
+    }
+
     void slotUpdateProgress()
     {
         qreal total = 0;
@@ -326,6 +333,11 @@ void ResourcesUpdatesModel::setTransaction(UpdateTransaction *transaction)
     m_transaction = transaction;
     connect(transaction, &UpdateTransaction::finished, this, &ResourcesUpdatesModel::finished);
     connect(transaction, &UpdateTransaction::finished, this, &ResourcesUpdatesModel::progressingChanged);
+    connect(transaction, &UpdateTransaction::finished, this, [transaction] {
+        if (transaction->updateSucceeded()) {
+            KSharedConfig::openStateConfig(u"discovernotifierstaterc"_s)->group(u"Global"_s).writeEntry(u"LastUpdateTime"_s, QDateTime::currentDateTime());
+        }
+    });
 
     Q_EMIT progressingChanged();
 }

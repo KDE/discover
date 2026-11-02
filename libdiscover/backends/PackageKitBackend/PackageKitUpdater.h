@@ -44,6 +44,7 @@ public:
     double updateSize() const override;
     quint64 downloadSpeed() const override;
     bool isFetchingUpdates() const override;
+    bool lastUpdateSucceeded() const override;
 
     void proceed() override;
     void setOfflineUpdates(bool use) override;
@@ -104,6 +105,7 @@ private:
     bool m_isCancelable;
     bool m_isProgressing;
     bool m_useOfflineUpdates = false;
+    bool m_lastUpdateSucceeded = false;
     int m_percentage;
     QDateTime m_lastUpdate;
     QMap<PackageKit::Transaction::Info, QStringList> m_packagesModified;

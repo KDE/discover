@@ -104,6 +104,7 @@ public:
     quint64 downloadSpeed() const override;
 
     bool isFetchingUpdates() const override;
+    bool lastUpdateSucceeded() const override;
 
 public Q_SLOTS:
     /**
@@ -174,6 +175,7 @@ private:
     QSet<AbstractResource *> m_markedToUpdate;
 
     bool m_progressing = false;
+    bool m_lastUpdateSucceeded = false;
     qreal m_upgradeProgress = 0.0;
 };
 

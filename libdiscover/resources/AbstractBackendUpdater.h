@@ -140,6 +140,11 @@ public:
     virtual void setOfflineUpdates(bool useOfflineUpdates);
     virtual bool isFetchingUpdates() const = 0;
 
+    virtual bool lastUpdateSucceeded() const
+    {
+        return true;
+    }
+
 public Q_SLOTS:
     /**
      * If \isCancelable is true during the transaction, this method has

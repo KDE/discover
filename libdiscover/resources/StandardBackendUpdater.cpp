@@ -62,6 +62,7 @@ bool StandardBackendUpdater::hasUpdates() const
 
 void StandardBackendUpdater::start()
 {
+    m_anyTransactionFailed = false;
     setSettingUp(true);
     Q_EMIT progressingChanged(true);
     setProgress(0);
@@ -135,6 +136,11 @@ AbstractBackendUpdater::State toUpdateState(Transaction *t)
 bool StandardBackendUpdater::isFetchingUpdates() const
 {
     return m_isFetchingUpdates.m_value;
+}
+
+bool StandardBackendUpdater::lastUpdateSucceeded() const
+{
+    return !m_anyTransactionFailed;
 }
 
 void StandardBackendUpdater::transactionProgressChanged()
