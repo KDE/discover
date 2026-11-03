@@ -48,8 +48,9 @@ void LocalFilePKResource::fetchDetails()
         return;
     }
 
-    // wait until we have packagekitd's roles
-    if (PackageKit::Daemon::roles() == PackageKit::Transaction::Roles()) {
+    const auto roles = PackageKit::Daemon::roles();
+    // wait until we have packagekitd roles
+    if (roles == PackageKit::Transaction::Roles()) {
         connect(PackageKit::Daemon::global(),
                 &PackageKit::Daemon::changed,
                 this,
@@ -60,13 +61,13 @@ void LocalFilePKResource::fetchDetails()
 
     m_details.insert(QStringLiteral("fetching"), true); // we add an entry so it's not re-fetched.
 
-    if (PackageKit::Daemon::roles() & PackageKit::Transaction::RoleGetDetailsLocal) {
+    if (roles & PackageKit::Transaction::RoleGetDetailsLocal) {
         PackageKit::Transaction *transaction = PackageKit::Daemon::getDetailsLocal(m_path.toLocalFile());
         connect(transaction, &PackageKit::Transaction::details, this, &LocalFilePKResource::resolve);
         connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
     }
 
-    if (PackageKit::Daemon::roles() & PackageKit::Transaction::RoleGetFilesLocal) {
+    if (roles & PackageKit::Transaction::RoleGetFilesLocal) {
         PackageKit::Transaction *transaction2 = PackageKit::Daemon::getFilesLocal(m_path.toLocalFile());
         connect(transaction2, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
         connect(transaction2, &PackageKit::Transaction::files, this, [this](const QString & /*pkgid*/, const QStringList &files) {
