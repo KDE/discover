@@ -137,7 +137,8 @@ SimpleKCM {
 
             QQC2.Label {
                 text: i18nc("@label The thing being recommended is to use the 'apply updates when rebooting' setting", "Recommended to maximize system stability")
-                leftPadding: offlineUpdatesOption.indicator.width
+                leftPadding: mirrored ? padding : offlineUpdatesOption.indicator.width + offlineUpdatesOption.spacing
+                rightPadding: mirrored ? offlineUpdatesOption.indicator.width + offlineUpdatesOption.spacing : padding
                 font: Kirigami.Theme.smallFont
             }
 
