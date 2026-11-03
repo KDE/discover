@@ -47,6 +47,17 @@ void LocalFilePKResource::fetchDetails()
     if (!m_details.isEmpty()) {
         return;
     }
+
+    // wait until we have packagekitd's roles
+    if (PackageKit::Daemon::roles() == PackageKit::Transaction::Roles()) {
+        connect(PackageKit::Daemon::global(),
+                &PackageKit::Daemon::changed,
+                this,
+                &LocalFilePKResource::fetchDetails,
+                static_cast<Qt::ConnectionType>(Qt::UniqueConnection | Qt::SingleShotConnection));
+        return;
+    }
+
     m_details.insert(QStringLiteral("fetching"), true); // we add an entry so it's not re-fetched.
 
     if (PackageKit::Daemon::roles() & PackageKit::Transaction::RoleGetDetailsLocal) {
