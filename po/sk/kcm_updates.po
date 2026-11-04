@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_updates\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-05 00:48+0000\n"
+"POT-Creation-Date: 2026-11-04 01:04+0000\n"
 "PO-Revision-Date: 2023-11-11 16:01+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -102,7 +102,7 @@ msgctxt ""
 msgid "Recommended to maximize system stability"
 msgstr "Odporúčané na maximalizáciu stability systému"
 
-#: kcm/ui/main.qml:145
+#: kcm/ui/main.qml:146
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"

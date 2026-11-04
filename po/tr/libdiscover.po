@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-02 00:56+0000\n"
-"PO-Revision-Date: 2026-10-22 19:31+0300\n"
+"POT-Creation-Date: 2026-11-04 01:04+0000\n"
+"PO-Revision-Date: 2026-11-03 21:37+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -89,7 +89,7 @@ msgid "Alpine APK"
 msgstr "Alpine APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
-#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:272
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:280
 #, kde-format
 msgid "Authorization denied"
 msgstr "Yetkilendirme reddedildi"
@@ -115,7 +115,7 @@ msgid "Error: Authorization denied"
 msgstr "Hata: Yetkilendirme reddedildi"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
-#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:283
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:291
 #, kde-format
 msgid "Error"
 msgstr "Hata"
@@ -650,8 +650,7 @@ msgid "All Files"
 msgstr "Tüm Dosyalar"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:768
-#, fuzzy, kde-format
-#| msgid "Home"
+#, kde-format
 msgctxt "the user's home directory"
 msgid "Home"
 msgstr "Ana Klasör"
@@ -2098,12 +2097,12 @@ msgstr "Eskimiş"
 msgid "Downgrade"
 msgstr "Sürümü Düşür"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:108
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:110
 #, kde-format
 msgid "Failed Offline Update"
 msgstr "Başarısız Çevrim Dışı Güncelleme"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:109
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:111
 #, kde-format
 msgid ""
 "Failed to update %1 package\n"
@@ -2118,47 +2117,47 @@ msgstr[1] ""
 "%1 paket güncellenemedi\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:112
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:114
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:165
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Keşfet’i Aç"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:119
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "Sistemi Onar"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:122
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "Başarısız çevrim dışı güncelleme onarılıyor"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:129
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
 #, kde-format
 msgid "Repair Failed"
 msgstr "Onarım Başarısız"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:133
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
 msgstr "%1<nl/>Lütfen bu hatayı <link url='%2'>%3 yayımcısına bildirin</link>."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:146
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Başarıyla Onarıldı"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:159
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:161
 #, kde-format
 msgid "Offline Updates"
 msgstr "Çevrim Dışı Güncellemeler"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:160
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:162
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -2264,7 +2263,7 @@ msgstr ""
 "Güncellemeyi tamamlamak için yeterli boş alan yok; yalnızca %1 alan "
 "kullanılabilir."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:587
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:591
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2277,12 +2276,12 @@ msgstr ""
 "olduğunu düşünüyorsanız lütfen dağıtımınızın paket yöneticilerine bunu "
 "bildirin."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:594
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Değişiklikleri Onayla"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:595
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2291,13 +2290,13 @@ msgstr ""
 "Güncelleme ile aşağıdaki paketler kaldırılacak:<ul><li>%1</li></ul><br/>ve "
 "şunlar kurulacak:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:721
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:731
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:729
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:739
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2307,13 +2306,13 @@ msgstr ""
 "“%1” türünde bir ortam değişimi istendi.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:762
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:772
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "Son Kullanıcı Lisans Sözleşmesini Kabul Et"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:763
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:773
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2323,13 +2322,13 @@ msgstr ""
 "%1 paketi ve sağlayıcısı %2, lisanslarını kabul etmenizi gerektiriyor:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:913
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:923
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%2 içinde %1 için eksik imza"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:914
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:924
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""
@@ -2794,7 +2793,7 @@ msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr "%1+"
 
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:111
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:118
 #, kde-format
 msgid "Updates"
 msgstr "Güncellemeler"

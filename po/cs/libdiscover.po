@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-02 00:56+0000\n"
+"POT-Creation-Date: 2026-11-04 01:04+0000\n"
 "PO-Revision-Date: 2026-11-02 23:53+0100\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -90,7 +90,7 @@ msgid "Alpine APK"
 msgstr "Alpine APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
-#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:272
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:280
 #, kde-format
 msgid "Authorization denied"
 msgstr "Oprávnění bylo zamítnuto"
@@ -116,7 +116,7 @@ msgid "Error: Authorization denied"
 msgstr "Chyba: Oprávnění bylo zamítnuto"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
-#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:283
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:291
 #, kde-format
 msgid "Error"
 msgstr "Chyba"
@@ -2095,12 +2095,12 @@ msgstr "Zastaralé"
 msgid "Downgrade"
 msgstr "Snížit verzi"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:108
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:110
 #, kde-format
 msgid "Failed Offline Update"
 msgstr "Selhala aktualizace offline"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:109
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:111
 #, kde-format
 msgid ""
 "Failed to update %1 package\n"
@@ -2118,47 +2118,47 @@ msgstr[2] ""
 "Selhala aktualizace %1 balíčků\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:112
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:114
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:165
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Otevřít Discover"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:119
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "Opravit systém"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:122
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "Opravuje se neúspěšná offline aktualizace"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:129
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
 #, kde-format
 msgid "Repair Failed"
 msgstr "Oprava selhala"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:133
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
 msgstr "%1<nl/>Prosím <link url='%2'>nahlaste tuto chybu %3</link>."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:146
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Úspěšně opraveno"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:159
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:161
 #, kde-format
 msgid "Offline Updates"
 msgstr "Aktualizace offline"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:160
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:162
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -2264,7 +2264,7 @@ msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "Nedostatek volného místa pro aktualizaci; jen %1 je k dispozici."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:587
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:591
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2277,12 +2277,12 @@ msgstr ""
 "ul><nl/>Pokud se domníváte, že se jedná o chybu, obraťte se na vydavatele "
 "vaší distribuce."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:594
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Potvrdit změny"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:595
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2291,13 +2291,13 @@ msgstr ""
 "Následující balíčky budou aktualizací odstraněny:<ul><li>%1</li></ul><br/"
 ">kvůli instalaci:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:721
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:731
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:729
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:739
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2307,13 +2307,13 @@ msgstr ""
 "Je nutná výměna média typu “%1”.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:762
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:772
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "Přijmout EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:763
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:773
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2323,13 +2323,13 @@ msgstr ""
 "Balíček %1 a jeho poskytovatel %2 vyžadují, abyste přijali licenci:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:913
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:923
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Chybějící podpis pro %1 v %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:914
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:924
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""
@@ -2800,7 +2800,7 @@ msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr "%1+"
 
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:111
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:118
 #, kde-format
 msgid "Updates"
 msgstr "Aktualizace"

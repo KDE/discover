@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-02 00:56+0000\n"
+"POT-Creation-Date: 2026-11-04 01:04+0000\n"
 "PO-Revision-Date: 2026-10-23 09:14+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -98,7 +98,7 @@ msgid "Alpine APK"
 msgstr "Alpine APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
-#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:272
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:280
 #, kde-format
 msgid "Authorization denied"
 msgstr "Autorisation refusée"
@@ -124,7 +124,7 @@ msgid "Error: Authorization denied"
 msgstr "Erreur : autorisation refusée"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
-#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:283
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:291
 #, kde-format
 msgid "Error"
 msgstr "Erreur"
@@ -2130,12 +2130,12 @@ msgstr "Obsolète"
 msgid "Downgrade"
 msgstr "Revenir à une version antérieure"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:108
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:110
 #, kde-format
 msgid "Failed Offline Update"
 msgstr "Mise-à-jour hors ligne impossible"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:109
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:111
 #, kde-format
 msgid ""
 "Failed to update %1 package\n"
@@ -2150,47 +2150,47 @@ msgstr[1] ""
 "Impossible de mettre à jour %1 paquets\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:112
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:114
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:165
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Ouvrir Discover"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:119
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "Réparer le système"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:122
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "Réparation suite à l'échec de la mise à jour hors ligne"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:129
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
 #, kde-format
 msgid "Repair Failed"
 msgstr "Réparation impossible"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:133
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
 msgstr "%1<nl/> Veuillez <link url='%2'>signaler cette erreur à %3</link>."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:146
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Réparé avec succès."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:159
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:161
 #, kde-format
 msgid "Offline Updates"
 msgstr "Mise-à-jour hors ligne"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:160
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:162
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -2296,7 +2296,7 @@ msgstr ""
 "Espace insuffisant pour réaliser la mise à jour. Il ne reste que %1 d'espace "
 "disponible."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:587
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:591
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2310,12 +2310,12 @@ msgstr ""
 "erreur, veuillez le signaler comme un bogue vers les personnes en charge de "
 "la production des paquets de votre distribution."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:594
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Confirmer les modifications"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:595
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2325,13 +2325,13 @@ msgstr ""
 "ul><br/>afin d'installer :\n"
 "<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:721
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:731
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:729
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:739
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2341,13 +2341,13 @@ msgstr ""
 "Un changement de média de type « %1 » est nécessaire.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:762
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:772
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "Accepter l'accord de licence"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:763
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:773
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2358,13 +2358,13 @@ msgstr ""
 "licence:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:913
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:923
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Signature manquante pour %1 dans %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:914
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:924
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""
@@ -2847,7 +2847,7 @@ msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr "%1+"
 
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:111
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:118
 #, kde-format
 msgid "Updates"
 msgstr "Mises à jour"

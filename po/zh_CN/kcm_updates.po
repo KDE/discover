@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-05 00:48+0000\n"
+"POT-Creation-Date: 2026-11-04 01:04+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -100,7 +100,7 @@ msgctxt ""
 msgid "Recommended to maximize system stability"
 msgstr "建议设置为此项以提高系统稳定性"
 
-#: kcm/ui/main.qml:145
+#: kcm/ui/main.qml:146
 #, kde-format
 msgctxt ""
 "@option:radio part of the logical sentence 'Apply system updates immediately'"

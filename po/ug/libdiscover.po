@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-02 00:56+0000\n"
-"PO-Revision-Date: 2026-09-24 19:27-0400\n"
+"POT-Creation-Date: 2026-11-04 01:04+0000\n"
+"PO-Revision-Date: 2026-11-02 09:20-0500\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -87,7 +87,7 @@ msgid "Alpine APK"
 msgstr "Alpine APK"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkSourcesBackend.cpp:98
-#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:272
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:280
 #, kde-format
 msgid "Authorization denied"
 msgstr "دەلىللەش رەت قىلىندى"
@@ -113,7 +113,7 @@ msgid "Error: Authorization denied"
 msgstr "خاتالىق: دەلىللەش رەت قىلىندى"
 
 #: libdiscover/backends/AlpineApkBackend/AlpineApkTransaction.cpp:123
-#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:283
+#: libdiscover/backends/AlpineApkBackend/AlpineApkUpdater.cpp:291
 #, kde-format
 msgid "Error"
 msgstr "خاتالىق"
@@ -638,11 +638,9 @@ msgid "Failed to start “%1”: %2"
 msgstr "«%1» نى قوزغىتالمىدى: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:539
-#, fuzzy, kde-format
-#| msgctxt "Permission to access system resources and hardware devices"
-#| msgid "Permissions"
+#, kde-format
 msgid "New Permissions"
-msgstr "ئىجازەت"
+msgstr "يېڭى ئىجازەت"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:766
 #, kde-format
@@ -1107,10 +1105,9 @@ msgid "Configure permissions…"
 msgstr "ئىجازەت سەپلە…"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:145
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgid "Version %1"
-msgstr "%1 نىڭ ئىجازىتى"
+msgstr "نەشرى  %1"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:489
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
@@ -1308,9 +1305,7 @@ msgstr ""
 "يېڭىلاشنى قوللىنىپ، ئاندىن سىستېمىنى قايتا قوزغىتىش كېرەك."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Upgrade Now"
+#, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "ھازىر يۈكسەلدۈر"
@@ -2097,12 +2092,12 @@ msgstr "كېرەكسىز"
 msgid "Downgrade"
 msgstr "نەشرىنى تۆۋەنلەت"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:108
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:110
 #, kde-format
 msgid "Failed Offline Update"
 msgstr "تورسىز يېڭىلىيالمىدى"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:109
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:111
 #, kde-format
 msgid ""
 "Failed to update %1 package\n"
@@ -2114,47 +2109,47 @@ msgstr[0] ""
 "%1 بوغچىنى يېڭىلىيالمىدى\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:112
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:163
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:114
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:165
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Discover نى ئاچ"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:119
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "سىستېما ئوڭشا"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:122
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "تورسىز يېڭىلانمىنى ئوڭشىيالمىدى"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:129
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
 #, kde-format
 msgid "Repair Failed"
 msgstr "ئوڭشىيالمىدى"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:133
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is an error message and %3 is the name of the operating system"
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
 msgstr "%1<nl/><link url='%2'>بۇ خاتالىقنى %3 غا مەلۇم قىلىڭ</link>."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:144
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:146
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "مۇۋەپپەقىيەتلىك ئوڭشىدى"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:159
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:161
 #, kde-format
 msgid "Offline Updates"
 msgstr "تورسىز يېڭىلانما"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:160
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:162
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -2219,8 +2214,7 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
-#, fuzzy, kde-format
-#| msgid "System upgrade"
+#, kde-format
 msgctxt "Major system upgrade upgrade, not a smaller security update"
 msgid "System upgrade"
 msgstr "سىستېما يۈكسەلدۈرۈش"
@@ -2234,17 +2228,12 @@ msgstr[0] "%1 بوغچا يۈكسەلدۈرۈلىدۇ"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
 #, kde-format
 msgid "<h3>%1</h3>%2"
-msgstr ""
+msgstr "<h3>%1</h3>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-#| "blockquote>"
+#, kde-format
 msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
-msgstr ""
-"<h3>%1</h3>يېڭى نەشرى %2 گە يۈكسەلدۈرىدۇ<br/>تارقىتىش چۈشەندۈرۈشى: "
-"<blockquote>%3</blockquote>"
+msgstr "<h3>%1</h3>%2<br/>تارقىتىش باياناتى:<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
 #, kde-format
@@ -2262,7 +2251,7 @@ msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "يېڭىلاشقا يېتەرلىك بوشلۇق يوق؛ پەقەت %1 بوشلۇقنى ئىشلەتكىلى بولىدۇ."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:587
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:591
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2275,12 +2264,12 @@ msgstr ""
 "بۇنى بىر خاتالىق دەپ قارىسىڭىز، ئۇنى پىروگرامما كەمتۈكلۈكى سۈپىتىدە تارقىتىش "
 "نەشرىنى بوغچىلىغانلارغا مەلۇم قىلىڭ."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:594
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
 #, kde-format
 msgid "Confirm Changes"
 msgstr "ئۆزگەرتىشنى جەزملە"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:595
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2289,13 +2278,13 @@ msgstr ""
 "يېڭىلاش تۆۋەندىكى بوغچىنى چىقىرىۋېتىدۇ:<ul><li>%1</li></ul><br/"
 ">ئورنىتىدىغىنى:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:721
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:731
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:729
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:739
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, kde-format
 msgid ""
@@ -2305,13 +2294,13 @@ msgstr ""
 "«%1» تۈردىكى ۋاسىتە ئۆزگەرتىشنى ئىلتىماس قىلغان.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:762
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:772
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "ئاخىرقى ئىشلەتكۈچى ئىجازەت كېلىشىمىگە قوشۇل"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:763
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:773
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
@@ -2322,13 +2311,13 @@ msgstr ""
 "كېلىشىمىگە قوشۇلۇشىڭىزنى تەلەپ قىلىدۇ:\n"
 "%3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:913
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:923
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "%2 دىكى %1 نىڭ ئىمزاسى كەم"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:914
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:924
 #: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""
@@ -2420,9 +2409,7 @@ msgstr ""
 "مەلۇم قىلىڭ."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Begin Upgrade…"
+#, kde-format
 msgctxt "@action:button Perform a distro upgrade, not just a package update"
 msgid "Begin Upgrade…"
 msgstr "يۈكسەلدۈرۈشنى باشلايدۇ…"
@@ -2570,12 +2557,10 @@ msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr "rpm-ostree ئارقا ئۇچى: يوچۇن مەنبە پىچىمى. كەمتۈك مەلۇم قىلىڭ."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:362
-#, fuzzy, kde-format
-#| msgid ""
-#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, kde-format
 msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
-"rpm-ostree بېجىرىدىغان ئىشنى قالدۇرۇۋېتىۋاتىدۇ. بۇنىڭغا بىر ئاز ۋاقىت كېتىشى "
+"rpm-ostree بېجىرىدىغان ئىشتىن ۋاز كېچىۋاتىدۇ. بۇنىڭغا بىر ئاز ۋاقىت كېتىشى "
 "مۇمكىن. سەل كۈتۈڭ."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
@@ -2705,7 +2690,7 @@ msgstr "«%1» نىشاننىڭ ئەپ تەپسىلىي ئۇچۇرىدىكى ھ�
 #, kde-format
 msgctxt "Upgrade status: A system update that has to be downloaded again"
 msgid "Previous installation was incomplete, trying again"
-msgstr ""
+msgstr "ئالدىنقى قېتىملىق ئورنىتىش تولۇق تاماملانمىغان، قايتا سىناڭ"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format
@@ -2795,7 +2780,7 @@ msgctxt "an approximation number, like 3000+"
 msgid "%1+"
 msgstr "%1+"
 
-#: libdiscover/resources/ResourcesUpdatesModel.cpp:111
+#: libdiscover/resources/ResourcesUpdatesModel.cpp:118
 #, kde-format
 msgid "Updates"
 msgstr "يېڭىلانما"
@@ -2849,8 +2834,7 @@ msgid "Failed"
 msgstr "مەغلۇپ بولدى"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, fuzzy, kde-format
-#| msgid "Canceled"
+#, kde-format
 msgctxt "@info:status"
 msgid "Canceled"
 msgstr "ۋاز كەچتى"
