@@ -46,7 +46,7 @@ FwupdBackend::FwupdBackend(QObject *parent)
         }
         fwupd_client_set_user_agent_for_package(m_client.get(), "plasma-discover", version.data());
         connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &FwupdBackend::updatesCountChanged);
-        connect(TransactionModel::global(), &TransactionModel::lastTransactionFinished, this, &FwupdBackend::checkForUpdates);
+        connect(TransactionModel::global(), &TransactionModel::lastTransactionFinished, this, &FwupdBackend::refreshDevices);
 
         SourcesModel::global()->addSourcesBackend(new FwupdSourcesBackend(this));
         QTimer::singleShot(0, this, &FwupdBackend::checkForUpdates);
@@ -361,7 +361,7 @@ void FwupdBackend::setRemotes(GPtrArray *remotes)
     }
 }
 
-void FwupdBackend::checkForUpdates()
+void FwupdBackend::refreshDevices()
 {
     if (m_fetching)
         return;
@@ -370,6 +370,14 @@ void FwupdBackend::checkForUpdates()
     Q_EMIT fetchingUpdatesProgressChanged();
 
     fwupd_client_get_devices_async(m_client.get(), m_cancellable.get(), fwupd_client_get_devices_cb, this);
+}
+
+void FwupdBackend::checkForUpdates()
+{
+    if (m_fetching)
+        return;
+
+    refreshDevices();
     fwupd_client_get_remotes_async(m_client.get(), m_cancellable.get(), fwupd_client_get_remotes_cb, this);
 }
 

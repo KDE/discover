@@ -85,6 +85,7 @@ Q_SIGNALS:
     void initialized();
 
 private:
+    void refreshDevices();
     ResultsStream *resourceForFile(const QUrl &);
     void addUpdates();
     void addResource(FwupdResource *res);
