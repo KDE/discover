@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-04 01:04+0000\n"
-"PO-Revision-Date: 2026-10-25 23:33+0200\n"
+"PO-Revision-Date: 2026-11-04 15:49+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -653,11 +653,10 @@ msgid "All Files"
 msgstr "Visi failai"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:768
-#, fuzzy, kde-format
-#| msgid "Home"
+#, kde-format
 msgctxt "the user's home directory"
 msgid "Home"
-msgstr "Pradžia"
+msgstr "Namai"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:770
 #, kde-format
