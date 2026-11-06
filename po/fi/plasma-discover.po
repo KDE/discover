@@ -1041,8 +1041,6 @@ msgid ""
 "users. For more information see https://kde.org/privacypolicy-apps.php."
 msgstr ""
 "Lähettää KDE:lle nimettömät käyttötiedot, jotta saamme paremmin tietoa "
-"käyttäjistämme. Lisätietoa: https://kde.org/privacypolicy-apps.php.Lähettää "
-"KDE:lle nimettömät käyttötiedot, jotta saamme paremmin tietoa "
 "käyttäjistämme. Lisätietoa: https://kde.org/privacypolicy-apps.php."
 
 #: discover/qml/Feedback.qml:20

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-04 01:04+0000\n"
-"PO-Revision-Date: 2026-08-26 12:03+0300\n"
+"PO-Revision-Date: 2026-10-05 11:46+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -645,11 +645,9 @@ msgid "Failed to start “%1”: %2"
 msgstr "Käynnistäminen epäonnistui: ”%1”: ”%2”"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:539
-#, fuzzy, kde-format
-#| msgctxt "Permission to access system resources and hardware devices"
-#| msgid "Permissions"
+#, kde-format
 msgid "New Permissions"
-msgstr "Käyttöoikeudet"
+msgstr "Uudet käyttöoikeudet"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:766
 #, kde-format
@@ -1116,10 +1114,9 @@ msgid "Configure permissions…"
 msgstr "Käyttöoikeusasetukset…"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:145
-#, fuzzy, kde-format
-#| msgid "Version: "
+#, kde-format
 msgid "Version %1"
-msgstr "Versio: "
+msgstr "Versio %1"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:489
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
@@ -2588,9 +2585,7 @@ msgstr ""
 "ohjelmavirheestä."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:362
-#, fuzzy, kde-format
-#| msgid ""
-#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, kde-format
 msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr "Peruutetaan rpm-ostree-toimenpidettä. Tämä voi kestää. Odota."
 
@@ -2752,15 +2747,12 @@ msgid "Launch"
 msgstr "Käynnistä"
 
 #: libdiscover/resources/AbstractResource.cpp:270
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here. An app or runtime got updated "
 "without changing the user-facing version number %1"
 msgid "Refresh of version %1"
-msgstr "Version %1 päivitys"
+msgstr "Version %1 virkistys"
 
 #: libdiscover/resources/AbstractResource.cpp:280
 #, kde-format
@@ -2868,8 +2860,7 @@ msgid "Failed"
 msgstr "Epäonnistui"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, fuzzy, kde-format
-#| msgid "Canceled"
+#, kde-format
 msgctxt "@info:status"
 msgid "Canceled"
 msgstr "Peruttu"

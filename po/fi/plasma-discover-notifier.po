@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-22 00:46+0000\n"
-"PO-Revision-Date: 2026-08-26 12:04+0300\n"
+"PO-Revision-Date: 2026-10-05 11:45+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -79,8 +79,7 @@ msgid "Update and Shut Down"
 msgstr "Päivitä ja sammuta"
 
 #: notifier/DiscoverNotifier.cpp:449
-#, fuzzy, kde-format
-#| msgid "Upgrade available"
+#, kde-format
 msgctxt "A new distro release is available for upgrade"
 msgid "Upgrade available"
 msgstr "Päivitys saatavilla"
@@ -92,9 +91,7 @@ msgid "%1 is now available."
 msgstr "%1 on nyt saatavilla."
 
 #: notifier/DiscoverNotifier.cpp:453
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade"
 msgstr "Päivitä"
