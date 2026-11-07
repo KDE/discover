@@ -504,6 +504,7 @@ public:
 bool DiscoverObject::quitWhenIdle()
 {
     if (!isBusy()) {
+        reconsiderQuit();
         return true;
     }
 
