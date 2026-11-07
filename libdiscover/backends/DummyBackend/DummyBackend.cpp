@@ -69,11 +69,15 @@ DummyBackend::DummyBackend(QObject *parent)
 void DummyBackend::populate(const QString &n)
 {
     const int start = m_resources.count();
+    const bool noUpdates = qEnvironmentVariableIsSet("DISCOVER_DUMMY_NO_UPDATES");
+    const auto stateFor = [noUpdates](int i) {
+        return noUpdates ? AbstractResource::Installed : AbstractResource::State(1 + (i % 3));
+    };
     for (int i = start; i < start + m_startElements; i++) {
         const QString name = n + QLatin1Char(' ') + QString::number(i);
         DummyResource *res = new DummyResource(name, AbstractResource::Application, this);
         res->setSize(100 + (m_startElements - i));
-        res->setState(AbstractResource::State(1 + (i % 3)));
+        res->setState(stateFor(i));
         m_resources.insert(name.toLower(), res);
         connect(res, &DummyResource::stateChanged, this, &DummyBackend::updatesCountChanged);
     }
@@ -81,7 +85,7 @@ void DummyBackend::populate(const QString &n)
     for (int i = start; i < start + m_startElements; i++) {
         const QString name = QLatin1String("addon") + QString::number(i);
         DummyResource *res = new DummyResource(name, AbstractResource::Addon, this);
-        res->setState(AbstractResource::State(1 + (i % 3)));
+        res->setState(stateFor(i));
         res->setSize(300 + (m_startElements - i));
         m_resources.insert(name, res);
         connect(res, &DummyResource::stateChanged, this, &DummyBackend::updatesCountChanged);
@@ -90,7 +94,7 @@ void DummyBackend::populate(const QString &n)
     for (int i = start; i < start + m_startElements; i++) {
         const QString name = QLatin1String("techie") + QString::number(i);
         DummyResource *res = new DummyResource(name, AbstractResource::System, this);
-        res->setState(AbstractResource::State(1 + (i % 3)));
+        res->setState(stateFor(i));
         res->setSize(300 + (m_startElements - i));
         m_resources.insert(name, res);
         connect(res, &DummyResource::stateChanged, this, &DummyBackend::updatesCountChanged);
