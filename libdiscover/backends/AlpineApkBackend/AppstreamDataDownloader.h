@@ -16,7 +16,7 @@
 #include <QUrl>
 
 class KJob;
-class KUiServerJobTracker;
+class KUiServerV2JobTracker;
 namespace KIO
 {
 class Job;
@@ -143,7 +143,7 @@ protected:
     bool m_cacheWasUpdated = false;
 
     QList<KIO::TransferJob *> m_jobs;
-    KUiServerJobTracker *m_jobTracker;
+    KUiServerV2JobTracker *m_jobTracker;
 };
 
 #endif

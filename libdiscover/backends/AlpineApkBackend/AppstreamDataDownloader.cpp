@@ -17,7 +17,7 @@
 
 // KF5
 #include <KIO/TransferJob>
-#include <KUiServerJobTracker>
+#include <KUiServerV2JobTracker>
 
 #include <utility>
 
@@ -42,7 +42,7 @@ QString AppstreamDataDownloader::appStreamCacheDir()
 AppstreamDataDownloader::AppstreamDataDownloader(QObject *parent)
     : QObject(parent)
 {
-    m_jobTracker = new KUiServerJobTracker(this);
+    m_jobTracker = new KUiServerV2JobTracker(this);
 }
 
 void AppstreamDataDownloader::setCacheExpirePeriodSecs(qint64 secs)
