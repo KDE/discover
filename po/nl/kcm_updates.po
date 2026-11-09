@@ -1,40 +1,37 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the discover package.
 #
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2026 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2020-2023, 2026 Freek de Kruijf <freekdekruijf@kde.nl>
 # SPDX-FileCopyrightText: 2024 pieter <pieterkristensen@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-07 09:42+0000\n"
-"PO-Revision-Date: 2026-04-02 14:07+0200\n"
-"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"PO-Revision-Date: 2026-11-08 16:19+0100\n"
+"Last-Translator: freek <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #: kcm/ui/main.qml:37
-#, fuzzy, kde-format
-#| msgid "Update software:"
+#, kde-format
 msgctxt "@title:group formentry title, completes e.g. … manually"
 msgid "Update software:"
-msgstr "Software updaten:"
+msgstr "Software bijwerken:"
 
 #: kcm/ui/main.qml:39
-#, fuzzy, kde-format
-#| msgid "Manually"
+#, kde-format
 msgctxt "@option:radio completes Update software …"
 msgid "Manually"
 msgstr "Handmatig"
 
 #: kcm/ui/main.qml:53
-#, fuzzy, kde-format
-#| msgid "Automatically"
+#, kde-format
 msgctxt "@option:radio completes Update software …"
 msgid "Automatically"
 msgstr "Automatisch"
@@ -88,11 +85,10 @@ msgid "Never"
 msgstr "Nooit"
 
 #: kcm/ui/main.qml:118
-#, fuzzy, kde-format
-#| msgid "Apply system updates:"
+#, kde-format
 msgctxt "@title:group formentry title completes e.g. … After rebooting "
 msgid "Apply system updates:"
-msgstr "Systeem-updates toepassen:"
+msgstr "Bijwerken van het systeem uitvoeren:"
 
 #: kcm/ui/main.qml:121
 #, kde-format
@@ -103,11 +99,7 @@ msgid "After rebooting"
 msgstr "Na opnieuw opstarten"
 
 #: kcm/ui/main.qml:130
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@label The thing being recommended is to use the 'apply updates when "
-#| "rebooting' setting"
-#| msgid "Recommended to maximize system stability"
+#, kde-format
 msgctxt ""
 "@info:usagetip The thing being recommended is to use the 'apply updates when "
 "rebooting' setting"
