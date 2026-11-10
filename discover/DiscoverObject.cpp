@@ -525,7 +525,11 @@ bool DiscoverObject::quitWhenIdle()
         auto tracker = new KUiServerV2JobTracker(m_sni.get());
         tracker->registerJob(job);
         job->start();
-        connect(m_sni.get(), &KStatusNotifierItem::activateRequested, job, &TransactionsJob::cancel);
+        connect(m_mainWindow.get(), &QWindow::visibleChanged, job, [job](bool visible) {
+            if (visible) {
+                job->cancel();
+            }
+        });
 
         m_mainWindow->hide();
     }
