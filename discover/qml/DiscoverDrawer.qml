@@ -8,6 +8,7 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.discover as Discover
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 
 Kirigami.GlobalDrawer {
@@ -160,8 +161,8 @@ Kirigami.GlobalDrawer {
                     text: Discover.ResourcesModel.updatesCount
 
                     QQC2.ToolTip.text: Discover.ResourcesModel.hasSecurityUpdates
-                        ? i18n("Security updates available")
-                        : i18n("Updates available")
+                        ? KI18n.i18nc("@info:tooltip for badge with update counts", "Security updates available")
+                        : KI18n.i18nc("@info:tooltip for badge with update counts", "Updates available")
                     QQC2.ToolTip.visible: hovered || visualFocus
                     QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
 

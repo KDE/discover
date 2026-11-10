@@ -9,6 +9,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.discover as Discover
 import org.kde.discover.app as DiscoverApp
@@ -54,21 +55,21 @@ DiscoverPage {
         const count = appsModel.count;
         if (search.length > 0 && count.number > 0) {
             if (count.valid) {
-                return i18np("Search: %2 - %3 item", "Search: %2 - %3 items", count.number, stripHtml(search), count.string)
+                return KI18n.i18ncp("@title:window page title %2 is search term %3 number of results", "Search: %2 - %3 item", "Search: %2 - %3 items", count.number, stripHtml(search), count.string)
             } else {
-                return i18n("Search: %1", stripHtml(search))
+                return KI18n.i18nc("@title:window page title %1 is search term", "Search: %1", stripHtml(search))
             }
         } else if (name.length > 0 && count.number > 0) {
             if (count.valid) {
-                return i18np("%2 - %1 item", "%2 - %1 items", count.number, name)
+                return KI18n.i18ncp("@title:window page title %2 is name %1 number of results", "%2 - %1 item", "%2 - %1 items", count.number, name)
             } else {
                 return name
             }
         } else {
             if (count.valid && count.number > 0) {
-                return i18np("Search - %1 item", "Search - %1 items", count.number)
+                return KI18n.i18ncp("@title:window page title %1 is number of results", "Search - %1 item", "Search - %1 items", count.number)
             } else {
-                return i18n("Search")
+                return KI18n.i18nc("@title:window page title", "Search")
             }
         }
     }
@@ -99,12 +100,12 @@ DiscoverPage {
 
     actions: [
         Kirigami.Action {
-            text: i18n("Sort: %1", sortGroup.checkedAction.text)
+            text: KI18n.i18nc("@label listbox-like menu %1 is current value (e.g. Relevance)", "Sort: %1", sortGroup.checkedAction.text)
             icon.name: "view-sort"
             Kirigami.Action {
                 visible: appsModel.search.length > 0
                 QQC2.ActionGroup.group: sortGroup
-                text: i18nc("Search results most relevant to the search query", "Relevance")
+                text: KI18n.i18nc("@item:inmenu Search results most relevant to the search query", "Relevance")
                 icon.name: "file-search-symbolic"
                 onTriggered: {
                     // Do *not* save the sort role on searches
@@ -115,7 +116,7 @@ DiscoverPage {
             }
             Kirigami.Action {
                 QQC2.ActionGroup.group: sortGroup
-                text: i18n("Name")
+                text: KI18n.i18nc("@item:inmenu sort by name", "Name")
                 icon.name: "sort-name"
                 onTriggered: {
                     DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.NameRole
@@ -126,7 +127,7 @@ DiscoverPage {
             }
             Kirigami.Action {
                 QQC2.ActionGroup.group: sortGroup
-                text: i18n("Number of reviews")
+                text: KI18n.i18nc("@item:inmenu sort by number of reviews", "Number of reviews")
                 icon.name: "view-pages-overview-symbolic"
                 onTriggered: {
                     DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.RatingCountRole
@@ -137,7 +138,7 @@ DiscoverPage {
             }
             Kirigami.Action {
                 QQC2.ActionGroup.group: sortGroup
-                text: i18nc("@item:inmenu sort by highest-rated apps", "Rating")
+                text: KI18n.i18nc("@item:inmenu sort by highest-rated apps", "Rating")
                 icon.name: "rating"
                 onTriggered: {
                     DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.SortableRatingRole
@@ -148,7 +149,7 @@ DiscoverPage {
             }
             Kirigami.Action {
                 QQC2.ActionGroup.group: sortGroup
-                text: i18n("Size")
+                text: KI18n.i18nc("@item:inmenu sort by size", "Size")
                 icon.name: "download"
                 onTriggered: {
                     DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.SizeRole
@@ -159,7 +160,7 @@ DiscoverPage {
             }
             Kirigami.Action {
                 QQC2.ActionGroup.group: sortGroup
-                text: i18n("Release date")
+                text: KI18n.i18nc("@item:inmenu sort by release date", "Release date")
                 icon.name: "change-date-symbolic"
                 onTriggered: {
                     DiscoverApp.DiscoverSettings[page.sortProperty] = Discover.ResourcesProxyModel.ReleaseDateRole
@@ -175,7 +176,7 @@ DiscoverPage {
             Kirigami.Action {
                 id: categorizeAction
                 visible: page.canCategorize
-                text: i18nc("@info", "Group by Type")
+                text: KI18n.i18nc("@item:inmenu", "Group by Type")
                 checkable: true
                 checked: DiscoverApp.DiscoverSettings.installedPageCategorize
                 onToggled: DiscoverApp.DiscoverSettings.installedPageCategorize = checked
@@ -245,7 +246,7 @@ DiscoverPage {
                 width: parent.width - (Kirigami.Units.largeSpacing * 8)
 
                 icon.name: "edit-none"
-                text: i18n("Nothing found")
+                text: KI18n.i18nc("@info:status placeholdermessage text", "Nothing found")
             }
 
             Kirigami.PlaceholderMessage {
@@ -253,7 +254,7 @@ DiscoverPage {
 
                 Kirigami.Action {
                     id: searchAllCategoriesAction
-                    text: i18nc("@action:button", "Search in All Categories")
+                    text: KI18n.i18nc("@action:button", "Search in All Categories")
                     icon.name: "search"
                     onTriggered: {
                         window.globalDrawer.resetMenu();
@@ -263,7 +264,7 @@ DiscoverPage {
                 }
                 Kirigami.Action {
                     id: searchTheWebAction
-                    text: i18nc("@action:button %1 is the name of an application", "Search the Web for \"%1\"", appsModel.search)
+                    text: KI18n.i18nc("@action:button %1 is the name of an application", "Search the Web for \"%1\"", appsModel.search)
                     icon.name: "internet-web-browser"
                     onTriggered: {
                         const searchTerm = encodeURIComponent(Qt.platform.os + " " + appsModel.search);
@@ -277,11 +278,11 @@ DiscoverPage {
                 visible: appsModel.search.length > 0 && stateFilter !== Discover.AbstractResource.Installed
 
                 icon.name: "edit-none"
-                text: page.categoryObject ? i18nc("@info:placeholder %1 is the name of an application; %2 is the name of a category of apps or add-ons",
+                text: page.categoryObject ? KI18n.i18nc("@info:placeholder %1 is the name of an application; %2 is the name of a category of apps or add-ons",
                                             "\"%1\" was not found in the \"%2\" category", appsModel.search, page.categoryObject.name)
-                                    : i18nc("@info:placeholder %1 is the name of an application",
+                                    : KI18n.i18nc("@info:placeholder %1 is the name of an application",
                                             "\"%1\" was not found in the available sources", appsModel.search)
-                explanation: page.categoryObject ? "" : i18nc("@info:placeholder %1 is the name of an application", "\"%1\" may be available on the web. Software acquired from the web has not been reviewed by your distributor for functionality or stability. Use with caution.", appsModel.search)
+                explanation: page.categoryObject ? "" : KI18n.i18nc("@info:placeholder %1 is the name of an application", "\"%1\" may be available on the web. Software acquired from the web has not been reviewed by your distributor for functionality or stability. Use with caution.", appsModel.search)
 
                 // If we're in a category, first direct the user to search globally,
                 // because they might not have realized they were in a category and
@@ -299,7 +300,7 @@ DiscoverPage {
             Behavior on opacity { NumberAnimation { duration: Kirigami.Units.shortDuration; easing.type: Easing.InOutQuad } }
 
             icon.name: "search"
-            text: i18n("Search")
+            text: KI18n.i18nc("@info placeholdermessage text", "Search")
         }
 
         Item {
@@ -314,7 +315,7 @@ DiscoverPage {
                     id: headingText
                     Layout.alignment: Qt.AlignCenter
                     level: 2
-                    text: i18n("Still looking…")
+                    text: KI18n.i18nc("@info:status", "Still looking…")
                 }
                 QQC2.BusyIndicator {
                     id: busyIndicator

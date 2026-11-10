@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.discover as Discover
 
@@ -23,14 +24,14 @@ Kirigami.Dialog {
     rightPadding: Kirigami.Units.largeSpacing
     bottomPadding: Kirigami.Units.largeSpacing
 
-    title: i18n("Reviewing %1", application.name)
+    title: KI18n.i18nc("@title:window page title, %1 ia app name", "Reviewing %1", application.name)
 
     standardButtons: Kirigami.Dialog.NoButton
 
     customFooterActions: [
         Kirigami.Action {
             id: submitAction
-            text: i18n("Submit review")
+            text: KI18n.i18nc("@action:button", "Submit review")
             icon.name: "document-send"
             enabled: !instructionalLabel.visible
             onTriggered: reviewDialog.accept();
@@ -45,7 +46,7 @@ Kirigami.Dialog {
         QQC2.Label {
             Layout.fillWidth: true
 
-            text: i18n("If you love %1, tell people what’s great about it! Focus on functionality, usability, and appearance. If the app didn’t meet your needs, explain why.", reviewDialog.application.name)
+            text: KI18n.i18nc("@info:usagetip %1 is app name", "If you love %1, tell people what’s great about it! Focus on functionality, usability, and appearance. If the app didn’t meet your needs, explain why.", reviewDialog.application.name)
             wrapMode: Text.Wrap
             textFormat: Text.PlainText
 
@@ -69,17 +70,17 @@ Kirigami.Dialog {
             text: {
                 if (reviewInput.hasDoesntRunKeywords) {
                     if (packagedByDistro) {
-                        return xi18nc("@info", "If %1 isn’t launching, consider reporting this to its packagers in %2 at <link url='%3'>%3</link> instead, as it may be an easily fixable packaging issue rather than a flaw in the app itself.",
+                        return KI18n.xi18nc("@info", "If %1 isn’t launching, consider reporting this to its packagers in %2 at <link url='%3'>%3</link> instead, as it may be an easily fixable packaging issue rather than a flaw in the app itself.",
                                     reviewDialog.application.name,
                                     Discover.ResourcesModel.distroName,
                                     Discover.ResourcesModel.distroBugReportUrl());
                     } else {
-                        return xi18nc("@info", "If %1 isn’t launching, consider reporting this to its developers at <link url='%2'>%2</link> instead, as it may be an easily fixable packaging issue rather than a flaw in the app itself.",
+                        return KI18n.xi18nc("@info", "If %1 isn’t launching, consider reporting this to its developers at <link url='%2'>%2</link> instead, as it may be an easily fixable packaging issue rather than a flaw in the app itself.",
                                     reviewDialog.application.name,
                                     appBugReportUrl);
                     }
                 } else if (reviewInput.hasCrashKeywords && appBugReportUrl.length > 0){
-                    return xi18nc("@info", "If the app is crashing a lot, consider reporting this to its developers at <link url='%1'>%1</link> instead.",
+                    return KI18n.xi18nc("@info", "If the app is crashing a lot, consider reporting this to its developers at <link url='%1'>%1</link> instead.",
                                 appBugReportUrl);
                 } else if (reviewInput.hasSubjectiveKeywords && appBugReportUrl.length > 0) {
                     return xi18nc("@info", "If you’re having a problem with the app, consider reporting this to its developers at <link url='%1'>%1</link> instead, or else describe the problem here in greater detail.",
@@ -117,12 +118,12 @@ Kirigami.Dialog {
 
             Rating {
                 id: ratingInput
-                Kirigami.FormData.label: i18n("Rating:")
+                Kirigami.FormData.label: KI18n.i18nc("@label:textbox", "Rating:")
                 readOnly: false
             }
             QQC2.TextField {
                 id: nameInput
-                Kirigami.FormData.label: i18n("Name:")
+                Kirigami.FormData.label: KI18n.i18nc("@label:textbox", "Name:")
                 visible: page.reviewsBackend !== null && reviewDialog.backend.preferredUserName.length > 0
                 Layout.fillWidth: true
                 readOnly: !reviewDialog.backend.supportsNameChange
@@ -130,7 +131,7 @@ Kirigami.Dialog {
             }
             QQC2.TextField {
                 id: titleInput
-                Kirigami.FormData.label: i18n("Title:")
+                Kirigami.FormData.label: KI18n.i18nc("@label:textbox", "Title:")
                 Layout.fillWidth: true
                 validator: RegularExpressionValidator { regularExpression: /.{3,70}/ }
             }
@@ -153,21 +154,21 @@ Kirigami.Dialog {
                 // Intentionally untranslated to cover the case of people writing reviews
                 // in English when their system is in another language.
                 readonly property string doesntRunKeywordsEn: "launch,run,start"
-                readonly property string doesntRunKeywordsI18n: i18nc("Words the user might use in an unhelpful sentence saying an app is not launching. Preserve the commas. If necessary, add more words used for this in your language and/or shorten to common stems contained by multiple forms of the words.",
+                readonly property string doesntRunKeywordsI18n: KI18n.i18nc("Words the user might use in an unhelpful sentence saying an app is not launching. Preserve the commas. If necessary, add more words used for this in your language and/or shorten to common stems contained by multiple forms of the words.",
                                                                       "launch,run,start")
                 readonly property list<string> doesntRunKeywords: doesntRunKeywordsEn.concat(",", doesntRunKeywordsI18n).split(",")
                 readonly property bool hasDoesntRunKeywords: doesntRunKeywords.some(suspiciousWord => lowercaseText.includes(suspiciousWord))
 
 
                 readonly property string crashKeywordsEn: "crash,segfault"
-                readonly property string crashKeywordsI18n:  i18nc("Words the user might use in an unhelpful sentence saying an app crashes. Preserve the commas. If necessary, add more words used for this in your language and/or shorten to common stems contained by multiple forms of the words",
+                readonly property string crashKeywordsI18n:  KI18n.i18nc("Words the user might use in an unhelpful sentence saying an app crashes. Preserve the commas. If necessary, add more words used for this in your language and/or shorten to common stems contained by multiple forms of the words",
                                                                    "crash,segfault")
                 readonly property list<string> crashKeywords: crashKeywordsEn.concat(",", crashKeywordsI18n).split(",")
                 readonly property bool hasCrashKeywords: crashKeywords.some(suspiciousWord => lowercaseText.includes(suspiciousWord))
 
 
                 readonly property string subjectiveKeywordsEn: "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
-                readonly property string subjectiveKeywordsI18n: i18nc("Words the user might use in an unhelpful sentence saying an app isn't very good. Preserve the commas. If necessary, add more words used for this in your language and/or shorten to common stems contained by multiple forms of the words,",
+                readonly property string subjectiveKeywordsI18n: KI18n.i18nc("Words the user might use in an unhelpful sentence saying an app isn't very good. Preserve the commas. If necessary, add more words used for this in your language and/or shorten to common stems contained by multiple forms of the words,",
                                                                        "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate")
                 readonly property list<string> subjectiveKeywords: subjectiveKeywordsEn.concat(",", subjectiveKeywordsI18n).split(",")
                 readonly property bool hasSubjectiveKeywords: subjectiveKeywords.some(suspiciousWord => lowercaseText.includes(suspiciousWord))
@@ -190,22 +191,22 @@ Kirigami.Dialog {
             horizontalAlignment: Text.AlignRight
             text: {
                 if (rating < 2) {
-                    return i18n("Enter a rating");
+                    return KI18n.i18nc("@info:usagetip rating not set yet", "Enter a rating");
                 }
                 if (!titleInput.acceptableInput) {
-                    return i18n("Write the title");
+                    return KI18n.i18nc("@info:usagetip title not set yet", "Write the title");
                 }
                 if (reviewInput.length === 0) {
-                    return i18n("Write the review");
+                    return KI18n.i18nc("@info:usagetip no review text", "Write the review");
                 }
                 if (reviewInput.length < 15) {
-                    return i18n("Keep writing…");
+                    return KI18n.i18nc("@info:usagetip review text too short", "Keep writing…");
                 }
                 if (reviewInput.length > 3000) {
-                    return i18n("Too long!");
+                    return KI18n.i18nc("@info:usagetip review text too long", "Too long!");
                 }
                 if (nameInput.visible && nameInput.length < 1) {
-                    return i18nc("@info:usagetip", "Insert a name");
+                    return KI18n.i18nc("@info:usagetip name not set yet", "Insert a name");
                 }
                 return "";
             }

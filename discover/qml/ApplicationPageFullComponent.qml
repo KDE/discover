@@ -13,6 +13,7 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 
 import org.kde.discover as Discover
@@ -111,7 +112,7 @@ Kirigami.Padding {
                                 } else if (fullComponent.application.author.length > 0) {
                                     return fullComponent.application.author;
                                 } else {
-                                    return i18nc("As in 'this app is made by an unknown author'", "Unknown author");
+                                    return KI18n.i18nc("@info As in 'this app is made by an unknown author'", "Unknown author");
                                 }
                             }
                         }
@@ -145,7 +146,7 @@ Kirigami.Padding {
                         }
 
                         QQC2.Label {
-                            text: fullComponent.application.rating ? i18ncp("@info as in the number of ratings an application has", "%1 rating", "%1 ratings", fullComponent.application.rating.ratingCount) : i18nc("@info", "No ratings yet")
+                            text: fullComponent.application.rating ? KI18n.i18ncp("@info as in the number of ratings an application has", "%1 rating", "%1 ratings", fullComponent.application.rating.ratingCount) : KI18n.i18nc("@info", "No ratings yet")
                         }
                     }
                 }
@@ -193,7 +194,7 @@ Kirigami.Padding {
             QQC2.Label {
                 id: appVersionLabel
                 Layout.alignment: Qt.AlignRight | Qt.AlignTop
-                text: i18nc("@info", "Version:")
+                text: KI18n.i18nc("@label", "Version:")
                 visible: fullComponent.application.versionString.length > 0
             }
 
@@ -211,7 +212,7 @@ Kirigami.Padding {
             QQC2.Label {
                 id: appSizeLabel
                 Layout.alignment: Qt.AlignRight | Qt.AlignTop
-                text: i18n("Size:")
+                text: KI18n.i18nc("@label", "Size:")
                 visible: fullComponent.application.sizeDescription.length > 0
             }
 
@@ -239,7 +240,7 @@ Kirigami.Padding {
             QQC2.Label {
                 id: appLicensesLabel
                 Layout.alignment: Qt.AlignRight | Qt.AlignTop
-                text: i18ncp("@info", "License:", "Licenses:", fullComponent.application.licenses.length)
+                text: KI18n.i18ncp("label", "License:", "Licenses:", fullComponent.application.licenses.length)
             }
 
             ColumnLayout {
@@ -258,14 +259,14 @@ Kirigami.Padding {
                         elide: Text.ElideRight
 
                         color: fullComponent.colorForLicenseType("unknown")
-                        text: i18nc("The app does not provide any licenses", "Unknown")
+                        text: KI18n.i18nc("@info", "The app does not provide any licenses", "Unknown")
                     }
 
                     QQC2.Button {
                         implicitHeight: appLicenseUnknownLabel.height
 
                         icon.name: "help-contextual-symbolic"
-                        text: i18nc("@info:tooltip for button opening license type description", "What does this mean?")
+                        text: KI18n.i18nc("@info:tooltip for button opening license type description", "What does this mean?")
                         display: QQC2.AbstractButton.IconOnly
                         flat: true
 
@@ -322,7 +323,7 @@ Kirigami.Padding {
                                      || delegate.modelData.licenseType === "proprietary"
 
                             icon.name: "help-contextual-symbolic"
-                            text: i18nc("@info:tooltip for button opening license type description", "What does this mean?")
+                            text: KI18n.i18nc("@info:tooltip for button opening license type description", "What does this mean?")
                             display: QQC2.AbstractButton.IconOnly
                             flat: true
 
@@ -345,7 +346,7 @@ Kirigami.Padding {
                 // "See All licenses" link, in case there are a lot of them
                 Kirigami.LinkButton {
                     visible: application.licenses.length > 3
-                    text: i18nc("Show all licenses of the package", "All licenses…")
+                    text: KI18n.i18nc("@action:button Show all licenses of the package", "All licenses…")
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignTop
                     elide: Text.ElideRight
@@ -358,7 +359,7 @@ Kirigami.Padding {
                 id: appContentRatingLabel
                 Layout.alignment: Qt.AlignRight | Qt.AlignTop
                 visible: !fullComponent.isTechnicalPackage
-                text: i18nc("@info The app is suitable for people of the following ages or older", "Ages:")
+                text: KI18n.i18nc("@label The app is suitable for people of the following ages or older", "Ages:")
             }
 
             RowLayout {
@@ -377,8 +378,8 @@ Kirigami.Padding {
                     maximumLineCount: 2
                     elide: Text.ElideRight
 
-                    text: application.contentRatingMinimumAge === 0 ? i18nc("@item As in, the app is suitable for everyone", "Everyone")
-                                                                    : i18nc("@item %1 is a person's age in number of years",
+                    text: application.contentRatingMinimumAge === 0 ? KI18n.i18nc("@info As in, the app is suitable for everyone", "Everyone")
+                                                                    : KI18n.i18nc("@info %1 is a person's age in number of years",
                                                                             "%1+", fullComponent.application.contentRatingMinimumAge)
                 }
 
@@ -388,7 +389,7 @@ Kirigami.Padding {
                     visible: fullComponent.application.contentRatingDescription.length > 0
 
                     icon.name: "help-contextual-symbolic"
-                    text: i18nc("@action:button See content rating details", "See details")
+                    text: KI18n.i18nc("@action:button See content rating details", "See details")
                     display: QQC2.AbstractButton.IconOnly
                     flat: true
 

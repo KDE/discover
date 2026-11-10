@@ -11,6 +11,7 @@ import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.discover.app as DiscoverApp
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.kitemmodels as KItemModels
 
@@ -50,7 +51,7 @@ BasicAbstractCard {
         }
         QQC2.Label {
             Layout.alignment: Qt.AlignCenter
-            text: i18nc("how many reviews", "%1 reviews", root.application.rating.ratingCount)
+            text: KI18n.i18nc("@info how many reviews", "%1 reviews", root.application.rating.ratingCount)
         }
         Repeater {
             model: [5, 4, 3, 2, 1]
@@ -73,7 +74,7 @@ BasicAbstractCard {
                     TextMetrics {
                         id: numberMetrics
                         font: numberLabel.font
-                        text: i18nc("widest character in the language", "M")
+                        text: KI18n.i18nc("widest character in the language, just for metrics, not used in UI", "M")
                     }
                 }
                 QQC2.ProgressBar {
@@ -164,7 +165,7 @@ BasicAbstractCard {
                     QQC2.Label {
                         Layout.alignment: Qt.AlignCenter
                         opacity: 0.75
-                        text: delegate.reviewer || i18n("Unknown reviewer")
+                        text: delegate.reviewer || KI18n.i18nc("@info", "Unknown reviewer")
                     }
                 }
             }
@@ -185,7 +186,7 @@ BasicAbstractCard {
                 }
                 parent: reviewsPreview
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 4
-                text: i18nc("Opening upper air quote", "“")
+                text: KI18n.i18nc("Opening upper air quote", "“")
                 opacity: 0.4
                 TextMetrics {
                     id: quoteMetrics
@@ -200,7 +201,7 @@ BasicAbstractCard {
                 }
                 parent: reviewsPreview
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 4
-                text: i18nc("Closing lower air quote", "„")
+                text: KI18n.i18nc("Closing lower air quote", "„")
                 opacity: 0.4
             }
             RowLayout {

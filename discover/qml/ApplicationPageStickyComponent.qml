@@ -10,6 +10,7 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 
 import org.kde.discover as Discover
@@ -43,7 +44,7 @@ Kirigami.Padding {
                 } else if (stickyComponent.application.author.length > 0) {
                     return stickyComponent.application.author;
                 } else {
-                    return i18nc("As in 'this app is made by an unknown author'", "Unknown author");
+                    return KI18n.i18nc("@info As in 'this app is made by an unknown author'", "Unknown author");
                 }
             }
         }
@@ -57,7 +58,7 @@ Kirigami.Padding {
 
         QQC2.Button {
             icon.name: "go-top-symbolic"
-            text: i18nc("@action:button", "Scroll to top")
+            text: KI18n.i18nc("@action:button", "Scroll to top")
             display: QQC2.AbstractButton.IconOnly
 
             QQC2.ToolTip.text: text

@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.discover as Discover
 
@@ -26,15 +27,15 @@ ConditionalLoader {
     readonly property Kirigami.Action action: Kirigami.Action {
         text: {
             if (!root.isStateAvailable) {
-                return i18nc("State being fetched", "Loading…")
+                return KI18n.i18nc("State being fetched", "Loading…")
             }
             if (!root.application.isInstalled) {
                 if (root.availableFromOnlySingleSource) {
-                    return i18nc("@action:button %1 is the name of a software repository", "Install from %1", root.application.displayOrigin);
+                    return KI18n.i18nc("@action:button %1 is the name of a software repository", "Install from %1", root.application.displayOrigin);
                 }
-                return i18nc("@action:button", "Install");
+                return KI18n.i18nc("@action:button install application", "Install");
             }
-            return i18n("Remove");
+            return KI18n.i18nc("@action:button remove application", "Remove");
         }
         icon {
             name: root.application.isInstalled ? "edit-delete" : "download"
@@ -48,7 +49,7 @@ ConditionalLoader {
     }
 
     readonly property Kirigami.Action cancelAction: Kirigami.Action {
-        text: i18n("Cancel")
+        text: KI18n.i18nc("@action:button", "Cancel")
         icon.name: "dialog-cancel"
         enabled: listener.isCancellable
         tooltip: listener.statusText

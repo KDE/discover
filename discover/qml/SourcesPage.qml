@@ -5,6 +5,7 @@ import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.kcmutils as KCMUtils
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.kirigami.delegates as KD
 import org.kde.kitemmodels as KItemModels
@@ -16,11 +17,11 @@ DiscoverPage {
     readonly property string name: title
 
     clip: true
-    title: i18n("Settings")
+    title: KI18n.i18nc("@title:window page title", "Settings")
 
     Kirigami.Action {
         id: configureUpdatesAction
-        text: i18n("Configure Updates…")
+        text: KI18n.i18nc("@action:inmenu opens updates kcm", "Configure Updates…")
         displayHint: Kirigami.DisplayHint.AlwaysHide
         onTriggered: {
             KCMUtils.KCMLauncher.openSystemSettings("kcm_updates");
@@ -113,7 +114,7 @@ DiscoverPage {
                         visible: backendItem.isDefault
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         displayComponent: Kirigami.Heading {
-                            text: i18n("Default Source")
+                            text: KI18n.i18nc("@info this source is the default", "Default Source")
                             level: 3
                             font.weight: Font.Bold
                         }
@@ -121,7 +122,7 @@ DiscoverPage {
 
                     Kirigami.Action {
                         id: addSourceAction
-                        text: i18n("Add Source…")
+                        text: KI18n.i18nc("@action:button add new package repository", "Add Source…")
                         icon.name: "list-add"
                         visible: backendItem.backend && backendItem.backend.supportsAdding
 
@@ -148,7 +149,7 @@ DiscoverPage {
                         id: makeDefaultAction
                         visible: resourcesBackend && resourcesBackend.hasApplications && !backendItem.isDefault
 
-                        text: i18n("Make Default")
+                        text: KI18n.i18nc("@action:button mark source as default", "Make Default")
                         icon.name: "favorite"
                         onTriggered: Discover.ResourcesModel.currentApplicationBackend = backendItem.backend.resourcesBackend
                     }
@@ -198,13 +199,13 @@ DiscoverPage {
                 footer: QQC2.DialogButtonBox {
                     QQC2.Button {
                         QQC2.DialogButtonBox.buttonRole: QQC2.DialogButtonBox.AcceptRole
-                        text: i18n("Proceed")
+                        text: KI18n.i18nc("@action:button", "Proceed")
                         icon.name: "dialog-ok"
                     }
 
                     QQC2.Button {
                         QQC2.DialogButtonBox.buttonRole: QQC2.DialogButtonBox.RejectRole
-                        text: i18n("Cancel")
+                        text: KI18n.i18nc("@action:button", "Cancel")
                         icon.name: "dialog-cancel"
                     }
 
@@ -249,31 +250,37 @@ DiscoverPage {
             actions: [
                 Kirigami.Action {
                     icon.name: "go-up"
-                    tooltip: i18n("Increase priority")
+                    tooltip: KI18n.i18nc("@info:tooltip rank repository higher", "Increase priority")
                     enabled: delegate.model.sourcesBackend.firstDisambiguatedSourceId !== delegate.model.disambiguatedSourceId
                     visible: delegate.model.sourcesBackend.canMoveSources
                     onTriggered: {
                         const ret = delegate.model.sourcesBackend.moveSource(delegate.model.disambiguatedSourceId, -1)
                         if (!ret) {
-                            window.showPassiveNotification(i18n("Failed to increase “%1” preference", delegate.model.display))
+                            window.showPassiveNotification(KI18n.i18nc(
+                                "@info:status in passive notification %1, is repository name",
+                                "Failed to increase “%1” preference",
+                                delegate.model.display))
                         }
                     }
                 },
                 Kirigami.Action {
                     icon.name: "go-down"
-                    tooltip: i18n("Decrease priority")
+                    tooltip: KI18n.i18nc("@info:tooltip rank repository lower", "Decrease priority")
                     enabled: delegate.model.sourcesBackend.lastDisambiguatedSourceId !== delegate.model.disambiguatedSourceId
                     visible: delegate.model.sourcesBackend.canMoveSources
                     onTriggered: {
                         const ret = delegate.model.sourcesBackend.moveSource(delegate.model.disambiguatedSourceId, +1)
                         if (!ret) {
-                            window.showPassiveNotification(i18n("Failed to decrease “%1” preference", delegate.model.display))
+                            window.showPassiveNotification(KI18n.i18nc(
+                                "@info:status in passive notification, %1 is repository name",
+                                "Failed to decrease “%1” preference",
+                                delegate.model.display))
                         }
                     }
                 },
                 Kirigami.Action {
                     icon.name: "edit-delete"
-                    tooltip: i18n("Remove repository")
+                    tooltip: KI18n.i18nc("@info;tooltip for button", "Remove repository")
                     visible: delegate.model.sourcesBackend.supportsAdding
                     onTriggered: {
                         const backend = delegate.model.sourcesBackend
@@ -284,7 +291,7 @@ DiscoverPage {
                 },
                 Kirigami.Action {
                     icon.name: delegate.mirrored ? "go-next-symbolic-rtl" : "go-next-symbolic"
-                    tooltip: i18n("Show contents")
+                    tooltip: KI18n.i18nc("@action:button show packages in repository", "Show contents")
                     visible: delegate.model.sourcesBackend.canFilterSources
                     onTriggered: {
                         Navigation.openApplicationListSource(delegate.model.disambiguatedSourceId, delegate.model.display)
@@ -306,8 +313,8 @@ DiscoverPage {
                         sourcesView.model.setData(idx, checkState, Qt.CheckStateRole)
                         checked = Qt.binding(() => (modelChecked !== Qt.Unchecked))
                     }
-                    QQC2.ToolTip.text: i18nc("@info:tooltip", "Enable this source")
                     QQC2.ToolTip.visible: hovered || visualFocus
+                    QQC2.ToolTip.text: KI18n.i18nc("@info:tooltip", "Enable this source")
                     QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
                 }
                 QQC2.Label {
@@ -327,7 +334,7 @@ DiscoverPage {
                 Layout.fillWidth: true
 
                 visible: back.count > 0
-                text: i18n("Missing Backends")
+                text: KI18n.i18nc("@title:group for list of missing backends", "Missing Backends")
             }
 
             Repeater {

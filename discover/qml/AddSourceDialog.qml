@@ -7,6 +7,7 @@
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.discover as Discover
 
@@ -18,7 +19,7 @@ Kirigami.PromptDialog {
     required property string displayName
     required property Discover.AbstractSourcesBackend source
 
-    title: i18n("Add New %1 Repository", displayName)
+    title: KI18n.i18nc("@title:window page title %1 is display name e.g. Flatpak", "Add New %1 Repository", displayName)
 
     onVisibleChanged: {
         if (visible) {
@@ -42,12 +43,12 @@ Kirigami.PromptDialog {
 
     customFooterActions: [
         Kirigami.Action {
-            text: i18n("Add")
+            text: KI18n.i18nc("@action:button add repository", "Add")
             icon.name: "list-add"
             onTriggered: root.accept();
         },
         Kirigami.Action {
-            text: i18n("Cancel")
+            text: KI18n.i18nc("@action:button cancel adding repository", "Cancel")
             icon.name: "dialog-cancel"
             onTriggered: root.reject();
         }

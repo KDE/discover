@@ -2,6 +2,7 @@ import QtQml
 import QtQuick.Templates as T
 import org.kde.kirigami as Kirigami
 import org.kde.userfeedback as UserFeedback
+import org.kde.ki18n
 import org.kde.kcmutils as KCMUtils
 import org.kde.discover as Discover
 import org.kde.discover.app as DiscoverApp
@@ -11,24 +12,27 @@ UserFeedback.Provider {
 
     readonly property list<T.Action> actions: [
         Kirigami.Action {
-            text: i18n("Submit Usage Information")
-            tooltip: i18n("Sends anonymized usage information to KDE so we can better understand our users. For more information see https://kde.org/privacypolicy-apps.php.")
+            text: KI18n.i18nc("@action:inmenu", "Submit Usage Information")
+            tooltip: KI18n.i18nc("@info:tooltip", "Sends anonymized usage information to KDE so we can better understand our users. For more information see https://kde.org/privacypolicy-apps.php.")
             icon.name: "document-send"
             displayHint: Kirigami.DisplayHint.AlwaysHide
             onTriggered: {
                 provider.submit()
-                showPassiveNotification(i18n("Submitting usage information…"), "short", i18n("Configure"), provider.encouraged)
+                showPassiveNotification(KI18n.i18nc("@info status passive notification", "Submitting usage information…"),
+                                        "short",
+                                        KI18n.i18nc("@action:button on passive notification, opens feedback kcm", "Configure"),
+                                        provider.encouraged)
             }
         },
         Kirigami.Action {
-            text: i18n("Configure Feedback…")
+            text: KI18n.i18nc("@action:inmenu", "Configure Feedback…")
             displayHint: Kirigami.DisplayHint.AlwaysHide
             onTriggered: {
                 provider.encouraged()
             }
         },
         Kirigami.Action {
-            text: i18n("Configure Updates…")
+            text: KI18n.i18nc("@action:button", "Configure Updates…")
             displayHint: Kirigami.DisplayHint.AlwaysHide
             icon.name: "configure"
             onTriggered: {
@@ -57,12 +61,18 @@ UserFeedback.Provider {
     }
 
     onShowEncouragementMessage: {
-        showPassiveNotification(i18n("You can help KDE improve Discover by sharing anonymous information on how you use it."), 5000, i18n("Contribute…"), encouraged)
+        showPassiveNotification(KI18n.i18nc("@info:usagetip passive notification", "You can help KDE improve Discover by sharing anonymous information on how you use it."),
+                                5000,
+                                KI18n.i18nc("@action:button on passive notification, opens feedback kcm", "Contribute…"),
+                                encouraged)
     }
 
     onSurveyAvailable: {
         lastSurvey = survey
-        showPassiveNotification(i18n("We are looking for your feedback!"), 5000, i18n("Participate…"), openSurvey)
+        showPassiveNotification(KI18n.i18nc("@info passive notification", "We are looking for your feedback!"),
+                                5000,
+                                KI18n.i18nc("@action:button on passive notification, opens url in browser", "Participate…"),
+                                openSurvey)
     }
 
     UserFeedback.ApplicationVersionSource { mode: UserFeedback.Provider.BasicSystemInformation }

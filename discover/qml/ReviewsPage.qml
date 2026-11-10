@@ -12,6 +12,7 @@ import QtQuick.Templates as T
 import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.discover.app as DiscoverApp
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.kitemmodels as KItemModels
 
@@ -40,7 +41,7 @@ Kirigami.OverlaySheet {
 
     implicitWidth: Math.min(Kirigami.Units.gridUnit * 40, Math.max(Kirigami.Units.gridUnit * 30, parent.width * 0.8))
 
-    title: i18n("Reviews for %1", page.resource.name)
+    title: KI18n.i18nc("@title window page title %1 is app name", "Reviews for %1", page.resource.name)
 
     showCloseButton: false
 
@@ -102,7 +103,7 @@ Kirigami.OverlaySheet {
 
                     visible: page.reviewsBackend !== null
                     enabled: page.resource.isInstalled
-                    text: i18n("Write a Review…")
+                    text: KI18n.i18nc("@action:button", "Write a Review…")
                     onClicked: page.openReviewDialog()
                 }
 
@@ -115,7 +116,7 @@ Kirigami.OverlaySheet {
                         id: messageLabel
                         Layout.fillWidth: true
                         parent: inlineMessageParent.width >= messageLabelMetrics.width ? inlineMessageParent : newlineMessageParent
-                        text: i18n("Install this app to write a review")
+                        text: KI18n.i18nc("@info:usagetip", "Install this app to write a review")
                         wrapMode: Text.WordWrap
                         visible: !reviewButton.enabled
                         opacity: 0.75
@@ -138,25 +139,25 @@ Kirigami.OverlaySheet {
                     alignment: Qt.AlignRight
                     Layout.fillWidth: false
                     actions: Kirigami.Action {
-                        text: i18n("Sort: %1", sortGroup.checkedAction.text)
+                        text: KI18n.i18nc("@label for listbox-like menu %1 is sort criterion e.g. most relevant","Sort: %1", sortGroup.checkedAction.text)
                         icon.name: "view-sort-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         Kirigami.Action {
-                            text: i18nc("@label:listbox Most relevant reviews", "Most Relevant")
+                            text: KI18n.i18nc("@label:listbox Most relevant reviews", "Most Relevant")
                             QQC2.ActionGroup.group: sortGroup
                             checkable: true
                             checked: sortModel.sortRoleName === "wilsonScore"
                             onTriggered: sortModel.sortRoleName = "wilsonScore"
                         }
                         Kirigami.Action {
-                            text: i18nc("@label:listbox Most recent reviews", "Most Recent")
+                            text: KI18n.i18nc("@label:listbox Most recent reviews", "Most Recent")
                             QQC2.ActionGroup.group: sortGroup
                             checkable: true
                             checked: sortModel.sortRoleName === "date"
                             onTriggered: sortModel.sortRoleName = "date"
                         }
                         Kirigami.Action {
-                            text: i18nc("@label:listbox Reviews with the highest ratings", "Highest Ratings")
+                            text: KI18n.i18nc("@label:listbox Reviews with the highest ratings", "Highest Ratings")
                             QQC2.ActionGroup.group: sortGroup
                             checkable: true
                             checked: sortModel.sortRoleName === "rating"

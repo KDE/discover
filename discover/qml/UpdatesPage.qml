@@ -5,13 +5,14 @@ import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.discover.app as DiscoverApp
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.kitemmodels as KItemModels
 
 DiscoverPage {
     id: page
 
-    title: i18n("Updates")
+    title: KI18n.i18nc("@title:window page title", "Updates")
 
     property string footerLabel: ""
     property int footerProgress: 0
@@ -44,7 +45,9 @@ DiscoverPage {
 
         parent: page.QQC2.Overlay.overlay
 
-        title: contentLoader.sourceComponent === friendlyMessageComponent ? i18n("Update Issue") :  i18n("Technical details")
+        title: contentLoader.sourceComponent === friendlyMessageComponent
+            ? KI18n.i18nc("@title:window overlay", "Update Issue")
+            : KI18n.i18nc("@title:window overlay", "Technical details")
 
         Loader {
             id: contentLoader
@@ -60,13 +63,13 @@ DiscoverPage {
                         Layout.fillWidth: true
                         Layout.maximumWidth: Math.round(page.width * 0.75)
                         Layout.bottomMargin: Kirigami.Units.largeSpacing * 2
-                        text: i18n("There was an issue installing this update. Please try again later.")
+                        text: KI18n.i18nc("@info non-technical update error message", "There was an issue installing this update. Please try again later.")
                         wrapMode: Text.WordWrap
                     }
                     QQC2.Button {
                         id: seeDetailsAndreportIssueButton
                         Layout.alignment: Qt.AlignRight
-                        text: i18n("See Technical Details")
+                        text: KI18n.i18nc("@action:button switches to technical detail view", "See Technical Details")
                         icon.name: "view-process-system"
                         onClicked: {
                             contentLoader.sourceComponent = nerdyDetailsComponent;
@@ -93,7 +96,7 @@ DiscoverPage {
                         Layout.maximumWidth: Math.round(page.width*0.75)
                         Layout.topMargin: Kirigami.Units.largeSpacing
                         Layout.bottomMargin: Kirigami.Units.largeSpacing
-                        text: i18nc("@info %1 is the name of the user's distro/OS", "If the error indicated above looks like a real issue and not a temporary network error, please report it to %1, not KDE.", Discover.ResourcesModel.distroName)
+                        text: KI18n.i18nc("@info %1 is the name of the user's distro/OS", "If the error indicated above looks like a real issue and not a temporary network error, please report it to %1, not KDE.", Discover.ResourcesModel.distroName)
                         wrapMode: Text.WordWrap
                     }
 
@@ -101,18 +104,18 @@ DiscoverPage {
                         Layout.fillWidth: true
 
                         QQC2.Button {
-                            text: i18n("Copy Text")
+                            text: KI18n.i18nc("@action:button copy text to clipboard", "Copy Text")
                             icon.name: "edit-copy"
                             onClicked: {
                                 app.copyTextToClipboard(sheet.errorMessage);
-                                window.showPassiveNotification(i18nc("@info %1 is the name of the user's distro/OS", "Error message copied. Remember to report it to %1, not KDE!", Discover.ResourcesModel.distroName));
+                                window.showPassiveNotification(KI18n.i18nc("@info %1 is the name of the user's distro/OS", "Error message copied. Remember to report it to %1, not KDE!", Discover.ResourcesModel.distroName));
                             }
                         }
 
                         Item { Layout.fillWidth: true}
 
                         QQC2.Button {
-                            text: i18nc("@action:button %1 is the name of the user's distro/OS", "Report Issue to %1", Discover.ResourcesModel.distroName)
+                            text: KI18n.i18nc("@action:button %1 is the name of the user's distro/OS", "Report Issue to %1", Discover.ResourcesModel.distroName)
                             icon.name: "tools-report-bug"
                             onClicked: {
                                 Qt.openUrlExternally(Discover.ResourcesModel.distroBugReportUrl())
@@ -160,7 +163,7 @@ DiscoverPage {
     readonly property alias hasErrors: updateAction.hasErrors
     Kirigami.Action {
         id: updateAction
-        text: page.unselected > 0 ? i18nc("@action:button as in, 'update the selected items' ", "Update Selected") : i18nc("@action:button as in, 'update all items'", "Update All")
+        text: page.unselected > 0 ? KI18n.i18nc("@action:button as in, 'update the selected items' ", "Update Selected") : KI18n.i18nc("@action:button as in, 'update all items'", "Update All")
         visible: updateModel.toUpdateCount
         icon.name: "update-none"
 
@@ -187,7 +190,7 @@ DiscoverPage {
             Layout.fillWidth: true
             position: Kirigami.InlineMessage.Position.Header
             visible: resourcesUpdatesModel.needsReboot && page.state !== "fetching" && page.state !== "reboot"
-            text: i18nc("@info", "A pending update will be installed when restarting the system.")
+            text: KI18n.i18nc("@info", "A pending update will be installed when restarting the system.")
             icon.name: "system-reboot-update"
         }
 
@@ -208,7 +211,7 @@ DiscoverPage {
                 actions: [
                     Kirigami.Action {
                         icon.name: "dialog-cancel"
-                        text: i18n("Ignore")
+                        text: KI18n.i18nc("@action:button ignore inline error message", "Ignore")
                         onTriggered: {
                             inline.visible = false
                         }
@@ -258,7 +261,7 @@ DiscoverPage {
                     enabled: page.unselected > 0 && updateAction.enabled && !resourcesUpdatesModel.isFetching
                     visible: updateModel.totalUpdatesCount > 1 && !resourcesUpdatesModel.isProgressing
                     icon.name: "edit-select-all"
-                    text: i18n("Select All")
+                    text: KI18n.i18nc("@action:button select all updates", "Select All")
                     onClicked: { updateModel.checkAll(); }
                 }
 
@@ -266,7 +269,7 @@ DiscoverPage {
                     enabled: page.unselected !== updateModel.totalUpdatesCount && updateAction.enabled && !resourcesUpdatesModel.isFetching
                     visible: updateModel.totalUpdatesCount > 1 && !resourcesUpdatesModel.isProgressing
                     icon.name: "edit-select-none"
-                    text: i18n("Select None")
+                    text: KI18n.i18nc("@action:button deselect all updates", "Select None")
                     onClicked: { updateModel.uncheckAll(); }
                 }
 
@@ -285,16 +288,16 @@ DiscoverPage {
                         Layout.fillWidth: true
 
                         QQC2.Label {
-                            text: i18nc("@info After updates complete, shut down/restart/quit", "After updates complete:")
+                            text: KI18n.i18nc("@info After updates complete, shut down/restart/quit", "After updates complete:")
                         }
 
                         QQC2.ComboBox {
                             id: actionAfterUpdateCombo
                             model: [
-                                i18nc("@item:inlistbox after updates complete, do nothing", "Do nothing"),
-                                i18nc("@item:inlistbox after updates complete, restart", "Restart"),
-                                i18nc("@item:inlistbox after updates complete, shut down", "Shut down"),
-                                i18nc("@item:inlistbox after updates complete, quit Discover", "Quit Discover")
+                                KI18n.i18nc("@item:inlistbox after updates complete, do nothing", "Do nothing"),
+                                KI18n.i18nc("@item:inlistbox after updates complete, restart", "Restart"),
+                                KI18n.i18nc("@item:inlistbox after updates complete, shut down", "Shut down"),
+                                KI18n.i18nc("@item:inlistbox after updates complete, quit Discover", "Quit Discover")
                             ]
                         }
                     }
@@ -304,7 +307,7 @@ DiscoverPage {
                     Layout.fillWidth: true
                     Layout.rightMargin: Kirigami.Units.largeSpacing
                     horizontalAlignment: Text.AlignRight
-                    text: i18n("Total size: %1", updateModel.updateSize)
+                    text: KI18n.i18nc("@info:status total update side", "Total size: %1", updateModel.updateSize)
                     elide: Text.ElideLeft
                 }
             }
@@ -314,7 +317,7 @@ DiscoverPage {
     Kirigami.Action {
         id: cancelUpdateAction
         icon.name: "dialog-cancel"
-        text: i18n("Cancel")
+        text: KI18n.i18nc("@action:button", "Cancel")
         enabled: resourcesUpdatesModel.transaction && resourcesUpdatesModel.transaction.isCancellable
         onTriggered: resourcesUpdatesModel.transaction.cancel()
     }
@@ -334,7 +337,7 @@ DiscoverPage {
         Kirigami.Action {
             id: promptRestartAction
             icon.name: "system-reboot-update"
-            text: i18nc("@action:button", "Restart and Install Updates")
+            text: KI18n.i18nc("@action:button", "Restart and Install Updates")
             visible: false
             onTriggered: app.promptReboot()
         }
@@ -526,7 +529,7 @@ DiscoverPage {
                         Kirigami.Theme.colorSet: Kirigami.Theme.View
                         Kirigami.Theme.inherit: false
 
-                        text: listItem.model.resourceState === 2 ? i18n("Installing") : listItem.model.size
+                        text: listItem.model.resourceState === 2 ? KI18n.i18nc("@info:status progress indicator, updates are being installed", "Installing") : listItem.model.size
 
                         progress: listItem.model.resourceProgress / 100
                         selected: listItem.down
@@ -542,7 +545,7 @@ DiscoverPage {
                     QQC2.Label {
                         Layout.alignment: Qt.AlignTop
                         Layout.rightMargin: Kirigami.Units.smallSpacing
-                        text: i18nc("@info This update is from the following source", "From:")
+                        text: KI18n.i18nc("@info This update is from the following source", "From:")
                         color: listItem.down ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
                         opacity: 0.75
                     }
@@ -559,7 +562,7 @@ DiscoverPage {
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignTop
                         text: listItem.model.resource.origin.length === 0 ? listItem.model.resource.backend.displayName
-                                : i18nc("%1 is the backend that provides this app, %2 is the specific repository or address within that backend","%1 (%2)",
+                                : KI18n.i18nc("%1 is the backend that provides this app, %2 is the specific repository or address within that backend","%1 (%2)",
                                         listItem.model.resource.backend.displayName, listItem.model.resource.origin)
                         wrapMode: Text.Wrap
                         maximumLineCount: 2
@@ -571,7 +574,7 @@ DiscoverPage {
                     QQC2.Button {
                         id: moreInformationButton
                         Layout.alignment: Qt.AlignRight
-                        text: i18nc("@action:button minimize the length of this label", "More Info…")
+                        text: KI18n.i18nc("@action:button minimize the length of this label", "More Info…")
                         onClicked: Navigation.openApplication(listItem.model.resource)
                     }
                 }
@@ -643,7 +646,7 @@ DiscoverPage {
     states: [
         State {
             name: "fetching"
-            PropertyChanges { page.footerLabel: i18nc("@info", "Fetching updates…") }
+            PropertyChanges { page.footerLabel: KI18n.i18nc("@info", "Fetching updates…") }
             PropertyChanges { page.footerProgress: Discover.ResourcesModel.fetchingUpdatesProgress }
             PropertyChanges { page.actions: [ updateAction, refreshAction ] }
             PropertyChanges { page.busy: true }
@@ -658,7 +661,7 @@ DiscoverPage {
         },
         State {
             name: "has-updates"
-            PropertyChanges { page.title: i18nc("@info", "Updates") }
+            PropertyChanges { page.title: KI18n.i18nc("@info", "Updates") }
             // On mobile, we want "Update" to be the primary action so it's in
             // the center, but on desktop this feels a bit awkward and it would
             // be better to have "Update" be the right-most action
@@ -668,42 +671,42 @@ DiscoverPage {
         State {
             name: "reboot"
             PropertyChanges { page.actions: [refreshAction] }
-            PropertyChanges { page.footerLabel: i18nc("@info", "Updates will be installed after the system is restarted") }
+            PropertyChanges { page.footerLabel: KI18n.i18nc("@info", "Updates will be installed after the system is restarted") }
             PropertyChanges { statusLabel.helpfulAction: promptRestartAction }
-            PropertyChanges { statusLabel.explanation: i18nc("@info", "You can keep using the system if you’re not ready to restart yet.") }
+            PropertyChanges { statusLabel.explanation: KI18n.i18nc("@info", "You can keep using the system if you’re not ready to restart yet.") }
             PropertyChanges { statusLabel.progressBar.visible: false }
         },
         State {
             name: "now-uptodate"
-            PropertyChanges { page.footerLabel: i18nc("@info", "Up to date") }
+            PropertyChanges { page.footerLabel: KI18n.i18nc("@info", "Up to date") }
             PropertyChanges { page.actions: [refreshAction] }
             PropertyChanges { statusLabel.explanation: "" }
             PropertyChanges { statusLabel.progressBar.visible: false }
         },
         State {
             name: "uptodate"
-            PropertyChanges { page.footerLabel: i18nc("@info", "Up to date") }
+            PropertyChanges { page.footerLabel: KI18n.i18nc("@info", "Up to date") }
             PropertyChanges { page.actions: [refreshAction] }
             PropertyChanges { statusLabel.explanation: "" }
             PropertyChanges { statusLabel.progressBar.visible: false }
         },
         State {
             name: "medium"
-            PropertyChanges { page.title: i18nc("@info", "Up to date") }
+            PropertyChanges { page.title: KI18n.i18nc("@info", "Up to date") }
             PropertyChanges { page.actions: [refreshAction] }
             PropertyChanges { statusLabel.explanation: "" }
             PropertyChanges { statusLabel.progressBar.visible: false }
         },
         State {
             name: "low"
-            PropertyChanges { page.title: i18nc("@info", "Should check for updates") }
+            PropertyChanges { page.title: KI18n.i18nc("@info", "Should check for updates") }
             PropertyChanges { page.actions: [refreshAction] }
             PropertyChanges { statusLabel.explanation: "" }
             PropertyChanges { statusLabel.progressBar.visible: false }
         },
         State {
             name: "unknown"
-            PropertyChanges { page.title: i18nc("@info", "Time of last update unknown") }
+            PropertyChanges { page.title: KI18n.i18nc("@info", "Time of last update unknown") }
             PropertyChanges { page.actions: [refreshAction] }
             PropertyChanges { statusLabel.explanation: "" }
             PropertyChanges { statusLabel.progressBar.visible: false }

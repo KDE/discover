@@ -8,6 +8,7 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import QtQuick.Templates as T
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.components as KirigamiComponents
 import org.kde.discover
@@ -37,9 +38,9 @@ Item {
             text: {
                 switch (root.host.mode) {
                 case CarouselMaximizedViewController.Mode.FullScreen:
-                    return i18nc("@action:button", "Switch to Overlay");
+                    return KI18n.i18nc("@action:button", "Switch to Overlay");
                 case CarouselMaximizedViewController.Mode.Overlay:
-                    return i18nc("@action:button", "Switch to Full Screen");
+                    return KI18n.i18nc("@action:button", "Switch to Full Screen");
                 }
                 return "";
             }
@@ -72,7 +73,7 @@ Item {
         KirigamiComponents.FloatingButton {
             Kirigami.Theme.inherit: true
 
-            text: i18nc("@action:button Close overlay/window/popup with carousel of screenshots", "Close")
+            text: KI18n.i18nc("@action:button Close overlay/window/popup with carousel of screenshots", "Close")
             icon.name: "window-close-symbolic"
             display: T.AbstractButton.IconOnly
             focusPolicy: Qt.NoFocus

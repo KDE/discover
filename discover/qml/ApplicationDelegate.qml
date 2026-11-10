@@ -13,6 +13,7 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.discover as Discover
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 
 BasicAbstractCard {
@@ -159,7 +160,7 @@ BasicAbstractCard {
                         precision: Rating.Precision.HalfStar
                     }
                     QQC2.Label {
-                        text: ratingsLoader.hasRatings > 0 ? "(" + root.application.rating.ratingCount + ")" : i18n("No ratings")
+                        text: ratingsLoader.hasRatings > 0 ? KI18n.i18nc("@info %1 is number of ratings", "(%1)") : KI18n.i18nc("@info", "No ratings")
                         font: Kirigami.Theme.smallFont
                         textFormat: Text.PlainText
                     }

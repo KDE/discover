@@ -7,8 +7,9 @@
 
 import QtQuick
 import QtQuick.Controls
-import org.kde.kirigami as Kirigami
 
+import org.kde.kirigami as Kirigami
+import org.kde.ki18n
 Kirigami.SearchField {
     id: root
 
@@ -23,7 +24,9 @@ Kirigami.SearchField {
     property QtObject page
     property string currentSearchText
 
-    placeholderText: (!enabled || !page || page.hasOwnProperty("isHome") || window.leftPage.name.length === 0) ? i18n("Search…") : i18n("Search in “%1”…", window.leftPage.name)
+    placeholderText: (!enabled || !page || page.hasOwnProperty("isHome") || window.leftPage.name.length === 0)
+        ? KI18n.i18nc("@info:placeholder for search field", "Search…")
+        : KI18n.i18nc("@info:placeholder for search field, %1 is category", "Search in “%1”…", window.leftPage.name)
 
     onAccepted: {
         text = text.trim();

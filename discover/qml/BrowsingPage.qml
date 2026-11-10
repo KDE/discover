@@ -10,6 +10,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.discover as Discover
 import org.kde.discover.app as DiscoverApp
@@ -17,7 +18,7 @@ import org.kde.discover.app as DiscoverApp
 DiscoverPage {
     id: page
 
-    title: i18nc("@title:window the name of a top-level 'home' page", "Home")
+    title: KI18n.i18nc("@title:window the name of a top-level 'home' page", "Home")
     objectName: "featured"
 
     actions: window.wideScreen ? [ searchAction ] : []
@@ -51,7 +52,7 @@ DiscoverPage {
             readonly property Discover.InlineMessage helpfulError: featuredModel.currentApplicationBackend?.explainDysfunction() ?? null
 
             icon.name: helpfulError?.iconName ?? ""
-            text: i18n("Unable to load applications")
+            text: KI18n.i18nc("@info placeholdermessage text", "Unable to load applications")
             explanation: helpfulError?.message ?? ""
 
             Repeater {
@@ -87,7 +88,7 @@ DiscoverPage {
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
             Layout.fillWidth: true
-            text: i18nc("@title:group", "Most Popular")
+            text: KI18n.i18nc("@title:group", "Most Popular")
             wrapMode: Text.Wrap
             visible: popRep.count > 0 && !featuredModel.isFetching
         }
@@ -110,7 +111,7 @@ DiscoverPage {
         }
 
         QQC2.Button {
-            text: i18nc("@action:button", "See More")
+            text: KI18n.i18nc("@action:button", "See More")
             icon.name: Qt.application.layoutDirection === Qt.LeftToRight ? "go-next-symbolic" : "go-next-rtl-symbolic"
             Layout.columnSpan: apps.columns
             // Nicer to have the arrow on the side it's pointing to
@@ -138,7 +139,7 @@ DiscoverPage {
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
             Layout.fillWidth: true
-            text: i18nc("@title:group", "Editor’s Choice")
+            text: KI18n.i18nc("@title:group", "Editor’s Choice")
             wrapMode: Text.Wrap
             visible: featuredRep.count > 0 && !featuredModel.isFetching
         }
@@ -162,7 +163,7 @@ DiscoverPage {
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
             Layout.fillWidth: true
-            text: i18nc("@title:group", "Newly Published & Recently Updated")
+            text: KI18n.i18nc("@title:group", "Newly Published & Recently Updated")
             wrapMode: Text.Wrap
             visible: recentlyUpdatedRepeater.count > 0 && !featuredModel.isFetching
         }
@@ -213,7 +214,7 @@ DiscoverPage {
             Layout.bottomMargin: -(apps.rowSpacing / 2)
             Layout.columnSpan: apps.columns
             Layout.fillWidth: true
-            text: i18nc("@title:group", "Highest-Rated Games")
+            text: KI18n.i18nc("@title:group", "Highest-Rated Games")
             wrapMode: Text.Wrap
             visible: gamesRep.count > 0 && !featuredModel.isFetching
         }
@@ -242,7 +243,7 @@ DiscoverPage {
         }
 
         QQC2.Button {
-            text: i18nc("@action:button", "See More")
+            text: KI18n.i18nc("@action:button", "See More")
             icon.name: Qt.application.layoutDirection === Qt.LeftToRight ? "go-next-symbolic" : "go-next-rtl-symbolic"
             Layout.columnSpan: apps.columns
             // Nicer to have the arrow on the side it's pointing to
@@ -268,7 +269,7 @@ DiscoverPage {
             Layout.topMargin: page.padding
             Layout.columnSpan: apps.columns
             Layout.fillWidth: true
-            text: i18nc("@title:group", "Highest-Rated Developer Tools")
+            text: KI18n.i18nc("@title:group", "Highest-Rated Developer Tools")
             wrapMode: Text.Wrap
             visible: devRep.count > 0 && !featuredModel.isFetching
         }
@@ -299,7 +300,7 @@ DiscoverPage {
         }
 
         QQC2.Button {
-            text: i18nc("@action:button", "See More")
+            text: KI18n.i18nc("@action:button", "See More")
             icon.name: Qt.application.layoutDirection === Qt.LeftToRight ? "go-next-symbolic" : "go-next-rtl-symbolic"
             Layout.columnSpan: apps.columns
             // Nicer to have the arrow on the side it's pointing to

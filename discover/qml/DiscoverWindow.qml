@@ -7,6 +7,7 @@ import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.discover.app as DiscoverApp
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.config as KConfig
 
@@ -48,7 +49,7 @@ Kirigami.ApplicationWindow {
 
     Component.onCompleted: {
         if (app.isRoot) {
-            messagesSheet.addMessage(i18n("Running as <em>root</em> is discouraged and unnecessary."));
+            messagesSheet.addMessage(KI18n.i18nc("@info:usagetip", "Running as <em>root</em> is discouraged and unnecessary."));
         }
 
         if (NetworkInformation.reachability !== NetworkInformation.Reachability.Online) {
@@ -71,7 +72,7 @@ Kirigami.ApplicationWindow {
     TopLevelPageData {
         id: featuredAction
         icon.name: "go-home"
-        text: i18n("&Home")
+        text: KI18n.i18nc("@action in sidebar, opens featured page", "&Home")
         component: topBrowsingComp
         objectName: "discover"
     }
@@ -81,7 +82,7 @@ Kirigami.ApplicationWindow {
         visible: enabled
         enabled: !window.wideScreen
         icon.name: "search"
-        text: i18n("&Search")
+        text: KI18n.i18nc("@info:placeholder for search field", "&Search")
         component: topSearchComp
         objectName: "search"
         shortcut: StandardKey.Find
@@ -89,7 +90,7 @@ Kirigami.ApplicationWindow {
     TopLevelPageData {
         id: installedAction
         icon.name: "view-list-details"
-        text: i18n("&Installed")
+        text: KI18n.i18nc("@action in sidebar, opens page of installed apps", "&Installed")
         component: topInstalledComp
         objectName: "installed"
     }
@@ -101,8 +102,8 @@ Kirigami.ApplicationWindow {
             : (Discover.ResourcesModel.hasSecurityUpdates ? "update-high" : "update-low")
 
         text: Discover.ResourcesModel.fetchingUpdatesProgress !== 100
-            ? i18n("&Updates (Fetching…)")
-            : i18n("&Updates")
+            ? KI18n.i18nc("@action and @info:status in sidebar, opens updates page, currently downloading things", "&Updates (Fetching…)")
+            : KI18n.i18nc("@action in sidebar, opens updates page", "&Updates")
 
         component: topUpdateComp
         objectName: "update"
@@ -110,7 +111,7 @@ Kirigami.ApplicationWindow {
     TopLevelPageData {
         id: aboutAction
         icon.name: "help-feedback"
-        text: i18n("&About")
+        text: KI18n.i18nc("@action opens about page", "&About")
         component: topAboutComp
         objectName: "about"
         shortcut: StandardKey.HelpContents
@@ -118,7 +119,7 @@ Kirigami.ApplicationWindow {
     TopLevelPageData {
         id: sourcesAction
         icon.name: "configure"
-        text: i18n("S&ettings")
+        text: KI18n.i18nc("@action opens settings page", "S&ettings")
         component: topSourcesComp
         objectName: "sources"
         shortcut: StandardKey.Preferences
@@ -171,11 +172,11 @@ Kirigami.ApplicationWindow {
         function onOpenErrorPage(errorMessage, errorExplanation, buttonText, buttonIcon, buttonUrl) {
             Navigation.clearStack()
             console.warn(`Error: ${errorMessage}\n${errorExplanation}\nPlease visit ${buttonUrl}`)
-            window.pageStack.push(errorPageComponent, { title: i18n("Error"), errorMessage, errorExplanation, buttonText, buttonIcon, buttonUrl })
+            window.pageStack.push(errorPageComponent, { title: KI18n.i18nc("@title:window title for error page", "Error"), errorMessage, errorExplanation, buttonText, buttonIcon, buttonUrl })
         }
 
         function onUnableToFind(resid) {
-            messagesSheet.addMessage(i18n("Unable to find resource: %1", resid));
+            messagesSheet.addMessage(KI18n.i18nc("@info:status error message", "Unable to find resource: %1", resid));
             Navigation.openHome()
         }
     }
@@ -273,7 +274,7 @@ Kirigami.ApplicationWindow {
                 Item { Layout.fillWidth : true }
 
                 QQC2.Button {
-                    text: i18n("Proceed")
+                    text: KI18n.i18nc("@action:button generic proceed dialog for various situations with custom message", "Proceed")
                     icon.name: "dialog-ok"
                     onClicked: {
                         transaction.proceed()
@@ -286,7 +287,7 @@ Kirigami.ApplicationWindow {
 
                 QQC2.Button {
                     Layout.alignment: Qt.AlignRight
-                    text: i18n("Cancel")
+                    text: KI18n.i18nc("@action:button generic proceed dialog for various situations with custom message", "Cancel")
                     icon.name: "dialog-cancel"
                     onClicked: {
                         transaction.cancel()
@@ -332,7 +333,7 @@ Kirigami.ApplicationWindow {
 
                 Kirigami.UrlButton {
                     Layout.fillWidth: true
-                    text: i18nc("@info %1 is the name of the operating system", "Report this issue to %1", Discover.ResourcesModel.distroName)
+                    text: KI18n.i18nc("@info %1 is the name of the operating system", "Report this issue to %1", Discover.ResourcesModel.distroName)
                     url: Discover.ResourcesModel.distroBugReportUrl()
                 }
             }
@@ -348,8 +349,8 @@ Kirigami.ApplicationWindow {
 
         dialogType: Kirigami.PromptDialog.Warning
 
-        title: i18nc("@title:dialog", "Discover is Offline")
-        subtitle: i18nc("@info", "Please connect to a network to install applications and update the system.")
+        title: KI18n.i18nc("@title:dialog", "Discover is Offline")
+        subtitle: KI18n.i18nc("@info", "Please connect to a network to install applications and update the system.")
 
         standardButtons: Kirigami.Dialog.Ok
 
@@ -366,7 +367,9 @@ Kirigami.ApplicationWindow {
             app.restore();
         }
 
-        title: messagesSheet.showTechnicalDetails ? (messages.count > 1 ? i18n("Error %1 of %2", messagesSheetView.currentIndex + 1, messages.count) : i18n("Error")) : i18n("Update Issue")
+        title: messagesSheet.showTechnicalDetails
+            ? KI18n.i18ncp("@title:window error message dialog with technical detail, %1 is total number of errors, % total number", "Error", "Error %2 of %1", messages.count, messagesSheetView.currentIndex + 1)
+            : KI18n.i18nc("@title:window error message dialog without technical detail", "Update Issue")
 
         // No need to add our own ScrollView since OverlaySheet includes
         // one automatically.
@@ -377,7 +380,7 @@ Kirigami.ApplicationWindow {
                 id: friendlyMessage
                 visible: !messagesSheet.showTechnicalDetails
                 Layout.fillWidth: true
-                text: i18n("There was an issue during the update or installation process. Please try again later.")
+                text: KI18n.i18nc("@info error message dialog content without technical detail", "There was an issue during the update or installation process. Please try again later.")
                 wrapMode: Text.WordWrap
             }
 
@@ -413,7 +416,7 @@ Kirigami.ApplicationWindow {
         }
         customFooterActions: [
             Kirigami.Action {
-                text: i18nc("@action:button", "Show Previous")
+                text: KI18n.i18nc("@action:button", "Show Previous")
                 icon.name: "go-previous"
                 visible: messagesSheet.showTechnicalDetails && messages.count > 1
                 enabled: visible && messagesSheetView.currentIndex > 0
@@ -424,7 +427,7 @@ Kirigami.ApplicationWindow {
                 }
             },
             Kirigami.Action {
-                text: i18nc("@action:button", "Show Next")
+                text: KI18n.i18nc("@action:button next error if there are multiple", "Show Next")
                 icon.name: "go-next"
                 visible: messagesSheet.showTechnicalDetails && messages.count > 1
                 enabled: visible && messagesSheetView.currentIndex < messages.count - 1
@@ -436,7 +439,7 @@ Kirigami.ApplicationWindow {
             },
             Kirigami.Action {
                 visible: !messagesSheet.showTechnicalDetails
-                text: i18n("See Technical Details")
+                text: KI18n.i18nc("@action:button switches technical details on", "See Technical Details")
                 icon.name: "view-process-system"
                 onTriggered: {
                     messagesSheet.showTechnicalDetails = true;
@@ -444,7 +447,7 @@ Kirigami.ApplicationWindow {
             },
             Kirigami.Action {
                 visible: messagesSheet.showTechnicalDetails
-                text: i18n("Copy to Clipboard")
+                text: KI18n.i18nc("@action:button copy error", "Copy to Clipboard")
                 icon.name: "edit-copy"
                 onTriggered: {
                     app.copyTextToClipboard(messages.get(messagesSheetView.currentIndex).message);
@@ -478,7 +481,7 @@ Kirigami.ApplicationWindow {
             }
 
             function onDistroErrorMessage(message, actions) {
-                const dialog = distroErrorMessageDialog.createObject(window, { title: i18n("Error"), transaction, message })
+                const dialog = distroErrorMessageDialog.createObject(window, { title: KI18n.i18nc("@title:window error dialog for distribution-related errors", "Error"), transaction, message })
                 dialog.open()
                 app.restore()
             }

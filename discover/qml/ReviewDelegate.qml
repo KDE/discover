@@ -8,6 +8,7 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.discover as Discover
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 
 QQC2.ItemDelegate {
@@ -55,8 +56,10 @@ QQC2.ItemDelegate {
             Layout.fillWidth: true
 
             elide: Text.ElideRight
-            readonly property string author: root.model.reviewer || i18n("unknown reviewer")
-            text: root.model.summary ? i18n("<b>%1</b> by %2", root.model.summary, author) : i18n("Comment by %1", author)
+            readonly property string author: root.model.reviewer || KI18n.i18nc("@info reviewer name not given", "unknown reviewer")
+            text: root.model.summary
+                ? KI18n.i18nc("@info %1 is summary, %2 is author name", "<b>%1</b> by %2", root.model.summary, author)
+                : KI18n.i18nc("@info % is comment author name", "Comment by %1", author)
         }
 
         // Review text
@@ -70,7 +73,7 @@ QQC2.ItemDelegate {
 
         QQC2.Label {
             Layout.fillWidth: true
-            text: root.model.packageVersion ? i18n("Version: %1", root.model.packageVersion) : i18n("Version: unknown")
+            text: root.model.packageVersion ? KI18n.i18nc("@info %1 is version number of reviewed app", "Version: %1", root.model.packageVersion) : KI18n.i18nc("@info version number of reviewed app unknown", "Version: unknown")
             elide: Text.ElideRight
             opacity: 0.75
         }
@@ -84,14 +87,14 @@ QQC2.ItemDelegate {
 
                 QQC2.Label {
                     visible: root.model.usefulnessTotal !== 0
-                    text: i18n("Votes: %1 out of %2", root.model.usefulnessFavorable, root.model.usefulnessTotal)
+                    text: KI18n.i18nc("@info %1 of %2 total voters consider this review useful", "Votes: %1 out of %2", root.model.usefulnessFavorable, root.model.usefulnessTotal)
                 }
 
                 QQC2.Label {
                     Layout.fillWidth: true
                     Layout.leftMargin: root.model.usefulnessTotal === 0 ? Kirigami.Units.largeSpacing : 0
                     horizontalAlignment: Text.AlignRight
-                    text: i18n("Was this review useful?")
+                    text: KI18n.i18nc("@label:group for pair of buttons Yes/No", "Was this review useful?")
                     elide: Text.ElideLeft
                 }
 
@@ -103,7 +106,7 @@ QQC2.ItemDelegate {
                     Layout.bottomMargin: Kirigami.Units.smallSpacing
                     Layout.alignment: Qt.AlignVCenter
 
-                    text: i18nc("Keep this string as short as humanly possible", "Yes")
+                    text: KI18n.i18nc("@action:button useful review Keep this string as short as humanly possible", "Yes")
 
                     checkable: true
                     checked: root.model.usefulChoice === Discover.ReviewsModel.Yes
@@ -120,7 +123,7 @@ QQC2.ItemDelegate {
                     Layout.bottomMargin: Kirigami.Units.smallSpacing
                     Layout.alignment: Qt.AlignVCenter
 
-                    text: i18nc("Keep this string as short as humanly possible", "No")
+                    text: KI18n.i18nc("@action:button review not useful Keep this string as short as humanly possible", "No")
 
                     checkable: true
                     checked: root.model.usefulChoice === Discover.ReviewsModel.No

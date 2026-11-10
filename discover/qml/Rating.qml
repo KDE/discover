@@ -8,6 +8,7 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import QtQuick.Controls as QQC2
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 
 QQC2.Control {
@@ -116,7 +117,7 @@ QQC2.Control {
     }
 
     Accessible.role: Accessible.Slider
-    Accessible.description: i18n("Rating")
+    Accessible.description: KI18n.i18nc("@label;slider accessible description", "Rating")
     Accessible.onIncreaseAction: increase()
     Accessible.onDecreaseAction: decrease()
 

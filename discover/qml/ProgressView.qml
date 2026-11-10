@@ -12,6 +12,7 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.discover as Discover
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.kitemmodels as KItemModels
 
@@ -26,8 +27,8 @@ QQC2.ToolButton {
             id: label
             Layout.fillWidth: true
             text: Discover.TransactionModel.hasActiveTransactions
-                ? i18n("Tasks (%1%)", Discover.TransactionModel.progress)
-                : i18n("Tasks")
+                ? KI18n.i18nc("@action:button opens progress overlay sheet, %1 is percentage completion", "Tasks (%1%)", Discover.TransactionModel.progress)
+                : KI18n.i18nc("@action:button opens progress overlay sheet", "Tasks")
             wrapMode: Text.Wrap
             maximumLineCount: 2
             elide: Text.ElideRight
@@ -57,7 +58,7 @@ QQC2.ToolButton {
         Kirigami.OverlaySheet {
             parent: listItem.QQC2.Overlay.overlay
 
-            title: i18n("Tasks")
+            title: KI18n.i18nc("@title:window overlay sheet title", "Tasks")
 
             onVisibleChanged: if (!visible) {
                 sheetObject.destroy(100)
@@ -141,15 +142,15 @@ QQC2.ToolButton {
                                     const li = delegate.listener;
 
                                     if (li.isActive && tr.remainingTime > 0) {
-                                        return i18nc(
-                                            "TransactioName - TransactionStatus: speed, remaining time", "%1: %2, %3 remaining",
+                                        return KI18n.i18nc(
+                                            "@info TransactioName - TransactionStatus: speed, remaining time", "%1: %2, %3 remaining",
                                             tr.name,
                                             tr.downloadSpeedString,
                                             tr.remainingTime
                                         );
                                     } else if (li.isActive && tr.downloadSpeed > 0) {
-                                        return i18nc(
-                                            "TransactioName - TransactionStatus: speed", "%1: %2",
+                                        return KI18n.i18nc(
+                                            "@info TransactioName - TransactionStatus: speed", "%1: %2",
                                             tr.name,
                                             tr.downloadSpeedString
                                         );
@@ -160,7 +161,7 @@ QQC2.ToolButton {
                             }
                             QQC2.ToolButton {
                                 icon.name: "dialog-cancel"
-                                text: i18n("Cancel")
+                                text: KI18n.i18nc("@action:button stop in-progress transaction", "Cancel")
                                 visible: delegate.listener.isCancellable
                                 onClicked: delegate.listener.cancel()
                             }

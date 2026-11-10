@@ -7,6 +7,7 @@
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Templates as T
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.components as KirigamiComponents
 
@@ -53,7 +54,7 @@ KirigamiComponents.FloatingButton {
         ? "arrow-left-symbolic" : "arrow-right-symbolic"
 
     text: effectiveRole === Qt.AlignLeading
-        ? i18nc("@action:button", "Previous Screenshot") : i18nc("@action:button", "Next Screenshot")
+        ? KI18n.i18nc("@action:button", "Previous Screenshot") : KI18n.i18nc("@action:button", "Next Screenshot")
 
     focusPolicy: Qt.NoFocus
 

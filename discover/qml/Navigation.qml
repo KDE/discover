@@ -8,6 +8,7 @@
 pragma Singleton
 
 import QtQml
+import org.kde.ki18n
 import org.kde.discover as Discover
 
 QtObject {
@@ -33,7 +34,7 @@ QtObject {
         const mimeTypeComment = app.mimeTypeComment(mime);
         openApplicationList({
             mimeTypeFilter: mime,
-            title: i18n("Resources for “%1”", mimeTypeComment),
+            title: KI18n.i18nc("@title:window page title %1 is mimetype description", "Resources for “%1”", mimeTypeComment),
         });
     }
 
@@ -57,7 +58,7 @@ QtObject {
     function openExtends(extending: string, appname: string) {
         window.pageStack.push(Qt.resolvedUrl("ApplicationsListPage.qml"), {
             extending,
-            title: i18n("Addons for %1", appname),
+            title: KI18n.i18nc("@title:window page title %1 is app name", "Addons for %1", appname),
         });
     }
 

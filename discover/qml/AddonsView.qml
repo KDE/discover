@@ -12,6 +12,7 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.discover as Discover
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.kirigami.delegates as KD
 
@@ -25,7 +26,7 @@ Kirigami.OverlaySheet {
     readonly property bool containsAddons: listview.count > 0 || isExtended
     readonly property bool isExtended: Discover.ResourcesModel.isExtended(application.appstreamId)
 
-    title: i18n("Addons for %1", application.name)
+    title: KI18n.i18nc("@title:window page title, addons page, %1 is app name", "Addons for %1", application.name)
 
     onOpened: {
         listview.forceActiveFocus(Qt.PopupFocusReason);
@@ -77,7 +78,7 @@ Kirigami.OverlaySheet {
         readonly property bool active: addonsModel.hasChanges && !root.isInstalling
 
         QQC2.Button {
-            text: i18n("More…")
+            text: KI18n.i18nc("@action:button show more", "More…")
             visible: root.application.appstreamId.length > 0 && root.isExtended
             onClicked: Navigation.openExtends(root.application.appstreamId, root.application.name)
         }
@@ -86,7 +87,7 @@ Kirigami.OverlaySheet {
 
         QQC2.Button {
             icon.name: "dialog-ok"
-            text: i18n("Apply Changes")
+            text: KI18n.i18nc("@action:button install/remove addons", "Apply Changes")
             onClicked: addonsModel.applyChanges()
 
             enabled: footer.active
@@ -94,7 +95,7 @@ Kirigami.OverlaySheet {
 
         QQC2.Button {
             icon.name: "document-revert"
-            text: i18n("Reset")
+            text: KI18n.i18nc("@action:button revert changes, don't install/remove addons", "Reset")
             onClicked: addonsModel.discardChanges()
 
             enabled: footer.active

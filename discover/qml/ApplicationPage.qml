@@ -13,6 +13,7 @@ import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import org.kde.discover as Discover
 import org.kde.discover.app as DiscoverApp
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.purpose as Purpose
 
@@ -64,26 +65,26 @@ DiscoverPage {
         switch(licenseType) {
             case "proprietary":
                 if (hasHomepageUrl) {
-                    return xi18nc("@info", "Only install %1 if you fully trust its authors because it is <emphasis strong='true'>proprietary</emphasis>: Your freedom to use, modify, and redistribute this application is restricted, and its source code is partially or entirely closed to public inspection and improvement. This means third parties and users like you cannot verify its operation, security, and trustworthiness.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways — such as harvesting your personal information, tracking your location, or transmitting the contents of your data to someone else. Only use it if you fully trust its authors. More information may be available on <link url='%2'>the application’s website</link>.<nl/><nl/>Learn more at <link url='%3'>%3</link>.",
+                    return KI18n.xi18nc("@info", "Only install %1 if you fully trust its authors because it is <emphasis strong='true'>proprietary</emphasis>: Your freedom to use, modify, and redistribute this application is restricted, and its source code is partially or entirely closed to public inspection and improvement. This means third parties and users like you cannot verify its operation, security, and trustworthiness.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways — such as harvesting your personal information, tracking your location, or transmitting the contents of your data to someone else. Only use it if you fully trust its authors. More information may be available on <link url='%2'>the application’s website</link>.<nl/><nl/>Learn more at <link url='%3'>%3</link>.",
                                 appInfo.application.name,
                                 appInfo.application.homepage.toString(),
                                 proprietarySoftwareUrl)
                 } else {
-                    return xi18nc("@info", "Only install %1 if you fully trust its authors because it is <emphasis strong='true'>proprietary</emphasis>: Your freedom to use, modify, and redistribute this application is restricted, and its source code is partially or entirely closed to public inspection and improvement. This means third parties and users like you cannot verify its operation, security, and trustworthiness.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways — such as harvesting your personal information, tracking your location, or transmitting the contents of your data to someone else. Only use it if you fully trust its authors. Learn more at <link url='%2'>%2</link>.",
+                    return KI18n.xi18nc("@info", "Only install %1 if you fully trust its authors because it is <emphasis strong='true'>proprietary</emphasis>: Your freedom to use, modify, and redistribute this application is restricted, and its source code is partially or entirely closed to public inspection and improvement. This means third parties and users like you cannot verify its operation, security, and trustworthiness.<nl/><nl/>The application may be perfectly safe to use, or it may be acting against you in various ways — such as harvesting your personal information, tracking your location, or transmitting the contents of your data to someone else. Only use it if you fully trust its authors. Learn more at <link url='%2'>%2</link>.",
                                   appInfo.application.name,
                                   proprietarySoftwareUrl)
                 }
 
             case "non-free":
                 if (hasHomepageUrl) {
-                    return xi18nc("@info", "%1 uses one or more licenses not certified as “Free Software” by either the <link url='%2'>Free Software Foundation</link> or the <link url='%3'>Open Source Initiative</link>. This means your freedom to use, study, modify, and share it may be restricted in some ways.<nl/><nl/>Make sure to read the license text and understand any restrictions before using the software.<nl/><nl/>If the license does not even grant access to read the source code, make sure you fully trust the authors, as no one else can verify the trustworthiness and security of its code to ensure that it is not acting against you in hidden ways. More information may be available on <link url='%4'>the application’s website</link>.<nl/><nl/>Learn more at <link url='%5'>%5</link>.",
+                    return KI18n.xi18nc("@info", "%1 uses one or more licenses not certified as “Free Software” by either the <link url='%2'>Free Software Foundation</link> or the <link url='%3'>Open Source Initiative</link>. This means your freedom to use, study, modify, and share it may be restricted in some ways.<nl/><nl/>Make sure to read the license text and understand any restrictions before using the software.<nl/><nl/>If the license does not even grant access to read the source code, make sure you fully trust the authors, as no one else can verify the trustworthiness and security of its code to ensure that it is not acting against you in hidden ways. More information may be available on <link url='%4'>the application’s website</link>.<nl/><nl/>Learn more at <link url='%5'>%5</link>.",
                                 appInfo.application.name,
                                 fsfUrl,
                                 osiUrl,
                                 appInfo.application.homepage.toString(),
                                 freeSoftwareUrl);
                 } else {
-                    return xi18nc("@info", "%1 uses one or more licenses not certified as “Free Software” by either the <link url='%2'>Free Software Foundation</link> or the <link url='%3'>Open Source Initiative</link>. This means your freedom to use, study, modify, and share it may be restricted in some ways.<nl/><nl/>Make sure to read the license text and understand any restrictions before using the software.<nl/><nl/>If the license does not even grant access to read the source code, make sure you fully trust the authors, as no one else can verify the trustworthiness and security of its code to ensure that it is not acting against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>.",
+                    return KI18n.xi18nc("@info", "%1 uses one or more licenses not certified as “Free Software” by either the <link url='%2'>Free Software Foundation</link> or the <link url='%3'>Open Source Initiative</link>. This means your freedom to use, study, modify, and share it may be restricted in some ways.<nl/><nl/>Make sure to read the license text and understand any restrictions before using the software.<nl/><nl/>If the license does not even grant access to read the source code, make sure you fully trust the authors, as no one else can verify the trustworthiness and security of its code to ensure that it is not acting against you in hidden ways.<nl/><nl/>Learn more at <link url='%4'>%4</link>.",
                                   appInfo.application.name,
                                   fsfUrl,
                                   osiUrl,
@@ -92,11 +93,11 @@ DiscoverPage {
 
             case "unknown":
                 if (hasHomepageUrl) {
-                    return xi18nc("@info", "%1 does not indicate under which license it is distributed. You may be able to determine this on <link url='%2'>the application’s website</link>. Find it there or contact the author if you want to use this application for anything other than private personal use.",
+                    return KI18n.xi18nc("@info", "%1 does not indicate under which license it is distributed. You may be able to determine this on <link url='%2'>the application’s website</link>. Find it there or contact the author if you want to use this application for anything other than private personal use.",
                                  appInfo.application.name,
                                  appInfo.application.homepage.toString());
                 } else {
-                    return i18nc("@info", "%1 does not indicate under which license it is distributed. Contact the application’s author if you want to use it for anything other than private personal use.",
+                    return KI18n.i18nc("@info", "%1 does not indicate under which license it is distributed. Contact the application’s author if you want to use it for anything other than private personal use.",
                                  appInfo.application.name);
                 }
 
@@ -135,7 +136,7 @@ DiscoverPage {
 
     Kirigami.Action {
         id: shareAction
-        text: i18nc("@action:button share a link to this app", "Share")
+        text: KI18n.i18nc("@action:button share a link to this app", "Share")
         icon.name: "document-share"
         visible: application.url.toString().length > 0 && !appInfo.isTechnicalPackage
         onTriggered: shareSheet.open()
@@ -143,7 +144,7 @@ DiscoverPage {
 
     Kirigami.Action {
         id: addonsAction
-        text: i18nc("@action:button", "Add-ons")
+        text: KI18n.i18nc("@action:button", "Add-ons")
         icon.name: "extension-symbolic"
         visible: addonsView.containsAddons
         onTriggered: {
@@ -159,7 +160,7 @@ DiscoverPage {
     Kirigami.Action {
         id: originsMenuAction
 
-        text: i18nc("@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu\"", "From %1", appInfo.application.displayOrigin)
+        text: KI18n.i18nc("@item:inlistbox %1 is the name of an app source e.g. \"Flathub\" or \"Ubuntu\"", "From %1", appInfo.application.displayOrigin)
 
         property int maxChildren: 0
         onChildrenChanged: {
@@ -205,7 +206,7 @@ DiscoverPage {
 
             QQC2.ActionGroup.group: sourcesGroup
             text: model.availableVersion
-                ? i18n("%1 - %2", model.displayOrigin, model.availableVersion)
+                ? KI18n.i18nc("@option:radio %1 is source, %2 is version", "%1 - %2", model.displayOrigin, model.availableVersion)
                 : model.displayOrigin
             icon.name: model.sourceIcon
             checkable: true
@@ -225,7 +226,7 @@ DiscoverPage {
         id: shareSheet
         parent: applicationWindow().overlay
         implicitWidth: Kirigami.Units.gridUnit * 20
-        title: i18nc("@title:window", "Share Link to Application")
+        title: KI18n.i18nc("@title:window", "Share Link to Application")
         standardButtons: QQC2.Dialog.NoButton
 
         Purpose.AlternativesView {
@@ -234,7 +235,7 @@ DiscoverPage {
             pluginType: "ShareUrl"
             inputData: {
                 "urls": [ application.url.toString() ],
-                "title": i18nc("The subject line for an email. %1 is the name of an application", "Check out the %1 app!", application.name)
+                "title": KI18n.i18nc("The subject line for an email. %1 is the name of an application", "Check out the %1 app!", application.name)
             }
             onFinished: {
                 shareSheet.close()
@@ -289,7 +290,7 @@ DiscoverPage {
 
             visible: carousel.hasFailed
             icon.name: "image-missing"
-            text: i18nc("@info placeholder message", "Screenshots not available for %1", appInfo.application.name)
+            text: KI18n.i18nc("@info placeholder message", "Screenshots not available for %1", appInfo.application.name)
         }
 
         CarouselInlineView {
@@ -433,7 +434,7 @@ DiscoverPage {
             visible: changelogLabel.visible
 
             Kirigami.Heading {
-                text: i18n("What’s New")
+                text: KI18n.i18nc("@title:group heading for changelog", "What’s New")
                 level: 2
                 type: Kirigami.Heading.Type.Primary
                 wrapMode: Text.Wrap
@@ -466,7 +467,7 @@ DiscoverPage {
 
             Kirigami.Heading {
                 Layout.fillWidth: true
-                text: i18n("Reviews")
+                text: KI18n.i18nc("@title:group heading for reviews", "Reviews")
                 level: 2
                 type: Kirigami.Heading.Type.Primary
                 wrapMode: Text.Wrap
@@ -477,7 +478,7 @@ DiscoverPage {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.maximumWidth: Kirigami.Units.gridUnit * 15
                 visible: reviewsModel.fetching
-                text: i18n("Loading reviews for %1", appInfo.application.name)
+                text: KI18n.i18nc("@info:status %1 is app/addon name", "Loading reviews for %1", appInfo.application.name)
             }
 
             Kirigami.PlaceholderMessage {
@@ -486,19 +487,19 @@ DiscoverPage {
                 readonly property bool hasError: reviewsModel.backend && reviewsModel.backend.errorMessage.length > 0 && text.length > 0 && reviewsModel.count === 0 && !reviewsLoadingPlaceholder.visible
                 visible: hasError
                 icon.name: "text-unflow"
-                text: i18nc("@info placeholder message", "Reviews for %1 are temporarily unavailable", appInfo.application.name)
+                text: KI18n.i18nc("@info placeholder message", "Reviews for %1 are temporarily unavailable", appInfo.application.name)
                 explanation: reviewsModel.backend ? reviewsModel.backend.errorMessage : ""
             }
 
             Kirigami.PlaceholderMessage {
                 Layout.fillWidth: true
                 visible: !reviewsStats.visible && !reviewsLoadingPlaceholder.visible
-                text: i18nc("@Info placeholder message", "No reviews posted yet")
-                explanation: appInfo.application.isInstalled ? "" : i18nc("@info placeholder explanation", "Install to write a review")
+                text: KI18n.i18nc("@Info placeholder message", "No reviews posted yet")
+                explanation: appInfo.application.isInstalled ? "" : KI18n.i18nc("@info placeholder explanation", "Install to write a review")
                 helpfulAction: Kirigami.Action {
                     enabled: appInfo.application.isInstalled
 
-                    text: appInfo.application.isInstalled ? i18n("Write a Review") : i18n("Install to Write a Review")
+                    text: appInfo.application.isInstalled ? KI18n.i18nc("@action:button placeholdermessage helpfulAction", "Write a Review") : KI18n.i18nc("@action:button placeholdermessage helpfulAction installs app", "Install to Write a Review")
                     icon.name: "document-edit"
 
                     onTriggered: {
@@ -526,7 +527,7 @@ DiscoverPage {
                 QQC2.Button {
                     visible: reviewsModel.count > visibleReviews
 
-                    text: i18nc("@action:button", "Show All Reviews")
+                    text: KI18n.i18nc("@action:button", "Show All Reviews")
                     icon.name: "view-visible"
 
                     onClicked: {
@@ -542,7 +543,7 @@ DiscoverPage {
                           && reviewsModel.backend.isResourceSupported(appInfo.application)
                     enabled: appInfo.application.isInstalled
 
-                    text: appInfo.application.isInstalled ? i18n("Write a Review") : i18n("Install to Write a Review")
+                    text: appInfo.application.isInstalled ? KI18n.i18nc("@action:button", "Write a Review") : KI18n.i18nc("@action:button installs app", "Install to Write a Review")
                     icon.name: "document-edit"
 
                     onClicked: {
@@ -568,7 +569,7 @@ DiscoverPage {
             spacing: Kirigami.Units.smallSpacing
 
             Kirigami.Heading {
-                text: i18nc("@title", "External Links")
+                text: KI18n.i18nc("@title:group title for link section", "External Links")
                 level: 2
                 type: Kirigami.Heading.Type.Primary
                 wrapMode: Text.Wrap
@@ -586,7 +587,7 @@ DiscoverPage {
 
                     icon: "question-symbolic"
                     website: application.faqURL.toString()
-                    linkText: i18nc("@info text of a web URL", "Read the FAQ")
+                    linkText: KI18n.i18nc("@info text of a web URL", "Read the FAQ")
                 }
 
                 ApplicationResourceButton {
@@ -596,9 +597,9 @@ DiscoverPage {
 
                     icon: "documentation-symbolic"
                     website: application.helpURL.toString()
-                    linkText: i18nc("@info text of a web URL", faqButton.visible
-                        ? "Read the full documentation"
-                        : "Read the documentation")
+                    linkText: faqButton.visible
+                        ? KI18n.i18nc("@action:button open web URL", "Read the full documentation")
+                        : KI18n.i18nc("@action:button open web URL", "Read the documentation")
                 }
 
                 ApplicationResourceButton {
@@ -608,7 +609,7 @@ DiscoverPage {
 
                     icon: "internet-services-symbolic"
                     website: application.homepage.toString()
-                    linkText: i18nc("@info text of a web URL", "Visit the project’s website")
+                    linkText: KI18n.i18nc("@action:button open web URL", "Visit the project’s website")
                 }
 
                 ApplicationResourceButton {
@@ -618,7 +619,7 @@ DiscoverPage {
 
                     icon: "help-donate-symbolic"
                     website: application.donationURL.toString()
-                    linkText: i18nc("@info text of a web URL", "Donate to the project")
+                    linkText: KI18n.i18nc("@action:button open web URL", "Donate to the project")
                 }
 
                 ApplicationResourceButton {
@@ -628,7 +629,7 @@ DiscoverPage {
 
                     icon: "tools-report-bug-symbolic"
                     website: application.bugURL.toString()
-                    linkText: i18nc("@info text of a web URL", "Report a bug")
+                    linkText: KI18n.i18nc("@action:button open web URL", "Report a bug")
                 }
 
                 ApplicationResourceButton {
@@ -638,7 +639,7 @@ DiscoverPage {
 
                     icon: "applications-development-symbolic"
                     website: application.contributeURL.toString()
-                    linkText: i18nc("@info text of a web URL", "Start contributing")
+                    linkText: KI18n.i18nc("@action:button open web URL", "Start contributing")
                 }
 
                 ApplicationResourceButton {
@@ -648,7 +649,7 @@ DiscoverPage {
 
                     icon: "translate-symbolic"
                     website: application.translateURL.toString()
-                    linkText: i18nc("@info text of a web URL", "Help with translations")
+                    linkText: KI18n.i18nc("@action:button open web URL", "Help with translations")
                 }
 
                 ApplicationResourceButton {
@@ -658,7 +659,7 @@ DiscoverPage {
 
                     icon: "mail-message-new-symbolic"
                     website: application.contactURL.toString()
-                    linkText: i18nc("@info text of a web URL", "Contact the developers")
+                    linkText: KI18n.i18nc("@action:button open web URL", "Contact the developers")
                 }
 
                 ApplicationResourceButton {
@@ -668,7 +669,7 @@ DiscoverPage {
 
                     icon: "folder-git-symbolic"
                     website: application.vcsBrowserURL.toString()
-                    linkText: i18nc("@info text of a web URL", "Browse the source code")
+                    linkText: KI18n.i18nc("@action:button open web URL", "Browse the source code")
                 }
             }
         }
@@ -697,7 +698,7 @@ DiscoverPage {
 
     Kirigami.Dialog {
         id: allLicensesSheet
-        title: i18n("All Licenses")
+        title: KI18n.i18nc("title:window overlay title", "All Licenses")
         standardButtons: Kirigami.Dialog.NoButton
         preferredWidth: Kirigami.Units.gridUnit * 16
         maximumHeight: Kirigami.Units.gridUnit * 20
@@ -735,7 +736,7 @@ DiscoverPage {
     Kirigami.PromptDialog {
         id: contentRatingDialog
         parent: appInfo.QQC2.Overlay.overlay
-        title: i18n("Content Rating")
+        title: KI18n.i18nc("@title:window dialog", "Content Rating")
         preferredWidth: Kirigami.Units.gridUnit * 25
         standardButtons: Kirigami.Dialog.NoButton
 
@@ -758,7 +759,7 @@ DiscoverPage {
         width: Kirigami.Units.gridUnit * 25
         standardButtons: Kirigami.Dialog.NoButton
 
-        title: i18nc("@title:window", "License Information")
+        title: KI18n.i18nc("@title:window", "License Information")
 
         TextEdit {
             id: licenseExplanation

@@ -4,6 +4,7 @@
  *   SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
  */
 
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import QtQuick
 import QtQuick.Controls
@@ -38,7 +39,7 @@ Kirigami.OverlaySheet {
 
         Button {
             Layout.alignment: Qt.AlignRight
-            text: i18n("Cancel")
+            text: KI18n.i18nc("@action:button cancel Flatpak webflow", "Cancel")
             icon.name: "dialog-cancel"
             onClicked: {
                 transaction.cancel()

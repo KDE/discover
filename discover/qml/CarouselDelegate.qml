@@ -8,6 +8,7 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Templates as T
 import Qt5Compat.GraphicalEffects as GE
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 
 Item {
@@ -210,9 +211,9 @@ Item {
                             return "";
                         }
                         if (player.paused) {
-                            return i18nc("@action:button Start playing media", "Play");
+                            return KI18n.i18nc("@action:button Start playing media", "Play");
                         } else {
-                            return i18nc("@action:button Pause any media that is playing", "Pause");
+                            return KI18n.i18nc("@action:button Pause any media that is playing", "Pause");
                         }
                     }
                     icon.name: {

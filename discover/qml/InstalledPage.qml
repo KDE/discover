@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
+import org.kde.ki18n
 import org.kde.discover as Discover
 import org.kde.discover.app as DiscoverApp
 
@@ -11,7 +12,7 @@ ApplicationsListPage {
     sortProperty: "installedPageSorting"
     sortRole: DiscoverApp.DiscoverSettings.installedPageSorting
 
-    name: i18n("Installed")
+    name: KI18n.i18nc("@title:window page title", "Installed")
     showRating: false
     showSize: true
     canNavigate: false
