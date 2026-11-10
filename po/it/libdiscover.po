@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-04 01:04+0000\n"
-"PO-Revision-Date: 2026-10-22 14:33+0200\n"
+"PO-Revision-Date: 2026-11-03 15:53+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.10\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -649,8 +649,7 @@ msgid "All Files"
 msgstr "Tutti i file"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:768
-#, fuzzy, kde-format
-#| msgid "Home"
+#, kde-format
 msgctxt "the user's home directory"
 msgid "Home"
 msgstr "Home"
