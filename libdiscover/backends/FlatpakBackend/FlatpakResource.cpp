@@ -27,7 +27,6 @@
 #include <KFormat>
 #include <KIO/ApplicationLauncherJob>
 #include <KIO/CopyJob> // for KIO::trash
-#include <KIO/JobUiDelegate>
 #include <KLocalizedString>
 
 #include <AppStreamQt/release.h>
@@ -1070,11 +1069,11 @@ void FlatpakResource::clearUserData()
     connect(trashJob, &KJob::result, this, [this, location](KJob *job) {
         if (job->error()) {
             qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to trash" << location;
+            Q_EMIT backend()->passiveMessage(xi18nc("@info:status", "Failed to move data for <application>%1</application> to the trash: %2", name(), job->errorString()));
         } else {
             Q_EMIT hasDataChanged();
         }
     });
-    trashJob->uiDelegate()->setAutoErrorHandlingEnabled(true);
     trashJob->start();
 }
 
