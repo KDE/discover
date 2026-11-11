@@ -245,16 +245,10 @@ AppStreamUtils::componentsByCategoriesTask(AppStream::ConcurrentPool *pool, cons
 DISCOVERCOMMON_EXPORT bool AppStreamUtils::kIconLoaderHasIcon(const QString &name)
 {
     static auto icons = [] {
-#if (KICONTHEMES_VERSION >= QT_VERSION_CHECK(6, 11, 0))
-        auto icons = KIconLoader::global()->queryIcons();
-#else
-        const auto groups = QMetaEnum::fromType<KIconLoader::Group>();
-        QStringList icons;
-        for (int i = 0; i < groups.keyCount(); ++i) {
-            icons.append(KIconLoader::global()->queryIcons(groups.value(i)));
-        }
+#if (KICONTHEMES_VERSION >= QT_VERSION_CHECK(6, 33, 0))
+        return KIconLoader::global()->queryIconNames();
 #endif
-        return QSet<QString>(icons.cbegin(), icons.cend());
+        return QSet<QString>();
     }();
     return icons.contains(name);
 }
