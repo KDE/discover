@@ -46,7 +46,7 @@ BasicAbstractCard {
     }
 
     QQC2.ToolTip.text: "<b>" + appName.text + "</b><br/>" + appDescription.text
-    QQC2.ToolTip.visible: (hovered || activeFocus) && (appName.truncated || appDescription.truncated)
+    QQC2.ToolTip.visible: (hovered || visualFocus) && (appName.truncated || appDescription.truncated)
     QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
 
     content: RowLayout {
@@ -103,7 +103,7 @@ BasicAbstractCard {
                     customColor: "white" // Backend logos aren't color-scheme-aware
 
                     QQC2.ToolTip.text: root.application.backend.displayName
-                    QQC2.ToolTip.visible: hovered || activeFocus
+                    QQC2.ToolTip.visible: hovered || visualFocus
                     QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
                 }
             }

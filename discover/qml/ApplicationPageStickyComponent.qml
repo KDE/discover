@@ -61,7 +61,7 @@ Kirigami.Padding {
             display: QQC2.AbstractButton.IconOnly
 
             QQC2.ToolTip.text: text
-            QQC2.ToolTip.visible: hovered || activeFocus
+            QQC2.ToolTip.visible: hovered || visualFocus
             QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
 
             onClicked: stickyHeader.scrollToTop()

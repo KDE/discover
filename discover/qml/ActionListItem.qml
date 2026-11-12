@@ -70,7 +70,7 @@ QQC2.ItemDelegate {
     text: Kirigami.MnemonicData.richTextLabel
 
     QQC2.ToolTip.text: shortcut.nativeText
-    QQC2.ToolTip.visible: (Kirigami.Settings.tabletMode ? down : hovered) && QQC2.ToolTip.text.length > 0
+    QQC2.ToolTip.visible: (hovered || visualFocus) && QQC2.ToolTip.text.length > 0
     QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
 
     Shortcut {

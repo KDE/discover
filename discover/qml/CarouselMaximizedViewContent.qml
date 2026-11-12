@@ -63,7 +63,7 @@ Item {
             visible: root.host.toggleModeAvailable
 
             QQC2.ToolTip.text: text
-            QQC2.ToolTip.visible: (Kirigami.Settings.tabletMode ? pressed : hovered) && text !== ""
+            QQC2.ToolTip.visible: (hovered || visualFocus) && text !== ""
             QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
 
             onClicked: root.host.toggleMode()
@@ -83,7 +83,7 @@ Item {
             rightMargin: !mirrored ? margins : windowControlButtonsCollapsedMargin
 
             QQC2.ToolTip.text: text
-            QQC2.ToolTip.visible: (Kirigami.Settings.tabletMode ? pressed : hovered) && text !== ""
+            QQC2.ToolTip.visible: (hovered || visualFocus) && text !== ""
             QQC2.ToolTip.delay: Kirigami.Settings.tabletMode ? Qt.styleHints.mousePressAndHoldInterval : Kirigami.Units.toolTipDelay
 
             onClicked: root.host.close(true);

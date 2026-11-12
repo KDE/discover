@@ -89,7 +89,7 @@ ConditionalLoader {
             display: QQC2.AbstractButton.IconOnly
 
             QQC2.ToolTip.text: text
-            QQC2.ToolTip.visible: hovered || activeFocus
+            QQC2.ToolTip.visible: hovered || visualFocus
             QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
         }
     }
@@ -120,7 +120,7 @@ ConditionalLoader {
             icon.color: root.action.icon.color
 
             QQC2.ToolTip.text: text
-            QQC2.ToolTip.visible: (hovered || activeFocus) && display === QQC2.AbstractButton.IconOnly
+            QQC2.ToolTip.visible: (hovered || visualFocus) && display === QQC2.AbstractButton.IconOnly
             QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
 
             onClicked: root.click()

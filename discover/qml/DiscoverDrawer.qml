@@ -162,7 +162,7 @@ Kirigami.GlobalDrawer {
                     QQC2.ToolTip.text: Discover.ResourcesModel.hasSecurityUpdates
                         ? i18n("Security updates available")
                         : i18n("Updates available")
-                    QQC2.ToolTip.visible: activeFocus || hovered
+                    QQC2.ToolTip.visible: hovered || visualFocus
                     QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
 
                 }
