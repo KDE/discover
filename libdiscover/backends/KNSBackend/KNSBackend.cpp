@@ -13,6 +13,7 @@
 #include <QTimer>
 
 // KDE includes
+#include <KAuthorized>
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
@@ -77,6 +78,12 @@ public:
     QVector<AbstractResourcesBackend *> newInstance(QObject *parent, const QString & /*name*/) const override
     {
         QVector<AbstractResourcesBackend *> ret;
+
+        if (!KAuthorized::authorize(KAuthorized::GHNS)) {
+            qInfo() << "GHNS backend disabled by a Kiosk policy";
+            return ret;
+        }
+
         const QStringList availableConfigFiles = KNSCore::EngineBase::availableConfigFiles();
         for (const QString &configFile : availableConfigFiles) {
             auto bk = new KNSBackend(parent, QStringLiteral("plasma"), configFile);
