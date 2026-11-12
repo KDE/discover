@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-07 09:41+0000\n"
-"PO-Revision-Date: 2026-09-06 18:05+0200\n"
-"Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
+"PO-Revision-Date: 2026-11-11 22:56+0200\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -1153,7 +1153,7 @@ msgstr "Ресурсы для «%1»"
 #: discover/qml/ProgressView.qml:29
 #, kde-format
 msgid "Tasks (%1%)"
-msgstr "Задачи (%1%)"
+msgstr "Задачи (%1 %)"
 
 #: discover/qml/ProgressView.qml:30 discover/qml/ProgressView.qml:60
 #, kde-format
