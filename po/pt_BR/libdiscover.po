@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-12 01:03+0000\n"
-"PO-Revision-Date: 2026-11-02 08:01-0300\n"
+"PO-Revision-Date: 2026-11-12 05:33-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -932,6 +932,7 @@ msgstr ""
 msgctxt "@info:status"
 msgid "Failed to move data for <application>%1</application> to the trash: %2"
 msgstr ""
+"Falha ao mover os dados de <application>%1</application> para a lixeira: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1137
 #, kde-format

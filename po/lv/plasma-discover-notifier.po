@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-22 00:46+0000\n"
-"PO-Revision-Date: 2026-08-17 19:57+0300\n"
+"PO-Revision-Date: 2026-11-11 11:05+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #: notifier/DiscoverNotifier.cpp:218
 #, kde-format
@@ -76,8 +76,7 @@ msgid "Update and Shut Down"
 msgstr "Atjaunināt un izslēgt"
 
 #: notifier/DiscoverNotifier.cpp:449
-#, fuzzy, kde-format
-#| msgid "Upgrade available"
+#, kde-format
 msgctxt "A new distro release is available for upgrade"
 msgid "Upgrade available"
 msgstr "Pieejams uzlabojums"
@@ -89,9 +88,7 @@ msgid "%1 is now available."
 msgstr "Pieejama operētājsistēma „%1“."
 
 #: notifier/DiscoverNotifier.cpp:453
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade"
 msgstr "Uzlabot"

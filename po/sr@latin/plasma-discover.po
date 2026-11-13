@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-07 09:30+0000\n"
+"POT-Creation-Date: 2026-11-12 23:54+0000\n"
 "PO-Revision-Date: 2026-10-06 10:30+0200\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -125,13 +125,13 @@ msgstr ""
 "(Nema unosa za %1)<nl/><nl/><link url='%2'>Prijavite ovaj problem "
 "distribuciji %3.</link>"
 
-#: discover/DiscoverObject.cpp:514 discover/DiscoverObject.cpp:516
+#: discover/DiscoverObject.cpp:515 discover/DiscoverObject.cpp:517
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Otkrivač"
 
-#: discover/DiscoverObject.cpp:517
+#: discover/DiscoverObject.cpp:518
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."

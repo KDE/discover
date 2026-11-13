@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-12 01:03+0000\n"
-"PO-Revision-Date: 2026-08-17 19:56+0300\n"
+"PO-Revision-Date: 2026-11-11 11:03+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -133,7 +133,7 @@ msgstr "Neizdevās iegūt atjaunināmo pakotņu sarakstu"
 #, kde-format
 msgctxt "@info"
 msgid "This is a preview of an AppStream file"
-msgstr ""
+msgstr "Šis ir „AppStream“ datnes priekšskatījums"
 
 #: libdiscover/backends/DummyBackend/dummy-backend-categories.xml:4
 #, kde-format
@@ -639,11 +639,9 @@ msgid "Failed to start “%1”: %2"
 msgstr "Neizdevās palaist „%1“: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:538
-#, fuzzy, kde-format
-#| msgctxt "Permission to access system resources and hardware devices"
-#| msgid "Permissions"
+#, kde-format
 msgid "New Permissions"
-msgstr "Atļaujas"
+msgstr "Jaunas atļaujas"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:765
 #, kde-format
@@ -651,8 +649,7 @@ msgid "All Files"
 msgstr "Visas datnes"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:767
-#, fuzzy, kde-format
-#| msgid "Home"
+#, kde-format
 msgctxt "the user's home directory"
 msgid "Home"
 msgstr "Mājas"
@@ -1107,10 +1104,9 @@ msgid "Configure permissions…"
 msgstr "Pielāgot atļaujas…"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:145
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgid "Version %1"
-msgstr "Atļaujas attiecībā uz %1"
+msgstr "Versija %1"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:489
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
@@ -1306,9 +1302,7 @@ msgstr ""
 "atjauninājumus un pārstartējiet sistēmu."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Upgrade Now"
+#, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "Uzlabot tagad"
@@ -2223,11 +2217,10 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
-#, fuzzy, kde-format
-#| msgid "System upgrade"
+#, kde-format
 msgctxt "Major system upgrade upgrade, not a smaller security update"
 msgid "System upgrade"
-msgstr "Sistēmas uzlabojumi"
+msgstr "Sistēmas uzlabojums"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
 #, kde-format
@@ -2240,17 +2233,12 @@ msgstr[2] "Atjaunināmas %1 pakotnes"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
 #, kde-format
 msgid "<h3>%1</h3>%2"
-msgstr ""
+msgstr "<h3>%1</h3>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-#| "blockquote>"
+#, kde-format
 msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
-msgstr ""
-"<h3>%1</h3>Atjaunināšana uz jaunāku versiju %2<br/>Laidiena informācija:"
-"<blockquote>%3</blockquote>"
+msgstr "<h3>%1</h3>%2<br/>Relīzes informācija:<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
 #, kde-format
@@ -2432,9 +2420,7 @@ msgstr ""
 "kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Begin Upgrade…"
+#, kde-format
 msgctxt "@action:button Perform a distro upgrade, not just a package update"
 msgid "Begin Upgrade…"
 msgstr "Sāk atjaunināšanu…"
@@ -2539,8 +2525,8 @@ msgstr "Rezerves versija"
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr ""
-"rpm-ostree aizmugursistēma: kļūda: nav sniegta „DBus“ saskarne. Ziņojiet par "
-"kļūdu."
+"„rpm-ostree“ aizmugursistēma: kļūda: nav sniegta „DBus“ saskarne. Ziņojiet "
+"par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
@@ -2548,7 +2534,7 @@ msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
 "invalid format. Please file a bug."
 msgstr ""
-"rpm-ostree aizmugursistēma: kļūda: neizdodas uzsākt operāciju ar nederīgu "
+"„rpm-ostree“ aizmugursistēma: kļūda: neizdodas uzsākt operāciju ar nederīgu "
 "resursa formātu. Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
@@ -2556,7 +2542,7 @@ msgstr ""
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
-"rpm-ostree aizmugursistēma: kļūda: neizdodas pāriet uz tukšu atsauci. "
+"„rpm-ostree“ aizmugursistēma: kļūda: neizdodas pāriet uz tukšu atsauci. "
 "Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
@@ -2564,7 +2550,7 @@ msgstr ""
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
-"rpm-ostree aizmugursistēma: kļūda: ir pieprasīta nezināma operācija. "
+"„rpm-ostree“ aizmugursistēma: kļūda: ir pieprasīta nezināma operācija. "
 "Ziņojiet par kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
@@ -2581,16 +2567,14 @@ msgstr ""
 #, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
-"rpm-ostree aizmugursistēma: kļūda. nezināms resursa formāts. Ziņojiet par "
+"„rpm-ostree“ aizmugursistēma: kļūda. Nezināms resursa formāts. Ziņojiet par "
 "kļūdu."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:362
-#, fuzzy, kde-format
-#| msgid ""
-#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, kde-format
 msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
-"Tiek atcelta rpm-ostree operācija. Tas var aizņemt kādu laiku. Uzgaidiet."
+"Tiek atcelta „rpm-ostree“ operācija. Tas var aizņemt kādu laiku. Uzgaidiet."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
 #, kde-format
@@ -2717,7 +2701,7 @@ msgstr "Mērķim „%1“ nav atrasti komponenti „appstream“ metadatos"
 #, kde-format
 msgctxt "Upgrade status: A system update that has to be downloaded again"
 msgid "Previous installation was incomplete, trying again"
-msgstr ""
+msgstr "Iepriekšējā instalācija netika pabeigta, mēģina vēlreiz"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format
@@ -2748,10 +2732,7 @@ msgid "Launch"
 msgstr "Palaist"
 
 #: libdiscover/resources/AbstractResource.cpp:270
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info 'Refresh' is used as a noun here, and %1 is an app's version number"
-#| msgid "Refresh of version %1"
+#, kde-format
 msgctxt ""
 "@info 'Refresh' is used as a noun here. An app or runtime got updated "
 "without changing the user-facing version number %1"
@@ -2864,8 +2845,7 @@ msgid "Failed"
 msgstr "Neizdevās"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, fuzzy, kde-format
-#| msgid "Canceled"
+#, kde-format
 msgctxt "@info:status"
 msgid "Canceled"
 msgstr "Atcelts"
