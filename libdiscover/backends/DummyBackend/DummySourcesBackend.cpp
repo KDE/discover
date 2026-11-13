@@ -16,7 +16,7 @@ DummySourcesBackend::DummySourcesBackend(AbstractResourcesBackend *parent)
     for (int i = 0; i < 10; ++i)
         addSource(QStringLiteral("DummySource%1").arg(i));
 
-    connect(m_testAction, &DiscoverAction::triggered, []() {
+    connect(m_testAction, &DiscoverAction::triggered, this, []() {
         qDebug() << "action triggered!";
     });
     connect(m_sources, &QStandardItemModel::itemChanged, this, [](QStandardItem *item) {
