@@ -64,7 +64,7 @@ ecm_set_disabled_deprecation_versions(QT 6.8.1
     KF 6.32.0
 )
 
-add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS -DQT_NO_URL_CAST_FROM_STRING)
+add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS -DQT_ENABLE_STRICT_MODE_UP_TO=0x060A00)
 
 # When building from git use a random iid to prevent loading incompatible plugins
 # from the distro or older git builds.
