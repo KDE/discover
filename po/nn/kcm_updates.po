@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.07.70\n"
+"X-Generator: Lokalize 26.08.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -38,14 +38,8 @@ msgstr "Automatisk"
 #: kcm/package/contents/ui/main.qml:50
 #, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Software updates will be downloaded automatically when they become "
-"available. Updates for applications will be installed immediately, while "
-"system updates will be installed the next time the computer is restarted."
-msgstr ""
-"Nye programvare­oppdateringar vert automatisk lasta ned. Oppdateringar for "
-"brukar­program vert installerte automatisk, mens system­oppdateringar vert "
-"installerte neste gong maskina vert starta på nytt."
+msgid "Software updates will be downloaded automatically when they become available. Updates for applications will be installed immediately, while system updates will be installed the next time the computer is restarted."
+msgstr "Nye programvare­oppdateringar vert automatisk lasta ned. Oppdateringar for brukar­program vert installerte automatisk, mens system­oppdateringar vert installerte neste gong maskina vert starta på nytt."
 
 #: kcm/package/contents/ui/main.qml:61
 #, kde-format
@@ -90,13 +84,8 @@ msgstr "Bruk fråkopla oppdateringar:"
 
 #: kcm/package/contents/ui/main.qml:124
 #, kde-format
-msgid ""
-"Offline updates maximize system stability by applying changes while "
-"restarting the system. Using this update mode is strongly recommended."
-msgstr ""
-"Med fråkopla oppdateringar vert endringar tekne i bruk når systemet startar "
-"på nytt. Dette aukar stabiliteten til systemet, og det er sterkt tilrådd å "
-"slå på denne funksjonen."
+msgid "Offline updates maximize system stability by applying changes while restarting the system. Using this update mode is strongly recommended."
+msgstr "Med fråkopla oppdateringar vert endringar tekne i bruk når systemet startar på nytt. Dette aukar stabiliteten til systemet, og det er sterkt tilrådd å slå på denne funksjonen."
 
 #: kcm/updates.cpp:31
 #, kde-format

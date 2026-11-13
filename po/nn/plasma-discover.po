@@ -15,31 +15,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.08.1\n"
+"X-Generator: Lokalize 26.08.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
 #: discover/DiscoverObject.cpp:159
 #, kde-format
-msgid ""
-"Discover currently cannot be used to install any apps or perform system "
-"updates because none of its app backends are available."
-msgstr ""
-"Discover kan ikkje no brukast til å installera program eller gjera system­"
-"oppdateringar, då ingen av pakke­motorane er tilgjengelege."
+msgid "Discover currently cannot be used to install any apps or perform system updates because none of its app backends are available."
+msgstr "Discover kan ikkje no brukast til å installera program eller gjera system­oppdateringar, då ingen av pakke­motorane er tilgjengelege."
 
 #: discover/DiscoverObject.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"You can install some on the Settings page, under the <interface>Missing "
-"Backends</interface> section.<nl/><nl/>Also please consider reporting this "
-"as a packaging issue to your distribution."
+"You can install some on the Settings page, under the <interface>Missing Backends</interface> section.<nl/>"
+"<nl/>"
+"Also please consider reporting this as a packaging issue to your distribution."
 msgstr ""
-"Du kan installera nokre pakke­motorar i innstillingane, under sida "
-"<interface>Manglande pakke­motorar</interface>.<nl/><nl/>Vurder òg å melda "
-"frå om dette som ein pakkefeil i distribusjonen din."
+"Du kan installera nokre pakke­motorar i innstillingane, under sida <interface>Manglande pakke­motorar</interface>.<nl/>"
+"<nl/>"
+"Vurder òg å melda frå om dette som ein pakkefeil i distribusjonen din."
 
 #: discover/DiscoverObject.cpp:168 discover/DiscoverObject.cpp:380
 #: discover/qml/UpdatesPage.qml:107
@@ -51,16 +47,13 @@ msgstr "Meld frå om feilen"
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"You can use <command>pacman</command> to install the optional dependencies "
-"that are needed to enable the application backends.<nl/><nl/>Please note "
-"that Arch Linux developers recommend using <command>pacman</command> for "
-"managing software because the PackageKit backend is not well-integrated on "
-"Arch Linux."
+"You can use <command>pacman</command> to install the optional dependencies that are needed to enable the application backends.<nl/>"
+"<nl/>"
+"Please note that Arch Linux developers recommend using <command>pacman</command> for managing software because the PackageKit backend is not well-integrated on Arch Linux."
 msgstr ""
-"Du kan bruka <command>pacman</command> for å installera valfrie avhengnadar "
-"som er nødvendig for å ta i bruk pakke­motorane.<nl/><nl/>Merk at utviklarane "
-"av Arch Linux tilrår å bruka <command>pacman</command> for pakke­handsaming, "
-"då PackageKit-motoren ikkje er godt integrert på denne distroen."
+"Du kan bruka <command>pacman</command> for å installera valfrie avhengnadar som er nødvendig for å ta i bruk pakke­motorane.<nl/>"
+"<nl/>"
+"Merk at utviklarane av Arch Linux tilrår å bruka <command>pacman</command> for pakke­handsaming, då PackageKit-motoren ikkje er godt integrert på denne distroen."
 
 #: discover/DiscoverObject.cpp:181
 #, kde-format
@@ -80,12 +73,8 @@ msgstr "Prøver å opna den ikkje-eksisterande fila «%1»"
 
 #: discover/DiscoverObject.cpp:306
 #, kde-format
-msgid ""
-"Cannot interact with flatpak resources without the flatpak backend %1. "
-"Please install it first."
-msgstr ""
-"Kan ikkje bruka Flatpak-ressursar med mindre Flatpak-motoren %1 er "
-"tilgjengeleg. Installer han først."
+msgid "Cannot interact with flatpak resources without the flatpak backend %1. Please install it first."
+msgstr "Kan ikkje bruka Flatpak-ressursar med mindre Flatpak-motoren %1 er tilgjengeleg. Installer han først."
 
 #: discover/DiscoverObject.cpp:310
 #, kde-format
@@ -99,11 +88,8 @@ msgstr "Kontroller at Snap-støtte er installert"
 
 #: discover/DiscoverObject.cpp:374
 #, kde-format
-msgid ""
-"Could not open %1 because it was not found in any available software "
-"repositories."
-msgstr ""
-"Klarte ikkje opna %1, då programmet ikkje finst i nokon av pakkebrønnane."
+msgid "Could not open %1 because it was not found in any available software repositories."
+msgstr "Klarte ikkje opna %1, då programmet ikkje finst i nokon av pakkebrønnane."
 
 #: discover/DiscoverObject.cpp:377
 #, kde-format
@@ -119,10 +105,8 @@ msgstr "Discover"
 
 #: discover/DiscoverObject.cpp:443
 #, kde-format
-msgid ""
-"Discover was closed before certain tasks were done, waiting for it to finish."
-msgstr ""
-"Discover vart lukka før alle oppgåvene var gjennomførte. Ventar på oppgåvene."
+msgid "Discover was closed before certain tasks were done, waiting for it to finish."
+msgstr "Discover vart lukka før alle oppgåvene var gjennomførte. Ventar på oppgåvene."
 
 #: discover/main.cpp:42
 #, kde-format
@@ -142,8 +126,7 @@ msgstr "Vis ei liste over oppføringar med ein kategori."
 #: discover/main.cpp:45
 #, kde-format
 msgid "Open Discover in a said mode. Modes correspond to the toolbar buttons."
-msgstr ""
-"Opna Discover i vald modus. Modusar samsvarar med knappane på verktøylinja."
+msgstr "Opna Discover i vald modus. Modusar samsvarar med knappane på verktøylinja."
 
 #: discover/main.cpp:46
 #, kde-format
@@ -496,55 +479,33 @@ msgstr "Risiko ved proprietær programvare"
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"This application's source code is partially or entirely closed to public "
-"inspection and improvement. That means third parties and users like you "
-"cannot verify its operation, security, and trustworthiness, or modify and "
-"redistribute it without the authors' express permission.<nl/><nl/>The "
-"application may be perfectly safe to use, or it may be acting against you in "
-"various ways—such as harvesting your personal information, tracking your "
-"location, or transmitting the contents of your files to someone else. There "
-"is no easy way to be sure, so you should only install this application if "
-"you fully trust its authors (<link url='%1'>%2</link>).<nl/><nl/>You can "
-"learn more at <link url='%3'>%3</link>."
+"This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/>"
+"<nl/>"
+"The application may be perfectly safe to use, or it may be acting against you in various ways—such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else. There is no easy way to be sure, so you should only install this application if you fully trust its authors (<link url='%1'>%2</link>).<nl/>"
+"<nl/>"
+"You can learn more at <link url='%3'>%3</link>."
 msgstr ""
-"Kjeldekoden til programmet er heilt eller delvis lukka for innsyn og "
-"forbetring. Dette gjer at tredje­partar og brukarar som deg ikkje kan "
-"stadfesta at programmet verkar som det skal og at det er trygt å bruka. De "
-"kan heller ikkje gjera endringar i programmet eller vidare­formidla det til "
-"andre utan eksplisitt samtykke frå opphavspersonane.<nl/><nl/>Det kan vera "
-"at programmet er heilt trygt å bruka, men det kan òg vera at det arbeider "
-"mot deg – for eksempel ved å samla inn persondata, spora kor du oppheld deg "
-"eller senda filene dine til andre. Det finst heller ikkje nokon enkel måte å "
-"finna ut av dette på, så du bør berre installera programmet dersom du stolar "
-"fullt og heilt på utviklarane bak (<link url='%1'>%2</link>).<nl/><nl/>Du "
-"finn meir informasjon på <link url='%3'>%3</link>."
+"Kjeldekoden til programmet er heilt eller delvis lukka for innsyn og forbetring. Dette gjer at tredje­partar og brukarar som deg ikkje kan stadfesta at programmet verkar som det skal og at det er trygt å bruka. De kan heller ikkje gjera endringar i programmet eller vidare­formidla det til andre utan eksplisitt samtykke frå opphavspersonane.<nl/>"
+"<nl/>"
+"Det kan vera at programmet er heilt trygt å bruka, men det kan òg vera at det arbeider mot deg – for eksempel ved å samla inn persondata, spora kor du oppheld deg eller senda filene dine til andre. Det finst heller ikkje nokon enkel måte å finna ut av dette på, så du bør berre installera programmet dersom du stolar fullt og heilt på utviklarane bak (<link url='%1'>%2</link>).<nl/>"
+"<nl/>"
+"Du finn meir informasjon på <link url='%3'>%3</link>."
 
 #: discover/qml/ApplicationPage.qml:930
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"This application's source code is partially or entirely closed to public "
-"inspection and improvement. That means third parties and users like you "
-"cannot verify its operation, security, and trustworthiness, or modify and "
-"redistribute it without the authors' express permission.<nl/><nl/>The "
-"application may be perfectly safe to use, or it may be acting against you in "
-"various ways—such as harvesting your personal information, tracking your "
-"location, or transmitting the contents of your files to someone else. There "
-"is no easy way to be sure, so you should only install this application if "
-"you fully trust its authors (%1).<nl/><nl/>You can learn more at <link "
-"url='%2'>%2</link>."
+"This application's source code is partially or entirely closed to public inspection and improvement. That means third parties and users like you cannot verify its operation, security, and trustworthiness, or modify and redistribute it without the authors' express permission.<nl/>"
+"<nl/>"
+"The application may be perfectly safe to use, or it may be acting against you in various ways—such as harvesting your personal information, tracking your location, or transmitting the contents of your files to someone else. There is no easy way to be sure, so you should only install this application if you fully trust its authors (%1).<nl/>"
+"<nl/>"
+"You can learn more at <link url='%2'>%2</link>."
 msgstr ""
-"Kjeldekoden til programmet er heilt eller delvis lukka for innsyn og "
-"forbetring. Dette gjer at tredje­partar og brukarar som deg ikkje kan "
-"stadfesta at programmet verkar som det skal og er trygt å bruka. De kan "
-"heller ikkje gjera endringar i programmet eller vidare­formidla det til "
-"andre utan eksplisitt samtykke frå opphavspersonane.<nl/><nl/>Det kan vera "
-"at programmet er heilt trygt å bruka, men det kan òg vera at det arbeider "
-"mot deg – for eksempel ved å samla inn persondata, spora kor du oppheld deg "
-"eller senda filene dine til andre. Det finst heller ikkje nokon enkel måte å "
-"finna ut av dette på, så du bør berre installera programmet dersom du stolar "
-"fullt og heilt på utviklarane bak (%1).<nl/><nl/>Du finn meir informasjon på "
-"<link url='%2'>%2</link>."
+"Kjeldekoden til programmet er heilt eller delvis lukka for innsyn og forbetring. Dette gjer at tredje­partar og brukarar som deg ikkje kan stadfesta at programmet verkar som det skal og er trygt å bruka. De kan heller ikkje gjera endringar i programmet eller vidare­formidla det til andre utan eksplisitt samtykke frå opphavspersonane.<nl/>"
+"<nl/>"
+"Det kan vera at programmet er heilt trygt å bruka, men det kan òg vera at det arbeider mot deg – for eksempel ved å samla inn persondata, spora kor du oppheld deg eller senda filene dine til andre. Det finst heller ikkje nokon enkel måte å finna ut av dette på, så du bør berre installera programmet dersom du stolar fullt og heilt på utviklarane bak (%1).<nl/>"
+"<nl/>"
+"Du finn meir informasjon på <link url='%2'>%2</link>."
 
 #: discover/qml/ApplicationsListPage.qml:52
 #, kde-format
@@ -617,17 +578,13 @@ msgstr "Søk på nettet etter «%1»"
 
 #: discover/qml/ApplicationsListPage.qml:192
 #, kde-format
-msgctxt ""
-"If appropriate, localize this URL to be something more relevant to the "
-"language. %1 is the text that will be searched for."
+msgctxt "If appropriate, localize this URL to be something more relevant to the language. %1 is the text that will be searched for."
 msgid "https://duckduckgo.com/?q=%1"
 msgstr "https://duckduckgo.com/?q=%1"
 
 #: discover/qml/ApplicationsListPage.qml:203
 #, kde-format
-msgctxt ""
-"@info:placeholder %1 is the name of an application; %2 is the name of a "
-"category of apps or add-ons"
+msgctxt "@info:placeholder %1 is the name of an application; %2 is the name of a category of apps or add-ons"
 msgid "\"%1\" was not found in the \"%2\" category"
 msgstr "Fann ikkje «%1» i kategorien «%2»"
 
@@ -640,14 +597,8 @@ msgstr "Fann ikkje «%1» i dei tilgjengelege kjeldene"
 #: discover/qml/ApplicationsListPage.qml:206
 #, kde-format
 msgctxt "@info:placeholder%1 is the name of an application"
-msgid ""
-"\"%1\" may be available on the web. Software acquired from the web has not "
-"been reviewed by your distributor for functionality or stability. Use with "
-"caution."
-msgstr ""
-"Kan henda er «%1» tilgjengeleg frå nettet. Leverandøren din granskar ikkje "
-"stabiliteten på eller funksjonane til program som vert lasta ned frå nettet. "
-"Ver derfor varsam."
+msgid "\"%1\" may be available on the web. Software acquired from the web has not been reviewed by your distributor for functionality or stability. Use with caution."
+msgstr "Kan henda er «%1» tilgjengeleg frå nettet. Leverandøren din granskar ikkje stabiliteten på eller funksjonane til program som vert lasta ned frå nettet. Ver derfor varsam."
 
 #: discover/qml/ApplicationsListPage.qml:239
 #, kde-format
@@ -785,12 +736,8 @@ msgstr "Send inn bruksinformasjon"
 
 #: discover/qml/Feedback.qml:13
 #, kde-format
-msgid ""
-"Sends anonymized usage information to KDE so we can better understand our "
-"users. For more information see https://kde.org/privacypolicy-apps.php."
-msgstr ""
-"Sender anonymisert bruksinformasjon til KDE, slik at me kan forstå brukarane "
-"våre betre. For meir informasjon, sjå https://kde.org/privacypolicy-apps.php."
+msgid "Sends anonymized usage information to KDE so we can better understand our users. For more information see https://kde.org/privacypolicy-apps.php."
+msgstr "Sender anonymisert bruksinformasjon til KDE, slik at me kan forstå brukarane våre betre. For meir informasjon, sjå https://kde.org/privacypolicy-apps.php."
 
 #: discover/qml/Feedback.qml:17
 #, kde-format
@@ -814,12 +761,8 @@ msgstr "Set opp oppdateringar …"
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
-msgid ""
-"You can help us improving this application by sharing statistics and "
-"participate in surveys."
-msgstr ""
-"Du kan hjelpa oss med å gjera programmet betre ved å dela bruksstatistikk og "
-"delta i spørjeundersøkingar."
+msgid "You can help us improving this application by sharing statistics and participate in surveys."
+msgstr "Du kan hjelpa oss med å gjera programmet betre ved å dela bruksstatistikk og delta i spørjeundersøkingar."
 
 #: discover/qml/Feedback.qml:58
 #, kde-format
@@ -1092,8 +1035,7 @@ msgstr "Tekniske detaljar"
 #: discover/qml/UpdatesPage.qml:61
 #, kde-format
 msgid "There was an issue installing this update. Please try again later."
-msgstr ""
-"Det oppstod ein feil ved installering av oppdateringa. Prøv igjen seinare."
+msgstr "Det oppstod ein feil ved installering av oppdateringa. Prøv igjen seinare."
 
 #: discover/qml/UpdatesPage.qml:67
 #, kde-format
@@ -1103,12 +1045,8 @@ msgstr "Vis tekniske detaljar"
 # skip-rule: pakke-kjonn
 #: discover/qml/UpdatesPage.qml:83
 #, kde-format
-msgid ""
-"If you would like to report the update issue to your distribution's "
-"packagers, include this information:"
-msgstr ""
-"Ta med denne informasjonen viss du vil melda frå om feilen til dei som har "
-"pakka distribusjonen:"
+msgid "If you would like to report the update issue to your distribution's packagers, include this information:"
+msgstr "Ta med denne informasjonen viss du vil melda frå om feilen til dei som har pakka distribusjonen:"
 
 #: discover/qml/UpdatesPage.qml:102
 #, kde-format
@@ -1172,9 +1110,7 @@ msgstr "Oppdater frå:"
 
 #: discover/qml/UpdatesPage.qml:442
 #, kde-format
-msgctxt ""
-"%1 is the backend that provides this app, %2 is the specific repository or "
-"address within that backend"
+msgctxt "%1 is the backend that provides this app, %2 is the specific repository or address within that backend"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
