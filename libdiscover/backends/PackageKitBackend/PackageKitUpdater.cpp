@@ -257,6 +257,7 @@ public:
     void refreshResource()
     {
         Q_EMIT m_backend->resourcesChanged(this, {"size", "license"});
+        Q_EMIT sizeChanged();
         Q_EMIT updateSizeChanged();
     }
 
