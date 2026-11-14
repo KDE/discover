@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-12 01:03+0000\n"
+"POT-Creation-Date: 2026-11-14 01:05+0000\n"
 "PO-Revision-Date: 2020-10-11 01:23+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -715,7 +715,7 @@ msgid "Music"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:458
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1186,39 +1186,39 @@ msgctxt "%1 is the pretty name of the distro e.g. Holo or SteamOS"
 msgid "Holo: Unable to query atomupd for %1 Updates..."
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:65
 #, kde-format
 msgid ""
 "Unsupported question:\n"
 "%1"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:210
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:217
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Taustaprogrammi %1 käivitamine läks liiga pikale"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:276
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:283
 #, kde-format
 msgid "Applications"
 msgstr "Rakendused"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:311
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma lisad"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:311
 #, kde-format
 msgid "Application Addons"
 msgstr "Rakenduste lisad"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:392
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Võrgutõrge taustaprogrammis %1: %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:406
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1227,14 +1227,14 @@ msgstr ""
 "Taustaprogramm %1 saatis serverile liiga palju päringuid. Palun proovi mõne "
 "minuti pärast uuesti."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:413
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:409
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:420
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Vigane taustaprogramm %1, võta ühendust oma distributsiooni pakkujaga."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:432
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:439
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1243,19 +1243,19 @@ msgid ""
 "%2"
 msgstr ""
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:449
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "Kirjele %1 taustaprogrammis %2 ei õnnestunud hankida ekraanipilti"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:446
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:453
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Käsitlematu tõrge taustaprogrammis %1. Võta ühendust oma distributsiooni "
 "pakkujaga."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:570
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:577
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Vale KNewStuff'i URI: %1"

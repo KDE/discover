@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-12 01:03+0000\n"
+"POT-Creation-Date: 2026-11-14 01:05+0000\n"
 "PO-Revision-Date: 2026-11-11 15:27+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -665,7 +665,7 @@ msgid "Music"
 msgstr "Musica"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:458
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1165,7 +1165,7 @@ msgctxt "%1 is the pretty name of the distro e.g. Holo or SteamOS"
 msgid "Holo: Unable to query atomupd for %1 Updates..."
 msgstr "Holo : incapace a demandar atomupd per Actualisationes de %1..."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:65
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -1174,32 +1174,32 @@ msgstr ""
 "Demanda non supportate:\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:210
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:217
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Retroadministration %1 prendeva troppo tempore per initialisar"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:276
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:283
 #, kde-format
 msgid "Applications"
 msgstr "Applicationes"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:311
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Addons(Elementos adjunte o additiones) de Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:311
 #, kde-format
 msgid "Application Addons"
 msgstr "Addons (additiones) de application"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:392
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Error de rete in retroadministration %1:  %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:406
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1208,14 +1208,14 @@ msgstr ""
 "Troppe requestas inviate al servitor per retroadministration %1. Pro favor "
 "essaya de nove in alcun minutas."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:413
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:409
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:420
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Invalide retroadministration %1, tu continge tu distributor."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:432
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:439
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1228,20 +1228,20 @@ msgstr ""
 "controlo plus stricte. Le error reportate esseva:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:449
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "Non poteva trovar instantanee de schermo per le entrata %1 in retro-"
 "administration (backend) %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:446
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:453
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Error non maneate in retroadministration %1. Tu continge tu distributor."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:570
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:577
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Errate KNewStuff URI: %1"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-12 01:03+0000\n"
+"POT-Creation-Date: 2026-11-14 01:05+0000\n"
 "PO-Revision-Date: 2026-11-12 18:46+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -670,7 +670,7 @@ msgid "Music"
 msgstr "音樂"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:458
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1132,7 +1132,7 @@ msgctxt "%1 is the pretty name of the distro e.g. Holo or SteamOS"
 msgid "Holo: Unable to query atomupd for %1 Updates..."
 msgstr "Holo：無法向 atomupd 查詢 %1 更新..."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:65
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -1141,46 +1141,46 @@ msgstr ""
 "不支援的問題：\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:210
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:217
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "後端 %1 初始過久"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:276
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:283
 #, kde-format
 msgid "Applications"
 msgstr "應用程式"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:311
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Plasma 外加功能"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:311
 #, kde-format
 msgid "Application Addons"
 msgstr "應用程式外加功能"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:392
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "%1 後端發生網路錯誤：%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:406
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr "過多請求傳送到後端 %1 的伺服器。請稍候重試。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:413
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:409
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:420
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "無效的 %1 後端，聯絡你的經銷商。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:432
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:439
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1192,17 +1192,17 @@ msgstr ""
 "息：\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:449
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "無法在 %2 後端抓取 %1 項目的螢幕截圖"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:446
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:453
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "%1 後端發生無法處理的錯誤。請聯絡發行者。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:570
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:577
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "錯誤的 KNewStuff URI：%1"

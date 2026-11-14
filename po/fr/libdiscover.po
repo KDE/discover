@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-12 01:03+0000\n"
+"POT-Creation-Date: 2026-11-14 01:05+0000\n"
 "PO-Revision-Date: 2026-11-03 07:25+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -675,7 +675,7 @@ msgid "Music"
 msgstr "Musique"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:451
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:458
 #, kde-format
 msgid "%1: %2"
 msgstr "%1 : %2"
@@ -1184,7 +1184,7 @@ msgid "Holo: Unable to query atomupd for %1 Updates..."
 msgstr ""
 "Holo : impossible d'interroger « atomupd » pour des mises à jour de %1..."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:64
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:65
 #, kde-format
 msgid ""
 "Unsupported question:\n"
@@ -1193,32 +1193,32 @@ msgstr ""
 "Question non prise en charge :\n"
 "%1"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:210
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:217
 #, kde-format
 msgid "Backend %1 took too long to initialize"
 msgstr "Le moteur %1 prends trop de temps à s'initialiser"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:276
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:283
 #, kde-format
 msgid "Applications"
 msgstr "Applications"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:311
 #, kde-format
 msgid "Plasma Addons"
 msgstr "Modules Plasma"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:304
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:311
 #, kde-format
 msgid "Application Addons"
 msgstr "Modules d'applications"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:392
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
 #, kde-format
 msgid "Network error in backend %1: %2"
 msgstr "Erreur de réseau dans le moteur %1 : %2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:399
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:406
 #, kde-format
 msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
@@ -1227,14 +1227,14 @@ msgstr ""
 "Trop de requêtes envoyées vers le serveur pour le moteur %1. Veuillez "
 "essayer à nouveau dans quelques minutes."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:402
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:408
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:413
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:409
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:420
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Moteur %1 incorrect, veuillez contacter votre distributeur."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:432
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:439
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1247,20 +1247,20 @@ msgstr ""
 "plus strict. L'erreur signalée était : \n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:449
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "Impossible d'atteindre la capture d'écran pour l'élément %1 depuis le moteur "
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:446
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:453
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Erreur non gérée dans le moteur %1. Veuillez contacter votre distributeur."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:570
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:577
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "Mauvaise URI KNewStuff : %1"
