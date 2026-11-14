@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-07 09:41+0000\n"
+"POT-Creation-Date: 2026-11-13 20:52+0000\n"
 "PO-Revision-Date: 2026-07-23 17:15+0900\n"
 "Last-Translator: Mint <5602mint@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -128,13 +128,13 @@ msgstr ""
 "(%1 の項目はありません)<nl/><nl/> <link url='%2'>この問題を %3 に報告</link> "
 "してください。"
 
-#: discover/DiscoverObject.cpp:514 discover/DiscoverObject.cpp:516
+#: discover/DiscoverObject.cpp:515 discover/DiscoverObject.cpp:517
 #: discover/main.cpp:120
 #, kde-format
 msgid "Discover"
 msgstr "Discover"
 
-#: discover/DiscoverObject.cpp:517
+#: discover/DiscoverObject.cpp:518
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
