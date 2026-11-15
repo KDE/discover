@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-14 01:05+0000\n"
-"PO-Revision-Date: 2026-11-04 15:49+0200\n"
+"PO-Revision-Date: 2026-11-15 01:36+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -934,6 +934,7 @@ msgstr ""
 msgctxt "@info:status"
 msgid "Failed to move data for <application>%1</application> to the trash: %2"
 msgstr ""
+"Nepavyko perkelti <application>%1</application> duomenis į šiukšlinę: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1137
 #, kde-format

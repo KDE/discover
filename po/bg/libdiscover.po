@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-14 01:05+0000\n"
-"PO-Revision-Date: 2026-11-07 22:33+0200\n"
+"PO-Revision-Date: 2026-11-14 20:48+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -925,6 +925,8 @@ msgstr ""
 msgctxt "@info:status"
 msgid "Failed to move data for <application>%1</application> to the trash: %2"
 msgstr ""
+"Грешка при преместване на данни за <application>%1</application> в кошчето: "
+"%2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1137
 #, kde-format

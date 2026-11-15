@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-14 01:05+0000\n"
-"PO-Revision-Date: 2026-10-06 10:30+0200\n"
+"PO-Revision-Date: 2026-11-14 16:15+0100\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr@ijekavian\n"
@@ -657,8 +657,7 @@ msgid "All Files"
 msgstr "Сви фајлови"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:767
-#, fuzzy, kde-format
-#| msgid "Home"
+#, kde-format
 msgctxt "the user's home directory"
 msgid "Home"
 msgstr "Домаћа фасцикла"
@@ -936,6 +935,8 @@ msgstr ""
 msgctxt "@info:status"
 msgid "Failed to move data for <application>%1</application> to the trash: %2"
 msgstr ""
+"Не могу да премјестим податке програма <application>%1</application> у "
+"смеће: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1137
 #, kde-format
@@ -2268,17 +2269,12 @@ msgstr[3] "Један пакет ће бити надограђен"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
 #, kde-format
 msgid "<h3>%1</h3>%2"
-msgstr ""
+msgstr "<h3>%1</h3>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-#| "blockquote>"
+#, kde-format
 msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
-msgstr ""
-"<h3>%1</h3>Надоградња на ново издање %2<br/>Биљешке о издању:<blockquote>%3</"
-"blockquote>"
+msgstr "<h3>%1</h3>%2<br/>Биљешке о издању:<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
 #, kde-format
@@ -2730,7 +2726,7 @@ msgstr "Нису нађене компоненте у апстрим метап�
 #, kde-format
 msgctxt "Upgrade status: A system update that has to be downloaded again"
 msgid "Previous installation was incomplete, trying again"
-msgstr ""
+msgstr "Претходна инсталација није довршена, покушавам поново"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format
@@ -2900,6 +2896,3 @@ msgstr "Системски софтвер"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "Додаци"
-
-#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-#~ msgstr "<h3>%1</h3>Надоградња на ново издање %2<br/>Нема биљешки о издању"
