@@ -160,7 +160,9 @@ BasicAbstractCard {
                         precision: Rating.Precision.HalfStar
                     }
                     QQC2.Label {
-                        text: ratingsLoader.hasRatings > 0 ? KI18n.i18nc("@info %1 is number of ratings", "(%1)") : KI18n.i18nc("@info", "No ratings")
+                        text: ratingsLoader.hasRatings > 0
+                            ? KI18n.i18nc("@info %1 is number of ratings", "(%1)", root.application.rating.ratingCount)
+                            : KI18n.i18nc("@info", "No ratings")
                         font: Kirigami.Theme.smallFont
                         textFormat: Text.PlainText
                     }
