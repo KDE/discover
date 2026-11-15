@@ -222,16 +222,16 @@ DiscoverPage {
         source: appInfo.application.icon
     }
 
-    Kirigami.PromptDialog {
+    Kirigami.Dialog {
         id: shareSheet
-        parent: applicationWindow().overlay
-        implicitWidth: Kirigami.Units.gridUnit * 20
+        preferredWidth: Kirigami.Units.gridUnit * 20
+        padding: Kirigami.Units.largeSpacing
         title: KI18n.i18nc("@title:window", "Share Link to Application")
-        standardButtons: QQC2.Dialog.NoButton
+
+        onClosed: alts.reset()
 
         Purpose.AlternativesView {
             id: alts
-            Layout.fillWidth: true
             pluginType: "ShareUrl"
             inputData: {
                 "urls": [ application.url.toString() ],
@@ -242,7 +242,6 @@ DiscoverPage {
                 if (error !== 0) {
                     console.error("job finished with error", error, message)
                 }
-                alts.reset()
             }
         }
     }
@@ -733,11 +732,12 @@ DiscoverPage {
         }
     }
 
-    Kirigami.PromptDialog {
+    Kirigami.Dialog {
         id: contentRatingDialog
         parent: appInfo.QQC2.Overlay.overlay
         title: KI18n.i18nc("@title:window dialog", "Content Rating")
         preferredWidth: Kirigami.Units.gridUnit * 25
+        padding: Kirigami.Units.largeSpacing
         standardButtons: Kirigami.Dialog.NoButton
 
         QQC2.Label {
