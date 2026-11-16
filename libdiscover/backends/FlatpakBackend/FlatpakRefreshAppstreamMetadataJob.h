@@ -11,6 +11,11 @@
 #include "glibholder.h"
 #include <QThread>
 
+class QMutex;
+
+// Serialize appstream refreshes to avoid concurrent TLS initialization (DISCOVER-2EH).
+QMutex &flatpakAppstreamRefreshMutex();
+
 class FlatpakRefreshAppstreamMetadataJob : public QThread
 {
     Q_OBJECT

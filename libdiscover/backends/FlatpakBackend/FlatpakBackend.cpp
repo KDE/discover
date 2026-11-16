@@ -41,6 +41,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QFutureWatcher>
+#include <QMutexLocker>
 #include <QNetworkAccessManager>
 #include <QSettings>
 #include <QTemporaryFile>
@@ -878,14 +879,18 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
     };
 
     gboolean changed;
-    if (!flatpak_installation_update_appstream_full_sync(tempInstallation,
-                                                         remoteName.toUtf8().constData(),
-                                                         nullptr,
-                                                         cb,
-                                                         nullptr,
-                                                         &changed,
-                                                         cancellable,
-                                                         &localError)) {
+    const bool succeeded = [&] {
+        QMutexLocker locker(&flatpakAppstreamRefreshMutex());
+        return flatpak_installation_update_appstream_full_sync(tempInstallation,
+                                                               remoteName.toUtf8().constData(),
+                                                               nullptr,
+                                                               cb,
+                                                               nullptr,
+                                                               &changed,
+                                                               cancellable,
+                                                               &localError);
+    }();
+    if (!succeeded) {
         qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "error fetching appstream" << localError->message;
         return asComponent;
     }

@@ -8,6 +8,15 @@
 #include "FlatpakRefreshAppstreamMetadataJob.h"
 #include "libdiscover_backend_flatpak_debug.h"
 
+#include <QMutex>
+#include <QMutexLocker>
+
+QMutex &flatpakAppstreamRefreshMutex()
+{
+    static QMutex mutex;
+    return mutex;
+}
+
 FlatpakRefreshAppstreamMetadataJob::FlatpakRefreshAppstreamMetadataJob(FlatpakInstallation *installation, FlatpakRemote *remote)
     : QThread()
     , m_cancellable(g_cancellable_new())
@@ -41,14 +50,18 @@ void FlatpakRefreshAppstreamMetadataJob::run()
     g_autoptr(GError) localError = nullptr;
 
     gboolean changed = false;
-    if (!flatpak_installation_update_appstream_full_sync(m_installation.get(),
-                                                         flatpak_remote_get_name(m_remote.get()),
-                                                         nullptr,
-                                                         &FlatpakRefreshAppstreamMetadataJob::updateCallback,
-                                                         this,
-                                                         &changed,
-                                                         m_cancellable,
-                                                         &localError)) {
+    const bool succeeded = [&] {
+        QMutexLocker locker(&flatpakAppstreamRefreshMutex());
+        return flatpak_installation_update_appstream_full_sync(m_installation.get(),
+                                                               flatpak_remote_get_name(m_remote.get()),
+                                                               nullptr,
+                                                               &FlatpakRefreshAppstreamMetadataJob::updateCallback,
+                                                               this,
+                                                               &changed,
+                                                               m_cancellable,
+                                                               &localError);
+    }();
+    if (!succeeded) {
         const QString error = localError ? QString::fromUtf8(localError->message) : QStringLiteral("<no error>");
         qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG).nospace()
             << "Failed to refresh appstream metadata for " << flatpak_remote_get_name(m_remote.get()) << ": " << error;
