@@ -2215,7 +2215,7 @@ msgstr "Obsolets:"
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:386
 #, kde-format
 msgid "Release Notes:"
-msgstr "Notes del llançament:"
+msgstr "Notes de llançament:"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:387
 #, kde-format
@@ -2264,7 +2264,7 @@ msgstr "<h3>%1</h3>%2"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
 #, kde-format
 msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
-msgstr "<h3>%1</h3>%2<br/>Notes del llançament:<blockquote>%3</blockquote>"
+msgstr "<h3>%1</h3>%2<br/>Notes de llançament:<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
 #, kde-format
