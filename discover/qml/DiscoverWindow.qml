@@ -370,13 +370,14 @@ Kirigami.ApplicationWindow {
         title: {
             if (messagesSheet.showTechnicalDetails) {
                 if (messages.count > 1) {
-                    KI18n.i18nc("@title:window error message dialog with technical detail, %1 is total number of errors, % total number", "Error %2 of %1", messagesSheetView.currentIndex + 1, messages.count, )
+                    KI18n.i18nc("@title:window error message dialog with technical detail, %1 is total number of errors, %2 is current error", "Error %2 of %1", messages.count, messagesSheetView.currentIndex + 1)
                 } else {
                     KI18n.i18nc("@title:window error message dialog with technical detail, single error", "Error")
                 }
             } else {
                 KI18n.i18nc("@title:window error message dialog without technical detail", "Update Issue")
             }
+        }
 
         // No need to add our own ScrollView since OverlaySheet includes
         // one automatically.
