@@ -127,7 +127,7 @@ Kirigami.ApplicationWindow {
     Shortcut {
         id: refreshKey
         autoRepeat: false
-        sequences: StandardKey.Refresh
+        sequences: [StandardKey.Refresh]
         onActivated: refreshAction.trigger()
     }
     Kirigami.Action {
