@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-14 01:05+0000\n"
+"POT-Creation-Date: 2026-11-18 01:11+0000\n"
 "PO-Revision-Date: 2026-11-14 16:15+0100\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -1134,7 +1134,7 @@ msgstr "Podesi dozvole…"
 msgid "Version %1"
 msgstr "Izdanje %1"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:489
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:497
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, kde-format
 msgid "Firmware Updates"

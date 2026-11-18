@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-14 01:05+0000\n"
+"POT-Creation-Date: 2026-11-18 01:11+0000\n"
 "PO-Revision-Date: 2013-03-28 16:07+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -1118,7 +1118,7 @@ msgstr ""
 msgid "Version %1"
 msgstr "आवृत्ती %1"
 
-#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:489
+#: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:497
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
 #, fuzzy, kde-format
 #| msgid "Applications"
