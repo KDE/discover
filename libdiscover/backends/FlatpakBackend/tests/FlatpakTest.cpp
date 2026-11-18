@@ -25,7 +25,7 @@
 #include <flatpak.h>
 
 // Should make sure it's available on all tested architectures
-constexpr QLatin1StringView s_testId("com.chez.GrafX2");
+constexpr QLatin1StringView s_testId("com.github.xournalpp.xournalpp");
 
 class FlatpakTest : public QObject
 {
@@ -127,13 +127,13 @@ private Q_SLOTS:
 
     void testSearches()
     {
-        // We test an item that provides another appstream id, this way we test both
+        // Xournal++ provides its old desktop ID alongside its reverse-DNS ID.
         AbstractResourcesBackend::Filters f;
         f.resourceUrl = QUrl(QStringLiteral("flatpak:app/") + s_testId + u'/' + QLatin1StringView(flatpak_get_default_arch()) + QStringLiteral("/stable"));
         const auto res = getResources(m_appBackend->search(f));
         QCOMPARE(res.count(), 1);
 
-        f.resourceUrl = QUrl(QStringLiteral("appstream://grafx2.desktop")); // That's the alternatively provided id
+        f.resourceUrl = QUrl(QStringLiteral("appstream://xournalpp.desktop"));
         const auto res2 = getResources(m_appBackend->search(f));
         QCOMPARE(res2, res);
 
