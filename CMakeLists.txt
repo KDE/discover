@@ -68,6 +68,8 @@ ecm_set_disabled_deprecation_versions(QT 6.8.1
     KF 6.9.0
 )
 
+# TODO add -DQT_ENABLE_STRICT_MODE_UP_TO=0x060A00
+# once we depennd on https://github.com/qcoro/qcoro/commit/600ea5529886f1993450f06e58bcd0a111f71252
 add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS -DQT_NO_URL_CAST_FROM_STRING)
 
 # When building from git use a random iid to prevent loading incompatible plugins

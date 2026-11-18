@@ -176,14 +176,15 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 
     if (!cancel && !failed && simulate) {
         auto packagesToRemove = m_newPackageStates.value(PackageKit::Transaction::InfoRemoving);
-        QMutableListIterator<QString> i(packagesToRemove);
         QSet<AbstractResource *> removedResources;
-        while (i.hasNext()) {
-            const auto pkgname = PackageKit::Daemon::packageName(i.next());
+        for (auto it = packagesToRemove.begin(), itEnd = packagesToRemove.end(); it != itEnd;) {
+            const auto pkgname = PackageKit::Daemon::packageName(*it);
             removedResources.unite(backend->resourcesByPackageName(pkgname));
 
             if (m_pkgnames.contains(pkgname)) {
-                i.remove();
+                it = packagesToRemove.erase(it);
+            } else {
+                ++it;
             }
         }
         removedResources.subtract(kToSet(m_apps));

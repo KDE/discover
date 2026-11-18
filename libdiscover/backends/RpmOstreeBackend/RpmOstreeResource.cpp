@@ -24,10 +24,8 @@ RpmOstreeResource::RpmOstreeResource(const QVariantMap &map, RpmOstreeBackend *p
 {
 #ifdef QT_DEBUG
     qCDebug(RPMOSTREE_LOG) << "Creating deployments from:";
-    QMapIterator<QString, QVariant> iter(map);
-    while (iter.hasNext()) {
-        iter.next();
-        qCDebug(RPMOSTREE_LOG) << iter.key() << ": " << iter.value();
+    for (auto it = map.cbegin(), itEnd = map.cend(); it != itEnd; ++it) {
+        qCDebug(RPMOSTREE_LOG) << it.key() << ": " << it.value();
     }
     qCDebug(RPMOSTREE_LOG) << "";
 #endif

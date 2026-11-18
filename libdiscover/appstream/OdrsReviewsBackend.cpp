@@ -309,18 +309,17 @@ void OdrsReviewsBackend::parseRatings()
         AppStream::Pool appstreamData;
         appstreamData.load();
 
-        QMutableListIterator<Rating> iterator(state.top);
-        while (iterator.hasNext()) {
-            const auto components = appstreamData.componentsById(iterator.next().packageName());
-
+        state.top.removeIf([&appstreamData](const Rating &rating) {
+            const auto components = appstreamData.componentsById(rating.packageName());
             for (const auto &component : components) {
                 const bool isDesktopApp = component.kind() == AppStream::Component::KindDesktopApp;
                 const bool isLaunchable = component.launchable(AppStream::Launchable::KindDesktopId).entries().count() > 0;
-                if (!isDesktopApp || !isLaunchable) {
-                    iterator.remove();
+                if (isDesktopApp && isLaunchable) {
+                    return false;
                 }
             }
-        }
+            return true;
+        });
 
         return state;
     }));

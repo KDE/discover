@@ -273,9 +273,7 @@ void RpmOstreeBackend::checkForUpdates()
         m_currentlyBootedDeployment->setNewVersion(newVersion);
 
         // Look for an existing deployment for the new version
-        QVectorIterator<RpmOstreeResource *> iterator(m_resources);
-        while (iterator.hasNext()) {
-            RpmOstreeResource *deployment = iterator.next();
+        for (RpmOstreeResource *deployment : std::as_const(m_resources)) {
             if (deployment->version() == newVersion) {
                 qCInfo(RPMOSTREE_LOG) << "Found existing deployment for new version. Skipping.";
                 // Let the user know that the update is pending a reboot
@@ -376,9 +374,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const AppStream::Release &release)
     m_rebaseAvailableMessage = QSharedPointer<InlineMessage>::create(InlineMessage::Positive, QStringLiteral("system-software-update"), info, majorUpgrade);
 
     // Look for an existing deployment for the new major version
-    QVectorIterator<RpmOstreeResource *> iterator(m_resources);
-    while (iterator.hasNext()) {
-        RpmOstreeResource *deployment = iterator.next();
+    for (RpmOstreeResource *deployment : std::as_const(m_resources)) {
         QString deploymentVersion = deployment->version();
         QStringList deploymentVersionSplit = deploymentVersion.split(QLatin1Char('.'));
         if (!deploymentVersionSplit.empty()) {
@@ -401,9 +397,7 @@ void RpmOstreeBackend::foundNewMajorVersion(const AppStream::Release &release)
     // Look for an existing updated deployment or a pending deployment for the
     // current version
     QString newVersion = m_currentlyBootedDeployment->availableVersion();
-    iterator = QVectorIterator<RpmOstreeResource *>(m_resources);
-    while (iterator.hasNext()) {
-        RpmOstreeResource *deployment = iterator.next();
+    for (RpmOstreeResource *deployment : std::as_const(m_resources)) {
         if ((deployment->version() == newVersion) || deployment->isPending()) {
             qCInfo(RPMOSTREE_LOG) << "Found pending or updated deployment for current version";
             m_updater->setNeedsReboot(true);
