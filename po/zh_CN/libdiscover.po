@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-18 01:11+0000\n"
+"POT-Creation-Date: 2026-11-19 01:09+0000\n"
 "PO-Revision-Date: 2024-04-23 19:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -34,9 +34,9 @@ msgstr ""
 
 #: libdiscover/appstream/AppStreamUtils.cpp:135
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:302
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:365
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:391
 #: libdiscover/UpdateModel/UpdateModel.cpp:124
 #: libdiscover/UpdateModel/UpdateModel.cpp:393
 #, kde-format
@@ -627,7 +627,7 @@ msgstr ""
 "的其他软件也将在 Discover 中可用。</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:468
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:419
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:417
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
@@ -670,7 +670,7 @@ msgid "Music"
 msgstr "音乐"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:458
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:461
 #, kde-format
 msgid "%1: %2"
 msgstr "%1：%2"
@@ -1174,14 +1174,14 @@ msgid ""
 "few minutes."
 msgstr "%1 后端的服务器请求发送过多。请过几分钟之后再试。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:409
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:420
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:412
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:418
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:423
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "无效的 %1 后端。请联系您的发行版。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:439
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1193,17 +1193,17 @@ msgstr ""
 "为：\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:449
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:452
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr "无法从 %2 后端获取 %1 的屏幕截图"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:453
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:456
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr "%1 后端出现无法处理的错误。请联系您的发行版。"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:577
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:580
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "错误的 KNewStuff URI：%1"
@@ -1269,7 +1269,7 @@ msgid "Cannot remove “%1”"
 msgstr "无法移除“%1”"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1289,7 +1289,7 @@ msgid "Upgrade Now"
 msgstr "立即升级"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2221,13 +2221,13 @@ msgstr "当前"
 msgid "Future"
 msgstr "今后"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:373
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:374
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr "没有足够的空间进行更新；只有 %1 可用空间。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:591
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:592
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2239,12 +2239,12 @@ msgstr ""
 "li></ul><nl/>如果您认为这是一个错误，请将它作为一个程序缺陷报告给发行版的打包"
 "人员。"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
 #, kde-format
 msgid "Confirm Changes"
 msgstr "确认更改"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:600
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2252,14 +2252,14 @@ msgid ""
 msgstr ""
 "更新将删除以下软件包：<ul><li>%1</li></ul><br/>以安装：<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:731
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:732
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:739
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
 #, kde-format
 msgid ""
 "Media Change of type “%1” is requested.\n"
@@ -2268,14 +2268,14 @@ msgstr ""
 "需要更换类型“%1”的安装介质。\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:772
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:773
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid "Accept EULA"
 msgstr "接受最终用户许可协议"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:773
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:774
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:306
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -2284,14 +2284,14 @@ msgstr ""
 "软件包 %1 和它的发行者 %2 要求您必须接受他们的许可证：\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:923
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:924
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "缺少 %2 中 %1 的签名"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:924
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:925
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:346
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2310,7 +2310,7 @@ msgstr ""
 "指纹：%4\n"
 "时间戳：%4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:202
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
@@ -2322,12 +2322,12 @@ msgstr ""
 "li></ul><nl/>如果您认为这是一个错误，请将它作为一个程序缺陷报告给发行版的打包"
 "人员。"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:214
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:215
 #, kde-format
 msgid "Confirm package removal"
 msgstr "确认移除软件包"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:215
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:216
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"
@@ -2376,7 +2376,7 @@ msgstr "rpm-ostree 后端程序：发现多个已启动的部署。请报告此�
 msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree 后端程序：没有发现已启动的部署。请报告此程序缺陷。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
 #, fuzzy, kde-format
 #| msgctxt "@action: button"
 #| msgid "Begin Upgrade…"
@@ -2384,92 +2384,92 @@ msgctxt "@action:button Perform a distro upgrade, not just a package update"
 msgid "Begin Upgrade…"
 msgstr "开始升级…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:524
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:518
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "当前版本有待处理的更新。将无视它们继续进行操作。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr "在重新定位到一个主要版本之前，请更新到最新版本"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:535
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:529
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr "缺少重新定位操作所需的远程参考源。请提交一个程序缺陷报告。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:547
 #, kde-format
 msgid "Operating System"
 msgstr "操作系统"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:299
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL 和其他许可证"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:309
 #, kde-format
 msgid "Additional packages: "
 msgstr "额外软件包："
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:316
 #, kde-format
 msgid "Additional modules: "
 msgstr "额外模块："
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:323
 #, kde-format
 msgid "Local packages: "
 msgstr "本地软件包："
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:330
 #, kde-format
 msgid "Replaced packages:"
 msgstr "已替换软件包："
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:339
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
 #, kde-format
 msgid "Removed packages:"
 msgstr "已移除软件包："
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, kde-format
 msgctxt "@label OS updater message"
 msgid ""
 "<br/>This version is pinned and won’t be automatically removed on updates."
 msgstr "<br/>此版本已被固定，不会在更新时被自动移除。"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:391
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:358
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:371
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:389
 #, kde-format
 msgctxt "@label OS vendor"
 msgid "Fedora Project"
 msgstr "Fedora 项目"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "当前的已启动版本 (已固定)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Currently booted version"
 msgstr "当前的已启动版本"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:405
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:403
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "重启后将使用的版本"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:407
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:405
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "备用版本 (已固定)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:409
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:407
 #, kde-format
 msgid "Fallback version"
 msgstr "备用版本"

@@ -762,10 +762,7 @@ msgid "All licenses…"
 msgstr "Alle Lizenzen …"
 
 #: discover/qml/ApplicationPageFullComponent.qml:362
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "Alter:"

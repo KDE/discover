@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-18 01:11+0000\n"
+"POT-Creation-Date: 2026-11-19 01:09+0000\n"
 "PO-Revision-Date: 2026-11-12 05:33-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@kde.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -36,9 +36,9 @@ msgstr ""
 
 #: libdiscover/appstream/AppStreamUtils.cpp:135
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:302
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:365
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:391
 #: libdiscover/UpdateModel/UpdateModel.cpp:124
 #: libdiscover/UpdateModel/UpdateModel.cpp:393
 #, kde-format
@@ -630,7 +630,7 @@ msgstr ""
 "aplicativo for instalado.</para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:468
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:419
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:417
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
@@ -670,7 +670,7 @@ msgid "Music"
 msgstr "Música"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:848
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:458
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:461
 #, kde-format
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -1213,14 +1213,14 @@ msgstr ""
 "Muitas requisições enviadas ao servidor para a infraestrutura %1. Tente "
 "novamente em alguns minutos."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:409
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:415
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:420
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:412
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:418
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:423
 #, kde-format
 msgid "Invalid %1 backend, contact your distributor."
 msgstr "Infraestrutura %1 inválida, contate sua distribuição."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:439
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:442
 #, kde-format
 msgid ""
 "Unable to complete the update of %1. You can try and perform this action "
@@ -1233,20 +1233,20 @@ msgstr ""
 "rígido. O erro reportado foi:\n"
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:449
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:452
 #, kde-format
 msgid "Could not fetch screenshot for the entry %1 in backend %2"
 msgstr ""
 "Não foi possível obter a captura de tela para a entrada %1 na infraestrutura "
 "%2"
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:453
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:456
 #, kde-format
 msgid "Unhandled error in %1 backend. Contact your distributor."
 msgstr ""
 "Erro não manejado na infraestrutura %1 inválida. Contate sua distribuição."
 
-#: libdiscover/backends/KNSBackend/KNSBackend.cpp:577
+#: libdiscover/backends/KNSBackend/KNSBackend.cpp:580
 #, kde-format
 msgid "Wrong KNewStuff URI: %1"
 msgstr "URI do KNewStuff errada: %1"
@@ -1313,7 +1313,7 @@ msgid "Cannot remove “%1”"
 msgstr "Não foi possível remover ”%1”"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1332,7 +1332,7 @@ msgid "Upgrade Now"
 msgstr "Atualizar agora"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2270,7 +2270,7 @@ msgstr "Presente"
 msgid "Future"
 msgstr "Futuro"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:373
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:374
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
@@ -2278,7 +2278,7 @@ msgstr ""
 "Sem espaço suficiente para fazer a atualização; apenas %1 do espaço está "
 "disponível."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:591
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:592
 #, kde-format
 msgid ""
 "This update cannot be completed as it would remove the following software "
@@ -2291,12 +2291,12 @@ msgstr ""
 "ul><nl/>Se você acredita que isto é um erro, relate este erro aos "
 "empacotadores de sua distribuição."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:598
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Confirmar alterações"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:600
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2305,14 +2305,14 @@ msgstr ""
 "Os seguintes pacotes serão removidos pela atualização:<ul><li>%1</li></"
 "ul><br/>para poder instalar:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:731
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:732
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:739
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
 #, kde-format
 msgid ""
 "Media Change of type “%1” is requested.\n"
@@ -2321,14 +2321,14 @@ msgstr ""
 "É necessário mudar o tipo da mídia ”%1”.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:772
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:773
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid "Accept EULA"
 msgstr "Aceitar a EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:773
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:774
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:306
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -2337,14 +2337,14 @@ msgstr ""
 "O pacote %1 e seu fabricante %2 precisam que você aceite a licença:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:923
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:924
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Assinatura faltando para %1 em %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:924
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:925
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:346
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2363,7 +2363,7 @@ msgstr ""
 "Impressão digital: %4\n"
 "Data e hora: %4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:202
 #, kde-format
 msgid ""
 "This action cannot be completed as it would remove the following software "
@@ -2376,12 +2376,12 @@ msgstr ""
 "acredita que isto é um erro, relate este erro aos empacotadores de sua "
 "distribuição."
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:214
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:215
 #, kde-format
 msgid "Confirm package removal"
 msgstr "Confirmar remoção de pacote"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:215
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:216
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"
@@ -2437,68 +2437,68 @@ msgstr ""
 "Infraestrutura rpm-ostree: Nenhum deployment inicializado encontrado. Envie "
 "um relatório de erro."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
 #, kde-format
 msgctxt "@action:button Perform a distro upgrade, not just a package update"
 msgid "Begin Upgrade…"
 msgstr "Iniciar atualização…"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:524
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:518
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr ""
 "Você tem atualizações pendentes para a versão atual. Continuando de qualquer "
 "maneira."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Atualize para a última versão antes de mudar para uma nova versão principal"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:535
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:529
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 "Referência remota ausente para operação de rebase. Envie um relatório de "
 "erro."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:547
 #, kde-format
 msgid "Operating System"
 msgstr "Sistema operacional"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:299
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL e outras licenças"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:309
 #, kde-format
 msgid "Additional packages: "
 msgstr "Pacotes adicionais: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:316
 #, kde-format
 msgid "Additional modules: "
 msgstr "Módulos adicionais: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:323
 #, kde-format
 msgid "Local packages: "
 msgstr "Pacotes locais: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:330
 #, kde-format
 msgid "Replaced packages:"
 msgstr "Pacotes substituídos:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:339
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
 #, kde-format
 msgid "Removed packages:"
 msgstr "Pacotes excluídos:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, kde-format
 msgctxt "@label OS updater message"
 msgid ""
@@ -2507,35 +2507,35 @@ msgstr ""
 "<br/>Esta versão está fixada e não será removida automaticamente nas "
 "atualizações."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:391
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:358
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:371
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:389
 #, kde-format
 msgctxt "@label OS vendor"
 msgid "Fedora Project"
 msgstr "Projeto Fedora"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "Versão atualmente inicializada (fixada)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Currently booted version"
 msgstr "Versão atualmente inicializada"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:405
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:403
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "Versão que será usada após o reinício"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:407
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:405
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "Versão de fallback (fixada)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:409
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:407
 #, kde-format
 msgid "Fallback version"
 msgstr "Versão de fallback"
