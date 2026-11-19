@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-13 20:52+0000\n"
-"PO-Revision-Date: 2026-10-14 17:54+0200\n"
+"PO-Revision-Date: 2026-11-18 15:24+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -983,7 +983,7 @@ msgstr "Continua"
 #, kde-format
 msgctxt "@info %1 is the name of the operating system"
 msgid "Report this issue to %1"
-msgstr "Informa d'aquest problema a %1"
+msgstr "Informeu d'aquest problema a %1"
 
 #: discover/qml/DiscoverWindow.qml:351
 #, kde-format

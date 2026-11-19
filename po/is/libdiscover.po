@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-15 03:16+0000\n"
+"POT-Creation-Date: 2026-11-19 03:22+0000\n"
 "PO-Revision-Date: 2026-06-01 18:19+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -30,9 +30,9 @@ msgstr "gudmundure@gmail.com, sv1@fellsnet.is"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:115
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:326
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:304
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:367
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:393
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:302
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:365
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:391
 #: libdiscover/UpdateModel/UpdateModel.cpp:124
 #: libdiscover/UpdateModel/UpdateModel.cpp:393
 #, kde-format
@@ -626,7 +626,7 @@ msgstr ""
 "para>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:468
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:419
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:417
 #, kde-format
 msgctxt "@label app size"
 msgid "Unknown"
@@ -1300,7 +1300,7 @@ msgid "Cannot remove “%1”"
 msgstr "Get ekki fjarlægt '%1'"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:365
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid ""
@@ -1319,7 +1319,7 @@ msgid "Upgrade Now"
 msgstr "Uppfæra núna í nýja útgáfu"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:375
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
@@ -2267,14 +2267,14 @@ msgstr "Nútíð"
 msgid "Future"
 msgstr "Framtíð"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:380
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:381
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
 msgstr ""
 "Ekki er nóg pláss til að hægt sé að uppfæra; einungis %1 pláss er á lausu."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:602
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:603
 #, fuzzy, kde-format
 #| msgid ""
 #| "This update cannot be completed as it would remove the following software "
@@ -2292,12 +2292,12 @@ msgstr ""
 "ul><nl/>Ef þú telur þetta vera villu skaltu senda villutilkynningu til "
 "þeirra sem halda utan um pakkana hjá dreifingaraðila þínum."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:609
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:610
 #, kde-format
 msgid "Confirm Changes"
 msgstr "Staðfesta breytingar"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:610
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:611
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2306,14 +2306,14 @@ msgstr ""
 "Eftirfarandi pakkar verða fjarlægðir við uppfærsluna:<ul><li>%1</li></ul><br/"
 ">til að hægt sé að setja upp:<ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:736
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:737
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:744
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:745
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
 #, fuzzy, kde-format
 #| msgid ""
 #| "Media Change of type '%1' is requested.\n"
@@ -2325,14 +2325,14 @@ msgstr ""
 "Breytingar á miðli af gerðinni '%1' er krafist.\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:777
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:778
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid "Accept EULA"
 msgstr "Samþykkja notandaleyfi"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:778
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:779
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:306
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -2342,14 +2342,14 @@ msgstr ""
 "notandaleyfi þeirra:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:928
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:929
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Undirritun vantar fyrir %1 í %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:929
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:930
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:346
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2368,7 +2368,7 @@ msgstr ""
 "Fingrafar: %4\n"
 "Tímastimpill: %4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:202
 #, fuzzy, kde-format
 #| msgid ""
 #| "This action cannot be completed as it would remove the following software "
@@ -2386,12 +2386,12 @@ msgstr ""
 "ul><nl/> Ef þú telur þetta vera villu skaltu senda villutilkynningu til "
 "þeirra sem halda utan um pakkana hjá dreifingaraðila þínum."
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:214
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:215
 #, kde-format
 msgid "Confirm package removal"
 msgstr "Staðfesta að pakki verði fjarlægður"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:215
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:216
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"
@@ -2447,65 +2447,65 @@ msgstr ""
 "rpm-ostree bakendi: Engin ræst dreifing fannst. Sendu endilega inn "
 "villuskýrslu."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
 #, kde-format
 msgctxt "@action: button"
 msgid "Begin Upgrade…"
 msgstr "Byrja uppfærslu í nýja útgáfu..."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:524
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:518
 #, kde-format
 msgid "You have pending updates for the current version. Proceeding anyway."
 msgstr "Uppfærslur fyrir núverandi útgáfu eru tilbúnar. Held samt áfram."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:527
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:521
 #, kde-format
 msgid "Please update to the latest version before rebasing to a major version"
 msgstr ""
 "Uppfærðu fyrst í nýjustu útgáfu áður en þú færir kerfið í nýja stóra útgáfu"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:535
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:529
 #, kde-format
 msgid "Missing remote ref for rebase operation. Please file a bug."
 msgstr ""
 "Fjartengd tilvísun fyrir yfirfærsluaðgerð vantar. Sendu inn villuskýrslu."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:553
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:547
 #, kde-format
 msgid "Operating System"
 msgstr "Stýrikerfi"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:301
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:299
 #, kde-format
 msgid "GPL and other licenses"
 msgstr "GPL og önnur notandaleyfi"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:311
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:309
 #, kde-format
 msgid "Additional packages: "
 msgstr "Viðbótarpakkar: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:318
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:316
 #, kde-format
 msgid "Additional modules: "
 msgstr "Viðbótareiningar: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:325
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:323
 #, kde-format
 msgid "Local packages: "
 msgstr "Staðbundnir pakkar: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:332
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:330
 #, kde-format
 msgid "Replaced packages:"
 msgstr "Pakkar sem er skipt út: "
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:339
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:337
 #, kde-format
 msgid "Removed packages:"
 msgstr "Fjarlægðir pakkar:"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:346
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:344
 #, fuzzy, kde-format
 #| msgctxt "@label OS updater message"
 #| msgid ""
@@ -2516,35 +2516,35 @@ msgid ""
 msgstr ""
 "<br/>Þessi útgáfa er fest og verður ekki fjarlægð sjálfkrafa við uppfærslur."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:360
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:373
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:391
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:358
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:371
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:389
 #, kde-format
 msgctxt "@label OS vendor"
 msgid "Fedora Project"
 msgstr "Fedora-verkefnið"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:398
 #, kde-format
 msgid "Currently booted version (pinned)"
 msgstr "Útgáfan sem er nú í gangi (fest)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:402
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:400
 #, kde-format
 msgid "Currently booted version"
 msgstr "Útgáfan sem er nú í gangi"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:405
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:403
 #, kde-format
 msgid "Version that will be used after reboot"
 msgstr "Útgáfa sem verður notuð eftir endurræsingu"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:407
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:405
 #, kde-format
 msgid "Fallback version (pinned)"
 msgstr "Varaútgáfa (fest)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:409
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:407
 #, kde-format
 msgid "Fallback version"
 msgstr "Varaútgáfa"
