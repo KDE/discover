@@ -1,14 +1,15 @@
-# SPDX-FileCopyrightText: 2023, 2024, 2026 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
+# SPDX-FileCopyrightText: 2023, 2024, 2026 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2023.
 # SPDX-FileCopyrightText: 2025 Yuma Kakei <yumasansansan@gmail.com>
+# SPDX-FileCopyrightText: 2026 Mint <5602mint@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:18+0000\n"
-"PO-Revision-Date: 2025-09-21 14:49+0900\n"
-"Last-Translator: Yuma Kakei <yumasansansan@gmail.com>\n"
+"PO-Revision-Date: 2026-11-14 12:17+0900\n"
+"Last-Translator: Mint <5602mint@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -17,17 +18,17 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Ryuichi Yamada,Yuma Kakei"
+msgstr "Ryuichi Yamada,Yuma Kakei,Mint"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "ryuichi_ya220@outlook.jp,yumasansansan@gmail.com"
+msgstr "ryuichi_ya220@outlook.jp,yumasansansan@gmail.com,5602mint@gmail.com"
 
 #: libdiscover/appstream/AppStreamUtils.cpp:115
 #, kde-format
@@ -202,7 +203,7 @@ msgstr "デバッグ"
 #, kde-format
 msgctxt "Category"
 msgid "Graphic Interface Design"
-msgstr "グラフィックインターフェースデザイン"
+msgstr "UI デザイン"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:79
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:79
@@ -223,7 +224,7 @@ msgstr "ローカライズ"
 #, kde-format
 msgctxt "Category"
 msgid "Profiling"
-msgstr "分析"
+msgstr "解析"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:107
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:107
@@ -370,7 +371,7 @@ msgstr "シミュレーション"
 #, kde-format
 msgctxt "Category"
 msgid "Strategy"
-msgstr "戦略ゲーム"
+msgstr "ストラテジー"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:304
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:303
@@ -412,7 +413,7 @@ msgstr "3D"
 #, kde-format
 msgctxt "Category"
 msgid "Drawing"
-msgstr "ドローイング"
+msgstr "お絵描き"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:362
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:362
@@ -447,7 +448,7 @@ msgstr "スキャンと OCR"
 #, kde-format
 msgctxt "Category"
 msgid "Viewers"
-msgstr "ビューア"
+msgstr "閲覧・管理ツール"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:415
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:415
@@ -496,7 +497,7 @@ msgstr "マルチメディア"
 #, kde-format
 msgctxt "Category"
 msgid "Audio and Video Editors"
-msgstr "音楽およびビデオの編集"
+msgstr "音声・動画編集"
 
 #: libdiscover/backends/FlatpakBackend/flatpak-backend-categories.xml:481
 #: libdiscover/backends/PackageKitBackend/packagekit-backend-categories.xml:481
@@ -537,7 +538,7 @@ msgstr "システム設定"
 #, kde-format
 msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
-msgstr "%1 (ユーザ)"
+msgstr "%1 (ユーザー)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:740
 #, kde-format
@@ -636,7 +637,7 @@ msgstr "ネットワークへのアクセス"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:811
 #, kde-format
 msgid "Can access the internet"
-msgstr "インターネットにアクセスできます"
+msgstr "インターネットにアクセスできます。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:817
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:958
@@ -647,7 +648,7 @@ msgstr "セッションバスへのアクセス"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:818
 #, kde-format
 msgid "Access is granted to the entire Session Bus"
-msgstr "セッションバス全体にアクセスできます"
+msgstr "セッションバス全体にアクセスすることができます。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:823
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:969
@@ -658,7 +659,7 @@ msgstr "システムバスへのアクセス"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:824
 #, kde-format
 msgid "Access is granted to the entire System Bus"
-msgstr "システムバス全体にアクセスできます"
+msgstr "システムバス全体にアクセスすることができます。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:829
 #, kde-format
@@ -668,7 +669,7 @@ msgstr "リモートログイン"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:830
 #, kde-format
 msgid "Can initiate remote login requests using the SSH protocol"
-msgstr "SSH プロトコルを使用してリモートログインの要求ができます"
+msgstr "SSH プロトコルを使用してリモートログインを要求することができます。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:834
 #, kde-format
@@ -678,17 +679,17 @@ msgstr "スマートカードへのアクセス"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:835
 #, kde-format
 msgid "Can integrate and communicate with smart cards"
-msgstr "スマートカードと統合してやり取りできます"
+msgstr "スマートカードとの連携・通信を行うことができます。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:839
 #, kde-format
 msgid "Printer Access"
-msgstr "プリンタへのアクセス"
+msgstr "プリンターへのアクセス"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:840
 #, kde-format
 msgid "Can integrate and communicate with printers"
-msgstr "プリンタと統合してやり取りできます"
+msgstr "プリンターとの連携・通信を行うことができます。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:844
 #, kde-format
@@ -701,8 +702,8 @@ msgid ""
 "Allows access to the GPG cryptography service, generally used for signing "
 "and reading signed documents"
 msgstr ""
-"GPG 暗号化サービスにアクセスできます。通常、文書に署名したり署名付きの文書を"
-"読み込んだりするために使用されます。"
+"GPG 暗号化サービスにアクセスできます。一般的にドキュメントへの署名や署名付き"
+"ドキュメントの読み込み時に利用されます。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:851
 #, kde-format
@@ -712,7 +713,7 @@ msgstr "Bluetooth へのアクセス"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:852
 #, kde-format
 msgid "Can integrate and communicate with Bluetooth devices"
-msgstr "Bluetooth デバイスと統合してやり取りできます"
+msgstr "Bluetooth デバイスとの連携・通信を行うことができます。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:856
 #, kde-format
@@ -722,7 +723,7 @@ msgstr "低レベルシステムへのアクセス"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:857
 #, kde-format
 msgid "Can make low-level system calls (e.g. ptrace)"
-msgstr "低レベルのシステムコールを呼び出せます (例: ptrace)"
+msgstr "低レベルのシステムコールを呼び出すことができます。(例: ptrace)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:863
 #, kde-format
@@ -733,8 +734,7 @@ msgstr "デバイスへのアクセス"
 #, kde-format
 msgid "Can communicate with and control built-in or connected hardware devices"
 msgstr ""
-"内蔵デバイスや接続されたデバイスとやり取りできます\n"
-"内蔵デバイスや接続されたデバイスを制御できます"
+"内蔵/接続されたハードウェアデバイスとの通信・制御を行うことができます。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:868
 #, kde-format
@@ -744,7 +744,7 @@ msgstr "KVM へのアクセス"
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:869
 #, kde-format
 msgid "Allows running other operating systems as guests in virtual machines"
-msgstr "他の OS を仮想マシンのゲストとして実行できます"
+msgstr "別の OS を仮想マシンのゲストとして実行することができます。"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:893
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:905
@@ -775,8 +775,8 @@ msgid ""
 "Can read, write, and create files in the following locations in your home "
 "folder without asking permission first: %1"
 msgstr ""
-"ホームフォルダの以下の場所で許可なしにファイルの読み取り、書き込みと作成がで"
-"きます: %1"
+"ホームフォルダの以下の場所で許可なくファイルの読み取り、書き込みと作成を行う"
+"ことができます。%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:931
 #, kde-format
@@ -784,22 +784,24 @@ msgid ""
 "Can read and write files in the following locations in your home folder "
 "without asking permission first: %1"
 msgstr ""
-"ホームフォルダの以下の場所で許可なしにファイルの読み取りと書き込みができま"
-"す: %1"
+"ホームフォルダの以下の場所で許可なくファイルの読み取りと書き込みを行うことが"
+"できます。%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:933
 #, kde-format
 msgid ""
 "Can read files in the following locations in your home folder without asking "
 "permission first: %1"
-msgstr "ホームフォルダの以下の場所で許可なしにファイルの読み取りができます: %1"
+msgstr ""
+"ホームフォルダの以下の場所で許可なくファイルの読み取りを行うことができま"
+"す。%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:935
 #, kde-format
 msgid ""
 "Can access files in the following locations in your home folder without "
 "asking permission first: %1"
-msgstr "ホームフォルダの以下の場所で許可なしにファイルにアクセスできます: %1"
+msgstr "ホームフォルダの以下の場所で許可なくファイルにアクセスできます。%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:941
 #, kde-format
@@ -812,8 +814,8 @@ msgid ""
 "Can read, write, and create system files in the following locations without "
 "asking permission first: %1"
 msgstr ""
-"以下の場所で許可なしにシステムファイルの読み取り、書き込みと作成ができます: "
-"%1"
+"以下の場所で許可なくシステムファイルの読み取り、書き込みと作成を行うことがで"
+"きます。%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:945
 #, kde-format
@@ -821,21 +823,22 @@ msgid ""
 "Can read and write system files in the following locations without asking "
 "permission first: %1"
 msgstr ""
-"以下の場所で許可なしにシステムファイルの読み取りと書き込みができます: %1"
+"以下の場所で許可なくシステムファイルの読み取りと書き込みを行うことができま"
+"す。%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:947
 #, kde-format
 msgid ""
 "Can read system files in the following locations without asking permission "
 "first: %1"
-msgstr "以下の場所で許可なしにシステムファイルの読み取りができます: %1"
+msgstr "以下の場所で許可なくシステムファイルの読み取りを行うことができます。%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:949
 #, kde-format
 msgid ""
 "Can access system files in the following locations without asking permission "
 "first: %1"
-msgstr "以下の場所で許可なしにシステムファイルにアクセスできます: %1"
+msgstr "以下の場所で許可なくシステムファイルにアクセスできます。%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:959
 #, kde-format
@@ -843,8 +846,8 @@ msgid ""
 "Can communicate with other applications and processes in the same desktop "
 "session using the following communication protocols: %1"
 msgstr ""
-"以下のコミュケーションプロトコルを使用して、同じデスクトップセッションで実行"
-"されている他のアプリケーションやプロセスとやり取りできます: %1"
+"以下の通信プロトコルで、同じデスクトップセッションで実行されている他のアプリ"
+"ケーションやプロセスと通信を行うことができます。%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:971
 #, kde-format
@@ -852,8 +855,8 @@ msgid ""
 "Can communicate with all applications and system services using the "
 "following communication protocols: %1"
 msgstr ""
-"以下のコミュケーションプロトコルを使用して、すべてのアプリケーションやシステ"
-"ムサービスとやり取りできます: %1"
+"以下の通信プロトコルで、すべてのアプリケーションやシステムサービスと通信を行"
+"うことができます。%1"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:88
 #, kde-format
@@ -898,7 +901,7 @@ msgid ""
 "<ul><li>%1</li></ul>"
 msgstr ""
 "このリポジトリを削除するためには、以下のアプリケーションをアンインストールす"
-"る必要があります: <ul><li>%1</li></ul>"
+"る必要があります。<ul><li>%1</li></ul>"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:297
 #, kde-format
@@ -913,7 +916,7 @@ msgstr "%1 を見つけられませんでした"
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:333
 #, kde-format
 msgid "%1 (user)"
-msgstr "%1 (ユーザ)"
+msgstr "%1 (ユーザー)"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp:394
 #, kde-format
@@ -1029,7 +1032,7 @@ msgid ""
 "Too many requests sent to the server for backend %1. Please try again in a "
 "few minutes."
 msgstr ""
-"バックエンド %1 のサーバへの要求が多すぎます。数分待ってから再試行してくださ"
+"%1 バックエンドのサーバーへの要求が多すぎます。数分待ってから再試行してくださ"
 "い。"
 
 #: libdiscover/backends/KNSBackend/KNSBackend.cpp:448
@@ -1530,67 +1533,80 @@ msgid "For security, the system will have to be restarted."
 msgstr "セキュリティのために、システムの再起動が必要です。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:208
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Waiting…"
 msgid "Waiting…"
 msgstr "待機中..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:210
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Refreshing Cache…"
 msgid "Refreshing Cache…"
 msgstr "キャッシュを更新しています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:212
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setup…"
 msgid "Setup…"
 msgstr "セットアップ..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:214
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Processing…"
 msgid "Processing…"
 msgstr "処理しています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:216
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Remove…"
 msgid "Remove…"
 msgstr "削除します..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:218
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Downloading…"
 msgid "Downloading…"
 msgstr "ダウンロード中..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:220
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Installing…"
 msgid "Installing…"
 msgstr "インストール中..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:222
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Updating…"
 msgid "Updating…"
 msgstr "更新しています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:224
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Cleaning up…"
 msgid "Cleaning up…"
 msgstr "クリーンアップ..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:227
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Resolving dependencies…"
 msgid "Resolving dependencies…"
 msgstr "依存関係を解決しています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:229
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Checking signatures…"
 msgid "Checking signatures…"
 msgstr "署名を確認しています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:231
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Test committing…"
 msgid "Test committing…"
 msgstr "テスト送信..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:233
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Committing…"
 msgid "Committing…"
 msgstr "コミットしています..."
 
@@ -1601,72 +1617,88 @@ msgid "Finished"
 msgstr "終了しました。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:238
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Canceled"
 msgid "Canceled"
 msgstr "キャンセル"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:240
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Waiting for lock…"
 msgid "Waiting for lock…"
 msgstr "ロックを待っています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:242
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Waiting for authorization…"
 msgid "Waiting for authorization…"
 msgstr "承認を待っています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:247
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Copying files…"
 msgid "Copying files…"
 msgstr "ファイルをコピーしています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:250
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Unknown Status"
 msgid "Unknown Status"
 msgstr "不明なステータス"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:258
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "We are waiting for something."
 msgid "We are waiting for something."
 msgstr "待っています。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:260
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Setting up transaction…"
 msgid "Setting up transaction…"
 msgstr "トランザクションを設定しています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:262
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The transaction is currently working…"
 msgid "The transaction is currently working…"
 msgstr "トランザクションが進行中です..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:264
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The transaction is currently removing packages…"
 msgid "The transaction is currently removing packages…"
 msgstr "トランザクションは現在、パッケージを削除しています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:266
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The transaction is currently downloading packages…"
 msgid "The transaction is currently downloading packages…"
 msgstr "トランザクションは現在、パッケージをダウンロードしています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:268
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The transactions is currently installing packages…"
 msgid "The transactions is currently installing packages…"
 msgstr "トランザクションは現在、パッケージをインストールしています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:270
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The transaction is currently updating packages…"
 msgid "The transaction is currently updating packages…"
 msgstr "トランザクションは現在、パッケージを更新しています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:272
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The transaction is currently cleaning up…"
 msgid "The transaction is currently cleaning up…"
 msgstr "トランザクションは現在、クリーンアップ中です..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:275
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The transaction is currently resolving the dependencies of the packages "
+#| "it will install…"
 msgid ""
 "The transaction is currently resolving the dependencies of the packages it "
 "will install…"
@@ -1675,54 +1707,66 @@ msgstr ""
 "す..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:277
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The transaction is currently checking the signatures of the packages…"
 msgid "The transaction is currently checking the signatures of the packages…"
 msgstr "トランザクションは現在、パッケージの署名をチェックしています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:279
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The transaction is currently testing the commit of this set of packages…"
 msgid ""
 "The transaction is currently testing the commit of this set of packages…"
 msgstr ""
 "トランザクションは現在、この一連のパッケージのコミットをテストしています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:281
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The transaction is currently committing its set of packages…"
 msgid "The transaction is currently committing its set of packages…"
 msgstr "トランザクションは現在、パッケージのセットをコミットしています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:284
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The transaction has finished!"
 msgid "The transaction has finished!"
 msgstr "トランザクションが終了しました！"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:286
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The transaction was canceled"
 msgid "The transaction was canceled"
 msgstr "トランザクションがキャンセルされました。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:288
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The transaction is currently waiting for the lock…"
 msgid "The transaction is currently waiting for the lock…"
 msgstr "トランザクションは現在、ロックを待っています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:290
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Waiting for the user to authorize the transaction…"
 msgid "Waiting for the user to authorize the transaction…"
 msgstr "ユーザがトランザクションを承認するのを待っています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:295
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The transaction is currently copying files…"
 msgid "The transaction is currently copying files…"
 msgstr "トランザクションは現在、ファイルをコピーしています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:297
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Currently refreshing the repository cache…"
 msgid "Currently refreshing the repository cache…"
 msgstr "現在リポジトリのキャッシュを更新しています..."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitMessages.cpp:302
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Unknown status %1."
 msgid "Unknown status %1."
 msgstr "不明なステータス %1."
 
@@ -1983,7 +2027,7 @@ msgstr "リポジトリ URL:"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:85
 #, kde-format
 msgid "System upgrade"
-msgstr "システムの更新"
+msgstr "システムのアップグレード"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:172
 #, kde-format
@@ -2136,10 +2180,11 @@ msgstr[0] ""
 "この操作により、次のパッケージも削除されます。:\n"
 "%2"
 
+# デッドコード？
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:12
 #, kde-format
 msgid "Show Dependencies…"
-msgstr "依存関係を表示..."
+msgstr "依存関係を表示…"
 
 #: libdiscover/backends/PackageKitBackend/qml/DependenciesButton.qml:32
 #, kde-format
@@ -2246,7 +2291,7 @@ msgstr "削除されたパッケージ:"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:392
 #, kde-format
 msgid "Currently booted version (pinned)"
-msgstr "現在起動しているバージョン (ピン止めされています)"
+msgstr "現在起動中のバージョン (ピン留め中)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:394
 #, kde-format
@@ -2261,7 +2306,7 @@ msgstr "再起動後に使われるバージョン"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:399
 #, kde-format
 msgid "Fallback version (pinned)"
-msgstr "フォールバック (ピン止めされています)"
+msgstr "フォールバック用バージョン (ピン留め中)"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:401
 #, kde-format
@@ -2341,7 +2386,7 @@ msgstr "切り替え"
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:14
 #, kde-format
 msgid "Configure permissions…"
-msgstr "権限を設定..."
+msgstr "権限を設定…"
 
 #: libdiscover/backends/SnapBackend/qml/PermissionsButton.qml:22
 #, kde-format
