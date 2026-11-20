@@ -6,6 +6,7 @@
   <project_license>GPL-2.0+</project_license>
   <name>AppStream preview backend</name>
   <name xml:lang="ar">خلفية لمعاينة AppStream</name>
+  <name xml:lang="bg">Бекенд за предварителен преглед на AppStream</name>
   <name xml:lang="ca">Dorsal de vista prèvia d'AppStream</name>
   <name xml:lang="ca-valencia">Dorsal de vista prèvia d'AppStream</name>
   <name xml:lang="de">AppStream-Vorschau-Modul</name>
@@ -43,6 +44,7 @@
   </developer>
   <summary>Preview AppStream files in Discover</summary>
   <summary xml:lang="ar">معاينة ملفات AppStream في المستكشف</summary>
+  <summary xml:lang="bg">Преглед на файлове AppStream в Discover</summary>
   <summary xml:lang="ca">Vista prèvia de fitxers AppStream al Discover</summary>
   <summary xml:lang="ca-valencia">Vista prèvia de fitxers AppStream en Discover</summary>
   <summary xml:lang="de">Vorschau von AppStream-Dateien in Discover</summary>
