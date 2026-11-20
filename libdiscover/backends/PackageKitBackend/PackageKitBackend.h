@@ -151,10 +151,10 @@ private Q_SLOTS:
     void packageDetails(const PackageKit::Details &details);
     void addPackageToUpdate(PackageKit::Transaction::Info, const QString &pkgid, const QString &summary);
     void getUpdatesFinished(PackageKit::Transaction::Exit, uint);
-    void loadAllPackages();
 
 Q_SIGNALS:
     void loadedAppStream();
+    void loadedAllPackages();
     void available();
 
 private:
@@ -169,6 +169,7 @@ private:
     QVector<StreamResult> resultsByComponents(const AppStream::ComponentBox &names) const;
 
     PKResultsStream *deferredResultStream(const QString &streamName, std::function<void(PKResultsStream *)> callback);
+    PKResultsStream *processAllPackages(const QString &streamName, std::function<void(PKResultsStream *)> callback);
 
     void checkDaemonRunning();
     void acquireFetching(bool f);

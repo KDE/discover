@@ -35,8 +35,6 @@
 #include <QStringList>
 #include <QtConcurrentRun>
 
-#include <QCoroCore>
-
 #include <PackageKit/Daemon>
 #include <PackageKit/Details>
 #include <PackageKit/Offline>
@@ -55,7 +53,6 @@
 #include <Category/CategoryModel.h>
 #include <resources/ResourcesModel.h>
 
-using namespace std::chrono_literals;
 using namespace Qt::StringLiterals;
 
 DISCOVER_BACKEND_PLUGIN(PackageKitBackend)
@@ -695,31 +692,53 @@ private:
 
 PKResultsStream *PackageKitBackend::deferredResultStream(const QString &streamName, std::function<void(PKResultsStream *)> callback)
 {
-    // NOTE: stream is a child of `this` so we don't have guard this backend object separately.
     auto stream = PKResultsStream::create(this, streamName);
-
-    // Don't capture variables into a coroutine lambda, pass them in as arguments instead
-    // See https://devblogs.microsoft.com/oldnewthing/20211103-00/?p=105870
-    [](PackageKitBackend *self, QPointer<PKResultsStream> stream, std::function<void(PKResultsStream *)> callback) -> QCoro::Task<> {
-        if (self->m_appstreamInitialized) {
-            co_await QCoro::sleepFor(0ms);
-        } else {
-            co_await qCoro(self, &PackageKitBackend::loadedAppStream);
+    auto runCallback = [stream, callback = std::move(callback)] {
+        if (stream) {
+            callback(stream);
         }
-        if (stream.isNull()) {
-            co_return;
-        }
-        callback(stream);
-    }(this, stream, std::move(callback));
+    };
 
+    if (m_appstreamInitialized) {
+        QTimer::singleShot(0, this, std::move(runCallback));
+    } else {
+        connect(this, &PackageKitBackend::loadedAppStream, stream.data(), std::move(runCallback), Qt::SingleShotConnection);
+    }
+
+    return stream;
+}
+
+PKResultsStream *PackageKitBackend::processAllPackages(const QString &streamName, std::function<void(PKResultsStream *)> callback)
+{
+    auto stream = PKResultsStream::create(this, streamName);
+    auto runCallback = [stream, callback = std::move(callback)] {
+        if (stream) {
+            callback(stream);
+        }
+    };
+
+    if (m_allPackagesLoaded) {
+        QTimer::singleShot(0, this, std::move(runCallback));
+    } else {
+        m_appdata->components().then(this, [this](const AppStream::ComponentBox &components) {
+            for (const AppStream::Component &component : components) {
+                if (!component.packageNames().isEmpty()) {
+                    addComponent(component);
+                }
+            }
+            includePackagesToAdd();
+            m_allPackagesLoaded = true;
+            Q_EMIT loadedAllPackages();
+        });
+        connect(this, &PackageKitBackend::loadedAllPackages, stream.data(), std::move(runCallback), Qt::SingleShotConnection);
+    }
     return stream;
 }
 
 ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters &filter)
 {
     // In this method we are copying filters by value into capturing lambdas
-    // to avoid lifetime issues. Also coroutines should not be capturing, so
-    // we use nested lambdas with arguments instead of captures.
+    // to keep them alive until the deferred callbacks run.
     if (!filter.resourceUrl.isEmpty()) {
         return findResourceByPackageName(filter.resourceUrl);
     } else if (!filter.extends.isEmpty()) {
@@ -733,9 +752,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
         return new ResultsStream(QStringLiteral("PackageKitStream-upgradeable"),
                                  kTransform<QVector<StreamResult>>(upgradeablePackages())); // No need for it to be a PKResultsStream
     } else if (filter.state == AbstractResource::Installed) {
-        return deferredResultStream(u"PackageKitStream-installed"_s, [this, filter = filter](PKResultsStream *stream) {
-            loadAllPackages();
-
+        return processAllPackages(u"PackageKitStream-installed"_s, [this, filter = filter](PKResultsStream *stream) {
             const auto toResolve = kFilter<QVector<AbstractResource *>>(m_packages.packages, needsResolveFilter);
 
             auto installedAndNameFilter = [filter](AbstractResource *resource) {
@@ -781,9 +798,7 @@ ResultsStream *PackageKitBackend::search(const AbstractResourcesBackend::Filters
             }
         });
     } else if (filter.search.isEmpty() && !filter.category) {
-        return deferredResultStream(u"PackageKitStream-all"_s, [this](PKResultsStream *stream) {
-            loadAllPackages();
-
+        return processAllPackages(u"PackageKitStream-all"_s, [this](PKResultsStream *stream) {
             auto resources = kFilter<QVector<AbstractResource *>>(m_packages.packages, [](AbstractResource *resource) {
                 auto pkResource = qobject_cast<PackageKitResource *>(resource);
                 // Neither PackageKitResource or its subclass AppPackageKitResource can have type == ApplicationSupport
@@ -1203,21 +1218,6 @@ InlineMessage *PackageKitBackend::explainDysfunction() const
     }
 
     return AbstractResourcesBackend::explainDysfunction();
-}
-
-void PackageKitBackend::loadAllPackages()
-{
-    if (m_allPackagesLoaded) {
-        return;
-    }
-    const auto components = m_appdata->components().result();
-    for (const auto &component : components) {
-        if (!component.packageNames().isEmpty()) {
-            addComponent(component);
-        }
-    }
-    includePackagesToAdd();
-    m_allPackagesLoaded = true;
 }
 
 void PackageKitBackend::aboutTo(AboutToAction action)
