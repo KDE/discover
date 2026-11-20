@@ -47,7 +47,6 @@ target_link_libraries(packagekit-backend
         KF6::KIOGui
         KF6::Archive
         AppStreamQt
-        QCoro::Core
         libdiscover-backend-packagekit-logging-category
 )
 
