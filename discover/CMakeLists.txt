@@ -23,6 +23,7 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
     main.cpp
     DiscoverObject.cpp
     DiscoverDeclarativePlugin.cpp
+    BigscreenApp.cpp
 
     AbstractAppsModel.cpp
     OdrsAppsModel.cpp
@@ -34,6 +35,7 @@ add_executable(plasma-discover ${plasma_discover_SRCS}
 
     DiscoverObject.h
     DiscoverDeclarativePlugin.h
+    BigscreenApp.h
 
     FeaturedModel.h
     UnityLauncher.h
@@ -47,6 +49,7 @@ add_executable(Plasma::Discover ALIAS plasma-discover)
 set_target_properties(plasma-discover PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 target_link_libraries(plasma-discover PUBLIC
+                                     KF6::CoreAddons
                                      KF6::Crash
                                      KF6::DBusAddons
                                      KF6::I18n
@@ -64,6 +67,45 @@ target_link_libraries(plasma-discover PUBLIC
                                      Qt::QuickControls2
                                      Discover::Common
 )
+
+# Plasma Bigscreen (TV) interface, shown when the runtime platform is "mediacenter" or with --ui bigscreen
+ecm_find_qmlmodule(org.kde.bigscreen.ui 1.0)
+set_package_properties(org.kde.bigscreen.ui-QMLModule PROPERTIES
+    TYPE RUNTIME
+    PURPOSE "Required at runtime by Discover for Plasma Bigscreen"
+)
+
+ecm_add_qml_module(plasma-discover
+    URI org.kde.discover.bigscreen
+    GENERATE_PLUGIN_SOURCE
+    NO_IMPORT_SCAN
+    DEPENDENCIES
+        QtQuick
+        org.kde.kirigami
+)
+
+set(bigscreen_QML
+    qml/bigscreen/AppBackdrop.qml
+    qml/bigscreen/AppCard.qml
+    qml/bigscreen/AppGrid.qml
+    qml/bigscreen/AppPage.qml
+    qml/bigscreen/AppRail.qml
+    qml/bigscreen/AppTile.qml
+    qml/bigscreen/DescriptionPage.qml
+    qml/bigscreen/HomePage.qml
+    qml/bigscreen/InstallButton.qml
+    qml/bigscreen/Main.qml
+    qml/bigscreen/ScreenshotPage.qml
+    qml/bigscreen/SearchPage.qml
+    qml/bigscreen/SettingsPage.qml
+    qml/bigscreen/StateBadge.qml
+)
+foreach(file IN LISTS bigscreen_QML)
+    get_filename_component(alias ${file} NAME)
+    set_source_files_properties(${file} PROPERTIES QT_RESOURCE_ALIAS ${alias})
+endforeach()
+
+ecm_target_qml_sources(plasma-discover SOURCES ${bigscreen_QML})
 
 if (TARGET Qt::WebView)
     target_link_libraries(plasma-discover PUBLIC Qt::WebView)

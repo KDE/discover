@@ -6,6 +6,7 @@
 
 // #define QT_QML_DEBUG
 
+#include "BigscreenApp.h"
 #include "DiscoverObject.h"
 #include "DiscoverVersion.h"
 #include <DiscoverBackendsFactory.h>
@@ -13,6 +14,7 @@
 #include <KConfig>
 #include <KDBusService>
 #include <KLocalizedString>
+#include <KRuntimePlatform>
 #include <KWindowSystem>
 #include <QApplication>
 #include <QCommandLineParser>
@@ -42,6 +44,7 @@ std::unique_ptr<QCommandLineParser> createParser()
     parser->addOption(QCommandLineOption(QStringLiteral("feedback"), i18n("Lists the available options for user feedback")));
     parser->addOption(QCommandLineOption(QStringLiteral("headless-update"), i18n("Starts an update automatically, headless")));
     parser->addOption(QCommandLineOption(QStringLiteral("test"), QStringLiteral("Test file"), QStringLiteral("file.qml")));
+    parser->addOption(QCommandLineOption(QStringLiteral("ui"), i18n("Interface to show: \"desktop\" or \"bigscreen\""), QStringLiteral("interface")));
     parser->addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme"));
     // clang-format on
     DiscoverBackendsFactory::setupCommandLine(parser.get());
@@ -90,6 +93,12 @@ void processArgs(QCommandLineParser *parser, DiscoverObject *discoverObject)
             discoverObject->openMode(QStringLiteral("Browsing"));
         }
     }
+}
+
+// Whether to show the Plasma Bigscreen (TV) interface by default
+static bool isBigscreenPlatform()
+{
+    return KRuntimePlatform::runtimePlatform().contains(QLatin1String("mediacenter"));
 }
 
 static void raiseWindow(QWindow *window)
@@ -155,6 +164,20 @@ int main(int argc, char **argv)
         const bool feedback = parser->isSet(QStringLiteral("feedback"));
         const bool headlessUpdate = parser->isSet(QStringLiteral("headless-update"));
 
+        // Parse --ui flag
+        bool showBigscreen = isBigscreenPlatform();
+        if (parser->isSet(QStringLiteral("ui"))) {
+            const QString ui = parser->value(QStringLiteral("ui"));
+            if (ui == QLatin1String("bigscreen")) {
+                showBigscreen = true;
+            } else if (ui == QLatin1String("desktop")) {
+                showBigscreen = false;
+            } else {
+                QTextStream(stderr) << i18n("Unknown interface \"%1\", expected \"desktop\" or \"bigscreen\".", ui) << '\n';
+                return 1;
+            }
+        }
+
         if (parser->isSet(QStringLiteral("listbackends"))) {
             QTextStream(stdout) << i18n("Available backends:\n");
             DiscoverBackendsFactory f;
@@ -170,10 +193,17 @@ int main(int argc, char **argv)
 
         KDBusService *service = !feedback ? new KDBusService(KDBusService::Unique, &app) : nullptr;
 
+        if (showBigscreen && !feedback && !headlessUpdate // Skip feedback and headless modes
+            && !parser->isSet(QStringLiteral("test"))) {
+            // Launch interface for Plasma Bigscreen
+            return runBigscreen(app, service);
+        }
+
         {
             auto options = parser->optionNames();
             options.removeAll(QStringLiteral("backends"));
             options.removeAll(QStringLiteral("test"));
+            options.removeAll(QStringLiteral("ui"));
             QVariantMap initialProperties;
             if (!options.isEmpty() || !parser->positionalArguments().isEmpty())
                 initialProperties = {{QStringLiteral("currentTopLevel"), QStringLiteral(DISCOVER_BASE_URL "/LoadingPage.qml")}};
