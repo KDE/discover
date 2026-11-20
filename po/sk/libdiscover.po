@@ -651,8 +651,7 @@ msgid "All Files"
 msgstr "Všetky súbory"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:767
-#, fuzzy, kde-format
-#| msgid "Home"
+#, kde-format
 msgctxt "the user's home directory"
 msgid "Home"
 msgstr "Domov"
@@ -931,6 +930,7 @@ msgstr ""
 msgctxt "@info:status"
 msgid "Failed to move data for <application>%1</application> to the trash: %2"
 msgstr ""
+"Údaje pre <application>%1</application> sa nepodarilo presunúť do koša: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1137
 #, kde-format

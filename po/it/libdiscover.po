@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-19 01:09+0000\n"
-"PO-Revision-Date: 2026-11-03 15:53+0100\n"
+"PO-Revision-Date: 2026-11-13 00:03+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.08.2\n"
+"X-Generator: Lokalize 26.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -925,7 +925,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to move data for <application>%1</application> to the trash: %2"
-msgstr ""
+msgstr "Impossibile cestinare i dati di <application>%1</application>: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1137
 #, kde-format
