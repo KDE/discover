@@ -5,7 +5,6 @@ endif()
 
 include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/..)
 
-ecm_qt_declare_logging_category(plasma_discover_SRCS HEADER discover_debug.h IDENTIFIER DISCOVER_LOG CATEGORY_NAME org.kde.plasma.discover DESCRIPTION "discover" EXPORT DISCOVER)
 kconfig_add_kcfg_files(plasma_discover_SRCS discoversettings.kcfgc GENERATE_MOC)
 
 if (TARGET KF6::UserFeedbackCore)
@@ -19,25 +18,41 @@ endif()
 # https://bugs.kde.org/show_bug.cgi?id=513676
 set_source_files_properties(DiscoverObject.cpp PROPERTIES COMPILE_OPTIONS "-Wsign-conversion")
 
-add_executable(plasma-discover ${plasma_discover_SRCS}
-    main.cpp
-    DiscoverObject.cpp
+add_library(discover-ui-common STATIC
     DiscoverDeclarativePlugin.cpp
-
+    ReadFile.cpp
     AbstractAppsModel.cpp
     OdrsAppsModel.cpp
     FeaturedModel.cpp
     LimitedRowCountProxyModel.cpp
+
+    DiscoverDeclarativePlugin.h
+    ReadFile.h
+    AbstractAppsModel.h
+    OdrsAppsModel.h
+    FeaturedModel.h
+    LimitedRowCountProxyModel.h
+)
+ecm_qt_declare_logging_category(discover-ui-common HEADER discover_debug.h IDENTIFIER DISCOVER_LOG CATEGORY_NAME org.kde.plasma.discover DESCRIPTION "discover" EXPORT DISCOVER)
+target_include_directories(discover-ui-common PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+target_link_libraries(discover-ui-common PUBLIC
+    KF6::ConfigCore
+    KF6::KIOCore
+    Qt::Qml
+    Qt::Quick
+    Discover::Common
+)
+
+add_executable(plasma-discover ${plasma_discover_SRCS}
+    main.cpp
+    DiscoverObject.cpp
+
     UnityLauncher.cpp
-    ReadFile.cpp
     PowerManagementInterface.cpp
 
     DiscoverObject.h
-    DiscoverDeclarativePlugin.h
 
-    FeaturedModel.h
     UnityLauncher.h
-    ReadFile.h
 
 
     resources.qrc
@@ -47,6 +62,7 @@ add_executable(Plasma::Discover ALIAS plasma-discover)
 set_target_properties(plasma-discover PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 target_link_libraries(plasma-discover PUBLIC
+                                     discover-ui-common
                                      KF6::Crash
                                      KF6::DBusAddons
                                      KF6::I18n
@@ -78,6 +94,8 @@ if (TARGET KF6::UserFeedbackCore)
 endif()
 
 install(TARGETS plasma-discover ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+
+add_subdirectory(bigscreen)
 
 # if (BUILD_DummyBackend)
 #     target_compile_definitions(plasma-discover PRIVATE $<$<CONFIG:Debug>:QT_QML_DEBUG=1>)

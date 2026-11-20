@@ -25,6 +25,7 @@ include(ECMQtDeclareLoggingCategory)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
 include(ECMFindQmlModule)
+include(ECMQmlModule)
 include(ECMDeprecationSettings)
 include(ECMSourceVersionControl)
 
