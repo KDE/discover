@@ -924,6 +924,7 @@ msgstr ""
 msgctxt "@info:status"
 msgid "Failed to move data for <application>%1</application> to the trash: %2"
 msgstr ""
+"Údaje pre <application>%1</application> sa nepodarilo presunúť do koša: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1138
 #, kde-format
