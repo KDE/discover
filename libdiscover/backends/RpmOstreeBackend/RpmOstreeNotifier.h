@@ -57,9 +57,6 @@ private:
      * only notify once about an update for a given version. */
     QString m_updateVersion;
 
-    /* Setup the paths in the filesystem watcher to look for changes in deployments */
-    void setupWatcherPaths();
-
     /* Check if we already have a pending deployment for the version availalbe
      * for update */
     void checkForPendingDeployment();

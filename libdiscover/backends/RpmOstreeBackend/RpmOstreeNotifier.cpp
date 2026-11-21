@@ -39,23 +39,22 @@ RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
         return;
     }
 
-    // Setup a  watcher to trigger a check for reboot when the deployments are changed
-    // and there is thus likely an new deployment installed following an update.
+    // Setup a  watcher to trigger a check for reboot when a deployment is staged for the next boot.
+    // ostree will write a file named `/run/ostree/staged-deployment` when that happens, which will
+    // trigger this watcher.
     m_watcher = new QFileSystemWatcher(this);
     connect(m_watcher, &QFileSystemWatcher::directoryChanged, this, [this]() {
-        // Stop watching all directories
-        m_watcher->removePaths(m_watcher->directories());
-        qCInfo(RPMOSTREE_LOG) << "Change in deployments. Triggering timer";
+        qCInfo(RPMOSTREE_LOG) << "Change in `/run/ostree`. Triggering the timer to refresh deployments";
         m_timer->start();
     });
-    setupWatcherPaths();
+    m_watcher->addPath(QLatin1String("/run/ostree"));
 
     // We also setup a timer to avoid triggering a check immediately when a new
     // deployment is made available and instead wait a bit to let things settle down.
     m_timer = new QTimer(this);
     m_timer->setSingleShot(true);
-    // Wait 60 seconds for all rpm-ostree operations to complete
-    m_timer->setInterval(60000);
+    // Wait 10 seconds for all rpm-ostree operations to complete
+    m_timer->setInterval(10000);
     connect(m_timer, &QTimer::timeout, this, &RpmOstreeNotifier::checkForPendingDeployment);
 
     qCInfo(RPMOSTREE_LOG) << "Looking for ostree format";
@@ -129,18 +128,6 @@ RpmOstreeNotifier::RpmOstreeNotifier(QObject *parent)
 bool RpmOstreeNotifier::isValid() const
 {
     return QFile::exists(QStringLiteral("/run/ostree-booted"));
-}
-
-void RpmOstreeNotifier::setupWatcherPaths()
-{
-    // Find all ostree managed system installations available. There is usually only one but
-    // doing that dynamically here avoids hardcoding a specific value or doing a DBus call.
-    QDirIterator it(QStringLiteral("/ostree/deploy/"), QDir::AllDirs | QDir::NoDotAndDotDot);
-    while (it.hasNext()) {
-        const QString path = it.next() + QLatin1String("/deploy/");
-        m_watcher->addPath(path);
-        qCInfo(RPMOSTREE_LOG) << "Looking for new deployments in" << path;
-    }
 }
 
 void RpmOstreeNotifier::recheckSystemUpdateNeeded()
@@ -291,8 +278,6 @@ void RpmOstreeNotifier::checkSystemUpdateOCI()
 void RpmOstreeNotifier::checkForPendingDeployment()
 {
     Q_EMIT checkingPendingDeployment();
-    // Re-setup the paths to watch for deployments now that the timer expired.
-    setupWatcherPaths();
 
     qCInfo(RPMOSTREE_LOG) << "Looking at existing deployments";
 
