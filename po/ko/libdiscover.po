@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-19 01:09+0000\n"
-"PO-Revision-Date: 2026-10-03 22:34+0200\n"
+"PO-Revision-Date: 2026-11-21 23:34+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -647,8 +647,7 @@ msgid "All Files"
 msgstr "모든 파일"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:767
-#, fuzzy, kde-format
-#| msgid "Home"
+#, kde-format
 msgctxt "the user's home directory"
 msgid "Home"
 msgstr "홈"
@@ -907,7 +906,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to move data for <application>%1</application> to the trash: %2"
-msgstr ""
+msgstr "<application>%1</application>의 데이터를 휴지통으로 이동할 수 없음: %2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1137
 #, kde-format
@@ -1291,9 +1290,7 @@ msgstr ""
 "을 다시 시작하십시오."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Upgrade Now"
+#, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "지금 업그레이드"
@@ -2200,8 +2197,7 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
-#, fuzzy, kde-format
-#| msgid "System upgrade"
+#, kde-format
 msgctxt "Major system upgrade upgrade, not a smaller security update"
 msgid "System upgrade"
 msgstr "시스템 업그레이드"
@@ -2215,17 +2211,12 @@ msgstr[0] "패키지 %1개가 업그레이드될 예정"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
 #, kde-format
 msgid "<h3>%1</h3>%2"
-msgstr ""
+msgstr "<h3>%1</h3>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-#| "blockquote>"
+#, kde-format
 msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
-msgstr ""
-"<h3>%1</h3>새로운 버전 %2(으)로 업그레이드<br/>릴리스 노트:<blockquote>%3</"
-"blockquote>"
+msgstr "<h3>%1</h3>%2<br/>릴리스 노트:<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
 #, kde-format
@@ -2396,9 +2387,7 @@ msgstr ""
 "rpm-ostree 백엔드: 부트된 환경을 찾을 수 없습니다. 버그를 보고해 주십시오."
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Begin Upgrade…"
+#, kde-format
 msgctxt "@action:button Perform a distro upgrade, not just a package update"
 msgid "Begin Upgrade…"
 msgstr "업그레이드 시작…"
@@ -2676,7 +2665,7 @@ msgstr "\"%1\" 대상의 appstream 메타데이터에서 구성 요소를 찾을
 #, kde-format
 msgctxt "Upgrade status: A system update that has to be downloaded again"
 msgid "Previous installation was incomplete, trying again"
-msgstr ""
+msgstr "이전 설치가 완전히 끝나지 않았습니다. 다시 시도하는 중"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format

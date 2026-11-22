@@ -1978,7 +1978,3 @@ msgstr "Tid for sist oppdatering er ukjent"
 msgctxt "@action:button cancel Flatpak webflow"
 msgid "Cancel"
 msgstr "Avbryt"
-
-#~ msgctxt "The app does not provide any licenses"
-#~ msgid "Unknown"
-#~ msgstr "Ukjent"
