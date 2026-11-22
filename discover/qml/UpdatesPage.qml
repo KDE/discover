@@ -282,17 +282,28 @@ DiscoverPage {
                     Layout.leftMargin: Kirigami.Units.largeSpacing
                     Layout.rightMargin: Kirigami.Units.largeSpacing
 
-                    RowLayout {
+                    // Use Item so the combobox follows label's wrapped text and not the layout width, otherwise there's a gap between them
+                    Item {
                         visible: resourcesUpdatesModel.isProgressing
-                        spacing: Kirigami.Units.smallSpacing
                         Layout.fillWidth: true
+                        Layout.minimumWidth: actionAfterUpdateCombo.width + Kirigami.Units.smallSpacing
+                        implicitWidth: afterUpdatesLabel.implicitWidth + Kirigami.Units.smallSpacing + actionAfterUpdateCombo.implicitWidth
+                        implicitHeight: Math.max(afterUpdatesLabel.height, actionAfterUpdateCombo.implicitHeight)
 
                         QQC2.Label {
+                            id: afterUpdatesLabel
+                            anchors.left: parent.left
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: Math.min(implicitWidth, parent.width - Kirigami.Units.smallSpacing - actionAfterUpdateCombo.width)
+                            wrapMode: Text.Wrap
                             text: KI18n.i18nc("@info After updates complete, shut down/restart/quit", "After updates complete:")
                         }
 
                         QQC2.ComboBox {
                             id: actionAfterUpdateCombo
+                            anchors.left: afterUpdatesLabel.left
+                            anchors.leftMargin: afterUpdatesLabel.contentWidth + Kirigami.Units.smallSpacing
+                            anchors.verticalCenter: parent.verticalCenter
                             model: [
                                 KI18n.i18nc("@item:inlistbox after updates complete, do nothing", "Do nothing"),
                                 KI18n.i18nc("@item:inlistbox after updates complete, restart", "Restart"),
