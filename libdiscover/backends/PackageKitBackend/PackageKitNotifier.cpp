@@ -40,6 +40,9 @@ PackageKitNotifier::PackageKitNotifier(QObject *parent)
     , m_normalUpdates(0)
     , m_hasDistUpgrade(false)
 {
+    // Same as in PackageKitBackend: let polkit prompt for user initiated transactions, like repairSystem
+    PackageKit::Daemon::global()->setHints({QStringLiteral("interactive=true"), QStringLiteral("locale=%1").arg(qEnvironmentVariable("LANG"))});
+
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::transactionListChanged, this, &PackageKitNotifier::transactionListChanged);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::restartScheduled, this, &PackageKitNotifier::nowNeedsReboot);
