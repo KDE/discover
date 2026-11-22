@@ -355,7 +355,10 @@ FlatpakBackend::FlatpakBackend(QObject *parent)
         qCWarning(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "Failed to setup flatpak installations:" << error->message;
     } else {
         m_sources = new FlatpakSourcesBackend(m_installations, this);
+        // Make sure contentsChanged() gets emitted even if no remotes are configured
+        acquireFetching(true);
         loadAppsFromAppstreamData();
+        acquireFetching(false);
 
         SourcesModel::global()->addSourcesBackend(m_sources);
     }
