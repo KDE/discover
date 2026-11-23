@@ -242,50 +242,43 @@ msgid "Available modes:\n"
 msgstr "可用模式：\n"
 
 #: discover/qml/AddonsView.qml:29
-#, fuzzy, kde-format
-#| msgid "Addons for %1"
+#, kde-format
 msgctxt "@title:window page title, addons page, %1 is app name"
 msgid "Addons for %1"
 msgstr "%1 的附加组件"
 
 #: discover/qml/AddonsView.qml:81
-#, fuzzy, kde-format
-#| msgid "More…"
+#, kde-format
 msgctxt "@action:button show more"
 msgid "More…"
 msgstr "更多…"
 
 #: discover/qml/AddonsView.qml:90
-#, fuzzy, kde-format
-#| msgid "Apply Changes"
+#, kde-format
 msgctxt "@action:button install/remove addons"
 msgid "Apply Changes"
 msgstr "应用更改"
 
 #: discover/qml/AddonsView.qml:98
-#, fuzzy, kde-format
-#| msgid "Reset"
+#, kde-format
 msgctxt "@action:button revert changes, don't install/remove addons"
 msgid "Reset"
 msgstr "重置"
 
 #: discover/qml/AddSourceDialog.qml:22
-#, fuzzy, kde-format
-#| msgid "Add New %1 Repository"
+#, kde-format
 msgctxt "@title:window page title %1 is display name e.g. Flatpak"
 msgid "Add New %1 Repository"
 msgstr "添加新的 %1 软件仓库"
 
 #: discover/qml/AddSourceDialog.qml:46
-#, fuzzy, kde-format
-#| msgid "Add"
+#, kde-format
 msgctxt "@action:button add repository"
 msgid "Add"
 msgstr "添加"
 
 #: discover/qml/AddSourceDialog.qml:51
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action:button cancel adding repository"
 msgid "Cancel"
 msgstr "取消"
@@ -294,11 +287,10 @@ msgstr "取消"
 #, kde-format
 msgctxt "@info %1 is number of ratings"
 msgid "(%1)"
-msgstr ""
+msgstr "(%1)"
 
 #: discover/qml/ApplicationDelegate.qml:165
-#, fuzzy, kde-format
-#| msgid "No ratings"
+#, kde-format
 msgctxt "@info"
 msgid "No ratings"
 msgstr "沒有评分"
@@ -443,8 +435,7 @@ msgid "From %1"
 msgstr "来自 %1"
 
 #: discover/qml/ApplicationPage.qml:209
-#, fuzzy, kde-format
-#| msgid "%1 - %2"
+#, kde-format
 msgctxt "@option:radio %1 is source, %2 is version"
 msgid "%1 - %2"
 msgstr "%1 - %2"
@@ -468,22 +459,19 @@ msgid "Screenshots not available for %1"
 msgstr "%1 的屏幕截图不可用"
 
 #: discover/qml/ApplicationPage.qml:436
-#, fuzzy, kde-format
-#| msgid "What’s New"
+#, kde-format
 msgctxt "@title:group heading for changelog"
 msgid "What’s New"
 msgstr "新增内容"
 
 #: discover/qml/ApplicationPage.qml:469
-#, fuzzy, kde-format
-#| msgid "Reviews"
+#, kde-format
 msgctxt "@title:group heading for reviews"
 msgid "Reviews"
 msgstr "评价"
 
 #: discover/qml/ApplicationPage.qml:480
-#, fuzzy, kde-format
-#| msgid "Loading reviews for %1"
+#, kde-format
 msgctxt "@info:status %1 is app/addon name"
 msgid "Loading reviews for %1"
 msgstr "正在加载 %1 的评论"
@@ -507,15 +495,13 @@ msgid "Install to write a review"
 msgstr "安装程序后才能发表评论"
 
 #: discover/qml/ApplicationPage.qml:501
-#, fuzzy, kde-format
-#| msgid "Write a Review"
+#, kde-format
 msgctxt "@action:button placeholdermessage helpfulAction"
 msgid "Write a Review"
 msgstr "撰写评价"
 
 #: discover/qml/ApplicationPage.qml:501
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@action:button placeholdermessage helpfulAction installs app"
 msgid "Install to Write a Review"
 msgstr "安装程序后才能发表评价"
@@ -527,23 +513,19 @@ msgid "Show All Reviews"
 msgstr "显示全部评价"
 
 #: discover/qml/ApplicationPage.qml:545
-#, fuzzy, kde-format
-#| msgid "Write a Review"
+#, kde-format
 msgctxt "@action:button"
 msgid "Write a Review"
 msgstr "撰写评价"
 
 #: discover/qml/ApplicationPage.qml:545
-#, fuzzy, kde-format
-#| msgid "Install to Write a Review"
+#, kde-format
 msgctxt "@action:button installs app"
 msgid "Install to Write a Review"
 msgstr "安装程序后才能发表评价"
 
 #: discover/qml/ApplicationPage.qml:571
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "External Links"
+#, kde-format
 msgctxt "@title:group title for link section"
 msgid "External Links"
 msgstr "外部链接"
@@ -555,87 +537,67 @@ msgid "Read the FAQ"
 msgstr "查看常见问题"
 
 #: discover/qml/ApplicationPage.qml:600
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Read the full documentation"
+#, kde-format
 msgctxt "@action:button open web URL"
 msgid "Read the full documentation"
 msgstr "查看完整文档"
 
 #: discover/qml/ApplicationPage.qml:601
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Read the full documentation"
+#, kde-format
 msgctxt "@action:button open web URL"
 msgid "Read the documentation"
-msgstr "查看完整文档"
+msgstr "阅读文档"
 
 #: discover/qml/ApplicationPage.qml:611
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Visit the project’s website"
+#, kde-format
 msgctxt "@action:button open web URL"
 msgid "Visit the project’s website"
 msgstr "访问此项目的网站"
 
 #: discover/qml/ApplicationPage.qml:621
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Donate to the project"
+#, kde-format
 msgctxt "@action:button open web URL"
 msgid "Donate to the project"
 msgstr "捐款支持"
 
 #: discover/qml/ApplicationPage.qml:631
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Report a bug"
+#, kde-format
 msgctxt "@action:button open web URL"
 msgid "Report a bug"
 msgstr "报告问题"
 
 #: discover/qml/ApplicationPage.qml:641
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Start contributing"
+#, kde-format
 msgctxt "@action:button open web URL"
 msgid "Start contributing"
 msgstr "参与贡献"
 
 #: discover/qml/ApplicationPage.qml:651
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Help with translations"
+#, kde-format
 msgctxt "@action:button open web URL"
 msgid "Help with translations"
 msgstr "协助翻译工作"
 
 #: discover/qml/ApplicationPage.qml:661
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Contact the developers"
+#, kde-format
 msgctxt "@action:button open web URL"
 msgid "Contact the developers"
 msgstr "联系开发人员"
 
 #: discover/qml/ApplicationPage.qml:671
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Browse the source code"
+#, kde-format
 msgctxt "@action:button open web URL"
 msgid "Browse the source code"
 msgstr "查看源代码"
 
 #: discover/qml/ApplicationPage.qml:700
-#, fuzzy, kde-format
-#| msgid "All Licenses"
+#, kde-format
 msgctxt "title:window overlay title"
 msgid "All Licenses"
 msgstr "所有许可证"
 
 #: discover/qml/ApplicationPage.qml:738
-#, fuzzy, kde-format
-#| msgid "Content Rating"
+#, kde-format
 msgctxt "@title:window dialog"
 msgid "Content Rating"
 msgstr "内容分级"
@@ -648,9 +610,7 @@ msgstr "许可证信息"
 
 #: discover/qml/ApplicationPageFullComponent.qml:115
 #: discover/qml/ApplicationPageStickyComponent.qml:47
-#, fuzzy, kde-format
-#| msgctxt "As in 'this app is made by an unknown author'"
-#| msgid "Unknown author"
+#, kde-format
 msgctxt "@info As in 'this app is made by an unknown author'"
 msgid "Unknown author"
 msgstr "未知作者"
@@ -669,25 +629,19 @@ msgid "No ratings yet"
 msgstr "暂无评分"
 
 #: discover/qml/ApplicationPageFullComponent.qml:197
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Version:"
+#, kde-format
 msgctxt "@label"
 msgid "Version:"
 msgstr "版本："
 
 #: discover/qml/ApplicationPageFullComponent.qml:215
-#, fuzzy, kde-format
-#| msgid "Size:"
+#, kde-format
 msgctxt "@label"
 msgid "Size:"
 msgstr "体积："
 
 #: discover/qml/ApplicationPageFullComponent.qml:243
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "License:"
-#| msgid_plural "Licenses:"
+#, kde-format
 msgctxt "label"
 msgid "License:"
 msgid_plural "Licenses:"
@@ -697,7 +651,7 @@ msgstr[0] "许可证："
 #, kde-format
 msgctxt "@info"
 msgid "The app does not provide any licenses"
-msgstr ""
+msgstr "此应用没有提供许可证"
 
 #: discover/qml/ApplicationPageFullComponent.qml:269
 #: discover/qml/ApplicationPageFullComponent.qml:326
@@ -707,34 +661,25 @@ msgid "What does this mean?"
 msgstr "这是什么意思？"
 
 #: discover/qml/ApplicationPageFullComponent.qml:349
-#, fuzzy, kde-format
-#| msgctxt "Show all licenses of the package"
-#| msgid "All licenses…"
+#, kde-format
 msgctxt "@action:button Show all licenses of the package"
 msgid "All licenses…"
 msgstr "所有许可证"
 
 #: discover/qml/ApplicationPageFullComponent.qml:362
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@info The app is suitable for people of the following ages or older"
-#| msgid "Ages:"
+#, kde-format
 msgctxt "@label The app is suitable for people of the following ages or older"
 msgid "Ages:"
 msgstr "年龄："
 
 #: discover/qml/ApplicationPageFullComponent.qml:381
-#, fuzzy, kde-format
-#| msgctxt "@item As in, the app is suitable for everyone"
-#| msgid "Everyone"
+#, kde-format
 msgctxt "@info As in, the app is suitable for everyone"
 msgid "Everyone"
 msgstr "全年龄段"
 
 #: discover/qml/ApplicationPageFullComponent.qml:383
-#, fuzzy, kde-format
-#| msgctxt "@item %1 is a person's age in number of years"
-#| msgid "%1+"
+#, kde-format
 msgctxt "@info %1 is a person's age in number of years"
 msgid "%1+"
 msgstr "%1 岁以上"
@@ -752,71 +697,58 @@ msgid "Scroll to top"
 msgstr "滚动至页面顶部"
 
 #: discover/qml/ApplicationsListPage.qml:58
-#, fuzzy, kde-format
-#| msgid "Search: %2 - %3 item"
-#| msgid_plural "Search: %2 - %3 items"
+#, kde-format
 msgctxt "@title:window page title %2 is search term %3 number of results"
 msgid "Search: %2 - %3 item"
 msgid_plural "Search: %2 - %3 items"
 msgstr[0] "搜索：%2 - %3 个项目"
 
 #: discover/qml/ApplicationsListPage.qml:60
-#, fuzzy, kde-format
-#| msgid "Search: %1"
+#, kde-format
 msgctxt "@title:window page title %1 is search term"
 msgid "Search: %1"
 msgstr "搜索：%1"
 
 #: discover/qml/ApplicationsListPage.qml:64
-#, fuzzy, kde-format
-#| msgid "%2 - %1 item"
-#| msgid_plural "%2 - %1 items"
+#, kde-format
 msgctxt "@title:window page title %2 is name %1 number of results"
 msgid "%2 - %1 item"
 msgid_plural "%2 - %1 items"
 msgstr[0] "%2 - %1 个项目"
 
 #: discover/qml/ApplicationsListPage.qml:70
-#, fuzzy, kde-format
-#| msgid "Search - %1 item"
-#| msgid_plural "Search - %1 items"
+#, kde-format
 msgctxt "@title:window page title %1 is number of results"
 msgid "Search - %1 item"
 msgid_plural "Search - %1 items"
 msgstr[0] "搜索 - %1 个项目"
 
 #: discover/qml/ApplicationsListPage.qml:72
-#, fuzzy, kde-format
-#| msgid "Search"
+#, kde-format
 msgctxt "@title:window page title"
 msgid "Search"
 msgstr "搜索"
 
 #: discover/qml/ApplicationsListPage.qml:103
-#, fuzzy, kde-format
-#| msgid "Sort: %1"
+#, kde-format
 msgctxt "@label listbox-like menu %1 is current value (e.g. Relevance)"
 msgid "Sort: %1"
 msgstr "排序：%1"
 
 #: discover/qml/ApplicationsListPage.qml:108
-#, fuzzy, kde-format
-#| msgctxt "Search results most relevant to the search query"
-#| msgid "Relevance"
+#, kde-format
 msgctxt "@item:inmenu Search results most relevant to the search query"
 msgid "Relevance"
 msgstr "相关性"
 
 #: discover/qml/ApplicationsListPage.qml:119
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgctxt "@item:inmenu sort by name"
 msgid "Name"
 msgstr "名称"
 
 #: discover/qml/ApplicationsListPage.qml:130
-#, fuzzy, kde-format
-#| msgid "Number of reviews"
+#, kde-format
 msgctxt "@item:inmenu sort by number of reviews"
 msgid "Number of reviews"
 msgstr "评价数"
@@ -828,30 +760,25 @@ msgid "Rating"
 msgstr "评分"
 
 #: discover/qml/ApplicationsListPage.qml:152
-#, fuzzy, kde-format
-#| msgid "Size"
+#, kde-format
 msgctxt "@item:inmenu sort by size"
 msgid "Size"
 msgstr "体积"
 
 #: discover/qml/ApplicationsListPage.qml:163
-#, fuzzy, kde-format
-#| msgid "Release date"
+#, kde-format
 msgctxt "@item:inmenu sort by release date"
 msgid "Release date"
 msgstr "发布日期"
 
 #: discover/qml/ApplicationsListPage.qml:179
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Group by Type"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Group by Type"
 msgstr "按类型分组"
 
 #: discover/qml/ApplicationsListPage.qml:249
-#, fuzzy, kde-format
-#| msgid "Nothing found"
+#, kde-format
 msgctxt "@info:status placeholdermessage text"
 msgid "Nothing found"
 msgstr "未找到任何内容"
@@ -894,15 +821,13 @@ msgstr ""
 "组织的审核，无法保证在本机系统中运行时的功能和稳定性。请谨慎操作。"
 
 #: discover/qml/ApplicationsListPage.qml:303
-#, fuzzy, kde-format
-#| msgid "Search"
+#, kde-format
 msgctxt "@info placeholdermessage text"
 msgid "Search"
 msgstr "搜索"
 
 #: discover/qml/ApplicationsListPage.qml:318
-#, fuzzy, kde-format
-#| msgid "Still looking…"
+#, kde-format
 msgctxt "@info:status"
 msgid "Still looking…"
 msgstr "正在查找…"
@@ -914,8 +839,7 @@ msgid "Home"
 msgstr "主页"
 
 #: discover/qml/BrowsingPage.qml:55
-#, fuzzy, kde-format
-#| msgid "Unable to load applications"
+#, kde-format
 msgctxt "@info placeholdermessage text"
 msgid "Unable to load applications"
 msgstr "无法加载应用程序"
@@ -1001,50 +925,43 @@ msgid "Next Screenshot"
 msgstr "下一张屏幕截图"
 
 #: discover/qml/DiscoverDrawer.qml:164
-#, fuzzy, kde-format
-#| msgid "Security updates available"
+#, kde-format
 msgctxt "@info:tooltip for badge with update counts"
 msgid "Security updates available"
 msgstr "系统有可以安装的安全更新"
 
 #: discover/qml/DiscoverDrawer.qml:165
-#, fuzzy, kde-format
-#| msgid "Updates available"
+#, kde-format
 msgctxt "@info:tooltip for badge with update counts"
 msgid "Updates available"
 msgstr "系统有可以安装的更新"
 
 #: discover/qml/DiscoverWindow.qml:52
-#, fuzzy, kde-format
-#| msgid "Running as <em>root</em> is discouraged and unnecessary."
+#, kde-format
 msgctxt "@info:usagetip"
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr "不建议且不需要在 <em>root</em> 权限下运行。"
 
 #: discover/qml/DiscoverWindow.qml:75
-#, fuzzy, kde-format
-#| msgid "&Home"
+#, kde-format
 msgctxt "@action in sidebar, opens featured page"
 msgid "&Home"
 msgstr "主页(&H)"
 
 #: discover/qml/DiscoverWindow.qml:85
-#, fuzzy, kde-format
-#| msgid "&Search"
+#, kde-format
 msgctxt "@info:placeholder for search field"
 msgid "&Search"
 msgstr "搜索(&S)"
 
 #: discover/qml/DiscoverWindow.qml:93
-#, fuzzy, kde-format
-#| msgid "&Installed"
+#, kde-format
 msgctxt "@action in sidebar, opens page of installed apps"
 msgid "&Installed"
 msgstr "已安装的软件包(&I)"
 
 #: discover/qml/DiscoverWindow.qml:105
-#, fuzzy, kde-format
-#| msgid "&Updates (Fetching…)"
+#, kde-format
 msgctxt ""
 "@action and @info:status in sidebar, opens updates page, currently "
 "downloading things"
@@ -1052,43 +969,37 @@ msgid "&Updates (Fetching…)"
 msgstr "更新(&U) (正在获取…)"
 
 #: discover/qml/DiscoverWindow.qml:106
-#, fuzzy, kde-format
-#| msgid "&Updates"
+#, kde-format
 msgctxt "@action in sidebar, opens updates page"
 msgid "&Updates"
 msgstr "更新(&U)"
 
 #: discover/qml/DiscoverWindow.qml:114
-#, fuzzy, kde-format
-#| msgid "&About"
+#, kde-format
 msgctxt "@action opens about page"
 msgid "&About"
 msgstr "关于(&A)"
 
 #: discover/qml/DiscoverWindow.qml:122
-#, fuzzy, kde-format
-#| msgid "S&ettings"
+#, kde-format
 msgctxt "@action opens settings page"
 msgid "S&ettings"
 msgstr "设置(&E)"
 
 #: discover/qml/DiscoverWindow.qml:175
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window title for error page"
 msgid "Error"
 msgstr "错误"
 
 #: discover/qml/DiscoverWindow.qml:179
-#, fuzzy, kde-format
-#| msgid "Unable to find resource: %1"
+#, kde-format
 msgctxt "@info:status error message"
 msgid "Unable to find resource: %1"
 msgstr "无法找到资源：%1"
 
 #: discover/qml/DiscoverWindow.qml:277
-#, fuzzy, kde-format
-#| msgid "Proceed"
+#, kde-format
 msgctxt ""
 "@action:button generic proceed dialog for various situations with custom "
 "message"
@@ -1096,8 +1007,7 @@ msgid "Proceed"
 msgstr "继续"
 
 #: discover/qml/DiscoverWindow.qml:290
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt ""
 "@action:button generic proceed dialog for various situations with custom "
 "message"
@@ -1124,34 +1034,28 @@ msgid ""
 msgstr "请连接到网络以安装应用程序并升级系统。"
 
 #: discover/qml/DiscoverWindow.qml:373
-#, fuzzy, kde-format
-#| msgid "Error %1 of %2"
+#, kde-format
 msgctxt ""
 "@title:window error message dialog with technical detail, %1 is total number "
 "of errors, %2 is current error"
 msgid "Error %2 of %1"
-msgstr "错误 %1 / %2"
+msgstr "错误 %2 / %1"
 
 #: discover/qml/DiscoverWindow.qml:375
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt ""
 "@title:window error message dialog with technical detail, single error"
 msgid "Error"
 msgstr "错误"
 
 #: discover/qml/DiscoverWindow.qml:378
-#, fuzzy, kde-format
-#| msgid "Update Issue"
+#, kde-format
 msgctxt "@title:window error message dialog without technical detail"
 msgid "Update Issue"
 msgstr "更新问题"
 
 #: discover/qml/DiscoverWindow.qml:391
-#, fuzzy, kde-format
-#| msgid ""
-#| "There was an issue during the update or installation process. Please try "
-#| "again later."
+#, kde-format
 msgctxt "@info error message dialog content without technical detail"
 msgid ""
 "There was an issue during the update or installation process. Please try "
@@ -1165,46 +1069,37 @@ msgid "Show Previous"
 msgstr "显示上一个"
 
 #: discover/qml/DiscoverWindow.qml:438
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Show Next"
+#, kde-format
 msgctxt "@action:button next error if there are multiple"
 msgid "Show Next"
 msgstr "显示下一个"
 
 #: discover/qml/DiscoverWindow.qml:450
-#, fuzzy, kde-format
-#| msgid "See Technical Details"
+#, kde-format
 msgctxt "@action:button switches technical details on"
 msgid "See Technical Details"
 msgstr "查看技术详情"
 
 #: discover/qml/DiscoverWindow.qml:458
-#, fuzzy, kde-format
-#| msgid "Copy to Clipboard"
+#, kde-format
 msgctxt "@action:button copy error"
 msgid "Copy to Clipboard"
 msgstr "复制到剪贴板"
 
 #: discover/qml/DiscoverWindow.qml:492
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window error dialog for distribution-related errors"
 msgid "Error"
 msgstr "错误"
 
 #: discover/qml/Feedback.qml:15
-#, fuzzy, kde-format
-#| msgid "Submit Usage Information"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Submit Usage Information"
 msgstr "提交使用信息"
 
 #: discover/qml/Feedback.qml:16
-#, fuzzy, kde-format
-#| msgid ""
-#| "Sends anonymized usage information to KDE so we can better understand our "
-#| "users. For more information see https://kde.org/privacypolicy-apps.php."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Sends anonymized usage information to KDE so we can better understand our "
@@ -1214,38 +1109,31 @@ msgstr ""
 "org/privacypolicy-apps.php 。"
 
 #: discover/qml/Feedback.qml:21
-#, fuzzy, kde-format
-#| msgid "Submitting usage information…"
+#, kde-format
 msgctxt "@info status passive notification"
 msgid "Submitting usage information…"
 msgstr "提交使用信息…"
 
 #: discover/qml/Feedback.qml:23
-#, fuzzy, kde-format
-#| msgid "Configure"
+#, kde-format
 msgctxt "@action:button on passive notification, opens feedback kcm"
 msgid "Configure"
 msgstr "配置"
 
 #: discover/qml/Feedback.qml:28
-#, fuzzy, kde-format
-#| msgid "Configure Feedback…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure Feedback…"
 msgstr "配置反馈…"
 
 #: discover/qml/Feedback.qml:35
-#, fuzzy, kde-format
-#| msgid "Configure Updates…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Configure Updates…"
 msgstr "配置更新…"
 
 #: discover/qml/Feedback.qml:64
-#, fuzzy, kde-format
-#| msgid ""
-#| "You can help KDE improve Discover by sharing anonymous information on how "
-#| "you use it."
+#, kde-format
 msgctxt "@info:usagetip passive notification"
 msgid ""
 "You can help KDE improve Discover by sharing anonymous information on how "
@@ -1253,22 +1141,19 @@ msgid ""
 msgstr "您可以通过分享匿名信息来帮助 KDE 改进 Discover 软件中心。"
 
 #: discover/qml/Feedback.qml:66
-#, fuzzy, kde-format
-#| msgid "Contribute…"
+#, kde-format
 msgctxt "@action:button on passive notification, opens feedback kcm"
 msgid "Contribute…"
 msgstr "贡献…"
 
 #: discover/qml/Feedback.qml:72
-#, fuzzy, kde-format
-#| msgid "We are looking for your feedback!"
+#, kde-format
 msgctxt "@info passive notification"
 msgid "We are looking for your feedback!"
 msgstr "我们期待您的反馈！"
 
 #: discover/qml/Feedback.qml:74
-#, fuzzy, kde-format
-#| msgid "Participate…"
+#, kde-format
 msgctxt "@action:button on passive notification, opens url in browser"
 msgid "Participate…"
 msgstr "参与…"
@@ -1286,163 +1171,136 @@ msgid "Install from %1"
 msgstr "安装 (来源：%1)"
 
 #: discover/qml/InstallApplicationButton.qml:36
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Install"
+#, kde-format
 msgctxt "@action:button install application"
 msgid "Install"
 msgstr "安装"
 
 #: discover/qml/InstallApplicationButton.qml:38
-#, fuzzy, kde-format
-#| msgid "Remove"
+#, kde-format
 msgctxt "@action:button remove application"
 msgid "Remove"
 msgstr "移除"
 
 #: discover/qml/InstallApplicationButton.qml:52
 #: discover/qml/SourcesPage.qml:208 discover/qml/UpdatesPage.qml:320
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action:button"
 msgid "Cancel"
 msgstr "取消"
 
 #: discover/qml/InstalledPage.qml:15
-#, fuzzy, kde-format
-#| msgid "Installed"
+#, kde-format
 msgctxt "@title:window page title"
 msgid "Installed"
 msgstr "已安装的软件包"
 
 #: discover/qml/Navigation.qml:37
-#, fuzzy, kde-format
-#| msgid "Resources for “%1”"
+#, kde-format
 msgctxt "@title:window page title %1 is mimetype description"
 msgid "Resources for “%1”"
 msgstr "“%1”的资源"
 
 #: discover/qml/Navigation.qml:61
-#, fuzzy, kde-format
-#| msgid "Addons for %1"
+#, kde-format
 msgctxt "@title:window page title %1 is app name"
 msgid "Addons for %1"
 msgstr "%1 的附加组件"
 
 #: discover/qml/ProgressView.qml:30
-#, fuzzy, kde-format
-#| msgid "Tasks (%1%)"
+#, kde-format
 msgctxt ""
 "@action:button opens progress overlay sheet, %1 is percentage completion"
 msgid "Tasks (%1%)"
 msgstr "任务 (%1%)"
 
 #: discover/qml/ProgressView.qml:31
-#, fuzzy, kde-format
-#| msgid "Tasks"
+#, kde-format
 msgctxt "@action:button opens progress overlay sheet"
 msgid "Tasks"
 msgstr "任务"
 
 #: discover/qml/ProgressView.qml:61
-#, fuzzy, kde-format
-#| msgid "Tasks"
+#, kde-format
 msgctxt "@title:window overlay sheet title"
 msgid "Tasks"
 msgstr "任务"
 
 #: discover/qml/ProgressView.qml:146
-#, fuzzy, kde-format
-#| msgctxt "TransactioName - TransactionStatus: speed, remaining time"
-#| msgid "%1: %2, %3 remaining"
+#, kde-format
 msgctxt "@info TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1: %2, %3 remaining"
 msgstr "%1：%2，剩余 %3"
 
 #: discover/qml/ProgressView.qml:153
-#, fuzzy, kde-format
-#| msgctxt "TransactioName - TransactionStatus: speed"
-#| msgid "%1: %2"
+#, kde-format
 msgctxt "@info TransactioName - TransactionStatus: speed"
 msgid "%1: %2"
 msgstr "%1：%2"
 
 #: discover/qml/ProgressView.qml:164
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action:button stop in-progress transaction"
 msgid "Cancel"
 msgstr "取消"
 
 #: discover/qml/Rating.qml:120
-#, fuzzy, kde-format
-#| msgid "Rating"
+#, kde-format
 msgctxt "@label;slider accessible description"
 msgid "Rating"
 msgstr "评分"
 
 #: discover/qml/ReviewDelegate.qml:59
-#, fuzzy, kde-format
-#| msgid "unknown reviewer"
+#, kde-format
 msgctxt "@info reviewer name not given"
 msgid "unknown reviewer"
 msgstr "未知评价者"
 
 #: discover/qml/ReviewDelegate.qml:61
-#, fuzzy, kde-format
-#| msgid "<b>%1</b> by %2"
+#, kde-format
 msgctxt "@info %1 is summary, %2 is author name"
 msgid "<b>%1</b> by %2"
 msgstr "<b>%1</b> 评论者：%2"
 
 #: discover/qml/ReviewDelegate.qml:62
-#, fuzzy, kde-format
-#| msgid "Comment by %1"
+#, kde-format
 msgctxt "@info % is comment author name"
 msgid "Comment by %1"
 msgstr "评论者：%1"
 
 #: discover/qml/ReviewDelegate.qml:76
-#, fuzzy, kde-format
-#| msgid "Version: %1"
+#, kde-format
 msgctxt "@info %1 is version number of reviewed app"
 msgid "Version: %1"
 msgstr "版本：%1"
 
 #: discover/qml/ReviewDelegate.qml:76
-#, fuzzy, kde-format
-#| msgid "Version: unknown"
+#, kde-format
 msgctxt "@info version number of reviewed app unknown"
 msgid "Version: unknown"
 msgstr "版本：未知"
 
 #: discover/qml/ReviewDelegate.qml:90
-#, fuzzy, kde-format
-#| msgid "Votes: %1 out of %2"
+#, kde-format
 msgctxt "@info %1 of %2 total voters consider this review useful"
 msgid "Votes: %1 out of %2"
 msgstr "支持率：%1/%2"
 
 #: discover/qml/ReviewDelegate.qml:97
-#, fuzzy, kde-format
-#| msgid "Was this review useful?"
+#, kde-format
 msgctxt "@label:group for pair of buttons Yes/No"
 msgid "Was this review useful?"
 msgstr "该评价是否有用？"
 
 #: discover/qml/ReviewDelegate.qml:109
-#, fuzzy, kde-format
-#| msgctxt "Keep this string as short as humanly possible"
-#| msgid "Yes"
+#, kde-format
 msgctxt ""
 "@action:button useful review Keep this string as short as humanly possible"
 msgid "Yes"
 msgstr "是"
 
 #: discover/qml/ReviewDelegate.qml:126
-#, fuzzy, kde-format
-#| msgctxt "Keep this string as short as humanly possible"
-#| msgid "No"
+#, kde-format
 msgctxt ""
 "@action:button review not useful Keep this string as short as humanly "
 "possible"
@@ -1450,25 +1308,19 @@ msgid "No"
 msgstr "否"
 
 #: discover/qml/ReviewDialog.qml:27
-#, fuzzy, kde-format
-#| msgid "Reviewing %1"
+#, kde-format
 msgctxt "@title:window page title, %1 ia app name"
 msgid "Reviewing %1"
 msgstr "对 %1 发表评价"
 
 #: discover/qml/ReviewDialog.qml:34
-#, fuzzy, kde-format
-#| msgid "Submit review"
+#, kde-format
 msgctxt "@action:button"
 msgid "Submit review"
 msgstr "提交评价"
 
 #: discover/qml/ReviewDialog.qml:49
-#, fuzzy, kde-format
-#| msgid ""
-#| "If you love %1, tell people what’s great about it! Focus on "
-#| "functionality, usability, and appearance. If the app didn’t meet your "
-#| "needs, explain why."
+#, kde-format
 msgctxt "@info:usagetip %1 is app name"
 msgid ""
 "If you love %1, tell people what’s great about it! Focus on functionality, "
@@ -1521,22 +1373,19 @@ msgstr ""
 "给它的开发者，或者在此详细描述相关情况。"
 
 #: discover/qml/ReviewDialog.qml:121
-#, fuzzy, kde-format
-#| msgid "Rating:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Rating:"
 msgstr "评分："
 
 #: discover/qml/ReviewDialog.qml:126
-#, fuzzy, kde-format
-#| msgid "Name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Name:"
 msgstr "姓名："
 
 #: discover/qml/ReviewDialog.qml:134
-#, fuzzy, kde-format
-#| msgid "Title:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Title:"
 msgstr "标题："
@@ -1572,72 +1421,61 @@ msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr "不能工作,难用,垃圾,恶心,讨厌,愚蠢"
 
 #: discover/qml/ReviewDialog.qml:194
-#, fuzzy, kde-format
-#| msgid "Enter a rating"
+#, kde-format
 msgctxt "@info:usagetip rating not set yet"
 msgid "Enter a rating"
 msgstr "请给出评分"
 
 #: discover/qml/ReviewDialog.qml:197
-#, fuzzy, kde-format
-#| msgid "Write the title"
+#, kde-format
 msgctxt "@info:usagetip title not set yet"
 msgid "Write the title"
 msgstr "请撰写标题"
 
 #: discover/qml/ReviewDialog.qml:200
-#, fuzzy, kde-format
-#| msgid "Write the review"
+#, kde-format
 msgctxt "@info:usagetip no review text"
 msgid "Write the review"
 msgstr "请撰写评价"
 
 #: discover/qml/ReviewDialog.qml:203
-#, fuzzy, kde-format
-#| msgid "Keep writing…"
+#, kde-format
 msgctxt "@info:usagetip review text too short"
 msgid "Keep writing…"
 msgstr "请输入更多内容…"
 
 #: discover/qml/ReviewDialog.qml:206
-#, fuzzy, kde-format
-#| msgid "Too long!"
+#, kde-format
 msgctxt "@info:usagetip review text too long"
 msgid "Too long!"
 msgstr "文本过长！"
 
 #: discover/qml/ReviewDialog.qml:209
-#, fuzzy, kde-format
-#| msgctxt "@info:usagetip"
-#| msgid "Insert a name"
+#, kde-format
 msgctxt "@info:usagetip name not set yet"
 msgid "Insert a name"
 msgstr "插入名称"
 
 #: discover/qml/ReviewsPage.qml:44
-#, fuzzy, kde-format
-#| msgid "Reviews for %1"
+#, kde-format
 msgctxt "@title window page title %1 is app name"
 msgid "Reviews for %1"
 msgstr "%1 的评价"
 
 #: discover/qml/ReviewsPage.qml:106
-#, fuzzy, kde-format
-#| msgid "Write a Review…"
+#, kde-format
 msgctxt "@action:button"
 msgid "Write a Review…"
 msgstr "撰写评价…"
 
 #: discover/qml/ReviewsPage.qml:119
-#, fuzzy, kde-format
-#| msgid "Install this app to write a review"
+#, kde-format
 msgctxt "@info:usagetip"
 msgid "Install this app to write a review"
 msgstr "请先安装本程序再发表评价"
 
 #: discover/qml/ReviewsPage.qml:142
-#, fuzzy, kde-format
-#| msgid "Sort: %1"
+#, kde-format
 msgctxt "@label for listbox-like menu %1 is sort criterion e.g. most relevant"
 msgid "Sort: %1"
 msgstr "排序：%1"
@@ -1661,24 +1499,19 @@ msgid "Highest Ratings"
 msgstr "最高评分"
 
 #: discover/qml/ReviewsStats.qml:54
-#, fuzzy, kde-format
-#| msgctxt "how many reviews"
-#| msgid "%1 reviews"
+#, kde-format
 msgctxt "@info how many reviews"
 msgid "%1 reviews"
 msgstr "%1 条评价"
 
 #: discover/qml/ReviewsStats.qml:77
-#, fuzzy, kde-format
-#| msgctxt "widest character in the language"
-#| msgid "M"
+#, kde-format
 msgctxt "widest character in the language, just for metrics, not used in UI"
 msgid "M"
 msgstr "M"
 
 #: discover/qml/ReviewsStats.qml:168
-#, fuzzy, kde-format
-#| msgid "Unknown reviewer"
+#, kde-format
 msgctxt "@info"
 msgid "Unknown reviewer"
 msgstr "未知评价者"
@@ -1696,99 +1529,85 @@ msgid "„"
 msgstr "”"
 
 #: discover/qml/SearchField.qml:28
-#, fuzzy, kde-format
-#| msgid "Search…"
+#, kde-format
 msgctxt "@info:placeholder for search field"
 msgid "Search…"
 msgstr "搜索…"
 
 #: discover/qml/SearchField.qml:29
-#, fuzzy, kde-format
-#| msgid "Search in “%1”…"
+#, kde-format
 msgctxt "@info:placeholder for search field, %1 is category"
 msgid "Search in “%1”…"
 msgstr "在“%1”中搜索…"
 
 #: discover/qml/SourcesPage.qml:20
-#, fuzzy, kde-format
-#| msgid "Settings"
+#, kde-format
 msgctxt "@title:window page title"
 msgid "Settings"
 msgstr "设置"
 
 #: discover/qml/SourcesPage.qml:24
-#, fuzzy, kde-format
-#| msgid "Configure Updates…"
+#, kde-format
 msgctxt "@action:inmenu opens updates kcm"
 msgid "Configure Updates…"
 msgstr "配置更新…"
 
 #: discover/qml/SourcesPage.qml:117
-#, fuzzy, kde-format
-#| msgid "Default Source"
+#, kde-format
 msgctxt "@info this source is the default"
 msgid "Default Source"
 msgstr "默认来源"
 
 #: discover/qml/SourcesPage.qml:125
-#, fuzzy, kde-format
-#| msgid "Add Source…"
+#, kde-format
 msgctxt "@action:button add new package repository"
 msgid "Add Source…"
 msgstr "添加软件来源…"
 
 #: discover/qml/SourcesPage.qml:152
-#, fuzzy, kde-format
-#| msgid "Make Default"
+#, kde-format
 msgctxt "@action:button mark source as default"
 msgid "Make Default"
 msgstr "设为默认"
 
 #: discover/qml/SourcesPage.qml:202
-#, fuzzy, kde-format
-#| msgid "Proceed"
+#, kde-format
 msgctxt "@action:button"
 msgid "Proceed"
 msgstr "继续"
 
 #: discover/qml/SourcesPage.qml:253
-#, fuzzy, kde-format
-#| msgid "Increase priority"
+#, kde-format
 msgctxt "@info:tooltip rank repository higher"
 msgid "Increase priority"
 msgstr "提高优先级"
 
 #: discover/qml/SourcesPage.qml:261
-#, fuzzy, kde-format
-#| msgid "Failed to increase “%1” preference"
+#, kde-format
 msgctxt "@info:status in passive notification %1, is repository name"
 msgid "Failed to increase “%1” preference"
 msgstr "提高“%1”优先级失败"
 
 #: discover/qml/SourcesPage.qml:268
-#, fuzzy, kde-format
-#| msgid "Decrease priority"
+#, kde-format
 msgctxt "@info:tooltip rank repository lower"
 msgid "Decrease priority"
 msgstr "降低优先级"
 
 #: discover/qml/SourcesPage.qml:276
-#, fuzzy, kde-format
-#| msgid "Failed to decrease “%1” preference"
+#, kde-format
 msgctxt "@info:status in passive notification, %1 is repository name"
 msgid "Failed to decrease “%1” preference"
 msgstr "降低“%1”优先级失败"
 
 #: discover/qml/SourcesPage.qml:283
-#, fuzzy, kde-format
-#| msgid "Remove repository"
+#, kde-format
 msgctxt "@info;tooltip for button"
 msgid "Remove repository"
 msgstr "移除软件仓库"
 
 #: discover/qml/SourcesPage.qml:294
-#, fuzzy, kde-format
-#| msgid "Show contents"
+#, kde-format
 msgctxt "@action:button show packages in repository"
 msgid "Show contents"
 msgstr "显示内容"
@@ -1800,43 +1619,37 @@ msgid "Enable this source"
 msgstr "启用此来源"
 
 #: discover/qml/SourcesPage.qml:337
-#, fuzzy, kde-format
-#| msgid "Missing Backends"
+#, kde-format
 msgctxt "@title:group for list of missing backends"
 msgid "Missing Backends"
 msgstr "缺少后端程序"
 
 #: discover/qml/UpdatesPage.qml:15
-#, fuzzy, kde-format
-#| msgid "Updates"
+#, kde-format
 msgctxt "@title:window page title"
 msgid "Updates"
 msgstr "更新"
 
 #: discover/qml/UpdatesPage.qml:49
-#, fuzzy, kde-format
-#| msgid "Update Issue"
+#, kde-format
 msgctxt "@title:window overlay"
 msgid "Update Issue"
 msgstr "更新问题"
 
 #: discover/qml/UpdatesPage.qml:50
-#, fuzzy, kde-format
-#| msgid "Technical details"
+#, kde-format
 msgctxt "@title:window overlay"
 msgid "Technical details"
 msgstr "技术详情"
 
 #: discover/qml/UpdatesPage.qml:66
-#, fuzzy, kde-format
-#| msgid "There was an issue installing this update. Please try again later."
+#, kde-format
 msgctxt "@info non-technical update error message"
 msgid "There was an issue installing this update. Please try again later."
 msgstr "安装此更新时遇到问题。请稍后重试。"
 
 #: discover/qml/UpdatesPage.qml:72
-#, fuzzy, kde-format
-#| msgid "See Technical Details"
+#, kde-format
 msgctxt "@action:button switches to technical detail view"
 msgid "See Technical Details"
 msgstr "查看技术详情"
@@ -1852,8 +1665,7 @@ msgstr ""
 "它报告给 %1，而不是报告给 KDE。"
 
 #: discover/qml/UpdatesPage.qml:107
-#, fuzzy, kde-format
-#| msgid "Copy Text"
+#, kde-format
 msgctxt "@action:button copy text to clipboard"
 msgid "Copy Text"
 msgstr "复制文本"
@@ -1889,22 +1701,19 @@ msgid "A pending update will be installed when restarting the system."
 msgstr "系统重启时将安装更新。"
 
 #: discover/qml/UpdatesPage.qml:214
-#, fuzzy, kde-format
-#| msgid "Ignore"
+#, kde-format
 msgctxt "@action:button ignore inline error message"
 msgid "Ignore"
 msgstr "忽略"
 
 #: discover/qml/UpdatesPage.qml:264
-#, fuzzy, kde-format
-#| msgid "Select All"
+#, kde-format
 msgctxt "@action:button select all updates"
 msgid "Select All"
 msgstr "全部选中"
 
 #: discover/qml/UpdatesPage.qml:272
-#, fuzzy, kde-format
-#| msgid "Select None"
+#, kde-format
 msgctxt "@action:button deselect all updates"
 msgid "Select None"
 msgstr "全部不选"
@@ -1940,8 +1749,7 @@ msgid "Quit Discover"
 msgstr "退出 Discover"
 
 #: discover/qml/UpdatesPage.qml:310
-#, fuzzy, kde-format
-#| msgid "Total size: %1"
+#, kde-format
 msgctxt "@info:status total update side"
 msgid "Total size: %1"
 msgstr "总体积：%1"
@@ -1953,8 +1761,7 @@ msgid "Restart and Install Updates"
 msgstr "重启并安装更新"
 
 #: discover/qml/UpdatesPage.qml:532
-#, fuzzy, kde-format
-#| msgid "Installing"
+#, kde-format
 msgctxt "@info:status progress indicator, updates are being installed"
 msgid "Installing"
 msgstr "正在安装"
@@ -2023,12 +1830,7 @@ msgid "Time of last update unknown"
 msgstr "上次更新时间未知"
 
 #: discover/qml/WebflowDialog.qml:42
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action:button cancel Flatpak webflow"
 msgid "Cancel"
 msgstr "取消"
-
-#~ msgctxt "The app does not provide any licenses"
-#~ msgid "Unknown"
-#~ msgstr "未知"

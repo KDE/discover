@@ -641,11 +641,9 @@ msgid "Failed to start “%1”: %2"
 msgstr "启动“%1”失败：%2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:538
-#, fuzzy, kde-format
-#| msgctxt "Permission to access system resources and hardware devices"
-#| msgid "Permissions"
+#, kde-format
 msgid "New Permissions"
-msgstr "权限"
+msgstr "新权限"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:765
 #, kde-format
@@ -653,8 +651,7 @@ msgid "All Files"
 msgstr "所有文件"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:767
-#, fuzzy, kde-format
-#| msgid "Home"
+#, kde-format
 msgctxt "the user's home directory"
 msgid "Home"
 msgstr "主文件夹"
@@ -903,7 +900,7 @@ msgstr "允许使用以下通信协议与所有应用程序和系统服务进行
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Failed to move data for <application>%1</application> to the trash: %2"
-msgstr ""
+msgstr "移动 <application>%1</application> 的数据到回收站失败：%2"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:1137
 #, kde-format
@@ -1087,10 +1084,9 @@ msgid "Configure permissions…"
 msgstr "配置权限…"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:145
-#, fuzzy, kde-format
-#| msgid "Permissions for %1"
+#, kde-format
 msgid "Version %1"
-msgstr "%1 的权限"
+msgstr "版本 %1"
 
 #: libdiscover/backends/FwupdBackend/FwupdBackend.cpp:497
 #: libdiscover/backends/FwupdBackend/FwupdResource.cpp:116
@@ -1281,9 +1277,7 @@ msgstr ""
 "如需升级到此新版本，请先安装所有可用更新，然后重新启动您的系统。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Upgrade Now"
+#, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "立即升级"
@@ -2186,8 +2180,7 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
-#, fuzzy, kde-format
-#| msgid "System upgrade"
+#, kde-format
 msgctxt "Major system upgrade upgrade, not a smaller security update"
 msgid "System upgrade"
 msgstr "系统升级"
@@ -2201,15 +2194,12 @@ msgstr[0] "将要升级 %1 个软件包"
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
 #, kde-format
 msgid "<h3>%1</h3>%2"
-msgstr ""
+msgstr "<h3>%1</h3>%2"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
-#, fuzzy, kde-format
-#| msgid ""
-#| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
-#| "blockquote>"
+#, kde-format
 msgid "<h3>%1</h3>%2<br/>Release notes:<blockquote>%3</blockquote>"
-msgstr "<h3>%1</h3>升级到新版本 %2<br/>发行说明：<blockquote>%3</blockquote>"
+msgstr "<h3>%1</h3>%2<br/>版本说明：<blockquote>%3</blockquote>"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
 #, kde-format
@@ -2377,9 +2367,7 @@ msgid "rpm-ostree backend: No booted deployment found. Please file a bug."
 msgstr "rpm-ostree 后端程序：没有发现已启动的部署。请报告此程序缺陷。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:371
-#, fuzzy, kde-format
-#| msgctxt "@action: button"
-#| msgid "Begin Upgrade…"
+#, kde-format
 msgctxt "@action:button Perform a distro upgrade, not just a package update"
 msgid "Begin Upgrade…"
 msgstr "开始升级…"
@@ -2518,9 +2506,7 @@ msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr "rpm-ostree 后端程序：错误：未知资源格式。请报告此程序缺陷。"
 
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:362
-#, fuzzy, kde-format
-#| msgid ""
-#| "Cancelling rpm-ostree transaction. This may take some time. Please wait."
+#, kde-format
 msgid "Canceling rpm-ostree transaction. This may take some time. Please wait."
 msgstr "正在取消 rpm-ostree 的软件管理事务。这可能需要一些时间。请稍候。"
 
@@ -2644,7 +2630,7 @@ msgstr "没有在“%1”的 appstream 元数据中找到组件"
 #, kde-format
 msgctxt "Upgrade status: A system update that has to be downloaded again"
 msgid "Previous installation was incomplete, trying again"
-msgstr ""
+msgstr "之前的安装不完整，正在尝试重新安装"
 
 #: libdiscover/DiscoverBackendsFactory.cpp:128
 #, kde-format
@@ -2678,7 +2664,7 @@ msgctxt ""
 "@info 'Refresh' is used as a noun here. An app or runtime got updated "
 "without changing the user-facing version number %1"
 msgid "Refresh of version %1"
-msgstr ""
+msgstr "%1 的更新版本"
 
 #: libdiscover/resources/AbstractResource.cpp:280
 #, kde-format
@@ -2786,8 +2772,7 @@ msgid "Failed"
 msgstr "已失败"
 
 #: libdiscover/Transaction/TransactionModel.cpp:97
-#, fuzzy, kde-format
-#| msgid "Canceled"
+#, kde-format
 msgctxt "@info:status"
 msgid "Canceled"
 msgstr "已取消"
@@ -2815,10 +2800,3 @@ msgstr "系统软件"
 msgctxt "@item:inlistbox"
 msgid "Addons"
 msgstr "插件"
-
-#~ msgid "<h3>%1</h3>Upgrade to new version %2<br/>No release notes provided"
-#~ msgstr "<h3>%1</h3>升级到新版本 %2<br/>没有提供发行说明"
-
-#~ msgctxt "@info:status"
-#~ msgid "Cancelled"
-#~ msgstr "已取消"

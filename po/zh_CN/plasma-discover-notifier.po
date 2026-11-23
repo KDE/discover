@@ -75,11 +75,10 @@ msgid "Update and Shut Down"
 msgstr "更新并关机"
 
 #: notifier/DiscoverNotifier.cpp:449
-#, fuzzy, kde-format
-#| msgid "Upgrade available"
+#, kde-format
 msgctxt "A new distro release is available for upgrade"
 msgid "Upgrade available"
-msgstr "有可用升级"
+msgstr "系统有可以安装的升级版本"
 
 #: notifier/DiscoverNotifier.cpp:450
 #, kde-format
@@ -88,9 +87,7 @@ msgid "%1 is now available."
 msgstr "%1 已经推出，可以升级。"
 
 #: notifier/DiscoverNotifier.cpp:453
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Upgrade"
+#, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade"
 msgstr "升级"
