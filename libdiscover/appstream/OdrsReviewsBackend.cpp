@@ -330,16 +330,6 @@ bool OdrsReviewsBackend::isResourceSupported(AbstractResource *resource) const
     return !resource->appstreamId().isEmpty();
 }
 
-void OdrsReviewsBackend::emitRatingFetched(AbstractResourcesBackend *backend, const QList<AbstractResource *> &resources) const
-{
-    backend->emitRatingsReady();
-    for (const auto resource : resources) {
-        if (m_current.ratings.contains(resource->appstreamId())) {
-            Q_EMIT resource->ratingFetched();
-        }
-    }
-}
-
 QNetworkAccessManager *OdrsReviewsBackend::nam()
 {
     if (!m_delayedNam) {

@@ -361,8 +361,8 @@ FlatpakBackend::FlatpakBackend(QObject *parent)
     }
 
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
-        m_reviews->emitRatingFetched(this, kAppend<QList<AbstractResource *>>(m_flatpakSources, [](const auto &source) {
-                                         return kTransform<QList<AbstractResource *>>(source->m_resources.values());
+        m_reviews->emitRatingFetched(this, kAppend<QList<FlatpakResource *>>(m_flatpakSources, [](const auto &source) {
+                                         return source->m_resources.values();
                                      }));
     });
 

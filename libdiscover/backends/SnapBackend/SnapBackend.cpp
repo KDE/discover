@@ -86,9 +86,7 @@ SnapBackend::SnapBackend(QObject *parent)
     connect(m_updater, &StandardBackendUpdater::updatesCountChanged, this, &SnapBackend::updatesCountChanged);
 
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
-        m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource *>>(m_resources.values(), [](AbstractResource *r) {
-                                         return r;
-                                     }));
+        m_reviews->emitRatingFetched(this, m_resources.values());
     });
 
     // make sure we populate the installed resources first

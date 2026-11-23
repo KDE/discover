@@ -54,7 +54,16 @@ public:
     }
     void submitUsefulness(Review *review, bool useful) override;
     bool isResourceSupported(AbstractResource *resource) const override;
-    void emitRatingFetched(AbstractResourcesBackend *backend, const QList<AbstractResource *> &resources) const;
+    void emitRatingFetched(AbstractResourcesBackend *backend, const auto &resources) const
+    {
+        backend->emitRatingsReady();
+        for (const auto resource : resources) {
+            if (m_current.ratings.contains(resource->appstreamId())) {
+                Q_EMIT resource->ratingFetched();
+            }
+        }
+    }
+
     QString errorMessage() const override
     {
         return m_errorMessage;
