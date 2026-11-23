@@ -249,8 +249,12 @@ AbstractResource::Type PackageKitResource::type() const
 
 void PackageKitResource::fetchDetails()
 {
+    if (!m_details.isEmpty()) {
+        return;
+    }
+
     const QString pkgid = availablePackageId();
-    if (!m_details.isEmpty() || pkgid.isEmpty()) {
+    if (pkgid.isEmpty()) {
         return;
     }
     m_details.insert(QStringLiteral("fetching"), true); // we add an entry so it's not re-fetched.
