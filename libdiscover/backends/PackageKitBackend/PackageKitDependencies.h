@@ -9,6 +9,7 @@
 
 #include <PackageKit/Transaction>
 #include <QPointer>
+#include <QStringView>
 
 #include <optional>
 #include <variant>
@@ -35,6 +36,7 @@ public:
     QString infoString() const;
     QString packageId() const;
     QString packageName() const;
+    QStringView packageNameView() const;
     QString summary() const;
 
 private:

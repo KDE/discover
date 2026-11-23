@@ -7,6 +7,7 @@
 
 #include "PackageKitDependencies.h"
 #include "PackageKitMessages.h"
+#include "PackageKitPackageId.h"
 #include "libdiscover_backend_packagekit_debug.h"
 
 #include <QDebug>
@@ -50,6 +51,11 @@ QString PackageKitDependency::packageId() const
 QString PackageKitDependency::packageName() const
 {
     return PackageKit::Transaction::packageName(m_packageId);
+}
+
+QStringView PackageKitDependency::packageNameView() const
+{
+    return TransactionView::packageName(m_packageId);
 }
 
 QString PackageKitDependency::summary() const
@@ -191,7 +197,7 @@ void PackageKitFetchDependenciesJob::onTransactionPackage(PackageKit::Transactio
 void PackageKitFetchDependenciesJob::onTransactionFinished()
 {
     std::sort(m_dependencies.begin(), m_dependencies.end(), [](const PackageKitDependency &a, const PackageKitDependency &b) {
-        return a.info() < b.info() || (a.info() == b.info() && a.packageName() < b.packageName());
+        return a.info() < b.info() || (a.info() == b.info() && a.packageNameView() < b.packageNameView());
     });
 
     Q_EMIT finished(m_dependencies);

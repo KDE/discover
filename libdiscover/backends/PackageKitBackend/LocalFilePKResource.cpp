@@ -5,6 +5,7 @@
  */
 
 #include "LocalFilePKResource.h"
+#include "PackageKitPackageId.h"
 #include "libdiscover_backend_packagekit_debug.h"
 
 #include <PackageKit/Daemon>
@@ -96,10 +97,9 @@ void LocalFilePKResource::resolve(const PackageKit::Details &inDetails)
     auto resolve = PackageKit::Daemon::resolve(PackageKit::Daemon::packageName(detailsPackageId), PackageKit::Transaction::FilterNone);
 
     connect(resolve, &PackageKit::Transaction::package, this, [this, detailsPackageId](PackageKit::Transaction::Info info, const QString &packageId) {
-        if (PackageKit::Daemon::packageName(packageId) == PackageKit::Daemon::packageName(detailsPackageId)
-            && PackageKit::Daemon::packageVersion(packageId) == PackageKit::Daemon::packageVersion(detailsPackageId)
-            && PackageKit::Daemon::packageArch(packageId) == PackageKit::Daemon::packageArch(detailsPackageId)
-            && info == PackageKit::Transaction::InfoInstalled) {
+        if (info == PackageKit::Transaction::InfoInstalled && TransactionView::packageName(packageId) == TransactionView::packageName(detailsPackageId)
+            && TransactionView::packageVersion(packageId) == TransactionView::packageVersion(detailsPackageId)
+            && TransactionView::packageArch(packageId) == TransactionView::packageArch(detailsPackageId)) {
             addPackageId(info, packageId, true);
         }
     });

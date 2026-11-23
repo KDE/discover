@@ -11,6 +11,7 @@
 #include "LocalFilePKResource.h"
 #include "PKResolveTransaction.h"
 #include "PKTransaction.h"
+#include "PackageKitPackageId.h"
 #include "PackageKitSourcesBackend.h"
 #include "PackageKitUpdater.h"
 #include <AppStreamQt/release.h>
@@ -470,7 +471,7 @@ void PackageKitBackend::addPackageNotArch(PackageKit::Transaction::Info info, co
 
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary, bool arch)
 {
-    if (PackageKit::Daemon::packageArch(packageId) == QLatin1String("source")) {
+    if (TransactionView::packageArch(packageId) == QLatin1String("source")) {
         // We do not add source packages, they make little sense here. If source is needed,
         // we are going to have to consider that in some other way, some other time
         // If we do not ignore them here, e.g. openSuse entirely fails at installing applications
@@ -1106,20 +1107,11 @@ void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
     Q_EMIT inlineMessageChanged(majorUpgradeAvailableMessage);
 }
 
-// Copy of Transaction::packageName that doesn't create a copy but just pass a reference
-// It's an optimisation as there's a bunch of allocations that happen from packageName
-// Having packageName return a QStringRef or a QStringView would fix this issue.
-// TODO Qt 6: Have packageName and similars return a QStringView
-static QStringView TransactionPackageName(const QString &packageID)
-{
-    return QStringView(packageID).left(packageID.indexOf(QLatin1Char(';')));
-}
-
 bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource *resource) const
 {
     const QString name = resource->packageName();
     for (const QString &pkgid : m_updatesPackageId) {
-        if (TransactionPackageName(pkgid) == name) {
+        if (TransactionView::packageName(pkgid) == name) {
             return true;
         }
     }
@@ -1131,7 +1123,7 @@ QSet<QString> PackageKitBackend::upgradeablePackageId(const PackageKitResource *
     QSet<QString> ids;
     const QString name = resource->packageName();
     for (const QString &pkgid : m_updatesPackageId) {
-        if (TransactionPackageName(pkgid) == name) {
+        if (TransactionView::packageName(pkgid) == name) {
             ids.insert(pkgid);
         }
     }

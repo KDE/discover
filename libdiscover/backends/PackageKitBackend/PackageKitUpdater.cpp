@@ -5,6 +5,7 @@
  */
 #include "PackageKitUpdater.h"
 #include "PackageKitMessages.h"
+#include "PackageKitPackageId.h"
 #include <AppStreamQt/release.h>
 #include <appstream/AppStreamIntegration.h>
 
@@ -555,9 +556,9 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
 
         // some backends will treat upgrades as removal + install, which makes for terrible error messages.
         for (auto it = toremove.begin(), itEnd = toremove.end(); it != itEnd;) {
-            const QString name = PackageKit::Transaction::packageName(*it);
+            const auto name = TransactionView::packageName(*it);
             auto itInstall = std::find_if(toinstall.begin(), toinstall.end(), [&](const QString &pkgid) {
-                return name == PackageKit::Transaction::packageName(pkgid);
+                return name == TransactionView::packageName(pkgid);
             });
             if (itInstall != toinstall.end()) {
                 toinstall.erase(itInstall);
@@ -571,7 +572,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time
             // Fedora has some packages that it uninstalls then eventually creates on its own. No need to
             // notify about these.
             toremove = kFilter<QStringList>(toremove, [](const QString &pkgid) {
-                return !PackageKit::Transaction::packageName(pkgid).startsWith(QLatin1String("kmod"));
+                return !TransactionView::packageName(pkgid).startsWith("kmod"_L1);
             });
         }
 

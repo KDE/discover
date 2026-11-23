@@ -906,7 +906,8 @@ AppStream::Component fetchComponentFromRemote(const QSettings &settings, GCancel
     kFilterInPlace<AppStream::ComponentBox>(comps, [name, branch](const AppStream::Component &component) {
         const QString id = component.bundle(AppStream::Bundle::KindFlatpak).id();
         // app/app.getspace.Space/x86_64/stable
-        return id.section(QLatin1Char('/'), 1, 1) == name && (branch.isEmpty() || id.section(QLatin1Char('/'), 3, 3) == branch);
+        const auto parts = QStringView(id).split('/'_L1);
+        return parts.value(1) == name && (branch.isEmpty() || parts.value(3) == branch);
     });
     if (comps.isEmpty()) {
         qCDebug(LIBDISCOVER_BACKEND_FLATPAK_LOG) << "could not find" << name << "in" << remoteName;
