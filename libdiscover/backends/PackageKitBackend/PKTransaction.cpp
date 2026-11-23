@@ -19,24 +19,23 @@
 #include <functional>
 #include <resources/AbstractResource.h>
 
-PKTransaction::PKTransaction(const QVector<AbstractResource *> &resources, Transaction::Role role)
+PKTransaction::PKTransaction(const QVector<PackageKitResource *> &resources, Transaction::Role role)
     : Transaction(resources.first(), role)
     , m_apps(resources)
 {
     Q_ASSERT(!resources.contains(nullptr));
-    for (auto resource : resources) {
-        auto pkResource = qobject_cast<PackageKitResource *>(resource);
+    for (auto pkResource : resources) {
         m_pkgnames.unite(kToSet(pkResource->allPackageNames()));
     }
 
     QTimer::singleShot(0, this, &PKTransaction::start);
 }
 
-static QStringList packageIds(const QVector<AbstractResource *> &resources, std::function<QString(PackageKitResource *)> func)
+static QStringList packageIds(const QVector<PackageKitResource *> &resources, std::function<QString(PackageKitResource *)> func)
 {
     QStringList ret;
     for (auto resource : resources) {
-        ret += func(qobject_cast<PackageKitResource *>(resource));
+        ret += func(resource);
     }
     ret.removeDuplicates();
     return ret;
@@ -176,7 +175,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 
     if (!cancel && !failed && simulate) {
         auto packagesToRemove = m_newPackageStates.value(PackageKit::Transaction::InfoRemoving);
-        QSet<AbstractResource *> removedResources;
+        QSet<PackageKitResource *> removedResources;
         for (auto it = packagesToRemove.begin(), itEnd = packagesToRemove.end(); it != itEnd;) {
             const auto pkgname = PackageKit::Daemon::packageName(*it);
             removedResources.unite(backend->resourcesByPackageName(pkgname));

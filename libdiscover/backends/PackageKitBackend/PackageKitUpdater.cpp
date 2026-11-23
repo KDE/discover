@@ -77,7 +77,7 @@ public:
         , m_updateSizeTimer(new QTimer(this))
     {
         connect(m_backend, &AbstractResourcesBackend::resourceRemoved, this, [this](AbstractResource *resource) {
-            m_resources.remove(resource);
+            m_resources.remove(static_cast<PackageKitResource *>(resource));
         });
 
         m_updateSizeTimer->setInterval(100);
@@ -189,9 +189,11 @@ public:
     }
     QString longDescription() override
     {
-        QStringList changes;
-
         auto resources = withoutDuplicates();
+
+        QStringList changes;
+        changes.reserve(resources.size());
+
         std::ranges::sort(resources, std::less{}, &PackageKitResource::nameSortKey);
 
         for (auto resource : std::as_const(resources)) {
@@ -240,7 +242,7 @@ public:
         return {};
     }
 
-    QSet<AbstractResource *> resources() const
+    QSet<PackageKitResource *> resources() const
     {
         return m_resources;
     }
@@ -261,7 +263,7 @@ public:
         Q_EMIT updateSizeChanged();
     }
 
-    void setCandidates(const QSet<AbstractResource *> &candidates)
+    void setCandidates(const QSet<PackageKitResource *> &candidates)
     {
         const auto toDisconnect = (m_resources - candidates);
         for (auto resource : toDisconnect) {
@@ -310,9 +312,9 @@ Q_SIGNALS:
     void updateSizeChanged();
 
 private:
-    QSet<AbstractResource *> m_resources;
+    QSet<PackageKitResource *> m_resources;
     PackageKitBackend *const m_backend;
-    QTimer *m_updateSizeTimer;
+    QTimer *const m_updateSizeTimer;
     std::optional<AppStream::Release> m_distroUpgrade;
 };
 
@@ -358,7 +360,7 @@ void PackageKitUpdater::prepare()
         m_toUpgrade = {m_upgrade};
         connect(m_upgrade, &SystemUpgrade::updateSizeChanged, this, &PackageKitUpdater::checkFreeSpace);
     } else {
-        m_toUpgrade = candidates;
+        m_toUpgrade = kTransform<QSet<AbstractResource *>>(candidates);
     }
 
     checkFreeSpace();
@@ -439,7 +441,7 @@ QSet<AbstractResource *> PackageKitUpdater::packagesForPackageId(const QSet<QStr
     return ret;
 }
 
-QSet<QString> PackageKitUpdater::involvedPackages(const QSet<AbstractResource *> &packages) const
+QSet<QString> PackageKitUpdater::involvedPackages(const auto &packages) const
 {
     QSet<QString> packageIds;
     packageIds.reserve(packages.size());
@@ -674,13 +676,13 @@ qreal PackageKitUpdater::progress() const
 
 void PackageKitUpdater::removeResources(const QList<AbstractResource *> &resources)
 {
-    const QSet<QString> pkgs = involvedPackages(kToSet(resources));
+    const QSet<QString> pkgs = involvedPackages(resources);
     m_toUpgrade.subtract(packagesForPackageId(pkgs));
 }
 
 void PackageKitUpdater::addResources(const QList<AbstractResource *> &resources)
 {
-    const QSet<QString> pkgs = involvedPackages(kToSet(resources));
+    const QSet<QString> pkgs = involvedPackages(resources);
     m_toUpgrade.unite(packagesForPackageId(pkgs));
 }
 

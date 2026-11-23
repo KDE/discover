@@ -11,11 +11,13 @@
 #include <QSet>
 #include <Transaction/Transaction.h>
 
+class PackageKitResource;
+
 class PKTransaction : public Transaction
 {
     Q_OBJECT
 public:
-    explicit PKTransaction(const QVector<AbstractResource *> &resources, Transaction::Role role);
+    explicit PKTransaction(const QVector<PackageKitResource *> &resources, Transaction::Role role);
     PackageKit::Transaction *transaction();
 
     void cancel() override;
@@ -49,7 +51,7 @@ private:
 
     void trigger(PackageKit::Transaction::TransactionFlags flags);
     QPointer<PackageKit::Transaction> m_trans;
-    const QVector<AbstractResource *> m_apps;
+    const QVector<PackageKitResource *> m_apps;
     QSet<QString> m_pkgnames;
     QVector<std::function<PackageKit::Transaction *()>> m_proceedFunctions;
 

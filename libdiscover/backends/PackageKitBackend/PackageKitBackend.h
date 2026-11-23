@@ -74,7 +74,7 @@ public:
 
     AbstractBackendUpdater *backendUpdater() const override;
     AbstractReviewsBackend *reviewsBackend() const override;
-    QSet<AbstractResource *> resourcesByPackageName(const QString &name) const;
+    QSet<PackageKitResource *> resourcesByPackageName(const QString &name) const;
 
     ResultsStream *search(const AbstractResourcesBackend::Filters &search) override;
     PKResultsStream *findResourceByPackageName(const QUrl &search);
@@ -88,7 +88,7 @@ public:
     {
         return true;
     }
-    QSet<AbstractResource *> upgradeablePackages() const;
+    QSet<PackageKitResource *> upgradeablePackages() const;
 
     bool isPackageNameUpgradeable(const PackageKitResource *res) const;
     QSet<QString> upgradeablePackageId(const PackageKitResource *res) const;
@@ -192,7 +192,7 @@ private:
     bool m_appstreamInitialized = false;
 
     mutable struct {
-        QHash<PackageOrAppId, AbstractResource *> packages;
+        QHash<PackageOrAppId, PackageKitResource *> packages;
         QHash<QString, QStringList> packageToApp;
     } m_packages;
 

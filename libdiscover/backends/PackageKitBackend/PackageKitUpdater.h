@@ -95,7 +95,7 @@ private:
     void setupTransaction(PackageKit::Transaction::TransactionFlags flags);
     bool useOfflineUpdates() const;
 
-    QSet<QString> involvedPackages(const QSet<AbstractResource *> &packages) const;
+    QSet<QString> involvedPackages(const auto &packages) const;
     QSet<AbstractResource *> packagesForPackageId(const QSet<QString> &packages) const;
 
     QPointer<PackageKit::Transaction> m_transaction;

@@ -156,9 +156,8 @@ PackageKitBackend::PackageKitBackend(QObject *parent)
                        PackageKit::Transaction::UpdateState state,
                        const QDateTime &issued,
                        const QDateTime &updated) {
-                    const QSet<AbstractResource *> resources = resourcesByPackageName(PackageKit::Daemon::packageName(packageID));
-                    for (auto r : resources) {
-                        PackageKitResource *resource = qobject_cast<PackageKitResource *>(r);
+                    const QSet<PackageKitResource *> resources = resourcesByPackageName(PackageKit::Daemon::packageName(packageID));
+                    for (auto resource : resources) {
                         if (resource->containsPackageId(packageID)) {
                             resource->updateDetail(packageID,
                                                    updates,
@@ -178,9 +177,8 @@ PackageKitBackend::PackageKitBackend(QObject *parent)
         connect(t, &PackageKit::Transaction::errorCode, this, [this, pkgids](PackageKit::Transaction::Error err, const QString &error) {
             qWarning() << "PackageKitBackend: Error fetching updates:" << err << error;
             for (const QString &pkgid : pkgids) {
-                const QSet<AbstractResource *> resources = resourcesByPackageName(PackageKit::Daemon::packageName(pkgid));
-                for (auto r : resources) {
-                    PackageKitResource *resource = qobject_cast<PackageKitResource *>(r);
+                const QSet<PackageKitResource *> resources = resourcesByPackageName(PackageKit::Daemon::packageName(pkgid));
+                for (auto resource : resources) {
                     if (resource->containsPackageId(pkgid)) {
                         Q_EMIT resource->changelogFetched(QString());
                     }
@@ -195,7 +193,7 @@ PackageKitBackend::PackageKitBackend(QObject *parent)
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitBackend::checkDaemonRunning);
     connect(m_reviews.data(), &OdrsReviewsBackend::ratingsReady, this, [this] {
         const auto resources = m_packages.packages.values();
-        m_reviews->emitRatingFetched(this, resources);
+        m_reviews->emitRatingFetched(this, kTransform<QList<AbstractResource *>>(resources));
     });
 
     auto proxyWatch = new QFileSystemWatcher(this);
@@ -479,7 +477,7 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
         return;
     }
     const QString packageName = PackageKit::Daemon::packageName(packageId);
-    QSet<AbstractResource *> r = resourcesByPackageName(packageName);
+    QSet<PackageKitResource *> r = resourcesByPackageName(packageName);
     if (r.isEmpty()) {
         auto pk = new PackageKitResource(packageName, summary, this);
         r = {pk};
@@ -528,20 +526,20 @@ void PackageKitBackend::transactionError(PackageKit::Transaction::Error, const Q
 
 void PackageKitBackend::packageDetails(const PackageKit::Details &details)
 {
-    const QSet<AbstractResource *> resources = resourcesByPackageName(PackageKit::Daemon::packageName(details.packageId()));
+    const QSet<PackageKitResource *> resources = resourcesByPackageName(PackageKit::Daemon::packageName(details.packageId()));
     if (resources.isEmpty()) {
         qWarning() << "PackageKitBackend: Couldn't find package for" << details.packageId();
         return;
     }
 
     for (auto resource : resources) {
-        qobject_cast<PackageKitResource *>(resource)->setDetails(details);
+        resource->setDetails(details);
     }
 }
 
-QSet<AbstractResource *> PackageKitBackend::resourcesByPackageName(const QString &name) const
+QSet<PackageKitResource *> PackageKitBackend::resourcesByPackageName(const QString &name) const
 {
-    return resourcesByPackageNames<QSet<AbstractResource *>>(QStringList{name});
+    return resourcesByPackageNames<QSet<PackageKitResource *>>(QStringList{name});
 }
 
 template<typename T, typename W>
@@ -941,11 +939,13 @@ int PackageKitBackend::updatesCount() const
     return packages.count();
 }
 
-Transaction *PackageKitBackend::installApplication(AbstractResource *app, const AddonList &addons)
+Transaction *PackageKitBackend::installApplication(AbstractResource *_app, const AddonList &addons)
 {
+    PackageKitResource *app = qobject_cast<PackageKitResource *>(_app);
+    Q_ASSERT(app);
     Transaction *transaction = nullptr;
     if (!addons.addonsToInstall().isEmpty()) {
-        QVector<AbstractResource *> appsToInstall = resourcesByPackageNames<QVector<AbstractResource *>>(addons.addonsToInstall());
+        QVector<PackageKitResource *> appsToInstall = resourcesByPackageNames<QVector<PackageKitResource *>>(addons.addonsToInstall());
         if (!app->isInstalled()) {
             appsToInstall << app;
         }
@@ -955,34 +955,40 @@ Transaction *PackageKitBackend::installApplication(AbstractResource *app, const 
     }
 
     if (!addons.addonsToRemove().isEmpty()) {
-        const auto appsToRemove = resourcesByPackageNames<QVector<AbstractResource *>>(addons.addonsToRemove());
+        const auto appsToRemove = resourcesByPackageNames<QVector<PackageKitResource *>>(addons.addonsToRemove());
         transaction = new PKTransaction(appsToRemove, Transaction::RemoveRole);
     }
 
     return transaction;
 }
 
-Transaction *PackageKitBackend::installApplication(AbstractResource *app)
+Transaction *PackageKitBackend::installApplication(AbstractResource *_app)
 {
+    PackageKitResource *app = qobject_cast<PackageKitResource *>(_app);
+    if (!app) {
+        Q_EMIT passiveMessage(i18n("Cannot install “%1”", _app->name()));
+        return nullptr;
+    }
     return new PKTransaction({app}, Transaction::InstallRole);
 }
 
-Transaction *PackageKitBackend::removeApplication(AbstractResource *app)
+Transaction *PackageKitBackend::removeApplication(AbstractResource *_app)
 {
-    if (!qobject_cast<PackageKitResource *>(app)) {
-        Q_EMIT passiveMessage(i18n("Cannot remove “%1”", app->name()));
+    PackageKitResource *app = qobject_cast<PackageKitResource *>(_app);
+    if (!app) {
+        Q_EMIT passiveMessage(i18n("Cannot remove “%1”", _app->name()));
         return nullptr;
     }
     return new PKTransaction({app}, Transaction::RemoveRole);
 }
 
-QSet<AbstractResource *> PackageKitBackend::upgradeablePackages() const
+QSet<PackageKitResource *> PackageKitBackend::upgradeablePackages() const
 {
     if (!m_packagesToAdd.isEmpty()) {
         return {};
     }
 
-    QSet<AbstractResource *> ret;
+    QSet<PackageKitResource *> ret;
     ret.reserve(m_updatesPackageId.size());
     for (const QString &pkgid : std::as_const(m_updatesPackageId)) {
         const QString pkgname = PackageKit::Daemon::packageName(pkgid);
@@ -992,8 +998,8 @@ QSet<AbstractResource *> PackageKitBackend::upgradeablePackages() const
         }
         ret.unite(pkgs);
     }
-    return kFilter<QSet<AbstractResource *>>(ret, [](AbstractResource *resource) {
-        return !static_cast<PackageKitResource *>(resource)->extendsItself();
+    return kFilter<QSet<PackageKitResource *>>(ret, [](PackageKitResource *resource) {
+        return !resource->extendsItself();
     });
 }
 

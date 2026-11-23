@@ -420,14 +420,13 @@ QStringList PackageKitResource::bottomObjects() const
 
 bool PackageKitResource::extendsItself() const
 {
-    const auto extendsResources = backend()->resourcesByPackageNames<QVector<AbstractResource *>>(extends());
+    const auto extendsResources = backend()->resourcesByPackageNames<QVector<PackageKitResource *>>(extends());
     if (extendsResources.isEmpty()) {
         return false;
     }
 
     const auto ourPackageNames = allPackageNames();
-    for (auto resource : extendsResources) {
-        auto pkResource = qobject_cast<PackageKitResource *>(resource);
+    for (auto pkResource : extendsResources) {
         if (pkResource->allPackageNames() != ourPackageNames) {
             return false;
         }
