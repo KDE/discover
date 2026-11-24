@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-19 01:09+0000\n"
+"POT-Creation-Date: 2026-11-24 01:07+0000\n"
 "PO-Revision-Date: 2026-11-15 01:36+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -591,7 +591,7 @@ msgid "Local bundle"
 msgstr "Vietinis paketas"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1967
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:867
 #, kde-format
 msgid "Malformed appstream url “%1”"
 msgstr "Netaisyklingas appstream url „%1“"
@@ -1291,12 +1291,12 @@ msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "Plasma valdikliai"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:331
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:328
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Įsitikinkite, kad Appstream yra tinkamai nustatyta jūsų sistemoje"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:367
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:364
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1306,12 +1306,12 @@ msgstr ""
 "%1 pasibaigė jūsų operacinės sistemos palaikymo terminas. Apsvarstykite "
 "galimybę atnaujinti į palaikomą versiją."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:973
 #, kde-format
 msgid "Cannot remove “%1”"
 msgstr "Nepavyksta pašalinti „%1“"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1057
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1325,20 +1325,20 @@ msgstr ""
 "pritaikykite visus prieinamus atnaujinimus, o tuomet paleiskite sistemą iš "
 "naujo."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1066
 #, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "Naujinti dabar"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1088
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "Yra prieinama %1."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1200
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1215
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""

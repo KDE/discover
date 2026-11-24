@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-19 01:09+0000\n"
+"POT-Creation-Date: 2026-11-24 01:07+0000\n"
 "PO-Revision-Date: 2013-10-03 04:53+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -629,7 +629,7 @@ msgid "Local bundle"
 msgstr ""
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1967
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:867
 #, kde-format
 msgid "Malformed appstream url “%1”"
 msgstr ""
@@ -1312,12 +1312,12 @@ msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:331
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:328
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:367
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:364
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1325,12 +1325,12 @@ msgid ""
 "version."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:973
 #, kde-format
 msgid "Cannot remove “%1”"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1057
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1340,7 +1340,7 @@ msgid ""
 "updates, and then restart the system."
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1066
 #, fuzzy, kde-format
 #| msgctxt "@info:status Requested action"
 #| msgid "Upgrade"
@@ -1348,7 +1348,7 @@ msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "Жаңарту"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1088
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, fuzzy, kde-format
 #| msgid "Available"
@@ -1356,7 +1356,7 @@ msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "Бар"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1200
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1215
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-19 01:09+0000\n"
+"POT-Creation-Date: 2026-11-24 01:07+0000\n"
 "PO-Revision-Date: 2026-11-14 20:48+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -585,7 +585,7 @@ msgid "Local bundle"
 msgstr "Локален пакет"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1967
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:867
 #, kde-format
 msgid "Malformed appstream url “%1”"
 msgstr "Неправилен URL адрес на потока на приложението „%1“"
@@ -1284,12 +1284,12 @@ msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "Приспособления за Plasma"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:331
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:328
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Моля, уверете се, че Appstream е правилно настроен във вашата система"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:367
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:364
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1299,12 +1299,12 @@ msgstr ""
 "Поддръжката на вашата операционна система приключи на %1. Помислете за "
 "обновяване до поддържана версия."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:973
 #, kde-format
 msgid "Cannot remove “%1”"
 msgstr "Не може да се премахне „%1“"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1057
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1317,20 +1317,20 @@ msgstr ""
 "За да можете да надградите до тази нова версия, приложете преди това всички "
 "налични актуализации и рестартирайте системата."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1066
 #, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "Надграждане на системата сега"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1088
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 не е налична."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1200
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1215
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-19 01:09+0000\n"
+"POT-Creation-Date: 2026-11-24 01:07+0000\n"
 "PO-Revision-Date: 2026-11-13 02:47+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -586,7 +586,7 @@ msgid "Local bundle"
 msgstr "ლოკალური პაკეტი"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1967
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:867
 #, kde-format
 msgid "Malformed appstream url “%1”"
 msgstr "appstream-ის არასწორი URL \"%1\""
@@ -1281,12 +1281,12 @@ msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "Plasma-ის ვიჯეტები"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:331
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:328
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "დარწმუნდით, რომ AppStream სწორად აყენია"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:367
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:364
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1296,12 +1296,12 @@ msgstr ""
 "თქვენი ოპერაციული სისტემის მხარდაჭერა %1-ზე დასრულდა. სჯობს მხარდაჭერილ "
 "ვერსიამდე განახლდეთ."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:973
 #, kde-format
 msgid "Cannot remove “%1”"
 msgstr "\"%1\"-ის წაშლის შეცდომა"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1057
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1314,20 +1314,20 @@ msgstr ""
 "ამ ვერსიამდე განახლებისთვის დარწმუნდით, რომ ყველა დარჩენილი განახლება "
 "დააყენეთ და გადატვირთეთ სისტემა."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1066
 #, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "განაახლეთ ახლა"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1088
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "%1 ახლა ხელმისაწვდომია."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1200
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1215
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""

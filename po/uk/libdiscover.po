@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-19 01:09+0000\n"
+"POT-Creation-Date: 2026-11-24 01:07+0000\n"
 "PO-Revision-Date: 2026-11-12 12:59+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -588,7 +588,7 @@ msgid "Local bundle"
 msgstr "Локальний пакунок"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1967
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:852
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:867
 #, kde-format
 msgid "Malformed appstream url “%1”"
 msgstr "Помилкове форматування адреси appstream «%1»"
@@ -1292,14 +1292,14 @@ msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "Віджети Плазми"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:331
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:328
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr ""
 "Будь ласка, переконайтеся, що у вашій системі належним чином налаштовано "
 "Appstream"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:367
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:364
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1309,12 +1309,12 @@ msgstr ""
 "Супровід вашої операційної системи припинено %1. Вам варто оновити систему "
 "до супроводжуваної версії."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:958
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:973
 #, kde-format
 msgid "Cannot remove “%1”"
 msgstr "Не вдалося вилучити «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1042
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1057
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1327,20 +1327,20 @@ msgstr ""
 "Щоб мати змогу оновитися до цієї нової версії, спочатку застосуйте усі "
 "оновлення і перезавантажте вашу систему."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1051
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1066
 #, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "Оновити зараз"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1088
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "Випущено %1."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1200
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1215
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""

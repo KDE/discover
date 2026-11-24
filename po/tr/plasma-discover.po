@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-17 23:15+0000\n"
-"PO-Revision-Date: 2026-11-18 18:36+0300\n"
+"PO-Revision-Date: 2026-11-23 17:56+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1606,7 +1606,7 @@ msgstr "Güncellemeleri Yapılandır…"
 #, kde-format
 msgctxt "@info this source is the default"
 msgid "Default Source"
-msgstr "Öntanımlı Kaynak"
+msgstr "Varsayılan Kaynak"
 
 #: discover/qml/SourcesPage.qml:125
 #, kde-format
@@ -1618,7 +1618,7 @@ msgstr "Kaynak Ekle…"
 #, kde-format
 msgctxt "@action:button mark source as default"
 msgid "Make Default"
-msgstr "Öntanımlı Yap"
+msgstr "Varsayılan Yap"
 
 #: discover/qml/SourcesPage.qml:202
 #, kde-format
