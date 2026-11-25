@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-24 01:07+0000\n"
+"POT-Creation-Date: 2026-11-25 01:27+0000\n"
 "PO-Revision-Date: 2023-02-17 08:42+0100\n"
 "Last-Translator: John Ivar Eriksen <jieriksen@runbox.com>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@nuug.no>\n"
@@ -35,8 +35,8 @@ msgstr "jieriksen@runbox.com"
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:302
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:365
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeResource.cpp:391
-#: libdiscover/UpdateModel/UpdateModel.cpp:124
-#: libdiscover/UpdateModel/UpdateModel.cpp:393
+#: libdiscover/UpdateModel/UpdateModel.cpp:125
+#: libdiscover/UpdateModel/UpdateModel.cpp:395
 #, kde-format
 msgid "Unknown"
 msgstr "Ukjent"
@@ -586,30 +586,30 @@ msgstr "%1 (bruker)"
 msgid "Local bundle"
 msgstr "Lokal samling"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1967
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:867
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1968
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:866
 #, fuzzy, kde-format
 #| msgid "Malformed appstream url '%1'"
 msgid "Malformed appstream url “%1”"
 msgstr "Ugyldig appstream-adresse «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2081
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2082
 #, kde-format
 msgid "Source “%1” already exists"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2098
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2099
 #, fuzzy, kde-format
 #| msgid "Failed to add source '%1': %2"
 msgid "Failed to add source “%1”: %2"
 msgstr "Klarte ikke legge til kilde «%1»: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2225
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2226
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "Det finnes ingen Flatpak-kilder."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2229
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2230
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Klarte ikke laste kilden «%1»"
@@ -634,7 +634,7 @@ msgid "Unknown"
 msgstr "Ukjent"
 
 #: libdiscover/backends/FlatpakBackend/FlatpakResource.cpp:524
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:439
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:442
 #: libdiscover/backends/PackageKitBackend/PackageKitSourcesBackend.cpp:70
 #, fuzzy, kde-format
 #| msgid "Failed to start '%1': %2"
@@ -1016,13 +1016,13 @@ msgstr "%1 (bruker)"
 msgid "Enter a Flatpak repository URI (*.flatpakrepo):"
 msgstr "Skriv inn adressen til Flatpak-pakkebrønn (*.flatpakrepo):"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:35
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:36
 #, fuzzy, kde-format
 #| msgid "Adding remote '%1' in %2 from %3"
 msgid "Adding remote “%1” in %2 from %3"
 msgstr "Legger til ekstern «%1» i %2 fra %3"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:338
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:339
 #, kde-format
 msgctxt "@info:status"
 msgid ""
@@ -1030,7 +1030,7 @@ msgid ""
 "href='%3'>%3</a>"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:424
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:425
 #, kde-format
 msgctxt "fallback error message"
 msgid ""
@@ -1038,13 +1038,13 @@ msgid ""
 "enter_bug.cgi?product=Discover"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:462
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:463
 #, fuzzy, kde-format
 msgctxt "@title"
 msgid "Replacement Available"
 msgstr "Pakkebrønn ikke tilgjengelig"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:464
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:465
 #, kde-kuit-format
 msgctxt ""
 "@info %1 and 2 are flatpak ids e.g. org.kde.krita (can be rather lengthy "
@@ -1058,13 +1058,13 @@ msgid ""
 "there."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:472
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:473
 #, kde-format
 msgctxt "@title"
 msgid "Automatic Removal"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:474
+#: libdiscover/backends/FlatpakBackend/FlatpakTransactionThread.cpp:475
 #, kde-kuit-format
 msgctxt ""
 "@info %1 is a flatpak id e.g. org.kde.krita (can be rather lengthy though)"
@@ -1290,12 +1290,12 @@ msgctxt "Category"
 msgid "Plasma Widgets"
 msgstr "Plasma-element"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:328
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:327
 #, kde-format
 msgid "Please make sure that Appstream is properly set up on your system"
 msgstr "Se til at AppStream er riktig satt opp på systemet"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:364
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:363
 #, kde-format
 msgctxt "%1 is the date as formatted by the locale"
 msgid ""
@@ -1305,13 +1305,19 @@ msgstr ""
 "Operativsystemet ditt avsluttet støtte på %1. Vurder å oppgradere til et "
 "støttet versjon."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:973
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:970
+#, fuzzy, kde-format
+#| msgid "Cannot remove '%1'"
+msgid "Cannot install “%1”"
+msgstr "Kan ikke fjerne «%1»"
+
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:980
 #, fuzzy, kde-format
 #| msgid "Cannot remove '%1'"
 msgid "Cannot remove “%1”"
 msgstr "Kan ikke fjerne «%1»"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1057
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1064
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:363
 #, fuzzy, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
@@ -1324,20 +1330,20 @@ msgstr ""
 "For å kunne oppdatere til den nye versjonen, installer alle utestående "
 "oppdateringer og start systemet på nytt."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1066
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1073
 #, fuzzy, kde-format
 msgctxt "@action:button Upgrade to new distro release"
 msgid "Upgrade Now"
 msgstr "Oppgrader til %1 %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1088
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1095
 #: libdiscover/backends/RpmOstreeBackend/RpmOstreeBackend.cpp:373
 #, fuzzy, kde-format
 msgctxt "@info:status %1 is a new major version of the user's distro"
 msgid "%1 is now available."
 msgstr "Pakkebrønn ikke tilgjengelig"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1215
+#: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:1213
 #, kde-format
 msgctxt "@info %2 is the name of the operating system"
 msgid ""
@@ -2117,12 +2123,12 @@ msgstr "Utdaterer:"
 msgid "Downgrade"
 msgstr "Nedgraderer"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:110
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:113
 #, kde-format
 msgid "Failed Offline Update"
 msgstr "Frakoblet oppdatering mislyktes"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:111
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:114
 #, kde-format
 msgid ""
 "Failed to update %1 package\n"
@@ -2137,30 +2143,30 @@ msgstr[1] ""
 "Klarte ikke oppdatere %1 pakker\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:114
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:165
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:117
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:168
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Discover"
 msgstr "Åpne Discover"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:119
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:122
 #, kde-format
 msgctxt "@action:button"
 msgid "Repair System"
 msgstr "Reparer systemet"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:124
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:127
 #, kde-format
 msgid "Repairing failed offline update"
 msgstr "Reparerer mislykket frakoblet oppdatering"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:131
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:134
 #, kde-format
 msgid "Repair Failed"
 msgstr "Reparasjon mislyktes"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:133
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:136
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "%1<nl/>Please report this error to your distribution."
@@ -2169,17 +2175,17 @@ msgctxt ""
 msgid "%1<nl/>Please <link url='%2'>report this error to %3</link>."
 msgstr "%1<nl/>Rapporter denne feilen til distribusjonen din."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:146
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:149
 #, kde-format
 msgid "Repaired Successfully"
 msgstr "Reparasjon vellykket"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:161
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:164
 #, kde-format
 msgid "Offline Updates"
 msgstr "Oppdateringer frakoblet"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:162
+#: libdiscover/backends/PackageKitBackend/PackageKitNotifier.cpp:165
 #, kde-format
 msgid "Successfully updated %1 package"
 msgid_plural "Successfully updated %1 packages"
@@ -2191,44 +2197,44 @@ msgstr[1] "%1 pakker ble oppdatert"
 msgid "Unknown Source"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:339
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:343
 #, kde-format
 msgctxt "package-name (version)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:342
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:346
 #, kde-format
 msgctxt "comma separating package names"
 msgid ", "
 msgstr ", "
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:357
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:361
 #, kde-format
 msgid "Software verified by %1"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:385
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:389
 #, kde-format
 msgid "Obsoletes:"
 msgstr "Utdaterer:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:386
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:390
 #, kde-format
 msgid "Release Notes:"
 msgstr "Versjonsmerknader:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:387
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:391
 #, kde-format
 msgid "Update State:"
 msgstr "Oppdateringsstatus:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:388
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:392
 #, kde-format
 msgid "Restart:"
 msgstr "Omstart:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:391
+#: libdiscover/backends/PackageKitBackend/PackageKitResource.cpp:395
 #, kde-format
 msgid "Vendor:"
 msgstr "Produsent:"
@@ -2238,32 +2244,32 @@ msgstr "Produsent:"
 msgid "Repository URL:"
 msgstr "Adresse til pakkebrønn:"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:95
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:96
 #, kde-format
 msgctxt "distro upgrade: name version"
 msgid "%1 %2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:97
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:98
 #, fuzzy, kde-format
 #| msgid "System upgrade"
 msgctxt "Major system upgrade upgrade, not a smaller security update"
 msgid "System upgrade"
 msgstr "System­oppgradering"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:188
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:189
 #, kde-format
 msgid "1 package will be upgraded"
 msgid_plural "%1 packages will be upgraded"
 msgstr[0] "1 pakke blir oppgradert"
 msgstr[1] "%1 pakker blir oppgradert"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:203
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:206
 #, kde-format
 msgid "<h3>%1</h3>%2"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:205
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:208
 #, fuzzy, kde-format
 #| msgid ""
 #| "<h3>%1</h3>Upgrade to new version %2<br/>Release notes:<blockquote>%3</"
@@ -2273,17 +2279,17 @@ msgstr ""
 "<h3>%1</h3>Oppgrader til ny versjon %2<br/>Versjonsmerknader:<blockquote>%3</"
 "blockquote>>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:228
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:231
 #, kde-format
 msgid "Present"
 msgstr "Nåtid"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:232
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:235
 #, kde-format
 msgid "Future"
 msgstr "Fremtid"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:374
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:377
 #, kde-format
 msgctxt "@info:status %1 is a formatted disk space string e.g. '240 MiB'"
 msgid "Not enough space to perform the update; only %1 of space are available."
@@ -2291,7 +2297,7 @@ msgstr ""
 "Ikke nok lagringsplass til å gjennomføre oppdateringen; bare %1 "
 "lagringsplass er tilgjengelig."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:592
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:595
 #, fuzzy, kde-format
 #| msgid ""
 #| "This update cannot be completed as it would remove the following software "
@@ -2309,12 +2315,12 @@ msgstr ""
 "ul><nl/> Om du mener dette er en feil, kan du melde fra om det til pakkerene "
 "av distribusjonen din."
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:599
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:602
 #, kde-format
 msgid "Confirm Changes"
 msgstr ""
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:600
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:603
 #, kde-format
 msgid ""
 "The following packages will be removed by the update:<ul><li>%1</li></ul><br/"
@@ -2323,14 +2329,14 @@ msgstr ""
 "Følgende pakker blir fjernet av oppdateringen: <ul><li>%1</li></ul><br/"
 ">Dette for å kunne installere: <ul><li>%2</li></ul>"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:732
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:735
 #, kde-kuit-format
 msgctxt "@info"
 msgid "%1:<nl/><nl/>%2"
 msgstr "%1:<nl/><nl/>%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:740
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:328
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:743
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:327
 #, fuzzy, kde-format
 #| msgid ""
 #| "Media Change of type '%1' is requested.\n"
@@ -2342,14 +2348,14 @@ msgstr ""
 "Må bytte medium type «%1».\n"
 "%2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:773
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:776
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:304
 #, kde-format
 msgid "Accept EULA"
 msgstr "Godta EULA"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:774
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:306
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:777
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:305
 #, kde-format
 msgid ""
 "The package %1 and its vendor %2 require that you accept their license:\n"
@@ -2358,14 +2364,14 @@ msgstr ""
 "Pakka %1 og dens leverandør %2 krever at du godtar deres lisens:\n"
 " %3"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:924
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:927
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:344
 #, kde-format
 msgid "Missing signature for %1 in %2"
 msgstr "Manglende signatur for %1 i %2"
 
-#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:925
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:346
+#: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:928
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:345
 #, kde-format
 msgid ""
 "Do you trust the following key?\n"
@@ -2384,7 +2390,7 @@ msgstr ""
 "Fingeravtrykk: %4\n"
 "Tidsstempel: %4\n"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:202
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:201
 #, fuzzy, kde-format
 #| msgid ""
 #| "This action cannot be completed as it would remove the following software "
@@ -2402,12 +2408,12 @@ msgstr ""
 "ul><nl/> Hvis du mener dette er en feil, kan du melde fra om det til "
 "pakkerene av distribusjonen din."
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:215
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:214
 #, kde-format
 msgid "Confirm package removal"
 msgstr "Bekreft fjerning av pakke"
 
-#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:216
+#: libdiscover/backends/PackageKitBackend/PKTransaction.cpp:215
 #, kde-format
 msgid ""
 "This action will also remove the following package:\n"
@@ -2898,25 +2904,25 @@ msgctxt "@info:status"
 msgid "Canceled"
 msgstr "Avbrutt"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:138
+#: libdiscover/UpdateModel/UpdateModel.cpp:140
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Applications"
 msgstr "Program"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:139
+#: libdiscover/UpdateModel/UpdateModel.cpp:141
 #, fuzzy, kde-format
 msgctxt "@item:inlistbox"
 msgid "Application Support"
 msgstr "Programmer"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:140
+#: libdiscover/UpdateModel/UpdateModel.cpp:142
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "System Software"
 msgstr "Systemprogram"
 
-#: libdiscover/UpdateModel/UpdateModel.cpp:141
+#: libdiscover/UpdateModel/UpdateModel.cpp:143
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Addons"
