@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libmuon\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-19 03:22+0000\n"
+"POT-Creation-Date: 2026-11-25 03:27+0000\n"
 "PO-Revision-Date: 2026-05-29 17:22-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -2541,7 +2541,7 @@ msgstr "زاپاس نەشرى (مىخلانغان)"
 msgid "Fallback version"
 msgstr "زاپاس نەشرى"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:36
 #, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
@@ -2549,7 +2549,7 @@ msgstr ""
 "rpm-ostree ئارقا ئۇچى: ھېچقانداق DBus ئارايۈزى تەمىنلەنمىگەن. كەمتۈك مەلۇم "
 "قىلىڭ."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
@@ -2558,22 +2558,22 @@ msgstr ""
 "rpm-ostree ئارقا ئۇچى: پىچىمى ئىناۋەتسىز مەنبە ئۈچۈن يۇمشاق دېتال "
 "جايلاشتۇرۇشنى قوزغىتالمايدۇ. كەمتۈك مەلۇم قىلىڭ."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
 #, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
 msgstr ""
 "rpm-ostree ئارقا ئۇچى: بوش نەقىلگە قايتا نىشانلىيالمايدۇ. كەمتۈك مەلۇم قىلىڭ."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr ""
 "rpm-ostree ئارقا ئۇچى: يوچۇن مەشغۇلات ئىلتىماس قىلىندى. كەمتۈك مەلۇم قىلىڭ."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
 #, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
@@ -2582,12 +2582,12 @@ msgstr ""
 "rpm-ostree بېجىرىدىغان ئىش مەغلۇپ بولدى:\n"
 "%1"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:240
 #, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr "rpm-ostree ئارقا ئۇچى: يوچۇن مەنبە پىچىمى. كەمتۈك مەلۇم قىلىڭ."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:362
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
@@ -2595,12 +2595,12 @@ msgstr ""
 "rpm-ostree بېجىرىدىغان ئىشنى قالدۇرۇۋېتىۋاتىدۇ. بۇنىڭغا بىر ئاز ۋاقىت كېتىشى "
 "مۇمكىن. سەل كۈتۈڭ."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
 #, kde-format
 msgid "Checking for a system update"
 msgstr "سىستېما يېڭىلىنىشىنى تەكشۈرۈۋاتىدۇ"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:398
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
 #, kde-format
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
@@ -2608,14 +2608,14 @@ msgstr ""
 "سىستېما يېڭىلىنىشىنى چۈشۈرۈۋاتىدۇ. سەۋرچانلىق بىلەن كۈتۈڭ، يېڭىلاش جەريانى "
 "مەلۇم قىلىنمايدۇ."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:397
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
 "سىستېمىنى يېڭىلاۋاتىدۇ. سەۋرچانلىق بىلەن كۈتۈڭ، يېڭىلاش جەريانى مەلۇم "
 "قىلىنمايدۇ."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
 msgid ""
 "Updating to the next major version. Please be patient as progress is not "
@@ -2624,12 +2624,12 @@ msgstr ""
 "سىستېمىنىڭ كېيىنكى ئاساسىي نەشرىگە يېڭىلاۋاتىدۇ. سەۋرچانلىق بىلەن كۈتۈڭ، "
 "يېڭىلاش جەريانى مەلۇم قىلىنمايدۇ."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:403
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr "مەشغۇلات قىلىنىۋاتىدۇ (Discover نىڭ سىرتىدا قوزغىتىلغان)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:409
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "يوچۇن بېجىرىدىغان ئىش تۈرى"

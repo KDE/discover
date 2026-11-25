@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-19 03:22+0000\n"
+"POT-Creation-Date: 2026-11-25 03:27+0000\n"
 "PO-Revision-Date: 2026-11-21 23:34+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2474,7 +2474,7 @@ msgstr "폴백 버전(고정됨)"
 msgid "Fallback version"
 msgstr "폴백 버전"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:36
 #, kde-format
 msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
@@ -2482,7 +2482,7 @@ msgstr ""
 "rpm-ostree 백엔드: 오류: D-Bus 인터페이스가 제공되지 않았습니다. 버그를 보고"
 "해 주십시오."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not start a transaction for resource with an "
@@ -2491,7 +2491,7 @@ msgstr ""
 "rpm-ostree 백엔드: 오류: 형식이 잘못된 리소스에서 트랜잭션을 시작할 수 없습니"
 "다. 버그를 보고해 주십시오."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
 #, kde-format
 msgid ""
 "rpm-ostree backend: Error: Can not rebase to an empty ref. Please file a bug."
@@ -2499,7 +2499,7 @@ msgstr ""
 "rpm-ostree 백엔드: 오류: 비어 있는 ref로 rebase를 실행할 수 없습니다. 버그를 "
 "보고해 주십시오."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #, kde-format
 msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
@@ -2507,8 +2507,8 @@ msgstr ""
 "rpm-ostree 백엔드: 오류: 알 수 없는 작업을 요청했습니다. 버그를 보고해 주십시"
 "오."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
 #, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
@@ -2517,25 +2517,25 @@ msgstr ""
 "rpm-ostree 트랜잭션 실패, 반환된 오류 메시지:\n"
 "%1"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:240
 #, kde-format
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
 "rpm-ostree 백엔드: 오류: 알 수 없는 리소스 형식입니다. 버그를 보고해 주십시"
 "오."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:362
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr "rpm-ostree 트랜잭션을 취소하고 있습니다. 잠시 기다려 주십시오."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
 #, kde-format
 msgid "Checking for a system update"
 msgstr "시스템 업데이트 확인 중"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:398
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
 #, kde-format
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
@@ -2543,14 +2543,14 @@ msgstr ""
 "시스템 업데이트를 다운로드하고 있습니다. 진행 사항이 보고되지 않으므로 잠시 "
 "기다려 주십시오."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:397
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
 "시스템을 업데이트하고 있습니다. 진행 사항이 보고되지 않으므로 잠시 기다려 주"
 "십시오."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
 msgid ""
 "Updating to the next major version. Please be patient as progress is not "
@@ -2559,12 +2559,12 @@ msgstr ""
 "다음 주 버전으로 업데이트하고 있습니다. 진행 사항이 보고되지 않으므로 잠시 기"
 "다려 주십시오."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:403
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr "작업 진행 중(Discover 외부에서 시작됨)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:409
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "알 수 없는 트랜잭션 형식"

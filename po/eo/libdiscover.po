@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-19 03:22+0000\n"
+"POT-Creation-Date: 2026-11-25 03:27+0000\n"
 "PO-Revision-Date: 2025-02-23 13:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -2544,7 +2544,7 @@ msgstr "Rezerva versio (alpinglita)"
 msgid "Fallback version"
 msgstr "Rezerva versio"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:36
 #, fuzzy, kde-format
 #| msgid ""
 #| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
@@ -2554,7 +2554,7 @@ msgstr ""
 "rpm-ostree-backend: Eraro: Neniu DBus-interfaco provizita. Bonvolu registri "
 "cimon."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, fuzzy, kde-format
 #| msgid ""
 #| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
@@ -2566,7 +2566,7 @@ msgstr ""
 "rpm-ostree-backend: Eraro: Ne povas komenci transakcion por remedo kun "
 "nevalida formato. Bonvolu registri cimon."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
 #, fuzzy, kde-format
 #| msgid ""
 #| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
@@ -2577,7 +2577,7 @@ msgstr ""
 "rpm-ostree-backend: Eraro: Ne povas rebazi al malplena ref. Bonvolu registri "
 "cimon."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #, fuzzy, kde-format
 #| msgid ""
 #| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
@@ -2587,8 +2587,8 @@ msgstr ""
 "rpm-ostree-backend: Eraro: Nekonata operacio alpetita. Bonvolu registri "
 "cimon."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
 #, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
@@ -2597,7 +2597,7 @@ msgstr ""
 "rpm-ostree-transakcio malsukcesis kun:\n"
 "%1"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:240
 #, fuzzy, kde-format
 #| msgid ""
 #| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
@@ -2605,7 +2605,7 @@ msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr ""
 "rpm-ostree-backend: Eraro: Nekonata rimedoformato. Bonvolu registri cimon."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:362
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
@@ -2613,12 +2613,12 @@ msgstr ""
 "Nuligi rpm-ostree-transakcion. Ĉi tio povas preni iom da tempo. Bonvolu "
 "atendi."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
 #, kde-format
 msgid "Checking for a system update"
 msgstr "Kontrolante sisteman ĝisdatigon"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:398
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
 #, kde-format
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
@@ -2626,13 +2626,13 @@ msgstr ""
 "Elŝutante sisteman ĝisdatigon. Bonvolu pacienci ĉar progreso ne estas "
 "raportata."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:397
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr ""
 "Ĝisdatigante sistemon. Bonvolu pacienci ĉar progreso ne estas raportata."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
 msgid ""
 "Updating to the next major version. Please be patient as progress is not "
@@ -2641,12 +2641,12 @@ msgstr ""
 "Ĝisdatigante al sekva maĵora versio. Bonvolu pacienci ĉar progreso ne estas "
 "raportata."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:403
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr "Operacio en progreso (komencita ekster Discover)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:409
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "Nekonata transakcia tipo"

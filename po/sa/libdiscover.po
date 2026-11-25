@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-19 03:22+0000\n"
+"POT-Creation-Date: 2026-11-25 03:27+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -2525,7 +2525,7 @@ msgstr "पुनर्मार्ग संस्करणम् (स्था
 msgid "Fallback version"
 msgstr "पुनर्मार्ग संस्करणम्"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:40
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:36
 #, fuzzy, kde-format
 #| msgid ""
 #| "rpm-ostree-backend: Error: No DBus interface provided. Please file a bug."
@@ -2533,7 +2533,7 @@ msgid ""
 "rpm-ostree backend: Error: No DBus interface provided. Please file a bug."
 msgstr "rpm-ostree-backend: त्रुटिः : DBus अन्तरफलकं न प्रदत्तम् । कृपया दोषं दातव्यम् ।."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:60
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:56
 #, fuzzy, kde-format
 #| msgid ""
 #| "rpm-ostree-backend: Error: Can not start a transaction for resource with "
@@ -2545,7 +2545,7 @@ msgstr ""
 "rpm-ostree-backend: त्रुटिः: अमान्यस्वरूपेण संसाधनस्य विनिमयव्यवहारं आरभुं न शक्यते। कृपया "
 "दोषं दातव्यम् ।."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:80
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:76
 #, fuzzy, kde-format
 #| msgid ""
 #| "rpm-ostree-backend: Error: Can not rebase to an empty ref. Please file a "
@@ -2555,7 +2555,7 @@ msgid ""
 msgstr ""
 "rpm-ostree-backend: त्रुटिः: रिक्तसन्दर्भे पुनः आधारं कर्तुं न शक्यते । कृपया दोषं दातव्यम् ।."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:98
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:94
 #, fuzzy, kde-format
 #| msgid ""
 #| "rpm-ostree-backend: Error: Unknown operation requested. Please file a bug."
@@ -2563,8 +2563,8 @@ msgid ""
 "rpm-ostree backend: Error: Unknown operation requested. Please file a bug."
 msgstr "rpm-ostree-backend: त्रुटिः अज्ञातं संचालनं अनुरोधितम्। कृपया दोषं दातव्यम् ।."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:160
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:183
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:156
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:179
 #, kde-format
 msgid ""
 "rpm-ostree transaction failed with:\n"
@@ -2573,49 +2573,49 @@ msgstr ""
 "rpm-ostree विनिमयव्यवहारः विफलः अभवत्:\n"
 "%1"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:244
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:240
 #, fuzzy, kde-format
 #| msgid ""
 #| "rpm-ostree-backend: Error: Unknown resource format. Please file a bug."
 msgid "rpm-ostree backend: Error: Unknown resource format. Please file a bug."
 msgstr "rpm-ostree-backend: त्रुटिः : अज्ञातसंसाधनस्वरूपम्। कृपया दोषं दातव्यम् ।."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:366
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:362
 #, kde-format
 msgid ""
 "Cancelling rpm-ostree transaction. This may take some time. Please wait."
 msgstr ""
 "rpm-ostree विनिमयव्यवहारं रद्दं कुर्वन्। एतत् किञ्चित् समयं गृह्णीयात् । कृपया प्रतीक्ष्यताम्।."
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:395
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:391
 #, kde-format
 msgid "Checking for a system update"
 msgstr "प्रणाली अद्यतनस्य जाँचः"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:398
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:394
 #, kde-format
 msgid ""
 "Downloading system update. Please be patient as progress is not reported."
 msgstr "सिस्टम् अपडेट् डाउनलोड् करणम्। प्रगतिः न ज्ञायते इति कारणेन धैर्यं धारयन्तु।"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:401
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:397
 #, kde-format
 msgid "Updating the system. Please be patient as progress is not reported."
 msgstr "प्रणालीं अद्यतनं करणम्। प्रगतिः न ज्ञायते इति कारणेन धैर्यं धारयन्तु।"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:404
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:400
 #, kde-format
 msgid ""
 "Updating to the next major version. Please be patient as progress is not "
 "reported."
 msgstr "अग्रिमप्रमुखसंस्करणं प्रति अद्यतनीकरणम् । प्रगतिः न ज्ञायते इति कारणेन धैर्यं धारयन्तु।"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:407
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:403
 #, kde-format
 msgid "Operation in progress (started outside of Discover)"
 msgstr "संचालन प्रचलति (डिस्कवरस्य बहिः आरब्धम्)"
 
-#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:413
+#: libdiscover/backends/RpmOstreeBackend/RpmOstreeTransaction.cpp:409
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "अज्ञातः विनिमयव्यवहारः प्रकारः"
