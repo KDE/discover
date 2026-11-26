@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-25 01:27+0000\n"
+"POT-Creation-Date: 2026-11-26 01:06+0000\n"
 "PO-Revision-Date: 2021-11-06 11:11+0100\n"
 "Last-Translator: Edward Wornar <edi.werner@gmx.de>\n"
 "Language-Team: Upper Sorbian <kde-i18n-doc@kde.org>\n"
@@ -584,33 +584,33 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (wužiwar)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:815
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:818
 #, kde-format
 msgid "Local bundle"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1968
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1971
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:866
 #, kde-format
 msgid "Malformed appstream url “%1”"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2082
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2085
 #, kde-format
 msgid "Source “%1” already exists"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2099
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2102
 #, kde-format
 msgid "Failed to add source “%1”: %2"
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2226
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2229
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr ""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2230
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2233
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr ""
@@ -2527,6 +2527,48 @@ msgstr ""
 #| msgid "Unknown size"
 msgid "Unknown transaction type"
 msgstr "Njeznata wulkosć"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, SnapMacaroonDialog)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:14
+#, kde-format
+msgid "Dialog"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:22
+#, kde-format
+msgid "Log in to the <a href=\"https://login.ubuntu.com/\">Snap store</a>:"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:29
+#, kde-format
+msgid "Username:"
+msgstr ""
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, username)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:36
+#, kde-format
+msgid "Username"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:43
+#, kde-format
+msgid "Password:"
+msgstr ""
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, password)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:53
+#, kde-format
+msgid "Password"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, otpLabel)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:60
+#, kde-format
+msgid "Two-Factor:"
+msgstr ""
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, kde-format

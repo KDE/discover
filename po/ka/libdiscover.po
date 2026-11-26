@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-25 01:27+0000\n"
-"PO-Revision-Date: 2026-11-13 02:47+0100\n"
+"POT-Creation-Date: 2026-11-26 01:06+0000\n"
+"PO-Revision-Date: 2026-11-25 15:28+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -580,33 +580,33 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (მომხმარებელი)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:815
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:818
 #, kde-format
 msgid "Local bundle"
 msgstr "ლოკალური პაკეტი"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1968
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1971
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:866
 #, kde-format
 msgid "Malformed appstream url “%1”"
 msgstr "appstream-ის არასწორი URL \"%1\""
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2082
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2085
 #, kde-format
 msgid "Source “%1” already exists"
 msgstr "წყარო \"%1\" უკვე არსებობს"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2099
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2102
 #, kde-format
 msgid "Failed to add source “%1”: %2"
 msgstr "წყაროს \"%1\" დამატების შეცდომა: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2226
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2229
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "FlatPak-ის წყარო არ არსებობს."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2230
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2233
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "\"%1\"-ის წყაროს ჩატვირთვის შეცდომა"
@@ -1297,10 +1297,9 @@ msgstr ""
 "ვერსიამდე განახლდეთ."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:970
-#, fuzzy, kde-format
-#| msgid "Cannot remove “%1”"
+#, kde-format
 msgid "Cannot install “%1”"
-msgstr "\"%1\"-ის წაშლის შეცდომა"
+msgstr "\"%1\"-ის დაყენება შეუძლებელია"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:980
 #, kde-format
@@ -2615,6 +2614,48 @@ msgstr "ტრანზაქცია უკვე გაშვებული�
 #, kde-format
 msgid "Unknown transaction type"
 msgstr "ტრანზაქციის უცნობი ტიპი"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, SnapMacaroonDialog)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:14
+#, kde-format
+msgid "Dialog"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:22
+#, kde-format
+msgid "Log in to the <a href=\"https://login.ubuntu.com/\">Snap store</a>:"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:29
+#, kde-format
+msgid "Username:"
+msgstr ""
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, username)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:36
+#, kde-format
+msgid "Username"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:43
+#, kde-format
+msgid "Password:"
+msgstr ""
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, password)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:53
+#, kde-format
+msgid "Password"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, otpLabel)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:60
+#, kde-format
+msgid "Two-Factor:"
+msgstr ""
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, kde-format

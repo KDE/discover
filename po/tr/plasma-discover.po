@@ -1023,7 +1023,7 @@ msgstr "&Hakkında"
 #, kde-format
 msgctxt "@action opens settings page"
 msgid "S&ettings"
-msgstr "A&yarlar"
+msgstr "Ayar&lar"
 
 #: discover/qml/DiscoverWindow.qml:175
 #, kde-format

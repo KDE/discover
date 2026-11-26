@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-25 01:27+0000\n"
-"PO-Revision-Date: 2026-11-12 09:03+0100\n"
+"POT-Creation-Date: 2026-11-26 01:06+0000\n"
+"PO-Revision-Date: 2026-11-25 10:41+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -584,33 +584,33 @@ msgctxt "user denotes this as user-scoped flatpak repo"
 msgid "%1 (user)"
 msgstr "%1 (usuari)"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:815
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:818
 #, kde-format
 msgid "Local bundle"
 msgstr "Paquet local"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1968
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:1971
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:866
 #, kde-format
 msgid "Malformed appstream url “%1”"
 msgstr "URL d'«appstream» amb format incorrecte «%1»"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2082
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2085
 #, kde-format
 msgid "Source “%1” already exists"
 msgstr "La font «%1» ja existix"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2099
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2102
 #, kde-format
 msgid "Failed to add source “%1”: %2"
 msgstr "Ha fallat mentre s'afegia la font «%1»: %2"
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2226
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2229
 #, kde-format
 msgid "There are no Flatpak sources."
 msgstr "No hi ha cap font de Flatpak."
 
-#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2230
+#: libdiscover/backends/FlatpakBackend/FlatpakBackend.cpp:2233
 #, kde-format
 msgid "Failed to load \"%1\" source"
 msgstr "Ha fallat mentre es carregava la font «%1»"
@@ -1312,10 +1312,9 @@ msgstr ""
 "l'actualització a una versió suportada."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:970
-#, fuzzy, kde-format
-#| msgid "Cannot remove “%1”"
+#, kde-format
 msgid "Cannot install “%1”"
-msgstr "No s'ha pogut eliminar «%1»"
+msgstr "No s'ha pogut instal·lar «%1»"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:980
 #, kde-format
@@ -2253,7 +2252,7 @@ msgstr "%1 %2"
 #, kde-format
 msgctxt "Major system upgrade upgrade, not a smaller security update"
 msgid "System upgrade"
-msgstr "Actualització de la versió del sistema"
+msgstr "Actualitzeu la versió del sistema"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitUpdater.cpp:189
 #, kde-format
@@ -2648,6 +2647,48 @@ msgstr "L'operació està en curs (s'ha iniciat fora de Discover)"
 msgid "Unknown transaction type"
 msgstr "Tipus de transacció desconeguda"
 
+#. i18n: ectx: property (windowTitle), widget (QDialog, SnapMacaroonDialog)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:14
+#, kde-format
+msgid "Dialog"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:22
+#, kde-format
+msgid "Log in to the <a href=\"https://login.ubuntu.com/\">Snap store</a>:"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:29
+#, kde-format
+msgid "Username:"
+msgstr ""
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, username)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:36
+#, kde-format
+msgid "Username"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:43
+#, kde-format
+msgid "Password:"
+msgstr ""
+
+#. i18n: ectx: property (placeholderText), widget (QLineEdit, password)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:53
+#, kde-format
+msgid "Password"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, otpLabel)
+#: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:60
+#, kde-format
+msgid "Two-Factor:"
+msgstr ""
+
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, kde-format
 msgid "Channel: %1"
@@ -2778,7 +2819,7 @@ msgctxt ""
 "@info 'Refresh' is used as a noun here. An app or runtime got updated "
 "without changing the user-facing version number %1"
 msgid "Refresh of version %1"
-msgstr "Actualització de la versió %1"
+msgstr "Actualitzeu la versió %1"
 
 #: libdiscover/resources/AbstractResource.cpp:280
 #, kde-format
