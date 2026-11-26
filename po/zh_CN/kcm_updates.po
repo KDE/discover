@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/discover/kcm_updates.pot\n"
-"X-Crowdin-File-ID: 42799\n"
+"X-Crowdin-File: /kf6-stable/messages/discover/kcm_updates.pot\n"
+"X-Crowdin-File-ID: 49902\n"
 
 #: kcm/ui/main.qml:40
 #, kde-format
@@ -82,7 +82,7 @@ msgstr "不通知"
 #: kcm/ui/main.qml:120
 #, kde-format
 msgid "Apply system updates:"
-msgstr "应用系统更新："
+msgstr "系统更新应用方式："
 
 #: kcm/ui/main.qml:127
 #, kde-format
@@ -98,7 +98,7 @@ msgctxt ""
 "@label The thing being recommended is to use the 'apply updates when "
 "rebooting' setting"
 msgid "Recommended to maximize system stability"
-msgstr "建议设置为此项以提高系统稳定性"
+msgstr "建议值，有助于提高系统稳定性"
 
 #: kcm/ui/main.qml:146
 #, kde-format
