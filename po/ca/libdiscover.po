@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-26 01:06+0000\n"
-"PO-Revision-Date: 2026-11-25 10:41+0100\n"
+"PO-Revision-Date: 2026-11-26 08:24+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -2648,43 +2648,44 @@ msgstr "Tipus de transacció desconeguda"
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:14
 #, kde-format
 msgid "Dialog"
-msgstr ""
+msgstr "Diàleg"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:22
 #, kde-format
 msgid "Log in to the <a href=\"https://login.ubuntu.com/\">Snap store</a>:"
 msgstr ""
+"Inici de sessió a la <a href=\"https://login.ubuntu.com/\">Snap store</a>:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:29
 #, kde-format
 msgid "Username:"
-msgstr ""
+msgstr "Nom d'usuari:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, username)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:36
 #, kde-format
 msgid "Username"
-msgstr ""
+msgstr "Nom d'usuari"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:43
 #, kde-format
 msgid "Password:"
-msgstr ""
+msgstr "Contrasenya:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, password)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:53
 #, kde-format
 msgid "Password"
-msgstr ""
+msgstr "Contrasenya"
 
 #. i18n: ectx: property (text), widget (QLabel, otpLabel)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:60
 #, kde-format
 msgid "Two-Factor:"
-msgstr ""
+msgstr "Segon factor:"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, kde-format

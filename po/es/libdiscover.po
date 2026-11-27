@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-26 01:06+0000\n"
-"PO-Revision-Date: 2026-11-12 12:37+0100\n"
+"PO-Revision-Date: 2026-11-26 23:54+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1312,10 +1312,9 @@ msgstr ""
 "una versión con soporte."
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:970
-#, fuzzy, kde-format
-#| msgid "Cannot remove “%1”"
+#, kde-format
 msgid "Cannot install “%1”"
-msgstr "No se puede eliminar «%1»"
+msgstr "No se puede instalar «%1»"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:980
 #, kde-format
@@ -2652,43 +2651,44 @@ msgstr "Tipo de transacción desconocido"
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:14
 #, kde-format
 msgid "Dialog"
-msgstr ""
+msgstr "Diálogo"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:22
 #, kde-format
 msgid "Log in to the <a href=\"https://login.ubuntu.com/\">Snap store</a>:"
 msgstr ""
+"Inicie sesión en la <a href=\"https://login.ubuntu.com/\">tienda Snap</a>:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:29
 #, kde-format
 msgid "Username:"
-msgstr ""
+msgstr "Nombre de usuario:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, username)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:36
 #, kde-format
 msgid "Username"
-msgstr ""
+msgstr "Nombre de usuario"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:43
 #, kde-format
 msgid "Password:"
-msgstr ""
+msgstr "Contraseña:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, password)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:53
 #, kde-format
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 #. i18n: ectx: property (text), widget (QLabel, otpLabel)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:60
 #, kde-format
 msgid "Two-Factor:"
-msgstr ""
+msgstr "Dos factores:"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, kde-format

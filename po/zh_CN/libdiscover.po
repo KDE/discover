@@ -1260,9 +1260,9 @@ msgstr ""
 "本机安装的操作系统已于 %1 结束支持。请考虑升级到仍受支持的新版操作系统。"
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:970
-#, fuzzy, kde-format
+#, kde-format
 msgid "Cannot install “%1”"
-msgstr "无法移除“%1”"
+msgstr ""
 
 #: libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp:980
 #, kde-format

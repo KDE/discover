@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libdiscover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-26 01:06+0000\n"
-"PO-Revision-Date: 2026-11-25 13:49+0200\n"
+"PO-Revision-Date: 2026-11-26 08:43+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2661,43 +2661,44 @@ msgstr "Невідомий тип дії"
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:14
 #, kde-format
 msgid "Dialog"
-msgstr ""
+msgstr "Діалогове вікно"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:22
 #, kde-format
 msgid "Log in to the <a href=\"https://login.ubuntu.com/\">Snap store</a>:"
 msgstr ""
+"Увійти до системи <a href=\"https://login.ubuntu.com/\">крамниці Snap</a>:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:29
 #, kde-format
 msgid "Username:"
-msgstr ""
+msgstr "Користувач:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, username)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:36
 #, kde-format
 msgid "Username"
-msgstr ""
+msgstr "Користувач"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:43
 #, kde-format
 msgid "Password:"
-msgstr ""
+msgstr "Пароль:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, password)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:53
 #, kde-format
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #. i18n: ectx: property (text), widget (QLabel, otpLabel)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:60
 #, kde-format
 msgid "Two-Factor:"
-msgstr ""
+msgstr "Двофакторне:"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-26 01:06+0000\n"
-"PO-Revision-Date: 2026-11-25 15:28+0100\n"
+"PO-Revision-Date: 2026-11-26 06:39+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2619,43 +2619,43 @@ msgstr "ტრანზაქციის უცნობი ტიპი"
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:14
 #, kde-format
 msgid "Dialog"
-msgstr ""
+msgstr "დიალოგი"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:22
 #, kde-format
 msgid "Log in to the <a href=\"https://login.ubuntu.com/\">Snap store</a>:"
-msgstr ""
+msgstr "შესვლა <a href=\"https://login.ubuntu.com/\">Snap store</a>-ზე:"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:29
 #, kde-format
 msgid "Username:"
-msgstr ""
+msgstr "მომხმარებელი:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, username)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:36
 #, kde-format
 msgid "Username"
-msgstr ""
+msgstr "მომხმარებლის სახელი"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:43
 #, kde-format
 msgid "Password:"
-msgstr ""
+msgstr "პაროლი:"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, password)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:53
 #, kde-format
 msgid "Password"
-msgstr ""
+msgstr "პაროლი"
 
 #. i18n: ectx: property (text), widget (QLabel, otpLabel)
 #: libdiscover/backends/SnapBackend/libsnapclient/SnapMacaroonDialog.ui:60
 #, kde-format
 msgid "Two-Factor:"
-msgstr ""
+msgstr "ორფაქტორიანი:"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, kde-format
