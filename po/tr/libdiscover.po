@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-25 03:27+0000\n"
-"PO-Revision-Date: 2026-11-19 19:25+0300\n"
+"PO-Revision-Date: 2026-11-26 16:54+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2618,7 +2618,7 @@ msgstr "Bilinmeyen işlem türü"
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:22
 #, kde-format
 msgid "Channel: %1"
-msgstr "Kanallar: %1"
+msgstr "Kanal: %1"
 
 #: libdiscover/backends/SnapBackend/qml/ChannelsButton.qml:31
 #, kde-format
