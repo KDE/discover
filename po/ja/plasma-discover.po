@@ -1,5 +1,5 @@
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2026 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Tomohiro Hyakutake <tomhioo@outlook.jp>, 2019.
+# SPDX-FileCopyrightText: 2022-2024, 2026 Ryuichi Yamada <ryuichi_ya220@outlook.jp>
 # Fumiaki Okushi <fumiaki.okushi@gmail.com>, 2019, 2022, 2023.
 # SPDX-FileCopyrightText: 2025 Yuma Kakei <yumasansansan@gmail.com>
 # SPDX-FileCopyrightText: 2026 Mint <5602mint@gmail.com>
@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: muon-discover\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-13 20:52+0000\n"
-"PO-Revision-Date: 2026-07-23 17:15+0900\n"
-"Last-Translator: Mint <5602mint@gmail.com>\n"
+"PO-Revision-Date: 2026-11-23 21:28+0900\n"
+"Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 26.08.3\n"
 
 #: discover/DiscoverObject.cpp:197
 #, kde-format
@@ -138,8 +138,7 @@ msgstr "Discover"
 #, kde-format
 msgid ""
 "Discover was closed before certain tasks were done, waiting for it to finish."
-msgstr ""
-"Discover はタスクが完了する前に閉じられました。完了するまで待機します。"
+msgstr "Discover は処理が完了する前に閉じられました。完了するまで待機します。"
 
 #: discover/main.cpp:34
 #, kde-format
@@ -191,7 +190,7 @@ msgstr "ユーザフィードバックのために利用可能なオプション
 #: discover/main.cpp:43
 #, kde-format
 msgid "Starts an update automatically, headless"
-msgstr ""
+msgstr "自動的に更新を開始、ヘッドレス"
 
 #: discover/main.cpp:45
 #, kde-format
@@ -219,8 +218,7 @@ msgid "Nate Graham"
 msgstr "Nate Graham"
 
 #: discover/main.cpp:127
-#, fuzzy, kde-format
-#| msgid "Quality Assurance, Design and Usability"
+#, kde-format
 msgid "Quality Assurance, Design, and Usability"
 msgstr "品質保証、デザインとユーザビリティ"
 
@@ -300,21 +298,7 @@ msgid "No ratings"
 msgstr "評価なし"
 
 #: discover/qml/ApplicationPage.qml:67
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Only install %1 if you fully trust its authors because it is <emphasis "
-#| "strong='true'>proprietary</emphasis>: Your freedom to use, modify, and "
-#| "redistribute this application is restricted, and its source code is "
-#| "partially or entirely closed to public inspection and improvement. This "
-#| "means third parties and users like you cannot verify its operation, "
-#| "security, and trustworthiness.<nl/><nl/>The application may be perfectly "
-#| "safe to use, or it may be acting against you in various ways — such as "
-#| "harvesting your personal information, tracking your location, or "
-#| "transmitting the contents of your data to someone else. Only use it if "
-#| "you fully trust its authors. More information may be available on <link "
-#| "url='%2'>the application's website</link>.<nl/><nl/>Learn more at <link "
-#| "url='%3'>%3</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Only install %1 if you fully trust its authors because it is <emphasis "
@@ -369,20 +353,7 @@ msgstr ""
 "url='%2'>%2</link> をご確認ください。"
 
 #: discover/qml/ApplicationPage.qml:79
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 uses one or more licenses not certified as “Free Software” by either "
-#| "the <link url='%2'>Free Software Foundation</link> or the <link "
-#| "url='%3'>Open Source Initiative</link>. This means your freedom to use, "
-#| "study, modify, and share it may be restricted in some ways.<nl/><nl/>Make "
-#| "sure to read the license text and understand any restrictions before "
-#| "using the software.<nl/><nl/>If the license does not even grant access to "
-#| "read the source code, make sure you fully trust the authors, as no one "
-#| "else can verify the trustworthiness and security of its code to ensure "
-#| "that it is not acting against you in hidden ways. More information may be "
-#| "available on <link url='%4'>the application's website</link>.<nl/><nl/"
-#| ">Learn more at <link url='%5'>%5</link>."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 uses one or more licenses not certified as “Free Software” by either the "
@@ -433,13 +404,7 @@ msgstr ""
 "<nl/><nl/>詳しくは <link url='%4'>%4</link> をご覧ください。"
 
 #: discover/qml/ApplicationPage.qml:95
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. You may be "
-#| "able to determine this on <link url='%2'>the application's website</"
-#| "link>. Find it there or contact the author if you want to use this "
-#| "application for anything other than private personal use."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. You may be able "
@@ -453,12 +418,7 @@ msgstr ""
 "か、作者に連絡してください。"
 
 #: discover/qml/ApplicationPage.qml:99
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "%1 does not indicate under which license it is distributed. Contact the "
-#| "application's author if you want to use it for anything other than "
-#| "private personal use."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "%1 does not indicate under which license it is distributed. Contact the "
@@ -513,8 +473,7 @@ msgid "Screenshots not available for %1"
 msgstr "利用可能な %1 のスクリーンショットはありません"
 
 #: discover/qml/ApplicationPage.qml:436
-#, fuzzy, kde-format
-#| msgid "What's New"
+#, kde-format
 msgid "What’s New"
 msgstr "新着情報"
 
@@ -572,20 +531,16 @@ msgstr "外部リンク"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the FAQ"
-msgstr ""
+msgstr "FAQ を読む"
 
 #: discover/qml/ApplicationPage.qml:600
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Read the documentation"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Read the full documentation"
-msgstr "ドキュメンテーションを読む"
+msgstr "完全なドキュメンテーションを読む"
 
 #: discover/qml/ApplicationPage.qml:611
-#, fuzzy, kde-format
-#| msgctxt "@info text of a web URL"
-#| msgid "Visit the project's website"
+#, kde-format
 msgctxt "@info text of a web URL"
 msgid "Visit the project’s website"
 msgstr "プロジェクトのウェブサイトを訪れる"
@@ -612,19 +567,19 @@ msgstr "貢献を始める"
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Help with translations"
-msgstr ""
+msgstr "翻訳を支援"
 
 #: discover/qml/ApplicationPage.qml:661
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Contact the developers"
-msgstr ""
+msgstr "開発者に連絡"
 
 #: discover/qml/ApplicationPage.qml:671
 #, kde-format
 msgctxt "@info text of a web URL"
 msgid "Browse the source code"
-msgstr ""
+msgstr "ソースコードを閲覧"
 
 #: discover/qml/ApplicationPage.qml:700
 #, kde-format
@@ -874,9 +829,7 @@ msgid "See More"
 msgstr "さらに見る"
 
 #: discover/qml/BrowsingPage.qml:141
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Editor's Choice"
+#, kde-format
 msgctxt "@title:group"
 msgid "Editor’s Choice"
 msgstr "エディタのおすすめ"
@@ -956,8 +909,8 @@ msgstr "更新が利用可能です"
 #, kde-format
 msgid "Running as <em>root</em> is discouraged and unnecessary."
 msgstr ""
-"<em>root</em> として実行することはおすすめできません。また、その必要もありま"
-"せん。"
+"<em>root</em> として実行することはおすすめしません。また、その必要もありませ"
+"ん。"
 
 #: discover/qml/DiscoverWindow.qml:74
 #, kde-format
@@ -1160,10 +1113,9 @@ msgid "Installed"
 msgstr "インストール済"
 
 #: discover/qml/Navigation.qml:36
-#, fuzzy, kde-format
-#| msgid "Resources for '%1'"
+#, kde-format
 msgid "Resources for “%1”"
-msgstr "'%1' のリソース"
+msgstr "“%1” のリソース"
 
 #: discover/qml/ProgressView.qml:29
 #, kde-format
@@ -1176,18 +1128,16 @@ msgid "Tasks"
 msgstr "処理"
 
 #: discover/qml/ProgressView.qml:145
-#, fuzzy, kde-format
-#| msgctxt "TransactioName - TransactionStatus: speed, remaining time"
-#| msgid "%1 - %2: %3, %4 remaining"
+#, kde-format
 msgctxt "TransactioName - TransactionStatus: speed, remaining time"
 msgid "%1: %2, %3 remaining"
-msgstr "%1 - %2: %3, 残り %4"
+msgstr "%1: %2, 残り %3"
 
 #: discover/qml/ProgressView.qml:152
 #, kde-format
 msgctxt "TransactioName - TransactionStatus: speed"
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: discover/qml/Rating.qml:119
 #, kde-format
@@ -1252,26 +1202,17 @@ msgid "Submit review"
 msgstr "レビューを送信"
 
 #: discover/qml/ReviewDialog.qml:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "If you love %1, tell people what's great about it! Focus on "
-#| "functionality, usability, and appearance. If the app didn't meet your "
-#| "needs, explain why."
+#, kde-format
 msgid ""
 "If you love %1, tell people what’s great about it! Focus on functionality, "
 "usability, and appearance. If the app didn’t meet your needs, explain why."
 msgstr ""
 "%1 が気に入ったら、素晴らしい点をみんなに伝えましょう！機能性、使いやすさ、見"
-"た目に焦点を 当ててください。もしアプリがニーズに合わなかったら、その理由を説"
+"た目に焦点を当ててください。もしアプリがニーズに合わなかったら、その理由を説"
 "明してください。"
 
 #: discover/qml/ReviewDialog.qml:72
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "If %1 isn't launching, consider reporting this to its packagers in %2 at "
-#| "<link url='%3'>%3</link> instead, as it may be an easily fixable "
-#| "packaging issue rather than a flaw in the app itself."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "If %1 isn’t launching, consider reporting this to its packagers in %2 at "
@@ -1283,12 +1224,7 @@ msgstr ""
 "なパッケージングの問題である可能性があります。"
 
 #: discover/qml/ReviewDialog.qml:77
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "If %1 isn't launching, consider reporting this its developers at <link "
-#| "url='%2'>%2</link> instead, as it may be an easily fixable packaging "
-#| "issue rather than a flaw in the app itself."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "If %1 isn’t launching, consider reporting this to its developers at <link "
@@ -1300,11 +1236,7 @@ msgstr ""
 "の問題である可能性があります。"
 
 #: discover/qml/ReviewDialog.qml:82
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "If the app is crashing a lot, consider reporting this to the developers "
-#| "at <link url='%1'>%1</link> instead."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "If the app is crashing a lot, consider reporting this to its developers at "
@@ -1314,12 +1246,7 @@ msgstr ""
 "告することを検討してください。"
 
 #: discover/qml/ReviewDialog.qml:85
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "If you're having a problem with the app, consider reporting it to the "
-#| "developers at <link url='%1'>%1</link> instead, or else describe the "
-#| "problem here in greater detail."
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "If you’re having a problem with the app, consider reporting this to its "
@@ -1352,7 +1279,7 @@ msgctxt ""
 "in your language and/or shorten to common stems contained by multiple forms "
 "of the words."
 msgid "launch,run,start"
-msgstr ""
+msgstr "launch,run,start,起動"
 
 #: discover/qml/ReviewDialog.qml:164
 #, kde-format
@@ -1362,7 +1289,7 @@ msgctxt ""
 "language and/or shorten to common stems contained by multiple forms of the "
 "words"
 msgid "crash,segfault"
-msgstr ""
+msgstr "crash,segfault,クラッシュ"
 
 #: discover/qml/ReviewDialog.qml:171
 #, kde-format
@@ -1373,6 +1300,8 @@ msgctxt ""
 "the words,"
 msgid "doesn't work,dumb,stupid,crap,junk,suck,terrible,hate"
 msgstr ""
+"doesn't work,dumb,stupid,crap,junk,suck,terrible,hate,ダメ,だめ,駄目,バカ,ば"
+"か,馬鹿,ごみ,ゴミ,カス"
 
 #: discover/qml/ReviewDialog.qml:193
 #, kde-format
@@ -1448,7 +1377,7 @@ msgstr "%1 件のレビュー"
 #, kde-format
 msgctxt "widest character in the language"
 msgid "M"
-msgstr "M"
+msgstr "あ"
 
 #: discover/qml/ReviewsStats.qml:167
 #, kde-format
@@ -1473,10 +1402,9 @@ msgid "Search…"
 msgstr "検索..."
 
 #: discover/qml/SearchField.qml:26
-#, fuzzy, kde-format
-#| msgid "Search in '%1'…"
+#, kde-format
 msgid "Search in “%1”…"
-msgstr "'%1' を検索..."
+msgstr "“%1” を検索..."
 
 #: discover/qml/SourcesPage.qml:19
 #, kde-format
@@ -1504,10 +1432,9 @@ msgid "Increase priority"
 msgstr "優先度を上げる"
 
 #: discover/qml/SourcesPage.qml:258
-#, fuzzy, kde-format
-#| msgid "Failed to increase '%1' preference"
+#, kde-format
 msgid "Failed to increase “%1” preference"
-msgstr "'%1' の優先度を上げられませんでした。"
+msgstr "“%1” の優先度を上げられませんでした。"
 
 #: discover/qml/SourcesPage.qml:264
 #, kde-format
@@ -1515,10 +1442,9 @@ msgid "Decrease priority"
 msgstr "優先度を下げる"
 
 #: discover/qml/SourcesPage.qml:270
-#, fuzzy, kde-format
-#| msgid "Failed to decrease '%1' preference"
+#, kde-format
 msgid "Failed to decrease “%1” preference"
-msgstr "'%1' の優先度を下げられませんでした。"
+msgstr "“%1” の優先度を下げられませんでした。"
 
 #: discover/qml/SourcesPage.qml:276
 #, kde-format
@@ -1645,16 +1571,15 @@ msgid "Shut down"
 msgstr "シャットダウン"
 
 #: discover/qml/UpdatesPage.qml:297
-#, fuzzy, kde-format
-#| msgid "Discover"
+#, kde-format
 msgctxt "@item:inlistbox after updates complete, quit Discover"
 msgid "Quit Discover"
-msgstr "Discover"
+msgstr "Discover を終了"
 
 #: discover/qml/UpdatesPage.qml:307
 #, kde-format
 msgid "Total size: %1"
-msgstr "サイズの合計: %1"
+msgstr "合計サイズ: %1"
 
 #: discover/qml/UpdatesPage.qml:337
 #, kde-format
@@ -1729,7 +1654,3 @@ msgstr "更新の確認が必要です"
 msgctxt "@info"
 msgid "Time of last update unknown"
 msgstr "最後の更新時刻は不明です"
-
-#~ msgctxt "@item:inlistbox after updates complete, quit"
-#~ msgid "Quit"
-#~ msgstr "終了"
